@@ -1,8 +1,8 @@
 /* Gera downloads/Apostila-do-Consultor-Faktory-Flow.pdf a partir de apostila.html?pdf=1.
    Executado dentro do docker compose (perfil "pdf"):
      docker compose -p faktory-manual --profile pdf run --rm gerar-pdf
-   O Chromium do Gotenberg abre a apostila servida pelo nginx, espera o Paged.js
-   terminar a paginação (window.ffPdfPronto) e devolve um PDF A4 vetorial. */
+   O Chromium do Gotenberg abre a apostila servida pelo nginx, espera o encaixe de cada página
+   do sistema em uma folha A4 (window.ffPdfPronto) e devolve um PDF vetorial com o mesmo número de páginas. */
 import { writeFile, mkdir } from 'node:fs/promises';
 
 const MOTOR = process.env.PDF_ENGINE_URL || 'http://pdf-engine:3000';
@@ -18,13 +18,6 @@ async function esperarMotor(tentativas = 30) {
 }
 
 async function main() {
-  try {
-    const cdn = await fetch('https://cdn.jsdelivr.net/npm/pagedjs@0.4.3/dist/paged.polyfill.js', { method: 'HEAD' });
-    if (!cdn.ok) throw new Error(String(cdn.status));
-  } catch (err) {
-    console.warn(`Aviso: sem acesso ao CDN do Paged.js (${err.message}). O PDF sairá sem cabeçalho/rodapé e sem números no sumário.`);
-  }
-
   await esperarMotor();
   const form = new FormData();
   const campos = {
