@@ -212,10 +212,11 @@
   function aplicarModo(ativo) {
     estado.ativo = ativo;
     document.body.classList.toggle('estudo-ativo', ativo);
-    alternar.textContent = ativo ? 'Modo Leitura' : 'Ativar Modo Estudo';
+    alternar.textContent = ativo ? 'Modo Leitura' : 'Iniciar estudo';
     interfaceEstudo.querySelector('.estudo-abrir-painel').hidden = !ativo;
     if (!ativo) { fecharPainel(); menu.hidden = true; editor.hidden = true; }
     desenharMarcacoes();
+    if (window.parent !== window) window.parent.postMessage({ tipo: 'ff:estudo-estado', disponivel: true, ativo }, location.origin);
   }
   function salvarProgresso(dados) {
     estado.salvando = estado.salvando.catch(() => {}).then(async () => {
@@ -274,6 +275,10 @@
     aplicarModo(!estado.ativo);
     salvarProgresso({ modoEstudo: estado.ativo });
     if (estado.ativo) { dispatchEvent(new Event('scroll')); carregarMinhasDuvidas(); }
+  });
+  addEventListener('message', (e) => {
+    if (e.origin !== location.origin || e.source !== window.parent || e.data?.tipo !== 'ff:alternar-estudo' || alternar.disabled || alternar.hidden) return;
+    alternar.click();
   });
   interfaceEstudo.querySelector('.estudo-abrir-painel').addEventListener('click', () => { if (painel.hidden) { abrirPainel(); carregarMinhasDuvidas(); } else fecharPainel(); });
   interfaceEstudo.querySelector('[data-fechar-painel]').addEventListener('click', fecharPainel);
@@ -359,7 +364,10 @@
         continuar.hidden = false; continuar.textContent = `Continuar da página ${dados.progresso.ultimaPagina}`;
       }
       if (!window.CSS?.highlights || !window.Highlight) informar('Este navegador não oferece suporte a grifos. Use uma versão atual do Chrome ou Edge.');
-    } catch (erro) { alternar.hidden = false; alternar.disabled = true; alternar.textContent = 'Modo Estudo indisponível'; alternar.title = erro.message; informar(erro.message); }
+    } catch (erro) {
+      alternar.hidden = false; alternar.disabled = true; alternar.textContent = 'Modo Estudo indisponível'; alternar.title = erro.message; informar(erro.message);
+      if (window.parent !== window) window.parent.postMessage({ tipo: 'ff:estudo-estado', disponivel: false, ativo: false }, location.origin);
+    }
   }
   iniciar();
   addEventListener('ff:duvidas-enviadas', carregarMinhasDuvidas);

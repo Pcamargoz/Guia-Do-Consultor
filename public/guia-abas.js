@@ -17,6 +17,7 @@
     baixar: svg('<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>'),
     externo: svg('<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>'),
     email: svg('<rect x="2" y="4" width="20" height="16" rx="2"/><path d="m3 6 9 7 9-7"/>'),
+    estudo: svg('<path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v17H6.5A2.5 2.5 0 0 1 4 17.5z"/><path d="M4 17.5A2.5 2.5 0 0 1 6.5 15H20"/><path d="M9 7h7M9 10h5"/>'),
   };
   const ABAS = [
     { id: 'guia', rotulo: 'Guia do Consultor' },
@@ -32,6 +33,7 @@
       ${ABAS.map((a) => `<button type="button" class="ab-aba" role="tab" id="aba-${a.id}" aria-controls="painel-${a.id}" data-aba="${a.id}">${icone[a.id]}<span>${a.rotulo}</span></button>`).join('')}
     </div>
     <div class="ab-acoes">
+      <button type="button" class="ab-btn ab-btn--sec" data-estudo-cabecalho data-so-apostila aria-label="Iniciar estudo" disabled hidden>${icone.estudo}<span>Iniciar estudo</span></button>
       <button type="button" class="ab-btn ab-btn--sec" data-enviar-duvidas data-so-apostila aria-label="Enviar dúvidas" hidden>${icone.email}<span>Enviar dúvidas</span></button>
       <a class="ab-btn ab-btn--sec" href="/apostila" target="_blank" rel="noopener" data-so-apostila>${icone.externo}<span>Abrir em nova aba</span></a>
       <a class="ab-btn" href="${PDF}" download="${PDF_NOME}">${icone.baixar}<span>Exportar PDF</span></a>
@@ -116,8 +118,21 @@
   window.ffIrParaAba = irPara;
 
   topo.addEventListener('click', (e) => {
+    if (e.target.closest('[data-estudo-cabecalho]')) {
+      paineis.apostila.querySelector('iframe')?.contentWindow?.postMessage({ tipo: 'ff:alternar-estudo' }, location.origin);
+      return;
+    }
     const b = e.target.closest('[data-aba]');
     if (b) irPara(b.dataset.aba);
+  });
+  addEventListener('message', (e) => {
+    const frame = paineis.apostila.querySelector('iframe');
+    if (e.origin !== location.origin || e.source !== frame?.contentWindow || e.data?.tipo !== 'ff:estudo-estado') return;
+    const botao = topo.querySelector('[data-estudo-cabecalho]');
+    botao.disabled = !e.data.disponivel;
+    const rotulo = e.data.disponivel ? (e.data.ativo ? 'Modo Leitura' : 'Iniciar estudo') : 'Estudo indisponível';
+    botao.querySelector('span').textContent = rotulo;
+    botao.setAttribute('aria-label', rotulo);
   });
   topo.querySelector('.ab-abas').addEventListener('keydown', (e) => {
     if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(e.key)) return;

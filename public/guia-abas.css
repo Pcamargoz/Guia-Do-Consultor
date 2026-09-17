@@ -61,8 +61,8 @@
   .ab-aba, .ab-btn { flex: 1; justify-content: center; padding: 8px 10px; font-size: 13.5px; }
   .ab-btn--sec span { display: none; }
   .ab-btn--sec { flex: 0 0 48px; }
-  .ab-btn[data-enviar-duvidas] { flex: 1 1 auto; }
-  .ab-btn[data-enviar-duvidas] span { display: inline; }
+  .ab-btn[data-enviar-duvidas], .ab-btn[data-estudo-cabecalho] { flex: 1 1 auto; }
+  .ab-btn[data-enviar-duvidas] span, .ab-btn[data-estudo-cabecalho] span { display: inline; }
 }
 @media print { .ab-topo { display: none; } }
 
