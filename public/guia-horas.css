@@ -247,3 +247,43 @@ button.hr-duracao:hover { border-style: solid; border-color: var(--brand-primary
   .pc-card-rodape .ed-btn { width: 100%; }
 }
 @media print { .pc-controles { display: none; } }
+
+/* ==========================================================================
+   Filtro por pacote na seção Módulos
+   ========================================================================== */
+.ed-pacotes { flex: 1 1 100%; display: grid; gap: 12px; padding-top: 12px; border-top: 1px solid var(--color-line); }
+.ed-pacotes[hidden] { display: none; }
+.ed-pacotes-linha { display: flex; align-items: center; gap: 10px 14px; min-width: 0; }
+.ed-pacotes-rotulo { display: inline-flex; align-items: center; gap: 6px; flex: none; font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--brand-primary-700); }
+.ed-pacotes-rotulo svg { width: 16px; height: 16px; }
+.ed-pacotes-opcoes { display: flex; gap: 6px; min-width: 0; overflow-x: auto; padding: 2px; scrollbar-width: thin; }
+.ed-pacote-opcao {
+  flex: none; min-height: 38px; padding: 6px 14px; border: 1.5px solid var(--color-line-strong); border-radius: var(--radius-pill);
+  background: #fff; color: var(--brand-primary-900); font-size: 13px; font-weight: 600; white-space: nowrap; cursor: pointer;
+  transition: border-color var(--dur-fast), background-color var(--dur-fast), color var(--dur-fast);
+}
+.ed-pacote-opcao:hover { border-color: var(--brand-primary); background: var(--brand-primary-50); }
+.ed-pacote-opcao[aria-checked="true"] { background: var(--brand-primary-900); border-color: var(--brand-primary-900); color: #fff; box-shadow: inset 0 -3px 0 var(--brand-accent); }
+
+.ed-pacote-resumo {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; padding: 14px 16px;
+  border-radius: var(--radius-lg); background: var(--brand-primary-50); border: 1px solid var(--brand-primary-200);
+}
+.ed-pacote-total { display: flex; align-items: center; gap: 12px; }
+.ed-pacote-total > svg { flex: none; width: 44px; height: 44px; padding: 10px; border-radius: 12px; background: var(--brand-primary-900); color: var(--brand-accent); }
+.ed-pacote-total > div { display: grid; line-height: 1.2; }
+.ed-pacote-total span { font-size: 11.5px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--brand-primary-700); }
+.ed-pacote-total strong { font-family: var(--font-display); font-size: 1.8rem; font-weight: 800; color: var(--brand-primary-950); font-variant-numeric: tabular-nums; }
+.ed-pacote-comp { font-size: 12.5px; font-weight: 600; color: var(--color-success); }
+.ed-pacote-comp--acima { color: var(--color-warning); }
+.ed-pacote-comp--abaixo { color: var(--brand-primary-700); }
+.ed-pacote-partes { display: flex; flex-wrap: wrap; gap: 8px 20px; margin: 0; flex: 1 1 320px; }
+.ed-pacote-partes div { display: grid; gap: 2px; }
+.ed-pacote-partes dt { display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; color: var(--color-muted); }
+.ed-pacote-partes dd { margin: 0; font-size: 16px; font-weight: 700; color: var(--color-ink); font-variant-numeric: tabular-nums; }
+.ed-pacote-resumo .ed-btn { margin-left: auto; }
+
+@media (max-width: 720px) {
+  .ed-pacotes-linha { flex-direction: column; align-items: stretch; }
+  .ed-pacote-resumo .ed-btn { width: 100%; margin-left: 0; }
+}
