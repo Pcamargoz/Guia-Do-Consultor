@@ -1,0 +1,2328 @@
+{
+ "fonte": "docs/Comparativo_Flow_com_Distribuicao_de_Horas_1 (2).xlsx",
+ "pacotes": [
+  "Starter",
+  "Standard",
+  "Administrativo Standard",
+  "Industrial Standard",
+  "Full Standard",
+  "Administrativo Pro",
+  "Industrial Pro",
+  "Enterprise"
+ ],
+ "faixas": [
+  "até 5 usuários",
+  "6 a 10 usuários",
+  "11 a 15 usuários",
+  "16 a 20 usuários",
+  "21 a 25 usuários",
+  "26 a 30 usuários"
+ ],
+ "precos": {
+  "Administrativo Standard": {
+   "Rápida": [
+    24,
+    26,
+    29,
+    32,
+    35,
+    39
+   ],
+   "Premium": [
+    55,
+    61,
+    67,
+    73,
+    81,
+    89
+   ]
+  },
+  "Industrial Standard": {
+   "Rápida": [
+    60,
+    66,
+    73,
+    80,
+    88,
+    97
+   ],
+   "Premium": [
+    140,
+    154,
+    169,
+    186,
+    205,
+    225
+   ]
+  },
+  "Full Standard": {
+   "Rápida": [
+    80,
+    88,
+    97,
+    106,
+    117,
+    129
+   ],
+   "Premium": [
+    180,
+    198,
+    218,
+    240,
+    264,
+    290
+   ]
+  },
+  "Administrativo Pro": {
+   "Rápida": [
+    90,
+    99,
+    109,
+    120,
+    132,
+    145
+   ],
+   "Premium": [
+    220,
+    242,
+    266,
+    293,
+    322,
+    354
+   ]
+  },
+  "Industrial Pro": {
+   "Rápida": [
+    100,
+    110,
+    121,
+    133,
+    146,
+    161
+   ],
+   "Premium": [
+    260,
+    286,
+    315,
+    346,
+    381,
+    419
+   ]
+  },
+  "Enterprise": {
+   "Rápida": [
+    120,
+    132,
+    145,
+    160,
+    176,
+    193
+   ],
+   "Premium": [
+    300,
+    330,
+    363,
+    399,
+    439,
+    483
+   ]
+  },
+  "Starter": {
+   "Premium": [
+    8,
+    9,
+    10,
+    11,
+    12,
+    13
+   ]
+  },
+  "Standard": {
+   "Premium": [
+    16,
+    18,
+    19,
+    21,
+    23,
+    26
+   ]
+  }
+ },
+ "blocosBase16h": [
+  {
+   "bloco": "RA - Reunião de Alinhamento",
+   "horasBase": 0.5
+  },
+  {
+   "bloco": "Configuração de integração (CEM) + Validação de dados",
+   "horasBase": 0.5
+  },
+  {
+   "bloco": "Vendas (treinamento)",
+   "horasBase": 2
+  },
+  {
+   "bloco": "Faturamento + Fiscal (treinamento conjunto)",
+   "horasBase": 2
+  },
+  {
+   "bloco": "Financeiro (treinamento)",
+   "horasBase": 2
+  },
+  {
+   "bloco": "Dúvidas + simulação de fluxo",
+   "horasBase": 1
+  },
+  {
+   "bloco": "Go-live",
+   "horasBase": 4
+  },
+  {
+   "bloco": "Encerramento + feedback",
+   "horasBase": 1
+  },
+  {
+   "bloco": "Outros módulos (demais funcionalidades do pacote)",
+   "horasBase": 3
+  }
+ ],
+ "funcionalidades": [
+  {
+   "modulo": "Vendas",
+   "nivel": "Standard",
+   "funcionalidade": "Pedidos de Venda",
+   "complexidade": "Alta",
+   "peso": 3,
+   "pacotes": [
+    "Starter",
+    "Standard",
+    "Administrativo Standard",
+    "Industrial Standard",
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Vendas",
+   "nivel": "Standard",
+   "funcionalidade": "Integração de pedidos com sistemas técnicos",
+   "complexidade": "Alta",
+   "peso": 3,
+   "pacotes": [
+    "Starter",
+    "Standard",
+    "Administrativo Standard",
+    "Industrial Standard",
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Vendas",
+   "nivel": "Standard",
+   "funcionalidade": "Parcelas de Pedido",
+   "complexidade": "Baixa",
+   "peso": 1,
+   "pacotes": [
+    "Starter",
+    "Standard",
+    "Administrativo Standard",
+    "Industrial Standard",
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Vendas",
+   "nivel": "Standard",
+   "funcionalidade": "Itens de Pedido",
+   "complexidade": "Média",
+   "peso": 2,
+   "pacotes": [
+    "Starter",
+    "Standard",
+    "Administrativo Standard",
+    "Industrial Standard",
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Vendas",
+   "nivel": "Standard",
+   "funcionalidade": "Orçamentos",
+   "complexidade": "Média",
+   "peso": 2,
+   "pacotes": [
+    "Starter",
+    "Standard",
+    "Administrativo Standard",
+    "Industrial Standard",
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Vendas",
+   "nivel": "Standard",
+   "funcionalidade": "Relatórios Básicos",
+   "complexidade": "Baixa",
+   "peso": 1,
+   "pacotes": [
+    "Starter",
+    "Standard",
+    "Administrativo Standard",
+    "Industrial Standard",
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Vendas",
+   "nivel": "Standard",
+   "funcionalidade": "Dashboard Vendas",
+   "complexidade": "Baixa",
+   "peso": 1,
+   "pacotes": [
+    "Starter",
+    "Standard",
+    "Administrativo Standard",
+    "Industrial Standard",
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Vendas",
+   "nivel": "Pro",
+   "funcionalidade": "Cálculo de impostos lucro presumido/real",
+   "complexidade": "Alta",
+   "peso": 3,
+   "pacotes": [
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Vendas",
+   "nivel": "Pro",
+   "funcionalidade": "Comissionamento de Vendas",
+   "complexidade": "Média",
+   "peso": 2,
+   "pacotes": [
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Vendas",
+   "nivel": "Pro",
+   "funcionalidade": "Comissões Automáticas",
+   "complexidade": "Alta",
+   "peso": 3,
+   "pacotes": [
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Vendas",
+   "nivel": "Pro",
+   "funcionalidade": "Dashboard Analytics",
+   "complexidade": "Média",
+   "peso": 2,
+   "pacotes": [
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Vendas",
+   "nivel": "Pro",
+   "funcionalidade": "Relatórios Avançados",
+   "complexidade": "Média",
+   "peso": 2,
+   "pacotes": [
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Compras",
+   "nivel": "Standard",
+   "funcionalidade": "Solicitações de Compra",
+   "complexidade": "Média",
+   "peso": 2,
+   "pacotes": [
+    "Industrial Standard",
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Compras",
+   "nivel": "Standard",
+   "funcionalidade": "Cotações de Compra",
+   "complexidade": "Média",
+   "peso": 2,
+   "pacotes": [
+    "Industrial Standard",
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Compras",
+   "nivel": "Standard",
+   "funcionalidade": "Pedidos de Compra",
+   "complexidade": "Alta",
+   "peso": 3,
+   "pacotes": [
+    "Industrial Standard",
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Compras",
+   "nivel": "Pro",
+   "funcionalidade": "Follow-up de Entregas",
+   "complexidade": "Média",
+   "peso": 2,
+   "pacotes": [
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Compras",
+   "nivel": "Pro",
+   "funcionalidade": "Aprovação de Compras",
+   "complexidade": "Média",
+   "peso": 2,
+   "pacotes": [
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Compras",
+   "nivel": "Pro",
+   "funcionalidade": "Integração com Fornecedores",
+   "complexidade": "Alta",
+   "peso": 3,
+   "pacotes": [
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "CRM",
+   "nivel": "Standard",
+   "funcionalidade": "Cadastro de Clientes",
+   "complexidade": "Baixa",
+   "peso": 1,
+   "pacotes": [
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "CRM",
+   "nivel": "Standard",
+   "funcionalidade": "Funil de Vendas",
+   "complexidade": "Média",
+   "peso": 2,
+   "pacotes": [
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "CRM",
+   "nivel": "Standard",
+   "funcionalidade": "Leads",
+   "complexidade": "Baixa",
+   "peso": 1,
+   "pacotes": [
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "CRM",
+   "nivel": "Standard",
+   "funcionalidade": "Oportunidades",
+   "complexidade": "Média",
+   "peso": 2,
+   "pacotes": [
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "CRM",
+   "nivel": "Standard",
+   "funcionalidade": "Tags de Cliente",
+   "complexidade": "Baixa",
+   "peso": 1,
+   "pacotes": [
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "CRM",
+   "nivel": "Standard",
+   "funcionalidade": "Concorrentes",
+   "complexidade": "Baixa",
+   "peso": 1,
+   "pacotes": [
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "CRM",
+   "nivel": "Standard",
+   "funcionalidade": "Origens de Lead",
+   "complexidade": "Baixa",
+   "peso": 1,
+   "pacotes": [
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "CRM",
+   "nivel": "Standard",
+   "funcionalidade": "Motivos de Perda",
+   "complexidade": "Baixa",
+   "peso": 1,
+   "pacotes": [
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "CRM",
+   "nivel": "Standard",
+   "funcionalidade": "Temperaturas de Lead",
+   "complexidade": "Baixa",
+   "peso": 1,
+   "pacotes": [
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "CRM",
+   "nivel": "Standard",
+   "funcionalidade": "Tipos de Atividade",
+   "complexidade": "Baixa",
+   "peso": 1,
+   "pacotes": [
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "CRM",
+   "nivel": "Standard",
+   "funcionalidade": "Agenda CRM",
+   "complexidade": "Média",
+   "peso": 2,
+   "pacotes": [
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "CRM",
+   "nivel": "Pro",
+   "funcionalidade": "Automação de Marketing",
+   "complexidade": "Alta",
+   "peso": 3,
+   "pacotes": [
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "CRM",
+   "nivel": "Pro",
+   "funcionalidade": "Histórico de Interações",
+   "complexidade": "Média",
+   "peso": 2,
+   "pacotes": [
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "CRM",
+   "nivel": "Pro",
+   "funcionalidade": "Cadências de Prospecção",
+   "complexidade": "Alta",
+   "peso": 3,
+   "pacotes": [
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "CRM",
+   "nivel": "Pro",
+   "funcionalidade": "Segmentos de Clientes",
+   "complexidade": "Média",
+   "peso": 2,
+   "pacotes": [
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "CRM",
+   "nivel": "Pro",
+   "funcionalidade": "Projetos de Obra",
+   "complexidade": "Alta",
+   "peso": 3,
+   "pacotes": [
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Financeiro",
+   "nivel": "Standard",
+   "funcionalidade": "Contas a Receber",
+   "complexidade": "Alta",
+   "peso": 3,
+   "pacotes": [
+    "Standard",
+    "Administrativo Standard",
+    "Industrial Standard",
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Financeiro",
+   "nivel": "Standard",
+   "funcionalidade": "Contas a Pagar",
+   "complexidade": "Alta",
+   "peso": 3,
+   "pacotes": [
+    "Standard",
+    "Administrativo Standard",
+    "Industrial Standard",
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Financeiro",
+   "nivel": "Standard",
+   "funcionalidade": "Transferências Bancárias",
+   "complexidade": "Média",
+   "peso": 2,
+   "pacotes": [
+    "Standard",
+    "Administrativo Standard",
+    "Industrial Standard",
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Financeiro",
+   "nivel": "Standard",
+   "funcionalidade": "Extrato Bancário",
+   "complexidade": "Média",
+   "peso": 2,
+   "pacotes": [
+    "Standard",
+    "Administrativo Standard",
+    "Industrial Standard",
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Financeiro",
+   "nivel": "Standard",
+   "funcionalidade": "Fluxo de Caixa Básico",
+   "complexidade": "Média",
+   "peso": 2,
+   "pacotes": [
+    "Standard",
+    "Administrativo Standard",
+    "Industrial Standard",
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Financeiro",
+   "nivel": "Standard",
+   "funcionalidade": "Contas Bancárias",
+   "complexidade": "Baixa",
+   "peso": 1,
+   "pacotes": [
+    "Standard",
+    "Administrativo Standard",
+    "Industrial Standard",
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Financeiro",
+   "nivel": "Standard",
+   "funcionalidade": "Planos de Conta",
+   "complexidade": "Baixa",
+   "peso": 1,
+   "pacotes": [
+    "Standard",
+    "Administrativo Standard",
+    "Industrial Standard",
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Financeiro",
+   "nivel": "Standard",
+   "funcionalidade": "Boleto",
+   "complexidade": "Alta",
+   "peso": 3,
+   "pacotes": [
+    "Standard",
+    "Administrativo Standard",
+    "Industrial Standard",
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Financeiro",
+   "nivel": "Standard",
+   "funcionalidade": "DRE básico",
+   "complexidade": "Alta",
+   "peso": 3,
+   "pacotes": [
+    "Standard",
+    "Administrativo Standard",
+    "Industrial Standard",
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Financeiro",
+   "nivel": "Pro",
+   "funcionalidade": "Conciliação Bancária Open Finance",
+   "complexidade": "Alta",
+   "peso": 3,
+   "pacotes": [
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Financeiro",
+   "nivel": "Pro",
+   "funcionalidade": "Integração com PIX",
+   "complexidade": "Alta",
+   "peso": 3,
+   "pacotes": [
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Financeiro",
+   "nivel": "Pro",
+   "funcionalidade": "Fluxo de Caixa Projetado",
+   "complexidade": "Média",
+   "peso": 2,
+   "pacotes": [
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Financeiro",
+   "nivel": "Pro",
+   "funcionalidade": "Integrações Bancárias",
+   "complexidade": "Alta",
+   "peso": 3,
+   "pacotes": [
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Financeiro",
+   "nivel": "Pro",
+   "funcionalidade": "Anexos em Contas",
+   "complexidade": "Baixa",
+   "peso": 1,
+   "pacotes": [
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Financeiro",
+   "nivel": "Pro",
+   "funcionalidade": "Budget Mensal",
+   "complexidade": "Média",
+   "peso": 2,
+   "pacotes": [
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Financeiro",
+   "nivel": "Pro",
+   "funcionalidade": "Demonstrativos Customizados",
+   "complexidade": "Alta",
+   "peso": 3,
+   "pacotes": [
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Financeiro",
+   "nivel": "Pro",
+   "funcionalidade": "Painel Financeiro da Obra",
+   "complexidade": "Alta",
+   "peso": 3,
+   "pacotes": [
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Faturamento",
+   "nivel": "Standard",
+   "funcionalidade": "Emissão de NF-e",
+   "complexidade": "Alta",
+   "peso": 3,
+   "pacotes": [
+    "Starter",
+    "Standard",
+    "Administrativo Standard",
+    "Industrial Standard",
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Faturamento",
+   "nivel": "Standard",
+   "funcionalidade": "Cancelamento de NF-e",
+   "complexidade": "Média",
+   "peso": 2,
+   "pacotes": [
+    "Starter",
+    "Standard",
+    "Administrativo Standard",
+    "Industrial Standard",
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Faturamento",
+   "nivel": "Standard",
+   "funcionalidade": "Emissão de NFS-e",
+   "complexidade": "Alta",
+   "peso": 3,
+   "pacotes": [
+    "Starter",
+    "Standard",
+    "Administrativo Standard",
+    "Industrial Standard",
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Faturamento",
+   "nivel": "Standard",
+   "funcionalidade": "Emissão em Lote",
+   "complexidade": "Alta",
+   "peso": 3,
+   "pacotes": [
+    "Starter",
+    "Standard",
+    "Administrativo Standard",
+    "Industrial Standard",
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Faturamento",
+   "nivel": "Pro",
+   "funcionalidade": "MDFe",
+   "complexidade": "Alta",
+   "peso": 3,
+   "pacotes": [
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Faturamento",
+   "nivel": "Pro",
+   "funcionalidade": "Assistente de triangulação",
+   "complexidade": "Alta",
+   "peso": 3,
+   "pacotes": [
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Fiscal",
+   "nivel": "Standard",
+   "funcionalidade": "Gestão de NCM/CEST",
+   "complexidade": "Média",
+   "peso": 2,
+   "pacotes": [
+    "Starter",
+    "Standard",
+    "Administrativo Standard",
+    "Industrial Standard",
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Fiscal",
+   "nivel": "Standard",
+   "funcionalidade": "Gestão de CFOP/CST",
+   "complexidade": "Alta",
+   "peso": 3,
+   "pacotes": [
+    "Starter",
+    "Standard",
+    "Administrativo Standard",
+    "Industrial Standard",
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Fiscal",
+   "nivel": "Standard",
+   "funcionalidade": "Configurações Fiscais",
+   "complexidade": "Alta",
+   "peso": 3,
+   "pacotes": [
+    "Starter",
+    "Standard",
+    "Administrativo Standard",
+    "Industrial Standard",
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Fiscal",
+   "nivel": "Standard",
+   "funcionalidade": "Certificado Digital",
+   "complexidade": "Alta",
+   "peso": 3,
+   "pacotes": [
+    "Starter",
+    "Standard",
+    "Administrativo Standard",
+    "Industrial Standard",
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Fiscal",
+   "nivel": "Standard",
+   "funcionalidade": "Textos Fiscais",
+   "complexidade": "Baixa",
+   "peso": 1,
+   "pacotes": [
+    "Starter",
+    "Standard",
+    "Administrativo Standard",
+    "Industrial Standard",
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Fiscal",
+   "nivel": "Standard",
+   "funcionalidade": "Origem Mercadoria",
+   "complexidade": "Baixa",
+   "peso": 1,
+   "pacotes": [
+    "Starter",
+    "Standard",
+    "Administrativo Standard",
+    "Industrial Standard",
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Fiscal",
+   "nivel": "Standard",
+   "funcionalidade": "Rejeições SEFAZ",
+   "complexidade": "Alta",
+   "peso": 3,
+   "pacotes": [
+    "Starter",
+    "Standard",
+    "Administrativo Standard",
+    "Industrial Standard",
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Fiscal",
+   "nivel": "Standard",
+   "funcionalidade": "Carta de Correção",
+   "complexidade": "Média",
+   "peso": 2,
+   "pacotes": [
+    "Starter",
+    "Standard",
+    "Administrativo Standard",
+    "Industrial Standard",
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Fiscal",
+   "nivel": "Standard",
+   "funcionalidade": "Inutilização de Numeração",
+   "complexidade": "Média",
+   "peso": 2,
+   "pacotes": [
+    "Starter",
+    "Standard",
+    "Administrativo Standard",
+    "Industrial Standard",
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Fiscal",
+   "nivel": "Pro",
+   "funcionalidade": "Enquadramento Legal IPI",
+   "complexidade": "Alta",
+   "peso": 3,
+   "pacotes": [
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Fiscal",
+   "nivel": "Pro",
+   "funcionalidade": "Perfis SUFRAMA",
+   "complexidade": "Alta",
+   "peso": 3,
+   "pacotes": [
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Recebimento",
+   "nivel": "Standard",
+   "funcionalidade": "Notas de Recebimento",
+   "complexidade": "Média",
+   "peso": 2,
+   "pacotes": [
+    "Industrial Standard",
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Recebimento",
+   "nivel": "Standard",
+   "funcionalidade": "Importação de XML",
+   "complexidade": "Alta",
+   "peso": 3,
+   "pacotes": [
+    "Industrial Standard",
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Recebimento",
+   "nivel": "Pro",
+   "funcionalidade": "DFe",
+   "complexidade": "Alta",
+   "peso": 3,
+   "pacotes": [
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Estoque",
+   "nivel": "Standard",
+   "funcionalidade": "Controle de Estoque",
+   "complexidade": "Alta",
+   "peso": 3,
+   "pacotes": [
+    "Industrial Standard",
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Estoque",
+   "nivel": "Standard",
+   "funcionalidade": "Categorias de Produto",
+   "complexidade": "Baixa",
+   "peso": 1,
+   "pacotes": [
+    "Industrial Standard",
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Estoque",
+   "nivel": "Standard",
+   "funcionalidade": "Unidades de Medida",
+   "complexidade": "Baixa",
+   "peso": 1,
+   "pacotes": [
+    "Industrial Standard",
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Estoque",
+   "nivel": "Standard",
+   "funcionalidade": "Cores",
+   "complexidade": "Baixa",
+   "peso": 1,
+   "pacotes": [
+    "Industrial Standard",
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Estoque",
+   "nivel": "Standard",
+   "funcionalidade": "Estrutura de Produto (BOM)",
+   "complexidade": "Alta",
+   "peso": 3,
+   "pacotes": [
+    "Industrial Standard",
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Estoque",
+   "nivel": "Standard",
+   "funcionalidade": "Transferências de Estoque",
+   "complexidade": "Média",
+   "peso": 2,
+   "pacotes": [
+    "Industrial Standard",
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Estoque",
+   "nivel": "Pro",
+   "funcionalidade": "Inventário",
+   "complexidade": "Alta",
+   "peso": 3,
+   "pacotes": [
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Estoque",
+   "nivel": "Pro",
+   "funcionalidade": "Estoque por localização",
+   "complexidade": "Alta",
+   "peso": 3,
+   "pacotes": [
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Estoque",
+   "nivel": "Pro",
+   "funcionalidade": "Controle de Lotes e Validades",
+   "complexidade": "Alta",
+   "peso": 3,
+   "pacotes": [
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Estoque",
+   "nivel": "Pro",
+   "funcionalidade": "Rastreabilidade",
+   "complexidade": "Alta",
+   "peso": 3,
+   "pacotes": [
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Produção",
+   "nivel": "Standard",
+   "funcionalidade": "Ordens de Produção",
+   "complexidade": "Alta",
+   "peso": 3,
+   "pacotes": [
+    "Industrial Standard",
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Produção",
+   "nivel": "Standard",
+   "funcionalidade": "Requisições de Material",
+   "complexidade": "Média",
+   "peso": 2,
+   "pacotes": [
+    "Industrial Standard",
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Produção",
+   "nivel": "Standard",
+   "funcionalidade": "Painel de Produção",
+   "complexidade": "Média",
+   "peso": 2,
+   "pacotes": [
+    "Industrial Standard",
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Produção",
+   "nivel": "Pro",
+   "funcionalidade": "Apontamentos de Produção",
+   "complexidade": "Média",
+   "peso": 2,
+   "pacotes": [
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Produção",
+   "nivel": "Pro",
+   "funcionalidade": "Processos de Produção",
+   "complexidade": "Alta",
+   "peso": 3,
+   "pacotes": [
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Produção",
+   "nivel": "Pro",
+   "funcionalidade": "Etapas de Produção",
+   "complexidade": "Média",
+   "peso": 2,
+   "pacotes": [
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Produção",
+   "nivel": "Pro",
+   "funcionalidade": "Linhas de Produção",
+   "complexidade": "Média",
+   "peso": 2,
+   "pacotes": [
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Produção",
+   "nivel": "Pro",
+   "funcionalidade": "Planejamento Avançado",
+   "complexidade": "Alta",
+   "peso": 3,
+   "pacotes": [
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Serviços",
+   "nivel": "Standard",
+   "funcionalidade": "Ordens de Serviço",
+   "complexidade": "Alta",
+   "peso": 3,
+   "pacotes": [
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Serviços",
+   "nivel": "Standard",
+   "funcionalidade": "Instalações",
+   "complexidade": "Média",
+   "peso": 2,
+   "pacotes": [
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Serviços",
+   "nivel": "Standard",
+   "funcionalidade": "Faturar Ordem de Serviço",
+   "complexidade": "Alta",
+   "peso": 3,
+   "pacotes": [
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Serviços",
+   "nivel": "Standard",
+   "funcionalidade": "Dashboard de Serviços",
+   "complexidade": "Baixa",
+   "peso": 1,
+   "pacotes": [
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Serviços",
+   "nivel": "Pro",
+   "funcionalidade": "Medições",
+   "complexidade": "Média",
+   "peso": 2,
+   "pacotes": [
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Serviços",
+   "nivel": "Pro",
+   "funcionalidade": "Vistorias",
+   "complexidade": "Média",
+   "peso": 2,
+   "pacotes": [
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Serviços",
+   "nivel": "Pro",
+   "funcionalidade": "Assistência Técnica",
+   "complexidade": "Média",
+   "peso": 2,
+   "pacotes": [
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Serviços",
+   "nivel": "Pro",
+   "funcionalidade": "Equipes de Campo",
+   "complexidade": "Média",
+   "peso": 2,
+   "pacotes": [
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Serviços",
+   "nivel": "Pro",
+   "funcionalidade": "Configurações de Serviços",
+   "complexidade": "Alta",
+   "peso": 3,
+   "pacotes": [
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Serviços",
+   "nivel": "Pro",
+   "funcionalidade": "Agendamento",
+   "complexidade": "Média",
+   "peso": 2,
+   "pacotes": [
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Serviços",
+   "nivel": "Pro",
+   "funcionalidade": "Diário de Serviços",
+   "complexidade": "Baixa",
+   "peso": 1,
+   "pacotes": [
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Expedição",
+   "nivel": "Standard",
+   "funcionalidade": "Cargas",
+   "complexidade": "Média",
+   "peso": 2,
+   "pacotes": [
+    "Full Standard",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Expedição",
+   "nivel": "Standard",
+   "funcionalidade": "Entregas",
+   "complexidade": "Média",
+   "peso": 2,
+   "pacotes": [
+    "Full Standard",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Expedição",
+   "nivel": "Standard",
+   "funcionalidade": "Volumes",
+   "complexidade": "Baixa",
+   "peso": 1,
+   "pacotes": [
+    "Full Standard",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Expedição",
+   "nivel": "Standard",
+   "funcionalidade": "Motoristas",
+   "complexidade": "Baixa",
+   "peso": 1,
+   "pacotes": [
+    "Full Standard",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Expedição",
+   "nivel": "Standard",
+   "funcionalidade": "Veículos",
+   "complexidade": "Baixa",
+   "peso": 1,
+   "pacotes": [
+    "Full Standard",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Expedição",
+   "nivel": "Standard",
+   "funcionalidade": "Tipos de Veículo / Ocorrência",
+   "complexidade": "Baixa",
+   "peso": 1,
+   "pacotes": [
+    "Full Standard",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Expedição",
+   "nivel": "Standard",
+   "funcionalidade": "Parâmetros de Expedição",
+   "complexidade": "Média",
+   "peso": 2,
+   "pacotes": [
+    "Full Standard",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Expedição",
+   "nivel": "Standard",
+   "funcionalidade": "Dashboard de Expedição",
+   "complexidade": "Baixa",
+   "peso": 1,
+   "pacotes": [
+    "Full Standard",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Expedição",
+   "nivel": "Pro",
+   "funcionalidade": "Bipagens",
+   "complexidade": "Média",
+   "peso": 2,
+   "pacotes": [
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Expedição",
+   "nivel": "Pro",
+   "funcionalidade": "Roteirização",
+   "complexidade": "Alta",
+   "peso": 3,
+   "pacotes": [
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Expedição",
+   "nivel": "Pro",
+   "funcionalidade": "Follow-up de Entregas",
+   "complexidade": "Média",
+   "peso": 2,
+   "pacotes": [
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Expedição",
+   "nivel": "Pro",
+   "funcionalidade": "Aplicativo do motorista",
+   "complexidade": "Alta",
+   "peso": 3,
+   "pacotes": [
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Projetos",
+   "nivel": "Standard",
+   "funcionalidade": "Criar Projeto",
+   "complexidade": "Baixa",
+   "peso": 1,
+   "pacotes": [
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Projetos",
+   "nivel": "Standard",
+   "funcionalidade": "Gerenciar Etapas",
+   "complexidade": "Média",
+   "peso": 2,
+   "pacotes": [
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Projetos",
+   "nivel": "Standard",
+   "funcionalidade": "Necessidades do Projeto",
+   "complexidade": "Média",
+   "peso": 2,
+   "pacotes": [
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Projetos",
+   "nivel": "Pro",
+   "funcionalidade": "Painel Financeiro do Projeto",
+   "complexidade": "Alta",
+   "peso": 3,
+   "pacotes": [
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Projetos",
+   "nivel": "Pro",
+   "funcionalidade": "Resultados Previstos",
+   "complexidade": "Alta",
+   "peso": 3,
+   "pacotes": [
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Projetos",
+   "nivel": "Pro",
+   "funcionalidade": "Alocação de Recursos",
+   "complexidade": "Média",
+   "peso": 2,
+   "pacotes": [
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Projetos",
+   "nivel": "Pro",
+   "funcionalidade": "Timeline de Projeto",
+   "complexidade": "Média",
+   "peso": 2,
+   "pacotes": [
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Tarefas",
+   "nivel": "Standard",
+   "funcionalidade": "Boards/Quadros",
+   "complexidade": "Baixa",
+   "peso": 1,
+   "pacotes": [
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Tarefas",
+   "nivel": "Standard",
+   "funcionalidade": "Listas",
+   "complexidade": "Baixa",
+   "peso": 1,
+   "pacotes": [
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Tarefas",
+   "nivel": "Standard",
+   "funcionalidade": "Tarefas",
+   "complexidade": "Baixa",
+   "peso": 1,
+   "pacotes": [
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Tarefas",
+   "nivel": "Standard",
+   "funcionalidade": "Dashboard de Tarefas",
+   "complexidade": "Baixa",
+   "peso": 1,
+   "pacotes": [
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Tarefas",
+   "nivel": "Pro",
+   "funcionalidade": "Checklists",
+   "complexidade": "Baixa",
+   "peso": 1,
+   "pacotes": [
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Tarefas",
+   "nivel": "Pro",
+   "funcionalidade": "Labels/Etiquetas",
+   "complexidade": "Baixa",
+   "peso": 1,
+   "pacotes": [
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Tarefas",
+   "nivel": "Pro",
+   "funcionalidade": "Comentários e Atividades",
+   "complexidade": "Baixa",
+   "peso": 1,
+   "pacotes": [
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Tarefas",
+   "nivel": "Pro",
+   "funcionalidade": "Anexos de Tarefa",
+   "complexidade": "Baixa",
+   "peso": 1,
+   "pacotes": [
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Tarefas",
+   "nivel": "Pro",
+   "funcionalidade": "Dependências entre Tarefas",
+   "complexidade": "Média",
+   "peso": 2,
+   "pacotes": [
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Tarefas",
+   "nivel": "Pro",
+   "funcionalidade": "Observadores de Tarefas",
+   "complexidade": "Baixa",
+   "peso": 1,
+   "pacotes": [
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Tarefas",
+   "nivel": "Pro",
+   "funcionalidade": "Apontamentos de Horas",
+   "complexidade": "Média",
+   "peso": 2,
+   "pacotes": [
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Tarefas",
+   "nivel": "Pro",
+   "funcionalidade": "Templates de Board",
+   "complexidade": "Média",
+   "peso": 2,
+   "pacotes": [
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Tarefas",
+   "nivel": "Pro",
+   "funcionalidade": "Regras/Automações",
+   "complexidade": "Alta",
+   "peso": 3,
+   "pacotes": [
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Tarefas",
+   "nivel": "Pro",
+   "funcionalidade": "Caminho Crítico",
+   "complexidade": "Alta",
+   "peso": 3,
+   "pacotes": [
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Tarefas",
+   "nivel": "Pro",
+   "funcionalidade": "Reprogramação de Tarefas",
+   "complexidade": "Média",
+   "peso": 2,
+   "pacotes": [
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "IA (Alumina)",
+   "nivel": "Pro",
+   "funcionalidade": "Chat Assistente",
+   "complexidade": "Alta",
+   "peso": 3,
+   "pacotes": [
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "IA (Alumina)",
+   "nivel": "Pro",
+   "funcionalidade": "Análise Inteligente de Dados",
+   "complexidade": "Alta",
+   "peso": 3,
+   "pacotes": [
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "IA (Alumina)",
+   "nivel": "Pro",
+   "funcionalidade": "Geração de Relatórios com IA",
+   "complexidade": "Alta",
+   "peso": 3,
+   "pacotes": [
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "IA (Alumina)",
+   "nivel": "Pro",
+   "funcionalidade": "Sugestões Automáticas",
+   "complexidade": "Alta",
+   "peso": 3,
+   "pacotes": [
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "IA (Alumina)",
+   "nivel": "Pro",
+   "funcionalidade": "Base de Conhecimento RAG",
+   "complexidade": "Alta",
+   "peso": 3,
+   "pacotes": [
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Alertas",
+   "nivel": "Standard",
+   "funcionalidade": "Alertas do Sistema",
+   "complexidade": "Média",
+   "peso": 2,
+   "pacotes": [
+    "Industrial Standard",
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Alertas",
+   "nivel": "Pro",
+   "funcionalidade": "Alertas Customizados",
+   "complexidade": "Média",
+   "peso": 2,
+   "pacotes": [
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Alertas",
+   "nivel": "Pro",
+   "funcionalidade": "Regras de Notificação",
+   "complexidade": "Alta",
+   "peso": 3,
+   "pacotes": [
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Alertas",
+   "nivel": "Pro",
+   "funcionalidade": "Preferências de Alerta",
+   "complexidade": "Baixa",
+   "peso": 1,
+   "pacotes": [
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Alertas",
+   "nivel": "Pro",
+   "funcionalidade": "Silenciamento / Catálogo",
+   "complexidade": "Baixa",
+   "peso": 1,
+   "pacotes": [
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Campos Personalizados",
+   "nivel": "Pro",
+   "funcionalidade": "Campos Personalizados",
+   "complexidade": "Alta",
+   "peso": 3,
+   "pacotes": [
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Integrações",
+   "nivel": "Standard",
+   "funcionalidade": "Boletos Webservice",
+   "complexidade": "Alta",
+   "peso": 3,
+   "pacotes": [
+    "Standard",
+    "Administrativo Standard",
+    "Industrial Standard",
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Integrações",
+   "nivel": "Pro",
+   "funcionalidade": "Webhooks",
+   "complexidade": "Alta",
+   "peso": 3,
+   "pacotes": [
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Integrações",
+   "nivel": "Pro",
+   "funcionalidade": "Importação de Arquivos",
+   "complexidade": "Média",
+   "peso": 2,
+   "pacotes": [
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Integrações",
+   "nivel": "Pro",
+   "funcionalidade": "APIs Externas",
+   "complexidade": "Alta",
+   "peso": 3,
+   "pacotes": [
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Relatórios",
+   "nivel": "Standard",
+   "funcionalidade": "Visualizar Relatórios",
+   "complexidade": "Baixa",
+   "peso": 1,
+   "pacotes": [
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Relatórios",
+   "nivel": "Pro",
+   "funcionalidade": "Construtor de Relatórios",
+   "complexidade": "Alta",
+   "peso": 3,
+   "pacotes": [
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Relatórios",
+   "nivel": "Pro",
+   "funcionalidade": "Fontes de Dados SQL",
+   "complexidade": "Alta",
+   "peso": 3,
+   "pacotes": [
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Relatórios",
+   "nivel": "Pro",
+   "funcionalidade": "Exportação Avançada",
+   "complexidade": "Média",
+   "peso": 2,
+   "pacotes": [
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Relatórios",
+   "nivel": "Pro",
+   "funcionalidade": "IA para Relatórios",
+   "complexidade": "Alta",
+   "peso": 3,
+   "pacotes": [
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Relatórios",
+   "nivel": "Pro",
+   "funcionalidade": "Tabelas Dinâmicas / OLAP",
+   "complexidade": "Alta",
+   "peso": 3,
+   "pacotes": [
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Relatórios",
+   "nivel": "Pro",
+   "funcionalidade": "Relatórios Corporativos",
+   "complexidade": "Média",
+   "peso": 2,
+   "pacotes": [
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Relatórios",
+   "nivel": "Pro",
+   "funcionalidade": "Favoritos e Preferências",
+   "complexidade": "Baixa",
+   "peso": 1,
+   "pacotes": [
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Empresas",
+   "nivel": "Standard",
+   "funcionalidade": "Cadastro de Empresas",
+   "complexidade": "Baixa",
+   "peso": 1,
+   "pacotes": [
+    "Administrativo Standard",
+    "Industrial Standard",
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Empresas",
+   "nivel": "Pro",
+   "funcionalidade": "Lucro Presumido",
+   "complexidade": "Alta",
+   "peso": 3,
+   "pacotes": [
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Empresas",
+   "nivel": "Pro",
+   "funcionalidade": "Lucro Real",
+   "complexidade": "Alta",
+   "peso": 3,
+   "pacotes": [
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Implantação",
+   "nivel": "Obrigatório",
+   "funcionalidade": "RA - Reunião de Alinhamento",
+   "complexidade": "Fixo",
+   "peso": null,
+   "pacotes": [
+    "Starter",
+    "Standard",
+    "Administrativo Standard",
+    "Industrial Standard",
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Implantação",
+   "nivel": "Obrigatório",
+   "funcionalidade": "Configuração de integração (CEM) + Validação de dados",
+   "complexidade": "Fixo",
+   "peso": null,
+   "pacotes": [
+    "Starter",
+    "Standard",
+    "Administrativo Standard",
+    "Industrial Standard",
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Implantação",
+   "nivel": "Obrigatório",
+   "funcionalidade": "Dúvidas + simulação de fluxo",
+   "complexidade": "Fixo",
+   "peso": null,
+   "pacotes": [
+    "Starter",
+    "Standard",
+    "Administrativo Standard",
+    "Industrial Standard",
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Implantação",
+   "nivel": "Obrigatório",
+   "funcionalidade": "Go-live",
+   "complexidade": "Fixo",
+   "peso": null,
+   "pacotes": [
+    "Starter",
+    "Standard",
+    "Administrativo Standard",
+    "Industrial Standard",
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  },
+  {
+   "modulo": "Implantação",
+   "nivel": "Obrigatório",
+   "funcionalidade": "Encerramento + feedback",
+   "complexidade": "Fixo",
+   "peso": null,
+   "pacotes": [
+    "Starter",
+    "Standard",
+    "Administrativo Standard",
+    "Industrial Standard",
+    "Full Standard",
+    "Administrativo Pro",
+    "Industrial Pro",
+    "Enterprise"
+   ]
+  }
+ ]
+}

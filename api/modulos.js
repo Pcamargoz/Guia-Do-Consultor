@@ -3,9 +3,10 @@
    POST                             cria módulo (consultor/admin)
    PUT    ?id=ID                    edita conteúdo (consultor/admin) — body { rev, modulo }
    DELETE ?id=ID                    exclui (consultor/admin)
-   POST   ?id=ID&acao=status        marca status (consultor/admin) — body { alvo, status } */
+   POST   ?id=ID&acao=status        marca status (consultor/admin) — body { alvo, status }
+   POST   ?id=ID&acao=minutos       duração de item da checklist por pacote (consultor/admin) — body { itemId, pacote, minutos } */
 import { rota, json, lerJson, exigirUsuario, ErroHttp } from '../lib/http.js';
-import { listarModulos, criarModulo, atualizarModulo, marcarStatus, excluirModulo } from '../lib/modulos.js';
+import { listarModulos, criarModulo, atualizarModulo, marcarStatus, definirMinutos, excluirModulo } from '../lib/modulos.js';
 
 const idDaUrl = (request) => {
   const id = new URL(request.url).searchParams.get('id');
@@ -22,6 +23,9 @@ export const POST = rota(async (request) => {
   const usuario = await exigirUsuario(request, 'editar');
   const url = new URL(request.url);
   const corpo = await lerJson(request);
+  if (url.searchParams.get('acao') === 'minutos') {
+    return json(200, { modulo: await definirMinutos(idDaUrl(request), corpo, usuario) });
+  }
   if (url.searchParams.get('acao') === 'status') {
     return json(200, { modulo: await marcarStatus(idDaUrl(request), corpo, usuario) });
   }

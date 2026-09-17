@@ -17,6 +17,23 @@ Guia do Consultor e Apostila de implantação do Faktory Flow, com login, perfis
 
 O administrador principal vem das variáveis de ambiente. Os demais usuários são criados pelo botão **Usuários**, no cabeçalho do guia.
 
+## Pacotes e horas de implantação
+
+A aba **Pacotes e Horas** mostra, para cada um dos 8 pacotes (Starter → Enterprise):
+- módulos contemplados;
+- distribuição das horas entre etapas, módulos e recursos;
+- tempo total previsto comparado à tabela de preços;
+- funcionalidades incluídas;
+- horas por fluxo (Premium/Rápida) e faixa de usuários.
+
+Estrutura: **Pacote → Módulos → itens da Checklist de Validação (horas por pacote) → total do módulo → total do pacote.**
+
+- As horas iniciais vêm da planilha `docs/Comparativo_Flow_com_Distribuicao_de_Horas_1 (2).xlsx` (aba *Distribuicao por Pacote*), na base Premium · até 5 usuários. Os demais fluxos e faixas são proporcionais à tabela de preços.
+- Consultores e administradores editam a duração de cada item no modal do módulo, e das etapas e recursos no card do pacote. Os totais recalculam na hora e cada alteração fica no histórico.
+- Para regenerar as horas iniciais a partir da planilha:
+  1. atualize `db/dados/planilha-horas.json` e `db/dados/mapa-checklist.json`;
+  2. rode `node scripts/gerar-horas.mjs` (cria uma migration nova se o banco já estiver em produção).
+
 ## Deploy no Vercel
 
 1. **Importe o repositório** no Vercel (*Add New → Project*). As configurações de build já estão no `vercel.json`, então não altere nada.
@@ -64,8 +81,9 @@ Depois, faça commit do PDF atualizado.
 api/            Funções do Vercel: auth (login/logout/eu), modulos, usuarios
 lib/            Regras compartilhadas: sessão, senha (scrypt), banco, permissões
 db/migrations/  SQL versionado (aplicado em ordem, uma única vez)
+db/dados/       Dados da planilha de horas e mapa checklist ↔ funcionalidades
 public/         Site: guia (index.html), apostila, login, CSS/JS, PDF
-scripts/        migrar.mjs, dev-server.mjs, gerar-pdf-apostila.mjs
+scripts/        migrar.mjs, dev-server.mjs, gerar-pdf-apostila.mjs, gerar-horas.mjs
 middleware.js   Exige login antes de servir qualquer página
 ```
 

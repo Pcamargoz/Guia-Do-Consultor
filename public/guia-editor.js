@@ -185,6 +185,7 @@
           <div class="tags">
             ${mod.tags.map((t) => `<span class="tag ${TAG_CLASSES[t] || 'tag-integracao'}">${esc(TAG_LABELS[t] || t)}</span>`).join('')}
             ${resumoItens(mod)}
+            ${horasCard(mod)}
           </div>
         </div>`;
       grid.appendChild(card);
@@ -230,10 +231,117 @@
       </ol></div>`;
   }
 
+  /* ---------- Checklist com horas por pacote ---------- */
+  const relogio = '<circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5"/><path d="M9 2h6"/>';
+
+  function checklistView(mod) {
+    const H = window.ffHoras;
+    const itens = mod.checklist || [];
+    const pacotes = H?.estado.carregado ? H.pacotesDoModulo(mod.id) : [];
+    const pacote = pacotes.length ? H.pacoteParaModulo(mod.id) : null;
+    const titulo = '<div class="secao-titulo">Checklist de Validação</div>';
+
+    const painel = pacote ? `
+      <div class="hr-painel">
+        <div class="hr-total" aria-live="polite">
+          <span class="hr-total-icone">${svg(relogio)}</span>
+          <div>
+            <span class="hr-total-rotulo">Tempo total de implantação</span>
+            <strong class="hr-total-valor">${H.formatar(H.totalModulo(mod, pacote.id), { vazio: '0h' })}</strong>
+            <span class="hr-total-contexto">Pacote ${esc(pacote.nome)} · base Premium, até 5 usuários</span>
+          </div>
+        </div>
+        <div class="hr-pacotes" role="radiogroup" aria-label="Pacote usado nas horas">
+          ${pacotes.map((p) => `<button type="button" class="hr-pacote" role="radio" aria-checked="${p.id === pacote.id}" data-pacote-ref="${esc(p.id)}">
+            <span>${esc(p.nome)}</span><strong>${H.formatar(H.totalModulo(mod, p.id), { vazio: '0h' })}</strong></button>`).join('')}
+        </div>
+      </div>`
+      : `<p class="hr-aviso">${H?.estado.carregado
+        ? 'Este módulo não faz parte de nenhum pacote de implantação, então não há horas previstas.'
+        : 'Carregando horas de implantação…'}</p>`;
+
+    if (!itens.length) return `<div class="secao">${titulo}${painel}<p class="ed-nada">Nenhum item cadastrado.</p></div>`;
+    return `<div class="secao secao--checklist">${titulo}${painel}
+      <ol class="ed-lista ed-lista--checklist">${itens.map((it, n) => {
+        const minutos = pacote ? H.minutosItem(it, pacote.id) : null;
+        const rotulo = pacote ? H.formatar(minutos, { vazio: '0min' }) : '';
+        const duracao = !pacote ? ''
+          : editavel()
+            ? `<button type="button" class="hr-duracao" data-editar-minutos="${esc(it.id)}" title="Editar duração" aria-label="Duração de “${esc(it.texto)}”: ${rotulo}. Editar">${svg(relogio)}<span>${rotulo}</span></button>`
+            : `<span class="hr-duracao hr-duracao--leitura" aria-label="Duração: ${rotulo}">${svg(relogio)}<span>${rotulo}</span></span>`;
+        return `
+        <li class="ed-item ed-item--horas${it.status ? ` ed-item--${it.status}` : ''}${minutos === 0 ? ' hr-item--zero' : ''}">
+          <span class="ed-item-num">${n + 1}</span>
+          <div class="ed-item-texto"><span>${esc(it.texto)}</span>${chipStatus(it)}</div>
+          <div class="hr-duracao-celula">${duracao}</div>
+          ${botoesStatus(it.id, it.status, { compacto: true })}
+        </li>`;
+      }).join('')}
+      </ol></div>`;
+  }
+
+  function editarMinutosInline(botao, mod) {
+    const H = window.ffHoras;
+    const pacote = H.pacoteParaModulo(mod.id);
+    const item = mod.checklist.find((i) => i.id === botao.dataset.editarMinutos);
+    if (!pacote || !item) return;
+    const celula = botao.parentElement;
+    celula.innerHTML = `<form class="hr-form" novalidate>
+      <input class="hr-input" value="${esc(H.formatar(H.minutosItem(item, pacote.id), { vazio: '0min' }))}" inputmode="text" autocomplete="off"
+        aria-label="Nova duração para “${esc(item.texto)}” no pacote ${esc(pacote.nome)}" aria-describedby="hr-ajuda-${esc(item.id)}">
+      <small id="hr-ajuda-${esc(item.id)}" class="hr-ajuda">Ex.: 1h30, 45min, 2</small>
+    </form>`;
+    const form = celula.querySelector('form');
+    const input = form.querySelector('input');
+    input.focus();
+    input.select();
+    let concluido = false;
+    const cancelar = () => { if (!concluido) { concluido = true; reabrirMantendoRolagem(mod); } };
+    const salvarValor = async () => {
+      if (concluido) return;
+      const minutos = H.interpretar(input.value);
+      if (minutos == null || minutos > 60000) {
+        input.setAttribute('aria-invalid', 'true');
+        form.querySelector('.hr-ajuda').textContent = 'Formato inválido. Use 1h30, 45min ou 2.';
+        input.focus();
+        return;
+      }
+      concluido = true;
+      input.disabled = true;
+      try {
+        const { modulo } = await api('POST', `modulos?id=${encodeURIComponent(mod.id)}&acao=minutos`, { itemId: item.id, pacote: pacote.id, minutos });
+        substituir(modulo);
+        reabrirMantendoRolagem(modulo);
+        aplicarFiltros();
+        toast(`Duração salva. Total do módulo no ${pacote.nome}: ${H.formatar(H.totalModulo(modulo, pacote.id), { vazio: '0h' })}.`);
+      } catch (err) {
+        toast(err.message, 'erro');
+        reabrirMantendoRolagem(mod);
+      }
+    };
+    form.addEventListener('submit', (e) => { e.preventDefault(); salvarValor(); });
+    input.addEventListener('keydown', (e) => { if (e.key === 'Escape') { e.preventDefault(); e.stopPropagation(); cancelar(); } });
+    input.addEventListener('blur', () => { setTimeout(() => { if (!concluido && document.activeElement !== input) salvarValor(); }, 120); });
+  }
+
+  function reabrirMantendoRolagem(mod) {
+    const rolagem = overlay.scrollTop;
+    abrirModal(byId(mod.id) || mod);
+    overlay.scrollTop = rolagem;
+  }
+
+  function horasCard(mod) {
+    const H = window.ffHoras;
+    if (!H?.estado.carregado) return '';
+    const pacote = H.pacoteParaModulo(mod.id);
+    if (!pacote) return '';
+    return `<span class="hr-card" title="Tempo total de implantação no pacote ${esc(pacote.nome)}">${svg(relogio)}${H.formatar(H.totalModulo(mod, pacote.id), { vazio: '0h' })}<small>${esc(pacote.nome)}</small></span>`;
+  }
+
   function historicoView(mod) {
     const h = mod.historico || [];
     if (!h.length) return '';
-    const nomes = { rever: 'Rever', aprovado: 'Aprovado', reprovado: 'Reprovado', limpo: 'Status removido', editado: 'Editado', criado: 'Criado', importado: 'Importado' };
+    const nomes = { rever: 'Rever', aprovado: 'Aprovado', reprovado: 'Reprovado', limpo: 'Status removido', editado: 'Editado', criado: 'Criado', importado: 'Importado', horas: 'Horas' };
     return `<details class="ed-historico"><summary>Histórico de alterações <span class="ed-conta">${h.length}</span></summary>
       <ol>${h.map((e) => `<li class="ed-hist ed-hist--${esc(e.acao)}">
         <time datetime="${esc(e.em)}">${esc(dataHora(e.em))}</time>
@@ -278,12 +386,33 @@
       ${listaView(LISTS[0], mod)}
       <div class="secao"><div class="secao-titulo">Condução do Treinamento</div><p>${esc(mod.treinamento)}</p></div>
       ${listaView(LISTS[1], mod)}
-      ${listaView(LISTS[2], mod)}
+      ${checklistView(mod)}
       ${historicoView(mod)}`;
 
     overlay.classList.add('active');
     document.body.style.overflow = 'hidden';
   };
+
+  // Horas: trocar o pacote de referência e editar a duração de um item da checklist.
+  corpo.addEventListener('click', (e) => {
+    if (state.editando !== null) return;
+    const mod = byId(state.abertoId);
+    if (!mod) return;
+    const pacote = e.target.closest('[data-pacote-ref]');
+    if (pacote) { window.ffHoras.definirRef(pacote.dataset.pacoteRef); return; }
+    const duracao = e.target.closest('[data-editar-minutos]');
+    if (duracao && editavel()) editarMinutosInline(duracao, mod);
+  });
+
+  const reRenderizarHoras = () => {
+    aplicarFiltros();
+    if (state.abertoId && state.editando === null && overlay.classList.contains('active') && !corpo.querySelector('.hr-form input:not(:disabled)')) {
+      const atual = byId(state.abertoId);
+      if (atual) reabrirMantendoRolagem(atual);
+    }
+  };
+  document.addEventListener('ff:pacotes', reRenderizarHoras);
+  document.addEventListener('ff:pacote-ref', reRenderizarHoras);
 
   corpo.addEventListener('click', async (e) => {
     const alvo = e.target.closest('[data-status], [data-acao]');
@@ -490,7 +619,11 @@
   function substituir(mod) {
     const i = modulos.findIndex((m) => m.id === mod.id);
     if (i >= 0) modulos[i] = mod;
+    avisarModulos();
   }
+
+  // A aba "Pacotes e Horas" recalcula os totais quando os módulos mudam.
+  const avisarModulos = () => document.dispatchEvent(new CustomEvent('ff:modulos', { detail: { modulos } }));
 
   window.fecharModal = function (event, forcar) {
     if (event && event.target !== event.currentTarget) return;
@@ -507,6 +640,7 @@
   function aplicarLista(lista) {
     modulos.splice(0, modulos.length, ...lista);
     aplicarFiltros();
+    avisarModulos();
     if (state.abertoId && state.editando === null && overlay.classList.contains('active')) {
       const atual = byId(state.abertoId);
       if (atual) { const r = overlay.scrollTop; abrirModal(atual); overlay.scrollTop = r; }
