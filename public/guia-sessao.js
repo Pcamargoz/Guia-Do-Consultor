@@ -32,6 +32,11 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
           <span>Usuários</span>
         </button>` : ''}
+      ${usuario.permissoes.includes('editar') ? `
+        <button type="button" class="ab-btn ab-btn--sec" data-acao="configuracoes" title="Configurações do sistema">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06-2.86 2.86-.06-.06A1.7 1.7 0 0 0 15 19.4a1.7 1.7 0 0 0-1.2 1.6V21H10.2v-.1A1.7 1.7 0 0 0 9 19.4a1.7 1.7 0 0 0-1.88.34l-.06.06-2.86-2.86.06-.06A1.7 1.7 0 0 0 4.6 15 1.7 1.7 0 0 0 3 13.8H3v-3.6h.1A1.7 1.7 0 0 0 4.6 9a1.7 1.7 0 0 0-.34-1.88L4.2 7.06 7.06 4.2l.06.06A1.7 1.7 0 0 0 9 4.6 1.7 1.7 0 0 0 10.2 3H13.8A1.7 1.7 0 0 0 15 4.6a1.7 1.7 0 0 0 1.88-.34l.06-.06 2.86 2.86-.06.06A1.7 1.7 0 0 0 19.4 9a1.7 1.7 0 0 0 1.6 1.2h.1v3.6H21A1.7 1.7 0 0 0 19.4 15Z"/></svg>
+          <span>Configurações</span>
+        </button>` : ''}
       <div class="ab-usuario" title="${esc(usuario.login)}">
         <span class="ab-avatar" aria-hidden="true">${esc(iniciais(usuario.nome))}</span>
         <span class="ab-usuario-textos">
@@ -48,6 +53,7 @@
     conta.addEventListener('click', async (e) => {
       const acao = e.target.closest('[data-acao]')?.dataset.acao;
       if (acao === 'usuarios') document.dispatchEvent(new CustomEvent('ff:abrir-usuarios'));
+      if (acao === 'configuracoes') document.dispatchEvent(new CustomEvent('ff:abrir-configuracoes'));
       if (acao === 'sair') {
         e.target.closest('button').disabled = true;
         await fetch('/api/auth/logout', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}' }).catch(() => {});

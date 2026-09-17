@@ -1,12 +1,13 @@
 /* /api/estudo — Modo Estudo do usuário autenticado (todos os perfis).
    GET    ?documento=apostila                    estado completo (marcações, checklists, progresso)
+   GET    ?documento=apostila&acao=duvidas       dúvidas do usuário para o rascunho de e-mail
    POST   ?documento=apostila&acao=marcacao      cria grifo/anotação/comentário/favorito
    PATCH  ?documento=apostila&id=ID              altera cor ou texto de uma marcação
    DELETE ?documento=apostila&id=ID              exclui uma marcação
    PUT    ?documento=apostila&acao=item          marca/desmarca item da checklist e salva observação
    PUT    ?documento=apostila&acao=progresso     salva modo, última posição e páginas lidas */
 import { rota, json, lerJson, exigirUsuario, ErroHttp } from '../lib/http.js';
-import { carregarEstudo, criarMarcacao, atualizarMarcacao, excluirMarcacao, salvarItem, salvarProgresso, validarDocumento } from '../lib/estudo.js';
+import { carregarEstudo, carregarDuvidas, criarMarcacao, atualizarMarcacao, excluirMarcacao, salvarItem, salvarProgresso, validarDocumento } from '../lib/estudo.js';
 
 const contexto = (request) => {
   const url = new URL(request.url);
@@ -20,7 +21,8 @@ const idDaUrl = (id) => {
 
 export const GET = rota(async (request) => {
   const usuario = await exigirUsuario(request, 'ver');
-  const { documento } = contexto(request);
+  const { documento, acao } = contexto(request);
+  if (acao === 'duvidas') return json(200, { duvidas: await carregarDuvidas(usuario.id, documento), autor: usuario.nome || usuario.login });
   return json(200, await carregarEstudo(usuario.id, documento));
 });
 

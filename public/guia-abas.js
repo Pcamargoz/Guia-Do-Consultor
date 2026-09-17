@@ -16,6 +16,7 @@
     apostila: svg('<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/>'),
     baixar: svg('<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>'),
     externo: svg('<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>'),
+    email: svg('<rect x="2" y="4" width="20" height="16" rx="2"/><path d="m3 6 9 7 9-7"/>'),
   };
   const ABAS = [
     { id: 'guia', rotulo: 'Guia do Consultor' },
@@ -31,6 +32,7 @@
       ${ABAS.map((a) => `<button type="button" class="ab-aba" role="tab" id="aba-${a.id}" aria-controls="painel-${a.id}" data-aba="${a.id}">${icone[a.id]}<span>${a.rotulo}</span></button>`).join('')}
     </div>
     <div class="ab-acoes">
+      <button type="button" class="ab-btn ab-btn--sec" data-enviar-duvidas data-so-apostila aria-label="Enviar dúvidas" hidden>${icone.email}<span>Enviar dúvidas</span></button>
       <a class="ab-btn ab-btn--sec" href="/apostila" target="_blank" rel="noopener" data-so-apostila>${icone.externo}<span>Abrir em nova aba</span></a>
       <a class="ab-btn" href="${PDF}" download="${PDF_NOME}">${icone.baixar}<span>Exportar PDF</span></a>
     </div>`;

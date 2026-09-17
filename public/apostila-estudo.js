@@ -47,6 +47,7 @@
       <form class="estudo-editor" hidden>
         <h3 data-editor-titulo></h3><p data-editor-trecho></p>
         <label data-cor-label>Cor <select name="cor"><option value="amarelo">Amarelo</option><option value="verde">Verde</option><option value="azul">Azul</option><option value="rosa">Rosa</option></select></label>
+        <label data-rotulo-label>Classificar como <select name="rotulo"><option value="comentario">Comentário pessoal</option><option value="duvida">Dúvida para enviar</option></select></label>
         <label data-texto-label>Texto <textarea name="texto" rows="4" maxlength="4000"></textarea></label>
         <div class="estudo-editor-acoes"><button type="button" data-cancelar>Cancelar</button><button type="submit">Salvar</button></div>
       </form>
@@ -156,7 +157,7 @@
       const titulo = document.createElement('h3'); titulo.textContent = secao; lista.append(titulo);
       for (const marcacao of marcacoes) {
         const linha = document.createElement('div'); linha.className = 'estudo-registro';
-        linha.innerHTML = `<span class="estudo-tipo estudo-tipo--${esc(marcacao.cor)}">${nomes[marcacao.tipo] || 'Marcação'}</span>
+        linha.innerHTML = `<span class="estudo-tipo estudo-tipo--${esc(marcacao.cor)}">${marcacao.tipo === 'comentario' && marcacao.rotulo === 'duvida' ? 'Dúvida' : nomes[marcacao.tipo] || 'Marcação'}</span>
           <button type="button" data-ir="${esc(marcacao.id)}"></button><p></p>
           <div><button type="button" data-editar="${esc(marcacao.id)}">Editar</button><button type="button" data-excluir="${esc(marcacao.id)}">Excluir</button></div>`;
         linha.querySelector('[data-ir]').textContent = resumo(marcacao.trecho) || `Página ${marcacao.pagina}`;
@@ -220,8 +221,10 @@
     editor.querySelector('[data-editor-titulo]').textContent = chave ? 'Observação do item' : `${registro ? 'Editar' : 'Nova'} ${nomes[tipo]?.toLowerCase() || 'anotação'}`;
     editor.querySelector('[data-editor-trecho]').textContent = trecho || '';
     editor.querySelector('[data-cor-label]').hidden = chave || !['grifo'].includes(tipo);
+    editor.querySelector('[data-rotulo-label]').hidden = chave || tipo !== 'comentario';
     editor.querySelector('[data-texto-label]').hidden = !chave && !['nota', 'comentario'].includes(tipo);
     editor.elements.cor.value = registro?.cor || 'amarelo';
+    editor.elements.rotulo.value = registro?.rotulo || 'comentario';
     editor.elements.texto.value = chave ? estado.itens.find((item) => item.chave === chave)?.observacao || '' : registro?.texto || '';
     if (!editor.querySelector('[data-texto-label]').hidden) editor.elements.texto.focus(); else editor.elements.cor.focus();
   }
@@ -275,10 +278,10 @@
         const { item } = await api('PUT', '&acao=item', { chave, concluido: !!antigo?.concluido, observacao: editor.elements.texto.value, texto: li.dataset.estudoTexto, pagina: paginas.indexOf(li.closest('.page')) + 1, secao: secaoPagina[paginas.indexOf(li.closest('.page'))] });
         estado.itens = [...estado.itens.filter((x) => x.chave !== chave), item];
       } else if (registro) {
-        const { marcacao } = await api('PATCH', `&id=${encodeURIComponent(registro.id)}`, { cor: editor.elements.cor.value, texto: editor.elements.texto.value });
+        const { marcacao } = await api('PATCH', `&id=${encodeURIComponent(registro.id)}`, { cor: editor.elements.cor.value, texto: editor.elements.texto.value, ...(tipo === 'comentario' ? { rotulo: editor.elements.rotulo.value } : {}) });
         estado.marcacoes = estado.marcacoes.map((x) => x.id === marcacao.id ? marcacao : x);
       } else {
-        const { marcacao } = await api('POST', '&acao=marcacao', { tipo, ...estado.editor.selecao, cor: editor.elements.cor.value, texto: editor.elements.texto.value });
+        const { marcacao } = await api('POST', '&acao=marcacao', { tipo, ...estado.editor.selecao, cor: editor.elements.cor.value, texto: editor.elements.texto.value, ...(tipo === 'comentario' ? { rotulo: editor.elements.rotulo.value } : {}) });
         estado.marcacoes.push(marcacao);
       }
       editor.hidden = true; estado.editor = null; desenharMarcacoes(); renderLista(); informar('Salvo automaticamente.');
