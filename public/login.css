@@ -1,0 +1,77 @@
+/* Faktory Flow — Tela de login (usa os tokens de brand-system.css). */
+
+.ff-login *, .ff-login *::before, .ff-login *::after { box-sizing: border-box; }
+.ff-login { min-height: 100dvh; margin: 0; }
+.lg-palco { min-height: 100dvh; display: grid; place-items: center; padding: 24px 16px; }
+
+.lg-cartao {
+  position: relative; width: min(100%, 420px); padding: 40px 36px 32px; text-align: center;
+  background: rgb(255 255 255 / .9); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgb(255 255 255 / .95); border-radius: var(--radius-xl); box-shadow: var(--shadow-xl);
+}
+.lg-cartao::before {
+  content: ''; position: absolute; left: 32px; right: 32px; top: 0; height: 5px; border-radius: 0 0 6px 6px;
+  background: linear-gradient(90deg, var(--brand-accent), var(--brand-secondary), var(--brand-primary));
+}
+.lg-logo { margin: 0 auto 20px; }
+.lg-logo img { width: 160px; }
+.lg-cartao h1 { margin: 0; font-size: clamp(1.6rem, 5vw, 2rem); font-weight: 800; letter-spacing: -.02em; color: var(--brand-primary-900); }
+.lg-sub { margin: 8px 0 28px; color: var(--color-muted); font-size: 14.5px; line-height: 1.55; }
+
+.lg-form { display: grid; gap: 16px; text-align: left; }
+.lg-campo { display: grid; gap: 6px; }
+.lg-campo > span:first-child { font-size: 13.5px; font-weight: 700; color: var(--brand-primary-900); }
+.lg-campo input {
+  width: 100%; min-height: 50px; padding: 12px 14px; border: 2px solid var(--color-line-strong); border-radius: var(--radius-md);
+  background: #fff; color: var(--color-ink); font-size: 16px;
+  transition: border-color var(--dur-fast), box-shadow var(--dur-fast);
+}
+.lg-campo input:focus { outline: none; border-color: var(--brand-primary); box-shadow: var(--glow-accent); }
+.lg-campo input[aria-invalid="true"] { border-color: var(--color-danger); }
+.lg-senha { position: relative; display: block; }
+.lg-senha input { padding-right: 52px; }
+.lg-ver {
+  position: absolute; right: 4px; top: 50%; transform: translateY(-50%);
+  display: grid; place-items: center; width: 44px; height: 44px; border: 0; border-radius: var(--radius-sm);
+  background: transparent; color: var(--color-muted); cursor: pointer;
+}
+.lg-ver svg { width: 20px; height: 20px; }
+.lg-ver:hover, .lg-ver[aria-pressed="true"] { color: var(--brand-primary-800); background: var(--brand-primary-50); }
+
+.lg-alerta {
+  padding: 12px 14px; border-radius: var(--radius-md); border-left: 4px solid var(--color-danger);
+  background: var(--color-danger-soft); color: var(--color-danger); font-size: 14px; font-weight: 600;
+}
+.lg-alerta--ok { border-left-color: var(--color-success); background: var(--color-success-soft); color: var(--color-success); }
+
+.lg-entrar {
+  position: relative; overflow: hidden; display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 52px; margin-top: 6px; border: 0; border-radius: var(--radius-md); cursor: pointer;
+  background: linear-gradient(110deg, var(--brand-primary-900), var(--brand-primary), var(--brand-primary-800));
+  background-size: 200% 100%; color: #fff; font-size: 16px; font-weight: 700;
+  box-shadow: inset 0 -3px 0 var(--brand-accent), var(--shadow-md);
+  transition: background-position .6s var(--ease-out), transform var(--dur-base) var(--ease-spring);
+}
+.lg-entrar:hover { background-position: 100% 0; }
+.lg-seta { width: 18px; height: 18px; transition: transform var(--dur-base) var(--ease-spring); }
+.lg-entrar:hover .lg-seta { transform: translateX(4px); }
+.lg-entrar:disabled { cursor: progress; opacity: .8; }
+.lg-entrar.carregando .lg-seta { animation: lg-gira .8s linear infinite; }
+@keyframes lg-gira { to { transform: rotate(360deg); } }
+
+.lg-rodape { margin: 24px 0 0; font-size: 13px; color: var(--color-muted); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .lg-cartao { animation: lg-entra .9s var(--ease-spring) both; }
+  .lg-form > * { animation: lg-item .6s var(--ease-out) both; }
+  .lg-form > :nth-child(2) { animation-delay: .25s; }
+  .lg-form > :nth-child(3) { animation-delay: .33s; }
+  .lg-form > :nth-child(4) { animation-delay: .41s; }
+  .lg-entrar:active { transform: scale(.97); }
+  .lg-cartao.lg-erro { animation: lg-tremor .45s var(--ease-out); }
+}
+@keyframes lg-entra { from { opacity: 0; transform: translateY(40px) scale(.94); filter: blur(8px); } }
+@keyframes lg-item { from { opacity: 0; transform: translateY(12px); } }
+@keyframes lg-tremor { 20%, 60% { transform: translateX(-8px); } 40%, 80% { transform: translateX(8px); } }
+
+@media (max-width: 480px) { .lg-cartao { padding: 32px 22px 26px; } }

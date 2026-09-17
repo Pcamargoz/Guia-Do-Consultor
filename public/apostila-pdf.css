@@ -1,0 +1,114 @@
+/* Faktory Flow — Folha de impressão da Apostila (carregada apenas no modo ?pdf=1).
+   Paginação A4 real: margens de impressão, cabeçalho corrido com a Parte atual,
+   rodapé com "Página X de Y", capa e página final sem cabeçalho, e controle de quebras. */
+
+@page {
+  size: A4;
+  margin: 24mm 18mm 20mm 20mm;
+
+  @top-left {
+    content: "Apostila do Consultor — Faktory Flow";
+    font: 600 7.5pt 'Inter', 'Segoe UI', sans-serif; letter-spacing: .08em; text-transform: uppercase;
+    color: #4B6073; vertical-align: bottom; padding-bottom: 3mm; border-bottom: .6pt solid #B9D4E7;
+  }
+  @top-right {
+    content: string(parte);
+    font: 700 7.5pt 'Plus Jakarta Sans', 'Segoe UI', sans-serif; letter-spacing: .08em; text-transform: uppercase;
+    color: #6B7300; vertical-align: bottom; padding-bottom: 3mm; border-bottom: .6pt solid #B9D4E7;
+  }
+  @bottom-left {
+    content: "Faktory Flow · Material de uso interno";
+    font: 500 7.5pt 'Inter', 'Segoe UI', sans-serif; color: #4B6073; vertical-align: top; padding-top: 3mm;
+  }
+  @bottom-right {
+    content: "Página " counter(page) " de " counter(pages);
+    font: 600 8pt 'Inter', 'Segoe UI', sans-serif; color: #143650; vertical-align: top; padding-top: 3mm;
+  }
+}
+
+@page capa {
+  margin: 0;
+  @top-left { content: none; border: 0; } @top-right { content: none; border: 0; }
+  @bottom-left { content: none; } @bottom-right { content: none; }
+}
+@page final {
+  @top-left { content: none; border: 0; } @top-right { content: none; border: 0; }
+}
+@page :blank {
+  @top-left { content: none; border: 0; } @top-right { content: none; border: 0; }
+  @bottom-left { content: none; } @bottom-right { content: none; }
+}
+
+/* ---------- Base ---------- */
+html.ff-pdf, html.ff-pdf body {
+  background: #fff !important;
+  -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+html.ff-pdf body { font-size: 10.5pt; line-height: 1.55; orphans: 3; widows: 3; }
+html.ff-pdf .toolbar, html.ff-pdf .ff-stage, html.ff-pdf .ff-progress { display: none !important; }
+html.ff-pdf *, html.ff-pdf *::before, html.ff-pdf *::after { animation: none !important; transition: none !important; }
+
+/* Cada bloco .page vira um capítulo que começa em folha nova e flui pelas páginas seguintes. */
+html.ff-pdf .ff-handbook .page {
+  width: auto !important; min-height: 0 !important; margin: 0 !important; padding: 0 !important;
+  background: none !important; box-shadow: none !important; border-radius: 0 !important;
+  page-break-after: auto !important;
+}
+/* Só abre folha nova quem inicia uma Parte (ou capa, sumário e página final); continuações fluem. */
+.page.ff-capitulo { break-before: page; }
+.page:not(.ff-capitulo) { break-before: auto; }
+html.ff-pdf .ff-handbook .page::before, html.ff-pdf .ff-handbook .page::after { content: none !important; }
+html.ff-pdf .titulo-pagina .numero-secao { string-set: parte content(text); }
+
+/* ---------- Capa (folha inteira, sem margens) ---------- */
+html.ff-pdf .ff-handbook .page.capa {
+  box-sizing: border-box; height: 296.5mm !important; overflow: hidden;
+  padding: 48mm 26mm 30mm !important;
+  display: flex !important; flex-direction: column; justify-content: center; align-items: center;
+  background:
+    radial-gradient(60% 45% at 92% 8%, rgb(213 221 38 / .32), transparent 70%),
+    radial-gradient(55% 45% at 5% 95%, rgb(52 120 167 / .20), transparent 70%),
+    linear-gradient(160deg, #fff 0%, #F3F8FC 55%, #EAF3F9 100%) !important;
+}
+html.ff-pdf .ff-handbook .capa::before { content: none !important; }
+html.ff-pdf .ff-handbook .capa::after { content: '' !important; left: -30mm; bottom: -36mm; width: 110mm; height: 110mm; background: rgb(213 221 38 / .16); }
+html.ff-pdf .ff-handbook .capa .ff-logo-wrap { margin-bottom: 30mm; }
+html.ff-pdf .ff-handbook .capa-logo { width: 62mm; }
+html.ff-pdf .ff-handbook .capa-titulo { font-size: 34pt; color: #143650; background: none; -webkit-text-fill-color: #143650; }
+html.ff-pdf .ff-handbook .capa-subtitulo { font-size: 13pt; margin-bottom: 28mm; }
+
+/* ---------- Página final ---------- */
+html.ff-pdf .ff-handbook .page.pagina-final { padding-top: 60mm !important; }
+
+/* Páginas nomeadas e quebras usam seletores simples: o Paged.js aplica essas regras sem o ancestral <html>. */
+.capa { page: capa; }
+.pagina-final { page: final; }
+
+/* ---------- Títulos e controle de quebras ---------- */
+html.ff-pdf .titulo-pagina { margin-bottom: 9mm; }
+html.ff-pdf .ficha-tecnica { gap: 4mm; }
+html.ff-pdf .ficha-bloco { padding: 2.5mm 5mm; }
+html.ff-pdf .ficha-bloco h4 { margin-bottom: 1mm; }
+html.ff-pdf .ficha-bloco p, html.ff-pdf .ficha-bloco li { font-size: 10pt; line-height: 1.45; }
+html.ff-pdf .titulo-pagina h1 { font-size: 22pt; }
+h1, h2, h3, h4, .titulo-pagina, .modulo-cabecalho, .rotulo, .callout-titulo {
+  break-after: avoid; page-break-after: avoid;
+}
+html.ff-pdf h2.subtitulo-secao { margin-top: 9mm; }
+.callout, .fluxo-impresso, .ficha-bloco, .modulo-meta-bloco, .anotacoes, .sumario-item, .tabela tr,
+.grid-duas-colunas > div, .checklist-impresso li, .boas-praticas-impresso li, .modulo-cabecalho, .pagina-final > * {
+  break-inside: avoid; page-break-inside: avoid;
+}
+/* Blocos de módulo podem ocupar mais de uma folha: quebram entre as subseções, nunca dentro delas. */
+.modulo-bloco { break-inside: auto !important; page-break-inside: auto !important; box-shadow: none; border-left: 4px solid #D5DD26; }
+.tabela { break-inside: auto !important; page-break-inside: auto !important; display: table !important; }
+html.ff-pdf .tabela thead { display: table-header-group; }
+html.ff-pdf .fluxo-mapa-impresso { overflow: visible !important; }
+
+/* ---------- Sumário com páginas reais ---------- */
+html.ff-pdf .sumario-item[href] .pagina { display: none; }
+html.ff-pdf .sumario-item[href]::after {
+  content: target-counter(attr(href url), page);
+  font-weight: 600; font-size: 10.5pt; color: #4B6073; font-variant-numeric: tabular-nums;
+}
+html.ff-pdf .sumario-item.principal[href]::after { color: #143650; font-weight: 700; }

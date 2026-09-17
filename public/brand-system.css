@@ -1,0 +1,766 @@
+/* ==========================================================================
+   Faktory Flow — Brand System
+   Tokens extraídos da logo (assets/Logo Faktory Flow.png):
+   azul #3478A7 · lima #D5DD26. Compartilhado pelo Guia (ff-guide) e pela
+   Apostila (ff-handbook). Carregado depois do <style> inline de cada página.
+   ========================================================================== */
+
+/* ---------- 1. TOKENS ---------- */
+:root {
+  /* Primária — azul da logo */
+  --brand-primary-50:  #F3F8FC;
+  --brand-primary-100: #EAF3F9;
+  --brand-primary-200: #D3E5F1;
+  --brand-primary-300: #B9D4E7;
+  --brand-primary:     #3478A7; /* 4.8:1 sobre branco */
+  --brand-primary-600: #2C6A95;
+  --brand-primary-700: #255C83;
+  --brand-primary-800: #1C4867;
+  --brand-primary-900: #143650;
+  --brand-primary-950: #0C2438;
+
+  /* Secundária — azul céu dos degradês da logo (decorativa) */
+  --brand-secondary:      #6FA8CF;
+  --brand-secondary-deep: #4A87B3;
+  --brand-secondary-soft: #E6F1F8;
+  --brand-secondary-line: #C7DEEE;
+
+  /* Destaque — lima da logo (nunca como texto sobre branco) */
+  --brand-accent:      #D5DD26;
+  --brand-accent-glow: #E6EC6A;
+  --brand-accent-text: #6B7300; /* 5.2:1 sobre branco */
+  --brand-accent-ink:  #1E2A05; /* texto sobre lima */
+  --brand-accent-soft: #F6F8D4;
+  --brand-accent-line: #E4EA8A;
+
+  /* Neutros */
+  --color-canvas:      #F2F6FA;
+  --color-surface:     #FFFFFF;
+  --color-surface-alt: #F7FAFC;
+  --color-ink:         #13293D;
+  --color-muted:       #4B6073; /* 6.5:1 sobre branco */
+  --color-line:        #D8E3EC;
+  --color-line-strong: #B3C6D6;
+
+  /* Semânticas (ajustadas para AA) */
+  --color-success:      #2E7D32;
+  --color-success-soft: #EAF6EB;
+  --color-warning:      #8A4B00;
+  --color-warning-line: #E07B00;
+  --color-warning-soft: #FFF4E5;
+  --color-danger:       #B42318;
+  --color-danger-soft:  #FDECEA;
+
+  /* Tipografia */
+  --font-display: 'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif;
+  --font-body: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+
+  /* Espaçamento (escala de 4) */
+  --space-1: 4px;  --space-2: 8px;  --space-3: 12px; --space-4: 16px;
+  --space-6: 24px; --space-8: 32px; --space-12: 48px; --space-16: 64px;
+
+  /* Raios */
+  --radius-sm: 8px; --radius-md: 12px; --radius-lg: 16px; --radius-xl: 24px; --radius-pill: 999px;
+
+  /* Sombras (tingidas com o azul profundo) */
+  --shadow-sm: 0 2px 6px rgb(12 36 56 / .06), 0 8px 20px rgb(12 36 56 / .06);
+  --shadow-md: 0 10px 30px rgb(12 36 56 / .12);
+  --shadow-lg: 0 24px 60px rgb(12 36 56 / .20);
+  --shadow-xl: 0 40px 90px rgb(12 36 56 / .28);
+  --glow-accent: 0 0 0 4px rgb(213 221 38 / .45);
+  --glow-primary: 0 0 0 4px rgb(52 120 167 / .22);
+
+  /* Movimento */
+  --ease-out: cubic-bezier(.16, 1, .3, 1);
+  --ease-spring: cubic-bezier(.34, 1.56, .64, 1);
+  --dur-fast: 160ms; --dur-base: 260ms; --dur-slow: 520ms; --dur-stage: 900ms;
+
+  /* Compatibilidade com as variáveis originais das páginas */
+  --ff-azul-escuro: var(--brand-primary-800);
+  --ff-azul-medio: var(--brand-primary);
+  --ff-azul-claro: var(--brand-primary-100);
+  --ff-azul-borda: var(--brand-primary-300);
+  --ff-lima: var(--brand-accent);
+  --ff-lima-escuro: var(--brand-accent-text);
+  --ff-lima-claro: var(--brand-accent-soft);
+  --cinza-escuro: var(--color-ink);
+  --cinza-medio: var(--color-muted);
+  --cinza-claro: #E9EFF4;
+  --laranja: var(--color-warning-line);
+  --laranja-claro: var(--color-warning-soft);
+  --vermelho: var(--color-danger);
+  --vermelho-claro: var(--color-danger-soft);
+  --verde: var(--color-success);
+  --verde-claro: var(--color-success-soft);
+  --sombra: var(--shadow-sm);
+  --sombra-hover: var(--shadow-lg);
+  --radius: var(--radius-md);
+}
+
+@property --ff-angle { syntax: '<angle>'; inherits: false; initial-value: 0deg; }
+
+/* ---------- 2. BASE ---------- */
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body.ff-guide, body.ff-handbook {
+  font-family: var(--font-body);
+  color: var(--color-ink);
+  background: var(--color-canvas);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+body.ff-guide { font-size: 15.5px; line-height: 1.65; }
+:where(.ff-guide, .ff-handbook) :where(h1, h2, h3, h4, h5) { font-family: var(--font-display); }
+::selection { background: var(--brand-accent); color: var(--brand-accent-ink); }
+button, input { font: inherit; }
+:where(a, button, input, textarea, select, [role="button"], [tabindex]):focus-visible {
+  outline: 3px solid var(--brand-primary);
+  outline-offset: 3px;
+  box-shadow: var(--glow-accent);
+}
+
+/* ---------- 3. FUNDO VIVO ---------- */
+.ff-stage { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+.ff-blob {
+  position: absolute; width: 62vmax; height: 62vmax; border-radius: 50%;
+  opacity: .55; will-change: transform;
+}
+.ff-blob--a { top: -26vmax; right: -18vmax; background: radial-gradient(circle, rgb(213 221 38 / .38), transparent 62%); }
+.ff-blob--b { bottom: -30vmax; left: -22vmax; background: radial-gradient(circle, rgb(52 120 167 / .30), transparent 62%); }
+.ff-blob--c { top: 30vh; left: 38vw; width: 42vmax; height: 42vmax; background: radial-gradient(circle, rgb(111 168 207 / .26), transparent 64%); }
+.ff-sq {
+  position: absolute; bottom: -80px; left: var(--x);
+  width: var(--s); height: var(--s); border-radius: 22%;
+  opacity: var(--o, .22); will-change: transform;
+}
+.ff-sq--lime { background: var(--brand-accent); }
+.ff-sq--blue { background: var(--brand-primary); }
+.ff-sq--sky  { background: transparent; border: 2px solid var(--brand-secondary); }
+.ff-progress {
+  position: fixed; top: 0; left: 0; right: 0; height: 4px; z-index: 2000;
+  background: linear-gradient(90deg, var(--brand-accent), var(--brand-secondary), var(--brand-primary));
+  transform: scaleX(0); transform-origin: 0 50%; pointer-events: none;
+}
+
+/* ---------- 4. LOGO ---------- */
+.ff-logo-wrap { position: relative; display: inline-block; overflow: hidden; border-radius: var(--radius-md); line-height: 0; }
+.ff-logo-wrap img { display: block; height: auto; mix-blend-mode: multiply; }
+.ff-logo-wrap::after {
+  content: ''; position: absolute; inset: -20% auto -20% -60%; width: 45%;
+  background: linear-gradient(100deg, transparent, rgb(255 255 255 / .85), rgb(213 221 38 / .35), transparent);
+  transform: translateX(-120%) skewX(-18deg); opacity: 0; pointer-events: none;
+}
+
+/* ==========================================================================
+   5. GUIA INTERATIVO (.ff-guide)
+   ========================================================================== */
+.ff-guide .app { grid-template-columns: minmax(250px, 290px) minmax(0, 1fr); }
+
+/* Sidebar */
+.ff-guide .sidebar {
+  background:
+    radial-gradient(120% 60% at 0% 0%, rgb(213 221 38 / .16), transparent 55%),
+    linear-gradient(165deg, var(--brand-primary-950), var(--brand-primary-900) 50%, var(--brand-primary-800));
+  box-shadow: 12px 0 40px rgb(12 36 56 / .18);
+  border-right: 1px solid rgb(255 255 255 / .08);
+}
+.ff-guide .logo-container { padding: 4px 20px 24px; border-bottom-color: rgb(255 255 255 / .1); }
+.ff-guide .logo-container .ff-logo-wrap {
+  background: #fff; padding: 10px 16px; border-radius: var(--radius-lg);
+  box-shadow: 0 10px 30px rgb(0 0 0 / .25), inset 0 -3px 0 var(--brand-accent);
+}
+.ff-guide .logo-svg { width: 176px; max-width: 100%; }
+.ff-guide .nav-section { opacity: 1; color: #9FC0D8; font-size: 11.5px; letter-spacing: .14em; font-family: var(--font-display); }
+.ff-guide .nav-item {
+  position: relative; overflow: hidden; isolation: isolate;
+  min-height: 44px; margin: 2px 12px; padding: 10px 14px;
+  border-left: 0; border-radius: var(--radius-sm);
+  color: #E6F0F8; font-weight: 500;
+  transition: background-color var(--dur-base), color var(--dur-base), transform var(--dur-base) var(--ease-spring);
+}
+.ff-guide .nav-item::before {
+  content: ''; position: absolute; left: 0; top: 18%; bottom: 18%; width: 4px; border-radius: 4px;
+  background: var(--brand-accent); transform: scaleY(0); transition: transform var(--dur-base) var(--ease-spring);
+}
+.ff-guide .nav-item:hover, .ff-guide .nav-item:focus-visible { background: rgb(255 255 255 / .10); color: #fff; border-left-color: transparent; }
+.ff-guide .nav-item:hover::before, .ff-guide .nav-item.active::before { transform: scaleY(1); }
+.ff-guide .nav-item.active {
+  background: linear-gradient(90deg, rgb(213 221 38 / .24), rgb(213 221 38 / .06));
+  color: #fff; font-weight: 600; border-left-color: transparent;
+}
+.ff-guide .nav-item svg { transition: transform var(--dur-base) var(--ease-spring), color var(--dur-base); }
+.ff-guide .nav-item.active svg, .ff-guide .nav-item:hover svg { color: var(--brand-accent); }
+
+/* Main */
+.ff-guide .main { max-width: 1320px; padding: clamp(28px, 4vw, 64px); }
+.ff-guide .header { position: relative; margin-bottom: var(--space-8); }
+.ff-guide .header h2 {
+  font-size: clamp(1.9rem, 3.2vw, 2.9rem); font-weight: 800; line-height: 1.1;
+  letter-spacing: -.03em; color: var(--brand-primary-900);
+}
+.ff-guide .header h2::after {
+  width: 96px; height: 6px; margin-top: 16px; border-radius: var(--radius-pill);
+  background: linear-gradient(90deg, var(--brand-accent), var(--brand-secondary), var(--brand-accent));
+  background-size: 200% 100%; transform-origin: 0 50%;
+}
+.ff-guide .header p { max-width: 68ch; font-size: 16px; line-height: 1.7; color: var(--color-muted); }
+
+/* Hero do dashboard */
+.ff-guide #dashboard .header { padding-right: clamp(0px, 16vw, 200px); }
+.ff-guide #dashboard .header h2 {
+  font-size: clamp(2.2rem, 4.6vw, 3.9rem);
+  background: linear-gradient(120deg, var(--brand-primary-950) 10%, var(--brand-primary-700) 55%, var(--brand-primary-900) 90%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.ff-guide #dashboard .header::before {
+  content: ''; position: absolute; right: 0; top: 0; width: 150px; height: 130px;
+  background:
+    linear-gradient(var(--brand-accent), var(--brand-accent)) 0 0 / 62px 62px no-repeat,
+    linear-gradient(var(--brand-secondary), var(--brand-secondary)) 34px 34px / 62px 62px no-repeat,
+    linear-gradient(var(--brand-primary), var(--brand-primary)) 68px 68px / 62px 62px no-repeat;
+  border-radius: 14px; opacity: .9; pointer-events: none;
+  filter: drop-shadow(0 18px 24px rgb(12 36 56 / .18));
+}
+
+/* Busca */
+.ff-guide .search-bar { max-width: 640px; }
+.ff-guide .search-bar input {
+  min-height: 56px; border: 2px solid var(--color-line-strong); border-radius: var(--radius-lg);
+  background: rgb(255 255 255 / .92); color: var(--color-ink); box-shadow: var(--shadow-sm);
+  transition: border-color var(--dur-base), box-shadow var(--dur-base), transform var(--dur-base) var(--ease-spring);
+}
+.ff-guide .search-bar input::placeholder { color: #5B7083; }
+.ff-guide .search-bar input:focus { border-color: var(--brand-primary); box-shadow: var(--glow-accent), var(--shadow-lg); outline: none; }
+.ff-guide .search-bar svg { color: var(--brand-primary); opacity: 1; transition: transform var(--dur-base) var(--ease-spring); }
+.ff-guide .search-bar:focus-within svg { transform: translateY(-50%) scale(1.25) rotate(-12deg); }
+
+/* Botões de filtro */
+.ff-guide .filtros { gap: 10px; }
+.ff-guide .filtro-btn,
+.ff-handbook .toolbar-btn {
+  position: relative; overflow: hidden; isolation: isolate;
+  min-height: 44px; padding: 10px 18px; border-radius: var(--radius-pill);
+  font-weight: 600; cursor: pointer;
+  translate: var(--mx, 0) var(--my, 0);
+  transition: translate var(--dur-base) var(--ease-spring), transform var(--dur-base) var(--ease-spring),
+    box-shadow var(--dur-base), color var(--dur-base), border-color var(--dur-base), background-color var(--dur-base);
+}
+.ff-guide .filtro-btn { border: 2px solid var(--color-line-strong); background: var(--color-surface); color: var(--brand-primary-800); }
+.ff-guide .filtro-btn::before,
+.ff-handbook .toolbar-btn::before {
+  content: ''; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(110deg, var(--brand-primary-900), var(--brand-primary), var(--brand-primary-700), var(--brand-primary-900));
+  background-size: 300% 100%; opacity: 0; transition: opacity var(--dur-base);
+}
+.ff-guide .filtro-btn:hover { border-color: var(--brand-primary); color: #fff; box-shadow: 0 12px 28px rgb(52 120 167 / .35); }
+.ff-guide .filtro-btn:hover::before, .ff-guide .filtro-btn.active::before, .ff-handbook .toolbar-btn::before { opacity: 1; }
+.ff-guide .filtro-btn.active { background: var(--brand-primary-900); border-color: var(--brand-primary-900); color: #fff; box-shadow: inset 0 -3px 0 var(--brand-accent), var(--shadow-md); }
+/* Ripple (posicionado via JS em --rx/--ry) */
+.ff-guide .filtro-btn::after, .ff-handbook .toolbar-btn::after,
+.ff-guide .nav-item::after, .ff-guide .accordion-header::after {
+  content: ''; position: absolute; left: var(--rx, 50%); top: var(--ry, 50%);
+  width: 16px; height: 16px; margin: -8px 0 0 -8px; border-radius: 50%;
+  background: rgb(213 221 38 / .55); opacity: 0; transform: scale(0); pointer-events: none; z-index: -1;
+}
+.ff-rippling::after { animation: ff-ripple .6s var(--ease-out); }
+@keyframes ff-ripple { from { opacity: 1; transform: scale(0); } to { opacity: 0; transform: scale(28); } }
+
+/* Métricas */
+.ff-guide .dashboard { gap: var(--space-4); }
+.ff-guide .metrica {
+  position: relative; overflow: hidden; isolation: isolate;
+  padding: 22px 22px 20px; border: 1px solid var(--color-line); border-top: 0; border-radius: var(--radius-lg);
+  background: var(--color-surface); box-shadow: var(--shadow-sm);
+  transform: perspective(800px) rotateX(var(--ty, 0deg)) rotateY(var(--tx, 0deg)) translateY(var(--lift, 0px));
+  transition: transform var(--dur-slow) var(--ease-out), box-shadow var(--dur-base);
+}
+.ff-guide .metrica::before {
+  content: ''; position: absolute; left: 0; right: 0; top: 0; height: 5px;
+  background: linear-gradient(90deg, var(--brand-primary), var(--brand-secondary), var(--brand-accent));
+}
+.ff-guide .metrica .numero { font-family: var(--font-display); font-weight: 800; font-size: clamp(2rem, 3vw, 2.6rem); color: var(--brand-primary-900); font-variant-numeric: tabular-nums; letter-spacing: -.02em; }
+.ff-guide .metrica .rotulo { color: var(--color-muted); font-size: 13.5px; }
+
+/* Cards de módulo */
+.ff-guide .modulos-grid { grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: var(--space-6); }
+.ff-guide .modulo-card {
+  position: relative; isolation: isolate;
+  border: 1px solid var(--color-line); border-radius: var(--radius-lg);
+  background: var(--color-surface); box-shadow: var(--shadow-sm);
+  transform-style: preserve-3d;
+  transform: perspective(900px) rotateX(var(--ty, 0deg)) rotateY(var(--tx, 0deg)) translateY(var(--lift, 0px)) scale(var(--grow, 1));
+  transition: transform var(--dur-slow) var(--ease-out), box-shadow var(--dur-base), border-color var(--dur-base);
+}
+/* Borda em gradiente giratório */
+.ff-guide .modulo-card::before {
+  content: ''; position: absolute; inset: 0; z-index: 2; padding: 2px; border-radius: inherit; pointer-events: none;
+  background: conic-gradient(from var(--ff-angle), var(--brand-accent), var(--brand-primary), var(--brand-secondary), var(--brand-accent));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  opacity: 0; transition: opacity var(--dur-base);
+}
+/* Reflexo que segue o cursor */
+.ff-guide .modulo-card::after {
+  content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none; border-radius: inherit;
+  background: radial-gradient(circle at var(--gx, 50%) var(--gy, 0%), rgb(255 255 255 / .55), rgb(213 221 38 / .12) 30%, transparent 60%);
+  opacity: 0; transition: opacity var(--dur-base);
+}
+.ff-guide .modulo-card:hover, .ff-guide .modulo-card:focus-visible { box-shadow: var(--shadow-xl); border-color: transparent; }
+.ff-guide .modulo-card:hover::before, .ff-guide .modulo-card:focus-visible::before,
+.ff-guide .modulo-card:hover::after { opacity: 1; }
+.ff-guide .modulo-card-header { border-bottom-color: var(--color-line); }
+.ff-guide .modulo-card-header h3 { font-size: 18px; color: var(--brand-primary-900); }
+.ff-guide .modulo-card-header .subtitulo, .ff-guide .modal-header .subtitulo { color: var(--color-muted); }
+.ff-guide .modulo-icon { transition: transform var(--dur-slow) var(--ease-spring); }
+.ff-guide .modulo-card-body .objetivo { color: var(--color-muted); }
+
+/* Tags e alertas com contraste AA */
+.ff-guide .tag { border-radius: var(--radius-pill); padding: 4px 12px; }
+.ff-guide .tag-requisito { background: #FFF1CC; color: #6E4A00; }
+.ff-guide .tag-validacao { background: var(--color-success-soft); color: #1F5F24; }
+.ff-guide .tag-integracao { background: var(--brand-primary-100); color: var(--brand-primary-800); }
+.ff-guide .alerta { border-radius: var(--radius-md); }
+.ff-guide .alerta-atencao { background: var(--color-warning-soft); color: var(--color-warning); border-left-color: var(--color-warning-line); }
+.ff-guide .alerta-importante { background: var(--color-danger-soft); color: var(--color-danger); border-left-color: var(--color-danger); }
+.ff-guide .alerta-info { background: var(--brand-primary-100); color: var(--brand-primary-800); border-left-color: var(--brand-primary); }
+
+/* Accordion */
+.ff-guide .accordion {
+  border: 1px solid var(--color-line); border-radius: var(--radius-lg); background: var(--color-surface);
+  box-shadow: var(--shadow-sm); transition: box-shadow var(--dur-base), transform var(--dur-base) var(--ease-out);
+}
+.ff-guide .accordion.open { box-shadow: var(--shadow-md), inset 4px 0 0 var(--brand-accent); }
+.ff-guide .accordion-header { position: relative; overflow: hidden; isolation: isolate; min-height: 56px; color: var(--brand-primary-900); font-family: var(--font-display); font-weight: 700; font-size: 16px; }
+.ff-guide .accordion-header:hover { background: var(--brand-primary-50); }
+.ff-guide .accordion-header .seta {
+  display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%;
+  background: var(--brand-primary-100); color: var(--brand-primary-800);
+  transition: transform var(--dur-slow) var(--ease-spring), background-color var(--dur-base);
+}
+.ff-guide .accordion.open .accordion-header .seta { background: var(--brand-accent); color: var(--brand-accent-ink); }
+.ff-guide .accordion-body-inner { border-top-color: var(--color-line); }
+
+/* Tabelas */
+.ff-guide .tabela, .ff-handbook .tabela { border-radius: var(--radius-md); overflow: hidden; }
+.ff-guide .tabela th { background: var(--brand-primary-900); font-family: var(--font-display); letter-spacing: .06em; }
+.ff-guide .tabela tbody tr { transition: background-color var(--dur-fast), box-shadow var(--dur-fast); }
+.ff-guide .tabela tbody tr:hover td { background: var(--brand-accent-soft); }
+.ff-guide .tabela tbody tr:hover td:first-child { box-shadow: inset 4px 0 0 var(--brand-accent); }
+
+/* Processos e mapas */
+.ff-guide .processo-card {
+  border: 1px solid var(--color-line); border-left: 5px solid var(--brand-primary); border-radius: var(--radius-lg);
+  background: var(--color-surface); box-shadow: var(--shadow-sm);
+  transition: transform var(--dur-slow) var(--ease-out), box-shadow var(--dur-base);
+}
+.ff-guide .processo-card h4, .ff-guide .secao-titulo, .ff-guide .diagnostico-content h5 { color: var(--brand-primary-800); }
+.ff-guide .processo-card .descricao { color: var(--color-muted); }
+.ff-guide .fluxo-mapa {
+  border-radius: var(--radius-md); border-color: var(--brand-primary-200); background: var(--brand-primary-50);
+  transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base), border-color var(--dur-base), background-color var(--dur-base);
+}
+.ff-guide .fluxo-mapa:hover, .ff-guide .fluxo-mapa:focus-visible { background: #fff; border-color: var(--brand-primary); box-shadow: var(--shadow-md); }
+.ff-guide .fluxo-mapa-hint { color: var(--brand-primary-700); opacity: 1; }
+.ff-guide .mapa-conector-h, .ff-guide .mapa-raiz::after, .ff-guide .mapa-ramos::before,
+.ff-guide .mapa-ramos-conector, .ff-guide .mapa-ramo::before, .ff-guide .mapa-ramo::after { background: var(--brand-primary-300); }
+.ff-guide .mapa-raiz { background: linear-gradient(135deg, var(--brand-primary-700), var(--brand-primary)); box-shadow: 0 8px 20px rgb(52 120 167 / .35); white-space: normal; max-width: 220px; text-wrap: balance; }
+.ff-guide .mapa-ramo { background: var(--brand-primary-200); color: var(--brand-primary-900); }
+.ff-guide .mapa-etapa, .ff-guide .mapa-folha {
+  position: relative; background: #fff; color: var(--brand-primary-900);
+  border: 1.5px solid var(--brand-primary-300); border-left-width: 1.5px;
+  transition: transform var(--dur-base) var(--ease-spring), background-color var(--dur-base), box-shadow var(--dur-base), border-color var(--dur-base);
+}
+.ff-guide .mapa-etapa:hover, .ff-guide .mapa-folha:hover { background: var(--brand-primary-100); border-color: var(--brand-primary); box-shadow: var(--shadow-sm); }
+.ff-guide .mapa-etapa.destaque, .ff-guide .mapa-folha.destaque { background: var(--brand-accent); border-color: #B7BF10; color: var(--brand-accent-ink); }
+.ff-guide .diagnostico-num { background: linear-gradient(135deg, var(--brand-primary-700), var(--brand-primary)); box-shadow: 0 0 0 4px var(--brand-primary-100); transition: transform var(--dur-slow) var(--ease-spring); }
+.ff-guide .diagnostico-content { background: var(--color-surface); border: 1px solid var(--color-line); border-radius: var(--radius-md); transition: box-shadow var(--dur-base), border-color var(--dur-base); }
+.ff-guide .diagnostico-step:hover .diagnostico-content { border-color: var(--brand-primary-300); box-shadow: var(--shadow-sm); }
+.ff-guide .diagnostico-content li::before { color: var(--brand-primary); }
+.ff-guide .checklist li { border-radius: var(--radius-sm); color: #1F5F24; }
+.ff-guide .boas-praticas li { border-radius: var(--radius-sm); background: var(--brand-primary-100); color: var(--brand-primary-900); border-left-color: var(--brand-primary); }
+.ff-guide .boas-praticas li::before { background: var(--brand-accent-text); }
+
+/* Modais */
+.ff-guide .modal-overlay, .ff-guide .fluxo-overlay { background: rgb(12 36 56 / .62); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+.ff-guide .modal, .ff-guide .fluxo-modal { border-radius: var(--radius-xl); box-shadow: var(--shadow-xl); }
+.ff-guide .modal-header { background: linear-gradient(135deg, var(--brand-primary-50), #fff 60%); }
+.ff-guide .modal-header::after {
+  content: ''; position: absolute; left: 0; right: 0; bottom: -1px; height: 4px;
+  background: linear-gradient(90deg, var(--brand-accent), var(--brand-secondary), var(--brand-primary));
+}
+.ff-guide .modal-header h2 { font-size: clamp(1.4rem, 2.6vw, 1.8rem); font-weight: 800; color: var(--brand-primary-900); }
+.ff-guide .fluxo-modal-header { background: linear-gradient(135deg, var(--brand-primary-900), var(--brand-primary-700)); }
+.ff-guide .fluxo-modal-header h3 { color: #fff; }
+.ff-guide .fluxo-modal-header p { color: #D6E6F2; }
+.ff-guide .modal-close, .ff-guide .fluxo-modal-close {
+  width: 44px; height: 44px; background: var(--brand-primary-100); color: var(--brand-primary-900);
+  transition: transform var(--dur-slow) var(--ease-spring), background-color var(--dur-base), color var(--dur-base);
+}
+.ff-guide .modal-close:hover, .ff-guide .fluxo-modal-close:hover { background: var(--color-danger); color: #fff; }
+.ff-guide .fluxo-etapa-item .num { background: var(--brand-primary); }
+.ff-guide .fluxo-etapa-item.destaque { background: var(--brand-accent-soft); color: var(--brand-accent-ink); }
+.ff-guide .fluxo-etapa-item.destaque .num { background: var(--brand-accent); color: var(--brand-accent-ink); }
+.ff-guide .fluxo-etapa-item:not(:last-child)::after { background: var(--brand-primary-300); }
+.ff-guide .fluxo-etapa-item:hover { background: var(--brand-primary-50); }
+
+.ff-guide .footer { border-top-color: var(--color-line); color: var(--color-muted); }
+
+/* ==========================================================================
+   6. APOSTILA A4 (.ff-handbook)
+   ========================================================================== */
+.ff-handbook .page { border-radius: 10px; box-shadow: var(--shadow-lg); }
+.ff-handbook .page::before { color: var(--color-muted); font-family: var(--font-display); }
+.ff-handbook .page::after { color: var(--brand-primary-700); font-family: var(--font-display); }
+
+.ff-handbook .capa {
+  overflow: hidden;
+  background:
+    radial-gradient(60% 45% at 92% 8%, rgb(213 221 38 / .32), transparent 70%),
+    radial-gradient(55% 45% at 5% 95%, rgb(52 120 167 / .20), transparent 70%),
+    linear-gradient(160deg, #fff 0%, var(--brand-primary-50) 55%, var(--brand-primary-100) 100%);
+}
+.ff-handbook .capa::before, .ff-handbook .capa::after { content: ''; position: absolute; pointer-events: none; border-radius: 28%; }
+.ff-handbook .capa::before { top: -28mm; right: -24mm; width: 95mm; height: 95mm; border: 3px solid rgb(52 120 167 / .20); }
+.ff-handbook .capa::after { left: -30mm; bottom: -36mm; width: 110mm; height: 110mm; background: rgb(213 221 38 / .16); }
+.ff-handbook .capa > * { position: relative; z-index: 1; }
+.ff-handbook .capa .ff-logo-wrap { margin-bottom: 26mm; }
+.ff-handbook .capa-logo { width: 220px; max-width: 100%; margin: 0; }
+.ff-handbook .capa-titulo {
+  font-size: clamp(30pt, 4.2vw, 42pt); font-weight: 800; line-height: 1.08; letter-spacing: -.03em;
+  background: linear-gradient(120deg, var(--brand-primary-950), var(--brand-primary-700) 55%, var(--brand-primary-900));
+  background-size: 200% 100%; -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.ff-handbook .capa-linha { width: 70mm; height: 7px; border-radius: 99px; background: linear-gradient(90deg, var(--brand-accent), var(--brand-secondary), var(--brand-primary)); transform-origin: 50% 50%; }
+.ff-handbook .capa-subtitulo, .ff-handbook .capa-meta { color: var(--color-muted); }
+.ff-handbook .capa-meta strong { color: var(--brand-primary-800); }
+
+.ff-handbook .titulo-pagina { border-bottom-color: var(--brand-primary); }
+.ff-handbook .titulo-pagina::after { height: 4px; bottom: -3px; border-radius: 4px; background: var(--brand-accent); }
+.ff-handbook .titulo-pagina h1 { font-weight: 800; letter-spacing: -.025em; color: var(--brand-primary-900); }
+.ff-handbook .titulo-pagina .numero-secao { color: var(--brand-accent-text); }
+.ff-handbook h2.subtitulo-secao { color: var(--brand-primary-900); border-left-color: var(--brand-accent); }
+.ff-handbook h3.subtitulo-menor { color: var(--brand-primary-700); }
+.ff-handbook .ficha-bloco { border-left-color: var(--brand-primary); background: var(--brand-primary-50); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; }
+.ff-handbook .ficha-bloco h4 { color: var(--brand-primary-700); }
+.ff-handbook .ficha-bloco li::before, .ff-handbook .boas-praticas-impresso li::before { background: var(--brand-primary); }
+.ff-handbook .sumario-item .numero { color: var(--brand-accent-text); }
+.ff-handbook .sumario-item.principal { color: var(--brand-primary-900); border-bottom-color: var(--brand-primary-300); }
+.ff-handbook .tabela thead th { background: var(--brand-primary-900); }
+.ff-handbook .fluxo-impresso { border-color: var(--brand-primary-200); background: var(--brand-primary-50); border-radius: var(--radius-sm); }
+.ff-handbook .fluxo-impresso-header { background: linear-gradient(90deg, var(--brand-primary-900), var(--brand-primary-700)); }
+.ff-handbook .fluxo-etapa { background: #fff; color: var(--brand-primary-900); border-color: var(--brand-primary-300); }
+.ff-handbook .fluxo-etapa .num, .ff-handbook .fluxo-vertical-num { background: var(--brand-primary); }
+.ff-handbook .fluxo-etapa.destaque { background: var(--brand-accent); border-color: #B7BF10; color: var(--brand-accent-ink); }
+.ff-handbook .fluxo-etapa.destaque .num { background: var(--brand-accent-ink); color: var(--brand-accent); }
+.ff-handbook .fluxo-seta { color: var(--brand-primary); }
+
+/* Fluxos da apostila no mesmo mapa mental do Guia: raiz → ramo → etapas */
+.ff-handbook .fluxo-mapa-impresso { padding: 6mm 5mm; background: var(--brand-primary-50); border: 1px solid var(--brand-primary-200); border-radius: var(--radius-md); overflow-x: auto; break-inside: avoid; page-break-inside: avoid; }
+.ff-handbook .mapa { --liga: 6mm; display: flex; align-items: center; gap: var(--liga); font-family: var(--font-display); }
+.ff-handbook .mapa-raiz {
+  position: relative; flex: 0 1 40mm; padding: 3.5mm 4mm; border-radius: 2.5mm; text-align: center;
+  background: linear-gradient(135deg, var(--brand-primary-700), var(--brand-primary)); color: #fff;
+  font-size: 10.5pt; font-weight: 700; line-height: 1.25; box-shadow: 0 6px 16px rgb(52 120 167 / .30); text-wrap: balance;
+}
+.ff-handbook .mapa-ramos { position: relative; flex: 0 0 auto; padding-left: var(--liga); }
+.ff-handbook .mapa-raiz::after, .ff-handbook .mapa-ramos::before, .ff-handbook .mapa-ramo::after {
+  content: ''; position: absolute; top: 50%; width: var(--liga); height: 2px; background: var(--brand-primary-300);
+}
+.ff-handbook .mapa-raiz::after { right: calc(-1 * var(--liga)); }
+.ff-handbook .mapa-ramos::before { left: 0; }
+.ff-handbook .mapa-ramos-conector { display: none; }
+.ff-handbook .mapa-ramo {
+  position: relative; padding: 2.5mm 4mm; border-radius: 2mm; white-space: nowrap;
+  background: var(--brand-primary-200); color: var(--brand-primary-900); font-size: 10pt; font-weight: 600;
+}
+.ff-handbook .mapa-ramo::after { right: calc(-1 * var(--liga)); }
+.ff-handbook .mapa-folhas { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 2mm; }
+.ff-handbook .mapa-folha {
+  padding: 2.2mm 4mm; border-radius: 2mm; background: #fff; color: var(--brand-primary-900);
+  border: 1.5px solid var(--brand-primary-300); font-size: 10pt; font-weight: 600; line-height: 1.35;
+}
+.ff-handbook .mapa-folha.destaque { background: var(--brand-accent); border-color: #B7BF10; color: var(--brand-accent-ink); }
+.ff-handbook .modulo-meta-bloco .fluxo-mapa-impresso { padding: 4mm; }
+.ff-handbook .fluxo-vertical-item:not(:last-child)::after { background: var(--brand-primary-300); }
+.ff-handbook .fluxo-vertical-item.destaque .fluxo-vertical-num { background: var(--brand-accent); color: var(--brand-accent-ink); }
+.ff-handbook .callout { border-radius: var(--radius-sm); }
+.ff-handbook .callout-info { border-color: var(--brand-primary); background: var(--brand-primary-50); }
+.ff-handbook .callout-info .callout-titulo { color: var(--brand-primary-700); }
+.ff-handbook .callout-info .callout-icone { background: var(--brand-primary); }
+.ff-handbook .callout-atencao { border-color: var(--color-warning-line); background: var(--color-warning-soft); }
+.ff-handbook .callout-atencao .callout-titulo { color: var(--color-warning); }
+.ff-handbook .callout-atencao .callout-icone { background: var(--color-warning); }
+.ff-handbook .callout-importante .callout-titulo { color: var(--color-danger); }
+.ff-handbook .callout-importante .callout-icone { background: var(--color-danger); }
+.ff-handbook .checklist-impresso li::before { border-color: var(--brand-primary); }
+.ff-handbook .modulo-bloco { border-color: var(--color-line); background: #fff; border-radius: var(--radius-md); box-shadow: inset 4px 0 0 var(--brand-accent); }
+.ff-handbook .modulo-cabecalho { border-bottom-color: var(--brand-primary-300); }
+.ff-handbook .modulo-numero { background: linear-gradient(135deg, var(--brand-primary-900), var(--brand-primary)); font-family: var(--font-display); }
+.ff-handbook .modulo-titulo { color: var(--brand-primary-900); }
+.ff-handbook .modulo-meta-bloco .rotulo { color: var(--brand-primary-700); }
+.ff-handbook .anotacoes { border-color: var(--color-line-strong); border-radius: var(--radius-md); }
+.ff-handbook .pagina-final .icone-final { background: var(--brand-accent-soft); border-color: var(--brand-accent); }
+.ff-handbook .pagina-final .icone-final svg { color: var(--brand-accent-text); }
+.ff-handbook .pagina-final h2 { color: var(--brand-primary-900); font-weight: 800; }
+
+/* Toolbar */
+.ff-handbook .toolbar {
+  top: 16px; right: 16px; padding: 8px 8px 8px 16px; border-radius: var(--radius-pill);
+  background: rgb(255 255 255 / .82); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgb(255 255 255 / .9); box-shadow: var(--shadow-lg);
+}
+.ff-handbook .toolbar-info { color: var(--brand-primary-800); font-family: var(--font-display); }
+.ff-handbook .toolbar-btn { border: 0; color: #fff; background: var(--brand-primary-800); text-decoration: none; }
+.ff-handbook .toolbar-btn:hover { box-shadow: 0 12px 28px rgb(52 120 167 / .45), inset 0 -3px 0 var(--brand-accent); }
+
+/* ==========================================================================
+   7. MOVIMENTO — somente sem preferência por movimento reduzido e na tela
+   ========================================================================== */
+@media screen and (prefers-reduced-motion: no-preference) {
+  /* Fundo vivo */
+  .ff-blob--a { animation: ff-drift-a 22s ease-in-out infinite alternate; }
+  .ff-blob--b { animation: ff-drift-b 26s ease-in-out infinite alternate; }
+  .ff-blob--c { animation: ff-drift-c 18s ease-in-out infinite alternate; }
+  .ff-sq { animation: ff-rise var(--d, 24s) linear infinite; animation-delay: var(--delay, 0s); }
+
+  /* Logo: montagem + brilho */
+  .ff-logo-wrap { animation: ff-logo-in 1.1s var(--ease-spring) backwards; }
+  .ff-logo-wrap::after { animation: ff-sheen 1.3s .9s var(--ease-out) both, ff-sheen-loop 7s 3s ease-in-out infinite; }
+  .ff-guide .logo-container .ff-logo-wrap:hover { transform: scale(1.06) rotate(-2deg); transition: transform var(--dur-slow) var(--ease-spring); }
+
+  /* Entrada da página (stagger) */
+  .ff-guide .sidebar { animation: ff-slide-rail .9s var(--ease-out) backwards; }
+  .ff-guide .nav-section, .ff-guide .nav-item { animation: ff-nav-in .7s var(--ease-spring) backwards; }
+  .ff-guide .sidebar > :nth-child(2)  { animation-delay: .25s; }
+  .ff-guide .sidebar > :nth-child(3)  { animation-delay: .30s; }
+  .ff-guide .sidebar > :nth-child(4)  { animation-delay: .35s; }
+  .ff-guide .sidebar > :nth-child(5)  { animation-delay: .40s; }
+  .ff-guide .sidebar > :nth-child(6)  { animation-delay: .45s; }
+  .ff-guide .sidebar > :nth-child(7)  { animation-delay: .50s; }
+  .ff-guide .sidebar > :nth-child(8)  { animation-delay: .55s; }
+  .ff-guide .sidebar > :nth-child(9)  { animation-delay: .60s; }
+  .ff-guide .sidebar > :nth-child(10) { animation-delay: .65s; }
+  .ff-guide .sidebar > :nth-child(n+11) { animation-delay: .70s; }
+
+  .ff-guide #dashboard .header h2 { animation: ff-hero-in 1.1s .15s var(--ease-spring) both, ff-text-flow 9s 1.5s ease-in-out infinite alternate; }
+  .ff-guide #dashboard .header h2::after { animation: ff-bar-in .9s .7s var(--ease-spring) both, ff-bar-flow 3.5s 1.6s linear infinite; }
+  .ff-guide #dashboard .header p { animation: ff-arrive .9s .35s var(--ease-out) both; }
+  .ff-guide #dashboard .header::before { animation: ff-stairs-in 1.2s .4s var(--ease-spring) both, ff-hover-float 6s 1.8s ease-in-out infinite alternate; }
+  .ff-guide #dashboard .search-bar { animation: ff-arrive .9s .5s var(--ease-out) both; }
+  .ff-guide #dashboard .filtro-btn { animation: ff-pop .7s var(--ease-spring) backwards; }
+  .ff-guide #dashboard .filtro-btn:nth-child(1) { animation-delay: .62s; }
+  .ff-guide #dashboard .filtro-btn:nth-child(2) { animation-delay: .70s; }
+  .ff-guide #dashboard .filtro-btn:nth-child(3) { animation-delay: .78s; }
+  .ff-guide #dashboard .filtro-btn:nth-child(4) { animation-delay: .86s; }
+  .ff-guide #dashboard .filtro-btn:nth-child(5) { animation-delay: .94s; }
+  .ff-guide #dashboard .metrica { animation: ff-card-in 1s var(--ease-spring) backwards; }
+  .ff-guide #dashboard .metrica:nth-child(1) { animation-delay: .95s; }
+  .ff-guide #dashboard .metrica:nth-child(2) { animation-delay: 1.05s; }
+  .ff-guide #dashboard .metrica:nth-child(3) { animation-delay: 1.15s; }
+  .ff-guide #dashboard .metrica:nth-child(4) { animation-delay: 1.25s; }
+  .ff-guide .header h2::after { transition: transform .9s var(--ease-spring); }
+  .ff-guide .ff-reveal:not(.ff-in).header h2::after { transform: scaleX(0); }
+
+  .ff-handbook .toolbar { animation: ff-drop-in .9s 1.2s var(--ease-spring) both; }
+  .ff-handbook .capa-titulo { animation: ff-hero-in 1.1s .45s var(--ease-spring) both, ff-text-flow 9s 2s ease-in-out infinite alternate; }
+  .ff-handbook .capa-linha { animation: ff-bar-in .9s .8s var(--ease-spring) both; }
+  .ff-handbook .capa-subtitulo { animation: ff-arrive .9s .95s var(--ease-out) both; }
+  .ff-handbook .capa-meta { animation: ff-arrive .9s 1.1s var(--ease-out) both; }
+  .ff-handbook .capa::before { animation: ff-spin 40s linear infinite; }
+  .ff-handbook .capa::after { animation: ff-hover-float 9s ease-in-out infinite alternate; }
+
+  /* Scroll reveal (classes aplicadas por JS apenas em elementos abaixo da dobra) */
+  .ff-reveal {
+    transition: opacity .9s var(--ease-out), translate 1s var(--ease-spring), scale 1s var(--ease-spring), rotate 1s var(--ease-spring), filter .9s var(--ease-out);
+    transition-delay: var(--ff-delay, 0ms);
+  }
+  .ff-reveal:not(.ff-in) { opacity: 0; translate: 0 64px; scale: .9; rotate: 2.5deg; filter: blur(8px); }
+  .ff-reveal.ff-reveal--left:not(.ff-in) { translate: -80px 0; rotate: -3deg; }
+  .ff-reveal.ff-reveal--big:not(.ff-in) { filter: none; scale: .96; rotate: 0deg; }
+  .ff-in .mapa-etapa, .ff-in .mapa-folha, .ff-in .fluxo-etapa, .ff-in .sumario-item, .ff-in .fluxo-vertical-item {
+    animation: ff-pop .6s var(--ease-spring) backwards; animation-delay: calc(var(--ff-delay, 0ms) + 250ms + var(--i, 0) * 55ms);
+  }
+  .ff-in .fluxo-seta, .ff-in .mapa-conector-h { animation: ff-grow-x .5s var(--ease-out) both; animation-delay: calc(var(--ff-delay, 0ms) + 300ms + var(--i, 0) * 55ms); transform-origin: 0 50%; }
+  .ff-in .modulo-numero, .ff-in .diagnostico-num { animation: ff-spin-in .9s var(--ease-spring) backwards; animation-delay: calc(var(--ff-delay, 0ms) + 200ms); }
+
+  /* Hovers exagerados */
+  .ff-guide .nav-item:hover { transform: translateX(8px); }
+  .ff-guide .nav-item:hover svg { transform: scale(1.3) rotate(-10deg); }
+  .ff-guide .filtro-btn:hover, .ff-handbook .toolbar-btn:hover { transform: translateY(-4px) scale(1.06); }
+  .ff-guide .filtro-btn:hover::before, .ff-guide .filtro-btn.active::before, .ff-handbook .toolbar-btn::before { animation: ff-gradient 3s linear infinite; }
+  .ff-guide .filtro-btn:active, .ff-handbook .toolbar-btn:active { transform: translateY(0) scale(.95); }
+  .ff-guide .metrica:hover { --lift: -10px; box-shadow: var(--shadow-xl); }
+  .ff-guide .metrica:hover .numero { animation: ff-bounce .7s var(--ease-spring); }
+  .ff-guide .modulo-card:hover, .ff-guide .modulo-card:focus-visible { --lift: -14px; --grow: 1.02; }
+  .ff-guide .modulo-card:hover::before, .ff-guide .modulo-card:focus-visible::before { animation: ff-angle 2.6s linear infinite; }
+  .ff-guide .modulo-card:hover .modulo-icon { transform: translateZ(40px) rotate(-12deg) scale(1.25); }
+  .ff-guide .modulo-card:active { --grow: .98; }
+  .ff-guide .processo-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+  .ff-guide .fluxo-mapa:hover { transform: scale(1.01); }
+  .ff-guide .mapa-etapa:hover, .ff-guide .mapa-folha:hover { transform: translateY(-5px) scale(1.08) rotate(-1.5deg); }
+  .ff-guide .mapa-etapa.destaque, .ff-guide .mapa-folha.destaque { animation: ff-glow 2.4s ease-in-out infinite; }
+  .ff-guide .accordion:hover { transform: translateY(-3px); }
+  .ff-guide .accordion.open .accordion-header .seta { transform: rotate(180deg) scale(1.1); }
+  .ff-guide .accordion.open .accordion-body-inner { animation: ff-arrive .6s var(--ease-out) both; }
+  .ff-guide .diagnostico-step:hover .diagnostico-num { transform: rotate(360deg) scale(1.2); }
+  .ff-guide .diagnostico-step:hover .diagnostico-content { transform: translateX(6px); transition: transform var(--dur-base) var(--ease-spring), box-shadow var(--dur-base); }
+  .ff-guide .modal-close:hover, .ff-guide .fluxo-modal-close:hover { transform: rotate(180deg) scale(1.1); }
+  .ff-guide .boas-praticas li, .ff-guide .checklist li { transition: transform var(--dur-base) var(--ease-spring); }
+  .ff-guide .boas-praticas li:hover, .ff-guide .checklist li:hover { transform: translateX(6px); }
+
+  /* Modais */
+  .ff-guide .modal-overlay.active, .ff-guide .fluxo-overlay.active { animation: ff-fade .35s var(--ease-out) both; }
+  .ff-guide .modal, .ff-guide .fluxo-modal { animation: ff-modal-in .7s var(--ease-spring) both; transform-origin: 50% 0; }
+  .ff-guide .modal-header .modulo-icon { animation: ff-spin-in .9s .2s var(--ease-spring) both; }
+  .ff-guide .modal-body .secao, .ff-guide .fluxo-etapa-item { animation: ff-arrive .6s var(--ease-out) both; }
+  .ff-guide .modal-body .secao:nth-child(1), .ff-guide .fluxo-etapa-item:nth-child(1) { animation-delay: .18s; }
+  .ff-guide .modal-body .secao:nth-child(2), .ff-guide .fluxo-etapa-item:nth-child(2) { animation-delay: .24s; }
+  .ff-guide .modal-body .secao:nth-child(3), .ff-guide .fluxo-etapa-item:nth-child(3) { animation-delay: .30s; }
+  .ff-guide .modal-body .secao:nth-child(4), .ff-guide .fluxo-etapa-item:nth-child(4) { animation-delay: .36s; }
+  .ff-guide .modal-body .secao:nth-child(5), .ff-guide .fluxo-etapa-item:nth-child(5) { animation-delay: .42s; }
+  .ff-guide .modal-body .secao:nth-child(6), .ff-guide .fluxo-etapa-item:nth-child(6) { animation-delay: .48s; }
+  .ff-guide .modal-body .secao:nth-child(7), .ff-guide .fluxo-etapa-item:nth-child(7) { animation-delay: .54s; }
+  .ff-guide .modal-body .secao:nth-child(n+8), .ff-guide .fluxo-etapa-item:nth-child(n+8) { animation-delay: .60s; }
+
+  /* Apostila: blocos no hover (só tela) */
+  .ff-handbook .page { transition: transform var(--dur-slow) var(--ease-out), box-shadow var(--dur-slow); }
+  .ff-handbook .modulo-bloco, .ff-handbook .callout, .ff-handbook .ficha-bloco, .ff-handbook .fluxo-impresso {
+    transition: transform var(--dur-base) var(--ease-spring), box-shadow var(--dur-base);
+  }
+  .ff-handbook .modulo-bloco:hover, .ff-handbook .fluxo-impresso:hover { transform: translateY(-4px); box-shadow: var(--shadow-md), inset 4px 0 0 var(--brand-accent); }
+  .ff-handbook .callout:hover, .ff-handbook .ficha-bloco:hover { transform: translateX(6px); }
+  .ff-handbook .mapa-folha { transition: transform var(--dur-base) var(--ease-spring), box-shadow var(--dur-base); }
+  .ff-handbook .mapa-folha:hover { transform: translateX(6px) scale(1.03); box-shadow: var(--shadow-sm); }
+  .ff-handbook .mapa-folha.destaque { animation: ff-glow 2.4s ease-in-out infinite; }
+  .ff-handbook .fluxo-etapa { transition: transform var(--dur-base) var(--ease-spring); }
+  .ff-handbook .fluxo-etapa:hover { transform: translateY(-3px) scale(1.08); }
+  .ff-handbook .tabela tbody tr:hover td { background: var(--brand-accent-soft); }
+  .ff-handbook .sumario-item { transition: transform var(--dur-base) var(--ease-spring), color var(--dur-base); }
+  .ff-handbook .sumario-item:hover { transform: translateX(8px); color: var(--brand-primary-800); }
+}
+
+/* ---------- Keyframes ---------- */
+@keyframes ff-drift-a { to { transform: translate3d(-12vmax, 10vmax, 0) scale(1.18) rotate(25deg); } }
+@keyframes ff-drift-b { to { transform: translate3d(14vmax, -8vmax, 0) scale(1.12) rotate(-20deg); } }
+@keyframes ff-drift-c { to { transform: translate3d(-18vmax, -12vmax, 0) scale(.82); } }
+@keyframes ff-rise { from { transform: translate3d(0, 0, 0) rotate(0deg); } to { transform: translate3d(var(--sway, 40px), -125vh, 0) rotate(var(--turn, 360deg)); } }
+@keyframes ff-logo-in {
+  0%   { opacity: 0; transform: translateY(-30px) rotate(-18deg) scale(.4); filter: blur(12px); }
+  60%  { opacity: 1; transform: translateY(4px) rotate(4deg) scale(1.08); filter: blur(0); }
+  100% { opacity: 1; transform: none; filter: blur(0); }
+}
+@keyframes ff-sheen { 0% { opacity: 1; transform: translateX(-120%) skewX(-18deg); } 100% { opacity: 1; transform: translateX(420%) skewX(-18deg); } }
+@keyframes ff-sheen-loop { 0%, 80% { opacity: 1; transform: translateX(-120%) skewX(-18deg); } 100% { opacity: 1; transform: translateX(420%) skewX(-18deg); } }
+@keyframes ff-slide-rail { from { transform: translateX(-100%); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes ff-nav-in { from { opacity: 0; transform: translateX(-40px) scale(.9); filter: blur(4px); } to { opacity: 1; transform: none; filter: blur(0); } }
+@keyframes ff-hero-in {
+  0%   { opacity: 0; transform: translateY(50px) scale(.8) rotate(-4deg); filter: blur(14px); }
+  65%  { opacity: 1; transform: translateY(-6px) scale(1.03) rotate(.5deg); filter: blur(0); }
+  100% { opacity: 1; transform: none; filter: blur(0); }
+}
+@keyframes ff-text-flow { to { background-position: 100% 0; } }
+@keyframes ff-arrive { from { opacity: 0; transform: translateY(28px) scale(.97); filter: blur(6px); } to { opacity: 1; transform: none; filter: blur(0); } }
+@keyframes ff-bar-in { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes ff-bar-flow { to { background-position: -200% 0; } }
+@keyframes ff-stairs-in { from { opacity: 0; transform: translate(60px, -40px) rotate(45deg) scale(.3); } to { opacity: .9; transform: none; } }
+@keyframes ff-hover-float { to { transform: translateY(-14px) rotate(4deg); } }
+@keyframes ff-pop { 0% { opacity: 0; transform: scale(.4) rotate(-8deg); } 70% { opacity: 1; transform: scale(1.1) rotate(2deg); } 100% { opacity: 1; transform: none; } }
+@keyframes ff-card-in {
+  0%   { opacity: 0; transform: perspective(800px) translateY(60px) rotateX(35deg) scale(.8); filter: blur(10px); }
+  70%  { opacity: 1; transform: perspective(800px) translateY(-8px) rotateX(-4deg) scale(1.03); filter: blur(0); }
+  100% { opacity: 1; transform: perspective(800px); filter: blur(0); }
+}
+@keyframes ff-drop-in { from { opacity: 0; transform: translateY(-60px) scale(.7); } to { opacity: 1; transform: none; } }
+@keyframes ff-spin { to { transform: rotate(360deg); } }
+@keyframes ff-spin-in { from { opacity: 0; transform: rotate(-270deg) scale(0); } to { opacity: 1; transform: none; } }
+@keyframes ff-grow-x { from { transform: scaleX(0); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes ff-gradient { to { background-position: -300% 0; } }
+@keyframes ff-angle { to { --ff-angle: 360deg; } }
+@keyframes ff-bounce { 0% { transform: none; } 40% { transform: translateY(-8px) scale(1.12); } 100% { transform: none; } }
+@keyframes ff-glow { 0%, 100% { box-shadow: 0 0 0 0 rgb(213 221 38 / .0); } 50% { box-shadow: 0 0 0 7px rgb(213 221 38 / .35); } }
+@keyframes ff-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes ff-modal-in {
+  0%   { opacity: 0; transform: perspective(1200px) translateY(80px) rotateX(-22deg) scale(.82); }
+  100% { opacity: 1; transform: none; }
+}
+
+/* ==========================================================================
+   8. RESPONSIVO
+   ========================================================================== */
+@media (max-width: 900px) {
+  .ff-guide .app { grid-template-columns: minmax(0, 1fr); }
+  .ff-guide .sidebar { position: sticky; top: 0; z-index: 900; height: auto; display: flex; flex-wrap: wrap; align-items: center; padding: 12px 8px; overflow: visible; }
+  .ff-guide .sidebar .nav-section { display: none; }
+  .ff-guide .logo-container { flex: 0 0 100%; padding: 0 12px 10px; margin-bottom: 6px; }
+  .ff-guide .logo-svg { width: 140px; }
+  .ff-guide .nav-item { margin: 2px; padding: 8px 12px; font-size: 13.5px; }
+  .ff-guide .main { padding: 28px clamp(16px, 4vw, 36px); }
+  .ff-guide #dashboard .header { padding-right: 0; }
+  .ff-guide #dashboard .header::before { display: none; }
+  @media screen and (prefers-reduced-motion: no-preference) {
+    .ff-guide .sidebar { animation-name: ff-drop-in; }
+  }
+}
+@media (max-width: 600px) {
+  .ff-guide .sidebar { flex-wrap: nowrap; overflow-x: auto; scroll-snap-type: x proximity; scrollbar-width: none; padding: 10px 8px; }
+  .ff-guide .logo-container { flex: 0 0 auto; border: 0; margin: 0; padding: 0 8px 0 4px; }
+  .ff-guide .logo-container .ff-logo-wrap { padding: 6px 10px; }
+  .ff-guide .logo-svg { width: 104px; }
+  .ff-guide .nav-item { flex: 0 0 auto; scroll-snap-align: start; white-space: nowrap; }
+  .ff-guide .header h2, .ff-guide #dashboard .header h2 { font-size: clamp(1.75rem, 8vw, 2.3rem); }
+  .ff-guide .dashboard { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ff-guide .metrica { padding: 16px; }
+  .ff-guide .modal-overlay, .ff-guide .fluxo-overlay { padding: 12px; }
+  .ff-guide .modal-header, .ff-guide .modal-body { padding: 20px; }
+  .ff-guide .tabela { display: block; overflow-x: auto; }
+  .ff-handbook .page { width: calc(100% - 24px); min-height: 0; margin: 12px auto; padding: 50px 20px 44px; }
+  .ff-handbook .page::before { left: 20px; top: 16px; font-size: 8pt; }
+  .ff-handbook .page::after { right: 20px; bottom: 14px; }
+  .ff-handbook .capa { min-height: 86vh; padding: 64px 24px; }
+  .ff-handbook .capa-logo { width: min(200px, 70vw); }
+  .ff-handbook .capa .ff-logo-wrap { margin-bottom: 48px; }
+  .ff-handbook .capa-titulo { font-size: clamp(2rem, 9vw, 2.8rem); }
+  .ff-handbook .capa-subtitulo { font-size: 1rem; margin-bottom: 40px; }
+  .ff-handbook .capa-linha { width: 50%; margin-bottom: 32px; }
+  .ff-handbook .toolbar { top: auto; bottom: 16px; right: 16px; }
+  .ff-handbook .toolbar-info { display: none; }
+  .ff-handbook .tabela { display: block; overflow-x: auto; }
+  .ff-handbook .mapa { flex-direction: column; align-items: stretch; gap: 10px; }
+  .ff-handbook .mapa-raiz { flex: none; }
+  .ff-handbook .mapa-ramos { padding-left: 0; text-align: center; }
+  .ff-handbook .mapa-raiz::after, .ff-handbook .mapa-ramos::before, .ff-handbook .mapa-ramo::after { display: none; }
+  .ff-handbook .grid-duas-colunas, .ff-handbook .grid-tres-colunas { grid-template-columns: 1fr; }
+  .ff-sq:nth-child(n+10) { display: none; }
+}
+
+/* ==========================================================================
+   9. MOVIMENTO REDUZIDO — versão calma, tudo visível
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+  .ff-reveal, .ff-reveal:not(.ff-in) { opacity: 1 !important; translate: none !important; scale: none !important; rotate: none !important; filter: none !important; }
+  .ff-guide .modulo-card, .ff-guide .metrica { transform: none !important; }
+  .ff-sq { display: none; }
+}
+
+/* ==========================================================================
+   10. IMPRESSÃO — sem efeitos, fiel ao A4
+   ========================================================================== */
+@media print {
+  html { scroll-behavior: auto; }
+  .ff-stage, .ff-progress { display: none !important; }
+  body.ff-guide, body.ff-handbook { background: #fff !important; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .ff-reveal { opacity: 1 !important; translate: none !important; scale: none !important; rotate: none !important; filter: none !important; }
+  .ff-logo-wrap::after { content: none; }
+  .ff-handbook .page { border-radius: 0; box-shadow: none; }
+  .ff-handbook .capa { background: #fff !important; }
+  .ff-handbook .capa::before, .ff-handbook .capa::after { content: none; }
+  .ff-handbook .capa-titulo, .ff-guide #dashboard .header h2 { background: none; -webkit-background-clip: border-box; background-clip: border-box; color: var(--brand-primary-900); }
+  .ff-handbook .capa-titulo { font-size: 32pt; }
+  .ff-handbook .modulo-bloco { box-shadow: none; border-left: 4px solid var(--brand-accent); }
+}
+
+/* Apostila embutida na aba do Guia: a barra própria some (o Guia já oferece Exportar PDF). */
+html.ff-embutida .ff-handbook .toolbar { display: none; }

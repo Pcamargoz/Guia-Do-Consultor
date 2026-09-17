@@ -1,0 +1,4 @@
+# Usados apenas no ambiente local/Docker.
+docker-compose.yml
+skills/
+.env

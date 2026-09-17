@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Entrar — Faktory Flow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap">
+<link rel="stylesheet" href="brand-system.css">
+<link rel="stylesheet" href="login.css">
+<script src="brand-motion.js" defer></script>
+<script src="login.js" defer></script>
+</head>
+<body class="ff-guide ff-login">
+<main class="lg-palco">
+  <section class="lg-cartao" aria-labelledby="lg-titulo">
+    <span class="ff-logo-wrap lg-logo"><img src="assets/Logo%20Faktory%20Flow.png" alt="Faktory Flow" width="176" height="80"></span>
+    <h1 id="lg-titulo">Guia do Consultor</h1>
+    <p class="lg-sub">Entre com o login e a senha fornecidos pelo administrador.</p>
+
+    <form class="lg-form" novalidate>
+      <div class="lg-alerta" role="alert" hidden></div>
+
+      <label class="lg-campo">
+        <span>Login</span>
+        <input name="login" type="text" autocomplete="username" autocapitalize="none" spellcheck="false" required maxlength="60">
+      </label>
+
+      <label class="lg-campo">
+        <span>Senha</span>
+        <span class="lg-senha">
+          <input name="senha" type="password" autocomplete="current-password" required maxlength="200">
+          <button type="button" class="lg-ver" aria-label="Mostrar senha" aria-pressed="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </button>
+        </span>
+      </label>
+
+      <button type="submit" class="lg-entrar">
+        <span class="lg-entrar-texto">Entrar</span>
+        <svg class="lg-seta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </button>
+    </form>
+
+    <p class="lg-rodape">Esqueceu a senha? Fale com o administrador do sistema.</p>
+  </section>
+</main>
+</body>
+</html>

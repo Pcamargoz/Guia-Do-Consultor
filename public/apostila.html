@@ -1,0 +1,2297 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apostila do Consultor — Faktory Flow</title>
+<style>
+  /* ==================== RESET & BASE ==================== */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --ff-azul-escuro: #0D47A1;
+    --ff-azul-medio: #1976D2;
+    --ff-azul-claro: #E3F2FD;
+    --ff-azul-borda: #90CAF9;
+    --ff-lima: #C4D600;
+    --ff-lima-escuro: #A8B800;
+    --ff-lima-claro: #F4F8D3;
+
+    --verde: #2E7D32;
+    --verde-claro: #E8F5E9;
+    --amarelo: #FBC02D;
+    --amarelo-claro: #FFF9C4;
+    --laranja: #EF6C00;
+    --laranja-claro: #FFF3E0;
+    --vermelho: #C62828;
+    --vermelho-claro: #FFEBEE;
+    --cinza-escuro: #263238;
+    --cinza-medio: #546E7A;
+    --cinza-claro: #ECEFF1;
+    --branco: #FFFFFF;
+
+    --radius: 10px;
+    --radius-sm: 6px;
+  }
+
+  body {
+    font-family: 'Segoe UI', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #E8EDF2;
+    color: var(--cinza-escuro);
+    line-height: 1.65;
+    font-size: 12pt;
+  }
+
+  /* ==================== ESTRUTURA DE PÁGINA ==================== */
+  .page {
+    background: white;
+    width: 210mm;
+    min-height: 297mm;
+    margin: 12mm auto;
+    padding: 22mm 20mm 20mm 20mm;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+    position: relative;
+    page-break-after: always;
+    counter-increment: pagina;
+  }
+
+  .page:last-child { page-break-after: auto; }
+
+  /* Número de página no rodapé */
+  .page::after {
+    content: counter(pagina);
+    position: absolute;
+    bottom: 12mm;
+    right: 20mm;
+    font-size: 10pt;
+    color: var(--cinza-medio);
+    font-weight: 600;
+  }
+
+  /* Cabeçalho à esquerda (nome do guia) */
+  .page::before {
+    content: 'Apostila do Consultor — Faktory Flow';
+    position: absolute;
+    top: 12mm;
+    left: 20mm;
+    font-size: 9pt;
+    color: var(--cinza-medio);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  body { counter-reset: pagina; }
+
+  /* ==================== CAPA ==================== */
+  .capa {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40mm 20mm;
+    background: linear-gradient(160deg, #F8FBFF 0%, #E3F2FD 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .capa::before { content: none; }
+  .capa::after { content: none; }
+
+  .capa-logo {
+    width: 260px;
+    margin-bottom: 32mm;
+  }
+
+  .capa-titulo {
+    font-size: 32pt;
+    font-weight: 700;
+    color: var(--ff-azul-escuro);
+    line-height: 1.15;
+    letter-spacing: -1px;
+    margin-bottom: 8mm;
+    max-width: 150mm;
+  }
+
+  .capa-subtitulo {
+    font-size: 14pt;
+    color: var(--cinza-medio);
+    font-weight: 400;
+    max-width: 140mm;
+    line-height: 1.5;
+    margin-bottom: 30mm;
+  }
+
+  .capa-linha {
+    width: 60mm;
+    height: 5px;
+    background: var(--ff-lima);
+    border-radius: 3px;
+    margin-bottom: 20mm;
+  }
+
+  .capa-meta {
+    font-size: 10.5pt;
+    color: var(--cinza-medio);
+    line-height: 1.9;
+    letter-spacing: 0.3px;
+  }
+
+  .capa-meta strong { color: var(--ff-azul-escuro); }
+
+  /* ==================== FICHA TÉCNICA ==================== */
+  .ficha-tecnica {
+    display: flex;
+    flex-direction: column;
+    gap: 6mm;
+  }
+
+  .ficha-bloco {
+    border-left: 4px solid var(--ff-azul-medio);
+    padding: 4mm 6mm;
+    background: #F8FAFD;
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  }
+
+  .ficha-bloco h4 {
+    font-size: 10pt;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--ff-azul-medio);
+    font-weight: 700;
+    margin-bottom: 2mm;
+  }
+
+  .ficha-bloco p,
+  .ficha-bloco li {
+    font-size: 11pt;
+    color: var(--cinza-escuro);
+    line-height: 1.6;
+  }
+
+  .ficha-bloco ul { list-style: none; padding-left: 0; }
+  .ficha-bloco li { padding-left: 5mm; position: relative; }
+  .ficha-bloco li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 3mm;
+    width: 2mm;
+    height: 2mm;
+    border-radius: 50%;
+    background: var(--ff-azul-medio);
+  }
+
+  /* ==================== TÍTULOS DE SEÇÃO ==================== */
+  .titulo-pagina {
+    margin-bottom: 12mm;
+    padding-bottom: 4mm;
+    border-bottom: 2px solid var(--ff-azul-medio);
+    position: relative;
+  }
+
+  .titulo-pagina::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 40mm;
+    height: 2px;
+    background: var(--ff-lima);
+  }
+
+  .titulo-pagina .numero-secao {
+    font-size: 11pt;
+    color: var(--ff-lima-escuro);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 2mm;
+    display: block;
+  }
+
+  .titulo-pagina h1 {
+    font-size: 22pt;
+    color: var(--ff-azul-escuro);
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+  }
+
+  .titulo-pagina p {
+    font-size: 11pt;
+    color: var(--cinza-medio);
+    margin-top: 3mm;
+    max-width: 150mm;
+  }
+
+  h2.subtitulo-secao {
+    font-size: 15pt;
+    color: var(--ff-azul-escuro);
+    font-weight: 700;
+    margin: 8mm 0 4mm 0;
+    padding-left: 4mm;
+    border-left: 4px solid var(--ff-lima);
+  }
+
+  h3.subtitulo-menor {
+    font-size: 12.5pt;
+    color: var(--ff-azul-medio);
+    font-weight: 700;
+    margin: 6mm 0 3mm 0;
+  }
+
+  p { margin-bottom: 3mm; }
+
+  /* ==================== SUMÁRIO ==================== */
+  .sumario {
+    margin-top: 6mm;
+  }
+
+  .sumario-item {
+    display: flex;
+    align-items: baseline;
+    padding: 2.5mm 0;
+    font-size: 11.5pt;
+    border-bottom: 1px dotted #CFD8DC;
+    text-decoration: none;
+    color: var(--cinza-escuro);
+  }
+
+  .sumario-item .numero {
+    color: var(--ff-lima-escuro);
+    font-weight: 700;
+    width: 12mm;
+    flex-shrink: 0;
+  }
+
+  .sumario-item .titulo {
+    flex: 1;
+    font-weight: 500;
+  }
+
+  .sumario-item .pagina {
+    color: var(--cinza-medio);
+    font-weight: 600;
+    font-size: 11pt;
+  }
+
+  .sumario-item.principal {
+    font-weight: 700;
+    color: var(--ff-azul-escuro);
+    font-size: 12pt;
+    margin-top: 4mm;
+    border-bottom: 1.5px solid var(--ff-azul-borda);
+    padding-bottom: 3mm;
+  }
+
+  .sumario-item.sub {
+    padding-left: 12mm;
+    font-size: 10.5pt;
+    color: var(--cinza-medio);
+  }
+
+  /* ==================== TABELAS ==================== */
+  .tabela {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 10.5pt;
+    margin: 4mm 0;
+    border: 1px solid #CFD8DC;
+  }
+
+  .tabela thead th {
+    background: var(--ff-azul-escuro);
+    color: white;
+    padding: 3mm 4mm;
+    text-align: left;
+    font-weight: 600;
+    font-size: 10pt;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-right: 1px solid rgba(255,255,255,0.15);
+  }
+
+  .tabela thead th:last-child { border-right: none; }
+
+  .tabela td {
+    padding: 3mm 4mm;
+    border-bottom: 1px solid #E0E0E0;
+    vertical-align: top;
+  }
+
+  .tabela tbody tr:nth-child(even) td { background: #FAFBFC; }
+  .tabela tbody tr:last-child td { border-bottom: none; }
+
+  /* ==================== FLUXOS IMPRESSOS ==================== */
+  .fluxo-impresso {
+    margin: 4mm 0;
+    border: 1px solid #CFD8DC;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    background: #FAFCFE;
+  }
+
+  .fluxo-impresso-header {
+    background: var(--ff-azul-escuro);
+    color: white;
+    padding: 2.5mm 4mm;
+    font-size: 10pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .fluxo-impresso-body { padding: 3mm 4mm; }
+
+  .fluxo-linha {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    flex-wrap: wrap;
+    padding: 1.5mm 0;
+  }
+
+  .fluxo-etapa {
+    display: inline-flex;
+    align-items: center;
+    gap: 1.5mm;
+    background: #DCE7F5;
+    color: #1A3A6B;
+    padding: 1.8mm 3.5mm;
+    border-radius: 3mm;
+    font-size: 10pt;
+    font-weight: 600;
+    border: 1px solid #B8CCE8;
+  }
+
+  .fluxo-etapa .num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 5mm;
+    height: 5mm;
+    border-radius: 50%;
+    background: var(--ff-azul-medio);
+    color: white;
+    font-size: 8pt;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .fluxo-etapa.destaque {
+    background: var(--ff-lima);
+    border-color: var(--ff-lima-escuro);
+    color: #2A3000;
+  }
+
+  .fluxo-etapa.destaque .num {
+    background: #2A3000;
+    color: var(--ff-lima);
+  }
+
+  .fluxo-seta {
+    color: var(--ff-azul-borda);
+    font-weight: 700;
+    padding: 0 2mm;
+    font-size: 11pt;
+  }
+
+  /* Fluxo em coluna (vertical) - mais legível em impressão */
+  .fluxo-vertical { display: flex; flex-direction: column; gap: 0; }
+
+  .fluxo-vertical-item {
+    display: flex;
+    align-items: center;
+    gap: 4mm;
+    padding: 2.5mm 0;
+    position: relative;
+  }
+
+  .fluxo-vertical-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 4mm;
+    top: 9mm;
+    bottom: -1mm;
+    width: 1px;
+    background: var(--ff-azul-borda);
+  }
+
+  .fluxo-vertical-num {
+    width: 8mm;
+    height: 8mm;
+    border-radius: 50%;
+    background: var(--ff-azul-medio);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10pt;
+    font-weight: 700;
+    flex-shrink: 0;
+    z-index: 1;
+    border: 2px solid white;
+  }
+
+  .fluxo-vertical-item.destaque .fluxo-vertical-num {
+    background: var(--ff-lima-escuro);
+    color: #2A3000;
+  }
+
+  .fluxo-vertical-texto {
+    font-size: 11pt;
+    font-weight: 600;
+    color: var(--cinza-escuro);
+  }
+
+  .fluxo-vertical-item.destaque .fluxo-vertical-texto {
+    color: #2A3000;
+    background: var(--ff-lima-claro);
+    padding: 1mm 3mm;
+    border-radius: 3mm;
+    display: inline-block;
+  }
+
+  /* ==================== CALLOUTS ==================== */
+  .callout {
+    padding: 3mm 4mm 3mm 5mm;
+    border-radius: var(--radius-sm);
+    margin: 4mm 0;
+    font-size: 10.5pt;
+    border-left: 4px solid;
+    background: #F9FAFB;
+  }
+
+  .callout-titulo {
+    font-weight: 700;
+    font-size: 10pt;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 1.5mm;
+    display: flex;
+    align-items: center;
+    gap: 2mm;
+  }
+
+  .callout-icone {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 5mm;
+    height: 5mm;
+    border-radius: 50%;
+    font-size: 9pt;
+    font-weight: 700;
+    color: white;
+    flex-shrink: 0;
+  }
+
+  .callout p { margin: 0; }
+
+  .callout-info { border-color: var(--ff-azul-medio); background: #F0F6FC; }
+  .callout-info .callout-titulo { color: var(--ff-azul-medio); }
+  .callout-info .callout-icone { background: var(--ff-azul-medio); }
+
+  .callout-atencao { border-color: var(--laranja); background: #FFF6EC; }
+  .callout-atencao .callout-titulo { color: var(--laranja); }
+  .callout-atencao .callout-icone { background: var(--laranja); }
+
+  .callout-importante { border-color: var(--vermelho); background: #FDECEC; }
+  .callout-importante .callout-titulo { color: var(--vermelho); }
+  .callout-importante .callout-icone { background: var(--vermelho); }
+
+  .callout-dica { border-color: var(--verde); background: #EEF8EF; }
+  .callout-dica .callout-titulo { color: var(--verde); }
+  .callout-dica .callout-icone { background: var(--verde); }
+
+  /* ==================== CHECKLISTS ==================== */
+  .checklist-impresso { list-style: none; padding-left: 0; margin: 3mm 0; }
+
+  .checklist-impresso li {
+    display: flex;
+    align-items: flex-start;
+    gap: 3mm;
+    padding: 2mm 0;
+    font-size: 11pt;
+    line-height: 1.5;
+  }
+
+  .checklist-impresso li::before {
+    content: '';
+    width: 4mm;
+    height: 4mm;
+    border: 1.5px solid var(--ff-azul-medio);
+    border-radius: 1mm;
+    flex-shrink: 0;
+    margin-top: 1.5mm;
+    background: white;
+  }
+
+  /* ==================== BOAS PRÁTICAS ==================== */
+  .boas-praticas-impresso { list-style: none; padding-left: 0; margin: 3mm 0; }
+
+  .boas-praticas-impresso li {
+    display: flex;
+    align-items: flex-start;
+    gap: 3mm;
+    padding: 2mm 0;
+    font-size: 11pt;
+    line-height: 1.5;
+  }
+
+  .boas-praticas-impresso li::before {
+    content: '';
+    width: 2.5mm;
+    height: 2.5mm;
+    border-radius: 50%;
+    background: var(--ff-azul-medio);
+    flex-shrink: 0;
+    margin-top: 2.5mm;
+  }
+
+  /* ==================== BLOCOS DE MÓDULO ==================== */
+  .modulo-bloco {
+    margin-bottom: 8mm;
+    padding: 4mm 5mm;
+    border: 1px solid #DDE5ED;
+    border-radius: var(--radius-sm);
+    background: #FCFDFE;
+    break-inside: avoid;
+  }
+
+  .modulo-cabecalho {
+    display: flex;
+    align-items: center;
+    gap: 4mm;
+    padding-bottom: 3mm;
+    margin-bottom: 3mm;
+    border-bottom: 1.5px solid var(--ff-azul-borda);
+  }
+
+  .modulo-numero {
+    width: 10mm;
+    height: 10mm;
+    border-radius: var(--radius-sm);
+    background: var(--ff-azul-escuro);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12pt;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .modulo-titulo {
+    font-size: 14pt;
+    font-weight: 700;
+    color: var(--ff-azul-escuro);
+    line-height: 1.2;
+  }
+
+  .modulo-titulo small {
+    display: block;
+    font-size: 9pt;
+    color: var(--cinza-medio);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    margin-bottom: 0.5mm;
+  }
+
+  .modulo-meta {
+    margin: 3mm 0;
+  }
+
+  .modulo-meta-bloco {
+    margin-bottom: 2.5mm;
+  }
+
+  .modulo-meta-bloco .rotulo {
+    font-size: 9pt;
+    color: var(--ff-azul-medio);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    margin-bottom: 0.5mm;
+  }
+
+  .modulo-meta-bloco .texto {
+    font-size: 10.5pt;
+    color: var(--cinza-escuro);
+    line-height: 1.55;
+  }
+
+  /* ==================== ESPAÇO PARA ANOTAÇÕES ==================== */
+  .anotacoes {
+    margin-top: 8mm;
+    padding: 4mm 5mm;
+    border: 1.5px dashed #B0BEC5;
+    border-radius: var(--radius-sm);
+    background: #FCFDFE;
+  }
+
+  .anotacoes-titulo {
+    font-size: 10pt;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--cinza-medio);
+    font-weight: 700;
+    margin-bottom: 3mm;
+    display: flex;
+    align-items: center;
+    gap: 2mm;
+  }
+
+  .anotacoes-titulo::before {
+    content: '';
+    width: 6mm;
+    height: 2px;
+    background: var(--cinza-medio);
+    border-radius: 1px;
+  }
+
+  .anotacoes-linhas {
+    display: flex;
+    flex-direction: column;
+    gap: 5mm;
+  }
+
+  .anotacoes-linhas .linha {
+    border-bottom: 1px dotted #B0BEC5;
+    height: 0;
+  }
+
+  /* ==================== NOTA DE RODAPÉ / PÁGINA FINAL ==================== */
+  .pagina-final {
+    text-align: center;
+    padding-top: 40mm;
+  }
+
+  .pagina-final .icone-final {
+    width: 30mm;
+    height: 30mm;
+    margin: 0 auto 8mm;
+    border-radius: 50%;
+    background: var(--ff-lima-claro);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid var(--ff-lima);
+  }
+
+  .pagina-final .icone-final svg {
+    width: 15mm;
+    height: 15mm;
+    color: var(--ff-lima-escuro);
+  }
+
+  .pagina-final h2 {
+    font-size: 20pt;
+    color: var(--ff-azul-escuro);
+    margin-bottom: 4mm;
+    font-weight: 700;
+  }
+
+  .pagina-final p {
+    font-size: 12pt;
+    color: var(--cinza-medio);
+    max-width: 130mm;
+    margin: 0 auto 4mm;
+    line-height: 1.7;
+  }
+
+  /* ==================== BADGE REVER ==================== */
+  .badge-rever {
+    display: inline-block;
+    background: var(--vermelho-claro);
+    color: var(--vermelho);
+    font-size: 8.5pt;
+    font-weight: 700;
+    padding: 1mm 2.5mm;
+    border-radius: 3mm;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-left: 3mm;
+    vertical-align: middle;
+    border: 1px solid var(--vermelho);
+  }
+
+  /* ==================== ÍCONES EM SVG (tamanho para impressão) ==================== */
+  .svg-mini {
+    width: 4mm;
+    height: 4mm;
+    display: inline-block;
+    vertical-align: -0.5mm;
+  }
+
+  /* ==================== LAYOUT MULTI-COLUNA ==================== */
+  .grid-duas-colunas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6mm;
+    margin: 3mm 0;
+  }
+
+  .grid-tres-colunas {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 4mm;
+    margin: 3mm 0;
+  }
+
+  /* ==================== ESTILO DE IMPRESSÃO ==================== */
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  @media print {
+    body {
+      background: white;
+      font-size: 11pt;
+    }
+
+    .page {
+      width: 100%;
+      min-height: auto;
+      margin: 0;
+      padding: 22mm 20mm 20mm 20mm;
+      box-shadow: none;
+      page-break-after: always;
+    }
+
+    .page:last-child { page-break-after: auto; }
+
+    .no-print { display: none !important; }
+
+    /* Impede quebras dentro de blocos */
+    .modulo-bloco,
+    .callout,
+    .fluxo-impresso,
+    .tabela {
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    h1, h2, h3 { break-after: avoid; page-break-after: avoid; }
+
+    /* Ajuste de cores para impressão */
+    .capa {
+      background: white !important;
+      min-height: 260mm;
+      padding-top: 60mm;
+    }
+
+    .capa-logo { margin-bottom: 40mm; }
+
+    /* Rodapé com número de página */
+    .page::after {
+      content: counter(pagina);
+      bottom: 10mm;
+      right: 20mm;
+      font-size: 9pt;
+    }
+
+    .page::before {
+      top: 10mm;
+      font-size: 8pt;
+    }
+  }
+
+  /* ==================== BARRA DE FERRAMENTAS (TELA) ==================== */
+  .toolbar {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    background: white;
+    padding: 10px 16px;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    display: flex;
+    gap: 8px;
+    z-index: 1000;
+    align-items: center;
+  }
+
+  .toolbar-info {
+    font-size: 11px;
+    color: var(--cinza-medio);
+    margin-right: 8px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .toolbar-btn {
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: none;
+    background: var(--ff-azul-medio);
+    color: white;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .toolbar-btn:hover { background: var(--ff-azul-escuro); }
+
+  .toolbar-btn svg { width: 16px; height: 16px; }
+
+  @media print {
+    .toolbar { display: none !important; }
+  }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap">
+<link rel="stylesheet" href="brand-system.css">
+<script src="apostila-pdf.js"></script>
+<script src="brand-motion.js" defer></script>
+</head>
+<body class="ff-handbook">
+
+<!-- ==================== BARRA DE FERRAMENTAS ==================== -->
+<div class="toolbar no-print">
+  <span class="toolbar-info">Apostila A4</span>
+  <a class="toolbar-btn" href="downloads/Apostila-do-Consultor-Faktory-Flow.pdf" download="Apostila-do-Consultor-Faktory-Flow.pdf">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    Exportar PDF
+  </a>
+</div>
+
+<!-- ==================== CAPA ==================== -->
+<div class="page capa">
+  <span class="ff-logo-wrap"><img class="capa-logo" src="assets/Logo%20Faktory%20Flow.png" alt="Faktory Flow" width="176" height="80"></span>
+
+  <h1 class="capa-titulo">Apostila do Consultor de Implantação</h1>
+  <div class="capa-linha"></div>
+  <p class="capa-subtitulo">Guia completo para conduzir implantações do Faktory Flow com método, clareza e autonomia.</p>
+
+  <div class="capa-meta">
+    <p><strong>Versão</strong> 1.0 · Material de uso interno</p>
+    <p><strong>Público-alvo</strong> Consultores de implantação, novos colaboradores e estagiários</p>
+    <p><strong>Última atualização</strong> 2025</p>
+  </div>
+</div>
+
+<!-- ==================== FICHA TÉCNICA ==================== -->
+<div class="page">
+  <div class="titulo-pagina">
+    <span class="numero-secao">Ficha Técnica</span>
+    <h1>Sobre esta Apostila</h1>
+    <p>Informações gerais sobre o material, seu propósito e como utilizá-lo durante a implantação.</p>
+  </div>
+
+  <div class="ficha-tecnica">
+
+    <div class="ficha-bloco">
+      <h4>Propósito</h4>
+      <p>Esta apostila tem como objetivo capacitar consultores de implantação a compreender os processos de negócio dos clientes, conduzir treinamentos com autonomia, orientar usuários, identificar riscos e diagnosticar problemas antes de encaminhar chamados. O foco é o <strong>processo de negócio</strong>, não apenas a funcionalidade do sistema.</p>
+    </div>
+
+    <div class="ficha-bloco">
+      <h4>A quem se destina</h4>
+      <ul>
+        <li>Consultores de implantação do Faktory Flow</li>
+        <li>Novos colaboradores em treinamento</li>
+        <li>Estagiários e profissionais em formação</li>
+        <li>Usuários de empresas clientes que precisam compreender o fluxo de implantação</li>
+      </ul>
+    </div>
+
+    <div class="ficha-bloco">
+      <h4>Como usar</h4>
+      <ul>
+        <li>Leia a Parte I e Parte II antes de iniciar qualquer implantação</li>
+        <li>Consulte os módulos da Parte V conforme o escopo contratado</li>
+        <li>Use a Biblioteca de Processos (Parte VII) como referência durante o dia a dia</li>
+        <li>Utilize as seções de anotações ao final de cada parte para registrar observações pessoais</li>
+      </ul>
+    </div>
+
+    <div class="ficha-bloco">
+      <h4>Estrutura do material</h4>
+      <ul>
+        <li><strong>Parte I</strong> — A Implantação: conceitos, papel do consultor e responsabilidades</li>
+        <li><strong>Parte II</strong> — O Método Faktory: as 7 etapas padronizadas</li>
+        <li><strong>Parte V</strong> — Os Módulos: descrição funcional de cada módulo</li>
+        <li><strong>Parte VI</strong> — Estudo de Caso: implantação completa (em elaboração)</li>
+        <li><strong>Parte VII</strong> — Biblioteca de Processos e Diagnóstico de Problemas</li>
+      </ul>
+    </div>
+
+    <div class="ficha-bloco">
+      <h4>Controle de versão</h4>
+      <p><strong>Versão 1.0</strong> — 2025 · Versão inicial otimizada, com fluxos impressos e checklists revisados.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ==================== SUMÁRIO ==================== -->
+<div class="page">
+  <div class="titulo-pagina">
+    <span class="numero-secao">Sumário</span>
+    <h1>Índice de Conteúdo</h1>
+  </div>
+
+  <div class="sumario">
+    <a class="sumario-item principal">
+      <span class="numero">I</span>
+      <span class="titulo">A Implantação</span>
+      <span class="pagina">5</span>
+    </a>
+    <a class="sumario-item sub"><span class="numero">1</span><span class="titulo">O que é implantar o Faktory Flow</span><span class="pagina">5</span></a>
+    <a class="sumario-item sub"><span class="numero">2</span><span class="titulo">O papel do consultor</span><span class="pagina">6</span></a>
+    <a class="sumario-item sub"><span class="numero">3</span><span class="titulo">Conhecendo o cliente e suas responsabilidades</span><span class="pagina">7</span></a>
+    <a class="sumario-item sub"><span class="numero">4</span><span class="titulo">Como conduzir o projeto</span><span class="pagina">8</span></a>
+
+    <a class="sumario-item principal">
+      <span class="numero">II</span>
+      <span class="titulo">O Método Faktory</span>
+      <span class="pagina">10</span>
+    </a>
+    <a class="sumario-item sub"><span class="numero">1</span><span class="titulo">Reunião de Alinhamento (RA)</span><span class="pagina">10</span></a>
+    <a class="sumario-item sub"><span class="numero">2</span><span class="titulo">Configuração do ambiente</span><span class="pagina">11</span></a>
+    <a class="sumario-item sub"><span class="numero">3</span><span class="titulo">Definição do cronograma</span><span class="pagina">11</span></a>
+    <a class="sumario-item sub"><span class="numero">4</span><span class="titulo">Treinamentos</span><span class="pagina">12</span></a>
+    <a class="sumario-item sub"><span class="numero">5</span><span class="titulo">Preparação para o Go-live</span><span class="pagina">12</span></a>
+    <a class="sumario-item sub"><span class="numero">6</span><span class="titulo">Go-live</span><span class="pagina">13</span></a>
+    <a class="sumario-item sub"><span class="numero">7</span><span class="titulo">Encerramento da implantação</span><span class="pagina">13</span></a>
+
+    <a class="sumario-item principal">
+      <span class="numero">V</span>
+      <span class="titulo">Os Módulos do Faktory Flow</span>
+      <span class="pagina">14</span>
+    </a>
+    <a class="sumario-item sub"><span class="numero">1</span><span class="titulo">Vendas</span><span class="pagina">15</span></a>
+    <a class="sumario-item sub"><span class="numero">2</span><span class="titulo">Faturamento</span><span class="pagina">16</span></a>
+    <a class="sumario-item sub"><span class="numero">3</span><span class="titulo">Financeiro</span><span class="pagina">17</span></a>
+    <a class="sumario-item sub"><span class="numero">4</span><span class="titulo">CRM</span><span class="pagina">18</span></a>
+    <a class="sumario-item sub"><span class="numero">5</span><span class="titulo">Produção</span><span class="pagina">19</span></a>
+    <a class="sumario-item sub"><span class="numero">6</span><span class="titulo">Compras</span><span class="pagina">20</span></a>
+    <a class="sumario-item sub"><span class="numero">7</span><span class="titulo">Recebimento</span><span class="pagina">21</span></a>
+    <a class="sumario-item sub"><span class="numero">8</span><span class="titulo">Estoque</span><span class="pagina">22</span></a>
+    <a class="sumario-item sub"><span class="numero">9</span><span class="titulo">Expedição</span><span class="pagina">23</span></a>
+    <a class="sumario-item sub"><span class="numero">10</span><span class="titulo">Serviços e Instalação</span><span class="pagina">24</span></a>
+    <a class="sumario-item sub"><span class="numero">11</span><span class="titulo">Projetos e Obras</span><span class="pagina">25</span></a>
+    <a class="sumario-item sub"><span class="numero">12</span><span class="titulo">Fiscal</span><span class="pagina">26</span></a>
+    <a class="sumario-item sub"><span class="numero">13</span><span class="titulo">Relatórios e Análises</span><span class="pagina">27</span></a>
+    <a class="sumario-item sub"><span class="numero">14</span><span class="titulo">Tarefas</span><span class="pagina">28</span></a>
+    <a class="sumario-item sub"><span class="numero">15</span><span class="titulo">Alumina (IA)</span><span class="pagina">29</span></a>
+
+    <a class="sumario-item principal">
+      <span class="numero">VI</span>
+      <span class="titulo">Estudo de Caso</span>
+      <span class="pagina">30</span>
+    </a>
+
+    <a class="sumario-item principal">
+      <span class="numero">VII</span>
+      <span class="titulo">Biblioteca de Processos e Diagnóstico</span>
+      <span class="pagina">31</span>
+    </a>
+    <a class="sumario-item sub"><span class="numero">1</span><span class="titulo">Biblioteca de Processos</span><span class="pagina">31</span></a>
+    <a class="sumario-item sub"><span class="numero">2</span><span class="titulo">Biblioteca de Problemas — Diagnóstico</span><span class="pagina">34</span></a>
+
+    <a class="sumario-item principal">
+      <span class="numero">—</span>
+      <span class="titulo">Conclusão do Guia</span>
+      <span class="pagina">37</span>
+    </a>
+  </div>
+</div>
+
+<!-- ==================== PARTE I — ABERTURA ==================== -->
+<div class="page">
+  <div class="titulo-pagina">
+    <span class="numero-secao">Parte I</span>
+    <h1>A Implantação</h1>
+    <p>O que é implantar, o papel do consultor, as responsabilidades do cliente e como conduzir o projeto.</p>
+  </div>
+
+  <h2 class="subtitulo-secao">1. O que é implantar o Faktory Flow</h2>
+  <p>O Faktory Flow centraliza e integra os processos da empresa em um único ambiente. A implantação <strong>não é apenas instalar o sistema</strong> — é preparar a empresa para usá-lo com autonomia.</p>
+
+  <table class="tabela">
+    <thead>
+      <tr><th style="width: 35%">Etapa</th><th>O que acontece</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Reunião de Alinhamento</td><td>Conhecer o cliente e definir o projeto</td></tr>
+      <tr><td>Configuração do ambiente</td><td>Garantir acessos e pré-requisitos técnicos</td></tr>
+      <tr><td>Cronograma</td><td>Organizar datas, módulos e participantes</td></tr>
+      <tr><td>Treinamentos</td><td>Ensinar processos, não apenas telas</td></tr>
+      <tr><td>Preparação para o Go-live</td><td>Validar cadastros, acessos e fluxos</td></tr>
+      <tr><td>Go-live</td><td>Entrada em produção assistida</td></tr>
+      <tr><td>Encerramento</td><td>Formalizar a conclusão e migrar para o Suporte</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout callout-info">
+    <div class="callout-titulo"><span class="callout-icone">i</span>Regra de ouro</div>
+    <p>Cada etapa depende da conclusão da anterior. Não antecipe atividades sem os pré-requisitos prontos.</p>
+  </div>
+
+  <h2 class="subtitulo-secao">2. O papel do consultor</h2>
+  <p>Você é um <strong>facilitador</strong>, não um instrutor de telas. Seu trabalho é traduzir a realidade do cliente para dentro do sistema.</p>
+
+  <div class="grid-duas-colunas">
+    <div>
+      <h3 class="subtitulo-menor" style="color: var(--verde);">O que você FAZ</h3>
+      <ul class="boas-praticas-impresso">
+        <li>Compreende os processos do cliente antes de treinar</li>
+        <li>Organiza etapas e registra decisões</li>
+        <li>Identifica riscos e pendências com responsáveis e prazos</li>
+        <li>Desenvolve a autonomia dos usuários</li>
+        <li>Diferencia erro de parametrização, falha operacional e bug</li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="subtitulo-menor" style="color: var(--vermelho);">O que você NÃO FAZ</h3>
+      <ul class="boas-praticas-impresso">
+        <li style="color: var(--vermelho);">Não promete funcionalidades que não existem</li>
+        <li style="color: var(--vermelho);">Não decide regras internas, fiscais ou contábeis pelo cliente</li>
+        <li style="color: var(--vermelho);">Não assume responsabilidades que pertencem à gestão da empresa</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout callout-atencao">
+    <div class="callout-titulo"><span class="callout-icone">!</span>Atenção</div>
+    <p>Questões fiscais (NCM, CFOP, CST, tributação) devem ser validadas <strong>pelo cliente e seu contador</strong>. Você orienta, não decide.</p>
+  </div>
+
+  <h2 class="subtitulo-secao">3. Conhecendo o cliente e suas responsabilidades</h2>
+  <p>A <strong>Reunião de Alinhamento (RA)</strong> é o momento para entender o cenário.</p>
+
+  <h3 class="subtitulo-menor">O que levantar na RA</h3>
+  <ul class="boas-praticas-impresso">
+    <li>Atividade principal da empresa</li>
+    <li>Processo comercial</li>
+    <li>Módulos contratados</li>
+    <li>Integrações (CEM Desktop, Mobi)</li>
+    <li>Como emitem Nota Fiscal hoje</li>
+    <li>Como controlam o financeiro</li>
+    <li>Responsáveis pelo projeto</li>
+  </ul>
+
+  <h3 class="subtitulo-menor">Papéis do cliente</h3>
+  <table class="tabela">
+    <thead>
+      <tr><th style="width: 30%">Papel</th><th>Responsabilidade</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Sponsor</strong></td><td>Apoio e decisões estratégicas</td></tr>
+      <tr><td><strong>Gerente de Projetos</strong></td><td>Acompanha cronograma, centraliza decisões, administra horas</td></tr>
+      <tr><td><strong>Key User</strong></td><td>Conhece os processos, participa das validações, é referência para os demais</td></tr>
+    </tbody>
+  </table>
+
+  <div class="anotacoes">
+    <div class="anotacoes-titulo">Anotações</div>
+    <div class="anotacoes-linhas">
+      <div class="linha"></div>
+      <div class="linha"></div>
+      <div class="linha"></div>
+      <div class="linha"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== PARTE I — CONDUÇÃO ==================== -->
+<div class="page">
+  <h2 class="subtitulo-secao" style="margin-top: 0;">4. Como conduzir o projeto</h2>
+  <p>A condução segue uma ordem lógica. Cada etapa prepara a próxima.</p>
+
+  <h3 class="subtitulo-menor">Ordem lógica da condução</h3>
+
+  <div class="fluxo-impresso fluxo-mapa-impresso">
+    <div class="mapa">
+      <div class="mapa-raiz">Condução do Projeto</div>
+      <div class="mapa-ramos"><div class="mapa-ramos-conector"></div><div class="mapa-ramo">Etapas</div></div>
+      <div class="mapa-folhas">
+        <div class="mapa-folha">Conhecer o cliente</div>
+        <div class="mapa-folha">Confirmar escopo</div>
+        <div class="mapa-folha">Identificar usuários</div>
+        <div class="mapa-folha">Verificar pré-requisitos</div>
+        <div class="mapa-folha">Definir datas</div>
+        <div class="mapa-folha">Treinar</div>
+        <div class="mapa-folha destaque">Registrar na OS</div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="subtitulo-menor">Princípios de condução</h3>
+  <ul class="boas-praticas-impresso">
+    <li>Ensine <strong>processos</strong>, não funcionalidades</li>
+    <li>Mostre o <strong>impacto</strong> de cada ação nos módulos seguintes</li>
+    <li>Use exemplos da rotina do cliente</li>
+    <li>Uma etapa só termina quando o cliente <strong>compreende, executa e valida</strong></li>
+  </ul>
+
+  <div class="callout callout-dica">
+    <div class="callout-titulo"><span class="callout-icone">✓</span>Exemplo prático</div>
+    <p>Um pedido de venda gera nota fiscal e títulos no Contas a Receber. Por isso, Vendas, Faturamento, Fiscal e Financeiro devem ser treinados de forma conectada.</p>
+  </div>
+
+  <h3 class="subtitulo-menor">Preparação para as próximas etapas</h3>
+  <p>Antes de ensinar o sistema, o consultor precisa compreender o projeto que está conduzindo. O Faktory Flow é a ferramenta utilizada para organizar os processos da empresa, mas é a atuação do consultor, em conjunto com o envolvimento do cliente, que transforma essa ferramenta em uma solução realmente aplicada à rotina do negócio.</p>
+
+  <div class="anotacoes">
+    <div class="anotacoes-titulo">Anotações</div>
+    <div class="anotacoes-linhas">
+      <div class="linha"></div>
+      <div class="linha"></div>
+      <div class="linha"></div>
+      <div class="linha"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== PARTE II — MÉTODO ==================== -->
+<div class="page">
+  <div class="titulo-pagina">
+    <span class="numero-secao">Parte II</span>
+    <h1>O Método Faktory</h1>
+    <p>Sequência padronizada de implantação. Cada etapa possui objetivo específico e depende da conclusão da etapa anterior.</p>
+  </div>
+
+  <div class="callout callout-info">
+    <div class="callout-titulo"><span class="callout-icone">i</span>Sequência obrigatória</div>
+    <p>O consultor deve respeitar a ordem da implantação e evitar antecipar atividades que ainda não possuem os pré-requisitos necessários.</p>
+  </div>
+
+  <div class="fluxo-impresso fluxo-mapa-impresso">
+    <div class="mapa">
+      <div class="mapa-raiz">Metodologia da Implantação</div>
+      <div class="mapa-ramos"><div class="mapa-ramos-conector"></div><div class="mapa-ramo">Etapas Sequenciais</div></div>
+      <div class="mapa-folhas">
+        <div class="mapa-folha">Reunião de Alinhamento (RA)</div>
+        <div class="mapa-folha">Configuração do Ambiente</div>
+        <div class="mapa-folha">Definição do Cronograma</div>
+        <div class="mapa-folha">Treinamentos Práticos</div>
+        <div class="mapa-folha">Preparação para o Go-live</div>
+        <div class="mapa-folha">Go-live (Produção Assistida)</div>
+        <div class="mapa-folha destaque">Encerramento e Transição</div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="subtitulo-secao">1. Reunião de Alinhamento (RA)</h2>
+  <p>Início oficial do projeto. Seu principal objetivo é conhecer o cliente, apresentar a metodologia da Faktory, alinhar expectativas e definir como a implantação será conduzida.</p>
+  <p><strong>O que apresentar:</strong> escopo contratado, etapas do projeto, papel de cada participante, atendimentos, registros em Ordem de Serviço, reagendamentos e transição para o Suporte.</p>
+
+  <h2 class="subtitulo-secao">2. Configuração do ambiente</h2>
+  <p>Garantir que toda a estrutura necessária para os treinamentos esteja pronta.</p>
+  <ul class="checklist-impresso">
+    <li>Acesso ao Faktory Flow</li>
+    <li>Usuários cadastrados e permissões corretas</li>
+    <li>Internet estável</li>
+    <li>Ferramenta de acesso remoto instalada</li>
+    <li>Agent Faktory configurado (se utilizar CEM Desktop)</li>
+  </ul>
+  <div class="callout callout-atencao">
+    <div class="callout-titulo"><span class="callout-icone">!</span>Atenção</div>
+    <p>Se algum pré-requisito não estiver pronto, resolva <strong>antes</strong> de iniciar os treinamentos.</p>
+  </div>
+</div>
+
+<div class="page">
+  <h2 class="subtitulo-secao" style="margin-top: 0;">3. Definição do cronograma</h2>
+  <p>Organizar a implantação — quais módulos, em qual ordem, com quais usuários e quais objetivos.</p>
+
+  <h3 class="subtitulo-menor">Sequência lógica recomendada</h3>
+  <div class="fluxo-impresso fluxo-mapa-impresso">
+    <div class="mapa">
+      <div class="mapa-raiz">Sequência Recomendada</div>
+      <div class="mapa-ramos"><div class="mapa-ramos-conector"></div><div class="mapa-ramo">Módulos</div></div>
+      <div class="mapa-folhas">
+        <div class="mapa-folha">Integração CEM</div>
+        <div class="mapa-folha">Vendas</div>
+        <div class="mapa-folha">Faturamento e Fiscal</div>
+        <div class="mapa-folha destaque">Financeiro</div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="subtitulo-secao">4. Treinamentos</h2>
+  <p>Etapa de maior interação entre consultor e cliente. Mais do que apresentar funcionalidades, o consultor deve <strong>ensinar processos</strong>. O cliente precisa compreender:</p>
+  <ul class="boas-praticas-impresso">
+    <li>Quando utilizar determinada função</li>
+    <li>Por que utilizá-la</li>
+    <li>Quais informações são obrigatórias</li>
+    <li>Quais impactos aquela ação gera nos demais módulos</li>
+  </ul>
+
+  <h2 class="subtitulo-secao">5. Preparação para o Go-live</h2>
+  <p>Antes da entrada em produção, é necessário validar que a empresa está preparada para utilizar o sistema em sua operação diária.</p>
+  <ul class="checklist-impresso">
+    <li>Principais cadastros realizados</li>
+    <li>Usuários com acesso ao sistema</li>
+    <li>Processos testados</li>
+    <li>Configurações fiscais revisadas</li>
+    <li>Fluxos financeiros validados</li>
+    <li>Integrações previstas funcionando</li>
+  </ul>
+  <p>O objetivo não é eliminar todas as dúvidas, mas garantir que o cliente possua segurança para iniciar a utilização do sistema.</p>
+
+  <h2 class="subtitulo-secao">6. Go-live</h2>
+  <p>Momento em que a empresa passa a utilizar o Faktory Flow como seu sistema oficial. Normalmente, os primeiros dias geram dúvidas, ajustes e validações adicionais. Por isso, a metodologia prevê uma <strong>entrada em produção assistida</strong>.</p>
+
+  <h2 class="subtitulo-secao">7. Encerramento da implantação</h2>
+  <p>A implantação é considerada concluída quando os objetivos definidos foram alcançados e o cliente está apto a utilizar o sistema em sua rotina.</p>
+
+  <h3 class="subtitulo-menor">Antes de finalizar o projeto</h3>
+  <ul class="checklist-impresso">
+    <li>Revisar todas as pendências</li>
+    <li>Confirmar que os treinamentos previstos foram realizados</li>
+    <li>Garantir que as Ordens de Serviço estejam aprovadas</li>
+    <li>Formalizar a conclusão junto ao cliente</li>
+  </ul>
+
+  <div class="callout callout-info">
+    <div class="callout-titulo"><span class="callout-icone">i</span>Importante</div>
+    <p>Após o encerramento, dúvidas operacionais passam para o <strong>Suporte</strong>. Novos acompanhamentos consultivos exigem nova carga de horas.</p>
+  </div>
+
+  <div class="callout callout-dica">
+    <div class="callout-titulo"><span class="callout-icone">✓</span>Métrica de sucesso</div>
+    <p>O sucesso não é medido pela quantidade de reuniões realizadas, mas pela <strong>capacidade do cliente de usar o Faktory Flow com autonomia, segurança e confiança</strong>.</p>
+  </div>
+
+  <div class="anotacoes">
+    <div class="anotacoes-titulo">Anotações</div>
+    <div class="anotacoes-linhas">
+      <div class="linha"></div>
+      <div class="linha"></div>
+      <div class="linha"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== PARTE V — MÓDULOS ==================== -->
+<div class="page">
+  <div class="titulo-pagina">
+    <span class="numero-secao">Parte V</span>
+    <h1>Os Módulos do Faktory Flow</h1>
+    <p>Embora cada módulo possua características específicas, todos fazem parte de um único fluxo operacional. Os treinamentos devem ser conduzidos de forma integrada.</p>
+  </div>
+
+  <div class="callout callout-info">
+    <div class="callout-titulo"><span class="callout-icone">i</span>Ordem de implantação</div>
+    <p>Os primeiros módulos a serem implantados são <strong>Vendas → Faturamento → Fiscal → Financeiro</strong>. Os demais seguem conforme o escopo contratado e a necessidade de cada cliente.</p>
+  </div>
+
+  <h3 class="subtitulo-menor">Estrutura de cada módulo neste guia</h3>
+  <table class="tabela">
+    <thead>
+      <tr><th style="width: 40%">Seção</th><th>O que contém</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Objetivo do módulo</td><td>Finalidade e importância dentro do Faktory Flow</td></tr>
+      <tr><td>Papel na operação</td><td>Como o módulo se integra aos demais processos</td></tr>
+      <tr><td>Quando implantar</td><td>Fase do projeto em que o treinamento deve ocorrer</td></tr>
+      <tr><td>Fluxo operacional</td><td>Sequência recomendada de utilização</td></tr>
+      <tr><td>Condução do treinamento</td><td>Orientações para apresentar o processo</td></tr>
+      <tr><td>Boas práticas</td><td>Recomendações para reduzir retrabalhos</td></tr>
+      <tr><td>Checklist de validação</td><td>Pontos a confirmar antes de considerar implantado</td></tr>
+    </tbody>
+  </table>
+
+  <p style="margin-top: 6mm;">Os módulos a seguir são apresentados em blocos padronizados. Consulte cada um conforme o escopo contratado.</p>
+</div>
+
+<!-- ==================== MÓDULOS — BLOCO 1 ==================== -->
+<div class="page">
+  <h2 class="subtitulo-secao" style="margin-top: 0;">1. Vendas</h2>
+
+  <div class="modulo-bloco">
+    <div class="modulo-meta">
+      <div class="modulo-meta-bloco">
+        <div class="rotulo">Objetivo</div>
+        <div class="texto">Gerenciar o processo comercial, da criação do pedido ao faturamento. Integrado ao CEM, importa orçamentos sem redigitação.</div>
+      </div>
+      <div class="modulo-meta-bloco">
+        <div class="rotulo">Papel na operação</div>
+        <div class="texto">Inicia o fluxo operacional. Alimenta Faturamento, Fiscal, Financeiro, Produção e Expedição.</div>
+      </div>
+      <div class="modulo-meta-bloco">
+        <div class="rotulo">Quando implantar</div>
+        <div class="texto">Após configuração dos cadastros básicos e, preferencialmente, com integração CEM configurada.</div>
+      </div>
+    </div>
+
+    <div class="modulo-meta-bloco">
+      <div class="rotulo">Fluxo Operacional</div>
+      <div class="fluxo-impresso fluxo-mapa-impresso" style="margin-top: 2mm;">
+        <div class="mapa">
+          <div class="mapa-raiz">Fluxo Vendas</div>
+          <div class="mapa-ramos"><div class="mapa-ramos-conector"></div><div class="mapa-ramo">Etapas</div></div>
+          <div class="mapa-folhas">
+            <div class="mapa-folha">Projeto no CEM</div>
+            <div class="mapa-folha">Integração do orçamento</div>
+            <div class="mapa-folha">Pedido de venda</div>
+            <div class="mapa-folha">Faturamento</div>
+            <div class="mapa-folha">Geração da NF</div>
+            <div class="mapa-folha">Contas a Receber</div>
+            <div class="mapa-folha destaque">Liberação para Serviços, Produção e Expedição</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modulo-meta-bloco">
+      <div class="rotulo">Condução do treinamento</div>
+      <div class="texto">Priorize exemplos reais da empresa. O fluxo pode ser adaptado (ex: usar status "Encerrado" e gerar títulos antes do "Faturado"). O importante é que os usuários compreendam a lógica do processo.</div>
+    </div>
+
+    <div class="modulo-meta-bloco">
+      <div class="rotulo">Boas práticas</div>
+      <ul class="boas-praticas-impresso">
+        <li>Validar dados importados antes da aprovação</li>
+        <li>Explicar a importância dos status do pedido</li>
+        <li>Demonstrar faturamento parcial quando aplicável</li>
+        <li>Relacionar sempre aos demais módulos</li>
+      </ul>
+    </div>
+
+    <div class="modulo-meta-bloco">
+      <div class="rotulo">Checklist de validação</div>
+      <ul class="checklist-impresso">
+        <li>Importar orçamento do CEM (quando aplicável)</li>
+        <li>Cadastrar e aprovar pedido de venda</li>
+        <li>Realizar faturamento</li>
+        <li>Compreender integração com Faturamento, Financeiro, Serviços, Produção e Expedição</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="subtitulo-secao">2. Faturamento</h2>
+
+  <div class="modulo-bloco">
+    <div class="modulo-meta">
+      <div class="modulo-meta-bloco">
+        <div class="rotulo">Objetivo</div>
+        <div class="texto">Emitir documentos fiscais (NF-e/NFS-e), transmitir aos órgãos fiscais e integrar com Financeiro, Estoque e Expedição.</div>
+      </div>
+      <div class="modulo-meta-bloco">
+        <div class="rotulo">Papel na operação</div>
+        <div class="texto">Conecta a área comercial às etapas fiscais e operacionais.</div>
+      </div>
+      <div class="modulo-meta-bloco">
+        <div class="rotulo">Quando implantar</div>
+        <div class="texto">Após o módulo de Vendas e configuração das regras fiscais (CFOP, NCM, impostos, certificado digital).</div>
+      </div>
+    </div>
+
+    <div class="modulo-meta-bloco">
+      <div class="rotulo">Fluxo Operacional</div>
+      <div class="fluxo-impresso fluxo-mapa-impresso" style="margin-top: 2mm;">
+        <div class="mapa">
+          <div class="mapa-raiz">Fluxo Faturamento</div>
+          <div class="mapa-ramos"><div class="mapa-ramos-conector"></div><div class="mapa-ramo">Etapas</div></div>
+          <div class="mapa-folhas">
+            <div class="mapa-folha">Pedido de Venda</div>
+            <div class="mapa-folha">Geração da NF-e/NFS-e</div>
+            <div class="mapa-folha">Cálculo dos impostos</div>
+            <div class="mapa-folha">Transmissão à SEFAZ/Prefeitura</div>
+            <div class="mapa-folha">Autorização</div>
+            <div class="mapa-folha">Contas a Receber</div>
+            <div class="mapa-folha">Baixa de Estoque</div>
+            <div class="mapa-folha destaque">Liberação para Expedição</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modulo-meta-bloco">
+      <div class="rotulo">Boas práticas</div>
+      <ul class="boas-praticas-impresso">
+        <li>Validar configurações fiscais antes dos testes</li>
+        <li>Conferir certificado digital e validade</li>
+        <li>Orientar sobre impactos da autorização e cancelamento</li>
+        <li>Demonstrar integração com Financeiro, Estoque e Expedição</li>
+      </ul>
+    </div>
+
+    <div class="modulo-meta-bloco">
+      <div class="rotulo">Checklist de validação</div>
+      <ul class="checklist-impresso">
+        <li>Gerar NF-e ou NFS-e a partir de um pedido</li>
+        <li>Transmitir e acompanhar retorno da autorização</li>
+        <li>Emitir DANFE e XML</li>
+        <li>Realizar carta de correção e cancelamento (quando aplicável)</li>
+        <li>Compreender impactos nos módulos Financeiro, Estoque e Expedição</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== MÓDULOS — BLOCO 2 ==================== -->
+<div class="page">
+  <h2 class="subtitulo-secao" style="margin-top: 0;">3. Financeiro</h2>
+
+  <div class="modulo-bloco">
+    <div class="modulo-meta">
+      <div class="modulo-meta-bloco">
+        <div class="rotulo">Objetivo</div>
+        <div class="texto">Gerenciar movimentações financeiras — contas a receber, contas a pagar, cobranças, pagamentos, conciliação bancária e fluxo de caixa.</div>
+      </div>
+      <div class="modulo-meta-bloco">
+        <div class="rotulo">Papel na operação</div>
+        <div class="texto">Recebe informações de Vendas, Faturamento, Compras e Recebimento. Elimina lançamentos manuais.</div>
+      </div>
+      <div class="modulo-meta-bloco">
+        <div class="rotulo">Quando implantar</div>
+        <div class="texto">Após Vendas, Faturamento e configurações financeiras (plano de contas, contas bancárias, meios e condições de pagamento).</div>
+      </div>
+    </div>
+
+    <div class="modulo-meta-bloco">
+      <div class="rotulo">Fluxo Operacional</div>
+      <div class="fluxo-impresso fluxo-mapa-impresso" style="margin-top: 2mm;">
+        <div class="mapa">
+          <div class="mapa-raiz">Fluxo Financeiro</div>
+          <div class="mapa-ramos"><div class="mapa-ramos-conector"></div><div class="mapa-ramo">Etapas</div></div>
+          <div class="mapa-folhas">
+            <div class="mapa-folha">Pedido de Venda/NF</div>
+            <div class="mapa-folha">Geração automática dos títulos</div>
+            <div class="mapa-folha">Cobrança (boleto/PIX)</div>
+            <div class="mapa-folha">Recebimento ou pagamento</div>
+            <div class="mapa-folha">Conciliação bancária</div>
+            <div class="mapa-folha">Fluxo de Caixa</div>
+            <div class="mapa-folha destaque">DRE e Resultado por Obra</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modulo-meta-bloco">
+      <div class="rotulo">Boas práticas</div>
+      <ul class="boas-praticas-impresso">
+        <li>Configurar contas bancárias, plano de contas e meios de pagamento antes de operar</li>
+        <li>Incentivar geração automática de títulos</li>
+        <li>Demonstrar importância da conciliação e fluxo de caixa</li>
+        <li>Orientar uso dos demonstrativos para decisões</li>
+      </ul>
+    </div>
+
+    <div class="modulo-meta-bloco">
+      <div class="rotulo">Checklist de validação</div>
+      <ul class="checklist-impresso">
+        <li>Consultar contas a receber e a pagar</li>
+        <li>Realizar recebimentos e pagamentos</li>
+        <li>Consultar fluxo de caixa e demonstrativos</li>
+        <li>Compreender integração com Vendas, Faturamento, Compras e Recebimento</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="subtitulo-secao">4. CRM</h2>
+
+  <div class="modulo-bloco">
+    <div class="modulo-meta">
+      <div class="modulo-meta-bloco">
+        <div class="rotulo">Objetivo</div>
+        <div class="texto">Gerenciar o relacionamento com clientes, do primeiro contato ao pós-venda.</div>
+      </div>
+      <div class="modulo-meta-bloco">
+        <div class="rotulo">Papel na operação</div>
+        <div class="texto">Porta de entrada do processo comercial. Oportunidades são convertidas em pedidos de venda.</div>
+      </div>
+      <div class="modulo-meta-bloco">
+        <div class="rotulo">Quando implantar</div>
+        <div class="texto">Antes do módulo de Vendas.</div>
+      </div>
+    </div>
+
+    <div class="modulo-meta-bloco">
+      <div class="rotulo">Fluxo Operacional</div>
+      <div class="fluxo-impresso fluxo-mapa-impresso" style="margin-top: 2mm;">
+        <div class="mapa">
+          <div class="mapa-raiz">Fluxo CRM</div>
+          <div class="mapa-ramos"><div class="mapa-ramos-conector"></div><div class="mapa-ramo">Etapas</div></div>
+          <div class="mapa-folhas">
+            <div class="mapa-folha">Captação de Leads</div>
+            <div class="mapa-folha">Qualificação</div>
+            <div class="mapa-folha">Negociação</div>
+            <div class="mapa-folha">Conversão em Pedido de Venda</div>
+            <div class="mapa-folha destaque">Pós-venda e Acompanhamento</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modulo-meta-bloco">
+      <div class="rotulo">Checklist de validação</div>
+      <ul class="checklist-impresso">
+        <li>Cadastrar contato ou oportunidade</li>
+        <li>Movimentar oportunidades no funil</li>
+        <li>Registrar atividades e acompanhamentos</li>
+        <li>Converter oportunidade em pedido de venda</li>
+        <li>Consultar histórico e visão do cliente</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== MÓDULOS — BLOCO 3 ==================== -->
+<div class="page">
+  <h2 class="subtitulo-secao" style="margin-top: 0;">5. Produção</h2>
+
+  <div class="modulo-bloco">
+    <div class="modulo-meta-bloco">
+      <div class="rotulo">Objetivo</div>
+      <div class="texto">Transformar pedidos de venda em ordens de produção, organizando planejamento, consumo de materiais e etapas produtivas.</div>
+    </div>
+    <div class="modulo-meta-bloco">
+      <div class="rotulo">Quando implantar</div>
+      <div class="texto">Após Vendas e Estoque.</div>
+    </div>
+    <div class="modulo-meta-bloco">
+      <div class="rotulo">Fluxo Operacional</div>
+      <div class="fluxo-impresso fluxo-mapa-impresso" style="margin-top: 2mm;">
+        <div class="mapa">
+          <div class="mapa-raiz">Fluxo Produção</div>
+          <div class="mapa-ramos"><div class="mapa-ramos-conector"></div><div class="mapa-ramo">Etapas</div></div>
+          <div class="mapa-folhas">
+            <div class="mapa-folha">Pedido de Venda</div>
+            <div class="mapa-folha">Ordem de Produção</div>
+            <div class="mapa-folha">Planejamento</div>
+            <div class="mapa-folha">Separação de Materiais</div>
+            <div class="mapa-folha">Produção</div>
+            <div class="mapa-folha">Apontamento das Etapas</div>
+            <div class="mapa-folha">Conclusão da Ordem</div>
+            <div class="mapa-folha destaque">Liberação para Instalação ou Expedição</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modulo-meta-bloco">
+      <div class="rotulo">Checklist de validação</div>
+      <ul class="checklist-impresso">
+        <li>Gerar ordem de produção a partir de pedido</li>
+        <li>Planejar e acompanhar produção</li>
+        <li>Realizar apontamentos das etapas</li>
+        <li>Consultar andamento das ordens</li>
+        <li>Compreender integração com Vendas, Estoque, Compras e Expedição</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="subtitulo-secao">6. Compras</h2>
+
+  <div class="modulo-bloco">
+    <div class="modulo-meta-bloco">
+      <div class="rotulo">Objetivo</div>
+      <div class="texto">Gerenciar aquisição de materiais — cotações, comparação de fornecedores, pedidos e acompanhamento de entregas.</div>
+    </div>
+    <div class="modulo-meta-bloco">
+      <div class="rotulo">Quando implantar</div>
+      <div class="texto">Após Estoque e Produção.</div>
+    </div>
+    <div class="modulo-meta-bloco">
+      <div class="rotulo">Fluxo Operacional</div>
+      <div class="fluxo-impresso fluxo-mapa-impresso" style="margin-top: 2mm;">
+        <div class="mapa">
+          <div class="mapa-raiz">Fluxo Compras</div>
+          <div class="mapa-ramos"><div class="mapa-ramos-conector"></div><div class="mapa-ramo">Etapas</div></div>
+          <div class="mapa-folhas">
+            <div class="mapa-folha">Necessidade de Compra</div>
+            <div class="mapa-folha">Cotação</div>
+            <div class="mapa-folha">Comparação de Fornecedores</div>
+            <div class="mapa-folha">Pedido de Compra</div>
+            <div class="mapa-folha">Acompanhamento da Entrega</div>
+            <div class="mapa-folha destaque">Recebimento da Mercadoria</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modulo-meta-bloco">
+      <div class="rotulo">Checklist de validação</div>
+      <ul class="checklist-impresso">
+        <li>Gerar solicitação de compra</li>
+        <li>Realizar cotação com fornecedores</li>
+        <li>Emitir pedido de compra</li>
+        <li>Acompanhar entrega dos materiais</li>
+        <li>Compreender integração com Produção, Recebimento, Financeiro e Estoque</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== MÓDULOS — BLOCO 4 ==================== -->
+<div class="page">
+  <h2 class="subtitulo-secao" style="margin-top: 0;">7. Recebimento</h2>
+
+  <div class="modulo-bloco">
+    <div class="modulo-meta-bloco">
+      <div class="rotulo">Objetivo</div>
+      <div class="texto">Controlar entrada de mercadorias — importação da NF do fornecedor, conferência e integração com Estoque, Compras, Financeiro e Fiscal.</div>
+    </div>
+    <div class="modulo-meta-bloco">
+      <div class="rotulo">Quando implantar</div>
+      <div class="texto">Após Compras.</div>
+    </div>
+    <div class="modulo-meta-bloco">
+      <div class="rotulo">Checklist de validação</div>
+      <ul class="checklist-impresso">
+        <li>Importar NF de fornecedor</li>
+        <li>Conferir itens recebidos</li>
+        <li>Registrar divergências ou avarias</li>
+        <li>Finalizar recebimento</li>
+        <li>Compreender integração com Compras, Estoque, Financeiro e Fiscal</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="subtitulo-secao">8. Estoque</h2>
+
+  <div class="modulo-bloco">
+    <div class="modulo-meta-bloco">
+      <div class="rotulo">Objetivo</div>
+      <div class="texto">Controlar movimentação de materiais. No Faktory Flow, o estoque é controlado por características (cor, largura, altura, comprimento), ideal para esquadrias.</div>
+    </div>
+    <div class="modulo-meta-bloco">
+      <div class="rotulo">Quando implantar</div>
+      <div class="texto">Após configuração dos cadastros de produtos e antes de Compras, Produção e Recebimento.</div>
+    </div>
+    <div class="modulo-meta-bloco">
+      <div class="rotulo">Fluxo Operacional</div>
+      <div class="fluxo-impresso fluxo-mapa-impresso" style="margin-top: 2mm;">
+        <div class="mapa">
+          <div class="mapa-raiz">Fluxo Estoque</div>
+          <div class="mapa-ramos"><div class="mapa-ramos-conector"></div><div class="mapa-ramo">Etapas</div></div>
+          <div class="mapa-folhas">
+            <div class="mapa-folha">Entrada de Mercadorias</div>
+            <div class="mapa-folha">Controle de Saldo</div>
+            <div class="mapa-folha">Reserva de Materiais</div>
+            <div class="mapa-folha">Movimentações</div>
+            <div class="mapa-folha">Consumo pela Produção ou Faturamento</div>
+            <div class="mapa-folha destaque">Reposição Automática</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modulo-meta-bloco">
+      <div class="rotulo">Checklist de validação</div>
+      <ul class="checklist-impresso">
+        <li>Consultar saldos dos produtos</li>
+        <li>Realizar movimentações e transferências</li>
+        <li>Entender reservas de materiais</li>
+        <li>Executar inventários e ajustes</li>
+        <li>Compreender integração com Compras, Recebimento, Produção, Vendas e Faturamento</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="subtitulo-secao">9. Expedição</h2>
+
+  <div class="modulo-bloco">
+    <div class="modulo-meta-bloco">
+      <div class="rotulo">Objetivo</div>
+      <div class="texto">Organizar a entrega dos produtos — montagem da carga, conferência, carregamento e transporte.</div>
+    </div>
+    <div class="modulo-meta-bloco">
+      <div class="rotulo">Quando implantar</div>
+      <div class="texto">Após Vendas, Faturamento, Produção e Estoque.</div>
+    </div>
+    <div class="modulo-meta-bloco">
+      <div class="rotulo">Checklist de validação</div>
+      <ul class="checklist-impresso">
+        <li>Montar carga com pedidos faturados</li>
+        <li>Realizar conferência e carregamento</li>
+        <li>Acompanhar status das entregas</li>
+        <li>Registrar confirmação de recebimento</li>
+        <li>Compreender integração com Vendas, Estoque, Produção e Faturamento</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== MÓDULOS — BLOCO 5 ==================== -->
+<div class="page">
+  <h2 class="subtitulo-secao" style="margin-top: 0;">10. Serviços e Instalação <span class="badge-rever">Rever</span></h2>
+
+  <div class="modulo-bloco">
+    <div class="modulo-meta-bloco">
+      <div class="rotulo">Objetivo</div>
+      <div class="texto">Controlar atividades fora da fábrica — medição em obra, instalação, vistoria e assistência técnica.</div>
+    </div>
+    <div class="modulo-meta-bloco">
+      <div class="rotulo">Quando implantar</div>
+      <div class="texto">Após Vendas, Produção e Expedição.</div>
+    </div>
+    <div class="modulo-meta-bloco">
+      <div class="rotulo">Fluxo Operacional</div>
+      <div class="fluxo-impresso fluxo-mapa-impresso" style="margin-top: 2mm;">
+        <div class="mapa">
+          <div class="mapa-raiz">Fluxo Serviços e Instalação</div>
+          <div class="mapa-ramos"><div class="mapa-ramos-conector"></div><div class="mapa-ramo">Etapas</div></div>
+          <div class="mapa-folhas">
+            <div class="mapa-folha">Venda</div>
+            <div class="mapa-folha">Medição em Obra</div>
+            <div class="mapa-folha">Aprovação das Medidas</div>
+            <div class="mapa-folha">Produção</div>
+            <div class="mapa-folha">Agendamento da Instalação</div>
+            <div class="mapa-folha">Execução do Serviço</div>
+            <div class="mapa-folha">Vistoria</div>
+            <div class="mapa-folha destaque">Assistência Técnica</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modulo-meta-bloco">
+      <div class="rotulo">Checklist de validação</div>
+      <ul class="checklist-impresso">
+        <li>Realizar medição em obra e registrar informações</li>
+        <li>Comparar medidas com o pedido vendido</li>
+        <li>Organizar agenda das equipes</li>
+        <li>Registrar checklist, fotos e aceite</li>
+        <li>Realizar vistoria e abertura de assistência técnica</li>
+        <li>Consultar histórico</li>
+        <li>Compreender integração com Vendas, Produção, Expedição, Faturamento e Projetos</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="subtitulo-secao">11. Projetos e Obras <span class="badge-rever">Rever</span></h2>
+
+  <div class="modulo-bloco">
+    <div class="modulo-meta-bloco">
+      <div class="rotulo">Objetivo</div>
+      <div class="texto">Centralizar informações das obras — do planejamento à conclusão. Transforma cada obra em centro de controle e resultado.</div>
+    </div>
+    <div class="modulo-meta-bloco">
+      <div class="rotulo">Quando implantar</div>
+      <div class="texto">Após Vendas, Compras, Produção, Estoque e Financeiro.</div>
+    </div>
+    <div class="modulo-meta-bloco">
+      <div class="rotulo">Checklist de validação</div>
+      <ul class="checklist-impresso">
+        <li>Criar e configurar nova obra</li>
+        <li>Organizar fases e etapas</li>
+        <li>Planejar necessidades de materiais</li>
+        <li>Acompanhar compras, produção, estoque e serviços</li>
+        <li>Consultar receitas, custos e margem</li>
+        <li>Usar diário de obra</li>
+        <li>Identificar diferenças entre previsto e realizado</li>
+        <li>Compreender integração com Vendas, Compras, Produção, Estoque, Financeiro, Serviços e CRM</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== MÓDULOS — BLOCO 6 ==================== -->
+<div class="page">
+  <h2 class="subtitulo-secao" style="margin-top: 0;">12. Fiscal</h2>
+
+  <div class="modulo-bloco">
+    <div class="modulo-meta-bloco">
+      <div class="rotulo">Objetivo</div>
+      <div class="texto">Centralizar e automatizar cálculos tributários. Reduzir erros e divergências entre pedido e nota fiscal.</div>
+    </div>
+    <div class="modulo-meta-bloco">
+      <div class="rotulo">Quando implantar</div>
+      <div class="texto">No início da implantação dos processos fiscais, antes de Vendas, Compras e Faturamento.</div>
+    </div>
+    <div class="modulo-meta-bloco">
+      <div class="rotulo">Pré-requisito</div>
+      <div class="texto">Informações fiscais alinhadas com o cliente e contador (regime tributário, regras, NCM, CFOP, CST/CSOSN).</div>
+    </div>
+    <div class="modulo-meta-bloco">
+      <div class="rotulo">Fluxo Operacional</div>
+      <div class="fluxo-impresso fluxo-mapa-impresso" style="margin-top: 2mm;">
+        <div class="mapa">
+          <div class="mapa-raiz">Fluxo Fiscal</div>
+          <div class="mapa-ramos"><div class="mapa-ramos-conector"></div><div class="mapa-ramo">Etapas</div></div>
+          <div class="mapa-folhas">
+            <div class="mapa-folha">Configuração Fiscal</div>
+            <div class="mapa-folha">Venda</div>
+            <div class="mapa-folha">Faturamento</div>
+            <div class="mapa-folha">Compra</div>
+            <div class="mapa-folha">Recebimento</div>
+            <div class="mapa-folha destaque">Conferência dos Impostos</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="callout callout-importante">
+      <div class="callout-titulo"><span class="callout-icone">!</span>Importante</div>
+      <p>O consultor <strong>NÃO define regras tributárias</strong>. A configuração deve ser validada pelo responsável fiscal.</p>
+    </div>
+    <div class="modulo-meta-bloco">
+      <div class="rotulo">Checklist de validação</div>
+      <ul class="checklist-impresso">
+        <li>Cadastrar e consultar informações fiscais</li>
+        <li>Compreender regras tributárias</li>
+        <li>Identificar cálculo de impostos na venda</li>
+        <li>Emitir notas com configurações cadastradas</li>
+        <li>Realizar compras com cálculo de impostos de entrada</li>
+        <li>Conferir divergências fiscais no recebimento</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="subtitulo-secao">13. Relatórios e Análises <span class="badge-rever">Rever</span></h2>
+
+  <div class="modulo-bloco">
+    <div class="modulo-meta-bloco">
+      <div class="rotulo">Objetivo</div>
+      <div class="texto">Transformar dados em informações estratégicas. Criar relatórios personalizados, tabelas dinâmicas e acompanhar indicadores.</div>
+    </div>
+    <div class="modulo-meta-bloco">
+      <div class="rotulo">Quando implantar</div>
+      <div class="texto">Após os principais módulos operacionais, com dados já cadastrados e movimentações realizadas.</div>
+    </div>
+    <div class="modulo-meta-bloco">
+      <div class="rotulo">Checklist de validação</div>
+      <ul class="checklist-impresso">
+        <li>Criar relatório com informações do sistema</li>
+        <li>Aplicar filtros, agrupamentos e totais</li>
+        <li>Usar tabelas dinâmicas</li>
+        <li>Consultar informações de diferentes módulos</li>
+        <li>Exportar em Excel, PDF ou CSV</li>
+        <li>Compartilhar relatórios</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== MÓDULOS — BLOCO 7 ==================== -->
+<div class="page">
+  <h2 class="subtitulo-secao" style="margin-top: 0;">14. Tarefas</h2>
+
+  <div class="modulo-bloco">
+    <div class="modulo-meta-bloco">
+      <div class="rotulo">Objetivo</div>
+      <div class="texto">Organizar e acompanhar atividades das equipes. Controlar responsabilidades, prazos e andamento através de quadros visuais.</div>
+    </div>
+    <div class="modulo-meta-bloco">
+      <div class="rotulo">Quando implantar</div>
+      <div class="texto">Após os processos que utilizarão o gerenciamento de atividades (Projetos e Obras, CRM, etc.).</div>
+    </div>
+    <div class="modulo-meta-bloco">
+      <div class="rotulo">Fluxo Operacional</div>
+      <div class="fluxo-impresso fluxo-mapa-impresso" style="margin-top: 2mm;">
+        <div class="mapa">
+          <div class="mapa-raiz">Fluxo Tarefas</div>
+          <div class="mapa-ramos"><div class="mapa-ramos-conector"></div><div class="mapa-ramo">Etapas</div></div>
+          <div class="mapa-folhas">
+            <div class="mapa-folha">Criação da Tarefa</div>
+            <div class="mapa-folha">Definição do Responsável e Prazo</div>
+            <div class="mapa-folha">Execução da Atividade</div>
+            <div class="mapa-folha">Acompanhamento</div>
+            <div class="mapa-folha destaque">Conclusão</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modulo-meta-bloco">
+      <div class="rotulo">Checklist de validação</div>
+      <ul class="checklist-impresso">
+        <li>Criar quadros e organizar tarefas por etapas</li>
+        <li>Criar cartões com responsáveis, prazos e prioridades</li>
+        <li>Usar checklists e comentários</li>
+        <li>Acompanhar atividades pendentes e atrasadas</li>
+        <li>Consultar tarefas por usuário ou equipe</li>
+        <li>Usar modelos para processos repetitivos</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="subtitulo-secao">15. Alumina (IA) <span class="badge-rever">Rever</span></h2>
+
+  <div class="modulo-bloco">
+    <div class="modulo-meta-bloco">
+      <div class="rotulo">Objetivo</div>
+      <div class="texto">Assistente inteligente dentro do Faktory Flow. Consultar informações, realizar análises e executar ações por comandos em linguagem natural (texto ou voz).</div>
+    </div>
+    <div class="modulo-meta-bloco">
+      <div class="rotulo">Quando implantar</div>
+      <div class="texto">Após os principais módulos operacionais, com dados suficientes para consultas.</div>
+    </div>
+    <div class="modulo-meta-bloco">
+      <div class="rotulo">Fluxo Operacional</div>
+      <div class="fluxo-impresso fluxo-mapa-impresso" style="margin-top: 2mm;">
+        <div class="mapa">
+          <div class="mapa-raiz">Fluxo Alumina (IA)</div>
+          <div class="mapa-ramos"><div class="mapa-ramos-conector"></div><div class="mapa-ramo">Etapas</div></div>
+          <div class="mapa-folhas">
+            <div class="mapa-folha">Pergunta do Usuário</div>
+            <div class="mapa-folha">Consulta das Informações</div>
+            <div class="mapa-folha">Análise dos Dados</div>
+            <div class="mapa-folha">Sugestão de Ação</div>
+            <div class="mapa-folha">Confirmação</div>
+            <div class="mapa-folha destaque">Execução Registrada</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modulo-meta-bloco">
+      <div class="rotulo">Checklist de validação</div>
+      <ul class="checklist-impresso">
+        <li>Realizar perguntas por texto ou voz</li>
+        <li>Consultar informações dos módulos</li>
+        <li>Interpretar respostas e gráficos</li>
+        <li>Solicitar sugestões de ações</li>
+        <li>Compreender processo de confirmação</li>
+        <li>Entender permissões e segurança</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="anotacoes">
+    <div class="anotacoes-titulo">Anotações</div>
+    <div class="anotacoes-linhas">
+      <div class="linha"></div>
+      <div class="linha"></div>
+      <div class="linha"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== PARTE VI — ESTUDO DE CASO ==================== -->
+<div class="page">
+  <div class="titulo-pagina">
+    <span class="numero-secao">Parte VI</span>
+    <h1>Implantação Completa — Estudo de Caso</h1>
+    <p>Seção em desenvolvimento. Será preenchida com um caso prático completo de implantação, ilustrando a aplicação de todos os conceitos apresentados neste guia.</p>
+  </div>
+
+  <div class="callout callout-info">
+    <div class="callout-titulo"><span class="callout-icone">i</span>Em elaboração</div>
+    <p>Esta seção está reservada para um estudo de caso detalhado. O conteúdo será incluído em versões futuras desta apostila.</p>
+  </div>
+</div>
+
+<!-- ==================== PARTE VII — BIBLIOTECA DE PROCESSOS ==================== -->
+<div class="page">
+  <div class="titulo-pagina">
+    <span class="numero-secao">Parte VII</span>
+    <h1>Biblioteca de Processos e Diagnóstico</h1>
+    <p>Desenvolver a visão consultiva do implantador. Compreender os processos de negócio dos clientes, identificar causas de problemas e entender a integração entre os módulos.</p>
+  </div>
+
+  <h2 class="subtitulo-secao">Objetivo da seção</h2>
+  <p>Esta etapa tem como objetivo capacitar o consultor a analisar situações, investigar antes de registrar chamados e orientar o cliente de forma segura e eficiente.</p>
+
+  <div class="grid-duas-colunas">
+    <div>
+      <h3 class="subtitulo-menor">Biblioteca de Processos</h3>
+      <p>Apresenta o funcionamento esperado dos principais fluxos da empresa dentro do sistema.</p>
+    </div>
+    <div>
+      <h3 class="subtitulo-menor">Biblioteca de Problemas</h3>
+      <p>Apresenta uma metodologia de análise para identificar se uma situação é causada por configuração, operação incorreta ou falha do sistema.</p>
+    </div>
+  </div>
+
+  <h2 class="subtitulo-secao">Processo Comercial (CRM e Vendas)</h2>
+  <p>O processo comercial representa o início da jornada do cliente dentro do Faktory Flow. Ele acompanha desde o primeiro contato até a transformação da oportunidade em uma venda efetivada.</p>
+
+  <div class="fluxo-impresso fluxo-mapa-impresso">
+    <div class="mapa">
+      <div class="mapa-raiz">Processo Comercial</div>
+      <div class="mapa-ramos"><div class="mapa-ramos-conector"></div><div class="mapa-ramo">Etapas</div></div>
+      <div class="mapa-folhas">
+        <div class="mapa-folha">Lead</div>
+        <div class="mapa-folha">Oportunidade</div>
+        <div class="mapa-folha">Negociação</div>
+        <div class="mapa-folha">Orçamento</div>
+        <div class="mapa-folha">Aprovação</div>
+        <div class="mapa-folha destaque">Pedido de Venda</div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="subtitulo-menor">O que validar na implantação</h3>
+  <ul class="boas-praticas-impresso">
+    <li>Como a empresa recebe novos clientes</li>
+    <li>Quem realiza os atendimentos</li>
+    <li>Como são feitos os orçamentos</li>
+    <li>Quais informações são obrigatórias para aprovação</li>
+    <li>Quando um orçamento se transforma em pedido</li>
+  </ul>
+
+  <div class="callout callout-atencao">
+    <div class="callout-titulo"><span class="callout-icone">!</span>Pontos de atenção</div>
+    <p>Evitar criar pedidos antes da aprovação comercial. Garantir que produtos, valores e condições estejam corretamente cadastrados. Validar se as informações da venda serão utilizadas pelos próximos setores.</p>
+  </div>
+</div>
+
+<!-- ==================== PROCESSOS — CONTINUAÇÃO ==================== -->
+<div class="page">
+  <h2 class="subtitulo-secao" style="margin-top: 0;">Processo de Compras</h2>
+  <p>Garantir que a empresa tenha os materiais necessários para sua operação, mantendo controle sobre solicitações, fornecedores, pedidos e recebimentos.</p>
+
+  <div class="fluxo-impresso fluxo-mapa-impresso">
+    <div class="mapa">
+      <div class="mapa-raiz">Processo de Compras</div>
+      <div class="mapa-ramos"><div class="mapa-ramos-conector"></div><div class="mapa-ramo">Etapas</div></div>
+      <div class="mapa-folhas">
+        <div class="mapa-folha">Necessidade</div>
+        <div class="mapa-folha">Solicitação de Compra</div>
+        <div class="mapa-folha">Cotação</div>
+        <div class="mapa-folha">Pedido de Compra</div>
+        <div class="mapa-folha">Recebimento</div>
+        <div class="mapa-folha destaque">Entrada no Estoque</div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="subtitulo-secao">Processo de Produção</h2>
+  <p>Transformar o pedido aprovado em produto fabricado, garantindo controle das etapas de fabricação e acompanhamento da execução. Em empresas de esquadrias, esse processo envolve perfis, vidros, componentes, corte, montagem e conferência.</p>
+
+  <div class="fluxo-impresso fluxo-mapa-impresso">
+    <div class="mapa">
+      <div class="mapa-raiz">Processo de Produção</div>
+      <div class="mapa-ramos"><div class="mapa-ramos-conector"></div><div class="mapa-ramo">Etapas</div></div>
+      <div class="mapa-folhas">
+        <div class="mapa-folha">Pedido de Venda</div>
+        <div class="mapa-folha">Ordem de Produção</div>
+        <div class="mapa-folha">Separação de Materiais</div>
+        <div class="mapa-folha">Fabricação</div>
+        <div class="mapa-folha">Conferência</div>
+        <div class="mapa-folha destaque">Produto Finalizado</div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="subtitulo-secao">Processo Financeiro</h2>
+  <p>Controlar todas as movimentações relacionadas a pagamentos, recebimentos e acompanhamento do resultado da empresa.</p>
+
+  <div class="fluxo-impresso fluxo-mapa-impresso">
+    <div class="mapa">
+      <div class="mapa-raiz">Processo Financeiro</div>
+      <div class="mapa-ramos"><div class="mapa-ramos-conector"></div><div class="mapa-ramo">Etapas</div></div>
+      <div class="mapa-folhas">
+        <div class="mapa-folha">Venda/Faturamento</div>
+        <div class="mapa-folha">Geração de Títulos</div>
+        <div class="mapa-folha">Recebimento ou Pagamento</div>
+        <div class="mapa-folha">Baixa Financeira</div>
+        <div class="mapa-folha destaque">Análise de Resultado</div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="subtitulo-secao">Processo Fiscal</h2>
+  <p>Garantir que as operações realizadas pela empresa estejam corretamente configuradas para cálculo de impostos e emissão dos documentos fiscais. O módulo Fiscal depende principalmente das informações cadastradas pela empresa e pelo contador.</p>
+
+  <div class="fluxo-impresso fluxo-mapa-impresso">
+    <div class="mapa">
+      <div class="mapa-raiz">Processo Fiscal</div>
+      <div class="mapa-ramos"><div class="mapa-ramos-conector"></div><div class="mapa-ramo">Etapas</div></div>
+      <div class="mapa-folhas">
+        <div class="mapa-folha">Configuração Fiscal</div>
+        <div class="mapa-folha">Venda/Compra</div>
+        <div class="mapa-folha">Cálculo Tributário</div>
+        <div class="mapa-folha">Emissão Fiscal</div>
+        <div class="mapa-folha destaque">Conferência</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout callout-importante">
+    <div class="callout-titulo"><span class="callout-icone">!</span>Importante</div>
+    <p>O consultor não define regras tributárias. A configuração deve ser validada pelo responsável fiscal. Erros fiscais geralmente possuem relação com cadastro ou parametrização.</p>
+  </div>
+</div>
+
+<!-- ==================== PROCESSOS — CONTINUAÇÃO 2 ==================== -->
+<div class="page">
+  <h2 class="subtitulo-secao" style="margin-top: 0;">Processo de Expedição</h2>
+  <p>Controlar o processo de entrega dos produtos ao cliente após a finalização da venda e faturamento.</p>
+
+  <div class="fluxo-impresso fluxo-mapa-impresso">
+    <div class="mapa">
+      <div class="mapa-raiz">Processo de Expedição</div>
+      <div class="mapa-ramos"><div class="mapa-ramos-conector"></div><div class="mapa-ramo">Etapas</div></div>
+      <div class="mapa-folhas">
+        <div class="mapa-folha">Pedido Faturado</div>
+        <div class="mapa-folha">Montagem da Carga</div>
+        <div class="mapa-folha">Separação</div>
+        <div class="mapa-folha">Conferência</div>
+        <div class="mapa-folha">Transporte</div>
+        <div class="mapa-folha destaque">Entrega</div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="subtitulo-secao">Processo de Projetos e Obras</h2>
+  <p>Organizar a execução de obras, permitindo acompanhar materiais, custos, produção, serviços e resultado financeiro. A obra passa a ser tratada como um centro de acompanhamento, permitindo identificar se o projeto está dentro do planejado.</p>
+
+  <div class="fluxo-impresso fluxo-mapa-impresso">
+    <div class="mapa">
+      <div class="mapa-raiz">Processo de Projetos e Obras</div>
+      <div class="mapa-ramos"><div class="mapa-ramos-conector"></div><div class="mapa-ramo">Etapas</div></div>
+      <div class="mapa-folhas">
+        <div class="mapa-folha">Venda</div>
+        <div class="mapa-folha">Criação da Obra</div>
+        <div class="mapa-folha">Planejamento</div>
+        <div class="mapa-folha">Execução</div>
+        <div class="mapa-folha">Acompanhamento</div>
+        <div class="mapa-folha destaque">Resultado</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout callout-atencao">
+    <div class="callout-titulo"><span class="callout-icone">!</span>Pontos de atenção</div>
+    <p>Vincular corretamente vendas e obras. Registrar custos reais. Utilizar diário de obra para histórico.</p>
+  </div>
+
+  <div class="anotacoes">
+    <div class="anotacoes-titulo">Anotações</div>
+    <div class="anotacoes-linhas">
+      <div class="linha"></div>
+      <div class="linha"></div>
+      <div class="linha"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== DIAGNÓSTICO ==================== -->
+<div class="page">
+  <h2 class="subtitulo-secao" style="margin-top: 0;">Biblioteca de Problemas — Diagnóstico</h2>
+
+  <p>Durante uma implantação ou operação, o consultor receberá diferentes situações relatadas pelos clientes. Antes de encaminhar um chamado, é necessário realizar uma análise inicial para identificar:</p>
+
+  <ul class="boas-praticas-impresso">
+    <li>Se é configuração</li>
+    <li>Se é falta de conhecimento do processo</li>
+    <li>Se é erro operacional</li>
+    <li>Se realmente é um problema do sistema</li>
+  </ul>
+
+  <h3 class="subtitulo-menor">Metodologia de Análise do Consultor</h3>
+
+  <div class="fluxo-impresso fluxo-mapa-impresso">
+    <div class="mapa">
+      <div class="mapa-raiz">Metodologia de Análise do Consultor</div>
+      <div class="mapa-ramos"><div class="mapa-ramos-conector"></div><div class="mapa-ramo">Etapas</div></div>
+      <div class="mapa-folhas">
+        <div class="mapa-folha">Entender o problema</div>
+        <div class="mapa-folha">Reproduzir o cenário</div>
+        <div class="mapa-folha">Validar configurações</div>
+        <div class="mapa-folha">Testar alternativas</div>
+        <div class="mapa-folha">Identificar causa</div>
+        <div class="mapa-folha destaque">Corrigir ou encaminhar</div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="subtitulo-secao">Exemplo: Cliente não consegue emitir Nota Fiscal</h2>
+
+  <h3 class="subtitulo-menor">1. O que perguntar (entender o cenário)</h3>
+  <ul class="boas-praticas-impresso">
+    <li>Qual nota está tentando emitir?</li>
+    <li>Qual mensagem de erro aparece?</li>
+    <li>Acontece com todos os pedidos ou apenas um?</li>
+    <li>Já conseguiu emitir anteriormente?</li>
+    <li>O problema acontece em homologação ou produção?</li>
+  </ul>
+
+  <h3 class="subtitulo-menor">2. Onde olhar (verificar configurações)</h3>
+  <table class="tabela">
+    <thead>
+      <tr><th style="width: 25%">Área</th><th>O que verificar</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Produto</strong></td><td>Possui NCM? Possui tributação? Está corretamente configurado?</td></tr>
+      <tr><td><strong>Cliente</strong></td><td>CNPJ correto? Inscrição estadual? Endereço?</td></tr>
+      <tr><td><strong>Fiscal</strong></td><td>CFOP? CST/CSOSN? Série da nota? Certificado digital?</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="subtitulo-menor">3. Como validar (realizar testes)</h3>
+  <ul class="boas-praticas-impresso">
+    <li>Conferir cadastro do produto</li>
+    <li>Conferir dados fiscais</li>
+    <li>Criar nova operação</li>
+    <li>Tentar emitir novamente</li>
+    <li>Comparar com outro produto ou cliente</li>
+  </ul>
+
+  <div class="callout callout-dica">
+    <div class="callout-titulo"><span class="callout-icone">✓</span>Lembre-se</div>
+    <p>Sempre seguir: entender o problema → reproduzir o cenário → validar configurações → testar alternativas → identificar causa → corrigir ou encaminhar.</p>
+  </div>
+</div>
+
+<!-- ==================== CONCLUSÃO ==================== -->
+<div class="page">
+  <div class="titulo-pagina">
+    <span class="numero-secao">Conclusão</span>
+    <h1>Encerramento do Guia</h1>
+    <p>Os pilares de uma implantação estruturada e o papel transformador do consultor.</p>
+  </div>
+
+  <h2 class="subtitulo-secao">Os quatro pilares</h2>
+
+  <div class="grid-duas-colunas">
+    <div class="modulo-bloco">
+      <h3 class="subtitulo-menor" style="margin-top: 0;">Conhecimento dos Módulos</h3>
+      <p>Entender como cada área se conecta, do primeiro contato comercial à entrega e análise de resultados.</p>
+    </div>
+    <div class="modulo-bloco">
+      <h3 class="subtitulo-menor" style="margin-top: 0;">Compreensão dos Processos</h3>
+      <p>Implantar respeitando a realidade operacional do cliente, evitando replicar telas sem gerar valor.</p>
+    </div>
+    <div class="modulo-bloco">
+      <h3 class="subtitulo-menor" style="margin-top: 0;">Análise de Problemas</h3>
+      <p>Identificar a causa antes de encaminhar. Postura consultiva e eficiente, diferenciando configuração, operação e bug.</p>
+    </div>
+    <div class="modulo-bloco">
+      <h3 class="subtitulo-menor" style="margin-top: 0;">Comunicação Organizada</h3>
+      <p>Registrar decisões, acompanhar pendências, formalizar entregas e manter o cliente alinhado durante todo o projeto.</p>
+    </div>
+  </div>
+
+  <h2 class="subtitulo-secao">O papel do consultor</h2>
+  <p>A implantação de um sistema não consiste apenas em apresentar funcionalidades ou ensinar o uso das telas. O papel do consultor é compreender a operação do cliente, traduzir seus processos para dentro do sistema e garantir que a ferramenta seja utilizada de forma correta e eficiente.</p>
+
+  <p>O consultor de implantação deve ser visto como o <strong>elo entre o cliente e a tecnologia</strong>. Seu objetivo não é apenas colocar o sistema para funcionar, mas <strong>conduzir uma transformação na forma como a empresa trabalha</strong>, garantindo organização, controle e evolução dos processos através do Faktory Flow.</p>
+
+  <div class="callout callout-dica" style="margin-top: 8mm;">
+    <div class="callout-titulo"><span class="callout-icone">✓</span>Lembre-se sempre</div>
+    <p>O sucesso de uma implantação não é medido pela quantidade de reuniões realizadas, mas pela <strong>capacidade do cliente de utilizar o Faktory Flow com autonomia, segurança e confiança em seus processos</strong>.</p>
+  </div>
+
+  <div class="anotacoes" style="margin-top: 10mm;">
+    <div class="anotacoes-titulo">Anotações finais</div>
+    <div class="anotacoes-linhas">
+      <div class="linha"></div>
+      <div class="linha"></div>
+      <div class="linha"></div>
+      <div class="linha"></div>
+      <div class="linha"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== PÁGINA FINAL ==================== -->
+<div class="page pagina-final">
+  <span class="ff-logo-wrap" style="width: 180px; margin: 0 auto 20mm; display: block;"><img class="capa-logo" src="assets/Logo%20Faktory%20Flow.png" alt="Faktory Flow" width="176" height="80" style="width: 100%; margin: 0;"></span>
+
+  <h2>Fim da Apostila</h2>
+  <p>Este material é de uso interno e foi desenvolvido para capacitar consultores de implantação do Faktory Flow. Em caso de dúvidas ou sugestões de melhoria, entre em contato com a equipe responsável.</p>
+
+  <p style="margin-top: 10mm; font-size: 10.5pt; color: var(--cinza-medio);">
+    <strong style="color: var(--ff-azul-escuro);">Apostila do Consultor</strong><br>
+    Versão 1.0 · 2025<br>
+    Material de uso interno
+  </p>
+</div>
+
+</body>
+</html>

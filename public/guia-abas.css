@@ -1,0 +1,90 @@
+/* Faktory Flow — Abas do Guia (Guia do Consultor / Apostila). Usa os tokens de brand-system.css. */
+
+.ab-topo {
+  position: sticky; top: 12px; z-index: 800;
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px;
+  margin-bottom: var(--space-8); padding: 8px;
+  background: rgb(255 255 255 / .86); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--color-line); border-radius: var(--radius-pill); box-shadow: var(--shadow-md);
+}
+.ab-abas { display: inline-flex; gap: 4px; padding: 4px; border-radius: var(--radius-pill); background: var(--brand-primary-50); }
+.ab-aba {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 8px 18px;
+  border: 0; border-radius: var(--radius-pill); background: transparent; cursor: pointer;
+  font-family: var(--font-display); font-size: 14.5px; font-weight: 700; color: var(--brand-primary-800);
+  transition: background-color var(--dur-base), color var(--dur-base), box-shadow var(--dur-base);
+}
+.ab-aba svg, .ab-btn svg { width: 18px; height: 18px; flex: none; }
+.ab-aba:hover { background: #fff; }
+.ab-aba[aria-selected="true"] {
+  background: var(--brand-primary-900); color: #fff;
+  box-shadow: inset 0 -3px 0 var(--brand-accent), 0 6px 16px rgb(12 36 56 / .25);
+}
+.ab-aba[aria-selected="true"] svg { color: var(--brand-accent); }
+.ab-acoes { display: inline-flex; flex-wrap: wrap; gap: 8px; }
+.ab-btn {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 8px 18px;
+  border: 1.5px solid var(--brand-primary-800); border-radius: var(--radius-pill);
+  background: var(--brand-primary-800); color: #fff; text-decoration: none; font-size: 14px; font-weight: 600;
+  transition: background-color var(--dur-base), box-shadow var(--dur-base), transform var(--dur-base) var(--ease-spring);
+}
+.ab-btn:hover { background: var(--brand-primary-950); box-shadow: inset 0 -3px 0 var(--brand-accent), var(--shadow-md); }
+.ab-btn--sec { background: #fff; color: var(--brand-primary-900); border-color: var(--color-line-strong); }
+.ab-btn--sec:hover { background: var(--brand-primary-50); border-color: var(--brand-primary); }
+.ab-btn[hidden] { display: none; }
+@media (prefers-reduced-motion: no-preference) {
+  .ab-btn:hover { transform: translateY(-2px); }
+  .ab-painel:not([hidden]) { animation: ab-entra .45s var(--ease-out); }
+}
+@keyframes ab-entra { from { opacity: 0; transform: translateY(14px); } }
+
+.ab-painel[hidden] { display: none !important; }
+/* Ao navegar pelo menu, o título da seção não fica escondido atrás do cabeçalho fixo. */
+.ff-guide .main section { scroll-margin-top: 100px; }
+.ab-frame {
+  display: block; width: 100%; height: calc(100dvh - 140px); min-height: 560px;
+  border: 1px solid var(--color-line); border-radius: var(--radius-xl);
+  background: var(--color-canvas); box-shadow: var(--shadow-lg);
+}
+
+/* O item "Apostila" do menu recebe o mesmo estilo dos demais itens. */
+.ff-guide .ab-nav-apostila { text-decoration: none; }
+
+@media (max-width: 900px) {
+  .ab-topo { position: static; border-radius: var(--radius-lg); }
+  .ff-guide .main section { scroll-margin-top: 16px; }
+  .ab-frame { height: calc(100dvh - 190px); }
+}
+@media (max-width: 600px) {
+  .ab-abas, .ab-acoes { width: 100%; }
+  .ab-aba, .ab-btn { flex: 1; justify-content: center; padding: 8px 10px; font-size: 13.5px; }
+  .ab-btn--sec span { display: none; }
+  .ab-btn--sec { flex: 0 0 48px; }
+}
+@media print { .ab-topo { display: none; } }
+
+/* ---------- Conta do usuário logado ---------- */
+.ab-conta { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-left: auto; }
+.ab-topo { flex-wrap: wrap; }
+.ab-usuario { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 4px 12px 4px 4px; border-radius: var(--radius-pill); background: var(--brand-primary-50); }
+.ab-avatar {
+  display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%;
+  background: var(--brand-primary-900); color: var(--brand-accent); font-family: var(--font-display); font-size: 13px; font-weight: 800;
+}
+.ab-usuario-textos { display: grid; line-height: 1.2; }
+.ab-usuario-textos strong { font-size: 13.5px; color: var(--brand-primary-950); max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ab-papel {
+  display: inline-flex; width: fit-content; padding: 2px 8px; border-radius: var(--radius-pill);
+  font-size: 11px; font-weight: 700; letter-spacing: .03em;
+}
+.ab-papel--admin { background: var(--brand-primary-900); color: #fff; }
+.ab-papel--consultor { background: var(--brand-accent); color: var(--brand-accent-ink); }
+.ab-papel--estagiario { background: var(--brand-primary-100); color: var(--brand-primary-800); border: 1px solid var(--brand-primary-300); }
+.ab-sair:hover { border-color: var(--color-danger); color: var(--color-danger); background: var(--color-danger-soft); }
+@media (max-width: 1100px) { .ab-conta { width: 100%; justify-content: flex-end; } }
+@media (max-width: 600px) {
+  .ab-conta { justify-content: space-between; }
+  .ab-usuario { flex: 1; }
+  .ab-conta .ab-btn { flex: 0 0 auto; }
+  .ab-conta .ab-btn span { display: none; }
+}

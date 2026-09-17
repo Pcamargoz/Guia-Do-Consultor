@@ -1,0 +1,18 @@
+{
+  "name": "guia-do-consultor-faktory-flow",
+  "private": true,
+  "type": "module",
+  "description": "Guia do Consultor e Apostila do Faktory Flow — site estático com login, perfis de acesso e edição dos módulos (Vercel + Neon PostgreSQL).",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "node --env-file-if-exists=.env scripts/dev-server.mjs",
+    "migrar": "node --env-file-if-exists=.env scripts/migrar.mjs",
+    "vercel-build": "node scripts/migrar.mjs"
+  },
+  "dependencies": {
+    "@vercel/functions": "^3.9.8",
+    "pg": "^8.23.0"
+  }
+}

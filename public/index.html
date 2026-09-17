@@ -1,0 +1,1836 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Guia do Consultor — Faktory Flow</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --ff-azul-escuro: #0D47A1;
+    --ff-azul-medio: #1976D2;
+    --ff-azul-claro: #E3F2FD;
+    --ff-azul-borda: #90CAF9;
+    --ff-lima: #C4D600;
+    --ff-lima-escuro: #A8B800;
+    --ff-lima-claro: #F4F8D3;
+
+    --verde: #2E7D32;
+    --verde-claro: #E8F5E9;
+    --amarelo-claro: #FFF9C4;
+    --laranja: #EF6C00;
+    --laranja-claro: #FFF3E0;
+    --vermelho: #C62828;
+    --vermelho-claro: #FFEBEE;
+    --cinza-escuro: #263238;
+    --cinza-medio: #546E7A;
+    --cinza-claro: #ECEFF1;
+    --branco: #FFFFFF;
+
+    --sombra: 0 2px 8px rgba(0,0,0,0.08);
+    --sombra-hover: 0 8px 24px rgba(13,71,161,0.18);
+    --radius: 12px;
+    --radius-sm: 8px;
+  }
+
+  body {
+    font-family: 'Segoe UI', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #F4F7FA;
+    color: var(--cinza-escuro);
+    line-height: 1.6;
+    font-size: 15px;
+  }
+
+  .app { display: grid; grid-template-columns: 280px 1fr; min-height: 100vh; }
+
+  /* ==================== SIDEBAR ==================== */
+  .sidebar {
+    background: linear-gradient(180deg, var(--ff-azul-escuro) 0%, #082C66 100%);
+    color: white;
+    padding: 24px 0;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    box-shadow: 4px 0 20px rgba(0,0,0,0.1);
+  }
+
+  .sidebar::-webkit-scrollbar { width: 6px; }
+  .sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 3px; }
+
+  .logo-container {
+    padding: 0 20px 24px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 16px;
+  }
+
+  .logo-svg { width: 100%; max-width: 200px; height: auto; }
+
+  .nav-section {
+    padding: 8px 16px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    opacity: 0.5;
+    margin-top: 16px;
+    font-weight: 600;
+  }
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 24px;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+    border-left: 3px solid transparent;
+  }
+
+  .nav-item:hover {
+    background: rgba(255,255,255,0.08);
+    color: white;
+    border-left-color: var(--ff-lima);
+  }
+
+  .nav-item.active {
+    background: rgba(196,214,0,0.12);
+    color: white;
+    border-left-color: var(--ff-lima);
+    font-weight: 600;
+  }
+
+  .nav-item svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+  /* ==================== MAIN ==================== */
+  .main { padding: 40px 48px; max-width: 1200px; width: 100%; }
+
+  .header { margin-bottom: 32px; }
+
+  .header h2 {
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--ff-azul-escuro);
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+  }
+
+  .header h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--ff-lima);
+    border-radius: 2px;
+    margin-top: 12px;
+  }
+
+  .header p { color: var(--cinza-medio); font-size: 15px; max-width: 700px; margin-top: 8px; }
+
+  /* ==================== BUSCA ==================== */
+  .search-bar { position: relative; margin-bottom: 24px; max-width: 500px; }
+
+  .search-bar input {
+    width: 100%;
+    padding: 14px 16px 14px 44px;
+    border: 2px solid var(--cinza-claro);
+    border-radius: var(--radius);
+    font-size: 15px;
+    font-family: inherit;
+    transition: all 0.2s;
+    background: white;
+  }
+
+  .search-bar input:focus {
+    outline: none;
+    border-color: var(--ff-azul-medio);
+    box-shadow: 0 0 0 4px rgba(25,118,210,0.1);
+  }
+
+  .search-bar svg {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    color: var(--cinza-medio);
+    opacity: 0.6;
+  }
+
+  /* ==================== FILTROS ==================== */
+  .filtros { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+
+  .filtro-btn {
+    padding: 8px 16px;
+    border: 1.5px solid var(--cinza-claro);
+    background: white;
+    border-radius: 20px;
+    font-size: 13px;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: var(--cinza-medio);
+    font-weight: 500;
+  }
+
+  .filtro-btn:hover { border-color: var(--ff-azul-borda); color: var(--ff-azul-medio); }
+
+  .filtro-btn.active {
+    background: var(--ff-azul-medio);
+    color: white;
+    border-color: var(--ff-azul-medio);
+  }
+
+  /* ==================== CARDS ==================== */
+  .modulos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 24px;
+  }
+
+  .modulo-card {
+    background: white;
+    border-radius: var(--radius);
+    box-shadow: var(--sombra);
+    overflow: hidden;
+    transition: all 0.3s;
+    cursor: pointer;
+    border: 1px solid rgba(0,0,0,0.04);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .modulo-card:hover { transform: translateY(-4px); box-shadow: var(--sombra-hover); }
+
+  .modulo-card-header {
+    padding: 20px 24px 16px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    border-bottom: 1px solid var(--cinza-claro);
+  }
+
+  .modulo-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .modulo-icon svg { width: 22px; height: 22px; }
+
+  .modulo-card-header h3 { font-size: 17px; font-weight: 700; color: var(--cinza-escuro); line-height: 1.3; }
+
+  .modulo-card-header .subtitulo {
+    font-size: 11px;
+    color: var(--cinza-medio);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+  }
+
+  .modulo-card-body {
+    padding: 16px 24px 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .modulo-card-body .objetivo { font-size: 14px; color: var(--cinza-medio); line-height: 1.5; }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; }
+
+  .tag {
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+
+  .tag-requisito { background: var(--amarelo-claro); color: #F57F17; }
+  .tag-validacao { background: var(--verde-claro); color: var(--verde); }
+  .tag-integracao { background: var(--ff-azul-claro); color: var(--ff-azul-escuro); }
+
+  /* ==================== MODAL ==================== */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(13,71,161,0.4);
+    backdrop-filter: blur(4px);
+    z-index: 1000;
+    padding: 40px 20px;
+    overflow-y: auto;
+  }
+
+  .modal-overlay.active { display: block; }
+
+  .modal {
+    background: white;
+    border-radius: 16px;
+    max-width: 880px;
+    margin: 0 auto;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.3);
+    overflow: hidden;
+    animation: slideUp 0.3s ease;
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .modal-header {
+    padding: 28px 32px 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    border-bottom: 1px solid var(--cinza-claro);
+    position: relative;
+  }
+
+  .modal-header .modulo-icon { width: 52px; height: 52px; }
+  .modal-header .modulo-icon svg { width: 26px; height: 26px; }
+
+  .modal-header h2 { font-size: 22px; color: var(--ff-azul-escuro); font-weight: 700; }
+
+  .modal-header .subtitulo {
+    font-size: 11px;
+    color: var(--cinza-medio);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background: var(--cinza-claro);
+    cursor: pointer;
+    font-size: 18px;
+    color: var(--cinza-medio);
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .modal-close:hover { background: var(--vermelho-claro); color: var(--vermelho); }
+
+  .modal-body { padding: 28px 32px 32px; }
+
+  .secao { margin-bottom: 26px; }
+
+  .secao-titulo {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--ff-azul-medio);
+    font-weight: 700;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .secao-titulo::before {
+    content: '';
+    width: 4px;
+    height: 14px;
+    background: var(--ff-lima);
+    border-radius: 2px;
+  }
+
+  .secao p { font-size: 14.5px; color: var(--cinza-escuro); line-height: 1.6; }
+
+  /* ==================== FLUXO ESTILO MAPA MENTAL ==================== */
+  .fluxo-mapa {
+    background: #FAFCFE;
+    border-radius: var(--radius);
+    padding: 28px 24px;
+    border: 1px solid #E5EDF5;
+    overflow-x: auto;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+  }
+
+  .fluxo-mapa:hover {
+    background: #F0F6FC;
+    border-color: var(--ff-azul-borda);
+  }
+
+  .fluxo-mapa-hint {
+    position: absolute;
+    top: 10px;
+    right: 14px;
+    font-size: 11px;
+    color: var(--cinza-medio);
+    opacity: 0.7;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  /* Estrutura horizontal: raiz → ramos → folhas */
+  .mapa {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    min-width: max-content;
+    padding: 8px 0;
+  }
+
+  .mapa-raiz {
+    background: linear-gradient(135deg, #5B6FE8 0%, #4A5DD8 100%);
+    color: white;
+    padding: 16px 24px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(74,93,216,0.25);
+    white-space: nowrap;
+    max-width: 200px;
+    text-align: center;
+    line-height: 1.3;
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .mapa-raiz::after {
+    content: '';
+    position: absolute;
+    right: -24px;
+    top: 50%;
+    width: 24px;
+    height: 2px;
+    background: var(--ff-azul-borda);
+  }
+
+  /* Coluna de ramos */
+  .mapa-ramos {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: relative;
+    padding-left: 24px;
+    flex-shrink: 0;
+  }
+
+  .mapa-ramos::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 24px;
+    height: 2px;
+    background: var(--ff-azul-borda);
+  }
+
+  /* Linha vertical conectando os ramos */
+  .mapa-ramos-conector {
+    position: absolute;
+    left: 0;
+    top: 30px;
+    bottom: 30px;
+    width: 2px;
+    background: var(--ff-azul-borda);
+  }
+
+  .mapa-ramo {
+    background: #C5D4F0;
+    color: #2A3B6E;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+    position: relative;
+    flex-shrink: 0;
+    transition: all 0.2s;
+    cursor: default;
+  }
+
+  .mapa-ramo::before {
+    content: '';
+    position: absolute;
+    left: -24px;
+    top: 50%;
+    width: 24px;
+    height: 2px;
+    background: var(--ff-azul-borda);
+  }
+
+  .mapa-ramo::after {
+    content: '';
+    position: absolute;
+    right: -24px;
+    top: 50%;
+    width: 24px;
+    height: 2px;
+    background: var(--ff-azul-borda);
+  }
+
+  /* Coluna de folhas (etapas) */
+  .mapa-folhas {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  .mapa-folha {
+    background: #B8D4C8;
+    color: #1F4A38;
+    padding: 9px 16px;
+    border-radius: 8px;
+    font-size: 12.5px;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: all 0.2s;
+    cursor: default;
+    border-left: 3px solid transparent;
+  }
+
+  .mapa-folha.destaque {
+    background: var(--ff-lima);
+    color: #2A3000;
+    border-left-color: var(--ff-lima-escuro);
+  }
+
+  /* Versão simplificada para quando não há muitos ramos */
+  .mapa-simples {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .mapa-linha {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    flex-wrap: wrap;
+  }
+
+  .mapa-etapa {
+    background: #B8D4C8;
+    color: #1F4A38;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: all 0.2s;
+  }
+
+  .mapa-etapa.destaque {
+    background: var(--ff-lima);
+    color: #2A3000;
+  }
+
+  .mapa-conector-h {
+    width: 24px;
+    height: 2px;
+    background: var(--ff-azul-borda);
+    flex-shrink: 0;
+  }
+
+  .mapa-conector-h.grosso {
+    width: 32px;
+  }
+
+  /* ==================== MODAL DE FLUXO ==================== */
+  .fluxo-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(13,71,161,0.4);
+    backdrop-filter: blur(4px);
+    z-index: 1100;
+    padding: 40px 20px;
+    overflow-y: auto;
+  }
+
+  .fluxo-overlay.active { display: flex; align-items: flex-start; justify-content: center; }
+
+  .fluxo-modal {
+    background: white;
+    border-radius: 16px;
+    max-width: 620px;
+    width: 100%;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.3);
+    overflow: hidden;
+    animation: slideUp 0.3s ease;
+    margin: auto;
+  }
+
+  .fluxo-modal-header {
+    padding: 24px 28px 20px;
+    border-bottom: 1px solid var(--cinza-claro);
+    position: relative;
+    background: linear-gradient(135deg, #F8FBFF 0%, #EEF4FB 100%);
+  }
+
+  .fluxo-modal-header h3 {
+    font-size: 18px;
+    color: var(--ff-azul-escuro);
+    font-weight: 700;
+    padding-right: 40px;
+  }
+
+  .fluxo-modal-header p {
+    font-size: 13.5px;
+    color: var(--cinza-medio);
+    margin-top: 6px;
+    line-height: 1.5;
+  }
+
+  .fluxo-modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: none;
+    background: var(--cinza-claro);
+    cursor: pointer;
+    font-size: 16px;
+    color: var(--cinza-medio);
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .fluxo-modal-close:hover { background: var(--vermelho-claro); color: var(--vermelho); }
+
+  .fluxo-modal-body {
+    padding: 24px 28px 28px;
+  }
+
+  .fluxo-etapas-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .fluxo-etapa-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    color: var(--cinza-escuro);
+    font-weight: 500;
+    transition: background 0.2s;
+    position: relative;
+  }
+
+  .fluxo-etapa-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 27px;
+    bottom: -4px;
+    width: 2px;
+    height: 8px;
+    background: var(--ff-azul-borda);
+  }
+
+  .fluxo-etapa-item .num {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--ff-azul-medio);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .fluxo-etapa-item.destaque {
+    background: var(--ff-lima-claro);
+    color: #2A3000;
+    font-weight: 600;
+  }
+
+  .fluxo-etapa-item.destaque .num {
+    background: var(--ff-lima-escuro);
+    color: #2A3000;
+  }
+
+  /* ==================== CHECKLIST / BOAS PRÁTICAS ==================== */
+  .checklist { list-style: none; display: grid; gap: 8px; }
+
+  .checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 14px;
+    background: var(--verde-claro);
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    color: #1B5E20;
+    border-left: 3px solid var(--verde);
+  }
+
+  .checklist li::before { content: '✓'; color: var(--verde); font-weight: bold; flex-shrink: 0; }
+
+  .boas-praticas { list-style: none; display: grid; gap: 8px; }
+
+  .boas-praticas li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 14px;
+    background: var(--ff-azul-claro);
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    color: var(--ff-azul-escuro);
+    border-left: 3px solid var(--ff-azul-medio);
+  }
+
+  .boas-praticas li::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--ff-azul-medio);
+    flex-shrink: 0;
+    margin-top: 8px;
+  }
+
+  /* ==================== ALERTAS ==================== */
+  .alerta {
+    padding: 14px 18px;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    margin-top: 8px;
+  }
+
+  .alerta-atencao { background: var(--laranja-claro); color: #E65100; border-left: 4px solid var(--laranja); }
+  .alerta-importante { background: var(--vermelho-claro); color: var(--vermelho); border-left: 4px solid var(--vermelho); }
+  .alerta-info { background: var(--ff-azul-claro); color: var(--ff-azul-escuro); border-left: 4px solid var(--ff-azul-medio); }
+  .alerta .icone { font-size: 16px; flex-shrink: 0; font-weight: 700; }
+
+  /* ==================== TABELAS ==================== */
+  .tabela {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    margin-top: 8px;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+
+  .tabela th {
+    background: var(--ff-azul-escuro);
+    color: white;
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .tabela td { padding: 12px 16px; border-bottom: 1px solid var(--cinza-claro); color: var(--cinza-escuro); }
+  .tabela tr:last-child td { border-bottom: none; }
+  .tabela tr:nth-child(even) td { background: #FAFBFC; }
+
+  /* ==================== DASHBOARD ==================== */
+  .dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .metrica {
+    background: white;
+    padding: 20px;
+    border-radius: var(--radius);
+    box-shadow: var(--sombra);
+    border-top: 4px solid var(--ff-azul-medio);
+  }
+
+  .metrica .numero { font-size: 30px; font-weight: 700; color: var(--ff-azul-escuro); line-height: 1; }
+  .metrica .rotulo { font-size: 13px; color: var(--cinza-medio); margin-top: 6px; font-weight: 500; }
+
+  /* ==================== PROCESSO CARD ==================== */
+  .processo-card {
+    background: white;
+    border-radius: var(--radius);
+    box-shadow: var(--sombra);
+    padding: 24px;
+    margin-bottom: 20px;
+    border-left: 4px solid var(--ff-azul-medio);
+  }
+
+  .processo-card h4 { font-size: 17px; color: var(--ff-azul-escuro); margin-bottom: 10px; font-weight: 700; }
+  .processo-card .descricao { font-size: 14px; color: var(--cinza-medio); margin-bottom: 16px; }
+
+  /* ==================== DIAGNÓSTICO ==================== */
+  .diagnostico-step { display: flex; gap: 16px; margin-bottom: 16px; align-items: flex-start; }
+
+  .diagnostico-num {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: var(--ff-azul-medio);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    flex-shrink: 0;
+    font-size: 14px;
+  }
+
+  .diagnostico-content { flex: 1; background: var(--cinza-claro); padding: 14px 18px; border-radius: var(--radius-sm); }
+  .diagnostico-content h5 { font-size: 14.5px; color: var(--ff-azul-escuro); margin-bottom: 6px; }
+  .diagnostico-content ul { list-style: none; font-size: 14px; color: var(--cinza-escuro); }
+  .diagnostico-content li { padding: 3px 0 3px 18px; position: relative; }
+  .diagnostico-content li::before { content: '→'; position: absolute; left: 0; color: var(--ff-azul-medio); font-weight: bold; }
+
+  /* ==================== ACCORDION ==================== */
+  .accordion {
+    background: white;
+    border-radius: var(--radius);
+    box-shadow: var(--sombra);
+    overflow: hidden;
+    margin-bottom: 12px;
+  }
+
+  .accordion-header {
+    padding: 18px 24px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    color: var(--ff-azul-escuro);
+    font-size: 15px;
+    transition: background 0.2s;
+    user-select: none;
+  }
+
+  .accordion-header:hover { background: var(--cinza-claro); }
+  .accordion-header .seta { transition: transform 0.3s; color: var(--ff-azul-medio); font-size: 11px; }
+  .accordion.open .accordion-header .seta { transform: rotate(180deg); }
+
+  .accordion-body { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+  .accordion.open .accordion-body { max-height: 3000px; }
+
+  .accordion-body-inner {
+    padding: 20px 24px 24px;
+    border-top: 1px solid var(--cinza-claro);
+  }
+
+  /* ==================== RESPONSIVO ==================== */
+  @media (max-width: 900px) {
+    .app { grid-template-columns: 1fr; }
+    .sidebar { position: relative; height: auto; padding: 16px 0; }
+    .sidebar .nav-section { display: none; }
+    .main { padding: 24px 20px; }
+    .header h2 { font-size: 24px; }
+    .modulos-grid { grid-template-columns: 1fr; }
+    .modal-body { padding: 20px; }
+    .fluxo-mapa { padding: 20px 14px; }
+    .mapa { gap: 16px; }
+    .mapa-raiz { padding: 12px 16px; font-size: 12.5px; max-width: 150px; }
+    .mapa-ramo { padding: 8px 12px; font-size: 12px; }
+    .mapa-folha { padding: 7px 12px; font-size: 11.5px; }
+  }
+
+  .fade-in { animation: fadeIn 0.4s ease; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .footer {
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--cinza-claro);
+    text-align: center;
+    color: var(--cinza-medio);
+    font-size: 13px;
+  }
+
+  html { scroll-behavior: smooth; }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap">
+<link rel="stylesheet" href="brand-system.css">
+<link rel="stylesheet" href="guia-editor.css">
+<link rel="stylesheet" href="guia-abas.css">
+<script src="brand-motion.js" defer></script>
+<script src="guia-abas.js" defer></script>
+<script src="guia-sessao.js" defer></script>
+<script src="guia-usuarios.js" defer></script>
+<script src="guia-editor.js" defer></script>
+</head>
+<body class="ff-guide">
+
+<div class="app">
+
+  <!-- ==================== SIDEBAR ==================== -->
+  <aside class="sidebar">
+    <div class="logo-container">
+      <span class="ff-logo-wrap"><img class="logo-svg" src="assets/Logo%20Faktory%20Flow.png" alt="Faktory Flow" width="176" height="80"></span>
+    </div>
+
+    <div class="nav-section">Introdução</div>
+    <a class="nav-item active" onclick="scrollToSection('dashboard', event)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+      Visão Geral
+    </a>
+    <a class="nav-item" onclick="scrollToSection('parte1', event)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      A Implantação
+    </a>
+    <a class="nav-item" onclick="scrollToSection('metodo', event)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      Método Faktory
+    </a>
+
+    <div class="nav-section">Módulos</div>
+    <a class="nav-item" onclick="scrollToSection('modulos', event)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+      Todos os Módulos
+    </a>
+
+    <div class="nav-section">Avançado</div>
+    <a class="nav-item" onclick="scrollToSection('processos', event)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11H3v10h6V11zM21 3h-6v18h6V3zM15 7H9v14h6V7z"/></svg>
+      Biblioteca de Processos
+    </a>
+    <a class="nav-item" onclick="scrollToSection('diagnostico', event)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      Diagnóstico de Problemas
+    </a>
+
+    <div class="nav-section">Referência</div>
+    <a class="nav-item" onclick="scrollToSection('conclusao', event)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+      Conclusão
+    </a>
+  </aside>
+
+  <!-- ==================== MAIN ==================== -->
+  <main class="main">
+
+    <!-- ===== DASHBOARD ===== -->
+    <section id="dashboard" class="fade-in">
+      <div class="header">
+        <h2>Guia do Consultor de Implantação</h2>
+        <p>Material de apoio para conduzir implantações do Faktory Flow com clareza, método e autonomia.</p>
+      </div>
+
+      <div class="search-bar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        <input type="text" id="searchInput" placeholder="Buscar módulo, processo ou termo..." oninput="filtrarCards()">
+      </div>
+
+      <div class="filtros">
+        <button class="filtro-btn active" onclick="filtrarPorTag('todos', this)">Todos</button>
+        <button class="filtro-btn" onclick="filtrarPorTag('vendas', this)">Vendas e CRM</button>
+        <button class="filtro-btn" onclick="filtrarPorTag('fiscal', this)">Fiscal e Faturamento</button>
+        <button class="filtro-btn" onclick="filtrarPorTag('operacao', this)">Operação</button>
+        <button class="filtro-btn" onclick="filtrarPorTag('gestao', this)">Gestão e Análise</button>
+      </div>
+
+      <div class="dashboard">
+        <div class="metrica"><div class="numero">15</div><div class="rotulo">Módulos mapeados</div></div>
+        <div class="metrica"><div class="numero">7</div><div class="rotulo">Etapas de implantação</div></div>
+        <div class="metrica"><div class="numero">5</div><div class="rotulo">Módulos para revisão</div></div>
+        <div class="metrica"><div class="numero">100%</div><div class="rotulo">Foco em processos</div></div>
+      </div>
+    </section>
+
+    <!-- ===== PARTE I ===== -->
+    <section id="parte1" style="margin-top: 48px;" class="fade-in">
+      <div class="header">
+        <h2>Parte I — A Implantação</h2>
+        <p>O que é implantar, o papel do consultor, responsabilidades do cliente e como conduzir o projeto.</p>
+      </div>
+
+      <div class="accordion open">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <span>O que é implantar o Faktory Flow</span>
+          <span class="seta">▼</span>
+        </div>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">
+            <p style="margin-bottom: 16px;">O Faktory Flow centraliza e integra os processos da empresa em um único ambiente. A implantação <strong>não é apenas instalar o sistema</strong> — é preparar a empresa para usá-lo com autonomia.</p>
+            <table class="tabela">
+              <thead><tr><th>Etapa</th><th>O que acontece</th></tr></thead>
+              <tbody>
+                <tr><td>Reunião de Alinhamento</td><td>Conhecer o cliente e definir o projeto</td></tr>
+                <tr><td>Configuração do ambiente</td><td>Garantir acessos e pré-requisitos técnicos</td></tr>
+                <tr><td>Cronograma</td><td>Organizar datas, módulos e participantes</td></tr>
+                <tr><td>Treinamentos</td><td>Ensinar processos, não apenas telas</td></tr>
+                <tr><td>Preparação para o Go-live</td><td>Validar cadastros, acessos e fluxos</td></tr>
+                <tr><td>Go-live</td><td>Entrada em produção assistida</td></tr>
+                <tr><td>Encerramento</td><td>Formalizar a conclusão e migrar para o Suporte</td></tr>
+              </tbody>
+            </table>
+            <div class="alerta alerta-info" style="margin-top:16px;">
+              <span class="icone">i</span>
+              <span><strong>Regra de ouro:</strong> cada etapa depende da conclusão da anterior. Não antecipe atividades sem os pré-requisitos prontos.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <span>O papel do consultor</span>
+          <span class="seta">▼</span>
+        </div>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">
+            <p style="margin-bottom: 16px;">Você é um <strong>facilitador</strong>, não um instrutor de telas. Seu trabalho é traduzir a realidade do cliente para dentro do sistema.</p>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+              <div>
+                <h4 style="color: var(--verde); margin-bottom: 8px; font-size: 14px;">O que você FAZ</h4>
+                <ul class="checklist">
+                  <li>Compreende os processos do cliente antes de treinar</li>
+                  <li>Organiza etapas e registra decisões</li>
+                  <li>Identifica riscos e pendências com responsáveis e prazos</li>
+                  <li>Desenvolve a autonomia dos usuários</li>
+                  <li>Diferencia erro de parametrização, falha operacional e bug</li>
+                </ul>
+              </div>
+              <div>
+                <h4 style="color: var(--vermelho); margin-bottom: 8px; font-size: 14px;">O que você NÃO FAZ</h4>
+                <ul class="checklist" style="--verde-claro: var(--vermelho-claro); --verde: var(--vermelho);">
+                  <li style="background: var(--vermelho-claro); border-left-color: var(--vermelho); color: var(--vermelho);">Não promete funcionalidades que não existem</li>
+                  <li style="background: var(--vermelho-claro); border-left-color: var(--vermelho); color: var(--vermelho);">Não decide regras internas, fiscais ou contábeis pelo cliente</li>
+                  <li style="background: var(--vermelho-claro); border-left-color: var(--vermelho); color: var(--vermelho);">Não assume responsabilidades que pertencem à gestão da empresa</li>
+                </ul>
+              </div>
+            </div>
+            <div class="alerta alerta-atencao" style="margin-top:16px;">
+              <span class="icone">!</span>
+              <span><strong>Atenção:</strong> Questões fiscais (NCM, CFOP, CST, tributação) devem ser validadas <strong>pelo cliente e seu contador</strong>. Você orienta, não decide.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <span>Conhecendo o cliente e suas responsabilidades</span>
+          <span class="seta">▼</span>
+        </div>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">
+            <p style="margin-bottom: 16px;">A <strong>Reunião de Alinhamento (RA)</strong> é o momento para entender o cenário.</p>
+            <h4 style="color: var(--ff-azul-escuro); margin: 16px 0 8px; font-size: 14px;">O que levantar na RA:</h4>
+            <ul class="boas-praticas">
+              <li>Atividade principal da empresa</li>
+              <li>Processo comercial</li>
+              <li>Módulos contratados</li>
+              <li>Integrações (CEM Desktop, Mobi)</li>
+              <li>Como emitem Nota Fiscal hoje</li>
+              <li>Como controlam o financeiro</li>
+              <li>Responsáveis pelo projeto</li>
+            </ul>
+            <h4 style="color: var(--ff-azul-escuro); margin: 20px 0 8px; font-size: 14px;">Papéis do cliente:</h4>
+            <table class="tabela">
+              <thead><tr><th>Papel</th><th>Responsabilidade</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Sponsor</strong></td><td>Apoio e decisões estratégicas</td></tr>
+                <tr><td><strong>Gerente de Projetos</strong></td><td>Acompanha cronograma, centraliza decisões, administra horas</td></tr>
+                <tr><td><strong>Key User</strong></td><td>Conhece os processos, participa das validações, é referência para os demais</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <span>Como conduzir o projeto</span>
+          <span class="seta">▼</span>
+        </div>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">
+            <h4 style="color: var(--ff-azul-escuro); margin-bottom: 12px; font-size: 14px;">Ordem lógica:</h4>
+
+            <div class="fluxo-mapa" onclick="abrirFluxo('Condução do Projeto', 'Sequência lógica para conduzir uma implantação, do conhecimento do cliente ao registro na Ordem de Serviço.', ['Conhecer o cliente','Confirmar escopo','Identificar usuários','Verificar pré-requisitos','Definir datas','Treinar','Registrar na OS'])">
+              <span class="fluxo-mapa-hint">Clique para detalhes</span>
+              <div class="mapa-simples">
+                <div class="mapa-linha">
+                  <span class="mapa-etapa">1. Conhecer o cliente</span>
+                  <span class="mapa-conector-h"></span>
+                  <span class="mapa-etapa">2. Confirmar escopo</span>
+                  <span class="mapa-conector-h"></span>
+                  <span class="mapa-etapa">3. Identificar usuários</span>
+                  <span class="mapa-conector-h"></span>
+                  <span class="mapa-etapa">4. Verificar pré-requisitos</span>
+                </div>
+                <div class="mapa-linha">
+                  <span class="mapa-etapa">5. Definir datas</span>
+                  <span class="mapa-conector-h"></span>
+                  <span class="mapa-etapa">6. Treinar</span>
+                  <span class="mapa-conector-h"></span>
+                  <span class="mapa-etapa destaque">7. Registrar na OS</span>
+                </div>
+              </div>
+            </div>
+
+            <h4 style="color: var(--ff-azul-escuro); margin: 20px 0 8px; font-size: 14px;">Princípios de condução:</h4>
+            <ul class="boas-praticas">
+              <li>Ensine <strong>processos</strong>, não funcionalidades</li>
+              <li>Mostre o <strong>impacto</strong> de cada ação nos módulos seguintes</li>
+              <li>Use exemplos da rotina do cliente</li>
+              <li>Uma etapa só termina quando o cliente <strong>compreende, executa e valida</strong></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== MÉTODO ===== -->
+    <section id="metodo" style="margin-top: 48px;" class="fade-in">
+      <div class="header">
+        <h2>Parte II — O Método Faktory</h2>
+        <p>Sequência padronizada de implantação. Clique no mapa para ver o resumo.</p>
+      </div>
+
+      <div class="fluxo-mapa" onclick="abrirFluxo('Método Faktory — Metodologia da Implantação', 'Sequência padronizada de implantação. Cada etapa depende da conclusão da anterior.', ['Reunião de Alinhamento (RA)','Configuração do Ambiente','Definição do Cronograma','Treinamentos Práticos','Preparação para o Go-live','Go-live (Produção Assistida)','Encerramento e Transição'])">
+        <span class="fluxo-mapa-hint">Clique para detalhes</span>
+        <div class="mapa">
+          <div class="mapa-raiz">Metodologia da Implantação</div>
+          <div class="mapa-ramos">
+            <div class="mapa-ramos-conector"></div>
+            <div class="mapa-ramo">Etapas Sequenciais</div>
+          </div>
+          <div class="mapa-folhas">
+            <div class="mapa-folha">Reunião de Alinhamento (RA)</div>
+            <div class="mapa-folha">Configuração do Ambiente</div>
+            <div class="mapa-folha">Definição do Cronograma</div>
+            <div class="mapa-folha">Treinamentos Práticos</div>
+            <div class="mapa-folha">Preparação para o Go-live</div>
+            <div class="mapa-folha">Go-live (Produção Assistida)</div>
+            <div class="mapa-folha destaque">Encerramento e Transição</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== MÓDULOS ===== -->
+    <section id="modulos" style="margin-top: 48px;" class="fade-in">
+      <div class="header">
+        <h2>Parte V — Módulos do Faktory Flow</h2>
+        <p>Os módulos fazem parte de um único fluxo operacional. Clique em um card para ver detalhes, fluxo, boas práticas e checklist.</p>
+      </div>
+
+      <div class="alerta alerta-info" style="margin-bottom: 24px;">
+        <span class="icone">i</span>
+        <span>Os primeiros módulos a serem implantados são <strong>Vendas → Faturamento → Fiscal → Financeiro</strong>. Os demais seguem conforme o escopo contratado.</span>
+      </div>
+
+      <div class="modulos-grid" id="modulosGrid"></div>
+    </section>
+
+    <!-- ===== PROCESSOS ===== -->
+    <section id="processos" style="margin-top: 48px;" class="fade-in">
+      <div class="header">
+        <h2>Parte VII — Biblioteca de Processos</h2>
+        <p>Funcionamento esperado dos principais fluxos da empresa dentro do sistema. Clique em um mapa para ver o resumo.</p>
+      </div>
+
+      <div class="processo-card">
+        <h4>Processo Comercial (CRM e Vendas)</h4>
+        <p class="descricao">Início da jornada do cliente. Do primeiro contato à venda efetivada.</p>
+        <div class="fluxo-mapa" onclick="abrirFluxo('Processo Comercial', 'Início da jornada do cliente dentro do Faktory Flow. Do primeiro contato à venda efetivada.', ['Lead','Oportunidade','Negociação','Orçamento','Aprovação','Pedido de Venda'])">
+          <span class="fluxo-mapa-hint">Clique para detalhes</span>
+          <div class="mapa-simples">
+            <div class="mapa-linha">
+              <span class="mapa-etapa">Lead</span>
+              <span class="mapa-conector-h"></span>
+              <span class="mapa-etapa">Oportunidade</span>
+              <span class="mapa-conector-h"></span>
+              <span class="mapa-etapa">Negociação</span>
+              <span class="mapa-conector-h"></span>
+              <span class="mapa-etapa">Orçamento</span>
+              <span class="mapa-conector-h"></span>
+              <span class="mapa-etapa">Aprovação</span>
+              <span class="mapa-conector-h"></span>
+              <span class="mapa-etapa destaque">Pedido de Venda</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="processo-card">
+        <h4>Processo de Compras</h4>
+        <p class="descricao">Garantir materiais necessários para a operação.</p>
+        <div class="fluxo-mapa" onclick="abrirFluxo('Processo de Compras', 'Garantir que a empresa tenha os materiais necessários para a operação, mantendo controle sobre solicitações, fornecedores, pedidos e recebimentos.', ['Necessidade','Solicitação de Compra','Cotação','Pedido de Compra','Recebimento','Entrada no Estoque'])">
+          <span class="fluxo-mapa-hint">Clique para detalhes</span>
+          <div class="mapa-simples">
+            <div class="mapa-linha">
+              <span class="mapa-etapa">Necessidade</span>
+              <span class="mapa-conector-h"></span>
+              <span class="mapa-etapa">Solicitação</span>
+              <span class="mapa-conector-h"></span>
+              <span class="mapa-etapa">Cotação</span>
+              <span class="mapa-conector-h"></span>
+              <span class="mapa-etapa">Pedido de Compra</span>
+              <span class="mapa-conector-h"></span>
+              <span class="mapa-etapa">Recebimento</span>
+              <span class="mapa-conector-h"></span>
+              <span class="mapa-etapa destaque">Entrada no Estoque</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="processo-card">
+        <h4>Processo de Produção</h4>
+        <p class="descricao">Transformar o pedido aprovado em produto fabricado.</p>
+        <div class="fluxo-mapa" onclick="abrirFluxo('Processo de Produção', 'Transformar o pedido aprovado em produto fabricado, garantindo controle das etapas de fabricação e acompanhamento da execução.', ['Pedido de Venda','Ordem de Produção','Separação de Materiais','Fabricação','Conferência','Produto Finalizado'])">
+          <span class="fluxo-mapa-hint">Clique para detalhes</span>
+          <div class="mapa-simples">
+            <div class="mapa-linha">
+              <span class="mapa-etapa">Pedido de Venda</span>
+              <span class="mapa-conector-h"></span>
+              <span class="mapa-etapa">Ordem de Produção</span>
+              <span class="mapa-conector-h"></span>
+              <span class="mapa-etapa">Separação</span>
+              <span class="mapa-conector-h"></span>
+              <span class="mapa-etapa">Fabricação</span>
+              <span class="mapa-conector-h"></span>
+              <span class="mapa-etapa">Conferência</span>
+              <span class="mapa-conector-h"></span>
+              <span class="mapa-etapa destaque">Produto Finalizado</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="processo-card">
+        <h4>Processo Financeiro</h4>
+        <p class="descricao">Controlar movimentações, pagamentos, recebimentos e resultado.</p>
+        <div class="fluxo-mapa" onclick="abrirFluxo('Processo Financeiro', 'Controlar todas as movimentações relacionadas a pagamentos, recebimentos e acompanhamento do resultado da empresa.', ['Venda/Faturamento','Geração de Títulos','Recebimento ou Pagamento','Baixa Financeira','Análise de Resultado'])">
+          <span class="fluxo-mapa-hint">Clique para detalhes</span>
+          <div class="mapa-simples">
+            <div class="mapa-linha">
+              <span class="mapa-etapa">Venda/Faturamento</span>
+              <span class="mapa-conector-h"></span>
+              <span class="mapa-etapa">Geração de Títulos</span>
+              <span class="mapa-conector-h"></span>
+              <span class="mapa-etapa">Recebimento/Pagamento</span>
+              <span class="mapa-conector-h"></span>
+              <span class="mapa-etapa">Baixa Financeira</span>
+              <span class="mapa-conector-h"></span>
+              <span class="mapa-etapa destaque">Análise de Resultado</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="processo-card">
+        <h4>Processo Fiscal</h4>
+        <p class="descricao">Garantir que as operações estejam configuradas para cálculo de impostos e emissão de documentos fiscais.</p>
+        <div class="fluxo-mapa" onclick="abrirFluxo('Processo Fiscal', 'Garantir que as operações realizadas pela empresa estejam corretamente configuradas para cálculo de impostos e emissão dos documentos fiscais.', ['Configuração Fiscal','Venda/Compra','Cálculo Tributário','Emissão Fiscal','Conferência'])">
+          <span class="fluxo-mapa-hint">Clique para detalhes</span>
+          <div class="mapa-simples">
+            <div class="mapa-linha">
+              <span class="mapa-etapa">Configuração Fiscal</span>
+              <span class="mapa-conector-h"></span>
+              <span class="mapa-etapa">Venda/Compra</span>
+              <span class="mapa-conector-h"></span>
+              <span class="mapa-etapa">Cálculo Tributário</span>
+              <span class="mapa-conector-h"></span>
+              <span class="mapa-etapa">Emissão Fiscal</span>
+              <span class="mapa-conector-h"></span>
+              <span class="mapa-etapa destaque">Conferência</span>
+            </div>
+          </div>
+        </div>
+        <div class="alerta alerta-importante" style="margin-top:12px;">
+          <span class="icone">!</span>
+          <span><strong>O consultor NÃO define regras tributárias.</strong> A configuração deve ser validada pelo responsável fiscal.</span>
+        </div>
+      </div>
+
+      <div class="processo-card">
+        <h4>Processo de Expedição</h4>
+        <p class="descricao">Controlar entrega dos produtos ao cliente após faturamento.</p>
+        <div class="fluxo-mapa" onclick="abrirFluxo('Processo de Expedição', 'Controlar o processo de entrega dos produtos ao cliente após a finalização da venda e faturamento.', ['Pedido Faturado','Montagem da Carga','Separação','Conferência','Transporte','Entrega'])">
+          <span class="fluxo-mapa-hint">Clique para detalhes</span>
+          <div class="mapa-simples">
+            <div class="mapa-linha">
+              <span class="mapa-etapa">Pedido Faturado</span>
+              <span class="mapa-conector-h"></span>
+              <span class="mapa-etapa">Montagem da Carga</span>
+              <span class="mapa-conector-h"></span>
+              <span class="mapa-etapa">Separação</span>
+              <span class="mapa-conector-h"></span>
+              <span class="mapa-etapa">Conferência</span>
+              <span class="mapa-conector-h"></span>
+              <span class="mapa-etapa">Transporte</span>
+              <span class="mapa-conector-h"></span>
+              <span class="mapa-etapa destaque">Entrega</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="processo-card">
+        <h4>Processo de Projetos e Obras</h4>
+        <p class="descricao">Organizar execução de obras. A obra é tratada como centro de acompanhamento.</p>
+        <div class="fluxo-mapa" onclick="abrirFluxo('Processo de Projetos e Obras', 'Organizar a execução de obras, permitindo acompanhar materiais, custos, produção, serviços e resultado financeiro.', ['Venda','Criação da Obra','Planejamento','Execução','Acompanhamento','Resultado'])">
+          <span class="fluxo-mapa-hint">Clique para detalhes</span>
+          <div class="mapa-simples">
+            <div class="mapa-linha">
+              <span class="mapa-etapa">Venda</span>
+              <span class="mapa-conector-h"></span>
+              <span class="mapa-etapa">Criação da Obra</span>
+              <span class="mapa-conector-h"></span>
+              <span class="mapa-etapa">Planejamento</span>
+              <span class="mapa-conector-h"></span>
+              <span class="mapa-etapa">Execução</span>
+              <span class="mapa-conector-h"></span>
+              <span class="mapa-etapa">Acompanhamento</span>
+              <span class="mapa-conector-h"></span>
+              <span class="mapa-etapa destaque">Resultado</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== DIAGNÓSTICO ===== -->
+    <section id="diagnostico" style="margin-top: 48px;" class="fade-in">
+      <div class="header">
+        <h2>Biblioteca de Problemas — Diagnóstico</h2>
+        <p>Antes de encaminhar um chamado, faça uma análise inicial para identificar a causa.</p>
+      </div>
+
+      <div class="processo-card" style="border-left-color: var(--laranja);">
+        <h4>Metodologia de Análise do Consultor</h4>
+        <div class="fluxo-mapa" style="margin-top: 12px;" onclick="abrirFluxo('Metodologia de Análise do Consultor', 'Sequência para investigar problemas antes de encaminhar um chamado, identificando a causa raiz.', ['Entender o problema','Reproduzir o cenário','Validar configurações','Testar alternativas','Identificar causa','Corrigir ou encaminhar'])">
+          <span class="fluxo-mapa-hint">Clique para detalhes</span>
+          <div class="mapa-simples">
+            <div class="mapa-linha">
+              <span class="mapa-etapa">Entender o problema</span>
+              <span class="mapa-conector-h"></span>
+              <span class="mapa-etapa">Reproduzir o cenário</span>
+              <span class="mapa-conector-h"></span>
+              <span class="mapa-etapa">Validar configurações</span>
+              <span class="mapa-conector-h"></span>
+              <span class="mapa-etapa">Testar alternativas</span>
+              <span class="mapa-conector-h"></span>
+              <span class="mapa-etapa">Identificar causa</span>
+              <span class="mapa-conector-h"></span>
+              <span class="mapa-etapa destaque">Corrigir ou encaminhar</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="processo-card" style="border-left-color: var(--vermelho);">
+        <h4>Exemplo: Cliente não consegue emitir Nota Fiscal</h4>
+
+        <div class="diagnostico-step">
+          <div class="diagnostico-num">1</div>
+          <div class="diagnostico-content">
+            <h5>O que perguntar (entender o cenário)</h5>
+            <ul>
+              <li>Qual nota está tentando emitir?</li>
+              <li>Qual mensagem de erro aparece?</li>
+              <li>Acontece com todos os pedidos ou apenas um?</li>
+              <li>Já conseguiu emitir anteriormente?</li>
+              <li>O problema acontece em homologação ou produção?</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="diagnostico-step">
+          <div class="diagnostico-num">2</div>
+          <div class="diagnostico-content">
+            <h5>Onde olhar (verificar configurações)</h5>
+            <table class="tabela" style="margin-top:8px;">
+              <thead><tr><th>Área</th><th>O que verificar</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Produto</strong></td><td>Possui NCM? Possui tributação? Está corretamente configurado?</td></tr>
+                <tr><td><strong>Cliente</strong></td><td>CNPJ correto? Inscrição estadual? Endereço?</td></tr>
+                <tr><td><strong>Fiscal</strong></td><td>CFOP? CST/CSOSN? Série da nota? Certificado digital?</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="diagnostico-step">
+          <div class="diagnostico-num">3</div>
+          <div class="diagnostico-content">
+            <h5>Como validar (realizar testes)</h5>
+            <ul>
+              <li>Conferir cadastro do produto</li>
+              <li>Conferir dados fiscais</li>
+              <li>Criar nova operação</li>
+              <li>Tentar emitir novamente</li>
+              <li>Comparar com outro produto ou cliente</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONCLUSÃO ===== -->
+    <section id="conclusao" style="margin-top: 48px;" class="fade-in">
+      <div class="header">
+        <h2>Conclusão do Guia</h2>
+        <p>Os pilares de uma implantação estruturada.</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
+        <div class="processo-card" style="border-left-color: var(--ff-azul-medio);">
+          <h4>Conhecimento dos Módulos</h4>
+          <p class="descricao">Entender como cada área se conecta, do primeiro contato comercial à entrega.</p>
+        </div>
+        <div class="processo-card" style="border-left-color: var(--verde);">
+          <h4>Compreensão dos Processos</h4>
+          <p class="descricao">Implantar respeitando a realidade operacional, evitando replicar telas sem gerar valor.</p>
+        </div>
+        <div class="processo-card" style="border-left-color: var(--laranja);">
+          <h4>Análise de Problemas</h4>
+          <p class="descricao">Identificar causa antes de encaminhar. Postura consultiva e eficiente.</p>
+        </div>
+        <div class="processo-card" style="border-left-color: var(--ff-lima-escuro);">
+          <h4>Comunicação Organizada</h4>
+          <p class="descricao">Registrar decisões, acompanhar pendências, formalizar entregas e manter o cliente alinhado.</p>
+        </div>
+      </div>
+
+      <div class="alerta alerta-info" style="margin-top: 24px; font-size: 15px;">
+        <span class="icone">i</span>
+        <span>O consultor é o <strong>elo entre o cliente e a tecnologia</strong>. Seu objetivo não é apenas colocar o sistema para funcionar, mas <strong>conduzir uma transformação na forma como a empresa trabalha</strong>, garantindo organização, controle e evolução dos processos através do Faktory Flow.</span>
+      </div>
+    </section>
+
+    <div class="footer">
+      <p>Guia do Consultor — <strong style="color:var(--ff-azul-escuro);">Faktory</strong><strong style="color:var(--ff-lima-escuro);">Flow</strong> · Material de apoio à implantação</p>
+      <p style="margin-top:4px; font-size:11px;">Versão otimizada · Uso interno</p>
+    </div>
+
+  </main>
+</div>
+
+<!-- ==================== MODAL DE MÓDULO ==================== -->
+<div class="modal-overlay" id="modalOverlay" onclick="fecharModal(event)">
+  <div class="modal" onclick="event.stopPropagation()">
+    <div class="modal-header" id="modalHeader"></div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<!-- ==================== MODAL DE FLUXO ==================== -->
+<div class="fluxo-overlay" id="fluxoOverlay" onclick="fecharFluxo(event)">
+  <div class="fluxo-modal" onclick="event.stopPropagation()">
+    <div class="fluxo-modal-header">
+      <button class="fluxo-modal-close" onclick="fecharFluxo()">✕</button>
+      <h3 id="fluxoTitulo">Título do Fluxo</h3>
+      <p id="fluxoDescricao">Descrição</p>
+    </div>
+    <div class="fluxo-modal-body">
+      <div class="fluxo-etapas-lista" id="fluxoEtapasLista"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ==================== ÍCONES SVG ==================== */
+const icones = {
+  vendas: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>',
+  faturamento: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>',
+  financeiro: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>',
+  crm: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
+  producao: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 20h20"/><path d="M5 20V8l5 4V8l5 4V8l4 4v8"/></svg>',
+  compras: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>',
+  recebimento: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>',
+  estoque: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>',
+  expedicao: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>',
+  servicos: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>',
+  projetos: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg>',
+  fiscal: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11H3v10h6V11zM21 3h-6v18h6V3zM15 7H9v14h6V7z"/></svg>',
+  relatorios: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>',
+  tarefas: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>',
+  alumina: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>'
+};
+
+/* ==================== DADOS DOS MÓDULOS ==================== */
+const modulos = [
+  {
+    id: 'vendas', nome: 'Vendas', subtitulo: 'Comercial', icone: 'vendas', cor: '#1976D2', tags: ['vendas'],
+    objetivo: 'Gerenciar o processo comercial, da criação do pedido ao faturamento. Integrado ao CEM, importa orçamentos sem redigitação.',
+    papel: 'Inicia o fluxo operacional. Alimenta Faturamento, Fiscal, Financeiro, Produção e Expedição.',
+    quando: 'Após configuração dos cadastros básicos e, preferencialmente, com integração CEM configurada.',
+    fluxo: ['Projeto no CEM','Integração do orçamento','Pedido de venda','Faturamento','Geração da NF','Contas a Receber','Liberação para Serviços, Produção e Expedição'],
+    fluxoDesc: 'Da importação do orçamento à liberação para os módulos operacionais.',
+    treinamento: 'Priorize exemplos reais da empresa. O fluxo pode ser adaptado (ex: usar status "Encerrado" e gerar títulos antes do "Faturado"). O importante é que os usuários compreendam a lógica do processo.',
+    boasPraticas: ['Validar dados importados antes da aprovação', 'Explicar a importância dos status do pedido', 'Demonstrar faturamento parcial quando aplicável', 'Relacionar sempre aos demais módulos'],
+    checklist: ['Importar orçamento do CEM (quando aplicável)', 'Cadastrar e aprovar pedido de venda', 'Realizar faturamento', 'Compreender integração com Faturamento, Financeiro, Serviços, Produção e Expedição']
+  },
+  {
+    id: 'faturamento', nome: 'Faturamento', subtitulo: 'Fiscal', icone: 'faturamento', cor: '#F57F17', tags: ['fiscal'],
+    objetivo: 'Emitir documentos fiscais (NF-e/NFS-e), transmitir aos órgãos fiscais e integrar com Financeiro, Estoque e Expedição.',
+    papel: 'Conecta a área comercial às etapas fiscais e operacionais.',
+    quando: 'Após o módulo de Vendas e configuração das regras fiscais (CFOP, NCM, impostos, certificado digital).',
+    fluxo: ['Pedido de Venda','Geração da NF-e/NFS-e','Cálculo dos impostos','Transmissão à SEFAZ/Prefeitura','Autorização','Contas a Receber','Baixa de Estoque','Liberação para Expedição'],
+    fluxoDesc: 'Da geração da nota fiscal à liberação para expedição.',
+    treinamento: 'Use um pedido previamente cadastrado. Demonstre da geração da nota até a autorização. Explique carta de correção, cancelamento, inutilização e contingência.',
+    boasPraticas: ['Validar configurações fiscais antes dos testes', 'Conferir certificado digital e validade', 'Orientar sobre impactos da autorização e cancelamento', 'Demonstrar integração com Financeiro, Estoque e Expedição'],
+    checklist: ['Gerar NF-e ou NFS-e a partir de um pedido', 'Transmitir e acompanhar retorno da autorização', 'Emitir DANFE e XML', 'Realizar carta de correção e cancelamento (quando aplicável)', 'Compreender impactos nos módulos Financeiro, Estoque e Expedição']
+  },
+  {
+    id: 'financeiro', nome: 'Financeiro', subtitulo: 'Gestão', icone: 'financeiro', cor: '#2E7D32', tags: ['gestao'],
+    objetivo: 'Gerenciar movimentações financeiras — contas a receber, contas a pagar, cobranças, pagamentos, conciliação bancária e fluxo de caixa.',
+    papel: 'Recebe informações de Vendas, Faturamento, Compras e Recebimento. Elimina lançamentos manuais.',
+    quando: 'Após Vendas, Faturamento e configurações financeiras (plano de contas, contas bancárias, meios e condições de pagamento).',
+    fluxo: ['Pedido de Venda/NF','Geração automática dos títulos','Cobrança (boleto/PIX)','Recebimento ou pagamento','Conciliação bancária','Fluxo de Caixa','DRE e Resultado por Obra'],
+    fluxoDesc: 'Da geração automática de títulos à análise de resultado.',
+    treinamento: 'Use situações reais. Demonstre da geração automática à baixa, conciliação e demonstrativos. Relacione lançamentos aos processos que os originaram.',
+    boasPraticas: ['Configurar contas bancárias, plano de contas e meios de pagamento antes de operar', 'Incentivar geração automática de títulos', 'Demonstrar importância da conciliação e fluxo de caixa', 'Orientar uso dos demonstrativos para decisões'],
+    checklist: ['Consultar contas a receber e a pagar', 'Realizar recebimentos e pagamentos', 'Consultar fluxo de caixa e demonstrativos', 'Compreender integração com Vendas, Faturamento, Compras e Recebimento']
+  },
+  {
+    id: 'crm', nome: 'CRM', subtitulo: 'Comercial', icone: 'crm', cor: '#7B1FA2', tags: ['vendas'],
+    objetivo: 'Gerenciar o relacionamento com clientes, do primeiro contato ao pós-venda.',
+    papel: 'Porta de entrada do processo comercial. Oportunidades são convertidas em pedidos de venda.',
+    quando: 'Antes do módulo de Vendas.',
+    fluxo: ['Captação de Leads','Qualificação','Negociação','Conversão em Pedido de Venda','Pós-venda e Acompanhamento'],
+    fluxoDesc: 'Da captação do lead ao acompanhamento pós-venda.',
+    treinamento: 'Apresente o funil de vendas. Demonstre cadastro de oportunidades, registro de atividades e conversão. Mostre como o CRM auxilia no pós-venda.',
+    boasPraticas: ['Manter oportunidades atualizadas no funil', 'Registrar contatos, reuniões e negociações no histórico', 'Definir etapas e responsáveis', 'Usar painéis e indicadores'],
+    checklist: ['Cadastrar contato ou oportunidade', 'Movimentar oportunidades no funil', 'Registrar atividades e acompanhamentos', 'Converter oportunidade em pedido de venda', 'Consultar histórico e visão do cliente']
+  },
+  {
+    id: 'producao', nome: 'Produção', subtitulo: 'Operação', icone: 'producao', cor: '#EF6C00', tags: ['operacao'],
+    objetivo: 'Transformar pedidos de venda em ordens de produção, organizando planejamento, consumo de materiais e etapas produtivas.',
+    papel: 'Recebe pedidos aprovados de Vendas. Controla fabricação, materiais e custos.',
+    quando: 'Após Vendas e Estoque.',
+    fluxo: ['Pedido de Venda','Ordem de Produção','Planejamento','Separação de Materiais','Produção','Apontamento das Etapas','Conclusão da Ordem','Liberação para Instalação ou Expedição'],
+    fluxoDesc: 'Do pedido aprovado à liberação do produto finalizado.',
+    treinamento: 'Apresente criação de ordens, planejamento, apontamentos e conclusão. Demonstre acompanhamento do progresso e indicadores.',
+    boasPraticas: ['Validar produtos, estruturas e roteiros previamente', 'Planejar ordens antes de fabricar', 'Registrar apontamentos corretamente', 'Acompanhar indicadores para antecipar atrasos'],
+    checklist: ['Gerar ordem de produção a partir de pedido', 'Planejar e acompanhar produção', 'Realizar apontamentos das etapas', 'Consultar andamento das ordens', 'Compreender integração com Vendas, Estoque, Compras e Expedição']
+  },
+  {
+    id: 'compras', nome: 'Compras', subtitulo: 'Operação', icone: 'compras', cor: '#00838F', tags: ['operacao'],
+    objetivo: 'Gerenciar aquisição de materiais — cotações, comparação de fornecedores, pedidos e acompanhamento de entregas.',
+    papel: 'Recebe demandas de Produção, Estoque ou solicitações manuais. Segue para Recebimento, Financeiro e Fiscal.',
+    quando: 'Após Estoque e Produção.',
+    fluxo: ['Necessidade de Compra','Cotação','Comparação de Fornecedores','Pedido de Compra','Acompanhamento da Entrega','Recebimento da Mercadoria'],
+    fluxoDesc: 'Da identificação da necessidade ao recebimento da mercadoria.',
+    treinamento: 'Apresente solicitações, cotações, pedidos e acompanhamento. Demonstre integração com Recebimento, Financeiro e Estoque.',
+    boasPraticas: ['Validar cadastros de produtos e fornecedores', 'Usar cotações quando houver mais de um fornecedor', 'Acompanhar prazos de entrega', 'Registrar todas as compras no sistema'],
+    checklist: ['Gerar solicitação de compra', 'Realizar cotação com fornecedores', 'Emitir pedido de compra', 'Acompanhar entrega dos materiais', 'Compreender integração com Produção, Recebimento, Financeiro e Estoque']
+  },
+  {
+    id: 'recebimento', nome: 'Recebimento', subtitulo: 'Operação', icone: 'recebimento', cor: '#5D4037', tags: ['operacao'],
+    objetivo: 'Controlar entrada de mercadorias — importação da NF do fornecedor, conferência e integração com Estoque, Compras, Financeiro e Fiscal.',
+    papel: 'Valida a entrega do fornecedor. Atualiza estoque, gera contas a pagar e finaliza pedido de compra.',
+    quando: 'Após Compras.',
+    fluxo: ['Importação da NF','Conferência dos Produtos','Validação das Divergências','Finalização do Recebimento','Entrada no Estoque','Geração das Contas a Pagar'],
+    fluxoDesc: 'Da importação da nota fiscal à geração das contas a pagar.',
+    treinamento: 'Apresente importação da NF-e, conferência, tratamento de divergências e finalização. Demonstre integração automática com Estoque, Compras, Financeiro e Fiscal.',
+    boasPraticas: ['Conferir produtos antes de finalizar', 'Registrar divergências, avarias ou recusas', 'Validar vínculo da NF com o pedido de compra', 'Finalizar somente após conferência física'],
+    checklist: ['Importar NF de fornecedor', 'Conferir itens recebidos', 'Registrar divergências ou avarias', 'Finalizar recebimento', 'Compreender integração com Compras, Estoque, Financeiro e Fiscal']
+  },
+  {
+    id: 'estoque', nome: 'Estoque', subtitulo: 'Operação', icone: 'estoque', cor: '#455A64', tags: ['operacao'],
+    objetivo: 'Controlar movimentação de materiais. No Faktory Flow, o estoque é controlado por características (cor, largura, altura, comprimento), ideal para esquadrias.',
+    papel: 'Módulo central. Integra-se a Compras, Recebimento, Produção, Vendas e Faturamento. Saldos atualizados automaticamente.',
+    quando: 'Após configuração dos cadastros de produtos e antes de Compras, Produção e Recebimento.',
+    fluxo: ['Entrada de Mercadorias','Controle de Saldo','Reserva de Materiais','Movimentações','Consumo pela Produção ou Faturamento','Reposição Automática'],
+    fluxoDesc: 'Da entrada de mercadorias à reposição automática.',
+    treinamento: 'Apresente saldo por características, movimentações, reservas, transferências, inventário e reposição automática. Demonstre consulta de saldos e integração com a operação.',
+    boasPraticas: ['Manter cadastros de produtos e características atualizados', 'Evitar movimentações manuais quando houver processos integrados', 'Realizar inventários periódicos', 'Acompanhar materiais abaixo do estoque mínimo'],
+    checklist: ['Consultar saldos dos produtos', 'Realizar movimentações e transferências', 'Entender reservas de materiais', 'Executar inventários e ajustes', 'Compreender integração com Compras, Recebimento, Produção, Vendas e Faturamento']
+  },
+  {
+    id: 'expedicao', nome: 'Expedição', subtitulo: 'Operação', icone: 'expedicao', cor: '#0277BD', tags: ['operacao'],
+    objetivo: 'Organizar a entrega dos produtos — montagem da carga, conferência, carregamento e transporte.',
+    papel: 'Recebe pedidos faturados e autorizados. Integra-se a Vendas, Faturamento, Estoque e Produção.',
+    quando: 'Após Vendas, Faturamento, Produção e Estoque.',
+    fluxo: ['Pedido Faturado','Montagem da Carga','Separação dos Produtos','Conferência','Carregamento','Entrega','Confirmação de Recebimento'],
+    fluxoDesc: 'Do pedido faturado à confirmação de recebimento.',
+    treinamento: 'Apresente criação de cargas, organização por veículo, conferência, carregamento e acompanhamento. Demonstre registro de confirmação de entrega e histórico.',
+    boasPraticas: ['Conferir volumes antes do carregamento', 'Organizar cargas por capacidade e roteiro', 'Registrar ocorrências durante transporte', 'Finalizar entrega somente após confirmação do cliente'],
+    checklist: ['Montar carga com pedidos faturados', 'Realizar conferência e carregamento', 'Acompanhar status das entregas', 'Registrar confirmação de recebimento', 'Compreender integração com Vendas, Estoque, Produção e Faturamento']
+  },
+  {
+    id: 'servicos', nome: 'Serviços e Instalação', subtitulo: 'Operação', icone: 'servicos', cor: '#AD1457', tags: ['operacao'], revisao: true,
+    objetivo: 'Controlar atividades fora da fábrica — medição em obra, instalação, vistoria e assistência técnica.',
+    papel: 'Conecta processos comercial, produtivo e operacional. Acompanha a execução em campo.',
+    quando: 'Após Vendas, Produção e Expedição.',
+    fluxo: ['Venda','Medição em Obra','Aprovação das Medidas','Produção','Agendamento da Instalação','Execução do Serviço','Vistoria','Assistência Técnica'],
+    fluxoDesc: 'Da venda à assistência técnica pós-instalação.',
+    treinamento: 'Apresente medição em campo (medidas, fotos, observações, assinaturas). Demonstre acompanhamento da instalação (agenda, equipe, checklist, registro fotográfico, aceite). Apresente vistoria e assistência técnica (histórico, atendimentos, evidências).',
+    boasPraticas: ['Realizar medição antes de liberar produção', 'Registrar fotos e observações em todas as etapas', 'Usar checklists para padronizar execução', 'Manter histórico atualizado', 'Registrar aceite do cliente ao finalizar'],
+    checklist: ['Realizar medição em obra e registrar informações', 'Comparar medidas com o pedido vendido', 'Organizar agenda das equipes', 'Registrar checklist, fotos e aceite', 'Realizar vistoria e abertura de assistência técnica', 'Consultar histórico', 'Compreender integração com Vendas, Produção, Expedição, Faturamento e Projetos']
+  },
+  {
+    id: 'projetos', nome: 'Projetos e Obras', subtitulo: 'Gestão', icone: 'projetos', cor: '#00695C', tags: ['gestao'], revisao: true,
+    objetivo: 'Centralizar informações das obras — do planejamento à conclusão. Transforma cada obra em centro de controle e resultado.',
+    papel: 'Conecta todos os processos da obra. Evita informações espalhadas em planilhas.',
+    quando: 'Após Vendas, Compras, Produção, Estoque e Financeiro.',
+    fluxo: ['Cadastro da Obra','Planejamento de Materiais','Compras e Produção','Execução da Obra','Acompanhamento Operacional','Controle Financeiro','Encerramento e Análise de Resultado'],
+    fluxoDesc: 'Do cadastro da obra à análise de resultado.',
+    treinamento: 'Apresente cadastro da obra (cliente, responsável, datas, endereço, orçamento, etapas). Demonstre planejamento de materiais (previsto, comprado, recebido, consumido). Apresente painel operacional e financeiro (orçamento vs. realizado, margem, diário de obra).',
+    boasPraticas: ['Criar obras com informações completas', 'Usar planejamento de materiais antes de executar', 'Acompanhar custos vs. orçamento', 'Registrar ocorrências e fotos no diário de obra', 'Usar análise de margem para identificar desvios', 'Manter documentos organizados no sistema'],
+    checklist: ['Criar e configurar nova obra', 'Organizar fases e etapas', 'Planejar necessidades de materiais', 'Acompanhar compras, produção, estoque e serviços', 'Consultar receitas, custos e margem', 'Usar diário de obra', 'Identificar diferenças entre previsto e realizado', 'Compreender integração com Vendas, Compras, Produção, Estoque, Financeiro, Serviços e CRM']
+  },
+  {
+    id: 'fiscal', nome: 'Fiscal', subtitulo: 'Fiscal', icone: 'fiscal', cor: '#C62828', tags: ['fiscal'],
+    objetivo: 'Centralizar e automatizar cálculos tributários. Reduzir erros e divergências entre pedido e nota fiscal.',
+    papel: 'Motor tributário do Faktory Flow. Usado por todos os processos que envolvem impostos.',
+    quando: 'No início da implantação dos processos fiscais, antes de Vendas, Compras e Faturamento.',
+    prerequisito: 'Informações fiscais alinhadas com o cliente e contador (regime tributário, regras, NCM, CFOP, CST/CSOSN).',
+    fluxo: ['Configuração Fiscal','Venda','Faturamento','Compra','Recebimento','Conferência dos Impostos'],
+    fluxoDesc: 'Da configuração fiscal à conferência dos impostos.',
+    treinamento: 'Apresente cadastros fiscais: NCM, CFOP, CST/CSOSN, CEST, perfis fiscais, textos fiscais, regras de tributação. Demonstre aplicação dos impostos no pedido de venda. Apresente faturamento e envio à SEFAZ. Finalize com compras e recebimentos (impostos de entrada).',
+    boasPraticas: ['Validar configurações fiscais com o contador', 'Manter NCMs, CFOPs e situações tributárias atualizados', 'Evitar alterações sem avaliar impacto', 'Conferir impostos antes de emitir notas', 'Manter produtos vinculados às regras fiscais', 'Realizar testes antes do Go-live'],
+    checklist: ['Cadastrar e consultar informações fiscais', 'Compreender regras tributárias', 'Identificar cálculo de impostos na venda', 'Emitir notas com configurações cadastradas', 'Realizar compras com cálculo de impostos de entrada', 'Conferir divergências fiscais no recebimento', 'Compreender integração com Vendas, Faturamento, Compras, Recebimento e Financeiro']
+  },
+  {
+    id: 'relatorios', nome: 'Relatórios e Análises', subtitulo: 'Gestão', icone: 'relatorios', cor: '#283593', tags: ['gestao'], revisao: true,
+    objetivo: 'Transformar dados em informações estratégicas. Criar relatórios personalizados, tabelas dinâmicas e acompanhar indicadores.',
+    papel: 'Consolida informações de todos os módulos. Permite cruzar dados e gerar análises completas.',
+    quando: 'Após os principais módulos operacionais, com dados já cadastrados e movimentações realizadas.',
+    fluxo: ['Dados dos Módulos','Criação do Relatório','Aplicação de Filtros','Análise das Informações','Exportação ou Compartilhamento'],
+    fluxoDesc: 'Dos dados dos módulos à exportação e compartilhamento.',
+    treinamento: 'Apresente construtor de relatórios (seleção, filtros, agrupamentos). Demonstre tabelas dinâmicas. Apresente relatórios financeiros (DRE, receitas, custos, despesas). Finalize com exportação (Excel, PDF, CSV) e compartilhamento.',
+    boasPraticas: ['Definir indicadores importantes por área', 'Usar filtros para análises específicas', 'Salvar relatórios frequentes', 'Garantir permissões adequadas', 'Usar relatórios para decisões estratégicas', 'Evitar controles paralelos em planilhas'],
+    checklist: ['Criar relatório com informações do sistema', 'Aplicar filtros, agrupamentos e totais', 'Usar tabelas dinâmicas', 'Consultar informações de diferentes módulos', 'Exportar em Excel, PDF ou CSV', 'Compartilhar relatórios', 'Compreender integração com Vendas, Compras, Produção, Estoque, Faturamento, Fiscal, Financeiro e Projetos']
+  },
+  {
+    id: 'tarefas', nome: 'Tarefas', subtitulo: 'Gestão', icone: 'tarefas', cor: '#00897B', tags: ['gestao'],
+    objetivo: 'Organizar e acompanhar atividades das equipes. Controlar responsabilidades, prazos e andamento através de quadros visuais.',
+    papel: 'Organiza fluxo de trabalho com quadros, colunas e cartões. Cada tarefa pode ter responsável, prazo, prioridade, checklist, comentários, anexos e histórico.',
+    quando: 'Após os processos que utilizarão o gerenciamento de atividades (Projetos e Obras, CRM, etc.).',
+    fluxo: ['Criação da Tarefa','Definição do Responsável e Prazo','Execução da Atividade','Acompanhamento','Conclusão'],
+    fluxoDesc: 'Da criação da tarefa à conclusão.',
+    treinamento: 'Apresente criação de quadros e colunas. Demonstre criação de cartões (responsáveis, prazos, prioridades, checklists, anexos, comentários). Apresente recursos de acompanhamento (painel, filtros, indicadores de atraso). Finalize com modelos e automações.',
+    boasPraticas: ['Criar quadros seguindo processos reais', 'Definir responsável para cada tarefa', 'Usar prazos e prioridades', 'Registrar informações dentro da tarefa', 'Criar modelos para atividades repetitivas', 'Revisar periodicamente tarefas atrasadas'],
+    checklist: ['Criar quadros e organizar tarefas por etapas', 'Criar cartões com responsáveis, prazos e prioridades', 'Usar checklists e comentários', 'Acompanhar atividades pendentes e atrasadas', 'Consultar tarefas por usuário ou equipe', 'Usar modelos para processos repetitivos', 'Compreender integração com Projetos e Obras, CRM e demais processos']
+  },
+  {
+    id: 'alumina', nome: 'Alumina (IA)', subtitulo: 'Inovação', icone: 'alumina', cor: '#6A1B9A', tags: ['gestao'], revisao: true,
+    objetivo: 'Assistente inteligente dentro do Faktory Flow. Consultar informações, realizar análises e executar ações por comandos em linguagem natural (texto ou voz).',
+    papel: 'Camada inteligente sobre os módulos. Respeita permissões do usuário. Ações que alteram dados só executam após confirmação.',
+    quando: 'Após os principais módulos operacionais, com dados suficientes para consultas.',
+    fluxo: ['Pergunta do Usuário','Consulta das Informações','Análise dos Dados','Sugestão de Ação','Confirmação','Execução Registrada'],
+    fluxoDesc: 'Da pergunta do usuário à execução registrada.',
+    treinamento: 'Apresente perguntas por texto ou voz. Exemplos: "Quais pedidos estão pendentes de faturamento?", "Qual foi o faturamento deste mês?", "Quais títulos estão vencidos?", "Como está a margem de uma obra?". Demonstre interpretação, respostas, gráficos e sugestões. Apresente execução de ações assistidas (sempre com confirmação). Finalize com recursos de segurança (permissões, registros, restrições).',
+    boasPraticas: ['Usar perguntas claras e relacionadas ao processo', 'Confirmar informações antes de executar ações', 'Usar a IA como apoio à decisão', 'Garantir permissões corretas', 'Manter dados atualizados', 'Usar a base de conhecimento da empresa'],
+    checklist: ['Realizar perguntas por texto ou voz', 'Consultar informações dos módulos', 'Interpretar respostas e gráficos', 'Solicitar sugestões de ações', 'Compreender processo de confirmação', 'Entender permissões e segurança', 'Compreender integração com Vendas, Financeiro, Compras, Produção, Estoque, Projetos, CRM e demais módulos']
+  }
+];
+
+/* ==================== RENDERIZAR CARDS ==================== */
+function renderizarCards(lista) {
+  const grid = document.getElementById('modulosGrid');
+  grid.innerHTML = '';
+
+  if (lista.length === 0) {
+    grid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 48px; color: var(--cinza-medio);">Nenhum módulo encontrado para os filtros aplicados.</div>';
+    return;
+  }
+
+  lista.forEach(mod => {
+    const card = document.createElement('div');
+    card.className = 'modulo-card';
+    card.onclick = () => abrirModal(mod);
+
+    const badgeRevisao = mod.revisao ? '<span style="display:inline-flex; background:var(--vermelho-claro); color:var(--vermelho); font-size:10px; font-weight:700; padding:3px 8px; border-radius:10px; text-transform:uppercase; letter-spacing:0.5px; margin-left:8px;">Rever</span>' : '';
+
+    card.innerHTML = `
+      <div class="modulo-card-header">
+        <div class="modulo-icon" style="background: ${mod.cor}18; color: ${mod.cor};">${icones[mod.icone]}</div>
+        <div>
+          <div class="subtitulo">${mod.subtitulo}</div>
+          <h3>${mod.nome}${badgeRevisao}</h3>
+        </div>
+      </div>
+      <div class="modulo-card-body">
+        <p class="objetivo">${mod.objetivo.substring(0, 120)}${mod.objetivo.length > 120 ? '...' : ''}</p>
+        <div class="tags">
+          ${mod.tags.map(t => {
+            const labels = { vendas: 'Comercial', fiscal: 'Fiscal', operacao: 'Operação', gestao: 'Gestão' };
+            const classes = { vendas: 'tag-integracao', fiscal: 'tag-requisito', operacao: 'tag-validacao', gestao: 'tag-integracao' };
+            return `<span class="tag ${classes[t] || 'tag-integracao'}">${labels[t] || t}</span>`;
+          }).join('')}
+        </div>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+/* ==================== FILTROS ==================== */
+let filtroAtual = 'todos';
+let buscaAtual = '';
+
+function filtrarCards() {
+  buscaAtual = document.getElementById('searchInput').value.toLowerCase();
+  aplicarFiltros();
+}
+
+function filtrarPorTag(tag, btn) {
+  filtroAtual = tag;
+  document.querySelectorAll('.filtro-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  aplicarFiltros();
+}
+
+function aplicarFiltros() {
+  let lista = modulos;
+  if (filtroAtual !== 'todos') lista = lista.filter(m => m.tags.includes(filtroAtual));
+  if (buscaAtual) lista = lista.filter(m => m.nome.toLowerCase().includes(buscaAtual) || m.objetivo.toLowerCase().includes(buscaAtual) || m.subtitulo.toLowerCase().includes(buscaAtual));
+  renderizarCards(lista);
+}
+
+/* ==================== MODAL DE MÓDULO ==================== */
+function abrirModal(mod) {
+  const header = document.getElementById('modalHeader');
+  const body = document.getElementById('modalBody');
+  const badgeRevisao = mod.revisao ? '<span style="display:inline-flex; background:var(--vermelho-claro); color:var(--vermelho); font-size:10px; font-weight:700; padding:3px 8px; border-radius:10px; text-transform:uppercase; letter-spacing:0.5px; margin-left:8px;">Rever</span>' : '';
+
+  header.innerHTML = `
+    <div class="modulo-icon" style="background: ${mod.cor}18; color: ${mod.cor};">${icones[mod.icone]}</div>
+    <div>
+      <div class="subtitulo">${mod.subtitulo}</div>
+      <h2>${mod.nome}${badgeRevisao}</h2>
+    </div>
+    <button class="modal-close" onclick="fecharModal()">✕</button>
+  `;
+
+  let html = '';
+  html += `<div class="secao"><div class="secao-titulo">Objetivo do Módulo</div><p>${mod.objetivo}</p></div>`;
+  html += `<div class="secao"><div class="secao-titulo">Papel na Operação</div><p>${mod.papel}</p></div>`;
+  html += `<div class="secao"><div class="secao-titulo">Quando Implantar</div><p>${mod.quando}</p></div>`;
+
+  if (mod.prerequisito) {
+    html += `<div class="secao"><div class="secao-titulo">Pré-requisito</div><div class="alerta alerta-atencao"><span class="icone">!</span><span>${mod.prerequisito}</span></div></div>`;
+  }
+
+  // Fluxo em estilo mapa mental
+  html += `<div class="secao"><div class="secao-titulo">Fluxo Operacional</div>`;
+  html += `<div class="fluxo-mapa" onclick="abrirFluxo('${mod.nome} — Fluxo Operacional', '${mod.fluxoDesc}', ${JSON.stringify(mod.fluxo).replace(/'/g, "&#39;").replace(/"/g, '&quot;')})">`;
+  html += `<span class="fluxo-mapa-hint">Clique para detalhes</span>`;
+  html += `<div class="mapa"><div class="mapa-raiz">Fluxo ${mod.nome}</div>`;
+  html += `<div class="mapa-ramos"><div class="mapa-ramos-conector"></div><div class="mapa-ramo">Etapas</div></div>`;
+  html += `<div class="mapa-folhas">`;
+  mod.fluxo.forEach((etapa, i) => {
+    const destaque = i === mod.fluxo.length - 1 ? 'destaque' : '';
+    html += `<div class="mapa-folha ${destaque}">${etapa}</div>`;
+  });
+  html += `</div></div></div></div>`;
+
+  html += `<div class="secao"><div class="secao-titulo">Condução do Treinamento</div><p>${mod.treinamento}</p></div>`;
+  html += `<div class="secao"><div class="secao-titulo">Boas Práticas</div><ul class="boas-praticas">${mod.boasPraticas.map(b => `<li>${b}</li>`).join('')}</ul></div>`;
+  html += `<div class="secao"><div class="secao-titulo">Checklist de Validação</div><ul class="checklist">${mod.checklist.map(c => `<li>${c}</li>`).join('')}</ul></div>`;
+
+  if (mod.revisao) {
+    html += `<div class="alerta alerta-importante" style="margin-top:16px;"><span class="icone">!</span><span><strong>Módulo marcado para revisão completa.</strong> O conteúdo atual pode sofrer alterações.</span></div>`;
+  }
+
+  body.innerHTML = html;
+  document.getElementById('modalOverlay').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function fecharModal(event) {
+  if (event && event.target !== event.currentTarget) return;
+  document.getElementById('modalOverlay').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+/* ==================== MODAL DE FLUXO (ÚNICO E RESUMIDO) ==================== */
+function abrirFluxo(titulo, descricao, etapas) {
+  const overlay = document.getElementById('fluxoOverlay');
+  document.getElementById('fluxoTitulo').textContent = titulo;
+  document.getElementById('fluxoDescricao').textContent = descricao;
+
+  const lista = document.getElementById('fluxoEtapasLista');
+  lista.innerHTML = etapas.map((etapa, i) => {
+    const destaque = i === etapas.length - 1 ? 'destaque' : '';
+    const texto = typeof etapa === 'string' ? etapa : etapa.t;
+    return `<div class="fluxo-etapa-item ${destaque}"><span class="num">${i + 1}</span>${texto}</div>`;
+  }).join('');
+
+  overlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function fecharFluxo(event) {
+  if (event && event.target !== event.currentTarget) return;
+  document.getElementById('fluxoOverlay').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+/* ==================== TECLADO ==================== */
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    fecharModal();
+    fecharFluxo();
+  }
+});
+
+/* ==================== ACCORDION ==================== */
+function toggleAccordion(header) {
+  header.parentElement.classList.toggle('open');
+}
+
+/* ==================== SCROLL ==================== */
+function scrollToSection(id, event) {
+  const el = document.getElementById(id);
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    if (event && event.currentTarget) event.currentTarget.classList.add('active');
+  }
+}
+
+/* ==================== INICIALIZAÇÃO ==================== */
+document.addEventListener('DOMContentLoaded', () => {
+  renderizarCards(modulos);
+});
+</script>
+
+</body>
+</html>
