@@ -1,0 +1,30 @@
+.duv-dialogo { width: min(760px, calc(100vw - 24px)); max-height: calc(100dvh - 32px); padding: 22px; border: 0; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); color: var(--color-ink); }
+.duv-dialogo::backdrop { background: rgb(7 28 45 / .55); }
+.duv-topo { display: flex; justify-content: space-between; gap: 16px; align-items: start; }
+.duv-topo h2 { margin: 0; font: 800 1.5rem var(--font-display); color: var(--brand-primary-950); }
+.duv-topo p { margin: 4px 0 0; color: var(--color-muted); }
+.duv-topo > button { border: 0; background: none; color: var(--brand-primary-800); font-size: 28px; cursor: pointer; }
+.duv-filtros { display: flex; flex-wrap: wrap; gap: 6px; margin: 18px 0 8px; }
+.duv-filtros button { padding: 7px 13px; border: 1px solid var(--color-line-strong); border-radius: var(--radius-pill); background: #fff; color: var(--brand-primary-900); font: 700 13px var(--font-display); cursor: pointer; }
+.duv-filtros button[aria-pressed="true"] { background: var(--brand-primary-900); color: #fff; }
+.duv-status { min-height: 22px; margin: 8px 0; color: var(--brand-primary-800); }
+.duv-lista { display: grid; gap: 14px; }
+.duv-vazio { padding: 24px 0; color: var(--color-muted); }
+.duv-card { padding: 16px; border: 1px solid var(--color-line); border-radius: var(--radius-lg); background: #fff; }
+.duv-meta { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; color: var(--color-muted); font-size: 12px; }
+.duv-situacao { padding: 2px 8px; border-radius: var(--radius-pill); background: var(--brand-primary-50); color: var(--brand-primary-900); font-weight: 700; }
+.duv-situacao--respondida { background: var(--color-success-soft); color: var(--color-success); }
+.duv-card h3 { margin: 10px 0 6px; font-size: 16px; }
+.duv-card blockquote { margin: 6px 0; padding: 8px 12px; border-radius: var(--radius-sm); background: var(--brand-primary-50); color: var(--brand-primary-800); }
+.duv-pergunta, .duv-resposta p { margin: 8px 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+.duv-padrinho { margin: 8px 0; color: var(--color-muted); font-size: 12px; }
+.duv-resposta { margin-top: 14px; padding: 12px; border-radius: var(--radius-sm); background: var(--color-success-soft); }
+.duv-acoes { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+.duv-acoes button, .duv-form button { padding: 7px 12px; border: 1px solid var(--brand-primary-800); border-radius: var(--radius-pill); background: #fff; color: var(--brand-primary-900); font: 700 13px var(--font-display); cursor: pointer; }
+.duv-acoes button[data-abrir-resposta], .duv-form button[type="submit"] { background: var(--brand-primary-800); color: #fff; }
+.duv-acoes button:disabled, .duv-form button:disabled { opacity: .6; cursor: wait; }
+.duv-form { display: grid; gap: 10px; margin-top: 12px; }
+.duv-form[hidden] { display: none; }
+.duv-form label { display: grid; gap: 5px; font-weight: 700; }
+.duv-form textarea { width: 100%; padding: 10px; border: 1px solid var(--color-line-strong); border-radius: var(--radius-sm); font: inherit; resize: vertical; }
+.duv-form div { display: flex; justify-content: flex-end; gap: 8px; }

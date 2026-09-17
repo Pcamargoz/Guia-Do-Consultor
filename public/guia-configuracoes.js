@@ -10,7 +10,7 @@
       <label for="cfg-emails">E-mails que receberão as dúvidas</label>
       <textarea id="cfg-emails" name="emails" rows="6" placeholder="email@empresa.com\noutro@empresa.com" spellcheck="false" required></textarea>
       <small>Um endereço por linha. Consultores e administradores podem atualizar esta lista.</small>
-      <small>O botão “Enviar dúvidas” abre um rascunho no aplicativo de e-mail padrão. Para usar o Outlook, defina-o como padrão no Windows.</small>
+      <small>As dúvidas são atendidas no sistema. O botão “Enviar dúvidas” abre apenas um rascunho de aviso no aplicativo de e-mail padrão. Para usar o Outlook, defina-o como padrão no Windows.</small>
       <p class="cfg-mensagem" role="status" aria-live="polite"></p>
       <div class="cfg-acoes"><button type="button" data-fechar>Cancelar</button><button type="submit">Salvar destinatários</button></div>
     </form>`;

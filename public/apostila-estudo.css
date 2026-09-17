@@ -30,6 +30,10 @@
 .estudo-registro > button { display: block; width: 100%; margin: 4px 0; padding: 0; border: 0; background: none; color: #174e72; text-align: left; font-weight: 700; }
 .estudo-registro > button:hover { text-decoration: underline; }
 .estudo-registro p { margin: 4px 0; color: #415867; white-space: pre-wrap; }
+.estudo-rascunho { display: block; margin: 7px 0; color: #526977; }
+.estudo-resposta { display: block; margin: 9px 0; padding: 10px; border-radius: 8px; background: #e8f5e9; color: #225b2a; }
+.estudo-resposta small { font-weight: 400; }
+.estudo-resposta p { margin: 5px 0 0; color: #225b2a; }
 .estudo-registro div { display: flex; gap: 12px; }
 .estudo-registro div button { padding: 3px 0; border: 0; background: none; color: #315b76; font-size: 12px; font-weight: 700; }
 .estudo-tipo { display: inline-block; padding: 1px 7px; border-radius: 5px; background: #edf3f7; font-size: 11px; font-weight: 700; }

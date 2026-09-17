@@ -7,7 +7,7 @@
 
   const URL_ESTUDO = '/api/estudo?documento=apostila';
   const cores = ['amarelo', 'verde', 'azul', 'rosa'];
-  const estado = { marcacoes: [], itens: [], progresso: {}, ativo: false, selecao: null, editor: null, pagina: 0, salvando: Promise.resolve() };
+  const estado = { marcacoes: [], itens: [], duvidas: [], progresso: {}, ativo: false, selecao: null, editor: null, pagina: 0, salvando: Promise.resolve() };
   const itensDom = new Map();
   const paginasLidas = new Set();
   const nomes = { grifo: 'Grifo', nota: 'Anotação', comentario: 'Comentário', favorito: 'Favorito' };
@@ -38,7 +38,7 @@
       <button type="button" data-marcar="comentario">Comentar</button>
       <button type="button" data-marcar="favorito">Favoritar</button>
     </div>
-    <button type="button" class="estudo-abrir-painel" aria-expanded="false" hidden>Minhas Anotações <span data-contagem></span></button>
+    <button type="button" class="estudo-abrir-painel" aria-expanded="false" hidden>Minhas Anotações <span data-contagem></span><span data-respostas></span></button>
     <aside class="estudo-painel" aria-label="Minhas Anotações" hidden>
       <div class="estudo-painel-topo"><h2>Minhas Anotações</h2><button type="button" data-fechar-painel aria-label="Fechar painel">×</button></div>
       <p class="estudo-aviso" role="status" aria-live="polite"></p>
@@ -144,6 +144,16 @@
     interfaceEstudo.querySelector('[data-progresso]').textContent = `${percentual}%`;
     interfaceEstudo.querySelector('[data-itens-resumo]').textContent = `${concluidos} de ${total} itens concluídos · ${paginasLidas.size} de ${paginas.length} páginas vistas`;
     interfaceEstudo.querySelector('[data-contagem]').textContent = estado.marcacoes.length ? `(${estado.marcacoes.length})` : '';
+    const respondidas = estado.duvidas.filter((d) => d.status === 'respondida').length;
+    interfaceEstudo.querySelector('[data-respostas]').textContent = respondidas ? ` · ${respondidas} resposta${respondidas === 1 ? '' : 's'}` : '';
+  }
+  async function carregarMinhasDuvidas() {
+    try {
+      const resposta = await fetch('/api/duvidas?escopo=minhas', { cache: 'no-store', credentials: 'same-origin' });
+      if (!resposta.ok) return;
+      estado.duvidas = (await resposta.json()).duvidas;
+      renderLista();
+    } catch { /* estado pessoal permanece disponível mesmo se a fila falhar */ }
   }
   function renderLista() {
     lista.replaceChildren();
@@ -157,9 +167,11 @@
       const titulo = document.createElement('h3'); titulo.textContent = secao; lista.append(titulo);
       for (const marcacao of marcacoes) {
         const linha = document.createElement('div'); linha.className = 'estudo-registro';
+        const duvida = estado.duvidas.find((d) => d.marcacaoId === marcacao.id);
         linha.innerHTML = `<span class="estudo-tipo estudo-tipo--${esc(marcacao.cor)}">${marcacao.tipo === 'comentario' && marcacao.rotulo === 'duvida' ? 'Dúvida' : nomes[marcacao.tipo] || 'Marcação'}</span>
           <button type="button" data-ir="${esc(marcacao.id)}"></button><p></p>
-          <div><button type="button" data-editar="${esc(marcacao.id)}">Editar</button><button type="button" data-excluir="${esc(marcacao.id)}">Excluir</button></div>`;
+          ${duvida ? `<div class="estudo-resposta"><strong>${duvida.status === 'respondida' ? 'Respondida' : duvida.padrinho ? 'Em atendimento' : 'Aguardando atendimento'}</strong>${duvida.padrinho ? `<small> por ${esc(duvida.padrinho)}</small>` : ''}${duvida.resposta ? `<p>${esc(duvida.resposta)}</p>` : ''}</div>` : marcacao.rotulo === 'duvida' ? '<small class="estudo-rascunho">Rascunho · use “Enviar dúvidas” para encaminhar</small>' : ''}
+          ${duvida ? '' : `<div><button type="button" data-editar="${esc(marcacao.id)}">Editar</button><button type="button" data-excluir="${esc(marcacao.id)}">Excluir</button></div>`}`;
         linha.querySelector('[data-ir]').textContent = resumo(marcacao.trecho) || `Página ${marcacao.pagina}`;
         linha.querySelector('p').textContent = marcacao.texto || '';
         lista.append(linha);
@@ -261,9 +273,9 @@
   alternar.addEventListener('click', () => {
     aplicarModo(!estado.ativo);
     salvarProgresso({ modoEstudo: estado.ativo });
-    if (estado.ativo) dispatchEvent(new Event('scroll'));
+    if (estado.ativo) { dispatchEvent(new Event('scroll')); carregarMinhasDuvidas(); }
   });
-  interfaceEstudo.querySelector('.estudo-abrir-painel').addEventListener('click', () => painel.hidden ? abrirPainel() : fecharPainel());
+  interfaceEstudo.querySelector('.estudo-abrir-painel').addEventListener('click', () => { if (painel.hidden) { abrirPainel(); carregarMinhasDuvidas(); } else fecharPainel(); });
   interfaceEstudo.querySelector('[data-fechar-painel]').addEventListener('click', fecharPainel);
   interfaceEstudo.querySelector('[data-cancelar]').addEventListener('click', () => { editor.hidden = true; estado.editor = null; });
   interfaceEstudo.querySelector('.estudo-continuar').addEventListener('click', () => navegar(estado.progresso.ultimaPagina, null, estado.progresso.ultimoBloco));
@@ -340,6 +352,7 @@
       estado.marcacoes = dados.marcacoes; estado.itens = dados.itens; estado.progresso = dados.progresso;
       (dados.progresso.paginasLidas || []).forEach((p) => paginasLidas.add(p));
       restaurarChecklists(); renderLista(); aplicarModo(!!dados.progresso.modoEstudo);
+      carregarMinhasDuvidas();
       alternar.hidden = false;
       const continuar = interfaceEstudo.querySelector('.estudo-continuar');
       if (dados.progresso.ultimaPagina > 1) {
@@ -349,4 +362,7 @@
     } catch (erro) { alternar.hidden = false; alternar.disabled = true; alternar.textContent = 'Modo Estudo indisponível'; alternar.title = erro.message; informar(erro.message); }
   }
   iniciar();
+  addEventListener('ff:duvidas-enviadas', carregarMinhasDuvidas);
+  addEventListener('focus', carregarMinhasDuvidas);
+  setInterval(() => { if (estado.ativo && !document.hidden) carregarMinhasDuvidas(); }, 30000);
 })();
