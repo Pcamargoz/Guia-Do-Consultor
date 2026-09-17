@@ -125,7 +125,6 @@ button.hr-duracao:hover { border-style: solid; border-color: var(--brand-primary
 .pc-card::before { content: ''; position: absolute; left: 22px; right: 22px; top: 0; height: 4px; border-radius: 0 0 4px 4px; background: var(--brand-primary-300); }
 .pc-card--standard::before { background: var(--brand-primary); }
 .pc-card--pro::before { background: linear-gradient(90deg, var(--brand-primary-900), var(--brand-accent)); }
-.pc-card--ref { border-color: var(--brand-primary); box-shadow: 0 0 0 3px rgb(52 120 167 / .18), var(--shadow-md); }
 .pc-card--indisponivel { opacity: .72; }
 .pc-card:hover { box-shadow: var(--shadow-lg); }
 @media (prefers-reduced-motion: no-preference) { .pc-card:hover { transform: translateY(-4px); } }
@@ -137,8 +136,6 @@ button.hr-duracao:hover { border-style: solid; border-color: var(--brand-primary
 .pc-nivel--essencial { background: var(--brand-primary-100); color: var(--brand-primary-800); }
 .pc-nivel--standard { background: var(--brand-primary); color: #fff; }
 .pc-nivel--pro { background: var(--brand-primary-950); color: var(--brand-accent); }
-.pc-ref { display: inline-flex; align-items: center; gap: 4px; margin-left: 6px; padding: 2px 8px; border-radius: var(--radius-pill); background: var(--brand-accent-soft); color: var(--brand-accent-ink); font-size: 11px; font-weight: 700; }
-.pc-ref svg { width: 12px; height: 12px; }
 .pc-total { display: grid; justify-items: end; text-align: right; gap: 2px; }
 .pc-total-rotulo { font-size: 11.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--brand-primary-700); }
 .pc-total-valor { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 2.6rem); font-weight: 800; line-height: 1; color: var(--brand-primary-950); font-variant-numeric: tabular-nums; }
@@ -166,18 +163,14 @@ button.hr-duracao:hover { border-style: solid; border-color: var(--brand-primary
 .pc-bloco-soma { margin-left: auto; font-size: 13px; letter-spacing: 0; text-transform: none; color: var(--color-ink); font-variant-numeric: tabular-nums; }
 .pc-modulos { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
 .pc-modulo {
-  display: grid; grid-template-columns: minmax(110px, 1.1fr) minmax(60px, 1.4fr) 62px 38px 16px; align-items: center; gap: 10px;
-  width: 100%; min-height: 40px; padding: 4px 8px; border: 0; border-radius: var(--radius-sm); background: transparent;
-  text-align: left; cursor: pointer; color: var(--color-ink);
+  display: grid; grid-template-columns: minmax(110px, 1.1fr) minmax(60px, 1.4fr) 62px 38px; align-items: center; gap: 10px;
+  min-height: 40px; padding: 4px 8px; color: var(--color-ink);
 }
-.pc-modulo:hover, .pc-modulo:focus-visible { background: var(--brand-primary-50); }
 .pc-modulo-nome { font-size: 14px; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .pc-modulo-trilho { height: 10px; border-radius: 0 4px 4px 0; background: var(--pc-trilho); overflow: hidden; }
 .pc-modulo-barra { display: block; height: 100%; border-radius: 0 4px 4px 0; background: var(--pc-modulos); }
 .pc-modulo-horas { font-size: 14px; font-weight: 700; text-align: right; font-variant-numeric: tabular-nums; }
 .pc-modulo-pct { font-size: 12px; text-align: right; color: var(--color-muted); font-variant-numeric: tabular-nums; }
-.pc-modulo-seta { width: 16px; height: 16px; color: var(--brand-primary-300); }
-.pc-modulo:hover .pc-modulo-seta { color: var(--brand-primary); }
 
 .pc-detalhes { border-top: 1px solid var(--color-line); }
 .pc-detalhes summary {
@@ -212,8 +205,6 @@ button.hr-duracao:hover { border-style: solid; border-color: var(--brand-primary
 .pc-historico { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; font-size: 13px; }
 .pc-historico li { display: grid; grid-template-columns: 130px 1fr; gap: 8px; }
 .pc-historico time { color: var(--color-muted); font-variant-numeric: tabular-nums; }
-.pc-card-rodape { display: flex; justify-content: flex-end; }
-.pc-card-rodape svg { width: 16px; height: 16px; }
 
 /* Estados */
 .pc-estado { padding: 32px; text-align: center; border: 1px dashed var(--color-line-strong); border-radius: var(--radius-lg); }
@@ -241,10 +232,9 @@ button.hr-duracao:hover { border-style: solid; border-color: var(--brand-primary
   .pc-total { justify-items: start; text-align: left; }
   .pc-geral-lista li { grid-template-columns: 1fr 70px; }
   .pc-geral-trilho { grid-column: 1 / -1; grid-row: 2; }
-  .pc-modulo { grid-template-columns: minmax(0, 1fr) 58px 34px 14px; }
+  .pc-modulo { grid-template-columns: minmax(0, 1fr) 58px 34px; }
   .pc-modulo-trilho { grid-column: 1 / -1; grid-row: 2; }
   .pc-historico li { grid-template-columns: 1fr; }
-  .pc-card-rodape .ed-btn { width: 100%; }
 }
 @media print { .pc-controles { display: none; } }
 

@@ -15,7 +15,6 @@
     camadas: '<path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="m2 17 10 5 10-5"/><path d="m2 12 10 5 10-5"/>',
     lista: '<line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><circle cx="3.5" cy="6" r="1"/><circle cx="3.5" cy="12" r="1"/><circle cx="3.5" cy="18" r="1"/>',
     seta: '<polyline points="9 18 15 12 9 6"/>',
-    alvo: '<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>',
     igual: '<line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/>',
     acima: '<polyline points="18 15 12 9 6 15"/>',
     abaixo: '<polyline points="6 9 12 15 18 9"/>',
@@ -23,7 +22,7 @@
   };
   const SERIES = [
     { chave: 'minutosEtapas', nome: 'Etapas de implantação', classe: 'etapas' },
-    { chave: 'minutosModulos', nome: 'Módulos (checklists)', classe: 'modulos' },
+    { chave: 'minutosModulos', nome: 'Módulos', classe: 'modulos' },
     { chave: 'minutosRecursos', nome: 'Recursos gerais', classe: 'recursos' },
   ];
 
@@ -42,7 +41,7 @@
   painel.innerHTML = `
     <div class="header pc-header">
       <h2>Pacotes e Distribuição de Horas</h2>
-      <p>Quanto tempo cada pacote leva para ser implantado e como as horas se distribuem entre etapas, módulos e recursos. O total previsto é a soma das horas das checklists dos módulos com as etapas de implantação.</p>
+      <p>Quanto tempo cada pacote leva para ser implantado e como as horas se distribuem entre etapas, módulos e recursos.</p>
     </div>
     <div class="pc-controles" role="group" aria-label="Cenário de cálculo">
       <div class="pc-controle">
@@ -65,7 +64,7 @@
     const select = painel.querySelector('[data-controle="faixa"]');
     select.innerHTML = H.estado.faixas.map((f, i) => `<option value="${i}"${cenario.faixa === i ? ' selected' : ''}>${esc(f)}</option>`).join('');
     painel.querySelector('[data-nota]').innerHTML = `${svg(I.info)}<span>${ehBase()
-      ? 'Cenário base: as horas mostradas são as mesmas das checklists e podem ser editadas.'
+      ? 'Cenário base: selecione o pacote no filtro da aba Módulos para editar as horas dos módulos.'
       : `Horas proporcionais à tabela de preços (${esc(cenario.fluxo)} · ${esc(H.estado.faixas[cenario.faixa] || '')}). As edições são feitas na base <strong>Premium · até 5 usuários</strong>.`}</span>`;
   }
 
@@ -109,20 +108,18 @@
   function cartao(pacote) {
     const t = H.totalPacote(pacote, listaModulos());
     const f = H.fator(pacote, cenario.fluxo, cenario.faixa);
-    const ref = H.pacoteRef()?.id === pacote.id;
     const funcs = pacote.funcionalidades;
     const pro = funcs.filter((x) => x.nivel === 'Pro').length;
     const maiorModulo = Math.max(1, ...t.porModulo.map((m) => m.minutos));
     const indisponivel = f == null;
 
     const modulosHtml = t.porModulo.length ? `<ul class="pc-modulos">${t.porModulo.map((m) => `
-      <li><button type="button" class="pc-modulo" data-abrir-modulo="${esc(m.id)}" data-pacote="${esc(pacote.id)}" title="Abrir a checklist de ${esc(m.nome)}">
+      <li><div class="pc-modulo">
         <span class="pc-modulo-nome">${esc(m.nome)}</span>
         <span class="pc-modulo-trilho" aria-hidden="true"><span class="pc-modulo-barra" style="width:${Math.max(2, (m.minutos / maiorModulo) * 100)}%"></span></span>
         <span class="pc-modulo-horas">${H.formatar(escala(m.minutos, f), { vazio: '0h' })}</span>
         <span class="pc-modulo-pct">${pct(m.minutos, t.total)}%</span>
-        ${svg(I.seta, 'pc-modulo-seta')}
-      </button></li>`).join('')}</ul>` : '<p class="ed-nada">Nenhum módulo do guia neste pacote.</p>';
+      </div></li>`).join('')}</ul>` : '<p class="ed-nada">Nenhum módulo do guia neste pacote.</p>';
 
     const etapasHtml = `<ul class="pc-etapas">${t.etapas.map((e) => `<li><span>${esc(e.texto)}</span>${duracaoEditavel(pacote, e)}</li>`).join('')}</ul>`;
     const recursosHtml = t.recursos.length
@@ -150,11 +147,10 @@
       : '<p class="ed-nada">Nenhuma alteração nas etapas ou recursos deste pacote.</p>';
 
     return `
-      <article class="pc-card pc-card--${esc(pacote.nivel.toLowerCase())}${ref ? ' pc-card--ref' : ''}${indisponivel ? ' pc-card--indisponivel' : ''}" data-pacote-card="${esc(pacote.id)}" aria-labelledby="pc-nome-${esc(pacote.id)}">
+      <article class="pc-card pc-card--${esc(pacote.nivel.toLowerCase())}${indisponivel ? ' pc-card--indisponivel' : ''}" data-pacote-card="${esc(pacote.id)}" aria-labelledby="pc-nome-${esc(pacote.id)}">
         <header class="pc-card-topo">
           <div>
             <span class="pc-nivel pc-nivel--${esc(pacote.nivel.toLowerCase())}">${esc(pacote.nivel)}</span>
-            ${ref ? `<span class="pc-ref">${svg(I.alvo)}Referência</span>` : ''}
             <h3 id="pc-nome-${esc(pacote.id)}">${esc(pacote.nome)}</h3>
             <p class="pc-meta">${t.porModulo.length} módulos no guia · ${funcs.length} funcionalidades${pro ? ` (${pro} Pro)` : ''}</p>
           </div>
@@ -178,11 +174,6 @@
         ${detalhes(pacote.id, 'precos', 'Horas por faixa de usuários', precosHtml)}
         ${detalhes(pacote.id, 'historico', 'Alterações nas etapas', historicoHtml, pacote.historico?.length || 0)}
 
-        <footer class="pc-card-rodape">
-          <button type="button" class="ed-btn${ref ? '' : ' ed-btn--primario'}" data-definir-ref="${esc(pacote.id)}"${ref ? ' disabled' : ''}>
-            ${svg(I.alvo)}${ref ? 'Pacote de referência nas checklists' : 'Usar nas checklists dos módulos'}
-          </button>
-        </footer>
       </article>`;
   }
 
@@ -225,19 +216,10 @@
     const fluxo = e.target.closest('[data-fluxo]');
     if (fluxo) { cenario.fluxo = fluxo.dataset.fluxo; salvarCenario(); render(); return; }
     if (e.target.closest('[data-recarregar]')) { H.carregar(); return; }
-    const ref = e.target.closest('[data-definir-ref]');
-    if (ref) { H.definirRef(ref.dataset.definirRef); return; }
     const rolar = e.target.closest('[data-rolar]');
     if (rolar) {
       e.preventDefault();
       painel.querySelector(`[data-pacote-card="${CSS.escape(rolar.dataset.rolar)}"]`)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      return;
-    }
-    const modulo = e.target.closest('[data-abrir-modulo]');
-    if (modulo) {
-      H.definirRef(modulo.dataset.pacote);
-      const alvo = listaModulos().find((m) => m.id === modulo.dataset.abrirModulo);
-      if (alvo) window.abrirModal(alvo);
       return;
     }
     const etapa = e.target.closest('[data-editar-etapa]');
@@ -313,7 +295,6 @@
   // Não re-renderiza enquanto alguém digita uma duração (formulário ativo); após salvar, o campo fica desabilitado.
   const talvezRenderizar = () => { if (!painel.hidden && !painel.querySelector('.hr-form input:not(:disabled)')) render(); };
   document.addEventListener('ff:pacotes', talvezRenderizar);
-  document.addEventListener('ff:pacote-ref', talvezRenderizar);
   document.addEventListener('ff:modulos', () => { modulosProntos = true; talvezRenderizar(); });
   document.addEventListener('ff:aba', (e) => { if (e.detail.aba === 'pacotes') render(); });
   if (listaModulos().some((m) => m.checklist?.some((i) => i.minutos))) modulosProntos = true;
