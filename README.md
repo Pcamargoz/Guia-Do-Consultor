@@ -9,13 +9,20 @@ Guia do Consultor e Apostila de implantação do Faktory Flow, com login, perfis
 
 ## Perfis de acesso
 
-| Perfil | Ver guia e apostila | Exportar PDF | Editar módulos, etapas e status | Gerenciar usuários |
-|---|:---:|:---:|:---:|:---:|
-| **Administrador** | ✅ | ✅ | ✅ | ✅ |
-| **Consultor** | ✅ | ✅ | ✅ | — |
-| **Estagiário** | ✅ | ✅ | — | — |
+| Perfil | Ver guia e apostila | Exportar PDF | Editar módulos, etapas e status | Responder dúvidas | Gerenciar usuários | Limpar dados |
+|---|:---:|:---:|:---:|:---:|:---:|:---:|
+| **Administrador** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Consultor** | ✅ | ✅ | ✅ | ✅ | — | — |
+| **Estagiário** | ✅ | ✅ | — | — | — | — |
 
 O administrador principal vem das variáveis de ambiente. Os demais usuários são criados pelo botão **Usuários**, no cabeçalho do guia.
+
+### Limpar dados do sistema
+
+Em **Configurações**, o administrador vê o bloco *Limpar dados do sistema*: com uma confirmação (digitar `LIMPAR`),
+apaga de uma vez todas as movimentações — Modo Estudo (grifos, notas, checklists e progresso), dúvidas enviadas e
+respondidas, histórico dos módulos e dos pacotes e as marcações de status (Rever/Aprovado/Reprovado).
+**Não** apaga usuários nem o conteúdo dos módulos e pacotes. A ação roda em uma transação e não tem desfazer.
 
 ## Pacotes e horas de implantação
 
@@ -78,7 +85,7 @@ Depois, faça commit do PDF atualizado.
 ## Estrutura
 
 ```
-api/            Funções do Vercel: auth (login/logout/eu), modulos, usuarios
+api/            Funções do Vercel: auth (login/logout/eu), modulos, usuarios, manutencao
 lib/            Regras compartilhadas: sessão, senha (scrypt), banco, permissões
 db/migrations/  SQL versionado (aplicado em ordem, uma única vez)
 db/dados/       Dados da planilha de horas e mapa checklist ↔ funcionalidades

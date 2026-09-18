@@ -14,3 +14,19 @@
 .cfg-acoes button { padding: 9px 14px; border: 1px solid var(--brand-primary-800); border-radius: var(--radius-pill); background: #fff; color: var(--brand-primary-900); font: 700 14px var(--font-display); cursor: pointer; }
 .cfg-acoes button[type="submit"] { background: var(--brand-primary-800); color: #fff; }
 .cfg-acoes button:disabled { opacity: .6; cursor: wait; }
+
+/* ---------- Limpar dados do sistema (somente administradores) ---------- */
+.cfg-dialogo { overflow: auto; }
+.cfg-limpeza { display: grid; gap: 10px; margin: 0 24px 24px; padding: 16px; border: 1px solid var(--color-danger); border-radius: var(--radius-lg); background: var(--color-danger-soft); }
+.cfg-limpeza[hidden] { display: none; }
+.cfg-limpeza h3 { margin: 0; font: 800 1.05rem var(--font-display); color: var(--color-danger); }
+.cfg-limpeza p { margin: 0; font-size: 14px; }
+.cfg-limpeza-lista { display: grid; gap: 4px; margin: 0; padding: 0; list-style: none; font-size: 13.5px; }
+.cfg-limpeza-lista li { display: flex; justify-content: space-between; gap: 12px; padding: 4px 8px; border-radius: var(--radius-sm); background: rgb(255 255 255 / .7); }
+.cfg-limpeza label { font-weight: 700; color: var(--brand-primary-900); font-size: 14px; }
+.cfg-limpeza input { width: 100%; padding: 10px 12px; border: 1px solid var(--color-line-strong); border-radius: var(--radius-sm); font: inherit; background: #fff; }
+.cfg-limpeza input:focus-visible { outline: 2px solid var(--color-danger); outline-offset: 2px; }
+.cfg-limpeza-status { min-height: 20px; font-size: 13.5px; color: var(--color-danger); }
+.cfg-limpar { justify-self: end; padding: 9px 16px; border: 1px solid var(--color-danger); border-radius: var(--radius-pill); background: var(--color-danger); color: #fff; font: 700 14px var(--font-display); cursor: pointer; }
+.cfg-limpar:hover { filter: brightness(1.08); }
+.cfg-limpar:disabled { opacity: .6; cursor: wait; }
