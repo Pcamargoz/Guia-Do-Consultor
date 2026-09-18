@@ -41,6 +41,10 @@
     }
   }
 
+  // Compartilha o registro com o editor de fluxos (guia-fluxos.js): mesmos dados e mesma revisão.
+  const avisar = () => document.dispatchEvent(new CustomEvent('ff:guia-textos', { detail: { dados, rev, online, podeEditar } }));
+  document.addEventListener('ff:guia-textos-salvo', (e) => { dados = e.detail.dados; rev = e.detail.rev; aplicar(); });
+
   function aplicar() {
     for (const campo of campos) {
       const valor = dados[campo.chave];
@@ -133,6 +137,7 @@
       dados = json.dados;
       rev = json.rev;
       aplicar();
+      avisar();
       fecharDepois();
     } catch (err) {
       erro.textContent = err.message;
@@ -155,6 +160,7 @@
       aplicar();
     } catch { online = false; }
     controles();
+    avisar();
   }
 
   window.ffSessao?.then((usuario) => {
