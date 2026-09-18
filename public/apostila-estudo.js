@@ -25,7 +25,7 @@
   const paginasLidas = new Set();
   const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const resumo = (s, n = 120) => String(s || '').replace(/\s+/g, ' ').trim().slice(0, n);
-  const svg = (d) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`;
+  const svg = (d, t = 18) => `<svg width="${t}" height="${t}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`;
   const I = {
     selecionar: '<path d="m4 4 7.07 17 2.51-7.39L21 11.07z"/>',
     grifo: '<path d="m9 11-6 6v3h9l3-3"/><path d="m22 12-4.6 4.6a2 2 0 0 1-2.8 0l-5.2-5.2a2 2 0 0 1 0-2.8L14 4"/>',
@@ -74,12 +74,12 @@
     <div class="estudo-menu" hidden role="toolbar" aria-label="Ações para o texto selecionado">
       ${cores.map((c) => `<button type="button" class="estudo-menu-cor" data-marcar="grifo" data-cor="${c}" title="Grifar em ${c}" aria-label="Grifar em ${c}"><span style="background:${CORES[c]}"></span></button>`).join('')}
       <span class="estudo-menu-sep" aria-hidden="true"></span>
-      <button type="button" data-marcar="nota">${svg(I.nota)}Anotar</button>
-      <button type="button" data-marcar="comentario">${svg(I.comentario)}Comentar</button>
-      <button type="button" data-marcar="favorito">${svg(I.favorito)}Favoritar</button>
+      <button type="button" data-marcar="nota">${svg(I.nota, 14)}Anotar</button>
+      <button type="button" data-marcar="comentario">${svg(I.comentario, 14)}Comentar</button>
+      <button type="button" data-marcar="favorito">${svg(I.favorito, 14)}Favoritar</button>
     </div>
 
-    <nav class="estudo-paleta" aria-label="Ferramentas do Modo Estudo" hidden>
+    <nav class="estudo-paleta" aria-label="Ferramentas de estudo" hidden>
       <div class="estudo-paleta-grupo" role="radiogroup" aria-label="Ferramenta">
         ${FERRAMENTAS.map((f) => `<button type="button" class="estudo-ferramenta" role="radio" aria-checked="${f.id === 'selecionar'}" data-ferramenta="${f.id}" aria-label="${f.nome} (${f.atalho})">${svg(I[f.id])}<span class="estudo-dica"><strong>${f.nome}</strong> · ${f.atalho}<small>${f.dica}</small></span></button>`).join('')}
       </div>
@@ -381,7 +381,7 @@
       : `${svg(I.livro)}<span>Ativar Modo Estudo</span>`;
     alternar.setAttribute('aria-pressed', String(ativo));
     alternar.classList.toggle('estudo-ativar--ativo', ativo);
-    paleta.hidden = !ativo;
+    paleta.classList.toggle('estudo-paleta--repouso', !ativo);
     if (!ativo) { fecharPainel(); menu.hidden = true; editor.hidden = true; escolherFerramenta('selecionar'); }
     desenharMarcacoes();
   }
@@ -445,7 +445,15 @@
     else if (tipo === 'favorito') criarDireto('favorito', selecao);
     else abrirEditor(tipo);
   });
+  function ativarEstudo() {
+    if (estado.ativo) return;
+    aplicarModo(true);
+    salvarProgresso({ modoEstudo: true });
+    dispatchEvent(new Event('scroll'));
+    carregarMinhasDuvidas();
+  }
   paleta.addEventListener('click', (e) => {
+    if (e.target.closest('button')) ativarEstudo();
     const ferramenta = e.target.closest('[data-ferramenta]')?.dataset.ferramenta;
     if (ferramenta) { escolherFerramenta(ferramenta === estado.ferramenta && ferramenta !== 'selecionar' ? 'selecionar' : ferramenta); return; }
     const cor = e.target.closest('.estudo-cor')?.dataset.cor;
@@ -541,6 +549,7 @@
       restaurarChecklists(); renderLista(); aplicarModo(!!dados.progresso.modoEstudo);
       carregarMinhasDuvidas();
       alternar.hidden = false;
+      paleta.hidden = false;
       const continuar = interfaceEstudo.querySelector('.estudo-continuar');
       if (dados.progresso.ultimaPagina > 1) {
         continuar.hidden = false; continuar.textContent = `Continuar da página ${dados.progresso.ultimaPagina}`;
