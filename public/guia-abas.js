@@ -1,6 +1,6 @@
 /* Faktory Flow — Abas do Guia do Consultor: "Guia", "Pacotes e Horas" e "Apostila".
-   Cabeçalho com as abas + botão de exportar PDF; a apostila abre dentro do guia
-   (iframe carregado só na primeira visita). Endereços diretos: #pacotes e #apostila.
+   Cabeçalho com as abas + ações da aba atual; a apostila abre dentro do guia em modo leitura
+   (iframe carregado só na primeira visita) — o Modo Estudo fica na apostila aberta em nova aba. Endereços diretos: #pacotes e #apostila.
    Ao trocar de aba dispara o evento "ff:aba" (detail.aba) no document. */
 (() => {
   const PDF = '/downloads/Apostila-do-Consultor-Faktory-Flow.pdf';
@@ -33,10 +33,8 @@
       ${ABAS.map((a) => `<button type="button" class="ab-aba" role="tab" id="aba-${a.id}" aria-controls="painel-${a.id}" data-aba="${a.id}">${icone[a.id]}<span>${a.rotulo}</span></button>`).join('')}
     </div>
     <div class="ab-acoes">
-      <button type="button" class="ab-btn ab-btn--sec" data-estudo-cabecalho data-so-apostila aria-label="Iniciar estudo" disabled hidden>${icone.estudo}<span>Iniciar estudo</span></button>
-      <button type="button" class="ab-btn ab-btn--sec" data-enviar-duvidas data-so-apostila aria-label="Enviar dúvidas" hidden>${icone.email}<span>Enviar dúvidas</span></button>
-      <a class="ab-btn ab-btn--sec" href="/apostila" target="_blank" rel="noopener" data-so-apostila>${icone.externo}<span>Abrir em nova aba</span></a>
-      <a class="ab-btn" href="${PDF}" download="${PDF_NOME}">${icone.baixar}<span>Exportar PDF</span></a>
+      <a class="ab-btn ab-btn--destaque" href="/apostila" target="_blank" rel="noopener" data-so-apostila hidden title="Grifos, anotações e checklist ficam disponíveis na apostila aberta em nova aba">${icone.estudo}<span>Estudar em nova aba</span>${icone.externo}</a>
+      <a class="ab-btn ab-btn--sec" href="${PDF}" download="${PDF_NOME}" title="Baixar a apostila em PDF" aria-label="Exportar PDF">${icone.baixar}<span>Exportar PDF</span></a>
     </div>`;
   main.prepend(topo);
 
@@ -151,21 +149,8 @@
   window.ffIrParaAba = irPara;
 
   topo.addEventListener('click', (e) => {
-    if (e.target.closest('[data-estudo-cabecalho]')) {
-      paineis.apostila.querySelector('iframe')?.contentWindow?.postMessage({ tipo: 'ff:alternar-estudo' }, location.origin);
-      return;
-    }
     const b = e.target.closest('[data-aba]');
     if (b) irPara(b.dataset.aba);
-  });
-  addEventListener('message', (e) => {
-    const frame = paineis.apostila.querySelector('iframe');
-    if (e.origin !== location.origin || e.source !== frame?.contentWindow || e.data?.tipo !== 'ff:estudo-estado') return;
-    const botao = topo.querySelector('[data-estudo-cabecalho]');
-    botao.disabled = !e.data.disponivel;
-    const rotulo = e.data.disponivel ? (e.data.ativo ? 'Modo Leitura' : 'Iniciar estudo') : 'Estudo indisponível';
-    botao.querySelector('span').textContent = rotulo;
-    botao.setAttribute('aria-label', rotulo);
   });
   topo.querySelector('.ab-abas').addEventListener('keydown', (e) => {
     if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(e.key)) return;
