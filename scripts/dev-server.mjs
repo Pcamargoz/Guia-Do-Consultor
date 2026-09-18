@@ -40,9 +40,8 @@ async function tratar(request) {
   if (resposta && !resposta.headers.get('x-middleware-next')) return resposta;
 
   if (url.pathname.startsWith('/api/')) {
-    const arquivo = path.join(RAIZ, `${url.pathname.replace(/\/$/, '')}.js`);
-    try { await stat(arquivo); } catch { return Response.json({ erro: 'Rota não encontrada.' }, { status: 404 }); }
-    const modulo = await import(pathToFileURL(arquivo));
+    // Como no Vercel: uma única função (api/index.js) despacha todas as rotas /api/*.
+    const modulo = await import(pathToFileURL(path.join(RAIZ, 'api', 'index.js')));
     const handler = modulo[request.method];
     return handler ? handler(request) : Response.json({ erro: 'Método não permitido.' }, { status: 405 });
   }

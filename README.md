@@ -3,7 +3,7 @@
 Guia do Consultor e Apostila de implantação do Faktory Flow, com login, perfis de acesso e edição colaborativa dos módulos.
 
 - **Front-end:** HTML/CSS/JS em `public/` (sem framework)
-- **API:** Vercel Functions em `api/` (Node.js)
+- **API:** uma única Vercel Function (`api/index.js`) que despacha todas as rotas `/api/*` para os handlers em `lib/rotas/` — cabe no limite de funções do plano Hobby
 - **Banco:** PostgreSQL no [Neon](https://neon.tech)
 - **Proteção:** `middleware.js` exige login em todas as páginas, inclusive no PDF
 
@@ -85,7 +85,8 @@ Depois, faça commit do PDF atualizado.
 ## Estrutura
 
 ```
-api/            Funções do Vercel: auth (login/logout/eu), modulos, usuarios, manutencao
+api/index.js    Função única do Vercel (rewrite /api/* → api/index)
+lib/rotas/      Handlers de cada rota: auth (login/logout/eu), modulos, processos, pacotes, usuarios, estudo, duvidas, manutencao...
 lib/            Regras compartilhadas: sessão, senha (scrypt), banco, permissões
 db/migrations/  SQL versionado (aplicado em ordem, uma única vez)
 db/dados/       Dados da planilha de horas e mapa checklist ↔ funcionalidades

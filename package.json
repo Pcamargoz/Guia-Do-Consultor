@@ -4,7 +4,7 @@
   "type": "module",
   "description": "Guia do Consultor e Apostila do Faktory Flow — site estático com login, perfis de acesso e edição dos módulos (Vercel + Neon PostgreSQL).",
   "engines": {
-    "node": ">=20"
+    "node": "22.x"
   },
   "scripts": {
     "dev": "node --env-file-if-exists=.env scripts/dev-server.mjs",
