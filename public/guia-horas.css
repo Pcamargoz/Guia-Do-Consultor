@@ -45,7 +45,7 @@
 .ed-item.ed-item--horas { grid-template-columns: auto minmax(0, 1fr) auto auto; }
 .hr-duracao-celula { display: flex; justify-content: flex-end; }
 .hr-duracao {
-  display: inline-flex; align-items: center; gap: 6px; min-height: 36px; padding: 4px 12px;
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-width: 92px; min-height: 36px; padding: 4px 12px;
   border: 1.5px dashed var(--brand-primary-300); border-radius: var(--radius-pill); background: #fff;
   color: var(--brand-primary-900); font-size: 13.5px; font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap;
 }
@@ -75,8 +75,11 @@ button.hr-duracao:hover { border-style: solid; border-color: var(--brand-primary
 .ed-resumo + .hr-card { margin-left: 8px; }
 
 @media (max-width: 720px) {
-  .ed-item.ed-item--horas { grid-template-columns: auto minmax(0, 1fr); }
+  /* duração e botões de status dividem a segunda linha em vez de ocupar uma linha cada */
+  .ed-item.ed-item--horas { grid-template-columns: auto minmax(0, 1fr) auto; row-gap: 8px; }
+  .ed-item--horas .ed-item-texto { grid-column: 2 / -1; }
   .ed-item--horas .hr-duracao-celula { grid-column: 2; justify-content: flex-start; }
+  .ed-item--horas .ed-seg { grid-column: 3; }
   .hr-form { justify-items: start; }
 }
 
@@ -95,8 +98,9 @@ button.hr-duracao:hover { border-style: solid; border-color: var(--brand-primary
   min-height: 38px; padding: 6px 16px; border: 0; border-radius: var(--radius-pill); background: transparent;
   color: var(--brand-primary-800); font-weight: 700; font-size: 14px; cursor: pointer;
 }
+.pc-seg-btn:hover:not([aria-checked="true"]) { background: var(--brand-primary-100); }
 .pc-seg-btn[aria-checked="true"] { background: var(--brand-primary-900); color: #fff; box-shadow: inset 0 -3px 0 var(--brand-accent); }
-.pc-faixa { min-width: 190px; }
+.pc-faixa { min-width: 190px; min-height: 46px; } /* mesma altura do seletor de fluxo: rótulos alinhados */
 .pc-nota { display: flex; align-items: flex-start; gap: 8px; flex: 1 1 280px; margin: 0; font-size: 13px; color: var(--color-muted); line-height: 1.5; }
 .pc-nota svg { flex: none; width: 17px; height: 17px; margin-top: 1px; color: var(--brand-primary); }
 
@@ -118,7 +122,7 @@ button.hr-duracao:hover { border-style: solid; border-color: var(--brand-primary
 /* Grade e cards */
 .pc-grade { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr)); gap: var(--space-6); align-items: start; }
 .pc-card {
-  position: relative; display: grid; gap: 16px; padding: 22px; border: 1px solid var(--color-line); border-radius: var(--radius-xl);
+  position: relative; display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; padding: 22px; border: 1px solid var(--color-line); border-radius: var(--radius-xl);
   background: var(--color-surface); box-shadow: var(--shadow-sm); scroll-margin-top: 110px;
   transition: box-shadow var(--dur-base), transform var(--dur-slow) var(--ease-out), border-color var(--dur-base);
 }
@@ -164,7 +168,7 @@ button.hr-duracao:hover { border-style: solid; border-color: var(--brand-primary
 .pc-modulos { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
 .pc-modulo {
   display: grid; grid-template-columns: minmax(110px, 1.1fr) minmax(60px, 1.4fr) 62px 38px; align-items: center; gap: 10px;
-  min-height: 40px; padding: 4px 8px; color: var(--color-ink);
+  min-height: 40px; padding: 4px 0; color: var(--color-ink);
 }
 .pc-modulo-nome { font-size: 14px; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .pc-modulo-trilho { height: 10px; border-radius: 0 4px 4px 0; background: var(--pc-trilho); overflow: hidden; }
@@ -178,6 +182,7 @@ button.hr-duracao:hover { border-style: solid; border-color: var(--brand-primary
   font-size: 14px; font-weight: 700; color: var(--brand-primary-900);
 }
 .pc-detalhes summary::-webkit-details-marker { display: none; }
+.pc-detalhes summary:focus-visible { outline: 3px solid var(--brand-primary); outline-offset: 2px; border-radius: var(--radius-sm); }
 .pc-detalhes-seta { width: 16px; height: 16px; margin-left: auto; color: var(--brand-primary); transition: transform var(--dur-base) var(--ease-spring); }
 .pc-detalhes[open] .pc-detalhes-seta { transform: rotate(90deg); }
 .pc-detalhes-corpo { padding: 0 2px 12px; }
@@ -188,11 +193,11 @@ button.hr-duracao:hover { border-style: solid; border-color: var(--brand-primary
 .pc-func-grupo { margin-bottom: 10px; }
 .pc-func-grupo h4 { display: flex; align-items: center; gap: 6px; margin: 0 0 6px; font-size: 13px; color: var(--brand-primary-800); }
 .pc-funcs { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
-.pc-func { display: flex; justify-content: space-between; gap: 10px; padding: 4px 8px; border-radius: 6px; font-size: 13px; }
+.pc-func { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 4px 8px; border-radius: 6px; font-size: 13px; }
 .pc-func:nth-child(odd) { background: var(--color-surface-alt); }
-.pc-func-meta { display: inline-flex; gap: 6px; flex: none; }
+.pc-func-meta { display: inline-flex; align-items: center; gap: 6px; flex: none; }
 .pc-pro { padding: 0 6px; border-radius: 4px; background: var(--brand-primary-950); color: var(--brand-accent); font-size: 10.5px; font-weight: 800; text-decoration: none; }
-.pc-complexidade { padding: 0 6px; border-radius: 4px; font-size: 11px; font-weight: 700; }
+.pc-complexidade { min-width: 48px; padding: 0 6px; border-radius: 4px; font-size: 11px; font-weight: 700; text-align: center; }
 .pc-complexidade--alta { background: #FDECEA; color: #8F1C13; }
 .pc-complexidade--media { background: #FFF4E5; color: #8A4B00; }
 .pc-complexidade--baixa { background: var(--color-success-soft); color: #1F6B26; }
@@ -230,9 +235,12 @@ button.hr-duracao:hover { border-style: solid; border-color: var(--brand-primary
   .pc-card { padding: 18px 16px; }
   .pc-card-topo { flex-direction: column; }
   .pc-total { justify-items: start; text-align: left; }
-  .pc-geral-lista li { grid-template-columns: 1fr 70px; }
+  /* barra fica colada ao próprio nome e separada do pacote seguinte */
+  .pc-geral-lista { gap: 12px; }
+  .pc-geral-lista li { grid-template-columns: minmax(0, 1fr) auto; gap: 4px 12px; }
   .pc-geral-trilho { grid-column: 1 / -1; grid-row: 2; }
-  .pc-modulo { grid-template-columns: minmax(0, 1fr) 58px 34px; }
+  .pc-modulos { gap: 8px; }
+  .pc-modulo { grid-template-columns: minmax(0, 1fr) 58px 34px; row-gap: 4px; min-height: 0; }
   .pc-modulo-trilho { grid-column: 1 / -1; grid-row: 2; }
   .pc-historico li { grid-template-columns: 1fr; }
 }
@@ -246,7 +254,7 @@ button.hr-duracao:hover { border-style: solid; border-color: var(--brand-primary
 .ed-pacotes-linha { display: flex; align-items: center; gap: 10px 14px; min-width: 0; }
 .ed-pacotes-rotulo { display: inline-flex; align-items: center; gap: 6px; flex: none; font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--brand-primary-700); }
 .ed-pacotes-rotulo svg { width: 16px; height: 16px; }
-.ed-pacotes-opcoes { display: flex; gap: 6px; min-width: 0; overflow-x: auto; padding: 2px; scrollbar-width: thin; }
+.ed-pacotes-opcoes { display: flex; gap: 6px; min-width: 0; overflow-x: auto; padding: 2px 2px 6px; scrollbar-width: thin; overscroll-behavior-x: contain; }
 .ed-pacote-opcao {
   flex: none; min-height: 38px; padding: 6px 14px; border: 1.5px solid var(--color-line-strong); border-radius: var(--radius-pill);
   background: #fff; color: var(--brand-primary-900); font-size: 13px; font-weight: 600; white-space: nowrap; cursor: pointer;

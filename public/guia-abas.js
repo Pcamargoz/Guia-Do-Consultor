@@ -30,10 +30,10 @@
   topo.className = 'ab-topo';
   topo.innerHTML = `
     <div class="ab-abas" role="tablist" aria-label="Conteúdo">
-      ${ABAS.map((a) => `<button type="button" class="ab-aba" role="tab" id="aba-${a.id}" aria-controls="painel-${a.id}" data-aba="${a.id}">${icone[a.id]}<span>${a.rotulo}</span></button>`).join('')}
+      ${ABAS.map((a) => `<button type="button" class="ab-aba" role="tab" id="aba-${a.id}" aria-controls="painel-${a.id}" data-aba="${a.id}" aria-label="${a.rotulo}" title="${a.rotulo}">${icone[a.id]}<span>${a.rotulo}</span></button>`).join('')}
     </div>
     <div class="ab-acoes">
-      <a class="ab-btn ab-btn--destaque" href="/apostila" target="_blank" rel="noopener" data-so-apostila hidden title="Grifos, anotações e checklist ficam disponíveis na apostila aberta em nova aba">${icone.estudo}<span>Estudar em nova aba</span>${icone.externo}</a>
+      <a class="ab-btn ab-btn--destaque" href="/apostila" target="_blank" rel="noopener" data-so-apostila hidden aria-label="Estudar em nova aba" title="Grifos, anotações e checklist ficam disponíveis na apostila aberta em nova aba">${icone.estudo}<span>Estudar em nova aba</span>${icone.externo}</a>
       <a class="ab-btn ab-btn--sec" href="${PDF}" download="${PDF_NOME}" title="Baixar a apostila em PDF" aria-label="Exportar PDF">${icone.baixar}<span>Exportar PDF</span></a>
     </div>`;
   main.prepend(topo);
@@ -67,7 +67,14 @@
   let fixo = false;
   const podeFixar = matchMedia('(min-width: 901px)');
 
+  function medirColuna() {
+    const r = main.getBoundingClientRect();
+    topo.style.setProperty('--ab-centro', `${r.left + r.width / 2}px`);
+    topo.style.setProperty('--ab-largura', `${Math.max(320, r.width - 32)}px`);
+  }
+
   function ajustarTopo() {
+    medirColuna();
     // O espaçador ocupa o lugar do cabeçalho, então marca sempre a posição original dele.
     const limite = espaco.getBoundingClientRect().top + scrollY - 12;
     const deveFixar = podeFixar.matches && scrollY > limite;

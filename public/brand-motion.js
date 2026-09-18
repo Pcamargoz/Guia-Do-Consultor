@@ -130,6 +130,30 @@
     }
   };
 
+  /* ---------- Fluxos em linha: esconde o conector que sobra na ponta quando a linha quebra ---------- */
+  const tidyFlowRows = () => {
+    const rows = document.querySelectorAll('.mapa-linha');
+    if (!rows.length || !('ResizeObserver' in window)) return;
+    const sameLine = (a, b) => a.offsetTop < b.offsetTop + b.offsetHeight && b.offsetTop < a.offsetTop + a.offsetHeight;
+    const tidy = (row) => {
+      const links = row.querySelectorAll(':scope > .mapa-conector-h');
+      links.forEach((c) => c.classList.remove('ff-quebra-fim', 'ff-quebra-inicio'));
+      if (!row.offsetWidth || getComputedStyle(row).flexDirection.startsWith('column')) return;
+      links.forEach((c) => {
+        const prev = c.previousElementSibling;
+        const next = c.nextElementSibling;
+        if (!prev || !next) return;
+        if (!sameLine(c, prev)) c.classList.add('ff-quebra-inicio');
+        else if (!sameLine(c, next)) c.classList.add('ff-quebra-fim');
+      });
+    };
+    // Roda dentro do próprio callback (após o layout): esconder um conector não muda o tamanho da linha.
+    const ro = new ResizeObserver((entries) => entries.forEach((e) => tidy(e.target)));
+    rows.forEach((row) => ro.observe(row));
+    // A troca para a fonte web muda a largura das etapas sem mudar o tamanho da linha.
+    document.fonts?.ready.then(() => rows.forEach(tidy));
+  };
+
   /* ---------- Contador das métricas (termina exatamente no texto original) ---------- */
   const countUp = () => {
     if (!motionOn()) return;
@@ -230,7 +254,7 @@
 
   const start = () => {
     buildStage();
-    if (isGuide) { enhanceGuideA11y(); watchModuleGrid(); countUp(); }
+    if (isGuide) { enhanceGuideA11y(); watchModuleGrid(); countUp(); tidyFlowRows(); }
     setupReveal();
     setupPointerFx();
     setupParallax();

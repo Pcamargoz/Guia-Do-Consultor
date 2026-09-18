@@ -163,13 +163,14 @@ button, input { font: inherit; }
   box-shadow: 12px 0 40px rgb(12 36 56 / .18);
   border-right: 1px solid rgb(255 255 255 / .08);
 }
-.ff-guide .logo-container { padding: 4px 20px 24px; border-bottom-color: rgb(255 255 255 / .1); }
+/* Logo alinhada à borda dos itens (12px) e rótulos de seção alinhados aos ícones (12 + 14px). */
+.ff-guide .logo-container { padding: 4px 12px 24px; border-bottom-color: rgb(255 255 255 / .1); }
 .ff-guide .logo-container .ff-logo-wrap {
   background: #fff; padding: 10px 16px; border-radius: var(--radius-lg);
   box-shadow: 0 10px 30px rgb(0 0 0 / .25), inset 0 -3px 0 var(--brand-accent);
 }
 .ff-guide .logo-svg { width: 176px; max-width: 100%; }
-.ff-guide .nav-section { opacity: 1; color: #9FC0D8; font-size: 11.5px; letter-spacing: .14em; font-family: var(--font-display); }
+.ff-guide .nav-section { padding-inline: 26px; opacity: 1; color: #9FC0D8; font-size: 11.5px; letter-spacing: .14em; font-family: var(--font-display); }
 .ff-guide .nav-item {
   position: relative; overflow: hidden; isolation: isolate;
   min-height: 44px; margin: 2px 12px; padding: 10px 14px;
@@ -191,7 +192,8 @@ button, input { font: inherit; }
 .ff-guide .nav-item.active svg, .ff-guide .nav-item:hover svg { color: var(--brand-accent); }
 
 /* Main */
-.ff-guide .main { max-width: 1320px; padding: clamp(28px, 4vw, 64px); }
+/* Centralizada na coluna: em telas largas não sobra um vazio só à direita. */
+.ff-guide .main { max-width: 1320px; margin-inline: auto; padding: clamp(28px, 4vw, 64px); }
 .ff-guide .header { position: relative; margin-bottom: var(--space-8); }
 .ff-guide .header h2 {
   font-size: clamp(1.9rem, 3.2vw, 2.9rem); font-weight: 800; line-height: 1.1;
@@ -323,6 +325,13 @@ button, input { font: inherit; }
 .ff-guide .alerta-atencao { background: var(--color-warning-soft); color: var(--color-warning); border-left-color: var(--color-warning-line); }
 .ff-guide .alerta-importante { background: var(--color-danger-soft); color: var(--color-danger); border-left-color: var(--color-danger); }
 .ff-guide .alerta-info { background: var(--brand-primary-100); color: var(--brand-primary-800); border-left-color: var(--brand-primary); }
+/* Ícone "i"/"!" em selo circular, alinhado à primeira linha do texto. */
+.ff-guide .alerta .icone {
+  display: grid; place-items: center; width: 22px; height: 22px; margin-top: 1px; border-radius: 50%;
+  font-family: var(--font-display); font-size: 13px; line-height: 1; color: #fff; background: var(--brand-primary);
+}
+.ff-guide .alerta-atencao .icone { background: var(--color-warning); }
+.ff-guide .alerta-importante .icone { background: var(--color-danger); }
 
 /* Accordion */
 .ff-guide .accordion {
@@ -330,10 +339,12 @@ button, input { font: inherit; }
   box-shadow: var(--shadow-sm); transition: box-shadow var(--dur-base), transform var(--dur-base) var(--ease-out);
 }
 .ff-guide .accordion.open { box-shadow: var(--shadow-md), inset 4px 0 0 var(--brand-accent); }
-.ff-guide .accordion-header { position: relative; overflow: hidden; isolation: isolate; min-height: 56px; color: var(--brand-primary-900); font-family: var(--font-display); font-weight: 700; font-size: 16px; }
+.ff-guide .accordion-header { position: relative; overflow: hidden; isolation: isolate; min-height: 56px; gap: 16px; color: var(--brand-primary-900); font-family: var(--font-display); font-weight: 700; font-size: 16px; }
 .ff-guide .accordion-header:hover { background: var(--brand-primary-50); }
+/* O .accordion corta o que passa da borda: o foco é desenhado por dentro. */
+.ff-guide .accordion-header:focus-visible { outline-offset: -3px; box-shadow: inset 0 0 0 7px rgb(213 221 38 / .45); }
 .ff-guide .accordion-header .seta {
-  display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%;
+  display: grid; place-items: center; flex: none; width: 30px; height: 30px; border-radius: 50%;
   background: var(--brand-primary-100); color: var(--brand-primary-800);
   transition: transform var(--dur-slow) var(--ease-spring), background-color var(--dur-base);
 }
@@ -355,12 +366,46 @@ button, input { font: inherit; }
 }
 .ff-guide .processo-card h4, .ff-guide .secao-titulo, .ff-guide .diagnostico-content h5 { color: var(--brand-primary-800); }
 .ff-guide .processo-card .descricao { color: var(--color-muted); }
+/* Respiro igual em cima e embaixo; cards em grade usam só o gap da grade. */
+.ff-guide .processo-card > :last-child { margin-bottom: 0; }
+.ff-guide #conclusao .processo-card { margin-bottom: 0; }
 .ff-guide .fluxo-mapa {
   border-radius: var(--radius-md); border-color: var(--brand-primary-200); background: var(--brand-primary-50);
   transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base), border-color var(--dur-base), background-color var(--dur-base);
 }
 .ff-guide .fluxo-mapa:hover, .ff-guide .fluxo-mapa:focus-visible { background: #fff; border-color: var(--brand-primary); box-shadow: var(--shadow-md); }
-.ff-guide .fluxo-mapa-hint { color: var(--brand-primary-700); opacity: 1; }
+/* Faixa própria para o aviso "Clique para detalhes": ele não cobre mais as etapas. */
+.ff-guide .fluxo-mapa { padding-top: 44px; }
+.ff-guide .fluxo-mapa-hint { top: 14px; right: 16px; line-height: 1.4; color: var(--brand-primary-700); opacity: 1; }
+/* Fluxo em linha: quando quebra, o conector que sobraria solto na ponta da linha é
+   marcado pelo brand-motion.js e escondido. */
+.ff-guide .mapa-linha { row-gap: 12px; }
+.ff-guide .mapa-linha > .mapa-etapa { flex: 0 1 auto; white-space: normal; text-align: center; text-wrap: balance; }
+.ff-guide .mapa-linha > .mapa-conector-h.ff-quebra-fim { visibility: hidden; }
+.ff-guide .mapa-linha > .mapa-conector-h.ff-quebra-inicio { display: none; }
+/* Espinha vertical que liga o ramo a cada etapa (antes a linha do ramo terminava no vazio). */
+/* As etapas quebram o texto quando falta largura, em vez de gerar rolagem lateral;
+   se a caixa do mapa ficar estreita demais (coluna apertada ou modal), o mapa empilha. */
+.ff-guide .fluxo-mapa { container-type: inline-size; }
+.ff-guide .mapa { min-width: 0; }
+@container (max-width: 520px) {
+  .ff-guide .mapa { flex-direction: column; align-items: stretch; gap: 12px; }
+  .ff-guide .mapa-raiz { max-width: none; align-self: flex-start; }
+  .ff-guide .mapa-ramos { padding-left: 0; align-self: flex-start; }
+  .ff-guide .mapa-raiz::after, .ff-guide .mapa-ramos::before,
+  .ff-guide .mapa-ramo::before, .ff-guide .mapa-ramo::after { display: none; }
+  .ff-guide .mapa-folhas { margin-left: 12px; }
+}
+.ff-guide .mapa-folhas { position: relative; flex: 0 1 auto; min-width: 0; padding-left: 16px; }
+.ff-guide .mapa-folha { white-space: normal; }
+.ff-guide .mapa-folhas::before {
+  content: ''; position: absolute; left: 0; top: 20px; bottom: 20px; width: 2px;
+  border-radius: 2px; background: var(--brand-primary-300);
+}
+.ff-guide .mapa-folhas > .mapa-folha::before {
+  content: ''; position: absolute; left: -17.5px; top: 50%; width: 16px; height: 2px;
+  margin-top: -1px; background: var(--brand-primary-300); pointer-events: none;
+}
 .ff-guide .mapa-conector-h, .ff-guide .mapa-raiz::after, .ff-guide .mapa-ramos::before,
 .ff-guide .mapa-ramos-conector, .ff-guide .mapa-ramo::before, .ff-guide .mapa-ramo::after { background: var(--brand-primary-300); }
 .ff-guide .mapa-raiz { background: linear-gradient(135deg, var(--brand-primary-700), var(--brand-primary)); box-shadow: 0 8px 20px rgb(52 120 167 / .35); white-space: normal; max-width: 220px; text-wrap: balance; }
@@ -689,30 +734,64 @@ button, input { font: inherit; }
    ========================================================================== */
 @media (max-width: 900px) {
   .ff-guide .app { grid-template-columns: minmax(0, 1fr); }
-  .ff-guide .sidebar { position: sticky; top: 0; z-index: 900; height: auto; display: flex; flex-wrap: wrap; align-items: center; padding: 12px 8px; overflow: visible; }
+  /* Menu vira uma única faixa rolável na horizontal: fixo no topo sem ocupar 1/5 da tela. */
+  .ff-guide .sidebar {
+    position: sticky; top: 0; z-index: 900; height: auto; display: flex; flex-wrap: nowrap; align-items: center;
+    padding: 10px 8px; overflow-x: auto; overflow-y: hidden; overscroll-behavior-x: contain;
+    scroll-snap-type: x proximity; scroll-padding-inline: 8px; scrollbar-width: none;
+  }
+  .ff-guide .sidebar::-webkit-scrollbar { display: none; }
   .ff-guide .sidebar .nav-section { display: none; }
-  .ff-guide .logo-container { flex: 0 0 100%; padding: 0 12px 10px; margin-bottom: 6px; }
-  .ff-guide .logo-svg { width: 140px; }
-  .ff-guide .nav-item { margin: 2px; padding: 8px 12px; font-size: 13.5px; }
+  .ff-guide .logo-container { flex: 0 0 auto; border: 0; margin: 0; padding: 0 8px 0 4px; scroll-snap-align: start; }
+  .ff-guide .logo-container .ff-logo-wrap { padding: 6px 12px; }
+  .ff-guide .logo-svg { width: 116px; }
+  .ff-guide .nav-item { flex: 0 0 auto; margin: 2px; padding: 8px 12px; font-size: 13.5px; white-space: nowrap; scroll-snap-align: start; }
   .ff-guide .main { padding: 28px clamp(16px, 4vw, 36px); }
+  .ff-guide .fluxo-mapa { padding: 40px 16px 20px; }
+  .ff-guide .fluxo-mapa-hint { top: 12px; right: 14px; }
   .ff-guide #dashboard .header { padding-right: 0; }
   .ff-guide #dashboard .header::before { display: none; }
+  /* Mapas mentais e fluxos empilham na vertical: sem rolagem lateral nem conectores soltos. */
+  .ff-guide .mapa { flex-direction: column; align-items: stretch; gap: 12px; min-width: 0; }
+  .ff-guide .mapa-raiz { max-width: none; align-self: flex-start; white-space: normal; }
+  .ff-guide .mapa-ramos { padding-left: 0; align-self: flex-start; }
+  .ff-guide .mapa-raiz::after, .ff-guide .mapa-ramos::before,
+  .ff-guide .mapa-ramo::before, .ff-guide .mapa-ramo::after { display: none; }
+  .ff-guide .mapa-folhas { margin-left: 12px; }
+  .ff-guide .mapa-folha, .ff-guide .mapa-etapa { white-space: normal; }
+  .ff-guide .mapa-simples { gap: 0; }
+  .ff-guide .mapa-linha { flex-direction: column; align-items: flex-start; row-gap: 0; }
+  .ff-guide .mapa-linha > .mapa-etapa { flex: none; max-width: 100%; text-align: left; }
+  .ff-guide .mapa-conector-h, .ff-guide .mapa-conector-h.grosso { width: 2px; height: 12px; margin-left: 24px; }
+  .ff-guide .mapa-linha + .mapa-linha::before {
+    content: ''; width: 2px; height: 12px; margin-left: 24px; background: var(--brand-primary-300);
+  }
   @media screen and (prefers-reduced-motion: no-preference) {
     .ff-guide .sidebar { animation-name: ff-drop-in; }
   }
 }
+/* Faixa intermediária (menu lateral + coluna estreita): etapas e conectores mais compactos. */
+@media (min-width: 901px) and (max-width: 1300px) {
+  .ff-guide .mapa-linha > .mapa-etapa { padding: 9px 10px; font-size: 12.5px; }
+  .ff-guide .mapa-linha > .mapa-conector-h { width: 14px; }
+  .ff-guide .mapa-raiz { max-width: 170px; padding: 12px 16px; }
+}
 @media (max-width: 600px) {
-  .ff-guide .sidebar { flex-wrap: nowrap; overflow-x: auto; scroll-snap-type: x proximity; scrollbar-width: none; padding: 10px 8px; }
-  .ff-guide .logo-container { flex: 0 0 auto; border: 0; margin: 0; padding: 0 8px 0 4px; }
   .ff-guide .logo-container .ff-logo-wrap { padding: 6px 10px; }
   .ff-guide .logo-svg { width: 104px; }
-  .ff-guide .nav-item { flex: 0 0 auto; scroll-snap-align: start; white-space: nowrap; }
   .ff-guide .header h2, .ff-guide #dashboard .header h2 { font-size: clamp(1.75rem, 8vw, 2.3rem); }
   .ff-guide .dashboard { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .ff-guide .metrica { padding: 16px; }
   .ff-guide .modal-overlay, .ff-guide .fluxo-overlay { padding: 12px; }
   .ff-guide .modal-header, .ff-guide .modal-body { padding: 20px; }
-  .ff-guide .tabela { display: block; overflow-x: auto; }
+  .ff-guide .fluxo-modal-header, .ff-guide .fluxo-modal-body { padding: 20px; }
+  /* Tabela continua ocupando a largura toda (display:block deixava o cabeçalho mais curto que a caixa). */
+  .ff-guide .tabela th, .ff-guide .tabela td { padding: 10px 12px; overflow-wrap: break-word; hyphens: auto; }
+  .ff-guide .accordion-header { padding: 14px 16px; gap: 12px; }
+  .ff-guide .accordion-body-inner { padding: 16px 16px 20px; }
+  .ff-guide .processo-card { padding: 20px 16px; }
+  .ff-guide .diagnostico-step { gap: 12px; }
+  .ff-guide .diagnostico-content { padding: 12px 14px; }
   .ff-handbook .page { width: calc(100% - 24px); min-height: 0; margin: 12px auto; padding: 50px 20px 44px; }
   .ff-handbook .page::before { left: 20px; top: 16px; font-size: 8pt; }
   .ff-handbook .page::after { right: 20px; bottom: 14px; }

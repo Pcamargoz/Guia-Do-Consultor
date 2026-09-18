@@ -16,7 +16,7 @@
 .lg-logo { margin: 0 auto 20px; }
 .lg-logo img { width: 160px; }
 .lg-cartao h1 { margin: 0; font-size: clamp(1.6rem, 5vw, 2rem); font-weight: 800; letter-spacing: -.02em; color: var(--brand-primary-900); }
-.lg-sub { margin: 8px 0 28px; color: var(--color-muted); font-size: 14.5px; line-height: 1.55; }
+.lg-sub { margin: 8px 0 28px; color: var(--color-muted); font-size: 14.5px; line-height: 1.55; text-wrap: balance; }
 
 .lg-form { display: grid; gap: 16px; text-align: left; }
 .lg-campo { display: grid; gap: 6px; }
@@ -28,6 +28,9 @@
 }
 .lg-campo input:focus { outline: none; border-color: var(--brand-primary); box-shadow: var(--glow-accent); }
 .lg-campo input[aria-invalid="true"] { border-color: var(--color-danger); }
+/* Preenchimento automático do navegador: mantém o campo branco (sem o fundo azulado do Chrome). */
+.lg-campo input:-webkit-autofill { -webkit-text-fill-color: var(--color-ink); box-shadow: inset 0 0 0 100px #fff; }
+.lg-campo input:-webkit-autofill:focus { box-shadow: inset 0 0 0 100px #fff, var(--glow-accent); }
 .lg-senha { position: relative; display: block; }
 .lg-senha input { padding-right: 52px; }
 .lg-ver {
@@ -59,7 +62,7 @@
 .lg-entrar.carregando .lg-seta { animation: lg-gira .8s linear infinite; }
 @keyframes lg-gira { to { transform: rotate(360deg); } }
 
-.lg-rodape { margin: 24px 0 0; font-size: 13px; color: var(--color-muted); }
+.lg-rodape { margin: 24px 0 0; font-size: 13px; line-height: 1.5; color: var(--color-muted); text-wrap: balance; }
 
 @media (prefers-reduced-motion: no-preference) {
   .lg-cartao { animation: lg-entra .9s var(--ease-spring) both; }
@@ -69,6 +72,10 @@
   .lg-form > :nth-child(4) { animation-delay: .41s; }
   .lg-entrar:active { transform: scale(.97); }
   .lg-cartao.lg-erro { animation: lg-tremor .45s var(--ease-out); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lg-campo input, .lg-entrar, .lg-seta { transition: none; }
+  .lg-entrar:hover .lg-seta { transform: none; }
 }
 @keyframes lg-entra { from { opacity: 0; transform: translateY(40px) scale(.94); filter: blur(8px); } }
 @keyframes lg-item { from { opacity: 0; transform: translateY(12px); } }

@@ -81,7 +81,7 @@
 
     <nav class="estudo-paleta" aria-label="Ferramentas de estudo" hidden>
       <div class="estudo-paleta-grupo" role="radiogroup" aria-label="Ferramenta">
-        ${FERRAMENTAS.map((f) => `<button type="button" class="estudo-ferramenta" role="radio" aria-checked="${f.id === 'selecionar'}" data-ferramenta="${f.id}" aria-label="${f.nome} (${f.atalho})">${svg(I[f.id])}<span class="estudo-dica"><strong>${f.nome}</strong> · ${f.atalho}<small>${f.dica}</small></span></button>`).join('')}
+        ${FERRAMENTAS.map((f) => `<button type="button" class="estudo-ferramenta" role="radio" aria-checked="${f.id === 'selecionar'}" data-ferramenta="${f.id}" aria-label="${f.nome} (${f.atalho})">${svg(I[f.id])}<span class="estudo-dica"><span class="estudo-dica-titulo"><strong>${f.nome}</strong> · <kbd>${f.atalho}</kbd></span><small>${f.dica}</small></span></button>`).join('')}
       </div>
       <div class="estudo-cores" role="radiogroup" aria-label="Cor do grifo" hidden>
         ${cores.map((c) => `<button type="button" class="estudo-cor" role="radio" aria-checked="${c === estado.cor}" data-cor="${c}" aria-label="${c[0].toUpperCase()}${c.slice(1)}" title="${c[0].toUpperCase()}${c.slice(1)}" style="--cor:${CORES[c]}"></button>`).join('')}

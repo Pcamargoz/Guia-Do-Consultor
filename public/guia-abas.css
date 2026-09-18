@@ -126,8 +126,13 @@
   .ab-acoes .ab-btn--sec span { display: none; }
   .ab-acoes .ab-btn--sec { padding: 8px 12px; }
 }
-@media (max-width: 1180px) {
+@media (max-width: 1280px) {
   .ab-aba { padding: 8px 14px; }
+  .ab-aba:not([aria-selected="true"]) span { display: none; }
+}
+@media (max-width: 1100px) {
+  .ab-btn--destaque span { display: none; }
+  .ab-btn--destaque { padding: 8px 14px; }
 }
 @media (max-width: 900px) {
   .ab-topo { flex-wrap: wrap; }
@@ -145,8 +150,9 @@
 .ab-topo-espaco.ativo { display: block; }
 @media (min-width: 901px) {
   .ab-topo--fixo {
-    position: fixed; top: 12px; left: 50%; transform: translateX(-50%);
-    width: max-content; max-width: min(1200px, calc(100vw - 32px));
+    /* Centralizado na coluna de conteúdo (à direita do menu lateral), nunca sobre ele. */
+    position: fixed; top: 12px; left: var(--ab-centro, 50%); transform: translateX(-50%);
+    width: max-content; max-width: var(--ab-largura, min(1200px, calc(100vw - 32px)));
     z-index: 950; justify-content: center;
     background: rgb(255 255 255 / .94); box-shadow: var(--shadow-lg);
   }

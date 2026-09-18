@@ -1,32 +1,54 @@
-.cfg-dialogo { width: min(520px, calc(100vw - 24px)); max-height: calc(100dvh - 32px); padding: 0; border: 0; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); color: var(--color-ink); }
-.cfg-dialogo::backdrop { background: rgb(7 28 45 / .55); }
-.cfg-form { display: grid; gap: 12px; padding: 24px; }
-.cfg-topo { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
-.cfg-topo h2 { margin: 0; font: 800 1.3rem var(--font-display); color: var(--brand-primary-950); }
-.cfg-topo button { border: 0; background: transparent; color: var(--brand-primary-800); font-size: 28px; cursor: pointer; }
+/* margin:auto é necessário: o reset global (* { margin: 0 }) tira a centralização nativa do <dialog>. */
+.cfg-dialogo { width: min(560px, calc(100vw - 24px)); max-height: calc(100dvh - 32px); margin: auto; padding: 0; border: 0; border-radius: var(--radius-xl); box-shadow: var(--shadow-xl); color: var(--color-ink); overscroll-behavior: contain; }
+.cfg-dialogo::backdrop { background: rgb(12 36 56 / .62); backdrop-filter: blur(8px); }
+@media (prefers-reduced-motion: no-preference) { .cfg-dialogo[open] { animation: ff-modal-in .6s var(--ease-spring); } }
+.cfg-form { display: grid; gap: 12px; padding: 24px 28px; }
+.cfg-topo { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 4px; }
+.cfg-topo h2 { margin: 0; font: 800 clamp(1.3rem, 2.4vw, 1.5rem) / 1.25 var(--font-display); color: var(--brand-primary-900); }
+.cfg-topo button {
+  display: grid; place-items: center; flex: none; width: 44px; height: 44px; border: 0; border-radius: 50%;
+  background: var(--brand-primary-100); color: var(--brand-primary-900); font-size: 24px; line-height: 1; cursor: pointer;
+  transition: background-color var(--dur-base), color var(--dur-base);
+}
+.cfg-topo button:hover { background: var(--color-danger); color: #fff; }
 .cfg-form p { margin: 0; }
-.cfg-form label { font-weight: 700; color: var(--brand-primary-900); }
-.cfg-form textarea { width: 100%; padding: 12px; border: 1px solid var(--color-line-strong); border-radius: var(--radius-sm); font: inherit; resize: vertical; }
-.cfg-form textarea:focus-visible { outline: 2px solid var(--brand-primary); outline-offset: 2px; }
-.cfg-form small { color: var(--color-muted); }
-.cfg-mensagem { min-height: 22px; color: var(--brand-primary-800); }
+.cfg-topo + p { font-size: 11.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--brand-primary-700); }
+.cfg-form label { margin-bottom: -4px; font-weight: 700; color: var(--brand-primary-900); font-size: 14px; }
+.cfg-form textarea { width: 100%; padding: 10px 12px; border: 1.5px solid var(--color-line-strong); border-radius: var(--radius-md); font: 400 14.5px/1.5 var(--font-body); color: var(--color-ink); resize: vertical; }
+.cfg-form textarea:focus { outline: none; border-color: var(--brand-primary); box-shadow: var(--glow-accent); }
+.cfg-form small { color: var(--color-muted); font-size: 12.5px; line-height: 1.5; }
+.cfg-mensagem { min-height: 22px; color: var(--brand-primary-800); font-size: 14px; }
 .cfg-acoes { display: flex; justify-content: flex-end; gap: 8px; }
-.cfg-acoes button { padding: 9px 14px; border: 1px solid var(--brand-primary-800); border-radius: var(--radius-pill); background: #fff; color: var(--brand-primary-900); font: 700 14px var(--font-display); cursor: pointer; }
-.cfg-acoes button[type="submit"] { background: var(--brand-primary-800); color: #fff; }
+.cfg-acoes button {
+  min-height: 42px; padding: 8px 18px; border: 1.5px solid var(--color-line-strong); border-radius: var(--radius-pill); background: #fff;
+  color: var(--brand-primary-900); font: 700 14px var(--font-display); cursor: pointer;
+  transition: background-color var(--dur-fast), border-color var(--dur-fast), box-shadow var(--dur-fast);
+}
+.cfg-acoes button:hover { border-color: var(--brand-primary); background: var(--brand-primary-50); }
+.cfg-acoes button[type="submit"] { background: var(--brand-primary-800); border-color: var(--brand-primary-800); color: #fff; }
+.cfg-acoes button[type="submit"]:hover { background: var(--brand-primary-900); border-color: var(--brand-primary-900); box-shadow: inset 0 -3px 0 var(--brand-accent); }
 .cfg-acoes button:disabled { opacity: .6; cursor: wait; }
 
 /* ---------- Limpar dados do sistema (somente administradores) ---------- */
 .cfg-dialogo { overflow: auto; }
-.cfg-limpeza { display: grid; gap: 10px; margin: 0 24px 24px; padding: 16px; border: 1px solid var(--color-danger); border-radius: var(--radius-lg); background: var(--color-danger-soft); }
+.cfg-limpeza { display: grid; gap: 10px; margin: 4px 28px 28px; padding: 16px; border: 1px solid var(--color-danger); border-radius: var(--radius-lg); background: var(--color-danger-soft); }
 .cfg-limpeza[hidden] { display: none; }
 .cfg-limpeza h3 { margin: 0; font: 800 1.05rem var(--font-display); color: var(--color-danger); }
 .cfg-limpeza p { margin: 0; font-size: 14px; }
 .cfg-limpeza-lista { display: grid; gap: 4px; margin: 0; padding: 0; list-style: none; font-size: 13.5px; }
 .cfg-limpeza-lista li { display: flex; justify-content: space-between; gap: 12px; padding: 4px 8px; border-radius: var(--radius-sm); background: rgb(255 255 255 / .7); }
-.cfg-limpeza label { font-weight: 700; color: var(--brand-primary-900); font-size: 14px; }
-.cfg-limpeza input { width: 100%; padding: 10px 12px; border: 1px solid var(--color-line-strong); border-radius: var(--radius-sm); font: inherit; background: #fff; }
+.cfg-limpeza label { margin-bottom: -4px; font-weight: 700; color: var(--brand-primary-900); font-size: 14px; }
+.cfg-limpeza input { width: 100%; min-height: 44px; padding: 10px 12px; border: 1.5px solid var(--color-line-strong); border-radius: var(--radius-md); font: inherit; background: #fff; }
 .cfg-limpeza input:focus-visible { outline: 2px solid var(--color-danger); outline-offset: 2px; }
 .cfg-limpeza-status { min-height: 20px; font-size: 13.5px; color: var(--color-danger); }
-.cfg-limpar { justify-self: end; padding: 9px 16px; border: 1px solid var(--color-danger); border-radius: var(--radius-pill); background: var(--color-danger); color: #fff; font: 700 14px var(--font-display); cursor: pointer; }
-.cfg-limpar:hover { filter: brightness(1.08); }
+.cfg-limpeza-lista strong { font-variant-numeric: tabular-nums; }
+.cfg-limpeza-status:empty { min-height: 0; margin-top: -10px; }
+.cfg-limpar { justify-self: end; min-height: 42px; padding: 8px 18px; border: 1.5px solid var(--color-danger); border-radius: var(--radius-pill); background: var(--color-danger); color: #fff; font: 700 14px var(--font-display); cursor: pointer; transition: background-color var(--dur-fast), border-color var(--dur-fast); }
+.cfg-limpar:hover { background: #8F1C13; border-color: #8F1C13; }
 .cfg-limpar:disabled { opacity: .6; cursor: wait; }
+@media (max-width: 600px) {
+  .cfg-form { padding: 20px 18px; }
+  .cfg-limpeza { margin: 4px 18px 20px; padding: 14px; }
+  .cfg-acoes button { flex: 1 1 auto; }
+  .cfg-limpar { justify-self: stretch; }
+}

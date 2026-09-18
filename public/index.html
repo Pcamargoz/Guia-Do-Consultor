@@ -851,6 +851,12 @@
     border-top: 1px solid var(--cinza-claro);
   }
 
+  /* Duas colunas lado a lado (ex.: "O que você FAZ / NÃO FAZ"); empilham no celular. */
+  .duas-colunas { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  @media (max-width: 600px) {
+    .duas-colunas { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  }
+
   /* ==================== RESPONSIVO ==================== */
   @media (max-width: 900px) {
     .app { grid-template-columns: 1fr; }
@@ -890,6 +896,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap">
 <link rel="stylesheet" href="brand-system.css?v=20260918">
 <link rel="stylesheet" href="guia-editor.css?v=20260918">
+<link rel="stylesheet" href="guia-processos.css?v=20260918">
 <link rel="stylesheet" href="guia-abas.css?v=20260918">
 <link rel="stylesheet" href="guia-horas.css?v=20260918">
 <link rel="stylesheet" href="guia-configuracoes.css?v=20260918">
@@ -903,6 +910,8 @@
 <script src="guia-duvidas.js?v=20260918" defer></script>
 <script src="guia-horas.js?v=20260918" defer></script>
 <script src="guia-editor.js?v=20260918" defer></script>
+<script src="guia-processos-dados.js?v=20260918" defer></script>
+<script src="guia-processos.js?v=20260918" defer></script>
 <script src="guia-pacotes.js?v=20260918" defer></script>
 </head>
 <body class="ff-guide">
@@ -983,10 +992,10 @@
       </div>
     </section>
 
-    <!-- ===== PARTE I ===== -->
+    <!-- ===== IMPLANTAÇÃO ===== -->
     <section id="parte1" style="margin-top: 48px;" class="fade-in">
       <div class="header">
-        <h2>Parte I — A Implantação</h2>
+        <h2>A Implantação</h2>
         <p>O que é implantar, o papel do consultor, responsabilidades do cliente e como conduzir o projeto.</p>
       </div>
 
@@ -1026,7 +1035,7 @@
         <div class="accordion-body">
           <div class="accordion-body-inner">
             <p style="margin-bottom: 16px;">Você é um <strong>facilitador</strong>, não um instrutor de telas. Seu trabalho é traduzir a realidade do cliente para dentro do sistema.</p>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+            <div class="duas-colunas">
               <div>
                 <h4 style="color: var(--verde); margin-bottom: 8px; font-size: 14px;">O que você FAZ</h4>
                 <ul class="checklist">
@@ -1131,7 +1140,7 @@
     <!-- ===== MÉTODO ===== -->
     <section id="metodo" style="margin-top: 48px;" class="fade-in">
       <div class="header">
-        <h2>Parte II — O Método Faktory</h2>
+        <h2>O Método Faktory</h2>
         <p>Sequência padronizada de implantação. Clique no mapa para ver o resumo.</p>
       </div>
 
@@ -1159,7 +1168,7 @@
     <!-- ===== MÓDULOS ===== -->
     <section id="modulos" style="margin-top: 48px;" class="fade-in">
       <div class="header">
-        <h2>Parte V — Módulos do Faktory Flow</h2>
+        <h2>Módulos do Faktory Flow</h2>
         <p>Os módulos fazem parte de um único fluxo operacional. Clique em um card para ver detalhes, fluxo, boas práticas e checklist.</p>
       </div>
 
@@ -1174,172 +1183,12 @@
     <!-- ===== PROCESSOS ===== -->
     <section id="processos" style="margin-top: 48px;" class="fade-in">
       <div class="header">
-        <h2>Parte VII — Biblioteca de Processos</h2>
+        <h2>Biblioteca de Processos</h2>
         <p>Funcionamento esperado dos principais fluxos da empresa dentro do sistema. Clique em um mapa para ver o resumo.</p>
       </div>
-
-      <div class="processo-card">
-        <h4>Processo Comercial (CRM e Vendas)</h4>
-        <p class="descricao">Início da jornada do cliente. Do primeiro contato à venda efetivada.</p>
-        <div class="fluxo-mapa" onclick="abrirFluxo('Processo Comercial', 'Início da jornada do cliente dentro do Faktory Flow. Do primeiro contato à venda efetivada.', ['Lead','Oportunidade','Negociação','Orçamento','Aprovação','Pedido de Venda'])">
-          <span class="fluxo-mapa-hint">Clique para detalhes</span>
-          <div class="mapa-simples">
-            <div class="mapa-linha">
-              <span class="mapa-etapa">Lead</span>
-              <span class="mapa-conector-h"></span>
-              <span class="mapa-etapa">Oportunidade</span>
-              <span class="mapa-conector-h"></span>
-              <span class="mapa-etapa">Negociação</span>
-              <span class="mapa-conector-h"></span>
-              <span class="mapa-etapa">Orçamento</span>
-              <span class="mapa-conector-h"></span>
-              <span class="mapa-etapa">Aprovação</span>
-              <span class="mapa-conector-h"></span>
-              <span class="mapa-etapa destaque">Pedido de Venda</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="processo-card">
-        <h4>Processo de Compras</h4>
-        <p class="descricao">Garantir materiais necessários para a operação.</p>
-        <div class="fluxo-mapa" onclick="abrirFluxo('Processo de Compras', 'Garantir que a empresa tenha os materiais necessários para a operação, mantendo controle sobre solicitações, fornecedores, pedidos e recebimentos.', ['Necessidade','Solicitação de Compra','Cotação','Pedido de Compra','Recebimento','Entrada no Estoque'])">
-          <span class="fluxo-mapa-hint">Clique para detalhes</span>
-          <div class="mapa-simples">
-            <div class="mapa-linha">
-              <span class="mapa-etapa">Necessidade</span>
-              <span class="mapa-conector-h"></span>
-              <span class="mapa-etapa">Solicitação</span>
-              <span class="mapa-conector-h"></span>
-              <span class="mapa-etapa">Cotação</span>
-              <span class="mapa-conector-h"></span>
-              <span class="mapa-etapa">Pedido de Compra</span>
-              <span class="mapa-conector-h"></span>
-              <span class="mapa-etapa">Recebimento</span>
-              <span class="mapa-conector-h"></span>
-              <span class="mapa-etapa destaque">Entrada no Estoque</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="processo-card">
-        <h4>Processo de Produção</h4>
-        <p class="descricao">Transformar o pedido aprovado em produto fabricado.</p>
-        <div class="fluxo-mapa" onclick="abrirFluxo('Processo de Produção', 'Transformar o pedido aprovado em produto fabricado, garantindo controle das etapas de fabricação e acompanhamento da execução.', ['Pedido de Venda','Ordem de Produção','Separação de Materiais','Fabricação','Conferência','Produto Finalizado'])">
-          <span class="fluxo-mapa-hint">Clique para detalhes</span>
-          <div class="mapa-simples">
-            <div class="mapa-linha">
-              <span class="mapa-etapa">Pedido de Venda</span>
-              <span class="mapa-conector-h"></span>
-              <span class="mapa-etapa">Ordem de Produção</span>
-              <span class="mapa-conector-h"></span>
-              <span class="mapa-etapa">Separação</span>
-              <span class="mapa-conector-h"></span>
-              <span class="mapa-etapa">Fabricação</span>
-              <span class="mapa-conector-h"></span>
-              <span class="mapa-etapa">Conferência</span>
-              <span class="mapa-conector-h"></span>
-              <span class="mapa-etapa destaque">Produto Finalizado</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="processo-card">
-        <h4>Processo Financeiro</h4>
-        <p class="descricao">Controlar movimentações, pagamentos, recebimentos e resultado.</p>
-        <div class="fluxo-mapa" onclick="abrirFluxo('Processo Financeiro', 'Controlar todas as movimentações relacionadas a pagamentos, recebimentos e acompanhamento do resultado da empresa.', ['Venda/Faturamento','Geração de Títulos','Recebimento ou Pagamento','Baixa Financeira','Análise de Resultado'])">
-          <span class="fluxo-mapa-hint">Clique para detalhes</span>
-          <div class="mapa-simples">
-            <div class="mapa-linha">
-              <span class="mapa-etapa">Venda/Faturamento</span>
-              <span class="mapa-conector-h"></span>
-              <span class="mapa-etapa">Geração de Títulos</span>
-              <span class="mapa-conector-h"></span>
-              <span class="mapa-etapa">Recebimento/Pagamento</span>
-              <span class="mapa-conector-h"></span>
-              <span class="mapa-etapa">Baixa Financeira</span>
-              <span class="mapa-conector-h"></span>
-              <span class="mapa-etapa destaque">Análise de Resultado</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="processo-card">
-        <h4>Processo Fiscal</h4>
-        <p class="descricao">Garantir que as operações estejam configuradas para cálculo de impostos e emissão de documentos fiscais.</p>
-        <div class="fluxo-mapa" onclick="abrirFluxo('Processo Fiscal', 'Garantir que as operações realizadas pela empresa estejam corretamente configuradas para cálculo de impostos e emissão dos documentos fiscais.', ['Configuração Fiscal','Venda/Compra','Cálculo Tributário','Emissão Fiscal','Conferência'])">
-          <span class="fluxo-mapa-hint">Clique para detalhes</span>
-          <div class="mapa-simples">
-            <div class="mapa-linha">
-              <span class="mapa-etapa">Configuração Fiscal</span>
-              <span class="mapa-conector-h"></span>
-              <span class="mapa-etapa">Venda/Compra</span>
-              <span class="mapa-conector-h"></span>
-              <span class="mapa-etapa">Cálculo Tributário</span>
-              <span class="mapa-conector-h"></span>
-              <span class="mapa-etapa">Emissão Fiscal</span>
-              <span class="mapa-conector-h"></span>
-              <span class="mapa-etapa destaque">Conferência</span>
-            </div>
-          </div>
-        </div>
-        <div class="alerta alerta-importante" style="margin-top:12px;">
-          <span class="icone">!</span>
-          <span><strong>O consultor NÃO define regras tributárias.</strong> A configuração deve ser validada pelo responsável fiscal.</span>
-        </div>
-      </div>
-
-      <div class="processo-card">
-        <h4>Processo de Expedição</h4>
-        <p class="descricao">Controlar entrega dos produtos ao cliente após faturamento.</p>
-        <div class="fluxo-mapa" onclick="abrirFluxo('Processo de Expedição', 'Controlar o processo de entrega dos produtos ao cliente após a finalização da venda e faturamento.', ['Pedido Faturado','Montagem da Carga','Separação','Conferência','Transporte','Entrega'])">
-          <span class="fluxo-mapa-hint">Clique para detalhes</span>
-          <div class="mapa-simples">
-            <div class="mapa-linha">
-              <span class="mapa-etapa">Pedido Faturado</span>
-              <span class="mapa-conector-h"></span>
-              <span class="mapa-etapa">Montagem da Carga</span>
-              <span class="mapa-conector-h"></span>
-              <span class="mapa-etapa">Separação</span>
-              <span class="mapa-conector-h"></span>
-              <span class="mapa-etapa">Conferência</span>
-              <span class="mapa-conector-h"></span>
-              <span class="mapa-etapa">Transporte</span>
-              <span class="mapa-conector-h"></span>
-              <span class="mapa-etapa destaque">Entrega</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="processo-card">
-        <h4>Processo de Projetos e Obras</h4>
-        <p class="descricao">Organizar execução de obras. A obra é tratada como centro de acompanhamento.</p>
-        <div class="fluxo-mapa" onclick="abrirFluxo('Processo de Projetos e Obras', 'Organizar a execução de obras, permitindo acompanhar materiais, custos, produção, serviços e resultado financeiro.', ['Venda','Criação da Obra','Planejamento','Execução','Acompanhamento','Resultado'])">
-          <span class="fluxo-mapa-hint">Clique para detalhes</span>
-          <div class="mapa-simples">
-            <div class="mapa-linha">
-              <span class="mapa-etapa">Venda</span>
-              <span class="mapa-conector-h"></span>
-              <span class="mapa-etapa">Criação da Obra</span>
-              <span class="mapa-conector-h"></span>
-              <span class="mapa-etapa">Planejamento</span>
-              <span class="mapa-conector-h"></span>
-              <span class="mapa-etapa">Execução</span>
-              <span class="mapa-conector-h"></span>
-              <span class="mapa-etapa">Acompanhamento</span>
-              <span class="mapa-conector-h"></span>
-              <span class="mapa-etapa destaque">Resultado</span>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div id="processosBarra" class="pr-barra"></div>
+      <div id="processosGrid" class="pr-grid"></div>
     </section>
-
     <!-- ===== DIAGNÓSTICO ===== -->
     <section id="diagnostico" style="margin-top: 48px;" class="fade-in">
       <div class="header">
