@@ -181,8 +181,8 @@
   /* ---------- Inclinação 3D + reflexo, botões magnéticos e ripple ---------- */
   const setupPointerFx = () => {
     const tiltSel = '.modulo-card, .metrica';
-    const magnetSel = '.filtro-btn, .toolbar-btn';
-    const rippleSel = '.filtro-btn, .toolbar-btn, .nav-item, .accordion-header';
+    const magnetSel = '.toolbar-btn';
+    const rippleSel = '.toolbar-btn, .nav-item, .accordion-header';
     let frame = 0;
 
     document.addEventListener('pointermove', (e) => {

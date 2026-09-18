@@ -1,0 +1,26 @@
+/* Edição dos textos fixos do Guia, seguindo os controles do editor de módulos. */
+.ff-guide main > section > .header { position: relative; }
+.ff-guide .gt-editar { border: 1px solid var(--color-line-strong); background: #fff; color: var(--brand-primary-800); border-radius: var(--radius-pill); font-family: inherit; font-size: 12px; font-weight: 600; line-height: 1.3; cursor: pointer; min-height: 32px; padding: 5px 12px; transition: border-color .15s, background-color .15s; }
+.ff-guide .gt-editar:hover, .ff-guide .gt-editar:focus-visible { border-color: var(--brand-primary); background: var(--brand-primary-50); }
+.ff-guide .gt-editar-secao { position: absolute; top: 0; right: 0; }
+.ff-guide .gt-editar-card { margin-left: auto; margin-right: 12px; flex: none; }
+.ff-guide .gt-editar-bloco { float: right; margin-left: 12px; }
+.ff-guide .accordion-header > span:first-child { min-width: 0; }
+.gt-dialog { width: min(820px, calc(100vw - 28px)); max-height: min(90vh, 920px); padding: 0; border: 0; border-radius: var(--radius-lg); background: #fff; color: var(--color-ink); box-shadow: 0 24px 80px #0c243860; }
+.gt-dialog::backdrop { background: #0c2438a6; backdrop-filter: blur(5px); }
+.gt-cabecalho { position: sticky; top: 0; z-index: 2; display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; padding: 22px 28px 18px; background: #fff; border-bottom: 1px solid var(--color-line); }
+.gt-cabecalho h2 { margin: 0; color: var(--brand-primary-900); }
+.gt-cabecalho p { margin: 4px 0 0; color: var(--color-muted); }
+.gt-fechar { width: 36px; height: 36px; flex: none; border: 0; border-radius: 8px; background: var(--brand-primary-50); color: var(--brand-primary-900); font-size: 26px; cursor: pointer; }
+.gt-campos { display: grid; gap: 24px; padding: 24px 28px; }
+.gt-campos fieldset { min-width: 0; display: grid; gap: 16px; margin: 0; padding: 16px; border: 1px solid var(--color-line); border-radius: var(--radius-md); }
+.gt-campos legend { padding: 0 6px; font-weight: 700; color: var(--brand-primary-900); }
+.gt-campo { display: grid; gap: 6px; }
+.gt-campo label { font-weight: 600; color: var(--brand-primary-800); font-size: 13px; }
+.gt-campo textarea { box-sizing: border-box; width: 100%; min-height: 74px; padding: 10px 12px; border: 1px solid var(--color-line-strong); border-radius: var(--radius-md); background: #fff; color: var(--color-ink); font: inherit; line-height: 1.5; resize: vertical; }
+.gt-campo textarea:focus { outline: 2px solid var(--brand-primary-300); border-color: var(--brand-primary); }
+.gt-restaurar { justify-self: start; padding: 3px 0; border: 0; background: none; color: var(--brand-primary-700); font-family: inherit; font-size: 12px; font-weight: 600; line-height: 1.3; cursor: pointer; text-decoration: underline; }
+.gt-erro { margin: 0 28px 12px; padding: 10px 14px; border-radius: 8px; background: var(--color-danger-soft); color: var(--color-danger); }
+.gt-rodape { position: sticky; bottom: 0; display: flex; justify-content: flex-end; gap: 8px; padding: 16px 28px; border-top: 1px solid var(--color-line); background: #fff; }
+@media (max-width: 640px) { .ff-guide .gt-editar-secao { position: static; margin-top: 12px; } .gt-cabecalho, .gt-campos, .gt-rodape { padding-left: 16px; padding-right: 16px; } .gt-erro { margin-left: 16px; margin-right: 16px; } .gt-campos fieldset { padding: 12px; } }
+@media print { .ff-guide .gt-editar, .gt-dialog { display: none !important; } }

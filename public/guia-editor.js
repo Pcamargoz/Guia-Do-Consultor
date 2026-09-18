@@ -202,7 +202,6 @@
   /* ---------- Cards ---------- */
   window.aplicarFiltros = function () {
     let lista = modulos;
-    if (filtroAtual !== 'todos') lista = lista.filter((m) => m.tags.includes(filtroAtual));
     if (state.filtroStatus !== 'todos') lista = lista.filter((m) => (state.filtroStatus === 'sem' ? !m.status : m.status === state.filtroStatus));
     const pacote = pacoteFiltrado();
     if (pacote) lista = lista.filter((m) => pacote.modulos.includes(m.id));
@@ -217,7 +216,7 @@
     const grid = document.getElementById('modulosGrid');
     grid.innerHTML = '';
     if (!lista.length) {
-      grid.innerHTML = `<div class="ed-vazio">${pacoteFiltrado() && !(filtroAtual !== 'todos' || state.filtroStatus !== 'todos' || buscaAtual)
+      grid.innerHTML = `<div class="ed-vazio">${pacoteFiltrado() && !(state.filtroStatus !== 'todos' || buscaAtual)
         ? 'Nenhum módulo do guia faz parte deste pacote.' : 'Nenhum módulo encontrado para os filtros aplicados.'}</div>`;
     }
     lista.forEach((mod) => {
@@ -246,7 +245,7 @@
         </div>`;
       grid.appendChild(card);
     });
-    if (editavel() && filtroAtual === 'todos' && state.filtroStatus === 'todos' && state.filtroPacote === 'todos' && !buscaAtual) {
+    if (editavel() && state.filtroStatus === 'todos' && state.filtroPacote === 'todos' && !buscaAtual) {
       const novo = document.createElement('button');
       novo.type = 'button';
       novo.className = 'ed-card-novo';

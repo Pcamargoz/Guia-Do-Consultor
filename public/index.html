@@ -162,30 +162,6 @@
     opacity: 0.6;
   }
 
-  /* ==================== FILTROS ==================== */
-  .filtros { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
-
-  .filtro-btn {
-    padding: 8px 16px;
-    border: 1.5px solid var(--cinza-claro);
-    background: white;
-    border-radius: 20px;
-    font-size: 13px;
-    font-family: inherit;
-    cursor: pointer;
-    transition: all 0.2s;
-    color: var(--cinza-medio);
-    font-weight: 500;
-  }
-
-  .filtro-btn:hover { border-color: var(--ff-azul-borda); color: var(--ff-azul-medio); }
-
-  .filtro-btn.active {
-    background: var(--ff-azul-medio);
-    color: white;
-    border-color: var(--ff-azul-medio);
-  }
-
   /* ==================== CARDS ==================== */
   .modulos-grid {
     display: grid;
@@ -896,6 +872,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap">
 <link rel="stylesheet" href="brand-system.css?v=20260918">
 <link rel="stylesheet" href="guia-editor.css?v=20260918">
+<link rel="stylesheet" href="guia-textos.css?v=20260918">
 <link rel="stylesheet" href="guia-processos.css?v=20260918">
 <link rel="stylesheet" href="guia-abas.css?v=20260918">
 <link rel="stylesheet" href="guia-horas.css?v=20260918">
@@ -910,6 +887,7 @@
 <script src="guia-duvidas.js?v=20260918" defer></script>
 <script src="guia-horas.js?v=20260918" defer></script>
 <script src="guia-editor.js?v=20260918" defer></script>
+<script src="guia-textos.js?v=20260918" defer></script>
 <script src="guia-processos-dados.js?v=20260918" defer></script>
 <script src="guia-processos.js?v=20260918" defer></script>
 <script src="guia-pacotes.js?v=20260918" defer></script>
@@ -974,14 +952,6 @@
       <div class="search-bar">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
         <input type="text" id="searchInput" placeholder="Buscar módulo, processo ou termo..." oninput="filtrarCards()">
-      </div>
-
-      <div class="filtros">
-        <button class="filtro-btn active" onclick="filtrarPorTag('todos', this)">Todos</button>
-        <button class="filtro-btn" onclick="filtrarPorTag('vendas', this)">Vendas e CRM</button>
-        <button class="filtro-btn" onclick="filtrarPorTag('fiscal', this)">Fiscal e Faturamento</button>
-        <button class="filtro-btn" onclick="filtrarPorTag('operacao', this)">Operação</button>
-        <button class="filtro-btn" onclick="filtrarPorTag('gestao', this)">Gestão e Análise</button>
       </div>
 
       <div class="dashboard">
@@ -1558,8 +1528,7 @@ function renderizarCards(lista) {
   });
 }
 
-/* ==================== FILTROS ==================== */
-let filtroAtual = 'todos';
+/* ==================== BUSCA ==================== */
 let buscaAtual = '';
 
 function filtrarCards() {
@@ -1567,16 +1536,8 @@ function filtrarCards() {
   aplicarFiltros();
 }
 
-function filtrarPorTag(tag, btn) {
-  filtroAtual = tag;
-  document.querySelectorAll('.filtro-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  aplicarFiltros();
-}
-
 function aplicarFiltros() {
   let lista = modulos;
-  if (filtroAtual !== 'todos') lista = lista.filter(m => m.tags.includes(filtroAtual));
   if (buscaAtual) lista = lista.filter(m => m.nome.toLowerCase().includes(buscaAtual) || m.objetivo.toLowerCase().includes(buscaAtual) || m.subtitulo.toLowerCase().includes(buscaAtual));
   renderizarCards(lista);
 }

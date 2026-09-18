@@ -236,9 +236,7 @@ button, input { font: inherit; }
 .ff-guide .search-bar svg { color: var(--brand-primary); opacity: 1; transition: transform var(--dur-base) var(--ease-spring); }
 .ff-guide .search-bar:focus-within svg { transform: translateY(-50%) scale(1.25) rotate(-12deg); }
 
-/* Botões de filtro */
-.ff-guide .filtros { gap: 10px; }
-.ff-guide .filtro-btn,
+/* Botões da apostila */
 .ff-handbook .toolbar-btn {
   position: relative; overflow: hidden; isolation: isolate;
   min-height: 44px; padding: 10px 18px; border-radius: var(--radius-pill);
@@ -247,18 +245,14 @@ button, input { font: inherit; }
   transition: translate var(--dur-base) var(--ease-spring), transform var(--dur-base) var(--ease-spring),
     box-shadow var(--dur-base), color var(--dur-base), border-color var(--dur-base), background-color var(--dur-base);
 }
-.ff-guide .filtro-btn { border: 2px solid var(--color-line-strong); background: var(--color-surface); color: var(--brand-primary-800); }
-.ff-guide .filtro-btn::before,
 .ff-handbook .toolbar-btn::before {
   content: ''; position: absolute; inset: 0; z-index: -1;
   background: linear-gradient(110deg, var(--brand-primary-900), var(--brand-primary), var(--brand-primary-700), var(--brand-primary-900));
   background-size: 300% 100%; opacity: 0; transition: opacity var(--dur-base);
 }
-.ff-guide .filtro-btn:hover { border-color: var(--brand-primary); color: #fff; box-shadow: 0 12px 28px rgb(52 120 167 / .35); }
-.ff-guide .filtro-btn:hover::before, .ff-guide .filtro-btn.active::before, .ff-handbook .toolbar-btn::before { opacity: 1; }
-.ff-guide .filtro-btn.active { background: var(--brand-primary-900); border-color: var(--brand-primary-900); color: #fff; box-shadow: inset 0 -3px 0 var(--brand-accent), var(--shadow-md); }
+.ff-handbook .toolbar-btn::before { opacity: 1; }
 /* Ripple (posicionado via JS em --rx/--ry) */
-.ff-guide .filtro-btn::after, .ff-handbook .toolbar-btn::after,
+.ff-handbook .toolbar-btn::after,
 .ff-guide .nav-item::after, .ff-guide .accordion-header::after {
   content: ''; position: absolute; left: var(--rx, 50%); top: var(--ry, 50%);
   width: 16px; height: 16px; margin: -8px 0 0 -8px; border-radius: 50%;
@@ -592,12 +586,6 @@ button, input { font: inherit; }
   .ff-guide #dashboard .header p { animation: ff-arrive .9s .35s var(--ease-out) both; }
   .ff-guide #dashboard .header::before { animation: ff-stairs-in 1.2s .4s var(--ease-spring) both, ff-hover-float 6s 1.8s ease-in-out infinite alternate; }
   .ff-guide #dashboard .search-bar { animation: ff-arrive .9s .5s var(--ease-out) both; }
-  .ff-guide #dashboard .filtro-btn { animation: ff-pop .7s var(--ease-spring) backwards; }
-  .ff-guide #dashboard .filtro-btn:nth-child(1) { animation-delay: .62s; }
-  .ff-guide #dashboard .filtro-btn:nth-child(2) { animation-delay: .70s; }
-  .ff-guide #dashboard .filtro-btn:nth-child(3) { animation-delay: .78s; }
-  .ff-guide #dashboard .filtro-btn:nth-child(4) { animation-delay: .86s; }
-  .ff-guide #dashboard .filtro-btn:nth-child(5) { animation-delay: .94s; }
   .ff-guide #dashboard .metrica { animation: ff-card-in 1s var(--ease-spring) backwards; }
   .ff-guide #dashboard .metrica:nth-child(1) { animation-delay: .95s; }
   .ff-guide #dashboard .metrica:nth-child(2) { animation-delay: 1.05s; }
@@ -631,9 +619,9 @@ button, input { font: inherit; }
   /* Hovers exagerados */
   .ff-guide .nav-item:hover { transform: translateX(8px); }
   .ff-guide .nav-item:hover svg { transform: scale(1.3) rotate(-10deg); }
-  .ff-guide .filtro-btn:hover, .ff-handbook .toolbar-btn:hover { transform: translateY(-4px) scale(1.06); }
-  .ff-guide .filtro-btn:hover::before, .ff-guide .filtro-btn.active::before, .ff-handbook .toolbar-btn::before { animation: ff-gradient 3s linear infinite; }
-  .ff-guide .filtro-btn:active, .ff-handbook .toolbar-btn:active { transform: translateY(0) scale(.95); }
+  .ff-handbook .toolbar-btn:hover { transform: translateY(-4px) scale(1.06); }
+  .ff-handbook .toolbar-btn::before { animation: ff-gradient 3s linear infinite; }
+  .ff-handbook .toolbar-btn:active { transform: translateY(0) scale(.95); }
   .ff-guide .metrica:hover { --lift: -10px; box-shadow: var(--shadow-xl); }
   .ff-guide .metrica:hover .numero { animation: ff-bounce .7s var(--ease-spring); }
   .ff-guide .modulo-card:hover, .ff-guide .modulo-card:focus-visible { --lift: -14px; --grow: 1.02; }
