@@ -91,3 +91,19 @@
   .ab-conta .ab-btn { flex: 0 0 auto; }
   .ab-conta .ab-btn span { display: none; }
 }
+
+/* ---------- Cabeçalho flutuante e centralizado ao rolar ---------- */
+.ab-topo-espaco { display: none; }
+.ab-topo-espaco.ativo { display: block; }
+@media (min-width: 901px) {
+  .ab-topo--fixo {
+    position: fixed; top: 12px; left: 50%; transform: translateX(-50%);
+    width: max-content; max-width: min(1200px, calc(100vw - 32px));
+    z-index: 950; justify-content: center;
+    background: rgb(255 255 255 / .94); box-shadow: var(--shadow-lg);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .ab-topo--fixo { animation: ab-topo-desce .28s var(--ease-out); }
+}
+@keyframes ab-topo-desce { from { opacity: 0; transform: translate(-50%, -12px); } }
