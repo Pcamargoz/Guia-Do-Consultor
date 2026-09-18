@@ -1,7 +1,8 @@
 /* Faktory Flow — Aba "Pacotes e Distribuição de Horas".
-   Cards por pacote com módulos, distribuição das horas, total previsto (soma das checklists + etapas
-   + recursos) comparado à tabela de preços, funcionalidades incluídas e horas por faixa de usuários.
-   Os totais usam os mesmos dados dos módulos: editar uma hora na checklist atualiza tudo aqui. */
+   Cards por pacote com módulos, distribuição das horas, total previsto (horas de cada módulo + etapas
+   + recursos) comparado à tabela de preços, tarefas incluídas e horas por faixa de usuários.
+   Horas são definidas por MÓDULO em cada pacote; as tarefas têm só descrição, prioridade e nível.
+   Consultores/administradores editam as horas de um módulo clicando nelas e os módulos/tarefas pelo editor. */
 (() => {
   const painel = document.getElementById('painel-pacotes');
   const H = window.ffHoras;
@@ -64,7 +65,7 @@
     const select = painel.querySelector('[data-controle="faixa"]');
     select.innerHTML = H.estado.faixas.map((f, i) => `<option value="${i}"${cenario.faixa === i ? ' selected' : ''}>${esc(f)}</option>`).join('');
     painel.querySelector('[data-nota]').innerHTML = `${svg(I.info)}<span>${ehBase()
-      ? 'Cenário base: selecione o pacote no filtro da aba Módulos para editar as horas dos módulos.'
+      ? (podeEditar ? 'Cenário base: clique nas horas de um módulo para editá-las; use “Editar módulos e tarefas” para mudar o conteúdo do pacote.' : 'Cenário base: Premium · até 5 usuários.')
       : `Horas proporcionais à tabela de preços (${esc(cenario.fluxo)} · ${esc(H.estado.faixas[cenario.faixa] || '')}). As edições são feitas na base <strong>Premium · até 5 usuários</strong>.`}</span>`;
   }
 
@@ -117,7 +118,9 @@
       <li><div class="pc-modulo">
         <span class="pc-modulo-nome">${esc(m.nome)}</span>
         <span class="pc-modulo-trilho" aria-hidden="true"><span class="pc-modulo-barra" style="width:${Math.max(2, (m.minutos / maiorModulo) * 100)}%"></span></span>
-        <span class="pc-modulo-horas">${H.formatar(escala(m.minutos, f), { vazio: '0h' })}</span>
+        ${podeEditar && ehBase()
+          ? `<button type="button" class="pc-modulo-horas pc-modulo-horas--editar" data-editar-modulo="${esc(m.id)}" data-pacote="${esc(pacote.id)}" title="Editar horas de ${esc(m.nome)}" aria-label="Horas de ${esc(m.nome)} no pacote ${esc(pacote.nome)}: ${H.formatar(m.minutos, { vazio: '0h' })}. Editar">${H.formatar(m.minutos, { vazio: '0h' })}</button>`
+          : `<span class="pc-modulo-horas">${H.formatar(escala(m.minutos, f), { vazio: '0h' })}</span>`}
         <span class="pc-modulo-pct">${pct(m.minutos, t.total)}%</span>
       </div></li>`).join('')}</ul>` : '<p class="ed-nada">Nenhum módulo do guia neste pacote.</p>';
 
@@ -127,6 +130,7 @@
       : '<p class="ed-nada">Nenhum recurso adicional neste pacote.</p>';
 
     const porModuloPlanilha = funcs.reduce((acc, x) => ((acc[x.modulo] ||= []).push(x), acc), {});
+    const botaoEditor = podeEditar ? `<button type="button" class="ed-btn pc-editar-conteudo" data-editar-conteudo="${esc(pacote.id)}">${svg('<path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/>')}Editar módulos e tarefas</button>` : '';
     const funcsHtml = Object.entries(porModuloPlanilha).map(([mod, lista]) => `
       <div class="pc-func-grupo"><h4>${esc(mod)} <span class="ed-conta">${lista.length}</span></h4>
         <ul class="pc-funcs">${lista.map((x) => `<li class="pc-func"><span>${esc(x.funcionalidade)}</span><span class="pc-func-meta">${x.nivel === 'Pro' ? '<abbr class="pc-pro" title="Funcionalidade Pro">Pro</abbr>' : ''}<span class="pc-complexidade pc-complexidade--${esc(x.complexidade.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase())}">${esc(x.complexidade)}</span></span></li>`).join('')}</ul>
@@ -144,7 +148,7 @@
 
     const historicoHtml = pacote.historico?.length
       ? `<ol class="pc-historico">${pacote.historico.map((h) => `<li><time datetime="${esc(h.em)}">${esc(new Date(h.em).toLocaleString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' }))}</time><span>${esc(h.detalhe)}${h.autor ? ` — ${esc(h.autor)}` : ''}</span></li>`).join('')}</ol>`
-      : '<p class="ed-nada">Nenhuma alteração nas etapas ou recursos deste pacote.</p>';
+      : '<p class="ed-nada">Nenhuma alteração registrada neste pacote.</p>';
 
     return `
       <article class="pc-card pc-card--${esc(pacote.nivel.toLowerCase())}${indisponivel ? ' pc-card--indisponivel' : ''}" data-pacote-card="${esc(pacote.id)}" aria-labelledby="pc-nome-${esc(pacote.id)}">
@@ -166,13 +170,14 @@
         <section class="pc-bloco" aria-label="Módulos e horas">
           <h4 class="pc-bloco-titulo">${svg(I.camadas)}Módulos contemplados <span class="pc-bloco-soma">${H.formatar(escala(t.minutosModulos, f), { vazio: '0h' })}</span></h4>
           ${indisponivel ? '' : modulosHtml}
+          ${botaoEditor}
         </section>
 
         ${detalhes(pacote.id, 'etapas', `Etapas de implantação · ${H.formatar(t.minutosEtapas, { vazio: '0h' })}${ehBase() ? '' : ' (base)'}`, etapasHtml, t.etapas.length)}
         ${detalhes(pacote.id, 'recursos', `Recursos gerais · ${H.formatar(t.minutosRecursos, { vazio: '0h' })}${ehBase() ? '' : ' (base)'}`, recursosHtml, t.recursos.length)}
-        ${detalhes(pacote.id, 'funcs', 'Funcionalidades incluídas', funcsHtml, funcs.length)}
+        ${detalhes(pacote.id, 'funcs', 'Funcionalidades incluídas', (funcsHtml || '<p class="ed-nada">Nenhuma tarefa cadastrada neste pacote.</p>') + botaoEditor, funcs.length)}
         ${detalhes(pacote.id, 'precos', 'Horas por faixa de usuários', precosHtml)}
-        ${detalhes(pacote.id, 'historico', 'Alterações nas etapas', historicoHtml, pacote.historico?.length || 0)}
+        ${detalhes(pacote.id, 'historico', 'Alterações no pacote', historicoHtml, pacote.historico?.length || 0)}
 
       </article>`;
   }
@@ -223,7 +228,11 @@
       return;
     }
     const etapa = e.target.closest('[data-editar-etapa]');
-    if (etapa && podeEditar) editarEtapa(etapa);
+    if (etapa && podeEditar) { editarEtapa(etapa); return; }
+    const modulo = e.target.closest('[data-editar-modulo]');
+    if (modulo && podeEditar) { editarHorasModulo(modulo); return; }
+    const conteudoBtn = e.target.closest('[data-editar-conteudo]');
+    if (conteudoBtn && podeEditar) window.ffEditorPacote?.abrir(conteudoBtn.dataset.editarConteudo);
   });
 
   painel.addEventListener('change', (e) => {
@@ -291,9 +300,55 @@
     input.addEventListener('blur', () => { setTimeout(() => { if (!concluido) salvar(); }, 120); });
   }
 
+  function editarHorasModulo(botao) {
+    const pacote = H.estado.pacotes.find((p) => p.id === botao.dataset.pacote);
+    const moduloId = botao.dataset.editarModulo;
+    const nome = listaModulos().find((m) => m.id === moduloId)?.nome || moduloId;
+    if (!pacote) return;
+    const atual = Number(pacote.horasModulos?.[moduloId] ?? 0);
+    const celula = document.createElement('form');
+    celula.className = 'hr-form pc-modulo-form';
+    celula.noValidate = true;
+    celula.innerHTML = `<input class="hr-input" value="${esc(H.formatar(atual, { vazio: '0h' }))}" autocomplete="off" aria-label="Horas de ${esc(nome)} no pacote ${esc(pacote.nome)}"><small class="hr-ajuda">Ex.: 1h30, 45min, 2</small>`;
+    botao.replaceWith(celula);
+    const input = celula.querySelector('input');
+    input.focus();
+    input.select();
+    let concluido = false;
+    const salvar = async () => {
+      if (concluido) return;
+      const minutos = H.interpretar(input.value);
+      if (minutos == null || minutos > 60000) {
+        input.setAttribute('aria-invalid', 'true');
+        celula.querySelector('.hr-ajuda').textContent = 'Formato inválido. Use 1h30, 45min ou 2.';
+        input.focus();
+        return;
+      }
+      concluido = true;
+      input.disabled = true;
+      try {
+        const res = await fetch(`/api/pacotes?id=${encodeURIComponent(pacote.id)}&acao=modulo`, {
+          method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ moduloId, minutos }),
+        });
+        const dados = await res.json().catch(() => ({}));
+        if (res.status === 401) return window.ffIrParaLogin();
+        if (!res.ok) throw new Error(dados.erro || 'Não foi possível salvar as horas do módulo.');
+        H.substituirPacote(dados.pacote);
+        aviso(`${nome}: ${H.formatar(minutos, { vazio: '0h' })} no ${pacote.nome}. Total do pacote: ${H.formatar(H.totalPacote(dados.pacote, listaModulos()).total, { vazio: '0h' })}.`);
+      } catch (err) {
+        aviso(err.message, 'erro');
+        render();
+      }
+    };
+    celula.addEventListener('submit', (e) => { e.preventDefault(); salvar(); });
+    input.addEventListener('keydown', (e) => { if (e.key === 'Escape') { e.preventDefault(); concluido = true; render(); } });
+    input.addEventListener('blur', () => { setTimeout(() => { if (!concluido) salvar(); }, 120); });
+  }
+  window.ffPacotesAviso = aviso;
+
   /* ---------- Sincronização ---------- */
   // Não re-renderiza enquanto alguém digita uma duração (formulário ativo); após salvar, o campo fica desabilitado.
-  const talvezRenderizar = () => { if (!painel.hidden && !painel.querySelector('.hr-form input:not(:disabled)')) render(); };
+  const talvezRenderizar = () => { if (!painel.hidden && !painel.querySelector('.hr-form input:not(:disabled)') && !document.querySelector('.pe-dialog[open]')) render(); };
   document.addEventListener('ff:pacotes', talvezRenderizar);
   document.addEventListener('ff:modulos', () => { modulosProntos = true; talvezRenderizar(); });
   document.addEventListener('ff:aba', (e) => { if (e.detail.aba === 'pacotes') render(); });

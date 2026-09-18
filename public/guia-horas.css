@@ -285,3 +285,60 @@ button.hr-duracao:hover { border-style: solid; border-color: var(--brand-primary
   .ed-pacotes-linha { flex-direction: column; align-items: stretch; }
   .ed-pacote-resumo .ed-btn { width: 100%; margin-left: 0; }
 }
+
+/* ---------- Horas do módulo editáveis (clique no valor) ---------- */
+.pc-modulo-horas--editar {
+  justify-self: end; padding: 3px 9px; border: 1px dashed var(--brand-primary-300); border-radius: var(--radius-pill);
+  background: #fff; color: var(--brand-primary-900); font: inherit; font-size: 14px; font-weight: 700; cursor: pointer;
+  font-variant-numeric: tabular-nums; transition: background-color var(--dur-base), border-color var(--dur-base);
+}
+.pc-modulo-horas--editar:hover { background: var(--brand-primary-50); border-style: solid; border-color: var(--brand-primary); }
+.pc-modulo-horas--editar:focus-visible { outline: 3px solid var(--brand-accent); outline-offset: 2px; }
+.pc-modulo-form { justify-self: end; display: grid; justify-items: end; gap: 2px; }
+.pc-modulo-form .hr-input { width: 84px; text-align: right; }
+.pc-editar-conteudo { margin-top: 12px; }
+.pc-editar-conteudo svg { width: 16px; height: 16px; }
+
+/* ---------- Editor de módulos e tarefas do pacote ---------- */
+.pe-dialog { width: min(980px, calc(100vw - 28px)); }
+.pe-explica { margin: 0; padding: 12px 14px; border-radius: var(--radius-md); background: var(--brand-primary-50); color: var(--brand-primary-900); font-size: 14px; line-height: 1.5; }
+.pe-blocos { display: grid; gap: 16px; }
+.pe-bloco { display: grid; gap: 10px; padding: 16px; border: 1px solid var(--color-line); border-left: 4px solid var(--brand-primary); border-radius: var(--radius-md); background: #fff; }
+.pe-bloco--livre { border-left-color: var(--brand-accent); }
+.pe-bloco-topo { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: end; gap: 12px 16px; }
+.pe-bloco-nome h3 { margin: 0 0 6px; color: var(--brand-primary-950); font-size: 17px; }
+.pe-grupo-rotulo, .pe-horas { display: grid; gap: 4px; color: var(--color-muted); font-size: 12px; font-weight: 600; }
+.pe-grupo-rotulo .ed-input { max-width: 320px; }
+.pe-horas { grid-template-columns: auto 1fr; align-items: center; column-gap: 6px; color: var(--brand-primary-800); }
+.pe-horas svg { width: 16px; height: 16px; }
+.pe-horas .ed-input { grid-column: 1 / -1; width: 120px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.pe-sem-horas { align-self: center; color: var(--color-muted); font-size: 12.5px; }
+.pe-bloco-acoes { display: flex; gap: 4px; }
+.pe-tarefas { display: grid; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.pe-tarefa { display: grid; grid-template-columns: 26px minmax(0, 1fr) 104px 112px auto; align-items: center; gap: 8px; }
+.pe-tarefa .ed-linha-num { text-align: right; color: var(--color-muted); font-size: 12.5px; font-variant-numeric: tabular-nums; }
+.pe-tarefa .ed-linha-acoes { display: flex; gap: 2px; }
+.pe-add-tarefa { justify-self: start; }
+.pe-adicionar { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 12px; padding: 14px 16px; border: 1px dashed var(--color-line-strong); border-radius: var(--radius-md); }
+.pe-add-modulo { display: grid; gap: 4px; font-size: 12.5px; font-weight: 600; color: var(--brand-primary-800); }
+.pe-add-linha { display: flex; gap: 8px; }
+.pe-add-linha .ed-input { min-width: 240px; }
+.pe-rodape { align-items: center; }
+.pe-resumo { margin-right: auto; color: var(--color-muted); font-size: 13px; }
+.pe-resumo strong { color: var(--brand-primary-900); }
+.pe-alerta { color: var(--color-danger); font-weight: 600; }
+.pe-dialog [aria-invalid="true"] { border-color: var(--color-danger); box-shadow: 0 0 0 3px var(--color-danger-soft); }
+@media (max-width: 760px) {
+  .pe-bloco-topo { grid-template-columns: minmax(0, 1fr) auto; }
+  .pe-bloco-nome { grid-column: 1 / -1; }
+  .pe-tarefa { grid-template-columns: 22px minmax(0, 1fr) auto; }
+  .pe-tarefa .pe-descricao { grid-column: 2 / -1; }
+  .pe-tarefa .pe-prioridade { grid-column: 2; }
+  .pe-tarefa .pe-nivel { grid-column: 3; width: 104px; }
+  .pe-tarefa .ed-linha-acoes { grid-column: 2 / -1; justify-content: flex-end; }
+  .pe-add-linha { flex-wrap: wrap; }
+  .pe-add-linha .ed-input { min-width: 0; flex: 1 1 180px; }
+  .pe-rodape { flex-wrap: wrap; }
+  .pe-resumo { flex-basis: 100%; }
+}
+@media print { .pc-editar-conteudo, .pe-dialog { display: none !important; } }

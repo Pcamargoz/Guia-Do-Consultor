@@ -303,7 +303,8 @@
           <div>
             <span class="hr-total-rotulo">Tempo total de implantação</span>
             <strong class="hr-total-valor">${H.formatar(H.totalModulo(mod, pacote.id), { vazio: '0h' })}</strong>
-            <span class="hr-total-contexto">Pacote ${esc(pacote.nome)} · base Premium, até 5 usuários</span>
+            <span class="hr-total-contexto">Pacote ${esc(pacote.nome)} · base Premium, até 5 usuários · horas do módulo inteiro</span>
+            <button type="button" class="hr-ir-pacotes" data-ir-pacotes="${esc(pacote.id)}">${editavel() ? 'Editar horas na aba Pacotes e Horas' : 'Ver na aba Pacotes e Horas'}</button>
           </div>
         </div>
         <div class="hr-pacotes" role="radiogroup" aria-label="Pacote usado nas horas">
@@ -317,66 +318,13 @@
 
     if (!itens.length) return `<div class="secao">${titulo}${painel}<p class="ed-nada">Nenhum item cadastrado.</p></div>`;
     return `<div class="secao secao--checklist">${titulo}${painel}
-      <ol class="ed-lista ed-lista--checklist">${itens.map((it, n) => {
-        const minutos = pacote ? H.minutosItem(it, pacote.id) : null;
-        const rotulo = pacote ? H.formatar(minutos, { vazio: '0min' }) : '';
-        const duracao = !pacote ? ''
-          : editavel()
-            ? `<button type="button" class="hr-duracao" data-editar-minutos="${esc(it.id)}" title="Editar duração" aria-label="Duração de “${esc(it.texto)}”: ${rotulo}. Editar">${svg(relogio)}<span>${rotulo}</span></button>`
-            : `<span class="hr-duracao hr-duracao--leitura" aria-label="Duração: ${rotulo}">${svg(relogio)}<span>${rotulo}</span></span>`;
-        return `
-        <li class="ed-item ed-item--horas${it.status ? ` ed-item--${it.status}` : ''}${minutos === 0 ? ' hr-item--zero' : ''}">
+      <ol class="ed-lista ed-lista--checklist">${itens.map((it, n) => `
+        <li class="ed-item${it.status ? ` ed-item--${it.status}` : ''}">
           <span class="ed-item-num">${n + 1}</span>
           <div class="ed-item-texto"><span>${esc(it.texto)}</span>${chipStatus(it)}</div>
-          <div class="hr-duracao-celula">${duracao}</div>
           ${botoesStatus(it.id, it.status, { compacto: true })}
-        </li>`;
-      }).join('')}
+        </li>`).join('')}
       </ol></div>`;
-  }
-
-  function editarMinutosInline(botao, mod) {
-    const H = window.ffHoras;
-    const pacote = H.pacoteParaModulo(mod.id);
-    const item = mod.checklist.find((i) => i.id === botao.dataset.editarMinutos);
-    if (!pacote || !item) return;
-    const celula = botao.parentElement;
-    celula.innerHTML = `<form class="hr-form" novalidate>
-      <input class="hr-input" value="${esc(H.formatar(H.minutosItem(item, pacote.id), { vazio: '0min' }))}" inputmode="text" autocomplete="off"
-        aria-label="Nova duração para “${esc(item.texto)}” no pacote ${esc(pacote.nome)}" aria-describedby="hr-ajuda-${esc(item.id)}">
-      <small id="hr-ajuda-${esc(item.id)}" class="hr-ajuda">Ex.: 1h30, 45min, 2</small>
-    </form>`;
-    const form = celula.querySelector('form');
-    const input = form.querySelector('input');
-    input.focus();
-    input.select();
-    let concluido = false;
-    const cancelar = () => { if (!concluido) { concluido = true; reabrirMantendoRolagem(mod); } };
-    const salvarValor = async () => {
-      if (concluido) return;
-      const minutos = H.interpretar(input.value);
-      if (minutos == null || minutos > 60000) {
-        input.setAttribute('aria-invalid', 'true');
-        form.querySelector('.hr-ajuda').textContent = 'Formato inválido. Use 1h30, 45min ou 2.';
-        input.focus();
-        return;
-      }
-      concluido = true;
-      input.disabled = true;
-      try {
-        const { modulo } = await api('POST', `modulos?id=${encodeURIComponent(mod.id)}&acao=minutos`, { itemId: item.id, pacote: pacote.id, minutos });
-        substituir(modulo);
-        reabrirMantendoRolagem(modulo);
-        aplicarFiltros();
-        toast(`Duração salva. Total do módulo no ${pacote.nome}: ${H.formatar(H.totalModulo(modulo, pacote.id), { vazio: '0h' })}.`);
-      } catch (err) {
-        toast(err.message, 'erro');
-        reabrirMantendoRolagem(mod);
-      }
-    };
-    form.addEventListener('submit', (e) => { e.preventDefault(); salvarValor(); });
-    input.addEventListener('keydown', (e) => { if (e.key === 'Escape') { e.preventDefault(); e.stopPropagation(); cancelar(); } });
-    input.addEventListener('blur', () => { setTimeout(() => { if (!concluido && document.activeElement !== input) salvarValor(); }, 120); });
   }
 
   function reabrirMantendoRolagem(mod) {
@@ -458,8 +406,12 @@
     if (!mod) return;
     const pacote = e.target.closest('[data-pacote-ref]');
     if (pacote) { window.ffHoras.definirRef(pacote.dataset.pacoteRef); return; }
-    const duracao = e.target.closest('[data-editar-minutos]');
-    if (duracao && editavel()) editarMinutosInline(duracao, mod);
+    const irPacotes = e.target.closest('[data-ir-pacotes]');
+    if (irPacotes) {
+      fecharModal(undefined, true);
+      window.ffIrParaAba?.('pacotes');
+      setTimeout(() => document.querySelector(`[data-pacote-card="${CSS.escape(irPacotes.dataset.irPacotes)}"]`)?.scrollIntoView({ block: 'start' }), 150);
+    }
   });
 
   const reRenderizarHoras = () => {

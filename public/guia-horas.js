@@ -1,5 +1,6 @@
 /* Faktory Flow — Horas de implantação (compartilhado pelo modal dos módulos e pela aba de pacotes).
-   Estrutura: Pacote → Módulos → itens da checklist (minutos por pacote) → total do módulo → total do pacote.
+   Estrutura: Pacote → Módulos (horas definidas por módulo em cada pacote) + etapas + recursos → total do pacote.
+   As tarefas (funcionalidades) e os itens da checklist não têm horas próprias.
    Horas editáveis ficam na base Premium · até 5 usuários; demais fluxos/faixas são proporcionais à tabela de preços.
    Eventos: "ff:pacotes" (pacotes carregados/alterados) e "ff:pacote-ref" (pacote de referência mudou). */
 (() => {
@@ -51,8 +52,11 @@
     return pacotesDoModulo(moduloId)[0] || null;
   }
 
-  const minutosItem = (item, pacoteId) => Number(item?.minutos?.[pacoteId] ?? 0);
-  const totalModulo = (modulo, pacoteId) => (modulo?.checklist || []).reduce((s, it) => s + minutosItem(it, pacoteId), 0);
+  /** Horas de implantação do módulo inteiro dentro do pacote (definidas na aba Pacotes e Horas). */
+  const totalModulo = (modulo, pacoteId) => {
+    const pacote = estado.pacotes.find((p) => p.id === pacoteId);
+    return Number(pacote?.horasModulos?.[modulo?.id ?? modulo] ?? 0);
+  };
 
   function totalPacote(pacote, modulos) {
     const etapas = pacote.etapas.filter((e) => e.grupo === 'etapa');
@@ -103,7 +107,7 @@
 
   window.ffHoras = {
     estado, formatar, interpretar, carregar, substituirPacote,
-    pacoteRef, definirRef, pacotesDoModulo, pacoteParaModulo, minutosItem, totalModulo, totalPacote, fator,
+    pacoteRef, definirRef, pacotesDoModulo, pacoteParaModulo, totalModulo, totalPacote, fator,
   };
 
   window.ffSessao?.then((usuario) => { if (usuario) carregar(); });

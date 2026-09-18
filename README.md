@@ -30,13 +30,14 @@ A aba **Pacotes e Horas** mostra, para cada um dos 8 pacotes (Starter → Enterp
 - módulos contemplados;
 - distribuição das horas entre etapas, módulos e recursos;
 - tempo total previsto comparado à tabela de preços;
-- funcionalidades incluídas;
+- tarefas (funcionalidades) incluídas, agrupadas por módulo;
 - horas por fluxo (Premium/Rápida) e faixa de usuários.
 
-Estrutura: **Pacote → Módulos → itens da Checklist de Validação (horas por pacote) → total do módulo → total do pacote.**
+Estrutura: **Pacote → Módulos (horas do módulo inteiro naquele pacote) + etapas + recursos → total do pacote.** As tarefas não têm horas: só descrição, prioridade (Alta/Média/Baixa) e nível (Standard/Pro).
 
 - As horas iniciais vêm da planilha `docs/Comparativo_Flow_com_Distribuicao_de_Horas_1 (2).xlsx` (aba *Distribuicao por Pacote*), na base Premium · até 5 usuários. Os demais fluxos e faixas são proporcionais à tabela de preços.
-- Consultores e administradores editam a duração de cada item no modal do módulo, e das etapas e recursos no card do pacote. Os totais recalculam na hora e cada alteração fica no histórico.
+- Consultores e administradores editam, no card do pacote: as horas de cada módulo (clique no valor), as etapas e recursos, e — em **Editar módulos e tarefas** — adicionam/removem módulos e grupos, e criam, editam, reordenam ou excluem tarefas. Os totais recalculam na hora e cada alteração fica no histórico do pacote.
+- A migration `009_horas_por_modulo.sql` converteu as horas antigas (soma dos itens da checklist) em horas por módulo, sem alterar os totais.
 - Para regenerar as horas iniciais a partir da planilha:
   1. atualize `db/dados/planilha-horas.json` e `db/dados/mapa-checklist.json`;
   2. rode `node scripts/gerar-horas.mjs` (cria uma migration nova se o banco já estiver em produção).
