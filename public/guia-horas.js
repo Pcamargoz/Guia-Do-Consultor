@@ -1,7 +1,7 @@
 /* Faktory Flow — Horas de implantação (compartilhado pelo modal dos módulos e pela aba de pacotes).
-   Estrutura: Pacote → Módulos (horas definidas por módulo em cada pacote) + etapas + recursos → total do pacote.
-   As tarefas (funcionalidades) e os itens da checklist não têm horas próprias.
-   Horas editáveis ficam na base Premium · até 5 usuários; demais fluxos/faixas são proporcionais à tabela de preços.
+   Estrutura: Pacote → Módulos (horas preenchidas por módulo em cada pacote) + etapas + recursos → total do pacote.
+   As tarefas (funcionalidades) e os itens da checklist não têm horas próprias: só descrição, prioridade e nível.
+   O total do card é a soma direta do que foi preenchido; a tabela de preços só serve de comparativo.
    Eventos: "ff:pacotes" (pacotes carregados/alterados) e "ff:pacote-ref" (pacote de referência mudou). */
 (() => {
   const CHAVE_REF = 'ff-pacote-ref';
@@ -52,24 +52,17 @@
     return pacotesDoModulo(moduloId)[0] || null;
   }
 
-  /** Horas de implantação do módulo inteiro dentro do pacote para um cenário (fluxo + faixa de usuários).
-      Cada cenário guarda seu próprio valor (editável no card do pacote). Sem valor explícito no cenário,
-      o valor escala proporcionalmente à base pela tabela de preços; sem tabela, mantém a base. */
+  /** Horas do módulo no pacote para o cenário (fluxo + faixa). Só o valor preenchido:
+      o do próprio cenário, ou o da base se aquele cenário ainda não tiver horas próprias.
+      Não multiplica pela tabela de preços. */
   function valorModulo(pacote, moduloId, fluxo = 'Premium', faixa = 0) {
     const v = pacote?.horasModulos?.[moduloId];
     const inteiro = (x) => (Number.isFinite(Number(x)) && x != null && x !== '' ? Number(x) : null);
-    if (typeof v === 'number') { // formato antigo: número = base
-      if (fluxo === 'Premium' && faixa === 0) return v;
-      const f = fator(pacote, fluxo, faixa);
-      return f == null ? v : Math.round((v * f) / 5) * 5;
-    }
+    if (typeof v === 'number') return v;
     if (!v || typeof v !== 'object') return 0;
     const direto = inteiro(v[fluxo]?.[faixa]);
     if (direto != null) return direto;
-    const base = inteiro(v.Premium?.[0]);
-    if (base == null) return 0;
-    const f = fator(pacote, fluxo, faixa);
-    return f == null ? base : Math.round((base * f) / 5) * 5;
+    return inteiro(v.Premium?.[0]) ?? 0;
   }
 
   const totalModulo = (modulo, pacoteId, fluxo, faixa) => {
@@ -77,21 +70,19 @@
     return valorModulo(pacote, modulo?.id ?? modulo, fluxo, faixa) ?? 0;
   };
 
-  /** O módulo tem valor SALVO especificamente para este cenário (não herdado da base/proporcional)? */
+  /** O módulo tem valor SALVO especificamente para este cenário (não o da base reutilizado)? */
   function temValorProprio(pacote, moduloId, fluxo = 'Premium', faixa = 0) {
     const v = pacote?.horasModulos?.[moduloId];
     if (typeof v === 'number') return fluxo === 'Premium' && faixa === 0;
     return Number.isFinite(Number(v?.[fluxo]?.[faixa])) && v?.[fluxo]?.[faixa] != null && v?.[fluxo]?.[faixa] !== '';
   }
 
-  /** Total do pacote em um cenário (fluxo + faixa). Horas de módulo já são resolvidas por cenário
-      (valor próprio salvo ou proporcional à base pela tabela); etapas e recursos escalam pelo fator. */
+  /** Total do pacote: soma direta das horas preenchidas (módulos do cenário + etapas + recursos).
+      A tabela de preços não entra na conta; só no comparativo. */
   function totalPacote(pacote, modulos, fluxo = 'Premium', faixa = 0) {
     const etapas = pacote.etapas.filter((e) => e.grupo === 'etapa');
     const recursos = pacote.etapas.filter((e) => e.grupo === 'recurso');
     const somar = (lista) => lista.reduce((s, e) => s + e.minutos, 0);
-    const f = fator(pacote, fluxo, faixa);
-    const esc = (min) => (f == null ? min : Math.round((min * f) / 5) * 5);
     const porModulo = pacote.modulos
       .map((id) => modulos.find((m) => m.id === id))
       .filter(Boolean)
@@ -101,21 +92,19 @@
         proprio: temValorProprio(pacote, m.id, fluxo, faixa),
         itens: (m.checklist || []).length,
       }));
-    const brutasEtapas = somar(etapas);
-    const brutasRecursos = somar(recursos);
-    const minutosEtapas = esc(brutasEtapas);
-    const minutosRecursos = esc(brutasRecursos);
+    const minutosEtapas = somar(etapas);
+    const minutosRecursos = somar(recursos);
     const minutosModulos = porModulo.reduce((s, m) => s + m.minutos, 0);
     return {
       etapas, recursos, porModulo, minutosEtapas, minutosRecursos, minutosModulos,
-      minutosEtapasBase: brutasEtapas, minutosRecursosBase: brutasRecursos,
+      minutosEtapasBase: minutosEtapas, minutosRecursosBase: minutosRecursos,
       total: minutosEtapas + minutosRecursos + minutosModulos,
       base: (pacote.precos.Premium?.[0] ?? 0) * 60,
       tabela: (pacote.precos[fluxo]?.[faixa] ?? 0) * 60,
     };
   }
 
-  /** Fator de proporção para outro fluxo/faixa (null se o pacote não existe nesse fluxo). */
+  /** Null se o pacote não tem preço nesse fluxo/faixa (card indisponível). Não escala horas. */
   function fator(pacote, fluxo, faixa) {
     const base = pacote.precos.Premium?.[0];
     const alvo = pacote.precos[fluxo]?.[faixa];

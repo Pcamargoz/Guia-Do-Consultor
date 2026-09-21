@@ -1,7 +1,8 @@
 /* Faktory Flow — Editor de módulos e tarefas de um pacote (aba "Pacotes e Horas").
    Horas ficam no MÓDULO (tempo para implantar o módulo inteiro naquele pacote); as etapas de
    implantação e os recursos gerais, que também entram no total do pacote, são editados aqui.
-   Tarefas (funcionalidades) têm só descrição, prioridade (Alta/Média/Baixa) e nível (Standard/Pro).
+   Tarefas (funcionalidades) têm só descrição, prioridade (Alta/Média/Baixa) e nível (Standard/Pro);
+   a prioridade classifica a tarefa e não pesa no total de horas.
    Também permite adicionar/remover módulos do Guia e grupos de tarefas sem módulo no Guia.
    Salva tudo de uma vez em PUT /api/pacotes?id=… (com controle de revisão). */
 (() => {
@@ -49,9 +50,6 @@
   const salvarCenario = () => { try { localStorage.setItem(CHAVE_CENARIO, JSON.stringify(cenario)); } catch { /* sem storage */ } };
   const faixaLabel = () => H.estado.faixas[cenario.faixa] || 'até 5 usuários';
   const cenarioTxt = () => `${cenario.fluxo} · ${faixaLabel()}`;
-  const ehBase = () => cenario.fluxo === 'Premium' && cenario.faixa === 0;
-  const fatorAtual = () => (pacote ? H.fator(pacote, cenario.fluxo, cenario.faixa) : null);
-  const escCenario = (min) => { const f = fatorAtual(); return f == null ? min : Math.round((min * f) / 5) * 5; };
   const tabelaMin = () => (pacote?.precos[cenario.fluxo]?.[cenario.faixa] ?? 0) * 60;
 
   function normalizarMapa(horasModulos) {
@@ -77,18 +75,18 @@
     blocoEl.toggleAttribute('data-cenario-proprio', Boolean(tem));
     blocoEl.classList.toggle('pe-bloco--proprio', Boolean(tem));
   }
-  /** Valor do módulo no cenário atual: editado/salvo p/ o cenário > proporcional à base. */
+  /** Valor do módulo no cenário atual: o preenchido neste cenário, senão o da base (sem multiplicar). */
   function valorNoMapa(id) {
     if (temNoMapa(id)) return Number(mapaHoras[id][cenario.fluxo][cenario.faixa]);
     const base = Number(mapaHoras[id]?.Premium?.[0]);
-    if (Number.isFinite(base)) return escCenario(base);
+    if (Number.isFinite(base)) return base;
     return H.valorModulo(pacote, id, cenario.fluxo, cenario.faixa);
   }
   /** Guarda nos controles os valores digitados pelo usuário antes de trocar de cenário. */
   function capturarCampos() {
     for (const b of blocosComHoras()) {
       const id = b.dataset.moduloId;
-      if (!editados.has(chaveCenario(id))) continue; // não travar valor proporcional não editado
+      if (!editados.has(chaveCenario(id))) continue;
       const v = minutosDoCampo(campoHoras(b));
       if (v != null) mapaHoras[id][cenario.fluxo][cenario.faixa] = v;
     }
@@ -106,7 +104,7 @@
     const txt = dialog.querySelector('[data-cenario-txt]');
     if (txt) txt.textContent = `editando horas para ${cenarioTxt()}`;
     const dica = dialog.querySelector('[data-fixas-dica]');
-    if (dica) dica.textContent = ehBase() ? '' : 'Os valores das etapas são da base; no cenário atual entram multiplicados pela tabela de preços.';
+    if (dica) dica.textContent = 'Entram no total do pacote junto com as horas dos módulos, com os valores preenchidos (sem peso nem proporção).';
   }
   function trocarCenario(novo) {
     capturarCampos();
@@ -199,7 +197,7 @@
         </li>`).join('')}</ul></div>`;
     }).join('');
     return `<section class="pe-fixas"><h3>Etapas e recursos do pacote</h3>
-      <p class="pe-fixas-dica" data-fixas-dica>${ehBase() ? 'Entram no total do pacote junto com as horas dos módulos.' : 'Os valores das etapas são da base; no cenário atual entram multiplicados pela tabela de preços.'}</p>
+      <p class="pe-fixas-dica" data-fixas-dica>Entram no total do pacote junto com as horas dos módulos, com os valores preenchidos (sem peso nem proporção).</p>
       ${grupos || '<p class="ed-nada">Este pacote não tem etapas nem recursos cadastrados.</p>'}</section>`;
   }
 
@@ -242,7 +240,7 @@
     const tarefas = dialog.querySelectorAll('.pe-tarefa').length;
     const modulosNoPacote = blocos.filter((b) => b.dataset.moduloId).length;
     const fix = somaFixas();
-    const fixas = escCenario(fix.minutos);
+    const fixas = fix.minutos;
     const total = minutos + fixas;
     const tabela = tabelaMin();
     const diferenca = total - tabela;
@@ -279,9 +277,9 @@
             <span class="pc-seg" role="radiogroup">${fluxos}</span>
             <label class="pe-cenario-faixa"><span class="pc-controle-rotulo">Faixa de usuários</span>
               <select class="ed-input" data-pe-faixa aria-label="Faixa de usuários do cenário das horas">${faixas}</select></label>
-            <p class="pe-cenario-dica">As horas dos módulos mudam <strong>só para este cenário</strong>; módulos, tarefas, etapas e recursos são compartilhados. ${ehBase() ? '' : 'Valores sem edição própria começam proporcionais à base pela tabela de preços.'}</p>
+            <p class="pe-cenario-dica">As horas dos módulos mudam <strong>só para este cenário</strong>; módulos, tarefas, etapas e recursos são compartilhados. Sem valor próprio neste cenário, o card reutiliza as horas da base, sem multiplicar pela tabela.</p>
           </div>
-          <p class="pe-explica">As <strong>horas</strong> são do módulo inteiro (quanto tempo leva para implantá-lo neste pacote). As <strong>tarefas</strong> não têm horas: só descrição, prioridade e nível.</p>
+          <p class="pe-explica">As <strong>horas</strong> são do módulo inteiro. As <strong>tarefas</strong> não têm horas: só descrição, prioridade (Alta, Média ou Baixa) e nível — a prioridade classifica a tarefa e <strong>não entra no total</strong>.</p>
           <p id="pe-ajuda-horas" class="ed-sr">Formatos aceitos: 1h30, 45min, 2 (horas).</p>
           <div class="pe-blocos">${blocosDoPacote(pacote).map(blocoHtml).join('')}</div>
           <div class="pe-adicionar">
@@ -348,7 +346,7 @@
       const v = H.interpretar(campo.value);
       if (v != null && blocoEl) {
         const id = blocoEl.dataset.moduloId;
-        editados.add(id);
+        editados.add(chaveCenario(id));
         mapaHoras[id] ||= {};
         mapaHoras[id][cenario.fluxo] ||= {};
         mapaHoras[id][cenario.fluxo][cenario.faixa] = v;
@@ -404,9 +402,9 @@
     if (e.target.closest('[data-restaurar-planilha]')) {
       for (const b of blocosComHoras()) {
         const plano = horasPlanilha(b.dataset.moduloId, pacote.id);
-        const valor = ehBase() ? plano : escCenario(plano);
+        const valor = plano;
         gravarNoMapa(b.dataset.moduloId, valor);
-        editados.add(b.dataset.moduloId);
+        editados.add(chaveCenario(b.dataset.moduloId));
         const campo = campoHoras(b);
         if (campo) campo.value = H.formatar(valor, { vazio: '0h' });
         marcarProprio(b, true);
@@ -429,7 +427,7 @@
       erro.hidden = false;
       return;
     }
-    const alvo = tabelaMin() - escCenario(fix.minutos);
+    const alvo = tabelaMin() - fix.minutos;
     if (alvo < 0) {
       erro.textContent = 'As etapas e os recursos sozinhos já passam do total da tabela; ajuste-os antes no card do pacote.';
       erro.hidden = false;
@@ -449,7 +447,7 @@
     blocos.forEach((b, i) => {
       campoHoras(b).value = H.formatar(valores[i], { vazio: '0h' });
       gravarNoMapa(b.dataset.moduloId, valores[i]);
-      editados.add(b.dataset.moduloId);
+      editados.add(chaveCenario(b.dataset.moduloId));
       marcarProprio(b, true);
     });
     erro.hidden = true;

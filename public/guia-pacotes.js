@@ -1,7 +1,7 @@
 /* Faktory Flow — Aba "Pacotes e Distribuição de Horas".
-   Cards por pacote com módulos, distribuição das horas, total previsto (horas de cada módulo + etapas
-   + recursos) comparado à tabela de preços, tarefas incluídas e horas por faixa de usuários.
-   Horas são definidas por MÓDULO em cada pacote; as tarefas têm só descrição, prioridade e nível.
+   Cards por pacote com módulos, distribuição das horas, total previsto (soma das horas preenchidas
+   nos módulos + etapas + recursos) comparado à tabela de preços, tarefas incluídas e horas por faixa.
+   Tarefas têm só descrição, prioridade (Alta/Média/Baixa) e nível — a prioridade não entra no total.
    Consultores/administradores editam as horas de um módulo clicando nelas e os módulos/tarefas pelo editor. */
 (() => {
   const painel = document.getElementById('painel-pacotes');
@@ -34,7 +34,6 @@
   const abertos = new Set(); // <details> abertos, preservados entre renderizações
 
   const listaModulos = () => (typeof modulos !== 'undefined' ? modulos : []);
-  const ehBase = () => cenario.fluxo === 'Premium' && cenario.faixa === 0;
   const pct = (parte, total) => (total ? Math.round((parte / total) * 100) : 0);
 
   /* ---------- Estrutura fixa da aba ---------- */
@@ -64,8 +63,8 @@
     const select = painel.querySelector('[data-controle="faixa"]');
     select.innerHTML = H.estado.faixas.map((f, i) => `<option value="${i}"${cenario.faixa === i ? ' selected' : ''}>${esc(f)}</option>`).join('');
     painel.querySelector('[data-nota]').innerHTML = `${svg(I.info)}<span>${podeEditar
-      ? `As horas de cada módulo são editadas <strong>por pacote e por cenário</strong>: escolha o fluxo e a faixa de usuários acima e clique nas horas. Cenários sem valor próprio começam proporcionais à tabela de preços; ao editar, o valor fica salvo só para este cenário.`
-      : `Cenário ${esc(cenario.fluxo)} · ${esc(H.estado.faixas[cenario.faixa] || 'até 5 usuários')}.`}</span>`;
+      ? `As horas de cada módulo são editadas <strong>por pacote e por cenário</strong>: escolha o fluxo e a faixa de usuários acima e clique nas horas. O tempo total do card é a <strong>soma do que você preencheu</strong> (módulos + etapas + recursos), sem peso nem proporção da tabela de preços.`
+      : `Cenário ${esc(cenario.fluxo)} · ${esc(H.estado.faixas[cenario.faixa] || 'até 5 usuários')}. O total é a soma das horas preenchidas.`}</span>`;
   }
 
   /* ---------- Blocos visuais ---------- */
@@ -118,7 +117,7 @@
         <span class="pc-modulo-nome">${esc(m.nome)}</span>
         <span class="pc-modulo-trilho" aria-hidden="true"><span class="pc-modulo-barra" style="width:${Math.max(2, (m.minutos / maiorModulo) * 100)}%"></span></span>
         ${podeEditar
-          ? `<button type="button" class="pc-modulo-horas pc-modulo-horas--editar${m.proprio ? ' pc-modulo-horas--proprio' : ''}" data-editar-modulo="${esc(m.id)}" data-pacote="${esc(pacote.id)}" title="${m.proprio ? `Valor salvo para ${esc(cenarioTxt)}` : `Proporcional à base; clique para definir um valor só para ${esc(cenarioTxt)}`}" aria-label="Horas de ${esc(m.nome)} no pacote ${esc(pacote.nome)} (${esc(cenarioTxt)}): ${H.formatar(m.minutos, { vazio: '0h' })}. Editar">${H.formatar(m.minutos, { vazio: '0h' })}${m.proprio ? '' : '<span aria-hidden="true">*</span>'}</button>`
+          ? `<button type="button" class="pc-modulo-horas pc-modulo-horas--editar${m.proprio ? ' pc-modulo-horas--proprio' : ''}" data-editar-modulo="${esc(m.id)}" data-pacote="${esc(pacote.id)}" title="${m.proprio ? `Valor salvo para ${esc(cenarioTxt)}` : `Mesmas horas da base; clique para definir um valor só para ${esc(cenarioTxt)}`}" aria-label="Horas de ${esc(m.nome)} no pacote ${esc(pacote.nome)} (${esc(cenarioTxt)}): ${H.formatar(m.minutos, { vazio: '0h' })}. Editar">${H.formatar(m.minutos, { vazio: '0h' })}${m.proprio ? '' : '<span aria-hidden="true">*</span>'}</button>`
           : `<span class="pc-modulo-horas">${H.formatar(m.minutos, { vazio: '0h' })}</span>`}
         <span class="pc-modulo-pct">${pct(m.minutos, t.total)}%</span>
       </div></li>`).join('')}</ul>` : '<p class="ed-nada">Nenhum módulo do guia neste pacote.</p>';
@@ -172,8 +171,8 @@
           ${botaoEditor}
         </section>
 
-        ${detalhes(pacote.id, 'etapas', `Etapas de implantação · ${H.formatar(t.minutosEtapasBase, { vazio: '0h' })}${ehBase() ? '' : ' (base)'}`, etapasHtml, t.etapas.length)}
-        ${detalhes(pacote.id, 'recursos', `Recursos gerais · ${H.formatar(t.minutosRecursosBase, { vazio: '0h' })}${ehBase() ? '' : ' (base)'}`, recursosHtml, t.recursos.length)}
+        ${detalhes(pacote.id, 'etapas', `Etapas de implantação · ${H.formatar(t.minutosEtapas, { vazio: '0h' })}`, etapasHtml, t.etapas.length)}
+        ${detalhes(pacote.id, 'recursos', `Recursos gerais · ${H.formatar(t.minutosRecursos, { vazio: '0h' })}`, recursosHtml, t.recursos.length)}
         ${detalhes(pacote.id, 'funcs', 'Funcionalidades incluídas', (funcsHtml || '<p class="ed-nada">Nenhuma tarefa cadastrada neste pacote.</p>') + botaoEditor, funcs.length)}
         ${detalhes(pacote.id, 'precos', 'Horas por faixa de usuários', precosHtml)}
         ${detalhes(pacote.id, 'historico', 'Alterações no pacote', historicoHtml, pacote.historico?.length || 0)}
