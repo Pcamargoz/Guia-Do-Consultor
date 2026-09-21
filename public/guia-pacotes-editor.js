@@ -21,6 +21,13 @@
   };
   const modulosGuia = () => (typeof modulos !== 'undefined' ? modulos : []);
   const nomeModulo = (id) => modulosGuia().find((m) => m.id === id)?.nome || id;
+  /** Horas originais da planilha: soma dos itens da checklist do módulo naquele pacote. */
+  const horasPlanilha = (moduloId, pacoteId) => (modulosGuia().find((m) => m.id === moduloId)?.checklist || [])
+    .reduce((soma, it) => soma + Number(it?.minutos?.[pacoteId] ?? 0), 0);
+  const temPlanilha = (pacoteId) => modulosGuia().some((m) => (m.checklist || []).some((it) => it?.minutos?.[pacoteId] != null));
+  const campoHoras = (bloco) => bloco.querySelector('.pe-minutos');
+  const blocosComHoras = () => [...dialog.querySelectorAll('.pe-bloco')].filter(campoHoras);
+  const minutosDoCampo = (campo) => H.interpretar(campo.value);
 
   let pacote = null, sujo = false, salvando = false, contador = 0;
 
@@ -102,18 +109,35 @@
     dialog.querySelector('[data-add-modulo]').disabled = !livres.length;
   }
 
+  function somaModulos() {
+    let minutos = 0, invalidas = 0;
+    for (const b of dialog.querySelectorAll('.pe-bloco')) {
+      const campo = campoHoras(b);
+      if (!campo) continue;
+      const v = minutosDoCampo(campo);
+      if (v == null) invalidas += 1; else minutos += v;
+    }
+    return { minutos, invalidas };
+  }
+
+  /** Mesma conta do card: módulos + etapas + recursos, comparada à tabela de preços (base Premium). */
   function atualizarResumo() {
     const blocos = [...dialog.querySelectorAll('.pe-bloco')];
-    let minutos = 0, invalidas = 0;
-    for (const b of blocos) {
-      const campo = b.querySelector('.pe-minutos');
-      if (!campo) continue;
-      const v = H.interpretar(campo.value);
-      if (v == null) invalidas++; else minutos += v;
-    }
+    const { minutos, invalidas } = somaModulos();
     const tarefas = dialog.querySelectorAll('.pe-tarefa').length;
     const modulosNoPacote = blocos.filter((b) => b.dataset.moduloId).length;
-    dialog.querySelector('[data-resumo]').innerHTML = `<strong>${modulosNoPacote}</strong> módulo(s) · <strong>${tarefas}</strong> tarefa(s) · módulos somam <strong>${H.formatar(minutos, { vazio: '0h' })}</strong>${invalidas ? ` <span class="pe-alerta">(${invalidas} hora(s) inválida(s))</span>` : ''}`;
+    const t = H.totalPacote(pacote, modulosGuia());
+    const fixas = t.minutosEtapas + t.minutosRecursos;
+    const total = minutos + fixas;
+    const tabela = (pacote.precos.Premium?.[0] ?? 0) * 60;
+    const diferenca = total - tabela;
+    const comparativo = !tabela ? ''
+      : !diferenca ? '<span class="pe-igual">igual à tabela de preços</span>'
+        : `<span class="pe-alerta">${H.formatar(Math.abs(diferenca))} ${diferenca > 0 ? 'acima' : 'abaixo'} da tabela (${H.formatar(tabela)})</span>`;
+    dialog.querySelector('[data-resumo]').innerHTML = `<span><strong>${modulosNoPacote}</strong> módulo(s) · <strong>${tarefas}</strong> tarefa(s)</span>
+      <span>módulos <strong>${H.formatar(minutos, { vazio: '0h' })}</strong> + etapas e recursos <strong>${H.formatar(fixas, { vazio: '0h' })}</strong> = total <strong>${H.formatar(total, { vazio: '0h' })}</strong> · ${comparativo}${invalidas ? ` <span class="pe-alerta">(${invalidas} hora(s) inválida(s))</span>` : ''}</span>`;
+    const ajustar = dialog.querySelector('[data-ajustar-tabela]');
+    if (ajustar) ajustar.disabled = !tabela || !diferenca || invalidas > 0 || !modulosNoPacote;
     blocos.forEach((b) => b.querySelectorAll('.pe-tarefa').forEach((l, i) => { l.querySelector('.ed-linha-num').textContent = i + 1; }));
     opcoesModulos();
   }
@@ -137,6 +161,14 @@
               <span class="pe-add-linha"><select class="ed-input" data-novo-modulo></select>
               <button type="button" class="ed-btn" data-add-modulo>${svg(I.mais)}Adicionar</button></span></label>
             <button type="button" class="ed-btn" data-add-grupo>${svg(I.mais)}Novo grupo sem módulo no Guia</button>
+          </div>
+          <div class="pe-ferramentas">
+            <span class="pe-ferramentas-titulo">Horas dos módulos</span>
+            <div class="pe-ferramentas-acoes">
+              <button type="button" class="ed-btn" data-ajustar-tabela title="Distribui proporcionalmente entre os módulos até o total do pacote bater com a tabela de preços">${svg(I.relogio)}Ajustar para bater com a tabela</button>
+              ${temPlanilha(pacote.id) ? `<button type="button" class="ed-btn" data-restaurar-planilha title="Volta às horas originais da planilha de distribuição de horas">${svg(I.relogio)}Restaurar horas da planilha</button>` : ''}
+            </div>
+            <p class="pe-ferramentas-dica">Os valores entram nos campos acima; confira e clique em <strong>Salvar pacote</strong>.</p>
           </div>
         </div>
         <p class="gt-erro" role="alert" hidden></p>
@@ -216,8 +248,47 @@
       adicionarBloco({ moduloId: select.value, nome: nomeModulo(select.value), minutos: 0, tarefas: [] });
       return;
     }
-    if (e.target.closest('[data-add-grupo]')) adicionarBloco({ moduloId: null, nome: '', minutos: 0, tarefas: [] });
+    if (e.target.closest('[data-add-grupo]')) { adicionarBloco({ moduloId: null, nome: '', minutos: 0, tarefas: [] }); return; }
+    if (e.target.closest('[data-restaurar-planilha]')) {
+      for (const b of blocosComHoras()) {
+        const campo = campoHoras(b);
+        if (campo) campo.value = H.formatar(horasPlanilha(b.dataset.moduloId, pacote.id), { vazio: '0h' });
+      }
+      sujo = true;
+      atualizarResumo();
+      return;
+    }
+    if (e.target.closest('[data-ajustar-tabela]')) ajustarParaTabela();
   });
+
+  /** Distribui a diferença entre os módulos até total (módulos + etapas + recursos) = tabela de preços. */
+  function ajustarParaTabela() {
+    const blocos = blocosComHoras();
+    if (!blocos.length) return;
+    const erro = dialog.querySelector('.gt-erro');
+    const t = H.totalPacote(pacote, modulosGuia());
+    const alvo = (pacote.precos.Premium?.[0] ?? 0) * 60 - (t.minutosEtapas + t.minutosRecursos);
+    if (alvo < 0) {
+      erro.textContent = 'As etapas e os recursos sozinhos já passam do total da tabela; ajuste-os antes no card do pacote.';
+      erro.hidden = false;
+      return;
+    }
+    const atuais = blocos.map((b) => minutosDoCampo(campoHoras(b)) ?? 0);
+    const soma = atuais.reduce((a, b) => a + b, 0);
+    // Com horas: mantém a proporção entre os módulos. Sem horas ainda: divide por igual.
+    const brutos = atuais.map((v) => (soma ? (v * alvo) / soma : alvo / blocos.length));
+    // Arredonda de 5 em 5 minutos e joga a sobra no maior módulo, para o total fechar exatamente.
+    const valores = brutos.map((v) => Math.max(0, Math.round(v / 5) * 5));
+    const resto = alvo - valores.reduce((a, b) => a + b, 0);
+    if (resto) {
+      const i = valores.indexOf(Math.max(...valores));
+      valores[i] = Math.max(0, valores[i] + resto);
+    }
+    blocos.forEach((b, i) => { campoHoras(b).value = H.formatar(valores[i], { vazio: '0h' }); });
+    erro.hidden = true;
+    sujo = true;
+    atualizarResumo();
+  }
 
   dialog.addEventListener('submit', async (e) => {
     e.preventDefault();
