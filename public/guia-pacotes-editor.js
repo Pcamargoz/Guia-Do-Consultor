@@ -1,5 +1,6 @@
 /* Faktory Flow — Editor de módulos e tarefas de um pacote (aba "Pacotes e Horas").
-   Horas ficam no MÓDULO (tempo para implantar o módulo inteiro naquele pacote).
+   Horas ficam no MÓDULO (tempo para implantar o módulo inteiro naquele pacote); as etapas de
+   implantação e os recursos gerais, que também entram no total do pacote, são editados aqui.
    Tarefas (funcionalidades) têm só descrição, prioridade (Alta/Média/Baixa) e nível (Standard/Pro).
    Também permite adicionar/remover módulos do Guia e grupos de tarefas sem módulo no Guia.
    Salva tudo de uma vez em PUT /api/pacotes?id=… (com controle de revisão). */
@@ -26,6 +27,7 @@
     .reduce((soma, it) => soma + Number(it?.minutos?.[pacoteId] ?? 0), 0);
   const temPlanilha = (pacoteId) => modulosGuia().some((m) => (m.checklist || []).some((it) => it?.minutos?.[pacoteId] != null));
   const campoHoras = (bloco) => bloco.querySelector('.pe-minutos');
+  const camposEtapas = () => [...dialog.querySelectorAll('.pe-etapa-min')];
   const blocosComHoras = () => [...dialog.querySelectorAll('.pe-bloco')].filter(campoHoras);
   const minutosDoCampo = (campo) => H.interpretar(campo.value);
 
@@ -98,6 +100,25 @@
       </section>`;
   }
 
+  /** Etapas de implantação e recursos gerais do pacote, com a duração editável. */
+  function etapasHtml() {
+    const grupos = [
+      { grupo: 'etapa', titulo: 'Etapas de implantação' },
+      { grupo: 'recurso', titulo: 'Recursos gerais' },
+    ].map(({ grupo, titulo }) => {
+      const itens = pacote.etapas.filter((e) => e.grupo === grupo);
+      if (!itens.length) return '';
+      return `<div class="pe-fixas-grupo"><h4>${esc(titulo)} <span class="ed-conta">${itens.length}</span></h4>
+        <ul class="pe-fixas-lista">${itens.map((e) => `<li>
+          <span class="pe-fixa-texto">${esc(e.texto)}${e.detalhe ? `<small>${esc(e.detalhe)}</small>` : ''}</span>
+          <input type="text" class="ed-input pe-etapa-min" data-etapa-id="${esc(e.id)}" value="${esc(H.formatar(e.minutos, { vazio: '0min' }))}" autocomplete="off" aria-label="Duração de ${esc(e.texto)}">
+        </li>`).join('')}</ul></div>`;
+    }).join('');
+    return `<section class="pe-fixas"><h3>Etapas e recursos do pacote</h3>
+      <p class="pe-fixas-dica">Entram no total do pacote junto com as horas dos módulos.</p>
+      ${grupos || '<p class="ed-nada">Este pacote não tem etapas nem recursos cadastrados.</p>'}</section>`;
+  }
+
   function opcoesModulos() {
     const presentes = new Set([...dialog.querySelectorAll('.pe-bloco[data-modulo-id]')].map((b) => b.dataset.moduloId).filter(Boolean));
     const livres = modulosGuia().filter((m) => !presentes.has(m.id));
@@ -107,6 +128,16 @@
       : '<option value="">Todos os módulos do Guia já estão no pacote</option>';
     select.disabled = !livres.length;
     dialog.querySelector('[data-add-modulo]').disabled = !livres.length;
+  }
+
+  /** Soma das etapas de implantação e recursos gerais, com os valores digitados agora. */
+  function somaFixas() {
+    let minutos = 0, invalidas = 0;
+    for (const campo of camposEtapas()) {
+      const v = H.interpretar(campo.value);
+      if (v == null) invalidas += 1; else minutos += v;
+    }
+    return { minutos, invalidas };
   }
 
   function somaModulos() {
@@ -126,8 +157,8 @@
     const { minutos, invalidas } = somaModulos();
     const tarefas = dialog.querySelectorAll('.pe-tarefa').length;
     const modulosNoPacote = blocos.filter((b) => b.dataset.moduloId).length;
-    const t = H.totalPacote(pacote, modulosGuia());
-    const fixas = t.minutosEtapas + t.minutosRecursos;
+    const fix = somaFixas();
+    const fixas = fix.minutos;
     const total = minutos + fixas;
     const tabela = (pacote.precos.Premium?.[0] ?? 0) * 60;
     const diferenca = total - tabela;
@@ -135,9 +166,9 @@
       : !diferenca ? '<span class="pe-igual">igual à tabela de preços</span>'
         : `<span class="pe-alerta">${H.formatar(Math.abs(diferenca))} ${diferenca > 0 ? 'acima' : 'abaixo'} da tabela (${H.formatar(tabela)})</span>`;
     dialog.querySelector('[data-resumo]').innerHTML = `<span><strong>${modulosNoPacote}</strong> módulo(s) · <strong>${tarefas}</strong> tarefa(s)</span>
-      <span>módulos <strong>${H.formatar(minutos, { vazio: '0h' })}</strong> + etapas e recursos <strong>${H.formatar(fixas, { vazio: '0h' })}</strong> = total <strong>${H.formatar(total, { vazio: '0h' })}</strong> · ${comparativo}${invalidas ? ` <span class="pe-alerta">(${invalidas} hora(s) inválida(s))</span>` : ''}</span>`;
+      <span>módulos <strong>${H.formatar(minutos, { vazio: '0h' })}</strong> + etapas e recursos <strong>${H.formatar(fixas, { vazio: '0h' })}</strong> = total <strong>${H.formatar(total, { vazio: '0h' })}</strong> · ${comparativo}${invalidas + fix.invalidas ? ` <span class="pe-alerta">(${invalidas + fix.invalidas} hora(s) inválida(s))</span>` : ''}</span>`;
     const ajustar = dialog.querySelector('[data-ajustar-tabela]');
-    if (ajustar) ajustar.disabled = !tabela || !diferenca || invalidas > 0 || !modulosNoPacote;
+    if (ajustar) ajustar.disabled = !tabela || !diferenca || invalidas + fix.invalidas > 0 || !modulosNoPacote;
     blocos.forEach((b) => b.querySelectorAll('.pe-tarefa').forEach((l, i) => { l.querySelector('.ed-linha-num').textContent = i + 1; }));
     opcoesModulos();
   }
@@ -162,6 +193,7 @@
               <button type="button" class="ed-btn" data-add-modulo>${svg(I.mais)}Adicionar</button></span></label>
             <button type="button" class="ed-btn" data-add-grupo>${svg(I.mais)}Novo grupo sem módulo no Guia</button>
           </div>
+          ${etapasHtml()}
           <div class="pe-ferramentas">
             <span class="pe-ferramentas-titulo">Horas dos módulos</span>
             <div class="pe-ferramentas-acoes">
@@ -266,8 +298,13 @@
     const blocos = blocosComHoras();
     if (!blocos.length) return;
     const erro = dialog.querySelector('.gt-erro');
-    const t = H.totalPacote(pacote, modulosGuia());
-    const alvo = (pacote.precos.Premium?.[0] ?? 0) * 60 - (t.minutosEtapas + t.minutosRecursos);
+    const fix = somaFixas();
+    if (fix.invalidas) {
+      erro.textContent = 'Corrija as durações das etapas e recursos antes de ajustar.';
+      erro.hidden = false;
+      return;
+    }
+    const alvo = (pacote.precos.Premium?.[0] ?? 0) * 60 - fix.minutos;
     if (alvo < 0) {
       erro.textContent = 'As etapas e os recursos sozinhos já passam do total da tabela; ajuste-os antes no card do pacote.';
       erro.hidden = false;
@@ -300,6 +337,12 @@
 
     const modulosPayload = [];
     const funcionalidades = [];
+    const etapasPayload = [];
+    for (const campo of camposEtapas()) {
+      const minutos = H.interpretar(campo.value);
+      if (minutos == null || minutos > 60000) return falhar(`Duração inválida em “${campo.getAttribute('aria-label').replace('Duração de ', '')}”. Use 1h30, 45min ou 2.`, campo);
+      etapasPayload.push({ id: campo.dataset.etapaId, minutos });
+    }
     const nomesLivres = new Set();
     for (const bloco of dialog.querySelectorAll('.pe-bloco')) {
       const moduloId = bloco.dataset.moduloId || null;
@@ -332,7 +375,7 @@
     try {
       const res = await fetch(`/api/pacotes?id=${encodeURIComponent(pacote.id)}`, {
         method: 'PUT', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ rev: pacote.rev, modulos: modulosPayload, funcionalidades }),
+        body: JSON.stringify({ rev: pacote.rev, modulos: modulosPayload, funcionalidades, etapas: etapasPayload }),
       });
       const dados = await res.json().catch(() => ({}));
       if (res.status === 401) { window.ffIrParaLogin?.(); return; }

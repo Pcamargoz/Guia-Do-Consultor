@@ -36,6 +36,7 @@ A aba **Pacotes e Horas** mostra, para cada um dos 8 pacotes (Starter → Enterp
 Estrutura: **Pacote → Módulos (horas do módulo inteiro naquele pacote) + etapas + recursos → total do pacote.** As tarefas não têm horas: só descrição, prioridade (Alta/Média/Baixa) e nível (Standard/Pro).
 
 - As horas iniciais vêm da planilha `docs/Comparativo_Flow_com_Distribuicao_de_Horas_1 (2).xlsx` (aba *Distribuicao por Pacote*), na base Premium · até 5 usuários. Os demais fluxos e faixas são proporcionais à tabela de preços.
+- No editor **Editar módulos e tarefas** aparecem, juntos, as horas de cada módulo e as durações das etapas de implantação e dos recursos gerais — tudo o que entra no total — com o comparativo com a tabela de preços atualizado a cada digitação.
 - Consultores e administradores editam, no card do pacote: as horas de cada módulo (clique no valor), as etapas e recursos, e — em **Editar módulos e tarefas** — adicionam/removem módulos e grupos, e criam, editam, reordenam ou excluem tarefas. Os totais recalculam na hora e cada alteração fica no histórico do pacote.
 - A migration `009_horas_por_modulo.sql` converteu as horas antigas (soma dos itens da checklist) em horas por módulo, sem alterar os totais.
 - Para regenerar as horas iniciais a partir da planilha:
