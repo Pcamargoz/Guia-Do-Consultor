@@ -1,12 +1,11 @@
 /* Exportação da aba Pacotes e Horas.
-   PDF: abre uma composição A4 própria para impressão/salvamento em PDF.
+   PDF: gera e baixa uma composição A4 com jsPDF, sem abrir a tela de impressão.
    Excel: gera um Workbook XML compatível com Excel, com abas e estilos da Faktory Flow. */
 (() => {
   const H = window.ffHoras;
   const botoes = [...document.querySelectorAll('[data-exportar-pacotes]')];
   if (!H || !botoes.length) return;
 
-  const html = (valor) => String(valor ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const xml = (valor) => String(valor ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&apos;' }[c]));
   const pct = (parte, total) => (total ? Math.round((parte / total) * 100) : 0);
   const dataArquivo = () => new Date().toISOString().slice(0, 10);
@@ -29,39 +28,91 @@
     };
   }
 
-  function tabelaHtml(cabecalhos, linhas, classe = '') {
-    if (!linhas.length) return '<p class="vazio">Nenhum item cadastrado.</p>';
-    return `<table class="${classe}"><thead><tr>${cabecalhos.map((x) => `<th>${html(x)}</th>`).join('')}</tr></thead><tbody>${linhas.map((linha) => `<tr>${linha.map((celula) => `<td>${celula}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
-  }
+  const carregarLogo = () => new Promise((resolve, reject) => {
+    const imagem = new Image();
+    imagem.onload = () => resolve(imagem);
+    imagem.onerror = () => reject(new Error('Não foi possível carregar a logo da Faktory Flow.'));
+    imagem.src = '/assets/Logo%20Faktory%20Flow.png';
+  });
 
-  function pacotePdf(item) {
-    const { pacote: p, totais: t, disponivel, fator } = item;
-    if (!disponivel) return `<section class="pacote"><header class="pacote-topo"><div><span class="nivel">${html(p.nivel)}</span><h2>${html(p.nome)}</h2></div><strong class="indisponivel">Indisponível neste fluxo</strong></header><p>Este pacote não possui horas cadastradas para o cenário selecionado.</p></section>`;
-    const escalar = (minutos) => Math.round(((fator ?? 1) * minutos) / 5) * 5;
-    const modulos = t.porModulo.map((m) => [html(m.nome), html(H.formatar(m.minutos, { vazio: '0h' })), `${pct(m.minutos, t.total)}%`, m.proprio ? 'Valor próprio' : 'Calculado']);
-    const etapas = t.etapas.map((e) => [html(e.texto), html(H.formatar(escalar(e.minutos), { vazio: '0h' }))]);
-    const recursos = t.recursos.map((e) => [html(e.texto), html(H.formatar(escalar(e.minutos), { vazio: '0h' }))]);
-    const funcionalidades = p.funcionalidades.map((f) => [html(f.modulo || 'Geral'), html(f.funcionalidade), html(f.nivel), html(f.complexidade)]);
-    const diferenca = t.total - t.tabela;
-    return `<section class="pacote">
-      <header class="pacote-topo"><div><span class="nivel">${html(p.nivel)}</span><h2>${html(p.nome)}</h2><p>${t.porModulo.length} módulos · ${p.funcionalidades.length} funcionalidades</p></div><div class="total"><span>Tempo total previsto</span><strong>${html(H.formatar(t.total, { vazio: '0h' }))}</strong><small>${diferenca === 0 ? 'Igual à tabela de preços' : `${html(H.formatar(Math.abs(diferenca)))} ${diferenca > 0 ? 'acima' : 'abaixo'} da tabela`}</small></div></header>
-      <div class="metricas"><div><span>Etapas</span><strong>${html(H.formatar(t.minutosEtapas, { vazio: '0h' }))}</strong></div><div><span>Módulos</span><strong>${html(H.formatar(t.minutosModulos, { vazio: '0h' }))}</strong></div><div><span>Recursos</span><strong>${html(H.formatar(t.minutosRecursos, { vazio: '0h' }))}</strong></div><div><span>Tabela de preços</span><strong>${html(H.formatar(t.tabela, { vazio: '0h' }))}</strong></div></div>
-      <h3>Módulos contemplados</h3>${tabelaHtml(['Módulo', 'Duração', '% do total', 'Origem'], modulos)}
-      <div class="duas-colunas"><div><h3>Etapas de implantação</h3>${tabelaHtml(['Etapa', 'Duração'], etapas)}</div><div><h3>Recursos gerais</h3>${tabelaHtml(['Recurso', 'Duração'], recursos)}</div></div>
-      <h3>Funcionalidades incluídas</h3>${tabelaHtml(['Módulo', 'Funcionalidade', 'Nível', 'Prioridade'], funcionalidades, 'funcionalidades')}
-    </section>`;
-  }
+  async function exportarPdf(dados) {
+    const JsPDF = window.jspdf?.jsPDF;
+    if (!JsPDF) throw new Error('O gerador de PDF não foi carregado. Atualize a página e tente novamente.');
+    const logo = await carregarLogo();
+    const doc = new JsPDF({ orientation: 'landscape', unit: 'mm', format: 'a4', compress: true });
+    const C = { marinho: [13, 56, 84], azul: [52, 120, 167], lima: [213, 221, 38], tinta: [16, 47, 70], texto: [72, 96, 112], linha: [216, 226, 233], fundo: [244, 248, 251], branco: [255, 255, 255] };
+    const margem = 14, largura = 297, limite = 194;
+    let y = 0;
+    const cor = (tipo, valor) => doc[tipo](...valor);
+    const texto = (valor, x, yy, tamanho = 9, negrito = false, opcoes = {}) => {
+      cor('setTextColor', opcoes.cor || C.tinta); doc.setFont('helvetica', negrito ? 'bold' : 'normal'); doc.setFontSize(tamanho);
+      doc.text(String(valor ?? ''), x, yy, opcoes);
+    };
+    const logoNoTopo = (x = margem, yy = 8, w = 42) => doc.addImage(logo, 'PNG', x, yy, w, w * (logo.naturalHeight / logo.naturalWidth), undefined, 'FAST');
+    const cabecalhoPagina = () => {
+      logoNoTopo(margem, 7, 30);
+      texto(dados.cenarioTexto, largura - margem, 15, 8, true, { align: 'right', cor: C.azul });
+      cor('setDrawColor', C.linha); doc.setLineWidth(.35); doc.line(margem, 23, largura - margem, 23); y = 29;
+    };
+    const novaPagina = (continuacao = '') => {
+      doc.addPage(); cabecalhoPagina();
+      if (continuacao) { texto(continuacao, margem, y, 9, true, { cor: C.texto }); y += 7; }
+    };
+    const tituloSecao = (titulo) => { if (y > limite - 12) novaPagina(); texto(titulo, margem, y, 11, true, { cor: C.marinho }); y += 5; };
+    const tabela = (titulo, cabecalhos, linhas, larguras) => {
+      tituloSecao(titulo);
+      const totalLarguras = larguras.reduce((a, b) => a + b, 0);
+      const desenharCabecalho = () => {
+        let x = margem; cor('setFillColor', C.marinho); doc.rect(margem, y, totalLarguras, 8, 'F');
+        cabecalhos.forEach((cabecalho, i) => { texto(cabecalho, x + 2, y + 5.2, 7.5, true, { cor: C.branco }); x += larguras[i]; }); y += 8;
+      };
+      if (!linhas.length) { texto('Nenhum item cadastrado.', margem + 2, y + 5, 8, false, { cor: C.texto }); y += 9; return; }
+      desenharCabecalho();
+      linhas.forEach((linha, indice) => {
+        const quebradas = linha.map((valor, i) => doc.splitTextToSize(String(valor ?? ''), Math.max(8, larguras[i] - 4)));
+        const h = Math.max(7, Math.max(...quebradas.map((x) => x.length)) * 3.6 + 3);
+        if (y + h > limite) { novaPagina(`${titulo} · continuação`); desenharCabecalho(); }
+        if (indice % 2) { cor('setFillColor', C.fundo); doc.rect(margem, y, totalLarguras, h, 'F'); }
+        let x = margem;
+        quebradas.forEach((linhasCelula, i) => { texto(linhasCelula, x + 2, y + 4.5, 7.4, false, { cor: C.tinta }); x += larguras[i]; });
+        cor('setDrawColor', C.linha); doc.setLineWidth(.2); doc.line(margem, y + h, margem + totalLarguras, y + h); y += h;
+      });
+      y += 5;
+    };
 
-  function exportarPdf(dados) {
-    const janela = window.open('', '_blank');
-    if (!janela) throw new Error('O navegador bloqueou a janela do relatório. Permita pop-ups para gerar o PDF.');
-    janela.opener = null;
-    const resumo = dados.pacotes.map(({ pacote: p, totais: t, disponivel }) => [html(p.nome), html(p.nivel), disponivel ? html(H.formatar(t.total, { vazio: '0h' })) : 'Indisponível', disponivel ? html(H.formatar(t.tabela, { vazio: '0h' })) : '—']);
-    const documento = `<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><title>Pacotes e Horas - ${html(dados.cenarioTexto)}</title><style>
-      @page{size:A4 landscape;margin:12mm}*{box-sizing:border-box}body{margin:0;color:#102f46;font:10pt/1.45 Arial,sans-serif;background:#fff}h1,h2,h3,p{margin-top:0}h1{max-width:650px;margin:24px 0 10px;font-size:34pt;line-height:1.04;letter-spacing:-1.5px}h2{margin:4px 0;font-size:22pt;line-height:1.1}h3{margin:18px 0 7px;font-size:11pt;color:#174e72}.capa{min-height:175mm;page-break-after:always;display:flex;flex-direction:column}.marca{display:flex;align-items:center;gap:12px;font-weight:800;font-size:15pt}.simbolo{display:grid;grid-template-columns:repeat(2,14px);gap:3px}.simbolo i{display:block;width:14px;height:14px;background:#3478a7}.simbolo i:first-child{background:#d5dd26}.cenario{display:inline-flex;align-self:flex-start;margin:8px 0 24px;padding:7px 12px;border-radius:99px;background:#f6f8d4;color:#173e59;font-weight:700}.introducao{max-width:720px;color:#526977;font-size:12pt}.resumo{margin-top:auto}.pacote{page-break-after:always}.pacote:last-child{page-break-after:auto}.pacote-topo{display:flex;justify-content:space-between;gap:24px;padding-bottom:12px;border-bottom:1px solid #d8e2e9}.pacote-topo p{margin:4px 0;color:#526977}.nivel{display:inline-block;padding:3px 9px;border-radius:99px;background:#3478a7;color:#fff;font-size:8pt;font-weight:800;text-transform:uppercase;letter-spacing:.6px}.total{text-align:right}.total span,.total small{display:block;color:#526977}.total strong{display:block;font-size:25pt;color:#0d3854}.indisponivel{align-self:center;color:#526977}.metricas{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:14px 0}.metricas div{padding:10px 12px;border:1px solid #d8e2e9;border-radius:8px;background:#f4f8fb}.metricas span{display:block;color:#526977;font-size:8pt;text-transform:uppercase;letter-spacing:.4px}.metricas strong{display:block;margin-top:2px;font-size:14pt}.duas-colunas{display:grid;grid-template-columns:1fr 1fr;gap:18px}table{width:100%;border-collapse:collapse;font-size:8.5pt}thead{display:table-header-group}th{padding:7px 8px;background:#0d3854;color:#fff;text-align:left}td{padding:6px 8px;border-bottom:1px solid #d8e2e9;vertical-align:top}tbody tr:nth-child(even){background:#f4f8fb}.funcionalidades{font-size:8pt}.vazio{padding:10px;border:1px dashed #b7c8d4;color:#526977}.rodape{margin-top:auto;padding-top:12px;color:#637986;font-size:8pt}.resumo table{font-size:10pt}.resumo td,.resumo th{padding:9px 10px}@media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
-    </style></head><body><section class="capa"><div class="marca"><span class="simbolo"><i></i><i></i><i></i><i></i></span>Faktory Flow</div><h1>Pacotes e Distribuição de Horas</h1><p class="introducao">Relatório consolidado com a distribuição das horas, módulos contemplados, etapas, recursos e funcionalidades de cada pacote.</p><span class="cenario">${html(dados.cenarioTexto)}</span><div class="resumo"><h3>Visão geral</h3>${tabelaHtml(['Pacote', 'Nível', 'Tempo previsto', 'Tabela de preços'], resumo)}</div><p class="rodape">Gerado em ${html(dados.geradoEm)} · Guia do Consultor Faktory Flow</p></section>${dados.pacotes.map(pacotePdf).join('')}</body></html>`;
-    janela.document.open(); janela.document.write(documento); janela.document.close();
-    setTimeout(() => { janela.focus(); janela.print(); }, 450);
+    logoNoTopo(margem, 12, 52);
+    texto('Pacotes e', margem, 58, 30, true, { cor: C.marinho });
+    texto('Distribuição de Horas', margem, 70, 30, true, { cor: C.marinho });
+    texto('Relatório consolidado de implantação', margem, 80, 13, false, { cor: C.texto });
+    cor('setFillColor', [246, 248, 212]); doc.roundedRect(margem, 87, 74, 11, 5.5, 5.5, 'F');
+    texto(dados.cenarioTexto, margem + 6, 94, 9, true, { cor: C.marinho }); y = 112;
+    tabela('Visão geral', ['Pacote', 'Nível', 'Tempo previsto', 'Tabela de preços'], dados.pacotes.map(({ pacote: p, totais: t, disponivel }) => [p.nome, p.nivel, disponivel ? H.formatar(t.total, { vazio: '0h' }) : 'Indisponível', disponivel ? H.formatar(t.tabela, { vazio: '0h' }) : '—']), [100, 42, 57, 56]);
+    texto(`Gerado em ${dados.geradoEm}`, margem, 199, 7.5, false, { cor: C.texto });
+
+    for (const { pacote: p, totais: t, disponivel, fator } of dados.pacotes) {
+      novaPagina();
+      cor('setFillColor', C.azul); doc.roundedRect(margem, y, 27, 7, 3.5, 3.5, 'F'); texto(p.nivel, margem + 13.5, y + 4.8, 7, true, { align: 'center', cor: C.branco });
+      y += 14; texto(p.nome, margem, y, 22, true, { cor: C.marinho });
+      if (!disponivel) { y += 10; texto('Este pacote não possui horas cadastradas para o cenário selecionado.', margem, y, 10, false, { cor: C.texto }); continue; }
+      texto('Tempo total previsto', largura - margem, y - 7, 8, false, { align: 'right', cor: C.texto });
+      texto(H.formatar(t.total, { vazio: '0h' }), largura - margem, y + 2, 23, true, { align: 'right', cor: C.marinho });
+      y += 9; texto(`${t.porModulo.length} módulos · ${p.funcionalidades.length} funcionalidades`, margem, y, 8.5, false, { cor: C.texto }); y += 8;
+      const metricas = [['Etapas', t.minutosEtapas], ['Módulos', t.minutosModulos], ['Recursos', t.minutosRecursos], ['Tabela de preços', t.tabela]];
+      metricas.forEach(([rotulo, minutos], i) => { const x = margem + i * 66; cor('setFillColor', C.fundo); doc.roundedRect(x, y, 62, 17, 3, 3, 'F'); texto(rotulo, x + 4, y + 6, 7, false, { cor: C.texto }); texto(H.formatar(minutos, { vazio: '0h' }), x + 4, y + 13, 12, true, { cor: C.marinho }); }); y += 25;
+      tabela('Módulos contemplados', ['Módulo', 'Duração', '% do total', 'Origem'], t.porModulo.map((m) => [m.nome, H.formatar(m.minutos, { vazio: '0h' }), `${pct(m.minutos, t.total)}%`, m.proprio ? 'Valor próprio' : 'Calculado']), [112, 43, 43, 57]);
+      const escalar = (minutos) => Math.round(((fator ?? 1) * minutos) / 5) * 5;
+      tabela('Etapas de implantação', ['Etapa', 'Duração'], t.etapas.map((e) => [e.texto, H.formatar(escalar(e.minutos), { vazio: '0h' })]), [210, 45]);
+      tabela('Recursos gerais', ['Recurso', 'Duração'], t.recursos.map((e) => [e.texto, H.formatar(escalar(e.minutos), { vazio: '0h' })]), [210, 45]);
+      tabela('Funcionalidades incluídas', ['Módulo', 'Funcionalidade', 'Nível', 'Prioridade'], p.funcionalidades.map((f) => [f.modulo || 'Geral', f.funcionalidade, f.nivel, f.complexidade]), [50, 140, 30, 35]);
+    }
+
+    const paginas = doc.getNumberOfPages();
+    for (let i = 1; i <= paginas; i += 1) {
+      doc.setPage(i); cor('setDrawColor', C.linha); doc.setLineWidth(.25); doc.line(margem, 202, largura - margem, 202);
+      texto('Faktory Flow · Guia do Consultor', margem, 207, 7, false, { cor: C.texto });
+      texto(`Página ${i} de ${paginas}`, largura - margem, 207, 7, false, { align: 'right', cor: C.texto });
+    }
+    doc.save(`Pacotes-e-Horas-${slug(dados.cenarioTexto)}-${dataArquivo()}.pdf`);
   }
 
   const celula = (valor, estilo = '') => {
@@ -97,7 +148,7 @@
     setTimeout(() => URL.revokeObjectURL(url), 1000);
   }
 
-  for (const botao of botoes) botao.addEventListener('click', () => {
+  for (const botao of botoes) botao.addEventListener('click', async () => {
     const formato = botao.dataset.exportarPacotes;
     const rotulo = botao.querySelector('span');
     const original = rotulo?.textContent;
@@ -105,7 +156,7 @@
     if (rotulo) rotulo.textContent = 'Gerando…';
     try {
       const dados = obterDados();
-      if (formato === 'pdf') exportarPdf(dados); else exportarExcel(dados);
+      if (formato === 'pdf') await exportarPdf(dados); else exportarExcel(dados);
       window.ffPacotesAviso?.(`Relatório em ${formato === 'pdf' ? 'PDF' : 'Excel'} preparado para ${dados.cenarioTexto}.`);
     } catch (erro) {
       window.ffPacotesAviso?.(erro.message, 'erro');
