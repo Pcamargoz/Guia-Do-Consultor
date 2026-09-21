@@ -299,6 +299,25 @@ button.hr-duracao:hover { border-style: solid; border-color: var(--brand-primary
 .pc-editar-conteudo { margin-top: 12px; }
 .pc-editar-conteudo svg { width: 16px; height: 16px; }
 
+/* ---------- Horas por cenário (fluxo + faixa) ---------- */
+.pc-modulo-horas--editar sup, .pc-modulo-horas--editar span[aria-hidden="true"] { color: var(--brand-primary-300); font-weight: 800; }
+.pc-modulo-horas--proprio { border-style: solid; border-color: var(--brand-primary); }
+.pe-cenario {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; padding: 12px 14px;
+  border: 1px solid var(--brand-primary-200); border-radius: var(--radius-md); background: var(--brand-primary-50);
+}
+.pe-cenario-faixa { display: inline-flex; align-items: center; gap: 8px; }
+.pe-cenario-faixa .ed-input { min-height: 40px; }
+.pe-cenario-dica { flex: 1 1 100%; margin: 0; font-size: 12.5px; color: var(--brand-primary-800); line-height: 1.45; }
+.pe-horas small[data-cenario-tag], .pe-ferramentas-titulo span[data-cenario-tag] {
+  display: inline-block; margin-left: 4px; padding: 1px 7px; border-radius: var(--radius-pill);
+  background: var(--brand-primary-100); color: var(--brand-primary-800); font-size: 11px; font-weight: 700; letter-spacing: 0; text-transform: none;
+}
+.pe-ferramentas-titulo span[data-cenario-tag] { vertical-align: 1px; }
+.pe-bloco--proprio { border-left-color: var(--brand-accent); }
+.pe-bloco:not([data-cenario-proprio]) .pe-horas .ed-input { border-style: dashed; }
+.pe-fixas-dica:empty { display: none; }
+
 /* ---------- Editor de módulos e tarefas do pacote ---------- */
 .pe-dialog { width: min(980px, calc(100vw - 28px)); }
 .pe-explica { margin: 0; padding: 12px 14px; border-radius: var(--radius-md); background: var(--brand-primary-50); color: var(--brand-primary-900); font-size: 14px; line-height: 1.5; }

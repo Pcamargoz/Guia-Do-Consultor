@@ -52,27 +52,66 @@
     return pacotesDoModulo(moduloId)[0] || null;
   }
 
-  /** Horas de implantação do módulo inteiro dentro do pacote (definidas na aba Pacotes e Horas). */
-  const totalModulo = (modulo, pacoteId) => {
+  /** Horas de implantação do módulo inteiro dentro do pacote para um cenário (fluxo + faixa de usuários).
+      Cada cenário guarda seu próprio valor (editável no card do pacote). Sem valor explícito no cenário,
+      o valor escala proporcionalmente à base pela tabela de preços; sem tabela, mantém a base. */
+  function valorModulo(pacote, moduloId, fluxo = 'Premium', faixa = 0) {
+    const v = pacote?.horasModulos?.[moduloId];
+    const inteiro = (x) => (Number.isFinite(Number(x)) && x != null && x !== '' ? Number(x) : null);
+    if (typeof v === 'number') { // formato antigo: número = base
+      if (fluxo === 'Premium' && faixa === 0) return v;
+      const f = fator(pacote, fluxo, faixa);
+      return f == null ? v : Math.round((v * f) / 5) * 5;
+    }
+    if (!v || typeof v !== 'object') return 0;
+    const direto = inteiro(v[fluxo]?.[faixa]);
+    if (direto != null) return direto;
+    const base = inteiro(v.Premium?.[0]);
+    if (base == null) return 0;
+    const f = fator(pacote, fluxo, faixa);
+    return f == null ? base : Math.round((base * f) / 5) * 5;
+  }
+
+  const totalModulo = (modulo, pacoteId, fluxo, faixa) => {
     const pacote = estado.pacotes.find((p) => p.id === pacoteId);
-    return Number(pacote?.horasModulos?.[modulo?.id ?? modulo] ?? 0);
+    return valorModulo(pacote, modulo?.id ?? modulo, fluxo, faixa) ?? 0;
   };
 
-  function totalPacote(pacote, modulos) {
+  /** O módulo tem valor SALVO especificamente para este cenário (não herdado da base/proporcional)? */
+  function temValorProprio(pacote, moduloId, fluxo = 'Premium', faixa = 0) {
+    const v = pacote?.horasModulos?.[moduloId];
+    if (typeof v === 'number') return fluxo === 'Premium' && faixa === 0;
+    return Number.isFinite(Number(v?.[fluxo]?.[faixa])) && v?.[fluxo]?.[faixa] != null && v?.[fluxo]?.[faixa] !== '';
+  }
+
+  /** Total do pacote em um cenário (fluxo + faixa). Horas de módulo já são resolvidas por cenário
+      (valor próprio salvo ou proporcional à base pela tabela); etapas e recursos escalam pelo fator. */
+  function totalPacote(pacote, modulos, fluxo = 'Premium', faixa = 0) {
     const etapas = pacote.etapas.filter((e) => e.grupo === 'etapa');
     const recursos = pacote.etapas.filter((e) => e.grupo === 'recurso');
     const somar = (lista) => lista.reduce((s, e) => s + e.minutos, 0);
+    const f = fator(pacote, fluxo, faixa);
+    const esc = (min) => (f == null ? min : Math.round((min * f) / 5) * 5);
     const porModulo = pacote.modulos
       .map((id) => modulos.find((m) => m.id === id))
       .filter(Boolean)
-      .map((m) => ({ id: m.id, nome: m.nome, cor: m.cor, minutos: totalModulo(m, pacote.id), itens: (m.checklist || []).length }));
-    const minutosEtapas = somar(etapas);
-    const minutosRecursos = somar(recursos);
+      .map((m) => ({
+        id: m.id, nome: m.nome, cor: m.cor,
+        minutos: valorModulo(pacote, m.id, fluxo, faixa),
+        proprio: temValorProprio(pacote, m.id, fluxo, faixa),
+        itens: (m.checklist || []).length,
+      }));
+    const brutasEtapas = somar(etapas);
+    const brutasRecursos = somar(recursos);
+    const minutosEtapas = esc(brutasEtapas);
+    const minutosRecursos = esc(brutasRecursos);
     const minutosModulos = porModulo.reduce((s, m) => s + m.minutos, 0);
     return {
       etapas, recursos, porModulo, minutosEtapas, minutosRecursos, minutosModulos,
+      minutosEtapasBase: brutasEtapas, minutosRecursosBase: brutasRecursos,
       total: minutosEtapas + minutosRecursos + minutosModulos,
-      tabela: (pacote.precos.Premium?.[0] ?? 0) * 60,
+      base: (pacote.precos.Premium?.[0] ?? 0) * 60,
+      tabela: (pacote.precos[fluxo]?.[faixa] ?? 0) * 60,
     };
   }
 
@@ -108,6 +147,7 @@
   window.ffHoras = {
     estado, formatar, interpretar, carregar, substituirPacote,
     pacoteRef, definirRef, pacotesDoModulo, pacoteParaModulo, totalModulo, totalPacote, fator,
+    valorModulo, temValorProprio,
   };
 
   window.ffSessao?.then((usuario) => { if (usuario) carregar(); });

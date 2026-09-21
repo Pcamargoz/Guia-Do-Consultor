@@ -22,6 +22,8 @@
   };
   const modulosGuia = () => (typeof modulos !== 'undefined' ? modulos : []);
   const nomeModulo = (id) => modulosGuia().find((m) => m.id === id)?.nome || id;
+  /** Valor da base (Premium · até 5 usuários) no armazenamento de horas, novo ou antigo. */
+  const minutosBase = (v) => (typeof v === 'number' ? v : Number(v?.Premium?.[0] ?? 0));
   /** Horas originais da planilha: soma dos itens da checklist do módulo naquele pacote. */
   const horasPlanilha = (moduloId, pacoteId) => (modulosGuia().find((m) => m.id === moduloId)?.checklist || [])
     .reduce((soma, it) => soma + Number(it?.minutos?.[pacoteId] ?? 0), 0);
@@ -33,6 +35,87 @@
 
   let pacote = null, sujo = false, salvando = false, contador = 0;
 
+  /* ---------- Cenário (fluxo + faixa) editado dentro do modal ----------
+     As horas dos módulos são salvas por cenário; trocar de cenário só troca os
+     valores mostrados nos campos — tarefas, etapas e módulos compartilhados ficam iguais. */
+  const CHAVE_CENARIO = 'ff-cenario-horas';
+  let cenario = { fluxo: 'Premium', faixa: 0 };
+  try { cenario = { ...cenario, ...JSON.parse(localStorage.getItem(CHAVE_CENARIO) || '{}') }; } catch { /* padrão */ }
+  let mapaHoras = {}; // {moduloId: {fluxo: {faixa: minutos}}} acumulado durante a edição
+  const editados = new Set(); // chaves "moduloId|fluxo|faixa" cujo campo o usuário realmente digitou
+  const chaveCenario = (id) => `${id}|${cenario.fluxo}|${cenario.faixa}`;
+
+  const lerCenarioSalvo = () => { try { cenario = { ...cenario, ...JSON.parse(localStorage.getItem(CHAVE_CENARIO) || '{}') }; } catch { /* padrão */ } };
+  const salvarCenario = () => { try { localStorage.setItem(CHAVE_CENARIO, JSON.stringify(cenario)); } catch { /* sem storage */ } };
+  const faixaLabel = () => H.estado.faixas[cenario.faixa] || 'até 5 usuários';
+  const cenarioTxt = () => `${cenario.fluxo} · ${faixaLabel()}`;
+  const ehBase = () => cenario.fluxo === 'Premium' && cenario.faixa === 0;
+  const fatorAtual = () => (pacote ? H.fator(pacote, cenario.fluxo, cenario.faixa) : null);
+  const escCenario = (min) => { const f = fatorAtual(); return f == null ? min : Math.round((min * f) / 5) * 5; };
+  const tabelaMin = () => (pacote?.precos[cenario.fluxo]?.[cenario.faixa] ?? 0) * 60;
+
+  function normalizarMapa(horasModulos) {
+    const saida = {};
+    for (const [id, v] of Object.entries(horasModulos || {})) {
+      if (typeof v === 'number') saida[id] = { Premium: { 0: v } };
+      else if (v && typeof v === 'object') saida[id] = structuredClone(v);
+    }
+    return saida;
+  }
+  function gravarNoMapa(id, valor) {
+    mapaHoras[id] ||= {};
+    mapaHoras[id][cenario.fluxo] ||= {};
+    mapaHoras[id][cenario.fluxo][cenario.faixa] = valor;
+  }
+  function temNoMapa(id) {
+    const v = mapaHoras[id]?.[cenario.fluxo]?.[cenario.faixa];
+    return Number.isFinite(Number(v)) && v != null && v !== '';
+  }
+  /** Marca/desmarca no bloco que aquele módulo tem valor próprio no cenário (atributo + classe). */
+  function marcarProprio(blocoEl, tem) {
+    if (!blocoEl) return;
+    blocoEl.toggleAttribute('data-cenario-proprio', Boolean(tem));
+    blocoEl.classList.toggle('pe-bloco--proprio', Boolean(tem));
+  }
+  /** Valor do módulo no cenário atual: editado/salvo p/ o cenário > proporcional à base. */
+  function valorNoMapa(id) {
+    if (temNoMapa(id)) return Number(mapaHoras[id][cenario.fluxo][cenario.faixa]);
+    const base = Number(mapaHoras[id]?.Premium?.[0]);
+    if (Number.isFinite(base)) return escCenario(base);
+    return H.valorModulo(pacote, id, cenario.fluxo, cenario.faixa);
+  }
+  /** Guarda nos controles os valores digitados pelo usuário antes de trocar de cenário. */
+  function capturarCampos() {
+    for (const b of blocosComHoras()) {
+      const id = b.dataset.moduloId;
+      if (!editados.has(chaveCenario(id))) continue; // não travar valor proporcional não editado
+      const v = minutosDoCampo(campoHoras(b));
+      if (v != null) mapaHoras[id][cenario.fluxo][cenario.faixa] = v;
+    }
+  }
+  /** Recarrega os campos de horas e os controles com o cenário atual. */
+  function aplicarCenarioNosCampos() {
+    for (const b of blocosComHoras()) {
+      const id = b.dataset.moduloId;
+      campoHoras(b).value = H.formatar(valorNoMapa(id), { vazio: '0h' });
+      marcarProprio(b, editados.has(chaveCenario(id)) || temNoMapa(id));
+    }
+    dialog.querySelectorAll('[data-pe-fluxo]').forEach((x) => x.setAttribute('aria-checked', String(x.dataset.peFluxo === cenario.fluxo)));
+    const sel = dialog.querySelector('[data-pe-faixa]');
+    if (sel) sel.value = String(cenario.faixa);
+    const txt = dialog.querySelector('[data-cenario-txt]');
+    if (txt) txt.textContent = `editando horas para ${cenarioTxt()}`;
+    const dica = dialog.querySelector('[data-fixas-dica]');
+    if (dica) dica.textContent = ehBase() ? '' : 'Os valores das etapas são da base; no cenário atual entram multiplicados pela tabela de preços.';
+  }
+  function trocarCenario(novo) {
+    capturarCampos();
+    Object.assign(cenario, novo);
+    salvarCenario();
+    aplicarCenarioNosCampos();
+    atualizarResumo();
+  }
+
   const dialog = document.createElement('dialog');
   dialog.className = 'gt-dialog pe-dialog';
   dialog.setAttribute('aria-labelledby', 'pe-titulo');
@@ -43,7 +126,7 @@
     const blocos = [];
     const porModulo = new Map();
     for (const id of p.modulos) {
-      const bloco = { moduloId: id, nome: nomeModulo(id), minutos: Number(p.horasModulos?.[id] ?? 0), tarefas: [] };
+      const bloco = { moduloId: id, nome: nomeModulo(id), minutos: valorNoMapa(id), tarefas: [] };
       porModulo.set(id, bloco);
       blocos.push(bloco);
     }
@@ -79,15 +162,16 @@
   function blocoHtml(b) {
     const chave = `pe-b${++contador}`;
     const guia = Boolean(b.moduloId);
+    const proprio = guia && (temNoMapa(b.moduloId));
     return `
-      <section class="pe-bloco${guia ? '' : ' pe-bloco--livre'}" data-modulo-id="${esc(b.moduloId || '')}" aria-labelledby="${chave}">
+      <section class="pe-bloco${guia ? '' : ' pe-bloco--livre'}${proprio ? ' pe-bloco--proprio' : ''}"${proprio ? ' data-cenario-proprio' : ''} data-modulo-id="${esc(b.moduloId || '')}" aria-labelledby="${chave}">
         <header class="pe-bloco-topo">
           <div class="pe-bloco-nome">
             ${guia
               ? `<h3 id="${chave}">${esc(nomeModulo(b.moduloId))}</h3><label class="pe-grupo-rotulo">Nome nas tarefas <input type="text" class="ed-input pe-nome" value="${esc(b.nome)}" maxlength="60"></label>`
               : `<label class="pe-grupo-rotulo" id="${chave}">Grupo sem módulo no Guia <input type="text" class="ed-input pe-nome" value="${esc(b.nome)}" maxlength="60" placeholder="Ex.: Integrações" required></label>`}
           </div>
-          ${guia ? `<label class="pe-horas">${svg(I.relogio)}<span>Tempo de implantação</span>
+          ${guia ? `<label class="pe-horas">${svg(I.relogio)}<span>Tempo de implantação <small data-cenario-tag>${esc(cenarioTxt())}</small></span>
             <input type="text" class="ed-input pe-minutos" value="${esc(H.formatar(b.minutos, { vazio: '0h' }))}" autocomplete="off" aria-describedby="pe-ajuda-horas"></label>` : '<span class="pe-sem-horas">Sem horas (grupo livre)</span>'}
           <div class="pe-bloco-acoes">
             <button type="button" class="ed-icone-btn" data-mover-bloco="-1" aria-label="Mover ${guia ? 'módulo' : 'grupo'} para cima" title="Mover para cima">${svg(I.cima)}</button>
@@ -115,7 +199,7 @@
         </li>`).join('')}</ul></div>`;
     }).join('');
     return `<section class="pe-fixas"><h3>Etapas e recursos do pacote</h3>
-      <p class="pe-fixas-dica">Entram no total do pacote junto com as horas dos módulos.</p>
+      <p class="pe-fixas-dica" data-fixas-dica>${ehBase() ? 'Entram no total do pacote junto com as horas dos módulos.' : 'Os valores das etapas são da base; no cenário atual entram multiplicados pela tabela de preços.'}</p>
       ${grupos || '<p class="ed-nada">Este pacote não tem etapas nem recursos cadastrados.</p>'}</section>`;
   }
 
@@ -151,21 +235,21 @@
     return { minutos, invalidas };
   }
 
-  /** Mesma conta do card: módulos + etapas + recursos, comparada à tabela de preços (base Premium). */
+  /** Mesma conta do card: módulos + etapas + recursos do cenário, comparada à tabela de preços. */
   function atualizarResumo() {
     const blocos = [...dialog.querySelectorAll('.pe-bloco')];
     const { minutos, invalidas } = somaModulos();
     const tarefas = dialog.querySelectorAll('.pe-tarefa').length;
     const modulosNoPacote = blocos.filter((b) => b.dataset.moduloId).length;
     const fix = somaFixas();
-    const fixas = fix.minutos;
+    const fixas = escCenario(fix.minutos);
     const total = minutos + fixas;
-    const tabela = (pacote.precos.Premium?.[0] ?? 0) * 60;
+    const tabela = tabelaMin();
     const diferenca = total - tabela;
     const comparativo = !tabela ? ''
-      : !diferenca ? '<span class="pe-igual">igual à tabela de preços</span>'
+      : !diferenca ? `<span class="pe-igual">igual à tabela de preços (${cenarioTxt()})</span>`
         : `<span class="pe-alerta">${H.formatar(Math.abs(diferenca))} ${diferenca > 0 ? 'acima' : 'abaixo'} da tabela (${H.formatar(tabela)})</span>`;
-    dialog.querySelector('[data-resumo]').innerHTML = `<span><strong>${modulosNoPacote}</strong> módulo(s) · <strong>${tarefas}</strong> tarefa(s)</span>
+    dialog.querySelector('[data-resumo]').innerHTML = `<span><strong>${modulosNoPacote}</strong> módulo(s) · <strong>${tarefas}</strong> tarefa(s) · cenário <strong>${esc(cenarioTxt())}</strong></span>
       <span>módulos <strong>${H.formatar(minutos, { vazio: '0h' })}</strong> + etapas e recursos <strong>${H.formatar(fixas, { vazio: '0h' })}</strong> = total <strong>${H.formatar(total, { vazio: '0h' })}</strong> · ${comparativo}${invalidas + fix.invalidas ? ` <span class="pe-alerta">(${invalidas + fix.invalidas} hora(s) inválida(s))</span>` : ''}</span>`;
     const ajustar = dialog.querySelector('[data-ajustar-tabela]');
     if (ajustar) ajustar.disabled = !tabela || !diferenca || invalidas + fix.invalidas > 0 || !modulosNoPacote;
@@ -177,13 +261,26 @@
     pacote = H.estado.pacotes.find((p) => p.id === pacoteId);
     if (!pacote) return;
     sujo = false;
+    editados.clear();
+    lerCenarioSalvo();
+    mapaHoras = normalizarMapa(pacote.horasModulos);
+    const fluxos = H.estado.fluxos.map((f) => `
+      <button type="button" role="radio" aria-checked="${cenario.fluxo === f}" class="pc-seg-btn" data-pe-fluxo="${esc(f)}">${esc(f)}</button>`).join('');
+    const faixas = H.estado.faixas.map((x, i) => `<option value="${i}"${cenario.faixa === i ? ' selected' : ''}>${esc(x)}</option>`).join('');
     dialog.innerHTML = `
       <div class="gt-cabecalho">
-        <div><h2 id="pe-titulo">Módulos e tarefas</h2><p>Pacote ${esc(pacote.nome)} · horas na base Premium, até 5 usuários</p></div>
+        <div><h2 id="pe-titulo">Módulos e tarefas</h2><p>Pacote ${esc(pacote.nome)} · <span data-cenario-txt>editando horas para ${esc(cenarioTxt())}</span></p></div>
         <button type="button" class="gt-fechar" data-fechar aria-label="Fechar">×</button>
       </div>
       <form class="pe-form" novalidate>
         <div class="gt-campos pe-corpo">
+          <div class="pe-cenario" role="group" aria-label="Cenário das horas">
+            <span class="pc-controle-rotulo">Fluxo</span>
+            <span class="pc-seg" role="radiogroup">${fluxos}</span>
+            <label class="pe-cenario-faixa"><span class="pc-controle-rotulo">Faixa de usuários</span>
+              <select class="ed-input" data-pe-faixa aria-label="Faixa de usuários do cenário das horas">${faixas}</select></label>
+            <p class="pe-cenario-dica">As horas dos módulos mudam <strong>só para este cenário</strong>; módulos, tarefas, etapas e recursos são compartilhados. ${ehBase() ? '' : 'Valores sem edição própria começam proporcionais à base pela tabela de preços.'}</p>
+          </div>
           <p class="pe-explica">As <strong>horas</strong> são do módulo inteiro (quanto tempo leva para implantá-lo neste pacote). As <strong>tarefas</strong> não têm horas: só descrição, prioridade e nível.</p>
           <p id="pe-ajuda-horas" class="ed-sr">Formatos aceitos: 1h30, 45min, 2 (horas).</p>
           <div class="pe-blocos">${blocosDoPacote(pacote).map(blocoHtml).join('')}</div>
@@ -195,7 +292,7 @@
           </div>
           ${etapasHtml()}
           <div class="pe-ferramentas">
-            <span class="pe-ferramentas-titulo">Horas dos módulos</span>
+            <span class="pe-ferramentas-titulo">Horas dos módulos <span data-cenario-tag>${esc(cenarioTxt())}</span></span>
             <div class="pe-ferramentas-acoes">
               <button type="button" class="ed-btn" data-ajustar-tabela title="Distribui proporcionalmente entre os módulos até o total do pacote bater com a tabela de preços">${svg(I.relogio)}Ajustar para bater com a tabela</button>
               ${temPlanilha(pacote.id) ? `<button type="button" class="ed-btn" data-restaurar-planilha title="Volta às horas originais da planilha de distribuição de horas">${svg(I.relogio)}Restaurar horas da planilha</button>` : ''}
@@ -243,14 +340,37 @@
     (novo.querySelector('.pe-minutos') || novo.querySelector('.pe-nome')).focus();
   }
 
-  dialog.addEventListener('input', () => { sujo = true; atualizarResumo(); });
-  dialog.addEventListener('change', () => { sujo = true; });
+  dialog.addEventListener('input', (e) => {
+    sujo = true;
+    const campo = e.target.closest('.pe-minutos');
+    if (campo) {
+      const blocoEl = campo.closest('.pe-bloco');
+      const v = H.interpretar(campo.value);
+      if (v != null && blocoEl) {
+        const id = blocoEl.dataset.moduloId;
+        editados.add(id);
+        mapaHoras[id] ||= {};
+        mapaHoras[id][cenario.fluxo] ||= {};
+        mapaHoras[id][cenario.fluxo][cenario.faixa] = v;
+        marcarProprio(blocoEl, true);
+      }
+    }
+    atualizarResumo();
+  });
+  dialog.addEventListener('change', (e) => {
+    sujo = true;
+    if (e.target.matches('[data-pe-faixa]')) { trocarCenario({ faixa: Number(e.target.value) }); return; }
+    const campo = e.target.closest('.pe-minutos');
+    if (campo && H.interpretar(campo.value) == null) atualizarResumo(); // inválido: só mostra o alerta do resumo
+  });
   dialog.addEventListener('cancel', (e) => { e.preventDefault(); fechar(); });
   dialog.addEventListener('keydown', (e) => {
     if (e.key === 'Enter' && e.target.matches('.pe-descricao')) { e.preventDefault(); adicionarTarefa(e.target.closest('.pe-bloco'), e.target.closest('.pe-tarefa')); }
   });
   dialog.addEventListener('click', (e) => {
     if (e.target.closest('[data-fechar]')) { fechar(); return; }
+    const fluxoBtn = e.target.closest('[data-pe-fluxo]');
+    if (fluxoBtn) { trocarCenario({ fluxo: fluxoBtn.dataset.peFluxo }); return; }
     const bloco = e.target.closest('.pe-bloco');
     if (e.target.closest('[data-add-tarefa]')) { adicionarTarefa(bloco); return; }
     const tarefa = e.target.closest('.pe-tarefa');
@@ -277,14 +397,19 @@
     if (e.target.closest('[data-add-modulo]')) {
       const select = dialog.querySelector('[data-novo-modulo]');
       if (!select.value) { select.focus(); return; }
-      adicionarBloco({ moduloId: select.value, nome: nomeModulo(select.value), minutos: 0, tarefas: [] });
+      adicionarBloco({ moduloId: select.value, nome: nomeModulo(select.value), minutos: valorNoMapa(select.value), tarefas: [] });
       return;
     }
     if (e.target.closest('[data-add-grupo]')) { adicionarBloco({ moduloId: null, nome: '', minutos: 0, tarefas: [] }); return; }
     if (e.target.closest('[data-restaurar-planilha]')) {
       for (const b of blocosComHoras()) {
+        const plano = horasPlanilha(b.dataset.moduloId, pacote.id);
+        const valor = ehBase() ? plano : escCenario(plano);
+        gravarNoMapa(b.dataset.moduloId, valor);
+        editados.add(b.dataset.moduloId);
         const campo = campoHoras(b);
-        if (campo) campo.value = H.formatar(horasPlanilha(b.dataset.moduloId, pacote.id), { vazio: '0h' });
+        if (campo) campo.value = H.formatar(valor, { vazio: '0h' });
+        marcarProprio(b, true);
       }
       sujo = true;
       atualizarResumo();
@@ -293,7 +418,7 @@
     if (e.target.closest('[data-ajustar-tabela]')) ajustarParaTabela();
   });
 
-  /** Distribui a diferença entre os módulos até total (módulos + etapas + recursos) = tabela de preços. */
+  /** Distribui a diferença entre os módulos até total (módulos + etapas + recursos) = tabela do cenário. */
   function ajustarParaTabela() {
     const blocos = blocosComHoras();
     if (!blocos.length) return;
@@ -304,7 +429,7 @@
       erro.hidden = false;
       return;
     }
-    const alvo = (pacote.precos.Premium?.[0] ?? 0) * 60 - fix.minutos;
+    const alvo = tabelaMin() - escCenario(fix.minutos);
     if (alvo < 0) {
       erro.textContent = 'As etapas e os recursos sozinhos já passam do total da tabela; ajuste-os antes no card do pacote.';
       erro.hidden = false;
@@ -321,7 +446,12 @@
       const i = valores.indexOf(Math.max(...valores));
       valores[i] = Math.max(0, valores[i] + resto);
     }
-    blocos.forEach((b, i) => { campoHoras(b).value = H.formatar(valores[i], { vazio: '0h' }); });
+    blocos.forEach((b, i) => {
+      campoHoras(b).value = H.formatar(valores[i], { vazio: '0h' });
+      gravarNoMapa(b.dataset.moduloId, valores[i]);
+      editados.add(b.dataset.moduloId);
+      marcarProprio(b, true);
+    });
     erro.hidden = true;
     sujo = true;
     atualizarResumo();
@@ -353,7 +483,8 @@
         const campo = bloco.querySelector('.pe-minutos');
         const minutos = H.interpretar(campo.value);
         if (minutos == null || minutos > 60000) return falhar(`Horas inválidas em ${nomeModulo(moduloId)}. Use 1h30, 45min ou 2.`, campo);
-        modulosPayload.push({ moduloId, minutos });
+        gravarNoMapa(moduloId, minutos); // garante o valor digitado no cenário atual
+        modulosPayload.push({ moduloId, minutos: mapaHoras[moduloId] });
       } else {
         if (nomesLivres.has(nome.toLowerCase())) return falhar(`Já existe um grupo chamado “${nome}”.`, nomeCampo);
         nomesLivres.add(nome.toLowerCase());
@@ -387,7 +518,7 @@
       sujo = false;
       fechar(true);
       H.substituirPacote(dados.pacote);
-      window.ffPacotesAviso?.(`Pacote ${dados.pacote.nome} salvo. Total previsto: ${H.formatar(H.totalPacote(dados.pacote, modulosGuia()).total, { vazio: '0h' })}.`);
+      window.ffPacotesAviso?.(`Pacote ${dados.pacote.nome} salvo (${cenarioTxt()}). Total previsto: ${H.formatar(H.totalPacote(dados.pacote, modulosGuia(), cenario.fluxo, cenario.faixa).total, { vazio: '0h' })}.`);
     } catch (err) {
       falhar(err.message);
     } finally {

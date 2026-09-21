@@ -35,7 +35,6 @@
 
   const listaModulos = () => (typeof modulos !== 'undefined' ? modulos : []);
   const ehBase = () => cenario.fluxo === 'Premium' && cenario.faixa === 0;
-  const escala = (min, f) => (f == null ? null : Math.round((min * f) / 5) * 5);
   const pct = (parte, total) => (total ? Math.round((parte / total) * 100) : 0);
 
   /* ---------- Estrutura fixa da aba ---------- */
@@ -64,28 +63,28 @@
       <button type="button" role="radio" aria-checked="${cenario.fluxo === f}" class="pc-seg-btn" data-fluxo="${esc(f)}">${esc(f)}</button>`).join('');
     const select = painel.querySelector('[data-controle="faixa"]');
     select.innerHTML = H.estado.faixas.map((f, i) => `<option value="${i}"${cenario.faixa === i ? ' selected' : ''}>${esc(f)}</option>`).join('');
-    painel.querySelector('[data-nota]').innerHTML = `${svg(I.info)}<span>${ehBase()
-      ? (podeEditar ? 'Cenário base: clique nas horas de um módulo para editá-las; use “Editar módulos e tarefas” para mudar o conteúdo do pacote.' : 'Cenário base: Premium · até 5 usuários.')
-      : `Horas proporcionais à tabela de preços (${esc(cenario.fluxo)} · ${esc(H.estado.faixas[cenario.faixa] || '')}). As edições são feitas na base <strong>Premium · até 5 usuários</strong>.`}</span>`;
+    painel.querySelector('[data-nota]').innerHTML = `${svg(I.info)}<span>${podeEditar
+      ? `As horas de cada módulo são editadas <strong>por pacote e por cenário</strong>: escolha o fluxo e a faixa de usuários acima e clique nas horas. Cenários sem valor próprio começam proporcionais à tabela de preços; ao editar, o valor fica salvo só para este cenário.`
+      : `Cenário ${esc(cenario.fluxo)} · ${esc(H.estado.faixas[cenario.faixa] || 'até 5 usuários')}.`}</span>`;
   }
 
   /* ---------- Blocos visuais ---------- */
-  function barraEmpilhada(t, f) {
+  function barraEmpilhada(t) {
     const total = t.total || 1;
     const segmentos = SERIES.filter((s) => t[s.chave] > 0);
     return `
-      <div class="pc-pilha" role="img" aria-label="Distribuição: ${SERIES.map((s) => `${s.nome} ${H.formatar(escala(t[s.chave], f), { vazio: '0h' })}`).join(', ')}">
-        ${segmentos.map((s) => `<span class="pc-pilha-seg pc-cor--${s.classe}" style="flex-grow:${t[s.chave]}" title="${esc(s.nome)}: ${H.formatar(escala(t[s.chave], f), { vazio: '0h' })} (${pct(t[s.chave], total)}%)"></span>`).join('')}
+      <div class="pc-pilha" role="img" aria-label="Distribuição: ${SERIES.map((s) => `${s.nome} ${H.formatar(t[s.chave], { vazio: '0h' })}`).join(', ')}">
+        ${segmentos.map((s) => `<span class="pc-pilha-seg pc-cor--${s.classe}" style="flex-grow:${t[s.chave]}" title="${esc(s.nome)}: ${H.formatar(t[s.chave], { vazio: '0h' })} (${pct(t[s.chave], total)}%)"></span>`).join('')}
       </div>
       <ul class="pc-legenda">
-        ${SERIES.map((s) => `<li><span class="pc-amostra pc-cor--${s.classe}" aria-hidden="true"></span>${esc(s.nome)}<strong>${H.formatar(escala(t[s.chave], f), { vazio: '0h' })}</strong><small>${pct(t[s.chave], total)}%</small></li>`).join('')}
+        ${SERIES.map((s) => `<li><span class="pc-amostra pc-cor--${s.classe}" aria-hidden="true"></span>${esc(s.nome)}<strong>${H.formatar(t[s.chave], { vazio: '0h' })}</strong><small>${pct(t[s.chave], total)}%</small></li>`).join('')}
       </ul>`;
   }
 
-  function comparativoTabela(t, pacote, f) {
+  function comparativoTabela(t, pacote) {
     const tabela = pacote.precos[cenario.fluxo]?.[cenario.faixa];
     if (tabela == null) return '';
-    const diferenca = escala(t.total - t.tabela, f);
+    const diferenca = t.total - t.tabela;
     if (!diferenca) return `<span class="pc-comparativo pc-comparativo--igual">${svg(I.igual)}Igual à tabela de preços (${tabela}h)</span>`;
     const acima = diferenca > 0;
     return `<span class="pc-comparativo pc-comparativo--${acima ? 'acima' : 'abaixo'}">${svg(acima ? I.acima : I.abaixo)}${H.formatar(Math.abs(diferenca))} ${acima ? 'acima' : 'abaixo'} da tabela (${tabela}h)</span>`;
@@ -107,20 +106,20 @@
   }
 
   function cartao(pacote) {
-    const t = H.totalPacote(pacote, listaModulos());
+    const t = H.totalPacote(pacote, listaModulos(), cenario.fluxo, cenario.faixa);
     const f = H.fator(pacote, cenario.fluxo, cenario.faixa);
     const funcs = pacote.funcionalidades;
     const pro = funcs.filter((x) => x.nivel === 'Pro').length;
     const maiorModulo = Math.max(1, ...t.porModulo.map((m) => m.minutos));
     const indisponivel = f == null;
+    const cenarioTxt = `${cenario.fluxo} · ${H.estado.faixas[cenario.faixa] || ''}`;
 
-    const modulosHtml = t.porModulo.length ? `<ul class="pc-modulos">${t.porModulo.map((m) => `
-      <li><div class="pc-modulo">
+    const modulosHtml = t.porModulo.length ? `<ul class="pc-modulos">${t.porModulo.map((m) => `\n      <li><div class="pc-modulo">
         <span class="pc-modulo-nome">${esc(m.nome)}</span>
         <span class="pc-modulo-trilho" aria-hidden="true"><span class="pc-modulo-barra" style="width:${Math.max(2, (m.minutos / maiorModulo) * 100)}%"></span></span>
-        ${podeEditar && ehBase()
-          ? `<button type="button" class="pc-modulo-horas pc-modulo-horas--editar" data-editar-modulo="${esc(m.id)}" data-pacote="${esc(pacote.id)}" title="Editar horas de ${esc(m.nome)}" aria-label="Horas de ${esc(m.nome)} no pacote ${esc(pacote.nome)}: ${H.formatar(m.minutos, { vazio: '0h' })}. Editar">${H.formatar(m.minutos, { vazio: '0h' })}</button>`
-          : `<span class="pc-modulo-horas">${H.formatar(escala(m.minutos, f), { vazio: '0h' })}</span>`}
+        ${podeEditar
+          ? `<button type="button" class="pc-modulo-horas pc-modulo-horas--editar${m.proprio ? ' pc-modulo-horas--proprio' : ''}" data-editar-modulo="${esc(m.id)}" data-pacote="${esc(pacote.id)}" title="${m.proprio ? `Valor salvo para ${esc(cenarioTxt)}` : `Proporcional à base; clique para definir um valor só para ${esc(cenarioTxt)}`}" aria-label="Horas de ${esc(m.nome)} no pacote ${esc(pacote.nome)} (${esc(cenarioTxt)}): ${H.formatar(m.minutos, { vazio: '0h' })}. Editar">${H.formatar(m.minutos, { vazio: '0h' })}${m.proprio ? '' : '<span aria-hidden="true">*</span>'}</button>`
+          : `<span class="pc-modulo-horas">${H.formatar(m.minutos, { vazio: '0h' })}</span>`}
         <span class="pc-modulo-pct">${pct(m.minutos, t.total)}%</span>
       </div></li>`).join('')}</ul>` : '<p class="ed-nada">Nenhum módulo do guia neste pacote.</p>';
 
@@ -160,21 +159,21 @@
           </div>
           <div class="pc-total">
             <span class="pc-total-rotulo">Tempo total previsto</span>
-            <strong class="pc-total-valor">${indisponivel ? '—' : H.formatar(escala(t.total, f), { vazio: '0h' })}</strong>
-            ${indisponivel ? `<span class="pc-comparativo">${svg(I.info)}Não disponível no fluxo ${esc(cenario.fluxo)}</span>` : comparativoTabela(t, pacote, f)}
+            <strong class="pc-total-valor">${indisponivel ? '—' : H.formatar(t.total, { vazio: '0h' })}</strong>
+            ${indisponivel ? `<span class="pc-comparativo">${svg(I.info)}Não disponível no fluxo ${esc(cenario.fluxo)}</span>` : comparativoTabela(t, pacote)}
           </div>
         </header>
 
-        ${indisponivel ? '' : barraEmpilhada(t, f)}
+        ${indisponivel ? '' : barraEmpilhada(t)}
 
         <section class="pc-bloco" aria-label="Módulos e horas">
-          <h4 class="pc-bloco-titulo">${svg(I.camadas)}Módulos contemplados <span class="pc-bloco-soma">${H.formatar(escala(t.minutosModulos, f), { vazio: '0h' })}</span></h4>
+          <h4 class="pc-bloco-titulo">${svg(I.camadas)}Módulos contemplados <span class="pc-bloco-soma">${H.formatar(t.minutosModulos, { vazio: '0h' })}</span></h4>
           ${indisponivel ? '' : modulosHtml}
           ${botaoEditor}
         </section>
 
-        ${detalhes(pacote.id, 'etapas', `Etapas de implantação · ${H.formatar(t.minutosEtapas, { vazio: '0h' })}${ehBase() ? '' : ' (base)'}`, etapasHtml, t.etapas.length)}
-        ${detalhes(pacote.id, 'recursos', `Recursos gerais · ${H.formatar(t.minutosRecursos, { vazio: '0h' })}${ehBase() ? '' : ' (base)'}`, recursosHtml, t.recursos.length)}
+        ${detalhes(pacote.id, 'etapas', `Etapas de implantação · ${H.formatar(t.minutosEtapasBase, { vazio: '0h' })}${ehBase() ? '' : ' (base)'}`, etapasHtml, t.etapas.length)}
+        ${detalhes(pacote.id, 'recursos', `Recursos gerais · ${H.formatar(t.minutosRecursosBase, { vazio: '0h' })}${ehBase() ? '' : ' (base)'}`, recursosHtml, t.recursos.length)}
         ${detalhes(pacote.id, 'funcs', 'Funcionalidades incluídas', (funcsHtml || '<p class="ed-nada">Nenhuma tarefa cadastrada neste pacote.</p>') + botaoEditor, funcs.length)}
         ${detalhes(pacote.id, 'precos', 'Horas por faixa de usuários', precosHtml)}
         ${detalhes(pacote.id, 'historico', 'Alterações no pacote', historicoHtml, pacote.historico?.length || 0)}
@@ -184,9 +183,9 @@
 
   function comparativoGeral(pacotes) {
     const linhas = pacotes.map((p) => {
-      const t = H.totalPacote(p, listaModulos());
+      const t = H.totalPacote(p, listaModulos(), cenario.fluxo, cenario.faixa);
       const f = H.fator(p, cenario.fluxo, cenario.faixa);
-      return { p, minutos: escala(t.total, f) };
+      return { p, minutos: f == null ? null : t.total };
     });
     const maior = Math.max(1, ...linhas.map((l) => l.minutos || 0));
     return `
@@ -289,7 +288,7 @@
         if (res.status === 401) return window.ffIrParaLogin();
         if (!res.ok) throw new Error(dados.erro || 'Não foi possível salvar a duração.');
         H.substituirPacote(dados.pacote);
-        aviso(`Duração salva. Total do ${pacote.nome}: ${H.formatar(H.totalPacote(dados.pacote, listaModulos()).total, { vazio: '0h' })}.`);
+        aviso(`Duração salva. Total do ${pacote.nome} (${cenario.fluxo} · ${H.estado.faixas[cenario.faixa] || ''}): ${H.formatar(H.totalPacote(dados.pacote, listaModulos(), cenario.fluxo, cenario.faixa).total, { vazio: '0h' })}.`);
       } catch (err) {
         aviso(err.message, 'erro');
         render();
@@ -305,11 +304,13 @@
     const moduloId = botao.dataset.editarModulo;
     const nome = listaModulos().find((m) => m.id === moduloId)?.nome || moduloId;
     if (!pacote) return;
-    const atual = Number(pacote.horasModulos?.[moduloId] ?? 0);
+    const atual = H.valorModulo(pacote, moduloId, cenario.fluxo, cenario.faixa);
+    const proprio = H.temValorProprio(pacote, moduloId, cenario.fluxo, cenario.faixa);
+    const cenarioTxt = `${cenario.fluxo} · ${H.estado.faixas[cenario.faixa] || ''}`;
     const celula = document.createElement('form');
     celula.className = 'hr-form pc-modulo-form';
     celula.noValidate = true;
-    celula.innerHTML = `<input class="hr-input" value="${esc(H.formatar(atual, { vazio: '0h' }))}" autocomplete="off" aria-label="Horas de ${esc(nome)} no pacote ${esc(pacote.nome)}"><small class="hr-ajuda">Ex.: 1h30, 45min, 2</small>`;
+    celula.innerHTML = `<input class="hr-input" value="${esc(H.formatar(atual, { vazio: '0h' }))}" autocomplete="off" aria-label="Horas de ${esc(nome)} no pacote ${esc(pacote.nome)} (${esc(cenarioTxt)})"><small class="hr-ajuda">${proprio ? 'Ex.: 1h30, 45min, 2' : `Só para ${esc(cenarioTxt)}`}</small>`;
     botao.replaceWith(celula);
     const input = celula.querySelector('input');
     input.focus();
@@ -328,13 +329,13 @@
       input.disabled = true;
       try {
         const res = await fetch(`/api/pacotes?id=${encodeURIComponent(pacote.id)}&acao=modulo`, {
-          method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ moduloId, minutos }),
+          method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ moduloId, minutos, fluxo: cenario.fluxo, faixa: cenario.faixa }),
         });
         const dados = await res.json().catch(() => ({}));
         if (res.status === 401) return window.ffIrParaLogin();
         if (!res.ok) throw new Error(dados.erro || 'Não foi possível salvar as horas do módulo.');
         H.substituirPacote(dados.pacote);
-        aviso(`${nome}: ${H.formatar(minutos, { vazio: '0h' })} no ${pacote.nome}. Total do pacote: ${H.formatar(H.totalPacote(dados.pacote, listaModulos()).total, { vazio: '0h' })}.`);
+        aviso(`${nome} (${cenarioTxt}): ${H.formatar(minutos, { vazio: '0h' })}. Total do ${pacote.nome}: ${H.formatar(H.totalPacote(dados.pacote, listaModulos(), cenario.fluxo, cenario.faixa).total, { vazio: '0h' })}.`);
       } catch (err) {
         aviso(err.message, 'erro');
         render();
