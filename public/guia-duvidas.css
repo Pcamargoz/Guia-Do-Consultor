@@ -1,7 +1,7 @@
 /* margin:auto é necessário: o reset global (* { margin: 0 }) tira a centralização nativa do <dialog>. */
 .duv-dialogo { width: min(760px, calc(100vw - 24px)); max-height: calc(100dvh - 32px); margin: auto; padding: 24px 28px 28px; border: 0; border-radius: var(--radius-xl); box-shadow: var(--shadow-xl); color: var(--color-ink); overflow: auto; overscroll-behavior: contain; }
 .duv-dialogo::backdrop { background: rgb(12 36 56 / .62); backdrop-filter: blur(8px); }
-@media (prefers-reduced-motion: no-preference) { .duv-dialogo[open] { animation: ff-modal-in .6s var(--ease-spring); } }
+@media (prefers-reduced-motion: no-preference) { .duv-dialogo[open] { animation: ff-modal-in .45s var(--ease-out); } }
 .duv-topo { display: flex; justify-content: space-between; gap: 16px; align-items: start; }
 .duv-topo h2 { margin: 0; font: 800 clamp(1.3rem, 2.4vw, 1.6rem) / 1.25 var(--font-display); color: var(--brand-primary-900); }
 .duv-topo p { margin: 4px 0 0; color: var(--color-muted); font-size: 13.5px; }
@@ -11,6 +11,13 @@
   transition: background-color var(--dur-base), color var(--dur-base);
 }
 .duv-topo > button:hover { background: var(--color-danger); color: #fff; }
+.duv-direta { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-top: 18px; padding: 14px 16px; border: 1px solid var(--brand-accent); border-radius: var(--radius-lg); background: var(--brand-accent-soft); color: var(--brand-primary-900); }
+.duv-direta[hidden] { display: none; }
+.duv-direta div { display: grid; gap: 2px; }
+.duv-direta strong { font: 800 14px var(--font-display); }
+.duv-direta span { color: var(--brand-primary-800); font-size: 12.5px; }
+.duv-direta button { flex: none; min-height: 38px; padding: 7px 14px; border: 1.5px solid var(--brand-primary-800); border-radius: var(--radius-pill); background: var(--brand-primary-800); color: #fff; font: 700 12.5px var(--font-display); cursor: pointer; }
+.duv-direta button:hover { background: var(--brand-primary-900); border-color: var(--brand-primary-900); }
 .duv-filtros { display: flex; flex-wrap: wrap; gap: 6px; margin: 20px 0 4px; }
 .duv-filtros button {
   min-height: 38px; padding: 7px 14px; border: 1.5px solid var(--color-line-strong); border-radius: var(--radius-pill); background: #fff;
@@ -52,5 +59,6 @@
 .duv-card h3 { overflow-wrap: anywhere; }
 @media (max-width: 600px) {
   .duv-dialogo { padding: 18px 16px 20px; }
+  .duv-direta { align-items: stretch; flex-direction: column; }
   .duv-form div button { flex: 1; }
 }

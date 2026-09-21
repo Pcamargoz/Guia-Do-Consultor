@@ -11,25 +11,42 @@
   }
 
   function montarCorpo(duvidas, autor) {
+    const resumir = (valor, limite = 420) => {
+      const texto = String(valor || '').replace(/\s+/g, ' ').trim();
+      return texto.length > limite ? `${texto.slice(0, limite - 1)}…` : texto;
+    };
+    const plural = duvidas.length === 1 ? 'dúvida' : 'dúvidas';
     const linhas = [
-      'Olá,', '',
-      'Novas dúvidas foram registradas no Modo Estudo da Apostila do Consultor.',
-      'O atendimento e a resposta acontecem dentro do sistema.', '',
+      'FAKTORY FLOW  |  APOSTILA DO CONSULTOR',
+      '========================================', '',
+      `Olá, equipe. ${autor} enviou ${duvidas.length} nova${duvidas.length === 1 ? '' : 's'} ${plural} pelo Modo Estudo.`,
+      'As perguntas já estão salvas no sistema e aguardam atendimento.', '',
+      'RESUMO DO ENVIO',
       `Usuário: ${autor}`,
-      `Novas dúvidas: ${duvidas.length}`,
-      `Acesse: ${location.origin}/`,
-      'Use o link de cada dúvida para abrir, assumir e responder diretamente no sistema.', '',
+      `Quantidade: ${duvidas.length}`,
+      `Data: ${new Intl.DateTimeFormat('pt-BR', { dateStyle: 'long', timeStyle: 'short' }).format(new Date())}`, '',
     ];
     duvidas.forEach((duvida, indice) => {
       const link = `${location.origin}/?duvida=${encodeURIComponent(duvida.id)}`;
       linhas.push(
-        `${indice + 1}. Página ${duvida.pagina || 'não identificada'} — ${duvida.secao || 'Apostila'}`,
-        `Abrir esta dúvida: ${link}`,
+        `DÚVIDA ${String(indice + 1).padStart(2, '0')}`,
+        '----------------------------------------',
+        `Seção: ${duvida.secao || 'Apostila'}`,
+        `Página: ${duvida.pagina || 'não identificada'}`,
+        duvida.texto ? `Pergunta: ${resumir(duvida.texto)}` : 'Pergunta registrada na apostila.',
+        duvida.trecho ? `Trecho de referência: “${resumir(duvida.trecho, 260)}”` : '',
+        '',
+        'ABRIR, ASSUMIR E RESPONDER',
+        link,
         '',
       );
     });
-    linhas.push('', 'Este e-mail é apenas um aviso. Responda pelo sistema para que a resposta apareça na apostila do usuário.');
-    return linhas.join('\r\n');
+    linhas.push(
+      '========================================',
+      'Este e-mail funciona como aviso. Publique a resposta pelo link acima para que ela apareça automaticamente na apostila do usuário.',
+      '', 'Faktory Flow',
+    );
+    return linhas.filter((linha, indice, todas) => linha !== '' || todas[indice - 1] !== '').join('\r\n');
   }
 
   for (const botao of botoes) botao.addEventListener('click', async () => {
@@ -45,7 +62,7 @@
       window.dispatchEvent(new CustomEvent('ff:duvidas-enviadas'));
       const configuracoes = await chamar('/api/configuracoes-estudo');
       if (!configuracoes.destinatarios.length) throw new Error(`${envio.enviadas.length} dúvida(s) salva(s) no sistema. Configure os destinatários para abrir o aviso por e-mail.`);
-      const assunto = `Novas dúvidas da Apostila — ${envio.autor}`;
+      const assunto = `[Apostila] ${envio.enviadas.length} nova${envio.enviadas.length === 1 ? ' dúvida' : 's dúvidas'} — ${envio.autor}`;
       const corpo = montarCorpo(envio.enviadas, envio.autor);
       const destino = `mailto:${configuracoes.destinatarios.join(',')}?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(corpo)}`;
       window.top.location.href = destino;
