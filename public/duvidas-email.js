@@ -18,11 +18,14 @@
       `Usuário: ${autor}`,
       `Novas dúvidas: ${duvidas.length}`,
       `Acesse: ${location.origin}/`,
-      'No cabeçalho, abra “Dúvidas recebidas” para assumir e responder.', '',
+      'Use o link de cada dúvida para abrir, assumir e responder diretamente no sistema.', '',
     ];
     duvidas.forEach((duvida, indice) => {
+      const link = `${location.origin}/?duvida=${encodeURIComponent(duvida.id)}`;
       linhas.push(
         `${indice + 1}. Página ${duvida.pagina || 'não identificada'} — ${duvida.secao || 'Apostila'}`,
+        `Abrir esta dúvida: ${link}`,
+        '',
       );
     });
     linhas.push('', 'Este e-mail é apenas um aviso. Responda pelo sistema para que a resposta apareça na apostila do usuário.');

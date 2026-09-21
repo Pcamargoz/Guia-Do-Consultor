@@ -99,6 +99,7 @@
       <p class="estudo-aviso" role="status" aria-live="polite"></p>
       <div class="estudo-progresso"><strong>Progresso da Apostila</strong><progress max="100" value="0"></progress><span data-progresso>0%</span><small data-itens-resumo></small></div>
       <button type="button" class="estudo-continuar" hidden>Continuar de onde parei</button>
+      <button type="button" class="estudo-limpar-comentarios" data-limpar-comentarios hidden>Limpar comentários</button>
       <form class="estudo-editor" hidden>
         <h3 data-editor-titulo></h3><p data-editor-trecho></p>
         <label data-cor-label>Cor <select name="cor"><option value="amarelo">Amarelo</option><option value="verde">Verde</option><option value="azul">Azul</option><option value="rosa">Rosa</option></select></label>
@@ -244,6 +245,10 @@
   }
   function renderLista() {
     lista.replaceChildren();
+    const comentariosRemoviveis = estado.marcacoes.filter((marcacao) => marcacao.tipo === 'comentario' && !estado.duvidas.some((duvida) => duvida.marcacaoId === marcacao.id));
+    const limparComentarios = interfaceEstudo.querySelector('[data-limpar-comentarios]');
+    limparComentarios.hidden = !comentariosRemoviveis.length;
+    limparComentarios.textContent = `Limpar comentários (${comentariosRemoviveis.length})`;
     const porSecao = new Map();
     for (const marcacao of estado.marcacoes) {
       const secao = marcacao.secao || `Página ${marcacao.pagina || 1}`;
@@ -348,6 +353,23 @@
       desenharMarcacoes(); renderLista();
       informar(`${nomes[registro.tipo] || 'Marcação'} removido.`);
     } catch (erro) { informar(erro.message); }
+  }
+
+  async function limparComentarios() {
+    const removiveis = estado.marcacoes.filter((marcacao) => marcacao.tipo === 'comentario' && !estado.duvidas.some((duvida) => duvida.marcacaoId === marcacao.id));
+    if (!removiveis.length) return;
+    const mensagem = `Excluir ${removiveis.length} comentário${removiveis.length === 1 ? '' : 's'} armazenado${removiveis.length === 1 ? '' : 's'}? Dúvidas já enviadas e suas respostas serão preservadas.`;
+    if (!window.confirm(mensagem)) return;
+    const botao = interfaceEstudo.querySelector('[data-limpar-comentarios]');
+    botao.disabled = true;
+    try {
+      const resultado = await api('DELETE', '&acao=limpar-comentarios');
+      const removidos = new Set(resultado.ids || []);
+      estado.marcacoes = estado.marcacoes.filter((marcacao) => !removidos.has(marcacao.id));
+      desenharMarcacoes(); renderLista();
+      informar(`${resultado.removidas} comentário${resultado.removidas === 1 ? '' : 's'} removido${resultado.removidas === 1 ? '' : 's'}.`);
+    } catch (erro) { informar(erro.message); }
+    finally { botao.disabled = false; }
   }
 
   /** Com uma ferramenta ativa, a ação acontece ao soltar a seleção. */
@@ -475,6 +497,7 @@
   interfaceEstudo.querySelector('[data-fechar-painel]').addEventListener('click', fecharPainel);
   interfaceEstudo.querySelector('[data-cancelar]').addEventListener('click', () => { editor.hidden = true; estado.editor = null; });
   interfaceEstudo.querySelector('.estudo-continuar').addEventListener('click', () => navegar(estado.progresso.ultimaPagina, null, estado.progresso.ultimoBloco));
+  interfaceEstudo.querySelector('[data-limpar-comentarios]').addEventListener('click', limparComentarios);
   editor.addEventListener('submit', async (e) => {
     e.preventDefault();
     const { tipo, registro, chave } = estado.editor || {};

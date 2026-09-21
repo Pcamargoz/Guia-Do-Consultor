@@ -9,7 +9,8 @@
   document.body.append(dialogo);
   const lista = dialogo.querySelector('.duv-lista');
   const status = dialogo.querySelector('.duv-status');
-  const estado = { duvidas: [], filtro: 'aberta', eu: null };
+  const idInicial = new URLSearchParams(location.search).get('duvida');
+  const estado = { duvidas: [], filtro: 'aberta', eu: null, alvo: /^\d+$/.test(idInicial || '') ? idInicial : null };
   const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
   async function api(url, method = 'GET', corpo) {
@@ -29,7 +30,7 @@
     if (!visiveis.length) { lista.innerHTML = '<p class="duv-vazio">Nenhuma dúvida nesta categoria.</p>'; return; }
     lista.innerHTML = visiveis.map((d) => {
       const minha = d.padrinhoId === String(estado.eu?.id);
-      return `<article class="duv-card" data-duvida="${esc(d.id)}">
+      return `<article class="duv-card${d.id === estado.alvo ? ' duv-card--destacada' : ''}" data-duvida="${esc(d.id)}"${d.id === estado.alvo ? ' tabindex="-1"' : ''}>
         <div class="duv-meta"><span class="duv-situacao duv-situacao--${esc(d.status)}">${d.status === 'respondida' ? 'Respondida' : d.padrinhoId ? 'Em atendimento' : 'Aguardando padrinho'}</span><span>Página ${esc(d.pagina || '?')} · ${esc(d.secao || 'Apostila')}</span></div>
         <h3>${esc(d.autor)}</h3>
         ${d.trecho ? `<blockquote>${esc(d.trecho)}</blockquote>` : ''}
@@ -44,18 +45,26 @@
           ${minha ? `<form class="duv-form" hidden><label>Resposta ao usuário<textarea name="resposta" rows="4" maxlength="4000" required></textarea></label><div><button type="button" data-cancelar>Cancelar</button><button type="submit">Publicar resposta</button></div></form>` : ''}`}
       </article>`;
     }).join('');
+    if (estado.alvo) requestAnimationFrame(() => {
+      const alvo = lista.querySelector(`[data-duvida="${estado.alvo}"]`);
+      alvo?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      alvo?.focus({ preventScroll: true });
+    });
   }
 
   async function carregar(mensagem = '') {
     status.textContent = mensagem || 'Carregando dúvidas…';
     try {
-      estado.duvidas = (await api('/api/duvidas')).duvidas;
+      const sufixo = estado.alvo ? `?id=${encodeURIComponent(estado.alvo)}` : '';
+      estado.duvidas = (await api(`/api/duvidas${sufixo}`)).duvidas;
       render();
-      status.textContent = mensagem;
+      status.textContent = mensagem || (estado.alvo && !estado.duvidas.length ? 'Esta dúvida não foi encontrada.' : '');
     } catch (erro) { status.textContent = erro.message; }
   }
 
-  document.addEventListener('ff:abrir-duvidas', async () => {
+  document.addEventListener('ff:abrir-duvidas', async (evento) => {
+    const id = String(evento.detail?.id || '');
+    if (/^\d+$/.test(id)) { estado.alvo = id; estado.filtro = 'todas'; }
     estado.eu = await window.ffSessao;
     dialogo.showModal();
     await carregar();
@@ -63,7 +72,15 @@
   dialogo.addEventListener('click', async (e) => {
     if (e.target === dialogo || e.target.closest('[data-fechar]')) { dialogo.close(); return; }
     const filtro = e.target.closest('[data-filtro]');
-    if (filtro) { estado.filtro = filtro.dataset.filtro; render(); return; }
+    if (filtro) {
+      estado.filtro = filtro.dataset.filtro;
+      if (estado.alvo) {
+        estado.alvo = null;
+        const url = new URL(location.href); url.searchParams.delete('duvida'); history.replaceState(null, '', url);
+        await carregar();
+      } else render();
+      return;
+    }
     const card = e.target.closest('[data-duvida]');
     if (!card) return;
     const id = card.dataset.duvida;
@@ -85,4 +102,5 @@
       await carregar('Resposta publicada na apostila do usuário.');
     } catch (erro) { status.textContent = erro.message; botao.disabled = false; }
   });
+  if (estado.alvo) queueMicrotask(() => document.dispatchEvent(new CustomEvent('ff:abrir-duvidas', { detail: { id: estado.alvo } })));
 })();
