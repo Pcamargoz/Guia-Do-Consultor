@@ -346,6 +346,14 @@
     input.addEventListener('blur', () => { setTimeout(() => { if (!concluido) salvar(); }, 120); });
   }
   window.ffPacotesAviso = aviso;
+  window.ffPacotesExportacao = {
+    obterDados: () => ({
+      cenario: { ...cenario },
+      faixa: H.estado.faixas[cenario.faixa] || '',
+      pacotes: H.estado.pacotes,
+      modulos: listaModulos(),
+    }),
+  };
 
   /* ---------- Sincronização ---------- */
   // Não re-renderiza enquanto alguém digita uma duração (formulário ativo); após salvar, o campo fica desabilitado.

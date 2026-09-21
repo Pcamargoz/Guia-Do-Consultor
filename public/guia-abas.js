@@ -15,6 +15,7 @@
     pacotes: svg('<circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5"/><path d="M9 2h6"/>'),
     apostila: svg('<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/>'),
     baixar: svg('<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>'),
+    planilha: svg('<path d="M4 3h12l4 4v14H4z"/><path d="M16 3v5h5M8 12h8M8 16h8M12 9v10"/>'),
     externo: svg('<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>'),
     email: svg('<rect x="2" y="4" width="20" height="16" rx="2"/><path d="m3 6 9 7 9-7"/>'),
     estudo: svg('<path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v17H6.5A2.5 2.5 0 0 1 4 17.5z"/><path d="M4 17.5A2.5 2.5 0 0 1 6.5 15H20"/><path d="M9 7h7M9 10h5"/>'),
@@ -34,7 +35,9 @@
     </div>
     <div class="ab-acoes">
       <a class="ab-btn ab-btn--destaque" href="/apostila" target="_blank" rel="noopener" data-so-apostila hidden aria-label="Estudar em nova aba" title="Grifos, anotações e checklist ficam disponíveis na apostila aberta em nova aba">${icone.estudo}<span>Estudar em nova aba</span>${icone.externo}</a>
-      <a class="ab-btn ab-btn--sec" href="${PDF}" download="${PDF_NOME}" title="Baixar a apostila em PDF" aria-label="Exportar PDF">${icone.baixar}<span>Exportar PDF</span></a>
+      <button type="button" class="ab-btn" data-so-pacotes data-exportar-pacotes="pdf" hidden title="Gerar relatório dos pacotes em PDF">${icone.baixar}<span>Exportar PDF</span></button>
+      <button type="button" class="ab-btn ab-btn--sec" data-so-pacotes data-exportar-pacotes="excel" hidden title="Baixar relatório dos pacotes para Excel">${icone.planilha}<span>Exportar Excel</span></button>
+      <a class="ab-btn ab-btn--sec" href="${PDF}" download="${PDF_NOME}" data-sem-pacotes title="Baixar a apostila em PDF" aria-label="Exportar PDF">${icone.baixar}<span>Exportar PDF</span></a>
     </div>`;
   main.prepend(topo);
 
@@ -133,6 +136,8 @@
       b.tabIndex = ativo ? 0 : -1;
     });
     topo.querySelectorAll('[data-so-apostila]').forEach((el) => { el.hidden = aba !== 'apostila'; });
+    topo.querySelectorAll('[data-so-pacotes]').forEach((el) => { el.hidden = aba !== 'pacotes'; });
+    topo.querySelectorAll('[data-sem-pacotes]').forEach((el) => { el.hidden = aba === 'pacotes'; });
     sidebar.querySelectorAll('.nav-item').forEach((n) => {
       if (aba !== 'guia') n.classList.toggle('active', n.dataset.abaNav === aba);
       else if (n.dataset.abaNav) n.classList.remove('active');
