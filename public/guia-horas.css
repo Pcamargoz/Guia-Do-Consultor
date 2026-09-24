@@ -383,3 +383,7 @@ button.hr-duracao:hover { border-style: solid; border-color: var(--brand-primary
 .pe-fixa-texto small { color: var(--color-muted); font-size: 12px; }
 .pe-etapa-min { text-align: right; font-weight: 700; font-variant-numeric: tabular-nums; }
 @media (max-width: 760px) { .pe-fixas-lista li { grid-template-columns: minmax(0, 1fr) 96px; } }
+
+/* Faixas acima de 5 usuários: explicação do cálculo a partir da faixa-pai */
+.pc-derivado { display: flex; gap: 8px; align-items: flex-start; margin: 0 0 12px; padding: 10px 12px; border-radius: var(--radius-md); background: var(--brand-primary-50); color: var(--brand-primary-900); font-size: 13px; line-height: 1.45; }
+.pc-derivado svg { flex: none; width: 16px; height: 16px; margin-top: 2px; color: var(--brand-primary-700); }

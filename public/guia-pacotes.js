@@ -63,8 +63,10 @@
     const select = painel.querySelector('[data-controle="faixa"]');
     select.innerHTML = H.estado.faixas.map((f, i) => `<option value="${i}"${cenario.faixa === i ? ' selected' : ''}>${esc(f)}</option>`).join('');
     painel.querySelector('[data-nota]').innerHTML = `${svg(I.info)}<span>${podeEditar
-      ? `As horas de cada módulo são editadas <strong>por pacote e por cenário</strong>: escolha o fluxo e a faixa de usuários acima e clique nas horas. O tempo total do card é a <strong>soma do que você preencheu</strong> (módulos + etapas + recursos), sem peso nem proporção da tabela de preços.`
-      : `Cenário ${esc(cenario.fluxo)} · ${esc(H.estado.faixas[cenario.faixa] || 'até 5 usuários')}. O total é a soma das horas preenchidas.`}</span>`;
+      ? (cenario.faixa === 0
+        ? `<strong>Até 5 usuários é a faixa-pai</strong>: as horas preenchidas aqui são a base das demais faixas. Clique nas horas de um módulo para editar. O total do card é a soma de módulos + etapas + recursos.`
+        : `<strong>Horas calculadas a partir de até 5 usuários</strong>: o pacote cresce na mesma proporção da tabela de preços; etapas e recursos ficam iguais e o acréscimo vai para os módulos. Os valores com <span aria-hidden="true">*</span> são calculados — clique para fixar um valor só para ${esc(H.estado.faixas[cenario.faixa] || '')}.`)
+      : `Cenário ${esc(cenario.fluxo)} · ${esc(H.estado.faixas[cenario.faixa] || 'até 5 usuários')}${cenario.faixa ? ' — horas calculadas a partir de até 5 usuários.' : ' (faixa-pai).'}`}</span>`;
   }
 
   /* ---------- Blocos visuais ---------- */
@@ -117,7 +119,7 @@
         <span class="pc-modulo-nome">${esc(m.nome)}</span>
         <span class="pc-modulo-trilho" aria-hidden="true"><span class="pc-modulo-barra" style="width:${Math.max(2, (m.minutos / maiorModulo) * 100)}%"></span></span>
         ${podeEditar
-          ? `<button type="button" class="pc-modulo-horas pc-modulo-horas--editar${m.proprio ? ' pc-modulo-horas--proprio' : ''}" data-editar-modulo="${esc(m.id)}" data-pacote="${esc(pacote.id)}" title="${m.proprio ? `Valor salvo para ${esc(cenarioTxt)}` : `Mesmas horas da base; clique para definir um valor só para ${esc(cenarioTxt)}`}" aria-label="Horas de ${esc(m.nome)} no pacote ${esc(pacote.nome)} (${esc(cenarioTxt)}): ${H.formatar(m.minutos, { vazio: '0h' })}. Editar">${H.formatar(m.minutos, { vazio: '0h' })}${m.proprio ? '' : '<span aria-hidden="true">*</span>'}</button>`
+          ? `<button type="button" class="pc-modulo-horas pc-modulo-horas--editar${m.proprio ? ' pc-modulo-horas--proprio' : ''}" data-editar-modulo="${esc(m.id)}" data-pacote="${esc(pacote.id)}" title="${m.origem === 'proprio' ? `Valor fixado para ${esc(cenarioTxt)}` : m.origem === 'calculado' ? `Calculado a partir de até 5 usuários (${H.formatar(m.pai, { vazio: '0h' })}); clique para fixar um valor só para ${esc(cenarioTxt)}` : `Horas de até 5 usuários (faixa-pai)`}" aria-label="Horas de ${esc(m.nome)} no pacote ${esc(pacote.nome)} (${esc(cenarioTxt)}): ${H.formatar(m.minutos, { vazio: '0h' })}. Editar">${H.formatar(m.minutos, { vazio: '0h' })}${m.origem === 'calculado' ? '<span aria-hidden="true">*</span>' : ''}</button>`
           : `<span class="pc-modulo-horas">${H.formatar(m.minutos, { vazio: '0h' })}</span>`}
         <span class="pc-modulo-pct">${pct(m.minutos, t.total)}%</span>
       </div></li>`).join('')}</ul>` : '<p class="ed-nada">Nenhum módulo do guia neste pacote.</p>';
@@ -167,6 +169,7 @@
 
         <section class="pc-bloco" aria-label="Módulos e horas">
           <h4 class="pc-bloco-titulo">${svg(I.camadas)}Módulos contemplados <span class="pc-bloco-soma">${H.formatar(t.minutosModulos, { vazio: '0h' })}</span></h4>
+          ${cenario.faixa > 0 && !indisponivel && t.calculados ? `<p class="pc-derivado">${svg(I.info)}<span>Calculado a partir de até 5 usuários: módulos ${H.formatar(t.minutosModulosPai, { vazio: '0h' })} → <strong>${H.formatar(t.minutosModulos, { vazio: '0h' })}</strong> (+${H.formatar(Math.max(0, t.minutosModulos - t.minutosModulosPai), { vazio: '0h' })}). Etapas e recursos não mudam com o número de usuários.</span></p>` : ''}
           ${indisponivel ? '' : modulosHtml}
           ${botaoEditor}
         </section>

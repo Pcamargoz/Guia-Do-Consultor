@@ -2,6 +2,8 @@
    Estrutura: Pacote → Módulos (horas preenchidas por módulo em cada pacote) + etapas + recursos → total do pacote.
    As tarefas (funcionalidades) e os itens da checklist não têm horas próprias: só descrição, prioridade e nível.
    O total do card é a soma direta do que foi preenchido; a tabela de preços só serve de comparativo.
+   Faixas de usuários: a primeira faixa (até 5 usuários) de cada fluxo é o PAI. Nas faixas seguintes,
+   módulos sem valor próprio são calculados a partir dele — ver derivarModulos().
    Eventos: "ff:pacotes" (pacotes carregados/alterados) e "ff:pacote-ref" (pacote de referência mudou). */
 (() => {
   const CHAVE_REF = 'ff-pacote-ref';
@@ -52,17 +54,68 @@
     return pacotesDoModulo(moduloId)[0] || null;
   }
 
-  /** Horas do módulo no pacote para o cenário (fluxo + faixa). Só o valor preenchido:
-      o do próprio cenário, ou o da base se aquele cenário ainda não tiver horas próprias.
-      Não multiplica pela tabela de preços. */
-  function valorModulo(pacote, moduloId, fluxo = 'Premium', faixa = 0) {
+  const inteiro = (x) => (Number.isFinite(Number(x)) && x != null && x !== '' ? Number(x) : null);
+
+  /** Valor salvo para exatamente este cenário (null se não houver). */
+  function valorSalvo(pacote, moduloId, fluxo, faixa) {
     const v = pacote?.horasModulos?.[moduloId];
-    const inteiro = (x) => (Number.isFinite(Number(x)) && x != null && x !== '' ? Number(x) : null);
-    if (typeof v === 'number') return v;
-    if (!v || typeof v !== 'object') return 0;
-    const direto = inteiro(v[fluxo]?.[faixa]);
-    if (direto != null) return direto;
-    return inteiro(v.Premium?.[0]) ?? 0;
+    if (typeof v === 'number') return fluxo === 'Premium' && faixa === 0 ? v : null;
+    return inteiro(v?.[fluxo]?.[faixa]);
+  }
+
+  /** Horas do PAI (primeira faixa, até 5 usuários) do fluxo; sem valor no fluxo, usa a base Premium. */
+  function valorPai(pacote, moduloId, fluxo) {
+    return valorSalvo(pacote, moduloId, fluxo, 0) ?? valorSalvo(pacote, moduloId, 'Premium', 0) ?? 0;
+  }
+
+  const somar = (lista) => lista.reduce((s, e) => s + e.minutos, 0);
+
+  /**
+   * Horas dos módulos em uma faixa de usuários, calculadas a partir do pai (até 5 usuários):
+   *  1. O pacote cresce na mesma proporção da tabela de preços entre as faixas
+   *     (ex.: 80h → 88h = +10%), aplicada ao total do pai (módulos + etapas + recursos).
+   *  2. Etapas de implantação e recursos gerais não dependem do nº de usuários: ficam iguais.
+   *  3. Todo o acréscimo vai para os módulos (treinamento e acompanhamento crescem com os usuários),
+   *     dividido na proporção das horas de cada módulo no pai.
+   *  4. Arredonda de 5 em 5 minutos e ajusta a sobra no maior módulo, para a soma fechar exata.
+   * Módulos com valor salvo para aquela faixa mantêm o valor digitado.
+   * Retorna Map(moduloId → { minutos, origem: 'proprio' | 'pai' | 'calculado', pai }).
+   */
+  function derivarModulos(pacote, fluxo = 'Premium', faixa = 0) {
+    const ids = pacote?.modulos || [];
+    const saida = new Map();
+    const pais = ids.map((id) => valorPai(pacote, id, fluxo));
+    if (faixa === 0) {
+      ids.forEach((id, i) => {
+        const proprio = valorSalvo(pacote, id, fluxo, 0);
+        saida.set(id, { minutos: proprio ?? pais[i], origem: proprio != null ? 'proprio' : 'pai', pai: pais[i] });
+      });
+      return saida;
+    }
+    const tab0 = Number(pacote.precos?.[fluxo]?.[0]);
+    const tabN = Number(pacote.precos?.[fluxo]?.[faixa]);
+    const crescimento = tab0 > 0 && tabN > 0 ? tabN / tab0 : 1;
+    const fixas = somar(pacote.etapas || []);
+    const somaPais = pais.reduce((a, b) => a + b, 0);
+    const acrescimo = (somaPais + fixas) * (crescimento - 1);
+    const alvo = somaPais + acrescimo;
+    const brutos = pais.map((p) => (somaPais ? (p * alvo) / somaPais : alvo / (ids.length || 1)));
+    const valores = brutos.map((v) => Math.max(0, Math.round(v / 5) * 5));
+    const resto = Math.round(alvo / 5) * 5 - valores.reduce((a, b) => a + b, 0);
+    if (resto && valores.length) {
+      const i = valores.indexOf(Math.max(...valores));
+      valores[i] = Math.max(0, valores[i] + resto);
+    }
+    ids.forEach((id, i) => {
+      const proprio = valorSalvo(pacote, id, fluxo, faixa);
+      saida.set(id, { minutos: proprio ?? valores[i], origem: proprio != null ? 'proprio' : 'calculado', pai: pais[i] });
+    });
+    return saida;
+  }
+
+  /** Horas do módulo no pacote para o cenário (fluxo + faixa): o valor salvo, o do pai ou o calculado. */
+  function valorModulo(pacote, moduloId, fluxo = 'Premium', faixa = 0) {
+    return derivarModulos(pacote, fluxo, faixa).get(moduloId)?.minutos ?? 0;
   }
 
   const totalModulo = (modulo, pacoteId, fluxo, faixa) => {
@@ -70,11 +123,9 @@
     return valorModulo(pacote, modulo?.id ?? modulo, fluxo, faixa) ?? 0;
   };
 
-  /** O módulo tem valor SALVO especificamente para este cenário (não o da base reutilizado)? */
+  /** O módulo tem valor SALVO especificamente para este cenário? */
   function temValorProprio(pacote, moduloId, fluxo = 'Premium', faixa = 0) {
-    const v = pacote?.horasModulos?.[moduloId];
-    if (typeof v === 'number') return fluxo === 'Premium' && faixa === 0;
-    return Number.isFinite(Number(v?.[fluxo]?.[faixa])) && v?.[fluxo]?.[faixa] != null && v?.[fluxo]?.[faixa] !== '';
+    return valorSalvo(pacote, moduloId, fluxo, faixa) != null;
   }
 
   /** Total do pacote: soma direta das horas preenchidas (módulos do cenário + etapas + recursos).
@@ -82,16 +133,19 @@
   function totalPacote(pacote, modulos, fluxo = 'Premium', faixa = 0) {
     const etapas = pacote.etapas.filter((e) => e.grupo === 'etapa');
     const recursos = pacote.etapas.filter((e) => e.grupo === 'recurso');
-    const somar = (lista) => lista.reduce((s, e) => s + e.minutos, 0);
+    const derivados = derivarModulos(pacote, fluxo, faixa);
     const porModulo = pacote.modulos
       .map((id) => modulos.find((m) => m.id === id))
       .filter(Boolean)
-      .map((m) => ({
-        id: m.id, nome: m.nome, cor: m.cor,
-        minutos: valorModulo(pacote, m.id, fluxo, faixa),
-        proprio: temValorProprio(pacote, m.id, fluxo, faixa),
-        itens: (m.checklist || []).length,
-      }));
+      .map((m) => {
+        const d = derivados.get(m.id) || { minutos: 0, origem: 'pai', pai: 0 };
+        return {
+          id: m.id, nome: m.nome, cor: m.cor,
+          minutos: d.minutos, pai: d.pai, origem: d.origem,
+          proprio: d.origem === 'proprio',
+          itens: (m.checklist || []).length,
+        };
+      });
     const minutosEtapas = somar(etapas);
     const minutosRecursos = somar(recursos);
     const minutosModulos = porModulo.reduce((s, m) => s + m.minutos, 0);
@@ -99,6 +153,9 @@
       etapas, recursos, porModulo, minutosEtapas, minutosRecursos, minutosModulos,
       minutosEtapasBase: minutosEtapas, minutosRecursosBase: minutosRecursos,
       total: minutosEtapas + minutosRecursos + minutosModulos,
+      // Comparação com o pai (até 5 usuários) para explicar o cálculo das demais faixas.
+      minutosModulosPai: porModulo.reduce((s, m) => s + m.pai, 0),
+      calculados: porModulo.filter((m) => m.origem === 'calculado').length,
       base: (pacote.precos.Premium?.[0] ?? 0) * 60,
       tabela: (pacote.precos[fluxo]?.[faixa] ?? 0) * 60,
     };
@@ -136,7 +193,7 @@
   window.ffHoras = {
     estado, formatar, interpretar, carregar, substituirPacote,
     pacoteRef, definirRef, pacotesDoModulo, pacoteParaModulo, totalModulo, totalPacote, fator,
-    valorModulo, temValorProprio,
+    valorModulo, temValorProprio, valorPai, derivarModulos,
   };
 
   window.ffSessao?.then((usuario) => { if (usuario) carregar(); });

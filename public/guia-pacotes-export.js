@@ -99,7 +99,7 @@
       y += 9; texto(`${t.porModulo.length} módulos · ${p.funcionalidades.length} funcionalidades`, margem, y, 8.5, false, { cor: C.texto }); y += 8;
       const metricas = [['Etapas', t.minutosEtapas], ['Módulos', t.minutosModulos], ['Recursos', t.minutosRecursos], ['Tabela de preços', t.tabela]];
       metricas.forEach(([rotulo, minutos], i) => { const x = margem + i * 66; cor('setFillColor', C.fundo); doc.roundedRect(x, y, 62, 17, 3, 3, 'F'); texto(rotulo, x + 4, y + 6, 7, false, { cor: C.texto }); texto(H.formatar(minutos, { vazio: '0h' }), x + 4, y + 13, 12, true, { cor: C.marinho }); }); y += 25;
-      tabela('Módulos contemplados', ['Módulo', 'Duração', '% do total', 'Origem'], t.porModulo.map((m) => [m.nome, H.formatar(m.minutos, { vazio: '0h' }), `${pct(m.minutos, t.total)}%`, m.proprio ? 'Valor próprio' : 'Da base']), [112, 43, 43, 57]);
+      tabela('Módulos contemplados', ['Módulo', 'Duração', '% do total', 'Origem'], t.porModulo.map((m) => [m.nome, H.formatar(m.minutos, { vazio: '0h' }), `${pct(m.minutos, t.total)}%`, ({ proprio: 'Fixado para a faixa', calculado: 'Calculado de até 5 usuários', pai: 'Faixa-pai (até 5 usuários)' })[m.origem] || '']), [112, 43, 43, 57]);
       tabela('Etapas de implantação', ['Etapa', 'Duração'], t.etapas.map((e) => [e.texto, H.formatar(e.minutos, { vazio: '0h' })]), [210, 45]);
       tabela('Recursos gerais', ['Recurso', 'Duração'], t.recursos.map((e) => [e.texto, H.formatar(e.minutos, { vazio: '0h' })]), [210, 45]);
       tabela('Funcionalidades incluídas', ['Módulo', 'Funcionalidade', 'Nível', 'Prioridade'], p.funcionalidades.map((f) => [f.modulo || 'Geral', f.funcionalidade, f.nivel, f.complexidade]), [50, 140, 30, 35]);
@@ -127,7 +127,7 @@
     for (const { pacote: p, totais: t, disponivel } of dados.pacotes) {
       resumo.push([p.nome, p.nivel, dados.cenario.fluxo, dados.faixa, disponivel ? t.minutosEtapas : '', disponivel ? t.minutosModulos : '', disponivel ? t.minutosRecursos : '', disponivel ? t.total : '', disponivel ? H.formatar(t.total, { vazio: '0h' }) : 'Indisponível', disponivel ? t.tabela / 60 : '', p.funcionalidades.length]);
       if (disponivel) {
-        for (const m of t.porModulo) modulos.push([p.nome, m.nome, m.minutos, H.formatar(m.minutos, { vazio: '0h' }), pct(m.minutos, t.total), m.proprio ? 'Valor próprio do cenário' : 'Da base']);
+        for (const m of t.porModulo) modulos.push([p.nome, m.nome, m.minutos, H.formatar(m.minutos, { vazio: '0h' }), pct(m.minutos, t.total), ({ proprio: 'Fixado para a faixa', calculado: 'Calculado de até 5 usuários', pai: 'Faixa-pai (até 5 usuários)' })[m.origem] || '']);
         for (const e of [...t.etapas.map((x) => ({ ...x, tipo: 'Etapa de implantação' })), ...t.recursos.map((x) => ({ ...x, tipo: 'Recurso geral' }))]) {
           etapas.push([p.nome, e.tipo, e.texto, e.detalhe || '', e.minutos, H.formatar(e.minutos, { vazio: '0h' })]);
         }

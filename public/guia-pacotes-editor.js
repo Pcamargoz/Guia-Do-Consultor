@@ -75,9 +75,11 @@
     blocoEl.toggleAttribute('data-cenario-proprio', Boolean(tem));
     blocoEl.classList.toggle('pe-bloco--proprio', Boolean(tem));
   }
-  /** Valor do módulo no cenário atual: o preenchido neste cenário, senão o da base (sem multiplicar). */
+  /** Valor do módulo no cenário atual: o preenchido neste cenário; nas faixas acima de 5 usuários,
+      o calculado a partir da faixa-pai; na faixa-pai sem valor, o da base. */
   function valorNoMapa(id) {
     if (temNoMapa(id)) return Number(mapaHoras[id][cenario.fluxo][cenario.faixa]);
+    if (cenario.faixa > 0 && pacote?.modulos.includes(id)) return H.valorModulo(pacote, id, cenario.fluxo, cenario.faixa);
     const base = Number(mapaHoras[id]?.Premium?.[0]);
     if (Number.isFinite(base)) return base;
     return H.valorModulo(pacote, id, cenario.fluxo, cenario.faixa);
@@ -103,6 +105,14 @@
     if (sel) sel.value = String(cenario.faixa);
     const txt = dialog.querySelector('[data-cenario-txt]');
     if (txt) txt.textContent = `editando horas para ${cenarioTxt()}`;
+    const dicaCenario = dialog.querySelector('[data-cenario-dica]');
+    if (dicaCenario) {
+      dicaCenario.innerHTML = cenario.faixa === 0
+        ? '<strong>Até 5 usuários é a faixa-pai.</strong> As horas daqui servem de base para as demais faixas, que são calculadas automaticamente.'
+        : '<strong>Horas calculadas a partir de até 5 usuários</strong>: o pacote cresce na proporção da tabela de preços, etapas e recursos ficam iguais e o acréscimo vai para os módulos. Digite um valor para fixá-lo só nesta faixa, ou use “Voltar ao cálculo automático”.';
+    }
+    const auto = dialog.querySelector('[data-usar-automatico]');
+    if (auto) auto.hidden = cenario.faixa === 0;
     const dica = dialog.querySelector('[data-fixas-dica]');
     if (dica) dica.textContent = 'Entram no total do pacote junto com as horas dos módulos, com os valores preenchidos (sem peso nem proporção).';
   }
@@ -277,7 +287,7 @@
             <span class="pc-seg" role="radiogroup">${fluxos}</span>
             <label class="pe-cenario-faixa"><span class="pc-controle-rotulo">Faixa de usuários</span>
               <select class="ed-input" data-pe-faixa aria-label="Faixa de usuários do cenário das horas">${faixas}</select></label>
-            <p class="pe-cenario-dica">As horas dos módulos mudam <strong>só para este cenário</strong>; módulos, tarefas, etapas e recursos são compartilhados. Sem valor próprio neste cenário, o card reutiliza as horas da base, sem multiplicar pela tabela.</p>
+            <p class="pe-cenario-dica" data-cenario-dica></p>
           </div>
           <p class="pe-explica">As <strong>horas</strong> são do módulo inteiro. As <strong>tarefas</strong> não têm horas: só descrição, prioridade (Alta, Média ou Baixa) e nível — a prioridade classifica a tarefa e <strong>não entra no total</strong>.</p>
           <p id="pe-ajuda-horas" class="ed-sr">Formatos aceitos: 1h30, 45min, 2 (horas).</p>
@@ -293,6 +303,7 @@
             <span class="pe-ferramentas-titulo">Horas dos módulos <span data-cenario-tag>${esc(cenarioTxt())}</span></span>
             <div class="pe-ferramentas-acoes">
               <button type="button" class="ed-btn" data-ajustar-tabela title="Distribui proporcionalmente entre os módulos até o total do pacote bater com a tabela de preços">${svg(I.relogio)}Ajustar para bater com a tabela</button>
+              <button type="button" class="ed-btn" data-usar-automatico hidden title="Remove os valores fixados nesta faixa e volta a calcular a partir de até 5 usuários">${svg(I.relogio)}Voltar ao cálculo automático</button>
               ${temPlanilha(pacote.id) ? `<button type="button" class="ed-btn" data-restaurar-planilha title="Volta às horas originais da planilha de distribuição de horas">${svg(I.relogio)}Restaurar horas da planilha</button>` : ''}
             </div>
             <p class="pe-ferramentas-dica">Os valores entram nos campos acima; confira e clique em <strong>Salvar pacote</strong>.</p>
@@ -305,6 +316,7 @@
           <button type="submit" class="ed-btn ed-btn--primario">Salvar pacote</button>
         </div>
       </form>`;
+    aplicarCenarioNosCampos();
     atualizarResumo();
     dialog.showModal();
     dialog.querySelector('.pe-minutos, .pe-descricao')?.focus();
@@ -413,7 +425,18 @@
       atualizarResumo();
       return;
     }
-    if (e.target.closest('[data-ajustar-tabela]')) ajustarParaTabela();
+    if (e.target.closest('[data-ajustar-tabela]')) { ajustarParaTabela(); return; }
+    if (e.target.closest('[data-usar-automatico]') && cenario.faixa > 0) {
+      for (const b of blocosComHoras()) {
+        const id = b.dataset.moduloId;
+        if (mapaHoras[id]?.[cenario.fluxo]) delete mapaHoras[id][cenario.fluxo][cenario.faixa];
+        editados.delete(chaveCenario(id));
+        campoHoras(b).value = H.formatar(H.valorModulo(pacote, id, cenario.fluxo, cenario.faixa) , { vazio: '0h' });
+        marcarProprio(b, false);
+      }
+      sujo = true;
+      atualizarResumo();
+    }
   });
 
   /** Distribui a diferença entre os módulos até total (módulos + etapas + recursos) = tabela do cenário. */
