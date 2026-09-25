@@ -71,13 +71,30 @@
   const somar = (lista) => lista.reduce((s, e) => s + e.minutos, 0);
 
   /**
+   * Distribui minutos em HORAS CHEIAS (módulos não usam horários quebrados), pelo maior resto:
+   * cada valor recebe a parte inteira em horas e as horas que faltam para fechar o alvo
+   * (arredondado para a hora mais próxima) vão para os maiores restos. Devolve minutos.
+   */
+  function horasCheias(brutos, alvo) {
+    const horas = brutos.map((v) => Math.max(0, v) / 60);
+    const inteiras = horas.map(Math.floor);
+    let faltam = Math.max(0, Math.round(alvo / 60)) - inteiras.reduce((a, b) => a + b, 0);
+    const ordem = horas.map((h, i) => ({ i, resto: h - Math.floor(h) })).sort((a, b) => b.resto - a.resto || horas[b.i] - horas[a.i]);
+    for (let k = 0; faltam > 0 && ordem.length; k = (k + 1) % ordem.length, faltam -= 1) inteiras[ordem[k].i] += 1;
+    for (let k = ordem.length - 1; faltam < 0 && k >= 0; k -= 1) {
+      if (inteiras[ordem[k].i] > 0) { inteiras[ordem[k].i] -= 1; faltam += 1; }
+    }
+    return inteiras.map((h) => h * 60);
+  }
+
+  /**
    * Horas dos módulos em uma faixa de usuários, calculadas a partir do pai (até 5 usuários):
    *  1. O pacote cresce na mesma proporção da tabela de preços entre as faixas
    *     (ex.: 80h → 88h = +10%), aplicada ao total do pai (módulos + etapas + recursos).
    *  2. Etapas de implantação e recursos gerais não dependem do nº de usuários: ficam iguais.
    *  3. Todo o acréscimo vai para os módulos (treinamento e acompanhamento crescem com os usuários),
    *     dividido na proporção das horas de cada módulo no pai.
-   *  4. Arredonda de 5 em 5 minutos e ajusta a sobra no maior módulo, para a soma fechar exata.
+   *  4. Usa só horas cheias (sem horários quebrados), distribuídas pelo maior resto (horasCheias).
    * Módulos com valor salvo para aquela faixa mantêm o valor digitado.
    * Retorna Map(moduloId → { minutos, origem: 'proprio' | 'pai' | 'calculado', pai }).
    */
@@ -100,12 +117,7 @@
     const acrescimo = (somaPais + fixas) * (crescimento - 1);
     const alvo = somaPais + acrescimo;
     const brutos = pais.map((p) => (somaPais ? (p * alvo) / somaPais : alvo / (ids.length || 1)));
-    const valores = brutos.map((v) => Math.max(0, Math.round(v / 5) * 5));
-    const resto = Math.round(alvo / 5) * 5 - valores.reduce((a, b) => a + b, 0);
-    if (resto && valores.length) {
-      const i = valores.indexOf(Math.max(...valores));
-      valores[i] = Math.max(0, valores[i] + resto);
-    }
+    const valores = horasCheias(brutos, alvo);
     ids.forEach((id, i) => {
       const proprio = valorSalvo(pacote, id, fluxo, faixa);
       saida.set(id, { minutos: proprio ?? valores[i], origem: proprio != null ? 'proprio' : 'calculado', pai: pais[i] });
@@ -193,7 +205,7 @@
   window.ffHoras = {
     estado, formatar, interpretar, carregar, substituirPacote,
     pacoteRef, definirRef, pacotesDoModulo, pacoteParaModulo, totalModulo, totalPacote, fator,
-    valorModulo, temValorProprio, valorPai, derivarModulos,
+    valorModulo, temValorProprio, valorPai, derivarModulos, horasCheias,
   };
 
   window.ffSessao?.then((usuario) => { if (usuario) carregar(); });

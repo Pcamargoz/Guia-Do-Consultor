@@ -460,13 +460,8 @@
     const soma = atuais.reduce((a, b) => a + b, 0);
     // Com horas: mantém a proporção entre os módulos. Sem horas ainda: divide por igual.
     const brutos = atuais.map((v) => (soma ? (v * alvo) / soma : alvo / blocos.length));
-    // Arredonda de 5 em 5 minutos e joga a sobra no maior módulo, para o total fechar exatamente.
-    const valores = brutos.map((v) => Math.max(0, Math.round(v / 5) * 5));
-    const resto = alvo - valores.reduce((a, b) => a + b, 0);
-    if (resto) {
-      const i = valores.indexOf(Math.max(...valores));
-      valores[i] = Math.max(0, valores[i] + resto);
-    }
+    // Só horas cheias nos módulos (sem horários quebrados), distribuídas pelo maior resto.
+    const valores = H.horasCheias(brutos, alvo);
     blocos.forEach((b, i) => {
       campoHoras(b).value = H.formatar(valores[i], { vazio: '0h' });
       gravarNoMapa(b.dataset.moduloId, valores[i]);
