@@ -1,6 +1,6 @@
-/* Faktory Flow — Abas do Guia do Consultor e conteúdos auxiliares.
+/* Faktory Flow — Abas do Guia do Consultor: "Guia", "Pacotes e Horas", "Checklist" e "Apostila".
    Cabeçalho com as abas + ações da aba atual; a apostila abre dentro do guia em modo leitura
-   (iframes carregados só na primeira visita). Endereços diretos seguem o id da aba.
+   (iframe carregado só na primeira visita) — o Modo Estudo fica na apostila aberta em nova aba. Endereços diretos: #pacotes, #checklist e #apostila.
    Ao trocar de aba dispara o evento "ff:aba" (detail.aba) no document. */
 (() => {
   const PDF = '/downloads/Apostila-do-Consultor-Faktory-Flow.pdf';
@@ -14,7 +14,6 @@
     guia: svg('<rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/>'),
     pacotes: svg('<circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5"/><path d="M9 2h6"/>'),
     checklist: svg('<path d="m9 11 2 2 4-4"/><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"/><path d="M15 3h6v6"/><path d="m14 10 7-7"/>'),
-    teste: svg('<rect x="3" y="4" width="18" height="16" rx="2"/><path d="m7 9 3 3-3 3M13 15h4"/>'),
     apostila: svg('<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/>'),
     baixar: svg('<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>'),
     planilha: svg('<path d="M4 3h12l4 4v14H4z"/><path d="M16 3v5h5M8 12h8M8 16h8M12 9v10"/>'),
@@ -26,7 +25,6 @@
     { id: 'guia', rotulo: 'Guia do Consultor' },
     { id: 'pacotes', rotulo: 'Pacotes e Horas' },
     { id: 'checklist', rotulo: 'Checklist' },
-    { id: 'teste', rotulo: 'TESTE FAKTORY FLOW' },
     { id: 'apostila', rotulo: 'Apostila' },
   ];
 
@@ -58,7 +56,7 @@
   const paineis = { guia: criarPainel('guia', 'div') };
   while (topo.nextSibling) paineis.guia.appendChild(topo.nextSibling);
   main.appendChild(paineis.guia);
-  for (const id of ['pacotes', 'checklist', 'teste', 'apostila']) {
+  for (const id of ['pacotes', 'checklist', 'apostila']) {
     paineis[id] = criarPainel(id);
     paineis[id].hidden = true;
     main.appendChild(paineis[id]);
@@ -117,13 +115,11 @@
   const navs = {
     pacotes: navItem('pacotes', 'Pacotes e Horas'),
     checklist: navItem('checklist', 'Checklist'),
-    teste: navItem('teste', 'TESTE FAKTORY FLOW'),
     apostila: navItem('apostila', 'Apostila do Consultor'),
   };
   const modulos = secao('Módulos');
   (modulos ? modulos.nextElementSibling : sidebar.lastElementChild).after(navs.pacotes);
   navs.pacotes.after(navs.checklist);
-  navs.checklist.after(navs.teste);
   const referencia = secao('Referência');
   (referencia ? referencia.nextElementSibling : sidebar.lastElementChild).after(navs.apostila);
 
@@ -139,11 +135,6 @@
     if (aba === 'apostila' && !paineis.apostila.firstChild) {
       paineis.apostila.innerHTML = `<iframe class="ab-frame" src="/apostila" title="Apostila do Consultor — Faktory Flow" loading="lazy"></iframe>`;
     }
-    if (aba === 'teste' && !paineis.teste.firstChild) {
-      paineis.teste.innerHTML = `
-        <header class="ck-header ab-teste-header"><h1>TESTE FAKTORY FLOW</h1></header>
-        <iframe class="ab-frame ab-frame--teste" src="https://faktoryflow-backend-staging.azurewebsites.net/f/contato-para-duvidas" title="Formulário de contato para dúvidas — Faktory Flow" width="100%" height="600" frameborder="0" loading="lazy"></iframe>`;
-    }
     for (const [id, painel] of Object.entries(paineis)) painel.hidden = id !== aba;
     document.body.classList.toggle('ab-modo-apostila', aba === 'apostila');
     topo.querySelectorAll('.ab-aba').forEach((b) => {
@@ -153,7 +144,7 @@
     });
     topo.querySelectorAll('[data-so-apostila]').forEach((el) => { el.hidden = aba !== 'apostila'; });
     topo.querySelectorAll('[data-so-pacotes]').forEach((el) => { el.hidden = aba !== 'pacotes'; });
-    topo.querySelectorAll('[data-so-guia]').forEach((el) => { el.hidden = aba === 'pacotes' || aba === 'checklist' || aba === 'teste'; });
+    topo.querySelectorAll('[data-so-guia]').forEach((el) => { el.hidden = aba === 'pacotes' || aba === 'checklist'; });
     sidebar.querySelectorAll('.nav-item').forEach((n) => {
       if (aba !== 'guia') n.classList.toggle('active', n.dataset.abaNav === aba);
       else if (n.dataset.abaNav) n.classList.remove('active');

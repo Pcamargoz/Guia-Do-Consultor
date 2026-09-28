@@ -78,8 +78,6 @@
   border: 1px solid var(--color-line); border-radius: var(--radius-xl);
   background: var(--color-canvas); box-shadow: var(--shadow-lg);
 }
-.ab-teste-header { margin-bottom: 20px; }
-.ab-frame--teste { height: 600px; min-height: 600px; }
 
 /* O item "Apostila" do menu recebe o mesmo estilo dos demais itens. */
 .ff-guide .ab-nav-apostila { text-decoration: none; }
