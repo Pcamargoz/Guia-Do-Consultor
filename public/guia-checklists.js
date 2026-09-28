@@ -49,7 +49,7 @@
       <article class="ck-item">
         <div class="ck-item-topo"><span class="ck-icone">${svg(icones.lista)}</span></div>
         <div class="ck-item-info"><span class="ck-area">${esc(item.area)}</span><h2>${esc(item.nome)}</h2><p>Checklist interativo independente em HTML.</p></div>
-        <a class="ck-baixar" href="/checklists/${encodeURIComponent(item.arquivo)}" download="${esc(item.arquivo)}">${svg(icones.baixar)}Baixar checklist HTML</a>
+        <a class="ck-baixar" href="/api/checklists-download?arquivo=${encodeURIComponent(item.arquivo)}" download="${esc(item.arquivo)}">${svg(icones.baixar)}Baixar checklist HTML</a>
       </article>`).join('');
   }
 
