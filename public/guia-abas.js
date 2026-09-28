@@ -1,6 +1,6 @@
-/* Faktory Flow — Abas do Guia do Consultor: "Guia", "Pacotes e Horas" e "Apostila".
+/* Faktory Flow — Abas do Guia do Consultor: "Guia", "Pacotes e Horas", "Checklist" e "Apostila".
    Cabeçalho com as abas + ações da aba atual; a apostila abre dentro do guia em modo leitura
-   (iframe carregado só na primeira visita) — o Modo Estudo fica na apostila aberta em nova aba. Endereços diretos: #pacotes e #apostila.
+   (iframe carregado só na primeira visita) — o Modo Estudo fica na apostila aberta em nova aba. Endereços diretos: #pacotes, #checklist e #apostila.
    Ao trocar de aba dispara o evento "ff:aba" (detail.aba) no document. */
 (() => {
   const PDF = '/downloads/Apostila-do-Consultor-Faktory-Flow.pdf';
@@ -13,6 +13,7 @@
   const icone = {
     guia: svg('<rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/>'),
     pacotes: svg('<circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5"/><path d="M9 2h6"/>'),
+    checklist: svg('<path d="m9 11 2 2 4-4"/><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"/><path d="M15 3h6v6"/><path d="m14 10 7-7"/>'),
     apostila: svg('<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/>'),
     baixar: svg('<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>'),
     planilha: svg('<path d="M4 3h12l4 4v14H4z"/><path d="M16 3v5h5M8 12h8M8 16h8M12 9v10"/>'),
@@ -23,6 +24,7 @@
   const ABAS = [
     { id: 'guia', rotulo: 'Guia do Consultor' },
     { id: 'pacotes', rotulo: 'Pacotes e Horas' },
+    { id: 'checklist', rotulo: 'Checklist' },
     { id: 'apostila', rotulo: 'Apostila' },
   ];
 
@@ -37,7 +39,7 @@
       <a class="ab-btn ab-btn--destaque" href="/apostila" target="_blank" rel="noopener" data-so-apostila hidden aria-label="Estudar em nova aba" title="Grifos, anotações e checklist ficam disponíveis na apostila aberta em nova aba">${icone.estudo}<span>Estudar em nova aba</span>${icone.externo}</a>
       <button type="button" class="ab-btn" data-so-pacotes data-exportar-pacotes="pdf" hidden title="Gerar relatório dos pacotes em PDF">${icone.baixar}<span>Exportar PDF</span></button>
       <button type="button" class="ab-btn ab-btn--sec" data-so-pacotes data-exportar-pacotes="excel" hidden title="Baixar relatório dos pacotes para Excel">${icone.planilha}<span>Exportar Excel</span></button>
-      <a class="ab-btn ab-btn--sec" href="${PDF}" download="${PDF_NOME}" data-sem-pacotes title="Baixar a apostila em PDF" aria-label="Exportar PDF">${icone.baixar}<span>Exportar PDF</span></a>
+      <a class="ab-btn ab-btn--sec" href="${PDF}" download="${PDF_NOME}" data-so-guia title="Baixar a apostila em PDF" aria-label="Exportar PDF">${icone.baixar}<span>Exportar PDF</span></a>
     </div>`;
   main.prepend(topo);
 
@@ -54,7 +56,7 @@
   const paineis = { guia: criarPainel('guia', 'div') };
   while (topo.nextSibling) paineis.guia.appendChild(topo.nextSibling);
   main.appendChild(paineis.guia);
-  for (const id of ['pacotes', 'apostila']) {
+  for (const id of ['pacotes', 'checklist', 'apostila']) {
     paineis[id] = criarPainel(id);
     paineis[id].hidden = true;
     main.appendChild(paineis[id]);
@@ -110,9 +112,14 @@
     a.innerHTML = `${icone[aba]}${texto}`;
     return a;
   };
-  const navs = { pacotes: navItem('pacotes', 'Pacotes e Horas'), apostila: navItem('apostila', 'Apostila do Consultor') };
+  const navs = {
+    pacotes: navItem('pacotes', 'Pacotes e Horas'),
+    checklist: navItem('checklist', 'Checklist'),
+    apostila: navItem('apostila', 'Apostila do Consultor'),
+  };
   const modulos = secao('Módulos');
   (modulos ? modulos.nextElementSibling : sidebar.lastElementChild).after(navs.pacotes);
+  navs.pacotes.after(navs.checklist);
   const referencia = secao('Referência');
   (referencia ? referencia.nextElementSibling : sidebar.lastElementChild).after(navs.apostila);
 
@@ -137,7 +144,7 @@
     });
     topo.querySelectorAll('[data-so-apostila]').forEach((el) => { el.hidden = aba !== 'apostila'; });
     topo.querySelectorAll('[data-so-pacotes]').forEach((el) => { el.hidden = aba !== 'pacotes'; });
-    topo.querySelectorAll('[data-sem-pacotes]').forEach((el) => { el.hidden = aba === 'pacotes'; });
+    topo.querySelectorAll('[data-so-guia]').forEach((el) => { el.hidden = aba === 'pacotes' || aba === 'checklist'; });
     sidebar.querySelectorAll('.nav-item').forEach((n) => {
       if (aba !== 'guia') n.classList.toggle('active', n.dataset.abaNav === aba);
       else if (n.dataset.abaNav) n.classList.remove('active');
