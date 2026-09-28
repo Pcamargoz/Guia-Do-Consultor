@@ -111,7 +111,7 @@
   const barraAcoes = barra.querySelector('.ed-toolbar-acoes');
   const barraPacotes = barra.querySelector('.ed-pacotes');
 
-  /* Filtro por pacote: mostra só os módulos do pacote e as horas de cada um dentro dele. */
+  /* Filtro por pacote: mostra só os módulos incluídos no pacote selecionado. */
   function pacoteFiltrado() {
     const H = window.ffHoras;
     return state.filtroPacote === 'todos' || !H?.estado.carregado ? null : H.estado.pacotes.find((p) => p.id === state.filtroPacote) || null;
@@ -121,32 +121,14 @@
     const H = window.ffHoras;
     if (!H?.estado.carregado || !H.estado.pacotes.length) { barraPacotes.hidden = true; return; }
     barraPacotes.hidden = false;
-    const pacote = pacoteFiltrado();
     const opcoes = [{ id: 'todos', nome: 'Todos os pacotes' }, ...H.estado.pacotes];
-    let resumo = '';
-    if (pacote) {
-      const t = H.totalPacote(pacote, modulos);
-      const dif = t.total - t.tabela;
-      const comparativo = !dif ? 'igual à tabela de preços'
-        : `${H.formatar(Math.abs(dif))} ${dif > 0 ? 'acima' : 'abaixo'} da tabela (${pacote.precos.Premium[0]}h)`;
-      resumo = `
-        <div class="ed-pacote-resumo" aria-live="polite">
-          <div class="ed-pacote-total">${svg(relogio)}<div><span>Tempo total previsto · ${esc(pacote.nome)}</span><strong>${H.formatar(t.total, { vazio: '0h' })}</strong><small class="ed-pacote-comp${dif ? (dif > 0 ? ' ed-pacote-comp--acima' : ' ed-pacote-comp--abaixo') : ''}">${esc(comparativo)}</small></div></div>
-          <dl class="ed-pacote-partes">
-            <div><dt><span class="pc-amostra pc-cor--modulos" aria-hidden="true"></span>Módulos (${t.porModulo.length})</dt><dd>${H.formatar(t.minutosModulos, { vazio: '0h' })}</dd></div>
-            <div><dt><span class="pc-amostra pc-cor--etapas" aria-hidden="true"></span>Etapas de implantação</dt><dd>${H.formatar(t.minutosEtapas, { vazio: '0h' })}</dd></div>
-            <div><dt><span class="pc-amostra pc-cor--recursos" aria-hidden="true"></span>Recursos gerais</dt><dd>${H.formatar(t.minutosRecursos, { vazio: '0h' })}</dd></div>
-          </dl>
-          <button type="button" class="ed-btn" data-ver-pacote="${esc(pacote.id)}">Ver pacote completo</button>
-        </div>`;
-    }
     barraPacotes.innerHTML = `
       <div class="ed-pacotes-linha">
-        <span class="ed-pacotes-rotulo" id="ed-pacotes-rotulo">${svg(relogio)}Horas por pacote</span>
+        <span class="ed-pacotes-rotulo" id="ed-pacotes-rotulo">Filtrar módulos por pacote</span>
         <div class="ed-pacotes-opcoes" role="radiogroup" aria-labelledby="ed-pacotes-rotulo">
           ${opcoes.map((p) => `<button type="button" role="radio" class="ed-pacote-opcao" data-filtro-pacote="${esc(p.id)}" aria-checked="${state.filtroPacote === p.id}">${esc(p.nome)}</button>`).join('')}
         </div>
-      </div>${resumo}`;
+      </div>`;
   }
   let acoesChave = null;
 
@@ -174,14 +156,8 @@
     const p = e.target.closest('[data-filtro-pacote]');
     if (p) {
       state.filtroPacote = p.dataset.filtroPacote;
-      // O pacote filtrado passa a ser o de referência: cards e checklists mostram as horas dele.
+      // Mantém o cenário do pacote alinhado ao filtro selecionado.
       if (state.filtroPacote !== 'todos') window.ffHoras.definirRef(state.filtroPacote); else aplicarFiltros();
-      return;
-    }
-    const ver = e.target.closest('[data-ver-pacote]');
-    if (ver) {
-      window.ffIrParaAba?.('pacotes');
-      setTimeout(() => document.querySelector(`[data-pacote-card="${CSS.escape(ver.dataset.verPacote)}"]`)?.scrollIntoView({ block: 'start' }), 150);
       return;
     }
     if (e.target.closest('[data-acao="novo"]') && editavel()) abrirEditor(null);
@@ -240,7 +216,6 @@
           <div class="tags">
             ${mod.tags.map((t) => `<span class="tag ${TAG_CLASSES[t] || 'tag-integracao'}">${esc(TAG_LABELS[t] || t)}</span>`).join('')}
             ${resumoItens(mod)}
-            ${horasCard(mod)}
           </div>
         </div>`;
       grid.appendChild(card);
@@ -331,17 +306,6 @@
     const rolagem = overlay.scrollTop;
     abrirModal(byId(mod.id) || mod);
     overlay.scrollTop = rolagem;
-  }
-
-  function horasCard(mod) {
-    const H = window.ffHoras;
-    if (!H?.estado.carregado) return '';
-    const pacote = H.pacoteParaModulo(mod.id);
-    if (!pacote) return '';
-    const minutos = H.totalModulo(mod, pacote.id);
-    const filtrado = pacoteFiltrado();
-    const parte = filtrado ? Math.round((minutos / (H.totalPacote(filtrado, modulos).total || 1)) * 100) : null;
-    return `<span class="hr-card" title="Tempo total de implantação no pacote ${esc(pacote.nome)}${parte != null ? ` (${parte}% do total do pacote)` : ''}">${svg(relogio)}${H.formatar(minutos, { vazio: '0h' })}<small>${parte != null ? `${parte}% do pacote` : esc(pacote.nome)}</small></span>`;
   }
 
   function historicoView(mod) {
