@@ -1028,7 +1028,8 @@ MODULOS.push({
     "Um XML de NF-e de fornecedor de teste (o time monta com os CNPJs/produtos da massa).",
     "Empresa com PRO (XML inteligente, contratos de entrega) e outra sem; Distribuição DFe configurada em uma empresa.",
     "Módulos Estoque e Financeiro ativos (as pontas do pipeline) e Faturamento para o controle de terceiros.",
-    "Um celular real — dois dos roteiros são de app (roteiro 15)."
+    "Um celular real — dois dos roteiros são de app (roteiro 15).",
+    "Cenário real (16/10/2026): STAGING — pedidos de compra existentes usados como referência no Dashboard de Recebimento: PC-000009, PC-000025 a PC-000027, PC-000043, PC-000045, PC-000046, PC-000048 e TREINO-PC-20260921-01."
   ],
 
   roteiros: [
@@ -2212,7 +2213,7 @@ MODULOS.push({
           ["1.3","Abra “Atenção necessária”.","Lista as SCs que vencem em até 3 dias ou já venceram, e que não estão em pedido nem concluídas.",0],
           ["1.4","Abra “Cotações em andamento” e “Pedidos recentes”.","Mostram os registros certos, com link.",0],
           ["1.5","Confira o breakdown de status dos pedidos (em aberto/recebido/cancelado).","Confere com a lista.",1],
-          ["1.6","Com a alçada ligada e pedidos parados, procure as aprovações pendentes no dashboard.","O dashboard mostra isso em algum lugar. Se não mostrar, registre como lacuna — é a informação que mais para o pipeline (roteiro 07).",1],
+          ["1.6","Com a alçada ligada e pedidos parados, procure as aprovações pendentes no dashboard.","O dashboard mostra isso em algum lugar. Se não mostrar, registre como lacuna — é a informação que mais para o pipeline (roteiro 07).",1,{ data: "16/10/2026", txt: "STAGING, observado: o Dashboard Compras tem o link \"Ver todas\" que leva a /compras/aprovacoes. O menu do módulo segue a ordem do processo: Solicitações → Sugestão → Cotações → Pedidos → Aprovações → Contratos de Entrega → Follow-up de Entregas." }],
           ["1.7","Peça ao time para simular a indisponibilidade dos dados e recarregue a tela.","A tela diz que não conseguiu carregar — falha de carregamento não pode virar zero.",1]
         ]},
       { t: "2. Cockpit de Recebimento",

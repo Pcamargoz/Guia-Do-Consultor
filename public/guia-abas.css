@@ -59,6 +59,10 @@
 .ck-lista { display: grid; max-width: 880px; margin: 0 auto; }
 .ck-item { display: grid; grid-template-columns: 34px minmax(0, 1fr) max-content; align-items: center; gap: 16px; padding: 16px 10px; border-bottom: 1px solid var(--color-line); }
 .ck-item:first-child { border-top: 1px solid var(--color-line); }
+.ck-grupo { display: grid; gap: 4px; margin: 32px 0 10px; color: var(--brand-primary-950); font: 800 20px/1.2 var(--font-display); }
+.ck-grupo:first-child { margin-top: 0; }
+.ck-grupo small { color: var(--color-muted); font: 400 13.5px/1.5 var(--font-body, inherit); }
+.ck-grupo + .ck-item { border-top: 1px solid var(--color-line); }
 .ck-item-topo { display: contents; }
 .ck-icone { display: grid; width: 30px; height: 30px; place-items: center; color: var(--brand-primary-700); }
 .ck-icone svg { width: 21px; height: 21px; }

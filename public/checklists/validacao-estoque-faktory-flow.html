@@ -1023,7 +1023,9 @@ MODULOS.push({
     "Pelo menos dois locais: almoxarifado central + uma obra.",
     "Massa dos módulos anteriores: notas de recebimento finalizadas, NF autorizadas e ordens de produção com apontamentos.",
     "Uma planilha XLSX de saldo inicial de teste.",
-    "Um celular real com câmera — o inventário tem app próprio (documento 07)."
+    "Um celular real com câmera — o inventário tem app próprio (documento 07).",
+    "Cenário real (16/10/2026): STAGING — massa com muitos saldos negativos (badge \"200+ saldo(s) negativo(s)\"; Visão geral: 504 negativos, 137 em ruptura), 1 empréstimo vencido (000476, 5 un, 08/09/2026) e encerramentos em rascunho de ago/2026 e set/2026.",
+    "Cenário real (16/10/2026): STAGING — produto GOL-PCR200 \"PORTA DE CORRER - 2 FOLHAS - LINHA GOLD\" tem histórico com \"Entrada de produto acabado por conclusão da OP OP-000067\" (bom exemplo para os roteiros 02 §2 e 10 §2)."
   ],
 
   roteiros: [
@@ -1194,7 +1196,7 @@ MODULOS.push({
           ["1.4","Filtre por local e por propriedade (própria × de cliente).","Os filtros funcionam e o material de cliente aparece com valor zero.",1],
           ["1.5","Provoque um saldo negativo e observe o badge de saldos negativos.","O badge conta e filtra os negativos, e o indicador colore a linha negativa.",1],
           ["1.6","Alterne o agrupamento (por produto / por localização).","A visão muda sem alterar os números.",0],
-          ["1.7","Com uma reserva ativa, leia a coluna “Reservada” e clique nela.","A coluna mostra a quantidade reservada naquela posição e o clique abre o detalhe dizendo qual documento reservou. Sem reserva mostra zero — o que agora significa “nada reservado”, não “não controlamos”.",1],
+          ["1.7","Com uma reserva ativa, leia a coluna “Reservada” e clique nela.","A coluna mostra a quantidade reservada naquela posição e o clique abre o detalhe dizendo qual documento reservou. Sem reserva mostra zero — o que agora significa “nada reservado”, não “não controlamos”.",1,{ data: "16/10/2026", txt: "STAGING, observado: não existe item \"Reservas\" no menu. A reserva aparece no número clicável da coluna RESERVADA do Saldo (\"Ver reservas desta posição do produto\") e na aba \"Reservas\" do detalhe do produto." }],
           ["1.8","Numa linha com reserva parcial, faça a conta disponível = saldo − reservado.","A conta bate exatamente com o que a tela mostra.",1],
           ["1.9","Com um usuário sem ESTOQUE.RESERVA.LIST, clique no detalhe da reserva.","O detalhe não abre e a tela não quebra.",1],
           ["1.10","Aplique um filtro e exporte em XLSX.","O arquivo reflete o filtro aplicado.",0]
@@ -1204,7 +1206,7 @@ MODULOS.push({
         i: [
           ["2.1","Abra o detalhe de uma variação e percorra as abas.","Aparecem as abas Posições (por local), Totais por variação e Histórico.",1],
           ["2.2","Leia o histórico de movimentos da variação.","Cada movimento traz data, número, tipo, sentido (entrada/saída), quantidade, custo unitário e valor.",1],
-          ["2.3","Ausência que continua: procure no extrato uma coluna de saldo acumulado linha a linha.","Ela não existe — o extrato mostra quantidade/custo por movimento. Se o cliente espera um extrato bancário, registre como lacuna: a conferência tem que ser feita somando manualmente.",0],
+          ["2.3","Ausência que continua: procure no extrato uma coluna de saldo acumulado linha a linha.","Ela não existe — o extrato mostra quantidade/custo por movimento. Se o cliente espera um extrato bancário, registre como lacuna: a conferência tem que ser feita somando manualmente.",0,{ data: "16/10/2026", txt: "STAGING, verificado: o Histórico do produto (últimos 50/100/200) traz DATA, NÚMERO, TIPO, SENTIDO, VARIAÇÃO, QTD, CUSTO UNIT., VALOR TOTAL e MOTIVO — continua sem coluna de saldo acumulado." }],
           ["2.4","Abra a aba Totais por variação.","Mostra o custo médio ponderado por empresa.",1],
           ["2.5","Percorra o histórico procurando movimentos de pelo menos quatro origens diferentes (recebimento, produção, expedição, inventário, transferência, manual).","Cada movimento identifica corretamente a sua origem.",1]
         ]},
@@ -1216,7 +1218,7 @@ MODULOS.push({
           ["3.3","Dê uma saída de 5 un.","Sai pelo custo médio vigente (R$ 15), o valor baixado é R$ 75, sobram 15 un valendo R$ 225 e o custo médio continua R$ 15 — a saída não muda a média.",1],
           ["3.4","Faça uma reavaliação de custo (documento 03 §6) e compare quantidade e valor.","A quantidade não muda; o valor total é recalculado.",1],
           ["3.5","Dê entrada e saída de material de cliente.","As duas ficam com custo e valor zero — não entram na valorização.",1],
-          ["3.6","Invariante: confira valor total ≈ quantidade × custo médio em cinco linhas de saldo diferentes, incluindo uma que passou por transferência e outra por inventário.","A igualdade vale em todas as cinco. Divergência aqui é defeito grave.",1]
+          ["3.6","Invariante: confira valor total ≈ quantidade × custo médio em cinco linhas de saldo diferentes, incluindo uma que passou por transferência e outra por inventário.","A igualdade vale em todas as cinco. Divergência aqui é defeito grave.",1,{ data: "16/10/2026", txt: "STAGING, verificado: a linha CM060 (Obra – PARQUE SEVILHA, saldo -2) mostrou VALOR TOTAL -R$ 149,22 com custo médio R$ 74,61, enquanto as demais linhas negativas mostram custo \"-\" e R$ 0,00 — tratamento inconsistente." }]
         ]},
       { t: "4. Saldo inicial por planilha",
         o: "A carga inicial de implantação: modelo, prévia com erros por linha, aplicação e reimportação sem duplicar.",
@@ -1256,7 +1258,7 @@ MODULOS.push({
           ["1.5","Compare os campos exigidos em entrada de material próprio, em saída e em material de cliente.","O custo unitário só aparece/é exigido em entrada de material próprio — saída e material de cliente não pedem custo.",1],
           ["1.6","Bipe um código de barras cadastrado nos códigos alternativos (documento 01 §3) e depois um código inexistente.","O código válido preenche/adiciona a linha do produto; o inexistente traz mensagem clara.",1],
           ["1.7","Informe um fator de conversão (ex.: comprar barra, lançar em metros), repita o lançamento do mesmo par (produto, fornecedor) e depois use um fator muito divergente.","O último fator do par vem sugerido (documento 01 §4.3) e o fator muito divergente gera aviso.",1],
-          ["1.8","Use “Salvar e novo” ao fim de um lançamento.","O contexto (empresa/local) é mantido e os itens são limpos.",0]
+          ["1.8","Use “Salvar e novo” ao fim de um lançamento.","O contexto (empresa/local) é mantido e os itens são limpos.",0,{ data: "16/10/2026", txt: "STAGING, verificado (sem salvar): o formulário Novo movimento oferece 8 tipos (Entrada manual, Ajuste positivo, Ajuste negativo, Transferência, Requisição, Devolução de uso, Empréstimo, Descarte) e o rodapé Cancelar (Esc), \"Salvar e novo\" e \"Salvar (Ctrl+S)\" — atenção: Ctrl+S grava o movimento." }]
         ]},
       { t: "2. As travas na hora de lançar ★",
         o: "As quatro travas de configuração, mais o congelamento por inventário — e a exigência de que a mensagem diga qual delas disparou.",
@@ -1327,7 +1329,7 @@ MODULOS.push({
       { t: "1. Criar (rascunho) ★",
         o: "No rascunho o saldo não se move, mas o disponível sim — é a reserva entrando em cena. Valide também as recusas de conteúdo e a numeração TRF-.",
         i: [
-          ["1.1","Crie uma transferência de 5 un do almoxarifado central para a obra.","Ela nasce pendente/rascunho, com número TRF- gerado.",1],
+          ["1.1","Crie uma transferência de 5 un do almoxarifado central para a obra.","Ela nasce pendente/rascunho, com número TRF- gerado.",1,{ data: "16/10/2026", txt: "STAGING, observado: a transferência existe em dois caminhos — tipo \"Transferência\" do Novo movimento e a tela Estoque > Transferências. Definir qual caminho é o oficial. A tela Transferências não chegou a ser aberta (sessão caiu)." }],
           ["1.2","Na tela de saldo, confira as colunas de saldo, reservado e disponível da origem.","O saldo NÃO desce ainda, mas o disponível desce: saldo 20, reservado 5, disponível 15 (documento 02 §1.8).",1],
           ["1.3","Clique na coluna “Reservada” da origem.","O detalhe aponta exatamente esta transferência.",1],
           ["1.4","Tente criar uma transferência com origem igual ao destino.","É recusada (“devem ser locais diferentes”).",1],
@@ -1732,7 +1734,7 @@ MODULOS.push({
           ["3.1","Reabra um mês aprovado.","Exige justificativa longa (mínimo de caracteres) e notifica os responsáveis.",1],
           ["3.2","Com o mês reaberto, lance um movimento retroativo naquele mês.","Os movimentos retroativos voltam a ser aceitos.",1],
           ["3.3","Aprove o mês de novo.","O snapshot é regravado com a situação atualizada.",1],
-          ["3.4","Abra o histórico do encerramento.","Registra quem reabriu, quando e por quê.",1],
+          ["3.4","Abra o histórico do encerramento.","Registra quem reabriu, quando e por quê.",1,{ data: "16/10/2026", txt: "STAGING, observado: a Visão geral lista dois encerramentos \"set/2026 rascunho\" além de \"ago/2026 rascunho\" — possível duplicidade de período." }],
           ["3.5","Abra a tela com um usuário sem ESTOQUE.ENCERRAMENTO.REABRIR.","A ação de reabrir não aparece.",1]
         ]}
     ]
@@ -1770,7 +1772,7 @@ MODULOS.push({
         o: "A OP consome insumos e devolve acabado — mais o retalho de corte, que é novidade e depende do comprimento mínimo configurado.",
         i: [
           ["2.1","Aprove um apontamento numa OP e confira os insumos.","Os insumos do BOM são baixados proporcionalmente à quantidade produzida, com o percentual de perda, na cor/medida certas.",1],
-          ["2.2","Conclua a OP.","Dá entrada do produto acabado com o custo de produção.",1],
+          ["2.2","Conclua a OP.","Dá entrada do produto acabado com o custo de produção.",1,{ data: "16/10/2026", txt: "STAGING, verificado em Movimentos: a conclusão da OP gera \"Entrada de produto acabado (OP)\" (origem \"OP - Conclusão\", motivo cita a OP) e a requisição gera \"Baixa de componente em OP\" (origem \"Requisição\"). Movimento 001058 com custo unitário R$ 0,00 / valor R$ 0,01." }],
           ["2.3","Com o comprimento mínimo configurado (documento 01 §5.5), faça um corte com sobra maior que o mínimo e outro com sobra menor.","A sobra maior entra no estoque como retalho; a menor vira perda. Confira o saldo nos dois casos.",1],
           ["2.4","Reabra/estorne o apontamento.","A baixa dos insumos é estornada.",1],
           ["2.5","Cancele a OP.","Estorna tudo: baixas, entrada de acabado e retalho.",1],
@@ -1898,7 +1900,7 @@ MODULOS.push({
           ["3.1","Abra o painel de esquadrias (obras/materiais/categorias) com algum bloco sem dados.","O painel carrega e um bloco sem dados não derruba os demais.",0],
           ["3.2","Compare “materiais faltando por categoria” com a tela de reposição.","Os números batem.",0],
           ["3.3","Some o capital por categoria e compare com o valor total do estoque.","A soma bate com o valor total.",1],
-          ["3.4","Leia os blocos de vidros por medida e kits de ferragens e confronte com a massa.","Fazem sentido com a massa; confirme com o time se o cliente usa essas visões.",0],
+          ["3.4","Leia os blocos de vidros por medida e kits de ferragens e confronte com a massa.","Fazem sentido com a massa; confirme com o time se o cliente usa essas visões.",0,{ data: "16/10/2026", txt: "STAGING, verificado: o bloco \"Vidros por medida e cor\" mostra medidas como \"902.00 × 868.00 m\" e área \"-1565872.00 m²\" — parece mm² rotulado como m². O gráfico \"Entradas, saídas e saldo líquido (30d)\" tem eixo de R$ 0,00 a R$ 0,01." }],
           ["3.5","Abra “obras que precisam de atenção”; se vier vazio, confirme antes se a atualização periódica está ligada (Acessos §5.2).","O bloco reflete a realidade — e, se vier vazio, a causa (rotina desligada) é confirmada antes de reportar bug.",0]
         ]},
       { t: "4. Coerência (teste-síntese)",

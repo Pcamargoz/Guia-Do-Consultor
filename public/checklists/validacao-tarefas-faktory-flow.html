@@ -1030,7 +1030,8 @@ MODULOS.push({
     "T-PRAZO — Tarefa com início hoje e vencimento futuro.",
     "T-ATRASADA — Tarefa vencida e não finalizada.",
     "T-ARQ — Tarefa arquivada.",
-    "T-REC — Tarefa-base com responsáveis, etiqueta e checklist para recorrência."
+    "T-REC — Tarefa-base com responsáveis, etiqueta e checklist para recorrência.",
+    "Cenário real (16/10/2026): STAGING — o Calendário da empresa (GLOBAIS > Configurações) tem 86 feriados e informa que eles afetam a carga da equipe em Tarefas."
   ],
 
   roteiros: [
@@ -1119,7 +1120,7 @@ MODULOS.push({
         o: "Validar a listagem, a busca e as três origens de criação de quadro — em branco, vinculado a projeto e a partir de modelo.",
         i: [
           ["1.1","Abra Meus Quadros e percorra a listagem, usando a pesquisa por nome e alternando entre grade e lista.","Aparecem somente quadros da empresa atual; pesquisa e alternância de visão funcionam.",1],
-          ["1.2","Use a busca global procurando tarefas por título e por trecho da descrição.","A busca encontra as tarefas e abre o cartão correto.",0],
+          ["1.2","Use a busca global procurando tarefas por título e por trecho da descrição.","A busca encontra as tarefas e abre o cartão correto.",0,{ data: "16/10/2026", txt: "STAGING, verificado: a busca global (Ctrl+K \"Pesquisar funcionalidades...\") encontra só telas, não registros; digitando \"tarefa\" não aparece nenhuma sugestão nem mensagem de \"sem resultados\"." }],
           ["1.3","Crie um quadro em branco com nome e descrição.","Ele abre sem listas fantasmas nem cartões de outro quadro.",0],
           ["1.4","Crie um quadro vinculado a um projeto ativo.","O vínculo fica visível e a navegação leva ao projeto correto.",0],
           ["1.5","Crie um quadro a partir de um modelo publicado.","A estrutura corresponde ao modelo, conforme validado no roteiro 08.",0],

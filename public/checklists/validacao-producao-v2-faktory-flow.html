@@ -1024,7 +1024,8 @@ MODULOS.push({
     "Um celular (app de separação, roteiro 15) e um leitor de código de barras (terminal, roteiro 16).",
     "Motivos cadastrados (roteiro 01) — refugo, parada e falta de separação dependem deles.",
     "Engine e IA desligados no início (Configurações → Ajustes do planejamento) — os roteiros ligam cada recurso na hora certa.",
-    "Usuários adicionais para as permissões novas: um aprovador de apontamento (PRODUCAO.APONTAMENTO.APROVAR) e um almoxarife de separação (PRODUCAO.SEPARACAO.*)."
+    "Usuários adicionais para as permissões novas: um aprovador de apontamento (PRODUCAO.APONTAMENTO.APROVAR) e um almoxarife de separação (PRODUCAO.SEPARACAO.*).",
+    "Cenário real (16/10/2026): STAGING — tela Início alerta \"2 ordens com prazo vencido\" (link /producao/ordem-producao?status=atrasado); OP-000067 concluída gerou entrada de produto acabado no estoque (produto GOL-PCR200)."
   ],
 
   roteiros: [
@@ -1313,7 +1314,7 @@ MODULOS.push({
         o: "Só o apontamento aprovado consolida horas, custo e baixa de material — e a aprovação tem dono.",
         i: [
           ["4.1","Submeta um apontamento encerrado e, com o líder, aprove.","As horas reais acumulam na etapa e o custo real da OP atualiza.",1],
-          ["4.2","Depois da aprovação, confira as requisições de material (roteiro 05 §3).","A aprovação disparou a baixa de materiais.",1],
+          ["4.2","Depois da aprovação, confira as requisições de material (roteiro 05 §3).","A aprovação disparou a baixa de materiais.",1,{ data: "16/10/2026", txt: "STAGING, verificado no Estoque: as baixas de material de OP aparecem em Estoque > Movimentos como \"Baixa de componente em OP\" (origem \"Requisição\"), saindo do local da obra." }],
           ["4.3","Rejeite outro apontamento, com motivo obrigatório.","Ele volta a rascunho e o custo recalcula sem ele.",1],
           ["4.4","Entre com o operador, sem a permissão PRODUCAO.APONTAMENTO.APROVAR.","Ele não vê nem consegue aprovar.",1],
           ["4.5","Tente aprovar duas vezes o mesmo apontamento e rejeitar um já aprovado.","As duas ações são impedidas.",1],

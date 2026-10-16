@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-chave="ff-estagiario:cadastros">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Cadastros básicos · Faktory Flow</title>
+<style>
+:root{
+  --brand:#2e7dae;--brand-forte:#1e5375;--brand-suave:#eef6fb;--lima:#c4d62e;
+  --bg:#f4f7fa;--surface:#fff;--surface-2:#f8fafc;--borda:#e2e8f0;--borda-forte:#cbd5e1;
+  --texto:#0f172a;--texto-2:#475569;--texto-3:#64748b;
+  --ok:#15803d;--ok-bg:#dcfce7;--doc:#1d4ed8;--doc-bg:#dbeafe;--nao:#b45309;--nao-bg:#fef3c7;
+  --alerta:#b45309;--alerta-bg:#fffbeb;--alerta-borda:#fcd34d;
+  --r:12px;--sombra:0 1px 2px rgba(15,23,42,.06),0 1px 3px rgba(15,23,42,.04);
+}
+:root[data-theme="dark"]{
+  --brand:#79b6da;--brand-forte:#aed3ea;--brand-suave:#132c40;
+  --bg:#0b1220;--surface:#111c2e;--surface-2:#16233a;--borda:#233553;--borda-forte:#31456a;
+  --texto:#e8eef7;--texto-2:#a7b8d0;--texto-3:#8fa3bd;
+  --ok:#4ade80;--ok-bg:#0f3322;--doc:#93c5fd;--doc-bg:#172a4d;--nao:#fbbf24;--nao-bg:#3b2c10;
+  --alerta:#fbbf24;--alerta-bg:#2a2210;--alerta-borda:#78551b;--sombra:0 1px 2px rgba(0,0,0,.4);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --brand:#79b6da;--brand-forte:#aed3ea;--brand-suave:#132c40;
+  --bg:#0b1220;--surface:#111c2e;--surface-2:#16233a;--borda:#233553;--borda-forte:#31456a;
+  --texto:#e8eef7;--texto-2:#a7b8d0;--texto-3:#8fa3bd;
+  --ok:#4ade80;--ok-bg:#0f3322;--doc:#93c5fd;--doc-bg:#172a4d;--nao:#fbbf24;--nao-bg:#3b2c10;
+  --alerta:#fbbf24;--alerta-bg:#2a2210;--alerta-borda:#78551b;--sombra:0 1px 2px rgba(0,0,0,.4);
+}}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Segoe UI Variable Text","Segoe UI",Inter,system-ui,-apple-system,Arial,sans-serif;font-size:15px;line-height:1.55;color:var(--texto);background:var(--bg);-webkit-font-smoothing:antialiased}
+button,input,textarea{font:inherit;color:inherit}
+button{cursor:pointer;background:none;border:0}
+a{color:var(--brand)}
+:focus-visible{outline:2px solid var(--brand);outline-offset:2px;border-radius:6px}
+svg{width:18px;height:18px;flex:none}
+
+.topo{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:12px;padding:10px 24px;background:color-mix(in srgb,var(--surface) 90%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--borda)}
+.topo img{height:30px;width:auto}
+.topo .marca{display:flex;flex-direction:column;line-height:1.2;padding-left:12px;border-left:1px solid var(--borda)}
+.topo .marca strong{font-size:13.5px}
+.topo .marca span{font-size:11px;color:var(--texto-3);text-transform:uppercase;letter-spacing:.06em;font-weight:600}
+.topo .espaco{flex:1}
+.btn{display:inline-flex;align-items:center;gap:6px;height:34px;padding:0 12px;border-radius:8px;border:1px solid var(--borda);background:var(--surface);font-size:13px;font-weight:600;color:var(--texto-2)}
+.btn:hover{border-color:var(--borda-forte);color:var(--texto)}
+.btn svg{width:16px;height:16px}
+.barra{height:4px;background:var(--borda)}
+.barra i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--brand-forte),var(--brand) 60%,var(--lima));transition:width .3s}
+
+main{max-width:880px;margin:0 auto;padding:28px 16px 64px}
+.cab{margin-bottom:20px}
+.etiqueta{display:inline-block;font-size:11.5px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--brand);margin-bottom:6px}
+.cab h1{font-size:clamp(24px,4vw,32px);line-height:1.2;letter-spacing:-.02em}
+.cab p{color:var(--texto-2);margin-top:8px;max-width:70ch}
+.resumo{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.resumo .chip{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:999px;background:var(--surface);border:1px solid var(--borda);font-size:13px;color:var(--texto-2)}
+.resumo .chip b{color:var(--texto);font-variant-numeric:tabular-nums}
+
+.legenda{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;font-size:12.5px;color:var(--texto-3);margin:14px 0 4px}
+.selo{display:inline-flex;align-items:center;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:700;white-space:nowrap}
+.st-v{background:var(--ok-bg);color:var(--ok)}
+.st-d{background:var(--doc-bg);color:var(--doc)}
+.st-n{background:var(--nao-bg);color:var(--nao)}
+
+.secao{background:var(--surface);border:1px solid var(--borda);border-radius:var(--r);box-shadow:var(--sombra);padding:20px 22px;margin-top:16px}
+.secao > h2{display:flex;align-items:center;gap:10px;font-size:17px;letter-spacing:-.01em;margin-bottom:12px}
+.secao > h2 .n{display:grid;place-items:center;width:26px;height:26px;border-radius:8px;background:var(--brand-suave);color:var(--brand);font-size:13px;font-weight:800}
+.secao > h2 .cont{margin-left:auto;font-size:12.5px;font-weight:600;color:var(--texto-3);font-variant-numeric:tabular-nums}
+.secao > p{color:var(--texto-2)}
+
+.fluxo + .fluxo{margin-top:18px;padding-top:16px;border-top:1px dashed var(--borda)}
+.fluxo h3{font-size:15px;margin-bottom:2px}
+.fluxo h3 .cont{margin-left:6px;font-size:12px;font-weight:600;color:var(--texto-3);font-variant-numeric:tabular-nums}
+.fluxo .onde{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:var(--texto-3);margin-bottom:8px}
+.fluxo .onde svg{width:14px;height:14px}
+.fluxo .intro{font-size:13.5px;color:var(--texto-2);margin-bottom:8px}
+
+.itens{list-style:none;display:grid;gap:6px}
+.item label{display:grid;grid-template-columns:22px 1fr auto;gap:10px;align-items:start;padding:9px 10px;border-radius:10px;border:1px solid transparent;cursor:pointer;transition:background .15s,border-color .15s}
+.item label:hover{background:var(--surface-2);border-color:var(--borda)}
+.item input{appearance:none;width:20px;height:20px;margin-top:1px;border:2px solid var(--borda-forte);border-radius:6px;background:var(--surface);display:grid;place-items:center;cursor:pointer;transition:all .15s}
+.item input:checked{background:var(--brand);border-color:var(--brand)}
+.item input:checked::after{content:"";width:5px;height:10px;border:solid #fff;border-width:0 2.5px 2.5px 0;transform:translateY(-1px) rotate(45deg)}
+.item .txt{min-width:0}
+.item .acao{display:block}
+.item .res{display:block;font-size:13px;color:var(--texto-3);margin-top:2px}
+.item .res b{color:var(--ok);font-weight:700}
+.item input:checked ~ .txt .acao{color:var(--texto-3);text-decoration:line-through;text-decoration-color:var(--borda-forte)}
+.item .reg{display:block;width:calc(100% - 42px);margin:2px 0 4px 42px;height:32px;padding:0 10px;border-radius:8px;border:1px solid var(--borda);background:var(--surface-2);font-size:13px}
+.item .reg:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 3px color-mix(in srgb,var(--brand) 25%,transparent)}
+.ui{font-family:inherit;font-weight:650;color:var(--texto);background:var(--surface-2);border:1px solid var(--borda);border-radius:5px;padding:0 5px;white-space:nowrap}
+
+.atencao{list-style:none;display:grid;gap:8px}
+.atencao li{display:flex;gap:10px;padding:10px 12px;border-radius:10px;background:var(--alerta-bg);border:1px solid var(--alerta-borda);font-size:14px}
+.atencao li svg{color:var(--alerta);margin-top:2px}
+.pendencias{list-style:none;display:grid;gap:6px}
+.pendencias li{display:flex;gap:10px;font-size:14px;color:var(--texto-2)}
+.pendencias li svg{color:var(--nao);margin-top:2px}
+
+textarea{width:100%;min-height:96px;resize:vertical;padding:10px 12px;border-radius:10px;border:1px solid var(--borda);background:var(--surface-2);line-height:1.5}
+textarea:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 3px color-mix(in srgb,var(--brand) 25%,transparent)}
+.dica{font-size:12.5px;color:var(--texto-3);margin-top:6px}
+
+.trilha{list-style:none;display:grid;gap:8px;counter-reset:t}
+.trilha a{display:grid;grid-template-columns:34px 1fr auto;gap:12px;align-items:center;padding:12px 14px;border:1px solid var(--borda);border-radius:10px;text-decoration:none;color:var(--texto);background:var(--surface-2)}
+.trilha a:hover{border-color:var(--brand)}
+.trilha .num{display:grid;place-items:center;width:34px;height:34px;border-radius:9px;background:var(--brand-suave);color:var(--brand);font-weight:800}
+.trilha small{display:block;color:var(--texto-3);font-size:12.5px}
+.trilha .prog{font-size:12.5px;font-weight:700;color:var(--texto-3);font-variant-numeric:tabular-nums}
+
+.rodape{margin-top:28px;font-size:12.5px;color:var(--texto-3);text-align:center}
+.concluido{display:none;margin-top:16px;padding:14px 16px;border-radius:var(--r);background:var(--ok-bg);color:var(--ok);font-weight:700;align-items:center;gap:10px}
+.concluido.on{display:flex}
+
+@media (max-width:640px){
+  .topo{padding:10px 16px}.topo .marca{display:none}.btn span{display:none}.btn{width:34px;justify-content:center;padding:0}
+  .secao{padding:16px}
+  .item label{grid-template-columns:22px 1fr}.item .selo{grid-column:2;justify-self:start}
+}
+@media print{
+  .topo,.barra,.no-print{display:none!important}
+  body{background:#fff;font-size:12.5px}
+  main{padding:0;max-width:none}
+  .secao{box-shadow:none;break-inside:avoid-page;padding:12px 14px}
+  .item label{padding:4px 0}
+  .item input{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  textarea{min-height:120px}
+}</style>
+</head>
+<body>
+
+<header class="topo">
+  <img src="data:image/png;base64,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" alt="Faktory Flow" width="120" height="36">
+  <div class="marca"><strong>Trilha do Estagiário</strong><span>Base · Cadastros</span></div>
+  <div class="espaco"></div>
+  <button class="btn" id="btnImprimir" type="button" title="Imprimir ou salvar em PDF"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg><span>Imprimir</span></button>
+  <button class="btn" id="btnLimpar" type="button" title="Desmarcar tudo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg><span>Recomeçar</span></button>
+  <button class="btn" id="btnTema" type="button" aria-label="Alternar tema claro/escuro" title="Alternar tema"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg></button>
+</header>
+<div class="barra" role="progressbar" aria-label="Progresso do checklist"><i id="barraFill"></i></div>
+<main>
+
+<section class="cab">
+  <span class="etiqueta">Base · Cadastros</span>
+  <h1>Cadastros básicos</h1>
+  <p>Clientes, fornecedores, leads, produtos e obras são cadastros compartilhados por todos os módulos.</p>
+  <div class="resumo">
+    <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11"/><path d="m3 6 1 1 2-2M3 12l1 1 2-2M3 18l1 1 2-2"/></svg><b id="contagem">0 de 15</b> etapas marcadas</span>
+    <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><b id="pct">0%</b> concluído</span>
+    <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg><b>10</b> de 13 passos conferidos no sistema</span>
+  </div>
+  <div class="legenda" aria-label="Legenda da origem das informações">Origem de cada etapa: <span class="selo st-v" title="Verificado no sistema">Verificado</span> abri e conferi no sistema · <span class="selo st-d" title="Baseado na documentação">Documentação</span> vem dos roteiros de validação, não foi executado · <span class="selo st-n" title="Ainda não validado">Não validado</span> precisa ser confirmado com o supervisor</div>
+</section>
+
+<section class="secao"><h2><span class="n">1</span>Objetivo</h2><p>Localizar e ler os cadastros que todos os processos usam — participante, produto e projeto/obra — e entender por que um erro de cadastro aparece depois na nota fiscal, no financeiro e na produção.</p></section>
+
+<section class="secao" data-grupo><h2><span class="n">2</span>Pré-requisitos <span class="cont"></span></h2><ul class="itens"><li class="item"><label><input type="checkbox" data-id="pre-1"><span class="txt"><span class="acao">Checklist 01 concluído.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="pre-2"><span class="txt"><span class="acao">Saber um nome de cliente, um produto e uma obra existentes para consultar (peça ao supervisor).</span></span><span class="selo st-d" title="Baseado na documentação">Documentação</span></label></li></ul></section>
+
+<section class="secao"><h2><span class="n">3</span>Passo a passo</h2>
+    <div class="fluxo" data-grupo>
+      <h3>1. Consultar um participante <span class="cont"></span></h3>
+      <div class="onde"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18 3 21V6l6-3 6 3 6-3v15l-6 3-6-3Z"/><path d="M9 3v15M15 6v15"/></svg><span>Onde: <span class="ui">Cadastros &gt; Participantes</span> (aparece no menu de vários módulos)</span></div>
+      
+      <ul class="itens"><li class="item"><label><input type="checkbox" data-id="f1-1"><span class="txt"><span class="acao">Abrir a lista e pesquisar pelo nome do cliente.</span><span class="res"><b>Resultado:</b> Se não existir, a tela mostra &quot;Nenhum participante encontrado&quot;.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="f1-2"><span class="txt"><span class="acao">Abrir o participante e percorrer as seções: Dados Gerais, Classificação, Endereço, Contato, Contas bancárias, Documentos e Dados CRM.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="f1-3"><span class="txt"><span class="acao">Na seção <strong>Classificação</strong>, ver as chaves É Cliente?, É Fornecedor?, É Funcionário?, É Transportadora?, É Vendedor? e Prospect/Lead.</span><span class="res"><b>Resultado:</b> Você entende que cliente, fornecedor e lead do CRM são o <strong>mesmo cadastro</strong>, só com chaves diferentes.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="f1-4"><span class="txt"><span class="acao">Na seção <strong>Contato</strong>, ver quem recebe e-mails de Notas Fiscais, Boletos, Vendas e avisos de entrega/serviços.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li></ul>
+    </div>
+    <div class="fluxo" data-grupo>
+      <h3>2. Conhecer o formulário de novo participante (sem salvar) <span class="cont"></span></h3>
+      <div class="onde"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18 3 21V6l6-3 6 3 6-3v15l-6 3-6-3Z"/><path d="M9 3v15M15 6v15"/></svg><span>Onde: botão <span class="ui">Novo</span> da lista de participantes</span></div>
+      
+      <ul class="itens"><li class="item"><label><input type="checkbox" data-id="f2-1"><span class="txt"><span class="acao">Identificar os campos obrigatórios: <strong>Tipo (PF/PJ)</strong> e <strong>Razão Social / Nome</strong>.</span><span class="res"><b>Resultado:</b> Ao tentar salvar vazio, os campos ficam vermelhos e aparece &quot;Erros de validação&quot;.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="f2-2"><span class="txt"><span class="acao">Digitar um CEP e ver o endereço ser preenchido sozinho.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="f2-3"><span class="txt"><span class="acao">Sair sem salvar (seta voltar ou Cancelar).</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li></ul>
+    </div>
+    <div class="fluxo" data-grupo>
+      <h3>3. Consultar um produto <span class="cont"></span></h3>
+      <div class="onde"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18 3 21V6l6-3 6 3 6-3v15l-6 3-6-3Z"/><path d="M9 3v15M15 6v15"/></svg><span>Onde: <span class="ui">Cadastros &gt; Produtos</span></span></div>
+      
+      <ul class="itens"><li class="item"><label><input type="checkbox" data-id="f3-1"><span class="txt"><span class="acao">Abrir a lista de produtos e pesquisar por código ou descrição.</span></span><span class="selo st-n" title="Ainda não validado">Não validado</span></label></li><li class="item"><label><input type="checkbox" data-id="f3-2"><span class="txt"><span class="acao">No estoque, abrir o produto pelo código em <span class="ui">Estoque &gt; Saldo</span> e ler classificação, unidade, categoria, NCM, dimensões e pesos.</span><span class="res"><b>Resultado:</b> A ficha mostra também o total em estoque, o custo médio e a situação (Ativo).</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li></ul>
+    </div>
+    <div class="fluxo" data-grupo>
+      <h3>4. Consultar um projeto/obra <span class="cont"></span></h3>
+      <div class="onde"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18 3 21V6l6-3 6 3 6-3v15l-6 3-6-3Z"/><path d="M9 3v15M15 6v15"/></svg><span>Onde: <span class="ui">Cadastros &gt; Projetos</span></span></div>
+      
+      <ul class="itens"><li class="item"><label><input type="checkbox" data-id="f4-1"><span class="txt"><span class="acao">Abrir a lista de projetos e localizar uma obra.</span></span><span class="selo st-n" title="Ainda não validado">Não validado</span></label></li><li class="item"><label><input type="checkbox" data-id="f4-2"><span class="txt"><span class="acao">Na lista de Pedidos de Venda, ver a coluna PROJETO: ela mostra a obra de cada pedido (ex.: &quot;ORC-26-08-0003 - Obra Le Jardin&quot;).</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li></ul>
+    </div></section>
+
+<section class="secao" data-grupo><h2><span class="n">4</span>Resultado esperado <span class="cont"></span></h2><p class="dica" style="margin:-4px 0 10px">Marque quando conseguir confirmar cada ponto.</p><ul class="itens"><li class="item"><label><input type="checkbox" data-id="res-1"><span class="txt"><span class="acao">Encontro um cliente, um produto e uma obra pelo nome ou código.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="res-2"><span class="txt"><span class="acao">Sei explicar que o lead do CRM vira o mesmo participante usado na nota e no financeiro.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li></ul></section>
+
+<section class="secao"><h2><span class="n">5</span>Pontos de atenção</h2><ul class="atencao"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4M12 17h.01"/></svg><span>Cadastro é compartilhado: mudar um participante ou produto afeta notas, títulos, compras e produção. <strong>Não altere sem orientação.</strong></span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4M12 17h.01"/></svg><span>Campos fiscais (CPF/CNPJ, IE, Simples Nacional, NCM) são de responsabilidade do fiscal/contador.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4M12 17h.01"/></svg><span>O campo Bairro exige pelo menos 3 letras: bairros como &quot;Sé&quot;, preenchidos pelo próprio CEP, são recusados ao salvar.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4M12 17h.01"/></svg><span>Confira a chave <strong>Ativo</strong> do cadastro: em um formulário novo ela pode vir desligada.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4M12 17h.01"/></svg><span>Antes de criar, pesquise: cadastro duplicado gera retrabalho (o CRM tem até uma tela de Duplicados).</span></li></ul></section>
+
+<section class="secao"><h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Ainda não validado na prática</h2><p class="dica" style="margin:-4px 0 10px">Estas partes não puderam ser conferidas na exploração do sistema. Confirme com seu supervisor antes de seguir.</p><ul class="pendencias"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Telas de lista e formulário de Produtos e de Projetos ainda não foram abertas na exploração.</span></li></ul></section>
+
+<section class="secao no-print-notas"><h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Minhas dúvidas e anotações</h2><textarea id="notas" placeholder="Anote dúvidas para levar ao supervisor, números de registros que você consultou, atalhos que descobriu…"></textarea><p class="dica">Fica salvo só neste navegador.</p></section>
+
+<div class="concluido" id="concluido" role="status"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Checklist concluído. Volte ao onboarding e siga para o próximo módulo.</div>
+<p class="rodape">Trilha do Estagiário · Faktory Flow v1.22.11 · conteúdo conferido em 16/10/2026</p>
+</main>
+<script>
+(function(){
+  var CHAVE = document.documentElement.getAttribute('data-chave');
+  function ler(k){try{return localStorage.getItem(k);}catch(e){return null;}}
+  function guardar(k,v){try{localStorage.setItem(k,v);}catch(e){}}
+  function apagar(k){try{localStorage.removeItem(k);}catch(e){}}
+
+  var tema = ler('ff-estagiario:tema');
+  if (tema) document.documentElement.setAttribute('data-theme', tema);
+  var btnTema = document.getElementById('btnTema');
+  if (btnTema) btnTema.addEventListener('click', function(){
+    var atual = document.documentElement.getAttribute('data-theme') ||
+      (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    var novo = atual === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', novo);
+    guardar('ff-estagiario:tema', novo);
+  });
+
+  var estado = {};
+  try { estado = JSON.parse(ler(CHAVE) || '{}') || {}; } catch(e) { estado = {}; }
+  var caixas = [].slice.call(document.querySelectorAll('input[type=checkbox][data-id]'));
+  var notas = document.getElementById('notas');
+  var regs = [].slice.call(document.querySelectorAll('input[data-reg]'));
+
+  function atualizar(){
+    var total = caixas.length, feitos = caixas.filter(function(c){return c.checked;}).length;
+    var pct = total ? Math.round(feitos * 100 / total) : 0;
+    var fill = document.getElementById('barraFill'); if (fill) fill.style.width = pct + '%';
+    var p = document.getElementById('pct'); if (p) p.textContent = pct + '%';
+    var c = document.getElementById('contagem'); if (c) c.textContent = feitos + ' de ' + total;
+    [].forEach.call(document.querySelectorAll('[data-grupo]'), function(g){
+      var cx = g.querySelectorAll('input[type=checkbox][data-id]'), f = 0;
+      for (var i = 0; i < cx.length; i++) if (cx[i].checked) f++;
+      var alvo = g.querySelector('.cont'); if (alvo) alvo.textContent = f + '/' + cx.length;
+    });
+    var fim = document.getElementById('concluido'); if (fim) fim.classList.toggle('on', total > 0 && feitos === total);
+    guardar(CHAVE + ':pct', String(pct));
+  }
+  function salvar(){
+    var marcados = {};
+    caixas.forEach(function(c){ if (c.checked) marcados[c.getAttribute('data-id')] = 1; });
+    var dados = { marcados: marcados };
+    if (notas) dados.notas = notas.value;
+    dados.regs = {};
+    regs.forEach(function(r){ if (r.value) dados.regs[r.getAttribute('data-reg')] = r.value; });
+    guardar(CHAVE, JSON.stringify(dados));
+    atualizar();
+  }
+  caixas.forEach(function(c){
+    c.checked = !!(estado.marcados && estado.marcados[c.getAttribute('data-id')]);
+    c.addEventListener('change', salvar);
+  });
+  if (notas) { notas.value = estado.notas || ''; notas.addEventListener('input', salvar); }
+  regs.forEach(function(r){ r.value = (estado.regs && estado.regs[r.getAttribute('data-reg')]) || ''; r.addEventListener('input', salvar); });
+
+  var btnLimpar = document.getElementById('btnLimpar');
+  if (btnLimpar) btnLimpar.addEventListener('click', function(){
+    if (!confirm('Desmarcar todas as etapas e apagar as anotações deste checklist?')) return;
+    caixas.forEach(function(c){ c.checked = false; });
+    if (notas) notas.value = '';
+    regs.forEach(function(r){ r.value = ''; });
+    apagar(CHAVE); atualizar();
+  });
+  var btnImprimir = document.getElementById('btnImprimir');
+  if (btnImprimir) btnImprimir.addEventListener('click', function(){ window.print(); });
+
+  /* Onboarding: mostra o progresso de cada checklist já aberto neste navegador. */
+  [].forEach.call(document.querySelectorAll('[data-prog]'), function(el){
+    var v = ler('ff-estagiario:' + el.getAttribute('data-prog') + ':pct');
+    el.textContent = v === null ? 'não iniciado' : v + '%';
+  });
+  atualizar();
+})();</script>
+</body>
+</html>

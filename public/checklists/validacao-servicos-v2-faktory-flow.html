@@ -1022,7 +1022,9 @@ MODULOS.push({
     "Pelo menos duas equipes de campo com capacidades diferentes (roteiro 02).",
     "Um pedido de venda aprovado com itens de esquadria (para importar vãos e materiais) e, se possível, uma ordem de produção — combine com o time.",
     "Um smartphone real com GPS para os testes de campo.",
-    "Uma caixa de e-mail e um WhatsApp de teste para a comunicação com o cliente."
+    "Uma caixa de e-mail e um WhatsApp de teste para a comunicação com o cliente.",
+    "Cenário real (16/10/2026): STAGING — Dashboard Serviços: 9 medições a executar, 4 aprovadas sem instalação, 7 instalações a executar, 2 concluídas sem vistoria, 6 assistências abertas; alertas citam MED-000011 (vão pendente de reaprovação), INS-000001 (sem vistoria), VIST-000002 (ressalva sem AT, 46 dias) e AT-000001 (prazo estourado).",
+    "Cenário real (16/10/2026): STAGING — equipes ALFA (Interna, cap. 5), BETA (Interna, cap. 50) e CHARLIE (Interna, cap. 6); 17 medições em 2 páginas."
   ],
 
   roteiros: [
@@ -1047,7 +1049,7 @@ MODULOS.push({
         i: [
           ["1.1","Na Empresa B (sem o módulo), procurar o menu Serviços e tentar os links diretos /servicos e /servicos/medicoes.","O menu Serviços não aparece e os links diretos mostram o bloqueio de licença.",1],
           ["1.2","Na Empresa B, tentar acessar diretamente /servicos/planejamento (Cockpit) e /servicos/equipe-agora. Suspeita a confirmar: as telas de planejamento podem não estar cobertas pelo bloqueio de licença como as demais.","Ambas são bloqueadas. Se alguma abrir ou carregar dados, reportar como defeito citando “Acessos §1.2”.",1],
-          ["1.3","Mudou: o app de campo agora fica em /campo (não mais em /servicos/campo). Testar o bloqueio de licença nele e também nas telas novas /servicos/demonstrativos, /servicos/medicoes/medir, /servicos/instalacoes/instalar e /servicos/vistorias/vistoriar.","Todas as telas são bloqueadas na empresa sem a licença.",1]
+          ["1.3","Mudou: o app de campo agora fica em /campo (não mais em /servicos/campo). Testar o bloqueio de licença nele e também nas telas novas /servicos/demonstrativos, /servicos/medicoes/medir, /servicos/instalacoes/instalar e /servicos/vistorias/vistoriar.","Todas as telas são bloqueadas na empresa sem a licença.",1,{ data: "16/10/2026", txt: "STAGING, observado: o aplicativo de campo (/campo) não aparece no menu lateral de Serviços. Há dois itens \"Aprovações\": o do topo abre Comissões do Instalador (/servicos/comissoes-instalador) e o de Configurações abre /configuracoes/aprovacoes." }]
         ]},
       { t: "1A. Permissões novas ★",
         o: "Faça primeiro. Três permissões novas entraram nesta revisão: SERVICOS.CAMPO.EXECUTAR (executar o serviço pelo app — medir, instalar, vistoriar, atender — roteiro 08 §7), SERVICOS.PLANEJAMENTO.EXECUTAR (executar ações do cockpit de planejamento — roteiro 07) e SERVICOS.DASHBOARD.ENVIAR_RESUMO (disparar o resumo executivo por e-mail — roteiro 11).",
@@ -1065,7 +1067,7 @@ MODULOS.push({
           ["2.4","Com o técnico, acessar /servicos/configuracoes por link direto.","O acesso é bloqueado.",1],
           ["2.5","Com o técnico (se tiver acesso de visualização no cockpit), tentar arrastar uma visita sem a permissão de agendar.","É impedido com aviso e a tela volta ao estado real.",1],
           ["2.6","Com o gestor/PCP, acessar o cockpit, aprovar e reprovar medições e gerenciar lotes.","Todas as ações funcionam.",0],
-          ["2.7","Confirmar com o time a separação de papéis dentro do fluxo: o mesmo usuário que mediu não consegue aprovar a conferência da própria medição.","A regra existe (o teste funcional completo está no roteiro 03 §5).",1]
+          ["2.7","Confirmar com o time a separação de papéis dentro do fluxo: o mesmo usuário que mediu não consegue aprovar a conferência da própria medição.","A regra existe (o teste funcional completo está no roteiro 03 §5).",1,{ data: "16/10/2026", txt: "STAGING, verificado (só leitura): na aba Conferentes de Config. Serviços nenhum dos 4 usuários (nem o Admin) está vinculado a participante Funcionário — sem esse vínculo ninguém confere medição nem libera pagamento de instalação." }]
         ]},
       { t: "3. Dados sensíveis e rastreamento",
         o: "Posição GPS de pessoa é dado sensível: exige permissão para ver, consentimento para coletar e prazo para descartar.",
@@ -1111,7 +1113,7 @@ MODULOS.push({
           ["2.1","Testar “exigir assinatura na medição” ligado e desligado, concluindo uma medição na tela de campo em cada estado.","Ligado, o sistema pede nome, documento e assinatura na tela (roteiro 03 §4.6); desligado, conclui sem pedir.",1],
           ["2.2","Testar “exigir conferência” ligado e desligado, finalizando uma medição em cada estado.","Ligado, a medição finalizada fica “aguardando conferência”; desligado, já sai aprovada. Confirme os dois caminhos.",1],
           ["2.3","Configurar vistoria automática em 3 dias, concluir uma instalação e depois repetir com o parâmetro em 0.","Com 3 dias nasce uma vistoria agendada para 3 dias depois (roteiro 04 §5.2); com 0, nada é criado.",1],
-          ["2.4","Configurar a tolerância de divergência (por exemplo 5 mm / 1%), medir um vão com diferença maior no roteiro 03 §6 e depois aumentar a tolerância.","Com a tolerância baixa o vão é marcado “requer reaprovação”; ao aumentar, a mesma diferença passa a ser aceita.",1],
+          ["2.4","Configurar a tolerância de divergência (por exemplo 5 mm / 1%), medir um vão com diferença maior no roteiro 03 §6 e depois aumentar a tolerância.","Com a tolerância baixa o vão é marcado “requer reaprovação”; ao aumentar, a mesma diferença passa a ser aceita.",1,{ data: "16/10/2026", txt: "STAGING, verificado (só leitura): os campos aparecem como \"TOLERÂNCIA (MM) (HORAS)\", \"TOLERÂNCIA (%) (HORAS)\" e \"DIAS APÓS CONCLUSÃO (HORAS)\" — sufixo de unidade errado no rótulo." }],
           ["2.5","Configurar os SLAs por tipo de serviço e observar as listagens.","Os SLAs refletem nos indicadores de prazo das listagens (selo de SLA nos cartões).",0]
         ]},
       { t: "3. Isolamento",
@@ -1142,7 +1144,7 @@ MODULOS.push({
         i: [
           ["1.1","Criar a Equipe Alfa (interna) com um usuário interno como membro e função definida.","A equipe é criada com o membro e a função.",0],
           ["1.2","Criar a Equipe Beta (terceirizada) com um participante terceirizado como membro.","A equipe é criada com o membro terceirizado.",0],
-          ["1.3","Editar uma equipe (nome, turno) e conferir o reflexo no cockpit e nos formulários de agendamento.","O novo nome reflete em todas as telas que listam equipes.",0],
+          ["1.3","Editar uma equipe (nome, turno) e conferir o reflexo no cockpit e nos formulários de agendamento.","O novo nome reflete em todas as telas que listam equipes.",0,{ data: "16/10/2026", txt: "STAGING, verificado: clicar na linha da equipe não abre o cadastro (é preciso usar o lápis); a edição usa a mesma rota de criação (/servicos/equipes/novo?id=17) e o botão \"Desativar\" fica ao lado de \"Salvar\". A equipe ALFA é Interna mas tem Fornecedor \"PERFIL ALUMINIO\" preenchido." }],
           ["1.4","Adicionar um segundo membro e depois remover um membro.","As duas operações funcionam sem afetar o histórico.",0],
           ["1.5","Inativar uma equipe.","Ela some das opções de agendamento e o histórico de serviços já feitos por ela permanece.",1],
           ["1.6","Sair da tela com alterações não salvas.","O sistema avisa antes de descartar.",0]
@@ -1191,18 +1193,18 @@ MODULOS.push({
       { t: "1. Criar a medição",
         o: "Validar as duas origens (a partir do pedido e avulsa) e a montagem automática dos vãos.",
         i: [
-          ["1.1","Criar uma medição a partir do pedido de venda: a tela pede cliente, obra e pedido primeiro; selecionar os itens do pedido.","Cada item vira vãos (um por unidade de quantidade), já com as medidas de referência do pedido e as especificações de tipo, vidro e cor.",1],
+          ["1.1","Criar uma medição a partir do pedido de venda: a tela pede cliente, obra e pedido primeiro; selecionar os itens do pedido.","Cada item vira vãos (um por unidade de quantidade), já com as medidas de referência do pedido e as especificações de tipo, vidro e cor.",1,{ data: "16/10/2026", txt: "STAGING, verificado (sem salvar): \"+ Nova Medição\" lista pedidos de venda em cartões (filtro padrão Status \"Em aberto\" e \"Esconder pedidos que já têm medição\" marcado) com \"Ver itens\" e \"Usar este registro\"; o pedido mostra a obra ou \"Sem obra vinculada\" (ex.: PV-000391)." }],
           ["1.2","Conferir o cabeçalho da medição criada.","Cliente, obra e endereço vêm pré-preenchidos do pedido e o número MED-XXXXXX é gerado sozinho.",1],
-          ["1.3","Criar também uma medição avulsa, sem pedido.","O formulário abre em branco e aceita vãos manuais.",0],
+          ["1.3","Criar também uma medição avulsa, sem pedido.","O formulário abre em branco e aceita vãos manuais.",0,{ data: "16/10/2026", txt: "STAGING, verificado (sem salvar): a Medição avulsa exige Empresa, Cliente e Técnico Responsável; Pedido de Venda só libera após escolher o cliente; abas Dados Gerais, Vãos (Adicionar Vão / Importar de um pedido), Fotos e Histórico." }],
           ["1.4","Preencher técnico responsável, equipe, data/hora do agendamento e duração, e testar a busca de endereço por CEP.","Todos os campos salvam e a busca por CEP preenche o endereço.",0],
           ["1.5","Na aba Vãos, adicionar um vão manual, editar e remover outro.","As três ações funcionam e a remoção de vão preenchido pede confirmação.",0],
-          ["1.6","Procurar a ação de excluir medição em status diferentes.","A exclusão é oferecida apenas em rascunho.",1]
+          ["1.6","Procurar a ação de excluir medição em status diferentes.","A exclusão é oferecida apenas em rascunho.",1,{ data: "16/10/2026", txt: "STAGING, observado: na lista de Medições o botão Excluir aparece desabilitado na linha agendada. Há dois botões de lançar vãos por linha (\"Lançar medições dos vãos\" e \"(tela rápida)\")." }]
         ]},
       { t: "2. Lista, kanban e calendário",
         o: "Validar as três visões, os filtros e as regras de transição pelo arraste.",
         i: [
           ["2.1","Alternar entre as três visões da listagem: tabela, kanban (colunas por status) e calendário (pela data de agendamento).","As três visões carregam corretamente.",0],
-          ["2.2","Aplicar filtros por cliente, técnico, status e período.","Os filtros ativos aparecem como etiquetas removíveis.",0],
+          ["2.2","Aplicar filtros por cliente, técnico, status e período.","Os filtros ativos aparecem como etiquetas removíveis.",0,{ data: "16/10/2026", txt: "STAGING, verificado: filtros Cliente, Técnico, Status (Todos, Em aberto, Agendada, Em Execução, Aguardando Conferência, Aprovada, Reprovada, Cancelada), Data Inicial e Data Final. Em ~800 px de largura o status quebra em sílabas (\"Em Exe cuç ão\")." }],
           ["2.3","No kanban, arrastar um cartão de Rascunho para Agendada e depois tentar um arraste inválido (pular direto para Aprovada).","Como agendar exige data, o sistema pede ou valida; o arraste inválido é bloqueado com aviso.",1],
           ["2.4","Medir alguns vãos e observar a barra de % medido no cartão.","A barra evolui conforme os vãos são medidos (vãos medidos ÷ total).",0]
         ]},

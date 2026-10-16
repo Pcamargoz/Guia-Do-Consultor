@@ -1022,7 +1022,9 @@ MODULOS.push({
     "Um aprovador de desconto (CRM.APROVACAO.APROVAR), que também será usado no app de aprovações.",
     "Uma empresa de teste com o plano PRO + IA contratado e outra sem, para validar os bloqueios de plano.",
     "Uma caixa de e-mail sua para receber os testes de campanhas e cadências.",
-    "Um celular — o roteiro 17 não roda no desktop."
+    "Um celular — o roteiro 17 não roda no desktop.",
+    "Cenário real (16/10/2026): DEV — lead \"TESTE FLUXO CONSULTOR - Cliente Metalurgica\" (PF, CPF de teste 111.444.777-35, e-mail @tuamaeaquelaursa.com) parado na etapa MQL (60%) com o BANT incompleto: serve para o roteiro 01 §4 (conversão).",
+    "Cenário real (16/10/2026): STAGING — Visão Geral do CRM mostrava 9 leads novos aguardando qualificação, 18 oportunidades e R$ 2.402.615,00 em jogo; 22 leads na lista."
   ],
 
   roteiros: [
@@ -1129,10 +1131,10 @@ MODULOS.push({
       { t: "1. Cadastrar e manter leads",
         o: "Garantir que o dia a dia básico do vendedor funciona — cadastrar contatos, atualizar informações e manter a base limpa.",
         i: [
-          ["1.1","Acesse CRM → Leads, clique em Novo e cadastre um lead só com o nome.","Ele aparece na lista com status Novo.",0],
-          ["1.2","Cadastre outro lead preenchendo tudo: empresa, telefone, e-mail, origem, temperatura, responsável e os campos de qualificação (orçamento disponível, quem decide, necessidade, prazo); reabra o cadastro.","Tudo foi salvo e reexibe corretamente.",0],
+          ["1.1","Acesse CRM → Leads, clique em Novo e cadastre um lead só com o nome.","Ele aparece na lista com status Novo.",0,{ data: "16/10/2026", txt: "STAGING e DEV, executado: \"Novo Lead\" abre o cadastro completo de Participante (com dados fiscais, plano de contas e \"Prospect/Lead\" já ligado). Obrigatórios: Tipo (PF/PJ) e Razão Social / Nome. Salvar vazio mostra \"Erros de validação (2 erro(s))\". No staging a chave \"Ativo\" vinha desligada no formulário novo." }],
+          ["1.2","Cadastre outro lead preenchendo tudo: empresa, telefone, e-mail, origem, temperatura, responsável e os campos de qualificação (orçamento disponível, quem decide, necessidade, prazo); reabra o cadastro.","Tudo foi salvo e reexibe corretamente.",0,{ data: "16/10/2026", txt: "DEV, executado: o CEP 01001-000 preenche o bairro \"Sé\" e o próprio sistema recusa ao salvar (\"Bairro deve ter pelo menos 3 caracteres.\"). Foi preciso trocar o bairro para salvar — defeito a abrir." }],
           ["1.3","E-mail repetido: tente cadastrar um segundo lead com o mesmo e-mail do anterior.","O sistema impede e avisa que já existe um lead com esse e-mail — evita que dois vendedores disputem o mesmo contato.",1],
-          ["1.4","Edite um lead (troque a temperatura, por exemplo).","A alteração aparece na lista e no histórico do lead.",0],
+          ["1.4","Edite um lead (troque a temperatura, por exemplo).","A alteração aparece na lista e no histórico do lead.",0,{ data: "16/10/2026", txt: "DEV, executado: Temperatura \"Quente\" escolhida no cadastro apareceu como \"Morno\" na lista e vazia ao reabrir \"Editar Lead\" (repetir manualmente para confirmar). Na edição, Origem e Responsável ficam bloqueados." }],
           ["1.5","Exclua um lead de teste.","Ele some da lista.",0],
           ["1.6","Nos contatos do lead, clique no telefone e no e-mail.","Abre a ação certa (ligação/WhatsApp/e-mail).",0]
         ]},
@@ -1143,7 +1145,7 @@ MODULOS.push({
           ["2.2","Combine os filtros rápidos de status e temperatura (ex.: só “quentes” e “novos”).","O resultado reflete a combinação dos filtros.",0],
           ["2.3","Ordene por diferentes colunas e navegue entre as páginas.","Ordenação e paginação funcionam.",0],
           ["2.4","Confira a coluna Score comparando leads com dados de qualificação preenchidos e leads vazios.","Os leads preenchidos pontuam mais que os vazios, conforme as regras de CRM → Configurações → Lead Scoring.",0],
-          ["2.5","Observe a lista padrão e depois use o filtro de status para ver convertidos e desqualificados.","A lista não mostra leads convertidos nem desqualificados por padrão — eles são “passado” — mas o filtro de status permite vê-los.",0],
+          ["2.5","Observe a lista padrão e depois use o filtro de status para ver convertidos e desqualificados.","A lista não mostra leads convertidos nem desqualificados por padrão — eles são “passado” — mas o filtro de status permite vê-los.",0,{ data: "16/10/2026", txt: "STAGING, verificado: filtros rápidos de Status (Todos, Novo, Em Qualificação, Qualificado, Convertido, Desqualificado), Temperatura (Frio, Morno, Quente, Urgente), \"Só minhas\" e Tag. Os Filtros Avançados exibem nomes técnicos de coluna (\"Origem Id\", \"Score Ia Modelo Versao\")." }],
           ["2.6","Confira a coluna de responsável na lista de leads.","A lista mostra o responsável de cada lead em coluna própria, e o nome exibido é o do responsável, não o de quem cadastrou — sem isso o gestor não consegue distribuir a carteira.",1],
           ["2.7","Procure a ação de desqualificar direto na listagem.","A ação está disponível na própria listagem, não só dentro do cadastro.",0]
         ]},
@@ -1151,18 +1153,18 @@ MODULOS.push({
         o: "Validar o funil de trabalho do lead — a decisão de “vale a pena investir tempo neste contato?”.",
         i: [
           ["3.1","Abra o Kanban de Leads pelo botão de alternância Lista/Kanban.","As colunas são as etapas do funil de leads configurado.",0],
-          ["3.2","Arraste um lead de uma etapa para outra, confirme a janelinha de observação (opcional) e atualize a página.","O card fica na nova coluna, inclusive depois de atualizar a página.",0],
+          ["3.2","Arraste um lead de uma etapa para outra, confirme a janelinha de observação (opcional) e atualize a página.","O card fica na nova coluna, inclusive depois de atualizar a página.",0,{ data: "16/10/2026", txt: "DEV, executado: o diálogo \"Mover lead\" (observação opcional) só grava ao clicar em Confirmar; clicar fora cancela sem aviso. Em painel estreito, o card caiu uma coluna antes do ponto de soltura duas vezes." }],
           ["3.3","Use a busca do kanban (nome/empresa/e-mail).","Os cards são filtrados corretamente.",0],
           ["3.4","Desqualifique um lead pelo menu de ações da linha e reabra o cadastro.","Ele sai da lista padrão e o cadastro fica somente leitura — lead desqualificado é registro histórico, não se edita mais.",1],
-          ["3.5","Funil padrão de qualificação (novo): numa empresa nova, abra o kanban de leads.","Já existe um funil de leads pronto para uso, com etapas coerentes de qualificação. Se a empresa nova vier sem funil, reporte — o kanban nasce vazio e o cliente não sabe por onde começar.",1],
+          ["3.5","Funil padrão de qualificação (novo): numa empresa nova, abra o kanban de leads.","Já existe um funil de leads pronto para uso, com etapas coerentes de qualificação. Se a empresa nova vier sem funil, reporte — o kanban nasce vazio e o cliente não sabe por onde começar.",1,{ data: "16/10/2026", txt: "DEV, verificado: etapas do funil de leads = Inbound 10%, Pesquisado 25%, Conectado 40%, MQL 60%, SQL 80%, Demo agendada 90%." }],
           ["3.6","Atividades do lead (novo): crie uma atividade direto no lead, antes de haver oportunidade.","Ela aparece na agenda do vendedor (roteiro 03) e na linha do tempo do lead — é o acompanhamento da fase de qualificação.",1],
           ["3.7","Observe o card do kanban de um lead com etapa e atividades.","A etapa do funil e a última atividade aparecem no card.",0]
         ]},
       { t: "4. Converter lead em cliente e oportunidade ★",
         o: "Este é o teste mais importante do roteiro — é o momento em que o CRM “entrega” um cliente para o processo de vendas.",
         i: [
-          ["4.1","Pegue um lead que esteja em etapa inicial do funil (probabilidade baixa) e tente Converter.","O sistema bloqueia com aviso: só se converte lead que já avançou até uma etapa com pelo menos 60% de probabilidade — a regra impede que contatos “crus” virem oportunidades e poluam o pipeline.",1],
-          ["4.2","Arraste esse lead até uma etapa avançada do funil e converta, escolhendo na janela de conversão o funil e a etapa onde a oportunidade vai nascer.","A conversão é aceita e a oportunidade nasce no funil e na etapa escolhidos.",1],
+          ["4.1","Pegue um lead que esteja em etapa inicial do funil (probabilidade baixa) e tente Converter.","O sistema bloqueia com aviso: só se converte lead que já avançou até uma etapa com pelo menos 60% de probabilidade — a regra impede que contatos “crus” virem oportunidades e poluam o pipeline.",1,{ data: "16/10/2026", txt: "DEV, executado: a mensagem é \"Lead na etapa \"Inbound\" (10%) não pode ser convertido. Mova o lead para uma etapa com 60% ou mais.\"" }],
+          ["4.2","Arraste esse lead até uma etapa avançada do funil e converta, escolhendo na janela de conversão o funil e a etapa onde a oportunidade vai nascer.","A conversão é aceita e a oportunidade nasce no funil e na etapa escolhidos.",1,{ data: "16/10/2026", txt: "DEV, executado: em MQL (60%) a janela é \"Converter Lead em Participante\" (\"Participante já vinculado. A conversão irá marcar o lead como convertido no sistema.\") e não oferece escolha de funil/etapa da oportunidade. Ao confirmar: \"BANT incompleto — faltam: budget, autoridade, necessidade, timeline.\" A conversão não foi concluída (sessão caiu)." }],
           ["4.3","Depois da conversão, confira as três pontas: o lead, Cadastros → Participantes e CRM → Pipeline.","O lead aparece como Convertido e fica somente leitura; existe um novo Cliente em Participantes com os dados do lead; e existe uma nova Oportunidade no Pipeline com título e dados pré-preenchidos.",1],
           ["4.4","Converta um lead que já pertencia a um cliente existente (lead vinculado a participante).","O sistema usa o cliente que já existe — nenhum cadastro duplicado é criado.",1],
           ["4.5","Abra o histórico do lead convertido.","O evento de conversão está registrado com data e usuário.",0]

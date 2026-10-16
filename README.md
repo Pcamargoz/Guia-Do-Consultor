@@ -84,6 +84,16 @@ docker compose -p faktory-manual --profile pdf run --rm gerar-pdf
 
 Depois, faça commit do PDF atualizado.
 
+## Checklists para download
+
+A aba **Checklist** do guia lista três grupos de arquivos HTML independentes (abrem offline e guardam o progresso no navegador), em `public/checklists/`:
+
+- **Teste de fluxo do consultor** (`consultores/`): roteiro do fluxo funcional completo, do pedido de venda até a gestão.
+- **Trilha do estagiário** (`estagiarios/`): onboarding (00) e 15 checklists curtos por módulo. Cada etapa traz a origem: *Verificado* (conferido no sistema), *Documentação* (roteiros de validação) ou *Não validado*.
+- **Validação dos módulos (QA)** (raiz): os planos completos de homologação. Os cenários reais encontrados na exploração entram como "achado prévio" das etapas e como linhas "Cenário real" da preparação.
+
+Para editar a trilha e o teste do consultor, altere `scripts/dados-checklists-estagiarios.mjs` / `scripts/dados-checklist-consultor.mjs` e rode `node scripts/gerar-checklists-estagiarios.mjs`. Para os cenários reais dos planos de QA, altere `scripts/dados-cenarios-checklists.mjs` e rode `node scripts/atualizar-cenarios-checklists.mjs`.
+
 ## Estrutura
 
 ```
@@ -93,7 +103,7 @@ lib/            Regras compartilhadas: sessão, senha (scrypt), banco, permissõ
 db/migrations/  SQL versionado (aplicado em ordem, uma única vez)
 db/dados/       Dados da planilha de horas e mapa checklist ↔ funcionalidades
 public/         Site: guia (index.html), apostila, login, CSS/JS, PDF
-scripts/        migrar.mjs, dev-server.mjs, gerar-pdf-apostila.mjs, gerar-horas.mjs
+scripts/        migrar.mjs, dev-server.mjs, gerar-pdf-apostila.mjs, gerar-horas.mjs, gerar-checklists-estagiarios.mjs, atualizar-cenarios-checklists.mjs
 middleware.js   Exige login antes de servir qualquer página
 ```
 

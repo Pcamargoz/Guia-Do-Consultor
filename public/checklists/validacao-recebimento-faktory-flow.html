@@ -1035,7 +1035,8 @@ MODULOS.push({
     "NR-SEM-FIN — nota cujo CFOP não gera financeiro.",
     "NR-TERCEIRO — material de cliente recebido para industrialização.",
     "XML-PRO — NF-e com um produto reconhecido e um pendente de correlação.",
-    "DFE-PEND — documento distribuído pela SEFAZ ainda não recebido."
+    "DFE-PEND — documento distribuído pela SEFAZ ainda não recebido.",
+    "Cenário real (16/10/2026): STAGING — NR-000050 aparece na fila do Dashboard de Recebimento com link direto para /recebimento/conferir/226 (bom ponto de partida para o roteiro 05)."
   ],
 
   roteiros: [
@@ -1421,7 +1422,7 @@ MODULOS.push({
       { t: "4. Contas a pagar automáticas ★",
         o: "Os títulos nascem automaticamente na finalização. Não existe ação manual normal de gerar títulos; os endpoints legados retornam 410 Gone.",
         i: [
-          ["4.1","Finalizar a NR-FIN, com três parcelas e plano de contas válido.","É gerado automaticamente um título por parcela, com fornecedor, empresa, vencimento, valor, plano de contas, origem e rateio corretos.",1],
+          ["4.1","Finalizar a NR-FIN, com três parcelas e plano de contas válido.","É gerado automaticamente um título por parcela, com fornecedor, empresa, vencimento, valor, plano de contas, origem e rateio corretos.",1,{ data: "16/10/2026", txt: "STAGING, observado: o Dashboard de Recebimento tem os cartões \"Títulos a gerar · notas finalizadas sem título\" (→ /recebimento/notas?status=finalizada) e \"Parcelas a vencer · em até 7 dias\" (→ /financeiro/contas-pagar), que ajudam a conferir o reflexo financeiro da finalização." }],
           ["4.2","Procurar a ação “Gerar títulos” na tela e chamar os endpoints legados.","A ação não existe; os endpoints retornam 410 e orientam que a geração ocorre na finalização.",1],
           ["4.3","Finalizar a NR-SEM-FIN, cujo CFOP não gera financeiro.","Nenhum título é gerado e a ausência não é apresentada como falha.",1],
           ["4.4","Finalizar uma remessa de contrato de entrega.","Não gera CAP: a nota-mãe é a âncora financeira.",1],
@@ -1472,7 +1473,7 @@ MODULOS.push({
       { t: "1. Fila de conferências",
         o: "A fila é a porta de entrada do conferente e só deve oferecer o que realmente pode ser conferido.",
         i: [
-          ["1.1","Abrir a fila e alternar entre os filtros de não conferidas, em conferência e concluídas.","A lista corresponde a cada filtro.",0],
+          ["1.1","Abrir a fila e alternar entre os filtros de não conferidas, em conferência e concluídas.","A lista corresponde a cada filtro.",0,{ data: "16/10/2026", txt: "STAGING, observado: a fila de conferência aparece no menu lateral com o nome \"Aprovações\" (URL /recebimento/conferencias). Quem procura \"Conferência\" no menu não encontra — confirmar se o rótulo é intencional." }],
           ["1.2","Conferir o resumo do topo contra a lista.","Não conferidas, em andamento, conferidas hoje e idade da mais antiga estão corretos.",0],
           ["1.3","Pesquisar por documento, fornecedor e empresa e filtrar por situação e período.","Pesquisa e filtros retornam os registros correspondentes.",0],
           ["1.4","Procurar na fila notas finalizadas, canceladas, excluídas e de outro tenant.","Nenhuma delas aparece como disponível.",1],
