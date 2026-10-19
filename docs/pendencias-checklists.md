@@ -83,7 +83,10 @@ Os relatórios completos de cada rodada ficaram fora do repositório. Os pontos 
 | Fluxo | Situação |
 |---|---|
 | 01 · Suprimentos | ✅ executado em 19/10 (SC-000289 → COT-000013 → PC-000009 → NR-000013 → título pago) |
-| 02 · Serviços de campo | em teste |
-| 03 · Comercial, 04 · Estoque, 05 · Financeiro | a testar |
+| 02 · Serviços de campo | ✅ executado em 19/10 (MED-000013 → INS-000003 → VIST-000001 → AT-000002) |
+| 03 · Comercial | em teste |
+| 04 · Estoque, 05 · Financeiro | a testar |
 
 Para limpar (Suprimentos): fornecedor 107; SC-000289; COT-000013; PC-000009; NR-000013 (NF fictícia 990001/900); movimento de estoque 000005; título NR-000013/001 (pago); parâmetro "Usar Conferência Física" (ligado nesta empresa).
+
+Para limpar (Serviços): técnico 108; equipe id 18; MED-000013; INS-000003; VIST-000001; AT-000002; MED-000012 antiga (reprovar/excluir); categoria de checklist TFC01; **template de checklist obrigatório "TESTE FLUXO CONSULTOR" (desativar)**; vistoria automática = 1 dia.

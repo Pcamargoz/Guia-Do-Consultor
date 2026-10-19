@@ -89,4 +89,78 @@ export const FLUXOS = [
     ],
     naoValidado: ['Aprovação por alçada, envio de cotação por e-mail, importação de XML e divergência/avaria na conferência não foram testados.'],
   },
+
+  /* ------------------------------------------------------------------ Serviços de campo */
+  {
+    id: 'fluxo-servicos', arquivo: 'fluxo-02-servicos-campo.html', etiqueta: 'Consultor · Fluxo de serviços',
+    titulo: 'Fluxo de serviços de campo: da medição à assistência',
+    rodape: 'Teste de Fluxo · Consultor · Faktory Flow v1.22.12 · executado em 19/10/2026 (dev METALURGICA TEST): MED-000013 → INS-000003 → VIST-000001 → AT-000002',
+    subtitulo: 'Medição → conferência → instalação → vistoria → assistência técnica. Cada etapa diz o que gera a próxima — várias passagens são por botão, não automáticas.',
+    objetivo: 'Provar que um pedido de venda vira medição aprovada, instalação concluída com checklist, vistoria com aceite e assistência técnica resolvida, e conferir onde cada serviço aparece na gestão de campo.',
+    prerequisitos: [
+      { t: 'Participante **Funcionário** para ser o técnico, diferente do participante vinculado ao usuário conferente em `Serviços > Configurações > Conferentes` (quem confere não pode ser quem mediu).', s: 'v', campo: 'Técnico / conferente' },
+      { t: '**Equipe de campo** com o técnico. Para testar pagamento de instalação: equipe **Terceirizada**, fornecedor e regra de pagamento (equipe interna não gera pagamento).', s: 'v', campo: 'Equipe' },
+      { t: 'Em `Configurações > Parâmetros`: decidir Exigir conferência, Exigir assinatura, **Geração automática de vistoria (dias)** (vem vazia = desligada), Garantia e prazos.', s: 'v' },
+      { t: 'Em `Configurações > Instalação`: template de checklist (senão só o vão vira item). Em Assistência: tipos, origens e motivos. Em Geral: prioridades.', s: 'v' },
+      { t: 'Pedido de venda com **Projeto (obra)** se quiser ver Diário de Obra e painel da obra.', s: 'v', campo: 'Nº do pedido' },
+      { t: 'Nome do responsável da obra (assinatura da medição) e do cliente (aceite da vistoria e da AT).', s: 'v' },
+    ],
+    fluxos: [
+      {
+        titulo: '1. Medição', onde: '`Serviços > Medições > + Nova Medição`',
+        passos: [
+          { t: 'Achar o pedido (ajuste o Status e desmarque "Esconder pedidos que já têm medição") > **Usar este registro** > importar os itens.', s: 'v' },
+          { t: 'Preencher **Empresa** (não vem do pedido), Técnico, Equipe e Data > Salvar > **Agendar**.', r: 'Medição numerada, "Agendada".', s: 'v', campo: 'Nº da medição' },
+          { t: 'Lançar largura × altura (mm) dos vãos > **Iniciar** > na lista, **Medir vãos** > **Concluir medição** com a assinatura.', r: '"Aguardando Conferência". Com "Exigir assinatura", o Finalizar da tela de edição só dá erro: use Medir vãos.', s: 'v' },
+          { t: '**Aprovar** com o usuário conferente.', r: '"Aprovada" e botão **Gerar Instalação** (aprovar não cria a instalação sozinho).', s: 'v' },
+        ],
+      },
+      {
+        titulo: '2. Instalação', onde: 'botão `Gerar Instalação` da medição',
+        passos: [
+          { t: 'Escolher a equipe > informar a data > Salvar.', r: 'Na lista, "Agendada" (a tela de edição só atualiza ao recarregar). Checklist = template + vãos medidos.', s: 'v', campo: 'Nº da instalação' },
+          { t: '**Executar** > **Iniciar instalação** > marcar os itens como **Conforme** > **Concluir**.', r: '"Concluída". Itens obrigatórios precisam estar conformes. A instalação não pede aceite.', s: 'v' },
+          { t: 'Conferir pagamento do instalador e o botão "Ver Vistoria".', r: 'Equipe interna: "não gera pagamento". A vistoria só nasce se a geração automática estiver ligada.', s: 'v' },
+        ],
+      },
+      {
+        titulo: '3. Vistoria', onde: '`Ver Vistoria` na instalação',
+        passos: [
+          { t: 'Informar o vistoriador > Salvar > **Iniciar** > registrar itens, ressalvas e pendências.', s: 'v', campo: 'Nº da vistoria' },
+          { t: 'Concluir como **Aprovada**, **Aprovada c/ Ressalvas** ou Reprovada.', s: 'v' },
+          { t: '**Depois** de concluir, Registrar Aceite do cliente.', r: '"Aceite Registrado". Antes de concluir o sistema recusa o aceite.', s: 'v' },
+        ],
+      },
+      {
+        titulo: '4. Assistência técnica', onde: 'botão `Gerar Assistência Técnica` da vistoria',
+        passos: [
+          { t: 'Gerar a AT (não nasce sozinha) e completar Tipo, Origem, Motivo, Cidade/UF > Salvar.', r: 'A descrição traz ressalvas e pendências. No teste, Instalação e Vistoria vinculadas vieram vazias e sem opções (defeito: a garantia foi calculada como "sem instalação").', s: 'v', campo: 'Nº da AT' },
+          { t: 'Aba Agendamento > **Agendar Atendimento** > **Iniciar Atendimento** > registrar defeitos e peças.', s: 'v' },
+          { t: '**Aguardar Peça** (pausa o prazo) > **Retomar** > peça "Instalada" > solução e custos.', s: 'v' },
+          { t: 'Registrar o aceite **antes** de **Resolver** (ordem inversa da vistoria).', r: '"Resolvida". Peça ainda Solicitada/Em compra exige motivo e é cancelada.', s: 'v' },
+        ],
+      },
+      {
+        titulo: '5. Gestão de campo',
+        passos: [
+          { t: '`Serviços > Cockpit de Campo`: os serviços aparecem na linha da equipe.', r: 'No teste os horários apareceram 3 h adiantados (UTC) e a AT ficou em "SEM EQUIPE".', s: 'v' },
+          { t: '`Serviços > Dashboard Serviços`: Concluídos, m² instalados, pipeline e estatísticas.', s: 'v' },
+          { t: '`Minha Equipe Agora`: só lista usuários do sistema (técnico externo não aparece).', s: 'v' },
+          { t: 'Diário de Obra e painel da obra: só com projeto no pedido.', s: 'v' },
+        ],
+      },
+    ],
+    resultado: [
+      { t: 'Medição, instalação, vistoria e assistência estão ligadas ao mesmo pedido e cliente.', s: 'v' },
+      { t: 'O dashboard de serviços refletiu as conclusões (quantidade e m²).', s: 'v' },
+    ],
+    atencao: [
+      'Três passagens são **por botão**: Gerar Instalação, Gerar Assistência Técnica e (opcional) Gerar OS de instalação a partir da OP. Só a vistoria pode ser automática.',
+      'Datas e horas aparecem em UTC em vários pontos (vistoria, aceite, cockpit): confira o horário antes de concluir que há atraso.',
+      'O template de checklist entra em **toda** instalação nova da empresa: desative o de teste no fim.',
+      'Mensagens (toasts) podem cobrir os botões do cabeçalho: feche-as antes de clicar.',
+      'No cadastro do técnico, o CEP preenche o endereço mas o formulário só aceita depois de redigitar o Endereço.',
+    ],
+    naoValidado: ['Pagamento de instalação (equipe terceirizada), aplicativo de campo `/campo` e Diário de Obra com projeto não foram testados.'],
+  },
 ];
