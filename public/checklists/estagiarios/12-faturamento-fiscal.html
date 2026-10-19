@@ -12,7 +12,7 @@
   --texto:#0f172a;--texto-2:#475569;--texto-3:#64748b;
   --ok:#15803d;--ok-bg:#dcfce7;--doc:#1d4ed8;--doc-bg:#dbeafe;--nao:#b45309;--nao-bg:#fef3c7;
   --alerta:#b45309;--alerta-bg:#fffbeb;--alerta-borda:#fcd34d;
-  --r:12px;--sombra:0 1px 2px rgba(15,23,42,.06),0 1px 3px rgba(15,23,42,.04);
+  --r:12px;--ease-out:cubic-bezier(.22,1,.36,1);--ease-spring:cubic-bezier(.34,1.56,.64,1);--sombra:0 1px 2px rgba(15,23,42,.06),0 1px 3px rgba(15,23,42,.04);
 }
 :root[data-theme="dark"]{
   --brand:#79b6da;--brand-forte:#aed3ea;--brand-suave:#132c40;
@@ -46,7 +46,7 @@ svg{width:18px;height:18px;flex:none}
 .btn:hover{border-color:var(--borda-forte);color:var(--texto)}
 .btn svg{width:16px;height:16px}
 .barra{height:4px;background:var(--borda)}
-.barra i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--brand-forte),var(--brand) 60%,var(--lima));transition:width .3s}
+.barra i{display:block;height:100%;transform:scaleX(0);transform-origin:left;background:linear-gradient(90deg,var(--brand-forte),var(--brand) 60%,var(--lima));transition:transform .45s var(--ease-out)}
 
 main{max-width:880px;margin:0 auto;padding:28px 16px 64px}
 .cab{margin-bottom:20px}
@@ -113,6 +113,26 @@ textarea:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 3px color
 .concluido{display:none;margin-top:16px;padding:14px 16px;border-radius:var(--r);background:var(--ok-bg);color:var(--ok);font-weight:700;align-items:center;gap:10px}
 .concluido.on{display:flex}
 
+/* Movimento: entrada em cascata, hover "float", check com "pop" e conclusão com "bounceIn". */
+@keyframes ff-sobe{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@keyframes ff-pop{0%{transform:scale(.6)}60%{transform:scale(1.15)}100%{transform:scale(1)}}
+@keyframes ff-entra{0%{opacity:0;transform:scale(.92)}60%{opacity:1;transform:scale(1.02)}100%{transform:scale(1)}}
+.cab,.secao{animation:ff-sobe .5s var(--ease-out) both}
+.secao:nth-of-type(2){animation-delay:.05s}.secao:nth-of-type(3){animation-delay:.1s}.secao:nth-of-type(4){animation-delay:.15s}
+.secao:nth-of-type(5){animation-delay:.2s}.secao:nth-of-type(n+6){animation-delay:.25s}
+.secao{transition:transform .25s var(--ease-out),box-shadow .25s var(--ease-out)}
+.item label{transition:background .15s,border-color .15s,transform .2s var(--ease-out)}
+.item label:hover{transform:translateX(3px)}
+.item input:checked{animation:ff-pop .32s var(--ease-spring)}
+.btn{transition:transform .2s var(--ease-spring),border-color .15s,color .15s}
+.btn:hover{transform:translateY(-2px)}.btn:active{transform:translateY(0) scale(.97)}
+.trilha a{transition:transform .25s var(--ease-out),border-color .2s,box-shadow .25s}
+.trilha a:hover{transform:translateY(-2px);box-shadow:0 8px 20px -10px color-mix(in srgb,var(--brand) 45%,transparent)}
+.trilha .num{transition:transform .25s var(--ease-spring)}.trilha a:hover .num{transform:scale(1.08) rotate(-4deg)}
+.concluido.on{animation:ff-entra .5s var(--ease-spring) both}
+.topo{background:color-mix(in srgb,var(--surface) 72%,transparent);-webkit-backdrop-filter:saturate(180%) blur(16px);backdrop-filter:saturate(180%) blur(16px)}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+
 @media (max-width:640px){
   .topo{padding:10px 16px}.topo .marca{display:none}.btn span{display:none}.btn{width:34px;justify-content:center;padding:0}
   .secao{padding:16px}
@@ -146,9 +166,9 @@ textarea:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 3px color
   <h1>Faturamento e Fiscal (consulta)</h1>
   <p>Onde o pedido vira nota fiscal. Aqui o estagiário consulta; emissão e transmissão são feitas por quem é responsável.</p>
   <div class="resumo">
-    <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11"/><path d="m3 6 1 1 2-2M3 12l1 1 2-2M3 18l1 1 2-2"/></svg><b id="contagem">0 de 11</b> etapas marcadas</span>
+    <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11"/><path d="m3 6 1 1 2-2M3 12l1 1 2-2M3 18l1 1 2-2"/></svg><b id="contagem">0 de 14</b> etapas marcadas</span>
     <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><b id="pct">0%</b> concluído</span>
-    <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg><b>7</b> de 9 passos conferidos no sistema</span>
+    <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg><b>10</b> de 12 passos conferidos no sistema</span>
   </div>
   <div class="legenda" aria-label="Legenda da origem das informações">Origem de cada etapa: <span class="selo st-v" title="Verificado no sistema">Verificado</span> abri e conferi no sistema · <span class="selo st-d" title="Baseado na documentação">Documentação</span> vem dos roteiros de validação, não foi executado · <span class="selo st-n" title="Ainda não validado">Não validado</span> precisa ser confirmado com o supervisor</div>
 </section>
@@ -171,17 +191,23 @@ textarea:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 3px color
       <ul class="itens"><li class="item"><label><input type="checkbox" data-id="f2-1"><span class="txt"><span class="acao">Reconhecer as opções: Editar, Finalizar NF, Preview da DANFE, Duplicar, Ver Timeline, Anexos e Excluir.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="f2-2"><span class="txt"><span class="acao">Identificar o botão <strong>Transmitir</strong> (avião de papel) direto na linha e saber que ele envia a nota à SEFAZ.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="f2-3"><span class="txt"><span class="acao">Usar só as opções de consulta (Ver Timeline, Preview da DANFE) quando o supervisor pedir.</span></span><span class="selo st-n" title="Ainda não validado">Não validado</span></label></li></ul>
     </div>
     <div class="fluxo" data-grupo>
-      <h3>3. Saber onde ficam os cadastros fiscais <span class="cont"></span></h3>
+      <h3>3. Saber como o pedido vira nota <span class="cont"></span></h3>
+      <div class="onde"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18 3 21V6l6-3 6 3 6-3v15l-6 3-6-3Z"/><path d="M9 3v15M15 6v15"/></svg><span>Onde: menu <span class="ui">⋯ &gt; Faturar</span> do pedido</span></div>
+      
+      <ul class="itens"><li class="item"><label><input type="checkbox" data-id="f3-1"><span class="txt"><span class="acao">Saber que a nota nasce do pedido: <span class="ui">⋯ &gt; Faturar</span> importa os itens e abre &quot;Nova NF-e&quot; com cliente, CFOP e parcelas do pedido.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="f3-2"><span class="txt"><span class="acao">Saber que, ao salvar a nota, o pedido já aparece como &quot;Faturado&quot; — mesmo com a nota ainda Em Aberto. Confira sempre o status da nota.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="f3-3"><span class="txt"><span class="acao">Reconhecer o quadro &quot;Impostos não calculados no item&quot; e o motivo que ele mostra (ex.: CST de PIS/COFINS ausente na NCM): é assunto do fiscal.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li></ul>
+    </div>
+    <div class="fluxo" data-grupo>
+      <h3>4. Saber onde ficam os cadastros fiscais <span class="cont"></span></h3>
       <div class="onde"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18 3 21V6l6-3 6 3 6-3v15l-6 3-6-3Z"/><path d="M9 3v15M15 6v15"/></svg><span>Onde: módulo <span class="ui">Fiscal</span></span></div>
       
-      <ul class="itens"><li class="item"><label><input type="checkbox" data-id="f3-1"><span class="txt"><span class="acao">Saber que NCM, CFOP, CST/CSOSN, CEST e Textos Fiscais são cadastros do Fiscal, mantidos com o contador.</span></span><span class="selo st-d" title="Baseado na documentação">Documentação</span></label></li></ul>
+      <ul class="itens"><li class="item"><label><input type="checkbox" data-id="f4-1"><span class="txt"><span class="acao">Saber que NCM, CFOP, CST/CSOSN, CEST e Textos Fiscais são cadastros do Fiscal, mantidos com o contador.</span></span><span class="selo st-d" title="Baseado na documentação">Documentação</span></label></li></ul>
     </div></section>
 
 <section class="secao" data-grupo><h2><span class="n">4</span>Resultado esperado <span class="cont"></span></h2><p class="dica" style="margin:-4px 0 10px">Marque quando conseguir confirmar cada ponto.</p><ul class="itens"><li class="item"><label><input type="checkbox" data-id="res-1"><span class="txt"><span class="acao">Encontro uma nota pelo cliente e digo se está em aberto, autorizada, cancelada ou rejeitada.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="res-2"><span class="txt"><span class="acao">Sei apontar os botões que nunca devo usar em treino.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li></ul></section>
 
-<section class="secao"><h2><span class="n">5</span>Pontos de atenção</h2><ul class="atencao"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4M12 17h.01"/></svg><span><strong>Transmitir</strong> fica exposto na linha, a um clique: envia a nota à SEFAZ. Nunca clique.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4M12 17h.01"/></svg><span><strong>Excluir</strong> fica no mesmo menu de Ver Timeline e Anexos.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4M12 17h.01"/></svg><span>Cancelamento, carta de correção e inutilização de numeração têm efeito fiscal: são feitos só pelo responsável.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4M12 17h.01"/></svg><span>Mesmo em ambiente &quot;Homologação&quot; (sem validade fiscal), não transmita.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4M12 17h.01"/></svg><span>Os cartões do topo podem não seguir o filtro escolhido (ex.: Valor Total R$ 0,00 com notas em aberto). Confirme com o supervisor antes de usar esses números.</span></li></ul></section>
+<section class="secao"><h2><span class="n">5</span>Pontos de atenção</h2><ul class="atencao"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4M12 17h.01"/></svg><span><strong>Transmitir</strong> fica exposto na linha, a um clique: envia a nota à SEFAZ. Nunca clique.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4M12 17h.01"/></svg><span><strong>Excluir</strong> fica no mesmo menu de Ver Timeline e Anexos.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4M12 17h.01"/></svg><span>Cancelamento, carta de correção e inutilização de numeração têm efeito fiscal: são feitos só pelo responsável.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4M12 17h.01"/></svg><span>Mesmo em ambiente &quot;Homologação&quot; (sem validade fiscal), não transmita.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4M12 17h.01"/></svg><span><strong>Finalizar NF</strong> trava a nota para edição e movimenta estoque: só o responsável. Se falhar, o número da nota pode ser consumido mesmo assim.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4M12 17h.01"/></svg><span>Os cartões do topo podem não seguir o filtro escolhido (ex.: Valor Total R$ 0,00 com notas em aberto). Confirme com o supervisor antes de usar esses números.</span></li></ul></section>
 
-<section class="secao"><h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Ainda não validado na prática</h2><p class="dica" style="margin:-4px 0 10px">Estas partes não puderam ser conferidas na exploração do sistema. Confirme com seu supervisor antes de seguir.</p><ul class="pendencias"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Como o pedido de venda vira nota, o formulário &quot;+ Nova NF-e&quot; e o detalhe de uma nota ainda não foram conferidos.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Nenhuma tela do módulo Fiscal foi aberta: os itens do menu foram lidos apenas da definição do sistema.</span></li></ul></section>
+<section class="secao"><h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Ainda não validado na prática</h2><p class="dica" style="margin:-4px 0 10px">Estas partes não puderam ser conferidas na exploração do sistema. Confirme com seu supervisor antes de seguir.</p><ul class="pendencias"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>O formulário avulso &quot;+ Nova NF-e&quot; e a aba NFS-e ainda não foram conferidos.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Nenhuma tela do módulo Fiscal foi aberta: os itens do menu foram lidos apenas da definição do sistema.</span></li></ul></section>
 
 <section class="secao no-print-notas"><h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Minhas dúvidas e anotações</h2><textarea id="notas" placeholder="Anote dúvidas para levar ao supervisor, números de registros que você consultou, atalhos que descobriu…"></textarea><p class="dica">Fica salvo só neste navegador.</p></section>
 
@@ -215,7 +241,7 @@ textarea:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 3px color
   function atualizar(){
     var total = caixas.length, feitos = caixas.filter(function(c){return c.checked;}).length;
     var pct = total ? Math.round(feitos * 100 / total) : 0;
-    var fill = document.getElementById('barraFill'); if (fill) fill.style.width = pct + '%';
+    var fill = document.getElementById('barraFill'); if (fill) fill.style.transform = 'scaleX(' + (pct / 100) + ')';
     var p = document.getElementById('pct'); if (p) p.textContent = pct + '%';
     var c = document.getElementById('contagem'); if (c) c.textContent = feitos + ' de ' + total;
     [].forEach.call(document.querySelectorAll('[data-grupo]'), function(g){

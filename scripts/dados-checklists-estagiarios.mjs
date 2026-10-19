@@ -680,37 +680,51 @@ export const CHECKLISTS = [
   /* ------------------------------------------------------------------ 11 */
   {
     id: 'expedicao', arquivo: '11-expedicao.html', etiqueta: 'Operação · Expedição',
-    titulo: 'Expedição e entregas', resumo: 'Liberação, carga, conferência e entrega.',
-    subtitulo: 'Do pedido pronto até a mercadoria na mão do cliente: liberar, montar a carga, conferir e entregar.',
-    objetivo: 'Entender as etapas da expedição e acompanhar o status de cargas e entregas.',
+    titulo: 'Expedição e entregas', resumo: 'Liberação, carga, checkpoints, rota e entrega.',
+    subtitulo: 'Do pedido faturado até a mercadoria na mão do cliente: liberar, montar a carga, conferir no pátio e entregar.',
+    objetivo: 'Entender as etapas da expedição e acompanhar o status de cargas e entregas, sabendo o que cada botão faz.',
     prerequisitos: [
-      { t: 'Checklists 04 e 08 concluídos.', s: 'd' },
+      { t: 'Checklists 04 e 12 concluídos (a expedição só aceita pedido faturado).', s: 'v' },
     ],
     fluxos: [
       {
-        titulo: '1. Ver o que está liberado para expedir',
+        titulo: '1. Ver o que pode ser expedido',
         passos: [
           { t: 'Em Pedidos de Venda, filtrar o Status "Lib. Expedição".', s: 'v' },
+          { t: 'Saber que **Liberar para Expedição** (menu `⋯` do pedido) só aparece depois que o pedido é faturado.', s: 'v' },
           { t: 'Na Carteira de Pedidos (Vendas > Demonstrativos), ler A expedir, Em carga, Expedido e Entregue.', s: 'v' },
         ],
       },
       {
-        titulo: '2. Acompanhar cargas', onde: 'módulo `Expedição`',
+        titulo: '2. Entender a montagem da carga (sem montar)', onde: '`Expedição > Montar Nova Carga`',
         passos: [
-          { t: 'Abrir a lista de cargas e ver veículo, motorista, data e status.', s: 'd' },
-          { t: 'Abrir uma carga e ver os pedidos e volumes.', s: 'd' },
-          { t: 'Saber que os volumes são bipados nos checkpoints do galpão e que a entrega é confirmada com comprovante.', s: 'd' },
+          { t: 'Ver as abas "Por pedido de venda" e "Por ordem de produção" e o filtro "Exibir apenas pedidos explicitamente liberados".', s: 'v' },
+          { t: 'Ler os campos: veículo (peso e volume), **Data prevista de saída**, **Motorista** e Observações.', r: 'O resumo mostra a ocupação do veículo (ex.: 23/360 kg).', s: 'v' },
+          { t: 'Saber que "Autorizar montagem apesar do bloqueio de produção" só se usa com aprovação.', s: 'v' },
+        ],
+      },
+      {
+        titulo: '3. Acompanhar uma carga', onde: 'detalhe da carga',
+        passos: [
+          { t: 'Reconhecer o ciclo: **Em Montagem → Fechada → (Separação, Conferência, Carregamento) → Em Rota → Entregue**.', s: 'v' },
+          { t: 'Ler o bloco de checkpoints: cada volume é bipado ou confirmado na Separação, na Conferência e no Carregamento.', s: 'v' },
+          { t: 'Ler o **Histórico da Carga** (quem fez cada etapa e quando).', s: 'v' },
+          { t: 'Ver os documentos disponíveis: Romaneio, Romaneio de itens, PDF e Etiquetas.', s: 'v' },
         ],
       },
     ],
     resultado: [
-      { t: 'Sei dizer se um pedido já está em carga, em rota ou entregue.', s: 'd' },
+      { t: 'Sei dizer se um pedido está liberado, em carga, em rota ou entregue.', s: 'v' },
+      { t: 'Sei explicar por que um pedido ainda não aparece para montar carga (não foi faturado/liberado).', s: 'v' },
     ],
     atencao: [
-      'Montar, fechar, liberar ou cancelar cargas e bipar volumes alteram a operação real.',
-      'Avisos e links de rastreamento podem ser enviados ao cliente.',
+      '**Montar Carga**, **Fechar Carga**, **Iniciar Rota**, **Entregue** e **Ocorrência** alteram a operação real. Só com orientação.',
+      'Fechar carga com motorista de CNH vencida exige justificativa, que fica registrada na carga.',
+      '**Link de rastreamento** gera um link para o cliente: não gere em treino.',
+      'A carga pode avisar "item sem ordem de produção vinculada" mesmo quando existe OP: confira antes de carregar.',
+      'Confirmar entrega pelo painel pede um motivo por não ter foto/assinatura: o normal é o motorista confirmar pelo app.',
     ],
-    naoValidado: ['Nenhuma tela do módulo Expedição foi aberta ainda. A seção 2 vem dos roteiros de validação.'],
+    naoValidado: ['Roteirização, ocorrências/devoluções, app do motorista e painéis da expedição ainda não foram abertos.'],
   },
 
   /* ------------------------------------------------------------------ 12 */
@@ -741,7 +755,15 @@ export const CHECKLISTS = [
         ],
       },
       {
-        titulo: '3. Saber onde ficam os cadastros fiscais', onde: 'módulo `Fiscal`',
+        titulo: '3. Saber como o pedido vira nota', onde: 'menu `⋯ > Faturar` do pedido',
+        passos: [
+          { t: 'Saber que a nota nasce do pedido: `⋯ > Faturar` importa os itens e abre "Nova NF-e" com cliente, CFOP e parcelas do pedido.', s: 'v' },
+          { t: 'Saber que, ao salvar a nota, o pedido já aparece como "Faturado" — mesmo com a nota ainda Em Aberto. Confira sempre o status da nota.', s: 'v' },
+          { t: 'Reconhecer o quadro "Impostos não calculados no item" e o motivo que ele mostra (ex.: CST de PIS/COFINS ausente na NCM): é assunto do fiscal.', s: 'v' },
+        ],
+      },
+      {
+        titulo: '4. Saber onde ficam os cadastros fiscais', onde: 'módulo `Fiscal`',
         passos: [
           { t: 'Saber que NCM, CFOP, CST/CSOSN, CEST e Textos Fiscais são cadastros do Fiscal, mantidos com o contador.', s: 'd' },
         ],
@@ -756,10 +778,11 @@ export const CHECKLISTS = [
       '**Excluir** fica no mesmo menu de Ver Timeline e Anexos.',
       'Cancelamento, carta de correção e inutilização de numeração têm efeito fiscal: são feitos só pelo responsável.',
       'Mesmo em ambiente "Homologação" (sem validade fiscal), não transmita.',
+      '**Finalizar NF** trava a nota para edição e movimenta estoque: só o responsável. Se falhar, o número da nota pode ser consumido mesmo assim.',
       'Os cartões do topo podem não seguir o filtro escolhido (ex.: Valor Total R$ 0,00 com notas em aberto). Confirme com o supervisor antes de usar esses números.',
     ],
     naoValidado: [
-      'Como o pedido de venda vira nota, o formulário "+ Nova NF-e" e o detalhe de uma nota ainda não foram conferidos.',
+      'O formulário avulso "+ Nova NF-e" e a aba NFS-e ainda não foram conferidos.',
       'Nenhuma tela do módulo Fiscal foi aberta: os itens do menu foram lidos apenas da definição do sistema.',
     ],
   },
@@ -871,13 +894,14 @@ export const CHECKLISTS = [
           { t: 'Serviços: a medição nasce do pedido de venda e mostra a obra.', s: 'v' },
           { t: 'Produção: a OP consome material (movimento "Baixa de componente em OP") e entrega o produto acabado ("Entrada de produto acabado (OP)").', s: 'v' },
           { t: 'Compras e Recebimento: o pedido de compra entregue vira nota de recebimento, entra no estoque e gera contas a pagar.', s: 'v' },
-          { t: 'Expedição: o pedido liberado ("Lib. Expedição") entra numa carga e é entregue.', s: 'd' },
+          { t: 'Produção: a OP é criada à mão em Produção > Nova OP, escolhendo o pedido de venda e o item.', s: 'v' },
+          { t: 'Expedição: depois de faturado, o pedido é liberado ("Lib. Expedição"), entra numa carga e é entregue.', s: 'v' },
         ],
       },
       {
         titulo: '3. Da nota ao resultado',
         passos: [
-          { t: 'Faturamento: a nota do pedido aparece em Notas Fiscais; na lista de pedidos, a coluna NOTA FISCAL é preenchida.', s: 'v' },
+          { t: 'Faturamento: `⋯ > Faturar` no pedido gera a nota; ela aparece em Notas Fiscais e a coluna NOTA FISCAL do pedido é preenchida.', s: 'v' },
           { t: 'Financeiro: a coluna TÍTULOS do pedido mostra "Gerados" e os títulos aparecem em Contas a Receber.', s: 'v' },
           { t: 'Projetos: o painel financeiro da obra soma receitas e custos.', s: 'd' },
         ],
@@ -887,9 +911,9 @@ export const CHECKLISTS = [
       { t: 'Consigo mostrar, com as telas abertas, onde o pedido de exemplo aparece em cada módulo.', s: 'd' },
     ],
     atencao: [
-      'A ordem exata (faturar antes ou depois de expedir, gerar títulos antes de faturar) muda de empresa para empresa. Confirme o fluxo da sua empresa com o supervisor.',
+      'No teste de 19/10/2026 a ordem exigida pelo sistema foi: pedido → medição → OP → faturar → liberar para expedição → carga → entrega → títulos. Confirme com o supervisor se a sua empresa usa a mesma sequência.',
       'Siga o pedido só consultando: nenhum botão de avanço deve ser clicado neste exercício.',
     ],
-    naoValidado: ['O fluxo completo ainda não foi executado de ponta a ponta no sistema; o teste de fluxo do consultor está em andamento.'],
+    naoValidado: ['Baixa de título e resultado no painel da obra ainda não foram conferidos no teste de ponta a ponta.'],
   },
 ];

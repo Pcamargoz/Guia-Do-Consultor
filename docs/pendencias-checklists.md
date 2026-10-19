@@ -18,15 +18,24 @@ Situação em 19/10/2026. Faktory Flow v1.22.11 → v1.22.12. Validações feita
 
 Os relatórios completos de cada rodada ficaram fora do repositório. Os pontos principais deles já estão nos checklists e nesta lista.
 
-## Teste de fluxo do consultor
+## Teste de fluxo do consultor (dev, METALURGICA TEST)
 
-| Etapa | Situação |
+| Etapa | Situação em 19/10/2026 |
 |---|---|
-| CRM: lead → BANT → conversão | Executado no dev. O lead/participante código 106 está convertido. |
-| Pedido de venda | Preenchido, mas o salvamento foi **bloqueado**: a unidade "PÇ" do produto não está cadastrada na empresa METALURGICA TEST. **Decidido em 19/10:** cadastrar a unidade de medida "PÇ" nessa empresa do dev (autorizado pelo Pedro) e seguir o teste com o produto original. |
-| Obra, medição, OP, estoque, expedição, nota (finalizar sem transmitir), títulos e gestão | Não executados. |
+| CRM: lead → BANT → conversão | ✅ lead/participante 106 convertido |
+| Pedido de venda | ✅ PV-000033 (depois de cadastrar a unidade "PÇ") |
+| Medição | ✅ MED-000012 medida e assinada. A aprovação exige um conferente **diferente** de quem mediu: falta outro usuário vinculado a outro participante |
+| Produção | ✅ OP-000109 produzida e com entrada no almoxarifado. O apontamento #182 não finaliza (defeito de horário) |
+| Nota fiscal | ✅ NF-019 finalizada, **não transmitida** |
+| Expedição | ✅ carga 20261000001 entregue |
+| Títulos do pedido | ❌ "Gerar Títulos" exige conta **emissora** de boletos porque "Duplicata Mercantil" está cadastrada como tipo Boleto. Decidir: corrigir o tipo do meio de pagamento ou habilitar conta emissora |
+| Baixa / gestão | ✅ testadas com um título manual "TESTE-FLUXO-PV33" (criado pelo agente fora do roteiro). **Estorne e exclua esse título antes de gerar os títulos do pedido**, para não duplicar |
 
-Para limpar depois do teste: lead/participante código 106 "TESTE FLUXO CONSULTOR - Cliente Metalurgica" (dev, METALURGICA TEST). No staging, confira se existe o lead "TESTE ESTAGIÁRIO - exploração": em 16/10 o salvamento coincidiu com a queda da sessão.
+### Registros e configurações para limpar (dev, METALURGICA TEST)
+- Cadastros: lead/participante 106; projeto TESTE-FLUXO-01; unidade de medida "PÇ" (já existia "PC").
+- Operação: PV-000033; MED-000012; OP-000109 (apontamento #182 aberto); NF-019 (finalizada, homologação); carga 20261000001.
+- Financeiro: título manual TESTE-FLUXO-PV33 (baixado).
+- Configurações: almoxarifado ALM-TESTE; conta bancária "TESTE FLUXO CONSULTOR" (definida como padrão para boleto); vínculo do usuário pedro.santos ao participante 00001 em Conferentes.
 
 ## Telas ainda não abertas
 
@@ -61,4 +70,10 @@ Para limpar depois do teste: lead/participante código 106 "TESTE FLUXO CONSULTO
 - Recebimento: a conferência aparece no menu como "Aprovações".
 - Faturamento: os cartões do topo não seguem o filtro de status.
 - Segurança: a tela de Usuários mostra "Limite 2/10" com 4 usuários listados.
+- Produção: o apontamento não finaliza ("A data/hora de fim não pode ser no futuro"; a API recebe o horário correto em UTC) e continua aberto depois da OP produzida.
+- OP: a Empresa é obrigatória, mas a dica diz que ela herda do pedido; o Item do pedido não copia a quantidade.
+- Faturamento: o pedido fica "Faturado" com a nota ainda em aberto; o número da nota é consumido numa finalização que falhou; a Timeline da nota fica vazia; finalizar a nota não gera saída de estoque.
+- Expedição: avisa "item sem ordem de produção vinculada" mesmo com OP; "Liberar para Expedição" só aparece depois de faturar, e o aviso da tela não diz isso.
+- Financeiro: "Duplicata Mercantil" cadastrada como Boleto; o Fluxo de Caixa mostra saldo inicial negativo após a baixa.
+- Gestão: o Dashboard de Vendas mostra "0 faturados" com o pedido entregue; o painel da obra mostra "A faturar" negativo.
 - Sessão: cai em atualizações do sistema e com várias abas. Confirmar com o time de produto se é esperado.

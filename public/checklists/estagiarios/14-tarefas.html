@@ -12,7 +12,7 @@
   --texto:#0f172a;--texto-2:#475569;--texto-3:#64748b;
   --ok:#15803d;--ok-bg:#dcfce7;--doc:#1d4ed8;--doc-bg:#dbeafe;--nao:#b45309;--nao-bg:#fef3c7;
   --alerta:#b45309;--alerta-bg:#fffbeb;--alerta-borda:#fcd34d;
-  --r:12px;--sombra:0 1px 2px rgba(15,23,42,.06),0 1px 3px rgba(15,23,42,.04);
+  --r:12px;--ease-out:cubic-bezier(.22,1,.36,1);--ease-spring:cubic-bezier(.34,1.56,.64,1);--sombra:0 1px 2px rgba(15,23,42,.06),0 1px 3px rgba(15,23,42,.04);
 }
 :root[data-theme="dark"]{
   --brand:#79b6da;--brand-forte:#aed3ea;--brand-suave:#132c40;
@@ -46,7 +46,7 @@ svg{width:18px;height:18px;flex:none}
 .btn:hover{border-color:var(--borda-forte);color:var(--texto)}
 .btn svg{width:16px;height:16px}
 .barra{height:4px;background:var(--borda)}
-.barra i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--brand-forte),var(--brand) 60%,var(--lima));transition:width .3s}
+.barra i{display:block;height:100%;transform:scaleX(0);transform-origin:left;background:linear-gradient(90deg,var(--brand-forte),var(--brand) 60%,var(--lima));transition:transform .45s var(--ease-out)}
 
 main{max-width:880px;margin:0 auto;padding:28px 16px 64px}
 .cab{margin-bottom:20px}
@@ -112,6 +112,26 @@ textarea:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 3px color
 .rodape{margin-top:28px;font-size:12.5px;color:var(--texto-3);text-align:center}
 .concluido{display:none;margin-top:16px;padding:14px 16px;border-radius:var(--r);background:var(--ok-bg);color:var(--ok);font-weight:700;align-items:center;gap:10px}
 .concluido.on{display:flex}
+
+/* Movimento: entrada em cascata, hover "float", check com "pop" e conclusão com "bounceIn". */
+@keyframes ff-sobe{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@keyframes ff-pop{0%{transform:scale(.6)}60%{transform:scale(1.15)}100%{transform:scale(1)}}
+@keyframes ff-entra{0%{opacity:0;transform:scale(.92)}60%{opacity:1;transform:scale(1.02)}100%{transform:scale(1)}}
+.cab,.secao{animation:ff-sobe .5s var(--ease-out) both}
+.secao:nth-of-type(2){animation-delay:.05s}.secao:nth-of-type(3){animation-delay:.1s}.secao:nth-of-type(4){animation-delay:.15s}
+.secao:nth-of-type(5){animation-delay:.2s}.secao:nth-of-type(n+6){animation-delay:.25s}
+.secao{transition:transform .25s var(--ease-out),box-shadow .25s var(--ease-out)}
+.item label{transition:background .15s,border-color .15s,transform .2s var(--ease-out)}
+.item label:hover{transform:translateX(3px)}
+.item input:checked{animation:ff-pop .32s var(--ease-spring)}
+.btn{transition:transform .2s var(--ease-spring),border-color .15s,color .15s}
+.btn:hover{transform:translateY(-2px)}.btn:active{transform:translateY(0) scale(.97)}
+.trilha a{transition:transform .25s var(--ease-out),border-color .2s,box-shadow .25s}
+.trilha a:hover{transform:translateY(-2px);box-shadow:0 8px 20px -10px color-mix(in srgb,var(--brand) 45%,transparent)}
+.trilha .num{transition:transform .25s var(--ease-spring)}.trilha a:hover .num{transform:scale(1.08) rotate(-4deg)}
+.concluido.on{animation:ff-entra .5s var(--ease-spring) both}
+.topo{background:color-mix(in srgb,var(--surface) 72%,transparent);-webkit-backdrop-filter:saturate(180%) blur(16px);backdrop-filter:saturate(180%) blur(16px)}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
 
 @media (max-width:640px){
   .topo{padding:10px 16px}.topo .marca{display:none}.btn span{display:none}.btn{width:34px;justify-content:center;padding:0}
@@ -209,7 +229,7 @@ textarea:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 3px color
   function atualizar(){
     var total = caixas.length, feitos = caixas.filter(function(c){return c.checked;}).length;
     var pct = total ? Math.round(feitos * 100 / total) : 0;
-    var fill = document.getElementById('barraFill'); if (fill) fill.style.width = pct + '%';
+    var fill = document.getElementById('barraFill'); if (fill) fill.style.transform = 'scaleX(' + (pct / 100) + ')';
     var p = document.getElementById('pct'); if (p) p.textContent = pct + '%';
     var c = document.getElementById('contagem'); if (c) c.textContent = feitos + ' de ' + total;
     [].forEach.call(document.querySelectorAll('[data-grupo]'), function(g){
