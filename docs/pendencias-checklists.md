@@ -77,3 +77,13 @@ Os relatórios completos de cada rodada ficaram fora do repositório. Os pontos 
 - Financeiro: "Duplicata Mercantil" cadastrada como Boleto; o Fluxo de Caixa mostra saldo inicial negativo após a baixa.
 - Gestão: o Dashboard de Vendas mostra "0 faturados" com o pedido entregue; o painel da obra mostra "A faturar" negativo.
 - Sessão: cai em atualizações do sistema e com várias abas. Confirmar com o time de produto se é esperado.
+
+## Fluxos por processo (consultor)
+
+| Fluxo | Situação |
+|---|---|
+| 01 · Suprimentos | ✅ executado em 19/10 (SC-000289 → COT-000013 → PC-000009 → NR-000013 → título pago) |
+| 02 · Serviços de campo | em teste |
+| 03 · Comercial, 04 · Estoque, 05 · Financeiro | a testar |
+
+Para limpar (Suprimentos): fornecedor 107; SC-000289; COT-000013; PC-000009; NR-000013 (NF fictícia 990001/900); movimento de estoque 000005; título NR-000013/001 (pago); parâmetro "Usar Conferência Física" (ligado nesta empresa).

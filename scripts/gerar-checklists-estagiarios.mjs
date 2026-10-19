@@ -9,6 +9,7 @@ import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import { CHECKLISTS, ONBOARDING, META } from './dados-checklists-estagiarios.mjs';
 import { CONSULTOR } from './dados-checklist-consultor.mjs';
+import { FLUXOS } from './dados-fluxos-consultor.mjs';
 
 const RAIZ = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 const raizes = ['public/checklists', 'Checklists'].filter((d) => existsSync(path.join(RAIZ, d)));
@@ -393,10 +394,10 @@ function onboarding(o) {
 
 const saidas = {
   estagiarios: [[ONBOARDING.arquivo, onboarding(ONBOARDING)], ...CHECKLISTS.map((c) => [c.arquivo, checklist(c)])],
-  consultores: [[CONSULTOR.arquivo, checklist(CONSULTOR, {
-    prefixo: 'consultor', marca: 'Teste de Fluxo · Consultor', rodape: CONSULTOR.rodape,
+  consultores: [CONSULTOR, ...FLUXOS].map((c) => [c.arquivo, checklist(c, {
+    prefixo: 'consultor', marca: 'Teste de Fluxo · Consultor', rodape: c.rodape,
     fim: 'Fluxo concluído. Registre os defeitos encontrados e limpe os registros de teste.',
-  })]],
+  })]),
 };
 for (const raiz of raizes) {
   for (const [pasta, arquivos] of Object.entries(saidas)) {

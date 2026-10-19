@@ -19,6 +19,7 @@
   const est = (n, area, nome, arquivo) => ({ grupo: ESTAGIARIO, area: `${n} · ${area}`, nome, arquivo: `estagiarios/${arquivo}` });
   const dados = [
     { grupo: CONSULTOR, area: 'Fluxo completo', nome: 'Teste do fluxo: do pedido à gestão', arquivo: 'consultores/teste-fluxo-pedido-ate-gestao.html' },
+    { grupo: CONSULTOR, area: 'Fluxo · Suprimentos', nome: 'Da solicitação de compra ao pagamento', arquivo: 'consultores/fluxo-01-suprimentos.html' },
     est('00', 'Comece por aqui', 'Onboarding do estagiário', '00-onboarding-estagiario.html'),
     est('01', 'Navegação', 'Primeiros passos e navegação', '01-primeiros-passos-navegacao.html'),
     est('02', 'Cadastros', 'Cadastros básicos', '02-cadastros-basicos.html'),
