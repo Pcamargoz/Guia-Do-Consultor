@@ -23,7 +23,7 @@ Os relatórios completos de cada rodada ficaram fora do repositório. Os pontos 
 | Etapa | Situação |
 |---|---|
 | CRM: lead → BANT → conversão | Executado no dev. O lead/participante código 106 está convertido. |
-| Pedido de venda | Preenchido, mas o salvamento foi **bloqueado**: a unidade "PÇ" do produto não está cadastrada na empresa METALURGICA TEST. **Decidir:** cadastrar a unidade (é configuração) ou usar outro produto com unidade válida, por exemplo o de um pedido já faturado, como o PV-000032. |
+| Pedido de venda | Preenchido, mas o salvamento foi **bloqueado**: a unidade "PÇ" do produto não está cadastrada na empresa METALURGICA TEST. **Decidido em 19/10:** cadastrar a unidade de medida "PÇ" nessa empresa do dev (autorizado pelo Pedro) e seguir o teste com o produto original. |
 | Obra, medição, OP, estoque, expedição, nota (finalizar sem transmitir), títulos e gestão | Não executados. |
 
 Para limpar depois do teste: lead/participante código 106 "TESTE FLUXO CONSULTOR - Cliente Metalurgica" (dev, METALURGICA TEST). No staging, confira se existe o lead "TESTE ESTAGIÁRIO - exploração": em 16/10 o salvamento coincidiu com a queda da sessão.
