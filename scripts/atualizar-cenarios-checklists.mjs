@@ -26,7 +26,7 @@ function trechoDoRoteiro(html, codigo) {
   return [inicio, fim];
 }
 
-function gravarAchado(html, { roteiro, item, txt }) {
+function gravarAchado(html, { roteiro, item, txt, data = DATA }) {
   const [ini, fim] = trechoDoRoteiro(html, roteiro);
   const pos = html.indexOf(`["${item}","`, ini);
   if (pos < 0 || pos > fim) throw new Error(`item ${roteiro}/${item} não encontrado`);
@@ -34,7 +34,7 @@ function gravarAchado(html, { roteiro, item, txt }) {
   const resto = html.slice(pos);
   const m = resto.match(/,([01])(,\{[^\n]*?\})?\]/);
   if (!m) throw new Error(`fim do item ${roteiro}/${item} não reconhecido`);
-  const achado = `,{ data: ${JSON.stringify(DATA)}, txt: ${JSON.stringify(txt)} }`;
+  const achado = `,{ data: ${JSON.stringify(data)}, txt: ${JSON.stringify(txt)} }`;
   const troca = `,${m[1]}${achado}]`;
   return html.slice(0, pos + m.index) + troca + html.slice(pos + m.index + m[0].length);
 }
@@ -47,7 +47,7 @@ function gravarPreparacao(html, linhas) {
     .filter((l) => !l.includes(`"${PREFIXO_PREP}`))
     .map((l) => l.replace(/,\s*$/, ''))
     .filter((l) => l.trim());
-  const novas = linhas.map((l) => `    ${JSON.stringify(`${PREFIXO_PREP} (${DATA}): ${l}`)}`);
+  const novas = linhas.map((l) => `    ${JSON.stringify(`${PREFIXO_PREP}: ${l}`)}`);
   return `${html.slice(0, ini)}  preparacao: [\n${[...atuais, ...novas].join(',\n')}${html.slice(fim)}`;
 }
 

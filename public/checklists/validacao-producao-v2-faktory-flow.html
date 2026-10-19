@@ -1025,7 +1025,8 @@ MODULOS.push({
     "Motivos cadastrados (roteiro 01) — refugo, parada e falta de separação dependem deles.",
     "Engine e IA desligados no início (Configurações → Ajustes do planejamento) — os roteiros ligam cada recurso na hora certa.",
     "Usuários adicionais para as permissões novas: um aprovador de apontamento (PRODUCAO.APONTAMENTO.APROVAR) e um almoxarife de separação (PRODUCAO.SEPARACAO.*).",
-    "Cenário real (16/10/2026): STAGING — tela Início alerta \"2 ordens com prazo vencido\" (link /producao/ordem-producao?status=atrasado); OP-000067 concluída gerou entrada de produto acabado no estoque (produto GOL-PCR200)."
+    "Cenário real: STAGING — tela Início alerta \"2 ordens com prazo vencido\" (link /producao/ordem-producao?status=atrasado); OP-000067 concluída gerou entrada de produto acabado no estoque (produto GOL-PCR200).",
+    "Cenário real: DEV-CLIENTE — massa útil para treino: OP em execução com todas as etapas apontadas e \"Conclusão bloqueada\"; OPs de Corte geradas pela integração INT-PROD-000001; OPs de Beneficiamento em aberto; Fila de exceções com falhas antigas de saída por NF."
   ],
 
   roteiros: [
@@ -1203,7 +1204,7 @@ MODULOS.push({
         o: "Provar que a OP nasce montada a partir dos cadastros, com etapas e materiais corretos e numeração única.",
         i: [
           ["1.1","Crie uma OP de 10 unidades do produto de teste.","O número OP-XXXXXX é gerado e o status nasce “Em aberto”.",1],
-          ["1.2","Abra as Etapas da OP.","São as etapas do processo padrão, na ordem, com tempo igual ao tempo padrão × 10.",1],
+          ["1.2","Abra as Etapas da OP.","São as etapas do processo padrão, na ordem, com tempo igual ao tempo padrão × 10.",1,{ data: "19/10/2026", txt: "DEV-CLIENTE, verificado: a OP não tem abas. Etapas de execução, Apontamentos, Materiais necessários, Linha do tempo (/producao/planejamento/op-timeline) e Custo da OP abrem por itens do menu \"Mais ações\" da linha. Com apontamentos, o processo não pode mais ser trocado (\"cancele a OP e crie outra\")." }],
           ["1.3","Abra os Materiais necessários e compare com as quantidades anotadas no roteiro 02 §1.1.","São os itens da estrutura × 10, com cor e dimensões propagadas.",1],
           ["1.4","Escolha um produto paramétrico ao montar a OP.","O modal de parâmetros exige cor e dimensões conforme o tipo, e os pesos e áreas calculam a partir das dimensões.",1],
           ["1.5","Crie uma OP de um produto sem processo ou sem estrutura.","A OP é criada, mas com avisos claros do que faltou.",0],
@@ -1222,7 +1223,7 @@ MODULOS.push({
         o: "Produzido e Cancelada são estados finais — nenhuma tela pode furar essa regra.",
         i: [
           ["3.1","Tente marcar Produzido com etapas pendentes.","É bloqueado, citando as etapas que faltam.",1],
-          ["3.2","Com todas as etapas concluídas via apontamentos (roteiro 04), marque Produzido.","A OP é marcada como Produzida.",1],
+          ["3.2","Com todas as etapas concluídas via apontamentos (roteiro 04), marque Produzido.","A OP é marcada como Produzida.",1,{ data: "19/10/2026", txt: "DEV-CLIENTE, verificado: OP com as 3 etapas apontadas continua \"Em execução\" com o selo \"Conclusão bloqueada\" quando a obra não tem local de estoque ativo (\"Cadastre o local da obra em Estoque > Locais\"). Outros selos vistos: \"Conclusão travada\", \"Material não baixado\" e \"Estoque não creditado\" (este pede acionar o suporte para reprocessar)." }],
           ["3.3","Com a OP Produzida, tente editar campos, etapas, materiais e agendamento e criar apontamento novo, pela lista, pelo painel e pelo PCP.","Nada é editável por nenhum dos três caminhos.",1],
           ["3.4","Tente uma transição inválida, como Produzido para Em aberto.","É bloqueada.",1]
         ]},
@@ -1255,7 +1256,7 @@ MODULOS.push({
       { t: "6. Lista, filtros e origens",
         o: "A listagem precisa filtrar bem, bater com os apontamentos e mostrar de onde cada OP veio.",
         i: [
-          ["6.1","Aplique filtros por projeto, tipo de operação e status, recarregue a página e abra a visão calendário (por data de necessidade).","Os filtros persistem pela URL e a visão calendário funciona.",0],
+          ["6.1","Aplique filtros por projeto, tipo de operação e status, recarregue a página e abra a visão calendário (por data de necessidade).","Os filtros persistem pela URL e a visão calendário funciona.",0,{ data: "19/10/2026", txt: "DEV-CLIENTE, verificado: filtros Projeto, Estágio do Projeto, Etapa do Projeto, tipo de operação (Fabricação/Corte/Beneficiamento) e status (Em aberto/Em execução/Pausada/Produzido/Cancelada). Na OP Em aberto o botão \"Iniciar produção\" muda o status com um clique e o lugar do \"Visualizar\" é ocupado por \"Editar OP\". Numeração mista (OP-0000xx da integração e números digitados livremente)." }],
           ["6.2","Compare os cartões de peso e área produzidos hoje e no mês com os apontamentos do período.","Os números batem.",1],
           ["6.3","Abra uma OP vinda de integração (estoque ou produção).","A origem aparece em campo somente leitura, garantindo a rastreabilidade.",1],
           ["6.4","Abra uma OP de tipo Corte.","Ela oferece o plano de corte (barras e peças) em vez da lista de materiais.",0],
@@ -1434,7 +1435,7 @@ MODULOS.push({
       { t: "1. Navegação e filtros",
         o: "As quatro visões compartilham filtros e cartões-resumo — tudo tem que responder junto.",
         i: [
-          ["1.1","Alterne as 4 abas, use os atalhos Ctrl+1 a Ctrl+4 e a tela cheia de cada aba.","As quatro visões abrem pelos dois caminhos e a tela cheia funciona por aba.",0],
+          ["1.1","Alterne as 4 abas, use os atalhos Ctrl+1 a Ctrl+4 e a tela cheia de cada aba.","As quatro visões abrem pelos dois caminhos e a tela cheia funciona por aba.",0,{ data: "19/10/2026", txt: "DEV-CLIENTE, verificado: o Painel de fábrica (/producao/painel-producao) tem as visões Cards, Lista e Timeline (não Kanban/Gantt com esses nomes) e contadores Ordens/No prazo/Atrasadas. Cada card tem o botão \"Apontar <ETAPA>\". OPs sem processo aparecem com \"Etapa:\" vazia e \"0/0 etapas\"." }],
           ["1.2","Aplique filtros por período (necessidade e planejamento), projeto e produto.","Os filtros são aplicados a todas as visões.",0],
           ["1.3","Clique nos cartões-resumo No prazo, Atenção e Atrasadas e confira os números.","Cada cartão filtra e os números batem com as OPs visíveis.",1],
           ["1.4","Deixe a atualização automática de 30s ligada enquanto usa a tela.","Ela atualiza sem “pular” a tela do usuário.",0]
@@ -1733,7 +1734,7 @@ MODULOS.push({
       { t: "3. Processar ★",
         o: "A geração em lote é irreversível na prática — reprocessar e retomar não podem duplicar nada.",
         i: [
-          ["3.1","Processe a integração e confira as OPs de montagem na lista de OPs (roteiro 03), as requisições e o plano de corte.","Tudo é gerado com projeto e vínculos certos.",1],
+          ["3.1","Processe a integração e confira as OPs de montagem na lista de OPs (roteiro 03), as requisições e o plano de corte.","Tudo é gerado com projeto e vínculos certos.",1,{ data: "19/10/2026", txt: "DEV-CLIENTE, verificado: a integração INT-PROD-000001 (Processado) mostra \"Gerou: 1 OP de montagem · 13 OPs de corte (1 por perfil) · 38 requisições de material\", com abas Esquadrias / Corte / Processamento & log. O botão \"Cancelar\" no topo do detalhe é ambíguo (cancela a integração)." }],
           ["3.2","Leia o log do processamento e clique nos links.","O log conta a narrativa e os links abrem a OP ou a correção certa.",0],
           ["3.3","Use Reprocessar e compare com a versão anterior.","Gera nova versão sem duplicar OPs da versão anterior de forma descontrolada — confira o comportamento e o log.",1],
           ["3.4","Mude algo na obra no CEM (combine com o time) e use Atualizar da origem.","O diff mostra as esquadrias novas, alteradas e removidas.",1],
@@ -1884,7 +1885,7 @@ MODULOS.push({
           ["2.3","Abra o kanban de remessas e as OPs afetadas.","A remessa vencida amanheceu marcada como atrasada e as OPs afetadas estão sinalizadas no cockpit e no risco.",1],
           ["2.4","Abra o slot planejado para ontem.","Ele amanheceu “Atrasado” e não foi movido — empurrar é decisão humana (roteiro 07 §5).",1],
           ["2.5","Compare o risco de atraso das OPs de um dia para o outro.","Uma OP cujo prazo se aproximou subiu de risco, sem apontamento novo.",0],
-          ["2.6","Observe a idade do snapshot do dashboard durante a operação.","Ele tem no máximo cerca de 10 minutos de idade.",0],
+          ["2.6","Observe a idade do snapshot do dashboard durante a operação.","Ele tem no máximo cerca de 10 minutos de idade.",0,{ data: "19/10/2026", txt: "DEV-CLIENTE, verificado: a Visão geral informa \"sem conexão ao vivo, recarregando a cada 3 min\". A Fila de exceções (/producao/fila-excecoes) lista pendências antigas de \"Saída por nota fiscal autorizada\" com mensagens técnicas de banco de dados e botão Reprocessar — o NF autorizada → estoque roda em fila e as falhas aparecem na Produção." }],
           ["2.7","Procure sinais de execução dupla: dois planos para a mesma OP, dupla marcação de atraso.","Nada rodou em duplicata.",1]
         ]},
       { t: "3. Perguntas ao time técnico (registrar as respostas)",

@@ -5,7 +5,7 @@
 export const CONSULTOR = {
   id: 'fluxo-completo', arquivo: 'teste-fluxo-pedido-ate-gestao.html', etiqueta: 'Consultor · Teste de fluxo',
   titulo: 'Teste do fluxo completo: do pedido à gestão',
-  rodape: 'Teste de Fluxo · Consultor · Faktory Flow v1.22.11 · roteiro conferido em 16/10/2026 (dev METALURGICA TEST e staging FESQUA 2026)',
+  rodape: 'Teste de Fluxo · Consultor · Faktory Flow v1.22.11 · roteiro conferido em 16 e 19/10/2026 (dev METALURGICA TEST e staging FESQUA 2026)',
   subtitulo: 'Roteiro para o consultor provar, num ambiente de teste, que um pedido atravessa todos os módulos e chega aos indicadores de gestão com os números certos. Anote o número de cada registro criado: ele serve para conferir os reflexos e para a limpeza no fim.',
   objetivo: 'Executar o ciclo comercial e operacional completo com registros "TESTE FLUXO CONSULTOR" — lead, pedido, obra, medição, produção, estoque, expedição, nota, títulos e resultado — e confirmar em cada passagem que o módulo seguinte recebeu a informação.',
   prerequisitos: [
@@ -13,7 +13,8 @@ export const CONSULTOR = {
     { t: 'Selo da empresa no topo e versão no rodapé do menu anotados.', s: 'v', campo: 'Empresa / versão' },
     { t: 'Ambiente fiscal em **Homologação** (coluna AMBIENTE em Faturamento > Notas Fiscais). Mesmo assim, a nota **não** será transmitida.', s: 'v' },
     { t: 'Caixa de e-mail de teste para o cliente (ex.: endereço @tuamaeaquelaursa.com, que é público e apaga sozinho — só dados fictícios).', s: 'v', campo: 'E-mail de teste' },
-    { t: 'Um produto simples com estrutura e processo de produção cadastrados (ou de revenda, se a empresa não fabrica).', s: 'n', campo: 'Código do produto' },
+    { t: 'Um produto simples com estrutura e processo de produção cadastrados (ou de revenda, se a empresa não fabrica) **e com unidade de medida cadastrada para a empresa** — sem isso o pedido só falha no Salvar ("Unidade de Medida "PÇ" não está cadastrada para esta empresa").', s: 'v', campo: 'Código do produto' },
+    { t: 'Condição de pagamento, meio de pagamento, portador e conta de fluxo de caixa de venda definidos com o financeiro (são exigidos no pedido).', s: 'v' },
     { t: 'Equipe de campo ativa e usuário vinculado como conferente, se a empresa usa medição com conferência.', s: 'v' },
   ],
   fluxos: [
@@ -25,14 +26,19 @@ export const CONSULTOR = {
         { t: 'Conferir na lista se a Temperatura escolhida ficou gravada.', s: 'v' },
         { t: 'No `Kanban de Leads`, levar o lead até uma etapa de **60% ou mais** (MQL, SQL ou Demo agendada), confirmando cada diálogo "Mover lead".', r: 'Cada mudança entra no histórico do lead.', s: 'v' },
         { t: 'Em `Editar Lead`, completar o **BANT**: Budget Estimado e as chaves Autoridade, Necessidade e Prazo/timeline. Salvar.', s: 'v' },
-        { t: '`⋮ > Converter` e confirmar "Converter Lead".', r: 'Lead marcado como convertido; o participante continua o mesmo ("Participante já vinculado").', s: 'n' },
-        { t: 'Conferir em `Cadastros > Participantes` se o cadastro ficou com "É Cliente?" ligado.', s: 'n' },
+        { t: '`⋮ > Converter` e confirmar "Converter Lead".', r: '"Lead convertido com sucesso!"; o participante continua o mesmo ("Participante já vinculado").', s: 'v' },
+        { t: 'Conferir em `Cadastros > Participantes` o cadastro convertido.', r: '"É Cliente?" ligado e "Prospect/Lead" desligado. "Conta a Receber" continua desligada: confira se a empresa exige.', s: 'v' },
+        { t: 'Conferir de novo a Temperatura do lead: ela mudou sozinha ao salvar o BANT (Morno → Frio) no teste.', s: 'v' },
       ],
     },
     {
       titulo: '2. Vendas: pedido e aprovação', onde: '`Vendas > Pedidos de Venda`',
       passos: [
-        { t: '`+ Novo Pedido` para o cliente de teste, com o produto escolhido, condição de pagamento e projeto/obra (se exigido). Salvar.', r: 'Pedido numerado aparece na lista com Status "Em Aberto".', s: 'n', campo: 'Nº do pedido (PV-)' },
+        { t: '`+ Novo Pedido`: Empresa, Cliente, Vendedor, Condição de Pagamento (gera as parcelas) e Projeto/obra (opcional).', s: 'v' },
+        { t: 'Escolher o **CFOP** (só libera depois de empresa e cliente e vem filtrado pelo estado do cliente; ex.: 6101 para outro estado).', s: 'v' },
+        { t: 'Adicionar o item: produto, quantidade e valor. Produtos de esquadria abrem "Dados do Item" (altura, largura, comprimento, peso, cor) — confira a unidade (mm).', r: 'O item aparece com o total; os impostos podem aparecer como "não calculados" até salvar.', s: 'v' },
+        { t: 'Nas parcelas, informar Meio de Pagamento e Portador; no Resumo, a **Conta de Fluxo de Caixa** de venda.', r: 'Com "Boleto" sem conta emissora configurada, aparece aviso de emissão de boletos.', s: 'v' },
+        { t: 'Clicar em **Salvar e Permanecer** logo depois de incluir o item (para não perder o pedido se a sessão cair) e depois Salvar.', r: 'Pedido numerado na lista com Status "Em Aberto".', s: 'n', campo: 'Nº do pedido (PV-)' },
         { t: 'Trocar o filtro Status para "Todos" e localizar o pedido.', r: 'A lista carrega todos os status (no staging esse filtro deu erro "Não foi possível consultar os pedidos": registre se acontecer).', s: 'v' },
         { t: 'Se houver desconto acima da alçada, conferir a pendência em `Vendas > Aprovações` e aprovar só o pedido de teste.', s: 'd' },
         { t: 'Conferir as colunas TÍTULOS e NOTA FISCAL do pedido.', r: 'Anote se os títulos já nascem "Gerados" antes do faturamento.', s: 'v', campo: 'Títulos / NF (antes)' },
@@ -117,7 +123,7 @@ export const CONSULTOR = {
     { t: 'Os defeitos encontrados foram anotados com os passos para reproduzir.', s: 'v' },
   ],
   atencao: [
-    'Trabalhe em **uma única aba**. Abrir várias abas logadas fez a sessão cair duas vezes durante a preparação deste roteiro (e o login bloqueou por 15 minutos).',
+    'A sessão do ambiente de teste caiu várias vezes durante a preparação deste roteiro (inclusive com uma aba só e em atualizações do sistema). Use **Salvar e Permanecer** com frequência e anote os números dos registros conforme avança. O login bloqueia por 15 minutos após muitas tentativas.',
     'Não use **Sair**, não troque de empresa e não abra a tela de login no meio do teste.',
     '**Transmitir** a nota é irreversível, mesmo em homologação: este roteiro só finaliza.',
     'Converter o lead **não** cria pedido: o pedido é feito em Vendas.',
@@ -125,6 +131,7 @@ export const CONSULTOR = {
     'Números de pedido podem se repetir na lista (séries/empresas diferentes): identifique o seu pelo cliente de teste.',
   ],
   naoValidado: [
-    'Até 16/10/2026 o teste foi executado só até o CRM (lead criado e levado à etapa MQL). As etapas 2 a 11 seguem os roteiros de validação e o Guia do Consultor e precisam da primeira execução completa.',
+    'Até 19/10/2026 o teste foi executado até a conversão do lead e o preenchimento do pedido: o salvamento do pedido foi bloqueado porque a unidade "PÇ" do produto não estava cadastrada na empresa METALURGICA TEST (dev), e a sessão caiu em seguida. As etapas a partir do salvamento do pedido seguem os roteiros de validação e precisam da primeira execução completa.',
+    'Defeitos encontrados no teste: bairro curto preenchido pelo CEP recusado ao salvar; Temperatura do lead muda sozinha; erro de unidade de medida só aparece no Salvar do pedido; aviso de boleto continua após trocar o meio de pagamento; dimensões do item rotuladas em mm com valores em metros; Budget "100000" vira R$ 100.000,00.',
   ],
 };

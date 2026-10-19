@@ -92,7 +92,7 @@ A aba **Checklist** do guia lista três grupos de arquivos HTML independentes (a
 - **Trilha do estagiário** (`estagiarios/`): onboarding (00) e 15 checklists curtos por módulo. Cada etapa traz a origem: *Verificado* (conferido no sistema), *Documentação* (roteiros de validação) ou *Não validado*.
 - **Validação dos módulos (QA)** (raiz): os planos completos de homologação. Os cenários reais encontrados na exploração entram como "achado prévio" das etapas e como linhas "Cenário real" da preparação.
 
-Para editar a trilha e o teste do consultor, altere `scripts/dados-checklists-estagiarios.mjs` / `scripts/dados-checklist-consultor.mjs` e rode `node scripts/gerar-checklists-estagiarios.mjs`. Para os cenários reais dos planos de QA, altere `scripts/dados-cenarios-checklists.mjs` e rode `node scripts/atualizar-cenarios-checklists.mjs`.
+O que ainda falta validar no sistema está em `docs/pendencias-checklists.md`. Para editar a trilha e o teste do consultor, altere `scripts/dados-checklists-estagiarios.mjs` / `scripts/dados-checklist-consultor.mjs` e rode `node scripts/gerar-checklists-estagiarios.mjs`. Para os cenários reais dos planos de QA, altere `scripts/dados-cenarios-checklists.mjs` e rode `node scripts/atualizar-cenarios-checklists.mjs`.
 
 ## Estrutura
 

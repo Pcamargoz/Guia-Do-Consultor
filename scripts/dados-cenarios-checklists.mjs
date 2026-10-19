@@ -1,15 +1,16 @@
-/* Cenários reais encontrados na exploração de 16/10/2026 (Faktory Flow v1.22.11), gravados nos planos de
+/* Cenários reais encontrados nas explorações de 16 e 19/10/2026 (Faktory Flow v1.22.11/v1.22.12), gravados nos planos de
    validação por scripts/atualizar-cenarios-checklists.mjs.
    Ambientes: STAGING = staging.flow.faktory.com.br, empresa FESQUA 2026; DEV = dev.flow.faktory.com.br,
-   empresa METALURGICA TEST. Cada achado diz em que ambiente foi visto e se foi executado ou só observado. */
+   empresa METALURGICA TEST; DEV-CLIENTE = dev, empresa com massa de cliente (dados omitidos de propósito).
+   Cada achado diz em que ambiente foi visto e se foi executado ou só observado. */
 
-export const DATA = '16/10/2026';
+export const DATA = '16/10/2026'; // padrão; achados posteriores trazem a própria data
 
 export const CENARIOS = [
   {
     arquivo: 'validacao-crm-v2-faktory-flow.html',
     preparacao: [
-      'DEV — lead "TESTE FLUXO CONSULTOR - Cliente Metalurgica" (PF, CPF de teste 111.444.777-35, e-mail @tuamaeaquelaursa.com) parado na etapa MQL (60%) com o BANT incompleto: serve para o roteiro 01 §4 (conversão).',
+      'DEV — lead/participante código 106 "TESTE FLUXO CONSULTOR - Cliente Metalurgica" (PF, CPF de teste 111.444.777-35, e-mail @tuamaeaquelaursa.com): convertido em 19/10/2026 depois de completar o BANT; serve para conferir o roteiro 01 §4.3.',
       'STAGING — Visão Geral do CRM mostrava 9 leads novos aguardando qualificação, 18 oportunidades e R$ 2.402.615,00 em jogo; 22 leads na lista.',
     ],
     achados: [
@@ -20,7 +21,8 @@ export const CENARIOS = [
       { roteiro: '01', item: '3.2', txt: 'DEV, executado: o diálogo "Mover lead" (observação opcional) só grava ao clicar em Confirmar; clicar fora cancela sem aviso. Em painel estreito, o card caiu uma coluna antes do ponto de soltura duas vezes.' },
       { roteiro: '01', item: '3.5', txt: 'DEV, verificado: etapas do funil de leads = Inbound 10%, Pesquisado 25%, Conectado 40%, MQL 60%, SQL 80%, Demo agendada 90%.' },
       { roteiro: '01', item: '4.1', txt: 'DEV, executado: a mensagem é "Lead na etapa "Inbound" (10%) não pode ser convertido. Mova o lead para uma etapa com 60% ou mais."' },
-      { roteiro: '01', item: '4.2', txt: 'DEV, executado: em MQL (60%) a janela é "Converter Lead em Participante" ("Participante já vinculado. A conversão irá marcar o lead como convertido no sistema.") e não oferece escolha de funil/etapa da oportunidade. Ao confirmar: "BANT incompleto — faltam: budget, autoridade, necessidade, timeline." A conversão não foi concluída (sessão caiu).' },
+      { roteiro: '01', item: '4.2', data: '19/10/2026', txt: 'DEV, executado: em MQL (60%) a janela é "Converter Lead em Participante" ("Participante já vinculado. A conversão irá marcar o lead como convertido no sistema.") e não oferece escolha de funil/etapa da oportunidade. Ao confirmar: "BANT incompleto — faltam: budget, autoridade, necessidade, timeline." Depois de preencher Budget e as chaves Autoridade, Necessidade e Prazo/timeline em "Editar Lead", a conversão deu "Lead convertido com sucesso!".' },
+      { roteiro: '01', item: '4.3', data: '19/10/2026', txt: 'DEV, executado: depois da conversão, o participante (código 106) ficou com "É Cliente?" ligado e "Prospect/Lead" desligado; "Conta a Receber" continuou desligada. A Temperatura mudou sozinha de "Morno" para "Frio" ao salvar o BANT (defeito confirmado). Pipeline não conferido.' },
     ],
   },
   {
@@ -87,8 +89,15 @@ export const CENARIOS = [
     arquivo: 'validacao-producao-v2-faktory-flow.html',
     preparacao: [
       'STAGING — tela Início alerta "2 ordens com prazo vencido" (link /producao/ordem-producao?status=atrasado); OP-000067 concluída gerou entrada de produto acabado no estoque (produto GOL-PCR200).',
+      'DEV-CLIENTE — massa útil para treino: OP em execução com todas as etapas apontadas e "Conclusão bloqueada"; OPs de Corte geradas pela integração INT-PROD-000001; OPs de Beneficiamento em aberto; Fila de exceções com falhas antigas de saída por NF.',
     ],
     achados: [
+      { roteiro: '03', item: '1.2', data: '19/10/2026', txt: 'DEV-CLIENTE, verificado: a OP não tem abas. Etapas de execução, Apontamentos, Materiais necessários, Linha do tempo (/producao/planejamento/op-timeline) e Custo da OP abrem por itens do menu "Mais ações" da linha. Com apontamentos, o processo não pode mais ser trocado ("cancele a OP e crie outra").' },
+      { roteiro: '03', item: '3.2', data: '19/10/2026', txt: 'DEV-CLIENTE, verificado: OP com as 3 etapas apontadas continua "Em execução" com o selo "Conclusão bloqueada" quando a obra não tem local de estoque ativo ("Cadastre o local da obra em Estoque > Locais"). Outros selos vistos: "Conclusão travada", "Material não baixado" e "Estoque não creditado" (este pede acionar o suporte para reprocessar).' },
+      { roteiro: '03', item: '6.1', data: '19/10/2026', txt: 'DEV-CLIENTE, verificado: filtros Projeto, Estágio do Projeto, Etapa do Projeto, tipo de operação (Fabricação/Corte/Beneficiamento) e status (Em aberto/Em execução/Pausada/Produzido/Cancelada). Na OP Em aberto o botão "Iniciar produção" muda o status com um clique e o lugar do "Visualizar" é ocupado por "Editar OP". Numeração mista (OP-0000xx da integração e números digitados livremente).' },
+      { roteiro: '06', item: '1.1', data: '19/10/2026', txt: 'DEV-CLIENTE, verificado: o Painel de fábrica (/producao/painel-producao) tem as visões Cards, Lista e Timeline (não Kanban/Gantt com esses nomes) e contadores Ordens/No prazo/Atrasadas. Cada card tem o botão "Apontar <ETAPA>". OPs sem processo aparecem com "Etapa:" vazia e "0/0 etapas".' },
+      { roteiro: '11', item: '3.1', data: '19/10/2026', txt: 'DEV-CLIENTE, verificado: a integração INT-PROD-000001 (Processado) mostra "Gerou: 1 OP de montagem · 13 OPs de corte (1 por perfil) · 38 requisições de material", com abas Esquadrias / Corte / Processamento & log. O botão "Cancelar" no topo do detalhe é ambíguo (cancela a integração).' },
+      { roteiro: '14', item: '2.6', data: '19/10/2026', txt: 'DEV-CLIENTE, verificado: a Visão geral informa "sem conexão ao vivo, recarregando a cada 3 min". A Fila de exceções (/producao/fila-excecoes) lista pendências antigas de "Saída por nota fiscal autorizada" com mensagens técnicas de banco de dados e botão Reprocessar — o NF autorizada → estoque roda em fila e as falhas aparecem na Produção.' },
       { roteiro: '04', item: '4.2', txt: 'STAGING, verificado no Estoque: as baixas de material de OP aparecem em Estoque > Movimentos como "Baixa de componente em OP" (origem "Requisição"), saindo do local da obra.' },
     ],
   },

@@ -6,7 +6,7 @@
    Textos: `Menu > Tela` vira destaque de interface; **negrito** vira ênfase. */
 
 export const META = {
-  rodape: 'Trilha do Estagiário · Faktory Flow v1.22.11 · conteúdo conferido em 16/10/2026',
+  rodape: 'Trilha do Estagiário · Faktory Flow v1.22 · conteúdo conferido em 16 e 19/10/2026',
 };
 
 export const ONBOARDING = {
@@ -249,7 +249,8 @@ export const CHECKLISTS = [
         titulo: '5. Entender a conversão (com o supervisor)', onde: 'menu `⋮ > Converter` do lead',
         passos: [
           { t: 'Saber as duas regras: o lead precisa estar numa etapa de **60% ou mais** e com o **BANT completo** (budget, autoridade, necessidade e prazo).', r: 'Sem isso, o sistema avisa o que falta e não converte.', s: 'v' },
-          { t: 'Saber que converter marca o lead como convertido e mantém o participante. O pedido é criado depois, em Vendas.', s: 'v' },
+          { t: 'Ver com o supervisor onde o BANT é preenchido: `Editar Lead` > Budget Estimado e as chaves Autoridade, Necessidade e Prazo/timeline.', s: 'v' },
+          { t: 'Saber o que a conversão faz: o lead fica "convertido" e o participante passa a ter **"É Cliente?"** ligado. O pedido é criado depois, em Vendas.', r: 'Mensagem "Lead convertido com sucesso!".', s: 'v' },
         ],
       },
       {
@@ -270,6 +271,8 @@ export const CHECKLISTS = [
       'O telefone na lista é um link que liga de verdade.',
       'Campanhas, Cadências e Automações (menu Engajamento) **enviam mensagens a clientes**: não mexa.',
       'Os "Filtros Avançados" usam nomes técnicos (ex.: "Origem Id"). Prefira os filtros rápidos e a pesquisa.',
+      'A **Temperatura** pode mudar sozinha ao salvar o lead (defeito confirmado no ambiente de teste). Confira depois de salvar.',
+      'No campo Budget, digitar "100000" grava R$ 100.000,00: confira o valor antes de salvar.',
     ],
     naoValidado: ['Pipeline, Atividades, Agenda, Clientes / Visão 360°, Projetos de Obra e Dashboard Executivo ainda não foram abertos.'],
   },
@@ -277,9 +280,9 @@ export const CHECKLISTS = [
   /* ------------------------------------------------------------------ 04 */
   {
     id: 'vendas', arquivo: '04-vendas-pedidos.html', etiqueta: 'Comercial · Vendas',
-    titulo: 'Vendas: pedidos de venda', resumo: 'Consultar pedidos, status, dashboard e carteira.',
+    titulo: 'Vendas: pedidos de venda', resumo: 'Pedidos, status, novo pedido, metas e comissões.',
     subtitulo: 'O pedido de venda é onde o fluxo operacional começa: dele saem produção, serviços, expedição, nota e títulos.',
-    objetivo: 'Encontrar pedidos, entender cada status e as colunas de títulos e nota fiscal, e ler os indicadores de vendas sem alterar nada.',
+    objetivo: 'Encontrar pedidos e entender cada status, conhecer o formulário de pedido sem salvar e ler os indicadores comerciais (dashboard, carteira, metas e comissões).',
     prerequisitos: [
       { t: 'Checklists 01 e 02 concluídos.', s: 'v' },
     ],
@@ -287,17 +290,19 @@ export const CHECKLISTS = [
       {
         titulo: '1. Consultar pedidos', onde: '`Vendas > Pedidos de Venda`',
         passos: [
-          { t: 'Abrir a lista e notar que ela começa filtrada em Status **"Em Aberto"**.', s: 'v' },
+          { t: 'Abrir a lista e notar que ela começa filtrada em Status **"Em Aberto"** (e volta para esse filtro quando você sai e entra de novo).', s: 'v' },
           { t: 'Trocar o Status para "Todos" e conhecer os demais: Aprovação pendente, Encerrado, Faturado, Lib. Expedição, Entregue e Cancelado.', s: 'v' },
           { t: 'Em `Filtros`, buscar por Cliente, Vendedor, Projeto ou Número do Pedido (ex.: PV-000001).', s: 'v' },
           { t: 'Ler as colunas **TÍTULOS** (Gerados / Sem títulos) e **NOTA FISCAL**.', r: 'Você identifica se o pedido já tem títulos no financeiro e nota emitida.', s: 'v' },
         ],
       },
       {
-        titulo: '2. Abrir um pedido', onde: 'lápis da linha do pedido',
+        titulo: '2. Conhecer o formulário de pedido (sem salvar)', onde: 'botão `+ Novo Pedido`',
         passos: [
-          { t: 'Abrir um pedido existente e percorrer cliente, itens, condições de pagamento e projeto.', s: 'n' },
-          { t: 'Fechar sem salvar.', s: 'n' },
+          { t: 'Clicar em **Salvar** com tudo vazio e ler os avisos de Empresa ("Campo obrigatório") e Cliente ("Cliente é obrigatório").', r: 'Nada é gravado. Empresa e Cliente não têm asterisco: o aviso só aparece ao salvar.', s: 'v' },
+          { t: 'Ver que o **CFOP** fica bloqueado até escolher empresa e cliente (e vem filtrado pelo estado do cliente) e que a **Conta de Fluxo de Caixa** é obrigatória.', s: 'v' },
+          { t: 'Percorrer os blocos Itens do Pedido, Parcelas do Pedido (meio de pagamento e portador), Informações adicionais e Resumo do Pedido.', s: 'v' },
+          { t: 'Sair com **Cancelar** (se o primeiro clique não funcionar, os avisos mudaram o botão de lugar: clique de novo).', s: 'v' },
         ],
       },
       {
@@ -305,13 +310,15 @@ export const CHECKLISTS = [
         passos: [
           { t: 'Escolher um período (Hoje, Esta semana, Este mês, Este ano) e clicar em **Aplicar**.', r: 'Os cartões (Total em vendas, Ticket médio, Em aberto, Pendentes de faturamento) são recalculados.', s: 'v' },
           { t: 'Saber que o bloco "Crescimento vs. período anterior" **não segue** o filtro de datas.', s: 'v' },
+          { t: 'Em `Vendas > Demonstrativos > Carteira de Pedidos`, ler A faturar, A expedir, Em carga, Expedido, Entregue e o aging por dias.', s: 'v' },
         ],
       },
       {
-        titulo: '4. Ver a carteira de pedidos', onde: '`Vendas > Demonstrativos > Carteira de Pedidos`',
+        titulo: '4. Metas e comissões', onde: '`Vendas > Metas de Vendas` e `Vendas > Controle de Comissão`',
         passos: [
-          { t: 'Ler os cartões A faturar, A expedir, Em carga, Expedido e Entregue.', s: 'v' },
-          { t: 'Ler o gráfico de aging (0-7, 8-15, 16-30, 31-60, 60+ dias) e a tabela de pedidos.', s: 'v' },
+          { t: 'Abrir o painel de Metas: % da meta, projeção, ritmo necessário por dia e cenários pessimista/realista/otimista.', s: 'v' },
+          { t: 'Usar o **Simulador** de comissão: valor 10.000, comissão 5%, Simular.', r: 'Comissão estimada R$ 500,00, liberada no recebimento. O simulador não grava nada.', s: 'v' },
+          { t: 'Ver em `Comissões` os estágios Previstas, A pagar, Em fechamento, Pagas e Estornadas.', s: 'v' },
         ],
       },
       {
@@ -323,17 +330,21 @@ export const CHECKLISTS = [
     ],
     resultado: [
       { t: 'Encontro qualquer pedido pelo número ou cliente, inclusive faturados e cancelados.', s: 'v' },
-      { t: 'Sei dizer em que etapa um pedido está pelo status e pelas colunas de títulos e nota.', s: 'v' },
+      { t: 'Sei quais campos o pedido exige antes de salvar.', s: 'v' },
+      { t: 'Sei calcular uma comissão no simulador.', s: 'v' },
     ],
     atencao: [
+      'O formulário de pedido tem **três botões que gravam**: dois "Salvar" (topo e rodapé) e "Salvar e Permanecer".',
+      '"Recalcular" (parcelas iguais) e "Recalcular Parcelas" (pela condição de pagamento) fazem coisas diferentes.',
+      'Na Conta de Fluxo de Caixa aparecem contas como "Empréstimos": em pedido de venda use a conta de venda indicada pelo financeiro.',
       'O botão **Aprovar** fica direto na linha em Vendas > Aprovações: um clique aprova.',
-      '**Importar CEM** traz orçamentos do sistema de projeto e cria pedidos: só com orientação.',
-      'Um pedido pode estar "Em Aberto" e já ter títulos "Gerados" — o fluxo da empresa pode gerar títulos antes de faturar.',
-      'Podem aparecer pedidos com o mesmo número em empresas/séries diferentes e pedidos desdobrados (ex.: PV-000395/2). Confira cliente e valor.',
+      '**Importar CEM** ("Importar CEM Mobi" em alguns ambientes) traz orçamentos e cria pedidos: só com orientação.',
+      '**Fechamento** de comissão gera títulos no Contas a Pagar e **Comissão manual** grava comissão: não use em treino.',
+      'Um pedido pode estar "Em Aberto" e já ter títulos "Gerados". Há pedidos com o mesmo número (séries/empresas diferentes) e desdobrados (ex.: PV-000395/2): confira cliente e valor.',
+      'Sem meta cadastrada, o painel de Metas mostra "0% da meta — No ritmo". Não é um resultado real.',
     ],
     naoValidado: [
-      'Detalhe de um pedido, formulário "+ Novo Pedido" e o caminho do pedido até a nota fiscal ainda não foram conferidos.',
-      'Contratos de Fornecimento, Metas de Vendas e Controle de Comissão não foram abertos.',
+      'Detalhe de um pedido existente (abas e ações do "...") e o caminho do pedido até a nota fiscal ainda não foram conferidos.',
     ],
   },
 
@@ -494,29 +505,53 @@ export const CHECKLISTS = [
   /* ------------------------------------------------------------------ 08 */
   {
     id: 'producao', arquivo: '08-producao.html', etiqueta: 'Operação · Produção',
-    titulo: 'Produção: ordens e apontamentos', resumo: 'Ordem de produção, requisições, apontamentos e painel.',
-    subtitulo: 'A fábrica: a ordem de produção nasce do pedido, consome material do estoque e entrega o produto acabado.',
-    objetivo: 'Consultar ordens de produção, entender seus status e etapas, e ver como a produção aparece no estoque.',
+    titulo: 'Produção: ordens e apontamentos', resumo: 'Ordem de produção, painéis, alertas e reflexo no estoque.',
+    subtitulo: 'A fábrica: a ordem de produção (OP) nasce do pedido ou da obra, consome material do estoque e entrega o produto acabado.',
+    objetivo: 'Consultar ordens de produção, entender status e alertas, acompanhar o chão de fábrica e ver como a produção aparece no estoque — sem apontar nem alterar OPs.',
     prerequisitos: [
-      { t: 'Checklists 04 e 07 concluídos.', s: 'd' },
+      { t: 'Checklists 04 e 07 concluídos.', s: 'v' },
     ],
     fluxos: [
       {
-        titulo: '1. Consultar ordens de produção', onde: '`Produção > Ordens de Produção`',
+        titulo: '1. Ler a visão geral', onde: '`Produção > Visão geral`',
         passos: [
-          { t: 'Abrir a lista e filtrar as atrasadas (o alerta "Ordens de produção atrasadas" da tela Início leva direto para lá).', s: 'v' },
-          { t: 'Abrir uma OP e ver o processo (etapas), as requisições de material e os apontamentos.', s: 'd' },
+          { t: 'Ler Ritmo do dia, OPs bloqueadas por material e a lista "Insumos que mais travam".', s: 'v' },
+          { t: 'Ver Obras em produção, Fila de entrada, Funil de OPs por etapa e OPs em risco.', r: 'A tela se atualiza sozinha a cada 3 minutos ("Atualizar agora" força).', s: 'v' },
         ],
       },
       {
-        titulo: '2. Acompanhar o chão de fábrica',
+        titulo: '2. Consultar ordens de produção', onde: '`Produção > Ordens de produção`',
         passos: [
-          { t: 'Abrir o painel do chão de fábrica e alternar as visões (Kanban, Tabela, Timeline, Gantt).', s: 'd' },
-          { t: 'Abrir o planejamento (PCP) e ver a carga de cada linha, **sem arrastar cards**.', s: 'd' },
+          { t: 'Filtrar por projeto, tipo de operação (Fabricação, Corte, Beneficiamento) e status (Em aberto, Em execução, Pausada, Produzido, Cancelada).', s: 'v' },
+          { t: 'Passar o mouse sobre os selos de alerta: Conclusão bloqueada, Conclusão travada, Material não baixado, Estoque não creditado.', r: 'O texto explica a causa (ex.: obra sem local de estoque ativo).', s: 'v' },
+          { t: 'Abrir uma OP em execução pelo **olho (Visualizar OP)** e ler número, produto, projeto, pedido de venda, processo, quantidade e status.', r: 'Abre um painel "somente leitura".', s: 'v' },
         ],
       },
       {
-        titulo: '3. Ver a produção no estoque', onde: '`Estoque > Movimentos`',
+        titulo: '3. Ver os detalhes da OP pelo menu', onde: '`Mais ações` da linha da OP',
+        intro: 'A OP não tem abas: cada detalhe abre por um item do menu.',
+        passos: [
+          { t: 'Abrir **Etapas de execução da OP** e ler o processo e as etapas (ex.: usinagem → montagem → embalagem). Feche sem salvar.', s: 'v' },
+          { t: 'Abrir **Apontamentos** e ler quem apontou cada etapa, início e fim. Não use "Iniciar".', s: 'v' },
+          { t: 'Abrir **Materiais necessários** e ver as requisições da OP.', s: 'v' },
+          { t: 'Abrir **Linha do tempo** (planejado × real por etapa) e **Custo da OP** (estimado × realizado).', s: 'v' },
+        ],
+      },
+      {
+        titulo: '4. Acompanhar o chão de fábrica', onde: '`Produção > Painel de fábrica`',
+        passos: [
+          { t: 'Alternar as visões **Cards**, **Lista** e **Timeline** e ler os contadores Ordens, No prazo e Atrasadas.', s: 'v' },
+          { t: 'Em cada card, ler a etapa atual, as unidades e o % de etapas, **sem clicar em "Apontar"**.', s: 'v' },
+        ],
+      },
+      {
+        titulo: '5. Entender de onde vêm as OPs', onde: '`Produção > Integração de Produção`',
+        passos: [
+          { t: 'Abrir uma integração processada e ler o resumo.', r: 'Ex.: "Gerou 1 OP de montagem · 13 OPs de corte (1 por perfil) · 38 requisições de material", a partir das esquadrias de uma obra.', s: 'v' },
+        ],
+      },
+      {
+        titulo: '6. Ver a produção no estoque', onde: '`Estoque > Movimentos`',
         passos: [
           { t: 'Encontrar um movimento "Baixa de componente em OP" (origem Requisição).', r: 'É o material consumido pela OP.', s: 'v' },
           { t: 'Encontrar um movimento "Entrada de produto acabado (OP)" (origem OP - Conclusão).', r: 'É o produto pronto entrando no estoque quando a OP é concluída.', s: 'v' },
@@ -524,15 +559,18 @@ export const CHECKLISTS = [
       },
     ],
     resultado: [
-      { t: 'Sei dizer em que etapa uma OP está e o que ela já consumiu do estoque.', s: 'd' },
-      { t: 'Sei que concluir a OP gera a entrada do produto acabado no estoque.', s: 'v' },
+      { t: 'Sei dizer em que etapa uma OP está, o que ela já consumiu e por que está com alerta.', s: 'v' },
+      { t: 'Sei que concluir a OP gera a entrada do produto acabado no estoque e que a obra precisa de um local de estoque ativo.', s: 'v' },
     ],
     atencao: [
-      'Apontar, pausar, encerrar ou liberar OPs e gerar requisições afeta custo e estoque: só com orientação.',
-      'Arrastar cards no planejamento muda a programação da fábrica.',
-      'O terminal de chão de fábrica é usado pelos operadores; não registre apontamentos de teste nele.',
+      'Na lista de OPs, **"Iniciar produção"** muda a OP para Em execução com um clique. Em OPs Em aberto, o lugar do "olho" é ocupado por **Editar OP**.',
+      'No menu Mais ações, **Marcar produzido**, **Pausar OP**, **Cancelar OP**, **Replicar OP** e **Gerar OS de instalação** alteram dados.',
+      '**Apontar** (Painel de fábrica), **▶ Iniciar** (apontamentos), **Importar da estrutura** (materiais) e **Gerar lista** (separação) gravam registros.',
+      'A **Fila de exceções** mostra erros técnicos e o botão **Reprocessar**: não use, leve ao supervisor/suporte.',
+      'O **Terminal** e o app de **Separação** são usados no chão de fábrica e têm botão **Sair**. Para voltar, use "Voltar ao sistema" ou o menu.',
+      'No PCP, arrastar OPs muda a programação da fábrica.',
     ],
-    naoValidado: ['Nenhuma tela do módulo Produção foi aberta ainda. Os passos das seções 1 e 2 vêm dos roteiros de validação.'],
+    naoValidado: ['Painel do planejamento, Desempenho, Inteligência/Sugestões da IA e o conteúdo dos 10 demonstrativos de Produção ainda não foram abertos.'],
   },
 
   /* ------------------------------------------------------------------ 09 */
