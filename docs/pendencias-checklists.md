@@ -84,8 +84,8 @@ Os relatórios completos de cada rodada ficaram fora do repositório. Os pontos 
 |---|---|
 | 01 · Suprimentos | ✅ executado em 19/10 (SC-000289 → COT-000013 → PC-000009 → NR-000013 → título pago) |
 | 02 · Serviços de campo | ✅ executado em 19/10 (MED-000013 → INS-000003 → VIST-000001 → AT-000002) |
-| 03 · Comercial | em teste |
-| 04 · Estoque, 05 · Financeiro | a testar |
+| 03 · Comercial | ✅ até o ganho da oportunidade (19/10); a geração do pedido pela oportunidade está bloqueada — ver docs/testes/fluxo-comercial-handoff.md |
+| 04 · Estoque, 05 · Financeiro, produção com estrutura, projetos e expedição com ocorrências | briefs prontos em docs/testes/ |
 
 Para limpar (Suprimentos): fornecedor 107; SC-000289; COT-000013; PC-000009; NR-000013 (NF fictícia 990001/900); movimento de estoque 000005; título NR-000013/001 (pago); parâmetro "Usar Conferência Física" (ligado nesta empresa).
 
