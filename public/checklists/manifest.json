@@ -1,0 +1,313 @@
+{
+ "grupos": [
+  {
+   "id": "consultor",
+   "nome": "Fluxos do consultor",
+   "desc": "Testes funcionais ponta a ponta: faça, confira o reflexo no módulo seguinte e anote os registros."
+  },
+  {
+   "id": "estagiario",
+   "nome": "Trilha do estagiário",
+   "desc": "Checklists curtos para a integração. Comece pelo onboarding (00) e siga a numeração."
+  },
+  {
+   "id": "qa",
+   "nome": "Validação dos módulos (QA)",
+   "desc": "Planos completos de validação e homologação de cada módulo, com os achados já registrados."
+  }
+ ],
+ "itens": [
+  {
+   "grupo": "consultor",
+   "id": "fluxo-completo",
+   "area": "Teste de fluxo",
+   "titulo": "Teste do fluxo completo: do pedido à gestão",
+   "resumo": "Executar o ciclo completo com registros \"TESTE FLUXO CONSULTOR\" — lead, pedido, medição, OP, nota, expedição, títulos e indicadores — confirmando em cada passagem que o módulo seguinte recebeu a informação, e registrar os bloqueios e defeitos encontrados.",
+   "arquivo": "consultores/teste-fluxo-pedido-ate-gestao.html",
+   "chave": "ff-consultor:fluxo-completo",
+   "etapas": 50,
+   "verificadas": 46
+  },
+  {
+   "grupo": "consultor",
+   "id": "fluxo-suprimentos",
+   "area": "Fluxo de suprimentos",
+   "titulo": "Fluxo de suprimentos: da solicitação ao pagamento",
+   "resumo": "Provar que uma necessidade de material vira pedido de compra, entra no estoque pelo recebimento e gera o título a pagar, até o pagamento aparecer no saldo bancário e no fluxo de caixa.",
+   "arquivo": "consultores/fluxo-01-suprimentos.html",
+   "chave": "ff-consultor:fluxo-suprimentos",
+   "etapas": 29,
+   "verificadas": 28
+  },
+  {
+   "grupo": "consultor",
+   "id": "fluxo-servicos",
+   "area": "Fluxo de serviços",
+   "titulo": "Fluxo de serviços de campo: da medição à assistência",
+   "resumo": "Provar que um pedido de venda vira medição aprovada, instalação concluída com checklist, vistoria com aceite e assistência técnica resolvida, e conferir onde cada serviço aparece na gestão de campo.",
+   "arquivo": "consultores/fluxo-02-servicos-campo.html",
+   "chave": "ff-consultor:fluxo-servicos",
+   "etapas": 26,
+   "verificadas": 26
+  },
+  {
+   "grupo": "consultor",
+   "id": "fluxo-comercial",
+   "area": "Fluxo comercial",
+   "titulo": "Fluxo comercial: do lead ao pedido de venda",
+   "resumo": "Provar que um contato vira oportunidade, proposta e, por fim, pedido de venda — e identificar o que precisa estar configurado (alçada, condição de pagamento, plano de contas, CFOP) para a passagem final funcionar.",
+   "arquivo": "consultores/fluxo-03-comercial.html",
+   "chave": "ff-consultor:fluxo-comercial",
+   "etapas": 29,
+   "verificadas": 27
+  },
+  {
+   "grupo": "estagiario",
+   "id": "onboarding",
+   "area": "00 · Comece por aqui",
+   "titulo": "Onboarding do estagiário",
+   "resumo": "Organizar suas primeiras semanas: o que pedir antes de começar, a ordem recomendada dos checklists e os combinados de segurança. Ao final, você deve saber encontrar qualquer tela, consultar registros sem alterar nada e explicar como um pedido passa pelos módulos.",
+   "arquivo": "estagiarios/00-onboarding-estagiario.html",
+   "chave": "ff-estagiario:onboarding",
+   "etapas": 15,
+   "verificadas": 4
+  },
+  {
+   "grupo": "estagiario",
+   "id": "navegacao",
+   "area": "01 · Navegação",
+   "titulo": "Primeiros passos e navegação",
+   "resumo": "Entrar, trocar de módulo, buscar telas e ler listas.",
+   "arquivo": "estagiarios/01-primeiros-passos-navegacao.html",
+   "chave": "ff-estagiario:navegacao",
+   "etapas": 26,
+   "verificadas": 25
+  },
+  {
+   "grupo": "estagiario",
+   "id": "cadastros",
+   "area": "02 · Cadastros",
+   "titulo": "Cadastros básicos",
+   "resumo": "Participantes (clientes, fornecedores), produtos e projetos.",
+   "arquivo": "estagiarios/02-cadastros-basicos.html",
+   "chave": "ff-estagiario:cadastros",
+   "etapas": 15,
+   "verificadas": 12
+  },
+  {
+   "grupo": "estagiario",
+   "id": "crm",
+   "area": "03 · CRM",
+   "titulo": "CRM: leads e oportunidades",
+   "resumo": "Funil, lista e Kanban de leads, conversão.",
+   "arquivo": "estagiarios/03-crm-leads-oportunidades.html",
+   "chave": "ff-estagiario:crm",
+   "etapas": 21,
+   "verificadas": 20
+  },
+  {
+   "grupo": "estagiario",
+   "id": "vendas",
+   "area": "04 · Vendas",
+   "titulo": "Vendas: pedidos de venda",
+   "resumo": "Pedidos, status, novo pedido, metas e comissões.",
+   "arquivo": "estagiarios/04-vendas-pedidos.html",
+   "chave": "ff-estagiario:vendas",
+   "etapas": 19,
+   "verificadas": 19
+  },
+  {
+   "grupo": "estagiario",
+   "id": "compras",
+   "area": "05 · Compras",
+   "titulo": "Compras: da necessidade ao pedido",
+   "resumo": "Solicitação, cotação, pedido de compra e linha do tempo.",
+   "arquivo": "estagiarios/05-compras.html",
+   "chave": "ff-estagiario:compras",
+   "etapas": 12,
+   "verificadas": 12
+  },
+  {
+   "grupo": "estagiario",
+   "id": "recebimento",
+   "area": "06 · Recebimento",
+   "titulo": "Recebimento de mercadorias",
+   "resumo": "Notas de recebimento, conferência e reflexos.",
+   "arquivo": "estagiarios/06-recebimento.html",
+   "chave": "ff-estagiario:recebimento",
+   "etapas": 14,
+   "verificadas": 14
+  },
+  {
+   "grupo": "estagiario",
+   "id": "estoque",
+   "area": "07 · Estoque",
+   "titulo": "Estoque: saldo e movimentos",
+   "resumo": "Visão geral, saldo por local, extrato e tipos de movimento.",
+   "arquivo": "estagiarios/07-estoque.html",
+   "chave": "ff-estagiario:estoque",
+   "etapas": 16,
+   "verificadas": 16
+  },
+  {
+   "grupo": "estagiario",
+   "id": "producao",
+   "area": "08 · Produção",
+   "titulo": "Produção: ordens e apontamentos",
+   "resumo": "Ordem de produção, painéis, alertas e reflexo no estoque.",
+   "arquivo": "estagiarios/08-producao.html",
+   "chave": "ff-estagiario:producao",
+   "etapas": 17,
+   "verificadas": 17
+  },
+  {
+   "grupo": "estagiario",
+   "id": "servicos",
+   "area": "09 · Serviços",
+   "titulo": "Serviços de campo",
+   "resumo": "Medição → instalação → vistoria → assistência técnica.",
+   "arquivo": "estagiarios/09-servicos-campo.html",
+   "chave": "ff-estagiario:servicos",
+   "etapas": 15,
+   "verificadas": 14
+  },
+  {
+   "grupo": "estagiario",
+   "id": "projetos",
+   "area": "10 · Projetos",
+   "titulo": "Projetos e obras",
+   "resumo": "A obra como centro de custo e resultado.",
+   "arquivo": "estagiarios/10-projetos-obras.html",
+   "chave": "ff-estagiario:projetos",
+   "etapas": 8,
+   "verificadas": 2
+  },
+  {
+   "grupo": "estagiario",
+   "id": "expedicao",
+   "area": "11 · Expedição",
+   "titulo": "Expedição e entregas",
+   "resumo": "Liberação, carga, checkpoints, rota e entrega.",
+   "arquivo": "estagiarios/11-expedicao.html",
+   "chave": "ff-estagiario:expedicao",
+   "etapas": 13,
+   "verificadas": 13
+  },
+  {
+   "grupo": "estagiario",
+   "id": "faturamento",
+   "area": "12 · Faturamento",
+   "titulo": "Faturamento e Fiscal (consulta)",
+   "resumo": "Notas fiscais NF-e/NFS-e, status e cuidados.",
+   "arquivo": "estagiarios/12-faturamento-fiscal.html",
+   "chave": "ff-estagiario:faturamento",
+   "etapas": 14,
+   "verificadas": 12
+  },
+  {
+   "grupo": "estagiario",
+   "id": "financeiro",
+   "area": "13 · Financeiro",
+   "titulo": "Financeiro (consulta)",
+   "resumo": "Contas a receber e a pagar, fluxo de caixa e DRE.",
+   "arquivo": "estagiarios/13-financeiro.html",
+   "chave": "ff-estagiario:financeiro",
+   "etapas": 9,
+   "verificadas": 2
+  },
+  {
+   "grupo": "estagiario",
+   "id": "tarefas",
+   "area": "14 · Tarefas",
+   "titulo": "Tarefas: quadros e cartões",
+   "resumo": "Organizar e acompanhar atividades da equipe.",
+   "arquivo": "estagiarios/14-tarefas.html",
+   "chave": "ff-estagiario:tarefas",
+   "etapas": 10,
+   "verificadas": 2
+  },
+  {
+   "grupo": "estagiario",
+   "id": "fluxo",
+   "area": "15 · Visão geral",
+   "titulo": "Visão do fluxo completo",
+   "resumo": "Como um pedido passa por todos os módulos.",
+   "arquivo": "estagiarios/15-visao-fluxo-completo.html",
+   "chave": "ff-estagiario:fluxo",
+   "etapas": 13,
+   "verificadas": 10
+  },
+  {
+   "grupo": "qa",
+   "id": "crm-v2",
+   "area": "CRM",
+   "titulo": "Validação do CRM",
+   "resumo": "Plano de validação com roteiros, critérios e achados registrados.",
+   "arquivo": "validacao-crm-v2-faktory-flow.html"
+  },
+  {
+   "grupo": "qa",
+   "id": "compras",
+   "area": "Compras",
+   "titulo": "Validação de Compras",
+   "resumo": "Plano de validação com roteiros, critérios e achados registrados.",
+   "arquivo": "validacao-compras-faktory-flow.html"
+  },
+  {
+   "grupo": "qa",
+   "id": "estoque",
+   "area": "Estoque",
+   "titulo": "Validação de Estoque",
+   "resumo": "Plano de validação com roteiros, critérios e achados registrados.",
+   "arquivo": "validacao-estoque-faktory-flow.html"
+  },
+  {
+   "grupo": "qa",
+   "id": "expedicao",
+   "area": "Expedição",
+   "titulo": "Validação de Expedição",
+   "resumo": "Plano de validação com roteiros, critérios e achados registrados.",
+   "arquivo": "validacao-expedicao-faktory-flow.html"
+  },
+  {
+   "grupo": "qa",
+   "id": "producao-v2",
+   "area": "Produção",
+   "titulo": "Validação da Produção",
+   "resumo": "Plano de validação com roteiros, critérios e achados registrados.",
+   "arquivo": "validacao-producao-v2-faktory-flow.html"
+  },
+  {
+   "grupo": "qa",
+   "id": "projetos",
+   "area": "Projetos",
+   "titulo": "Validação de Projetos",
+   "resumo": "Plano de validação com roteiros, critérios e achados registrados.",
+   "arquivo": "validacao-projetos-faktory-flow.html"
+  },
+  {
+   "grupo": "qa",
+   "id": "recebimento",
+   "area": "Recebimento",
+   "titulo": "Validação de Recebimento",
+   "resumo": "Plano de validação com roteiros, critérios e achados registrados.",
+   "arquivo": "validacao-recebimento-faktory-flow.html"
+  },
+  {
+   "grupo": "qa",
+   "id": "servicos-v2",
+   "area": "Serviços",
+   "titulo": "Validação de Serviços",
+   "resumo": "Plano de validação com roteiros, critérios e achados registrados.",
+   "arquivo": "validacao-servicos-v2-faktory-flow.html"
+  },
+  {
+   "grupo": "qa",
+   "id": "tarefas",
+   "area": "Tarefas",
+   "titulo": "Validação de Tarefas",
+   "resumo": "Plano de validação com roteiros, critérios e achados registrados.",
+   "arquivo": "validacao-tarefas-faktory-flow.html"
+  }
+ ]
+}

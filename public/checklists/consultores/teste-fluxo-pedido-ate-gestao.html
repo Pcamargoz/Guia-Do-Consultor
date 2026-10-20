@@ -5,317 +5,375 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
 <title>Teste do fluxo completo: do pedido à gestão · Faktory Flow</title>
-<style>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap">
+<style>/* Visual dos checklists (Trilha do Estagiário e Fluxos do Consultor).
+   Tokens e linguagem visual vêm de public/brand-system.css (azul profundo + lima, Plus Jakarta Sans + Inter).
+   Movimento só com transform/opacity; tudo desliga em prefers-reduced-motion. */
 :root{
-  --brand:#2e7dae;--brand-forte:#1e5375;--brand-suave:#eef6fb;--lima:#c4d62e;
-  --bg:#f4f7fa;--surface:#fff;--surface-2:#f8fafc;--borda:#e2e8f0;--borda-forte:#cbd5e1;
-  --texto:#0f172a;--texto-2:#475569;--texto-3:#64748b;
-  --ok:#15803d;--ok-bg:#dcfce7;--doc:#1d4ed8;--doc-bg:#dbeafe;--nao:#b45309;--nao-bg:#fef3c7;
-  --alerta:#b45309;--alerta-bg:#fffbeb;--alerta-borda:#fcd34d;
-  --r:12px;--ease-out:cubic-bezier(.22,1,.36,1);--ease-spring:cubic-bezier(.34,1.56,.64,1);--sombra:0 1px 2px rgba(15,23,42,.06),0 1px 3px rgba(15,23,42,.04);
+  --p50:#F3F8FC;--p100:#EAF3F9;--p200:#D3E5F1;--p300:#B9D4E7;--p:#3478A7;--p600:#2C6A95;--p700:#255C83;--p800:#1C4867;--p900:#143650;--p950:#0C2438;
+  --lima:#D5DD26;--lima-glow:#E6EC6A;--lima-txt:#6B7300;--lima-ink:#1E2A05;--lima-soft:#F6F8D4;--lima-line:#E4EA8A;
+  --canvas:#F2F6FA;--surface:#fff;--alt:#F7FAFC;--ink:#13293D;--muted:#4B6073;--line:#D8E3EC;--line2:#B3C6D6;
+  --ok:#2E7D32;--ok-bg:#EAF6EB;--info:#255C83;--info-bg:#E6F1F8;--warn:#8A4B00;--warn-bg:#FFF4E5;--warn-line:#E07B00;
+  --glass:rgb(255 255 255/.82);
+  --display:'Plus Jakarta Sans','Segoe UI',system-ui,sans-serif;--body:'Inter','Segoe UI',system-ui,-apple-system,sans-serif;
+  --r-sm:8px;--r-md:12px;--r-lg:16px;--r-xl:24px;--pill:999px;
+  --sh-sm:0 2px 6px rgb(12 36 56/.06),0 8px 20px rgb(12 36 56/.06);--sh-md:0 10px 30px rgb(12 36 56/.12);--sh-lg:0 24px 60px rgb(12 36 56/.2);
+  --ease-out:cubic-bezier(.16,1,.3,1);--ease-spring:cubic-bezier(.34,1.56,.64,1);
 }
 :root[data-theme="dark"]{
-  --brand:#79b6da;--brand-forte:#aed3ea;--brand-suave:#132c40;
-  --bg:#0b1220;--surface:#111c2e;--surface-2:#16233a;--borda:#233553;--borda-forte:#31456a;
-  --texto:#e8eef7;--texto-2:#a7b8d0;--texto-3:#8fa3bd;
-  --ok:#4ade80;--ok-bg:#0f3322;--doc:#93c5fd;--doc-bg:#172a4d;--nao:#fbbf24;--nao-bg:#3b2c10;
-  --alerta:#fbbf24;--alerta-bg:#2a2210;--alerta-borda:#78551b;--sombra:0 1px 2px rgba(0,0,0,.4);
+  --canvas:#0A1826;--surface:#102335;--alt:#142B40;--ink:#E6EEF6;--muted:#9DB3C6;--line:#223C54;--line2:#34536F;
+  --p:#6FA8CF;--p700:#9CC6E4;--p900:#D3E5F1;--ok:#6FD27A;--ok-bg:#12331A;--info:#9CC6E4;--info-bg:#143049;--warn:#F0B35A;--warn-bg:#352408;--warn-line:#E07B00;
+  --lima-soft:#232B0A;--lima-line:#4B5A12;--lima-txt:#E6EC6A;--glass:rgb(16 35 53/.78);
+  --sh-sm:0 2px 6px rgb(0 0 0/.35);--sh-md:0 10px 30px rgb(0 0 0/.45);
 }
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --brand:#79b6da;--brand-forte:#aed3ea;--brand-suave:#132c40;
-  --bg:#0b1220;--surface:#111c2e;--surface-2:#16233a;--borda:#233553;--borda-forte:#31456a;
-  --texto:#e8eef7;--texto-2:#a7b8d0;--texto-3:#8fa3bd;
-  --ok:#4ade80;--ok-bg:#0f3322;--doc:#93c5fd;--doc-bg:#172a4d;--nao:#fbbf24;--nao-bg:#3b2c10;
-  --alerta:#fbbf24;--alerta-bg:#2a2210;--alerta-borda:#78551b;--sombra:0 1px 2px rgba(0,0,0,.4);
-}}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{font-family:"Segoe UI Variable Text","Segoe UI",Inter,system-ui,-apple-system,Arial,sans-serif;font-size:15px;line-height:1.55;color:var(--texto);background:var(--bg);-webkit-font-smoothing:antialiased}
-button,input,textarea{font:inherit;color:inherit}
-button{cursor:pointer;background:none;border:0}
-a{color:var(--brand)}
-:focus-visible{outline:2px solid var(--brand);outline-offset:2px;border-radius:6px}
+html{scroll-behavior:smooth;scroll-padding-top:92px}
+body{font-family:var(--body);font-size:15px;line-height:1.6;color:var(--ink);background:var(--canvas);-webkit-font-smoothing:antialiased;min-height:100vh;
+  background-image:radial-gradient(900px 480px at 8% -6%,rgb(111 168 207/.22),transparent 60%),radial-gradient(700px 420px at 100% 4%,rgb(213 221 38/.16),transparent 55%);background-attachment:fixed}
+h1,h2,h3{font-family:var(--display);letter-spacing:-.02em;line-height:1.2}
+button,input,textarea{font:inherit;color:inherit}button{cursor:pointer;background:none;border:0}
+:focus-visible{outline:3px solid var(--lima);outline-offset:2px;border-radius:6px}
 svg{width:18px;height:18px;flex:none}
 
-.topo{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:12px;padding:10px 24px;background:color-mix(in srgb,var(--surface) 90%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--borda)}
+/* ---------- Cabeçalho (vidro) ---------- */
+.topo{position:sticky;top:12px;z-index:20;display:flex;align-items:center;gap:10px;width:min(1180px,calc(100% - 24px));margin:12px auto 0;padding:8px 10px 8px 16px;
+  background:var(--glass);-webkit-backdrop-filter:saturate(180%) blur(16px);backdrop-filter:saturate(180%) blur(16px);border:1px solid var(--line);border-radius:var(--pill);box-shadow:var(--sh-md)}
 .topo img{height:30px;width:auto}
-.topo .marca{display:flex;flex-direction:column;line-height:1.2;padding-left:12px;border-left:1px solid var(--borda)}
-.topo .marca strong{font-size:13.5px}
-.topo .marca span{font-size:11px;color:var(--texto-3);text-transform:uppercase;letter-spacing:.06em;font-weight:600}
+.topo .marca{display:flex;flex-direction:column;line-height:1.2;padding-left:12px;border-left:1px solid var(--line)}
+.topo .marca strong{font:700 13.5px var(--display);color:var(--p900)}
+.topo .marca span{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;font-weight:600}
 .topo .espaco{flex:1}
-.btn{display:inline-flex;align-items:center;gap:6px;height:34px;padding:0 12px;border-radius:8px;border:1px solid var(--borda);background:var(--surface);font-size:13px;font-weight:600;color:var(--texto-2)}
-.btn:hover{border-color:var(--borda-forte);color:var(--texto)}
+.btn{display:inline-flex;align-items:center;gap:7px;min-height:38px;padding:0 14px;border-radius:var(--pill);border:1.5px solid var(--line2);background:var(--surface);font:600 13px var(--display);color:var(--p800);transition:transform .2s var(--ease-spring),background .15s,border-color .15s}
+.btn:hover{transform:translateY(-2px);border-color:var(--p);background:var(--p50)}
+.btn:active{transform:scale(.97)}
 .btn svg{width:16px;height:16px}
-.barra{height:4px;background:var(--borda)}
-.barra i{display:block;height:100%;transform:scaleX(0);transform-origin:left;background:linear-gradient(90deg,var(--brand-forte),var(--brand) 60%,var(--lima));transition:transform .45s var(--ease-out)}
+.barra{width:min(1180px,calc(100% - 48px));height:4px;margin:6px auto 0;border-radius:var(--pill);background:var(--line);overflow:hidden}
+.barra i{display:block;height:100%;transform:scaleX(0);transform-origin:left;background:linear-gradient(90deg,var(--p700),var(--p) 55%,var(--lima));transition:transform .5s var(--ease-out)}
 
-main{max-width:880px;margin:0 auto;padding:28px 16px 64px}
-.cab{margin-bottom:20px}
-.etiqueta{display:inline-block;font-size:11.5px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--brand);margin-bottom:6px}
-.cab h1{font-size:clamp(24px,4vw,32px);line-height:1.2;letter-spacing:-.02em}
-.cab p{color:var(--texto-2);margin-top:8px;max-width:70ch}
-.resumo{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
-.resumo .chip{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:999px;background:var(--surface);border:1px solid var(--borda);font-size:13px;color:var(--texto-2)}
-.resumo .chip b{color:var(--texto);font-variant-numeric:tabular-nums}
+/* ---------- Estrutura ---------- */
+.shell{width:min(1180px,calc(100% - 24px));margin:20px auto 64px;display:grid;grid-template-columns:minmax(0,1fr);gap:24px}
+@media (min-width:1000px){.shell{grid-template-columns:250px minmax(0,1fr)}}
+main{min-width:0}
 
-.legenda{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;font-size:12.5px;color:var(--texto-3);margin:14px 0 4px}
-.selo{display:inline-flex;align-items:center;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:700;white-space:nowrap}
-.st-v{background:var(--ok-bg);color:var(--ok)}
-.st-d{background:var(--doc-bg);color:var(--doc)}
-.st-n{background:var(--nao-bg);color:var(--nao)}
+/* ---------- Herói ---------- */
+.hero{position:relative;overflow:hidden;isolation:isolate;display:grid;gap:24px;align-items:center;padding:30px 32px;border-radius:var(--r-xl);color:#fff;
+  background:linear-gradient(135deg,var(--p950),var(--p800) 62%,var(--p700));box-shadow:var(--sh-lg)}
+.hero::before{content:"";position:absolute;z-index:-1;right:-70px;top:-90px;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgb(213 221 38/.34),transparent 68%)}
+.hero::after{content:"";position:absolute;z-index:-1;left:-60px;bottom:-110px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgb(255 255 255/.14),transparent 70%)}
+@media (min-width:760px){.hero{grid-template-columns:minmax(0,1fr) auto}}
+.etiqueta{display:inline-flex;align-items:center;gap:8px;font:800 11.5px var(--display);letter-spacing:.11em;text-transform:uppercase;color:var(--lima)}
+.etiqueta::before{content:"";width:18px;height:2px;border-radius:2px;background:var(--lima)}
+.hero h1{margin-top:8px;font-size:clamp(1.55rem,3.2vw,2.25rem);font-weight:800}
+.hero p{margin-top:10px;max-width:62ch;color:rgb(255 255 255/.84)}
+.resumo{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.chip{display:inline-flex;align-items:center;gap:7px;padding:6px 12px;border-radius:var(--pill);background:rgb(255 255 255/.12);border:1px solid rgb(255 255 255/.22);font-size:12.5px;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.chip b{font-variant-numeric:tabular-nums}
+.chip svg{width:15px;height:15px;color:var(--lima)}
+.anel{position:relative;width:132px;height:132px;justify-self:center}
+.anel svg{width:132px;height:132px;transform:rotate(-90deg)}
+.anel .trilho{stroke:rgb(255 255 255/.18)}
+.anel .valor{stroke:var(--lima);stroke-linecap:round;stroke-dasharray:327;stroke-dashoffset:327;transition:stroke-dashoffset .7s var(--ease-out)}
+.anel .centro{position:absolute;inset:0;display:grid;place-content:center;text-align:center}
+.anel b{font:800 30px var(--display);line-height:1;font-variant-numeric:tabular-nums}
+.anel small{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;opacity:.8;margin-top:4px}
 
-.secao{background:var(--surface);border:1px solid var(--borda);border-radius:var(--r);box-shadow:var(--sombra);padding:20px 22px;margin-top:16px}
-.secao > h2{display:flex;align-items:center;gap:10px;font-size:17px;letter-spacing:-.01em;margin-bottom:12px}
-.secao > h2 .n{display:grid;place-items:center;width:26px;height:26px;border-radius:8px;background:var(--brand-suave);color:var(--brand);font-size:13px;font-weight:800}
-.secao > h2 .cont{margin-left:auto;font-size:12.5px;font-weight:600;color:var(--texto-3);font-variant-numeric:tabular-nums}
-.secao > p{color:var(--texto-2)}
+/* ---------- Legenda e selos ---------- */
+.legenda{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;font-size:12.5px;color:var(--muted);margin:14px 2px 0}
+.selo{display:inline-flex;align-items:center;gap:5px;padding:2px 9px;border-radius:var(--pill);font:700 11px var(--display);white-space:nowrap}
+.selo::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.st-v{background:var(--ok-bg);color:var(--ok)}.st-d{background:var(--info-bg);color:var(--info)}.st-n{background:var(--warn-bg);color:var(--warn)}
 
-.fluxo + .fluxo{margin-top:18px;padding-top:16px;border-top:1px dashed var(--borda)}
-.fluxo h3{font-size:15px;margin-bottom:2px}
-.fluxo h3 .cont{margin-left:6px;font-size:12px;font-weight:600;color:var(--texto-3);font-variant-numeric:tabular-nums}
-.fluxo .onde{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:var(--texto-3);margin-bottom:8px}
-.fluxo .onde svg{width:14px;height:14px}
-.fluxo .intro{font-size:13.5px;color:var(--texto-2);margin-bottom:8px}
+/* ---------- Índice lateral ---------- */
+.indice{display:none}
+@media (min-width:1000px){
+  .indice{display:block;position:sticky;top:84px;align-self:start;max-height:calc(100vh - 100px);overflow:auto;padding:16px 10px;border-radius:var(--r-lg);background:var(--glass);border:1px solid var(--line);box-shadow:var(--sh-sm);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+  .indice h2{padding:0 10px 8px;font:800 11px var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+  .indice a{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:7px 10px;border-radius:var(--r-sm);color:var(--ink);text-decoration:none;font-size:13.5px;font-weight:550;transition:background .15s,transform .2s var(--ease-out)}
+  .indice a:hover{background:var(--p100);transform:translateX(3px)}
+  .indice a[aria-current="true"]{background:var(--p900);color:#fff;box-shadow:inset 3px 0 0 var(--lima)}
+  .indice em{font:600 11.5px var(--display);font-style:normal;color:var(--muted);font-variant-numeric:tabular-nums}
+  .indice a[aria-current="true"] em{color:var(--lima-glow)}
+  .indice a.feito em{color:var(--ok)}
+}
 
-.itens{list-style:none;display:grid;gap:6px}
-.item label{display:grid;grid-template-columns:22px 1fr auto;gap:10px;align-items:start;padding:9px 10px;border-radius:10px;border:1px solid transparent;cursor:pointer;transition:background .15s,border-color .15s}
-.item label:hover{background:var(--surface-2);border-color:var(--borda)}
-.item input{appearance:none;width:20px;height:20px;margin-top:1px;border:2px solid var(--borda-forte);border-radius:6px;background:var(--surface);display:grid;place-items:center;cursor:pointer;transition:all .15s}
-.item input:checked{background:var(--brand);border-color:var(--brand)}
-.item input:checked::after{content:"";width:5px;height:10px;border:solid #fff;border-width:0 2.5px 2.5px 0;transform:translateY(-1px) rotate(45deg)}
-.item .txt{min-width:0}
-.item .acao{display:block}
-.item .res{display:block;font-size:13px;color:var(--texto-3);margin-top:2px}
-.item .res b{color:var(--ok);font-weight:700}
-.item input:checked ~ .txt .acao{color:var(--texto-3);text-decoration:line-through;text-decoration-color:var(--borda-forte)}
-.item .reg{display:block;width:calc(100% - 42px);margin:2px 0 4px 42px;height:32px;padding:0 10px;border-radius:8px;border:1px solid var(--borda);background:var(--surface-2);font-size:13px}
-.item .reg:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 3px color-mix(in srgb,var(--brand) 25%,transparent)}
-.ui{font-family:inherit;font-weight:650;color:var(--texto);background:var(--surface-2);border:1px solid var(--borda);border-radius:5px;padding:0 5px;white-space:nowrap}
+/* ---------- Seções ---------- */
+.secao{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--sh-sm);padding:22px 24px;margin-top:16px;transition:transform .25s var(--ease-out),box-shadow .25s var(--ease-out)}
+.secao:hover{box-shadow:var(--sh-md)}
+.secao > h2{display:flex;align-items:center;gap:10px;font-size:17px;color:var(--p900);margin-bottom:12px}
+.secao > h2 .n{display:grid;place-items:center;width:28px;height:28px;border-radius:9px;background:var(--p900);color:var(--lima);font:800 13px var(--display)}
+.secao > h2 > svg{color:var(--p)}
+.cont{margin-left:auto;font:700 12px var(--display);color:var(--muted);font-variant-numeric:tabular-nums}
+.secao > p{color:var(--muted)}
+.dica{font-size:12.5px;color:var(--muted);margin-top:6px}
 
-.atencao{list-style:none;display:grid;gap:8px}
-.atencao li{display:flex;gap:10px;padding:10px 12px;border-radius:10px;background:var(--alerta-bg);border:1px solid var(--alerta-borda);font-size:14px}
-.atencao li svg{color:var(--alerta);margin-top:2px}
-.pendencias{list-style:none;display:grid;gap:6px}
-.pendencias li{display:flex;gap:10px;font-size:14px;color:var(--texto-2)}
-.pendencias li svg{color:var(--nao);margin-top:2px}
+.fluxo + .fluxo{margin-top:22px;padding-top:20px;border-top:1px dashed var(--line2)}
+.fluxo h3{display:flex;align-items:center;gap:8px;font-size:15.5px;color:var(--p900)}
+.onde{display:inline-flex;align-items:center;gap:7px;margin:6px 0 4px;font-size:12.5px;color:var(--muted)}
+.onde svg{width:14px;height:14px;color:var(--p)}
+.intro{font-size:13.5px;color:var(--muted);margin:2px 0 6px}
 
-textarea{width:100%;min-height:96px;resize:vertical;padding:10px 12px;border-radius:10px;border:1px solid var(--borda);background:var(--surface-2);line-height:1.5}
-textarea:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 3px color-mix(in srgb,var(--brand) 25%,transparent)}
-.dica{font-size:12.5px;color:var(--texto-3);margin-top:6px}
+/* ---------- Etapas (linha do tempo) ---------- */
+.itens{list-style:none;display:grid;gap:4px;margin-top:8px}
+.item{position:relative}
+.item:not(:last-child)::after{content:"";position:absolute;left:21px;top:40px;bottom:-6px;width:2px;border-radius:2px;background:var(--line);transition:background .3s}
+.item:has(input:checked):not(:last-child)::after{background:var(--lima)}
+.item label{display:grid;grid-template-columns:22px 1fr auto;gap:12px;align-items:start;padding:10px;border-radius:var(--r-md);border:1px solid transparent;cursor:pointer;transition:background .15s,border-color .15s,transform .2s var(--ease-out)}
+.item label:hover{background:var(--alt);border-color:var(--line);transform:translateX(3px)}
+.item input[type=checkbox]{appearance:none;width:22px;height:22px;margin-top:1px;border:2px solid var(--line2);border-radius:7px;background:var(--surface);display:grid;place-items:center;cursor:pointer;transition:background .15s,border-color .15s;position:relative;z-index:1}
+.item input[type=checkbox]:hover{border-color:var(--p)}
+.item input[type=checkbox]:checked{background:var(--lima);border-color:var(--lima);animation:ff-pop .34s var(--ease-spring)}
+.item input[type=checkbox]:checked::after{content:"";width:6px;height:11px;border:solid var(--lima-ink);border-width:0 2.5px 2.5px 0;transform:translateY(-1px) rotate(45deg)}
+.txt{min-width:0}.acao{display:block}
+.item input:checked ~ .txt .acao{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--line2)}
+.res{display:block;margin-top:6px;padding:6px 10px 6px 12px;border-radius:var(--r-sm);border-left:3px solid var(--lima);background:var(--lima-soft);font-size:13px;color:var(--ink)}
+.res b{font-family:var(--display);font-weight:800;color:var(--lima-txt);margin-right:4px}
+.ui{font-weight:650;color:var(--p900);background:var(--p100);border:1px solid var(--p200);border-radius:6px;padding:0 6px;white-space:nowrap}
+.reg{display:block;width:calc(100% - 44px);margin:0 0 6px 44px;height:34px;padding:0 12px;border-radius:var(--pill);border:1.5px dashed var(--line2);background:var(--alt);font-size:13px;transition:border-color .15s,box-shadow .15s}
+.reg:focus{outline:none;border-style:solid;border-color:var(--p);box-shadow:0 0 0 4px rgb(52 120 167/.18)}
+.reg:not(:placeholder-shown){border-style:solid;border-color:var(--lima-line);background:var(--lima-soft)}
 
-.trilha{list-style:none;display:grid;gap:8px;counter-reset:t}
-.trilha a{display:grid;grid-template-columns:34px 1fr auto;gap:12px;align-items:center;padding:12px 14px;border:1px solid var(--borda);border-radius:10px;text-decoration:none;color:var(--texto);background:var(--surface-2)}
-.trilha a:hover{border-color:var(--brand)}
-.trilha .num{display:grid;place-items:center;width:34px;height:34px;border-radius:9px;background:var(--brand-suave);color:var(--brand);font-weight:800}
-.trilha small{display:block;color:var(--texto-3);font-size:12.5px}
-.trilha .prog{font-size:12.5px;font-weight:700;color:var(--texto-3);font-variant-numeric:tabular-nums}
+.atencao,.pendencias{list-style:none;display:grid;gap:8px}
+.atencao li{display:flex;gap:10px;padding:11px 14px;border-radius:var(--r-md);background:var(--warn-bg);border:1px solid var(--warn-line);border-left-width:4px;font-size:14px}
+.atencao li svg{color:var(--warn-line);margin-top:3px}
+.pendencias li{display:flex;gap:10px;font-size:14px;color:var(--muted)}
+.pendencias li svg{color:var(--warn-line);margin-top:3px}
+textarea{width:100%;min-height:96px;resize:vertical;padding:12px 14px;border-radius:var(--r-md);border:1.5px solid var(--line);background:var(--alt);line-height:1.5}
+textarea:focus{outline:none;border-color:var(--p);box-shadow:0 0 0 4px rgb(52 120 167/.18)}
 
-.rodape{margin-top:28px;font-size:12.5px;color:var(--texto-3);text-align:center}
-.concluido{display:none;margin-top:16px;padding:14px 16px;border-radius:var(--r);background:var(--ok-bg);color:var(--ok);font-weight:700;align-items:center;gap:10px}
-.concluido.on{display:flex}
+/* ---------- Trilha (onboarding) ---------- */
+.trilha{list-style:none;display:grid;gap:8px}
+.trilha a{display:grid;grid-template-columns:38px 1fr auto;gap:14px;align-items:center;padding:12px 14px;border:1px solid var(--line);border-radius:var(--r-md);text-decoration:none;color:var(--ink);background:var(--alt);transition:transform .25s var(--ease-out),border-color .2s,box-shadow .25s}
+.trilha a:hover{transform:translateY(-2px);border-color:var(--p);box-shadow:var(--sh-sm)}
+.trilha .num{display:grid;place-items:center;width:38px;height:38px;border-radius:11px;background:var(--p900);color:var(--lima);font:800 13px var(--display);transition:transform .25s var(--ease-spring)}
+.trilha a:hover .num{transform:scale(1.08) rotate(-4deg)}
+.trilha small{display:block;color:var(--muted);font-size:12.5px}
+.trilha .prog{font:700 12px var(--display);color:var(--muted);font-variant-numeric:tabular-nums}
+.rodape{margin-top:28px;font-size:12.5px;color:var(--muted);text-align:center}
+.concluido{display:none;margin-top:16px;padding:14px 18px;border-radius:var(--r-lg);background:var(--lima);color:var(--lima-ink);font:700 14px var(--display);align-items:center;gap:10px;box-shadow:var(--sh-md)}
+.concluido.on{display:flex;animation:ff-entra .55s var(--ease-spring) both}
 
-/* Movimento: entrada em cascata, hover "float", check com "pop" e conclusão com "bounceIn". */
-@keyframes ff-sobe{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-@keyframes ff-pop{0%{transform:scale(.6)}60%{transform:scale(1.15)}100%{transform:scale(1)}}
+/* ---------- Movimento ---------- */
+@keyframes ff-sobe{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes ff-pop{0%{transform:scale(.6)}60%{transform:scale(1.18)}100%{transform:scale(1)}}
 @keyframes ff-entra{0%{opacity:0;transform:scale(.92)}60%{opacity:1;transform:scale(1.02)}100%{transform:scale(1)}}
-.cab,.secao{animation:ff-sobe .5s var(--ease-out) both}
-.secao:nth-of-type(2){animation-delay:.05s}.secao:nth-of-type(3){animation-delay:.1s}.secao:nth-of-type(4){animation-delay:.15s}
-.secao:nth-of-type(5){animation-delay:.2s}.secao:nth-of-type(n+6){animation-delay:.25s}
-.secao{transition:transform .25s var(--ease-out),box-shadow .25s var(--ease-out)}
-.item label{transition:background .15s,border-color .15s,transform .2s var(--ease-out)}
-.item label:hover{transform:translateX(3px)}
-.item input:checked{animation:ff-pop .32s var(--ease-spring)}
-.btn{transition:transform .2s var(--ease-spring),border-color .15s,color .15s}
-.btn:hover{transform:translateY(-2px)}.btn:active{transform:translateY(0) scale(.97)}
-.trilha a{transition:transform .25s var(--ease-out),border-color .2s,box-shadow .25s}
-.trilha a:hover{transform:translateY(-2px);box-shadow:0 8px 20px -10px color-mix(in srgb,var(--brand) 45%,transparent)}
-.trilha .num{transition:transform .25s var(--ease-spring)}.trilha a:hover .num{transform:scale(1.08) rotate(-4deg)}
-.concluido.on{animation:ff-entra .5s var(--ease-spring) both}
-.topo{background:color-mix(in srgb,var(--surface) 72%,transparent);-webkit-backdrop-filter:saturate(180%) blur(16px);backdrop-filter:saturate(180%) blur(16px)}
-@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+.hero,.secao{animation:ff-sobe .55s var(--ease-out) both}
+.secao:nth-of-type(2){animation-delay:.05s}.secao:nth-of-type(3){animation-delay:.1s}.secao:nth-of-type(4){animation-delay:.15s}.secao:nth-of-type(n+5){animation-delay:.2s}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* ---------- Dentro do guia (iframe) ---------- */
+html.embed .topo .marca,html.embed .topo img{display:none}
+html.embed .topo{position:static;margin-top:8px;padding:0;background:none;border:0;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none}
+html.embed .shell{margin-top:12px}
 
 @media (max-width:640px){
-  .topo{padding:10px 16px}.topo .marca{display:none}.btn span{display:none}.btn{width:34px;justify-content:center;padding:0}
-  .secao{padding:16px}
+  .topo{padding-left:10px}.topo .marca{display:none}.btn span{display:none}.btn{width:38px;padding:0;justify-content:center}
+  .hero{padding:22px 20px}.secao{padding:18px 16px}
   .item label{grid-template-columns:22px 1fr}.item .selo{grid-column:2;justify-self:start}
+  .reg{width:calc(100% - 10px);margin-left:10px}
 }
 @media print{
-  .topo,.barra,.no-print{display:none!important}
   body{background:#fff;font-size:12.5px}
-  main{padding:0;max-width:none}
-  .secao{box-shadow:none;break-inside:avoid-page;padding:12px 14px}
-  .item label{padding:4px 0}
-  .item input{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .topo,.barra,.indice,.no-print{display:none!important}
+  .shell{display:block;margin:0;width:100%}
+  .hero{background:#fff!important;color:#000;box-shadow:none;border:1px solid #999}.hero p,.chip{color:#000}.hero::before,.hero::after{display:none}
+  .secao{box-shadow:none;break-inside:avoid-page;padding:12px 14px;animation:none}
+  .item::after{display:none}.item label{padding:4px 0}
   textarea{min-height:120px}
-}</style>
+}
+.indice a span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+</style>
 </head>
 <body>
 
 <header class="topo">
   <img src="data:image/png;base64,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" alt="Faktory Flow" width="120" height="36">
-  <div class="marca"><strong>Teste de Fluxo · Consultor</strong><span>Consultor · Teste de fluxo</span></div>
+  <div class="marca"><strong>Fluxos do Consultor</strong><span>Consultor · Teste de fluxo</span></div>
   <div class="espaco"></div>
   <button class="btn" id="btnImprimir" type="button" title="Imprimir ou salvar em PDF"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg><span>Imprimir</span></button>
   <button class="btn" id="btnLimpar" type="button" title="Desmarcar tudo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg><span>Recomeçar</span></button>
   <button class="btn" id="btnTema" type="button" aria-label="Alternar tema claro/escuro" title="Alternar tema"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg></button>
 </header>
 <div class="barra" role="progressbar" aria-label="Progresso do checklist"><i id="barraFill"></i></div>
+<div class="shell">
+<nav class="indice" aria-label="Neste checklist"><h2>Neste checklist</h2><a href="#s-objetivo"><span>Objetivo</span><em></em></a><a href="#s-pre"><span>Pré-requisitos</span><em>0/0</em></a><a href="#fx-1"><span>CRM: lead até a conversão</span><em>0/0</em></a><a href="#fx-2"><span>Vendas: pedido</span><em>0/0</em></a><a href="#fx-3"><span>Serviços: medição</span><em>0/0</em></a><a href="#fx-4"><span>Produção: ordem de produção</span><em>0/0</em></a><a href="#fx-5"><span>Faturamento: nota sem transmitir</span><em>0/0</em></a><a href="#fx-6"><span>Expedição: carga e entrega</span><em>0/0</em></a><a href="#fx-7"><span>Financeiro: títulos e baixa</span><em>0/0</em></a><a href="#fx-8"><span>Gestão: o pedido nos indicadores</span><em>0/0</em></a><a href="#fx-9"><span>E-mails e limpeza</span><em>0/0</em></a><a href="#s-resultado"><span>Resultado esperado</span><em>0/0</em></a><a href="#s-atencao"><span>Pontos de atenção</span><em></em></a><a href="#s-notas"><span>Anotações</span><em></em></a></nav>
 <main>
 
-<section class="cab">
+<section class="hero"><div>
   <span class="etiqueta">Consultor · Teste de fluxo</span>
   <h1>Teste do fluxo completo: do pedido à gestão</h1>
   <p>Roteiro para o consultor provar, num ambiente de teste, que um pedido atravessa todos os módulos e chega aos indicadores de gestão com os números certos. A ordem abaixo é a que o sistema exige na prática. Anote o número de cada registro: ele serve para conferir os reflexos e para a limpeza no fim.</p>
-  <div class="resumo">
-    <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11"/><path d="m3 6 1 1 2-2M3 12l1 1 2-2M3 18l1 1 2-2"/></svg><b id="contagem">0 de 50</b> etapas marcadas</span>
-    <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><b id="pct">0%</b> concluído</span>
-    <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg><b>44</b> de 46 passos conferidos no sistema</span>
-  </div>
-  <div class="legenda" aria-label="Legenda da origem das informações">Origem de cada etapa: <span class="selo st-v" title="Verificado no sistema">Verificado</span> abri e conferi no sistema · <span class="selo st-d" title="Baseado na documentação">Documentação</span> vem dos roteiros de validação, não foi executado · <span class="selo st-n" title="Ainda não validado">Não validado</span> precisa ser confirmado com o supervisor</div>
-</section>
+  <div class="resumo"><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11"/><path d="m3 6 1 1 2-2M3 12l1 1 2-2M3 18l1 1 2-2"/></svg><b id="contagem">0 de 50</b> etapas</span><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg><b>46</b> de 50 conferidas no sistema</span></div>
+</div><div class="anel" role="img" aria-label="Progresso do checklist">
+  <svg viewBox="0 0 120 120"><circle class="trilho" cx="60" cy="60" r="52" fill="none" stroke-width="10"/><circle id="anelValor" class="valor" cx="60" cy="60" r="52" fill="none" stroke-width="10"/></svg>
+  <div class="centro"><b id="anelPct">0%</b><small>concluído</small></div>
+</div></section><div class="legenda" aria-label="Legenda da origem das informações">Origem de cada etapa: <span class="selo st-v" title="Verificado no sistema">Verificado</span> conferi no sistema <span class="selo st-d" title="Baseado na documentação">Documentação</span> vem dos roteiros, não foi executado <span class="selo st-n" title="Ainda não validado">Não validado</span> ainda por confirmar</div>
 
-<section class="secao"><h2><span class="n">1</span>Objetivo</h2><p>Executar o ciclo completo com registros &quot;TESTE FLUXO CONSULTOR&quot; — lead, pedido, medição, OP, nota, expedição, títulos e indicadores — confirmando em cada passagem que o módulo seguinte recebeu a informação, e registrar os bloqueios e defeitos encontrados.</p></section>
+<section class="secao" id="s-objetivo"><h2><span class="n">1</span>Objetivo</h2><p>Executar o ciclo completo com registros &quot;TESTE FLUXO CONSULTOR&quot; — lead, pedido, medição, OP, nota, expedição, títulos e indicadores — confirmando em cada passagem que o módulo seguinte recebeu a informação, e registrar os bloqueios e defeitos encontrados.</p></section>
 
-<section class="secao" data-grupo><h2><span class="n">2</span>Pré-requisitos <span class="cont"></span></h2><ul class="itens"><li class="item"><label><input type="checkbox" data-id="pre-1"><span class="txt"><span class="acao">Ambiente de <strong>teste</strong> (dev ou staging) em <strong>uma aba</strong> logada, com a empresa conferida no selo do topo. A sessão do ambiente de teste cai em atualizações do sistema: salve com frequência.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="pre-2"><span class="txt"><span class="acao">Ambiente fiscal em <strong>Homologação</strong> (faixa &quot;Ambiente NF-e: HOMOLOGAÇÃO&quot; na nota). Mesmo assim, a nota <strong>não</strong> será transmitida.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="pre-3"><span class="txt"><span class="acao">Produto com <strong>unidade de medida cadastrada na empresa com a mesma sigla</strong> do produto (&quot;PÇ&quot; ≠ &quot;PC&quot;). Sem isso o pedido só falha no Salvar.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="pre-4"><span class="txt"><span class="acao"><strong>Almoxarifado central ativo</strong> em <span class="ui">Estoque &gt; Locais</span> (ou local de estoque da obra). Sem ele não dá para concluir a OP nem finalizar a nota.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="pre-5"><span class="txt"><span class="acao"><strong>Conta bancária emissora/favorita</strong> se o meio de pagamento gerar boleto. No teste, &quot;Duplicata Mercantil&quot; também foi tratada como boleto ao gerar títulos.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="pre-6"><span class="txt"><span class="acao">Consultor <strong>vinculado a um participante</strong> em <span class="ui">Serviços &gt; Configurações &gt; Conferentes</span> (para aprovar medição). Quem confere não pode ser quem mediu.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="pre-7"><span class="txt"><span class="acao">NCM do produto com CST de PIS/COFINS de saída (senão a nota sai com &quot;Impostos não calculados&quot;), motorista com CNH válida e pop-ups liberados (Preview da DANFE abre em nova aba).</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="pre-8"><span class="txt"><span class="acao">Caixa de e-mail de teste para o cliente (ex.: endereço @tuamaeaquelaursa.com, pública e temporária — só dados fictícios).</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li></ul></section>
+<section class="secao" id="s-pre" data-grupo><h2><span class="n">2</span>Pré-requisitos <span class="cont"></span></h2><ul class="itens"><li class="item"><label><input type="checkbox" data-id="pre-1"><span class="txt"><span class="acao">Ambiente de <strong>teste</strong> (dev ou staging) em <strong>uma aba</strong> logada, com a empresa conferida no selo do topo. A sessão do ambiente de teste cai em atualizações do sistema: salve com frequência.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label><input class="reg" type="text" data-reg="pre-1" placeholder="Empresa / versão" aria-label="Empresa / versão"></li><li class="item"><label><input type="checkbox" data-id="pre-2"><span class="txt"><span class="acao">Ambiente fiscal em <strong>Homologação</strong> (faixa &quot;Ambiente NF-e: HOMOLOGAÇÃO&quot; na nota). Mesmo assim, a nota <strong>não</strong> será transmitida.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="pre-3"><span class="txt"><span class="acao">Produto com <strong>unidade de medida cadastrada na empresa com a mesma sigla</strong> do produto (&quot;PÇ&quot; ≠ &quot;PC&quot;). Sem isso o pedido só falha no Salvar.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label><input class="reg" type="text" data-reg="pre-3" placeholder="Código do produto" aria-label="Código do produto"></li><li class="item"><label><input type="checkbox" data-id="pre-4"><span class="txt"><span class="acao"><strong>Almoxarifado central ativo</strong> em <span class="ui">Estoque &gt; Locais</span> (ou local de estoque da obra). Sem ele não dá para concluir a OP nem finalizar a nota.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="pre-5"><span class="txt"><span class="acao"><strong>Conta bancária emissora/favorita</strong> se o meio de pagamento gerar boleto. No teste, &quot;Duplicata Mercantil&quot; também foi tratada como boleto ao gerar títulos.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="pre-6"><span class="txt"><span class="acao">Consultor <strong>vinculado a um participante</strong> em <span class="ui">Serviços &gt; Configurações &gt; Conferentes</span> (para aprovar medição). Quem confere não pode ser quem mediu.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="pre-7"><span class="txt"><span class="acao">NCM do produto com CST de PIS/COFINS de saída (senão a nota sai com &quot;Impostos não calculados&quot;), motorista com CNH válida e pop-ups liberados (Preview da DANFE abre em nova aba).</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="pre-8"><span class="txt"><span class="acao">Caixa de e-mail de teste para o cliente (ex.: endereço @tuamaeaquelaursa.com, pública e temporária — só dados fictícios).</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label><input class="reg" type="text" data-reg="pre-8" placeholder="E-mail de teste" aria-label="E-mail de teste"></li></ul></section>
 
-<section class="secao"><h2><span class="n">3</span>Passo a passo</h2>
-    <div class="fluxo" data-grupo>
+<section class="secao" id="s-passos"><h2><span class="n">3</span>Passo a passo</h2>
+    <div class="fluxo" id="fx-1" data-grupo>
       <h3>1. CRM: lead até a conversão <span class="cont"></span></h3>
       <div class="onde"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18 3 21V6l6-3 6 3 6-3v15l-6 3-6-3Z"/><path d="M9 3v15M15 6v15"/></svg><span>Onde: <span class="ui">CRM &gt; Vendas &gt; Leads</span></span></div>
       
-      <ul class="itens"><li class="item"><label><input type="checkbox" data-id="f1-1"><span class="txt"><span class="acao"><span class="ui">Novo Lead</span>: Tipo PF/PJ e Razão Social começando por &quot;TESTE FLUXO CONSULTOR&quot;; CPF/CNPJ de teste; CEP e número; contato com o e-mail de teste e as chaves de e-mail (Notas Fiscais, Boletos, Vendas) ligadas.</span><span class="res"><b>Resultado:</b> &quot;Registro salvo com sucesso!&quot; e lead com Status &quot;Novo&quot;.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label><input class="reg" type="text" data-reg="f1-1" placeholder="Código do lead" aria-label="Código do lead"></li><li class="item"><label><input type="checkbox" data-id="f1-2"><span class="txt"><span class="acao">Se o bairro preenchido pelo CEP tiver menos de 3 letras, o sistema recusa ao salvar: registre o defeito e ajuste o bairro.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="f1-3"><span class="txt"><span class="acao">No <span class="ui">Kanban de Leads</span>, levar o lead a uma etapa de <strong>60% ou mais</strong> (MQL, SQL ou Demo agendada), confirmando cada diálogo &quot;Mover lead&quot;.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="f1-4"><span class="txt"><span class="acao">Em <span class="ui">Editar Lead</span>, completar o <strong>BANT</strong> (Budget Estimado e chaves Autoridade, Necessidade e Prazo/timeline) e salvar. Conferir a Temperatura depois: ela mudou sozinha no teste.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="f1-5"><span class="txt"><span class="acao"><span class="ui">⋮ &gt; Converter</span> e confirmar.</span><span class="res"><b>Resultado:</b> &quot;Lead convertido com sucesso!&quot;. No participante, &quot;É Cliente?&quot; ligado e &quot;Prospect/Lead&quot; desligado.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li></ul>
+      <ul class="itens"><li class="item"><label><input type="checkbox" data-id="f1-1"><span class="txt"><span class="acao"><span class="ui">Novo Lead</span>: Tipo PF/PJ e Razão Social começando por &quot;TESTE FLUXO CONSULTOR&quot;; CPF/CNPJ de teste; CEP e número; contato com o e-mail de teste e as chaves de e-mail (Notas Fiscais, Boletos, Vendas) ligadas.</span><span class="res"><b>Conferir:</b> &quot;Registro salvo com sucesso!&quot; e lead com Status &quot;Novo&quot;.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label><input class="reg" type="text" data-reg="f1-1" placeholder="Código do lead" aria-label="Código do lead"></li><li class="item"><label><input type="checkbox" data-id="f1-2"><span class="txt"><span class="acao">Se o bairro preenchido pelo CEP tiver menos de 3 letras, o sistema recusa ao salvar: registre o defeito e ajuste o bairro.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="f1-3"><span class="txt"><span class="acao">No <span class="ui">Kanban de Leads</span>, levar o lead a uma etapa de <strong>60% ou mais</strong> (MQL, SQL ou Demo agendada), confirmando cada diálogo &quot;Mover lead&quot;.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="f1-4"><span class="txt"><span class="acao">Em <span class="ui">Editar Lead</span>, completar o <strong>BANT</strong> (Budget Estimado e chaves Autoridade, Necessidade e Prazo/timeline) e salvar. Conferir a Temperatura depois: ela mudou sozinha no teste.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="f1-5"><span class="txt"><span class="acao"><span class="ui">⋮ &gt; Converter</span> e confirmar.</span><span class="res"><b>Conferir:</b> &quot;Lead convertido com sucesso!&quot;. No participante, &quot;É Cliente?&quot; ligado e &quot;Prospect/Lead&quot; desligado.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li></ul>
     </div>
-    <div class="fluxo" data-grupo>
+    <div class="fluxo" id="fx-2" data-grupo>
       <h3>2. Vendas: pedido <span class="cont"></span></h3>
       <div class="onde"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18 3 21V6l6-3 6 3 6-3v15l-6 3-6-3Z"/><path d="M9 3v15M15 6v15"/></svg><span>Onde: <span class="ui">Vendas &gt; Pedidos de Venda &gt; + Novo Pedido</span></span></div>
       
-      <ul class="itens"><li class="item"><label><input type="checkbox" data-id="f2-1"><span class="txt"><span class="acao">Empresa, Cliente, Vendedor, Condição de Pagamento e Projeto (opcional). Escolher o <strong>CFOP</strong> (só libera depois de empresa e cliente; vem filtrado pelo estado do cliente).</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="f2-2"><span class="txt"><span class="acao">Adicionar o item. Produtos de esquadria abrem &quot;Dados do Item&quot; (altura, largura, comprimento, peso, cor).</span><span class="res"><b>Resultado:</b> Pode aparecer o quadro &quot;Impostos não calculados no item&quot; com o motivo (ex.: CST de PIS/COFINS ausente na NCM). O pedido salva mesmo assim.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="f2-3"><span class="txt"><span class="acao">Na parcela, Meio de Pagamento e Portador; no Resumo, a Conta de Fluxo de Caixa de venda.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="f2-4"><span class="txt"><span class="acao"><strong>Salvar e Permanecer</strong>.</span><span class="res"><b>Resultado:</b> &quot;Pedido PV-xxxxxx criado&quot;. Na lista: Em aberto, &quot;Sem títulos&quot;, Nota Fiscal &quot;—&quot;.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label><input class="reg" type="text" data-reg="f2-4" placeholder="Nº do pedido (PV-)" aria-label="Nº do pedido (PV-)"></li><li class="item"><label><input type="checkbox" data-id="f2-5"><span class="txt"><span class="acao">Conferir <span class="ui">Vendas &gt; Aprovações</span>: ela cobre só comissão e desconto. Pedido sem desconto não gera aprovação.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li></ul>
+      <ul class="itens"><li class="item"><label><input type="checkbox" data-id="f2-1"><span class="txt"><span class="acao">Empresa, Cliente, Vendedor, Condição de Pagamento e Projeto (opcional). Escolher o <strong>CFOP</strong> (só libera depois de empresa e cliente; vem filtrado pelo estado do cliente).</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="f2-2"><span class="txt"><span class="acao">Adicionar o item. Produtos de esquadria abrem &quot;Dados do Item&quot; (altura, largura, comprimento, peso, cor).</span><span class="res"><b>Conferir:</b> Pode aparecer o quadro &quot;Impostos não calculados no item&quot; com o motivo (ex.: CST de PIS/COFINS ausente na NCM). O pedido salva mesmo assim.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="f2-3"><span class="txt"><span class="acao">Na parcela, Meio de Pagamento e Portador; no Resumo, a Conta de Fluxo de Caixa de venda.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="f2-4"><span class="txt"><span class="acao"><strong>Salvar e Permanecer</strong>.</span><span class="res"><b>Conferir:</b> &quot;Pedido PV-xxxxxx criado&quot;. Na lista: Em aberto, &quot;Sem títulos&quot;, Nota Fiscal &quot;—&quot;.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label><input class="reg" type="text" data-reg="f2-4" placeholder="Nº do pedido (PV-)" aria-label="Nº do pedido (PV-)"></li><li class="item"><label><input type="checkbox" data-id="f2-5"><span class="txt"><span class="acao">Conferir <span class="ui">Vendas &gt; Aprovações</span>: ela cobre só comissão e desconto. Pedido sem desconto não gera aprovação.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li></ul>
     </div>
-    <div class="fluxo" data-grupo>
+    <div class="fluxo" id="fx-3" data-grupo>
       <h3>3. Serviços: medição <span class="cont"></span></h3>
       <div class="onde"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18 3 21V6l6-3 6 3 6-3v15l-6 3-6-3Z"/><path d="M9 3v15M15 6v15"/></svg><span>Onde: <span class="ui">Serviços &gt; Medições &gt; + Nova Medição</span></span></div>
       
-      <ul class="itens"><li class="item"><label><input type="checkbox" data-id="f3-1"><span class="txt"><span class="acao">Buscar o pedido &gt; <strong>Usar este registro</strong> &gt; importar os itens (vãos).</span><span class="res"><b>Resultado:</b> Cliente e pedido vêm preenchidos; <strong>Empresa</strong> e o endereço da obra, não.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="f3-2"><span class="txt"><span class="acao">Preencher Empresa e Técnico Responsável &gt; Salvar.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label><input class="reg" type="text" data-reg="f3-2" placeholder="Nº da medição (MED-)" aria-label="Nº da medição (MED-)"></li><li class="item"><label><input type="checkbox" data-id="f3-3"><span class="txt"><span class="acao">Lançar largura e altura (mm) dos vãos &gt; <span class="ui">Medir vãos</span> &gt; <strong>Iniciar medição</strong> &gt; <strong>Concluir medição</strong> com a assinatura do responsável pela obra.</span><span class="res"><b>Resultado:</b> Status &quot;Aguardando Conferência&quot;.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="f3-4"><span class="txt"><span class="acao">Aprovar a medição com um usuário conferente <strong>diferente de quem mediu</strong>.</span><span class="res"><b>Resultado:</b> Medição &quot;Aprovada&quot;. Com o mesmo usuário o sistema recusa: &quot;O conferente da medição deve ser diferente do técnico responsável que a realizou&quot; (regra confirmada).</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li></ul>
+      <ul class="itens"><li class="item"><label><input type="checkbox" data-id="f3-1"><span class="txt"><span class="acao">Buscar o pedido &gt; <strong>Usar este registro</strong> &gt; importar os itens (vãos).</span><span class="res"><b>Conferir:</b> Cliente e pedido vêm preenchidos; <strong>Empresa</strong> e o endereço da obra, não.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="f3-2"><span class="txt"><span class="acao">Preencher Empresa e Técnico Responsável &gt; Salvar.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label><input class="reg" type="text" data-reg="f3-2" placeholder="Nº da medição (MED-)" aria-label="Nº da medição (MED-)"></li><li class="item"><label><input type="checkbox" data-id="f3-3"><span class="txt"><span class="acao">Lançar largura e altura (mm) dos vãos &gt; <span class="ui">Medir vãos</span> &gt; <strong>Iniciar medição</strong> &gt; <strong>Concluir medição</strong> com a assinatura do responsável pela obra.</span><span class="res"><b>Conferir:</b> Status &quot;Aguardando Conferência&quot;.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="f3-4"><span class="txt"><span class="acao">Aprovar a medição com um usuário conferente <strong>diferente de quem mediu</strong>.</span><span class="res"><b>Conferir:</b> Medição &quot;Aprovada&quot;. Com o mesmo usuário o sistema recusa: &quot;O conferente da medição deve ser diferente do técnico responsável que a realizou&quot; (regra confirmada).</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li></ul>
     </div>
-    <div class="fluxo" data-grupo>
+    <div class="fluxo" id="fx-4" data-grupo>
       <h3>4. Produção: ordem de produção <span class="cont"></span></h3>
       <div class="onde"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18 3 21V6l6-3 6 3 6-3v15l-6 3-6-3Z"/><path d="M9 3v15M15 6v15"/></svg><span>Onde: <span class="ui">Produção &gt; Ordens de produção &gt; Nova OP</span></span></div>
       <p class="intro">O pedido não tem &quot;Gerar OP&quot;: a OP é criada à mão e vinculada ao pedido.</p>
-      <ul class="itens"><li class="item"><label><input type="checkbox" data-id="f4-1"><span class="txt"><span class="acao">Escolher <strong>Pedido de venda</strong> e <strong>Item do pedido</strong> (copia produto, cor e medidas, mas <strong>não</strong> a quantidade), informar <strong>Quantidade</strong> e <strong>Empresa</strong> (obrigatória, apesar da dica de que herda do pedido). Não use Esc: fecha o painel e perde o formulário.</span><span class="res"><b>Resultado:</b> &quot;Registro salvo com sucesso!&quot;. Produto sem estrutura avisa &quot;OP sem requisições da estrutura&quot;.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label><input class="reg" type="text" data-reg="f4-1" placeholder="Nº da OP" aria-label="Nº da OP"></li><li class="item"><label><input type="checkbox" data-id="f4-2"><span class="txt"><span class="acao">Anotar o saldo do produto em <span class="ui">Estoque &gt; Saldo</span> antes de produzir.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label><input class="reg" type="text" data-reg="f4-2" placeholder="Saldo antes" aria-label="Saldo antes"></li><li class="item"><label><input type="checkbox" data-id="f4-3"><span class="txt"><span class="acao">▶ <strong>Iniciar apontamento</strong> escolhendo etapa e funcionário.</span><span class="res"><b>Resultado:</b> OP passa para &quot;Em execução&quot;.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="f4-4"><span class="txt"><span class="acao">▶ de novo &gt; <strong>Finalizar</strong> o apontamento com a quantidade produzida.</span><span class="res"><b>Resultado:</b> No teste de 19/10 o sistema recusou com &quot;A data/hora de fim não pode ser no futuro&quot; (defeito de horário no servidor): se acontecer, registre.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="f4-5"><span class="txt"><span class="acao"><span class="ui">Mais ações &gt; Marcar produzido</span>.</span><span class="res"><b>Resultado:</b> OP &quot;Produzido&quot; e movimento &quot;Entrada de produto acabado (OP)&quot; no almoxarifado central. Sem almoxarifado ativo, o sistema bloqueia. Um apontamento aberto continua aberto mesmo com a OP produzida.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label><input class="reg" type="text" data-reg="f4-5" placeholder="Saldo depois" aria-label="Saldo depois"></li></ul>
+      <ul class="itens"><li class="item"><label><input type="checkbox" data-id="f4-1"><span class="txt"><span class="acao">Escolher <strong>Pedido de venda</strong> e <strong>Item do pedido</strong> (copia produto, cor e medidas, mas <strong>não</strong> a quantidade), informar <strong>Quantidade</strong> e <strong>Empresa</strong> (obrigatória, apesar da dica de que herda do pedido). Não use Esc: fecha o painel e perde o formulário.</span><span class="res"><b>Conferir:</b> &quot;Registro salvo com sucesso!&quot;. Produto sem estrutura avisa &quot;OP sem requisições da estrutura&quot;.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label><input class="reg" type="text" data-reg="f4-1" placeholder="Nº da OP" aria-label="Nº da OP"></li><li class="item"><label><input type="checkbox" data-id="f4-2"><span class="txt"><span class="acao">Anotar o saldo do produto em <span class="ui">Estoque &gt; Saldo</span> antes de produzir.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label><input class="reg" type="text" data-reg="f4-2" placeholder="Saldo antes" aria-label="Saldo antes"></li><li class="item"><label><input type="checkbox" data-id="f4-3"><span class="txt"><span class="acao">▶ <strong>Iniciar apontamento</strong> escolhendo etapa e funcionário.</span><span class="res"><b>Conferir:</b> OP passa para &quot;Em execução&quot;.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="f4-4"><span class="txt"><span class="acao">▶ de novo &gt; <strong>Finalizar</strong> o apontamento com a quantidade produzida.</span><span class="res"><b>Conferir:</b> No teste de 19/10 o sistema recusou com &quot;A data/hora de fim não pode ser no futuro&quot; (defeito de horário no servidor): se acontecer, registre.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="f4-5"><span class="txt"><span class="acao"><span class="ui">Mais ações &gt; Marcar produzido</span>.</span><span class="res"><b>Conferir:</b> OP &quot;Produzido&quot; e movimento &quot;Entrada de produto acabado (OP)&quot; no almoxarifado central. Sem almoxarifado ativo, o sistema bloqueia. Um apontamento aberto continua aberto mesmo com a OP produzida.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label><input class="reg" type="text" data-reg="f4-5" placeholder="Saldo depois" aria-label="Saldo depois"></li></ul>
     </div>
-    <div class="fluxo" data-grupo>
+    <div class="fluxo" id="fx-5" data-grupo>
       <h3>5. Faturamento: nota sem transmitir <span class="cont"></span></h3>
       <div class="onde"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18 3 21V6l6-3 6 3 6-3v15l-6 3-6-3Z"/><path d="M9 3v15M15 6v15"/></svg><span>Onde: menu <span class="ui">⋯ &gt; Faturar</span> do pedido</span></div>
       
-      <ul class="itens"><li class="item"><label><input type="checkbox" data-id="f5-1"><span class="txt"><span class="acao">Importar os itens do pedido (com &quot;Recalcular impostos&quot;) e conferir a nota: cliente, CFOP, parcelas, impostos e faixa de Homologação.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="f5-2"><span class="txt"><span class="acao">Preencher Observações Internas e <strong>Salvar e Permanecer</strong>.</span><span class="res"><b>Resultado:</b> O pedido passa a &quot;Faturado&quot; com a coluna NOTA FISCAL preenchida — <strong>mesmo com a nota ainda Em Aberto</strong>.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label><input class="reg" type="text" data-reg="f5-2" placeholder="Nº da nota" aria-label="Nº da nota"></li><li class="item"><label><input type="checkbox" data-id="f5-3"><span class="txt"><span class="acao"><span class="ui">Faturamento &gt; Notas Fiscais</span> &gt; <span class="ui">⋯ &gt; Finalizar NF</span>. <strong>Nunca</strong> use o avião de papel (Transmitir).</span><span class="res"><b>Resultado:</b> Nota &quot;Finalizada&quot;, só para visualização. Sem local de estoque o sistema bloqueia (e o número da nota é consumido mesmo assim). No teste a finalização não gerou saída de estoque.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="f5-4"><span class="txt"><span class="acao"><span class="ui">⋯ &gt; Ver Timeline</span> e <span class="ui">Preview da DANFE</span> (abre em nova aba).</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li></ul>
+      <ul class="itens"><li class="item"><label><input type="checkbox" data-id="f5-1"><span class="txt"><span class="acao">Importar os itens do pedido (com &quot;Recalcular impostos&quot;) e conferir a nota: cliente, CFOP, parcelas, impostos e faixa de Homologação.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="f5-2"><span class="txt"><span class="acao">Preencher Observações Internas e <strong>Salvar e Permanecer</strong>.</span><span class="res"><b>Conferir:</b> O pedido passa a &quot;Faturado&quot; com a coluna NOTA FISCAL preenchida — <strong>mesmo com a nota ainda Em Aberto</strong>.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label><input class="reg" type="text" data-reg="f5-2" placeholder="Nº da nota" aria-label="Nº da nota"></li><li class="item"><label><input type="checkbox" data-id="f5-3"><span class="txt"><span class="acao"><span class="ui">Faturamento &gt; Notas Fiscais</span> &gt; <span class="ui">⋯ &gt; Finalizar NF</span>. <strong>Nunca</strong> use o avião de papel (Transmitir).</span><span class="res"><b>Conferir:</b> Nota &quot;Finalizada&quot;, só para visualização. Sem local de estoque o sistema bloqueia (e o número da nota é consumido mesmo assim). No teste a finalização não gerou saída de estoque.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="f5-4"><span class="txt"><span class="acao"><span class="ui">⋯ &gt; Ver Timeline</span> e <span class="ui">Preview da DANFE</span> (abre em nova aba).</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li></ul>
     </div>
-    <div class="fluxo" data-grupo>
+    <div class="fluxo" id="fx-6" data-grupo>
       <h3>6. Expedição: carga e entrega <span class="cont"></span></h3>
       <div class="onde"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18 3 21V6l6-3 6 3 6-3v15l-6 3-6-3Z"/><path d="M9 3v15M15 6v15"/></svg><span>Onde: <span class="ui">⋯ &gt; Liberar para Expedição</span> do pedido e <span class="ui">Expedição &gt; Montar Nova Carga</span></span></div>
       
-      <ul class="itens"><li class="item"><label><input type="checkbox" data-id="f6-1"><span class="txt"><span class="acao">Liberar o pedido para expedição: a opção <strong>só aparece depois de faturado</strong>.</span><span class="res"><b>Resultado:</b> Status &quot;Lib. Expedição&quot;.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="f6-2"><span class="txt"><span class="acao">Montar Nova Carga: marcar o pedido, escolher veículo, data de saída e motorista &gt; <strong>Montar Carga</strong>.</span><span class="res"><b>Resultado:</b> Carga &quot;Em Montagem&quot;. Pode avisar &quot;item sem ordem de produção vinculada&quot; mesmo com OP (defeito).</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label><input class="reg" type="text" data-reg="f6-2" placeholder="Nº da carga" aria-label="Nº da carga"></li><li class="item"><label><input type="checkbox" data-id="f6-3"><span class="txt"><span class="acao"><strong>Fechar Carga</strong> (motorista com CNH vencida exige justificativa).</span><span class="res"><b>Resultado:</b> Carga &quot;Fechada&quot;.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="f6-4"><span class="txt"><span class="acao">Apontar <strong>Separação</strong>, <strong>Conferência</strong> e <strong>Carregamento</strong> (bipar ou confirmar o volume).</span><span class="res"><b>Resultado:</b> &quot;Todos os checkpoints concluídos!&quot;.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="f6-5"><span class="txt"><span class="acao"><strong>Iniciar Rota</strong> &gt; em &quot;Apontamentos do Motorista&quot;, <strong>Entregue</strong> com nome do recebedor e motivo da confirmação sem comprovante.</span><span class="res"><b>Resultado:</b> Carga e pedido &quot;Entregue&quot;; histórico completo da carga.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li></ul>
+      <ul class="itens"><li class="item"><label><input type="checkbox" data-id="f6-1"><span class="txt"><span class="acao">Liberar o pedido para expedição: a opção <strong>só aparece depois de faturado</strong>.</span><span class="res"><b>Conferir:</b> Status &quot;Lib. Expedição&quot;.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="f6-2"><span class="txt"><span class="acao">Montar Nova Carga: marcar o pedido, escolher veículo, data de saída e motorista &gt; <strong>Montar Carga</strong>.</span><span class="res"><b>Conferir:</b> Carga &quot;Em Montagem&quot;. Pode avisar &quot;item sem ordem de produção vinculada&quot; mesmo com OP (defeito).</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label><input class="reg" type="text" data-reg="f6-2" placeholder="Nº da carga" aria-label="Nº da carga"></li><li class="item"><label><input type="checkbox" data-id="f6-3"><span class="txt"><span class="acao"><strong>Fechar Carga</strong> (motorista com CNH vencida exige justificativa).</span><span class="res"><b>Conferir:</b> Carga &quot;Fechada&quot;.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="f6-4"><span class="txt"><span class="acao">Apontar <strong>Separação</strong>, <strong>Conferência</strong> e <strong>Carregamento</strong> (bipar ou confirmar o volume).</span><span class="res"><b>Conferir:</b> &quot;Todos os checkpoints concluídos!&quot;.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="f6-5"><span class="txt"><span class="acao"><strong>Iniciar Rota</strong> &gt; em &quot;Apontamentos do Motorista&quot;, <strong>Entregue</strong> com nome do recebedor e motivo da confirmação sem comprovante.</span><span class="res"><b>Conferir:</b> Carga e pedido &quot;Entregue&quot;; histórico completo da carga.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li></ul>
     </div>
-    <div class="fluxo" data-grupo>
+    <div class="fluxo" id="fx-7" data-grupo>
       <h3>7. Financeiro: títulos e baixa <span class="cont"></span></h3>
       <div class="onde"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18 3 21V6l6-3 6 3 6-3v15l-6 3-6-3Z"/><path d="M9 3v15M15 6v15"/></svg><span>Onde: <span class="ui">⋯ &gt; Gerar Títulos</span> do pedido e <span class="ui">Financeiro &gt; Contas a Receber</span></span></div>
       
-      <ul class="itens"><li class="item"><label><input type="checkbox" data-id="f7-1"><span class="txt"><span class="acao">Gerar os títulos do pedido. A opção fica desabilitada em Faturado/Lib. Expedição (&quot;Pedido já faturado&quot;) e volta depois de Entregue.</span><span class="res"><b>Resultado:</b> Um título por parcela. Se o meio de pagamento estiver cadastrado como tipo Boleto (no teste, até &quot;Duplicata Mercantil&quot; estava), o sistema exige conta <strong>emissora</strong> de boletos — conta padrão não basta.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label><input class="reg" type="text" data-reg="f7-1" placeholder="Nº dos títulos" aria-label="Nº dos títulos"></li><li class="item"><label><input type="checkbox" data-id="f7-2"><span class="txt"><span class="acao">Localizar os títulos em Contas a Receber e conferir valor e vencimento com a parcela do pedido.</span></span><span class="selo st-n" title="Ainda não validado">Não validado</span></label></li><li class="item"><label><input type="checkbox" data-id="f7-3"><span class="txt"><span class="acao">Conferir em <span class="ui">Configurações &gt; Meios de Pagamento</span> o tipo de cada meio usado no pedido (Boleto × outros).</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="f7-4"><span class="txt"><span class="acao">Baixar um título de teste (recebimento simulado) e conferir Contas a Receber, Saldos, Fluxo de Caixa e o &quot;Recebido no mês&quot; da tela Início.</span><span class="res"><b>Resultado:</b> No teste (título manual de R$ 865,38) os quatro refletiram a baixa; o Fluxo de Caixa mostrou saldo inicial negativo e final zero (a investigar).</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li></ul>
+      <ul class="itens"><li class="item"><label><input type="checkbox" data-id="f7-1"><span class="txt"><span class="acao">Gerar os títulos do pedido. A opção fica desabilitada em Faturado/Lib. Expedição (&quot;Pedido já faturado&quot;) e volta depois de Entregue.</span><span class="res"><b>Conferir:</b> Um título por parcela. Se o meio de pagamento estiver cadastrado como tipo Boleto (no teste, até &quot;Duplicata Mercantil&quot; estava), o sistema exige conta <strong>emissora</strong> de boletos — conta padrão não basta.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label><input class="reg" type="text" data-reg="f7-1" placeholder="Nº dos títulos" aria-label="Nº dos títulos"></li><li class="item"><label><input type="checkbox" data-id="f7-2"><span class="txt"><span class="acao">Localizar os títulos em Contas a Receber e conferir valor e vencimento com a parcela do pedido.</span></span><span class="selo st-n" title="Ainda não validado">Não validado</span></label></li><li class="item"><label><input type="checkbox" data-id="f7-3"><span class="txt"><span class="acao">Conferir em <span class="ui">Configurações &gt; Meios de Pagamento</span> o tipo de cada meio usado no pedido (Boleto × outros).</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="f7-4"><span class="txt"><span class="acao">Baixar um título de teste (recebimento simulado) e conferir Contas a Receber, Saldos, Fluxo de Caixa e o &quot;Recebido no mês&quot; da tela Início.</span><span class="res"><b>Conferir:</b> No teste (título manual de R$ 865,38) os quatro refletiram a baixa; o Fluxo de Caixa mostrou saldo inicial negativo e final zero (a investigar).</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li></ul>
     </div>
-    <div class="fluxo" data-grupo>
+    <div class="fluxo" id="fx-8" data-grupo>
       <h3>8. Gestão: o pedido nos indicadores <span class="cont"></span></h3>
       
       
-      <ul class="itens"><li class="item"><label><input type="checkbox" data-id="f8-1"><span class="txt"><span class="acao"><span class="ui">Vendas &gt; Dashboard Vendas</span>: o pedido entra em Total em vendas, Distribuição por status, Top clientes e produtos.</span><span class="res"><b>Resultado:</b> No teste a &quot;Taxa de faturamento&quot; mostrou &quot;0 faturados&quot; com o pedido já entregue (defeito).</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="f8-2"><span class="txt"><span class="acao"><span class="ui">Vendas &gt; Demonstrativos &gt; Carteira de Pedidos</span>: o pedido aparece no recorte do status atual (ex.: Entregue) com o número da carga.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="f8-3"><span class="txt"><span class="acao"><span class="ui">Painel Financeiro de Projetos</span> e <span class="ui">DRE</span>: conferir receita e custos da obra.</span><span class="res"><b>Resultado:</b> No teste o DRE mostrou a receita recebida; o painel da obra mostrou &quot;A faturar&quot; negativo porque o pedido não tinha projeto (só a nota).</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="f8-4"><span class="txt"><span class="acao"><span class="ui">Estoque &gt; Movimentos</span>: conferir as entradas da OP e a saída da nota.</span><span class="res"><b>Resultado:</b> No teste só a conclusão da OP gerou movimento; faturamento e entrega não deram saída de estoque (defeito).</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li></ul>
+      <ul class="itens"><li class="item"><label><input type="checkbox" data-id="f8-1"><span class="txt"><span class="acao"><span class="ui">Vendas &gt; Dashboard Vendas</span>: o pedido entra em Total em vendas, Distribuição por status, Top clientes e produtos.</span><span class="res"><b>Conferir:</b> No teste a &quot;Taxa de faturamento&quot; mostrou &quot;0 faturados&quot; com o pedido já entregue (defeito).</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="f8-2"><span class="txt"><span class="acao"><span class="ui">Vendas &gt; Demonstrativos &gt; Carteira de Pedidos</span>: o pedido aparece no recorte do status atual (ex.: Entregue) com o número da carga.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="f8-3"><span class="txt"><span class="acao"><span class="ui">Painel Financeiro de Projetos</span> e <span class="ui">DRE</span>: conferir receita e custos da obra.</span><span class="res"><b>Conferir:</b> No teste o DRE mostrou a receita recebida; o painel da obra mostrou &quot;A faturar&quot; negativo porque o pedido não tinha projeto (só a nota).</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="f8-4"><span class="txt"><span class="acao"><span class="ui">Estoque &gt; Movimentos</span>: conferir as entradas da OP e a saída da nota.</span><span class="res"><b>Conferir:</b> No teste só a conclusão da OP gerou movimento; faturamento e entrega não deram saída de estoque (defeito).</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li></ul>
     </div>
-    <div class="fluxo" data-grupo>
+    <div class="fluxo" id="fx-9" data-grupo>
       <h3>9. E-mails e limpeza <span class="cont"></span></h3>
       
       
       <ul class="itens"><li class="item"><label><input type="checkbox" data-id="f9-1"><span class="txt"><span class="acao">Abrir a caixa de e-mail de teste e anotar quais etapas enviaram e-mail (nota, boleto, aviso de entrega, serviços).</span></span><span class="selo st-n" title="Ainda não validado">Não validado</span></label><input class="reg" type="text" data-reg="f9-1" placeholder="E-mails recebidos" aria-label="E-mails recebidos"></li><li class="item"><label><input type="checkbox" data-id="f9-2"><span class="txt"><span class="acao">Listar todos os registros e configurações &quot;TESTE FLUXO CONSULTOR&quot; criados e combinar com o time a limpeza.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li></ul>
     </div></section>
 
-<section class="secao" data-grupo><h2><span class="n">4</span>Resultado esperado <span class="cont"></span></h2><p class="dica" style="margin:-4px 0 10px">Marque quando conseguir confirmar cada ponto.</p><ul class="itens"><li class="item"><label><input type="checkbox" data-id="res-1"><span class="txt"><span class="acao">Cada módulo mostrou o reflexo da etapa anterior (pedido → medição → OP → nota → carga → títulos).</span></span><span class="selo st-d" title="Baseado na documentação">Documentação</span></label></li><li class="item"><label><input type="checkbox" data-id="res-2"><span class="txt"><span class="acao">Os valores conferem entre pedido, nota, títulos e painéis.</span></span><span class="selo st-d" title="Baseado na documentação">Documentação</span></label></li><li class="item"><label><input type="checkbox" data-id="res-3"><span class="txt"><span class="acao">Nenhuma nota foi transmitida e nenhum registro real foi alterado.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="res-4"><span class="txt"><span class="acao">Os defeitos encontrados foram anotados com os passos para reproduzir.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li></ul></section>
+<section class="secao" id="s-resultado" data-grupo><h2><span class="n">4</span>Resultado esperado <span class="cont"></span></h2><p class="dica" style="margin:-4px 0 10px">Marque quando conseguir confirmar cada ponto.</p><ul class="itens"><li class="item"><label><input type="checkbox" data-id="res-1"><span class="txt"><span class="acao">Cada módulo mostrou o reflexo da etapa anterior (pedido → medição → OP → nota → carga → títulos).</span></span><span class="selo st-d" title="Baseado na documentação">Documentação</span></label></li><li class="item"><label><input type="checkbox" data-id="res-2"><span class="txt"><span class="acao">Os valores conferem entre pedido, nota, títulos e painéis.</span></span><span class="selo st-d" title="Baseado na documentação">Documentação</span></label></li><li class="item"><label><input type="checkbox" data-id="res-3"><span class="txt"><span class="acao">Nenhuma nota foi transmitida e nenhum registro real foi alterado.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="res-4"><span class="txt"><span class="acao">Os defeitos encontrados foram anotados com os passos para reproduzir.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li></ul></section>
 
-<section class="secao"><h2><span class="n">5</span>Pontos de atenção</h2><ul class="atencao"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4M12 17h.01"/></svg><span>A ordem que o sistema exige é: pedido → medição → OP (manual) → <strong>faturar</strong> → finalizar nota → liberar para expedição → carga → entrega → títulos. &quot;Liberar para Expedição&quot; e a carga só aceitam pedido faturado.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4M12 17h.01"/></svg><span><strong>Transmitir</strong> a nota é irreversível, mesmo em homologação: este roteiro só finaliza.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4M12 17h.01"/></svg><span>O pedido vira &quot;Faturado&quot; ao <strong>salvar</strong> a nota, mesmo com ela Em Aberto. Confira o status da nota em Documentos Fiscais, não só o do pedido.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4M12 17h.01"/></svg><span>Faturar não depende de a OP estar concluída nem de haver saldo em estoque.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4M12 17h.01"/></svg><span>Configurações de teste (unidade de medida, local de estoque, conta bancária, conferente) também precisam entrar na lista de limpeza.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4M12 17h.01"/></svg><span>Vincule o pedido à obra (Projeto) desde o início: sem isso o painel financeiro da obra fica incoerente.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4M12 17h.01"/></svg><span>Converter o lead <strong>não</strong> cria pedido, e o pedido <strong>não</strong> gera OP: os dois são feitos à mão.</span></li></ul></section>
+<section class="secao" id="s-atencao"><h2><span class="n">5</span>Pontos de atenção</h2><ul class="atencao"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4M12 17h.01"/></svg><span>A ordem que o sistema exige é: pedido → medição → OP (manual) → <strong>faturar</strong> → finalizar nota → liberar para expedição → carga → entrega → títulos. &quot;Liberar para Expedição&quot; e a carga só aceitam pedido faturado.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4M12 17h.01"/></svg><span><strong>Transmitir</strong> a nota é irreversível, mesmo em homologação: este roteiro só finaliza.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4M12 17h.01"/></svg><span>O pedido vira &quot;Faturado&quot; ao <strong>salvar</strong> a nota, mesmo com ela Em Aberto. Confira o status da nota em Documentos Fiscais, não só o do pedido.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4M12 17h.01"/></svg><span>Faturar não depende de a OP estar concluída nem de haver saldo em estoque.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4M12 17h.01"/></svg><span>Configurações de teste (unidade de medida, local de estoque, conta bancária, conferente) também precisam entrar na lista de limpeza.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4M12 17h.01"/></svg><span>Vincule o pedido à obra (Projeto) desde o início: sem isso o painel financeiro da obra fica incoerente.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4M12 17h.01"/></svg><span>Converter o lead <strong>não</strong> cria pedido, e o pedido <strong>não</strong> gera OP: os dois são feitos à mão.</span></li></ul></section>
 
-<section class="secao"><h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Ainda não validado na prática</h2><p class="dica" style="margin:-4px 0 10px">Estas partes não puderam ser conferidas na exploração do sistema. Confirme com seu supervisor antes de seguir.</p><ul class="pendencias"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Execução de 19/10/2026 (dev): lead convertido → PV-000033 → MED-000012 (aguardando conferente diferente) → OP-000109 produzida → NF-019 finalizada sem transmitir → carga 20261000001 entregue → baixa testada com título manual. &quot;Gerar Títulos&quot; do pedido não foi concluído: depende de conta emissora de boletos ou de corrigir o tipo do meio &quot;Duplicata Mercantil&quot;.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Defeitos: bairro curto recusado; Temperatura do lead muda sozinha; apontamento não finaliza (&quot;data/hora de fim no futuro&quot;) e fica aberto após a OP produzida; Empresa da OP não herda do pedido; &quot;Duplicata Mercantil&quot; cadastrada como boleto; pedido &quot;Faturado&quot; com nota em aberto; número de nota consumido em finalização com erro; Timeline da nota vazia; carga diz &quot;sem OP vinculada&quot;; &quot;0 faturados&quot; no dashboard; faturamento e entrega sem saída de estoque; Fluxo de Caixa com saldo inicial negativo; &quot;A faturar&quot; negativo no painel da obra.</span></li></ul></section>
+<section class="secao"><h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Ainda não validado na prática</h2><p class="dica" style="margin:-4px 0 10px">Estas partes não puderam ser conferidas. Valide no ambiente de teste antes de usar em um cliente.</p><ul class="pendencias"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Execução de 19/10/2026 (dev): lead convertido → PV-000033 → MED-000012 (aguardando conferente diferente) → OP-000109 produzida → NF-019 finalizada sem transmitir → carga 20261000001 entregue → baixa testada com título manual. &quot;Gerar Títulos&quot; do pedido não foi concluído: depende de conta emissora de boletos ou de corrigir o tipo do meio &quot;Duplicata Mercantil&quot;.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Defeitos: bairro curto recusado; Temperatura do lead muda sozinha; apontamento não finaliza (&quot;data/hora de fim no futuro&quot;) e fica aberto após a OP produzida; Empresa da OP não herda do pedido; &quot;Duplicata Mercantil&quot; cadastrada como boleto; pedido &quot;Faturado&quot; com nota em aberto; número de nota consumido em finalização com erro; Timeline da nota vazia; carga diz &quot;sem OP vinculada&quot;; &quot;0 faturados&quot; no dashboard; faturamento e entrega sem saída de estoque; Fluxo de Caixa com saldo inicial negativo; &quot;A faturar&quot; negativo no painel da obra.</span></li></ul></section>
 
-<section class="secao no-print-notas"><h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Minhas dúvidas e anotações</h2><textarea id="notas" placeholder="Anote dúvidas para levar ao supervisor, números de registros que você consultou, atalhos que descobriu…"></textarea><p class="dica">Fica salvo só neste navegador.</p></section>
+<section class="secao no-print-notas" id="s-notas"><h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Minhas dúvidas e anotações</h2><textarea id="notas" placeholder="Anote defeitos (com os passos para reproduzir), números de registros criados e o que precisa de configuração…"></textarea><p class="dica">Fica salvo só neste navegador.</p></section>
 
 <div class="concluido" id="concluido" role="status"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Fluxo concluído. Registre os defeitos encontrados e limpe os registros de teste.</div>
 <p class="rodape">Teste de Fluxo · Consultor · Faktory Flow v1.22.12 · roteiro executado em 16 e 19/10/2026 (dev METALURGICA TEST)</p>
 </main>
-<script>
+</div>
+<script>/* Comportamento dos checklists: progresso salvo no navegador, anel de progresso, índice lateral e modo "dentro do guia". */
 (function(){
-  var CHAVE = document.documentElement.getAttribute('data-chave');
+  var raiz = document.documentElement;
+  var CHAVE = raiz.getAttribute('data-chave');
   function ler(k){try{return localStorage.getItem(k);}catch(e){return null;}}
   function guardar(k,v){try{localStorage.setItem(k,v);}catch(e){}}
   function apagar(k){try{localStorage.removeItem(k);}catch(e){}}
+  function $(id){return document.getElementById(id);}
 
-  var tema = ler('ff-estagiario:tema');
-  if (tema) document.documentElement.setAttribute('data-theme', tema);
-  var btnTema = document.getElementById('btnTema');
-  if (btnTema) btnTema.addEventListener('click', function(){
-    var atual = document.documentElement.getAttribute('data-theme') ||
-      (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  try { if (window.top !== window.self || /[?&]embed=1/.test(location.search)) raiz.classList.add('embed'); } catch(e) { raiz.classList.add('embed'); }
+
+  var tema = ler('ff-checklist:tema');
+  if (tema) raiz.setAttribute('data-theme', tema);
+  if ($('btnTema')) $('btnTema').addEventListener('click', function(){
+    var atual = raiz.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     var novo = atual === 'dark' ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-theme', novo);
-    guardar('ff-estagiario:tema', novo);
+    raiz.setAttribute('data-theme', novo); guardar('ff-checklist:tema', novo);
   });
 
   var estado = {};
   try { estado = JSON.parse(ler(CHAVE) || '{}') || {}; } catch(e) { estado = {}; }
   var caixas = [].slice.call(document.querySelectorAll('input[type=checkbox][data-id]'));
-  var notas = document.getElementById('notas');
   var regs = [].slice.call(document.querySelectorAll('input[data-reg]'));
+  var notas = $('notas');
+  var CIRC = 327;
+
+  function contar(escopo){
+    var cx = escopo.querySelectorAll('input[type=checkbox][data-id]'), f = 0;
+    for (var i = 0; i < cx.length; i++) if (cx[i].checked) f++;
+    return [f, cx.length];
+  }
 
   function atualizar(){
     var total = caixas.length, feitos = caixas.filter(function(c){return c.checked;}).length;
     var pct = total ? Math.round(feitos * 100 / total) : 0;
-    var fill = document.getElementById('barraFill'); if (fill) fill.style.transform = 'scaleX(' + (pct / 100) + ')';
-    var p = document.getElementById('pct'); if (p) p.textContent = pct + '%';
-    var c = document.getElementById('contagem'); if (c) c.textContent = feitos + ' de ' + total;
+    if ($('barraFill')) $('barraFill').style.transform = 'scaleX(' + (pct / 100) + ')';
+    if ($('anelValor')) $('anelValor').style.strokeDashoffset = String(CIRC * (1 - pct / 100));
+    if ($('anelPct')) $('anelPct').textContent = pct + '%';
+    if ($('pct')) $('pct').textContent = pct + '%';
+    if ($('contagem')) $('contagem').textContent = feitos + ' de ' + total;
     [].forEach.call(document.querySelectorAll('[data-grupo]'), function(g){
-      var cx = g.querySelectorAll('input[type=checkbox][data-id]'), f = 0;
-      for (var i = 0; i < cx.length; i++) if (cx[i].checked) f++;
-      var alvo = g.querySelector('.cont'); if (alvo) alvo.textContent = f + '/' + cx.length;
+      var c = contar(g), alvo = g.querySelector('.cont');
+      if (alvo) alvo.textContent = c[0] + '/' + c[1];
+      var link = g.id && document.querySelector('.indice a[href="#' + g.id + '"]');
+      if (link) { link.querySelector('em').textContent = c[0] + '/' + c[1]; link.classList.toggle('feito', c[1] > 0 && c[0] === c[1]); }
     });
-    var fim = document.getElementById('concluido'); if (fim) fim.classList.toggle('on', total > 0 && feitos === total);
+    if ($('concluido')) $('concluido').classList.toggle('on', total > 0 && feitos === total);
     guardar(CHAVE + ':pct', String(pct));
   }
+
   function salvar(){
-    var marcados = {};
+    var marcados = {}, campos = {};
     caixas.forEach(function(c){ if (c.checked) marcados[c.getAttribute('data-id')] = 1; });
-    var dados = { marcados: marcados };
-    if (notas) dados.notas = notas.value;
-    dados.regs = {};
-    regs.forEach(function(r){ if (r.value) dados.regs[r.getAttribute('data-reg')] = r.value; });
-    guardar(CHAVE, JSON.stringify(dados));
+    regs.forEach(function(r){ if (r.value) campos[r.getAttribute('data-reg')] = r.value; });
+    guardar(CHAVE, JSON.stringify({ marcados: marcados, regs: campos, notas: notas ? notas.value : '' }));
     atualizar();
   }
+
   caixas.forEach(function(c){
     c.checked = !!(estado.marcados && estado.marcados[c.getAttribute('data-id')]);
     c.addEventListener('change', salvar);
   });
-  if (notas) { notas.value = estado.notas || ''; notas.addEventListener('input', salvar); }
   regs.forEach(function(r){ r.value = (estado.regs && estado.regs[r.getAttribute('data-reg')]) || ''; r.addEventListener('input', salvar); });
+  if (notas) { notas.value = estado.notas || ''; notas.addEventListener('input', salvar); }
 
-  var btnLimpar = document.getElementById('btnLimpar');
-  if (btnLimpar) btnLimpar.addEventListener('click', function(){
-    if (!confirm('Desmarcar todas as etapas e apagar as anotações deste checklist?')) return;
+  if ($('btnLimpar')) $('btnLimpar').addEventListener('click', function(){
+    if (!confirm('Desmarcar todas as etapas e apagar anotações e registros deste checklist?')) return;
     caixas.forEach(function(c){ c.checked = false; });
-    if (notas) notas.value = '';
     regs.forEach(function(r){ r.value = ''; });
+    if (notas) notas.value = '';
     apagar(CHAVE); atualizar();
   });
-  var btnImprimir = document.getElementById('btnImprimir');
-  if (btnImprimir) btnImprimir.addEventListener('click', function(){ window.print(); });
+  if ($('btnImprimir')) $('btnImprimir').addEventListener('click', function(){ window.print(); });
 
-  /* Onboarding: mostra o progresso de cada checklist já aberto neste navegador. */
+  /* Índice lateral: destaca a seção visível. */
+  var links = [].slice.call(document.querySelectorAll('.indice a'));
+  if (links.length && 'IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function(entradas){
+      entradas.forEach(function(e){
+        if (!e.isIntersecting) return;
+        links.forEach(function(a){ a.setAttribute('aria-current', String(a.getAttribute('href') === '#' + e.target.id)); });
+      });
+    }, { rootMargin: '-15% 0px -70% 0px' });
+    links.forEach(function(a){ var alvo = document.getElementById(a.getAttribute('href').slice(1)); if (alvo) obs.observe(alvo); });
+  }
+
+  /* Onboarding: progresso de cada checklist já aberto neste navegador. */
   [].forEach.call(document.querySelectorAll('[data-prog]'), function(el){
     var v = ler('ff-estagiario:' + el.getAttribute('data-prog') + ':pct');
     el.textContent = v === null ? 'não iniciado' : v + '%';
   });
   atualizar();
-})();</script>
+})();
+</script>
 </body>
 </html>

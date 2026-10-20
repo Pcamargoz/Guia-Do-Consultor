@@ -163,4 +163,92 @@ export const FLUXOS = [
     ],
     naoValidado: ['Pagamento de instalação (equipe terceirizada), aplicativo de campo `/campo` e Diário de Obra com projeto não foram testados.'],
   },
+
+  /* ------------------------------------------------------------------ Comercial */
+  {
+    id: 'fluxo-comercial', arquivo: 'fluxo-03-comercial.html', etiqueta: 'Consultor · Fluxo comercial',
+    titulo: 'Fluxo comercial: do lead ao pedido de venda',
+    rodape: 'Teste de Fluxo · Consultor · Faktory Flow v1.22.12 · executado em 19/10/2026 (dev METALURGICA TEST): lead → OPO-000012 → proposta → ganha. A geração do pedido ficou bloqueada',
+    subtitulo: 'Lead → atividade → BANT → Kanban → conversão (cria a oportunidade) → itens → proposta → desconto com aprovação → ganho → pedido de venda. Mostra onde o fluxo trava e o que configurar antes.',
+    objetivo: 'Provar que um contato vira oportunidade, proposta e, por fim, pedido de venda — e identificar o que precisa estar configurado (alçada, condição de pagamento, plano de contas, CFOP) para a passagem final funcionar.',
+    prerequisitos: [
+      { t: 'Contato de teste com e-mail @tuamaeaquelaursa.com (caixa pública e temporária) e CNPJ/CPF fictício **ainda não usado** (o sistema recusa documento repetido).', s: 'v', campo: 'E-mail de teste' },
+      { t: 'Funil de vendas com as etapas conferidas (no teste havia duas etapas de teste esquecidas no final do funil principal).', s: 'v' },
+      { t: 'Para testar desconto: **faixa de alçada** em `Vendas > Configurações > Alçadas de Desconto` (as oportunidades usam as mesmas faixas do pedido) e **um segundo usuário** aprovador. Quem solicita não vê a própria solicitação.', s: 'v' },
+      { t: 'Participante com **Conta de Fluxo de Caixa Receita** preenchida e, na tela de Participante, Inscrição Estadual/RG (o formulário do lead não exige).', s: 'v' },
+      { t: 'Produto de teste com unidade válida e preço de tabela.', s: 'v', campo: 'Código do produto' },
+    ],
+    fluxos: [
+      {
+        titulo: '1. Lead e atividade', onde: '`CRM > Vendas > Leads > Novo Lead`',
+        passos: [
+          { t: 'Tipo PJ, razão social "TESTE FLUXO CONSULTOR …", CNPJ fictício, CEP, contato com e-mail de teste e origem. Se o CEP trouxer bairro curto (ex.: "Sé"), digite um bairro com 3+ letras.', r: '"Registro salvo com sucesso!"; lead "Novo" com temperatura "Frio" (padrão).', s: 'v', campo: 'Código do lead' },
+          { t: 'Menu `⋮ > Atividades > Nova atividade` (ex.: Reunião, data e próxima ação).', r: '"Atividade registrada!". Aparece em `CRM > Atividades` e na Agenda da semana — a lista não mostra de qual lead é.', s: 'v' },
+        ],
+      },
+      {
+        titulo: '2. Qualificação e conversão', onde: '`Editar Lead` e `Kanban de Leads`',
+        passos: [
+          { t: 'Em `Editar Lead`, preencher o BANT: Budget (selecione o valor antes de digitar) e as chaves Autoridade, Necessidade e Prazo.', s: 'v' },
+          { t: 'No Kanban, arrastar o card até **60% ou mais** (MQL/SQL), confirmando cada "Mover lead". O formulário do lead não tem campo de etapa.', s: 'v' },
+          { t: '`⋮ > Converter` > **Converter Lead**.', r: '"Lead convertido com sucesso!". A **oportunidade é criada sozinha** (valor = budget, etapa "Novo Lead"), mas o aviso não diz isso: confira no Pipeline.', s: 'v', campo: 'Nº da oportunidade (OPO-)' },
+          { t: 'Conferir que a atividade do lead **não** migrou para a oportunidade.', s: 'v' },
+        ],
+      },
+      {
+        titulo: '3. Pipeline: itens e etapas', onde: '`CRM > Vendas > Pipeline`',
+        passos: [
+          { t: 'Abrir a oportunidade (`⋮ > Editar`) e a aba **Itens > Adicionar Item**: buscar o produto, **Aplicar** o diálogo "Dados do Item" antes de Salvar.', r: 'O Valor estimado passa a ser a soma dos itens (substitui o budget). O resumo da IA só atualiza ao pedir.', s: 'v' },
+          { t: 'Mover a oportunidade de etapa no Kanban (diálogo "Mover oportunidade" > Confirmar).', r: 'Histórico registra cada movimento. O percentual no card só atualiza ao recarregar.', s: 'v' },
+          { t: 'Definir a Previsão de fechamento e conferir a data gravada.', r: 'No teste a data ficou **1 dia antes** do informado.', s: 'v' },
+        ],
+      },
+      {
+        titulo: '4. Proposta', onde: '`Gerar Proposta` no painel da oportunidade',
+        passos: [
+          { t: 'Template, empresa emitente (vem vazia), validade e condições de pagamento (prefira uma condição **cadastrada**) > **Gerar PDF**.', r: '"Proposta gerada com sucesso!" e diálogo de envio por e-mail.', s: 'v' },
+          { t: 'Enviar por e-mail só para o endereço de teste (o destinatário vem vazio) e/ou **Compartilhar > Gerar link** (7 dias, 30 dias ou sem expiração; senha opcional).', r: '"Proposta enviada por e-mail!" / link público e aba Acessos.', s: 'v' },
+          { t: 'Conferir se a etapa mudou para "Proposta Enviada".', r: 'Não muda: mova à mão. Também não preenche "Valor proposto" nem registra no Histórico.', s: 'v' },
+        ],
+      },
+      {
+        titulo: '5. Desconto e aprovação', onde: 'aba `Itens` da oportunidade',
+        passos: [
+          { t: 'Editar o item e informar o **Desconto em R$** (não é %) acima da faixa de alçada.', r: 'Aviso: "o item foi gravado sem o desconto … aprovação solicitada". O item mantém o valor cheio.', s: 'v' },
+          { t: 'Aprovar em `CRM > Vendas > Aprovações` ou `Vendas > Aprovações` **com outro usuário**.', r: 'Com o mesmo usuário nada aparece para aprovar (e nada avisa o vendedor).', s: 'n' },
+        ],
+      },
+      {
+        titulo: '6. Ganho e pedido de venda', onde: 'painel da oportunidade > `Ganha` > `Gerar Pedido de Venda`',
+        passos: [
+          { t: 'Clicar em **Ganha** (sem confirmação e sem pedir motivo).', r: 'Status "Ganha"; o card some do filtro "Abertas" (use Filtros > Ganhas). A etapa e a probabilidade não vão para 100%.', s: 'v' },
+          { t: '**Gerar Pedido de Venda**: Empresa e CFOP > Confirmar.', r: 'No teste falhou: "O CFOP do pedido gera financeiro, então estes campos são obrigatórios: Condição de Pagamento, Plano de Conta, Parcelas." O formulário do handoff não tem esses campos. Tentativas com CFOP 5101 e 6101, condição da proposta e conta de receita do participante não resolveram.', s: 'v', campo: 'Nº do pedido (PV-)' },
+          { t: 'Alternativa: criar o pedido à mão em `Vendas > Pedidos de Venda`.', r: 'Funciona, mas o formulário não tem campo de oportunidade: não há vínculo com a OPO.', s: 'v' },
+          { t: '**Reverter ganho** se precisar voltar a oportunidade para aberta.', s: 'v' },
+        ],
+      },
+      {
+        titulo: '7. Perda e painéis', onde: '`Nova Oportunidade` e `CRM > Painéis`',
+        passos: [
+          { t: 'Criar uma segunda oportunidade e marcar **Perdida** com motivo (Preço, Concorrência, Timing, Sem Resposta, Outro).', r: 'O painel mostra o texto de Detalhes no campo "Motivo de perda"; o resumo do CRM mostra o motivo certo.', s: 'v' },
+          { t: '`CRM > Painéis > Resultado do Mês`: ganhas × perdidas, taxa de ganho e top motivos de perda.', s: 'v' },
+          { t: '`CRM > Visão Geral` (jornada) e `Clientes > Visão 360°`.', r: 'A jornada soma as oportunidades abertas de todos os funis. O cliente de teste não apareceu na lista de clientes do CRM.', s: 'v' },
+        ],
+      },
+    ],
+    resultado: [
+      { t: 'O lead virou participante convertido e oportunidade com itens e proposta.', s: 'v' },
+      { t: 'O pedido de venda foi gerado a partir da oportunidade e aparece em Vendas.', s: 'n' },
+      { t: 'O resumo do CRM mostra o ganho e a perda do teste.', s: 'v' },
+    ],
+    atencao: [
+      '**Gerar Pedido de Venda** falha quando o CFOP gera financeiro: antes de um treinamento, valide a passagem com o consultor responsável pela configuração fiscal.',
+      'A faixa de alçada vale para **todos** os pedidos e oportunidades da empresa: desative-a ao fim do teste.',
+      '"Ganha" não tem confirmação: use "Reverter ganho" se clicar sem querer.',
+      'O desconto pendente de aprovação não impede o ganho da oportunidade.',
+      'Datas de fechamento e previsão aparecem 1 dia antes do informado (fuso).',
+      'Recolher e reabrir a seção "Informações CRM" no formulário do lead apaga a origem escolhida.',
+    ],
+    naoValidado: ['Aprovação de desconto por um segundo usuário e a geração do pedido a partir da oportunidade não foram concluídas no teste.'],
+  },
 ];

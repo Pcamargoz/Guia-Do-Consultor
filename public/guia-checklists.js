@@ -1,91 +1,163 @@
-/* Biblioteca dos checklists independentes disponibilizados no projeto. */
+/* Biblioteca de checklists do guia: lê /checklists/manifest.json (gerado por scripts/gerar-checklists-estagiarios.mjs),
+   mostra cards com progresso do usuário, filtros e busca, e abre cada checklist dentro do próprio guia (ou baixa o HTML). */
 (() => {
   const painel = document.getElementById('painel-checklist');
   if (!painel) return;
 
-  const icones = {
-    busca: '<circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/>',
-    lista: '<path d="M9 6h11M9 12h11M9 18h11"/><path d="m3 6 1 1 2-2M3 12l1 1 2-2M3 18l1 1 2-2"/>',
-    baixar: '<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5M12 15V3"/>',
-  };
-  const QA = 'Validação dos módulos (QA)';
-  const CONSULTOR = 'Teste de fluxo do consultor';
-  const ESTAGIARIO = 'Trilha do estagiário';
-  const GRUPOS = [
-    { nome: CONSULTOR, desc: 'Roteiro para testar o fluxo funcional completo, do pedido de venda até a gestão, num ambiente de teste.' },
-    { nome: ESTAGIARIO, desc: 'Checklists curtos para a integração de estagiários. Comece pelo onboarding (00) e siga a numeração.' },
-    { nome: QA, desc: 'Planos completos de validação e homologação de cada módulo.' },
-  ];
-  const est = (n, area, nome, arquivo) => ({ grupo: ESTAGIARIO, area: `${n} · ${area}`, nome, arquivo: `estagiarios/${arquivo}` });
-  const dados = [
-    { grupo: CONSULTOR, area: 'Fluxo completo', nome: 'Teste do fluxo: do pedido à gestão', arquivo: 'consultores/teste-fluxo-pedido-ate-gestao.html' },
-    { grupo: CONSULTOR, area: 'Fluxo · Suprimentos', nome: 'Da solicitação de compra ao pagamento', arquivo: 'consultores/fluxo-01-suprimentos.html' },
-    { grupo: CONSULTOR, area: 'Fluxo · Serviços de campo', nome: 'Da medição à assistência técnica', arquivo: 'consultores/fluxo-02-servicos-campo.html' },
-    est('00', 'Comece por aqui', 'Onboarding do estagiário', '00-onboarding-estagiario.html'),
-    est('01', 'Navegação', 'Primeiros passos e navegação', '01-primeiros-passos-navegacao.html'),
-    est('02', 'Cadastros', 'Cadastros básicos', '02-cadastros-basicos.html'),
-    est('03', 'CRM', 'CRM: leads e oportunidades', '03-crm-leads-oportunidades.html'),
-    est('04', 'Vendas', 'Vendas: pedidos de venda', '04-vendas-pedidos.html'),
-    est('05', 'Compras', 'Compras: da necessidade ao pedido', '05-compras.html'),
-    est('06', 'Recebimento', 'Recebimento de mercadorias', '06-recebimento.html'),
-    est('07', 'Estoque', 'Estoque: saldo e movimentos', '07-estoque.html'),
-    est('08', 'Produção', 'Produção: ordens e apontamentos', '08-producao.html'),
-    est('09', 'Serviços', 'Serviços de campo', '09-servicos-campo.html'),
-    est('10', 'Projetos', 'Projetos e obras', '10-projetos-obras.html'),
-    est('11', 'Expedição', 'Expedição e entregas', '11-expedicao.html'),
-    est('12', 'Faturamento e Fiscal', 'Faturamento e Fiscal (consulta)', '12-faturamento-fiscal.html'),
-    est('13', 'Financeiro', 'Financeiro (consulta)', '13-financeiro.html'),
-    est('14', 'Tarefas', 'Tarefas: quadros e cartões', '14-tarefas.html'),
-    est('15', 'Integração', 'Visão do fluxo completo', '15-visao-fluxo-completo.html'),
-    { grupo: QA, area: 'CRM', nome: 'Validação do CRM', arquivo: 'validacao-crm-v2-faktory-flow.html' },
-    { grupo: QA, area: 'Compras', nome: 'Validação de Compras', arquivo: 'validacao-compras-faktory-flow.html' },
-    { grupo: QA, area: 'Estoque', nome: 'Validação de Estoque', arquivo: 'validacao-estoque-faktory-flow.html' },
-    { grupo: QA, area: 'Expedição', nome: 'Validação de Expedição', arquivo: 'validacao-expedicao-faktory-flow.html' },
-    { grupo: QA, area: 'Produção', nome: 'Validação da Produção', arquivo: 'validacao-producao-v2-faktory-flow.html' },
-    { grupo: QA, area: 'Projetos', nome: 'Validação de Projetos', arquivo: 'validacao-projetos-faktory-flow.html' },
-    { grupo: QA, area: 'Recebimento', nome: 'Validação de Recebimento', arquivo: 'validacao-recebimento-faktory-flow.html' },
-    { grupo: QA, area: 'Serviços', nome: 'Validação de Serviços', arquivo: 'validacao-servicos-v2-faktory-flow.html' },
-    { grupo: QA, area: 'Tarefas', nome: 'Validação de Tarefas', arquivo: 'validacao-tarefas-faktory-flow.html' },
-  ];
   const svg = (d) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`;
-  const esc = (valor) => String(valor ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const icones = {
+    busca: svg('<circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/>'),
+    baixar: svg('<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5M12 15V3"/>'),
+    abrir: svg('<path d="M5 12h14"/><path d="m13 6 6 6-6 6"/>'),
+    voltar: svg('<path d="M19 12H5"/><path d="m11 18-6-6 6-6"/>'),
+    externo: svg('<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6M10 14 21 3"/>'),
+    consultor: svg('<circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="12" r="2.5"/><circle cx="6" cy="18" r="2.5"/><path d="M8.5 6H13a3 3 0 0 1 3 3v.5M8.5 18H13a3 3 0 0 0 3-3v-.5"/>'),
+    estagiario: svg('<path d="m2 9 10-5 10 5-10 5Z"/><path d="M6 11.5V16c0 1.2 2.7 2.5 6 2.5s6-1.3 6-2.5v-4.5"/>'),
+    qa: svg('<path d="M12 3 4 6v6c0 4.5 3.2 7.8 8 9 4.8-1.2 8-4.5 8-9V6Z"/><path d="m9 12 2 2 4-4"/>'),
+  };
+  const esc = (v) => String(v ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const norm = (v) => String(v ?? '').toLocaleLowerCase('pt-BR').normalize('NFD').replace(/[̀-ͯ]/g, '');
+  const progresso = (chave) => {
+    try { const v = chave && localStorage.getItem(`${chave}:pct`); return v === null || v === undefined ? null : Number(v); } catch { return null; }
+  };
 
-  painel.innerHTML = `
-    <header class="ck-header">
-      <h1>Checklists do sistema</h1>
-      <p>Baixe o checklist que você vai usar. Cada arquivo abre como uma ferramenta HTML independente no navegador e guarda o progresso nele.</p>
-    </header>
-    <div class="ck-toolbar">
-      <label class="ck-busca">${svg(icones.busca)}<input type="search" data-busca placeholder="Buscar por área ou checklist…" aria-label="Buscar checklists"></label>
-      <span class="ck-contagem" data-contagem aria-live="polite"></span>
-    </div>
-    <div class="ck-lista" data-lista></div>`;
+  painel.innerHTML = '<div class="ckx"><p class="ckx-carregando" role="status">Carregando checklists…</p></div>';
+  const raiz = painel.firstElementChild;
 
-  const lista = painel.querySelector('[data-lista]');
-  const busca = painel.querySelector('[data-busca]');
-  const contagem = painel.querySelector('[data-contagem]');
+  fetch('/checklists/manifest.json', { cache: 'no-cache' })
+    .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(iniciar)
+    .catch(() => { raiz.innerHTML = '<p class="ckx-vazio">Não foi possível carregar a lista de checklists. Atualize a página e tente de novo.</p>'; });
 
-  function render() {
-    const termo = busca.value.trim().toLocaleLowerCase('pt-BR');
-    const filtrados = dados.filter((item) => `${item.grupo} ${item.area} ${item.nome}`.toLocaleLowerCase('pt-BR').includes(termo));
-    contagem.textContent = `${filtrados.length} ${filtrados.length === 1 ? 'checklist disponível' : 'checklists disponíveis'}`;
-    if (!filtrados.length) {
-      lista.innerHTML = '<p class="ck-vazio">Nenhum checklist corresponde à busca. Tente outro termo.</p>';
-      return;
+  function iniciar({ grupos, itens }) {
+    const total = itens.filter((i) => i.etapas);
+    const etapas = total.reduce((s, i) => s + i.etapas, 0);
+    const verificadas = total.reduce((s, i) => s + i.verificadas, 0);
+    const pctVerificado = etapas ? Math.round((verificadas * 100) / etapas) : 0;
+    let filtro = 'todos';
+    let busca = '';
+    let aberto = null;
+    let rolagem = 0;
+
+    raiz.innerHTML = `
+      <section class="ckx-lista">
+        <header class="ckx-hero">
+          <div>
+            <span class="ckx-eyebrow">Biblioteca</span>
+            <h1>Checklists do sistema</h1>
+            <p>Fluxos de teste para consultores, trilha de integração para estagiários e os planos completos de validação. Abra aqui mesmo ou baixe o HTML: o progresso fica salvo no seu navegador.</p>
+          </div>
+          <dl class="ckx-stats">
+            <div><dt>Checklists</dt><dd>${itens.length}</dd></div>
+            <div><dt>Etapas</dt><dd>${etapas}</dd></div>
+            <div><dt>Conferidas no sistema</dt><dd>${pctVerificado}%</dd></div>
+          </dl>
+        </header>
+        <div class="ckx-barra">
+          <label class="ckx-busca">${icones.busca}<input type="search" data-busca placeholder="Buscar por área, fluxo ou módulo…" aria-label="Buscar checklists"></label>
+          <div class="ckx-filtros" role="group" aria-label="Filtrar por tipo" data-filtros></div>
+        </div>
+        <p class="ckx-contagem" data-contagem aria-live="polite"></p>
+        <div class="ckx-grade" data-grade></div>
+      </section>
+      <section class="ckx-visor" data-visor hidden>
+        <div class="ckx-visor-topo">
+          <button type="button" class="ckx-btn ckx-btn--sec" data-voltar>${icones.voltar}<span>Biblioteca</span></button>
+          <strong data-visor-titulo></strong>
+          <span class="ckx-visor-acoes">
+            <a class="ckx-btn ckx-btn--sec" data-visor-nova target="_blank" rel="noopener" title="Abrir em nova aba">${icones.externo}<span>Nova aba</span></a>
+            <a class="ckx-btn" data-visor-baixar title="Baixar o HTML">${icones.baixar}<span>Baixar</span></a>
+          </span>
+        </div>
+        <iframe class="ckx-frame" data-frame title="Checklist" loading="lazy"></iframe>
+      </section>`;
+
+    const $ = (s) => raiz.querySelector(s);
+    const lista = $('.ckx-lista');
+    const visor = $('[data-visor]');
+    const frame = $('[data-frame]');
+    const grade = $('[data-grade]');
+    const filtros = $('[data-filtros]');
+
+    const urlAbrir = (i) => `/checklists/${i.arquivo.replace(/\.html$/, '')}`;
+    const urlBaixar = (i) => `/api/checklists-download?arquivo=${encodeURIComponent(i.arquivo)}`;
+
+    function renderFiltros() {
+      const contar = (g) => itens.filter((i) => g === 'todos' || i.grupo === g).length;
+      filtros.innerHTML = [{ id: 'todos', nome: 'Todos' }, ...grupos].map((g) =>
+        `<button type="button" class="ckx-chip" data-filtro="${esc(g.id)}" aria-pressed="${g.id === filtro}">${esc(g.nome)}<em>${contar(g.id)}</em></button>`).join('');
     }
-    lista.innerHTML = GRUPOS.map((g) => {
-      const itens = filtrados.filter((item) => item.grupo === g.nome);
-      if (!itens.length) return '';
-      return `
-      <h2 class="ck-grupo">${esc(g.nome)}<small>${esc(g.desc)}</small></h2>` + itens.map((item) => `
-      <article class="ck-item">
-        <div class="ck-item-topo"><span class="ck-icone">${svg(icones.lista)}</span></div>
-        <div class="ck-item-info"><span class="ck-area">${esc(item.area)}</span><h2>${esc(item.nome)}</h2><p>Checklist interativo independente em HTML.</p></div>
-        <a class="ck-baixar" href="/api/checklists-download?arquivo=${encodeURIComponent(item.arquivo)}" download="${esc(item.arquivo.split('/').pop())}">${svg(icones.baixar)}Baixar checklist HTML</a>
-      </article>`).join('');
-    }).join('');
-  }
 
-  busca.addEventListener('input', render);
-  render();
+    function card(i, n) {
+      const pct = progresso(i.chave);
+      const meta = i.etapas ? `<span>${i.etapas} etapas</span><span class="ckx-ok">${i.verificadas} conferidas</span>` : '<span>Plano completo</span>';
+      const barra = pct !== null ? `<div class="ckx-prog" role="progressbar" aria-valuenow="${pct}" aria-valuemin="0" aria-valuemax="100" aria-label="Seu progresso"><i style="transform:scaleX(${pct / 100})"></i><b>${pct}%</b></div>` : '';
+      return `
+        <article class="ckx-card" data-grupo="${esc(i.grupo)}" style="--i:${n}">
+          <div class="ckx-card-topo"><span class="ckx-ico">${icones[i.grupo] || icones.qa}</span><span class="ckx-area">${esc(i.area)}</span></div>
+          <h3>${esc(i.titulo)}</h3>
+          <p>${esc(i.resumo)}</p>
+          <div class="ckx-meta">${meta}</div>
+          ${barra}
+          <div class="ckx-acoes">
+            <button type="button" class="ckx-btn" data-abrir="${esc(i.arquivo)}">${icones.abrir}<span>${pct ? 'Continuar' : 'Abrir'}</span></button>
+            <a class="ckx-btn ckx-btn--sec ckx-btn--icone" href="${urlBaixar(i)}" download="${esc(i.arquivo.split('/').pop())}" aria-label="Baixar ${esc(i.titulo)}" title="Baixar HTML">${icones.baixar}</a>
+          </div>
+        </article>`;
+    }
+
+    function renderGrade() {
+      const termo = norm(busca.trim());
+      const visiveis = itens.filter((i) => (filtro === 'todos' || i.grupo === filtro) && norm(`${i.area} ${i.titulo} ${i.resumo}`).includes(termo));
+      $('[data-contagem]').textContent = `${visiveis.length} ${visiveis.length === 1 ? 'checklist' : 'checklists'}`;
+      if (!visiveis.length) { grade.innerHTML = '<p class="ckx-vazio">Nenhum checklist corresponde à busca. Tente outro termo.</p>'; return; }
+      let n = 0;
+      grade.innerHTML = grupos.map((g) => {
+        const doGrupo = visiveis.filter((i) => i.grupo === g.id);
+        if (!doGrupo.length) return '';
+        return `<section class="ckx-grupo"><h2>${esc(g.nome)}<small>${esc(g.desc)}</small></h2><div class="ckx-cards">${doGrupo.map((i) => card(i, n++)).join('')}</div></section>`;
+      }).join('');
+    }
+
+    function abrir(arquivo) {
+      const i = itens.find((x) => x.arquivo === arquivo);
+      if (!i) return;
+      aberto = i;
+      rolagem = scrollY;
+      $('[data-visor-titulo]').textContent = i.titulo;
+      $('[data-visor-nova]').href = urlAbrir(i);
+      $('[data-visor-baixar]').href = urlBaixar(i);
+      $('[data-visor-baixar]').setAttribute('download', i.arquivo.split('/').pop());
+      frame.src = urlAbrir(i);
+      lista.hidden = true;
+      visor.hidden = false;
+      scrollTo({ top: 0 });
+    }
+
+    function fechar() {
+      if (!aberto) return;
+      const arquivo = aberto.arquivo;
+      aberto = null;
+      frame.removeAttribute('src');
+      visor.hidden = true;
+      lista.hidden = false;
+      renderGrade();
+      scrollTo({ top: rolagem });
+      raiz.querySelector(`[data-abrir="${CSS.escape(arquivo)}"]`)?.focus({ preventScroll: true });
+    }
+
+    raiz.addEventListener('click', (e) => {
+      const f = e.target.closest('[data-filtro]');
+      if (f) { filtro = f.dataset.filtro; renderFiltros(); renderGrade(); return; }
+      const a = e.target.closest('[data-abrir]');
+      if (a) { abrir(a.dataset.abrir); return; }
+      if (e.target.closest('[data-voltar]')) fechar();
+    });
+    $('[data-busca]').addEventListener('input', (e) => { busca = e.target.value; renderGrade(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && aberto && !painel.hidden) fechar(); });
+    document.addEventListener('ff:aba', (e) => { if (e.detail?.aba === 'checklist' && !aberto) renderGrade(); });
+
+    renderFiltros();
+    renderGrade();
+  }
 })();

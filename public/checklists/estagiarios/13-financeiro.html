@@ -5,148 +5,184 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
 <title>Financeiro (consulta) · Faktory Flow</title>
-<style>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap">
+<style>/* Visual dos checklists (Trilha do Estagiário e Fluxos do Consultor).
+   Tokens e linguagem visual vêm de public/brand-system.css (azul profundo + lima, Plus Jakarta Sans + Inter).
+   Movimento só com transform/opacity; tudo desliga em prefers-reduced-motion. */
 :root{
-  --brand:#2e7dae;--brand-forte:#1e5375;--brand-suave:#eef6fb;--lima:#c4d62e;
-  --bg:#f4f7fa;--surface:#fff;--surface-2:#f8fafc;--borda:#e2e8f0;--borda-forte:#cbd5e1;
-  --texto:#0f172a;--texto-2:#475569;--texto-3:#64748b;
-  --ok:#15803d;--ok-bg:#dcfce7;--doc:#1d4ed8;--doc-bg:#dbeafe;--nao:#b45309;--nao-bg:#fef3c7;
-  --alerta:#b45309;--alerta-bg:#fffbeb;--alerta-borda:#fcd34d;
-  --r:12px;--ease-out:cubic-bezier(.22,1,.36,1);--ease-spring:cubic-bezier(.34,1.56,.64,1);--sombra:0 1px 2px rgba(15,23,42,.06),0 1px 3px rgba(15,23,42,.04);
+  --p50:#F3F8FC;--p100:#EAF3F9;--p200:#D3E5F1;--p300:#B9D4E7;--p:#3478A7;--p600:#2C6A95;--p700:#255C83;--p800:#1C4867;--p900:#143650;--p950:#0C2438;
+  --lima:#D5DD26;--lima-glow:#E6EC6A;--lima-txt:#6B7300;--lima-ink:#1E2A05;--lima-soft:#F6F8D4;--lima-line:#E4EA8A;
+  --canvas:#F2F6FA;--surface:#fff;--alt:#F7FAFC;--ink:#13293D;--muted:#4B6073;--line:#D8E3EC;--line2:#B3C6D6;
+  --ok:#2E7D32;--ok-bg:#EAF6EB;--info:#255C83;--info-bg:#E6F1F8;--warn:#8A4B00;--warn-bg:#FFF4E5;--warn-line:#E07B00;
+  --glass:rgb(255 255 255/.82);
+  --display:'Plus Jakarta Sans','Segoe UI',system-ui,sans-serif;--body:'Inter','Segoe UI',system-ui,-apple-system,sans-serif;
+  --r-sm:8px;--r-md:12px;--r-lg:16px;--r-xl:24px;--pill:999px;
+  --sh-sm:0 2px 6px rgb(12 36 56/.06),0 8px 20px rgb(12 36 56/.06);--sh-md:0 10px 30px rgb(12 36 56/.12);--sh-lg:0 24px 60px rgb(12 36 56/.2);
+  --ease-out:cubic-bezier(.16,1,.3,1);--ease-spring:cubic-bezier(.34,1.56,.64,1);
 }
 :root[data-theme="dark"]{
-  --brand:#79b6da;--brand-forte:#aed3ea;--brand-suave:#132c40;
-  --bg:#0b1220;--surface:#111c2e;--surface-2:#16233a;--borda:#233553;--borda-forte:#31456a;
-  --texto:#e8eef7;--texto-2:#a7b8d0;--texto-3:#8fa3bd;
-  --ok:#4ade80;--ok-bg:#0f3322;--doc:#93c5fd;--doc-bg:#172a4d;--nao:#fbbf24;--nao-bg:#3b2c10;
-  --alerta:#fbbf24;--alerta-bg:#2a2210;--alerta-borda:#78551b;--sombra:0 1px 2px rgba(0,0,0,.4);
+  --canvas:#0A1826;--surface:#102335;--alt:#142B40;--ink:#E6EEF6;--muted:#9DB3C6;--line:#223C54;--line2:#34536F;
+  --p:#6FA8CF;--p700:#9CC6E4;--p900:#D3E5F1;--ok:#6FD27A;--ok-bg:#12331A;--info:#9CC6E4;--info-bg:#143049;--warn:#F0B35A;--warn-bg:#352408;--warn-line:#E07B00;
+  --lima-soft:#232B0A;--lima-line:#4B5A12;--lima-txt:#E6EC6A;--glass:rgb(16 35 53/.78);
+  --sh-sm:0 2px 6px rgb(0 0 0/.35);--sh-md:0 10px 30px rgb(0 0 0/.45);
 }
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --brand:#79b6da;--brand-forte:#aed3ea;--brand-suave:#132c40;
-  --bg:#0b1220;--surface:#111c2e;--surface-2:#16233a;--borda:#233553;--borda-forte:#31456a;
-  --texto:#e8eef7;--texto-2:#a7b8d0;--texto-3:#8fa3bd;
-  --ok:#4ade80;--ok-bg:#0f3322;--doc:#93c5fd;--doc-bg:#172a4d;--nao:#fbbf24;--nao-bg:#3b2c10;
-  --alerta:#fbbf24;--alerta-bg:#2a2210;--alerta-borda:#78551b;--sombra:0 1px 2px rgba(0,0,0,.4);
-}}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{font-family:"Segoe UI Variable Text","Segoe UI",Inter,system-ui,-apple-system,Arial,sans-serif;font-size:15px;line-height:1.55;color:var(--texto);background:var(--bg);-webkit-font-smoothing:antialiased}
-button,input,textarea{font:inherit;color:inherit}
-button{cursor:pointer;background:none;border:0}
-a{color:var(--brand)}
-:focus-visible{outline:2px solid var(--brand);outline-offset:2px;border-radius:6px}
+html{scroll-behavior:smooth;scroll-padding-top:92px}
+body{font-family:var(--body);font-size:15px;line-height:1.6;color:var(--ink);background:var(--canvas);-webkit-font-smoothing:antialiased;min-height:100vh;
+  background-image:radial-gradient(900px 480px at 8% -6%,rgb(111 168 207/.22),transparent 60%),radial-gradient(700px 420px at 100% 4%,rgb(213 221 38/.16),transparent 55%);background-attachment:fixed}
+h1,h2,h3{font-family:var(--display);letter-spacing:-.02em;line-height:1.2}
+button,input,textarea{font:inherit;color:inherit}button{cursor:pointer;background:none;border:0}
+:focus-visible{outline:3px solid var(--lima);outline-offset:2px;border-radius:6px}
 svg{width:18px;height:18px;flex:none}
 
-.topo{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:12px;padding:10px 24px;background:color-mix(in srgb,var(--surface) 90%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--borda)}
+/* ---------- Cabeçalho (vidro) ---------- */
+.topo{position:sticky;top:12px;z-index:20;display:flex;align-items:center;gap:10px;width:min(1180px,calc(100% - 24px));margin:12px auto 0;padding:8px 10px 8px 16px;
+  background:var(--glass);-webkit-backdrop-filter:saturate(180%) blur(16px);backdrop-filter:saturate(180%) blur(16px);border:1px solid var(--line);border-radius:var(--pill);box-shadow:var(--sh-md)}
 .topo img{height:30px;width:auto}
-.topo .marca{display:flex;flex-direction:column;line-height:1.2;padding-left:12px;border-left:1px solid var(--borda)}
-.topo .marca strong{font-size:13.5px}
-.topo .marca span{font-size:11px;color:var(--texto-3);text-transform:uppercase;letter-spacing:.06em;font-weight:600}
+.topo .marca{display:flex;flex-direction:column;line-height:1.2;padding-left:12px;border-left:1px solid var(--line)}
+.topo .marca strong{font:700 13.5px var(--display);color:var(--p900)}
+.topo .marca span{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;font-weight:600}
 .topo .espaco{flex:1}
-.btn{display:inline-flex;align-items:center;gap:6px;height:34px;padding:0 12px;border-radius:8px;border:1px solid var(--borda);background:var(--surface);font-size:13px;font-weight:600;color:var(--texto-2)}
-.btn:hover{border-color:var(--borda-forte);color:var(--texto)}
+.btn{display:inline-flex;align-items:center;gap:7px;min-height:38px;padding:0 14px;border-radius:var(--pill);border:1.5px solid var(--line2);background:var(--surface);font:600 13px var(--display);color:var(--p800);transition:transform .2s var(--ease-spring),background .15s,border-color .15s}
+.btn:hover{transform:translateY(-2px);border-color:var(--p);background:var(--p50)}
+.btn:active{transform:scale(.97)}
 .btn svg{width:16px;height:16px}
-.barra{height:4px;background:var(--borda)}
-.barra i{display:block;height:100%;transform:scaleX(0);transform-origin:left;background:linear-gradient(90deg,var(--brand-forte),var(--brand) 60%,var(--lima));transition:transform .45s var(--ease-out)}
+.barra{width:min(1180px,calc(100% - 48px));height:4px;margin:6px auto 0;border-radius:var(--pill);background:var(--line);overflow:hidden}
+.barra i{display:block;height:100%;transform:scaleX(0);transform-origin:left;background:linear-gradient(90deg,var(--p700),var(--p) 55%,var(--lima));transition:transform .5s var(--ease-out)}
 
-main{max-width:880px;margin:0 auto;padding:28px 16px 64px}
-.cab{margin-bottom:20px}
-.etiqueta{display:inline-block;font-size:11.5px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--brand);margin-bottom:6px}
-.cab h1{font-size:clamp(24px,4vw,32px);line-height:1.2;letter-spacing:-.02em}
-.cab p{color:var(--texto-2);margin-top:8px;max-width:70ch}
-.resumo{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
-.resumo .chip{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:999px;background:var(--surface);border:1px solid var(--borda);font-size:13px;color:var(--texto-2)}
-.resumo .chip b{color:var(--texto);font-variant-numeric:tabular-nums}
+/* ---------- Estrutura ---------- */
+.shell{width:min(1180px,calc(100% - 24px));margin:20px auto 64px;display:grid;grid-template-columns:minmax(0,1fr);gap:24px}
+@media (min-width:1000px){.shell{grid-template-columns:250px minmax(0,1fr)}}
+main{min-width:0}
 
-.legenda{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;font-size:12.5px;color:var(--texto-3);margin:14px 0 4px}
-.selo{display:inline-flex;align-items:center;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:700;white-space:nowrap}
-.st-v{background:var(--ok-bg);color:var(--ok)}
-.st-d{background:var(--doc-bg);color:var(--doc)}
-.st-n{background:var(--nao-bg);color:var(--nao)}
+/* ---------- Herói ---------- */
+.hero{position:relative;overflow:hidden;isolation:isolate;display:grid;gap:24px;align-items:center;padding:30px 32px;border-radius:var(--r-xl);color:#fff;
+  background:linear-gradient(135deg,var(--p950),var(--p800) 62%,var(--p700));box-shadow:var(--sh-lg)}
+.hero::before{content:"";position:absolute;z-index:-1;right:-70px;top:-90px;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgb(213 221 38/.34),transparent 68%)}
+.hero::after{content:"";position:absolute;z-index:-1;left:-60px;bottom:-110px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgb(255 255 255/.14),transparent 70%)}
+@media (min-width:760px){.hero{grid-template-columns:minmax(0,1fr) auto}}
+.etiqueta{display:inline-flex;align-items:center;gap:8px;font:800 11.5px var(--display);letter-spacing:.11em;text-transform:uppercase;color:var(--lima)}
+.etiqueta::before{content:"";width:18px;height:2px;border-radius:2px;background:var(--lima)}
+.hero h1{margin-top:8px;font-size:clamp(1.55rem,3.2vw,2.25rem);font-weight:800}
+.hero p{margin-top:10px;max-width:62ch;color:rgb(255 255 255/.84)}
+.resumo{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.chip{display:inline-flex;align-items:center;gap:7px;padding:6px 12px;border-radius:var(--pill);background:rgb(255 255 255/.12);border:1px solid rgb(255 255 255/.22);font-size:12.5px;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.chip b{font-variant-numeric:tabular-nums}
+.chip svg{width:15px;height:15px;color:var(--lima)}
+.anel{position:relative;width:132px;height:132px;justify-self:center}
+.anel svg{width:132px;height:132px;transform:rotate(-90deg)}
+.anel .trilho{stroke:rgb(255 255 255/.18)}
+.anel .valor{stroke:var(--lima);stroke-linecap:round;stroke-dasharray:327;stroke-dashoffset:327;transition:stroke-dashoffset .7s var(--ease-out)}
+.anel .centro{position:absolute;inset:0;display:grid;place-content:center;text-align:center}
+.anel b{font:800 30px var(--display);line-height:1;font-variant-numeric:tabular-nums}
+.anel small{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;opacity:.8;margin-top:4px}
 
-.secao{background:var(--surface);border:1px solid var(--borda);border-radius:var(--r);box-shadow:var(--sombra);padding:20px 22px;margin-top:16px}
-.secao > h2{display:flex;align-items:center;gap:10px;font-size:17px;letter-spacing:-.01em;margin-bottom:12px}
-.secao > h2 .n{display:grid;place-items:center;width:26px;height:26px;border-radius:8px;background:var(--brand-suave);color:var(--brand);font-size:13px;font-weight:800}
-.secao > h2 .cont{margin-left:auto;font-size:12.5px;font-weight:600;color:var(--texto-3);font-variant-numeric:tabular-nums}
-.secao > p{color:var(--texto-2)}
+/* ---------- Legenda e selos ---------- */
+.legenda{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;font-size:12.5px;color:var(--muted);margin:14px 2px 0}
+.selo{display:inline-flex;align-items:center;gap:5px;padding:2px 9px;border-radius:var(--pill);font:700 11px var(--display);white-space:nowrap}
+.selo::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.st-v{background:var(--ok-bg);color:var(--ok)}.st-d{background:var(--info-bg);color:var(--info)}.st-n{background:var(--warn-bg);color:var(--warn)}
 
-.fluxo + .fluxo{margin-top:18px;padding-top:16px;border-top:1px dashed var(--borda)}
-.fluxo h3{font-size:15px;margin-bottom:2px}
-.fluxo h3 .cont{margin-left:6px;font-size:12px;font-weight:600;color:var(--texto-3);font-variant-numeric:tabular-nums}
-.fluxo .onde{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:var(--texto-3);margin-bottom:8px}
-.fluxo .onde svg{width:14px;height:14px}
-.fluxo .intro{font-size:13.5px;color:var(--texto-2);margin-bottom:8px}
+/* ---------- Índice lateral ---------- */
+.indice{display:none}
+@media (min-width:1000px){
+  .indice{display:block;position:sticky;top:84px;align-self:start;max-height:calc(100vh - 100px);overflow:auto;padding:16px 10px;border-radius:var(--r-lg);background:var(--glass);border:1px solid var(--line);box-shadow:var(--sh-sm);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+  .indice h2{padding:0 10px 8px;font:800 11px var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+  .indice a{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:7px 10px;border-radius:var(--r-sm);color:var(--ink);text-decoration:none;font-size:13.5px;font-weight:550;transition:background .15s,transform .2s var(--ease-out)}
+  .indice a:hover{background:var(--p100);transform:translateX(3px)}
+  .indice a[aria-current="true"]{background:var(--p900);color:#fff;box-shadow:inset 3px 0 0 var(--lima)}
+  .indice em{font:600 11.5px var(--display);font-style:normal;color:var(--muted);font-variant-numeric:tabular-nums}
+  .indice a[aria-current="true"] em{color:var(--lima-glow)}
+  .indice a.feito em{color:var(--ok)}
+}
 
-.itens{list-style:none;display:grid;gap:6px}
-.item label{display:grid;grid-template-columns:22px 1fr auto;gap:10px;align-items:start;padding:9px 10px;border-radius:10px;border:1px solid transparent;cursor:pointer;transition:background .15s,border-color .15s}
-.item label:hover{background:var(--surface-2);border-color:var(--borda)}
-.item input{appearance:none;width:20px;height:20px;margin-top:1px;border:2px solid var(--borda-forte);border-radius:6px;background:var(--surface);display:grid;place-items:center;cursor:pointer;transition:all .15s}
-.item input:checked{background:var(--brand);border-color:var(--brand)}
-.item input:checked::after{content:"";width:5px;height:10px;border:solid #fff;border-width:0 2.5px 2.5px 0;transform:translateY(-1px) rotate(45deg)}
-.item .txt{min-width:0}
-.item .acao{display:block}
-.item .res{display:block;font-size:13px;color:var(--texto-3);margin-top:2px}
-.item .res b{color:var(--ok);font-weight:700}
-.item input:checked ~ .txt .acao{color:var(--texto-3);text-decoration:line-through;text-decoration-color:var(--borda-forte)}
-.item .reg{display:block;width:calc(100% - 42px);margin:2px 0 4px 42px;height:32px;padding:0 10px;border-radius:8px;border:1px solid var(--borda);background:var(--surface-2);font-size:13px}
-.item .reg:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 3px color-mix(in srgb,var(--brand) 25%,transparent)}
-.ui{font-family:inherit;font-weight:650;color:var(--texto);background:var(--surface-2);border:1px solid var(--borda);border-radius:5px;padding:0 5px;white-space:nowrap}
+/* ---------- Seções ---------- */
+.secao{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--sh-sm);padding:22px 24px;margin-top:16px;transition:transform .25s var(--ease-out),box-shadow .25s var(--ease-out)}
+.secao:hover{box-shadow:var(--sh-md)}
+.secao > h2{display:flex;align-items:center;gap:10px;font-size:17px;color:var(--p900);margin-bottom:12px}
+.secao > h2 .n{display:grid;place-items:center;width:28px;height:28px;border-radius:9px;background:var(--p900);color:var(--lima);font:800 13px var(--display)}
+.secao > h2 > svg{color:var(--p)}
+.cont{margin-left:auto;font:700 12px var(--display);color:var(--muted);font-variant-numeric:tabular-nums}
+.secao > p{color:var(--muted)}
+.dica{font-size:12.5px;color:var(--muted);margin-top:6px}
 
-.atencao{list-style:none;display:grid;gap:8px}
-.atencao li{display:flex;gap:10px;padding:10px 12px;border-radius:10px;background:var(--alerta-bg);border:1px solid var(--alerta-borda);font-size:14px}
-.atencao li svg{color:var(--alerta);margin-top:2px}
-.pendencias{list-style:none;display:grid;gap:6px}
-.pendencias li{display:flex;gap:10px;font-size:14px;color:var(--texto-2)}
-.pendencias li svg{color:var(--nao);margin-top:2px}
+.fluxo + .fluxo{margin-top:22px;padding-top:20px;border-top:1px dashed var(--line2)}
+.fluxo h3{display:flex;align-items:center;gap:8px;font-size:15.5px;color:var(--p900)}
+.onde{display:inline-flex;align-items:center;gap:7px;margin:6px 0 4px;font-size:12.5px;color:var(--muted)}
+.onde svg{width:14px;height:14px;color:var(--p)}
+.intro{font-size:13.5px;color:var(--muted);margin:2px 0 6px}
 
-textarea{width:100%;min-height:96px;resize:vertical;padding:10px 12px;border-radius:10px;border:1px solid var(--borda);background:var(--surface-2);line-height:1.5}
-textarea:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 3px color-mix(in srgb,var(--brand) 25%,transparent)}
-.dica{font-size:12.5px;color:var(--texto-3);margin-top:6px}
+/* ---------- Etapas (linha do tempo) ---------- */
+.itens{list-style:none;display:grid;gap:4px;margin-top:8px}
+.item{position:relative}
+.item:not(:last-child)::after{content:"";position:absolute;left:21px;top:40px;bottom:-6px;width:2px;border-radius:2px;background:var(--line);transition:background .3s}
+.item:has(input:checked):not(:last-child)::after{background:var(--lima)}
+.item label{display:grid;grid-template-columns:22px 1fr auto;gap:12px;align-items:start;padding:10px;border-radius:var(--r-md);border:1px solid transparent;cursor:pointer;transition:background .15s,border-color .15s,transform .2s var(--ease-out)}
+.item label:hover{background:var(--alt);border-color:var(--line);transform:translateX(3px)}
+.item input[type=checkbox]{appearance:none;width:22px;height:22px;margin-top:1px;border:2px solid var(--line2);border-radius:7px;background:var(--surface);display:grid;place-items:center;cursor:pointer;transition:background .15s,border-color .15s;position:relative;z-index:1}
+.item input[type=checkbox]:hover{border-color:var(--p)}
+.item input[type=checkbox]:checked{background:var(--lima);border-color:var(--lima);animation:ff-pop .34s var(--ease-spring)}
+.item input[type=checkbox]:checked::after{content:"";width:6px;height:11px;border:solid var(--lima-ink);border-width:0 2.5px 2.5px 0;transform:translateY(-1px) rotate(45deg)}
+.txt{min-width:0}.acao{display:block}
+.item input:checked ~ .txt .acao{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--line2)}
+.res{display:block;margin-top:6px;padding:6px 10px 6px 12px;border-radius:var(--r-sm);border-left:3px solid var(--lima);background:var(--lima-soft);font-size:13px;color:var(--ink)}
+.res b{font-family:var(--display);font-weight:800;color:var(--lima-txt);margin-right:4px}
+.ui{font-weight:650;color:var(--p900);background:var(--p100);border:1px solid var(--p200);border-radius:6px;padding:0 6px;white-space:nowrap}
+.reg{display:block;width:calc(100% - 44px);margin:0 0 6px 44px;height:34px;padding:0 12px;border-radius:var(--pill);border:1.5px dashed var(--line2);background:var(--alt);font-size:13px;transition:border-color .15s,box-shadow .15s}
+.reg:focus{outline:none;border-style:solid;border-color:var(--p);box-shadow:0 0 0 4px rgb(52 120 167/.18)}
+.reg:not(:placeholder-shown){border-style:solid;border-color:var(--lima-line);background:var(--lima-soft)}
 
-.trilha{list-style:none;display:grid;gap:8px;counter-reset:t}
-.trilha a{display:grid;grid-template-columns:34px 1fr auto;gap:12px;align-items:center;padding:12px 14px;border:1px solid var(--borda);border-radius:10px;text-decoration:none;color:var(--texto);background:var(--surface-2)}
-.trilha a:hover{border-color:var(--brand)}
-.trilha .num{display:grid;place-items:center;width:34px;height:34px;border-radius:9px;background:var(--brand-suave);color:var(--brand);font-weight:800}
-.trilha small{display:block;color:var(--texto-3);font-size:12.5px}
-.trilha .prog{font-size:12.5px;font-weight:700;color:var(--texto-3);font-variant-numeric:tabular-nums}
+.atencao,.pendencias{list-style:none;display:grid;gap:8px}
+.atencao li{display:flex;gap:10px;padding:11px 14px;border-radius:var(--r-md);background:var(--warn-bg);border:1px solid var(--warn-line);border-left-width:4px;font-size:14px}
+.atencao li svg{color:var(--warn-line);margin-top:3px}
+.pendencias li{display:flex;gap:10px;font-size:14px;color:var(--muted)}
+.pendencias li svg{color:var(--warn-line);margin-top:3px}
+textarea{width:100%;min-height:96px;resize:vertical;padding:12px 14px;border-radius:var(--r-md);border:1.5px solid var(--line);background:var(--alt);line-height:1.5}
+textarea:focus{outline:none;border-color:var(--p);box-shadow:0 0 0 4px rgb(52 120 167/.18)}
 
-.rodape{margin-top:28px;font-size:12.5px;color:var(--texto-3);text-align:center}
-.concluido{display:none;margin-top:16px;padding:14px 16px;border-radius:var(--r);background:var(--ok-bg);color:var(--ok);font-weight:700;align-items:center;gap:10px}
-.concluido.on{display:flex}
+/* ---------- Trilha (onboarding) ---------- */
+.trilha{list-style:none;display:grid;gap:8px}
+.trilha a{display:grid;grid-template-columns:38px 1fr auto;gap:14px;align-items:center;padding:12px 14px;border:1px solid var(--line);border-radius:var(--r-md);text-decoration:none;color:var(--ink);background:var(--alt);transition:transform .25s var(--ease-out),border-color .2s,box-shadow .25s}
+.trilha a:hover{transform:translateY(-2px);border-color:var(--p);box-shadow:var(--sh-sm)}
+.trilha .num{display:grid;place-items:center;width:38px;height:38px;border-radius:11px;background:var(--p900);color:var(--lima);font:800 13px var(--display);transition:transform .25s var(--ease-spring)}
+.trilha a:hover .num{transform:scale(1.08) rotate(-4deg)}
+.trilha small{display:block;color:var(--muted);font-size:12.5px}
+.trilha .prog{font:700 12px var(--display);color:var(--muted);font-variant-numeric:tabular-nums}
+.rodape{margin-top:28px;font-size:12.5px;color:var(--muted);text-align:center}
+.concluido{display:none;margin-top:16px;padding:14px 18px;border-radius:var(--r-lg);background:var(--lima);color:var(--lima-ink);font:700 14px var(--display);align-items:center;gap:10px;box-shadow:var(--sh-md)}
+.concluido.on{display:flex;animation:ff-entra .55s var(--ease-spring) both}
 
-/* Movimento: entrada em cascata, hover "float", check com "pop" e conclusão com "bounceIn". */
-@keyframes ff-sobe{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-@keyframes ff-pop{0%{transform:scale(.6)}60%{transform:scale(1.15)}100%{transform:scale(1)}}
+/* ---------- Movimento ---------- */
+@keyframes ff-sobe{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes ff-pop{0%{transform:scale(.6)}60%{transform:scale(1.18)}100%{transform:scale(1)}}
 @keyframes ff-entra{0%{opacity:0;transform:scale(.92)}60%{opacity:1;transform:scale(1.02)}100%{transform:scale(1)}}
-.cab,.secao{animation:ff-sobe .5s var(--ease-out) both}
-.secao:nth-of-type(2){animation-delay:.05s}.secao:nth-of-type(3){animation-delay:.1s}.secao:nth-of-type(4){animation-delay:.15s}
-.secao:nth-of-type(5){animation-delay:.2s}.secao:nth-of-type(n+6){animation-delay:.25s}
-.secao{transition:transform .25s var(--ease-out),box-shadow .25s var(--ease-out)}
-.item label{transition:background .15s,border-color .15s,transform .2s var(--ease-out)}
-.item label:hover{transform:translateX(3px)}
-.item input:checked{animation:ff-pop .32s var(--ease-spring)}
-.btn{transition:transform .2s var(--ease-spring),border-color .15s,color .15s}
-.btn:hover{transform:translateY(-2px)}.btn:active{transform:translateY(0) scale(.97)}
-.trilha a{transition:transform .25s var(--ease-out),border-color .2s,box-shadow .25s}
-.trilha a:hover{transform:translateY(-2px);box-shadow:0 8px 20px -10px color-mix(in srgb,var(--brand) 45%,transparent)}
-.trilha .num{transition:transform .25s var(--ease-spring)}.trilha a:hover .num{transform:scale(1.08) rotate(-4deg)}
-.concluido.on{animation:ff-entra .5s var(--ease-spring) both}
-.topo{background:color-mix(in srgb,var(--surface) 72%,transparent);-webkit-backdrop-filter:saturate(180%) blur(16px);backdrop-filter:saturate(180%) blur(16px)}
-@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+.hero,.secao{animation:ff-sobe .55s var(--ease-out) both}
+.secao:nth-of-type(2){animation-delay:.05s}.secao:nth-of-type(3){animation-delay:.1s}.secao:nth-of-type(4){animation-delay:.15s}.secao:nth-of-type(n+5){animation-delay:.2s}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* ---------- Dentro do guia (iframe) ---------- */
+html.embed .topo .marca,html.embed .topo img{display:none}
+html.embed .topo{position:static;margin-top:8px;padding:0;background:none;border:0;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none}
+html.embed .shell{margin-top:12px}
 
 @media (max-width:640px){
-  .topo{padding:10px 16px}.topo .marca{display:none}.btn span{display:none}.btn{width:34px;justify-content:center;padding:0}
-  .secao{padding:16px}
+  .topo{padding-left:10px}.topo .marca{display:none}.btn span{display:none}.btn{width:38px;padding:0;justify-content:center}
+  .hero{padding:22px 20px}.secao{padding:18px 16px}
   .item label{grid-template-columns:22px 1fr}.item .selo{grid-column:2;justify-self:start}
+  .reg{width:calc(100% - 10px);margin-left:10px}
 }
 @media print{
-  .topo,.barra,.no-print{display:none!important}
   body{background:#fff;font-size:12.5px}
-  main{padding:0;max-width:none}
-  .secao{box-shadow:none;break-inside:avoid-page;padding:12px 14px}
-  .item label{padding:4px 0}
-  .item input{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .topo,.barra,.indice,.no-print{display:none!important}
+  .shell{display:block;margin:0;width:100%}
+  .hero{background:#fff!important;color:#000;box-shadow:none;border:1px solid #999}.hero p,.chip{color:#000}.hero::before,.hero::after{display:none}
+  .secao{box-shadow:none;break-inside:avoid-page;padding:12px 14px;animation:none}
+  .item::after{display:none}.item label{padding:4px 0}
   textarea{min-height:120px}
-}</style>
+}
+.indice a span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+</style>
 </head>
 <body>
 
@@ -159,127 +195,149 @@ textarea:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 3px color
   <button class="btn" id="btnTema" type="button" aria-label="Alternar tema claro/escuro" title="Alternar tema"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg></button>
 </header>
 <div class="barra" role="progressbar" aria-label="Progresso do checklist"><i id="barraFill"></i></div>
+<div class="shell">
+<nav class="indice" aria-label="Neste checklist"><h2>Neste checklist</h2><a href="#s-objetivo"><span>Objetivo</span><em></em></a><a href="#s-pre"><span>Pré-requisitos</span><em>0/0</em></a><a href="#fx-1"><span>Partir dos indicadores da tela Início</span><em>0/0</em></a><a href="#fx-2"><span>Consultar títulos</span><em>0/0</em></a><a href="#fx-3"><span>Ler a visão de gestão</span><em>0/0</em></a><a href="#s-resultado"><span>Resultado esperado</span><em>0/0</em></a><a href="#s-atencao"><span>Pontos de atenção</span><em></em></a><a href="#s-notas"><span>Anotações</span><em></em></a></nav>
 <main>
 
-<section class="cab">
+<section class="hero"><div>
   <span class="etiqueta">Gestão · Financeiro</span>
   <h1>Financeiro (consulta)</h1>
   <p>O financeiro recebe os títulos que nascem das vendas, das notas e dos recebimentos de compra.</p>
-  <div class="resumo">
-    <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11"/><path d="m3 6 1 1 2-2M3 12l1 1 2-2M3 18l1 1 2-2"/></svg><b id="contagem">0 de 9</b> etapas marcadas</span>
-    <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><b id="pct">0%</b> concluído</span>
-    <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg><b>2</b> de 8 passos conferidos no sistema</span>
-  </div>
-  <div class="legenda" aria-label="Legenda da origem das informações">Origem de cada etapa: <span class="selo st-v" title="Verificado no sistema">Verificado</span> abri e conferi no sistema · <span class="selo st-d" title="Baseado na documentação">Documentação</span> vem dos roteiros de validação, não foi executado · <span class="selo st-n" title="Ainda não validado">Não validado</span> precisa ser confirmado com o supervisor</div>
-</section>
+  <div class="resumo"><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11"/><path d="m3 6 1 1 2-2M3 12l1 1 2-2M3 18l1 1 2-2"/></svg><b id="contagem">0 de 9</b> etapas</span><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg><b>2</b> de 9 conferidas no sistema</span></div>
+</div><div class="anel" role="img" aria-label="Progresso do checklist">
+  <svg viewBox="0 0 120 120"><circle class="trilho" cx="60" cy="60" r="52" fill="none" stroke-width="10"/><circle id="anelValor" class="valor" cx="60" cy="60" r="52" fill="none" stroke-width="10"/></svg>
+  <div class="centro"><b id="anelPct">0%</b><small>concluído</small></div>
+</div></section><div class="legenda" aria-label="Legenda da origem das informações">Origem de cada etapa: <span class="selo st-v" title="Verificado no sistema">Verificado</span> conferi no sistema <span class="selo st-d" title="Baseado na documentação">Documentação</span> vem dos roteiros, não foi executado <span class="selo st-n" title="Ainda não validado">Não validado</span> ainda por confirmar</div>
 
-<section class="secao"><h2><span class="n">1</span>Objetivo</h2><p>Consultar títulos a receber e a pagar, entender de onde eles vêm e ler o fluxo de caixa e os demonstrativos.</p></section>
+<section class="secao" id="s-objetivo"><h2><span class="n">1</span>Objetivo</h2><p>Consultar títulos a receber e a pagar, entender de onde eles vêm e ler o fluxo de caixa e os demonstrativos.</p></section>
 
-<section class="secao" data-grupo><h2><span class="n">2</span>Pré-requisitos <span class="cont"></span></h2><ul class="itens"><li class="item"><label><input type="checkbox" data-id="pre-1"><span class="txt"><span class="acao">Checklists 04, 06 e 12 concluídos.</span></span><span class="selo st-d" title="Baseado na documentação">Documentação</span></label></li></ul></section>
+<section class="secao" id="s-pre" data-grupo><h2><span class="n">2</span>Pré-requisitos <span class="cont"></span></h2><ul class="itens"><li class="item"><label><input type="checkbox" data-id="pre-1"><span class="txt"><span class="acao">Checklists 04, 06 e 12 concluídos.</span></span><span class="selo st-d" title="Baseado na documentação">Documentação</span></label></li></ul></section>
 
-<section class="secao"><h2><span class="n">3</span>Passo a passo</h2>
-    <div class="fluxo" data-grupo>
+<section class="secao" id="s-passos"><h2><span class="n">3</span>Passo a passo</h2>
+    <div class="fluxo" id="fx-1" data-grupo>
       <h3>1. Partir dos indicadores da tela Início <span class="cont"></span></h3>
       
       
       <ul class="itens"><li class="item"><label><input type="checkbox" data-id="f1-1"><span class="txt"><span class="acao">Ler &quot;Títulos a receber em aberto&quot; e &quot;Títulos a pagar em aberto&quot; em Tarefas do dia.</span><span class="res"><b>Resultado:</b> O atalho leva a Financeiro &gt; Contas a Receber.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="f1-2"><span class="txt"><span class="acao">Ler Recebido no mês, A receber e A pagar no Resumo do negócio.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li></ul>
     </div>
-    <div class="fluxo" data-grupo>
+    <div class="fluxo" id="fx-2" data-grupo>
       <h3>2. Consultar títulos <span class="cont"></span></h3>
       <div class="onde"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18 3 21V6l6-3 6 3 6-3v15l-6 3-6-3Z"/><path d="M9 3v15M15 6v15"/></svg><span>Onde: <span class="ui">Financeiro &gt; Contas a Receber</span> e <span class="ui">Contas a Pagar</span></span></div>
       
       <ul class="itens"><li class="item"><label><input type="checkbox" data-id="f2-1"><span class="txt"><span class="acao">Filtrar por vencimento e situação e abrir um título.</span></span><span class="selo st-n" title="Ainda não validado">Não validado</span></label></li><li class="item"><label><input type="checkbox" data-id="f2-2"><span class="txt"><span class="acao">Ver de qual pedido, nota ou recebimento o título veio.</span></span><span class="selo st-d" title="Baseado na documentação">Documentação</span></label></li><li class="item"><label><input type="checkbox" data-id="f2-3"><span class="txt"><span class="acao">Saber que &quot;Pagamentos&quot; é uma aba dentro de Contas a Pagar.</span></span><span class="selo st-n" title="Ainda não validado">Não validado</span></label></li></ul>
     </div>
-    <div class="fluxo" data-grupo>
+    <div class="fluxo" id="fx-3" data-grupo>
       <h3>3. Ler a visão de gestão <span class="cont"></span></h3>
       
       
       <ul class="itens"><li class="item"><label><input type="checkbox" data-id="f3-1"><span class="txt"><span class="acao">Abrir <span class="ui">Fluxo de Caixa</span> e <span class="ui">DRE</span>.</span></span><span class="selo st-d" title="Baseado na documentação">Documentação</span></label></li><li class="item"><label><input type="checkbox" data-id="f3-2"><span class="txt"><span class="acao">Abrir <span class="ui">Painel Financeiro de Projetos</span> para ver o resultado por obra.</span></span><span class="selo st-d" title="Baseado na documentação">Documentação</span></label></li></ul>
     </div></section>
 
-<section class="secao" data-grupo><h2><span class="n">4</span>Resultado esperado <span class="cont"></span></h2><p class="dica" style="margin:-4px 0 10px">Marque quando conseguir confirmar cada ponto.</p><ul class="itens"><li class="item"><label><input type="checkbox" data-id="res-1"><span class="txt"><span class="acao">Sei explicar de onde vem um título a receber (pedido/nota) e um título a pagar (recebimento de compra).</span></span><span class="selo st-d" title="Baseado na documentação">Documentação</span></label></li></ul></section>
+<section class="secao" id="s-resultado" data-grupo><h2><span class="n">4</span>Resultado esperado <span class="cont"></span></h2><p class="dica" style="margin:-4px 0 10px">Marque quando conseguir confirmar cada ponto.</p><ul class="itens"><li class="item"><label><input type="checkbox" data-id="res-1"><span class="txt"><span class="acao">Sei explicar de onde vem um título a receber (pedido/nota) e um título a pagar (recebimento de compra).</span></span><span class="selo st-d" title="Baseado na documentação">Documentação</span></label></li></ul></section>
 
-<section class="secao"><h2><span class="n">5</span>Pontos de atenção</h2><ul class="atencao"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4M12 17h.01"/></svg><span>Baixar, pagar, receber, estornar, transferir, gerar boleto/PIX são ações com valor: <strong>nunca em treino</strong>.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4M12 17h.01"/></svg><span>Contas Bancárias, Boleto e Webservice de bancos são configurações sensíveis.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4M12 17h.01"/></svg><span>Não há item &quot;Conciliação&quot; no menu; confirme com o supervisor onde a empresa concilia (provavelmente em Extrato).</span></li></ul></section>
+<section class="secao" id="s-atencao"><h2><span class="n">5</span>Pontos de atenção</h2><ul class="atencao"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4M12 17h.01"/></svg><span>Baixar, pagar, receber, estornar, transferir, gerar boleto/PIX são ações com valor: <strong>nunca em treino</strong>.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4M12 17h.01"/></svg><span>Contas Bancárias, Boleto e Webservice de bancos são configurações sensíveis.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4M12 17h.01"/></svg><span>Não há item &quot;Conciliação&quot; no menu; confirme com o supervisor onde a empresa concilia (provavelmente em Extrato).</span></li></ul></section>
 
-<section class="secao"><h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Ainda não validado na prática</h2><p class="dica" style="margin:-4px 0 10px">Estas partes não puderam ser conferidas na exploração do sistema. Confirme com seu supervisor antes de seguir.</p><ul class="pendencias"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Nenhuma tela do Financeiro foi aberta ainda: os itens do menu foram lidos apenas da definição do sistema.</span></li></ul></section>
+<section class="secao"><h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Ainda não validado na prática</h2><p class="dica" style="margin:-4px 0 10px">Estas partes não puderam ser conferidas. Confirme com seu supervisor antes de seguir.</p><ul class="pendencias"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Nenhuma tela do Financeiro foi aberta ainda: os itens do menu foram lidos apenas da definição do sistema.</span></li></ul></section>
 
-<section class="secao no-print-notas"><h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Minhas dúvidas e anotações</h2><textarea id="notas" placeholder="Anote dúvidas para levar ao supervisor, números de registros que você consultou, atalhos que descobriu…"></textarea><p class="dica">Fica salvo só neste navegador.</p></section>
+<section class="secao no-print-notas" id="s-notas"><h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Minhas dúvidas e anotações</h2><textarea id="notas" placeholder="Anote dúvidas para levar ao supervisor, números de registros que você consultou, atalhos que descobriu…"></textarea><p class="dica">Fica salvo só neste navegador.</p></section>
 
 <div class="concluido" id="concluido" role="status"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Checklist concluído. Volte ao onboarding e siga para o próximo módulo.</div>
 <p class="rodape">Trilha do Estagiário · Faktory Flow v1.22 · conteúdo conferido em 16 e 19/10/2026</p>
 </main>
-<script>
+</div>
+<script>/* Comportamento dos checklists: progresso salvo no navegador, anel de progresso, índice lateral e modo "dentro do guia". */
 (function(){
-  var CHAVE = document.documentElement.getAttribute('data-chave');
+  var raiz = document.documentElement;
+  var CHAVE = raiz.getAttribute('data-chave');
   function ler(k){try{return localStorage.getItem(k);}catch(e){return null;}}
   function guardar(k,v){try{localStorage.setItem(k,v);}catch(e){}}
   function apagar(k){try{localStorage.removeItem(k);}catch(e){}}
+  function $(id){return document.getElementById(id);}
 
-  var tema = ler('ff-estagiario:tema');
-  if (tema) document.documentElement.setAttribute('data-theme', tema);
-  var btnTema = document.getElementById('btnTema');
-  if (btnTema) btnTema.addEventListener('click', function(){
-    var atual = document.documentElement.getAttribute('data-theme') ||
-      (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  try { if (window.top !== window.self || /[?&]embed=1/.test(location.search)) raiz.classList.add('embed'); } catch(e) { raiz.classList.add('embed'); }
+
+  var tema = ler('ff-checklist:tema');
+  if (tema) raiz.setAttribute('data-theme', tema);
+  if ($('btnTema')) $('btnTema').addEventListener('click', function(){
+    var atual = raiz.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     var novo = atual === 'dark' ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-theme', novo);
-    guardar('ff-estagiario:tema', novo);
+    raiz.setAttribute('data-theme', novo); guardar('ff-checklist:tema', novo);
   });
 
   var estado = {};
   try { estado = JSON.parse(ler(CHAVE) || '{}') || {}; } catch(e) { estado = {}; }
   var caixas = [].slice.call(document.querySelectorAll('input[type=checkbox][data-id]'));
-  var notas = document.getElementById('notas');
   var regs = [].slice.call(document.querySelectorAll('input[data-reg]'));
+  var notas = $('notas');
+  var CIRC = 327;
+
+  function contar(escopo){
+    var cx = escopo.querySelectorAll('input[type=checkbox][data-id]'), f = 0;
+    for (var i = 0; i < cx.length; i++) if (cx[i].checked) f++;
+    return [f, cx.length];
+  }
 
   function atualizar(){
     var total = caixas.length, feitos = caixas.filter(function(c){return c.checked;}).length;
     var pct = total ? Math.round(feitos * 100 / total) : 0;
-    var fill = document.getElementById('barraFill'); if (fill) fill.style.transform = 'scaleX(' + (pct / 100) + ')';
-    var p = document.getElementById('pct'); if (p) p.textContent = pct + '%';
-    var c = document.getElementById('contagem'); if (c) c.textContent = feitos + ' de ' + total;
+    if ($('barraFill')) $('barraFill').style.transform = 'scaleX(' + (pct / 100) + ')';
+    if ($('anelValor')) $('anelValor').style.strokeDashoffset = String(CIRC * (1 - pct / 100));
+    if ($('anelPct')) $('anelPct').textContent = pct + '%';
+    if ($('pct')) $('pct').textContent = pct + '%';
+    if ($('contagem')) $('contagem').textContent = feitos + ' de ' + total;
     [].forEach.call(document.querySelectorAll('[data-grupo]'), function(g){
-      var cx = g.querySelectorAll('input[type=checkbox][data-id]'), f = 0;
-      for (var i = 0; i < cx.length; i++) if (cx[i].checked) f++;
-      var alvo = g.querySelector('.cont'); if (alvo) alvo.textContent = f + '/' + cx.length;
+      var c = contar(g), alvo = g.querySelector('.cont');
+      if (alvo) alvo.textContent = c[0] + '/' + c[1];
+      var link = g.id && document.querySelector('.indice a[href="#' + g.id + '"]');
+      if (link) { link.querySelector('em').textContent = c[0] + '/' + c[1]; link.classList.toggle('feito', c[1] > 0 && c[0] === c[1]); }
     });
-    var fim = document.getElementById('concluido'); if (fim) fim.classList.toggle('on', total > 0 && feitos === total);
+    if ($('concluido')) $('concluido').classList.toggle('on', total > 0 && feitos === total);
     guardar(CHAVE + ':pct', String(pct));
   }
+
   function salvar(){
-    var marcados = {};
+    var marcados = {}, campos = {};
     caixas.forEach(function(c){ if (c.checked) marcados[c.getAttribute('data-id')] = 1; });
-    var dados = { marcados: marcados };
-    if (notas) dados.notas = notas.value;
-    dados.regs = {};
-    regs.forEach(function(r){ if (r.value) dados.regs[r.getAttribute('data-reg')] = r.value; });
-    guardar(CHAVE, JSON.stringify(dados));
+    regs.forEach(function(r){ if (r.value) campos[r.getAttribute('data-reg')] = r.value; });
+    guardar(CHAVE, JSON.stringify({ marcados: marcados, regs: campos, notas: notas ? notas.value : '' }));
     atualizar();
   }
+
   caixas.forEach(function(c){
     c.checked = !!(estado.marcados && estado.marcados[c.getAttribute('data-id')]);
     c.addEventListener('change', salvar);
   });
-  if (notas) { notas.value = estado.notas || ''; notas.addEventListener('input', salvar); }
   regs.forEach(function(r){ r.value = (estado.regs && estado.regs[r.getAttribute('data-reg')]) || ''; r.addEventListener('input', salvar); });
+  if (notas) { notas.value = estado.notas || ''; notas.addEventListener('input', salvar); }
 
-  var btnLimpar = document.getElementById('btnLimpar');
-  if (btnLimpar) btnLimpar.addEventListener('click', function(){
-    if (!confirm('Desmarcar todas as etapas e apagar as anotações deste checklist?')) return;
+  if ($('btnLimpar')) $('btnLimpar').addEventListener('click', function(){
+    if (!confirm('Desmarcar todas as etapas e apagar anotações e registros deste checklist?')) return;
     caixas.forEach(function(c){ c.checked = false; });
-    if (notas) notas.value = '';
     regs.forEach(function(r){ r.value = ''; });
+    if (notas) notas.value = '';
     apagar(CHAVE); atualizar();
   });
-  var btnImprimir = document.getElementById('btnImprimir');
-  if (btnImprimir) btnImprimir.addEventListener('click', function(){ window.print(); });
+  if ($('btnImprimir')) $('btnImprimir').addEventListener('click', function(){ window.print(); });
 
-  /* Onboarding: mostra o progresso de cada checklist já aberto neste navegador. */
+  /* Índice lateral: destaca a seção visível. */
+  var links = [].slice.call(document.querySelectorAll('.indice a'));
+  if (links.length && 'IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function(entradas){
+      entradas.forEach(function(e){
+        if (!e.isIntersecting) return;
+        links.forEach(function(a){ a.setAttribute('aria-current', String(a.getAttribute('href') === '#' + e.target.id)); });
+      });
+    }, { rootMargin: '-15% 0px -70% 0px' });
+    links.forEach(function(a){ var alvo = document.getElementById(a.getAttribute('href').slice(1)); if (alvo) obs.observe(alvo); });
+  }
+
+  /* Onboarding: progresso de cada checklist já aberto neste navegador. */
   [].forEach.call(document.querySelectorAll('[data-prog]'), function(el){
     var v = ler('ff-estagiario:' + el.getAttribute('data-prog') + ':pct');
     el.textContent = v === null ? 'não iniciado' : v + '%';
   });
   atualizar();
-})();</script>
+})();
+</script>
 </body>
 </html>

@@ -1,0 +1,98 @@
+/* Aba "Checklist" do guia: herói, filtros, cards com progresso e visualizador embutido. Tokens de brand-system.css.
+   Movimento só com transform/opacity e desligado em prefers-reduced-motion. */
+.ckx { max-width: 1080px; margin: 0 auto; container-type: inline-size; }
+.ckx-carregando, .ckx-vazio { padding: 40px 20px; border: 1px dashed var(--color-line-strong); border-radius: var(--radius-lg); color: var(--color-muted); text-align: center; }
+
+/* ---------- Herói ---------- */
+.ckx-hero { position: relative; overflow: hidden; isolation: isolate; display: grid; gap: 28px; align-items: end; padding: 34px 36px; border-radius: var(--radius-xl); color: #fff;
+  background: linear-gradient(135deg, var(--brand-primary-950), var(--brand-primary-800) 62%, var(--brand-primary-700)); box-shadow: var(--shadow-lg); }
+.ckx-hero::before { content: ""; position: absolute; z-index: -1; right: -80px; top: -100px; width: 340px; height: 340px; border-radius: 50%; background: radial-gradient(circle, rgb(213 221 38 / .36), transparent 68%); }
+.ckx-hero::after { content: ""; position: absolute; z-index: -1; left: -70px; bottom: -120px; width: 280px; height: 280px; border-radius: 50%; background: radial-gradient(circle, rgb(255 255 255 / .14), transparent 70%); }
+@container (min-width: 820px) { .ckx-hero { grid-template-columns: minmax(0, 1fr) auto; } }
+.ckx-eyebrow { display: inline-flex; align-items: center; gap: 8px; font: 800 11.5px var(--font-display); letter-spacing: .12em; text-transform: uppercase; color: var(--brand-accent); }
+.ckx-eyebrow::before { content: ""; width: 18px; height: 2px; border-radius: 2px; background: var(--brand-accent); }
+.ckx-hero h1 { margin: 8px 0 0; font: 800 clamp(1.9rem, 3.6vw, 2.8rem)/1.08 var(--font-display); letter-spacing: -.025em; color: #fff; }
+.ckx-hero p { margin: 12px 0 0; max-width: 60ch; color: rgb(255 255 255 / .84); line-height: 1.6; }
+.ckx-stats { display: flex; gap: 10px; margin: 0; }
+.ckx-stats div { min-width: 104px; padding: 12px 16px; border-radius: var(--radius-md); background: rgb(255 255 255 / .12); border: 1px solid rgb(255 255 255 / .22); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+.ckx-stats dt { font-size: 11px; letter-spacing: .06em; text-transform: uppercase; opacity: .78; }
+.ckx-stats dd { margin: 2px 0 0; font: 800 28px/1 var(--font-display); font-variant-numeric: tabular-nums; color: var(--brand-accent); }
+
+/* ---------- Busca e filtros ---------- */
+.ckx-barra { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; margin: 22px 0 6px; }
+.ckx-busca { position: relative; flex: 1 1 280px; }
+.ckx-busca svg { position: absolute; left: 15px; top: 50%; width: 19px; height: 19px; color: var(--brand-primary-700); transform: translateY(-50%); pointer-events: none; }
+.ckx-busca input { width: 100%; min-height: 50px; padding: 12px 16px 12px 46px; border: 1.5px solid var(--color-line-strong); border-radius: var(--radius-pill); background: #fff; color: var(--color-ink); font: inherit; box-shadow: var(--shadow-sm); }
+.ckx-busca input:focus { outline: 3px solid var(--brand-accent-soft); border-color: var(--brand-primary); }
+.ckx-filtros { display: flex; flex-wrap: wrap; gap: 8px; }
+.ckx-chip { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 14px; border: 1.5px solid var(--color-line-strong); border-radius: var(--radius-pill); background: #fff; color: var(--brand-primary-800); font: 700 13px var(--font-display); cursor: pointer;
+  transition: transform var(--dur-base) var(--ease-spring), background-color var(--dur-fast), border-color var(--dur-fast), color var(--dur-fast); }
+.ckx-chip em { font-style: normal; padding: 1px 8px; border-radius: var(--radius-pill); background: var(--brand-primary-100); font-size: 12px; font-variant-numeric: tabular-nums; }
+.ckx-chip:hover { transform: translateY(-2px); border-color: var(--brand-primary); }
+.ckx-chip[aria-pressed="true"] { background: var(--brand-primary-900); border-color: var(--brand-primary-900); color: #fff; box-shadow: inset 0 -3px 0 var(--brand-accent); }
+.ckx-chip[aria-pressed="true"] em { background: rgb(255 255 255 / .16); color: var(--brand-accent-glow); }
+.ckx-contagem { margin: 6px 4px 0; color: var(--color-muted); font-size: 13px; font-weight: 700; }
+
+/* ---------- Grupos e cards ---------- */
+.ckx-grupo { margin-top: 28px; }
+.ckx-grupo h2 { display: grid; gap: 4px; margin: 0 0 14px; color: var(--brand-primary-950); font: 800 1.35rem/1.2 var(--font-display); letter-spacing: -.015em; }
+.ckx-grupo h2 small { color: var(--color-muted); font: 400 14px/1.5 var(--font-body); letter-spacing: 0; }
+.ckx-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 16px; }
+.ckx-card { position: relative; display: flex; flex-direction: column; gap: 10px; padding: 20px; border: 1px solid var(--color-line); border-radius: var(--radius-lg); background: var(--color-surface); box-shadow: var(--shadow-sm);
+  transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out), border-color var(--dur-fast); }
+.ckx-card::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 4px; border-radius: var(--radius-lg) var(--radius-lg) 0 0; background: var(--brand-primary); transform: scaleX(.18); transform-origin: left; transition: transform var(--dur-slow) var(--ease-out); }
+.ckx-card[data-grupo="consultor"]::before { background: var(--brand-accent); }
+.ckx-card[data-grupo="qa"]::before { background: var(--brand-secondary-deep); }
+.ckx-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--brand-primary-300); }
+.ckx-card:hover::before { transform: scaleX(1); }
+.ckx-card-topo { display: flex; align-items: center; gap: 10px; }
+.ckx-ico { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 12px; background: var(--brand-primary-900); color: var(--brand-accent); transition: transform var(--dur-base) var(--ease-spring); }
+.ckx-card[data-grupo="estagiario"] .ckx-ico { background: var(--brand-primary-100); color: var(--brand-primary-800); }
+.ckx-card[data-grupo="qa"] .ckx-ico { background: var(--brand-accent-soft); color: var(--brand-accent-text); }
+.ckx-card:hover .ckx-ico { transform: rotate(-6deg) scale(1.08); }
+.ckx-ico svg { width: 21px; height: 21px; }
+.ckx-area { color: var(--brand-primary-700); font: 800 11px var(--font-display); letter-spacing: .08em; text-transform: uppercase; }
+.ckx-card h3 { margin: 0; color: var(--brand-primary-950); font: 750 1.08rem/1.28 var(--font-display); }
+.ckx-card p { margin: 0; color: var(--color-muted); font-size: 13.5px; line-height: 1.55; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.ckx-meta { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; font-size: 12px; font-weight: 700; }
+.ckx-meta span { padding: 3px 10px; border-radius: var(--radius-pill); background: var(--brand-primary-100); color: var(--brand-primary-800); }
+.ckx-meta .ckx-ok { background: var(--color-success-soft); color: var(--color-success); }
+.ckx-prog { position: relative; height: 22px; border-radius: var(--radius-pill); background: var(--color-line); overflow: hidden; }
+.ckx-prog i { position: absolute; inset: 0; transform-origin: left; background: linear-gradient(90deg, var(--brand-primary-700), var(--brand-primary) 60%, var(--brand-accent)); transition: transform var(--dur-stage) var(--ease-out); }
+.ckx-prog b { position: relative; display: block; padding: 0 10px; font: 800 11.5px/22px var(--font-display); color: var(--brand-primary-950); mix-blend-mode: normal; text-align: right; }
+.ckx-acoes { display: flex; gap: 8px; margin-top: 4px; }
+
+/* ---------- Botões ---------- */
+.ckx-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 42px; padding: 8px 16px; border: 1.5px solid var(--brand-primary-800); border-radius: var(--radius-pill); background: var(--brand-primary-800); color: #fff; font: 700 13.5px var(--font-display); text-decoration: none; cursor: pointer;
+  transition: transform var(--dur-base) var(--ease-spring), background-color var(--dur-fast), box-shadow var(--dur-fast); }
+.ckx-btn svg { width: 17px; height: 17px; transition: transform var(--dur-base) var(--ease-out); }
+.ckx-btn:hover { background: var(--brand-primary-950); box-shadow: inset 0 -3px 0 var(--brand-accent); transform: translateY(-2px); }
+.ckx-btn:hover svg { transform: translateX(3px); }
+.ckx-btn:active { transform: scale(.97); }
+.ckx-btn--sec { background: #fff; color: var(--brand-primary-900); border-color: var(--color-line-strong); }
+.ckx-btn--sec:hover { background: var(--brand-primary-50); border-color: var(--brand-primary); box-shadow: none; }
+.ckx-btn--icone { flex: 0 0 42px; padding: 0; }
+.ckx-card .ckx-acoes .ckx-btn:first-child { flex: 1; }
+
+/* ---------- Visualizador embutido ---------- */
+.ckx-visor-topo { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-bottom: 14px; padding: 8px; border: 1px solid var(--color-line); border-radius: var(--radius-pill); background: rgb(255 255 255 / .86); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); box-shadow: var(--shadow-sm); }
+.ckx-visor-topo strong { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--brand-primary-950); font: 750 15px var(--font-display); }
+.ckx-visor-acoes { display: inline-flex; gap: 8px; }
+.ckx-frame { display: block; width: 100%; height: calc(100dvh - 190px); min-height: 560px; border: 1px solid var(--color-line); border-radius: var(--radius-xl); background: var(--color-canvas); box-shadow: var(--shadow-lg); }
+
+/* ---------- Movimento ---------- */
+@keyframes ckx-sobe { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: no-preference) {
+  .ckx-hero { animation: ckx-sobe var(--dur-slow) var(--ease-out) both; }
+  .ckx-card { animation: ckx-sobe var(--dur-slow) var(--ease-out) both; animation-delay: calc(min(var(--i, 0), 12) * 45ms); }
+  .ckx-visor:not([hidden]) { animation: ckx-sobe var(--dur-slow) var(--ease-out) both; }
+}
+
+@media (max-width: 700px) {
+  .ckx-hero { padding: 24px 20px; }
+  .ckx-stats { flex-wrap: wrap; }
+  .ckx-stats div { flex: 1 1 96px; }
+  .ckx-visor-topo { border-radius: var(--radius-lg); }
+  .ckx-visor-acoes .ckx-btn span { display: none; }
+  .ckx-frame { height: calc(100dvh - 230px); }
+}

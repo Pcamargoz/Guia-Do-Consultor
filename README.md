@@ -84,15 +84,24 @@ docker compose -p faktory-manual --profile pdf run --rm gerar-pdf
 
 Depois, faça commit do PDF atualizado.
 
-## Checklists para download
+## Checklists
 
-A aba **Checklist** do guia lista três grupos de arquivos HTML independentes (abrem offline e guardam o progresso no navegador), em `public/checklists/`:
+A aba **Checklist** do guia é uma biblioteca com busca, filtros e progresso salvo no navegador. Cada checklist abre **dentro do guia** (visualizador embutido) ou pode ser baixado como HTML independente (abre offline). Três grupos, em `public/checklists/`:
 
-- **Teste de fluxo do consultor** (`consultores/`): roteiro do fluxo funcional completo, do pedido de venda até a gestão.
-- **Trilha do estagiário** (`estagiarios/`): onboarding (00) e 15 checklists curtos por módulo. Cada etapa traz a origem: *Verificado* (conferido no sistema), *Documentação* (roteiros de validação) ou *Não validado*.
-- **Validação dos módulos (QA)** (raiz): os planos completos de homologação. Os cenários reais encontrados na exploração entram como "achado prévio" das etapas e como linhas "Cenário real" da preparação.
+- **Fluxos do consultor** (`consultores/`): testes funcionais ponta a ponta — suprimentos, serviços de campo, comercial e o fluxo completo do pedido à gestão. Cada etapa tem "fazer → conferir o reflexo no módulo seguinte" e um campo para anotar o nº do registro criado.
+- **Trilha do estagiário** (`estagiarios/`): onboarding (00) e 15 checklists curtos por módulo.
+- **Validação dos módulos (QA)** (raiz): planos completos de homologação, com os achados e cenários reais registrados.
 
-O que ainda falta validar no sistema está em `docs/pendencias-checklists.md`. Para editar a trilha e o teste do consultor, altere `scripts/dados-checklists-estagiarios.mjs` / `scripts/dados-checklist-consultor.mjs` e rode `node scripts/gerar-checklists-estagiarios.mjs`. Para os cenários reais dos planos de QA, altere `scripts/dados-cenarios-checklists.mjs` e rode `node scripts/atualizar-cenarios-checklists.mjs`.
+Cada etapa traz a origem: *Verificado* (conferido no sistema), *Documentação* (roteiros) ou *Não validado*.
+
+```bash
+npm run checklists          # gera os HTMLs + manifest.json e valida tudo (465 verificações)
+npm run checklists:lacunas  # atualiza docs/testes/lacunas.md (etapas ainda sem "Verificado")
+```
+
+- Conteúdo: `scripts/dados-checklists-estagiarios.mjs`, `dados-checklist-consultor.mjs`, `dados-fluxos-consultor.mjs` e, para os planos de QA, `dados-cenarios-checklists.mjs` (`node scripts/atualizar-cenarios-checklists.mjs`).
+- Visual: `scripts/checklist-modelo/estilo.css` e `comportamento.js` (tokens de `brand-system.css`); a biblioteca é `public/guia-checklists.js` + `.css`, alimentada por `manifest.json`.
+- Como testar no sistema com agentes (pré-voo, briefs, regras): [docs/testes/](docs/testes/README.md). O que ainda falta validar: [docs/pendencias-checklists.md](docs/pendencias-checklists.md).
 
 ## Estrutura
 
@@ -103,7 +112,7 @@ lib/            Regras compartilhadas: sessão, senha (scrypt), banco, permissõ
 db/migrations/  SQL versionado (aplicado em ordem, uma única vez)
 db/dados/       Dados da planilha de horas e mapa checklist ↔ funcionalidades
 public/         Site: guia (index.html), apostila, login, CSS/JS, PDF
-scripts/        migrar.mjs, dev-server.mjs, gerar-pdf-apostila.mjs, gerar-horas.mjs, gerar-checklists-estagiarios.mjs, atualizar-cenarios-checklists.mjs
+scripts/        migrar.mjs, dev-server.mjs, gerar-pdf-apostila.mjs, gerar-horas.mjs, checklists (gerar/validar/lacunas/cenários)
 middleware.js   Exige login antes de servir qualquer página
 ```
 

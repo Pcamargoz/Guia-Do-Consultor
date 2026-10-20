@@ -250,14 +250,15 @@ export const CHECKLISTS = [
         passos: [
           { t: 'Saber as duas regras: o lead precisa estar numa etapa de **60% ou mais** e com o **BANT completo** (budget, autoridade, necessidade e prazo).', r: 'Sem isso, o sistema avisa o que falta e não converte.', s: 'v' },
           { t: 'Ver com o supervisor onde o BANT é preenchido: `Editar Lead` > Budget Estimado e as chaves Autoridade, Necessidade e Prazo/timeline.', s: 'v' },
-          { t: 'Saber o que a conversão faz: o lead fica "convertido" e o participante passa a ter **"É Cliente?"** ligado. O pedido é criado depois, em Vendas.', r: 'Mensagem "Lead convertido com sucesso!".', s: 'v' },
+          { t: 'Saber o que a conversão faz: o lead fica "convertido", o participante passa a ter **"É Cliente?"** ligado e uma **oportunidade é criada sozinha** no Pipeline (valor = budget). O pedido é criado depois, em Vendas.', r: 'Mensagem "Lead convertido com sucesso!". O aviso não menciona a oportunidade: procure no Pipeline.', s: 'v' },
         ],
       },
       {
         titulo: '6. Oportunidades e atividades', onde: '`CRM > Vendas > Pipeline` e `CRM > Vendas > Atividades`',
         passos: [
-          { t: 'Abrir o Pipeline e ver as oportunidades por etapa.', s: 'd' },
-          { t: 'Abrir Atividades e Agenda e ver as atividades do dia e as atrasadas.', s: 'd' },
+          { t: 'Abrir o Pipeline, escolher a aba do funil ("Funil de vendas principal") e ver as oportunidades por etapa.', r: 'Cada card mostra valor, probabilidade, "hoje na etapa" e o menu ⋮ (Editar, Marcar como Ganha, Marcar como Perdida, Pausar, Cancelar).', s: 'v' },
+          { t: 'Abrir uma oportunidade (⋮ > Editar) e ver as abas Detalhes, Itens, Atividades e Histórico.', r: 'O Histórico registra a criação na conversão e cada mudança de etapa.', s: 'v' },
+          { t: 'Abrir Atividades e Agenda e ver as atividades da semana e as atrasadas.', r: 'A lista de atividades não diz de qual lead/cliente é cada uma.', s: 'v' },
         ],
       },
     ],
@@ -273,8 +274,9 @@ export const CHECKLISTS = [
       'Os "Filtros Avançados" usam nomes técnicos (ex.: "Origem Id"). Prefira os filtros rápidos e a pesquisa.',
       'A **Temperatura** pode mudar sozinha ao salvar o lead (defeito confirmado no ambiente de teste). Confira depois de salvar.',
       'No campo Budget, digitar "100000" grava R$ 100.000,00: confira o valor antes de salvar.',
+      '**Marcar como Ganha** não pede confirmação (há "Reverter ganho"). Gerar proposta e e-mail/link para o cliente só em treino com e-mail de teste.',
     ],
-    naoValidado: ['Pipeline, Atividades, Agenda, Clientes / Visão 360°, Projetos de Obra e Dashboard Executivo ainda não foram abertos.'],
+    naoValidado: ['Clientes / Visão 360° (o cliente de teste não apareceu na lista), Projetos de Obra e Dashboard Executivo ainda não foram abertos.'],
   },
 
   /* ------------------------------------------------------------------ 04 */
@@ -351,9 +353,9 @@ export const CHECKLISTS = [
   /* ------------------------------------------------------------------ 05 */
   {
     id: 'compras', arquivo: '05-compras.html', etiqueta: 'Suprimentos · Compras',
-    titulo: 'Compras: da necessidade ao pedido', resumo: 'Solicitação, cotação, pedido de compra e follow-up.',
+    titulo: 'Compras: da necessidade ao pedido', resumo: 'Solicitação, cotação, pedido de compra e linha do tempo.',
     subtitulo: 'O caminho do material: alguém precisa → cotação com fornecedores → pedido de compra → entrega no Recebimento.',
-    objetivo: 'Entender a sequência de documentos de compra (SC → COT → PC), onde consultar cada um e o que acontece depois que o pedido de compra é entregue.',
+    objetivo: 'Entender a sequência de documentos de compra (SC → COT → PC), onde consultar cada um, ler a linha do tempo do pedido e saber o que acontece depois da entrega.',
     prerequisitos: [
       { t: 'Checklists 01 e 02 concluídos (fornecedor é um participante com "É Fornecedor?" ligado).', s: 'v' },
     ],
@@ -362,37 +364,38 @@ export const CHECKLISTS = [
         titulo: '1. Conhecer o menu na ordem do processo', onde: 'módulo `Compras`',
         passos: [
           { t: 'Ver que os itens do menu seguem o processo: Solicitações → Sugestão → Cotações → Pedidos → Aprovações → Contratos de Entrega → Follow-up de Entregas.', s: 'v' },
-          { t: 'Abrir o `Dashboard Compras` e ver o bloco de aprovações pendentes ("Ver todas").', s: 'v' },
+          { t: 'Abrir o `Dashboard Compras` e ler os cartões (solicitações em aberto, cotações ativas, pedidos em aberto, total do mês) e o bloco de pedidos recentes.', s: 'v' },
         ],
       },
       {
         titulo: '2. Consultar os documentos de compra',
         passos: [
-          { t: 'Em `Solicitações de Compra`, localizar uma solicitação (SC-): o pedido interno de "precisamos de X".', s: 'd' },
-          { t: 'Em `Cotações de Compra`, abrir uma cotação (COT-) e ver os fornecedores e o vencedor por item.', s: 'd' },
-          { t: 'Em `Pedidos de Compra`, abrir um pedido (PC-) e ver fornecedor, itens, prazos e status.', s: 'd' },
-          { t: 'Em `Follow-up de Entregas`, ver o que está atrasado.', s: 'd' },
+          { t: 'Em `Solicitações de Compra`, localizar uma SC e abrir o menu `⋯`.', r: 'Opções Gerar Cotação, Gerar Pedido de Compra e Excluir. A solicitação não tem etapa de aprovação.', s: 'v' },
+          { t: 'Em `Cotações de Compra`, abrir uma cotação e percorrer o assistente: Dados Gerais, Itens a Cotar, Cotação (fornecedores) e Comparação.', r: 'A Natureza da Operação escolhida define o CFOP do pedido.', s: 'v' },
+          { t: 'Em `Pedidos de Compra`, abrir um pedido e ler fornecedor, itens, CFOP, entrega prevista e parcelas.', r: 'O status da lista ("Em Aberto") pode diferir do da tela de edição ("Em Edição").', s: 'v' },
+          { t: 'Abrir `⋯ > Linha do tempo` do pedido.', r: 'Mostra SC, cotação, pedido, nota de recebimento e título, cada um com seu status.', s: 'v' },
         ],
       },
       {
-        titulo: '3. Entender a sugestão e a aprovação',
+        titulo: '3. Sugestão e aprovação', onde: '`Compras > Sugestão de Compra` e `Compras > Aprovações`',
         passos: [
-          { t: 'Em `Sugestão de Compra`, ver a lista do que falta em estoque (sem gerar solicitações).', s: 'd' },
-          { t: 'Saber que, quando a aprovação por alçada está ligada, o pedido só segue depois de aprovado.', s: 'd' },
+          { t: 'Em `Sugestão de Compra`, ler a fórmula "falta líquida = mínimo − disponível" **sem gerar solicitações**.', r: 'Só aparecem itens com estoque mínimo cadastrado.', s: 'v' },
+          { t: 'Em `Compras > Aprovações`, ver os pedidos aguardando alçada.', r: 'A aprovação por alçada vem desligada: sem ela o pedido já nasce pronto para receber.', s: 'v' },
         ],
       },
     ],
     resultado: [
-      { t: 'Sei explicar a diferença entre solicitação, cotação e pedido de compra.', s: 'd' },
-      { t: 'Sei que o pedido de compra entregue vira uma nota de recebimento (NR) no módulo Recebimento.', s: 'v' },
+      { t: 'Sei explicar a diferença entre solicitação, cotação e pedido de compra.', s: 'v' },
+      { t: 'Sei ler a linha do tempo de um pedido e dizer em que etapa ele está.', s: 'v' },
+      { t: 'Sei que o pedido entregue vira uma nota de recebimento (NR) no módulo Recebimento.', s: 'v' },
     ],
     atencao: [
-      'Não envie cotação (RFQ) a fornecedores, não marque vencedor e não use "Gerar Pedido" em treino.',
-      'A Sugestão de Compra pode gerar várias solicitações de uma vez.',
-      'Cotação concluída não pode ser alterada.',
-      'Alertas de Compras (em Configurações) enviam e-mail: não altere.',
+      'Gerar Cotação, Gerar Pedido de Compra, Enviar cotação por e-mail e marcar vencedor **criam documentos e enviam mensagens**: só com orientação.',
+      'Gerar o pedido conclui a SC e a cotação automaticamente. Cotação ou SC concluída não volta atrás.',
+      'Depois que o pedido é recebido, Cancelar e Excluir ficam desabilitados.',
+      'Alertas de Compras e Parâmetros (em Configurações) afetam toda a empresa: não altere.',
     ],
-    naoValidado: ['Nenhuma tela de Compras foi aberta por dentro ainda: os passos da seção 2 e 3 vêm dos roteiros de validação.'],
+    naoValidado: ['Aprovação por alçada ligada, Contratos de Entrega e Follow-up de Entregas ainda não foram abertos.'],
   },
 
   /* ------------------------------------------------------------------ 06 */
@@ -400,43 +403,55 @@ export const CHECKLISTS = [
     id: 'recebimento', arquivo: '06-recebimento.html', etiqueta: 'Suprimentos · Recebimento',
     titulo: 'Recebimento de mercadorias', resumo: 'Notas de recebimento, conferência e reflexos.',
     subtitulo: 'Quando o fornecedor entrega: a nota entra, o material é conferido e o sistema atualiza estoque e contas a pagar.',
-    objetivo: 'Localizar notas de recebimento, entender a conferência física e saber o que a finalização da nota provoca no estoque e no financeiro.',
+    objetivo: 'Localizar notas de recebimento, entender a conferência física e saber o que a finalização da nota provoca no estoque, no pedido de compra e no financeiro.',
     prerequisitos: [
-      { t: 'Checklist 05 concluído.', s: 'd' },
+      { t: 'Checklist 05 concluído.', s: 'v' },
     ],
     fluxos: [
       {
         titulo: '1. Ler o painel do recebimento', onde: '`Recebimento > Dashboard Recebimento`',
         passos: [
-          { t: 'Ver a fila de notas a conferir e os pedidos de compra esperados.', r: 'Clicar numa NR abre a tela de conferência dela; o pedido de compra abre em Compras.', s: 'v' },
+          { t: 'Ver a fila de notas a conferir, os pedidos esperados e os cartões "Recebido no período" e "Notas em aberto".', s: 'v' },
           { t: 'Ver os cartões "Títulos a gerar" e "Parcelas a vencer".', r: '"Parcelas a vencer" leva a Financeiro > Contas a Pagar.', s: 'v' },
         ],
       },
       {
         titulo: '2. Consultar notas de recebimento', onde: '`Recebimento > Notas de Recebimento`',
         passos: [
-          { t: 'Filtrar por status e abrir uma nota (NR-) para ver fornecedor, itens e parcelas.', s: 'd' },
-          { t: 'Saber as origens da nota: por pedido de compra, por XML ou manual.', s: 'd' },
+          { t: 'Ler os cartões Total, Em Aberto, Finalizadas e Canceladas e trocar o filtro **Status** (abre em "Em Aberto").', r: 'Uma nota finalizada só aparece depois de limpar o filtro. Os cartões seguem o filtro.', s: 'v' },
+          { t: 'Reconhecer que a mesma nota tem **dois números**: "NF-<número do fornecedor>" na lista e "NR-<número interno>" na conferência, no pedido e no título.', s: 'v' },
+          { t: 'Abrir o menu `⋮` de uma nota em aberto.', r: 'Opções Finalizar, Imprimir Etiquetas (só depois da conferência), Cancelar e Excluir.', s: 'v' },
+          { t: 'Saber as origens de uma nota: gerada pelo pedido de compra, por XML ou avulsa.', s: 'v' },
         ],
       },
       {
         titulo: '3. Entender a conferência física', onde: 'menu `Recebimento > Aprovações` (é a fila de conferências)',
         passos: [
-          { t: 'Abrir a fila e ver as notas aguardando conferência, **sem iniciar**.', s: 'v' },
-          { t: 'Saber que a conferência registra quantidades, divergências e avarias antes de finalizar.', s: 'd' },
+          { t: 'Abrir a fila e ler os cartões (Aguardando conferência, Em conferência, Conferidas hoje) e as abas **sem iniciar**.', s: 'v' },
+          { t: 'Saber que o botão **Conferir** já inicia a conferência e que o responsável fica registrado na nota.', s: 'v' },
+          { t: 'Saber que a conferência registra a quantidade de cada item e só termina com **Concluir Conferência**.', s: 'v' },
+        ],
+      },
+      {
+        titulo: '4. Saber o que a finalização provoca',
+        passos: [
+          { t: 'Ler o aviso da finalização: "movimenta estoque e gera títulos a pagar… não pode ser desfeita".', s: 'v' },
+          { t: 'Depois de finalizada por outra pessoa, conferir o movimento "Recebimento (NR)" em `Estoque > Movimentos` e o título em `Financeiro > Contas a Pagar`.', s: 'v' },
         ],
       },
     ],
     resultado: [
       { t: 'Sei explicar o caminho: Pedido de Compra → Nota de Recebimento → Conferência → Finalizar → Estoque + Contas a Pagar.', s: 'v' },
+      { t: 'Sei achar uma nota finalizada e o número dela nos dois formatos.', s: 'v' },
     ],
     atencao: [
       'A conferência física aparece no menu com o nome **"Aprovações"**. Quem procura "Conferência" não acha.',
-      '**Finalizar** a nota movimenta estoque e gera contas a pagar. Não finalize em treino.',
+      '**Finalizar** a nota movimenta estoque e gera contas a pagar e não pode ser desfeito. Não finalize em treino.',
       'Iniciar uma conferência trava a nota com o seu usuário.',
+      'A conferência só existe se o parâmetro "Usar Conferência Física" estiver ligado na empresa.',
       'Em Notas pendentes, **"Responder à SEFAZ"/manifestação** é fiscal e irreversível: nunca clique.',
     ],
-    naoValidado: ['Lista e detalhe das Notas de Recebimento, conferência por dentro, Notas pendentes/DFe e Controle de Terceiros ainda não foram abertos.'],
+    naoValidado: ['Notas pendentes/DFe, Controle de Terceiros e importação de XML ainda não foram abertos.'],
   },
 
   /* ------------------------------------------------------------------ 07 */
@@ -616,8 +631,8 @@ export const CHECKLISTS = [
       {
         titulo: '5. Instalação, vistoria e assistência',
         passos: [
-          { t: 'Saber que a medição aprovada leva à instalação, a instalação concluída gera vistoria e a vistoria com ressalva gera assistência técnica.', s: 'd' },
-          { t: 'Abrir as listas de Instalações, Vistorias e Assistência Técnica e ver os status.', s: 'n' },
+          { t: 'Saber a sequência: a medição aprovada **não** cria a instalação sozinha (botão "Gerar Instalação"); a instalação concluída gera a vistoria só se a geração automática estiver ligada; a assistência vem do botão "Gerar Assistência Técnica" da vistoria.', s: 'v' },
+          { t: 'Abrir as listas de Instalações, Vistorias e Assistência Técnica e ler os status.', r: 'Vistoria: aprovada, aprovada com ressalvas ou reprovada; o aceite do cliente só vale depois de concluir. Assistência: o aceite é registrado antes de resolver.', s: 'v' },
         ],
       },
     ],
@@ -632,7 +647,7 @@ export const CHECKLISTS = [
       'Há dois itens "Aprovações" no menu de Serviços: o do topo são as comissões do instalador.',
       'As Configurações do módulo (chaves Ativo, "Restaurar cadastros padrão") são de administração.',
     ],
-    naoValidado: ['Detalhe de uma medição, Instalações, Vistorias, Assistência Técnica, Cockpit de Campo, Diário de Obra e o aplicativo de campo ainda não foram abertos.'],
+    naoValidado: ['Aplicativo de campo (/campo), Diário de Obra e pagamento de instalação de equipe terceirizada ainda não foram abertos. Horários do Cockpit aparecem 3 h adiantados.'],
   },
 
   /* ------------------------------------------------------------------ 10 */
