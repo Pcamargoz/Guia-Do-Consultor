@@ -110,8 +110,9 @@ main{min-width:0}
 
 .fluxo + .fluxo{margin-top:22px;padding-top:20px;border-top:1px dashed var(--line2)}
 .fluxo h3{display:flex;align-items:center;gap:8px;font-size:15.5px;color:var(--p900)}
-.onde{display:inline-flex;align-items:center;gap:7px;margin:6px 0 4px;font-size:12.5px;color:var(--muted)}
-.onde svg{width:14px;height:14px;color:var(--p)}
+.onde{display:flex;align-items:flex-start;gap:7px;max-width:100%;margin:6px 0 4px;font-size:12.5px;color:var(--muted)}
+.onde span{min-width:0}
+.onde svg{width:14px;height:14px;margin-top:2px;color:var(--p)}
 .intro{font-size:13.5px;color:var(--muted);margin:2px 0 6px}
 
 /* ---------- Etapas (linha do tempo) ---------- */
@@ -129,7 +130,7 @@ main{min-width:0}
 .item input:checked ~ .txt .acao{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--line2)}
 .res{display:block;margin-top:6px;padding:6px 10px 6px 12px;border-radius:var(--r-sm);border-left:3px solid var(--lima);background:var(--lima-soft);font-size:13px;color:var(--ink)}
 .res b{font-family:var(--display);font-weight:800;color:var(--lima-txt);margin-right:4px}
-.ui{font-weight:650;color:var(--p900);background:var(--p100);border:1px solid var(--p200);border-radius:6px;padding:0 6px;white-space:nowrap}
+.ui{font-weight:650;color:var(--p900);background:var(--p100);border:1px solid var(--p200);border-radius:6px;padding:0 6px;overflow-wrap:anywhere;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 .reg{display:block;width:calc(100% - 44px);margin:0 0 6px 44px;height:34px;padding:0 12px;border-radius:var(--pill);border:1.5px dashed var(--line2);background:var(--alt);font-size:13px;transition:border-color .15s,box-shadow .15s}
 .reg:focus{outline:none;border-style:solid;border-color:var(--p);box-shadow:0 0 0 4px rgb(52 120 167/.18)}
 .reg:not(:placeholder-shown){border-style:solid;border-color:var(--lima-line);background:var(--lima-soft)}
