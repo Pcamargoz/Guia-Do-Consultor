@@ -1,6 +1,6 @@
 # Fila de testes: etapas ainda sem "Verificado"
 
-Gerado por `node scripts/lacunas-checklists.mjs` — 162 etapas em 20 checklists. `doc` = vem dos roteiros, `n/v` = não validado.
+Gerado por `node scripts/lacunas-checklists.mjs` — 145 etapas em 20 checklists. `doc` = vem dos roteiros, `n/v` = não validado.
 Ao validar uma etapa, mude `s` para `'v'` no arquivo de dados do checklist e rode `npm run checklists`. Regras e briefs em [README.md](README.md).
 
 ## Primeiros passos e navegação  `01-primeiros-passos-navegacao.html` — 1 etapa(s)
@@ -121,49 +121,30 @@ Ao validar uma etapa, mude `s` para `'v'` no arquivo de dados do checklist e rod
 **5. Desconto e aprovação** · aba Itens da oportunidade
 - [ ] (n/v) Aprovar em CRM > Vendas > Aprovações ou Vendas > Aprovações com outro usuário. → _Com o mesmo usuário nada aparece para aprovar (e nada avisa o vendedor)._
 
-## Fluxo de estoque: movimento, transferência, reserva, inventário e empréstimo  `fluxo-04-estoque.html` — 32 etapa(s)
+## Fluxo de estoque: movimento, transferência, reserva, inventário e empréstimo  `fluxo-04-estoque.html` — 15 etapa(s)
 
 **Pré-requisitos**
-- [ ] (doc) Produto de teste de uso controlado em estoque (ex.: um insumo) e dois locais ativos em Estoque > Locais: o almoxarifado central e um segundo local (obra ou almoxarifado de teste).
-- [ ] (doc) Parâmetros de estoque anotados antes de começar (Estoque > Configurações > Parâmetros): "bloquear saída sem saldo", "bloquear saída que invade reserva" e "empenhar material de OP". Cada um muda o resultado de passos abaixo.
 - [ ] (doc) Dois usuários de teste para as regras de segregação: quem cria × quem confirma a transferência, e quem conta × quem audita/aprova o inventário.
 
 **1. Movimento manual e estorno** · Estoque > Movimentos > + Novo Movimento
 - [ ] (doc) Lançar um Ajuste positivo (sobra) e um Ajuste negativo (quebra/perda). → _Cada ajuste aparece no extrato com o sentido certo e o saldo acompanha._
 - [ ] (doc) Tentar uma saída maior que o saldo, com a trava "bloquear saída sem saldo" ligada e depois desligada. → _Ligada: recusa. Desligada: passa e o saldo pode ficar negativo._
-- [ ] (doc) Tentar um movimento com data em mês encerrado e em local congelado por inventário. → _Os dois são recusados com mensagem que explica a trava._
+- [ ] (doc) Tentar um movimento com data em mês encerrado e em local congelado por inventário. → _Os dois são recusados com mensagem que explica a trava. Visto no teste: o local congelado por inventário recusou o movimento; o mês encerrado não foi testado._
 
 **2. Transferência entre locais** · Estoque > Transferências
-- [ ] (doc) Criar uma transferência de 5 un do almoxarifado central para o segundo local (rascunho). → _Nasce pendente com número TRF-. O saldo da origem não desce ainda, mas o disponível desce (ex.: saldo 20, reservado 5, disponível 15)._
-- [ ] (doc) Na tela de Saldo, clicar no número da coluna Reservada da origem. → _O detalhe aponta exatamente essa transferência._
-- [ ] (doc) Tentar origem igual ao destino, quantidade zero/negativa e transferência sem item. → _As três são recusadas._
-- [ ] (doc) Confirmar a transferência (com o usuário que tem permissão de confirmar). → _A origem desce 5, o destino sobe 5 e a reserva é consumida. Nada fica "em trânsito". O custo médio acompanha o material._
-- [ ] (doc) Abrir o extrato dos dois locais. → _Saída na origem e entrada no destino, com o mesmo número TRF-._
-- [ ] (doc) Tentar confirmar de novo e excluir a transferência já confirmada. → _As duas ações são recusadas ("só rascunho pode ser confirmado")._
-- [ ] (doc) Criar outra transferência pendente e excluí-la. → _A reserva é liberada, o disponível volta ao que era e nenhum movimento foi gerado._
+- [ ] (doc) Abrir o extrato dos dois locais. → _Saída na origem e entrada no destino, com o mesmo número TRF-. No teste havia um movimento único (000006) com origem e destino, e não duas linhas com o mesmo número._
+- [ ] (doc) Tentar confirmar de novo e excluir a transferência já confirmada. → _As duas ações são recusadas ("só rascunho pode ser confirmado"). Depois de confirmada, os botões Confirmar e Excluir somem: não há como tentar._
 
 **3. Reserva e disponibilidade** · coluna Reservada do Saldo e aba Reservas do produto
-- [ ] (doc) Com o produto sem reserva, comparar Saldo e Disponível. Depois criar uma reserva de 5 un. → _Saldo continua igual; reservado = 5; disponível = saldo − 5._
+- [ ] (doc) Com o produto sem reserva, comparar Saldo e Disponível. Depois criar uma reserva de 5 un. → _Saldo continua igual; reservado = 5; disponível = saldo − 5. No teste a reserva nasceu da transferência pendente; não há botão para reservar à mão._
 - [ ] (doc) Conferir que a reserva é por variação física (cor e medidas) e por local. → _O disponível de outra cor ou de outro local não muda._
-- [ ] (doc) Tentar reservar mais que o disponível. → _É recusado._
 - [ ] (doc) Liberar a reserva; criar outra e consumi-la parcialmente (ex.: 3 de 5) e depois o restante. → _Liberar devolve o disponível; consumir baixa o estoque e reduz o pendente; consumir mais que o pendente é recusado._
-- [ ] (doc) Com a trava "bloquear saída que invade reserva" ligada, tentar uma saída que consumiria material reservado; repetir com ela desligada. → _Ligada: recusa nomeando o documento que segura o material. Desligada: passa e o saldo pode ficar abaixo do reservado._
 
 **4. Inventário (contagem física)** · Estoque > Inventário e Estoque > Aprovações > Inventários
-- [ ] (doc) Abrir um inventário (empresa, local e tipo) e iniciar. → _Número sequencial; o sistema fotografa o saldo (um item por variação) e congela o local._
-- [ ] (doc) Com o inventário em andamento, tentar um movimento ou transferência naquele local e abrir um segundo inventário no mesmo local. → _Os movimentos são bloqueados e não existem dois inventários ativos no mesmo local._
-- [ ] (doc) Contar na tela do conferente (contagem cega): um item com o valor igual ao do sistema e outro com valor diferente. → _A tela não mostra o saldo do sistema. Igual: aprovado direto. Diferente: vai para a 2ª contagem (e, persistindo, para a 3ª e a auditoria)._
-- [ ] (doc) Com outra pessoa, auditar os itens que divergiram nas três contagens (quantidade final e justificativa). → _O mesmo usuário da contagem é impedido ou avisado; a justificativa tem mínimo de caracteres._
-- [ ] (doc) Revisar o resumo e informar o custo das entradas pendentes (sobras e itens avulsos); aprovar. → _Cada diferença vira um ajuste de estoque com origem "inventário"; o saldo bate com a contagem e o local é descongelado._
-- [ ] (doc) Cancelar um segundo inventário (com motivo) antes de aprovar. → _Nenhum ajuste é gerado e o local é liberado._
-
-**5. Empréstimo entre locais** · Estoque > Empréstimos ou tipo "Empréstimo" no Novo Movimento
-- [ ] (doc) Registrar um empréstimo com data prevista de devolução (ex.: 20 un). → _Sai do local de origem; aparece como aberto, sem devolução._
-- [ ] (doc) Devolver parte (ex.: 10 de 20) e depois o restante; tentar devolver mais do que foi emprestado. → _Parcial: progresso 50% e saldo de retorno +10. Total: "devolvido" 100%. Excesso é recusado._
-- [ ] (doc) Comparar o valor total do material antes do empréstimo e depois da devolução completa. → _O valor volta igual: a devolução usa o custo médio correto._
+- [ ] (doc) Com outra pessoa, auditar os itens que divergiram nas três contagens (quantidade final e justificativa). → _O mesmo usuário da contagem é impedido ou avisado; a justificativa tem mínimo de caracteres. Precisa de um segundo usuário; no teste só havia um._
+- [ ] (doc) Revisar o resumo e informar o custo das entradas pendentes (sobras e itens avulsos); aprovar. → _Cada diferença vira um ajuste de estoque com origem "inventário"; o saldo bate com a contagem e o local é descongelado. No inventário Simples o botão Aprovar ficou desabilitado: a regra de separação vale até para Super Usuário._
 
 **6. Reposição e balanço final** · Estoque > Reposição e Compras > Sugestão de Compra
-- [ ] (doc) Fazer o balanço do produto: saldo inicial + entradas − saídas ± ajustes ± transferências − estornos. → _O resultado é igual ao saldo final do Estoque, em quantidade e em valor. Qualquer diferença é defeito._
 - [ ] (doc) Filtrar saldos com reserva maior que zero e abrir o detalhe de cada um. → _Toda quantidade reservada tem um documento pendente correspondente (nenhuma reserva órfã)._
 
 **Resultado esperado**
