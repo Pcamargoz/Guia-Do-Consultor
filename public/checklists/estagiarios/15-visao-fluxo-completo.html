@@ -15,7 +15,7 @@
   --lima:#D5DD26;--lima-glow:#E6EC6A;--lima-txt:#6B7300;--lima-ink:#1E2A05;--lima-soft:#F6F8D4;--lima-line:#E4EA8A;
   --canvas:#F2F6FA;--surface:#fff;--alt:#F7FAFC;--ink:#13293D;--muted:#4B6073;--line:#D8E3EC;--line2:#B3C6D6;
   --ok:#2E7D32;--ok-bg:#EAF6EB;--info:#255C83;--info-bg:#E6F1F8;--warn:#8A4B00;--warn-bg:#FFF4E5;--warn-line:#E07B00;
-  --glass:rgb(255 255 255/.82);
+  --bad:#B42318;--bad-bg:#FDECEA;--glass:rgb(255 255 255/.82);
   --display:'Plus Jakarta Sans','Segoe UI',system-ui,sans-serif;--body:'Inter','Segoe UI',system-ui,-apple-system,sans-serif;
   --r-sm:8px;--r-md:12px;--r-lg:16px;--r-xl:24px;--pill:999px;
   --sh-sm:0 2px 6px rgb(12 36 56/.06),0 8px 20px rgb(12 36 56/.06);--sh-md:0 10px 30px rgb(12 36 56/.12);--sh-lg:0 24px 60px rgb(12 36 56/.2);
@@ -24,7 +24,7 @@
 :root[data-theme="dark"]{
   --canvas:#0A1826;--surface:#102335;--alt:#142B40;--ink:#E6EEF6;--muted:#9DB3C6;--line:#223C54;--line2:#34536F;
   --p:#6FA8CF;--p700:#9CC6E4;--p900:#D3E5F1;--ok:#6FD27A;--ok-bg:#12331A;--info:#9CC6E4;--info-bg:#143049;--warn:#F0B35A;--warn-bg:#352408;--warn-line:#E07B00;
-  --lima-soft:#232B0A;--lima-line:#4B5A12;--lima-txt:#E6EC6A;--glass:rgb(16 35 53/.78);
+  --bad:#F4837A;--bad-bg:#3A1512;--lima-soft:#232B0A;--lima-line:#4B5A12;--lima-txt:#E6EC6A;--glass:rgb(16 35 53/.78);
   --sh-sm:0 2px 6px rgb(0 0 0/.35);--sh-md:0 10px 30px rgb(0 0 0/.45);
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -182,6 +182,25 @@ html.embed .shell{margin-top:12px}
   textarea{min-height:120px}
 }
 .indice a span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+/* ---------- Validação manual: problema por etapa, relatório e aviso ---------- */
+.flag{display:inline-flex;align-items:center;gap:6px;margin:2px 0 4px 44px;padding:2px 10px;border-radius:var(--pill);font:600 12px var(--display);color:var(--muted);border:1px dashed transparent;opacity:0;transition:opacity .15s,color .15s,border-color .15s,transform .2s var(--ease-spring)}
+.flag svg{width:13px;height:13px}
+.item:hover .flag,.item:focus-within .flag,.flag[aria-pressed="true"]{opacity:1}
+@media (hover:none){.flag{opacity:1}}
+.flag:hover{color:var(--bad);border-color:var(--bad);transform:translateY(-1px)}
+.flag[aria-pressed="true"]{color:var(--bad);border-style:solid;background:var(--bad-bg)}
+.obs{display:block;width:calc(100% - 44px);min-height:64px;margin:2px 0 8px 44px;border-color:var(--bad);background:var(--bad-bg)}
+.item.com-problema label{border-color:var(--bad);background:var(--bad-bg)}
+.item.com-problema::after{background:var(--bad)!important}
+.chip.tem{background:rgb(244 131 122/.28);border-color:rgb(244 131 122/.7)}
+.chip.tem svg{color:#FFB4AC}
+.validador{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:12px;font-size:13px;color:var(--muted)}
+.validador input{flex:1 1 220px;height:38px;padding:0 14px;border-radius:var(--pill);border:1.5px solid var(--line);background:var(--alt)}
+.validador input:focus{outline:none;border-color:var(--p);box-shadow:0 0 0 4px rgb(52 120 167/.18)}
+.aviso{position:fixed;left:50%;bottom:24px;z-index:50;transform:translate(-50%,16px);opacity:0;pointer-events:none;padding:10px 18px;border-radius:var(--pill);background:var(--p950);color:var(--lima);font:700 13px var(--display);box-shadow:var(--sh-lg);transition:opacity .25s,transform .35s var(--ease-spring)}
+.aviso.on{opacity:1;transform:translate(-50%,0)}
+@media print{.flag{display:none}.obs{border-style:solid}}
 </style>
 </head>
 <body>
@@ -190,11 +209,13 @@ html.embed .shell{margin-top:12px}
   <img src="data:image/png;base64,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" alt="Faktory Flow" width="120" height="36">
   <div class="marca"><strong>Trilha do Estagiário</strong><span>Integração · Visão geral</span></div>
   <div class="espaco"></div>
+  <button class="btn" id="btnRelatorio" type="button" title="Copiar o relatório de validação (Markdown)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h8"/></svg><span>Relatório</span></button>
   <button class="btn" id="btnImprimir" type="button" title="Imprimir ou salvar em PDF"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg><span>Imprimir</span></button>
   <button class="btn" id="btnLimpar" type="button" title="Desmarcar tudo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg><span>Recomeçar</span></button>
   <button class="btn" id="btnTema" type="button" aria-label="Alternar tema claro/escuro" title="Alternar tema"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg></button>
 </header>
 <div class="barra" role="progressbar" aria-label="Progresso do checklist"><i id="barraFill"></i></div>
+<div class="aviso" id="aviso" role="status" aria-live="polite"></div>
 <div class="shell">
 <nav class="indice" aria-label="Neste checklist"><h2>Neste checklist</h2><a href="#s-objetivo"><span>Objetivo</span><em></em></a><a href="#s-pre"><span>Pré-requisitos</span><em>0/0</em></a><a href="#fx-1"><span>Do contato ao pedido</span><em>0/0</em></a><a href="#fx-2"><span>Do pedido à operação</span><em>0/0</em></a><a href="#fx-3"><span>Da nota ao resultado</span><em>0/0</em></a><a href="#s-resultado"><span>Resultado esperado</span><em>0/0</em></a><a href="#s-atencao"><span>Pontos de atenção</span><em></em></a><a href="#s-notas"><span>Anotações</span><em></em></a></nav>
 <main>
@@ -203,7 +224,7 @@ html.embed .shell{margin-top:12px}
   <span class="etiqueta">Integração · Visão geral</span>
   <h1>Visão do fluxo completo</h1>
   <p>Um mapa para seguir um pedido de verdade pelo sistema e ver onde cada etapa aparece.</p>
-  <div class="resumo"><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11"/><path d="m3 6 1 1 2-2M3 12l1 1 2-2M3 18l1 1 2-2"/></svg><b id="contagem">0 de 13</b> etapas</span><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg><b>10</b> de 13 conferidas no sistema</span></div>
+  <div class="resumo"><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11"/><path d="m3 6 1 1 2-2M3 12l1 1 2-2M3 18l1 1 2-2"/></svg><b id="contagem">0 de 13</b> etapas</span><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg><b>10</b> de 13 conferidas no sistema</span><span class="chip" id="chipProblemas"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 22V4"/><path d="M4 4h13l-2 4 2 4H4"/></svg><b id="problemas">0</b> problemas</span></div>
 </div><div class="anel" role="img" aria-label="Progresso do checklist">
   <svg viewBox="0 0 120 120"><circle class="trilho" cx="60" cy="60" r="52" fill="none" stroke-width="10"/><circle id="anelValor" class="valor" cx="60" cy="60" r="52" fill="none" stroke-width="10"/></svg>
   <div class="centro"><b id="anelPct">0%</b><small>concluído</small></div>
@@ -211,35 +232,35 @@ html.embed .shell{margin-top:12px}
 
 <section class="secao" id="s-objetivo"><h2><span class="n">1</span>Objetivo</h2><p>Seguir um pedido existente pelos módulos e reconhecer, em cada tela, o sinal de que ele avançou.</p></section>
 
-<section class="secao" id="s-pre" data-grupo><h2><span class="n">2</span>Pré-requisitos <span class="cont"></span></h2><ul class="itens"><li class="item"><label><input type="checkbox" data-id="pre-1"><span class="txt"><span class="acao">Checklists 01 a 04 concluídos.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="pre-2"><span class="txt"><span class="acao">Um pedido faturado ou entregue indicado pelo supervisor para servir de exemplo.</span></span><span class="selo st-d" title="Baseado na documentação">Documentação</span></label></li></ul></section>
+<section class="secao" id="s-pre" data-grupo><h2><span class="n">2</span>Pré-requisitos <span class="cont"></span></h2><ul class="itens"><li class="item"><label><input type="checkbox" data-id="pre-1"><span class="txt"><span class="acao">Checklists 01 a 04 concluídos.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label><button type="button" class="flag" data-flag="pre-1" aria-pressed="false" title="Registrar um problema nesta etapa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 22V4"/><path d="M4 4h13l-2 4 2 4H4"/></svg>Problema</button></li><li class="item"><label><input type="checkbox" data-id="pre-2"><span class="txt"><span class="acao">Um pedido faturado ou entregue indicado pelo supervisor para servir de exemplo.</span></span><span class="selo st-d" title="Baseado na documentação">Documentação</span></label><button type="button" class="flag" data-flag="pre-2" aria-pressed="false" title="Registrar um problema nesta etapa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 22V4"/><path d="M4 4h13l-2 4 2 4H4"/></svg>Problema</button></li></ul></section>
 
 <section class="secao" id="s-passos"><h2><span class="n">3</span>Passo a passo</h2>
     <div class="fluxo" id="fx-1" data-grupo>
       <h3>1. Do contato ao pedido <span class="cont"></span></h3>
       
       
-      <ul class="itens"><li class="item"><label><input type="checkbox" data-id="f1-1"><span class="txt"><span class="acao">CRM: o lead é cadastrado, avança no Kanban e é convertido (vira participante &quot;convertido&quot;).</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="f1-2"><span class="txt"><span class="acao">Vendas: o pedido de venda é criado para o cliente; a coluna PROJETO mostra a obra.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li></ul>
+      <ul class="itens"><li class="item"><label><input type="checkbox" data-id="f1-1"><span class="txt"><span class="acao">CRM: o lead é cadastrado, avança no Kanban e é convertido (vira participante &quot;convertido&quot;).</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label><button type="button" class="flag" data-flag="f1-1" aria-pressed="false" title="Registrar um problema nesta etapa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 22V4"/><path d="M4 4h13l-2 4 2 4H4"/></svg>Problema</button></li><li class="item"><label><input type="checkbox" data-id="f1-2"><span class="txt"><span class="acao">Vendas: o pedido de venda é criado para o cliente; a coluna PROJETO mostra a obra.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label><button type="button" class="flag" data-flag="f1-2" aria-pressed="false" title="Registrar um problema nesta etapa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 22V4"/><path d="M4 4h13l-2 4 2 4H4"/></svg>Problema</button></li></ul>
     </div>
     <div class="fluxo" id="fx-2" data-grupo>
       <h3>2. Do pedido à operação <span class="cont"></span></h3>
       
       
-      <ul class="itens"><li class="item"><label><input type="checkbox" data-id="f2-1"><span class="txt"><span class="acao">Serviços: a medição nasce do pedido de venda e mostra a obra.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="f2-2"><span class="txt"><span class="acao">Produção: a OP consome material (movimento &quot;Baixa de componente em OP&quot;) e entrega o produto acabado (&quot;Entrada de produto acabado (OP)&quot;).</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="f2-3"><span class="txt"><span class="acao">Compras e Recebimento: o pedido de compra entregue vira nota de recebimento, entra no estoque e gera contas a pagar.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="f2-4"><span class="txt"><span class="acao">Produção: a OP é criada à mão em Produção &gt; Nova OP, escolhendo o pedido de venda e o item.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="f2-5"><span class="txt"><span class="acao">Expedição: depois de faturado, o pedido é liberado (&quot;Lib. Expedição&quot;), entra numa carga e é entregue.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li></ul>
+      <ul class="itens"><li class="item"><label><input type="checkbox" data-id="f2-1"><span class="txt"><span class="acao">Serviços: a medição nasce do pedido de venda e mostra a obra.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label><button type="button" class="flag" data-flag="f2-1" aria-pressed="false" title="Registrar um problema nesta etapa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 22V4"/><path d="M4 4h13l-2 4 2 4H4"/></svg>Problema</button></li><li class="item"><label><input type="checkbox" data-id="f2-2"><span class="txt"><span class="acao">Produção: a OP consome material (movimento &quot;Baixa de componente em OP&quot;) e entrega o produto acabado (&quot;Entrada de produto acabado (OP)&quot;).</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label><button type="button" class="flag" data-flag="f2-2" aria-pressed="false" title="Registrar um problema nesta etapa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 22V4"/><path d="M4 4h13l-2 4 2 4H4"/></svg>Problema</button></li><li class="item"><label><input type="checkbox" data-id="f2-3"><span class="txt"><span class="acao">Compras e Recebimento: o pedido de compra entregue vira nota de recebimento, entra no estoque e gera contas a pagar.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label><button type="button" class="flag" data-flag="f2-3" aria-pressed="false" title="Registrar um problema nesta etapa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 22V4"/><path d="M4 4h13l-2 4 2 4H4"/></svg>Problema</button></li><li class="item"><label><input type="checkbox" data-id="f2-4"><span class="txt"><span class="acao">Produção: a OP é criada à mão em Produção &gt; Nova OP, escolhendo o pedido de venda e o item.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label><button type="button" class="flag" data-flag="f2-4" aria-pressed="false" title="Registrar um problema nesta etapa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 22V4"/><path d="M4 4h13l-2 4 2 4H4"/></svg>Problema</button></li><li class="item"><label><input type="checkbox" data-id="f2-5"><span class="txt"><span class="acao">Expedição: depois de faturado, o pedido é liberado (&quot;Lib. Expedição&quot;), entra numa carga e é entregue.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label><button type="button" class="flag" data-flag="f2-5" aria-pressed="false" title="Registrar um problema nesta etapa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 22V4"/><path d="M4 4h13l-2 4 2 4H4"/></svg>Problema</button></li></ul>
     </div>
     <div class="fluxo" id="fx-3" data-grupo>
       <h3>3. Da nota ao resultado <span class="cont"></span></h3>
       
       
-      <ul class="itens"><li class="item"><label><input type="checkbox" data-id="f3-1"><span class="txt"><span class="acao">Faturamento: <span class="ui">⋯ &gt; Faturar</span> no pedido gera a nota; ela aparece em Notas Fiscais e a coluna NOTA FISCAL do pedido é preenchida.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="f3-2"><span class="txt"><span class="acao">Financeiro: a coluna TÍTULOS do pedido mostra &quot;Gerados&quot; e os títulos aparecem em Contas a Receber.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label></li><li class="item"><label><input type="checkbox" data-id="f3-3"><span class="txt"><span class="acao">Projetos: o painel financeiro da obra soma receitas e custos.</span></span><span class="selo st-d" title="Baseado na documentação">Documentação</span></label></li></ul>
+      <ul class="itens"><li class="item"><label><input type="checkbox" data-id="f3-1"><span class="txt"><span class="acao">Faturamento: <span class="ui">⋯ &gt; Faturar</span> no pedido gera a nota; ela aparece em Notas Fiscais e a coluna NOTA FISCAL do pedido é preenchida.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label><button type="button" class="flag" data-flag="f3-1" aria-pressed="false" title="Registrar um problema nesta etapa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 22V4"/><path d="M4 4h13l-2 4 2 4H4"/></svg>Problema</button></li><li class="item"><label><input type="checkbox" data-id="f3-2"><span class="txt"><span class="acao">Financeiro: a coluna TÍTULOS do pedido mostra &quot;Gerados&quot; e os títulos aparecem em Contas a Receber.</span></span><span class="selo st-v" title="Verificado no sistema">Verificado</span></label><button type="button" class="flag" data-flag="f3-2" aria-pressed="false" title="Registrar um problema nesta etapa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 22V4"/><path d="M4 4h13l-2 4 2 4H4"/></svg>Problema</button></li><li class="item"><label><input type="checkbox" data-id="f3-3"><span class="txt"><span class="acao">Projetos: o painel financeiro da obra soma receitas e custos.</span></span><span class="selo st-d" title="Baseado na documentação">Documentação</span></label><button type="button" class="flag" data-flag="f3-3" aria-pressed="false" title="Registrar um problema nesta etapa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 22V4"/><path d="M4 4h13l-2 4 2 4H4"/></svg>Problema</button></li></ul>
     </div></section>
 
-<section class="secao" id="s-resultado" data-grupo><h2><span class="n">4</span>Resultado esperado <span class="cont"></span></h2><p class="dica" style="margin:-4px 0 10px">Marque quando conseguir confirmar cada ponto.</p><ul class="itens"><li class="item"><label><input type="checkbox" data-id="res-1"><span class="txt"><span class="acao">Consigo mostrar, com as telas abertas, onde o pedido de exemplo aparece em cada módulo.</span></span><span class="selo st-d" title="Baseado na documentação">Documentação</span></label></li></ul></section>
+<section class="secao" id="s-resultado" data-grupo><h2><span class="n">4</span>Resultado esperado <span class="cont"></span></h2><p class="dica" style="margin:-4px 0 10px">Marque quando conseguir confirmar cada ponto.</p><ul class="itens"><li class="item"><label><input type="checkbox" data-id="res-1"><span class="txt"><span class="acao">Consigo mostrar, com as telas abertas, onde o pedido de exemplo aparece em cada módulo.</span></span><span class="selo st-d" title="Baseado na documentação">Documentação</span></label><button type="button" class="flag" data-flag="res-1" aria-pressed="false" title="Registrar um problema nesta etapa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 22V4"/><path d="M4 4h13l-2 4 2 4H4"/></svg>Problema</button></li></ul></section>
 
 <section class="secao" id="s-atencao"><h2><span class="n">5</span>Pontos de atenção</h2><ul class="atencao"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4M12 17h.01"/></svg><span>No teste de 19/10/2026 a ordem exigida pelo sistema foi: pedido → medição → OP → faturar → liberar para expedição → carga → entrega → títulos. Confirme com o supervisor se a sua empresa usa a mesma sequência.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4M12 17h.01"/></svg><span>Siga o pedido só consultando: nenhum botão de avanço deve ser clicado neste exercício.</span></li></ul></section>
 
 <section class="secao"><h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Ainda não validado na prática</h2><p class="dica" style="margin:-4px 0 10px">Estas partes não puderam ser conferidas. Confirme com seu supervisor antes de seguir.</p><ul class="pendencias"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Baixa de título e resultado no painel da obra ainda não foram conferidos no teste de ponta a ponta.</span></li></ul></section>
 
-<section class="secao no-print-notas" id="s-notas"><h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Minhas dúvidas e anotações</h2><textarea id="notas" placeholder="Anote dúvidas para levar ao supervisor, números de registros que você consultou, atalhos que descobriu…"></textarea><p class="dica">Fica salvo só neste navegador.</p></section>
+<section class="secao no-print-notas" id="s-notas"><h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Minhas dúvidas e anotações</h2><label class="validador">Quem está validando <input id="validador" type="text" placeholder="Seu nome (vai no relatório)" autocomplete="name"></label><textarea id="notas" placeholder="Anote dúvidas para levar ao supervisor, números de registros que você consultou, atalhos que descobriu…"></textarea><p class="dica">Fica salvo só neste navegador. Use <b>Relatório</b> no topo para copiar o resultado da validação.</p></section>
 
 <div class="concluido" id="concluido" role="status"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Checklist concluído. Volte ao onboarding e siga para o próximo módulo.</div>
 <p class="rodape">Trilha do Estagiário · Faktory Flow v1.22 · conteúdo conferido em 16 e 19/10/2026</p>
@@ -292,17 +313,47 @@ html.embed .shell{margin-top:12px}
       if (link) { link.querySelector('em').textContent = c[0] + '/' + c[1]; link.classList.toggle('feito', c[1] > 0 && c[0] === c[1]); }
     });
     if ($('concluido')) $('concluido').classList.toggle('on', total > 0 && feitos === total);
+    var nProb = Object.keys(obs).filter(function(k){ return obs[k].value.trim(); }).length;
+    if ($('problemas')) $('problemas').textContent = String(nProb);
+    if ($('chipProblemas')) $('chipProblemas').classList.toggle('tem', nProb > 0);
     guardar(CHAVE + ':pct', String(pct));
   }
 
+  var obs = {}; /* observações de problema por etapa */
+  var validador = $('validador');
+
   function salvar(){
-    var marcados = {}, campos = {};
+    var marcados = {}, campos = {}, notasObs = {};
     caixas.forEach(function(c){ if (c.checked) marcados[c.getAttribute('data-id')] = 1; });
     regs.forEach(function(r){ if (r.value) campos[r.getAttribute('data-reg')] = r.value; });
-    guardar(CHAVE, JSON.stringify({ marcados: marcados, regs: campos, notas: notas ? notas.value : '' }));
+    Object.keys(obs).forEach(function(k){ if (obs[k].value.trim()) notasObs[k] = obs[k].value; });
+    guardar(CHAVE, JSON.stringify({ marcados: marcados, regs: campos, obs: notasObs, validador: validador ? validador.value : '', notas: notas ? notas.value : '' }));
     atualizar();
   }
 
+  /* Problema por etapa: o botão ⚑ abre um campo "esperado × obtido". */
+  function marcarProblema(item, ta){
+    var tem = ta.value.trim() !== '';
+    item.classList.toggle('com-problema', tem);
+    var b = item.querySelector('.flag'); if (b) b.setAttribute('aria-pressed', String(tem));
+  }
+  function abrirObs(id, texto){
+    if (obs[id]) { obs[id].focus(); return; }
+    var item = document.querySelector('input[data-id="' + id + '"]').closest('.item');
+    var ta = document.createElement('textarea');
+    ta.className = 'obs'; ta.setAttribute('aria-label', 'Problema nesta etapa');
+    ta.placeholder = 'O que aconteceu? Esperado × obtido, mensagem de erro, nº do registro…';
+    ta.value = texto || '';
+    ta.addEventListener('input', function(){ marcarProblema(item, ta); salvar(); });
+    item.appendChild(ta); obs[id] = ta; marcarProblema(item, ta);
+    if (!texto) ta.focus();
+  }
+  [].forEach.call(document.querySelectorAll('.flag'), function(b){
+    b.addEventListener('click', function(){ abrirObs(b.getAttribute('data-flag')); });
+  });
+
+  Object.keys(estado.obs || {}).forEach(function(k){ if (document.querySelector('input[data-id="' + k + '"]')) abrirObs(k, estado.obs[k]); });
+  if (validador) { validador.value = estado.validador || ''; validador.addEventListener('input', salvar); }
   caixas.forEach(function(c){
     c.checked = !!(estado.marcados && estado.marcados[c.getAttribute('data-id')]);
     c.addEventListener('change', salvar);
@@ -315,9 +366,54 @@ html.embed .shell{margin-top:12px}
     caixas.forEach(function(c){ c.checked = false; });
     regs.forEach(function(r){ r.value = ''; });
     if (notas) notas.value = '';
+    if (validador) validador.value = '';
+    Object.keys(obs).forEach(function(k){ obs[k].remove(); delete obs[k]; });
+    [].forEach.call(document.querySelectorAll('.com-problema'), function(i){ i.classList.remove('com-problema'); });
     apagar(CHAVE); atualizar();
   });
   if ($('btnImprimir')) $('btnImprimir').addEventListener('click', function(){ window.print(); });
+
+  /* Relatório de validação em Markdown, pronto para colar num chamado ou e-mail. */
+  function texto(el){ return el.textContent.replace(/\s+/g, ' ').trim(); }
+  function tituloDe(h){
+    var c = h.cloneNode(true);
+    [].forEach.call(c.querySelectorAll('.n, .cont, svg'), function(x){ x.remove(); });
+    return texto(c);
+  }
+  function relatorio(){
+    var t = [], probs = [];
+    t.push('# ' + texto(document.querySelector('.hero h1')));
+    t.push('Validação em ' + new Date().toLocaleDateString('pt-BR') + (validador && validador.value ? ' por ' + validador.value : '') + ' · ' + $('contagem').textContent + ' etapas (' + $('anelPct').textContent + ' concluído)');
+    [].forEach.call(document.querySelectorAll('main .secao[data-grupo], main .fluxo[data-grupo]'), function(g){
+      var h = g.querySelector('h2, h3'); if (!h) return;
+      var titulo = tituloDe(h), linhas = [];
+      [].forEach.call(g.querySelectorAll('.item'), function(i){
+        var c = i.querySelector('input[type=checkbox]'), id = c.getAttribute('data-id');
+        var r = i.querySelector('.reg'), o = obs[id] && obs[id].value.trim(), acao = texto(i.querySelector('.acao'));
+        linhas.push('- [' + (c.checked ? 'x' : ' ') + '] ' + acao + (r && r.value ? ' → ' + r.getAttribute('aria-label') + ': ' + r.value : ''));
+        if (o) { o = o.replace(/\n+/g, ' '); linhas.push('  - ⚑ PROBLEMA: ' + o); probs.push(titulo + ' — ' + acao + ' → ' + o); }
+      });
+      t.push('\n## ' + titulo + '\n' + linhas.join('\n'));
+    });
+    if (probs.length) t.splice(2, 0, '\n## Problemas encontrados (' + probs.length + ')\n' + probs.map(function(p){ return '- ' + p; }).join('\n'));
+    if (notas && notas.value.trim()) t.push('\n## Anotações\n' + notas.value.trim());
+    return t.join('\n');
+  }
+  function aviso(msg){
+    var a = $('aviso'); if (!a) return;
+    a.textContent = msg; a.classList.add('on');
+    clearTimeout(aviso.t); aviso.t = setTimeout(function(){ a.classList.remove('on'); }, 2600);
+  }
+  if ($('btnRelatorio')) $('btnRelatorio').addEventListener('click', function(){
+    var md = relatorio();
+    function legado(){
+      var ta = document.createElement('textarea'); ta.value = md; ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select();
+      var ok = false; try { ok = document.execCommand('copy'); } catch(e) {}
+      ta.remove(); aviso(ok ? 'Relatório copiado' : 'Não foi possível copiar');
+    }
+    if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(md).then(function(){ aviso('Relatório copiado'); }, legado); else legado();
+  });
 
   /* Índice lateral: destaca a seção visível. */
   var links = [].slice.call(document.querySelectorAll('.indice a'));

@@ -62,6 +62,83 @@
    "verificadas": 27
   },
   {
+   "grupo": "consultor",
+   "id": "fluxo-estoque",
+   "area": "Fluxo de estoque",
+   "titulo": "Fluxo de estoque: movimento, transferência, reserva, inventário e empréstimo",
+   "resumo": "Provar que cada operação de estoque muda o saldo (e o disponível) do jeito certo, respeita as travas (saldo, reserva, inventário, mês encerrado) e deixa rastro no extrato — e que o balanço fecha ao final.",
+   "arquivo": "consultores/fluxo-04-estoque.html",
+   "chave": "ff-consultor:fluxo-estoque",
+   "etapas": 37,
+   "verificadas": 5
+  },
+  {
+   "grupo": "consultor",
+   "id": "fluxo-producao",
+   "area": "Fluxo de produção",
+   "titulo": "Fluxo de produção: estrutura, ordem, apontamento e entrada do produto acabado",
+   "resumo": "Provar que uma OP nasce com processo e materiais corretos, baixa os insumos, registra as horas, e entrega o produto acabado no estoque com custo real — e conhecer os alertas que travam a conclusão.",
+   "arquivo": "consultores/fluxo-05-producao.html",
+   "chave": "ff-consultor:fluxo-producao",
+   "etapas": 32,
+   "verificadas": 13
+  },
+  {
+   "grupo": "consultor",
+   "id": "fluxo-expedicao",
+   "area": "Fluxo de expedição",
+   "titulo": "Fluxo de expedição: da carga à entrega, ocorrência e devolução",
+   "resumo": "Provar que um pedido faturado vira carga, passa pelos checkpoints do pátio e é entregue com histórico — e que ocorrências e devoluções devolvem o pedido à fila sem duplicar saldo.",
+   "arquivo": "consultores/fluxo-06-expedicao.html",
+   "chave": "ff-consultor:fluxo-expedicao",
+   "etapas": 24,
+   "verificadas": 11
+  },
+  {
+   "grupo": "consultor",
+   "id": "fluxo-faturamento",
+   "area": "Fluxo de faturamento e fiscal",
+   "titulo": "Fluxo de faturamento e fiscal: do pedido à nota finalizada",
+   "resumo": "Provar que o pedido vira nota com cliente, CFOP, parcelas e impostos corretos, que a finalização trava a nota e atualiza pedido e estoque, e reconhecer o que só o responsável fiscal pode fazer.",
+   "arquivo": "consultores/fluxo-07-faturamento-fiscal.html",
+   "chave": "ff-consultor:fluxo-faturamento",
+   "etapas": 27,
+   "verificadas": 20
+  },
+  {
+   "grupo": "consultor",
+   "id": "fluxo-financeiro",
+   "area": "Fluxo financeiro",
+   "titulo": "Fluxo financeiro: títulos, baixa, saldos e fluxo de caixa",
+   "resumo": "Provar que os títulos nascem do pedido (ou da nota/recebimento), que a baixa move o saldo da conta e o fluxo de caixa, e que os painéis de gestão mostram o mesmo número.",
+   "arquivo": "consultores/fluxo-08-financeiro.html",
+   "chave": "ff-consultor:fluxo-financeiro",
+   "etapas": 26,
+   "verificadas": 23
+  },
+  {
+   "grupo": "consultor",
+   "id": "fluxo-projetos",
+   "area": "Fluxo de projetos e obras",
+   "titulo": "Fluxo de projetos e obras: cadastro, estágios, painéis e diário",
+   "resumo": "Provar que a obra de teste recebe os documentos dos outros módulos, que estágios e etapas filtram as listagens e que os painéis (financeiro, progresso, resultado) mostram números coerentes.",
+   "arquivo": "consultores/fluxo-09-projetos-obra.html",
+   "chave": "ff-consultor:fluxo-projetos",
+   "etapas": 23,
+   "verificadas": 6
+  },
+  {
+   "grupo": "consultor",
+   "id": "fluxo-tarefas",
+   "area": "Fluxo de tarefas",
+   "titulo": "Fluxo de tarefas: quadro, cartão, regras e colaboração",
+   "resumo": "Provar que um quadro respeita as regras de lista, WIP, status e dependência por todas as telas, e que a colaboração (comentário, menção, anexo) funciona sem duplicar nem vazar entre empresas.",
+   "arquivo": "consultores/fluxo-10-tarefas.html",
+   "chave": "ff-consultor:fluxo-tarefas",
+   "etapas": 24,
+   "verificadas": 0
+  },
+  {
    "grupo": "estagiario",
    "id": "onboarding",
    "area": "00 · Comece por aqui",

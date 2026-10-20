@@ -1,5 +1,7 @@
 # Testes do Faktory Flow com agentes
 
+> **Status (20/10/2026):** a validação por agentes está **pausada** a pedido do time. Primeiro a documentação (os 10 fluxos do consultor e a trilha do estagiário estão escritos); depois a validação **manual por pessoas**, descrita em [../validacao-manual.md](../validacao-manual.md). Este material fica pronto para quando os agentes voltarem.
+
 Modelo de trabalho do Harness aplicado aos checklists: **entender → especificar → planejar → executar → validar → entregar → registrar**. Nada é executado sem critério de aceite; nada vira "Verificado" sem evidência.
 
 ## Antes de ter acesso (já feito)

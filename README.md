@@ -88,14 +88,14 @@ Depois, faça commit do PDF atualizado.
 
 A aba **Checklist** do guia é uma biblioteca com busca, filtros e progresso salvo no navegador. Cada checklist abre **dentro do guia** (visualizador embutido) ou pode ser baixado como HTML independente (abre offline). Três grupos, em `public/checklists/`:
 
-- **Fluxos do consultor** (`consultores/`): testes funcionais ponta a ponta — suprimentos, serviços de campo, comercial e o fluxo completo do pedido à gestão. Cada etapa tem "fazer → conferir o reflexo no módulo seguinte" e um campo para anotar o nº do registro criado.
+- **Fluxos do consultor** (`consultores/`): o fluxo completo do pedido à gestão e 10 fluxos por processo (suprimentos, serviços de campo, comercial, estoque, produção, expedição, faturamento e fiscal, financeiro, projetos e tarefas). Cada etapa tem "fazer → conferir o reflexo no módulo seguinte", um campo para o nº do registro e o botão **Problema** (esperado × obtido); o botão **Relatório** copia o resultado da validação em Markdown. Guia para quem valida: [docs/validacao-manual.md](docs/validacao-manual.md).
 - **Trilha do estagiário** (`estagiarios/`): onboarding (00) e 15 checklists curtos por módulo.
 - **Validação dos módulos (QA)** (raiz): planos completos de homologação, com os achados e cenários reais registrados.
 
 Cada etapa traz a origem: *Verificado* (conferido no sistema), *Documentação* (roteiros) ou *Não validado*.
 
 ```bash
-npm run checklists          # gera os HTMLs + manifest.json e valida tudo (465 verificações)
+npm run checklists          # gera os HTMLs + manifest.json e valida tudo (584 verificações)
 npm run checklists:lacunas  # atualiza docs/testes/lacunas.md (etapas ainda sem "Verificado")
 ```
 

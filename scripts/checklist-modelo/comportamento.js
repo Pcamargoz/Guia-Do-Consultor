@@ -45,17 +45,47 @@
       if (link) { link.querySelector('em').textContent = c[0] + '/' + c[1]; link.classList.toggle('feito', c[1] > 0 && c[0] === c[1]); }
     });
     if ($('concluido')) $('concluido').classList.toggle('on', total > 0 && feitos === total);
+    var nProb = Object.keys(obs).filter(function(k){ return obs[k].value.trim(); }).length;
+    if ($('problemas')) $('problemas').textContent = String(nProb);
+    if ($('chipProblemas')) $('chipProblemas').classList.toggle('tem', nProb > 0);
     guardar(CHAVE + ':pct', String(pct));
   }
 
+  var obs = {}; /* observações de problema por etapa */
+  var validador = $('validador');
+
   function salvar(){
-    var marcados = {}, campos = {};
+    var marcados = {}, campos = {}, notasObs = {};
     caixas.forEach(function(c){ if (c.checked) marcados[c.getAttribute('data-id')] = 1; });
     regs.forEach(function(r){ if (r.value) campos[r.getAttribute('data-reg')] = r.value; });
-    guardar(CHAVE, JSON.stringify({ marcados: marcados, regs: campos, notas: notas ? notas.value : '' }));
+    Object.keys(obs).forEach(function(k){ if (obs[k].value.trim()) notasObs[k] = obs[k].value; });
+    guardar(CHAVE, JSON.stringify({ marcados: marcados, regs: campos, obs: notasObs, validador: validador ? validador.value : '', notas: notas ? notas.value : '' }));
     atualizar();
   }
 
+  /* Problema por etapa: o botão ⚑ abre um campo "esperado × obtido". */
+  function marcarProblema(item, ta){
+    var tem = ta.value.trim() !== '';
+    item.classList.toggle('com-problema', tem);
+    var b = item.querySelector('.flag'); if (b) b.setAttribute('aria-pressed', String(tem));
+  }
+  function abrirObs(id, texto){
+    if (obs[id]) { obs[id].focus(); return; }
+    var item = document.querySelector('input[data-id="' + id + '"]').closest('.item');
+    var ta = document.createElement('textarea');
+    ta.className = 'obs'; ta.setAttribute('aria-label', 'Problema nesta etapa');
+    ta.placeholder = 'O que aconteceu? Esperado × obtido, mensagem de erro, nº do registro…';
+    ta.value = texto || '';
+    ta.addEventListener('input', function(){ marcarProblema(item, ta); salvar(); });
+    item.appendChild(ta); obs[id] = ta; marcarProblema(item, ta);
+    if (!texto) ta.focus();
+  }
+  [].forEach.call(document.querySelectorAll('.flag'), function(b){
+    b.addEventListener('click', function(){ abrirObs(b.getAttribute('data-flag')); });
+  });
+
+  Object.keys(estado.obs || {}).forEach(function(k){ if (document.querySelector('input[data-id="' + k + '"]')) abrirObs(k, estado.obs[k]); });
+  if (validador) { validador.value = estado.validador || ''; validador.addEventListener('input', salvar); }
   caixas.forEach(function(c){
     c.checked = !!(estado.marcados && estado.marcados[c.getAttribute('data-id')]);
     c.addEventListener('change', salvar);
@@ -68,9 +98,54 @@
     caixas.forEach(function(c){ c.checked = false; });
     regs.forEach(function(r){ r.value = ''; });
     if (notas) notas.value = '';
+    if (validador) validador.value = '';
+    Object.keys(obs).forEach(function(k){ obs[k].remove(); delete obs[k]; });
+    [].forEach.call(document.querySelectorAll('.com-problema'), function(i){ i.classList.remove('com-problema'); });
     apagar(CHAVE); atualizar();
   });
   if ($('btnImprimir')) $('btnImprimir').addEventListener('click', function(){ window.print(); });
+
+  /* Relatório de validação em Markdown, pronto para colar num chamado ou e-mail. */
+  function texto(el){ return el.textContent.replace(/\s+/g, ' ').trim(); }
+  function tituloDe(h){
+    var c = h.cloneNode(true);
+    [].forEach.call(c.querySelectorAll('.n, .cont, svg'), function(x){ x.remove(); });
+    return texto(c);
+  }
+  function relatorio(){
+    var t = [], probs = [];
+    t.push('# ' + texto(document.querySelector('.hero h1')));
+    t.push('Validação em ' + new Date().toLocaleDateString('pt-BR') + (validador && validador.value ? ' por ' + validador.value : '') + ' · ' + $('contagem').textContent + ' etapas (' + $('anelPct').textContent + ' concluído)');
+    [].forEach.call(document.querySelectorAll('main .secao[data-grupo], main .fluxo[data-grupo]'), function(g){
+      var h = g.querySelector('h2, h3'); if (!h) return;
+      var titulo = tituloDe(h), linhas = [];
+      [].forEach.call(g.querySelectorAll('.item'), function(i){
+        var c = i.querySelector('input[type=checkbox]'), id = c.getAttribute('data-id');
+        var r = i.querySelector('.reg'), o = obs[id] && obs[id].value.trim(), acao = texto(i.querySelector('.acao'));
+        linhas.push('- [' + (c.checked ? 'x' : ' ') + '] ' + acao + (r && r.value ? ' → ' + r.getAttribute('aria-label') + ': ' + r.value : ''));
+        if (o) { o = o.replace(/\n+/g, ' '); linhas.push('  - ⚑ PROBLEMA: ' + o); probs.push(titulo + ' — ' + acao + ' → ' + o); }
+      });
+      t.push('\n## ' + titulo + '\n' + linhas.join('\n'));
+    });
+    if (probs.length) t.splice(2, 0, '\n## Problemas encontrados (' + probs.length + ')\n' + probs.map(function(p){ return '- ' + p; }).join('\n'));
+    if (notas && notas.value.trim()) t.push('\n## Anotações\n' + notas.value.trim());
+    return t.join('\n');
+  }
+  function aviso(msg){
+    var a = $('aviso'); if (!a) return;
+    a.textContent = msg; a.classList.add('on');
+    clearTimeout(aviso.t); aviso.t = setTimeout(function(){ a.classList.remove('on'); }, 2600);
+  }
+  if ($('btnRelatorio')) $('btnRelatorio').addEventListener('click', function(){
+    var md = relatorio();
+    function legado(){
+      var ta = document.createElement('textarea'); ta.value = md; ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select();
+      var ok = false; try { ok = document.execCommand('copy'); } catch(e) {}
+      ta.remove(); aviso(ok ? 'Relatório copiado' : 'Não foi possível copiar');
+    }
+    if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(md).then(function(){ aviso('Relatório copiado'); }, legado); else legado();
+  });
 
   /* Índice lateral: destaca a seção visível. */
   var links = [].slice.call(document.querySelectorAll('.indice a'));

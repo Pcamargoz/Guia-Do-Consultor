@@ -1,6 +1,6 @@
 # Fila de testes: etapas ainda sem "Verificado"
 
-Gerado por `node scripts/lacunas-checklists.mjs` — 50 etapas em 13 checklists. `doc` = vem dos roteiros, `n/v` = não validado.
+Gerado por `node scripts/lacunas-checklists.mjs` — 165 etapas em 20 checklists. `doc` = vem dos roteiros, `n/v` = não validado.
 Ao validar uma etapa, mude `s` para `'v'` no arquivo de dados do checklist e rode `npm run checklists`. Regras e briefs em [README.md](README.md).
 
 ## Primeiros passos e navegação  `01-primeiros-passos-navegacao.html` — 1 etapa(s)
@@ -123,6 +123,213 @@ Ao validar uma etapa, mude `s` para `'v'` no arquivo de dados do checklist e rod
 
 **Resultado esperado**
 - [ ] (n/v) O pedido de venda foi gerado a partir da oportunidade e aparece em Vendas.
+
+## Fluxo de estoque: movimento, transferência, reserva, inventário e empréstimo  `fluxo-04-estoque.html` — 32 etapa(s)
+
+**Pré-requisitos**
+- [ ] (doc) Produto de teste de uso controlado em estoque (ex.: um insumo) e dois locais ativos em Estoque > Locais: o almoxarifado central e um segundo local (obra ou almoxarifado de teste).
+- [ ] (doc) Parâmetros de estoque anotados antes de começar (Estoque > Configurações > Parâmetros): "bloquear saída sem saldo", "bloquear saída que invade reserva" e "empenhar material de OP". Cada um muda o resultado de passos abaixo.
+- [ ] (doc) Dois usuários de teste para as regras de segregação: quem cria × quem confirma a transferência, e quem conta × quem audita/aprova o inventário.
+
+**1. Movimento manual e estorno** · Estoque > Movimentos > + Novo Movimento
+- [ ] (doc) Lançar um Ajuste positivo (sobra) e um Ajuste negativo (quebra/perda). → _Cada ajuste aparece no extrato com o sentido certo e o saldo acompanha._
+- [ ] (doc) Tentar uma saída maior que o saldo, com a trava "bloquear saída sem saldo" ligada e depois desligada. → _Ligada: recusa. Desligada: passa e o saldo pode ficar negativo._
+- [ ] (doc) Tentar um movimento com data em mês encerrado e em local congelado por inventário. → _Os dois são recusados com mensagem que explica a trava._
+
+**2. Transferência entre locais** · Estoque > Transferências
+- [ ] (doc) Criar uma transferência de 5 un do almoxarifado central para o segundo local (rascunho). → _Nasce pendente com número TRF-. O saldo da origem não desce ainda, mas o disponível desce (ex.: saldo 20, reservado 5, disponível 15)._
+- [ ] (doc) Na tela de Saldo, clicar no número da coluna Reservada da origem. → _O detalhe aponta exatamente essa transferência._
+- [ ] (doc) Tentar origem igual ao destino, quantidade zero/negativa e transferência sem item. → _As três são recusadas._
+- [ ] (doc) Confirmar a transferência (com o usuário que tem permissão de confirmar). → _A origem desce 5, o destino sobe 5 e a reserva é consumida. Nada fica "em trânsito". O custo médio acompanha o material._
+- [ ] (doc) Abrir o extrato dos dois locais. → _Saída na origem e entrada no destino, com o mesmo número TRF-._
+- [ ] (doc) Tentar confirmar de novo e excluir a transferência já confirmada. → _As duas ações são recusadas ("só rascunho pode ser confirmado")._
+- [ ] (doc) Criar outra transferência pendente e excluí-la. → _A reserva é liberada, o disponível volta ao que era e nenhum movimento foi gerado._
+
+**3. Reserva e disponibilidade** · coluna Reservada do Saldo e aba Reservas do produto
+- [ ] (doc) Com o produto sem reserva, comparar Saldo e Disponível. Depois criar uma reserva de 5 un. → _Saldo continua igual; reservado = 5; disponível = saldo − 5._
+- [ ] (doc) Conferir que a reserva é por variação física (cor e medidas) e por local. → _O disponível de outra cor ou de outro local não muda._
+- [ ] (doc) Tentar reservar mais que o disponível. → _É recusado._
+- [ ] (doc) Liberar a reserva; criar outra e consumi-la parcialmente (ex.: 3 de 5) e depois o restante. → _Liberar devolve o disponível; consumir baixa o estoque e reduz o pendente; consumir mais que o pendente é recusado._
+- [ ] (doc) Com a trava "bloquear saída que invade reserva" ligada, tentar uma saída que consumiria material reservado; repetir com ela desligada. → _Ligada: recusa nomeando o documento que segura o material. Desligada: passa e o saldo pode ficar abaixo do reservado._
+
+**4. Inventário (contagem física)** · Estoque > Inventário e Estoque > Aprovações > Inventários
+- [ ] (doc) Abrir um inventário (empresa, local e tipo) e iniciar. → _Número sequencial; o sistema fotografa o saldo (um item por variação) e congela o local._
+- [ ] (doc) Com o inventário em andamento, tentar um movimento ou transferência naquele local e abrir um segundo inventário no mesmo local. → _Os movimentos são bloqueados e não existem dois inventários ativos no mesmo local._
+- [ ] (doc) Contar na tela do conferente (contagem cega): um item com o valor igual ao do sistema e outro com valor diferente. → _A tela não mostra o saldo do sistema. Igual: aprovado direto. Diferente: vai para a 2ª contagem (e, persistindo, para a 3ª e a auditoria)._
+- [ ] (doc) Com outra pessoa, auditar os itens que divergiram nas três contagens (quantidade final e justificativa). → _O mesmo usuário da contagem é impedido ou avisado; a justificativa tem mínimo de caracteres._
+- [ ] (doc) Revisar o resumo e informar o custo das entradas pendentes (sobras e itens avulsos); aprovar. → _Cada diferença vira um ajuste de estoque com origem "inventário"; o saldo bate com a contagem e o local é descongelado._
+- [ ] (doc) Cancelar um segundo inventário (com motivo) antes de aprovar. → _Nenhum ajuste é gerado e o local é liberado._
+
+**5. Empréstimo entre locais** · Estoque > Empréstimos ou tipo "Empréstimo" no Novo Movimento
+- [ ] (doc) Registrar um empréstimo com data prevista de devolução (ex.: 20 un). → _Sai do local de origem; aparece como aberto, sem devolução._
+- [ ] (doc) Devolver parte (ex.: 10 de 20) e depois o restante; tentar devolver mais do que foi emprestado. → _Parcial: progresso 50% e saldo de retorno +10. Total: "devolvido" 100%. Excesso é recusado._
+- [ ] (doc) Comparar o valor total do material antes do empréstimo e depois da devolução completa. → _O valor volta igual: a devolução usa o custo médio correto._
+
+**6. Reposição e balanço final** · Estoque > Reposição e Compras > Sugestão de Compra
+- [ ] (doc) Fazer o balanço do produto: saldo inicial + entradas − saídas ± ajustes ± transferências − estornos. → _O resultado é igual ao saldo final do Estoque, em quantidade e em valor. Qualquer diferença é defeito._
+- [ ] (doc) Filtrar saldos com reserva maior que zero e abrir o detalhe de cada um. → _Toda quantidade reservada tem um documento pendente correspondente (nenhuma reserva órfã)._
+
+**Resultado esperado**
+- [ ] (doc) Cada operação mudou saldo, reservado e disponível exatamente como o roteiro descreve.
+- [ ] (doc) As travas (saldo, reserva, inventário, mês encerrado) recusaram o que deviam, com mensagem clara.
+- [ ] (doc) O balanço do produto fechou em quantidade e valor e não sobraram reservas órfãs.
+
+## Fluxo de produção: estrutura, ordem, apontamento e entrada do produto acabado  `fluxo-05-producao.html` — 19 etapa(s)
+
+**Pré-requisitos**
+- [ ] (doc) Etapas, processo e linha de produção cadastrados (Produção > Configurações): ex.: Corte, Usinagem e Montagem com custo/hora; processo "Janela padrão" com as 3 etapas na ordem.
+
+**1. Cadastros-base e estrutura** · Produção > Configurações > Etapas / Processos / Linhas / Estrutura de produto
+- [ ] (doc) Criar 3 etapas com custo/hora diferentes e um processo com elas em ordem e tempo padrão. → _A lista do processo mostra a soma do tempo total._
+- [ ] (doc) Criar a estrutura do produto com 3 itens (perfil com cor e comprimento, vidro com dimensões, componente) e anotar as quantidades. → _Item paramétrico sem cor/comprimento é recusado._
+- [ ] (doc) Tentar uma segunda estrutura para o mesmo produto com período sobreposto. → _É impedido com mensagem clara._
+- [ ] (doc) Abrir o calendário de produção e conferir os feriados nacionais; cadastrar um feriado da empresa. → _Só os feriados do tipo Empresa podem ser removidos._
+
+**2. Ordem de produção** · Produção > Ordens de produção > Nova OP
+- [ ] (doc) Reimportar da estrutura numa OP que já tem item manual. → _Os itens de origem Estrutura são refeitos sem duplicar; os manuais ficam._
+- [ ] (doc) Tentar criar requisição numa OP já Produzida ou Cancelada. → _Nenhuma das duas aceita._
+
+**3. Baixa de material** · Mais ações > Materiais necessários
+- [ ] (doc) Baixar parcialmente uma requisição (ex.: 30 de 60) e conferir Estoque > Movimentos e Saldo. → _Status "Atendida parcialmente"; o saldo do insumo desceu 30; movimento "Baixa de componente em OP"._
+- [ ] (doc) Baixar o restante. → _Status "Atendida"._
+- [ ] (doc) Estornar uma baixa informando o motivo. → _O saldo volta, o status recalcula e o custo da OP desconta o estornado._
+
+**4. Apontamento** · botão ▶ da linha da OP e Mais ações > Apontamentos
+- [ ] (doc) Com o apontamento em aberto, tentar iniciar outro para o mesmo funcionário na mesma OP. → _É impedido._
+- [ ] (doc) Submeter e aprovar o apontamento com quem tem permissão; rejeitar outro com motivo. → _Aprovar acumula as horas reais e dispara a baixa de materiais; rejeitar volta a rascunho._
+- [ ] (doc) Reabrir um apontamento encerrado há pouco. → _Exige motivo; estorna horas, custo e baixa. Depois de 24 h o apontamento fica travado (🔒)._
+
+**6. Separação de materiais e painéis** · Produção > Separação de materiais e Produção > Painel de fábrica
+- [ ] (doc) Gerar uma lista de separação para a OP e abrir o detalhe (necessário, separado, falta, pendente). → _A quantidade bate com a requisição da OP. Item paramétrico aparece com cor e dimensões._
+- [ ] (doc) Separar um item (no app /separacao) e conferir requisição e saldo do estoque. → _A quantidade separada sobe, a requisição é baixada e o saldo desce; duplo clique não baixa em dobro._
+- [ ] (doc) Registrar falta com motivo do catálogo e reverter. → _Falta sem motivo é recusada; a reversão preserva o histórico._
+
+**Resultado esperado**
+- [ ] (doc) A OP gerou requisições a partir da estrutura e as baixas bateram com o saldo do estoque.
+- [ ] (doc) O apontamento acumulou horas e o custo real da OP é mão de obra + materiais.
+- [ ] (doc) A conclusão creditou o produto acabado no estoque com a quantidade e o custo certos.
+
+## Fluxo de expedição: da carga à entrega, ocorrência e devolução  `fluxo-06-expedicao.html` — 13 etapa(s)
+
+**3. Ocorrência na rota** · Apontamentos do Motorista > Ocorrência e Expedição > Ocorrências
+- [ ] (doc) Em outra carga, registrar uma ocorrência de Cliente Ausente (não exige foto). → _Aceita; fica no histórico da entrega._
+- [ ] (doc) Registrar Mercadoria Avariada sem foto e depois com foto. → _Sem foto é recusado ("foto obrigatória"); com foto é aceito e a foto abre no ERP._
+- [ ] (doc) Registrar uma ocorrência bloqueante. → _A entrega vira "com ocorrência" e o pedido volta para "Aguardando Re-Expedição"._
+- [ ] (doc) Registrar Entrega Parcial (não bloqueante). → _A entrega não volta para re-expedição._
+- [ ] (doc) Filtrar Expedição > Ocorrências por tipo e período e conferir o resumo por tipo. → _Os números do resumo batem com a lista._
+
+**4. Devolução e re-expedição** · Expedição > Aguardando Re-Expedição e Expedição > Pendências de Estoque (Devolução)
+- [ ] (doc) Numa entrega com ocorrência bloqueante, usar Confirmar devolução. → _A entrega passa a "Devolvida"; confirmar de novo não duplica pendência nem estorno._
+- [ ] (doc) Abrir Pendências de Estoque (Devolução) e o saldo do produto no Estoque. → _Existe uma pendência por produto devolvido; o saldo não subiu sozinho._
+- [ ] (doc) Dar a entrada manual pelo Estoque e marcar a pendência como resolvida. → _Ela sai da lista de pendentes e registra quem resolveu e quando; resolver duas vezes é recusado._
+- [ ] (doc) Remontar o pedido numa nova carga. → _Os volumes da entrega anterior saem de circulação e o saldo por item não dobra._
+
+**5. Documentos e rastreamento** · botões do detalhe da carga
+- [ ] (doc) Abrir Romaneio, Romaneio de itens e Etiquetas (prévia). → _Romaneio: cliente, endereço, pedido, nota, volumes e totais; etiquetas = uma por volume ("volume 2 de 5"), com código de barras legível._
+- [ ] (doc) Gerar o Link de rastreamento (e-mail de teste) e revogá-lo em seguida. → _O link aparece e some ao revogar._
+- [ ] (doc) Exportar a lista de cargas filtrada. → _O arquivo tem exatamente as linhas filtradas na tela._
+
+**Resultado esperado**
+- [ ] (doc) A ocorrência bloqueante devolveu o pedido à fila e a devolução gerou pendência de estoque sem mexer no saldo.
+
+## Fluxo de faturamento e fiscal: do pedido à nota finalizada  `fluxo-07-faturamento-fiscal.html` — 7 etapa(s)
+
+**Pré-requisitos**
+- [ ] (doc) Certificado digital válido e CFOP/Textos fiscais definidos pelo contador (só leitura para quem não é do fiscal).
+
+**4. Decisões do responsável fiscal (só com autorização)** · ações com efeito fiscal
+- [ ] (n/v) Transmitir a nota (avião de papel) somente em homologação, com certificado válido e autorização do responsável fiscal. → _A nota recebe retorno de autorização/rejeição; acompanhe o status e o XML/DANFE._
+- [ ] (n/v) Rejeição: ler o motivo, corrigir a nota (ou o cadastro fiscal) e retransmitir.
+- [ ] (n/v) Carta de correção e cancelamento de uma nota autorizada de teste. → _Não aparecem no menu de uma nota "Em Aberto": só depois da autorização._
+- [ ] (n/v) Inutilização de numeração (Faturamento > Configurações > Inutilização de Numeração).
+
+**5. Cadastros fiscais (leitura)** · módulo Fiscal e Faturamento > Configurações
+- [ ] (doc) Percorrer NCM, CFOP, CST/CSOSN, CEST e Textos Fiscais só lendo. → _São mantidos com o contador; alterar afeta todas as notas._
+- [ ] (n/v) Abrir Painel Fiscal, Diagnóstico e Onboarding Fiscal.
+
+## Fluxo financeiro: títulos, baixa, saldos e fluxo de caixa  `fluxo-08-financeiro.html` — 3 etapa(s)
+
+**1. Gerar os títulos do pedido** · menu ⋯ > Gerar Títulos em Vendas > Pedidos de Venda
+- [ ] (n/v) Depois de resolver o bloqueio, gerar os títulos e abrir Financeiro > Contas a Receber. → _Valor e vencimento iguais à parcela do pedido; a coluna TÍTULOS do pedido passa a "Gerados"._
+
+**5. Configurações (leitura)** · Financeiro > Configurações
+- [ ] (doc) Ler Contas Bancárias, Meios de Pagamento, Planos de Conta, Portadores, Instruções Bancárias e Boleto sem alterar. → _São configurações da empresa inteira: mexer afeta notas, boletos e fluxo de caixa._
+
+**Resultado esperado**
+- [ ] (n/v) Os títulos do pedido foram gerados com valor e vencimento certos.
+
+## Fluxo de projetos e obras: cadastro, estágios, painéis e diário  `fluxo-09-projetos-obra.html` — 17 etapa(s)
+
+**Pré-requisitos**
+- [ ] (doc) Cliente de teste e permissão para criar projetos, estágios e etapas.
+
+**1. Cadastrar a obra** · Cadastros > Projetos > Novo Projeto
+- [ ] (doc) Tentar salvar sem nome e com data de fim anterior à de início. → _Os dois são recusados sem perder o que foi digitado._
+- [ ] (doc) Acrescentar o resultado previsto (linhas de receita e despesa com categoria e conta), salvar e reabrir. → _Valores e classificações voltam iguais; editar uma linha não a recria._
+- [ ] (doc) Comparar Todos os Projetos (cartões e indicadores) com a lista de gestão. → _Os números do topo batem com a contagem filtrada; a gestão mostra obras ativas e inativas, os seletores só as ativas._
+
+**2. Estágios e etapas** · ações da linha do projeto: Estágios e Etapas
+- [ ] (doc) Criar três estágios com peso (ex.: 20, 30, 50) e reordená-los. → _A nova ordem persiste; ao marcar "feito" a data de conclusão é preenchida e ao reabrir é limpa._
+- [ ] (doc) Criar etapas dentro dos estágios. → _Entram no fim da lista, com a ordem correta._
+- [ ] (doc) Em Solicitações de Compra e Ordens de Produção, escolher a obra e usar a cascata Estágio → Etapa. → _O estágio só habilita depois da obra, a etapa só depois do estágio; trocar a obra limpa os dois filtros._
+- [ ] (doc) Tentar excluir um estágio ou etapa com solicitação de compra, OP ou transferência vinculada. → _É recusado listando o que trava._
+
+**3. Ligar a obra aos documentos** · campo Projeto dos documentos
+- [ ] (doc) Criar medição, OP, solicitação de compra e nota com a mesma obra. → _Cada documento aparece nas abas da obra (Produção, Campo, Compras) e nas listas filtradas por Projeto._
+
+**4. Painéis da obra** · Financeiro > Painel Financeiro de Projetos (/projetos/painel) e módulo Projetos
+- [ ] (doc) Ler pendências, avisos inteligentes e o andamento (Venda, Faturamento, Recebido, Campo/Entrega). → _Títulos vencidos abrem o título específico; pendências somem após a baixa. Obra saudável não mostra aviso alarmista._
+- [ ] (doc) Abrir Progresso da Obra e Material, Plano de Resultado (previsto × realizado) e Comparar Obras. → _Material mostra o que entrou, foi consumido e falta consumir; o plano compara por categoria e projeta estouro._
+- [ ] (doc) Conferir a regra: custo = destinado/comprometido (não caixa) e receita = nota autorizada (não pedido). → _Diferenças entre o painel e o financeiro por causa dessa regra não são erro._
+
+**5. Diário de obra e ciclo de vida** · Projetos > Diário de Obra e ações da linha
+- [ ] (doc) Fazer uma postagem de teste no Diário de Obra e abri-la a partir de Serviços. → _O diário recebe também os serviços de campo da obra (só obras com projeto no pedido)._
+- [ ] (doc) Inativar a obra e procurá-la nos seletores (pedido, títulos, OP, solicitação). → _Some de todos os seletores e de Todos os Projetos; os documentos já emitidos continuam apontando para ela. Reativar traz tudo de volta._
+- [ ] (doc) Tentar excluir uma obra com documentos e depois uma sem nenhum. → _A primeira recusa listando os vínculos; a segunda exclui e leva junto endereços, estágios, etapas e resultado previsto._
+
+**Resultado esperado**
+- [ ] (doc) A obra de teste recebeu pedido, medição, OP, compra e nota, e as abas e filtros mostram esses documentos.
+- [ ] (doc) O Painel Financeiro, o progresso e o plano de resultado mostram números coerentes com os documentos.
+
+## Fluxo de tarefas: quadro, cartão, regras e colaboração  `fluxo-10-tarefas.html` — 24 etapa(s)
+
+**Pré-requisitos**
+- [ ] (doc) Usuários de teste: gestor, executor e observador (cada um com uma permissão diferente) e uma segunda sessão para ver a atualização em tempo real.
+- [ ] (doc) Licença do módulo Tarefas (e plano PRO, se anexos, automações ou Gantt dependerem dele).
+- [ ] (doc) Quadro de teste com listas Backlog, Em andamento, Revisão e Concluído, algumas etiquetas e tarefas com e sem prazo.
+
+**1. Quadros e listas** · Tarefas > Meus Quadros
+- [ ] (doc) Criar um quadro em branco com nome e descrição (e, depois, um vinculado a um projeto). → _Nome vazio ou só espaços é recusado; cliques repetidos não duplicam._
+- [ ] (doc) Criar as listas, renomear e reordenar por arrastar; recarregar. → _A ordem final é a mesma em outra sessão._
+- [ ] (doc) Tentar excluir uma lista com cartões e depois uma vazia. → _A com cartões é bloqueada ou exige transferência; a vazia some._
+- [ ] (doc) Arquivar e restaurar um quadro; conferir o quadro padrão de tarefas avulsas. → _O padrão não pode ser renomeado nem arquivado._
+
+**2. Limite de trabalho (WIP)** · configuração da lista Em andamento
+- [ ] (doc) Definir WIP = 2 na lista Em andamento e tentar mover um terceiro cartão para ela. → _O limite aparece na lista e o terceiro movimento é bloqueado com mensagem clara; o cartão não some._
+- [ ] (doc) Liberar uma vaga e mover de novo; digitar 0, negativo, decimal e texto no campo. → _O terceiro entra depois da vaga; valores inválidos são recusados._
+- [ ] (doc) Tentar estourar o WIP por arrastar, pelo menu Mover, pelo detalhe e por ação em lote. → _Nenhuma rota contorna o limite._
+
+**3. Cartão e status** · detalhe da tarefa
+- [ ] (doc) Criar uma tarefa com título, descrição, prioridade, início, prazo, horas, responsáveis e etiquetas. → _Título vazio, datas invertidas e horas negativas são recusados. Datas próximas da meia-noite ficam no dia escolhido._
+- [ ] (doc) Percorrer Pendente → Em andamento → Em revisão → Concluída e reabrir. → _A data de conclusão é preenchida ao concluir e retirada ao reabrir; o histórico registra cada transição._
+- [ ] (doc) Cancelar uma tarefa e tentar reabri-la. → _"Cancelada" é terminal: a reabertura é impedida._
+- [ ] (doc) Tentar concluir uma tarefa com predecessora aberta e uma tarefa-pai com subtarefa aberta. → _A conclusão é impedida e o sistema diz qual dependência falta; a mesma regra vale em Kanban, lista, tabela e detalhe._
+
+**4. Colaboração** · abas do detalhe da tarefa
+- [ ] (doc) Publicar um comentário simples e outro com @menção. → _A pessoa mencionada é notificada uma única vez; o autor não recebe a própria notificação. Menção de usuário de outra empresa é recusada._
+- [ ] (doc) Criar dois checklists, marcar itens e excluir um item. → _O percentual atualiza na hora; um checklist não afeta o vizinho._
+- [ ] (doc) Anexar um arquivo válido e tentar um acima de 10 MB e um executável. → _Os dois últimos são recusados; arquivo em análise não pode ser baixado._
+- [ ] (doc) Duplicar a tarefa (duplo clique no botão) e arquivá-la. → _A cópia vem "(cópia)" em Pendente, sem comentários nem anexos; o duplo clique não cria duas; a arquivada abre só para leitura._
+
+**5. Visões, vínculos e automação** · Tarefas e roteiros 03, 06, 07 e 09 do plano de QA
+- [ ] (doc) Alternar as visões do quadro (Kanban, lista, tabela, calendário e Gantt) e aplicar filtros. → _O mesmo cartão mostra a mesma informação em todas as visões; com filtro ativo, reordenar é bloqueado._
+- [ ] (n/v) Vincular uma tarefa a um Pedido de Venda, a um registro do CRM e a um Projeto. → _O vínculo leva ao registro certo; o ERP de outra empresa não é aceito._
+- [ ] (n/v) Criar uma recorrência e uma automação de teste (notificação) e conferir o disparo. → _A ação acontece uma única vez, no horário correto, e só para os destinatários da empresa._
+- [ ] (n/v) Conferir Minhas Tarefas, o dashboard e a exportação. → _Mostram o mesmo total do quadro._
+
+**Resultado esperado**
+- [ ] (doc) O quadro respeitou lista, WIP, status e dependência em todas as telas.
+- [ ] (doc) Comentário, menção, checklist e anexo funcionaram sem duplicar nem vazar entre empresas.
 
 ## Onboarding do estagiário  `00-onboarding-estagiario.html` — 11 etapa(s)
 

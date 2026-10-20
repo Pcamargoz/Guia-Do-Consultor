@@ -42,7 +42,8 @@ for (const i of manifest.itens) {
   catch (e) { falhas.push(`${rotulo}: script com erro — ${e.message}`); }
   if (i.grupo === 'qa') continue;
 
-  const dataIds = [...html.matchAll(/data-id="([^"]+)"/g)].map((m) => m[1]);
+  const corpo = html.slice(0, html.lastIndexOf("<script>"));
+  const dataIds = [...corpo.matchAll(/data-id="([^"]+)"/g)].map((m) => m[1]);
   checar(new Set(dataIds).size === dataIds.length, `${rotulo}: ids de etapa únicos`);
   checar(dataIds.length === i.etapas, `${rotulo}: etapas do manifest = caixas no HTML`, `${i.etapas} × ${dataIds.length}`);
   checar(html.includes(`data-chave="${i.chave}"`), `${rotulo}: chave de progresso do manifest`);

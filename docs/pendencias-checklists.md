@@ -80,13 +80,23 @@ Os relatórios completos de cada rodada ficaram fora do repositório. Os pontos 
 
 ## Fluxos por processo (consultor)
 
-| Fluxo | Situação |
+Os 10 fluxos têm checklist para **validação manual por pessoas** (aba Checklist do guia). A validação por agentes foi pausada em 20/10/2026 a pedido do time: primeiro a documentação, depois a validação humana.
+
+| Fluxo | Origem do conteúdo |
 |---|---|
-| 01 · Suprimentos | ✅ executado em 19/10 (SC-000289 → COT-000013 → PC-000009 → NR-000013 → título pago) |
-| 02 · Serviços de campo | ✅ executado em 19/10 (MED-000013 → INS-000003 → VIST-000001 → AT-000002) |
-| 03 · Comercial | ✅ até o ganho da oportunidade (19/10); a geração do pedido pela oportunidade está bloqueada — ver docs/testes/fluxo-comercial-handoff.md |
-| 04 · Estoque, 05 · Financeiro, produção com estrutura, projetos e expedição com ocorrências | briefs prontos em docs/testes/ |
+| 01 · Suprimentos | executado no dev em 19/10 (SC-000289 → COT-000013 → PC-000009 → NR-000013 → título pago) |
+| 02 · Serviços de campo | executado no dev em 19/10 (MED-000013 → INS-000003 → VIST-000001 → AT-000002) |
+| 03 · Comercial | executado até o ganho da oportunidade; a geração do pedido pela oportunidade ficou bloqueada |
+| 04 · Estoque, 05 · Produção, 06 · Expedição | roteiros dos planos de QA + o que foi visto (caminho feliz da expedição e da OP) — **a validar por pessoas** |
+| 07 · Faturamento e fiscal | execução parcial de 19/10 (nota finalizada sem transmitir) + decisões do responsável fiscal |
+| 08 · Financeiro | baixa parcial/total e estorno executados em 20/10; "Gerar Títulos" do pedido bloqueado pelo tipo do meio de pagamento |
+| 09 · Projetos e obra, 10 · Tarefas | roteiros dos planos de QA — **a validar por pessoas** |
 
-Para limpar (Suprimentos): fornecedor 107; SC-000289; COT-000013; PC-000009; NR-000013 (NF fictícia 990001/900); movimento de estoque 000005; título NR-000013/001 (pago); parâmetro "Usar Conferência Física" (ligado nesta empresa).
+Como as pessoas validam e devolvem o resultado: [validacao-manual.md](validacao-manual.md).
 
-Para limpar (Serviços): técnico 108; equipe id 18; MED-000013; INS-000003; VIST-000001; AT-000002; MED-000012 antiga (reprovar/excluir); categoria de checklist TFC01; **template de checklist obrigatório "TESTE FLUXO CONSULTOR" (desativar)**; vistoria automática = 1 dia.
+## Limpeza do ambiente de teste (dev, METALURGICA TEST)
+
+- **Suprimentos:** fornecedor 107; SC-000289; COT-000013; PC-000009; NR-000013 (NF fictícia 990001/900); movimento de estoque 000005; título NR-000013/001 (pago); parâmetro "Usar Conferência Física" (ligado).
+- **Serviços:** técnico 108; equipe id 18; MED-000013; INS-000003; VIST-000001; AT-000002; MED-000012 antiga (reprovar/excluir); categoria de checklist TFC01; **template de checklist obrigatório "TESTE FLUXO CONSULTOR" (desativar)**; vistoria automática = 1 dia.
+- **Financeiro (20/10):** o título manual TESTE-FLUXO-PV33 foi estornado, baixado em parte (R$ 300,00) e o residual /002 (R$ 565,38) baixado: o cadastro tem os títulos /001 e /002 recebidos. A exclusão (lixeira) **não** foi feita. Saldo da conta "TESTE FLUXO CONSULTOR" ≈ R$ 365,38 antes e +865,38 depois. O meio "Duplicata Mercantil" continua como tipo Boleto (a troca para "Outros" depende de decisão do fiscal: o tipo pode alimentar o código de pagamento da nota).
+- **Comercial:** faixa de alçada de desconto criada e desativada; oportunidades OPO-000011, 12 e 15; clientes 106 e 109; leads de teste.

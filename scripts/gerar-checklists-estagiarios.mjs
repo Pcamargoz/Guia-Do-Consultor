@@ -11,6 +11,8 @@ import path from 'node:path';
 import { CHECKLISTS, ONBOARDING, META } from './dados-checklists-estagiarios.mjs';
 import { CONSULTOR } from './dados-checklist-consultor.mjs';
 import { FLUXOS } from './dados-fluxos-consultor.mjs';
+import { FLUXOS_OPERACAO } from './dados-fluxos-operacao.mjs';
+import { FLUXOS_GESTAO } from './dados-fluxos-gestao.mjs';
 
 const AQUI = path.dirname(fileURLToPath(import.meta.url));
 const RAIZ = path.join(AQUI, '..');
@@ -34,6 +36,8 @@ const selo = (s) => `<span class="selo ${STATUS[s].classe}" title="${STATUS[s].r
 const svg = (d) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`;
 const ICONE = {
   alvo: svg('<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>'),
+  bandeira: svg('<path d="M4 22V4"/><path d="M4 4h13l-2 4 2 4H4"/>'),
+  copiar: svg('<rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h8"/>'),
   lista: svg('<path d="M9 6h11M9 12h11M9 18h11"/><path d="m3 6 1 1 2-2M3 12l1 1 2-2M3 18l1 1 2-2"/>'),
   ok: svg('<path d="M20 6 9 17l-5-5"/>'),
   alerta: svg('<path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4M12 17h.01"/>'),
@@ -68,7 +72,7 @@ const legenda = `<div class="legenda" aria-label="Legenda da origem das informa�
 function item(id, p, rotuloRes) {
   const res = p.r ? `<span class="res"><b>${rotuloRes}:</b> ${fmt(p.r)}</span>` : '';
   const campo = p.campo ? `<input class="reg" type="text" data-reg="${esc(id)}" placeholder="${esc(p.campo)}" aria-label="${esc(p.campo)}">` : '';
-  return `<li class="item"><label><input type="checkbox" data-id="${esc(id)}"><span class="txt"><span class="acao">${fmt(p.t)}</span>${res}</span>${selo(p.s)}</label>${campo}</li>`;
+  return `<li class="item"><label><input type="checkbox" data-id="${esc(id)}"><span class="txt"><span class="acao">${fmt(p.t)}</span>${res}</span>${selo(p.s)}</label>${campo}<button type="button" class="flag" data-flag="${esc(id)}" aria-pressed="false" title="Registrar um problema nesta etapa">${ICONE.bandeira}Problema</button></li>`;
 }
 
 function topo(subtitulo, marca) {
@@ -77,11 +81,13 @@ function topo(subtitulo, marca) {
   <img src="${LOGO}" alt="Faktory Flow" width="120" height="36">
   <div class="marca"><strong>${esc(marca)}</strong><span>${esc(subtitulo)}</span></div>
   <div class="espaco"></div>
+  <button class="btn" id="btnRelatorio" type="button" title="Copiar o relatório de validação (Markdown)">${ICONE.copiar}<span>Relatório</span></button>
   <button class="btn" id="btnImprimir" type="button" title="Imprimir ou salvar em PDF">${ICONE.imprimir}<span>Imprimir</span></button>
   <button class="btn" id="btnLimpar" type="button" title="Desmarcar tudo">${ICONE.limpar}<span>Recomeçar</span></button>
   <button class="btn" id="btnTema" type="button" aria-label="Alternar tema claro/escuro" title="Alternar tema">${ICONE.tema}</button>
 </header>
-<div class="barra" role="progressbar" aria-label="Progresso do checklist"><i id="barraFill"></i></div>`;
+<div class="barra" role="progressbar" aria-label="Progresso do checklist"><i id="barraFill"></i></div>
+<div class="aviso" id="aviso" role="status" aria-live="polite"></div>`;
 }
 
 const anel = `<div class="anel" role="img" aria-label="Progresso do checklist">
@@ -126,7 +132,7 @@ ${corpo}
 `;
 }
 
-const blocoAnotacoes = (placeholder) => `<section class="secao no-print-notas" id="s-notas"><h2>${ICONE.nota}Minhas dúvidas e anotações</h2><textarea id="notas" placeholder="${esc(placeholder)}"></textarea><p class="dica">Fica salvo só neste navegador.</p></section>`;
+const blocoAnotacoes = (placeholder) => `<section class="secao no-print-notas" id="s-notas"><h2>${ICONE.nota}Minhas dúvidas e anotações</h2><label class="validador">Quem está validando <input id="validador" type="text" placeholder="Seu nome (vai no relatório)" autocomplete="name"></label><textarea id="notas" placeholder="${esc(placeholder)}"></textarea><p class="dica">Fica salvo só neste navegador. Use <b>Relatório</b> no topo para copiar o resultado da validação.</p></section>`;
 
 function checklist(c, opcoes = {}) {
   const rotuloRes = opcoes.rotuloRes || 'Resultado';
@@ -153,7 +159,7 @@ function checklist(c, opcoes = {}) {
   const corpo = `
 ${heroi({
     etiqueta: c.etiqueta, titulo: c.titulo, subtitulo: c.subtitulo,
-    chips: `<span class="chip">${ICONE.lista}<b id="contagem">0 de ${passos.length}</b> etapas</span><span class="chip">${ICONE.alvo}<b>${verificados}</b> de ${passos.length} conferidas no sistema</span>`,
+    chips: `<span class="chip">${ICONE.lista}<b id="contagem">0 de ${passos.length}</b> etapas</span><span class="chip">${ICONE.alvo}<b>${verificados}</b> de ${passos.length} conferidas no sistema</span><span class="chip" id="chipProblemas">${ICONE.bandeira}<b id="problemas">0</b> problemas</span>`,
   })}
 
 <section class="secao" id="s-objetivo"><h2><span class="n">1</span>Objetivo</h2><p>${fmt(c.objetivo)}</p></section>
@@ -230,7 +236,7 @@ const QA = [
 ];
 const resumoEtapas = (c) => { const p = contarPassos(c); return { etapas: p.length, verificadas: p.filter((x) => x.s === 'v').length }; };
 
-const consultores = [CONSULTOR, ...FLUXOS];
+const consultores = [CONSULTOR, ...FLUXOS, ...FLUXOS_OPERACAO, ...FLUXOS_GESTAO];
 [ONBOARDING, ...CHECKLISTS, ...consultores].forEach((c) => conferir(c, c.arquivo));
 const ids = [ONBOARDING, ...CHECKLISTS, ...consultores].map((c) => c.arquivo);
 if (new Set(ids).size !== ids.length) throw new Error('arquivos de saída repetidos');
