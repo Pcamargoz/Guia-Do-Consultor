@@ -62,46 +62,6 @@
     main.appendChild(paineis[id]);
   }
 
-  /* ---------- Cabeçalho flutuante ao rolar ---------- */
-  // Ao descer a página, o cabeçalho sai do fluxo e fica fixo e centralizado no topo.
-  const espaco = document.createElement('div');
-  espaco.className = 'ab-topo-espaco';
-  espaco.setAttribute('aria-hidden', 'true');
-  topo.before(espaco);
-
-  let fixo = false;
-  const podeFixar = matchMedia('(min-width: 901px)');
-
-  function medirColuna() {
-    const r = main.getBoundingClientRect();
-    topo.style.setProperty('--ab-centro', `${r.left + r.width / 2}px`);
-    topo.style.setProperty('--ab-largura', `${Math.max(320, r.width - 32)}px`);
-  }
-
-  function ajustarTopo() {
-    medirColuna();
-    // O espaçador ocupa o lugar do cabeçalho, então marca sempre a posição original dele.
-    const limite = espaco.getBoundingClientRect().top + scrollY - 12;
-    const deveFixar = podeFixar.matches && scrollY > limite;
-    if (deveFixar === fixo) return;
-    fixo = deveFixar;
-    espaco.style.height = deveFixar ? `${topo.offsetHeight}px` : '';
-    espaco.classList.toggle('ativo', deveFixar);
-    topo.classList.toggle('ab-topo--fixo', deveFixar);
-  }
-
-  addEventListener('scroll', ajustarTopo, { passive: true });
-  addEventListener('resize', () => {
-    if (fixo) {
-      topo.classList.remove('ab-topo--fixo');
-      espaco.style.height = `${topo.offsetHeight}px`;
-      topo.classList.add('ab-topo--fixo');
-    }
-    ajustarTopo();
-  });
-  podeFixar.addEventListener('change', ajustarTopo);
-  ajustarTopo();
-
   /* ---------- Itens no menu lateral ---------- */
   const secao = (nome) => [...sidebar.querySelectorAll('.nav-section')].find((s) => s.textContent.trim() === nome);
   const navItem = (aba, texto) => {

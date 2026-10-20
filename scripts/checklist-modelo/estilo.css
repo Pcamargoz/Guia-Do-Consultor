@@ -18,6 +18,8 @@
   --bad:#F4837A;--bad-bg:#3A1512;--lima-soft:#232B0A;--lima-line:#4B5A12;--lima-txt:#E6EC6A;--glass:rgb(16 35 53/.78);
   --sh-sm:0 2px 6px rgb(0 0 0/.35);--sh-md:0 10px 30px rgb(0 0 0/.45);
 }
+:root{color-scheme:light}
+:root[data-theme="dark"]{color-scheme:dark}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:92px}
 body{font-family:var(--body);font-size:15px;line-height:1.6;color:var(--ink);background:var(--canvas);-webkit-font-smoothing:antialiased;min-height:100vh;
@@ -153,9 +155,11 @@ textarea:focus{outline:none;border-color:var(--p);box-shadow:0 0 0 4px rgb(52 12
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 
 /* ---------- Dentro do guia (iframe) ---------- */
-html.embed .topo .marca,html.embed .topo img{display:none}
-html.embed .topo{position:static;margin-top:8px;padding:0;background:none;border:0;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none}
-html.embed .shell{margin-top:12px}
+html.embed,html.embed body{overflow:hidden}
+html.embed body{min-height:0;background:transparent}
+html.embed .topo,html.embed .barra,html.embed .indice{display:none!important}
+html.embed .shell{grid-template-columns:minmax(0,1fr);width:100%;margin:0 auto;padding-bottom:8px}
+html.embed .hero{margin-top:2px}
 
 @media (max-width:640px){
   .topo{padding-left:10px}.topo .marca{display:none}.btn span{display:none}.btn{width:38px;padding:0;justify-content:center}

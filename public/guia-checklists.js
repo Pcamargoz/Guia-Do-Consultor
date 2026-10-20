@@ -10,6 +10,8 @@
     baixar: svg('<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5M12 15V3"/>'),
     abrir: svg('<path d="M5 12h14"/><path d="m13 6 6 6-6 6"/>'),
     voltar: svg('<path d="M19 12H5"/><path d="m11 18-6-6 6-6"/>'),
+    relatorio: svg('<rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h8"/>'),
+    recomecar: svg('<path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/>'),
     externo: svg('<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6M10 14 21 3"/>'),
     consultor: svg('<circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="12" r="2.5"/><circle cx="6" cy="18" r="2.5"/><path d="M8.5 6H13a3 3 0 0 1 3 3v.5M8.5 18H13a3 3 0 0 0 3-3v-.5"/>'),
     estagiario: svg('<path d="m2 9 10-5 10 5-10 5Z"/><path d="M6 11.5V16c0 1.2 2.7 2.5 6 2.5s6-1.3 6-2.5v-4.5"/>'),
@@ -38,6 +40,7 @@
     let busca = '';
     let aberto = null;
     let rolagem = 0;
+    let secoes = [];
 
     raiz.innerHTML = `
       <section class="ckx-lista">
@@ -64,13 +67,19 @@
         <div class="ckx-visor-topo">
           <button type="button" class="ckx-btn ckx-btn--sec" data-voltar>${icones.voltar}<span>Biblioteca</span></button>
           <strong data-visor-titulo></strong>
+          <label class="ckx-ir" data-ir hidden><span class="ckx-sr">Ir para a seção</span>
+            <select data-ir-select aria-label="Ir para a seção"><option value="">Ir para…</option></select>
+          </label>
           <span class="ckx-visor-acoes">
-            <a class="ckx-btn ckx-btn--sec" data-visor-nova target="_blank" rel="noopener" title="Abrir em nova aba">${icones.externo}<span>Nova aba</span></a>
+            <button type="button" class="ckx-btn ckx-btn--sec" data-acao="relatorio" title="Copiar o relatório de validação (Markdown)">${icones.relatorio}<span>Relatório</span></button>
+            <button type="button" class="ckx-btn ckx-btn--sec ckx-btn--icone" data-acao="recomecar" aria-label="Recomeçar este checklist" title="Recomeçar (apaga marcações e anotações)">${icones.recomecar}</button>
+            <a class="ckx-btn ckx-btn--sec ckx-btn--icone" data-visor-nova target="_blank" rel="noopener" aria-label="Abrir em nova aba" title="Abrir em nova aba">${icones.externo}</a>
             <a class="ckx-btn" data-visor-baixar title="Baixar o HTML">${icones.baixar}<span>Baixar</span></a>
           </span>
         </div>
-        <iframe class="ckx-frame" data-frame title="Checklist" loading="lazy"></iframe>
-      </section>`;
+        <iframe class="ckx-frame" data-frame title="Checklist" scrolling="no"></iframe>
+      </section>
+      <div class="ckx-aviso" data-aviso role="status" aria-live="polite"></div>`;
 
     const $ = (s) => raiz.querySelector(s);
     const lista = $('.ckx-lista');
@@ -128,6 +137,8 @@
       $('[data-visor-nova]').href = urlAbrir(i);
       $('[data-visor-baixar]').href = urlBaixar(i);
       $('[data-visor-baixar]').setAttribute('download', i.arquivo.split('/').pop());
+      frame.style.height = '';
+      $('[data-ir]').hidden = true;
       frame.src = urlAbrir(i);
       lista.hidden = true;
       visor.hidden = false;
@@ -139,6 +150,7 @@
       const arquivo = aberto.arquivo;
       aberto = null;
       frame.removeAttribute('src');
+      secoes = [];
       visor.hidden = true;
       lista.hidden = false;
       renderGrade();
@@ -146,7 +158,35 @@
       raiz.querySelector(`[data-abrir="${CSS.escape(arquivo)}"]`)?.focus({ preventScroll: true });
     }
 
+    /* Mensagens do checklist embutido: altura (sem rolagem interna), seções e avisos. */
+    let tAviso;
+    const avisar = (msg) => {
+      const el = $('[data-aviso]');
+      el.textContent = msg; el.classList.add('on');
+      clearTimeout(tAviso); tAviso = setTimeout(() => el.classList.remove('on'), 2600);
+    };
+    window.addEventListener('message', (e) => {
+      if (e.origin !== location.origin || e.source !== frame.contentWindow || !e.data?.ffChecklist) return;
+      if (e.data.altura) frame.style.height = `${e.data.altura}px`;
+      if (e.data.secoes) {
+        secoes = e.data.secoes;
+        const sel = $('[data-ir-select]');
+        sel.innerHTML = '<option value="">Ir para…</option>' + secoes.map((s, n) => `<option value="${n}">${esc(s.rotulo)}</option>`).join('');
+        $('[data-ir]').hidden = !secoes.length;
+      }
+      if (e.data.aviso) avisar(e.data.aviso);
+    });
+    $('[data-ir-select]').addEventListener('change', (e) => {
+      const s = secoes[Number(e.target.value)];
+      e.target.value = '';
+      if (!s) return;
+      const topoFrame = frame.getBoundingClientRect().top + scrollY;
+      scrollTo({ top: topoFrame + s.top - 150, behavior: 'smooth' });
+    });
+
     raiz.addEventListener('click', (e) => {
+      const ac = e.target.closest('[data-acao]');
+      if (ac) { frame.contentWindow?.postMessage({ ffAcao: ac.dataset.acao }, location.origin); return; }
       const f = e.target.closest('[data-filtro]');
       if (f) { filtro = f.dataset.filtro; renderFiltros(); renderGrade(); return; }
       const a = e.target.closest('[data-abrir]');

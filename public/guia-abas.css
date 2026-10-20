@@ -1,10 +1,11 @@
 /* Faktory Flow — Abas do Guia (Guia do Consultor / Apostila). Usa os tokens de brand-system.css. */
 
 .ab-topo {
+  /* Cabeçalho que acompanha a rolagem: sticky puro (sem JavaScript), com a largura do conteúdo para não mudar entre abas. */
   position: sticky; top: 12px; z-index: 800;
-  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px;
-  margin-bottom: var(--space-8); padding: 8px;
-  background: rgb(255 255 255 / .86); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  display: flex; flex-wrap: nowrap; align-items: center; justify-content: space-between; gap: 12px;
+  width: 100%; margin: 0 0 var(--space-8); padding: 8px;
+  background: rgb(255 255 255 / .9); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
   border: 1px solid var(--color-line); border-radius: var(--radius-pill); box-shadow: var(--shadow-md);
 }
 .ab-abas { display: inline-flex; gap: 4px; padding: 4px; border-radius: var(--radius-pill); background: var(--brand-primary-50); }
@@ -147,19 +148,12 @@
   .ab-acoes { order: 3; width: 100%; }
 }
 
-/* ---------- Cabeçalho flutuante e centralizado ao rolar ---------- */
-.ab-topo-espaco { display: none; }
-.ab-topo-espaco.ativo { display: block; }
-@media (min-width: 901px) {
-  .ab-topo--fixo {
-    /* Centralizado na coluna de conteúdo (à direita do menu lateral), nunca sobre ele. */
-    position: fixed; top: 12px; left: var(--ab-centro, 50%); transform: translateX(-50%);
-    width: max-content; max-width: var(--ab-largura, min(1200px, calc(100vw - 32px)));
-    z-index: 950; justify-content: center;
-    background: rgb(255 255 255 / .94); box-shadow: var(--shadow-lg);
-  }
+/* Celular: abas e avatar na mesma linha */
+@media (max-width: 600px) {
+  .ab-topo { gap: 8px; }
+  .ab-abas { min-width: 0; gap: 2px; padding: 3px; }
+  .ab-aba { min-height: 40px; padding: 8px 11px; }
+  .ab-conta { flex: none; }
+  .ab-seta { display: none; }
+  .ab-usuario { padding-right: 4px; }
 }
-@media (prefers-reduced-motion: no-preference) {
-  .ab-topo--fixo { animation: ab-topo-desce .28s var(--ease-out); }
-}
-@keyframes ab-topo-desce { from { opacity: 0; transform: translate(-50%, -12px); } }

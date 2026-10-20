@@ -93,7 +93,7 @@
   regs.forEach(function(r){ r.value = (estado.regs && estado.regs[r.getAttribute('data-reg')]) || ''; r.addEventListener('input', salvar); });
   if (notas) { notas.value = estado.notas || ''; notas.addEventListener('input', salvar); }
 
-  if ($('btnLimpar')) $('btnLimpar').addEventListener('click', function(){
+  function recomecar(){
     if (!confirm('Desmarcar todas as etapas e apagar anotações e registros deste checklist?')) return;
     caixas.forEach(function(c){ c.checked = false; });
     regs.forEach(function(r){ r.value = ''; });
@@ -102,7 +102,8 @@
     Object.keys(obs).forEach(function(k){ obs[k].remove(); delete obs[k]; });
     [].forEach.call(document.querySelectorAll('.com-problema'), function(i){ i.classList.remove('com-problema'); });
     apagar(CHAVE); atualizar();
-  });
+  }
+  if ($('btnLimpar')) $('btnLimpar').addEventListener('click', recomecar);
   if ($('btnImprimir')) $('btnImprimir').addEventListener('click', function(){ window.print(); });
 
   /* Relatório de validação em Markdown, pronto para colar num chamado ou e-mail. */
@@ -132,11 +133,12 @@
     return t.join('\n');
   }
   function aviso(msg){
+    if (raiz.classList.contains('embed') && window.parent !== window) { window.parent.postMessage({ ffChecklist: true, aviso: msg }, location.origin); return; }
     var a = $('aviso'); if (!a) return;
     a.textContent = msg; a.classList.add('on');
     clearTimeout(aviso.t); aviso.t = setTimeout(function(){ a.classList.remove('on'); }, 2600);
   }
-  if ($('btnRelatorio')) $('btnRelatorio').addEventListener('click', function(){
+  function copiarRelatorio(){
     var md = relatorio();
     function legado(){
       var ta = document.createElement('textarea'); ta.value = md; ta.style.position = 'fixed'; ta.style.opacity = '0';
@@ -145,18 +147,19 @@
       ta.remove(); aviso(ok ? 'Relatório copiado' : 'Não foi possível copiar');
     }
     if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(md).then(function(){ aviso('Relatório copiado'); }, legado); else legado();
-  });
+  }
+  if ($('btnRelatorio')) $('btnRelatorio').addEventListener('click', copiarRelatorio);
 
   /* Índice lateral: destaca a seção visível. */
   var links = [].slice.call(document.querySelectorAll('.indice a'));
   if (links.length && 'IntersectionObserver' in window) {
-    var obs = new IntersectionObserver(function(entradas){
+    var observador = new IntersectionObserver(function(entradas){
       entradas.forEach(function(e){
         if (!e.isIntersecting) return;
         links.forEach(function(a){ a.setAttribute('aria-current', String(a.getAttribute('href') === '#' + e.target.id)); });
       });
     }, { rootMargin: '-15% 0px -70% 0px' });
-    links.forEach(function(a){ var alvo = document.getElementById(a.getAttribute('href').slice(1)); if (alvo) obs.observe(alvo); });
+    links.forEach(function(a){ var alvo = document.getElementById(a.getAttribute('href').slice(1)); if (alvo) observador.observe(alvo); });
   }
 
   /* Onboarding: progresso de cada checklist já aberto neste navegador. */
@@ -164,5 +167,24 @@
     var v = ler('ff-estagiario:' + el.getAttribute('data-prog') + ':pct');
     el.textContent = v === null ? 'não iniciado' : v + '%';
   });
+  /* Dentro do guia (iframe): a página-mãe rola; aqui só informamos altura e seções e recebemos comandos. */
+  if (raiz.classList.contains('embed') && window.parent !== window) {
+    var enviar = function(){
+      var secoes = [].map.call(document.querySelectorAll('.indice a'), function(a){
+        var alvo = document.getElementById(a.getAttribute('href').slice(1));
+        return alvo ? { rotulo: a.querySelector('span').textContent, top: Math.round(alvo.getBoundingClientRect().top + window.pageYOffset) } : null;
+      }).filter(Boolean);
+      window.parent.postMessage({ ffChecklist: true, altura: Math.ceil(document.body.getBoundingClientRect().height), secoes: secoes }, location.origin);
+    };
+    if ('ResizeObserver' in window) new ResizeObserver(enviar).observe(document.body);
+    window.addEventListener('load', enviar);
+    window.addEventListener('message', function(e){
+      if (e.origin !== location.origin || !e.data || !e.data.ffAcao) return;
+      if (e.data.ffAcao === 'relatorio') copiarRelatorio();
+      else if (e.data.ffAcao === 'recomecar') recomecar();
+      else if (e.data.ffAcao === 'imprimir') window.print();
+    });
+    enviar();
+  }
   atualizar();
 })();
