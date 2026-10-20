@@ -84,7 +84,7 @@ export const FLUXOS_GESTAO = [
   {
     id: 'fluxo-financeiro', arquivo: 'fluxo-08-financeiro.html', etiqueta: 'Consultor · Fluxo financeiro',
     titulo: 'Fluxo financeiro: títulos, baixa, saldos e fluxo de caixa',
-    rodape: 'Fluxos do Consultor · Faktory Flow v1.22 · baixa parcial/total e estorno executados em 20/10/2026 (dev); "Gerar Títulos" do pedido bloqueado pelo tipo do meio de pagamento',
+    rodape: 'Fluxos do Consultor · Faktory Flow v1.22 · geração de títulos, baixa parcial/total, estorno, saldos, fluxo de caixa, DRE e painel executados em 20/10/2026 (dev); "Gerar Títulos" exigiu trocar o tipo do meio "Duplicata Mercantil" de Boleto para Outros',
     subtitulo: 'Pedido → Gerar Títulos → Contas a Receber → baixa (parcial e total) → estorno → Saldos → Fluxo de Caixa → DRE e painel da obra. Inclui o pagamento de um título a pagar.',
     objetivo: 'Provar que os títulos nascem do pedido (ou da nota/recebimento), que a baixa move o saldo da conta e o fluxo de caixa, e que os painéis de gestão mostram o mesmo número.',
     prerequisitos: [
@@ -101,7 +101,7 @@ export const FLUXOS_GESTAO = [
           { t: 'Conferir quando **Gerar Títulos** está habilitado no menu do pedido.', r: 'Fica desabilitado em Faturado/Lib. Expedição ("Pedido já faturado") e volta depois de Entregue.', s: 'v' },
           { t: 'Clicar em **Gerar Títulos** e confirmar.', r: 'Um título por parcela. Se o meio da parcela for de tipo Boleto: "Parcela 1: meio de pagamento Boleto exige uma conta bancária…" (a mensagem diz Boleto mesmo quando o meio é Duplicata Mercantil).', s: 'v' },
           { t: 'Em `Configurações > Meios de Pagamento`, abrir o meio da parcela e ver o **Tipo**.', r: 'Os tipos são Cartão de Crédito/Débito, Dinheiro, PIX, Boleto, Transferência, Cheque e Outros. Mudar o tipo altera o que sai na nota: decisão do fiscal.', s: 'v' },
-          { t: 'Depois de resolver o bloqueio, gerar os títulos e abrir `Financeiro > Contas a Receber`.', r: 'Valor e vencimento iguais à parcela do pedido; a coluna TÍTULOS do pedido passa a "Gerados".', s: 'n', campo: 'Nº dos títulos' },
+          { t: 'Depois de resolver o bloqueio, gerar os títulos e abrir `Financeiro > Contas a Receber`.', r: 'Valor e vencimento iguais à parcela do pedido; a coluna TÍTULOS do pedido passa a "Gerados". Com o tipo do meio trocado para Outros, o PV-000033 gerou o título /001 de R$ 865,38 (vencimento 18/11/2026), sem conta emissora.', s: 'v', campo: 'Nº dos títulos' },
         ],
       },
       {
@@ -129,7 +129,7 @@ export const FLUXOS_GESTAO = [
           { t: 'Abrir o **Fluxo de Caixa** do mês (Ambos, Hierarquias) e achar as linhas dos lançamentos de teste.', r: 'Receitas em "Vendas" e pagamentos na conta de despesa do fornecedor (ex.: Compra de Matéria Prima).', s: 'v' },
           { t: 'Comparar **Saldo Inicial** e **Saldo Final** com `Financeiro > Saldos`.', r: 'Deveriam bater com o saldo real das contas. No ambiente de teste o saldo inicial absorveu o movimento do mês (inicial negativo, final R$ 0,00): anote os números.', s: 'v' },
           { t: 'Abrir a **DRE** e o **Painel Financeiro de Projetos** da obra do pedido.', r: 'A receita vem do que foi recebido/faturado; sem projeto no pedido o painel mostra "A faturar" negativo e andamento incoerente.', s: 'v' },
-          { t: 'Conferir "Recebido no mês", "A receber" e "A pagar" no **Resumo do negócio** da tela Início.', r: 'O valor baixado hoje entra em "Recebido no mês".', s: 'v' },
+          { t: 'Conferir "Recebido no mês", "A receber" e "A pagar" no **Resumo do negócio** da tela Início.', r: 'O valor baixado hoje entra em "Recebido no mês", mas numa baixa parcial o card soma o valor original do título (baixa de 400,00 de um título de 865,38 somou +865): confira o card contra o Extrato.', s: 'v' },
         ],
       },
       {
@@ -140,7 +140,7 @@ export const FLUXOS_GESTAO = [
       },
     ],
     resultado: [
-      { t: 'Os títulos do pedido foram gerados com valor e vencimento certos.', s: 'n' },
+      { t: 'Os títulos do pedido foram gerados com valor e vencimento certos.', s: 'v' },
       { t: 'A baixa (parcial, total e estorno) refletiu em Contas a Receber, Saldos e "Recebido no mês".', s: 'v' },
       { t: 'O Fluxo de Caixa e a DRE mostram os mesmos valores que os Saldos; as diferenças estão anotadas.', s: 'v' },
     ],
@@ -148,9 +148,10 @@ export const FLUXOS_GESTAO = [
       'Baixar, pagar, estornar e gerar boleto movimentam dinheiro de verdade: só em conta de teste e com valor de teste.',
       'Em janelas estreitas, o diálogo de **Estornar** pode abrir fora da área visível.',
       'Excluir um título (lixeira) é permanente: estorne antes e só exclua o que você criou para o teste.',
-      'Baixa parcial cria um **título residual** com número /002: não é duplicidade.',
+      'Baixa parcial cria um **título residual** com número /002: não é duplicidade. Estornar a baixa parcial devolve o título ao valor original e o /002 some.',
+      'Título manual e título gerado do mesmo pedido **duplicam** DRE, painel e "Recebido no mês": use um só.',
     ],
-    naoValidado: [AVISO_MANUAL, '"Gerar Títulos" do pedido, boleto/PIX, Transferências, Budget vs Realizado e a conciliação não foram concluídos no sistema.'],
+    naoValidado: [AVISO_MANUAL, 'Boleto/PIX, Transferências, Budget vs Realizado e a conciliação não foram concluídos no sistema. O pedido Entregue não tem "Editar": não foi possível ligá-lo à obra antes de gerar os títulos (o projeto foi informado no título).'],
   },
 
   /* ------------------------------------------------------------------ Projetos e obras */

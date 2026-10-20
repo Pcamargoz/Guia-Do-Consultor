@@ -196,4 +196,33 @@ html.embed .hero{margin-top:2px}
 .validador input:focus{outline:none;border-color:var(--p);box-shadow:0 0 0 4px rgb(52 120 167/.18)}
 .aviso{position:fixed;left:50%;bottom:24px;z-index:50;transform:translate(-50%,16px);opacity:0;pointer-events:none;padding:10px 18px;border-radius:var(--pill);background:var(--p950);color:var(--lima);font:700 13px var(--display);box-shadow:var(--sh-lg);transition:opacity .25s,transform .35s var(--ease-spring)}
 .aviso.on{opacity:1;transform:translate(-50%,0)}
-@media print{.flag{display:none}.obs{border-style:solid}}
+/* ---------- Imagens anexadas (só dentro do guia, com a conta) e situação do salvamento ---------- */
+.anexo-btn{display:none;align-items:center;gap:6px;margin:2px 0 4px 6px;padding:2px 10px;border-radius:var(--pill);font:600 12px var(--display);color:var(--muted);border:1px dashed transparent;opacity:0;transition:opacity .15s,color .15s,border-color .15s,transform .2s var(--ease-spring)}
+html.nuvem .anexo-btn{display:inline-flex}
+.anexo-btn svg{width:13px;height:13px}
+.n-anexos:not(:empty){min-width:18px;padding:0 5px;border-radius:var(--pill);background:var(--p);color:#fff;font-size:11px;line-height:18px;text-align:center}
+.item:hover .anexo-btn,.item:focus-within .anexo-btn,.anexo-btn.tem{opacity:1}
+@media (hover:none){.anexo-btn{opacity:1}}
+.anexo-btn:hover{color:var(--p800);border-color:var(--p);transform:translateY(-1px)}
+.anexos{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin:2px 0 10px 44px;padding:0}
+.anexo{position:relative}
+.anexo-ver{display:block;padding:0;border:1.5px solid var(--line2);border-radius:var(--r-md);background:var(--alt);overflow:hidden;cursor:zoom-in;transition:transform .2s var(--ease-spring),border-color .15s,box-shadow .2s}
+.anexo-ver:hover{transform:translateY(-2px);border-color:var(--p);box-shadow:var(--sh-lg)}
+.anexo-ver img{display:block;width:104px;height:72px;object-fit:cover}
+.anexo-x{position:absolute;top:-6px;right:-6px;width:22px;height:22px;display:grid;place-items:center;padding:0;border-radius:50%;border:1.5px solid var(--line2);background:var(--surface);color:var(--muted);font:700 14px/1 var(--display);cursor:pointer;opacity:0;transition:opacity .15s,color .15s,border-color .15s}
+.anexo:hover .anexo-x,.anexo-x:focus-visible{opacity:1}
+@media (hover:none){.anexo-x{opacity:1}}
+.anexo-x:hover{color:var(--bad);border-color:var(--bad)}
+.item.solta label{border-color:var(--p);background:var(--p50)}
+.sinc{font:600 12px var(--display);color:var(--muted);white-space:nowrap}
+.sinc:empty{display:none}
+.sinc[data-estado="salvo"]::before,.sinc[data-estado="salvando"]::before,.sinc[data-estado="erro"]::before,.sinc[data-estado="local"]::before{content:"";display:inline-block;width:8px;height:8px;margin-right:6px;border-radius:50%;background:var(--muted)}
+@media (max-width:960px){.sinc{font-size:0}.sinc::before{margin-right:0}}
+.sinc[data-estado="salvo"]::before{background:var(--lima)}
+.sinc[data-estado="erro"]::before{background:var(--bad)}
+.visor-img{max-width:min(92vw,1100px);padding:12px;border:0;border-radius:var(--r-md);background:var(--surface);box-shadow:var(--sh-lg)}
+.visor-img::backdrop{background:rgb(7 24 40/.72)}
+.visor-img img{display:block;max-width:100%;max-height:78vh;margin:0 auto 10px;border-radius:var(--r-sm,8px)}
+.visor-img form{text-align:right}
+@media (prefers-reduced-motion:reduce){.anexo-ver,.anexo-btn{transition:none}}
+@media print{.flag,.anexo-btn,.anexo-x,.sinc{display:none}.obs{border-style:solid}.anexos{break-inside:avoid}.anexo-ver img{width:120px;height:84px}}

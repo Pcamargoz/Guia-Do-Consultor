@@ -17,7 +17,7 @@ Os checklists da aba **Checklist** do guia foram escritos para pessoas validarem
 5. Se algo divergir, clique em **Problema** na etapa e escreva *esperado × obtido*, a mensagem de erro e o nº do registro. A etapa fica em vermelho e o contador de problemas sobe.
 6. Se um passo não puder ser feito (falta de permissão, de dado ou de configuração), **não marque**: registre o motivo em Problema com "BLOQUEADO:" no começo.
 7. Ao final, clique em **Relatório** (topo): o resultado é copiado em Markdown (progresso, etapas, registros, problemas e anotações). Cole no chamado ou e-mail.
-8. O progresso fica salvo **no seu navegador**. **Recomeçar** apaga tudo, inclusive os problemas.
+8. Dentro do guia, o progresso fica salvo **na sua conta** (com uma cópia no navegador). Em cada etapa, **Anexar** (ou Ctrl+V) guarda um print como prova. **Recomeçar** apaga tudo, inclusive os problemas e as imagens.
 
 ## Consolidar
 

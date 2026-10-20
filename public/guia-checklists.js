@@ -19,16 +19,25 @@
   };
   const esc = (v) => String(v ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const norm = (v) => String(v ?? '').toLocaleLowerCase('pt-BR').normalize('NFD').replace(/[̀-ͯ]/g, '');
+  /* Progresso: o da conta do usuário (servidor) tem prioridade; sem conta, o deste navegador. */
+  let daConta = null;
   const progresso = (chave) => {
+    if (daConta && chave in daConta) return daConta[chave];
     try { const v = chave && localStorage.getItem(`${chave}:pct`); return v === null || v === undefined ? null : Number(v); } catch { return null; }
   };
+  const carregarProgresso = () => fetch('/api/checklists-progresso?lista=1', { credentials: 'same-origin', cache: 'no-store' })
+    .then((r) => (r.ok ? r.json() : null))
+    .then((res) => { if (res) daConta = Object.fromEntries(res.itens.map((i) => [i.chave, i.pct])); })
+    .catch(() => {});
 
   painel.innerHTML = '<div class="ckx"><p class="ckx-carregando" role="status">Carregando checklists…</p></div>';
   const raiz = painel.firstElementChild;
 
-  fetch('/checklists/manifest.json', { cache: 'no-cache' })
-    .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
-    .then(iniciar)
+  Promise.all([
+    fetch('/checklists/manifest.json', { cache: 'no-cache' }).then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); }),
+    carregarProgresso(),
+  ])
+    .then(([manifesto]) => iniciar(manifesto))
     .catch(() => { raiz.innerHTML = '<p class="ckx-vazio">Não foi possível carregar a lista de checklists. Atualize a página e tente de novo.</p>'; });
 
   function iniciar({ grupos, itens }) {
@@ -48,7 +57,7 @@
           <div>
             <span class="ckx-eyebrow">Biblioteca</span>
             <h1>Checklists do sistema</h1>
-            <p>Fluxos de teste para consultores, trilha de integração para estagiários e os planos completos de validação. Abra aqui mesmo ou baixe o HTML: o progresso fica salvo no seu navegador.</p>
+            <p>Fluxos de teste para consultores, trilha de integração para estagiários e os planos completos de validação. Abra aqui mesmo ou baixe o HTML. Aqui dentro o seu progresso e as imagens que você anexar às etapas ficam salvos na sua conta, em qualquer computador.</p>
           </div>
           <dl class="ckx-stats">
             <div><dt>Checklists</dt><dd>${itens.length}</dd></div>
@@ -67,6 +76,7 @@
         <div class="ckx-visor-topo">
           <button type="button" class="ckx-btn ckx-btn--sec" data-voltar>${icones.voltar}<span>Biblioteca</span></button>
           <strong data-visor-titulo></strong>
+          <span class="ckx-sinc" data-sinc role="status" aria-live="polite"></span>
           <label class="ckx-ir" data-ir hidden><span class="ckx-sr">Ir para a seção</span>
             <select data-ir-select aria-label="Ir para a seção"><option value="">Ir para…</option></select>
           </label>
@@ -79,7 +89,11 @@
         </div>
         <iframe class="ckx-frame" data-frame title="Checklist" scrolling="no"></iframe>
       </section>
-      <div class="ckx-aviso" data-aviso role="status" aria-live="polite"></div>`;
+      <div class="ckx-aviso" data-aviso role="status" aria-live="polite"></div>
+      <dialog class="ckx-imagem" data-imagem aria-label="Imagem anexada">
+        <img alt="" data-imagem-img>
+        <form method="dialog"><a class="ckx-btn ckx-btn--sec" data-imagem-abrir target="_blank" rel="noopener">Abrir em nova aba</a><button class="ckx-btn" autofocus>Fechar</button></form>
+      </dialog>`;
 
     const $ = (s) => raiz.querySelector(s);
     const lista = $('.ckx-lista');
@@ -151,11 +165,14 @@
       aberto = null;
       frame.removeAttribute('src');
       secoes = [];
+      $('[data-sinc]').textContent = '';
       visor.hidden = true;
       lista.hidden = false;
       renderGrade();
       scrollTo({ top: rolagem });
       raiz.querySelector(`[data-abrir="${CSS.escape(arquivo)}"]`)?.focus({ preventScroll: true });
+      // O checklist acabou de salvar na conta: atualiza as barras de progresso dos cartões.
+      carregarProgresso().then(() => { if (!aberto) renderGrade(); });
     }
 
     /* Mensagens do checklist embutido: altura (sem rolagem interna), seções e avisos. */
@@ -175,7 +192,20 @@
         $('[data-ir]').hidden = !secoes.length;
       }
       if (e.data.aviso) avisar(e.data.aviso);
+      if (e.data.sinc) {
+        const el = $('[data-sinc]');
+        el.textContent = e.data.sinc.texto;
+        el.dataset.estado = e.data.sinc.estado;
+      }
+      if (e.data.imagem && /^\/api\/checklists-anexos\?id=\d+$/.test(e.data.imagem.src)) {
+        const dlg = $('[data-imagem]');
+        $('[data-imagem-img]').src = e.data.imagem.src;
+        $('[data-imagem-img]').alt = e.data.imagem.nome || 'Imagem anexada';
+        $('[data-imagem-abrir]').href = e.data.imagem.src;
+        dlg.showModal?.();
+      }
     });
+    $('[data-imagem]').addEventListener('click', (e) => { if (e.target === e.currentTarget) e.currentTarget.close(); });
     $('[data-ir-select]').addEventListener('change', (e) => {
       const s = secoes[Number(e.target.value)];
       e.target.value = '';

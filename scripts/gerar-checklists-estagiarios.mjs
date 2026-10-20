@@ -1,7 +1,7 @@
 /* Gera os checklists da Trilha do Estagiário (dados-checklists-estagiarios.mjs) e do Consultor
    (dados-checklist-consultor.mjs + dados-fluxos-consultor.mjs), mais o public/checklists/manifest.json que alimenta a aba "Checklist" do guia.
    Visual em checklist-modelo/estilo.css, comportamento em checklist-modelo/comportamento.js.
-   Cada checklist é um HTML independente (abre offline e guarda o progresso no navegador).
+   Cada checklist é um HTML independente (abre offline e guarda o progresso no navegador; dentro do guia, logado, o progresso e as imagens anexadas ficam na conta de cada usuário).
    Saída: <raiz>/estagiarios/, <raiz>/consultores/ e <raiz>/manifest.json, em public/checklists (servido pelo guia) e Checklists (cópia de trabalho).
    Uso: node scripts/gerar-checklists-estagiarios.mjs   (depois: node scripts/validar-checklists.mjs) */
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
@@ -37,6 +37,7 @@ const svg = (d) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" s
 const ICONE = {
   alvo: svg('<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>'),
   bandeira: svg('<path d="M4 22V4"/><path d="M4 4h13l-2 4 2 4H4"/>'),
+  clipe: svg('<path d="m21.4 11.1-9.2 9.2a5.5 5.5 0 0 1-7.8-7.8l9.2-9.2a3.7 3.7 0 0 1 5.2 5.2l-9.2 9.2a1.8 1.8 0 0 1-2.6-2.6l8.5-8.5"/>'),
   copiar: svg('<rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h8"/>'),
   lista: svg('<path d="M9 6h11M9 12h11M9 18h11"/><path d="m3 6 1 1 2-2M3 12l1 1 2-2M3 18l1 1 2-2"/>'),
   ok: svg('<path d="M20 6 9 17l-5-5"/>'),
@@ -72,7 +73,7 @@ const legenda = `<div class="legenda" aria-label="Legenda da origem das informa�
 function item(id, p, rotuloRes) {
   const res = p.r ? `<span class="res"><b>${rotuloRes}:</b> ${fmt(p.r)}</span>` : '';
   const campo = p.campo ? `<input class="reg" type="text" data-reg="${esc(id)}" placeholder="${esc(p.campo)}" aria-label="${esc(p.campo)}">` : '';
-  return `<li class="item"><label><input type="checkbox" data-id="${esc(id)}"><span class="txt"><span class="acao">${fmt(p.t)}</span>${res}</span>${selo(p.s)}</label>${campo}<button type="button" class="flag" data-flag="${esc(id)}" aria-pressed="false" title="Registrar um problema nesta etapa">${ICONE.bandeira}Problema</button></li>`;
+  return `<li class="item"><label><input type="checkbox" data-id="${esc(id)}"><span class="txt"><span class="acao">${fmt(p.t)}</span>${res}</span>${selo(p.s)}</label>${campo}<button type="button" class="flag" data-flag="${esc(id)}" aria-pressed="false" title="Registrar um problema nesta etapa">${ICONE.bandeira}Problema</button><button type="button" class="anexo-btn" data-anexo="${esc(id)}" data-n="0" title="Anexar imagem (ou cole um print com Ctrl+V)">${ICONE.clipe}Anexar<span class="n-anexos"></span></button></li>`;
 }
 
 function topo(subtitulo, marca) {
@@ -81,6 +82,7 @@ function topo(subtitulo, marca) {
   <img src="${LOGO}" alt="Faktory Flow" width="120" height="36">
   <div class="marca"><strong>${esc(marca)}</strong><span>${esc(subtitulo)}</span></div>
   <div class="espaco"></div>
+  <span class="sinc" id="sinc" role="status" aria-live="polite"></span>
   <button class="btn" id="btnRelatorio" type="button" title="Copiar o relatório de validação (Markdown)">${ICONE.copiar}<span>Relatório</span></button>
   <button class="btn" id="btnImprimir" type="button" title="Imprimir ou salvar em PDF">${ICONE.imprimir}<span>Imprimir</span></button>
   <button class="btn" id="btnLimpar" type="button" title="Desmarcar tudo">${ICONE.limpar}<span>Recomeçar</span></button>
@@ -211,7 +213,7 @@ ${heroi({
 
 <section class="secao" id="s-etapas"><h2><span class="n">3</span>Sequência recomendada</h2>${etapas}</section>
 
-<section class="secao" id="s-trilha"><h2><span class="n">4</span>Checklists da trilha</h2><p class="dica" style="margin:-4px 0 12px">Abra na ordem. O progresso aparece aqui quando você já abriu o checklist neste navegador.</p><ol class="trilha">${trilha}</ol></section>
+<section class="secao" id="s-trilha"><h2><span class="n">4</span>Checklists da trilha</h2><p class="dica" style="margin:-4px 0 12px">Abra na ordem. O progresso aparece aqui quando você já abriu o checklist (dentro do guia ele fica salvo na sua conta).</p><ol class="trilha">${trilha}</ol></section>
 
 ${blocoAnotacoes('Dúvidas gerais, combinados com o supervisor, acessos que faltam…')}
 

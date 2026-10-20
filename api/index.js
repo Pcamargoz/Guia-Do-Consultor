@@ -6,7 +6,9 @@ import * as authEu from '../lib/rotas/auth/eu.js';
 import * as authLogin from '../lib/rotas/auth/login.js';
 import * as authLogout from '../lib/rotas/auth/logout.js';
 import * as configuracoesEstudo from '../lib/rotas/configuracoes-estudo.js';
+import * as checklistsAnexos from '../lib/rotas/checklists-anexos.js';
 import * as checklistsDownload from '../lib/rotas/checklists-download.js';
+import * as checklistsProgresso from '../lib/rotas/checklists-progresso.js';
 import * as duvidas from '../lib/rotas/duvidas.js';
 import * as estudo from '../lib/rotas/estudo.js';
 import * as guiaTextos from '../lib/rotas/guia-textos.js';
@@ -21,7 +23,9 @@ const ROTAS = {
   'auth/login': authLogin,
   'auth/logout': authLogout,
   'configuracoes-estudo': configuracoesEstudo,
+  'checklists-anexos': checklistsAnexos,
   'checklists-download': checklistsDownload,
+  'checklists-progresso': checklistsProgresso,
   duvidas,
   estudo,
   'guia-textos': guiaTextos,

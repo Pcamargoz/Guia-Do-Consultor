@@ -11,7 +11,8 @@
     "migrar": "node --env-file-if-exists=.env scripts/migrar.mjs",
     "vercel-build": "node scripts/migrar.mjs",
     "checklists": "node scripts/gerar-checklists-estagiarios.mjs && node scripts/validar-checklists.mjs",
-    "checklists:lacunas": "node scripts/lacunas-checklists.mjs"
+    "checklists:lacunas": "node scripts/lacunas-checklists.mjs",
+    "testar:checklists-api": "node scripts/testar-checklists-api.mjs"
   },
   "dependencies": {
     "@vercel/functions": "^3.9.8",
