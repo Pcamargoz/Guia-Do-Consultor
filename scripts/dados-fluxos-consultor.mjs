@@ -168,7 +168,7 @@ export const FLUXOS = [
   {
     id: 'fluxo-comercial', arquivo: 'fluxo-03-comercial.html', etiqueta: 'Consultor · Fluxo comercial',
     titulo: 'Fluxo comercial: do lead ao pedido de venda',
-    rodape: 'Teste de Fluxo · Consultor · Faktory Flow v1.22.12 · executado em 19/10/2026 (dev METALURGICA TEST): lead → OPO-000012 → proposta → ganha. A geração do pedido ficou bloqueada',
+    rodape: 'Teste de Fluxo · Consultor · Faktory Flow v1.22.12 · executado em 19/10/2026 (dev METALURGICA TEST): lead → OPO-000012 → proposta → ganha; pedido PV-000034 gerado em 20/10/2026 com CFOP sem financeiro (com CFOP de venda o handoff falha) e obra criada',
     subtitulo: 'Lead → atividade → BANT → Kanban → conversão (cria a oportunidade) → itens → proposta → desconto com aprovação → ganho → pedido de venda. Mostra onde o fluxo trava e o que configurar antes.',
     objetivo: 'Provar que um contato vira oportunidade, proposta e, por fim, pedido de venda — e identificar o que precisa estar configurado (alçada, condição de pagamento, plano de contas, CFOP) para a passagem final funcionar.',
     prerequisitos: [
@@ -222,9 +222,11 @@ export const FLUXOS = [
         titulo: '6. Ganho e pedido de venda', onde: 'painel da oportunidade > `Ganha` > `Gerar Pedido de Venda`',
         passos: [
           { t: 'Clicar em **Ganha** (sem confirmação e sem pedir motivo).', r: 'Status "Ganha"; o card some do filtro "Abertas" (use Filtros > Ganhas). A etapa e a probabilidade não vão para 100%.', s: 'v' },
-          { t: '**Gerar Pedido de Venda**: Empresa e CFOP > Confirmar.', r: 'No teste falhou: "O CFOP do pedido gera financeiro, então estes campos são obrigatórios: Condição de Pagamento, Plano de Conta, Parcelas." O formulário do handoff não tem esses campos. Tentativas com CFOP 5101 e 6101, condição da proposta e conta de receita do participante não resolveram.', s: 'v', campo: 'Nº do pedido (PV-)' },
+          { t: '**Gerar Pedido de Venda**: Empresa e CFOP > Confirmar.', r: 'Com CFOP de venda (5101, 6101) falha: "O CFOP do pedido gera financeiro, então estes campos são obrigatórios: Condição de Pagamento, Plano de Conta, Parcelas." O formulário do handoff só tem Empresa e CFOP, e nenhuma configuração resolve. Com um CFOP que **não** gera financeiro (5910-1, bonificação) o pedido nasce (PV-000034, R$ 8.653,80, item e cliente certos); o vínculo com a oportunidade fica só no texto da Obs. Interna. Em seguida aparece o toast "Erro ao carregar oportunidade" e o botão continua disponível (dá para duplicar o pedido).', s: 'v', campo: 'Nº do pedido (PV-)' },
+          { t: 'Contorno para um pedido de venda de verdade: abrir o pedido em `Vendas > Pedidos de Venda`, trocar o CFOP e escolher a **condição de pagamento**.', r: 'As parcelas são geradas sozinhas. O pedido gerado não herda vendedor nem condição da proposta. Ele aparece em Vendas, no Dashboard Vendas, em Vendas por Período e na Carteira de Pedidos ("A faturar").', s: 'v' },
           { t: 'Alternativa: criar o pedido à mão em `Vendas > Pedidos de Venda`.', r: 'Funciona, mas o formulário não tem campo de oportunidade: não há vínculo com a OPO.', s: 'v' },
-          { t: '**Reverter ganho** se precisar voltar a oportunidade para aberta.', s: 'v' },
+          { t: 'No menu `⋮` do card ganho, **Criar Projeto de Obra**.', r: 'Responde "Informe o cliente ou construtora" mesmo com o cliente preenchido na tela; nome e valor da obra não vêm da oportunidade. A obra criada aparece em `CRM > Projetos de Obra`, sem vínculo com a oportunidade.', s: 'v' },
+          { t: '**Reverter ganho** se precisar voltar a oportunidade para aberta.', r: 'Não remove a oportunidade de Pós-Venda criada ao ganhar, e ganhar de novo cria outra (duplicadas). Depois de gerar o pedido, o painel da oportunidade deixou de abrir (spinner e erro 500) no teste: reverta o ganho **antes** de gerar o pedido.', s: 'v' },
         ],
       },
       {
@@ -238,17 +240,18 @@ export const FLUXOS = [
     ],
     resultado: [
       { t: 'O lead virou participante convertido e oportunidade com itens e proposta.', s: 'v' },
-      { t: 'O pedido de venda foi gerado a partir da oportunidade e aparece em Vendas.', s: 'n' },
+      { t: 'O pedido de venda foi gerado a partir da oportunidade e aparece em Vendas (com CFOP sem financeiro; com CFOP de venda o produto precisa de correção).', s: 'v' },
       { t: 'O resumo do CRM mostra o ganho e a perda do teste.', s: 'v' },
     ],
     atencao: [
-      '**Gerar Pedido de Venda** falha quando o CFOP gera financeiro: antes de um treinamento, valide a passagem com o consultor responsável pela configuração fiscal.',
+      '**Gerar Pedido de Venda** falha quando o CFOP gera financeiro: use um CFOP sem financeiro (ex.: 5910-1) e depois ajuste o pedido, e valide a passagem com o consultor responsável pela configuração fiscal antes de um treinamento.',
+      'Depois de gerar o pedido, o painel da oportunidade pode parar de abrir (D14); anote o nº do pedido antes e evite reabrir o painel.',
       'A faixa de alçada vale para **todos** os pedidos e oportunidades da empresa: desative-a ao fim do teste.',
       '"Ganha" não tem confirmação: use "Reverter ganho" se clicar sem querer.',
       'O desconto pendente de aprovação não impede o ganho da oportunidade.',
       'Datas de fechamento e previsão aparecem 1 dia antes do informado (fuso).',
       'Recolher e reabrir a seção "Informações CRM" no formulário do lead apaga a origem escolhida.',
     ],
-    naoValidado: ['Aprovação de desconto por um segundo usuário e a geração do pedido a partir da oportunidade não foram concluídas no teste.'],
+    naoValidado: ['Aprovação de desconto por um segundo usuário: a empresa de teste só tem um usuário. Faltam um Vendedor (para solicitar) e um Supervisor de Vendas ou Gerente Geral (para aprovar).'],
   },
 ];

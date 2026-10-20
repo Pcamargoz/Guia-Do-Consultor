@@ -58,8 +58,8 @@
    "resumo": "Provar que um contato vira oportunidade, proposta e, por fim, pedido de venda — e identificar o que precisa estar configurado (alçada, condição de pagamento, plano de contas, CFOP) para a passagem final funcionar.",
    "arquivo": "consultores/fluxo-03-comercial.html",
    "chave": "ff-consultor:fluxo-comercial",
-   "etapas": 29,
-   "verificadas": 27
+   "etapas": 31,
+   "verificadas": 30
   },
   {
    "grupo": "consultor",

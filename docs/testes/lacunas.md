@@ -1,6 +1,6 @@
 # Fila de testes: etapas ainda sem "Verificado"
 
-Gerado por `node scripts/lacunas-checklists.mjs` — 165 etapas em 20 checklists. `doc` = vem dos roteiros, `n/v` = não validado.
+Gerado por `node scripts/lacunas-checklists.mjs` — 162 etapas em 20 checklists. `doc` = vem dos roteiros, `n/v` = não validado.
 Ao validar uma etapa, mude `s` para `'v'` no arquivo de dados do checklist e rode `npm run checklists`. Regras e briefs em [README.md](README.md).
 
 ## Primeiros passos e navegação  `01-primeiros-passos-navegacao.html` — 1 etapa(s)
@@ -116,13 +116,10 @@ Ao validar uma etapa, mude `s` para `'v'` no arquivo de dados do checklist e rod
 **3. Pedido de compra** · Gerar Pedido de Compra na comparação
 - [ ] (doc) Se a alçada estiver ligada, aprovar em Compras > Aprovações.
 
-## Fluxo comercial: do lead ao pedido de venda  `fluxo-03-comercial.html` — 2 etapa(s)
+## Fluxo comercial: do lead ao pedido de venda  `fluxo-03-comercial.html` — 1 etapa(s)
 
 **5. Desconto e aprovação** · aba Itens da oportunidade
 - [ ] (n/v) Aprovar em CRM > Vendas > Aprovações ou Vendas > Aprovações com outro usuário. → _Com o mesmo usuário nada aparece para aprovar (e nada avisa o vendedor)._
-
-**Resultado esperado**
-- [ ] (n/v) O pedido de venda foi gerado a partir da oportunidade e aparece em Vendas.
 
 ## Fluxo de estoque: movimento, transferência, reserva, inventário e empréstimo  `fluxo-04-estoque.html` — 32 etapa(s)
 
@@ -247,16 +244,10 @@ Ao validar uma etapa, mude `s` para `'v'` no arquivo de dados do checklist e rod
 - [ ] (doc) Percorrer NCM, CFOP, CST/CSOSN, CEST e Textos Fiscais só lendo. → _São mantidos com o contador; alterar afeta todas as notas._
 - [ ] (n/v) Abrir Painel Fiscal, Diagnóstico e Onboarding Fiscal.
 
-## Fluxo financeiro: títulos, baixa, saldos e fluxo de caixa  `fluxo-08-financeiro.html` — 3 etapa(s)
-
-**1. Gerar os títulos do pedido** · menu ⋯ > Gerar Títulos em Vendas > Pedidos de Venda
-- [ ] (n/v) Depois de resolver o bloqueio, gerar os títulos e abrir Financeiro > Contas a Receber. → _Valor e vencimento iguais à parcela do pedido; a coluna TÍTULOS do pedido passa a "Gerados"._
+## Fluxo financeiro: títulos, baixa, saldos e fluxo de caixa  `fluxo-08-financeiro.html` — 1 etapa(s)
 
 **5. Configurações (leitura)** · Financeiro > Configurações
 - [ ] (doc) Ler Contas Bancárias, Meios de Pagamento, Planos de Conta, Portadores, Instruções Bancárias e Boleto sem alterar. → _São configurações da empresa inteira: mexer afeta notas, boletos e fluxo de caixa._
-
-**Resultado esperado**
-- [ ] (n/v) Os títulos do pedido foram gerados com valor e vencimento certos.
 
 ## Fluxo de projetos e obras: cadastro, estágios, painéis e diário  `fluxo-09-projetos-obra.html` — 17 etapa(s)
 
