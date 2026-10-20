@@ -133,6 +133,21 @@ button.hr-duracao:hover { border-style: solid; border-color: var(--brand-primary
 .pc-total { display: grid; justify-items: end; text-align: right; gap: 2px; }
 .pc-total-rotulo { font-size: 11.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--brand-primary-700); }
 .pc-total-valor { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 2.6rem); font-weight: 800; line-height: 1; color: var(--brand-primary-950); font-variant-numeric: tabular-nums; }
+.pc-total-editar {
+  display: inline-flex; align-items: center; gap: 6px; margin-top: 6px; padding: 4px 10px; border: 1px dashed var(--color-line);
+  border-radius: var(--radius-pill); background: transparent; color: var(--brand-primary-800); font: inherit; font-size: 12.5px; font-weight: 700; cursor: pointer;
+  transition: border-color var(--dur-fast), background-color var(--dur-fast), transform var(--dur-base) var(--ease-spring);
+}
+.pc-total-editar[hidden] { display: none; }
+.pc-total-editar svg { width: 14px; height: 14px; }
+.pc-total-editar:hover { border-style: solid; border-color: var(--brand-primary); background: var(--brand-primary-50); }
+.pc-total-form { margin-top: 6px; max-width: 340px; }
+.pc-total-form .hr-input { width: 140px; font-size: 18px; }
+.pc-total-previa { margin: 2px 0 4px; font-size: 12.5px; line-height: 1.4; color: var(--color-muted); text-align: right; }
+.pc-total-previa--erro { color: var(--color-danger); font-weight: 600; }
+.pc-total-acoes { display: inline-flex; gap: 8px; }
+.pc-total-acoes .ed-btn:disabled { opacity: .5; cursor: not-allowed; }
+@media (prefers-reduced-motion: no-preference) { .pc-total-editar:hover { transform: translateY(-1px); } }
 .pc-comparativo { display: inline-flex; align-items: center; gap: 4px; font-size: 12.5px; font-weight: 600; color: var(--color-muted); }
 .pc-comparativo svg { width: 14px; height: 14px; }
 .pc-comparativo--igual { color: var(--color-success); }
@@ -225,6 +240,7 @@ button.hr-duracao:hover { border-style: solid; border-color: var(--brand-primary
   .pc-card { padding: 18px 16px; }
   .pc-card-topo { flex-direction: column; }
   .pc-total { justify-items: start; text-align: left; }
+  .pc-total-previa { text-align: left; }
   /* barra fica colada ao próprio nome e separada do pacote seguinte */
   .pc-geral-lista { gap: 12px; }
   .pc-geral-lista li { grid-template-columns: minmax(0, 1fr) auto; gap: 4px 12px; }

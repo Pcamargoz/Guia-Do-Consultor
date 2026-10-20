@@ -20,6 +20,7 @@
     acima: '<polyline points="18 15 12 9 6 15"/>',
     abaixo: '<polyline points="6 9 12 15 18 9"/>',
     info: '<circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/>',
+    lapis: '<path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/>',
   };
   const SERIES = [
     { chave: 'minutosEtapas', nome: 'Etapas de implantação', classe: 'etapas' },
@@ -162,6 +163,7 @@
             <span class="pc-total-rotulo">Tempo total previsto</span>
             <strong class="pc-total-valor">${indisponivel ? '—' : H.formatar(t.total, { vazio: '0h' })}</strong>
             ${indisponivel ? `<span class="pc-comparativo">${svg(I.info)}Não disponível no fluxo ${esc(cenario.fluxo)}</span>` : comparativoTabela(t, pacote)}
+            ${podeEditar && !indisponivel ? `<button type="button" class="pc-total-editar" data-editar-total="${esc(pacote.id)}" aria-label="Ajustar o total do pacote ${esc(pacote.nome)}: o sistema divide a diferença entre os módulos">${svg(I.lapis)}Ajustar total</button>` : ''}
           </div>
         </header>
 
@@ -232,6 +234,8 @@
     if (etapa && podeEditar) { editarEtapa(etapa); return; }
     const modulo = e.target.closest('[data-editar-modulo]');
     if (modulo && podeEditar) { editarHorasModulo(modulo); return; }
+    const total = e.target.closest('[data-editar-total]');
+    if (total && podeEditar) { ajustarTotal(total); return; }
     const conteudoBtn = e.target.closest('[data-editar-conteudo]');
     if (conteudoBtn && podeEditar) window.ffEditorPacote?.abrir(conteudoBtn.dataset.editarConteudo);
   });
@@ -346,6 +350,76 @@
     celula.addEventListener('submit', (e) => { e.preventDefault(); salvar(); });
     input.addEventListener('keydown', (e) => { if (e.key === 'Escape') { e.preventDefault(); concluido = true; render(); } });
     input.addEventListener('blur', () => { setTimeout(() => { if (!concluido) salvar(); }, 120); });
+  }
+  /* Novo total do pacote: etapas e recursos ficam como estão; o sistema divide a diferença entre os
+     módulos na proporção atual de cada um. Só grava depois de "Aplicar" (a prévia mostra o efeito). */
+  function ajustarTotal(botao) {
+    const pacote = H.estado.pacotes.find((p) => p.id === botao.dataset.editarTotal);
+    if (!pacote) return;
+    const cenarioTxt = `${cenario.fluxo} · ${H.estado.faixas[cenario.faixa] || ''}`;
+    const atual = H.totalPacote(pacote, listaModulos(), cenario.fluxo, cenario.faixa);
+    const form = document.createElement('form');
+    form.className = 'hr-form pc-total-form';
+    form.noValidate = true;
+    form.innerHTML = `
+      <input class="hr-input" value="${esc(H.formatar(atual.total, { vazio: '0h' }))}" autocomplete="off" aria-label="Novo total do pacote ${esc(pacote.nome)} (${esc(cenarioTxt)})" aria-describedby="pc-prev-${esc(pacote.id)}">
+      <p class="pc-total-previa" id="pc-prev-${esc(pacote.id)}" aria-live="polite"></p>
+      <span class="pc-total-acoes"><button type="submit" class="ed-btn ed-btn--primario">Aplicar</button><button type="button" class="ed-btn" data-cancelar>Cancelar</button></span>`;
+    botao.hidden = true;
+    botao.after(form);
+    const input = form.querySelector('input');
+    const previa = form.querySelector('.pc-total-previa');
+    const aplicar = form.querySelector('[type="submit"]');
+    let resultado = null;
+    let ocupado = false;
+    const calcular = () => {
+      const alvo = H.interpretar(input.value);
+      resultado = null;
+      let msg;
+      if (alvo == null || alvo > 60000) msg = 'Formato inválido. Use 140h, 125h45 ou 2.';
+      else {
+        const r = H.distribuirTotal(pacote, listaModulos(), cenario.fluxo, cenario.faixa, alvo);
+        if (r.erro) msg = r.erro;
+        else {
+          resultado = { alvo, ...r };
+          const depois = r.itens.reduce((s, i) => s + i.depois, 0);
+          msg = `Módulos: ${H.formatar(atual.minutosModulos, { vazio: '0h' })} → ${H.formatar(depois, { vazio: '0h' })} (${r.itens.length} módulos, proporcional). Etapas e recursos (${H.formatar(r.fixas, { vazio: '0h' })}) não mudam.${cenario.faixa ? ` Vale só para ${cenarioTxt}.` : ' Esta é a faixa-pai: as demais faixas acompanham.'}`;
+        }
+      }
+      input.setAttribute('aria-invalid', resultado ? 'false' : 'true');
+      previa.textContent = msg;
+      previa.classList.toggle('pc-total-previa--erro', !resultado);
+      aplicar.disabled = !resultado || ocupado;
+    };
+    const fechar = () => { render(); };
+    input.addEventListener('input', calcular);
+    form.querySelector('[data-cancelar]').addEventListener('click', fechar);
+    input.addEventListener('keydown', (e) => { if (e.key === 'Escape') { e.preventDefault(); fechar(); } });
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      calcular();
+      if (!resultado || ocupado) return;
+      ocupado = true;
+      aplicar.disabled = true;
+      input.disabled = true;
+      try {
+        const res = await fetch(`/api/pacotes?id=${encodeURIComponent(pacote.id)}&acao=total`, {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ total: resultado.alvo, modulos: resultado.itens.map((i) => ({ moduloId: i.id, minutos: i.depois })), fluxo: cenario.fluxo, faixa: cenario.faixa }),
+        });
+        const dados = await res.json().catch(() => ({}));
+        if (res.status === 401) return window.ffIrParaLogin();
+        if (!res.ok) throw new Error(dados.erro || 'Não foi possível ajustar o total.');
+        H.substituirPacote(dados.pacote);
+        aviso(`Total do ${pacote.nome} (${cenarioTxt}): ${H.formatar(resultado.alvo, { vazio: '0h' })}, dividido entre ${resultado.itens.length} módulos.`);
+      } catch (err) {
+        aviso(err.message, 'erro');
+        render();
+      }
+    });
+    calcular();
+    input.focus();
+    input.select();
   }
   window.ffPacotesAviso = aviso;
   window.ffPacotesExportacao = {

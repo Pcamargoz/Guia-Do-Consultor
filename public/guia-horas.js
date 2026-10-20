@@ -173,6 +173,30 @@
     };
   }
 
+  /**
+   * Divide um novo TOTAL do pacote entre os módulos do cenário (fluxo + faixa).
+   *  - Etapas e recursos são fixos: só os módulos recebem a diferença.
+   *  - Cada módulo mantém sua proporção atual (sem horas em nenhum, divide por igual).
+   *  - Horas cheias pelo maior resto (horasCheias); os minutos que sobram para fechar o total
+   *    exato vão para o maior módulo.
+   * Retorna { fixas, paraModulos, itens: [{ id, antes, depois }] } ou { erro }.
+   */
+  function distribuirTotal(pacote, modulos, fluxo, faixa, alvo) {
+    const ids = pacote.modulos.filter((id) => modulos.some((m) => m.id === id));
+    if (!ids.length) return { erro: 'Este pacote não tem módulos do guia para receber as horas.' };
+    const fixas = somar(pacote.etapas || []);
+    const paraModulos = alvo - fixas;
+    if (paraModulos < 0) return { erro: `O total não pode ser menor que as etapas e recursos (${formatar(fixas)}).` };
+    const atuais = derivarModulos(pacote, fluxo, faixa);
+    const antes = ids.map((id) => atuais.get(id)?.minutos ?? 0);
+    const somaAntes = antes.reduce((a, b) => a + b, 0);
+    const brutos = antes.map((v) => (somaAntes ? (v * paraModulos) / somaAntes : paraModulos / ids.length));
+    const depois = horasCheias(brutos, paraModulos);
+    const sobra = paraModulos - depois.reduce((a, b) => a + b, 0);
+    if (sobra) depois[depois.indexOf(Math.max(...depois))] += sobra;
+    return { fixas, paraModulos, itens: ids.map((id, i) => ({ id, antes: antes[i], depois: depois[i] })) };
+  }
+
   /** Null se o pacote não tem preço nesse fluxo/faixa (card indisponível). Não escala horas. */
   function fator(pacote, fluxo, faixa) {
     const base = pacote.precos.Premium?.[0];
@@ -205,7 +229,7 @@
   window.ffHoras = {
     estado, formatar, interpretar, carregar, substituirPacote,
     pacoteRef, definirRef, pacotesDoModulo, pacoteParaModulo, totalModulo, totalPacote, fator,
-    valorModulo, temValorProprio, valorPai, derivarModulos, horasCheias,
+    valorModulo, temValorProprio, valorPai, derivarModulos, horasCheias, distribuirTotal,
   };
 
   window.ffSessao?.then((usuario) => { if (usuario) carregar(); });
