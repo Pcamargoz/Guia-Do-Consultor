@@ -252,12 +252,17 @@ const consultores = [CONSULTOR, ...FLUXOS, ...FLUXOS_OPERACAO, ...FLUXOS_GESTAO]
 const ids = [ONBOARDING, ...CHECKLISTS, ...consultores].map((c) => c.arquivo);
 if (new Set(ids).size !== ids.length) throw new Error('arquivos de saída repetidos');
 
+const ehFluxoPrincipal = (c) => Number(c.arquivo.slice(0, 2)) >= 16;
+const itemEstagiario = (c) => ({ grupo: 'estagiario', id: c.id, area: `${c.arquivo.slice(0, 2)} · ${c.etiqueta.split(' · ').pop()}`, titulo: c.titulo, resumo: c.resumo, arquivo: `estagiarios/${c.arquivo}`, chave: `ff-estagiario:${c.id}`, ...resumoEtapas(c) });
+
 const manifest = {
   grupos: GRUPOS,
   itens: [
     ...consultores.map((c) => ({ grupo: 'consultor', id: c.id, area: c.etiqueta.replace(/^Consultor · /, ''), titulo: c.titulo, resumo: c.objetivo, arquivo: `consultores/${c.arquivo}`, chave: `ff-consultor:${c.id}`, ...resumoEtapas(c) })),
+    /* Os fluxos principais (16 em diante: Vendas, Faturamento e Financeiro, os módulos mais maduros) abrem a trilha na biblioteca. */
+    ...CHECKLISTS.filter(ehFluxoPrincipal).map(itemEstagiario),
     { grupo: 'estagiario', id: 'onboarding', area: '00 · Comece por aqui', titulo: ONBOARDING.titulo, resumo: ONBOARDING.objetivo, arquivo: `estagiarios/${ONBOARDING.arquivo}`, chave: 'ff-estagiario:onboarding', ...resumoEtapas(ONBOARDING) },
-    ...CHECKLISTS.map((c) => ({ grupo: 'estagiario', id: c.id, area: `${c.arquivo.slice(0, 2)} · ${c.etiqueta.split(' · ').pop()}`, titulo: c.titulo, resumo: c.resumo, arquivo: `estagiarios/${c.arquivo}`, chave: `ff-estagiario:${c.id}`, ...resumoEtapas(c) })),
+    ...CHECKLISTS.filter((c) => !ehFluxoPrincipal(c)).map(itemEstagiario),
     ...QA.map(([area, titulo, arquivo]) => ({ grupo: 'qa', id: arquivo.replace(/^validacao-|-faktory-flow\.html$/g, ''), area, titulo, resumo: 'Plano de validação com roteiros, critérios e achados registrados.', arquivo })),
   ],
 };
