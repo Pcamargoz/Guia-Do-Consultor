@@ -146,8 +146,9 @@
    "resumo": "Organizar suas primeiras semanas: o que pedir antes de começar, a ordem recomendada dos checklists e os combinados de segurança. Ao final, você deve saber encontrar qualquer tela, consultar registros sem alterar nada e explicar como um pedido passa pelos módulos.",
    "arquivo": "estagiarios/00-onboarding-estagiario.html",
    "chave": "ff-estagiario:onboarding",
-   "etapas": 15,
-   "verificadas": 4
+   "etapas": 14,
+   "verificadas": 3,
+   "emDesenvolvimento": 1
   },
   {
    "grupo": "estagiario",
@@ -157,8 +158,9 @@
    "resumo": "Entrar, trocar de módulo, buscar telas e ler listas.",
    "arquivo": "estagiarios/01-primeiros-passos-navegacao.html",
    "chave": "ff-estagiario:navegacao",
-   "etapas": 26,
-   "verificadas": 25
+   "etapas": 25,
+   "verificadas": 24,
+   "emDesenvolvimento": 1
   },
   {
    "grupo": "estagiario",

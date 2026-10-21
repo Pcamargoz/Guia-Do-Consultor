@@ -113,7 +113,8 @@
 
     function card(i, n) {
       const pct = progresso(i.chave);
-      const meta = i.etapas ? `<span>${i.etapas} etapas</span><span class="ckx-ok">${i.verificadas} conferidas</span>` : '<span>Plano completo</span>';
+      const dev = i.emDesenvolvimento ? `<span class="ckx-dev" title="Esta etapa ainda está em desenvolvimento no sistema: não é para testar.">${i.emDesenvolvimento} em desenvolvimento</span>` : '';
+      const meta = i.etapas ? `<span>${i.etapas} etapas</span><span class="ckx-ok">${i.verificadas} conferidas</span>${dev}` : '<span>Plano completo</span>';
       const barra = pct !== null ? `<div class="ckx-prog" role="progressbar" aria-valuenow="${pct}" aria-valuemin="0" aria-valuemax="100" aria-label="Seu progresso"><i style="transform:scaleX(${pct / 100})"></i><b>${pct}%</b></div>` : '';
       return `
         <article class="ckx-card" data-grupo="${esc(i.grupo)}" style="--i:${n}">

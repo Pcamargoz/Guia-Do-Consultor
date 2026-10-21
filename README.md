@@ -95,6 +95,8 @@ A aba **Checklist** do guia é uma biblioteca com busca, filtros e progresso por
 
 **Progresso e imagens por usuário.** Dentro do guia (logado), as marcações, registros, problemas, anotações e as imagens anexadas ficam na conta de **cada usuário** (qualquer perfil; ninguém vê o progresso de outra pessoa) e acompanham a pessoa em qualquer computador. Em cada etapa, **Anexar** escolhe imagens, ou cole um print com Ctrl+V, ou arraste o arquivo (até 6 por etapa, 40 por checklist e 60 MB por usuário; o navegador reduz para no máximo 1600 px e 1,5 MB; PNG, JPEG ou WebP). **Recomeçar** apaga também as imagens. O navegador guarda uma cópia para abrir rápido e funcionar sem rede (ela sobe sozinha quando a conexão volta); o HTML baixado e aberto como arquivo guarda só no navegador e não tem anexos. Tabelas `checklist_progresso` e `checklist_anexos` (migration `011`), API `/api/checklists-progresso` e `/api/checklists-anexos`. Os 9 planos de QA da raiz continuam só no navegador. Com o app rodando, `npm run testar:checklists-api` confere isolamento entre usuários, limites e segurança (32 verificações).
 
+**Etapa em desenvolvimento.** Marque o passo com `dev: true` em `scripts/dados-*.mjs` e ele aparece com a faixa "Em desenvolvimento · não é para testar", sem caixa de marcação e fora da contagem de progresso; o card da biblioteca mostra o aviso. Hoje: `Treinamento > Minhas Trilhas` (Central de Treinamento) no checklist 01 e no onboarding. Para liberar, remova a flag e rode `npm run checklists`.
+
 Cada etapa traz a origem: *Verificado* (conferido no sistema), *Documentação* (roteiros) ou *Não validado*.
 
 ```bash

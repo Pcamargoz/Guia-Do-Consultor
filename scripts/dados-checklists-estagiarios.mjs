@@ -37,7 +37,7 @@ export const ONBOARDING = {
       passos: [
         { t: 'Concluir o checklist **01 · Primeiros passos e navegação**.', s: 'v' },
         { t: 'Concluir o checklist **02 · Cadastros básicos** (participantes, produtos e projetos).', s: 'd' },
-        { t: 'Abrir `GLOBAIS > Treinamento > Minhas Trilhas` e ver se há trilha obrigatória para você.', r: 'A Central de Treinamento mostra trilhas, pontos e progresso.', s: 'v' },
+        { t: 'Abrir `GLOBAIS > Treinamento > Minhas Trilhas` e ver se há trilha obrigatória para você.', r: 'A Central de Treinamento mostra trilhas, pontos e progresso.', s: 'v', dev: true },
         { t: 'Anotar no campo de dúvidas tudo que não ficou claro e revisar com o supervisor no fim da semana.', s: 'd' },
       ],
     },
@@ -126,7 +126,7 @@ export const CHECKLISTS = [
         titulo: '6. Saber o que é administração', onde: 'bloco `GLOBAIS` no fim do menu lateral',
         passos: [
           { t: 'Percorrer Painel de Controle, Configurações, Segurança, Treinamento, Aplicativos e Assinatura **só lendo**.', s: 'v' },
-          { t: 'Abrir `GLOBAIS > Treinamento > Minhas Trilhas` e ver suas trilhas obrigatórias.', s: 'v' },
+          { t: 'Abrir `GLOBAIS > Treinamento > Minhas Trilhas` e ver suas trilhas obrigatórias (trilhas e quiz da Central de Treinamento).', s: 'v', dev: true },
         ],
       },
     ],

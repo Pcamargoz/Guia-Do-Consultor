@@ -37,6 +37,7 @@ const svg = (d) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" s
 const ICONE = {
   alvo: svg('<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>'),
   bandeira: svg('<path d="M4 22V4"/><path d="M4 4h13l-2 4 2 4H4"/>'),
+  obra: svg('<path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4Z"/>'),
   clipe: svg('<path d="m21.4 11.1-9.2 9.2a5.5 5.5 0 0 1-7.8-7.8l9.2-9.2a3.7 3.7 0 0 1 5.2 5.2l-9.2 9.2a1.8 1.8 0 0 1-2.6-2.6l8.5-8.5"/>'),
   copiar: svg('<rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h8"/>'),
   lista: svg('<path d="M9 6h11M9 12h11M9 18h11"/><path d="m3 6 1 1 2-2M3 12l1 1 2-2M3 18l1 1 2-2"/>'),
@@ -65,13 +66,18 @@ function conferir(c, rotulo) {
   for (const [i, p] of (c.resultado || []).entries()) passo(p, `resultado ${i + 1}`);
 }
 
-const contarPassos = (c) => [...(c.prerequisitos || []), ...(c.fluxos || c.etapas || []).flatMap((f) => f.passos), ...(c.resultado || [])];
+const todosPassos = (c) => [...(c.prerequisitos || []), ...(c.fluxos || c.etapas || []).flatMap((f) => f.passos), ...(c.resultado || [])];
+/* Etapas marcadas com `dev: true` estão em desenvolvimento no sistema: aparecem com uma faixa "não testar" e ficam fora da contagem. */
+const contarPassos = (c) => todosPassos(c).filter((p) => !p.dev);
 
 /* ---------- Peças do HTML ---------- */
 const legenda = `<div class="legenda" aria-label="Legenda da origem das informações">Origem de cada etapa: ${selo('v')} conferi no sistema ${selo('d')} vem dos roteiros, não foi executado ${selo('n')} ainda por confirmar</div>`;
 
 function item(id, p, rotuloRes) {
   const res = p.r ? `<span class="res"><b>${rotuloRes}:</b> ${fmt(p.r)}</span>` : '';
+  if (p.dev) {
+    return `<li class="dev-item"><div class="dev-faixa" role="note">${ICONE.obra}<strong>Em desenvolvimento</strong><span>Não é para testar: esta parte do sistema ainda está sendo construída. Pule esta etapa; ela não conta no seu progresso.</span></div><div class="dev-texto"><span class="acao">${fmt(p.t)}</span>${res}</div></li>`;
+  }
   const campo = p.campo ? `<input class="reg" type="text" data-reg="${esc(id)}" placeholder="${esc(p.campo)}" aria-label="${esc(p.campo)}">` : '';
   return `<li class="item"><label><input type="checkbox" data-id="${esc(id)}"><span class="txt"><span class="acao">${fmt(p.t)}</span>${res}</span>${selo(p.s)}</label>${campo}<button type="button" class="flag" data-flag="${esc(id)}" aria-pressed="false" title="Registrar um problema nesta etapa">${ICONE.bandeira}Problema</button><button type="button" class="anexo-btn" data-anexo="${esc(id)}" data-n="0" title="Anexar imagem (ou cole um print com Ctrl+V)">${ICONE.clipe}Anexar<span class="n-anexos"></span></button></li>`;
 }
@@ -235,7 +241,11 @@ const QA = [
   ['Recebimento', 'Validação de Recebimento', 'validacao-recebimento-faktory-flow.html'], ['Serviços', 'Validação de Serviços', 'validacao-servicos-v2-faktory-flow.html'],
   ['Tarefas', 'Validação de Tarefas', 'validacao-tarefas-faktory-flow.html'],
 ];
-const resumoEtapas = (c) => { const p = contarPassos(c); return { etapas: p.length, verificadas: p.filter((x) => x.s === 'v').length }; };
+const resumoEtapas = (c) => {
+  const p = contarPassos(c);
+  const dev = todosPassos(c).filter((x) => x.dev).length;
+  return { etapas: p.length, verificadas: p.filter((x) => x.s === 'v').length, ...(dev ? { emDesenvolvimento: dev } : {}) };
+};
 
 const consultores = [CONSULTOR, ...FLUXOS, ...FLUXOS_OPERACAO, ...FLUXOS_GESTAO];
 [ONBOARDING, ...CHECKLISTS, ...consultores].forEach((c) => conferir(c, c.arquivo));

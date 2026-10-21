@@ -226,3 +226,17 @@ html.nuvem .anexo-btn{display:inline-flex}
 .visor-img form{text-align:right}
 @media (prefers-reduced-motion:reduce){.anexo-ver,.anexo-btn{transition:none}}
 @media print{.flag,.anexo-btn,.anexo-x,.sinc{display:none}.obs{border-style:solid}.anexos{break-inside:avoid}.anexo-ver img{width:120px;height:84px}}
+
+/* ---------- Etapa em desenvolvimento: faixa "não testar", sem caixa de marcação e fora do progresso ---------- */
+.dev-item{margin:6px 0;border:1.5px dashed #C98A1B;border-radius:var(--r-md);background:repeating-linear-gradient(135deg,#FFF8E6 0 14px,#FFF2D1 14px 28px);overflow:hidden}
+.dev-faixa{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;padding:7px 12px;background:#C98A1B;color:#fff;font:700 12px var(--display);letter-spacing:.04em}
+.dev-faixa strong{text-transform:uppercase;letter-spacing:.08em}
+.dev-faixa span{font-weight:600;letter-spacing:0;opacity:.95}
+.dev-faixa svg{width:15px;height:15px}
+.dev-texto{display:grid;gap:4px;padding:10px 14px;color:#4A3A12}
+.dev-texto .acao{font-weight:600}
+.dev-texto .res{font-size:.92em}
+html[data-theme="dark"] .dev-texto{color:#F6E7BF}
+html[data-theme="dark"] .dev-item{background:repeating-linear-gradient(135deg,#3A2F14 0 14px,#33290F 14px 28px)}
+@media (prefers-color-scheme:dark){html:not([data-theme="light"]) .dev-texto{color:#F6E7BF}html:not([data-theme="light"]) .dev-item{background:repeating-linear-gradient(135deg,#3A2F14 0 14px,#33290F 14px 28px)}}
+@media print{.dev-item{break-inside:avoid}.dev-faixa{background:#C98A1B!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}}
