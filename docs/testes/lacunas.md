@@ -1,6 +1,6 @@
 # Fila de testes: etapas ainda sem "Verificado"
 
-Gerado por `node scripts/lacunas-checklists.mjs` — 147 etapas em 20 checklists. `doc` = vem dos roteiros, `n/v` = não validado.
+Gerado por `node scripts/lacunas-checklists.mjs` — 156 etapas em 21 checklists. `doc` = vem dos roteiros, `n/v` = não validado.
 Ao validar uma etapa, mude `s` para `'v'` no arquivo de dados do checklist e rode `npm run checklists`. Regras e briefs em [README.md](README.md).
 
 ## Primeiros passos e navegação  `01-primeiros-passos-navegacao.html` — 1 etapa(s)
@@ -8,15 +8,12 @@ Ao validar uma etapa, mude `s` para `'v'` no arquivo de dados do checklist e rod
 **5. Notificações, ajuda e preferências**
 - [ ] (doc) Conhecer a Alumina (Ctrl+Alt+A), a assistente de IA: ela consulta dados e só executa ações depois de confirmação.
 
-## Cadastros básicos  `02-cadastros-basicos.html` — 3 etapa(s)
+## Cadastros básicos  `02-cadastros-basicos.html` — 2 etapa(s)
 
-**Pré-requisitos**
-- [ ] (doc) Saber um nome de cliente, um produto e uma obra existentes para consultar (peça ao supervisor).
-
-**3. Consultar um produto** · Cadastros > Produtos
+**4. Consultar um produto** · Cadastros > Produtos
 - [ ] (n/v) Abrir a lista de produtos e pesquisar por código ou descrição.
 
-**4. Consultar um projeto/obra** · Cadastros > Projetos
+**5. Consultar um projeto/obra** · Cadastros > Projetos
 - [ ] (n/v) Abrir a lista de projetos e localizar uma obra.
 
 ## CRM: leads e oportunidades  `03-crm-leads-oportunidades.html` — 3 etapa(s)
@@ -30,21 +27,29 @@ Ao validar uma etapa, mude `s` para `'v'` no arquivo de dados do checklist e rod
 **Resultado esperado**
 - [ ] (doc) Meus dois leads de treino aparecem na lista e no Kanban, o primeiro na etapa para onde o movi.
 
+## Compras: da necessidade ao pedido  `05-compras.html` — 1 etapa(s)
+
+**1. Preparar seus dados: criar uma solicitação e um pedido de compra** · Cadastros > Participantes e Compras > Solicitações de Compra
+- [ ] (doc) No menu ⋯ da solicitação, escolher Gerar Pedido de Compra (a cotação é opcional), conferir a Conta de Fluxo de Caixa sugerida e confirmar. → _PC "Em Aberto" e "Sem títulos"; um pedido por fornecedor._
+
 ## Serviços de campo  `09-servicos-campo.html` — 1 etapa(s)
 
-**2. Consultar medições** · Serviços > Medições
+**3. Consultar medições** · Serviços > Medições
 - [ ] (n/v) Abrir uma medição e ver os vãos, fotos e histórico.
 
-## Projetos e obras  `10-projetos-obras.html` — 6 etapa(s)
+## Projetos e obras  `10-projetos-obras.html` — 7 etapa(s)
 
 **Pré-requisitos**
 - [ ] (doc) Checklists 04 e 09 concluídos.
 
-**2. Consultar a carteira de obras** · módulo Projetos
+**1. Preparar seus dados: ligar a sua obra ao seu pedido** · Vendas > Pedidos de Venda (pedido em aberto)
+- [ ] (doc) Abrir o seu pedido de venda em aberto, escolher no campo Projeto a sua obra de treino e salvar. → _A coluna PROJETO da lista de pedidos passa a mostrar a obra. Pedido já entregue não tem "Editar": faça isto antes._
+
+**3. Consultar a carteira de obras** · módulo Projetos
 - [ ] (doc) Abrir a lista/dashboard de projetos e ver as obras que precisam de atenção.
 - [ ] (doc) Abrir uma obra e ver cliente, responsável, endereços, estágios e etapas.
 
-**3. Ler o painel financeiro da obra** · Financeiro > Painel Financeiro de Projetos
+**4. Ler o painel financeiro da obra** · Financeiro > Painel Financeiro de Projetos
 - [ ] (doc) Escolher a obra e ler receitas, custos e margem.
 - [ ] (doc) Ler progresso e material: o que entrou, foi consumido e falta consumir.
 
@@ -53,10 +58,10 @@ Ao validar uma etapa, mude `s` para `'v'` no arquivo de dados do checklist e rod
 
 ## Faturamento e Fiscal (consulta)  `12-faturamento-fiscal.html` — 2 etapa(s)
 
-**2. Conhecer as ações de uma nota (sem executar)** · menu ... da linha
+**3. Conhecer as ações de uma nota (sem executar)** · menu ... da linha
 - [ ] (n/v) Usar só as opções de consulta (Ver Timeline, Preview da DANFE) quando o supervisor pedir.
 
-**4. Saber onde ficam os cadastros fiscais** · módulo Fiscal
+**5. Saber onde ficam os cadastros fiscais** · módulo Fiscal
 - [ ] (doc) Saber que NCM, CFOP, CST/CSOSN, CEST e Textos Fiscais são cadastros do Fiscal, mantidos com o contador.
 
 ## Financeiro (consulta)  `13-financeiro.html` — 7 etapa(s)
@@ -64,29 +69,32 @@ Ao validar uma etapa, mude `s` para `'v'` no arquivo de dados do checklist e rod
 **Pré-requisitos**
 - [ ] (doc) Checklists 04, 06 e 12 concluídos.
 
-**2. Consultar títulos** · Financeiro > Contas a Receber e Contas a Pagar
+**3. Consultar títulos** · Financeiro > Contas a Receber e Contas a Pagar
 - [ ] (n/v) Filtrar por vencimento e situação e abrir um título.
 - [ ] (doc) Ver de qual pedido, nota ou recebimento o título veio.
 - [ ] (n/v) Saber que "Pagamentos" é uma aba dentro de Contas a Pagar.
 
-**3. Ler a visão de gestão**
+**4. Ler a visão de gestão**
 - [ ] (doc) Abrir Fluxo de Caixa e DRE.
 - [ ] (doc) Abrir Painel Financeiro de Projetos para ver o resultado por obra.
 
 **Resultado esperado**
 - [ ] (doc) Sei explicar de onde vem um título a receber (pedido/nota) e um título a pagar (recebimento de compra).
 
-## Tarefas: quadros e cartões  `14-tarefas.html` — 8 etapa(s)
+## Tarefas: quadros e cartões  `14-tarefas.html` — 9 etapa(s)
 
 **Pré-requisitos**
 - [ ] (doc) Saber qual quadro você vai usar (combine com o supervisor).
 
-**1. Achar suas tarefas**
+**1. Preparar seus dados: criar o seu primeiro cartão** · módulo Tarefas
+- [ ] (doc) Criar um cartão "TESTE ESTAGIÁRIO - cartão 1", atribuir a você como responsável e definir um prazo. → _O cartão aparece em Minhas Tarefas._
+
+**2. Achar suas tarefas**
 - [ ] (doc) Abrir Minhas Tarefas e ver o que está atribuído a você.
 - [ ] (doc) Abrir um quadro e alternar as visões: Kanban, lista, tabela, calendário e Gantt.
 
-**2. Trabalhar num cartão**
-- [ ] (doc) Criar um cartão "TESTE ESTAGIÁRIO" no quadro combinado.
+**3. Trabalhar num cartão**
+- [ ] (doc) Abrir o cartão de treino que você criou no bloco 1 (se ainda não criou, crie agora no quadro combinado).
 - [ ] (doc) Preencher responsável, prazo e prioridade; usar o checklist e os comentários do cartão.
 - [ ] (doc) Mover o cartão entre as listas conforme o andamento.
 - [ ] (doc) Arquivar o cartão de teste no fim.
@@ -94,12 +102,18 @@ Ao validar uma etapa, mude `s` para `'v'` no arquivo de dados do checklist e rod
 **Resultado esperado**
 - [ ] (doc) Meu cartão de teste aparece em Minhas Tarefas e na coluna certa do quadro.
 
-## Visão do fluxo completo  `15-visao-fluxo-completo.html` — 3 etapa(s)
+## Visão do fluxo completo  `15-visao-fluxo-completo.html` — 7 etapa(s)
 
 **Pré-requisitos**
-- [ ] (doc) Um pedido faturado ou entregue indicado pelo supervisor para servir de exemplo.
+- [ ] (doc) O seu pedido de treino (checklist 04), de preferência já faturado ou entregue; se o seu ainda não chegou lá, use um pedido indicado pelo supervisor como exemplo.
 
-**3. Da nota ao resultado**
+**1. Preparar seus dados: reunir os registros que você criou** · campos de registro dos checklists 03 a 13
+- [ ] (doc) Anotar o lead que você criou (checklist 03) e o pedido de venda (checklist 04).
+- [ ] (doc) Anotar o pedido de compra (05) e a nota de recebimento (06).
+- [ ] (doc) Anotar o movimento de estoque (07), a OP (08) e a medição (09).
+- [ ] (doc) Anotar a obra (10), a carga (11), a nota (12) e os títulos (13).
+
+**4. Da nota ao resultado**
 - [ ] (doc) Projetos: o painel financeiro da obra soma receitas e custos.
 
 **Resultado esperado**
@@ -309,11 +323,16 @@ Ao validar uma etapa, mude `s` para `'v'` no arquivo de dados do checklist e rod
 - [ ] (doc) O quadro respeitou lista, WIP, status e dependência em todas as telas.
 - [ ] (doc) Comentário, menção, checklist e anexo funcionaram sem duplicar nem vazar entre empresas.
 
-## Onboarding do estagiário  `00-onboarding-estagiario.html` — 11 etapa(s)
+## Onboarding do estagiário  `00-onboarding-estagiario.html` — 14 etapa(s)
 
 **Antes do primeiro dia**
 - [ ] (doc) Receber usuário e senha pessoais do sistema (não use o login de outra pessoa).
 - [ ] (doc) Combinar com o supervisor quais módulos fazem parte da sua rotina e qual perfil de acesso você terá.
+
+**Antes de começar — Por que a sua conta vem zerada**
+- [ ] (doc) Entender a ordem: o que você criar no checklist 02 (cliente, produto, obra) é usado no 04 (pedido), que alimenta 05 a 13. Por isso a trilha segue a numeração.
+- [ ] (doc) Dar o nome TESTE ESTAGIÁRIO - … a tudo o que você criar e anotar o número de cada registro nos campos dos checklists: o checklist 15 reúne todos.
+- [ ] (doc) Se um botão não aparecer ou o sistema negar permissão, anotar em Problema e avisar o supervisor: pode ser permissão do seu perfil ou cadastro-base faltando.
 
 **Semana 1 — Navegação e cadastros**
 - [ ] (doc) Concluir o checklist 02 · Cadastros básicos (participantes, produtos e projetos).

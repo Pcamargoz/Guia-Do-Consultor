@@ -13,7 +13,7 @@ export const ONBOARDING = {
   arquivo: '00-onboarding-estagiario.html',
   titulo: 'Onboarding do estagiário',
   subtitulo: 'Seu roteiro para aprender o Faktory Flow aos poucos: primeiro a navegação, depois cada módulo na ordem do fluxo da empresa — do primeiro contato com o cliente até o dinheiro no caixa.',
-  objetivo: 'Organizar suas primeiras semanas: o que pedir antes de começar, a ordem recomendada dos checklists e os combinados de segurança. Ao final, você deve saber encontrar qualquer tela, consultar registros sem alterar nada e explicar como um pedido passa pelos módulos.',
+  objetivo: 'Organizar suas primeiras semanas: o que pedir antes de começar, a ordem recomendada dos checklists e os combinados de segurança. Ao final, você deve saber encontrar qualquer tela, criar os seus registros de treino, consultar o que já existe sem alterar nada e explicar como um pedido passa pelos módulos.',
   atencao: [
     'Treine sempre no ambiente de **testes** (staging ou dev), nunca em produção. Confira o endereço no navegador antes de começar.',
     'Na dúvida, **não clique**. Botões como `Transmitir`, `Aprovar`, `Finalizar`, `Excluir`, `Enviar agora` e `Converter` geram efeito real.',
@@ -32,8 +32,19 @@ export const ONBOARDING = {
       ],
     },
     {
+      preparar: true,
+      titulo: 'Antes de começar — Por que a sua conta vem zerada',
+      intro: 'No Faktory Flow, cada módulo usa o que o anterior criou: lead, cliente, pedido, compra, estoque, produção, serviços, nota e títulos. Uma empresa nova não tem nada disso, então cada checklist começa com **Preparar seus dados**: você cria o registro de que ele precisa e anota o número.',
+      passos: [
+        { t: 'Entender a ordem: o que você criar no checklist 02 (cliente, produto, obra) é usado no 04 (pedido), que alimenta 05 a 13. Por isso a trilha segue a numeração.', s: 'd' },
+        { t: 'Combinar com o supervisor os **cadastros-base** que só um consultor configura: unidade de medida, almoxarifado central ativo, condição e meio de pagamento (que não seja boleto sem conta emissora), plano de contas, conta bancária, CFOP e NCM do produto, técnico e conferente de serviços.', s: 'v' },
+        { t: 'Dar o nome **TESTE ESTAGIÁRIO - …** a tudo o que você criar e anotar o número de cada registro nos campos dos checklists: o checklist **15** reúne todos.', s: 'd' },
+        { t: 'Se um botão não aparecer ou o sistema negar permissão, anotar em **Problema** e avisar o supervisor: pode ser permissão do seu perfil ou cadastro-base faltando.', s: 'd' },
+      ],
+    },
+    {
       titulo: 'Semana 1 — Navegação e cadastros',
-      intro: 'Objetivo: sentir-se à vontade nas telas, sem alterar nada.',
+      intro: 'Objetivo: sentir-se à vontade nas telas. Os únicos registros que você cria são os de treino, no início de cada checklist.',
       passos: [
         { t: 'Concluir o checklist **01 · Primeiros passos e navegação**.', s: 'v' },
         { t: 'Concluir o checklist **02 · Cadastros básicos** (participantes, produtos e projetos).', s: 'd' },
@@ -153,11 +164,21 @@ export const CHECKLISTS = [
     objetivo: 'Localizar e ler os cadastros que todos os processos usam — participante, produto e projeto/obra — e entender por que um erro de cadastro aparece depois na nota fiscal, no financeiro e na produção.',
     prerequisitos: [
       { t: 'Checklist 01 concluído.', s: 'v' },
-      { t: 'Saber um nome de cliente, um produto e uma obra existentes para consultar (peça ao supervisor).', s: 'd' },
     ],
     fluxos: [
       {
-        titulo: '1. Consultar um participante', onde: '`Cadastros > Participantes` (aparece no menu de vários módulos)',
+        preparar: true,
+        titulo: '1. Preparar seus dados: cadastrar cliente, produto e obra de treino', onde: '`Cadastros > Participantes`, `Cadastros > Produtos` e `Cadastros > Projetos`',
+        intro: 'A sua empresa de treino começa **zerada**: cada módulo usa o que o anterior criou. Este checklist cria o cliente, o produto e a obra que os checklists seguintes (vendas, estoque, produção, serviços) vão usar: anote o código de cada um. Nas consultas dos blocos abaixo, procure pelos registros que você acabou de criar. Se faltar permissão ou cadastro-base (botão que não aparece, CFOP, plano de contas, meio de pagamento, unidade de medida, almoxarifado), anote a mensagem em **Problema** e chame o supervisor: a empresa de treino começa zerada e os cadastros-base são feitos por um consultor.',
+        passos: [
+          { t: 'Em `Cadastros > Participantes`, criar um participante: **Tipo (PF/PJ)** e **Razão Social / Nome** "TESTE ESTAGIÁRIO - Cliente", CPF/CNPJ fictício, CEP e número, **É Cliente?** ligado e um e-mail de teste. Clicar em `Salvar`.', r: 'Mensagem "Registro salvo com sucesso!". Documento repetido é recusado (troque o número); se o CEP trouxer um bairro curto, como "Sé", digite um bairro com 3 letras ou mais.', s: 'v', campo: 'Código do cliente' },
+          { t: 'No mesmo participante, preencher a **Conta de Fluxo de Caixa Receita** e a Inscrição Estadual/RG ("ISENTO" serve no treino).', r: 'O pedido de venda usa esses dados: sem eles o financeiro do pedido fica incompleto.', s: 'v' },
+          { t: 'Em `Cadastros > Produtos`, criar um produto "TESTE ESTAGIÁRIO - Produto": unidade de medida **cadastrada na empresa com a mesma sigla**, NCM e **Origem da Mercadoria**. Clicar em `Salvar`.', r: 'Unidade com sigla diferente ("PÇ" ≠ "PC") faz o pedido falhar só ao salvar, e a Origem da Mercadoria vazia só avisa depois de Salvar.', s: 'v', campo: 'Código do produto' },
+          { t: 'Em `Cadastros > Projetos`, criar uma obra: **Nome** "TESTE ESTAGIÁRIO - Obra", **Código**, status, cliente (o seu) e responsável. Clicar em `Salvar`.', r: 'Mensagem "Registro salvo com sucesso!". Código repetido é recusado.', s: 'v', campo: 'Código da obra' },
+        ],
+      },
+      {
+        titulo: '2. Consultar um participante', onde: '`Cadastros > Participantes` (aparece no menu de vários módulos)',
         passos: [
           { t: 'Abrir a lista e pesquisar pelo nome do cliente.', r: 'Se não existir, a tela mostra "Nenhum participante encontrado".', s: 'v' },
           { t: 'Abrir o participante e percorrer as seções: Dados Gerais, Classificação, Endereço, Contato, Contas bancárias, Documentos e Dados CRM.', s: 'v' },
@@ -166,7 +187,7 @@ export const CHECKLISTS = [
         ],
       },
       {
-        titulo: '2. Conhecer o formulário de novo participante (sem salvar)', onde: 'botão `Novo` da lista de participantes',
+        titulo: '3. Conhecer o formulário de novo participante (sem salvar)', onde: 'botão `Novo` da lista de participantes',
         passos: [
           { t: 'Identificar os campos obrigatórios: **Tipo (PF/PJ)** e **Razão Social / Nome**.', r: 'Ao tentar salvar vazio, os campos ficam vermelhos e aparece "Erros de validação".', s: 'v' },
           { t: 'Digitar um CEP e ver o endereço ser preenchido sozinho.', s: 'v' },
@@ -174,14 +195,14 @@ export const CHECKLISTS = [
         ],
       },
       {
-        titulo: '3. Consultar um produto', onde: '`Cadastros > Produtos`',
+        titulo: '4. Consultar um produto', onde: '`Cadastros > Produtos`',
         passos: [
           { t: 'Abrir a lista de produtos e pesquisar por código ou descrição.', s: 'n' },
           { t: 'No estoque, abrir o produto pelo código em `Estoque > Saldo` e ler classificação, unidade, categoria, NCM, dimensões e pesos.', r: 'A ficha mostra também o total em estoque, o custo médio e a situação (Ativo).', s: 'v' },
         ],
       },
       {
-        titulo: '4. Consultar um projeto/obra', onde: '`Cadastros > Projetos`',
+        titulo: '5. Consultar um projeto/obra', onde: '`Cadastros > Projetos`',
         passos: [
           { t: 'Abrir a lista de projetos e localizar uma obra.', s: 'n' },
           { t: 'Na lista de Pedidos de Venda, ver a coluna PROJETO: ela mostra a obra de cada pedido (ex.: "ORC-26-08-0003 - Obra Le Jardin").', s: 'v' },
@@ -295,7 +316,18 @@ export const CHECKLISTS = [
     ],
     fluxos: [
       {
-        titulo: '1. Consultar pedidos', onde: '`Vendas > Pedidos de Venda`',
+        preparar: true,
+        titulo: '1. Preparar seus dados: criar um pedido de venda de treino', onde: '`Vendas > Pedidos de Venda > + Novo Pedido`',
+        intro: 'A sua empresa de treino começa **zerada**: cada módulo usa o que o anterior criou. Este pedido é a base de quase todo o resto (compras, produção, serviços, expedição, nota e financeiro): faça com calma e anote o número. Use o cliente, o produto e a obra do checklist 02. Se faltar permissão ou cadastro-base (botão que não aparece, CFOP, plano de contas, meio de pagamento, unidade de medida, almoxarifado), anote a mensagem em **Problema** e chame o supervisor: a empresa de treino começa zerada e os cadastros-base são feitos por um consultor.',
+        passos: [
+          { t: 'Preencher **Empresa**, **Cliente** (o seu de treino), **Vendedor**, **Condição de Pagamento** e, se quiser, **Projeto** (a sua obra). Escolher o **CFOP** (só libera depois de empresa e cliente).', r: 'O CFOP vem filtrado pelo estado do cliente.', s: 'v' },
+          { t: 'Adicionar o item (o seu produto). Produtos de esquadria abrem "Dados do Item" (altura, largura, comprimento, peso, cor).', r: 'Pode aparecer o quadro "Impostos não calculados no item" com o motivo (ex.: CST de PIS/COFINS ausente na NCM). O pedido salva mesmo assim.', s: 'v' },
+          { t: 'Na parcela, escolher o **Meio de Pagamento** e o **Portador**; no Resumo, a **Conta de Fluxo de Caixa** de venda.', s: 'v' },
+          { t: 'Clicar em **Salvar e Permanecer**.', r: 'Mensagem "Pedido PV-xxxxxx criado". Na lista: Em aberto, "Sem títulos" e Nota Fiscal "—".', s: 'v', campo: 'Nº do pedido (PV-)' },
+        ],
+      },
+      {
+        titulo: '2. Consultar pedidos', onde: '`Vendas > Pedidos de Venda`',
         passos: [
           { t: 'Abrir a lista e notar que ela começa filtrada em Status **"Em Aberto"** (e volta para esse filtro quando você sai e entra de novo).', s: 'v' },
           { t: 'Trocar o Status para "Todos" e conhecer os demais: Aprovação pendente, Encerrado, Faturado, Lib. Expedição, Entregue e Cancelado.', s: 'v' },
@@ -304,7 +336,7 @@ export const CHECKLISTS = [
         ],
       },
       {
-        titulo: '2. Conhecer o formulário de pedido (sem salvar)', onde: 'botão `+ Novo Pedido`',
+        titulo: '3. Conhecer o formulário de pedido (sem salvar)', onde: 'botão `+ Novo Pedido`',
         passos: [
           { t: 'Clicar em **Salvar** com tudo vazio e ler os avisos de Empresa ("Campo obrigatório") e Cliente ("Cliente é obrigatório").', r: 'Nada é gravado. Empresa e Cliente não têm asterisco: o aviso só aparece ao salvar.', s: 'v' },
           { t: 'Ver que o **CFOP** fica bloqueado até escolher empresa e cliente (e vem filtrado pelo estado do cliente) e que a **Conta de Fluxo de Caixa** é obrigatória.', s: 'v' },
@@ -313,7 +345,7 @@ export const CHECKLISTS = [
         ],
       },
       {
-        titulo: '3. Ler os indicadores', onde: '`Vendas > Dashboard Vendas`',
+        titulo: '4. Ler os indicadores', onde: '`Vendas > Dashboard Vendas`',
         passos: [
           { t: 'Escolher um período (Hoje, Esta semana, Este mês, Este ano) e clicar em **Aplicar**.', r: 'Os cartões (Total em vendas, Ticket médio, Em aberto, Pendentes de faturamento) são recalculados.', s: 'v' },
           { t: 'Saber que o bloco "Crescimento vs. período anterior" **não segue** o filtro de datas.', s: 'v' },
@@ -321,7 +353,7 @@ export const CHECKLISTS = [
         ],
       },
       {
-        titulo: '4. Metas e comissões', onde: '`Vendas > Metas de Vendas` e `Vendas > Controle de Comissão`',
+        titulo: '5. Metas e comissões', onde: '`Vendas > Metas de Vendas` e `Vendas > Controle de Comissão`',
         passos: [
           { t: 'Abrir o painel de Metas: % da meta, projeção, ritmo necessário por dia e cenários pessimista/realista/otimista.', s: 'v' },
           { t: 'Usar o **Simulador** de comissão: valor 10.000, comissão 5%, Simular.', r: 'Comissão estimada R$ 500,00, liberada no recebimento. O simulador não grava nada.', s: 'v' },
@@ -329,7 +361,7 @@ export const CHECKLISTS = [
         ],
       },
       {
-        titulo: '5. Ver aprovações pendentes', onde: '`Vendas > Aprovações`',
+        titulo: '6. Ver aprovações pendentes', onde: '`Vendas > Aprovações`',
         passos: [
           { t: 'Ver documento, solicitante, valor, tipo e tempo de espera **sem clicar em Aprovar**.', s: 'v' },
         ],
@@ -366,14 +398,25 @@ export const CHECKLISTS = [
     ],
     fluxos: [
       {
-        titulo: '1. Conhecer o menu na ordem do processo', onde: 'módulo `Compras`',
+        preparar: true,
+        titulo: '1. Preparar seus dados: criar uma solicitação e um pedido de compra', onde: '`Cadastros > Participantes` e `Compras > Solicitações de Compra`',
+        intro: 'A sua empresa de treino começa **zerada**: cada módulo usa o que o anterior criou. A compra precisa de um fornecedor, que é o mesmo cadastro de participante com outra chave ligada. Anote os números: o checklist 06 (recebimento) parte do seu pedido de compra. Se faltar permissão ou cadastro-base (botão que não aparece, CFOP, plano de contas, meio de pagamento, unidade de medida, almoxarifado), anote a mensagem em **Problema** e chame o supervisor: a empresa de treino começa zerada e os cadastros-base são feitos por um consultor.',
+        passos: [
+          { t: 'Cadastrar um participante "TESTE ESTAGIÁRIO - Fornecedor" com **É Fornecedor?** ligado, como no checklist 02.', s: 'v', campo: 'Código do fornecedor' },
+          { t: 'Em `Compras > Solicitações de Compra > Nova Solicitação`: **Empresa**, data de necessidade, produto (cor em "Dados do Item") e quantidade. Salvar.', r: 'SC "Em Aberto". Projeto em branco faz a entrada cair no almoxarifado central.', s: 'v', campo: 'Nº da solicitação (SC-)' },
+          { t: 'No menu `⋯` da solicitação, escolher **Gerar Pedido de Compra** (a cotação é opcional), conferir a Conta de Fluxo de Caixa sugerida e confirmar.', r: 'PC "Em Aberto" e "Sem títulos"; um pedido por fornecedor.', s: 'd', campo: 'Nº do pedido de compra (PC-)' },
+          { t: 'Se o supervisor pedir a cotação: `⋯ > Gerar Cotação` (Empresa e Natureza da Operação), fornecedor com data de entrega e condição de pagamento, proposta preenchida e então **Gerar Pedido de Compra**.', r: 'Ao gerar o pedido, a solicitação e a cotação aparecem como Concluída na linha do tempo.', s: 'v' },
+        ],
+      },
+      {
+        titulo: '2. Conhecer o menu na ordem do processo', onde: 'módulo `Compras`',
         passos: [
           { t: 'Ver que os itens do menu seguem o processo: Solicitações → Sugestão → Cotações → Pedidos → Aprovações → Contratos de Entrega → Follow-up de Entregas.', s: 'v' },
           { t: 'Abrir o `Dashboard Compras` e ler os cartões (solicitações em aberto, cotações ativas, pedidos em aberto, total do mês) e o bloco de pedidos recentes.', s: 'v' },
         ],
       },
       {
-        titulo: '2. Consultar os documentos de compra',
+        titulo: '3. Consultar os documentos de compra',
         passos: [
           { t: 'Em `Solicitações de Compra`, localizar uma SC e abrir o menu `⋯`.', r: 'Opções Gerar Cotação, Gerar Pedido de Compra e Excluir. A solicitação não tem etapa de aprovação.', s: 'v' },
           { t: 'Em `Cotações de Compra`, abrir uma cotação e percorrer o assistente: Dados Gerais, Itens a Cotar, Cotação (fornecedores) e Comparação.', r: 'A Natureza da Operação escolhida define o CFOP do pedido.', s: 'v' },
@@ -382,7 +425,7 @@ export const CHECKLISTS = [
         ],
       },
       {
-        titulo: '3. Sugestão e aprovação', onde: '`Compras > Sugestão de Compra` e `Compras > Aprovações`',
+        titulo: '4. Sugestão e aprovação', onde: '`Compras > Sugestão de Compra` e `Compras > Aprovações`',
         passos: [
           { t: 'Em `Sugestão de Compra`, ler a fórmula "falta líquida = mínimo − disponível" **sem gerar solicitações**.', r: 'Só aparecem itens com estoque mínimo cadastrado.', s: 'v' },
           { t: 'Em `Compras > Aprovações`, ver os pedidos aguardando alçada.', r: 'A aprovação por alçada vem desligada: sem ela o pedido já nasce pronto para receber.', s: 'v' },
@@ -414,14 +457,22 @@ export const CHECKLISTS = [
     ],
     fluxos: [
       {
-        titulo: '1. Ler o painel do recebimento', onde: '`Recebimento > Dashboard Recebimento`',
+        preparar: true,
+        titulo: '1. Preparar seus dados: gerar a nota de recebimento do seu pedido de compra', onde: '`Compras > Pedidos de Compra`',
+        intro: 'A sua empresa de treino começa **zerada**: cada módulo usa o que o anterior criou. A nota de recebimento nasce do pedido de compra do checklist 05. **Não finalize** a nota: a finalização movimenta estoque e financeiro (veja o bloco "Saber o que a finalização provoca"). Se faltar permissão ou cadastro-base (botão que não aparece, CFOP, plano de contas, meio de pagamento, unidade de medida, almoxarifado), anote a mensagem em **Problema** e chame o supervisor: a empresa de treino começa zerada e os cadastros-base são feitos por um consultor.',
+        passos: [
+          { t: 'No pedido de compra do checklist 05, abrir o menu `⋯` e escolher **Gerar Nota de Recebimento**. Salvar.', r: 'A nota aparece na lista como "NF-<número do fornecedor>" e na fila de conferência como "NR-<número interno>": é a mesma nota.', s: 'v', campo: 'Nº da nota (NR-)' },
+        ],
+      },
+      {
+        titulo: '2. Ler o painel do recebimento', onde: '`Recebimento > Dashboard Recebimento`',
         passos: [
           { t: 'Ver a fila de notas a conferir, os pedidos esperados e os cartões "Recebido no período" e "Notas em aberto".', s: 'v' },
           { t: 'Ver os cartões "Títulos a gerar" e "Parcelas a vencer".', r: '"Parcelas a vencer" leva a Financeiro > Contas a Pagar.', s: 'v' },
         ],
       },
       {
-        titulo: '2. Consultar notas de recebimento', onde: '`Recebimento > Notas de Recebimento`',
+        titulo: '3. Consultar notas de recebimento', onde: '`Recebimento > Notas de Recebimento`',
         passos: [
           { t: 'Ler os cartões Total, Em Aberto, Finalizadas e Canceladas e trocar o filtro **Status** (abre em "Em Aberto").', r: 'Uma nota finalizada só aparece depois de limpar o filtro. Os cartões seguem o filtro.', s: 'v' },
           { t: 'Reconhecer que a mesma nota tem **dois números**: "NF-<número do fornecedor>" na lista e "NR-<número interno>" na conferência, no pedido e no título.', s: 'v' },
@@ -430,7 +481,7 @@ export const CHECKLISTS = [
         ],
       },
       {
-        titulo: '3. Entender a conferência física', onde: 'menu `Recebimento > Aprovações` (é a fila de conferências)',
+        titulo: '4. Entender a conferência física', onde: 'menu `Recebimento > Aprovações` (é a fila de conferências)',
         passos: [
           { t: 'Abrir a fila e ler os cartões (Aguardando conferência, Em conferência, Conferidas hoje) e as abas **sem iniciar**.', s: 'v' },
           { t: 'Saber que o botão **Conferir** já inicia a conferência e que o responsável fica registrado na nota.', s: 'v' },
@@ -438,7 +489,7 @@ export const CHECKLISTS = [
         ],
       },
       {
-        titulo: '4. Saber o que a finalização provoca',
+        titulo: '5. Saber o que a finalização provoca',
         passos: [
           { t: 'Ler o aviso da finalização: "movimenta estoque e gera títulos a pagar… não pode ser desfeita".', s: 'v' },
           { t: 'Depois de finalizada por outra pessoa, conferir o movimento "Recebimento (NR)" em `Estoque > Movimentos` e o título em `Financeiro > Contas a Pagar`.', s: 'v' },
@@ -470,14 +521,23 @@ export const CHECKLISTS = [
     ],
     fluxos: [
       {
-        titulo: '1. Ler a visão geral', onde: '`Estoque > Visão geral`',
+        preparar: true,
+        titulo: '1. Preparar seus dados: dar entrada no seu produto', onde: '`Estoque > Movimentos > + Novo Movimento`',
+        intro: 'A sua empresa de treino começa **zerada**: cada módulo usa o que o anterior criou. O saldo nunca é digitado: ele nasce de movimentos. Sem uma entrada, o seu produto aparece com saldo zero. Precisa existir um **almoxarifado central ativo** em `Estoque > Locais`. Se faltar permissão ou cadastro-base (botão que não aparece, CFOP, plano de contas, meio de pagamento, unidade de medida, almoxarifado), anote a mensagem em **Problema** e chame o supervisor: a empresa de treino começa zerada e os cadastros-base são feitos por um consultor.',
+        passos: [
+          { t: 'Escolher o tipo **Entrada manual**, o local de destino, o item (o seu produto) e o **custo unitário**; salvar (cuidado: **Ctrl+S salva**).', r: 'Movimento numerado na lista; saldo e custo médio do produto atualizados.', s: 'v', campo: 'Nº do movimento' },
+          { t: 'Abrir `Estoque > Saldo`, pesquisar o seu produto e conferir o saldo e o valor.', r: 'O saldo é igual à quantidade que você deu entrada.', s: 'v' },
+        ],
+      },
+      {
+        titulo: '2. Ler a visão geral', onde: '`Estoque > Visão geral`',
         passos: [
           { t: 'Escolher empresa, obra e período (Hoje, 7, 30 ou 90 dias).', r: 'Os indicadores (valor em estoque, saúde do estoque, necessidade de reposição) são recalculados.', s: 'v' },
           { t: 'Ler o bloco "Pendências de hoje": saldos negativos, empréstimos vencidos, inventários e encerramentos.', s: 'v' },
         ],
       },
       {
-        titulo: '2. Consultar o saldo de um material', onde: '`Estoque > Saldo`',
+        titulo: '3. Consultar o saldo de um material', onde: '`Estoque > Saldo`',
         passos: [
           { t: 'Pesquisar pelo código ou descrição do produto.', s: 'v' },
           { t: 'Achar a linha certa: cada produto aparece uma vez por **local** e por **variação** (cor + comprimento).', s: 'v' },
@@ -486,14 +546,14 @@ export const CHECKLISTS = [
         ],
       },
       {
-        titulo: '3. Ver o extrato do produto', onde: 'clique no código do produto na tela Saldo',
+        titulo: '4. Ver o extrato do produto', onde: 'clique no código do produto na tela Saldo',
         passos: [
           { t: 'Abrir a aba **Posições** e ver o saldo por local.', s: 'v' },
           { t: 'Abrir a aba **Histórico** e ler data, número, tipo, quantidade e motivo de cada movimento.', r: 'Você vê de onde veio o material (ex.: "Entrada de produto acabado por conclusão da OP...").', s: 'v' },
         ],
       },
       {
-        titulo: '4. Rastrear movimentos', onde: '`Estoque > Movimentos`',
+        titulo: '5. Rastrear movimentos', onde: '`Estoque > Movimentos`',
         passos: [
           { t: 'Filtrar por produto, local ou data.', s: 'v' },
           { t: 'Reconhecer as origens: Recebimento (NR), Requisição (baixa em OP), OP - Conclusão e Estorno.', s: 'v' },
@@ -501,7 +561,7 @@ export const CHECKLISTS = [
         ],
       },
       {
-        titulo: '5. Conhecer os tipos de movimento (sem salvar)', onde: '`+ Novo Movimento`',
+        titulo: '6. Conhecer os tipos de movimento (sem salvar)', onde: '`+ Novo Movimento`',
         passos: [
           { t: 'Ler a descrição dos 8 tipos: Entrada manual, Ajuste positivo, Ajuste negativo, Transferência, Requisição, Devolução de uso, Empréstimo e Descarte.', s: 'v' },
           { t: 'Sair com **Cancelar (Esc)**.', s: 'v' },
@@ -533,14 +593,22 @@ export const CHECKLISTS = [
     ],
     fluxos: [
       {
-        titulo: '1. Ler a visão geral', onde: '`Produção > Visão geral`',
+        preparar: true,
+        titulo: '1. Preparar seus dados: abrir uma ordem de produção do seu pedido', onde: '`Produção > Ordens de produção > Nova OP`',
+        intro: 'A sua empresa de treino começa **zerada**: cada módulo usa o que o anterior criou. A OP nasce do item do pedido de venda do checklist 04. Só abra a OP: apontar e finalizar é trabalho do chão de fábrica e do consultor. Se faltar permissão ou cadastro-base (botão que não aparece, CFOP, plano de contas, meio de pagamento, unidade de medida, almoxarifado), anote a mensagem em **Problema** e chame o supervisor: a empresa de treino começa zerada e os cadastros-base são feitos por um consultor.',
+        passos: [
+          { t: 'Escolher **Pedido de venda** e **Item do pedido** (copia produto, cor e medidas, mas **não** a quantidade), informar **Quantidade** e **Empresa** (obrigatória). Salvar. Não use Esc: ele fecha o painel e perde o formulário.', r: 'Mensagem "Registro salvo com sucesso!". Produto sem estrutura avisa "OP sem requisições da estrutura": é esperado no treino.', s: 'v', campo: 'Nº da OP' },
+        ],
+      },
+      {
+        titulo: '2. Ler a visão geral', onde: '`Produção > Visão geral`',
         passos: [
           { t: 'Ler Ritmo do dia, OPs bloqueadas por material e a lista "Insumos que mais travam".', s: 'v' },
           { t: 'Ver Obras em produção, Fila de entrada, Funil de OPs por etapa e OPs em risco.', r: 'A tela se atualiza sozinha a cada 3 minutos ("Atualizar agora" força).', s: 'v' },
         ],
       },
       {
-        titulo: '2. Consultar ordens de produção', onde: '`Produção > Ordens de produção`',
+        titulo: '3. Consultar ordens de produção', onde: '`Produção > Ordens de produção`',
         passos: [
           { t: 'Filtrar por projeto, tipo de operação (Fabricação, Corte, Beneficiamento) e status (Em aberto, Em execução, Pausada, Produzido, Cancelada).', s: 'v' },
           { t: 'Passar o mouse sobre os selos de alerta: Conclusão bloqueada, Conclusão travada, Material não baixado, Estoque não creditado.', r: 'O texto explica a causa (ex.: obra sem local de estoque ativo).', s: 'v' },
@@ -548,7 +616,7 @@ export const CHECKLISTS = [
         ],
       },
       {
-        titulo: '3. Ver os detalhes da OP pelo menu', onde: '`Mais ações` da linha da OP',
+        titulo: '4. Ver os detalhes da OP pelo menu', onde: '`Mais ações` da linha da OP',
         intro: 'A OP não tem abas: cada detalhe abre por um item do menu.',
         passos: [
           { t: 'Abrir **Etapas de execução da OP** e ler o processo e as etapas (ex.: usinagem → montagem → embalagem). Feche sem salvar.', s: 'v' },
@@ -558,20 +626,20 @@ export const CHECKLISTS = [
         ],
       },
       {
-        titulo: '4. Acompanhar o chão de fábrica', onde: '`Produção > Painel de fábrica`',
+        titulo: '5. Acompanhar o chão de fábrica', onde: '`Produção > Painel de fábrica`',
         passos: [
           { t: 'Alternar as visões **Cards**, **Lista** e **Timeline** e ler os contadores Ordens, No prazo e Atrasadas.', s: 'v' },
           { t: 'Em cada card, ler a etapa atual, as unidades e o % de etapas, **sem clicar em "Apontar"**.', s: 'v' },
         ],
       },
       {
-        titulo: '5. Entender de onde vêm as OPs', onde: '`Produção > Integração de Produção`',
+        titulo: '6. Entender de onde vêm as OPs', onde: '`Produção > Integração de Produção`',
         passos: [
           { t: 'Abrir uma integração processada e ler o resumo.', r: 'Ex.: "Gerou 1 OP de montagem · 13 OPs de corte (1 por perfil) · 38 requisições de material", a partir das esquadrias de uma obra.', s: 'v' },
         ],
       },
       {
-        titulo: '6. Ver a produção no estoque', onde: '`Estoque > Movimentos`',
+        titulo: '7. Ver a produção no estoque', onde: '`Estoque > Movimentos`',
         passos: [
           { t: 'Encontrar um movimento "Baixa de componente em OP" (origem Requisição).', r: 'É o material consumido pela OP.', s: 'v' },
           { t: 'Encontrar um movimento "Entrada de produto acabado (OP)" (origem OP - Conclusão).', r: 'É o produto pronto entrando no estoque quando a OP é concluída.', s: 'v' },
@@ -604,7 +672,15 @@ export const CHECKLISTS = [
     ],
     fluxos: [
       {
-        titulo: '1. Ler o painel de serviços', onde: '`Serviços > Dashboard Serviços`',
+        preparar: true,
+        titulo: '1. Preparar seus dados: agendar uma medição do seu pedido', onde: '`Serviços > Medições > + Nova Medição`',
+        intro: 'A sua empresa de treino começa **zerada**: cada módulo usa o que o anterior criou. A medição nasce do pedido de venda do checklist 04. Os vãos, as fotos e a assinatura só existem depois que um técnico mede: no seu treino a medição ficará agendada. Se faltar permissão ou cadastro-base (botão que não aparece, CFOP, plano de contas, meio de pagamento, unidade de medida, almoxarifado), anote a mensagem em **Problema** e chame o supervisor: a empresa de treino começa zerada e os cadastros-base são feitos por um consultor.',
+        passos: [
+          { t: 'Escolher o seu pedido de venda (cliente, obra e itens vêm preenchidos), preencher **Empresa** (não vem do pedido), **Técnico**, equipe e data. Salvar e clicar em **Agendar**.', r: 'Medição numerada, "Agendada".', s: 'v', campo: 'Nº da medição (MED-)' },
+        ],
+      },
+      {
+        titulo: '2. Ler o painel de serviços', onde: '`Serviços > Dashboard Serviços`',
         passos: [
           { t: 'Escolher o período (Hoje, 7 dias, 30 dias) e ler os cartões: Agendados, Em execução, Concluídos, Fora do prazo.', s: 'v' },
           { t: 'Ler o **Pipeline operacional**: Medições a executar → Aprovadas sem instalação → Instalações a executar → Concluídas sem vistoria → Vistorias a executar → Assistências abertas.', r: 'Estágios em âmbar são gargalos.', s: 'v' },
@@ -612,7 +688,7 @@ export const CHECKLISTS = [
         ],
       },
       {
-        titulo: '2. Consultar medições', onde: '`Serviços > Medições`',
+        titulo: '3. Consultar medições', onde: '`Serviços > Medições`',
         passos: [
           { t: 'Filtrar por Status: Em aberto, Agendada, Em Execução, Aguardando Conferência, Aprovada, Reprovada, Cancelada.', s: 'v' },
           { t: 'Ler a coluna **% MEDIDO** (vãos medidos sobre o total).', s: 'v' },
@@ -620,7 +696,7 @@ export const CHECKLISTS = [
         ],
       },
       {
-        titulo: '3. Entender de onde vem a medição (sem salvar)', onde: '`+ Nova Medição`',
+        titulo: '4. Entender de onde vem a medição (sem salvar)', onde: '`+ Nova Medição`',
         passos: [
           { t: 'Ver que a nova medição começa escolhendo um **pedido de venda**: cliente, obra e itens vêm preenchidos.', s: 'v' },
           { t: 'Ver a opção **Medição avulsa (sem pedido)**: obrigatórios Empresa, Cliente e Técnico Responsável.', s: 'v' },
@@ -628,13 +704,13 @@ export const CHECKLISTS = [
         ],
       },
       {
-        titulo: '4. Conhecer as equipes', onde: '`Serviços > Configurações > Equipes de Campo`',
+        titulo: '5. Conhecer as equipes', onde: '`Serviços > Configurações > Equipes de Campo`',
         passos: [
           { t: 'Ver as equipes, o tipo, a capacidade diária e o status.', r: 'Para abrir uma equipe use o lápis (clicar na linha não abre).', s: 'v' },
         ],
       },
       {
-        titulo: '5. Instalação, vistoria e assistência',
+        titulo: '6. Instalação, vistoria e assistência',
         passos: [
           { t: 'Saber a sequência: a medição aprovada **não** cria a instalação sozinha (botão "Gerar Instalação"); a instalação concluída gera a vistoria só se a geração automática estiver ligada; a assistência vem do botão "Gerar Assistência Técnica" da vistoria.', s: 'v' },
           { t: 'Abrir as listas de Instalações, Vistorias e Assistência Técnica e ler os status.', r: 'Vistoria: aprovada, aprovada com ressalvas ou reprovada; o aceite do cliente só vale depois de concluir. Assistência: o aceite é registrado antes de resolver.', s: 'v' },
@@ -666,21 +742,29 @@ export const CHECKLISTS = [
     ],
     fluxos: [
       {
-        titulo: '1. Achar a obra de um pedido',
+        preparar: true,
+        titulo: '1. Preparar seus dados: ligar a sua obra ao seu pedido', onde: '`Vendas > Pedidos de Venda` (pedido em aberto)',
+        intro: 'A sua empresa de treino começa **zerada**: cada módulo usa o que o anterior criou. A obra amarra pedido, compras, serviços, notas e financeiro. Ligue a sua obra (checklist 02) ao seu pedido (checklist 04) **antes de faturar**. Se faltar permissão ou cadastro-base (botão que não aparece, CFOP, plano de contas, meio de pagamento, unidade de medida, almoxarifado), anote a mensagem em **Problema** e chame o supervisor: a empresa de treino começa zerada e os cadastros-base são feitos por um consultor.',
+        passos: [
+          { t: 'Abrir o seu pedido de venda em aberto, escolher no campo **Projeto** a sua obra de treino e salvar.', r: 'A coluna PROJETO da lista de pedidos passa a mostrar a obra. Pedido já entregue não tem "Editar": faça isto antes.', s: 'd', campo: 'Obra / código' },
+        ],
+      },
+      {
+        titulo: '2. Achar a obra de um pedido',
         passos: [
           { t: 'Na lista de Pedidos de Venda, ler a coluna PROJETO.', s: 'v' },
           { t: 'Em Nova Medição, ver que cada pedido mostra a obra vinculada (ou "Sem obra vinculada").', s: 'v' },
         ],
       },
       {
-        titulo: '2. Consultar a carteira de obras', onde: 'módulo `Projetos`',
+        titulo: '3. Consultar a carteira de obras', onde: 'módulo `Projetos`',
         passos: [
           { t: 'Abrir a lista/dashboard de projetos e ver as obras que precisam de atenção.', s: 'd' },
           { t: 'Abrir uma obra e ver cliente, responsável, endereços, estágios e etapas.', s: 'd' },
         ],
       },
       {
-        titulo: '3. Ler o painel financeiro da obra', onde: '`Financeiro > Painel Financeiro de Projetos`',
+        titulo: '4. Ler o painel financeiro da obra', onde: '`Financeiro > Painel Financeiro de Projetos`',
         passos: [
           { t: 'Escolher a obra e ler receitas, custos e margem.', s: 'd' },
           { t: 'Ler progresso e material: o que entrou, foi consumido e falta consumir.', s: 'd' },
@@ -708,7 +792,16 @@ export const CHECKLISTS = [
     ],
     fluxos: [
       {
-        titulo: '1. Ver o que pode ser expedido',
+        preparar: true,
+        titulo: '1. Preparar seus dados: montar a carga do seu pedido', onde: 'menu `⋯` do pedido e `Expedição > Montar Nova Carga`',
+        intro: 'A sua empresa de treino começa **zerada**: cada módulo usa o que o anterior criou. A expedição só aceita pedido **faturado**: faça antes o bloco de preparar do checklist 12. O motorista precisa ter CNH válida. Se faltar permissão ou cadastro-base (botão que não aparece, CFOP, plano de contas, meio de pagamento, unidade de medida, almoxarifado), anote a mensagem em **Problema** e chame o supervisor: a empresa de treino começa zerada e os cadastros-base são feitos por um consultor.',
+        passos: [
+          { t: 'No pedido faturado, menu `⋯ > Liberar para Expedição`.', r: 'A opção só aparece depois que o pedido é faturado.', s: 'v' },
+          { t: 'Em `Expedição`, **Montar Nova Carga**: marcar o pedido, escolher veículo, data de saída e motorista e clicar em **Montar Carga**.', r: 'Carga "Em Montagem". Pode avisar "item sem ordem de produção vinculada" mesmo com OP.', s: 'v', campo: 'Nº da carga' },
+        ],
+      },
+      {
+        titulo: '2. Ver o que pode ser expedido',
         passos: [
           { t: 'Em Pedidos de Venda, filtrar o Status "Lib. Expedição".', s: 'v' },
           { t: 'Saber que **Liberar para Expedição** (menu `⋯` do pedido) só aparece depois que o pedido é faturado.', s: 'v' },
@@ -716,7 +809,7 @@ export const CHECKLISTS = [
         ],
       },
       {
-        titulo: '2. Entender a montagem da carga (sem montar)', onde: '`Expedição > Montar Nova Carga`',
+        titulo: '3. Entender a montagem da carga (sem montar)', onde: '`Expedição > Montar Nova Carga`',
         passos: [
           { t: 'Ver as abas "Por pedido de venda" e "Por ordem de produção" e o filtro "Exibir apenas pedidos explicitamente liberados".', s: 'v' },
           { t: 'Ler os campos: veículo (peso e volume), **Data prevista de saída**, **Motorista** e Observações.', r: 'O resumo mostra a ocupação do veículo (ex.: 23/360 kg).', s: 'v' },
@@ -724,7 +817,7 @@ export const CHECKLISTS = [
         ],
       },
       {
-        titulo: '3. Acompanhar uma carga', onde: 'detalhe da carga',
+        titulo: '4. Acompanhar uma carga', onde: 'detalhe da carga',
         passos: [
           { t: 'Reconhecer o ciclo: **Em Montagem → Fechada → (Separação, Conferência, Carregamento) → Em Rota → Entregue**.', s: 'v' },
           { t: 'Ler o bloco de checkpoints: cada volume é bipado ou confirmado na Separação, na Conferência e no Carregamento.', s: 'v' },
@@ -758,7 +851,15 @@ export const CHECKLISTS = [
     ],
     fluxos: [
       {
-        titulo: '1. Consultar notas fiscais', onde: '`Faturamento > Notas Fiscais` (o módulo já abre nesta tela)',
+        preparar: true,
+        titulo: '1. Preparar seus dados: faturar o seu pedido (sem transmitir)', onde: 'menu `⋯ > Faturar` do pedido',
+        intro: 'A sua empresa de treino começa **zerada**: cada módulo usa o que o anterior criou. Só faça com **autorização do supervisor** e com a faixa "Ambiente NF-e: HOMOLOGAÇÃO" visível: a nota nunca pode ser transmitida no treino. O produto precisa de NCM com CST de PIS/COFINS de saída, senão a nota sai com "Impostos não calculados". Se faltar permissão ou cadastro-base (botão que não aparece, CFOP, plano de contas, meio de pagamento, unidade de medida, almoxarifado), anote a mensagem em **Problema** e chame o supervisor: a empresa de treino começa zerada e os cadastros-base são feitos por um consultor.',
+        passos: [
+          { t: 'No seu pedido, abrir `⋯ > Faturar`, preencher as **Observações Internas** e clicar em **Salvar e Permanecer**.', r: 'O pedido passa a "Faturado" com a coluna NOTA FISCAL preenchida, mesmo com a nota ainda Em Aberto. **Não clique** em Transmitir.', s: 'v', campo: 'Nº da nota' },
+        ],
+      },
+      {
+        titulo: '2. Consultar notas fiscais', onde: '`Faturamento > Notas Fiscais` (o módulo já abre nesta tela)',
         passos: [
           { t: 'Escolher a aba **NF-e** (produto) ou **NFS-e** (serviço).', s: 'v' },
           { t: 'Ler os cartões Total, Em Aberto, Autorizadas, Canceladas e Rejeitadas.', s: 'v' },
@@ -767,7 +868,7 @@ export const CHECKLISTS = [
         ],
       },
       {
-        titulo: '2. Conhecer as ações de uma nota (sem executar)', onde: 'menu `...` da linha',
+        titulo: '3. Conhecer as ações de uma nota (sem executar)', onde: 'menu `...` da linha',
         passos: [
           { t: 'Reconhecer as opções: Editar, Finalizar NF, Preview da DANFE, Duplicar, Ver Timeline, Anexos e Excluir.', s: 'v' },
           { t: 'Identificar o botão **Transmitir** (avião de papel) direto na linha e saber que ele envia a nota à SEFAZ.', s: 'v' },
@@ -775,7 +876,7 @@ export const CHECKLISTS = [
         ],
       },
       {
-        titulo: '3. Saber como o pedido vira nota', onde: 'menu `⋯ > Faturar` do pedido',
+        titulo: '4. Saber como o pedido vira nota', onde: 'menu `⋯ > Faturar` do pedido',
         passos: [
           { t: 'Saber que a nota nasce do pedido: `⋯ > Faturar` importa os itens e abre "Nova NF-e" com cliente, CFOP e parcelas do pedido.', s: 'v' },
           { t: 'Saber que, ao salvar a nota, o pedido já aparece como "Faturado" — mesmo com a nota ainda Em Aberto. Confira sempre o status da nota.', s: 'v' },
@@ -783,7 +884,7 @@ export const CHECKLISTS = [
         ],
       },
       {
-        titulo: '4. Saber onde ficam os cadastros fiscais', onde: 'módulo `Fiscal`',
+        titulo: '5. Saber onde ficam os cadastros fiscais', onde: 'módulo `Fiscal`',
         passos: [
           { t: 'Saber que NCM, CFOP, CST/CSOSN, CEST e Textos Fiscais são cadastros do Fiscal, mantidos com o contador.', s: 'd' },
         ],
@@ -818,14 +919,23 @@ export const CHECKLISTS = [
     ],
     fluxos: [
       {
-        titulo: '1. Partir dos indicadores da tela Início',
+        preparar: true,
+        titulo: '1. Preparar seus dados: gerar os títulos do seu pedido', onde: 'menu `⋯ > Gerar Títulos` do pedido e `Financeiro > Contas a Receber`',
+        intro: 'A sua empresa de treino começa **zerada**: cada módulo usa o que o anterior criou. Os títulos nascem do pedido e dependem de uma conta bancária e de um meio de pagamento configurados. Se o meio da parcela for do tipo **Boleto**, o sistema exige conta emissora: avise o supervisor. Se faltar permissão ou cadastro-base (botão que não aparece, CFOP, plano de contas, meio de pagamento, unidade de medida, almoxarifado), anote a mensagem em **Problema** e chame o supervisor: a empresa de treino começa zerada e os cadastros-base são feitos por um consultor.',
+        passos: [
+          { t: 'No seu pedido, abrir `⋯ > Gerar Títulos` e confirmar.', r: 'Um título por parcela. A opção fica desabilitada em Faturado/Lib. Expedição ("Pedido já faturado") e volta depois de Entregue.', s: 'v' },
+          { t: 'Abrir `Financeiro > Contas a Receber` e achar o título do seu pedido (valor e vencimento iguais à parcela).', r: 'A coluna TÍTULOS do pedido passa a "Gerados".', s: 'v', campo: 'Nº dos títulos' },
+        ],
+      },
+      {
+        titulo: '2. Partir dos indicadores da tela Início',
         passos: [
           { t: 'Ler "Títulos a receber em aberto" e "Títulos a pagar em aberto" em Tarefas do dia.', r: 'O atalho leva a Financeiro > Contas a Receber.', s: 'v' },
           { t: 'Ler Recebido no mês, A receber e A pagar no Resumo do negócio.', s: 'v' },
         ],
       },
       {
-        titulo: '2. Consultar títulos', onde: '`Financeiro > Contas a Receber` e `Contas a Pagar`',
+        titulo: '3. Consultar títulos', onde: '`Financeiro > Contas a Receber` e `Contas a Pagar`',
         passos: [
           { t: 'Filtrar por vencimento e situação e abrir um título.', s: 'n' },
           { t: 'Ver de qual pedido, nota ou recebimento o título veio.', s: 'd' },
@@ -833,7 +943,7 @@ export const CHECKLISTS = [
         ],
       },
       {
-        titulo: '3. Ler a visão de gestão',
+        titulo: '4. Ler a visão de gestão',
         passos: [
           { t: 'Abrir `Fluxo de Caixa` e `DRE`.', s: 'd' },
           { t: 'Abrir `Painel Financeiro de Projetos` para ver o resultado por obra.', s: 'd' },
@@ -863,7 +973,16 @@ export const CHECKLISTS = [
     ],
     fluxos: [
       {
-        titulo: '1. Achar suas tarefas',
+        preparar: true,
+        titulo: '1. Preparar seus dados: criar o seu primeiro cartão', onde: 'módulo `Tarefas`',
+        intro: 'A sua empresa de treino começa **zerada**: cada módulo usa o que o anterior criou. A tela "Minhas Tarefas" começa vazia: ela só mostra o que está atribuído a você. Se faltar permissão ou cadastro-base (botão que não aparece, CFOP, plano de contas, meio de pagamento, unidade de medida, almoxarifado), anote a mensagem em **Problema** e chame o supervisor: a empresa de treino começa zerada e os cadastros-base são feitos por um consultor.',
+        passos: [
+          { t: 'Abrir o módulo Tarefas pelo menu de módulos e entrar no quadro combinado com o supervisor.', r: 'A busca Ctrl+K por "tarefa" não encontra o módulo.', s: 'v' },
+          { t: 'Criar um cartão "TESTE ESTAGIÁRIO - cartão 1", atribuir a **você** como responsável e definir um prazo.', r: 'O cartão aparece em **Minhas Tarefas**.', s: 'd', campo: 'Nome do quadro / cartão' },
+        ],
+      },
+      {
+        titulo: '2. Achar suas tarefas',
         passos: [
           { t: 'Abrir o módulo Tarefas pelo menu de módulos (a busca Ctrl+K por "tarefa" não encontra o módulo).', s: 'v' },
           { t: 'Abrir **Minhas Tarefas** e ver o que está atribuído a você.', s: 'd' },
@@ -871,9 +990,9 @@ export const CHECKLISTS = [
         ],
       },
       {
-        titulo: '2. Trabalhar num cartão',
+        titulo: '3. Trabalhar num cartão',
         passos: [
-          { t: 'Criar um cartão "TESTE ESTAGIÁRIO" no quadro combinado.', s: 'd' },
+          { t: 'Abrir o cartão de treino que você criou no bloco 1 (se ainda não criou, crie agora no quadro combinado).', s: 'd' },
           { t: 'Preencher responsável, prazo e prioridade; usar o checklist e os comentários do cartão.', s: 'd' },
           { t: 'Mover o cartão entre as listas conforme o andamento.', s: 'd' },
           { t: 'Arquivar o cartão de teste no fim.', s: 'd' },
@@ -898,18 +1017,29 @@ export const CHECKLISTS = [
     objetivo: 'Seguir um pedido existente pelos módulos e reconhecer, em cada tela, o sinal de que ele avançou.',
     prerequisitos: [
       { t: 'Checklists 01 a 04 concluídos.', s: 'v' },
-      { t: 'Um pedido faturado ou entregue indicado pelo supervisor para servir de exemplo.', s: 'd' },
+      { t: 'O seu pedido de treino (checklist 04), de preferência já faturado ou entregue; se o seu ainda não chegou lá, use um pedido indicado pelo supervisor como exemplo.', s: 'd' },
     ],
     fluxos: [
       {
-        titulo: '1. Do contato ao pedido',
+        preparar: true,
+        titulo: '1. Preparar seus dados: reunir os registros que você criou', onde: 'campos de registro dos checklists 03 a 13',
+        intro: 'A sua empresa de treino começa **zerada**: cada módulo usa o que o anterior criou. Este checklist percorre o caminho do pedido usando **os seus** registros. Junte aqui os números anotados nos checklists anteriores; o que faltar, volte e crie, ou use um pedido indicado pelo supervisor. Se faltar permissão ou cadastro-base (botão que não aparece, CFOP, plano de contas, meio de pagamento, unidade de medida, almoxarifado), anote a mensagem em **Problema** e chame o supervisor: a empresa de treino começa zerada e os cadastros-base são feitos por um consultor.',
+        passos: [
+          { t: 'Anotar o **lead** que você criou (checklist 03) e o **pedido de venda** (checklist 04).', s: 'd', campo: 'Lead / PV-' },
+          { t: 'Anotar o **pedido de compra** (05) e a **nota de recebimento** (06).', s: 'd', campo: 'PC- / NR-' },
+          { t: 'Anotar o **movimento de estoque** (07), a **OP** (08) e a **medição** (09).', s: 'd', campo: 'Movimento / OP / MED-' },
+          { t: 'Anotar a **obra** (10), a **carga** (11), a **nota** (12) e os **títulos** (13).', s: 'd', campo: 'Obra / carga / nota / títulos' },
+        ],
+      },
+      {
+        titulo: '2. Do contato ao pedido',
         passos: [
           { t: 'CRM: o lead é cadastrado, avança no Kanban e é convertido (vira participante "convertido").', s: 'v' },
           { t: 'Vendas: o pedido de venda é criado para o cliente; a coluna PROJETO mostra a obra.', s: 'v' },
         ],
       },
       {
-        titulo: '2. Do pedido à operação',
+        titulo: '3. Do pedido à operação',
         passos: [
           { t: 'Serviços: a medição nasce do pedido de venda e mostra a obra.', s: 'v' },
           { t: 'Produção: a OP consome material (movimento "Baixa de componente em OP") e entrega o produto acabado ("Entrada de produto acabado (OP)").', s: 'v' },
@@ -919,7 +1049,7 @@ export const CHECKLISTS = [
         ],
       },
       {
-        titulo: '3. Da nota ao resultado',
+        titulo: '4. Da nota ao resultado',
         passos: [
           { t: 'Faturamento: `⋯ > Faturar` no pedido gera a nota; ela aparece em Notas Fiscais e a coluna NOTA FISCAL do pedido é preenchida.', s: 'v' },
           { t: 'Financeiro: a coluna TÍTULOS do pedido mostra "Gerados" e os títulos aparecem em Contas a Receber.', s: 'v' },

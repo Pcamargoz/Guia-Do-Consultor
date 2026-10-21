@@ -143,11 +143,11 @@
    "id": "onboarding",
    "area": "00 · Comece por aqui",
    "titulo": "Onboarding do estagiário",
-   "resumo": "Organizar suas primeiras semanas: o que pedir antes de começar, a ordem recomendada dos checklists e os combinados de segurança. Ao final, você deve saber encontrar qualquer tela, consultar registros sem alterar nada e explicar como um pedido passa pelos módulos.",
+   "resumo": "Organizar suas primeiras semanas: o que pedir antes de começar, a ordem recomendada dos checklists e os combinados de segurança. Ao final, você deve saber encontrar qualquer tela, criar os seus registros de treino, consultar o que já existe sem alterar nada e explicar como um pedido passa pelos módulos.",
    "arquivo": "estagiarios/00-onboarding-estagiario.html",
    "chave": "ff-estagiario:onboarding",
-   "etapas": 14,
-   "verificadas": 3,
+   "etapas": 18,
+   "verificadas": 4,
    "emDesenvolvimento": 1
   },
   {
@@ -170,8 +170,8 @@
    "resumo": "Participantes (clientes, fornecedores), produtos e projetos.",
    "arquivo": "estagiarios/02-cadastros-basicos.html",
    "chave": "ff-estagiario:cadastros",
-   "etapas": 15,
-   "verificadas": 12
+   "etapas": 18,
+   "verificadas": 16
   },
   {
    "grupo": "estagiario",
@@ -192,8 +192,8 @@
    "resumo": "Pedidos, status, novo pedido, metas e comissões.",
    "arquivo": "estagiarios/04-vendas-pedidos.html",
    "chave": "ff-estagiario:vendas",
-   "etapas": 19,
-   "verificadas": 19
+   "etapas": 23,
+   "verificadas": 23
   },
   {
    "grupo": "estagiario",
@@ -203,8 +203,8 @@
    "resumo": "Solicitação, cotação, pedido de compra e linha do tempo.",
    "arquivo": "estagiarios/05-compras.html",
    "chave": "ff-estagiario:compras",
-   "etapas": 12,
-   "verificadas": 12
+   "etapas": 16,
+   "verificadas": 15
   },
   {
    "grupo": "estagiario",
@@ -214,8 +214,8 @@
    "resumo": "Notas de recebimento, conferência e reflexos.",
    "arquivo": "estagiarios/06-recebimento.html",
    "chave": "ff-estagiario:recebimento",
-   "etapas": 14,
-   "verificadas": 14
+   "etapas": 15,
+   "verificadas": 15
   },
   {
    "grupo": "estagiario",
@@ -225,8 +225,8 @@
    "resumo": "Visão geral, saldo por local, extrato e tipos de movimento.",
    "arquivo": "estagiarios/07-estoque.html",
    "chave": "ff-estagiario:estoque",
-   "etapas": 16,
-   "verificadas": 16
+   "etapas": 18,
+   "verificadas": 18
   },
   {
    "grupo": "estagiario",
@@ -236,8 +236,8 @@
    "resumo": "Ordem de produção, painéis, alertas e reflexo no estoque.",
    "arquivo": "estagiarios/08-producao.html",
    "chave": "ff-estagiario:producao",
-   "etapas": 17,
-   "verificadas": 17
+   "etapas": 18,
+   "verificadas": 18
   },
   {
    "grupo": "estagiario",
@@ -247,8 +247,8 @@
    "resumo": "Medição → instalação → vistoria → assistência técnica.",
    "arquivo": "estagiarios/09-servicos-campo.html",
    "chave": "ff-estagiario:servicos",
-   "etapas": 15,
-   "verificadas": 14
+   "etapas": 16,
+   "verificadas": 15
   },
   {
    "grupo": "estagiario",
@@ -258,7 +258,7 @@
    "resumo": "A obra como centro de custo e resultado.",
    "arquivo": "estagiarios/10-projetos-obras.html",
    "chave": "ff-estagiario:projetos",
-   "etapas": 8,
+   "etapas": 9,
    "verificadas": 2
   },
   {
@@ -269,8 +269,8 @@
    "resumo": "Liberação, carga, checkpoints, rota e entrega.",
    "arquivo": "estagiarios/11-expedicao.html",
    "chave": "ff-estagiario:expedicao",
-   "etapas": 13,
-   "verificadas": 13
+   "etapas": 15,
+   "verificadas": 15
   },
   {
    "grupo": "estagiario",
@@ -280,8 +280,8 @@
    "resumo": "Notas fiscais NF-e/NFS-e, status e cuidados.",
    "arquivo": "estagiarios/12-faturamento-fiscal.html",
    "chave": "ff-estagiario:faturamento",
-   "etapas": 14,
-   "verificadas": 12
+   "etapas": 15,
+   "verificadas": 13
   },
   {
    "grupo": "estagiario",
@@ -291,8 +291,8 @@
    "resumo": "Contas a receber e a pagar, fluxo de caixa e DRE.",
    "arquivo": "estagiarios/13-financeiro.html",
    "chave": "ff-estagiario:financeiro",
-   "etapas": 9,
-   "verificadas": 2
+   "etapas": 11,
+   "verificadas": 4
   },
   {
    "grupo": "estagiario",
@@ -302,8 +302,8 @@
    "resumo": "Organizar e acompanhar atividades da equipe.",
    "arquivo": "estagiarios/14-tarefas.html",
    "chave": "ff-estagiario:tarefas",
-   "etapas": 10,
-   "verificadas": 2
+   "etapas": 12,
+   "verificadas": 3
   },
   {
    "grupo": "estagiario",
@@ -313,7 +313,7 @@
    "resumo": "Como um pedido passa por todos os módulos.",
    "arquivo": "estagiarios/15-visao-fluxo-completo.html",
    "chave": "ff-estagiario:fluxo",
-   "etapas": 13,
+   "etapas": 17,
    "verificadas": 10
   },
   {

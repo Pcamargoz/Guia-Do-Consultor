@@ -150,7 +150,7 @@ function checklist(c, opcoes = {}) {
       <h3>${esc(f.titulo)} <span class="cont"></span></h3>
       ${f.onde ? `<div class="onde">${ICONE.mapa}<span>Onde: ${fmt(f.onde)}</span></div>` : ''}
       ${f.intro ? `<p class="intro">${fmt(f.intro)}</p>` : ''}
-      <ul class="itens">${f.passos.map((p, pi) => item(`f${f.chave ?? fi + 1}-${pi + 1}`, p, rotuloRes)).join('')}</ul>
+      <ul class="itens">${f.passos.map((p, pi) => item(`f${f.chave ?? (f.preparar ? 'p' : fi + 1 - c.fluxos.slice(0, fi).filter((x) => x.preparar).length)}-${pi + 1}`, p, rotuloRes)).join('')}</ul>
     </div>`).join('');
   const pend = (c.naoValidado || []).map((a) => `<li>${ICONE.pendente}<span>${fmt(a)}</span></li>`).join('');
 
@@ -194,7 +194,7 @@ function onboarding(o) {
     <div class="fluxo" id="fx-${ei + 1}" data-grupo>
       <h3>${esc(e.titulo)} <span class="cont"></span></h3>
       ${e.intro ? `<p class="intro">${fmt(e.intro)}</p>` : ''}
-      <ul class="itens">${e.passos.map((p, pi) => item(`e${ei + 1}-${pi + 1}`, p, 'Resultado')).join('')}</ul>
+      <ul class="itens">${e.passos.map((p, pi) => item(`e${e.preparar ? 'p' : ei + 1 - o.etapas.slice(0, ei).filter((x) => x.preparar).length}-${pi + 1}`, p, 'Resultado')).join('')}</ul>
     </div>`).join('');
   const trilha = CHECKLISTS.map((c, i) => `
     <li><a href="${esc(c.arquivo)}"><span class="num">${String(i + 1).padStart(2, '0')}</span><span><strong>${esc(c.titulo)}</strong><small>${esc(c.resumo)}</small></span><span class="prog" data-prog="${esc(c.id)}">não iniciado</span></a></li>`).join('');
