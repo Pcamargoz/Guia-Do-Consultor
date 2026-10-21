@@ -207,35 +207,40 @@ export const CHECKLISTS = [
     id: 'crm', arquivo: '03-crm-leads-oportunidades.html', etiqueta: 'Comercial · CRM',
     titulo: 'CRM: leads e oportunidades', resumo: 'Funil, lista e Kanban de leads, conversão.',
     subtitulo: 'A porta de entrada do processo comercial: do primeiro contato até a oportunidade pronta para virar pedido.',
-    objetivo: 'Consultar o funil comercial, cadastrar um lead de treino, movimentá-lo no Kanban e entender as regras para converter um lead.',
+    objetivo: 'Cadastrar leads de treino na sua conta do CRM, consultar o funil comercial, movimentá-los no Kanban e entender as regras para converter um lead.',
     prerequisitos: [
       { t: 'Checklists 01 e 02 concluídos.', s: 'v' },
       { t: 'Autorização do supervisor para criar um lead de treino com o nome começando por "TESTE ESTAGIÁRIO".', s: 'd' },
     ],
     fluxos: [
       {
-        titulo: '1. Entender o funil', onde: '`CRM > Painéis > Visão Geral`',
+        /* chave 3 = os ids das etapas (f3-N) continuam os mesmos de antes, para não bagunçar o progresso já salvo. */
+        chave: 3,
+        titulo: '1. Preparar seus dados: cadastrar leads de treino', onde: 'botão `Novo Lead`',
+        intro: '**Faça este bloco primeiro.** A sua conta no CRM começa sem leads, e os blocos seguintes (filtros, Kanban, menu do lead, conversão) precisam dos seus leads para funcionar. O formulário é o cadastro completo de participante: preencha só o necessário. Se ele pedir CNPJ/CPF ou CEP, use números fictícios (documento repetido é recusado, então troque o número se aparecer o aviso); se o CEP trouxer um bairro curto, como "Sé", digite um bairro com 3 letras ou mais. Use um e-mail de teste, nunca o de um cliente real.',
+        passos: [
+          { t: 'Preencher **Tipo (PF/PJ)** e **Razão Social / Nome** começando por "TESTE ESTAGIÁRIO" (ex.: "TESTE ESTAGIÁRIO - Maria 1").', s: 'v' },
+          { t: 'Na seção Dados CRM, preencher Origem do Lead, Temperatura e Responsável (deixe **você** como Responsável).', s: 'v' },
+          { t: 'Clicar em `Salvar`.', r: 'Mensagem "Registro salvo com sucesso!" e o lead aparece na lista com Status "Novo".', s: 'v' },
+          { t: 'Conferir na lista se a Temperatura gravou como você escolheu.', s: 'v' },
+          { t: 'Cadastrar um **segundo** lead de treino ("TESTE ESTAGIÁRIO - Maria 2") com **outra Temperatura** (ex.: Quente), repetindo os passos acima.', r: 'Com dois leads de temperaturas diferentes, os filtros, o Kanban e o menu do lead têm o que mostrar.', s: 'd' },
+        ],
+      },
+      {
+        chave: 1,
+        titulo: '2. Entender o funil', onde: '`CRM > Painéis > Visão Geral`',
         passos: [
           { t: 'Ler a "Jornada do cliente": Leads Novos → Qualificando → Oportunidades → Valor em Jogo.', r: 'Cada cartão leva à lista de leads ou ao Pipeline.', s: 'v' },
           { t: 'Ler a faixa de alerta (leads aguardando qualificação, atividades atrasadas).', s: 'v' },
         ],
       },
       {
-        titulo: '2. Consultar leads', onde: '`CRM > Vendas > Leads > Lista de Leads`',
+        chave: 2,
+        titulo: '3. Consultar leads', onde: '`CRM > Vendas > Leads > Lista de Leads`', intro: 'Agora você já tem os seus leads de treino (bloco 1) para ver nas listas.',
         passos: [
-          { t: 'Usar os filtros rápidos: Status (Novo, Em Qualificação, Qualificado, Convertido, Desqualificado), Temperatura (Frio a Urgente), Só minhas e Tag.', s: 'v' },
+          { t: 'Usar os filtros rápidos: Status (Novo, Em Qualificação, Qualificado, Convertido, Desqualificado), Temperatura (Frio a Urgente), Só minhas e Tag.', r: 'Dica: com Só minhas ligado, devem ficar só os seus leads de treino.', s: 'v' },
           { t: 'Alternar entre **Lista** e **Kanban** no topo da tela.', s: 'v' },
           { t: 'Abrir o menu `⋮` de um lead e reconhecer: Converter, Histórico, Tags, Atividades, Desqualificar e Excluir. Feche com Esc.', s: 'v' },
-        ],
-      },
-      {
-        titulo: '3. Cadastrar um lead de treino', onde: 'botão `Novo Lead`',
-        intro: 'O formulário é o cadastro completo de participante. Preencha só o necessário.',
-        passos: [
-          { t: 'Preencher **Tipo (PF/PJ)** e **Razão Social / Nome** começando por "TESTE ESTAGIÁRIO".', s: 'v' },
-          { t: 'Na seção Dados CRM, preencher Origem do Lead, Temperatura e Responsável.', s: 'v' },
-          { t: 'Clicar em `Salvar`.', r: 'Mensagem "Registro salvo com sucesso!" e o lead aparece na lista com Status "Novo".', s: 'v' },
-          { t: 'Conferir na lista se a Temperatura gravou como você escolheu.', s: 'v' },
         ],
       },
       {
@@ -263,7 +268,7 @@ export const CHECKLISTS = [
       },
     ],
     resultado: [
-      { t: 'Meu lead de treino aparece na lista e no Kanban, na etapa para onde o movi.', s: 'v' },
+      { t: 'Meus dois leads de treino aparecem na lista e no Kanban, o primeiro na etapa para onde o movi.', s: 'd' },
       { t: 'Sei dizer por que um lead não pode ser convertido ainda.', s: 'v' },
     ],
     atencao: [

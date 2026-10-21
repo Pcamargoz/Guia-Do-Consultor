@@ -1,6 +1,6 @@
 # Fila de testes: etapas ainda sem "Verificado"
 
-Gerado por `node scripts/lacunas-checklists.mjs` — 145 etapas em 20 checklists. `doc` = vem dos roteiros, `n/v` = não validado.
+Gerado por `node scripts/lacunas-checklists.mjs` — 147 etapas em 20 checklists. `doc` = vem dos roteiros, `n/v` = não validado.
 Ao validar uma etapa, mude `s` para `'v'` no arquivo de dados do checklist e rode `npm run checklists`. Regras e briefs em [README.md](README.md).
 
 ## Primeiros passos e navegação  `01-primeiros-passos-navegacao.html` — 1 etapa(s)
@@ -19,10 +19,16 @@ Ao validar uma etapa, mude `s` para `'v'` no arquivo de dados do checklist e rod
 **4. Consultar um projeto/obra** · Cadastros > Projetos
 - [ ] (n/v) Abrir a lista de projetos e localizar uma obra.
 
-## CRM: leads e oportunidades  `03-crm-leads-oportunidades.html` — 1 etapa(s)
+## CRM: leads e oportunidades  `03-crm-leads-oportunidades.html` — 3 etapa(s)
 
 **Pré-requisitos**
 - [ ] (doc) Autorização do supervisor para criar um lead de treino com o nome começando por "TESTE ESTAGIÁRIO".
+
+**1. Preparar seus dados: cadastrar leads de treino** · botão Novo Lead
+- [ ] (doc) Cadastrar um segundo lead de treino ("TESTE ESTAGIÁRIO - Maria 2") com outra Temperatura (ex.: Quente), repetindo os passos acima. → _Com dois leads de temperaturas diferentes, os filtros, o Kanban e o menu do lead têm o que mostrar._
+
+**Resultado esperado**
+- [ ] (doc) Meus dois leads de treino aparecem na lista e no Kanban, o primeiro na etapa para onde o movi.
 
 ## Serviços de campo  `09-servicos-campo.html` — 1 etapa(s)
 

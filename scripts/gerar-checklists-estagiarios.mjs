@@ -150,7 +150,7 @@ function checklist(c, opcoes = {}) {
       <h3>${esc(f.titulo)} <span class="cont"></span></h3>
       ${f.onde ? `<div class="onde">${ICONE.mapa}<span>Onde: ${fmt(f.onde)}</span></div>` : ''}
       ${f.intro ? `<p class="intro">${fmt(f.intro)}</p>` : ''}
-      <ul class="itens">${f.passos.map((p, pi) => item(`f${fi + 1}-${pi + 1}`, p, rotuloRes)).join('')}</ul>
+      <ul class="itens">${f.passos.map((p, pi) => item(`f${f.chave ?? fi + 1}-${pi + 1}`, p, rotuloRes)).join('')}</ul>
     </div>`).join('');
   const pend = (c.naoValidado || []).map((a) => `<li>${ICONE.pendente}<span>${fmt(a)}</span></li>`).join('');
 
