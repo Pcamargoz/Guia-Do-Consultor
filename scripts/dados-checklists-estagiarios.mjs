@@ -181,7 +181,7 @@ export const CHECKLISTS = [
         titulo: '2. Consultar um participante', onde: '`Cadastros > Participantes` (aparece no menu de vários módulos)',
         passos: [
           { t: 'Abrir a lista e pesquisar pelo nome do cliente.', r: 'Se não existir, a tela mostra "Nenhum participante encontrado".', s: 'v' },
-          { t: 'Abrir o participante e percorrer as seções: Dados Gerais, Classificação, Endereço, Contato, Contas bancárias, Documentos, Observações, Dados CRM e Informações CRM.', s: 'v' },
+          { t: 'Abrir o participante e percorrer as seções: Dados Gerais, Receita / Despesa, Classificação, Endereço, Contato, Contas bancárias, Documentos, Observações, Dados CRM e Informações CRM.', s: 'v' },
           { t: 'Na seção **Classificação**, ver as chaves É Cliente?, É Fornecedor?, É Funcionário?, É Transportadora?, É Vendedor? e Prospect/Lead.', r: 'Você entende que cliente, fornecedor e lead do CRM são o **mesmo cadastro**, só com chaves diferentes.', s: 'v' },
           { t: 'Na seção **Contato**, ver quem recebe e-mails de Notas Fiscais, Boletos, Vendas e avisos de entrega/serviços.', s: 'v' },
         ],
@@ -241,10 +241,10 @@ export const CHECKLISTS = [
         intro: '**Faça este bloco primeiro.** A sua conta no CRM começa sem leads, e os blocos seguintes (filtros, Kanban, menu do lead, conversão) precisam dos seus leads para funcionar. O formulário é o cadastro completo de participante: preencha só o necessário. Se ele pedir CNPJ/CPF ou CEP, use números fictícios (documento repetido é recusado, então troque o número se aparecer o aviso); se o CEP trouxer um bairro curto, como "Sé", digite um bairro com 3 letras ou mais. Use um e-mail de teste, nunca o de um cliente real.',
         passos: [
           { t: 'Preencher **Tipo (PF/PJ)** e **Razão Social / Nome** começando por "TESTE ESTAGIÁRIO" (ex.: "TESTE ESTAGIÁRIO - Maria 1").', s: 'v' },
-          { t: 'Na seção **Informações CRM**, preencher Origem do Lead, Temperatura e Responsável (deixe **você** como Responsável).', r: 'Não confunda com a seção **Dados CRM**, logo acima: ela tem Setor de Atuação, CREA/CAU e preferências do cliente, e não é necessária agora. O Budget Estimado e as chaves Autoridade, Necessidade e Prazo (o BANT) também ficam em Informações CRM.', s: 'v' },
+          { t: 'Na seção **Informações CRM**, preencher Origem do Lead, Temperatura e Responsável (deixe **você** como Responsável).', r: 'Só **Tipo (PF/PJ)** e **Razão Social / Nome** são obrigatórios. Não confunda com a seção **Dados CRM**, logo acima: ela tem Setor de Atuação, CREA/CAU e preferências do cliente, e não é necessária agora. O Budget Estimado e as chaves Autoridade, Necessidade e Prazo (o BANT) também ficam em Informações CRM.', s: 'v' },
           { t: 'Clicar em `Salvar`.', r: 'Mensagem "Registro salvo com sucesso!" e o lead aparece na lista com Status "Novo".', s: 'v' },
           { t: 'Conferir na lista se a Temperatura gravou como você escolheu.', s: 'v' },
-          { t: 'Cadastrar um **segundo** lead de treino ("TESTE ESTAGIÁRIO - Maria 2") com **outra Temperatura** (ex.: Quente), repetindo os passos acima.', r: 'Com dois leads de temperaturas diferentes, os filtros, o Kanban e o menu do lead têm o que mostrar.', s: 'd' },
+          { t: 'Cadastrar um **segundo** lead de treino ("TESTE ESTAGIÁRIO - Maria 2") com **outra Temperatura** (ex.: Quente), repetindo os passos acima.', r: 'Com dois leads de temperaturas diferentes, os filtros, o Kanban e o menu do lead têm o que mostrar. Os dois aparecem na Lista de Leads e no Kanban de Leads, na primeira coluna (Inbound). No teste, escolher Quente gravou Morno uma vez: por isso existe o passo de conferir a Temperatura na lista.', s: 'v' },
         ],
       },
       {
@@ -403,8 +403,8 @@ export const CHECKLISTS = [
         intro: 'A sua empresa de treino começa **zerada**: cada módulo usa o que o anterior criou. A compra precisa de um fornecedor, que é o mesmo cadastro de participante com outra chave ligada. Anote os números: o checklist 06 (recebimento) parte do seu pedido de compra. Se faltar permissão ou cadastro-base (botão que não aparece, CFOP, plano de contas, meio de pagamento, unidade de medida, almoxarifado), anote a mensagem em **Problema** e chame o supervisor: a empresa de treino começa zerada e os cadastros-base são feitos por um consultor.',
         passos: [
           { t: 'Cadastrar um participante "TESTE ESTAGIÁRIO - Fornecedor" com **É Fornecedor?** ligado, como no checklist 02.', s: 'v', campo: 'Código do fornecedor' },
-          { t: 'Em `Compras > Solicitações de Compra > Nova Solicitação`: **Empresa**, data de necessidade, produto (cor em "Dados do Item") e quantidade. Salvar.', r: 'SC "Em Aberto". Projeto em branco faz a entrada cair no almoxarifado central.', s: 'v', campo: 'Nº da solicitação (SC-)' },
-          { t: 'No menu `⋯` da solicitação, escolher **Gerar Pedido de Compra** (a cotação é opcional), conferir a Conta de Fluxo de Caixa sugerida e confirmar.', r: 'PC "Em Aberto" e "Sem títulos"; um pedido por fornecedor.', s: 'd', campo: 'Nº do pedido de compra (PC-)' },
+          { t: 'Em `Compras > Solicitações de Compra > Nova Solicitação`: **Empresa**, data de necessidade, produto e quantidade. Salvar.', r: 'SC "Em Aberto". Produto de chapa ou perfil pede a **Cor** ao ser escolhido (diálogo "Dados do Item" > Aplicar). Projeto em branco faz a entrada cair no almoxarifado central.', s: 'v', campo: 'Nº da solicitação (SC-)' },
+          { t: 'No menu `⋯` da solicitação, escolher **Gerar Pedido de Compra** (a cotação é opcional). Abre o **Novo Pedido de Compra** com o produto já preenchido: informar **Fornecedor**, **Comprador**, **Condição de Pagamento**, **CFOP** (obrigatório) e o **Valor Unitário**; conferir a **Conta de Fluxo de Caixa** sugerida e clicar em **Salvar**.', r: 'Nasce o PC "Em Aberto" e "Sem títulos"; na linha do tempo a SC aparece como Concluída. Sem CFOP o diálogo "Campos Obrigatórios Não Preenchidos" avisa "CFOP é obrigatório" (o rótulo não tem asterisco).', s: 'v', campo: 'Nº do pedido de compra (PC-)' },
           { t: 'Se o supervisor pedir a cotação: `⋯ > Gerar Cotação` (Empresa e Natureza da Operação), fornecedor com data de entrega e condição de pagamento, proposta preenchida e então **Gerar Pedido de Compra**.', r: 'Ao gerar o pedido, a solicitação e a cotação aparecem como Concluída na linha do tempo.', s: 'v' },
         ],
       },
@@ -750,7 +750,7 @@ export const CHECKLISTS = [
         titulo: '1. Preparar seus dados: ligar a sua obra ao seu pedido', onde: '`Vendas > Pedidos de Venda` (pedido em aberto)',
         intro: 'A sua empresa de treino começa **zerada**: cada módulo usa o que o anterior criou. A obra amarra pedido, compras, serviços, notas e financeiro. Ligue a sua obra (checklist 02) ao seu pedido (checklist 04) **antes de faturar**. Se faltar permissão ou cadastro-base (botão que não aparece, CFOP, plano de contas, meio de pagamento, unidade de medida, almoxarifado), anote a mensagem em **Problema** e chame o supervisor: a empresa de treino começa zerada e os cadastros-base são feitos por um consultor.',
         passos: [
-          { t: 'Abrir o seu pedido de venda em aberto, escolher no campo **Projeto** a sua obra de treino e salvar.', r: 'A coluna PROJETO da lista de pedidos passa a mostrar a obra. Pedido já entregue não tem "Editar": faça isto antes.', s: 'd', campo: 'Obra / código' },
+          { t: 'Em `Vendas > Pedidos de Venda`, abrir o seu pedido em aberto pelo **lápis** ("Editar pedido", coluna Ações), escolher no campo **Projeto (opcional)** a sua obra de treino e clicar em **Salvar e Permanecer**.', r: 'A coluna PROJETO da lista passa a mostrar a obra, sem pedir CFOP nem condição. O menu `⋯` do pedido não tem "Editar". Pedido Entregue ou Faturado só tem **Visualizar** (o olho): faça isto antes de faturar.', s: 'v', campo: 'Obra / código' },
         ],
       },
       {
@@ -981,15 +981,16 @@ export const CHECKLISTS = [
         titulo: '1. Preparar seus dados: criar o seu primeiro cartão', onde: 'módulo `Tarefas`',
         intro: 'A sua empresa de treino começa **zerada**: cada módulo usa o que o anterior criou. A tela "Minhas Tarefas" começa vazia: ela só mostra o que está atribuído a você. Se faltar permissão ou cadastro-base (botão que não aparece, CFOP, plano de contas, meio de pagamento, unidade de medida, almoxarifado), anote a mensagem em **Problema** e chame o supervisor: a empresa de treino começa zerada e os cadastros-base são feitos por um consultor.',
         passos: [
-          { t: 'Abrir o módulo Tarefas pelo menu de módulos e entrar no quadro combinado com o supervisor.', r: 'A busca Ctrl+K por "tarefa" não encontra o módulo.', s: 'v' },
-          { t: 'Criar um cartão "TESTE ESTAGIÁRIO - cartão 1", atribuir a **você** como responsável e definir um prazo.', r: 'O cartão aparece em **Minhas Tarefas**.', s: 'd', campo: 'Nome do quadro / cartão' },
+          { t: 'Abrir o módulo Tarefas pelo menu de módulos e ver **Meus Quadros**.', r: 'A busca Ctrl+K por "tarefa" não encontra o módulo. Numa conta zerada aparece "Nenhum quadro ainda".', s: 'v' },
+          { t: 'Sem quadro, clicar em **Novo Quadro**, informar o **Nome do Quadro** ("TESTE ESTAGIÁRIO - quadro de treino") e o **Tipo** Avulso e clicar em **Criar Quadro**. Abrir o quadro e criar as listas em **+ Adicionar lista** (ex.: "A fazer" e "Feito").', r: 'O quadro nasce sem listas. Se o seu supervisor já combinou um quadro, use o dele.', s: 'v' },
+          { t: 'Na lista "A fazer", clicar em **+ Adicionar tarefa** e criar o cartão "TESTE ESTAGIÁRIO - cartão 1". Abrir o cartão, definir **Prioridade** e **Término Previsto** (não existe campo "Prazo") e, em **Adicionar responsável**, escolher **você**.', r: 'O cartão nasce Pendente e Média. O responsável **não** vem preenchido: sem ele o cartão não aparece em **Minhas Tarefas**.', s: 'v', campo: 'Nome do quadro / cartão' },
         ],
       },
       {
         titulo: '2. Achar suas tarefas',
         passos: [
           { t: 'Abrir o módulo Tarefas pelo menu de módulos (a busca Ctrl+K por "tarefa" não encontra o módulo).', s: 'v' },
-          { t: 'Abrir **Minhas Tarefas** e ver o que está atribuído a você.', s: 'd' },
+          { t: 'Abrir **Minhas Tarefas** e ver o que está atribuído a você.', r: 'Mostra o cartão de treino depois que você se coloca como responsável.', s: 'v' },
           { t: 'Abrir um quadro e alternar as visões: Kanban, lista, tabela, calendário e Gantt.', s: 'd' },
         ],
       },
@@ -997,9 +998,9 @@ export const CHECKLISTS = [
         titulo: '3. Trabalhar num cartão',
         passos: [
           { t: 'Abrir o cartão de treino que você criou no bloco 1 (se ainda não criou, crie agora no quadro combinado).', s: 'd' },
-          { t: 'Preencher responsável, prazo e prioridade; usar o checklist e os comentários do cartão.', s: 'd' },
-          { t: 'Mover o cartão entre as listas conforme o andamento.', s: 'd' },
-          { t: 'Arquivar o cartão de teste no fim.', s: 'd' },
+          { t: 'No cartão, usar o checklist (aba **Checklists > + Nova checklist > Criar > + Novo item > Adicionar**) e os comentários (aba **Comentários > Comentar**).', r: 'O comentário mostra o toast "Comentário adicionado!"; no teste o autor apareceu como "Usuário".', s: 'v' },
+          { t: 'Mover o cartão entre as listas pelo ícone **Mover para outra lista** (arrastar com o mouse também existe, mas não foi testado).', s: 'v' },
+          { t: 'Arquivar o cartão de teste no fim, pelo cabeçalho do cartão.', r: 'Ele passa para **Tarefas > Arquivadas**, onde há o botão **Restaurar**.', s: 'v' },
         ],
       },
     ],

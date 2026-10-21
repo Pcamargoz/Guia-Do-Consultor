@@ -182,7 +182,7 @@
    "arquivo": "estagiarios/03-crm-leads-oportunidades.html",
    "chave": "ff-estagiario:crm",
    "etapas": 22,
-   "verificadas": 19
+   "verificadas": 20
   },
   {
    "grupo": "estagiario",
@@ -204,7 +204,7 @@
    "arquivo": "estagiarios/05-compras.html",
    "chave": "ff-estagiario:compras",
    "etapas": 16,
-   "verificadas": 15
+   "verificadas": 16
   },
   {
    "grupo": "estagiario",
@@ -259,7 +259,7 @@
    "arquivo": "estagiarios/10-projetos-obras.html",
    "chave": "ff-estagiario:projetos",
    "etapas": 9,
-   "verificadas": 2
+   "verificadas": 3
   },
   {
    "grupo": "estagiario",
@@ -302,8 +302,8 @@
    "resumo": "Organizar e acompanhar atividades da equipe.",
    "arquivo": "estagiarios/14-tarefas.html",
    "chave": "ff-estagiario:tarefas",
-   "etapas": 12,
-   "verificadas": 3
+   "etapas": 13,
+   "verificadas": 9
   },
   {
    "grupo": "estagiario",

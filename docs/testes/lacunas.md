@@ -1,6 +1,6 @@
 # Fila de testes: etapas ainda sem "Verificado"
 
-Gerado por `node scripts/lacunas-checklists.mjs` — 148 etapas em 21 checklists. `doc` = vem dos roteiros, `n/v` = não validado.
+Gerado por `node scripts/lacunas-checklists.mjs` — 140 etapas em 20 checklists. `doc` = vem dos roteiros, `n/v` = não validado.
 Ao validar uma etapa, mude `s` para `'v'` no arquivo de dados do checklist e rode `npm run checklists`. Regras e briefs em [README.md](README.md).
 
 ## Primeiros passos e navegação  `01-primeiros-passos-navegacao.html` — 1 etapa(s)
@@ -16,34 +16,23 @@ Ao validar uma etapa, mude `s` para `'v'` no arquivo de dados do checklist e rod
 **5. Consultar um projeto/obra** · Cadastros > Projetos
 - [ ] (n/v) Abrir a lista de projetos e localizar uma obra.
 
-## CRM: leads e oportunidades  `03-crm-leads-oportunidades.html` — 3 etapa(s)
+## CRM: leads e oportunidades  `03-crm-leads-oportunidades.html` — 2 etapa(s)
 
 **Pré-requisitos**
 - [ ] (doc) Autorização do supervisor para criar um lead de treino com o nome começando por "TESTE ESTAGIÁRIO".
 
-**1. Preparar seus dados: cadastrar leads de treino** · botão Novo Lead
-- [ ] (doc) Cadastrar um segundo lead de treino ("TESTE ESTAGIÁRIO - Maria 2") com outra Temperatura (ex.: Quente), repetindo os passos acima. → _Com dois leads de temperaturas diferentes, os filtros, o Kanban e o menu do lead têm o que mostrar._
-
 **Resultado esperado**
 - [ ] (doc) Meus dois leads de treino aparecem na lista e no Kanban, o primeiro na etapa para onde o movi.
-
-## Compras: da necessidade ao pedido  `05-compras.html` — 1 etapa(s)
-
-**1. Preparar seus dados: criar uma solicitação e um pedido de compra** · Cadastros > Participantes e Compras > Solicitações de Compra
-- [ ] (doc) No menu ⋯ da solicitação, escolher Gerar Pedido de Compra (a cotação é opcional), conferir a Conta de Fluxo de Caixa sugerida e confirmar. → _PC "Em Aberto" e "Sem títulos"; um pedido por fornecedor._
 
 ## Serviços de campo  `09-servicos-campo.html` — 1 etapa(s)
 
 **3. Consultar medições** · Serviços > Medições
 - [ ] (n/v) Abrir uma medição e ver os vãos, fotos e histórico.
 
-## Projetos e obras  `10-projetos-obras.html` — 7 etapa(s)
+## Projetos e obras  `10-projetos-obras.html` — 6 etapa(s)
 
 **Pré-requisitos**
 - [ ] (doc) Checklists 04 e 09 concluídos.
-
-**1. Preparar seus dados: ligar a sua obra ao seu pedido** · Vendas > Pedidos de Venda (pedido em aberto)
-- [ ] (doc) Abrir o seu pedido de venda em aberto, escolher no campo Projeto a sua obra de treino e salvar. → _A coluna PROJETO da lista de pedidos passa a mostrar a obra. Pedido já entregue não tem "Editar": faça isto antes._
 
 **3. Consultar a carteira de obras** · módulo Projetos
 - [ ] (doc) Abrir a lista/dashboard de projetos e ver as obras que precisam de atenção.
@@ -81,23 +70,16 @@ Ao validar uma etapa, mude `s` para `'v'` no arquivo de dados do checklist e rod
 **Resultado esperado**
 - [ ] (doc) Sei explicar de onde vem um título a receber (pedido/nota) e um título a pagar (recebimento de compra).
 
-## Tarefas: quadros e cartões  `14-tarefas.html` — 9 etapa(s)
+## Tarefas: quadros e cartões  `14-tarefas.html` — 4 etapa(s)
 
 **Pré-requisitos**
 - [ ] (doc) Saber qual quadro você vai usar (combine com o supervisor).
 
-**1. Preparar seus dados: criar o seu primeiro cartão** · módulo Tarefas
-- [ ] (doc) Criar um cartão "TESTE ESTAGIÁRIO - cartão 1", atribuir a você como responsável e definir um prazo. → _O cartão aparece em Minhas Tarefas._
-
 **2. Achar suas tarefas**
-- [ ] (doc) Abrir Minhas Tarefas e ver o que está atribuído a você.
 - [ ] (doc) Abrir um quadro e alternar as visões: Kanban, lista, tabela, calendário e Gantt.
 
 **3. Trabalhar num cartão**
 - [ ] (doc) Abrir o cartão de treino que você criou no bloco 1 (se ainda não criou, crie agora no quadro combinado).
-- [ ] (doc) Preencher responsável, prazo e prioridade; usar o checklist e os comentários do cartão.
-- [ ] (doc) Mover o cartão entre as listas conforme o andamento.
-- [ ] (doc) Arquivar o cartão de teste no fim.
 
 **Resultado esperado**
 - [ ] (doc) Meu cartão de teste aparece em Minhas Tarefas e na coluna certa do quadro.
