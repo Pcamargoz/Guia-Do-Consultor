@@ -1,6 +1,6 @@
 # Fila de testes: etapas ainda sem "Verificado"
 
-Gerado por `node scripts/lacunas-checklists.mjs` — 153 etapas em 22 checklists. `doc` = vem dos roteiros, `n/v` = não validado.
+Gerado por `node scripts/lacunas-checklists.mjs` — 150 etapas em 22 checklists. `doc` = vem dos roteiros, `n/v` = não validado.
 Ao validar uma etapa, mude `s` para `'v'` no arquivo de dados do checklist e rode `npm run checklists`. Regras e briefs em [README.md](README.md).
 
 ## Primeiros passos e navegação  `01-primeiros-passos-navegacao.html` — 1 etapa(s)
@@ -101,17 +101,13 @@ Ao validar uma etapa, mude `s` para `'v'` no arquivo de dados do checklist e rod
 **Resultado esperado**
 - [ ] (doc) Consigo mostrar, com as telas abertas, onde o pedido de exemplo aparece em cada módulo.
 
-## Fluxo principal de Vendas: do pedido à operação  `16-fluxo-principal-vendas.html` — 7 etapa(s)
+## Fluxo principal de Vendas: do pedido à operação  `16-fluxo-principal-vendas.html` — 5 etapa(s)
 
 **Pré-requisitos**
 - [ ] (doc) Cliente, produto e obra de treino do checklist 02, e um Vendedor e uma Condição de Pagamento cadastrados pelo consultor.
 
-**2. Ajustar o pedido** · lápis Editar pedido na coluna Ações
-- [ ] (doc) Adicionar um segundo item e conferir o Resumo do Pedido (subtotal e total).
-- [ ] (doc) Trocar a condição de pagamento e usar Recalcular Parcelas (pela condição); depois Recalcular (parcelas iguais) e ver a diferença. → _Os dois botões fazem coisas diferentes._
-
 **3. Aprovações** · Vendas > Aprovações
-- [ ] (doc) Saber que um desconto acima da faixa de alçada pede a aprovação de outro usuário (Supervisor de Vendas ou Gerente Geral). Nunca aprove o seu próprio.
+- [ ] (doc) Saber que um desconto acima da faixa de alçada pede a aprovação de outro usuário (Supervisor de Vendas ou Gerente Geral). Nunca aprove o seu próprio. → _O desconto do item é o campo Desconto, em R$; no Resumo aparece como "Descontos − R$ …" e reduz o Total. Vendas > Aprovações não tem abas: colunas DOCUMENTO, SOLICITANTE, VALOR, TIPO, ESPERA e AÇÕES, e a lista estava vazia. A mensagem de desconto acima da faixa não foi vista, porque a única faixa (nível 1, "A partir de 5%") está Inativa._
 
 **4. O menu de ações e os status** · menu ⋯ do pedido
 - [ ] (doc) Baixar o PDF do pedido e conferir cliente, itens e total.
@@ -120,10 +116,9 @@ Ao validar uma etapa, mude `s` para `'v'` no arquivo de dados do checklist e rod
 **Resultado esperado**
 - [ ] (doc) Tenho um pedido de treino em aberto com cliente, item, parcelas e obra, e sei dizer em que status ele está e o que o próximo botão faz.
 
-## Fluxo principal de Faturamento: do pedido à nota finalizada  `17-fluxo-principal-faturamento.html` — 2 etapa(s)
+## Fluxo principal de Faturamento: do pedido à nota finalizada  `17-fluxo-principal-faturamento.html` — 1 etapa(s)
 
 **6. O que fica com o responsável fiscal** · módulo Fiscal e Faturamento > Configurações (só leitura)
-- [ ] (doc) Percorrer NCM, CFOP, CST/CSOSN, CEST e Textos Fiscais só lendo. → _São mantidos com o contador: alterar afeta todas as notas._
 - [ ] (n/v) Saber que Transmitir, Carta de correção, Cancelar e Inutilizar numeração são decisões do responsável fiscal, só em homologação e com certificado válido. → _Carta de correção e cancelamento só aparecem depois da autorização da nota._
 
 ## Teste do fluxo completo: do pedido à gestão  `teste-fluxo-pedido-ate-gestao.html` — 4 etapa(s)

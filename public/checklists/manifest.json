@@ -325,7 +325,7 @@
    "arquivo": "estagiarios/16-fluxo-principal-vendas.html",
    "chave": "ff-estagiario:fluxo-vendas",
    "etapas": 22,
-   "verificadas": 15
+   "verificadas": 17
   },
   {
    "grupo": "estagiario",
@@ -336,7 +336,7 @@
    "arquivo": "estagiarios/17-fluxo-principal-faturamento.html",
    "chave": "ff-estagiario:fluxo-faturamento-estagiario",
    "etapas": 24,
-   "verificadas": 22
+   "verificadas": 23
   },
   {
    "grupo": "estagiario",

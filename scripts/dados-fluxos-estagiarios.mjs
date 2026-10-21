@@ -33,15 +33,15 @@ export const FLUXOS_PRINCIPAIS = [
         passos: [
           { t: 'Abrir o pedido pelo **lápis** (Editar pedido). Pedido Faturado ou Entregue só tem **Visualizar** (o olho): ajuste antes de faturar.', r: 'O menu `⋯` do pedido não tem "Editar".', s: 'v' },
           { t: 'Preencher o campo **Projeto (opcional)** com a sua obra de treino e clicar em **Salvar e Permanecer**.', r: 'A coluna PROJETO da lista passa a mostrar a obra, sem pedir CFOP nem condição.', s: 'v' },
-          { t: 'Adicionar um segundo item e conferir o **Resumo do Pedido** (subtotal e total).', s: 'd' },
-          { t: 'Trocar a condição de pagamento e usar **Recalcular Parcelas** (pela condição); depois **Recalcular** (parcelas iguais) e ver a diferença.', r: 'Os dois botões fazem coisas diferentes.', s: 'd' },
+          { t: 'Adicionar um segundo item e conferir o **Resumo do Pedido** (subtotal e total).', r: 'Visto no PV-000034: um item de 2 × R$ 100,00 elevou Subtotal e Total de R$ 8.653,80 para R$ 8.853,80 e a parcela acompanhou. Os botões de lixeira do item e da parcela não têm rótulo e removem **sem confirmação**.', s: 'v' },
+          { t: 'Trocar a **Condição de Pagamento** (ex.: "30/60 Dias") e depois testar os dois botões: **Recalcular** e **Recalcular Parcelas** (no Resumo).', r: 'Trocar a condição já regenera as parcelas sozinho. **Recalcular** redivide o total por igual e mostra "Parcelas recalculadas com base no total do pedido", mantendo datas e quantidade. **Recalcular Parcelas** só redivide os valores, sem aviso e sem regenerar datas nem quantidade, apesar do tooltip "conforme a condição de pagamento".', s: 'v' },
         ],
       },
       {
         titulo: '3. Aprovações', onde: '`Vendas > Aprovações`',
         passos: [
           { t: 'Conferir que o seu pedido, sem desconto, **não** gera aprovação.', r: 'A tela cobre só aprovações de comissão e de desconto.', s: 'v' },
-          { t: 'Saber que um desconto acima da faixa de alçada pede a aprovação de **outro usuário** (Supervisor de Vendas ou Gerente Geral). **Nunca aprove o seu próprio.**', s: 'd' },
+          { t: 'Saber que um desconto acima da faixa de alçada pede a aprovação de **outro usuário** (Supervisor de Vendas ou Gerente Geral). **Nunca aprove o seu próprio.**', r: 'O desconto do item é o campo **Desconto**, em R$; no Resumo aparece como "Descontos − R$ …" e reduz o Total. `Vendas > Aprovações` não tem abas: colunas DOCUMENTO, SOLICITANTE, VALOR, TIPO, ESPERA e AÇÕES, e a lista estava vazia. A mensagem de desconto acima da faixa não foi vista, porque a única faixa (nível 1, "A partir de 5%") está Inativa.', s: 'd' },
         ],
       },
       {
@@ -141,7 +141,7 @@ export const FLUXOS_PRINCIPAIS = [
       {
         titulo: '6. O que fica com o responsável fiscal', onde: 'módulo `Fiscal` e `Faturamento > Configurações` (só leitura)',
         passos: [
-          { t: 'Percorrer NCM, CFOP, CST/CSOSN, CEST e Textos Fiscais **só lendo**.', r: 'São mantidos com o contador: alterar afeta todas as notas.', s: 'd' },
+          { t: 'No módulo `Fiscal`, abrir **NCM**, **CFOP** e **Textos Fiscais** **só lendo**. **CEST** fica em **Editar NCM**, aba ICMS; **CST ICMS** e **CSOSN** ficam em **NCM por Estado** e em **Editar CFOP**.', r: 'CST/CSOSN e CEST não são telas separadas. São mantidos com o contador: alterar afeta todas as notas.', s: 'v' },
           { t: 'Saber que **Transmitir**, **Carta de correção**, **Cancelar** e **Inutilizar numeração** são decisões do responsável fiscal, só em homologação e com certificado válido.', r: 'Carta de correção e cancelamento só aparecem depois da autorização da nota.', s: 'n' },
         ],
       },
