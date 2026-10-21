@@ -594,10 +594,14 @@ export const CHECKLISTS = [
     fluxos: [
       {
         preparar: true,
-        titulo: '1. Preparar seus dados: abrir uma ordem de produção do seu pedido', onde: '`Produção > Ordens de produção > Nova OP`',
-        intro: 'A sua empresa de treino começa **zerada**: cada módulo usa o que o anterior criou. A OP nasce do item do pedido de venda do checklist 04. Só abra a OP: apontar e finalizar é trabalho do chão de fábrica e do consultor. Se faltar permissão ou cadastro-base (botão que não aparece, CFOP, plano de contas, meio de pagamento, unidade de medida, almoxarifado), anote a mensagem em **Problema** e chame o supervisor: a empresa de treino começa zerada e os cadastros-base são feitos por um consultor.',
+        titulo: '1. Preparar seus dados: abrir uma ordem de produção', onde: '`Produção > Ordens de produção > Nova OP`',
+        intro: 'A sua empresa de treino começa **zerada**: cada módulo usa o que o anterior criou. A OP precisa de um produto (checklist 02); se o produto tiver **estrutura de produto** (cadastrada por um consultor), as requisições de material nascem sozinhas ao salvar. Só abra a OP: apontar, baixar material e concluir é trabalho do chão de fábrica e do consultor. Se faltar permissão ou cadastro-base (botão que não aparece, processo, linha de produção, almoxarifado), anote a mensagem em **Problema** e chame o supervisor: a empresa de treino começa zerada e os cadastros-base são feitos por um consultor.',
         passos: [
-          { t: 'Escolher **Pedido de venda** e **Item do pedido** (copia produto, cor e medidas, mas **não** a quantidade), informar **Quantidade** e **Empresa** (obrigatória). Salvar. Não use Esc: ele fecha o painel e perde o formulário.', r: 'Mensagem "Registro salvo com sucesso!". Produto sem estrutura avisa "OP sem requisições da estrutura": é esperado no treino.', s: 'v', campo: 'Nº da OP' },
+          { t: 'No menu de módulos (grade no canto superior esquerdo), abrir **Produção** (abre em Ordens de produção) e clicar em **Nova OP**, no topo à direita.', s: 'v' },
+          { t: 'Deixar o **Número da OP** vazio (o sistema numera), as datas vazias e manter o **Tipo de operação** "Fabricação" e a **Linha de produção** como vieram.', s: 'v' },
+          { t: 'Em **Produto**, digitar parte do nome e escolher o seu produto. No diálogo "Dados do Item", preencher só o que quiser e clicar em **Aplicar**.', s: 'v' },
+          { t: 'Escolher a **Empresa** (obrigatória, apesar da dica de que herda do pedido) e informar a **Quantidade** (ex.: 2). Opcional: escolher o seu **Pedido de venda** e o **Item do pedido** (copia produto, cor e medidas, mas não a quantidade).', s: 'v' },
+          { t: 'Clicar em **Salvar**, no rodapé. Não use Esc: ele fecha o painel e perde o formulário.', r: 'Mensagem "Registro salvo com sucesso!"; a lista ganha uma linha OP-0000NN "Em aberto". Em tela estreita a lista mostra só "#id": use tela larga. Produto sem estrutura avisa "OP sem requisições da estrutura": é esperado no treino.', s: 'v', campo: 'Nº da OP' },
         ],
       },
       {

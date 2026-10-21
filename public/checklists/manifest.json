@@ -81,7 +81,7 @@
    "arquivo": "consultores/fluxo-05-producao.html",
    "chave": "ff-consultor:fluxo-producao",
    "etapas": 32,
-   "verificadas": 13
+   "verificadas": 21
   },
   {
    "grupo": "consultor",
@@ -236,8 +236,8 @@
    "resumo": "Ordem de produção, painéis, alertas e reflexo no estoque.",
    "arquivo": "estagiarios/08-producao.html",
    "chave": "ff-estagiario:producao",
-   "etapas": 18,
-   "verificadas": 18
+   "etapas": 22,
+   "verificadas": 22
   },
   {
    "grupo": "estagiario",

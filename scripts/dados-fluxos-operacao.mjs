@@ -105,7 +105,7 @@ export const FLUXOS_OPERACAO = [
   {
     id: 'fluxo-producao', arquivo: 'fluxo-05-producao.html', etiqueta: 'Consultor · Fluxo de produção',
     titulo: 'Fluxo de produção: estrutura, ordem, apontamento e entrada do produto acabado',
-    rodape: 'Fluxos do Consultor · Faktory Flow v1.22 · roteiro de validação manual baseado nos planos de QA de Produção (documentos 01 a 05 e 15) e na execução da OP-000109',
+    rodape: 'Fluxos do Consultor · Faktory Flow v1.22.12 · OP-000109 (19/10) e OP-000110 e 000111 (21/10): estrutura, requisições, baixa, estorno, conclusão, entrada do produto acabado e separação executados; o apontamento ainda não finaliza',
     subtitulo: 'Cadastros-base → estrutura de produto → ordem de produção → requisição e baixa de material → apontamento → conclusão → entrada no estoque → custo. Mostra o que precisa existir antes e o que cada botão grava.',
     objetivo: 'Provar que uma OP nasce com processo e materiais corretos, baixa os insumos, registra as horas, e entrega o produto acabado no estoque com custo real — e conhecer os alertas que travam a conclusão.',
     prerequisitos: [
@@ -120,7 +120,7 @@ export const FLUXOS_OPERACAO = [
         titulo: '1. Cadastros-base e estrutura', onde: '`Produção > Configurações > Etapas / Processos / Linhas / Estrutura de produto`',
         passos: [
           { t: 'Criar 3 etapas com custo/hora diferentes e um processo com elas em ordem e tempo padrão.', r: 'A lista do processo mostra a soma do tempo total.', s: 'd' },
-          { t: 'Criar a **estrutura** do produto com 3 itens (perfil com cor e comprimento, vidro com dimensões, componente) e anotar as quantidades.', r: 'Item paramétrico sem cor/comprimento é recusado.', s: 'd' },
+          { t: 'Criar a **estrutura** do produto com 3 itens (perfil com cor e comprimento, vidro com dimensões, componente) e anotar as quantidades.', r: 'Item paramétrico sem cor/comprimento é recusado. Visto em 21/10 com 2 itens (chapa x2 e parafuso x4): item paramétrico sem cor é recusado ("Selecione a cor do produto"), e a mensagem cita o id interno (#1292) em vez do código.', s: 'v' },
           { t: 'Tentar uma segunda estrutura para o mesmo produto com período sobreposto.', r: 'É impedido com mensagem clara.', s: 'd' },
           { t: 'Abrir o calendário de produção e conferir os feriados nacionais; cadastrar um feriado da empresa.', r: 'Só os feriados do tipo Empresa podem ser removidos.', s: 'd' },
         ],
@@ -131,23 +131,23 @@ export const FLUXOS_OPERACAO = [
         passos: [
           { t: 'Preencher **Pedido de venda**, **Item do pedido** (copia produto e medidas, **não** a quantidade), **Quantidade**, **Empresa** (obrigatória) e o processo. Não use **Esc** no painel: ele fecha e perde o formulário.', r: '"Registro salvo com sucesso!". OP "Em aberto" na lista.', s: 'v', campo: 'Nº da OP' },
           { t: 'Abrir `Mais ações > Etapas de execução da OP` e `Materiais necessários`.', r: 'As etapas são cópia do processo; os materiais vêm da estrutura (compare com as quantidades anotadas). Mudar o processo depois não altera a OP já criada.', s: 'v' },
-          { t: 'Reimportar da estrutura numa OP que já tem item manual.', r: 'Os itens de origem Estrutura são refeitos sem duplicar; os manuais ficam.', s: 'd' },
+          { t: 'Reimportar da estrutura numa OP que já tem item manual.', r: 'Os itens de origem Estrutura são refeitos sem duplicar; os manuais ficam. Visto: as requisições já nascem ao salvar a OP, e reimportar não duplica; o caso com item manual não foi testado.', s: 'd' },
           { t: 'Tentar criar requisição numa OP já Produzida ou Cancelada.', r: 'Nenhuma das duas aceita.', s: 'd' },
         ],
       },
       {
         titulo: '3. Baixa de material', onde: '`Mais ações > Materiais necessários`',
         passos: [
-          { t: 'Baixar **parcialmente** uma requisição (ex.: 30 de 60) e conferir `Estoque > Movimentos` e Saldo.', r: 'Status "Atendida parcialmente"; o saldo do insumo desceu 30; movimento "Baixa de componente em OP".', s: 'd' },
-          { t: 'Baixar o restante.', r: 'Status "Atendida".', s: 'd' },
-          { t: 'Estornar uma baixa informando o motivo.', r: 'O saldo volta, o status recalcula e o custo da OP desconta o estornado.', s: 'd' },
+          { t: 'Baixar **parcialmente** uma requisição (ex.: 30 de 60) e conferir `Estoque > Movimentos` e Saldo.', r: 'Status "Atendida parcialmente"; o saldo do insumo desceu 30; movimento "Baixa de componente em OP". Visto: baixa de 1 de 4 chapas, "Atendida Parcialmente", saldo da chapa 10 → 9 e movimento "Baixa de componente em OP". Antes da baixa o selo mostrou "2 disponível · falta 6" com 10 em estoque: a reserva da própria OP é descontada duas vezes.', s: 'v' },
+          { t: 'Baixar o restante.', r: 'Status "Atendida".', s: 'v' },
+          { t: 'Estornar uma baixa informando o motivo.', r: 'O saldo volta, o status recalcula e o custo da OP desconta o estornado.', s: 'v' },
         ],
       },
       {
         titulo: '4. Apontamento', onde: 'botão `▶` da linha da OP e `Mais ações > Apontamentos`',
         passos: [
           { t: '**Iniciar** o apontamento escolhendo etapa e funcionário.', r: '"Apontamento iniciado com sucesso!"; a OP passa de "Em aberto" para "Em execução" na hora.', s: 'v', campo: 'Nº do apontamento' },
-          { t: '**Finalizar** informando a quantidade produzida (primeiro zero, depois a quantidade válida).', r: 'Zero é recusado; quantidade válida registra. Excedendo o saldo da OP, o sistema pede confirmação. **No ambiente de teste de 19/10 a finalização foi recusada com "A data/hora de fim não pode ser no futuro"**: anote se ocorrer.', s: 'v' },
+          { t: '**Finalizar** informando a quantidade produzida (primeiro zero, depois a quantidade válida).', r: 'Zero é recusado; quantidade válida registra. Excedendo o saldo da OP, o sistema pede confirmação. **No ambiente de teste de 19/10 a finalização foi recusada com "A data/hora de fim não pode ser no futuro"**: anote se ocorrer. Reteste em 21/10: o defeito persiste (a API recebeu o fim em UTC correto e recusou com "A data/hora de fim não pode ser no futuro"); a OP foi concluída com o apontamento ainda aberto.', s: 'v' },
           { t: 'Com o apontamento em aberto, tentar iniciar outro para o mesmo funcionário na mesma OP.', r: 'É impedido.', s: 'd' },
           { t: 'Submeter e **aprovar** o apontamento com quem tem permissão; rejeitar outro com motivo.', r: 'Aprovar acumula as horas reais e dispara a baixa de materiais; rejeitar volta a rascunho.', s: 'd' },
           { t: 'Reabrir um apontamento encerrado há pouco.', r: 'Exige motivo; estorna horas, custo e baixa. Depois de 24 h o apontamento fica travado (🔒).', s: 'd' },
@@ -165,17 +165,17 @@ export const FLUXOS_OPERACAO = [
       {
         titulo: '6. Separação de materiais e painéis', onde: '`Produção > Separação de materiais` e `Produção > Painel de fábrica`',
         passos: [
-          { t: 'Gerar uma lista de separação para a OP e abrir o detalhe (necessário, separado, falta, pendente).', r: 'A quantidade bate com a requisição da OP. Item paramétrico aparece com cor e dimensões.', s: 'd' },
-          { t: 'Separar um item (no app `/separacao`) e conferir requisição e saldo do estoque.', r: 'A quantidade separada sobe, a requisição é baixada e o saldo desce; duplo clique não baixa em dobro.', s: 'd' },
-          { t: 'Registrar falta com motivo do catálogo e reverter.', r: 'Falta sem motivo é recusada; a reversão preserva o histórico.', s: 'd' },
+          { t: 'Gerar uma lista de separação para a OP e abrir o detalhe (necessário, separado, falta, pendente).', r: 'A quantidade bate com a requisição da OP. Item paramétrico aparece com cor e dimensões. Visto: SEP-000001. O app /separacao mostra "Ordem de produção 3205" (id interno) e só abre a lista pelo botão "Abrir lista".', s: 'v' },
+          { t: 'Separar um item (no app `/separacao`) e conferir requisição e saldo do estoque.', r: 'A quantidade separada sobe, a requisição é baixada e o saldo desce; duplo clique não baixa em dobro. Visto: a chapa separada baixou a requisição e o saldo (6 → 4); o duplo clique não foi testado.', s: 'v' },
+          { t: 'Registrar falta com motivo do catálogo e reverter.', r: 'Falta sem motivo é recusada; a reversão preserva o histórico. Visto: a falta foi registrada, mas o motivo já vem preenchido (não dá para testar falta sem motivo) e não há ação de reverter.', s: 'd' },
           { t: 'Abrir o Painel de fábrica nas visões Cards, Lista e Timeline.', r: 'Contadores Ordens / No prazo / Atrasadas; cada card tem o botão "Apontar <ETAPA>" (grava apontamento).', s: 'v' },
         ],
       },
     ],
     resultado: [
-      { t: 'A OP gerou requisições a partir da estrutura e as baixas bateram com o saldo do estoque.', s: 'd' },
+      { t: 'A OP gerou requisições a partir da estrutura e as baixas bateram com o saldo do estoque.', s: 'v' },
       { t: 'O apontamento acumulou horas e o custo real da OP é mão de obra + materiais.', s: 'd' },
-      { t: 'A conclusão creditou o produto acabado no estoque com a quantidade e o custo certos.', s: 'd' },
+      { t: 'A conclusão creditou o produto acabado no estoque com a quantidade e o custo certos.', s: 'v' },
     ],
     atencao: [
       'Na lista, **Iniciar produção** muda a OP para "Em execução" com um clique. Em OP "Em aberto" o lugar do olho (Visualizar) é ocupado por **Editar OP**.',
@@ -185,7 +185,7 @@ export const FLUXOS_OPERACAO = [
       'A Empresa da OP é obrigatória, apesar da dica dizer que ela herda do pedido.',
       'No PCP, arrastar OPs muda a programação da fábrica; o Terminal e o app de separação têm botão **Sair**.',
     ],
-    naoValidado: [AVISO_MANUAL, 'Estrutura de produto, requisição/baixa com estrutura, aprovação de apontamento e separação ainda não foram executadas no sistema.'],
+    naoValidado: [AVISO_MANUAL, 'Faltam: criar etapas e processo, segunda estrutura sobreposta, feriados, requisição em OP já Produzida, aprovar/rejeitar/reabrir apontamento (dependem de o apontamento finalizar, o que o defeito de horário impede) e o painel de fábrica.'],
   },
 
   /* ------------------------------------------------------------------ Expedição */

@@ -1,6 +1,6 @@
 # Fila de testes: etapas ainda sem "Verificado"
 
-Gerado por `node scripts/lacunas-checklists.mjs` — 156 etapas em 21 checklists. `doc` = vem dos roteiros, `n/v` = não validado.
+Gerado por `node scripts/lacunas-checklists.mjs` — 148 etapas em 21 checklists. `doc` = vem dos roteiros, `n/v` = não validado.
 Ao validar uma etapa, mude `s` para `'v'` no arquivo de dados do checklist e rode `npm run checklists`. Regras e briefs em [README.md](README.md).
 
 ## Primeiros passos e navegação  `01-primeiros-passos-navegacao.html` — 1 etapa(s)
@@ -172,25 +172,19 @@ Ao validar uma etapa, mude `s` para `'v'` no arquivo de dados do checklist e rod
 - [ ] (doc) As travas (saldo, reserva, inventário, mês encerrado) recusaram o que deviam, com mensagem clara.
 - [ ] (doc) O balanço do produto fechou em quantidade e valor e não sobraram reservas órfãs.
 
-## Fluxo de produção: estrutura, ordem, apontamento e entrada do produto acabado  `fluxo-05-producao.html` — 19 etapa(s)
+## Fluxo de produção: estrutura, ordem, apontamento e entrada do produto acabado  `fluxo-05-producao.html` — 11 etapa(s)
 
 **Pré-requisitos**
 - [ ] (doc) Etapas, processo e linha de produção cadastrados (Produção > Configurações): ex.: Corte, Usinagem e Montagem com custo/hora; processo "Janela padrão" com as 3 etapas na ordem.
 
 **1. Cadastros-base e estrutura** · Produção > Configurações > Etapas / Processos / Linhas / Estrutura de produto
 - [ ] (doc) Criar 3 etapas com custo/hora diferentes e um processo com elas em ordem e tempo padrão. → _A lista do processo mostra a soma do tempo total._
-- [ ] (doc) Criar a estrutura do produto com 3 itens (perfil com cor e comprimento, vidro com dimensões, componente) e anotar as quantidades. → _Item paramétrico sem cor/comprimento é recusado._
 - [ ] (doc) Tentar uma segunda estrutura para o mesmo produto com período sobreposto. → _É impedido com mensagem clara._
 - [ ] (doc) Abrir o calendário de produção e conferir os feriados nacionais; cadastrar um feriado da empresa. → _Só os feriados do tipo Empresa podem ser removidos._
 
 **2. Ordem de produção** · Produção > Ordens de produção > Nova OP
-- [ ] (doc) Reimportar da estrutura numa OP que já tem item manual. → _Os itens de origem Estrutura são refeitos sem duplicar; os manuais ficam._
+- [ ] (doc) Reimportar da estrutura numa OP que já tem item manual. → _Os itens de origem Estrutura são refeitos sem duplicar; os manuais ficam. Visto: as requisições já nascem ao salvar a OP, e reimportar não duplica; o caso com item manual não foi testado._
 - [ ] (doc) Tentar criar requisição numa OP já Produzida ou Cancelada. → _Nenhuma das duas aceita._
-
-**3. Baixa de material** · Mais ações > Materiais necessários
-- [ ] (doc) Baixar parcialmente uma requisição (ex.: 30 de 60) e conferir Estoque > Movimentos e Saldo. → _Status "Atendida parcialmente"; o saldo do insumo desceu 30; movimento "Baixa de componente em OP"._
-- [ ] (doc) Baixar o restante. → _Status "Atendida"._
-- [ ] (doc) Estornar uma baixa informando o motivo. → _O saldo volta, o status recalcula e o custo da OP desconta o estornado._
 
 **4. Apontamento** · botão ▶ da linha da OP e Mais ações > Apontamentos
 - [ ] (doc) Com o apontamento em aberto, tentar iniciar outro para o mesmo funcionário na mesma OP. → _É impedido._
@@ -198,14 +192,10 @@ Ao validar uma etapa, mude `s` para `'v'` no arquivo de dados do checklist e rod
 - [ ] (doc) Reabrir um apontamento encerrado há pouco. → _Exige motivo; estorna horas, custo e baixa. Depois de 24 h o apontamento fica travado (🔒)._
 
 **6. Separação de materiais e painéis** · Produção > Separação de materiais e Produção > Painel de fábrica
-- [ ] (doc) Gerar uma lista de separação para a OP e abrir o detalhe (necessário, separado, falta, pendente). → _A quantidade bate com a requisição da OP. Item paramétrico aparece com cor e dimensões._
-- [ ] (doc) Separar um item (no app /separacao) e conferir requisição e saldo do estoque. → _A quantidade separada sobe, a requisição é baixada e o saldo desce; duplo clique não baixa em dobro._
-- [ ] (doc) Registrar falta com motivo do catálogo e reverter. → _Falta sem motivo é recusada; a reversão preserva o histórico._
+- [ ] (doc) Registrar falta com motivo do catálogo e reverter. → _Falta sem motivo é recusada; a reversão preserva o histórico. Visto: a falta foi registrada, mas o motivo já vem preenchido (não dá para testar falta sem motivo) e não há ação de reverter._
 
 **Resultado esperado**
-- [ ] (doc) A OP gerou requisições a partir da estrutura e as baixas bateram com o saldo do estoque.
 - [ ] (doc) O apontamento acumulou horas e o custo real da OP é mão de obra + materiais.
-- [ ] (doc) A conclusão creditou o produto acabado no estoque com a quantidade e o custo certos.
 
 ## Fluxo de expedição: da carga à entrega, ocorrência e devolução  `fluxo-06-expedicao.html` — 13 etapa(s)
 
