@@ -146,7 +146,7 @@
    "resumo": "Organizar suas primeiras semanas: o que pedir antes de começar, a ordem recomendada dos checklists e os combinados de segurança. Ao final, você deve saber encontrar qualquer tela, criar os seus registros de treino, consultar o que já existe sem alterar nada e explicar como um pedido passa pelos módulos.",
    "arquivo": "estagiarios/00-onboarding-estagiario.html",
    "chave": "ff-estagiario:onboarding",
-   "etapas": 18,
+   "etapas": 22,
    "verificadas": 4,
    "emDesenvolvimento": 1
   },
@@ -315,6 +315,39 @@
    "chave": "ff-estagiario:fluxo",
    "etapas": 17,
    "verificadas": 10
+  },
+  {
+   "grupo": "estagiario",
+   "id": "fluxo-vendas",
+   "area": "16 · Vendas",
+   "titulo": "Fluxo principal de Vendas: do pedido à operação",
+   "resumo": "Criar, ajustar e acompanhar o seu pedido de venda até a carteira.",
+   "arquivo": "estagiarios/16-fluxo-principal-vendas.html",
+   "chave": "ff-estagiario:fluxo-vendas",
+   "etapas": 22,
+   "verificadas": 15
+  },
+  {
+   "grupo": "estagiario",
+   "id": "fluxo-faturamento-estagiario",
+   "area": "17 · Faturamento",
+   "titulo": "Fluxo principal de Faturamento: do pedido à nota finalizada",
+   "resumo": "Faturar o seu pedido em homologação e conferir a nota, sem transmitir.",
+   "arquivo": "estagiarios/17-fluxo-principal-faturamento.html",
+   "chave": "ff-estagiario:fluxo-faturamento-estagiario",
+   "etapas": 24,
+   "verificadas": 22
+  },
+  {
+   "grupo": "estagiario",
+   "id": "fluxo-financeiro-estagiario",
+   "area": "18 · Financeiro",
+   "titulo": "Fluxo principal do Financeiro: do título ao fluxo de caixa",
+   "resumo": "Gerar os títulos do pedido, receber, conferir saldos e ler o fluxo de caixa.",
+   "arquivo": "estagiarios/18-fluxo-principal-financeiro.html",
+   "chave": "ff-estagiario:fluxo-financeiro-estagiario",
+   "etapas": 22,
+   "verificadas": 22
   },
   {
    "grupo": "qa",

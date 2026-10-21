@@ -5,6 +5,8 @@
      'n' = não pôde ser conferido; confirmar com o supervisor
    Textos: `Menu > Tela` vira destaque de interface; **negrito** vira ênfase. */
 
+import { FLUXOS_PRINCIPAIS } from './dados-fluxos-estagiarios.mjs';
+
 export const META = {
   rodape: 'Trilha do Estagiário · Faktory Flow v1.22 · conteúdo conferido em 16 e 19/10/2026',
 };
@@ -72,6 +74,16 @@ export const ONBOARDING = {
         { t: 'Concluir **10 · Projetos e obras**, **12 · Faturamento e Fiscal** e **13 · Financeiro**.', s: 'd' },
         { t: 'Concluir **14 · Tarefas** e combinar com o supervisor um quadro para acompanhar suas atividades.', s: 'd' },
         { t: 'Explicar ao supervisor, com as telas abertas, o caminho de um pedido real: CRM → Vendas → operação → Faturamento → Financeiro.', r: 'Você consegue mostrar onde cada etapa aparece no sistema.', s: 'd' },
+      ],
+    },
+    {
+      titulo: 'Semana 5 — Os fluxos dos módulos mais maduros',
+      intro: 'Vendas, Faturamento e Financeiro são os módulos mais maduros do Faktory Flow. Estes três checklists seguem o fluxo do começo ao fim com os **seus** registros de treino, na ordem do dinheiro: pedido, nota e títulos.',
+      passos: [
+        { t: 'Concluir **16 · Fluxo principal de Vendas** (ajustar o pedido, entender os status e achá-lo nos painéis).', s: 'd' },
+        { t: 'Concluir **17 · Fluxo principal de Faturamento** (faturar em homologação, conferir e finalizar a nota sem transmitir, com autorização).', s: 'd' },
+        { t: 'Concluir **18 · Fluxo principal do Financeiro** (gerar títulos, receber numa conta de teste, conferir saldos e ler o fluxo de caixa).', s: 'd' },
+        { t: 'Mostrar ao supervisor o mesmo pedido nos três módulos e dizer onde os números divergiram.', r: 'Os pontos de divergência conhecidos estão nos "Pontos de atenção" de cada checklist.', s: 'd' },
       ],
     },
   ],
@@ -1072,3 +1084,6 @@ export const CHECKLISTS = [
     naoValidado: ['Baixa de título e resultado no painel da obra ainda não foram conferidos no teste de ponta a ponta.'],
   },
 ];
+
+/* Fluxos principais (16 a 18): Vendas, Faturamento e Financeiro. */
+CHECKLISTS.push(...FLUXOS_PRINCIPAIS);
