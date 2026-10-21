@@ -181,7 +181,7 @@ export const CHECKLISTS = [
         titulo: '2. Consultar um participante', onde: '`Cadastros > Participantes` (aparece no menu de vários módulos)',
         passos: [
           { t: 'Abrir a lista e pesquisar pelo nome do cliente.', r: 'Se não existir, a tela mostra "Nenhum participante encontrado".', s: 'v' },
-          { t: 'Abrir o participante e percorrer as seções: Dados Gerais, Classificação, Endereço, Contato, Contas bancárias, Documentos e Dados CRM.', s: 'v' },
+          { t: 'Abrir o participante e percorrer as seções: Dados Gerais, Classificação, Endereço, Contato, Contas bancárias, Documentos, Observações, Dados CRM e Informações CRM.', s: 'v' },
           { t: 'Na seção **Classificação**, ver as chaves É Cliente?, É Fornecedor?, É Funcionário?, É Transportadora?, É Vendedor? e Prospect/Lead.', r: 'Você entende que cliente, fornecedor e lead do CRM são o **mesmo cadastro**, só com chaves diferentes.', s: 'v' },
           { t: 'Na seção **Contato**, ver quem recebe e-mails de Notas Fiscais, Boletos, Vendas e avisos de entrega/serviços.', s: 'v' },
         ],
@@ -241,7 +241,7 @@ export const CHECKLISTS = [
         intro: '**Faça este bloco primeiro.** A sua conta no CRM começa sem leads, e os blocos seguintes (filtros, Kanban, menu do lead, conversão) precisam dos seus leads para funcionar. O formulário é o cadastro completo de participante: preencha só o necessário. Se ele pedir CNPJ/CPF ou CEP, use números fictícios (documento repetido é recusado, então troque o número se aparecer o aviso); se o CEP trouxer um bairro curto, como "Sé", digite um bairro com 3 letras ou mais. Use um e-mail de teste, nunca o de um cliente real.',
         passos: [
           { t: 'Preencher **Tipo (PF/PJ)** e **Razão Social / Nome** começando por "TESTE ESTAGIÁRIO" (ex.: "TESTE ESTAGIÁRIO - Maria 1").', s: 'v' },
-          { t: 'Na seção Dados CRM, preencher Origem do Lead, Temperatura e Responsável (deixe **você** como Responsável).', s: 'v' },
+          { t: 'Na seção **Informações CRM**, preencher Origem do Lead, Temperatura e Responsável (deixe **você** como Responsável).', r: 'Não confunda com a seção **Dados CRM**, logo acima: ela tem Setor de Atuação, CREA/CAU e preferências do cliente, e não é necessária agora. O Budget Estimado e as chaves Autoridade, Necessidade e Prazo (o BANT) também ficam em Informações CRM.', s: 'v' },
           { t: 'Clicar em `Salvar`.', r: 'Mensagem "Registro salvo com sucesso!" e o lead aparece na lista com Status "Novo".', s: 'v' },
           { t: 'Conferir na lista se a Temperatura gravou como você escolheu.', s: 'v' },
           { t: 'Cadastrar um **segundo** lead de treino ("TESTE ESTAGIÁRIO - Maria 2") com **outra Temperatura** (ex.: Quente), repetindo os passos acima.', r: 'Com dois leads de temperaturas diferentes, os filtros, o Kanban e o menu do lead têm o que mostrar.', s: 'd' },
