@@ -13,13 +13,15 @@ const GUIA = path.resolve(RAIZ, '..', 'public', 'videos');
 const id = process.argv[2];
 if (!id) { console.error('uso: node scripts/render.mjs <id> [--rascunho]'); process.exit(1); }
 const rascunho = process.argv.includes('--rascunho');
-const roda = (cmd, args) => execFileSync(cmd, args, { cwd: RAIZ, stdio: 'inherit', shell: process.platform === 'win32' });
+// shell só para o npx (no Windows ele é um .cmd); no ffmpeg o shell cortaria os caminhos com espaços
+const roda = (cmd, args) => execFileSync(cmd, args, { cwd: RAIZ, stdio: 'inherit', shell: process.platform === 'win32' && cmd === 'npx' });
 
 roda('node', ['scripts/preparar.mjs', id]);
 const dados = JSON.parse(fs.readFileSync(path.join(RAIZ, 'src', 'gerado', `${id}.json`), 'utf8'));
 fs.mkdirSync(path.join(RAIZ, 'out'), { recursive: true });
 const master = path.join(RAIZ, 'out', `${id}-${rascunho ? 'rascunho' : 'master'}.mp4`);
-roda('npx', ['remotion', 'render', 'src/index.ts', id, master, ...(rascunho ? ['--scale=0.5', '--crf=28'] : []), '--log=error']);
+// caminho relativo: o npx roda pelo shell no Windows e um caminho com espaços seria cortado
+roda('npx', ['remotion', 'render', 'src/index.ts', id, path.relative(RAIZ, master), ...(rascunho ? ['--scale=0.5', '--crf=28'] : []), '--log=error']);
 if (rascunho) { console.log(`rascunho: ${master}`); process.exit(0); }
 
 fs.mkdirSync(GUIA, { recursive: true });

@@ -11,8 +11,8 @@
           "numero": "Fluxo 1",
           "titulo": "Vendas: o ciclo do pedido de venda",
           "resumo": "O que é o pedido, os status, as quatro regras que mais travam e o pedido criado na tela.",
-          "duracao": "",
-          "status": "em-producao",
+          "duracao": "2 min 45 s",
+          "status": "pronto",
           "checklist": "estagiarios/fluxo-principal-vendas.html"
         },
         {

@@ -10,7 +10,7 @@ Atualizado em 22/10/2026, 16h10. Os 12 roteiros estão escritos e todas as telas
 
 | # | Vídeo (`roteiros/<id>.json`) | Trechos / telas | Voz | Render / publicado | Onde aparece no Guia |
 |---|---|---|---|---|---|
-| 1 | `fluxo-1-vendas` — Fluxo 1 · Vendas (piloto) | 17 / 8 | 01–15 prontos, falta 16 | não | Fluxos do estagiário · Fluxo 1 + checklist `estagiarios/fluxo-principal-vendas.html` |
+| 1 | `fluxo-1-vendas` — Fluxo 1 · Vendas (piloto) | 17 / 8 | pronta | **publicado** (2 min 46 s, 0 pretos, −14,2 LUFS) | Fluxos do estagiário · Fluxo 1 + checklist `estagiarios/fluxo-principal-vendas.html` |
 | 2 | `consultor-03-comercial` — do lead ao pedido | 17 / 8 | não | não | Consultores · Fluxo 03 + checklist 03 |
 | 3 | `consultor-07-faturamento` — do pedido à nota finalizada | 16 / 7 | não | não | Consultores · Fluxo 07 e estagiário · Fluxo 2 |
 | 4 | `consultor-08-financeiro` — títulos, baixa e saldos | 15 / 6 | não | não | Consultores · Fluxo 08 e estagiário · Fluxo 3 |
