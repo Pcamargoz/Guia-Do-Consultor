@@ -6,7 +6,59 @@ Vídeos animados com narração (voz clonada do consultor Pedro) e legenda que e
 
 ## Estado e plano (para retomar)
 
-Atualizado em 22/10/2026, 16h10. Os 12 roteiros estão escritos e todas as telas foram gravadas no DEV (v1.22.13). Só falta **voz + render** de cada vídeo, que roda sozinho numa fila (`scripts/lote.mjs`). O usuário aprovou a prévia de áudio do piloto ("está perfeito"): manter voz, música e mixagem.
+Atualizado em 22/10/2026, 17h15. Os 12 roteiros estão escritos e todas as telas foram gravadas no DEV (v1.22.13). **O piloto (Fluxo 1 · Vendas) está publicado** no Guia (commit 62c38c3). Para os outros 11 só falta **voz + render**, que roda sozinho numa fila (`scripts/lote.mjs`). O usuário aprovou a voz do piloto ("está perfeito"): manter voz, música e mixagem.
+
+### Próximas etapas (depois do commit 62c38c3)
+
+A fila dos 11 vídeos foi iniciada às 17h10 de 22/10 com a saída em `out/lote.log` (fora do git). Ordem: 03 Comercial → 07 Faturamento → 08 Financeiro → 01 Suprimentos → 02 Serviços → 04 Estoque → 05 Produção → 06 Expedição → 09 Projetos → 10 Tarefas → Fluxo completo.
+
+**Etapa 1. Ver se a fila ainda está rodando** (ela para se o computador desligar ou a sessão do Claude Code fechar):
+
+```powershell
+cd "C:\Users\Pedro Santos\Desktop\HTML PARA MANUAL DO USUARIO\videos"
+Get-Content out\lote.log -Tail 5
+Get-Process node -ErrorAction SilentlyContinue
+```
+
+- A última linha mostra o vídeo e a frase atuais (ex.: `consultor-03-comercial: narração` / `01.1: 4.1 s`). Se ela muda a cada ~5 min, está rodando: só esperar.
+- `tudo pronto` no fim = os 11 terminaram → pule para a Etapa 4.
+- `falhou ...` ou a fila parou → Etapa 2.
+
+**Etapa 2. Reiniciar a fila** (o cache em `public/audio/<id>/frases/` guarda cada frase pronta, então nada se perde). Antes, abra o VoiceStudio e confira `curl http://127.0.0.1:3900/model/status`. Tire da lista os vídeos que já têm `..\public\videos\<id>.mp4`:
+
+```powershell
+node scripts/lote.mjs consultor-03-comercial consultor-07-faturamento consultor-08-financeiro consultor-01-suprimentos consultor-02-servicos consultor-04-estoque consultor-05-producao consultor-06-expedicao consultor-09-projetos consultor-10-tarefas consultor-fluxo-completo *> out\lote.log
+```
+
+Erros comuns: "HTTP 503 … more than 600s" = frase longa demais (dividir no roteiro `roteiros/<id>.json`); "ECONNREFUSED 3900" = motor do VoiceStudio caiu (reabrir o app, fechar programas pesados); falha no render = rodar só ele com `node scripts/render.mjs <id>` (a voz já fica no cache).
+
+**Etapa 3. A cada vídeo publicado** (aparece `publicado: public/videos/<id>.mp4` no log):
+
+1. Conferir no log a linha `checagem:` → **0 trechos pretos** e volume perto de **−14 LUFS**.
+2. Assistir ao `..\public\videos\<id>.mp4` (ou pelo menos olhar 3 quadros: `ffmpeg -ss 60 -i ..\public\videos\<id>.mp4 -frames:v 1 out\amostras\q.jpg`).
+3. Marcar a linha do vídeo como **publicado** na tabela acima.
+4. Commit + push no repositório do Guia (troque `<id>`; a pasta `Checklists/` não entra):
+
+```powershell
+cd "C:\Users\Pedro Santos\Desktop\HTML PARA MANUAL DO USUARIO"
+git add public/videos/<id>.mp4 public/videos/<id>.jpg public/videos/<id>.vtt public/videos/manifest.json public/checklists videos/public/audio/<id>/tempos.json videos/src/gerado/<id>.json videos/LEIA-ME.md
+git commit -m "Vídeo <título> publicado no Guia"
+git push
+```
+
+**Etapa 4. Depois do último vídeo (`tudo pronto`):**
+
+1. Conferir que os 12 estão como `"status": "pronto"` em `..\public\videos\manifest.json` e abrir a aba **Vídeos de fluxo** do Guia (`..\public\index.html`) para ver se todos tocam.
+2. Gerar o pacote da equipe do Harness de Documentação (o usuário pediu para fazer **só agora**):
+
+```powershell
+powershell -ExecutionPolicy Bypass -File "C:\Users\Pedro Santos\Desktop\Harness Arquitetura para documentação Fakflow\empacotar-equipe.ps1"
+```
+
+   O zip `Harness-Faktory-Doc-equipe-AAAA-MM-DD.zip` sai na Área de Trabalho; confira o `VERSAO.txt` dentro dele.
+3. Atualizar esta seção ("Estado e plano") com a data e "todos publicados", e fazer o último commit + push.
+
+**Etapa 5. Limpeza do DEV** (só com autorização do usuário para o que for fiscal): lista no item 4 de "O que ainda precisa ser feito", abaixo.
 
 | # | Vídeo (`roteiros/<id>.json`) | Trechos / telas | Voz | Render / publicado | Onde aparece no Guia |
 |---|---|---|---|---|---|
