@@ -1,0 +1,439 @@
+{
+ "id": "fluxo-1-vendas",
+ "titulo": "Fluxo 1 · Vendas",
+ "subtitulo": "O ciclo do pedido de venda",
+ "trilha": "Fluxos principais do estagiário",
+ "proximo": "Fluxo 2 · Faturamento",
+ "trechos": [
+  {
+   "id": "01",
+   "cena": "abertura",
+   "fala": "Toda venda da empresa começa num pedido. Neste vídeo, você vai entender o ciclo do pedido de venda no Faktory Flow, e como evitar os tropeços mais comuns.",
+   "inicio": 0,
+   "duracao": 9.818,
+   "fala_s": 9.268,
+   "audio": "audio/fluxo-1-vendas/01.wav",
+   "legendas": [
+    {
+     "texto": "Toda venda da empresa começa num pedido.",
+     "ini": 0,
+     "fim": 2.338
+    },
+    {
+     "texto": "Neste vídeo, você vai entender o ciclo do pedido de venda no Faktory Flow,",
+     "ini": 2.618,
+     "fim": 6.772
+    },
+    {
+     "texto": "e como evitar os tropeços mais comuns.",
+     "ini": 7.052,
+     "fim": 9.268
+    }
+   ]
+  },
+  {
+   "id": "02",
+   "cena": "status",
+   "destaque": 0,
+   "fala": "O pedido é o combinado da venda: quem compra, o quê, por quanto e como vai pagar. Ele nasce Em aberto. Enquanto está assim, você ainda pode mudar tudo.",
+   "inicio": 9.818,
+   "duracao": 12.979,
+   "fala_s": 12.429,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "03",
+   "cena": "status",
+   "destaque": 3,
+   "cadeado": true,
+   "fala": "Quando a nota fiscal é salva, ele passa a Faturado. Depois, pode ser liberado para expedição e, por fim, entregue. Cada status abre e fecha portas. Vamos ver quais.",
+   "inicio": 22.797,
+   "duracao": 12.979,
+   "fala_s": 12.429,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "04",
+   "cena": "regra",
+   "n": 1,
+   "titulo": "CFOP depois de Empresa e Cliente",
+   "icone": "cfop",
+   "texto": "O CFOP só libera depois da Empresa e do Cliente, filtrado pelo estado do cliente.",
+   "fonte": "regra-vendas-cfop-depende-de-empresa-e-cliente",
+   "fala": "Primeira regra. No Novo Pedido, o CFOP só libera depois que você escolhe a Empresa e o Cliente. E ele já vem filtrado pelo estado do cliente.",
+   "inicio": 35.776,
+   "duracao": 12.121,
+   "fala_s": 11.571,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "05",
+   "cena": "regra",
+   "n": 2,
+   "titulo": "Conta de Fluxo de Caixa é obrigatória",
+   "icone": "caixa",
+   "texto": "No Resumo do Pedido, confira a Conta de Fluxo de Caixa de venda.",
+   "fonte": "regra-vendas-cfop-depende-de-empresa-e-cliente",
+   "fala": "Segunda. No Resumo do Pedido, a Conta de Fluxo de Caixa é obrigatória.",
+   "inicio": 47.897,
+   "duracao": 6.121,
+   "fala_s": 5.571,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "06",
+   "cena": "regra",
+   "n": 3,
+   "titulo": "Só o pedido Em aberto é editado",
+   "icone": "lapis",
+   "texto": "Edite pelo lápis da coluna Ações. Faturado ou Entregue: só visualizar.",
+   "fonte": "regra-vendas-editar-pedido-somente-em-aberto",
+   "fala": "Terceira. Só o pedido Em aberto pode ser editado, pelo lápis da coluna Ações. Depois de faturado, você só consegue visualizar. Por isso, ajuste projeto, itens e parcelas antes de faturar.",
+   "inicio": 54.018,
+   "duracao": 13.836,
+   "fala_s": 13.286,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "07",
+   "cena": "regra",
+   "n": 4,
+   "titulo": "Faturado não é nota autorizada",
+   "icone": "nota",
+   "texto": "O pedido fica Faturado quando a nota é salva, mesmo com a nota Em Aberto.",
+   "fonte": "regra-vendas-pedido-fica-faturado-ao-salvar-a-nota",
+   "fala": "Quarta. O pedido fica Faturado assim que a nota é salva, mesmo que a nota ainda esteja em aberto. Faturado não quer dizer nota autorizada. Confira sempre em Faturamento.",
+   "inicio": 67.854,
+   "duracao": 12.979,
+   "fala_s": 12.429,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "08",
+   "cena": "tela",
+   "captura": "01-lista",
+   "foco": 0,
+   "rotulo": "Vendas › Pedidos de Venda",
+   "fala": "Agora, na prática. Abra Vendas, Pedidos de Venda. A lista já abre filtrada nos pedidos Em aberto.",
+   "inicio": 80.833,
+   "duracao": 7.836,
+   "fala_s": 7.286,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/fluxo-1-vendas/01-lista.png",
+   "caixas": [
+    {
+     "x": 1378,
+     "y": 589,
+     "w": 83,
+     "h": 24
+    },
+    {
+     "x": 10,
+     "y": 296,
+     "w": 276,
+     "h": 38
+    },
+    {
+     "x": 1699,
+     "y": 168,
+     "w": 157,
+     "h": 43
+    }
+   ]
+  },
+  {
+   "id": "09",
+   "cena": "tela",
+   "captura": "02-novo-vazio",
+   "foco": 0,
+   "rotulo": "+ Novo Pedido",
+   "fala": "Clique em Novo Pedido e comece escolhendo a Empresa. Repare que o CFOP ainda está bloqueado.",
+   "inicio": 88.669,
+   "duracao": 6.458,
+   "fala_s": 5.908,
+   "audio": "audio/fluxo-1-vendas/09.wav",
+   "legendas": null,
+   "imagem": "telas/fluxo-1-vendas/02-novo-vazio.png",
+   "caixas": [
+    {
+     "x": 380,
+     "y": 508,
+     "w": 472,
+     "h": 48
+    },
+    {
+     "x": 380,
+     "y": 237,
+     "w": 472,
+     "h": 24
+    },
+    {
+     "x": 380,
+     "y": 561,
+     "w": 472,
+     "h": 19
+    },
+    {
+     "x": 380,
+     "y": 508,
+     "w": 472,
+     "h": 48
+    }
+   ]
+  },
+  {
+   "id": "10",
+   "cena": "tela",
+   "captura": "03-cabecalho",
+   "foco": 0,
+   "rotulo": "Cliente, Vendedor e Condição de Pagamento",
+   "fala": "Escolha o Cliente, o Vendedor e a Condição de Pagamento. Agora, sim, o CFOP libera.",
+   "inicio": 95.127,
+   "duracao": 6.979,
+   "fala_s": 6.429,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/fluxo-1-vendas/03-cabecalho.png",
+   "caixas": [
+    {
+     "x": 380,
+     "y": 508,
+     "w": 472,
+     "h": 48
+    },
+    {
+     "x": 871,
+     "y": 237,
+     "w": 472,
+     "h": 24
+    },
+    {
+     "x": 871,
+     "y": 345,
+     "w": 472,
+     "h": 24
+    }
+   ]
+  },
+  {
+   "id": "10b",
+   "cena": "tela",
+   "captura": "03b-cfop",
+   "foco": 0,
+   "rotulo": "CFOP",
+   "fala": "E a lista já vem filtrada pelo estado do cliente. Aqui, só aparecem as operações interestaduais.",
+   "inicio": 102.106,
+   "duracao": 7.407,
+   "fala_s": 6.857,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/fluxo-1-vendas/03b-cfop.png",
+   "caixas": [
+    {
+     "x": 405,
+     "y": 640,
+     "w": 556,
+     "h": 29
+    }
+   ]
+  },
+  {
+   "id": "11",
+   "cena": "tela",
+   "captura": "04-item",
+   "foco": 0,
+   "rotulo": "Dados do Item",
+   "fala": "Adicione o produto. Abre o quadro Dados do Item, com os campos que o tipo do material pede. Preencha e clique em Aplicar.",
+   "inicio": 109.513,
+   "duracao": 10.407,
+   "fala_s": 9.857,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/fluxo-1-vendas/04-item.png",
+   "caixas": [
+    {
+     "x": 1267,
+     "y": 643,
+     "w": 95,
+     "h": 48
+    },
+    {
+     "x": 558,
+     "y": 389,
+     "w": 804,
+     "h": 22
+    }
+   ]
+  },
+  {
+   "id": "12",
+   "cena": "tela",
+   "captura": "05-parcelas",
+   "foco": 0,
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "rotulo": "Parcelas do Pedido e Resumo",
+   "fala": "Na parcela, escolha o Meio Pagamento e o Portador. No Resumo, confira a Conta de Fluxo de Caixa: ela é obrigatória, e pode já vir do cadastro do cliente.",
+   "inicio": 119.92,
+   "duracao": 12.979,
+   "fala_s": 12.429,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/fluxo-1-vendas/05-parcelas.png",
+   "caixas": [
+    {
+     "x": 887,
+     "y": 314,
+     "w": 116,
+     "h": 18
+    },
+    {
+     "x": 1041,
+     "y": 314,
+     "w": 60,
+     "h": 18
+    },
+    {
+     "x": 1476,
+     "y": 830,
+     "w": 334,
+     "h": 24
+    },
+    {
+     "x": 1476,
+     "y": 762,
+     "w": 334,
+     "h": 26
+    }
+   ]
+  },
+  {
+   "id": "13",
+   "cena": "tela",
+   "captura": "06-salvo-b",
+   "foco": 0,
+   "focos": [
+    0,
+    1
+   ],
+   "rotulo": "Salvar e Permanecer",
+   "caixasExtras": [
+    {
+     "x": 1465,
+     "y": 30,
+     "w": 425,
+     "h": 85
+    }
+   ],
+   "borrar": [
+    {
+     "x": 1540,
+     "y": 0,
+     "w": 360,
+     "h": 30
+    }
+   ],
+   "fala": "Clique em Salvar e Permanecer. Pronto: o pedido ganha um número, e a tela passa a ser Editar Pedido de Venda.",
+   "inicio": 132.899,
+   "duracao": 9.55,
+   "fala_s": 9,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/fluxo-1-vendas/06-salvo-b.png",
+   "caixas": [
+    {
+     "x": 1585,
+     "y": 115,
+     "w": 205,
+     "h": 48
+    },
+    {
+     "x": 1465,
+     "y": 30,
+     "w": 425,
+     "h": 85
+    }
+   ]
+  },
+  {
+   "id": "14",
+   "cena": "tela",
+   "captura": "07-lista-novo",
+   "foco": 2,
+   "focos": [
+    2,
+    1,
+    0
+   ],
+   "rotulo": "Em aberto · Sem títulos",
+   "fala": "Na lista, ele está Em aberto, sem títulos e sem nota fiscal. Precisa ajustar? Use o lápis. Para mudar as parcelas, troque a Condição de Pagamento: as parcelas se refazem sozinhas.",
+   "inicio": 142.449,
+   "duracao": 13.836,
+   "fala_s": 13.286,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/fluxo-1-vendas/07-lista-novo.png",
+   "caixas": [
+    {
+     "x": 1764,
+     "y": 725,
+     "w": 38,
+     "h": 38
+    },
+    {
+     "x": 1530,
+     "y": 719,
+     "w": 94,
+     "h": 50
+    },
+    {
+     "x": 1409,
+     "y": 719,
+     "w": 92,
+     "h": 50
+    }
+   ]
+  },
+  {
+   "id": "15",
+   "cena": "alertas",
+   "itens": [
+    "As lixeiras do item e da parcela apagam sem confirmação.",
+    "Recalcular Parcelas só redivide os valores: não cria datas novas.",
+    "Item com desconto vai para Vendas › Aprovações: outra pessoa aprova."
+   ],
+   "fala": "Três cuidados. As lixeiras do item e da parcela apagam na hora, sem pedir confirmação. O botão Recalcular Parcelas só redivide os valores: ele não cria datas novas. E, se o item tiver desconto, o pedido vai para Vendas, Aprovações, e outra pessoa, com perfil de aprovação, precisa aprovar.",
+   "inicio": 156.285,
+   "duracao": 21.55,
+   "fala_s": 21,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "16",
+   "cena": "fechamento",
+   "topicos": [
+    "Empresa e Cliente antes do CFOP",
+    "Conta de Fluxo de Caixa sempre",
+    "Ajuste tudo antes de faturar"
+   ],
+   "fala": "Resumindo: Empresa e Cliente antes do CFOP. Conta de Fluxo de Caixa sempre. E ajuste tudo antes de faturar. No próximo vídeo, você vai faturar este pedido.",
+   "inicio": 177.835,
+   "duracao": 12.121,
+   "fala_s": 11.571,
+   "audio": null,
+   "legendas": null
+  }
+ ],
+ "duracaoTotal": 191.456
+}

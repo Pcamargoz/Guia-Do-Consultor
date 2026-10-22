@@ -1,0 +1,11 @@
+node_modules/
+out/
+# perfil do Chrome usado na gravação (tem a sessão do DEV)
+.perfil-gravacao/
+# capturas brutas (podem ter dados do ambiente de teste); só as revisadas vão para public/telas/
+capturas/
+public/musica/*.wav
+public/audio/**/*.wav
+
+# voz de referência (gravação pessoal): fica só na máquina
+voz/

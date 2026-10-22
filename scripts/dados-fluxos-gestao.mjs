@@ -11,6 +11,7 @@ export const FLUXOS_GESTAO = [
     titulo: 'Fluxo de faturamento e fiscal: do pedido à nota finalizada',
     rodape: 'Fluxos do Consultor · Faktory Flow v1.22 · NF-019 gerada e finalizada em 19/10/2026 (homologação, sem transmitir); cancelamento, carta de correção e transmissão aguardam validação por quem responde pelo fiscal',
     subtitulo: 'Pedido de venda → Faturar → conferir impostos → salvar a nota → finalizar → conferir pedido, estoque e timeline. O que for fiscal de verdade (transmitir, cancelar, inutilizar) é marcado como decisão de quem responde pelo fiscal.',
+    video: { id: 'consultor-07-faturamento', titulo: 'Do pedido à nota finalizada', resumo: 'Faturar, importar os itens, entender o aviso de impostos, finalizar sem transmitir e saber o que é do responsável fiscal.' },
     objetivo: 'Provar que o pedido vira nota com cliente, CFOP, parcelas e impostos corretos, que a finalização trava a nota e atualiza pedido e estoque, e reconhecer o que só o responsável fiscal pode fazer.',
     prerequisitos: [
       { t: 'Ambiente fiscal em **Homologação** (a nota mostra a faixa "Ambiente NF-e: HOMOLOGAÇÃO — sem validade fiscal").', s: 'v' },
@@ -86,6 +87,7 @@ export const FLUXOS_GESTAO = [
     titulo: 'Fluxo financeiro: títulos, baixa, saldos e fluxo de caixa',
     rodape: 'Fluxos do Consultor · Faktory Flow v1.22 · geração de títulos, baixa parcial/total, estorno, saldos, fluxo de caixa, DRE e painel executados em 20/10/2026 (dev); "Gerar Títulos" exigiu trocar o tipo do meio "Duplicata Mercantil" de Boleto para Outros',
     subtitulo: 'Pedido → Gerar Títulos → Contas a Receber → baixa (parcial e total) → estorno → Saldos → Fluxo de Caixa → DRE e painel da obra. Inclui o pagamento de um título a pagar.',
+    video: { id: 'consultor-08-financeiro', titulo: 'Títulos, baixa e saldos', resumo: 'De onde nascem os títulos (pedido ou nota), a baixa parcial com o título residual e o saldo da conta antes e depois.' },
     objetivo: 'Provar que os títulos nascem do pedido (ou da nota/recebimento), que a baixa move o saldo da conta e o fluxo de caixa, e que os painéis de gestão mostram o mesmo número.',
     prerequisitos: [
       { t: '**Meios de pagamento** conferidos em `Configurações > Meios de Pagamento`: o **Tipo** de cada meio. Meios de tipo **Boleto** exigem conta emissora; no ambiente de teste, até "Duplicata Mercantil" estava como Boleto.', s: 'v', campo: 'Meio usado / tipo' },
@@ -160,6 +162,7 @@ export const FLUXOS_GESTAO = [
     titulo: 'Fluxo de projetos e obras: cadastro, estágios, painéis e diário',
     rodape: 'Fluxos do Consultor · Faktory Flow v1.22 · roteiro de validação manual baseado no plano de QA de Projetos (roteiros 01 a 12); cadastro de projeto visto em 19/10/2026',
     subtitulo: 'A obra é o projeto que amarra pedido, produção, compras, estoque, serviços, notas e financeiro. Este roteiro cria uma obra, a liga a um pedido e percorre os painéis para ver se tudo chega a ela.',
+    video: { id: 'consultor-09-projetos', titulo: 'A obra que amarra todos os documentos', resumo: 'O campo Projeto, ligar o pedido antes de faturar, estágios e etapas, e o painel financeiro da obra.' },
     objetivo: 'Provar que a obra de teste recebe os documentos dos outros módulos, que estágios e etapas filtram as listagens e que os painéis (financeiro, progresso, resultado) mostram números coerentes.',
     prerequisitos: [
       { t: 'Cliente de teste e permissão para criar projetos, estágios e etapas.', s: 'd' },
@@ -230,6 +233,7 @@ export const FLUXOS_GESTAO = [
     titulo: 'Fluxo de tarefas: quadro, cartão, regras e colaboração',
     rodape: 'Fluxos do Consultor · Faktory Flow v1.22 · roteiro de validação manual baseado no plano de QA de Tarefas (roteiros 01, 02, 04 e 05)',
     subtitulo: 'Quadro com listas → cartão com responsável e prazo → limite de trabalho (WIP) → status → dependências → comentários, checklist e anexos → visões e vínculos com o ERP.',
+    video: { id: 'consultor-10-tarefas', titulo: 'Quadro, cartão e responsável', resumo: 'O quadro sem listas, o cartão que só aparece com responsável, o Término Previsto e o arquivar que não apaga.' },
     objetivo: 'Provar que um quadro respeita as regras de lista, WIP, status e dependência por todas as telas, e que a colaboração (comentário, menção, anexo) funciona sem duplicar nem vazar entre empresas.',
     prerequisitos: [
       { t: 'Usuários de teste: gestor, executor e observador (cada um com uma permissão diferente) e uma segunda sessão para ver a atualização em tempo real.', s: 'd' },

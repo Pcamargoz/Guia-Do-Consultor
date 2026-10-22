@@ -6,6 +6,7 @@
 export const CONSULTOR = {
   id: 'fluxo-completo', arquivo: 'teste-fluxo-pedido-ate-gestao.html', etiqueta: 'Consultor · Teste de fluxo',
   titulo: 'Teste do fluxo completo: do pedido à gestão',
+  video: { id: 'consultor-fluxo-completo', titulo: 'Do lead à gestão, módulo por módulo', resumo: 'O que cada módulo entrega ao seguinte, o que nasce sozinho e a ordem que evita retrabalho.' },
   rodape: 'Teste de Fluxo · Consultor · Faktory Flow v1.22.12 · roteiro executado em 16 e 19/10/2026 (dev METALURGICA TEST)',
   subtitulo: 'Roteiro para o consultor provar, num ambiente de teste, que um pedido atravessa todos os módulos e chega aos indicadores de gestão com os números certos. A ordem abaixo é a que o sistema exige na prática. Anote o número de cada registro: ele serve para conferir os reflexos e para a limpeza no fim.',
   objetivo: 'Executar o ciclo completo com registros "TESTE FLUXO CONSULTOR" — lead, pedido, medição, OP, nota, expedição, títulos e indicadores — confirmando em cada passagem que o módulo seguinte recebeu a informação, e registrar os bloqueios e defeitos encontrados.',

@@ -99,6 +99,8 @@ main{min-width:0}
 .cont{margin-left:auto;font:700 12px var(--display);color:var(--muted);font-variant-numeric:tabular-nums}
 .secao > p{color:var(--muted)}
 .dica{font-size:12.5px;color:var(--muted);margin-top:6px}
+.secao-video video{display:block;width:100%;aspect-ratio:16/9;margin-top:12px;border-radius:var(--r-md, 12px);background:#0C2438;border:1px solid var(--line)}
+@media print{.secao-video{display:none}}
 
 .fluxo + .fluxo{margin-top:22px;padding-top:20px;border-top:1px dashed var(--line2)}
 .fluxo h3{display:flex;align-items:center;gap:8px;font-size:15.5px;color:var(--p900)}

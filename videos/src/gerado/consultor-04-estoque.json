@@ -1,0 +1,365 @@
+{
+ "id": "consultor-04-estoque",
+ "titulo": "Fluxo de estoque",
+ "subtitulo": "Movimento, transferência, inventário e empréstimo",
+ "trilha": "Fluxos dos consultores",
+ "proximo": "Fluxo de produção",
+ "icone": "estoque",
+ "trechos": [
+  {
+   "id": "01",
+   "cena": "abertura",
+   "fala": "O estoque é onde todos os outros módulos se encontram: compra, produção, nota e expedição. Neste vídeo, vamos entender de onde vem o saldo e as quatro regras que mais pegam o consultor.",
+   "inicio": 0,
+   "duracao": 14.693,
+   "fala_s": 14.143,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "02",
+   "cena": "status",
+   "tituloCena": "De onde vem o saldo",
+   "etapas": [
+    "Movimento",
+    "Saldo",
+    "Disponível",
+    "Inventário"
+   ],
+   "destaque": 0,
+   "fala": "No Faktory Flow, ninguém digita o saldo: ele nasce dos movimentos. Entrada, ajuste, transferência, requisição, empréstimo e descarte.",
+   "inicio": 14.693,
+   "duracao": 8.264,
+   "fala_s": 7.714,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "03",
+   "cena": "status",
+   "destaque": 3,
+   "fala": "Os movimentos formam o saldo de cada local. Do saldo sai o disponível, que desconta as reservas. E o inventário confere tudo contra a contagem física.",
+   "inicio": 22.957,
+   "duracao": 11.693,
+   "fala_s": 11.143,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "04",
+   "cena": "regra",
+   "n": 1,
+   "titulo": "O saldo nasce de movimentos",
+   "icone": "estoque",
+   "texto": "Entrada manual, ajustes, transferência, requisição, devolução, empréstimo e descarte, além das entradas de recebimento e de produção.",
+   "fonte": "regra-estoque-saldo-nasce-de-movimentos",
+   "fala": "Primeira regra. O saldo nasce de movimentos. No novo movimento, a empresa é obrigatória e não vem preenchida, e você escolhe o local de destino. Recebimento e produção também lançam movimentos sozinhos.",
+   "inicio": 34.65,
+   "duracao": 14.264,
+   "fala_s": 13.714,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "05",
+   "cena": "regra",
+   "n": 2,
+   "titulo": "Transferência pendente reserva o disponível",
+   "icone": "seta",
+   "texto": "Em rascunho, a transferência não baixa o saldo, mas reserva: o disponível cai. Confirmar movimenta; excluir libera.",
+   "fonte": "regra-estoque-transferencia-pendente-reserva-o-disponivel",
+   "fala": "Segunda. Uma transferência em rascunho não baixa o saldo da origem, mas reserva a quantidade: o disponível cai e o saldo fica igual. Confirmar movimenta de verdade. Excluir libera a reserva.",
+   "inicio": 48.914,
+   "duracao": 13.836,
+   "fala_s": 13.286,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "06",
+   "cena": "regra",
+   "n": 3,
+   "titulo": "Inventário congela o local",
+   "icone": "cadeado",
+   "texto": "Iniciar fotografa o saldo e trava o local. A segunda contagem e a aprovação são de outra pessoa, até para Super Usuário.",
+   "fonte": "regra-estoque-inventario-congela-o-local-e-exige-outra-pessoa",
+   "fala": "Terceira. Iniciar um inventário fotografa o saldo e congela o local: nenhum movimento entra ali. A segunda contagem e a aprovação precisam ser de outra pessoa, regra que vale até para o Super Usuário.",
+   "inicio": 62.75,
+   "duracao": 15.121,
+   "fala_s": 14.571,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "07",
+   "cena": "regra",
+   "n": 4,
+   "titulo": "A nota finalizada baixa o estoque",
+   "icone": "nota",
+   "texto": "Na v1.22.13, finalizar a NF gera a saída Expedição (PV), mesmo sem saldo: o item pode ficar negativo.",
+   "fonte": "regra-faturamento-finalizar-nf-requisitos",
+   "fala": "Quarta, e ela é nova nesta versão. Quando a nota fiscal é finalizada, o sistema lança uma saída do tipo expedição. E ele faz isso mesmo sem saldo: o item pode ficar negativo. Confira o saldo antes de faturar.",
+   "inicio": 77.871,
+   "duracao": 17.264,
+   "fala_s": 16.714,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "08",
+   "cena": "tela",
+   "captura": "01-novo-movimento",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "rotulo": "Estoque › Movimentos › Novo",
+   "fala": "Na prática: no novo movimento, escolha o tipo, a empresa, que vem vazia, e o local de destino.",
+   "inicio": 95.135,
+   "duracao": 8.264,
+   "fala_s": 7.714,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/consultor-04-estoque/01-novo-movimento.png",
+   "caixas": [
+    {
+     "x": 438,
+     "y": 323,
+     "w": 274,
+     "h": 24
+    },
+    {
+     "x": 385,
+     "y": 705,
+     "w": 469,
+     "h": 19
+    },
+    {
+     "x": 385,
+     "y": 926,
+     "w": 713,
+     "h": 19
+    }
+   ]
+  },
+  {
+   "id": "09",
+   "cena": "tela",
+   "captura": "02-saldo",
+   "focos": [
+    1,
+    0
+   ],
+   "rotulo": "Estoque › Saldo",
+   "caixasExtras": [
+    {
+     "x": 1335,
+     "y": 628,
+     "w": 62,
+     "h": 34
+    },
+    {
+     "x": 443,
+     "y": 236,
+     "w": 155,
+     "h": 26
+    }
+   ],
+   "fala": "Em Saldo, você vê o saldo e o disponível de cada material, por local. Repare neste item negativo, e no aviso no alto: foi a saída da nota fiscal.",
+   "inicio": 103.399,
+   "duracao": 12.979,
+   "fala_s": 12.429,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/consultor-04-estoque/02-saldo.png",
+   "caixas": [
+    {
+     "x": 521,
+     "y": 31,
+     "w": 45,
+     "h": 24
+    },
+    {
+     "x": 1414,
+     "y": 441,
+     "w": 90,
+     "h": 19
+    },
+    {
+     "x": 1335,
+     "y": 628,
+     "w": 62,
+     "h": 34
+    },
+    {
+     "x": 443,
+     "y": 236,
+     "w": 155,
+     "h": 26
+    }
+   ]
+  },
+  {
+   "id": "10",
+   "cena": "tela",
+   "captura": "03-saida-nf",
+   "focos": [
+    1,
+    2
+   ],
+   "rotulo": "Estoque › Movimentos",
+   "fala": "Nos movimentos, lá está ela: saída de expedição, com origem na nota, no almoxarifado central.",
+   "inicio": 116.378,
+   "duracao": 6.979,
+   "fala_s": 6.429,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/consultor-04-estoque/03-saida-nf.png",
+   "caixas": [
+    {
+     "x": 367,
+     "y": 733,
+     "w": 116,
+     "h": 108
+    },
+    {
+     "x": 769,
+     "y": 791,
+     "w": 96,
+     "h": 20
+    },
+    {
+     "x": 906,
+     "y": 733,
+     "w": 207,
+     "h": 108
+    }
+   ]
+  },
+  {
+   "id": "11",
+   "cena": "tela",
+   "captura": "06-transferencias",
+   "focos": [
+    0,
+    1
+   ],
+   "rotulo": "Estoque › Transferências",
+   "fala": "Em Transferências, a própria tela explica: confirme para movimentar o saldo, ou exclua para liberar a reserva.",
+   "inicio": 123.357,
+   "duracao": 7.836,
+   "fala_s": 7.286,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/consultor-04-estoque/06-transferencias.png",
+   "caixas": [
+    {
+     "x": 845,
+     "y": 691,
+     "w": 538,
+     "h": 96
+    },
+    {
+     "x": 1211,
+     "y": 379,
+     "w": 288,
+     "h": 28
+    }
+   ]
+  },
+  {
+   "id": "12",
+   "cena": "tela",
+   "captura": "04-inventarios",
+   "focos": [
+    0,
+    1
+   ],
+   "rotulo": "Estoque › Inventários",
+   "fala": "Estes inventários foram cancelados com motivo: cancelar libera o local sem gerar ajuste. Para aprovar, seria preciso uma segunda pessoa.",
+   "inicio": 131.193,
+   "duracao": 9.121,
+   "fala_s": 8.571,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/consultor-04-estoque/04-inventarios.png",
+   "caixas": [
+    {
+     "x": 348,
+     "y": 434,
+     "w": 107,
+     "h": 59
+    },
+    {
+     "x": 469,
+     "y": 450,
+     "w": 100,
+     "h": 26
+    }
+   ]
+  },
+  {
+   "id": "13",
+   "cena": "tela",
+   "captura": "05-emprestimo",
+   "focos": [
+    0,
+    1
+   ],
+   "rotulo": "Estoque › Empréstimos",
+   "fala": "E o empréstimo sai de um local para outro com data de devolução. Ele pode voltar em partes, e aqui já está devolvido.",
+   "inicio": 140.314,
+   "duracao": 10.407,
+   "fala_s": 9.857,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/consultor-04-estoque/05-emprestimo.png",
+   "caixas": [
+    {
+     "x": 348,
+     "y": 631,
+     "w": 87,
+     "h": 63
+    },
+    {
+     "x": 1227,
+     "y": 650,
+     "w": 95,
+     "h": 26
+    }
+   ]
+  },
+  {
+   "id": "14",
+   "cena": "alertas",
+   "itens": [
+    "Sem almoxarifado central ativo, recebimento, produção e nota travam.",
+    "A segunda contagem do inventário diz prossiga, mas recusa o mesmo usuário.",
+    "Material reservado ainda pode sair: confira o disponível."
+   ],
+   "fala": "Três cuidados. Sem almoxarifado central ativo, recebimento, produção e nota fiscal travam. A segunda contagem do inventário pode dizer prossiga e depois recusar o mesmo usuário. E, nesta versão, uma saída ainda passa por cima de material reservado: confira o disponível.",
+   "inicio": 150.721,
+   "duracao": 18.121,
+   "fala_s": 17.571,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "15",
+   "cena": "fechamento",
+   "topicos": [
+    "Saldo nasce de movimentos",
+    "Transferência pendente reserva",
+    "Inventário e aprovação: outra pessoa"
+   ],
+   "fala": "Resumindo: o saldo nasce de movimentos. A transferência pendente reserva o disponível. E o inventário pede outra pessoa para contar e aprovar. No próximo vídeo, a produção.",
+   "inicio": 168.842,
+   "duracao": 12.121,
+   "fala_s": 11.571,
+   "audio": null,
+   "legendas": null
+  }
+ ],
+ "duracaoTotal": 182.463
+}

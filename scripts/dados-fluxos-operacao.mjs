@@ -12,6 +12,7 @@ export const FLUXOS_OPERACAO = [
     titulo: 'Fluxo de estoque: movimento, transferência, reserva, inventário e empréstimo',
     rodape: 'Fluxos do Consultor · Faktory Flow v1.22.12 · transferência, reserva, inventário (até a contagem), empréstimo, reposição e balanço executados em 20/10/2026 (dev); auditoria e aprovação do inventário pendentes',
     subtitulo: 'O saldo nunca é digitado: ele nasce de movimentos. Este roteiro leva um produto de teste por entrada, ajuste, transferência, reserva, inventário e empréstimo, conferindo saldo, reservado e disponível a cada passo.',
+    video: { id: 'consultor-04-estoque', titulo: 'Movimento, transferência, inventário e empréstimo', resumo: 'De onde vem o saldo, a reserva da transferência pendente, o inventário que congela o local e a saída que a nota fiscal gera.' },
     objetivo: 'Provar que cada operação de estoque muda o saldo (e o disponível) do jeito certo, respeita as travas (saldo, reserva, inventário, mês encerrado) e deixa rastro no extrato — e que o balanço fecha ao final.',
     prerequisitos: [
       { t: 'Produto de teste de **uso controlado em estoque** (ex.: um insumo) e dois locais ativos em `Estoque > Locais`: o **almoxarifado central** e um segundo local (obra ou almoxarifado de teste).', s: 'v', campo: 'Produto / locais' },
@@ -107,6 +108,7 @@ export const FLUXOS_OPERACAO = [
     titulo: 'Fluxo de produção: estrutura, ordem, apontamento e entrada do produto acabado',
     rodape: 'Fluxos do Consultor · Faktory Flow v1.22.12 · OP-000109 (19/10) e OP-000110 e 000111 (21/10): estrutura, requisições, baixa, estorno, conclusão, entrada do produto acabado e separação executados; o apontamento ainda não finaliza',
     subtitulo: 'Cadastros-base → estrutura de produto → ordem de produção → requisição e baixa de material → apontamento → conclusão → entrada no estoque → custo. Mostra o que precisa existir antes e o que cada botão grava.',
+    video: { id: 'consultor-05-producao', titulo: 'Da estrutura ao produto acabado', resumo: 'A OP que copia o item mas não a quantidade, as requisições da estrutura, a cor do paramétrico e a entrada do acabado com custo.' },
     objetivo: 'Provar que uma OP nasce com processo e materiais corretos, baixa os insumos, registra as horas, e entrega o produto acabado no estoque com custo real — e conhecer os alertas que travam a conclusão.',
     prerequisitos: [
       { t: '**Etapas**, **processo** e **linha de produção** cadastrados (`Produção > Configurações`): ex.: Corte, Usinagem e Montagem com custo/hora; processo "Janela padrão" com as 3 etapas na ordem.', s: 'd' },
@@ -194,6 +196,7 @@ export const FLUXOS_OPERACAO = [
     titulo: 'Fluxo de expedição: da carga à entrega, ocorrência e devolução',
     rodape: 'Fluxos do Consultor · Faktory Flow v1.22 · caminho feliz executado em 19/10/2026 (carga 20261000001); ocorrências e devolução baseadas no plano de QA de Expedição (documentos 07, 09 e 10)',
     subtitulo: 'Liberar o pedido → montar e fechar a carga → separação, conferência e carregamento → rota → entrega. Depois o que dá errado: ocorrência, devolução e re-expedição.',
+    video: { id: 'consultor-06-expedicao', titulo: 'Da carga à entrega', resumo: 'Liberar só depois de faturar, os checkpoints da empresa, a bipagem até Em Rota e o que a ocorrência e a devolução fazem.' },
     objetivo: 'Provar que um pedido faturado vira carga, passa pelos checkpoints do pátio e é entregue com histórico — e que ocorrências e devoluções devolvem o pedido à fila sem duplicar saldo.',
     prerequisitos: [
       { t: 'Pedido de venda **faturado** (a opção "Liberar para Expedição" só aparece depois de faturar; a tela de carga só lista pedidos Faturados/Liberados).', s: 'v', campo: 'Nº do pedido' },

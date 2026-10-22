@@ -11,6 +11,7 @@ export const FLUXOS_PRINCIPAIS = [
     id: 'fluxo-vendas', arquivo: 'fluxo-principal-vendas.html', etiqueta: 'Fluxo principal · Vendas',
     titulo: 'Fluxo principal de Vendas: do pedido à operação', resumo: 'Criar, ajustar e acompanhar o seu pedido de venda até a carteira.',
     subtitulo: 'O ciclo do pedido na prática: ter um pedido, ajustá-lo, entender o menu de ações e achá-lo nos painéis. Vendas é um dos módulos mais maduros do Faktory Flow: siga a ordem.',
+    video: { id: 'fluxo-1-vendas', titulo: 'O ciclo do pedido de venda', resumo: 'Conceito, as quatro regras que mais travam e o pedido criado na tela, em cerca de 3 minutos.' },
     objetivo: 'Conduzir um pedido de venda de treino do cadastro até a porta da operação, sabendo o que cada status e cada botão do menu `⋯` fazem, e conferir o pedido nos painéis comerciais.',
     prerequisitos: [
       { t: 'Checklists 01, 02 e 04 concluídos (o 04 cria o seu primeiro pedido).', s: 'v' },
@@ -87,6 +88,7 @@ export const FLUXOS_PRINCIPAIS = [
     id: 'fluxo-faturamento-estagiario', arquivo: 'fluxo-principal-faturamento.html', etiqueta: 'Fluxo principal · Faturamento',
     titulo: 'Fluxo principal de Faturamento: do pedido à nota finalizada', resumo: 'Faturar o seu pedido em homologação e conferir a nota, sem transmitir.',
     subtitulo: 'Do pedido à nota fiscal em ambiente de homologação: faturar, conferir, finalizar sem transmitir e ver o reflexo no pedido e no estoque. Faturamento é um dos módulos mais maduros do Faktory Flow.',
+    video: { id: 'consultor-07-faturamento', titulo: 'Do pedido à nota finalizada', resumo: 'O vídeo do fluxo dos consultores, com o conceito e as regras que este checklist cobra.' },
     objetivo: 'Faturar o seu pedido de treino, conferir a nota antes de finalizar, finalizar **sem transmitir** com a autorização do supervisor e saber o que fica por conta do responsável fiscal.',
     prerequisitos: [
       { t: 'Checklists 04 e 12 e o Fluxo principal de Vendas concluídos.', s: 'v' },
@@ -164,6 +166,7 @@ export const FLUXOS_PRINCIPAIS = [
     id: 'fluxo-financeiro-estagiario', arquivo: 'fluxo-principal-financeiro.html', etiqueta: 'Fluxo principal · Financeiro',
     titulo: 'Fluxo principal do Financeiro: do título ao fluxo de caixa', resumo: 'Gerar os títulos do pedido, receber, conferir saldos e ler o fluxo de caixa.',
     subtitulo: 'Os títulos nascem do pedido, a baixa move o saldo da conta e o fluxo de caixa mostra o resultado. Financeiro é um dos módulos mais maduros do Faktory Flow. Só com conta bancária e valores de teste.',
+    video: { id: 'consultor-08-financeiro', titulo: 'Títulos, baixa e saldos', resumo: 'O vídeo do fluxo dos consultores, com o conceito e as regras que este checklist cobra.' },
     objetivo: 'Gerar os títulos do seu pedido, receber (baixa parcial, total e estorno) numa conta de teste, conferir saldos e extrato e ler o fluxo de caixa, a DRE e o painel da obra sabendo onde os números divergem.',
     prerequisitos: [
       { t: 'Checklists 04 e 13 e o Fluxo principal de Faturamento concluídos.', s: 'v' },

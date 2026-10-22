@@ -1,0 +1,203 @@
+{
+  "id": "consultor-07-faturamento",
+  "titulo": "Faturamento e fiscal",
+  "subtitulo": "Do pedido à nota finalizada, sem transmitir",
+  "trilha": "Fluxos dos consultores",
+  "proximo": "Fluxo financeiro",
+  "icone": "nota",
+  "trechos": [
+    {
+      "id": "01",
+      "cena": "abertura",
+      "fala": "Depois do pedido vem a nota fiscal. Neste vídeo, vamos faturar um pedido, conferir a nota e entender o que é do consultor e o que é decisão do responsável fiscal."
+    },
+    {
+      "id": "02",
+      "cena": "status",
+      "tituloCena": "Do pedido à nota",
+      "etapas": [
+        "Pedido em aberto",
+        "Faturar",
+        "Nota salva",
+        "Finalizada",
+        "Transmitida"
+      ],
+      "destaque": 0,
+      "fala": "O ponto de partida é um pedido em aberto, já com itens, parcelas e CFOP certos."
+    },
+    {
+      "id": "03",
+      "cena": "status",
+      "destaque": 3,
+      "fala": "Faturar abre uma nota nova ligada ao pedido. Você salva, confere e finaliza. A transmissão para a SEFAZ é a última etapa, e ela não é do consultor: é do responsável fiscal."
+    },
+    {
+      "id": "04",
+      "cena": "regra",
+      "n": 1,
+      "titulo": "Faturar abre uma NF-e ligada ao pedido",
+      "icone": "nota",
+      "texto": "A nota vem com cliente, CFOP, condição e parcelas do pedido. Os itens entram pelo diálogo Selecionar Itens para Importar.",
+      "fonte": "regra-faturamento-faturar-abre-nova-nfe-ligada-ao-pedido",
+      "fala": "Primeira regra. Faturar abre uma nova NF-e com empresa, cliente, CFOP, condição e parcelas do pedido, e o número do pedido fica vinculado. A nota vem vazia até você importar os itens, com recalcular impostos."
+    },
+    {
+      "id": "05",
+      "cena": "regra",
+      "n": 2,
+      "titulo": "Salvou a nota, o pedido é Faturado",
+      "icone": "check",
+      "texto": "O pedido muda para Faturado ao salvar a nota, mesmo com a nota Em Aberto.",
+      "fonte": "regra-vendas-pedido-fica-faturado-ao-salvar-a-nota",
+      "fala": "Segunda. Assim que a nota é salva, o pedido passa a Faturado, mesmo com a nota ainda em aberto. Por isso, o status real da nota você confere em Faturamento, Notas Fiscais."
+    },
+    {
+      "id": "06",
+      "cena": "regra",
+      "n": 3,
+      "titulo": "Finalizar exige almoxarifado ativo",
+      "icone": "estoque",
+      "texto": "Sem almoxarifado central ativo (ou local no projeto) o Finalizar NF recusa. Na v1.22.13 ele também baixa o estoque, mesmo sem saldo.",
+      "fonte": "regra-faturamento-finalizar-nf-requisitos",
+      "fala": "Terceira. Para finalizar, a empresa precisa de um almoxarifado central ativo, ou o projeto precisa de um local de estoque. Sem isso, o Finalizar NF recusa. E, ao finalizar, a nota baixa o estoque."
+    },
+    {
+      "id": "07",
+      "cena": "regra",
+      "n": 4,
+      "titulo": "A lista abre só com as notas Em Aberto",
+      "icone": "funil",
+      "texto": "Os cartões de totais seguem o filtro de status. Nota finalizada ou autorizada só aparece trocando o filtro.",
+      "fonte": "regra-faturamento-lista-de-notas-filtro-padrao-e-menu",
+      "fala": "Quarta. A lista de notas abre filtrada em Em Aberto, e os cartões de totais seguem esse filtro. Uma nota finalizada só aparece quando você troca o filtro de status."
+    },
+    {
+      "id": "08",
+      "cena": "tela",
+      "captura": "01-menu-faturar",
+      "foco": 0,
+      "rotulo": "Pedido › ⋯ › Faturar",
+      "fala": "Na prática: no menu do pedido em aberto, clique em Faturar."
+    },
+    {
+      "id": "09",
+      "cena": "tela",
+      "captura": "02-importar",
+      "focos": [
+        1,
+        0
+      ],
+      "rotulo": "Selecionar Itens para Importar",
+      "fala": "A nova NF-e abre com o diálogo para importar os itens do pedido. Deixe marcado recalcular impostos e importe."
+    },
+    {
+      "id": "10",
+      "cena": "tela",
+      "captura": "03-nova-nfe",
+      "focos": [
+        0,
+        2,
+        1
+      ],
+      "rotulo": "Nova NF-e › Homologação",
+      "caixasExtras": [
+        {
+          "x": 365,
+          "y": 927,
+          "w": 1025,
+          "h": 150
+        }
+      ],
+      "fala": "Repare na faixa de homologação: a nota não tem validade fiscal. E aqui está o aviso de impostos não calculados, com o motivo: falta o CST de PIS e COFINS na NCM. Mesmo assim, dá para salvar em Salvar e Permanecer."
+    },
+    {
+      "id": "11",
+      "cena": "tela",
+      "captura": "04-lista-notas",
+      "focos": [
+        3,
+        0,
+        1,
+        4
+      ],
+      "rotulo": "Faturamento › Notas Fiscais",
+      "caixasExtras": [
+        {
+          "x": 1752,
+          "y": 665,
+          "w": 36,
+          "h": 36
+        }
+      ],
+      "fala": "Em Faturamento, Notas Fiscais, aba NF-e, a nota aparece em aberto. No menu dela estão o Finalizar NF e o Preview da DANFE, para conferir. E, ao lado, o avião de papel: esse é o Transmitir."
+    },
+    {
+      "id": "11b",
+      "cena": "tela",
+      "captura": "05-finalizar",
+      "focos": [
+        1,
+        0
+      ],
+      "rotulo": "Finalizar NF",
+      "fala": "Com a autorização, clique em Finalizar NF e confirme. A nota fica só para visualização, e o pedido sai da lista de em aberto: agora ele está faturado."
+    },
+    {
+      "id": "11c",
+      "cena": "tela",
+      "captura": "06-saida-estoque",
+      "focos": [
+        1,
+        2,
+        0
+      ],
+      "rotulo": "Estoque › Movimentos",
+      "fala": "E a finalização mexe no estoque: nasce uma saída do tipo expedição, com origem na nota, no almoxarifado central."
+    },
+    {
+      "id": "11d",
+      "cena": "tela",
+      "captura": "07-saldo-negativo",
+      "focos": [
+        2,
+        3
+      ],
+      "rotulo": "Estoque › Saldo",
+      "caixasExtras": [
+        {
+          "x": 1335,
+          "y": 628,
+          "w": 62,
+          "h": 34
+        },
+        {
+          "x": 443,
+          "y": 236,
+          "w": 155,
+          "h": 26
+        }
+      ],
+      "fala": "Atenção: nesta versão, ela baixa mesmo sem saldo. Aqui o item ficou negativo. Por isso, confira o saldo antes de finalizar."
+    },
+    {
+      "id": "12",
+      "cena": "alertas",
+      "itens": [
+        "O avião de papel na linha é Transmitir: é irreversível, mesmo em homologação.",
+        "Excluir fica no mesmo menu de Ver Timeline e Anexos.",
+        "Transmitir, cancelar e inutilizar: só o responsável fiscal."
+      ],
+      "fala": "Três cuidados. O avião de papel na linha da nota é o Transmitir, e ele é irreversível, mesmo em homologação. O Excluir fica no mesmo menu do Ver Timeline. E transmitir, cancelar ou inutilizar numeração é sempre decisão do responsável fiscal."
+    },
+    {
+      "id": "13",
+      "cena": "fechamento",
+      "topicos": [
+        "Importe os itens com recalcular impostos",
+        "Nota salva já deixa o pedido Faturado",
+        "Transmitir é do responsável fiscal"
+      ],
+      "fala": "Resumindo: importe os itens com recalcular impostos. A nota salva já deixa o pedido faturado. E a transmissão é do responsável fiscal. No próximo vídeo, o financeiro: títulos, baixa e fluxo de caixa."
+    }
+  ]
+}

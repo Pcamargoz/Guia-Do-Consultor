@@ -228,6 +228,8 @@
     $('[data-busca]').addEventListener('input', (e) => { busca = e.target.value; renderGrade(); });
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && aberto && !painel.hidden) fechar(); });
     document.addEventListener('ff:aba', (e) => { if (e.detail?.aba === 'checklist' && !aberto) renderGrade(); });
+    // Outra aba (ex.: Vídeos de fluxo) pede para abrir um checklist específico.
+    document.addEventListener('ff:abrir-checklist', (e) => { if (e.detail?.arquivo) abrir(e.detail.arquivo); });
 
     renderFiltros();
     renderGrade();

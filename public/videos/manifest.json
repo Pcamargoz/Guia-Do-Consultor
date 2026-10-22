@@ -1,0 +1,132 @@
+{
+  "atualizado": "2026-10-22",
+  "trilhas": [
+    {
+      "id": "fluxos",
+      "nome": "Fluxos principais do estagiário",
+      "descricao": "O conceito e as regras de negócio de cada fluxo, com as telas reais do Faktory Flow. Assista antes de fazer o checklist do fluxo.",
+      "videos": [
+        {
+          "id": "fluxo-1-vendas",
+          "numero": "Fluxo 1",
+          "titulo": "Vendas: o ciclo do pedido de venda",
+          "resumo": "O que é o pedido, os status, as quatro regras que mais travam e o pedido criado na tela.",
+          "duracao": "",
+          "status": "em-producao",
+          "checklist": "estagiarios/fluxo-principal-vendas.html"
+        },
+        {
+          "id": "consultor-07-faturamento",
+          "numero": "Fluxo 2",
+          "titulo": "Faturamento: do pedido à nota finalizada",
+          "resumo": "Faturar o pedido, conferir a nota e finalizar sem transmitir.",
+          "status": "em-producao",
+          "checklist": "estagiarios/fluxo-principal-faturamento.html"
+        },
+        {
+          "id": "consultor-08-financeiro",
+          "numero": "Fluxo 3",
+          "titulo": "Financeiro: do título ao fluxo de caixa",
+          "resumo": "Gerar os títulos, receber e ler o fluxo de caixa.",
+          "status": "em-producao",
+          "checklist": "estagiarios/fluxo-principal-financeiro.html"
+        }
+      ]
+    },
+    {
+      "id": "consultores",
+      "nome": "Fluxos dos consultores",
+      "descricao": "Para nós, consultores: o fluxo completo de cada módulo, com as regras de negócio, o que configurar antes e onde o sistema costuma travar. Telas reais do ambiente de teste.",
+      "videos": [
+        {
+          "id": "consultor-01-suprimentos",
+          "numero": "Fluxo 01",
+          "titulo": "Suprimentos: da solicitação ao pagamento",
+          "resumo": "Cotação opcional, a natureza da operação que define o CFOP, a nota com dois números e a linha do tempo do pedido.",
+          "status": "em-producao",
+          "checklist": "consultores/fluxo-01-suprimentos.html"
+        },
+        {
+          "id": "consultor-02-servicos",
+          "numero": "Fluxo 02",
+          "titulo": "Serviços de campo: da medição à assistência",
+          "resumo": "Empresa e técnico na medição, o conferente diferente, as passagens por botão e a ordem dos aceites.",
+          "status": "em-producao",
+          "checklist": "consultores/fluxo-02-servicos-campo.html"
+        },
+        {
+          "id": "consultor-03-comercial",
+          "numero": "Fluxo 03",
+          "titulo": "Comercial: do lead ao pedido de venda",
+          "resumo": "As quatro regras que travam o CRM e o caminho real, do Kanban à oportunidade ganha.",
+          "status": "em-producao",
+          "checklist": "consultores/fluxo-03-comercial.html"
+        },
+        {
+          "id": "consultor-04-estoque",
+          "numero": "Fluxo 04",
+          "titulo": "Estoque: movimento, reserva e inventário",
+          "resumo": "Movimentos, transferência, reserva, inventário e empréstimo.",
+          "status": "em-producao",
+          "checklist": "consultores/fluxo-04-estoque.html"
+        },
+        {
+          "id": "consultor-05-producao",
+          "numero": "Fluxo 05",
+          "titulo": "Produção: da estrutura ao produto acabado",
+          "resumo": "Estrutura, ordem de produção, apontamento e entrada do acabado.",
+          "status": "em-producao",
+          "checklist": "consultores/fluxo-05-producao.html"
+        },
+        {
+          "id": "consultor-06-expedicao",
+          "numero": "Fluxo 06",
+          "titulo": "Expedição: da carga à entrega",
+          "resumo": "Carga, entrega, ocorrência e devolução.",
+          "status": "em-producao",
+          "checklist": "consultores/fluxo-06-expedicao.html"
+        },
+        {
+          "id": "consultor-07-faturamento",
+          "numero": "Fluxo 07",
+          "titulo": "Faturamento e fiscal: do pedido à nota finalizada",
+          "resumo": "Faturar, importar os itens, o aviso de impostos, finalizar sem transmitir e o que é do responsável fiscal.",
+          "status": "em-producao",
+          "checklist": "consultores/fluxo-07-faturamento-fiscal.html"
+        },
+        {
+          "id": "consultor-08-financeiro",
+          "numero": "Fluxo 08",
+          "titulo": "Financeiro: títulos, baixa e saldos",
+          "resumo": "De onde nascem os títulos, a baixa parcial com o título residual e o saldo antes e depois.",
+          "status": "em-producao",
+          "checklist": "consultores/fluxo-08-financeiro.html"
+        },
+        {
+          "id": "consultor-09-projetos",
+          "numero": "Fluxo 09",
+          "titulo": "Projetos e obras",
+          "resumo": "Cadastro, estágios, painéis e diário de obra.",
+          "status": "em-producao",
+          "checklist": "consultores/fluxo-09-projetos-obra.html"
+        },
+        {
+          "id": "consultor-10-tarefas",
+          "numero": "Fluxo 10",
+          "titulo": "Tarefas",
+          "resumo": "Quadro, cartão, regras e colaboração.",
+          "status": "em-producao",
+          "checklist": "consultores/fluxo-10-tarefas.html"
+        },
+        {
+          "id": "consultor-fluxo-completo",
+          "numero": "Teste completo",
+          "titulo": "Do pedido à gestão",
+          "resumo": "O fluxo inteiro, do CRM aos indicadores.",
+          "status": "em-producao",
+          "checklist": "consultores/teste-fluxo-pedido-ate-gestao.html"
+        }
+      ]
+    }
+  ]
+}

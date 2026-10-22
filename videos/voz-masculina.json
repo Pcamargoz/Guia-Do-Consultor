@@ -1,0 +1,6 @@
+{
+  "nome": "Voz desenhada do VoiceStudio (masculina, adulto, tom grave). A clonada (perfil 075893fe) excedeu o limite de 600 s por geração na CPU e derrubou o motor.",
+  "language": "pt",
+  "instruct": "male, middle-aged, low pitch",
+  "seed": 7
+}

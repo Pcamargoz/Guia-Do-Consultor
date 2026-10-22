@@ -22,6 +22,9 @@ const JS = await readFile(path.join(AQUI, 'checklist-modelo/comportamento.js'), 
 const LOGO = `data:image/png;base64,${(await readFile(path.join(RAIZ, 'public/assets/Logo Faktory Flow.png'))).toString('base64')}`;
 const FONTES = 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap';
 
+/* O bloco "Vídeo do fluxo" só entra quando o vídeo já foi publicado em public/videos (videos/scripts/render.mjs). */
+const temVideo = (c) => Boolean(c.video && existsSync(path.join(RAIZ, 'public/videos', `${c.video.id}.mp4`)));
+
 const esc = (v) => String(v ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 /* **negrito** e `Menu > Tela` dentro dos textos */
 const fmt = (v) => esc(v).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/`(.+?)`/g, '<span class="ui">$1</span>');
@@ -48,6 +51,7 @@ const ICONE = {
   limpar: svg('<path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/>'),
   tema: svg('<path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/>'),
   nota: svg('<path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/>'),
+  play: svg('<circle cx="12" cy="12" r="10"/><path d="m10 8 6 4-6 4Z"/>'),
   mapa: svg('<path d="M9 18 3 21V6l6-3 6 3 6-3v15l-6 3-6-3Z"/><path d="M9 3v15M15 6v15"/>'),
 };
 
@@ -155,6 +159,7 @@ function checklist(c, opcoes = {}) {
   const pend = (c.naoValidado || []).map((a) => `<li>${ICONE.pendente}<span>${fmt(a)}</span></li>`).join('');
 
   const indice = [
+    ...(temVideo(c) ? [{ id: 's-video', rotulo: 'Vídeo do fluxo' }] : []),
     { id: 's-objetivo', rotulo: 'Objetivo' },
     { id: 's-pre', rotulo: 'Pré-requisitos', grupo: true },
     ...c.fluxos.map((f, i) => ({ id: `fx-${i + 1}`, rotulo: f.titulo.replace(/^\d+\.\s*/, ''), grupo: true })),
@@ -168,7 +173,8 @@ ${heroi({
     etiqueta: c.etiqueta, titulo: c.titulo, subtitulo: c.subtitulo,
     chips: `<span class="chip">${ICONE.lista}<b id="contagem">0 de ${passos.length}</b> etapas</span><span class="chip">${ICONE.alvo}<b>${verificados}</b> de ${passos.length} conferidas no sistema</span><span class="chip" id="chipProblemas">${ICONE.bandeira}<b id="problemas">0</b> problemas</span>`,
   })}
-
+${temVideo(c) ? `
+<section class="secao secao-video" id="s-video"><h2>${ICONE.play}Vídeo do fluxo: ${esc(c.video.titulo)}</h2><p>${fmt(c.video.resumo)} Assista antes de começar: ele explica o conceito e as regras de negócio que os passos abaixo cobram.</p><video controls preload="none" playsinline poster="/videos/${esc(c.video.id)}.jpg" src="/videos/${esc(c.video.id)}.mp4"></video><p class="dica">Também está na aba <b>Vídeos de fluxo</b> do Guia do Consultor. A legenda vem embutida: dá para assistir sem som.</p></section>` : ''}
 <section class="secao" id="s-objetivo"><h2><span class="n">1</span>Objetivo</h2><p>${fmt(c.objetivo)}</p></section>
 
 <section class="secao" id="s-pre" data-grupo><h2><span class="n">2</span>Pré-requisitos <span class="cont"></span></h2><ul class="itens">${c.prerequisitos.map((p, i) => item(`pre-${i + 1}`, p, rotuloRes)).join('')}</ul></section>

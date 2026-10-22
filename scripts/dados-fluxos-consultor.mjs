@@ -8,6 +8,7 @@ export const FLUXOS = [
     titulo: 'Fluxo de suprimentos: da solicitação ao pagamento',
     rodape: 'Teste de Fluxo · Consultor · Faktory Flow v1.22.12 · executado em 19/10/2026 (dev METALURGICA TEST): SC-000289 → COT-000013 → PC-000009 → NR-000013 → título pago',
     subtitulo: 'Solicitação → cotação → pedido de compra → nota de recebimento → conferência → estoque → contas a pagar → pagamento. Cada etapa diz onde conferir o reflexo no módulo seguinte.',
+    video: { id: 'consultor-01-suprimentos', titulo: 'Da solicitação ao pagamento', resumo: 'Cotação opcional, a natureza da operação que define o CFOP, a nota com dois números (NF × NR) e a linha do tempo do pedido de compra.' },
     objetivo: 'Provar que uma necessidade de material vira pedido de compra, entra no estoque pelo recebimento e gera o título a pagar, até o pagamento aparecer no saldo bancário e no fluxo de caixa.',
     prerequisitos: [
       { t: 'Fornecedor com **É Fornecedor?** e **Conta a Pagar** ligados, **Conta de Fluxo de Caixa Despesa** preenchida e contato com **E-mail Compras**. Pessoa jurídica exige CNPJ e IE.', s: 'v', campo: 'Código do fornecedor' },
@@ -96,6 +97,7 @@ export const FLUXOS = [
     titulo: 'Fluxo de serviços de campo: da medição à assistência',
     rodape: 'Teste de Fluxo · Consultor · Faktory Flow v1.22.12 · executado em 19/10/2026 (dev METALURGICA TEST): MED-000013 → INS-000003 → VIST-000001 → AT-000002',
     subtitulo: 'Medição → conferência → instalação → vistoria → assistência técnica. Cada etapa diz o que gera a próxima — várias passagens são por botão, não automáticas.',
+    video: { id: 'consultor-02-servicos', titulo: 'Da medição à assistência técnica', resumo: 'O que a medição pede, o conferente diferente, as passagens por botão e a ordem dos aceites na vistoria e na assistência.' },
     objetivo: 'Provar que um pedido de venda vira medição aprovada, instalação concluída com checklist, vistoria com aceite e assistência técnica resolvida, e conferir onde cada serviço aparece na gestão de campo.',
     prerequisitos: [
       { t: 'Participante **Funcionário** para ser o técnico, diferente do participante vinculado ao usuário conferente em `Serviços > Configurações > Conferentes` (quem confere não pode ser quem mediu).', s: 'v', campo: 'Técnico / conferente' },
@@ -170,6 +172,7 @@ export const FLUXOS = [
     titulo: 'Fluxo comercial: do lead ao pedido de venda',
     rodape: 'Teste de Fluxo · Consultor · Faktory Flow v1.22.12 · executado em 19/10/2026 (dev METALURGICA TEST): lead → OPO-000012 → proposta → ganha; pedido PV-000034 gerado em 20/10/2026 com CFOP sem financeiro (com CFOP de venda o handoff falha) e obra criada',
     subtitulo: 'Lead → atividade → BANT → Kanban → conversão (cria a oportunidade) → itens → proposta → desconto com aprovação → ganho → pedido de venda. Mostra onde o fluxo trava e o que configurar antes.',
+    video: { id: 'consultor-03-comercial', titulo: 'Do lead ao pedido de venda', resumo: 'As quatro regras que travam o CRM (conversão, oportunidade automática, itens e o CFOP do pedido) e o caminho real nas telas.' },
     objetivo: 'Provar que um contato vira oportunidade, proposta e, por fim, pedido de venda — e identificar o que precisa estar configurado (alçada, condição de pagamento, plano de contas, CFOP) para a passagem final funcionar.',
     prerequisitos: [
       { t: 'Contato de teste com e-mail @tuamaeaquelaursa.com (caixa pública e temporária) e CNPJ/CPF fictício **ainda não usado** (o sistema recusa documento repetido).', s: 'v', campo: 'E-mail de teste' },

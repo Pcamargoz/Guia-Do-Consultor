@@ -1,0 +1,279 @@
+{
+ "id": "consultor-05-producao",
+ "titulo": "Fluxo de produção",
+ "subtitulo": "Da estrutura ao produto acabado",
+ "trilha": "Fluxos dos consultores",
+ "proximo": "Fluxo de expedição",
+ "icone": "fabrica",
+ "trechos": [
+  {
+   "id": "01",
+   "cena": "abertura",
+   "fala": "Na fábrica, o pedido vira ordem de produção, consome material e entrega o produto acabado no estoque, com custo. Neste vídeo, vamos ver o que precisa existir antes e o que cada botão grava.",
+   "inicio": 0,
+   "duracao": 15.121,
+   "fala_s": 14.571,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "02",
+   "cena": "status",
+   "tituloCena": "A vida de uma ordem de produção",
+   "etapas": [
+    "Estrutura",
+    "Ordem de produção",
+    "Baixa de material",
+    "Produzido",
+    "Estoque e custo"
+   ],
+   "destaque": 0,
+   "fala": "Tudo começa na estrutura do produto: a lista de materiais e quantidades de cada item.",
+   "inicio": 15.121,
+   "duracao": 6.979,
+   "fala_s": 6.429,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "03",
+   "cena": "status",
+   "destaque": 4,
+   "fala": "A ordem de produção nasce do pedido e já traz as requisições da estrutura. O material é baixado, a ordem é marcada como produzida, e o produto acabado entra no estoque com o custo real.",
+   "inicio": 22.1,
+   "duracao": 15.55,
+   "fala_s": 15,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "04",
+   "cena": "regra",
+   "n": 1,
+   "titulo": "A OP copia o item, não a quantidade",
+   "icone": "fabrica",
+   "texto": "Pedido e Item do pedido trazem produto, cor e medidas. Quantidade e Empresa você informa. Não use Esc: perde o formulário.",
+   "fonte": "regra-producao-op-copia-o-item-do-pedido-mas-nao-a-quantidade",
+   "fala": "Primeira regra. Na nova ordem de produção, o item do pedido traz o produto, a cor e as medidas, mas não a quantidade, que você informa. A empresa também é obrigatória, apesar da dica dizer que vem do pedido. E não use a tecla esc: ela fecha o painel e perde o que foi digitado.",
+   "inicio": 37.65,
+   "duracao": 24.121,
+   "fala_s": 23.571,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "05",
+   "cena": "regra",
+   "n": 2,
+   "titulo": "As requisições nascem da estrutura",
+   "icone": "estoque",
+   "texto": "Ao salvar a OP, as requisições são criadas sozinhas: quantidade da estrutura vezes a da OP.",
+   "fonte": "regra-producao-requisicoes-nascem-da-estrutura-ao-salvar",
+   "fala": "Segunda. Se o produto tem estrutura, as requisições de material nascem sozinhas ao salvar a ordem: a quantidade da estrutura vezes a da ordem. Sem estrutura, o sistema avisa que a ordem está sem requisições.",
+   "inicio": 61.771,
+   "duracao": 15.55,
+   "fala_s": 15,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "06",
+   "cena": "regra",
+   "n": 3,
+   "titulo": "Item paramétrico exige cor",
+   "icone": "ferramenta",
+   "texto": "Perfil e chapa sem cor são recusados na estrutura. Na entrada de estoque, a cor também precisa bater.",
+   "fonte": "regra-producao-item-parametrico-da-estrutura-exige-cor",
+   "fala": "Terceira. Material paramétrico, como perfil e chapa, precisa de cor na estrutura. Sem ela, o sistema recusa. E a entrada de estoque do material também precisa ter a cor, senão o saldo não bate.",
+   "inicio": 77.321,
+   "duracao": 15.121,
+   "fala_s": 14.571,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "07",
+   "cena": "regra",
+   "n": 4,
+   "titulo": "Produzido gera a entrada do acabado",
+   "icone": "check",
+   "texto": "Marcar produzido lança a Entrada de produto acabado (OP), com quantidade e custo. Exige almoxarifado central ativo.",
+   "fonte": "regra-producao-marcar-produzido-gera-entrada-do-produto-acabado",
+   "fala": "Quarta. Marcar produzido leva a ordem ao estado final e lança a entrada de produto acabado no almoxarifado central, com a quantidade e o custo. Sem almoxarifado ativo, a conclusão fica bloqueada.",
+   "inicio": 92.442,
+   "duracao": 14.264,
+   "fala_s": 13.714,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "08",
+   "cena": "tela",
+   "captura": "01-op-lista",
+   "focos": [
+    0,
+    2,
+    1
+   ],
+   "rotulo": "Produção › Ordens de produção",
+   "fala": "Na prática: esta ordem de fabricação já está produzida. Repare que os botões de apontar e excluir ficam travados: produzido é o estado final.",
+   "inicio": 106.706,
+   "duracao": 10.836,
+   "fala_s": 10.286,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/consultor-05-producao/01-op-lista.png",
+   "caixas": [
+    {
+     "x": 424,
+     "y": 690,
+     "w": 116,
+     "h": 68
+    },
+    {
+     "x": 1509,
+     "y": 711,
+     "w": 97,
+     "h": 26
+    },
+    {
+     "x": 1344,
+     "y": 711,
+     "w": 103,
+     "h": 26
+    }
+   ]
+  },
+  {
+   "id": "09",
+   "cena": "tela",
+   "captura": "03-custo",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "rotulo": "Mais ações › Custo da OP",
+   "fala": "No custo da ordem, você compara o estimado com o realizado, e vê o detalhe por etapa.",
+   "inicio": 117.542,
+   "duracao": 7.836,
+   "fala_s": 7.286,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/consultor-05-producao/03-custo.png",
+   "caixas": [
+    {
+     "x": 1135,
+     "y": 198,
+     "w": 229,
+     "h": 24
+    },
+    {
+     "x": 1374,
+     "y": 198,
+     "w": 229,
+     "h": 24
+    },
+    {
+     "x": 1135,
+     "y": 300,
+     "w": 201,
+     "h": 29
+    }
+   ]
+  },
+  {
+   "id": "10",
+   "cena": "tela",
+   "captura": "04-linha-tempo",
+   "focos": [
+    0,
+    1
+   ],
+   "rotulo": "Mais ações › Linha do tempo",
+   "fala": "Na linha do tempo, o tempo planejado e o real. Aqui o real ficou zerado, porque o apontamento não chegou a ser finalizado: uma limitação conhecida desta versão.",
+   "inicio": 125.378,
+   "duracao": 12.55,
+   "fala_s": 12,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/consultor-05-producao/04-linha-tempo.png",
+   "caixas": [
+    {
+     "x": 1123,
+     "y": 285,
+     "w": 271,
+     "h": 19
+    },
+    {
+     "x": 1413,
+     "y": 285,
+     "w": 271,
+     "h": 19
+    }
+   ]
+  },
+  {
+   "id": "11",
+   "cena": "tela",
+   "captura": "05-entrada-acabado",
+   "focos": [
+    1,
+    0
+   ],
+   "rotulo": "Estoque › Movimentos",
+   "fala": "E, no estoque, a entrada de produto acabado da ordem, com o custo real.",
+   "inicio": 137.928,
+   "duracao": 6.55,
+   "fala_s": 6,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/consultor-05-producao/05-entrada-acabado.png",
+   "caixas": [
+    {
+     "x": 772,
+     "y": 771,
+     "w": 104,
+     "h": 59
+    },
+    {
+     "x": 367,
+     "y": 733,
+     "w": 116,
+     "h": 108
+    }
+   ]
+  },
+  {
+   "id": "12",
+   "cena": "alertas",
+   "itens": [
+    "Iniciar produção muda a OP para Em execução com um clique.",
+    "O apontamento pode não finalizar: anote o horário e avise o suporte.",
+    "Fila de exceções: não reprocesse sem o suporte."
+   ],
+   "fala": "Três cuidados. O iniciar produção da lista muda a ordem para em execução com um clique só. O apontamento de horas pode recusar a finalização por causa do horário: anote e avise o suporte. E, na fila de exceções, não reprocesse nada sem o suporte.",
+   "inicio": 144.478,
+   "duracao": 19.836,
+   "fala_s": 19.286,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "13",
+   "cena": "fechamento",
+   "topicos": [
+    "Quantidade e Empresa você informa na OP",
+    "Requisições nascem da estrutura",
+    "Produzido lança o acabado com custo"
+   ],
+   "fala": "Resumindo: na ordem de produção, a quantidade e a empresa você informa. As requisições nascem da estrutura. E marcar produzido lança o acabado no estoque, com custo. No próximo vídeo, a expedição.",
+   "inicio": 164.314,
+   "duracao": 14.264,
+   "fala_s": 13.714,
+   "audio": null,
+   "legendas": null
+  }
+ ],
+ "duracaoTotal": 180.078
+}

@@ -1,0 +1,365 @@
+{
+ "id": "consultor-01-suprimentos",
+ "titulo": "Fluxo de suprimentos",
+ "subtitulo": "Da solicitação ao pagamento",
+ "trilha": "Fluxos dos consultores",
+ "proximo": "Fluxo de serviços de campo",
+ "icone": "compra",
+ "trechos": [
+  {
+   "id": "01",
+   "cena": "abertura",
+   "fala": "Comprar bem é tão importante quanto vender bem. Neste vídeo, vamos seguir um material desde a necessidade até o pagamento ao fornecedor, passando pelo estoque.",
+   "inicio": 0,
+   "duracao": 11.264,
+   "fala_s": 10.714,
+   "audio": null
+  },
+  {
+   "id": "02",
+   "cena": "status",
+   "tituloCena": "A cadeia de uma compra",
+   "etapas": [
+    "Solicitação",
+    "Cotação",
+    "Pedido de compra",
+    "Nota de recebimento",
+    "Título pago"
+   ],
+   "destaque": 0,
+   "fala": "Tudo começa numa solicitação de compra: alguém precisa de um material, numa quantidade e numa data.",
+   "inicio": 11.264,
+   "duracao": 7.407,
+   "fala_s": 6.857,
+   "audio": null
+  },
+  {
+   "id": "03",
+   "cena": "status",
+   "destaque": 4,
+   "fala": "A cotação compara fornecedores e gera o pedido de compra. Quando o material chega, a nota de recebimento dá entrada no estoque e cria o título a pagar, que você paga no financeiro.",
+   "inicio": 18.671,
+   "duracao": 14.693,
+   "fala_s": 14.143,
+   "audio": null
+  },
+  {
+   "id": "04",
+   "cena": "regra",
+   "n": 1,
+   "titulo": "A cotação é opcional",
+   "icone": "compra",
+   "texto": "Da solicitação dá para ir direto ao pedido. Gerar Pedido de Compra abre o Novo Pedido para completar e salvar.",
+   "fonte": "regra-compras-gerar-pedido-de-compra-abre-o-novo-pedido",
+   "fala": "Primeira regra. A cotação é opcional. No menu da solicitação, o Gerar Pedido de Compra não grava direto: ele abre o novo pedido, já com o produto, para você informar fornecedor, comprador, condição, CFOP e valor.",
+   "inicio": 33.364,
+   "duracao": 15.979,
+   "fala_s": 15.429,
+   "audio": null
+  },
+  {
+   "id": "05",
+   "cena": "regra",
+   "n": 2,
+   "titulo": "A natureza da operação define o CFOP",
+   "icone": "cfop",
+   "texto": "Na cotação, a Natureza da Operação (Consumo, Produção, Revenda ou Ativo) define o CFOP do pedido de compra.",
+   "fonte": "fluxo dos consultores 01 (validado no DEV)",
+   "fala": "Segunda. Na cotação, a natureza da operação, consumo, produção, revenda ou ativo, define sozinha o CFOP do pedido de compra, conforme a origem do fornecedor. Escolha com cuidado.",
+   "inicio": 49.343,
+   "duracao": 12.55,
+   "fala_s": 12,
+   "audio": null
+  },
+  {
+   "id": "06",
+   "cena": "regra",
+   "n": 3,
+   "titulo": "A mesma nota tem dois números",
+   "icone": "nota",
+   "texto": "NF-número do fornecedor na lista de Recebimento; NR-número interno na conferência, no pedido e no título.",
+   "fonte": "regra-recebimento-a-mesma-nota-tem-dois-numeros",
+   "fala": "Terceira, e a que mais confunde. A mesma nota de recebimento tem dois números. Na lista de recebimento ela aparece como NF, com o número do fornecedor. Na conferência, no pedido e no título, aparece como NR, o número interno. É a mesma nota.",
+   "inicio": 61.893,
+   "duracao": 19.407,
+   "fala_s": 18.857,
+   "audio": null
+  },
+  {
+   "id": "07",
+   "cena": "regra",
+   "n": 4,
+   "titulo": "Sem almoxarifado central, nada entra",
+   "icone": "estoque",
+   "texto": "A entrada do recebimento vai para o almoxarifado central ativo. Sem ele, o sistema bloqueia.",
+   "fonte": "regra-estoque-almoxarifado-central-ativo-e-pre-requisito",
+   "fala": "Quarta. A entrada do material cai no almoxarifado central. Sem um almoxarifado central ativo em Estoque, Locais, o sistema bloqueia a finalização. Confira antes de começar.",
+   "inicio": 81.3,
+   "duracao": 11.693,
+   "fala_s": 11.143,
+   "audio": null
+  },
+  {
+   "id": "08",
+   "cena": "tela",
+   "captura": "00-solicitacao",
+   "focos": [
+    2,
+    0,
+    1
+   ],
+   "rotulo": "Compras › Solicitações de Compra",
+   "fala": "Na prática: em Compras, Solicitações de Compra, a Nova Solicitação pede a empresa, a data de necessidade, o produto e a quantidade. Esta aqui já está concluída: ela virou pedido.",
+   "inicio": 92.993,
+   "duracao": 13.407,
+   "fala_s": 12.857,
+   "audio": null,
+   "imagem": "telas/consultor-01-suprimentos/00-solicitacao.png",
+   "caixas": [
+    {
+     "x": 392,
+     "y": 387,
+     "w": 150,
+     "h": 207
+    },
+    {
+     "x": 1903,
+     "y": 476,
+     "w": 101,
+     "h": 31
+    },
+    {
+     "x": 1686,
+     "y": 149,
+     "w": 190,
+     "h": 43
+    }
+   ]
+  },
+  {
+   "id": "09",
+   "cena": "tela",
+   "captura": "01b-cotacao",
+   "focos": [
+    2,
+    0,
+    1
+   ],
+   "rotulo": "Cotação · Dados Gerais",
+   "fala": "A cotação é um assistente em quatro passos: dados gerais, itens, propostas e comparação. Nos dados gerais, repare na natureza da operação: é ela que vai definir o CFOP.",
+   "inicio": 106.4,
+   "duracao": 12.979,
+   "fala_s": 12.429,
+   "audio": null,
+   "imagem": "telas/consultor-01-suprimentos/01b-cotacao.png",
+   "caixas": [
+    {
+     "x": 400,
+     "y": 699,
+     "w": 76,
+     "h": 24
+    },
+    {
+     "x": 385,
+     "y": 740,
+     "w": 708,
+     "h": 19
+    },
+    {
+     "x": 1571,
+     "y": 317,
+     "w": 168,
+     "h": 24
+    }
+   ]
+  },
+  {
+   "id": "10",
+   "cena": "tela",
+   "captura": "01c-comparacao",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "rotulo": "Cotação · Comparação",
+   "fala": "Na comparação, você escolhe o critério, como menor preço ou menor prazo, e aplica a melhor opção. Daí sai o pedido de compra, um por fornecedor vencedor.",
+   "inicio": 119.379,
+   "duracao": 12.121,
+   "fala_s": 11.571,
+   "audio": null,
+   "imagem": "telas/consultor-01-suprimentos/01c-comparacao.png",
+   "caixas": [
+    {
+     "x": 375,
+     "y": 490,
+     "w": 273,
+     "h": 24
+    },
+    {
+     "x": 1610,
+     "y": 490,
+     "w": 229,
+     "h": 43
+    },
+    {
+     "x": 391,
+     "y": 1000,
+     "w": 96,
+     "h": 24
+    },
+    {
+     "x": 1577,
+     "y": 1084,
+     "w": 282,
+     "h": 43
+    }
+   ]
+  },
+  {
+   "id": "11",
+   "cena": "tela",
+   "captura": "01-linha-do-tempo",
+   "focos": [
+    0,
+    1,
+    2,
+    5,
+    4
+   ],
+   "rotulo": "Pedido de compra › Linha do tempo",
+   "caixasExtras": [
+    {
+     "x": 1467,
+     "y": 522,
+     "w": 120,
+     "h": 30
+    }
+   ],
+   "fala": "E aqui está a melhor forma de conferir tudo: a linha do tempo do pedido de compra. Solicitação concluída, cotação concluída, pedido recebido, nota finalizada e título pago, em ordem.",
+   "inicio": 131.5,
+   "duracao": 13.407,
+   "fala_s": 12.857,
+   "audio": null,
+   "imagem": "telas/consultor-01-suprimentos/01-linha-do-tempo.png",
+   "caixas": [
+    {
+     "x": 1467,
+     "y": 155,
+     "w": 110,
+     "h": 29
+    },
+    {
+     "x": 1467,
+     "y": 276,
+     "w": 120,
+     "h": 29
+    },
+    {
+     "x": 1467,
+     "y": 398,
+     "w": 111,
+     "h": 29
+    },
+    {
+     "x": 1550,
+     "y": 665,
+     "w": 111,
+     "h": 31
+    },
+    {
+     "x": 1467,
+     "y": 642,
+     "w": 160,
+     "h": 29
+    },
+    {
+     "x": 1467,
+     "y": 522,
+     "w": 120,
+     "h": 30
+    }
+   ]
+  },
+  {
+   "id": "12",
+   "cena": "tela",
+   "captura": "02-notas-recebimento",
+   "foco": 0,
+   "rotulo": "Recebimento › Notas de Recebimento",
+   "fala": "Na lista de recebimento, a mesma nota aparece como NF nove nove zero zero zero um, o número do fornecedor. Na linha do tempo, ela era a NR treze.",
+   "inicio": 144.907,
+   "duracao": 12.979,
+   "fala_s": 12.429,
+   "audio": null,
+   "imagem": "telas/consultor-01-suprimentos/02-notas-recebimento.png",
+   "caixas": [
+    {
+     "x": 367,
+     "y": 828,
+     "w": 213,
+     "h": 63
+    }
+   ]
+  },
+  {
+   "id": "13",
+   "cena": "tela",
+   "captura": "03-entrada-estoque",
+   "focos": [
+    0,
+    1
+   ],
+   "rotulo": "Estoque › Movimentos",
+   "fala": "E no estoque, o movimento de entrada do tipo recebimento, no almoxarifado central, com o valor da nota.",
+   "inicio": 157.886,
+   "duracao": 8.264,
+   "fala_s": 7.714,
+   "audio": null,
+   "imagem": "telas/consultor-01-suprimentos/03-entrada-estoque.png",
+   "caixas": [
+    {
+     "x": 780,
+     "y": 772,
+     "w": 93,
+     "h": 40
+    },
+    {
+     "x": 1020,
+     "y": 767,
+     "w": 196,
+     "h": 45
+    }
+   ]
+  },
+  {
+   "id": "14",
+   "cena": "alertas",
+   "itens": [
+    "Finalizar a nota de recebimento não pode ser desfeito.",
+    "O meio de pagamento da parcela não chega ao Pagar: informe de novo.",
+    "A Sugestão de Compra só lista itens com estoque mínimo."
+   ],
+   "fala": "Três cuidados. Finalizar a nota de recebimento não pode ser desfeito, e depois dela o pedido de compra não pode mais ser cancelado. O meio de pagamento da parcela não chega ao diálogo de pagamento: informe de novo. E a sugestão de compra só mostra itens com estoque mínimo cadastrado.",
+   "inicio": 166.15,
+   "duracao": 21.979,
+   "fala_s": 21.429,
+   "audio": null
+  },
+  {
+   "id": "15",
+   "cena": "fechamento",
+   "topicos": [
+    "Cotação é opcional; a natureza define o CFOP",
+    "NF e NR são a mesma nota",
+    "Confira tudo na linha do tempo do pedido"
+   ],
+   "fala": "Resumindo: a cotação é opcional, e a natureza da operação define o CFOP. NF e NR são a mesma nota. E a linha do tempo do pedido mostra a cadeia inteira. No próximo vídeo, os serviços de campo.",
+   "inicio": 188.129,
+   "duracao": 16.836,
+   "fala_s": 16.286,
+   "audio": null
+  }
+ ],
+ "duracaoTotal": 206.465
+}
