@@ -196,7 +196,7 @@ function onboarding(o) {
       ${e.intro ? `<p class="intro">${fmt(e.intro)}</p>` : ''}
       <ul class="itens">${e.passos.map((p, pi) => item(`e${e.preparar ? 'p' : ei + 1 - o.etapas.slice(0, ei).filter((x) => x.preparar).length}-${pi + 1}`, p, 'Resultado')).join('')}</ul>
     </div>`).join('');
-  const trilha = CHECKLISTS.map((c, i) => `
+  const trilha = CHECKLISTS.filter((c) => !c.etiqueta.startsWith('Fluxo principal')).map((c, i) => `
     <li><a href="${esc(c.arquivo)}"><span class="num">${String(i + 1).padStart(2, '0')}</span><span><strong>${esc(c.titulo)}</strong><small>${esc(c.resumo)}</small></span><span class="prog" data-prog="${esc(c.id)}">não iniciado</span></a></li>`).join('');
 
   const indice = [
@@ -231,6 +231,7 @@ ${blocoAnotacoes('Dúvidas gerais, combinados com o supervisor, acessos que falt
 /* ---------- Catálogo e manifest ---------- */
 const GRUPOS = [
   { id: 'consultor', nome: 'Fluxos do consultor', desc: 'Testes funcionais ponta a ponta: faça, confira o reflexo no módulo seguinte e anote os registros.' },
+  { id: 'fluxos', nome: 'Fluxos principais do estagiário', desc: 'Vendas, Faturamento e Financeiro, os módulos mais maduros, do começo ao fim com os seus registros. Faça depois do onboarding e dos checklists 01 a 04.' },
   { id: 'estagiario', nome: 'Trilha do estagiário', desc: 'Checklists curtos para a integração. Comece pelo onboarding (00) e siga a numeração.' },
   { id: 'qa', nome: 'Validação dos módulos (QA)', desc: 'Planos completos de validação e homologação de cada módulo, com os achados já registrados.' },
 ];
@@ -252,14 +253,14 @@ const consultores = [CONSULTOR, ...FLUXOS, ...FLUXOS_OPERACAO, ...FLUXOS_GESTAO]
 const ids = [ONBOARDING, ...CHECKLISTS, ...consultores].map((c) => c.arquivo);
 if (new Set(ids).size !== ids.length) throw new Error('arquivos de saída repetidos');
 
-const ehFluxoPrincipal = (c) => Number(c.arquivo.slice(0, 2)) >= 16;
-const itemEstagiario = (c) => ({ grupo: 'estagiario', id: c.id, area: `${c.arquivo.slice(0, 2)} · ${c.etiqueta.split(' · ').pop()}`, titulo: c.titulo, resumo: c.resumo, arquivo: `estagiarios/${c.arquivo}`, chave: `ff-estagiario:${c.id}`, ...resumoEtapas(c) });
+const ehFluxoPrincipal = (c) => c.etiqueta.startsWith('Fluxo principal');
+const itemEstagiario = (c) => ({ grupo: ehFluxoPrincipal(c) ? 'fluxos' : 'estagiario', id: c.id, area: ehFluxoPrincipal(c) ? `Fluxo ${CHECKLISTS.filter(ehFluxoPrincipal).indexOf(c) + 1} · ${c.etiqueta.split(' · ').pop()}` : `${c.arquivo.slice(0, 2)} · ${c.etiqueta.split(' · ').pop()}`, titulo: c.titulo, resumo: c.resumo, arquivo: `estagiarios/${c.arquivo}`, chave: `ff-estagiario:${c.id}`, ...resumoEtapas(c) });
 
 const manifest = {
   grupos: GRUPOS,
   itens: [
     ...consultores.map((c) => ({ grupo: 'consultor', id: c.id, area: c.etiqueta.replace(/^Consultor · /, ''), titulo: c.titulo, resumo: c.objetivo, arquivo: `consultores/${c.arquivo}`, chave: `ff-consultor:${c.id}`, ...resumoEtapas(c) })),
-    /* Os fluxos principais (16 em diante: Vendas, Faturamento e Financeiro, os módulos mais maduros) abrem a trilha na biblioteca. */
+    /* Os fluxos principais (Vendas, Faturamento e Financeiro, os módulos mais maduros) formam um grupo próprio, numerado de 1 a 3, acima da trilha. */
     ...CHECKLISTS.filter(ehFluxoPrincipal).map(itemEstagiario),
     { grupo: 'estagiario', id: 'onboarding', area: '00 · Comece por aqui', titulo: ONBOARDING.titulo, resumo: ONBOARDING.objetivo, arquivo: `estagiarios/${ONBOARDING.arquivo}`, chave: 'ff-estagiario:onboarding', ...resumoEtapas(ONBOARDING) },
     ...CHECKLISTS.filter((c) => !ehFluxoPrincipal(c)).map(itemEstagiario),

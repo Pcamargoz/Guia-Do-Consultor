@@ -6,9 +6,9 @@
 const AVISO_PERMISSAO = ' Se faltar permissão ou cadastro-base (botão que não aparece, CFOP, plano de contas, meio de pagamento, conta bancária, almoxarifado), anote a mensagem em **Problema** e chame o supervisor: a empresa de treino começa zerada e os cadastros-base são feitos por um consultor.';
 
 export const FLUXOS_PRINCIPAIS = [
-  /* ------------------------------------------------------------------ 16 · Vendas */
+  /* ------------------------------------------------------------------ Fluxo 1 · Vendas */
   {
-    id: 'fluxo-vendas', arquivo: '16-fluxo-principal-vendas.html', etiqueta: 'Fluxo principal · Vendas',
+    id: 'fluxo-vendas', arquivo: 'fluxo-principal-vendas.html', etiqueta: 'Fluxo principal · Vendas',
     titulo: 'Fluxo principal de Vendas: do pedido à operação', resumo: 'Criar, ajustar e acompanhar o seu pedido de venda até a carteira.',
     subtitulo: 'O ciclo do pedido na prática: ter um pedido, ajustá-lo, entender o menu de ações e achá-lo nos painéis. Vendas é um dos módulos mais maduros do Faktory Flow: siga a ordem.',
     objetivo: 'Conduzir um pedido de venda de treino do cadastro até a porta da operação, sabendo o que cada status e cada botão do menu `⋯` fazem, e conferir o pedido nos painéis comerciais.',
@@ -48,7 +48,7 @@ export const FLUXOS_PRINCIPAIS = [
         titulo: '4. O menu de ações e os status', onde: 'menu `⋯` do pedido',
         passos: [
           { t: 'Abrir o menu `⋯` do pedido em aberto e reconhecer: Baixar PDF, Faturar, Dividir em partes, Gerar Títulos, Encerrar, Cancelar e Excluir. Feche **sem clicar**.', r: 'Num pedido Entregue o menu mostra "Já faturado" desabilitado.', s: 'v' },
-          { t: 'Entender o caminho dos status: **Em aberto → Faturado → Lib. Expedição → Entregue**. O faturamento é o checklist 17; **Liberar para Expedição** só aparece no menu de pedido **Faturado**.', s: 'v' },
+          { t: 'Entender o caminho dos status: **Em aberto → Faturado → Lib. Expedição → Entregue**. O faturamento é o Fluxo principal de Faturamento; **Liberar para Expedição** só aparece no menu de pedido **Faturado**.', s: 'v' },
           { t: 'Baixar o **PDF** do pedido e conferir cliente, itens e total.', s: 'd' },
           { t: 'Saber o que **não** usar em treino: Encerrar, Cancelar, Excluir e Dividir em partes alteram o pedido sem desfazer.', s: 'd' },
         ],
@@ -82,14 +82,14 @@ export const FLUXOS_PRINCIPAIS = [
     naoValidado: ['Aprovação de desconto por outro usuário (a empresa de teste só tem um), Dividir em partes, Encerrar e baixar o PDF não foram executados.'],
   },
 
-  /* ------------------------------------------------------------------ 17 · Faturamento */
+  /* ------------------------------------------------------------------ Fluxo 2 · Faturamento */
   {
-    id: 'fluxo-faturamento-estagiario', arquivo: '17-fluxo-principal-faturamento.html', etiqueta: 'Fluxo principal · Faturamento',
+    id: 'fluxo-faturamento-estagiario', arquivo: 'fluxo-principal-faturamento.html', etiqueta: 'Fluxo principal · Faturamento',
     titulo: 'Fluxo principal de Faturamento: do pedido à nota finalizada', resumo: 'Faturar o seu pedido em homologação e conferir a nota, sem transmitir.',
     subtitulo: 'Do pedido à nota fiscal em ambiente de homologação: faturar, conferir, finalizar sem transmitir e ver o reflexo no pedido e no estoque. Faturamento é um dos módulos mais maduros do Faktory Flow.',
     objetivo: 'Faturar o seu pedido de treino, conferir a nota antes de finalizar, finalizar **sem transmitir** com a autorização do supervisor e saber o que fica por conta do responsável fiscal.',
     prerequisitos: [
-      { t: 'Checklists 04, 12 e 16 concluídos.', s: 'v' },
+      { t: 'Checklists 04 e 12 e o Fluxo principal de Vendas concluídos.', s: 'v' },
       { t: 'Ambiente fiscal em **Homologação**: a nota mostra a faixa "Ambiente NF-e: HOMOLOGAÇÃO". Nesta trilha a nota **nunca** é transmitida.', s: 'v' },
       { t: 'Produto com **NCM** com CST de PIS/COFINS de saída (senão a nota sai com "Impostos não calculados no item") e **almoxarifado central ativo** (sem ele "Finalizar NF" recusa).', s: 'v' },
       { t: 'Autorização do supervisor para **Finalizar NF**. Transmitir, cancelar, excluir e inutilizar numeração ficam com o responsável fiscal.', s: 'v' },
@@ -98,7 +98,7 @@ export const FLUXOS_PRINCIPAIS = [
       {
         preparar: true,
         titulo: '1. Preparar seus dados: o pedido e o ponto de partida', onde: '`Vendas > Pedidos de Venda` e `Estoque > Saldo`',
-        intro: 'A nota nasce de um pedido. Use o pedido em aberto do checklist 04 ou 16 e anote o ponto de partida: no fim você compara o antes e o depois.' + AVISO_PERMISSAO,
+        intro: 'A nota nasce de um pedido. Use o pedido em aberto do checklist 04 ou do Fluxo principal de Vendas e anote o ponto de partida: no fim você compara o antes e o depois.' + AVISO_PERMISSAO,
         passos: [
           { t: 'Achar o seu pedido em aberto e anotar o número, o valor e as colunas TÍTULOS e NOTA FISCAL.', s: 'v', campo: 'Nº do pedido (PV-)' },
           { t: 'Em `Estoque > Saldo`, anotar o saldo do produto do pedido.', s: 'v', campo: 'Saldo antes' },
@@ -135,7 +135,7 @@ export const FLUXOS_PRINCIPAIS = [
         passos: [
           { t: 'No pedido, conferir a coluna **NOTA FISCAL** e o status **Faturado**.', s: 'v' },
           { t: 'Em `Estoque > Movimentos` e no saldo do produto, comparar com o "Saldo antes" que você anotou.', r: 'Deveria haver saída de estoque ligada à nota; no ambiente de teste a finalização **não** gerou movimento: anote o que você viu.', s: 'v', campo: 'Saldo depois' },
-          { t: 'Saber que o pedido segue para `Liberar para Expedição` (menu `⋯` do pedido Faturado) e para os títulos no Financeiro (checklist 18).', s: 'v' },
+          { t: 'Saber que o pedido segue para `Liberar para Expedição` (menu `⋯` do pedido Faturado) e para os títulos no Financeiro (Fluxo principal do Financeiro).', s: 'v' },
         ],
       },
       {
@@ -159,14 +159,14 @@ export const FLUXOS_PRINCIPAIS = [
     naoValidado: ['Transmissão, rejeição, carta de correção, cancelamento e inutilização de numeração não foram executados (dependem do responsável fiscal e de certificado).'],
   },
 
-  /* ------------------------------------------------------------------ 18 · Financeiro */
+  /* ------------------------------------------------------------------ Fluxo 3 · Financeiro */
   {
-    id: 'fluxo-financeiro-estagiario', arquivo: '18-fluxo-principal-financeiro.html', etiqueta: 'Fluxo principal · Financeiro',
+    id: 'fluxo-financeiro-estagiario', arquivo: 'fluxo-principal-financeiro.html', etiqueta: 'Fluxo principal · Financeiro',
     titulo: 'Fluxo principal do Financeiro: do título ao fluxo de caixa', resumo: 'Gerar os títulos do pedido, receber, conferir saldos e ler o fluxo de caixa.',
     subtitulo: 'Os títulos nascem do pedido, a baixa move o saldo da conta e o fluxo de caixa mostra o resultado. Financeiro é um dos módulos mais maduros do Faktory Flow. Só com conta bancária e valores de teste.',
     objetivo: 'Gerar os títulos do seu pedido, receber (baixa parcial, total e estorno) numa conta de teste, conferir saldos e extrato e ler o fluxo de caixa, a DRE e o painel da obra sabendo onde os números divergem.',
     prerequisitos: [
-      { t: 'Checklists 04, 13 e 17 concluídos.', s: 'v' },
+      { t: 'Checklists 04 e 13 e o Fluxo principal de Faturamento concluídos.', s: 'v' },
       { t: 'Uma **conta bancária de teste** cadastrada pelo consultor (`Financeiro > Configurações > Contas Bancárias`) e um meio de pagamento que **não** seja do tipo Boleto (Boleto exige conta emissora).', s: 'v' },
       { t: 'Autorização do supervisor para **receber** e **pagar**, só com valores de teste e só na conta de teste. Nunca em produção.', s: 'v' },
     ],
@@ -176,7 +176,7 @@ export const FLUXOS_PRINCIPAIS = [
         titulo: '1. Preparar seus dados: o pedido, a conta e os saldos de partida', onde: '`Vendas > Pedidos de Venda` e `Financeiro > Saldos`',
         intro: 'Os títulos nascem de um pedido e a baixa precisa de uma conta bancária. Anote o ponto de partida para conferir o efeito de cada baixa.' + AVISO_PERMISSAO,
         passos: [
-          { t: 'Achar o seu pedido (checklist 04 ou 16) e anotar o número, o valor e a coluna TÍTULOS.', s: 'v', campo: 'Nº do pedido (PV-)' },
+          { t: 'Achar o seu pedido (checklist 04 ou Fluxo principal de Vendas) e anotar o número, o valor e a coluna TÍTULOS.', s: 'v', campo: 'Nº do pedido (PV-)' },
           { t: 'Em `Financeiro > Saldos`, anotar o saldo de cada conta antes de começar.', s: 'v', campo: 'Saldo antes' },
           { t: 'Abrir `Configurações > Meios de Pagamento` e ver o **Tipo** do meio da parcela do seu pedido (só leitura).', r: 'No ambiente de teste, até "Duplicata Mercantil" estava como tipo Boleto, e o Gerar Títulos exigia conta emissora. Se for o caso, avise o supervisor: a troca do tipo é decisão do fiscal.', s: 'v' },
         ],

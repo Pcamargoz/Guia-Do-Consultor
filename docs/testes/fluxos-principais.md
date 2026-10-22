@@ -1,8 +1,8 @@
-# Brief — passos em documentação dos checklists 16, 17 e 18
+# Brief — passos em documentação dos fluxos principais 1, 2 e 3 (Vendas, Faturamento, Financeiro)
 
 Regras comuns: [_regras-comuns.md](_regras-comuns.md). Relatório: `scratchpad\relatorio-qa\47-fluxos-principais.md`, gravado a cada passo.
 
-**Objetivo.** Os checklists 16 (Vendas), 17 (Faturamento) e 18 (Financeiro) da trilha do estagiário foram montados a partir dos fluxos dos consultores. Os passos abaixo ainda estão como *documentação* (`s: 'd'`). Execute-os no DEV (METALURGICA TEST), copie os rótulos exatamente como aparecem na tela e devolva o texto corrigido de cada passo.
+**Objetivo.** Os fluxos principais 1 (Vendas), 2 (Faturamento) e 3 (Financeiro) da trilha do estagiário foram montados a partir dos fluxos dos consultores. Os passos abaixo ainda estão como *documentação* (`s: 'd'`). Execute-os no DEV (METALURGICA TEST), copie os rótulos exatamente como aparecem na tela e devolva o texto corrigido de cada passo.
 
 **Não execute (decisão do usuário):** Faturar, Finalizar NF, Transmitir, Gerar Títulos, Receber, Pagar, Cancelar, Encerrar, Excluir, Dividir em partes, Aprovar. Esses passos já estão verificados por outras rodadas ou dependem de autorização que não foi dada agora. Se um clique for negado pelo sistema de permissões, registre como não conferido e siga.
 

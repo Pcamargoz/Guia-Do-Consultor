@@ -6,6 +6,11 @@
    "desc": "Testes funcionais ponta a ponta: faça, confira o reflexo no módulo seguinte e anote os registros."
   },
   {
+   "id": "fluxos",
+   "nome": "Fluxos principais do estagiário",
+   "desc": "Vendas, Faturamento e Financeiro, os módulos mais maduros, do começo ao fim com os seus registros. Faça depois do onboarding e dos checklists 01 a 04."
+  },
+  {
    "id": "estagiario",
    "nome": "Trilha do estagiário",
    "desc": "Checklists curtos para a integração. Comece pelo onboarding (00) e siga a numeração."
@@ -139,34 +144,34 @@
    "verificadas": 0
   },
   {
-   "grupo": "estagiario",
+   "grupo": "fluxos",
    "id": "fluxo-vendas",
-   "area": "16 · Vendas",
+   "area": "Fluxo 1 · Vendas",
    "titulo": "Fluxo principal de Vendas: do pedido à operação",
    "resumo": "Criar, ajustar e acompanhar o seu pedido de venda até a carteira.",
-   "arquivo": "estagiarios/16-fluxo-principal-vendas.html",
+   "arquivo": "estagiarios/fluxo-principal-vendas.html",
    "chave": "ff-estagiario:fluxo-vendas",
    "etapas": 22,
    "verificadas": 17
   },
   {
-   "grupo": "estagiario",
+   "grupo": "fluxos",
    "id": "fluxo-faturamento-estagiario",
-   "area": "17 · Faturamento",
+   "area": "Fluxo 2 · Faturamento",
    "titulo": "Fluxo principal de Faturamento: do pedido à nota finalizada",
    "resumo": "Faturar o seu pedido em homologação e conferir a nota, sem transmitir.",
-   "arquivo": "estagiarios/17-fluxo-principal-faturamento.html",
+   "arquivo": "estagiarios/fluxo-principal-faturamento.html",
    "chave": "ff-estagiario:fluxo-faturamento-estagiario",
    "etapas": 24,
    "verificadas": 23
   },
   {
-   "grupo": "estagiario",
+   "grupo": "fluxos",
    "id": "fluxo-financeiro-estagiario",
-   "area": "18 · Financeiro",
+   "area": "Fluxo 3 · Financeiro",
    "titulo": "Fluxo principal do Financeiro: do título ao fluxo de caixa",
    "resumo": "Gerar os títulos do pedido, receber, conferir saldos e ler o fluxo de caixa.",
-   "arquivo": "estagiarios/18-fluxo-principal-financeiro.html",
+   "arquivo": "estagiarios/fluxo-principal-financeiro.html",
    "chave": "ff-estagiario:fluxo-financeiro-estagiario",
    "etapas": 22,
    "verificadas": 22

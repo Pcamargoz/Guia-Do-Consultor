@@ -17,6 +17,7 @@
     estagiario: svg('<path d="m2 9 10-5 10 5-10 5Z"/><path d="M6 11.5V16c0 1.2 2.7 2.5 6 2.5s6-1.3 6-2.5v-4.5"/>'),
     qa: svg('<path d="M12 3 4 6v6c0 4.5 3.2 7.8 8 9 4.8-1.2 8-4.5 8-9V6Z"/><path d="m9 12 2 2 4-4"/>'),
   };
+  icones.fluxos = icones.estagiario;
   const esc = (v) => String(v ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const norm = (v) => String(v ?? '').toLocaleLowerCase('pt-BR').normalize('NFD').replace(/[̀-ͯ]/g, '');
   /* Progresso: o da conta do usuário (servidor) tem prioridade; sem conta, o deste navegador. */

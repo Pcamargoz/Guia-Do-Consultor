@@ -18,7 +18,7 @@ const ler = (p) => readFile(p, 'utf8');
 const ultimoScript = (html) => html.slice(html.lastIndexOf('<script>') + 8, html.lastIndexOf('</script>'));
 
 const manifest = JSON.parse(await ler(path.join(PUB, 'manifest.json')));
-checar(manifest.grupos?.length === 3, 'manifest tem os 3 grupos');
+checar(manifest.grupos?.length === 4, 'manifest tem os 4 grupos');
 const gruposValidos = new Set(manifest.grupos.map((g) => g.id));
 
 /* Regra de download: lida do próprio arquivo da rota */

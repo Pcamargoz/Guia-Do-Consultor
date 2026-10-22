@@ -101,7 +101,7 @@ Ao validar uma etapa, mude `s` para `'v'` no arquivo de dados do checklist e rod
 **Resultado esperado**
 - [ ] (doc) Consigo mostrar, com as telas abertas, onde o pedido de exemplo aparece em cada módulo.
 
-## Fluxo principal de Vendas: do pedido à operação  `16-fluxo-principal-vendas.html` — 5 etapa(s)
+## Fluxo principal de Vendas: do pedido à operação  `fluxo-principal-vendas.html` — 5 etapa(s)
 
 **Pré-requisitos**
 - [ ] (doc) Cliente, produto e obra de treino do checklist 02, e um Vendedor e uma Condição de Pagamento cadastrados pelo consultor.
@@ -116,7 +116,7 @@ Ao validar uma etapa, mude `s` para `'v'` no arquivo de dados do checklist e rod
 **Resultado esperado**
 - [ ] (doc) Tenho um pedido de treino em aberto com cliente, item, parcelas e obra, e sei dizer em que status ele está e o que o próximo botão faz.
 
-## Fluxo principal de Faturamento: do pedido à nota finalizada  `17-fluxo-principal-faturamento.html` — 1 etapa(s)
+## Fluxo principal de Faturamento: do pedido à nota finalizada  `fluxo-principal-faturamento.html` — 1 etapa(s)
 
 **6. O que fica com o responsável fiscal** · módulo Fiscal e Faturamento > Configurações (só leitura)
 - [ ] (n/v) Saber que Transmitir, Carta de correção, Cancelar e Inutilizar numeração são decisões do responsável fiscal, só em homologação e com certificado válido. → _Carta de correção e cancelamento só aparecem depois da autorização da nota._
@@ -343,8 +343,8 @@ Ao validar uma etapa, mude `s` para `'v'` no arquivo de dados do checklist e rod
 - [ ] (doc) Concluir 14 · Tarefas e combinar com o supervisor um quadro para acompanhar suas atividades.
 - [ ] (doc) Explicar ao supervisor, com as telas abertas, o caminho de um pedido real: CRM → Vendas → operação → Faturamento → Financeiro. → _Você consegue mostrar onde cada etapa aparece no sistema._
 
-**Semana 5 — Os fluxos dos módulos mais maduros**
-- [ ] (doc) Concluir 16 · Fluxo principal de Vendas (ajustar o pedido, entender os status e achá-lo nos painéis).
-- [ ] (doc) Concluir 17 · Fluxo principal de Faturamento (faturar em homologação, conferir e finalizar a nota sem transmitir, com autorização).
-- [ ] (doc) Concluir 18 · Fluxo principal do Financeiro (gerar títulos, receber numa conta de teste, conferir saldos e ler o fluxo de caixa).
+**Semana 5 — Os fluxos dos módulos mais maduros (grupo "Fluxos principais do estagiário" da biblioteca)**
+- [ ] (doc) Concluir o Fluxo principal 1 · Vendas (ajustar o pedido, entender os status e achá-lo nos painéis).
+- [ ] (doc) Concluir o Fluxo principal 2 · Faturamento (faturar em homologação, conferir e finalizar a nota sem transmitir, com autorização).
+- [ ] (doc) Concluir o Fluxo principal 3 · Financeiro (gerar títulos, receber numa conta de teste, conferir saldos e ler o fluxo de caixa).
 - [ ] (doc) Mostrar ao supervisor o mesmo pedido nos três módulos e dizer onde os números divergiram. → _Os pontos de divergência conhecidos estão nos "Pontos de atenção" de cada checklist._

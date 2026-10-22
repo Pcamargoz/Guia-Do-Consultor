@@ -77,12 +77,12 @@ export const ONBOARDING = {
       ],
     },
     {
-      titulo: 'Semana 5 — Os fluxos dos módulos mais maduros',
+      titulo: 'Semana 5 — Os fluxos dos módulos mais maduros (grupo "Fluxos principais do estagiário" da biblioteca)',
       intro: 'Vendas, Faturamento e Financeiro são os módulos mais maduros do Faktory Flow. Estes três checklists seguem o fluxo do começo ao fim com os **seus** registros de treino, na ordem do dinheiro: pedido, nota e títulos.',
       passos: [
-        { t: 'Concluir **16 · Fluxo principal de Vendas** (ajustar o pedido, entender os status e achá-lo nos painéis).', s: 'd' },
-        { t: 'Concluir **17 · Fluxo principal de Faturamento** (faturar em homologação, conferir e finalizar a nota sem transmitir, com autorização).', s: 'd' },
-        { t: 'Concluir **18 · Fluxo principal do Financeiro** (gerar títulos, receber numa conta de teste, conferir saldos e ler o fluxo de caixa).', s: 'd' },
+        { t: 'Concluir o **Fluxo principal 1 · Vendas** (ajustar o pedido, entender os status e achá-lo nos painéis).', s: 'd' },
+        { t: 'Concluir o **Fluxo principal 2 · Faturamento** (faturar em homologação, conferir e finalizar a nota sem transmitir, com autorização).', s: 'd' },
+        { t: 'Concluir o **Fluxo principal 3 · Financeiro** (gerar títulos, receber numa conta de teste, conferir saldos e ler o fluxo de caixa).', s: 'd' },
         { t: 'Mostrar ao supervisor o mesmo pedido nos três módulos e dizer onde os números divergiram.', r: 'Os pontos de divergência conhecidos estão nos "Pontos de atenção" de cada checklist.', s: 'd' },
       ],
     },
@@ -1085,5 +1085,5 @@ export const CHECKLISTS = [
   },
 ];
 
-/* Fluxos principais (16 a 18): Vendas, Faturamento e Financeiro. */
+/* Fluxos principais (grupo próprio na biblioteca, numerados 1 a 3): Vendas, Faturamento e Financeiro. */
 CHECKLISTS.push(...FLUXOS_PRINCIPAIS);
