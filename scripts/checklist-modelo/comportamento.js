@@ -223,17 +223,18 @@
     });
   }
 
-  function anexar(id, arquivo){
-    aviso('Enviando imagem…');
-    return reduzir(arquivo).then(function(blob){
-      return fetch(API_ANEXOS + '?chave=' + ENC + '&item=' + encodeURIComponent(id), {
-        method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': blob.type, 'X-Nome': encodeURIComponent(arquivo.name || 'imagem') }, body: blob,
-      });
+  function subir(id, blob, nome){
+    return fetch(API_ANEXOS + '?chave=' + ENC + '&item=' + encodeURIComponent(id), {
+      method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': blob.type, 'X-Nome': encodeURIComponent(nome || 'imagem') }, body: blob,
     }).then(function(r){
       return r.json().catch(function(){ return {}; }).then(function(j){ if (!r.ok) throw new Error(j.erro || 'Não foi possível anexar a imagem.'); return j; });
-    }).then(function(j){
-      (anexos[id] = anexos[id] || []).push(j.anexo); renderAnexos(); aviso('Imagem anexada');
-    }).catch(function(e){ aviso(e.message || 'Não foi possível anexar a imagem.'); });
+    }).then(function(j){ (anexos[id] = anexos[id] || []).push(j.anexo); renderAnexos(); return j.anexo; });
+  }
+  function anexar(id, arquivo){
+    aviso('Enviando imagem…');
+    return reduzir(arquivo).then(function(blob){ return subir(id, blob, arquivo.name); })
+      .then(function(){ aviso('Imagem anexada'); })
+      .catch(function(e){ aviso(e.message || 'Não foi possível anexar a imagem.'); });
   }
   function enviarImagens(id, arquivos){
     var imagens = [].slice.call(arquivos).filter(function(f){ return /^image\//.test(f.type); });
@@ -363,6 +364,92 @@
   }
   if ($('btnRelatorio')) $('btnRelatorio').addEventListener('click', copiarRelatorio);
 
+  /* ---------- Exportar só os problemas, exportar o checklist preenchido e importar ---------- */
+  var REL = window.ffRelatorioProblemas;
+  var FORMATO = 'faktory-flow-checklist';
+  var tituloChecklist = texto(document.querySelector('.hero h1')) || document.title;
+  function baixarArquivo(nome, blob){
+    /* Dentro do guia quem baixa é a página-mãe (o clique do usuário aconteceu lá). */
+    if (dentro) window.parent.postMessage({ ffChecklist: true, baixar: { nome: nome, blob: blob } }, location.origin);
+    else REL.baixar(nome, blob);
+  }
+  function contagem(){ return { feitos: caixas.filter(function(c){ return c.checked; }).length, total: caixas.length }; }
+  var ocupado = false;
+  function exportarProblemas(){
+    if (ocupado) return;
+    salvar();
+    var est = lerLocal();
+    if (!Object.keys(est.obs || {}).length) { aviso('Nenhum problema registrado neste checklist'); return; }
+    ocupado = true; aviso('Montando o relatório de problemas…');
+    REL.problemasDe(REL.etapasDo(document), est, nuvem.ativa ? anexos : {}, urlAnexo).then(function(problemas){
+      var c = contagem();
+      var html = REL.montarHtml({ geradoEm: Date.now(), autor: est.validador, checklists: [{ titulo: tituloChecklist, area: texto(document.querySelector('.hero .etiqueta')), validador: est.validador, atualizadoEm: est.t, feitos: c.feitos, total: c.total, problemas: problemas }] });
+      baixarArquivo('problemas-' + REL.slug(tituloChecklist) + '-' + REL.hoje() + '.html', new Blob([html], { type: 'text/html;charset=utf-8' }));
+      aviso(problemas.length + (problemas.length === 1 ? ' problema exportado' : ' problemas exportados'));
+    }).catch(function(){ aviso('Não foi possível montar o relatório.'); }).then(function(){ ocupado = false; });
+  }
+  function exportarPreenchido(){
+    if (ocupado) return;
+    salvar();
+    ocupado = true; aviso('Preparando o arquivo…');
+    var lista = [];
+    if (nuvem.ativa) Object.keys(anexos).forEach(function(id){ (anexos[id] || []).forEach(function(a){ lista.push({ item: id, a: a }); }); });
+    Promise.all(lista.map(function(x){ return REL.imagemDataUrl(urlAnexo(x.a)).then(function(src){ return src ? { item: x.item, nome: x.a.nome || '', tipo: x.a.tipo, dados: src.slice(src.indexOf(',') + 1) } : null; }); }))
+      .then(function(imgs){
+        var arq = { formato: FORMATO, versao: 1, chave: CHAVE, titulo: tituloChecklist, exportadoEm: new Date().toISOString(), dados: lerLocal(), anexos: imgs.filter(Boolean) };
+        baixarArquivo('checklist-' + REL.slug(tituloChecklist) + '-' + REL.hoje() + '.json', new Blob([JSON.stringify(arq)], { type: 'application/json' }));
+        aviso('Checklist exportado' + (arq.anexos.length ? ' com ' + arq.anexos.length + (arq.anexos.length === 1 ? ' imagem' : ' imagens') : ''));
+      }).catch(function(){ aviso('Não foi possível exportar o checklist.'); }).then(function(){ ocupado = false; });
+  }
+  function blobDe(base64, tipo){
+    var bin = atob(base64), bytes = new Uint8Array(bin.length);
+    for (var i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+    return new Blob([bytes], { type: tipo });
+  }
+  function importarPreenchido(arq){
+    if (!arq || arq.formato !== FORMATO || !arq.dados || typeof arq.dados !== 'object') { aviso('Este arquivo não é um checklist exportado pelo Guia'); return; }
+    if (arq.chave !== CHAVE) { aviso('Este arquivo é do checklist "' + (arq.titulo || arq.chave) + '". Abra esse checklist para importar.'); return; }
+    var imgs = (arq.anexos || []).filter(function(a){ return a && a.dados && itemDe(a.item); });
+    var msg = 'Importar "' + (arq.titulo || tituloChecklist) + '"' + (arq.exportadoEm ? ', exportado em ' + new Date(arq.exportadoEm).toLocaleString('pt-BR') : '') + '?\n\nAs marcações, registros, problemas e anotações de agora serão trocados pelos do arquivo.' + (imgs.length ? ' As ' + imgs.length + ' imagens do arquivo serão acrescentadas às etapas.' : '');
+    if (!confirm(msg)) return;
+    var d = arq.dados;
+    aplicarEstado({ marcados: d.marcados, regs: d.regs, obs: d.obs, validador: d.validador, notas: d.notas });
+    salvar();
+    if (!imgs.length) { aviso('Checklist importado'); return; }
+    if (!nuvem.ativa) { aviso('Checklist importado. As imagens só entram com o checklist aberto pelo Guia (logado).'); return; }
+    var feitas = 0, puladas = 0, fila = Promise.resolve();
+    imgs.forEach(function(a){
+      fila = fila.then(function(){
+        var blob = blobDe(a.dados, a.tipo || 'image/png');
+        var repetida = (anexos[a.item] || []).some(function(x){ return x.nome === a.nome && Number(x.tamanho) === blob.size; });
+        if (repetida) { puladas++; return; }
+        return subir(a.item, blob, a.nome).then(function(){ feitas++; aviso('Importando imagens… ' + feitas + ' de ' + imgs.length); });
+      }).catch(function(e){ puladas++; aviso(e.message || 'Uma imagem não pôde ser importada.'); });
+    });
+    fila.then(function(){ aviso('Checklist importado' + (feitas ? ' com ' + feitas + (feitas === 1 ? ' imagem' : ' imagens') : '') + (puladas ? ' (' + puladas + ' já existia' + (puladas === 1 ? '' : 'm') + ' ou não coube)' : '')); });
+  }
+  function lerArquivo(arquivo){
+    if (!arquivo) return;
+    arquivo.text().then(function(t){ importarPreenchido(JSON.parse(t)); }).catch(function(){ aviso('Não foi possível ler o arquivo. Escolha o .json exportado pelo checklist.'); });
+  }
+  if ($('btnProblemas')) $('btnProblemas').addEventListener('click', exportarProblemas);
+  if ($('btnExportar')) $('btnExportar').addEventListener('click', exportarPreenchido);
+  if ($('btnImportar')) $('btnImportar').addEventListener('click', function(){
+    var inp = document.createElement('input'); inp.type = 'file'; inp.accept = '.json,application/json';
+    inp.addEventListener('change', function(){ lerArquivo(inp.files[0]); });
+    inp.click();
+  });
+  /* Menu "Exportar" do topo (página aberta fora do guia). */
+  var menu = $('menuExportar');
+  if (menu) {
+    var abreMenu = menu.querySelector('[aria-haspopup]');
+    var fechaMenu = function(){ menu.classList.remove('on'); abreMenu.setAttribute('aria-expanded', 'false'); };
+    abreMenu.addEventListener('click', function(e){ e.stopPropagation(); var on = !menu.classList.contains('on'); menu.classList.toggle('on', on); abreMenu.setAttribute('aria-expanded', String(on)); if (on) menu.querySelector('[role=menuitem]').focus(); });
+    menu.addEventListener('click', function(e){ if (e.target.closest('[role=menuitem]')) fechaMenu(); });
+    document.addEventListener('click', function(e){ if (!menu.contains(e.target)) fechaMenu(); });
+    document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && menu.classList.contains('on')) { fechaMenu(); abreMenu.focus(); } });
+  }
+
   /* Índice lateral: destaca a seção visível. */
   var links = [].slice.call(document.querySelectorAll('.indice a'));
   if (links.length && 'IntersectionObserver' in window) {
@@ -406,6 +493,9 @@
     window.addEventListener('message', function(e){
       if (e.origin !== location.origin || !e.data || !e.data.ffAcao) return;
       if (e.data.ffAcao === 'relatorio') copiarRelatorio();
+      else if (e.data.ffAcao === 'problemas') exportarProblemas();
+      else if (e.data.ffAcao === 'exportar') exportarPreenchido();
+      else if (e.data.ffAcao === 'importar') importarPreenchido(e.data.arquivo);
       else if (e.data.ffAcao === 'recomecar') recomecar();
       else if (e.data.ffAcao === 'imprimir') window.print();
     });

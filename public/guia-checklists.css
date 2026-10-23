@@ -120,3 +120,23 @@
   .ckx-ir select { width: 100%; max-width: none; }
   .ckx-visor-acoes { flex: 0 0 auto; margin-left: auto; }
 }
+
+/* ---------- Exportar, importar e relatório de problemas ---------- */
+.ckx-relatorio { margin-left: auto; background: var(--brand-primary-950); border-color: var(--brand-primary-950); }
+.ckx-relatorio svg { color: var(--brand-accent); }
+.ckx-relatorio:disabled { opacity: .6; cursor: progress; transform: none; }
+.ckx-acoes-ck { display: inline-flex; gap: 8px; }
+.ckx-acoes-ck[hidden] { display: none; }
+.ckx-menu { position: relative; display: inline-flex; }
+.ckx-menu-lista { position: absolute; right: 0; top: calc(100% + 8px); z-index: 760; display: grid; gap: 2px; width: min(320px, calc(100vw - 32px)); padding: 6px; border: 1px solid var(--color-line); border-radius: var(--radius-lg); background: #fff; box-shadow: var(--shadow-lg);
+  opacity: 0; visibility: hidden; transform: translateY(-6px) scale(.98); transform-origin: top right; transition: opacity var(--dur-fast), transform var(--dur-base) var(--ease-out), visibility 0s var(--dur-base); }
+.ckx-menu.on .ckx-menu-lista { opacity: 1; visibility: visible; transform: none; transition: opacity var(--dur-fast), transform var(--dur-base) var(--ease-out), visibility 0s; }
+.ckx-menu-lista button { display: grid; grid-template-columns: 20px 1fr; column-gap: 10px; align-items: start; width: 100%; padding: 9px 12px; border: 0; border-radius: var(--radius-md); background: none; color: var(--color-ink); text-align: left; cursor: pointer; transition: background-color var(--dur-fast), transform var(--dur-base) var(--ease-spring); }
+.ckx-menu-lista button:hover, .ckx-menu-lista button:focus-visible { background: var(--brand-primary-50); transform: translateX(2px); }
+.ckx-menu-lista button:focus-visible { outline: 3px solid var(--brand-accent-soft); }
+.ckx-menu-lista svg { grid-row: span 2; width: 18px; height: 18px; margin-top: 2px; color: var(--brand-primary); }
+.ckx-menu-lista b { font: 700 13.5px var(--font-display); color: var(--brand-primary-900); }
+.ckx-menu-lista small { color: var(--color-muted); font-size: 12px; line-height: 1.4; }
+@container (max-width: 760px) { .ckx-menu > .ckx-btn span { display: none; } .ckx-menu > .ckx-btn { flex: 0 0 42px; padding: 0; } }
+@media (max-width: 700px) { .ckx-relatorio { margin-left: 0; width: 100%; } }
+@media (prefers-reduced-motion: reduce) { .ckx-menu-lista, .ckx-menu-lista button { transition: none; } }

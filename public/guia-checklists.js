@@ -15,6 +15,9 @@
     externo: svg('<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6M10 14 21 3"/>'),
     consultor: svg('<circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="12" r="2.5"/><circle cx="6" cy="18" r="2.5"/><path d="M8.5 6H13a3 3 0 0 1 3 3v.5M8.5 18H13a3 3 0 0 0 3-3v-.5"/>'),
     estagiario: svg('<path d="m2 9 10-5 10 5-10 5Z"/><path d="M6 11.5V16c0 1.2 2.7 2.5 6 2.5s6-1.3 6-2.5v-4.5"/>'),
+    bandeira: svg('<path d="M4 22V4"/><path d="M4 4h13l-2 4 2 4H4"/>'),
+    importar: svg('<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m17 8-5-5-5 5M12 3v12"/>'),
+    arquivo: svg('<path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9Z"/><path d="M14 3v6h6M9 14l2 2 4-4"/>'),
     qa: svg('<path d="M12 3 4 6v6c0 4.5 3.2 7.8 8 9 4.8-1.2 8-4.5 8-9V6Z"/><path d="m9 12 2 2 4-4"/>'),
   };
   icones.fluxos = icones.estagiario;
@@ -58,7 +61,7 @@
           <div>
             <span class="ckx-eyebrow">Biblioteca</span>
             <h1>Checklists do sistema</h1>
-            <p>Fluxos de teste para consultores, trilha de integração para estagiários e os planos completos de validação. Abra aqui mesmo ou baixe o HTML. Aqui dentro o seu progresso e as imagens que você anexar às etapas ficam salvos na sua conta, em qualquer computador.</p>
+            <p>Fluxos de teste para consultores, trilha de integração para estagiários e os planos completos de validação. Abra aqui mesmo ou baixe o HTML. Aqui dentro o seu progresso e as imagens que você anexar às etapas ficam salvos na sua conta, em qualquer computador. Em <b>Relatório de problemas</b> você baixa, num arquivo só, os problemas de todos os seus checklists com as imagens, para o time de desenvolvimento.</p>
           </div>
           <dl class="ckx-stats">
             <div><dt>Checklists</dt><dd>${itens.length}</dd></div>
@@ -69,6 +72,7 @@
         <div class="ckx-barra">
           <label class="ckx-busca">${icones.busca}<input type="search" data-busca placeholder="Buscar por área, fluxo ou módulo…" aria-label="Buscar checklists"></label>
           <div class="ckx-filtros" role="group" aria-label="Filtrar por tipo" data-filtros></div>
+          <button type="button" class="ckx-btn ckx-relatorio" data-relatorio-geral title="Baixar os problemas de todos os seus checklists, com as imagens">${icones.bandeira}<span>Relatório de problemas</span></button>
         </div>
         <p class="ckx-contagem" data-contagem aria-live="polite"></p>
         <div class="ckx-grade" data-grade></div>
@@ -82,8 +86,18 @@
             <select data-ir-select aria-label="Ir para a seção"><option value="">Ir para…</option></select>
           </label>
           <span class="ckx-visor-acoes">
-            <button type="button" class="ckx-btn ckx-btn--sec" data-acao="relatorio" title="Copiar o relatório de validação (Markdown)">${icones.relatorio}<span>Relatório</span></button>
-            <button type="button" class="ckx-btn ckx-btn--sec ckx-btn--icone" data-acao="recomecar" aria-label="Recomeçar este checklist" title="Recomeçar (apaga marcações e anotações)">${icones.recomecar}</button>
+            <span class="ckx-acoes-ck" data-acoes-ck>
+              <span class="ckx-menu" data-menu>
+                <button type="button" class="ckx-btn ckx-btn--sec" aria-haspopup="menu" aria-expanded="false" aria-controls="ckx-menu-exportar" data-menu-abrir title="Exportar os problemas ou o checklist preenchido">${icones.baixar}<span>Exportar</span></button>
+                <span class="ckx-menu-lista" id="ckx-menu-exportar" role="menu" aria-label="Exportar">
+                  <button type="button" role="menuitem" data-acao="problemas">${icones.bandeira}<b>Só os problemas</b><small>Relatório com as imagens, para o desenvolvimento</small></button>
+                  <button type="button" role="menuitem" data-acao="exportar">${icones.arquivo}<b>Checklist preenchido</b><small>Arquivo .json com tudo o que você fez, para importar</small></button>
+                  <button type="button" role="menuitem" data-acao="relatorio">${icones.relatorio}<b>Copiar relatório</b><small>Texto em Markdown, sem as imagens</small></button>
+                </span>
+              </span>
+              <button type="button" class="ckx-btn ckx-btn--sec ckx-btn--icone" data-importar aria-label="Importar um checklist preenchido" title="Importar um checklist preenchido (.json)">${icones.importar}</button>
+              <button type="button" class="ckx-btn ckx-btn--sec ckx-btn--icone" data-acao="recomecar" aria-label="Recomeçar este checklist" title="Recomeçar (apaga marcações e anotações)">${icones.recomecar}</button>
+            </span>
             <a class="ckx-btn ckx-btn--sec ckx-btn--icone" data-visor-nova target="_blank" rel="noopener" aria-label="Abrir em nova aba" title="Abrir em nova aba">${icones.externo}</a>
             <a class="ckx-btn" data-visor-baixar title="Baixar o HTML">${icones.baixar}<span>Baixar</span></a>
           </span>
@@ -155,6 +169,9 @@
       $('[data-visor-baixar]').setAttribute('download', i.arquivo.split('/').pop());
       frame.style.height = '';
       $('[data-ir]').hidden = true;
+      // Os planos de QA são páginas próprias, sem progresso salvo: ficam sem exportar, importar e recomeçar.
+      $('[data-acoes-ck]').hidden = !i.chave;
+      fecharMenu();
       frame.src = urlAbrir(i);
       lista.hidden = true;
       visor.hidden = false;
@@ -199,6 +216,10 @@
         el.textContent = e.data.sinc.texto;
         el.dataset.estado = e.data.sinc.estado;
       }
+      if (e.data.baixar?.blob instanceof Blob) {
+        const nome = String(e.data.baixar.nome || 'checklist').replace(/[\\/:*?"<>|]+/g, '-').slice(0, 120);
+        window.ffRelatorioProblemas?.baixar(nome, e.data.baixar.blob);
+      }
       if (e.data.imagem && /^\/api\/checklists-anexos\?id=\d+$/.test(e.data.imagem.src)) {
         const dlg = $('[data-imagem]');
         $('[data-imagem-img]').src = e.data.imagem.src;
@@ -216,9 +237,71 @@
       scrollTo({ top: topoFrame + s.top - 150, behavior: 'smooth' });
     });
 
+    /* Menu "Exportar" do checklist aberto. */
+    const menu = $('[data-menu]');
+    const botaoMenu = $('[data-menu-abrir]');
+    function fecharMenu() { menu.classList.remove('on'); botaoMenu.setAttribute('aria-expanded', 'false'); }
+    botaoMenu.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const on = !menu.classList.contains('on');
+      menu.classList.toggle('on', on);
+      botaoMenu.setAttribute('aria-expanded', String(on));
+      if (on) menu.querySelector('[role=menuitem]').focus();
+    });
+    document.addEventListener('click', (e) => { if (!menu.contains(e.target)) fecharMenu(); });
+
+    /* Importar: o seletor de arquivo fica aqui (o clique foi nesta página) e o conteúdo vai para o checklist aberto. */
+    const seletor = Object.assign(document.createElement('input'), { type: 'file', accept: '.json,application/json', hidden: true });
+    raiz.append(seletor);
+    seletor.addEventListener('change', async () => {
+      const arquivo = seletor.files[0];
+      seletor.value = '';
+      if (!arquivo) return;
+      try { frame.contentWindow?.postMessage({ ffAcao: 'importar', arquivo: JSON.parse(await arquivo.text()) }, location.origin); }
+      catch { avisar('Não foi possível ler o arquivo. Escolha o .json exportado pelo checklist.'); }
+    });
+
+    /* Relatório de problemas de todos os checklists do usuário, num HTML só, com as imagens. */
+    async function relatorioGeral(botao) {
+      const R = window.ffRelatorioProblemas;
+      if (!R || botao.disabled) return;
+      botao.disabled = true;
+      avisar('Juntando os problemas dos seus checklists…');
+      try {
+        const r = await fetch('/api/checklists-progresso?problemas=1', { credentials: 'same-origin', cache: 'no-store' });
+        if (r.status === 401) throw new Error('Entre no Guia para gerar o relatório.');
+        if (!r.ok) throw new Error('Não foi possível ler os seus checklists. Tente de novo.');
+        const ordem = itens.map((i) => i.chave);
+        const lista = (await r.json()).itens.filter((p) => ordem.includes(p.chave)).sort((a, b) => ordem.indexOf(a.chave) - ordem.indexOf(b.chave));
+        if (!lista.length) { avisar('Nenhum problema registrado nos seus checklists'); return; }
+        const checklists = [];
+        for (const p of lista) {
+          const m = itens.find((i) => i.chave === p.chave);
+          const html = await fetch(urlAbrir(m), { credentials: 'same-origin' }).then((x) => (x.ok ? x.text() : ''));
+          const estrutura = R.etapasDo(new DOMParser().parseFromString(html, 'text/html'));
+          const porEtapa = {};
+          for (const a of p.anexos) (porEtapa[a.item] ||= []).push(a);
+          const problemas = await R.problemasDe(estrutura, p.dados, porEtapa, (a) => `/api/checklists-anexos?id=${encodeURIComponent(a.id)}`);
+          checklists.push({ titulo: m.titulo, area: m.area, validador: p.dados?.validador, atualizadoEm: p.atualizadoEm, feitos: Object.keys(p.dados?.marcados || {}).length, total: estrutura.ordem.length || m.etapas, problemas });
+          avisar(`Juntando os problemas… ${checklists.length} de ${lista.length} checklists`);
+        }
+        const total = checklists.reduce((s, c) => s + c.problemas.length, 0);
+        const doc = R.montarHtml({ geradoEm: Date.now(), autor: checklists.find((c) => c.validador)?.validador, checklists });
+        R.baixar(`problemas-checklists-${R.hoje()}.html`, new Blob([doc], { type: 'text/html;charset=utf-8' }));
+        avisar(`${total} ${total === 1 ? 'problema exportado' : 'problemas exportados'} de ${checklists.length} ${checklists.length === 1 ? 'checklist' : 'checklists'}`);
+      } catch (erro) {
+        avisar(erro.message || 'Não foi possível montar o relatório.');
+      } finally {
+        botao.disabled = false;
+      }
+    }
+
     raiz.addEventListener('click', (e) => {
       const ac = e.target.closest('[data-acao]');
-      if (ac) { frame.contentWindow?.postMessage({ ffAcao: ac.dataset.acao }, location.origin); return; }
+      if (ac) { fecharMenu(); frame.contentWindow?.postMessage({ ffAcao: ac.dataset.acao }, location.origin); return; }
+      if (e.target.closest('[data-importar]')) { seletor.click(); return; }
+      const rg = e.target.closest('[data-relatorio-geral]');
+      if (rg) { relatorioGeral(rg); return; }
       const f = e.target.closest('[data-filtro]');
       if (f) { filtro = f.dataset.filtro; renderFiltros(); renderGrade(); return; }
       const a = e.target.closest('[data-abrir]');
@@ -226,7 +309,11 @@
       if (e.target.closest('[data-voltar]')) fechar();
     });
     $('[data-busca]').addEventListener('input', (e) => { busca = e.target.value; renderGrade(); });
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && aberto && !painel.hidden) fechar(); });
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape' || painel.hidden) return;
+      if (menu.classList.contains('on')) { fecharMenu(); botaoMenu.focus(); return; }
+      if (aberto) fechar();
+    });
     document.addEventListener('ff:aba', (e) => { if (e.detail?.aba === 'checklist' && !aberto) renderGrade(); });
     // Outra aba (ex.: Vídeos de fluxo) pede para abrir um checklist específico.
     document.addEventListener('ff:abrir-checklist', (e) => { if (e.detail?.arquivo) abrir(e.detail.arquivo); });

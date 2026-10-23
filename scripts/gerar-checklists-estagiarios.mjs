@@ -19,6 +19,8 @@ const RAIZ = path.join(AQUI, '..');
 const raizes = ['public/checklists', 'Checklists'].filter((d) => existsSync(path.join(RAIZ, d)));
 const CSS = await readFile(path.join(AQUI, 'checklist-modelo/estilo.css'), 'utf8');
 const JS = await readFile(path.join(AQUI, 'checklist-modelo/comportamento.js'), 'utf8');
+/* Montagem do relatório de problemas: o mesmo arquivo que a biblioteca do guia usa, embutido para o checklist baixado. */
+const JS_RELATORIO = await readFile(path.join(RAIZ, 'public/checklists-relatorio.js'), 'utf8');
 const LOGO = `data:image/png;base64,${(await readFile(path.join(RAIZ, 'public/assets/Logo Faktory Flow.png'))).toString('base64')}`;
 const FONTES = 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap';
 
@@ -43,6 +45,9 @@ const ICONE = {
   obra: svg('<path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4Z"/>'),
   clipe: svg('<path d="m21.4 11.1-9.2 9.2a5.5 5.5 0 0 1-7.8-7.8l9.2-9.2a3.7 3.7 0 0 1 5.2 5.2l-9.2 9.2a1.8 1.8 0 0 1-2.6-2.6l8.5-8.5"/>'),
   copiar: svg('<rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h8"/>'),
+  baixar: svg('<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5M12 15V3"/>'),
+  importar: svg('<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m17 8-5-5-5 5M12 3v12"/>'),
+  arquivo: svg('<path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9Z"/><path d="M14 3v6h6M9 14l2 2 4-4"/>'),
   lista: svg('<path d="M9 6h11M9 12h11M9 18h11"/><path d="m3 6 1 1 2-2M3 12l1 1 2-2M3 18l1 1 2-2"/>'),
   ok: svg('<path d="M20 6 9 17l-5-5"/>'),
   alerta: svg('<path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4M12 17h.01"/>'),
@@ -93,7 +98,15 @@ function topo(subtitulo, marca) {
   <div class="marca"><strong>${esc(marca)}</strong><span>${esc(subtitulo)}</span></div>
   <div class="espaco"></div>
   <span class="sinc" id="sinc" role="status" aria-live="polite"></span>
-  <button class="btn" id="btnRelatorio" type="button" title="Copiar o relatório de validação (Markdown)">${ICONE.copiar}<span>Relatório</span></button>
+  <div class="menu" id="menuExportar">
+    <button class="btn" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="menuExportarLista" title="Exportar os problemas ou o checklist preenchido">${ICONE.baixar}<span>Exportar</span></button>
+    <div class="menu-lista" id="menuExportarLista" role="menu" aria-label="Exportar">
+      <button type="button" role="menuitem" id="btnProblemas">${ICONE.bandeira}<b>Só os problemas</b><small>Relatório com as imagens, para o desenvolvimento</small></button>
+      <button type="button" role="menuitem" id="btnExportar">${ICONE.arquivo}<b>Checklist preenchido</b><small>Arquivo .json com tudo o que você fez, para importar</small></button>
+      <button type="button" role="menuitem" id="btnRelatorio">${ICONE.copiar}<b>Copiar relatório</b><small>Texto em Markdown, sem as imagens</small></button>
+    </div>
+  </div>
+  <button class="btn" id="btnImportar" type="button" title="Importar um checklist preenchido (.json)">${ICONE.importar}<span>Importar</span></button>
   <button class="btn" id="btnImprimir" type="button" title="Imprimir ou salvar em PDF">${ICONE.imprimir}<span>Imprimir</span></button>
   <button class="btn" id="btnLimpar" type="button" title="Desmarcar tudo">${ICONE.limpar}<span>Recomeçar</span></button>
   <button class="btn" id="btnTema" type="button" aria-label="Alternar tema claro/escuro" title="Alternar tema">${ICONE.tema}</button>
@@ -137,13 +150,14 @@ ${corpo}
 <p class="rodape">${esc(rodape)}</p>
 </main>
 </div>
+<script>${JS_RELATORIO}</script>
 <script>${JS}</script>
 </body>
 </html>
 `;
 }
 
-const blocoAnotacoes = (placeholder) => `<section class="secao no-print-notas" id="s-notas"><h2>${ICONE.nota}Minhas dúvidas e anotações</h2><label class="validador">Quem está validando <input id="validador" type="text" placeholder="Seu nome (vai no relatório)" autocomplete="name"></label><textarea id="notas" placeholder="${esc(placeholder)}"></textarea><p class="dica">Fica salvo só neste navegador. Use <b>Relatório</b> no topo para copiar o resultado da validação.</p></section>`;
+const blocoAnotacoes = (placeholder) => `<section class="secao no-print-notas" id="s-notas"><h2>${ICONE.nota}Minhas dúvidas e anotações</h2><label class="validador">Quem está validando <input id="validador" type="text" placeholder="Seu nome (vai no relatório)" autocomplete="name"></label><textarea id="notas" placeholder="${esc(placeholder)}"></textarea><p class="dica">No Guia, fica salvo na sua conta; no arquivo baixado, só neste navegador. Use <b>Exportar</b> no topo para baixar só os problemas (com as imagens) ou o checklist preenchido, e <b>Importar</b> para carregar um checklist exportado.</p></section>`;
 
 function checklist(c, opcoes = {}) {
   const rotuloRes = opcoes.rotuloRes || 'Resultado';

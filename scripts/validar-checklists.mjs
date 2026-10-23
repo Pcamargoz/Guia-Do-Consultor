@@ -52,7 +52,12 @@ for (const i of manifest.itens) {
   const selos = { v: contarSelos('v'), d: contarSelos('d'), n: contarSelos('n') };
   checar(selos.v === i.verificadas, `${rotulo}: verificadas do manifest = selos`, `${i.verificadas} × ${selos.v}`);
   checar(!/undefined|\[object Object\]|NaN/.test(html), `${rotulo}: sem "undefined/NaN" no texto`);
-  checar((html.match(/<h1>/g) || []).length === 1, `${rotulo}: um único h1`);
+  /* o relatório de problemas embutido monta outro documento (com h1 próprio) dentro do script: só conta o HTML da página */
+  const semScripts = html.replace(/<script>[\s\S]*?<\/script>/g, '');
+  checar((semScripts.match(/<h1>/g) || []).length === 1, `${rotulo}: um único h1`);
+  const scriptRelatorio = html.match(/<script>(\/\* Relatório de problemas[\s\S]*?)<\/script>/);
+  try { new Function(scriptRelatorio[1]); ok.push(`${rotulo}: relatório de problemas embutido`); }
+  catch (e) { falhas.push(`${rotulo}: relatório de problemas embutido — ${scriptRelatorio ? e.message : 'não encontrado'}`); }
   for (const m of html.matchAll(/href="([^"#]+\.html)"/g)) checar(existsSync(path.join(path.dirname(caminho), m[1])), `${rotulo}: link ${m[1]} existe`);
   resumo.push([i.arquivo, i.etapas, selos.v, selos.d, selos.n]);
 }

@@ -250,6 +250,19 @@ html[data-theme="dark"] .dev-texto{color:#F6E7BF}
 html[data-theme="dark"] .dev-item{background:repeating-linear-gradient(135deg,#3A2F14 0 14px,#33290F 14px 28px)}
 @media (prefers-color-scheme:dark){html:not([data-theme="light"]) .dev-texto{color:#F6E7BF}html:not([data-theme="light"]) .dev-item{background:repeating-linear-gradient(135deg,#3A2F14 0 14px,#33290F 14px 28px)}}
 @media print{.dev-item{break-inside:avoid}.dev-faixa{background:#C98A1B!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+
+/* ---------- Menu "Exportar" do topo ---------- */
+.menu{position:relative}
+.menu-lista{position:absolute;right:0;top:calc(100% + 8px);z-index:30;display:grid;gap:2px;width:min(320px,calc(100vw - 24px));padding:6px;border:1px solid var(--line);border-radius:var(--r-lg);background:var(--surface);box-shadow:var(--sh-lg);
+  opacity:0;visibility:hidden;transform:translateY(-6px) scale(.98);transform-origin:top right;transition:opacity .16s,transform .22s var(--ease-out),visibility 0s .22s}
+.menu.on .menu-lista{opacity:1;visibility:visible;transform:none;transition:opacity .16s,transform .22s var(--ease-out),visibility 0s}
+.menu-lista button{display:grid;grid-template-columns:20px 1fr;column-gap:10px;align-items:start;width:100%;padding:9px 12px;border:0;border-radius:var(--r-md);background:none;color:var(--ink);text-align:left;cursor:pointer;transition:background .15s,transform .2s var(--ease-spring)}
+.menu-lista button:hover,.menu-lista button:focus-visible{background:var(--p50);transform:translateX(2px)}
+.menu-lista svg{grid-row:span 2;width:18px;height:18px;margin-top:2px;color:var(--p)}
+.menu-lista b{font:700 13.5px var(--display);color:var(--p900)}
+.menu-lista small{color:var(--muted);font-size:12px;line-height:1.4}
+:root[data-theme="dark"] .menu-lista button:hover,:root[data-theme="dark"] .menu-lista button:focus-visible{background:var(--alt)}
+@media (prefers-reduced-motion:reduce){.menu-lista,.menu-lista button{transition:none}}
 </style>
 </head>
 <body>
@@ -259,7 +272,15 @@ html[data-theme="dark"] .dev-item{background:repeating-linear-gradient(135deg,#3
   <div class="marca"><strong>Fluxos do Consultor</strong><span>Consultor · Fluxo de produção</span></div>
   <div class="espaco"></div>
   <span class="sinc" id="sinc" role="status" aria-live="polite"></span>
-  <button class="btn" id="btnRelatorio" type="button" title="Copiar o relatório de validação (Markdown)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h8"/></svg><span>Relatório</span></button>
+  <div class="menu" id="menuExportar">
+    <button class="btn" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="menuExportarLista" title="Exportar os problemas ou o checklist preenchido"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5M12 15V3"/></svg><span>Exportar</span></button>
+    <div class="menu-lista" id="menuExportarLista" role="menu" aria-label="Exportar">
+      <button type="button" role="menuitem" id="btnProblemas"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 22V4"/><path d="M4 4h13l-2 4 2 4H4"/></svg><b>Só os problemas</b><small>Relatório com as imagens, para o desenvolvimento</small></button>
+      <button type="button" role="menuitem" id="btnExportar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9Z"/><path d="M14 3v6h6M9 14l2 2 4-4"/></svg><b>Checklist preenchido</b><small>Arquivo .json com tudo o que você fez, para importar</small></button>
+      <button type="button" role="menuitem" id="btnRelatorio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h8"/></svg><b>Copiar relatório</b><small>Texto em Markdown, sem as imagens</small></button>
+    </div>
+  </div>
+  <button class="btn" id="btnImportar" type="button" title="Importar um checklist preenchido (.json)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m17 8-5-5-5 5M12 3v12"/></svg><span>Importar</span></button>
   <button class="btn" id="btnImprimir" type="button" title="Imprimir ou salvar em PDF"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg><span>Imprimir</span></button>
   <button class="btn" id="btnLimpar" type="button" title="Desmarcar tudo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg><span>Recomeçar</span></button>
   <button class="btn" id="btnTema" type="button" aria-label="Alternar tema claro/escuro" title="Alternar tema"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg></button>
@@ -329,12 +350,153 @@ html[data-theme="dark"] .dev-item{background:repeating-linear-gradient(135deg,#3
 
 <section class="secao"><h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Ainda não validado na prática</h2><p class="dica" style="margin:-4px 0 10px">Estas partes não puderam ser conferidas. Valide no ambiente de teste antes de usar em um cliente.</p><ul class="pendencias"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Roteiro escrito a partir dos planos de validação: a execução por uma pessoa é a primeira validação. Marque o que confere e use &quot;Problema&quot; no que divergir.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Faltam: criar etapas e processo, segunda estrutura sobreposta, feriados, requisição em OP já Produzida, aprovar/rejeitar/reabrir apontamento (dependem de o apontamento finalizar, o que o defeito de horário impede) e o painel de fábrica.</span></li></ul></section>
 
-<section class="secao no-print-notas" id="s-notas"><h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Minhas dúvidas e anotações</h2><label class="validador">Quem está validando <input id="validador" type="text" placeholder="Seu nome (vai no relatório)" autocomplete="name"></label><textarea id="notas" placeholder="Anote defeitos (com os passos para reproduzir), números de registros criados e o que precisa de configuração…"></textarea><p class="dica">Fica salvo só neste navegador. Use <b>Relatório</b> no topo para copiar o resultado da validação.</p></section>
+<section class="secao no-print-notas" id="s-notas"><h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Minhas dúvidas e anotações</h2><label class="validador">Quem está validando <input id="validador" type="text" placeholder="Seu nome (vai no relatório)" autocomplete="name"></label><textarea id="notas" placeholder="Anote defeitos (com os passos para reproduzir), números de registros criados e o que precisa de configuração…"></textarea><p class="dica">No Guia, fica salvo na sua conta; no arquivo baixado, só neste navegador. Use <b>Exportar</b> no topo para baixar só os problemas (com as imagens) ou o checklist preenchido, e <b>Importar</b> para carregar um checklist exportado.</p></section>
 
 <div class="concluido" id="concluido" role="status"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Fluxo concluído. Registre os defeitos encontrados e limpe os registros de teste.</div>
 <p class="rodape">Fluxos do Consultor · Faktory Flow v1.22.12 · OP-000109 (19/10) e OP-000110 e 000111 (21/10): estrutura, requisições, baixa, estorno, conclusão, entrada do produto acabado e separação executados; o apontamento ainda não finaliza</p>
 </main>
 </div>
+<script>/* Relatório de problemas dos checklists: um HTML único, com as imagens dentro, para mandar ao time de desenvolvimento.
+   Usado pelo checklist (scripts/checklist-modelo/comportamento.js, que recebe este arquivo embutido pelo gerador) e pela
+   biblioteca do guia (guia-checklists.js, que junta os problemas de todos os checklists do usuário). */
+(function(){
+  if (window.ffRelatorioProblemas) return;
+
+  function esc(v){ return String(v == null ? '' : v).replace(/[&<>"']/g, function(c){ return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+  function texto(el){ return el ? el.textContent.replace(/\s+/g, ' ').trim() : ''; }
+  function tituloDe(h){
+    if (!h) return '';
+    var c = h.cloneNode(true);
+    [].forEach.call(c.querySelectorAll('.n, .cont, svg'), function(x){ x.remove(); });
+    return texto(c);
+  }
+
+  /* Etapas de um checklist (a página aberta ou o HTML baixado do servidor): seção, texto, resultado esperado e campo de registro. */
+  function etapasDo(doc){
+    var etapas = {}, ordem = [];
+    [].forEach.call(doc.querySelectorAll('.item input[type=checkbox][data-id]'), function(c){
+      var item = c.closest('.item'), id = c.getAttribute('data-id'), grupo = item.closest('[data-grupo]');
+      var reg = item.querySelector('.reg');
+      var res = item.querySelector('.res');
+      var esperado = '';
+      if (res) { var r = res.cloneNode(true), b = r.querySelector('b'); if (b) b.remove(); esperado = texto(r); }
+      etapas[id] = { secao: grupo ? tituloDe(grupo.querySelector('h2, h3')) : '', etapa: texto(item.querySelector('.acao')), esperado: esperado, campo: reg ? reg.getAttribute('aria-label') || '' : '' };
+      ordem.push(id);
+    });
+    return { titulo: texto(doc.querySelector('.hero h1')), etiqueta: texto(doc.querySelector('.hero .etiqueta')), etapas: etapas, ordem: ordem };
+  }
+
+  /* Imagem anexada como data: URL, para o relatório abrir em qualquer computador sem login. */
+  function imagemDataUrl(url){
+    return fetch(url, { credentials: 'same-origin' })
+      .then(function(r){ if (!r.ok) throw new Error(String(r.status)); return r.blob(); })
+      .then(function(b){ return new Promise(function(ok, falha){ var f = new FileReader(); f.onload = function(){ ok(f.result); }; f.onerror = falha; f.readAsDataURL(b); }); })
+      .catch(function(){ return null; });
+  }
+
+  /* Problemas de um checklist a partir do estado salvo (dados.obs, dados.regs) e das imagens de cada etapa. */
+  function problemasDe(estrutura, dados, anexosPorEtapa, urlAnexo){
+    var obs = (dados && dados.obs) || {}, regs = (dados && dados.regs) || {};
+    var ids = estrutura.ordem.filter(function(id){ return obs[id] && String(obs[id]).trim(); });
+    Object.keys(obs).forEach(function(id){ if (ids.indexOf(id) < 0 && String(obs[id]).trim()) ids.push(id); });
+    return Promise.all(ids.map(function(id){
+      var e = estrutura.etapas[id] || { secao: '', etapa: 'Etapa que não existe mais nesta versão do checklist (' + id + ')', esperado: '', campo: '' };
+      var lista = (anexosPorEtapa && anexosPorEtapa[id]) || [];
+      return Promise.all(lista.map(function(a){ return imagemDataUrl(urlAnexo(a)).then(function(src){ return { src: src, nome: a.nome || '' }; }); }))
+        .then(function(imagens){
+          return { id: id, secao: e.secao, etapa: e.etapa, esperado: e.esperado, campo: e.campo, registro: regs[id] || '', problema: String(obs[id]).trim(), imagens: imagens.filter(function(i){ return i.src; }), faltaram: imagens.filter(function(i){ return !i.src; }).length };
+        });
+    }));
+  }
+
+  function data(d){ try { return new Date(d).toLocaleString('pt-BR', { dateStyle: 'short', timeStyle: 'short' }); } catch(e) { return ''; } }
+
+  /* HTML do relatório. checklists: [{ titulo, area, validador, atualizadoEm, feitos, total, problemas: [...] }] */
+  function montarHtml(o){
+    var cks = o.checklists.filter(function(c){ return c.problemas.length; });
+    var total = cks.reduce(function(s, c){ return s + c.problemas.length; }, 0);
+    var imagens = cks.reduce(function(s, c){ return s + c.problemas.reduce(function(t, p){ return t + p.imagens.length; }, 0); }, 0);
+    var n = 0;
+    var resumo = cks.length > 1 ? '<nav class="sumario" aria-label="Checklists com problemas"><h2>Checklists</h2><ol>' + cks.map(function(c, i){
+      return '<li><a href="#ck-' + (i + 1) + '"><span>' + esc(c.area ? c.area + ' · ' : '') + esc(c.titulo) + '</span><b>' + c.problemas.length + '</b></a></li>';
+    }).join('') + '</ol></nav>' : '';
+    var corpo = cks.map(function(c, i){
+      var meta = [c.validador ? 'Validado por ' + esc(c.validador) : '', c.atualizadoEm ? 'Atualizado em ' + esc(data(c.atualizadoEm)) : '', c.total ? esc(c.feitos + ' de ' + c.total + ' etapas feitas') : ''].filter(Boolean).join(' · ');
+      return '<section class="ck" id="ck-' + (i + 1) + '"><header><span class="area">' + esc(c.area || 'Checklist') + '</span><h2>' + esc(c.titulo) + '</h2>' + (meta ? '<p class="meta">' + meta + '</p>' : '') + '</header>' +
+        c.problemas.map(function(p){
+          n++;
+          var figs = p.imagens.map(function(im, k){
+            return '<figure><button type="button" class="ver" data-src="' + k + '" aria-label="Ampliar imagem"><img src="' + im.src + '" alt="' + esc(im.nome || 'Imagem anexada') + '"></button>' + (im.nome ? '<figcaption>' + esc(im.nome) + '</figcaption>' : '') + '</figure>';
+          }).join('');
+          return '<article class="prob"><div class="cab"><span class="num">P' + n + '</span>' + (p.secao ? '<span class="secao">' + esc(p.secao) + '</span>' : '') + '</div>' +
+            '<h3>' + esc(p.etapa) + '</h3>' +
+            '<dl>' + (p.esperado ? '<div><dt>Resultado esperado</dt><dd>' + esc(p.esperado) + '</dd></div>' : '') +
+            (p.registro ? '<div><dt>' + esc(p.campo || 'Registro') + '</dt><dd class="mono">' + esc(p.registro) + '</dd></div>' : '') + '</dl>' +
+            '<div class="obs"><strong>Problema encontrado</strong><p>' + esc(p.problema) + '</p></div>' +
+            (figs ? '<div class="imgs">' + figs + '</div>' : '') +
+            (p.faltaram ? '<p class="aviso-img">' + p.faltaram + (p.faltaram === 1 ? ' imagem não pôde ser incluída' : ' imagens não puderam ser incluídas') + '.</p>' : '') +
+            '</article>';
+        }).join('') + '</section>';
+    }).join('');
+    var titulo = cks.length === 1 ? 'Problemas: ' + cks[0].titulo : 'Relatório de problemas dos checklists';
+    var vazio = '<p class="vazio">Nenhum problema registrado. Use o botão <b>Problema</b> numa etapa do checklist para descrever o que aconteceu.</p>';
+    return '<!DOCTYPE html>\n<html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">' +
+      '<title>' + esc(titulo) + ' · Faktory Flow</title><style>' + CSS + '</style></head><body>' +
+      '<header class="topo"><div><span class="eyebrow">Faktory Flow · Relatório para o desenvolvimento</span><h1>' + esc(titulo) + '</h1>' +
+      '<p>Gerado em ' + esc(data(o.geradoEm || Date.now())) + (o.autor ? ' por ' + esc(o.autor) : '') + '. Cada item é uma etapa de checklist em que o teste encontrou um problema, com a descrição e as imagens anexadas.</p></div>' +
+      '<dl class="numeros"><div><dt>Problemas</dt><dd>' + total + '</dd></div><div><dt>Checklists</dt><dd>' + cks.length + '</dd></div><div><dt>Imagens</dt><dd>' + imagens + '</dd></div></dl>' +
+      '<button type="button" class="imprimir" onclick="window.print()">Imprimir ou salvar em PDF</button></header>' +
+      '<main>' + (total ? resumo + corpo : vazio) + '</main>' +
+      '<dialog class="visor"><img alt=""><form method="dialog"><button>Fechar</button></form></dialog>' +
+      '<script>' + SCRIPT + '<\/script></body></html>\n';
+  }
+
+  var CSS = [
+    ':root{--p:#3478A7;--p900:#143650;--p950:#0C2438;--lima:#D5DD26;--ink:#13293D;--muted:#4B6073;--line:#D8E3EC;--bad:#B42318;--bad-bg:#FDECEA;--canvas:#F2F6FA;color-scheme:light}',
+    '*{box-sizing:border-box}body{margin:0;background:var(--canvas);color:var(--ink);font:15px/1.6 Inter,"Segoe UI",system-ui,sans-serif;-webkit-font-smoothing:antialiased}',
+    '.topo{display:grid;gap:18px;padding:32px max(16px,calc(50% - 470px));background:linear-gradient(135deg,var(--p950),#1C4867 62%,#255C83);color:#fff}',
+    '.eyebrow{font:800 11.5px "Segoe UI",system-ui,sans-serif;letter-spacing:.11em;text-transform:uppercase;color:var(--lima)}',
+    'h1{margin:6px 0 0;font:800 clamp(1.6rem,3.4vw,2.3rem)/1.15 "Segoe UI",system-ui,sans-serif;letter-spacing:-.02em}.topo p{margin:10px 0 0;max-width:68ch;color:rgb(255 255 255/.84)}',
+    '.numeros{display:flex;flex-wrap:wrap;gap:10px;margin:0}.numeros div{min-width:110px;padding:10px 16px;border-radius:12px;background:rgb(255 255 255/.12);border:1px solid rgb(255 255 255/.22)}',
+    '.numeros dt{font-size:11px;letter-spacing:.06em;text-transform:uppercase;opacity:.8}.numeros dd{margin:0;font:800 28px/1.1 "Segoe UI",system-ui,sans-serif;color:var(--lima)}',
+    '.imprimir{justify-self:start;min-height:42px;padding:0 18px;border:0;border-radius:999px;background:var(--lima);color:#1E2A05;font:700 14px "Segoe UI",system-ui,sans-serif;cursor:pointer}',
+    'main{width:min(940px,calc(100% - 32px));margin:24px auto 48px;display:grid;gap:22px}',
+    '.sumario{padding:18px 20px;border:1px solid var(--line);border-radius:16px;background:#fff}.sumario h2{margin:0 0 8px;font-size:15px}.sumario ol{margin:0;padding:0;list-style:none;display:grid;gap:4px}',
+    '.sumario a{display:flex;justify-content:space-between;gap:12px;padding:6px 10px;border-radius:8px;color:var(--p900);text-decoration:none}.sumario a:hover{background:#EAF3F9}.sumario b{color:var(--bad)}',
+    '.ck{display:grid;gap:14px}.ck>header{padding:4px 4px 0}.area{font:800 11px "Segoe UI",system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#255C83}',
+    '.ck h2{margin:2px 0 0;font:800 1.35rem/1.25 "Segoe UI",system-ui,sans-serif;color:var(--p950)}.meta{margin:4px 0 0;color:var(--muted);font-size:13px}',
+    '.prob{padding:18px 20px;border:1px solid var(--line);border-left:4px solid var(--bad);border-radius:14px;background:#fff;break-inside:avoid-page}',
+    '.cab{display:flex;flex-wrap:wrap;align-items:center;gap:8px}.num{padding:1px 9px;border-radius:999px;background:var(--bad);color:#fff;font:800 12px "Segoe UI",system-ui,sans-serif}',
+    '.secao{color:var(--muted);font-size:12.5px;font-weight:600}.prob h3{margin:8px 0 0;font-size:16px;line-height:1.4;color:var(--p950)}',
+    '.prob dl{margin:10px 0 0;display:grid;gap:6px}.prob dl div{display:grid;grid-template-columns:170px 1fr;gap:10px}.prob dt{color:var(--muted);font-size:13px;font-weight:700}.prob dd{margin:0;font-size:14px}',
+    '.mono{font-family:Consolas,"JetBrains Mono",monospace}@media (max-width:600px){.prob dl div{grid-template-columns:1fr;gap:0}}',
+    '.obs{margin-top:12px;padding:12px 14px;border-radius:10px;background:var(--bad-bg)}.obs strong{color:var(--bad);font-size:12px;letter-spacing:.06em;text-transform:uppercase}',
+    '.obs p{margin:4px 0 0;white-space:pre-wrap;overflow-wrap:anywhere}',
+    '.imgs{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin-top:14px}figure{margin:0}',
+    '.ver{display:block;width:100%;padding:0;border:1px solid var(--line);border-radius:10px;background:#fff;cursor:zoom-in;overflow:hidden}.ver img{display:block;width:100%;height:auto}',
+    'figcaption{margin-top:4px;color:var(--muted);font-size:12px;overflow-wrap:anywhere}.aviso-img{margin:8px 0 0;color:var(--muted);font-size:12.5px}',
+    '.vazio{padding:40px 20px;border:1px dashed #B3C6D6;border-radius:16px;text-align:center;color:var(--muted)}',
+    '.visor{max-width:min(94vw,1400px);padding:12px;border:0;border-radius:14px}.visor::backdrop{background:rgb(7 24 40/.8)}.visor img{display:block;max-width:100%;max-height:82vh;margin:0 auto 10px}',
+    '.visor form{text-align:right}.visor button{min-height:38px;padding:0 16px;border:0;border-radius:999px;background:var(--p900);color:#fff;font-weight:700;cursor:pointer}',
+    ':focus-visible{outline:3px solid var(--lima);outline-offset:2px}',
+    '@media print{body{background:#fff}.topo{background:none;color:var(--ink);padding:0 0 12px;border-bottom:2px solid var(--p)}.topo p{color:var(--muted)}.eyebrow{color:#255C83}',
+    '.numeros div{border-color:var(--line);background:none}.numeros dd{color:var(--p900)}.imprimir,.sumario{display:none}main{width:auto;margin:16px 0}.prob{box-shadow:none}.ver{border:1px solid #ccc}}',
+  ].join('\n');
+
+  var SCRIPT = "document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('.ver');if(!b)return;var d=document.querySelector('.visor');var i=b.querySelector('img');d.querySelector('img').src=i.src;d.querySelector('img').alt=i.alt;if(d.showModal)d.showModal();});document.querySelector('.visor').addEventListener('click',function(e){if(e.target===e.currentTarget)e.currentTarget.close();});";
+
+  function slug(v){ return String(v || 'checklist').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 60) || 'checklist'; }
+  function hoje(){ var d = new Date(), p = function(x){ return String(x).padStart(2, '0'); }; return d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate()); }
+  function baixar(nome, blob){
+    var url = URL.createObjectURL(blob), a = document.createElement('a');
+    a.href = url; a.download = nome; a.style.display = 'none';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function(){ URL.revokeObjectURL(url); }, 60000);
+  }
+
+  window.ffRelatorioProblemas = { etapasDo: etapasDo, problemasDe: problemasDe, montarHtml: montarHtml, imagemDataUrl: imagemDataUrl, baixar: baixar, slug: slug, hoje: hoje };
+})();
+</script>
 <script>/* Comportamento dos checklists: progresso, anel, índice lateral, modo "dentro do guia" e imagens anexadas.
    Dentro do site (logado) o progresso e as imagens ficam na conta de cada usuário; o navegador guarda uma cópia
    para abrir rápido e para funcionar sem rede. Fora do site (arquivo baixado) tudo fica só no navegador. */
@@ -560,17 +722,18 @@ html[data-theme="dark"] .dev-item{background:repeating-linear-gradient(135deg,#3
     });
   }
 
-  function anexar(id, arquivo){
-    aviso('Enviando imagem…');
-    return reduzir(arquivo).then(function(blob){
-      return fetch(API_ANEXOS + '?chave=' + ENC + '&item=' + encodeURIComponent(id), {
-        method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': blob.type, 'X-Nome': encodeURIComponent(arquivo.name || 'imagem') }, body: blob,
-      });
+  function subir(id, blob, nome){
+    return fetch(API_ANEXOS + '?chave=' + ENC + '&item=' + encodeURIComponent(id), {
+      method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': blob.type, 'X-Nome': encodeURIComponent(nome || 'imagem') }, body: blob,
     }).then(function(r){
       return r.json().catch(function(){ return {}; }).then(function(j){ if (!r.ok) throw new Error(j.erro || 'Não foi possível anexar a imagem.'); return j; });
-    }).then(function(j){
-      (anexos[id] = anexos[id] || []).push(j.anexo); renderAnexos(); aviso('Imagem anexada');
-    }).catch(function(e){ aviso(e.message || 'Não foi possível anexar a imagem.'); });
+    }).then(function(j){ (anexos[id] = anexos[id] || []).push(j.anexo); renderAnexos(); return j.anexo; });
+  }
+  function anexar(id, arquivo){
+    aviso('Enviando imagem…');
+    return reduzir(arquivo).then(function(blob){ return subir(id, blob, arquivo.name); })
+      .then(function(){ aviso('Imagem anexada'); })
+      .catch(function(e){ aviso(e.message || 'Não foi possível anexar a imagem.'); });
   }
   function enviarImagens(id, arquivos){
     var imagens = [].slice.call(arquivos).filter(function(f){ return /^image\//.test(f.type); });
@@ -700,6 +863,92 @@ html[data-theme="dark"] .dev-item{background:repeating-linear-gradient(135deg,#3
   }
   if ($('btnRelatorio')) $('btnRelatorio').addEventListener('click', copiarRelatorio);
 
+  /* ---------- Exportar só os problemas, exportar o checklist preenchido e importar ---------- */
+  var REL = window.ffRelatorioProblemas;
+  var FORMATO = 'faktory-flow-checklist';
+  var tituloChecklist = texto(document.querySelector('.hero h1')) || document.title;
+  function baixarArquivo(nome, blob){
+    /* Dentro do guia quem baixa é a página-mãe (o clique do usuário aconteceu lá). */
+    if (dentro) window.parent.postMessage({ ffChecklist: true, baixar: { nome: nome, blob: blob } }, location.origin);
+    else REL.baixar(nome, blob);
+  }
+  function contagem(){ return { feitos: caixas.filter(function(c){ return c.checked; }).length, total: caixas.length }; }
+  var ocupado = false;
+  function exportarProblemas(){
+    if (ocupado) return;
+    salvar();
+    var est = lerLocal();
+    if (!Object.keys(est.obs || {}).length) { aviso('Nenhum problema registrado neste checklist'); return; }
+    ocupado = true; aviso('Montando o relatório de problemas…');
+    REL.problemasDe(REL.etapasDo(document), est, nuvem.ativa ? anexos : {}, urlAnexo).then(function(problemas){
+      var c = contagem();
+      var html = REL.montarHtml({ geradoEm: Date.now(), autor: est.validador, checklists: [{ titulo: tituloChecklist, area: texto(document.querySelector('.hero .etiqueta')), validador: est.validador, atualizadoEm: est.t, feitos: c.feitos, total: c.total, problemas: problemas }] });
+      baixarArquivo('problemas-' + REL.slug(tituloChecklist) + '-' + REL.hoje() + '.html', new Blob([html], { type: 'text/html;charset=utf-8' }));
+      aviso(problemas.length + (problemas.length === 1 ? ' problema exportado' : ' problemas exportados'));
+    }).catch(function(){ aviso('Não foi possível montar o relatório.'); }).then(function(){ ocupado = false; });
+  }
+  function exportarPreenchido(){
+    if (ocupado) return;
+    salvar();
+    ocupado = true; aviso('Preparando o arquivo…');
+    var lista = [];
+    if (nuvem.ativa) Object.keys(anexos).forEach(function(id){ (anexos[id] || []).forEach(function(a){ lista.push({ item: id, a: a }); }); });
+    Promise.all(lista.map(function(x){ return REL.imagemDataUrl(urlAnexo(x.a)).then(function(src){ return src ? { item: x.item, nome: x.a.nome || '', tipo: x.a.tipo, dados: src.slice(src.indexOf(',') + 1) } : null; }); }))
+      .then(function(imgs){
+        var arq = { formato: FORMATO, versao: 1, chave: CHAVE, titulo: tituloChecklist, exportadoEm: new Date().toISOString(), dados: lerLocal(), anexos: imgs.filter(Boolean) };
+        baixarArquivo('checklist-' + REL.slug(tituloChecklist) + '-' + REL.hoje() + '.json', new Blob([JSON.stringify(arq)], { type: 'application/json' }));
+        aviso('Checklist exportado' + (arq.anexos.length ? ' com ' + arq.anexos.length + (arq.anexos.length === 1 ? ' imagem' : ' imagens') : ''));
+      }).catch(function(){ aviso('Não foi possível exportar o checklist.'); }).then(function(){ ocupado = false; });
+  }
+  function blobDe(base64, tipo){
+    var bin = atob(base64), bytes = new Uint8Array(bin.length);
+    for (var i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+    return new Blob([bytes], { type: tipo });
+  }
+  function importarPreenchido(arq){
+    if (!arq || arq.formato !== FORMATO || !arq.dados || typeof arq.dados !== 'object') { aviso('Este arquivo não é um checklist exportado pelo Guia'); return; }
+    if (arq.chave !== CHAVE) { aviso('Este arquivo é do checklist "' + (arq.titulo || arq.chave) + '". Abra esse checklist para importar.'); return; }
+    var imgs = (arq.anexos || []).filter(function(a){ return a && a.dados && itemDe(a.item); });
+    var msg = 'Importar "' + (arq.titulo || tituloChecklist) + '"' + (arq.exportadoEm ? ', exportado em ' + new Date(arq.exportadoEm).toLocaleString('pt-BR') : '') + '?\n\nAs marcações, registros, problemas e anotações de agora serão trocados pelos do arquivo.' + (imgs.length ? ' As ' + imgs.length + ' imagens do arquivo serão acrescentadas às etapas.' : '');
+    if (!confirm(msg)) return;
+    var d = arq.dados;
+    aplicarEstado({ marcados: d.marcados, regs: d.regs, obs: d.obs, validador: d.validador, notas: d.notas });
+    salvar();
+    if (!imgs.length) { aviso('Checklist importado'); return; }
+    if (!nuvem.ativa) { aviso('Checklist importado. As imagens só entram com o checklist aberto pelo Guia (logado).'); return; }
+    var feitas = 0, puladas = 0, fila = Promise.resolve();
+    imgs.forEach(function(a){
+      fila = fila.then(function(){
+        var blob = blobDe(a.dados, a.tipo || 'image/png');
+        var repetida = (anexos[a.item] || []).some(function(x){ return x.nome === a.nome && Number(x.tamanho) === blob.size; });
+        if (repetida) { puladas++; return; }
+        return subir(a.item, blob, a.nome).then(function(){ feitas++; aviso('Importando imagens… ' + feitas + ' de ' + imgs.length); });
+      }).catch(function(e){ puladas++; aviso(e.message || 'Uma imagem não pôde ser importada.'); });
+    });
+    fila.then(function(){ aviso('Checklist importado' + (feitas ? ' com ' + feitas + (feitas === 1 ? ' imagem' : ' imagens') : '') + (puladas ? ' (' + puladas + ' já existia' + (puladas === 1 ? '' : 'm') + ' ou não coube)' : '')); });
+  }
+  function lerArquivo(arquivo){
+    if (!arquivo) return;
+    arquivo.text().then(function(t){ importarPreenchido(JSON.parse(t)); }).catch(function(){ aviso('Não foi possível ler o arquivo. Escolha o .json exportado pelo checklist.'); });
+  }
+  if ($('btnProblemas')) $('btnProblemas').addEventListener('click', exportarProblemas);
+  if ($('btnExportar')) $('btnExportar').addEventListener('click', exportarPreenchido);
+  if ($('btnImportar')) $('btnImportar').addEventListener('click', function(){
+    var inp = document.createElement('input'); inp.type = 'file'; inp.accept = '.json,application/json';
+    inp.addEventListener('change', function(){ lerArquivo(inp.files[0]); });
+    inp.click();
+  });
+  /* Menu "Exportar" do topo (página aberta fora do guia). */
+  var menu = $('menuExportar');
+  if (menu) {
+    var abreMenu = menu.querySelector('[aria-haspopup]');
+    var fechaMenu = function(){ menu.classList.remove('on'); abreMenu.setAttribute('aria-expanded', 'false'); };
+    abreMenu.addEventListener('click', function(e){ e.stopPropagation(); var on = !menu.classList.contains('on'); menu.classList.toggle('on', on); abreMenu.setAttribute('aria-expanded', String(on)); if (on) menu.querySelector('[role=menuitem]').focus(); });
+    menu.addEventListener('click', function(e){ if (e.target.closest('[role=menuitem]')) fechaMenu(); });
+    document.addEventListener('click', function(e){ if (!menu.contains(e.target)) fechaMenu(); });
+    document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && menu.classList.contains('on')) { fechaMenu(); abreMenu.focus(); } });
+  }
+
   /* Índice lateral: destaca a seção visível. */
   var links = [].slice.call(document.querySelectorAll('.indice a'));
   if (links.length && 'IntersectionObserver' in window) {
@@ -743,6 +992,9 @@ html[data-theme="dark"] .dev-item{background:repeating-linear-gradient(135deg,#3
     window.addEventListener('message', function(e){
       if (e.origin !== location.origin || !e.data || !e.data.ffAcao) return;
       if (e.data.ffAcao === 'relatorio') copiarRelatorio();
+      else if (e.data.ffAcao === 'problemas') exportarProblemas();
+      else if (e.data.ffAcao === 'exportar') exportarPreenchido();
+      else if (e.data.ffAcao === 'importar') importarPreenchido(e.data.arquivo);
       else if (e.data.ffAcao === 'recomecar') recomecar();
       else if (e.data.ffAcao === 'imprimir') window.print();
     });
