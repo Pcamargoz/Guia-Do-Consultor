@@ -47,7 +47,9 @@ const E = {
 const prog = (t: number, a: number, d = 0.53, ease = E.entra) => interpolate(t, [a, a + d], [0, 1], { ...clamp, easing: ease });
 const MOLA = { objeto: { stiffness: 250, damping: 23, mass: 1 }, cursor: { stiffness: 110, damping: 18, mass: 1 }, camera: { stiffness: 45, damping: 13, mass: 1 } };
 const mola = (t: number, a: number, config = MOLA.objeto) => spring({ frame: Math.round((t - a) * FPS), fps: FPS, config });
-const useT = () => useCurrentFrame() / FPS;
+// Tempo remapeável: um provedor pode congelar ou deslocar o tempo de uma cena (a porta de letra desenha a tela parada).
+const Tempo = React.createContext<((t: number) => number) | null>(null);
+const useT = () => { const t = useCurrentFrame() / FPS; const m = React.useContext(Tempo); return m ? m(t) : t; };
 const f = (n: number) => n / FPS; // frames → segundos
 
 // As fontes ficam no projeto (não baixam na hora do render): o primeiro quadro espera elas carregarem.
@@ -101,6 +103,31 @@ const PalavrasCineticas: React.FC<{ t: number; a: number; texto: string; marca?:
       );
     })}</>
   );
+};
+
+// Odômetro (video-shotcraft list-stack-press; lemo dark-keynote): o contador rola uma casa em 8 quadros, sem voltar a
+// zero; `valor` é contínuo (1,37 = rolando de 1 para 2). Dígitos tabulares e rastro vertical enquanto rola.
+const Rolo: React.FC<{ valor: number; h: number }> = ({ valor, h }) => {
+  const uni = valor % 10, dez = Math.floor(valor / 10) + Math.max(0, uni - 9);
+  const rolando = Math.abs(uni - Math.round(uni)) > 0.02;
+  const col = (v: number) => (
+    <span style={{ display: 'inline-block', height: h, overflow: 'hidden', verticalAlign: 'top' }}>
+      <span style={{ display: 'block', transform: `translateY(${-v * h}px)`, filter: rolando ? 'blur(0.6px)' : undefined }}>
+        {Array.from({ length: 11 }, (_, i) => <span key={i} style={{ display: 'block', height: h, lineHeight: `${h}px` }}>{i % 10}</span>)}
+      </span>
+    </span>
+  );
+  return <span style={{ fontVariantNumeric: 'tabular-nums' }}>{col(dez)}{col(uni)}</span>;
+};
+// Numeral embaralhado: cada dígito troca a cada 2 quadros e trava no quadro 6 + 3i, com um pequeno assento.
+const Embaralha: React.FC<{ texto: string; t: number; a: number }> = ({ texto, t, a }) => {
+  const q = Math.round((t - a) * FPS);
+  return <>{texto.split('').map((ch, i) => {
+    if (!/\d/.test(ch)) return <span key={i}>{ch}</span>;
+    const trava = 6 + 3 * i;
+    if (q >= trava) { const s = mola(t, a + trava / FPS); return <span key={i} style={{ display: 'inline-block', transform: `scaleY(${0.92 + 0.08 * s})`, transformOrigin: '50% 100%' }}>{ch}</span>; }
+    return <span key={i} style={{ opacity: q < 0 ? 0 : 1 }}>{Math.floor(random(`g${i}-${a}-${Math.floor(q / 2)}`) * 10)}</span>;
+  })}</>;
 };
 
 // ---------- ícones (traço, estilo lucide), desenhados pelo comprimento do traço ----------
@@ -318,7 +345,7 @@ const LinhaStatus: React.FC<{ bloco: Trecho[]; dur: number; adianta?: number }> 
           <Palavras t={t} a={f(2)} texto={bloco[0].tituloCena ?? 'A vida do pedido de venda'} />
         </div>
         <div style={{ fontFamily: MONO, fontSize: 26, fontWeight: 500, color: C.ink2, opacity: prog(t, f(16)) }}>
-          {String(atual + 1).padStart(2, '0')} / {String(etapas.length).padStart(2, '0')}
+          <Rolo valor={1 + Math.min(etapas.length - 1, Math.max(0, pos))} h={32} /> / {String(etapas.length).padStart(2, '0')}
         </div>
       </div>
       <svg width={1920} height={1080} style={{ position: 'absolute' }}>
@@ -409,13 +436,13 @@ const Choque: React.FC<{ q: number; cx: number; cy: number }> = ({ q, cx, cy }) 
   );
 };
 
-const Regra: React.FC<{ r: Trecho; dur: number }> = ({ r, dur }) => {
+const Regra: React.FC<{ r: Trecho; dur: number; fundo?: 'papel' | 'escuro' }> = ({ r, dur, fundo }) => {
   const t0 = useT();
   const slam = !!r.critica;
   const traco = slam ? 1 : prog(t0, 0, f(24), E.linha);
   const t = t0 - (slam ? IMPACTO_SLAM + f(3) : f(14)); // o conteúdo do cartão anda depois do traço (ou do impacto)
   const sai = prog(t0, dur - f(9), f(9), E.sai);
-  const cheio = slam ? 1 : prog(t0, f(18), f(12));
+  const cheio = slam || fundo === 'escuro' ? 1 : prog(t0, f(18), f(12));
   const marca = prog(t, f(30), f(10), Easing.linear);
   // maior tamanho que cabe em duas linhas na coluna do cartão (sem estourar), entre 46 e 72 px
   const tamTitulo = React.useMemo(() => Math.max(46, fitTextOnNLines({ text: r.titulo ?? '', maxLines: 2, maxBoxWidth: 1000, fontFamily: SANS,
@@ -431,12 +458,15 @@ const Regra: React.FC<{ r: Trecho; dur: number }> = ({ r, dur }) => {
   }
   const qi = q - 15, tremor = slam && qi >= 0 && qi < 5 ? 18 * Math.exp(-qi / 1.7) : 0;
   const ang = random(`tremor-regra-${Math.floor(q)}`) * 2 * Math.PI;
+  const escuro = fundo === 'escuro';
   return (
     <AbsoluteFill style={{ fontFamily: SANS, transform: tremor ? `translate(${Math.cos(ang) * tremor * 0.6}px, ${Math.sin(ang) * tremor}px)` : undefined }}>
+      {/* fundo próprio da regra: no empurrão de pilha as regras alternam papel e azul escuro */}
+      {fundo && <AbsoluteFill style={{ background: escuro ? '#1C4867' : C.bg }} />}
       {slam ? <><Som em={IMPACTO_SLAM} nome="sub-boom" db={-6} /><Som em={IMPACTO_SLAM} nome="clac" db={-8} /></> : <SomEm em={f(2)} src="sfx/tick.wav" volume={0.22} />}
-      <div style={{ position: 'absolute', left: 120, top: 120, fontSize: 340, fontWeight: 300, color: C.line, letterSpacing: '-0.04em', lineHeight: 1,
+      <div style={{ position: 'absolute', left: 120, top: 120, fontSize: 340, fontWeight: 300, color: escuro ? 'rgba(255,255,255,0.12)' : C.line, letterSpacing: '-0.04em', lineHeight: 1,
         opacity: Math.min(1, num * 1.5) * (1 - sai), transform: `translateX(${(1 - num) * -520}px) scale(${1.25 - 0.25 * num})`, transformOrigin: 'left top' }}>
-        {String(r.n ?? 1).padStart(2, '0')}
+        <Embaralha texto={String(r.n ?? 1).padStart(2, '0')} t={t0} a={slam ? IMPACTO_SLAM : 0} />
       </div>
       <div style={{ position: 'absolute', left: 280, top: 300, width: 1360, background: `rgba(255,255,255,${cheio})`, borderRadius: 28, padding: '60px 68px', display: 'flex', gap: 56,
         alignItems: 'flex-start', boxShadow: `0 1px 2px rgba(19,24,32,${0.06 * cheio}), 0 12px 32px rgba(19,24,32,${0.1 * cheio})`,
@@ -602,7 +632,7 @@ const Lupa: React.FC<{ r: Trecho; c: NonNullable<Caixa>; t: number; a: number; s
   );
 };
 
-const Tela: React.FC<{ r: Trecho; dur: number; cursorIni?: { x: number; y: number } | null; adianta?: number }> = ({ r, cursorIni, adianta = 0 }) => {
+const Tela: React.FC<{ r: Trecho; dur: number; cursorIni?: { x: number; y: number } | null; adianta?: number; assentada?: boolean; mudo?: boolean }> = ({ r, cursorIni, adianta = 0, assentada = false, mudo = false }) => {
   const t = useT();
   const base = tempoDosFocos(r);
   const { caixas, focos } = base;
@@ -640,7 +670,7 @@ const Tela: React.FC<{ r: Trecho; dur: number; cursorIni?: { x: number; y: numbe
   const rotZ = noCrash || Math.abs(vx) < 4 ? 0 : Math.max(-2.2, Math.min(2.2, -0.035 * vx));
   const circulo = Number.isFinite(imp) ? prog(t, imp + f(4), f(10), E.linha) : 0;
   // janela em 3D: entra inclinada vindo de baixo, assenta em mola e depois inclina de leve na direção do cursor
-  const e = mola(t, 0, { stiffness: 110, damping: 15, mass: 1 });
+  const e = assentada ? 1 : mola(t, 0, { stiffness: 110, damping: 15, mass: 1 }); // assentada: a janela já está no lugar (depois da porta de letra)
   const escala = S0 * (0.9 + 0.1 * e);
   const esq = (1920 - 1920 * escala) / 2;
   const rx = 22 * (1 - e) + 2.2 * ((cy - 540) / 540) * e, ry = -18 * (1 - e) - 3 * ((cx - 960) / 960) * e;
@@ -649,9 +679,9 @@ const Tela: React.FC<{ r: Trecho; dur: number; cursorIni?: { x: number; y: numbe
   const someLupa = Math.max(prog(t, proxVoo - f(8), f(8), E.sai), interpolate(t, [fimFala, fimFala + f(10)], [0, 1], clamp));
   return (
     <AbsoluteFill style={{ fontFamily: SANS }}>
-      {focos.map((_, i) => <SomEm key={`c${i}`} em={tClique(i)} src="sfx/clique.wav" volume={0.3} />)}
-      {focos.map((_, i) => <SomEm key={`l${i}`} em={ini + i * fatia + f(6) + FIM_VOO + 0.15} src="sfx/tick.wav" volume={0.16} />)}
-      {r.impacto !== undefined && focos[r.impacto] !== undefined && (
+      {!mudo && focos.map((_, i) => <SomEm key={`c${i}`} em={tClique(i)} src="sfx/clique.wav" volume={0.3} />)}
+      {!mudo && focos.map((_, i) => <SomEm key={`l${i}`} em={ini + i * fatia + f(6) + FIM_VOO + 0.15} src="sfx/tick.wav" volume={0.16} />)}
+      {!mudo && r.impacto !== undefined && focos[r.impacto] !== undefined && (
         <><Som em={ini + r.impacto * fatia + f(6) + FIM_VOO + CHEGA_GOLPE - f(10)} nome="whoosh-ar" db={-14} />
           <Som em={ini + r.impacto * fatia + f(6) + FIM_VOO + CHEGA_GOLPE} nome="sub-boom" db={-6} />
           <Som em={ini + r.impacto * fatia + f(6) + FIM_VOO + CHEGA_GOLPE} nome="clac" db={-10} /></>
@@ -932,12 +962,58 @@ const pedacos = (fala: string) => {
 // Legendas (lemo-opuscar): uma frase por vez, no tempo medido de cada frase da narração; fica pelo menos
 // max(1,8 s, fala + 0,6 s) ou até a próxima; sobe quando o destaque da tela está embaixo, para não cobrir o elemento.
 const cuesDe = (r: Trecho) => {
-  if (r.legendas?.length) return r.legendas.map((l) => ({ texto: l.texto, ini: r.inicio + l.ini, fim: r.inicio + l.fim }));
+  if (r.legendas?.length) return r.legendas.map((l) => ({ texto: l.texto, ini: r.inicio + l.ini, fim: r.inicio + l.fim, r }));
   const ps = pedacos(r.fala);
   const total = ps.reduce((s, p) => s + p.length, 0);
   let acc = 0;
-  return ps.map((p) => { const ini = r.inicio + (acc / total) * r.fala_s; acc += p.length; return { texto: p, ini, fim: r.inicio + (acc / total) * r.fala_s }; });
+  return ps.map((p) => { const ini = r.inicio + (acc / total) * r.fala_s; acc += p.length; return { texto: p, ini, fim: r.inicio + (acc / total) * r.fala_s, r }; });
 };
+// Termos da interface que viram chip na legenda: os nomes dos campos em foco (lidos do print) e o caminho do menu.
+const termosDe = (r: Trecho) => [...(r.nomes ?? []).filter((n): n is string => !!n), ...(r.rotulo ?? '').split('›').map((s) => s.trim())]
+  .filter((s) => s.length >= 3).sort((a, b) => b.length - a.length);
+const semAcento = (s: string) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^\w%$]/g, '');
+
+// Legenda karaokê (video-shotcraft type-rhythm-sync B; mg 18-hanazi): as palavras ainda não ditas ficam meio apagadas,
+// a palavra falada ganha um sublinhado limão que corre embaixo dela, e os nomes de tela, botão e campo viram um chip azul
+// em mono que salta logo depois de ditos. O tempo de cada palavra é proporcional às letras dentro da frase (até haver o
+// tempo medido por palavra). A largura do chip é reservada desde o início: a linha nunca se rearruma.
+const LinhaKaraoke: React.FC<{ texto: string; ini: number; fim: number; t: number; termos: string[] }> = ({ texto, ini, fim, t, termos }) => {
+  const ws = texto.split(' ');
+  const pesos = ws.map((w) => Math.max(2, w.length));
+  const total = pesos.reduce((a, b) => a + b, 0);
+  let acc = 0;
+  const tempos = ws.map((_, i) => { const a = ini + (acc / total) * (fim - ini); acc += pesos[i]; return [a, ini + (acc / total) * (fim - ini)] as const; });
+  // marca as palavras que formam um termo (o mais longo primeiro)
+  const grupo: number[] = ws.map(() => -1);
+  const chaves = ws.map(semAcento);
+  termos.forEach((termo, g) => {
+    const tw = termo.split(' ').map(semAcento).filter(Boolean);
+    for (let i = 0; i + tw.length <= ws.length; i++) {
+      if (tw.every((x, k) => chaves[i + k] === x) && grupo.slice(i, i + tw.length).every((x) => x < 0)) { for (let k = 0; k < tw.length; k++) grupo[i + k] = g; break; }
+    }
+  });
+  const out: React.ReactNode[] = [];
+  for (let i = 0; i < ws.length; i++) {
+    if (grupo[i] >= 0) {
+      let j = i; while (j + 1 < ws.length && grupo[j + 1] === grupo[i]) j++;
+      const fimTermo = tempos[j][1];
+      const s = t < fimTermo + f(2) ? 0 : spring({ frame: Math.round((t - fimTermo - f(2)) * FPS), fps: FPS, config: { stiffness: 300, damping: 16, mass: 1 } });
+      out.push(<React.Fragment key={i}><span style={{ display: 'inline-block', fontFamily: MONO, fontWeight: 600, fontSize: '0.86em', padding: '0 10px', borderRadius: 8,
+        background: `rgba(52,120,167,${0.92 * Math.min(1, s)})`, color: t >= tempos[i][0] ? '#fff' : 'rgba(255,255,255,0.55)', transform: `scale(${s > 0 ? 0.9 + 0.1 * s : 1})` }}>
+        {ws.slice(i, j + 1).join(' ')}</span>{' '}</React.Fragment>);
+      i = j;
+      continue;
+    }
+    const [a, b] = tempos[i];
+    const p = interpolate(t, [a, b], [0, 1], clamp);
+    out.push(<React.Fragment key={i}><span style={{ position: 'relative', display: 'inline-block', color: t >= a ? '#fff' : 'rgba(255,255,255,0.55)' }}>
+      {ws[i]}
+      {p > 0 && p < 1 && <span style={{ position: 'absolute', left: 0, bottom: -4, height: 6, width: `${p * 100}%`, background: C.spot, borderRadius: 3 }} />}
+    </span>{' '}</React.Fragment>);
+  }
+  return <>{out}</>;
+};
+
 const Legenda: React.FC<{ d: Dados }> = ({ d }) => {
   const t = useT();
   const cues = React.useMemo(() => d.trechos.flatMap(cuesDe), [d]);
@@ -953,7 +1029,9 @@ const Legenda: React.FC<{ d: Dados }> = ({ d }) => {
     <div style={{ position: 'absolute', [emCima ? 'top' : 'bottom']: emCima ? 120 : 44, width: '100%', display: 'flex', justifyContent: 'center', fontFamily: SANS }}>
       <div style={{ maxWidth: 1560, background: 'rgba(19,24,32,0.74)', backdropFilter: 'blur(20px)', border: '1px solid rgba(255,255,255,0.14)',
         color: '#fff', fontSize: 46, fontWeight: 600, letterSpacing: '-0.01em', lineHeight: 1.22, padding: '14px 38px', borderRadius: 20, textAlign: 'center',
-        boxShadow: '0 12px 30px rgba(19,24,32,0.22)', opacity: o, transform: `translateY(${(1 - o) * 10}px)` }}>{c.texto}</div>
+        boxShadow: '0 12px 30px rgba(19,24,32,0.22)', opacity: o, transform: `translateY(${(1 - o) * 10}px)`, filter: o < 0.98 ? `blur(${(6 * (1 - o)).toFixed(2)}px)` : undefined }}>
+        <LinhaKaraoke texto={c.texto} ini={c.ini} fim={c.fim} t={t} termos={termosDe(c.r)} />
+      </div>
     </div>
   );
 };
@@ -966,7 +1044,8 @@ const Moldura: React.FC<{ d: Dados }> = ({ d }) => {
   const cap = r ? CAPITULO[r.cena] : undefined;
   const iniCap = r ? (d.trechos.find((x) => CAPITULO[x.cena] === cap)?.inicio ?? 0) : 0;
   // a pílula assume quando o título grande do capítulo (CapituloAbre) termina de encolher até ela
-  const vCap = cap ? prog(t, iniCap + ABRE_CAP.pousa, f(3), Easing.linear) : 0;
+  const pousa = cap === CAPITULO.tela ? f(PORTA_Q) : ABRE_CAP.pousa; // no capítulo 03 a pílula espera a porta de letra
+  const vCap = cap ? prog(t, iniCap + pousa, f(3), Easing.linear) : 0;
   return (
     <>
       <div style={{ position: 'absolute', left: 160, top: 64, display: 'flex', alignItems: 'center', gap: 18, opacity: mostra, fontFamily: SANS }}>
@@ -1011,17 +1090,23 @@ const blocos = (ts: Trecho[]) => {
   return out;
 };
 
-// Transições (wipes, nunca dissolve): círculo que nasce da pílula do capítulo (canto superior direito); entre telas
-// seguidas, whip com freio (video-shotcraft shot-transitions B): 70% do caminho no primeiro terço e cauda longa,
-// com desfoque proporcional à velocidade. Cada passagem tem um whoosh baixo.
-const FREIO = Easing.bezier(0.2, 0.9, 0.25, 1);
+// ---------- transições: uma gramática por passagem (spec-v5-exagerado, seção 4) ----------
+// abertura→conceito e cuidados→fechamento: painéis da marca · conceito→regra: íris casada no nó · regra→regra: empurrão
+// de pilha · regra→tela: porta de letra · tela→tela: whip lado a lado · tela→cuidados: portal do campo · resto: círculo.
+// A cena que sai também se mexe nas passagens que pedem (whip, pilha, íris, portal), pelo componente Saida.
+type TipoPassagem = 'nenhuma' | 'circulo' | 'whip' | 'painel' | 'iris' | 'pilha' | 'portal' | 'porta';
+const DURACAO_PASSAGEM: Record<TipoPassagem, number> = { nenhuma: 0, circulo: 22, whip: 22, painel: 26, iris: 38, pilha: 26, portal: 48, porta: 0 };
+type Ponto = { x: number; y: number };
+type Retangulo = { x: number; y: number; w: number; h: number };
+
 // As cenas não têm fundo próprio (o Fundo é global). Durante a passagem, a cena que entra ganha o papel por baixo,
-// para a cena que sai não aparecer pelos vazios; o papel some quando a cena anterior termina (sobra de 0,75 s).
-const Cobertura: React.FC = () => {
+// para a cena que sai não aparecer pelos vazios; o papel some quando a cena anterior termina.
+const Cobertura: React.FC<{ ate: number }> = ({ ate }) => {
   const t = useT();
-  const o = 1 - prog(t, f(20), f(4), Easing.linear);
+  const o = 1 - prog(t, f(Math.max(20, ate - 2)), f(4), Easing.linear);
   return o > 0 ? <AbsoluteFill style={{ background: C.bg, opacity: o }} /> : null;
 };
+
 // Painel (troca de capítulo): duas faixas inclinadas da marca, azul e depois limão, varrem a tela da esquerda para a
 // direita; a cena nova aparece atrás da segunda faixa.
 const Painel: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -1041,28 +1126,180 @@ const Painel: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   );
 };
 
-const Transicao: React.FC<{ tipo: 'circulo' | 'whip' | 'painel' | 'nenhuma'; uid: string; children: React.ReactNode }> = ({ tipo, uid, children }) => {
+// Whip lado a lado (video-shotcraft shot-transitions B): a tela nova fica 2040 px à direita e as duas andam juntas;
+// arrancada de 3 quadros e queda exponencial (70% do caminho em ~8 quadros), normalizada para encaixar no quadro 22.
+const xWhipBruto = (q: number) => (q < 3 ? (300 * q * q) / 6 : 450 + 1590 * (1 - Math.exp(-(q - 3) / 5.3)));
+const xWhip = (q: number) => (q <= 0 ? 0 : q >= 22 ? 2040 : (xWhipBruto(q) * 2040) / xWhipBruto(22));
+const BorraoX: React.FC<{ id: string; sx: number; children: React.ReactNode; style?: React.CSSProperties }> = ({ id, sx, children, style }) => (
+  <AbsoluteFill style={{ ...style, filter: sx > 0.3 ? `url(#${id})` : undefined }}>
+    <svg width={0} height={0} style={{ position: 'absolute' }}>
+      <filter id={id} x="-10%" y="-10%" width="120%" height="120%" colorInterpolationFilters="sRGB">
+        <feGaussianBlur stdDeviation={`${sx.toFixed(2)} 0`} edgeMode="duplicate" />
+      </filter>
+    </svg>
+    {children}
+  </AbsoluteFill>
+);
+const PILHA = Easing.bezier(0.12, 0.9, 0.2, 1);
+
+// Saída: o que a cena faz nos últimos instantes, conforme a passagem seguinte.
+const Saida: React.FC<{ tipo: TipoPassagem; ini: number; ancora?: Ponto; uid: string; children: React.ReactNode }> = ({ tipo, ini, ancora, uid, children }) => {
   const t = useT();
-  const dw = f(30);
-  if (tipo === 'painel') return <Painel>{children}</Painel>;
-  const p = prog(t, 0, tipo === 'whip' ? dw : f(22), tipo === 'whip' ? FREIO : E.entra);
-  if (tipo === 'nenhuma' || p >= 1) return <AbsoluteFill>{children}</AbsoluteFill>;
+  const q = (t - ini) * FPS;
+  if (q < 0 || tipo === 'nenhuma' || tipo === 'circulo' || tipo === 'painel' || tipo === 'porta') return <AbsoluteFill>{children}</AbsoluteFill>;
   if (tipo === 'whip') {
-    // borrão só na direção do movimento (feGaussianBlur horizontal): o texto não "lava" como no blur comum
-    const v = (p - prog(t - 1 / FPS, 0, dw, FREIO)) * 1920; // px por quadro
-    const sx = v > 8 ? Math.min(64, 0.085 * v) : 0;
-    const id = `whip-${uid}`;
-    return (
-      <AbsoluteFill style={{ transform: `translateX(${(1 - p) * 1920}px)`, filter: sx > 0.3 ? `url(#${id})` : undefined }}>
-        <svg width={0} height={0} style={{ position: 'absolute' }}>
-          <filter id={id} x="-10%" y="-10%" width="120%" height="120%" colorInterpolationFilters="sRGB">
-            <feGaussianBlur stdDeviation={`${sx.toFixed(2)} 0`} edgeMode="duplicate" />
-          </filter>
-        </svg>
-        {children}
-      </AbsoluteFill>
-    );
+    const x = xWhip(q), v = x - xWhip(q - 1);
+    return <BorraoX id={`saida-${uid}`} sx={v > 8 ? Math.min(64, 0.085 * v) : 0} style={{ transform: `translateX(${-x}px)` }}>{children}</BorraoX>;
   }
+  if (tipo === 'pilha') {
+    const p = interpolate(q, [0, 26], [0, 1], { ...clamp, easing: PILHA });
+    return <AbsoluteFill style={{ transform: `translateY(${-p * 1080}px)` }}>{children}</AbsoluteFill>;
+  }
+  if (tipo === 'iris') {
+    const k = interpolate(q, [0, 34], [0, 1], { ...clamp, easing: Easing.in(Easing.cubic) });
+    const a = ancora ?? { x: 960, y: 540 };
+    return <AbsoluteFill style={{ transformOrigin: `${a.x}px ${a.y}px`, transform: `scale(${1.03 + 0.19 * k})`, filter: `brightness(${1 - 0.55 * k})` }}>{children}</AbsoluteFill>;
+  }
+  // portal: o resto da tela escurece enquanto o campo se levanta
+  return <AbsoluteFill style={{ filter: `brightness(${1 - 0.45 * prog(t, ini, f(8), Easing.linear)})` }}>{children}</AbsoluteFill>;
+};
+
+// Íris casada no nó (video-shotcraft circle-match-iris): o disco do status em destaque vira anel (30 -> 140 px) e o
+// anel abre um buraco redondo de +2400 px por onde a regra aparece; constantes únicas, âncora no centro do nó.
+const Iris: React.FC<{ ancora: Ponto; children: React.ReactNode }> = ({ ancora, children }) => {
+  const t = useT();
+  const q = t * FPS;
+  if (q >= 38) return <AbsoluteFill>{children}</AbsoluteFill>;
+  const anel = interpolate(q, [0, 12], [30, 140], { ...clamp, easing: Easing.out(Easing.exp) });
+  const traco = interpolate(q, [0, 12], [60, 8], clamp);
+  const abre = anel + 2400 * interpolate(q, [8, 38], [0, 1], { ...clamp, easing: Easing.bezier(0.62, 0, 0.32, 1) });
+  const esc = interpolate(q, [8, 38], [0.9, 1], { ...clamp, easing: E.entra });
+  return (
+    <AbsoluteFill>
+      <AbsoluteFill style={{ clipPath: `circle(${abre}px at ${ancora.x}px ${ancora.y}px)` }}>
+        <AbsoluteFill style={{ transformOrigin: `${ancora.x}px ${ancora.y}px`, transform: `scale(${esc})` }}>{children}</AbsoluteFill>
+      </AbsoluteFill>
+      <svg width={1920} height={1080} style={{ position: 'absolute', pointerEvents: 'none' }}>
+        <circle cx={ancora.x} cy={ancora.y} r={abre} fill="none" stroke={C.primary} strokeWidth={traco} strokeOpacity={interpolate(q, [20, 38], [1, 0], clamp)} />
+      </svg>
+    </AbsoluteFill>
+  );
+};
+
+// Empurrão de pilha (video-shotcraft bottom-push-stack-wipe): a regra nova sobe do rodapé como bloco rígido e empurra a
+// anterior pelo topo; sombra de contato de 56 px e linha de luz de 2 px na junção.
+const Pilha: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const t = useT();
+  const p = interpolate(t * FPS, [0, 26], [0, 1], { ...clamp, easing: PILHA });
+  if (p >= 1) return <AbsoluteFill>{children}</AbsoluteFill>;
+  return (
+    <AbsoluteFill style={{ transform: `translateY(${(1 - p) * 1080}px)` }}>
+      {p < 0.98 && <div style={{ position: 'absolute', left: 0, right: 0, top: -56, height: 56, background: 'linear-gradient(rgba(19,24,32,0), rgba(19,24,32,0.42))' }} />}
+      {children}
+      {p < 0.98 && <div style={{ position: 'absolute', left: 0, right: 0, top: 0, height: 2, background: 'rgba(255,255,255,0.8)' }} />}
+    </AbsoluteFill>
+  );
+};
+
+// Portal do campo (video-shotcraft shot-transitions C): o último campo em foco ganha borda laranja e cresce até virar a
+// tela inteira, com os cuidados já nascendo dentro dele (0,42 -> 1 no mesmo tempo).
+const Portal: React.FC<{ ret: Retangulo; children: React.ReactNode }> = ({ ret, children }) => {
+  const t = useT();
+  const q = t * FPS;
+  if (q >= 48) return <AbsoluteFill>{children}</AbsoluteFill>;
+  const k = interpolate(q, [8, 48], [0, 1], { ...clamp, easing: Easing.bezier(0.7, 0, 0.3, 1) });
+  const lev = prog(t, 0, f(8), E.entra);
+  const r0 = { x: ret.x - 6 * lev, y: ret.y - 10 * lev - 6 * lev, w: ret.w + 12 * lev, h: ret.h + 12 * lev };
+  const topo = r0.y * (1 - k), esq = r0.x * (1 - k), dir = (1920 - r0.x - r0.w) * (1 - k), base = (1080 - r0.y - r0.h) * (1 - k);
+  const raio = 10 * (1 - k);
+  const borda = interpolate(k, [0, 0.3], [0, 1], clamp);
+  const cor = `rgb(${Math.round(52 + (232 - 52) * borda)}, ${Math.round(120 + (89 - 120) * borda)}, ${Math.round(167 + (12 - 167) * borda)})`;
+  const cx = r0.x + r0.w / 2, cy = r0.y + r0.h / 2;
+  return (
+    <AbsoluteFill>
+      <AbsoluteFill style={{ clipPath: `inset(${topo}px ${dir}px ${base}px ${esq}px round ${raio}px)` }}>
+        <AbsoluteFill style={{ transformOrigin: `${cx}px ${cy}px`, transform: `scale(${0.42 + 0.58 * k})` }}>{children}</AbsoluteFill>
+      </AbsoluteFill>
+      {k < 0.98 && <div style={{ position: 'absolute', left: esq, top: topo, right: dir, bottom: base, borderRadius: raio, border: `4px solid ${cor}`,
+        boxShadow: `0 20px 50px rgba(19,24,32,${0.35 * (1 - k)})`, pointerEvents: 'none' }} />}
+    </AbsoluteFill>
+  );
+};
+
+// Porta de letra (video-shotcraft text-as-mask + transition-travel): "TELA" em 470 px, recortada no papel, com a primeira
+// tela do sistema dentro das letras; o título inspira (1 -> 0,965) e mergulha 46x pela haste do T em 24 quadros, no espaço
+// logarítmico (u^1,8), com o conteúdo de dentro em contraescala; a janela de verdade já está no lugar quando a porta acaba.
+const PORTA_Q = 60;
+const PortaDeLetra: React.FC<{ r: Trecho; uid: string }> = ({ r, uid }) => {
+  const t = useT();
+  const q = t * FPS;
+  if (q >= PORTA_Q) return null;
+  const PAL = 'TELA', TAM = 470;
+  const larg = measureText({ text: PAL, fontFamily: SANS, fontSize: TAM, fontWeight: 900, letterSpacing: '-0.03em', validateFontIsLoaded: false }).width;
+  const largT = measureText({ text: 'T', fontFamily: SANS, fontSize: TAM, fontWeight: 900, validateFontIsLoaded: false }).width;
+  const xTexto = 960 - larg / 2, base = 720;
+  const ox = xTexto + largT / 2, oy = base - 0.36 * TAM;
+  const entra = interpolate(q, [0, 10], [0, 1], { ...clamp, easing: E.entra });
+  const inspira = interpolate(q, [28, 36], [1, 0.965], { ...clamp, easing: Easing.bezier(0.4, 0, 0.2, 1) });
+  const u = interpolate(q, [36, 60], [0, 1], clamp);
+  const S = q < 36 ? inspira * (1.04 - 0.04 * entra) : 0.965 * (46 / 0.965) ** (u ** 1.8);
+  const tx = (960 - ox) * u, ty = (540 - oy) * u;
+  const dentro = q < 40 ? 1.32 : 1.32 - 0.32 * interpolate(q, [40, 60], [0, 1], { ...clamp, easing: Easing.out(Easing.exp) });
+  const deriva = interpolate(q, [0, 36], [60, -60], clamp) * (1 - u);
+  const seguranca = interpolate(u ** 1.8, [0.86, 0.95], [0, 1], clamp);
+  const id = `porta-${uid}`;
+  const telaParada = (
+    <Tempo.Provider value={() => 0}>
+      <Tela r={r} dur={10} assentada mudo />
+    </Tempo.Provider>
+  );
+  return (
+    <AbsoluteFill style={{ pointerEvents: 'none' }}>
+      <Som em={f(PORTA_Q)} nome="riser" db={-10} />
+      <Som em={f(52)} nome="whoosh-ar" db={-12} />
+      <AbsoluteFill style={{ background: C.bg }} />
+      <svg width={0} height={0} style={{ position: 'absolute' }}>
+        <clipPath id={id} clipPathUnits="userSpaceOnUse">
+          <text x={xTexto} y={base} fontFamily={SANS} fontWeight={900} fontSize={TAM} letterSpacing="-0.03em">{PAL}</text>
+        </clipPath>
+      </svg>
+      <div style={{ position: 'absolute', left: 960, top: base - TAM * 0.86 - 40, transform: 'translateX(-50%)', fontFamily: MONO, fontSize: 36, fontWeight: 600,
+        letterSpacing: '0.08em', color: C.ink2, opacity: entra * (1 - prog(t, f(28), f(8), E.sai)) }}>
+        <span style={{ color: C.primary }}>03</span> · NA TELA
+      </div>
+      <AbsoluteFill style={{ transformOrigin: `${ox}px ${oy}px`, transform: `translate(${tx}px, ${ty + (1 - entra) * 80}px) scale(${S})`, opacity: Math.min(1, entra * 1.5) }}>
+        <AbsoluteFill style={{ clipPath: `url(#${id})` }}>
+          <AbsoluteFill style={{ background: C.ink }} />
+          <AbsoluteFill style={{ transformOrigin: `${ox}px ${oy}px`, transform: `translate(${-tx / S}px, ${-ty / S}px) scale(${1 / S})` }}>
+            <AbsoluteFill style={{ transform: `translateX(${deriva}px) scale(${dentro})`, transformOrigin: '50% 50%' }}>{telaParada}</AbsoluteFill>
+          </AbsoluteFill>
+          {/* a tela do sistema é clara como o papel: um véu azul dentro das letras separa a palavra do fundo */}
+          <AbsoluteFill style={{ background: C.primary, mixBlendMode: 'multiply', opacity: 0.32 * (1 - Math.min(1, u * 2.5)) }} />
+        </AbsoluteFill>
+        {/* contorno das letras; some no começo do mergulho, antes de a escala engrossar o traço */}
+        <svg width={1920} height={1080} style={{ position: 'absolute', left: 0, top: 0, opacity: 1 - Math.min(1, u * 4) }}>
+          <text x={xTexto} y={base} fontFamily={SANS} fontWeight={900} fontSize={TAM} letterSpacing="-0.03em" fill="none" stroke={C.primary} strokeWidth={5}>{PAL}</text>
+        </svg>
+      </AbsoluteFill>
+      {seguranca > 0 && <AbsoluteFill style={{ opacity: seguranca }}><AbsoluteFill style={{ background: C.bg }} />{telaParada}</AbsoluteFill>}
+    </AbsoluteFill>
+  );
+};
+
+const Transicao: React.FC<{ tipo: TipoPassagem; uid: string; ancora?: Ponto; ret?: Retangulo; children: React.ReactNode }> = ({ tipo, uid, ancora, ret, children }) => {
+  const t = useT();
+  const q = t * FPS;
+  if (tipo === 'painel') return <Painel>{children}</Painel>;
+  if (tipo === 'iris') return <Iris ancora={ancora ?? { x: 960, y: 540 }}>{children}</Iris>;
+  if (tipo === 'pilha') return <Pilha>{children}</Pilha>;
+  if (tipo === 'portal' && ret) return <Portal ret={ret}>{children}</Portal>;
+  if (tipo === 'whip') {
+    if (q >= 22) return <AbsoluteFill>{children}</AbsoluteFill>;
+    const x = xWhip(q), v = x - xWhip(q - 1);
+    return <BorraoX id={`whip-${uid}`} sx={v > 8 ? Math.min(64, 0.085 * v) : 0} style={{ transform: `translateX(${2040 - x}px)` }}>{children}</BorraoX>;
+  }
+  const p = prog(t, 0, f(22), E.entra);
+  if (tipo === 'nenhuma' || tipo === 'porta' || p >= 1) return <AbsoluteFill>{children}</AbsoluteFill>;
   return <AbsoluteFill style={{ clipPath: `circle(${p * 230}% at 92% 6%)` }}>{children}</AbsoluteFill>;
 };
 
@@ -1095,16 +1332,69 @@ const CapituloAbre: React.FC<{ cap: string }> = ({ cap }) => {
 
 const CAPITULO: Partial<Record<Trecho['cena'], string>> = { status: '01 · Conceito', regra: '02 · Regras de negócio', tela: '03 · Na tela', alertas: '04 · Cuidados' };
 
+// Plano do vídeo: para cada bloco, a passagem de entrada, o atraso do conteúdo, a sobra (quanto a cena fica por baixo da
+// seguinte) e a geometria das passagens casadas (âncora da íris, retângulo do portal).
+type Plano = { b: Trecho[]; r: Trecho; ant?: Trecho; tipo: TipoPassagem; tipoProx: TipoPassagem; abre: boolean; atraso: number; dur: number; sobra: number;
+  ancora?: Ponto; ret?: Retangulo; ancoraSaida?: Ponto };
+const ancoraDoStatus = (b: Trecho[]): Ponto => {
+  const etapas = b[0].etapas ?? STATUS;
+  const X0 = etapas.length > 4 ? 240 : 300, passo = (1920 - 2 * X0) / (etapas.length - 1);
+  return { x: X0 + passo * (b[1]?.destaque ?? 0), y: 600 };
+};
+const retDoUltimoFoco = (r: Trecho): Retangulo | undefined => {
+  const { caixas, focos } = tempoDosFocos(r);
+  const c = caixas[focos[focos.length - 1]];
+  if (!c) return undefined;
+  const esq = (1920 - 1920 * S0) / 2;
+  return { x: esq + S0 * c.x, y: OY + S0 * (BARRA + c.y), w: S0 * c.w, h: S0 * c.h };
+};
+const passagem = (r: Trecho, ant: Trecho | undefined, abre: boolean): TipoPassagem => {
+  if (!ant) return 'nenhuma';
+  if (r.cena === 'fechamento') return 'painel';
+  if (r.cena === 'regra' && ant.cena === 'status') return 'iris';
+  if (r.cena === 'regra' && ant.cena === 'regra') return 'pilha';
+  if (r.cena === 'tela' && ant.cena === 'regra') return 'porta';
+  if (r.cena === 'tela' && ant.cena === 'tela') return 'whip';
+  if (r.cena === 'alertas' && ant.cena === 'tela') return 'portal';
+  return abre ? 'painel' : 'circulo';
+};
+const planejar = (d: Dados): Plano[] => {
+  const bs = blocos(d.trechos);
+  const base = bs.map((b, i) => {
+    const r = b[0], ant = bs[i - 1]?.[0];
+    const cap = CAPITULO[r.cena];
+    const abre = cap !== undefined && cap !== (ant ? CAPITULO[ant.cena] : undefined);
+    const tipo = passagem(r, ant, abre);
+    const atraso = tipo === 'porta' ? f(PORTA_Q) : abre ? ABRE_CAP.conteudo : 0;
+    return { b, r, ant, tipo, abre, atraso,
+      ancora: tipo === 'iris' ? ancoraDoStatus(bs[i - 1]) : undefined, ret: tipo === 'portal' && ant ? retDoUltimoFoco(ant) : undefined };
+  });
+  return base.map((p, i) => {
+    const prox = base[i + 1];
+    const tipoProx = prox?.tipo ?? 'nenhuma';
+    const sobra = p.r.cena === 'fechamento' ? 1.5 : Math.max(0.75, DURACAO_PASSAGEM[tipoProx] / FPS + 0.05);
+    const fim = p.b[p.b.length - 1].inicio + p.b[p.b.length - 1].duracao;
+    return { ...p, tipoProx, sobra, dur: fim - p.r.inicio + sobra, ancoraSaida: prox?.ancora };
+  });
+};
+
+const SOM_PASSAGEM: Partial<Record<TipoPassagem, { nome: NomeSom; db: number; em: number }[]>> = {
+  whip: [{ nome: 'swoosh-whip', db: -10, em: f(3) }],
+  painel: [{ nome: 'swoosh', db: -12, em: f(6) }],
+  circulo: [{ nome: 'whoosh-ar', db: -12, em: f(8) }],
+  iris: [{ nome: 'pop-a', db: -14, em: 0 }, { nome: 'whoosh-ar', db: -12, em: f(12) }],
+  pilha: [{ nome: 'swish-a', db: -16, em: f(6) }, { nome: 'baque-a', db: -10, em: f(12) }],
+  portal: [{ nome: 'whoosh-ar', db: -12, em: f(32) }, { nome: 'baque-b', db: -10, em: f(40) }],
+};
+
 export const FluxoVideo: React.FC<{ dados: Dados; musica?: string }> = ({ dados: d, musica }) => {
   useFontes();
-  const bs = blocos(d.trechos);
+  const plano = React.useMemo(() => planejar(d), [d]);
   // onde o cursor terminou em cada tela, para a seguinte continuar dali (o cursor nunca teleporta)
   const fimDoCursor = (r: Trecho) => { const { caixas, focos } = tempoDosFocos(r); return centro(caixas[focos[focos.length - 1]]); };
   // respiros da música (em tempo do vídeo depois da abertura fria): antes do crash, no ar do slam e antes da foto de família
   const respiros: [number, number][] = [];
-  bs.forEach((b, i) => {
-    const r = b[0], ant = bs[i - 1]?.[0], cap = CAPITULO[r.cena];
-    const atraso = cap !== undefined && cap !== (ant ? CAPITULO[ant.cena] : undefined) ? ABRE_CAP.conteudo : 0;
+  plano.forEach(({ r, atraso }) => {
     if (r.cena === 'tela' && r.impacto !== undefined) {
       const base = tempoDosFocos(r);
       const ini = Math.max(0.25, base.ini - atraso), fatia = Math.max(0.8, (Math.max(base.ini + 1, r.fala_s) - atraso - ini) / Math.max(1, base.focos.length));
@@ -1114,7 +1404,7 @@ export const FluxoVideo: React.FC<{ dados: Dados; musica?: string }> = ({ dados:
     if (r.cena === 'regra' && r.critica) respiros.push([r.inicio + atraso, r.inicio + atraso + IMPACTO_SLAM]);
     if (r.cena === 'fechamento') { const tf = r.inicio + r.fala_s * 0.72 + 0.3; respiros.push([tf - 0.6, tf + f(34)]); }
   });
-  const somPassagem: Record<string, { nome: NomeSom; db: number }> = { whip: { nome: 'swoosh-whip', db: -10 }, painel: { nome: 'swoosh', db: -12 }, circulo: { nome: 'whoosh-ar', db: -12 } };
+  let nRegra = 0;
   return (
     <AbsoluteFill>
       <Sequence durationInFrames={ABERTURA_FRIA}>
@@ -1123,33 +1413,28 @@ export const FluxoVideo: React.FC<{ dados: Dados; musica?: string }> = ({ dados:
       </Sequence>
       <Sequence from={ABERTURA_FRIA}>
       <Fundo />
-      {bs.map((b, i) => {
-        const r = b[0];
-        const ant = bs[i - 1]?.[0];
-        const fim = b[b.length - 1].inicio + b[b.length - 1].duracao;
-        const sobra = r.cena === 'fechamento' ? 1.5 : 0.75; // o bloco seguinte entra por cima com o wipe
-        const dur = fim - r.inicio + sobra;
-        // primeiro bloco de um capítulo: abre com o título grande, e o conteúdo entra um pouco depois
+      {plano.map((p) => {
+        const { b, r, ant, tipo, tipoProx, abre, atraso, dur, sobra } = p;
+        const fundoRegra = r.cena === 'regra' ? ((nRegra++ % 2) ? 'escuro' : 'papel') : undefined;
         const cap = CAPITULO[r.cena];
-        const abre = cap !== undefined && cap !== (ant ? CAPITULO[ant.cena] : undefined);
-        // capítulo novo ou fechamento: painéis da marca; tela para tela: whip com freio; dentro do capítulo: círculo
-        const tipo = !ant ? 'nenhuma' : abre || r.cena === 'fechamento' ? 'painel' : ant.cena === 'tela' && r.cena === 'tela' ? 'whip' : 'circulo';
-        const atraso = abre ? ABRE_CAP.conteudo : 0;
         return (
           <Sequence key={r.id} from={Math.round(r.inicio * FPS)} durationInFrames={Math.round(dur * FPS)}>
-            {ant && tipo !== 'nenhuma' && <Som em={f(3)} nome={somPassagem[tipo].nome} db={somPassagem[tipo].db} />}
-            <Transicao tipo={tipo} uid={r.id}>
-              {ant && <Cobertura />}
-              <Sequence from={Math.round(atraso * FPS)}>
-                {r.cena === 'abertura' && <Abertura d={d} dur={dur} />}
-                {r.cena === 'status' && <LinhaStatus bloco={b} dur={dur - atraso} adianta={atraso} />}
-                {r.cena === 'regra' && <Regra r={r} dur={dur - atraso} />}
-                {r.cena === 'tela' && <Tela r={r} dur={dur - atraso} adianta={atraso} cursorIni={ant?.cena === 'tela' ? fimDoCursor(ant) : null} />}
-                {r.cena === 'alertas' && <Alertas r={r} dur={dur - atraso} adianta={atraso} />}
-                {r.cena === 'fechamento' && <Fechamento d={d} r={r} dur={dur} />}
-              </Sequence>
-              {abre && <CapituloAbre cap={cap} />}
-            </Transicao>
+            {(SOM_PASSAGEM[tipo] ?? []).map((s, k) => <Som key={k} em={s.em} nome={s.nome} db={s.db} />)}
+            <Saida tipo={tipoProx} ini={dur - sobra} ancora={p.ancoraSaida} uid={r.id}>
+              <Transicao tipo={tipo} uid={r.id} ancora={p.ancora} ret={p.ret}>
+                {ant && <Cobertura ate={DURACAO_PASSAGEM[tipo]} />}
+                <Sequence from={Math.round(atraso * FPS)}>
+                  {r.cena === 'abertura' && <Abertura d={d} dur={dur} />}
+                  {r.cena === 'status' && <LinhaStatus bloco={b} dur={dur - atraso} adianta={atraso} />}
+                  {r.cena === 'regra' && <Regra r={r} dur={dur - atraso} fundo={fundoRegra} />}
+                  {r.cena === 'tela' && <Tela r={r} dur={dur - atraso} adianta={atraso} assentada={tipo === 'porta'} cursorIni={ant?.cena === 'tela' ? fimDoCursor(ant) : null} />}
+                  {r.cena === 'alertas' && <Alertas r={r} dur={dur - atraso} adianta={atraso} />}
+                  {r.cena === 'fechamento' && <Fechamento d={d} r={r} dur={dur} />}
+                </Sequence>
+                {tipo === 'porta' && <PortaDeLetra r={r} uid={r.id} />}
+                {abre && tipo !== 'porta' && cap && <CapituloAbre cap={cap} />}
+              </Transicao>
+            </Saida>
           </Sequence>
         );
       })}

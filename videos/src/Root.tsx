@@ -1,7 +1,7 @@
 import React from 'react';
 import { Composition, getStaticFiles } from 'remotion';
-import { FluxoVideo, FPS, type Dados } from './FluxoVideoV4';
-import { FluxoVideo as FluxoVideoV5, ABERTURA_FRIA } from './FluxoVideoV5';
+import { FluxoVideo as FluxoVideoV4, FPS, type Dados } from './FluxoVideoV4';
+import { FluxoVideo, ABERTURA_FRIA } from './FluxoVideoV5';
 import fluxo1 from './gerado/fluxo-1-vendas.json';
 import consultor03 from './gerado/consultor-03-comercial.json';
 import consultor01 from './gerado/consultor-01-suprimentos.json';
@@ -21,15 +21,16 @@ const temMusica = (id: string) => getStaticFiles().some((f) => f.name === `music
 
 export const Root: React.FC = () => (
   <>
+    {/* motor v5 (padrão): a abertura fria entra antes do vídeo, por isso os 33 quadros a mais */}
     {VIDEOS.map((d) => (
       <Composition key={d.id} id={d.id} component={FluxoVideo} fps={FPS} width={1920} height={1080}
-        durationInFrames={Math.ceil(d.duracaoTotal * FPS)}
+        durationInFrames={Math.ceil(d.duracaoTotal * FPS) + ABERTURA_FRIA}
         defaultProps={{ dados: d, musica: temMusica(d.id) ? `musica/${d.id}.wav` : undefined }} />
     ))}
-    {/* motor v5 em teste: a mesma lista com o sufixo -v5 (abertura fria antes do vídeo) */}
+    {/* motor v4 (o dos vídeos publicados em 23/10/2026): a mesma lista com o sufixo -v4, para comparar ou voltar */}
     {VIDEOS.map((d) => (
-      <Composition key={`${d.id}-v5`} id={`${d.id}-v5`} component={FluxoVideoV5} fps={FPS} width={1920} height={1080}
-        durationInFrames={Math.ceil(d.duracaoTotal * FPS) + ABERTURA_FRIA}
+      <Composition key={`${d.id}-v4`} id={`${d.id}-v4`} component={FluxoVideoV4} fps={FPS} width={1920} height={1080}
+        durationInFrames={Math.ceil(d.duracaoTotal * FPS)}
         defaultProps={{ dados: d, musica: temMusica(d.id) ? `musica/${d.id}.wav` : undefined }} />
     ))}
   </>

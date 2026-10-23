@@ -7,5 +7,7 @@ capturas/
 public/musica/*.wav
 public/audio/**/*.wav
 
-# voz de referência (gravação pessoal): fica só na máquina
-voz/
+# vozes de referência ficam só na máquina (a antiga era gravação pessoal); a voz L é sintética e vai junto,
+# para narrar com o mesmo timbre em outra estação
+voz/*
+!voz/referencia-voz-l.wav
