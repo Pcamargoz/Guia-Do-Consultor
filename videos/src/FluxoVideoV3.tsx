@@ -369,7 +369,8 @@ const Tela: React.FC<{ r: Trecho; dur: number; cursorIni?: { x: number; y: numbe
   const anterior = idx === 0 ? undefined : caixas[focos[idx - 1]];
   const cam = camNoTempo(r, t, focos, caixas, ini, fatia, adianta);
   const antes = camNoTempo(r, t - 1 / FPS, focos, caixas, ini, fatia, adianta);
-  const vel = Math.hypot(cam.tx - antes.tx, cam.ty - antes.ty) + Math.abs(cam.z - antes.z) * 960;
+  // o zoom pesa pouco na velocidade: o punch do impacto não deve borrar a tela
+  const vel = Math.hypot(cam.tx - antes.tx, cam.ty - antes.ty) + Math.abs(cam.z - antes.z) * 250;
   const desfoque = vel > 8 ? Math.min(8, (vel - 8) * 0.09) : 0;
   // cursor: sai 2 quadros antes da câmera, chega 6 antes, em arco
   const p0 = centro(anterior) ?? cursorIni ?? { x: 1180, y: 760 };

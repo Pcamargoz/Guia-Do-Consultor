@@ -128,6 +128,7 @@
    "texto": "Em rascunho, a transferência não baixa o saldo, mas reserva: o disponível cai. Confirmar movimenta; excluir libera.",
    "fonte": "regra-estoque-transferencia-pendente-reserva-o-disponivel",
    "fala": "Segunda. Uma transferência em rascunho não baixa o saldo da origem, mas reserva a quantidade: o disponível cai e o saldo fica igual. Confirmar movimenta de verdade. Excluir libera a reserva.",
+   "critica": true,
    "inicio": 46.561,
    "duracao": 13.929,
    "fala_s": 13.379,
@@ -238,6 +239,11 @@
    ],
    "rotulo": "Estoque › Movimentos › Novo",
    "fala": "Na prática: no novo movimento, escolha o tipo, a empresa, que vem vazia, e o local de destino.",
+   "nomes": [
+    "Tipo de movimento",
+    "Empresa",
+    "Local de destino"
+   ],
    "inicio": 88.545,
    "duracao": 6.288,
    "fala_s": 5.738,
@@ -295,6 +301,10 @@
     }
    ],
    "fala": "Em Saldo, você vê o saldo e o disponível de cada material, por local. Repare neste item negativo, e no aviso no alto: foi a saída da nota fiscal.",
+   "nomes": [
+    "DISPONÍVEL",
+    "Saldo"
+   ],
    "inicio": 94.833,
    "duracao": 9.772,
    "fala_s": 9.222,
@@ -349,6 +359,10 @@
    ],
    "rotulo": "Estoque › Movimentos",
    "fala": "Nos movimentos, lá está ela: saída de expedição, com origem na nota, no almoxarifado central.",
+   "nomes": [
+    "Expedição (PV)",
+    "ORIGEM"
+   ],
    "inicio": 104.605,
    "duracao": 6.489,
    "fala_s": 5.939,
@@ -392,6 +406,11 @@
    ],
    "rotulo": "Estoque › Transferências",
    "fala": "Em Transferências, a própria tela explica: confirme para movimentar o saldo, ou exclua para liberar a reserva.",
+   "nomes": [
+    "Nenhuma transferência para o filtro atual.",
+    null
+   ],
+   "impacto": 0,
    "inicio": 111.094,
    "duracao": 7.68,
    "fala_s": 7.13,
@@ -429,6 +448,10 @@
    ],
    "rotulo": "Estoque › Inventários",
    "fala": "Estes inventários foram cancelados com motivo: cancelar libera o local sem gerar ajuste. Para aprovar, seria preciso uma segunda pessoa.",
+   "nomes": [
+    "NÚMERO",
+    "Cancelado"
+   ],
    "inicio": 118.774,
    "duracao": 9.331,
    "fala_s": 8.781,
@@ -471,6 +494,10 @@
    ],
    "rotulo": "Estoque › Empréstimos",
    "fala": "E o empréstimo sai de um local para outro com data de devolução. Ele pode voltar em partes, e aqui já está devolvido.",
+   "nomes": [
+    "NÚMERO",
+    "Devolvido"
+   ],
    "inicio": 128.105,
    "duracao": 8.099,
    "fala_s": 7.549,

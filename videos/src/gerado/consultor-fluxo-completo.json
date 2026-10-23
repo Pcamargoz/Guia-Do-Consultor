@@ -11,10 +11,26 @@
    "cena": "abertura",
    "fala": "Cada módulo do Faktory Flow conversa com o próximo. Neste vídeo, vamos ver o caminho inteiro de uma venda, do lead até a gestão, e o que cada módulo entrega para o seguinte.",
    "inicio": 0,
-   "duracao": 14.693,
-   "fala_s": 14.143,
-   "audio": null,
-   "legendas": null
+   "duracao": 11.535,
+   "fala_s": 10.985,
+   "audio": "audio/consultor-fluxo-completo/01.wav",
+   "legendas": [
+    {
+     "texto": "Cada módulo do Faktory Flow conversa com o próximo.",
+     "ini": 0,
+     "fim": 3.22
+    },
+    {
+     "texto": "Neste vídeo, vamos ver o caminho inteiro de uma venda, do lead até a gestão,",
+     "ini": 3.5,
+     "fim": 8.184
+    },
+    {
+     "texto": "e o que cada módulo entrega para o seguinte.",
+     "ini": 8.464,
+     "fim": 10.985
+    }
+   ]
   },
   {
    "id": "02",
@@ -31,22 +47,44 @@
    ],
    "destaque": 0,
    "fala": "Tudo começa no CRM, com o lead e a oportunidade.",
-   "inicio": 14.693,
-   "duracao": 4.836,
-   "fala_s": 4.286,
-   "audio": null,
-   "legendas": null
+   "inicio": 11.535,
+   "duracao": 3.501,
+   "fala_s": 2.951,
+   "audio": "audio/consultor-fluxo-completo/02.wav",
+   "legendas": [
+    {
+     "texto": "Tudo começa no CRM, com o lead e a oportunidade.",
+     "ini": 0,
+     "fim": 2.951
+    }
+   ]
   },
   {
    "id": "03",
    "cena": "status",
    "destaque": 6,
    "fala": "A oportunidade ganha vira pedido. O pedido gera medição e ordem de produção, depois a nota fiscal, a carga e, no fim, os títulos no financeiro. E tudo chega ao painel da obra.",
-   "inicio": 19.529,
-   "duracao": 14.693,
-   "fala_s": 14.143,
-   "audio": null,
-   "legendas": null
+   "inicio": 15.036,
+   "duracao": 11.874,
+   "fala_s": 11.324,
+   "audio": "audio/consultor-fluxo-completo/03.wav",
+   "legendas": [
+    {
+     "texto": "A oportunidade ganha vira pedido.",
+     "ini": 0,
+     "fim": 2.153
+    },
+    {
+     "texto": "O pedido gera medição e ordem de produção, depois a nota fiscal, a carga e, no fim, os títulos no financeiro.",
+     "ini": 2.433,
+     "fim": 9.133
+    },
+    {
+     "texto": "E tudo chega ao painel da obra.",
+     "ini": 9.413,
+     "fim": 11.324
+    }
+   ]
   },
   {
    "id": "04",
@@ -57,11 +95,28 @@
    "texto": "Gerar Pedido de Venda, Gerar Instalação, Faturar, Liberar para Expedição, Gerar Títulos: quase nada acontece sozinho.",
    "fonte": "regra-servicos-passagens-por-botao-e-ordem-dos-aceites",
    "fala": "Primeira regra do fluxo completo: quase toda passagem é um botão. Gerar pedido de venda, gerar instalação, faturar, liberar para expedição. Saber qual botão leva para o próximo módulo é metade do trabalho.",
-   "inicio": 34.222,
-   "duracao": 14.693,
-   "fala_s": 14.143,
-   "audio": null,
-   "legendas": null
+   "critica": true,
+   "inicio": 26.91,
+   "duracao": 14.041,
+   "fala_s": 13.491,
+   "audio": "audio/consultor-fluxo-completo/04.wav",
+   "legendas": [
+    {
+     "texto": "Primeira regra do fluxo completo: quase toda passagem é um botão.",
+     "ini": 0,
+     "fim": 4.124
+    },
+    {
+     "texto": "Gerar pedido de venda, gerar instalação, faturar, liberar para expedição.",
+     "ini": 4.404,
+     "fim": 9.157
+    },
+    {
+     "texto": "Saber qual botão leva para o próximo módulo é metade do trabalho.",
+     "ini": 9.437,
+     "fim": 13.491
+    }
+   ]
   },
   {
    "id": "05",
@@ -72,11 +127,37 @@
    "texto": "A oportunidade nasce da conversão; as requisições, da OP; os títulos, da nota finalizada; a entrada do acabado, do Produzido.",
    "fonte": "regra-faturamento-finalizar-nf-gera-os-titulos",
    "fala": "Segunda: o que nasce sozinho. A oportunidade nasce da conversão do lead. As requisições nascem da ordem de produção. Os títulos e a baixa de estoque nascem da nota finalizada. E a entrada do produto acabado nasce do produzido.",
-   "inicio": 48.915,
-   "duracao": 17.264,
-   "fala_s": 16.714,
-   "audio": null,
-   "legendas": null
+   "inicio": 40.951,
+   "duracao": 15.722,
+   "fala_s": 15.172,
+   "audio": "audio/consultor-fluxo-completo/05.wav",
+   "legendas": [
+    {
+     "texto": "Segunda: o que nasce sozinho.",
+     "ini": 0,
+     "fim": 2.013
+    },
+    {
+     "texto": "A oportunidade nasce da conversão do lead.",
+     "ini": 2.293,
+     "fim": 4.925
+    },
+    {
+     "texto": "As requisições nascem da ordem de produção.",
+     "ini": 5.205,
+     "fim": 7.81
+    },
+    {
+     "texto": "Os títulos e a baixa de estoque nascem da nota finalizada.",
+     "ini": 8.09,
+     "fim": 11.739
+    },
+    {
+     "texto": "E a entrada do produto acabado nasce do produzido.",
+     "ini": 12.019,
+     "fim": 15.172
+    }
+   ]
   },
   {
    "id": "06",
@@ -87,11 +168,32 @@
    "texto": "Ajuste e ligue o pedido à obra antes de faturar; libere para expedição só depois de faturar; reverta o ganho antes de gerar o pedido.",
    "fonte": "regra-vendas-editar-pedido-somente-em-aberto",
    "fala": "Terceira: a ordem importa. Ajuste o pedido e ligue a obra antes de faturar. Libere para expedição só depois de faturar. E, no CRM, reverta o ganho antes de gerar o pedido, nunca depois.",
-   "inicio": 66.179,
-   "duracao": 15.121,
-   "fala_s": 14.571,
-   "audio": null,
-   "legendas": null
+   "inicio": 56.673,
+   "duracao": 12.695,
+   "fala_s": 12.145,
+   "audio": "audio/consultor-fluxo-completo/06.wav",
+   "legendas": [
+    {
+     "texto": "Terceira: a ordem importa.",
+     "ini": 0,
+     "fim": 1.898
+    },
+    {
+     "texto": "Ajuste o pedido e ligue a obra antes de faturar.",
+     "ini": 2.178,
+     "fim": 5.078
+    },
+    {
+     "texto": "Libere para expedição só depois de faturar.",
+     "ini": 5.358,
+     "fim": 7.951
+    },
+    {
+     "texto": "E, no CRM, reverta o ganho antes de gerar o pedido, nunca depois.",
+     "ini": 8.231,
+     "fim": 12.145
+    }
+   ]
   },
   {
    "id": "07",
@@ -103,11 +205,21 @@
    ],
    "rotulo": "1 · CRM › Pipeline",
    "fala": "No CRM, a oportunidade nasce da conversão do lead, já com o valor do budget.",
-   "inicio": 81.3,
-   "duracao": 6.979,
-   "fala_s": 6.429,
-   "audio": null,
-   "legendas": null,
+   "nomes": [
+    null,
+    null
+   ],
+   "inicio": 69.368,
+   "duracao": 5.31,
+   "fala_s": 4.76,
+   "audio": "audio/consultor-fluxo-completo/07.wav",
+   "legendas": [
+    {
+     "texto": "No CRM, a oportunidade nasce da conversão do lead, já com o valor do budget.",
+     "ini": 0,
+     "fim": 4.76
+    }
+   ],
    "imagem": "telas/consultor-fluxo-completo/01-crm.png",
    "caixas": [
     {
@@ -135,11 +247,22 @@
    ],
    "rotulo": "2 · Vendas › Pedido",
    "fala": "Em vendas, o pedido em aberto, ainda sem títulos e sem nota.",
-   "inicio": 88.279,
-   "duracao": 5.693,
-   "fala_s": 5.143,
-   "audio": null,
-   "legendas": null,
+   "nomes": [
+    "Em aberto",
+    "Sem títulos",
+    null
+   ],
+   "inicio": 74.678,
+   "duracao": 4.206,
+   "fala_s": 3.656,
+   "audio": "audio/consultor-fluxo-completo/08.wav",
+   "legendas": [
+    {
+     "texto": "Em vendas, o pedido em aberto, ainda sem títulos e sem nota.",
+     "ini": 0,
+     "fim": 3.656
+    }
+   ],
    "imagem": "telas/consultor-fluxo-completo/02-pedido.png",
    "caixas": [
     {
@@ -172,11 +295,22 @@
    ],
    "rotulo": "3 · Serviços › Medição",
    "fala": "Em serviços, a medição aprovada leva à instalação pelo botão gerar instalação.",
-   "inicio": 93.972,
-   "duracao": 5.693,
-   "fala_s": 5.143,
-   "audio": null,
-   "legendas": null,
+   "nomes": [
+    "Aprovada",
+    "Gerar Instalação"
+   ],
+   "impacto": 1,
+   "inicio": 78.884,
+   "duracao": 5.573,
+   "fala_s": 5.023,
+   "audio": "audio/consultor-fluxo-completo/09.wav",
+   "legendas": [
+    {
+     "texto": "Em serviços, a medição aprovada leva à instalação pelo botão gerar instalação.",
+     "ini": 0,
+     "fim": 5.023
+    }
+   ],
    "imagem": "telas/consultor-fluxo-completo/03-medicao.png",
    "caixas": [
     {
@@ -203,11 +337,21 @@
    ],
    "rotulo": "4 · Produção › OP",
    "fala": "Na produção, a ordem produzida lança o acabado no estoque, com custo.",
-   "inicio": 99.665,
-   "duracao": 5.693,
-   "fala_s": 5.143,
-   "audio": null,
-   "legendas": null,
+   "nomes": [
+    "NÚMERO",
+    "Produzido"
+   ],
+   "inicio": 84.457,
+   "duracao": 4.834,
+   "fala_s": 4.284,
+   "audio": "audio/consultor-fluxo-completo/10.wav",
+   "legendas": [
+    {
+     "texto": "Na produção, a ordem produzida lança o acabado no estoque, com custo.",
+     "ini": 0,
+     "fim": 4.284
+    }
+   ],
    "imagem": "telas/consultor-fluxo-completo/04-producao.png",
    "caixas": [
     {
@@ -249,11 +393,27 @@
     }
    ],
    "fala": "No faturamento, a nota em homologação é finalizada, e o avião de papel, o transmitir, fica com o responsável fiscal.",
-   "inicio": 105.358,
-   "duracao": 9.121,
-   "fala_s": 8.571,
-   "audio": null,
-   "legendas": null,
+   "nomes": [
+    "Em Aberto",
+    "Finalizar NF",
+    null
+   ],
+   "inicio": 89.291,
+   "duracao": 8.089,
+   "fala_s": 7.539,
+   "audio": "audio/consultor-fluxo-completo/11.wav",
+   "legendas": [
+    {
+     "texto": "No faturamento, a nota em homologação é finalizada, e o avião de papel, o transmitir,",
+     "ini": 0,
+     "fim": 5.328
+    },
+    {
+     "texto": "fica com o responsável fiscal.",
+     "ini": 5.608,
+     "fim": 7.539
+    }
+   ],
    "imagem": "telas/consultor-fluxo-completo/05-nota.png",
    "caixas": [
     {
@@ -293,11 +453,21 @@
    ],
    "rotulo": "6 · Expedição › Carga",
    "fala": "Na expedição, o histórico da carga mostra cada checkpoint, até a saída para a rota.",
-   "inicio": 114.479,
-   "duracao": 6.979,
-   "fala_s": 6.429,
-   "audio": null,
-   "legendas": null,
+   "nomes": [
+    "Histórico da Carga",
+    "Carga fechada"
+   ],
+   "inicio": 97.38,
+   "duracao": 5.7,
+   "fala_s": 5.15,
+   "audio": "audio/consultor-fluxo-completo/12.wav",
+   "legendas": [
+    {
+     "texto": "Na expedição, o histórico da carga mostra cada checkpoint, até a saída para a rota.",
+     "ini": 0,
+     "fim": 5.15
+    }
+   ],
    "imagem": "telas/consultor-fluxo-completo/06-expedicao.png",
    "caixas": [
     {
@@ -346,11 +516,21 @@
     }
    ],
    "fala": "No financeiro, os títulos da nota são recebidos, inclusive em parte.",
-   "inicio": 121.458,
-   "duracao": 5.264,
-   "fala_s": 4.714,
-   "audio": null,
-   "legendas": null,
+   "nomes": [
+    "Baixa parcial realizada; título residual criado",
+    null
+   ],
+   "inicio": 103.08,
+   "duracao": 4.848,
+   "fala_s": 4.298,
+   "audio": "audio/consultor-fluxo-completo/13.wav",
+   "legendas": [
+    {
+     "texto": "No financeiro, os títulos da nota são recebidos, inclusive em parte.",
+     "ini": 0,
+     "fim": 4.298
+    }
+   ],
    "imagem": "telas/consultor-fluxo-completo/07-financeiro.png",
    "caixas": [
     {
@@ -384,11 +564,22 @@
    ],
    "rotulo": "8 · Gestão › Painel da obra",
    "fala": "E, na gestão, o painel da obra junta vendido, faturado e as pendências de cada documento.",
-   "inicio": 126.722,
-   "duracao": 7.407,
-   "fala_s": 6.857,
-   "audio": null,
-   "legendas": null,
+   "nomes": [
+    "VALOR VENDIDO",
+    "A FATURAR",
+    "Pendências do projeto"
+   ],
+   "inicio": 107.928,
+   "duracao": 6.095,
+   "fala_s": 5.545,
+   "audio": "audio/consultor-fluxo-completo/14.wav",
+   "legendas": [
+    {
+     "texto": "E, na gestão, o painel da obra junta vendido, faturado e as pendências de cada documento.",
+     "ini": 0,
+     "fim": 5.545
+    }
+   ],
    "imagem": "telas/consultor-fluxo-completo/08-gestao.png",
    "caixas": [
     {
@@ -426,11 +617,32 @@
     "Use só dados de teste, e registre o que criou para limpar depois."
    ],
    "fala": "Três cuidados no teste completo. Transmitir, cancelar e inutilizar nota é decisão do responsável fiscal. Confira o saldo antes de finalizar a nota, porque ela baixa o estoque mesmo sem saldo. E use só dados de teste, registrando tudo o que criou para limpar depois.",
-   "inicio": 134.129,
-   "duracao": 19.836,
-   "fala_s": 19.286,
-   "audio": null,
-   "legendas": null
+   "inicio": 114.023,
+   "duracao": 18.097,
+   "fala_s": 17.547,
+   "audio": "audio/consultor-fluxo-completo/15.wav",
+   "legendas": [
+    {
+     "texto": "Três cuidados no teste completo.",
+     "ini": 0,
+     "fim": 1.99
+    },
+    {
+     "texto": "Transmitir, cancelar e inutilizar nota é decisão do responsável fiscal.",
+     "ini": 2.27,
+     "fim": 6.932
+    },
+    {
+     "texto": "Confira o saldo antes de finalizar a nota, porque ela baixa o estoque mesmo sem saldo.",
+     "ini": 7.212,
+     "fim": 12.614
+    },
+    {
+     "texto": "E use só dados de teste, registrando tudo o que criou para limpar depois.",
+     "ini": 12.894,
+     "fim": 17.547
+    }
+   ]
   },
   {
    "id": "16",
@@ -441,12 +653,23 @@
     "Respeite a ordem antes de faturar"
    ],
    "fala": "Resumindo: cada passagem tem um botão, saiba o que nasce sozinho, e respeite a ordem antes de faturar. Para o detalhe de cada módulo, veja os vídeos de cada fluxo.",
-   "inicio": 153.965,
-   "duracao": 13.407,
-   "fala_s": 12.857,
-   "audio": null,
-   "legendas": null
+   "inicio": 132.12,
+   "duracao": 10.786,
+   "fala_s": 10.236,
+   "audio": "audio/consultor-fluxo-completo/16.wav",
+   "legendas": [
+    {
+     "texto": "Resumindo: cada passagem tem um botão, saiba o que nasce sozinho, e respeite a ordem antes de faturar.",
+     "ini": 0,
+     "fim": 6.424
+    },
+    {
+     "texto": "Para o detalhe de cada módulo, veja os vídeos de cada fluxo.",
+     "ini": 6.704,
+     "fim": 10.236
+    }
+   ]
   }
  ],
- "duracaoTotal": 168.872
+ "duracaoTotal": 144.406
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Composition, getStaticFiles } from 'remotion';
-import { FluxoVideo, FPS, type Dados } from './FluxoVideoV3';
+import { FluxoVideo, FPS, type Dados } from './FluxoVideoV4';
+import { FluxoVideo as FluxoVideoV5, ABERTURA_FRIA } from './FluxoVideoV5';
 import fluxo1 from './gerado/fluxo-1-vendas.json';
 import consultor03 from './gerado/consultor-03-comercial.json';
 import consultor01 from './gerado/consultor-01-suprimentos.json';
@@ -23,6 +24,12 @@ export const Root: React.FC = () => (
     {VIDEOS.map((d) => (
       <Composition key={d.id} id={d.id} component={FluxoVideo} fps={FPS} width={1920} height={1080}
         durationInFrames={Math.ceil(d.duracaoTotal * FPS)}
+        defaultProps={{ dados: d, musica: temMusica(d.id) ? `musica/${d.id}.wav` : undefined }} />
+    ))}
+    {/* motor v5 em teste: a mesma lista com o sufixo -v5 (abertura fria antes do vídeo) */}
+    {VIDEOS.map((d) => (
+      <Composition key={`${d.id}-v5`} id={`${d.id}-v5`} component={FluxoVideoV5} fps={FPS} width={1920} height={1080}
+        durationInFrames={Math.ceil(d.duracaoTotal * FPS) + ABERTURA_FRIA}
         defaultProps={{ dados: d, musica: temMusica(d.id) ? `musica/${d.id}.wav` : undefined }} />
     ))}
   </>

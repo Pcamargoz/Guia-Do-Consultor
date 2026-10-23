@@ -92,6 +92,7 @@
    "texto": "Gerar Títulos funciona no pedido Em aberto ou Entregue sem títulos. Ao finalizar a nota, os títulos saem sozinhos, com o número da nota.",
    "fonte": "regra-faturamento-finalizar-nf-gera-os-titulos",
    "fala": "Primeira regra. O Gerar Títulos do pedido só fica habilitado em pedido em aberto ou entregue que ainda não tem títulos. E, quando você finaliza a nota fiscal, os títulos são gerados sozinhos, com o número da nota como documento.",
+   "critica": true,
    "inicio": 28.189,
    "duracao": 15.334,
    "fala_s": 14.784,
@@ -228,6 +229,12 @@
    ],
    "rotulo": "Pedido faturado › títulos gerados",
    "fala": "Veja o pedido depois de faturado: a coluna títulos mostra gerados, e a nota fiscal está ligada. No menu, o Gerar Títulos não aparece mais: ele virou pedido já faturado.",
+   "nomes": [
+    "Gerados",
+    null,
+    "Pedido já faturado"
+   ],
+   "impacto": 2,
    "inicio": 79.107,
    "duracao": 11.495,
    "fala_s": 10.945,
@@ -277,6 +284,11 @@
    ],
    "rotulo": "Financeiro › Contas a Receber",
    "fala": "Em Financeiro, Contas a Receber, os títulos da nota estão lá: uma linha por parcela, em aberto. Vamos receber o primeiro.",
+   "nomes": [
+    "DOCUMENTO",
+    "Status",
+    "Receber"
+   ],
    "inicio": 90.602,
    "duracao": 8.135,
    "fala_s": 7.585,
@@ -325,6 +337,10 @@
    ],
    "rotulo": "Financeiro › Saldos (antes)",
    "fala": "Antes, anote o saldo da conta em Financeiro, Saldos. A conta de teste está com mil duzentos e trinta reais e setenta e seis centavos.",
+   "nomes": [
+    null,
+    "SALDO ATUAL"
+   ],
    "inicio": 98.737,
    "duracao": 9.122,
    "fala_s": 8.572,
@@ -368,6 +384,11 @@
    ],
    "rotulo": "Receber",
    "fala": "No Receber, escolha a conta bancária, que é obrigatória e não vem preenchida, o meio de pagamento e o valor recebido. Aqui, cinquenta reais de um título de cento e vinte e cinco.",
+   "nomes": [
+    "Conta Bancária",
+    "Valor Recebido",
+    "Receber"
+   ],
    "inicio": 107.859,
    "duracao": 11.991,
    "fala_s": 11.441,
@@ -443,6 +464,10 @@
     }
    ],
    "fala": "O sistema confirma a baixa parcial e cria o título residual de setenta e cinco reais. Repare no número: ele pega a próxima parcela livre, aqui a zero zero três.",
+   "nomes": [
+    "Baixa parcial realizada; título residual criado",
+    null
+   ],
    "inicio": 119.85,
    "duracao": 10.924,
    "fala_s": 10.374,
@@ -491,6 +516,10 @@
    ],
    "rotulo": "Financeiro › Saldos (depois)",
    "fala": "De volta aos saldos: a conta subiu exatamente os cinquenta reais, na hora.",
+   "nomes": [
+    null,
+    "SALDO ATUAL"
+   ],
    "inicio": 130.774,
    "duracao": 5.183,
    "fala_s": 4.633,

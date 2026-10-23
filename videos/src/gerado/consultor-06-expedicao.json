@@ -11,10 +11,26 @@
    "cena": "abertura",
    "fala": "O pedido faturado ainda precisa chegar ao cliente. Neste vídeo, vamos montar a carga, passar pelos checkpoints do pátio e entregar, com tudo registrado no histórico.",
    "inicio": 0,
-   "duracao": 11.693,
-   "fala_s": 11.143,
-   "audio": null,
-   "legendas": null
+   "duracao": 11.717,
+   "fala_s": 11.167,
+   "audio": "audio/consultor-06-expedicao/01.wav",
+   "legendas": [
+    {
+     "texto": "O pedido faturado ainda precisa chegar ao cliente.",
+     "ini": 0,
+     "fim": 3.21
+    },
+    {
+     "texto": "Neste vídeo, vamos montar a carga, passar pelos checkpoints do pátio e entregar,",
+     "ini": 3.49,
+     "fim": 8.655
+    },
+    {
+     "texto": "com tudo registrado no histórico.",
+     "ini": 8.935,
+     "fim": 11.167
+    }
+   ]
   },
   {
    "id": "02",
@@ -29,22 +45,44 @@
    ],
    "destaque": 0,
    "fala": "Tudo começa liberando o pedido faturado para a expedição. Só assim ele aparece para montar a carga.",
-   "inicio": 11.693,
-   "duracao": 7.836,
-   "fala_s": 7.286,
-   "audio": null,
-   "legendas": null
+   "inicio": 11.717,
+   "duracao": 6.81,
+   "fala_s": 6.26,
+   "audio": "audio/consultor-06-expedicao/02.wav",
+   "legendas": [
+    {
+     "texto": "Tudo começa liberando o pedido faturado para a expedição.",
+     "ini": 0,
+     "fim": 3.546
+    },
+    {
+     "texto": "Só assim ele aparece para montar a carga.",
+     "ini": 3.826,
+     "fim": 6.26
+    }
+   ]
   },
   {
    "id": "03",
    "cena": "status",
    "destaque": 4,
    "fala": "A carga é fechada, passa pela separação, pela conferência e pelo carregamento, sai em rota e termina entregue. Cada passo fica no histórico, com horário.",
-   "inicio": 19.529,
-   "duracao": 11.264,
-   "fala_s": 10.714,
-   "audio": null,
-   "legendas": null
+   "inicio": 18.527,
+   "duracao": 10.311,
+   "fala_s": 9.761,
+   "audio": "audio/consultor-06-expedicao/03.wav",
+   "legendas": [
+    {
+     "texto": "A carga é fechada, passa pela separação, pela conferência e pelo carregamento, sai em rota e termina entregue.",
+     "ini": 0,
+     "fim": 6.942
+    },
+    {
+     "texto": "Cada passo fica no histórico, com horário.",
+     "ini": 7.222,
+     "fim": 9.761
+    }
+   ]
   },
   {
    "id": "04",
@@ -55,11 +93,33 @@
    "texto": "Liberar para Expedição aparece só no pedido Faturado. Em Lib. Expedição, vira Reverter Liberação.",
    "fonte": "regra-vendas-liberar-para-expedicao-so-em-pedido-faturado",
    "fala": "Primeira regra. O liberar para expedição só aparece no menu do pedido faturado. Antes de faturar, ele não existe. E, depois de liberado, o mesmo lugar vira reverter liberação.",
-   "inicio": 30.793,
-   "duracao": 12.979,
-   "fala_s": 12.429,
-   "audio": null,
-   "legendas": null
+   "critica": true,
+   "inicio": 28.838,
+   "duracao": 12.115,
+   "fala_s": 11.565,
+   "audio": "audio/consultor-06-expedicao/04.wav",
+   "legendas": [
+    {
+     "texto": "Primeira regra.",
+     "ini": 0,
+     "fim": 1.023
+    },
+    {
+     "texto": "O liberar para expedição só aparece no menu do pedido faturado.",
+     "ini": 1.303,
+     "fim": 5.178
+    },
+    {
+     "texto": "Antes de faturar, ele não existe.",
+     "ini": 5.458,
+     "fim": 7.486
+    },
+    {
+     "texto": "E, depois de liberado, o mesmo lugar vira reverter liberação.",
+     "ini": 7.766,
+     "fim": 11.565
+    }
+   ]
   },
   {
    "id": "05",
@@ -70,11 +130,27 @@
    "texto": "Separação, Conferência e Carregamento ligam em Expedição › Configurações › Parâmetros. Ligue só o que a empresa usa.",
    "fonte": "manual-09-expedicao",
    "fala": "Segunda. Os checkpoints de separação, conferência e carregamento são ligados nos parâmetros da expedição. Ligue só as etapas que a empresa realmente usa: cada uma vira uma bipagem obrigatória.",
-   "inicio": 43.772,
-   "duracao": 12.979,
-   "fala_s": 12.429,
-   "audio": null,
-   "legendas": null
+   "inicio": 40.953,
+   "duracao": 13.387,
+   "fala_s": 12.837,
+   "audio": "audio/consultor-06-expedicao/05.wav",
+   "legendas": [
+    {
+     "texto": "Segunda.",
+     "ini": 0,
+     "fim": 0.751
+    },
+    {
+     "texto": "Os checkpoints de separação, conferência e carregamento são ligados nos parâmetros da expedição.",
+     "ini": 1.031,
+     "fim": 7.163
+    },
+    {
+     "texto": "Ligue só as etapas que a empresa realmente usa: cada uma vira uma bipagem obrigatória.",
+     "ini": 7.443,
+     "fim": 12.837
+    }
+   ]
   },
   {
    "id": "06",
@@ -85,11 +161,37 @@
    "texto": "Fechar Carga libera os checkpoints. Com todos completos, Iniciar Rota coloca a carga Em Rota.",
    "fonte": "manual-09-expedicao",
    "fala": "Terceira. Fechar a carga libera os checkpoints. Em cada um, você bipa a etiqueta de cada volume. Quando os três chegam a cem por cento, aparece que todos os checkpoints foram concluídos, e o iniciar rota coloca a carga em rota.",
-   "inicio": 56.751,
-   "duracao": 18.121,
-   "fala_s": 17.571,
-   "audio": null,
-   "legendas": null
+   "inicio": 54.34,
+   "duracao": 15.864,
+   "fala_s": 15.314,
+   "audio": "audio/consultor-06-expedicao/06.wav",
+   "legendas": [
+    {
+     "texto": "Terceira.",
+     "ini": 0,
+     "fim": 0.748
+    },
+    {
+     "texto": "Fechar a carga libera os checkpoints.",
+     "ini": 1.028,
+     "fim": 3.369
+    },
+    {
+     "texto": "Em cada um, você bipa a etiqueta de cada volume.",
+     "ini": 3.649,
+     "fim": 6.607
+    },
+    {
+     "texto": "Quando os três chegam a cem por cento, aparece que todos os checkpoints foram concluídos,",
+     "ini": 6.887,
+     "fim": 12.694
+    },
+    {
+     "texto": "e o iniciar rota coloca a carga em rota.",
+     "ini": 12.974,
+     "fim": 15.314
+    }
+   ]
   },
   {
    "id": "07",
@@ -100,11 +202,32 @@
    "texto": "A entrega fica com ocorrência e o pedido volta para Aguardando Re-Expedição. A devolução confirmada cria pendências de estoque.",
    "fonte": "roteiro-expedicao-05-re-expedicao-e-devolucoes",
    "fala": "Quarta. Uma ocorrência bloqueante na rota devolve o pedido para a fila de re-expedição. E, se a mercadoria volta, a devolução confirmada cria pendências por produto para o estoque: o saldo não sobe sozinho.",
-   "inicio": 74.872,
-   "duracao": 15.121,
-   "fala_s": 14.571,
-   "audio": null,
-   "legendas": null
+   "inicio": 70.204,
+   "duracao": 14.677,
+   "fala_s": 14.127,
+   "audio": "audio/consultor-06-expedicao/07.wav",
+   "legendas": [
+    {
+     "texto": "Quarta.",
+     "ini": 0,
+     "fim": 0.563
+    },
+    {
+     "texto": "Uma ocorrência bloqueante na rota devolve o pedido para a fila de re-expedição.",
+     "ini": 0.843,
+     "fim": 5.86
+    },
+    {
+     "texto": "E, se a mercadoria volta,",
+     "ini": 6.14,
+     "fim": 7.835
+    },
+    {
+     "texto": "a devolução confirmada cria pendências por produto para o estoque: o saldo não sobe sozinho.",
+     "ini": 8.115,
+     "fim": 14.127
+    }
+   ]
   },
   {
    "id": "08",
@@ -116,11 +239,22 @@
    ],
    "rotulo": "Pedido faturado › ⋯",
    "fala": "Na prática: este pedido está faturado, e o menu dele agora mostra o liberar para expedição.",
-   "inicio": 89.993,
-   "duracao": 7.407,
-   "fala_s": 6.857,
-   "audio": null,
-   "legendas": null,
+   "nomes": [
+    "Faturado",
+    "Liberar para Expedição"
+   ],
+   "impacto": 1,
+   "inicio": 84.881,
+   "duracao": 6.362,
+   "fala_s": 5.812,
+   "audio": "audio/consultor-06-expedicao/08.wav",
+   "legendas": [
+    {
+     "texto": "Na prática: este pedido está faturado, e o menu dele agora mostra o liberar para expedição.",
+     "ini": 0,
+     "fim": 5.812
+    }
+   ],
    "imagem": "telas/consultor-06-expedicao/00-liberar.png",
    "caixas": [
     {
@@ -149,11 +283,28 @@
    ],
    "rotulo": "Expedição › Cargas",
    "fala": "Em Expedição, Cargas, o quadro mostra as cargas em montagem, separadas, em rota e entregues. O montar nova carga lista só os pedidos faturados ou liberados.",
-   "inicio": 97.4,
-   "duracao": 11.693,
-   "fala_s": 11.143,
-   "audio": null,
-   "legendas": null,
+   "nomes": [
+    "Montar Nova Carga",
+    "Em Montagem",
+    "Em Rota",
+    "Entregue"
+   ],
+   "inicio": 91.243,
+   "duracao": 10.758,
+   "fala_s": 10.208,
+   "audio": "audio/consultor-06-expedicao/09.wav",
+   "legendas": [
+    {
+     "texto": "Em Expedição, Cargas, o quadro mostra as cargas em montagem, separadas, em rota e entregues.",
+     "ini": 0,
+     "fim": 5.872
+    },
+    {
+     "texto": "O montar nova carga lista só os pedidos faturados ou liberados.",
+     "ini": 6.152,
+     "fim": 10.208
+    }
+   ],
    "imagem": "telas/consultor-06-expedicao/01-quadro-cargas.png",
    "caixas": [
     {
@@ -202,11 +353,28 @@
     }
    ],
    "fala": "No detalhe da carga, você vê o status, a ocupação do veículo contra a capacidade, as entregas, e os documentos: romaneio e etiquetas.",
-   "inicio": 109.093,
-   "duracao": 10.407,
-   "fala_s": 9.857,
-   "audio": null,
-   "legendas": null,
+   "nomes": [
+    "Entregue",
+    "Ocupação",
+    "Entregas",
+    "Romaneio"
+   ],
+   "inicio": 102.001,
+   "duracao": 9.136,
+   "fala_s": 8.586,
+   "audio": "audio/consultor-06-expedicao/10.wav",
+   "legendas": [
+    {
+     "texto": "No detalhe da carga, você vê o status, a ocupação do veículo contra a capacidade, as entregas,",
+     "ini": 0,
+     "fim": 5.85
+    },
+    {
+     "texto": "e os documentos: romaneio e etiquetas.",
+     "ini": 6.13,
+     "fim": 8.586
+    }
+   ],
    "imagem": "telas/consultor-06-expedicao/02-carga-detalhe.png",
    "caixas": [
     {
@@ -245,11 +413,26 @@
    ],
    "rotulo": "Histórico da Carga",
    "fala": "E o histórico da carga registra cada passo, com o horário: criada, fechada, separação, conferência, carregamento e a saída para a rota.",
-   "inicio": 119.5,
-   "duracao": 9.979,
-   "fala_s": 9.429,
-   "audio": null,
-   "legendas": null,
+   "nomes": [
+    "Histórico da Carga",
+    "Carga fechada"
+   ],
+   "inicio": 111.137,
+   "duracao": 9.422,
+   "fala_s": 8.872,
+   "audio": "audio/consultor-06-expedicao/11.wav",
+   "legendas": [
+    {
+     "texto": "E o histórico da carga registra cada passo, com o horário: criada, fechada, separação, conferência,",
+     "ini": 0,
+     "fim": 6.393
+    },
+    {
+     "texto": "carregamento e a saída para a rota.",
+     "ini": 6.673,
+     "fim": 8.872
+    }
+   ],
    "imagem": "telas/consultor-06-expedicao/03-historico.png",
    "caixas": [
     {
@@ -275,11 +458,32 @@
     "Devolução não sobe o saldo: trate a pendência de estoque."
    ],
    "fala": "Três cuidados. Motorista com CNH vencida exige justificativa para fechar a carga. A carga pode avisar produção pendente mesmo com a ordem vinculada. E a devolução não devolve o saldo sozinha: trate a pendência de estoque.",
-   "inicio": 129.479,
-   "duracao": 15.979,
-   "fala_s": 15.429,
-   "audio": null,
-   "legendas": null
+   "inicio": 120.559,
+   "duracao": 15.89,
+   "fala_s": 15.34,
+   "audio": "audio/consultor-06-expedicao/12.wav",
+   "legendas": [
+    {
+     "texto": "Três cuidados.",
+     "ini": 0,
+     "fim": 1.332
+    },
+    {
+     "texto": "Motorista com CNH vencida exige justificativa para fechar a carga.",
+     "ini": 1.612,
+     "fim": 5.911
+    },
+    {
+     "texto": "A carga pode avisar produção pendente mesmo com a ordem vinculada.",
+     "ini": 6.191,
+     "fim": 10.476
+    },
+    {
+     "texto": "E a devolução não devolve o saldo sozinha: trate a pendência de estoque.",
+     "ini": 10.756,
+     "fim": 15.34
+    }
+   ]
   },
   {
    "id": "13",
@@ -290,12 +494,33 @@
     "Devolução vira pendência de estoque"
    ],
    "fala": "Resumindo: libere o pedido só depois de faturar. Fechar a carga libera os checkpoints. E a devolução vira pendência de estoque. No próximo vídeo, o faturamento e o fiscal.",
-   "inicio": 145.458,
-   "duracao": 12.979,
-   "fala_s": 12.429,
-   "audio": null,
-   "legendas": null
+   "inicio": 136.449,
+   "duracao": 11.96,
+   "fala_s": 11.41,
+   "audio": "audio/consultor-06-expedicao/13.wav",
+   "legendas": [
+    {
+     "texto": "Resumindo: libere o pedido só depois de faturar.",
+     "ini": 0,
+     "fim": 3.058
+    },
+    {
+     "texto": "Fechar a carga libera os checkpoints.",
+     "ini": 3.338,
+     "fim": 5.679
+    },
+    {
+     "texto": "E a devolução vira pendência de estoque.",
+     "ini": 5.96,
+     "fim": 8.53
+    },
+    {
+     "texto": "No próximo vídeo, o faturamento e o fiscal.",
+     "ini": 8.81,
+     "fim": 11.41
+    }
+   ]
   }
  ],
- "duracaoTotal": 159.937
+ "duracaoTotal": 149.909
 }

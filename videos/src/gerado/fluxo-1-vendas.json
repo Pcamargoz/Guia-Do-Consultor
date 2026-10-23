@@ -10,24 +10,24 @@
    "cena": "abertura",
    "fala": "Toda venda da empresa começa num pedido. Neste vídeo, você vai entender o ciclo do pedido de venda no Faktory Flow, e como evitar os tropeços mais comuns.",
    "inicio": 0,
-   "duracao": 9.818,
-   "fala_s": 9.268,
+   "duracao": 10.459,
+   "fala_s": 9.909,
    "audio": "audio/fluxo-1-vendas/01.wav",
    "legendas": [
     {
      "texto": "Toda venda da empresa começa num pedido.",
      "ini": 0,
-     "fim": 2.338
+     "fim": 2.486
     },
     {
      "texto": "Neste vídeo, você vai entender o ciclo do pedido de venda no Faktory Flow,",
-     "ini": 2.618,
-     "fim": 6.772
+     "ini": 2.766,
+     "fim": 7.236
     },
     {
      "texto": "e como evitar os tropeços mais comuns.",
-     "ini": 7.052,
-     "fim": 9.268
+     "ini": 7.516,
+     "fim": 9.909
     }
    ]
   },
@@ -36,25 +36,25 @@
    "cena": "status",
    "destaque": 0,
    "fala": "O pedido é o combinado da venda: quem compra, o quê, por quanto e como vai pagar. Ele nasce Em aberto. Enquanto está assim, você ainda pode mudar tudo.",
-   "inicio": 9.818,
-   "duracao": 9.955,
-   "fala_s": 9.405,
+   "inicio": 10.459,
+   "duracao": 10.553,
+   "fala_s": 10.003,
    "audio": "audio/fluxo-1-vendas/02.wav",
    "legendas": [
     {
      "texto": "O pedido é o combinado da venda: quem compra, o quê, por quanto e como vai pagar.",
      "ini": 0,
-     "fim": 4.431
+     "fim": 4.9
     },
     {
      "texto": "Ele nasce Em aberto.",
-     "ini": 4.711,
-     "fim": 6.311
+     "ini": 5.18,
+     "fim": 6.8
     },
     {
      "texto": "Enquanto está assim, você ainda pode mudar tudo.",
-     "ini": 6.591,
-     "fim": 9.405
+     "ini": 7.08,
+     "fim": 10.003
     }
    ]
   },
@@ -64,30 +64,30 @@
    "destaque": 3,
    "cadeado": true,
    "fala": "Quando a nota fiscal é salva, ele passa a Faturado. Depois, pode ser liberado para expedição e, por fim, entregue. Cada status abre e fecha portas. Vamos ver quais.",
-   "inicio": 19.773,
-   "duracao": 11.295,
-   "fala_s": 10.745,
+   "inicio": 21.012,
+   "duracao": 11.639,
+   "fala_s": 11.089,
    "audio": "audio/fluxo-1-vendas/03.wav",
    "legendas": [
     {
      "texto": "Quando a nota fiscal é salva, ele passa a Faturado.",
      "ini": 0,
-     "fim": 2.839
+     "fim": 3.025
     },
     {
      "texto": "Depois, pode ser liberado para expedição e, por fim, entregue.",
-     "ini": 3.119,
-     "fim": 6.702
+     "ini": 3.305,
+     "fim": 7.174
     },
     {
      "texto": "Cada status abre e fecha portas.",
-     "ini": 6.982,
-     "fim": 8.838
+     "ini": 7.454,
+     "fim": 9.489
     },
     {
      "texto": "Vamos ver quais.",
-     "ini": 9.118,
-     "fim": 10.745
+     "ini": 9.769,
+     "fim": 11.089
     }
    ]
   },
@@ -100,25 +100,26 @@
    "texto": "O CFOP só libera depois da Empresa e do Cliente, filtrado pelo estado do cliente.",
    "fonte": "regra-vendas-cfop-depende-de-empresa-e-cliente",
    "fala": "Primeira regra. No Novo Pedido, o CFOP só libera depois que você escolhe a Empresa e o Cliente. E ele já vem filtrado pelo estado do cliente.",
-   "inicio": 31.068,
-   "duracao": 9.944,
-   "fala_s": 9.394,
+   "critica": true,
+   "inicio": 32.651,
+   "duracao": 10.134,
+   "fala_s": 9.584,
    "audio": "audio/fluxo-1-vendas/04.wav",
    "legendas": [
     {
      "texto": "Primeira regra.",
      "ini": 0,
-     "fim": 1.422
+     "fim": 1.023
     },
     {
      "texto": "No Novo Pedido, o CFOP só libera depois que você escolhe a Empresa e o Cliente.",
-     "ini": 1.702,
-     "fim": 6.634
+     "ini": 1.303,
+     "fim": 6.731
     },
     {
      "texto": "E ele já vem filtrado pelo estado do cliente.",
-     "ini": 6.914,
-     "fim": 9.394
+     "ini": 7.011,
+     "fim": 9.584
     }
    ]
   },
@@ -131,20 +132,20 @@
    "texto": "No Resumo do Pedido, confira a Conta de Fluxo de Caixa de venda.",
    "fonte": "regra-vendas-cfop-depende-de-empresa-e-cliente",
    "fala": "Segunda. No Resumo do Pedido, a Conta de Fluxo de Caixa é obrigatória.",
-   "inicio": 41.012,
-   "duracao": 5.58,
-   "fala_s": 5.03,
+   "inicio": 42.785,
+   "duracao": 5.392,
+   "fala_s": 4.842,
    "audio": "audio/fluxo-1-vendas/05.wav",
    "legendas": [
     {
      "texto": "Segunda.",
      "ini": 0,
-     "fim": 1.28
+     "fim": 0.751
     },
     {
      "texto": "No Resumo do Pedido, a Conta de Fluxo de Caixa é obrigatória.",
-     "ini": 1.56,
-     "fim": 5.03
+     "ini": 1.031,
+     "fim": 4.842
     }
    ]
   },
@@ -157,30 +158,30 @@
    "texto": "Edite pelo lápis da coluna Ações. Faturado ou Entregue: só visualizar.",
    "fonte": "regra-vendas-editar-pedido-somente-em-aberto",
    "fala": "Terceira. Só o pedido Em aberto pode ser editado, pelo lápis da coluna Ações. Depois de faturado, você só consegue visualizar. Por isso, ajuste projeto, itens e parcelas antes de faturar.",
-   "inicio": 46.592,
-   "duracao": 12.959,
-   "fala_s": 12.409,
+   "inicio": 48.177,
+   "duracao": 13.316,
+   "fala_s": 12.766,
    "audio": "audio/fluxo-1-vendas/06.wav",
    "legendas": [
     {
      "texto": "Terceira.",
      "ini": 0,
-     "fim": 1.345
+     "fim": 0.748
     },
     {
      "texto": "Só o pedido Em aberto pode ser editado, pelo lápis da coluna Ações.",
-     "ini": 1.625,
-     "fim": 5.57
+     "ini": 1.028,
+     "fim": 5.31
     },
     {
      "texto": "Depois de faturado, você só consegue visualizar.",
-     "ini": 5.85,
-     "fim": 8.636
+     "ini": 5.59,
+     "fim": 8.654
     },
     {
      "texto": "Por isso, ajuste projeto, itens e parcelas antes de faturar.",
-     "ini": 8.916,
-     "fim": 12.409
+     "ini": 8.934,
+     "fim": 12.766
     }
    ]
   },
@@ -193,30 +194,30 @@
    "texto": "O pedido fica Faturado quando a nota é salva, mesmo com a nota Em Aberto.",
    "fonte": "regra-vendas-pedido-fica-faturado-ao-salvar-a-nota",
    "fala": "Quarta. O pedido fica Faturado assim que a nota é salva, mesmo que a nota ainda esteja em aberto. Faturado não quer dizer nota autorizada. Confira sempre em Faturamento.",
-   "inicio": 59.551,
-   "duracao": 11.18,
-   "fala_s": 10.63,
+   "inicio": 61.493,
+   "duracao": 11.871,
+   "fala_s": 11.321,
    "audio": "audio/fluxo-1-vendas/07.wav",
    "legendas": [
     {
      "texto": "Quarta.",
      "ini": 0,
-     "fim": 0.498
+     "fim": 0.563
     },
     {
      "texto": "O pedido fica Faturado assim que a nota é salva, mesmo que a nota ainda esteja em aberto.",
-     "ini": 0.778,
-     "fim": 5.796
+     "ini": 0.843,
+     "fim": 6.31
     },
     {
      "texto": "Faturado não quer dizer nota autorizada.",
-     "ini": 6.076,
-     "fim": 8.456
+     "ini": 6.59,
+     "fim": 9.136
     },
     {
      "texto": "Confira sempre em Faturamento.",
-     "ini": 8.736,
-     "fim": 10.63
+     "ini": 9.416,
+     "fim": 11.321
     }
    ]
   },
@@ -227,25 +228,28 @@
    "foco": 0,
    "rotulo": "Vendas › Pedidos de Venda",
    "fala": "Agora, na prática. Abra Vendas, Pedidos de Venda. A lista já abre filtrada nos pedidos Em aberto.",
-   "inicio": 70.731,
-   "duracao": 6.856,
-   "fala_s": 6.306,
+   "nomes": [
+    "Status"
+   ],
+   "inicio": 73.364,
+   "duracao": 7.272,
+   "fala_s": 6.722,
    "audio": "audio/fluxo-1-vendas/08.wav",
    "legendas": [
     {
      "texto": "Agora, na prática.",
      "ini": 0,
-     "fim": 1.209
+     "fim": 1.467
     },
     {
      "texto": "Abra Vendas, Pedidos de Venda.",
-     "ini": 1.489,
-     "fim": 3.38
+     "ini": 1.747,
+     "fim": 3.663
     },
     {
      "texto": "A lista já abre filtrada nos pedidos Em aberto.",
-     "ini": 3.66,
-     "fim": 6.306
+     "ini": 3.943,
+     "fim": 6.722
     }
    ],
    "imagem": "telas/fluxo-1-vendas/01-lista.png",
@@ -277,20 +281,24 @@
    "foco": 0,
    "rotulo": "+ Novo Pedido",
    "fala": "Clique em Novo Pedido e comece escolhendo a Empresa. Repare que o CFOP ainda está bloqueado.",
-   "inicio": 77.587,
-   "duracao": 6.49,
-   "fala_s": 5.94,
+   "nomes": [
+    "CFOP"
+   ],
+   "impacto": 0,
+   "inicio": 80.636,
+   "duracao": 6.93,
+   "fala_s": 6.38,
    "audio": "audio/fluxo-1-vendas/09.wav",
    "legendas": [
     {
      "texto": "Clique em Novo Pedido e comece escolhendo a Empresa.",
      "ini": 0,
-     "fim": 3.085
+     "fim": 3.198
     },
     {
      "texto": "Repare que o CFOP ainda está bloqueado.",
-     "ini": 3.365,
-     "fim": 5.94
+     "ini": 3.478,
+     "fim": 6.38
     }
    ],
    "imagem": "telas/fluxo-1-vendas/02-novo-vazio.png",
@@ -328,20 +336,23 @@
    "foco": 0,
    "rotulo": "Cliente, Vendedor e Condição de Pagamento",
    "fala": "Escolha o Cliente, o Vendedor e a Condição de Pagamento. Agora, sim, o CFOP libera.",
-   "inicio": 84.077,
-   "duracao": 5.906,
-   "fala_s": 5.356,
+   "nomes": [
+    "CFOP"
+   ],
+   "inicio": 87.566,
+   "duracao": 6.278,
+   "fala_s": 5.728,
    "audio": "audio/fluxo-1-vendas/10.wav",
    "legendas": [
     {
      "texto": "Escolha o Cliente, o Vendedor e a Condição de Pagamento.",
      "ini": 0,
-     "fim": 3.25
+     "fim": 3.447
     },
     {
      "texto": "Agora, sim, o CFOP libera.",
-     "ini": 3.53,
-     "fim": 5.356
+     "ini": 3.727,
+     "fim": 5.728
     }
    ],
    "imagem": "telas/fluxo-1-vendas/03-cabecalho.png",
@@ -373,20 +384,23 @@
    "foco": 0,
    "rotulo": "CFOP",
    "fala": "E a lista já vem filtrada pelo estado do cliente. Aqui, só aparecem as operações interestaduais.",
-   "inicio": 89.983,
-   "duracao": 6.407,
-   "fala_s": 5.857,
+   "nomes": [
+    null
+   ],
+   "inicio": 93.844,
+   "duracao": 6.777,
+   "fala_s": 6.227,
    "audio": "audio/fluxo-1-vendas/10b.wav",
    "legendas": [
     {
      "texto": "E a lista já vem filtrada pelo estado do cliente.",
      "ini": 0,
-     "fim": 2.825
+     "fim": 2.944
     },
     {
      "texto": "Aqui, só aparecem as operações interestaduais.",
-     "ini": 3.105,
-     "fim": 5.857
+     "ini": 3.224,
+     "fim": 6.227
     }
    ],
    "imagem": "telas/fluxo-1-vendas/03b-cfop.png",
@@ -406,25 +420,28 @@
    "foco": 0,
    "rotulo": "Dados do Item",
    "fala": "Adicione o produto. Abre o quadro Dados do Item, com os campos que o tipo do material pede. Preencha e clique em Aplicar.",
-   "inicio": 96.39,
-   "duracao": 8.446,
-   "fala_s": 7.896,
+   "nomes": [
+    "Aplicar"
+   ],
+   "inicio": 100.621,
+   "duracao": 8.904,
+   "fala_s": 8.354,
    "audio": "audio/fluxo-1-vendas/11.wav",
    "legendas": [
     {
      "texto": "Adicione o produto.",
      "ini": 0,
-     "fim": 1.581
+     "fim": 1.436
     },
     {
      "texto": "Abre o quadro Dados do Item, com os campos que o tipo do material pede.",
-     "ini": 1.861,
-     "fim": 5.815
+     "ini": 1.716,
+     "fim": 6.127
     },
     {
      "texto": "Preencha e clique em Aplicar.",
-     "ini": 6.095,
-     "fim": 7.896
+     "ini": 6.407,
+     "fim": 8.354
     }
    ],
    "imagem": "telas/fluxo-1-vendas/04-item.png",
@@ -455,20 +472,25 @@
    ],
    "rotulo": "Parcelas do Pedido e Resumo",
    "fala": "Na parcela, escolha o Meio Pagamento e o Portador. No Resumo, confira a Conta de Fluxo de Caixa: ela é obrigatória, e pode já vir do cadastro do cliente.",
-   "inicio": 104.836,
-   "duracao": 9.349,
-   "fala_s": 8.799,
+   "nomes": [
+    "Meio Pagamento",
+    "Portador",
+    "Conta de Fluxo de Caixa"
+   ],
+   "inicio": 109.525,
+   "duracao": 10.235,
+   "fala_s": 9.685,
    "audio": "audio/fluxo-1-vendas/12.wav",
    "legendas": [
     {
      "texto": "Na parcela, escolha o Meio Pagamento e o Portador.",
      "ini": 0,
-     "fim": 2.874
+     "fim": 3.177
     },
     {
      "texto": "No Resumo, confira a Conta de Fluxo de Caixa: ela é obrigatória, e pode já vir do cadastro do cliente.",
-     "ini": 3.154,
-     "fim": 8.799
+     "ini": 3.457,
+     "fim": 9.685
     }
    ],
    "imagem": "telas/fluxo-1-vendas/05-parcelas.png",
@@ -526,20 +548,24 @@
     }
    ],
    "fala": "Clique em Salvar e Permanecer. Pronto: o pedido ganha um número, e a tela passa a ser Editar Pedido de Venda.",
-   "inicio": 114.185,
-   "duracao": 7.052,
-   "fala_s": 6.502,
+   "nomes": [
+    "Salvar e Permanecer",
+    null
+   ],
+   "inicio": 119.76,
+   "duracao": 7.504,
+   "fala_s": 6.954,
    "audio": "audio/fluxo-1-vendas/13.wav",
    "legendas": [
     {
      "texto": "Clique em Salvar e Permanecer.",
      "ini": 0,
-     "fim": 1.882
+     "fim": 1.877
     },
     {
      "texto": "Pronto: o pedido ganha um número, e a tela passa a ser Editar Pedido de Venda.",
-     "ini": 2.162,
-     "fim": 6.502
+     "ini": 2.157,
+     "fim": 6.954
     }
    ],
    "imagem": "telas/fluxo-1-vendas/06-salvo-b.png",
@@ -570,30 +596,35 @@
    ],
    "rotulo": "Em aberto · Sem títulos",
    "fala": "Na lista, ele está Em aberto, sem títulos e sem nota fiscal. Precisa ajustar? Use o lápis. Para mudar as parcelas, troque a Condição de Pagamento: as parcelas se refazem sozinhas.",
-   "inicio": 121.237,
-   "duracao": 12.54,
-   "fala_s": 11.99,
+   "nomes": [
+    "Em aberto",
+    "Sem títulos",
+    null
+   ],
+   "inicio": 127.264,
+   "duracao": 13.241,
+   "fala_s": 12.691,
    "audio": "audio/fluxo-1-vendas/14.wav",
    "legendas": [
     {
      "texto": "Na lista, ele está Em aberto, sem títulos e sem nota fiscal.",
      "ini": 0,
-     "fim": 3.378
+     "fim": 3.602
     },
     {
      "texto": "Precisa ajustar?",
-     "ini": 3.658,
-     "fim": 5.229
+     "ini": 3.882,
+     "fim": 5.071
     },
     {
      "texto": "Use o lápis.",
-     "ini": 5.509,
-     "fim": 6.725
+     "ini": 5.351,
+     "fim": 6.692
     },
     {
      "texto": "Para mudar as parcelas, troque a Condição de Pagamento: as parcelas se refazem sozinhas.",
-     "ini": 7.005,
-     "fim": 11.99
+     "ini": 6.972,
+     "fim": 12.691
     }
    ],
    "imagem": "telas/fluxo-1-vendas/07-lista-novo.png",
@@ -627,35 +658,35 @@
     "Item com desconto vai para Vendas › Aprovações: outra pessoa aprova."
    ],
    "fala": "Três cuidados. As lixeiras do item e da parcela apagam na hora, sem pedir confirmação. O botão Recalcular Parcelas só redivide os valores: ele não cria datas novas. E, se o item tiver desconto, o pedido vai para Vendas, Aprovações, e outra pessoa, com perfil de aprovação, precisa aprovar.",
-   "inicio": 133.777,
-   "duracao": 19.402,
-   "fala_s": 18.852,
+   "inicio": 140.505,
+   "duracao": 20.621,
+   "fala_s": 20.071,
    "audio": "audio/fluxo-1-vendas/15.wav",
    "legendas": [
     {
      "texto": "Três cuidados.",
      "ini": 0,
-     "fim": 1.443
+     "fim": 1.332
     },
     {
      "texto": "As lixeiras do item e da parcela apagam na hora, sem pedir confirmação.",
-     "ini": 1.723,
-     "fim": 5.788
+     "ini": 1.612,
+     "fim": 6.032
     },
     {
      "texto": "O botão Recalcular Parcelas só redivide os valores: ele não cria datas novas.",
-     "ini": 6.068,
-     "fim": 10.625
+     "ini": 6.312,
+     "fim": 11.325
     },
     {
      "texto": "E, se o item tiver desconto, o pedido vai para Vendas, Aprovações, e outra pessoa, com perfil de aprovação,",
-     "ini": 10.905,
-     "fim": 17.048
+     "ini": 11.605,
+     "fim": 18.368
     },
     {
      "texto": "precisa aprovar.",
-     "ini": 17.328,
-     "fim": 18.852
+     "ini": 18.648,
+     "fim": 20.071
     }
    ]
   },
@@ -668,33 +699,33 @@
     "Ajuste tudo antes de faturar"
    ],
    "fala": "Resumindo: Empresa e Cliente antes do CFOP. Conta de Fluxo de Caixa sempre. E ajuste tudo antes de faturar. No próximo vídeo, você vai faturar este pedido.",
-   "inicio": 153.179,
-   "duracao": 10.735,
-   "fala_s": 10.185,
+   "inicio": 161.126,
+   "duracao": 11.445,
+   "fala_s": 10.895,
    "audio": "audio/fluxo-1-vendas/16.wav",
    "legendas": [
     {
      "texto": "Resumindo: Empresa e Cliente antes do CFOP.",
      "ini": 0,
-     "fim": 2.867
+     "fim": 3.184
     },
     {
      "texto": "Conta de Fluxo de Caixa sempre.",
-     "ini": 3.147,
-     "fim": 5.028
+     "ini": 3.464,
+     "fim": 5.409
     },
     {
      "texto": "E ajuste tudo antes de faturar.",
-     "ini": 5.308,
-     "fim": 7.219
+     "ini": 5.689,
+     "fim": 7.695
     },
     {
      "texto": "No próximo vídeo, você vai faturar este pedido.",
-     "ini": 7.499,
-     "fim": 10.185
+     "ini": 7.975,
+     "fim": 10.895
     }
    ]
   }
  ],
- "duracaoTotal": 165.414
+ "duracaoTotal": 174.071
 }

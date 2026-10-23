@@ -11,7 +11,7 @@
           "numero": "Fluxo 1",
           "titulo": "Vendas: o ciclo do pedido de venda",
           "resumo": "O que é o pedido, os status, as quatro regras que mais travam e o pedido criado na tela.",
-          "duracao": "2 min 45 s",
+          "duracao": "2 min 54 s",
           "status": "pronto",
           "checklist": "estagiarios/fluxo-principal-vendas.html"
         },
@@ -81,16 +81,18 @@
           "numero": "Fluxo 05",
           "titulo": "Produção: da estrutura ao produto acabado",
           "resumo": "Estrutura, ordem de produção, apontamento e entrada do acabado.",
-          "status": "em-producao",
-          "checklist": "consultores/fluxo-05-producao.html"
+          "status": "pronto",
+          "checklist": "consultores/fluxo-05-producao.html",
+          "duracao": "2 min 36 s"
         },
         {
           "id": "consultor-06-expedicao",
           "numero": "Fluxo 06",
           "titulo": "Expedição: da carga à entrega",
           "resumo": "Carga, entrega, ocorrência e devolução.",
-          "status": "em-producao",
-          "checklist": "consultores/fluxo-06-expedicao.html"
+          "status": "pronto",
+          "checklist": "consultores/fluxo-06-expedicao.html",
+          "duracao": "2 min 30 s"
         },
         {
           "id": "consultor-07-faturamento",
@@ -115,24 +117,27 @@
           "numero": "Fluxo 09",
           "titulo": "Projetos e obras",
           "resumo": "Cadastro, estágios, painéis e diário de obra.",
-          "status": "em-producao",
-          "checklist": "consultores/fluxo-09-projetos-obra.html"
+          "status": "pronto",
+          "checklist": "consultores/fluxo-09-projetos-obra.html",
+          "duracao": "2 min 15 s"
         },
         {
           "id": "consultor-10-tarefas",
           "numero": "Fluxo 10",
           "titulo": "Tarefas",
           "resumo": "Quadro, cartão, regras e colaboração.",
-          "status": "em-producao",
-          "checklist": "consultores/fluxo-10-tarefas.html"
+          "status": "pronto",
+          "checklist": "consultores/fluxo-10-tarefas.html",
+          "duracao": "2 min 22 s"
         },
         {
           "id": "consultor-fluxo-completo",
           "numero": "Teste completo",
           "titulo": "Do pedido à gestão",
           "resumo": "O fluxo inteiro, do CRM aos indicadores.",
-          "status": "em-producao",
-          "checklist": "consultores/teste-fluxo-pedido-ate-gestao.html"
+          "status": "pronto",
+          "checklist": "consultores/teste-fluxo-pedido-ate-gestao.html",
+          "duracao": "2 min 24 s"
         }
       ]
     }

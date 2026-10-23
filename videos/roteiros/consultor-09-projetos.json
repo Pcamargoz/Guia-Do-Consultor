@@ -6,42 +6,156 @@
   "proximo": "Fluxo de tarefas",
   "icone": "obra",
   "trechos": [
-    { "id": "01", "cena": "abertura",
-      "fala": "Para o cliente de esquadrias, tudo gira em torno da obra. Neste vídeo, vamos ver como o projeto amarra pedido, produção, compras, serviços e financeiro, e como acompanhar a obra num painel só." },
-    { "id": "02", "cena": "status", "tituloCena": "A obra no centro",
-      "etapas": ["Projeto", "Estágios e etapas", "Documentos ligados", "Painel da obra"], "destaque": 0,
-      "fala": "Tudo começa no cadastro do projeto: nome, código, cliente e status da obra." },
-    { "id": "03", "cena": "status", "destaque": 3,
-      "fala": "O projeto ganha estágios e etapas, os documentos são ligados a ele pelo campo projeto, e o painel da obra junta tudo: vendido, faturado, a receber, a pagar e as pendências." },
-    { "id": "04", "cena": "regra", "n": 1, "titulo": "O campo Projeto liga os documentos", "icone": "obra",
+    {
+      "id": "01",
+      "cena": "abertura",
+      "fala": "Para o cliente de esquadrias, tudo gira em torno da obra. Neste vídeo, vamos ver como o projeto amarra pedido, produção, compras, serviços e financeiro, e como acompanhar a obra num painel só."
+    },
+    {
+      "id": "02",
+      "cena": "status",
+      "tituloCena": "A obra no centro",
+      "etapas": [
+        "Projeto",
+        "Estágios e etapas",
+        "Documentos ligados",
+        "Painel da obra"
+      ],
+      "destaque": 0,
+      "fala": "Tudo começa no cadastro do projeto: nome, código, cliente e status da obra."
+    },
+    {
+      "id": "03",
+      "cena": "status",
+      "destaque": 3,
+      "fala": "O projeto ganha estágios e etapas, os documentos são ligados a ele pelo campo projeto, e o painel da obra junta tudo: vendido, faturado, a receber, a pagar e as pendências."
+    },
+    {
+      "id": "04",
+      "cena": "regra",
+      "n": 1,
+      "titulo": "O campo Projeto liga os documentos",
+      "icone": "obra",
       "texto": "Pedido, OP, solicitação de compra, medição e títulos se ligam à obra pelo campo Projeto. A lista de pedidos mostra a coluna PROJETO.",
       "fonte": "funcional-cadastros-participante-produto-e-projeto",
-      "fala": "Primeira regra. É o campo projeto que liga cada documento à obra: pedido, ordem de produção, solicitação de compra, medição. Sem ele, o documento não aparece no painel da obra." },
-    { "id": "05", "cena": "regra", "n": 2, "titulo": "Ligue o projeto antes de faturar", "icone": "lapis",
+      "fala": "Primeira regra. É o campo projeto que liga cada documento à obra: pedido, ordem de produção, solicitação de compra, medição. Sem ele, o documento não aparece no painel da obra."
+    },
+    {
+      "id": "05",
+      "cena": "regra",
+      "n": 2,
+      "titulo": "Ligue o projeto antes de faturar",
+      "icone": "lapis",
       "texto": "Só o pedido Em aberto é editado. Depois de faturado ou entregue, não dá mais para ligar a obra.",
       "fonte": "regra-vendas-editar-pedido-somente-em-aberto",
-      "fala": "Segunda. Ligue o pedido à obra enquanto ele está em aberto. Depois de faturado ou entregue, o pedido só pode ser visualizado, e o vínculo não entra mais." },
-    { "id": "06", "cena": "regra", "n": 3, "titulo": "Estágios são fases; etapas são passos", "icone": "tarefa",
+      "fala": "Segunda. Ligue o pedido à obra enquanto ele está em aberto. Depois de faturado ou entregue, o pedido só pode ser visualizado, e o vínculo não entra mais.",
+      "critica": true
+    },
+    {
+      "id": "06",
+      "cena": "regra",
+      "n": 3,
+      "titulo": "Estágios são fases; etapas são passos",
+      "icone": "tarefa",
       "texto": "Estágio é a fase macro; etapa é o passo acompanhado, que pode pertencer a um estágio. Ficam nos botões da linha do projeto.",
       "fonte": "manual-12-projetos-e-tarefas",
-      "fala": "Terceira. Estágios são as fases macro da obra, como levantamento de material. Etapas são os passos acompanhados, como medição dos vãos, produção e instalação. Cada etapa pode pertencer a um estágio." },
-    { "id": "07", "cena": "regra", "n": 4, "titulo": "Obra com estoque próprio precisa de local ativo", "icone": "estoque",
+      "fala": "Terceira. Estágios são as fases macro da obra, como levantamento de material. Etapas são os passos acompanhados, como medição dos vãos, produção e instalação. Cada etapa pode pertencer a um estágio."
+    },
+    {
+      "id": "07",
+      "cena": "regra",
+      "n": 4,
+      "titulo": "Obra com estoque próprio precisa de local ativo",
+      "icone": "estoque",
       "texto": "Se o projeto tem local de estoque, ele precisa estar ativo, senão a nota e a produção da obra travam.",
       "fonte": "regra-estoque-almoxarifado-central-ativo-e-pre-requisito",
-      "fala": "Quarta. Se a obra tem local de estoque próprio, ele precisa estar ativo. Sem isso, a finalização da nota e a conclusão da produção da obra são recusadas." },
-    { "id": "08", "cena": "tela", "captura": "00-pedido-projeto", "focos": [3], "rotulo": "Vendas › Pedidos de Venda",
-      "caixasExtras": [{ "x": 430, "y": 718, "w": 245, "h": 52 }],
-      "fala": "Na prática: na lista de pedidos, a coluna projeto mostra a obra de cada pedido. Este aqui está ligado à obra comercial de teste." },
-    { "id": "09", "cena": "tela", "captura": "01-projetos", "focos": [3, 2, 1], "rotulo": "Cadastros › Projetos",
-      "caixasExtras": [{ "x": 347, "y": 455, "w": 1533, "h": 62 }],
-      "fala": "Em Cadastros, Projetos, cada obra tem status e, na linha, os botões etapas e estágios, onde você monta as fases e os passos acompanhados." },
-    { "id": "10", "cena": "tela", "captura": "02-painel-obra", "focos": [3, 2, 0, 1], "rotulo": "Painel Financeiro de Projetos",
-      "fala": "E o painel financeiro do projeto junta tudo: avisos automáticos, pendências, como este pedido ainda sem faturamento, e os cartões de vendido, faturado e a faturar." },
-    { "id": "11", "cena": "alertas",
-      "itens": ["Pedido sem projeto não aparece no painel da obra.", "Título manual e gerado do mesmo pedido duplicam o painel.", "O painel conta o que foi faturado e recebido, não só o vendido."],
-      "fala": "Três cuidados. Pedido sem projeto não aparece no painel da obra. Um título manual e um gerado para o mesmo pedido duplicam os números do painel. E o painel separa vendido, faturado e recebido: diferença entre eles não é erro." },
-    { "id": "12", "cena": "fechamento",
-      "topicos": ["O campo Projeto liga tudo à obra", "Ligue o pedido antes de faturar", "Acompanhe no painel financeiro da obra"],
-      "fala": "Resumindo: o campo projeto liga tudo à obra. Ligue o pedido antes de faturar. E acompanhe a obra no painel financeiro. No próximo vídeo, as tarefas." }
+      "fala": "Quarta. Se a obra tem local de estoque próprio, ele precisa estar ativo. Sem isso, a finalização da nota e a conclusão da produção da obra são recusadas."
+    },
+    {
+      "id": "08",
+      "cena": "tela",
+      "captura": "00-pedido-projeto",
+      "focos": [
+        3
+      ],
+      "rotulo": "Vendas › Pedidos de Venda",
+      "caixasExtras": [
+        {
+          "x": 430,
+          "y": 718,
+          "w": 245,
+          "h": 52
+        }
+      ],
+      "fala": "Na prática: na lista de pedidos, a coluna projeto mostra a obra de cada pedido. Este aqui está ligado à obra comercial de teste.",
+      "nomes": [
+        "PROJETO"
+      ],
+      "impacto": 0
+    },
+    {
+      "id": "09",
+      "cena": "tela",
+      "captura": "01-projetos",
+      "focos": [
+        3,
+        2,
+        1
+      ],
+      "rotulo": "Cadastros › Projetos",
+      "caixasExtras": [
+        {
+          "x": 347,
+          "y": 455,
+          "w": 1533,
+          "h": 62
+        }
+      ],
+      "fala": "Em Cadastros, Projetos, cada obra tem status e, na linha, os botões etapas e estágios, onde você monta as fases e os passos acompanhados.",
+      "nomes": [
+        null,
+        "Etapas",
+        "Estágios"
+      ]
+    },
+    {
+      "id": "10",
+      "cena": "tela",
+      "captura": "02-painel-obra",
+      "focos": [
+        3,
+        2,
+        0,
+        1
+      ],
+      "rotulo": "Painel Financeiro de Projetos",
+      "fala": "E o painel financeiro do projeto junta tudo: avisos automáticos, pendências, como este pedido ainda sem faturamento, e os cartões de vendido, faturado e a faturar.",
+      "nomes": [
+        "Avisos inteligentes",
+        "Pendências do projeto",
+        "VALOR VENDIDO",
+        "A FATURAR"
+      ]
+    },
+    {
+      "id": "11",
+      "cena": "alertas",
+      "itens": [
+        "Pedido sem projeto não aparece no painel da obra.",
+        "Título manual e gerado do mesmo pedido duplicam o painel.",
+        "O painel conta o que foi faturado e recebido, não só o vendido."
+      ],
+      "fala": "Três cuidados. Pedido sem projeto não aparece no painel da obra. Um título manual e um gerado para o mesmo pedido duplicam os números do painel. E o painel separa vendido, faturado e recebido: diferença entre eles não é erro."
+    },
+    {
+      "id": "12",
+      "cena": "fechamento",
+      "topicos": [
+        "O campo Projeto liga tudo à obra",
+        "Ligue o pedido antes de faturar",
+        "Acompanhe no painel financeiro da obra"
+      ],
+      "fala": "Resumindo: o campo projeto liga tudo à obra. Ligue o pedido antes de faturar. E acompanhe a obra no painel financeiro. No próximo vídeo, as tarefas."
+    }
   ]
 }

@@ -43,13 +43,16 @@ if (pretos > 0) console.warn('ATENÇÃO: há quadros pretos no vídeo; confira a
 
 // legenda .vtt (as mesmas frases queimadas no vídeo), para o player do Guia
 const hms = (s) => { const h = Math.floor(s / 3600), m = Math.floor((s % 3600) / 60), x = (s % 60).toFixed(3).padStart(6, '0'); return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${x}`; };
-const cues = dados.trechos.flatMap((t) => (t.legendas ?? []).map((l) => ({ ini: t.inicio + l.ini, fim: t.inicio + l.fim + 0.6, texto: l.texto })));
+// o motor pode pôr quadros antes do vídeo (abertura fria do v5): a diferença entre o master e a narração desloca a legenda
+const durMaster = Number(execFileSync('ffprobe', ['-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', master]).toString().trim());
+const desloc = durMaster - dados.duracaoTotal > 0.8 ? 33 / 30 : 0;
+const cues = dados.trechos.flatMap((t) => (t.legendas ?? []).map((l) => ({ ini: desloc + t.inicio + l.ini, fim: desloc + t.inicio + l.fim + 0.6, texto: l.texto })));
 cues.forEach((c, i) => { if (cues[i + 1]) c.fim = Math.min(Math.max(c.fim, c.ini + 1.8), cues[i + 1].ini); });
 fs.writeFileSync(path.join(GUIA, `${id}.vtt`), 'WEBVTT\n\n' + cues.map((c) => `${hms(c.ini)} --> ${hms(c.fim)}\n${c.texto}\n`).join('\n'));
 // capa: o quadro do título (2,5 s)
 roda('ffmpeg', ['-y', '-loglevel', 'error', '-ss', '2.5', '-i', master, '-frames:v', '1', '-vf', 'scale=1280:-2', '-q:v', '3', path.join(GUIA, `${id}.jpg`)]);
 
-const seg = Math.round(dados.duracaoTotal);
+const seg = Math.round(durMaster);
 const duracao = `${Math.floor(seg / 60)} min ${String(seg % 60).padStart(2, '0')} s`;
 const arqManifest = path.join(GUIA, 'manifest.json');
 const manifest = JSON.parse(fs.readFileSync(arqManifest, 'utf8'));

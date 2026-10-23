@@ -6,43 +6,169 @@
   "proximo": "Fluxo comercial",
   "icone": "ferramenta",
   "trechos": [
-    { "id": "01", "cena": "abertura",
-      "fala": "Esquadria vendida ainda precisa ser medida, instalada e aceita pelo cliente. Neste vídeo, vamos seguir os serviços de campo, da medição até a assistência técnica." },
-    { "id": "02", "cena": "status", "tituloCena": "A cadeia dos serviços de campo",
-      "etapas": ["Medição", "Instalação", "Vistoria", "Assistência técnica"], "destaque": 0,
-      "fala": "Tudo começa na medição, que nasce do pedido de venda: o técnico mede os vãos e o responsável da obra assina." },
-    { "id": "03", "cena": "status", "destaque": 3,
-      "fala": "Aprovada a medição, vem a instalação, depois a vistoria com o cliente e, se houver problema, a assistência técnica. E atenção: quase todas essas passagens são por botão." },
-    { "id": "04", "cena": "regra", "n": 1, "titulo": "Empresa e técnico não vêm do pedido", "icone": "ferramenta",
+    {
+      "id": "01",
+      "cena": "abertura",
+      "fala": "Esquadria vendida ainda precisa ser medida, instalada e aceita pelo cliente. Neste vídeo, vamos seguir os serviços de campo, da medição até a assistência técnica."
+    },
+    {
+      "id": "02",
+      "cena": "status",
+      "tituloCena": "A cadeia dos serviços de campo",
+      "etapas": [
+        "Medição",
+        "Instalação",
+        "Vistoria",
+        "Assistência técnica"
+      ],
+      "destaque": 0,
+      "fala": "Tudo começa na medição, que nasce do pedido de venda: o técnico mede os vãos e o responsável da obra assina."
+    },
+    {
+      "id": "03",
+      "cena": "status",
+      "destaque": 3,
+      "fala": "Aprovada a medição, vem a instalação, depois a vistoria com o cliente e, se houver problema, a assistência técnica. E atenção: quase todas essas passagens são por botão."
+    },
+    {
+      "id": "04",
+      "cena": "regra",
+      "n": 1,
+      "titulo": "Empresa e técnico não vêm do pedido",
+      "icone": "ferramenta",
       "texto": "Usar este registro traz cliente e projeto. Empresa e Técnico Responsável você preenche. O Agendar só aparece depois de salvar.",
       "fonte": "regra-servicos-medicao-nasce-do-pedido",
-      "fala": "Primeira regra. Na nova medição, usar o pedido traz o cliente e o projeto, mas a empresa e o técnico responsável você preenche. E o botão agendar só aparece depois que a medição é salva." },
-    { "id": "05", "cena": "regra", "n": 2, "titulo": "Quem confere não pode ser quem mediu", "icone": "check",
+      "fala": "Primeira regra. Na nova medição, usar o pedido traz o cliente e o projeto, mas a empresa e o técnico responsável você preenche. E o botão agendar só aparece depois que a medição é salva."
+    },
+    {
+      "id": "05",
+      "cena": "regra",
+      "n": 2,
+      "titulo": "Quem confere não pode ser quem mediu",
+      "icone": "check",
       "texto": "A aprovação exige um conferente cadastrado e diferente do técnico que mediu.",
       "fonte": "regra-servicos-aprovacao-da-medicao-exige-conferente-diferente",
-      "fala": "Segunda. A medição concluída fica aguardando conferência, e quem aprova precisa ser um conferente diferente de quem mediu. É a trava de qualidade do fluxo." },
-    { "id": "06", "cena": "regra", "n": 3, "titulo": "As passagens são por botão", "icone": "seta",
+      "fala": "Segunda. A medição concluída fica aguardando conferência, e quem aprova precisa ser um conferente diferente de quem mediu. É a trava de qualidade do fluxo."
+    },
+    {
+      "id": "06",
+      "cena": "regra",
+      "n": 3,
+      "titulo": "As passagens são por botão",
+      "icone": "seta",
       "texto": "Gerar Instalação e Gerar Assistência Técnica são botões. Só a vistoria pode nascer sozinha, se o parâmetro estiver ligado.",
       "fonte": "regra-servicos-passagens-por-botao-e-ordem-dos-aceites",
-      "fala": "Terceira. Aprovar a medição não cria a instalação: você clica em gerar instalação. A assistência também é gerada por botão, a partir da vistoria. Só a vistoria pode nascer sozinha, se a geração automática estiver ligada nos parâmetros." },
-    { "id": "07", "cena": "regra", "n": 4, "titulo": "A ordem dos aceites muda", "icone": "estrela",
+      "fala": "Terceira. Aprovar a medição não cria a instalação: você clica em gerar instalação. A assistência também é gerada por botão, a partir da vistoria. Só a vistoria pode nascer sozinha, se a geração automática estiver ligada nos parâmetros.",
+      "critica": true
+    },
+    {
+      "id": "07",
+      "cena": "regra",
+      "n": 4,
+      "titulo": "A ordem dos aceites muda",
+      "icone": "estrela",
       "texto": "Vistoria: aceite depois de concluir. Assistência técnica: aceite antes de Resolver.",
       "fonte": "regra-servicos-passagens-por-botao-e-ordem-dos-aceites",
-      "fala": "Quarta, e ela pega muita gente. Na vistoria, o aceite do cliente vem depois de concluir. Na assistência técnica é o contrário: registre o aceite antes de resolver." },
-    { "id": "08", "cena": "tela", "captura": "01-medicao-aprovada", "focos": [0, 1], "rotulo": "Serviços › Medições",
-      "fala": "Na prática: esta medição está aprovada. Repare no botão gerar instalação, no alto. É ele que leva o serviço para a próxima etapa." },
-    { "id": "09", "cena": "tela", "captura": "02-instalacao", "focos": [0, 3, 4, 1], "rotulo": "Serviços › Instalações",
-      "caixasExtras": [{ "x": 1655, "y": 345, "w": 190, "h": 100 }, { "x": 393, "y": 810, "w": 1016, "h": 48 }],
-      "fala": "A instalação concluída mostra o checklist conferido e conforme, os vínculos com a medição e o pedido, e o botão ver vistoria. Com equipe interna, ela não gera pagamento ao instalador." },
-    { "id": "10", "cena": "tela", "captura": "03-vistorias", "focos": [0, 1], "rotulo": "Serviços › Vistorias",
-      "fala": "Na lista de vistorias, cada uma aponta para a instalação vistoriada. Aqui o cliente registra o aceite, depois de concluir." },
-    { "id": "11", "cena": "tela", "captura": "04-assistencias", "focos": [0, 1], "rotulo": "Serviços › Assistência Técnica",
-      "fala": "E a assistência técnica gerada da vistoria já vem com o nome dela, e termina como resolvida, com o aceite registrado antes." },
-    { "id": "12", "cena": "alertas",
-      "itens": ["Datas e horas aparecem em UTC em vários pontos: confira antes de achar que há atraso.", "O template de checklist entra em toda instalação nova da empresa.", "Mensagens podem cobrir os botões do cabeçalho: feche antes de clicar."],
-      "fala": "Três cuidados. Datas e horas aparecem em UTC em vários pontos, como no cockpit: confira antes de achar que há atraso. O template de checklist entra em toda instalação nova da empresa, então desative o de teste. E as mensagens podem cobrir os botões do cabeçalho: feche antes de clicar." },
-    { "id": "13", "cena": "fechamento",
-      "topicos": ["Empresa e técnico você preenche na medição", "Gerar Instalação e Gerar AT são botões", "Aceite: vistoria depois, assistência antes"],
-      "fala": "Resumindo: na medição, a empresa e o técnico você preenche. Gerar instalação e gerar assistência são botões. E o aceite vem depois na vistoria, e antes na assistência. No próximo vídeo, o fluxo comercial." }
+      "fala": "Quarta, e ela pega muita gente. Na vistoria, o aceite do cliente vem depois de concluir. Na assistência técnica é o contrário: registre o aceite antes de resolver."
+    },
+    {
+      "id": "08",
+      "cena": "tela",
+      "captura": "01-medicao-aprovada",
+      "focos": [
+        0,
+        1
+      ],
+      "rotulo": "Serviços › Medições",
+      "fala": "Na prática: esta medição está aprovada. Repare no botão gerar instalação, no alto. É ele que leva o serviço para a próxima etapa.",
+      "nomes": [
+        "Aprovada",
+        "Gerar Instalação"
+      ],
+      "impacto": 1
+    },
+    {
+      "id": "09",
+      "cena": "tela",
+      "captura": "02-instalacao",
+      "focos": [
+        0,
+        3,
+        4,
+        1
+      ],
+      "rotulo": "Serviços › Instalações",
+      "caixasExtras": [
+        {
+          "x": 1655,
+          "y": 345,
+          "w": 190,
+          "h": 100
+        },
+        {
+          "x": 393,
+          "y": 810,
+          "w": 1016,
+          "h": 48
+        }
+      ],
+      "fala": "A instalação concluída mostra o checklist conferido e conforme, os vínculos com a medição e o pedido, e o botão ver vistoria. Com equipe interna, ela não gera pagamento ao instalador.",
+      "nomes": [
+        "Concluída",
+        "Conformes",
+        "Vínculos",
+        "Ver Vistoria"
+      ]
+    },
+    {
+      "id": "10",
+      "cena": "tela",
+      "captura": "03-vistorias",
+      "focos": [
+        0,
+        1
+      ],
+      "rotulo": "Serviços › Vistorias",
+      "fala": "Na lista de vistorias, cada uma aponta para a instalação vistoriada. Aqui o cliente registra o aceite, depois de concluir.",
+      "nomes": [
+        "Nº VISTORIA",
+        "INSTALAÇÃO"
+      ]
+    },
+    {
+      "id": "11",
+      "cena": "tela",
+      "captura": "04-assistencias",
+      "focos": [
+        0,
+        1
+      ],
+      "rotulo": "Serviços › Assistência Técnica",
+      "fala": "E a assistência técnica gerada da vistoria já vem com o nome dela, e termina como resolvida, com o aceite registrado antes.",
+      "nomes": [
+        "TÍTULO",
+        "Resolvido"
+      ]
+    },
+    {
+      "id": "12",
+      "cena": "alertas",
+      "itens": [
+        "Datas e horas aparecem em UTC em vários pontos: confira antes de achar que há atraso.",
+        "O template de checklist entra em toda instalação nova da empresa.",
+        "Mensagens podem cobrir os botões do cabeçalho: feche antes de clicar."
+      ],
+      "fala": "Três cuidados. Datas e horas aparecem em UTC em vários pontos, como no cockpit: confira antes de achar que há atraso. O template de checklist entra em toda instalação nova da empresa, então desative o de teste. E as mensagens podem cobrir os botões do cabeçalho: feche antes de clicar."
+    },
+    {
+      "id": "13",
+      "cena": "fechamento",
+      "topicos": [
+        "Empresa e técnico você preenche na medição",
+        "Gerar Instalação e Gerar AT são botões",
+        "Aceite: vistoria depois, assistência antes"
+      ],
+      "fala": "Resumindo: na medição, a empresa e o técnico você preenche. Gerar instalação e gerar assistência são botões. E o aceite vem depois na vistoria, e antes na assistência. No próximo vídeo, o fluxo comercial."
+    }
   ]
 }

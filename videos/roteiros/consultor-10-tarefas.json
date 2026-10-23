@@ -6,44 +6,169 @@
   "proximo": "Teste do fluxo completo",
   "icone": "tarefa",
   "trechos": [
-    { "id": "01", "cena": "abertura",
-      "fala": "Implantação tem muita coisa para acompanhar: pendências, cadastros, treinamentos. Neste vídeo, vamos ver como o módulo de tarefas organiza isso em quadros e cartões, e o detalhe que faz o cartão aparecer para a pessoa certa." },
-    { "id": "02", "cena": "status", "tituloCena": "Do quadro ao cartão feito",
-      "etapas": ["Quadro", "Listas", "Cartão", "Responsável", "Arquivado"], "destaque": 0,
-      "fala": "Tudo começa num quadro, que agrupa as tarefas de um projeto, de um cliente ou de uma equipe." },
-    { "id": "03", "cena": "status", "destaque": 4,
-      "fala": "O quadro ganha listas, como a fazer e feito. Cada tarefa vira um cartão, com prioridade, prazo e responsável. E, quando termina, o cartão pode ser arquivado." },
-    { "id": "04", "cena": "regra", "n": 1, "titulo": "O quadro nasce sem listas", "icone": "tarefa",
+    {
+      "id": "01",
+      "cena": "abertura",
+      "fala": "Implantação tem muita coisa para acompanhar: pendências, cadastros, treinamentos. Neste vídeo, vamos ver como o módulo de tarefas organiza isso em quadros e cartões, e o detalhe que faz o cartão aparecer para a pessoa certa."
+    },
+    {
+      "id": "02",
+      "cena": "status",
+      "tituloCena": "Do quadro ao cartão feito",
+      "etapas": [
+        "Quadro",
+        "Listas",
+        "Cartão",
+        "Responsável",
+        "Arquivado"
+      ],
+      "destaque": 0,
+      "fala": "Tudo começa num quadro, que agrupa as tarefas de um projeto, de um cliente ou de uma equipe."
+    },
+    {
+      "id": "03",
+      "cena": "status",
+      "destaque": 4,
+      "fala": "O quadro ganha listas, como a fazer e feito. Cada tarefa vira um cartão, com prioridade, prazo e responsável. E, quando termina, o cartão pode ser arquivado."
+    },
+    {
+      "id": "04",
+      "cena": "regra",
+      "n": 1,
+      "titulo": "O quadro nasce sem listas",
+      "icone": "tarefa",
       "texto": "Novo Quadro pede nome e tipo. As listas você cria em + Adicionar lista; os cartões, em + Adicionar tarefa.",
       "fonte": "regra-tarefas-cartao-so-aparece-em-minhas-tarefas-com-responsavel",
-      "fala": "Primeira regra. O quadro novo nasce sem listas. Você cria as listas em adicionar lista, e as tarefas em adicionar tarefa, dentro de cada lista." },
-    { "id": "05", "cena": "regra", "n": 2, "titulo": "Sem responsável, ninguém vê o cartão", "icone": "estrela",
+      "fala": "Primeira regra. O quadro novo nasce sem listas. Você cria as listas em adicionar lista, e as tarefas em adicionar tarefa, dentro de cada lista."
+    },
+    {
+      "id": "05",
+      "cena": "regra",
+      "n": 2,
+      "titulo": "Sem responsável, ninguém vê o cartão",
+      "icone": "estrela",
       "texto": "O cartão nasce Pendente, Média e sem responsável. Só aparece em Minhas Tarefas depois de Adicionar responsável.",
       "fonte": "regra-tarefas-cartao-so-aparece-em-minhas-tarefas-com-responsavel",
-      "fala": "Segunda, e a mais importante. O cartão nasce pendente, com prioridade média e sem responsável. E ele só aparece em minhas tarefas depois que alguém é adicionado como responsável. Sem isso, a tarefa fica esquecida no quadro." },
-    { "id": "06", "cena": "regra", "n": 3, "titulo": "O prazo é o Término Previsto", "icone": "check",
+      "fala": "Segunda, e a mais importante. O cartão nasce pendente, com prioridade média e sem responsável. E ele só aparece em minhas tarefas depois que alguém é adicionado como responsável. Sem isso, a tarefa fica esquecida no quadro.",
+      "critica": true
+    },
+    {
+      "id": "06",
+      "cena": "regra",
+      "n": 3,
+      "titulo": "O prazo é o Término Previsto",
+      "icone": "check",
       "texto": "Não existe um campo Prazo: a data limite do cartão é o Término Previsto.",
       "fonte": "funcional-tarefas-quadros-listas-e-cartoes",
-      "fala": "Terceira. Não procure um campo prazo: a data limite do cartão se chama término previsto." },
-    { "id": "07", "cena": "regra", "n": 4, "titulo": "Arquivar não apaga", "icone": "cadeado",
+      "fala": "Terceira. Não procure um campo prazo: a data limite do cartão se chama término previsto."
+    },
+    {
+      "id": "07",
+      "cena": "regra",
+      "n": 4,
+      "titulo": "Arquivar não apaga",
+      "icone": "cadeado",
       "texto": "O cartão arquivado sai das listagens e vai para Tarefas › Arquivadas, com o botão Restaurar.",
       "fonte": "funcional-tarefas-quadros-listas-e-cartoes",
-      "fala": "Quarta. Arquivar não apaga. O cartão arquivado sai das listagens e vai para arquivadas, onde o botão restaurar traz ele de volta." },
-    { "id": "08", "cena": "tela", "captura": "01-meus-quadros", "focos": [1, 0], "rotulo": "Tarefas › Meus Quadros",
-      "fala": "Na prática: em Meus Quadros ficam os seus quadros, e o novo quadro pede só o nome e o tipo." },
-    { "id": "09", "cena": "tela", "captura": "02-quadro", "focos": [2, 1, 0], "rotulo": "Quadro · Kanban",
-      "fala": "Dentro do quadro, as listas aparecem em colunas, no kanban, mas também em lista, tabela, calendário e Gantt. Em cada lista, adicionar tarefa cria um cartão." },
-    { "id": "10", "cena": "tela", "captura": "03-cartao", "focos": [0, 1, 2, 3], "rotulo": "Cartão",
-      "fala": "O cartão novo está pendente e sem responsável. Clique em adicionar responsável e escolha a pessoa. No cartão também ficam os checklists e os comentários." },
-    { "id": "11", "cena": "tela", "captura": "04-minhas-tarefas", "foco": 0, "rotulo": "Tarefas › Minhas Tarefas",
-      "fala": "Com o responsável definido, o cartão aparece em minhas tarefas, para quem foi atribuído." },
-    { "id": "12", "cena": "tela", "captura": "05-arquivadas", "focos": [0, 1], "rotulo": "Tarefas › Arquivadas",
-      "fala": "E, depois de arquivado, ele fica aqui, com a data, e pode ser restaurado a qualquer momento." },
-    { "id": "13", "cena": "alertas",
-      "itens": ["A busca Ctrl+K não encontra o módulo: abra pelo menu de módulos.", "O cartão novo não tem responsável: atribua sempre.", "O autor de comentário pode aparecer como Usuário."],
-      "fala": "Três cuidados. A busca do control K não encontra o módulo de tarefas: abra pelo menu de módulos. Todo cartão novo nasce sem responsável: atribua sempre. E o autor de um comentário pode aparecer apenas como usuário." },
-    { "id": "14", "cena": "fechamento",
-      "topicos": ["Crie as listas do quadro", "Sem responsável, ninguém vê o cartão", "Arquivar não apaga: restaura"],
-      "fala": "Resumindo: crie as listas do quadro. Sem responsável, ninguém vê o cartão. E arquivar não apaga, dá para restaurar. No próximo vídeo, o teste do fluxo completo, do pedido à gestão." }
+      "fala": "Quarta. Arquivar não apaga. O cartão arquivado sai das listagens e vai para arquivadas, onde o botão restaurar traz ele de volta."
+    },
+    {
+      "id": "08",
+      "cena": "tela",
+      "captura": "01-meus-quadros",
+      "focos": [
+        1,
+        0
+      ],
+      "rotulo": "Tarefas › Meus Quadros",
+      "fala": "Na prática: em Meus Quadros ficam os seus quadros, e o novo quadro pede só o nome e o tipo.",
+      "nomes": [
+        null,
+        "Novo Quadro"
+      ]
+    },
+    {
+      "id": "09",
+      "cena": "tela",
+      "captura": "02-quadro",
+      "focos": [
+        2,
+        1,
+        0
+      ],
+      "rotulo": "Quadro · Kanban",
+      "fala": "Dentro do quadro, as listas aparecem em colunas, no kanban, mas também em lista, tabela, calendário e Gantt. Em cada lista, adicionar tarefa cria um cartão.",
+      "nomes": [
+        "Kanban",
+        "Adicionar lista",
+        "Adicionar tarefa"
+      ]
+    },
+    {
+      "id": "10",
+      "cena": "tela",
+      "captura": "03-cartao",
+      "focos": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "rotulo": "Cartão",
+      "fala": "O cartão novo está pendente e sem responsável. Clique em adicionar responsável e escolha a pessoa. No cartão também ficam os checklists e os comentários.",
+      "nomes": [
+        "Pendente",
+        "Nenhum responsável",
+        "Adicionar responsável",
+        "Checklists"
+      ],
+      "impacto": 2
+    },
+    {
+      "id": "11",
+      "cena": "tela",
+      "captura": "04-minhas-tarefas",
+      "foco": 0,
+      "rotulo": "Tarefas › Minhas Tarefas",
+      "fala": "Com o responsável definido, o cartão aparece em minhas tarefas, para quem foi atribuído.",
+      "nomes": [
+        null
+      ]
+    },
+    {
+      "id": "12",
+      "cena": "tela",
+      "captura": "05-arquivadas",
+      "focos": [
+        0,
+        1
+      ],
+      "rotulo": "Tarefas › Arquivadas",
+      "fala": "E, depois de arquivado, ele fica aqui, com a data, e pode ser restaurado a qualquer momento.",
+      "nomes": [
+        null,
+        "Restaurar"
+      ]
+    },
+    {
+      "id": "13",
+      "cena": "alertas",
+      "itens": [
+        "A busca Ctrl+K não encontra o módulo: abra pelo menu de módulos.",
+        "O cartão novo não tem responsável: atribua sempre.",
+        "O autor de comentário pode aparecer como Usuário."
+      ],
+      "fala": "Três cuidados. A busca do control K não encontra o módulo de tarefas: abra pelo menu de módulos. Todo cartão novo nasce sem responsável: atribua sempre. E o autor de um comentário pode aparecer apenas como usuário."
+    },
+    {
+      "id": "14",
+      "cena": "fechamento",
+      "topicos": [
+        "Crie as listas do quadro",
+        "Sem responsável, ninguém vê o cartão",
+        "Arquivar não apaga: restaura"
+      ],
+      "fala": "Resumindo: crie as listas do quadro. Sem responsável, ninguém vê o cartão. E arquivar não apaga, dá para restaurar. No próximo vídeo, o teste do fluxo completo, do pedido à gestão."
+    }
   ]
 }

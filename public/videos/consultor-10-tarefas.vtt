@@ -1,0 +1,106 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:05.509
+Implantação tem muita coisa para acompanhar: pendências, cadastros, treinamentos.
+
+00:00:05.509 --> 00:00:10.981
+Neste vídeo, vamos ver como o módulo de tarefas organiza isso em quadros e cartões,
+
+00:00:10.981 --> 00:00:15.020
+e o detalhe que faz o cartão aparecer para a pessoa certa.
+
+00:00:15.020 --> 00:00:21.134
+Tudo começa num quadro, que agrupa as tarefas de um projeto, de um cliente ou de uma equipe.
+
+00:00:21.134 --> 00:00:24.086
+O quadro ganha listas, como a fazer e feito.
+
+00:00:24.086 --> 00:00:28.477
+Cada tarefa vira um cartão, com prioridade, prazo e responsável.
+
+00:00:28.477 --> 00:00:31.867
+E, quando termina, o cartão pode ser arquivado.
+
+00:00:31.867 --> 00:00:33.170
+Primeira regra.
+
+00:00:33.170 --> 00:00:35.450
+O quadro novo nasce sem listas.
+
+00:00:35.450 --> 00:00:42.034
+Você cria as listas em adicionar lista, e as tarefas em adicionar tarefa, dentro de cada lista.
+
+00:00:42.034 --> 00:00:44.235
+Segunda, e a mais importante.
+
+00:00:44.235 --> 00:00:48.518
+O cartão nasce pendente, com prioridade média e sem responsável.
+
+00:00:48.518 --> 00:00:53.974
+E ele só aparece em minhas tarefas depois que alguém é adicionado como responsável.
+
+00:00:53.974 --> 00:00:57.309
+Sem isso, a tarefa fica esquecida no quadro.
+
+00:00:57.309 --> 00:00:58.337
+Terceira.
+
+00:00:58.337 --> 00:01:03.832
+Não procure um campo prazo: a data limite do cartão se chama término previsto.
+
+00:01:03.832 --> 00:01:04.675
+Quarta.
+
+00:01:04.675 --> 00:01:06.417
+Arquivar não apaga.
+
+00:01:06.417 --> 00:01:13.425
+O cartão arquivado sai das listagens e vai para arquivadas, onde o botão restaurar traz ele de volta.
+
+00:01:13.425 --> 00:01:19.573
+Na prática: em Meus Quadros ficam os seus quadros, e o novo quadro pede só o nome e o tipo.
+
+00:01:19.573 --> 00:01:26.597
+Dentro do quadro, as listas aparecem em colunas, no kanban, mas também em lista, tabela, calendário e Gantt.
+
+00:01:26.597 --> 00:01:30.045
+Em cada lista, adicionar tarefa cria um cartão.
+
+00:01:30.045 --> 00:01:33.237
+O cartão novo está pendente e sem responsável.
+
+00:01:33.237 --> 00:01:36.821
+Clique em adicionar responsável e escolha a pessoa.
+
+00:01:36.821 --> 00:01:40.811
+No cartão também ficam os checklists e os comentários.
+
+00:01:40.811 --> 00:01:46.857
+Com o responsável definido, o cartão aparece em minhas tarefas, para quem foi atribuído.
+
+00:01:46.857 --> 00:01:53.054
+E, depois de arquivado, ele fica aqui, com a data, e pode ser restaurado a qualquer momento.
+
+00:01:53.054 --> 00:01:54.666
+Três cuidados.
+
+00:01:54.666 --> 00:02:00.051
+A busca do control K não encontra o módulo de tarefas: abra pelo menu de módulos.
+
+00:02:00.051 --> 00:02:04.016
+Todo cartão novo nasce sem responsável: atribua sempre.
+
+00:02:04.016 --> 00:02:08.302
+E o autor de um comentário pode aparecer apenas como usuário.
+
+00:02:08.302 --> 00:02:10.844
+Resumindo: crie as listas do quadro.
+
+00:02:10.844 --> 00:02:13.548
+Sem responsável, ninguém vê o cartão.
+
+00:02:13.548 --> 00:02:16.253
+E arquivar não apaga, dá para restaurar.
+
+00:02:16.253 --> 00:02:20.890
+No próximo vídeo, o teste do fluxo completo, do pedido à gestão.

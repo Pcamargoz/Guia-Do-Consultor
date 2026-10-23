@@ -1,0 +1,115 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:06.693
+Na fábrica, o pedido vira ordem de produção, consome material e entrega o produto acabado no estoque,
+
+00:00:06.693 --> 00:00:07.748
+com custo.
+
+00:00:07.748 --> 00:00:12.861
+Neste vídeo, vamos ver o que precisa existir antes e o que cada botão grava.
+
+00:00:12.861 --> 00:00:18.760
+Tudo começa na estrutura do produto: a lista de materiais e quantidades de cada item.
+
+00:00:18.760 --> 00:00:23.633
+A ordem de produção nasce do pedido e já traz as requisições da estrutura.
+
+00:00:23.633 --> 00:00:31.122
+O material é baixado, a ordem é marcada como produzida, e o produto acabado entra no estoque com o custo real.
+
+00:00:31.122 --> 00:00:32.425
+Primeira regra.
+
+00:00:32.425 --> 00:00:38.911
+Na nova ordem de produção, o item do pedido traz o produto, a cor e as medidas, mas não a quantidade,
+
+00:00:38.911 --> 00:00:40.259
+que você informa.
+
+00:00:40.259 --> 00:00:45.012
+A empresa também é obrigatória, apesar da dica dizer que vem do pedido.
+
+00:00:45.012 --> 00:00:49.835
+E não use a tecla esc: ela fecha o painel e perde o que foi digitado.
+
+00:00:49.835 --> 00:00:50.866
+Segunda.
+
+00:00:50.866 --> 00:00:52.976
+Se o produto tem estrutura,
+
+00:00:52.976 --> 00:01:00.065
+as requisições de material nascem sozinhas ao salvar a ordem: a quantidade da estrutura vezes a da ordem.
+
+00:01:00.065 --> 00:01:04.567
+Sem estrutura, o sistema avisa que a ordem está sem requisições.
+
+00:01:04.567 --> 00:01:05.595
+Terceira.
+
+00:01:05.595 --> 00:01:10.381
+Material paramétrico, como perfil e chapa, precisa de cor na estrutura.
+
+00:01:10.381 --> 00:01:12.526
+Sem ela, o sistema recusa.
+
+00:01:12.526 --> 00:01:18.188
+E a entrada de estoque do material também precisa ter a cor, senão o saldo não bate.
+
+00:01:18.188 --> 00:01:19.031
+Quarta.
+
+00:01:19.031 --> 00:01:26.286
+Marcar produzido leva a ordem ao estado final e lança a entrada de produto acabado no almoxarifado central,
+
+00:01:26.286 --> 00:01:28.400
+com a quantidade e o custo.
+
+00:01:28.400 --> 00:01:32.332
+Sem almoxarifado ativo, a conclusão fica bloqueada.
+
+00:01:32.332 --> 00:01:36.034
+Na prática: esta ordem de fabricação já está produzida.
+
+00:01:36.034 --> 00:01:41.967
+Repare que os botões de apontar e excluir ficam travados: produzido é o estado final.
+
+00:01:41.967 --> 00:01:47.683
+No custo da ordem, você compara o estimado com o realizado, e vê o detalhe por etapa.
+
+00:01:47.683 --> 00:01:50.705
+Na linha do tempo, o tempo planejado e o real.
+
+00:01:50.705 --> 00:01:52.832
+Aqui o real ficou zerado,
+
+00:01:52.832 --> 00:01:59.107
+porque o apontamento não chegou a ser finalizado: uma limitação conhecida desta versão.
+
+00:01:59.107 --> 00:02:03.928
+E, no estoque, a entrada de produto acabado da ordem, com o custo real.
+
+00:02:03.928 --> 00:02:05.540
+Três cuidados.
+
+00:02:05.540 --> 00:02:10.487
+O iniciar produção da lista muda a ordem para em execução com um clique só.
+
+00:02:10.487 --> 00:02:16.922
+O apontamento de horas pode recusar a finalização por causa do horário: anote e avise o suporte.
+
+00:02:16.922 --> 00:02:21.021
+E, na fila de exceções, não reprocesse nada sem o suporte.
+
+00:02:21.021 --> 00:02:25.764
+Resumindo: na ordem de produção, a quantidade e a empresa você informa.
+
+00:02:25.764 --> 00:02:28.330
+As requisições nascem da estrutura.
+
+00:02:28.330 --> 00:02:32.214
+E marcar produzido lança o acabado no estoque, com custo.
+
+00:02:32.214 --> 00:02:34.784
+No próximo vídeo, a expedição.

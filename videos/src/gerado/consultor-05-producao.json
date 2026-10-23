@@ -201,6 +201,7 @@
    "texto": "Marcar produzido lança a Entrada de produto acabado (OP), com quantidade e custo. Exige almoxarifado central ativo.",
    "fonte": "regra-producao-marcar-produzido-gera-entrada-do-produto-acabado",
    "fala": "Quarta. Marcar produzido leva a ordem ao estado final e lança a entrada de produto acabado no almoxarifado central, com a quantidade e o custo. Sem almoxarifado ativo, a conclusão fica bloqueada.",
+   "critica": true,
    "inicio": 78.188,
    "duracao": 14.144,
    "fala_s": 13.594,
@@ -239,6 +240,11 @@
    ],
    "rotulo": "Produção › Ordens de produção",
    "fala": "Na prática: esta ordem de fabricação já está produzida. Repare que os botões de apontar e excluir ficam travados: produzido é o estado final.",
+   "nomes": [
+    "NÚMERO",
+    "Fabricação",
+    "Produzido"
+   ],
    "inicio": 92.332,
    "duracao": 9.635,
    "fala_s": 9.085,
@@ -288,6 +294,11 @@
    ],
    "rotulo": "Mais ações › Custo da OP",
    "fala": "No custo da ordem, você compara o estimado com o realizado, e vê o detalhe por etapa.",
+   "nomes": [
+    "Estimado",
+    "Realizado",
+    "Etapa"
+   ],
    "inicio": 101.967,
    "duracao": 5.716,
    "fala_s": 5.166,
@@ -331,6 +342,10 @@
    ],
    "rotulo": "Mais ações › Linha do tempo",
    "fala": "Na linha do tempo, o tempo planejado e o real. Aqui o real ficou zerado, porque o apontamento não chegou a ser finalizado: uma limitação conhecida desta versão.",
+   "nomes": [
+    "Tempo planejado",
+    "Tempo real até agora"
+   ],
    "inicio": 107.683,
    "duracao": 11.424,
    "fala_s": 10.874,
@@ -378,6 +393,11 @@
    ],
    "rotulo": "Estoque › Movimentos",
    "fala": "E, no estoque, a entrada de produto acabado da ordem, com o custo real.",
+   "nomes": [
+    "NÚMERO",
+    "Entrada de produto acabado (OP)"
+   ],
+   "impacto": 1,
    "inicio": 119.107,
    "duracao": 4.821,
    "fala_s": 4.271,

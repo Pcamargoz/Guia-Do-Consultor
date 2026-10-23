@@ -1,0 +1,115 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:03.490
+O pedido faturado ainda precisa chegar ao cliente.
+
+00:00:03.490 --> 00:00:08.935
+Neste vídeo, vamos montar a carga, passar pelos checkpoints do pátio e entregar,
+
+00:00:08.935 --> 00:00:11.717
+com tudo registrado no histórico.
+
+00:00:11.717 --> 00:00:15.543
+Tudo começa liberando o pedido faturado para a expedição.
+
+00:00:15.543 --> 00:00:18.527
+Só assim ele aparece para montar a carga.
+
+00:00:18.527 --> 00:00:25.749
+A carga é fechada, passa pela separação, pela conferência e pelo carregamento, sai em rota e termina entregue.
+
+00:00:25.749 --> 00:00:28.838
+Cada passo fica no histórico, com horário.
+
+00:00:28.838 --> 00:00:30.141
+Primeira regra.
+
+00:00:30.141 --> 00:00:34.296
+O liberar para expedição só aparece no menu do pedido faturado.
+
+00:00:34.296 --> 00:00:36.604
+Antes de faturar, ele não existe.
+
+00:00:36.604 --> 00:00:40.953
+E, depois de liberado, o mesmo lugar vira reverter liberação.
+
+00:00:40.953 --> 00:00:41.984
+Segunda.
+
+00:00:41.984 --> 00:00:48.396
+Os checkpoints de separação, conferência e carregamento são ligados nos parâmetros da expedição.
+
+00:00:48.396 --> 00:00:54.340
+Ligue só as etapas que a empresa realmente usa: cada uma vira uma bipagem obrigatória.
+
+00:00:54.340 --> 00:00:55.368
+Terceira.
+
+00:00:55.368 --> 00:00:57.989
+Fechar a carga libera os checkpoints.
+
+00:00:57.989 --> 00:01:01.227
+Em cada um, você bipa a etiqueta de cada volume.
+
+00:01:01.227 --> 00:01:07.314
+Quando os três chegam a cem por cento, aparece que todos os checkpoints foram concluídos,
+
+00:01:07.314 --> 00:01:10.204
+e o iniciar rota coloca a carga em rota.
+
+00:01:10.204 --> 00:01:11.047
+Quarta.
+
+00:01:11.047 --> 00:01:16.344
+Uma ocorrência bloqueante na rota devolve o pedido para a fila de re-expedição.
+
+00:01:16.344 --> 00:01:18.319
+E, se a mercadoria volta,
+
+00:01:18.319 --> 00:01:24.881
+a devolução confirmada cria pendências por produto para o estoque: o saldo não sobe sozinho.
+
+00:01:24.881 --> 00:01:31.243
+Na prática: este pedido está faturado, e o menu dele agora mostra o liberar para expedição.
+
+00:01:31.243 --> 00:01:37.395
+Em Expedição, Cargas, o quadro mostra as cargas em montagem, separadas, em rota e entregues.
+
+00:01:37.395 --> 00:01:42.001
+O montar nova carga lista só os pedidos faturados ou liberados.
+
+00:01:42.001 --> 00:01:48.131
+No detalhe da carga, você vê o status, a ocupação do veículo contra a capacidade, as entregas,
+
+00:01:48.131 --> 00:01:51.137
+e os documentos: romaneio e etiquetas.
+
+00:01:51.137 --> 00:01:57.810
+E o histórico da carga registra cada passo, com o horário: criada, fechada, separação, conferência,
+
+00:01:57.810 --> 00:02:00.559
+carregamento e a saída para a rota.
+
+00:02:00.559 --> 00:02:02.171
+Três cuidados.
+
+00:02:02.171 --> 00:02:06.750
+Motorista com CNH vencida exige justificativa para fechar a carga.
+
+00:02:06.750 --> 00:02:11.315
+A carga pode avisar produção pendente mesmo com a ordem vinculada.
+
+00:02:11.315 --> 00:02:16.449
+E a devolução não devolve o saldo sozinha: trate a pendência de estoque.
+
+00:02:16.449 --> 00:02:19.787
+Resumindo: libere o pedido só depois de faturar.
+
+00:02:19.787 --> 00:02:22.409
+Fechar a carga libera os checkpoints.
+
+00:02:22.409 --> 00:02:25.259
+E a devolução vira pendência de estoque.
+
+00:02:25.259 --> 00:02:28.459
+No próximo vídeo, o faturamento e o fiscal.

@@ -206,6 +206,7 @@
    "texto": "A entrada do recebimento vai para o almoxarifado central ativo. Sem ele, o sistema bloqueia.",
    "fonte": "regra-estoque-almoxarifado-central-ativo-e-pre-requisito",
    "fala": "Quarta. A entrada do material cai no almoxarifado central. Sem um almoxarifado central ativo em Estoque, Locais, o sistema bloqueia a finalização. Confira antes de começar.",
+   "critica": true,
    "inicio": 76.208,
    "duracao": 12.556,
    "fala_s": 12.006,
@@ -244,6 +245,11 @@
    ],
    "rotulo": "Compras › Solicitações de Compra",
    "fala": "Na prática: em Compras, Solicitações de Compra, a Nova Solicitação pede a empresa, a data de necessidade, o produto e a quantidade. Esta aqui já está concluída: ela virou pedido.",
+   "nomes": [
+    "Nova Solicitação",
+    "DOCUMENTO",
+    null
+   ],
    "inicio": 88.764,
    "duracao": 12.378,
    "fala_s": 11.828,
@@ -298,6 +304,11 @@
    ],
    "rotulo": "Cotação · Dados Gerais",
    "fala": "A cotação é um assistente em quatro passos: dados gerais, itens, propostas e comparação. Nos dados gerais, repare na natureza da operação: é ela que vai definir o CFOP.",
+   "nomes": [
+    "Comparação",
+    "Natureza da Operação",
+    "Define o CFOP do pedido de compra automaticamente, conforme a origem do fornecedor."
+   ],
    "inicio": 101.142,
    "duracao": 11.709,
    "fala_s": 11.159,
@@ -347,6 +358,11 @@
    ],
    "rotulo": "Cotação · Comparação",
    "fala": "Na comparação, você escolhe o critério, como menor preço ou menor prazo, e aplica a melhor opção. Daí sai o pedido de compra, um por fornecedor vencedor.",
+   "nomes": [
+    "Critério de Comparação",
+    "Aplicar Melhor Opção",
+    "Pedidos de Compra Gerados"
+   ],
    "inicio": 112.851,
    "duracao": 10.273,
    "fala_s": 9.723,
@@ -412,6 +428,13 @@
     }
    ],
    "fala": "E aqui está a melhor forma de conferir tudo: a linha do tempo do pedido de compra. Solicitação concluída, cotação concluída, pedido recebido, nota finalizada e título pago, em ordem.",
+   "nomes": [
+    "SOLICITAÇÃO DE COMPRA",
+    "COTAÇÃO",
+    "PEDIDO DE COMPRA",
+    "NOTA DE RECEBIMENTO",
+    "TÍTULO A PAGAR"
+   ],
    "inicio": 123.124,
    "duracao": 12.461,
    "fala_s": 11.911,
@@ -475,6 +498,9 @@
    "foco": 0,
    "rotulo": "Recebimento › Notas de Recebimento",
    "fala": "Na lista de recebimento, a mesma nota aparece como NF nove nove zero zero zero um, o número do fornecedor. Na linha do tempo, ela era a NR treze.",
+   "nomes": [
+    "NÚMERO DA NOTA"
+   ],
    "inicio": 135.585,
    "duracao": 9.804,
    "fala_s": 9.254,
@@ -511,6 +537,11 @@
    ],
    "rotulo": "Estoque › Movimentos",
    "fala": "E no estoque, o movimento de entrada do tipo recebimento, no almoxarifado central, com o valor da nota.",
+   "nomes": [
+    "Recebimento (NR)",
+    "ORIGEM → DESTINO"
+   ],
+   "impacto": 1,
    "inicio": 145.389,
    "duracao": 7.04,
    "fala_s": 6.49,

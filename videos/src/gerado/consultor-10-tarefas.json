@@ -11,10 +11,26 @@
    "cena": "abertura",
    "fala": "Implantação tem muita coisa para acompanhar: pendências, cadastros, treinamentos. Neste vídeo, vamos ver como o módulo de tarefas organiza isso em quadros e cartões, e o detalhe que faz o cartão aparecer para a pessoa certa.",
    "inicio": 0,
-   "duracao": 15.979,
-   "fala_s": 15.429,
-   "audio": null,
-   "legendas": null
+   "duracao": 15.02,
+   "fala_s": 14.47,
+   "audio": "audio/consultor-10-tarefas/01.wav",
+   "legendas": [
+    {
+     "texto": "Implantação tem muita coisa para acompanhar: pendências, cadastros, treinamentos.",
+     "ini": 0,
+     "fim": 5.229
+    },
+    {
+     "texto": "Neste vídeo, vamos ver como o módulo de tarefas organiza isso em quadros e cartões,",
+     "ini": 5.509,
+     "fim": 10.701
+    },
+    {
+     "texto": "e o detalhe que faz o cartão aparecer para a pessoa certa.",
+     "ini": 10.981,
+     "fim": 14.47
+    }
+   ]
   },
   {
    "id": "02",
@@ -29,22 +45,44 @@
    ],
    "destaque": 0,
    "fala": "Tudo começa num quadro, que agrupa as tarefas de um projeto, de um cliente ou de uma equipe.",
-   "inicio": 15.979,
-   "duracao": 8.264,
-   "fala_s": 7.714,
-   "audio": null,
-   "legendas": null
+   "inicio": 15.02,
+   "duracao": 6.114,
+   "fala_s": 5.564,
+   "audio": "audio/consultor-10-tarefas/02.wav",
+   "legendas": [
+    {
+     "texto": "Tudo começa num quadro, que agrupa as tarefas de um projeto, de um cliente ou de uma equipe.",
+     "ini": 0,
+     "fim": 5.564
+    }
+   ]
   },
   {
    "id": "03",
    "cena": "status",
    "destaque": 4,
    "fala": "O quadro ganha listas, como a fazer e feito. Cada tarefa vira um cartão, com prioridade, prazo e responsável. E, quando termina, o cartão pode ser arquivado.",
-   "inicio": 24.243,
-   "duracao": 12.121,
-   "fala_s": 11.571,
-   "audio": null,
-   "legendas": null
+   "inicio": 21.134,
+   "duracao": 10.733,
+   "fala_s": 10.183,
+   "audio": "audio/consultor-10-tarefas/03.wav",
+   "legendas": [
+    {
+     "texto": "O quadro ganha listas, como a fazer e feito.",
+     "ini": 0,
+     "fim": 2.672
+    },
+    {
+     "texto": "Cada tarefa vira um cartão, com prioridade, prazo e responsável.",
+     "ini": 2.952,
+     "fim": 7.063
+    },
+    {
+     "texto": "E, quando termina, o cartão pode ser arquivado.",
+     "ini": 7.343,
+     "fim": 10.183
+    }
+   ]
   },
   {
    "id": "04",
@@ -55,11 +93,27 @@
    "texto": "Novo Quadro pede nome e tipo. As listas você cria em + Adicionar lista; os cartões, em + Adicionar tarefa.",
    "fonte": "regra-tarefas-cartao-so-aparece-em-minhas-tarefas-com-responsavel",
    "fala": "Primeira regra. O quadro novo nasce sem listas. Você cria as listas em adicionar lista, e as tarefas em adicionar tarefa, dentro de cada lista.",
-   "inicio": 36.364,
-   "duracao": 11.264,
-   "fala_s": 10.714,
-   "audio": null,
-   "legendas": null
+   "inicio": 31.867,
+   "duracao": 10.167,
+   "fala_s": 9.617,
+   "audio": "audio/consultor-10-tarefas/04.wav",
+   "legendas": [
+    {
+     "texto": "Primeira regra.",
+     "ini": 0,
+     "fim": 1.023
+    },
+    {
+     "texto": "O quadro novo nasce sem listas.",
+     "ini": 1.303,
+     "fim": 3.303
+    },
+    {
+     "texto": "Você cria as listas em adicionar lista, e as tarefas em adicionar tarefa, dentro de cada lista.",
+     "ini": 3.583,
+     "fim": 9.617
+    }
+   ]
   },
   {
    "id": "05",
@@ -70,11 +124,33 @@
    "texto": "O cartão nasce Pendente, Média e sem responsável. Só aparece em Minhas Tarefas depois de Adicionar responsável.",
    "fonte": "regra-tarefas-cartao-so-aparece-em-minhas-tarefas-com-responsavel",
    "fala": "Segunda, e a mais importante. O cartão nasce pendente, com prioridade média e sem responsável. E ele só aparece em minhas tarefas depois que alguém é adicionado como responsável. Sem isso, a tarefa fica esquecida no quadro.",
-   "inicio": 47.628,
-   "duracao": 16.407,
-   "fala_s": 15.857,
-   "audio": null,
-   "legendas": null
+   "critica": true,
+   "inicio": 42.034,
+   "duracao": 15.275,
+   "fala_s": 14.725,
+   "audio": "audio/consultor-10-tarefas/05.wav",
+   "legendas": [
+    {
+     "texto": "Segunda, e a mais importante.",
+     "ini": 0,
+     "fim": 1.921
+    },
+    {
+     "texto": "O cartão nasce pendente, com prioridade média e sem responsável.",
+     "ini": 2.201,
+     "fim": 6.204
+    },
+    {
+     "texto": "E ele só aparece em minhas tarefas depois que alguém é adicionado como responsável.",
+     "ini": 6.484,
+     "fim": 11.66
+    },
+    {
+     "texto": "Sem isso, a tarefa fica esquecida no quadro.",
+     "ini": 11.94,
+     "fim": 14.725
+    }
+   ]
   },
   {
    "id": "06",
@@ -85,11 +161,22 @@
    "texto": "Não existe um campo Prazo: a data limite do cartão é o Término Previsto.",
    "fonte": "funcional-tarefas-quadros-listas-e-cartoes",
    "fala": "Terceira. Não procure um campo prazo: a data limite do cartão se chama término previsto.",
-   "inicio": 64.035,
-   "duracao": 6.979,
-   "fala_s": 6.429,
-   "audio": null,
-   "legendas": null
+   "inicio": 57.309,
+   "duracao": 6.523,
+   "fala_s": 5.973,
+   "audio": "audio/consultor-10-tarefas/06.wav",
+   "legendas": [
+    {
+     "texto": "Terceira.",
+     "ini": 0,
+     "fim": 0.748
+    },
+    {
+     "texto": "Não procure um campo prazo: a data limite do cartão se chama término previsto.",
+     "ini": 1.028,
+     "fim": 5.973
+    }
+   ]
   },
   {
    "id": "07",
@@ -100,11 +187,27 @@
    "texto": "O cartão arquivado sai das listagens e vai para Tarefas › Arquivadas, com o botão Restaurar.",
    "fonte": "funcional-tarefas-quadros-listas-e-cartoes",
    "fala": "Quarta. Arquivar não apaga. O cartão arquivado sai das listagens e vai para arquivadas, onde o botão restaurar traz ele de volta.",
-   "inicio": 71.014,
-   "duracao": 9.979,
-   "fala_s": 9.429,
-   "audio": null,
-   "legendas": null
+   "inicio": 63.832,
+   "duracao": 9.593,
+   "fala_s": 9.043,
+   "audio": "audio/consultor-10-tarefas/07.wav",
+   "legendas": [
+    {
+     "texto": "Quarta.",
+     "ini": 0,
+     "fim": 0.563
+    },
+    {
+     "texto": "Arquivar não apaga.",
+     "ini": 0.843,
+     "fim": 2.305
+    },
+    {
+     "texto": "O cartão arquivado sai das listagens e vai para arquivadas, onde o botão restaurar traz ele de volta.",
+     "ini": 2.585,
+     "fim": 9.043
+    }
+   ]
   },
   {
    "id": "08",
@@ -116,11 +219,21 @@
    ],
    "rotulo": "Tarefas › Meus Quadros",
    "fala": "Na prática: em Meus Quadros ficam os seus quadros, e o novo quadro pede só o nome e o tipo.",
-   "inicio": 80.993,
-   "duracao": 9.121,
-   "fala_s": 8.571,
-   "audio": null,
-   "legendas": null,
+   "nomes": [
+    null,
+    "Novo Quadro"
+   ],
+   "inicio": 73.425,
+   "duracao": 6.148,
+   "fala_s": 5.598,
+   "audio": "audio/consultor-10-tarefas/08.wav",
+   "legendas": [
+    {
+     "texto": "Na prática: em Meus Quadros ficam os seus quadros, e o novo quadro pede só o nome e o tipo.",
+     "ini": 0,
+     "fim": 5.598
+    }
+   ],
    "imagem": "telas/consultor-10-tarefas/01-meus-quadros.png",
    "caixas": [
     {
@@ -148,11 +261,27 @@
    ],
    "rotulo": "Quadro · Kanban",
    "fala": "Dentro do quadro, as listas aparecem em colunas, no kanban, mas também em lista, tabela, calendário e Gantt. Em cada lista, adicionar tarefa cria um cartão.",
-   "inicio": 90.114,
-   "duracao": 11.693,
-   "fala_s": 11.143,
-   "audio": null,
-   "legendas": null,
+   "nomes": [
+    "Kanban",
+    "Adicionar lista",
+    "Adicionar tarefa"
+   ],
+   "inicio": 79.573,
+   "duracao": 10.472,
+   "fala_s": 9.922,
+   "audio": "audio/consultor-10-tarefas/09.wav",
+   "legendas": [
+    {
+     "texto": "Dentro do quadro, as listas aparecem em colunas, no kanban, mas também em lista, tabela, calendário e Gantt.",
+     "ini": 0,
+     "fim": 6.744
+    },
+    {
+     "texto": "Em cada lista, adicionar tarefa cria um cartão.",
+     "ini": 7.024,
+     "fim": 9.922
+    }
+   ],
    "imagem": "telas/consultor-10-tarefas/02-quadro.png",
    "caixas": [
     {
@@ -187,11 +316,34 @@
    ],
    "rotulo": "Cartão",
    "fala": "O cartão novo está pendente e sem responsável. Clique em adicionar responsável e escolha a pessoa. No cartão também ficam os checklists e os comentários.",
-   "inicio": 101.807,
-   "duracao": 11.264,
-   "fala_s": 10.714,
-   "audio": null,
-   "legendas": null,
+   "nomes": [
+    "Pendente",
+    "Nenhum responsável",
+    "Adicionar responsável",
+    "Checklists"
+   ],
+   "impacto": 2,
+   "inicio": 90.045,
+   "duracao": 10.766,
+   "fala_s": 10.216,
+   "audio": "audio/consultor-10-tarefas/10.wav",
+   "legendas": [
+    {
+     "texto": "O cartão novo está pendente e sem responsável.",
+     "ini": 0,
+     "fim": 2.912
+    },
+    {
+     "texto": "Clique em adicionar responsável e escolha a pessoa.",
+     "ini": 3.192,
+     "fim": 6.496
+    },
+    {
+     "texto": "No cartão também ficam os checklists e os comentários.",
+     "ini": 6.776,
+     "fim": 10.216
+    }
+   ],
    "imagem": "telas/consultor-10-tarefas/03-cartao.png",
    "caixas": [
     {
@@ -227,11 +379,20 @@
    "foco": 0,
    "rotulo": "Tarefas › Minhas Tarefas",
    "fala": "Com o responsável definido, o cartão aparece em minhas tarefas, para quem foi atribuído.",
-   "inicio": 113.071,
-   "duracao": 6.55,
-   "fala_s": 6,
-   "audio": null,
-   "legendas": null,
+   "nomes": [
+    null
+   ],
+   "inicio": 100.811,
+   "duracao": 6.046,
+   "fala_s": 5.496,
+   "audio": "audio/consultor-10-tarefas/11.wav",
+   "legendas": [
+    {
+     "texto": "Com o responsável definido, o cartão aparece em minhas tarefas, para quem foi atribuído.",
+     "ini": 0,
+     "fim": 5.496
+    }
+   ],
    "imagem": "telas/consultor-10-tarefas/04-minhas-tarefas.png",
    "caixas": [
     {
@@ -252,11 +413,21 @@
    ],
    "rotulo": "Tarefas › Arquivadas",
    "fala": "E, depois de arquivado, ele fica aqui, com a data, e pode ser restaurado a qualquer momento.",
-   "inicio": 119.621,
-   "duracao": 7.836,
-   "fala_s": 7.286,
-   "audio": null,
-   "legendas": null,
+   "nomes": [
+    null,
+    "Restaurar"
+   ],
+   "inicio": 106.857,
+   "duracao": 6.197,
+   "fala_s": 5.647,
+   "audio": "audio/consultor-10-tarefas/12.wav",
+   "legendas": [
+    {
+     "texto": "E, depois de arquivado, ele fica aqui, com a data, e pode ser restaurado a qualquer momento.",
+     "ini": 0,
+     "fim": 5.647
+    }
+   ],
    "imagem": "telas/consultor-10-tarefas/05-arquivadas.png",
    "caixas": [
     {
@@ -282,11 +453,32 @@
     "O autor de comentário pode aparecer como Usuário."
    ],
    "fala": "Três cuidados. A busca do control K não encontra o módulo de tarefas: abra pelo menu de módulos. Todo cartão novo nasce sem responsável: atribua sempre. E o autor de um comentário pode aparecer apenas como usuário.",
-   "inicio": 127.457,
-   "duracao": 16.407,
-   "fala_s": 15.857,
-   "audio": null,
-   "legendas": null
+   "inicio": 113.054,
+   "duracao": 15.248,
+   "fala_s": 14.698,
+   "audio": "audio/consultor-10-tarefas/13.wav",
+   "legendas": [
+    {
+     "texto": "Três cuidados.",
+     "ini": 0,
+     "fim": 1.332
+    },
+    {
+     "texto": "A busca do control K não encontra o módulo de tarefas: abra pelo menu de módulos.",
+     "ini": 1.612,
+     "fim": 6.717
+    },
+    {
+     "texto": "Todo cartão novo nasce sem responsável: atribua sempre.",
+     "ini": 6.997,
+     "fim": 10.682
+    },
+    {
+     "texto": "E o autor de um comentário pode aparecer apenas como usuário.",
+     "ini": 10.962,
+     "fim": 14.698
+    }
+   ]
   },
   {
    "id": "14",
@@ -297,12 +489,33 @@
     "Arquivar não apaga: restaura"
    ],
    "fala": "Resumindo: crie as listas do quadro. Sem responsável, ninguém vê o cartão. E arquivar não apaga, dá para restaurar. No próximo vídeo, o teste do fluxo completo, do pedido à gestão.",
-   "inicio": 143.864,
-   "duracao": 13.836,
-   "fala_s": 13.286,
-   "audio": null,
-   "legendas": null
+   "inicio": 128.302,
+   "duracao": 12.538,
+   "fala_s": 11.988,
+   "audio": "audio/consultor-10-tarefas/14.wav",
+   "legendas": [
+    {
+     "texto": "Resumindo: crie as listas do quadro.",
+     "ini": 0,
+     "fim": 2.262
+    },
+    {
+     "texto": "Sem responsável, ninguém vê o cartão.",
+     "ini": 2.542,
+     "fim": 4.966
+    },
+    {
+     "texto": "E arquivar não apaga, dá para restaurar.",
+     "ini": 5.246,
+     "fim": 7.671
+    },
+    {
+     "texto": "No próximo vídeo, o teste do fluxo completo, do pedido à gestão.",
+     "ini": 7.951,
+     "fim": 11.988
+    }
+   ]
   }
  ],
- "duracaoTotal": 159.2
+ "duracaoTotal": 142.34
 }

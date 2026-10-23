@@ -35,8 +35,9 @@ fs.mkdirSync(pasta, { recursive: true });
 const { bundle } = await import('@remotion/bundler');
 const publicDir = arg('public-dir') ? path.resolve(RAIZ, arg('public-dir')) : undefined;
 const serveUrl = await bundle({ entryPoint: path.join(RAIZ, 'src', 'index.ts'), publicDir, outDir: path.join(pasta, 'bundle') });
-const dados = JSON.parse(fs.readFileSync(path.join(RAIZ, 'src', 'gerado', `${id}.json`), 'utf8'));
-const total = Math.ceil(dados.duracaoTotal * 30);
+// o total vem da composição (o motor pode somar quadros antes do vídeo, como a abertura fria do v5)
+const { selectComposition } = await import('@remotion/renderer');
+const total = (await selectComposition({ serveUrl, id, browserExecutable })).durationInFrames;
 
 const extras = ['escala', 'crf'].flatMap((n) => (arg(n) ? [`--${n}`, arg(n)] : []));
 const roda = (destino, a, b, rotulo) => {

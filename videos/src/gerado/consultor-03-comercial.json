@@ -98,6 +98,7 @@
    "texto": "Lead numa etapa do Kanban de 60% ou mais e com o BANT completo: Budget, Autoridade, Necessidade e Prazo.",
    "fonte": "regra-crm-converter-lead-exige-etapa-60-e-bant-completo",
    "fala": "Primeira regra. O lead só converte se estiver numa etapa do Kanban de sessenta por cento ou mais, como MQL ou SQL, e com o BANT completo: budget, autoridade, necessidade e prazo. As duas condições valem juntas. O BANT fica na seção Informações CRM.",
+   "critica": true,
    "inicio": 33.672,
    "duracao": 17.383,
    "fala_s": 16.833,

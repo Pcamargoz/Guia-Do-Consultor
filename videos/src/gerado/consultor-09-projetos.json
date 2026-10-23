@@ -11,10 +11,26 @@
    "cena": "abertura",
    "fala": "Para o cliente de esquadrias, tudo gira em torno da obra. Neste vídeo, vamos ver como o projeto amarra pedido, produção, compras, serviços e financeiro, e como acompanhar a obra num painel só.",
    "inicio": 0,
-   "duracao": 14.693,
-   "fala_s": 14.143,
-   "audio": null,
-   "legendas": null
+   "duracao": 12.964,
+   "fala_s": 12.414,
+   "audio": "audio/consultor-09-projetos/01.wav",
+   "legendas": [
+    {
+     "texto": "Para o cliente de esquadrias, tudo gira em torno da obra.",
+     "ini": 0,
+     "fim": 3.293
+    },
+    {
+     "texto": "Neste vídeo, vamos ver como o projeto amarra pedido, produção, compras, serviços e financeiro,",
+     "ini": 3.573,
+     "fim": 9.756
+    },
+    {
+     "texto": "e como acompanhar a obra num painel só.",
+     "ini": 10.036,
+     "fim": 12.414
+    }
+   ]
   },
   {
    "id": "02",
@@ -28,22 +44,39 @@
    ],
    "destaque": 0,
    "fala": "Tudo começa no cadastro do projeto: nome, código, cliente e status da obra.",
-   "inicio": 14.693,
-   "duracao": 6.121,
-   "fala_s": 5.571,
-   "audio": null,
-   "legendas": null
+   "inicio": 12.964,
+   "duracao": 5.27,
+   "fala_s": 4.72,
+   "audio": "audio/consultor-09-projetos/02.wav",
+   "legendas": [
+    {
+     "texto": "Tudo começa no cadastro do projeto: nome, código, cliente e status da obra.",
+     "ini": 0,
+     "fim": 4.72
+    }
+   ]
   },
   {
    "id": "03",
    "cena": "status",
    "destaque": 3,
    "fala": "O projeto ganha estágios e etapas, os documentos são ligados a ele pelo campo projeto, e o painel da obra junta tudo: vendido, faturado, a receber, a pagar e as pendências.",
-   "inicio": 20.814,
-   "duracao": 13.836,
-   "fala_s": 13.286,
-   "audio": null,
-   "legendas": null
+   "inicio": 18.234,
+   "duracao": 11.461,
+   "fala_s": 10.911,
+   "audio": "audio/consultor-09-projetos/03.wav",
+   "legendas": [
+    {
+     "texto": "O projeto ganha estágios e etapas, os documentos são ligados a ele pelo campo projeto,",
+     "ini": 0,
+     "fim": 5.25
+    },
+    {
+     "texto": "e o painel da obra junta tudo: vendido, faturado, a receber, a pagar e as pendências.",
+     "ini": 5.53,
+     "fim": 10.911
+    }
+   ]
   },
   {
    "id": "04",
@@ -54,11 +87,27 @@
    "texto": "Pedido, OP, solicitação de compra, medição e títulos se ligam à obra pelo campo Projeto. A lista de pedidos mostra a coluna PROJETO.",
    "fonte": "funcional-cadastros-participante-produto-e-projeto",
    "fala": "Primeira regra. É o campo projeto que liga cada documento à obra: pedido, ordem de produção, solicitação de compra, medição. Sem ele, o documento não aparece no painel da obra.",
-   "inicio": 34.65,
-   "duracao": 13.407,
-   "fala_s": 12.857,
-   "audio": null,
-   "legendas": null
+   "inicio": 29.695,
+   "duracao": 12.334,
+   "fala_s": 11.784,
+   "audio": "audio/consultor-09-projetos/04.wav",
+   "legendas": [
+    {
+     "texto": "Primeira regra.",
+     "ini": 0,
+     "fim": 1.023
+    },
+    {
+     "texto": "É o campo projeto que liga cada documento à obra: pedido, ordem de produção, solicitação de compra, medição.",
+     "ini": 1.303,
+     "fim": 8.238
+    },
+    {
+     "texto": "Sem ele, o documento não aparece no painel da obra.",
+     "ini": 8.518,
+     "fim": 11.784
+    }
+   ]
   },
   {
    "id": "05",
@@ -69,11 +118,28 @@
    "texto": "Só o pedido Em aberto é editado. Depois de faturado ou entregue, não dá mais para ligar a obra.",
    "fonte": "regra-vendas-editar-pedido-somente-em-aberto",
    "fala": "Segunda. Ligue o pedido à obra enquanto ele está em aberto. Depois de faturado ou entregue, o pedido só pode ser visualizado, e o vínculo não entra mais.",
-   "inicio": 48.057,
-   "duracao": 12.55,
-   "fala_s": 12,
-   "audio": null,
-   "legendas": null
+   "critica": true,
+   "inicio": 42.029,
+   "duracao": 10.795,
+   "fala_s": 10.245,
+   "audio": "audio/consultor-09-projetos/05.wav",
+   "legendas": [
+    {
+     "texto": "Segunda.",
+     "ini": 0,
+     "fim": 0.751
+    },
+    {
+     "texto": "Ligue o pedido à obra enquanto ele está em aberto.",
+     "ini": 1.031,
+     "fim": 4.075
+    },
+    {
+     "texto": "Depois de faturado ou entregue, o pedido só pode ser visualizado, e o vínculo não entra mais.",
+     "ini": 4.355,
+     "fim": 10.245
+    }
+   ]
   },
   {
    "id": "06",
@@ -84,11 +150,32 @@
    "texto": "Estágio é a fase macro; etapa é o passo acompanhado, que pode pertencer a um estágio. Ficam nos botões da linha do projeto.",
    "fonte": "manual-12-projetos-e-tarefas",
    "fala": "Terceira. Estágios são as fases macro da obra, como levantamento de material. Etapas são os passos acompanhados, como medição dos vãos, produção e instalação. Cada etapa pode pertencer a um estágio.",
-   "inicio": 60.607,
-   "duracao": 13.836,
-   "fala_s": 13.286,
-   "audio": null,
-   "legendas": null
+   "inicio": 52.824,
+   "duracao": 13.816,
+   "fala_s": 13.266,
+   "audio": "audio/consultor-09-projetos/06.wav",
+   "legendas": [
+    {
+     "texto": "Terceira.",
+     "ini": 0,
+     "fim": 0.748
+    },
+    {
+     "texto": "Estágios são as fases macro da obra, como levantamento de material.",
+     "ini": 1.028,
+     "fim": 5.271
+    },
+    {
+     "texto": "Etapas são os passos acompanhados, como medição dos vãos, produção e instalação.",
+     "ini": 5.551,
+     "fim": 10.512
+    },
+    {
+     "texto": "Cada etapa pode pertencer a um estágio.",
+     "ini": 10.792,
+     "fim": 13.266
+    }
+   ]
   },
   {
    "id": "07",
@@ -99,11 +186,27 @@
    "texto": "Se o projeto tem local de estoque, ele precisa estar ativo, senão a nota e a produção da obra travam.",
    "fonte": "regra-estoque-almoxarifado-central-ativo-e-pre-requisito",
    "fala": "Quarta. Se a obra tem local de estoque próprio, ele precisa estar ativo. Sem isso, a finalização da nota e a conclusão da produção da obra são recusadas.",
-   "inicio": 74.443,
-   "duracao": 12.55,
-   "fala_s": 12,
-   "audio": null,
-   "legendas": null
+   "inicio": 66.64,
+   "duracao": 10.557,
+   "fala_s": 10.007,
+   "audio": "audio/consultor-09-projetos/07.wav",
+   "legendas": [
+    {
+     "texto": "Quarta.",
+     "ini": 0,
+     "fim": 0.563
+    },
+    {
+     "texto": "Se a obra tem local de estoque próprio, ele precisa estar ativo.",
+     "ini": 0.843,
+     "fim": 4.79
+    },
+    {
+     "texto": "Sem isso, a finalização da nota e a conclusão da produção da obra são recusadas.",
+     "ini": 5.07,
+     "fim": 10.007
+    }
+   ]
   },
   {
    "id": "08",
@@ -122,11 +225,26 @@
     }
    ],
    "fala": "Na prática: na lista de pedidos, a coluna projeto mostra a obra de cada pedido. Este aqui está ligado à obra comercial de teste.",
-   "inicio": 86.993,
-   "duracao": 10.836,
-   "fala_s": 10.286,
-   "audio": null,
-   "legendas": null,
+   "nomes": [
+    "PROJETO"
+   ],
+   "impacto": 0,
+   "inicio": 77.197,
+   "duracao": 8.788,
+   "fala_s": 8.238,
+   "audio": "audio/consultor-09-projetos/08.wav",
+   "legendas": [
+    {
+     "texto": "Na prática: na lista de pedidos, a coluna projeto mostra a obra de cada pedido.",
+     "ini": 0,
+     "fim": 4.988
+    },
+    {
+     "texto": "Este aqui está ligado à obra comercial de teste.",
+     "ini": 5.268,
+     "fim": 8.238
+    }
+   ],
    "imagem": "telas/consultor-09-projetos/00-pedido-projeto.png",
    "caixas": [
     {
@@ -174,11 +292,27 @@
     }
    ],
    "fala": "Em Cadastros, Projetos, cada obra tem status e, na linha, os botões etapas e estágios, onde você monta as fases e os passos acompanhados.",
-   "inicio": 97.829,
-   "duracao": 10.836,
-   "fala_s": 10.286,
-   "audio": null,
-   "legendas": null,
+   "nomes": [
+    null,
+    "Etapas",
+    "Estágios"
+   ],
+   "inicio": 85.985,
+   "duracao": 9.511,
+   "fala_s": 8.961,
+   "audio": "audio/consultor-09-projetos/09.wav",
+   "legendas": [
+    {
+     "texto": "Em Cadastros, Projetos, cada obra tem status e, na linha, os botões etapas e estágios,",
+     "ini": 0,
+     "fim": 5.468
+    },
+    {
+     "texto": "onde você monta as fases e os passos acompanhados.",
+     "ini": 5.748,
+     "fim": 8.961
+    }
+   ],
    "imagem": "telas/consultor-09-projetos/01-projetos.png",
    "caixas": [
     {
@@ -219,11 +353,28 @@
    ],
    "rotulo": "Painel Financeiro de Projetos",
    "fala": "E o painel financeiro do projeto junta tudo: avisos automáticos, pendências, como este pedido ainda sem faturamento, e os cartões de vendido, faturado e a faturar.",
-   "inicio": 108.665,
-   "duracao": 11.693,
-   "fala_s": 11.143,
-   "audio": null,
-   "legendas": null,
+   "nomes": [
+    "Avisos inteligentes",
+    "Pendências do projeto",
+    "VALOR VENDIDO",
+    "A FATURAR"
+   ],
+   "inicio": 95.496,
+   "duracao": 11.309,
+   "fala_s": 10.759,
+   "audio": "audio/consultor-09-projetos/10.wav",
+   "legendas": [
+    {
+     "texto": "E o painel financeiro do projeto junta tudo: avisos automáticos, pendências,",
+     "ini": 0,
+     "fim": 5.039
+    },
+    {
+     "texto": "como este pedido ainda sem faturamento, e os cartões de vendido, faturado e a faturar.",
+     "ini": 5.319,
+     "fim": 10.759
+    }
+   ],
    "imagem": "telas/consultor-09-projetos/02-painel-obra.png",
    "caixas": [
     {
@@ -261,11 +412,32 @@
     "O painel conta o que foi faturado e recebido, não só o vendido."
    ],
    "fala": "Três cuidados. Pedido sem projeto não aparece no painel da obra. Um título manual e um gerado para o mesmo pedido duplicam os números do painel. E o painel separa vendido, faturado e recebido: diferença entre eles não é erro.",
-   "inicio": 120.358,
-   "duracao": 17.693,
-   "fala_s": 17.143,
-   "audio": null,
-   "legendas": null
+   "inicio": 106.805,
+   "duracao": 15.702,
+   "fala_s": 15.152,
+   "audio": "audio/consultor-09-projetos/11.wav",
+   "legendas": [
+    {
+     "texto": "Três cuidados.",
+     "ini": 0,
+     "fim": 1.332
+    },
+    {
+     "texto": "Pedido sem projeto não aparece no painel da obra.",
+     "ini": 1.612,
+     "fim": 4.632
+    },
+    {
+     "texto": "Um título manual e um gerado para o mesmo pedido duplicam os números do painel.",
+     "ini": 4.912,
+     "fim": 9.785
+    },
+    {
+     "texto": "E o painel separa vendido, faturado e recebido: diferença entre eles não é erro.",
+     "ini": 10.065,
+     "fim": 15.152
+    }
+   ]
   },
   {
    "id": "12",
@@ -276,12 +448,33 @@
     "Acompanhe no painel financeiro da obra"
    ],
    "fala": "Resumindo: o campo projeto liga tudo à obra. Ligue o pedido antes de faturar. E acompanhe a obra no painel financeiro. No próximo vídeo, as tarefas.",
-   "inicio": 138.051,
-   "duracao": 11.693,
-   "fala_s": 11.143,
-   "audio": null,
-   "legendas": null
+   "inicio": 122.507,
+   "duracao": 10.541,
+   "fala_s": 9.991,
+   "audio": "audio/consultor-09-projetos/12.wav",
+   "legendas": [
+    {
+     "texto": "Resumindo: o campo projeto liga tudo à obra.",
+     "ini": 0,
+     "fim": 2.773
+    },
+    {
+     "texto": "Ligue o pedido antes de faturar.",
+     "ini": 3.053,
+     "fim": 5.041
+    },
+    {
+     "texto": "E acompanhe a obra no painel financeiro.",
+     "ini": 5.321,
+     "fim": 7.754
+    },
+    {
+     "texto": "No próximo vídeo, as tarefas.",
+     "ini": 8.034,
+     "fim": 9.991
+    }
+   ]
   }
  ],
- "duracaoTotal": 151.244
+ "duracaoTotal": 134.548
 }

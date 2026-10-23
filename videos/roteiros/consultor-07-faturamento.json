@@ -59,7 +59,8 @@
       "icone": "estoque",
       "texto": "Sem almoxarifado central ativo (ou local no projeto) o Finalizar NF recusa. Na v1.22.13 ele também baixa o estoque, mesmo sem saldo.",
       "fonte": "regra-faturamento-finalizar-nf-requisitos",
-      "fala": "Terceira. Para finalizar, a empresa precisa de um almoxarifado central ativo, ou o projeto precisa de um local de estoque. Sem isso, o Finalizar NF recusa. E, ao finalizar, a nota baixa o estoque."
+      "fala": "Terceira. Para finalizar, a empresa precisa de um almoxarifado central ativo, ou o projeto precisa de um local de estoque. Sem isso, o Finalizar NF recusa. E, ao finalizar, a nota baixa o estoque.",
+      "critica": true
     },
     {
       "id": "07",
@@ -77,7 +78,10 @@
       "captura": "01-menu-faturar",
       "foco": 0,
       "rotulo": "Pedido › ⋯ › Faturar",
-      "fala": "Na prática: no menu do pedido em aberto, clique em Faturar."
+      "fala": "Na prática: no menu do pedido em aberto, clique em Faturar.",
+      "nomes": [
+        "Faturar"
+      ]
     },
     {
       "id": "09",
@@ -88,7 +92,11 @@
         0
       ],
       "rotulo": "Selecionar Itens para Importar",
-      "fala": "A nova NF-e abre com o diálogo para importar os itens do pedido. Deixe marcado recalcular impostos e importe."
+      "fala": "A nova NF-e abre com o diálogo para importar os itens do pedido. Deixe marcado recalcular impostos e importe.",
+      "nomes": [
+        "Recalcular impostos após importação",
+        "Importar 1 Item"
+      ]
     },
     {
       "id": "10",
@@ -108,7 +116,12 @@
           "h": 150
         }
       ],
-      "fala": "Repare na faixa de homologação: a nota não tem validade fiscal. E aqui está o aviso de impostos não calculados, com o motivo: falta o CST de PIS e COFINS na NCM. Mesmo assim, dá para salvar em Salvar e Permanecer."
+      "fala": "Repare na faixa de homologação: a nota não tem validade fiscal. E aqui está o aviso de impostos não calculados, com o motivo: falta o CST de PIS e COFINS na NCM. Mesmo assim, dá para salvar em Salvar e Permanecer.",
+      "nomes": [
+        "Ambiente NF-e: HOMOLOGAÇÃO",
+        "Impostos não calculados no item 1",
+        "Salvar e Permanecer"
+      ]
     },
     {
       "id": "11",
@@ -129,7 +142,14 @@
           "h": 36
         }
       ],
-      "fala": "Em Faturamento, Notas Fiscais, aba NF-e, a nota aparece em aberto. No menu dela estão o Finalizar NF e o Preview da DANFE, para conferir. E, ao lado, o avião de papel: esse é o Transmitir."
+      "fala": "Em Faturamento, Notas Fiscais, aba NF-e, a nota aparece em aberto. No menu dela estão o Finalizar NF e o Preview da DANFE, para conferir. E, ao lado, o avião de papel: esse é o Transmitir.",
+      "nomes": [
+        "Em Aberto",
+        "Finalizar NF",
+        "Preview da DANFE",
+        null
+      ],
+      "impacto": 1
     },
     {
       "id": "11b",
@@ -140,7 +160,11 @@
         0
       ],
       "rotulo": "Finalizar NF",
-      "fala": "Com a autorização, clique em Finalizar NF e confirme. A nota fica só para visualização, e o pedido sai da lista de em aberto: agora ele está faturado."
+      "fala": "Com a autorização, clique em Finalizar NF e confirme. A nota fica só para visualização, e o pedido sai da lista de em aberto: agora ele está faturado.",
+      "nomes": [
+        "Finalizar nota fiscal?",
+        "Finalizar"
+      ]
     },
     {
       "id": "11c",
@@ -152,7 +176,12 @@
         0
       ],
       "rotulo": "Estoque › Movimentos",
-      "fala": "E a finalização mexe no estoque: nasce uma saída do tipo expedição, com origem na nota, no almoxarifado central."
+      "fala": "E a finalização mexe no estoque: nasce uma saída do tipo expedição, com origem na nota, no almoxarifado central.",
+      "nomes": [
+        "Expedição (PV)",
+        "ORIGEM",
+        "NÚMERO"
+      ]
     },
     {
       "id": "11d",
@@ -177,7 +206,11 @@
           "h": 26
         }
       ],
-      "fala": "Atenção: nesta versão, ela baixa mesmo sem saldo. Aqui o item ficou negativo. Por isso, confira o saldo antes de finalizar."
+      "fala": "Atenção: nesta versão, ela baixa mesmo sem saldo. Aqui o item ficou negativo. Por isso, confira o saldo antes de finalizar.",
+      "nomes": [
+        "SALDO",
+        "1 saldo(s) negativo(s)"
+      ]
     },
     {
       "id": "12",

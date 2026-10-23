@@ -159,6 +159,7 @@
    "texto": "Gerar Instalação e Gerar Assistência Técnica são botões. Só a vistoria pode nascer sozinha, se o parâmetro estiver ligado.",
    "fonte": "regra-servicos-passagens-por-botao-e-ordem-dos-aceites",
    "fala": "Terceira. Aprovar a medição não cria a instalação: você clica em gerar instalação. A assistência também é gerada por botão, a partir da vistoria. Só a vistoria pode nascer sozinha, se a geração automática estiver ligada nos parâmetros.",
+   "critica": true,
    "inicio": 54.235,
    "duracao": 16.299,
    "fala_s": 15.749,
@@ -227,6 +228,11 @@
    ],
    "rotulo": "Serviços › Medições",
    "fala": "Na prática: esta medição está aprovada. Repare no botão gerar instalação, no alto. É ele que leva o serviço para a próxima etapa.",
+   "nomes": [
+    "Aprovada",
+    "Gerar Instalação"
+   ],
+   "impacto": 1,
    "inicio": 81.807,
    "duracao": 9.008,
    "fala_s": 8.458,
@@ -290,6 +296,12 @@
     }
    ],
    "fala": "A instalação concluída mostra o checklist conferido e conforme, os vínculos com a medição e o pedido, e o botão ver vistoria. Com equipe interna, ela não gera pagamento ao instalador.",
+   "nomes": [
+    "Concluída",
+    "Conformes",
+    "Vínculos",
+    "Ver Vistoria"
+   ],
    "inicio": 90.815,
    "duracao": 12.833,
    "fala_s": 12.283,
@@ -355,6 +367,10 @@
    ],
    "rotulo": "Serviços › Vistorias",
    "fala": "Na lista de vistorias, cada uma aponta para a instalação vistoriada. Aqui o cliente registra o aceite, depois de concluir.",
+   "nomes": [
+    "Nº VISTORIA",
+    "INSTALAÇÃO"
+   ],
    "inicio": 103.648,
    "duracao": 8.473,
    "fala_s": 7.923,
@@ -397,6 +413,10 @@
    ],
    "rotulo": "Serviços › Assistência Técnica",
    "fala": "E a assistência técnica gerada da vistoria já vem com o nome dela, e termina como resolvida, com o aceite registrado antes.",
+   "nomes": [
+    "TÍTULO",
+    "Resolvido"
+   ],
    "inicio": 112.121,
    "duracao": 8.591,
    "fala_s": 8.041,
