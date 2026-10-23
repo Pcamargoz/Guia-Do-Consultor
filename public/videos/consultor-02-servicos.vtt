@@ -1,0 +1,118 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:05.068
+Esquadria vendida ainda precisa ser medida, instalada e aceita pelo cliente.
+
+00:00:05.068 --> 00:00:11.170
+Neste vídeo, vamos seguir os serviços de campo, da medição até a assistência técnica.
+
+00:00:11.170 --> 00:00:18.536
+Tudo começa na medição, que nasce do pedido de venda: o técnico mede os vãos e o responsável da obra assina.
+
+00:00:18.536 --> 00:00:24.624
+Aprovada a medição, vem a instalação, depois a vistoria com o cliente e, se houver problema,
+
+00:00:24.624 --> 00:00:26.394
+a assistência técnica.
+
+00:00:26.394 --> 00:00:30.358
+E atenção: quase todas essas passagens são por botão.
+
+00:00:30.358 --> 00:00:31.661
+Primeira regra.
+
+00:00:31.661 --> 00:00:35.444
+Na nova medição, usar o pedido traz o cliente e o projeto,
+
+00:00:35.444 --> 00:00:38.878
+mas a empresa e o técnico responsável você preenche.
+
+00:00:38.878 --> 00:00:43.031
+E o botão agendar só aparece depois que a medição é salva.
+
+00:00:43.031 --> 00:00:44.062
+Segunda.
+
+00:00:44.062 --> 00:00:47.441
+A medição concluída fica aguardando conferência,
+
+00:00:47.441 --> 00:00:51.652
+e quem aprova precisa ser um conferente diferente de quem mediu.
+
+00:00:51.652 --> 00:00:54.235
+É a trava de qualidade do fluxo.
+
+00:00:54.235 --> 00:00:55.263
+Terceira.
+
+00:00:55.263 --> 00:01:00.184
+Aprovar a medição não cria a instalação: você clica em gerar instalação.
+
+00:01:00.184 --> 00:01:04.275
+A assistência também é gerada por botão, a partir da vistoria.
+
+00:01:04.275 --> 00:01:10.534
+Só a vistoria pode nascer sozinha, se a geração automática estiver ligada nos parâmetros.
+
+00:01:10.534 --> 00:01:12.831
+Quarta, e ela pega muita gente.
+
+00:01:12.831 --> 00:01:16.513
+Na vistoria, o aceite do cliente vem depois de concluir.
+
+00:01:16.513 --> 00:01:21.807
+Na assistência técnica é o contrário: registre o aceite antes de resolver.
+
+00:01:21.807 --> 00:01:24.559
+Na prática: esta medição está aprovada.
+
+00:01:24.559 --> 00:01:27.469
+Repare no botão gerar instalação, no alto.
+
+00:01:27.469 --> 00:01:30.815
+É ele que leva o serviço para a próxima etapa.
+
+00:01:30.815 --> 00:01:37.557
+A instalação concluída mostra o checklist conferido e conforme, os vínculos com a medição e o pedido,
+
+00:01:37.557 --> 00:01:39.541
+e o botão ver vistoria.
+
+00:01:39.541 --> 00:01:43.648
+Com equipe interna, ela não gera pagamento ao instalador.
+
+00:01:43.648 --> 00:01:48.212
+Na lista de vistorias, cada uma aponta para a instalação vistoriada.
+
+00:01:48.212 --> 00:01:52.121
+Aqui o cliente registra o aceite, depois de concluir.
+
+00:01:52.121 --> 00:01:58.274
+E a assistência técnica gerada da vistoria já vem com o nome dela, e termina como resolvida,
+
+00:01:58.274 --> 00:02:00.712
+com o aceite registrado antes.
+
+00:02:00.712 --> 00:02:02.324
+Três cuidados.
+
+00:02:02.324 --> 00:02:08.966
+Datas e horas aparecem em UTC em vários pontos, como no cockpit: confira antes de achar que há atraso.
+
+00:02:08.966 --> 00:02:15.116
+O template de checklist entra em toda instalação nova da empresa, então desative o de teste.
+
+00:02:15.116 --> 00:02:20.448
+E as mensagens podem cobrir os botões do cabeçalho: feche antes de clicar.
+
+00:02:20.448 --> 00:02:24.508
+Resumindo: na medição, a empresa e o técnico você preenche.
+
+00:02:24.508 --> 00:02:27.872
+Gerar instalação e gerar assistência são botões.
+
+00:02:27.872 --> 00:02:31.656
+E o aceite vem depois na vistoria, e antes na assistência.
+
+00:02:31.656 --> 00:02:34.534
+No próximo vídeo, o fluxo comercial.

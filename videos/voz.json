@@ -1,6 +1,11 @@
 {
-  "nome": "Consultor Pedro Faktory Flow: voz clonada com referência curta (8 s do perfil 075893fe do VoiceStudio)",
+  "nome": "Voz L fixa: clonada da amostra L (voz desenhada masculina, adulto jovem, tom grave, seed 640) que o usuário escolheu em 23/10/2026. Clonar da amostra deixa o timbre igual em todas as frases; a voz só desenhada mudava a cada frase. A voz clonada anterior está em voz-pedro.json.",
   "language": "pt",
-  "ref_audio": "voz/referencia-pedro-curta.wav",
-  "ref_text": "Bom dia pessoal, tudo bem? Como vocês estão? Estou aqui para mais um vídeo e eu quero conversar um pouco sobre vocês."
+  "ref_audio": "voz/referencia-voz-l.wav",
+  "ref_text": "No Faktory Flow, a venda começa bem antes do pedido: ela começa num lead. Neste vídeo, vamos seguir o fluxo comercial inteiro, do primeiro contato até o pedido de venda, e ver onde ele costuma travar.",
+  "seed": 640,
+  "speed": 0.95,
+  "num_step": 64,
+  "postprocess_output": true,
+  "denoise": true
 }

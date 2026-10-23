@@ -1,0 +1,72 @@
+{
+ "10": {
+  "arquivo": "10.wav",
+  "duracao": 10.216,
+  "hash": "38dc9c38db63"
+ },
+ "11": {
+  "arquivo": "11.wav",
+  "duracao": 5.496,
+  "hash": "6119b7b1118a"
+ },
+ "12": {
+  "arquivo": "12.wav",
+  "duracao": 5.647,
+  "hash": "b5e349016725"
+ },
+ "13": {
+  "arquivo": "13.wav",
+  "duracao": 14.698,
+  "hash": "4753e6feb522"
+ },
+ "14": {
+  "arquivo": "14.wav",
+  "duracao": 11.988,
+  "hash": "4651c6de93ce"
+ },
+ "01": {
+  "arquivo": "01.wav",
+  "duracao": 14.47,
+  "hash": "9886ce8352a0"
+ },
+ "02": {
+  "arquivo": "02.wav",
+  "duracao": 5.564,
+  "hash": "9642780ae1cc"
+ },
+ "03": {
+  "arquivo": "03.wav",
+  "duracao": 10.183,
+  "hash": "c03b976712b8"
+ },
+ "04": {
+  "arquivo": "04.wav",
+  "duracao": 9.617,
+  "hash": "7da65fc3c993"
+ },
+ "05": {
+  "arquivo": "05.wav",
+  "duracao": 14.725,
+  "hash": "3105f846941b"
+ },
+ "06": {
+  "arquivo": "06.wav",
+  "duracao": 5.973,
+  "hash": "4722ba23c9ad"
+ },
+ "07": {
+  "arquivo": "07.wav",
+  "duracao": 9.043,
+  "hash": "01bee0d3dc8a"
+ },
+ "08": {
+  "arquivo": "08.wav",
+  "duracao": 5.598,
+  "hash": "6cad2eaba3c8"
+ },
+ "09": {
+  "arquivo": "09.wav",
+  "duracao": 9.922,
+  "hash": "05c1b41cc332"
+ }
+}

@@ -1,0 +1,121 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:06.082
+O estoque é onde todos os outros módulos se encontram: compra, produção, nota e expedição.
+
+00:00:06.082 --> 00:00:12.420
+Neste vídeo, vamos entender de onde vem o saldo e as quatro regras que mais pegam o consultor.
+
+00:00:12.420 --> 00:00:16.925
+No Faktory Flow, ninguém digita o saldo: ele nasce dos movimentos.
+
+00:00:16.925 --> 00:00:21.836
+Entrada, ajuste, transferência, requisição, empréstimo e descarte.
+
+00:00:21.836 --> 00:00:24.773
+Os movimentos formam o saldo de cada local.
+
+00:00:24.773 --> 00:00:28.326
+Do saldo sai o disponível, que desconta as reservas.
+
+00:00:28.326 --> 00:00:32.147
+E o inventário confere tudo contra a contagem física.
+
+00:00:32.147 --> 00:00:33.450
+Primeira regra.
+
+00:00:33.450 --> 00:00:35.625
+O saldo nasce de movimentos.
+
+00:00:35.625 --> 00:00:42.246
+No novo movimento, a empresa é obrigatória e não vem preenchida, e você escolhe o local de destino.
+
+00:00:42.246 --> 00:00:46.561
+Recebimento e produção também lançam movimentos sozinhos.
+
+00:00:46.561 --> 00:00:47.592
+Segunda.
+
+00:00:47.592 --> 00:00:51.454
+Uma transferência em rascunho não baixa o saldo da origem,
+
+00:00:51.454 --> 00:00:55.757
+mas reserva a quantidade: o disponível cai e o saldo fica igual.
+
+00:00:55.757 --> 00:00:58.124
+Confirmar movimenta de verdade.
+
+00:00:58.124 --> 00:01:00.490
+Excluir libera a reserva.
+
+00:01:00.490 --> 00:01:01.518
+Terceira.
+
+00:01:01.518 --> 00:01:07.236
+Iniciar um inventário fotografa o saldo e congela o local: nenhum movimento entra ali.
+
+00:01:07.236 --> 00:01:14.446
+A segunda contagem e a aprovação precisam ser de outra pessoa, regra que vale até para o Super Usuário.
+
+00:01:14.446 --> 00:01:16.833
+Quarta, e ela é nova nesta versão.
+
+00:01:16.833 --> 00:01:22.021
+Quando a nota fiscal é finalizada, o sistema lança uma saída do tipo expedição.
+
+00:01:22.021 --> 00:01:25.988
+E ele faz isso mesmo sem saldo: o item pode ficar negativo.
+
+00:01:25.988 --> 00:01:28.545
+Confira o saldo antes de faturar.
+
+00:01:28.545 --> 00:01:34.833
+Na prática: no novo movimento, escolha o tipo, a empresa, que vem vazia, e o local de destino.
+
+00:01:34.833 --> 00:01:39.360
+Em Saldo, você vê o saldo e o disponível de cada material, por local.
+
+00:01:39.360 --> 00:01:44.605
+Repare neste item negativo, e no aviso no alto: foi a saída da nota fiscal.
+
+00:01:44.605 --> 00:01:51.094
+Nos movimentos, lá está ela: saída de expedição, com origem na nota, no almoxarifado central.
+
+00:01:51.094 --> 00:01:58.774
+Em Transferências, a própria tela explica: confirme para movimentar o saldo, ou exclua para liberar a reserva.
+
+00:01:58.774 --> 00:02:04.593
+Estes inventários foram cancelados com motivo: cancelar libera o local sem gerar ajuste.
+
+00:02:04.593 --> 00:02:08.105
+Para aprovar, seria preciso uma segunda pessoa.
+
+00:02:08.105 --> 00:02:12.348
+E o empréstimo sai de um local para outro com data de devolução.
+
+00:02:12.348 --> 00:02:16.204
+Ele pode voltar em partes, e aqui já está devolvido.
+
+00:02:16.204 --> 00:02:17.816
+Três cuidados.
+
+00:02:17.816 --> 00:02:23.159
+Sem almoxarifado central ativo, recebimento, produção e nota fiscal travam.
+
+00:02:23.159 --> 00:02:28.933
+A segunda contagem do inventário pode dizer prossiga e depois recusar o mesmo usuário.
+
+00:02:28.933 --> 00:02:35.392
+E, nesta versão, uma saída ainda passa por cima de material reservado: confira o disponível.
+
+00:02:35.392 --> 00:02:38.119
+Resumindo: o saldo nasce de movimentos.
+
+00:02:38.119 --> 00:02:41.279
+A transferência pendente reserva o disponível.
+
+00:02:41.279 --> 00:02:44.887
+E o inventário pede outra pessoa para contar e aprovar.
+
+00:02:44.887 --> 00:02:47.431
+No próximo vídeo, a produção.

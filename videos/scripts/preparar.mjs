@@ -35,6 +35,23 @@ const legendas = (t) => {
 
 const destTelas = path.join(RAIZ, 'public', 'telas', id);
 fs.mkdirSync(destTelas, { recursive: true });
+// Sem capturas/<id>/ (ficam só na máquina que gravou), reaproveita a tela já publicada em public/telas/ e as caixas
+// do src/gerado/<id>.json anterior, tirando as caixasExtras antigas para aplicar as do roteiro atual.
+const arqGerado = path.join(RAIZ, 'src', 'gerado', `${id}.json`);
+const anteriores = fs.existsSync(arqGerado) ? Object.fromEntries(JSON.parse(fs.readFileSync(arqGerado, 'utf8')).trechos.map((t) => [t.id, t])) : {};
+const caixasBase = (t) => {
+  const base = path.join(RAIZ, 'capturas', id, t.captura);
+  if (fs.existsSync(`${base}.json`)) {
+    fs.copyFileSync(`${base}.png`, path.join(destTelas, `${t.captura}.png`));
+    return JSON.parse(fs.readFileSync(`${base}.json`, 'utf8')).caixas.map((c) => c.caixa);
+  }
+  const ant = anteriores[t.id];
+  if (ant?.captura !== t.captura || !ant.caixas || !fs.existsSync(path.join(destTelas, `${t.captura}.png`))) {
+    console.error(`${id}/${t.id}: falta a captura ${t.captura} (nem em capturas/, nem em public/telas/ com as caixas no src/gerado/). Grave a tela de novo.`);
+    process.exit(1);
+  }
+  return ant.caixas.slice(0, ant.caixas.length - (ant.caixasExtras?.length ?? 0));
+};
 let inicio = 0;
 const faltando = [];
 const trechos = roteiro.trechos.map((t) => {
@@ -44,11 +61,8 @@ const trechos = roteiro.trechos.map((t) => {
   const out = { ...t, inicio: +inicio.toFixed(3), duracao: +(fala + PAUSA).toFixed(3), fala_s: +fala.toFixed(3), audio: audio ? `audio/${id}/${audio.arquivo}` : null,
     legendas: audio ? legendas(t) : null };
   if (t.captura) {
-    const base = path.join(RAIZ, 'capturas', id, t.captura);
-    const meta = JSON.parse(fs.readFileSync(`${base}.json`, 'utf8'));
-    fs.copyFileSync(`${base}.png`, path.join(destTelas, `${t.captura}.png`));
     out.imagem = `telas/${id}/${t.captura}.png`;
-    out.caixas = [...meta.caixas.map((c) => c.caixa), ...(t.caixasExtras ?? [])];
+    out.caixas = [...caixasBase(t), ...(t.caixasExtras ?? [])];
   }
   inicio += out.duracao;
   return out;

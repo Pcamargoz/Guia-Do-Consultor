@@ -1,0 +1,136 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:03.316
+Comprar bem é tão importante quanto vender bem.
+
+00:00:03.316 --> 00:00:09.204
+Neste vídeo, vamos seguir um material desde a necessidade até o pagamento ao fornecedor,
+
+00:00:09.204 --> 00:00:11.397
+passando pelo estoque.
+
+00:00:11.397 --> 00:00:18.130
+Tudo começa numa solicitação de compra: alguém precisa de um material, numa quantidade e numa data.
+
+00:00:18.130 --> 00:00:22.056
+A cotação compara fornecedores e gera o pedido de compra.
+
+00:00:22.056 --> 00:00:28.149
+Quando o material chega, a nota de recebimento dá entrada no estoque e cria o título a pagar,
+
+00:00:28.149 --> 00:00:30.378
+que você paga no financeiro.
+
+00:00:30.378 --> 00:00:31.681
+Primeira regra.
+
+00:00:31.681 --> 00:00:33.466
+A cotação é opcional.
+
+00:00:33.466 --> 00:00:40.355
+No menu da solicitação, o Gerar Pedido de Compra não grava direto: ele abre o novo pedido, já com o produto,
+
+00:00:40.355 --> 00:00:45.623
+para você informar fornecedor, comprador, condição, CFOP e valor.
+
+00:00:45.623 --> 00:00:46.654
+Segunda.
+
+00:00:46.654 --> 00:00:51.634
+Na cotação, a natureza da operação, consumo, produção, revenda ou ativo,
+
+00:00:51.634 --> 00:00:57.094
+define sozinha o CFOP do pedido de compra, conforme a origem do fornecedor.
+
+00:00:57.094 --> 00:00:59.305
+Escolha com cuidado.
+
+00:00:59.305 --> 00:01:01.584
+Terceira, e a que mais confunde.
+
+00:01:01.584 --> 00:01:04.668
+A mesma nota de recebimento tem dois números.
+
+00:01:04.668 --> 00:01:09.353
+Na lista de recebimento ela aparece como NF, com o número do fornecedor.
+
+00:01:09.353 --> 00:01:14.246
+Na conferência, no pedido e no título, aparece como NR, o número interno.
+
+00:01:14.246 --> 00:01:16.208
+É a mesma nota.
+
+00:01:16.208 --> 00:01:17.051
+Quarta.
+
+00:01:17.051 --> 00:01:20.475
+A entrada do material cai no almoxarifado central.
+
+00:01:20.475 --> 00:01:26.363
+Sem um almoxarifado central ativo em Estoque, Locais, o sistema bloqueia a finalização.
+
+00:01:26.363 --> 00:01:28.764
+Confira antes de começar.
+
+00:01:28.764 --> 00:01:35.663
+Na prática: em Compras, Solicitações de Compra, a Nova Solicitação pede a empresa, a data de necessidade,
+
+00:01:35.663 --> 00:01:37.748
+o produto e a quantidade.
+
+00:01:37.748 --> 00:01:41.142
+Esta aqui já está concluída: ela virou pedido.
+
+00:01:41.142 --> 00:01:46.971
+A cotação é um assistente em quatro passos: dados gerais, itens, propostas e comparação.
+
+00:01:46.971 --> 00:01:52.851
+Nos dados gerais, repare na natureza da operação: é ela que vai definir o CFOP.
+
+00:01:52.851 --> 00:01:59.190
+Na comparação, você escolhe o critério, como menor preço ou menor prazo, e aplica a melhor opção.
+
+00:01:59.190 --> 00:02:03.124
+Daí sai o pedido de compra, um por fornecedor vencedor.
+
+00:02:03.124 --> 00:02:08.427
+E aqui está a melhor forma de conferir tudo: a linha do tempo do pedido de compra.
+
+00:02:08.427 --> 00:02:15.585
+Solicitação concluída, cotação concluída, pedido recebido, nota finalizada e título pago, em ordem.
+
+00:02:15.585 --> 00:02:22.610
+Na lista de recebimento, a mesma nota aparece como NF nove nove zero zero zero um, o número do fornecedor.
+
+00:02:22.610 --> 00:02:25.389
+Na linha do tempo, ela era a NR treze.
+
+00:02:25.389 --> 00:02:32.429
+E no estoque, o movimento de entrada do tipo recebimento, no almoxarifado central, com o valor da nota.
+
+00:02:32.429 --> 00:02:34.041
+Três cuidados.
+
+00:02:34.041 --> 00:02:37.821
+Finalizar a nota de recebimento não pode ser desfeito,
+
+00:02:37.821 --> 00:02:41.885
+e depois dela o pedido de compra não pode mais ser cancelado.
+
+00:02:41.885 --> 00:02:47.397
+O meio de pagamento da parcela não chega ao diálogo de pagamento: informe de novo.
+
+00:02:47.397 --> 00:02:52.356
+E a sugestão de compra só mostra itens com estoque mínimo cadastrado.
+
+00:02:52.356 --> 00:02:57.527
+Resumindo: a cotação é opcional, e a natureza da operação define o CFOP.
+
+00:02:57.527 --> 00:02:59.684
+NF e NR são a mesma nota.
+
+00:02:59.684 --> 00:03:02.984
+E a linha do tempo do pedido mostra a cadeia inteira.
+
+00:03:02.984 --> 00:03:06.082
+No próximo vídeo, os serviços de campo.

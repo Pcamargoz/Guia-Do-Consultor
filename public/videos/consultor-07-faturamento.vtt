@@ -1,0 +1,139 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:02.402
+Depois do pedido vem a nota fiscal.
+
+00:00:02.402 --> 00:00:04.963
+Neste vídeo, vamos faturar um pedido,
+
+00:00:04.963 --> 00:00:10.908
+conferir a nota e entender o que é do consultor e o que é decisão do responsável fiscal.
+
+00:00:10.908 --> 00:00:16.664
+O ponto de partida é um pedido em aberto, já com itens, parcelas e CFOP certos.
+
+00:00:16.664 --> 00:00:19.761
+Faturar abre uma nota nova ligada ao pedido.
+
+00:00:19.761 --> 00:00:22.118
+Você salva, confere e finaliza.
+
+00:00:22.118 --> 00:00:28.494
+A transmissão para a SEFAZ é a última etapa, e ela não é do consultor: é do responsável fiscal.
+
+00:00:28.494 --> 00:00:29.797
+Primeira regra.
+
+00:00:29.797 --> 00:00:37.259
+Faturar abre uma nova NF-e com empresa, cliente, CFOP, condição e parcelas do pedido,
+
+00:00:37.259 --> 00:00:39.712
+e o número do pedido fica vinculado.
+
+00:00:39.712 --> 00:00:44.689
+A nota vem vazia até você importar os itens, com recalcular impostos.
+
+00:00:44.689 --> 00:00:45.720
+Segunda.
+
+00:00:45.720 --> 00:00:51.306
+Assim que a nota é salva, o pedido passa a Faturado, mesmo com a nota ainda em aberto.
+
+00:00:51.306 --> 00:00:56.630
+Por isso, o status real da nota você confere em Faturamento, Notas Fiscais.
+
+00:00:56.630 --> 00:00:57.658
+Terceira.
+
+00:00:57.658 --> 00:01:02.409
+Para finalizar, a empresa precisa de um almoxarifado central ativo,
+
+00:01:02.409 --> 00:01:05.368
+ou o projeto precisa de um local de estoque.
+
+00:01:05.368 --> 00:01:07.746
+Sem isso, o Finalizar NF recusa.
+
+00:01:07.746 --> 00:01:10.682
+E, ao finalizar, a nota baixa o estoque.
+
+00:01:10.682 --> 00:01:11.525
+Quarta.
+
+00:01:11.525 --> 00:01:17.272
+A lista de notas abre filtrada em Em Aberto, e os cartões de totais seguem esse filtro.
+
+00:01:17.272 --> 00:01:22.214
+Uma nota finalizada só aparece quando você troca o filtro de status.
+
+00:01:22.214 --> 00:01:26.331
+Na prática: no menu do pedido em aberto, clique em Faturar.
+
+00:01:26.331 --> 00:01:31.729
+A nova NF-e abre com o diálogo para importar os itens do pedido.
+
+00:01:31.729 --> 00:01:35.086
+Deixe marcado recalcular impostos e importe.
+
+00:01:35.086 --> 00:01:39.344
+Repare na faixa de homologação: a nota não tem validade fiscal.
+
+00:01:39.344 --> 00:01:45.578
+E aqui está o aviso de impostos não calculados, com o motivo: falta o CST de PIS e COFINS na NCM.
+
+00:01:45.578 --> 00:01:49.329
+Mesmo assim, dá para salvar em Salvar e Permanecer.
+
+00:01:49.329 --> 00:01:54.948
+Em Faturamento, Notas Fiscais, aba NF-e, a nota aparece em aberto.
+
+00:01:54.948 --> 00:01:59.508
+No menu dela estão o Finalizar NF e o Preview da DANFE, para conferir.
+
+00:01:59.508 --> 00:02:02.981
+E, ao lado, o avião de papel: esse é o Transmitir.
+
+00:02:02.981 --> 00:02:06.670
+Com a autorização, clique em Finalizar NF e confirme.
+
+00:02:06.670 --> 00:02:13.233
+A nota fica só para visualização, e o pedido sai da lista de em aberto: agora ele está faturado.
+
+00:02:13.233 --> 00:02:19.129
+E a finalização mexe no estoque: nasce uma saída do tipo expedição, com origem na nota,
+
+00:02:19.129 --> 00:02:21.341
+no almoxarifado central.
+
+00:02:21.341 --> 00:02:24.754
+Atenção: nesta versão, ela baixa mesmo sem saldo.
+
+00:02:24.754 --> 00:02:26.965
+Aqui o item ficou negativo.
+
+00:02:26.965 --> 00:02:30.236
+Por isso, confira o saldo antes de finalizar.
+
+00:02:30.236 --> 00:02:31.848
+Três cuidados.
+
+00:02:31.848 --> 00:02:37.985
+O avião de papel na linha da nota é o Transmitir, e ele é irreversível, mesmo em homologação.
+
+00:02:37.985 --> 00:02:41.046
+O Excluir fica no mesmo menu do Ver Timeline.
+
+00:02:41.046 --> 00:02:47.164
+E transmitir, cancelar ou inutilizar numeração é sempre decisão do responsável fiscal.
+
+00:02:47.164 --> 00:02:50.928
+Resumindo: importe os itens com recalcular impostos.
+
+00:02:50.928 --> 00:02:53.746
+A nota salva já deixa o pedido faturado.
+
+00:02:53.746 --> 00:02:56.480
+E a transmissão é do responsável fiscal.
+
+00:02:56.480 --> 00:03:01.074
+No próximo vídeo, o financeiro: títulos, baixa e fluxo de caixa.

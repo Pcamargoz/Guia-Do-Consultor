@@ -6,51 +6,221 @@
   "proximo": "Fluxo de faturamento e fiscal",
   "icone": "funil",
   "trechos": [
-    { "id": "01", "cena": "abertura",
-      "fala": "No Faktory Flow, a venda começa bem antes do pedido: ela começa num lead. Neste vídeo, vamos seguir o fluxo comercial inteiro, do primeiro contato até o pedido de venda, e ver onde ele costuma travar." },
-    { "id": "02", "cena": "status", "tituloCena": "O caminho de uma venda no CRM",
-      "etapas": ["Lead", "Oportunidade", "Proposta", "Ganha", "Pedido de venda"], "destaque": 0,
-      "fala": "Tudo começa no lead: um contato que ainda não é cliente. Você registra as atividades com ele e qualifica o interesse." },
-    { "id": "03", "cena": "status", "destaque": 4,
-      "fala": "Quando o lead está pronto, você converte. Ele vira uma oportunidade no Pipeline, recebe itens e uma proposta. Se o cliente fechar, a oportunidade é ganha e gera o pedido de venda." },
-    { "id": "04", "cena": "regra", "n": 1, "titulo": "Converter exige 60% e BANT completo", "icone": "funil",
+    {
+      "id": "01",
+      "cena": "abertura",
+      "fala": "No Faktory Flow, a venda começa bem antes do pedido: ela começa num lead. Neste vídeo, vamos seguir o fluxo comercial inteiro, do primeiro contato até o pedido de venda, e ver onde ele costuma travar."
+    },
+    {
+      "id": "02",
+      "cena": "status",
+      "tituloCena": "O caminho de uma venda no CRM",
+      "etapas": [
+        "Lead",
+        "Oportunidade",
+        "Proposta",
+        "Ganha",
+        "Pedido de venda"
+      ],
+      "destaque": 0,
+      "fala": "Tudo começa no lead: um contato que ainda não é cliente. Você registra as atividades com ele e qualifica o interesse."
+    },
+    {
+      "id": "03",
+      "cena": "status",
+      "destaque": 4,
+      "fala": "Quando o lead está pronto, você converte. Ele vira uma oportunidade no Pipeline, recebe itens e uma proposta. Se o cliente fechar, a oportunidade é ganha e gera o pedido de venda."
+    },
+    {
+      "id": "04",
+      "cena": "regra",
+      "n": 1,
+      "titulo": "Converter exige 60% e BANT completo",
+      "icone": "funil",
       "texto": "Lead numa etapa do Kanban de 60% ou mais e com o BANT completo: Budget, Autoridade, Necessidade e Prazo.",
       "fonte": "regra-crm-converter-lead-exige-etapa-60-e-bant-completo",
-      "fala": "Primeira regra. O lead só converte se estiver numa etapa do Kanban de sessenta por cento ou mais, como MQL ou SQL, e com o BANT completo: budget, autoridade, necessidade e prazo. As duas condições valem juntas. O BANT fica na seção Informações CRM." },
-    { "id": "05", "cena": "regra", "n": 2, "titulo": "A conversão cria a oportunidade sozinha", "icone": "estrela",
+      "fala": "Primeira regra. O lead só converte se estiver numa etapa do Kanban de sessenta por cento ou mais, como MQL ou SQL, e com o BANT completo: budget, autoridade, necessidade e prazo. As duas condições valem juntas. O BANT fica na seção Informações CRM."
+    },
+    {
+      "id": "05",
+      "cena": "regra",
+      "n": 2,
+      "titulo": "A conversão cria a oportunidade sozinha",
+      "icone": "estrela",
       "texto": "A oportunidade nasce no Pipeline, na etapa Novo Lead, com o valor do Budget. As atividades do lead não vão junto.",
       "fonte": "regra-crm-conversao-cria-a-oportunidade-sozinha",
-      "fala": "Segunda. A conversão cria a oportunidade sozinha, sem avisar. Ela aparece no Pipeline, na etapa Novo Lead, com o valor do budget. E atenção: as atividades do lead não migram para a oportunidade." },
-    { "id": "06", "cena": "regra", "n": 3, "titulo": "Itens viram o valor da oportunidade", "icone": "caixa",
+      "fala": "Segunda. A conversão cria a oportunidade sozinha, sem avisar. Ela aparece no Pipeline, na etapa Novo Lead, com o valor do budget. E atenção: as atividades do lead não migram para a oportunidade."
+    },
+    {
+      "id": "06",
+      "cena": "regra",
+      "n": 3,
+      "titulo": "Itens viram o valor da oportunidade",
+      "icone": "caixa",
       "texto": "Na aba Itens, aplique o quadro Dados do Item antes de salvar. O Valor estimado passa a ser a soma dos itens.",
       "fonte": "funcional-crm-leads-pipeline-e-oportunidades",
-      "fala": "Terceira. Na aba Itens da oportunidade, aplique o quadro Dados do Item antes de salvar. A partir daí, o valor estimado passa a ser a soma dos itens, e não mais o budget." },
-    { "id": "07", "cena": "regra", "n": 4, "titulo": "Gerar o pedido: use um CFOP sem financeiro", "icone": "cfop",
+      "fala": "Terceira. Na aba Itens da oportunidade, aplique o quadro Dados do Item antes de salvar. A partir daí, o valor estimado passa a ser a soma dos itens, e não mais o budget."
+    },
+    {
+      "id": "07",
+      "cena": "regra",
+      "n": 4,
+      "titulo": "Gerar o pedido: use um CFOP sem financeiro",
+      "icone": "cfop",
       "texto": "Com CFOP que gera financeiro, o Gerar Pedido de Venda recusa. Use um CFOP sem financeiro e ajuste o pedido depois.",
       "fonte": "regra-vendas-gerar-pedido-da-oportunidade-exige-cfop-sem-financeiro",
-      "fala": "Quarta, e a mais importante. Na oportunidade ganha, o Gerar Pedido de Venda pede só a Empresa e o CFOP. Se o CFOP gera financeiro, o sistema recusa, porque faltam condição de pagamento e parcelas. O contorno: gere com um CFOP sem financeiro e, depois, abra o pedido, troque o CFOP e escolha a condição de pagamento." },
-    { "id": "08", "cena": "tela", "captura": "01-kanban", "focos": [0, 1], "rotulo": "CRM › Vendas › Leads › Kanban",
-      "fala": "Na prática: em CRM, Vendas, Leads, abra o Kanban. Cada coluna mostra o percentual da etapa. O lead novo começa em Inbound, com dez por cento." },
-    { "id": "08b", "cena": "tela", "captura": "01b-mover", "focos": [1, 0], "rotulo": "Mover lead",
-      "fala": "Arraste o card até MQL, de sessenta por cento. O sistema pede uma observação opcional: confirme o movimento." },
-    { "id": "09", "cena": "tela", "captura": "02-bant", "focos": [0, 1, 2], "rotulo": "Editar Lead › Informações CRM",
-      "fala": "No Editar Lead, em Informações CRM, preencha o budget estimado e ligue as três chaves do BANT: autoridade, necessidade e prazo. Salve." },
-    { "id": "10", "cena": "tela", "captura": "03b-dialogo", "focos": [1, 0], "rotulo": "⋯ › Converter",
-      "fala": "Agora, no menu do lead, use Converter e confirme em Converter Lead." },
-    { "id": "10b", "cena": "tela", "captura": "03c-convertido", "foco": 0, "rotulo": "Lead convertido",
-      "borrar": [{ "x": 1515, "y": 688, "w": 220, "h": 62 }, { "x": 1540, "y": 0, "w": 360, "h": 28 }],
-      "fala": "A mensagem diz só que o lead foi convertido. Ela não fala da oportunidade: você a encontra no Pipeline." },
-    { "id": "11", "cena": "tela", "captura": "04-pipeline", "focos": [1, 0], "rotulo": "CRM › Vendas › Pipeline",
-      "fala": "No Pipeline, a oportunidade já está lá, na etapa Novo Lead, com o valor do budget. Abra o card." },
-    { "id": "12", "cena": "tela", "captura": "05b-proposta", "focos": [0, 1, 3], "rotulo": "Gerar Proposta",
-      "fala": "Em Gerar Proposta, escolha o template, a empresa emitente, que vem vazia, a validade e uma condição de pagamento cadastrada, e gere o PDF. Depois, mova a etapa à mão: a proposta não muda a etapa sozinha." },
-    { "id": "13", "cena": "tela", "captura": "05-painel", "foco": 1, "rotulo": "Ganha › Gerar Pedido de Venda",
-      "fala": "Com o sim do cliente, clique em Ganha e, em seguida, em Gerar Pedido de Venda. Escolha a Empresa e um CFOP sem financeiro, e confirme." },
-    { "id": "14", "cena": "alertas",
-      "itens": ["Ganha não pede confirmação: se clicar sem querer, use Reverter ganho.", "Desconto em R$ acima da alçada vai para aprovação de outro usuário.", "Reverta o ganho antes de gerar o pedido, nunca depois."],
-      "fala": "Três cuidados. O botão Ganha não pede confirmação: se clicar sem querer, use Reverter ganho. Desconto em reais acima da alçada vai para aprovação, e quem aprova precisa ser outro usuário. E, se precisar reverter o ganho, faça isso antes de gerar o pedido, nunca depois." },
-    { "id": "15", "cena": "fechamento",
-      "topicos": ["Sessenta por cento e BANT para converter", "A oportunidade nasce sozinha no Pipeline", "Pedido com CFOP sem financeiro, depois ajuste"],
-      "fala": "Resumindo: sessenta por cento e BANT completo para converter. A oportunidade nasce sozinha no Pipeline. E o pedido sai com um CFOP sem financeiro, que você ajusta depois. No próximo vídeo, o faturamento e o fiscal." }
+      "fala": "Quarta, e a mais importante. Na oportunidade ganha, o Gerar Pedido de Venda pede só a Empresa e o CFOP. Se o CFOP gera financeiro, o sistema recusa, porque faltam condição de pagamento e parcelas. O contorno: gere com um CFOP sem financeiro e, depois, abra o pedido, troque o CFOP e escolha a condição de pagamento."
+    },
+    {
+      "id": "08",
+      "cena": "tela",
+      "captura": "01-kanban",
+      "focos": [
+        0,
+        1
+      ],
+      "rotulo": "CRM › Vendas › Leads › Kanban",
+      "fala": "Na prática: em CRM, Vendas, Leads, abra o Kanban. Cada coluna mostra o percentual da etapa. O lead novo começa em Inbound, com dez por cento.",
+      "nomes": [
+        null,
+        "MQL · 60%"
+      ],
+      "impacto": 1
+    },
+    {
+      "id": "08b",
+      "cena": "tela",
+      "captura": "01b-mover",
+      "focos": [
+        1,
+        0
+      ],
+      "rotulo": "Mover lead",
+      "fala": "Arraste o card até MQL, de sessenta por cento. O sistema pede uma observação opcional: confirme o movimento.",
+      "nomes": [
+        "Mover lead",
+        "Confirmar"
+      ]
+    },
+    {
+      "id": "09",
+      "cena": "tela",
+      "captura": "02-bant",
+      "focos": [
+        0,
+        1,
+        2
+      ],
+      "rotulo": "Editar Lead › Informações CRM",
+      "fala": "No Editar Lead, em Informações CRM, preencha o budget estimado e ligue as três chaves do BANT: autoridade, necessidade e prazo. Salve.",
+      "nomes": [
+        "Budget Estimado (R$)",
+        "Autoridade de decisão confirmada",
+        null
+      ]
+    },
+    {
+      "id": "10",
+      "cena": "tela",
+      "captura": "03b-dialogo",
+      "focos": [
+        1,
+        0
+      ],
+      "rotulo": "⋯ › Converter",
+      "fala": "Agora, no menu do lead, use Converter e confirme em Converter Lead.",
+      "nomes": [
+        "Converter Lead em Participante",
+        "Converter Lead"
+      ]
+    },
+    {
+      "id": "10b",
+      "cena": "tela",
+      "captura": "03c-convertido",
+      "foco": 0,
+      "rotulo": "Lead convertido",
+      "borrar": [
+        {
+          "x": 1515,
+          "y": 688,
+          "w": 220,
+          "h": 62
+        },
+        {
+          "x": 1540,
+          "y": 0,
+          "w": 360,
+          "h": 28
+        }
+      ],
+      "fala": "A mensagem diz só que o lead foi convertido. Ela não fala da oportunidade: você a encontra no Pipeline.",
+      "nomes": [
+        "Lead convertido com sucesso!"
+      ]
+    },
+    {
+      "id": "11",
+      "cena": "tela",
+      "captura": "04-pipeline",
+      "focos": [
+        1,
+        0
+      ],
+      "rotulo": "CRM › Vendas › Pipeline",
+      "fala": "No Pipeline, a oportunidade já está lá, na etapa Novo Lead, com o valor do budget. Abra o card.",
+      "nomes": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "12",
+      "cena": "tela",
+      "captura": "05b-proposta",
+      "focos": [
+        0,
+        1,
+        3
+      ],
+      "rotulo": "Gerar Proposta",
+      "fala": "Em Gerar Proposta, escolha o template, a empresa emitente, que vem vazia, a validade e uma condição de pagamento cadastrada, e gere o PDF. Depois, mova a etapa à mão: a proposta não muda a etapa sozinha.",
+      "nomes": [
+        "Template",
+        "Empresa emitente",
+        "Gerar PDF"
+      ]
+    },
+    {
+      "id": "13",
+      "cena": "tela",
+      "captura": "05-painel",
+      "foco": 1,
+      "rotulo": "Ganha › Gerar Pedido de Venda",
+      "fala": "Com o sim do cliente, clique em Ganha e, em seguida, em Gerar Pedido de Venda. Escolha a Empresa e um CFOP sem financeiro, e confirme.",
+      "nomes": [
+        "Ganha"
+      ]
+    },
+    {
+      "id": "14",
+      "cena": "alertas",
+      "itens": [
+        "Ganha não pede confirmação: se clicar sem querer, use Reverter ganho.",
+        "Desconto em R$ acima da alçada vai para aprovação de outro usuário.",
+        "Reverta o ganho antes de gerar o pedido, nunca depois."
+      ],
+      "fala": "Três cuidados. O botão Ganha não pede confirmação: se clicar sem querer, use Reverter ganho. Desconto em reais acima da alçada vai para aprovação, e quem aprova precisa ser outro usuário. E, se precisar reverter o ganho, faça isso antes de gerar o pedido, nunca depois."
+    },
+    {
+      "id": "15",
+      "cena": "fechamento",
+      "topicos": [
+        "Sessenta por cento e BANT para converter",
+        "A oportunidade nasce sozinha no Pipeline",
+        "Pedido com CFOP sem financeiro, depois ajuste"
+      ],
+      "fala": "Resumindo: sessenta por cento e BANT completo para converter. A oportunidade nasce sozinha no Pipeline. E o pedido sai com um CFOP sem financeiro, que você ajusta depois. No próximo vídeo, o faturamento e o fiscal."
+    }
   ]
 }

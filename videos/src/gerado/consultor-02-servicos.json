@@ -11,10 +11,21 @@
    "cena": "abertura",
    "fala": "Esquadria vendida ainda precisa ser medida, instalada e aceita pelo cliente. Neste vídeo, vamos seguir os serviços de campo, da medição até a assistência técnica.",
    "inicio": 0,
-   "duracao": 11.264,
-   "fala_s": 10.714,
-   "audio": null,
-   "legendas": null
+   "duracao": 11.17,
+   "fala_s": 10.62,
+   "audio": "audio/consultor-02-servicos/01.wav",
+   "legendas": [
+    {
+     "texto": "Esquadria vendida ainda precisa ser medida, instalada e aceita pelo cliente.",
+     "ini": 0,
+     "fim": 4.788
+    },
+    {
+     "texto": "Neste vídeo, vamos seguir os serviços de campo, da medição até a assistência técnica.",
+     "ini": 5.068,
+     "fim": 10.62
+    }
+   ]
   },
   {
    "id": "02",
@@ -28,22 +39,44 @@
    ],
    "destaque": 0,
    "fala": "Tudo começa na medição, que nasce do pedido de venda: o técnico mede os vãos e o responsável da obra assina.",
-   "inicio": 11.264,
-   "duracao": 9.55,
-   "fala_s": 9,
-   "audio": null,
-   "legendas": null
+   "inicio": 11.17,
+   "duracao": 7.366,
+   "fala_s": 6.816,
+   "audio": "audio/consultor-02-servicos/02.wav",
+   "legendas": [
+    {
+     "texto": "Tudo começa na medição, que nasce do pedido de venda: o técnico mede os vãos e o responsável da obra assina.",
+     "ini": 0,
+     "fim": 6.816
+    }
+   ]
   },
   {
    "id": "03",
    "cena": "status",
    "destaque": 3,
    "fala": "Aprovada a medição, vem a instalação, depois a vistoria com o cliente e, se houver problema, a assistência técnica. E atenção: quase todas essas passagens são por botão.",
-   "inicio": 20.814,
-   "duracao": 12.55,
-   "fala_s": 12,
-   "audio": null,
-   "legendas": null
+   "inicio": 18.536,
+   "duracao": 11.822,
+   "fala_s": 11.272,
+   "audio": "audio/consultor-02-servicos/03.wav",
+   "legendas": [
+    {
+     "texto": "Aprovada a medição, vem a instalação, depois a vistoria com o cliente e, se houver problema,",
+     "ini": 0,
+     "fim": 5.808
+    },
+    {
+     "texto": "a assistência técnica.",
+     "ini": 6.088,
+     "fim": 7.578
+    },
+    {
+     "texto": "E atenção: quase todas essas passagens são por botão.",
+     "ini": 7.858,
+     "fim": 11.272
+    }
+   ]
   },
   {
    "id": "04",
@@ -54,11 +87,32 @@
    "texto": "Usar este registro traz cliente e projeto. Empresa e Técnico Responsável você preenche. O Agendar só aparece depois de salvar.",
    "fonte": "regra-servicos-medicao-nasce-do-pedido",
    "fala": "Primeira regra. Na nova medição, usar o pedido traz o cliente e o projeto, mas a empresa e o técnico responsável você preenche. E o botão agendar só aparece depois que a medição é salva.",
-   "inicio": 33.364,
-   "duracao": 15.55,
-   "fala_s": 15,
-   "audio": null,
-   "legendas": null
+   "inicio": 30.358,
+   "duracao": 12.673,
+   "fala_s": 12.123,
+   "audio": "audio/consultor-02-servicos/04.wav",
+   "legendas": [
+    {
+     "texto": "Primeira regra.",
+     "ini": 0,
+     "fim": 1.023
+    },
+    {
+     "texto": "Na nova medição, usar o pedido traz o cliente e o projeto,",
+     "ini": 1.303,
+     "fim": 4.806
+    },
+    {
+     "texto": "mas a empresa e o técnico responsável você preenche.",
+     "ini": 5.086,
+     "fim": 8.24
+    },
+    {
+     "texto": "E o botão agendar só aparece depois que a medição é salva.",
+     "ini": 8.52,
+     "fim": 12.123
+    }
+   ]
   },
   {
    "id": "05",
@@ -69,11 +123,32 @@
    "texto": "A aprovação exige um conferente cadastrado e diferente do técnico que mediu.",
    "fonte": "regra-servicos-aprovacao-da-medicao-exige-conferente-diferente",
    "fala": "Segunda. A medição concluída fica aguardando conferência, e quem aprova precisa ser um conferente diferente de quem mediu. É a trava de qualidade do fluxo.",
-   "inicio": 48.914,
-   "duracao": 11.264,
-   "fala_s": 10.714,
-   "audio": null,
-   "legendas": null
+   "inicio": 43.031,
+   "duracao": 11.204,
+   "fala_s": 10.654,
+   "audio": "audio/consultor-02-servicos/05.wav",
+   "legendas": [
+    {
+     "texto": "Segunda.",
+     "ini": 0,
+     "fim": 0.751
+    },
+    {
+     "texto": "A medição concluída fica aguardando conferência,",
+     "ini": 1.031,
+     "fim": 4.13
+    },
+    {
+     "texto": "e quem aprova precisa ser um conferente diferente de quem mediu.",
+     "ini": 4.41,
+     "fim": 8.341
+    },
+    {
+     "texto": "É a trava de qualidade do fluxo.",
+     "ini": 8.621,
+     "fim": 10.654
+    }
+   ]
   },
   {
    "id": "06",
@@ -84,11 +159,32 @@
    "texto": "Gerar Instalação e Gerar Assistência Técnica são botões. Só a vistoria pode nascer sozinha, se o parâmetro estiver ligado.",
    "fonte": "regra-servicos-passagens-por-botao-e-ordem-dos-aceites",
    "fala": "Terceira. Aprovar a medição não cria a instalação: você clica em gerar instalação. A assistência também é gerada por botão, a partir da vistoria. Só a vistoria pode nascer sozinha, se a geração automática estiver ligada nos parâmetros.",
-   "inicio": 60.178,
-   "duracao": 16.836,
-   "fala_s": 16.286,
-   "audio": null,
-   "legendas": null
+   "inicio": 54.235,
+   "duracao": 16.299,
+   "fala_s": 15.749,
+   "audio": "audio/consultor-02-servicos/06.wav",
+   "legendas": [
+    {
+     "texto": "Terceira.",
+     "ini": 0,
+     "fim": 0.748
+    },
+    {
+     "texto": "Aprovar a medição não cria a instalação: você clica em gerar instalação.",
+     "ini": 1.028,
+     "fim": 5.669
+    },
+    {
+     "texto": "A assistência também é gerada por botão, a partir da vistoria.",
+     "ini": 5.949,
+     "fim": 9.76
+    },
+    {
+     "texto": "Só a vistoria pode nascer sozinha, se a geração automática estiver ligada nos parâmetros.",
+     "ini": 10.04,
+     "fim": 15.749
+    }
+   ]
   },
   {
    "id": "07",
@@ -99,11 +195,27 @@
    "texto": "Vistoria: aceite depois de concluir. Assistência técnica: aceite antes de Resolver.",
    "fonte": "regra-servicos-passagens-por-botao-e-ordem-dos-aceites",
    "fala": "Quarta, e ela pega muita gente. Na vistoria, o aceite do cliente vem depois de concluir. Na assistência técnica é o contrário: registre o aceite antes de resolver.",
-   "inicio": 77.014,
-   "duracao": 12.55,
-   "fala_s": 12,
-   "audio": null,
-   "legendas": null
+   "inicio": 70.534,
+   "duracao": 11.273,
+   "fala_s": 10.723,
+   "audio": "audio/consultor-02-servicos/07.wav",
+   "legendas": [
+    {
+     "texto": "Quarta, e ela pega muita gente.",
+     "ini": 0,
+     "fim": 2.017
+    },
+    {
+     "texto": "Na vistoria, o aceite do cliente vem depois de concluir.",
+     "ini": 2.297,
+     "fim": 5.699
+    },
+    {
+     "texto": "Na assistência técnica é o contrário: registre o aceite antes de resolver.",
+     "ini": 5.979,
+     "fim": 10.723
+    }
+   ]
   },
   {
    "id": "08",
@@ -115,11 +227,27 @@
    ],
    "rotulo": "Serviços › Medições",
    "fala": "Na prática: esta medição está aprovada. Repare no botão gerar instalação, no alto. É ele que leva o serviço para a próxima etapa.",
-   "inicio": 89.564,
-   "duracao": 10.407,
-   "fala_s": 9.857,
-   "audio": null,
-   "legendas": null,
+   "inicio": 81.807,
+   "duracao": 9.008,
+   "fala_s": 8.458,
+   "audio": "audio/consultor-02-servicos/08.wav",
+   "legendas": [
+    {
+     "texto": "Na prática: esta medição está aprovada.",
+     "ini": 0,
+     "fim": 2.472
+    },
+    {
+     "texto": "Repare no botão gerar instalação, no alto.",
+     "ini": 2.752,
+     "fim": 5.382
+    },
+    {
+     "texto": "É ele que leva o serviço para a próxima etapa.",
+     "ini": 5.662,
+     "fim": 8.458
+    }
+   ],
    "imagem": "telas/consultor-02-servicos/01-medicao-aprovada.png",
    "caixas": [
     {
@@ -162,11 +290,27 @@
     }
    ],
    "fala": "A instalação concluída mostra o checklist conferido e conforme, os vínculos com a medição e o pedido, e o botão ver vistoria. Com equipe interna, ela não gera pagamento ao instalador.",
-   "inicio": 99.971,
-   "duracao": 13.836,
-   "fala_s": 13.286,
-   "audio": null,
-   "legendas": null,
+   "inicio": 90.815,
+   "duracao": 12.833,
+   "fala_s": 12.283,
+   "audio": "audio/consultor-02-servicos/09.wav",
+   "legendas": [
+    {
+     "texto": "A instalação concluída mostra o checklist conferido e conforme, os vínculos com a medição e o pedido,",
+     "ini": 0,
+     "fim": 6.462
+    },
+    {
+     "texto": "e o botão ver vistoria.",
+     "ini": 6.742,
+     "fim": 8.446
+    },
+    {
+     "texto": "Com equipe interna, ela não gera pagamento ao instalador.",
+     "ini": 8.726,
+     "fim": 12.283
+    }
+   ],
    "imagem": "telas/consultor-02-servicos/02-instalacao.png",
    "caixas": [
     {
@@ -211,11 +355,22 @@
    ],
    "rotulo": "Serviços › Vistorias",
    "fala": "Na lista de vistorias, cada uma aponta para a instalação vistoriada. Aqui o cliente registra o aceite, depois de concluir.",
-   "inicio": 113.807,
-   "duracao": 9.121,
-   "fala_s": 8.571,
-   "audio": null,
-   "legendas": null,
+   "inicio": 103.648,
+   "duracao": 8.473,
+   "fala_s": 7.923,
+   "audio": "audio/consultor-02-servicos/10.wav",
+   "legendas": [
+    {
+     "texto": "Na lista de vistorias, cada uma aponta para a instalação vistoriada.",
+     "ini": 0,
+     "fim": 4.284
+    },
+    {
+     "texto": "Aqui o cliente registra o aceite, depois de concluir.",
+     "ini": 4.564,
+     "fim": 7.923
+    }
+   ],
    "imagem": "telas/consultor-02-servicos/03-vistorias.png",
    "caixas": [
     {
@@ -242,11 +397,22 @@
    ],
    "rotulo": "Serviços › Assistência Técnica",
    "fala": "E a assistência técnica gerada da vistoria já vem com o nome dela, e termina como resolvida, com o aceite registrado antes.",
-   "inicio": 122.928,
-   "duracao": 9.979,
-   "fala_s": 9.429,
-   "audio": null,
-   "legendas": null,
+   "inicio": 112.121,
+   "duracao": 8.591,
+   "fala_s": 8.041,
+   "audio": "audio/consultor-02-servicos/11.wav",
+   "legendas": [
+    {
+     "texto": "E a assistência técnica gerada da vistoria já vem com o nome dela, e termina como resolvida,",
+     "ini": 0,
+     "fim": 5.873
+    },
+    {
+     "texto": "com o aceite registrado antes.",
+     "ini": 6.153,
+     "fim": 8.041
+    }
+   ],
    "imagem": "telas/consultor-02-servicos/04-assistencias.png",
    "caixas": [
     {
@@ -272,11 +438,32 @@
     "Mensagens podem cobrir os botões do cabeçalho: feche antes de clicar."
    ],
    "fala": "Três cuidados. Datas e horas aparecem em UTC em vários pontos, como no cockpit: confira antes de achar que há atraso. O template de checklist entra em toda instalação nova da empresa, então desative o de teste. E as mensagens podem cobrir os botões do cabeçalho: feche antes de clicar.",
-   "inicio": 132.907,
-   "duracao": 21.979,
-   "fala_s": 21.429,
-   "audio": null,
-   "legendas": null
+   "inicio": 120.712,
+   "duracao": 19.736,
+   "fala_s": 19.186,
+   "audio": "audio/consultor-02-servicos/12.wav",
+   "legendas": [
+    {
+     "texto": "Três cuidados.",
+     "ini": 0,
+     "fim": 1.332
+    },
+    {
+     "texto": "Datas e horas aparecem em UTC em vários pontos, como no cockpit: confira antes de achar que há atraso.",
+     "ini": 1.612,
+     "fim": 7.974
+    },
+    {
+     "texto": "O template de checklist entra em toda instalação nova da empresa, então desative o de teste.",
+     "ini": 8.254,
+     "fim": 14.124
+    },
+    {
+     "texto": "E as mensagens podem cobrir os botões do cabeçalho: feche antes de clicar.",
+     "ini": 14.404,
+     "fim": 19.186
+    }
+   ]
   },
   {
    "id": "13",
@@ -287,12 +474,33 @@
     "Aceite: vistoria depois, assistência antes"
    ],
    "fala": "Resumindo: na medição, a empresa e o técnico você preenche. Gerar instalação e gerar assistência são botões. E o aceite vem depois na vistoria, e antes na assistência. No próximo vídeo, o fluxo comercial.",
-   "inicio": 154.886,
-   "duracao": 15.121,
-   "fala_s": 14.571,
-   "audio": null,
-   "legendas": null
+   "inicio": 140.448,
+   "duracao": 14.036,
+   "fala_s": 13.486,
+   "audio": "audio/consultor-02-servicos/13.wav",
+   "legendas": [
+    {
+     "texto": "Resumindo: na medição, a empresa e o técnico você preenche.",
+     "ini": 0,
+     "fim": 3.78
+    },
+    {
+     "texto": "Gerar instalação e gerar assistência são botões.",
+     "ini": 4.06,
+     "fim": 7.144
+    },
+    {
+     "texto": "E o aceite vem depois na vistoria, e antes na assistência.",
+     "ini": 7.424,
+     "fim": 10.928
+    },
+    {
+     "texto": "No próximo vídeo, o fluxo comercial.",
+     "ini": 11.208,
+     "fim": 13.486
+    }
+   ]
   }
  ],
- "duracaoTotal": 171.507
+ "duracaoTotal": 155.984
 }

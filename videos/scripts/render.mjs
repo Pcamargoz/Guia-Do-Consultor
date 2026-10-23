@@ -1,11 +1,11 @@
 // Renderiza um vídeo de fluxo e publica no Guia do Consultor.
-// Uso: node scripts/render.mjs fluxo-1-vendas [--rascunho]
-// 1. preparar.mjs (tempos medidos da narração) · 2. Remotion → out/<id>-master.mp4
+// Uso: node scripts/render.mjs fluxo-1-vendas [--rascunho] [--usar-master]
+// 1. preparar.mjs (tempos medidos da narração) · 2. Remotion em blocos → out/<id>-master.mp4
 // 3. versão para a web em ../public/videos/<id>.mp4 (H.264 yuv420p, AAC, faststart) e a capa <id>.jpg
 // 4. atualiza a duração no ../public/videos/manifest.json
 import fs from 'node:fs';
 import path from 'node:path';
-import { execFileSync } from 'node:child_process';
+import { execFileSync, spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 
 const RAIZ = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -20,8 +20,10 @@ roda('node', ['scripts/preparar.mjs', id]);
 const dados = JSON.parse(fs.readFileSync(path.join(RAIZ, 'src', 'gerado', `${id}.json`), 'utf8'));
 fs.mkdirSync(path.join(RAIZ, 'out'), { recursive: true });
 const master = path.join(RAIZ, 'out', `${id}-${rascunho ? 'rascunho' : 'master'}.mp4`);
-// caminho relativo: o npx roda pelo shell no Windows e um caminho com espaços seria cortado
-roda('npx', ['remotion', 'render', 'src/index.ts', id, path.relative(RAIZ, master), ...(rascunho ? ['--scale=0.5', '--crf=28'] : []), '--log=error']);
+// Render em blocos, um processo por bloco (ver remotion-em-partes.mjs): nesta estação um render longo é encerrado de
+// fora no meio. --usar-master pula o render e publica o master que já está em out/.
+if (!(process.argv.includes('--usar-master') && fs.existsSync(master)))
+  roda('node', ['scripts/remotion-em-partes.mjs', id, path.relative(RAIZ, master), ...(rascunho ? ['--escala', '0.5', '--crf', '28'] : [])]);
 if (rascunho) { console.log(`rascunho: ${master}`); process.exit(0); }
 
 fs.mkdirSync(GUIA, { recursive: true });
@@ -32,7 +34,8 @@ roda('ffmpeg', ['-y', '-loglevel', 'error', '-i', master, '-vf', 'scale=in_range
   '-c:v', 'libx264', '-profile:v', 'high', '-preset', 'slow', '-crf', '24', '-c:a', 'aac', '-b:a', '128k', '-movflags', '+faststart', web]);
 
 // checagens antes de publicar: quadros pretos e volume integrado
-const checar = (args) => { try { return execFileSync('ffmpeg', args, { stdio: ['ignore', 'pipe', 'pipe'] }).toString(); } catch (e) { return String(e.stderr ?? e); } };
+// os filtros de análise do ffmpeg escrevem no stderr, não no stdout
+const checar = (args) => String(spawnSync('ffmpeg', args, { stdio: ['ignore', 'ignore', 'pipe'] }).stderr ?? '');
 const pretos = (checar(['-hide_banner', '-i', web, '-vf', 'blackdetect=d=0.5:pix_th=0.08', '-an', '-f', 'null', '-']).match(/black_start/g) ?? []).length;
 const lufs = checar(['-hide_banner', '-i', web, '-af', 'ebur128', '-f', 'null', '-']).match(/I:\s+(-?[\d.]+) LUFS/g)?.pop();
 console.log(`checagem: ${pretos} trecho(s) preto(s) de 0,5 s ou mais · volume ${lufs ?? 'não medido'}`);

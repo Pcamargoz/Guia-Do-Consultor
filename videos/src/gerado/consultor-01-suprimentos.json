@@ -11,9 +11,26 @@
    "cena": "abertura",
    "fala": "Comprar bem é tão importante quanto vender bem. Neste vídeo, vamos seguir um material desde a necessidade até o pagamento ao fornecedor, passando pelo estoque.",
    "inicio": 0,
-   "duracao": 11.264,
-   "fala_s": 10.714,
-   "audio": null
+   "duracao": 11.397,
+   "fala_s": 10.847,
+   "audio": "audio/consultor-01-suprimentos/01.wav",
+   "legendas": [
+    {
+     "texto": "Comprar bem é tão importante quanto vender bem.",
+     "ini": 0,
+     "fim": 3.036
+    },
+    {
+     "texto": "Neste vídeo, vamos seguir um material desde a necessidade até o pagamento ao fornecedor,",
+     "ini": 3.316,
+     "fim": 8.924
+    },
+    {
+     "texto": "passando pelo estoque.",
+     "ini": 9.204,
+     "fim": 10.847
+    }
+   ]
   },
   {
    "id": "02",
@@ -28,20 +45,44 @@
    ],
    "destaque": 0,
    "fala": "Tudo começa numa solicitação de compra: alguém precisa de um material, numa quantidade e numa data.",
-   "inicio": 11.264,
-   "duracao": 7.407,
-   "fala_s": 6.857,
-   "audio": null
+   "inicio": 11.397,
+   "duracao": 6.733,
+   "fala_s": 6.183,
+   "audio": "audio/consultor-01-suprimentos/02.wav",
+   "legendas": [
+    {
+     "texto": "Tudo começa numa solicitação de compra: alguém precisa de um material, numa quantidade e numa data.",
+     "ini": 0,
+     "fim": 6.183
+    }
+   ]
   },
   {
    "id": "03",
    "cena": "status",
    "destaque": 4,
    "fala": "A cotação compara fornecedores e gera o pedido de compra. Quando o material chega, a nota de recebimento dá entrada no estoque e cria o título a pagar, que você paga no financeiro.",
-   "inicio": 18.671,
-   "duracao": 14.693,
-   "fala_s": 14.143,
-   "audio": null
+   "inicio": 18.13,
+   "duracao": 12.248,
+   "fala_s": 11.698,
+   "audio": "audio/consultor-01-suprimentos/03.wav",
+   "legendas": [
+    {
+     "texto": "A cotação compara fornecedores e gera o pedido de compra.",
+     "ini": 0,
+     "fim": 3.647
+    },
+    {
+     "texto": "Quando o material chega, a nota de recebimento dá entrada no estoque e cria o título a pagar,",
+     "ini": 3.926,
+     "fim": 9.739
+    },
+    {
+     "texto": "que você paga no financeiro.",
+     "ini": 10.019,
+     "fim": 11.698
+    }
+   ]
   },
   {
    "id": "04",
@@ -52,10 +93,32 @@
    "texto": "Da solicitação dá para ir direto ao pedido. Gerar Pedido de Compra abre o Novo Pedido para completar e salvar.",
    "fonte": "regra-compras-gerar-pedido-de-compra-abre-o-novo-pedido",
    "fala": "Primeira regra. A cotação é opcional. No menu da solicitação, o Gerar Pedido de Compra não grava direto: ele abre o novo pedido, já com o produto, para você informar fornecedor, comprador, condição, CFOP e valor.",
-   "inicio": 33.364,
-   "duracao": 15.979,
-   "fala_s": 15.429,
-   "audio": null
+   "inicio": 30.378,
+   "duracao": 15.245,
+   "fala_s": 14.695,
+   "audio": "audio/consultor-01-suprimentos/04.wav",
+   "legendas": [
+    {
+     "texto": "Primeira regra.",
+     "ini": 0,
+     "fim": 1.023
+    },
+    {
+     "texto": "A cotação é opcional.",
+     "ini": 1.303,
+     "fim": 2.808
+    },
+    {
+     "texto": "No menu da solicitação, o Gerar Pedido de Compra não grava direto: ele abre o novo pedido, já com o produto,",
+     "ini": 3.088,
+     "fim": 9.697
+    },
+    {
+     "texto": "para você informar fornecedor, comprador, condição, CFOP e valor.",
+     "ini": 9.977,
+     "fim": 14.695
+    }
+   ]
   },
   {
    "id": "05",
@@ -64,12 +127,34 @@
    "titulo": "A natureza da operação define o CFOP",
    "icone": "cfop",
    "texto": "Na cotação, a Natureza da Operação (Consumo, Produção, Revenda ou Ativo) define o CFOP do pedido de compra.",
-   "fonte": "fluxo dos consultores 01 (validado no DEV)",
+   "fonte": "regra-compras-natureza-da-operacao-define-o-cfop",
    "fala": "Segunda. Na cotação, a natureza da operação, consumo, produção, revenda ou ativo, define sozinha o CFOP do pedido de compra, conforme a origem do fornecedor. Escolha com cuidado.",
-   "inicio": 49.343,
-   "duracao": 12.55,
-   "fala_s": 12,
-   "audio": null
+   "inicio": 45.623,
+   "duracao": 13.682,
+   "fala_s": 13.132,
+   "audio": "audio/consultor-01-suprimentos/05.wav",
+   "legendas": [
+    {
+     "texto": "Segunda.",
+     "ini": 0,
+     "fim": 0.751
+    },
+    {
+     "texto": "Na cotação, a natureza da operação, consumo, produção, revenda ou ativo,",
+     "ini": 1.031,
+     "fim": 5.731
+    },
+    {
+     "texto": "define sozinha o CFOP do pedido de compra, conforme a origem do fornecedor.",
+     "ini": 6.011,
+     "fim": 11.191
+    },
+    {
+     "texto": "Escolha com cuidado.",
+     "ini": 11.471,
+     "fim": 13.132
+    }
+   ]
   },
   {
    "id": "06",
@@ -80,10 +165,37 @@
    "texto": "NF-número do fornecedor na lista de Recebimento; NR-número interno na conferência, no pedido e no título.",
    "fonte": "regra-recebimento-a-mesma-nota-tem-dois-numeros",
    "fala": "Terceira, e a que mais confunde. A mesma nota de recebimento tem dois números. Na lista de recebimento ela aparece como NF, com o número do fornecedor. Na conferência, no pedido e no título, aparece como NR, o número interno. É a mesma nota.",
-   "inicio": 61.893,
-   "duracao": 19.407,
-   "fala_s": 18.857,
-   "audio": null
+   "inicio": 59.305,
+   "duracao": 16.903,
+   "fala_s": 16.353,
+   "audio": "audio/consultor-01-suprimentos/06.wav",
+   "legendas": [
+    {
+     "texto": "Terceira, e a que mais confunde.",
+     "ini": 0,
+     "fim": 1.999
+    },
+    {
+     "texto": "A mesma nota de recebimento tem dois números.",
+     "ini": 2.279,
+     "fim": 5.083
+    },
+    {
+     "texto": "Na lista de recebimento ela aparece como NF, com o número do fornecedor.",
+     "ini": 5.363,
+     "fim": 9.768
+    },
+    {
+     "texto": "Na conferência, no pedido e no título, aparece como NR, o número interno.",
+     "ini": 10.048,
+     "fim": 14.661
+    },
+    {
+     "texto": "É a mesma nota.",
+     "ini": 14.941,
+     "fim": 16.353
+    }
+   ]
   },
   {
    "id": "07",
@@ -94,10 +206,32 @@
    "texto": "A entrada do recebimento vai para o almoxarifado central ativo. Sem ele, o sistema bloqueia.",
    "fonte": "regra-estoque-almoxarifado-central-ativo-e-pre-requisito",
    "fala": "Quarta. A entrada do material cai no almoxarifado central. Sem um almoxarifado central ativo em Estoque, Locais, o sistema bloqueia a finalização. Confira antes de começar.",
-   "inicio": 81.3,
-   "duracao": 11.693,
-   "fala_s": 11.143,
-   "audio": null
+   "inicio": 76.208,
+   "duracao": 12.556,
+   "fala_s": 12.006,
+   "audio": "audio/consultor-01-suprimentos/07.wav",
+   "legendas": [
+    {
+     "texto": "Quarta.",
+     "ini": 0,
+     "fim": 0.563
+    },
+    {
+     "texto": "A entrada do material cai no almoxarifado central.",
+     "ini": 0.843,
+     "fim": 3.987
+    },
+    {
+     "texto": "Sem um almoxarifado central ativo em Estoque, Locais, o sistema bloqueia a finalização.",
+     "ini": 4.267,
+     "fim": 9.875
+    },
+    {
+     "texto": "Confira antes de começar.",
+     "ini": 10.155,
+     "fim": 12.006
+    }
+   ]
   },
   {
    "id": "08",
@@ -110,10 +244,27 @@
    ],
    "rotulo": "Compras › Solicitações de Compra",
    "fala": "Na prática: em Compras, Solicitações de Compra, a Nova Solicitação pede a empresa, a data de necessidade, o produto e a quantidade. Esta aqui já está concluída: ela virou pedido.",
-   "inicio": 92.993,
-   "duracao": 13.407,
-   "fala_s": 12.857,
-   "audio": null,
+   "inicio": 88.764,
+   "duracao": 12.378,
+   "fala_s": 11.828,
+   "audio": "audio/consultor-01-suprimentos/08.wav",
+   "legendas": [
+    {
+     "texto": "Na prática: em Compras, Solicitações de Compra, a Nova Solicitação pede a empresa, a data de necessidade,",
+     "ini": 0,
+     "fim": 6.619
+    },
+    {
+     "texto": "o produto e a quantidade.",
+     "ini": 6.899,
+     "fim": 8.704
+    },
+    {
+     "texto": "Esta aqui já está concluída: ela virou pedido.",
+     "ini": 8.984,
+     "fim": 11.828
+    }
+   ],
    "imagem": "telas/consultor-01-suprimentos/00-solicitacao.png",
    "caixas": [
     {
@@ -147,10 +298,22 @@
    ],
    "rotulo": "Cotação · Dados Gerais",
    "fala": "A cotação é um assistente em quatro passos: dados gerais, itens, propostas e comparação. Nos dados gerais, repare na natureza da operação: é ela que vai definir o CFOP.",
-   "inicio": 106.4,
-   "duracao": 12.979,
-   "fala_s": 12.429,
-   "audio": null,
+   "inicio": 101.142,
+   "duracao": 11.709,
+   "fala_s": 11.159,
+   "audio": "audio/consultor-01-suprimentos/09.wav",
+   "legendas": [
+    {
+     "texto": "A cotação é um assistente em quatro passos: dados gerais, itens, propostas e comparação.",
+     "ini": 0,
+     "fim": 5.549
+    },
+    {
+     "texto": "Nos dados gerais, repare na natureza da operação: é ela que vai definir o CFOP.",
+     "ini": 5.829,
+     "fim": 11.159
+    }
+   ],
    "imagem": "telas/consultor-01-suprimentos/01b-cotacao.png",
    "caixas": [
     {
@@ -184,10 +347,22 @@
    ],
    "rotulo": "Cotação · Comparação",
    "fala": "Na comparação, você escolhe o critério, como menor preço ou menor prazo, e aplica a melhor opção. Daí sai o pedido de compra, um por fornecedor vencedor.",
-   "inicio": 119.379,
-   "duracao": 12.121,
-   "fala_s": 11.571,
-   "audio": null,
+   "inicio": 112.851,
+   "duracao": 10.273,
+   "fala_s": 9.723,
+   "audio": "audio/consultor-01-suprimentos/10.wav",
+   "legendas": [
+    {
+     "texto": "Na comparação, você escolhe o critério, como menor preço ou menor prazo, e aplica a melhor opção.",
+     "ini": 0,
+     "fim": 6.059
+    },
+    {
+     "texto": "Daí sai o pedido de compra, um por fornecedor vencedor.",
+     "ini": 6.339,
+     "fim": 9.723
+    }
+   ],
    "imagem": "telas/consultor-01-suprimentos/01c-comparacao.png",
    "caixas": [
     {
@@ -237,10 +412,22 @@
     }
    ],
    "fala": "E aqui está a melhor forma de conferir tudo: a linha do tempo do pedido de compra. Solicitação concluída, cotação concluída, pedido recebido, nota finalizada e título pago, em ordem.",
-   "inicio": 131.5,
-   "duracao": 13.407,
-   "fala_s": 12.857,
-   "audio": null,
+   "inicio": 123.124,
+   "duracao": 12.461,
+   "fala_s": 11.911,
+   "audio": "audio/consultor-01-suprimentos/11.wav",
+   "legendas": [
+    {
+     "texto": "E aqui está a melhor forma de conferir tudo: a linha do tempo do pedido de compra.",
+     "ini": 0,
+     "fim": 5.023
+    },
+    {
+     "texto": "Solicitação concluída, cotação concluída, pedido recebido, nota finalizada e título pago, em ordem.",
+     "ini": 5.303,
+     "fim": 11.911
+    }
+   ],
    "imagem": "telas/consultor-01-suprimentos/01-linha-do-tempo.png",
    "caixas": [
     {
@@ -288,10 +475,22 @@
    "foco": 0,
    "rotulo": "Recebimento › Notas de Recebimento",
    "fala": "Na lista de recebimento, a mesma nota aparece como NF nove nove zero zero zero um, o número do fornecedor. Na linha do tempo, ela era a NR treze.",
-   "inicio": 144.907,
-   "duracao": 12.979,
-   "fala_s": 12.429,
-   "audio": null,
+   "inicio": 135.585,
+   "duracao": 9.804,
+   "fala_s": 9.254,
+   "audio": "audio/consultor-01-suprimentos/12.wav",
+   "legendas": [
+    {
+     "texto": "Na lista de recebimento, a mesma nota aparece como NF nove nove zero zero zero um, o número do fornecedor.",
+     "ini": 0,
+     "fim": 6.745
+    },
+    {
+     "texto": "Na linha do tempo, ela era a NR treze.",
+     "ini": 7.025,
+     "fim": 9.254
+    }
+   ],
    "imagem": "telas/consultor-01-suprimentos/02-notas-recebimento.png",
    "caixas": [
     {
@@ -312,10 +511,17 @@
    ],
    "rotulo": "Estoque › Movimentos",
    "fala": "E no estoque, o movimento de entrada do tipo recebimento, no almoxarifado central, com o valor da nota.",
-   "inicio": 157.886,
-   "duracao": 8.264,
-   "fala_s": 7.714,
-   "audio": null,
+   "inicio": 145.389,
+   "duracao": 7.04,
+   "fala_s": 6.49,
+   "audio": "audio/consultor-01-suprimentos/13.wav",
+   "legendas": [
+    {
+     "texto": "E no estoque, o movimento de entrada do tipo recebimento, no almoxarifado central, com o valor da nota.",
+     "ini": 0,
+     "fim": 6.49
+    }
+   ],
    "imagem": "telas/consultor-01-suprimentos/03-entrada-estoque.png",
    "caixas": [
     {
@@ -341,10 +547,37 @@
     "A Sugestão de Compra só lista itens com estoque mínimo."
    ],
    "fala": "Três cuidados. Finalizar a nota de recebimento não pode ser desfeito, e depois dela o pedido de compra não pode mais ser cancelado. O meio de pagamento da parcela não chega ao diálogo de pagamento: informe de novo. E a sugestão de compra só mostra itens com estoque mínimo cadastrado.",
-   "inicio": 166.15,
-   "duracao": 21.979,
-   "fala_s": 21.429,
-   "audio": null
+   "inicio": 152.429,
+   "duracao": 19.927,
+   "fala_s": 19.377,
+   "audio": "audio/consultor-01-suprimentos/14.wav",
+   "legendas": [
+    {
+     "texto": "Três cuidados.",
+     "ini": 0,
+     "fim": 1.332
+    },
+    {
+     "texto": "Finalizar a nota de recebimento não pode ser desfeito,",
+     "ini": 1.612,
+     "fim": 5.112
+    },
+    {
+     "texto": "e depois dela o pedido de compra não pode mais ser cancelado.",
+     "ini": 5.392,
+     "fim": 9.176
+    },
+    {
+     "texto": "O meio de pagamento da parcela não chega ao diálogo de pagamento: informe de novo.",
+     "ini": 9.456,
+     "fim": 14.688
+    },
+    {
+     "texto": "E a sugestão de compra só mostra itens com estoque mínimo cadastrado.",
+     "ini": 14.968,
+     "fim": 19.377
+    }
+   ]
   },
   {
    "id": "15",
@@ -355,11 +588,33 @@
     "Confira tudo na linha do tempo do pedido"
    ],
    "fala": "Resumindo: a cotação é opcional, e a natureza da operação define o CFOP. NF e NR são a mesma nota. E a linha do tempo do pedido mostra a cadeia inteira. No próximo vídeo, os serviços de campo.",
-   "inicio": 188.129,
-   "duracao": 16.836,
-   "fala_s": 16.286,
-   "audio": null
+   "inicio": 172.356,
+   "duracao": 13.676,
+   "fala_s": 13.126,
+   "audio": "audio/consultor-01-suprimentos/15.wav",
+   "legendas": [
+    {
+     "texto": "Resumindo: a cotação é opcional, e a natureza da operação define o CFOP.",
+     "ini": 0,
+     "fim": 4.891
+    },
+    {
+     "texto": "NF e NR são a mesma nota.",
+     "ini": 5.171,
+     "fim": 7.048
+    },
+    {
+     "texto": "E a linha do tempo do pedido mostra a cadeia inteira.",
+     "ini": 7.328,
+     "fim": 10.348
+    },
+    {
+     "texto": "No próximo vídeo, os serviços de campo.",
+     "ini": 10.628,
+     "fim": 13.126
+    }
+   ]
   }
  ],
- "duracaoTotal": 206.465
+ "duracaoTotal": 187.532
 }

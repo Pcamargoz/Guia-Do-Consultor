@@ -1,10 +1,16 @@
 import React from 'react';
 import {
-  AbsoluteFill, Audio, Easing, Img, Sequence, interpolate, spring, staticFile, useCurrentFrame,
+  AbsoluteFill, Audio, Easing, Img, Sequence, continueRender, delayRender, interpolate, spring, staticFile, useCurrentFrame,
 } from 'remotion';
+import '@fontsource-variable/inter';
+import '@fontsource/jetbrains-mono/500.css';
+import '@fontsource/jetbrains-mono/600.css';
 
 // Vídeo de fluxo do Guia do Consultor. Palco 1920×1080 a 30 fps.
 // Os dados vêm de src/gerado/<id>.json (scripts/preparar.mjs): cada trecho tem a fala, a cena e o tempo medido da voz.
+// Linguagem visual (estudo de 23/10/2026 dos repositórios lemo-opuscar, mg-styles-15, pdoom-video e coleções de
+// explicativos, ver docs/producao-de-videos.md no Harness): estilo suíço com um acento por papel, texto que entra por
+// máscara (nunca fade), ícones desenhados por traço, câmera em mola mais lenta que os objetos, som em cada ação.
 export const FPS = 30;
 
 export type Caixa = { x: number; y: number; w: number; h: number } | null;
@@ -19,23 +25,67 @@ export type Trecho = {
 };
 export type Dados = { id: string; titulo: string; subtitulo: string; trilha: string; proximo: string; icone?: string; trechos: Trecho[]; duracaoTotal: number };
 
+// Um significado por cor, o filme inteiro: azul da marca = estado atual e foco; limão da marca = marcador (não existe
+// na interface do Flow, então acha o olho em qualquer tela); laranja = cuidado; verde = concluído.
 const C = {
-  fundo: '#F3F8FC', fundo2: '#EAF3F9', azul: '#3478A7', azulEsc: '#1C4867', tinta: '#143650',
-  azulClaro: '#6FA8CF', linha: '#C7DEEE', limao: '#D5DD26', limaoTinta: '#1E2A05', limaoSuave: '#F6F8D4',
-  branco: '#FFFFFF', suave: '#5B7A93', alerta: '#E08A1E', alertaSuave: '#FFF4E3', ok: '#1F9D63',
+  bg: '#F4F6F9', surface: '#FFFFFF', ink: '#131820', ink2: '#5A6474', line: '#E2E6EC',
+  primary: '#3478A7', primaryEsc: '#1C4867', secondary: '#0F8B8D', ok: '#1E9E5A',
+  alerta: '#E8590C', alertaTexto: '#B54708', alertaSuave: '#FFF4EC', spot: '#D5DD26', spotTinta: '#1E2A05', spotSuave: '#F6F8D4',
 };
-const FONTE = '"Segoe UI Variable Display", "Segoe UI", system-ui, sans-serif';
-const clamp = { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' } as const;
-const suave = Easing.bezier(0.45, 0, 0.55, 1);
-const rampa = (t: number, a: number, d = 0.6) => interpolate(t, [a, a + d], [0, 1], { ...clamp, easing: Easing.out(Easing.cubic) });
-const mola = (t: number, a: number, damping = 16) =>
-  spring({ frame: Math.round((t - a) * FPS), fps: FPS, config: { damping, stiffness: 110, mass: 0.9 } });
-const useT = () => useCurrentFrame() / FPS;
+const SANS = '"Inter Variable", "Segoe UI", system-ui, sans-serif';
+const MONO = '"JetBrains Mono", Consolas, monospace';
+const SOMBRA_CARTAO = '0 1px 2px rgba(19,24,32,.06), 0 12px 32px rgba(19,24,32,.10)';
+const SOMBRA_JANELA = '0 30px 80px rgba(19,24,32,.18)';
 
-// ---------- ícones (traço, estilo lucide) ----------
-const Ico: React.FC<{ d: string; size?: number; cor?: string; w?: number }> = ({ d, size = 48, cor = C.azul, w = 2 }) => (
+const clamp = { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' } as const;
+const E = {
+  entra: Easing.bezier(0.16, 1, 0.3, 1), sai: Easing.bezier(0.7, 0, 0.84, 0),
+  move: Easing.bezier(0.7, 0, 0.2, 1), linha: Easing.bezier(0.65, 0, 0.35, 1),
+};
+const prog = (t: number, a: number, d = 0.53, ease = E.entra) => interpolate(t, [a, a + d], [0, 1], { ...clamp, easing: ease });
+const MOLA = { objeto: { stiffness: 250, damping: 23, mass: 1 }, cursor: { stiffness: 110, damping: 18, mass: 1 }, camera: { stiffness: 45, damping: 13, mass: 1 } };
+const mola = (t: number, a: number, config = MOLA.objeto) => spring({ frame: Math.round((t - a) * FPS), fps: FPS, config });
+const useT = () => useCurrentFrame() / FPS;
+const f = (n: number) => n / FPS; // frames → segundos
+
+// As fontes ficam no projeto (não baixam na hora do render): o primeiro quadro espera elas carregarem.
+const useFontes = () => {
+  const [h] = React.useState(() => delayRender('fontes'));
+  React.useEffect(() => {
+    Promise.all([document.fonts.load('700 40px "Inter Variable"'), document.fonts.load('500 24px "JetBrains Mono"'), document.fonts.load('600 24px "JetBrains Mono"')])
+      .then(() => continueRender(h), () => continueRender(h));
+  }, [h]);
+};
+
+// ---------- tipografia em movimento ----------
+// Texto entra subindo de baixo da linha de base, recortado (clip-reveal).
+const Revela: React.FC<{ t: number; a: number; d?: number; children: React.ReactNode; style?: React.CSSProperties }> = ({ t, a, d = f(16), children, style }) => {
+  const p = prog(t, a, d);
+  return (
+    <span style={{ display: 'inline-block', overflow: 'hidden', verticalAlign: 'top', paddingBottom: '0.12em', marginBottom: '-0.12em', ...style }}>
+      <span style={{ display: 'inline-block', transform: `translateY(${(1 - p) * 115}%)` }}>{children}</span>
+    </span>
+  );
+};
+// marca (0..1): marcador limão passando por baixo das palavras, da primeira à última
+const Palavras: React.FC<{ t: number; a: number; texto: string; passo?: number; marca?: number }> = ({ t, a, texto, passo = f(3), marca }) => {
+  const ws = texto.split(' ');
+  return (
+    <>{ws.map((w, i) => {
+      const enche = marca === undefined ? 0 : Math.min(1, Math.max(0, marca * ws.length - i));
+      const fundo: React.CSSProperties = marca === undefined ? {} : {
+        backgroundImage: 'linear-gradient(rgba(213,221,38,0.7), rgba(213,221,38,0.7))', backgroundRepeat: 'no-repeat', backgroundPosition: '0 82%', backgroundSize: `${enche * 100}% 0.34em`,
+      };
+      return <React.Fragment key={i}><Revela t={t} a={a + i * passo} style={fundo}>{w}</Revela>{' '}</React.Fragment>;
+    })}</>
+  );
+};
+
+// ---------- ícones (traço, estilo lucide), desenhados pelo comprimento do traço ----------
+const Ico: React.FC<{ d: string; size?: number; cor?: string; w?: number; desenho?: number }> = ({ d, size = 48, cor = C.primary, w = 2, desenho = 1 }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={cor} strokeWidth={w} strokeLinecap="round" strokeLinejoin="round"
-    dangerouslySetInnerHTML={{ __html: d }} />
+    style={{ strokeDasharray: 1, strokeDashoffset: 1 - desenho }}
+    dangerouslySetInnerHTML={{ __html: d.replace(/<(path|circle|rect|line|polyline|polygon)/g, '<$1 pathLength="1"') }} />
 );
 const ICONES: Record<string, string> = {
   carrinho: '<circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/>',
@@ -59,114 +109,162 @@ const ICONES: Record<string, string> = {
   compra: '<path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/>',
 };
 
-// ---------- fundo ----------
+// ---------- fundo: papel com grade de pontos e duas manchas da cor primária em deriva lenta (loop de 30 s) ----------
 const Fundo: React.FC = () => {
   const t = useT();
-  const a = Math.sin(t * 0.25) * 40, b = Math.cos(t * 0.2) * 50;
+  const w = (2 * Math.PI * t) / 30;
   return (
-    <AbsoluteFill style={{ background: `linear-gradient(160deg, ${C.fundo} 0%, #FFFFFF 55%, ${C.fundo2} 100%)` }}>
-      <div style={{ position: 'absolute', width: 900, height: 900, borderRadius: '50%', left: -300 + a, top: -380 + b,
-        background: 'radial-gradient(circle, rgba(111,168,207,0.22), rgba(111,168,207,0) 70%)' }} />
-      <div style={{ position: 'absolute', width: 760, height: 760, borderRadius: '50%', right: -260 - a, bottom: -320 - b,
-        background: 'radial-gradient(circle, rgba(213,221,38,0.18), rgba(213,221,38,0) 70%)' }} />
+    <AbsoluteFill style={{ background: C.bg }}>
+      <AbsoluteFill style={{ backgroundImage: `radial-gradient(${C.line} 1.6px, transparent 1.6px)`, backgroundSize: '48px 48px',
+        backgroundPosition: '24px 24px', maskImage: 'radial-gradient(ellipse 75% 70% at 50% 45%, #000 30%, transparent 100%)', opacity: 0.9 }} />
+      <div style={{ position: 'absolute', width: 1100, height: 1100, borderRadius: '50%', left: -420 + Math.sin(w) * 60, top: -520 + Math.cos(w) * 50,
+        background: 'radial-gradient(circle, rgba(52,120,167,0.10), rgba(52,120,167,0) 65%)' }} />
+      <div style={{ position: 'absolute', width: 1000, height: 1000, borderRadius: '50%', right: -380 - Math.sin(w) * 50, bottom: -460 - Math.cos(w) * 60,
+        background: 'radial-gradient(circle, rgba(213,221,38,0.12), rgba(213,221,38,0) 65%)' }} />
     </AbsoluteFill>
   );
 };
 
-// ---------- abertura ----------
+const SomEm: React.FC<{ em: number; src: string; volume: number }> = ({ em, src, volume }) => (
+  <Sequence from={Math.max(0, Math.round(em * FPS))} durationInFrames={15}><Audio src={staticFile(src)} volume={volume} /></Sequence>
+);
+
+// ---------- abertura: logo, rótulo da trilha em mono, título palavra a palavra e o fio de acento ----------
 const Abertura: React.FC<{ d: Dados; dur: number }> = ({ d, dur }) => {
   const t = useT();
-  const v = mola(t, 0.2), v2 = mola(t, 0.6), v3 = mola(t, 1.0);
-  const sai = 1 - rampa(t, dur - 0.5, 0.5);
+  const sai = prog(t, dur - f(10), f(10), E.sai);
+  const tile = mola(t, f(8));
+  const fio = prog(t, f(30), f(18), E.linha);
   return (
-    <AbsoluteFill style={{ alignItems: 'center', justifyContent: 'center', opacity: sai, fontFamily: FONTE }}>
-      <Img src={staticFile('logo_faktory_flow.png')} style={{ height: 92, opacity: v, transform: `translateY(${(1 - v) * 20}px)`, marginBottom: 44 }} />
-      <div style={{ opacity: v2, transform: `translateY(${(1 - v2) * 24}px)`, background: C.limaoSuave, color: C.limaoTinta,
-        border: `2px solid ${C.limao}`, borderRadius: 999, padding: '10px 26px', fontSize: 28, fontWeight: 600, marginBottom: 30 }}>{d.trilha}</div>
-      <div style={{ display: 'flex', alignItems: 'center', gap: 34, opacity: v3, transform: `scale(${0.92 + 0.08 * v3})` }}>
-        <div style={{ width: 132, height: 132, borderRadius: 34, background: C.azul, display: 'flex', alignItems: 'center', justifyContent: 'center',
-          boxShadow: '0 18px 40px rgba(52,120,167,0.35)', transform: `rotate(${(1 - v3) * -8}deg)` }}>
-          <Ico d={ICONES[d.icone ?? 'carrinho'] ?? ICONES.carrinho} size={76} cor="#fff" />
+    <AbsoluteFill style={{ fontFamily: SANS, opacity: 1 - sai, transform: `translateY(${-sai * 30}px)` }}>
+      <Img src={staticFile('logo_faktory_flow.png')} style={{ position: 'absolute', left: 160, top: 120, height: 64, opacity: prog(t, f(6), f(14)),
+        transform: `translateY(${(1 - prog(t, f(6), f(14))) * 16}px)` }} />
+      <div style={{ position: 'absolute', left: 160, top: 360, display: 'flex', gap: 48, alignItems: 'flex-start' }}>
+        <div style={{ width: 168, height: 168, flex: '0 0 168px', borderRadius: 40, background: C.primary, display: 'flex', alignItems: 'center', justifyContent: 'center',
+          boxShadow: '0 24px 48px rgba(52,120,167,0.30)', transform: `scale(${0.6 + 0.4 * tile})`, opacity: Math.min(1, tile * 1.4) }}>
+          <Ico d={ICONES[d.icone ?? 'carrinho'] ?? ICONES.carrinho} size={92} cor="#fff" w={1.8} desenho={prog(t, f(14), f(20), E.linha)} />
         </div>
         <div>
-          <div style={{ fontSize: 104, fontWeight: 700, color: C.tinta, letterSpacing: -2, lineHeight: 1 }}>{d.titulo}</div>
-          <div style={{ fontSize: 44, color: C.suave, marginTop: 14 }}>{d.subtitulo}</div>
+          <div style={{ fontFamily: MONO, fontWeight: 600, fontSize: 24, letterSpacing: '0.06em', textTransform: 'uppercase', color: C.ink2,
+            display: 'flex', alignItems: 'center', gap: 14, marginBottom: 22 }}>
+            <span style={{ width: 12, height: 12, borderRadius: 3, background: C.spot, transform: `scale(${mola(t, f(10))})` }} />
+            <Revela t={t} a={f(10)}>{d.trilha}</Revela>
+          </div>
+          <div style={{ fontSize: 112, fontWeight: 700, color: C.ink, letterSpacing: '-0.025em', lineHeight: 1.05, maxWidth: 1450 }}>
+            <Palavras t={t} a={f(14)} texto={d.titulo} />
+          </div>
+          <div style={{ height: 6, width: 420 * fio, background: C.primary, borderRadius: 3, margin: '34px 0 30px' }} />
+          <div style={{ fontSize: 40, fontWeight: 500, color: C.ink2, letterSpacing: '-0.005em', maxWidth: 1300 }}>
+            <Palavras t={t} a={f(36)} texto={d.subtitulo} passo={f(2)} />
+          </div>
         </div>
       </div>
     </AbsoluteFill>
   );
 };
 
-// ---------- linha do tempo de status ----------
+// ---------- conceito: linha de status com o "documento" que percorre a linha ----------
 const STATUS = ['Em aberto', 'Faturado', 'Lib. Expedição', 'Entregue'];
 const LinhaStatus: React.FC<{ bloco: Trecho[]; dur: number }> = ({ bloco, dur }) => {
   const t = useT();
-  const entra = rampa(t, 0, 0.7), sai = 1 - rampa(t, dur - 0.45, 0.45);
-  // posição do "pedido" na linha: trecho 1 parado no 0; trecho 2 anda de 1 a destaque ao longo da fala
+  const sai = prog(t, dur - f(9), f(9), E.sai);
+  // posição do documento: trecho 1 parado no início; trecho 2 anda até o destaque ao longo da fala
   const t2 = bloco[1] ? bloco[1].inicio - bloco[0].inicio : Infinity;
   const alvo = bloco[1]?.destaque ?? 0;
-  const pos = t < t2 ? 0 : interpolate(t, [t2 + 0.3, t2 + Math.max(1.5, (bloco[1].fala_s) * 0.62)], [0.0001, alvo], { ...clamp, easing: suave });
-  const trava = rampa(t, t2 + 0.6, 0.5);
+  const pos = t < t2 ? 0 : interpolate(t, [t2 + 0.3, t2 + Math.max(1.5, bloco[1].fala_s * 0.62)], [0.0001, alvo], { ...clamp, easing: E.move });
+  const trava = mola(t, t2 + 0.6);
   const etapas = bloco[0].etapas ?? STATUS;
-  const X0 = etapas.length > 4 ? 240 : 300, X1 = 1920 - X0, passo = (X1 - X0) / (etapas.length - 1), Y = 560;
+  const X0 = etapas.length > 4 ? 240 : 300, X1 = 1920 - X0, passo = (X1 - X0) / (etapas.length - 1), Y = 600;
+  const base = prog(t, f(6), f(24), E.linha);
   const comSelos = bloco.some((r) => r.cadeado);
+  const atual = Math.min(etapas.length - 1, Math.floor(pos + 0.02));
   return (
-    <AbsoluteFill style={{ fontFamily: FONTE, opacity: entra * sai }}>
-      <div style={{ position: 'absolute', top: 150, width: '100%', textAlign: 'center', fontSize: 58, fontWeight: 700, color: C.tinta }}>
-        {bloco[0].tituloCena ?? 'A vida do pedido de venda'}
+    <AbsoluteFill style={{ fontFamily: SANS, opacity: 1 - sai }}>
+      <div style={{ position: 'absolute', left: 160, top: 170, right: 160, display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
+        <div style={{ fontSize: 64, fontWeight: 700, color: C.ink, letterSpacing: '-0.02em' }}>
+          <Palavras t={t} a={f(2)} texto={bloco[0].tituloCena ?? 'A vida do pedido de venda'} />
+        </div>
+        <div style={{ fontFamily: MONO, fontSize: 26, fontWeight: 500, color: C.ink2, opacity: prog(t, f(16)) }}>
+          {String(atual + 1).padStart(2, '0')} / {String(etapas.length).padStart(2, '0')}
+        </div>
       </div>
       <svg width={1920} height={1080} style={{ position: 'absolute' }}>
-        <line x1={X0} y1={Y} x2={X1} y2={Y} stroke={C.linha} strokeWidth={10} strokeLinecap="round" />
-        <line x1={X0} y1={Y} x2={X0 + passo * pos} y2={Y} stroke={C.azul} strokeWidth={10} strokeLinecap="round" />
+        <line x1={X0} y1={Y} x2={X0 + (X1 - X0) * base} y2={Y} stroke={C.line} strokeWidth={8} strokeLinecap="round" />
+        <line x1={X0} y1={Y} x2={X0 + passo * pos} y2={Y} stroke={C.primary} strokeWidth={8} strokeLinecap="round" />
+        {etapas.map((s, i) => {
+          const a = f(12) + i * f(5);
+          const ativo = pos >= i - 0.02;
+          // o traço do círculo desenha; o miolo enche quando o documento chega no status
+          const anel = prog(t, a, f(10), E.linha), cheio = interpolate(pos, [i - 0.25, i], [0, 1], clamp) * prog(t, a + f(10), f(6));
+          return (
+            <g key={s}>
+              <circle cx={X0 + passo * i} cy={Y} r={30} fill={C.surface} stroke={ativo ? C.primary : C.line} strokeWidth={6} pathLength={1}
+                strokeDasharray={1} strokeDashoffset={1 - anel} transform={`rotate(-90 ${X0 + passo * i} ${Y})`} />
+              <circle cx={X0 + passo * i} cy={Y} r={16 * cheio} fill={C.primary} />
+              {ativo && i === atual && <circle cx={X0 + passo * i} cy={Y} r={44} fill="none" stroke={C.primary} strokeOpacity={0.18} strokeWidth={10} />}
+            </g>
+          );
+        })}
       </svg>
       {etapas.map((s, i) => {
-        const v = mola(t, 0.3 + i * 0.18);
         const ativo = pos >= i - 0.02;
         return (
-          <div key={s} style={{ position: 'absolute', left: X0 + passo * i, top: Y, transform: `translate(-50%,-50%) scale(${0.6 + 0.4 * v})`, opacity: v,
-            display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <div style={{ width: 64, height: 64, borderRadius: '50%', background: ativo ? C.azul : C.branco, border: `6px solid ${ativo ? C.azul : C.linha}`,
-              boxShadow: ativo ? '0 0 0 10px rgba(52,120,167,0.15)' : 'none' }} />
-            <div style={{ position: 'absolute', top: 82, whiteSpace: 'nowrap', fontSize: 36, fontWeight: 600, color: ativo ? C.tinta : C.suave }}>{s}</div>
+          <div key={s} style={{ position: 'absolute', left: X0 + passo * i, top: Y + 64, transform: 'translateX(-50%)', whiteSpace: 'nowrap',
+            fontSize: 36, fontWeight: 600, color: ativo ? C.ink : C.ink2, opacity: ativo ? 1 : 0.35 + 0.65 * 0 }}>
+            <Revela t={t} a={f(18) + i * f(5)}>{s}</Revela>
           </div>
         );
       })}
-      {/* edição: livre em Em aberto; trava depois (só nos vídeos que marcam "cadeado") */}
-      {comSelos && <div style={{ position: 'absolute', left: X0, top: Y - 190, transform: 'translateX(-50%)', opacity: rampa(t, 1.0, 0.6),
-        display: 'flex', alignItems: 'center', gap: 12, background: '#E7F6EE', color: C.ok, border: `2px solid ${C.ok}`, borderRadius: 18, padding: '12px 22px', fontSize: 30, fontWeight: 600 }}>
-        <Ico d={ICONES.aberto} size={34} cor={C.ok} /> Pode editar tudo
+      {/* o documento que percorre a linha: motivo recorrente do vídeo */}
+      <div style={{ position: 'absolute', left: X0 + passo * pos, top: Y - 112, transform: `translateX(-50%) scale(${mola(t, f(20))})`,
+        width: 64, height: 76, borderRadius: 12, background: C.surface, boxShadow: SOMBRA_CARTAO, border: `2px solid ${C.primary}`,
+        display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <Ico d={ICONES.cfop} size={36} cor={C.primary} />
+      </div>
+      {comSelos && <div style={{ position: 'absolute', left: X0, top: Y - 250, transform: `translateX(-20%) translateY(${(1 - mola(t, 1.0)) * 20}px)`, opacity: mola(t, 1.0),
+        display: 'flex', alignItems: 'center', gap: 12, background: '#E8F6EE', color: C.ok, borderRadius: 14, padding: '12px 22px', fontSize: 28, fontWeight: 600, boxShadow: SOMBRA_CARTAO }}>
+        <Ico d={ICONES.aberto} size={32} cor={C.ok} desenho={prog(t, 1.0, f(12), E.linha)} /> Pode editar tudo
       </div>}
       {bloco[1]?.cadeado && (
-        <div style={{ position: 'absolute', left: X0 + passo * 2, top: Y - 190, transform: `translateX(-50%) scale(${0.85 + 0.15 * trava})`, opacity: trava,
-          display: 'flex', alignItems: 'center', gap: 12, background: C.alertaSuave, color: '#9A5B0B', border: `2px solid ${C.alerta}`, borderRadius: 18, padding: '12px 22px', fontSize: 30, fontWeight: 600 }}>
-          <Ico d={ICONES.cadeado} size={34} cor={C.alerta} /> Daqui em diante: só visualizar
+        <div style={{ position: 'absolute', left: X0 + passo * 2, top: Y - 250, transform: `translateX(-50%) translateY(${(1 - trava) * 20}px)`, opacity: trava,
+          display: 'flex', alignItems: 'center', gap: 12, background: C.alertaSuave, color: C.alertaTexto, borderRadius: 14, padding: '12px 22px', fontSize: 28, fontWeight: 600,
+          boxShadow: SOMBRA_CARTAO, borderLeft: `6px solid ${C.alerta}` }}>
+          <Ico d={ICONES.cadeado} size={32} cor={C.alerta} desenho={prog(t, t2 + 0.6, f(12), E.linha)} /> Daqui em diante: só visualizar
         </div>
       )}
     </AbsoluteFill>
   );
 };
 
-// ---------- cartão de regra ----------
+// ---------- cartão de regra: numeral gigante atrás, ícone desenhado, título por máscara e marcador limão ----------
 const Regra: React.FC<{ r: Trecho; dur: number }> = ({ r, dur }) => {
   const t = useT();
-  const v = mola(t, 0.05), sai = rampa(t, dur - 0.4, 0.4);
-  const vi = mola(t, 0.35, 12);
+  const v = mola(t, f(2)), sai = prog(t, dur - f(9), f(9), E.sai);
+  const marca = prog(t, f(26), f(10), Easing.linear);
   return (
-    <AbsoluteFill style={{ alignItems: 'center', justifyContent: 'center', fontFamily: FONTE }}>
-      <div style={{ width: 1360, background: C.branco, borderRadius: 40, padding: '64px 72px', display: 'flex', gap: 56, alignItems: 'center',
-        boxShadow: '0 30px 80px rgba(20,54,80,0.14)', border: `2px solid ${C.linha}`,
-        opacity: v * (1 - sai), transform: `translateX(${(1 - v) * 120 - sai * 120}px) rotate(${(1 - v) * 1.5}deg)` }}>
-        <div style={{ width: 200, height: 200, flex: '0 0 200px', borderRadius: 48, background: C.fundo2, display: 'flex', alignItems: 'center', justifyContent: 'center',
-          transform: `scale(${0.7 + 0.3 * vi}) rotate(${(1 - vi) * -12}deg)` }}>
-          <Ico d={ICONES[r.icone ?? 'cfop']} size={112} cor={C.azul} w={1.7} />
+    <AbsoluteFill style={{ fontFamily: SANS }}>
+      <SomEm em={f(2)} src="sfx/tick.wav" volume={0.22} />
+      <div style={{ position: 'absolute', left: 120, top: 120, fontSize: 340, fontWeight: 300, color: C.line, letterSpacing: '-0.04em', lineHeight: 1,
+        opacity: prog(t, 0, f(14)) * (1 - sai), transform: `translateY(${(1 - prog(t, 0, f(20))) * 40}px)` }}>
+        {String(r.n ?? 1).padStart(2, '0')}
+      </div>
+      <div style={{ position: 'absolute', left: 280, top: 300, width: 1360, background: C.surface, borderRadius: 28, padding: '60px 68px', display: 'flex', gap: 56,
+        alignItems: 'flex-start', boxShadow: SOMBRA_CARTAO, opacity: Math.min(1, v * 1.5) * (1 - sai), transform: `translateY(${(1 - v) * 24 - sai * 20}px)` }}>
+        <div style={{ width: 168, height: 168, flex: '0 0 168px', borderRadius: 36, background: '#EAF2F8', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <Ico d={ICONES[r.icone ?? 'cfop'] ?? ICONES.cfop} size={96} cor={C.primary} w={1.7} desenho={prog(t, f(8), f(16), E.linha)} />
         </div>
         <div style={{ flex: 1 }}>
-          <div style={{ display: 'inline-block', background: C.limao, color: C.limaoTinta, borderRadius: 999, padding: '6px 20px', fontSize: 26, fontWeight: 700, marginBottom: 20 }}>
-            Regra {r.n}
+          <div style={{ fontFamily: MONO, fontSize: 22, fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: C.primary, marginBottom: 18 }}>
+            <Revela t={t} a={f(6)}>Regra {String(r.n ?? 1).padStart(2, '0')}</Revela>
           </div>
-          <div style={{ fontSize: 58, fontWeight: 700, color: C.tinta, lineHeight: 1.1, letterSpacing: -1 }}>{r.titulo}</div>
-          <div style={{ fontSize: 36, color: '#33536D', marginTop: 22, lineHeight: 1.35, opacity: rampa(t, 0.6, 0.6) }}>{r.texto}</div>
-          <div style={{ fontSize: 20, color: C.suave, marginTop: 28, opacity: rampa(t, 1.0, 0.6) }}>Fonte: base de conhecimento do Harness · {r.fonte}</div>
+          <div style={{ fontSize: 54, fontWeight: 700, color: C.ink, lineHeight: 1.12, letterSpacing: '-0.015em' }}>
+            <Palavras t={t} a={f(10)} texto={r.titulo ?? ''} passo={f(2)} marca={marca} />
+          </div>
+          <div style={{ fontSize: 32, fontWeight: 450, color: '#2C3644', marginTop: 24, lineHeight: 1.4, opacity: prog(t, f(22), f(14)),
+            transform: `translateY(${(1 - prog(t, f(22), f(16))) * 14}px)` }}>{r.texto}</div>
+          <div style={{ fontFamily: MONO, fontSize: 18, color: C.ink2, marginTop: 30, paddingTop: 14, borderTop: `1px solid ${C.line}`, opacity: prog(t, f(34), f(14)) }}>
+            FONTE · {r.fonte}
+          </div>
         </div>
       </div>
     </AbsoluteFill>
@@ -175,8 +273,8 @@ const Regra: React.FC<{ r: Trecho; dur: number }> = ({ r, dur }) => {
 
 // ---------- tela com câmera, destaque e cursor ----------
 const S0 = 0.8; // escala da captura no palco
-const OX = (1920 - 1920 * S0) / 2, OY = 118;
-const Z = 1.4;
+const OX = (1920 - 1920 * S0) / 2, OY = 132;
+const Z = 1.5; // zoom do push-in (o máximo seguro é 2,2)
 type Cam = { tx: number; ty: number; z: number };
 const camPara = (c: Caixa | undefined): Cam => {
   if (!c) return { tx: 0, ty: 0, z: 1 };
@@ -195,63 +293,68 @@ export const tempoDosFocos = (r: Trecho) => {
 };
 const centro = (c: Caixa | undefined) => (c ? { x: c.x + c.w / 2, y: c.y + c.h / 2 } : null);
 
-// Regras do estilo Living Screencast (lemo-opuscar): zoom sempre >= 1, push-in no ponto da ação, drift lento enquanto a
-// voz fala, cursor com mola que nunca teleporta (continua de onde parou na tela anterior), pequeno "empurrão" no clique,
-// foco por spotlight (escurece em volta, sem borrar texto) e som em toda ação visível.
+// Living Screencast (lemo-opuscar): zoom sempre >= 1, push-in em mola mais lenta que o cursor, drift leve enquanto a voz
+// fala, cursor que nunca teleporta, aperto no clique com ripple, spotlight que escurece em volta sem borrar texto, e o
+// caminho do menu em mono, um segmento por vez.
 const Tela: React.FC<{ r: Trecho; dur: number; cursorIni?: { x: number; y: number } | null }> = ({ r, cursorIni }) => {
   const t = useT();
   const { caixas, focos, ini, fatia } = tempoDosFocos(r);
-  const entra = rampa(t, 0, 0.3);
+  const entra = prog(t, 0, f(12));
   const idx = Math.min(focos.length - 1, Math.max(0, Math.floor((t - ini) / fatia)));
   const tf = ini + idx * fatia; // início do foco atual
   const atual = caixas[focos[idx]];
   const anterior = idx === 0 ? undefined : caixas[focos[idx - 1]];
   const c0 = idx === 0 ? { tx: 0, ty: 0, z: 1 } : camPara(anterior), c1 = camPara(atual);
-  const k = interpolate(t, [tf, tf + 1.1], [0, 1], { ...clamp, easing: suave });
-  const drift = 1 + 0.022 * interpolate(t, [tf + 1.1, tf + fatia + 1.1], [0, 1], clamp);
+  const k = mola(t, tf + f(12), MOLA.camera);
+  const drift = 1 + Math.min(0.012, 0.004 * Math.max(0, t - tf - 1.4));
   const z = (c0.z + (c1.z - c0.z) * k) * drift;
   const cam = { tx: (c0.tx + (c1.tx - c0.tx) * k) * drift - (drift - 1) * 960, ty: (c0.ty + (c1.ty - c0.ty) * k) * drift - (drift - 1) * 540, z };
-  // cursor com mola: do foco anterior (ou de onde parou na tela anterior) até o foco atual, e clica
   const p0 = centro(anterior) ?? cursorIni ?? { x: 1180, y: 760 };
   const p1 = centro(atual) ?? p0;
-  const kc = mola(t, tf + 0.2, 18);
+  const kc = mola(t, tf + f(6), MOLA.cursor);
   const cx = p0.x + (p1.x - p0.x) * kc, cy = p0.y + (p1.y - p0.y) * kc - Math.sin(Math.min(1, kc) * Math.PI) * 36;
   const clique = t - (tf + 1.25);
-  const anel = atual ? rampa(t, tf + 1.0, 0.4) : 0;
-  const pulso = 0.5 + 0.5 * Math.sin((t - tf) * 4);
+  const anel = atual ? prog(t, tf + 1.0, f(12), E.linha) : 0;
+  const segs = (r.rotulo ?? '').split('›').map((s) => s.trim()).filter(Boolean);
+  const escala = S0 * (0.96 + 0.04 * mola(t, 0)); // a janela assenta no lugar, centrada
   return (
-    <AbsoluteFill style={{ fontFamily: FONTE, opacity: entra }}>
-      {focos.map((_, i) => (
-        <Sequence key={`c${i}`} from={Math.round((ini + i * fatia + 1.25) * FPS)} durationInFrames={6}>
-          <Audio src={staticFile('sfx/clique.wav')} volume={0.32} />
-        </Sequence>
-      ))}
-      {r.rotulo && (
-        <div style={{ position: 'absolute', top: 34, left: '50%', transform: `translateX(-50%) translateY(${(1 - mola(t, 0.1)) * -20}px)`,
-          background: C.tinta, color: '#fff', borderRadius: 999, padding: '12px 30px', fontSize: 32, fontWeight: 600, whiteSpace: 'nowrap',
-          boxShadow: '0 10px 28px rgba(20,54,80,0.25)' }}>{r.rotulo}</div>
+    <AbsoluteFill style={{ fontFamily: SANS, opacity: entra }}>
+      {focos.map((_, i) => <SomEm key={`c${i}`} em={ini + i * fatia + 1.25} src="sfx/clique.wav" volume={0.3} />)}
+      {segs.length > 0 && (
+        <div style={{ position: 'absolute', top: 48, left: OX, display: 'flex', alignItems: 'center', gap: 4, background: 'rgba(255,255,255,0.82)',
+          backdropFilter: 'blur(24px)', border: '1px solid rgba(19,24,32,.08)', borderRadius: 999, padding: '10px 22px', boxShadow: SOMBRA_CARTAO,
+          fontFamily: MONO, fontSize: 24, fontWeight: 500, color: C.ink, whiteSpace: 'nowrap', opacity: prog(t, f(6), f(10)) }}>
+          {segs.map((s, i) => (
+            <React.Fragment key={i}>
+              {i > 0 && <span style={{ color: C.ink2, opacity: prog(t, f(10) + i * f(6), f(8)), margin: '0 8px' }}>›</span>}
+              <Revela t={t} a={f(8) + i * f(6)} style={{ color: i === segs.length - 1 ? C.primary : C.ink }}>{s}</Revela>
+            </React.Fragment>
+          ))}
+        </div>
       )}
-      <div style={{ position: 'absolute', left: OX, top: OY, width: 1920, height: 1080, transform: `scale(${S0 * (0.97 + 0.03 * entra)})`, transformOrigin: '0 0',
-        borderRadius: 26, overflow: 'hidden', boxShadow: '0 40px 90px rgba(20,54,80,0.22)', border: `3px solid ${C.linha}`, background: '#fff' }}>
+      <div style={{ position: 'absolute', left: (1920 - 1920 * escala) / 2, top: OY, width: 1920, height: 1080, transform: `scale(${escala})`, transformOrigin: '0 0',
+        borderRadius: 24, overflow: 'hidden', boxShadow: SOMBRA_JANELA, background: '#fff' }}>
         <div style={{ position: 'absolute', width: 1920, height: 1080, transform: `translate(${cam.tx}px, ${cam.ty}px) scale(${cam.z})`, transformOrigin: '0 0' }}>
           <Img src={staticFile(r.imagem!)} style={{ width: 1920, height: 1080 }} />
           {(r.borrar ?? []).map((b, i) => (
             <div key={i} style={{ position: 'absolute', left: b.x, top: b.y, width: b.w, height: b.h, backdropFilter: 'blur(9px)', background: 'rgba(247,248,250,0.55)' }} />
           ))}
           {atual && (
-            <div style={{ position: 'absolute', left: atual.x - 10, top: atual.y - 10, width: atual.w + 20, height: atual.h + 20, borderRadius: 14,
-              border: `4px solid ${C.limao}`, opacity: anel,
-              boxShadow: `0 0 0 ${6 + 6 * pulso}px rgba(213,221,38,${0.25 + 0.15 * pulso}), 0 0 0 4000px rgba(12,36,56,${0.16 * anel})` }} />
+            <div style={{ position: 'absolute', left: atual.x - 8, top: atual.y - 8, width: atual.w + 16, height: atual.h + 16, borderRadius: 12,
+              border: `3px solid ${C.primary}`, opacity: anel, transform: `scale(${1.06 - 0.06 * anel})`,
+              boxShadow: `0 0 0 6px rgba(52,120,167,0.18), 0 0 0 4000px rgba(19,24,32,${0.26 * anel})` }}>
+              <div style={{ position: 'absolute', left: -3, top: -3, width: 16, height: 16, borderRadius: 4, background: C.spot, transform: `scale(${mola(t, tf + 1.15)})` }} />
+            </div>
           )}
           {atual && (
             <div style={{ position: 'absolute', left: cx, top: cy, width: 0, height: 0 }}>
-              {clique > 0 && clique < 0.7 && (
-                <div style={{ position: 'absolute', left: -40 * (0.3 + clique), top: -40 * (0.3 + clique), width: 80 * (0.3 + clique), height: 80 * (0.3 + clique),
-                  borderRadius: '50%', border: `4px solid ${C.azul}`, opacity: 1 - clique / 0.7 }} />
+              {clique > 0 && clique < 0.4 && (
+                <div style={{ position: 'absolute', left: -48 * (clique / 0.4), top: -48 * (clique / 0.4), width: 96 * (clique / 0.4), height: 96 * (clique / 0.4),
+                  borderRadius: '50%', border: `2px solid ${C.primary}`, opacity: 0.6 * (1 - clique / 0.4) }} />
               )}
-              <svg width={44} height={44} viewBox="0 0 24 24" style={{ position: 'absolute', left: -4, top: -2, filter: 'drop-shadow(0 4px 6px rgba(0,0,0,0.3))',
-                transform: `scale(${clique > 0 && clique < 0.25 ? 0.86 + 0.14 * (clique / 0.25) : 1})` }}>
-                <path d="M4 2 L4 19 L9 14.5 L12.2 21.5 L15 20.2 L11.9 13.4 L18.5 13.2 Z" fill="#fff" stroke="#143650" strokeWidth={1.4} strokeLinejoin="round" />
+              <svg width={40} height={40} viewBox="0 0 24 24" style={{ position: 'absolute', left: -4, top: -2, filter: 'drop-shadow(0 4px 6px rgba(0,0,0,0.28))',
+                transform: `scale(${clique > 0 && clique < f(3) ? 0.9 : 1})` }}>
+                <path d="M4 2 L4 19 L9 14.5 L12.2 21.5 L15 20.2 L11.9 13.4 L18.5 13.2 Z" fill={C.ink} stroke="#fff" strokeWidth={1.5} strokeLinejoin="round" />
               </svg>
             </div>
           )}
@@ -261,24 +364,28 @@ const Tela: React.FC<{ r: Trecho; dur: number; cursorIni?: { x: number; y: numbe
   );
 };
 
-// ---------- alertas ----------
+// ---------- cuidados: triângulo desenhado, um cartão por armadilha com fio lateral ----------
 const Alertas: React.FC<{ r: Trecho; dur: number }> = ({ r, dur }) => {
   const t = useT();
-  const sai = 1 - rampa(t, dur - 0.4, 0.4);
+  const sai = prog(t, dur - f(9), f(9), E.sai);
   const itens = r.itens ?? [];
   return (
-    <AbsoluteFill style={{ fontFamily: FONTE, opacity: rampa(t, 0, 0.5) * sai, alignItems: 'center', paddingTop: 120 }}>
-      <div style={{ fontSize: 60, fontWeight: 700, color: C.tinta, display: 'flex', alignItems: 'center', gap: 18 }}>
-        <Ico d={ICONES.alerta} size={64} cor={C.alerta} /> Cuidados
+    <AbsoluteFill style={{ fontFamily: SANS, opacity: 1 - sai }}>
+      <SomEm em={0} src="sfx/alerta.wav" volume={0.35} />
+      <div style={{ position: 'absolute', left: 160, top: 170, display: 'flex', alignItems: 'center', gap: 22 }}>
+        <Ico d={ICONES.alerta} size={72} cor={C.alerta} w={2} desenho={prog(t, f(4), f(14), E.linha)} />
+        <div style={{ fontSize: 64, fontWeight: 700, color: C.ink, letterSpacing: '-0.02em' }}><Revela t={t} a={f(6)}>Cuidados</Revela></div>
       </div>
-      <div style={{ marginTop: 50, display: 'flex', flexDirection: 'column', gap: 28, width: 1300 }}>
+      <div style={{ position: 'absolute', left: 160, top: 320, width: 1480, display: 'flex', flexDirection: 'column', gap: 24 }}>
         {itens.map((it, i) => {
           const a = r.fala_s * (0.1 + i * 0.29);
           const v = mola(t, a);
           return (
-            <div key={i} style={{ background: C.branco, borderLeft: `12px solid ${C.alerta}`, borderRadius: 24, padding: '30px 40px', fontSize: 38, color: C.tinta,
-              boxShadow: '0 16px 40px rgba(20,54,80,0.10)', opacity: v, transform: `translateY(${(1 - v) * 40}px)`, display: 'flex', gap: 24, alignItems: 'center' }}>
-              <span style={{ fontSize: 34, fontWeight: 700, color: C.alerta, width: 40 }}>{i + 1}</span>{it}
+            <div key={i} style={{ background: C.surface, borderLeft: `8px solid ${C.alerta}`, borderRadius: 18, padding: '28px 40px', fontSize: 36, color: C.ink,
+              boxShadow: SOMBRA_CARTAO, opacity: Math.min(1, v * 1.5), transform: `translateY(${(1 - v) * 24}px)`, display: 'flex', gap: 28, alignItems: 'center' }}>
+              <SomEm em={a} src="sfx/tick.wav" volume={0.18} />
+              <span style={{ fontFamily: MONO, fontSize: 28, fontWeight: 600, color: C.alertaTexto, width: 48 }}>{String(i + 1).padStart(2, '0')}</span>
+              <span style={{ lineHeight: 1.3 }}>{it}</span>
             </div>
           );
         })}
@@ -287,31 +394,53 @@ const Alertas: React.FC<{ r: Trecho; dur: number }> = ({ r, dur }) => {
   );
 };
 
-// ---------- fechamento ----------
+// ---------- fechamento: três tópicos com check desenhado, parede com as telas do vídeo e o próximo vídeo ----------
 const Fechamento: React.FC<{ d: Dados; r: Trecho; dur: number }> = ({ d, r }) => {
   const t = useT();
   const topicos = r.topicos ?? [];
   const tProx = r.fala_s * 0.72;
+  const telas = [...new Set(d.trechos.filter((x) => x.imagem).map((x) => x.imagem!))].slice(0, 6);
   return (
-    <AbsoluteFill style={{ fontFamily: FONTE, alignItems: 'center', paddingTop: 140, opacity: rampa(t, 0, 0.5) }}>
-      <div style={{ fontSize: 62, fontWeight: 700, color: C.tinta }}>Resumindo</div>
-      <div style={{ marginTop: 50, display: 'flex', flexDirection: 'column', gap: 26 }}>
+    <AbsoluteFill style={{ fontFamily: SANS }}>
+      <div style={{ position: 'absolute', left: 160, top: 170, fontSize: 64, fontWeight: 700, color: C.ink, letterSpacing: '-0.02em' }}>
+        <Revela t={t} a={f(4)}>Resumindo</Revela>
+      </div>
+      <div style={{ position: 'absolute', left: 160, top: 320, width: 820, display: 'flex', flexDirection: 'column', gap: 34 }}>
         {topicos.map((tp, i) => {
-          const v = mola(t, 0.4 + i * (r.fala_s * 0.17));
+          const a = 0.4 + i * (r.fala_s * 0.17);
+          const v = mola(t, a);
           return (
-            <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 26, fontSize: 46, color: C.tinta, opacity: v, transform: `translateX(${(1 - v) * -50}px)` }}>
-              <div style={{ width: 64, height: 64, borderRadius: '50%', background: C.ok, display: 'flex', alignItems: 'center', justifyContent: 'center', transform: `scale(${v})` }}>
-                <Ico d={ICONES.check} size={40} cor="#fff" w={3} />
-              </div>{tp}
+            <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 26, fontSize: 42, fontWeight: 600, color: C.ink, lineHeight: 1.2 }}>
+              <SomEm em={a + f(6)} src="sfx/check.wav" volume={0.2} />
+              <div style={{ width: 64, height: 64, flex: '0 0 64px', borderRadius: '50%', background: C.ok, display: 'flex', alignItems: 'center', justifyContent: 'center',
+                transform: `scale(${v})` }}>
+                <Ico d={ICONES.check} size={38} cor="#fff" w={3} desenho={prog(t, a + f(4), f(10), E.linha)} />
+              </div>
+              <Revela t={t} a={a + f(2)}>{tp}</Revela>
             </div>
           );
         })}
       </div>
-      <div style={{ marginTop: 70, opacity: rampa(t, tProx, 0.6), transform: `translateY(${(1 - rampa(t, tProx, 0.6)) * 20}px)`,
-        display: 'flex', alignItems: 'center', gap: 16, background: C.azul, color: '#fff', borderRadius: 999, padding: '18px 36px', fontSize: 36, fontWeight: 600 }}>
-        Próximo vídeo: {d.proximo} <Ico d={ICONES.seta} size={36} cor="#fff" />
+      <div style={{ position: 'absolute', left: 1060, top: 250, width: 720, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
+        {telas.map((src, i) => {
+          const v = mola(t, f(8) + i * f(5));
+          return (
+            <div key={src} style={{ aspectRatio: '16 / 9', borderRadius: 14, overflow: 'hidden', boxShadow: SOMBRA_CARTAO, background: '#fff',
+              opacity: Math.min(1, v * 1.5), transform: `translateY(${(1 - v) * 24}px) rotate(${(i % 2 ? 1 : -1) * 0.6}deg)` }}>
+              <Img src={staticFile(src)} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top left' }} />
+            </div>
+          );
+        })}
       </div>
-      <Img src={staticFile('logo_faktory_flow.png')} style={{ position: 'absolute', bottom: 70, height: 64, opacity: rampa(t, tProx + 0.4, 0.6) }} />
+      <div style={{ position: 'absolute', left: 160, bottom: 200, display: 'flex', alignItems: 'center', gap: 22, opacity: prog(t, tProx, f(14)),
+        transform: `translateY(${(1 - prog(t, tProx, f(16))) * 20}px)` }}>
+        <div style={{ fontFamily: MONO, fontSize: 22, fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: C.ink2 }}>Próximo vídeo</div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 16, background: C.primary, color: '#fff', borderRadius: 999, padding: '16px 34px', fontSize: 34, fontWeight: 600,
+          boxShadow: '0 16px 36px rgba(52,120,167,0.30)' }}>
+          {d.proximo} <Ico d={ICONES.seta} size={34} cor="#fff" desenho={prog(t, tProx + f(8), f(10), E.linha)} />
+        </div>
+      </div>
+      <Img src={staticFile('logo_faktory_flow.png')} style={{ position: 'absolute', right: 140, bottom: 196, height: 60, opacity: prog(t, tProx + 0.4, f(14)) }} />
     </AbsoluteFill>
   );
 };
@@ -320,19 +449,18 @@ const Fechamento: React.FC<{ d: Dados; r: Trecho; dur: number }> = ({ d, r }) =>
 const pedacos = (fala: string) => {
   const frases = fala.match(/[^.!?:]+[.!?:]?/g)?.map((s) => s.trim()).filter(Boolean) ?? [fala];
   const out: string[] = [];
-  for (const f of frases) {
-    if (f.length <= 78) { out.push(f); continue; }
+  for (const fr of frases) {
+    if (fr.length <= 78) { out.push(fr); continue; }
     let atual = '';
-    for (const parte of f.split(/(?<=,)\s+/)) {
+    for (const parte of fr.split(/(?<=,)\s+/)) {
       if ((atual + ' ' + parte).trim().length > 78 && atual) { out.push(atual.trim()); atual = parte; } else atual = (atual + ' ' + parte).trim();
     }
     if (atual) out.push(atual);
   }
   return out;
 };
-// Legendas (regras do lemo-opuscar): uma frase por vez, sincronizada com o tempo medido de cada frase da narração;
-// fica na tela pelo menos max(1,8 s, fala + 0,6 s) ou até a próxima; pílula de vidro fosco; sobe quando o destaque
-// da tela está na parte de baixo, para não cobrir o elemento de que se está falando.
+// Legendas (lemo-opuscar): uma frase por vez, no tempo medido de cada frase da narração; fica pelo menos
+// max(1,8 s, fala + 0,6 s) ou até a próxima; sobe quando o destaque da tela está embaixo, para não cobrir o elemento.
 const cuesDe = (r: Trecho) => {
   if (r.legendas?.length) return r.legendas.map((l) => ({ texto: l.texto, ini: r.inicio + l.ini, fim: r.inicio + l.fim }));
   const ps = pedacos(r.fala);
@@ -347,56 +475,56 @@ const Legenda: React.FC<{ d: Dados }> = ({ d }) => {
   if (i < 0) return null;
   const c = cues[i];
   const fimVisivel = Math.min(Math.max(c.fim + 0.6, c.ini + 1.8), cues[i + 1]?.ini ?? Infinity);
-  const o = Math.min(rampa(t, c.ini, 0.18), 1 - rampa(t, fimVisivel - 0.2, 0.2));
-  // destaque embaixo? então a legenda vai para o alto
+  const o = Math.min(prog(t, c.ini, f(5)), 1 - prog(t, fimVisivel - f(5), f(5), E.sai));
   const r = d.trechos.find((x) => t >= x.inicio && t < x.inicio + x.duracao);
   const alvo = r?.cena === 'tela' ? r.caixas?.[(r.focos ?? [r.foco ?? 0])[0]] : null;
-  const emCima = alvo ? OY + (alvo.y + alvo.h) * S0 > 1080 - 200 : false;
+  const emCima = alvo ? OY + (alvo.y + alvo.h) * S0 > 1080 * 0.75 : false;
   return (
-    <div style={{ position: 'absolute', [emCima ? 'top' : 'bottom']: emCima ? 112 : 40, width: '100%', display: 'flex', justifyContent: 'center', fontFamily: FONTE }}>
-      <div style={{ maxWidth: 1500, background: 'rgba(16,40,60,0.62)', backdropFilter: 'blur(14px)', border: '1px solid rgba(255,255,255,0.18)',
-        color: '#fff', fontSize: 38, lineHeight: 1.3, padding: '14px 32px', borderRadius: 999, textAlign: 'center',
-        boxShadow: '0 12px 30px rgba(12,36,56,0.25)', opacity: o, transform: `translateY(${(1 - o) * 8}px)` }}>{c.texto}</div>
+    <div style={{ position: 'absolute', [emCima ? 'top' : 'bottom']: emCima ? 120 : 44, width: '100%', display: 'flex', justifyContent: 'center', fontFamily: SANS }}>
+      <div style={{ maxWidth: 1400, background: 'rgba(19,24,32,0.72)', backdropFilter: 'blur(20px)', border: '1px solid rgba(255,255,255,0.14)',
+        color: '#fff', fontSize: 38, fontWeight: 600, letterSpacing: '-0.005em', lineHeight: 1.25, padding: '14px 34px', borderRadius: 20, textAlign: 'center',
+        boxShadow: '0 12px 30px rgba(19,24,32,0.22)', opacity: o, transform: `translateY(${(1 - o) * 10}px)` }}>{c.texto}</div>
     </div>
   );
 };
 
-// ---------- moldura fixa ----------
+// ---------- moldura fixa: marca, pílula do capítulo e barra de progresso ----------
 const Moldura: React.FC<{ d: Dados }> = ({ d }) => {
   const t = useT();
   const r = d.trechos.find((x) => t >= x.inicio && t < x.inicio + x.duracao);
   const mostra = r && r.cena !== 'abertura' && r.cena !== 'fechamento' && r.cena !== 'tela' ? 1 : 0;
-  // pílula de capítulo (01 a 04), sempre no canto, também nas telas
   const cap = r ? CAPITULO[r.cena] : undefined;
   const iniCap = r ? (d.trechos.find((x) => CAPITULO[x.cena] === cap)?.inicio ?? 0) : 0;
   const vCap = cap ? mola(t, iniCap + 0.2) : 0;
   return (
     <>
-      <div style={{ position: 'absolute', left: 48, top: 40, display: 'flex', alignItems: 'center', gap: 18, opacity: mostra, fontFamily: FONTE }}>
-        <Img src={staticFile('logo_faktory_flow.png')} style={{ height: 44 }} />
-        <div style={{ background: C.limaoSuave, border: `2px solid ${C.limao}`, color: C.limaoTinta, borderRadius: 999, padding: '6px 18px', fontSize: 24, fontWeight: 600 }}>{d.titulo}</div>
+      <div style={{ position: 'absolute', left: 160, top: 64, display: 'flex', alignItems: 'center', gap: 18, opacity: mostra, fontFamily: SANS }}>
+        <Img src={staticFile('logo_faktory_flow.png')} style={{ height: 40 }} />
+        <div style={{ width: 1, height: 28, background: C.line }} />
+        <div style={{ fontSize: 22, fontWeight: 600, color: C.ink2 }}>{d.titulo}</div>
       </div>
       {cap && (
-        <div style={{ position: 'absolute', right: 48, top: 44, fontFamily: FONTE, background: 'rgba(20,54,80,0.9)', color: '#fff', borderRadius: 999,
-          padding: '8px 20px', fontSize: 22, fontWeight: 700, letterSpacing: 0.4, opacity: vCap, transform: `translateY(${(1 - vCap) * -14}px)` }}>
-          <span style={{ color: C.limao }}>{cap.slice(0, 2)}</span>{cap.slice(2)}
+        <div style={{ position: 'absolute', right: 64, top: 52, display: 'flex', alignItems: 'center', gap: 12, background: C.ink, color: '#fff', borderRadius: 999,
+          padding: '10px 22px', opacity: vCap, transform: `translateY(${(1 - vCap) * -14}px)` }}>
+          <span style={{ fontFamily: MONO, fontSize: 22, fontWeight: 600, color: C.spot }}>{cap.slice(0, 2)}</span>
+          <span style={{ fontFamily: SANS, fontSize: 20, fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase' }}>{cap.slice(5)}</span>
         </div>
       )}
-      <div style={{ position: 'absolute', left: 0, bottom: 0, height: 8, width: `${(t / d.duracaoTotal) * 100}%`, background: C.azul }} />
+      <div style={{ position: 'absolute', left: 0, bottom: 0, height: 6, width: `${(t / d.duracaoTotal) * 100}%`, background: C.primary }} />
     </>
   );
 };
 
-// ---------- trilha: música com abaixamento sob a voz ----------
-const MUSICA_BASE = 0.2, MUSICA_SOB_VOZ = 0.075;
-const volumeMusica = (d: Dados) => (f: number) => {
-  const t = f / FPS;
+// ---------- trilha: música com abaixamento sob a voz (ducking de ~10 dB) ----------
+const MUSICA_BASE = 0.2, MUSICA_SOB_VOZ = 0.062;
+const volumeMusica = (d: Dados) => (fr: number) => {
+  const t = fr / FPS;
   let fala = 0;
   for (const r of d.trechos) {
     const a = r.inicio, b = r.inicio + r.fala_s;
-    fala = Math.max(fala, Math.min(rampa(t, a - 0.35, 0.35), 1 - rampa(t, b, 0.6)));
+    fala = Math.max(fala, Math.min(prog(t, a - 0.2, 0.2, Easing.linear), 1 - prog(t, b, 0.4, Easing.linear)));
   }
-  const fade = Math.min(rampa(t, 0, 1.5), 1 - rampa(t, d.duracaoTotal - 2.5, 2.4));
+  const fade = Math.min(prog(t, 0, 1.5, Easing.linear), 1 - prog(t, d.duracaoTotal - 2.5, 2.4, Easing.linear));
   return (MUSICA_BASE - (MUSICA_BASE - MUSICA_SOB_VOZ) * fala) * fade;
 };
 
@@ -410,54 +538,55 @@ const blocos = (ts: Trecho[]) => {
   return out;
 };
 
-// Transições (lemo-opuscar: wipes, nunca dissolve): círculo que revela o capítulo novo; entre telas seguidas, whip-pan
-// lateral com um pouco de desfoque de movimento. Cada passagem tem um whoosh baixo.
+// Transições (wipes, nunca dissolve): círculo que nasce da pílula do capítulo (canto superior direito); entre telas
+// seguidas, whip-pan lateral com desfoque de movimento só durante a passagem. Cada passagem tem um whoosh baixo.
 const Transicao: React.FC<{ tipo: 'circulo' | 'whip' | 'nenhuma'; children: React.ReactNode }> = ({ tipo, children }) => {
   const t = useT();
-  const p = interpolate(t, [0, tipo === 'whip' ? 0.42 : 0.6], [0, 1], { ...clamp, easing: Easing.out(Easing.cubic) });
+  const p = prog(t, 0, tipo === 'whip' ? f(12) : f(22), tipo === 'whip' ? E.move : E.entra);
   if (tipo === 'nenhuma' || p >= 1) return <AbsoluteFill>{children}</AbsoluteFill>;
-  if (tipo === 'whip') return <AbsoluteFill style={{ transform: `translateX(${(1 - p) * 1920}px)`, filter: `blur(${(1 - p) * 10}px)` }}>{children}</AbsoluteFill>;
-  return <AbsoluteFill style={{ clipPath: `circle(${p * 120}% at 50% 50%)` }}>{children}</AbsoluteFill>;
+  if (tipo === 'whip') return <AbsoluteFill style={{ transform: `translateX(${(1 - p) * 1920}px)`, filter: `blur(${Math.sin(p * Math.PI) * 12}px)` }}>{children}</AbsoluteFill>;
+  return <AbsoluteFill style={{ clipPath: `circle(${p * 230}% at 92% 6%)` }}>{children}</AbsoluteFill>;
 };
 
 const CAPITULO: Partial<Record<Trecho['cena'], string>> = { status: '01 · Conceito', regra: '02 · Regras de negócio', tela: '03 · Na tela', alertas: '04 · Cuidados' };
 
 export const FluxoVideo: React.FC<{ dados: Dados; musica?: string }> = ({ dados: d, musica }) => {
+  useFontes();
   const bs = blocos(d.trechos);
   // onde o cursor terminou em cada tela, para a seguinte continuar dali (o cursor nunca teleporta)
   const fimDoCursor = (r: Trecho) => { const { caixas, focos } = tempoDosFocos(r); return centro(caixas[focos[focos.length - 1]]); };
   return (
-  <AbsoluteFill>
-    <Fundo />
-    {bs.map((b, i) => {
-      const r = b[0];
-      const ant = bs[i - 1]?.[0];
-      const fim = b[b.length - 1].inicio + b[b.length - 1].duracao;
-      const sobra = r.cena === 'fechamento' ? 1.5 : 0.6; // o bloco seguinte entra por cima com o wipe
-      const dur = fim - r.inicio + sobra;
-      const tipo = !ant ? 'nenhuma' : ant.cena === 'tela' && r.cena === 'tela' ? 'whip' : 'circulo';
-      return (
-        <Sequence key={r.id} from={Math.round(r.inicio * FPS)} durationInFrames={Math.round(dur * FPS)}>
-          {ant && <Sequence durationInFrames={15}><Audio src={staticFile('sfx/whoosh.wav')} volume={0.18} /></Sequence>}
-          <Transicao tipo={tipo}>
-            {r.cena === 'abertura' && <Abertura d={d} dur={dur} />}
-            {r.cena === 'status' && <LinhaStatus bloco={b} dur={dur} />}
-            {r.cena === 'regra' && <Regra r={r} dur={dur} />}
-            {r.cena === 'tela' && <Tela r={r} dur={dur} cursorIni={ant?.cena === 'tela' ? fimDoCursor(ant) : null} />}
-            {r.cena === 'alertas' && <Alertas r={r} dur={dur} />}
-            {r.cena === 'fechamento' && <Fechamento d={d} r={r} dur={dur} />}
-          </Transicao>
+    <AbsoluteFill>
+      <Fundo />
+      {bs.map((b, i) => {
+        const r = b[0];
+        const ant = bs[i - 1]?.[0];
+        const fim = b[b.length - 1].inicio + b[b.length - 1].duracao;
+        const sobra = r.cena === 'fechamento' ? 1.5 : 0.75; // o bloco seguinte entra por cima com o wipe
+        const dur = fim - r.inicio + sobra;
+        const tipo = !ant ? 'nenhuma' : ant.cena === 'tela' && r.cena === 'tela' ? 'whip' : 'circulo';
+        return (
+          <Sequence key={r.id} from={Math.round(r.inicio * FPS)} durationInFrames={Math.round(dur * FPS)}>
+            {ant && <Sequence durationInFrames={15}><Audio src={staticFile('sfx/whoosh.wav')} volume={0.2} /></Sequence>}
+            <Transicao tipo={tipo}>
+              {r.cena === 'abertura' && <Abertura d={d} dur={dur} />}
+              {r.cena === 'status' && <LinhaStatus bloco={b} dur={dur} />}
+              {r.cena === 'regra' && <Regra r={r} dur={dur} />}
+              {r.cena === 'tela' && <Tela r={r} dur={dur} cursorIni={ant?.cena === 'tela' ? fimDoCursor(ant) : null} />}
+              {r.cena === 'alertas' && <Alertas r={r} dur={dur} />}
+              {r.cena === 'fechamento' && <Fechamento d={d} r={r} dur={dur} />}
+            </Transicao>
+          </Sequence>
+        );
+      })}
+      {d.trechos.filter((r) => r.audio).map((r) => (
+        <Sequence key={`a${r.id}`} from={Math.round(r.inicio * FPS)}>
+          <Audio src={staticFile(r.audio!)} />
         </Sequence>
-      );
-    })}
-    {d.trechos.filter((r) => r.audio).map((r) => (
-      <Sequence key={`a${r.id}`} from={Math.round(r.inicio * FPS)}>
-        <Audio src={staticFile(r.audio!)} />
-      </Sequence>
-    ))}
-    {musica && <Audio src={staticFile(musica)} volume={volumeMusica(d)} />}
-    <Moldura d={d} />
-    <Legenda d={d} />
-  </AbsoluteFill>
+      ))}
+      {musica && <Audio src={staticFile(musica)} volume={volumeMusica(d)} />}
+      <Moldura d={d} />
+      <Legenda d={d} />
+    </AbsoluteFill>
   );
 };

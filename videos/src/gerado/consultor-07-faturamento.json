@@ -11,10 +11,26 @@
    "cena": "abertura",
    "fala": "Depois do pedido vem a nota fiscal. Neste vídeo, vamos faturar um pedido, conferir a nota e entender o que é do consultor e o que é decisão do responsável fiscal.",
    "inicio": 0,
-   "duracao": 13.836,
-   "fala_s": 13.286,
-   "audio": null,
-   "legendas": null
+   "duracao": 10.908,
+   "fala_s": 10.358,
+   "audio": "audio/consultor-07-faturamento/01.wav",
+   "legendas": [
+    {
+     "texto": "Depois do pedido vem a nota fiscal.",
+     "ini": 0,
+     "fim": 2.122
+    },
+    {
+     "texto": "Neste vídeo, vamos faturar um pedido,",
+     "ini": 2.402,
+     "fim": 4.683
+    },
+    {
+     "texto": "conferir a nota e entender o que é do consultor e o que é decisão do responsável fiscal.",
+     "ini": 4.963,
+     "fim": 10.358
+    }
+   ]
   },
   {
    "id": "02",
@@ -29,22 +45,44 @@
    ],
    "destaque": 0,
    "fala": "O ponto de partida é um pedido em aberto, já com itens, parcelas e CFOP certos.",
-   "inicio": 13.836,
-   "duracao": 7.407,
-   "fala_s": 6.857,
-   "audio": null,
-   "legendas": null
+   "inicio": 10.908,
+   "duracao": 5.756,
+   "fala_s": 5.206,
+   "audio": "audio/consultor-07-faturamento/02.wav",
+   "legendas": [
+    {
+     "texto": "O ponto de partida é um pedido em aberto, já com itens, parcelas e CFOP certos.",
+     "ini": 0,
+     "fim": 5.206
+    }
+   ]
   },
   {
    "id": "03",
    "cena": "status",
    "destaque": 3,
    "fala": "Faturar abre uma nota nova ligada ao pedido. Você salva, confere e finaliza. A transmissão para a SEFAZ é a última etapa, e ela não é do consultor: é do responsável fiscal.",
-   "inicio": 21.243,
-   "duracao": 14.264,
-   "fala_s": 13.714,
-   "audio": null,
-   "legendas": null
+   "inicio": 16.664,
+   "duracao": 11.83,
+   "fala_s": 11.28,
+   "audio": "audio/consultor-07-faturamento/03.wav",
+   "legendas": [
+    {
+     "texto": "Faturar abre uma nota nova ligada ao pedido.",
+     "ini": 0,
+     "fim": 2.817
+    },
+    {
+     "texto": "Você salva, confere e finaliza.",
+     "ini": 3.097,
+     "fim": 5.174
+    },
+    {
+     "texto": "A transmissão para a SEFAZ é a última etapa, e ela não é do consultor: é do responsável fiscal.",
+     "ini": 5.454,
+     "fim": 11.28
+    }
+   ]
   },
   {
    "id": "04",
@@ -55,11 +93,32 @@
    "texto": "A nota vem com cliente, CFOP, condição e parcelas do pedido. Os itens entram pelo diálogo Selecionar Itens para Importar.",
    "fonte": "regra-faturamento-faturar-abre-nova-nfe-ligada-ao-pedido",
    "fala": "Primeira regra. Faturar abre uma nova NF-e com empresa, cliente, CFOP, condição e parcelas do pedido, e o número do pedido fica vinculado. A nota vem vazia até você importar os itens, com recalcular impostos.",
-   "inicio": 35.507,
-   "duracao": 15.55,
-   "fala_s": 15,
-   "audio": null,
-   "legendas": null
+   "inicio": 28.494,
+   "duracao": 16.195,
+   "fala_s": 15.645,
+   "audio": "audio/consultor-07-faturamento/04.wav",
+   "legendas": [
+    {
+     "texto": "Primeira regra.",
+     "ini": 0,
+     "fim": 1.023
+    },
+    {
+     "texto": "Faturar abre uma nova NF-e com empresa, cliente, CFOP, condição e parcelas do pedido,",
+     "ini": 1.303,
+     "fim": 8.485
+    },
+    {
+     "texto": "e o número do pedido fica vinculado.",
+     "ini": 8.765,
+     "fim": 10.938
+    },
+    {
+     "texto": "A nota vem vazia até você importar os itens, com recalcular impostos.",
+     "ini": 11.218,
+     "fim": 15.645
+    }
+   ]
   },
   {
    "id": "05",
@@ -70,11 +129,27 @@
    "texto": "O pedido muda para Faturado ao salvar a nota, mesmo com a nota Em Aberto.",
    "fonte": "regra-vendas-pedido-fica-faturado-ao-salvar-a-nota",
    "fala": "Segunda. Assim que a nota é salva, o pedido passa a Faturado, mesmo com a nota ainda em aberto. Por isso, o status real da nota você confere em Faturamento, Notas Fiscais.",
-   "inicio": 51.057,
-   "duracao": 14.264,
-   "fala_s": 13.714,
-   "audio": null,
-   "legendas": null
+   "inicio": 44.689,
+   "duracao": 11.941,
+   "fala_s": 11.391,
+   "audio": "audio/consultor-07-faturamento/05.wav",
+   "legendas": [
+    {
+     "texto": "Segunda.",
+     "ini": 0,
+     "fim": 0.751
+    },
+    {
+     "texto": "Assim que a nota é salva, o pedido passa a Faturado, mesmo com a nota ainda em aberto.",
+     "ini": 1.031,
+     "fim": 6.337
+    },
+    {
+     "texto": "Por isso, o status real da nota você confere em Faturamento, Notas Fiscais.",
+     "ini": 6.617,
+     "fim": 11.391
+    }
+   ]
   },
   {
    "id": "06",
@@ -85,11 +160,37 @@
    "texto": "Sem almoxarifado central ativo (ou local no projeto) o Finalizar NF recusa. Na v1.22.13 ele também baixa o estoque, mesmo sem saldo.",
    "fonte": "regra-faturamento-finalizar-nf-requisitos",
    "fala": "Terceira. Para finalizar, a empresa precisa de um almoxarifado central ativo, ou o projeto precisa de um local de estoque. Sem isso, o Finalizar NF recusa. E, ao finalizar, a nota baixa o estoque.",
-   "inicio": 65.321,
-   "duracao": 15.121,
-   "fala_s": 14.571,
-   "audio": null,
-   "legendas": null
+   "inicio": 56.63,
+   "duracao": 14.052,
+   "fala_s": 13.502,
+   "audio": "audio/consultor-07-faturamento/06.wav",
+   "legendas": [
+    {
+     "texto": "Terceira.",
+     "ini": 0,
+     "fim": 0.748
+    },
+    {
+     "texto": "Para finalizar, a empresa precisa de um almoxarifado central ativo,",
+     "ini": 1.028,
+     "fim": 5.499
+    },
+    {
+     "texto": "ou o projeto precisa de um local de estoque.",
+     "ini": 5.779,
+     "fim": 8.458
+    },
+    {
+     "texto": "Sem isso, o Finalizar NF recusa.",
+     "ini": 8.738,
+     "fim": 10.836
+    },
+    {
+     "texto": "E, ao finalizar, a nota baixa o estoque.",
+     "ini": 11.116,
+     "fim": 13.502
+    }
+   ]
   },
   {
    "id": "07",
@@ -100,11 +201,27 @@
    "texto": "Os cartões de totais seguem o filtro de status. Nota finalizada ou autorizada só aparece trocando o filtro.",
    "fonte": "regra-faturamento-lista-de-notas-filtro-padrao-e-menu",
    "fala": "Quarta. A lista de notas abre filtrada em Em Aberto, e os cartões de totais seguem esse filtro. Uma nota finalizada só aparece quando você troca o filtro de status.",
-   "inicio": 80.442,
-   "duracao": 13.407,
-   "fala_s": 12.857,
-   "audio": null,
-   "legendas": null
+   "inicio": 70.682,
+   "duracao": 11.532,
+   "fala_s": 10.982,
+   "audio": "audio/consultor-07-faturamento/07.wav",
+   "legendas": [
+    {
+     "texto": "Quarta.",
+     "ini": 0,
+     "fim": 0.563
+    },
+    {
+     "texto": "A lista de notas abre filtrada em Em Aberto, e os cartões de totais seguem esse filtro.",
+     "ini": 0.843,
+     "fim": 6.31
+    },
+    {
+     "texto": "Uma nota finalizada só aparece quando você troca o filtro de status.",
+     "ini": 6.59,
+     "fim": 10.982
+    }
+   ]
   },
   {
    "id": "08",
@@ -113,11 +230,17 @@
    "foco": 0,
    "rotulo": "Pedido › ⋯ › Faturar",
    "fala": "Na prática: no menu do pedido em aberto, clique em Faturar.",
-   "inicio": 93.849,
-   "duracao": 5.264,
-   "fala_s": 4.714,
-   "audio": null,
-   "legendas": null,
+   "inicio": 82.214,
+   "duracao": 4.117,
+   "fala_s": 3.567,
+   "audio": "audio/consultor-07-faturamento/08.wav",
+   "legendas": [
+    {
+     "texto": "Na prática: no menu do pedido em aberto, clique em Faturar.",
+     "ini": 0,
+     "fim": 3.567
+    }
+   ],
    "imagem": "telas/consultor-07-faturamento/01-menu-faturar.png",
    "caixas": [
     {
@@ -138,11 +261,22 @@
    ],
    "rotulo": "Selecionar Itens para Importar",
    "fala": "A nova NF-e abre com o diálogo para importar os itens do pedido. Deixe marcado recalcular impostos e importe.",
-   "inicio": 99.113,
-   "duracao": 8.693,
-   "fala_s": 8.143,
-   "audio": null,
-   "legendas": null,
+   "inicio": 86.331,
+   "duracao": 8.755,
+   "fala_s": 8.205,
+   "audio": "audio/consultor-07-faturamento/09.wav",
+   "legendas": [
+    {
+     "texto": "A nova NF-e abre com o diálogo para importar os itens do pedido.",
+     "ini": 0,
+     "fim": 5.118
+    },
+    {
+     "texto": "Deixe marcado recalcular impostos e importe.",
+     "ini": 5.398,
+     "fim": 8.205
+    }
+   ],
    "imagem": "telas/consultor-07-faturamento/02-importar.png",
    "caixas": [
     {
@@ -178,11 +312,27 @@
     }
    ],
    "fala": "Repare na faixa de homologação: a nota não tem validade fiscal. E aqui está o aviso de impostos não calculados, com o motivo: falta o CST de PIS e COFINS na NCM. Mesmo assim, dá para salvar em Salvar e Permanecer.",
-   "inicio": 107.806,
-   "duracao": 18.121,
-   "fala_s": 17.571,
-   "audio": null,
-   "legendas": null,
+   "inicio": 95.086,
+   "duracao": 14.243,
+   "fala_s": 13.693,
+   "audio": "audio/consultor-07-faturamento/10.wav",
+   "legendas": [
+    {
+     "texto": "Repare na faixa de homologação: a nota não tem validade fiscal.",
+     "ini": 0,
+     "fim": 3.978
+    },
+    {
+     "texto": "E aqui está o aviso de impostos não calculados, com o motivo: falta o CST de PIS e COFINS na NCM.",
+     "ini": 4.258,
+     "fim": 10.212
+    },
+    {
+     "texto": "Mesmo assim, dá para salvar em Salvar e Permanecer.",
+     "ini": 10.492,
+     "fim": 13.693
+    }
+   ],
    "imagem": "telas/consultor-07-faturamento/03-nova-nfe.png",
    "caixas": [
     {
@@ -225,11 +375,27 @@
     }
    ],
    "fala": "Em Faturamento, Notas Fiscais, aba NF-e, a nota aparece em aberto. No menu dela estão o Finalizar NF e o Preview da DANFE, para conferir. E, ao lado, o avião de papel: esse é o Transmitir.",
-   "inicio": 125.927,
-   "duracao": 15.979,
-   "fala_s": 15.429,
-   "audio": null,
-   "legendas": null,
+   "inicio": 109.329,
+   "duracao": 13.652,
+   "fala_s": 13.102,
+   "audio": "audio/consultor-07-faturamento/11.wav",
+   "legendas": [
+    {
+     "texto": "Em Faturamento, Notas Fiscais, aba NF-e, a nota aparece em aberto.",
+     "ini": 0,
+     "fim": 5.338
+    },
+    {
+     "texto": "No menu dela estão o Finalizar NF e o Preview da DANFE, para conferir.",
+     "ini": 5.619,
+     "fim": 9.899
+    },
+    {
+     "texto": "E, ao lado, o avião de papel: esse é o Transmitir.",
+     "ini": 10.179,
+     "fim": 13.102
+    }
+   ],
    "imagem": "telas/consultor-07-faturamento/04-lista-notas.png",
    "caixas": [
     {
@@ -269,11 +435,22 @@
    ],
    "rotulo": "Finalizar NF",
    "fala": "Com a autorização, clique em Finalizar NF e confirme. A nota fica só para visualização, e o pedido sai da lista de em aberto: agora ele está faturado.",
-   "inicio": 141.906,
-   "duracao": 12.55,
-   "fala_s": 12,
-   "audio": null,
-   "legendas": null,
+   "inicio": 122.981,
+   "duracao": 10.252,
+   "fala_s": 9.702,
+   "audio": "audio/consultor-07-faturamento/11b.wav",
+   "legendas": [
+    {
+     "texto": "Com a autorização, clique em Finalizar NF e confirme.",
+     "ini": 0,
+     "fim": 3.409
+    },
+    {
+     "texto": "A nota fica só para visualização, e o pedido sai da lista de em aberto: agora ele está faturado.",
+     "ini": 3.689,
+     "fim": 9.702
+    }
+   ],
    "imagem": "telas/consultor-07-faturamento/05-finalizar.png",
    "caixas": [
     {
@@ -301,11 +478,22 @@
    ],
    "rotulo": "Estoque › Movimentos",
    "fala": "E a finalização mexe no estoque: nasce uma saída do tipo expedição, com origem na nota, no almoxarifado central.",
-   "inicio": 154.456,
-   "duracao": 8.693,
-   "fala_s": 8.143,
-   "audio": null,
-   "legendas": null,
+   "inicio": 133.233,
+   "duracao": 8.108,
+   "fala_s": 7.558,
+   "audio": "audio/consultor-07-faturamento/11c.wav",
+   "legendas": [
+    {
+     "texto": "E a finalização mexe no estoque: nasce uma saída do tipo expedição, com origem na nota,",
+     "ini": 0,
+     "fim": 5.616
+    },
+    {
+     "texto": "no almoxarifado central.",
+     "ini": 5.896,
+     "fim": 7.558
+    }
+   ],
    "imagem": "telas/consultor-07-faturamento/06-saida-estoque.png",
    "caixas": [
     {
@@ -352,11 +540,27 @@
     }
    ],
    "fala": "Atenção: nesta versão, ela baixa mesmo sem saldo. Aqui o item ficou negativo. Por isso, confira o saldo antes de finalizar.",
-   "inicio": 163.149,
-   "duracao": 9.55,
-   "fala_s": 9,
-   "audio": null,
-   "legendas": null,
+   "inicio": 141.341,
+   "duracao": 8.895,
+   "fala_s": 8.345,
+   "audio": "audio/consultor-07-faturamento/11d.wav",
+   "legendas": [
+    {
+     "texto": "Atenção: nesta versão, ela baixa mesmo sem saldo.",
+     "ini": 0,
+     "fim": 3.133
+    },
+    {
+     "texto": "Aqui o item ficou negativo.",
+     "ini": 3.413,
+     "fim": 5.344
+    },
+    {
+     "texto": "Por isso, confira o saldo antes de finalizar.",
+     "ini": 5.624,
+     "fim": 8.345
+    }
+   ],
    "imagem": "telas/consultor-07-faturamento/07-saldo-negativo.png",
    "caixas": [
     {
@@ -394,11 +598,32 @@
     "Transmitir, cancelar e inutilizar: só o responsável fiscal."
    ],
    "fala": "Três cuidados. O avião de papel na linha da nota é o Transmitir, e ele é irreversível, mesmo em homologação. O Excluir fica no mesmo menu do Ver Timeline. E transmitir, cancelar ou inutilizar numeração é sempre decisão do responsável fiscal.",
-   "inicio": 172.699,
-   "duracao": 18.121,
-   "fala_s": 17.571,
-   "audio": null,
-   "legendas": null
+   "inicio": 150.236,
+   "duracao": 16.928,
+   "fala_s": 16.378,
+   "audio": "audio/consultor-07-faturamento/12.wav",
+   "legendas": [
+    {
+     "texto": "Três cuidados.",
+     "ini": 0,
+     "fim": 1.332
+    },
+    {
+     "texto": "O avião de papel na linha da nota é o Transmitir, e ele é irreversível, mesmo em homologação.",
+     "ini": 1.612,
+     "fim": 7.469
+    },
+    {
+     "texto": "O Excluir fica no mesmo menu do Ver Timeline.",
+     "ini": 7.749,
+     "fim": 10.53
+    },
+    {
+     "texto": "E transmitir, cancelar ou inutilizar numeração é sempre decisão do responsável fiscal.",
+     "ini": 10.81,
+     "fim": 16.378
+    }
+   ]
   },
   {
    "id": "13",
@@ -409,12 +634,33 @@
     "Transmitir é do responsável fiscal"
    ],
    "fala": "Resumindo: importe os itens com recalcular impostos. A nota salva já deixa o pedido faturado. E a transmissão é do responsável fiscal. No próximo vídeo, o financeiro: títulos, baixa e fluxo de caixa.",
-   "inicio": 190.82,
-   "duracao": 14.693,
-   "fala_s": 14.143,
-   "audio": null,
-   "legendas": null
+   "inicio": 167.164,
+   "duracao": 13.86,
+   "fala_s": 13.31,
+   "audio": "audio/consultor-07-faturamento/13.wav",
+   "legendas": [
+    {
+     "texto": "Resumindo: importe os itens com recalcular impostos.",
+     "ini": 0,
+     "fim": 3.484
+    },
+    {
+     "texto": "A nota salva já deixa o pedido faturado.",
+     "ini": 3.764,
+     "fim": 6.302
+    },
+    {
+     "texto": "E a transmissão é do responsável fiscal.",
+     "ini": 6.582,
+     "fim": 9.036
+    },
+    {
+     "texto": "No próximo vídeo, o financeiro: títulos, baixa e fluxo de caixa.",
+     "ini": 9.316,
+     "fim": 13.31
+    }
+   ]
   }
  ],
- "duracaoTotal": 207.013
+ "duracaoTotal": 182.524
 }

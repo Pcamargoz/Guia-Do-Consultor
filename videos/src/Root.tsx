@@ -1,6 +1,6 @@
 import React from 'react';
 import { Composition, getStaticFiles } from 'remotion';
-import { FluxoVideo, FPS, type Dados } from './FluxoVideo';
+import { FluxoVideo, FPS, type Dados } from './FluxoVideoV3';
 import fluxo1 from './gerado/fluxo-1-vendas.json';
 import consultor03 from './gerado/consultor-03-comercial.json';
 import consultor01 from './gerado/consultor-01-suprimentos.json';
