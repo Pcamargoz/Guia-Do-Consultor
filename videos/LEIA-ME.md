@@ -6,7 +6,9 @@ Vídeos animados com narração e legenda que explicam cada fluxo do Faktory Flo
 
 ## Estado e plano (para retomar)
 
-> **23/10/2026, fim do dia:** os 12 vídeos estão publicados com o motor v4. O **motor v5 está pronto e é o padrão** do `src/Root.tsx` (o v4 ficou como `<id>-v4`), mas **nenhum vídeo foi refeito**: o usuário pediu para refazer só com ordem dele. Quando ele mandar, rode a fila normalmente (`node scripts/lote.mjs <ids…>`); a narração em cache é reaproveitada. Depois de cada vídeo: `node scripts/qa.mjs ../public/videos/<id>.mp4 --folha out/<id>-folha.jpg`.
+> **24/10/2026:** os 12 vídeos publicados ainda são do motor v4. O **motor v6 ("sem engasgos") está pronto e é o padrão** do `src/Root.tsx` (o v5 e o v4 ficaram como `<id>-v5` e `<id>-v4`). **Nenhum vídeo foi refeito**: o usuário vai mandar um documento com melhorias e pedir para refazer. Quando ele mandar, rode a fila normalmente (`node scripts/lote.mjs <ids…>`); a narração em cache é reaproveitada. Depois de cada vídeo: `node scripts/qa.mjs ../public/videos/<id>.mp4 --folha out/<id>-folha.jpg` e `node scripts/engasgos.mjs <id>` (imagem parada, quadro repetido, pops). O que o v6 corrige e por quê: `docs/motor-de-video/v6-sem-engasgos.md` no Harness.
+>
+> Testar o motor sem refazer vídeo: `node scripts/remotion-em-partes.mjs <id> out/teste.mp4 --de <s> --ate <s>` (só o trecho, sem som) e `node scripts/engasgos.mjs <id> out/teste.mp4 --inicio <s>`.
 
 Atualizado em 23/10/2026. Estação nova: `C:\Users\pedro\OneDrive\Desktop\Guia-Do-Consultor` (RTX 3050, VoiceStudio 0.5.6 com o modelo OmniVoice na GPU). O usuário aprovou a **voz L fixa** e pediu o **motor v4** (motions ousados, telas avançadas) nos 12 vídeos, o piloto incluído, sem prévia.
 
