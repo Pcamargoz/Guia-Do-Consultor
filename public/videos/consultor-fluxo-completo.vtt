@@ -1,103 +1,103 @@
 WEBVTT
 
-00:00:00.000 --> 00:00:03.500
+00:00:01.100 --> 00:00:05.041
 Cada módulo do Faktory Flow conversa com o próximo.
 
-00:00:03.500 --> 00:00:08.464
+00:00:05.041 --> 00:00:10.429
 Neste vídeo, vamos ver o caminho inteiro de uma venda, do lead até a gestão,
 
-00:00:08.464 --> 00:00:11.535
+00:00:10.429 --> 00:00:13.555
 e o que cada módulo entrega para o seguinte.
 
-00:00:11.535 --> 00:00:15.036
+00:00:13.555 --> 00:00:17.240
 Tudo começa no CRM, com o lead e a oportunidade.
 
-00:00:15.036 --> 00:00:17.469
+00:00:17.540 --> 00:00:20.296
 A oportunidade ganha vira pedido.
 
-00:00:17.469 --> 00:00:24.449
+00:00:20.296 --> 00:00:27.901
 O pedido gera medição e ordem de produção, depois a nota fiscal, a carga e, no fim, os títulos no financeiro.
 
-00:00:24.449 --> 00:00:26.910
+00:00:27.901 --> 00:00:30.397
 E tudo chega ao painel da obra.
 
-00:00:26.910 --> 00:00:31.314
+00:00:30.397 --> 00:00:35.252
 Primeira regra do fluxo completo: quase toda passagem é um botão.
 
-00:00:31.314 --> 00:00:36.347
+00:00:35.252 --> 00:00:40.762
 Gerar pedido de venda, gerar instalação, faturar, liberar para expedição.
 
-00:00:36.347 --> 00:00:40.951
+00:00:40.762 --> 00:00:45.355
 Saber qual botão leva para o próximo módulo é metade do trabalho.
 
-00:00:40.951 --> 00:00:43.244
+00:00:45.355 --> 00:00:47.845
 Segunda: o que nasce sozinho.
 
-00:00:43.244 --> 00:00:46.156
+00:00:47.845 --> 00:00:51.093
 A oportunidade nasce da conversão do lead.
 
-00:00:46.156 --> 00:00:49.041
+00:00:51.093 --> 00:00:54.196
 As requisições nascem da ordem de produção.
 
-00:00:49.041 --> 00:00:52.970
+00:00:54.196 --> 00:00:58.516
 Os títulos e a baixa de estoque nascem da nota finalizada.
 
-00:00:52.970 --> 00:00:56.673
+00:00:58.516 --> 00:01:01.614
 E a entrada do produto acabado nasce do produzido.
 
-00:00:56.673 --> 00:00:58.851
+00:01:01.614 --> 00:01:04.037
 Terceira: a ordem importa.
 
-00:00:58.851 --> 00:01:02.031
+00:01:04.037 --> 00:01:07.564
 Ajuste o pedido e ligue a obra antes de faturar.
 
-00:01:02.031 --> 00:01:04.904
+00:01:07.564 --> 00:01:10.840
 Libere para expedição só depois de faturar.
 
-00:01:04.904 --> 00:01:09.368
+00:01:10.840 --> 00:01:15.303
 E, no CRM, reverta o ganho antes de gerar o pedido, nunca depois.
 
-00:01:09.368 --> 00:01:14.678
+00:01:15.303 --> 00:01:20.905
 No CRM, a oportunidade nasce da conversão do lead, já com o valor do budget.
 
-00:01:14.678 --> 00:01:18.884
+00:01:21.205 --> 00:01:25.556
 Em vendas, o pedido em aberto, ainda sem títulos e sem nota.
 
-00:01:18.884 --> 00:01:24.457
+00:01:25.856 --> 00:01:31.824
 Em serviços, a medição aprovada leva à instalação pelo botão gerar instalação.
 
-00:01:24.457 --> 00:01:29.291
+00:01:32.124 --> 00:01:37.270
 Na produção, a ordem produzida lança o acabado no estoque, com custo.
 
-00:01:29.291 --> 00:01:34.899
+00:01:37.570 --> 00:01:43.651
 No faturamento, a nota em homologação é finalizada, e o avião de papel, o transmitir,
 
-00:01:34.899 --> 00:01:37.380
+00:01:43.651 --> 00:01:46.256
 fica com o responsável fiscal.
 
-00:01:37.380 --> 00:01:43.080
+00:01:46.336 --> 00:01:52.430
 Na expedição, o histórico da carga mostra cada checkpoint, até a saída para a rota.
 
-00:01:43.080 --> 00:01:47.928
+00:01:52.730 --> 00:01:57.948
 No financeiro, os títulos da nota são recebidos, inclusive em parte.
 
-00:01:47.928 --> 00:01:54.023
+00:01:58.248 --> 00:02:04.747
 E, na gestão, o painel da obra junta vendido, faturado e as pendências de cada documento.
 
-00:01:54.023 --> 00:01:56.293
+00:02:05.047 --> 00:02:07.544
 Três cuidados no teste completo.
 
-00:01:56.293 --> 00:02:01.235
+00:02:07.544 --> 00:02:13.006
 Transmitir, cancelar e inutilizar nota é decisão do responsável fiscal.
 
-00:02:01.235 --> 00:02:06.917
+00:02:13.006 --> 00:02:19.094
 Confira o saldo antes de finalizar a nota, porque ela baixa o estoque mesmo sem saldo.
 
-00:02:06.917 --> 00:02:12.120
+00:02:19.094 --> 00:02:24.048
 E use só dados de teste, registrando tudo o que criou para limpar depois.
 
-00:02:12.120 --> 00:02:18.824
+00:02:24.048 --> 00:02:31.312
 Resumindo: cada passagem tem um botão, saiba o que nasce sozinho, e respeite a ordem antes de faturar.
 
-00:02:18.824 --> 00:02:22.956
+00:02:31.312 --> 00:02:35.712
 Para o detalhe de cada módulo, veja os vídeos de cada fluxo.

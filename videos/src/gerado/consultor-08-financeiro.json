@@ -11,29 +11,29 @@
    "cena": "abertura",
    "fala": "O pedido foi faturado. Agora o dinheiro precisa entrar. Neste vídeo, vamos ver de onde nascem os títulos, como receber, inclusive em parte, e como conferir o saldo da conta.",
    "inicio": 0,
-   "duracao": 12.41,
-   "fala_s": 11.86,
+   "duracao": 13.021,
+   "fala_s": 12.121,
    "audio": "audio/consultor-08-financeiro/01.wav",
    "legendas": [
     {
      "texto": "O pedido foi faturado.",
      "ini": 0,
-     "fim": 1.703
+     "fim": 1.778
     },
     {
      "texto": "Agora o dinheiro precisa entrar.",
-     "ini": 1.983,
-     "fim": 4
+     "ini": 2.278,
+     "fim": 4.37
     },
     {
      "texto": "Neste vídeo, vamos ver de onde nascem os títulos, como receber, inclusive em parte,",
-     "ini": 4.28,
-     "fim": 9.601
+     "ini": 4.87,
+     "fim": 10.249
     },
     {
      "texto": "e como conferir o saldo da conta.",
-     "ini": 9.881,
-     "fim": 11.86
+     "ini": 10.749,
+     "fim": 12.781
     }
    ]
   },
@@ -49,15 +49,15 @@
    ],
    "destaque": 0,
    "fala": "Tudo começa nas parcelas do pedido: a condição de pagamento define quantas são e quando vencem.",
-   "inicio": 12.41,
-   "duracao": 6.715,
-   "fala_s": 6.165,
+   "inicio": 13.021,
+   "duracao": 7.164,
+   "fala_s": 6.264,
    "audio": "audio/consultor-08-financeiro/02.wav",
    "legendas": [
     {
      "texto": "Tudo começa nas parcelas do pedido: a condição de pagamento define quantas são e quando vencem.",
      "ini": 0,
-     "fim": 6.165
+     "fim": 6.264
     }
    ]
   },
@@ -66,20 +66,20 @@
    "cena": "status",
    "destaque": 3,
    "fala": "As parcelas viram títulos em Contas a Receber. Quando o cliente paga, você recebe o título, e o saldo da conta bancária sobe na hora.",
-   "inicio": 19.125,
-   "duracao": 9.064,
-   "fala_s": 8.514,
+   "inicio": 20.185,
+   "duracao": 9.62,
+   "fala_s": 8.72,
    "audio": "audio/consultor-08-financeiro/03.wav",
    "legendas": [
     {
      "texto": "As parcelas viram títulos em Contas a Receber.",
      "ini": 0,
-     "fim": 2.876
+     "fim": 3.032
     },
     {
      "texto": "Quando o cliente paga, você recebe o título, e o saldo da conta bancária sobe na hora.",
-     "ini": 3.156,
-     "fim": 8.514
+     "ini": 3.532,
+     "fim": 8.94
     }
    ]
   },
@@ -93,25 +93,25 @@
    "fonte": "regra-faturamento-finalizar-nf-gera-os-titulos",
    "fala": "Primeira regra. O Gerar Títulos do pedido só fica habilitado em pedido em aberto ou entregue que ainda não tem títulos. E, quando você finaliza a nota fiscal, os títulos são gerados sozinhos, com o número da nota como documento.",
    "critica": true,
-   "inicio": 28.189,
-   "duracao": 15.334,
-   "fala_s": 14.784,
+   "inicio": 29.805,
+   "duracao": 16.314,
+   "fala_s": 15.414,
    "audio": "audio/consultor-08-financeiro/04.wav",
    "legendas": [
     {
      "texto": "Primeira regra.",
      "ini": 0,
-     "fim": 1.023
+     "fim": 1.015
     },
     {
      "texto": "O Gerar Títulos do pedido só fica habilitado em pedido em aberto ou entregue que ainda não tem títulos.",
-     "ini": 1.303,
-     "fim": 7.813
+     "ini": 1.515,
+     "fim": 8.29
     },
     {
      "texto": "E, quando você finaliza a nota fiscal, os títulos são gerados sozinhos, com o número da nota como documento.",
-     "ini": 8.093,
-     "fim": 14.784
+     "ini": 8.79,
+     "fim": 15.854
     }
    ]
   },
@@ -124,30 +124,30 @@
    "texto": "Meio de pagamento do tipo Boleto sem conta emissora faz o Gerar Títulos recusar. Mudar o tipo é decisão do fiscal.",
    "fonte": "regra-financeiro-meio-de-pagamento-boleto-exige-conta-emissora",
    "fala": "Segunda. Se o meio de pagamento da parcela é do tipo boleto, o sistema exige uma conta bancária emissora. Sem ela, os títulos não saem. Confira o tipo do meio antes, e não troque sem falar com o fiscal.",
-   "inicio": 43.523,
-   "duracao": 14.168,
-   "fala_s": 13.618,
+   "inicio": 46.119,
+   "duracao": 15.47,
+   "fala_s": 14.57,
    "audio": "audio/consultor-08-financeiro/05.wav",
    "legendas": [
     {
      "texto": "Segunda.",
      "ini": 0,
-     "fim": 0.751
+     "fim": 1.476
     },
     {
      "texto": "Se o meio de pagamento da parcela é do tipo boleto, o sistema exige uma conta bancária emissora.",
-     "ini": 1.031,
-     "fim": 7.033
+     "ini": 1.976,
+     "fim": 8.124
     },
     {
      "texto": "Sem ela, os títulos não saem.",
-     "ini": 7.313,
-     "fim": 9.26
+     "ini": 8.624,
+     "fim": 10.662
     },
     {
      "texto": "Confira o tipo do meio antes, e não troque sem falar com o fiscal.",
-     "ini": 9.54,
-     "fim": 13.618
+     "ini": 11.162,
+     "fim": 15.23
     }
    ]
   },
@@ -157,33 +157,33 @@
    "n": 3,
    "titulo": "Baixa parcial cria um título residual",
    "icone": "estrela",
-   "texto": "Receber menos que o valor deixa o original Recebido e cria um novo título com o saldo, no mesmo vencimento.",
+   "texto": "Receber menos que o valor deixa o original Recebido e cria um novo título com o saldo remanescente, no mesmo vencimento.",
    "fonte": "regra-financeiro-baixa-parcial-cria-titulo-residual",
-   "fala": "Terceira. Se você recebe menos que o valor do título, o original fica recebido e nasce um título novo com o saldo, no mesmo vencimento. Não é duplicidade: a soma dos dois dá o valor original.",
-   "inicio": 57.691,
-   "duracao": 13.382,
-   "fala_s": 12.832,
+   "fala": "Terceira. Se você recebe menos que o valor do título, o original fica recebido e nasce um título novo com o saldo remanescente, no mesmo vencimento. Não é duplicidade: a soma dos dois dá o valor original.",
+   "inicio": 61.589,
+   "duracao": 14.739,
+   "fala_s": 13.839,
    "audio": "audio/consultor-08-financeiro/06.wav",
    "legendas": [
     {
      "texto": "Terceira.",
      "ini": 0,
-     "fim": 0.748
+     "fim": 0.705
     },
     {
-     "texto": "Se você recebe menos que o valor do título, o original fica recebido e nasce um título novo com o saldo,",
-     "ini": 1.028,
-     "fim": 7.547
+     "texto": "Se você recebe menos que o valor do título,",
+     "ini": 1.205,
+     "fim": 3.634
     },
     {
-     "texto": "no mesmo vencimento.",
-     "ini": 7.827,
-     "fim": 9.069
+     "texto": "o original fica recebido e nasce um título novo com o saldo remanescente, no mesmo vencimento.",
+     "ini": 4.134,
+     "fim": 10.44
     },
     {
      "texto": "Não é duplicidade: a soma dos dois dá o valor original.",
-     "ini": 9.349,
-     "fim": 12.832
+     "ini": 10.94,
+     "fim": 14.499
     }
    ]
   },
@@ -196,25 +196,25 @@
    "texto": "Título recebido só aparece limpando o filtro Status. O documento é o número do pedido ou da nota.",
    "fonte": "regra-financeiro-contas-a-receber-filtro-padrao-em-aberto",
    "fala": "Quarta. Contas a Receber abre filtrada em em aberto. Para achar um título já recebido, limpe o filtro de status.",
-   "inicio": 71.073,
-   "duracao": 8.034,
-   "fala_s": 7.484,
+   "inicio": 76.328,
+   "duracao": 8.404,
+   "fala_s": 7.504,
    "audio": "audio/consultor-08-financeiro/07.wav",
    "legendas": [
     {
      "texto": "Quarta.",
      "ini": 0,
-     "fim": 0.563
+     "fim": 0.657
     },
     {
      "texto": "Contas a Receber abre filtrada em em aberto.",
-     "ini": 0.843,
-     "fim": 3.46
+     "ini": 1.157,
+     "fim": 3.704
     },
     {
      "texto": "Para achar um título já recebido, limpe o filtro de status.",
-     "ini": 3.74,
-     "fim": 7.484
+     "ini": 4.204,
+     "fim": 7.944
     }
    ]
   },
@@ -235,20 +235,20 @@
     "Pedido já faturado"
    ],
    "impacto": 2,
-   "inicio": 79.107,
-   "duracao": 11.495,
-   "fala_s": 10.945,
+   "inicio": 84.732,
+   "duracao": 12.016,
+   "fala_s": 11.116,
    "audio": "audio/consultor-08-financeiro/08.wav",
    "legendas": [
     {
      "texto": "Veja o pedido depois de faturado: a coluna títulos mostra gerados, e a nota fiscal está ligada.",
      "ini": 0,
-     "fim": 6.063
+     "fim": 6.2
     },
     {
      "texto": "No menu, o Gerar Títulos não aparece mais: ele virou pedido já faturado.",
-     "ini": 6.343,
-     "fim": 10.945
+     "ini": 6.7,
+     "fim": 11.336
     }
    ],
    "imagem": "telas/consultor-08-financeiro/00-pedido-faturado.png",
@@ -289,20 +289,20 @@
     "Status",
     "Receber"
    ],
-   "inicio": 90.602,
-   "duracao": 8.135,
-   "fala_s": 7.585,
+   "inicio": 96.748,
+   "duracao": 8.965,
+   "fala_s": 8.065,
    "audio": "audio/consultor-08-financeiro/09.wav",
    "legendas": [
     {
      "texto": "Em Financeiro, Contas a Receber, os títulos da nota estão lá: uma linha por parcela, em aberto.",
      "ini": 0,
-     "fim": 5.91
+     "fim": 6.316
     },
     {
      "texto": "Vamos receber o primeiro.",
-     "ini": 6.19,
-     "fim": 7.586
+     "ini": 6.816,
+     "fim": 8.285
     }
    ],
    "imagem": "telas/consultor-08-financeiro/01-contas-receber.png",
@@ -341,20 +341,20 @@
     null,
     "SALDO ATUAL"
    ],
-   "inicio": 98.737,
-   "duracao": 9.122,
-   "fala_s": 8.572,
+   "inicio": 105.713,
+   "duracao": 9.872,
+   "fala_s": 8.972,
    "audio": "audio/consultor-08-financeiro/10.wav",
    "legendas": [
     {
      "texto": "Antes, anote o saldo da conta em Financeiro, Saldos.",
      "ini": 0,
-     "fim": 3.347
+     "fim": 3.46
     },
     {
      "texto": "A conta de teste está com mil duzentos e trinta reais e setenta e seis centavos.",
-     "ini": 3.627,
-     "fim": 8.572
+     "ini": 3.96,
+     "fim": 9.192
     }
    ],
    "imagem": "telas/consultor-08-financeiro/02-saldo-antes.png",
@@ -389,25 +389,25 @@
     "Valor Recebido",
     "Receber"
    ],
-   "inicio": 107.859,
-   "duracao": 11.991,
-   "fala_s": 11.441,
+   "inicio": 115.585,
+   "duracao": 12.838,
+   "fala_s": 11.938,
    "audio": "audio/consultor-08-financeiro/11.wav",
    "legendas": [
     {
      "texto": "No Receber, escolha a conta bancária, que é obrigatória e não vem preenchida,",
      "ini": 0,
-     "fim": 4.842
+     "fim": 5.2
     },
     {
      "texto": "o meio de pagamento e o valor recebido.",
-     "ini": 5.122,
-     "fim": 7.397
+     "ini": 5.7,
+     "fim": 8.074
     },
     {
      "texto": "Aqui, cinquenta reais de um título de cento e vinte e cinco.",
-     "ini": 7.677,
-     "fim": 11.441
+     "ini": 8.574,
+     "fim": 12.378
     }
    ],
    "imagem": "telas/consultor-08-financeiro/03-receber.png",
@@ -468,20 +468,20 @@
     "Baixa parcial realizada; título residual criado",
     null
    ],
-   "inicio": 119.85,
-   "duracao": 10.924,
-   "fala_s": 10.374,
+   "inicio": 128.423,
+   "duracao": 11.575,
+   "fala_s": 10.675,
    "audio": "audio/consultor-08-financeiro/12.wav",
    "legendas": [
     {
      "texto": "O sistema confirma a baixa parcial e cria o título residual de setenta e cinco reais.",
      "ini": 0,
-     "fim": 5.331
+     "fim": 5.698
     },
     {
      "texto": "Repare no número: ele pega a próxima parcela livre, aqui a zero zero três.",
-     "ini": 5.611,
-     "fim": 10.374
+     "ini": 6.198,
+     "fim": 10.895
     }
    ],
    "imagem": "telas/consultor-08-financeiro/03b-parcial.png",
@@ -520,15 +520,15 @@
     null,
     "SALDO ATUAL"
    ],
-   "inicio": 130.774,
-   "duracao": 5.183,
-   "fala_s": 4.633,
+   "inicio": 139.998,
+   "duracao": 5.838,
+   "fala_s": 4.938,
    "audio": "audio/consultor-08-financeiro/13.wav",
    "legendas": [
     {
      "texto": "De volta aos saldos: a conta subiu exatamente os cinquenta reais, na hora.",
      "ini": 0,
-     "fim": 4.633
+     "fim": 4.938
     }
    ],
    "imagem": "telas/consultor-08-financeiro/04-saldo-depois.png",
@@ -556,30 +556,30 @@
     "Confira o card Recebido no mês contra o Extrato."
    ],
    "fala": "Três cuidados. Receber, pagar e estornar movem o saldo de verdade: use só conta e valor de teste. Um título manual e um gerado para o mesmo pedido duplicam a receita nos painéis. E o card recebido no mês pode somar o valor cheio numa baixa parcial: confira contra o extrato.",
-   "inicio": 135.957,
-   "duracao": 18.949,
-   "fala_s": 18.399,
+   "inicio": 145.836,
+   "duracao": 19.994,
+   "fala_s": 19.094,
    "audio": "audio/consultor-08-financeiro/14.wav",
    "legendas": [
     {
      "texto": "Três cuidados.",
      "ini": 0,
-     "fim": 1.332
+     "fim": 1.333
     },
     {
      "texto": "Receber, pagar e estornar movem o saldo de verdade: use só conta e valor de teste.",
-     "ini": 1.612,
-     "fim": 6.831
+     "ini": 1.833,
+     "fim": 7.163
     },
     {
      "texto": "Um título manual e um gerado para o mesmo pedido duplicam a receita nos painéis.",
-     "ini": 7.111,
-     "fim": 12.128
+     "ini": 7.663,
+     "fim": 13
     },
     {
      "texto": "E o card recebido no mês pode somar o valor cheio numa baixa parcial: confira contra o extrato.",
-     "ini": 12.408,
-     "fim": 18.399
+     "ini": 13.5,
+     "fim": 19.754
     }
    ]
   },
@@ -592,33 +592,33 @@
     "Confira o saldo antes e depois"
    ],
    "fala": "Resumindo: os títulos nascem do pedido ou da nota. A baixa parcial cria um residual. E confira o saldo antes e depois de cada baixa. No próximo vídeo, o fluxo de suprimentos, da solicitação ao pagamento.",
-   "inicio": 154.906,
-   "duracao": 14.06,
-   "fala_s": 13.51,
+   "inicio": 165.83,
+   "duracao": 15.057,
+   "fala_s": 14.157,
    "audio": "audio/consultor-08-financeiro/15.wav",
    "legendas": [
     {
      "texto": "Resumindo: os títulos nascem do pedido ou da nota.",
      "ini": 0,
-     "fim": 3.181
+     "fim": 3.263
     },
     {
      "texto": "A baixa parcial cria um residual.",
-     "ini": 3.461,
-     "fim": 5.579
+     "ini": 3.763,
+     "fim": 5.964
     },
     {
      "texto": "E confira o saldo antes e depois de cada baixa.",
-     "ini": 5.859,
-     "fim": 8.754
+     "ini": 6.464,
+     "fim": 9.546
     },
     {
      "texto": "No próximo vídeo, o fluxo de suprimentos, da solicitação ao pagamento.",
-     "ini": 9.034,
-     "fim": 13.51
+     "ini": 10.046,
+     "fim": 14.817
     }
    ]
   }
  ],
- "duracaoTotal": 170.466
+ "duracaoTotal": 182.387
 }

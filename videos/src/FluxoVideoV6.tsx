@@ -547,9 +547,10 @@ const camNoTempo = (r: Trecho, tt: number, focos: number[], caixas: Caixa[], ini
   const c0 = idx === 0 ? { tx: 0, ty: 0, z: 1 } : camPara(caixas[focos[idx - 1]]), c1 = camPara(caixas[focos[idx]]);
   const k = interpolate(tt, [tc, tc + FIM_VOO], [0, 1], { ...clamp, easing: VOO });
   const hop = 1 - 0.08 * Math.sin(Math.PI * k);
-  // v6: a câmera não para no foco. O avanço lento começa na chegada (1,2% por segundo, até 3%) e, no voo seguinte,
-  // sai do valor em que estava em vez de voltar a 1 de um quadro para o outro (o pulo de zoom do v5).
-  const driftDe = (tcX: number, ate: number) => 1 + Math.min(0.03, 0.012 * Math.max(0, ate - tcX - FIM_VOO));
+  // v6: a câmera não para no foco. O avanço lento começa na chegada (1,5% por segundo, até 8%) e, no voo seguinte,
+  // sai do valor em que estava em vez de voltar a 1 de um quadro para o outro (o pulo de zoom do v5). Com o teto de 3%
+  // (primeira versão do v6), uma tela de foco único e fala longa ficava de 1 a 2 s quase parada.
+  const driftDe = (tcX: number, ate: number) => 1 + Math.min(0.08, 0.015 * Math.max(0, ate - tcX - FIM_VOO));
   const dAnt = idx > 0 ? driftDe(ini + (idx - 1) * fatia + f(6), tc) : 1;
   const drift = dAnt + (driftDe(tc, tt) - dAnt) * k;
   // impacto: punch de zoom (+12% em 6 quadros, volta em 5) logo depois de os cantos fecharem
@@ -603,6 +604,8 @@ const Lupa: React.FC<{ r: Trecho; c: NonNullable<Caixa>; t: number; a: number; s
   // nada de lupa sobre área borrada (dado pessoal): a lupa mostra o print original
   const toca = (r.borrar ?? []).some((b) => b.x < c.x + c.w + 18 && b.x + b.w > c.x - 18 && b.y < c.y + c.h + 18 && b.y + b.h > c.y - 18);
   if (toca) return null;
+  // v6: campo encostado na borda do print (menu aberto que o print cortou) não ganha lupa: ela mostraria o cartão cortado
+  if (c.x < 6 || c.y < 6 || c.x + c.w > 1914 || c.y + c.h > 1074) return null;
   const PAD = 18, rw = c.w + 2 * PAD, rh = c.h + 2 * PAD;
   const L = Math.min(2.2, 640 / rw, 240 / rh);
   if (L < 1.25) return null; // área grande demais: a câmera já mostra bem
@@ -1138,9 +1141,12 @@ type Retangulo = { x: number; y: number; w: number; h: number };
 
 // As cenas não têm fundo próprio (o Fundo é global). Durante a passagem, a cena que entra ganha o papel por baixo,
 // para a cena que sai não aparecer pelos vazios; o papel some quando a cena anterior termina.
+// v6: `ate` é o quadro exato em que a cena anterior acaba (as duas Sequences se sobrepõem por esse tanto). No v5 o papel
+// saía pela duração da passagem, um pouco antes do fim da cena anterior: no portal para os cuidados, a tela antiga
+// reaparecia por 2 quadros e sumia de uma vez.
 const Cobertura: React.FC<{ ate: number }> = ({ ate }) => {
   const t = useT();
-  const o = 1 - prog(t, f(Math.max(20, ate - 2)), f(4), Easing.linear);
+  const o = 1 - prog(t, f(Math.max(20, ate)), f(4), Easing.linear);
   return o > 0 ? <AbsoluteFill style={{ background: C.bg, opacity: o }} /> : null;
 };
 
@@ -1177,7 +1183,9 @@ const BorraoX: React.FC<{ id: string; sx: number; children: React.ReactNode; sty
     {children}
   </AbsoluteFill>
 );
-const PILHA = Easing.bezier(0.12, 0.9, 0.2, 1);
+// v6: arranca devagar e freia no fim. A curva do v5 (0,12; 0,9; 0,2; 1) movia ~200 px no primeiro quadro; entre a regra
+// azul e a clara, um quarto da tela trocava de cor num quadro e parecia um corte seco (engasgos.mjs: pop de 0,97)
+const PILHA = Easing.bezier(0.45, 0, 0.12, 1);
 
 // Saída: o que a cena faz nos últimos instantes, conforme a passagem seguinte.
 const Saida: React.FC<{ tipo: TipoPassagem; ini: number; ancora?: Ponto; uid: string; children: React.ReactNode }> = ({ tipo, ini, ancora, uid, children }) => {
@@ -1294,8 +1302,10 @@ const PortaDeLetra: React.FC<{ r: Trecho; uid: string }> = ({ r, uid }) => {
     <AbsoluteFill style={{ pointerEvents: 'none' }}>
       <Som em={f(PORTA_Q)} nome="riser" db={-10} />
       <Som em={f(52)} nome="whoosh-ar" db={-12} />
-      {/* v6: o papel sobe do rodapé em 8 quadros (cortina) em vez de cobrir a regra num quadro só */}
-      <AbsoluteFill style={{ background: C.bg, clipPath: `inset(${(1 - interpolate(q, [0, 8], [0, 1], { ...clamp, easing: Easing.out(Easing.cubic) })) * 100}% 0 0 0)` }} />
+      {/* v6: o papel sobe do rodapé em 12 quadros (cortina, começo suave) em vez de cobrir a regra num quadro só; o rótulo e as letras
+          ficam dentro da mesma cortina (sem isso, "TELA" aparecia por cima do cartão da regra antes de o papel chegar) */}
+      <AbsoluteFill style={{ clipPath: `inset(${(1 - interpolate(q, [0, 12], [0, 1], { ...clamp, easing: Easing.bezier(0.3, 0, 0.2, 1) })) * 100}% 0 0 0)` }}>
+      <AbsoluteFill style={{ background: C.bg }} />
       <svg width={0} height={0} style={{ position: 'absolute' }}>
         <clipPath id={id} clipPathUnits="userSpaceOnUse">
           <text x={xTexto} y={base} fontFamily={SANS} fontWeight={900} fontSize={TAM} letterSpacing="-0.03em">{PAL}</text>
@@ -1318,6 +1328,7 @@ const PortaDeLetra: React.FC<{ r: Trecho; uid: string }> = ({ r, uid }) => {
         <svg width={1920} height={1080} style={{ position: 'absolute', left: 0, top: 0, opacity: 1 - Math.min(1, u * 4) }}>
           <text x={xTexto} y={base} fontFamily={SANS} fontWeight={900} fontSize={TAM} letterSpacing="-0.03em" fill="none" stroke={C.primary} strokeWidth={5}>{PAL}</text>
         </svg>
+      </AbsoluteFill>
       </AbsoluteFill>
       {seguranca > 0 && <AbsoluteFill style={{ opacity: seguranca }}><AbsoluteFill style={{ background: C.bg }} />{telaParada}</AbsoluteFill>}
     </AbsoluteFill>
@@ -1370,11 +1381,11 @@ const CapituloAbre: React.FC<{ cap: string }> = ({ cap }) => {
 
 const CAPITULO: Partial<Record<Trecho['cena'], string>> = { status: '01 · Conceito', regra: '02 · Regras de negócio', tela: '03 · Na tela', alertas: '04 · Cuidados' };
 
-// v6: câmera viva. Toda cena avança devagar (0,6% por segundo, até 6%) e flutua alguns pixels num ruído contínuo que
+// v6: câmera viva. Toda cena avança devagar (0,6% por segundo, até 10%) e flutua alguns pixels num ruído contínuo que
 // começa em zero, então a entrada da cena não pula. Nos vídeos do v4 e do v5 os cartões e o status ficavam parados
 // enquanto a voz corria: de 67 a 107 s de imagem parada por vídeo, segundo o scripts/engasgos.mjs.
 const vivaEm = (t: number, seed: string) => ({
-  s: 1 + Math.min(0.06, 0.006 * Math.max(0, t)),
+  s: 1 + Math.min(0.1, 0.006 * Math.max(0, t)),
   dx: 14 * (noise2D(`viva-x-${seed}`, t * 0.22, 0) - noise2D(`viva-x-${seed}`, 0, 0)),
   dy: 9 * (noise2D(`viva-y-${seed}`, 0, t * 0.22) - noise2D(`viva-y-${seed}`, 0, 0)),
 });
@@ -1488,8 +1499,11 @@ export const FluxoVideo: React.FC<{ dados: Dados; musica?: string }> = ({ dados:
       {plano.flatMap(({ r, tipo }) => (SOM_PASSAGEM[tipo] ?? []).map((s, k) => (
         <Som key={`p${r.id}-${k}`} em={Math.round(r.inicio * FPS) / FPS + s.em} nome={s.nome} db={s.db} />
       )))}
-      {plano.map((p) => {
+      {plano.map((p, i) => {
         const { b, r, ant, tipo, tipoProx, abre, atraso, dur } = p;
+        const prev = plano[i - 1];
+        // quadros em que a cena anterior ainda está viva por baixo desta
+        const sobreposicao = prev ? Math.round(prev.dur * FPS) - (Math.round(r.inicio * FPS) - Math.round(prev.r.inicio * FPS)) : 0;
         const fundoRegra = r.cena === 'regra' ? ((nRegra++ % 2) ? 'escuro' : 'papel') : undefined;
         const cap = CAPITULO[r.cena];
         return (
@@ -1497,7 +1511,7 @@ export const FluxoVideo: React.FC<{ dados: Dados; musica?: string }> = ({ dados:
             <Saida tipo={tipoProx} ini={p.iniSaida} ancora={p.ancoraSaida} uid={r.id}>
               <Transicao tipo={tipo} uid={r.id} ancora={p.ancora} ret={p.ret}>
                 {/* v6: a porta de letra traz o próprio papel (em cortina); a cobertura opaca dela cortava a regra num quadro */}
-                {ant && tipo !== 'porta' && <Cobertura ate={DURACAO_PASSAGEM[tipo]} />}
+                {ant && tipo !== 'porta' && <Cobertura ate={sobreposicao} />}
                 <Sequence from={Math.round(atraso * FPS)}>
                   <Viva seed={r.id}>
                   {r.cena === 'abertura' && <Abertura d={d} dur={dur} />}

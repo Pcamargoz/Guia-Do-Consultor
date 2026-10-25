@@ -1,106 +1,109 @@
 WEBVTT
 
-00:00:00.000 --> 00:00:05.509
+00:00:01.100 --> 00:00:07.185
 Implantação tem muita coisa para acompanhar: pendências, cadastros, treinamentos.
 
-00:00:05.509 --> 00:00:10.981
+00:00:07.185 --> 00:00:13.291
 Neste vídeo, vamos ver como o módulo de tarefas organiza isso em quadros e cartões,
 
-00:00:10.981 --> 00:00:15.020
+00:00:13.291 --> 00:00:17.212
 e o detalhe que faz o cartão aparecer para a pessoa certa.
 
-00:00:15.020 --> 00:00:21.134
+00:00:17.212 --> 00:00:23.892
 Tudo começa num quadro, que agrupa as tarefas de um projeto, de um cliente ou de uma equipe.
 
-00:00:21.134 --> 00:00:24.086
+00:00:24.192 --> 00:00:27.383
 O quadro ganha listas, como a fazer e feito.
 
-00:00:24.086 --> 00:00:28.477
+00:00:27.383 --> 00:00:32.358
 Cada tarefa vira um cartão, com prioridade, prazo e responsável.
 
-00:00:28.477 --> 00:00:31.867
+00:00:32.358 --> 00:00:35.812
 E, quando termina, o cartão pode ser arquivado.
 
-00:00:31.867 --> 00:00:33.170
+00:00:35.812 --> 00:00:37.327
 Primeira regra.
 
-00:00:33.170 --> 00:00:35.450
+00:00:37.327 --> 00:00:39.931
 O quadro novo nasce sem listas.
 
-00:00:35.450 --> 00:00:42.034
+00:00:39.931 --> 00:00:46.694
 Você cria as listas em adicionar lista, e as tarefas em adicionar tarefa, dentro de cada lista.
 
-00:00:42.034 --> 00:00:44.235
+00:00:46.694 --> 00:00:49.255
 Segunda, e a mais importante.
 
-00:00:44.235 --> 00:00:48.518
+00:00:49.255 --> 00:00:54.149
 O cartão nasce pendente, com prioridade média e sem responsável.
 
-00:00:48.518 --> 00:00:53.974
+00:00:54.149 --> 00:01:00.139
 E ele só aparece em minhas tarefas depois que alguém é adicionado como responsável.
 
-00:00:53.974 --> 00:00:57.309
+00:01:00.139 --> 00:01:03.233
 Sem isso, a tarefa fica esquecida no quadro.
 
-00:00:57.309 --> 00:00:58.337
+00:01:03.233 --> 00:01:04.438
 Terceira.
 
-00:00:58.337 --> 00:01:03.832
+00:01:04.438 --> 00:01:10.317
 Não procure um campo prazo: a data limite do cartão se chama término previsto.
 
-00:01:03.832 --> 00:01:04.675
+00:01:10.397 --> 00:01:11.554
 Quarta.
 
-00:01:04.675 --> 00:01:06.417
+00:01:11.554 --> 00:01:13.586
 Arquivar não apaga.
 
-00:01:06.417 --> 00:01:13.425
+00:01:13.586 --> 00:01:20.749
 O cartão arquivado sai das listagens e vai para arquivadas, onde o botão restaurar traz ele de volta.
 
-00:01:13.425 --> 00:01:19.573
+00:01:20.749 --> 00:01:27.218
 Na prática: em Meus Quadros ficam os seus quadros, e o novo quadro pede só o nome e o tipo.
 
-00:01:19.573 --> 00:01:26.597
+00:01:27.518 --> 00:01:35.117
 Dentro do quadro, as listas aparecem em colunas, no kanban, mas também em lista, tabela, calendário e Gantt.
 
-00:01:26.597 --> 00:01:30.045
+00:01:35.117 --> 00:01:38.792
 Em cada lista, adicionar tarefa cria um cartão.
 
-00:01:30.045 --> 00:01:33.237
+00:01:38.872 --> 00:01:42.466
 O cartão novo está pendente e sem responsável.
 
-00:01:33.237 --> 00:01:36.821
+00:01:42.466 --> 00:01:46.367
 Clique em adicionar responsável e escolha a pessoa.
 
-00:01:36.821 --> 00:01:40.811
+00:01:46.367 --> 00:01:50.328
 No cartão também ficam os checklists e os comentários.
 
-00:01:40.811 --> 00:01:46.857
+00:01:50.328 --> 00:01:56.082
 Com o responsável definido, o cartão aparece em minhas tarefas, para quem foi atribuído.
 
-00:01:46.857 --> 00:01:53.054
+00:01:56.382 --> 00:02:02.948
 E, depois de arquivado, ele fica aqui, com a data, e pode ser restaurado a qualquer momento.
 
-00:01:53.054 --> 00:01:54.666
+00:02:03.248 --> 00:02:05.081
 Três cuidados.
 
-00:01:54.666 --> 00:02:00.051
-A busca do control K não encontra o módulo de tarefas: abra pelo menu de módulos.
+00:02:05.081 --> 00:02:12.299
+A busca do control K ainda não encontra o módulo de tarefas, um defeito já reportado: enquanto isso,
 
-00:02:00.051 --> 00:02:04.016
+00:02:12.299 --> 00:02:14.627
+abra pelo menu de módulos.
+
+00:02:14.627 --> 00:02:18.957
 Todo cartão novo nasce sem responsável: atribua sempre.
 
-00:02:04.016 --> 00:02:08.302
+00:02:18.957 --> 00:02:22.672
 E o autor de um comentário pode aparecer apenas como usuário.
 
-00:02:08.302 --> 00:02:10.844
+00:02:22.672 --> 00:02:25.455
 Resumindo: crie as listas do quadro.
 
-00:02:10.844 --> 00:02:13.548
+00:02:25.455 --> 00:02:28.445
 Sem responsável, ninguém vê o cartão.
 
-00:02:13.548 --> 00:02:16.253
+00:02:28.445 --> 00:02:31.522
 E arquivar não apaga, dá para restaurar.
 
-00:02:16.253 --> 00:02:20.890
+00:02:31.522 --> 00:02:36.372
 No próximo vídeo, o teste do fluxo completo, do pedido à gestão.

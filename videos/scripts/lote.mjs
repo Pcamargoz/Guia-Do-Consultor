@@ -23,11 +23,21 @@ if (esperar) {
 }
 
 const roda = (script, id) => spawnSync('node', [path.join('scripts', script), id], { cwd: RAIZ, stdio: 'inherit' }).status === 0;
+// conferência da narração por transcrição (faster-whisper do VoiceStudio); sem esse Python, avisa e segue
+const PY = process.env.VOICESTUDIO_PY ?? 'F:\\VoiceStudio\\project\\.venv\\Scripts\\python.exe';
+// SEM_CONFERENCIA=1: pula a conferência (só re-render, com a narração já conferida e em cache)
+const confere = (id) => (process.env.SEM_CONFERENCIA ? true : fs.existsSync(PY) ? spawnSync(PY, [path.join('scripts', 'conferir_narracao.py'), id], { cwd: RAIZ, stdio: 'inherit' }).status === 0 : (console.log('conferência da narração: Python do VoiceStudio não encontrado (VOICESTUDIO_PY)'), true));
+const pendentes = [];
 for (const id of ids) {
   const ini = Date.now();
   console.log(`== ${id}: narração`);
   if (!roda('narrar.mjs', id)) { console.log(`falhou a narração de ${id}`); process.exit(1); }
+  console.log(`== ${id}: conferência da narração`);
+  if (!confere(id)) pendentes.push(`${id}: narração para rever`);
   console.log(`== ${id}: render (${Math.round((Date.now() - ini) / 60000)} min de voz)`);
   if (!roda('render.mjs', id)) { console.log(`falhou o render de ${id}`); process.exit(1); }
+  console.log(`== ${id}: engasgos`);
+  roda('engasgos.mjs', id);
 }
+if (pendentes.length) console.log('PARA REVER:\n  ' + pendentes.join('\n  '));
 console.log('tudo pronto');

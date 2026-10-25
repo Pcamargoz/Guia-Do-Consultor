@@ -6,7 +6,7 @@ Vídeos animados com narração e legenda que explicam cada fluxo do Faktory Flo
 
 ## Estado e plano (para retomar)
 
-> **24/10/2026:** os 12 vídeos publicados ainda são do motor v4. O **motor v6 ("sem engasgos") está pronto e é o padrão** do `src/Root.tsx` (o v5 e o v4 ficaram como `<id>-v5` e `<id>-v4`). **Nenhum vídeo foi refeito**: o usuário vai mandar um documento com melhorias e pedir para refazer. Quando ele mandar, rode a fila normalmente (`node scripts/lote.mjs <ids…>`); a narração em cache é reaproveitada. Depois de cada vídeo: `node scripts/qa.mjs ../public/videos/<id>.mp4 --folha out/<id>-folha.jpg` e `node scripts/engasgos.mjs <id>` (imagem parada, quadro repetido, pops). O que o v6 corrige e por quê: `docs/motor-de-video/v6-sem-engasgos.md` no Harness.
+> **25/10/2026:** os **12 vídeos publicados são do motor v6** ("sem engasgos", padrão do `src/Root.tsx`; o v5 e o v4 ficaram como `<id>-v5` e `<id>-v4`), com a voz L a 0,9 e o ritmo mais lento pedido no documento "Melhorias vídeos fluxo checklist consultor" (o usuário ouviu 16 vozes femininas e manteve a voz L). Para refazer: `node scripts/lote.mjs <ids…>` (narração, conferência por transcrição, render, engasgos; a narração em cache é reaproveitada; `SEM_CONFERENCIA=1` pula a conferência num re-render). A conferência usa o Python do VoiceStudio (`F:\VoiceStudio\project\.venv`, ou `VOICESTUDIO_PY`). O que o v6 corrige e por quê: `docs/motor-de-video/v6-sem-engasgos.md` no Harness.
 >
 > Testar o motor sem refazer vídeo: `node scripts/remotion-em-partes.mjs <id> out/teste.mp4 --de <s> --ate <s>` (só o trecho, sem som) e `node scripts/engasgos.mjs <id> out/teste.mp4 --inicio <s>`.
 

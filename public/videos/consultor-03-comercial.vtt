@@ -1,154 +1,154 @@
 WEBVTT
 
-00:00:00.000 --> 00:00:04.871
+00:00:01.100 --> 00:00:06.388
 No Faktory Flow, a venda começa bem antes do pedido: ela começa num lead.
 
-00:00:04.871 --> 00:00:11.132
+00:00:06.388 --> 00:00:12.876
 Neste vídeo, vamos seguir o fluxo comercial inteiro, do primeiro contato até o pedido de venda,
 
-00:00:11.132 --> 00:00:13.437
+00:00:12.876 --> 00:00:15.331
 e ver onde ele costuma travar.
 
-00:00:13.437 --> 00:00:17.176
+00:00:15.331 --> 00:00:19.487
 Tudo começa no lead: um contato que ainda não é cliente.
 
-00:00:17.176 --> 00:00:21.610
+00:00:19.487 --> 00:00:23.880
 Você registra as atividades com ele e qualifica o interesse.
 
-00:00:21.610 --> 00:00:24.416
+00:00:23.960 --> 00:00:27.228
 Quando o lead está pronto, você converte.
 
-00:00:24.416 --> 00:00:28.934
+00:00:27.228 --> 00:00:32.257
 Ele vira uma oportunidade no Pipeline, recebe itens e uma proposta.
 
-00:00:28.934 --> 00:00:33.672
+00:00:32.257 --> 00:00:37.344
 Se o cliente fechar, a oportunidade é ganha e gera o pedido de venda.
 
-00:00:33.672 --> 00:00:34.975
+00:00:37.344 --> 00:00:38.859
 Primeira regra.
 
-00:00:34.975 --> 00:00:41.462
+00:00:38.859 --> 00:00:45.861
 O lead só converte se estiver numa etapa do Kanban de sessenta por cento ou mais, como MQL ou SQL,
 
-00:00:41.462 --> 00:00:45.701
+00:00:45.861 --> 00:00:50.658
 e com o BANT completo: budget, autoridade, necessidade e prazo.
 
-00:00:45.701 --> 00:00:48.063
+00:00:50.658 --> 00:00:53.350
 As duas condições valem juntas.
 
-00:00:48.063 --> 00:00:51.055
+00:00:53.350 --> 00:00:55.888
 O BANT fica na seção Informações CRM.
 
-00:00:51.055 --> 00:00:52.086
+00:00:55.888 --> 00:00:57.864
 Segunda.
 
-00:00:52.086 --> 00:00:55.601
+00:00:57.864 --> 00:01:01.845
 A conversão cria a oportunidade sozinha, sem avisar.
 
-00:00:55.601 --> 00:01:00.118
+00:01:01.845 --> 00:01:06.784
 Ela aparece no Pipeline, na etapa Novo Lead, com o valor do budget.
 
-00:01:00.118 --> 00:01:04.838
+00:01:06.784 --> 00:01:11.312
 E atenção: as atividades do lead não migram para a oportunidade.
 
-00:01:04.838 --> 00:01:05.866
+00:01:11.312 --> 00:01:12.517
 Terceira.
 
-00:01:05.866 --> 00:01:11.013
+00:01:12.517 --> 00:01:18.044
 Na aba Itens da oportunidade, aplique o quadro Dados do Item antes de salvar.
 
-00:01:11.013 --> 00:01:16.454
+00:01:18.044 --> 00:01:23.622
 A partir daí, o valor estimado passa a ser a soma dos itens, e não mais o budget.
 
-00:01:16.454 --> 00:01:18.660
+00:01:23.622 --> 00:01:26.144
 Quarta, e a mais importante.
 
-00:01:18.660 --> 00:01:24.037
+00:01:26.144 --> 00:01:31.965
 Na oportunidade ganha, o Gerar Pedido de Venda pede só a Empresa e o CFOP.
 
-00:01:24.037 --> 00:01:30.562
+00:01:31.965 --> 00:01:38.945
 Se o CFOP gera financeiro, o sistema recusa, porque faltam condição de pagamento e parcelas.
 
-00:01:30.562 --> 00:01:35.505
+00:01:38.945 --> 00:01:44.423
 O contorno: gere com um CFOP sem financeiro e, depois, abra o pedido,
 
-00:01:35.505 --> 00:01:39.482
+00:01:44.423 --> 00:01:47.836
 troque o CFOP e escolha a condição de pagamento.
 
-00:01:39.482 --> 00:01:42.707
+00:01:47.836 --> 00:01:51.461
 Na prática: em CRM, Vendas, Leads, abra o Kanban.
 
-00:01:42.707 --> 00:01:45.429
+00:01:51.461 --> 00:01:54.520
 Cada coluna mostra o percentual da etapa.
 
-00:01:45.429 --> 00:01:48.967
+00:01:54.520 --> 00:01:58.193
 O lead novo começa em Inbound, com dez por cento.
 
-00:01:48.967 --> 00:01:52.182
+00:01:58.193 --> 00:02:01.664
 Arraste o card até MQL, de sessenta por cento.
 
-00:01:52.182 --> 00:01:56.556
+00:02:01.664 --> 00:02:06.350
 O sistema pede uma observação opcional: confirme o movimento.
 
-00:01:56.556 --> 00:02:03.708
+00:02:06.430 --> 00:02:14.061
 No Editar Lead, em Informações CRM, preencha o budget estimado e ligue as três chaves do BANT: autoridade,
 
-00:02:03.708 --> 00:02:05.702
+00:02:14.061 --> 00:02:15.962
 necessidade e prazo.
 
-00:02:05.702 --> 00:02:06.934
+00:02:15.962 --> 00:02:17.071
 Salve.
 
-00:02:06.934 --> 00:02:11.750
+00:02:17.071 --> 00:02:22.188
 Agora, no menu do lead, use Converter e confirme em Converter Lead.
 
-00:02:11.750 --> 00:02:14.708
+00:02:22.488 --> 00:02:25.885
 A mensagem diz só que o lead foi convertido.
 
-00:02:14.708 --> 00:02:18.959
+00:02:25.885 --> 00:02:30.319
 Ela não fala da oportunidade: você a encontra no Pipeline.
 
-00:02:18.959 --> 00:02:24.290
+00:02:30.399 --> 00:02:36.121
 No Pipeline, a oportunidade já está lá, na etapa Novo Lead, com o valor do budget.
 
-00:02:24.290 --> 00:02:25.832
+00:02:36.121 --> 00:02:37.770
 Abra o card.
 
-00:02:25.832 --> 00:02:30.718
+00:02:37.770 --> 00:02:43.159
 Em Gerar Proposta, escolha o template, a empresa emitente, que vem vazia,
 
-00:02:30.718 --> 00:02:34.931
+00:02:43.159 --> 00:02:47.894
 a validade e uma condição de pagamento cadastrada, e gere o PDF.
 
-00:02:34.931 --> 00:02:39.307
+00:02:47.894 --> 00:02:52.419
 Depois, mova a etapa à mão: a proposta não muda a etapa sozinha.
 
-00:02:39.307 --> 00:02:44.418
+00:02:52.419 --> 00:02:58.028
 Com o sim do cliente, clique em Ganha e, em seguida, em Gerar Pedido de Venda.
 
-00:02:44.418 --> 00:02:48.790
+00:02:58.028 --> 00:03:02.795
 Escolha a Empresa e um CFOP sem financeiro, e confirme.
 
-00:02:48.790 --> 00:02:50.402
+00:03:02.875 --> 00:03:04.708
 Três cuidados.
 
-00:02:50.402 --> 00:02:55.624
+00:03:04.708 --> 00:03:10.419
 O botão Ganha não pede confirmação: se clicar sem querer, use Reverter ganho.
 
-00:02:55.624 --> 00:03:01.887
+00:03:10.419 --> 00:03:17.141
 Desconto em reais acima da alçada vai para aprovação, e quem aprova precisa ser outro usuário.
 
-00:03:01.887 --> 00:03:07.368
+00:03:17.141 --> 00:03:22.696
 E, se precisar reverter o ganho, faça isso antes de gerar o pedido, nunca depois.
 
-00:03:07.368 --> 00:03:11.621
+00:03:22.696 --> 00:03:27.332
 Resumindo: sessenta por cento e BANT completo para converter.
 
-00:03:11.621 --> 00:03:14.609
+00:03:27.332 --> 00:03:30.701
 A oportunidade nasce sozinha no Pipeline.
 
-00:03:14.609 --> 00:03:19.342
+00:03:30.701 --> 00:03:35.889
 E o pedido sai com um CFOP sem financeiro, que você ajusta depois.
 
-00:03:19.342 --> 00:03:22.543
+00:03:35.889 --> 00:03:39.239
 No próximo vídeo, o faturamento e o fiscal.

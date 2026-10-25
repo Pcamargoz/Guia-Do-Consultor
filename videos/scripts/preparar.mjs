@@ -14,7 +14,7 @@ if (!id) { console.error('uso: node scripts/preparar.mjs <id-do-roteiro>'); proc
 const roteiro = JSON.parse(fs.readFileSync(path.join(RAIZ, 'roteiros', `${id}.json`), 'utf8'));
 const arqTempos = path.join(RAIZ, 'public', 'audio', id, 'tempos.json');
 const tempos = fs.existsSync(arqTempos) ? JSON.parse(fs.readFileSync(arqTempos, 'utf8')) : {};
-const PAUSA = 0.55; // respiro entre um trecho e o seguinte (s)
+const PAUSA = 0.9; // respiro entre um trecho e o seguinte (s); 0,55 até 24/10/2026 (pedido de ritmo mais lento)
 const PALAVRAS_POR_S = 140 / 60; // estimativa quando ainda não há áudio
 
 // Legenda frase a frase: a narração é gerada uma frase por vez (frases/<hash>.wav) e emendada com uma pausa fixa,

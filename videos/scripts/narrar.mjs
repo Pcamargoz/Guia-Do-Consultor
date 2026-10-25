@@ -32,17 +32,48 @@ const tempos = fs.existsSync(arqTempos) ? JSON.parse(fs.readFileSync(arqTempos, 
 
 const ffprobeDur = (f) => Number(execFileSync('ffprobe', ['-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', f]).toString().trim());
 
-async function gerar(texto, destino) {
+// Espera o VoiceStudio responder (reinstalação, app fechado, motor subindo) em vez de derrubar a fila: até 2 h.
+async function esperarVoiceStudio() {
+  for (let i = 0; i < 480; i++) {
+    try { const h = await (await fetch(`${BASE}/health`, { signal: AbortSignal.timeout(5000) })).json(); if (h.status === 'ok') return; } catch { /* ainda fora */ }
+    if (i % 20 === 0) console.log(`  esperando o VoiceStudio em ${BASE}...`);
+    await new Promise((ok) => setTimeout(ok, 15000));
+  }
+  console.error('o VoiceStudio não respondeu em 2 h'); process.exit(1);
+}
+
+async function gerar(texto, destino, tentativa = 1) {
+  await esperarVoiceStudio();
   const form = new FormData();
   form.set('text', texto);
   for (const [k, v] of Object.entries(voz)) {
     if (k === 'nome' || v === undefined || v === null) continue;
     // ref_audio: arquivo local (até 20 s) enviado junto com o ref_text, para clonar a voz sem depender de transcrição automática
     if (k === 'ref_audio') form.set(k, new Blob([fs.readFileSync(path.join(RAIZ, v))], { type: 'audio/wav' }), path.basename(v));
+    else if (k === 'seed') form.set(k, String(Number(v) + tentativa - 1));
     else form.set(k, String(v));
   }
-  const r = await fetch(`${BASE}/generate`, { method: 'POST', body: form, dispatcher: SEM_LIMITE, signal: AbortSignal.timeout(45 * 60 * 1000) });
-  if (!r.ok) { console.error(`HTTP ${r.status} ${(await r.text()).slice(0, 300)}`); process.exit(1); }
+  let r;
+  try {
+    r = await fetch(`${BASE}/generate`, { method: 'POST', body: form, dispatcher: SEM_LIMITE, signal: AbortSignal.timeout(45 * 60 * 1000) });
+  } catch (e) {
+    // o VoiceStudio caiu no meio (fechado ou reinstalado): espera voltar e repete a mesma frase
+    console.log(`  VoiceStudio fora do ar (${e.cause?.code ?? e.message}); repetindo a frase quando ele voltar`);
+    await new Promise((ok) => setTimeout(ok, 15000));
+    return gerar(texto, destino, tentativa);
+  }
+  if (!r.ok) {
+    const erro = (await r.text()).slice(0, 300);
+    // O motor às vezes não termina uma frase e o VoiceStudio abandona o pedido depois de 300 s (HTTP 503), mas o
+    // trabalho abandonado segura a GPU até acabar sozinho. Com a semente fixa, repetir igual trava de novo: espera
+    // 3 min e tenta com a semente seguinte (a voz continua clonada da mesma amostra), até 3 vezes.
+    if (r.status === 503 && tentativa < 3) {
+      console.log(`  frase abandonada pelo VoiceStudio (tentativa ${tentativa}); nova tentativa com a semente ${Number(voz.seed ?? 0) + tentativa} em 3 min`);
+      await new Promise((ok) => setTimeout(ok, 180000));
+      return gerar(texto, destino, tentativa + 1);
+    }
+    console.error(`HTTP ${r.status} ${erro}`); process.exit(1);
+  }
   fs.mkdirSync(path.dirname(destino), { recursive: true });
   const bruto = `${destino}.bruto`;
   fs.writeFileSync(bruto, Buffer.from(await r.arrayBuffer()));
