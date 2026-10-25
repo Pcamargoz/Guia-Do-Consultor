@@ -33,7 +33,7 @@ Pontos que ficaram para a próxima refação, levantados na produção de 24 e 2
 | # | O que é | Onde aparece | O que fazer quando mudar |
 |---|---|---|---|
 | 4.1 | Apontamento de OP recusa a finalização com erro de data futura (defeito reportado) | Produção: trecho da linha do tempo e cuidado 2 | Quando o Flow corrigir, tirar a menção, regravar a tela da linha do tempo com o tempo real preenchido e narrar de novo |
-| 4.2 | A busca Ctrl+K não encontra o módulo Tarefas (defeito, segundo a Ane) | Tarefas: cuidado 1 | Quando corrigirem, trocar o cuidado. A base do Harness ainda descreve isso como comportamento normal (`funcional-tarefas-quadros-listas-e-cartoes`, `regra-tarefas-cartao-so-aparece-em-minhas-tarefas-com-responsavel`): corrigir lá, com pedido do responsável |
+| 4.2 | A busca Ctrl+K não encontra o módulo Tarefas (defeito, segundo a Ane) | Tarefas: cuidado 1 | Quando corrigirem, trocar o cuidado e tirar o defeito da base do Harness. A base já descreve como defeito desde 25/10/2026 (`faq-limitacoes-conhecidas-v1-22-12` e as fontes de Tarefas; item 5 da fila de correção) |
 
 ## Como refazer
 
