@@ -193,3 +193,7 @@
 @media (prefers-reduced-motion: reduce) {
   .ad-btn, .ad-linha, .ad-prob-imagens img { transition: none; }
 }
+
+/* Barra da seção de problemas: contagem e exportação dos problemas do filtro */
+.ad-prob-barra { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 16px; margin: 0 0 12px; }
+.ad-prob-barra .ad-contagem { margin: 0; }

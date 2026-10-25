@@ -360,13 +360,21 @@
     </div>`;
   }
 
-  function problemas(c) {
+  /* Problemas com os filtros da própria seção (texto, checklist e pessoa), do mais recente para o mais antigo.
+     A tela e a exportação da seção usam a mesma lista. */
+  function problemasFiltrados(c) {
     const pf = estado.prob;
     const termo = pf.busca.trim().toLowerCase();
     const nomeDe = Object.fromEntries(estado.dados.usuarios.map((u) => [u.id, u]));
-    const lista = c.problemas.filter((p) => (!pf.chave || p.chave === pf.chave) && (!pf.usuario || p.usuario === pf.usuario)
+    return c.problemas.filter((p) => (!pf.chave || p.chave === pf.chave) && (!pf.usuario || p.usuario === pf.usuario)
       && (!termo || `${p.problema} ${p.registro} ${c.porChave.get(p.chave)?.titulo} ${nomeDe[p.usuario]?.nome}`.toLowerCase().includes(termo)))
       .sort((a, b) => (a.atualizadoEm < b.atualizadoEm ? 1 : -1));
+  }
+
+  function problemas(c) {
+    const pf = estado.prob;
+    const nomeDe = Object.fromEntries(estado.dados.usuarios.map((u) => [u.id, u]));
+    const lista = problemasFiltrados(c);
     const chavesComProblema = c.itens.filter((m) => c.problemas.some((p) => p.chave === m.chave));
     const pessoasComProblema = c.usuarios.filter((u) => c.problemas.some((p) => p.usuario === u.id));
     const filtros = `<div class="ad-filtros ad-filtros--prob">
@@ -377,7 +385,18 @@
     if (!c.problemas.length) return `${filtros}<p class="ad-vazio-texto">Nenhum problema registrado neste filtro.</p>`;
     if (!lista.length) return `${filtros}<p class="ad-vazio-texto">Nenhum problema com esses filtros.</p>`;
     const visiveis = lista.slice(0, pf.limite);
-    return `${filtros}<p class="ad-contagem">${plural(lista.length, 'problema', 'problemas')}</p>
+    const imagens = lista.reduce((s, p) => s + p.anexos.length, 0);
+    return `${filtros}<div class="ad-prob-barra">
+        <p class="ad-contagem">${plural(lista.length, 'problema', 'problemas')} · ${plural(new Set(lista.map((p) => p.usuario)).size, 'pessoa', 'pessoas')} · ${plural(imagens, 'imagem', 'imagens')}</p>
+        <div class="ad-exportar">
+          <button type="button" class="ad-btn" data-acao="menu-exportar" aria-haspopup="menu" aria-expanded="false">${svg(ICONE.pdf)}Exportar ${lista.length === c.problemas.length ? 'todos os problemas' : `estes ${lista.length} problemas`}${svg(ICONE.seta, 'ad-seta')}</button>
+          <div class="ad-menu" role="menu" hidden>
+            <button type="button" role="menuitem" data-exportar="prob-pdf">${svg(ICONE.pdf)}<span>PDF com as imagens<small>Nome, checklist, etapa, problema, registro e as imagens de cada um</small></span></button>
+            <button type="button" role="menuitem" data-exportar="prob-html">${svg(ICONE.imagem)}<span>Relatório com imagens (HTML)<small>Abre em qualquer navegador; clique na imagem para ampliar</small></span></button>
+            <button type="button" role="menuitem" data-exportar="prob-excel">${svg(ICONE.planilha)}<span>Planilha (Excel)<small>Uma linha por problema, com links das imagens</small></span></button>
+          </div>
+        </div>
+      </div>
       <div class="ad-probs">${visiveis.map((p) => {
         const m = c.porChave.get(p.chave);
         const u = nomeDe[p.usuario];
@@ -531,52 +550,116 @@
         }
         baixar(`painel-checklists-progresso-${hoje()}.csv`, csv(linhas));
         avisar(`Planilha de progresso exportada (${plural(linhas.length - 1, 'linha', 'linhas')}).`);
-      } else if (tipo === 'problemas') {
+      } else if (tipo === 'problemas' || tipo === 'prob-excel') {
+        const lista = tipo === 'problemas' ? c.problemas : problemasFiltrados(c);
+        if (!lista.length) { avisar('Nenhum problema para exportar neste filtro.'); return; }
         avisar('Juntando os textos das etapas…');
-        const linhas = [['Pessoa', 'Login', 'Checklist', 'Seção', 'Etapa', 'Problema', 'Registro', 'Imagens', 'Gravado em']];
-        for (const p of c.problemas) {
+        const linhas = [['Pessoa', 'Login', 'Perfil', 'Checklist', 'Seção', 'Etapa', 'Resultado esperado', 'Problema', 'Registro', 'Imagens', 'Links das imagens (com login de administrador)', 'Gravado em']];
+        for (const p of lista) {
           const e = (await estruturaDe(p.chave)).etapas?.[p.item] || {};
           const u = nomeDe[p.usuario];
-          linhas.push([u.nome, u.login, c.porChave.get(p.chave).titulo, e.secao || '', e.etapa || `Etapa ${p.item}`, p.problema, p.registro, p.anexos.length, fmtDataHora(p.atualizadoEm)]);
+          linhas.push([u.nome, u.login, u.papelNome, c.porChave.get(p.chave).titulo, e.secao || '', e.etapa || `Etapa ${p.item}`, e.esperado || '', p.problema, p.registro,
+            p.anexos.length, p.anexos.map((a) => `${location.origin}/api/checklists-admin?anexo=${a.id}`).join(' '), fmtDataHora(p.atualizadoEm)]);
         }
         baixar(`painel-checklists-problemas-${hoje()}.csv`, csv(linhas));
         avisar(`Planilha de problemas exportada (${plural(linhas.length - 1, 'problema', 'problemas')}).`);
       } else if (tipo === 'pdf') {
         await exportarPdf(c, nomeDe);
       } else if (tipo === 'html') {
-        await exportarHtml(c, nomeDe);
+        await exportarHtml(c, nomeDe, c.problemas, true);
+      } else if (tipo === 'prob-html') {
+        await exportarHtml(c, nomeDe, problemasFiltrados(c));
+      } else if (tipo === 'prob-pdf') {
+        await exportarProblemasPdf(c, nomeDe, problemasFiltrados(c));
       }
     } catch (erro) {
       avisar(erro.message || 'Não foi possível exportar.');
     }
   }
 
-  async function exportarHtml(c, nomeDe) {
-    const R = window.ffRelatorioProblemas;
-    if (!R) throw new Error('O gerador do relatório não carregou. Recarregue a página.');
-    if (!c.problemas.length) { avisar('Nenhum problema para exportar neste filtro.'); return; }
-    const grupos = new Map();
-    for (const p of c.problemas) {
-      const k = `${p.usuario}|${p.chave}`;
-      if (!grupos.has(k)) grupos.set(k, []);
-      grupos.get(k).push(p);
-    }
-    const checklists = [];
+  /* Dados dos relatórios de problemas (HTML e PDF com a identidade do sistema): pessoa, checklist, etapa, resultado
+     esperado, problema, registro e as imagens. No HTML as imagens vão no formato original; no PDF, em JPEG. */
+  const nomeDoFiltro = (c, nomeDe, todos) => {
+    if (todos) return 'todos os problemas do painel';
+    const pf = estado.prob;
+    return [pf.busca && `texto "${pf.busca}"`, pf.chave && c.porChave.get(pf.chave)?.titulo, pf.usuario && nomeDe[pf.usuario]?.nome].filter(Boolean).join(' · ') || 'todos os problemas';
+  };
+  async function imagemComoDataUrl(id) {
+    try {
+      const r = await fetch(`/api/checklists-admin?anexo=${encodeURIComponent(id)}`, { credentials: 'same-origin' });
+      if (!r.ok) return null;
+      const blob = await r.blob();
+      return await new Promise((ok, falha) => { const f = new FileReader(); f.onload = () => ok(f.result); f.onerror = falha; f.readAsDataURL(blob); });
+    } catch { return null; }
+  }
+  /* Imagem em JPEG para o PDF (o jsPDF não lê WebP), com no máximo 1400 px de largura e fundo branco. */
+  async function imagemJpeg(src) {
+    const img = await new Promise((ok, falha) => { const i = new Image(); i.onload = () => ok(i); i.onerror = falha; i.src = src; });
+    const escala = Math.min(1, 1400 / img.naturalWidth);
+    const tela = Object.assign(document.createElement('canvas'), { width: Math.round(img.naturalWidth * escala), height: Math.round(img.naturalHeight * escala) });
+    const ctx = tela.getContext('2d');
+    ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, tela.width, tela.height);
+    ctx.drawImage(img, 0, 0, tela.width, tela.height);
+    return { src: tela.toDataURL('image/jpeg', 0.86), w: tela.width, h: tela.height };
+  }
+  let logoCache;
+  async function logo() {
+    if (logoCache !== undefined) return logoCache;
+    try {
+      const src = await (async () => {
+        const r = await fetch('/assets/Logo%20Faktory%20Flow.png');
+        if (!r.ok) throw new Error();
+        const blob = await r.blob();
+        return new Promise((ok, falha) => { const f = new FileReader(); f.onload = () => ok(f.result); f.onerror = falha; f.readAsDataURL(blob); });
+      })();
+      const img = await new Promise((ok, falha) => { const i = new Image(); i.onload = () => ok(i); i.onerror = falha; i.src = src; });
+      logoCache = { src, w: img.naturalWidth, h: img.naturalHeight };
+    } catch { logoCache = null; }
+    return logoCache;
+  }
+  async function dadosDoRelatorio(c, nomeDe, lista, formato, todos) {
+    const problemas = [];
     let n = 0;
-    for (const [k, lista] of grupos) {
-      const [usuario, chave] = k.split('|');
-      const m = c.porChave.get(chave), u = nomeDe[usuario];
-      const estrutura = await estruturaDe(chave);
-      const dados = { obs: Object.fromEntries(lista.map((p) => [p.item, p.problema])), regs: Object.fromEntries(lista.map((p) => [p.item, p.registro])) };
-      const porEtapa = Object.fromEntries(lista.map((p) => [p.item, p.anexos]));
-      const prog = c.progresso.find((p) => p.usuario === usuario && p.chave === chave);
-      const problemas = await R.problemasDe(estrutura, dados, porEtapa, (a) => `/api/checklists-admin?anexo=${encodeURIComponent(a.id)}`);
-      checklists.push({ titulo: `${m.titulo} — ${u.nome}`, area: m.area, validador: prog?.validador || u.nome, atualizadoEm: prog?.atualizadoEm, feitos: prog?.marcados || 0, total: estrutura.ordem.length || m.etapas, problemas });
-      avisar(`Montando o relatório com imagens… ${++n} de ${grupos.size}`);
+    for (const p of lista) {
+      avisar(`Juntando os problemas e as imagens… ${++n} de ${lista.length}`);
+      const e = (await estruturaDe(p.chave)).etapas?.[p.item] || {};
+      const u = nomeDe[p.usuario] || { nome: '—', login: '', papelNome: '' };
+      const m = c.porChave.get(p.chave);
+      const imagens = [];
+      for (const a of p.anexos) {
+        const src = await imagemComoDataUrl(a.id);
+        if (!src) continue;
+        imagens.push(formato === 'pdf' ? { ...(await imagemJpeg(src).catch(() => null)), nome: a.nome } : { src, nome: a.nome });
+      }
+      problemas.push({
+        pessoa: { nome: u.nome, login: u.login, papelNome: u.papelNome },
+        checklist: { titulo: m.titulo, area: m.area || '' },
+        secao: e.secao || '', etapa: e.etapa || `Etapa ${p.item}`, esperado: e.esperado || '',
+        problema: p.problema, registro: p.registro, atualizadoEm: p.atualizadoEm,
+        imagens: imagens.filter((i) => i && i.src),
+      });
     }
-    const doc = R.montarHtml({ geradoEm: Date.now(), autor: 'Painel do administrador', checklists });
-    baixar(`painel-problemas-com-imagens-${hoje()}.html`, new Blob([doc], { type: 'text/html;charset=utf-8' }));
-    avisar(`Relatório com imagens exportado (${plural(c.problemas.length, 'problema', 'problemas')}).`);
+    return { geradoEm: Date.now(), filtro: nomeDoFiltro(c, nomeDe, todos), logo: await logo(), problemas };
+  }
+
+  async function exportarHtml(c, nomeDe, lista, todos = false) {
+    if (!window.ffRelatorioAdmin) throw new Error('O gerador do relatório não carregou. Recarregue a página.');
+    if (!lista.length) { avisar('Nenhum problema para exportar neste filtro.'); return; }
+    const dados = await dadosDoRelatorio(c, nomeDe, lista, 'html', todos);
+    baixar(`problemas-checklists-${hoje()}.html`, new Blob([window.ffRelatorioAdmin.html(dados)], { type: 'text/html;charset=utf-8' }));
+    const imagens = dados.problemas.reduce((s, p) => s + p.imagens.length, 0);
+    avisar(`Relatório HTML exportado: ${plural(lista.length, 'problema', 'problemas')} com ${plural(imagens, 'imagem', 'imagens')}.`);
+  }
+
+  async function exportarProblemasPdf(c, nomeDe, lista) {
+    if (!window.ffRelatorioAdmin) throw new Error('O gerador do relatório não carregou. Recarregue a página.');
+    if (!lista.length) { avisar('Nenhum problema para exportar neste filtro.'); return; }
+    const dados = await dadosDoRelatorio(c, nomeDe, lista, 'pdf');
+    dados.aoProgredir = (k, total) => avisar(`Montando o PDF… problema ${k} de ${total}`);
+    const { blob, paginas } = await window.ffRelatorioAdmin.pdf(dados);
+    baixar(`problemas-checklists-${hoje()}.pdf`, blob);
+    const imagens = dados.problemas.reduce((s, p) => s + p.imagens.length, 0);
+    avisar(`PDF exportado: ${plural(lista.length, 'problema', 'problemas')} com ${plural(imagens, 'imagem', 'imagens')} (${plural(paginas, 'página', 'páginas')}).`);
   }
 
   async function exportarPdf(c, nomeDe) {
