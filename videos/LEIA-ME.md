@@ -2,7 +2,7 @@
 
 Vídeos animados com narração e legenda que explicam cada fluxo do Faktory Flow: o conceito, as regras de negócio e as telas reais do ambiente de teste. Ficam na aba **Vídeos de fluxo** do Guia e dentro do checklist de cada fluxo.
 
-> **Retomando em outra sessão do Claude Code?** Leia primeiro [Estado e plano](#estado-e-plano-para-retomar), depois [Como retomar](#como-retomar-passo-a-passo). A narração e o visual de cada trecho dos 12 vídeos estão em [ROTEIROS.md](ROTEIROS.md).
+> **Retomando em outra sessão do Claude Code?** Leia primeiro [Estado e plano](#estado-e-plano-para-retomar), depois [Como retomar](#como-retomar-passo-a-passo). A narração e o visual de cada trecho dos 12 vídeos estão em [ROTEIROS.md](ROTEIROS.md). O que ainda dá para melhorar na próxima refação está em [MELHORIAS-PENDENTES.md](MELHORIAS-PENDENTES.md).
 
 ## Estado e plano (para retomar)
 
