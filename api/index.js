@@ -18,6 +18,7 @@ import * as modulos from '../lib/rotas/modulos.js';
 import * as pacotes from '../lib/rotas/pacotes.js';
 import * as processos from '../lib/rotas/processos.js';
 import * as usuarios from '../lib/rotas/usuarios.js';
+import { ipDe, regraPara, verificarLimite } from '../lib/limite.js';
 
 const ROTAS = {
   'auth/eu': authEu,
@@ -51,6 +52,13 @@ async function despachar(request) {
   if (!modulo) return Response.json({ erro: 'Rota não encontrada.' }, { status: 404 });
   const handler = modulo[request.method];
   if (!handler) return Response.json({ erro: 'Método não permitido.' }, { status: 405 });
+  const excesso = await verificarLimite(regraPara(nomeDaRota(url), request.method), ipDe(request));
+  if (excesso) {
+    return Response.json(
+      { erro: `Muitas requisições em pouco tempo. Tente de novo em ${excesso.tentarEmS} segundos.` },
+      { status: 429, headers: { 'Retry-After': String(excesso.tentarEmS), 'Cache-Control': 'no-store' } },
+    );
+  }
   // O parâmetro interno ?__rota= é ignorado pelos handlers (eles só leem id, acao etc.).
   return handler(request);
 }
