@@ -60,7 +60,7 @@
       return;
     }
     document.querySelectorAll('[data-so-admin]').forEach((el) => { el.hidden = false; });
-    painel.innerHTML = `<div class="ad"><p class="ad-carregando">Carregando o painel…</p></div>`;
+    painel.innerHTML = `<div class="ad"><p class="pnl-carregando">Carregando o painel…</p></div>`;
     if (location.hash === '#admin') carregar();
     document.addEventListener('ff:aba', (e) => { if (e.detail?.aba === 'admin' && !estado.dados && !estado.carregando) carregar(); });
   });
@@ -159,9 +159,9 @@
 
   /* ---------- Desenho ---------- */
   function render() {
-    if (estado.carregando && !estado.dados) { painel.innerHTML = '<div class="ad"><p class="ad-carregando">Carregando o painel…</p></div>'; return; }
+    if (estado.carregando && !estado.dados) { painel.innerHTML = '<div class="ad"><p class="pnl-carregando">Carregando o painel…</p></div>'; return; }
     if (estado.erro && !estado.dados) {
-      painel.innerHTML = `<div class="ad"><div class="ad-vazio"><strong>${esc(estado.erro)}</strong><button type="button" class="ad-btn" data-acao="atualizar">${svg(ICONE.atualizar)}Tentar de novo</button></div></div>`;
+      painel.innerHTML = `<div class="ad"><div class="pnl-vazio"><strong>${esc(estado.erro)}</strong><button type="button" class="pnl-btn" data-acao="atualizar">${svg(ICONE.atualizar)}Tentar de novo</button></div></div>`;
       return;
     }
     if (!estado.dados) return;
@@ -171,17 +171,17 @@
     const rolagem = scrollY;
     painel.innerHTML = `
       <div class="ad">
-        <header class="ad-cabeca">
+        <header class="pnl-cabeca">
           <div>
-            <span class="ad-eyebrow">Somente administradores</span>
+            <span class="pnl-eyebrow">Somente administradores</span>
             <h1>Painel dos checklists</h1>
             <p>Progresso de todos os usuários e os problemas registrados nos checklists. Dados de ${esc(fmtDataHora(estado.dados.geradoEm))}.</p>
           </div>
-          <div class="ad-cabeca-acoes">
-            <button type="button" class="ad-btn ad-btn--sec" data-acao="atualizar" ${estado.carregando ? 'disabled' : ''}>${svg(ICONE.atualizar)}${estado.carregando ? 'Atualizando…' : 'Atualizar'}</button>
-            <div class="ad-exportar">
-              <button type="button" class="ad-btn" data-acao="menu-exportar" aria-haspopup="menu" aria-expanded="false">${svg(ICONE.planilha)}Exportar relatório${svg(ICONE.seta, 'ad-seta')}</button>
-              <div class="ad-menu" role="menu" hidden>
+          <div class="pnl-cabeca-acoes">
+            <button type="button" class="pnl-btn pnl-btn--sec" data-acao="atualizar" ${estado.carregando ? 'disabled' : ''}>${svg(ICONE.atualizar)}${estado.carregando ? 'Atualizando…' : 'Atualizar'}</button>
+            <div class="pnl-exportar">
+              <button type="button" class="pnl-btn" data-acao="menu-exportar" aria-haspopup="menu" aria-expanded="false">${svg(ICONE.planilha)}Exportar relatório${svg(ICONE.seta, 'pnl-seta')}</button>
+              <div class="pnl-menu" role="menu" hidden>
                 <button type="button" role="menuitem" data-exportar="progresso">${svg(ICONE.planilha)}<span>Progresso por usuário<small>Excel (CSV), um checklist por linha</small></span></button>
                 <button type="button" role="menuitem" data-exportar="problemas">${svg(ICONE.planilha)}<span>Problemas registrados<small>Excel (CSV), com a etapa de cada um</small></span></button>
                 <button type="button" role="menuitem" data-exportar="pdf">${svg(ICONE.pdf)}<span>Relatório do painel<small>PDF com indicadores, checklists, usuários e problemas</small></span></button>
@@ -190,57 +190,57 @@
             </div>
           </div>
         </header>
-        <p class="ad-aviso" role="status" aria-live="polite"></p>
+        <p class="pnl-aviso" role="status" aria-live="polite"></p>
 
-        <div class="ad-filtros" role="search">
-          <label class="ad-campo ad-campo--busca">${svg(ICONE.busca)}<input type="search" data-filtro="busca" value="${esc(f.busca)}" placeholder="Buscar usuário por nome ou login" aria-label="Buscar usuário"></label>
-          <label class="ad-campo"><span>Perfil</span><select data-filtro="papel">
+        <div class="pnl-filtros" role="search">
+          <label class="pnl-campo pnl-campo--busca">${svg(ICONE.busca)}<input type="search" data-filtro="busca" value="${esc(f.busca)}" placeholder="Buscar usuário por nome ou login" aria-label="Buscar usuário"></label>
+          <label class="pnl-campo"><span>Perfil</span><select data-filtro="papel">
             <option value="">Todos</option>
             ${[['admin', 'Administrador'], ['consultor', 'Consultor'], ['estagiario', 'Estagiário']].map(([v, t]) => `<option value="${v}" ${f.papel === v ? 'selected' : ''}>${t}</option>`).join('')}
           </select></label>
-          <label class="ad-campo"><span>Checklists</span><select data-filtro="grupo">
+          <label class="pnl-campo"><span>Checklists</span><select data-filtro="grupo">
             <option value="">Todos os grupos</option>
             ${grupos.filter((g) => estado.manifest.itens.some((i) => i.grupo === g.id && i.chave)).map((g) => `<option value="${esc(g.id)}" ${f.grupo === g.id ? 'selected' : ''}>${esc(g.nome)}</option>`).join('')}
           </select></label>
-          <label class="ad-campo"><span>Atividade</span><select data-filtro="periodo">
+          <label class="pnl-campo"><span>Atividade</span><select data-filtro="periodo">
             ${[['0', 'Todo o período'], ['7', 'Últimos 7 dias'], ['30', 'Últimos 30 dias'], ['90', 'Últimos 90 dias']].map(([v, t]) => `<option value="${v}" ${f.periodo === v ? 'selected' : ''}>${t}</option>`).join('')}
           </select></label>
         </div>
 
         ${kpis(c)}
 
-        <div class="ad-grade">
-          <section class="ad-cartao ad-cartao--alto" aria-labelledby="ad-t-checklists">
-            <header class="ad-cartao-cabeca"><h2 id="ad-t-checklists">Progresso médio por checklist</h2><p>Entre quem começou cada checklist. Passe o mouse para ver os números.</p></header>
+        <div class="pnl-grade">
+          <section class="pnl-cartao pnl-cartao--alto" aria-labelledby="pnl-t-checklists">
+            <header class="pnl-cartao-cabeca"><h2 id="pnl-t-checklists">Progresso médio por checklist</h2><p>Entre quem começou cada checklist. Passe o mouse para ver os números.</p></header>
             ${graficoChecklists(c)}
           </section>
-          <div class="ad-coluna">
-            <section class="ad-cartao" aria-labelledby="ad-t-situacao">
-              <header class="ad-cartao-cabeca"><h2 id="ad-t-situacao">Situação dos checklists iniciados</h2></header>
+          <div class="pnl-coluna">
+            <section class="pnl-cartao" aria-labelledby="pnl-t-situacao">
+              <header class="pnl-cartao-cabeca"><h2 id="pnl-t-situacao">Situação dos checklists iniciados</h2></header>
               ${graficoSituacao(c)}
             </section>
-            <section class="ad-cartao" aria-labelledby="ad-t-atividade">
-              <header class="ad-cartao-cabeca"><h2 id="ad-t-atividade">Atividade nos últimos 30 dias</h2><p>Checklists gravados por dia (a última gravação de cada um).</p></header>
+            <section class="pnl-cartao" aria-labelledby="pnl-t-atividade">
+              <header class="pnl-cartao-cabeca"><h2 id="pnl-t-atividade">Atividade nos últimos 30 dias</h2><p>Checklists gravados por dia (a última gravação de cada um).</p></header>
               ${graficoAtividade(c)}
             </section>
           </div>
         </div>
 
-        <section class="ad-cartao" aria-labelledby="ad-t-usuarios">
-          <header class="ad-cartao-cabeca"><h2 id="ad-t-usuarios">Usuários</h2><p>Clique numa pessoa para ver cada checklist dela.</p></header>
+        <section class="pnl-cartao" aria-labelledby="pnl-t-usuarios">
+          <header class="pnl-cartao-cabeca"><h2 id="pnl-t-usuarios">Usuários</h2><p>Clique numa pessoa para ver cada checklist dela.</p></header>
           ${tabelaUsuarios(c)}
         </section>
 
-        <section class="ad-cartao" aria-labelledby="ad-t-mapa">
-          <header class="ad-cartao-cabeca"><h2 id="ad-t-mapa">Mapa de progresso</h2><p>Cada célula é o progresso de uma pessoa num checklist. Passe o mouse para ver o nome do checklist.</p></header>
+        <section class="pnl-cartao" aria-labelledby="pnl-t-mapa">
+          <header class="pnl-cartao-cabeca"><h2 id="pnl-t-mapa">Mapa de progresso</h2><p>Cada célula é o progresso de uma pessoa num checklist. Passe o mouse para ver o nome do checklist.</p></header>
           ${mapa(c)}
         </section>
 
-        <section class="ad-cartao" aria-labelledby="ad-t-problemas">
-          <header class="ad-cartao-cabeca"><h2 id="ad-t-problemas">Problemas registrados</h2><p>O que cada pessoa marcou como problema nas etapas, com o registro e as imagens anexadas.</p></header>
+        <section class="pnl-cartao" aria-labelledby="pnl-t-problemas">
+          <header class="pnl-cartao-cabeca"><h2 id="pnl-t-problemas">Problemas registrados</h2><p>O que cada pessoa marcou como problema nas etapas, com o registro e as imagens anexadas.</p></header>
           ${problemas(c)}
         </section>
-        <div class="ad-dica" role="tooltip" hidden></div>
+        <div class="pnl-dica" role="tooltip" hidden></div>
       </div>`;
     scrollTo({ top: rolagem, behavior: 'instant' });
     preencherEtapas(c);
@@ -248,8 +248,8 @@
 
   function kpis(c) {
     const k = c.kpi;
-    const tile = (valor, rotulo, detalhe) => `<div class="ad-kpi"><strong>${valor}</strong><span>${rotulo}</span>${detalhe ? `<small>${detalhe}</small>` : ''}</div>`;
-    return `<div class="ad-kpis">
+    const tile = (valor, rotulo, detalhe) => `<div class="pnl-kpi"><strong>${valor}</strong><span>${rotulo}</span>${detalhe ? `<small>${detalhe}</small>` : ''}</div>`;
+    return `<div class="pnl-kpis">
       ${tile(k.ativos.toLocaleString('pt-BR'), 'Usuários ativos', `${plural(k.usuarios, 'usuário', 'usuários')} no filtro`)}
       ${tile(k.comInicio.toLocaleString('pt-BR'), 'Começaram checklists', k.usuarios ? `${pct((k.comInicio / k.usuarios) * 100)} dos usuários` : '')}
       ${tile(pct(k.media), 'Progresso médio', 'dos checklists iniciados')}
@@ -262,101 +262,101 @@
   function graficoChecklists(c) {
     const linhas = c.porChecklist.filter((r) => r.iniciados > 0).sort((a, b) => b.media - a.media || b.iniciados - a.iniciados);
     const semInicio = c.porChecklist.length - linhas.length;
-    if (!linhas.length) return '<p class="ad-vazio-texto">Ninguém começou um checklist neste filtro.</p>';
-    return `<ol class="ad-barras">${linhas.map((r) => `
+    if (!linhas.length) return '<p class="pnl-vazio-texto">Ninguém começou um checklist neste filtro.</p>';
+    return `<ol class="pnl-barras">${linhas.map((r) => `
       <li data-dica="${esc(`<strong>${esc(r.m.titulo)}</strong><br>${plural(r.iniciados, 'pessoa começou', 'pessoas começaram')} · ${plural(r.concluidos, 'concluiu', 'concluíram')}<br>Progresso médio ${pct(r.media)} · ${plural(r.problemas, 'problema', 'problemas')}`)}">
-        <span class="ad-barras-rotulo"><span class="ad-barras-area">${esc(r.m.area || '')}</span>${esc(r.m.titulo)}</span>
-        <span class="ad-barras-trilho"><span class="ad-barras-barra" style="width:${Math.max(r.media, 1.5)}%"></span></span>
-        <span class="ad-barras-valor">${pct(r.media)}<small>${r.iniciados}</small></span>
+        <span class="pnl-barras-rotulo"><span class="pnl-barras-area">${esc(r.m.area || '')}</span>${esc(r.m.titulo)}</span>
+        <span class="pnl-barras-trilho"><span class="pnl-barras-barra" style="width:${Math.max(r.media, 1.5)}%"></span></span>
+        <span class="pnl-barras-valor">${pct(r.media)}<small>${r.iniciados}</small></span>
       </li>`).join('')}</ol>
-      <p class="ad-nota">O número menor é quantas pessoas começaram.${semInicio ? ` ${plural(semInicio, 'checklist que ninguém começou fica', 'checklists que ninguém começou ficam')} fora da lista.` : ''}</p>`;
+      <p class="pnl-nota">O número menor é quantas pessoas começaram.${semInicio ? ` ${plural(semInicio, 'checklist que ninguém começou fica', 'checklists que ninguém começou ficam')} fora da lista.` : ''}</p>`;
   }
 
   function graficoSituacao(c) {
     const { concluidos, andamento } = c.kpi;
     const total = concluidos + andamento;
-    if (!total) return '<p class="ad-vazio-texto">Nenhum checklist iniciado neste filtro.</p>';
-    const seg = (n, cor, rotulo) => (n ? `<span class="ad-pilha-seg" style="flex:${n};background:${cor}" data-dica="${esc(`<strong>${rotulo}</strong><br>${plural(n, 'checklist', 'checklists')} · ${pct((n / total) * 100)}`)}"></span>` : '');
-    return `<div class="ad-pilha" role="img" aria-label="${concluidos} concluídos e ${andamento} em andamento">
+    if (!total) return '<p class="pnl-vazio-texto">Nenhum checklist iniciado neste filtro.</p>';
+    const seg = (n, cor, rotulo) => (n ? `<span class="pnl-pilha-seg" style="flex:${n};background:${cor}" data-dica="${esc(`<strong>${rotulo}</strong><br>${plural(n, 'checklist', 'checklists')} · ${pct((n / total) * 100)}`)}"></span>` : '');
+    return `<div class="pnl-pilha" role="img" aria-label="${concluidos} concluídos e ${andamento} em andamento">
         ${seg(concluidos, COR.concluido, 'Concluídos')}${seg(andamento, COR.andamento, 'Em andamento')}
       </div>
-      <ul class="ad-legenda">
-        <li><span class="ad-chave" style="background:${COR.concluido}"></span>Concluídos <strong>${concluidos}</strong> <small>${pct((concluidos / total) * 100)}</small></li>
-        <li><span class="ad-chave" style="background:${COR.andamento}"></span>Em andamento <strong>${andamento}</strong> <small>${pct((andamento / total) * 100)}</small></li>
+      <ul class="pnl-legenda">
+        <li><span class="pnl-chave" style="background:${COR.concluido}"></span>Concluídos <strong>${concluidos}</strong> <small>${pct((concluidos / total) * 100)}</small></li>
+        <li><span class="pnl-chave" style="background:${COR.andamento}"></span>Em andamento <strong>${andamento}</strong> <small>${pct((andamento / total) * 100)}</small></li>
       </ul>`;
   }
 
   function graficoAtividade(c) {
     const max = Math.max(1, ...c.atividade.map((d) => d.n));
     const total = c.atividade.reduce((s, d) => s + d.n, 0);
-    return `<div class="ad-colunas" role="img" aria-label="${total} checklists gravados nos últimos 30 dias">
-        ${c.atividade.map((d) => `<span class="ad-colunas-dia" data-dica="${esc(`<strong>${d.dia.toLocaleDateString('pt-BR', { weekday: 'short', day: '2-digit', month: '2-digit' })}</strong><br>${plural(d.n, 'checklist gravado', 'checklists gravados')}`)}"><span class="ad-colunas-barra${d.n ? '' : ' ad-colunas-barra--zero'}" style="height:${d.n ? Math.max(6, (d.n / max) * 100) : 0}%"></span></span>`).join('')}
+    return `<div class="pnl-colunas" role="img" aria-label="${total} checklists gravados nos últimos 30 dias">
+        ${c.atividade.map((d) => `<span class="pnl-colunas-dia" data-dica="${esc(`<strong>${d.dia.toLocaleDateString('pt-BR', { weekday: 'short', day: '2-digit', month: '2-digit' })}</strong><br>${plural(d.n, 'checklist gravado', 'checklists gravados')}`)}"><span class="pnl-colunas-barra${d.n ? '' : ' pnl-colunas-barra--zero'}" style="height:${d.n ? Math.max(6, (d.n / max) * 100) : 0}%"></span></span>`).join('')}
       </div>
-      <div class="ad-colunas-eixo"><span>${fmtData(c.atividade[0].dia)}</span><span>${fmtData(c.atividade[15].dia)}</span><span>hoje</span></div>
-      <p class="ad-nota">${plural(total, 'checklist gravado', 'checklists gravados')} no período · maior dia: ${max === 1 && !total ? 0 : max}</p>`;
+      <div class="pnl-colunas-eixo"><span>${fmtData(c.atividade[0].dia)}</span><span>${fmtData(c.atividade[15].dia)}</span><span>hoje</span></div>
+      <p class="pnl-nota">${plural(total, 'checklist gravado', 'checklists gravados')} no período · maior dia: ${max === 1 && !total ? 0 : max}</p>`;
   }
 
   function tabelaUsuarios(c) {
-    if (!c.linhasUsuarios.length) return '<p class="ad-vazio-texto">Nenhum usuário neste filtro.</p>';
+    if (!c.linhasUsuarios.length) return '<p class="pnl-vazio-texto">Nenhum usuário neste filtro.</p>';
     const { col, dir } = estado.ordem;
     const chave = {
       nome: (r) => r.u.nome.toLowerCase(), papel: (r) => r.u.papelNome, iniciados: (r) => r.iniciados, concluidos: (r) => r.concluidos,
       media: (r) => r.media, problemas: (r) => r.problemas, imagens: (r) => r.imagens, ultima: (r) => (r.ultima ? new Date(r.ultima).getTime() : 0),
     }[col];
     const linhas = [...c.linhasUsuarios].sort((a, b) => { const x = chave(a), y = chave(b); return (x > y ? 1 : x < y ? -1 : 0) * dir; });
-    const th = (id, rotulo, num) => `<th scope="col" class="${num ? 'ad-num' : ''}" aria-sort="${col === id ? (dir > 0 ? 'ascending' : 'descending') : 'none'}"><button type="button" data-ordem="${id}">${rotulo}${col === id ? (dir > 0 ? ' ↑' : ' ↓') : ''}</button></th>`;
-    return `<div class="ad-tabela-rolagem"><table class="ad-tabela">
+    const th = (id, rotulo, num) => `<th scope="col" class="${num ? 'pnl-num' : ''}" aria-sort="${col === id ? (dir > 0 ? 'ascending' : 'descending') : 'none'}"><button type="button" data-ordem="${id}">${rotulo}${col === id ? (dir > 0 ? ' ↑' : ' ↓') : ''}</button></th>`;
+    return `<div class="pnl-tabela-rolagem"><table class="pnl-tabela">
       <thead><tr>${th('nome', 'Pessoa')}${th('papel', 'Perfil')}${th('iniciados', 'Começou', 1)}${th('concluidos', 'Concluiu', 1)}${th('media', 'Progresso médio')}${th('problemas', 'Problemas', 1)}${th('imagens', 'Imagens', 1)}${th('ultima', 'Última atividade')}</tr></thead>
       <tbody>${linhas.map((r) => {
         const aberto = estado.aberto === r.u.id;
-        return `<tr class="ad-linha${aberto ? ' ad-linha--aberta' : ''}${r.u.ativo ? '' : ' ad-linha--inativa'}" data-usuario="${esc(r.u.id)}" tabindex="0" aria-expanded="${aberto}">
-          <td><span class="ad-pessoa"><span class="ad-avatar" aria-hidden="true">${esc(iniciais(r.u.nome))}</span><span><strong>${esc(r.u.nome)}</strong><small>${esc(r.u.login)}${r.u.ativo ? '' : ' · inativo'}</small></span></span></td>
-          <td><span class="ad-papel ad-papel--${esc(r.u.papel)}">${esc(r.u.papelNome)}</span></td>
-          <td class="ad-num">${r.iniciados}</td>
-          <td class="ad-num">${r.concluidos}</td>
-          <td><span class="ad-mini"><span class="ad-mini-trilho"><span style="width:${r.media}%"></span></span><b>${r.iniciados ? pct(r.media) : '—'}</b></span></td>
-          <td class="ad-num">${r.problemas ? `<span class="ad-selo">${r.problemas}</span>` : '0'}</td>
-          <td class="ad-num">${r.imagens}</td>
+        return `<tr class="pnl-linha${aberto ? ' pnl-linha--aberta' : ''}${r.u.ativo ? '' : ' pnl-linha--inativa'}" data-usuario="${esc(r.u.id)}" tabindex="0" aria-expanded="${aberto}">
+          <td><span class="pnl-pessoa"><span class="pnl-avatar" aria-hidden="true">${esc(iniciais(r.u.nome))}</span><span><strong>${esc(r.u.nome)}</strong><small>${esc(r.u.login)}${r.u.ativo ? '' : ' · inativo'}</small></span></span></td>
+          <td><span class="pnl-papel pnl-papel--${esc(r.u.papel)}">${esc(r.u.papelNome)}</span></td>
+          <td class="pnl-num">${r.iniciados}</td>
+          <td class="pnl-num">${r.concluidos}</td>
+          <td><span class="pnl-mini"><span class="pnl-mini-trilho"><span style="width:${r.media}%"></span></span><b>${r.iniciados ? pct(r.media) : '—'}</b></span></td>
+          <td class="pnl-num">${r.problemas ? `<span class="pnl-selo">${r.problemas}</span>` : '0'}</td>
+          <td class="pnl-num">${r.imagens}</td>
           <td title="${esc(fmtDataHora(r.ultima))}">${esc(relativo(r.ultima))}</td>
-        </tr>${aberto ? `<tr class="ad-detalhe"><td colspan="8">${detalheUsuario(r, c)}</td></tr>` : ''}`;
+        </tr>${aberto ? `<tr class="pnl-detalhe"><td colspan="8">${detalheUsuario(r, c)}</td></tr>` : ''}`;
       }).join('')}</tbody></table></div>`;
   }
 
   const iniciais = (nome) => String(nome).split(/\s+/).filter(Boolean).slice(0, 2).map((p) => p[0].toUpperCase()).join('') || '?';
 
   function detalheUsuario(r, c) {
-    if (!r.linhas.length) return '<p class="ad-vazio-texto">Esta pessoa ainda não gravou nenhum checklist neste filtro.</p>';
+    if (!r.linhas.length) return '<p class="pnl-vazio-texto">Esta pessoa ainda não gravou nenhum checklist neste filtro.</p>';
     const linhas = [...r.linhas].sort((a, b) => b.pct - a.pct);
-    return `<ul class="ad-detalhe-lista">${linhas.map((p) => {
+    return `<ul class="pnl-detalhe-lista">${linhas.map((p) => {
       const m = c.porChave.get(p.chave);
       const probs = c.problemas.filter((x) => x.usuario === r.u.id && x.chave === p.chave).length;
-      return `<li><span class="ad-detalhe-titulo"><small>${esc(m.area || '')}</small>${esc(m.titulo)}</span>
-        <span class="ad-mini ad-mini--largo"><span class="ad-mini-trilho"><span style="width:${p.pct}%"></span></span><b>${pct(p.pct)}</b></span>
-        <span class="ad-detalhe-meta">${plural(p.marcados, 'etapa marcada', 'etapas marcadas')} de ${m.etapas ?? '—'} · ${probs ? `<button type="button" class="ad-link" data-ver-problemas="${esc(r.u.id)}|${esc(p.chave)}">${plural(probs, 'problema', 'problemas')}</button>` : 'sem problemas'} · ${plural(p.anexos, 'imagem', 'imagens')} · ${esc(relativo(p.atualizadoEm))}</span></li>`;
+      return `<li><span class="pnl-detalhe-titulo"><small>${esc(m.area || '')}</small>${esc(m.titulo)}</span>
+        <span class="pnl-mini pnl-mini--largo"><span class="pnl-mini-trilho"><span style="width:${p.pct}%"></span></span><b>${pct(p.pct)}</b></span>
+        <span class="pnl-detalhe-meta">${plural(p.marcados, 'etapa marcada', 'etapas marcadas')} de ${m.etapas ?? '—'} · ${probs ? `<button type="button" class="pnl-link" data-ver-problemas="${esc(r.u.id)}|${esc(p.chave)}">${plural(probs, 'problema', 'problemas')}</button>` : 'sem problemas'} · ${plural(p.anexos, 'imagem', 'imagens')} · ${esc(relativo(p.atualizadoEm))}</span></li>`;
     }).join('')}</ul>`;
   }
 
   function mapa(c) {
     const pessoas = c.linhasUsuarios.filter((r) => r.linhas.length).sort((a, b) => b.media - a.media);
     const colunas = c.itens.filter((m) => c.progresso.some((p) => p.chave === m.chave));
-    if (!pessoas.length || !colunas.length) return '<p class="ad-vazio-texto">Sem progresso gravado neste filtro.</p>';
+    if (!pessoas.length || !colunas.length) return '<p class="pnl-vazio-texto">Sem progresso gravado neste filtro.</p>';
     const grupoNome = Object.fromEntries(estado.manifest.grupos.map((g) => [g.id, g.nome]));
     const celula = (r, m) => {
       const p = r.linhas.find((x) => x.chave === m.chave);
-      if (!p) return `<td class="ad-mapa-vazio" data-dica="${esc(`<strong>${esc(r.u.nome)}</strong><br>${esc(m.titulo)}<br>Não começou`)}"><span aria-label="não começou">·</span></td>`;
+      if (!p) return `<td class="pnl-mapa-vazio" data-dica="${esc(`<strong>${esc(r.u.nome)}</strong><br>${esc(m.titulo)}<br>Não começou`)}"><span aria-label="não começou">·</span></td>`;
       const cor = corDe(p.pct);
       return `<td style="background:${cor.fundo};color:${cor.tinta}" data-dica="${esc(`<strong>${esc(r.u.nome)}</strong><br>${esc(m.titulo)}<br>${pct(p.pct)} · ${plural(p.marcados, 'etapa marcada', 'etapas marcadas')} · ${esc(relativo(p.atualizadoEm))}`)}">${p.pct}</td>`;
     };
-    return `<div class="ad-mapa-rolagem"><table class="ad-mapa">
-      <thead><tr><th scope="col" class="ad-mapa-canto">Pessoa</th>${colunas.map((m, i) => `<th scope="col" data-dica="${esc(`<strong>${esc(m.titulo)}</strong><br>${esc(grupoNome[m.grupo] || '')}`)}"><span>${i + 1}</span></th>`).join('')}</tr></thead>
+    return `<div class="pnl-mapa-rolagem"><table class="pnl-mapa">
+      <thead><tr><th scope="col" class="pnl-mapa-canto">Pessoa</th>${colunas.map((m, i) => `<th scope="col" data-dica="${esc(`<strong>${esc(m.titulo)}</strong><br>${esc(grupoNome[m.grupo] || '')}`)}"><span>${i + 1}</span></th>`).join('')}</tr></thead>
       <tbody>${pessoas.map((r) => `<tr><th scope="row">${esc(r.u.nome)}</th>${colunas.map((m) => celula(r, m)).join('')}</tr>`).join('')}</tbody>
     </table></div>
-    <div class="ad-mapa-rodape">
-      <ul class="ad-legenda ad-legenda--escala" aria-label="Escala do progresso">
-        ${ESCALA.map((e, i) => `<li><span class="ad-chave" style="background:${e.fundo}"></span>${i === 0 ? '1–24%' : i === ESCALA.length - 1 ? '100%' : `${ESCALA[i - 1].ate + 1}–${e.ate}%`}</li>`).join('')}
-        <li><span class="ad-chave ad-chave--vazia">·</span>não começou</li>
+    <div class="pnl-mapa-rodape">
+      <ul class="pnl-legenda pnl-legenda--escala" aria-label="Escala do progresso">
+        ${ESCALA.map((e, i) => `<li><span class="pnl-chave" style="background:${e.fundo}"></span>${i === 0 ? '1–24%' : i === ESCALA.length - 1 ? '100%' : `${ESCALA[i - 1].ate + 1}–${e.ate}%`}</li>`).join('')}
+        <li><span class="pnl-chave pnl-chave--vazia">·</span>não começou</li>
       </ul>
-      <details class="ad-mapa-chave"><summary>Ver a lista numerada dos checklists</summary><ol>${colunas.map((m) => `<li>${esc(m.titulo)}</li>`).join('')}</ol></details>
+      <details class="pnl-mapa-chave"><summary>Ver a lista numerada dos checklists</summary><ol>${colunas.map((m) => `<li>${esc(m.titulo)}</li>`).join('')}</ol></details>
     </div>`;
   }
 
@@ -377,38 +377,38 @@
     const lista = problemasFiltrados(c);
     const chavesComProblema = c.itens.filter((m) => c.problemas.some((p) => p.chave === m.chave));
     const pessoasComProblema = c.usuarios.filter((u) => c.problemas.some((p) => p.usuario === u.id));
-    const filtros = `<div class="ad-filtros ad-filtros--prob">
-        <label class="ad-campo ad-campo--busca">${svg(ICONE.busca)}<input type="search" data-prob="busca" value="${esc(pf.busca)}" placeholder="Buscar no texto dos problemas" aria-label="Buscar problemas"></label>
-        <label class="ad-campo"><span>Checklist</span><select data-prob="chave"><option value="">Todos</option>${chavesComProblema.map((m) => `<option value="${esc(m.chave)}" ${pf.chave === m.chave ? 'selected' : ''}>${esc(m.titulo)}</option>`).join('')}</select></label>
-        <label class="ad-campo"><span>Pessoa</span><select data-prob="usuario"><option value="">Todas</option>${pessoasComProblema.map((u) => `<option value="${esc(u.id)}" ${pf.usuario === u.id ? 'selected' : ''}>${esc(u.nome)}</option>`).join('')}</select></label>
+    const filtros = `<div class="pnl-filtros pnl-filtros--prob">
+        <label class="pnl-campo pnl-campo--busca">${svg(ICONE.busca)}<input type="search" data-prob="busca" value="${esc(pf.busca)}" placeholder="Buscar no texto dos problemas" aria-label="Buscar problemas"></label>
+        <label class="pnl-campo"><span>Checklist</span><select data-prob="chave"><option value="">Todos</option>${chavesComProblema.map((m) => `<option value="${esc(m.chave)}" ${pf.chave === m.chave ? 'selected' : ''}>${esc(m.titulo)}</option>`).join('')}</select></label>
+        <label class="pnl-campo"><span>Pessoa</span><select data-prob="usuario"><option value="">Todas</option>${pessoasComProblema.map((u) => `<option value="${esc(u.id)}" ${pf.usuario === u.id ? 'selected' : ''}>${esc(u.nome)}</option>`).join('')}</select></label>
       </div>`;
-    if (!c.problemas.length) return `${filtros}<p class="ad-vazio-texto">Nenhum problema registrado neste filtro.</p>`;
-    if (!lista.length) return `${filtros}<p class="ad-vazio-texto">Nenhum problema com esses filtros.</p>`;
+    if (!c.problemas.length) return `${filtros}<p class="pnl-vazio-texto">Nenhum problema registrado neste filtro.</p>`;
+    if (!lista.length) return `${filtros}<p class="pnl-vazio-texto">Nenhum problema com esses filtros.</p>`;
     const visiveis = lista.slice(0, pf.limite);
     const imagens = lista.reduce((s, p) => s + p.anexos.length, 0);
-    return `${filtros}<div class="ad-prob-barra">
-        <p class="ad-contagem">${plural(lista.length, 'problema', 'problemas')} · ${plural(new Set(lista.map((p) => p.usuario)).size, 'pessoa', 'pessoas')} · ${plural(imagens, 'imagem', 'imagens')}</p>
-        <div class="ad-exportar">
-          <button type="button" class="ad-btn" data-acao="menu-exportar" aria-haspopup="menu" aria-expanded="false">${svg(ICONE.pdf)}Exportar ${lista.length === c.problemas.length ? 'todos os problemas' : `estes ${lista.length} problemas`}${svg(ICONE.seta, 'ad-seta')}</button>
-          <div class="ad-menu" role="menu" hidden>
+    return `${filtros}<div class="pnl-prob-barra">
+        <p class="pnl-contagem">${plural(lista.length, 'problema', 'problemas')} · ${plural(new Set(lista.map((p) => p.usuario)).size, 'pessoa', 'pessoas')} · ${plural(imagens, 'imagem', 'imagens')}</p>
+        <div class="pnl-exportar">
+          <button type="button" class="pnl-btn" data-acao="menu-exportar" aria-haspopup="menu" aria-expanded="false">${svg(ICONE.pdf)}Exportar ${lista.length === c.problemas.length ? 'todos os problemas' : `estes ${lista.length} problemas`}${svg(ICONE.seta, 'pnl-seta')}</button>
+          <div class="pnl-menu" role="menu" hidden>
             <button type="button" role="menuitem" data-exportar="prob-pdf">${svg(ICONE.pdf)}<span>PDF com as imagens<small>Nome, checklist, etapa, problema, registro e as imagens de cada um</small></span></button>
             <button type="button" role="menuitem" data-exportar="prob-html">${svg(ICONE.imagem)}<span>Relatório com imagens (HTML)<small>Abre em qualquer navegador; clique na imagem para ampliar</small></span></button>
             <button type="button" role="menuitem" data-exportar="prob-excel">${svg(ICONE.planilha)}<span>Planilha (Excel)<small>Uma linha por problema, com links das imagens</small></span></button>
           </div>
         </div>
       </div>
-      <div class="ad-probs">${visiveis.map((p) => {
+      <div class="pnl-probs">${visiveis.map((p) => {
         const m = c.porChave.get(p.chave);
         const u = nomeDe[p.usuario];
-        return `<article class="ad-prob">
-          <header><span class="ad-prob-checklist"><small>${esc(m.area || '')}</small>${esc(m.titulo)}</span><span class="ad-prob-quem"><span class="ad-avatar ad-avatar--p" aria-hidden="true">${esc(iniciais(u?.nome || '?'))}</span>${esc(u?.nome || '—')} · ${esc(fmtDataHora(p.atualizadoEm))}</span></header>
-          <p class="ad-prob-etapa" data-etapa="${esc(p.chave)}|${esc(p.item)}"><span class="ad-prob-secao"></span><span class="ad-prob-texto">Etapa ${esc(p.item)}</span></p>
+        return `<article class="pnl-prob">
+          <header><span class="pnl-prob-checklist"><small>${esc(m.area || '')}</small>${esc(m.titulo)}</span><span class="pnl-prob-quem"><span class="pnl-avatar pnl-avatar--p" aria-hidden="true">${esc(iniciais(u?.nome || '?'))}</span>${esc(u?.nome || '—')} · ${esc(fmtDataHora(p.atualizadoEm))}</span></header>
+          <p class="pnl-prob-etapa" data-etapa="${esc(p.chave)}|${esc(p.item)}"><span class="pnl-prob-secao"></span><span class="pnl-prob-texto">Etapa ${esc(p.item)}</span></p>
           <blockquote>${esc(p.problema)}</blockquote>
-          ${p.registro ? `<p class="ad-prob-registro"><strong>Registro:</strong> ${esc(p.registro)}</p>` : ''}
-          ${p.anexos.length ? `<div class="ad-prob-imagens">${p.anexos.map((a) => `<a href="/api/checklists-admin?anexo=${encodeURIComponent(a.id)}" target="_blank" rel="noopener" title="${esc(a.nome || 'Imagem anexada')}"><img src="/api/checklists-admin?anexo=${encodeURIComponent(a.id)}" alt="${esc(a.nome || 'Imagem anexada ao problema')}" loading="lazy"></a>`).join('')}</div>` : ''}
+          ${p.registro ? `<p class="pnl-prob-registro"><strong>Registro:</strong> ${esc(p.registro)}</p>` : ''}
+          ${p.anexos.length ? `<div class="pnl-prob-imagens">${p.anexos.map((a) => `<a href="/api/checklists-admin?anexo=${encodeURIComponent(a.id)}" target="_blank" rel="noopener" title="${esc(a.nome || 'Imagem anexada')}"><img src="/api/checklists-admin?anexo=${encodeURIComponent(a.id)}" alt="${esc(a.nome || 'Imagem anexada ao problema')}" loading="lazy"></a>`).join('')}</div>` : ''}
         </article>`;
       }).join('')}</div>
-      ${lista.length > visiveis.length ? `<button type="button" class="ad-btn ad-btn--sec ad-mais" data-acao="mais-problemas">Mostrar mais ${Math.min(24, lista.length - visiveis.length)} de ${lista.length - visiveis.length}</button>` : ''}`;
+      ${lista.length > visiveis.length ? `<button type="button" class="pnl-btn pnl-btn--sec pnl-mais" data-acao="mais-problemas">Mostrar mais ${Math.min(24, lista.length - visiveis.length)} de ${lista.length - visiveis.length}</button>` : ''}`;
   }
 
   /* Textos das etapas: vêm do HTML de cada checklist (o mesmo que a pessoa preencheu), carregado só quando preciso. */
@@ -428,8 +428,8 @@
       const [chave, item] = el.dataset.etapa.split('|');
       const e = (await estruturaDe(chave)).etapas?.[item];
       if (!e || !el.isConnected) return;
-      el.querySelector('.ad-prob-secao').textContent = e.secao || '';
-      el.querySelector('.ad-prob-texto').textContent = e.etapa || `Etapa ${item}`;
+      el.querySelector('.pnl-prob-secao').textContent = e.secao || '';
+      el.querySelector('.pnl-prob-texto').textContent = e.etapa || `Etapa ${item}`;
     });
   }
 
@@ -473,7 +473,7 @@
       const [usuario, chave] = alvo.dataset.verProblemas.split('|');
       Object.assign(estado.prob, { usuario, chave, busca: '', limite: 24 });
       render();
-      painel.querySelector('#ad-t-problemas')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      painel.querySelector('#pnl-t-problemas')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
       return;
     }
     if (alvo.matches('tr[data-usuario]')) {
@@ -485,7 +485,7 @@
     if ((e.key === 'Enter' || e.key === ' ') && e.target.matches('tr[data-usuario]')) { e.preventDefault(); e.target.click(); }
     if (e.key === 'Escape') fecharMenu();
   });
-  document.addEventListener('click', (e) => { if (!e.target.closest('.ad-exportar')) fecharMenu(); });
+  document.addEventListener('click', (e) => { if (!e.target.closest('.pnl-exportar')) fecharMenu(); });
   function alternarMenu(botao) {
     const menu = botao.nextElementSibling;
     const abrir = menu.hidden;
@@ -494,14 +494,14 @@
     if (abrir) menu.querySelector('button')?.focus();
   }
   function fecharMenu() {
-    painel.querySelectorAll('.ad-menu').forEach((m) => { m.hidden = true; });
+    painel.querySelectorAll('.pnl-menu').forEach((m) => { m.hidden = true; });
     painel.querySelectorAll('[data-acao="menu-exportar"]').forEach((b) => b.setAttribute('aria-expanded', 'false'));
   }
 
   /* Dica ao passar o mouse (gráficos e mapa) */
   painel.addEventListener('mouseover', (e) => {
     const alvo = e.target.closest('[data-dica]');
-    const dica = painel.querySelector('.ad-dica');
+    const dica = painel.querySelector('.pnl-dica');
     if (!dica) return;
     if (!alvo) { dica.hidden = true; return; }
     dica.innerHTML = alvo.dataset.dica;
@@ -509,10 +509,10 @@
     posicionar(dica, e);
   });
   painel.addEventListener('mousemove', (e) => {
-    const dica = painel.querySelector('.ad-dica');
+    const dica = painel.querySelector('.pnl-dica');
     if (dica && !dica.hidden) posicionar(dica, e);
   });
-  painel.addEventListener('mouseleave', () => { const d = painel.querySelector('.ad-dica'); if (d) d.hidden = true; });
+  painel.addEventListener('mouseleave', () => { const d = painel.querySelector('.pnl-dica'); if (d) d.hidden = true; });
   function posicionar(dica, e) {
     const larg = dica.offsetWidth, alt = dica.offsetHeight;
     let x = e.clientX + 16, y = e.clientY + 16;
@@ -521,7 +521,7 @@
     dica.style.transform = `translate(${Math.max(8, x)}px, ${Math.max(8, y)}px)`;
   }
 
-  const avisar = (texto) => { const a = painel.querySelector('.ad-aviso'); if (a) a.textContent = texto; };
+  const avisar = (texto) => { const a = painel.querySelector('.pnl-aviso'); if (a) a.textContent = texto; };
 
   /* ---------- Exportação ---------- */
   const hoje = () => new Date().toISOString().slice(0, 10);
