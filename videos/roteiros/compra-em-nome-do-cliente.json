@@ -1,0 +1,584 @@
+{
+  "id": "compra-em-nome-do-cliente",
+  "titulo": "Compra em nome do cliente",
+  "subtitulo": "Faturamento em Nível e Contrato de Fornecimento",
+  "trilha": "Vídeos de fluxo · Vendas",
+  "proximo": "Faturar o pedido de venda",
+  "icone": "compra",
+  "voz": {
+    "nome": "Voz D feminina (madura, tom médio), clonada da amostra desenhada female, middle-aged, moderate pitch, seed 42, escolhida pelo responsável em 29/10/2026. 16 passos: limite de 600 s por frase na CPU desta máquina.",
+    "language": "pt",
+    "ref_audio": "voz/referencia-voz-d.wav",
+    "ref_text": "Em Vendas, clique em Importar CEM Mobi e selecione a obra.",
+    "seed": 42,
+    "speed": 0.95,
+    "num_step": 16,
+    "pronounce": false,
+    "denoise": true,
+    "postprocess_output": true
+  },
+  "focoMin": 3,
+  "trechos": [
+    {
+      "id": "01",
+      "cena": "abertura",
+      "fala": "Obra de vinte mil: quarenta por cento você fatura, sessenta o cliente compra. Como controlar?"
+    },
+    {
+      "id": "02",
+      "cena": "status",
+      "tituloCena": "Da obra ao saldo do cliente",
+      "etapas": [
+        "Obra · R$ 20 mil",
+        "Níveis 40 / 60",
+        "Fatura R$ 8 mil",
+        "Encerra R$ 12 mil",
+        "Contrato abate"
+      ],
+      "destaque": 1,
+      "fala": "A obra entra do CEM Mobi com Faturamento em Nível: quarenta por cento da indústria, sessenta do material.",
+      "fonte": "roteiro-vendas-01-pedido-de-venda#012"
+    },
+    {
+      "id": "03",
+      "cena": "status",
+      "destaque": 4,
+      "fala": "O de oito mil segue o fluxo normal. O de doze mil é encerrado e vira saldo.",
+      "fonte": "manual-03-vendas#010"
+    },
+    {
+      "id": "05",
+      "cena": "regra",
+      "n": 1,
+      "titulo": "Os níveis somam 100%",
+      "icone": "funil",
+      "texto": "No rateio, a soma dos níveis fecha exatamente em cem por cento. Em Um pedido por nível, cada nível vira um pedido.",
+      "fonte": "roteiro-vendas-01-pedido-de-venda#012",
+      "fala": "Primeira regra. No rateio, os níveis somam exatamente cem por cento."
+    },
+    {
+      "id": "06",
+      "cena": "regra",
+      "n": 2,
+      "titulo": "Encerrar não fatura",
+      "icone": "cadeado",
+      "texto": "Encerrar conclui um pedido Em aberto sem faturar o saldo. É o destino do pedido do material do cliente.",
+      "fonte": "manual-03-vendas#010",
+      "fala": "Segunda, a mais importante. Encerrar conclui o pedido sem faturar o saldo.",
+      "critica": true
+    },
+    {
+      "id": "07",
+      "cena": "regra",
+      "n": 3,
+      "titulo": "Compra do cliente não é conta a pagar",
+      "icone": "estoque",
+      "texto": "O pedido de compra vinculado ao contrato é por conta do cliente: não gera títulos a pagar da indústria.",
+      "fonte": "roteiro-vendas-02-contratos-de-fornecimento#023",
+      "fala": "Terceira. A compra vinculada ao contrato é por conta do cliente: não gera conta a pagar."
+    },
+    {
+      "id": "08",
+      "cena": "regra",
+      "n": 4,
+      "titulo": "Registrar não é emitir a nota",
+      "icone": "nota",
+      "texto": "Registrar faturamento movimenta o saldo do contrato. A NF-e é feita depois, pelo pedido de venda.",
+      "fonte": "roteiro-vendas-02-contratos-de-fornecimento#033",
+      "fala": "Quarta. Registrar o faturamento move o saldo; a NF-e vem depois, pelo pedido."
+    },
+    {
+      "id": "09",
+      "cena": "tela",
+      "captura": "01-configurar-integracao",
+      "focos": [
+        0,
+        2
+      ],
+      "rotulo": "Vendas › Configurações › Configurar integração",
+      "fala": "Na prática. Em Vendas, Configurações, Configurar integração, ative o Faturamento em Nível.",
+      "nomes": [
+        "Configurar integração",
+        "Ativado"
+      ]
+    },
+    {
+      "id": "10",
+      "cena": "tela",
+      "captura": "03-niveis-lista",
+      "focos": [
+        1,
+        2
+      ],
+      "rotulo": "Vendas › Configurações › Níveis de Faturamento",
+      "fala": "Em Níveis de Faturamento, cadastre dois níveis: o fornecimento da indústria e o material do cliente.",
+      "nomes": [
+        "Fornecimento da indústria",
+        "Material comprado pelo cliente"
+      ]
+    },
+    {
+      "id": "11",
+      "cena": "tela",
+      "captura": "04-template-rateio",
+      "focos": [
+        3,
+        4
+      ],
+      "rotulo": "Vendas › Configurações › Templates de Rateio",
+      "fala": "Em Templates de Rateio, salve a divisão: quarenta e sessenta, somando cem por cento.",
+      "nomes": [
+        "Soma: 100%",
+        "Salvar"
+      ]
+    },
+    {
+      "id": "12",
+      "cena": "tela",
+      "captura": "05-pedidos",
+      "focos": [
+        0,
+        1
+      ],
+      "rotulo": "Vendas › Pedidos de Venda",
+      "fala": "Agora importe a obra. Em Pedidos de Venda, clique em Importar CEM Mobi e selecione a obra.",
+      "nomes": [
+        "Pedidos de Venda",
+        "Importar CEM Mobi"
+      ]
+    },
+    {
+      "id": "14",
+      "cena": "tela",
+      "captura": "08-rateio",
+      "focos": [
+        0,
+        1,
+        4
+      ],
+      "rotulo": "Importar do CEM Mobi › Rateio",
+      "fala": "No Rateio, escolha Um pedido por nível e o template. Indústria, oito mil; material, doze mil: dois pedidos.",
+      "nomes": [
+        "Um pedido por nível",
+        "Template de rateio",
+        "Serão gerados 2 pedidos"
+      ]
+    },
+    {
+      "id": "17",
+      "cena": "tela",
+      "captura": "13-menu-gerar-titulos",
+      "focos": [
+        3,
+        1
+      ],
+      "rotulo": "Pedidos de Venda › ⋯ › Gerar Títulos",
+      "fala": "O pedido de oito mil é o que é seu. No menu, clique em Gerar Títulos e confirme.",
+      "nomes": [
+        null,
+        "Gerar Títulos"
+      ],
+      "caixasExtras": [
+        {
+          "x": 668,
+          "y": 858,
+          "w": 114,
+          "h": 32
+        }
+      ]
+    },
+    {
+      "id": "18",
+      "cena": "tela",
+      "captura": "16-menu-encerrar",
+      "focos": [
+        2,
+        1
+      ],
+      "rotulo": "Pedidos de Venda › ⋯ › Encerrar",
+      "fala": "O de doze mil é o material do cliente. No menu, clique em Encerrar e confirme.",
+      "nomes": [
+        null,
+        "Encerrar"
+      ],
+      "caixasExtras": [
+        {
+          "x": 668,
+          "y": 789,
+          "w": 114,
+          "h": 32
+        }
+      ]
+    },
+    {
+      "id": "19",
+      "cena": "tela",
+      "captura": "18-pv60-encerrado",
+      "focos": [
+        2,
+        3
+      ],
+      "rotulo": "Vendas › Pedidos de Venda",
+      "fala": "Na lista: doze mil encerrado, oito mil com títulos gerados.",
+      "nomes": [
+        "Encerrado",
+        "Gerados"
+      ]
+    },
+    {
+      "id": "20",
+      "cena": "tela",
+      "captura": "19-contratos-lista",
+      "focos": [
+        1
+      ],
+      "rotulo": "Vendas › Contratos de Fornecimento",
+      "fala": "Agora, em Contratos de Fornecimento, clique em Novo Contrato.",
+      "nomes": [
+        "Novo Contrato"
+      ]
+    },
+    {
+      "id": "21",
+      "cena": "tela",
+      "captura": "20-novo-contrato",
+      "focos": [
+        2,
+        3,
+        4
+      ],
+      "rotulo": "Contratos de Fornecimento › Novo Contrato",
+      "borrar": [
+        {
+          "x": 550,
+          "y": 388,
+          "w": 150,
+          "h": 26
+        },
+        {
+          "x": 1010,
+          "y": 387,
+          "w": 172,
+          "h": 28
+        }
+      ],
+      "fala": "Contrato com o valor cheio da obra: vinte mil reais. Origem do abatimento: Pedido de compra. Salve.",
+      "nomes": [
+        "Valor global do contrato",
+        "Pedido de compra",
+        "Salvar"
+      ]
+    },
+    {
+      "id": "22",
+      "cena": "tela",
+      "captura": "21-contrato-rascunho",
+      "focos": [
+        1
+      ],
+      "rotulo": "Contrato › Rascunho",
+      "fala": "Ele nasce em rascunho. Clique em Ativar.",
+      "nomes": [
+        "Ativar"
+      ]
+    },
+    {
+      "id": "23",
+      "cena": "tela",
+      "captura": "23-vincular-pv",
+      "caixasExtras": [
+        {
+          "x": 690,
+          "y": 607,
+          "w": 360,
+          "h": 34
+        },
+        {
+          "x": 683,
+          "y": 549,
+          "w": 554,
+          "h": 45
+        }
+      ],
+      "focos": [
+        3,
+        2
+      ],
+      "rotulo": "Contrato › Vincular pedido de venda",
+      "fala": "Em Vincular pedido de venda, marque só o de oito mil, o que é seu, e vincule.",
+      "nomes": [
+        null,
+        "Vincular PV-000007"
+      ]
+    },
+    {
+      "id": "24",
+      "cena": "tela",
+      "captura": "25-registrar-faturamento",
+      "caixasExtras": [
+        {
+          "x": 1072,
+          "y": 556,
+          "w": 252,
+          "h": 38
+        }
+      ],
+      "focos": [
+        4,
+        3
+      ],
+      "rotulo": "Contrato › Registrar faturamento",
+      "fala": "Clique em Faturar, marque o item e clique em Registrar faturamento: oito mil reais.",
+      "nomes": [
+        null,
+        "Registrar faturamento"
+      ]
+    },
+    {
+      "id": "25",
+      "cena": "tela",
+      "captura": "26-contrato-faturado-40",
+      "caixasExtras": [
+        {
+          "x": 968,
+          "y": 217,
+          "w": 290,
+          "h": 114
+        },
+        {
+          "x": 1581,
+          "y": 217,
+          "w": 290,
+          "h": 114
+        },
+        {
+          "x": 1070,
+          "y": 595,
+          "w": 134,
+          "h": 46
+        }
+      ],
+      "focos": [
+        4,
+        5
+      ],
+      "rotulo": "Contrato de Fornecimento",
+      "fala": "Oito mil faturados, doze mil a faturar. O Flow oferece gerar a nota em aberto, sem transmitir.",
+      "nomes": [
+        "A faturar",
+        "Gerar notas"
+      ]
+    },
+    {
+      "id": "27",
+      "cena": "tela",
+      "captura": "30-nfe-itens",
+      "caixasExtras": [
+        {
+          "x": 1028,
+          "y": 116,
+          "w": 237,
+          "h": 47
+        }
+      ],
+      "focos": [
+        5,
+        2
+      ],
+      "rotulo": "Faturamento › Nova NF-e",
+      "fala": "Ou, em Faturamento, Nova NF-e: escolha o pedido de oito mil, importe os itens e salve a nota.",
+      "nomes": [
+        "Importar Itens do Pedido",
+        "Total"
+      ]
+    },
+    {
+      "id": "28",
+      "cena": "tela",
+      "captura": "32-pedido-de-compra",
+      "focos": [
+        1,
+        3
+      ],
+      "rotulo": "Compras › Novo Pedido de Compra",
+      "borrar": [
+        {
+          "x": 581,
+          "y": 318,
+          "w": 172,
+          "h": 26
+        },
+        {
+          "x": 942,
+          "y": 318,
+          "w": 166,
+          "h": 26
+        }
+      ],
+      "fala": "Agora o material do cliente. Em Compras, um pedido de doze mil reais, ligado à obra.",
+      "nomes": [
+        "Projeto (opcional)",
+        "Salvar"
+      ]
+    },
+    {
+      "id": "29",
+      "cena": "tela",
+      "captura": "33-vincular-pc",
+      "caixasExtras": [
+        {
+          "x": 690,
+          "y": 565,
+          "w": 300,
+          "h": 32
+        }
+      ],
+      "focos": [
+        3,
+        2
+      ],
+      "rotulo": "Contrato › Vincular pedido de compra",
+      "fala": "No contrato, use Vincular pedido de compra: ele passa a ser por conta do cliente.",
+      "nomes": [
+        null,
+        "Vincular PC-000003"
+      ]
+    },
+    {
+      "id": "30",
+      "cena": "tela",
+      "captura": "36-nota-recebimento",
+      "caixasExtras": [],
+      "focos": [
+        2,
+        3
+      ],
+      "rotulo": "Recebimento › Nova Nota de Recebimento",
+      "borrar": [
+        {
+          "x": 558,
+          "y": 294,
+          "w": 120,
+          "h": 26
+        },
+        {
+          "x": 810,
+          "y": 294,
+          "w": 164,
+          "h": 26
+        },
+        {
+          "x": 1255,
+          "y": 542,
+          "w": 172,
+          "h": 26
+        }
+      ],
+      "fala": "Gere a nota de recebimento do pedido, marque Material de terceiro, cliente, e salve.",
+      "nomes": [
+        "Material de terceiro (cliente)",
+        "Salvar"
+      ]
+    },
+    {
+      "id": "31",
+      "cena": "tela",
+      "captura": "37-finalizar-nr",
+      "focos": [
+        1
+      ],
+      "rotulo": "Recebimento › Notas de Recebimento",
+      "fala": "Finalize a nota. Por ser do cliente, ela não gera títulos a pagar.",
+      "nomes": [
+        "Finalizar"
+      ]
+    },
+    {
+      "id": "32",
+      "cena": "tela",
+      "captura": "39-abater-saldo",
+      "caixasExtras": [
+        {
+          "x": 596,
+          "y": 530,
+          "w": 322,
+          "h": 32
+        }
+      ],
+      "focos": [
+        3,
+        2
+      ],
+      "rotulo": "Contrato › Abater saldo",
+      "fala": "No contrato, Abater saldo: marque o item de doze mil e confirme.",
+      "nomes": [
+        null,
+        "Confirmar"
+      ]
+    },
+    {
+      "id": "33",
+      "cena": "tela",
+      "captura": "40-contrato-fechado",
+      "caixasExtras": [
+        {
+          "x": 357,
+          "y": 217,
+          "w": 289,
+          "h": 114
+        },
+        {
+          "x": 662,
+          "y": 217,
+          "w": 290,
+          "h": 114
+        },
+        {
+          "x": 968,
+          "y": 217,
+          "w": 290,
+          "h": 114
+        },
+        {
+          "x": 1581,
+          "y": 217,
+          "w": 290,
+          "h": 114
+        }
+      ],
+      "focos": [
+        7,
+        6,
+        8
+      ],
+      "impacto": 2,
+      "rotulo": "Contrato de Fornecimento",
+      "fala": "Contrato fechado: vinte mil de valor, oito mil faturados, doze mil comprados pelo cliente e nada a faturar.",
+      "nomes": [
+        "Faturado",
+        "Comprado",
+        "A faturar"
+      ]
+    },
+    {
+      "id": "34",
+      "cena": "alertas",
+      "itens": [
+        "No nível, use um CFOP que gere financeiro.",
+        "O cliente do pedido é o mesmo do contrato.",
+        "A origem do abatimento não muda."
+      ],
+      "fala": "Três cuidados. Use no nível um CFOP que gere financeiro. O cliente do pedido é o mesmo do contrato. E a origem do abatimento não muda."
+    },
+    {
+      "id": "35",
+      "cena": "fechamento",
+      "topicos": [
+        "Os níveis dividem a obra em 40 e 60",
+        "Os 40% seguem o fluxo normal",
+        "Os 60% viram saldo abatido pelas compras"
+      ],
+      "fala": "Resumindo: os níveis dividem a obra, o seu segue normal, e o material do cliente vira saldo."
+    }
+  ]
+}

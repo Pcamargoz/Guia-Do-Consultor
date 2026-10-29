@@ -1,5 +1,5 @@
 {
-  "atualizado": "2026-10-22",
+  "atualizado": "2026-10-29",
   "trilhas": [
     {
       "id": "fluxos",
@@ -138,6 +138,21 @@
           "status": "pronto",
           "checklist": "consultores/teste-fluxo-pedido-ate-gestao.html",
           "duracao": "2 min 37 s"
+        }
+      ]
+    },
+    {
+      "id": "cenarios",
+      "nome": "Cenários de implantação",
+      "descricao": "Situações reais de clientes, montadas de ponta a ponta no Faktory Flow: a configuração, o caminho na tela e o que cuidar.",
+      "videos": [
+        {
+          "id": "compra-em-nome-do-cliente",
+          "numero": "Vendas",
+          "titulo": "Compra em nome do cliente: Faturamento em Nível e Contrato de Fornecimento",
+          "resumo": "Obra com rateio 40/60: o seu pedido segue o fluxo normal, o do material é encerrado e vira saldo no contrato, abatido pelas compras do cliente.",
+          "status": "pronto",
+          "duracao": "3 min 50 s"
         }
       ]
     }

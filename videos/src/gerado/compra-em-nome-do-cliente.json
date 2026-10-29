@@ -1,0 +1,1638 @@
+{
+ "id": "compra-em-nome-do-cliente",
+ "titulo": "Compra em nome do cliente",
+ "subtitulo": "Faturamento em Nível e Contrato de Fornecimento",
+ "trilha": "Vídeos de fluxo · Vendas",
+ "proximo": "Faturar o pedido de venda",
+ "icone": "compra",
+ "voz": {
+  "nome": "Voz D feminina (madura, tom médio), clonada da amostra desenhada female, middle-aged, moderate pitch, seed 42, escolhida pelo responsável em 29/10/2026. 16 passos: limite de 600 s por frase na CPU desta máquina.",
+  "language": "pt",
+  "ref_audio": "voz/referencia-voz-d.wav",
+  "ref_text": "Em Vendas, clique em Importar CEM Mobi e selecione a obra.",
+  "seed": 42,
+  "speed": 0.95,
+  "num_step": 16,
+  "pronounce": false,
+  "denoise": true,
+  "postprocess_output": true
+ },
+ "focoMin": 3,
+ "trechos": [
+  {
+   "id": "01",
+   "cena": "abertura",
+   "fala": "Obra de vinte mil: quarenta por cento você fatura, sessenta o cliente compra. Como controlar?",
+   "inicio": 0,
+   "duracao": 7.869,
+   "fala_s": 6.969,
+   "audio": "audio/compra-em-nome-do-cliente/01.wav",
+   "legendas": [
+    {
+     "texto": "Obra de vinte mil: quarenta por cento você fatura, sessenta o cliente compra.",
+     "ini": 0,
+     "fim": 4.986
+    },
+    {
+     "texto": "Como controlar?",
+     "ini": 5.486,
+     "fim": 6.969
+    }
+   ]
+  },
+  {
+   "id": "02",
+   "cena": "status",
+   "tituloCena": "Da obra ao saldo do cliente",
+   "etapas": [
+    "Obra · R$ 20 mil",
+    "Níveis 40 / 60",
+    "Fatura R$ 8 mil",
+    "Encerra R$ 12 mil",
+    "Contrato abate"
+   ],
+   "destaque": 1,
+   "fala": "A obra entra do CEM Mobi com Faturamento em Nível: quarenta por cento da indústria, sessenta do material.",
+   "fonte": "roteiro-vendas-01-pedido-de-venda#012",
+   "inicio": 7.869,
+   "duracao": 7.287,
+   "fala_s": 6.387,
+   "audio": "audio/compra-em-nome-do-cliente/02.wav",
+   "legendas": [
+    {
+     "texto": "A obra entra do CEM Mobi com Faturamento em Nível: quarenta por cento da indústria, sessenta do material.",
+     "ini": 0,
+     "fim": 6.387
+    }
+   ]
+  },
+  {
+   "id": "03",
+   "cena": "status",
+   "destaque": 4,
+   "fala": "O de oito mil segue o fluxo normal. O de doze mil é encerrado e vira saldo.",
+   "fonte": "manual-03-vendas#010",
+   "inicio": 15.156,
+   "duracao": 5.732,
+   "fala_s": 4.832,
+   "audio": "audio/compra-em-nome-do-cliente/03.wav",
+   "legendas": [
+    {
+     "texto": "O de oito mil segue o fluxo normal.",
+     "ini": 0,
+     "fim": 2.045
+    },
+    {
+     "texto": "O de doze mil é encerrado e vira saldo.",
+     "ini": 2.545,
+     "fim": 4.832
+    }
+   ]
+  },
+  {
+   "id": "05",
+   "cena": "regra",
+   "n": 1,
+   "titulo": "Os níveis somam 100%",
+   "icone": "funil",
+   "texto": "No rateio, a soma dos níveis fecha exatamente em cem por cento. Em Um pedido por nível, cada nível vira um pedido.",
+   "fonte": "roteiro-vendas-01-pedido-de-venda#012",
+   "fala": "Primeira regra. No rateio, os níveis somam exatamente cem por cento.",
+   "inicio": 20.888,
+   "duracao": 6.03,
+   "fala_s": 5.13,
+   "audio": "audio/compra-em-nome-do-cliente/05.wav",
+   "legendas": [
+    {
+     "texto": "Primeira regra.",
+     "ini": 0,
+     "fim": 1.31
+    },
+    {
+     "texto": "No rateio, os níveis somam exatamente cem por cento.",
+     "ini": 1.81,
+     "fim": 5.13
+    }
+   ]
+  },
+  {
+   "id": "06",
+   "cena": "regra",
+   "n": 2,
+   "titulo": "Encerrar não fatura",
+   "icone": "cadeado",
+   "texto": "Encerrar conclui um pedido Em aberto sem faturar o saldo. É o destino do pedido do material do cliente.",
+   "fonte": "manual-03-vendas#010",
+   "fala": "Segunda, a mais importante. Encerrar conclui o pedido sem faturar o saldo.",
+   "critica": true,
+   "inicio": 26.918,
+   "duracao": 5.993,
+   "fala_s": 5.093,
+   "audio": "audio/compra-em-nome-do-cliente/06.wav",
+   "legendas": [
+    {
+     "texto": "Segunda, a mais importante.",
+     "ini": 0,
+     "fim": 1.849
+    },
+    {
+     "texto": "Encerrar conclui o pedido sem faturar o saldo.",
+     "ini": 2.349,
+     "fim": 5.093
+    }
+   ]
+  },
+  {
+   "id": "07",
+   "cena": "regra",
+   "n": 3,
+   "titulo": "Compra do cliente não é conta a pagar",
+   "icone": "estoque",
+   "texto": "O pedido de compra vinculado ao contrato é por conta do cliente: não gera títulos a pagar da indústria.",
+   "fonte": "roteiro-vendas-02-contratos-de-fornecimento#023",
+   "fala": "Terceira. A compra vinculada ao contrato é por conta do cliente: não gera conta a pagar.",
+   "inicio": 32.911,
+   "duracao": 7.099,
+   "fala_s": 6.199,
+   "audio": "audio/compra-em-nome-do-cliente/07.wav",
+   "legendas": [
+    {
+     "texto": "Terceira.",
+     "ini": 0,
+     "fim": 0.718
+    },
+    {
+     "texto": "A compra vinculada ao contrato é por conta do cliente: não gera conta a pagar.",
+     "ini": 1.218,
+     "fim": 6.199
+    }
+   ]
+  },
+  {
+   "id": "08",
+   "cena": "regra",
+   "n": 4,
+   "titulo": "Registrar não é emitir a nota",
+   "icone": "nota",
+   "texto": "Registrar faturamento movimenta o saldo do contrato. A NF-e é feita depois, pelo pedido de venda.",
+   "fonte": "roteiro-vendas-02-contratos-de-fornecimento#033",
+   "fala": "Quarta. Registrar o faturamento move o saldo; a NF-e vem depois, pelo pedido.",
+   "inicio": 40.01,
+   "duracao": 7.66,
+   "fala_s": 6.76,
+   "audio": "audio/compra-em-nome-do-cliente/08.wav",
+   "legendas": [
+    {
+     "texto": "Quarta.",
+     "ini": 0,
+     "fim": 0.603
+    },
+    {
+     "texto": "Registrar o faturamento move o saldo; a NF-e vem depois, pelo pedido.",
+     "ini": 1.103,
+     "fim": 6.76
+    }
+   ]
+  },
+  {
+   "id": "09",
+   "cena": "tela",
+   "captura": "01-configurar-integracao",
+   "focos": [
+    0,
+    2
+   ],
+   "rotulo": "Vendas › Configurações › Configurar integração",
+   "fala": "Na prática. Em Vendas, Configurações, Configurar integração, ative o Faturamento em Nível.",
+   "nomes": [
+    "Configurar integração",
+    "Ativado"
+   ],
+   "inicio": 47.67,
+   "duracao": 7.6,
+   "fala_s": 6.7,
+   "audio": "audio/compra-em-nome-do-cliente/09.wav",
+   "legendas": [
+    {
+     "texto": "Na prática.",
+     "ini": 0,
+     "fim": 0.816
+    },
+    {
+     "texto": "Em Vendas, Configurações, Configurar integração, ative o Faturamento em Nível.",
+     "ini": 1.316,
+     "fim": 6.515
+    }
+   ],
+   "imagem": "telas/compra-em-nome-do-cliente/01-configurar-integracao.png",
+   "caixas": [
+    {
+     "x": 59,
+     "y": 785,
+     "w": 227,
+     "h": 38
+    },
+    {
+     "x": 547,
+     "y": 776,
+     "w": 1121,
+     "h": 34
+    },
+    {
+     "x": 1524,
+     "y": 836,
+     "w": 53,
+     "h": 29
+    }
+   ],
+   "focoMin": 3
+  },
+  {
+   "id": "10",
+   "cena": "tela",
+   "captura": "03-niveis-lista",
+   "focos": [
+    1,
+    2
+   ],
+   "rotulo": "Vendas › Configurações › Níveis de Faturamento",
+   "fala": "Em Níveis de Faturamento, cadastre dois níveis: o fornecimento da indústria e o material do cliente.",
+   "nomes": [
+    "Fornecimento da indústria",
+    "Material comprado pelo cliente"
+   ],
+   "inicio": 55.27,
+   "duracao": 7.6,
+   "fala_s": 6.7,
+   "audio": "audio/compra-em-nome-do-cliente/10.wav",
+   "legendas": [
+    {
+     "texto": "Em Níveis de Faturamento, cadastre dois níveis: o fornecimento da indústria e o material do cliente.",
+     "ini": 0,
+     "fim": 6.551
+    }
+   ],
+   "imagem": "telas/compra-em-nome-do-cliente/03-niveis-lista.png",
+   "caixas": [
+    null,
+    {
+     "x": 649,
+     "y": 382,
+     "w": 417,
+     "h": 59
+    },
+    {
+     "x": 649,
+     "y": 440,
+     "w": 417,
+     "h": 58
+    }
+   ],
+   "focoMin": 3
+  },
+  {
+   "id": "11",
+   "cena": "tela",
+   "captura": "04-template-rateio",
+   "focos": [
+    3,
+    4
+   ],
+   "rotulo": "Vendas › Configurações › Templates de Rateio",
+   "fala": "Em Templates de Rateio, salve a divisão: quarenta e sessenta, somando cem por cento.",
+   "nomes": [
+    "Soma: 100%",
+    "Salvar"
+   ],
+   "inicio": 62.87,
+   "duracao": 7.6,
+   "fala_s": 6.7,
+   "audio": "audio/compra-em-nome-do-cliente/11.wav",
+   "legendas": [
+    {
+     "texto": "Em Templates de Rateio, salve a divisão: quarenta e sessenta, somando cem por cento.",
+     "ini": 0,
+     "fim": 5.316
+    }
+   ],
+   "imagem": "telas/compra-em-nome-do-cliente/04-template-rateio.png",
+   "caixas": [
+    {
+     "x": 376,
+     "y": 246,
+     "w": 538,
+     "h": 48
+    },
+    {
+     "x": 596,
+     "y": 392,
+     "w": 86,
+     "h": 48
+    },
+    {
+     "x": 596,
+     "y": 463,
+     "w": 86,
+     "h": 48
+    },
+    {
+     "x": 391,
+     "y": 638,
+     "w": 118,
+     "h": 24
+    },
+    {
+     "x": 1763,
+     "y": 714,
+     "w": 89,
+     "h": 48
+    }
+   ],
+   "focoMin": 3
+  },
+  {
+   "id": "12",
+   "cena": "tela",
+   "captura": "05-pedidos",
+   "focos": [
+    0,
+    1
+   ],
+   "rotulo": "Vendas › Pedidos de Venda",
+   "fala": "Agora importe a obra. Em Pedidos de Venda, clique em Importar CEM Mobi e selecione a obra.",
+   "nomes": [
+    "Pedidos de Venda",
+    "Importar CEM Mobi"
+   ],
+   "inicio": 70.47,
+   "duracao": 7.6,
+   "fala_s": 6.7,
+   "audio": "audio/compra-em-nome-do-cliente/12.wav",
+   "legendas": [
+    {
+     "texto": "Agora importe a obra.",
+     "ini": 0,
+     "fim": 1.638
+    },
+    {
+     "texto": "Em Pedidos de Venda, clique em Importar CEM Mobi e selecione a obra.",
+     "ini": 2.138,
+     "fim": 6.486
+    }
+   ],
+   "imagem": "telas/compra-em-nome-do-cliente/05-pedidos.png",
+   "caixas": [
+    {
+     "x": 10,
+     "y": 296,
+     "w": 276,
+     "h": 38
+    },
+    {
+     "x": 1430,
+     "y": 298,
+     "w": 213,
+     "h": 43
+    }
+   ],
+   "focoMin": 3
+  },
+  {
+   "id": "14",
+   "cena": "tela",
+   "captura": "08-rateio",
+   "focos": [
+    0,
+    1,
+    4
+   ],
+   "rotulo": "Importar do CEM Mobi › Rateio",
+   "fala": "No Rateio, escolha Um pedido por nível e o template. Indústria, oito mil; material, doze mil: dois pedidos.",
+   "nomes": [
+    "Um pedido por nível",
+    "Template de rateio",
+    "Serão gerados 2 pedidos"
+   ],
+   "inicio": 78.07,
+   "duracao": 10.6,
+   "fala_s": 9.7,
+   "audio": "audio/compra-em-nome-do-cliente/14.wav",
+   "legendas": [
+    {
+     "texto": "No Rateio, escolha Um pedido por nível e o template.",
+     "ini": 0,
+     "fim": 3.271
+    },
+    {
+     "texto": "Indústria, oito mil; material, doze mil: dois pedidos.",
+     "ini": 3.771,
+     "fim": 7.285
+    }
+   ],
+   "imagem": "telas/compra-em-nome-do-cliente/08-rateio.png",
+   "caixas": [
+    {
+     "x": 91,
+     "y": 280,
+     "w": 190,
+     "h": 38
+    },
+    {
+     "x": 88,
+     "y": 411,
+     "w": 412,
+     "h": 50
+    },
+    {
+     "x": 65,
+     "y": 550,
+     "w": 1824,
+     "h": 71
+    },
+    {
+     "x": 65,
+     "y": 620,
+     "w": 1824,
+     "h": 71
+    },
+    {
+     "x": 1521,
+     "y": 748,
+     "w": 296,
+     "h": 19
+    },
+    {
+     "x": 1728,
+     "y": 898,
+     "w": 104,
+     "h": 48
+    },
+    {
+     "x": 88,
+     "y": 341,
+     "w": 1745,
+     "h": 50
+    }
+   ],
+   "focoMin": 3
+  },
+  {
+   "id": "17",
+   "cena": "tela",
+   "captura": "13-menu-gerar-titulos",
+   "focos": [
+    3,
+    1
+   ],
+   "rotulo": "Pedidos de Venda › ⋯ › Gerar Títulos",
+   "fala": "O pedido de oito mil é o que é seu. No menu, clique em Gerar Títulos e confirme.",
+   "nomes": [
+    null,
+    "Gerar Títulos"
+   ],
+   "caixasExtras": [
+    {
+     "x": 668,
+     "y": 858,
+     "w": 114,
+     "h": 32
+    }
+   ],
+   "inicio": 88.67,
+   "duracao": 7.6,
+   "fala_s": 6.7,
+   "audio": "audio/compra-em-nome-do-cliente/17.wav",
+   "legendas": [
+    {
+     "texto": "O pedido de oito mil é o que é seu.",
+     "ini": 0,
+     "fim": 1.975
+    },
+    {
+     "texto": "No menu, clique em Gerar Títulos e confirme.",
+     "ini": 2.475,
+     "fim": 5.28
+    }
+   ],
+   "imagem": "telas/compra-em-nome-do-cliente/13-menu-gerar-titulos.png",
+   "caixas": [
+    {
+     "x": 367,
+     "y": 839,
+     "w": 1493,
+     "h": 70
+    },
+    {
+     "x": 1583,
+     "y": 681,
+     "w": 257,
+     "h": 38
+    },
+    {
+     "x": 1583,
+     "y": 642,
+     "w": 257,
+     "h": 38
+    },
+    {
+     "x": 668,
+     "y": 858,
+     "w": 114,
+     "h": 32
+    }
+   ],
+   "focoMin": 3
+  },
+  {
+   "id": "18",
+   "cena": "tela",
+   "captura": "16-menu-encerrar",
+   "focos": [
+    2,
+    1
+   ],
+   "rotulo": "Pedidos de Venda › ⋯ › Encerrar",
+   "fala": "O de doze mil é o material do cliente. No menu, clique em Encerrar e confirme.",
+   "nomes": [
+    null,
+    "Encerrar"
+   ],
+   "caixasExtras": [
+    {
+     "x": 668,
+     "y": 789,
+     "w": 114,
+     "h": 32
+    }
+   ],
+   "inicio": 96.27,
+   "duracao": 7.6,
+   "fala_s": 6.7,
+   "audio": "audio/compra-em-nome-do-cliente/18.wav",
+   "legendas": [
+    {
+     "texto": "O de doze mil é o material do cliente.",
+     "ini": 0,
+     "fim": 2.274
+    },
+    {
+     "texto": "No menu, clique em Encerrar e confirme.",
+     "ini": 2.774,
+     "fim": 5.2
+    }
+   ],
+   "imagem": "telas/compra-em-nome-do-cliente/16-menu-encerrar.png",
+   "caixas": [
+    {
+     "x": 367,
+     "y": 769,
+     "w": 1493,
+     "h": 71
+    },
+    {
+     "x": 1583,
+     "y": 659,
+     "w": 257,
+     "h": 38
+    },
+    {
+     "x": 668,
+     "y": 789,
+     "w": 114,
+     "h": 32
+    }
+   ],
+   "focoMin": 3
+  },
+  {
+   "id": "19",
+   "cena": "tela",
+   "captura": "18-pv60-encerrado",
+   "focos": [
+    2,
+    3
+   ],
+   "rotulo": "Vendas › Pedidos de Venda",
+   "fala": "Na lista: doze mil encerrado, oito mil com títulos gerados.",
+   "nomes": [
+    "Encerrado",
+    "Gerados"
+   ],
+   "inicio": 103.87,
+   "duracao": 7.6,
+   "fala_s": 6.7,
+   "audio": "audio/compra-em-nome-do-cliente/19.wav",
+   "legendas": [
+    {
+     "texto": "Na lista: doze mil encerrado, oito mil com títulos gerados.",
+     "ini": 0,
+     "fim": 3.796
+    }
+   ],
+   "imagem": "telas/compra-em-nome-do-cliente/18-pv60-encerrado.png",
+   "caixas": [
+    {
+     "x": 367,
+     "y": 839,
+     "w": 1481,
+     "h": 59
+    },
+    {
+     "x": 367,
+     "y": 769,
+     "w": 1481,
+     "h": 71
+    },
+    {
+     "x": 1375,
+     "y": 769,
+     "w": 132,
+     "h": 71
+    },
+    {
+     "x": 1507,
+     "y": 839,
+     "w": 126,
+     "h": 59
+    }
+   ],
+   "focoMin": 3
+  },
+  {
+   "id": "20",
+   "cena": "tela",
+   "captura": "19-contratos-lista",
+   "focos": [
+    1
+   ],
+   "rotulo": "Vendas › Contratos de Fornecimento",
+   "fala": "Agora, em Contratos de Fornecimento, clique em Novo Contrato.",
+   "nomes": [
+    "Novo Contrato"
+   ],
+   "inicio": 111.47,
+   "duracao": 4.793,
+   "fala_s": 3.893,
+   "audio": "audio/compra-em-nome-do-cliente/20.wav",
+   "legendas": [
+    {
+     "texto": "Agora, em Contratos de Fornecimento, clique em Novo Contrato.",
+     "ini": 0,
+     "fim": 3.893
+    }
+   ],
+   "imagem": "telas/compra-em-nome-do-cliente/19-contratos-lista.png",
+   "caixas": [
+    {
+     "x": 10,
+     "y": 338,
+     "w": 276,
+     "h": 38
+    },
+    {
+     "x": 1704,
+     "y": 149,
+     "w": 172,
+     "h": 43
+    }
+   ],
+   "focoMin": 3
+  },
+  {
+   "id": "21",
+   "cena": "tela",
+   "captura": "20-novo-contrato",
+   "focos": [
+    2,
+    3,
+    4
+   ],
+   "rotulo": "Contratos de Fornecimento › Novo Contrato",
+   "borrar": [
+    {
+     "x": 550,
+     "y": 388,
+     "w": 150,
+     "h": 26
+    },
+    {
+     "x": 1010,
+     "y": 387,
+     "w": 172,
+     "h": 28
+    }
+   ],
+   "fala": "Contrato com o valor cheio da obra: vinte mil reais. Origem do abatimento: Pedido de compra. Salve.",
+   "nomes": [
+    "Valor global do contrato",
+    "Pedido de compra",
+    "Salvar"
+   ],
+   "inicio": 116.263,
+   "duracao": 10.6,
+   "fala_s": 9.7,
+   "audio": "audio/compra-em-nome-do-cliente/21.wav",
+   "legendas": [
+    {
+     "texto": "Contrato com o valor cheio da obra: vinte mil reais.",
+     "ini": 0,
+     "fim": 3.29
+    },
+    {
+     "texto": "Origem do abatimento: Pedido de compra.",
+     "ini": 3.79,
+     "fim": 6.297
+    },
+    {
+     "texto": "Salve.",
+     "ini": 6.797,
+     "fim": 7.706
+    }
+   ],
+   "imagem": "telas/compra-em-nome-do-cliente/20-novo-contrato.png",
+   "caixas": [
+    {
+     "x": 385,
+     "y": 377,
+     "w": 460,
+     "h": 48
+    },
+    {
+     "x": 870,
+     "y": 377,
+     "w": 460,
+     "h": 48
+    },
+    {
+     "x": 385,
+     "y": 475,
+     "w": 460,
+     "h": 48
+    },
+    {
+     "x": 391,
+     "y": 731,
+     "w": 213,
+     "h": 43
+    },
+    {
+     "x": 1759,
+     "y": 150,
+     "w": 113,
+     "h": 48
+    },
+    {
+     "x": 885,
+     "y": 389,
+     "w": 396,
+     "h": 24
+    },
+    {
+     "x": 401,
+     "y": 391,
+     "w": 386,
+     "h": 19
+    }
+   ],
+   "focoMin": 3
+  },
+  {
+   "id": "22",
+   "cena": "tela",
+   "captura": "21-contrato-rascunho",
+   "focos": [
+    1
+   ],
+   "rotulo": "Contrato › Rascunho",
+   "fala": "Ele nasce em rascunho. Clique em Ativar.",
+   "nomes": [
+    "Ativar"
+   ],
+   "inicio": 126.863,
+   "duracao": 4.6,
+   "fala_s": 3.7,
+   "audio": "audio/compra-em-nome-do-cliente/22.wav",
+   "legendas": [
+    {
+     "texto": "Ele nasce em rascunho.",
+     "ini": 0,
+     "fim": 1.623
+    },
+    {
+     "texto": "Clique em Ativar.",
+     "ini": 2.123,
+     "fim": 3.242
+    }
+   ],
+   "imagem": "telas/compra-em-nome-do-cliente/21-contrato-rascunho.png",
+   "caixas": [
+    {
+     "x": 761,
+     "y": 156,
+     "w": 85,
+     "h": 24
+    },
+    {
+     "x": 1787,
+     "y": 144,
+     "w": 85,
+     "h": 48
+    }
+   ],
+   "focoMin": 3
+  },
+  {
+   "id": "23",
+   "cena": "tela",
+   "captura": "23-vincular-pv",
+   "caixasExtras": [
+    {
+     "x": 690,
+     "y": 607,
+     "w": 360,
+     "h": 34
+    },
+    {
+     "x": 683,
+     "y": 549,
+     "w": 554,
+     "h": 45
+    }
+   ],
+   "focos": [
+    3,
+    2
+   ],
+   "rotulo": "Contrato › Vincular pedido de venda",
+   "fala": "Em Vincular pedido de venda, marque só o de oito mil, o que é seu, e vincule.",
+   "nomes": [
+    null,
+    "Vincular PV-000007"
+   ],
+   "inicio": 131.463,
+   "duracao": 7.6,
+   "fala_s": 6.7,
+   "audio": "audio/compra-em-nome-do-cliente/23.wav",
+   "legendas": [
+    {
+     "texto": "Em Vincular pedido de venda, marque só o de oito mil, o que é seu, e vincule.",
+     "ini": 0,
+     "fim": 4.678
+    }
+   ],
+   "imagem": "telas/compra-em-nome-do-cliente/23-vincular-pv.png",
+   "caixas": [
+    null,
+    null,
+    {
+     "x": 1035,
+     "y": 666,
+     "w": 202,
+     "h": 48
+    },
+    {
+     "x": 690,
+     "y": 607,
+     "w": 360,
+     "h": 34
+    },
+    {
+     "x": 683,
+     "y": 549,
+     "w": 554,
+     "h": 45
+    }
+   ],
+   "focoMin": 3
+  },
+  {
+   "id": "24",
+   "cena": "tela",
+   "captura": "25-registrar-faturamento",
+   "caixasExtras": [
+    {
+     "x": 1072,
+     "y": 556,
+     "w": 252,
+     "h": 38
+    }
+   ],
+   "focos": [
+    4,
+    3
+   ],
+   "rotulo": "Contrato › Registrar faturamento",
+   "fala": "Clique em Faturar, marque o item e clique em Registrar faturamento: oito mil reais.",
+   "nomes": [
+    null,
+    "Registrar faturamento"
+   ],
+   "inicio": 139.063,
+   "duracao": 7.6,
+   "fala_s": 6.7,
+   "audio": "audio/compra-em-nome-do-cliente/24.wav",
+   "legendas": [
+    {
+     "texto": "Clique em Faturar, marque o item e clique em Registrar faturamento: oito mil reais.",
+     "ini": 0,
+     "fim": 5.435
+    }
+   ],
+   "imagem": "telas/compra-em-nome-do-cliente/25-registrar-faturamento.png",
+   "caixas": [
+    {
+     "x": 587,
+     "y": 425,
+     "w": 746,
+     "h": 38
+    },
+    {
+     "x": 592,
+     "y": 484,
+     "w": 16,
+     "h": 16
+    },
+    {
+     "x": 587,
+     "y": 660,
+     "w": 220,
+     "h": 24
+    },
+    {
+     "x": 1120,
+     "y": 648,
+     "w": 213,
+     "h": 48
+    },
+    {
+     "x": 1072,
+     "y": 556,
+     "w": 252,
+     "h": 38
+    }
+   ],
+   "focoMin": 3
+  },
+  {
+   "id": "25",
+   "cena": "tela",
+   "captura": "26-contrato-faturado-40",
+   "caixasExtras": [
+    {
+     "x": 968,
+     "y": 217,
+     "w": 290,
+     "h": 114
+    },
+    {
+     "x": 1581,
+     "y": 217,
+     "w": 290,
+     "h": 114
+    },
+    {
+     "x": 1070,
+     "y": 595,
+     "w": 134,
+     "h": 46
+    }
+   ],
+   "focos": [
+    4,
+    5
+   ],
+   "rotulo": "Contrato de Fornecimento",
+   "fala": "Oito mil faturados, doze mil a faturar. O Flow oferece gerar a nota em aberto, sem transmitir.",
+   "nomes": [
+    "A faturar",
+    "Gerar notas"
+   ],
+   "inicio": 146.663,
+   "duracao": 7.6,
+   "fala_s": 6.7,
+   "audio": "audio/compra-em-nome-do-cliente/25.wav",
+   "legendas": [
+    {
+     "texto": "Oito mil faturados, doze mil a faturar.",
+     "ini": 0,
+     "fim": 2.407
+    },
+    {
+     "texto": "O Flow oferece gerar a nota em aberto, sem transmitir.",
+     "ini": 2.907,
+     "fim": 6.365
+    }
+   ],
+   "imagem": "telas/compra-em-nome-do-cliente/26-contrato-faturado-40.png",
+   "caixas": [
+    {
+     "x": 988,
+     "y": 236,
+     "w": 251,
+     "h": 20
+    },
+    {
+     "x": 1601,
+     "y": 236,
+     "w": 251,
+     "h": 20
+    },
+    {
+     "x": 376,
+     "y": 236,
+     "w": 251,
+     "h": 20
+    },
+    {
+     "x": 968,
+     "y": 217,
+     "w": 290,
+     "h": 114
+    },
+    {
+     "x": 1581,
+     "y": 217,
+     "w": 290,
+     "h": 114
+    },
+    {
+     "x": 1070,
+     "y": 595,
+     "w": 134,
+     "h": 46
+    }
+   ],
+   "focoMin": 3
+  },
+  {
+   "id": "27",
+   "cena": "tela",
+   "captura": "30-nfe-itens",
+   "caixasExtras": [
+    {
+     "x": 1028,
+     "y": 116,
+     "w": 237,
+     "h": 47
+    }
+   ],
+   "focos": [
+    5,
+    2
+   ],
+   "rotulo": "Faturamento › Nova NF-e",
+   "fala": "Ou, em Faturamento, Nova NF-e: escolha o pedido de oito mil, importe os itens e salve a nota.",
+   "nomes": [
+    "Importar Itens do Pedido",
+    "Total"
+   ],
+   "inicio": 154.263,
+   "duracao": 8.415,
+   "fala_s": 7.515,
+   "audio": "audio/compra-em-nome-do-cliente/27.wav",
+   "legendas": [
+    {
+     "texto": "Ou, em Faturamento, Nova NF-e: escolha o pedido de oito mil, importe os itens e salve a nota.",
+     "ini": 0,
+     "fim": 7.515
+    }
+   ],
+   "imagem": "telas/compra-em-nome-do-cliente/30-nfe-itens.png",
+   "caixas": [
+    {
+     "x": 431,
+     "y": 582,
+     "w": 668,
+     "h": 19
+    },
+    {
+     "x": 1487,
+     "y": 611,
+     "w": 96,
+     "h": 24
+    },
+    {
+     "x": 1487,
+     "y": 410,
+     "w": 46,
+     "h": 34
+    },
+    {
+     "x": 1781,
+     "y": 115,
+     "w": 89,
+     "h": 48
+    },
+    null,
+    {
+     "x": 1028,
+     "y": 116,
+     "w": 237,
+     "h": 47
+    }
+   ],
+   "focoMin": 3
+  },
+  {
+   "id": "28",
+   "cena": "tela",
+   "captura": "32-pedido-de-compra",
+   "focos": [
+    1,
+    3
+   ],
+   "rotulo": "Compras › Novo Pedido de Compra",
+   "borrar": [
+    {
+     "x": 581,
+     "y": 318,
+     "w": 172,
+     "h": 26
+    },
+    {
+     "x": 942,
+     "y": 318,
+     "w": 166,
+     "h": 26
+    }
+   ],
+   "fala": "Agora o material do cliente. Em Compras, um pedido de doze mil reais, ligado à obra.",
+   "nomes": [
+    "Projeto (opcional)",
+    "Salvar"
+   ],
+   "inicio": 162.678,
+   "duracao": 7.6,
+   "fala_s": 6.7,
+   "audio": "audio/compra-em-nome-do-cliente/28.wav",
+   "legendas": [
+    {
+     "texto": "Agora o material do cliente.",
+     "ini": 0,
+     "fim": 1.79
+    },
+    {
+     "texto": "Em Compras, um pedido de doze mil reais, ligado à obra.",
+     "ini": 2.29,
+     "fim": 5.726
+    }
+   ],
+   "imagem": "telas/compra-em-nome-do-cliente/32-pedido-de-compra.png",
+   "caixas": [
+    {
+     "x": 875,
+     "y": 307,
+     "w": 466,
+     "h": 48
+    },
+    {
+     "x": 390,
+     "y": 415,
+     "w": 466,
+     "h": 48
+    },
+    null,
+    {
+     "x": 1781,
+     "y": 134,
+     "w": 89,
+     "h": 48
+    },
+    {
+     "x": 890,
+     "y": 319,
+     "w": 401,
+     "h": 24
+    }
+   ],
+   "focoMin": 3
+  },
+  {
+   "id": "29",
+   "cena": "tela",
+   "captura": "33-vincular-pc",
+   "caixasExtras": [
+    {
+     "x": 690,
+     "y": 565,
+     "w": 300,
+     "h": 32
+    }
+   ],
+   "focos": [
+    3,
+    2
+   ],
+   "rotulo": "Contrato › Vincular pedido de compra",
+   "fala": "No contrato, use Vincular pedido de compra: ele passa a ser por conta do cliente.",
+   "nomes": [
+    null,
+    "Vincular PC-000003"
+   ],
+   "inicio": 170.278,
+   "duracao": 7.6,
+   "fala_s": 6.7,
+   "audio": "audio/compra-em-nome-do-cliente/29.wav",
+   "legendas": [
+    {
+     "texto": "No contrato, use Vincular pedido de compra: ele passa a ser por conta do cliente.",
+     "ini": 0,
+     "fim": 5.096
+    }
+   ],
+   "imagem": "telas/compra-em-nome-do-cliente/33-vincular-pc.png",
+   "caixas": [
+    {
+     "x": 683,
+     "y": 397,
+     "w": 554,
+     "h": 38
+    },
+    {
+     "x": 698,
+     "y": 573,
+     "w": 16,
+     "h": 16
+    },
+    {
+     "x": 1032,
+     "y": 676,
+     "w": 205,
+     "h": 48
+    },
+    {
+     "x": 690,
+     "y": 565,
+     "w": 300,
+     "h": 32
+    }
+   ],
+   "focoMin": 3
+  },
+  {
+   "id": "30",
+   "cena": "tela",
+   "captura": "36-nota-recebimento",
+   "caixasExtras": [],
+   "focos": [
+    2,
+    3
+   ],
+   "rotulo": "Recebimento › Nova Nota de Recebimento",
+   "borrar": [
+    {
+     "x": 558,
+     "y": 294,
+     "w": 120,
+     "h": 26
+    },
+    {
+     "x": 810,
+     "y": 294,
+     "w": 164,
+     "h": 26
+    },
+    {
+     "x": 1255,
+     "y": 542,
+     "w": 172,
+     "h": 26
+    }
+   ],
+   "fala": "Gere a nota de recebimento do pedido, marque Material de terceiro, cliente, e salve.",
+   "nomes": [
+    "Material de terceiro (cliente)",
+    "Salvar"
+   ],
+   "inicio": 177.878,
+   "duracao": 7.6,
+   "fala_s": 6.7,
+   "audio": "audio/compra-em-nome-do-cliente/30.wav",
+   "legendas": [
+    {
+     "texto": "Gere a nota de recebimento do pedido, marque Material de terceiro, cliente, e salve.",
+     "ini": 0,
+     "fim": 5.433
+    }
+   ],
+   "imagem": "telas/compra-em-nome-do-cliente/36-nota-recebimento.png",
+   "caixas": [
+    {
+     "x": 1493,
+     "y": 283,
+     "w": 356,
+     "h": 48
+    },
+    {
+     "x": 377,
+     "y": 462,
+     "w": 19,
+     "h": 19
+    },
+    {
+     "x": 406,
+     "y": 460,
+     "w": 272,
+     "h": 24
+    },
+    {
+     "x": 1781,
+     "y": 134,
+     "w": 89,
+     "h": 48
+    },
+    {
+     "x": 757,
+     "y": 295,
+     "w": 292,
+     "h": 24
+    },
+    {
+     "x": 382,
+     "y": 295,
+     "w": 292,
+     "h": 24
+    }
+   ],
+   "focoMin": 3
+  },
+  {
+   "id": "31",
+   "cena": "tela",
+   "captura": "37-finalizar-nr",
+   "focos": [
+    1
+   ],
+   "rotulo": "Recebimento › Notas de Recebimento",
+   "fala": "Finalize a nota. Por ser do cliente, ela não gera títulos a pagar.",
+   "nomes": [
+    "Finalizar"
+   ],
+   "inicio": 185.478,
+   "duracao": 5.624,
+   "fala_s": 4.724,
+   "audio": "audio/compra-em-nome-do-cliente/31.wav",
+   "legendas": [
+    {
+     "texto": "Finalize a nota.",
+     "ini": 0,
+     "fim": 1.295
+    },
+    {
+     "texto": "Por ser do cliente, ela não gera títulos a pagar.",
+     "ini": 1.795,
+     "fim": 4.724
+    }
+   ],
+   "imagem": "telas/compra-em-nome-do-cliente/37-finalizar-nr.png",
+   "caixas": [
+    {
+     "x": 367,
+     "y": 830,
+     "w": 272,
+     "h": 63
+    },
+    {
+     "x": 1648,
+     "y": 895,
+     "w": 191,
+     "h": 38
+    }
+   ],
+   "focoMin": 3
+  },
+  {
+   "id": "32",
+   "cena": "tela",
+   "captura": "39-abater-saldo",
+   "caixasExtras": [
+    {
+     "x": 596,
+     "y": 530,
+     "w": 322,
+     "h": 32
+    }
+   ],
+   "focos": [
+    3,
+    2
+   ],
+   "rotulo": "Contrato › Abater saldo",
+   "fala": "No contrato, Abater saldo: marque o item de doze mil e confirme.",
+   "nomes": [
+    null,
+    "Confirmar"
+   ],
+   "inicio": 191.102,
+   "duracao": 7.6,
+   "fala_s": 6.7,
+   "audio": "audio/compra-em-nome-do-cliente/32.wav",
+   "legendas": [
+    {
+     "texto": "No contrato, Abater saldo: marque o item de doze mil e confirme.",
+     "ini": 0,
+     "fim": 3.964
+    }
+   ],
+   "imagem": "telas/compra-em-nome-do-cliente/39-abater-saldo.png",
+   "caixas": [
+    {
+     "x": 602,
+     "y": 538,
+     "w": 16,
+     "h": 16
+    },
+    {
+     "x": 587,
+     "y": 602,
+     "w": 384,
+     "h": 24
+    },
+    {
+     "x": 1214,
+     "y": 590,
+     "w": 119,
+     "h": 48
+    },
+    {
+     "x": 596,
+     "y": 530,
+     "w": 322,
+     "h": 32
+    }
+   ],
+   "focoMin": 3
+  },
+  {
+   "id": "33",
+   "cena": "tela",
+   "captura": "40-contrato-fechado",
+   "caixasExtras": [
+    {
+     "x": 357,
+     "y": 217,
+     "w": 289,
+     "h": 114
+    },
+    {
+     "x": 662,
+     "y": 217,
+     "w": 290,
+     "h": 114
+    },
+    {
+     "x": 968,
+     "y": 217,
+     "w": 290,
+     "h": 114
+    },
+    {
+     "x": 1581,
+     "y": 217,
+     "w": 290,
+     "h": 114
+    }
+   ],
+   "focos": [
+    7,
+    6,
+    8
+   ],
+   "impacto": 2,
+   "rotulo": "Contrato de Fornecimento",
+   "fala": "Contrato fechado: vinte mil de valor, oito mil faturados, doze mil comprados pelo cliente e nada a faturar.",
+   "nomes": [
+    "Faturado",
+    "Comprado",
+    "A faturar"
+   ],
+   "inicio": 198.702,
+   "duracao": 10.6,
+   "fala_s": 9.7,
+   "audio": "audio/compra-em-nome-do-cliente/33.wav",
+   "legendas": [
+    {
+     "texto": "Contrato fechado: vinte mil de valor, oito mil faturados, doze mil comprados pelo cliente e nada a faturar.",
+     "ini": 0,
+     "fim": 7.004
+    }
+   ],
+   "imagem": "telas/compra-em-nome-do-cliente/40-contrato-fechado.png",
+   "caixas": [
+    {
+     "x": 376,
+     "y": 236,
+     "w": 251,
+     "h": 20
+    },
+    {
+     "x": 682,
+     "y": 236,
+     "w": 251,
+     "h": 20
+    },
+    {
+     "x": 988,
+     "y": 236,
+     "w": 251,
+     "h": 20
+    },
+    {
+     "x": 1601,
+     "y": 236,
+     "w": 251,
+     "h": 20
+    },
+    {
+     "x": 656,
+     "y": 648,
+     "w": 130,
+     "h": 43
+    },
+    {
+     "x": 357,
+     "y": 217,
+     "w": 289,
+     "h": 114
+    },
+    {
+     "x": 662,
+     "y": 217,
+     "w": 290,
+     "h": 114
+    },
+    {
+     "x": 968,
+     "y": 217,
+     "w": 290,
+     "h": 114
+    },
+    {
+     "x": 1581,
+     "y": 217,
+     "w": 290,
+     "h": 114
+    }
+   ],
+   "focoMin": 3
+  },
+  {
+   "id": "34",
+   "cena": "alertas",
+   "itens": [
+    "No nível, use um CFOP que gere financeiro.",
+    "O cliente do pedido é o mesmo do contrato.",
+    "A origem do abatimento não muda."
+   ],
+   "fala": "Três cuidados. Use no nível um CFOP que gere financeiro. O cliente do pedido é o mesmo do contrato. E a origem do abatimento não muda.",
+   "inicio": 209.302,
+   "duracao": 11.712,
+   "fala_s": 10.812,
+   "audio": "audio/compra-em-nome-do-cliente/34.wav",
+   "legendas": [
+    {
+     "texto": "Três cuidados.",
+     "ini": 0,
+     "fim": 1.515
+    },
+    {
+     "texto": "Use no nível um CFOP que gere financeiro.",
+     "ini": 2.015,
+     "fim": 5.133
+    },
+    {
+     "texto": "O cliente do pedido é o mesmo do contrato.",
+     "ini": 5.633,
+     "fim": 8.231
+    },
+    {
+     "texto": "E a origem do abatimento não muda.",
+     "ini": 8.731,
+     "fim": 10.812
+    }
+   ]
+  },
+  {
+   "id": "35",
+   "cena": "fechamento",
+   "topicos": [
+    "Os níveis dividem a obra em 40 e 60",
+    "Os 40% seguem o fluxo normal",
+    "Os 60% viram saldo abatido pelas compras"
+   ],
+   "fala": "Resumindo: os níveis dividem a obra, o seu segue normal, e o material do cliente vira saldo.",
+   "inicio": 221.014,
+   "duracao": 6.745,
+   "fala_s": 5.845,
+   "audio": "audio/compra-em-nome-do-cliente/35.wav",
+   "legendas": [
+    {
+     "texto": "Resumindo: os níveis dividem a obra, o seu segue normal, e o material do cliente vira saldo.",
+     "ini": 0,
+     "fim": 5.845
+    }
+   ]
+  }
+ ],
+ "duracaoTotal": 229.259
+}

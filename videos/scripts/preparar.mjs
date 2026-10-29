@@ -26,10 +26,16 @@ const durFrase = (f) => {
 };
 const legendas = (t) => {
   const escritas = frases(t.fala), faladas = frases(paraFala(t.fala));
-  if (escritas.length !== faladas.length) return null;
   const durs = faladas.map(durFrase);
   if (durs.some((d) => d === null)) return null;
   let ini = 0;
+  // A pronúncia pode alongar o texto (NF-e → nota fiscal eletrônica) e partir a frase falada em duas: aí as frases
+  // escritas repartem a duração real do áudio pelo tamanho do texto (o fala_s pode estar esticado pelo focoMin).
+  if (escritas.length !== faladas.length) {
+    const total = durs.reduce((s, d) => s + d, 0) + PAUSA_ENTRE_FRASES * (durs.length - 1);
+    const chars = escritas.reduce((s, e) => s + e.length, 0);
+    return escritas.map((texto) => { const d = (texto.length / chars) * total; const l = { texto, ini: +ini.toFixed(3), fim: +(ini + d).toFixed(3) }; ini += d; return l; });
+  }
   return escritas.map((texto, i) => { const l = { texto, ini: +ini.toFixed(3), fim: +(ini + durs[i]).toFixed(3) }; ini += durs[i] + PAUSA_ENTRE_FRASES; return l; });
 };
 
@@ -56,13 +62,18 @@ let inicio = 0;
 const faltando = [];
 const trechos = roteiro.trechos.map((t) => {
   const audio = tempos[t.id];
-  const fala = audio?.duracao ?? t.fala.split(/\s+/).length / PALAVRAS_POR_S;
+  let fala = audio?.duracao ?? t.fala.split(/\s+/).length / PALAVRAS_POR_S;
   if (!audio) faltando.push(t.id);
+  const caixas = t.captura ? [...caixasBase(t), ...(t.caixasExtras ?? [])] : null;
+  // focoMin (no roteiro, em s): cada foco da tela fica pelo menos esse tempo, para a lupa não passar rápido demais.
+  // O motor reparte fala_s entre os focos (0,7 s de entrada + uma fatia por foco).
+  if (caixas && roteiro.focoMin) fala = Math.max(fala, 0.7 + (t.focos ?? [t.foco ?? 0]).filter((i) => caixas[i]).length * roteiro.focoMin);
   const out = { ...t, inicio: +inicio.toFixed(3), duracao: +(fala + PAUSA).toFixed(3), fala_s: +fala.toFixed(3), audio: audio ? `audio/${id}/${audio.arquivo}` : null,
     legendas: audio ? legendas(t) : null };
-  if (t.captura) {
+  if (caixas) {
     out.imagem = `telas/${id}/${t.captura}.png`;
-    out.caixas = [...caixasBase(t), ...(t.caixasExtras ?? [])];
+    out.caixas = caixas;
+    if (roteiro.focoMin) out.focoMin = roteiro.focoMin;
   }
   inicio += out.duracao;
   return out;

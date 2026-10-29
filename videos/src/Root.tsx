@@ -15,9 +15,10 @@ import consultor10 from './gerado/consultor-10-tarefas.json';
 import consultorCompleto from './gerado/consultor-fluxo-completo.json';
 import consultor07 from './gerado/consultor-07-faturamento.json';
 import consultor08 from './gerado/consultor-08-financeiro.json';
+import compraCliente from './gerado/compra-em-nome-do-cliente.json';
 
 // Um vídeo por fluxo. Para incluir outro: roteiros/<id>.json → narrar → preparar → importar aqui.
-const VIDEOS: Dados[] = [fluxo1 as Dados, consultor03 as Dados, consultor07 as Dados, consultor08 as Dados, consultor01 as Dados, consultor02 as Dados, consultor04 as Dados, consultor05 as Dados, consultor06 as Dados, consultor09 as Dados, consultor10 as Dados, consultorCompleto as Dados];
+const VIDEOS: Dados[] = [fluxo1 as Dados, consultor03 as Dados, consultor07 as Dados, consultor08 as Dados, consultor01 as Dados, consultor02 as Dados, consultor04 as Dados, consultor05 as Dados, consultor06 as Dados, consultor09 as Dados, consultor10 as Dados, consultorCompleto as Dados, compraCliente as Dados];
 const temMusica = (id: string) => getStaticFiles().some((f) => f.name === `musica/${id}.wav`);
 const props = (d: Dados) => ({ dados: d, musica: temMusica(d.id) ? `musica/${d.id}.wav` : undefined });
 

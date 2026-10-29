@@ -22,6 +22,7 @@ export type Trecho = {
   destaque?: number; cadeado?: boolean; etapas?: string[]; tituloCena?: string;
   n?: number; titulo?: string; texto?: string; icone?: string; fonte?: string; critica?: boolean;
   imagem?: string; caixas?: Caixa[]; foco?: number; focos?: number[]; rotulo?: string; nomes?: (string | null)[]; impacto?: number; borrar?: { x: number; y: number; w: number; h: number }[];
+  focoMin?: number; // s por foco (vem do roteiro): lupa mais calma, que entra suave e fica mais tempo
   itens?: string[]; topicos?: string[];
   legendas?: { texto: string; ini: number; fim: number }[] | null;
 };
@@ -618,7 +619,8 @@ const Lupa: React.FC<{ r: Trecho; c: NonNullable<Caixa>; t: number; a: number; s
   const lado = c.x + c.w / 2 < 960 ? 1 : -1;
   const lx = Math.min(1880 - lw, Math.max(40, lado > 0 ? fx + fw / 2 + 70 : fx - fw / 2 - 70 - lw));
   const ly = Math.min(1080 - 170 - lh, Math.max(150, fy - lh / 2 - 60));
-  const p = mola(t, a, { stiffness: 180, damping: 14, mass: 1 });
+  // com focoMin a lupa entra numa mola mais macia (cerca de 0,6 s, sem o quique rápido de 0,3 s)
+  const p = mola(t, a, r.focoMin ? { stiffness: 90, damping: 15, mass: 1 } : { stiffness: 180, damping: 14, mass: 1 });
   const vis = Math.min(1, p * 1.6) * (1 - some);
   const linha = prog(t, a, f(10), E.linha) * (1 - some);
   const ax = lado > 0 ? lx : lx + lw, ay = ly + lh / 2; // ponto da lupa mais perto do campo
@@ -641,7 +643,7 @@ const Lupa: React.FC<{ r: Trecho; c: NonNullable<Caixa>; t: number; a: number; s
       {nome && (
         <div style={{ position: 'absolute', left: lx + 6, top: ly - 50, opacity: vis, transform: `translateY(${(1 - p) * 14}px)`, fontFamily: MONO, fontSize: 22, fontWeight: 600,
           color: '#fff', background: C.ink, borderRadius: 10, padding: '8px 16px', whiteSpace: 'nowrap', boxShadow: SOMBRA_CARTAO }}>
-          <span style={{ color: C.spot }}>›</span> {nome.slice(0, Math.max(0, Math.floor((t - a - f(4)) * FPS * 2.2)))}
+          <span style={{ color: C.spot }}>›</span> {nome.slice(0, Math.max(0, Math.floor((t - a - f(4)) * FPS * (r.focoMin ? 1.4 : 2.2))))}
         </div>
       )}
     </AbsoluteFill>
@@ -678,7 +680,9 @@ const Tela: React.FC<{ r: Trecho; dur: number; cursorIni?: { x: number; y: numbe
   // fala. No v5 o escurecimento só tinha rampa no fim da fala: na troca de foco a tela clareava inteira num quadro.
   // a rampa termina na troca de fatia (quando `idx` muda e o foco atual deixa de existir), nunca depois dela
   const fimFatia = ini + (idx + 1) * fatia;
-  const saiFoco = Math.max(idx < focos.length - 1 ? prog(t, fimFatia - f(12), f(11), E.sai) : 0, interpolate(t, [fimFala, fimFala + f(12)], [0, 1], clamp));
+  // com focoMin a saída também é mais lenta (17 quadros em vez de 12)
+  const rampa = r.focoMin ? 17 : 12;
+  const saiFoco = Math.max(idx < focos.length - 1 ? prog(t, fimFatia - f(rampa), f(rampa - 1), E.sai) : 0, interpolate(t, [fimFala, fimFala + f(rampa)], [0, 1], clamp));
   const spot = atual ? prog(t, trava, f(12), E.linha) * (1 - saiFoco) : 0;
   const segs = (r.rotulo ?? '').split('›').map((s) => s.trim()).filter(Boolean);
   const zt = cam.z;
