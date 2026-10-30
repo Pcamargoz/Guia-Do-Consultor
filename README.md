@@ -89,7 +89,7 @@ Depois, faça commit do PDF atualizado.
 
 A aba **Checklist** do guia é uma biblioteca com busca, filtros e progresso por usuário. Cada checklist abre **dentro do guia** (visualizador embutido) ou pode ser baixado como HTML independente (abre offline). Três grupos, em `public/checklists/`:
 
-- **Fluxos do consultor** (`consultores/`): o fluxo completo do pedido à gestão e 10 fluxos por processo (suprimentos, serviços de campo, comercial, estoque, produção, expedição, faturamento e fiscal, financeiro, projetos e tarefas). Cada etapa tem "fazer → conferir o reflexo no módulo seguinte", um campo para o nº do registro e o botão **Problema** (esperado × obtido); o botão **Relatório** copia o resultado da validação em Markdown. Guia para quem valida: [docs/validacao-manual.md](docs/validacao-manual.md).
+- **Checklists de implantação do consultor** (`consultores/implantacao-NN-<modulo>.html`): um por módulo (Fundação, CRM, Integração CEM, Vendas, Faturamento, Fiscal, Financeiro, Compras, Recebimento, Estoque, Produção, Serviços, Expedição, Projetos e Tarefas), em 5 etapas: entendimento do cenário do cliente, preparação, condução do treinamento, validação do aprendizado e go-live. Cada item diz o que verificar e traz **Como validar / Por quê / Fonte** (a regra de negócio). Foco em metodologia de implantação e autonomia do cliente, não em teste técnico. Gerados do Harness Faktory Flow (`GUIA-CHECKLISTS-IMPLANTACAO/*.json` → `tools/guia/gerar_dados_checklists_implantacao.py` → `scripts/dados-checklists-implantacao.mjs`); fontes: regras oficiais e manuais de implantação da gestora de produto (29/10/2026), Apostila do Consultor e a base do Harness. Os fluxos do consultor anteriores ficam no histórico (tag `checklists-consultor-v1`).
 - **Trilha do estagiário** (`estagiarios/`): onboarding (00), 15 checklists curtos por módulo (01 a 15) e, num grupo próprio acima da trilha, 3 **fluxos principais** (Fluxo 1 Vendas, Fluxo 2 Faturamento, Fluxo 3 Financeiro: os módulos mais maduros), que seguem o fluxo do começo ao fim com os registros do próprio estagiário. Os dados dos fluxos principais ficam em `scripts/dados-fluxos-estagiarios.mjs`.
 - **Validação dos módulos (QA)** (raiz): planos completos de homologação, com os achados e cenários reais registrados.
 
@@ -108,7 +108,7 @@ npm run checklists          # gera os HTMLs + manifest.json e valida tudo (638 v
 npm run checklists:lacunas  # atualiza docs/testes/lacunas.md (etapas ainda sem "Verificado")
 ```
 
-- Conteúdo: `scripts/dados-checklists-estagiarios.mjs`, `dados-checklist-consultor.mjs`, `dados-fluxos-consultor.mjs` e, para os planos de QA, `dados-cenarios-checklists.mjs` (`node scripts/atualizar-cenarios-checklists.mjs`).
+- Conteúdo: `scripts/dados-checklists-estagiarios.mjs`, `dados-checklists-implantacao.mjs` (gerado do Harness; não editar à mão) e, para os planos de QA, `dados-cenarios-checklists.mjs` (`node scripts/atualizar-cenarios-checklists.mjs`).
 - Visual: `scripts/checklist-modelo/estilo.css` e `comportamento.js` (tokens de `brand-system.css`); a biblioteca é `public/guia-checklists.js` + `.css`, alimentada por `manifest.json`.
 - Como testar no sistema com agentes (pré-voo, briefs, regras): [docs/testes/](docs/testes/README.md). O que ainda falta validar: [docs/pendencias-checklists.md](docs/pendencias-checklists.md).
 

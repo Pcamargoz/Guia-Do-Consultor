@@ -1,5 +1,5 @@
 /* Gera os checklists da Trilha do Estagiário (dados-checklists-estagiarios.mjs) e do Consultor
-   (dados-checklist-consultor.mjs + dados-fluxos-consultor.mjs), mais o public/checklists/manifest.json que alimenta a aba "Checklist" do guia.
+   (dados-checklists-implantacao.mjs: checklists de implantação por módulo, gerados do Harness), mais o public/checklists/manifest.json que alimenta a aba "Checklist" do guia.
    Visual em checklist-modelo/estilo.css, comportamento em checklist-modelo/comportamento.js.
    Cada checklist é um HTML independente (abre offline e guarda o progresso no navegador; dentro do guia, logado, o progresso e as imagens anexadas ficam na conta de cada usuário).
    Saída: <raiz>/estagiarios/, <raiz>/consultores/ e <raiz>/manifest.json, em public/checklists (servido pelo guia) e Checklists (cópia de trabalho).
@@ -9,10 +9,7 @@ import { existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import { CHECKLISTS, ONBOARDING, META } from './dados-checklists-estagiarios.mjs';
-import { CONSULTOR } from './dados-checklist-consultor.mjs';
-import { FLUXOS } from './dados-fluxos-consultor.mjs';
-import { FLUXOS_OPERACAO } from './dados-fluxos-operacao.mjs';
-import { FLUXOS_GESTAO } from './dados-fluxos-gestao.mjs';
+import { CHECKLISTS_IMPLANTACAO } from './dados-checklists-implantacao.mjs';
 
 const AQUI = path.dirname(fileURLToPath(import.meta.url));
 const RAIZ = path.join(AQUI, '..');
@@ -250,7 +247,7 @@ ${blocoAnotacoes('Dúvidas gerais, combinados com o supervisor, acessos que falt
 
 /* ---------- Catálogo e manifest ---------- */
 const GRUPOS = [
-  { id: 'consultor', nome: 'Fluxos do consultor', desc: 'Testes funcionais ponta a ponta: faça, confira o reflexo no módulo seguinte e anote os registros.' },
+  { id: 'consultor', nome: 'Checklists de implantação do consultor', desc: 'Um checklist por módulo, em 5 etapas: entender o cenário do cliente, preparar, conduzir o treinamento, validar o aprendizado e preparar o go-live. Cada item diz como validar e qual regra de negócio sustenta.' },
   { id: 'fluxos', nome: 'Fluxos principais do estagiário', desc: 'Vendas, Faturamento e Financeiro, os módulos mais maduros, do começo ao fim com os seus registros. Faça depois do onboarding e dos checklists 01 a 04.' },
   { id: 'estagiario', nome: 'Trilha do estagiário', desc: 'Checklists curtos para a integração. Comece pelo onboarding (00) e siga a numeração.' },
   { id: 'qa', nome: 'Validação dos módulos (QA)', desc: 'Planos completos de validação e homologação de cada módulo, com os achados já registrados.' },
@@ -268,7 +265,7 @@ const resumoEtapas = (c) => {
   return { etapas: p.length, verificadas: p.filter((x) => x.s === 'v').length, ...(dev ? { emDesenvolvimento: dev } : {}) };
 };
 
-const consultores = [CONSULTOR, ...FLUXOS, ...FLUXOS_OPERACAO, ...FLUXOS_GESTAO];
+const consultores = CHECKLISTS_IMPLANTACAO;
 [ONBOARDING, ...CHECKLISTS, ...consultores].forEach((c) => conferir(c, c.arquivo));
 const ids = [ONBOARDING, ...CHECKLISTS, ...consultores].map((c) => c.arquivo);
 if (new Set(ids).size !== ids.length) throw new Error('arquivos de saída repetidos');
@@ -291,10 +288,10 @@ const manifest = {
 const saidas = {
   estagiarios: [[ONBOARDING.arquivo, onboarding(ONBOARDING)], ...CHECKLISTS.map((c) => [c.arquivo, checklist(c)])],
   consultores: consultores.map((c) => [c.arquivo, checklist(c, {
-    prefixo: 'consultor', marca: 'Fluxos do Consultor', rodape: c.rodape, rotuloRes: 'Conferir',
-    fim: 'Fluxo concluído. Registre os defeitos encontrados e limpe os registros de teste.',
-    avisoPendente: 'Valide no ambiente de teste antes de usar em um cliente.',
-    placeholderNotas: 'Anote defeitos (com os passos para reproduzir), números de registros criados e o que precisa de configuração…',
+    prefixo: 'consultor', marca: 'Implantação · Consultor', rodape: c.rodape, rotuloRes: 'Orientação',
+    fim: 'Implantação do módulo concluída. Registre as pendências, combine o acompanhamento do go-live e libere o próximo módulo.',
+    avisoPendente: 'As fontes discordam nestes pontos: confira na tela do ambiente de teste antes de ensinar ao cliente.',
+    placeholderNotas: 'Anote dúvidas e dificuldades do cliente, decisões tomadas, pendências e quem ficou responsável por cada uma…',
   })]),
 };
 for (const raiz of raizes) {

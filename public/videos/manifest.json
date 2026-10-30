@@ -46,7 +46,7 @@
           "titulo": "Suprimentos: da solicitação ao pagamento",
           "resumo": "Cotação opcional, a natureza da operação que define o CFOP, a nota com dois números e a linha do tempo do pedido.",
           "status": "pronto",
-          "checklist": "consultores/fluxo-01-suprimentos.html",
+          "checklist": "consultores/implantacao-08-compras.html",
           "duracao": "3 min 23 s"
         },
         {
@@ -55,7 +55,7 @@
           "titulo": "Serviços de campo: da medição à assistência",
           "resumo": "Empresa e técnico na medição, o conferente diferente, as passagens por botão e a ordem dos aceites.",
           "status": "pronto",
-          "checklist": "consultores/fluxo-02-servicos-campo.html",
+          "checklist": "consultores/implantacao-12-servicos.html",
           "duracao": "2 min 48 s"
         },
         {
@@ -64,7 +64,7 @@
           "titulo": "Comercial: do lead ao pedido de venda",
           "resumo": "As quatro regras que travam o CRM e o caminho real, do Kanban à oportunidade ganha.",
           "status": "pronto",
-          "checklist": "consultores/fluxo-03-comercial.html",
+          "checklist": "consultores/implantacao-04-vendas.html",
           "duracao": "3 min 40 s"
         },
         {
@@ -73,7 +73,7 @@
           "titulo": "Estoque: movimento, reserva e inventário",
           "resumo": "Movimentos, transferência, reserva, inventário e empréstimo.",
           "status": "pronto",
-          "checklist": "consultores/fluxo-04-estoque.html",
+          "checklist": "consultores/implantacao-10-estoque.html",
           "duracao": "3 min 03 s"
         },
         {
@@ -82,7 +82,7 @@
           "titulo": "Produção: da estrutura ao produto acabado",
           "resumo": "Estrutura, ordem de produção, apontamento e entrada do acabado.",
           "status": "pronto",
-          "checklist": "consultores/fluxo-05-producao.html",
+          "checklist": "consultores/implantacao-11-producao.html",
           "duracao": "2 min 53 s"
         },
         {
@@ -91,7 +91,7 @@
           "titulo": "Expedição: da carga à entrega",
           "resumo": "Carga, entrega, ocorrência e devolução.",
           "status": "pronto",
-          "checklist": "consultores/fluxo-06-expedicao.html",
+          "checklist": "consultores/implantacao-13-expedicao.html",
           "duracao": "2 min 41 s"
         },
         {
@@ -100,7 +100,7 @@
           "titulo": "Faturamento e fiscal: do pedido à nota finalizada",
           "resumo": "Faturar, importar os itens, o aviso de impostos, finalizar sem transmitir e o que é do responsável fiscal.",
           "status": "pronto",
-          "checklist": "consultores/fluxo-07-faturamento-fiscal.html",
+          "checklist": "consultores/implantacao-05-faturamento.html",
           "duracao": "3 min 18 s"
         },
         {
@@ -109,7 +109,7 @@
           "titulo": "Financeiro: títulos, baixa e saldos",
           "resumo": "De onde nascem os títulos, a baixa parcial com o título residual e o saldo antes e depois.",
           "status": "pronto",
-          "checklist": "consultores/fluxo-08-financeiro.html",
+          "checklist": "consultores/implantacao-07-financeiro.html",
           "duracao": "3 min 04 s"
         },
         {
@@ -118,7 +118,7 @@
           "titulo": "Projetos e obras",
           "resumo": "Cadastro, estágios, painéis e diário de obra.",
           "status": "pronto",
-          "checklist": "consultores/fluxo-09-projetos-obra.html",
+          "checklist": "consultores/implantacao-14-projetos.html",
           "duracao": "2 min 27 s"
         },
         {
@@ -127,7 +127,7 @@
           "titulo": "Tarefas",
           "resumo": "Quadro, cartão, regras e colaboração.",
           "status": "pronto",
-          "checklist": "consultores/fluxo-10-tarefas.html",
+          "checklist": "consultores/implantacao-15-tarefas.html",
           "duracao": "2 min 38 s"
         },
         {
@@ -136,7 +136,6 @@
           "titulo": "Do pedido à gestão",
           "resumo": "O fluxo inteiro, do CRM aos indicadores.",
           "status": "pronto",
-          "checklist": "consultores/teste-fluxo-pedido-ate-gestao.html",
           "duracao": "2 min 37 s"
         }
       ]
