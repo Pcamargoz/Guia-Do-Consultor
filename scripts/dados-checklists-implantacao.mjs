@@ -9,1196 +9,1220 @@ export const CHECKLISTS_IMPLANTACAO = [
   "id": "implantacao-fundacao",
   "arquivo": "implantacao-01-fundacao.html",
   "etiqueta": "Consultor · Implantação · Fundação",
-  "titulo": "Implantação da Fundação",
-  "subtitulo": "Checklist do consultor para a primeira etapa de toda implantação: empresa, emissão em homologação, usuários, cadastros-base e carga inicial. Serve ao iniciante como roteiro e ao experiente como padrão.",
-  "objetivo": "Ao final, o cliente tem a empresa emitindo em homologação, cada usuário com o perfil certo e a base de produtos, clientes e cadastros financeiros carregada e conferida. O administrador do cliente sabe convidar usuários, cadastrar produto com a categoria certa e corrigir um participante recusado. Sem a Fundação bem feita, todo pedido sai com preço, imposto ou cliente errado nos módulos seguintes.",
-  "rodape": "Checklist de implantação · Fundação · fontes: manual de implantação, regras e checklist da Fundação (gestora); Apostila do Consultor (reunião de alinhamento e configuração do ambiente) · Harness Faktory Flow",
+  "titulo": "Implantação da Fundação: roteiro prático com o cliente",
+  "subtitulo": "Configure o ambiente junto com o cliente, na ordem em que um cadastro depende do outro: empresa e regime, certificado e série, usuários, participantes, produtos e seus cadastros de apoio, pagamento e CFOP. No fim, prove tudo num pedido de teste.",
+  "objetivo": "Ao final, o cliente viu a própria empresa configurada em homologação, cada usuário entrando com o perfil certo e um pedido de teste salvo com o cliente, o produto, a condição de pagamento e o CFOP que ele mesmo cadastrou. O administrador do cliente sabe convidar um usuário, cadastrar um cliente e um produto e corrigir um cadastro recusado.",
+  "rodape": "Checklist de implantação · Fundação · fontes: manual de implantação, regras e checklist da Fundação (gestora); trilha do estagiário 02 Cadastros e 04 Vendas; procedimento Cadastrar cliente, produto e obra; Manual 01 Cadastros Base · Harness Faktory Flow",
   "prerequisitos": [
    {
-    "t": "A versão contratada aceita o regime de apuração de **todas** as empresas do cliente.",
-    "r": "**Como validar:** compare `Minha Assinatura` com o regime de cada CNPJ informado pelo contador. **Por quê:** Lucro Presumido, Lucro Real e excesso de sublimite não gravam nas versões Starter e Standard. **Fonte:** CAD-EMP-005.",
+    "t": "O cliente entregou com antecedência: cartão CNPJ, CNAE, IE, IM e regime de cada empresa (conferidos com o contador), o certificado digital A1 de cada CNPJ emitente, a série e o número da última NF-e, a lista de usuários com e-mail exclusivo e função, e as bases de clientes, fornecedores e produtos.",
+    "r": "**Confira:** a lista de documentos pedida antes do kickoff. **Fonte:** Fundação C, pré-requisitos do cliente.",
     "s": "d"
    },
    {
-    "t": "O número de empresas ativas (matriz e filiais) e o número de usuários previstos cabem na licença.",
-    "r": "**Como validar:** `Minha Assinatura` mostra o limite de empresas e de usuários; convite pendente conta como vaga. **Por quê:** estourar o limite trava o cadastro no meio da implantação. **Fonte:** CAD-EMP-019; Fundação C, pré-requisitos comerciais.",
+    "t": "A versão contratada aceita o regime de todas as empresas e cabe o número de empresas e de usuários previstos.",
+    "r": "**Confira:** em `Minha Assinatura`. Lucro Presumido, Lucro Real e excesso de sublimite não gravam nas versões Starter e Standard; convite pendente ocupa vaga. **Fonte:** CAD-EMP-005, CAD-EMP-019; Fundação D, seção 1.",
     "s": "d"
    },
    {
-    "t": "Os módulos contratados aparecem sem cadeado no menu para o administrador do cliente.",
-    "r": "**Como validar:** navegue pelo menu com o usuário administrador. **Por quê:** módulo fora do plano aparece com cadeado e a tela responde “Módulo não contratado”; isso se resolve no comercial, não na implantação. **Fonte:** Fundação D, seção 1.",
+    "t": "A licença e os módulos foram liberados pela Faktory e o administrador do cliente consegue entrar.",
+    "r": "**Confira:** os módulos contratados aparecem sem cadeado no menu. Módulo fora do plano responde “Módulo não contratado” e se resolve no comercial. **Fonte:** Fundação C, pré-requisitos técnicos; Fundação D, seção 1.",
     "s": "d"
    },
    {
-    "t": "O cliente entregou o certificado digital A1 (arquivo e senha) de cada CNPJ emitente e a série e o número da última NF-e emitida.",
-    "r": "**Como validar:** confira a lista de documentos pedidos com antecedência. **Por quê:** sem certificado e série não há nota de teste, e a numeração antiga precisa continuar. **Fonte:** Fundação C, pré-requisitos do cliente; CAD-EMP-006.",
-    "s": "d",
-    "campo": "Vencimento do certificado de cada empresa"
-   },
-   {
-    "t": "O cliente entregou a lista de usuários com nome, função e um e-mail **exclusivo** para cada um.",
-    "r": "**Como validar:** confira se nenhum e-mail já é usado em outra empresa que tem Flow (contador e consultor externo costumam repetir). **Por quê:** o e-mail é único em todo o Flow. **Fonte:** Fundação C, pergunta U2.",
-    "s": "d"
-   },
-   {
-    "t": "O cliente entregou as bases de clientes, fornecedores e produtos (com NCM, unidade e tipo de material), os bancos usados e o plano de contas do contador.",
-    "r": "**Como validar:** abra as planilhas antes da reunião e veja se há CPF/CNPJ, endereço e NCM preenchidos. **Por quê:** a limpeza da base é a etapa mais demorada da carga. **Fonte:** Fundação C, pré-requisitos do cliente.",
-    "s": "d"
-   },
-   {
-    "t": "O ambiente está pronto: acesso ao Flow, internet estável, ferramenta de acesso remoto instalada e, se usa CEM Desktop, a máquina Windows do banco do CEM disponível com acesso de administrador.",
-    "r": "**Como validar:** teste o acesso remoto e o login antes do primeiro treinamento. **Por quê:** pré-requisito pendente para o treinamento no meio. **Fonte:** Apostila do Consultor, configuração do ambiente; Fundação C, pré-requisitos.",
+    "t": "Decisão tomada com o cliente: como ele vende cada tipo de material (por unidade, por peso ou por área).",
+    "r": "**Confira:** a resposta anotada na ata do kickoff. É a decisão que define o “Preço calculado por” de cada categoria. **Fonte:** Fundação C, questionário P1; CAD-PRO-020, CAD-CAT-001.",
     "s": "d"
    }
   ],
   "fluxos": [
    {
-    "titulo": "1. Entendimento do cenário do cliente",
-    "intro": "Conduza a reunião de alinhamento com o sponsor, o gerente do projeto e o key user, e chame o contador para a parte fiscal. Apresente o método e os papéis, e use o questionário: cada resposta muda uma configuração. Registre as decisões em ata; o consultor orienta, mas regime, NCM e tributação são decididos pelo cliente e pelo contador.",
+    "titulo": "1. Empresa e regime",
+    "onde": "`Minha Assinatura` e `Configurações > Empresas`",
+    "intro": "Tudo começa na empresa: o regime e o endereço dela decidem os impostos de cada pedido e nota. Faça com o cliente e com os dados do contador na mão.",
     "passos": [
      {
-      "t": "O consultor identificou o sponsor, o gerente do projeto e o key user do cliente, e quem será o administrador do sistema.",
-      "r": "**Como validar:** os nomes estão na ata da reunião de alinhamento. **Por quê:** o primeiro usuário vira administrador do cliente e é ele quem convida os demais. **Fonte:** Apostila do Consultor, reunião de alinhamento; Fundação C, pergunta U4.",
-      "s": "d",
-      "campo": "Sponsor, gerente do projeto, key user e administrador"
-     },
-     {
-      "t": "O consultor perguntou: quantos CNPJs emitem nota, se são matriz e filiais ou empresas diferentes, e qual o regime de cada um?",
-      "r": "**Como validar:** a ata traz cada CNPJ com regime confirmado pelo contador. **Por quê:** define quantas empresas cadastrar e se cabem na versão. **Fonte:** Fundação C, perguntas E1 e E2; CAD-EMP-005, CAD-EMP-019.",
+      "t": "**Faça:** abra `Minha Assinatura` com o administrador do cliente e leia a versão, o limite de empresas, o limite de usuários e os módulos contratados.",
+      "r": "**Explique ao cliente:** a licença limita empresas, usuários e regimes; estourar o limite trava o cadastro no meio da implantação. **Confira:** os números batem com o que foi vendido. **Fonte:** Fundação C, pré-requisitos comerciais; CAD-EMP-019.",
       "s": "d"
      },
      {
-      "t": "O consultor perguntou se algum usuário deve ver só uma filial e explicou que hoje todo usuário vê todas as empresas.",
-      "r": "**Como validar:** a resposta e o aviso estão na ata. **Por quê:** não existe restrição de usuário por filial; alinhar a expectativa evita frustração no go-live. **Fonte:** CAD-EMP-008.",
+      "t": "**Faça:** abra a empresa criada no registro da conta e confira CNPJ, razão social, CNAE, regime de apuração e endereço completo contra o cartão CNPJ. Corrija o CNAE e preencha o regime.",
+      "r": "**Explique ao cliente:** a primeira empresa nasce com CNAE fixo e sem regime; o regime define o cálculo de impostos em todo o sistema. O **CNPJ não muda depois de salvo**. **Confira:** a empresa salva sem o aviso “Cadastro da empresa incompleto”. **Fonte:** Fundação C, etapa 1; CAD-EMP-001, CAD-EMP-003, CAD-EMP-011.",
       "s": "d"
      },
      {
-      "t": "O consultor perguntou: emite NFS-e, por qual prefeitura e modelo? Qual o provedor atual de emissão e vai continuar a numeração do sistema antigo?",
-      "r": "**Como validar:** a ata registra a prefeitura, a série e o próximo número. **Por quê:** NFS-e tradicional exige Inscrição Municipal; a série vem antes da primeira transmissão. **Fonte:** Fundação C, perguntas E3 e E4; CAD-EMP-002.",
+      "t": "**Faça:** preencha a IE e, se a empresa emite NFS-e no modelo tradicional, a Inscrição Municipal. Se o cliente quiser, envie o logo e a cor da marca.",
+      "r": "**Explique ao cliente:** a Inscrição Municipal é obrigatória para a NFS-e tradicional; o logo sai na nota. **Confira:** os campos salvos na empresa. **Fonte:** Fundação C, etapa 1; CAD-EMP-002, CAD-EMP-013.",
       "s": "d"
      },
      {
-      "t": "O consultor perguntou, para cada tipo de material: o cliente vende por unidade, por quilo ou por m²?",
-      "r": "**Como validar:** a lista de categorias com o “Preço calculado por” está aprovada pelo cliente. **Por quê:** é a decisão mais importante da Fundação; categoria errada dá preço errado em todos os pedidos. **Fonte:** CAD-PRO-020, CAD-CAT-001.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor perguntou se o cliente usa tabela de preço por cliente e registrou que hoje o sistema não tem essa tabela.",
-      "r": "**Como validar:** a lacuna está na ata e foi comunicada. **Por quê:** o produto guarda só custo, venda e margem; prometer tabela de preço quebra a confiança. **Fonte:** CAD-PRO-011.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor perguntou: os códigos de produto e de cliente do sistema antigo serão mantidos? A base tem NCM em todos os produtos? Há clientes duplicados ou no exterior?",
-      "r": "**Como validar:** as respostas estão na ata e viraram tarefa de limpeza da base. **Por quê:** o código não muda depois de criado e o CPF/CNPJ é único, contando inativos. **Fonte:** CAD-PRO-005, CAD-PAR-006, CAD-PAR-007, CAD-PAR-008.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor perguntou: quais contas bancárias usa, se emite boleto e por qual banco, se o contador tem plano de contas próprio e quais condições de pagamento usa.",
-      "r": "**Como validar:** a ata lista contas, banco do boleto, plano de contas escolhido e condições que faltam. **Por quê:** o pedido importado já precisa de condição e plano de contas. **Fonte:** Fundação C, perguntas F1 a F3.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor perguntou se o cliente usa CEM Desktop, CEM Mobi ou PrefSuite e qual NCM, unidade e categoria padrão quer para material novo vindo do CEM.",
-      "r": "**Como validar:** a resposta está na ata e foi repassada para a etapa de integração. **Por quê:** define o agente desktop e os Padrões de Integração. **Fonte:** Fundação C, perguntas I1 a I3.",
+      "t": "**Faça:** cadastre as filiais (ou as outras empresas do grupo) com os mesmos cuidados.",
+      "r": "**Explique ao cliente:** todo usuário vê todas as empresas; não há restrição por filial. **Confira:** cada empresa ativa aparece na lista e cabe no limite da versão. CNPJ “já cadastrado em outro tenant” indica a empresa em outra conta do Flow: acione o suporte. **Fonte:** Fundação C, etapa 1 e questionário E5; CAD-EMP-004, CAD-EMP-008.",
       "s": "d"
      }
     ]
    },
    {
-    "titulo": "2. Preparação da implantação",
-    "intro": "Configure na ordem do roteiro: empresa, certificado e série, perfis e usuários, cadastros de produto, cadastros financeiros, padrões de integração, carga e parâmetros. Faça junto com o administrador do cliente, para ele ver onde fica cada coisa. Não pule etapas: a ordem existe porque uma depende da outra.",
+    "titulo": "2. Certificado digital, série e homologação",
+    "onde": "`Faturamento > Configurações > Certificados`",
+    "intro": "Sem certificado e série não existe nota. Este bloco deixa a empresa pronta para emitir, mas sempre em homologação até o fim dos testes.",
     "passos": [
      {
-      "t": "A empresa criada no registro da conta foi revisada: CNPJ, razão social, CNAE, regime e endereço completo conferidos com o cartão CNPJ e o contador, e as filiais cadastradas.",
-      "r": "**Como validar:** `Configurações > Empresas` salva sem aviso; o CNAE não ficou o de fábrica por engano e o regime está preenchido. **Por quê:** o CNPJ não muda depois de salvo. **Fonte:** CAD-EMP-001, CAD-EMP-003, CAD-EMP-011.",
-      "s": "d"
-     },
-     {
-      "t": "O certificado A1 de cada empresa foi enviado, a série e o próximo número da NF-e continuam o sistema antigo e o ambiente está em **homologação**.",
-      "r": "**Como validar:** `Faturamento > Configurações > Certificados` mostra situação e validade; o modal de série traz o número combinado. **Por quê:** o número é dado ao transmitir e nunca volta. **Fonte:** CAD-EMP-006; Fundação C, etapa 2.",
-      "s": "d"
-     },
-     {
-      "t": "Os usuários foram convidados já com o perfil, partindo dos perfis prontos, e nenhum usuário ativo ficou sem perfil.",
-      "r": "**Como validar:** `Segurança > Usuários` mostra perfil em todas as linhas. **Por quê:** usuário sem perfil entra e não vê nada; criar perfil novo só quando nenhum pronto serve. **Fonte:** Fundação C, etapa 3.",
+      "t": "**Faça:** envie o arquivo .pfx do certificado A1 de cada empresa e peça ao cliente para digitar a senha quando a tela pedir.",
+      "r": "**Explique ao cliente:** o certificado assina as notas; o sistema avisa o vencimento a partir de 30 dias. A senha é do cliente: o consultor não digita nem guarda. **Confira:** a situação e a validade do certificado na tela; anote o vencimento na ata. Certificado vencido ou senha errada são recusados. **Fonte:** Fundação C, etapa 2; Fundação D, seção 3; CAD-EMP-006.",
       "s": "d",
-      "campo": "Responsável pelo cadastro de usuários"
+      "campo": "Vencimento do certificado"
      },
      {
-      "t": "As categorias de produto têm o **tipo** e o “Preço calculado por” aprovados, as unidades têm sigla de até 6 letras e os NCMs usados estão cadastrados.",
-      "r": "**Como validar:** confira `Categorias de Produto`, `Unidade de Medida` e `NCM`. Perfil em peso, vidro e superfície em área, ou outra decisão por escrito. **Por quê:** o tipo trava depois que há saldo. **Fonte:** CAD-CAT-002, CAD-CAT-004, CAD-UNI-001.",
+      "t": "**Faça:** abra “Configurar Série NF-e” na mesma tela e informe a série e o próximo número, continuando a numeração do sistema antigo.",
+      "r": "**Explique ao cliente:** o número da nota é dado ao transmitir e nunca volta; por isso a série precisa estar certa antes da primeira transmissão. **Confira:** a série gravada. Série repetida responde “Já existe uma série X para esta empresa no ambiente Y”: edite a existente. **Fonte:** Fundação C, etapa 2; CAD-EMP-006; README da cadeia comercial, decisão X5.",
+      "s": "d",
+      "campo": "Série e próximo número"
+     },
+     {
+      "t": "**Faça:** confirme que o ambiente da empresa está em **homologação**.",
+      "r": "**Explique ao cliente:** em homologação a nota vale só para teste; a virada para produção é combinada no fim da cadeia comercial. **Confira:** o ambiente na tela de Certificados ou de Empresas. **Fonte:** Fundação C, etapa 2; Fundação D, seção 3.",
       "s": "d"
      },
      {
-      "t": "Contas bancárias, portadores, plano de contas, condições e meios de pagamento estão cadastrados e conferidos.",
-      "r": "**Como validar:** contas conferidas com o extrato; plano de contas aprovado pelo contador; parcelas de cada condição somam 100%. **Por quê:** Vendas e Financeiro dependem desses cadastros. **Fonte:** FIN-CTA-001; Fundação C, etapa 5.",
-      "s": "d"
-     },
-     {
-      "t": "A base foi limpa **antes** da carga: todas as linhas com papel, CPF/CNPJ válido, IE ou “Isento”, CEP e endereço completo, sem duplicados, e-mails como contatos com as marcas de nota e boleto.",
-      "r": "**Como validar:** a validação da importação por planilha não recusa linhas, ou as recusas foram tratadas. **Por quê:** a planilha aplica a mesma régua da tela; não há atalho. **Fonte:** CAD-PAR-001, CAD-PAR-003, CAD-PAR-016, CAD-CON-002.",
-      "s": "d"
-     },
-     {
-      "t": "A carga seguiu a ordem produtos → participantes → contatos, e os vendedores foram ligados aos usuários depois de criados.",
-      "r": "**Como validar:** quantidade importada igual à da origem; cada vendedor tem um usuário. **Por quê:** produto precisa de categoria e padrões antes; o vendedor é ligado a um usuário, um para um. **Fonte:** Fundação C, etapa 7; CAD-PAR-012.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor confirmou o que a Fundação precisa entregar aos módulos seguintes: Padrões de Integração completos para quem usa CEM, condição e plano de contas para o pedido, e certificado e série prontos para a nota de teste.",
-      "r": "**Como validar:** confira o checklist de pré-requisitos da Integração e de Vendas antes de liberar. **Por quê:** a cadeia comercial começa só com a Fundação assinada. **Fonte:** README da cadeia comercial, ordem de implantação; INT C e VEN C, pré-requisitos.",
+      "t": "**Faça:** sincronize o emitente com o provedor de emissão pela opção da própria tela de certificados.",
+      "r": "**Explique ao cliente:** a sincronização leva os dados da empresa ao provedor que transmite as notas. **Confira:** a resposta sem aviso pendente; se faltar dado da NFS-e, a resposta avisa e a NFS-e fica de fora. **Fonte:** Fundação C, etapa 2; Fundação D, seção 3.",
       "s": "d"
      }
     ]
    },
    {
-    "titulo": "3. Condução do treinamento",
-    "intro": "Treine o administrador e o key user nos cadastros que eles vão manter sozinhos. Use os dados reais do cliente, não exemplos genéricos, e mostre o efeito de cada cadastro no pedido e na nota. Deixe o cliente operar; o consultor só orienta.",
+    "titulo": "3. Perfis e usuários",
+    "onde": "`Segurança > Perfis de Acesso` e `Segurança > Usuários`",
+    "intro": "Cada pessoa entra com o perfil da sua função. Faça antes dos cadastros para o próprio cliente executar o resto do roteiro com o usuário dele.",
     "passos": [
      {
-      "t": "O consultor mostrou, nesta sequência, empresa → usuários e perfis → categorias → produto → participante → contatos, ligando cada cadastro ao que ele muda no pedido e na nota.",
-      "r": "**Como validar:** o key user explica por que a categoria vem antes do produto e o usuário antes do vendedor. **Por quê:** ensinar processo, não tela. **Fonte:** Apostila do Consultor, como conduzir o projeto; Fundação C, roteiro.",
-      "s": "d",
-      "campo": "Data do treinamento"
-     },
-     {
-      "t": "O administrador do cliente convidou um usuário de teste com perfil, e cancelou um convite que não seria usado.",
-      "r": "**Como validar:** o convite aparece e some da lista ao cancelar. **Por quê:** convite pendente ocupa vaga na licença; só administrador convida administrador. **Fonte:** Fundação C, etapa 3.",
+      "t": "**Faça:** abra `Segurança > Perfis de Acesso` e mostre os perfis prontos; escolha com o cliente o perfil de cada função da lista de usuários.",
+      "r": "**Explique ao cliente:** o sistema já traz 32 perfis; crie perfil novo só se nenhum servir. Quem cancela nota precisa de um perfil fiscal com essa permissão (o Faturista emite, mas não cancela). **Confira:** cada função da lista tem um perfil escolhido. **Fonte:** Fundação C, etapa 3; README da cadeia comercial, decisão X8.",
       "s": "d"
      },
      {
-      "t": "O consultor cadastrou com o cliente um perfil de alumínio, um vidro e um componente reais, mostrando que o preço muda por quilo, por m² e por unidade conforme a categoria.",
-      "r": "**Como validar:** o cliente explica por que a unidade de medida não decide o preço. **Por quê:** o preço do item é decidido só pela categoria. **Fonte:** CAD-PRO-020, CAD-PRO-021.",
+      "t": "**Faça:** em `Segurança > Usuários`, clique em “Convidar Usuário” e convide cada pessoa já com o perfil.",
+      "r": "**Explique ao cliente:** o e-mail é único em todo o Flow; só administrador convida administrador. **Confira:** o usuário na lista com o perfil. **Fonte:** Fundação C, etapa 3.",
       "s": "d"
      },
      {
-      "t": "O consultor cadastrou com o cliente um serviço de instalação com o código LC 116 informado pelo contador.",
-      "r": "**Como validar:** o produto de serviço grava sem recusa. **Por quê:** serviço sem LC 116 é recusado e trava a NFS-e. **Fonte:** CAD-PRO-004.",
+      "t": "**Faça:** (bloqueio de propósito) tente convidar um usuário com um e-mail que já existe no Flow.",
+      "r": "**Explique ao cliente:** cada pessoa precisa de e-mail próprio, mesmo que use o Flow em outra empresa. **Confira:** o sistema recusa com “Email já está em uso” (ou “Este email já está cadastrado no sistema”). **Fonte:** Fundação C, questionário U2 e erros comuns.",
       "s": "d"
      },
      {
-      "t": "O consultor cadastrou com o cliente um cliente real com contatos e mostrou as marcas de e-mail de nota, boleto e entrega.",
-      "r": "**Como validar:** o contato tem as marcas certas. **Por quê:** sem marca, a nota e o boleto não chegam ao cliente final; o participante não tem e-mail próprio. **Fonte:** CAD-CON-002, CAD-CON-003, CAD-PAR-015.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor provocou com o cliente as recusas mais comuns (participante sem papel, CPF/CNPJ inválido, produto sem NCM) e mostrou como ler a mensagem e corrigir.",
-      "r": "**Como validar:** o cliente lê a mensagem e corrige sozinho. **Por quê:** são as principais causas de recusa na carga e no dia a dia. **Fonte:** Fundação C, erros comuns; CAD-PAR-003, CAD-PAR-005, CAD-PRO-001.",
-      "s": "d",
-      "campo": "Dúvidas registradas"
-     },
-     {
-      "t": "O consultor mostrou o uso de inativar em vez de excluir na limpeza de cadastros com vínculo.",
-      "r": "**Como validar:** o cliente inativa um cadastro de teste. **Por quê:** com vínculo, excluir apenas inativa; com documento em aberto, nem inativa. **Fonte:** CAD-PAR-010, CAD-PAR-011.",
+      "t": "**Faça:** confira na lista que todo usuário ativo tem perfil e cancele os convites pendentes que não serão usados. Peça a um usuário de cada perfil para entrar e navegar.",
+      "r": "**Explique ao cliente:** usuário sem perfil entra e não vê nada; convite pendente ocupa vaga na licença (“Limite de usuários atingido”). **Confira:** cada perfil vê o que deve e não vê o resto; anote por perfil. **Fonte:** Fundação C, etapa 3; Fundação D, seção 4.",
       "s": "d"
      }
     ]
    },
    {
-    "titulo": "4. Validação do aprendizado",
-    "intro": "Peça ao cliente que execute sem a sua ajuda e explique o porquê de cada passo. Se ele erra, volte ao conceito, não à tela. Registre a evidência de cada item; a Fundação só fecha com o cliente executando.",
+    "titulo": "4. Participantes: clientes, fornecedores e vendedores",
+    "onde": "`Cadastros > Participantes`",
+    "intro": "Cliente, fornecedor, vendedor e lead são o mesmo cadastro, com chaves diferentes. Cadastre um cliente real com o cliente olhando e mostre onde cada dado vai parar.",
     "passos": [
      {
-      "t": "O cliente emitiu uma NF-e de teste **autorizada em homologação**, com o número na sequência combinada.",
-      "r": "**Como validar:** anote o número e a chave da nota. **Por quê:** prova que empresa, certificado, série e ambiente estão certos. **Fonte:** Fundação D, seção 3.",
+      "t": "**Faça:** crie um participante “TESTE FLUXO CONSULTOR - Cliente”: em **Dados Gerais**, **Tipo (PF/PJ)**, **Razão Social / Nome**, **CPF/CNPJ** e **Inscrição Estadual / RG**; em **Endereço**, **CEP** e **Número**; em **Classificação**, ligue **É Cliente?**; em **Contato > Adicionar Contato**, um e-mail de teste. Clique em `Salvar`.",
+      "r": "**Explique ao cliente:** o CEP preenche o endereço; IE, Bairro, Estado e Cidade são obrigatórios em papel de negócio (use “ISENTO” quando couber). **Confira:** a mensagem “Registro salvo com sucesso!”. Se o CEP trouxer bairro com menos de 3 letras, digite um bairro mais longo. **Fonte:** trilha do estagiário 02, bloco 1; procedimento Cadastrar cliente, produto e obra; CAD-PAR-003.",
+      "s": "v",
+      "campo": "Código do cliente"
+     },
+     {
+      "t": "**Faça:** no mesmo participante, preencha a **Conta de Fluxo de Caixa Receita** (seção **Receita / Despesa**).",
+      "r": "**Explique ao cliente:** o pedido de venda usa essa conta no financeiro; sem ela o financeiro do pedido fica incompleto. **Confira:** o campo salvo. **Fonte:** trilha do estagiário 02, bloco 1; procedimento Cadastrar cliente, produto e obra.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** mostre a seção **Classificação** (É Cliente?, É Fornecedor?, É Funcionário?, É Transportadora?, É Vendedor?, Prospect/Lead) e a seção **Contato**, com quem recebe e-mails de Notas Fiscais, Boletos, Vendas e avisos.",
+      "r": "**Explique ao cliente:** o lead do CRM vira este mesmo participante; as marcas do contato decidem quem recebe a nota e o boleto. **Confira:** com o cliente, quem recebe a nota e o boleto de cada cliente. **Fonte:** trilha do estagiário 02, bloco 2; CAD-CON-002.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** (bloqueio de propósito) tente salvar outro participante com o mesmo CPF/CNPJ.",
+      "r": "**Explique ao cliente:** o sistema não aceita documento duplicado; antes de criar, pesquise. Por isso a base precisa ser limpa antes da carga. **Confira:** a recusa “CNPJ/CPF … já está cadastrado” (ou “possui cadastro inativo”: reative o existente). **Fonte:** Fundação C, erros comuns; CAD-PAR-006; trilha do estagiário 02, bloco 1.",
+      "s": "d"
+     },
+     {
+      "t": "**Faça:** cadastre um vendedor (participante com **É Vendedor?**) e ligue-o ao usuário dele.",
+      "r": "**Explique ao cliente:** a ligação entre vendedor e usuário é de um para um e é usada no pedido e na comissão. **Confira:** o vendedor aparece para escolha no pedido de venda (bloco 9). **Fonte:** Fundação C, questionário U3; CAD-PAR-012; Fundação D, seção 8.",
       "s": "d",
-      "campo": "Número e chave da NF-e de teste"
-     },
+      "campo": "Código do vendedor"
+     }
+    ]
+   },
+   {
+    "titulo": "5. Categorias, unidades, NCM, cores e produtos",
+    "onde": "grupo `Configurações` do módulo (`Categorias de Produto`, `Unidade de Medida`, `Cores`), `Fiscal > Configurações > NCM` e `Cadastros > Produtos`",
+    "intro": "A categoria decide como o preço é calculado e o tipo do material. Acerte com o cliente antes de cadastrar produtos e muito antes de lançar saldo.",
+    "passos": [
      {
-      "t": "Um usuário de cada perfil fez login e viu o que deve, e não viu o resto.",
-      "r": "**Como validar:** anote o resultado por perfil. **Por quê:** perfil errado aparece só quando o usuário não acha a tela ou vê o que não devia. **Fonte:** Fundação D, seção 4.",
+      "t": "**Faça:** abra `Categorias de Produto` e revise com o cliente as categorias de fábrica; crie as que faltarem com o **tipo** e o **Preço calculado por** (unidade, peso ou área) decididos no kickoff.",
+      "r": "**Explique ao cliente:** perfil costuma ser por peso e vidro por área; o tipo da categoria fica travado depois que algum produto tem saldo (“Não é possível trocar o tipo desta categoria…”). **Confira:** a lista de categorias aprovada pelo cliente. **Fonte:** Fundação C, etapa 4.1; CAD-CAT-001, CAD-CAT-002, CAD-CAT-004.",
       "s": "d"
      },
      {
-      "t": "O administrador do cliente convidou sozinho um usuário novo com o perfil certo.",
-      "r": "**Como validar:** o convite foi feito sem ajuda. **Por quê:** depois do encerramento, novos usuários são responsabilidade do cliente. **Fonte:** Fundação D, seção 4.",
+      "t": "**Faça:** abra `Unidade de Medida`, confira as unidades de fábrica e crie só as que faltam, com sigla de até 6 letras.",
+      "r": "**Explique ao cliente:** a sigla do produto precisa existir igual na empresa (“PÇ” é diferente de “PC”); senão o pedido falha ao salvar. **Confira:** nenhuma unidade em uso com sigla longa. **Fonte:** Fundação C, etapa 4.2; CAD-UNI-001; trilha do estagiário 02, bloco 1.",
       "s": "d"
      },
      {
-      "t": "O cliente cadastrou sozinho um produto novo e explicou por que escolheu aquela categoria.",
-      "r": "**Como validar:** a categoria e o NCM estão certos. **Por quê:** é o cadastro que mais gera preço errado no pedido. **Fonte:** CAD-PRO-020, CAD-PRO-002.",
+      "t": "**Faça:** em `Fiscal > Configurações > NCM`, cadastre os NCMs que o cliente usa e não estão na lista de fábrica. Se o cliente não integra com o CEM, cadastre as cores em `Cores`.",
+      "r": "**Explique ao cliente:** o NCM é obrigatório na nota e precisa ter o CST de PIS/COFINS de saída para os impostos saírem calculados. Quem integra com o CEM recebe as cores sozinho. **Confira:** os NCMs da base do cliente aparecem na lista. **Fonte:** Fundação C, etapas 4.3 e 4.5; Manual 01 Cadastros Base; procedimento Cadastrar cliente, produto e obra.",
       "s": "d"
      },
      {
-      "t": "O cliente conferiu com o consultor uma amostra de 10 clientes e 10 produtos importados: documento, endereço, contatos, categoria, NCM, unidade e preço.",
-      "r": "**Como validar:** anote a amostra e as correções feitas. **Por quê:** a contagem bate, mas o dado pode estar errado. **Fonte:** Fundação D, seção 8.",
-      "s": "d"
+      "t": "**Faça:** em `Cadastros > Produtos`, crie um produto “TESTE FLUXO CONSULTOR - Produto” com **Descrição**, **Categoria do Produto** e, em **Classificações Fiscais**, **Unidade de Medida**, **NCM** e **Origem da Mercadoria**. Clique em `Salvar`.",
+      "r": "**Explique ao cliente:** são 5 campos obrigatórios; o produto é usado em pedido, compra, estoque, produção e nota. **Confira:** o produto salvo com a categoria e a unidade certas. **Fonte:** trilha do estagiário 02, bloco 1; procedimento Cadastrar cliente, produto e obra.",
+      "s": "v",
+      "campo": "Código do produto"
      },
      {
-      "t": "O cliente corrigiu sozinho um participante recusado na carga e explicou a causa.",
-      "r": "**Como validar:** a linha recusada foi importada depois da correção. **Por quê:** a carga continua depois do go-live com cadastros novos. **Fonte:** CAD-PAR-003, CAD-PAR-016.",
+      "t": "**Faça:** (bloqueio de propósito) tente salvar um produto sem NCM ou sem categoria.",
+      "r": "**Explique ao cliente:** a planilha de carga aplica a mesma régua; por isso a base precisa ter NCM e categoria em todas as linhas. **Confira:** a recusa “NCM é obrigatório” ou “Categoria do produto é obrigatória”. **Fonte:** Fundação C, erros comuns; CAD-PRO-001, CAD-PRO-002.",
       "s": "d"
      }
     ]
    },
    {
-    "titulo": "5. Preparação para utilização e go-live",
-    "intro": "A Fundação não tem go-live próprio: ela libera a cadeia comercial. Feche as pendências, registre as lacunas e deixe claro que o ambiente fiscal segue em homologação. Só libere o próximo módulo com o checklist assinado.",
+    "titulo": "6. Condições e meios de pagamento, contas e portadores",
+    "onde": "`Vendas > Configurações > Condições de Pagamento` e o grupo `Configurações` do Financeiro (`Contas Bancárias`, `Portadores`, `Planos de Conta`, `Meios de Pagamento`)",
+    "intro": "O pedido já nasce com parcelas, meio de pagamento e conta. Estes cadastros vêm antes do primeiro pedido, mesmo que o Financeiro seja implantado depois.",
     "passos": [
      {
-      "t": "As lacunas foram registradas e comunicadas ao cliente: tabela de preço por cliente e restrição de usuário por filial, entre outras levantadas.",
-      "r": "**Como validar:** estão na ata ou na OS do atendimento. **Por quê:** o consultor não promete funcionalidade que não existe. **Fonte:** Fundação D, aceite; CAD-PRO-011, CAD-EMP-008.",
+      "t": "**Faça:** em `Condições de Pagamento`, clique em **+ Nova Condição**, informe a **Descrição** (ex.: “28/42/56 dias”), o **Tipo** A Prazo, use **+ Adicionar** até ter as parcelas, informe os **Dias** e clique em **Criar Condição de Pagamento**.",
+      "r": "**Explique ao cliente:** cada parcela vira um título; os dias contam da emissão da nota. **Confira:** o selo **Total** em 100,00% e a mensagem “Condição de pagamento criada com sucesso!”. Sem 100% o sistema não grava. **Fonte:** Manual 01 Cadastros Base, 1.4; Fundação C, etapa 5.5.",
       "s": "d"
      },
      {
-      "t": "O vencimento do certificado de cada empresa está anotado na ata e o cliente sabe que o sistema avisa a partir de 30 dias.",
-      "r": "**Como validar:** a data está registrada. **Por quê:** certificado vencido barra a emissão no dia a dia. **Fonte:** Fundação D, seção 3.",
+      "t": "**Faça:** em `Meios de Pagamento`, mostre os meios de fábrica e o tipo de cada um que o cliente usa (Boleto ou outro).",
+      "r": "**Explique ao cliente:** meio do tipo Boleto exige conta bancária emissora de boletos ao gerar títulos; evite criar meio com tipo digitado livre. **Confira:** o tipo de cada meio que o cliente vai usar. **Fonte:** Fundação C, etapa 5.6; teste do fluxo completo, bloco 7.",
       "s": "d"
      },
      {
-      "t": "O cliente sabe que o ambiente segue em **homologação** até a validação da cadeia comercial, e quem decide a virada para produção.",
-      "r": "**Como validar:** está na ata. **Por quê:** nota real antes do teste ponta a ponta gera retrabalho fiscal. **Fonte:** Fundação D, aceite; README da cadeia comercial, ordem de implantação.",
+      "t": "**Faça:** em `Contas Bancárias`, cadastre cada conta do cliente e marque a favorita para boleto, se ele emite boleto.",
+      "r": "**Explique ao cliente:** a conta bancária é obrigatória na baixa e a favorita é a emissora do boleto. **Confira:** as contas batem com o extrato do cliente. **Fonte:** Fundação C, etapa 5.2; FIN-CTA-001; Fundação D, seção 6.",
       "s": "d"
      },
      {
-      "t": "Não há convite pendente esquecido ocupando vaga na licença.",
-      "r": "**Como validar:** confira a lista de convites. **Por quê:** convite pendente conta como usuário. **Fonte:** Fundação D, seção 4.",
+      "t": "**Faça:** em `Portadores`, crie os bancos que recebem; em `Planos de Conta`, use o de fábrica ou monte o do contador.",
+      "r": "**Explique ao cliente:** o portador diz onde o dinheiro entra; o plano de contas classifica receitas e despesas e precisa do aval do contador. **Confira:** o plano aprovado pelo contador. **Fonte:** Fundação C, etapas 5.3 e 5.4; Fundação D, seção 6.",
+      "s": "d"
+     }
+    ]
+   },
+   {
+    "titulo": "7. CFOPs de saída",
+    "onde": "`Fiscal > Configurações > CFOP`",
+    "intro": "O CFOP decide se o pedido exige condição e parcelas, se a nota gera título e se mexe no estoque. Revise com o contador antes do primeiro pedido.",
+    "passos": [
+     {
+      "t": "**Faça:** abra a lista de CFOPs e localize, com o contador, os de venda que o cliente usa (ex.: 5101 produto fabricado, 5102 revenda, 6101/6102 fora do estado).",
+      "r": "**Explique ao cliente:** não existe cadastro de natureza de operação; a natureza é a descrição do CFOP. **Confira:** os CFOPs usados estão ativos na lista. **Fonte:** Manual 03 Vendas, 1.2; README da cadeia comercial, decisão X1.",
       "s": "d"
      },
      {
-      "t": "Nas primeiras semanas, o consultor acompanha os cadastros novos feitos pelo cliente (produtos e clientes) e corrige o que entrou com categoria ou contato errado.",
-      "r": "**Como validar:** revise uma amostra semanal com o key user. **Por quê:** o erro de cadastro só aparece no pedido ou na nota. **Fonte:** Apostila do Consultor, go-live; CAD-PRO-020, CAD-CON-002.",
+      "t": "**Faça:** confira em cada CFOP de saída se ele gera financeiro e movimenta estoque, conforme o contador.",
+      "r": "**Explique ao cliente:** CFOP de remessa marcado como gerador de financeiro obriga condição, plano e parcelas no pedido; o contrário deixa venda sem título. **Confira:** a decisão de cada CFOP anotada na ata. **Fonte:** Vendas C, etapa 1; VEN-PED-001; README da cadeia comercial, decisão X1.",
       "s": "d"
      },
      {
-      "t": "O checklist da Fundação foi assinado com todos os itens obrigatórios marcados, e só então a Integração com o CEM ou Vendas foi liberada.",
-      "r": "**Como validar:** checklist assinado pelo cliente e pelo consultor; tarefas de configuração e cadastros base concluídas no cronograma. **Por quê:** cada etapa depende da anterior. **Fonte:** Fundação D, uso e aceite; README da cadeia comercial.",
+      "t": "**Faça:** anote quais CFOPs serão o padrão do pedido de venda e da integração com o CEM.",
+      "r": "**Explique ao cliente:** esses padrões vão para os Padrões de Integração no módulo de integração. **Confira:** a lista anotada e entregue ao responsável fiscal. **Fonte:** Fundação C, etapa 6.",
+      "s": "d"
+     }
+    ]
+   },
+   {
+    "titulo": "8. Carga inicial de produtos e participantes",
+    "onde": "listagem de `Cadastros > Produtos` e de `Cadastros > Participantes`, menu “Mais…”",
+    "intro": "Com os cadastros de apoio prontos, traga a base do cliente: produtos primeiro, depois participantes e contatos.",
+    "passos": [
+     {
+      "t": "**Faça:** na listagem de Produtos, use “Mais…” › “Importar … via Excel” com a planilha preparada e rode a validação antes de executar.",
+      "r": "**Explique ao cliente:** a planilha aplica a mesma régua da tela; linha recusada mostra o motivo. **Confira:** a validação sem linhas recusadas, ou as recusas tratadas na origem. **Fonte:** Fundação C, etapa 7; Fundação D, seção 8.",
+      "s": "d"
+     },
+     {
+      "t": "**Faça:** repita com os participantes (todas as linhas com papel, CPF/CNPJ válido, IE ou “Isento”, CEP e endereço) e depois com os contatos.",
+      "r": "**Explique ao cliente:** “Selecione pelo menos um papel para o participante…” e “Cadastro do participante incompleto — informe: …” são as recusas mais comuns. **Confira:** a quantidade importada igual à da base de origem. **Fonte:** Fundação C, etapa 7 e erros comuns; CAD-PAR-001, CAD-PAR-003.",
       "s": "d",
-      "campo": "Data de liberação do módulo seguinte"
+      "campo": "Quantidade importada (produtos / participantes)"
+     },
+     {
+      "t": "**Faça:** abra com o cliente uma amostra de 10 clientes e 10 produtos importados.",
+      "r": "**Explique ao cliente:** é a última chance de corrigir a base antes do primeiro pedido real. **Confira:** documento, endereço e contatos com marca de nota e boleto; categoria, NCM, unidade e preço dos produtos. **Fonte:** Fundação D, seção 8.",
+      "s": "d"
+     }
+    ]
+   },
+   {
+    "titulo": "9. Prova em uso real: obra e pedido de teste",
+    "onde": "`Cadastros > Projetos` e `Vendas > Pedidos de Venda > + Novo Pedido`",
+    "intro": "Um cadastro só está certo quando funciona no documento. Monte um pedido de teste com tudo o que foi cadastrado; cada erro aqui aponta o cadastro a corrigir.",
+    "passos": [
+     {
+      "t": "**Faça:** em `Cadastros > Projetos`, crie a obra “TESTE FLUXO CONSULTOR - Obra” com **Nome do Projeto**, **Código**, **Status**, **Cliente** (o do bloco 4) e **Responsável**. Clique em `Salvar`.",
+      "r": "**Explique ao cliente:** a obra liga pedido, compras, produção e o painel financeiro do projeto. **Confira:** “Registro salvo com sucesso!”; código repetido é recusado. **Fonte:** trilha do estagiário 02, bloco 1; procedimento Cadastrar cliente, produto e obra.",
+      "s": "v",
+      "campo": "Código da obra"
+     },
+     {
+      "t": "**Faça:** em **Novo Pedido**, preencha **Empresa**, **Cliente**, **Vendedor**, **Condição de Pagamento** e **Projeto (opcional)** com os cadastros do roteiro e escolha o **CFOP**.",
+      "r": "**Explique ao cliente:** o CFOP só libera depois de Empresa e Cliente e vem filtrado pelo estado do cliente. **Confira:** o cliente, o vendedor e a condição aparecem para escolha; “Cliente sem IE informado e não marcado como não contribuinte.” aponta o cadastro do cliente. **Fonte:** trilha do estagiário 04, bloco 1; procedimento Criar pedido de venda.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** adicione o produto do bloco 5: preencha o diálogo **Dados do Item** e clique em **Aplicar**.",
+      "r": "**Explique ao cliente:** os campos do diálogo vêm do tipo da categoria. **Confira:** o valor do item pela categoria; se aparecer “Impostos não calculados no item”, leia o motivo (ex.: CST de PIS/COFINS ausente na NCM) e corrija o NCM. O pedido salva mesmo assim. **Fonte:** trilha do estagiário 04, bloco 1; teste do fluxo completo, bloco 2.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** na parcela, escolha o **Meio Pagamento** e o **Portador**; no Resumo, a **Conta de Fluxo de Caixa** de venda. Clique em **Salvar e Permanecer**.",
+      "r": "**Explique ao cliente:** as parcelas vêm da condição de pagamento cadastrada no bloco 6. **Confira:** a mensagem “Pedido PV-xxxxxx criado” e, na lista, Em aberto, “Sem títulos” e Nota Fiscal “—”. **Fonte:** trilha do estagiário 04, bloco 1; procedimento Criar pedido de venda.",
+      "s": "v",
+      "campo": "Nº do pedido (PV-)"
+     },
+     {
+      "t": "**Faça:** (bloqueio de propósito) num segundo pedido, use um produto cuja sigla de unidade não esteja cadastrada na empresa e tente salvar.",
+      "r": "**Explique ao cliente:** o erro só aparece no salvar; a correção é no cadastro de unidades, não no pedido. **Confira:** a recusa “Item N: Unidade de Medida … não está cadastrada para esta empresa”. **Fonte:** Vendas C, erros comuns; VEN-PED-006; teste do fluxo completo, pré-requisitos.",
+      "s": "d"
      }
     ]
    }
   ],
   "resultado": [
    {
-    "t": "Todas as empresas estão cadastradas, com certificado válido, série continuando a numeração antiga e uma NF-e de teste autorizada em homologação.",
+    "t": "Cada empresa salva sem aviso, com regime conferido pelo contador, certificado válido, série configurada e ambiente em homologação.",
     "s": "d"
    },
    {
-    "t": "Todo usuário ativo tem e-mail próprio e pelo menos um perfil, e o administrador do cliente convida usuários sozinho.",
+    "t": "Todos os usuários previstos entram com o perfil certo e não há convite pendente esquecido.",
     "s": "d"
    },
    {
-    "t": "As categorias têm tipo e forma de preço aprovados pelo cliente, e o cliente cadastra produto sozinho com a categoria certa.",
+    "t": "Categorias aprovadas pelo cliente (tipo e Preço calculado por), unidades, NCMs, condições, meios, contas, portadores e plano de contas cadastrados.",
     "s": "d"
    },
    {
-    "t": "A carga inicial bate em quantidade com a origem e a amostra de clientes e produtos foi conferida.",
+    "t": "Carga de produtos e participantes com a quantidade igual à da origem e amostra conferida.",
     "s": "d"
    },
    {
-    "t": "Os cadastros financeiros de apoio e, quando há CEM, os Padrões de Integração estão completos.",
+    "t": "Um pedido de teste salvo com o cliente, o produto, a obra, a condição e o CFOP do roteiro.",
     "s": "d"
    },
    {
-    "t": "As lacunas foram comunicadas e o checklist da Fundação está assinado.",
+    "t": "O administrador do cliente cadastrou sozinho um participante e um produto.",
     "s": "d"
    }
   ],
   "atencao": [
-   "Categoria com tipo ou “Preço calculado por” errado dá preço errado em todos os pedidos, e o tipo trava depois que há saldo (CAD-PRO-020, CAD-CAT-004).",
-   "O CNPJ da empresa não muda depois de salvo; confira com o cartão CNPJ antes de gravar (CAD-EMP-003).",
-   "A empresa criada no registro da conta pode vir com CNAE de fábrica e sem regime; revise sempre (CAD-EMP-011).",
-   "E-mail de usuário é único em todo o Flow: contador ou consultor externo que atende outros clientes precisa de outro e-mail.",
-   "Convites pendentes ocupam vaga na licença e podem gerar “Limite de usuários atingido”.",
-   "Contato sem a marca de e-mail de nota e boleto faz a nota e o boleto não chegarem ao cliente final (CAD-CON-002).",
-   "Não use o NCM “99999999 À classificar” como padrão de integração (CAD-PRO-016).",
-   "Hoje o sistema ainda não tem tabela de preço por cliente nem restrição de usuário por filial; registre como lacuna (CAD-PRO-011, CAD-EMP-008)."
+   "Só em ambiente de teste ou homologação; registros com “TESTE FLUXO CONSULTOR”. Nota fiscal só é transmitida com o responsável fiscal.",
+   "Senha do certificado e de usuário quem digita é o cliente; o consultor não pede nem guarda.",
+   "O CNPJ da empresa não muda depois de salvo e o tipo da categoria trava quando algum produto tem saldo: confira antes de salvar.",
+   "Todo usuário vê todas as empresas; hoje o sistema ainda não restringe acesso por filial. Também não existe tabela de preço por cliente: registre como lacuna na ata.",
+   "Não use o NCM “99999999 À classificar” como padrão de nada.",
+   "Unidade com sigla diferente da do produto (“PÇ” × “PC”) só aparece como erro ao salvar o pedido.",
+   "Cadastro é compartilhado: mudar um participante ou produto afeta notas, títulos, compras e produção.",
+   "Convite pendente ocupa vaga na licença: cancele os que não forem usados."
   ],
   "naoValidado": [
-   "O nome do botão que sincroniza o emitente com o provedor, na tela de certificados, não foi confirmado; confira na tela antes de ensinar.",
-   "A tela de certificados aparece para perfis que não conseguem enviar o certificado; confira na tela com qual perfil o envio funciona antes de delegar ao cliente.",
-   "O meio de pagamento aceita tipo digitado livre; confira na tela se os meios novos aparecem certos na NF-e antes de criar meios além dos de fábrica.",
-   "O modelo de implantação cita “tabelas de preço”, mas o sistema não tem essa tela; não procure nem prometa.",
-   "A Apostila põe a ordem Vendas → Faturamento → Fiscal → Financeiro, mas também diz que a configuração fiscal vem antes de Vendas; confirme com a coordenação a ordem para o cliente."
+   "Nome da opção que sincroniza o emitente com o provedor na tela de Certificados: a gestora marca como não confirmado. Conferir na tela antes de ensinar.",
+   "Rótulo do campo do CFOP que diz se ele gera financeiro: a gestora marca como não confirmado. Conferir na tela.",
+   "Caminho do NCM: o Manual 01 indica `Fiscal > Configurações > NCM`; a gestora lista a tela no grupo de cadastros. Conferir no menu.",
+   "Tipo dos meios de pagamento: a gestora diz que os meios de fábrica já vêm com o código SEFAZ; no teste do fluxo completo “Duplicata Mercantil” foi tratada como boleto ao gerar títulos. Conferir o tipo de cada meio na tela."
   ]
  },
  {
   "id": "implantacao-crm",
   "arquivo": "implantacao-02-crm.html",
   "etiqueta": "Consultor · Implantação · CRM",
-  "titulo": "Implantação de CRM",
-  "subtitulo": "Checklist para o consultor conduzir a implantação do CRM, do levantamento do processo comercial até o go-live, e para conferir se a equipe de vendas está pronta para operar sozinha.",
-  "objetivo": "Ao final, os vendedores cadastram e qualificam leads, convertem em oportunidade, lançam itens, registram atividades e encerram negócios como ganhos ou perdidos, e o gestor acompanha o funil pelos painéis. O CRM é a porta de entrada do processo comercial: o que nasce errado aqui chega errado ao pedido de venda, à produção e ao faturamento.",
-  "rodape": "Checklist de implantação · CRM · fontes: apostila do consultor (Módulo CRM; Processo comercial), manual-02-crm, regras e procedimento do CRM, funcional-crm, roteiros de CRM, FAQ de limitações · Harness Faktory Flow",
+  "titulo": "Implantação de CRM: roteiro prático com o cliente",
+  "subtitulo": "Junto com o cliente, leve um contato de teste do cadastro do lead até o pedido de venda: qualificação pelo BANT no Kanban de Leads, conversão, oportunidade no Pipeline com itens, atividades e etapas, ganho e geração do pedido.",
+  "objetivo": "Ao final, o cliente terá visto um lead virar oportunidade, a oportunidade ganha virar pedido de venda em `Vendas > Pedidos de Venda` e o resultado aparecer nos painéis do CRM. Ele saberá repetir o caminho e conhecerá as três travas do fluxo: BANT e etapa de 60% para converter, item para ganhar e CFOP para gerar o pedido.",
+  "rodape": "Checklist de implantação · CRM · fontes: Fluxo comercial e Teste do fluxo completo (passos conferidos em out/2026), procedimento-cadastrar-lead-e-converter-em-oportunidade, regras do CRM, regra-vendas-gerar-pedido-da-oportunidade-exige-cfop-sem-financeiro, manual-02-crm, FAQ de limitações · Harness Faktory Flow",
   "prerequisitos": [
    {
-    "t": "O escopo contratado inclui o CRM e está combinado que ele é implantado **antes** de Vendas.",
-    "r": "**Como validar:** confira o escopo e o cronograma da Reunião de Alinhamento. **Por quê:** o CRM é a porta de entrada do processo comercial e as oportunidades viram pedidos de venda. **Fonte:** apostila do consultor, Módulo CRM na implantação.",
+    "t": "**Funil de Vendas** com etapas conferidas e **Funil de Leads** cadastrados (sem o primeiro não existe Pipeline; sem o segundo não existe Kanban de Leads). Tipos de Atividade, Origens de Lead, Temperaturas e Motivos de Perda cadastrados.",
+    "r": "**Confira:** `CRM > Configurações` e remova etapas de teste esquecidas no fim do funil. **Fonte:** manual-02-crm, Parte 1; Fluxo comercial (pré-requisitos).",
     "s": "d"
    },
    {
-    "t": "Os vendedores e o gestor comercial já têm usuário no Flow com acesso ao CRM.",
-    "r": "**Como validar:** peça a cada um que entre no módulo pelo ícone de grade e veja o selo do CRM no menu lateral. **Por quê:** o **Responsável** do lead e da oportunidade é um usuário do sistema. **Fonte:** manual-02-crm, 1.1 e 1.7.",
-    "s": "d",
-    "campo": "Usuários liberados"
+    "t": "Dados de contato de teste: razão social começando por \"TESTE FLUXO CONSULTOR\", CNPJ/CPF fictício **ainda não usado** e e-mail de caixa pública temporária.",
+    "r": "**Confira:** o sistema recusa documento repetido. **Fonte:** Fluxo comercial (pré-requisitos).",
+    "s": "v",
+    "campo": "E-mail de teste"
    },
    {
-    "t": "Os produtos que a empresa vende estão cadastrados, com os produtos de esquadria prontos para receber altura, largura e cor.",
-    "r": "**Como validar:** busque dois produtos reais em `CRM › Cadastros › Produtos`. **Por quê:** sem item a oportunidade não pode ser marcada como ganha. **Fonte:** manual-02-crm, 1.7 e 2.4.",
-    "s": "d"
+    "t": "Produto de teste com unidade válida e preço de tabela.",
+    "r": "**Confira:** `Cadastros > Produtos`. **Fonte:** Fluxo comercial (pré-requisitos).",
+    "s": "v",
+    "campo": "Código do produto"
    },
    {
-    "t": "A base de participantes foi revisada para evitar duplicidade antes de importar ou cadastrar leads.",
-    "r": "**Como validar:** pesquise três clientes ativos e confira se aparecem uma vez só. **Por quê:** o lead convertido vira cliente no cadastro de participantes; cadastro duplicado quebra o histórico. **Fonte:** roteiro CRM 04 (Clientes e Visão 360°); regra-crm-conversao-cria-a-oportunidade-sozinha.",
-    "s": "d"
-   },
-   {
-    "t": "Se o cliente vai gerar o pedido a partir da oportunidade, a empresa emissora e os CFOPs de venda já estão configurados em Vendas.",
-    "r": "**Como validar:** confirme com quem cuida de Vendas e Fiscal que existe um CFOP que não gera financeiro para o handoff. **Por quê:** **Gerar Pedido de Venda** pede **Empresa** e **CFOP**. **Fonte:** regra-vendas-gerar-pedido-da-oportunidade-exige-cfop-sem-financeiro.",
-    "s": "d"
-   },
-   {
-    "t": "Existe um ambiente de homologação ou de teste para os exercícios da turma.",
-    "r": "**Como validar:** confirme com o gerente de projetos onde a turma vai treinar. **Por quê:** os exercícios criam leads, oportunidades e pedidos de teste que não devem ficar na base de produção. **Fonte:** apostila do consultor, configuração do ambiente.",
-    "s": "d"
+    "t": "Para o pedido nascer completo: participante com **Conta de Fluxo de Caixa Receita** e Inscrição Estadual/RG preenchidas (o formulário do lead não exige), condição de pagamento cadastrada e um CFOP que **não** gera financeiro disponível (ex.: 5910-1).",
+    "r": "**Confira:** com o consultor responsável pela configuração fiscal. **Fonte:** Fluxo comercial (pré-requisitos); regra-vendas-gerar-pedido-da-oportunidade-exige-cfop-sem-financeiro.",
+    "s": "v"
    }
   ],
   "fluxos": [
    {
-    "titulo": "1. Entendimento do cenário do cliente",
-    "intro": "Converse com o gerente comercial e com um ou dois vendedores, juntos. Peça para contarem como foi a última venda, do primeiro contato ao pedido. Anote os nomes que eles usam para as etapas: é isso que vai virar o funil. Não fale de tela nesta conversa.",
+    "titulo": "1. Cadastro do lead",
+    "onde": "`CRM > Vendas > Leads > Novo Lead`",
+    "intro": "Tudo começa no contato ainda não qualificado. Mostre ao cliente que o lead já é o cadastro completo do participante.",
     "passos": [
      {
-      "t": "O consultor perguntou: por quais canais os novos contatos chegam hoje (indicação, site, feira, rede social, arquiteto)? Quem recebe e quem distribui esses contatos?",
-      "r": "**Como validar:** a lista de canais está anotada com os nomes que a equipe usa. **Por quê:** vira o cadastro de **Origens de Lead**, que mede de onde vêm os negócios. **Fonte:** manual-02-crm, 1.4; apostila, Processo comercial.",
-      "s": "d",
-      "campo": "Canais de entrada e quem distribui"
+      "t": "**Faça:** clique em **Novo Lead** e cadastre um lead **PJ** com razão social \"TESTE FLUXO CONSULTOR …\", CNPJ fictício, CEP e número, contato com o e-mail de teste e, em **Informações CRM**, **Origem do Lead**, **Temperatura** e **Responsável**. Clique em **Salvar**.",
+      "r": "**Explique ao cliente:** só **Tipo (PF/PJ)** e **Razão Social / Nome** são obrigatórios; o Responsável é o vendedor que vai herdar a oportunidade. **Confira:** \"Registro salvo com sucesso!\" e o lead na lista com Status \"Novo\". **Fonte:** Fluxo comercial, bloco 1; procedimento-cadastrar-lead-e-converter-em-oportunidade.",
+      "s": "v",
+      "campo": "Código do lead"
      },
      {
-      "t": "O consultor perguntou: quais são as etapas reais da venda, na ordem, e qual a chance de fechar em cada uma? Quanto tempo um negócio pode ficar parado em cada etapa?",
-      "r": "**Como validar:** etapas, probabilidade e prazo anotados. **Por quê:** a probabilidade calcula o valor ponderado nos painéis e o SLA da etapa gera o alerta de negócio parado. **Fonte:** manual-02-crm, 1.2.",
-      "s": "d",
-      "campo": "Etapas do funil de vendas"
+      "t": "**Faça:** se o CEP trouxer um bairro com menos de 3 letras (ex.: \"Sé\"), digite um bairro com 3 letras ou mais antes de salvar.",
+      "r": "**Explique ao cliente:** hoje o sistema ainda recusa bairro curto ao salvar. **Confira:** o lead salva depois do ajuste. **Fonte:** Teste do fluxo completo, bloco 1.",
+      "s": "v"
      },
      {
-      "t": "O consultor perguntou: o que faz um contato deixar de ser curiosidade e virar negócio? A equipe confirma verba, quem decide, a necessidade e o prazo da obra?",
-      "r": "**Como validar:** o cliente descreveu o critério de qualificação com as palavras dele. **Por quê:** o Flow só converte lead com **BANT** completo e numa etapa de 60% ou mais do funil de leads. **Fonte:** regra-crm-converter-lead-exige-etapa-60-e-bant-completo.",
+      "t": "**Faça:** abra **Editar Lead** e mostre a diferença entre as seções **Dados CRM** (Setor de Atuação, Linha Preferida, Tipo de Vidro Preferido…) e **Informações CRM** (origem, temperatura, responsável, Budget Estimado e BANT).",
+      "r": "**Explique ao cliente:** a qualificação mora em Informações CRM. **Confira:** na lista, a **Temperatura** gravada (hoje ela pode mudar sozinha e diferir da escolhida). **Fonte:** regra-crm-formulario-do-lead-secoes-e-campos; FAQ (CRM-5).",
       "s": "d"
      },
      {
-      "t": "O consultor perguntou: por que a empresa perde negócios e para quais concorrentes? Alguém registra isso hoje?",
-      "r": "**Como validar:** lista curta de motivos objetivos e de concorrentes, sem \"Outros\" genérico. **Por quê:** sem motivo cadastrado não dá para encerrar a oportunidade como perdida. **Fonte:** manual-02-crm, 1.6; roteiro CRM 07.",
-      "s": "d",
-      "campo": "Motivos de perda e concorrentes"
-     },
-     {
-      "t": "O consultor perguntou: como é feito o orçamento (CEM ou outra ferramenta), quem aprova e em que momento o orçamento vira pedido?",
-      "r": "**Como validar:** está anotado quem aprova e o que é obrigatório para aprovar. **Por quê:** o pedido não deve nascer antes da aprovação comercial; o item da oportunidade pode vir de um orçamento do CEM. **Fonte:** apostila, Processo comercial; manual-02-crm, 2.4.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor perguntou: que tipos de contato o vendedor faz (ligação, visita técnica, reunião, WhatsApp) e como o gestor acompanha hoje a agenda de cada vendedor?",
-      "r": "**Como validar:** tipos de atividade listados e forma atual de acompanhamento anotada. **Por quê:** vira o cadastro de **Tipos de Atividade** e define o uso da Agenda e dos Demonstrativos. **Fonte:** manual-02-crm, 1.3, 2.8 e 2.9.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor perguntou: quais números o gestor quer ver toda semana (leads por origem, valor em pipeline, conversão, ranking de vendedores, negócios parados)?",
-      "r": "**Como validar:** três a cinco indicadores escolhidos pelo gestor. **Por quê:** orienta o treinamento dos painéis e mostra ao cliente por que o registro diário importa. **Fonte:** manual-02-crm, 2.9.",
-      "s": "d",
-      "campo": "Indicadores do gestor"
+      "t": "**Faça:** no menu `⋮ > Atividades > Nova atividade` do lead, registre uma Reunião com data e próxima ação.",
+      "r": "**Explique ao cliente:** o histórico de contato começa antes da oportunidade. **Confira:** \"Atividade registrada!\" e a atividade em `CRM > Atividades` e na Agenda da semana (a lista não mostra de qual lead ela é). **Fonte:** Fluxo comercial, bloco 1.",
+      "s": "v"
      }
     ]
    },
    {
-    "titulo": "2. Preparação da implantação",
-    "intro": "Faça os cadastros de apoio com o key user ao lado, usando o que foi levantado na etapa 1. A ordem importa: o funil de leads precisa existir antes do primeiro lead. Termine a etapa com uma massa de teste pronta para o treinamento.",
+    "titulo": "2. Qualificação: BANT e Kanban de Leads",
+    "onde": "`Editar Lead > Informações CRM` e `CRM > Vendas > Leads > Kanban de Leads`",
+    "intro": "Antes de converter, o lead precisa provar que é um negócio real. Comece pela trava, para o cliente ver por que a qualificação existe.",
     "passos": [
      {
-      "t": "O funil de vendas foi cadastrado com as etapas do cliente, na ordem real, com probabilidade e SLA em dias, e marcado como **Funil padrão**.",
-      "r": "**Como validar:** abra o Pipeline e confira as colunas. **Por quê:** sem funil de vendas não existe pipeline; o padrão recebe as oportunidades criadas na conversão. O **Tipo** do funil não aparece de novo para edição. **Fonte:** manual-02-crm, 1.2.",
+      "t": "**Faça:** na lista de leads, clique em `⋮ > Converter` no lead recém-criado, ainda sem BANT.",
+      "r": "**Explique ao cliente:** o Flow só converte lead qualificado. **Confira:** o sistema bloqueia e avisa o que falta (\"BANT incompleto\"). **Fonte:** manual-02-crm, 2.2; regra-crm-converter-lead-exige-etapa-60-e-bant-completo.",
       "s": "d"
      },
      {
-      "t": "O funil de leads foi cadastrado **antes** do primeiro lead, com uma etapa de 60% ou mais que represente o lead qualificado.",
-      "r": "**Como validar:** abra o **Kanban de Leads** e confira as colunas e percentuais. **Por quê:** lead criado antes do funil de leads fica só na lista e precisa ser recriado; a conversão exige etapa de 60% ou mais. **Fonte:** manual-02-crm, 1.2; regra-crm-converter-lead-exige-etapa-60-e-bant-completo.",
-      "s": "d"
+      "t": "**Faça:** em **Editar Lead > Informações CRM**, preencha o **Budget Estimado** (selecione o valor antes de digitar) e ligue as chaves **Autoridade**, **Necessidade** e **Prazo**. Clique em **Salvar**.",
+      "r": "**Explique ao cliente:** BANT = verba, fala com quem decide, necessidade real e prazo; o Budget vira o valor inicial da oportunidade. **Confira:** o lead salvo com as quatro informações. **Fonte:** Fluxo comercial, bloco 2; regra-crm-converter-lead-exige-etapa-60-e-bant-completo.",
+      "s": "v"
      },
      {
-      "t": "Tipos de Atividade, Origens de Lead e Temperaturas foram cadastrados com nomes padronizados, sem duplicar o mesmo significado.",
-      "r": "**Como validar:** abra o formulário de **Novo Lead** e de nova atividade e confira as listas. **Por quê:** \"Site\", \"Formulário do Site\" e \"Internet\" para a mesma origem estragam as análises. **Fonte:** manual-02-crm, 1.3 a 1.5; roteiro CRM 01.",
-      "s": "d"
-     },
-     {
-      "t": "Motivos de Perda e Concorrentes foram cadastrados a partir da lista do cliente.",
-      "r": "**Como validar:** marque uma oportunidade de teste como perdida e veja os motivos na lista. **Por quê:** a perda pede motivo e, opcionalmente, o concorrente; essas listas alimentam os demonstrativos. **Fonte:** manual-02-crm, 1.6; roteiro CRM 07.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor conferiu as dependências de outros módulos: produtos cadastrados, participantes sem duplicidade, usuários dos vendedores e, para o handoff, empresa e CFOP de Vendas.",
-      "r": "**Como validar:** marque cada dependência como pronta, com responsável. **Por quê:** sem produto não há item nem ganho; sem CFOP adequado o pedido não nasce da oportunidade. **Fonte:** manual-02-crm, 1.7; regra-vendas-gerar-pedido-da-oportunidade-exige-cfop-sem-financeiro.",
-      "s": "d",
-      "campo": "Pendências de outros módulos"
-     },
-     {
-      "t": "O consultor preparou, com o key user, dois ou três leads de teste baseados em obras reais do cliente (sem dados pessoais), para usar no treinamento.",
-      "r": "**Como validar:** os leads existem no ambiente de treino e estão em etapas diferentes do kanban. **Por quê:** o treinamento com casos da rotina do cliente fixa o processo melhor que exemplos genéricos. **Fonte:** apostila, como conduzir o projeto.",
-      "s": "d"
+      "t": "**Faça:** no **Kanban de Leads**, arraste o card até uma etapa de **60% ou mais** (MQL, SQL), confirmando cada diálogo \"Mover lead\".",
+      "r": "**Explique ao cliente:** a etapa do lead só muda no Kanban (o formulário não tem campo de etapa) e a conversão exige as duas condições juntas, etapa de 60% e BANT completo. **Confira:** o card na coluna escolhida. **Fonte:** Fluxo comercial, bloco 2; regra-crm-converter-lead-exige-etapa-60-e-bant-completo.",
+      "s": "v"
      }
     ]
    },
    {
-    "titulo": "3. Condução do treinamento",
-    "intro": "Treine na sequência do negócio: lead, qualificação, conversão, oportunidade, itens, atividades, encerramento, pedido e painéis. Use os leads de teste montados com o key user. A cada passo, diga o que acontece no módulo seguinte. Deixe os vendedores operarem; você só orienta.",
+    "titulo": "3. Conversão do lead",
+    "onde": "`CRM > Vendas > Leads` > `⋮ > Converter`",
+    "intro": "A conversão faz três coisas de uma vez, e só uma delas é avisada na tela. Mostre cada reflexo.",
     "passos": [
      {
-      "t": "O consultor mostrou o cadastro do lead em `CRM › Vendas › Leads › Lista de Leads › Novo Lead`, com um contato real da semana, e explicou a diferença entre as seções **Informações CRM** e **Dados CRM**.",
-      "r": "**Como validar:** os vendedores sabem onde ficam **Origem do Lead**, **Temperatura**, **Responsável** e o BANT. **Por quê:** é comum procurar a origem em **Dados CRM**. Obrigatórios: **Tipo (PF/PJ)** e **Razão Social / Nome**. **Fonte:** regra-crm-formulario-do-lead-secoes-e-campos.",
-      "s": "d"
+      "t": "**Faça:** clique em `⋮ > Converter` e, na janela, em **Converter Lead**.",
+      "r": "**Explique ao cliente:** a conversão marca o lead como convertido e cria a oportunidade sem avisar. **Confira:** \"Lead convertido com sucesso!\" e o lead com status Convertido. **Fonte:** Fluxo comercial, bloco 2; regra-crm-conversao-cria-a-oportunidade-sozinha.",
+      "s": "v"
      },
      {
-      "t": "O consultor mostrou o **Kanban de Leads**, arrastou um card de etapa e confirmou em \"Mover lead\", ligando cada etapa ao critério de qualificação que o cliente descreveu na etapa 1.",
-      "r": "**Como validar:** a turma diz em qual etapa o lead passa a ser qualificado. **Por quê:** a conversão só acontece a partir de uma etapa de 60% ou mais. **Fonte:** funcional-crm-leads-pipeline-e-oportunidades; procedimento-cadastrar-lead-e-converter-em-oportunidade.",
-      "s": "d"
+      "t": "**Faça:** abra `CRM > Vendas > Pipeline` e localize a oportunidade criada para o cliente de teste.",
+      "r": "**Explique ao cliente:** o valor da oportunidade é o Budget Estimado até que itens sejam lançados. **Confira:** o card com o cliente de teste e o valor do Budget. **Fonte:** Fluxo comercial, bloco 2; regra-crm-conversao-cria-a-oportunidade-sozinha.",
+      "s": "v",
+      "campo": "Nº da oportunidade (OPO-)"
      },
      {
-      "t": "O consultor tentou converter um lead sem BANT, mostrou o aviso do que falta, completou o BANT em **Informações CRM** e converteu pelo menu `⋯ › Converter`.",
-      "r": "**Como validar:** a turma explica as duas condições da conversão. **Por quê:** ver o bloqueio acontecer ensina mais do que ouvir a regra. **Fonte:** regra-crm-converter-lead-exige-etapa-60-e-bant-completo; manual-02-crm, 2.2.",
-      "s": "d"
+      "t": "**Faça:** abra o cadastro do participante convertido.",
+      "r": "**Explique ao cliente:** o contato passou a ser cliente e pode receber pedido. **Confira:** \"É Cliente?\" ligado e \"Prospect/Lead\" desligado. **Fonte:** Teste do fluxo completo, bloco 1; regra-crm-conversao-cria-a-oportunidade-sozinha.",
+      "s": "v"
      },
      {
-      "t": "O consultor mostrou onde a oportunidade aparece no `CRM › Vendas › Pipeline` depois da conversão e que o lead passou a ser cliente.",
-      "r": "**Como validar:** cada vendedor encontra a oportunidade convertida. **Por quê:** a conversão cria a oportunidade sozinha e as atividades do lead não migram para ela. **Fonte:** regra-crm-conversao-cria-a-oportunidade-sozinha.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor lançou um item de esquadria na aba **Itens** da oportunidade, preenchendo altura, largura e cor na janela **Dados do Item** e clicando em **Aplicar**, com uma medida de obra real do cliente.",
-      "r": "**Como validar:** o total dos itens atualiza. **Por quê:** sem **Aplicar** o produto não fica selecionado; sem item a oportunidade não pode ser ganha; o item segue para o pedido. **Fonte:** manual-02-crm, 2.4.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor registrou uma visita na aba **Atividades**, reatribuiu a outro vendedor em `CRM › Vendas › Atividades` e mostrou a atividade na **Agenda** desse vendedor.",
-      "r": "**Como validar:** o outro vendedor vê a atividade na própria agenda. **Por quê:** a Agenda mostra só o usuário logado; o gestor acompanha pela lista de atividades com filtro de responsável. **Fonte:** manual-02-crm, 2.6 a 2.8.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor encerrou uma oportunidade como ganha e outra como perdida, escolhendo um motivo real da lista do cliente.",
-      "r": "**Como validar:** a ganha sai do kanban e vai para os números de ganhos; a perdida registra motivo e concorrente. **Por quê:** encerrar com motivo é o que permite saber onde os negócios travam. **Fonte:** manual-02-crm, 2.5.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor gerou o pedido a partir da oportunidade ganha com **Gerar Pedido de Venda** e mostrou o pedido em `Vendas › Pedidos de Venda`, explicando o ajuste de CFOP e condição de pagamento no pedido.",
-      "r": "**Como validar:** o pedido nasce com cliente, item e valor da oportunidade. **Por quê:** com CFOP que gera financeiro a geração é recusada; use um CFOP sem financeiro e ajuste depois no pedido. Clique uma vez só. **Fonte:** regra-vendas-gerar-pedido-da-oportunidade-exige-cfop-sem-financeiro; FAQ.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor mostrou ao gestor os **Demonstrativos** filtrados por vendedor e a **Visão 360°** de um cliente com oportunidades abertas.",
-      "r": "**Como validar:** o gestor encontra o ganho do treino e o ranking de vendedores. **Por quê:** é o retorno do registro diário; ganho não é pedido e pedido não é faturamento. **Fonte:** manual-02-crm, 2.9; roteiros CRM 04 e 08.",
-      "s": "d"
+      "t": "**Faça:** abra a aba **Atividades** da oportunidade e procure a reunião registrada no lead.",
+      "r": "**Explique ao cliente:** as atividades do lead **não** migram para a oportunidade; registre as próximas já na oportunidade. **Confira:** a atividade do lead não aparece. **Fonte:** Fluxo comercial, bloco 2; regra-crm-conversao-cria-a-oportunidade-sozinha.",
+      "s": "v"
      }
     ]
    },
    {
-    "titulo": "4. Validação do aprendizado",
-    "intro": "Agora o cliente faz e você observa, sem pegar no mouse. Dê um caso novo, de uma obra real, e peça para cada vendedor levar do lead ao pedido. Anote onde travou: isso define o reforço antes do go-live.",
+    "titulo": "4. Oportunidade no Pipeline: itens, atividades e etapas",
+    "onde": "`CRM > Vendas > Pipeline` > clique no card",
+    "intro": "É aqui que o vendedor trabalha o negócio no dia a dia. Os itens são obrigatórios para ganhar e viram os itens do pedido.",
     "passos": [
      {
-      "t": "Cada vendedor cadastrou sozinho um lead com origem, temperatura e responsável, e conferiu na lista a temperatura gravada.",
-      "r": "**Como validar:** o lead aparece com Status \"Novo\" e os dados corretos. **Por quê:** hoje o sistema ainda pode gravar uma temperatura diferente da escolhida; o hábito de conferir evita filtros errados. **Fonte:** procedimento-cadastrar-lead-e-converter-em-oportunidade; FAQ de limitações.",
+      "t": "**Faça:** clique no card e percorra as abas do painel: **Detalhes**, **Itens**, **Atividades** e **Histórico**.",
+      "r": "**Explique ao cliente:** Detalhes traz cliente, valores, previsão, responsável e etapa; Histórico guarda cada mudança com data e usuário. **Confira:** as quatro abas da oportunidade de teste. **Fonte:** manual-02-crm, 2.3.",
       "s": "d"
      },
      {
-      "t": "O vendedor converteu um lead e, quando o sistema bloqueou, explicou sozinho o que faltava (etapa ou BANT) e corrigiu.",
-      "r": "**Como validar:** a conversão termina com \"Lead convertido com sucesso!\" e a oportunidade é encontrada no Pipeline. **Por quê:** este é o bloqueio que mais gera chamado no suporte. **Fonte:** regra-crm-converter-lead-exige-etapa-60-e-bant-completo.",
+      "t": "**Faça:** na aba **Itens**, clique em **+ Adicionar Item**, busque o produto de teste, preencha a janela **Dados do Item** (altura, largura, cor) e clique em **Aplicar**; informe Quantidade e Valor unitário e clique em **Salvar**.",
+      "r": "**Explique ao cliente:** sem **Aplicar** o produto não fica selecionado; os itens substituem o Budget no valor. **Confira:** o item na lista e o Valor estimado igual à soma dos itens. **Fonte:** Fluxo comercial, bloco 3; manual-02-crm, 2.4.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** na aba **Atividades**, clique em **+ Nova atividade**, escolha uma ligação, preencha Tipo, Título, Cliente e Oportunidade vinculada e clique em **Registrar atividade**.",
+      "r": "**Explique ao cliente:** a atividade ligada à oportunidade alimenta a agenda do vendedor. **Confira:** a ligação na aba Atividades e em `CRM > Vendas > Atividades`. **Fonte:** manual-02-crm, 2.6.",
       "s": "d"
      },
      {
-      "t": "O vendedor lançou itens com medidas e cor, avançou a oportunidade no funil e a marcou como ganha.",
-      "r": "**Como validar:** a oportunidade aparece nos ganhos dos Demonstrativos. **Por quê:** item com medida e cor certas é o que segue para o pedido e para a produção. **Fonte:** manual-02-crm, 2.4 e 2.5.",
-      "s": "d"
+      "t": "**Faça:** arraste o card para a etapa seguinte do funil e confirme no diálogo \"Mover oportunidade\".",
+      "r": "**Explique ao cliente:** a etapa mostra onde o negócio está e alimenta os painéis. **Confira:** o movimento registrado no Histórico; o percentual do card pode só atualizar ao recarregar a página. **Fonte:** Fluxo comercial, bloco 3; manual-02-crm, 2.3.",
+      "s": "v"
      },
      {
-      "t": "O vendedor marcou uma oportunidade como perdida e explicou por que o motivo precisa ser o real, e não um genérico.",
-      "r": "**Como validar:** motivo e concorrente gravados. **Por quê:** os demonstrativos de perda só ajudam o gestor se os motivos forem honestos e padronizados. **Fonte:** manual-02-crm, 2.5; roteiro CRM 07.",
-      "s": "d"
-     },
-     {
-      "t": "Quem fará o handoff para Vendas gerou o pedido de uma oportunidade ganha e conferiu item a item no pedido.",
-      "r": "**Como validar:** descrição, quantidade, valor, cor e medidas batem com a oportunidade. **Por quê:** é o momento em que a negociação vira compromisso de entrega. **Fonte:** regra-vendas-gerar-pedido-da-oportunidade-exige-cfop-sem-financeiro.",
-      "s": "d"
-     },
-     {
-      "t": "O gestor encontrou sozinho as atividades atrasadas de um vendedor e os negócios parados acima do SLA.",
-      "r": "**Como validar:** o gestor mostra a lista de atividades filtrada e o quadro de negócios parados nos Demonstrativos. **Por quê:** sem esse acompanhamento o CRM vira cadastro sem gestão. **Fonte:** manual-02-crm, 2.7 a 2.9.",
-      "s": "d",
-      "campo": "Dúvidas registradas"
+      "t": "**Faça:** defina a **Previsão de fechamento** e salve.",
+      "r": "**Explique ao cliente:** a previsão alimenta a projeção de vendas. **Confira:** a data gravada; hoje ela pode aparecer 1 dia antes do informado. **Fonte:** Fluxo comercial, bloco 3; FAQ de limitações.",
+      "s": "v"
      }
     ]
    },
    {
-    "titulo": "5. Preparação para utilização e go-live",
-    "intro": "Combine com o gerente de projetos a data a partir da qual todo contato novo entra no CRM, e só no CRM. Nas primeiras semanas, olhe os painéis com o gestor uma vez por semana. O objetivo é segurança da equipe, não zerar dúvidas.",
+    "titulo": "5. Ganhar (e perder) a oportunidade",
+    "onde": "`CRM > Vendas > Pipeline` > painel da oportunidade ou `⋯` do card",
+    "intro": "Mostre a trava do item numa segunda oportunidade e encerre a principal como ganha. A segunda oportunidade serve também para mostrar a perda.",
     "passos": [
      {
-      "t": "Ficou decidido, com data, como entram os negócios em andamento: quais viram lead e quais entram direto como oportunidade no Pipeline.",
-      "r": "**Como validar:** decisão registrada na OS com responsável. **Por quê:** a oportunidade também pode ser criada direto, sem lead, por **+ Nova Oportunidade**; misturar critérios distorce a conversão. **Fonte:** manual-02-crm, 2.2.",
+      "t": "**Faça:** em `CRM > Vendas > Pipeline`, crie uma segunda oportunidade com **+ Nova Oportunidade** para o cliente de teste, **sem itens**, e tente marcá-la como ganha.",
+      "r": "**Explique ao cliente:** só se ganha o que tem item, porque são os itens que viram o pedido. **Confira:** o aviso de que é preciso ao menos um item para ganhar. **Fonte:** manual-02-crm, 2.2 e 2.5.",
       "s": "d",
-      "campo": "Data de corte e regra de carga"
+      "campo": "Nº da 2ª oportunidade (OPO-)"
      },
      {
-      "t": "Os dados de teste do treinamento foram separados ou removidos da base de produção, com autorização do cliente.",
-      "r": "**Como validar:** os painéis de produção não mostram leads e oportunidades de treino. **Por quê:** dados de teste distorcem conversão e ranking logo no primeiro mês. **Fonte:** apostila, preparação para o go-live.",
+      "t": "**Faça:** na oportunidade com itens, clique em **Ganha**.",
+      "r": "**Explique ao cliente:** não há confirmação nem pedido de motivo; se clicar sem querer, use **Reverter ganho** (e faça isso antes de gerar o pedido). **Confira:** status \"Ganha\" e o card fora do filtro \"Abertas\" (use Filtros > Ganhas); a etapa e a probabilidade não vão para 100%. **Fonte:** Fluxo comercial, bloco 6; manual-02-crm, 2.5.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** marque a segunda oportunidade como **Perdida**, escolhendo o motivo (Preço, Concorrência, Timing, Sem Resposta, Outro).",
+      "r": "**Explique ao cliente:** o motivo de perda vira indicador para o gestor. **Confira:** a oportunidade perdida; no painel, o campo \"Motivo de perda\" mostra o texto de Detalhes, e o resumo do CRM mostra o motivo certo. **Fonte:** Fluxo comercial, bloco 7.",
+      "s": "v"
+     }
+    ]
+   },
+   {
+    "titulo": "6. Gerar o pedido de venda",
+    "onde": "painel da oportunidade ganha > `Gerar Pedido de Venda`",
+    "intro": "É a passagem do CRM para Vendas. Demonstre de propósito a recusa com CFOP de venda e depois o caminho que funciona.",
+    "passos": [
+     {
+      "t": "**Faça:** clique em **Gerar Pedido de Venda**, escolha a **Empresa** e um CFOP de venda (5101 ou 6101) e clique em **Confirmar**.",
+      "r": "**Explique ao cliente:** um CFOP que gera financeiro exige condição de pagamento, plano de conta e parcelas, campos que esta janela não tem. **Confira:** a recusa \"O CFOP do pedido gera financeiro, então estes campos são obrigatórios: Condição de Pagamento, Plano de Conta, Parcelas.\" **Fonte:** Fluxo comercial, bloco 6; regra-vendas-gerar-pedido-da-oportunidade-exige-cfop-sem-financeiro.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** repita com um CFOP que **não** gera financeiro (ex.: 5910-1) e clique em **Confirmar**. Anote o número do pedido e não clique de novo no botão.",
+      "r": "**Explique ao cliente:** o pedido nasce com cliente, item e valor da oportunidade; o vínculo com a oportunidade fica só no texto da Obs. Interna. **Confira:** o pedido criado; hoje pode aparecer o aviso \"Erro ao carregar oportunidade\" e o botão continua disponível (um novo clique duplica o pedido). **Fonte:** Fluxo comercial, bloco 6; FAQ (CRM-2).",
+      "s": "v",
+      "campo": "Nº do pedido (PV-)"
+     },
+     {
+      "t": "**Faça:** abra o pedido em `Vendas > Pedidos de Venda`, troque o CFOP para o de venda e escolha a **condição de pagamento**. Salve.",
+      "r": "**Explique ao cliente:** o pedido gerado não herda vendedor nem condição da proposta; complete-os aqui. **Confira:** as parcelas geradas sozinhas. **Fonte:** Fluxo comercial, bloco 6; regra-vendas-gerar-pedido-da-oportunidade-exige-cfop-sem-financeiro.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** procure o pedido no Dashboard Vendas, em Vendas por Período e na Carteira de Pedidos.",
+      "r": "**Explique ao cliente:** a partir daqui o negócio segue no módulo Vendas (faturamento, financeiro, produção). **Confira:** o pedido na Carteira de Pedidos como \"A faturar\". **Fonte:** Fluxo comercial, bloco 6.",
+      "s": "v"
+     }
+    ]
+   },
+   {
+    "titulo": "7. Resultado nos painéis do CRM",
+    "onde": "`CRM > Painéis`, `CRM > Visão Geral` e `Clientes > Visão 360°`",
+    "intro": "Feche mostrando ao gestor onde ele acompanha o funil, o ganho e a perda do teste.",
+    "passos": [
+     {
+      "t": "**Faça:** abra `CRM > Painéis > Resultado do Mês`.",
+      "r": "**Explique ao cliente:** é a leitura do mês para a reunião comercial. **Confira:** ganhas × perdidas, taxa de ganho e os principais motivos de perda, com o ganho e a perda do teste. **Fonte:** Fluxo comercial, bloco 7.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** abra `CRM > Visão Geral` (jornada) e `Clientes > Visão 360°`.",
+      "r": "**Explique ao cliente:** a jornada soma as oportunidades abertas de **todos** os funis. **Confira:** os números da jornada; o cliente de teste pode não aparecer na lista de clientes do CRM. **Fonte:** Fluxo comercial, bloco 7.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** abra os Demonstrativos do CRM filtrando pelo vendedor responsável.",
+      "r": "**Explique ao cliente:** cada vendedor vê o próprio resultado. **Confira:** o ganho do teste no vendedor. **Fonte:** manual-02-crm, 2.10.",
       "s": "d"
-     },
-     {
-      "t": "Nas primeiras semanas, o consultor acompanhou com o gestor: leads sem origem, negócios parados acima do SLA, perdas sem motivo real e pedidos gerados em duplicidade.",
-      "r": "**Como validar:** revisão semanal registrada na OS. **Por quê:** hoje o botão de gerar pedido pode continuar disponível depois de gerado, o que permite duplicar o pedido. **Fonte:** FAQ de limitações; manual-02-crm, 2.9.",
-      "s": "d",
-      "campo": "Pontos da revisão semanal"
-     },
-     {
-      "t": "O gestor sabe usar o ranking de vendedores dos Demonstrativos quando o **Leaderboard** não mostrar dados logo após um ganho.",
-      "r": "**Como validar:** o gestor abre o ranking nos Demonstrativos. **Por quê:** no treino o Leaderboard ficou vazio logo após o ganho e parece depender de processamento posterior. **Fonte:** manual-02-crm, 2.9.",
-      "s": "d"
-     },
-     {
-      "t": "O critério para liberar o treinamento de Vendas foi cumprido: oportunidades reais ganhas viraram pedidos com itens, medidas e valores corretos, conferidos pelo key user.",
-      "r": "**Como validar:** pelo menos alguns pedidos reais gerados do CRM conferidos item a item. **Por quê:** o CRM vem antes de Vendas e entrega o pedido de onde partem faturamento, produção e serviços. **Fonte:** apostila, Módulo CRM e Processo comercial.",
-      "s": "d",
-      "campo": "Data de liberação para Vendas"
      }
     ]
    }
   ],
   "resultado": [
    {
-    "t": "Os vendedores levam um contato real do lead ao pedido de venda sem ajuda do consultor.",
-    "s": "d"
+    "t": "O lead de teste foi qualificado (BANT e etapa de 60%), convertido, e o participante ficou marcado como cliente.",
+    "s": "v"
    },
    {
-    "t": "Funis, origens, temperaturas, tipos de atividade e motivos de perda refletem o processo comercial do cliente, com nomes padronizados.",
-    "s": "d"
+    "t": "A oportunidade nasceu sozinha no Pipeline, recebeu item, atividade e mudança de etapa, e foi marcada como ganha.",
+    "s": "v"
    },
    {
-    "t": "Todo contato novo, a partir da data de corte, entra pelo CRM.",
-    "s": "d"
+    "t": "O pedido de venda foi gerado a partir da oportunidade, completado com CFOP de venda e condição de pagamento, e aparece em Vendas como \"A faturar\".",
+    "s": "v"
    },
    {
-    "t": "O gestor acompanha semanalmente pipeline, negócios parados, perdas e ranking pelos painéis.",
-    "s": "d"
-   },
-   {
-    "t": "Os pedidos gerados das oportunidades chegam a Vendas com itens, medidas e valores corretos.",
-    "s": "d"
+    "t": "O ganho e a perda do teste aparecem nos painéis do CRM.",
+    "s": "v"
    }
   ],
   "atencao": [
-   "Cadastrar leads antes de existir o funil de leads: esses leads ficam fora do kanban e precisam ser recriados.",
-   "Mudar a ordem ou as etapas de um funil em uso sem avisar a equipe comercial.",
-   "Cadastrar origens, motivos ou concorrentes repetidos com grafias diferentes, o que estraga as análises.",
-   "Tentar gerar o pedido com um CFOP que gera financeiro: hoje a geração é recusada; use um CFOP sem financeiro e ajuste no pedido.",
-   "Hoje o sistema ainda pode deixar de abrir o painel da oportunidade depois de gerar o pedido e mantém o botão disponível: oriente clicar uma vez e conferir em `Vendas › Pedidos de Venda` antes de tentar de novo.",
-   "Hoje a temperatura gravada pode diferir da escolhida e algumas datas aparecem um dia antes em painéis: oriente conferir na lista.",
-   "Criar pedido antes da aprovação comercial, pulando o encerramento da oportunidade como ganha."
+   "**Segurança do ambiente:** use só ambiente de teste, registros com \"TESTE FLUXO CONSULTOR\" e e-mail de caixa temporária; nota fiscal só é transmitida com o responsável fiscal.",
+   "**Gerar Pedido de Venda** recusa CFOP que gera financeiro: use um CFOP sem financeiro e ajuste o pedido depois. Valide a passagem com o consultor responsável pela configuração fiscal antes de treinar o cliente.",
+   "Hoje o sistema ainda deixa o botão **Gerar Pedido de Venda** disponível depois de gerar, e o painel da oportunidade pode parar de abrir: anote o nº do pedido e não clique de novo.",
+   "**Ganha** não pede confirmação. **Reverter ganho** não remove a oportunidade de Pós-Venda criada ao ganhar, e ganhar de novo cria outra: reverta antes de gerar o pedido.",
+   "Recolher e reabrir a seção **Informações CRM** no formulário do lead apaga a origem escolhida.",
+   "Hoje datas de fechamento e de previsão podem aparecer 1 dia antes do informado, e a Temperatura do lead pode mudar sozinha: confira na tela.",
+   "As atividades do lead não vão para a oportunidade, e o pedido gerado não herda vendedor nem condição de pagamento."
   ],
   "naoValidado": [
-   "Conversão do lead: o manual-02-crm (2.2) descreve uma janela **Converter Lead** em que se escolhe funil, etapa inicial e valor; a regra-crm-conversao-cria-a-oportunidade-sozinha diz que a oportunidade é criada sozinha, sem aviso, na etapa \"Novo Lead\". Confira na tela antes de ensinar.",
-   "Caminho das configurações: o manual-02-crm usa `CRM › Configurações › Funis de Vendas`; os roteiros de CRM usam `CRM › Configurar › Pipeline › Funis de Vendas` e `Configurar › Captação › Origens de Lead`. Confira o menu da versão do cliente.",
-   "Pedido repetido: o roteiro CRM 02 diz que, se já existe pedido ligado à oportunidade, a tela permite abrir esse pedido em vez de criar outro; a FAQ de limitações diz que o botão continua disponível e permite duplicar. Confira na tela."
+   "Janela **Converter Lead**: o manual-02-crm (2.2) diz que ela permite escolher o funil, a etapa inicial (padrão Prospecção) e o valor; no teste de 19/10 (Fluxo comercial) a oportunidade nasceu sozinha na etapa \"Novo Lead\" com o valor do Budget. Conferir na tela qual etapa o cliente verá.",
+   "Como ganhar: o manual-02-crm (2.5) indica `⋯ do card > Marcar como Ganha`, com a mensagem \"Oportunidade marcada como ganha!\" e a exigência de ao menos um item; o Fluxo comercial registra o botão **Ganha** no painel da oportunidade, sem citar a exigência do item. Conferir o caminho e a trava antes de demonstrar.",
+   "Probabilidade: o manual-02-crm (2.3) diz que ela muda sozinha conforme a etapa; no teste o percentual do card só atualizou ao recarregar e, no ganho, a etapa e a probabilidade não foram para 100%."
   ]
  },
  {
   "id": "implantacao-integracao-cem",
   "arquivo": "implantacao-03-integracao-cem.html",
-  "etiqueta": "Consultor · Implantação · Integração com o CEM",
-  "titulo": "Implantação da Integração com o CEM",
-  "subtitulo": "Checklist do consultor para ligar a importação de obras do CEM Desktop, do CEM Mobi ou por arquivo, incluindo o Faturamento em Nível. Primeira etapa da cadeia comercial, logo depois da Fundação.",
-  "objetivo": "Ao final, o cliente importa sozinho uma obra fechada no CEM e gera o pedido de venda certo: cliente reconhecido, produtos com os padrões certos e total igual ao do orçamento. Ele sabe tratar a revisão do orçamento e desfazer uma importação. A integração tira a redigitação do processo comercial, e um erro aqui se repete em todos os pedidos, notas e títulos seguintes.",
-  "rodape": "Checklist de implantação · Integração com o CEM · fontes: manual de implantação, regras e checklist da Integração de Vendas (gestora); README da cadeia comercial; Apostila do Consultor · Harness Faktory Flow",
+  "etiqueta": "Consultor · Implantação · Integração CEM",
+  "titulo": "Implantação da Integração CEM: roteiro prático com o cliente",
+  "subtitulo": "Configure a integração com o sistema que o cliente usa (CEM Desktop, CEM Mobi ou arquivo), importe um orçamento real dele e leia com ele cada dado que chegou ao pedido de venda. Termine com a reimportação de uma revisão e, se contratado, o Faturamento em Nível.",
+  "objetivo": "Ao final, o cliente importou sozinho uma obra fechada no CEM e sabe conferir no pedido gerado os itens, os preços, o desconto, os impostos, o cliente e a obra. Ele sabe o que trava uma importação, onde corrigir (no CEM ou nos Padrões) e o que acontece quando o orçamento é revisado depois de integrado.",
+  "rodape": "Checklist de implantação · Integração CEM · fontes: manual de implantação, processos e regras da Integração de Vendas (gestora) e README da cadeia comercial; roteiros de treinamento Vendas 01 Pedido de Venda e 06 Configurações e Integrações · Harness Faktory Flow",
   "prerequisitos": [
    {
-    "t": "O checklist da Fundação está assinado, incluindo a parte de Integração CEM.",
-    "r": "**Como validar:** confira o checklist assinado. **Por quê:** empresa, categorias, NCM, unidades, condição e plano de contas são a base dos Padrões de Integração. **Fonte:** INT D, pré-condição; INT C, pré-requisitos.",
+    "t": "Fundação concluída: empresa, CFOPs, plano de contas, condições de pagamento, categorias, NCMs e unidades cadastrados.",
+    "r": "**Confira:** o checklist da Fundação assinado. O pedido importado já precisa de condição de pagamento e plano de contas. **Fonte:** README da cadeia comercial, ordem de implantação; Integração B, fluxo de configuração.",
     "s": "d"
    },
    {
-    "t": "O módulo Vendas está contratado e o cliente sabe que integração e Faturamento em Nível fazem parte dele, em todas as versões.",
-    "r": "**Como validar:** `Vendas` sem cadeado no menu. **Por quê:** sem Vendas a importação é recusada; não venda integração como adicional Pro. **Fonte:** INT-GER-001, INT-GER-002, INT-NIV-019.",
+    "t": "Decidido com o cliente: qual sistema de origem (CEM Desktop, CEM Mobi, PrefSuite ou arquivo), qual o modo do código dos produtos e se vai usar Faturamento em Nível.",
+    "r": "**Confira:** as decisões na ata. O sistema escolhido decide qual botão de importação aparece; o modo do código deve ser decidido antes da primeira obra. **Fonte:** README da cadeia comercial, decisões X3 e X4; INT-DSK-014.",
     "s": "d"
    },
    {
-    "t": "A carga de clientes da Fundação foi feita **antes** da primeira obra, com o mesmo CPF/CNPJ usado no CEM.",
-    "r": "**Como validar:** busque três clientes do CEM pelo documento no Flow. **Por quê:** o cliente é reconhecido só pelo CPF/CNPJ; sem a carga, a integração cria cliente novo. **Fonte:** INT-GER-005.",
+    "t": "CEM Desktop: máquina Windows onde fica o banco do CEM, com acesso de administrador e o agente FaktoryFlow Agent instalado.",
+    "r": "**Confira:** o agente aberto mostrando o código de pareamento. **Fonte:** Integração C, etapa 2; Fundação C, etapa 6.",
     "s": "d"
    },
    {
-    "t": "CEM Desktop: a máquina Windows do banco do CEM está disponível, com acesso de administrador e a porta do banco liberada pelo TI.",
-    "r": "**Como validar:** o TI do cliente confirmou por escrito. **Por quê:** o agente roda nessa máquina; o Flow só lê o banco do CEM, nunca grava, o que ajuda a liberar o acesso. **Fonte:** INT C, pré-requisitos; INT-CFG-006.",
-    "s": "d"
-   },
-   {
-    "t": "CEM Mobi: o cliente obteve com o fornecedor do Mobi o endereço de acesso (URL), a chave e o código da função.",
-    "r": "**Como validar:** os três dados estão em mãos antes da configuração. **Por quê:** sem eles a conexão não se testa. **Fonte:** INT-CFG-007.",
-    "s": "d"
-   },
-   {
-    "t": "O cliente separou três obras reais **fechadas** no CEM para teste: uma simples, uma com desconto e uma com serviço extra.",
-    "r": "**Como validar:** as três obras aparecem na importação. **Por quê:** só obra fechada com o cliente aparece; as três cobrem os casos que mais erram. **Fonte:** INT C, pré-requisitos do cliente; INT-DSK-002.",
-    "s": "d",
-    "campo": "Obras de teste escolhidas"
-   },
-   {
-    "t": "O contador informou o código LC 116 dos serviços que aparecem nos orçamentos (instalação e outros).",
-    "r": "**Como validar:** o código está anotado para a configuração. **Por quê:** sem LC 116 a importação de serviço para. **Fonte:** INT-GER-036.",
+    "t": "Uma obra **fechada** no CEM, real e do cliente, escolhida para a importação de teste; clientes do CEM com CPF/CNPJ e cidade corretos.",
+    "r": "**Confira:** com o orçamentista do cliente. A integração só trabalha com obras fechadas; cidade e UF vêm só do CEM. **Fonte:** roteiro Vendas 01, localizar a obra; INT-GER-009, INT-GER-039.",
     "s": "d"
    }
   ],
   "fluxos": [
    {
-    "titulo": "1. Entendimento do cenário do cliente",
-    "intro": "Faça o levantamento com quem orça no CEM e com quem vai importar no Flow, e com o administrador do sistema presente. Peça para ver o CEM aberto: o cadastro de clientes e a forma de fechar a obra mostram mais que a conversa. Registre as decisões em ata, porque algumas ficam gravadas em cada obra.",
+    "titulo": "1. Escolher o sistema de integração",
+    "onde": "`Vendas > Configurações > Configurar integração`",
+    "intro": "A primeira escolha decide por onde o orçamento entra. Faça com o administrador do cliente, porque só ele acessa esta tela.",
     "passos": [
      {
-      "t": "O consultor perguntou: o cliente usa CEM Desktop, CEM Mobi, PrefSuite ou só arquivo?",
-      "r": "**Como validar:** a escolha está na ata. **Por quê:** só um botão de importação aparece em `Vendas > Pedidos de Venda`; PrefSuite está fora do beta e não se implanta. **Fonte:** INT C, perguntas Q1 e Q2; INT-PRF-001.",
+      "t": "**Faça:** abra `Configurar integração` com o administrador do cliente e escolha no seletor do topo o sistema dele: `CEM Desktop`, `CEM Mobi`, `PrefSuite` ou `Arquivos`.",
+      "r": "**Explique ao cliente:** sem escolha, vale `Arquivos`. Esta tela é só do administrador. **Confira:** o sistema selecionado ficou gravado. **Fonte:** Integração C, etapa 1; INT-CFG-001.",
       "s": "d"
      },
      {
-      "t": "O consultor perguntou: o cadastro de clientes no CEM tem CPF/CNPJ, IE, cidade e UF corretos? Quem corrige quando está errado?",
-      "r": "**Como validar:** confira três clientes no CEM junto com o cliente. **Por quê:** cidade, UF e documento vêm só da origem; sem eles a integração para. **Fonte:** INT-GER-009, INT-GER-034, INT-GER-039.",
+      "t": "**Faça:** abra `Vendas > Pedidos de Venda` e mostre o botão de importação que apareceu.",
+      "r": "**Explique ao cliente:** aparece um só botão, conforme o sistema: `Importar CEM`, `Importar CEM Mobi`, `Importar PrefSuite` ou `Importar Arquivo`. **Confira:** o botão certo na lista de pedidos. **Fonte:** Integração C, etapa 1; Manual 03 Vendas, 2.1.",
       "s": "d"
      },
      {
-      "t": "O consultor perguntou: os códigos de esquadria (Tipo) se repetem entre obras? O cliente quer o produto com o código da obra junto?",
-      "r": "**Como validar:** o modo do código do produto está decidido e na ata. **Por quê:** o modo fica gravado em cada obra; mudar depois não afeta as já integradas. **Fonte:** INT-DSK-014, INT-DSK-015.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor perguntou: quais tipos de material aparecem nos orçamentos (perfil, componente, superfície, vidro, kit, esquadria) e se há serviço extra?",
-      "r": "**Como validar:** a lista de tipos e serviços está na ata. **Por quê:** cada tipo precisa de NCM, unidade e categoria padrão; vidro herda de superfície e esconde erro de NCM. **Fonte:** INT-CFG-011, INT-CFG-012, INT-CFG-013.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor perguntou: qual CFOP, plano de contas, condição e meio de pagamento são os mais usados na venda?",
-      "r": "**Como validar:** os valores estão na ata para pré-preencher o pedido. **Por quê:** são obrigatórios na confirmação; o pré-preenchimento evita o bloqueio. **Fonte:** INT-DSK-011, INT-DSK-012.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor perguntou: o cliente costuma revisar o orçamento depois de fechado? Aumenta quantidade, troca cor ou medida?",
-      "r": "**Como validar:** a frequência e o tipo de revisão estão na ata. **Por quê:** aumento gera um segundo pedido só com o saldo; troca de cor ou medida duplica o item. **Fonte:** INT-RIM-002, INT-RIM-008.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor perguntou: o cliente fatura a mesma obra em partes (projeto, contramarco, folhas, instalação) ou por empresas diferentes? Um pedido por parte ou um pedido único?",
-      "r": "**Como validar:** a decisão de usar o Faturamento em Nível, os níveis e a empresa e documento de cada um estão na ata. **Por quê:** o recurso começa desligado e o modo se escolhe obra a obra. **Fonte:** INT-NIV-004, INT-NIV-010; README da cadeia, decisão X4.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor perguntou: quem vai importar no dia a dia e quem é o administrador? O cliente usa o CRM com leads?",
-      "r": "**Como validar:** os nomes estão na ata. **Por quê:** quem cria pedido importa, mas salvar os Padrões exige administrador; lead com mesmo telefone ou e-mail é sugerido e vira cliente. **Fonte:** INT-GER-003, INT-GER-007; INT C, pergunta Q12.",
-      "s": "d",
-      "campo": "Usuários que vão importar"
-     }
-    ]
-   },
-   {
-    "titulo": "2. Preparação da implantação",
-    "intro": "Configure com o administrador do cliente presente, na ordem: sistema de integração, agente ou Mobi, Padrões de Integração, clientes e Faturamento em Nível. Mostre cada tela enquanto configura, porque ele vai mantê-las. Não importe a primeira obra antes de os padrões estarem completos.",
-    "passos": [
-     {
-      "t": "O consultor confirmou o que precisa estar pronto em outros módulos: empresa com regime, categorias com forma de preço, NCM, unidades, condição, plano de contas e certificado em homologação (Fundação), e contas e plano de contas do Financeiro de apoio.",
-      "r": "**Como validar:** checklist da Fundação assinado e cadastros financeiros conferidos. **Por quê:** o pedido importado já nasce com condição e plano; o teste vai até a nota. **Fonte:** INT C, pré-requisitos; README da cadeia comercial, ordem de implantação.",
-      "s": "d"
-     },
-     {
-      "t": "O sistema de integração foi escolhido em `Vendas > Configurações > Configurar integração` e o botão certo aparece em `Pedidos de Venda`.",
-      "r": "**Como validar:** o botão `Importar CEM`, `Importar CEM Mobi` ou `Importar Arquivo` aparece. **Por quê:** a tela só abre para o administrador do cliente. **Fonte:** INT-CFG-001; INT C, etapa 1.",
-      "s": "d"
-     },
-     {
-      "t": "CEM Desktop: o agente foi instalado na máquina do banco do CEM, pareado com o código em até 10 minutos, e o dispositivo e o banco aparecem configurados.",
-      "r": "**Como validar:** os cards `Dispositivos pareados` e `Bancos de Dados Configurados` mostram o dispositivo online e o banco. **Por quê:** código vencido ou errado tem a mesma mensagem; muitas tentativas bloqueiam o usuário. **Fonte:** INT-CFG-002, INT-CFG-004.",
-      "s": "d"
-     },
-     {
-      "t": "CEM Mobi: os dados de acesso foram salvos e o teste de conexão confirmou sucesso com os orçamentos encontrados.",
-      "r": "**Como validar:** `Testar Conexão` mostra a mensagem de sucesso e o selo `Conectado`. **Por quê:** a contagem de orçamentos prova que o CEM Mobi responde. **Fonte:** INT-CFG-009.",
-      "s": "d"
-     },
-     {
-      "t": "Os Padrões de Integração estão completos: NCM, unidade e categoria de cada tipo usado, LC 116 do serviço e, na aba do pedido, CFOP, plano de contas, condição e meio de pagamento.",
-      "r": "**Como validar:** o card `Padrões por tipo de item` mostra o selo `Todos completos` e o NCM não é o “À classificar”. **Por quê:** padrão incompleto para a importação. **Fonte:** INT-CFG-019, INT-GER-015, INT-DSK-012.",
-      "s": "d"
-     },
-     {
-      "t": "Clientes inativos com o mesmo documento de clientes do CEM foram reativados antes da primeira obra.",
-      "r": "**Como validar:** busque os documentos das obras de teste entre os inativos. **Por quê:** a regra diz que a integração reativa, mas a fonte registra que a tela não reativa; confira antes. **Fonte:** INT-DSK-022; INT C, etapa 5.",
-      "s": "d"
-     },
-     {
-      "t": "Faturamento em Nível (se usado): o recurso foi ligado, os níveis foram cadastrados com código, prefixo, tipo, peso, ordem e empresa, e os templates de rateio somam 100%.",
-      "r": "**Como validar:** `Níveis de Faturamento` tem ao menos um nível do tipo Produto; os templates fecham 100%. **Por quê:** os menus de níveis só aparecem com o recurso ligado. **Fonte:** INT-CFG-010, INT-NIV-002, INT-NIV-006, INT-NIV-014.",
+      "t": "**Faça:** confira a empresa selecionada no alto da tela antes de seguir.",
+      "r": "**Explique ao cliente:** as configurações de integração valem para a empresa ativa. **Confira:** o nome da empresa no topo. **Fonte:** roteiro Vendas 06, abertura.",
       "s": "d"
      }
     ]
    },
    {
-    "titulo": "3. Condução do treinamento",
-    "intro": "Treine com as obras reais do cliente, abrindo o CEM e o Flow lado a lado. Comece pela obra simples, depois desconto, serviço e, por fim, a revisão do orçamento. A cada passo, mostre o que a importação cria (cliente, produtos, projeto, pedido) e o que acontece depois em Vendas.",
+    "titulo": "2. Conectar o CEM (Desktop ou Mobi)",
+    "onde": "`Vendas > Configurações > Configurar integração` (cards de pareamento ou `Configuração CEM Mobi`)",
+    "intro": "O CEM Desktop conversa com o Flow por um agente instalado na empresa; o CEM Mobi, pela configuração da integração. Faça só o caminho do cliente.",
     "passos": [
      {
-      "t": "O consultor mostrou no CEM como fechar a obra e no Flow que só a obra fechada aparece para importar.",
-      "r": "**Como validar:** o cliente fecha uma obra e ela aparece na lista. **Por quê:** a dúvida mais comum é “a obra não aparece”. **Fonte:** INT-DSK-002.",
+      "t": "**Faça:** (CEM Desktop) abra o agente na máquina do CEM, anote o código no formato XXX-XXX e, em até 10 minutos, digite em `Código de pareamento` e clique em `Confirmar`.",
+      "r": "**Explique ao cliente:** o agente precisa ficar ligado; sem ele nenhuma obra carrega. **Confira:** o dispositivo em `Dispositivos pareados` (botão `Atualizar`) e o banco em `Bancos de Dados Configurados`. **Fonte:** Integração C, etapa 2; roteiro Vendas 06, pareando o CEM Desktop.",
       "s": "d",
-      "campo": "Data do treinamento"
+      "campo": "Dispositivo pareado"
      },
      {
-      "t": "O consultor importou com o cliente a obra simples, seguindo os passos do assistente até gerar o pedido, e mostrou que não há escolha de itens: entram todos os itens calculados.",
-      "r": "**Como validar:** o pedido nasce `Em aberto`, com a etiqueta de importado. **Por quê:** faturamento parcial não se faz escolhendo itens na importação. **Fonte:** INT-DSK-008, INT-DSK-009; INT C, etapa 7.",
+      "t": "**Faça:** (bloqueio de propósito, CEM Desktop) digite um código vencido ou errado.",
+      "r": "**Explique ao cliente:** o código vale 10 minutos; muitos erros seguidos bloqueiam o usuário por 15 minutos. **Confira:** a recusa “Código de pareamento inválido ou expirado. Gere um novo código no agente desktop.” **Fonte:** Integração C, etapa 2 e erros comuns; INT-CFG-002, INT-CFG-004.",
       "s": "d"
      },
      {
-      "t": "O consultor comparou com o cliente, lado a lado, o total do pedido e o total da obra com desconto, e o preço de três linhas.",
-      "r": "**Como validar:** os totais batem; o preço unitário é o total da linha dividido pela quantidade do CEM. **Por quê:** o preço do pedido é o do CEM; o cadastro do produto não interfere. **Fonte:** INT-DSK-013, INT-DSK-017.",
+      "t": "**Faça:** (CEM Mobi) no card `Configuração CEM Mobi`, informe o endereço, a chave e o código da função fornecidos para o cliente, salve e clique em `Testar Conexão`.",
+      "r": "**Explique ao cliente:** sem conexão confirmada não adianta tentar importar. **Confira:** “Conexão realizada com sucesso! N pedido(s) encontrado(s).” e o selo `Conectado`. **Fonte:** Integração C, etapa 3; roteiro Vendas 06, salvando a configuração do CEM Mobi; INT-CFG-009.",
       "s": "d"
      },
      {
-      "t": "O consultor mostrou os produtos e o projeto criados pela importação e explicou que cor nova do CEM é cadastrada sozinha.",
-      "r": "**Como validar:** os produtos novos têm NCM, unidade e categoria do padrão e só preço de custo. **Por quê:** o cliente não deve criar cores à mão. **Fonte:** INT-GER-011, INT-GER-013, INT-GER-016.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor mostrou o que acontece com cliente sem CPF/CNPJ ou sem cidade no CEM, e explicou que o cadastro de origem se corrige **no CEM**.",
-      "r": "**Como validar:** o cliente vincula um cliente existente ou usa `+ Novo cliente`. **Por quê:** o documento não se digita no assistente; sem cidade a integração para. **Fonte:** INT-GER-034, INT-GER-039.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor aumentou com o cliente a quantidade de um item no CEM, reimportou e mostrou o segundo pedido só com o saldo; depois trocou uma cor e mostrou que o item vem de novo inteiro.",
-      "r": "**Como validar:** dois pedidos, o primeiro intocado. **Por quê:** na troca de cor ou medida o pedido antigo precisa ser cancelado ou ajustado, ou há risco de faturar em dobro. **Fonte:** INT-RIM-002, INT-RIM-005, INT-RIM-008.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor mostrou como desfazer uma importação: cancelar ou excluir o pedido devolve a obra para pendente.",
-      "r": "**Como validar:** a obra volta à lista. **Por quê:** é o único jeito de desfazer; quem importa por arquivo precisa cancelar para reimportar. **Fonte:** INT-LIB-001, INT-LIB-002, INT-ARQ-012.",
-      "s": "d"
-     },
-     {
-      "t": "Faturamento em Nível (se usado): o consultor importou com o cliente uma obra com rateio, conferiu a prévia e mostrou um pedido por nível com a empresa e o documento certos.",
-      "r": "**Como validar:** a soma dos pedidos é o total da obra; o nível de serviço gera produto de serviço. **Por quê:** a prévia é a conferência antes de gravar. **Fonte:** INT-NIV-007, INT-NIV-010, INT-NIV-012.",
+      "t": "**Faça:** (arquivo) mostre que não há nada a conectar e que o arquivo aceito é XML (CEM Desktop) ou JSON (CEM Mobi).",
+      "r": "**Explique ao cliente:** outros formatos são recusados com “Formato de arquivo não suportado”. **Confira:** o cliente sabe exportar o XML ou o JSON da obra. **Fonte:** Integração C, etapa 1 e erros comuns; INT-ARQ-001.",
       "s": "d"
      }
     ]
    },
    {
-    "titulo": "4. Validação do aprendizado",
-    "intro": "Peça ao usuário que vai importar no dia a dia para fazer sozinho, com obras que ele escolhe. Observe sem intervir e peça que explique cada conferência. Registre o número de cada pedido como evidência.",
+    "titulo": "3. Padrões de Integração",
+    "onde": "`Vendas > Configurações > Padrões de Integração`",
+    "intro": "O CEM manda itens que o Flow ainda não conhece. Os Padrões dizem com que NCM, unidade, categoria, CFOP e condição o produto e o pedido nascem. Padrões completos são importação sem parada.",
     "passos": [
      {
-      "t": "O usuário importou sozinho as três obras de teste e conferiu cliente, produtos, total com desconto e data de entrega.",
-      "r": "**Como validar:** anote os números dos pedidos; a data de entrega é a previsão do CEM. **Por quê:** cobre obra simples, desconto e serviço. **Fonte:** INT C, etapa 8; INT D, seção 3.",
-      "s": "d",
-      "campo": "Números dos pedidos de teste"
-     },
-     {
-      "t": "O cliente levou um pedido importado até a NF-e **autorizada em homologação**.",
-      "r": "**Como validar:** anote o número e a chave da nota. **Por quê:** prova que a integração gera pedido que fatura. **Fonte:** INT D, seção 3.",
+      "t": "**Faça:** na aba `Importação`, no card do modo do código (`Cadastrar produto como obra + Tipo`), escolha o modo decidido com o cliente.",
+      "r": "**Explique ao cliente:** o modo do código fica gravado na obra; mudar depois não afeta obras já integradas. **Confira:** o modo escolhido salvo. **Fonte:** Integração C, etapa 4; INT-DSK-014, INT-DSK-015, INT-DSK-016.",
       "s": "d"
      },
      {
-      "t": "O cliente revisou com o contador os avisos fiscais dos itens dos primeiros pedidos.",
-      "r": "**Como validar:** a lista de avisos foi tratada. **Por quê:** item sem imposto calculado não impede o pedido, mas fica com aviso. **Fonte:** INT-GER-024.",
+      "t": "**Faça:** no card `Padrões por tipo de item`, informe NCM, unidade e categoria de cada tipo que o cliente usa (perfil, vidro, componente, esquadria…).",
+      "r": "**Explique ao cliente:** produto novo do CEM nasce com esses padrões e só com o preço de custo. Não use o NCM “99999999 À classificar”. **Confira:** o selo `Todos completos`. **Fonte:** Integração C, etapa 4; INT-GER-014, INT-GER-015, INT-GER-016, INT-CFG-019.",
       "s": "d"
      },
      {
-      "t": "O usuário provocou uma falha (por exemplo, um tipo sem padrão), leu a mensagem, corrigiu e importou de novo.",
-      "r": "**Como validar:** depois do erro não ficou pedido, produto nem obra gravados. **Por quê:** importação que falha não grava nada, exceto o cliente; repetir é seguro. **Fonte:** INT-GER-041.",
+      "t": "**Faça:** se o orçamento tem serviço, preencha o `Código de serviço (LC 116)` no bloco `Serviço`.",
+      "r": "**Explique ao cliente:** vazio, vale o LC 116 da empresa; sem nenhum, a importação para. **Confira:** o código salvo. **Fonte:** Integração C, etapa 4; INT-GER-035, INT-GER-036.",
       "s": "d"
      },
      {
-      "t": "O usuário explicou o que fazer quando o cliente final aumenta a quantidade e quando troca a cor de um item depois do pedido.",
-      "r": "**Como validar:** a explicação bate com a regra de saldo e de item novo. **Por quê:** é o erro que gera faturamento em dobro. **Fonte:** INT-RIM-002, INT-RIM-008.",
-      "s": "d"
-     },
-     {
-      "t": "O usuário cancelou sozinho um pedido de teste e mostrou a obra de volta como pendente.",
-      "r": "**Como validar:** a obra reaparece na lista. **Por quê:** é a rotina de desfazer. **Fonte:** INT-LIB-001.",
+      "t": "**Faça:** na aba `Pedido de Venda`, preencha `CFOP Padrão`, `Plano de Conta Padrão`, `Condição de Pagamento Padrão` e `Meio de Pagamento Padrão`.",
+      "r": "**Explique ao cliente:** esses campos chegam preenchidos na confirmação da importação, mas o usuário confere cada um. **Confira:** os padrões salvos; salvar exige administrador. **Fonte:** Integração C, etapa 4; INT-DSK-012; roteiro Vendas 01, confirmar os dados do pedido.",
       "s": "d"
      }
     ]
    },
    {
-    "titulo": "5. Preparação para utilização e go-live",
-    "intro": "Antes de liberar, limpe os testes, combine com o cliente o saneamento do cadastro no CEM e deixe claro quem corrige o quê. No go-live, acompanhe as primeiras importações reais de perto. Só libere Vendas com o checklist da integração assinado.",
+    "titulo": "4. Importar um orçamento real (CEM Desktop)",
+    "onde": "`Vendas > Pedidos de Venda > Importar CEM`",
+    "intro": "Agora o cliente importa a obra real escolhida. Ele conduz o mouse; o consultor explica cada etapa da janela `Importar do CEM Desktop`. Para CEM Mobi ou arquivo, use o bloco 5.",
     "passos": [
      {
-      "t": "Os pedidos de teste foram cancelados ou excluídos e as obras de teste voltaram a pendente, ou o cliente decidiu mantê-las.",
-      "r": "**Como validar:** a lista de pedidos não tem testes perdidos. **Por quê:** pedido de teste esquecido entra nas metas e pode ser faturado. **Fonte:** INT-LIB-001, INT-LIB-002.",
+      "t": "**Faça:** clique em `Importar CEM`; se houver mais de uma base, escolha em **Base** a da obra; atualize a lista e busque a obra pelo código, nome, cliente, cidade ou contato. Confira Código, Nome da Obra, Cliente e Cidade e clique em `Importar`.",
+      "r": "**Explique ao cliente:** sem pesquisa, aparecem as obras fechadas mais recentes; obra aberta no CEM não aparece. Obra já integrada vem identificada na lista. **Confira:** a obra certa selecionada. **Fonte:** roteiro Vendas 01, escolher a base e localizar a obra; Integração C, etapa 7.",
       "s": "d"
      },
      {
-      "t": "O cliente assumiu o saneamento do cadastro de clientes no CEM (CPF/CNPJ, IE, cidade) com um responsável.",
-      "r": "**Como validar:** o responsável está na ata. **Por quê:** o cadastro de origem se corrige no CEM, não no Flow. **Fonte:** INT-GER-009, INT-GER-034.",
+      "t": "**Faça:** na etapa **Dados do Cliente**, leia nome, CPF/CNPJ, endereço, telefone e e-mail e a situação mostrada: `Será vinculado`, `Será criado` ou `Bloqueado`.",
+      "r": "**Explique ao cliente:** o Flow procura o cliente pelo CPF/CNPJ. `Será vinculado` usa o cadastro existente (marque `Atualizar cadastro` só se o CEM estiver mais atual); `Será criado` cria o cliente; `Bloqueado` é cadastro inativo: não gere o pedido, reative o cliente ou corrija o documento no CEM. **Confira:** a situação esperada para esse cliente. **Fonte:** roteiro Vendas 01, conferir o cliente; INT-DSK-005, INT-DSK-022.",
+      "s": "d"
+     },
+     {
+      "t": "**Faça:** na etapa **Itens da Obra**, revise com o cliente tipo, descrição, modelo, quantidade, largura e altura (mm), local, peso, valor unitário e total, vidro, cor e linha.",
+      "r": "**Explique ao cliente:** a importação traz a obra inteira; não há escolha de itens. O desconto do orçamento aparece com o valor líquido e é distribuído entre os itens que podem receber desconto. **Confira:** os itens batem com o orçamento do CEM. **Fonte:** roteiro Vendas 01, conferir os itens; INT-DSK-013, INT-GER-019.",
+      "s": "d"
+     },
+     {
+      "t": "**Faça:** na **Confirmação**, confira Empresa, CFOP, Plano de Conta e Condição de Pagamento (vindos dos Padrões), escolha o Vendedor e use Observações só para o que não veio do CEM.",
+      "r": "**Explique ao cliente:** Empresa, CFOP, Plano de Contas e Condição de Pagamento são obrigatórios para gerar o pedido. **Confira:** cliente, obra, quantidade de itens, desconto e valor final na tela de confirmação. **Fonte:** roteiro Vendas 01, confirmar os dados do pedido; INT-DSK-011.",
+      "s": "d"
+     },
+     {
+      "t": "**Faça:** clique em `Gerar Pedido de Venda` uma única vez e aguarde. Depois clique em `Ver Pedido`.",
+      "r": "**Explique ao cliente:** o sistema cria ou aproveita cliente, produtos, cores e o projeto da obra, e só então o pedido. Se algo falhar, nada fica gravado além do cliente: corrigir e repetir é seguro. **Confira:** “Pedido criado com sucesso”, o número do pedido, o cliente, o projeto e quantos produtos novos foram criados. **Fonte:** roteiro Vendas 01, gerar o pedido; INT-GER-041.",
       "s": "d",
-      "campo": "Responsável pelo saneamento no CEM"
-     },
+      "campo": "Nº do pedido importado (PV-)"
+     }
+    ]
+   },
+   {
+    "titulo": "5. Importar pelo CEM Mobi ou por arquivo",
+    "onde": "`Vendas > Pedidos de Venda > Importar CEM Mobi` ou `Importar Arquivo`",
+    "intro": "Faça este bloco no lugar do bloco 4 quando o cliente usa CEM Mobi ou importa arquivo. O resultado é o mesmo: um pedido de venda Em aberto.",
+    "passos": [
      {
-      "t": "O cliente foi avisado dos comportamentos que afetam o uso: salvar os Padrões exige administrador; as marcas de e-mail do contato padrão valem só para a importação por arquivo; troca de cor ou medida duplica o item.",
-      "r": "**Como validar:** os avisos estão na ata. **Por quê:** evita surpresa no dia a dia. **Fonte:** INT D, aceite; INT-RIM-008.",
+      "t": "**Faça:** (CEM Mobi) clique em `Importar CEM Mobi` e siga as etapas Selecionar Pedido, Itens da Obra, Decisões e Confirmação.",
+      "r": "**Explique ao cliente:** na etapa de decisões, preencha NCM, unidade de medida e categoria para cada tipo novo. **Confira:** os dados de cada etapa antes de avançar; use `Voltar` para corrigir. **Fonte:** roteiro Vendas 01, importação pelo CEM Mobi; Integração C, etapa 7.",
       "s": "d"
      },
      {
-      "t": "Nas primeiras semanas, o consultor confere com o key user as primeiras importações reais: total igual ao CEM, cliente sem duplicar e nenhum item faturado em dobro após revisão.",
-      "r": "**Como validar:** amostra semanal de pedidos importados. **Por quê:** erro de padrão ou de revisão só aparece com volume. **Fonte:** INT D, seções 2 a 4; Apostila do Consultor, go-live.",
-      "s": "d"
-     },
-     {
-      "t": "CEM Desktop: o cliente sabe que o agente precisa ficar ligado na máquina do banco e o que fazer quando aparece “Nenhum agente desktop online”.",
-      "r": "**Como validar:** o key user explica onde fica a máquina e como religar o agente. **Por quê:** é a parada mais comum da importação. **Fonte:** INT-DSK-001; INT C, erros comuns.",
-      "s": "d"
-     },
-     {
-      "t": "O checklist da integração foi assinado com todos os itens obrigatórios marcados, e só então Vendas foi liberado; o ambiente fiscal segue em homologação até a validação do Faturamento.",
-      "r": "**Como validar:** checklist assinado e ciência na ata. **Por quê:** a cadeia segue Integração → Vendas → Faturamento → Financeiro. **Fonte:** INT D, uso e aceite; README da cadeia comercial.",
+      "t": "**Faça:** (CEM Mobi) na confirmação, confira cliente, obra, quantidade de itens, valor total, desconto, valor líquido e as configurações; clique em `Importar Pedido` uma vez e depois em `Ver Pedido`.",
+      "r": "**Explique ao cliente:** clicar duas vezes não acelera a importação. **Confira:** “Pedido criado com sucesso”. **Fonte:** roteiro Vendas 01, confirmar a importação do CEM Mobi.",
       "s": "d",
-      "campo": "Data de liberação de Vendas"
+      "campo": "Nº do pedido importado (PV-)"
+     },
+     {
+      "t": "**Faça:** (arquivo) clique em `Importar Arquivo` e siga Upload, Dados, Pagamento, Itens e Confirmação até o fim, sem fechar a aba.",
+      "r": "**Explique ao cliente:** o rascunho da importação por arquivo se perde ao fechar a aba. **Confira:** o pedido gerado na lista. **Fonte:** Integração C, etapa 7; INT-ARQ-015.",
+      "s": "d"
+     }
+    ]
+   },
+   {
+    "titulo": "6. Ler com o cliente o pedido que nasceu da importação",
+    "onde": "`Vendas > Pedidos de Venda` (pedido importado) e `Cadastros`",
+    "intro": "É aqui que o cliente entende o que a integração faz. Abra o pedido gerado e compare, campo a campo, com o orçamento no CEM.",
+    "passos": [
+     {
+      "t": "**Faça:** na lista de pedidos, localize o pedido importado e abra os itens. Compare o total do pedido com o valor fechado no CEM.",
+      "r": "**Explique ao cliente:** o pedido nasce Em aberto e segue as regras de Vendas. O preço unitário é o preço de venda do orçamento (total ÷ quantidade); o cadastro do produto não interfere. Pode haver pequena diferença de arredondamento no rateio do desconto. **Confira:** todas as esquadrias presentes e o total igual ao do CEM. **Fonte:** roteiro Vendas 01, conferir os itens do pedido; INT-GER-004, INT-DSK-017.",
+      "s": "d"
+     },
+     {
+      "t": "**Faça:** abra o detalhe de um item e mostre medidas, cor e impostos.",
+      "r": "**Explique ao cliente:** o cálculo de impostos roda na criação do pedido; item com falha fica com aviso, sem travar o pedido. Revise os avisos fiscais dos primeiros pedidos com o contador. **Confira:** os impostos do item ou o motivo do aviso. **Fonte:** Integração B, seção 3; INT-GER-024.",
+      "s": "d"
+     },
+     {
+      "t": "**Faça:** abra o cliente do pedido em `Cadastros > Participantes` e mostre o contato criado.",
+      "r": "**Explique ao cliente:** a integração cria o cliente novo ou reaproveita pelo CPF/CNPJ, e cria o contato sem duplicar, com as marcas de e-mail de nota, boleto e vendas. **Confira:** documento, endereço e as marcas do contato. **Fonte:** Integração B, seção 3; INT-DSK-005, INT-MOB-011.",
+      "s": "d"
+     },
+     {
+      "t": "**Faça:** abra o projeto da obra em `Cadastros > Projetos` e mostre as observações internas e a data de entrega do pedido.",
+      "r": "**Explique ao cliente:** o projeto é criado ou reaproveitado pelo código da obra; as observações internas trazem obra, contato, vendedor, previsão e cores; a data de entrega é a previsão do CEM. **Confira:** o código da obra no projeto e na coluna PROJETO da lista. **Fonte:** Integração B, seção 3; INT-GER-011, INT-GER-022.",
+      "s": "d"
+     },
+     {
+      "t": "**Faça:** abra em `Cadastros > Produtos` um produto novo criado pela importação.",
+      "r": "**Explique ao cliente:** o produto nasce com o NCM, a unidade e a categoria do Padrão do tipo e só com o preço de custo; cores novas também são cadastradas sozinhas. **Confira:** NCM, unidade e categoria iguais aos Padrões do bloco 3. **Fonte:** Integração B, seção 3; INT-GER-013, INT-GER-016.",
+      "s": "d"
+     },
+     {
+      "t": "**Faça:** mostre o que a importação **não** faz: nada no estoque, no financeiro, na comissão ou na produção.",
+      "r": "**Explique ao cliente:** tudo isso nasce depois, do pedido de venda, pelas regras de Vendas, Faturamento e Financeiro. Medida, cor ou vidro errados se corrigem no CEM, não no pedido. **Confira:** o pedido Em aberto, “Sem títulos” e Nota Fiscal “—”. **Fonte:** Integração B, seção 3; roteiro Vendas 01, conferir os itens do pedido.",
+      "s": "d"
+     }
+    ]
+   },
+   {
+    "titulo": "7. O que trava a importação",
+    "onde": "janela de importação em `Vendas > Pedidos de Venda`",
+    "intro": "Demonstre de propósito os bloqueios mais comuns, para o cliente saber se a correção é no CEM ou nos Padrões.",
+    "passos": [
+     {
+      "t": "**Faça:** (bloqueio de propósito) com o orçamentista, deixe um tipo de item sem padrão (ou use um tipo novo) e tente avançar a importação.",
+      "r": "**Explique ao cliente:** produto novo precisa de NCM, unidade e categoria do tipo. **Confira:** a recusa “Cadastre o padrão de importação de <tipos> em Configurações > Padrões de Integração”; complete o bloco 3 e repita. **Fonte:** Integração C, erros comuns; INT-DSK-011.",
+      "s": "d"
+     },
+     {
+      "t": "**Faça:** (bloqueio de propósito) tente importar uma obra com item sem valor de venda no CEM.",
+      "r": "**Explique ao cliente:** a correção é o preço de venda no CEM, não no Flow. **Confira:** a recusa “A obra selecionada possui item(s) que não possuem valor de venda cadastrados…”. **Fonte:** Integração C, erros comuns; INT-DSK-010.",
+      "s": "d"
+     },
+     {
+      "t": "**Faça:** mostre o que acontece com cliente sem CPF/CNPJ válido no CEM.",
+      "r": "**Explique ao cliente:** o documento não é digitado no assistente: vincule um cliente já cadastrado ou use `+ Novo cliente`, e corrija o cadastro no CEM. **Confira:** a mensagem “Cliente da obra sem CPF/CNPJ — vincule um cliente já cadastrado”. **Fonte:** Integração C, erros comuns; INT-GER-039.",
+      "s": "d"
+     },
+     {
+      "t": "**Faça:** (bloqueio de propósito) tente importar de novo a obra do bloco 4 sem mudar nada no CEM.",
+      "r": "**Explique ao cliente:** obra já importada não gera outro pedido; procure o pedido existente antes de qualquer coisa. **Confira:** a recusa “A obra “X” já está integrada integralmente — não há quantidade pendente para importar…”. **Fonte:** Integração C, erros comuns; INT-RIM-003; roteiro Vendas 01, erros comuns na importação.",
+      "s": "d"
+     }
+    ]
+   },
+   {
+    "titulo": "8. Revisão do orçamento e reimportação",
+    "onde": "`Vendas > Pedidos de Venda > Importar CEM` (ou `Importar CEM Mobi`)",
+    "intro": "Orçamento muda depois de fechado. Mostre ao cliente o que cada tipo de revisão provoca, porque o pedido antigo nunca é alterado sozinho.",
+    "passos": [
+     {
+      "t": "**Faça:** com o orçamentista, aumente a quantidade de um item na obra do bloco 4 e importe de novo pelo CEM Desktop ou Mobi.",
+      "r": "**Explique ao cliente:** a reimportação traz só a diferença num novo pedido; o primeiro pedido não muda. O desconto é aplicado na proporção do valor importado. **Confira:** um segundo pedido só com a quantidade a mais. **Fonte:** Integração B, seção 1; INT-RIM-002, INT-RIM-005, INT-GER-020.",
+      "s": "d",
+      "campo": "Nº do pedido da reimportação (PV-)"
+     },
+     {
+      "t": "**Faça:** explique, sem executar, o que acontece quando a quantidade diminui ou um item sai do orçamento.",
+      "r": "**Explique ao cliente:** não há saldo a importar e o pedido antigo continua igual: o ajuste é feito à mão no pedido Em aberto. **Confira:** o cliente sabe onde ajustar. **Fonte:** Integração B, seção 1; INT-RIM-005.",
+      "s": "d"
+     },
+     {
+      "t": "**Faça:** explique o caso de troca de cor ou medida no CEM.",
+      "r": "**Explique ao cliente:** o item com cor ou medida nova entra como item novo, com saldo cheio, e o pedido antigo segue com a versão anterior: cancele ou ajuste o pedido antigo para não produzir nem faturar em dobro. **Confira:** o cliente entendeu o risco. **Fonte:** Integração B, seção 1; INT-RIM-008.",
+      "s": "d"
+     },
+     {
+      "t": "**Faça:** para refazer a obra inteira, cancele (ou exclua, se Em aberto) o pedido de teste e mostre a obra voltar a pendente na lista de importação.",
+      "r": "**Explique ao cliente:** na importação por arquivo esse é o único caminho para reimportar uma obra já integrada (“A obra “X” já foi integrada e possui um pedido de venda ativo…”). **Confira:** a obra disponível de novo para importar. **Fonte:** Integração B, seção 1; INT-LIB-001, INT-LIB-002, INT-ARQ-012.",
+      "s": "d"
+     }
+    ]
+   },
+   {
+    "titulo": "9. Faturamento em Nível (só quando contratado)",
+    "onde": "`Vendas > Configurações > Configurar integração` (card `Faturamento em Nível`), `Níveis de Faturamento` e `Templates de Rateio`",
+    "intro": "Faça este bloco só se o cliente vai dividir a obra em níveis (por exemplo, material, esquadria e instalação). A regra de rateio precisa estar definida com o fiscal, o contador e o financeiro.",
+    "passos": [
+     {
+      "t": "**Faça:** no card `Faturamento em Nível`, ligue a chave.",
+      "r": "**Explique ao cliente:** os menus de níveis e de templates só aparecem com o recurso ligado; com ele desligado a importação avisa “Faturamento em Nível não está habilitado para esta empresa…”. **Confira:** os menus `Níveis de Faturamento` e `Templates de Rateio` visíveis. **Fonte:** Integração C, etapa 6.3; roteiro Vendas 06, Faturamento em Nível; INT-NIV-001.",
+      "s": "d"
+     },
+     {
+      "t": "**Faça:** em `Níveis de Faturamento`, crie cada nível com `Código`, `Prefixo dos produtos`, `Nome`, `Tipo do item` (Produto ou Serviço), `Peso da parte`, `Ordem` e `Empresa emissora padrão`.",
+      "r": "**Explique ao cliente:** o prefixo entra no código do produto-filho; o nível de serviço gera pedido para NFS-e e o de produto, para NF-e. Precisa haver ao menos um nível do tipo Produto. **Confira:** os níveis ativos na lista. **Fonte:** Integração C, etapa 6.1; INT-NIV-008, INT-NIV-012.",
+      "s": "d"
+     },
+     {
+      "t": "**Faça:** em `Templates de Rateio`, monte a composição usual do cliente (nível, percentual, empresa, CFOP, plano, condição) somando 100%.",
+      "r": "**Explique ao cliente:** nível usado por template ativo não pode ser inativado. **Confira:** o template salvo; soma diferente de 100% é recusada (“A soma dos percentuais deve ser exatamente 100%…”). **Fonte:** Integração C, etapa 6.2; INT-NIV-002, INT-NIV-016.",
+      "s": "d"
+     },
+     {
+      "t": "**Faça:** importe uma obra e, na etapa de rateio, escolha `Um pedido por nível`, confira os percentuais e os destinos e conclua.",
+      "r": "**Explique ao cliente:** `Um pedido por nível` gera pedidos separados para os níveis com valor; `Pedido único` mantém um pedido com os itens divididos; `Sem rateio` importa normal. O último modo usado vira o padrão para todos os usuários. **Confira:** um pedido por nível, cada um com a empresa, o CFOP e a condição da linha. **Fonte:** roteiro Vendas 01, Faturamento em Nível na importação; Integração C, etapa 6; INT-NIV-004, INT-NIV-010.",
+      "s": "d",
+      "campo": "Nº dos pedidos por nível (PV-)"
      }
     ]
    }
   ],
   "resultado": [
    {
-    "t": "O botão de importação certo aparece e, no CEM Desktop, o agente está pareado e online; no Mobi, a conexão foi testada.",
+    "t": "Sistema de integração escolhido e conectado (dispositivo pareado ou CEM Mobi `Conectado`).",
     "s": "d"
    },
    {
-    "t": "Os Padrões de Integração estão completos para todos os tipos usados e o modo do código do produto está decidido em ata.",
+    "t": "Padrões de Integração com o selo `Todos completos` e os padrões do pedido de venda preenchidos.",
     "s": "d"
    },
    {
-    "t": "O usuário importa sozinho uma obra fechada e o total do pedido bate com o total do CEM.",
+    "t": "Uma obra real importada sem erro, com o total do pedido igual ao do CEM e os produtos novos criados com os padrões certos.",
     "s": "d"
    },
    {
-    "t": "Um pedido importado chegou à NF-e autorizada em homologação.",
+    "t": "O cliente explicou sozinho de onde vêm os itens, o preço, o desconto, os impostos, o cliente e a obra do pedido importado.",
     "s": "d"
    },
    {
-    "t": "O cliente sabe tratar a revisão do orçamento e desfazer uma importação.",
+    "t": "Uma revisão de orçamento reimportada (Desktop ou Mobi) e o cliente sabe o que fazer com o pedido antigo.",
     "s": "d"
    },
    {
-    "t": "Faturamento em Nível, quando usado, gera os pedidos por nível com a soma igual ao total da obra.",
+    "t": "Faturamento em Nível, se contratado: níveis e template cadastrados e uma obra importada com um pedido por nível.",
     "s": "d"
    }
   ],
   "atencao": [
-   "Importar a primeira obra antes da carga de clientes cria clientes duplicados com os dados do CEM (INT-GER-005).",
-   "Padrão de vidro herdado de superfície esconde NCM errado; preencha todos os tipos usados (INT-CFG-012).",
-   "Troca de cor ou medida no CEM traz o item de novo inteiro e o pedido antigo continua: risco de faturar em dobro (INT-RIM-008).",
-   "O modo do código do produto fica gravado em cada obra; decida antes da primeira importação (INT-DSK-014).",
-   "Quem importa por arquivo não reimporta a mesma obra: precisa cancelar o pedido antes (INT-ARQ-012).",
-   "Salvar os Padrões de Integração exige administrador do cliente, mesmo para quem abre a tela.",
-   "Os menus de níveis e templates só aparecem com o Faturamento em Nível ligado: ligue, cadastre níveis e templates e só então libere o uso aos usuários (INT C, etapa 6).",
-   "PrefSuite está fora do beta: não implante (INT-PRF-001)."
+   "Só em ambiente de teste ou homologação; pedidos e registros de teste com “TESTE FLUXO CONSULTOR”. Nota fiscal só é transmitida com o responsável fiscal.",
+   "A integração só traz obras **fechadas** no CEM e traz a obra inteira: não há escolha de itens.",
+   "Clique uma única vez em `Gerar Pedido de Venda` ou `Importar Pedido` e aguarde.",
+   "Revisão que troca cor ou medida duplica o item: o pedido antigo continua e precisa ser cancelado ou ajustado à mão.",
+   "Hoje o sistema ainda não reativa sozinho um cliente inativo com o mesmo documento: reative antes de importar.",
+   "Saneie o cadastro de clientes no CEM (CPF/CNPJ, cidade e UF) antes do go-live: esses dados vêm só da origem.",
+   "Não use o NCM “99999999 À classificar” nos Padrões e não inative uma categoria usada num padrão.",
+   "O agente do CEM Desktop precisa ficar ligado: “Nenhum agente desktop online” é máquina desligada ou serviço parado."
   ],
   "naoValidado": [
-   "As marcas de e-mail do contato criado pela integração divergem entre as regras (todas ligadas, inclusive compras, ou compras desligado); confira na tela o contato criado por cada porta.",
-   "Quando a importação falha, uma regra diz que o pedido é cancelado e outras dizem que é excluído; confira na tela antes de explicar ao cliente.",
-   "A opção `Arquivos` da tela de integração fala em arquivo .txt, mas a regra aceita só XML e JSON; confira na tela e ensine XML ou JSON.",
-   "A regra diz que cliente inativo com o mesmo documento é reativado, mas a fonte registra que hoje a tela não reativa; teste em homologação.",
-   "A regra diz para só ligar o Faturamento em Nível depois de cadastrar os níveis, mas o manual registra que os menus de níveis só aparecem com o recurso ligado; confira na tela a ordem possível.",
-   "A recusa de esquadria sem cor, altura ou largura pode vir do assistente ou só do pedido, conforme a fonte; confira na tela."
+   "Licença: os roteiros Vendas 01 e 06 dizem que CEM Mobi e Faturamento em Nível são só da versão PRO; a gestora diz que a configuração da integração não é PRO e não marca o Faturamento em Nível como PRO. Conferir na tela e na licença do cliente.",
+   "Caminho de `Níveis de Faturamento`: o roteiro Vendas 06 indica `Vendas > Integrações > Níveis de Faturamento`; a gestora indica o grupo `Configurações` de Vendas. Conferir no menu.",
+   "Correção de medida, cor ou vidro: o roteiro Vendas 01 orienta cancelar e reimportar o pedido completo; a gestora diz que CEM Desktop e Mobi reimportam só o saldo e que a troca de cor ou medida entra como item novo. Conferir na tela antes de ensinar.",
+   "Marcas de e-mail do contato criado pela integração: uma regra diz todas ligadas, inclusive compras (INT-GER-032); outra diz compras desligado (INT-MOB-011). A aba `Contato` dos Padrões só vale para a importação por arquivo. Conferir no contato criado.",
+   "Falha durante a importação: uma regra diz que o pedido é cancelado (INT-GER-023); outras dizem que tudo é excluído, sem deixar pedido (INT-GER-041, INT-NIV-013). Conferir na tela.",
+   "Tipo de arquivo: a descrição da opção `Arquivos` fala em .txt; a regra aceita só XML e JSON. Conferir a mensagem na tela.",
+   "Esquadria sem cor, altura ou largura: a regra diz que a importação recusa antes de gravar; a gestora registra que hoje a recusa vem do pedido. Conferir em qual etapa aparece."
   ]
  },
  {
   "id": "implantacao-vendas",
   "arquivo": "implantacao-04-vendas.html",
   "etiqueta": "Consultor · Implantação · Vendas",
-  "titulo": "Implantação de Vendas",
-  "subtitulo": "Checklist do consultor para implantar o pedido de venda: cadastro, aprovação de desconto, cancelamento e faturamento, mais comissões, metas e contratos quando contratados. Vem depois da Fundação e, se houver CEM, da integração testada.",
-  "objetivo": "Ao final, o cliente lança, aprova, encerra, cancela e fatura pedidos de venda sozinho, em homologação, e entende o que cada ação gera no Faturamento, no Financeiro, na Produção e na Expedição. Vendas inicia o fluxo operacional: um pedido com CFOP, condição ou valor errado leva o erro para a nota, os títulos e a comissão.",
-  "rodape": "Checklist de implantação · Vendas · fontes: manual de implantação, regras e checklist de Vendas (gestora); README da cadeia comercial; Apostila do Consultor (Módulo Vendas na implantação; Processo comercial: o que validar) · Harness Faktory Flow",
+  "titulo": "Implantação de Vendas: roteiro prático com o cliente",
+  "subtitulo": "Siga com o cliente a vida de um pedido de venda: do pedido importado ou digitado à alçada de desconto, aos títulos ou à nota, ao financeiro e à nota nascendo, ao encerramento ou cancelamento na ordem certa e à liberação para expedição. Comissões, metas e contrato entram só se contratados.",
+  "objetivo": "Ao final, o cliente criou e ajustou um pedido, viu um desconto passar pela aprovação, gerou títulos num pedido e faturou outro, e encontrou o título e a nota em cada módulo. Ele sabe por que o sistema recusa cancelar um pedido faturado ou com títulos e qual a ordem para desfazer.",
+  "rodape": "Checklist de implantação · Vendas · fontes: manual de implantação, processos e regras de Vendas (gestora) e README da cadeia comercial; Teste do fluxo completo e Fluxo comercial (Guia antigo); trilha do estagiário 04 Vendas; procedimentos Criar pedido de venda, Ajustar o pedido antes de faturar, Gerar títulos e receber, Faturar o pedido e finalizar a nota · Harness Faktory Flow",
   "prerequisitos": [
    {
-    "t": "O checklist da Fundação está assinado e, se o cliente usa CEM, o checklist da integração também.",
-    "r": "**Como validar:** confira os dois checklists assinados. **Por quê:** Vendas depende de categorias, produtos, clientes e Padrões de Integração prontos. **Fonte:** VEN D, pré-requisitos; Apostila do Consultor, Módulo Vendas na implantação.",
+    "t": "Fundação concluída: cliente, vendedor, produtos com unidade válida, condições e meios de pagamento, portador, plano de contas e CFOPs de venda revisados com o contador.",
+    "r": "**Confira:** o checklist da Fundação assinado e um pedido de teste já salvo. **Fonte:** README da cadeia comercial, ordem de implantação; procedimento Criar pedido de venda.",
     "s": "d"
    },
    {
-    "t": "Todas as empresas têm regime de apuração preenchido.",
-    "r": "**Como validar:** `Configurações > Empresas`. **Por quê:** é a única recusa do cálculo de imposto do pedido. **Fonte:** VEN-PED-011.",
+    "t": "Decidido com o cliente: quem gera o contas a receber, o pedido (Gerar Títulos) ou a nota.",
+    "r": "**Confira:** a decisão na ata. Se o pedido gerou os títulos, a nota não gera de novo e o pedido fica com os valores travados. **Fonte:** README da cadeia comercial, decisão X2; Manual 03 Vendas, 2.3.",
     "s": "d"
    },
    {
-    "t": "O módulo Vendas está sem cadeado e a versão PRO foi conferida se o cliente vai usar comissão, metas ou contrato de fornecimento.",
-    "r": "**Como validar:** `Minha Assinatura` e o menu. **Por quê:** comissões, metas e contratos são PRO; sem eles, não configure essas etapas. **Fonte:** VEN-GER-001.",
-    "s": "d"
+    "t": "Ambiente fiscal em **homologação** e almoxarifado central ativo em `Estoque > Locais`.",
+    "r": "**Confira:** a faixa “Ambiente NF-e: HOMOLOGAÇÃO” na nota e o local ativo. Sem local de estoque a nota não finaliza. **Fonte:** teste do fluxo completo, pré-requisitos; procedimento Faturar o pedido e finalizar a nota.",
+    "s": "v"
    },
    {
-    "t": "O consultor sabe se o cliente tem os módulos Financeiro e Expedição.",
-    "r": "**Como validar:** confira a licença. **Por quê:** sem Financeiro não há `Gerar Títulos` nem título de comissão a pagar; sem Expedição não há `Liberar para Expedição`. **Fonte:** VEN-PED-041, VEN-COM-014, VEN-EXP-002.",
-    "s": "d"
-   },
-   {
-    "t": "Os vendedores estão ligados aos usuários e as condições de pagamento usadas pelo cliente existem com os percentuais certos.",
-    "r": "**Como validar:** cadastro do participante vendedor e tela de condições. **Por quê:** a comissão depende do vendedor e as parcelas saem dos percentuais da condição. **Fonte:** CAD-PAR-012, VEN-COM-004, VEN-PED-015.",
-    "s": "d"
-   },
-   {
-    "t": "O cliente entregou, com antecedência, a política de desconto, os pedidos em aberto do sistema antigo e, se PRO, as regras de comissão, as metas e os contratos com construtoras.",
-    "r": "**Como validar:** os materiais estão na pasta do cliente. **Por quê:** sem eles, a configuração vira suposição. **Fonte:** VEN C, pré-requisitos do cliente.",
+    "t": "Dois usuários de teste: o vendedor e um aprovador de desconto diferente dele.",
+    "r": "**Confira:** os dois entram e o aprovador vê `Vendas > Aprovações`. O vendedor não aprova o próprio desconto. **Fonte:** Vendas C, etapa 3.",
     "s": "d"
    }
   ],
   "fluxos": [
    {
-    "titulo": "1. Entendimento do cenário do cliente",
-    "intro": "Converse com o gestor comercial, um vendedor e quem fatura, e chame o contador para os CFOPs. Peça para ver como um orçamento vira pedido hoje e quem autoriza desconto. Várias decisões desta etapa atravessam Faturamento e Financeiro: registre em ata e tome junto com os responsáveis desses módulos.",
+    "titulo": "1. O pedido: importado ou digitado",
+    "onde": "`Vendas > Pedidos de Venda` (pedido importado ou `+ Novo Pedido`)",
+    "intro": "O pedido é onde a operação começa: dele saem produção, expedição, nota e títulos. Use o pedido importado no roteiro da Integração CEM ou digite um com o cliente, com um item de cada categoria.",
     "passos": [
      {
-      "t": "O consultor perguntou: como a empresa recebe novos clientes, quem faz os orçamentos, quais informações são obrigatórias para aprovar e quando um orçamento vira pedido?",
-      "r": "**Como validar:** o fluxo atual está descrito na ata. **Por quê:** evita criar pedido antes da aprovação comercial. **Fonte:** Apostila do Consultor, Processo comercial: o que validar.",
+      "t": "**Faça:** em **Novo Pedido**, preencha **Empresa**, **Cliente**, **Vendedor**, **Condição de Pagamento** e **Projeto (opcional)** e escolha o **CFOP**. Se usar o pedido importado, abra-o e leia os mesmos campos.",
+      "r": "**Explique ao cliente:** escolha a Empresa primeiro; o CFOP só libera depois de Empresa e Cliente e vem filtrado pelo estado do cliente. Ligue o pedido à obra desde o início. **Confira:** os campos preenchidos e o CFOP certo para o estado. **Fonte:** trilha do estagiário 04, bloco 1; teste do fluxo completo, bloco 2; procedimento Criar pedido de venda.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** adicione itens de categorias diferentes (unidade, peso, área e uma esquadria com cor, altura e largura); para cada produto, preencha **Dados do Item** e clique em **Aplicar**.",
+      "r": "**Explique ao cliente:** o valor do item é calculado pela categoria; o pedido calcula os impostos no item. **Confira:** o valor de cada item e, se aparecer, o quadro “Impostos não calculados no item” com o motivo (o pedido salva assim). **Fonte:** trilha do estagiário 04, bloco 1; teste do fluxo completo, bloco 2; Vendas C, etapa 2.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** na parcela, escolha o **Meio Pagamento** e o **Portador**; no Resumo, a **Conta de Fluxo de Caixa** de venda.",
+      "r": "**Explique ao cliente:** as parcelas seguem os percentuais da condição de pagamento; a Conta de Fluxo de Caixa é obrigatória e pode vir do cliente. **Confira:** a soma das parcelas igual ao total. **Fonte:** trilha do estagiário 04, bloco 1; procedimento Criar pedido de venda.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** clique em **Salvar e Permanecer**.",
+      "r": "**Explique ao cliente:** o formulário tem três botões que gravam (dois “Salvar” e “Salvar e Permanecer”). **Confira:** “Pedido PV-xxxxxx criado” e, na lista, Em aberto, “Sem títulos” e Nota Fiscal “—”. **Fonte:** trilha do estagiário 04, bloco 1; teste do fluxo completo, bloco 2.",
+      "s": "v",
+      "campo": "Nº do pedido A (PV-)"
+     },
+     {
+      "t": "**Faça:** (bloqueio de propósito) num segundo pedido com CFOP que gera financeiro, remova a condição de pagamento e tente salvar.",
+      "r": "**Explique ao cliente:** é o CFOP que decide se o pedido exige condição, plano e parcelas. **Confira:** a recusa “O CFOP do pedido gera financeiro, então estes campos são obrigatórios: …”; complete e salve. **Fonte:** Vendas C, erros comuns; VEN-PED-001; Fluxo comercial, bloco 6.",
+      "s": "d",
+      "campo": "Nº do pedido B (PV-)"
+     }
+    ]
+   },
+   {
+    "titulo": "2. Ler a lista e ajustar antes de faturar",
+    "onde": "`Vendas > Pedidos de Venda`",
+    "intro": "Só o pedido Em aberto é editável. Mostre como achar o pedido, ler a situação dele e corrigir enquanto ainda dá.",
+    "passos": [
+     {
+      "t": "**Faça:** mostre que a lista começa filtrada em Status “Em Aberto”; troque para “Todos” e leia os status: Aprovação pendente, Encerrado, Faturado, Lib. Expedição, Entregue e Cancelado.",
+      "r": "**Explique ao cliente:** Encerrado é venda fechada sem nota; Faturado é pedido com nota gravada. **Confira:** os pedidos A e B na lista; busque pelo número em `Filtros`. **Fonte:** trilha do estagiário 04, bloco 2; VEN-STA-001.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** leia as colunas **TÍTULOS** (Gerados / Sem títulos) e **NOTA FISCAL** dos pedidos.",
+      "r": "**Explique ao cliente:** é o jeito rápido de saber se o pedido já foi para o financeiro e se tem nota. **Confira:** os dois pedidos “Sem títulos” e sem nota. **Fonte:** trilha do estagiário 04, bloco 2.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** no pedido A, clique no **lápis** (Editar pedido), troque a **Condição de Pagamento** e mostre a diferença entre **Recalcular** e **Recalcular Parcelas**. Clique em **Salvar e Permanecer**.",
+      "r": "**Explique ao cliente:** trocar a condição regenera as parcelas; Recalcular redivide o total por igual (“Parcelas recalculadas com base no total do pedido”); Recalcular Parcelas, no Resumo, só redivide os valores. O menu `⋯` não tem “Editar”. **Confira:** as parcelas novas somando o total. **Fonte:** procedimento Ajustar o pedido antes de faturar.",
       "s": "d"
      },
      {
-      "t": "O consultor perguntou com o contador: quais CFOPs a empresa usa na venda, remessa e bonificação, e quais geram financeiro?",
-      "r": "**Como validar:** lista de CFOPs assinada. **Por quê:** é o CFOP que decide se o pedido exige condição, plano de contas e parcelas, e se a nota gera título. **Fonte:** VEN-PED-001, VEN-PED-017; README da cadeia, decisão X1.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor perguntou: o contas a receber nasce no pedido ou na nota? A empresa vende sem emitir nota?",
-      "r": "**Como validar:** a decisão está na ata, com o responsável do Financeiro. **Por quê:** se o pedido gerou os títulos, a nota não gera de novo, e o pedido com títulos fica travado. **Fonte:** VEN-TIT-001, VEN-PED-025, VEN-STA-003; README da cadeia, decisão X2.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor perguntou: existe limite de desconto por vendedor? Até quanto, e quem aprova acima?",
-      "r": "**Como validar:** faixas e aprovadores estão na ata, por empresa. **Por quê:** sem faixa cadastrada não há alçada. **Fonte:** VEN-PED-034.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor perguntou: quem decide cancelar um pedido e por quê? A empresa usa Produção, e o que acontece com a ordem de produção de um pedido cancelado?",
-      "r": "**Como validar:** respostas na ata. **Por quê:** o cancelamento exige motivo e ordem; a ordem de produção não é cancelada junto, fica marcada. **Fonte:** VEN-STA-004, VEN-STA-009.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor perguntou: a empresa fatura parcial (entrega por etapas) ou divide a esquadria em partes para faturar?",
-      "r": "**Como validar:** a decisão está na ata. **Por quê:** faturamento parcial gera pedido filho; a divisão em partes usa os Níveis de Faturamento. **Fonte:** VEN-DES-001, VEN-PAR-001.",
-      "s": "d"
-     },
-     {
-      "t": "Se PRO: o consultor perguntou se paga comissão, sobre qual valor, ao faturar ou ao receber, se divide entre vendedor e gerente, se estorna por inadimplência e se o vendedor pode ver a comissão dos outros.",
-      "r": "**Como validar:** respostas na ata, aprovadas pelo gestor. **Por quê:** regime e base valem só para comissões novas e precisam estar decididos antes da primeira nota real. **Fonte:** VEN-COM-001, VEN-COM-007, VEN-COM-020, VEN-COM-022, VEN-COM-024, VEN-COM-025.",
-      "s": "d"
-     },
-     {
-      "t": "Se PRO: o consultor perguntou se usa metas mensais por empresa ou por vendedor, e se tem contrato global com construtora, com retenção e compras feitas por conta do cliente.",
-      "r": "**Como validar:** respostas na ata, com a origem do abatimento do contrato decidida. **Por quê:** a origem do abatimento não muda depois do primeiro. **Fonte:** VEN-MET-001, VEN-CTR-002, VEN-CTR-006, VEN-CTR-008.",
+      "t": "**Faça:** se o pedido ainda não tem obra, escolha o campo **Projeto (opcional)** e clique em **Salvar e Permanecer**.",
+      "r": "**Explique ao cliente:** sem a obra no pedido, o painel financeiro do projeto fica incoerente. Se editar parcelas à mão, elas precisam fechar o total (“A soma das parcelas (R$ X) não bate com o total do pedido (R$ Y)…”). **Confira:** a coluna PROJETO da lista mostra a obra, sem pedir CFOP nem condição de novo. **Fonte:** procedimento Ajustar o pedido antes de faturar; teste do fluxo completo, atenção; VEN-PED-014.",
       "s": "d"
      }
     ]
    },
    {
-    "titulo": "2. Preparação da implantação",
-    "intro": "Configure na ordem: CFOPs, pedido de teste e numeração, alçadas, perfis, e só depois comissão, metas e contratos, se contratados. Faça com o gestor comercial ao lado. Teste cada configuração com um pedido antes de passar à próxima.",
+    "titulo": "3. Alçada de desconto",
+    "onde": "`Vendas > Configurações > Alçadas de Desconto` e `Vendas > Aprovações`",
+    "intro": "Se o cliente controla desconto, configure a alçada e faça um desconto passar pela aprovação. Sem faixa cadastrada não há alçada.",
     "passos": [
      {
-      "t": "O consultor confirmou o que precisa estar pronto em outros módulos: empresa com regime, categorias, produtos, clientes e condições (Fundação), Padrões de Integração (Integração), plano de contas e contas do Financeiro de apoio, e certificado e série em homologação para o teste até a nota.",
-      "r": "**Como validar:** checklists anteriores assinados e cadastros financeiros conferidos. **Por quê:** o financeiro de apoio vem antes porque o pedido já precisa de condição e plano de contas. **Fonte:** VEN C, pré-requisitos; README da cadeia comercial, ordem de implantação.",
+      "t": "**Faça:** em `Alçadas de Desconto`, cadastre com o gestor as faixas da empresa: limite em percentual ou valor, nível e aprovador (usuários ou um perfil), sem sobrepor faixas.",
+      "r": "**Explique ao cliente:** as faixas são por empresa; desconto que vem do CEM, do Mobi ou do arquivo não conta para a alçada. **Confira:** as faixas salvas. **Fonte:** Vendas C, etapa 3.",
       "s": "d"
      },
      {
-      "t": "Cada CFOP de saída usado foi conferido com o contador quanto a gerar financeiro.",
-      "r": "**Como validar:** a lista assinada bate com o cadastro de CFOP. **Por quê:** remessa marcada como gera financeiro obriga condição e parcelas; o contrário deixa venda sem título. **Fonte:** VEN-PED-001, VEN-PED-017.",
+      "t": "**Faça:** com o usuário vendedor, dê no pedido B um desconto acima da faixa e salve.",
+      "r": "**Explique ao cliente:** o pedido vai para Aprovação pendente e espera o aprovador. **Confira:** o status “Aprovação pendente” na lista. **Fonte:** Vendas B, seção 1; VEN-PED-034; README da cadeia comercial, teste ponta a ponta, passo 2.",
       "s": "d"
      },
      {
-      "t": "Um pedido de teste com um item de cada categoria (unitário, peso, área e esquadria com cor, altura e largura) foi criado e conferido: valor por categoria, impostos e parcelas.",
-      "r": "**Como validar:** `Vendas > Pedidos de Venda` mostra o pedido `Em aberto`, sem aviso de configuração tributária incompleta. **Por quê:** o aviso indica pendência fiscal a resolver antes. **Fonte:** VEN-PED-008, VEN-PED-010, VEN-PED-012, VEN-PED-015.",
+      "t": "**Faça:** (bloqueio de propósito) tente faturar ou encerrar o pedido B em Aprovação pendente.",
+      "r": "**Explique ao cliente:** pedido em Aprovação pendente não fatura nem encerra. **Confira:** a ação recusada ou indisponível. **Fonte:** Vendas C, etapa 3.",
       "s": "d"
      },
      {
-      "t": "Se o cliente continua a numeração antiga, o primeiro número de pedido foi combinado.",
-      "r": "**Como validar:** o número está na ata. **Por quê:** número repetido é recusado. **Fonte:** VEN-PED-004.",
-      "s": "d",
-      "campo": "Primeiro número de pedido"
-     },
-     {
-      "t": "As faixas de alçada de desconto foram cadastradas por empresa, sem sobreposição, com os aprovadores (usuários ou perfil).",
-      "r": "**Como validar:** `Vendas > Configurações > Alçadas de Desconto`. **Por quê:** desconto vindo do CEM não conta para a alçada; o vendedor não aprova o próprio desconto. **Fonte:** VEN-PED-034.",
-      "s": "d"
-     },
-     {
-      "t": "Os perfis do vendedor e do gestor permitem o que cada um faz: lançar, cancelar, gerar títulos, liberar para expedição, aprovar desconto e, para quem configura, a comissão.",
-      "r": "**Como validar:** login de teste com um vendedor e com o gestor. **Por quê:** as telas de regras e configurações da comissão aparecem no menu para quem não consegue abri-las; confira com o usuário real. **Fonte:** VEN C, etapa 4.",
-      "s": "d"
-     },
-     {
-      "t": "Se PRO: comissão ativada com regime e base aprovados, regras cadastradas (geral, por vendedor, produto, categoria ou cliente) e conferidas no simulador com uma venda real.",
-      "r": "**Como validar:** `Controle de Comissão > Simulador` mostra o valor esperado pelo gestor. **Por quê:** sem o módulo CRM o percentual do vendedor não aparece no participante; use regra por vendedor. **Fonte:** VEN-COM-001, VEN-COM-005, VEN-COM-006.",
-      "s": "d"
-     },
-     {
-      "t": "Se PRO: metas mensais cadastradas sem vigência sobreposta e contratos de fornecimento criados com valor global, origem do abatimento e, com retenção, o término previsto.",
-      "r": "**Como validar:** `Metas de Vendas > Cadastro` e `Contratos de Fornecimento`. **Por quê:** valor global só muda em rascunho; depois, só por aditivo. **Fonte:** VEN-MET-001, VEN-CTR-002, VEN-CTR-008.",
+      "t": "**Faça:** entre com o aprovador, abra `Vendas > Aprovações` e aprove o desconto do pedido B (ou use `Aprovar desconto` no menu da linha).",
+      "r": "**Explique ao cliente:** `Vendas > Aprovações` cobre desconto e comissão; pedido sem desconto não gera aprovação. O botão **Aprovar** da linha aprova com um clique. **Confira:** o pedido B volta a Em aberto. **Fonte:** Vendas C, etapa 3; Vendas B, seção 1; teste do fluxo completo, bloco 2.",
       "s": "d"
      }
     ]
    },
    {
-    "titulo": "3. Condução do treinamento",
-    "intro": "Treine com pedidos reais do cliente, de preferência os que ele vai faturar na semana. Siga o fluxo da venda: pedido, aprovação, faturamento, títulos e liberação para os outros setores. Mostre sempre o impacto no módulo seguinte e adapte o fluxo ao cliente, por exemplo encerrando o pedido e gerando títulos antes do faturado, quando for o caso.",
+    "titulo": "4. Títulos pelo pedido e o financeiro nascendo",
+    "onde": "menu `⋯ > Gerar Títulos` do pedido e `Financeiro > Contas a Receber`",
+    "intro": "Use o pedido A para mostrar a venda que gera o contas a receber antes da nota (venda antecipada, sinal). O pedido B será faturado no bloco 5: nunca faça os dois no mesmo pedido.",
     "passos": [
      {
-      "t": "O consultor apresentou o fluxo na sequência: orçamento no CEM ou pedido digitado → pedido `Em aberto` → aprovação, se houver → faturar → nota → contas a receber → liberação para Serviços, Produção e Expedição.",
-      "r": "**Como validar:** o key user desenha o fluxo com as palavras dele. **Por quê:** Vendas alimenta Faturamento, Fiscal, Financeiro, Produção e Expedição. **Fonte:** Apostila do Consultor, Módulo Vendas na implantação.",
+      "t": "**Faça:** no menu `⋯` do pedido A, clique em **Gerar Títulos** e confirme.",
+      "r": "**Explique ao cliente:** o sistema gera um título por parcela; só gera em pedido Em aberto, com parcelas e CFOP que gera financeiro. Meio de pagamento do tipo Boleto exige conta emissora de boletos. **Confira:** a coluna TÍTULOS do pedido A passa a “Gerados”. **Fonte:** procedimento Gerar títulos e receber; Vendas B, seção 2; VEN-TIT-001, VEN-TIT-005; teste do fluxo completo, bloco 7.",
       "s": "d",
-      "campo": "Data do treinamento"
+      "campo": "Nº dos títulos do pedido A"
      },
      {
-      "t": "O consultor lançou com o vendedor um pedido real do cliente, com produtos de categorias diferentes, e mostrou como o valor de cada item é calculado.",
-      "r": "**Como validar:** o vendedor explica por que o perfil sai por peso e o vidro por área. **Por quê:** o valor do item vem da categoria. **Fonte:** VEN-PED-008, CAD-PRO-020.",
+      "t": "**Faça:** abra `Financeiro > Contas a Receber`, limpe o filtro **Status** (vem em “Em aberto”) e pesquise o **Documento** do pedido A.",
+      "r": "**Explique ao cliente:** é aqui que o financeiro acompanha a parcela até o recebimento. **Confira:** valor e vencimento iguais aos da parcela do pedido. **Fonte:** procedimento Gerar títulos e receber.",
       "s": "d"
      },
      {
-      "t": "O consultor explicou os status do pedido e o que cada ação muda: encerrar, cancelar, excluir e faturar.",
-      "r": "**Como validar:** o cliente diz quando usar encerrar e quando usar cancelar. **Por quê:** pedido encerrado não cancela depois; só pedido `Em aberto` se exclui. **Fonte:** VEN-STA-003, VEN-STA-005, VEN-EXC-001.",
+      "t": "**Faça:** (bloqueio de propósito) volte ao pedido A e tente mudar o valor de um item ou a condição de pagamento.",
+      "r": "**Explique ao cliente:** gerar títulos pelo pedido “congela” os valores; só observações e vendedor podem mudar. **Confira:** a recusa “Não é possível alterar campos financeiros (...) pois o pedido possui títulos a receber ativos vinculados…”. **Fonte:** Vendas C, erros comuns; VEN-PED-025.",
       "s": "d"
      },
      {
-      "t": "O consultor deu, com o vendedor, um desconto acima da faixa livre e mostrou o pedido em `Aprovação pendente`, a aprovação pelo gestor em `Vendas > Aprovações` e a volta a `Em aberto`.",
-      "r": "**Como validar:** o pedido pendente não fatura nem encerra. **Por quê:** é o controle de desconto que o cliente pediu. **Fonte:** VEN-PED-034.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor faturou com o cliente um pedido de teste até a nota autorizada em homologação, e mostrou os títulos gerados conforme a decisão de pedido ou nota.",
-      "r": "**Como validar:** o pedido fica `Faturado` e os títulos aparecem no contas a receber. **Por quê:** é a ligação direta com Faturamento e Financeiro. **Fonte:** VEN-FAT-001, VEN-FAT-006, VEN-TIT-005.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor mostrou a ordem de cancelamento: cancelar a nota → excluir os títulos → cancelar o pedido com motivo de pelo menos 10 caracteres.",
-      "r": "**Como validar:** o cliente vê a recusa quando tenta pular a ordem. **Por quê:** pedido com nota ativa ou títulos vinculados não cancela. **Fonte:** VEN-STA-004, VEN-STA-007, VEN-STA-008.",
-      "s": "d"
-     },
-     {
-      "t": "Quando aplicável, o consultor demonstrou o faturamento parcial (pedido filho com o saldo) e a liberação para Expedição de um pedido faturado.",
-      "r": "**Como validar:** o pedido filho aparece; item físico sem peso é recusado na liberação. **Por quê:** entrega por etapas é comum em obra. **Fonte:** VEN-DES-001, VEN-EXP-001, VEN-EXP-003.",
-      "s": "d"
-     },
-     {
-      "t": "Se PRO: o consultor treinou a rotina mensal da comissão com o gestor (aprovar, fechar o período, extrato e pendências), e o faturamento pelo contrato de fornecimento.",
-      "r": "**Como validar:** o gestor fecha um período de teste; o pedido vinculado ao contrato só vira nota pelo `Faturar` do contrato. **Por quê:** é rotina de fim de mês. **Fonte:** VEN-COM-011, VEN-COM-014, VEN-CTR-013, VEN-CTR-017.",
+      "t": "**Faça:** mostre, sem executar, que um cliente sem o módulo Financeiro não vê **Gerar Títulos**.",
+      "r": "**Explique ao cliente:** sem Financeiro não se exige plano de contas, portador nem conta bancária, mas condição de pagamento e parcelas continuam exigidas quando o CFOP gera financeiro. **Confira:** se o cliente tem o Financeiro contratado. **Fonte:** Vendas A; VEN-PED-041.",
       "s": "d"
      }
     ]
    },
    {
-    "titulo": "4. Validação do aprendizado",
-    "intro": "Peça a cada perfil que execute a sua parte sem ajuda: o vendedor lança, o gestor aprova, quem fatura fatura e cancela. Use um caso real que passe pelos módulos da cadeia. Registre os números como evidência.",
+    "titulo": "5. Faturar e ver a nota nascer",
+    "onde": "menu `⋯ > Faturar` do pedido e `Faturamento > Notas Fiscais`",
+    "intro": "Agora o pedido B vira nota. O consultor mostra a nota nascendo do pedido e os títulos nascendo da nota, sem transmitir.",
     "passos": [
      {
-      "t": "O vendedor lançou sozinho um pedido completo, que nasceu `Em aberto`, com impostos e parcelas certos.",
-      "r": "**Como validar:** anote o número do pedido. **Por quê:** é a operação diária do vendedor. **Fonte:** VEN-PED-001, VEN-PED-015.",
-      "s": "d",
-      "campo": "Número do pedido de teste"
+      "t": "**Faça:** no menu `⋯` do pedido B, clique em **Faturar** e importe os itens do pedido com “Recalcular impostos”.",
+      "r": "**Explique ao cliente:** a nota nasce com cliente, CFOP, parcelas e impostos do pedido. **Confira:** cliente, CFOP, parcelas, impostos e a faixa de Homologação na “Nova NF-e — Venda de Mercadoria”. **Fonte:** teste do fluxo completo, bloco 5; procedimento Faturar o pedido e finalizar a nota.",
+      "s": "v"
      },
      {
-      "t": "O gestor aprovou sozinho um desconto acima da alçada, e o vendedor confirmou que não vê o próprio pedido na fila de aprovação.",
-      "r": "**Como validar:** login de cada um. **Por quê:** prova que a alçada e os perfis estão certos. **Fonte:** VEN-PED-034.",
-      "s": "d"
+      "t": "**Faça:** preencha as **Observações Internas** e clique em **Salvar e Permanecer**.",
+      "r": "**Explique ao cliente:** o pedido passa a Faturado ao **salvar** a nota, mesmo com ela Em Aberto; por isso confira o status da nota, não só o do pedido. **Confira:** pedido B “Faturado” com a coluna NOTA FISCAL preenchida. **Fonte:** teste do fluxo completo, bloco 5; VEN-FAT-006.",
+      "s": "v",
+      "campo": "Nº da nota do pedido B"
      },
      {
-      "t": "O cliente levou um pedido até a nota autorizada em homologação e conferiu os títulos com a condição de pagamento.",
-      "r": "**Como validar:** número e chave da nota; parcelas iguais à condição. **Por quê:** é o teste ponta a ponta da cadeia. **Fonte:** VEN-FAT-001; README da cadeia, teste ponta a ponta.",
-      "s": "d"
+      "t": "**Faça:** em `Faturamento > Notas Fiscais`, aba **NF-e**, abra o menu `⋯` da nota e use **Ver Timeline** e **Preview da DANFE** (abre em nova aba).",
+      "r": "**Explique ao cliente:** a lista de notas começa filtrada em “Em Aberto”. **Confira:** a DANFE de pré-visualização com os itens do pedido. **Fonte:** teste do fluxo completo, bloco 5; procedimento Faturar o pedido e finalizar a nota.",
+      "s": "v"
      },
      {
-      "t": "O cliente cancelou sozinho um pedido de teste faturado, na ordem nota → títulos → pedido, e explicou por que a ordem importa.",
-      "r": "**Como validar:** o pedido fica `Cancelado`, com motivo. **Por quê:** é o erro mais frequente no pós go-live. **Fonte:** VEN-STA-004, VEN-STA-007, VEN-STA-008.",
-      "s": "d"
+      "t": "**Faça:** com a autorização do responsável, clique em **Finalizar NF** e confirme. Não clique no avião de papel (Transmitir).",
+      "r": "**Explique ao cliente:** transmitir é irreversível, mesmo em homologação, e só se faz com o responsável fiscal. **Confira:** a nota “Finalizada”, só para visualização. Sem local de estoque o sistema bloqueia e o número da nota é consumido. **Fonte:** teste do fluxo completo, bloco 5; procedimento Faturar o pedido e finalizar a nota.",
+      "s": "v"
      },
      {
-      "t": "O cliente explicou o que acontece com a ordem de produção quando cancela um pedido que já está em produção.",
-      "r": "**Como validar:** a explicação bate com a regra. **Por quê:** a ordem não é cancelada; fica marcada e alguém precisa tratar. **Fonte:** VEN-STA-009.",
-      "s": "d"
-     },
-     {
-      "t": "Se PRO: o gestor conferiu a comissão prevista de uma nota de teste e achou em pendências um pedido sem vendedor.",
-      "r": "**Como validar:** a comissão aparece `Prevista`; o pedido sem vendedor está em pendências. **Por quê:** é a conferência mensal que o gestor fará sozinho. **Fonte:** VEN-COM-003, VEN-COM-004.",
+      "t": "**Faça:** abra `Financeiro > Contas a Receber` e procure os títulos da nota do pedido B.",
+      "r": "**Explique ao cliente:** quando o CFOP gera financeiro e o pedido não tem títulos, é a nota que gera o contas a receber; as parcelas seguem a condição de pagamento. **Confira:** os títulos com valor e vencimento das parcelas. **Fonte:** README da cadeia comercial, caminho de uma venda e teste ponta a ponta, passo 4.",
       "s": "d"
      }
     ]
    },
    {
-    "titulo": "5. Preparação para utilização e go-live",
-    "intro": "Antes de virar, limpe os testes e confira as decisões que não mudam depois, como regime da comissão e origem do abatimento do contrato. No go-live, fique perto dos primeiros pedidos reais. Só libere o Faturamento com o checklist de Vendas assinado.",
+    "titulo": "6. Encerrar e cancelar na ordem certa",
+    "onde": "menu `⋯` do pedido (`Encerrar`, `Cancelar`) e `Financeiro > Contas a Receber`",
+    "intro": "Desfazer tem ordem: nota, depois títulos, depois pedido. Demonstre as recusas de propósito para o cliente nunca ficar travado.",
     "passos": [
      {
-      "t": "Pedidos, notas, títulos e comissões de teste foram cancelados ou excluídos antes do go-live.",
-      "r": "**Como validar:** as listas não têm testes. **Por quê:** teste esquecido entra nas metas e no contas a receber. **Fonte:** VEN D, aceite; VEN-MET-002.",
+      "t": "**Faça:** (bloqueio de propósito) tente cancelar o pedido B, que está Faturado.",
+      "r": "**Explique ao cliente:** só cancela pedido Em aberto ou Aprovação pendente; pedido faturado exige cancelar a nota primeiro (com o responsável fiscal), e aí o pedido volta a Em aberto. **Confira:** a recusa “Não é possível cancelar um pedido com status “…”. Apenas pedidos “Em aberto” ou “Aprovação pendente” podem ser cancelados.” **Fonte:** Vendas C, erros comuns; VEN-STA-005, VEN-STA-007; Vendas B, seção 1.",
       "s": "d"
      },
      {
-      "t": "Se PRO: regime e base da comissão foram confirmados pelo gestor **antes da primeira nota real**.",
-      "r": "**Como validar:** ata assinada. **Por quê:** mudar depois vale só para comissões novas e não recalcula as antigas. **Fonte:** VEN-COM-024; README da cadeia, decisão X6.",
+      "t": "**Faça:** (bloqueio de propósito) tente cancelar o pedido A, que tem títulos.",
+      "r": "**Explique ao cliente:** títulos em aberto ou recebidos bloqueiam o cancelamento. **Confira:** a recusa “Não é possível cancelar o pedido pois existem títulos a receber vinculados. Exclua os títulos primeiro.” **Fonte:** Vendas C, erros comuns; VEN-STA-008.",
       "s": "d"
      },
      {
-      "t": "Os pedidos em aberto do sistema antigo foram lançados ou importados, e o cliente sabe que pedidos com data antiga entram nas metas dos meses antigos.",
-      "r": "**Como validar:** contagem de pedidos abertos igual à origem. **Por quê:** o realizado das metas usa a data do pedido. **Fonte:** VEN-MET-002; VEN C, pré-requisitos do cliente.",
+      "t": "**Faça:** exclua os títulos do pedido A em `Financeiro > Contas a Receber` e cancele o pedido A informando um motivo curto (menos de 10 caracteres) e depois um motivo completo.",
+      "r": "**Explique ao cliente:** o motivo é obrigatório e precisa ter pelo menos 10 caracteres; cancelado é definitivo. Com Produção, a OP ativa não é cancelada: o sistema avisa, pede confirmação e marca a OP. **Confira:** primeiro “Informe o motivo do cancelamento com no mínimo 10 caracteres.” e depois o pedido A “Cancelado”. **Fonte:** Vendas C, erros comuns; VEN-STA-004, VEN-STA-006, VEN-STA-009.",
       "s": "d"
      },
      {
-      "t": "O cliente foi avisado dos comportamentos que afetam o uso: o percentual de comissão no vendedor depende do módulo CRM, a chave de reduzir comissão na devolução não tem efeito e o pedido só se vincula a contrato em `Em aberto` ou `Encerrado`.",
-      "r": "**Como validar:** os avisos estão na ata. **Por quê:** evita configurar algo que não funciona como o rótulo sugere. **Fonte:** VEN D, aceite; VEN-CTR-004.",
-      "s": "d"
-     },
-     {
-      "t": "Nas primeiras semanas, o consultor acompanha com o key user os pedidos reais: CFOP certo, títulos sem duplicar entre pedido e nota, cancelamentos na ordem certa e pedidos parados em aprovação.",
-      "r": "**Como validar:** amostra semanal de pedidos e títulos. **Por quê:** erro de CFOP e de origem dos títulos só aparece no Financeiro. **Fonte:** README da cadeia, decisões X1 e X2; Apostila do Consultor, go-live.",
-      "s": "d"
-     },
-     {
-      "t": "O checklist de Vendas foi assinado com todos os itens obrigatórios marcados, e só então o Faturamento foi liberado; o ambiente segue em homologação até a validação de Faturamento e Financeiro.",
-      "r": "**Como validar:** checklist assinado e ciência na ata. **Por quê:** a cadeia segue Vendas → Faturamento → Financeiro. **Fonte:** VEN D, uso e aceite; README da cadeia comercial.",
+      "t": "**Faça:** crie um terceiro pedido de teste e use **Encerrar**.",
+      "r": "**Explique ao cliente:** Encerrar só vale para pedido Em aberto, fecha a venda sem nota, conta como vendido e **não volta nem cancela**. Combine com o cliente quando usar. **Confira:** o pedido “Encerrado”, só para visualização. **Fonte:** Vendas B, seção 1; VEN-STA-003, VEN-STA-005; Manual 03 Vendas, 2.3.",
       "s": "d",
-      "campo": "Data de liberação do Faturamento"
+      "campo": "Nº do pedido encerrado (PV-)"
+     }
+    ]
+   },
+   {
+    "titulo": "7. Liberar para expedição e ver nos indicadores",
+    "onde": "menu `⋯ > Liberar para Expedição` do pedido, `Vendas > Dashboard Vendas` e `Vendas > Demonstrativos > Carteira de Pedidos`",
+    "intro": "Para quem contratou Expedição, o pedido só entra na fila de carga quando alguém libera. Feche mostrando os pedidos do roteiro nos indicadores.",
+    "passos": [
+     {
+      "t": "**Faça:** no menu `⋯` do pedido B (Faturado), clique em **Liberar para Expedição**.",
+      "r": "**Explique ao cliente:** a liberação nunca é automática e exige o módulo Expedição; o pedido entra na fila de carga. **Confira:** o status “Lib. Expedição”. **Fonte:** Vendas B, seções 1 e 2; VEN-EXP-001; teste do fluxo completo, bloco 6.",
+      "s": "d"
+     },
+     {
+      "t": "**Faça:** mostre **Reverter Liberação** e explique o caso de item sem peso.",
+      "r": "**Explique ao cliente:** reverter volta o pedido a Faturado (com nota) ou Encerrado (sem nota); item físico sem peso impede a liberação (“N item(ns) sem peso cadastrado…”). **Confira:** o pedido de volta a Faturado se reverter; libere de novo. **Fonte:** Vendas B, seção 1; Vendas C, erros comuns; VEN-EXP-003.",
+      "s": "d"
+     },
+     {
+      "t": "**Faça:** em `Vendas > Dashboard Vendas`, escolha o período e clique em **Aplicar**.",
+      "r": "**Explique ao cliente:** os cartões Total em vendas, Ticket médio, Em aberto e Pendentes de faturamento são recalculados; o bloco “Crescimento vs. período anterior” não segue o filtro de datas. **Confira:** os pedidos do roteiro nos números. **Fonte:** trilha do estagiário 04, bloco 4; teste do fluxo completo, bloco 8.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** em `Vendas > Demonstrativos > Carteira de Pedidos`, leia A faturar, A expedir, Em carga, Expedido, Entregue e o aging por dias.",
+      "r": "**Explique ao cliente:** a carteira mostra onde cada pedido está parado. **Confira:** o pedido B no recorte do status atual. **Fonte:** trilha do estagiário 04, bloco 4; teste do fluxo completo, bloco 8.",
+      "s": "v"
+     }
+    ]
+   },
+   {
+    "titulo": "8. Comissões, metas e contrato (só se contratados)",
+    "onde": "`Vendas > Controle de Comissão`, `Vendas > Metas de Vendas` e `Vendas > Contratos de Fornecimento`",
+    "intro": "Faça cada passo só se o recurso foi contratado. Regime e base da comissão precisam ser decididos antes da primeira nota real.",
+    "passos": [
+     {
+      "t": "**Faça:** (comissão) em `Controle de Comissão > Configurações`, use “Abrir assistente de configuração” e defina com o cliente “Quando a comissão conta” (No recebimento / No faturamento) e a base; depois crie as regras em `Controle de Comissão > Regras`.",
+      "r": "**Explique ao cliente:** regime e base valem só para comissões novas; mudar depois não recalcula. O pagamento da comissão gera título no Contas a Pagar. **Confira:** a configuração salva e uma regra ativa. **Fonte:** Vendas C, etapa 5; VEN-COM-014, VEN-COM-024.",
+      "s": "d"
+     },
+     {
+      "t": "**Faça:** (comissão) no **Simulador**, informe valor 10.000 e comissão 5% e clique em Simular.",
+      "r": "**Explique ao cliente:** o simulador não grava nada e mostra quando a comissão é liberada. **Confira:** comissão estimada R$ 500,00. **Fonte:** trilha do estagiário 04, bloco 5; Vendas C, etapa 5.4.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** (metas) em `Metas de Vendas > Cadastro`, cadastre uma meta mensal por empresa ou por vendedor e abra o painel de Metas.",
+      "r": "**Explique ao cliente:** o realizado são os pedidos não cancelados pela data do pedido; meta por equipe não existe. Sem meta, o painel mostra “0% da meta — No ritmo”, que não é resultado real. **Confira:** a meta no painel; vigência sobreposta é recusada (“Já existe meta ativa para este escopo com vigência sobreposta…”). **Fonte:** Vendas C, etapa 6; VEN-MET-001, VEN-MET-002; trilha do estagiário 04.",
+      "s": "d"
+     },
+     {
+      "t": "**Faça:** (contrato) em `Contratos de Fornecimento`, crie um contrato com empresa, cliente (construtora), valor global e origem do abatimento, ative-o e vincule um pedido Em aberto do mesmo cliente.",
+      "r": "**Explique ao cliente:** o valor global só muda em rascunho (depois, aditivo); a origem do abatimento não muda depois do primeiro abatimento; pedido vinculado não cancela e só vira nota pelo `Faturar` do contrato. **Confira:** o pedido na aba do contrato; nota direto do pedido é recusada (“Este pedido está vinculado ao Contrato de Fornecimento #N…”). **Fonte:** Vendas C, etapa 7; VEN-CTR-002, VEN-CTR-004, VEN-CTR-017.",
+      "s": "d",
+      "campo": "Nº do contrato"
      }
     ]
    }
   ],
   "resultado": [
    {
-    "t": "Os CFOPs de saída estão revisados com o contador e a origem do contas a receber (pedido ou nota) está decidida em ata.",
+    "t": "Um pedido criado (ou importado), ajustado e salvo, com parcelas pela condição de pagamento.",
     "s": "d"
    },
    {
-    "t": "O vendedor lança pedido sozinho, com valor, impostos e parcelas certos.",
+    "t": "Um desconto acima da alçada passou por Aprovação pendente e foi aprovado por outro usuário.",
     "s": "d"
    },
    {
-    "t": "A alçada de desconto funciona, quando usada, e o gestor aprova sozinho.",
+    "t": "Um pedido gerou títulos e outro foi faturado; o título e a nota foram encontrados no Financeiro e no Faturamento.",
     "s": "d"
    },
    {
-    "t": "Um pedido chegou à nota autorizada em homologação e os títulos batem com a condição.",
+    "t": "As recusas de cancelamento foram demonstradas e um pedido foi cancelado na ordem nota → títulos → pedido.",
     "s": "d"
    },
    {
-    "t": "O cliente cancela na ordem nota → títulos → pedido e sabe a diferença entre encerrar, cancelar e excluir.",
+    "t": "Um pedido faturado foi liberado para expedição (quem tem Expedição) e aparece no Dashboard e na Carteira de Pedidos.",
     "s": "d"
    },
    {
-    "t": "Comissão, metas e contratos, quando contratados, estão configurados e conferidos com um caso real.",
+    "t": "Nenhuma nota foi transmitida sem o responsável fiscal.",
     "s": "d"
    }
   ],
   "atencao": [
-   "CFOP com a marcação de gerar financeiro errada obriga condição e parcelas em remessa, ou deixa venda sem título (VEN-PED-001, VEN-PED-017).",
-   "Pedido com títulos gerados fica travado para campos financeiros; para alterar valores, exclua os títulos antes (VEN-PED-025).",
-   "Pedido encerrado não pode ser cancelado depois; use encerrar só para venda sem nota (VEN-STA-003, VEN-STA-005).",
-   "Cancelar pedido não cancela a ordem de produção, que fica marcada (VEN-STA-009).",
-   "Desconto que vem do CEM não passa pela alçada (VEN-PED-034).",
-   "Regime e base da comissão decididos depois da primeira nota real não recalculam as comissões antigas (VEN-COM-024).",
-   "Pedido vinculado a contrato de fornecimento não cancela e não vira nota sem passar pelo `Faturar` do contrato (VEN-CTR-017).",
-   "Na versão 1.22.12, as lixeiras de item e de parcela do pedido removiam sem confirmação; oriente o cliente a conferir antes de clicar."
+   "Só em ambiente de teste ou homologação; pedidos com “TESTE FLUXO CONSULTOR”. Nota fiscal só é transmitida com o responsável fiscal: o roteiro só finaliza.",
+   "Não gere títulos pelo pedido e fature o mesmo pedido: escolha um caminho com o cliente (pedido ou nota) e mantenha.",
+   "O pedido vira Faturado ao **salvar** a nota, mesmo com ela Em Aberto: confira o status da nota em `Faturamento > Notas Fiscais`.",
+   "Encerrado não volta e não cancela: use só quando a venda está fechada sem nota.",
+   "Ordem para desfazer: cancelar a nota → excluir ou estornar os títulos → cancelar o pedido (motivo com 10 caracteres ou mais).",
+   "Pedido com títulos só aceita mudar observações e vendedor.",
+   "Hoje o campo “% Comissão” do vendedor só aparece no participante quando o cliente tem o módulo CRM; sem CRM, use regra por vendedor.",
+   "Há pedidos com o mesmo número em empresas ou séries diferentes e pedidos desdobrados (ex.: PV-000395/2): confira cliente e valor."
   ],
   "naoValidado": [
-   "O rótulo do campo que marca se o CFOP gera financeiro não foi confirmado; confira na tela de CFOP antes de ensinar.",
-   "A continuação da numeração antiga do pedido (informar o primeiro número à mão e os seguintes seguirem) é inferência da fonte; teste em homologação.",
-   "Uma regra diz que o pedido vinculado ao contrato pode estar “não faturado”, mas a fonte registra que só `Em aberto` ou `Encerrado` são aceitos; confira na tela.",
-   "O rótulo da chave de reduzir a comissão na devolução diverge do status que a comissão assume; confira na tela e não configure essa chave como se tivesse efeito.",
-   "A Apostila lista importar, cadastrar e aprovar pedido e faturar; a gestora acrescenta alçada, comissão, metas e contratos. Confira com a coordenação o escopo contratado antes de treinar o PRO.",
-   "Os roteiros de vídeo de Vendas não foram conferidos contra a versão atual (alçada de desconto e pedido sem Financeiro são posteriores); confira na tela antes de usá-los no treinamento."
+   "Quando aparece **Gerar Títulos**: a gestora diz só em pedido Em aberto; o teste do fluxo completo viu a opção desabilitada em Faturado e Lib. Expedição (“Pedido já faturado”) e de volta depois de Entregue; o procedimento cita Em aberto ou Entregue sem títulos. Conferir na tela.",
+   "Quando aparece **Liberar para Expedição**: a gestora diz pedido Faturado ou Encerrado; o teste do fluxo completo diz que a opção só aparece depois de faturado. Conferir com um pedido Encerrado.",
+   "Encerrado e nota: a gestora mostra que um pedido Encerrado ainda pode receber nota (vira Faturado); o Manual 03 Vendas diz que Encerrar conclui o pedido sem faturar o saldo. Conferir na tela.",
+   "Saída de estoque na nota: a gestora diz que o CFOP que movimenta estoque baixa o estoque na nota; no teste do fluxo completo a finalização da nota não gerou saída de estoque. Conferir em `Estoque > Movimentos`.",
+   "Numeração do pedido: a gestora indica, como inferência, que informar à mão o primeiro número faz os seguintes seguirem automáticos. Conferir antes de ensinar."
   ],
   "video": {
    "id": "consultor-03-comercial",
@@ -1210,283 +1234,285 @@ export const CHECKLISTS_IMPLANTACAO = [
   "id": "implantacao-faturamento",
   "arquivo": "implantacao-05-faturamento.html",
   "etiqueta": "Consultor · Implantação · Faturamento",
-  "titulo": "Implantação de Faturamento",
-  "subtitulo": "Checklist para o consultor conduzir e verificar a implantação do Faturamento (NF-e e NFS-e), do levantamento à primeira nota real em produção.",
-  "objetivo": "Ao final, o faturista do cliente fatura um pedido, transmite a nota, corrige com CC-e, cancela dentro do prazo e gera devolução sem ajuda, e sabe ler o que o sistema aponta quando a nota não sai. O Faturamento liga o comercial ao fiscal, ao estoque e ao financeiro: um CFOP mal marcado ou uma série errada aparecem como título faltando, estoque errado ou nota rejeitada. Todo teste é em **homologação**, com o responsável fiscal do cliente presente.",
-  "rodape": "Checklist de implantação · Faturamento · fontes: Faturamento C, A e D da metodologia, README da cadeia comercial, Apostila do Consultor (Módulo Faturamento; Diagnóstico de nota fiscal), FAQ de limitações · Harness Faktory Flow",
+  "titulo": "Implantação de Faturamento: roteiro prático com o cliente",
+  "subtitulo": "Do pedido de venda à nota: faturar, importar os itens, conferir CFOP, impostos, parcelas e transporte, salvar, transmitir em homologação com o responsável fiscal, ver os reflexos no financeiro e no estoque e cancelar na ordem certa. NFS-e e nota gerencial quando o cliente usar.",
+  "objetivo": "Ao final, o faturista do cliente terá visto um pedido virar nota autorizada em homologação, os títulos nascendo da nota e uma segunda nota cancelada na ordem certa. Ele saberá ler o quadro de impostos, o pré-voo e a rejeição, e saberá o que só o responsável fiscal pode fazer.",
+  "rodape": "Checklist de implantação · Faturamento · fontes: Faturamento A, B, C e D da metodologia, README da cadeia comercial, fluxo antigo \"Fluxo de faturamento e fiscal\", procedimento faturar o pedido e finalizar a nota · Harness Faktory Flow",
   "prerequisitos": [
    {
-    "t": "A Fundação está concluída: empresa com regime, IE, CNAE e endereço com cidade do IBGE, e certificado A1 válido em cada empresa que emite.",
-    "r": "**Como validar:** abrir `Configurações > Empresas` e `Faturamento > Configurações > Certificados` com o cliente. **Por quê:** a lista de pendências da transmissão barra endereço sem IBGE e certificado vencido. **Fonte:** CAD-EMP-001, CAD-EMP-006, FAT-TRA-001.",
+    "t": "Fundação concluída: empresa com regime, IE e endereço com cidade do IBGE, certificado A1 válido e **série e próximo número da NF-e** continuando o sistema antigo.",
+    "r": "**Confira:** `Configurações > Empresas` e `Faturamento > Configurações > Certificados` (botão \"Configuração Guiada\"). O número é dado na transmissão e nunca volta: série errada colide com a numeração antiga (rejeição 539). **Fonte:** FAT C, pré-requisitos; FAT-TRA-002; README da cadeia, decisão X5.",
     "s": "d"
    },
    {
-    "t": "A configuração fiscal foi feita com o contador do cliente (CFOP, NCM, CST/CSOSN) antes do primeiro teste de nota.",
-    "r": "**Como validar:** checklist do Fiscal com os itens de configuração marcados. **Por quê:** o Faturamento só é implantado depois de Vendas e das regras fiscais; erro fiscal costuma vir de cadastro. **Fonte:** Apostila do Consultor, Módulo Faturamento; Fiscal C.",
-    "s": "d"
+    "t": "Ambiente fiscal em **Homologação**: a nota mostra a faixa \"Ambiente NF-e: HOMOLOGAÇÃO — sem validade fiscal\".",
+    "r": "**Confira:** a faixa na primeira nota e a coluna Ambiente em `Faturamento > Notas Fiscais`. **Fonte:** fluxo antigo \"Fluxo de faturamento e fiscal\", pré-requisitos; FAT-GER-002.",
+    "s": "v"
    },
    {
-    "t": "Vendas está implantado e há pelo menos um pedido de venda real do cliente `Em aberto` (digitado ou importado do CEM) para faturar no treinamento.",
-    "r": "**Como validar:** abrir `Vendas > Pedidos de Venda` e localizar o pedido. **Por quê:** o fluxo começa no pedido; treinar com nota avulsa não prepara o faturista. **Fonte:** README da cadeia comercial, ordem de implantação.",
-    "s": "d"
-   },
-   {
-    "t": "A série e o último número de NF-e (e de RPS, se emite NFS-e) do sistema antigo foram levantados com o cliente.",
-    "r": "**Como validar:** número e série anotados, conferidos com a última nota emitida. **Por quê:** o número é dado na transmissão e nunca volta; sem a série certa, a numeração colide com a antiga. **Fonte:** FAT-TRA-002.",
+    "t": "Dois pedidos de venda de teste \"TESTE FLUXO CONSULTOR\" Em aberto, **sem títulos gerados**, com CFOP que gera financeiro, condição de pagamento e plano de contas: um para transmitir, outro para cancelar.",
+    "r": "**Confira:** em `Vendas > Pedidos de Venda`, coluna TÍTULOS \"Sem títulos\" e NOTA FISCAL \"—\". **Fonte:** README da cadeia, teste ponta a ponta (passos 3 e 7); FAT-TIT-001.",
     "s": "d",
-    "campo": "Série e último número do sistema antigo"
+    "campo": "Nº dos pedidos"
    },
    {
-    "t": "O módulo Faturamento aparece sem cadeado, o cliente sabe o que é PRO (Demonstrativos, Pacote do Contador, Envio de Demonstrativos, MDF-e) e está definido se ele tem o Financeiro.",
-    "r": "**Como validar:** navegar no menu com o cliente e registrar em ata. **Por quê:** sem Financeiro a nota não gera título nem pede plano de contas. **Fonte:** FAT-GER-001, FAT-IND-004, FAT-TIT-007.",
+    "t": "**Almoxarifado central ativo** em `Estoque > Locais` (ou local de estoque da obra).",
+    "r": "**Confira:** sem ele \"Finalizar NF\" recusa com \"Não foi possível resolver o local de estoque…\". **Fonte:** fluxo antigo \"Fluxo de faturamento e fiscal\", pré-requisitos.",
+    "s": "v"
+   },
+   {
+    "t": "CFOPs revisados com o contador (\"Gera Financeiro\", \"Movimenta Estoque\", \"Devolução\") e NCM do produto com CST de PIS/COFINS de saída (roteiro de Fiscal feito antes).",
+    "r": "**Confira:** `Faturamento > Configurações > CFOP` e o NCM do produto. Sem o CST, a nota sai com o quadro \"Impostos não calculados\". **Fonte:** FAT C, etapa 2; fluxo antigo \"Fluxo de faturamento e fiscal\", pré-requisitos.",
     "s": "d"
    },
    {
-    "t": "Plano de contas, condições e meios de pagamento e portadores estão cadastrados (cliente com Financeiro).",
-    "r": "**Como validar:** abrir os cadastros e conferir que há conta analítica para receita de venda. **Por quê:** a nota exige plano de contas quando o CFOP gera financeiro. **Fonte:** FAT-NFE-001.",
+    "t": "Responsável fiscal do cliente presente e perfis definidos: o Faturista emite e transmite, mas não cancela, não emite CC-e nem inutiliza; quem cancela usa Supervisor Fiscal (ou perfil próprio).",
+    "r": "**Confira:** `Segurança > Perfis de Acesso` e o usuário do responsável fiscal. **Fonte:** README da cadeia, decisão X8; FAT C, etapa 6.",
     "s": "d"
    },
    {
-    "t": "O ambiente de NF-e e de NFS-e está em homologação e o responsável fiscal do cliente está identificado e agendado para os testes.",
-    "r": "**Como validar:** conferir o ambiente no assistente de certificados; nome do responsável na ata. **Por quê:** transmitir nota no treinamento só em homologação e com o responsável fiscal. **Fonte:** FAT-GER-002; Faturamento C, resultado esperado.",
-    "s": "d",
-    "campo": "Responsável fiscal do cliente"
+    "t": "Decidido quem gera o contas a receber: o pedido ou a nota.",
+    "r": "**Confira:** ata do kickoff. Se o pedido gerou os títulos, a nota não gera de novo. **Fonte:** README da cadeia, decisão X2; FAT-TIT-001.",
+    "s": "d"
    }
   ],
   "fluxos": [
    {
-    "titulo": "1. Entendimento do cenário do cliente",
-    "intro": "Faça esta conversa com o faturista e o responsável fiscal juntos; quando o assunto for CFOP e textos legais, chame o contador. Você não decide tributação: registra as respostas e leva a lista de CFOPs para o contador aprovar. Peça uma nota antiga de venda (XML) para comparar depois.",
+    "titulo": "1. Faturar o pedido",
+    "onde": "`Vendas > Pedidos de Venda`, menu `⋯ > Faturar`",
+    "intro": "A nota nasce do pedido: o cliente vê que não redigita nada. Vem primeiro porque tudo o que a nota carrega (cliente, CFOP, parcelas) foi decidido no pedido.",
     "passos": [
      {
-      "t": "O consultor perguntou: quais CFOPs o cliente usa em cada operação (venda dentro e fora do estado, remessa, retorno, devolução, bonificação) e qual é o padrão na venda?",
-      "r": "**Como validar:** lista de CFOPs por operação registrada e enviada ao contador. **Por quê:** é o CFOP que decide se a nota gera título e mexe no estoque. **Fonte:** FAT-NFE-001, FAT-NFE-002; decisão X1 da cadeia.",
-      "s": "d",
-      "campo": "Lista de CFOPs por operação"
+      "t": "**Faça:** no primeiro pedido de teste, abra o menu `⋯` e clique em **Faturar**.",
+      "r": "**Explique ao cliente:** a nota herda empresa, cliente, vendedor, CFOP, condição e parcelas do pedido; o nº do pedido fica vinculado e não pode ser alterado. **Confira:** abre \"Nova NF-e — Venda de Mercadoria\" com o diálogo **Selecionar Itens para Importar**. **Fonte:** fluxo antigo \"Fluxo de faturamento e fiscal\", bloco 1; procedimento-faturar-o-pedido-e-finalizar-a-nota, passo 1.",
+      "s": "v"
      },
      {
-      "t": "O consultor perguntou: quem gera o contas a receber hoje, o pedido (cobrança antecipada) ou a nota? A resposta foi combinada com quem implanta o Financeiro.",
-      "r": "**Como validar:** decisão registrada em ata. **Por quê:** se o pedido gerou os títulos, a nota não gera de novo; decidir errado dá título em dobro ou faltando. **Fonte:** FAT-TIT-001; decisão X2 da cadeia.",
+      "t": "**Faça:** importe os itens do pedido com \"Recalcular impostos\".",
+      "r": "**Explique ao cliente:** os impostos são recalculados na nota pelas regras fiscais cadastradas. Se só parte do pedido for faturada, o restante fica num pedido filho `/2`. **Confira:** itens e quantidades iguais aos do pedido. **Fonte:** fluxo antigo \"Fluxo de faturamento e fiscal\", bloco 1; FAT-NFE-012.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** antes de seguir, mostre a faixa \"Ambiente NF-e: HOMOLOGAÇÃO\" no topo da nota.",
+      "r": "**Explique ao cliente:** cada empresa tem um ambiente de NF-e e outro de NFS-e; a nota herda o da empresa e a transmissão recusa ambiente diferente. A virada para produção é por documento, no go-live. **Confira:** a faixa visível. **Fonte:** fluxo antigo \"Fluxo de faturamento e fiscal\", pré-requisitos; FAT-GER-002.",
+      "s": "v"
+     }
+    ]
+   },
+   {
+    "titulo": "2. Conferir a nota: CFOP, impostos, parcelas e transporte",
+    "onde": "tela da nova NF-e",
+    "intro": "Aqui o faturista aprende a ler a nota antes de salvar. Erro de cadastro achado agora não vira nota rejeitada nem título errado depois.",
+    "passos": [
+     {
+      "t": "**Faça:** confira o CFOP e a natureza da operação da nota.",
+      "r": "**Explique ao cliente:** não existe cadastro de natureza de operação: sai a descrição do CFOP (ou o texto digitado na nota). É o CFOP que decide se a nota gera título e se movimenta estoque. **Confira:** o CFOP de venda do pedido, com a descrição aprovada pelo contador. **Fonte:** FAT-NFE-007; FAT-NFE-002; README da cadeia, decisão X1.",
       "s": "d"
      },
      {
-      "t": "O consultor perguntou: o cliente emite NFS-e? Em qual prefeitura, no padrão Nacional ou tradicional? A prefeitura emite por upload de arquivo? Exige código de tributação municipal?",
-      "r": "**Como validar:** prefeitura e padrão anotados; cidade conferida como homologada no provedor antes do kickoff. **Por quê:** município por upload não é suportado e a transmissão é recusada. **Fonte:** FAT-NFS-005, FAT-NFS-016.",
+      "t": "**Faça:** leia o quadro **\"Impostos não calculados no item\"**, se ele aparecer.",
+      "r": "**Explique ao cliente:** o sistema mostra o motivo por tributo (ex.: CST de PIS/COFINS ausente na NCM) e deixa salvar com o imposto zerado; a correção é no cadastro fiscal, não na nota. **Confira:** o motivo anotado para o roteiro de Fiscal. **Fonte:** fluxo antigo \"Fluxo de faturamento e fiscal\", bloco 1; FIS-CTX-010.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** confira as parcelas (valor e vencimento) e, se mudou algo na nota, use \"Recalcular\".",
+      "r": "**Explique ao cliente:** cada parcela vira um título a receber quando o CFOP gera financeiro. **Confira:** a soma das parcelas igual ao total; senão o sistema avisa \"A soma das parcelas (R$ X) é diferente do total da nota (R$ Y)…\". **Fonte:** FAT-NFE-004; FAT C, erros comuns.",
       "s": "d"
      },
      {
-      "t": "O consultor perguntou: o cliente vende produto e serviço (instalação) no mesmo pedido? O serviço tem código LC 116 no cadastro do produto?",
-      "r": "**Como validar:** exemplo real de pedido com instalação identificado. **Por quê:** o serviço do pedido sai em NFS-e vinculada, por uma ação própria. **Fonte:** FAT-NFS-012, CAD-PRO-004.",
-      "s": "d"
+      "t": "**Faça:** confira o transporte (padrão \"9 - Sem Transporte\"), abra o botão **Dados da NF-e** (destinatário, referências, informações adicionais) e preencha as **Observações Internas** em \"Observações e Informações Adicionais\".",
+      "r": "**Explique ao cliente:** entrega em obra pode usar \"Usar endereço da obra\" no Local de Entrega; Local de Entrega com CNPJ exige endereço completo. **Confira:** destinatário com endereço completo. **Fonte:** fluxo antigo \"Fluxo de faturamento e fiscal\", bloco 1; procedimento-faturar-o-pedido-e-finalizar-a-nota, passo 3; FAT-TRA-014/015.",
+      "s": "v"
      },
      {
-      "t": "O consultor perguntou: o cliente faz remessa para pintura ou beneficiamento, venda para entrega futura, entrega em obra ou tem contrato de fornecimento?",
-      "r": "**Como validar:** operações especiais listadas com um exemplo de cada. **Por quê:** cada uma usa tela ou caminho próprio (Controle de Terceiros, Vendas futuras, endereço da obra, faturar pelo contrato). **Fonte:** FAT-TER-001, FAT-TER-011, FAT-TRA-015, VEN-CTR-017.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor perguntou: quem emite a nota, quem pode cancelar, emitir CC-e e inutilizar numeração? Quem recebe o aviso de vencimento do certificado?",
-      "r": "**Como validar:** nomes e papéis registrados. **Por quê:** o perfil Faturista emite, mas não cancela, não emite CC-e nem inutiliza; o aviso de certificado não vai para o faturista. **Fonte:** FAT-GER-001, FAT-IND-003; decisão X8 da cadeia.",
-      "s": "d",
-      "campo": "Quem emite, quem cancela"
-     },
-     {
-      "t": "O consultor perguntou: qual é a UF do emitente? O cliente usa nota gerencial (sem SEFAZ)? Vai dividir a obra em níveis de faturamento?",
-      "r": "**Como validar:** UF e decisões anotadas em ata. **Por quê:** o prazo de cancelamento muda por UF; nota gerencial e Faturamento em Nível mudam o treinamento. **Fonte:** FAT-CAN-005, FAT-FIN-002, INT-NIV-001; decisão X4 da cadeia.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor perguntou: quem recebe a nota por e-mail no cliente final e se o cliente quer logo e cor na DANFE.",
-      "r": "**Como validar:** amostra de clientes com o contato definido. **Por quê:** sem contato marcado com \"E-mail Notas Fiscais\", a nota não chega ao cliente final. **Fonte:** FAT-OPE-005, CAD-CON-002, CAD-EMP-013.",
+      "t": "**Faça:** com o CFOP que gera financeiro, tente salvar a nota sem o Plano de Contas (bloqueio de propósito).",
+      "r": "**Explique ao cliente:** quando o CFOP gera financeiro, a nota precisa saber em que conta o título vai cair; CFOP de remessa ou retorno dispensa. **Confira:** o sistema recusa com \"Plano de Contas (Conta de Fluxo de Caixa) é obrigatório para salvar a nota fiscal…\". Preencha de novo. **Fonte:** FAT-NFE-001/002; FAT B, quem trava quando falta.",
       "s": "d"
      }
     ]
    },
    {
-    "titulo": "2. Preparação da implantação",
-    "intro": "Configure na ordem da metodologia: conferência fiscal, CFOP, textos fiscais, NFS-e, perfis e numeração. Faça com o responsável fiscal ao lado e deixe o cliente executar o que ele vai manter depois. Nada vai para produção nesta etapa.",
+    "titulo": "3. Salvar e ver o pedido virar Faturado",
+    "onde": "`Faturamento > Notas Fiscais` e `Vendas > Pedidos de Venda`",
+    "intro": "Salvar cria a nota Em Aberto, ainda sem nada enviado à SEFAZ. O cliente vê na hora o reflexo no pedido e aprende a achar a nota na lista.",
     "passos": [
      {
-      "t": "O consultor confirmou o que precisa estar pronto em outros módulos: Fiscal configurado com o contador, Vendas com pedido real, Financeiro de apoio (plano de contas, condições, portadores) e contatos com \"E-mail Notas Fiscais\".",
-      "r": "**Como validar:** checklists de Fundação e Fiscal assinados; cadastros conferidos por amostra. **Por quê:** o financeiro de apoio vem antes porque o pedido e a nota já exigem condição e plano de contas. **Fonte:** README da cadeia, ordem de implantação; Faturamento C, pré-requisitos.",
+      "t": "**Faça:** clique em **Salvar e Permanecer**.",
+      "r": "**Explique ao cliente:** a nota nasce Em Aberto; ela ainda pode ser editada e nada foi enviado à SEFAZ. **Confira:** a nota abre em \"Editar NF-e\"; anote o número. **Fonte:** fluxo antigo \"Fluxo de faturamento e fiscal\", bloco 1; procedimento-faturar-o-pedido-e-finalizar-a-nota, passo 4.",
+      "s": "v",
+      "campo": "Nº da nota"
+     },
+     {
+      "t": "**Faça:** volte a `Vendas > Pedidos de Venda`, troque o Status para \"Todos\" e localize o pedido.",
+      "r": "**Explique ao cliente:** o pedido fica \"Faturado\" assim que a nota é salva, mesmo com a nota Em Aberto; por isso o status que vale é o da nota. **Confira:** pedido \"Faturado\" com a coluna NOTA FISCAL preenchida. **Fonte:** fluxo antigo \"Fluxo de faturamento e fiscal\", bloco 1; FAT-NFE-012.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** em `Faturamento > Notas Fiscais`, aba **NF-e**, leia os cartões Total, Em Aberto, Autorizadas, Canceladas e Rejeitadas e troque o filtro Status.",
+      "r": "**Explique ao cliente:** a lista abre filtrada em Status \"Em Aberto\"; nota autorizada ou cancelada só aparece trocando o filtro. **Confira:** a nota de teste na lista, com a coluna Ambiente = Homologação. **Fonte:** fluxo antigo \"Fluxo de faturamento e fiscal\", bloco 2.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** abra o menu `⋯` da nota e mostre as ações, sem executar.",
+      "r": "**Explique ao cliente:** Editar, Finalizar NF, Preview da DANFE, Duplicar, Ver Timeline, Anexos e Excluir; o avião de papel na linha é **Transmitir**. Excluir só vale para nota Em aberto ou Rejeitada, sem existência fiscal, e devolve o pedido. **Confira:** as ações que o perfil do usuário enxerga. **Fonte:** fluxo antigo \"Fluxo de faturamento e fiscal\", bloco 2; FAT-OPE-003/004.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** clique em `⋯ > Preview da DANFE`.",
+      "r": "**Explique ao cliente:** é a prévia para conferir antes de transmitir. **Confira:** abre em nova aba (libere pop-ups) com emitente, destinatário, itens e totais. **Fonte:** fluxo antigo \"Fluxo de faturamento e fiscal\", bloco 2; procedimento-faturar-o-pedido-e-finalizar-a-nota, passo 5.",
+      "s": "v"
+     }
+    ]
+   },
+   {
+    "titulo": "4. Transmitir em homologação com o responsável fiscal",
+    "onde": "botão **Transmitir** (avião de papel) na linha da nota, em `Faturamento > Notas Fiscais`",
+    "intro": "Só com o responsável fiscal ao lado e a faixa de homologação visível. O cliente vê o pré-voo, a autorização e o que fazer numa rejeição.",
+    "passos": [
+     {
+      "t": "**Faça:** numa nota de teste com um item sem NCM (ou cliente sem CEP), clique em **Transmitir** (bloqueio de propósito).",
+      "r": "**Explique ao cliente:** antes de enviar, o sistema faz um pré-voo (certificado, ambiente, endereço com IBGE, NCM, CFOP, CST e origem por item) e lista tudo o que falta, sem enviar nada. **Confira:** a lista de pendências, por exemplo \"Item N: NCM obrigatório\" ou \"Endereço do destinatário: CEP obrigatório\". **Fonte:** FAT-TRA-001; FAT D, seção 4.",
       "s": "d"
      },
      {
-      "t": "O consultor rodou com o cliente o `Fiscal > Onboarding Fiscal` e o `Fiscal > Diagnóstico Fiscal` e corrigiu o que foi apontado antes de mexer em CFOP.",
-      "r": "**Como validar:** print das telas sem pendência obrigatória. **Por quê:** evita descobrir falha de empresa ou tabela só na primeira nota. **Fonte:** Faturamento C, etapa 1.",
-      "s": "d"
-     },
-     {
-      "t": "Cada CFOP da lista aprovada pelo contador foi conferido em `Faturamento > Configurações > CFOP`: descrição, \"Gera Financeiro\", \"Movimenta Estoque\" e \"Devolução\"; o 6949 existe com as mesmas marcas do 5949.",
-      "r": "**Como validar:** abrir CFOP a CFOP com o responsável fiscal. **Por quê:** não existe cadastro de natureza de operação, a descrição do CFOP é o texto da DANFE; CFOP de venda sem \"Gera Financeiro\" não gera título. **Fonte:** FAT-NFE-002, FAT-NFE-007, FAT-DEV-008.",
-      "s": "d"
-     },
-     {
-      "t": "Os textos legais exigidos pelo contador foram cadastrados em `Faturamento > Configurações > Textos Fiscais` e ligados aos CFOPs certos.",
-      "r": "**Como validar:** conferir na DANFE de teste. **Por quê:** o texto entra na nota pelo CFOP. **Fonte:** Faturamento C, etapa 3.",
-      "s": "d"
-     },
-     {
-      "t": "Se o cliente emite NFS-e: a `Configuração Guiada` de `Faturamento > Configurações > Certificados` tem tipo de emissão, Série RPS, Número do RPS/DPS e ambiente em homologação, e as Regras Fiscais de Serviço estão cadastradas por código LC 116, cidade e tipo de tomador.",
-      "r": "**Como validar:** assistente revisado e uma regra por serviço vendido. **Por quê:** o número é o do RPS/DPS, não o da prefeitura; a regra preenche o ISS. **Fonte:** FAT-NFS-003, FAT-NFS-005.",
-      "s": "d"
-     },
-     {
-      "t": "A série e o próximo número da NF-e foram configurados continuando o sistema antigo **antes da primeira transmissão**.",
-      "r": "**Como validar:** conferir no assistente a série e o próximo número. **Por quê:** sem a série, o sistema começa no 1 e a SEFAZ rejeita por duplicidade; o número dado não volta. **Fonte:** FAT-TRA-002; decisão X5 da cadeia.",
+      "t": "**Faça:** com a autorização do responsável fiscal, transmita a nota do primeiro pedido.",
+      "r": "**Explique ao cliente:** número e série são dados na transmissão e nunca voltam. **Confira:** a nota fica \"Autorizada\" com chave e protocolo, e o número segue a série configurada. **Fonte:** FAT-TRA-002; FAT D, seção 4; README da cadeia, passo 3.",
       "s": "d",
-      "campo": "Série e próximo número configurados"
+      "campo": "Chave / protocolo"
      },
      {
-      "t": "Os perfis estão separados: faturistas com o perfil Faturista e quem cancela, emite CC-e ou inutiliza com Supervisor Fiscal (ou perfil próprio); o responsável fiscal recebe o aviso de vencimento do certificado.",
-      "r": "**Como validar:** entrar com o login do faturista e ver que `Transmitir` aparece e o cancelamento na SEFAZ não. **Por quê:** quem decide cancelamento precisa ser definido antes do go-live. **Fonte:** FAT-GER-001, FAT-IND-003.",
+      "t": "**Faça:** enquanto a nota processa, não clique de novo; mostre o que acontece se clicar.",
+      "r": "**Explique ao cliente:** uma transmissão por vez; a consulta automática roda a cada 5 minutos. **Confira:** \"Transmissão já em andamento para esta nota. Aguarde a conclusão.\" ou \"Nota ainda em processamento pela SEFAZ…\". **Fonte:** FAT-TRA-004/005/009; FAT C, erros comuns.",
       "s": "d"
      },
      {
-      "t": "Números pulados pelo sistema antigo foram tratados com o contador em `Faturamento > Configurações > Inutilização de Numeração`, só quando ele pediu.",
-      "r": "**Como validar:** inutilização registrada com justificativa, ou registro de que não há buraco. **Por quê:** inutilizar é ato fiscal; só com o contador. **Fonte:** FAT-OPE-002.",
+      "t": "**Faça:** se a SEFAZ rejeitar, leia o motivo, corrija a nota ou o cadastro e transmita de novo.",
+      "r": "**Explique ao cliente:** rejeição não consome número e não mexe no pedido. A 539 (duplicidade) se resolve avançando a série no botão \"Configuração Guiada\" da tela Certificados. **Confira:** \"Rejeitada\" sem número, pedido ainda \"Faturado\" e, depois de corrigir, \"Autorizada\". **Fonte:** FAT-TRA-007; FAT C, rejeições catalogadas.",
+      "s": "d"
+     },
+     {
+      "t": "**Faça:** confira a data de emissão da nota autorizada.",
+      "r": "**Explique ao cliente:** a data de emissão é sempre a do dia da transmissão, mesmo que a nota tenha sido criada antes. **Confira:** a data do dia. **Fonte:** FAT-TRA-003; FAT D, seção 4.",
       "s": "d"
      }
     ]
    },
    {
-    "titulo": "3. Condução do treinamento",
-    "intro": "Ensine o processo, não a tela: quando faturar, o que o sistema exige, o que acontece em estoque, financeiro e expedição. Use pedidos reais do cliente, em homologação, com o responsável fiscal presente. Grave o treinamento, deixe o faturista conduzir o mouse a partir da segunda nota e registre as dúvidas.",
+    "titulo": "5. DANFE, XML, e-mail e carta de correção",
+    "onde": "menu `⋯` da nota autorizada",
+    "intro": "Com a nota autorizada, o faturista entrega o documento ao cliente final e aprende a corrigir o que a lei permite sem cancelar.",
     "passos": [
      {
-      "t": "O consultor apresentou nesta sequência: o que o CFOP decide → faturar o pedido → lista de pendências da transmissão → transmitir → efeitos da autorização → DANFE, XML e e-mail → CC-e → cancelamento → devolução.",
-      "r": "**Como validar:** roteiro do treinamento registrado na OS. **Por quê:** é o caminho da nota na operação; ensinar fora de ordem esconde a causa dos erros. **Fonte:** Apostila do Consultor, Módulo Faturamento; Faturamento C, etapa 8.",
-      "s": "d",
-      "campo": "Data do treinamento"
-     },
-     {
-      "t": "Com um pedido real do cliente, o consultor usou `Faturar` em `Vendas > Pedidos de Venda`, salvou a NF-e `Em Aberto` e mostrou o pedido passar a `Faturado`; num faturamento parcial, mostrou a nota com sufixo /2.",
-      "r": "**Como validar:** a nota de teste está na lista de `Faturamento > Notas Fiscais`. **Por quê:** é o dia a dia do faturista: a nota nasce do pedido, não é digitada. **Fonte:** FAT-NFE-001; Faturamento D, testes.",
+      "t": "**Faça:** use **Baixar PDF/DANFE** e **Baixar XML**.",
+      "r": "**Explique ao cliente:** a DANFE mostra o logo da empresa, a natureza da operação (descrição do CFOP) e os textos fiscais ligados ao CFOP. **Confira:** PDF e XML baixados, com natureza e textos certos. **Fonte:** FAT C, etapa 8 (ações da listagem); FAT D, seção 4.",
       "s": "d"
      },
      {
-      "t": "Antes de transmitir, o consultor leu com o cliente a lista de pendências que o sistema mostra (cliente sem CEP, item sem NCM, CFOP incompleto) e mostrou onde corrigir cada uma.",
-      "r": "**Como validar:** o cliente aponta o cadastro certo para cada pendência. **Por quê:** a lista é o checklist técnico da nota; lê-la inteira evita chamado ao suporte. **Fonte:** FAT-TRA-001; Apostila, Diagnóstico de nota fiscal.",
+      "t": "**Faça:** use **Reenviar Email** para um contato de teste com a marca \"E-mail Notas Fiscais\".",
+      "r": "**Explique ao cliente:** só nota autorizada vai por e-mail, e só para contatos com essa marca. **Confira:** o e-mail recebido. Sem contato marcado: \"Nenhum destinatário encontrado. Cadastre um contato com email e \"E-mail Notas Fiscais\" habilitado no participante da nota.\". **Fonte:** FAT-OPE-005; FAT B, quem trava quando falta.",
       "s": "d"
      },
      {
-      "t": "O consultor transmitiu em homologação e explicou: o número é dado na transmissão e nunca volta, a data de emissão é a do dia, não se clica duas vezes e a resposta pode levar até 5 minutos.",
-      "r": "**Como validar:** nota `Autorizada` com chave e protocolo; número igual à série configurada. **Por quê:** clique duplo e pressa geram as principais dúvidas da primeira semana. **Fonte:** FAT-TRA-002, FAT-TRA-003, FAT-TRA-004, FAT-TRA-005.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor mostrou os efeitos da autorização na operação real: estoque baixado, títulos em Contas a Receber, comissão prevista e liberação para a expedição.",
-      "r": "**Como validar:** abrir o estoque, os títulos e o histórico da nota de teste. **Por quê:** o faturista precisa saber que a nota alimenta outros setores sem digitação. **Fonte:** FAT-TRA-008; Apostila, Módulo Faturamento.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor simulou uma rejeição (por exemplo, NCM inválido), corrigiu o cadastro e retransmitiu, mostrando que a rejeição não consome número; explicou o aviso de nota presa há 24h.",
-      "r": "**Como validar:** nota passa de `Rejeitada` para `Autorizada`; pedido continua `Faturado`. **Por quê:** rejeição é rotina; o cliente precisa corrigir sem pânico. **Fonte:** FAT-TRA-007, FAT-TRA-017.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor mostrou a `Carta de Correção` (só em nota autorizada, justificativa de pelo menos 15 caracteres) e o `Reenviar Email` para o contato marcado.",
-      "r": "**Como validar:** CC-e autorizada com PDF; e-mail recebido. **Por quê:** são as correções mais pedidas depois que a nota sai. **Fonte:** FAT-OPE-001, FAT-OPE-005.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor cancelou uma segunda nota de teste e explicou o prazo da UF do cliente, a justificativa mínima e a ordem: estornar recebimento → tirar da carga de expedição → cancelar; depois gerou uma devolução com `Gerar Devolução`.",
-      "r": "**Como validar:** nota `Cancelada`, títulos excluídos, pedido volta a `Em aberto`; devolução com a nota referenciada. **Por quê:** cancelamento fora de ordem é recusado; devolução hoje recalcula impostos e o contador confere. **Fonte:** FAT-CAN-002, FAT-CAN-004, FAT-CAN-005, FAT-DEV-007.",
-      "s": "d"
-     },
-     {
-      "t": "Se o cliente presta serviço: o consultor mostrou a NFS-e na ordem salvar → `Finalizar NF` → `Transmitir` e, no pedido com produto e instalação, `Faturar` e `Faturar serviços (NFS-e)`.",
-      "r": "**Como validar:** NFS-e autorizada com número e código de verificação; ISS conforme a regra. **Por quê:** hoje o RPS só é numerado no `Finalizar NF`; pular o passo trava a transmissão. **Fonte:** FAT-NFS-001, FAT-NFS-012.",
+      "t": "**Faça:** com o responsável fiscal, emita uma **Carta de Correção** com um texto de pelo menos 15 caracteres.",
+      "r": "**Explique ao cliente:** a CC-e só existe em nota autorizada (até 20 por nota) e o perfil Faturista não emite. Em nota Em Aberto a ação não aparece. **Confira:** a carta \"Autorizada\" com protocolo, PDF e XML. **Fonte:** FAT-OPE-001/008; FAT D, seção 4; fluxo antigo \"Fluxo de faturamento e fiscal\", bloco 4.",
       "s": "d"
      }
     ]
    },
    {
-    "titulo": "4. Validação do aprendizado",
-    "intro": "Agora o faturista faz e você só observa. Use um pedido diferente do usado no treinamento. Se ele travar, anote onde e repita o ponto; não marque o item se você precisou conduzir.",
+    "titulo": "6. Reflexos da nota no financeiro, no estoque e nos painéis",
+    "onde": "`Financeiro > Contas a Receber`, `Estoque > Movimentos`, `Vendas > Pedidos de Venda`",
+    "intro": "A nota é o documento que movimenta: gera título, baixa estoque e entra nos indicadores. O cliente vê cada efeito no módulo de destino.",
     "passos": [
      {
-      "t": "O faturista faturou sozinho um pedido novo, transmitiu em homologação e conferiu que o número saiu na sequência da série configurada.",
-      "r": "**Como validar:** nota `Autorizada` feita pelo login do faturista. **Por quê:** é a tarefa diária do módulo. **Fonte:** FAT-TRA-002; Faturamento D, testes.",
-      "s": "d"
-     },
-     {
-      "t": "Diante de uma pendência de transmissão preparada pelo consultor (cliente sem CEP ou item sem NCM), o cliente disse qual cadastro corrigir e corrigiu.",
-      "r": "**Como validar:** pendência resolvida sem ajuda. **Por quê:** a maioria dos erros de emissão vem de produto, cliente ou dados fiscais. **Fonte:** FAT-TRA-001; Apostila, Diagnóstico de nota fiscal.",
-      "s": "d"
-     },
-     {
-      "t": "O cliente baixou a DANFE e o XML e conferiu, com o XML antigo, a natureza da operação, os textos legais e a logo.",
-      "r": "**Como validar:** comparação feita com o responsável fiscal. **Por quê:** diferença na natureza ou nos textos aparece para o cliente final e para o contador. **Fonte:** FAT-NFE-007.",
-      "s": "d"
-     },
-     {
-      "t": "O cliente emitiu uma CC-e e reenviou a nota por e-mail para o contato marcado.",
-      "r": "**Como validar:** CC-e autorizada; e-mail recebido. **Por quê:** correções e reenvio são pedidos frequentes. **Fonte:** FAT-OPE-001, FAT-OPE-005.",
-      "s": "d"
-     },
-     {
-      "t": "Quem tem permissão cancelou uma nota de teste e explicou o que acontece com títulos, estoque, comissão e pedido, e qual é o prazo de cancelamento da UF.",
-      "r": "**Como validar:** nota `Cancelada` e explicação correta. **Por quê:** cancelar fora do prazo só com deferimento da SEFAZ. **Fonte:** FAT-CAN-003, FAT-CAN-005.",
-      "s": "d"
-     },
-     {
-      "t": "O cliente gerou uma devolução de venda a partir de nota autorizada e o contador conferiu os valores.",
-      "r": "**Como validar:** valores aprovados pelo contador, diferenças anotadas. **Por quê:** hoje a devolução recalcula pelas regras atuais em vez de espelhar a original. **Fonte:** FAT-DEV-005, FAT-DEV-007.",
+      "t": "**Faça:** abra `Financeiro > Contas a Receber`, limpe o filtro Status e pesquise o número da nota.",
+      "r": "**Explique ao cliente:** com CFOP que gera financeiro, módulo Financeiro contratado e pedido sem títulos, a nota gera um título por parcela. Se o pedido já tinha gerado, a nota não gera de novo. **Confira:** um título \"Em aberto\" por parcela, com o documento da nota, plano e meio da parcela. **Fonte:** FAT-TIT-001/002/007; FIN D, E2E-1.",
       "s": "d",
-      "campo": "Conferência do contador"
+      "campo": "Nº dos títulos"
      },
      {
-      "t": "O cliente explicou quem gera o contas a receber (pedido ou nota) e mostrou que a nota de teste não duplicou títulos.",
-      "r": "**Como validar:** títulos conferidos em Contas a Receber. **Por quê:** título em dobro é o erro mais caro da cadeia. **Fonte:** FAT-TIT-001.",
+      "t": "**Faça:** no pedido faturado, abra o menu `⋯` e mostre **Gerar Títulos**.",
+      "r": "**Explique ao cliente:** o pedido não gera título em dobro depois de faturado. **Confira:** a opção desabilitada com \"Pedido já faturado\". **Fonte:** fluxo antigo \"Fluxo financeiro\", bloco 1; FAT-TIT-001.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** abra `Estoque > Movimentos` e o saldo do produto.",
+      "r": "**Explique ao cliente:** se o CFOP marca \"Movimenta Estoque\", a nota dá saída do produto. **Confira:** a saída ligada à nota (anote se não houver). **Fonte:** FAT-TRA-008; FAT B, movimentações; fluxo antigo \"Fluxo de faturamento e fiscal\", bloco 3.",
       "s": "d"
      },
      {
-      "t": "O cliente abriu o Dashboard do Faturamento e viu as notas de teste autorizadas contadas e as canceladas fora.",
-      "r": "**Como validar:** print do dashboard. **Por quê:** é como o gestor acompanha o faturado. **Fonte:** FAT-IND-001.",
+      "t": "**Faça:** use `⋯ > Ver Timeline` na nota.",
+      "r": "**Explique ao cliente:** o histórico guarda os eventos da nota (autorização, CC-e, cancelamento). **Confira:** o evento da autorização (anote se a lista vier vazia). **Fonte:** FAT D, seção 4; fluxo antigo \"Fluxo de faturamento e fiscal\", bloco 3.",
+      "s": "d"
+     },
+     {
+      "t": "**Faça:** abra o Dashboard Faturamento.",
+      "r": "**Explique ao cliente:** notas autorizadas e finalizadas contam como faturadas; canceladas ficam fora. **Confira:** a nota de teste no painel. **Fonte:** FAT-IND-001; FAT D, seção 5.",
       "s": "d"
      }
     ]
    },
    {
-    "titulo": "5. Preparação para utilização e go-live",
-    "intro": "A virada é por documento (NF-e e NFS-e podem virar em dias diferentes) e com o responsável fiscal presente. Marque a primeira nota real com o cliente e acompanhe em produção assistida. Cada ocorrência vira OS.",
+    "titulo": "7. Cancelamento na ordem certa",
+    "onde": "menu `⋯ > Cancelar` da nota autorizada",
+    "intro": "Use a segunda nota de teste, autorizada como no bloco 4. A ordem é: estornar o recebimento, tirar o pedido da carga, cancelar a nota e, se for o caso, cancelar o pedido.",
     "passos": [
      {
-      "t": "Todos os itens obrigatórios do checklist de validação do Faturamento estão marcados e as notas de teste da homologação foram canceladas ou excluídas.",
-      "r": "**Como validar:** checklist assinado pelo cliente. **Por quê:** o go-live do Faturamento e a liberação do Financeiro dependem dele. **Fonte:** Faturamento D.",
+      "t": "**Faça:** receba um título da segunda nota em `Financeiro > Contas a Receber` e tente cancelar a nota (bloqueio de propósito).",
+      "r": "**Explique ao cliente:** nota com título recebido, pedido em carga ou nota em processamento não cancela. Primeiro desfaz o que veio depois dela. **Confira:** o sistema recusa o cancelamento. **Fonte:** FAT-CAN-002; FAT D, seção 4.",
       "s": "d"
      },
      {
-      "t": "O ambiente foi trocado para produção por documento e o emitente foi sincronizado de novo; a série e o próximo número de produção continuam a numeração do sistema antigo.",
-      "r": "**Como validar:** conferir no assistente de certificados. **Por quê:** a numeração é independente por ambiente; série errada colide com notas antigas. **Fonte:** FAT-GER-002, FAT-TRA-002.",
+      "t": "**Faça:** estorne o recebimento do título e, se o pedido estiver numa carga, tire-o da carga.",
+      "r": "**Explique ao cliente:** é a ordem nota → títulos → pedido vista de trás para a frente. Com carga: \"Não é possível cancelar esta NF: o pedido vinculado está na carga de expedição #N…\". **Confira:** título de volta a \"Em aberto\". **Fonte:** FAT-CAN-002; FAT C, erros comuns; README da cadeia, passo 8.",
       "s": "d"
      },
      {
-      "t": "A primeira NF-e real (e a primeira NFS-e, se houver) foi emitida com o consultor acompanhando, e número e chave foram conferidos com o cliente.",
-      "r": "**Como validar:** nota autorizada em produção. **Por quê:** a primeira nota real confirma série, certificado e ambiente. **Fonte:** Faturamento C, etapa 10.",
+      "t": "**Faça:** tente cancelar com uma justificativa de 10 caracteres (bloqueio de propósito).",
+      "r": "**Explique ao cliente:** a lei exige pelo menos 15 caracteres. **Confira:** \"Motivo do cancelamento deve ter no mínimo 15 caracteres conforme legislação\". **Fonte:** FAT-CAN-004; FAT C, erros comuns.",
+      "s": "d"
+     },
+     {
+      "t": "**Faça:** com o responsável fiscal, cancele com uma justificativa de 20 caracteres ou mais e acompanhe em **Status Cancelamento**.",
+      "r": "**Explique ao cliente:** o prazo depende da UF do emitente (24h padrão; MT 8h; PR e RS 168h); fora dele o sistema pede confirmação e depende da SEFAZ. **Confira:** \"Canc. Pendente\" e depois \"Cancelada\". **Fonte:** FAT-CAN-001/004/005/006; FAT D, seção 4.",
+      "s": "d"
+     },
+     {
+      "t": "**Faça:** confira os reflexos em `Financeiro > Contas a Receber`, `Estoque > Movimentos` e `Vendas > Pedidos de Venda`; se o teste pede, cancele o pedido em seguida.",
+      "r": "**Explique ao cliente:** cancelar a nota exclui os títulos em aberto (e pede a baixa do boleto), estorna estoque e comissão e devolve o pedido. **Confira:** títulos excluídos, estoque estornado e pedido de volta a \"Em aberto\"; depois, pedido \"Cancelado\" com motivo. **Fonte:** FAT-CAN-003; FAT-TIT-004; README da cadeia, passos 7 e 8.",
+      "s": "d"
+     }
+    ]
+   },
+   {
+    "titulo": "8. Nota gerencial e NFS-e (quando o cliente usar)",
+    "onde": "menu `⋯ > Finalizar NF`, menu `⋯ > Faturar serviços (NFS-e)` do pedido e aba **NFS-e** de `Faturamento > Notas Fiscais`",
+    "intro": "Só se o cliente usa nota gerencial (sem SEFAZ) ou presta serviço. A NFS-e segue um passo a mais que a NF-e: salvar, finalizar e transmitir.",
+    "passos": [
+     {
+      "t": "**Faça:** se o cliente usa nota gerencial, numa nota Em Aberto de teste clique em **Finalizar NF** e confirme (\"a nota ficará disponível apenas para visualização\").",
+      "r": "**Explique ao cliente:** \"Finalizar NF\" não vai à SEFAZ: vira nota gerencial (`NF - 001`), gera financeiro e comissão e depois só pode ser cancelada. **Confira:** nota \"Finalizada\". Sem almoxarifado ativo: \"Não foi possível resolver o local de estoque…\"; com projeto sem local: \"O projeto … não tem local de estoque ativo\". **Fonte:** fluxo antigo \"Fluxo de faturamento e fiscal\", bloco 3; FAT-FIN-001/002/004.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** se a finalização falhar, confira a lista e o número da nota.",
+      "r": "**Explique ao cliente:** anote o número antes de tentar de novo. **Confira:** a lista pode mostrar \"Algo deu errado… Tentar Novamente\" e o número já ter sido consumido. **Fonte:** fluxo antigo \"Fluxo de faturamento e fiscal\", bloco 3.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** num pedido com produto e serviço, use **Faturar** para o produto e **Faturar serviços (NFS-e)** para o serviço.",
+      "r": "**Explique ao cliente:** o serviço do pedido sai numa NFS-e vinculada; o ISS vem da Regra Fiscal de Serviço. **Confira:** NF-e com o produto e NFS-e com o serviço, ligadas ao mesmo pedido. **Fonte:** FAT-NFS-012; FAT C, etapa 8; FAT D, seção 4.",
       "s": "d",
-      "campo": "Data e número da primeira nota real"
+      "campo": "Nº da NFS-e"
      },
      {
-      "t": "O cliente foi avisado das limitações atuais: a devolução ainda não espelha os tributos da nota original, a NFS-e ainda pede o passo `Finalizar NF` e, na Focus NFe, não há contingência real.",
-      "r": "**Como validar:** registro em ata. **Por quê:** evita que o cliente trate limitação conhecida como erro dele. **Fonte:** FAT-DEV-007, FAT-NFS-001, FAT-TRA-016.",
+      "t": "**Faça:** com o responsável fiscal, salve a NFS-e, clique em **Finalizar NF** e depois em **Transmitir**.",
+      "r": "**Explique ao cliente:** hoje o sistema ainda numera o RPS só no Finalizar; a consulta da NFS-e roda a cada 15 minutos. Prefeitura não homologada ou por upload é recusada. **Confira:** \"Autorizada\" com número e código de verificação, ISS da regra. **Fonte:** FAT-NFS-001/004/005; FAT B, estados da NFS-e e jobs.",
       "s": "d"
      },
      {
-      "t": "Nas primeiras semanas, o consultor acompanhou rejeições, notas presas em processamento, cancelamentos perto do prazo, notas que não chegaram por e-mail e títulos duplicados ou faltando.",
-      "r": "**Como validar:** ocorrências registradas em OS. **Por quê:** essas são as falhas que aparecem só com volume real. **Fonte:** Apostila do Consultor, go-live com produção assistida.",
-      "s": "d",
-      "campo": "Ocorrências das primeiras semanas"
-     },
-     {
-      "t": "O faturista sabe o que fazer com o aviso de vencimento do certificado e quem o renova.",
-      "r": "**Como validar:** responsável e procedimento registrados. **Por quê:** com o certificado vencido nenhuma nota é transmitida. **Fonte:** FAT-IND-003, FAT-CER-002.",
-      "s": "d"
-     },
-     {
-      "t": "Critério para liberar o Financeiro: notas reais autorizando sem rejeição recorrente, títulos nascendo certos da nota (ou do pedido, conforme a decisão) e checklist do Faturamento assinado.",
-      "r": "**Como validar:** conferir uma semana de notas contra os títulos gerados. **Por quê:** o Financeiro depende de títulos corretos vindos do Faturamento. **Fonte:** Faturamento D; Apostila, Módulo Financeiro.",
+      "t": "**Faça:** abra `Financeiro > Contas a Receber` e pesquise a NFS-e.",
+      "r": "**Explique ao cliente:** serviço sempre gera financeiro (não depende de CFOP), se o cliente tem o módulo Financeiro. **Confira:** títulos com origem na NFS-e. **Fonte:** FAT-NFS-011; FAT-TIT-007.",
       "s": "d"
      }
     ]
@@ -1494,43 +1520,46 @@ export const CHECKLISTS_IMPLANTACAO = [
   ],
   "resultado": [
    {
-    "t": "O faturista fatura, transmite, corrige com CC-e, cancela dentro do prazo e gera devolução sem ajuda.",
+    "t": "O pedido virou nota com cliente, itens, CFOP, parcelas e transporte corretos, e o pedido ficou \"Faturado\".",
+    "s": "v"
+   },
+   {
+    "t": "A NF-e foi autorizada em homologação com o número da série configurada, com o responsável fiscal presente.",
     "s": "d"
    },
    {
-    "t": "A primeira nota real saiu na sequência do sistema antigo, no ambiente de produção.",
+    "t": "Os títulos nasceram da nota (ou do pedido, conforme a decisão X2), sem duplicar, e os reflexos no estoque e nos painéis foram conferidos ou anotados.",
     "s": "d"
    },
    {
-    "t": "Os CFOPs, textos fiscais e regras de serviço usados foram aprovados pelo contador.",
+    "t": "DANFE, XML, e-mail e CC-e funcionaram na nota autorizada.",
     "s": "d"
    },
    {
-    "t": "Os títulos nascem uma vez só, do pedido ou da nota, conforme a decisão registrada.",
+    "t": "A segunda nota foi cancelada na ordem certa: títulos excluídos, estoque estornado, pedido de volta.",
     "s": "d"
    },
    {
-    "t": "Os perfis separam quem emite de quem cancela, e o responsável fiscal recebe o aviso do certificado.",
+    "t": "Os bloqueios (plano de contas, pré-voo, cancelamento com título recebido e com justificativa curta) foram demonstrados.",
     "s": "d"
    }
   ],
   "atencao": [
-   "Transmitir a primeira nota sem a série configurada: a numeração começa no 1, colide com a do sistema antigo e o número dado não volta.",
-   "CFOP de venda com \"Gera Financeiro\" desligado não gera título; CFOP de remessa ligado pede plano de contas sem necessidade.",
-   "Título em dobro quando o pedido já gerou os títulos e ninguém combinou isso com o Financeiro.",
-   "Treinar ou transmitir em produção antes do go-live; teste é sempre em homologação, com o responsável fiscal.",
-   "Faturista com o perfil Faturista tentando cancelar: o perfil não cancela, não emite CC-e nem inutiliza.",
-   "Contato do cliente final sem \"E-mail Notas Fiscais\": a nota sai, mas não chega a ele.",
-   "Cancelamento fora da ordem (título recebido ou pedido em carga de expedição) é recusado; e fora do prazo da UF só com deferimento da SEFAZ.",
-   "Prefeitura que emite NFS-e por upload ou não homologada no provedor: descobrir no kickoff, não na primeira nota real."
+   "Só ambiente de teste (homologação) e registros com \"TESTE FLUXO CONSULTOR\". **Nota fiscal só é transmitida, cancelada ou corrigida com o responsável fiscal do cliente.**",
+   "**Transmitir** fica a um clique na linha (avião de papel) e é irreversível, mesmo em homologação. **Excluir** está no mesmo menu de Ver Timeline e Anexos.",
+   "O pedido fica \"Faturado\" assim que a nota é **salva**, mesmo Em Aberto: confira sempre o status da nota.",
+   "A lista de notas abre filtrada em \"Em Aberto\"; os cartões de totais seguem esse filtro. Nota autorizada ou cancelada só aparece trocando o Status.",
+   "Série errada antes da primeira transmissão colide com a numeração antiga (rejeição 539). O número dado na transmissão nunca volta.",
+   "Hoje o sistema ainda recalcula a devolução pelas regras atuais, sem espelhar os tributos da nota original: confira os valores com o contador.",
+   "Pedido de contrato de fornecimento só vira nota depois do faturamento no contrato: \"Este pedido está vinculado ao Contrato de Fornecimento #N…\".",
+   "Transmissão em lote: não venda como PRO; hoje o sistema libera em todas as versões."
   ],
   "naoValidado": [
-   "Transmissão em lote: a página da regra diz que é PRO, mas a leitura do sistema indica que é liberada em todas as versões. Conferir na licença do cliente antes de oferecer (FAT-TRA-011).",
-   "Nota gerencial (`Finalizar NF`): a metodologia diz que gera financeiro e comissão; a lista de limitações registra que, nos testes, a finalização não movimentou estoque e que uma finalização com falha pode consumir o número. Conferir na tela antes de ensinar.",
-   "A mensagem de falta de Inscrição Municipal manda ir a `Cadastros > Empresas`, mas o caminho é `Configurações > Empresas`. Conferir na tela.",
-   "O que o `Diagnóstico Fiscal` verifica não foi detalhado na metodologia. Conferir na tela antes de usá-lo como garantia.",
-   "Onde o texto fiscal ligado ao CFOP aparece na DANFE e se soma com as informações complementares não tem regra oficial. Conferir na DANFE de teste.",
-   "Não está confirmado se o Dashboard do Faturamento separa notas de homologação e de produção. Conferir antes do go-live."
+   "Estoque na nota: a gestora diz que a autorização ou a finalização baixa o estoque (FAT-TRA-008, FAT B). No fluxo antigo (conferido em 19/10/2026), a finalização não gerou movimento em `Estoque > Movimentos`. Conferir na tela.",
+   "Finalizar NF: o fluxo antigo trata \"Finalizar NF\" como etapa para encerrar a nota sem transmitir. A gestora diz que a nota finalizada é gerencial, não vai à SEFAZ e depois só pode ser cancelada (FAT-FIN-001/002/004, FAT B). Conferir na tela se uma nota finalizada ainda pode ser transmitida, antes de ensinar a ordem.",
+   "Títulos da nota: a gestora diz que a nota gera os títulos na autorização ou na finalização (FAT-TIT-001). No fluxo antigo, a nota finalizada não teve título conferido e os títulos do teste vieram de \"Gerar Títulos\" do pedido depois de Entregue. Conferir na tela.",
+   "Histórico da nota: a gestora espera evento no histórico depois da autorização (FAT D). No fluxo antigo, \"Ver Timeline\" apareceu vazia. Conferir na tela.",
+   "Transmissão, rejeição, CC-e, cancelamento, reenvio de e-mail, NFS-e e Dashboard Faturamento ainda não foram executados na tela: os nomes de ação vêm do código lido pela gestora."
   ],
   "video": {
    "id": "consultor-07-faturamento",
@@ -1542,277 +1571,256 @@ export const CHECKLISTS_IMPLANTACAO = [
   "id": "implantacao-fiscal",
   "arquivo": "implantacao-06-fiscal.html",
   "etiqueta": "Consultor · Implantação · Fiscal",
-  "titulo": "Implantação do Fiscal",
-  "subtitulo": "Checklist para o consultor conduzir a configuração fiscal do Faktory Flow **com o contador do cliente** e verificar se cada operação típica calcula certo antes do primeiro faturamento real.",
-  "objetivo": "Ao final, o responsável fiscal do cliente sabe onde cada informação tributária entra no sistema (empresa, CFOP, NCM, NCM por Estado), lê o aviso que aparece no item quando falta cadastro e corrige sozinho. **O contador do cliente é peça central:** ele decide regime, CST, alíquotas, MVA, benefícios e textos legais, e confere os valores calculados. O consultor não define tributação; mostra onde cada resposta do contador entra e conduz os testes.",
-  "rodape": "Checklist de implantação · Fiscal · fontes: Fiscal C, A e D da metodologia, Apostila do Consultor (Módulo Fiscal; Processos fiscal, de expedição e de projetos e obras), Apostila de Procedimentos (atenção fiscal), FAQ de limitações · Harness Faktory Flow",
+  "titulo": "Implantação do Fiscal: roteiro prático com o cliente e o contador",
+  "subtitulo": "Com o contador ao lado: conferir empresa e regime, CFOP e textos fiscais, NCM e regras de tributação por estado, rodar o Onboarding e provar num pedido e numa nota como o imposto é calculado, inclusive o aviso quando falta configuração.",
+  "objetivo": "Ao final, o cliente e o contador terão visto cada operação típica (venda interna, interestadual, a não contribuinte, com ST, serviço) calculada sem aviso no item e com valores conferidos. Eles saberão onde cada resposta do contador entra no sistema e como ler o aviso de imposto não calculado.",
+  "rodape": "Checklist de implantação · Fiscal · fontes: Fiscal A, B, C e D da metodologia, Faturamento C (CFOP), fluxo antigo \"Fluxo de faturamento e fiscal\", fluxo completo do consultor e trilha dos estagiários · Harness Faktory Flow",
   "prerequisitos": [
    {
-    "t": "O contador do cliente está identificado, ciente do projeto e com agenda para a configuração e para os testes de cálculo.",
-    "r": "**Como validar:** nome do contador e datas registrados em ata. **Por quê:** toda alíquota, CST, MVA e benefício vem dele; sem o contador, a etapa não começa. **Fonte:** Fiscal C e D; Apostila de Procedimentos, atenção fiscal.",
-    "s": "d",
-    "campo": "Contador do cliente"
-   },
-   {
-    "t": "A Fundação está concluída: cada empresa com regime, CNAE, IE e endereço com cidade do IBGE, certificado A1 válido e ambiente em homologação.",
-    "r": "**Como validar:** checklist da Fundação assinado. **Por quê:** sem regime nada calcula; IE e IBGE entram nas obrigações. **Fonte:** FIS-APL-002, FIS-ONB-001.",
+    "t": "Fundação concluída: empresas com regime, CNAE, IE e endereço com IBGE; produtos com NCM, origem e categoria; participantes com UF, IE e as marcas \"Não Contribuinte\" e \"Produtor Rural\" revisadas.",
+    "r": "**Confira:** checklist da Fundação assinado e uma amostra de 10 clientes. **Fonte:** FIS C, pré-requisitos; FIS D, seção 2 (FIS-CTX-007).",
     "s": "d"
    },
    {
-    "t": "A versão contratada permite o regime de todas as empresas do cliente, o módulo Fiscal está na licença e o cliente sabe o que é PRO (Escrituração SPED, Perfil SUFRAMA, Mapa de Apuração, MDF-e).",
-    "r": "**Como validar:** conferir a assinatura e registrar em ata. **Por quê:** Presumido, Real e excesso de sublimite só em certas versões. **Fonte:** CAD-EMP-005, FIS-ICM-013, FAT-IND-004.",
+    "t": "**Contador do cliente presente**, com a planilha \"NCM × tributação\" e a lista de CFOPs por operação (CST/CSOSN de ICMS, IPI, PIS, COFINS, CBS, IBS).",
+    "r": "**Confira:** documentos recebidos antes da sessão. O consultor não decide tributação: toda alíquota, CST, MVA e benefício vem do contador. **Fonte:** FIS C, \"Do cliente e do contador\".",
     "s": "d"
    },
    {
-    "t": "Os NCMs usados pelo cliente estão cadastrados e os produtos têm NCM, origem e categoria.",
-    "r": "**Como validar:** amostra dos produtos mais vendidos. **Por quê:** sem NCM o imposto não é calculado. **Fonte:** FIS-CTX-002.",
+    "t": "Módulo `fiscal` na licença e versão compatível com o regime de todas as empresas; cliente ciente do que é PRO (Escrituração SPED, Perfil SUFRAMA, Mapa de Apuração, MDF-e).",
+    "r": "**Confira:** *Minha Assinatura* e o menu Fiscal sem cadeado. **Fonte:** FIS C, comerciais; FIS D, seção 1.",
     "s": "d"
    },
    {
-    "t": "Os participantes têm UF e as marcas de IE, \"Não Contribuinte\" e \"Produtor Rural\" revisadas na carga.",
-    "r": "**Como validar:** amostra de 10 clientes, entre PF e PJ. **Por quê:** essas marcas decidem DIFAL, FCP e CSOSN. **Fonte:** FIS-CTX-007, FIS-CTX-008.",
-    "s": "d"
+    "t": "Ambiente fiscal em **Homologação** (faixa \"Ambiente NF-e: HOMOLOGAÇÃO\" na nota).",
+    "r": "**Confira:** a faixa na nota de teste. **Fonte:** fluxo antigo \"Fluxo de faturamento e fiscal\", pré-requisitos.",
+    "s": "v"
    },
    {
-    "t": "O material foi pedido ao contador com antecedência: planilha NCM × tributação, CSTs por CFOP, UFs de venda com ST e exceções, benefícios, textos legais e XML de notas antigas de cada operação.",
-    "r": "**Como validar:** material recebido antes da reunião de configuração. **Por quê:** sem ele a configuração vira chute. **Fonte:** Fiscal C, informações do cliente e do contador.",
-    "s": "d",
-    "campo": "Material recebido do contador"
+    "t": "Clientes de teste \"TESTE FLUXO CONSULTOR\" para cada operação: PJ com IE na mesma UF, PJ com IE em outra UF e PF não contribuinte em outra UF.",
+    "r": "**Confira:** UF, IE e \"Não Contribuinte\" de cada um. **Fonte:** FIS D, seção 3.",
+    "s": "d"
    }
   ],
   "fluxos": [
    {
-    "titulo": "1. Entendimento do cenário do cliente",
-    "intro": "Faça esta reunião com o responsável fiscal e o **contador** presentes. Seu papel é perguntar e registrar onde cada resposta vai entrar no sistema; quando o cliente pedir sua opinião sobre tributação, devolva a pergunta ao contador. Registre as respostas em ata.",
+    "titulo": "1. Empresa e regime",
+    "onde": "`Configurações > Empresas`",
+    "intro": "O regime da empresa é a primeira decisão do motor de impostos: sem ele nada calcula. Vem antes de CFOP e NCM porque muda o caminho inteiro (CSOSN ou CST).",
     "passos": [
      {
-      "t": "O consultor perguntou ao contador: qual é o regime de cada CNPJ, há excesso de sublimite e a empresa industrializa (é contribuinte de IPI)?",
-      "r": "**Como validar:** regime e tipo de atividade por CNPJ na ata. **Por quê:** o regime separa CSOSN de CST; sem \"Tipo de Atividade\" industrial, o IPI não é destacado como deveria. **Fonte:** FIS-APL-002, FIS-APL-004, FIS-ICM-001.",
+      "t": "**Faça:** com o contador, abra cada empresa e confira, em \"Dados Gerais\", o \"Regime de Apuração\" e o \"Tipo de Atividade\".",
+      "r": "**Explique ao cliente:** no Simples o ICMS usa CSOSN; no Presumido e no Real usa CST. Tipo \"Industrial\" destaca IPI; empresa comercial não destaca. **Confira:** os dois campos preenchidos em todas as empresas. **Fonte:** FIS C, etapa 1; FIS-APL-002/004.",
       "s": "d"
      },
      {
-      "t": "O consultor perguntou: para quais UFs o cliente vende, se vende a consumidor final não contribuinte em outra UF (PF, obra, construtora sem IE) e se vende para construtora com IE para uso na obra.",
-      "r": "**Como validar:** UFs e tipos de cliente listados. **Por quê:** decide DIFAL e FCP; IPI na base do ICMS para contribuinte consumidor final precisa ser conferido com o contador. **Fonte:** FIS-DIF-001, FIS-DIF-004, FIS-IPI-003.",
+      "t": "**Faça:** em empresa do Presumido ou do Real, confira na seção \"Configuração Fiscal\" as alíquotas de PIS e COFINS; no Simples, a \"Alíquota Crédito Simples Nacional (%)\".",
+      "r": "**Explique ao cliente:** PIS/COFINS usa a alíquota da empresa ou a do regime; o crédito do Simples só vale com CSOSN 101. **Confira:** valores iguais aos do contador. **Fonte:** FIS C, etapa 1; FIS-PCO-001; FIS-ICM-003.",
       "s": "d"
      },
      {
-      "t": "O consultor perguntou: algum NCM vendido tem substituição tributária? Para quais UFs, com qual MVA e modalidade? O cliente revende mercadoria que já veio com ST?",
-      "r": "**Como validar:** lista de NCMs com ST por UF. **Por quê:** todo NCM com ST precisa de linha por UF de destino, senão o ST sai zerado com aviso. **Fonte:** FIS-IST-001, FIS-IST-002, FIS-IST-008.",
+      "t": "**Faça:** confira \"CBS (%)\" e \"IBS (%)\" vazios (ou com a alíquota de teste aprovada pelo contador) e \"Antecipar Reforma (CBS/IBS)\" desligado.",
+      "r": "**Explique ao cliente:** vazios, o sistema usa a alíquota de teste da fase (CBS 0,9% e IBS 0,1% em 2026). Os números que aparecem no campo vazio (8,80 e 17,70) são a alíquota plena: preenchidos em 2026, o imposto sai dezenas de vezes maior. **Confira:** campos vazios ou com a alíquota aprovada. **Fonte:** FIS C, etapa 1; FIS-CBS-002/003; FIS-APL-007.",
       "s": "d"
      },
      {
-      "t": "O consultor perguntou: há redução de base, diferimento ou isenção por NCM ou UF, com qual cBenef? No Simples, há crédito de ICMS (CSOSN 101) e qual a alíquota por competência?",
-      "r": "**Como validar:** benefícios e alíquota de crédito registrados. **Por quê:** cada um entra num campo diferente (NCM, NCM por Estado, Alíquota de Crédito do Simples). **Fonte:** FIS-ICM-003, FIS-ICM-006, FIS-NCM-007.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor perguntou: PIS e COFINS seguem as alíquotas do regime ou são próprias? Há NCM monofásico ou alíquota zero? A empresa prestadora no Lucro Presumido ou Real sofre retenções federais?",
-      "r": "**Como validar:** alíquotas anotadas. **Por quê:** as retenções federais ainda não têm campo na tela da empresa e exigem o suporte. **Fonte:** FIS-PCO-001, FIS-PCO-007, FIS-RET-003.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor perguntou: o cliente presta serviço (instalação)? Qual código LC 116, município, alíquota de ISS e retenções de ISS e INSS?",
-      "r": "**Como validar:** serviços e retenções listados. **Por quê:** alimentam as Regras Fiscais de Serviço, configuradas com o Faturamento. **Fonte:** FIS-ISS-001, FIS-ISS-003, FIS-RET-005.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor perguntou: o cliente vende para Zona Franca ou ALC, importa ou exporta? Algum cliente tem CNPJ alfanumérico?",
-      "r": "**Como validar:** respostas em ata. **Por quê:** ZFM exige Perfil SUFRAMA (Enterprise); importação não tem cálculo automático; exportação zera impostos. **Fonte:** FIS-ICM-013, FIS-CTX-009, FIS-GER-002, FIS-GER-005.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor perguntou ao contador quais alíquotas de CBS e IBS ele quer em 2026 e se o Simples vai antecipar a reforma.",
-      "r": "**Como validar:** decisão do contador registrada. **Por quê:** preencher a alíquota plena em 2026 multiplica a CBS/IBS calculada. **Fonte:** FIS-APL-007, FIS-CBS-002.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor perguntou: quem entrega EFD ICMS/IPI, EFD Contribuições, Sintegra e GNRE? O contador gera no sistema dele ou no Flow? A apuração será a do Flow ou a do contador?",
-      "r": "**Como validar:** responsável por obrigação definido por escrito. **Por quê:** decide se haverá configuração de SPED, Sintegra e GNRE ou só o envio de arquivos ao contador. **Fonte:** Fiscal C, etapa 8; FIS-APU-003.",
-      "s": "d",
-      "campo": "Quem entrega cada obrigação"
-     }
-    ]
-   },
-   {
-    "titulo": "2. Preparação da implantação",
-    "intro": "Configure na ordem: empresa, CFOP, NCM e NCM por Estado, crédito do Simples, SUFRAMA, textos fiscais, Onboarding e obrigações. Depois de cada etapa, calcule um item de teste. O contador aprova; o responsável fiscal digita, para aprender onde mantém cada cadastro.",
-    "passos": [
-     {
-      "t": "O consultor confirmou o que precisa estar pronto em outros módulos: Fundação assinada; CFOPs revisados quanto a financeiro, estoque e descrição (Faturamento); Regras Fiscais de Serviço e NFS-e na empresa (Faturamento). A configuração fiscal termina antes do primeiro teste de NF-e e, de preferência, antes de importar o primeiro orçamento real.",
-      "r": "**Como validar:** checklists anteriores conferidos. **Por quê:** o motor fiscal já é usado pelo pedido de venda. **Fonte:** Fiscal C, quando implantar; Apostila do Consultor, Módulo Fiscal.",
-      "s": "d"
-     },
-     {
-      "t": "Em `Configurações > Empresas`, cada empresa tem \"Regime de Apuração\" e \"Tipo de Atividade\"; no Lucro Presumido ou Real, as alíquotas de PIS e COFINS; \"CBS (%)\" e \"IBS (%)\" vazios ou com o valor do contador; e o CPF do contador em \"CPF/CNPJ do Contador\".",
-      "r": "**Como validar:** tela da empresa revisada com o contador. **Por quê:** CBS/IBS com a alíquota plena em 2026 sai dezenas de vezes maior; o SPED exige CPF. **Fonte:** FIS-APL-002, FIS-APL-004, FIS-PCO-001, FIS-CBS-002.",
-      "s": "d"
-     },
-     {
-      "t": "Cada CFOP da lista do contador tem CST de ICMS (Presumido/Real) e/ou CSOSN (Simples), CST de IPI, PIS, COFINS, CBS e IBS, e \"Aplicar ICMS\", \"Aplicar PIS\" e \"Aplicar COFINS\" marcados nos tributados.",
-      "r": "**Como validar:** abrir CFOP a CFOP em `Fiscal > Configurações > CFOP` com o contador. **Por quê:** a lista padrão não traz CST de ICMS, PIS e COFINS; desmarcado, o imposto não é aplicado. **Fonte:** FIS-CST-001, FIS-CFO-007, FIS-APL-001.",
-      "s": "d"
-     },
-     {
-      "t": "Os NCMs usados têm alíquotas, reduções, IVA-ST, FCP, CSTs e CEST (quando há ST), e cada NCM com ST ou exceção tem uma linha em \"NCM por Estado\" para cada UF de destino.",
-      "r": "**Como validar:** conferir com a planilha do contador em `Fiscal > Configurações > NCM`; para muitas UFs, usar a importação. **Por quê:** sem a linha da UF, o ST sai zerado e o DIFAL usa a alíquota errada. **Fonte:** FIS-NCM-005, FIS-IST-002, FIS-DIF-003.",
-      "s": "d"
-     },
-     {
-      "t": "Se aplicável: alíquota de crédito do Simples cadastrada por competência em `Fiscal > Alíquota de Crédito do Simples` e Perfil SUFRAMA criado e vinculado aos clientes (Enterprise).",
-      "r": "**Como validar:** item de teste com o crédito ou a desoneração esperada. **Por quê:** sem alíquota, o crédito sai zero; o perfil SUFRAMA hoje só aplica a redução de ICMS. **Fonte:** FIS-ICM-003, FIS-SUF-002, FIS-SUF-004.",
-      "s": "d"
-     },
-     {
-      "t": "Os textos legais do contador foram cadastrados em `Fiscal > Configurações > Textos Fiscais` e ligados ao **CFOP**.",
-      "r": "**Como validar:** texto aparece na DANFE de teste. **Por quê:** hoje o texto ligado ao NCM, ao NCM por Estado ou ao perfil SUFRAMA ainda não sai na nota. **Fonte:** FIS-TXT-002, FIS-TXT-003.",
-      "s": "d"
-     },
-     {
-      "t": "O `Fiscal > Onboarding Fiscal` está sem pendência obrigatória em cada empresa e o `Fiscal > Diagnóstico Fiscal` mostra as tabelas do cliente completas (ou há chamado aberto).",
-      "r": "**Como validar:** prints das duas telas. **Por quê:** o Onboarding confere empresa e tabelas, não os NCMs e CFOPs do cliente; só os testes garantem o cálculo. **Fonte:** FIS-ONB-001, FIS-ONB-003.",
-      "s": "d"
-     },
-     {
-      "t": "O responsável fiscal recebeu o perfil Supervisor Fiscal (ou perfil próprio) e o cliente sabe que as tabelas de estados, CST, CSOSN, CEST e LC 116 são mantidas pela Faktory.",
-      "r": "**Como validar:** perfil conferido e ciência registrada em ata. **Por quê:** o cliente não altera tabela global; correção é pedida ao suporte. **Fonte:** FIS-GER-003, FIS-TAB-002.",
-      "s": "d"
-     },
-     {
-      "t": "Conforme a decisão sobre obrigações: Sintegra e GNRE configurados em homologação e, se o cliente gera SPED no Flow, chamado aberto para o suporte cadastrar o responsável fiscal e a configuração de escrituração.",
-      "r": "**Como validar:** parâmetros salvos ou chamado registrado. **Por quê:** hoje o SPED depende de cadastros que não têm tela; não prometa o SPED antes disso. **Fonte:** Fiscal C, etapa 8.",
+      "t": "**Faça:** em \"Parâmetros\", informe o CPF do contador em \"CPF/CNPJ do Contador\".",
+      "r": "**Explique ao cliente:** o SPED exige CPF de 11 dígitos; com CNPJ do escritório a escrituração trava. **Confira:** CPF informado. **Fonte:** FIS C, etapa 1.",
       "s": "d"
      }
     ]
    },
    {
-    "titulo": "3. Condução do treinamento",
-    "intro": "Treine o responsável fiscal com o **contador presente** nos testes de cálculo. Use produtos e clientes reais, em pedido ou nota `Em aberto`, lendo a aba de impostos do item. A cada operação, peça ao contador que confirme os valores antes de seguir. Grave e registre as dúvidas.",
+    "titulo": "2. CFOP e textos fiscais",
+    "onde": "`Fiscal > Configurações > CFOP` (também em `Faturamento > Configurações > CFOP`) e `Fiscal > Configurações > Textos Fiscais`",
+    "intro": "O CFOP carrega os CSTs padrão e liga ou desliga cada imposto. Aqui se completam os campos fiscais dos CFOPs que o Faturamento já revisou quanto a financeiro e estoque.",
     "passos": [
      {
-      "t": "O consultor apresentou o fluxo fiscal nesta sequência: configuração fiscal → venda → faturamento → compra → recebimento → conferência dos impostos, mostrando qual cadastro alimenta cada etapa.",
-      "r": "**Como validar:** roteiro registrado na OS. **Por quê:** erros fiscais costumam vir de cadastro ou parametrização, não do documento. **Fonte:** Apostila do Consultor, Processos fiscal, de expedição e de projetos e obras.",
-      "s": "d",
-      "campo": "Data do treinamento"
-     },
-     {
-      "t": "Com um produto típico do cliente, o consultor calculou uma venda interna a contribuinte e mostrou, na aba de impostos do item, de onde vem cada valor (CFOP, NCM, NCM por Estado, empresa).",
-      "r": "**Como validar:** valores conferidos pelo contador, sem aviso no item. **Por quê:** é a operação mais comum e a base para entender as outras. **Fonte:** FIS-ICM-008; Fiscal D, testes de cálculo.",
+      "t": "**Faça:** abra cada CFOP da lista do contador e confira a descrição e as marcas \"Gera Financeiro\", \"Movimenta Estoque\" e \"Devolução\".",
+      "r": "**Explique ao cliente:** a descrição do CFOP vira a natureza da operação na nota; não existe cadastro separado de natureza. **Confira:** descrição e marcas aprovadas pelo contador. **Fonte:** FAT C, etapa 2; FAT-NFE-007; README da cadeia, decisão X1.",
       "s": "d"
      },
      {
-      "t": "O consultor mostrou a regra de ouro: quando falta cadastro, o documento salva com imposto zerado e aviso no item; o cliente aprendeu a procurar o aviso em todo teste.",
-      "r": "**Como validar:** provocar um aviso (item sem CST) e lê-lo com o cliente. **Por quê:** imposto zerado sem ninguém ver o aviso vira nota errada. **Fonte:** FIS-CTX-010, FIS-CST-001.",
+      "t": "**Faça:** em cada CFOP tributado, confira \"CST ICMS (Lucro Presumido/Real)\" e \"CSOSN (Simples Nacional)\" e as marcas \"Aplicar ICMS\", \"Aplicar PIS\" e \"Aplicar COFINS\".",
+      "r": "**Explique ao cliente:** desmarcadas, essas marcas desligam o imposto. A lista padrão de CFOP vem com CSOSN e CST de IPI, mas sem CST de ICMS, PIS e COFINS: empresa do Presumido ou do Real precisa preencher. **Confira:** CST/CSOSN preenchidos e marcas ligadas. **Fonte:** FIS C, etapa 2; FIS-APL-001; FIS-CFO-007.",
       "s": "d"
      },
      {
-      "t": "O consultor calculou as operações que o cliente usa: interestadual a contribuinte, a não contribuinte (DIFAL e FCP), com ST, com IPI e, se houver, em empresa do Simples, com o contador conferindo cada uma.",
-      "r": "**Como validar:** uma linha por operação com o visto do contador. **Por quê:** cada operação depende de um cadastro diferente. **Fonte:** FIS-DIF-002, FIS-IST-004, FIS-IPI-003, FIS-APL-003.",
-      "s": "d",
-      "campo": "Operações conferidas pelo contador"
-     },
-     {
-      "t": "O consultor mostrou como sobrescrever a alíquota de ICMS de um item e usar `Recalcular`, e quando isso é aceitável.",
-      "r": "**Como validar:** valor novo no item e PIS/COFINS recalculado. **Por quê:** ajuste pontual é legítimo; ajuste recorrente indica cadastro errado. **Fonte:** FIS-AJU-002, FIS-AJU-003.",
+      "t": "**Faça:** confira \"CST IPI\", \"CST PIS\", \"CST COFINS\", \"CST CBS\" e \"CST IBS\"; no Simples com crédito, marque \"Gerar Crédito Simples Nacional\".",
+      "r": "**Explique ao cliente:** o CST do item segue a ordem: escolhido à mão, NCM × Estado, NCM e por último o CFOP. **Confira:** CSTs iguais aos do contador; nenhum CST de crédito em CFOP de saída. **Fonte:** FIS C, etapa 2; FIS B, ordem das fontes; FIS-PCO-005.",
       "s": "d"
      },
      {
-      "t": "O consultor ligou o fiscal às compras: entrada com cálculo de impostos, conferência de divergências no recebimento e, em importação, lançamento manual dos impostos do documento.",
-      "r": "**Como validar:** cliente explica o que confere numa entrada. **Por quê:** o fiscal vale também para a compra, não só para a venda. **Fonte:** Apostila do Consultor, Módulo Fiscal; FIS-CTX-009.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor percorreu com o cliente as mensagens mais comuns (\"Informe o regime de apuração da empresa\", \"Sem CST\", \"ICMS-ST não calculado: falta a MVA\") e onde corrigir cada uma.",
-      "r": "**Como validar:** cliente associa cada mensagem ao cadastro. **Por quê:** é o que ele vai ver quando entrar um produto ou UF nova. **Fonte:** Fiscal C, erros comuns; FIS-APL-002, FIS-IST-002.",
-      "s": "d"
-     },
-     {
-      "t": "Se o cliente gera obrigações no Flow, o consultor mostrou com o contador a geração de teste (Sintegra, GNRE ou o diagnóstico de prontidão da Escrituração SPED).",
-      "r": "**Como validar:** arquivo ou guia de teste gerado. **Por quê:** o contador precisa validar o arquivo antes da primeira competência real. **Fonte:** Fiscal C, etapa 8.",
+      "t": "**Faça:** em `Fiscal > Configurações > Textos Fiscais`, cadastre os textos legais do contador e ligue-os ao CFOP nos campos \"Texto Fiscal ICMS\", \"IPI\", \"PIS\" e \"COFINS\".",
+      "r": "**Explique ao cliente:** hoje o sistema ainda só leva para a nota o texto ligado ao CFOP; texto ligado ao NCM, ao estado ou ao perfil SUFRAMA não sai, e texto inativo continua saindo. **Confira:** o texto na DANFE de teste. **Fonte:** FIS C, etapa 6; FIS-TXT-002/003.",
       "s": "d"
      }
     ]
    },
    {
-    "titulo": "4. Validação do aprendizado",
-    "intro": "O responsável fiscal faz, o contador confere, você observa. Monte casos com produtos e UFs diferentes dos usados no treinamento. Item só marca se o cálculo saiu sem aviso e o contador aprovou.",
+    "titulo": "3. NCM e regras de tributação por estado",
+    "onde": "`Fiscal > Configurações > NCM` (modal \"NCM por Estado\" na mesma tela)",
+    "intro": "O NCM traz as alíquotas e os CSTs de cada produto; o NCM por Estado traz as exceções por UF de destino (ST, DIFAL, benefício). É a planilha do contador entrando no sistema.",
     "passos": [
      {
-      "t": "O responsável fiscal calculou sozinho cada operação típica do cliente sem aviso no item, e o contador aprovou os valores.",
-      "r": "**Como validar:** lista de operações com o visto do contador. **Por quê:** é o resultado esperado da implantação fiscal. **Fonte:** Fiscal C, resultado esperado; Fiscal D, testes de cálculo.",
+      "t": "**Faça:** abra o NCM do produto de teste e confira as alíquotas de ICMS, IPI, PIS e COFINS e os CSTs de saída, em especial o **CST de PIS/COFINS de saída**.",
+      "r": "**Explique ao cliente:** sem o CST de PIS/COFINS de saída, o item sai com o quadro \"Impostos não calculados\". **Confira:** valores iguais aos da planilha do contador. **Fonte:** fluxo antigo \"Fluxo de faturamento e fiscal\", pré-requisitos; FIS C, etapa 3; FIS-NCM-005.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** no modal \"NCM por Estado\", crie ou confira uma linha para cada UF de destino com exceção: \"Estado Destino\", \"ICMS %\", \"Redução BC ICMS %\", \"IVA ICMS ST %\", \"Modalidade da BC do ST\", \"FCP %\" e \"Código do Benefício Fiscal (cBenef)\".",
+      "r": "**Explique ao cliente:** todo NCM com ST precisa de linha com MVA para cada UF de destino, senão o ST sai zerado com aviso. O motor olha só o destino. Para muitas UFs, use a importação de NCM × Estado. **Confira:** uma linha por UF de venda. **Fonte:** FIS C, etapa 3; FIS-IST-002; FIS-NCM-009.",
       "s": "d"
      },
      {
-      "t": "Diante de um item com aviso preparado pelo consultor (NCM sem linha para a UF ou CFOP sem CST), o cliente disse qual cadastro corrigir, corrigiu e recalculou.",
-      "r": "**Como validar:** aviso some depois do `Recalcular`. **Por quê:** o cliente vai cadastrar produtos e UFs novas sem o consultor. **Fonte:** FIS-IST-002, FIS-CST-001.",
+      "t": "**Faça:** nos NCMs com ST, confira o CEST.",
+      "r": "**Explique ao cliente:** NCM com ST sem CEST é rejeitado pela SEFAZ (rejeição 806). **Confira:** CEST preenchido. **Fonte:** FIS C, etapa 3; FAT C, rejeições catalogadas.",
       "s": "d"
      },
      {
-      "t": "O cliente transmitiu em homologação uma NF-e de cada operação típica e todas foram autorizadas sem rejeição de NCM ou CEST.",
-      "r": "**Como validar:** notas autorizadas na lista. **Por quê:** o cálculo certo precisa passar também pela SEFAZ. **Fonte:** Fiscal D, testes de cálculo; Faturamento D.",
+      "t": "**Faça:** se houver CSOSN 101, cadastre em `Fiscal > Alíquota de Crédito do Simples` a alíquota de cada competência; se vender para ZFM/ALC (Enterprise), crie o perfil em `Fiscal > Configurações > Perfil SUFRAMA` e vincule no participante.",
+      "r": "**Explique ao cliente:** sem alíquota da competência nem da empresa, o crédito sai zero. Do perfil SUFRAMA, hoje só a redução de ICMS e o texto automático funcionam. **Confira:** alíquota da competência de teste e o campo \"Perfil SUFRAMA\" no cliente. **Fonte:** FIS C, etapas 4 e 5; FIS-ICM-003; FIS-SUF-004.",
       "s": "d"
-     },
-     {
-      "t": "O contador conferiu os valores de uma devolução de venda e a diferença em relação à nota original foi registrada.",
-      "r": "**Como validar:** registro da diferença em ata. **Por quê:** hoje a devolução recalcula pelas regras atuais em vez de espelhar a nota original. **Fonte:** FAT-DEV-007; Fiscal D, testes de cálculo.",
-      "s": "d"
-     },
-     {
-      "t": "O contador conferiu CBS e IBS calculados em 2026 numa venda de empresa do Lucro Presumido ou Real e a diferença de base foi anotada.",
-      "r": "**Como validar:** valores e observação em ata. **Por quê:** a base de CBS/IBS ainda difere da orientação vigente e o contador precisa saber. **Fonte:** FIS-CBS-001, FIS-APL-007.",
-      "s": "d"
-     },
-     {
-      "t": "O cliente explicou que tabelas de estados, CST, CSOSN, CEST e LC 116 são da Faktory e como pedir correção ao suporte.",
-      "r": "**Como validar:** explicação correta. **Por quê:** evita que o cliente tente contornar com ajuste manual. **Fonte:** FIS-TAB-002.",
-      "s": "d"
-     },
-     {
-      "t": "Se o cliente gera obrigações no Flow: o contador validou o arquivo de teste (Sintegra, SPED no PVA ou guia GNRE).",
-      "r": "**Como validar:** evidência da validação. **Por quê:** a primeira entrega real não pode ser o primeiro teste. **Fonte:** Fiscal D, obrigações acessórias.",
-      "s": "d",
-      "campo": "Validação do contador"
      }
     ]
    },
    {
-    "titulo": "5. Preparação para utilização e go-live",
-    "intro": "O primeiro faturamento real só é liberado com a configuração fiscal aprovada pelo contador. Combine com ele a conferência das primeiras notas e da primeira competência. Cada ocorrência vira OS.",
+    "titulo": "4. Onboarding e Diagnóstico Fiscal",
+    "onde": "`Fiscal > Onboarding Fiscal` e `Fiscal > Diagnóstico Fiscal`",
+    "intro": "Depois de configurar, o sistema confere a empresa e as tabelas. O cliente aprende que \"liberado\" no Onboarding não garante cálculo certo: só os testes dos blocos seguintes garantem.",
     "passos": [
      {
-      "t": "Todos os itens obrigatórios do checklist de validação fiscal estão marcados e assinados pelo cliente e pelo contador; a planilha NCM × tributação e a lista de CFOPs assinadas estão guardadas no projeto.",
-      "r": "**Como validar:** documentos na pasta do cliente. **Por quê:** é a condição para liberar o primeiro faturamento real e o registro do que o contador aprovou. **Fonte:** Fiscal D, aceite.",
-      "s": "d",
-      "campo": "Data da assinatura do contador"
-     },
-     {
-      "t": "O cliente e o contador foram avisados das limitações atuais: devolução sem espelho da nota original, apuração de IPI que lê o crédito pelo sinal, alíquota interestadual hoje fixa na tabela, retenções federais sem campo na empresa e SPED sem tela de configuração.",
-      "r": "**Como validar:** registro em ata. **Por quê:** o contador precisa saber o que conferir por fora. **Fonte:** Fiscal D, aceite; FIS-APU-003, FIS-ICM-009, FIS-RET-003.",
+      "t": "**Faça:** em `Fiscal > Onboarding Fiscal`, escolha cada empresa e zere as pendências obrigatórias.",
+      "r": "**Explique ao cliente:** o Onboarding verifica empresa, regime, tabelas de CST/CSOSN, pelo menos uma linha de NCM × Estado, ambiente da NF-e e certificado. Ele não verifica os seus NCMs e CFOPs. A tela ainda fala em \"go-live bloqueado\", mas hoje ela só informa. **Confira:** nenhuma pendência obrigatória. **Fonte:** FIS C, etapa 7; FIS-ONB-001.",
       "s": "d"
      },
      {
-      "t": "O contador conferiu as primeiras notas reais de cada operação emitidas em produção.",
-      "r": "**Como validar:** retorno do contador registrado. **Por quê:** o primeiro volume real mostra cadastros que os testes não cobriram. **Fonte:** Apostila do Consultor, go-live com produção assistida.",
+      "t": "**Faça:** abra `Fiscal > Diagnóstico Fiscal`.",
+      "r": "**Explique ao cliente:** é tela de suporte; sem a permissão aparece \"Esta tela é restrita à equipe de suporte…\". **Confira:** \"Tabelas fiscais do cliente completas\" (ou chamado aberto). **Fonte:** FIS C, etapa 7; FIS-ONB-003/004.",
       "s": "d"
      },
      {
-      "t": "Nas primeiras semanas, o consultor acompanhou avisos de imposto nos pedidos (como \"NCM-Estado não configurado\"), produtos com NCM novo, vendas para UF nova e rejeições por NCM ou CEST.",
-      "r": "**Como validar:** ocorrências registradas em OS. **Por quê:** o aviso de NCM por Estado pode bloquear a emissão da nota. **Fonte:** FAQ de limitações; FIS-IST-002.",
-      "s": "d",
-      "campo": "Ocorrências das primeiras semanas"
+      "t": "**Faça:** mostre ao cliente quais tabelas são da Faktory e quais são dele.",
+      "r": "**Explique ao cliente:** estados, CST, CSOSN, CEST e LC 116 são mantidos pela Faktory (pedido de correção vai ao suporte); NCM, NCM × Estado, CFOP, textos fiscais e regras de serviço são do cliente, com o contador. **Confira:** o cliente sabe a quem pedir cada correção. **Fonte:** FIS C, seção 4; FIS-TAB-002.",
+      "s": "d"
+     }
+    ]
+   },
+   {
+    "titulo": "5. Provar o cálculo no pedido de venda",
+    "onde": "`Vendas > Pedidos de Venda > Novo Pedido`",
+    "intro": "O motor de impostos é chamado ao salvar o pedido, ao alterar um item e no \"Recalcular\". O contador confere os valores na aba de impostos do item, operação por operação.",
+    "passos": [
+     {
+      "t": "**Faça:** crie um pedido para o cliente de teste PJ com IE na mesma UF: preencha Empresa e Cliente e escolha o **CFOP**.",
+      "r": "**Explique ao cliente:** o CFOP só libera depois de empresa e cliente e vem filtrado pelo estado do cliente. Pode aparecer \"Cliente sem IE informado e não marcado como não contribuinte.\". **Confira:** CFOP de venda interna disponível. **Fonte:** trilha dos estagiários, checklist de Vendas; fluxo antigo \"Fluxo completo\" (dados-checklist-consultor), bloco do pedido.",
+      "s": "v"
      },
      {
-      "t": "O cliente sabe que todo produto novo precisa de NCM e que todo NCM com ST ou exceção precisa de linha para cada UF de destino, combinados com o contador.",
-      "r": "**Como validar:** cliente descreve o procedimento de cadastro de produto novo. **Por quê:** a configuração fiscal é contínua, não termina no go-live. **Fonte:** FIS-CTX-002, FIS-IST-002.",
+      "t": "**Faça:** adicione o produto típico (no diálogo **Dados do Item**, preencha as medidas e clique em **Aplicar**) e leia o quadro **\"Impostos não calculados no item\"**, se aparecer.",
+      "r": "**Explique ao cliente:** o quadro mostra o motivo por tributo (ex.: CST de PIS/COFINS ausente na NCM). **Confira:** o motivo anotado e corrigido no cadastro. **Fonte:** trilha dos estagiários, checklist de Vendas; fluxo antigo \"Fluxo completo\" (dados-checklist-consultor), bloco do pedido.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** com o contador, confira os impostos do item: CST/CSOSN, ICMS pela alíquota interna do NCM e PIS/COFINS sem o ICMS na base (Presumido/Real).",
+      "r": "**Explique ao cliente:** a venda interna a contribuinte não tem DIFAL; no Simples não há ICMS destacado (salvo CSOSN 101, 201 e 900) nem PIS/COFINS e IPI. **Confira:** valores iguais ao cálculo do contador e nenhum aviso no item. **Fonte:** FIS D, seção 3; FIS B, caminho Simples × Presumido/Real.",
       "s": "d"
      },
      {
-      "t": "Na primeira competência fechada, o contador recebeu e conferiu o que foi combinado (pacote do contador, Mapa de Apuração, Sintegra ou SPED).",
-      "r": "**Como validar:** confirmação do contador. **Por quê:** fecha o ciclo fiscal com quem responde por ele. **Fonte:** Fiscal C, etapa 8.",
+      "t": "**Faça:** clique em **Salvar e Permanecer**.",
+      "r": "**Explique ao cliente:** regra de ouro: o pedido salva mesmo com imposto zerado e aviso no item; o teste só passa sem aviso. **Confira:** \"Pedido PV-xxxxxx criado\". **Fonte:** trilha dos estagiários, checklist de Vendas; FIS-CTX-010.",
+      "s": "v",
+      "campo": "Nº do pedido"
+     },
+     {
+      "t": "**Faça:** repita com o cliente PJ de outra UF e com o cliente PF não contribuinte de outra UF.",
+      "r": "**Explique ao cliente:** interestadual a contribuinte não tem DIFAL; a não contribuinte em outra UF tem DIFAL e FCP de destino (só regime normal; o Simples não calcula). Hoje a tabela de estados ainda traz 12% de alíquota interestadual em todas as UFs. **Confira:** alíquota interestadual, DIFAL e FCP conferidos pelo contador. **Fonte:** FIS D, seção 3; FIS-DIF-001/004; FIS-ICM-009.",
+      "s": "d"
+     }
+    ]
+   },
+   {
+    "titulo": "6. Provar o cálculo na nota",
+    "onde": "menu `⋯ > Faturar` do pedido e `Faturamento > Notas Fiscais`",
+    "intro": "Na nota, o cálculo é refeito ao importar os itens e ao trocar o CFOP. O contador vê o ajuste manual e a transmissão em homologação de cada operação.",
+    "passos": [
+     {
+      "t": "**Faça:** fature o pedido de teste e importe os itens com \"Recalcular impostos\".",
+      "r": "**Explique ao cliente:** os impostos são recalculados na nota. Se aparecer o quadro \"Impostos não calculados no item\", a nota ainda salva. **Confira:** os mesmos valores do pedido e o motivo de qualquer aviso. **Fonte:** fluxo antigo \"Fluxo de faturamento e fiscal\", bloco 1.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** troque o CFOP de um item e veja o CST mudar; depois use \"Sobrescrever manualmente\" para manter um código.",
+      "r": "**Explique ao cliente:** trocar o CFOP resolve o CST de novo; \"Sobrescrever manualmente\" mantém o código escolhido. **Confira:** o CST novo e, com a sobrescrita, o código mantido. **Fonte:** FAT-NFE-016; FIS B, ordem das fontes.",
       "s": "d"
      },
      {
-      "t": "Critério para liberar o módulo seguinte: Faturamento só emite nota real com o checklist fiscal assinado; Compras e Recebimento seguem depois que uma entrada de teste calculou impostos conferidos pelo contador.",
-      "r": "**Como validar:** checklist e entrada de teste conferidos. **Por quê:** a configuração fiscal vem antes de Vendas, Compras e Faturamento. **Fonte:** Apostila do Consultor, Módulo Fiscal; Fiscal D.",
+      "t": "**Faça:** sobrescreva a alíquota de ICMS de um item.",
+      "r": "**Explique ao cliente:** o valor digitado vale e o PIS/COFINS é recalculado sobre o ICMS digitado. **Confira:** ICMS novo e PIS/COFINS recalculado. **Fonte:** FIS D, seção 3.",
+      "s": "d"
+     },
+     {
+      "t": "**Faça:** com o responsável fiscal, transmita em homologação uma NF-e de cada operação testada.",
+      "r": "**Explique ao cliente:** se houver item com imposto não calculado, a transmissão pede confirmação (\"X itens com impostos não calculados: [lista]. Transmitir mesmo assim?\"); a resposta certa é não, e corrigir o cadastro. **Confira:** notas \"Autorizadas\", sem rejeição 778 (NCM), 806 (CEST), 600 ou 508 (CST/CSOSN para não contribuinte). **Fonte:** FIS D, seção 3; FIS B, quem trava quando falta.",
+      "s": "d"
+     },
+     {
+      "t": "**Faça:** se houver devolução de venda, gere a devolução a partir de uma nota autorizada e confira os valores com o contador.",
+      "r": "**Explique ao cliente:** hoje o sistema ainda recalcula a devolução pelas regras atuais, sem espelhar os tributos da nota original. **Confira:** diferença registrada em ata. **Fonte:** FIS D, seção 3; FAT-DEV-007.",
+      "s": "d"
+     }
+    ]
+   },
+   {
+    "titulo": "7. O aviso quando falta configuração",
+    "onde": "pedido de venda ou nota de teste, aba de impostos do item",
+    "intro": "O consultor provoca a falta de cadastro de propósito para o cliente reconhecer o aviso, saber onde corrigir e ver o \"Recalcular\" funcionar.",
+    "passos": [
+     {
+      "t": "**Faça:** venda um produto com ST para uma UF sem linha de MVA no NCM por Estado (bloqueio de propósito).",
+      "r": "**Explique ao cliente:** o documento salva, o ICMS próprio é calculado e o ST sai zerado com o aviso. **Confira:** \"ICMS-ST não calculado: falta a MVA para <UF> …\". **Fonte:** FIS-IST-002; FIS D, seção 3.",
+      "s": "d"
+     },
+     {
+      "t": "**Faça:** use um item cujo CFOP e NCM não tenham CST (bloqueio de propósito).",
+      "r": "**Explique ao cliente:** sem CST em nenhuma fonte, o imposto não é calculado e a transmissão não deve seguir. **Confira:** o aviso \"Sem CST: …\" no item. **Fonte:** FIS-CST-001; FIS D, seção 3.",
+      "s": "d"
+     },
+     {
+      "t": "**Faça:** numa empresa de teste sem regime, tente salvar um pedido (bloqueio de propósito).",
+      "r": "**Explique ao cliente:** sem regime nada calcula, e o documento não salva. **Confira:** \"Informe o regime de apuração da empresa\". **Fonte:** FIS-APL-002; FIS-CTX-006; FIS C, erros comuns.",
+      "s": "d"
+     },
+     {
+      "t": "**Faça:** corrija o cadastro que faltava (linha de MVA, CST ou regime) e clique em \"Recalcular\" no documento.",
+      "r": "**Explique ao cliente:** o cálculo não se refaz sozinho nos documentos já salvos; \"Recalcular\" aplica o cadastro novo. **Confira:** o aviso some e os valores aparecem. **Fonte:** FIS C, erros comuns; FIS B, onde o motor é chamado.",
+      "s": "d"
+     }
+    ]
+   },
+   {
+    "titulo": "8. Serviço, obrigações acessórias e perfis",
+    "onde": "`Fiscal > Regras Fiscais de Serviço`, `Fiscal > Escrituração SPED`, `Fiscal > Sintegra`, `Fiscal > GNRE`",
+    "intro": "Fecha o roteiro com o que não é cálculo de mercadoria: ISS e retenções do serviço, quem entrega cada obrigação e quem pode mexer nos cadastros fiscais.",
+    "passos": [
+     {
+      "t": "**Faça:** se o cliente presta serviço, confira em `Fiscal > Regras Fiscais de Serviço` uma regra por código LC 116, cidade e tipo de tomador, com ISS, retenções, NBS e IBS/CBS.",
+      "r": "**Explique ao cliente:** a NFS-e não passa pelo motor: ISS e retenções vêm da regra; a regra só preenche o que estiver vazio. Prestador do Presumido ou do Real que sofre retenção de PIS/COFINS/CSLL/IRRF: hoje a tela da empresa ainda não tem esses campos (acionar o suporte). **Confira:** ISS da regra numa NFS-e de teste. **Fonte:** FIS C, pré-requisitos e F11/F12; FAT-NFS-003; FIS-RET-003.",
+      "s": "d"
+     },
+     {
+      "t": "**Faça:** combine por escrito com o contador quem entrega EFD ICMS/IPI, EFD Contribuições, Sintegra e GNRE.",
+      "r": "**Explique ao cliente:** o Flow gera os arquivos, mas o contador valida no PVA e entrega. **Confira:** ata com o responsável por cada obrigação. **Fonte:** FIS D, seção 4; FIS C, etapa 8.",
+      "s": "d"
+     },
+     {
+      "t": "**Faça:** se o cliente tem PRO e vai gerar o SPED, abra `Fiscal > Escrituração SPED`, clique em \"Nova Escrituração\" e leia o \"Diagnóstico de prontidão\".",
+      "r": "**Explique ao cliente:** o diagnóstico pede IE, UF, IBGE, CPF do contador e responsável fiscal vigente; hoje o responsável fiscal e a configuração de escrituração ainda não têm tela e são cadastrados pelo suporte. **Confira:** diagnóstico sem inconsistências ou chamado aberto. **Fonte:** FIS C, etapa 8.",
+      "s": "d"
+     },
+     {
+      "t": "**Faça:** confira que o responsável fiscal tem o perfil Supervisor Fiscal (ou perfil próprio com as permissões do Fiscal).",
+      "r": "**Explique ao cliente:** só quem responde pelo fiscal mexe em NCM, CFOP e textos: alterar afeta todas as notas. **Confira:** perfil do usuário em `Segurança > Perfis de Acesso`. **Fonte:** FIS C, etapa 9; FIS D, seção 5.",
       "s": "d"
      }
     ]
@@ -1820,315 +1828,329 @@ export const CHECKLISTS_IMPLANTACAO = [
   ],
   "resultado": [
    {
-    "t": "Cada operação típica do cliente calcula em homologação sem aviso no item e com valores aprovados pelo contador.",
+    "t": "Todas as empresas com regime, tipo de atividade, PIS/COFINS e CBS/IBS conferidos pelo contador.",
     "s": "d"
    },
    {
-    "t": "Empresa, CFOPs, NCMs e NCM por Estado estão configurados conforme a planilha assinada pelo contador.",
+    "t": "CFOPs, NCMs e linhas de NCM por Estado das operações do cliente cadastrados conforme a planilha assinada pelo contador.",
     "s": "d"
    },
    {
-    "t": "O responsável fiscal lê os avisos de imposto e sabe qual cadastro corrigir.",
+    "t": "Onboarding Fiscal sem pendência obrigatória em cada empresa.",
     "s": "d"
    },
    {
-    "t": "Está registrado por escrito quem entrega cada obrigação acessória.",
+    "t": "Cada operação típica calculada no pedido e na nota sem aviso no item e com valores conferidos; uma NF-e de cada transmitida em homologação.",
     "s": "d"
    },
    {
-    "t": "Cliente e contador conhecem as limitações atuais e o que conferir por fora.",
+    "t": "O cliente reconheceu o quadro \"Impostos não calculados no item\" e os avisos de MVA, CST e regime, e corrigiu com \"Recalcular\".",
+    "s": "d"
+   },
+   {
+    "t": "Obrigações acessórias combinadas por escrito e lacunas comunicadas ao contador.",
     "s": "d"
    }
   ],
   "atencao": [
-   "Configurar sem o contador ou o consultor decidir CST, alíquota ou benefício: a responsabilidade tributária é do cliente e do contador.",
-   "Preencher CBS e IBS com a alíquota plena em 2026: o imposto sai dezenas de vezes maior.",
-   "Cliente do Lucro Presumido ou Real com CFOP sem CST de ICMS, PIS e COFINS: a lista padrão não traz esses CSTs e o item fica com aviso.",
-   "NCM com ST sem linha para cada UF de destino: o ST sai zerado e a nota pode ser emitida errada.",
-   "Tratar o Onboarding Fiscal sem pendência como garantia: ele confere empresa e tabelas, não o cálculo das operações do cliente.",
-   "Não olhar o aviso no item: o documento salva com imposto zerado quando falta cadastro.",
-   "Prometer a Escrituração SPED antes de o suporte cadastrar o responsável fiscal e a configuração de escrituração.",
-   "Escritório contábil informado com CNPJ em \"CPF/CNPJ do Contador\": o SPED exige o CPF."
+   "Só ambiente de teste (homologação) e registros com \"TESTE FLUXO CONSULTOR\". **Nota fiscal só é transmitida com o responsável fiscal do cliente.** O consultor não decide tributação: tudo vem do contador.",
+   "O documento salva com imposto zerado e aviso no item quando falta cadastro: o teste não passa só porque salvou.",
+   "\"CBS (%)\" e \"IBS (%)\" preenchidos com 8,80 e 17,70 em 2026 fazem o imposto sair dezenas de vezes maior.",
+   "A lista padrão de CFOP não traz CST de ICMS, PIS e COFINS: empresa do Presumido ou do Real fica com aviso \"Sem CST\" até preencher.",
+   "O Onboarding ainda diz que as pendências \"bloqueiam a liberação para operar\"; hoje ele só informa, e \"liberado\" não garante cálculo certo.",
+   "Hoje o sistema ainda não leva para a nota o texto fiscal ligado ao NCM, ao estado ou ao perfil SUFRAMA, e usa 12% de alíquota interestadual em todas as UFs: conferir com o contador.",
+   "Não usar CFOP 59xx/69xx (exceto 5949/6949) em NF-e de mercadoria sem testar: hoje ainda dispara ISS."
   ],
   "naoValidado": [
-   "Momento do Fiscal na implantação: a Apostila do Consultor dá a ordem Vendas → Faturamento → Fiscal → Financeiro, mas diz no Módulo Fiscal que ele vem antes de Vendas, Compras e Faturamento; a metodologia da gestora o coloca depois da Fundação e antes do primeiro teste de NF-e. Combinar com a coordenação.",
-   "A tela do Onboarding Fiscal ainda diz que pendências bloqueiam a liberação para operar, mas a regra vigente diz que ela só informa. Conferir na tela e explicar ao cliente.",
-   "A tabela de estados hoje traz 12% de alíquota interestadual em todas as UFs. Conferir com o contador cada UF de venda.",
-   "A mensagem de retenção manda preencher as alíquotas em `Configurações > Empresas`, mas a tela da empresa não tem esses campos. Conferir na tela e acionar o suporte.",
-   "A alíquota municipal de ISS e os códigos LC 116 não têm item de menu; o ISS pode cair na alíquota padrão do código. Conferir na NFS-e de teste.",
-   "O que o Onboarding confere sobre MVA: a metodologia diz que hoje ele não confere a MVA, só a existência da linha. Conferir na tela."
+   "Item sem CST: o checklist D da gestora diz que a transmissão é barrada; o documento B da gestora (D-31344.4) diz que a transmissão pede confirmação (\"Transmitir mesmo assim?\"); o Faturamento C lista \"Item N: ICMS CST/CSOSN obrigatório\" no pré-voo. Conferir na tela qual comportamento vale.",
+   "Aviso \"NCM-Estado não configurado para o produto\": visto na tela pela trilha dos estagiários (pode bloquear a nota), mas não está nas mensagens da gestora, que diz que sem NCM × Estado o DIFAL usa a alíquota do NCM. Conferir na tela se bloqueia.",
+   "Nenhuma tela do módulo Fiscal (CFOP, NCM, Textos Fiscais, Onboarding, Diagnóstico, SPED) foi aberta nos fluxos antigos: os rótulos de campos vêm do código lido pela gestora. Conferir na tela antes de ensinar."
   ]
  },
  {
   "id": "implantacao-financeiro",
   "arquivo": "implantacao-07-financeiro.html",
   "etiqueta": "Consultor · Implantação · Financeiro",
-  "titulo": "Implantação do Financeiro",
-  "subtitulo": "Checklist para o consultor conduzir e verificar a implantação do Financeiro: títulos vindos da nota e do recebimento, boleto, baixa, conciliação, carga inicial e saldos.",
-  "objetivo": "Ao final, o financeiro do cliente baixa, estorna, concilia o extrato e lê o fluxo de caixa e o DRE sozinho, com títulos nascendo da nota e da compra sem digitação. O módulo fecha a cadeia comercial: se o saldo inicial, a carga de títulos ou o caminho de baixa forem mal combinados, o caixa do cliente fica errado desde o primeiro dia. Boleto e PIX só vão para produção depois dos testes em homologação.",
-  "rodape": "Checklist de implantação · Financeiro · fontes: Financeiro C, A e D da metodologia, README da cadeia comercial, Apostila do Consultor (Módulo Financeiro; Processos de compras, produção e financeiro), FAQ de limitações · Harness Faktory Flow",
+  "titulo": "Implantação do Financeiro: roteiro prático com o cliente",
+  "subtitulo": "Das contas e do plano de contas até o caixa: títulos nascendo do pedido ou da nota, recebimento total e parcial, boleto e PIX em homologação quando contratados, contas a pagar vindas da compra, extrato e conciliação, saldos, fluxo de caixa e estorno.",
+  "objetivo": "Ao final, o financeiro do cliente terá visto um título nascer do pedido e outro da nota, recebido um deles em duas partes, pago um título da compra e conferido o mesmo dinheiro em Saldos, Extrato, Fluxo de Caixa e DRE. Ele saberá estornar uma baixa e saberá o que o sistema recusa.",
+  "rodape": "Checklist de implantação · Financeiro · fontes: Financeiro A, B, C e D da metodologia, README da cadeia comercial, fluxo antigo \"Fluxo financeiro\", procedimento gerar títulos e receber · Harness Faktory Flow",
   "prerequisitos": [
    {
-    "t": "A Fundação está concluída: bancos, contas bancárias (ainda sem saldo inicial), portadores, plano de contas analítico aprovado pelo contador, condições e meios de pagamento.",
-    "r": "**Como validar:** checklist da Fundação assinado; contas bancárias com saldo inicial em branco. **Por quê:** o saldo inicial depende do tipo de carga, decidido depois. **Fonte:** Financeiro C, pré-requisitos.",
+    "t": "Módulo `financeiro` contratado; versão **PRO** se o cliente quer PIX, pagamentos eletrônicos, DDA ou Open Finance.",
+    "r": "**Confira:** menus sem cadeado em `Financeiro`. Sem o módulo, nenhuma nota gera título. **Fonte:** FIN C, comerciais; FAT-TIT-007.",
     "s": "d"
    },
    {
-    "t": "A NF-e já autoriza em homologação e os CFOPs que geram financeiro foram conferidos com o contador.",
-    "r": "**Como validar:** uma nota de teste autorizada com títulos gerados. **Por quê:** o Financeiro só é testado de ponta a ponta quando a nota autoriza. **Fonte:** Financeiro C, quando implantar; FAT-TIT-001.",
+    "t": "Plano de contas analítico, contas bancárias, portadores, condições e meios de pagamento feitos na Fundação; saldo inicial das contas **ainda não preenchido**.",
+    "r": "**Confira:** `Financeiro > Configurações`. O saldo inicial entra só na carga, depois dos testes. **Fonte:** FIN C, pré-requisitos e etapa 2; README da cadeia, decisão X7.",
     "s": "d"
    },
    {
-    "t": "O módulo Financeiro está ativo e foi conferido se o cliente tem PRO, caso queira PIX, pagamentos eletrônicos, DDA ou Open Finance.",
-    "r": "**Como validar:** menus `PIX` e `Pagamentos` sem cadeado (se PRO). **Por quê:** sem o módulo, nenhuma nota gera título; sem PRO, esses recursos não aparecem. **Fonte:** FIN-GER-001, FAT-TIT-007.",
-    "s": "d"
+    "t": "Participante de teste com **Conta de Fluxo de Caixa Receita/Despesa** preenchida.",
+    "r": "**Confira:** no cadastro do participante. Ela decide em que linha do fluxo de caixa o valor cai. **Fonte:** fluxo antigo \"Fluxo financeiro\", pré-requisitos.",
+    "s": "v"
    },
    {
-    "t": "O cliente tem contrato com o provedor de boleto (PlugBoleto/Tecnospeed) ou credenciais do Bradesco Open API, e o banco liberou a cobrança registrada.",
-    "r": "**Como validar:** contrato e carta do banco recebidos. **Por quê:** o Flow só integra; sem o provedor e o banco, não há boleto. **Fonte:** Financeiro C, comerciais.",
-    "s": "d"
-   },
-   {
-    "t": "O cliente enviou: por banco emissor, carteira, convênio e código do beneficiário; certificado PIX (se PRO); saldo de cada conta na data de corte; relação de títulos em aberto; arquivo OFX de um mês.",
-    "r": "**Como validar:** documentos na pasta do cliente. **Por quê:** sem eles a configuração do boleto e a carga inicial param. **Fonte:** Financeiro C, documentos do cliente.",
+    "t": "Pedido de venda de teste \"TESTE FLUXO CONSULTOR\" sem títulos e a nota autorizada do roteiro de Faturamento (de um pedido sem títulos); nota de recebimento finalizada do roteiro de Recebimento.",
+    "r": "**Confira:** coluna TÍTULOS \"Sem títulos\" no pedido e o número da nota e da NR. **Fonte:** README da cadeia, teste ponta a ponta; FIN D, E2E-1 e E2E-8.",
     "s": "d",
-    "campo": "Documentos recebidos"
+    "campo": "Nº do pedido / nota / NR"
    },
    {
-    "t": "Os contatos dos clientes têm a marca de e-mail de boleto.",
-    "r": "**Como validar:** amostra de 10 clientes. **Por quê:** sem a marca, o boleto não chega ao cliente. **Fonte:** CAD-CON-002, CAD-CON-003.",
+    "t": "Decisões tomadas: quem gera o contas a receber (pedido ou nota) e como se dá baixa em cada conta (à mão, pelo boleto ou pela conciliação).",
+    "r": "**Confira:** ata do kickoff. Escolher um caminho por conta evita baixar duas vezes. **Fonte:** README da cadeia, decisão X2; FIN C, Q5 e Q9.",
     "s": "d"
    }
   ],
   "fluxos": [
    {
-    "titulo": "1. Entendimento do cenário do cliente",
-    "intro": "Converse com o responsável financeiro e, nas perguntas de DRE e plano de contas, com o contador. Entenda como o cliente cobra, baixa e concilia hoje antes de propor o caminho no Flow. Registre as decisões em ata: várias delas afetam Vendas e Faturamento.",
+    "titulo": "1. Contas, meios de pagamento e plano de contas",
+    "onde": "`Financeiro > Configurações` (Contas Bancárias, Meios de Pagamento, Planos de Conta) e `Financeiro > Saldos`",
+    "intro": "Antes de qualquer título, o cliente vê onde o dinheiro vai cair: a conta bancária, o tipo do meio de pagamento e a conta analítica do plano. Vem primeiro porque é o que trava a geração dos títulos.",
     "passos": [
      {
-      "t": "O consultor perguntou: em quais bancos o cliente tem conta, quais emitem boleto, com qual carteira e convênio, pelo PlugBoleto ou direto pelo Bradesco? O banco exige o dígito do código do beneficiário?",
-      "r": "**Como validar:** lista de contas emissoras com carteira e convênio. **Por quê:** é uma conta por carteira/convênio; hoje a conta com dígito do beneficiário não sincroniza. **Fonte:** FIN-CTA-001, FIN-CTA-002, FIN-BOL-001.",
+      "t": "**Faça:** em `Financeiro > Configurações > Contas Bancárias`, mostre a conta de teste e o campo \"Saldo Inicial\" vazio.",
+      "r": "**Explique ao cliente:** uma conta por carteira/convênio de cobrança; para boleto, a conta precisa ser **emissora** (conta padrão não basta). O fluxo de caixa parte do saldo inicial da conta, por isso ele só entra na carga, conferido com o banco. **Confira:** conta ativa. **Fonte:** FIN C, etapa 2; FIN-CTA-001; FIN-IND-002; fluxo antigo \"Fluxo financeiro\", pré-requisitos.",
+      "s": "d"
+     },
+     {
+      "t": "**Faça:** em `Configurações > Meios de Pagamento`, abra o meio usado na parcela do pedido e mostre o **Tipo**.",
+      "r": "**Explique ao cliente:** os tipos são Cartão de Crédito/Débito, Dinheiro, PIX, Boleto, Transferência, Cheque e Outros. Meio de tipo Boleto exige conta emissora para gerar títulos. Mudar o tipo altera o que sai na nota: decisão do fiscal. **Confira:** o tipo de cada meio que o cliente usa. **Fonte:** fluxo antigo \"Fluxo financeiro\", pré-requisitos e bloco 1.",
+      "s": "v",
+      "campo": "Meio usado / tipo"
+     },
+     {
+      "t": "**Faça:** tente lançar um título de teste numa conta sintética (com contas-filhas) do plano de contas (bloqueio de propósito).",
+      "r": "**Explique ao cliente:** todo título precisa de conta analítica; é ela que alimenta o fluxo de caixa e a DRE. **Confira:** \"Movimentações financeiras só podem ser associadas a contas analíticas do fluxo de caixa. Selecione uma conta sem filhos.\". **Fonte:** FIN-CP-002; FIN B, quem trava quando falta.",
+      "s": "d"
+     },
+     {
+      "t": "**Faça:** abra `Financeiro > Saldos` e anote o saldo de cada conta antes de começar.",
+      "r": "**Explique ao cliente:** cada baixa do roteiro tem de mexer nesse número exatamente pelo valor baixado. **Confira:** saldo anotado. **Fonte:** fluxo antigo \"Fluxo financeiro\", pré-requisitos.",
+      "s": "v",
+      "campo": "Saldo antes"
+     }
+    ]
+   },
+   {
+    "titulo": "2. Títulos nascendo do pedido",
+    "onde": "`Vendas > Pedidos de Venda`, menu `⋯ > Gerar Títulos`",
+    "intro": "Quando o cliente cobra antes de faturar (decisão X2), os títulos nascem do pedido. O cliente vê uma parcela virar um título e o pedido marcar \"Gerados\".",
+    "passos": [
+     {
+      "t": "**Faça:** no pedido de teste, abra o menu `⋯` e veja quando **Gerar Títulos** está habilitado.",
+      "r": "**Explique ao cliente:** a opção fica desabilitada em Faturado e Lib. Expedição (\"Pedido já faturado\") para não gerar título em dobro. **Confira:** a opção habilitada no pedido de teste. **Fonte:** fluxo antigo \"Fluxo financeiro\", bloco 1.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** clique em **Gerar Títulos** e confirme.",
+      "r": "**Explique ao cliente:** sai um título por parcela da condição de pagamento. Se o meio da parcela for de tipo Boleto sem conta emissora, o sistema recusa com \"Parcela 1: meio de pagamento Boleto exige uma conta bancária…\". **Confira:** a confirmação ou a recusa; resolva o meio ou a conta e gere de novo. **Fonte:** fluxo antigo \"Fluxo financeiro\", bloco 1; procedimento-gerar-titulos-e-receber, passo 1.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** abra `Financeiro > Contas a Receber`, limpe o filtro **Status** (vem em \"Em aberto\") e pesquise o **Documento** do pedido.",
+      "r": "**Explique ao cliente:** o título guarda documento, parcela, vencimento, valor e situação. **Confira:** valor e vencimento iguais à parcela do pedido; a coluna TÍTULOS do pedido passa a \"Gerados\". **Fonte:** fluxo antigo \"Fluxo financeiro\", bloco 1; procedimento-gerar-titulos-e-receber, passo 2.",
+      "s": "v",
+      "campo": "Nº dos títulos"
+     }
+    ]
+   },
+   {
+    "titulo": "3. Títulos nascendo da nota",
+    "onde": "`Financeiro > Contas a Receber`",
+    "intro": "No caminho mais comum, quem gera o título é a nota. O cliente vê a passagem do Faturamento para o Financeiro e entende por que não há título em dobro.",
+    "passos": [
+     {
+      "t": "**Faça:** pesquise em `Financeiro > Contas a Receber` o número da nota autorizada no roteiro de Faturamento.",
+      "r": "**Explique ao cliente:** a nota gera um título por parcela quando o CFOP gera financeiro e o pedido ainda não tinha gerado; se o pedido gerou, a nota não gera de novo. **Confira:** um título \"Em aberto\" por parcela, com o documento da nota. **Fonte:** FIN B, de onde nascem os títulos; FAT-TIT-001/002; FIN D, E2E-1.",
       "s": "d",
-      "campo": "Bancos e convênios de cobrança"
+      "campo": "Nº dos títulos da nota"
      },
      {
-      "t": "O consultor perguntou: o cliente usa protesto, em quantos dias? Baixa por decurso de prazo? Que mensagens saem no boleto?",
-      "r": "**Como validar:** padrões aprovados pelo cliente. **Por quê:** viram os Padrões para Boletos de cada conta. **Fonte:** FIN-BOL-006.",
+      "t": "**Faça:** abra o título e confira o plano de contas e o meio de pagamento da parcela.",
+      "r": "**Explique ao cliente:** o título herda da nota o plano de contas e o meio; é por eles que o valor aparece no fluxo de caixa e na DRE. **Confira:** plano e meio iguais aos da nota. **Fonte:** FIN D, E2E-1.",
       "s": "d"
      },
      {
-      "t": "O consultor perguntou: o título nasce no pedido (cobrança antecipada) ou na nota? A resposta foi combinada com quem implanta Vendas e Faturamento.",
-      "r": "**Como validar:** decisão registrada na ata da cadeia. **Por quê:** se o pedido gerou os títulos, a nota não gera de novo. **Fonte:** VEN-TIT-001, FAT-TIT-001; decisão X2 da cadeia.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor perguntou: como o cliente dá baixa hoje, à mão, pelo extrato ou pelo retorno do banco? Ficou definido um caminho de baixa por conta.",
-      "r": "**Como validar:** caminho por conta registrado. **Por quê:** baixar à mão e conciliar a mesma conta gera recusa ou baixa em dobro. **Fonte:** FIN-EXT-002, FIN-EXT-007.",
-      "s": "d",
-      "campo": "Caminho de baixa por conta"
-     },
-     {
-      "t": "O consultor perguntou: o cliente recebe por PIX, paga fornecedores por remessa bancária, usa DDA? Importa extrato por OFX ou quer pela API do banco?",
-      "r": "**Como validar:** recursos escolhidos e versão conferida. **Por quê:** PIX, pagamentos, DDA e Open Finance são PRO; PIX com vencimento não vale no Banco do Brasil. **Fonte:** FIN-PIX-001, FIN-PAG-001, FIN-EXT-001.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor perguntou: qual é a data de corte, quantos títulos estão em aberto, o cliente quer histórico de recebidos? O que fazer com boletos já registrados no banco antigo?",
-      "r": "**Como validar:** data de corte e tipo de carga registrados. **Por quê:** decide planilha (só em aberto) ou migrador (com histórico) e o saldo inicial. **Fonte:** Financeiro C, carga inicial; decisão X7 da cadeia.",
-      "s": "d",
-      "campo": "Data de corte"
-     },
-     {
-      "t": "O consultor perguntou ao cliente e ao contador: as despesas são rateadas por obra? O DRE será lido por competência ou por caixa, e com qual estrutura de plano de contas?",
-      "r": "**Como validar:** respostas em ata. **Por quê:** rateio exige 100% por projeto no título; o DRE depende do plano de contas analítico. **Fonte:** FIN-CP-002, FIN-IND-003.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor perguntou: quem baixa, quem estorna, quem exclui e quem trata devoluções? A comissão dos vendedores é paga no recebimento?",
-      "r": "**Como validar:** papéis registrados. **Por quê:** define os perfis; a baixa libera comissão quando o regime é por recebimento. **Fonte:** FIN-GER-001, FIN-BXA-006, FIN-DEV-012.",
+      "t": "**Faça:** mostre `Financeiro > Devoluções` e explique o caminho de uma nota de devolução.",
+      "r": "**Explique ao cliente:** a nota de devolução não gera título: vira pendência no Painel de Devoluções, onde o financeiro decide abater ou restituir. **Confira:** o painel abre (vazio no go-live). **Fonte:** FIN B, de onde nascem os títulos; FIN-DEV-001; FIN C, etapa 7.",
       "s": "d"
      }
     ]
    },
    {
-    "titulo": "2. Preparação da implantação",
-    "intro": "Configure na ordem: perfis, contas bancárias, boleto, serviços PRO, extrato e, por último, carga e saldos. Tudo em homologação. Faça a configuração com quem vai manter o financeiro e deixe a carga inicial para o fim, depois dos testes.",
+    "titulo": "4. Receber: total e parcial",
+    "onde": "`Financeiro > Contas a Receber`, ação **Receber**",
+    "intro": "O recebimento é o momento em que o dinheiro entra. O cliente vê a baixa parcial criar o residual e o saldo da conta subir na hora.",
     "passos": [
      {
-      "t": "O consultor confirmou o que precisa estar pronto em outros módulos: plano de contas e condições de pagamento antes da integração de vendas, CFOPs com \"Gera Financeiro\" conferidos no Faturamento e NF-e autorizando em homologação.",
-      "r": "**Como validar:** pedido importado com condição e plano; nota de teste com título. **Por quê:** o financeiro de apoio vem antes da integração porque o pedido já exige condição e plano. **Fonte:** README da cadeia, ordem de implantação; FAT-TIT-001.",
+      "t": "**Faça:** num título do pedido, clique em **Receber**: escolha a **Conta Bancária**, a data, desconto/acréscimo/juros/multa, o meio e o **Valor Recebido**; use **Pré-visualizar**.",
+      "r": "**Explique ao cliente:** o valor recebido é o dinheiro que entrou. A conta bancária é obrigatória e não tem padrão. **Confira:** o diálogo \"Receber Contas a Receber\" com a prévia. **Fonte:** fluxo antigo \"Fluxo financeiro\", bloco 2; procedimento-gerar-titulos-e-receber, passo 3.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** tente receber com a data de amanhã (bloqueio de propósito).",
+      "r": "**Explique ao cliente:** não dá para agendar baixa: ela registra o dinheiro que já entrou. **Confira:** \"Data de recebimento não pode ser posterior a hoje\". **Fonte:** FIN-BXA-001; FIN C, erros comuns.",
       "s": "d"
      },
      {
-      "t": "Os perfis foram montados a partir de \"Financeiro\" e \"Financeiro Básico\", separando quem baixa, quem estorna, quem exclui e quem trata devoluções.",
-      "r": "**Como validar:** lista de usuários × perfil conferida com o cliente. **Por quê:** estorno e exclusão mudam o caixa; nem todos devem poder. **Fonte:** FIN-CR-013, FIN-DEV-012.",
+      "t": "**Faça:** receba com um valor menor que o do título e confirme.",
+      "r": "**Explique ao cliente:** baixa parcial: o original fica Recebido pelo valor baixado e nasce um título residual com o saldo, no mesmo vencimento. Não é duplicidade. **Confira:** \"Baixa parcial realizada; título residual criado\" e o título `/002`. **Fonte:** fluxo antigo \"Fluxo financeiro\", bloco 2; FIN-BXA-003.",
+      "s": "v",
+      "campo": "Nº do título residual"
+     },
+     {
+      "t": "**Faça:** receba o título residual por inteiro.",
+      "r": "**Explique ao cliente:** a soma das duas baixas é o valor original. **Confira:** \"Título recebido com sucesso\". **Fonte:** fluxo antigo \"Fluxo financeiro\", bloco 2; procedimento-gerar-titulos-e-receber, passo 5.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** volte a `Financeiro > Saldos` e abra o **Extrato** da conta.",
+      "r": "**Explique ao cliente:** a baixa mexe no saldo na hora, exatamente pelo valor baixado, e o Extrato mostra o crédito do dia. **Confira:** saldo depois = saldo antes + valores recebidos. **Fonte:** fluxo antigo \"Fluxo financeiro\", bloco 2; procedimento-gerar-titulos-e-receber, passo 6.",
+      "s": "v",
+      "campo": "Saldo depois"
+     }
+    ]
+   },
+   {
+    "titulo": "5. Boleto e PIX em homologação (quando contratados)",
+    "onde": "`Financeiro > Configurações > Boleto` e `Financeiro > PIX`",
+    "intro": "Só se o cliente contratou cobrança registrada ou PIX. Tudo em homologação, banco por banco, antes de virar para produção.",
+    "passos": [
+     {
+      "t": "**Faça:** em `Financeiro > Configurações > Boleto`, percorra a aba \"Assistente de Configuração\" (Empresa, Ambiente em **Homologação**, Credenciais, Conta Bancária, Conclusão) e, em Contas Bancárias, marque a conta favorita para boleto.",
+      "r": "**Explique ao cliente:** o Flow é o integrador; o contrato é do cliente com o provedor. Hoje o sistema ainda não sincroniza conta com dígito do beneficiário preenchido: informe o código no formato do banco e deixe o dígito em branco. **Confira:** conta sincronizada; sem isso: \"Conta bancária não está integrada ao PlugBoleto ou ainda não foi sincronizada.\". **Fonte:** FIN C, etapa 3; FIN-BOL-001; FIN-CTA-002.",
       "s": "d"
      },
      {
-      "t": "Em `Financeiro > Configurações > Contas Bancárias` há uma conta por carteira/convênio de cobrança e o \"Saldo Inicial\" ainda está em branco.",
-      "r": "**Como validar:** lista de contas conferida com o cliente. **Por quê:** o saldo inicial é definido só na carga, conforme o tipo escolhido. **Fonte:** FIN-CTA-001; Financeiro C, etapa 2.",
-      "s": "d"
-     },
-     {
-      "t": "O assistente de `Financeiro > Configurações > Boleto` foi concluído em **Homologação** para cada empresa e conta emissora, os Padrões para Boletos foram preenchidos, o dígito do beneficiário ficou em branco e a conta favorita para boleto foi marcada.",
-      "r": "**Como validar:** status de credenciais configuradas e conta favorita marcada. **Por quê:** a homologação do boleto é por banco; dígito preenchido bloqueia a sincronização. **Fonte:** FIN-BOL-001, FIN-BOL-006, FIN-CTA-002.",
-      "s": "d"
-     },
-     {
-      "t": "Se PRO: em \"Serviços financeiros da conta\" foram ativados Pagamento, DDA e Extrato, o PIX foi habilitado com o certificado da conta e o Open Finance autorizado no banco; a troca de ambiente fica com o administrador.",
-      "r": "**Como validar:** serviços ativos na linha da conta. **Por quê:** sem o certificado a conta PIX não cobra. **Fonte:** FIN-PIX-001, FIN-PAG-001, FIN-EXT-001.",
-      "s": "d"
-     },
-     {
-      "t": "A planilha de títulos em aberto foi preparada com as colunas obrigatórias, documento com até 10 caracteres, conta de fluxo de caixa analítica e sem duplicidade de empresa, participante, documento e parcela.",
-      "r": "**Como validar:** validação da importação sem recusas. **Por quê:** a planilha leva só títulos em aberto; status e baixas são descartados. **Fonte:** FIN-CR-001, FIN-CR-002, FIN-CP-001, FIN-CP-002.",
-      "s": "d"
-     },
-     {
-      "t": "Ficou decidido o que fazer com os boletos já registrados no banco antigo: deixar vencer e baixar à mão, ou cancelar no banco e reemitir no Flow.",
-      "r": "**Como validar:** decisão registrada em ata. **Por quê:** a importação não traz o boleto; emitir outro gera cobrança em dobro. **Fonte:** Financeiro C, carga inicial.",
+      "t": "**Faça:** num título de teste com boleto e conta, gere o boleto e aguarde o registro.",
+      "r": "**Explique ao cliente:** título com boleto só deixa editar Observação e Conta de fluxo; mudar valor ou vencimento é pela ação do boleto. **Confira:** linha digitável, situação REGISTRADO e e-mail ao contato marcado para boletos. **Fonte:** FIN D, E2E-2; FIN-CR-005/006.",
       "s": "d",
-      "campo": "Decisão sobre boletos antigos"
+      "campo": "Situação do boleto"
      },
      {
-      "t": "O saldo inicial de cada conta foi definido conforme o tipo de carga: saldo do banco na data de corte (carga só em aberto) ou saldo antes do primeiro movimento migrado (carga com histórico).",
-      "r": "**Como validar:** valores conferidos com o extrato bancário. **Por quê:** o campo não tem data e o fluxo de caixa soma todos os movimentos; errar aqui conta dinheiro em dobro. **Fonte:** FIN-IND-002; Financeiro C, carga inicial.",
+      "t": "**Faça:** liquide o boleto no ambiente de homologação do banco e aguarde o retorno.",
+      "r": "**Explique ao cliente:** o retorno do banco dá a baixa sozinho (aviso do banco ou rotina a cada 30 minutos); não baixe à mão o mesmo título. **Confira:** título \"Recebido\" com a data e o valor do banco. **Fonte:** FIN D, E2E-3; FIN B, jobs automáticos.",
+      "s": "d"
+     },
+     {
+      "t": "**Faça:** se o cliente tem PRO, em Contas Bancárias use \"Serviços financeiros da conta\" > \"Habilitar PIX\", envie o certificado da conta PIX, gere uma cobrança e pague no sandbox.",
+      "r": "**Explique ao cliente:** sem o certificado a conta não cobra; PIX com vencimento não vale no Banco do Brasil. Hoje o sistema ainda não leva o cancelamento do PIX ao provedor. **Confira:** parcela \"Recebido\" após a sincronização (a cada 5 minutos). **Fonte:** FIN C, etapa 4; FIN-PIX-001; FIN D, E2E-5.",
       "s": "d"
      }
     ]
    },
    {
-    "titulo": "3. Condução do treinamento",
-    "intro": "Ensine o ciclo do dinheiro, não as telas soltas: o título nasce da nota ou da compra, é cobrado, recebido ou pago, conciliado e aparece no fluxo e no DRE. Use notas e compras de teste do próprio cliente, em homologação. Grave e deixe o financeiro conduzir a partir do segundo título.",
+    "titulo": "6. Contas a pagar vindas da compra",
+    "onde": "`Financeiro > Contas a Pagar`",
+    "intro": "O lado da compra: a nota de recebimento finalizada gera os títulos a pagar. O cliente paga um deles e vê o saldo descer.",
     "passos": [
      {
-      "t": "O consultor apresentou nesta sequência: título nascendo da nota → Contas a Receber → boleto → baixa (manual, retorno ou extrato) → Contas a Pagar da compra → extrato e Mesa de Conciliação → transferências → fluxo de caixa e DRE.",
-      "r": "**Como validar:** roteiro registrado na OS. **Por quê:** é o caminho do dinheiro; o cliente entende por que não precisa digitar título. **Fonte:** Apostila do Consultor, Módulo Financeiro; Financeiro C.",
+      "t": "**Faça:** pesquise em `Financeiro > Contas a Pagar` o título da nota de recebimento finalizada no roteiro de Recebimento.",
+      "r": "**Explique ao cliente:** a NR finalizada gera os títulos a pagar junto com a entrada no estoque (tudo ou nada); cancelar a NR exclui os títulos em aberto. **Confira:** título \"Em aberto\" com origem na NR. **Fonte:** FIN B, de onde nascem os títulos; REC-FIN-006/007; FIN D, E2E-8.",
       "s": "d",
-      "campo": "Data do treinamento"
+      "campo": "Nº do título a pagar"
      },
      {
-      "t": "Com uma nota de teste do cliente, o consultor mostrou em `Financeiro > Contas a Receber` um título por parcela, com o número da nota como documento, o plano de contas e o meio da parcela.",
-      "r": "**Como validar:** parcelas iguais à condição de pagamento. **Por quê:** é o ponto de ligação com o Faturamento. **Fonte:** FAT-TIT-001, FAT-TIT-002.",
+      "t": "**Faça:** clique em **Pagar** e preencha Conta Bancária, Data Pagamento, valores, Meio de Pagamento e Valor Pago.",
+      "r": "**Explique ao cliente:** o meio informado na parcela da nota não vem preenchido. **Confira:** os campos obrigatórios marcados. **Fonte:** fluxo antigo \"Fluxo financeiro\", bloco 3.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** clique em **Confirmar Pagamento** e confira a lista, os Saldos e o Extrato da conta.",
+      "r": "**Explique ao cliente:** pagar diminui o saldo na hora e cria o débito no Extrato. **Confira:** título fora de \"Em aberto\", saldo menor e débito no Extrato. **Fonte:** fluxo antigo \"Fluxo financeiro\", bloco 3.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** mostre a aba **Pagamentos** dentro de Contas a Pagar.",
+      "r": "**Explique ao cliente:** Pagamentos é uma aba de Contas a Pagar, não um menu separado; o pagamento eletrônico pelo banco é PRO. **Confira:** a aba aberta. **Fonte:** fluxo antigo \"Fluxo financeiro\", bloco 3; FIN C, etapa 4.",
+      "s": "v"
+     }
+    ]
+   },
+   {
+    "titulo": "7. Extrato e conciliação",
+    "onde": "`Financeiro > Extrato`",
+    "intro": "Conciliar é baixar pela data e pela conta do extrato do banco. O cliente vê a Mesa de Conciliação e escolhe, por conta, se baixa à mão ou pela conciliação.",
+    "passos": [
+     {
+      "t": "**Faça:** abra `Financeiro > Extrato` da conta de teste e localize os movimentos das baixas feitas no roteiro.",
+      "r": "**Explique ao cliente:** não há item \"Conciliação\" no menu: a conciliação começa no Extrato. **Confira:** o crédito do recebimento e o débito do pagamento. **Fonte:** fluxo antigo \"Fluxo financeiro\", bloco 3; FIN C, etapa 5.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** em *Exportar/Importar*, use \"Importar extrato (OFX/CSV)\" com o arquivo do banco; depois importe o mesmo arquivo de novo.",
+      "r": "**Explique ao cliente:** a importação abre a **Mesa de Conciliação**; o mesmo extrato não entra duas vezes. Extrato pela API (Open Finance) é PRO. **Confira:** movimentos pendentes na Mesa; na segunda importação, 0 importados. **Fonte:** FIN C, etapa 5; FIN D, E2E-6.",
       "s": "d"
      },
      {
-      "t": "O consultor gerou um boleto em homologação, acompanhou o registro e o e-mail ao contato, e explicou que o título com boleto só edita Observação e Conta de fluxo de caixa.",
-      "r": "**Como validar:** linha digitável e situação de registrado. **Por quê:** editar valor depois do boleto exige cancelar a cobrança. **Fonte:** FIN-CR-005, FIN-CR-006, FIN-BOL-002.",
+      "t": "**Faça:** na Mesa, concilie um crédito com um título em aberto (use \"Confirmar sugestões fortes\" só para os exatos).",
+      "r": "**Explique ao cliente:** conciliar baixa o título na data e na conta do extrato; diferença de valor exige decisão (parcial, desconto, acréscimo); sugestão errada se descarta. **Confira:** movimento conciliado e título recebido na data do extrato. **Fonte:** FIN-EXT-002/004; FIN D, E2E-6.",
       "s": "d"
      },
      {
-      "t": "O consultor mostrou a baixa: data não pode ser futura, o valor informado é o que entrou no caixa, a baixa parcial gera residual, a baixa em lote aplica os mesmos dados e o estorno volta o título a `Em aberto`; num pedido com vendedor, mostrou a comissão liberada.",
-      "r": "**Como validar:** títulos recebidos, residual criado e estorno feito. **Por quê:** são as ações diárias do financeiro. **Fonte:** FIN-BXA-001, FIN-BXA-003, FIN-BXA-005, FIN-BXA-006, FIN-EST-001.",
+      "t": "**Faça:** tente vincular um título já baixado à mão por valor diferente do extrato (bloqueio de propósito).",
+      "r": "**Explique ao cliente:** por isso se escolhe um caminho de baixa por conta. **Confira:** \"O título … foi baixado por R$ X e o extrato traz R$ Y — estorne a baixa…\". **Fonte:** FIN-EXT-007; FIN C, erros comuns.",
       "s": "d"
      },
      {
-      "t": "O consultor explicou que \"cancelar título\" é excluir, que título de nota cancelada é excluído pela própria nota e que baixa manual de título com boleto ativo pede a baixa ao banco.",
-      "r": "**Como validar:** cliente repete a regra com as próprias palavras. **Por quê:** evita título excluído à mão e boleto cobrando depois do recebimento. **Fonte:** FIN-CR-007, FAT-CAN-003, FIN-BXA-008.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor ligou o Financeiro às compras: títulos a pagar nascendo da nota de recebimento finalizada, rateio por obra fechando 100% e exclusão dos títulos em aberto quando a nota de recebimento é cancelada.",
-      "r": "**Como validar:** título a pagar de origem do recebimento conferido. **Por quê:** o contas a pagar também não deve ser digitado. **Fonte:** REC-FIN-007, FIN-CP-002.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor importou o OFX do cliente em `Financeiro > Extrato`, conciliou na Mesa de Conciliação, usou `Confirmar sugestões fortes` só para os exatos e mostrou como decidir uma diferença e desfazer uma conciliação.",
-      "r": "**Como validar:** movimento conciliado e título recebido na data do extrato; reimportar não duplica. **Por quê:** a conciliação é o controle do caixa real. **Fonte:** FIN-EXT-004, FIN-EXT-007.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor mostrou o Fluxo de Caixa, o DRE, o Dashboard Financeiro e o painel de `Financeiro > Devoluções`, ligando cada um a uma decisão do dia a dia do cliente.",
-      "r": "**Como validar:** cliente localiza saldo previsto, vencidos e resultado do mês. **Por quê:** o módulo existe para o cliente decidir com o caixa certo. **Fonte:** FIN-IND-001, FIN-IND-002, FIN-IND-003, FIN-DEV-012.",
+      "t": "**Faça:** desfaça a conciliação do passo anterior.",
+      "r": "**Explique ao cliente:** desfazer estorna só o que a conciliação baixou. **Confira:** título de volta a \"Em aberto\" e movimento \"pendente\". **Fonte:** FIN-EXT-003; FIN D, E2E-7.",
       "s": "d"
      }
     ]
    },
    {
-    "titulo": "4. Validação do aprendizado",
-    "intro": "O financeiro do cliente faz e você observa. Use títulos diferentes dos do treinamento. Só marque o item se ele terminou sem você conduzir.",
+    "titulo": "8. Saldos, fluxo de caixa e DRE",
+    "onde": "`Financeiro > Saldos`, `Financeiro > Fluxo de Caixa`, `Financeiro > DRE`",
+    "intro": "O fechamento do roteiro: o mesmo dinheiro tem de aparecer igual nos saldos, no fluxo de caixa, na DRE e nos painéis.",
     "passos": [
      {
-      "t": "O financeiro do cliente fez sozinho baixa, baixa em lote, estorno, exclusão e desdobro de títulos de teste.",
-      "r": "**Como validar:** acompanhamento da execução. **Por quê:** é a operação diária do módulo. **Fonte:** FIN-BXA-001, FIN-BXA-005, FIN-EST-001, FIN-EXC-001, FIN-DES-003.",
-      "s": "d"
+      "t": "**Faça:** abra o **Fluxo de Caixa** do mês (Ambos, Hierarquias) e ache as linhas dos lançamentos de teste.",
+      "r": "**Explique ao cliente:** a linha vem da conta de fluxo de caixa do título: receitas em \"Vendas\", pagamentos na conta de despesa do fornecedor. **Confira:** os valores do roteiro nas linhas certas. **Fonte:** fluxo antigo \"Fluxo financeiro\", bloco 4.",
+      "s": "v"
      },
      {
-      "t": "O cliente conferiu que os títulos da nota de teste batem com a condição de pagamento e não foram gerados em dobro pelo pedido.",
-      "r": "**Como validar:** parcelas e valores conferidos. **Por quê:** título em dobro é o erro mais caro da cadeia. **Fonte:** FAT-TIT-001, VEN-TIT-001.",
-      "s": "d"
+      "t": "**Faça:** compare o **Saldo Inicial** e o **Saldo Final** do Fluxo de Caixa com `Financeiro > Saldos`.",
+      "r": "**Explique ao cliente:** o fluxo de caixa parte do saldo cadastrado da conta mais os movimentos até a véspera; por isso o saldo inicial da carga precisa estar certo. **Confira:** os números batem (anote se não baterem). **Fonte:** fluxo antigo \"Fluxo financeiro\", bloco 4; FIN-IND-002.",
+      "s": "v"
      },
      {
-      "t": "Se usa boleto: o cliente emitiu um boleto em homologação, ele foi registrado, liquidado no ambiente de teste e o título ficou `Recebido` sem ação do usuário.",
-      "r": "**Como validar:** título recebido com a data e o valor do banco. **Por quê:** a baixa automática é o principal ganho do boleto integrado. **Fonte:** FIN-BOL-001, FIN-BOL-003.",
-      "s": "d"
+      "t": "**Faça:** abra a **DRE** e o **Painel Financeiro de Projetos** da obra do pedido.",
+      "r": "**Explique ao cliente:** a DRE pode ser por competência (lançamento) ou por caixa (baixa), agrupada pelo plano de contas; sem projeto no pedido, o painel da obra fica incoerente. **Confira:** a receita de teste na DRE e na obra. **Fonte:** fluxo antigo \"Fluxo financeiro\", bloco 4; FIN-IND-003.",
+      "s": "v"
      },
      {
-      "t": "O cliente importou um extrato, conciliou um crédito com um título, reimportou o mesmo arquivo sem duplicar e desfez a conciliação.",
-      "r": "**Como validar:** movimento conciliado, depois pendente de novo. **Por quê:** o cliente vai conciliar sem o consultor. **Fonte:** FIN-EXT-004, FIN-EXT-007.",
-      "s": "d"
-     },
-     {
-      "t": "O cliente fez uma baixa parcial e explicou o residual que ficou para a próxima parcela.",
-      "r": "**Como validar:** título original recebido e residual criado. **Por quê:** baixa parcial mal entendida vira título esquecido. **Fonte:** FIN-BXA-003.",
-      "s": "d"
-     },
-     {
-      "t": "O cliente fez uma transferência entre contas e conferiu os saldos das duas em `Financeiro > Saldos`.",
-      "r": "**Como validar:** saldos corretos. **Por quê:** transferência errada distorce o saldo de duas contas. **Fonte:** FIN-EXT-005.",
-      "s": "d"
-     },
-     {
-      "t": "O cliente leu o Fluxo de Caixa e o DRE do mês de teste e o contador confirmou a leitura por competência e por caixa.",
-      "r": "**Como validar:** entradas, saídas e saldo explicados pelo cliente. **Por quê:** o DRE só serve se o plano de contas estiver certo. **Fonte:** FIN-IND-003, FIN-IND-004.",
-      "s": "d"
-     },
-     {
-      "t": "O cliente explicou por que não deve baixar à mão e conciliar pelo extrato a mesma conta.",
-      "r": "**Como validar:** explicação correta, ligada ao caminho decidido na etapa 1. **Por quê:** baixa diferente do extrato é recusada no vínculo. **Fonte:** FIN-EXT-007.",
-      "s": "d"
+      "t": "**Faça:** confira \"Recebido no mês\", \"A receber\" e \"A pagar\" no **Resumo do negócio** da tela Início.",
+      "r": "**Explique ao cliente:** é o resumo do dia a dia do gestor; confira o card contra o Extrato. **Confira:** o valor recebido no roteiro em \"Recebido no mês\" (anote a diferença na baixa parcial). **Fonte:** fluxo antigo \"Fluxo financeiro\", bloco 4.",
+      "s": "v"
      }
     ]
    },
    {
-    "titulo": "5. Preparação para utilização e go-live",
-    "intro": "A carga inicial vem depois dos testes e antes da virada. Reconcilie com o sistema antigo antes de dar o go-live e troque boleto e PIX para produção só depois dos testes aprovados. Acompanhe o primeiro fechamento de mês com o contador.",
+    "titulo": "9. Estorno e exclusão",
+    "onde": "`Financeiro > Contas a Receber`, ações **Estornar** e excluir",
+    "intro": "Corrigir é parte da operação. O cliente aprende a diferença entre estornar uma baixa errada e excluir um título, e vê o que o sistema protege.",
     "passos": [
      {
-      "t": "Os títulos em aberto foram importados e a quantidade e a soma batem com o relatório do sistema antigo, a receber e a pagar; as recusas da planilha foram tratadas.",
-      "r": "**Como validar:** contagem e total da listagem × relatório de origem. **Por quê:** é a reconciliação que libera a virada. **Fonte:** FIN-CR-002, FIN-CP-001; README da cadeia, ordem 7.",
-      "s": "d",
-      "campo": "Total reconciliado na data de corte"
+      "t": "**Faça:** estorne a baixa parcial de um título recebido no bloco 4.",
+      "r": "**Explique ao cliente:** o estorno volta o título a \"Em aberto\" e limpa os dados do recebimento; estornar a baixa parcial devolve o valor original e o `/002` deixa de existir. **Confira:** título \"Em aberto\" e o saldo da conta reduzido pelo mesmo valor. **Fonte:** fluxo antigo \"Fluxo financeiro\", bloco 2; FIN-EST-001.",
+      "s": "v"
      },
      {
-      "t": "O saldo de cada conta em `Financeiro > Saldos` bate com o extrato do banco na data de corte e o previsto dos primeiros 30 dias no Fluxo de Caixa foi conferido com o cliente.",
-      "r": "**Como validar:** comparação conta a conta. **Por quê:** o saldo inicial não tem data e pode contar dinheiro em dobro se o tipo de carga for confundido. **Fonte:** FIN-IND-002.",
+      "t": "**Faça:** tente estornar o título pago por boleto registrado ou liquidado (bloqueio de propósito, se houve boleto no bloco 5).",
+      "r": "**Explique ao cliente:** boleto no banco protege o título; primeiro se cancela o boleto registrado. **Confira:** \"boleto registrado ou liquidado no PlugBoleto não permite estorno\". **Fonte:** FIN-EST-002; FIN C, erros comuns.",
       "s": "d"
      },
      {
-      "t": "Boleto e PIX foram trocados para produção só depois de emissão, registro, liquidação e baixa aprovados em homologação, e a troca foi feita por quem tem a permissão de administrador.",
-      "r": "**Como validar:** ambiente de produção na configuração do boleto e dos serviços da conta. **Por quê:** a homologação é por banco. **Fonte:** Financeiro D, aceite.",
+      "t": "**Faça:** tente estornar um título conciliado no bloco 7 (bloqueio de propósito).",
+      "r": "**Explique ao cliente:** baixa feita pela conciliação se desfaz pela conciliação. **Confira:** o sistema recusa; desfazendo a conciliação, o estorno volta a ser possível. **Fonte:** plano de validação do Financeiro, Extrato e Conciliação, item 5.",
       "s": "d"
      },
      {
-      "t": "O cliente foi avisado das limitações atuais: o saldo inicial não tem data, a conta com dígito do beneficiário não sincroniza e o cancelamento do PIX ainda não chega ao provedor.",
-      "r": "**Como validar:** registro em ata. **Por quê:** o cliente precisa saber o que conferir por fora. **Fonte:** Financeiro D, aceite; FIN-CTA-002.",
-      "s": "d"
-     },
-     {
-      "t": "Nas primeiras semanas, o consultor acompanhou os retornos de boleto baixando títulos, a conciliação diária, títulos duplicados ou faltando e a liberação de comissão no recebimento.",
-      "r": "**Como validar:** ocorrências registradas em OS. **Por quê:** essas falhas aparecem só com volume real. **Fonte:** Apostila do Consultor, go-live com produção assistida.",
-      "s": "d",
-      "campo": "Ocorrências das primeiras semanas"
-     },
-     {
-      "t": "No primeiro fechamento de mês, o Fluxo de Caixa e o DRE foram conferidos com o cliente e o contador.",
-      "r": "**Como validar:** confirmação do contador. **Por quê:** fecha o ciclo financeiro com quem usa o resultado. **Fonte:** FIN-IND-002, FIN-IND-003.",
-      "s": "d"
-     },
-     {
-      "t": "Critério para encerrar a cadeia comercial e seguir para os próximos módulos do escopo: carga reconciliada, saldos batendo com o banco, checklist do Financeiro assinado e um mês fechado sem divergência.",
-      "r": "**Como validar:** checklist assinado e mês conferido. **Por quê:** Vendas → Faturamento → Fiscal → Financeiro são os primeiros; os demais seguem o escopo contratado. **Fonte:** Apostila do Consultor, sequência de módulos; Financeiro D.",
+      "t": "**Faça:** exclua um título de teste ainda não baixado, criado só para o roteiro.",
+      "r": "**Explique ao cliente:** não existe \"cancelar título\": cancelar é excluir, e só título não baixado pode ser excluído; excluir uma parcela não altera as outras. **Confira:** o título sai da lista. **Fonte:** FIN-CR-007; FIN-EXC-001/002.",
       "s": "d"
      }
     ]
@@ -2136,43 +2158,48 @@ export const CHECKLISTS_IMPLANTACAO = [
   ],
   "resultado": [
    {
-    "t": "O financeiro do cliente baixa, estorna, exclui, desdobra e concilia sozinho.",
+    "t": "Títulos gerados pelo pedido com valor e vencimento iguais às parcelas.",
+    "s": "v"
+   },
+   {
+    "t": "Títulos nascidos da nota autorizada, sem duplicar os do pedido.",
     "s": "d"
    },
    {
-    "t": "Os títulos nascem da nota e da compra uma vez só, conforme a decisão registrada.",
+    "t": "Baixa parcial, baixa total e estorno refletidos em Contas a Receber, Saldos e Extrato.",
+    "s": "v"
+   },
+   {
+    "t": "Título a pagar da compra pago e refletido no saldo e no Extrato.",
+    "s": "v"
+   },
+   {
+    "t": "Extrato importado, um movimento conciliado e a conciliação desfeita.",
     "s": "d"
    },
    {
-    "t": "Os títulos em aberto e os saldos das contas batem com o sistema antigo e com o banco na data de corte.",
-    "s": "d"
+    "t": "Fluxo de Caixa, DRE e Saldos conferidos entre si; diferenças anotadas.",
+    "s": "v"
    },
    {
-    "t": "Boleto (e PIX, se PRO) emite, registra e baixa sozinho em produção.",
-    "s": "d"
-   },
-   {
-    "t": "O cliente lê o Fluxo de Caixa e o DRE e o contador aprovou a estrutura.",
+    "t": "Boleto e PIX emitidos e baixados em homologação, quando contratados.",
     "s": "d"
    }
   ],
   "atencao": [
-   "Preencher o saldo inicial no cadastro da conta antes de decidir o tipo de carga: o campo não tem data e o caixa pode contar dinheiro em dobro.",
-   "Baixar à mão e conciliar pelo extrato a mesma conta: gera recusa no vínculo ou baixa duplicada.",
-   "Título em dobro quando pedido e nota geram títulos sem decisão combinada com Vendas e Faturamento.",
-   "Dígito do beneficiário preenchido na conta: a sincronização com o provedor do boleto não acontece.",
-   "Trocar boleto ou PIX para produção antes de emitir, registrar e liquidar um boleto de teste por banco.",
-   "Reemitir no Flow boletos que já estão registrados no banco antigo: o cliente final recebe duas cobranças.",
-   "Plano de contas sintético no título ou na planilha: o sistema exige conta analítica.",
-   "Contatos sem a marca de e-mail de boleto: o boleto é emitido e não chega ao cliente."
+   "Só ambiente de teste e conta de teste, com registros \"TESTE FLUXO CONSULTOR\". Baixar, pagar, estornar e gerar boleto ou PIX movimentam dinheiro de verdade. Nota fiscal só é transmitida com o responsável fiscal.",
+   "Meio de pagamento de tipo Boleto sem conta emissora trava \"Gerar Títulos\"; a mensagem diz \"Boleto\" mesmo quando o meio se chama \"Duplicata Mercantil\".",
+   "Título manual e título gerado do mesmo pedido duplicam DRE, painel e \"Recebido no mês\": use um só caminho.",
+   "Baixa parcial cria o residual `/002`: não é duplicidade.",
+   "Hoje o card \"Recebido no mês\" ainda soma o valor original do título numa baixa parcial: confira o card contra o Extrato.",
+   "O \"Saldo Inicial\" da conta não tem data: com migração de histórico, ele é o saldo antes do primeiro movimento migrado, não o de hoje.",
+   "Em janelas estreitas, o diálogo de **Estornar** pode abrir fora da área visível."
   ],
   "naoValidado": [
-   "Conciliação bancária: a Apostila do Consultor fala em conciliação bancária, mas a metodologia da gestora diz que não há mais menu próprio e que a conciliação é feita na Mesa de Conciliação, a partir de `Financeiro > Extrato`. Conferir na tela.",
-   "O card \"Recebido no mês\" da tela Início soma o valor original do título numa baixa parcial. Conferir contra o Extrato antes de usá-lo no treinamento.",
-   "Bradesco Open API: a tela que configura credencial e certificado não foi localizada e o Bradesco não pede a baixa do boleto sozinho na baixa manual. Conferir na tela com o cliente Bradesco.",
-   "`Instruções Bancárias`: o cadastro existe, mas o uso no boleto não foi confirmado. Conferir antes de ensinar.",
-   "O efeito de trocar o ambiente do boleto depois de emitir boletos reais não foi verificado. Conferir com o suporte antes da virada.",
-   "Que a importação de títulos não traz o boleto do banco antigo é uma inferência da metodologia. Conferir na carga de teste."
+   "Quando \"Gerar Títulos\" fica habilitado: no fluxo antigo (conferido em 20/10/2026) a opção fica desabilitada em Faturado e Lib. Expedição e volta depois de Entregue. A gestora diz que o pedido gera títulos quando está Em aberto, sem nota ainda (FIN B; VEN-TIT). Conferir na tela antes de ensinar se um pedido Entregue e já faturado pode gerar títulos.",
+   "Saldo inicial do Fluxo de Caixa: a gestora diz saldo cadastrado da conta + movimentos até a véspera (FIN-IND-002). No fluxo antigo, o saldo inicial absorveu o movimento do mês (inicial negativo, final zero). Conferir na tela.",
+   "Excluir título: o fluxo antigo diz que excluir (lixeira) é permanente; a gestora diz que é exclusão lógica (FIN-EXC-001). Conferir na tela.",
+   "Títulos nascendo da nota, boleto, PIX, importação de extrato e Mesa de Conciliação ainda não foram executados na tela; os nomes de botão vêm do código lido pela gestora."
   ],
   "video": {
    "id": "consultor-08-financeiro",
@@ -2184,268 +2211,272 @@ export const CHECKLISTS_IMPLANTACAO = [
   "id": "implantacao-compras",
   "arquivo": "implantacao-08-compras.html",
   "etiqueta": "Consultor · Implantação · Compras",
-  "titulo": "Implantação de Compras",
-  "subtitulo": "Checklist para o consultor conduzir e verificar a implantação de Compras, da solicitação ao pedido aprovado e entregue ao Recebimento.",
-  "objetivo": "Ao final, o comprador cria solicitações, cota com fornecedores por e-mail, importa as respostas, gera pedidos e acompanha a entrega sem ajuda. O aprovador decide pela alçada e o financeiro sabe onde nasce o contas a pagar. Compras abre a cadeia de suprimentos: um CFOP ou uma alçada mal decididos aqui viram título duplicado, pedido parado e custo errado no estoque.",
-  "rodape": "Checklist de implantação · Compras · fontes: manual de implantação COM (gestora), regras COM, checklist D COM, README de Suprimentos (S1–S10), apostila do consultor · Harness Faktory Flow",
+  "titulo": "Implantação de Compras: roteiro prático com o cliente",
+  "subtitulo": "Junto com o comprador, execute a compra real do cliente: solicitação manual (e sugestão, se usada), cotação com dois fornecedores, pedido de compra, aprovação por alçada (se usada), acompanhamento da entrega e o reflexo no Recebimento e no Financeiro.",
+  "objetivo": "Ao final, o cliente viu uma necessidade de material virar pedido de compra aprovado, nota de recebimento e título a pagar, e sabe repetir cada passo sozinho. Ele também viu o sistema recusar o que não pode: preço zero, item sem vencedor, autor aprovando o próprio pedido e cancelamento com nota ativa.",
+  "rodape": "Checklist de implantação · Compras · fontes: gestora COM (A, B, C, D) e README de Suprimentos; fluxo antigo de suprimentos (19/10/2026); trilha de estagiários 05; procedimento da solicitação à nota de recebimento; regras de compras do Harness · Harness Faktory Flow",
   "prerequisitos": [
    {
-    "t": "A Fundação está concluída e assinada, com os fornecedores principais ativos e com **e-mail de cotação** cadastrado.",
-    "r": "**Como validar:** abrir o cadastro de três fornecedores principais e ver o e-mail. **Por quê:** a cotação vai ao fornecedor por e-mail; sem ele, o envio falha. **Fonte:** COM-RFQ-004; checklist D COM.",
+    "t": "Fundação concluída e assinada; módulo Compras ativo (Compras PRO só se usar Contratos de Entrega).",
+    "r": "**Confira:** checklist da Fundação assinado e `Minha Assinatura`. **Fonte:** COM D, seção 1; COM-GER-004.",
     "s": "d"
    },
    {
-    "t": "Os insumos comprados têm NCM, unidade, categoria com \"Preço calculado por\" e embalagem com fator; perfis e esquadrias têm as características (cor, medidas) exigidas pela categoria.",
-    "r": "**Como validar:** amostra de 10 produtos conferida com o comprador. **Por quê:** SC sem NCM não entra na cotação e documento sem característica não grava. **Fonte:** COM-COT-003, COM-SC-001, COM-SC-003.",
+    "t": "Fornecedor de teste com **É Fornecedor?** e **Conta a Pagar** ligados, **Conta de Fluxo de Caixa Despesa** preenchida e contato com **E-mail Compras** (use um e-mail interno da equipe).",
+    "r": "**Confira:** o cadastro do participante. **Fonte:** fluxo antigo de suprimentos (pré-requisito); COM-RFQ-004, COM-COT-019.",
+    "s": "v"
+   },
+   {
+    "t": "Insumo de teste com NCM, unidade, categoria com \"Preço calculado por\", embalagem e fator; perfil e esquadria com as características da categoria (cor, medidas).",
+    "r": "**Confira:** abra o produto. Sem NCM a solicitação não entra na cotação. **Fonte:** COM-COT-003, COM-SC-001, COM-SC-003.",
     "s": "d"
    },
    {
-    "t": "Os CFOPs de entrada (1xxx, 2xxx e 3xxx se importa) de cada natureza usada (Consumo, Produção, Revenda, Ativo Imobilizado) estão cadastrados, com \"gera financeiro\" conferido pelo contador.",
-    "r": "**Como validar:** lista de CFOPs assinada pelo contador. **Por quê:** o CFOP do pedido sai da natureza da operação e da origem do fornecedor, e decide se nasce título. **Fonte:** COM-COT-010, COM-PC-002; decisão S1 do README de Suprimentos.",
+    "t": "CFOPs de entrada (1xxx/2xxx, e 3xxx se importa) das naturezas usadas, com \"gera financeiro\" decidido com o contador; condições de pagamento com parcelas; meios de pagamento.",
+    "r": "**Confira:** a lista de CFOPs assinada pelo contador. **Fonte:** README de Suprimentos, decisão S1; COM-COT-010, COM-PC-002.",
     "s": "d"
    },
    {
-    "t": "Condições de pagamento com parcelas e meios de pagamento estão cadastrados.",
-    "r": "**Como validar:** abrir `Compras > Configurações > Condições de Pagamento` e conferir parcelas e dias. **Por quê:** proposta da cotação e pedido com CFOP que gera financeiro não gravam sem condição. **Fonte:** COM-COT-006, COM-COT-009, COM-PC-002.",
+    "t": "Decisões registradas em ata: títulos a pagar **pelo pedido ou pela nota** (nunca pelos dois) e se haverá **aprovação por alçada**. A alçada vem desligada.",
+    "r": "**Confira:** a ata. **Fonte:** README de Suprimentos, decisões S2 e S3; fluxo antigo de suprimentos (pré-requisito).",
     "s": "d"
    },
    {
-    "t": "A Conta de Fluxo de Caixa Despesa está no fornecedor ou nos parâmetros da empresa, e o Financeiro (plano de contas) está configurado se a compra gera título.",
-    "r": "**Como validar:** cadastro do fornecedor e checklist do Financeiro assinado. **Por quê:** sem a conta, a cotação não gera pedido e o pedido não gera título. **Fonte:** COM-COT-019, COM-PC-010.",
+    "t": "`Compras > Configurações > Parâmetros de Compras` revisados: \"Regras de Melhor Opção\" e \"Critérios de preço na Cotação\". Deixe \"Usar aprovação por alçada\" desligado até o bloco 5.",
+    "r": "**Confira:** a tela de parâmetros. **Fonte:** COM C, etapa 2; COM-PAR-001, COM-COT-008.",
     "s": "d"
    },
    {
-    "t": "O saldo inicial do Estoque já foi importado e conferido na data de corte antes de a primeira compra real entrar.",
-    "r": "**Como validar:** checklist do Estoque com a carga de saldo assinada. **Por quê:** entrada lançada antes da data de corte nas mesmas variações bagunça saldo e custo médio. **Fonte:** README de Suprimentos, ordem de implantação; EST-MOV-006.",
-    "s": "d"
-   },
-   {
-    "t": "As licenças foram conferidas em `Minha Assinatura`: Compras, Compras PRO (se usar Contratos de Entrega), App Aprovações (se aprovar pelo celular) e Recebimento.",
-    "r": "**Como validar:** print de `Minha Assinatura`. **Por quê:** recurso sem licença some da tela e frustra o cliente no treinamento. **Fonte:** COM-GER-004, COM-CE-009, COM-PC-011.",
+    "t": "Dois usuários de teste: o comprador e um aprovador (quem cria o pedido não aprova).",
+    "r": "**Confira:** `Segurança > Perfis de Acesso`. **Fonte:** COM-ALC-007 (D-661); COM C, etapa 10.",
     "s": "d"
    }
   ],
   "fluxos": [
    {
-    "titulo": "1. Entendimento do cenário do cliente",
-    "intro": "Faça uma reunião com o responsável de compras, quem aprova os gastos e alguém do financeiro. Chame o contador para a parte de CFOP. Ouça como compram hoje antes de mostrar tela: o objetivo é sair com as decisões de Compras escritas em ata.",
+    "titulo": "1. Solicitação de compra manual",
+    "onde": "`Compras > Solicitações de Compra > Nova Solicitação`",
+    "intro": "A compra começa pela necessidade. Mostre ao cliente que a solicitação registra o que falta, sem fornecedor e sem preço, e que ela não tem etapa de aprovação.",
     "passos": [
      {
-      "t": "O consultor perguntou: quem pede material (obra, produção, almoxarifado) e quem compra? O solicitante é a mesma pessoa que o comprador?",
-      "r": "**Como validar:** papéis anotados em ata. **Por quê:** define os perfis de solicitante e comprador. **Fonte:** COM-SC-013, COM-COT-015; pergunta P1 do manual COM.",
-      "s": "d",
-      "campo": "Quem solicita e quem compra"
+      "t": "**Faça:** cadastre uma solicitação com **Empresa**, data de necessidade, o insumo de teste (cor em \"Dados do Item\" > Aplicar) e a quantidade. Deixe o projeto em branco. Salve.",
+      "r": "**Explique ao cliente:** projeto em branco faz a entrada cair no almoxarifado central; produto de chapa ou perfil pede a **Cor**. **Confira:** a SC fica \"Em Aberto\" e o painel mostra a última compra do item. **Fonte:** fluxo antigo de suprimentos, bloco 1; procedimento da solicitação à nota de recebimento.",
+      "s": "v",
+      "campo": "Nº da solicitação (SC-)"
      },
      {
-      "t": "O consultor perguntou: vocês sempre cotam com mais de um fornecedor ou compram direto? Como escolhem o vencedor: preço, prazo ou pagamento, e em que ordem?",
-      "r": "**Como validar:** ordem de desempate escrita. **Por quê:** decide se o fluxo passa pela cotação e alimenta as `Regras de Melhor Opção`. **Fonte:** COM-COT-008, COM-COT-009; P2 e P4.",
+      "t": "**Faça:** tente gravar uma solicitação de perfil sem o comprimento.",
+      "r": "**Explique ao cliente:** o documento não grava sem as características que a categoria exige. **Confira:** o sistema recusa e lista a pendência. **Fonte:** COM-SC-001; COM D, 3.1.",
       "s": "d"
      },
      {
-      "t": "O consultor perguntou, com o contador: a compra é para consumo, produção, revenda ou ativo? Há fornecedores de outro estado ou do exterior? Quais compras não geram financeiro (remessa, bonificação, comodato)?",
-      "r": "**Como validar:** lista de naturezas e CFOPs de entrada aprovada pelo contador. **Por quê:** o CFOP decide título, estoque e crédito. **Fonte:** COM-COT-010, COM-PC-002; P3 e P6; decisão S1.",
+      "t": "**Faça:** se o cliente compra em embalagem, crie uma solicitação de um item vendido em caixa de 50 com necessidade de 40.",
+      "r": "**Explique ao cliente:** a solicitação arredonda para a embalagem do fornecedor. **Confira:** a quantidade fica 50. **Fonte:** COM-SC-003; COM D, 3.1.",
       "s": "d"
      },
      {
-      "t": "O consultor perguntou: o contas a pagar nasce no pedido (pagamento antecipado) ou na nota recebida? E registrou a resposta como decisão única para Compras e Recebimento.",
-      "r": "**Como validar:** decisão em ata, assinada pelo financeiro. **Por quê:** título pelo pedido e pela nota ao mesmo tempo duplica a dívida. **Fonte:** COM-PC-005, COM-PC-010; P5; decisão S2.",
-      "s": "d",
-      "campo": "Títulos nascem no pedido ou na nota"
-     },
-     {
-      "t": "O consultor perguntou: existe aprovação de compra por valor? Por empresa ou obra? Quantos níveis, quais faixas e quem aprova cada uma? O aprovador aprova pelo celular, até que valor?",
-      "r": "**Como validar:** tabela de faixas com dois aprovadores por faixa. **Por quê:** quem criou o pedido não aprova; faixa com um só aprovador trava os pedidos dele. **Fonte:** COM-ALC-001 a 005, COM-ALC-009; D-661; P7 e P8.",
-      "s": "d",
-      "campo": "Faixas e aprovadores"
-     },
-     {
-      "t": "O consultor perguntou: recebem entregas parciais? Usam estoque mínimo para repor insumos? Compram material em nome da construtora? Têm contrato de volume com fornecedor (kg, t, m²)?",
-      "r": "**Como validar:** respostas em ata, com os recursos opcionais marcados. **Por quê:** decide pedido residual, Sugestão de Compra, compra por conta do cliente e Contratos de Entrega. **Fonte:** COM-PC-004, COM-SUG-001, COM-PC-012, COM-CE-001; P9 a P12.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor perguntou: os fornecedores respondem cotação em planilha, PDF ou foto? Quem deve receber o e-mail diário de alertas de Compras?",
-      "r": "**Como validar:** exemplo real de resposta de fornecedor guardado para o treinamento. **Por quê:** a resposta é importada pelo comprador; não existe mais link para o fornecedor responder. **Fonte:** COM-RFQ-015, COM-PAR-002; P13 e P14.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor levantou os pedidos de compra em aberto no sistema antigo e a última numeração usada.",
-      "r": "**Como validar:** planilha dos pedidos ainda não recebidos recebida do cliente. **Por quê:** só o que ainda vai ser recebido entra no Flow; o resto é saldo de estoque e título no Financeiro. **Fonte:** manual COM, seção 4; decisão S10.",
-      "s": "d",
-      "campo": "Quantidade de pedidos em aberto"
+      "t": "**Faça:** abra o menu `⋯` da primeira solicitação.",
+      "r": "**Explique ao cliente:** daqui a compra segue por cotação ou direto para o pedido; a cotação é opcional. **Confira:** as opções Gerar Cotação, Gerar Pedido de Compra e Excluir. **Fonte:** fluxo antigo de suprimentos, bloco 1; trilha de estagiários 05, bloco 3.",
+      "s": "v"
      }
     ]
    },
    {
-    "titulo": "2. Preparação da implantação",
-    "intro": "Configure no ambiente de homologação com o responsável de compras ao lado. Siga a ordem do README de Suprimentos: parâmetros, faixas e perfis primeiro; carga dos pedidos depois; a alçada é a última coisa a ligar.",
+    "titulo": "2. Sugestão de compra (se o cliente usa estoque mínimo)",
+    "onde": "`Compras > Sugestão de Compra`",
+    "intro": "Para quem repõe insumos por estoque mínimo, a sugestão cria as solicitações sozinha. Pule o bloco se o cliente não usa estoque mínimo.",
     "passos": [
      {
-      "t": "O consultor confirmou o que precisa estar pronto em outros módulos: Fundação assinada, CFOPs do Fiscal revisados, Financeiro com plano de contas, saldo inicial do Estoque conferido e Recebimento sendo configurado junto.",
-      "r": "**Como validar:** checklists dos módulos anteriores assinados. **Por quê:** o pedido depende do CFOP, gera título no Financeiro e termina no Recebimento. **Fonte:** README de Suprimentos, ordem de implantação; manual COM, pré-requisitos.",
-      "s": "d"
+      "t": "**Faça:** defina um estoque mínimo para o insumo de teste e abra `Compras > Sugestão de Compra`.",
+      "r": "**Explique ao cliente:** a sugestão calcula a falta líquida = mínimo − disponível e considera o que já vai chegar. **Confira:** o item aparece; sem mínimo cadastrado, não aparece. **Fonte:** fluxo antigo de estoque, bloco 6; COM-SUG-001.",
+      "s": "v"
      },
      {
-      "t": "Os `Parâmetros de Compras` foram revisados: ordem das `Regras de Melhor Opção` conforme o cliente, critérios de preço da cotação e \"Usar aprovação por alçada\" **desligado** por enquanto.",
-      "r": "**Como validar:** print da tela de parâmetros. **Por quê:** ligar a alçada agora deixa a carga e os testes pendentes de aprovação. **Fonte:** COM-PAR-001, COM-COT-008, COM-ALC-005.",
-      "s": "d"
-     },
-     {
-      "t": "As `Faixas de Alçada` foram cadastradas conforme a ata: sem sobreposição no mesmo escopo e nível, última faixa com \"Valor até\" em branco e dois aprovadores por faixa.",
-      "r": "**Como validar:** tela de faixas sem aviso de aprovador único. **Por quê:** centro de custo não é escopo; o escopo é geral, empresa ou projeto. **Fonte:** COM-ALC-001, COM-ALC-002, COM-ALC-003, COM-ALC-013.",
-      "s": "d"
-     },
-     {
-      "t": "Os perfis foram montados com o responsável: solicitante, comprador (sem poder de aprovar), aprovador, financeiro (gera títulos) e gestor (parâmetros e alçadas).",
-      "r": "**Como validar:** entrar com um usuário de cada perfil e ver só o que ele deve fazer. **Por quê:** comprador que aprova o próprio pedido derruba o controle. **Fonte:** COM-SC-013, COM-COT-015, COM-ALC-007, COM-ALC-010.",
-      "s": "d"
-     },
-     {
-      "t": "O envio de e-mail do ambiente foi testado com uma cotação de teste, e o PDF do pedido (`Baixar PDF`) saiu no modelo do cliente.",
-      "r": "**Como validar:** fornecedor de teste recebeu PDF e planilha; PDF do pedido revisado pelo cliente. **Por quê:** hoje o pedido vai ao fornecedor pelo PDF baixado. **Fonte:** COM-RFQ-004; manual COM, etapa 6.",
-      "s": "d"
-     },
-     {
-      "t": "Os pedidos em aberto do sistema antigo foram importados por planilha em `Pedidos de Compra`: só o que ainda vai ser recebido, com o número antigo no documento e sem gerar títulos que já estão no financeiro antigo.",
-      "r": "**Como validar:** quantidade e valor batem com o sistema antigo. **Por quê:** cada pedido importado passa pelas mesmas validações do manual e nasce `Em aberto`. **Fonte:** manual COM, seção 4; decisão S10.",
+      "t": "**Faça:** escolha a empresa e gere as solicitações sugeridas.",
+      "r": "**Explique ao cliente:** a sugestão apura pelo produto, não pela variação (cor e medidas). **Confira:** as novas SCs em `Solicitações de Compra`, \"Em Aberto\". **Fonte:** COM C, etapa 4; D-179.",
       "s": "d",
-      "campo": "Pedidos importados e conferidos"
+      "campo": "Nº das SCs sugeridas"
      },
      {
-      "t": "Se o cliente usa os recursos: estoque mínimo cadastrado nos insumos de reposição e `Alertas de Compras` ligados com os destinatários da ata.",
-      "r": "**Como validar:** lista de insumos com mínimo e print dos alertas. **Por quê:** a Sugestão de Compra parte do mínimo; o alerta avisa cotação vencendo. **Fonte:** COM-SUG-001, COM-PAR-002.",
+      "t": "**Faça:** gere a sugestão de novo em menos de 5 minutos.",
+      "r": "**Explique ao cliente:** o sistema evita solicitações duplicadas. **Confira:** nenhuma SC nova. **Fonte:** COM-SUG-004; COM D, 3.3.",
       "s": "d"
      }
     ]
    },
    {
-    "titulo": "3. Condução do treinamento",
-    "intro": "Ensine o processo, não a tela. Use um insumo real do cliente (um perfil, um vidro, um componente) e dois fornecedores de verdade. Siga a ordem SC → cotação → resposta → vencedor → pedido → aprovação → recebimento → título, ligando cada passo à rotina que o comprador já tem.",
+    "titulo": "3. Cotação com fornecedores",
+    "onde": "`⋯ > Gerar Cotação` da SC ou `Compras > Cotações de Compra`",
+    "intro": "A cotação compara fornecedores e define o vencedor de cada item. É um assistente de quatro passos: Dados Gerais, Itens a Cotar, Cotação e Comparação.",
     "passos": [
      {
-      "t": "O consultor apresentou a sequência completa no fluxo do cliente: necessidade → solicitação → cotação → pedido → aprovação → recebimento → entrada no estoque, dizendo quem faz cada passo na empresa dele.",
-      "r": "**Como validar:** o cliente desenha o fluxo com os nomes das pessoas. **Por quê:** o módulo só funciona se cada papel souber onde entra. **Fonte:** apostila, Processos de compras; README de Suprimentos, seção 1.",
-      "s": "d",
-      "campo": "Data do treinamento"
+      "t": "**Faça:** gere a cotação da SC com **Empresa**, validade e **Natureza da Operação** (Consumo, Produção, Revenda ou Ativo Imobilizado).",
+      "r": "**Explique ao cliente:** a natureza define o CFOP do pedido conforme a origem do fornecedor (ex.: Produção → 2101); escolha certa aqui evita CFOP errado no pedido. **Confira:** abre o assistente de 4 passos e a SC passa a \"Em cotação\". **Fonte:** fluxo antigo de suprimentos, bloco 2; regra \"natureza da operação define o CFOP\"; COM-COT-010.",
+      "s": "v",
+      "campo": "Nº da cotação (COT-)"
      },
      {
-      "t": "O cliente criou solicitações com produtos reais de cada tipo: perfil com comprimento e cor, vidro com altura e largura, esquadria com cor e medidas, e viu a embalagem arredondar a quantidade (40 vira 50 numa caixa de 50).",
-      "r": "**Como validar:** SCs gravadas; SC de perfil sem comprimento recusada. **Por quê:** é a primeira barreira que o solicitante vai encontrar. **Fonte:** COM-SC-001, COM-SC-003.",
+      "t": "**Faça:** tente gravar a validade com a data de ontem.",
+      "r": "**Explique ao cliente:** cotação vencida não aceita vencedor; renove a validade quando precisar. **Confira:** \"Data de validade da cotação não pode estar no passado.\" **Fonte:** COM-COT-001, COM-COT-002.",
       "s": "d"
      },
      {
-      "t": "O comprador gerou uma cotação a partir das SCs, informou a Natureza da Operação, enviou por e-mail a dois fornecedores e importou a resposta real de um deles.",
-      "r": "**Como validar:** SCs `Em cotação` e propostas gravadas. **Por quê:** o fornecedor não responde mais por link; a resposta é importada (planilha com uma só coluna de preço). **Fonte:** COM-SC-004, COM-COT-010, COM-RFQ-004, COM-RFQ-006, COM-RFQ-007.",
+      "t": "**Faça:** no passo 3, **Adicionar Fornecedores** (dois fornecedores de teste) e, na linha de cada um, Data de entrega e Condição de pagamento.",
+      "r": "**Explique ao cliente:** sem condição de pagamento na proposta do vencedor, o pedido não é gerado. **Confira:** os dois fornecedores na cotação. **Fonte:** fluxo antigo de suprimentos, bloco 2; COM-COT-009.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** use **Enviar por e-mail** para um fornecedor de teste (com e-mail interno da equipe).",
+      "r": "**Explique ao cliente:** o fornecedor recebe PDF e planilha; o link para o fornecedor responder pela internet não existe mais. **Confira:** o envio registrado; sem serviço de e-mail aparece \"Serviço de e-mail indisponível neste ambiente.\" **Fonte:** COM-RFQ-004; COM C, etapa 5.",
       "s": "d"
      },
      {
-      "t": "O comprador usou `Aplicar Melhor Opção`, marcou um vencedor manual e gerou os pedidos, entendendo que todo item precisa de vencedor e que a proposta vencedora precisa de condição de pagamento.",
-      "r": "**Como validar:** um pedido por fornecedor vencedor; cotação e SCs `Concluída`. **Por quê:** o vencedor manual é preservado pela Melhor Opção. **Fonte:** COM-COT-007, COM-COT-009; D-166.",
+      "t": "**Faça:** use **Importar resposta do fornecedor**: escolha o fornecedor, envie a planilha devolvida, confira a prévia e confirme.",
+      "r": "**Explique ao cliente:** a resposta em planilha, PDF ou imagem vira proposta sem digitação. **Confira:** a proposta gravada para aquele fornecedor; planilha com duas colunas de preço é recusada. **Fonte:** COM-RFQ-005 a 009, COM-RFQ-006.",
       "s": "d"
      },
      {
-      "t": "O comprador criou um pedido manual com CFOP de entrada e condição, viu o preço sugerido pela última compra do fornecedor e entendeu que o pedido não grava item a zero (inclusive o rascunho aberto a partir da SC).",
-      "r": "**Como validar:** pedido gravado; item a zero recusado. **Por quê:** é a compra direta, sem cotação, comum em reposição. **Fonte:** COM-PC-001, COM-PC-021, COM-GER-003.",
-      "s": "d"
+      "t": "**Faça:** para o segundo fornecedor, use \"Preencher proposta completa\": preço unitário (e frete e impostos, se houver) > Salvar.",
+      "r": "**Explique ao cliente:** é o caminho quando o fornecedor responde por telefone ou mensagem. **Confira:** o resumo do fornecedor com o total e o selo \"Recomendado\". **Fonte:** fluxo antigo de suprimentos, bloco 2.",
+      "s": "v"
      },
      {
-      "t": "O aprovador abriu `Compras > Aprovações`, aprovou um pedido acima da faixa e viu que o autor do pedido não consegue aprová-lo.",
-      "r": "**Como validar:** pedido `Aprovado`; tentativa do autor recusada. **Por quê:** pedido pendente não entra no Recebimento nem gera título. **Fonte:** COM-ALC-005, COM-ALC-006, COM-ALC-007; D-661.",
-      "s": "d"
-     },
-     {
-      "t": "O comprador acompanhou a entrega no `Follow-up de Entregas`, gerou uma nota de recebimento parcial e viu o pedido virar `Recebido` com o residual `PC-nnnn/2`.",
-      "r": "**Como validar:** residual criado e follow-up transferido. **Por quê:** `Recebido` só vem do Recebimento; o Kanban não muda esse status. **Fonte:** COM-PC-004, COM-PC-009, COM-FUP-004.",
-      "s": "d"
-     },
-     {
-      "t": "O financeiro gerou os títulos pelo caminho decidido em ata (pedido **ou** nota) e viu que, com títulos gerados, itens e parcelas do pedido travam.",
-      "r": "**Como validar:** um título por parcela, sem duplicar. **Por quê:** pedido já recebido não gera título pelo pedido. **Fonte:** COM-PC-005, COM-PC-010; decisão S2.",
-      "s": "d"
-     },
-     {
-      "t": "Se o cliente compra em nome da construtora: o consultor mostrou o vínculo do pedido ao contrato de fornecimento **antes** de gerar títulos e o abatimento só depois do recebimento.",
-      "r": "**Como validar:** pedido vinculado não gera título; item recebido abatido. **Por quê:** vincular depois deixa dívida lançada numa compra por conta do cliente. **Fonte:** COM-PC-012, VEN-CTR-006.",
+      "t": "**Faça:** no passo 4 (Comparação), escolha o critério e clique em **Aplicar Melhor Opção**. Depois troque o vencedor de um item à mão e aplique de novo.",
+      "r": "**Explique ao cliente:** o vencedor é por item; a escolha manual é preservada quando se aplica a melhor opção outra vez. **Confira:** vencedor definido em cada item. **Fonte:** fluxo antigo de suprimentos, bloco 2; COM-COT-007, COM-COT-008.",
       "s": "d"
      }
     ]
    },
    {
-    "titulo": "4. Validação do aprendizado",
-    "intro": "Agora o cliente conduz e você só observa. Peça cada tarefa com dados novos, sem roteiro na mão. Se ele travar, anote a dúvida e repita o ponto; não faça por ele.",
+    "titulo": "4. Gerar o pedido de compra",
+    "onde": "`Gerar Pedido de Compra` na comparação e `Compras > Pedidos de Compra`",
+    "intro": "O pedido é o compromisso com o fornecedor. Mostre os dois caminhos: pela cotação (um pedido por vencedor) e direto da solicitação, sem cotação.",
     "passos": [
      {
-      "t": "O comprador fez sozinho o ciclo completo com um insumo real: SC, cotação com dois fornecedores, resposta importada, vencedor e pedido gerado.",
-      "r": "**Como validar:** pedido gerado sem ajuda do consultor. **Por quê:** é a rotina diária de Compras. **Fonte:** checklist D COM, teste 3.1.",
+      "t": "**Faça:** deixe um item sem vencedor e clique em **Gerar Pedido de Compra**.",
+      "r": "**Explique ao cliente:** todo item precisa de vencedor antes de gerar. **Confira:** \"Não é possível gerar o pedido: item(ns) N sem fornecedor vencedor definido.\" e nenhum PC criado. **Fonte:** D-166; COM C, seção 5.",
       "s": "d"
      },
      {
-      "t": "O comprador explicou por que não pode aprovar o próprio pedido e o que fazer quando o pedido fica parado por falta de aprovador.",
-      "r": "**Como validar:** resposta certa: outro aprovador da faixa decide; faixa precisa de dois. **Por quê:** é a dúvida mais comum depois de ligar a alçada. **Fonte:** COM-ALC-007, COM-ALC-013; D-661.",
-      "s": "d"
+      "t": "**Faça:** com todos os vencedores marcados, clique em **Gerar Pedido de Compra**, confira a **Conta de Fluxo de Caixa** sugerida (vem do fornecedor) e confirme.",
+      "r": "**Explique ao cliente:** nasce um pedido por fornecedor vencedor. **Confira:** \"Pedido(s) de compra gerado(s)\", PC \"Em Aberto\" e \"Sem títulos\". **Fonte:** fluxo antigo de suprimentos, bloco 3; COM-COT-009.",
+      "s": "v",
+      "campo": "Nº do pedido de compra (PC-)"
      },
      {
-      "t": "O comprador resolveu sozinho os bloqueios mais comuns: cotação vencida (editar a validade), item sem vencedor, proposta sem condição e fornecedor sem Conta de Fluxo de Caixa.",
-      "r": "**Como validar:** cada situação provocada e resolvida pelo cliente. **Por quê:** são os erros que chegam ao suporte nas primeiras semanas. **Fonte:** COM-COT-002, COM-COT-009, COM-COT-019; D-166.",
-      "s": "d"
+      "t": "**Faça:** abra o PC e leia CFOP, entrega prevista e parcelas.",
+      "r": "**Explique ao cliente:** o CFOP veio da natureza da cotação; as parcelas vêm da condição de pagamento. **Confira:** CFOP de entrada coerente com a origem do fornecedor. **Fonte:** fluxo antigo de suprimentos, bloco 3.",
+      "s": "v"
      },
      {
-      "t": "O financeiro mostrou onde nasce o título de uma compra e explicou por que não pode gerar pelo pedido e pela nota ao mesmo tempo.",
-      "r": "**Como validar:** contas a pagar com um título por parcela. **Por quê:** nota finalizada não gera título depois; o caminho é cancelar e relançar. **Fonte:** COM-PC-010; decisão S2.",
-      "s": "d"
+      "t": "**Faça:** abra `⋯ > Linha do tempo` do PC.",
+      "r": "**Explique ao cliente:** a linha do tempo mostra a cadeia inteira da compra. **Confira:** SC e cotação aparecem como **Concluída** automaticamente. **Fonte:** fluxo antigo de suprimentos, bloco 3; COM-PC-024.",
+      "s": "v"
      },
      {
-      "t": "O comprador tentou cancelar um pedido com nota de recebimento ativa e explicou a ordem certa: cancelar a nota antes.",
-      "r": "**Como validar:** recusa entendida e cancelamento feito na ordem. **Por quê:** evita pedido cancelado com estoque e título vivos. **Fonte:** COM-PC-007.",
-      "s": "d"
+      "t": "**Faça:** numa segunda SC, use `⋯ > Gerar Pedido de Compra`. No **Novo Pedido de Compra**, informe **Fornecedor**, **Comprador**, **Condição de Pagamento**, **CFOP** e **Valor Unitário**; confira a **Conta de Fluxo de Caixa** e clique em **Salvar**.",
+      "r": "**Explique ao cliente:** sem cotação, o pedido não grava direto: abre o formulário para o preço. O CFOP é obrigatório, mesmo sem asterisco. **Confira:** PC \"Em Aberto\" e \"Sem títulos\"; sem CFOP, o aviso \"CFOP é obrigatório\". **Fonte:** procedimento da solicitação à nota de recebimento; regra \"Gerar Pedido de Compra abre o novo pedido\"; trilha de estagiários 05.",
+      "s": "v",
+      "campo": "Nº do PC direto (PC-)"
      },
      {
-      "t": "O cliente usou a `Linha do tempo` de um pedido para rastrear SC, cotação, pedido, nota e títulos.",
-      "r": "**Como validar:** cliente encontra a origem de um pedido sem ajuda. **Por quê:** é a resposta rápida para \"quem pediu isso e por quê\". **Fonte:** COM-PC-024.",
+      "t": "**Faça:** no mesmo formulário, tente salvar um item com valor unitário zero.",
+      "r": "**Explique ao cliente:** pedido de compra não grava item a zero. **Confira:** \"Item 1: Valor Unitário deve ser maior que zero\". **Fonte:** COM-PC-001, COM-GER-003.",
       "s": "d"
-     },
-     {
-      "t": "O gestor de compras leu o `Follow-up de Entregas` e o painel de Compras e apontou os pedidos atrasados.",
-      "r": "**Como validar:** gestor cita um pedido atrasado e o fornecedor. **Por quê:** o follow-up nasce sozinho com o pedido e é o controle de entrega. **Fonte:** manual COM, etapa 9; apostila, Módulo Compras.",
-      "s": "d",
-      "campo": "Dúvidas registradas"
      }
     ]
    },
    {
-    "titulo": "5. Preparação para utilização e go-live",
-    "intro": "Feche a homologação, limpe os testes e ligue a alçada por último. Combine com o cliente a data de virada e acompanhe de perto as primeiras compras reais.",
+    "titulo": "5. Aprovação por alçada (se o cliente usa)",
+    "onde": "`Compras > Configurações > Faixas de Alçada` e `Compras > Aprovações`",
+    "intro": "A alçada segura o pedido acima de um valor até alguém aprovar. Ligue a chave só depois das faixas cadastradas. Pule o bloco se o cliente não aprova compras.",
     "passos": [
      {
-      "t": "SCs, cotações e pedidos de teste foram cancelados ou excluídos, e a carga dos pedidos em aberto foi conferida de novo com o sistema antigo.",
-      "r": "**Como validar:** listas sem documentos de teste; quantidade e valor da carga batem. **Por quê:** teste esquecido vira entrega fantasma no follow-up. **Fonte:** checklist D COM, configuração.",
+      "t": "**Faça:** em Faixas de Alçada, use **Nova faixa** para criar dois níveis (ex.: até 10 mil no nível 1 e acima no nível 2, com \"Valor até\" em branco na última), com dois aprovadores por faixa. Depois ligue \"Usar aprovação por alçada\" em Parâmetros de Compras.",
+      "r": "**Explique ao cliente:** faixas do mesmo nível não se sobrepõem, e faixa com um só aprovador deixa sem aprovador o pedido criado por ele. **Confira:** a tela sem aviso de aprovador único. **Fonte:** COM C, etapa 3; COM-ALC-001, COM-ALC-003, COM-ALC-013.",
       "s": "d"
      },
      {
-      "t": "\"Usar aprovação por alçada\" foi ligado depois das faixas e da carga, e o cliente sabe que desligar a chave libera todos os pedidos pendentes.",
-      "r": "**Como validar:** print dos parâmetros com a chave ligada e um pedido real caindo na fila. **Por quê:** é o último passo da ordem de implantação. **Fonte:** COM-ALC-005, COM-ALC-008; decisão S3.",
-      "s": "d"
-     },
-     {
-      "t": "O teto do app de aprovações foi definido em `Configurações > Aprovações`, se o aprovador decide pelo celular.",
-      "r": "**Como validar:** print com o teto combinado. **Por quê:** acima do teto, a aprovação volta para a tela do Flow. **Fonte:** COM-ALC-009.",
-      "s": "d"
-     },
-     {
-      "t": "O checklist D de Compras foi assinado pelo consultor, pelo responsável de compras e pelo aprovador.",
-      "r": "**Como validar:** documento assinado. **Por quê:** é a condição para liberar Recebimento e Estoque para operação. **Fonte:** checklist D COM, assinatura.",
+      "t": "**Faça:** gere um PC de valor acima da primeira faixa.",
+      "r": "**Explique ao cliente:** a alçada é um selo paralelo ao status do pedido. **Confira:** \"Aguardando aprovação · nível 1\". **Fonte:** COM-ALC-005; COM D, 3.1.",
       "s": "d",
-      "campo": "Data do go-live"
+      "campo": "Nº do PC em aprovação"
      },
      {
-      "t": "Nas primeiras semanas, o consultor acompanhou: pedidos parados na fila de aprovação, entregas atrasadas no follow-up, residuais `PC-nnnn/2` esquecidos e títulos duplicados entre pedido e nota.",
-      "r": "**Como validar:** revisão semanal com o comprador e o financeiro. **Por quê:** são os sinais de que uma decisão da ata não pegou na rotina. **Fonte:** COM-PC-009, COM-PC-010, COM-ALC-006.",
+      "t": "**Faça:** com o usuário que criou o pedido, tente aprová-lo em `Compras > Aprovações`.",
+      "r": "**Explique ao cliente:** quem cria não aprova, nem Super Usuário. **Confira:** \"Você não pode decidir um documento que você mesmo criou.\" **Fonte:** COM-ALC-007 (D-661).",
+      "s": "d"
+     },
+     {
+      "t": "**Faça:** com o pedido pendente, tente **Gerar Título a Pagar** ou **Gerar Nota de Recebimento**.",
+      "r": "**Explique ao cliente:** pedido pendente ou rejeitado não gera título nem entra em nota. **Confira:** \"Pedido X aguarda aprovação do nível N…\". **Fonte:** COM-ALC-006.",
+      "s": "d"
+     },
+     {
+      "t": "**Faça:** entre com o aprovador e aprove o pedido em `Compras > Aprovações` (nível 1 e, se houver, nível 2).",
+      "r": "**Explique ao cliente:** desligar a chave libera todos os pendentes de uma vez. **Confira:** o PC passa a \"Aprovado\". **Fonte:** fluxo antigo de suprimentos, bloco 3; COM-ALC-005, COM-ALC-008.",
+      "s": "d"
+     }
+    ]
+   },
+   {
+    "titulo": "6. Enviar o pedido e acompanhar a entrega",
+    "onde": "`Compras > Pedidos de Compra`, `Compras > Follow-up de Entregas` e `Dashboard Compras`",
+    "intro": "Com o pedido aprovado, o comprador envia ao fornecedor e acompanha o prazo até a mercadoria chegar.",
+    "passos": [
+     {
+      "t": "**Faça:** use `⋯ > Baixar PDF` no PC aprovado e mostre como anexar ao e-mail do fornecedor.",
+      "r": "**Explique ao cliente:** o PDF sai no modelo de documento do cliente. **Confira:** o PDF com itens, condição e entrega. **Fonte:** COM C, etapa 6; COM D, 3.1.",
+      "s": "d"
+     },
+     {
+      "t": "**Faça:** abra `Compras > Follow-up de Entregas` e localize o PC.",
+      "r": "**Explique ao cliente:** o follow-up nasce sozinho com o pedido e é recalculado todo dia de manhã (Aguardando, Próx. Vencimento, Atrasado). **Confira:** o PC na lista com a entrega prevista. **Fonte:** COM C, etapa 9; COM B, seção 4; COM-FUP-002.",
+      "s": "d"
+     },
+     {
+      "t": "**Faça:** abra o `Dashboard Compras` e leia os cartões.",
+      "r": "**Explique ao cliente:** é a visão do gestor de compras. **Confira:** solicitações em aberto, cotações ativas, pedidos em aberto e total do mês com o teste. **Fonte:** trilha de estagiários 05, bloco 2.",
+      "s": "v"
+     }
+    ]
+   },
+   {
+    "titulo": "7. Reflexo no Recebimento e no Financeiro",
+    "onde": "`Compras > Pedidos de Compra > ⋯` e `Financeiro > Contas a Pagar`",
+    "intro": "O pedido termina no Recebimento. Mostre onde nasce o título a pagar conforme a decisão da ata (pelo pedido ou pela nota) e o que trava o cancelamento.",
+    "passos": [
+     {
+      "t": "**Faça:** se a ata decidiu títulos pelo pedido, use `⋯ > Gerar Título a Pagar` num PC aprovado e abra `Financeiro > Contas a Pagar`. Depois tente gerar de novo.",
+      "r": "**Explique ao cliente:** com títulos gerados, itens e parcelas do pedido travam, e a nota desse pedido não gera título. **Confira:** um título por parcela, origem PC; a segunda vez mostra \"Títulos a pagar já foram gerados para este pedido\". **Fonte:** COM-PC-005, COM-PC-010; README de Suprimentos, S2.",
       "s": "d",
-      "campo": "Pendências das primeiras semanas"
+      "campo": "Nº dos títulos do PC"
      },
      {
-      "t": "O critério para seguir ao Recebimento em produção foi cumprido: os passos 1 a 3 do teste ponta a ponta de Suprimentos (cotação, pedido, aprovação por outro usuário) têm evidência.",
-      "r": "**Como validar:** números da cotação e do pedido aprovado anotados. **Por quê:** o Recebimento só importa pedido aprovado e em aberto. **Fonte:** README de Suprimentos, teste ponta a ponta; COM-PC-011.",
+      "t": "**Faça:** no outro PC, use `⋯ > Gerar Nota de Recebimento`, confira o que veio do pedido (empresa, fornecedor, CFOP, itens, conta de fluxo, parcelas), informe Nº da NF, Série e Data de Emissão e salve.",
+      "r": "**Explique ao cliente:** a mesma nota tem dois números: \"NF-<número do fornecedor>\" na lista e \"NR-<número interno>\" na conferência, no pedido e no título. **Confira:** a nota em `Recebimento > Notas de Recebimento`. **Fonte:** fluxo antigo de suprimentos, bloco 4; regra \"a mesma nota tem dois números\".",
+      "s": "v",
+      "campo": "Nº da NR / NF"
+     },
+     {
+      "t": "**Faça:** num PC de 100 unidades, gere a nota com 60 e salve.",
+      "r": "**Explique ao cliente:** entrega parcial cria o pedido filho com o saldo; o comprador acompanha o restante nele. **Confira:** o PC original com o recebido e o residual `PC-nnnn/2` em aberto com 40. **Fonte:** COM-PC-004, COM-PC-009; REC-NR-009.",
+      "s": "d",
+      "campo": "Nº do PC residual (/2)"
+     },
+     {
+      "t": "**Faça:** tente **Cancelar** o PC que tem nota de recebimento ativa.",
+      "r": "**Explique ao cliente:** a ordem do desfazer é nota → títulos → pedido. **Confira:** \"Pedido possui Nota de Recebimento ativa vinculada…\". **Fonte:** COM-PC-007.",
+      "s": "d"
+     },
+     {
+      "t": "**Faça:** depois que a nota for finalizada no roteiro de Recebimento, abra a lista de Pedidos de Compra e a `Linha do tempo` do PC.",
+      "r": "**Explique ao cliente:** o pedido só vira \"Recebido\" pelo Recebimento; o Kanban recusa. **Confira:** PC \"Recebido\", títulos \"Gerados\" e a cadeia SC → COT → PC → NR → título. **Fonte:** fluxo antigo de suprimentos, bloco 6; COM-PC-004.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** tente **Gerar Título a Pagar** no PC já \"Recebido\".",
+      "r": "**Explique ao cliente:** depois do recebimento, os títulos saem da nota, não do pedido. **Confira:** o sistema recusa. **Fonte:** COM-PC-010 (D-138); COM D, 3.2.",
       "s": "d"
      }
     ]
@@ -2453,42 +2484,45 @@ export const CHECKLISTS_IMPLANTACAO = [
   ],
   "resultado": [
    {
-    "t": "O comprador faz sozinho SC, cotação por e-mail, importação da resposta, escolha do vencedor e pedido.",
+    "t": "Uma SC manual virou cotação com dois fornecedores, vencedor por item e pedido de compra, e outra SC virou pedido direto.",
+    "s": "v"
+   },
+   {
+    "t": "Se a alçada é usada: o pedido acima da faixa esperou aprovação, o autor não aprovou e outro usuário aprovou.",
     "s": "d"
    },
    {
-    "t": "A alçada está ligada com dois aprovadores por faixa e nenhum pedido real parado sem quem aprove.",
+    "t": "O pedido gerou a nota de recebimento, e a entrega parcial criou o PC residual.",
     "s": "d"
    },
    {
-    "t": "O contas a pagar de cada compra nasce num só lugar (pedido ou nota), como decidido em ata.",
+    "t": "Um título só por parcela nasceu, pelo pedido ou pela nota, conforme a ata.",
     "s": "d"
    },
    {
-    "t": "Os pedidos em aberto do sistema antigo estão no Flow e batem em quantidade e valor.",
-    "s": "d"
+    "t": "A Linha do tempo do PC mostra SC → COT → PC → NR → título.",
+    "s": "v"
    },
    {
-    "t": "O checklist D de Compras está assinado e Recebimento e Estoque podem operar.",
+    "t": "O cliente viu o sistema recusar: perfil sem comprimento, item sem vencedor, preço zero e cancelamento com nota ativa.",
     "s": "d"
    }
   ],
   "atencao": [
-   "Ligar \"Usar aprovação por alçada\" antes da carga deixa todos os pedidos importados pendentes de aprovação. Ligue por último (COM-ALC-005).",
-   "Faixa de alçada com um só aprovador trava os pedidos criados por ele, porque quem cria não aprova (COM-ALC-013, D-661).",
-   "Gerar títulos pelo pedido e também pela nota duplica a dívida. Decida um caminho em ata e treine os dois setores nele (decisão S2).",
-   "CFOP de entrada mal configurado gera título em remessa ou bonificação, ou trava o pedido por falta de condição. Revise com o contador (COM-PC-002).",
-   "Hoje o sistema ainda mostra o crédito de imposto de entrada negativo no pedido de compra. Avise o cliente que confere imposto no pedido (COM-PC-018).",
-   "Hoje a Sugestão de Compra ainda apura pelo produto, não pela variação (cor e medida). Perfis da mesma referência em cores diferentes somam juntos (D-179).",
-   "Hoje o envio do pedido ao fornecedor por e-mail direto da tela do pedido não foi localizado. Ensine o `Baixar PDF` (manual COM, etapa 6).",
-   "Vincular o pedido ao contrato de fornecimento depois de gerar títulos deixa dívida lançada numa compra por conta do cliente. Vincule antes (COM-PC-012)."
+   "Só em ambiente de teste. Nomeie os registros com \"TESTE FLUXO CONSULTOR\" e use e-mails internos da equipe em **Enviar por e-mail**: o envio chega de verdade ao fornecedor.",
+   "Gerar o pedido conclui a SC e a cotação automaticamente. Depois que o pedido é recebido, Cancelar e Excluir ficam desabilitados: planeje a limpeza.",
+   "Títulos a pagar nascem **pelo pedido ou pela nota, nunca pelos dois**. Com títulos gerados, os itens e parcelas do pedido travam.",
+   "Ligue \"Usar aprovação por alçada\" só depois das faixas e da carga de pedidos em aberto; senão os pedidos importados ficam pendentes. Cadastre dois aprovadores por faixa.",
+   "Hoje o sistema ainda mostra o crédito de imposto de entrada com sinal negativo no pedido de compra (COM-PC-018). Avise o cliente que confere impostos no PC.",
+   "Hoje o sistema ainda não envia o pedido de compra por e-mail a partir da tela do pedido: use **Baixar PDF**.",
+   "A sugestão de compra só lista itens com **estoque mínimo** cadastrado e apura pelo produto, não pela cor ou medida.",
+   "A nota fiscal de devolução que nasce do Recebimento só é transmitida com o responsável fiscal do cliente."
   ],
   "naoValidado": [
-   "Ordem de implantação: a apostila põe Compras depois de Estoque e Produção; o manual da gestora põe Compras logo após a Fundação, junto do Recebimento, com o saldo inicial do Estoque antes. Confirme a sequência no cronograma do cliente.",
-   "A página oficial descreve gerar o pedido direto da SC; o manual da gestora diz que hoje `Gerar Pedido de Compra` na SC abre o rascunho do pedido para informar preço. Confira na tela antes de ensinar (COM-SC-009, COM-SC-010).",
-   "Os rótulos dos botões de aprovar e rejeitar na fila `Compras > Aprovações` e o do botão de importar pedidos na lista de pedidos não foram confirmados. Confira na tela.",
-   "O rótulo da chave aparece como \"Usa aprovação por alçada\" na página oficial e \"Usar aprovação por alçada\" na tela. Use o da tela.",
-   "Em `Alertas de Compras`, o texto fala em contratos de fornecimento próximos do fim, mas o alerta é de contrato de entrega. Confira na tela para não confundir com o contrato de Vendas (COM-PAR-002)."
+   "Status do pedido de compra: a trilha de estagiários (conferida na tela) viu \"Em Aberto\" na lista e \"Em Edição\" na tela de edição; a gestora lista só Em aberto, Recebido e Cancelado (COM-PC-004). Conferir na tela antes de ensinar.",
+   "Momento do desdobro do PC parcial: a gestora diz que **salvar** a nota já desdobra (REC-NR-009); o checklist D de Compras descreve gerar a nota parcial **e finalizar**. Conferir em que momento o `PC-nnnn/2` aparece.",
+   "Caminho dos parâmetros: o fluxo antigo cita `Compras > Configurações > Parâmetros`; a gestora, `Compras > Configurações > Parâmetros de Compras`. Conferir o rótulo do menu.",
+   "Não conferidos na tela pelo fluxo antigo: aprovação por alçada ligada (rótulos dos botões da fila de aprovação estão pendentes na gestora), **Enviar por e-mail**, **Importar resposta do fornecedor**, Follow-up de Entregas e a sugestão gerando SCs."
   ],
   "video": {
    "id": "consultor-01-suprimentos",
@@ -2500,251 +2534,255 @@ export const CHECKLISTS_IMPLANTACAO = [
   "id": "implantacao-recebimento",
   "arquivo": "implantacao-09-recebimento.html",
   "etiqueta": "Consultor · Implantação · Recebimento",
-  "titulo": "Implantação de Recebimento",
-  "subtitulo": "Checklist para o consultor conduzir e verificar a implantação do Recebimento, da nota do fornecedor à entrada no estoque e no contas a pagar.",
-  "objetivo": "Ao final, o recebedor traz as notas do fornecedor pela SEFAZ ou pelo XML, vincula ao pedido de compra, confere a mercadoria e finaliza com estoque, custo e títulos corretos. Ele também sabe cancelar e devolver na ordem certa. O Recebimento é onde a compra vira saldo e dívida: erro aqui aparece no custo do produto e no caixa.",
-  "rodape": "Checklist de implantação · Recebimento · fontes: manual de implantação REC (gestora), regras REC, checklist D REC, README de Suprimentos (S1–S10), apostila do consultor · Harness Faktory Flow",
+  "titulo": "Implantação de Recebimento: roteiro prático com o cliente",
+  "subtitulo": "Junto com quem recebe as notas, execute a chegada real da mercadoria: XML pelo DF-e ou por arquivo, nota vinculada ao pedido de compra, conferência e divergências, finalização com estoque e título a pagar, entrega parcial e devolução ao fornecedor.",
+  "objetivo": "Ao final, o cliente viu uma nota de fornecedor entrar, ser vinculada ao pedido, conferida e finalizada, e viu nascer a entrada no estoque e o título a pagar. Ele sabe tratar entrega parcial, cancelar uma nota e gerar a devolução, e sabe o que o sistema recusa.",
+  "rodape": "Checklist de implantação · Recebimento · fontes: gestora REC (A, B, C, D) e README de Suprimentos; fluxo antigo de suprimentos, blocos 4 a 6 (19/10/2026); trilha de estagiários 06; regra \"a mesma nota tem dois números\" · Harness Faktory Flow",
   "prerequisitos": [
    {
-    "t": "Fundação, Fiscal e Financeiro estão assinados, e a empresa tem o regime de apuração (e a condição de contribuinte de IPI, se for indústria) cadastrado.",
-    "r": "**Como validar:** print do cadastro da empresa e checklists assinados. **Por quê:** o regime decide crédito e custo da entrada. **Fonte:** REC-NR-020, REC-FIN-004; checklist D REC.",
+    "t": "Roteiro de Compras concluído: pelo menos dois pedidos de compra aprovados (um deles de 100 unidades, para a entrega parcial).",
+    "r": "**Confira:** `Compras > Pedidos de Compra`, status \"Em Aberto\" e sem alçada pendente. **Fonte:** REC-NR-007; trilha de estagiários 06.",
     "s": "d"
    },
    {
-    "t": "Os CFOPs de entrada têm \"Gera Financeiro\", \"Movimenta Estoque\" e o papel de terceiros revisados com o contador.",
-    "r": "**Como validar:** lista de CFOPs assinada. **Por quê:** o CFOP de cada item decide título, estoque, crédito e controle de terceiros. **Fonte:** REC-NR-016, REC-FIN-003, REC-FIN-011; decisão S1.",
+    "t": "**Almoxarifado central ativo** em `Estoque > Locais` na empresa que recebe (é onde a nota dá entrada).",
+    "r": "**Confira:** a lista de locais. **Fonte:** fluxo antigo de suprimentos (pré-requisito); README de Suprimentos, S6.",
+    "s": "v"
+   },
+   {
+    "t": "CFOPs de entrada com \"Gera Financeiro\" e \"Movimenta Estoque\" decididos com o contador; plano de contas e conta de fluxo no fornecedor ou na empresa.",
+    "r": "**Confira:** `Recebimento > Configurações > CFOP`. Sem plano de contas não nasce título. **Fonte:** REC C, etapa 1; REC-NR-016, REC-FIN-007.",
     "s": "d"
    },
    {
-    "t": "Os produtos comprados têm unidade de estoque, embalagem com fator, categoria e \"controla estoque\"; as unidades de medida têm as siglas que os fornecedores usam no XML.",
-    "r": "**Como validar:** três XML reais dos principais fornecedores pré-validados sem aviso de unidade. **Por quê:** sigla inexistente para a importação; sem fator, a nota não finaliza. **Fonte:** REC-FIN-001, REC-XML-007.",
+    "t": "Produtos comprados com unidade de estoque, **embalagem e fator**; unidades de medida com as siglas que os fornecedores usam no XML.",
+    "r": "**Confira:** abra dois produtos e a tela de unidades. **Fonte:** REC-FIN-001, REC-XML-007.",
     "s": "d"
    },
    {
-    "t": "Compras está configurado, com a alçada definida e um pedido de compra de teste aprovado.",
-    "r": "**Como validar:** número do pedido aprovado. **Por quê:** pedido pendente de aprovação não entra na nota. **Fonte:** REC-NR-007; checklist D COM.",
+    "t": "Para buscar notas na SEFAZ: Recebimento **PRO** e **certificado A1** da empresa enviado ao Flow. Sem PRO, use só a importação de XML por arquivo.",
+    "r": "**Confira:** `Minha Assinatura` e `Configurações > Certificados`. **Fonte:** README de Suprimentos, S4; REC-DFE-001, REC-DFE-009.",
     "s": "d"
    },
    {
-    "t": "Locais de estoque e o almoxarifado central de cada empresa estão prontos, e plano de contas e conta de fluxo padrão estão no Financeiro.",
-    "r": "**Como validar:** checklist do Estoque (locais) e do Financeiro. **Por quê:** sem local a entrada falha; sem plano de contas não nasce título. **Fonte:** REC-FIN-006, REC-FIN-007; decisão S6.",
+    "t": "Decisões da ata: títulos pelo pedido ou pela nota; conferência física sim ou não, e se trava a finalização.",
+    "r": "**Confira:** a ata. **Fonte:** README de Suprimentos, S2 e S5; REC C, perguntas R6 e R10.",
     "s": "d"
    },
    {
-    "t": "Se o cliente contratou Recebimento PRO: licença conferida em `Minha Assinatura` e certificado A1 de cada empresa enviado e válido por mais de 30 dias.",
-    "r": "**Como validar:** print da assinatura e de `Configurações > Certificados`. **Por quê:** sem PRO não há busca na SEFAZ nem conferência; sem certificado a busca não liga. **Fonte:** REC-DFE-001, REC-DFE-009, REC-DFE-014; decisão S4.",
+    "t": "Para devolução: Faturamento com série de NF-e configurada.",
+    "r": "**Confira:** a série no Faturamento. **Fonte:** REC-DEV-001/002.",
     "s": "d"
    }
   ],
   "fluxos": [
    {
-    "titulo": "1. Entendimento do cenário do cliente",
-    "intro": "Vá até a doca ou o almoxarifado e veja um recebimento acontecer antes da reunião. Chame quem recebe a mercadoria, quem lança a nota, o financeiro e o contador para a parte fiscal. Saia com as decisões escritas em ata.",
+    "titulo": "1. Preparar o recebimento: conferência e busca de notas",
+    "onde": "`Recebimento > Configurações > Parâmetros de Recebimento` e `Recebimento > Distribuição DFe`",
+    "intro": "Antes da primeira nota, ligue com o cliente só o que ele vai usar. Todos os parâmetros nascem desligados.",
     "passos": [
      {
-      "t": "O consultor perguntou: o cliente tem Recebimento PRO? Quais empresas recebem NF-e e todas têm certificado A1 válido? Querem buscar notas sozinhas a cada 30 minutos ou só quando clicarem `Atualizar`?",
-      "r": "**Como validar:** lista de empresas com validade dos certificados. **Por quê:** sem PRO, a entrada é só por XML manual, sem vínculo automático de produto e pedido. **Fonte:** REC-DFE-001, REC-DFE-002, REC-DFE-009; perguntas R1 a R3.",
-      "s": "d",
-      "campo": "Empresas e validade dos certificados"
-     },
-     {
-      "t": "O consultor perguntou: quem responde à SEFAZ (confirmar, não reconhecer, operação não realizada) e quem dá entrada nas notas? Com que frequência?",
-      "r": "**Como validar:** responsável e rotina anotados. **Por quê:** a manifestação é uma obrigação fiscal e precisa de dono. **Fonte:** REC-DFE-006; R4.",
+      "t": "**Faça:** em Parâmetros de Recebimento, ligue \"Usar Conferência Física\" e, se o cliente quer travar, \"Exigir Conferência para Finalizar\". Salve.",
+      "r": "**Explique ao cliente:** a conferência registra a contagem; sem PRO os parâmetros ficam inertes. **Confira:** as chaves gravadas. **Fonte:** REC C, etapa 5; REC-CON-001, REC-CON-007; fluxo antigo de suprimentos (pré-requisito).",
       "s": "d"
      },
      {
-      "t": "O consultor perguntou: toda compra tem pedido de compra? O fornecedor fatura em caixa ou embalagem diferente da unidade de estoque?",
-      "r": "**Como validar:** exemplos de notas com caixa anotados. **Por quê:** decide o vínculo nota × pedido e o cadastro de embalagem e fator. **Fonte:** REC-NR-007, REC-XML-007, REC-FIN-001; R5 e R11.",
+      "t": "**Faça:** tente ligar \"Usar Registro de Avarias\" com a conferência desligada (numa empresa de teste).",
+      "r": "**Explique ao cliente:** avaria e inspeção dependem da conferência. **Confira:** \"Não é possível habilitar registro de avaria sem antes habilitar a conferência física…\". **Fonte:** REC-PAR-002.",
       "s": "d"
      },
      {
-      "t": "O consultor perguntou: fazem conferência física antes de dar entrada? Ela deve travar a finalização? Registram avaria com foto? Têm checklist de qualidade, com aprovador diferente de quem responde? Usam coletor ou celular na doca?",
-      "r": "**Como validar:** respostas em ata. **Por quê:** definem os parâmetros de conferência, avaria, inspeção e o app da doca. **Fonte:** REC-CON-001, REC-CON-005, REC-CON-007, REC-CON-008; R6 a R9.",
-      "s": "d",
-      "campo": "Como conferem a mercadoria hoje"
-     },
-     {
-      "t": "O consultor confirmou a decisão de Compras: o título a pagar nasce no pedido ou na nota? E perguntou quem pode alterar imposto de nota importada.",
-      "r": "**Como validar:** decisão igual à ata de Compras. **Por quê:** título nos dois lugares duplica a dívida; alterar imposto é tarefa fiscal. **Fonte:** REC-NR-010, REC-FIN-007, REC-XML-003; R10 e R12; decisão S2.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor perguntou: fazem beneficiamento por terceiros? Têm contrato de fornecimento com construtora que abate por nota recebida? Imprimem etiqueta nos itens recebidos, com qual leitor?",
-      "r": "**Como validar:** respostas em ata, com os recursos opcionais marcados. **Por quê:** definem CFOPs de remessa e retorno, origem do abatimento e formato de etiqueta. **Fonte:** REC-FIN-011, VEN-CTR-002, REC-PAR-001; R13 a R15.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor levantou as notas de fornecedor em trânsito (emitidas e ainda não recebidas) e confirmou que as notas já recebidas no sistema antigo não serão relançadas.",
-      "r": "**Como validar:** lista das notas em trânsito. **Por quê:** não existe importador de nota de recebimento; o já recebido entra como saldo de estoque e título no Financeiro. **Fonte:** manual REC, seção 4; decisão S10.",
+      "t": "**Faça:** em Distribuição DFe, marque \"Configuração ativa\" e, se o cliente quiser, \"Buscar automaticamente a cada 30 minutos\". Clique em \"Salvar configuração\".",
+      "r": "**Explique ao cliente:** sem certificado o salvar é recusado; certificado vencendo em 30 dias gera aviso. **Confira:** o cartão com \"Última busca automática\". **Fonte:** REC C, etapa 2; REC-DFE-001, REC-DFE-014.",
       "s": "d"
      }
     ]
    },
    {
-    "titulo": "2. Preparação da implantação",
-    "intro": "Configure em homologação na ordem do manual: CFOPs, busca de notas, parâmetros, checklists e perfis. Use XML reais dos fornecedores principais desde o início; é com eles que os problemas de cadastro aparecem.",
+    "titulo": "2. Receber o XML: DF-e ou arquivo",
+    "onde": "`Recebimento > Aguardando manifestação` e `Recebimento > Notas de Recebimento > Importar XML`",
+    "intro": "A nota do fornecedor chega pelo DF-e (PRO) ou por arquivo XML. Mostre os dois caminhos e como a nota se liga ao pedido de compra.",
     "passos": [
      {
-      "t": "O consultor confirmou o que precisa estar pronto em outros módulos: Fundação (certificado A1), Fiscal (CFOPs), Financeiro (títulos a pagar), Compras (pedido e alçada) e Estoque (locais e saldo inicial).",
-      "r": "**Como validar:** checklists dos módulos anteriores assinados. **Por quê:** a finalização da nota mexe em estoque, custo e contas a pagar ao mesmo tempo. **Fonte:** manual REC, pré-requisitos; README de Suprimentos, ordem de implantação.",
+      "t": "**Faça:** na caixa de notas a manifestar, clique em **Atualizar**.",
+      "r": "**Explique ao cliente:** a nota pode levar mais de 30 minutos para aparecer; nota em que a empresa é só transportadora não aparece. **Confira:** as notas emitidas contra a empresa. **Fonte:** REC C, etapa 3; REC-DFE-015.",
       "s": "d"
      },
      {
-      "t": "Os CFOPs de entrada foram revisados um a um com o contador em `Recebimento > Configurações > CFOP`, cobrindo revenda, industrialização, uso e consumo, ativo, remessa e retorno.",
-      "r": "**Como validar:** lista assinada. **Por quê:** crédito e custo saem do CFOP do item; uso e consumo lançado como revenda gera crédito indevido. **Fonte:** REC-NR-020; D-465; decisão S1.",
+      "t": "**Faça:** com o responsável fiscal ao lado, numa nota de teste, use **Responder à SEFAZ** > **Confirmar que recebi**.",
+      "r": "**Explique ao cliente:** a manifestação vai à SEFAZ e não se desfaz; defina quem pode manifestar. **Confira:** a nota manifestada. **Fonte:** REC C, etapa 3; REC-DFE-006.",
       "s": "d"
      },
      {
-      "t": "Se PRO: em `Distribuição DFe`, cada empresa ficou com \"Configuração ativa\" e, se o cliente quis, \"Buscar automaticamente a cada 30 minutos\", salvo sem erro.",
-      "r": "**Como validar:** cartão mostra \"Última busca automática\" e nenhuma \"Última falha\". **Por quê:** é a porta de entrada das notas. **Fonte:** REC-DFE-001, REC-DFE-002.",
-      "s": "d"
+      "t": "**Faça:** clique em **Receber**. Na conferência da importação, escolha o produto onde falta, marque \"Lembrar deste código para as próximas notas deste fornecedor\", vincule o pedido de compra e salve.",
+      "r": "**Explique ao cliente:** o código lembrado faz a próxima nota do fornecedor casar sozinha; \"Continuar depois\" guarda o rascunho. **Confira:** NR em aberto com empresa, fornecedor, CFOP e o PC vinculado. **Fonte:** REC C, etapa 4; REC D, seção 3.",
+      "s": "d",
+      "campo": "Nº da NR do DF-e"
      },
      {
-      "t": "Os `Parâmetros de Recebimento` foram ligados conforme a ata: conferência física, exigir conferência, avarias, inspeção, segregação na inspeção e formato da etiqueta.",
-      "r": "**Como validar:** print da tela. **Por quê:** todos nascem desligados; avaria e inspeção exigem conferência ligada; sem PRO ficam inertes. **Fonte:** REC-PAR-001, REC-PAR-002, REC-CON-001, REC-CON-007.",
-      "s": "d"
+      "t": "**Faça:** em Notas de Recebimento, use **Importar XML** com o arquivo de um fornecedor novo.",
+      "r": "**Explique ao cliente:** o fornecedor novo é criado pelo XML, sem duplicar pelo CNPJ. **Confira:** NR com empresa, fornecedor e CFOP. **Fonte:** REC-XML-004; REC D, seção 3.",
+      "s": "d",
+      "campo": "Nº da NR do XML"
      },
      {
-      "t": "Se o cliente usa inspeção: um único checklist de inspeção ativo foi cadastrado com o responsável de qualidade.",
-      "r": "**Como validar:** print de `Checklists de Inspeção`. **Por quê:** checklist já usado não muda; para alterar, desativa e cria outro. **Fonte:** REC-CON-008, REC-CON-010.",
-      "s": "d"
-     },
-     {
-      "t": "Os perfis Recebedor, Conferente e Gestor foram criados, e a permissão de alterar imposto de nota importada ficou só com quem cuida do fiscal.",
-      "r": "**Como validar:** entrar com um usuário de cada perfil. **Por quê:** quem recebe não deve mexer em imposto nem manifestar à SEFAZ sem combinar. **Fonte:** REC-NR-017, REC-XML-003, REC-DFE-006.",
-      "s": "d"
-     },
-     {
-      "t": "Se usa coletor na doca: o app Recebimento foi instalado no aparelho do conferente e os produtos mais recebidos têm código de barras (EAN) cadastrado.",
-      "r": "**Como validar:** conferente abre uma nota de teste no app. **Por quê:** o EAN é o que faz a bipagem funcionar. **Fonte:** REC-CON-006.",
+      "t": "**Faça:** importe o mesmo XML outra vez.",
+      "r": "**Explique ao cliente:** a chave de acesso impede nota em dobro. **Confira:** \"A nota fiscal <chave> já foi importada na NR-nnnnnn…\". **Fonte:** REC-XML-002.",
       "s": "d"
      }
     ]
    },
    {
-    "titulo": "3. Condução do treinamento",
-    "intro": "Treine com notas reais dos fornecedores do cliente e com o pedido de compra que ele mesmo criou no treinamento de Compras. Siga a ordem: nota chega → manifestação → importação → vínculo ao pedido → conferência → finalização → conferir estoque e títulos → cancelar e devolver.",
+    "titulo": "3. Nota a partir do pedido de compra",
+    "onde": "`Compras > Pedidos de Compra > ⋯ > Gerar Nota de Recebimento`",
+    "intro": "Sem XML em mãos, a nota nasce do próprio pedido. É o caminho conferido na tela e o mais usado no treinamento.",
     "passos": [
      {
-      "t": "O consultor apresentou o caminho da nota no cliente: fornecedor emite → nota chega ao Flow → alguém confirma à SEFAZ → recebedor importa e vincula ao pedido → conferente confere → nota é finalizada e vira estoque e título.",
-      "r": "**Como validar:** o cliente diz quem faz cada passo. **Por quê:** a finalização é o ponto sem volta simples; todos precisam saber o que vem antes. **Fonte:** README de Suprimentos, seção 1; apostila, Módulo Recebimento.",
-      "s": "d",
-      "campo": "Data do treinamento"
+      "t": "**Faça:** no PC aprovado, use `⋯ > Gerar Nota de Recebimento`. Confira **Empresa**, **Fornecedor**, **CFOP**, **Pedido de Compra**, **Condição de Pagamento**, itens e **Conta de Fluxo de Caixa**; informe Nº da NF, Série e Data de Emissão.",
+      "r": "**Explique ao cliente:** sem XML, a chave fica em branco; a devolução depois vai exigir a chave. **Confira:** a página **Nova Nota de Recebimento** preenchida pelo pedido. **Fonte:** fluxo antigo de suprimentos, bloco 4; trilha de estagiários 06, bloco 1.",
+      "s": "v"
      },
      {
-      "t": "Se PRO: o recebedor usou `Aguardando manifestação`: clicou `Atualizar`, respondeu à SEFAZ com \"Confirmar que recebi\" e abriu a nota com `Receber`.",
-      "r": "**Como validar:** nota real saiu da caixa e virou nota de recebimento. **Por quê:** a nota pode levar mais de 30 minutos para aparecer; isso não é erro. **Fonte:** REC-DFE-006, REC-DFE-012; manual REC, etapa 3.",
+      "t": "**Faça:** clique em **Salvar**.",
+      "r": "**Explique ao cliente:** a mesma nota tem dois números: \"NF-<número do fornecedor>\" na lista e \"NR-<número interno>\" na conferência, no pedido e no título. **Confira:** a nota nas duas telas. **Fonte:** fluxo antigo de suprimentos, bloco 4; regra \"a mesma nota tem dois números\".",
+      "s": "v",
+      "campo": "Nº da NR / NF"
+     },
+     {
+      "t": "**Faça:** em `Recebimento > Notas de Recebimento`, leia os cartões, troque o filtro **Status** e abra o menu `⋮` da nota.",
+      "r": "**Explique ao cliente:** a lista abre em \"Em Aberto\"; nota finalizada só aparece depois de limpar o filtro. **Confira:** opções Finalizar, Imprimir Etiquetas, Cancelar e Excluir. **Fonte:** trilha de estagiários 06, bloco 3.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** numa nota do pedido, digite uma quantidade maior que o saldo do item do PC e salve.",
+      "r": "**Explique ao cliente:** recebeu a mais, o caminho é ajustar o pedido ou abrir outro. **Confira:** \"Item X do pedido de compra: quantidade a excede o saldo disponível de b…\". **Fonte:** REC-NR-008.",
       "s": "d"
      },
      {
-      "t": "O recebedor usou `Importar XML` com um arquivo real, viu o fornecedor novo ser criado e tentou importar o mesmo XML de novo.",
-      "r": "**Como validar:** segunda importação avisa a nota já existente. **Por quê:** é o caminho de quem não tem PRO e de notas fora da SEFAZ. **Fonte:** REC-XML-002, REC-XML-004.",
-      "s": "d"
-     },
-     {
-      "t": "Na conferência da importação, o recebedor escolheu o produto do Flow para o código do fornecedor e marcou \"Lembrar deste código para as próximas notas deste fornecedor\".",
-      "r": "**Como validar:** a segunda nota do mesmo fornecedor já vem com o produto. **Por quê:** é o que reduz a digitação do dia a dia. **Fonte:** REC-XML-008, REC-XML-009.",
-      "s": "d"
-     },
-     {
-      "t": "O recebedor vinculou um pedido de 100 a uma nota de 60, finalizou e viu o pedido virar `Recebido` com o residual `PC-nnnn/2`; viu também que quantidade acima do saldo do pedido é recusada e diferença de preço só gera aviso.",
-      "r": "**Como validar:** residual com 40 em aberto. **Por quê:** entrega parcial é a regra em esquadrias. **Fonte:** REC-NR-008, REC-NR-009, REC-XML-006.",
-      "s": "d"
-     },
-     {
-      "t": "Se usa conferência: o conferente contou ou bipou os itens em `Conferências` (ou no app), concluiu e entendeu que a conferência registra a divergência, mas quem decide a quantidade que entra é a nota.",
-      "r": "**Como validar:** divergência aparece no demonstrativo \"Divergências de conferência\". **Por quê:** falta volta por NF-e de devolução, não por ajuste na conferência. **Fonte:** REC-CON-003, REC-CON-004; decisão S5.",
-      "s": "d"
-     },
-     {
-      "t": "O recebedor finalizou uma nota em caixa (10 CX de 12) e conferiu no estoque a entrada em unidades (120 UN) com o custo e, no contas a pagar, um título por parcela com origem na nota.",
-      "r": "**Como validar:** movimento de estoque e títulos conferidos com o cliente. **Por quê:** liga a nota à operação real do almoxarifado e do financeiro. **Fonte:** REC-FIN-001, REC-FIN-004, REC-FIN-007.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor mostrou cancelar uma nota finalizada com motivo e a ordem quando há título pago ou devolução: estornar o pagamento → cancelar a NF-e de devolução → cancelar a nota.",
-      "r": "**Como validar:** estoque estornado, títulos excluídos, pedido volta a aberto. **Por quê:** nota finalizada não se edita; o caminho é cancelar e relançar. **Fonte:** REC-CAN-001, REC-CAN-002, REC-CAN-003, REC-NR-014.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor mostrou identificar um item incorreto e `Gerar Devolução`, e explicou que o estoque só baixa quando a NF-e de devolução é autorizada no Faturamento.",
-      "r": "**Como validar:** NF-e de devolução em rascunho; título inalterado. **Por quê:** é a saída para falta, avaria ou item errado. **Fonte:** REC-DEV-001, REC-DEV-002, REC-DEV-003.",
+      "t": "**Faça:** tente gerar a nota de um PC com alçada pendente.",
+      "r": "**Explique ao cliente:** só pedido aprovado entra em nota. **Confira:** \"Pedido X aguarda aprovação do nível N (valor V) — não pode ser importado para recebimento.\" **Fonte:** REC-NR-007; COM-ALC-006.",
       "s": "d"
      }
     ]
    },
    {
-    "titulo": "4. Validação do aprendizado",
-    "intro": "Entregue ao cliente uma nota real nova e deixe-o conduzir do início ao fim. Provoque os erros comuns com dados preparados e observe se ele sabe sair sozinho.",
+    "titulo": "4. Entrega parcial: desdobro do pedido",
+    "onde": "`Compras > Pedidos de Compra`",
+    "intro": "Fornecedor que entrega em partes é comum. Mostre que o saldo não se perde: vira um pedido filho.",
     "passos": [
      {
-      "t": "O recebedor fez sozinho, com uma nota real, o caminho da chegada à finalização, com o pedido de compra vinculado.",
-      "r": "**Como validar:** nota finalizada sem ajuda; pedido atualizado. **Por quê:** é a rotina diária do módulo. **Fonte:** checklist D REC, testes ponta a ponta.",
-      "s": "d"
-     },
-     {
-      "t": "O recebedor explicou por que uma nota finalizada nunca gera título depois e qual o caminho quando o título faltou.",
-      "r": "**Como validar:** resposta certa: cancelar e relançar. **Por quê:** é a dúvida que mais gera retrabalho no financeiro. **Fonte:** REC-FIN-008; decisão S2.",
-      "s": "d"
-     },
-     {
-      "t": "O cliente tentou cancelar uma nota com título já pago e seguiu sozinho a ordem de estorno.",
-      "r": "**Como validar:** pagamento estornado no Financeiro antes do cancelamento. **Por quê:** a ordem errada é recusada e trava o recebedor. **Fonte:** REC-CAN-002.",
-      "s": "d"
-     },
-     {
-      "t": "O recebedor resolveu sozinho os bloqueios de importação: unidade do XML não cadastrada, embalagem sem fator, fornecedor inativo e duplicatas que não fecham com o total (pedir XML correto ao fornecedor).",
-      "r": "**Como validar:** cada caso provocado e resolvido. **Por quê:** são os erros das primeiras semanas. **Fonte:** REC-XML-005, REC-XML-007, REC-FIN-001, REC-NR-002.",
-      "s": "d"
-     },
-     {
-      "t": "O conferente explicou a diferença entre a quantidade contada e a quantidade que entra no estoque, e mostrou onde ver as divergências.",
-      "r": "**Como validar:** conferente abre o demonstrativo e cita uma divergência. **Por quê:** evita ajuste de estoque por conta própria. **Fonte:** REC-CON-004; decisão S5.",
-      "s": "d"
-     },
-     {
-      "t": "O responsável pela manifestação mostrou como e quando vai responder às notas da caixa `Aguardando manifestação`.",
-      "r": "**Como validar:** rotina combinada com dia e pessoa. **Por quê:** nota sem resposta fica parada e some da rotina. **Fonte:** REC-DFE-006; checklist D REC, treinamento.",
+      "t": "**Faça:** no PC de 100 unidades, gere a nota com 60 e salve.",
+      "r": "**Explique ao cliente:** o pedido original fica com o recebido e o saldo vai para `PC-nnnn/2`; se o PC já gerou títulos, o residual e a nota dele não geram. **Confira:** PC original \"Recebido\" com 60 e `PC-nnnn/2` em aberto com 40. **Fonte:** REC-NR-009, REC-NR-010; COM-PC-009.",
       "s": "d",
-      "campo": "Dúvidas registradas"
+      "campo": "Nº do PC residual (/2)"
+     },
+     {
+      "t": "**Faça:** na lista de Pedidos de Compra, leia a coluna **NOTA DE RECEBIMENTO**.",
+      "r": "**Explique ao cliente:** é por ela que o comprador sabe o que já chegou. **Confira:** \"NR-0000xx\" no pedido recebido. **Fonte:** trilha de estagiários 06, bloco 1.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** tente gerar outra nota no PC original.",
+      "r": "**Explique ao cliente:** o restante se recebe pelo residual. **Confira:** \"Pedido de compra #N não está aberto para recebimento.\" **Fonte:** REC-NR-007.",
+      "s": "d"
      }
     ]
    },
    {
-    "titulo": "5. Preparação para utilização e go-live",
-    "intro": "Limpe os testes, ligue a busca de notas no ambiente oficial e acompanhe as primeiras notas reais junto com o contador. O primeiro fechamento de custo é o teste de verdade.",
+    "titulo": "5. Conferência física e divergências",
+    "onde": "fila de conferências: `Recebimento > Aprovações` (fluxo antigo) ou `Recebimento > Conferências` (gestora)",
+    "intro": "Com a conferência ligada, alguém conta o que chegou antes da entrada. Use uma nota com dois itens para mostrar uma contagem igual e uma divergente.",
     "passos": [
      {
-      "t": "Notas e pedidos de teste foram cancelados ou excluídos antes do go-live.",
-      "r": "**Como validar:** listas sem documentos de teste. **Por quê:** nota de teste finalizada mexe em saldo, custo e contas a pagar. **Fonte:** REC-CAN-006; checklist D REC.",
+      "t": "**Faça:** na fila, clique em **Conferir** na nota.",
+      "r": "**Explique ao cliente:** o botão já inicia a conferência e trava a nota com o usuário; o responsável fica registrado. **Confira:** \"Conferência iniciada!\". **Fonte:** fluxo antigo de suprimentos, bloco 5.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** digite a quantidade conferida do primeiro item igual à nota e saia do campo.",
+      "r": "**Explique ao cliente:** cada item é salvo ao sair do campo. **Confira:** \"Item salvo\", selo OK e o progresso de itens. **Fonte:** fluxo antigo de suprimentos, bloco 5.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** no segundo item, conte a menos (ex.: 8 de 10).",
+      "r": "**Explique ao cliente:** a conferência registra a divergência; a falta volta ao fornecedor por NF-e de devolução. **Confira:** a divergência registrada no item. **Fonte:** REC-CON-003, REC-CON-004; README de Suprimentos, S5.",
       "s": "d"
      },
      {
-      "t": "A busca de notas está ligada no ambiente oficial para cada empresa, e a renovação dos certificados A1 está na agenda do cliente.",
-      "r": "**Como validar:** primeira nota real na caixa; data de vencimento anotada. **Por quê:** certificado vencido para a busca; o aviso vem 30 dias antes. **Fonte:** REC-DFE-014; decisão S4.",
-      "s": "d",
-      "campo": "Vencimento dos certificados A1"
+      "t": "**Faça:** clique em **Concluir Conferência**.",
+      "r": "**Explique ao cliente:** sem concluir, a conferência fica aberta. **Confira:** a nota sai da fila. **Fonte:** fluxo antigo de suprimentos, bloco 5.",
+      "s": "v"
      },
      {
-      "t": "As notas em trânsito do sistema antigo entraram pela caixa de manifestação ou por `Importar XML`, sem relançar notas já recebidas.",
-      "r": "**Como validar:** lista de notas em trânsito conferida. **Por quê:** relançar nota já recebida duplica saldo e título. **Fonte:** manual REC, seção 4; REC-FIN-009.",
+      "t": "**Faça:** com \"Exigir Conferência para Finalizar\" ligado, tente finalizar outra nota sem conferir.",
+      "r": "**Explique ao cliente:** é a trava para ninguém dar entrada sem contar. **Confira:** \"Esta nota não pode ser finalizada sem antes passar pela conferência física…\". **Fonte:** REC-CON-007.",
+      "s": "d"
+     }
+    ]
+   },
+   {
+    "titulo": "6. Finalizar: estoque e título a pagar nascem",
+    "onde": "`Recebimento > Notas de Recebimento > ⋮ > Finalizar`",
+    "intro": "A finalização é o momento que muda o estoque e o financeiro. Faça com o cliente e confira os reflexos nos outros módulos.",
+    "passos": [
+     {
+      "t": "**Faça:** use `⋮ > Finalizar` e confirme.",
+      "r": "**Explique ao cliente:** o aviso diz que a finalização movimenta estoque e gera títulos a pagar e não pode ser desfeita; o caminho de volta é cancelar a nota. **Confira:** nota \"Finalizada\" (limpe o filtro para vê-la). **Fonte:** fluxo antigo de suprimentos, bloco 6; trilha de estagiários 06, bloco 5.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** abra `Estoque > Movimentos` e `Estoque > Saldo` do insumo.",
+      "r": "**Explique ao cliente:** a entrada é no almoxarifado central (projeto em branco) e recalcula o custo médio. **Confira:** a entrada \"Recebimento (NR)\" e o saldo somado; anote a quantidade que entrou na nota com divergência. **Fonte:** fluxo antigo de suprimentos, bloco 6.",
+      "s": "v",
+      "campo": "Saldo depois"
+     },
+     {
+      "t": "**Faça:** abra `Financeiro > Contas a Pagar`.",
+      "r": "**Explique ao cliente:** nasce um título por parcela, salvo quando o PC já gerou títulos ou é por conta do cliente. **Confira:** título com o documento NR-xxxxx, vencimento e valor da parcela. **Fonte:** fluxo antigo de suprimentos, bloco 6; REC-FIN-007.",
+      "s": "v",
+      "campo": "Nº do título a pagar"
+     },
+     {
+      "t": "**Faça:** abra a lista de Pedidos de Compra e a `Linha do tempo` do PC.",
+      "r": "**Explique ao cliente:** a cadeia fica rastreável de ponta a ponta. **Confira:** PC \"Recebido\", títulos \"Gerados\" e SC → COT → PC → NR → título. **Fonte:** fluxo antigo de suprimentos, bloco 6.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** abra os dashboards de Compras e de Recebimento.",
+      "r": "**Explique ao cliente:** o gestor acompanha o recebido no período e o saldo a receber dos pedidos. **Confira:** \"Recebido no período\" com o valor do teste. **Fonte:** fluxo antigo de suprimentos, bloco 6.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** tente editar a nota finalizada.",
+      "r": "**Explique ao cliente:** nota finalizada não muda; corrige-se cancelando e relançando. **Confira:** \"…Somente notas em aberto podem ser alteradas.\" **Fonte:** REC-NR-014.",
+      "s": "d"
+     }
+    ]
+   },
+   {
+    "titulo": "7. Cancelamento e devolução ao fornecedor",
+    "onde": "`Recebimento > Notas de Recebimento > ⋮`",
+    "intro": "Feche mostrando como desfazer uma entrada errada e como devolver mercadoria. A NF-e de devolução só é transmitida com o responsável fiscal.",
+    "passos": [
+     {
+      "t": "**Faça:** numa nota finalizada cujo título já foi pago no roteiro do Financeiro, tente **Cancelar**.",
+      "r": "**Explique ao cliente:** primeiro se estorna o pagamento, depois se cancela a nota. **Confira:** \"Existe(m) N Conta(s) a Pagar já paga(s)… Estorne o pagamento em Contas a Pagar antes de cancelar o documento.\" **Fonte:** REC-CAN-002.",
       "s": "d"
      },
      {
-      "t": "O checklist D de Recebimento foi assinado pelo consultor e pelo cliente.",
-      "r": "**Como validar:** documento assinado. **Por quê:** é a condição para liberar o Estoque e o go-live de Suprimentos. **Fonte:** checklist D REC, assinatura.",
-      "s": "d",
-      "campo": "Data do go-live"
+      "t": "**Faça:** cancele outra nota finalizada informando o motivo.",
+      "r": "**Explique ao cliente:** o cancelamento estorna o estoque, exclui os títulos e reabre o PC; o residual continua. **Confira:** NR \"Cancelada\", estorno em `Estoque > Movimentos` e o título fora de Contas a Pagar. **Fonte:** REC-CAN-001, REC-CAN-004; REC D, seção 3.",
+      "s": "d"
      },
      {
-      "t": "Nas primeiras semanas, o consultor acompanhou: notas paradas em `Aguardando manifestação`, \"Última falha\" na busca, divergências de conferência, títulos duplicados entre pedido e nota e o custo médio das primeiras entradas com o contador.",
-      "r": "**Como validar:** revisão semanal com recebedor e contador. **Por quê:** custo e título errados só aparecem no fechamento. **Fonte:** REC-DFE-002, REC-FIN-004, REC-FIN-007; decisão S8.",
+      "t": "**Faça:** numa nota importada por XML, use \"Identificar item incorreto\" no bloco \"Itens incorretos\" e depois **Gerar Devolução**.",
+      "r": "**Explique ao cliente:** identificar só registra; a devolução cria a NF-e em rascunho no Faturamento. O estoque baixa só na autorização e o título não muda (fica pendência no Financeiro). **Confira:** a NF-e de devolução em rascunho. Não transmita sem o responsável fiscal. **Fonte:** REC-DEV-001, REC-DEV-002, REC-DEV-003.",
       "s": "d",
-      "campo": "Pendências das primeiras semanas"
+      "campo": "Nº da NF-e de devolução (rascunho)"
      },
      {
-      "t": "O critério para fechar Suprimentos foi cumprido: os passos 4 a 6 do teste ponta a ponta (nota vinculada ao pedido, finalização com saldo e custo, um título só) têm evidência.",
-      "r": "**Como validar:** números da nota, do pedido, do título e do movimento de estoque anotados. **Por quê:** fecha a cadeia Compras → Recebimento → Estoque. **Fonte:** README de Suprimentos, teste ponta a ponta.",
+      "t": "**Faça:** tente **Gerar Devolução** na nota digitada sem chave de acesso.",
+      "r": "**Explique ao cliente:** a devolução precisa referenciar a NF-e do fornecedor. **Confira:** \"A devolução precisa referenciar a NF-e do fornecedor e esta Nota de Recebimento não tem a chave de acesso…\". **Fonte:** REC-DEV-002.",
       "s": "d"
      }
     ]
@@ -2752,300 +2790,343 @@ export const CHECKLISTS_IMPLANTACAO = [
   ],
   "resultado": [
    {
-    "t": "O recebedor traz, vincula, confere e finaliza notas reais sem ajuda, com pedido de compra vinculado.",
+    "t": "Uma nota entrou por XML (DF-e ou arquivo) e outra pelo pedido de compra, com os dois números (NF e NR) anotados.",
     "s": "d"
    },
    {
-    "t": "A busca de notas e a manifestação à SEFAZ têm responsável e rotina (quando há PRO).",
+    "t": "A entrega parcial criou o `PC-nnnn/2` com o saldo.",
     "s": "d"
    },
    {
-    "t": "Cada nota finalizada gera a entrada certa no estoque e um só conjunto de títulos.",
+    "t": "A conferência registrou uma contagem igual e uma divergente.",
     "s": "d"
    },
    {
-    "t": "O cliente cancela e devolve na ordem certa sem chamar o suporte.",
+    "t": "A finalização gerou a entrada \"Recebimento (NR)\" no almoxarifado central e o título a pagar com o documento NR.",
+    "s": "v"
+   },
+   {
+    "t": "Um título só por parcela, pela nota ou pelo pedido conforme a ata.",
     "s": "d"
    },
    {
-    "t": "O checklist D de Recebimento está assinado e o teste ponta a ponta de Suprimentos tem evidência.",
+    "t": "O cliente viu o sistema recusar: XML repetido, quantidade acima do pedido, finalizar sem conferência e cancelar com título pago.",
     "s": "d"
    }
   ],
   "atencao": [
-   "CFOP de entrada errado no item gera crédito indevido, título em remessa ou nota que não movimenta estoque. Revise com o contador antes da primeira nota real (REC-NR-016, REC-NR-020).",
-   "Títulos pelo pedido e pela nota ao mesmo tempo duplicam a dívida; e nota finalizada não gera título depois. Treine Compras e Recebimento na mesma decisão (REC-FIN-008, decisão S2).",
-   "Unidade de medida sem a sigla do XML e produto sem embalagem e fator travam a importação. Teste com XML reais antes do go-live (REC-XML-007, REC-FIN-001).",
-   "Hoje o custo de entrada ainda vem com IPI e ICMS-ST e sem descontar crédito. Avise o contador antes de ele conferir o custo médio (decisão S8).",
-   "Sem Recebimento PRO não há busca na SEFAZ, vínculo automático de produto nem conferência; os parâmetros de conferência ficam sem efeito. Alinhe a expectativa no levantamento (REC-DFE-009, D-198).",
-   "Hoje as mensagens do sistema ainda chamam a busca de notas de \"Recebimento > Dfe > Configuração\" e \"Notas pendentes\"; o menu mostra `Distribuição DFe` e `Aguardando manifestação`. Avise o recebedor.",
-   "Certificado A1 vencido para a busca de notas sem que o recebedor perceba. Coloque a renovação na agenda do cliente (REC-DFE-014).",
-   "Com um só conferente, a segregação na inspeção trava a aprovação. Decida com o cliente e registre em ata (REC-CON-008)."
+   "Só em ambiente de teste. Nomeie os registros com \"TESTE FLUXO CONSULTOR\". Nota fiscal de devolução só é transmitida com o responsável fiscal do cliente.",
+   "**Responder à SEFAZ** (manifestação) é fiscal e não se desfaz: faça só com o responsável fiscal e numa nota de teste.",
+   "**Finalizar** não pode ser desfeito: movimenta estoque e gera títulos. O caminho de volta é cancelar com motivo, e só depois de estornar pagamentos.",
+   "A mesma nota tem dois números: \"NF-<fornecedor>\" na lista e \"NR-<interno>\" na conferência, no pedido e no título. Anote os dois.",
+   "A lista de notas abre filtrada em \"Em Aberto\": a nota finalizada some até limpar o filtro.",
+   "Iniciar a conferência trava a nota com o seu usuário; para destravar, use **Liberar** na fila.",
+   "Hoje o sistema ainda dá entrada com custo cheio (com IPI e ICMS-ST, sem descontar crédito), diferente da decisão de produto. Avise o cliente que confere custo.",
+   "Não existe importador de notas antigas: as notas já recebidas no sistema anterior entram como saldo de estoque e título a pagar."
   ],
   "naoValidado": [
-   "Quantidade que entra no estoque: o README de Suprimentos diz que é a da nota; a regra oficial dizia que hoje entra a quantidade conferida. Faça o teste de divergência em homologação antes de ensinar (REC-CON-004, decisão S5).",
-   "Custo da entrada: o checklist D espera custo sem o tributo recuperável no regime normal; o README diz que hoje entra cheio, com IPI e ICMS-ST. Confira na tela com o contador (REC-FIN-004, decisão S8).",
-   "A apostila trata registrar divergências e avarias como item para todos; o manual da gestora diz que avaria é PRO e exige a conferência física ligada. Confira a licença do cliente antes de prometer.",
-   "A página oficial fala em menu \"Aprovações\" para a conferência; o menu mostra `Conferências`. Use o nome da tela.",
-   "Os rótulos das janelas de cadastrar unidade e cadastrar fornecedor durante a importação e os nomes dos campos da tela de CFOP não foram confirmados. Confira na tela.",
-   "O roteiro de vídeo de notas pendentes é anterior à troca do provedor de busca e ao nome `Aguardando manifestação`. Não use como material sem revisar."
+   "Nome da fila de conferência: o fluxo antigo e a trilha de estagiários (conferidos na tela) usam `Recebimento > Aprovações`; a gestora usa `Recebimento > Conferências`, visível só com \"Usar Conferência Física\". Conferir o rótulo do menu.",
+   "Quantidade que entra no estoque com divergência: a regra oficial diz que entra a quantidade da **nota** (REC-CON-004, D-196); o da gestora indica que o código pode dar entrada na quantidade **conferida**. Conferir na tela com a nota de 8 de 10.",
+   "Custo da entrada: REC-FIN-004 diz custo sem o tributo recuperável no regime normal; o README de Suprimentos (S8) e o Estoque dizem que hoje entra cheio (WI #30480). Conferir o custo médio antes de explicar.",
+   "Momento do desdobro do PC: REC-NR-009 diz que **salvar** a nota já desdobra; o checklist D de Compras descreve gerar a nota parcial **e finalizar**. Conferir quando o `PC-nnnn/2` aparece.",
+   "Nome da caixa do DF-e: a gestora usa \"Aguardando manifestação\"; a trilha de estagiários cita \"Notas pendentes\". Conferir o menu.",
+   "Conferência física como PRO: a gestora diz que, sem PRO, os parâmetros ficam inertes (D-198); o fluxo antigo trata só como parâmetro. Conferir a licença do cliente.",
+   "Não conferidos na tela pelo fluxo antigo: DF-e, importação de XML, divergência e avaria na conferência, cancelamento e devolução."
   ]
  },
  {
   "id": "implantacao-estoque",
   "arquivo": "implantacao-10-estoque.html",
   "etiqueta": "Consultor · Implantação · Estoque",
-  "titulo": "Implantação de Estoque",
-  "subtitulo": "Checklist para o consultor conduzir e verificar a implantação do Estoque, com foco na data de corte e no saldo inicial, que sustentam todo o resto de Suprimentos.",
-  "objetivo": "Ao final, o cliente tem locais e parâmetros decididos, o saldo inicial carregado e conferido na data de corte, e sabe consultar saldo e disponível, transferir, ajustar, estornar e inventariar sozinho. No Faktory Flow o saldo é controlado por características (cor, comprimento, altura, largura): um saldo inicial errado contamina custo médio, compras, produção e faturamento.",
-  "rodape": "Checklist de implantação · Estoque · fontes: manual de implantação EST (gestora), regras EST, checklist D EST, README de Suprimentos (S1–S10), apostila do consultor, limitações conhecidas v1.22.12 · Harness Faktory Flow",
+  "titulo": "Implantação de Estoque: roteiro prático com o cliente",
+  "subtitulo": "Junto com o almoxarife, monte o estoque do cliente e opere um produto de teste: locais e almoxarifado central, saldo inicial na data de corte, entradas e saídas manuais e automáticas, saldo e extrato, transferência, reserva, inventário com ajuste e empréstimo.",
+  "objetivo": "Ao final, o cliente sabe que o saldo nunca é digitado: ele nasce de movimentos, e cada um deixa rastro no extrato. Ele viu o saldo inicial entrar, as travas de saldo, reserva e inventário funcionarem e o balanço do produto fechar em quantidade e valor.",
+  "rodape": "Checklist de implantação · Estoque · fontes: gestora EST (A, B, C, D) e README de Suprimentos; fluxo antigo de estoque (20/10/2026); trilha de estagiários 07; procedimento \"dar entrada manual no estoque\"; regras de estoque do Harness · Harness Faktory Flow",
   "prerequisitos": [
    {
-    "t": "Fundação e Fiscal estão assinados, e o módulo Estoque está ativo em `Minha Assinatura` (com PRO, se o cliente vai usar inventário ou localizações).",
-    "r": "**Como validar:** print de `Minha Assinatura` e checklists assinados. **Por quê:** inventário, app de contagem e localizações são PRO. **Fonte:** EST-GER-001; checklist D EST.",
+    "t": "Fundação concluída: **tipo de categoria** final, **unidade de estoque** e **fator de embalagem** de cada produto conferidos, e cores cadastradas.",
+    "r": "**Confira:** amostra de produtos. Depois do saldo, o tipo da categoria trava. **Fonte:** README de Suprimentos, ordem 3; CAD-CAT-004, EST-SLD-003.",
     "s": "d"
    },
    {
-    "t": "As categorias de produto têm o **tipo definitivo** (perfil, superfície, componente, esquadria, kit) revisado com o cliente antes de qualquer saldo.",
-    "r": "**Como validar:** lista de categorias assinada. **Por quê:** o tipo decide as características do saldo e **trava** quando há saldo; corrigir depois exige zerar ou criar outra categoria. **Fonte:** CAD-CAT-004, EST-MOV-008.",
+    "t": "Produto de teste de **uso controlado em estoque**, com **Origem da Mercadoria** preenchida e preço de custo no cadastro.",
+    "r": "**Confira:** o cadastro do produto. Sem origem, o salvar avisa só no fim; sem custo, a sobra do inventário trava a aprovação. **Fonte:** fluxo antigo de estoque (pré-requisito e atenção); EST-INV-008.",
+    "s": "v"
+   },
+   {
+    "t": "Três usuários de teste: quem cria e quem confirma a transferência; dois contadores e um aprovador do inventário.",
+    "r": "**Confira:** `Segurança > Perfis de Acesso`. A regra vale até para Super Usuário. **Fonte:** README de Suprimentos, S9; EST-INV-004 a 007.",
     "s": "d"
    },
    {
-    "t": "Os produtos que controlam estoque têm unidade de medida, \"controla estoque\" marcado, fator de embalagem e preço de custo.",
-    "r": "**Como validar:** amostra de 10 produtos conferida. **Por quê:** sem unidade não movimenta; sem controle é ignorado em silêncio; sem custo a sobra de inventário trava. **Fonte:** EST-MOV-009, EST-SLD-003, EST-INT-006, EST-INV-009.",
+    "t": "Data de corte combinada com o cliente, depois da contagem física e das últimas notas do sistema antigo, e a planilha de saldo com custo aceito pela contabilidade.",
+    "r": "**Confira:** a ata. **Fonte:** README de Suprimentos, S7; EST C, etapa 4.",
     "s": "d"
    },
    {
-    "t": "As cores usadas nos perfis e vidros estão cadastradas.",
-    "r": "**Como validar:** comparar a lista de cores do cliente com o cadastro. **Por quê:** cor sem cadastro vira \"sem cor\" no saldo. **Fonte:** EST-SLD-002.",
-    "s": "d"
-   },
-   {
-    "t": "Os CFOPs com \"movimenta estoque\" foram revisados com o contador.",
-    "r": "**Como validar:** lista assinada. **Por quê:** documento com CFOP que não movimenta é ignorado pelo estoque. **Fonte:** EST-INT-006; decisão S1.",
-    "s": "d"
-   },
-   {
-    "t": "O cliente recebeu com antecedência o modelo da posição física de estoque: produto, cor, medidas em mm, local, quantidade na unidade de estoque e custo unitário.",
-    "r": "**Como validar:** responsável e prazo da contagem combinados. **Por quê:** a contagem física é o insumo da carga e leva dias. **Fonte:** manual EST, informações do cliente.",
+    "t": "Saber se o cliente usa inventário (PRO), localizações (PRO) e empréstimo, e quem pode retirar material reservado.",
+    "r": "**Confira:** `Minha Assinatura` e a ata. **Fonte:** EST C, etapas 3 e 5; EST-MOV-010.",
     "s": "d"
    }
   ],
   "fluxos": [
    {
-    "titulo": "1. Entendimento do cenário do cliente",
-    "intro": "Visite o almoxarifado e veja como o material está guardado e identificado. Reúna o responsável do estoque, o gestor de produção e o contador. As duas decisões críticas desta etapa são a data de corte e a origem do custo inicial: não avance sem elas escritas.",
+    "titulo": "1. Locais e almoxarifado central",
+    "onde": "`Estoque > Locais` e `Estoque > Configurações > Parâmetros de Estoque`",
+    "intro": "Tudo no estoque acontece num local. Comece garantindo o almoxarifado central em cada empresa, porque é nele que a nota de recebimento e a produção dão entrada.",
     "passos": [
      {
-      "t": "O consultor perguntou: quais produtos controlam estoque (perfis, vidros, componentes, esquadria pronta, kits)? Quantas empresas guardam material e quais depósitos cada uma tem?",
-      "r": "**Como validar:** lista de produtos controlados e de locais por empresa. **Por quê:** cada empresa precisa do seu almoxarifado central; o resto é local livre. **Fonte:** EST-INT-006, EST-LOC-001, EST-LOC-002; perguntas Q1 e Q2.",
+      "t": "**Faça:** abra `Estoque > Locais` e confira o almoxarifado central ativo de cada empresa.",
+      "r": "**Explique ao cliente:** sem central ativo, a nota não finaliza e a produção não conclui; a instalação inicial só cria o central da primeira empresa. **Confira:** um central ativo por empresa. **Fonte:** fluxo antigo de estoque (pré-requisito); regra \"almoxarifado central ativo é pré-requisito\"; README de Suprimentos, S6.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** cadastre um segundo local de teste (ex.: depósito).",
+      "r": "**Explique ao cliente:** locais de obra não se criam aqui: nascem com o projeto. **Confira:** o local ativo na lista. **Fonte:** EST C, etapa 1; EST-LOC-003.",
+      "s": "d",
+      "campo": "Código do segundo local"
+     },
+     {
+      "t": "**Faça:** tente marcar o segundo local também como almoxarifado central.",
+      "r": "**Explique ao cliente:** é um central por empresa. **Confira:** \"A empresa X já possui um almoxarifado central. Rebaixe-o antes de promover outro.\" **Fonte:** EST-LOC-002.",
       "s": "d"
      },
      {
-      "t": "O consultor perguntou: precisam saber em qual prateleira ou endereço está o material? E deixou claro que ligar localizações é **irreversível**.",
-      "r": "**Como validar:** decisão escrita do cliente (ata ou e-mail). **Por quê:** ligada, toda entrada passa a exigir localização, inclusive a planilha de saldo. **Fonte:** EST-LOC-006, EST-LOC-012; Q5.",
-      "s": "d",
-      "campo": "Usa localizações (sim/não)"
-     },
-     {
-      "t": "O consultor perguntou: pode produzir ou faturar sem saldo? Lançam movimento com data passada, até quantos dias? Quem pode retirar material reservado para outra obra ou OP?",
-      "r": "**Como validar:** política anotada. **Por quê:** define \"Bloquear saída sem saldo\", o limite retroativo e quem mexe no reservado. **Fonte:** EST-MOV-006, EST-MOV-010, EST-PAR-001; Q3, Q4 e Q11.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor perguntou: a partir de qual comprimento a sobra de perfil vira retalho? E guardam material de cliente na fábrica?",
-      "r": "**Como validar:** comprimento mínimo em mm anotado. **Por quê:** vazio, toda sobra vira sucata; material de cliente entra com propriedade \"Cliente\" e valor zero. **Fonte:** EST-PAR-001 (D-304), EST-SLD-007; Q6 e Q10.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor perguntou, com o contador: qual é o custo do estoque atual e de onde vem (último preço, médio do sistema antigo, contábil)?",
-      "r": "**Como validar:** origem do custo aprovada por e-mail do contador. **Por quê:** o custo da planilha vira o custo médio de abertura de cada posição. **Fonte:** EST-SLD-004, EST-SLD-005; Q7.",
-      "s": "d",
-      "campo": "Origem do custo inicial"
-     },
-     {
-      "t": "O consultor perguntou: qual é o último dia do sistema antigo? E definiu com o cliente a **data de corte**, depois das últimas notas lançadas lá e da contagem física.",
-      "r": "**Como validar:** data em ata, assinada. **Por quê:** a planilha não tem coluna de data: o saldo nasce no dia da importação, e nada pode ser lançado antes nas mesmas variações. **Fonte:** EST-MOV-006, EST-INT-002; Q8; decisão S7.",
-      "s": "d",
-      "campo": "Data de corte"
-     },
-     {
-      "t": "O consultor perguntou: vão fazer inventário de abertura, geral ou por categoria? Usam estoque mínimo? Fecham o estoque todo mês com a contabilidade?",
-      "r": "**Como validar:** respostas em ata, com as três pessoas do inventário nomeadas. **Por quê:** inventário geral para o local inteiro; reposição e encerramento entram na rotina. **Fonte:** EST-INV-001, EST-REP-001, EST-ENC-001; Q9, Q12 e Q13.",
+      "t": "**Faça:** abra os Parâmetros de Estoque e anote, com o cliente, o estado de \"Bloquear saída sem saldo\" e das regras de movimento retroativo.",
+      "r": "**Explique ao cliente:** os parâmetros valem para a empresa inteira; \"Usar localizações por local\" é irreversível. **Confira:** os valores anotados antes de começar. **Fonte:** EST C, etapa 2; fluxo antigo de estoque (pré-requisito).",
       "s": "d"
      }
     ]
    },
    {
-    "titulo": "2. Preparação da implantação",
-    "intro": "A ordem aqui é obrigatória: categorias e unidades, locais, parâmetros, localizações, e só então a planilha de saldo. Faça a carga primeiro em homologação, confira com o cliente, e repita no ambiente oficial no dia de corte.",
+    "titulo": "2. Saldo inicial na data de corte",
+    "onde": "`Estoque > Saldo > Mais > Importar saldo`",
+    "intro": "O saldo de abertura entra por planilha, antes de qualquer compra ou nota no Flow. Faça com um arquivo de teste de poucas linhas.",
     "passos": [
      {
-      "t": "O consultor confirmou o que precisa estar pronto e o que espera pelo Estoque: Fundação e Fiscal assinados antes; Compras, Recebimento, Faturamento e Produção só movimentam depois do saldo inicial conferido.",
-      "r": "**Como validar:** cronograma com a carga de saldo antes da primeira compra real. **Por quê:** entrada antes da data de corte bagunça saldo e custo médio. **Fonte:** manual EST; README de Suprimentos, ordem de implantação.",
+      "t": "**Faça:** no assistente de importação de saldo, baixe o modelo e preencha Empresa, Código do produto, Descrição, Local de estoque, Propriedade, Tipo de movimento (\"Saldo inicial\"), Quantidade, Custo unitário e as medidas e cor que a categoria pede.",
+      "r": "**Explique ao cliente:** a quantidade vai na unidade de estoque e o custo vira o custo médio de abertura; perfil leva comprimento e cor, superfície leva altura, largura e cor. **Confira:** o arquivo com as colunas obrigatórias. **Fonte:** EST C, etapa 4; EST-IMP-002, EST-SLD-005.",
       "s": "d"
      },
      {
-      "t": "Em `Estoque > Configurações > Locais`, **cada empresa** tem um almoxarifado central ativo, e os locais livres (depósito, pátio) foram cadastrados; locais de obra não foram criados à mão.",
-      "r": "**Como validar:** print dos locais filtrado por empresa. **Por quê:** o sistema cria o central só para a primeira empresa; sem central, documento sem projeto é recusado. Local de obra nasce com o projeto. **Fonte:** EST-LOC-002, EST-LOC-003; decisão S6.",
+      "t": "**Faça:** suba a planilha, corrija na Validação até não sobrar linha inválida e execute.",
+      "r": "**Explique ao cliente:** a planilha não tem data: o movimento nasce no dia em que é aplicada; reimportar o mesmo conteúdo não duplica. **Confira:** sem \"Planilha com N linha(s) inválida(s)…\" e o assistente em Concluído. **Fonte:** EST-IMP-001, EST-IMP-003; README de Suprimentos, S7.",
       "s": "d"
      },
      {
-      "t": "Os `Parâmetros de Estoque` foram gravados conforme a ata: bloquear saída sem saldo, movimento com data passada, dias máximos retroativos e comprimento mínimo de retalho.",
-      "r": "**Como validar:** print da tela de parâmetros. **Por quê:** valem para todo movimento a partir da carga. **Fonte:** EST-PAR-001, EST-MOV-006, EST-MOV-010.",
-      "s": "d"
-     },
-     {
-      "t": "Se o cliente decidiu por escrito usar localizações e tem PRO: a chave foi ligada e os endereços de cada local foram cadastrados **antes** da planilha.",
-      "r": "**Como validar:** print de `Localizações`. **Por quê:** a chave não volta atrás e a planilha passa a exigir a coluna de localização. **Fonte:** EST-LOC-006, EST-LOC-012.",
-      "s": "d"
-     },
-     {
-      "t": "A planilha de saldo foi preenchida pelo cliente no modelo baixado do assistente: quantidades na unidade de estoque, medidas em mm, colunas certas por categoria e material de cliente com propriedade \"Cliente\".",
-      "r": "**Como validar:** amostra conferida com o cliente. **Por quê:** perfil leva comprimento e cor; superfície, altura, largura e cor; componente, só cor. **Fonte:** EST-IMP-002, EST-SLD-003, EST-SLD-007.",
-      "s": "d"
-     },
-     {
-      "t": "No dia de corte, o saldo foi importado em `Estoque > Saldo` (`Mais` › `Importar saldo`), com a etapa de Validação sem nenhuma linha inválida.",
-      "r": "**Como validar:** registro em `Mais` › `Importações de saldo` com a data de corte. **Por quê:** reimportar o mesmo arquivo não duplica, mas qualquer lançamento anterior nas mesmas variações é problema. **Fonte:** EST-IMP-001, EST-IMP-003, EST-IMP-004; decisão S7.",
+      "t": "**Faça:** confira em `Mais > Importações de saldo` e em `Estoque > Movimentos` filtrando o tipo \"Importação de saldo inicial\".",
+      "r": "**Explique ao cliente:** a importação fica registrada com usuário, data e a planilha original. **Confira:** os totais por local batem com a planilha do cliente. **Fonte:** EST-IMP-004, EST-MOV-014.",
       "s": "d",
-      "campo": "Data da importação do saldo"
+      "campo": "Data e usuário da importação"
      },
      {
-      "t": "A carga foi conferida: `Movimentos` filtrado pelo tipo `Importação de saldo inicial`, totais por local em `Saldo` iguais à planilha (quantidade e valor) e `Conferência de saldo` sem diferença.",
-      "r": "**Como validar:** prints das três telas guardados. **Por quê:** é a prova de que a abertura bate com a contagem física. **Fonte:** EST-MOV-014, EST-GER-005; checklist D EST, carga.",
-      "s": "d"
-     },
-     {
-      "t": "Os perfis de almoxarife (consulta, movimento, transferência, contagem) e de gestor (estorno, reavaliação, importação, aprovação de inventário, encerramento, retirada de reservado) foram criados.",
-      "r": "**Como validar:** entrar com um usuário de cada perfil. **Por quê:** reavaliar custo e estornar são decisões do gestor. **Fonte:** EST-GER-002; manual EST, etapa 6.",
-      "s": "d"
-     },
-     {
-      "t": "Se o cliente faz inventário de abertura (PRO): um inventário por local foi agendado fora do expediente, com dois contadores e um aprovador diferentes.",
-      "r": "**Como validar:** datas e nomes anotados. **Por quê:** com inventário geral aberto, o local inteiro fica sem movimento. **Fonte:** EST-INV-004 a 007; decisão S9.",
+      "t": "**Faça:** tente lançar um movimento no mesmo produto com data anterior à importação.",
+      "r": "**Explique ao cliente:** é por isso que nada se lança antes do saldo inicial. **Confira:** \"Movimento retroativo bloqueado: já existe movimentação posterior a …\". **Fonte:** EST-MOV-006.",
       "s": "d"
      }
     ]
    },
    {
-    "titulo": "3. Condução do treinamento",
-    "intro": "Treine com os próprios materiais do cliente: um perfil numa cor, uma chapa de vidro, um componente. Comece pelo saldo que ele mesmo contou. Siga a ordem: saldo e disponível → entrada → saída → transferência → ajuste e estorno → inventário → reposição e encerramento.",
+    "titulo": "3. Entradas e saídas manuais",
+    "onde": "`Estoque > Movimentos > + Novo Movimento`",
+    "intro": "Os movimentos manuais cobrem o que não vem de documento: entrada avulsa, ajuste, descarte. Mostre também que movimento não se edita: corrige-se por estorno.",
     "passos": [
      {
-      "t": "O consultor mostrou o saldo de um perfil real por características (comprimento e cor) e a diferença entre `Saldo` e disponível (descontadas as reservas de obras e OPs).",
-      "r": "**Como validar:** cliente encontra o saldo e o disponível de um material dele. **Por quê:** quem olha só o saldo promete material já reservado. **Fonte:** EST-RES-001, EST-IMP-002; apostila, Módulo Estoque.",
-      "s": "d",
-      "campo": "Data do treinamento"
+      "t": "**Faça:** crie um movimento com **Tipo** \"Entrada manual\", **Empresa**, **Local de destino** e, na linha do item, **Produto**, **Quantidade** e **Custo unit.**. Clique em **Salvar**.",
+      "r": "**Explique ao cliente:** a Empresa é obrigatória e não vem preenchida; **Ctrl+S salva**. Os tipos são Entrada manual, Ajuste positivo, Ajuste negativo, Transferência, Requisição, Devolução de uso, Empréstimo e Descarte. **Confira:** o movimento numerado na lista. **Fonte:** procedimento \"dar entrada manual no estoque\"; fluxo antigo de estoque, bloco 1.",
+      "s": "v",
+      "campo": "Nº do movimento"
      },
      {
-      "t": "O cliente finalizou uma nota de recebimento e calculou junto o novo custo médio (10 un a R$ 10,00 + 10 un a R$ 14,00 = R$ 12,00).",
-      "r": "**Como validar:** custo médio na tela igual ao cálculo. **Por quê:** liga o Estoque ao Recebimento e mostra de onde vem o custo do produto. **Fonte:** EST-SLD-004, EST-INT-001.",
+      "t": "**Faça:** em `Estoque > Saldo`, pesquise o produto em \"Buscar na lista: produto, código, local...\".",
+      "r": "**Explique ao cliente:** saldo e custo médio foram atualizados pelo movimento. **Confira:** **Saldo** igual à entrada e o **Valor total**. **Fonte:** procedimento \"dar entrada manual no estoque\"; trilha de estagiários 07.",
+      "s": "v",
+      "campo": "Saldo e valor depois da entrada"
+     },
+     {
+      "t": "**Faça:** lance um **Ajuste positivo** (sobra) e um **Ajuste negativo** (perda).",
+      "r": "**Explique ao cliente:** cada ajuste deixa o motivo no extrato. **Confira:** o saldo acompanha os dois ajustes. **Fonte:** fluxo antigo de estoque, bloco 1; EST-MOV-002.",
       "s": "d"
      },
      {
-      "t": "O consultor mostrou a saída por documento (NF-e de venda, requisição da OP, devolução a fornecedor) no local certo, e que o custo médio não muda na saída.",
-      "r": "**Como validar:** movimento de saída no extrato do produto. **Por quê:** o almoxarife precisa reconhecer cada origem de baixa. **Fonte:** EST-INT-001, EST-INT-004; README de Suprimentos, seção 1.",
+      "t": "**Faça:** tente uma saída maior que o saldo, com \"Bloquear saída sem saldo\" ligado e depois desligado.",
+      "r": "**Explique ao cliente:** é a decisão do cliente se o saldo pode ficar negativo. **Confira:** ligado, recusa; desligado, passa e o saldo fica negativo. **Fonte:** fluxo antigo de estoque, bloco 1; EST-MOV-010.",
       "s": "d"
      },
      {
-      "t": "O almoxarife fez uma `Nova transferência` entre dois locais, viu o rascunho reduzir o disponível sem mexer no saldo e confirmou.",
-      "r": "**Como validar:** origem diminui e destino aumenta com o custo da origem. **Por quê:** é a rotina de levar material do depósito à obra ou à produção. **Fonte:** EST-TRF-002, EST-TRF-004, EST-TRF-006.",
-      "s": "d"
+      "t": "**Faça:** abra o movimento de entrada e use **Estornar**, informando o motivo.",
+      "r": "**Explique ao cliente:** movimento não se edita; o estorno entra na data de hoje e só se faz uma vez. **Confira:** nasce o movimento \"Estorno\", o original fica \"Estornado\" e o saldo volta. **Fonte:** fluxo antigo de estoque, bloco 1; EST-MOV-001, EST-MOV-004.",
+      "s": "v"
+     }
+    ]
+   },
+   {
+    "titulo": "4. Entradas e saídas automáticas",
+    "onde": "`Estoque > Movimentos`",
+    "intro": "A maior parte do estoque se move sozinha, pelos documentos dos outros módulos. Mostre ao cliente onde ver cada origem.",
+    "passos": [
+     {
+      "t": "**Faça:** filtre `Estoque > Movimentos` por produto e data e leia a coluna de tipo.",
+      "r": "**Explique ao cliente:** recebimento, baixa de OP, entrada de produto acabado e ajuste de inventário vêm dos documentos, não da tela. **Confira:** origens como Recebimento (NR), Requisição, OP - Conclusão e Estorno. **Fonte:** trilha de estagiários 07, bloco 5; EST-MOV-002.",
+      "s": "v"
      },
      {
-      "t": "O almoxarife lançou um ajuste negativo em `Movimentos`, estornou e viu que um segundo estorno é recusado; o gestor viu a reavaliação de valor para corrigir custo.",
-      "r": "**Como validar:** saldo volta após o estorno. **Por quê:** corrigir lançamento errado sem bagunçar o histórico; reavaliar muda o custo de todas as posições do produto. **Fonte:** EST-MOV-001, EST-MOV-004, EST-MOV-011.",
-      "s": "d"
+      "t": "**Faça:** abra o movimento da nota finalizada no roteiro de Recebimento, sem clicar em **Estornar**.",
+      "r": "**Explique ao cliente:** a nota dá entrada no almoxarifado central e recalcula o custo médio. **Confira:** a entrada \"Recebimento (NR)\" com origem, destino e itens. **Fonte:** fluxo antigo de suprimentos, bloco 6; trilha de estagiários 07, bloco 5.",
+      "s": "v"
      },
      {
-      "t": "Se PRO: o cliente fez um inventário completo num local pequeno: contagem às cegas no app, segunda contagem por outra pessoa e aprovação por um terceiro, gerando o ajuste.",
-      "r": "**Como validar:** movimento de ajuste por inventário no extrato. **Por quê:** é o controle periódico do estoque; durante o inventário o local não movimenta. **Fonte:** EST-INV-004 a 008, EST-MOV-007.",
-      "s": "d"
-     },
-     {
-      "t": "Se usa estoque mínimo: o consultor mostrou a `Reposição` sugerindo compra e gerando solicitação para Compras.",
-      "r": "**Como validar:** solicitação criada em Compras a partir da reposição. **Por quê:** liga o Estoque ao comprador. **Fonte:** EST-REP-001 a 004.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor mostrou o encerramento do mês (`Encerrar mês` e aprovação) e combinou com o cliente quem fará o primeiro.",
-      "r": "**Como validar:** responsável e data do primeiro encerramento anotados. **Por quê:** o fechamento com a contabilidade depende dele. **Fonte:** EST-ENC-001.",
+      "t": "**Faça:** depois de uma NF-e de venda autorizada no roteiro de Faturamento, procure a saída do produto.",
+      "r": "**Explique ao cliente:** a saída nasce na autorização da nota; documento emitido antes da contratação do Estoque não movimenta. **Confira:** a saída ligada à nota. **Fonte:** EST C, etapa 7; EST-INT-002.",
       "s": "d"
      }
     ]
    },
    {
-    "titulo": "4. Validação do aprendizado",
-    "intro": "Peça ao cliente que conduza com material e locais dele. O ponto principal é ele confiar no saldo inicial e saber explicar a data de corte. Anote cada dúvida.",
+    "titulo": "5. Saldo e extrato",
+    "onde": "`Estoque > Saldo` e o código do produto",
+    "intro": "É a tela que o cliente mais vai consultar. Ensine a achar a linha certa e a ler de onde veio cada quantidade.",
     "passos": [
      {
-      "t": "O responsável do estoque conferiu sozinho o saldo de um local contra a planilha da contagem, em quantidade e valor.",
-      "r": "**Como validar:** cliente aponta que bate, ou acha a diferença. **Por quê:** se ele não confia no saldo, volta para a planilha paralela. **Fonte:** EST-SLD-001; checklist D EST, saldo inicial conferido.",
-      "s": "d"
+      "t": "**Faça:** pesquise o produto e localize a linha certa.",
+      "r": "**Explique ao cliente:** cada produto aparece uma vez por **local** e por **variação** (cor e medidas). **Confira:** a linha do local e da cor do teste. **Fonte:** trilha de estagiários 07, bloco 3; EST-SLD-001.",
+      "s": "v"
      },
      {
-      "t": "O cliente explicou por que nada pode ser lançado antes da data de corte e o que fazer quando aparece o bloqueio de movimento retroativo.",
-      "r": "**Como validar:** resposta certa: lançar na data atual. **Por quê:** é a dúvida que mais aparece na virada. **Fonte:** EST-MOV-006; decisão S7.",
-      "s": "d"
+      "t": "**Faça:** leia SALDO, RESERVADA, CUSTO MÉDIO e VALOR TOTAL e use `Mais filtros` (obra, propriedade, atributos).",
+      "r": "**Explique ao cliente:** disponível = saldo − reservado; os filtros ficam salvos no navegador (\"Limpar filtros\" se algo sumir). **Confira:** o número da RESERVADA abre as reservas daquela posição. **Fonte:** trilha de estagiários 07, bloco 3.",
+      "s": "v"
      },
      {
-      "t": "O almoxarife explicou a diferença entre saldo e disponível com um material reservado para uma obra real.",
-      "r": "**Como validar:** almoxarife mostra a reserva e o documento que a criou. **Por quê:** evita retirar material de outra obra. **Fonte:** EST-RES-001, EST-MOV-010.",
-      "s": "d"
-     },
-     {
-      "t": "O almoxarife fez sozinho uma transferência e um ajuste com estorno.",
-      "r": "**Como validar:** movimentos no extrato, sem ajuda. **Por quê:** são as operações do dia a dia do almoxarifado. **Fonte:** EST-TRF-004, EST-MOV-004.",
-      "s": "d"
-     },
-     {
-      "t": "O gestor explicou de onde veio o custo médio de um produto que recebeu nota depois da abertura.",
-      "r": "**Como validar:** gestor refaz o cálculo com o custo da abertura e o da nota. **Por quê:** é a pergunta que o contador vai fazer no primeiro fechamento. **Fonte:** EST-SLD-004, EST-SLD-005.",
-      "s": "d"
-     },
-     {
-      "t": "O gestor abriu `Conferência de saldo` e `Reservas órfãs` e explicou para que serve cada uma.",
-      "r": "**Como validar:** gestor usa as duas telas sem ajuda. **Por quê:** são o controle de saúde do estoque depois do go-live. **Fonte:** EST-GER-005, EST-RES-003.",
-      "s": "d",
-      "campo": "Dúvidas registradas"
+      "t": "**Faça:** clique no código do produto e abra as abas **Posições** e **Histórico**.",
+      "r": "**Explique ao cliente:** o histórico é o extrato: data, número, tipo, quantidade e motivo. **Confira:** a entrada manual, o estorno e a entrada da NR no histórico. **Fonte:** trilha de estagiários 07, bloco 4.",
+      "s": "v"
      }
     ]
    },
    {
-    "titulo": "5. Preparação para utilização e go-live",
-    "intro": "O go-live do Estoque é a importação no dia de corte. Combine com o cliente que ninguém lança nada nas mesmas variações antes da carga e acompanhe de perto o primeiro mês, até o primeiro encerramento.",
+    "titulo": "6. Transferência e reserva",
+    "onde": "`Estoque > Transferências` e coluna `Reservada` do Saldo",
+    "intro": "A transferência mostra a diferença entre saldo e disponível: enquanto pendente, ela reserva a quantidade na origem.",
     "passos": [
      {
-      "t": "No ambiente oficial, a carga foi feita na data de corte, conferida, e `Conferência de saldo` e `Reservas órfãs` estão sem pendência.",
-      "r": "**Como validar:** prints guardados com a data. **Por quê:** é o ponto de partida de todo custo e saldo. **Fonte:** EST-GER-005, EST-RES-003; checklist D EST, carga.",
+      "t": "**Faça:** crie uma transferência de 5 unidades do almoxarifado central para o segundo local, sem confirmar.",
+      "r": "**Explique ao cliente:** o saldo da origem não desce ainda, mas o disponível desce. **Confira:** número TRF- pendente; ex.: saldo 20, reservado 5, disponível 15. **Fonte:** fluxo antigo de estoque, bloco 2; regra \"transferência pendente reserva o disponível\".",
+      "s": "v",
+      "campo": "Nº da transferência (TRF-)"
+     },
+     {
+      "t": "**Faça:** na tela de Saldo, clique no número da coluna **Reservada** da origem.",
+      "r": "**Explique ao cliente:** toda reserva aponta o documento que a criou. **Confira:** o detalhe mostra essa transferência. **Fonte:** fluxo antigo de estoque, bloco 2.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** tente transferir com origem igual ao destino, com quantidade zero e sem item.",
+      "r": "**Explique ao cliente:** o sistema só aceita transferência válida entre locais distintos e ativos. **Confira:** as três são recusadas. **Fonte:** fluxo antigo de estoque, bloco 2; EST-TRF-001 a 007.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** com o usuário que tem permissão de confirmar, clique em **Confirmar**.",
+      "r": "**Explique ao cliente:** nada fica em trânsito; o custo médio acompanha o material. **Confira:** origem desce 5, destino sobe 5 e a reserva é consumida; os botões Confirmar e Excluir somem. **Fonte:** fluxo antigo de estoque, bloco 2.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** crie outra transferência pendente e exclua-a.",
+      "r": "**Explique ao cliente:** excluir a pendente libera a reserva sem gerar movimento. **Confira:** o disponível volta ao que era. **Fonte:** fluxo antigo de estoque, bloco 2.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** tente reservar ou transferir mais que o disponível.",
+      "r": "**Explique ao cliente:** a reserva é por variação e por local. **Confira:** a operação é recusada. **Fonte:** fluxo antigo de estoque, bloco 3; EST-TRF-003.",
       "s": "d"
      },
      {
-      "t": "Os movimentos de teste da homologação não foram repetidos no ambiente oficial e o cliente parou de lançar no sistema antigo.",
-      "r": "**Como validar:** combinado com o cliente e registrado em ata. **Por quê:** dois sistemas vivos geram saldo divergente na primeira semana. **Fonte:** EST-INT-002; manual EST, data de corte.",
+      "t": "**Faça:** com material reservado, lance uma requisição que consumiria a parte reservada.",
+      "r": "**Explique ao cliente:** é aqui que se decide quem pode retirar material reservado para outro documento. **Confira:** anote se a saída passou ou foi recusada e o disponível antes e depois. **Fonte:** fluxo antigo de estoque, bloco 3; EST-MOV-010.",
+      "s": "d"
+     }
+    ]
+   },
+   {
+    "titulo": "7. Inventário com ajuste",
+    "onde": "`Estoque > Inventário` e `Estoque > Aprovações > Inventários`",
+    "intro": "O inventário confere o físico contra o sistema e ajusta a diferença. Ele congela o local e exige pessoas diferentes para contar e aprovar.",
+    "passos": [
+     {
+      "t": "**Faça:** abra um inventário (empresa, local e tipo) no segundo local e inicie.",
+      "r": "**Explique ao cliente:** o sistema fotografa o saldo, um item por variação, e congela o local; agende fora do expediente. **Confira:** número sequencial do inventário. **Fonte:** fluxo antigo de estoque, bloco 4; regra \"inventário congela o local\".",
+      "s": "v",
+      "campo": "Nº do inventário"
+     },
+     {
+      "t": "**Faça:** tente um movimento nesse local e um segundo inventário no mesmo local.",
+      "r": "**Explique ao cliente:** não existem dois inventários ativos no mesmo local. **Confira:** os dois são recusados (\"Movimento bloqueado: o local … está com o inventário … em andamento.\"). **Fonte:** fluxo antigo de estoque, bloco 4; EST-MOV-007.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** na tela do conferente, conte um item igual ao sistema e outro diferente.",
+      "r": "**Explique ao cliente:** a contagem é cega: a tela não mostra o saldo. Igual aprova direto; diferente vai para a 2ª contagem. **Confira:** o item divergente pendente de nova contagem. **Fonte:** fluxo antigo de estoque, bloco 4; EST-INV-004.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** tente a 2ª contagem com o mesmo usuário; depois faça-a com outra pessoa.",
+      "r": "**Explique ao cliente:** duas de três contagens iguais aprovam o item. **Confira:** o mesmo usuário é recusado (\"deve ser feita por outra pessoa\"); a outra pessoa grava. **Fonte:** fluxo antigo de estoque, bloco 4; EST-INV-005, EST-INV-006.",
       "s": "d"
      },
      {
-      "t": "O checklist D de Estoque foi assinado pelo consultor, pelo responsável do estoque e pelo contador (custo inicial).",
-      "r": "**Como validar:** documento assinado. **Por quê:** o contador assina porque o custo de abertura vira custo médio. **Fonte:** checklist D EST, assinatura.",
-      "s": "d",
-      "campo": "Data do go-live"
-     },
-     {
-      "t": "Nas primeiras semanas, o consultor acompanhou: disponível negativo por saída sobre reserva, custo médio das primeiras notas, recusas de local não resolvido e retalhos gerados na produção.",
-      "r": "**Como validar:** revisão semanal com o almoxarife. **Por quê:** são os sinais de cadastro, parâmetro ou local mal decidido. **Fonte:** EST-INT-004, EST-PAR-001, EST-SLD-004; limitações conhecidas v1.22.12.",
-      "s": "d",
-      "campo": "Pendências das primeiras semanas"
-     },
-     {
-      "t": "O primeiro encerramento mensal foi feito e aprovado com o responsável definido.",
-      "r": "**Como validar:** encerramento aprovado em `Encerramentos`. **Por quê:** fecha o primeiro ciclo com a contabilidade. **Fonte:** EST-ENC-001.",
+      "t": "**Faça:** com um terceiro usuário, revise o resumo, informe o custo de sobras sem custo e **aprove**.",
+      "r": "**Explique ao cliente:** quem contou não aprova, nem Super Usuário. **Confira:** cada diferença vira ajuste com origem inventário, o saldo bate com a contagem e o local é liberado. **Fonte:** fluxo antigo de estoque, bloco 4; EST-INV-007, EST-INV-008.",
       "s": "d"
      },
      {
-      "t": "O critério para liberar Compras, Recebimento, Faturamento e Produção movimentando estoque foi cumprido: checklist D do Estoque assinado e saldo inicial conferido em quantidade e valor.",
-      "r": "**Como validar:** checklist e prints da conferência. **Por quê:** o saldo vem antes das compras e das notas na ordem de Suprimentos. **Fonte:** checklist D EST; README de Suprimentos, ordem de implantação.",
+      "t": "**Faça:** abra outro inventário e cancele com motivo antes de aprovar.",
+      "r": "**Explique ao cliente:** cancelar libera o local sem ajuste. **Confira:** nenhum ajuste gerado. **Fonte:** fluxo antigo de estoque, bloco 4.",
+      "s": "v"
+     }
+    ]
+   },
+   {
+    "titulo": "8. Empréstimo entre locais (se o cliente usa)",
+    "onde": "`Estoque > Empréstimos`",
+    "intro": "Para quem empresta material entre locais ou obras com data de volta. Pule o bloco se o cliente não usa.",
+    "passos": [
+     {
+      "t": "**Faça:** registre um empréstimo de 20 unidades com data prevista de devolução.",
+      "r": "**Explique ao cliente:** o material sai do local de origem e fica em aberto até voltar. **Confira:** empréstimo aberto, sem devolução. **Fonte:** fluxo antigo de estoque, bloco 5; regra \"empréstimo, devolução parcial e total\".",
+      "s": "v",
+      "campo": "Nº do empréstimo"
+     },
+     {
+      "t": "**Faça:** devolva 10, depois o restante, e tente devolver mais do que foi emprestado.",
+      "r": "**Explique ao cliente:** a devolução pode ser parcial. **Confira:** parcial 50%, total 100% e o excesso recusado. **Fonte:** fluxo antigo de estoque, bloco 5.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** compare o valor do material antes do empréstimo e depois da devolução completa.",
+      "r": "**Explique ao cliente:** a devolução usa o custo médio correto. **Confira:** o valor volta igual nos dois locais. **Fonte:** fluxo antigo de estoque, bloco 5.",
+      "s": "v"
+     }
+    ]
+   },
+   {
+    "titulo": "9. Reposição e balanço final",
+    "onde": "`Estoque > Reposição`, `Compras > Sugestão de Compra` e `Estoque > Reservas órfãs`",
+    "intro": "Feche provando que tudo o que foi feito fecha no saldo e ligando o estoque ao Compras pela reposição.",
+    "passos": [
+     {
+      "t": "**Faça:** defina estoque mínimo para o produto e abra `Estoque > Reposição` e `Compras > Sugestão de Compra`.",
+      "r": "**Explique ao cliente:** a falta líquida = mínimo − disponível alimenta as solicitações de compra. **Confira:** o item aparece nas duas telas; sem mínimo, não aparece. **Fonte:** fluxo antigo de estoque, bloco 6.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** com o cliente, faça o balanço do produto: saldo inicial + entradas − saídas ± ajustes ± transferências − estornos.",
+      "r": "**Explique ao cliente:** qualquer diferença é defeito, não ajuste de rotina. **Confira:** o resultado é igual ao saldo final em quantidade e valor. **Fonte:** fluxo antigo de estoque, bloco 6.",
+      "s": "v",
+      "campo": "Saldo final (quantidade e valor)"
+     },
+     {
+      "t": "**Faça:** abra `Estoque > Reservas órfãs`.",
+      "r": "**Explique ao cliente:** toda reserva precisa ter um documento pendente. **Confira:** a lista vazia antes do go-live. **Fonte:** EST C, etapa 7; EST-RES-003.",
       "s": "d"
      }
     ]
@@ -3053,42 +3134,48 @@ export const CHECKLISTS_IMPLANTACAO = [
   ],
   "resultado": [
    {
-    "t": "A data de corte e a origem do custo inicial estão decididas em ata, com o contador.",
+    "t": "Cada empresa tem almoxarifado central ativo, e o saldo inicial entrou na data de corte conferido contra a planilha.",
     "s": "d"
    },
    {
-    "t": "Cada empresa tem almoxarifado central e o saldo inicial bate com a contagem física em quantidade e valor.",
+    "t": "Entrada manual, ajustes e estorno mudaram o saldo e ficaram no extrato.",
     "s": "d"
    },
    {
-    "t": "O almoxarife consulta saldo e disponível, transfere, ajusta e estorna sem ajuda.",
+    "t": "A entrada da nota de recebimento apareceu como \"Recebimento (NR)\" no almoxarifado central.",
+    "s": "v"
+   },
+   {
+    "t": "A transferência pendente reservou o disponível e a confirmada moveu o saldo entre os locais.",
+    "s": "v"
+   },
+   {
+    "t": "O inventário congelou o local, exigiu outras pessoas e gerou o ajuste da diferença.",
     "s": "d"
    },
    {
-    "t": "O gestor explica o custo médio e usa `Conferência de saldo` e `Reservas órfãs`.",
-    "s": "d"
-   },
-   {
-    "t": "O checklist D de Estoque está assinado e os módulos que movimentam estoque estão liberados.",
+    "t": "O balanço do produto fechou em quantidade e valor e não sobraram reservas órfãs.",
     "s": "d"
    }
   ],
   "atencao": [
-   "Trocar o tipo de uma categoria depois do saldo é recusado. Revise os tipos antes da planilha, porque corrigir exige zerar o saldo ou criar outra categoria (CAD-CAT-004).",
-   "Qualquer lançamento antes da importação nas mesmas variações bagunça saldo e custo médio, e lançamento retroativo anterior a movimento existente é recusado. Congele o estoque até a carga (EST-MOV-006, decisão S7).",
-   "Empresa sem almoxarifado central recusa documento sem projeto. O sistema cria o central só para a primeira empresa; confira as demais (EST-LOC-002, decisão S6).",
-   "Ligar localizações não tem volta pela tela. Só ligue com PRO contratado e decisão escrita do cliente, mesmo que a chave apareça sem o PRO (EST-LOC-006).",
-   "Inventário geral aberto para o local inteiro. Agende fora do expediente e com três pessoas diferentes (EST-MOV-007, decisão S9).",
-   "Hoje a entrada por nota ainda traz custo cheio, com IPI e ICMS-ST e sem descontar crédito. O custo médio vai subir em relação ao contábil; avise o contador (EST-SLD-004, decisão S8).",
-   "Hoje, na versão 1.22.12, a saída ainda pode passar sobre material reservado e deixar o disponível negativo. Acompanhe nas primeiras semanas (limitações conhecidas, EST-1)."
+   "Só em ambiente de teste. Nomeie os registros com \"TESTE FLUXO CONSULTOR\" e não deixe inventário aberto em empresa de produção: ele congela o local.",
+   "**Ctrl+S salva** o movimento. **Importar saldo**, **Estornar**, **Aprovar inventário** e aprovar **Encerramentos** alteram o estoque e não têm desfazer.",
+   "Nada se lança antes do saldo inicial nas mesmas variações: o retroativo é recusado e o custo médio se perde.",
+   "A 2ª contagem e a aprovação do inventário exigem **outra pessoa**, até para Super Usuário: crie os usuários antes.",
+   "Transferência e Empréstimo existem como tipo de movimento **e** como telas próprias: use um só caminho por teste.",
+   "Não existe item \"Reservas\" no menu: a reserva está na coluna RESERVADA do Saldo (vem oculta por padrão) e na aba Reservas do produto.",
+   "Hoje o sistema ainda dá entrada da nota com custo cheio (com IPI e ICMS-ST, sem descontar crédito). Avise o cliente que confere custo médio.",
+   "Os avisos na tela não somem sozinhos e podem cobrir botões: feche-os antes de continuar."
   ],
   "naoValidado": [
-   "Saída sobre material reservado: o manual da gestora diz que a retirada de reservado é recusada sem permissão; a lista de limitações da versão 1.22.12 diz que a saída passa e deixa o disponível negativo. Confira na tela antes de ensinar (EST-MOV-010).",
-   "Saída por nota fiscal: a gestora diz que a NF-e autorizada gera movimento de saída; a lista de limitações registra que, nos testes, finalizar a nota não criou movimento. Teste em homologação antes de afirmar (EST-INT-001; limitações, FAT-4).",
-   "A apostila fala em reposição automática; o manual da gestora descreve a `Reposição` sugerindo e gerando a solicitação por ação do usuário. Confira na tela como funciona no cliente (EST-REP-004).",
-   "Que o movimento de saldo inicial nasce na data da importação é uma inferência da gestora (a planilha não tem coluna de data). Confira a data do movimento em homologação antes do dia de corte.",
-   "Os rótulos do botão de gravar os parâmetros, do botão de novo inventário e dos campos da tela de Locais não foram confirmados. Confira na tela.",
-   "Sobre desativar localizações, a tela fala em chamado de suporte e a mensagem do sistema manda zerar os saldos e abrir chamado. Na dúvida, trate como irreversível."
+   "Saída sobre material reservado: o fluxo antigo (conferido na tela, v1.22.12) viu a requisição passar sobre 3 unidades reservadas, deixando o disponível negativo; a gestora diz que retirar reserva alheia exige a permissão a permissão de retirar material reservado e mostra mensagem de recusa (EST-MOV-010, D-285). Conferir antes de ensinar.",
+   "Parâmetros de Estoque: o fluxo antigo diz que na v1.22.12 só existe \"bloquear saída sem saldo\"; a gestora lista também \"Permitir movimento com data passada\", \"Dias máximos para movimento retroativo\", \"Usar localizações por local\", alerta de fator e retalho mínimo. Conferir a tela.",
+   "Caminhos de menu: o fluxo antigo usa `Estoque > Locais` e `Estoque > Inventário`; a gestora usa `Estoque > Configurações > Locais` e `Estoque > Inventários`. Conferir os rótulos.",
+   "Extrato da transferência: o fluxo antigo esperava saída e entrada com o mesmo número TRF-, mas viu um movimento único com origem e destino. Conferir como aparece antes de explicar.",
+   "Inventário como PRO: a gestora marca inventário e localizações como PRO; o fluxo antigo executou o inventário sem citar licença. Conferir a assinatura do cliente.",
+   "Custo da entrada pela nota: hoje entra com IPI e ICMS-ST e sem crédito (EST-SLD-004, README S8), o que diverge das decisões D-199/D-465 (WI #30480). Conferir o custo médio depois da NR.",
+   "Não conferidos na tela: importação de saldo inicial, ajustes positivo e negativo, mês encerrado, auditoria e aprovação do inventário, regra criar × confirmar da transferência e Reservas órfãs."
   ],
   "video": {
    "id": "consultor-04-estoque",
@@ -3100,267 +3187,240 @@ export const CHECKLISTS_IMPLANTACAO = [
   "id": "implantacao-producao",
   "arquivo": "implantacao-11-producao.html",
   "etiqueta": "Consultor · Implantação · Produção",
-  "titulo": "Implantação de Produção",
-  "subtitulo": "Checklist para o consultor conduzir a implantação da Produção, do levantamento da fábrica ao go-live, e para conferir se PCP, almoxarifado e chão de fábrica estão prontos para operar.",
-  "objetivo": "Ao final, o PCP abre e programa as ordens de produção a partir dos pedidos, o almoxarifado separa e baixa os materiais, os operadores apontam as etapas e a conclusão da OP dá entrada do produto acabado no estoque. A Produção liga a venda ao estoque e às compras: cadastro técnico errado aqui vira material faltando, custo errado e obra atrasada.",
-  "rodape": "Checklist de implantação · Produção · fontes: apostila do consultor (Módulo Produção; Processos de produção), manual-07-producao, regras e procedimento de Produção, funcional-producao, roteiros de Produção, FAQ de limitações · Harness Faktory Flow",
+  "titulo": "Implantação de Produção: roteiro prático com o cliente",
+  "subtitulo": "Junto com o cliente, leve um produto de teste da estrutura de produto até o estoque: OP criada a partir do pedido, requisições e baixa de material, apontamento, marcar produzido e entrada do produto acabado.",
+  "objetivo": "Ao final, o cliente terá visto uma OP nascer do pedido com etapas e materiais da estrutura, baixar os insumos, registrar o início do trabalho e creditar o produto acabado no estoque com custo. Ele saberá repetir o caminho e conhecerá os alertas que travam a conclusão.",
+  "rodape": "Checklist de implantação · Produção · fontes: Fluxo de produção (passos conferidos em out/2026), procedimento-criar-ordem-de-producao-do-pedido, regras de produção, FAQ de limitações, manual-07-producao · Harness Faktory Flow",
   "prerequisitos": [
    {
-    "t": "Vendas e Estoque já estão implantados e em uso, como pede a sequência de implantação.",
-    "r": "**Como validar:** confira no cronograma que os dois módulos tiveram go-live. **Por quê:** a OP nasce do pedido de venda e baixa e dá entrada no estoque. **Fonte:** apostila do consultor, Módulo Produção na implantação.",
+    "t": "**Etapas de produção**, **processo** e **linha de produção** cadastrados, e o processo informado no produto (**Processo de produção padrão**).",
+    "r": "**Confira:** `Produção > Configurações` e `Cadastros > Produtos`. Sem processo no produto a OP não tem etapas, não aparece no Painel de fábrica e o terminal não deixa apontar. **Fonte:** manual-07-producao, Parte 1 e 1.1.",
     "s": "d"
    },
    {
-    "t": "Os produtos fabricados estão cadastrados com o **Processo de produção padrão** preenchido.",
-    "r": "**Como validar:** abra dois produtos fabricados em `Cadastros › Produtos` e veja o processo. **Por quê:** OP de produto sem processo não tem etapas, não aparece no Painel de fábrica e o terminal não deixa apontar. **Fonte:** manual-07-producao, 1.1.",
-    "s": "d"
+    "t": "Insumos da estrutura **com saldo** e **almoxarifado central ativo** na empresa da OP (ou local da obra na mesma empresa).",
+    "r": "**Confira:** `Estoque > Saldo` e `Estoque > Locais`. Sem local ativo a OP não conclui (selo \"Conclusão bloqueada\"). **Fonte:** Fluxo de produção (pré-requisitos); manual-07-producao, 2.4.",
+    "s": "v"
    },
    {
-    "t": "Os insumos têm saldo lançado, com a cor informada nos materiais paramétricos, e o almoxarifado central está ativo.",
-    "r": "**Como validar:** consulte o saldo de um perfil por cor no Estoque. **Por quê:** a baixa da OP depende do saldo, e sem a cor na entrada o saldo não bate. **Fonte:** procedimento-criar-ordem-de-producao-do-pedido; regra-producao-item-parametrico-da-estrutura-exige-cor.",
-    "s": "d"
+    "t": "Pedido de venda de teste (\"TESTE FLUXO CONSULTOR\") com o produto de teste, e um funcionário cadastrado para apontar.",
+    "r": "**Confira:** o pedido em `Vendas > Pedidos de Venda` e o funcionário em `Cadastros > Participantes`. **Fonte:** Fluxo de produção (pré-requisitos); procedimento-criar-ordem-de-producao-do-pedido.",
+    "s": "d",
+    "campo": "Nº do pedido (PV-)"
    },
    {
-    "t": "Cada obra (projeto) tem local de estoque ativo na mesma empresa que vai abrir as OPs.",
-    "r": "**Como validar:** confira em `Estoque › Configurações › Locais` a empresa do local de uma obra real. **Por quê:** no treino a finalização foi bloqueada porque o local da obra era de outra empresa. **Fonte:** manual-07-producao, Parte 1 e 2.4.",
-    "s": "d"
-   },
-   {
-    "t": "Os operadores da fábrica estão cadastrados como participantes e há tablet ou celular disponível na bancada.",
-    "r": "**Como validar:** os nomes aparecem na escolha de operador do **Terminal de apontamento**. **Por quê:** o apontamento registra tempo e quantidade por operador. **Fonte:** manual-07-producao, Parte 1 e 2.4.",
-    "s": "d"
-   },
-   {
-    "t": "Se o cliente usa CEM Desktop, o agente de integração está instalado e conectado à base do CEM.",
-    "r": "**Como validar:** uma obra fechada no CEM aparece na **Integração de Produção**. **Por quê:** as OPs automáticas de montagem e corte são geradas das obras fechadas do CEM Desktop; o CEM Mobi não alimenta essa tela. **Fonte:** roteiro Produção 01 e 05.",
-    "s": "d"
+    "t": "Saldo dos insumos e do produto acabado anotados antes de começar.",
+    "r": "**Confira:** `Estoque > Saldo`. **Fonte:** Fluxo de produção (pré-requisitos).",
+    "s": "v",
+    "campo": "Saldos antes"
    }
   ],
   "fluxos": [
    {
-    "titulo": "1. Entendimento do cenário do cliente",
-    "intro": "Vá até a fábrica com o responsável pela produção e o PCP. Peça para acompanhar uma esquadria do pedido até a embalagem. Anote as etapas pelo nome que os operadores usam. Não fale de sistema antes de entender o caminho físico do material.",
+    "titulo": "1. Estrutura do produto",
+    "onde": "`Produção > Configurações > Estrutura de produto`",
+    "intro": "A estrutura diz o que cada unidade consome. Sem ela a OP nasce sem requisições e o estoque não sabe o que baixar.",
     "passos": [
      {
-      "t": "O consultor perguntou: por quais etapas uma esquadria passa na fábrica, em que ordem, e quanto tempo leva cada uma?",
-      "r": "**Como validar:** lista de etapas com tempo padrão aproximado. **Por quê:** vira o cadastro de **Etapas de produção** e de **Processos de produção**, base do painel e do apontamento. **Fonte:** manual-07-producao, Parte 1 e 1.1; roteiro Produção 08.",
-      "s": "d",
-      "campo": "Etapas e tempos da fábrica"
-     },
-     {
-      "t": "O consultor perguntou: como a produção é programada hoje (planilha, quadro, sistema), quem decide o que entra amanhã e quantas linhas ou bancadas existem?",
-      "r": "**Como validar:** responsável pelo PCP e linhas de produção anotados. **Por quê:** define o uso de **Linhas de Produção**, do PCP e do Painel de fábrica. **Fonte:** manual-07-producao, 2.2 e 2.3.",
+      "t": "**Faça:** abra `Produção > Configurações > Etapas de produção` e `Processos de produção` e mostre o processo do produto de teste.",
+      "r": "**Explique ao cliente:** o processo é a sequência de etapas que o produto percorre; a OP copia essas etapas. **Confira:** as etapas na ordem e o tempo padrão total no rodapé. **Fonte:** manual-07-producao, 1.1.",
       "s": "d"
      },
      {
-      "t": "O consultor perguntou: o projeto técnico das obras é feito no CEM Desktop, no CEM Mobi ou em outra ferramenta? A obra é fechada no CEM antes de ir para a fábrica?",
-      "r": "**Como validar:** origem do projeto técnico registrada. **Por quê:** decide se as OPs nascem pela **Integração de Produção** ou pela **Nova OP** manual. **Fonte:** roteiro Produção 01 e 05; manual-07-producao, 2.1.",
-      "s": "d",
-      "campo": "Origem do projeto técnico"
+      "t": "**Faça:** em **+ Nova Estrutura**, escolha o produto acabado e inclua dois componentes com a quantidade por unidade (ex.: uma chapa e um parafuso), usando **Definir parâmetros** para informar a cor. Clique em **Salvar**.",
+      "r": "**Explique ao cliente:** com a estrutura, a OP sabe o que separar e baixar a cada unidade produzida. **Confira:** a estrutura na lista com a quantidade de itens; anote as quantidades. **Fonte:** Fluxo de produção, bloco 1; manual-07-producao, 1.2.",
+      "s": "v"
      },
      {
-      "t": "O consultor perguntou: os produtos têm lista de materiais definida? Quem conhece o consumo de perfil, vidro e componentes por esquadria?",
-      "r": "**Como validar:** responsável pela estrutura de produto definido. **Por quê:** sem estrutura a OP não gera requisições de material sozinha. **Fonte:** regra-producao-requisicoes-nascem-da-estrutura-ao-salvar.",
-      "s": "d"
+      "t": "**Faça:** inclua um componente paramétrico (perfil ou chapa) **sem cor** e tente salvar.",
+      "r": "**Explique ao cliente:** material paramétrico sempre exige cor, inclusive na entrada de estoque, para o saldo bater. **Confira:** a recusa \"Selecione a cor do produto — obrigatória para este tipo de material\" (a mensagem cita um identificador interno em vez do código). **Fonte:** Fluxo de produção, bloco 1; regra-producao-item-parametrico-da-estrutura-exige-cor.",
+      "s": "v"
      },
      {
-      "t": "O consultor perguntou: quem separa o material para a fábrica, como é registrada a falta hoje e o que acontece quando falta um insumo no meio da OP?",
-      "r": "**Como validar:** fluxo de separação e de falta anotado. **Por quê:** orienta o uso da **Separação de materiais** e mostra a ligação com Compras. **Fonte:** funcional-producao-ordens-de-producao-e-separacao; manual-07-producao, 2.5.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor perguntou: como a empresa controla hoje refugo, paradas e o tempo gasto por operador? Alguém apura o custo real da OP?",
-      "r": "**Como validar:** prática atual e interesse do cliente em custo registrados. **Por quê:** define motivos de refugo e parada e o uso do custo estimado e realizado da OP. **Fonte:** manual-07-producao, Parte 1; regra-producao-marcar-produzido-gera-entrada-do-produto-acabado.",
+      "t": "**Faça:** tente criar uma segunda estrutura para o mesmo produto com período sobreposto.",
+      "r": "**Explique ao cliente:** um produto tem uma estrutura vigente por período. **Confira:** o sistema impede com mensagem. **Fonte:** Fluxo de produção, bloco 1.",
       "s": "d"
      }
     ]
    },
    {
-    "titulo": "2. Preparação da implantação",
-    "intro": "Faça os cadastros com o responsável pela fábrica, na ordem que o próprio sistema chama de roteiro: etapas, processos e estrutura, depois linhas, calendário e motivos. Escolha antes uma obra real e simples para servir de caso do treinamento.",
+    "titulo": "2. Ordem de produção a partir do pedido",
+    "onde": "`Produção > Ordens de produção > + Nova OP`",
+    "intro": "O pedido não tem botão para gerar OP: ela é criada no módulo Produção e vinculada ao pedido e ao item.",
     "passos": [
      {
-      "t": "As **Etapas de produção** e os **Processos de produção** foram cadastrados com as etapas e tempos levantados, na ordem real da fábrica.",
-      "r": "**Como validar:** abra um processo e confira a sequência e o tempo total no rodapé. **Por quê:** o processo é copiado para dentro da OP quando ela é criada. **Fonte:** manual-07-producao, Parte 1 e 1.1; roteiro Produção 01.",
+      "t": "**Faça:** em **Nova OP**, deixe o **Número da OP** vazio, mantenha **Tipo de operação** \"Fabricação\" e a **Linha de produção**, escolha o **Pedido de venda** e o **Item do pedido**, clique em **Aplicar** em \"Dados do Item\", escolha a **Empresa** e informe a **Quantidade**. Clique em **Salvar** no rodapé (não use Esc).",
+      "r": "**Explique ao cliente:** a OP copia produto, cor e medidas do item, mas **não** a quantidade; a Empresa é obrigatória, embora a dica diga que herda do pedido. **Confira:** \"Registro salvo com sucesso!\" e a OP \"Em aberto\" na lista. **Fonte:** Fluxo de produção, bloco 2; procedimento-criar-ordem-de-producao-do-pedido; regra-producao-op-copia-o-item-do-pedido-mas-nao-a-quantidade.",
+      "s": "v",
+      "campo": "Nº da OP"
+     },
+     {
+      "t": "**Faça:** abra `Mais ações > Etapas de execução da OP`.",
+      "r": "**Explique ao cliente:** as etapas são uma cópia do processo; mudar o processo depois não altera a OP já criada. **Confira:** as mesmas etapas do processo, na mesma ordem. **Fonte:** Fluxo de produção, bloco 2.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** abra `Mais ações > Materiais necessários` e compare com as quantidades anotadas da estrutura.",
+      "r": "**Explique ao cliente:** as requisições nascem sozinhas ao salvar a OP (quantidade da estrutura × quantidade da OP). Produto sem estrutura mostra \"OP sem requisições da estrutura\". **Confira:** uma requisição por componente, com a quantidade certa. **Fonte:** Fluxo de produção, bloco 2; regra-producao-requisicoes-nascem-da-estrutura-ao-salvar.",
+      "s": "v"
+     }
+    ]
+   },
+   {
+    "titulo": "3. Requisições e baixa de material",
+    "onde": "`Mais ações > Materiais necessários`",
+    "intro": "Cada baixa tira o insumo do estoque. Mostre o reflexo em Estoque a cada movimento.",
+    "passos": [
+     {
+      "t": "**Faça:** use a importação da estrutura de novo na mesma OP.",
+      "r": "**Explique ao cliente:** reimportar refaz os itens de origem Estrutura sem duplicar. **Confira:** as requisições continuam sem duplicidade. **Fonte:** Fluxo de produção, bloco 2; regra-producao-requisicoes-nascem-da-estrutura-ao-salvar.",
       "s": "d"
      },
      {
-      "t": "A **Estrutura de produto** dos principais produtos foi cadastrada, com a cor definida em cada item paramétrico.",
-      "r": "**Como validar:** salve uma estrutura sem erro de cor. **Por quê:** item paramétrico sem cor é recusado ao salvar; a estrutura gera as requisições da OP e o cálculo de compra. **Fonte:** regra-producao-item-parametrico-da-estrutura-exige-cor; manual-07-producao, 1.2.",
+      "t": "**Faça:** clique em **Baixar** numa requisição informando só parte da quantidade (ex.: 1 de 4). Depois abra `Estoque > Movimentos` e `Estoque > Saldo`.",
+      "r": "**Explique ao cliente:** a baixa pode ser parcial, conforme o material sai para a fábrica. **Confira:** status \"Atendida Parcialmente\", movimento \"Baixa de componente em OP\" e o saldo do insumo menor. **Fonte:** Fluxo de produção, bloco 3; regra-producao-requisicoes-nascem-da-estrutura-ao-salvar.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** baixe o restante da requisição.",
+      "r": "**Explique ao cliente:** a requisição só fecha quando todo o material foi baixado. **Confira:** status \"Atendida\". **Fonte:** Fluxo de produção, bloco 3.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** clique em **Estornar** numa baixa e informe o motivo.",
+      "r": "**Explique ao cliente:** o estorno corrige uma baixa errada sem apagar o histórico. **Confira:** o saldo do insumo volta, o status recalcula e o custo da OP desconta o estornado. **Fonte:** Fluxo de produção, bloco 3; regra-producao-requisicoes-nascem-da-estrutura-ao-salvar.",
+      "s": "v"
+     }
+    ]
+   },
+   {
+    "titulo": "4. Apontamento: iniciar e finalizar",
+    "onde": "botão `▶` da linha da OP, `Mais ações > Apontamentos` e `Produção > Terminal de apontamento`",
+    "intro": "O apontamento registra quem trabalhou, em que etapa e por quanto tempo. Hoje a finalização ainda é recusada: mostre o início e explique o defeito.",
+    "passos": [
+     {
+      "t": "**Faça:** clique em `▶` na linha da OP e **Inicie** o apontamento escolhendo a etapa e o funcionário.",
+      "r": "**Explique ao cliente:** o início do apontamento já coloca a OP em produção. **Confira:** \"Apontamento iniciado com sucesso!\" e a OP passando de \"Em aberto\" para \"Em execução\". **Fonte:** Fluxo de produção, bloco 4.",
+      "s": "v",
+      "campo": "Nº do apontamento"
+     },
+     {
+      "t": "**Faça:** com o apontamento aberto, tente iniciar outro para o mesmo funcionário na mesma OP.",
+      "r": "**Explique ao cliente:** um funcionário não aponta duas vezes a mesma OP ao mesmo tempo. **Confira:** o sistema impede. **Fonte:** Fluxo de produção, bloco 4.",
       "s": "d"
      },
      {
-      "t": "Linhas de produção, calendário e motivos de refugo e parada foram cadastrados com o responsável pela fábrica.",
-      "r": "**Como validar:** os cadastros aparecem em `Produção › Configurações`. **Por quê:** linhas e calendário alimentam o PCP; motivos padronizados permitem analisar perdas. **Fonte:** manual-07-producao, Parte 1; roteiro Produção 08.",
-      "s": "d"
+      "t": "**Faça:** clique em `▶` de novo e em **Finalizar**, primeiro com quantidade zero e depois com a quantidade produzida.",
+      "r": "**Explique ao cliente:** quantidade zero é recusada. Hoje o sistema ainda recusa a finalização com \"A data/hora de fim não pode ser no futuro\", mesmo com o horário certo: anote o horário e avise o suporte. **Confira:** a mensagem que aparecer e o apontamento em `Mais ações > Apontamentos`. **Fonte:** Fluxo de produção, bloco 4; FAQ de limitações (PRO-1).",
+      "s": "v"
      },
      {
-      "t": "O processo foi vinculado ao produto em `Cadastros › Produtos` para todos os produtos que a fábrica vai produzir no go-live.",
-      "r": "**Como validar:** crie uma OP de teste e veja se ela aparece no **Painel de fábrica**. **Por quê:** OP sem processo some do quadro e não aceita apontamento. **Fonte:** manual-07-producao, 1.1 e 2.3.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor conferiu as dependências de outros módulos: pedidos de venda com itens, saldo de insumos por cor, local de estoque da obra na mesma empresa da OP e, se houver, obra fechada no CEM Desktop.",
-      "r": "**Como validar:** cada dependência marcada com responsável. **Por quê:** a Produção só funciona se Vendas e Estoque estiverem corretos. **Fonte:** apostila, Módulo Produção; procedimento-criar-ordem-de-producao-do-pedido; manual-07-producao, 2.4.",
-      "s": "d",
-      "campo": "Pendências de outros módulos"
-     },
-     {
-      "t": "O consultor separou, com o PCP, um pedido real de um produto com processo e estrutura cadastrados para ser o caso do treinamento.",
-      "r": "**Como validar:** o pedido, o produto e a obra atendem a todos os pré-requisitos acima. **Por quê:** treinar o apontamento com produto sem processo ou com obra sem local trava o exercício. **Fonte:** manual-07-producao, 2.4.",
+      "t": "**Faça:** abra `Produção > Terminal de apontamento` e mostre o caminho do chão de fábrica: tarefa **Apontar**, operador, OP pelo número, etapa e **Iniciar**.",
+      "r": "**Explique ao cliente:** o terminal é feito para tablet ou celular na bancada; ao terminar, o operador informa a quantidade Boa e o Refugo e toca em Finalizar. **Confira:** OP, etapa e operador na tela e o cronômetro rodando; não finalize sem combinar com o responsável pela OP de teste. **Fonte:** manual-07-producao, 2.4.",
       "s": "d"
      }
     ]
    },
    {
-    "titulo": "3. Condução do treinamento",
-    "intro": "Treine em dois grupos: PCP e almoxarifado na sala, operadores na bancada com o tablet. Siga o caminho físico: OP, materiais, separação, painel, apontamento e conclusão. Use o pedido real escolhido na etapa 2 e mostre no Estoque o efeito de cada passo.",
+    "titulo": "5. Marcar produzido e entrada do produto acabado",
+    "onde": "`Mais ações > Marcar produzido` e `Estoque > Movimentos`",
+    "intro": "É a passagem da Produção para o Estoque: o produto acabado entra no almoxarifado com o custo da OP.",
     "passos": [
      {
-      "t": "O consultor criou com o PCP uma OP a partir do pedido real em `Produção › Ordens de produção › Nova OP`, deixando o número vazio e informando **Empresa** e **Quantidade**.",
-      "r": "**Como validar:** a OP aparece \"Em aberto\" na lista. **Por quê:** o item do pedido copia produto, cor e medidas, mas não a quantidade nem a empresa. Não use Esc: ele fecha o painel e perde o formulário. **Fonte:** regra-producao-op-copia-o-item-do-pedido-mas-nao-a-quantidade.",
-      "s": "d"
+      "t": "**Faça:** na lista de OPs, passe o mouse sobre os selos de alerta da OP de teste (Conclusão bloqueada, Conclusão travada, Material não baixado, Estoque não creditado).",
+      "r": "**Explique ao cliente:** sem almoxarifado ativo da empresa ou da obra a conclusão fica bloqueada; \"Estoque não creditado\" pede acionar o suporte. **Confira:** a causa de cada selo exibido. **Fonte:** Fluxo de produção, bloco 5.",
+      "s": "v"
      },
      {
-      "t": "Se o cliente usa CEM Desktop, o consultor processou com o PCP a **Integração de Produção** de uma obra fechada e abriu as OPs de montagem e corte geradas.",
-      "r": "**Como validar:** as OPs mostram produto, quantidade, obra, materiais e plano de corte. **Por quê:** normalmente as OPs nascem por essa integração, e revisar as esquadrias antes de processar evita OP errada. **Fonte:** manual-07-producao, 2.1; roteiro Produção 05.",
-      "s": "d"
+      "t": "**Faça:** clique em `Mais ações > Marcar produzido` com a quantidade total.",
+      "r": "**Explique ao cliente:** este botão encerra a OP e credita o produto acabado. **Confira:** a OP \"Produzido\". **Fonte:** Fluxo de produção, bloco 5; regra-producao-marcar-produzido-gera-entrada-do-produto-acabado.",
+      "s": "v"
      },
      {
-      "t": "O consultor abriu `⋯ › Materiais necessários` da OP, mostrou as requisições geradas pela estrutura e fez a baixa de um material com **Baixar**.",
-      "r": "**Como validar:** a requisição fica \"Atendida\" ou \"Atendida Parcialmente\" e nasce a baixa em `Estoque › Movimentos`. **Por quê:** sem estrutura aparece \"OP sem requisições da estrutura\"; o estorno pede motivo e devolve o saldo. **Fonte:** regra-producao-requisicoes-nascem-da-estrutura-ao-salvar.",
-      "s": "d"
+      "t": "**Faça:** abra `Estoque > Movimentos` e o extrato do produto acabado.",
+      "r": "**Explique ao cliente:** o custo unitário do acabado é o custo real da OP dividido pela quantidade. **Confira:** o movimento \"Entrada de produto acabado (OP)\" no almoxarifado central, com a OP no motivo, e o saldo maior que o anotado. **Fonte:** Fluxo de produção, bloco 5; regra-producao-marcar-produzido-gera-entrada-do-produto-acabado.",
+      "s": "v",
+      "campo": "Saldo depois"
      },
      {
-      "t": "O consultor mostrou ao almoxarifado a **Separação de materiais**: gerar a lista, separar os itens e registrar uma falta com motivo.",
-      "r": "**Como validar:** a lista de separação é gerada e a falta fica registrada com motivo do catálogo. **Por quê:** a falta registrada é a informação que Compras usa para destravar a fábrica. **Fonte:** funcional-producao-ordens-de-producao-e-separacao; roteiro Produção 04.",
-      "s": "d"
+      "t": "**Faça:** abra `Mais ações > Custo da OP` e `Linha do tempo`.",
+      "r": "**Explique ao cliente:** o gestor compara o que foi orçado com o que a fábrica gastou. **Confira:** custo estimado × realizado, separado em mão de obra e materiais, e tempo planejado × real por etapa. **Fonte:** Fluxo de produção, bloco 5.",
+      "s": "v"
      },
      {
-      "t": "O consultor mostrou ao PCP o **Painel de fábrica** e o **Painel do planejamento**, localizando a OP do caso e as OPs atrasadas ou sem plano.",
-      "r": "**Como validar:** o PCP encontra a OP na coluna da etapa. **Por quê:** OP sem processo não aparece no quadro; o planejamento mostra o risco da semana. **Fonte:** manual-07-producao, 2.2 e 2.3.",
-      "s": "d"
+      "t": "**Faça:** abra `Mais ações > Apontamentos` da OP produzida.",
+      "r": "**Explique ao cliente:** hoje o apontamento que não finalizou continua aberto mesmo com a OP produzida; por isso, finalize o apontamento antes de marcar produzido quando o defeito for corrigido. **Confira:** o apontamento ainda aberto. **Fonte:** Teste do fluxo completo, bloco 4; regra-producao-marcar-produzido-gera-entrada-do-produto-acabado.",
+      "s": "v"
      },
      {
-      "t": "O consultor treinou os operadores no **Terminal de apontamento**: escolher o operador, achar a OP, escolher a etapa, **Iniciar** e informar a quantidade boa e o refugo.",
-      "r": "**Como validar:** o operador inicia a etapa sozinho. **Por quê:** hoje o sistema ainda recusa a finalização do apontamento com a mensagem de data no futuro; oriente anotar o horário e avisar o suporte. **Fonte:** manual-07-producao, 2.4; FAQ de limitações.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor concluiu a OP do caso com `Mais ações › Marcar produzido` e mostrou a entrada do produto acabado e o **Custo da OP**.",
-      "r": "**Como validar:** a OP fica **Produzido** e nasce \"Entrada de produto acabado (OP)\" em `Estoque › Movimentos`. **Por quê:** é o elo da Produção com o Estoque e com a Expedição. **Fonte:** regra-producao-marcar-produzido-gera-entrada-do-produto-acabado.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor mostrou ao gestor a **Visão geral** da Produção, com as OPs bloqueadas por material e os insumos que mais travam, e ligou essa lista à rotina de Compras.",
-      "r": "**Como validar:** o gestor lê os insumos que mais travam. **Por quê:** essa é a lista de compra do dia para destravar a fábrica. **Fonte:** manual-07-producao, 2.5.",
+      "t": "**Faça:** na OP Produzida, tente criar uma nova requisição de material.",
+      "r": "**Explique ao cliente:** OP Produzida ou Cancelada não recebe requisição. **Confira:** o sistema não aceita. **Fonte:** Fluxo de produção, bloco 2.",
       "s": "d"
      }
     ]
    },
    {
-    "titulo": "4. Validação do aprendizado",
-    "intro": "Dê ao PCP um pedido novo e peça para levar até o produto acabado, chamando almoxarifado e operador em cada passo. Você observa e anota. Se travar por cadastro, corrija junto e registre a causa.",
+    "titulo": "6. Acompanhamento da fábrica",
+    "onde": "`Produção > Painel de fábrica`, `Produção > Separação de materiais` e `Produção > Visão geral`",
+    "intro": "Feche mostrando onde o PCP e o gestor acompanham as OPs no dia a dia.",
     "passos": [
      {
-      "t": "O PCP criou sozinho uma OP de um pedido novo, com empresa e quantidade corretas, e conferiu etapas e materiais logo depois de salvar.",
-      "r": "**Como validar:** a OP tem etapas e requisições. **Por quê:** conferir logo após salvar é o que revela produto sem processo ou sem estrutura antes de a fábrica começar. **Fonte:** roteiro Produção 01; procedimento-criar-ordem-de-producao-do-pedido.",
+      "t": "**Faça:** abra o **Painel de fábrica** nas visões Cards, Lista e Timeline.",
+      "r": "**Explique ao cliente:** o painel mostra a fila da fábrica por etapa. **Confira:** os contadores Ordens / No prazo / Atrasadas; o botão \"Apontar <ETAPA>\" de cada card grava apontamento, então não clique sem querer. **Fonte:** Fluxo de produção, bloco 6.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** gere uma lista de separação para uma OP em `Produção > Separação de materiais` e abra o detalhe.",
+      "r": "**Explique ao cliente:** a separação prepara o material antes de ir para a bancada. **Confira:** necessário, separado, falta e pendente, com a quantidade igual à da requisição e o item paramétrico com cor e dimensões. **Fonte:** Fluxo de produção, bloco 6.",
+      "s": "v",
+      "campo": "Nº da separação (SEP-)"
+     },
+     {
+      "t": "**Faça:** no app `/separacao`, abra a lista pelo botão **Abrir lista** e separe um item. Depois confira a requisição da OP e `Estoque > Saldo`.",
+      "r": "**Explique ao cliente:** separar também baixa a requisição, sem passar por Materiais necessários. **Confira:** a quantidade separada sobe, a requisição é baixada e o saldo do insumo desce; o app mostra a OP pelo identificador interno, não pelo número. **Fonte:** Fluxo de produção, bloco 6.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** abra `Produção > Visão geral`.",
+      "r": "**Explique ao cliente:** os insumos que mais travam são a lista de compra do dia para destravar a fábrica. **Confira:** ritmo do dia, OPs bloqueadas por material e o valor travado. **Fonte:** manual-07-producao, 2.5.",
       "s": "d"
-     },
-     {
-      "t": "O PCP explicou o que fazer quando aparece \"OP sem requisições da estrutura\" ou quando a OP não aparece no Painel de fábrica.",
-      "r": "**Como validar:** a resposta aponta o cadastro da estrutura ou do processo no produto. **Por quê:** o cliente precisa distinguir erro de cadastro de defeito do sistema. **Fonte:** regra-producao-requisicoes-nascem-da-estrutura-ao-salvar; manual-07-producao, 1.1.",
-      "s": "d"
-     },
-     {
-      "t": "O almoxarife baixou o material de uma OP, estornou uma baixa informando o motivo e mostrou os dois movimentos no Estoque.",
-      "r": "**Como validar:** os movimentos \"Baixa de componente em OP\" e o estorno aparecem em `Estoque › Movimentos`. **Por quê:** o saldo correto depende de baixas e estornos feitos na hora. **Fonte:** regra-producao-requisicoes-nascem-da-estrutura-ao-salvar.",
-      "s": "d"
-     },
-     {
-      "t": "Cada operador iniciou sozinho o apontamento de uma etapa no terminal e sabe o que fazer se a finalização for recusada.",
-      "r": "**Como validar:** o operador repete o caminho sem ajuda. **Por quê:** o apontamento é a base do tempo real e do custo de mão de obra. **Fonte:** manual-07-producao, 2.4; FAQ de limitações.",
-      "s": "d",
-      "campo": "Operadores treinados"
-     },
-     {
-      "t": "O PCP marcou uma OP como produzida e mostrou a entrada do produto acabado no Estoque.",
-      "r": "**Como validar:** a entrada aparece com a quantidade da OP. **Por quê:** sem essa entrada a Expedição e os Serviços não enxergam o produto pronto. **Fonte:** regra-producao-marcar-produzido-gera-entrada-do-produto-acabado.",
-      "s": "d",
-      "campo": "Dúvidas registradas"
-     }
-    ]
-   },
-   {
-    "titulo": "5. Preparação para utilização e go-live",
-    "intro": "Combine a data a partir da qual toda OP nova nasce no Flow. Nas primeiras semanas, passe na fábrica e no PCP com frequência: os problemas de Produção quase sempre são de cadastro e aparecem nos primeiros dias.",
-    "passos": [
-     {
-      "t": "Ficou decidido, com data, o que acontece com as ordens que já estão na fábrica: terminam no controle antigo ou são abertas no Flow.",
-      "r": "**Como validar:** decisão registrada na OS. **Por quê:** misturar controles na mesma obra gera saldo de estoque duplicado ou faltando. **Fonte:** apostila, preparação para o go-live.",
-      "s": "d",
-      "campo": "Data de corte das OPs"
-     },
-     {
-      "t": "Todos os produtos do mix de go-live têm processo e estrutura, conferidos pelo responsável técnico.",
-      "r": "**Como validar:** lista de produtos conferida e assinada pelo responsável. **Por quê:** é a causa mais comum de OP sem etapas e sem materiais. **Fonte:** manual-07-producao, 1.1 e 1.2.",
-      "s": "d"
-     },
-     {
-      "t": "Nas primeiras semanas, o consultor acompanhou: OPs sem processo ou sem requisições, apontamentos que ficaram abertos, saldos por cor divergentes e OPs produzidas sem entrada no estoque.",
-      "r": "**Como validar:** revisão semanal registrada na OS. **Por quê:** um apontamento aberto continua aberto mesmo com a OP produzida, e hoje a saída de estoque ainda pode passar sobre material reservado. **Fonte:** regra-producao-marcar-produzido-gera-entrada-do-produto-acabado; FAQ de limitações.",
-      "s": "d",
-      "campo": "Pontos da revisão semanal"
-     },
-     {
-      "t": "O PCP sabe que \"Cancelar OP\" continua disponível numa OP já produzida e só cancela com autorização do responsável.",
-      "r": "**Como validar:** regra interna combinada e registrada. **Por quê:** cancelar uma OP produzida mexe no estoque já movimentado. **Fonte:** regra-producao-marcar-produzido-gera-entrada-do-produto-acabado.",
-      "s": "d"
-     },
-     {
-      "t": "O critério para liberar Expedição e Serviços foi cumprido: OPs reais foram concluídas com a entrada do produto acabado conferida no Estoque.",
-      "r": "**Como validar:** o key user mostra OPs reais produzidas e as entradas correspondentes. **Por quê:** Serviços e Expedição dependem do produto pronto registrado. **Fonte:** apostila, Módulo Produção e Módulo Serviços e Instalação.",
-      "s": "d",
-      "campo": "Data de liberação dos módulos seguintes"
      }
     ]
    }
   ],
   "resultado": [
    {
-    "t": "O PCP abre e programa as OPs dos pedidos reais sem ajuda do consultor.",
-    "s": "d"
+    "t": "A OP nasceu do pedido com as etapas do processo e as requisições da estrutura.",
+    "s": "v"
    },
    {
-    "t": "Os produtos do mix têm processo e estrutura, e as OPs nascem com etapas e requisições.",
-    "s": "d"
+    "t": "As baixas e o estorno de material bateram com `Estoque > Movimentos` e o saldo dos insumos.",
+    "s": "v"
    },
    {
-    "t": "O almoxarifado separa, baixa e estorna materiais com o saldo do Estoque coerente.",
-    "s": "d"
+    "t": "Marcar produzido creditou o produto acabado no almoxarifado com a quantidade e o custo da OP.",
+    "s": "v"
    },
    {
-    "t": "Os operadores apontam as etapas no terminal e sabem a conduta enquanto a finalização for recusada.",
-    "s": "d"
-   },
-   {
-    "t": "A conclusão da OP gera a entrada do produto acabado, conferida pelo cliente.",
+    "t": "O cliente sabe que hoje a finalização do apontamento ainda é recusada e como registrar o caso para o suporte.",
     "s": "d"
    }
   ],
   "atencao": [
-   "Produto sem **Processo de produção padrão**: a OP fica sem etapas, some do Painel de fábrica e não aceita apontamento.",
-   "Estrutura com item paramétrico sem cor: é recusada ao salvar, e a mensagem cita um identificador interno em vez do código do item.",
-   "Esquecer a **Quantidade** e a **Empresa** na Nova OP: o item do pedido não as traz, embora a dica diga que a empresa vem do pedido.",
-   "Usar Esc no painel da Nova OP: fecha e perde o formulário.",
-   "Local de estoque da obra em outra empresa: bloqueia a finalização da OP.",
-   "Hoje o sistema ainda recusa a finalização do apontamento: oriente anotar o horário e avisar o suporte, sem descrever isso como normal.",
-   "Procurar na Integração de Produção uma venda que veio do CEM Mobi: essa tela lê as obras fechadas do CEM Desktop."
+   "**Segurança do ambiente:** use só ambiente de teste e registros com \"TESTE FLUXO CONSULTOR\"; nota fiscal só é transmitida com o responsável fiscal.",
+   "Hoje o sistema ainda recusa a finalização do apontamento (\"A data/hora de fim não pode ser no futuro\"): não ensine a finalização como funcionando; anote o horário e avise o suporte.",
+   "No painel da Nova OP, **Esc** fecha e perde o formulário. A **Empresa** é obrigatória, apesar da dica dizer que herda do pedido.",
+   "**Marcar produzido**, **Pausar OP**, **Cancelar OP**, **Replicar OP** e **Gerar OS de instalação** gravam dados. **Cancelar OP** com movimentos de estoque os estorna e continua habilitado numa OP Produzida.",
+   "Na lista, **Iniciar produção** muda a OP para \"Em execução\" com um clique.",
+   "Antes da baixa, o selo de disponibilidade pode descontar duas vezes a reserva da própria OP (ex.: \"2 disponível · falta 6\" com 10 em estoque): confira o saldo em `Estoque > Saldo`.",
+   "A **Fila de exceções** tem o botão **Reprocessar**: não reprocesse sem o suporte.",
+   "OP de produto sem processo não tem etapas, não aparece no Painel de fábrica e não aceita apontamento no terminal."
   ],
   "naoValidado": [
-   "Entrada do produto acabado: o manual-07-producao (2.4) diz que o apontamento da última etapa dá entrada do produto acabado e baixa os componentes; a regra-producao-marcar-produzido-gera-entrada-do-produto-acabado registra a entrada ao usar `Mais ações › Marcar produzido`, e a FAQ diz que hoje a finalização do apontamento é recusada. Confira na tela qual caminho gera o movimento.",
-   "Baixa dos componentes: o manual diz que a baixa da estrutura acontece na conclusão; a regra-producao-requisicoes-nascem-da-estrutura-ao-salvar descreve a baixa manual por **Baixar** em Materiais necessários. Confira se as duas formas convivem na versão do cliente.",
-   "Ordem dos cadastros: o manual-07-producao começa por etapas, processos e estrutura; o roteiro Produção 08 apresenta primeiro as linhas de produção. Não muda o resultado, mas confira o roteiro de configuração da tela."
+   "Entrada do produto acabado: o manual-07-producao (2.4) diz que o apontamento finalizado na última etapa dá entrada do acabado e baixa os componentes (movimentos \"OP – Conclusão\" e \"Requisição\"); no teste (Fluxo de produção) o apontamento não finalizou e a entrada veio de **Marcar produzido**, com o movimento \"Entrada de produto acabado (OP)\". Conferir na tela qual caminho o cliente vai usar.",
+   "Origem da OP: o manual-07-producao (2.1) diz que normalmente as OPs nascem sozinhas pela Integração de Produção (pedido ou projeto vindo do CEM); o procedimento e o teste mostram a OP criada à mão em **Nova OP** com o pedido. Conferir como o cliente recebe os pedidos.",
+   "Submeter, aprovar, rejeitar e reabrir apontamento não foram testados, porque dependem de o apontamento finalizar.",
+   "Reimportar da estrutura numa OP com item manual não foi testado."
   ],
   "video": {
    "id": "consultor-05-producao",
@@ -3372,266 +3432,252 @@ export const CHECKLISTS_IMPLANTACAO = [
   "id": "implantacao-servicos",
   "arquivo": "implantacao-12-servicos.html",
   "etiqueta": "Consultor · Implantação · Serviços",
-  "titulo": "Implantação de Serviços",
-  "subtitulo": "Checklist para o consultor conduzir a implantação de Serviços (medição, instalação, vistoria e assistência técnica) e para conferir se coordenação e equipes de campo estão prontas para operar.",
-  "objetivo": "Ao final, o técnico mede os vãos do pedido, outro técnico confere e aprova, a coordenação gera e agenda a instalação, a equipe executa com checklist, a vistoria registra o aceite do cliente e os problemas viram assistência técnica. Serviços é o que acontece na obra depois da venda: medida errada aqui vira esquadria refeita na fábrica e cliente insatisfeito.",
-  "rodape": "Checklist de implantação · Serviços · fontes: apostila do consultor (Módulo Serviços e Instalação), manual-11-servicos, regras e procedimento de Serviços, funcional-servicos, roteiros de Serviços, plano de validação de Serviços · Harness Faktory Flow",
+  "titulo": "Implantação de Serviços: roteiro prático com o cliente",
+  "subtitulo": "Junto com o cliente, leve um pedido de venda de teste pelo trabalho de campo: medição agendada, vãos medidos, conclusão e aprovação por outro conferente, instalação, vistoria e assistência técnica.",
+  "objetivo": "Ao final, o cliente terá visto um pedido virar medição aprovada, instalação concluída com checklist, vistoria com aceite e assistência técnica resolvida, todas ligadas ao mesmo pedido e cliente. Ele saberá que as passagens são por botão e em que ordem registrar os aceites.",
+  "rodape": "Checklist de implantação · Serviços · fontes: Fluxo de serviços de campo e Teste do fluxo completo (passos conferidos em out/2026), procedimento-agendar-medicao-do-pedido, regras de serviços, manual-11-servicos · Harness Faktory Flow",
   "prerequisitos": [
    {
-    "t": "Vendas, Produção e Expedição já estão implantados, como pede a sequência de implantação.",
-    "r": "**Como validar:** confira o cronograma. **Por quê:** a medição nasce do pedido, a instalação pode partir da medição, do pedido ou da OP, e a obra precisa do produto pronto. **Fonte:** apostila do consultor, Módulo Serviços e Instalação na implantação.",
-    "s": "d"
+    "t": "Dois usuários: o **técnico** (participante Funcionário) que mede e o **conferente**, vinculado a outro participante em **Conferentes**.",
+    "r": "**Confira:** a aba Conferentes das configurações de Serviços. Quem confere não pode ser quem mediu. **Fonte:** Fluxo de serviços de campo (pré-requisitos); regra-servicos-aprovacao-da-medicao-exige-conferente-diferente.",
+    "s": "v",
+    "campo": "Técnico / conferente"
    },
    {
-    "t": "Clientes, obras (projetos) e pedidos de venda com produtos de esquadria estão cadastrados para as obras que entram no go-live.",
-    "r": "**Como validar:** abra um pedido real e confira o projeto vinculado. **Por quê:** antes de medir ou instalar precisam existir cliente, obra e pedido com os produtos. **Fonte:** manual-11-servicos, Parte 1.",
-    "s": "d"
+    "t": "**Equipe de campo** com o técnico como membro. Para testar pagamento de instalação: equipe **Terceirizada** com fornecedor (equipe interna não gera pagamento).",
+    "r": "**Confira:** `Serviços > Configurações > Equipes de Campo`. **Fonte:** Fluxo de serviços de campo (pré-requisitos); manual-11-servicos, 1.1.",
+    "s": "v",
+    "campo": "Equipe"
    },
    {
-    "t": "Os técnicos têm usuário no Flow e existem pelo menos duas pessoas diferentes para medir e para conferir.",
-    "r": "**Como validar:** liste quem mede e quem confere. **Por quê:** a aprovação da medição exige um conferente vinculado a um participante e diferente de quem mediu. **Fonte:** regra-servicos-aprovacao-da-medicao-exige-conferente-diferente.",
-    "s": "d",
-    "campo": "Técnicos e conferentes"
+    "t": "Parâmetros decididos com o cliente: **Exigir conferência de medição**, **Exigir assinatura do responsável pela obra**, **Geração automática de vistoria** (vem vazia = desligada), garantia e prazos. Template de checklist de instalação e, para a assistência, tipos, origens e motivos.",
+    "r": "**Confira:** `Configurações > Config. Serviços`, abas Parâmetros, Instalação, Assistência e Geral. **Fonte:** Fluxo de serviços de campo (pré-requisitos); manual-11-servicos, 1.2.",
+    "s": "v"
    },
    {
-    "t": "Instaladores autônomos e empresas terceirizadas estão cadastrados como participante fornecedor.",
-    "r": "**Como validar:** busque um instalador terceirizado em `Cadastros › Participantes`. **Por quê:** o fornecedor da equipe terceirizada é quem recebe o pagamento pela instalação. **Fonte:** manual-11-servicos, 1.1.",
-    "s": "d"
-   },
-   {
-    "t": "As equipes de campo têm celular ou tablet com acesso ao Flow para registrar medidas, fotos e aceites na obra.",
-    "r": "**Como validar:** um técnico abre a visita do dia no aparelho. **Por quê:** medição, checklist da instalação e aceite do cliente são registrados no campo. **Fonte:** roteiro Serviços 02 (Equipes de Campo e Aplicativo).",
-    "s": "d"
+    "t": "Pedido de venda de teste (\"TESTE FLUXO CONSULTOR\") com itens de esquadria e, se quiser ver o Diário de Obra, com **Projeto (obra)**. Nomes fictícios para o responsável da obra e para o cliente nos aceites.",
+    "r": "**Confira:** o pedido em `Vendas > Pedidos de Venda`. **Fonte:** Fluxo de serviços de campo (pré-requisitos).",
+    "s": "v",
+    "campo": "Nº do pedido (PV-)"
    }
   ],
   "fluxos": [
    {
-    "titulo": "1. Entendimento do cenário do cliente",
-    "intro": "Converse com o coordenador de obras, um medidor e um líder de instalação. Peça para contarem a última obra que deu problema e onde começou. Anote quem faz cada etapa e quem aprova. Não fale de tela: entenda primeiro o caminho da obra.",
+    "titulo": "1. Medição: criar e agendar a partir do pedido",
+    "onde": "`Serviços > Medições > + Nova Medição`",
+    "intro": "O trabalho de campo começa no pedido vendido. A medição traz cliente, obra e vãos do pedido; a empresa e o técnico são preenchidos aqui.",
     "passos": [
      {
-      "t": "O consultor perguntou: quem mede a obra, em que momento (antes ou depois do pedido) e quem confere a medição antes de ir para a fábrica?",
-      "r": "**Como validar:** medidores e conferentes nomeados por função. **Por quê:** define se a conferência de medição fica ligada e quem será cadastrado como conferente. Empresa pequena em que quem mede também valida pode desligar. **Fonte:** manual-11-servicos, 1.2.",
-      "s": "d",
-      "campo": "Quem mede e quem confere"
+      "t": "**Faça:** em **Nova Medição**, busque o pedido de teste (ajuste o Status e desmarque \"Esconder pedidos que já têm medição\" se precisar) e clique em **Usar este registro**.",
+      "r": "**Explique ao cliente:** sem pedido existe a **Medição avulsa**, mas o normal é medir o que foi vendido. **Confira:** **Cliente** e **Projeto** preenchidos. **Fonte:** Fluxo de serviços de campo, bloco 1; regra-servicos-medicao-nasce-do-pedido.",
+      "s": "v"
      },
      {
-      "t": "O consultor perguntou: qual diferença entre a medida vendida e a medida real a empresa aceita sem voltar ao cliente? O responsável pela obra assina a medição?",
-      "r": "**Como validar:** tolerância em milímetros e regra de assinatura anotadas. **Por quê:** acima da tolerância a medição fica \"Requer reaprovação\"; a assinatura muda o caminho de conclusão da medição. **Fonte:** manual-11-servicos, 1.2; regra-servicos-aprovacao-da-medicao-exige-conferente-diferente.",
-      "s": "d",
-      "campo": "Tolerância e assinatura"
+      "t": "**Faça:** no diálogo **Importar Itens do Pedido**, marque os itens, confira o **Nº vãos** de cada um e clique em **Importar**.",
+      "r": "**Explique ao cliente:** cada vão é uma abertura da obra que será medida e depois instalada. **Confira:** os vãos agrupados por produto na aba **Vãos**. **Fonte:** Fluxo de serviços de campo, bloco 1; manual-11-servicos, 2.2.",
+      "s": "v"
      },
      {
-      "t": "O consultor perguntou: as equipes de instalação são próprias ou terceirizadas, quantos serviços cada uma faz por dia e como os terceirizados são pagos?",
-      "r": "**Como validar:** lista de equipes com tipo, capacidade e líder. **Por quê:** o tipo da equipe define execução própria ou terceirizada; a capacidade é usada pelo Cockpit para não sobrecarregar a agenda. **Fonte:** manual-11-servicos, 1.1 e 2.3.",
-      "s": "d",
-      "campo": "Equipes de campo"
+      "t": "**Faça:** na aba **Dados Gerais**, preencha **Empresa** e **Técnico Responsável** e, se quiser, **Equipe de Campo**, **Data de Agendamento** e **Duração Prevista**. Antes de salvar, mostre que só existem os botões Voltar, **Salvar** e Trocar pedido. Clique em **Salvar**.",
+      "r": "**Explique ao cliente:** Empresa e Técnico Responsável são obrigatórios e não vêm do pedido. **Confira:** a medição numerada. **Fonte:** Fluxo de serviços de campo, bloco 1; regra-servicos-medicao-nasce-do-pedido; regra-servicos-botao-agendar-so-na-medicao-salva.",
+      "s": "v",
+      "campo": "Nº da medição (MED-)"
      },
      {
-      "t": "O consultor perguntou: a empresa faz vistoria depois de toda instalação? Quantos dias depois? Como o cliente dá o aceite hoje?",
-      "r": "**Como validar:** regra de vistoria e prazo anotados. **Por quê:** a vistoria só nasce sozinha se a **Geração automática de vistoria (dias)** for preenchida; ela vem vazia. **Fonte:** regra-servicos-passagens-por-botao-e-ordem-dos-aceites; manual-11-servicos, 2.4.",
-      "s": "d"
+      "t": "**Faça:** na medição salva, clique em **Agendar**.",
+      "r": "**Explique ao cliente:** mesmo com a data preenchida, a medição só fica agendada por este botão, que aparece depois de salvar. **Confira:** status \"Agendada\". **Fonte:** Fluxo de serviços de campo, bloco 1; procedimento-agendar-medicao-do-pedido.",
+      "s": "v"
+     }
+    ]
+   },
+   {
+    "titulo": "2. Medição: medir os vãos e concluir",
+    "onde": "aba `Vãos` da medição e ação `Medir vãos` na lista de medições",
+    "intro": "O técnico lança as medidas reais. Com a assinatura exigida, a conclusão tem um caminho certo: mostre o errado primeiro.",
+    "passos": [
+     {
+      "t": "**Faça:** na aba **Vãos**, expanda cada vão e informe **Largura** e **Altura** em mm.",
+      "r": "**Explique ao cliente:** a medida real é a que segue para a instalação; com tolerância configurada, divergência grande em relação ao vendido pede reaprovação. **Confira:** o contador de vãos medidos subindo. **Fonte:** Fluxo de serviços de campo, bloco 1; manual-11-servicos, 2.2.",
+      "s": "v"
      },
      {
-      "t": "O consultor perguntou: como chegam hoje os chamados de assistência, como se decide se está na garantia e quais prioridades e prazos a empresa pratica?",
-      "r": "**Como validar:** tipos, prioridades, origens e motivos de chamado listados. **Por quê:** viram os cadastros da aba **Assistência**; garantia se decide pela regra da empresa, não pelo pedido do cliente. **Fonte:** manual-11-servicos, 1.2; roteiro Serviços 07.",
-      "s": "d"
+      "t": "**Faça:** com \"Exigir assinatura\" ligado, tente **Finalizar** pela tela de edição da medição.",
+      "r": "**Explique ao cliente:** a conclusão com assinatura é feita pela ação Medir vãos. **Confira:** o sistema só mostra erro. **Fonte:** Fluxo de serviços de campo, bloco 1; regra-servicos-aprovacao-da-medicao-exige-conferente-diferente.",
+      "s": "v"
      },
      {
-      "t": "O consultor perguntou: existem medições ou serviços sem pedido (reformas, visitas técnicas avulsas)? Quem organiza a agenda das equipes hoje?",
-      "r": "**Como validar:** casos avulsos e responsável pela agenda registrados. **Por quê:** existe **Medição avulsa (sem pedido)** e o Cockpit de Campo concentra a agenda. **Fonte:** regra-servicos-medicao-nasce-do-pedido; manual-11-servicos, 2.6.",
+      "t": "**Faça:** na lista, clique em **Medir vãos** > **Iniciar medição** > **Concluir medição**, com o nome e a assinatura do responsável pela obra.",
+      "r": "**Explique ao cliente:** a assinatura prova que a obra concordou com as medidas. **Confira:** status \"Aguardando Conferência\". **Fonte:** Fluxo de serviços de campo, bloco 1; Teste do fluxo completo, bloco 3.",
+      "s": "v"
+     }
+    ]
+   },
+   {
+    "titulo": "3. Medição: aprovar com outro conferente",
+    "onde": "`Serviços > Medições` (medição \"Aguardando Conferência\")",
+    "intro": "A conferência é o controle de qualidade da medição. Demonstre a trava antes de aprovar.",
+    "passos": [
+     {
+      "t": "**Faça:** tente aprovar a medição com o mesmo técnico que mediu.",
+      "r": "**Explique ao cliente:** quem mede não confere a própria medição. **Confira:** a recusa \"O conferente da medição deve ser diferente do técnico responsável que a realizou\". **Fonte:** Teste do fluxo completo, bloco 3; regra-servicos-aprovacao-da-medicao-exige-conferente-diferente.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** entre com o usuário conferente e clique em **Aprovar**.",
+      "r": "**Explique ao cliente:** aprovar **não** cria a instalação: a passagem é por botão. **Confira:** status \"Aprovada\" e o botão **Gerar Instalação** no cabeçalho. **Fonte:** Fluxo de serviços de campo, bloco 1; regra-servicos-passagens-por-botao-e-ordem-dos-aceites.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** abra `Serviços > Dashboard Serviços` e role até o Pipeline operacional.",
+      "r": "**Explique ao cliente:** o pipeline mostra onde os serviços estão parados; estágios em âmbar são gargalos. **Confira:** a medição de teste em \"Aprovadas sem instalação\". **Fonte:** manual-11-servicos, 2.1.",
       "s": "d"
      }
     ]
    },
    {
-    "titulo": "2. Preparação da implantação",
-    "intro": "Configure com o coordenador de obras, usando as decisões da etapa 1. Cada parâmetro muda o comportamento da cadeia; explique o efeito de cada um antes de ligar. Termine com uma obra real escolhida para o treinamento.",
+    "titulo": "4. Instalação",
+    "onde": "botão `Gerar Instalação` da medição e `Serviços > Instalações`",
+    "intro": "A instalação nasce da medição aprovada e leva os vãos medidos como checklist.",
     "passos": [
      {
-      "t": "As **Equipes de Campo** foram cadastradas com tipo, especialidade, capacidade diária, líder, fornecedor (se terceirizada) e membros.",
-      "r": "**Como validar:** as equipes aparecem no Cockpit de Campo. **Por quê:** equipe interna não gera pagamento; a terceirizada paga o fornecedor vinculado. **Fonte:** manual-11-servicos, 1.1; regra-servicos-passagens-por-botao-e-ordem-dos-aceites.",
+      "t": "**Faça:** abra `Serviços > Instalações > + Nova Instalação` e mostre a aba **Medição**, sem gerar nada.",
+      "r": "**Explique ao cliente:** a instalação pode nascer de Pedido de Venda, Ordem de Produção ou Medição; a aba Medição lista as aprovadas que ainda não têm instalação. **Confira:** a medição de teste na lista. **Fonte:** manual-11-servicos, 2.3.",
       "s": "d"
      },
      {
-      "t": "Os parâmetros de Serviços foram ajustados com o cliente: conferência de medição, assinatura do responsável pela obra, tolerância de divergência e geração automática de vistoria.",
-      "r": "**Como validar:** registre na OS o valor escolhido para cada parâmetro. **Por quê:** cada um muda a cadeia: aguardar conferência, exigir assinatura, pedir reaprovação, criar vistoria sozinha. **Fonte:** manual-11-servicos, 1.2.",
-      "s": "d",
-      "campo": "Parâmetros definidos"
+      "t": "**Faça:** na medição aprovada, clique em **Gerar Instalação**, escolha a equipe, informe a data e salve.",
+      "r": "**Explique ao cliente:** o tipo da equipe define se a execução é própria ou terceirizada; o checklist é o template mais os vãos medidos. **Confira:** a instalação \"Agendada\" na lista (a tela de edição só atualiza ao recarregar). **Fonte:** Fluxo de serviços de campo, bloco 2; manual-11-servicos, 2.3.",
+      "s": "v",
+      "campo": "Nº da instalação (INS-)"
      },
      {
-      "t": "Os conferentes foram cadastrados e vinculados a participantes, diferentes dos técnicos que medem.",
-      "r": "**Como validar:** um conferente aparece na lista de **Conferentes**. **Por quê:** sem conferente vinculado e diferente de quem mediu, a medição não é aprovada. **Fonte:** regra-servicos-aprovacao-da-medicao-exige-conferente-diferente.",
-      "s": "d"
+      "t": "**Faça:** clique em **Executar** > **Iniciar instalação**, marque os itens como **Conforme** e clique em **Concluir**.",
+      "r": "**Explique ao cliente:** itens obrigatórios precisam estar conformes; a instalação não pede aceite do cliente. **Confira:** status \"Concluída\" com o checklist (Conferidos e Conformes). **Fonte:** Fluxo de serviços de campo, bloco 2.",
+      "s": "v"
      },
      {
-      "t": "Os cadastros de **Assistência** (tipo, prioridade, origem e motivo) e de **Esquadrias** foram ajustados com os nomes que a equipe reconhece no campo.",
-      "r": "**Como validar:** abra uma nova assistência e confira as listas. **Por quê:** cadastros padronizados permitem que os painéis mostrem causas e custo de garantia confiáveis. **Fonte:** manual-11-servicos, 1.2; roteiro Serviços 08.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor conferiu as dependências de outros módulos: pedidos com itens de esquadria, obras cadastradas, produção da obra concluída e instaladores terceirizados como fornecedores.",
-      "r": "**Como validar:** cada dependência marcada com responsável. **Por quê:** a medição importa os itens do pedido, e a instalação depende do produto pronto. **Fonte:** manual-11-servicos, Parte 1; apostila, Módulo Serviços e Instalação.",
-      "s": "d",
-      "campo": "Pendências de outros módulos"
-     },
-     {
-      "t": "O consultor escolheu, com o coordenador, um pedido real com poucos itens para percorrer a cadeia inteira no treinamento.",
-      "r": "**Como validar:** o pedido tem obra, itens de esquadria e ainda não tem medição. **Por quê:** a cadeia tem várias passagens por botão; um caso pequeno permite chegar até a assistência no mesmo treinamento. **Fonte:** regra-servicos-passagens-por-botao-e-ordem-dos-aceites.",
-      "s": "d"
+      "t": "**Faça:** confira o pagamento do instalador e o botão **Ver Vistoria** na instalação concluída.",
+      "r": "**Explique ao cliente:** equipe interna não gera pagamento; a vistoria só nasce sozinha se a Geração automática de vistoria estiver preenchida. **Confira:** \"Equipe interna: a instalação não gera pagamento\" e, com a geração ligada, o botão Ver Vistoria. **Fonte:** Fluxo de serviços de campo, bloco 2; regra-servicos-passagens-por-botao-e-ordem-dos-aceites.",
+      "s": "v"
      }
     ]
    },
    {
-    "titulo": "3. Condução do treinamento",
-    "intro": "Treine na ordem da obra: medição, conferência, instalação, vistoria e assistência, e só depois Cockpit e painéis. Junte medidor, conferente e líder de instalação na mesma sessão, porque cada um passa o bastão para o outro. Mostre em cada passagem qual botão leva à próxima etapa.",
+    "titulo": "5. Vistoria",
+    "onde": "`Ver Vistoria` na instalação ou `Serviços > Vistorias > + Nova Vistoria`",
+    "intro": "A vistoria confere a obra entregue. Na vistoria, o aceite do cliente vem **depois** de concluir.",
     "passos": [
      {
-      "t": "O consultor criou a medição do pedido real em `Serviços › Medições › Nova Medição` com **Usar este registro**, importou os itens com o **Nº vãos**, preencheu **Empresa** e **Técnico Responsável**, salvou e depois agendou.",
-      "r": "**Como validar:** a medição ganha número e fica \"Agendada\". **Por quê:** **Empresa** e **Técnico Responsável** não vêm do pedido; o botão **Agendar** só aparece na medição já salva. **Fonte:** procedimento-agendar-medicao-do-pedido; regra-servicos-botao-agendar-so-na-medicao-salva.",
-      "s": "d"
+      "t": "**Faça:** abra a vistoria por **Ver Vistoria** ou, com a geração automática desligada, por **+ Nova Vistoria**, escolhendo a instalação concluída.",
+      "r": "**Explique ao cliente:** também existe vistoria avulsa, sem instalação. **Confira:** a vistoria ligada à instalação de teste. **Fonte:** manual-11-servicos, 2.4; regra-servicos-passagens-por-botao-e-ordem-dos-aceites.",
+      "s": "d",
+      "campo": "Nº da vistoria (VIST-)"
      },
      {
-      "t": "O consultor mostrou ao medidor o caminho **Iniciar**, **Medir vãos** (largura e altura em mm) e **Concluir medição** com a assinatura do responsável pela obra.",
-      "r": "**Como validar:** a medição fica \"Aguardando Conferência\". **Por quê:** com **Exigir assinatura** ligado, o **Finalizar** da tela de edição só mostra erro. **Fonte:** regra-servicos-aprovacao-da-medicao-exige-conferente-diferente; funcional-servicos-medicoes-instalacoes-vistorias-assistencias.",
-      "s": "d"
+      "t": "**Faça:** informe o vistoriador, salve, clique em **Iniciar** e registre itens, uma ressalva e uma pendência.",
+      "r": "**Explique ao cliente:** ressalvas e pendências seguem para a assistência técnica. **Confira:** a vistoria em execução com os itens registrados. **Fonte:** Fluxo de serviços de campo, bloco 3.",
+      "s": "v"
      },
      {
-      "t": "O conferente, com o próprio usuário, revisou e aprovou a medição, e o consultor mostrou o que acontece quando a medida passa da tolerância.",
-      "r": "**Como validar:** a medição fica Aprovada. **Por quê:** quem mediu não aprova a própria medição; acima da tolerância a medição pede reaprovação do cliente. **Fonte:** regra-servicos-aprovacao-da-medicao-exige-conferente-diferente; manual-11-servicos, 1.2.",
-      "s": "d"
+      "t": "**Faça:** tente **Registrar Aceite** do cliente antes de concluir a vistoria.",
+      "r": "**Explique ao cliente:** o cliente aceita uma vistoria terminada. **Confira:** o sistema recusa o aceite. **Fonte:** Fluxo de serviços de campo, bloco 3; regra-servicos-passagens-por-botao-e-ordem-dos-aceites.",
+      "s": "v"
      },
      {
-      "t": "O consultor gerou a instalação pela medição aprovada com **Gerar Instalação**, escolheu a equipe de campo e explicou execução própria ou terceirizada.",
-      "r": "**Como validar:** a instalação aparece em `Serviços › Instalações` como Agendada. **Por quê:** aprovar a medição não cria a instalação; só vãos realmente medidos podem ser instalados. **Fonte:** regra-servicos-passagens-por-botao-e-ordem-dos-aceites; manual-11-servicos, 2.3.",
-      "s": "d"
+      "t": "**Faça:** conclua a vistoria como **Aprovada c/ Ressalvas**.",
+      "r": "**Explique ao cliente:** as opções são Aprovada, Aprovada c/ Ressalvas e Reprovada; as duas últimas abrem caminho para a assistência. **Confira:** o resultado gravado e o botão **Gerar Assistência Técnica**. **Fonte:** Fluxo de serviços de campo, bloco 3; regra-servicos-passagens-por-botao-e-ordem-dos-aceites.",
+      "s": "v"
      },
      {
-      "t": "O líder de instalação executou a instalação: marcou cada vão como Conforme ou Não conforme, anexou foto, usou **Pausar** e concluiu.",
-      "r": "**Como validar:** aparece \"Instalação concluída!\" e o checklist mostra conferidos e conformes. **Por quê:** **Concluir instalação** só libera com os itens obrigatórios conformes. **Fonte:** manual-11-servicos, 2.3; regra-servicos-passagens-por-botao-e-ordem-dos-aceites.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor criou a vistoria da instalação concluída, explicou os resultados Aprovada, Aprovada com Ressalvas e Reprovada, e registrou o aceite do cliente depois de concluir.",
-      "r": "**Como validar:** a vistoria mostra resultado e aceite. **Por quê:** na vistoria o aceite só é aceito depois de concluir; ressalvas precisam citar produto, ambiente e problema. **Fonte:** regra-servicos-passagens-por-botao-e-ordem-dos-aceites; roteiro Serviços 06.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor gerou uma assistência técnica pela vistoria com ressalvas, preencheu tipo, prioridade e motivo, registrou o aceite **antes** de **Resolver** e mostrou o **Laudo (PDF)**.",
-      "r": "**Como validar:** a AT fica resolvida com a solução registrada em **Solução + Custos**. **Por quê:** a AT não nasce sozinha; na AT a ordem do aceite é inversa à da vistoria. **Fonte:** regra-servicos-passagens-por-botao-e-ordem-dos-aceites; manual-11-servicos, 2.5.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor mostrou ao coordenador o **Cockpit de Campo** (agenda por equipe e fila \"A agendar\") e o pipeline operacional do **Dashboard Serviços**.",
-      "r": "**Como validar:** o coordenador agenda um serviço da fila e identifica um gargalo. **Por quê:** o Cockpit respeita a capacidade de cada equipe e o pipeline mostra serviços parados em cada etapa. **Fonte:** manual-11-servicos, 2.1 e 2.6.",
-      "s": "d"
+      "t": "**Faça:** agora clique em **Registrar Aceite** com o nome fictício do cliente.",
+      "r": "**Explique ao cliente:** o aceite fecha a entrega da obra. **Confira:** \"Aceite Registrado\" (o horário pode aparecer em UTC). **Fonte:** Fluxo de serviços de campo, bloco 3.",
+      "s": "v"
      }
     ]
    },
    {
-    "titulo": "4. Validação do aprendizado",
-    "intro": "Dê um segundo pedido real e peça para a equipe percorrer a cadeia sozinha, cada um no seu papel e com o próprio usuário. Você observa. Anote em qual passagem por botão a equipe hesitou: é ali que vão surgir os chamados.",
+    "titulo": "6. Assistência técnica",
+    "onde": "botão `Gerar Assistência Técnica` da vistoria",
+    "intro": "A assistência trata o que ficou pendente. Ela não nasce sozinha, e aqui o aceite vem **antes** de resolver.",
     "passos": [
      {
-      "t": "O medidor criou, salvou e agendou sozinho a medição de um pedido, preenchendo Empresa e Técnico Responsável.",
-      "r": "**Como validar:** a medição está \"Agendada\" com os itens importados. **Por quê:** é o primeiro documento da cadeia; erro aqui segue até a instalação. **Fonte:** procedimento-agendar-medicao-do-pedido.",
-      "s": "d"
+      "t": "**Faça:** clique em **Gerar Assistência Técnica**, complete **Tipo**, **Origem**, **Motivo** e Cidade/UF e clique em **Salvar**.",
+      "r": "**Explique ao cliente:** a descrição já traz as ressalvas e pendências da vistoria. **Confira:** a AT numerada; hoje os campos Instalação e Vistoria vinculadas podem vir vazios e a garantia ser calculada como \"sem instalação\". **Fonte:** Fluxo de serviços de campo, bloco 4; manual-11-servicos, 2.5.",
+      "s": "v",
+      "campo": "Nº da AT (AT-)"
      },
      {
-      "t": "O medidor concluiu a medição com assinatura, e o conferente explicou por que o medidor não pode aprovar a própria medição.",
-      "r": "**Como validar:** a medição passa por \"Aguardando Conferência\" e é aprovada pelo conferente. **Por quê:** a conferência por outra pessoa é o controle contra esquadria fabricada com medida errada. **Fonte:** regra-servicos-aprovacao-da-medicao-exige-conferente-diferente.",
-      "s": "d"
+      "t": "**Faça:** na aba **Agendamento**, clique em **Agendar Atendimento** e depois em **Iniciar Atendimento**; registre um defeito e uma peça.",
+      "r": "**Explique ao cliente:** defeitos e peças formam o histórico de qualidade do produto. **Confira:** a AT em atendimento com o defeito e a peça registrados. **Fonte:** Fluxo de serviços de campo, bloco 4.",
+      "s": "v"
      },
      {
-      "t": "O coordenador gerou a instalação pela medição aprovada e a agendou para uma equipe no Cockpit, respeitando a capacidade.",
-      "r": "**Como validar:** a instalação aparece na linha da equipe no calendário. **Por quê:** a instalação não nasce sozinha; quem esquece o botão deixa a obra parada em \"aprovadas sem instalação\". **Fonte:** regra-servicos-passagens-por-botao-e-ordem-dos-aceites; manual-11-servicos, 2.1.",
-      "s": "d"
+      "t": "**Faça:** clique em **Aguardar Peça**, depois em **Retomar**, marque a peça como \"Instalada\" e preencha **Solução + Custos**.",
+      "r": "**Explique ao cliente:** aguardar peça pausa o prazo do atendimento. **Confira:** o prazo pausado e retomado e a solução com custos gravada. **Fonte:** Fluxo de serviços de campo, bloco 4.",
+      "s": "v"
      },
      {
-      "t": "O líder de instalação executou e concluiu a instalação com checklist e fotos, e abriu a vistoria a partir dela.",
-      "r": "**Como validar:** instalação Concluída e vistoria criada. **Por quê:** sem geração automática, a vistoria depende da ação do usuário. **Fonte:** manual-11-servicos, 2.3 e 2.4.",
-      "s": "d"
-     },
-     {
-      "t": "O responsável pela assistência explicou a ordem dos aceites (vistoria: depois de concluir; AT: antes de resolver) e abriu um chamado manual com tipo e prioridade corretos.",
-      "r": "**Como validar:** chamado salvo com número e status Aberta. **Por quê:** a inversão da ordem do aceite é o erro mais provável no início. **Fonte:** regra-servicos-passagens-por-botao-e-ordem-dos-aceites; manual-11-servicos, 2.5.",
-      "s": "d",
-      "campo": "Dúvidas registradas"
+      "t": "**Faça:** registre o aceite do cliente e só então clique em **Resolver**.",
+      "r": "**Explique ao cliente:** na assistência a ordem é inversa à da vistoria: aceite antes de resolver. Peça ainda Solicitada ou Em compra exige motivo e é cancelada. **Confira:** status \"Resolvida\". **Fonte:** Fluxo de serviços de campo, bloco 4; regra-servicos-passagens-por-botao-e-ordem-dos-aceites.",
+      "s": "v"
      }
     ]
    },
    {
-    "titulo": "5. Preparação para utilização e go-live",
-    "intro": "Combine a data a partir da qual toda medição nova é feita no Flow. Nas primeiras semanas, olhe o pipeline operacional com o coordenador toda semana: as passagens por botão esquecidas aparecem ali como serviços parados.",
+    "titulo": "7. Gestão de campo",
+    "onde": "`Serviços > Cockpit de Campo`, `Serviços > Dashboard Serviços` e `Serviços > Minha Equipe Agora`",
+    "intro": "Feche mostrando ao gestor onde ele acompanha as equipes e o resultado dos serviços.",
     "passos": [
      {
-      "t": "Ficou decidido, com data, como entram as obras em andamento: medições já feitas no papel, instalações agendadas e chamados abertos.",
-      "r": "**Como validar:** decisão registrada na OS com responsável. **Por quê:** obra pela metade fora do Flow não aparece no Cockpit nem nos painéis. **Fonte:** apostila, preparação para o go-live.",
-      "s": "d",
-      "campo": "Data de corte e obras em andamento"
+      "t": "**Faça:** abra o **Cockpit de Campo** e localize os serviços de teste na linha da equipe.",
+      "r": "**Explique ao cliente:** o cockpit usa a capacidade diária da equipe para não sobrecarregar a agenda. **Confira:** os serviços na equipe; hoje os horários podem aparecer 3 h adiantados (UTC) e a AT pode ficar em \"SEM EQUIPE\". **Fonte:** Fluxo de serviços de campo, bloco 5; manual-11-servicos, 1.1.",
+      "s": "v"
      },
      {
-      "t": "Os parâmetros de Serviços foram revisados com o coordenador depois do treinamento e confirmados para produção.",
-      "r": "**Como validar:** a tela de parâmetros bate com o registrado na OS. **Por quê:** a tolerância, a conferência e a vistoria automática decididas no papel podem mudar depois de ver a operação. **Fonte:** manual-11-servicos, 1.2.",
-      "s": "d"
+      "t": "**Faça:** abra o **Dashboard Serviços**.",
+      "r": "**Explique ao cliente:** é o resumo diário da operação de campo. **Confira:** Concluídos, m² instalados, pipeline e estatísticas refletindo o teste. **Fonte:** Fluxo de serviços de campo, bloco 5.",
+      "s": "v"
      },
      {
-      "t": "Nas primeiras semanas, o consultor acompanhou com o coordenador: medições paradas aguardando conferência, aprovadas sem instalação, instalações concluídas sem vistoria e assistências fora do prazo.",
-      "r": "**Como validar:** revisão semanal do pipeline operacional registrada na OS. **Por quê:** cada passagem da cadeia é por botão, e esquecimentos viram serviços parados. **Fonte:** manual-11-servicos, 2.1; regra-servicos-passagens-por-botao-e-ordem-dos-aceites.",
-      "s": "d",
-      "campo": "Pontos da revisão semanal"
-     },
-     {
-      "t": "O financeiro sabe onde aprovar os pagamentos de instaladores terceirizados em **Aprovações**.",
-      "r": "**Como validar:** o responsável abre a tela de **Aprovações** de Serviços. **Por quê:** a instalação terceirizada gera pagamento ao fornecedor da equipe; a interna não. **Fonte:** manual-11-servicos, 2.7; regra-servicos-passagens-por-botao-e-ordem-dos-aceites.",
-      "s": "d"
-     },
-     {
-      "t": "O critério de encerramento foi cumprido: pelo menos uma obra real percorreu medição, aprovação, instalação e vistoria no Flow, com o cliente operando sozinho.",
-      "r": "**Como validar:** o key user mostra a obra com todos os documentos encadeados. **Por quê:** Serviços é o último elo da cadeia operacional; com ele estável, o projeto pode seguir para Projetos e Obras ou para o encerramento. **Fonte:** apostila, Módulo Serviços e Instalação; Método Faktory.",
-      "s": "d",
-      "campo": "Obra usada no aceite"
+      "t": "**Faça:** abra **Minha Equipe Agora**.",
+      "r": "**Explique ao cliente:** a tela lista só usuários do sistema; técnico externo não aparece. **Confira:** os usuários da equipe. **Fonte:** Fluxo de serviços de campo, bloco 5.",
+      "s": "v"
      }
     ]
    }
   ],
   "resultado": [
    {
-    "t": "Medidor, conferente, coordenador e líder de instalação percorrem a cadeia de uma obra real sem ajuda do consultor.",
-    "s": "d"
+    "t": "Medição, instalação, vistoria e assistência técnica estão ligadas ao mesmo pedido e cliente de teste.",
+    "s": "v"
    },
    {
-    "t": "Equipes, conferentes e parâmetros refletem a forma de trabalho do cliente e estão registrados na OS.",
-    "s": "d"
+    "t": "A medição foi aprovada por um conferente diferente de quem mediu, e a trava foi demonstrada.",
+    "s": "v"
    },
    {
-    "t": "Toda medição nova, a partir da data de corte, é feita e aprovada no Flow.",
-    "s": "d"
+    "t": "Os aceites foram registrados na ordem certa: depois de concluir a vistoria e antes de resolver a assistência.",
+    "s": "v"
    },
    {
-    "t": "A agenda das equipes é organizada no Cockpit de Campo, respeitando a capacidade.",
-    "s": "d"
-   },
-   {
-    "t": "Vistorias e assistências registram aceite, ressalvas e solução, e o coordenador acompanha o pipeline operacional toda semana.",
-    "s": "d"
+    "t": "O Dashboard Serviços refletiu as conclusões (quantidade e m²).",
+    "s": "v"
    }
   ],
   "atencao": [
-   "Esperar o botão **Agendar** na medição nova: ele só aparece depois de salvar.",
-   "Esquecer **Empresa** e **Técnico Responsável** na medição: não vêm do pedido.",
-   "Ligar a conferência sem cadastrar conferente vinculado e diferente de quem mede: nenhuma medição é aprovada.",
-   "Achar que aprovar a medição cria a instalação ou que a vistoria reprovada cria a assistência: as duas passagens são por botão.",
-   "Esperar a vistoria automática sem preencher **Geração automática de vistoria (dias)**: o parâmetro vem vazio.",
-   "Tentar finalizar a medição pelo **Finalizar** da tela de edição com assinatura exigida: o caminho é Iniciar, Medir vãos e Concluir medição.",
-   "Gerar instalação de medição com vãos cancelados: só vãos realmente medidos podem ser instalados."
+   "**Segurança do ambiente:** use só ambiente de teste, registros com \"TESTE FLUXO CONSULTOR\" e nomes fictícios nas assinaturas e aceites; nota fiscal só é transmitida com o responsável fiscal.",
+   "Três passagens são **por botão**: Gerar Instalação, Gerar Assistência Técnica e, opcional, Gerar OS de instalação a partir da OP. Só a vistoria pode nascer sozinha, com a Geração automática de vistoria preenchida.",
+   "Só se instala vão realmente medido: com todos os vãos cancelados, o sistema avisa que não há vão medido para instalar.",
+   "Hoje datas e horas aparecem em UTC em vários pontos (vistoria, aceite, cockpit): confira o horário antes de concluir que há atraso.",
+   "O template de checklist entra em **toda** instalação nova da empresa: desative o de teste no fim.",
+   "Mensagens (toasts) podem cobrir os botões do cabeçalho: feche-as antes de clicar.",
+   "No cadastro do técnico, o CEP preenche o endereço, mas hoje o formulário só aceita depois de redigitar o Endereço."
   ],
   "naoValidado": [
-   "Aceite da assistência técnica: o plano de validação de Serviços (06, Laudo e aceite) pede o aceite na AT resolvida; no teste da regra-servicos-passagens-por-botao-e-ordem-dos-aceites o aceite precisou vir antes de **Resolver**. Confira na tela.",
-   "Conclusão da medição: o manual-11-servicos (2.2) diz para medir todos os vãos e clicar em **Salvar** para ir à conferência; a regra-servicos-aprovacao-da-medicao-exige-conferente-diferente diz que, com assinatura exigida, o caminho é **Iniciar**, **Medir vãos** e **Concluir medição**. Confira com os parâmetros do cliente.",
-   "Passagens automáticas: o plano de validação diz que medição aprovada gera instalação e instalação concluída gera vistoria; a regra-servicos-passagens-por-botao-e-ordem-dos-aceites diz que as passagens são por botão e só a vistoria pode nascer sozinha, se o parâmetro estiver preenchido.",
-   "Tela de configurações: o manual-11-servicos usa `Configurações › Config. Serviços` com a aba **Conferentes**; o roteiro Serviços 08 lista abas diferentes (com **Medição**, sem **Conferentes**) e a regra cita `Serviços › Configurações › Conferentes`. Confira o menu da versão do cliente.",
-   "A seção de Serviços da apostila do consultor está marcada \"Rever\" no original; a sequência de implantação (após Vendas, Produção e Expedição) deve ser confirmada com a coordenação de implantação."
+   "Concluir a medição: o manual-11-servicos (2.2) diz para lançar os vãos e clicar em **Salvar**, e então a medição vai para aguardando conferência; o teste (Fluxo de serviços de campo) e a regra de conferência dizem que, com \"Exigir assinatura\", o caminho é **Medir vãos** > **Iniciar medição** > **Concluir medição** e que o Finalizar da edição dá erro. Conferir com os parâmetros do cliente.",
+   "Aceite da assistência técnica: o plano de validação de Serviços pede o aceite na AT resolvida; no teste o aceite precisou vir antes de **Resolver**. Conferir na tela antes de ensinar.",
+   "Caminho dos conferentes: o Fluxo de serviços de campo cita `Serviços > Configurações > Conferentes`; o manual-11-servicos cita `Configurações > Config. Serviços`, aba **Conferentes**. Conferir o menu na versão do cliente.",
+   "Pagamento de instalação com equipe terceirizada, aplicativo de campo `/campo` e Diário de Obra com projeto não foram testados."
   ],
   "video": {
    "id": "consultor-02-servicos",
@@ -3643,307 +3689,264 @@ export const CHECKLISTS_IMPLANTACAO = [
   "id": "implantacao-expedicao",
   "arquivo": "implantacao-13-expedicao.html",
   "etiqueta": "Consultor · Implantação · Expedição",
-  "titulo": "Implantação de Expedição",
-  "subtitulo": "Checklist para o consultor conduzir e verificar a implantação da Expedição, do pedido faturado até a entrega confirmada. Serve ao consultor iniciante e ao experiente.",
-  "objetivo": "Ao final, o cliente libera pedidos faturados, monta cargas pela ocupação do veículo, faz os checkpoints de separação, conferência e carregamento e confirma a entrega sozinho. Também sabe tratar uma ocorrência e decidir entre re-expedir ou cancelar. A Expedição fecha o ciclo do pedido: é aqui que a obra recebe o que foi vendido e produzido.",
-  "rodape": "Checklist de implantação · Expedição · fontes: apostila do consultor (Módulo Expedição), manual-09-expedicao, regra-vendas-liberar-para-expedicao-so-em-pedido-faturado, procedimento-montar-carga-e-liberar-para-expedicao, roteiros de expedição 01, 04 e 05 · Harness Faktory Flow",
+  "titulo": "Implantação de Expedição: roteiro prático com o cliente",
+  "subtitulo": "Executar com o cliente o caminho do pedido faturado até a entrega: liberar o pedido, montar e fechar a carga, separar, conferir e carregar, iniciar a rota e confirmar a entrega. Depois, tratar o que dá errado: ocorrência, devolução e re-expedição.",
+  "objetivo": "Ao final, o cliente terá visto um pedido faturado virar carga, passar pelos checkpoints do pátio e chegar a Entregue com histórico, e saberá repetir sozinho. Também terá visto o que acontece numa ocorrência bloqueante e numa devolução, e por que o saldo do estoque não volta sozinho.",
+  "rodape": "Checklist de implantação · Expedição · fontes: fluxo antigo \"Fluxo de expedição\", bloco 6 do \"Teste do fluxo completo\", procedimento-montar-carga-e-liberar-para-expedicao, regra-vendas-liberar-para-expedicao-so-em-pedido-faturado, manual-09-expedicao · Harness Faktory Flow",
   "prerequisitos": [
    {
-    "t": "Vendas e Faturamento estão em uso: o cliente já fatura pedidos com nota.",
-    "r": "**Como validar:** abra `Vendas > Pedidos de Venda` e confira pedidos com status **Faturado**. **Por quê:** **Liberar para Expedição** só existe no menu `⋯` de pedido Faturado. **Fonte:** regra-vendas-liberar-para-expedicao-so-em-pedido-faturado; apostila (Módulo Expedição: implantar após Vendas, Faturamento, Produção e Estoque).",
+    "t": "Um pedido de venda de teste **Faturado**, com nota finalizada e sem transmitir (marcado \"TESTE FLUXO CONSULTOR\").",
+    "r": "**Confira:** em `Vendas > Pedidos de Venda`, o status **Faturado**. A tela de montagem só lista pedidos liberados, e a liberação só existe em pedido faturado. **Fonte:** fluxo antigo \"Fluxo de expedição\" (pré-requisito); regra-vendas-liberar-para-expedicao-so-em-pedido-faturado.",
+    "s": "v"
+   },
+   {
+    "t": "Frota cadastrada: pelo menos um **veículo** com capacidade de peso e volume e um **motorista** com CNH válida.",
+    "r": "**Confira:** em `Expedição > Configurações > Veículos` e `Motoristas`. CNH vencida exige justificativa para fechar a carga. **Fonte:** fluxo antigo \"Fluxo de expedição\" (pré-requisito); manual-09-expedicao#003 e #004.",
+    "s": "v"
+   },
+   {
+    "t": "Endereço de entrega no cadastro do cliente e peso no cadastro do produto.",
+    "r": "**Confira:** o endereço aparece no resumo da carga; o peso alimenta a ocupação do veículo. **Fonte:** fluxo antigo \"Fluxo de expedição\" (pré-requisito); manual-09-expedicao#002.",
     "s": "d"
    },
    {
-    "t": "Produção e Estoque estão implantados, e as ordens de produção são concluídas no sistema.",
-    "r": "**Como validar:** peça uma OP recente com status **Produzido**. **Por quê:** item fabricado sem OP concluída aparece como **Produção pendente** na montagem da carga. **Fonte:** manual-09-expedicao#008; regra-producao-marcar-produzido-gera-entrada-do-produto-acabado.",
-    "s": "d"
-   },
-   {
-    "t": "Os produtos têm peso e os clientes têm CEP no cadastro.",
-    "r": "**Como validar:** abra por amostra 3 produtos e 3 participantes. **Por quê:** o peso alimenta a ocupação do veículo e o CEP alimenta o mapa e os filtros por região. **Fonte:** manual-09-expedicao#002.",
-    "s": "d",
-    "campo": "Cadastros com peso ou CEP faltando"
-   },
-   {
-    "t": "O cliente levantou os dados da frota e dos motoristas: placa, tipo, capacidade em kg e m³, comprimento máximo, CNH, categoria e validade.",
-    "r": "**Como validar:** peça a lista antes da reunião de preparação. **Por quê:** capacidade em kg e m³ é obrigatória no veículo, e a CNH vencida gera alerta. **Fonte:** manual-09-expedicao#003 e #004.",
-    "s": "d",
-    "campo": "Responsável pelo levantamento da frota"
-   },
-   {
-    "t": "Os usuários da expedição têm acesso ao módulo e às permissões de liberação e de ocorrência.",
-    "r": "**Como validar:** entre com o usuário do expedidor e confira o menu lateral da Expedição, incluindo **Aguardando Re-Expedição**. **Por quê:** sem permissão, os botões de decisão não aparecem. **Fonte:** roteiro-expedicao-05-re-expedicao-e-devolucoes#003.",
-    "s": "d"
-   },
-   {
-    "t": "Existe almoxarifado central ativo, e o cliente confere o saldo antes de finalizar a nota.",
-    "r": "**Como validar:** abra `Estoque > Locais`. **Por quê:** sem local ativo a nota não finaliza; na v1.22.13 a finalização gerou a saída **Expedição (PV)** mesmo sem saldo. **Fonte:** regra-estoque-almoxarifado-central-ativo-e-pre-requisito; regra-faturamento-finalizar-nf-requisitos.",
+    "t": "Checkpoints da empresa definidos: quais etapas (Separação, Conferência, Carregamento) o cliente vai usar.",
+    "r": "**Confira:** em `Expedição > Configurações > Parâmetros`. **Fonte:** manual-09-expedicao#005.",
     "s": "d"
    }
   ],
   "fluxos": [
    {
-    "titulo": "1. Entendimento do cenário do cliente",
-    "intro": "Faça a conversa com quem despacha de verdade: o responsável pela expedição, um motorista e alguém do comercial. Vá até o pátio se puder. O objetivo é saber como a mercadoria sai hoje, não mostrar telas.",
+    "titulo": "1. Cadastros da expedição",
+    "onde": "`Expedição > Configurações`",
+    "intro": "Antes da primeira carga, mostre ao cliente o que a montagem usa: veículo, motorista, checkpoints e tipos de ocorrência. Sem isso a carga não fecha ou a ocupação não aparece.",
     "passos": [
      {
-      "t": "O consultor perguntou: a entrega é com frota própria, terceirizada ou retirada pelo cliente? Quantos veículos e motoristas existem?",
-      "r": "**Como validar:** a resposta está registrada com o número de veículos e motoristas. **Por quê:** define o tamanho dos cadastros e se o app do motorista será usado. **Fonte:** manual-09-expedicao#002.",
-      "s": "d",
-      "campo": "Frota e motoristas"
-     },
-     {
-      "t": "O consultor perguntou: hoje vocês separam, conferem e carregam volume a volume? Usam etiqueta ou romaneio em papel?",
-      "r": "**Como validar:** ficou decidido quais etapas a empresa realmente faz. **Por quê:** essa resposta define quais checkpoints ligar nos **Parâmetros**. Ligar etapa que ninguém faz trava a carga. **Fonte:** manual-09-expedicao#005.",
-      "s": "d",
-      "campo": "Checkpoints que a empresa usa"
-     },
-     {
-      "t": "O consultor perguntou: quem decide o que vai em cada carga e como escolhe o veículo? Juntam entregas por região?",
-      "r": "**Como validar:** o critério de montagem (região, prazo, ocupação) está anotado. **Por quê:** a tela de montagem filtra por cidade, raio e CEP e mostra a ocupação do veículo. **Fonte:** manual-09-expedicao#007 e #008.",
+      "t": "**Faça:** abra `Veículos`, clique em **+ Novo Veículo** e cadastre um veículo de teste com **Placa**, **Modelo**, **Tipo de veículo**, capacidade de peso em kg e de volume em m³. Salve.",
+      "r": "**Explique ao cliente:** a capacidade é usada na montagem para mostrar a ocupação do veículo; peso e volume são obrigatórios. **Confira:** o veículo aparece na lista com placa e capacidades. **Fonte:** manual-09-expedicao#003.",
       "s": "d"
      },
      {
-      "t": "O consultor perguntou: como a entrega é comprovada hoje? Há canhoto, foto ou assinatura? Quem registra?",
-      "r": "**Como validar:** ficou definido se a confirmação será pelo app **Minhas Entregas** (foto e assinatura) ou pelo ERP. **Por quê:** a confirmação pelo ERP fica marcada como sem foto. **Fonte:** manual-09-expedicao#004 e #010.",
+      "t": "**Faça:** abra `Motoristas` e confira, em um motorista de teste, CNH, categoria e validade. Se não houver, use **+ Novo Motorista**.",
+      "r": "**Explique ao cliente:** o sistema alerta quando a CNH vence, e a carga com motorista de CNH vencida só fecha com justificativa. O motorista registra as entregas pelo app **Minhas Entregas**. **Confira:** a validade da CNH do motorista que será usado. **Fonte:** manual-09-expedicao#004; fluxo antigo \"Fluxo de expedição\".",
       "s": "d"
      },
      {
-      "t": "O consultor perguntou: quais problemas acontecem na entrega (cliente ausente, avaria, recusa) e o que se faz com o material que volta?",
-      "r": "**Como validar:** há uma lista de ocorrências reais e de quem decide re-entregar ou cancelar. **Por quê:** essa lista vira os **Tipos de Ocorrência** e define quais bloqueiam a entrega. **Fonte:** roteiro-expedicao-01-cadastros-e-parametros#021; roteiro-expedicao-05-re-expedicao-e-devolucoes#001.",
-      "s": "d",
-      "campo": "Ocorrências mais comuns"
+      "t": "**Faça:** abra `Parâmetros` e mostre quais checkpoints estão ligados.",
+      "r": "**Explique ao cliente:** ligue só as etapas que a empresa usa. A ordem é Carga fechada → Separação → Conferência → Carregamento → Saída para entrega. **Confira:** as etapas ligadas batem com a operação do pátio do cliente. **Fonte:** manual-09-expedicao#005.",
+      "s": "d"
      },
      {
-      "t": "O consultor perguntou: há peças longas (perfis de 6 m) ou restrição de dias e horários de entrega?",
-      "r": "**Como validar:** comprimento máximo dos veículos e janelas de entrega anotados. **Por quê:** o veículo tem campo de comprimento máximo e existem **Janelas de Entrega**. **Fonte:** manual-09-expedicao#002 e #003.",
+      "t": "**Faça:** abra `Tipos de Ocorrência` e leia com o cliente os tipos cadastrados.",
+      "r": "**Explique ao cliente:** são os motivos que o motorista vai registrar quando a entrega não acontece como previsto (cliente ausente, avaria, recusa). **Confira:** os tipos existem antes da primeira rota. **Fonte:** manual-09-expedicao#002 e #010.",
       "s": "d"
      }
     ]
    },
    {
-    "titulo": "2. Preparação da implantação",
-    "intro": "Prepare o ambiente com o responsável pela expedição ao seu lado: ele cadastra, você orienta. Combine as decisões de ocorrência com comercial e estoque antes de gravar, porque elas mudam o caminho do pedido.",
+    "titulo": "2. Liberar o pedido faturado",
+    "onde": "`Vendas > Pedidos de Venda`, menu `⋯` do pedido",
+    "intro": "A expedição começa no pedido. Mostre primeiro que a liberação não existe antes de faturar e depois libere o pedido de teste.",
     "passos": [
      {
-      "t": "As dependências estão prontas: pedidos sendo faturados com nota, OPs concluídas, almoxarifado central ativo, produtos com peso e clientes com CEP.",
-      "r": "**Como validar:** confira um pedido real de ponta a ponta antes do treino. **Por quê:** a Expedição só recebe pedido **Faturado** e acusa **Produção pendente** sem OP concluída. **Fonte:** apostila (Módulo Expedição); regra-vendas-liberar-para-expedicao-so-em-pedido-faturado; manual-09-expedicao#008.",
+      "t": "**Faça:** abra o menu `⋯` de um pedido **Em aberto** e procure **Liberar para Expedição**.",
+      "r": "**Explique ao cliente:** a ordem é faturar e depois liberar. O aviso da tela Montar Nova Carga manda clicar nesse botão, mas ele só existe em pedido Faturado. **Confira:** o item não aparece no pedido Em aberto. **Fonte:** regra-vendas-liberar-para-expedicao-so-em-pedido-faturado.",
       "s": "d"
      },
      {
-      "t": "O cliente cadastrou os tipos de veículo e os veículos, com capacidade em kg e m³ e comprimento máximo.",
-      "r": "**Como validar:** `Expedição > Configurações > Veículos` mostra a frota com kg e m³. **Por quê:** a capacidade alimenta o **Resumo da Carga** na montagem. **Fonte:** manual-09-expedicao#003.",
-      "s": "d"
+      "t": "**Faça:** no pedido de teste **Faturado**, abra o menu `⋯` e clique em **Liberar para Expedição**.",
+      "r": "**Explique ao cliente:** liberar coloca o pedido na fila da expedição. **Confira:** a mensagem \"Pedido liberado para expedição\" e o status **Lib. Expedição**. **Fonte:** fluxo antigo \"Fluxo de expedição\", bloco 1; \"Teste do fluxo completo\", bloco 6; manual-09-expedicao#007.",
+      "s": "v",
+      "campo": "Nº do pedido"
      },
      {
-      "t": "O cliente cadastrou os motoristas com CNH, categoria e validade.",
-      "r": "**Como validar:** `Expedição > Configurações > Motoristas` sem CNH vencida. **Por quê:** o motorista é obrigatório para montar a carga e o sistema alerta CNH vencida. **Fonte:** manual-09-expedicao#004; procedimento-montar-carga-e-liberar-para-expedicao.",
-      "s": "d"
-     },
-     {
-      "t": "Os **Parâmetros** têm ligados só os checkpoints que a empresa faz (Separação, Conferência, Carregamento).",
-      "r": "**Como validar:** o fluxo resultante na tela bate com a resposta da etapa 1. **Por quê:** cada checkpoint ligado exige apontamento de todos os volumes antes de iniciar a rota. **Fonte:** manual-09-expedicao#005.",
-      "s": "d"
-     },
-     {
-      "t": "Os **Tipos de Ocorrência** foram cadastrados, e a opção **Bloqueia finalização** foi decidida com comercial, estoque e expedição.",
-      "r": "**Como validar:** cada tipo bloqueante tem um dono para a decisão de re-expedir ou cancelar. **Por quê:** ocorrência bloqueante devolve o pedido para **Aguardando Re-Expedição**. **Fonte:** roteiro-expedicao-01-cadastros-e-parametros#021.",
-      "s": "d",
-      "campo": "Tipos bloqueantes e responsável pela decisão"
-     },
-     {
-      "t": "As **Janelas de Entrega** refletem os dias e horários reais de entrega.",
-      "r": "**Como validar:** compare com a resposta da etapa 1. **Por quê:** é cadastro necessário do módulo. **Fonte:** manual-09-expedicao#002.",
-      "s": "d"
-     },
-     {
-      "t": "Ficou combinado quem libera o pedido para expedição (Vendas ou Faturamento) e quem monta a carga.",
-      "r": "**Como validar:** os nomes estão no registro da OS. **Por quê:** a liberação acontece no pedido, em `Vendas > Pedidos de Venda`, e não na tela da Expedição. **Fonte:** manual-09-expedicao#007.",
-      "s": "d",
-      "campo": "Responsável pela liberação e pela montagem"
-     },
-     {
-      "t": "Há ao menos dois pedidos reais faturados, de regiões próximas, separados para o treino.",
-      "r": "**Como validar:** os pedidos aparecem com status **Faturado**. **Por quê:** o treino usa dados do cliente e permite juntar entregas na mesma carga. **Fonte:** manual-09-expedicao#012; apostila (Parte I: como conduzir o projeto).",
+      "t": "**Faça:** abra de novo o menu `⋯` do mesmo pedido.",
+      "r": "**Explique ao cliente:** enquanto não entra numa carga, a liberação pode ser desfeita. **Confira:** o item virou **Reverter Liberação**. **Fonte:** regra-vendas-liberar-para-expedicao-so-em-pedido-faturado; procedimento-montar-carga-e-liberar-para-expedicao.",
       "s": "d"
      }
     ]
    },
    {
-    "titulo": "3. Condução do treinamento",
-    "intro": "Treine na ordem do caminho físico da mercadoria e mostre o efeito em Vendas e Estoque a cada passo. Use os pedidos reais separados na preparação. Quem opera é o cliente; você fala menos e observa mais.",
+    "titulo": "3. Montar a carga",
+    "onde": "`Expedição > Visão Geral > + Montar Nova Carga`",
+    "intro": "Com o pedido na fila, monte a carga escolhendo o veículo pela ocupação. É aqui que o cliente vê peso e volume contra a capacidade.",
     "passos": [
      {
-      "t": "O consultor apresentou a sequência completa antes de abrir telas: pedido faturado, liberar, montar carga, fechar, separar, conferir, carregar, iniciar rota, confirmar entrega.",
-      "r": "**Como validar:** o cliente repete a sequência com as palavras dele. **Por quê:** é o ciclo da carga (Em montagem, Fechada, Em rota, Entregue) que ele vai acompanhar na **Visão Geral**. **Fonte:** manual-09-expedicao#001 e #006.",
+      "t": "**Faça:** abra `Expedição > Visão Geral` e mostre as abas **Operacional**, **Indicadores** e **Rastreamento** e os cartões do ciclo da carga.",
+      "r": "**Explique ao cliente:** toda carga passa por Em montagem → Fechada → Em rota → Entregue. **Confira:** os cartões com as cargas em cada fase. **Fonte:** manual-09-expedicao#006.",
       "s": "d"
      },
      {
-      "t": "O cliente liberou um pedido real faturado em `Vendas > Pedidos de Venda`, pelo menu `⋯`, e viu o status virar **Lib. Expedição**.",
-      "r": "**Como validar:** aparece a mensagem de pedido liberado. Mostre também que em pedido Em aberto o item não existe e que depois vira **Reverter Liberação**. **Fonte:** regra-vendas-liberar-para-expedicao-so-em-pedido-faturado; manual-09-expedicao#007.",
+      "t": "**Faça:** clique em **+ Montar Nova Carga** e tente montar marcando o pedido, mas sem informar **Data prevista de saída** nem **Motorista**.",
+      "r": "**Explique ao cliente:** data de saída e motorista são obrigatórios para a carga existir. **Confira:** o sistema não monta a carga sem os dois. **Fonte:** procedimento-montar-carga-e-liberar-para-expedicao.",
       "s": "d"
      },
      {
-      "t": "O cliente montou uma carga em **+ Montar Nova Carga** com os dois pedidos, escolheu o veículo pelo **Resumo da Carga** e informou data de saída e motorista.",
-      "r": "**Como validar:** a carga nasce **Em Montagem**. **Por quê:** ligar a escolha do veículo à ocupação real de peso e volume. Data prevista de saída e Motorista são obrigatórios. **Fonte:** manual-09-expedicao#008; procedimento-montar-carga-e-liberar-para-expedicao.",
+      "t": "**Faça:** marque o pedido em **Pedidos disponíveis**, escolha o **Veículo**, informe a **Data prevista de saída** e o **Motorista** e clique em **Montar Carga**.",
+      "r": "**Explique ao cliente:** os filtros por cidade, raio e CEP ajudam a juntar entregas da mesma região. **Confira:** o resumo mostra peso e volume contra a capacidade do veículo; a carga nasce **Em Montagem**. **Fonte:** fluxo antigo \"Fluxo de expedição\", bloco 1; \"Teste do fluxo completo\", bloco 6; procedimento-montar-carga-e-liberar-para-expedicao.",
+      "s": "v",
+      "campo": "Nº da carga"
+     },
+     {
+      "t": "**Faça:** se aparecer aviso de produção pendente no pedido, leia o aviso com o cliente antes de seguir.",
+      "r": "**Explique ao cliente:** o aviso indica item fabricado sem OP concluída; a montagem pode ser autorizada com justificativa, que fica registrada com o usuário. **Confira:** se a OP do item foi mesmo concluída em `Produção`. **Fonte:** manual-09-expedicao#008; fluxo antigo \"Fluxo de expedição\" (ver `naoValidado`).",
       "s": "d"
      },
      {
-      "t": "O consultor mostrou o caso de **Produção pendente** e a autorização com justificativa, explicando que fica registrada com o usuário.",
-      "r": "**Como validar:** o cliente diz quem na empresa pode autorizar. **Por quê:** autorizar sem critério esconde OP não concluída. **Fonte:** manual-09-expedicao#008.",
-      "s": "d",
-      "campo": "Quem pode autorizar montagem com produção pendente"
-     },
-     {
-      "t": "O cliente fechou a carga, imprimiu romaneio e etiquetas e apontou os checkpoints bipando os volumes até concluir todos.",
-      "r": "**Como validar:** aparece **Todos os checkpoints concluídos** e o botão **Iniciar Rota**. Mostre **Reabrir** para ajustes. **Fonte:** manual-09-expedicao#008 e #009.",
+      "t": "**Faça:** na tela da carga, abra o **Romaneio** e as **Etiquetas** dos volumes (só a prévia).",
+      "r": "**Explique ao cliente:** o romaneio acompanha a carga e as etiquetas identificam cada volume para a bipagem. **Confira:** romaneio com cliente, endereço, pedido, nota e volumes; uma etiqueta por volume. **Fonte:** manual-09-expedicao#008; fluxo antigo \"Fluxo de expedição\", bloco 5.",
       "s": "d"
-     },
-     {
-      "t": "O cliente iniciou a rota e confirmou uma entrega informando quem recebeu; o consultor mostrou a mesma confirmação no app **Minhas Entregas**.",
-      "r": "**Como validar:** a carga fica **Entregue**. **Por quê:** pelo ERP a entrega aparece como confirmada sem foto; pelo app, com foto e assinatura. **Fonte:** manual-09-expedicao#004 e #010.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor simulou uma ocorrência bloqueante em outra entrega e levou o cliente até **Aguardando Re-Expedição** para decidir re-expedir ou cancelar.",
-      "r": "**Como validar:** o cliente encontra o pedido na fila. **Por quê:** o pedido não some; espera uma decisão comercial. **Fonte:** roteiro-expedicao-04-entrega#025; roteiro-expedicao-05-re-expedicao-e-devolucoes#001.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor explicou a devolução: a confirmação muda a entrega para **Devolvido** e cria pendência de estoque por produto, sem entrada automática.",
-      "r": "**Como validar:** o cliente abre **Pendências de Estoque (Devolução)** e diz quem trata. **Por quê:** é a ligação da Expedição com o Estoque. **Fonte:** roteiro-expedicao-05-re-expedicao-e-devolucoes#014 e #016.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor mostrou a aba **Indicadores** da Visão Geral com o resultado do treino: entregas no prazo, ocorrências, ocupação e entregas por motorista.",
-      "r": "**Como validar:** o cliente escolhe o período e lê os números do treino. **Por quê:** é com eles que o gestor acompanha a expedição. **Fonte:** manual-09-expedicao#011.",
-      "s": "d",
-      "campo": "Data do treinamento"
      }
     ]
    },
    {
-    "titulo": "4. Validação do aprendizado",
-    "intro": "Agora o cliente faz sem ajuda, com outro pedido real. Você só observa e anota onde ele hesitou. Uma etapa só termina quando ele compreende, executa e valida.",
+    "titulo": "4. Fechar a carga e fazer os checkpoints",
+    "onde": "detalhe da carga",
+    "intro": "Fechar a carga libera os checkpoints do pátio. O cliente executa a bipagem com o consultor, volume a volume.",
     "passos": [
      {
-      "t": "O cliente explicou por que o botão **Liberar para Expedição** não aparece num pedido Em aberto e o que fazer.",
-      "r": "**Como validar:** a resposta cita que o pedido precisa estar Faturado. **Por quê:** é a dúvida mais frequente do módulo. **Fonte:** regra-vendas-liberar-para-expedicao-so-em-pedido-faturado; faq-perguntas-frequentes.",
-      "s": "d"
+      "t": "**Faça:** clique em **Fechar Carga**. Se o motorista estiver com CNH vencida, informe a justificativa.",
+      "r": "**Explique ao cliente:** depois de fechada, a carga não recebe novos pedidos sem reabrir. **Confira:** status **Fechada**; a justificativa fica nas observações; aparecem os checkpoints e o link de rastreamento. **Fonte:** fluxo antigo \"Fluxo de expedição\", bloco 1; \"Teste do fluxo completo\", bloco 6; manual-09-expedicao#009.",
+      "s": "v"
      },
      {
-      "t": "O cliente montou sozinho uma carga e justificou a escolha do veículo pela ocupação de peso e volume.",
-      "r": "**Como validar:** o **Resumo da Carga** não passa da capacidade. **Por quê:** carga mal dimensionada gera nova viagem. **Fonte:** manual-09-expedicao#008.",
-      "s": "d"
+      "t": "**Faça:** clique em **Apontar Separação** e bipe a etiqueta de cada volume (ou confirme o volume na tela).",
+      "r": "**Explique ao cliente:** a separação registra a saída do volume do estoque. **Confira:** o contador mostra o progresso dos volumes. **Fonte:** fluxo antigo \"Fluxo de expedição\", bloco 2; manual-09-expedicao#009.",
+      "s": "v"
      },
      {
-      "t": "O expedidor fechou a carga e apontou os checkpoints ligados, bipando ou confirmando os volumes, e iniciou a rota.",
-      "r": "**Como validar:** a carga fica **Em Rota**. **Por quê:** mostra que ele domina a parte física do processo. **Fonte:** manual-09-expedicao#009.",
-      "s": "d"
+      "t": "**Faça:** repita em **Apontar Conferência** e **Apontar Carregamento**.",
+      "r": "**Explique ao cliente:** a conferência valida o romaneio e o carregamento confirma cada volume no veículo. **Confira:** a mensagem \"Todos os checkpoints concluídos! Carga pronta para sair\". **Fonte:** fluxo antigo \"Fluxo de expedição\", bloco 2; \"Teste do fluxo completo\", bloco 6.",
+      "s": "v"
      },
      {
-      "t": "O cliente confirmou uma entrega e registrou uma ocorrência não bloqueante em outra, explicando a diferença entre as duas.",
-      "r": "**Como validar:** a ocorrência informativa não manda o pedido para re-expedição. **Por quê:** tipo bloqueante usado só como observação muda o fluxo do pedido. **Fonte:** roteiro-expedicao-04-entrega#025.",
+      "t": "**Faça:** mostre o botão **Reabrir** sem clicar.",
+      "r": "**Explique ao cliente:** reabrir volta a carga para ajustes antes da saída. **Confira:** o botão está disponível enquanto a carga não saiu. **Fonte:** manual-09-expedicao#009.",
       "s": "d"
-     },
-     {
-      "t": "O responsável comercial tomou a decisão de um pedido em **Aguardando Re-Expedição** e explicou o critério.",
-      "r": "**Como validar:** ele conferiu ocorrência, foto e situação do material antes de decidir. **Por quê:** a decisão envolve material, pedido, cliente e estoque. **Fonte:** roteiro-expedicao-05-re-expedicao-e-devolucoes#004.",
-      "s": "d"
-     },
-     {
-      "t": "O cliente explicou que confirmar a devolução não devolve o saldo sozinho e mostrou onde o estoque trata a pendência.",
-      "r": "**Como validar:** ele abre **Pendências de Estoque (Devolução)**. **Fonte:** roteiro-expedicao-05-re-expedicao-e-devolucoes#016.",
-      "s": "d"
-     },
-     {
-      "t": "O gestor leu os **Indicadores** de um período e apontou o motorista ou a ocorrência que merece atenção.",
-      "r": "**Como validar:** a leitura bate com o que aconteceu no treino. **Fonte:** manual-09-expedicao#011.",
-      "s": "d",
-      "campo": "Dúvidas registradas"
      }
     ]
    },
    {
-    "titulo": "5. Preparação para utilização e go-live",
-    "intro": "No go-live, a primeira carga real é acompanhada de perto. Combine com o responsável da expedição o que olhar todo dia nas primeiras semanas e só libere o módulo seguinte quando o ciclo fechar sem ajuda.",
+    "titulo": "5. Rota e entrega",
+    "onde": "detalhe da carga e `Apontamentos do Motorista`",
+    "intro": "A saída trava os checkpoints e a entrega fecha o ciclo. Termine conferindo o reflexo no pedido de Vendas.",
     "passos": [
      {
-      "t": "Todos os veículos e motoristas ativos estão cadastrados, e os motoristas que vão usar o app **Minhas Entregas** já entraram com o usuário deles.",
-      "r": "**Como validar:** cada motorista abre o app no celular. **Por quê:** sem o app, toda confirmação vira registro sem foto. **Fonte:** manual-09-expedicao#004 e #010.",
+      "t": "**Faça:** clique em **Iniciar Rota** e confirme a saída do veículo.",
+      "r": "**Explique ao cliente:** a partir daqui o pátio não mexe mais na carga. **Confira:** carga **Em Rota** e checkpoints travados. **Fonte:** fluxo antigo \"Fluxo de expedição\", bloco 2; \"Teste do fluxo completo\", bloco 6.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** em \"Apontamentos do Motorista\", clique em **Entregue**, informe o nome de quem recebeu e o motivo da confirmação sem comprovante.",
+      "r": "**Explique ao cliente:** o normal é o motorista confirmar pelo app, com foto e assinatura; pelo painel do ERP o sistema pede o motivo. **Confira:** carga e pedido **Entregue**. **Fonte:** fluxo antigo \"Fluxo de expedição\", bloco 2; \"Teste do fluxo completo\", bloco 6; manual-09-expedicao#010.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** abra o **Histórico da Carga**.",
+      "r": "**Explique ao cliente:** cada passo fica registrado com autor e horário, para auditoria da entrega. **Confira:** liberação, montagem, fechamento, checkpoints, rota e entrega no histórico. **Fonte:** fluxo antigo \"Fluxo de expedição\", bloco 2.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** abra `Vendas > Demonstrativos > Carteira de Pedidos` e procure o pedido de teste.",
+      "r": "**Explique ao cliente:** Vendas acompanha a entrega sem abrir a Expedição. **Confira:** o pedido passou por A expedir → Em carga → Expedido → Entregue, com o número da carga. **Fonte:** fluxo antigo \"Fluxo de expedição\", bloco 2.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** abra `Expedição > Visão Geral`, aba **Indicadores**, e escolha o período do teste.",
+      "r": "**Explique ao cliente:** entregas no prazo, taxa de ocorrências, ocupação média dos veículos e entregas por motorista; a análise completa fica em Demonstrativos. **Confira:** a entrega de teste entrou no total. **Fonte:** manual-09-expedicao#011.",
+      "s": "d"
+     }
+    ]
+   },
+   {
+    "titulo": "6. Ocorrência na rota",
+    "onde": "`Apontamentos do Motorista > Ocorrência` e `Expedição > Ocorrências`",
+    "intro": "Use uma segunda carga de teste, já em rota, para mostrar o que acontece quando a entrega não sai como previsto.",
+    "passos": [
+     {
+      "t": "**Faça:** registre uma ocorrência de **Cliente Ausente**.",
+      "r": "**Explique ao cliente:** esse tipo não exige foto. **Confira:** a ocorrência é aceita e fica no histórico da entrega. **Fonte:** fluxo antigo \"Fluxo de expedição\", bloco 3.",
       "s": "d"
      },
      {
-      "t": "A primeira carga real saiu pelo sistema, do pedido liberado à entrega confirmada, com o consultor acompanhando.",
-      "r": "**Como validar:** a carga aparece **Entregue** na **Visão Geral**. **Fonte:** apostila (Parte II: treinamentos, go-live e encerramento).",
+      "t": "**Faça:** tente registrar **Mercadoria Avariada** sem foto; depois registre com foto.",
+      "r": "**Explique ao cliente:** avaria exige prova. **Confira:** sem foto o sistema recusa (\"foto obrigatória\"); com foto aceita e a foto abre no ERP. **Fonte:** fluxo antigo \"Fluxo de expedição\", bloco 3.",
+      "s": "d"
+     },
+     {
+      "t": "**Faça:** registre uma ocorrência **bloqueante** e, em outra entrega, uma **Entrega Parcial** (não bloqueante).",
+      "r": "**Explique ao cliente:** a bloqueante tira a entrega do caminho e devolve o pedido à fila; a parcial não. **Confira:** a bloqueante aparece em `Expedição > Aguardando Re-Expedição`; a parcial não. **Fonte:** fluxo antigo \"Fluxo de expedição\", bloco 3.",
+      "s": "d"
+     },
+     {
+      "t": "**Faça:** filtre `Expedição > Ocorrências` por tipo e período.",
+      "r": "**Explique ao cliente:** é a lista que o gestor usa para cobrar a operação. **Confira:** os números do resumo por tipo batem com a lista. **Fonte:** fluxo antigo \"Fluxo de expedição\", bloco 3.",
+      "s": "d"
+     }
+    ]
+   },
+   {
+    "titulo": "7. Devolução e re-expedição",
+    "onde": "`Expedição > Aguardando Re-Expedição` e `Expedição > Pendências de Estoque (Devolução)`",
+    "intro": "Feche o roteiro mostrando a devolução e a passagem para o Estoque, que não é automática.",
+    "passos": [
+     {
+      "t": "**Faça:** na entrega com ocorrência bloqueante, use **Confirmar devolução**. Depois clique de novo.",
+      "r": "**Explique ao cliente:** a devolução muda a situação da entrega uma única vez. **Confira:** a entrega passa a **Devolvida**; confirmar de novo não duplica pendência nem estorno. **Fonte:** fluxo antigo \"Fluxo de expedição\", bloco 4.",
+      "s": "d"
+     },
+     {
+      "t": "**Faça:** abra `Pendências de Estoque (Devolução)` e, em seguida, o saldo do produto em `Estoque > Saldo`.",
+      "r": "**Explique ao cliente:** a devolução **não** devolve o saldo sozinha; alguém do estoque decide a entrada. **Confira:** existe uma pendência por produto devolvido e o saldo não subiu. **Fonte:** fluxo antigo \"Fluxo de expedição\", bloco 4.",
+      "s": "d"
+     },
+     {
+      "t": "**Faça:** dê a entrada manual pelo Estoque e marque a pendência como resolvida. Tente resolver de novo.",
+      "r": "**Explique ao cliente:** a pendência registra quem resolveu e quando. **Confira:** ela sai da lista de pendentes; resolver duas vezes é recusado. **Fonte:** fluxo antigo \"Fluxo de expedição\", bloco 4.",
+      "s": "d"
+     },
+     {
+      "t": "**Faça:** monte uma nova carga com o pedido que voltou para re-expedição.",
+      "r": "**Explique ao cliente:** os volumes da entrega anterior saem de circulação. **Confira:** o saldo por item não dobra na nova carga. **Fonte:** fluxo antigo \"Fluxo de expedição\", bloco 4.",
       "s": "d",
-      "campo": "Data da primeira carga real"
-     },
-     {
-      "t": "Nas primeiras semanas, o responsável confere todo dia as cargas paradas em **Em montagem** ou **Fechada** e os pedidos liberados que não entraram em carga.",
-      "r": "**Como validar:** a **Visão Geral** não tem cargas antigas paradas sem motivo. **Por quê:** carga parada costuma ser checkpoint ligado que ninguém aponta. **Fonte:** manual-09-expedicao#006.",
-      "s": "d"
-     },
-     {
-      "t": "Nas primeiras semanas, a fila **Aguardando Re-Expedição** e as **Pendências de Estoque (Devolução)** são tratadas toda semana, com dono definido.",
-      "r": "**Como validar:** não há pedido esquecido na fila. **Por quê:** pedido sem decisão fica fora do acompanhamento comercial. **Fonte:** roteiro-expedicao-05-re-expedicao-e-devolucoes#001.",
-      "s": "d"
-     },
-     {
-      "t": "O gestor revisa as autorizações de montagem com produção pendente e as justificativas registradas.",
-      "r": "**Como validar:** cada autorização tem justificativa coerente. **Por quê:** muitas autorizações indicam OP não concluída no sistema. **Fonte:** manual-09-expedicao#008.",
-      "s": "d"
-     },
-     {
-      "t": "O saldo de estoque é conferido antes de finalizar as notas dos pedidos que vão para a expedição.",
-      "r": "**Como validar:** não aparecem saldos negativos depois das primeiras cargas. **Por quê:** na v1.22.13 a finalização da nota gerou saída mesmo sem saldo. **Fonte:** regra-faturamento-finalizar-nf-requisitos.",
-      "s": "d"
-     },
-     {
-      "t": "Critério para liberar o módulo seguinte: duas semanas de cargas fechando o ciclo sem ajuda e indicadores lidos pelo gestor; se o cliente implanta Projetos e Obras, as fases de separação, conferência, carregamento e entrega já alimentam o **Andamento das Obras**.",
-      "r": "**Como validar:** o consultor confere uma obra com entregas no **Andamento das Obras**. **Fonte:** manual-12-projetos-e-tarefas#007; apostila (Módulo Projetos e Obras).",
-      "s": "d",
-      "campo": "Data de liberação do próximo módulo"
+      "campo": "Nº da nova carga"
      }
     ]
    }
   ],
   "resultado": [
    {
-    "t": "O cliente libera, monta, fecha, aponta checkpoints e confirma entregas sozinho, com pedidos reais.",
+    "t": "O pedido faturado foi liberado, entrou numa carga, passou pelos checkpoints e chegou a **Entregue**, com todo o caminho no Histórico da Carga.",
+    "s": "v"
+   },
+   {
+    "t": "A Carteira de Pedidos de Vendas mostra o pedido entregue com o número da carga.",
+    "s": "v"
+   },
+   {
+    "t": "Uma ocorrência bloqueante devolveu o pedido à fila de re-expedição e a devolução gerou pendência de estoque sem mexer no saldo.",
     "s": "d"
    },
    {
-    "t": "Os checkpoints ligados nos Parâmetros são exatamente os que a empresa faz na prática.",
-    "s": "d"
-   },
-   {
-    "t": "Ocorrências bloqueantes têm dono e a fila de re-expedição é tratada com rotina definida.",
-    "s": "d"
-   },
-   {
-    "t": "O estoque trata as devoluções pelas pendências, sem esperar entrada automática.",
-    "s": "d"
-   },
-   {
-    "t": "O gestor acompanha a operação pelos Indicadores da Visão Geral.",
+    "t": "O cliente montou e fechou uma carga sozinho, escolhendo o veículo pela ocupação.",
     "s": "d"
    }
   ],
   "atencao": [
-   "**Liberar para Expedição** só existe no menu `⋯` de pedido **Faturado**; o aviso da tela **Montar Nova Carga** manda clicar nesse botão, mas ele não fica na Expedição (regra-vendas-liberar-para-expedicao-so-em-pedido-faturado).",
-   "Ligar checkpoints que a empresa não faz trava as cargas em **Fechada**, porque todos os volumes precisam ser apontados antes de iniciar a rota (manual-09-expedicao#005 e #009).",
-   "Tipo de ocorrência bloqueante usado só para observação manda o pedido para re-expedição sem necessidade (roteiro-expedicao-04-entrega#025).",
-   "Confirmar a devolução não cria entrada de estoque: sem rotina nas **Pendências de Estoque (Devolução)**, o saldo fica errado (roteiro-expedicao-05-re-expedicao-e-devolucoes#016).",
-   "Autorizar montagem com **Produção pendente** sem critério esconde OP não concluída; a justificativa fica registrada com o usuário (manual-09-expedicao#008).",
-   "Hoje o sistema ainda pode avisar **item sem ordem de produção vinculada** mesmo quando a OP existe; confira a OP antes de concluir que há erro (procedimento-montar-carga-e-liberar-para-expedicao).",
-   "Produto sem peso e cliente sem CEP deixam a ocupação do veículo e o mapa sem sentido (manual-09-expedicao#002).",
-   "Na v1.22.13 a finalização da nota gerou a saída **Expedição (PV)** mesmo sem saldo; oriente conferir o saldo antes de finalizar (regra-faturamento-finalizar-nf-requisitos)."
+   "Só em ambiente de teste, com registros \"TESTE FLUXO CONSULTOR\". A nota fiscal do pedido só é transmitida com o responsável fiscal.",
+   "**Liberar para Expedição** só aparece no pedido **Faturado**, e o aviso da tela de montagem não diz isso: fature antes.",
+   "Montar, fechar, **Iniciar Rota**, **Entregue** e cancelar carga alteram a operação. O link de rastreamento e os avisos podem chegar ao cliente final: use e-mail de teste e revogue o link.",
+   "Hoje a carga ainda pode avisar \"item sem ordem de produção vinculada\" mesmo com a OP existente: confira a OP antes de carregar.",
+   "A devolução **não** devolve o saldo ao estoque sozinha: depende da entrada manual e da baixa da pendência.",
+   "**Gerar Títulos** do pedido fica desabilitado em Faturado e Lib. Expedição (\"Pedido já faturado\") e volta depois de Entregue: combine com o Financeiro quando gerar.",
+   "Motorista com CNH vencida trava o fechamento sem justificativa: confira a validade antes do dia da implantação."
   ],
   "naoValidado": [
-   "Movimento de estoque na finalização da nota: na v1.22.12 não houve saída e na v1.22.13 houve saída **Expedição (PV)**. Confira na versão do cliente antes de ensinar (regra-faturamento-finalizar-nf-requisitos; faq-limitacoes-conhecidas-v1-22-12, FAT-4).",
-   "Re-expedição, devolução e as permissões de liberação e ocorrência vêm só dos roteiros de treinamento (marcados como possivelmente desatualizados); o manual-09 não cobre esse fluxo. Confira na tela antes de ensinar.",
-   "O aviso **item sem ordem de produção vinculada** com OP existente foi visto em teste (procedimento-montar-carga-e-liberar-para-expedicao), enquanto o manual-09 descreve **Produção pendente** só para OP não concluída. Confira na tela qual aviso aparece."
+   "Caminho dos cadastros: o fluxo antigo cita `Expedição > Cadastros`; o manual-09-expedicao usa `Expedição > Configurações` (Veículos, Motoristas, Parâmetros, Tipos de Ocorrência). O menu lateral tem os dois itens: conferir na tela onde fica cada cadastro.",
+   "Caminho da montagem: o fluxo antigo e o procedimento citam `Expedição > Montar Nova Carga`; o manual-09-expedicao usa `Expedição > Visão Geral > + Montar Nova Carga`.",
+   "Produção pendente: o manual-09-expedicao descreve a opção **Autorizar montagem apesar do bloqueio de produção** com justificativa; o fluxo antigo e o \"Teste do fluxo completo\" registram o aviso \"item sem ordem de produção vinculada\" mesmo com OP (defeito). Conferir na tela qual aviso aparece e se a autorização existe.",
+   "Mensagem dos checkpoints: o fluxo antigo registra \"Todos os checkpoints concluídos! Carga pronta para sair\"; o manual-09-expedicao cita só \"Todos os checkpoints concluídos\".",
+   "Ocorrências, devolução, re-expedição, pendências de estoque e o app do motorista ainda não foram executados no sistema: os blocos 6 e 7 vêm do plano de QA de Expedição pelo fluxo antigo."
   ],
   "video": {
    "id": "consultor-06-expedicao",
@@ -3954,279 +3957,244 @@ export const CHECKLISTS_IMPLANTACAO = [
  {
   "id": "implantacao-projetos",
   "arquivo": "implantacao-14-projetos.html",
-  "etiqueta": "Consultor · Implantação · Projetos e Obras",
-  "titulo": "Implantação de Projetos e Obras",
-  "subtitulo": "Checklist para o consultor conduzir e verificar a implantação de Projetos e Obras, em que cada obra vira o centro de controle de vendas, produção, campo e resultado.",
-  "objetivo": "Ao final, o cliente cadastra cada obra com etapas e resultado previsto, vincula pedidos e documentos à obra e lê sozinho o Painel Financeiro, o Andamento das Obras e o Plano de Resultado. Ele sabe investigar uma diferença no documento de origem, sem mexer no painel. Para uma indústria de esquadrias, é aqui que se descobre se a obra deu margem.",
-  "rodape": "Checklist de implantação · Projetos e Obras · fontes: apostila do consultor (Módulo Projetos e Obras), manual-12-projetos-e-tarefas, procedimento-cadastrar-cliente-produto-e-obra, regra-vendas-editar-pedido-somente-em-aberto, faq-limitacoes-conhecidas (FIN-4), roteiros de projetos 02 a 04 · Harness Faktory Flow",
+  "etiqueta": "Consultor · Implantação · Projetos",
+  "titulo": "Implantação de Projetos: roteiro prático com o cliente",
+  "subtitulo": "Executar com o cliente o ciclo da obra: cadastrar a obra, ligar a ela o pedido, a medição, a OP, a nota e os títulos, organizar estágios e etapas e conferir os painéis da obra (previsto × realizado).",
+  "objetivo": "Ao final, o cliente terá visto uma obra de teste receber os documentos dos outros módulos e os painéis mostrarem números coerentes com eles. Saberá cadastrar uma obra, ligar o pedido antes de faturar e ler o Painel Financeiro de Projetos.",
+  "rodape": "Checklist de implantação · Projetos · fontes: fluxo antigo \"Fluxo de projetos e obras\", procedimento-cadastrar-cliente-produto-e-obra, regra-vendas-editar-pedido-somente-em-aberto, regra-faturamento-finalizar-nf-requisitos, faq-limitacoes-conhecidas-v1-22-12, manual-12-projetos-e-tarefas · Harness Faktory Flow",
   "prerequisitos": [
    {
-    "t": "Vendas, Compras, Produção, Estoque e Financeiro estão implantados e em uso.",
-    "r": "**Como validar:** confira pedidos, OPs e títulos reais dos últimos dias. **Por quê:** o projeto só mostra resultado com os documentos desses módulos ligados a ele. **Fonte:** apostila (Módulo Projetos e Obras: implantar após Vendas, Compras, Produção, Estoque e Financeiro).",
+    "t": "Um cliente de teste cadastrado em `Cadastros > Participantes`, com **É Cliente?** ligado.",
+    "r": "**Confira:** o participante aparece no seletor **Cliente** do Novo Projeto. **Fonte:** procedimento-cadastrar-cliente-produto-e-obra.",
     "s": "d"
    },
    {
-    "t": "Os clientes das obras estão cadastrados como participantes com **É Cliente?** ligado.",
-    "r": "**Como validar:** procure 3 clientes de obras ativas em `Cadastros > Participantes`. **Por quê:** o projeto pede **Cliente**. **Fonte:** procedimento-cadastrar-cliente-produto-e-obra.",
-    "s": "d"
+    "t": "Um **local de estoque do projeto** ativo em `Estoque > Locais`, ou o almoxarifado central ativo, para finalizar a nota com a obra.",
+    "r": "**Confira:** o local ativo e da mesma empresa das ordens de produção. A nota com projeto movimenta só o local do projeto. **Fonte:** fluxo antigo \"Fluxo de projetos e obras\" (pré-requisito); regra-estoque-almoxarifado-central-ativo-e-pre-requisito; manual-12-projetos-e-tarefas#002.",
+    "s": "v"
    },
    {
-    "t": "O local de estoque de cada obra, quando existir, está ativo e é da mesma empresa das ordens de produção.",
-    "r": "**Como validar:** confira o local nas obras com estoque próprio. **Por quê:** local de outra empresa impede o apontamento; local inativo bloqueia a nota. **Fonte:** manual-12-projetos-e-tarefas#002; regra-faturamento-finalizar-nf-requisitos; regra-estoque-almoxarifado-central-ativo-e-pre-requisito.",
-    "s": "d"
-   },
-   {
-    "t": "O cliente separou a lista das obras ativas com cliente, orçamento, datas, endereço e responsável.",
-    "r": "**Como validar:** a lista está com o consultor antes da preparação. **Por quê:** esses dados formam o cadastro do projeto. **Fonte:** manual-12-projetos-e-tarefas#002.",
-    "s": "d",
-    "campo": "Responsável pela lista de obras"
-   },
-   {
-    "t": "Quem vai acompanhar as obras (gerente de obras, financeiro, diretoria) tem acesso ao módulo Projetos.",
-    "r": "**Como validar:** cada um abre `Projetos > Todos os Projetos`. **Por quê:** os painéis são lidos por perfis diferentes. **Fonte:** manual-12-projetos-e-tarefas#001.",
-    "s": "d"
-   },
-   {
-    "t": "Se a empresa usa medição e instalação, o módulo Serviços está em uso ou planejado no cronograma.",
-    "r": "**Como validar:** confira no cronograma. **Por quê:** o painel mostra medições em aberto como pendência da obra, e o endereço da obra é usado na medição. **Fonte:** manual-12-projetos-e-tarefas#002 e #006.",
+    "t": "Produto de teste, condição de pagamento e permissão para criar projetos, estágios e etapas.",
+    "r": "**Confira:** o consultor consegue abrir **+ Novo Projeto** e os botões **Estágios** e **Etapas** da lista. **Fonte:** fluxo antigo \"Fluxo de projetos e obras\" (pré-requisito).",
     "s": "d"
    }
   ],
   "fluxos": [
    {
-    "titulo": "1. Entendimento do cenário do cliente",
-    "intro": "Converse com quem responde pela obra e com quem apura o resultado: gerente de obras, financeiro e, se possível, o dono. Peça para ver a planilha de controle de obras que eles usam hoje.",
+    "titulo": "1. Cadastrar a obra",
+    "onde": "`Cadastros > Projetos > Novo Projeto`",
+    "intro": "A obra vem antes de qualquer documento: é o guarda-chuva que vai receber pedido, produção, medição, nota e títulos.",
     "passos": [
      {
-      "t": "O consultor perguntou: como vocês controlam as obras hoje? Planilha, pasta, sistema? O que define uma obra: um contrato, um orçamento, um endereço?",
-      "r": "**Como validar:** ficou anotado o que vira um projeto no Flow. **Por quê:** o projeto é o guarda-chuva da obra; definir errado espalha documentos em projetos diferentes. **Fonte:** manual-12-projetos-e-tarefas#002.",
-      "s": "d",
-      "campo": "O que é uma obra para o cliente"
+      "t": "**Faça:** clique em **Novo Projeto** e preencha **Nome do Projeto**, **Código**, **Status**, **Cliente** e **Responsável** de uma obra \"TESTE FLUXO CONSULTOR\". Clique em **Salvar**.",
+      "r": "**Explique ao cliente:** Nome do Projeto e Código são obrigatórios; um padrão comum é usar o número do orçamento como código. **Confira:** a mensagem \"Registro salvo com sucesso!\" e a obra na lista com código, cliente e status. **Fonte:** fluxo antigo \"Fluxo de projetos e obras\", bloco 1; procedimento-cadastrar-cliente-produto-e-obra; manual-12-projetos-e-tarefas#002.",
+      "s": "v",
+      "campo": "Código da obra"
      },
      {
-      "t": "O consultor perguntou: que código vocês usam para identificar a obra? O número do orçamento serve?",
-      "r": "**Como validar:** o padrão de código está decidido. **Por quê:** **Código** é obrigatório e não pode repetir. **Fonte:** manual-12-projetos-e-tarefas#002; procedimento-cadastrar-cliente-produto-e-obra.",
-      "s": "d",
-      "campo": "Padrão de código da obra"
+      "t": "**Faça:** tente salvar outra obra com o mesmo **Código**.",
+      "r": "**Explique ao cliente:** o código identifica a obra em todos os seletores, por isso não se repete. **Confira:** o sistema recusa o código repetido. **Fonte:** fluxo antigo \"Fluxo de projetos e obras\", bloco 1; procedimento-cadastrar-cliente-produto-e-obra.",
+      "s": "v"
      },
      {
-      "t": "O consultor perguntou: quais fases vocês acompanham numa obra (medição, produção, instalação, vistoria)? Quem cobra cada uma?",
-      "r": "**Como validar:** há uma lista de estágios e etapas padrão. **Por quê:** ela vira as **Etapas** e **Estágios** do projeto. **Fonte:** manual-12-projetos-e-tarefas#003.",
+      "t": "**Faça:** tente salvar uma obra sem nome e outra com a data de fim anterior à de início.",
+      "r": "**Explique ao cliente:** o sistema protege o cadastro antes de a obra receber documentos. **Confira:** os dois casos são recusados sem perder o que foi digitado. **Fonte:** fluxo antigo \"Fluxo de projetos e obras\", bloco 1.",
       "s": "d"
      },
      {
-      "t": "O consultor perguntou: como vocês sabem hoje se uma obra deu lucro? Calculam margem prevista no orçamento e comparam no fim?",
-      "r": "**Como validar:** ficou claro se o cliente quer usar **Plano de Resultado** com previsto e realizado. **Por quê:** sem previsto, o painel não tem com o que comparar. **Fonte:** roteiro-projetos-03-plano-de-resultado-e-financeiro#005.",
+      "t": "**Faça:** edite a obra pelo lápis e preencha **Datas e Orçamento** (início, fim previsto e valor orçado), **Endereços do Projeto** e **Resultados Previstos**. Salve e reabra.",
+      "r": "**Explique ao cliente:** o endereço da obra é usado na medição e na instalação; o orçamento e o resultado previsto são a base do previsto × realizado. **Confira:** os valores voltam iguais ao reabrir. **Fonte:** manual-12-projetos-e-tarefas#002; fluxo antigo \"Fluxo de projetos e obras\", bloco 1.",
       "s": "d"
      },
      {
-      "t": "O consultor perguntou: compras de perfis, vidros e acessórios são feitas por obra? E as contas a pagar, são ligadas à obra?",
-      "r": "**Como validar:** a resposta define quais documentos precisam carregar o projeto. **Por quê:** só o que é ligado ao projeto entra no realizado. **Fonte:** roteiro-projetos-03-plano-de-resultado-e-financeiro#008.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor perguntou: vocês contratam por área (m²)? Precisam acompanhar peça a peça o que foi entregue?",
-      "r": "**Como validar:** ficou decidido se o cliente usará **Andamento das Obras** e custo por m². **Por quê:** sem área contratada, o custo por m² fica indisponível. **Fonte:** plano-projetos#070; manual-12-projetos-e-tarefas#007.",
+      "t": "**Faça:** abra `Projetos > Todos os Projetos` e filtre pelo status da obra de teste.",
+      "r": "**Explique ao cliente:** é a visão em cartões da carteira de obras; **Ver Painel** abre o painel financeiro da obra. **Confira:** os indicadores do topo (Ativos, Em andamento, Concluídos, Planejamento) batem com a contagem filtrada. **Fonte:** manual-12-projetos-e-tarefas#005; fluxo antigo \"Fluxo de projetos e obras\", bloco 1.",
       "s": "d"
      }
     ]
    },
    {
-    "titulo": "2. Preparação da implantação",
-    "intro": "Prepare com o gerente de obras e o financeiro juntos. O cuidado principal é a ligação entre pedido e obra: decida agora quem informa o projeto e em que momento, porque depois de faturar não dá mais para ajustar.",
+    "titulo": "2. Estágios e etapas",
+    "onde": "botões `Estágios` e `Etapas` na linha da obra",
+    "intro": "Estágios são as fases macro; etapas são os passos acompanhados. Eles servem de filtro nos documentos de compra e produção da obra.",
     "passos": [
      {
-      "t": "As dependências estão prontas: pedidos, OPs, compras e títulos em uso, clientes cadastrados e locais de estoque ativos e da empresa certa.",
-      "r": "**Como validar:** confira um pedido real com OP e título. **Por quê:** o projeto reúne documentos desses módulos. **Fonte:** apostila (Módulo Projetos e Obras); manual-12-projetos-e-tarefas#002.",
+      "t": "**Faça:** clique em **Estágios** e crie três estágios de teste com peso (ex.: 20, 30 e 50). Reordene.",
+      "r": "**Explique ao cliente:** o estágio organiza a obra em fases. **Confira:** a nova ordem persiste ao reabrir. **Fonte:** fluxo antigo \"Fluxo de projetos e obras\", bloco 2; manual-12-projetos-e-tarefas#003.",
       "s": "d"
      },
      {
-      "t": "Ficou definido que o vendedor informa o **Projeto (opcional)** no pedido enquanto ele está Em aberto, antes de faturar.",
-      "r": "**Como validar:** a regra está combinada com Vendas e registrada na OS. **Por quê:** pedido Faturado só tem Visualizar; o projeto não pode mais ser ajustado. **Fonte:** regra-vendas-editar-pedido-somente-em-aberto; faq-perguntas-frequentes.",
-      "s": "d",
-      "campo": "Quem informa o projeto no pedido"
-     },
-     {
-      "t": "O cliente cadastrou as obras ativas com Nome do Projeto, Código, Status, Cliente, Responsável, datas, orçamento e endereço da obra.",
-      "r": "**Como validar:** `Projetos > Todos os Projetos` mostra as obras com o status certo. **Por quê:** endereço é usado na medição e orçamento alimenta o painel. **Fonte:** manual-12-projetos-e-tarefas#002; procedimento-cadastrar-cliente-produto-e-obra.",
+      "t": "**Faça:** clique em **Etapas**, escolha o **Estágio**, digite a descrição (ex.: \"Medição dos vãos\", \"Produção das esquadrias\", \"Instalação\") e clique em **+**. Reordene pela alça ⋮⋮.",
+      "r": "**Explique ao cliente:** cada etapa pode pertencer a um estágio; a etiqueta **Ativa** indica que está em uso. **Confira:** as etapas na ordem escolhida. **Fonte:** manual-12-projetos-e-tarefas#003; fluxo antigo \"Fluxo de projetos e obras\", bloco 2.",
       "s": "d"
      },
      {
-      "t": "Os estágios e as etapas padrão foram cadastrados nas obras, na ordem real do processo.",
-      "r": "**Como validar:** abra **Etapas** numa obra e confira a ordem. **Por quê:** é a sequência que a equipe vai acompanhar. **Fonte:** manual-12-projetos-e-tarefas#003.",
-      "s": "d"
-     },
-     {
-      "t": "Nas obras em que o cliente quer medir resultado, os **Resultados Previstos** (margem) e as linhas de receita e despesa previstas foram informados.",
-      "r": "**Como validar:** reabra a obra e confira os valores gravados. **Por quê:** o previsto é a referência do **Plano de Resultado**. **Fonte:** manual-12-projetos-e-tarefas#002; plano-projetos#015.",
-      "s": "d"
-     },
-     {
-      "t": "Se houver importação de projetos, o cliente pesquisou código e nome antes e importou poucos registros para conferir.",
-      "r": "**Como validar:** não há projeto duplicado na lista. **Por quê:** repetir o lote cria duplicidade. **Fonte:** roteiro-projetos-04-comparacao-e-integracoes#008 e #010.",
-      "s": "d"
-     },
-     {
-      "t": "O financeiro sabe que não deve lançar à mão um título que o pedido da obra já gera.",
-      "r": "**Como validar:** combine a regra com o financeiro. **Por quê:** título manual e título gerado para o mesmo recebível somam em dobro no **Painel Financeiro de Projetos**. **Fonte:** regra-financeiro-titulo-manual-e-gerado-duplicam-a-receita.",
+      "t": "**Faça:** marque um estágio como feito e depois reabra-o.",
+      "r": "**Explique ao cliente:** a conclusão do estágio registra a data automaticamente. **Confira:** a data de conclusão aparece ao marcar e some ao reabrir. **Fonte:** fluxo antigo \"Fluxo de projetos e obras\", bloco 2.",
       "s": "d"
      }
     ]
    },
    {
-    "titulo": "3. Condução do treinamento",
-    "intro": "Treine com uma obra real do cliente, de preferência uma em andamento com pedido, produção e financeiro. Mostre que cada número do painel vem de um documento de outro módulo e leve o cliente até esse documento.",
+    "titulo": "3. Ligar o pedido e a medição à obra",
+    "onde": "`Vendas > Pedidos de Venda` e `Serviços > Medições > + Nova Medição`",
+    "intro": "O pedido é o primeiro documento ligado à obra e precisa receber o projeto antes de faturar. A medição herda a obra do pedido.",
     "passos": [
      {
-      "t": "O consultor apresentou a sequência: venda, criação da obra, planejamento, execução, acompanhamento e resultado, ligando cada fase ao módulo de origem.",
-      "r": "**Como validar:** o cliente diz de onde vem o valor vendido, o faturado e o custo. **Por quê:** é a visão da obra como centro de resultado. **Fonte:** apostila (Processos fiscal, de expedição e de projetos e obras).",
-      "s": "d"
+      "t": "**Faça:** crie um pedido de venda de teste e escolha a obra no campo **Projeto (opcional)**. Salve.",
+      "r": "**Explique ao cliente:** o pedido com projeto leva a obra para a medição, a produção, a nota e os títulos. **Confira:** a coluna PROJETO da lista de pedidos mostra a obra. **Fonte:** fluxo antigo \"Fluxo de projetos e obras\", bloco 3; funcional-cadastros-participante-produto-e-projeto.",
+      "s": "v",
+      "campo": "Nº do pedido"
      },
      {
-      "t": "O cliente cadastrou uma obra nova real e as etapas dela, com estágios.",
-      "r": "**Como validar:** a obra aparece em **Todos os Projetos** com o status escolhido. **Por quê:** é o primeiro passo de toda obra nova. **Fonte:** manual-12-projetos-e-tarefas#002 e #003.",
-      "s": "d"
+      "t": "**Faça:** abra **+ Nova Medição** e escolha o pedido de teste.",
+      "r": "**Explique ao cliente:** a medição nasce do pedido e traz a obra dele. **Confira:** a Nova Medição mostra a obra do pedido (\"Sem obra vinculada\" quando o pedido não tem projeto). **Fonte:** fluxo antigo \"Fluxo de projetos e obras\", bloco 3.",
+      "s": "v",
+      "campo": "Nº da medição"
      },
      {
-      "t": "O cliente abriu um pedido Em aberto dessa obra e informou o **Projeto (opcional)** antes de faturar.",
-      "r": "**Como validar:** o pedido aparece no painel da obra. **Por quê:** é a ligação que mais falha na operação. **Fonte:** regra-vendas-editar-pedido-somente-em-aberto.",
+      "t": "**Faça:** abra um pedido já **Faturado** da base de teste e procure como editar o projeto.",
+      "r": "**Explique ao cliente:** só o pedido Em aberto tem o lápis (Editar pedido); o Faturado só tem Visualizar. Projeto, itens e parcelas se ajustam antes de faturar. **Confira:** não há edição no pedido faturado. **Fonte:** regra-vendas-editar-pedido-somente-em-aberto.",
       "s": "d"
-     },
-     {
-      "t": "O consultor percorreu o **Painel Financeiro do Projeto** de uma obra em andamento: orçamento, avisos, pendências e os cards de vendido, faturado, a faturar, a receber, a pagar e resultado.",
-      "r": "**Como validar:** o cliente clica numa pendência e chega ao documento. **Por quê:** o painel aponta, o documento resolve. **Fonte:** manual-12-projetos-e-tarefas#006.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor mostrou o **Andamento das Obras**: avanço físico, linha do tempo das peças e divergências.",
-      "r": "**Como validar:** o cliente explica uma divergência e como tratar (vincular ao item ou marcar como peça extra). **Por quê:** liga Vendas, Produção e Expedição peça a peça. **Fonte:** manual-12-projetos-e-tarefas#007.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor mostrou o **Plano de Resultado** com previsto, realizado e desvio, ordenando pelo maior desvio.",
-      "r": "**Como validar:** o cliente abre a linha de maior desvio e procura o documento ligado. **Por quê:** é como se encontra o que comeu a margem. **Fonte:** roteiro-projetos-03-plano-de-resultado-e-financeiro#005 e #006.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor mostrou o **Dashboard Projetos** e o **Comparar Obras** com duas obras parecidas do cliente.",
-      "r": "**Como validar:** o cliente aponta as obras que precisam de atenção. **Por quê:** é a visão da carteira para a diretoria. **Fonte:** manual-12-projetos-e-tarefas#008; roteiro-projetos-04-comparacao-e-integracoes#001.",
-      "s": "d",
-      "campo": "Data do treinamento"
      }
     ]
    },
    {
-    "titulo": "4. Validação do aprendizado",
-    "intro": "O cliente faz sem ajuda, com outra obra. Você só pergunta e observa. O ponto principal é ver se ele corrige a origem e não o painel.",
+    "titulo": "4. Produção e compras da obra",
+    "onde": "`Produção > Ordens de produção > Nova OP` e `Compras > Solicitações de Compra`",
+    "intro": "Mostre que produção e compras também carregam a obra, com o filtro de estágio e etapa, para o custo chegar ao painel.",
     "passos": [
      {
-      "t": "O gerente de obras cadastrou sozinho uma obra com código no padrão combinado e as etapas padrão.",
-      "r": "**Como validar:** código não repetido e etapas na ordem certa. **Fonte:** manual-12-projetos-e-tarefas#002 e #003.",
-      "s": "d"
-     },
-     {
-      "t": "O vendedor explicou por que o projeto precisa estar no pedido antes de faturar e o que acontece se esquecer.",
-      "r": "**Como validar:** ele cita que pedido Faturado só tem Visualizar. **Fonte:** regra-vendas-editar-pedido-somente-em-aberto.",
-      "s": "d"
-     },
-     {
-      "t": "O cliente leu o painel de uma obra e disse quanto falta faturar, quanto falta receber e qual o resultado.",
-      "r": "**Como validar:** os números batem com os documentos da obra. **Fonte:** manual-12-projetos-e-tarefas#006.",
-      "s": "d"
-     },
-     {
-      "t": "Diante de um **A faturar** negativo, o cliente explicou a causa provável: a nota ou o título carregam o projeto e o pedido não.",
-      "r": "**Como validar:** ele vai ao pedido conferir o projeto. **Por quê:** é uma limitação conhecida, e a correção é na origem. **Fonte:** faq-limitacoes-conhecidas-v1-22-12 (FIN-4).",
-      "s": "d"
-     },
-     {
-      "t": "O cliente investigou uma diferença no documento de origem (pedido, OP, título ou registro de campo) sem alterar o previsto para igualar ao realizado.",
-      "r": "**Como validar:** ele mostra o documento que explica a diferença. **Por quê:** o previsto é a referência do planejamento. **Fonte:** roteiro-projetos-02-paineis-e-andamento-das-obras#008; roteiro-projetos-03-plano-de-resultado-e-financeiro#012.",
-      "s": "d"
-     },
-     {
-      "t": "O cliente explicou que uma transferência entre locais de estoque não é compra nova da obra.",
-      "r": "**Como validar:** ele confere o tipo do movimento antes de concluir. **Fonte:** roteiro-projetos-03-plano-de-resultado-e-financeiro#008.",
+      "t": "**Faça:** crie uma OP de teste escolhendo a obra e, em cascata, o estágio e a etapa.",
+      "r": "**Explique ao cliente:** o estágio só habilita depois da obra e a etapa só depois do estágio; trocar a obra limpa os dois. **Confira:** a OP aparece na aba Produção da obra. **Fonte:** fluxo antigo \"Fluxo de projetos e obras\", blocos 2 e 3.",
       "s": "d",
-      "campo": "Dúvidas registradas"
+      "campo": "Nº da OP"
+     },
+     {
+      "t": "**Faça:** crie uma solicitação de compra de teste com a mesma obra, estágio e etapa.",
+      "r": "**Explique ao cliente:** a compra para a obra entra no custo comprometido dela. **Confira:** a solicitação aparece na aba Compras da obra e na lista filtrada por Projeto. **Fonte:** fluxo antigo \"Fluxo de projetos e obras\", blocos 2 e 3.",
+      "s": "d",
+      "campo": "Nº da solicitação"
+     },
+     {
+      "t": "**Faça:** volte a **Estágios** e tente excluir o estágio usado na OP e na solicitação.",
+      "r": "**Explique ao cliente:** estágio ou etapa com documento vinculado não pode sumir. **Confira:** o sistema recusa listando o que trava. **Fonte:** fluxo antigo \"Fluxo de projetos e obras\", bloco 2.",
+      "s": "d"
      }
     ]
    },
    {
-    "titulo": "5. Preparação para utilização e go-live",
-    "intro": "No go-live, toda obra nova nasce no Flow e todo pedido sai com projeto. Nas primeiras semanas, revise com o gerente de obras e o financeiro as obras ativas uma vez por semana.",
+    "titulo": "5. Nota e títulos da obra",
+    "onde": "menu `⋯ > Faturar` do pedido e `Financeiro > Contas a Receber`",
+    "intro": "A nota com projeto movimenta o estoque da obra. É aqui que aparece o pré-requisito do local de estoque do projeto.",
     "passos": [
      {
-      "t": "Todas as obras ativas estão cadastradas, com status, responsável e etapas.",
-      "r": "**Como validar:** os indicadores de **Todos os Projetos** batem com a lista do cliente. **Fonte:** manual-12-projetos-e-tarefas#005.",
-      "s": "d"
+      "t": "**Faça:** fature o pedido da obra e clique em **Finalizar NF** (sem transmitir).",
+      "r": "**Explique ao cliente:** a nota com projeto movimenta só o local de estoque do projeto, e cada projeto tem um único local, da mesma empresa das OPs. **Confira:** sem local ativo aparece \"O projeto … não tem local de estoque ativo\"; com o local, a nota fica **Finalizada**. **Fonte:** fluxo antigo \"Fluxo de projetos e obras\", bloco 3; regra-faturamento-finalizar-nf-requisitos; manual-12-projetos-e-tarefas#002.",
+      "s": "v",
+      "campo": "Nº da nota"
      },
      {
-      "t": "Nas primeiras semanas, o consultor conferiu se os pedidos novos saem com projeto e se aparecem pendências de pedido sem faturamento.",
-      "r": "**Como validar:** confira os pedidos da semana no painel das obras. **Por quê:** pedido sem projeto some do resultado da obra. **Fonte:** manual-12-projetos-e-tarefas#006; regra-vendas-editar-pedido-somente-em-aberto.",
-      "s": "d"
-     },
-     {
-      "t": "Nas primeiras semanas, o financeiro conferiu se não há título duplicado (manual e gerado) nas obras.",
-      "r": "**Como validar:** compare o painel com o Extrato. **Por quê:** a duplicidade infla receita no painel. **Fonte:** regra-financeiro-titulo-manual-e-gerado-duplicam-a-receita.",
-      "s": "d"
-     },
-     {
-      "t": "O gerente de obras revisa toda semana as obras que precisam de atenção no **Dashboard Projetos** e as divergências do **Andamento das Obras**.",
-      "r": "**Como validar:** há uma rotina com dia e responsável. **Fonte:** manual-12-projetos-e-tarefas#007 e #008.",
+      "t": "**Faça:** gere os títulos do pedido e abra `Financeiro > Contas a Receber` filtrando pela obra.",
+      "r": "**Explique ao cliente:** os títulos herdam a obra do pedido e alimentam o \"A receber\" do painel. **Confira:** os títulos aparecem com a obra. **Fonte:** fluxo antigo \"Fluxo de projetos e obras\", pré-requisitos; manual-12-projetos-e-tarefas#002.",
       "s": "d",
-      "campo": "Dia e responsável da revisão semanal"
+      "campo": "Nº dos títulos"
      },
      {
-      "t": "A primeira obra concluída no sistema teve o resultado lido com o cliente no **Plano de Resultado**.",
-      "r": "**Como validar:** o cliente diz o que mudaria no próximo orçamento. **Por quê:** é o ganho prático do módulo. **Fonte:** roteiro-projetos-03-plano-de-resultado-e-financeiro#013.",
+      "t": "**Faça:** abra as abas da obra (Produção, Campo, Compras) e confira os documentos criados.",
+      "r": "**Explique ao cliente:** a obra junta tudo o que foi feito para ela. **Confira:** pedido, medição, OP, solicitação e nota aparecem nas abas e nos filtros por Projeto. **Fonte:** fluxo antigo \"Fluxo de projetos e obras\", bloco 3.",
+      "s": "d"
+     }
+    ]
+   },
+   {
+    "titulo": "6. Painéis da obra: previsto × realizado",
+    "onde": "`Financeiro > Painel Financeiro de Projetos` e módulo `Projetos`",
+    "intro": "Com os documentos ligados, leia os painéis com o cliente e prove que os números batem com a origem.",
+    "passos": [
+     {
+      "t": "**Faça:** abra o **Painel Financeiro de Projetos** e escolha a obra de teste no seletor (ou **Ver Painel** no cartão da obra).",
+      "r": "**Explique ao cliente:** sem obra o painel convida a escolher uma. **Confira:** Valor vendido, Valor faturado, A faturar, A receber em aberto, A pagar em aberto e Resultado batem com o pedido, a nota e os títulos. **Fonte:** fluxo antigo \"Fluxo de projetos e obras\", bloco 4; manual-12-projetos-e-tarefas#006.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** leia com o cliente os **Avisos inteligentes** e as **Pendências do projeto** e clique na seta de uma pendência.",
+      "r": "**Explique ao cliente:** as pendências apontam pedido sem faturamento e medição em aberto; a seta leva direto ao documento. **Confira:** a medição de teste aparece como pendência e abre ao clicar. **Fonte:** manual-12-projetos-e-tarefas#006; fluxo antigo \"Fluxo de projetos e obras\", bloco 4.",
       "s": "d"
      },
      {
-      "t": "Critério para liberar o módulo seguinte: pedidos saindo com projeto por duas semanas e painéis lidos sem ajuda; então libere Tarefas, que usa as obras para organizar as atividades das equipes.",
-      "r": "**Como validar:** o consultor registra a liberação na OS. **Fonte:** apostila (Módulo Tarefas: implantar após Projetos e Obras e CRM).",
-      "s": "d",
-      "campo": "Data de liberação do próximo módulo"
+      "t": "**Faça:** explique a regra do painel comparando com o Financeiro.",
+      "r": "**Explique ao cliente:** no painel, custo é o destinado ou comprometido (não o caixa) e receita é a nota autorizada (não o pedido). **Confira:** diferenças entre painel e Financeiro por causa dessa regra não são erro. **Fonte:** fluxo antigo \"Fluxo de projetos e obras\", bloco 4.",
+      "s": "d"
+     },
+     {
+      "t": "**Faça:** abra **Andamento das Obras** e escolha a obra.",
+      "r": "**Explique ao cliente:** a linha do tempo mostra quantas peças estão em cada fase, de Vendido a Entregue; Divergências mostra peças sem item de pedido. **Confira:** o avanço físico da obra de teste. **Fonte:** manual-12-projetos-e-tarefas#007.",
+      "s": "d"
+     },
+     {
+      "t": "**Faça:** abra **Plano de Resultado**, **Comparar Obras** e **Dashboard Projetos**.",
+      "r": "**Explique ao cliente:** o plano compara o previsto com o realizado por categoria; o dashboard mostra Vendido, Não faturado, Lucro e as obras que precisam de atenção. **Confira:** a obra de teste aparece com o previsto informado no cadastro. **Fonte:** manual-12-projetos-e-tarefas#008; fluxo antigo \"Fluxo de projetos e obras\", bloco 4.",
+      "s": "d"
+     }
+    ]
+   },
+   {
+    "titulo": "7. Diário e ciclo de vida da obra",
+    "onde": "`Projetos > Diário de Obra` e ações da linha da obra",
+    "intro": "Termine mostrando como registrar o dia a dia da obra e como encerrá-la sem perder o histórico.",
+    "passos": [
+     {
+      "t": "**Faça:** faça uma postagem de teste no **Diário de Obra**.",
+      "r": "**Explique ao cliente:** o diário recebe também os serviços de campo das obras que têm projeto no pedido. **Confira:** a postagem aparece na obra. **Fonte:** fluxo antigo \"Fluxo de projetos e obras\", bloco 5.",
+      "s": "d"
+     },
+     {
+      "t": "**Faça:** inative a obra e procure-a no seletor de um novo pedido. Depois reative.",
+      "r": "**Explique ao cliente:** obra inativa some dos seletores, mas os documentos já emitidos continuam apontando para ela. **Confira:** some ao inativar e volta ao reativar. **Fonte:** fluxo antigo \"Fluxo de projetos e obras\", bloco 5.",
+      "s": "d"
+     },
+     {
+      "t": "**Faça:** tente excluir a obra de teste, que já tem documentos.",
+      "r": "**Explique ao cliente:** obra com documento não se exclui; para encerrar, prefira inativar. **Confira:** o sistema recusa listando os vínculos. **Fonte:** fluxo antigo \"Fluxo de projetos e obras\", bloco 5.",
+      "s": "d"
      }
     ]
    }
   ],
   "resultado": [
    {
-    "t": "Toda obra ativa está cadastrada com código, cliente, responsável, etapas e, quando combinado, resultado previsto.",
+    "t": "A obra de teste foi cadastrada com código único e aparece em Todos os Projetos.",
+    "s": "v"
+   },
+   {
+    "t": "Pedido, medição, OP, solicitação de compra, nota e títulos estão ligados à obra e aparecem nas abas e filtros.",
     "s": "d"
    },
    {
-    "t": "Os pedidos saem com o projeto informado antes do faturamento.",
+    "t": "O Painel Financeiro de Projetos mostra vendido, faturado, a receber e resultado coerentes com os documentos.",
     "s": "d"
    },
    {
-    "t": "O cliente lê o Painel Financeiro, o Andamento das Obras e o Plano de Resultado sem ajuda.",
-    "s": "d"
-   },
-   {
-    "t": "Diferenças são investigadas e corrigidas no documento de origem, não no painel.",
-    "s": "d"
-   },
-   {
-    "t": "Há rotina semanal de revisão das obras com responsável definido.",
+    "t": "O cliente sabe que o projeto vai no pedido antes de faturar.",
     "s": "d"
    }
   ],
   "atencao": [
-   "Pedido faturado sem projeto não pode mais ser ajustado: o **Projeto (opcional)** só é editável com o pedido Em aberto (regra-vendas-editar-pedido-somente-em-aberto).",
-   "Hoje o painel ainda mostra **A faturar** negativo quando só a nota ou o título carregam o projeto e o pedido não (faq-limitacoes-conhecidas-v1-22-12, FIN-4).",
-   "Título lançado à mão junto com o título gerado pelo pedido soma em dobro no **Painel Financeiro de Projetos** (regra-financeiro-titulo-manual-e-gerado-duplicam-a-receita).",
-   "Cada projeto tem um único local de estoque, que precisa ser da mesma empresa das OPs e estar ativo; senão o apontamento ou a nota não finalizam (manual-12-projetos-e-tarefas#002; regra-faturamento-finalizar-nf-requisitos).",
-   "Ajustar o previsto para ficar igual ao realizado apaga a referência do planejamento (roteiro-projetos-03-plano-de-resultado-e-financeiro#012).",
-   "Repetir uma importação de projetos cria duplicidade; pesquise antes e importe poucos registros para conferir (roteiro-projetos-04-comparacao-e-integracoes#010).",
-   "Implantar Projetos antes de Vendas, Compras, Produção, Estoque e Financeiro estarem em uso deixa os painéis vazios e tira a confiança do cliente no módulo (apostila, Módulo Projetos e Obras)."
+   "Só em ambiente de teste, com registros \"TESTE FLUXO CONSULTOR\". A nota da obra só é transmitida com o responsável fiscal.",
+   "Ligue o projeto no **pedido**, antes de faturar: depois de faturado o pedido só tem Visualizar.",
+   "Hoje o painel ainda mostra \"A faturar\" negativo quando só a nota ou o título carrega o projeto e o pedido não.",
+   "Cada projeto tem um único local de estoque, e ele precisa ser da mesma empresa das ordens de produção; sem ele a nota não finaliza.",
+   "Excluir uma obra é definitivo e leva junto estágios, etapas e resultado previsto: prefira inativar.",
+   "Trocar o cliente de uma obra que já tem pedido e nota: confirme com o time antes.",
+   "Postar no Diário de Obra grava dados: use só a obra de teste."
   ],
   "naoValidado": [
-   "A apostila cita **diário de obra** e **planejar as necessidades de materiais** no checklist do módulo, mas o manual-12, os roteiros e as regras não mostram essas telas. A seção da apostila está marcada para rever. Confira na tela antes de prometer ao cliente.",
-   "Caminho do cadastro: o procedimento usa `Cadastros > Projetos > Novo Projeto`; o manual-12 usa o menu lateral do módulo Projetos, `Cadastros > Projetos` e **+ Novo Projeto**. Confira na tela qual caminho ensinar.",
-   "Linhas de receita e despesa previstas no cadastro da obra vêm do plano de validação (plano-projetos#015); o manual-12 só cita a margem em **Resultados Previstos**. Confira na tela.",
-   "Os roteiros de projetos estão marcados como possivelmente desatualizados (versão a definir). Confira na tela os nomes de **Plano de Resultado** e **Comparar Obras** antes do treino."
+   "Caminho do cadastro: o fluxo antigo e o procedimento citam `Cadastros > Projetos > Novo Projeto`; o manual-12-projetos-e-tarefas cita o menu lateral do módulo Projetos (`Cadastros > Projetos`) com o botão **+ Novo Projeto**.",
+   "Caminho do painel: o fluxo antigo cita `Financeiro > Painel Financeiro de Projetos`; o manual-12-projetos-e-tarefas o coloca no menu do módulo Projetos ou no **Ver Painel** do cartão da obra.",
+   "Estágios com peso e conclusão com data vêm só do fluxo antigo (plano de QA); o manual-12-projetos-e-tarefas descreve estágio sem peso e etapa com estágio opcional.",
+   "Diário de Obra: o fluxo antigo cita `Projetos > Diário de Obra`, mas o menu de Projetos descrito no manual-12-projetos-e-tarefas não lista esse item.",
+   "O módulo Projetos (Todos os Projetos, plano de resultado, andamento, dashboard e diário) não foi aberto no sistema; só o cadastro de projeto, o pedido com projeto, a nota com projeto e o painel financeiro foram vistos."
   ],
   "video": {
    "id": "consultor-09-projetos",
@@ -4238,279 +4206,253 @@ export const CHECKLISTS_IMPLANTACAO = [
   "id": "implantacao-tarefas",
   "arquivo": "implantacao-15-tarefas.html",
   "etiqueta": "Consultor · Implantação · Tarefas",
-  "titulo": "Implantação de Tarefas",
-  "subtitulo": "Checklist para o consultor conduzir e verificar a implantação do módulo Tarefas, que organiza as atividades das equipes em quadros com responsável, prazo e andamento.",
-  "objetivo": "Ao final, o cliente monta quadros com listas, cria cartões com responsável, prioridade e término previsto, cobra os atrasos e usa recorrências e modelos para o que se repete. Cada pessoa acompanha o próprio trabalho em Minhas Tarefas. Numa indústria de esquadrias, o módulo dá ritmo às atividades da obra e dos departamentos.",
-  "rodape": "Checklist de implantação · Tarefas · fontes: apostila do consultor (Módulo Tarefas), manual-12-projetos-e-tarefas, regra-tarefas-cartao-so-aparece-em-minhas-tarefas-com-responsavel, procedimento-criar-quadro-e-cartao-em-tarefas, funcional-tarefas-quadros-listas-e-cartoes, faq-limitacoes-conhecidas, roteiros de tarefas 03 a 05 · Harness Faktory Flow",
+  "titulo": "Implantação de Tarefas: roteiro prático com o cliente",
+  "subtitulo": "Executar com o cliente o uso do módulo Tarefas: criar o quadro e as listas, criar o cartão com responsável e prazo, acompanhar em Minhas Tarefas, aplicar as regras de status e colaboração e arquivar.",
+  "objetivo": "Ao final, o cliente terá montado um quadro da equipe, distribuído um cartão com responsável e Término Previsto e visto esse cartão chegar a Minhas Tarefas e ao Dashboard. Saberá comentar, mencionar, anexar e arquivar sem perder histórico.",
+  "rodape": "Checklist de implantação · Tarefas · fontes: fluxo antigo \"Fluxo de tarefas\", procedimento-criar-quadro-e-cartao-em-tarefas, regra-tarefas-cartao-so-aparece-em-minhas-tarefas-com-responsavel, faq-limitacoes-conhecidas-v1-22-12, manual-12-projetos-e-tarefas · Harness Faktory Flow",
   "prerequisitos": [
    {
-    "t": "Os processos que vão usar Tarefas (Projetos e Obras, CRM ou outro) já estão implantados.",
-    "r": "**Como validar:** confira no cronograma e na OS. **Por quê:** Tarefas organiza atividades de processos que já existem no Flow. **Fonte:** apostila (Módulo Tarefas: implantar após os processos que usarão o gerenciamento de atividades).",
+    "t": "Licença do módulo Tarefas ativa para a empresa do cliente.",
+    "r": "**Confira:** o módulo **Tarefas** aparece no ícone de grade (menu de módulos). **Fonte:** fluxo antigo \"Fluxo de tarefas\" (pré-requisito); manual-12-projetos-e-tarefas#001.",
     "s": "d"
    },
    {
-    "t": "Todas as pessoas que vão receber tarefas são usuários do Flow com acesso ao módulo.",
-    "r": "**Como validar:** procure cada pessoa em **Adicionar responsável** de um cartão de teste. **Por quê:** só usuário pode ser responsável, e o cartão só chega em **Minhas Tarefas** com responsável. **Fonte:** regra-tarefas-cartao-so-aparece-em-minhas-tarefas-com-responsavel; manual-12-projetos-e-tarefas#009.",
+    "t": "Dois usuários de teste: o gestor que cria o quadro e um executor que será o responsável do cartão, com uma segunda sessão aberta.",
+    "r": "**Confira:** os dois aparecem na busca de **+ Adicionar responsável**. **Fonte:** fluxo antigo \"Fluxo de tarefas\" (pré-requisito).",
     "s": "d"
    },
    {
-    "t": "Os usuários sabem abrir o módulo pelo menu de módulos.",
-    "r": "**Como validar:** cada usuário abre Tarefas sozinho. **Por quê:** hoje a busca Ctrl+K ainda não encontra o módulo Tarefas; é defeito reportado. **Fonte:** faq-limitacoes-conhecidas-v1-22-12; funcional-tarefas-quadros-listas-e-cartoes.",
+    "t": "Combinado com o cliente como os quadros serão organizados (um por departamento ou por obra) e quais listas cada um terá.",
+    "r": "**Confira:** os nomes das listas antes de criar. **Fonte:** manual-12-projetos-e-tarefas#004.",
     "s": "d"
-   },
-   {
-    "t": "O consultor conferiu se o cliente tem a versão PRO antes de prometer automações.",
-    "r": "**Como validar:** confira a licença com o comercial da Faktory. **Por quê:** as automações de Tarefas existem só na versão PRO. **Fonte:** roteiro-tarefas-04-etiquetas-modelos-e-automacoes#010.",
-    "s": "d",
-    "campo": "Licença do cliente"
-   },
-   {
-    "t": "Há um responsável no cliente por definir os quadros e cobrar o uso (coordenador, gerente de obras ou gestor de área).",
-    "r": "**Como validar:** o nome está na OS. **Por quê:** sem quem cobre, o quadro vira lista abandonada. **Fonte:** apostila (Módulo Tarefas: fluxo criação, responsável e prazo, execução, acompanhamento, conclusão).",
-    "s": "d",
-    "campo": "Responsável pelos quadros"
    }
   ],
   "fluxos": [
    {
-    "titulo": "1. Entendimento do cenário do cliente",
-    "intro": "Converse com quem distribui e cobra trabalho: gestores de área e o gerente de obras. Peça para ver como as atividades são passadas hoje (grupo de mensagem, planilha, quadro na parede).",
+    "titulo": "1. Abrir o módulo e criar o quadro",
+    "onde": "`Tarefas > Meus Quadros`",
+    "intro": "Comece pelo quadro: é nele que a equipe vai ver o trabalho. Mostre primeiro como chegar ao módulo.",
     "passos": [
      {
-      "t": "O consultor perguntou: como vocês passam e cobram as atividades hoje? Onde fica registrado quem é o responsável e o prazo?",
-      "r": "**Como validar:** o meio atual está anotado. **Por quê:** é o que o Tarefas substitui; o fluxo é criação, responsável e prazo, execução, acompanhamento e conclusão. **Fonte:** apostila (Módulo Tarefas).",
+      "t": "**Faça:** abra o módulo **Tarefas** pelo ícone de grade (menu de módulos) e entre em **Meus Quadros**.",
+      "r": "**Explique ao cliente:** hoje a busca Ctrl+K ainda não encontra o módulo Tarefas; até a correção, abra pelo menu de módulos. **Confira:** a tela Meus Quadros e o que já existe nela. **Fonte:** procedimento-criar-quadro-e-cartao-em-tarefas; faq-limitacoes-conhecidas-v1-22-12; regra-tarefas-cartao-so-aparece-em-minhas-tarefas-com-responsavel.",
       "s": "d"
      },
      {
-      "t": "O consultor perguntou: vocês querem um quadro por departamento, por obra ou por processo? Quem participa de cada um?",
-      "r": "**Como validar:** a estrutura de quadros está desenhada no papel. **Por quê:** é a decisão que mais afeta o uso; o manual sugere um quadro por departamento ou por obra. **Fonte:** manual-12-projetos-e-tarefas#004.",
+      "t": "**Faça:** clique em **Novo Quadro** e tente criar com o nome vazio.",
+      "r": "**Explique ao cliente:** o quadro precisa de nome para aparecer nos seletores e na busca. **Confira:** o sistema recusa nome vazio ou só com espaços. **Fonte:** fluxo antigo \"Fluxo de tarefas\", bloco 1.",
+      "s": "d"
+     },
+     {
+      "t": "**Faça:** informe o **Nome do Quadro** (ex.: \"TESTE FLUXO CONSULTOR - Obras\"), escolha o **Tipo** (Avulso) e clique em **Criar Quadro**.",
+      "r": "**Explique ao cliente:** um quadro por equipe ou por obra; **A partir de Modelo** copia a estrutura de um quadro-modelo. **Confira:** o quadro aparece em Meus Quadros. **Fonte:** procedimento-criar-quadro-e-cartao-em-tarefas; manual-12-projetos-e-tarefas#004.",
       "s": "d",
-      "campo": "Estrutura de quadros definida"
+      "campo": "Nome do quadro"
      },
      {
-      "t": "O consultor perguntou: quais fases uma atividade atravessa até ficar pronta? (por exemplo: a fazer, em andamento, concluído)",
-      "r": "**Como validar:** as listas padrão estão definidas. **Por quê:** o quadro novo nasce sem listas; elas são criadas em **+ Adicionar lista**. **Fonte:** regra-tarefas-cartao-so-aparece-em-minhas-tarefas-com-responsavel.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor perguntou: que atividades se repetem toda semana ou todo mês? (conferência de estoque, revisão de indicadores, inspeção de equipamentos)",
-      "r": "**Como validar:** há uma lista de candidatas a recorrência. **Por quê:** recorrência é para o que se repete, não para obra com começo e fim. **Fonte:** roteiro-tarefas-03-minhas-tarefas-recorrencias-e-arquivo#005.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor perguntou: toda obra segue o mesmo cronograma de atividades? Quem monta esse cronograma hoje?",
-      "r": "**Como validar:** ficou decidido se vale criar um modelo. **Por quê:** o modelo repete listas, tarefas, checklists, responsáveis, etiquetas e dependências. **Fonte:** roteiro-tarefas-04-etiquetas-modelos-e-automacoes#003.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor perguntou: quem precisa ver a carga de trabalho da equipe e os atrasos? Com que frequência?",
-      "r": "**Como validar:** o gestor que vai usar o **Dashboard** está identificado. **Por quê:** o Dashboard mostra atrasadas, vencendo em 7 dias e carga por responsável. **Fonte:** manual-12-projetos-e-tarefas#010.",
+      "t": "**Faça:** abra o quadro clicando no nome dele.",
+      "r": "**Explique ao cliente:** o quadro nasce vazio e as listas são as colunas do trabalho. **Confira:** o quadro novo ainda não tem listas. **Fonte:** procedimento-criar-quadro-e-cartao-em-tarefas; regra-tarefas-cartao-so-aparece-em-minhas-tarefas-com-responsavel.",
       "s": "d"
      }
     ]
    },
    {
-    "titulo": "2. Preparação da implantação",
-    "intro": "Monte a estrutura com o responsável pelos quadros, sem encher de tarefas fictícias. Comece pequeno: um ou dois quadros reais que a equipe vai usar já na semana seguinte.",
+    "titulo": "2. Criar as listas",
+    "onde": "dentro do quadro, **+ Adicionar lista**",
+    "intro": "As listas representam as fases do trabalho. Crie com o cliente as que a equipe vai usar e mostre as regras de lista.",
     "passos": [
      {
-      "t": "As dependências estão prontas: usuários cadastrados com acesso, obras cadastradas em Projetos (se os quadros forem por obra) e licença conferida.",
-      "r": "**Como validar:** confira uma obra real e um usuário de cada área. **Por quê:** o cartão pode ser vinculado a pedido ou obra, e o modelo pede o projeto ao criar o quadro. **Fonte:** manual-12-projetos-e-tarefas#009; roteiro-tarefas-04-etiquetas-modelos-e-automacoes#007.",
+      "t": "**Faça:** em **+ Adicionar lista**, crie as listas \"A fazer\", \"Em andamento\", \"Revisão\" e \"Feito\".",
+      "r": "**Explique ao cliente:** sem lista não há onde criar o cartão. **Confira:** as quatro colunas aparecem no quadro. **Fonte:** procedimento-criar-quadro-e-cartao-em-tarefas; manual-12-projetos-e-tarefas#009.",
       "s": "d"
      },
      {
-      "t": "O cliente criou os primeiros quadros reais em **Novo Quadro**, com Nome do Quadro e Tipo, e as listas combinadas.",
-      "r": "**Como validar:** **Meus Quadros** mostra os quadros com as listas. **Por quê:** o quadro nasce sem listas. **Fonte:** procedimento-criar-quadro-e-cartao-em-tarefas; funcional-tarefas-quadros-listas-e-cartoes.",
+      "t": "**Faça:** renomeie uma lista e reordene as listas arrastando. Recarregue a página.",
+      "r": "**Explique ao cliente:** a ordem das listas é a mesma para toda a equipe. **Confira:** a ordem final se mantém, inclusive na segunda sessão. **Fonte:** fluxo antigo \"Fluxo de tarefas\", bloco 1.",
       "s": "d"
      },
      {
-      "t": "Ficou combinado o uso de **Prioridade** e **Término Previsto**: o que é urgente e como se define o prazo.",
-      "r": "**Como validar:** a regra está escrita na OS. **Por quê:** o prazo é o campo **Término Previsto** (não existe Prazo), e é ele que gera os atrasos no Dashboard. **Fonte:** regra-tarefas-cartao-so-aparece-em-minhas-tarefas-com-responsavel; manual-12-projetos-e-tarefas#009.",
+      "t": "**Faça:** defina limite de trabalho (WIP) = 2 na lista \"Em andamento\" e tente mover um terceiro cartão para ela (faça depois do bloco 3, quando houver cartões).",
+      "r": "**Explique ao cliente:** o limite evita que a equipe comece tudo ao mesmo tempo. **Confira:** o limite aparece na lista e o terceiro movimento é bloqueado com mensagem; o cartão não some. **Fonte:** fluxo antigo \"Fluxo de tarefas\", bloco 2.",
       "s": "d"
      },
      {
-      "t": "Ficou combinada a regra: nenhum cartão fica sem responsável.",
-      "r": "**Como validar:** o responsável pelos quadros concorda em cobrar isso. **Por quê:** o cartão nasce sem responsável e só aparece em **Minhas Tarefas** depois de **Adicionar responsável**. **Fonte:** regra-tarefas-cartao-so-aparece-em-minhas-tarefas-com-responsavel.",
+      "t": "**Faça:** tente excluir uma lista com cartões.",
+      "r": "**Explique ao cliente:** os cartões não podem ficar sem lista. **Confira:** a exclusão é bloqueada ou exige transferir os cartões. **Fonte:** fluxo antigo \"Fluxo de tarefas\", bloco 1.",
       "s": "d"
-     },
-     {
-      "t": "Se a empresa repete o cronograma das obras, o cliente montou um modelo com listas e tarefas na ordem certa e publicou a versão.",
-      "r": "**Como validar:** o modelo aparece publicado. **Por quê:** modelo não publicado não pode ser usado para criar ou aplicar quadros. **Fonte:** roteiro-tarefas-04-etiquetas-modelos-e-automacoes#004 e #006.",
-      "s": "d"
-     },
-     {
-      "t": "As etiquetas foram definidas com poucos nomes, que a equipe entende do mesmo jeito.",
-      "r": "**Como validar:** a lista de etiquetas está registrada. **Por quê:** etiquetas entram nos modelos e ajudam a filtrar. **Fonte:** roteiro-tarefas-04-etiquetas-modelos-e-automacoes#003.",
-      "s": "d",
-      "campo": "Etiquetas definidas"
      }
     ]
    },
    {
-    "titulo": "3. Condução do treinamento",
-    "intro": "Treine com atividades reais da semana do cliente, criadas na hora. Primeiro com o gestor, depois com quem executa. Mostre sempre o lado de quem recebe a tarefa em Minhas Tarefas.",
+    "titulo": "3. Cartão com responsável e prazo",
+    "onde": "lista do quadro e detalhe da tarefa",
+    "intro": "O cartão é a atividade distribuída. Sem responsável ele não chega a ninguém; sem Término Previsto não há atraso para cobrar.",
     "passos": [
      {
-      "t": "O consultor apresentou o fluxo: criar a tarefa, definir responsável e prazo, executar, acompanhar e concluir, e mostrou como abrir o módulo pelo menu de módulos.",
-      "r": "**Como validar:** o cliente repete o fluxo e abre o módulo sozinho. **Por quê:** hoje a busca Ctrl+K ainda não encontra o módulo Tarefas. **Fonte:** apostila (Módulo Tarefas); faq-limitacoes-conhecidas-v1-22-12.",
-      "s": "d"
-     },
-     {
-      "t": "O gestor criou um cartão real em **+ Adicionar tarefa** e preencheu **Prioridade**, **Término Previsto** e **Adicionar responsável**.",
-      "r": "**Como validar:** o sistema confirma o responsável. **Por quê:** é o mínimo para a tarefa ser cobrada. **Fonte:** procedimento-criar-quadro-e-cartao-em-tarefas; manual-12-projetos-e-tarefas#009.",
-      "s": "d"
-     },
-     {
-      "t": "O responsável abriu **Minhas Tarefas** no usuário dele e encontrou o cartão, com os contadores de em andamento, atrasadas, urgentes e concluídas.",
-      "r": "**Como validar:** o cartão aparece para o responsável. **Por quê:** ligar a criação pelo gestor ao trabalho de quem executa. **Fonte:** roteiro-tarefas-03-minhas-tarefas-recorrencias-e-arquivo#001; manual-12-projetos-e-tarefas#010.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor mostrou a aba **Checklists** e a aba **Comentários**, com menção @nome para notificar um colega, e o vínculo do cartão com uma obra ou pedido.",
-      "r": "**Como validar:** aparece a confirmação de comentário adicionado. **Por quê:** a conversa fica no cartão e não no grupo de mensagens. **Fonte:** funcional-tarefas-quadros-listas-e-cartoes; manual-12-projetos-e-tarefas#009.",
-      "s": "d"
-     },
-     {
-      "t": "O cliente moveu o cartão entre listas, trocou a visualização (Kanban, lista, tabela, calendário, Gantt) e usou **Filtros** por responsável.",
-      "r": "**Como validar:** o cartão muda de lista. **Por quê:** é assim que o andamento aparece para todos. **Fonte:** funcional-tarefas-quadros-listas-e-cartoes; manual-12-projetos-e-tarefas#009.",
-      "s": "d"
-     },
-     {
-      "t": "O cliente arquivou um cartão concluído e o restaurou em **Arquivadas**.",
-      "r": "**Como validar:** o cartão volta e o cliente revisa status, prazo e responsável. **Por quê:** arquivado fica só em consulta. **Fonte:** procedimento-criar-quadro-e-cartao-em-tarefas; roteiro-tarefas-03-minhas-tarefas-recorrencias-e-arquivo#010 e #011.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor criou com o cliente uma recorrência para uma atividade real da lista da etapa 1, com **Tornar recorrente**.",
-      "r": "**Como validar:** o próximo dia de execução está correto. **Por quê:** cada execução gera uma nova tarefa com histórico próprio. **Fonte:** roteiro-tarefas-03-minhas-tarefas-recorrencias-e-arquivo#005 e #012.",
-      "s": "d"
-     },
-     {
-      "t": "Se houver modelo, o cliente criou o quadro de uma obra real a partir dele, informou o projeto e a data de início e revisou as datas.",
-      "r": "**Como validar:** o quadro nasce com listas, tarefas, responsáveis e prazos. **Por quê:** o cronograma da obra deixa de ser montado à mão. **Fonte:** roteiro-tarefas-04-etiquetas-modelos-e-automacoes#007.",
-      "s": "d"
-     },
-     {
-      "t": "O consultor mostrou ao gestor o **Dashboard**: tarefas atrasadas, vencendo em 7 dias e carga por responsável.",
-      "r": "**Como validar:** o gestor clica em atrasadas e abre a lista. **Por quê:** a correção é feita na tarefa de origem, não no dashboard. **Fonte:** manual-12-projetos-e-tarefas#010; roteiro-tarefas-05-dashboard-de-tarefas#003.",
+      "t": "**Faça:** na lista \"A fazer\", clique em **+ Adicionar tarefa**, digite o nome (ex.: \"Agendar vistoria da obra de teste\") e crie o cartão.",
+      "r": "**Explique ao cliente:** o cartão aparece na coluna e pode ser arrastado entre as listas. **Confira:** o cartão na lista \"A fazer\". **Fonte:** procedimento-criar-quadro-e-cartao-em-tarefas; manual-12-projetos-e-tarefas#009.",
       "s": "d",
-      "campo": "Data do treinamento"
+      "campo": "Tarefa"
+     },
+     {
+      "t": "**Faça:** abra o cartão e leia com o cliente como ele nasceu.",
+      "r": "**Explique ao cliente:** o cartão nasce **Pendente**, prioridade **Média** e sem responsável. **Confira:** status, prioridade e o campo de responsáveis vazio. **Fonte:** regra-tarefas-cartao-so-aparece-em-minhas-tarefas-com-responsavel.",
+      "s": "d"
+     },
+     {
+      "t": "**Faça:** defina **Prioridade** Alta e o **Término Previsto** com data e hora.",
+      "r": "**Explique ao cliente:** o prazo é o campo Término Previsto (não existe \"Prazo\"); os atrasos aparecem no Dashboard. Tudo é salvo automaticamente. **Confira:** a mensagem \"Tarefa atualizada!\". **Fonte:** regra-tarefas-cartao-so-aparece-em-minhas-tarefas-com-responsavel; manual-12-projetos-e-tarefas#009.",
+      "s": "d"
+     },
+     {
+      "t": "**Faça:** tente informar um término anterior ao início do cartão.",
+      "r": "**Explique ao cliente:** o sistema protege o prazo contra datas invertidas. **Confira:** a data invertida é recusada. **Fonte:** fluxo antigo \"Fluxo de tarefas\", bloco 3.",
+      "s": "d"
+     },
+     {
+      "t": "**Faça:** clique em **+ Adicionar responsável**, digite parte do nome do executor de teste e escolha o usuário.",
+      "r": "**Explique ao cliente:** só com responsável o cartão passa a ser cobrado de alguém. **Confira:** a confirmação \"adicionado como responsável\". **Fonte:** manual-12-projetos-e-tarefas#009; procedimento-criar-quadro-e-cartao-em-tarefas.",
+      "s": "d"
      }
     ]
    },
    {
-    "titulo": "4. Validação do aprendizado",
-    "intro": "O cliente faz sem ajuda, com atividades reais. Você observa e pergunta. Confira os dois lados: o gestor que distribui e a pessoa que executa.",
+    "titulo": "4. Minhas Tarefas e Dashboard",
+    "onde": "`Tarefas > Minhas Tarefas` e `Tarefas > Dashboard`",
+    "intro": "Mostre o outro lado: o que o executor vê e o que o gestor acompanha.",
     "passos": [
      {
-      "t": "O gestor criou sozinho um quadro novo com listas e um cartão com responsável, prioridade e término previsto.",
-      "r": "**Como validar:** o cartão aparece em **Minhas Tarefas** do responsável. **Fonte:** procedimento-criar-quadro-e-cartao-em-tarefas.",
+      "t": "**Faça:** na sessão do executor, abra **Minhas Tarefas**. Compare com um cartão de teste ainda sem responsável.",
+      "r": "**Explique ao cliente:** Minhas Tarefas mostra só o que está atribuído ao usuário logado; cartão sem responsável não aparece para ninguém. **Confira:** o cartão com responsável aparece; o sem responsável não. **Fonte:** regra-tarefas-cartao-so-aparece-em-minhas-tarefas-com-responsavel; manual-12-projetos-e-tarefas#010.",
       "s": "d"
      },
      {
-      "t": "O cliente explicou por que um cartão não aparece em **Minhas Tarefas** e resolveu.",
-      "r": "**Como validar:** a resposta é: falta responsável; usar **Adicionar responsável**. **Por quê:** é a dúvida mais comum do módulo. **Fonte:** faq-perguntas-frequentes; regra-tarefas-cartao-so-aparece-em-minhas-tarefas-com-responsavel.",
+      "t": "**Faça:** mostre os contadores e agrupe por **Status** e por **Prioridade**.",
+      "r": "**Explique ao cliente:** os contadores de Em andamento, Atrasadas, Urgentes e Concluídas são a rotina diária do executor; **+ Nova tarefa** cria direto dali. **Confira:** o cartão de teste no grupo certo. **Fonte:** manual-12-projetos-e-tarefas#010.",
       "s": "d"
      },
      {
-      "t": "Quem executa atualizou o próprio cartão: marcou itens do checklist, comentou e moveu para a lista seguinte.",
-      "r": "**Como validar:** o histórico do cartão mostra as mudanças. **Fonte:** funcional-tarefas-quadros-listas-e-cartoes.",
+      "t": "**Faça:** na sessão do gestor, abra o **Dashboard** e filtre pelo quadro de teste.",
+      "r": "**Explique ao cliente:** Tarefas Atrasadas, Vencem em 7 dias e Carga por Responsável mostram quem está sobrecarregado; **Exportar** gera a planilha. **Confira:** o cartão de teste conta no quadro e no responsável certos. **Fonte:** manual-12-projetos-e-tarefas#010.",
       "s": "d"
-     },
-     {
-      "t": "O gestor encontrou as tarefas atrasadas da equipe e explicou o motivo de uma delas, corrigindo a tarefa de origem.",
-      "r": "**Como validar:** ele usa **Atrasadas** em Minhas Tarefas ou o card do Dashboard. **Fonte:** roteiro-tarefas-05-dashboard-de-tarefas#003.",
-      "s": "d"
-     },
-     {
-      "t": "O cliente explicou quando usar recorrência e quando não usar.",
-      "r": "**Como validar:** ele cita atividade periódica como exemplo certo e obra com começo e fim como exemplo errado. **Fonte:** roteiro-tarefas-03-minhas-tarefas-recorrencias-e-arquivo#005.",
-      "s": "d"
-     },
-     {
-      "t": "Se houver modelo, o cliente explicou que precisa publicar nova versão depois de alterar e que aplicar em quadro preenchido pode duplicar tarefas.",
-      "r": "**Como validar:** a resposta cita os dois cuidados. **Fonte:** roteiro-tarefas-04-etiquetas-modelos-e-automacoes#006 e #008.",
-      "s": "d",
-      "campo": "Dúvidas registradas"
      }
     ]
    },
    {
-    "titulo": "5. Preparação para utilização e go-live",
-    "intro": "No go-live, a equipe para de passar tarefas pelo canal antigo. Combine com o responsável pelos quadros a data de corte e acompanhe as primeiras semanas pelo Dashboard.",
+    "titulo": "5. Status e regras do cartão",
+    "onde": "detalhe da tarefa",
+    "intro": "Percorra o ciclo do cartão e demonstre as regras que impedem concluir trabalho que ainda depende de outro.",
     "passos": [
      {
-      "t": "Foi definida a data a partir da qual as atividades são passadas só pelo Tarefas.",
-      "r": "**Como validar:** a data está na OS e foi comunicada à equipe. **Por quê:** dois canais ao mesmo tempo esvaziam o quadro. **Fonte:** apostila (Parte II: treinamentos, go-live e encerramento).",
-      "s": "d",
-      "campo": "Data de corte do canal antigo"
-     },
-     {
-      "t": "Nas primeiras semanas, o responsável confere toda semana se há cartões sem responsável ou sem término previsto.",
-      "r": "**Como validar:** filtre o quadro por responsável vazio. **Por quê:** cartão sem responsável não chega a ninguém, e sem término previsto não gera atraso. **Fonte:** regra-tarefas-cartao-so-aparece-em-minhas-tarefas-com-responsavel.",
+      "t": "**Faça:** mova o cartão para \"Em andamento\" pelo ícone \"Mover para outra lista\" e, depois, arrastando.",
+      "r": "**Explique ao cliente:** as duas formas dão o mesmo resultado e respeitam o limite da lista. **Confira:** o cartão na nova lista. **Fonte:** procedimento-criar-quadro-e-cartao-em-tarefas; manual-12-projetos-e-tarefas#009.",
       "s": "d"
      },
      {
-      "t": "Nas primeiras semanas, o gestor acompanha no **Dashboard** as atrasadas e a carga por responsável.",
-      "r": "**Como validar:** o gestor exporta ou mostra o Dashboard na reunião da equipe. **Por quê:** mostra quem está sobrecarregado. **Fonte:** manual-12-projetos-e-tarefas#010.",
+      "t": "**Faça:** leve o cartão até Concluída e reabra.",
+      "r": "**Explique ao cliente:** a data de conclusão é preenchida ao concluir e retirada ao reabrir; o histórico registra cada mudança. **Confira:** a data de conclusão e a aba **Histórico**. **Fonte:** fluxo antigo \"Fluxo de tarefas\", bloco 3.",
       "s": "d"
      },
      {
-      "t": "As recorrências combinadas estão gerando as tarefas nos dias previstos.",
-      "r": "**Como validar:** confira a primeira execução de cada recorrência. **Fonte:** roteiro-tarefas-03-minhas-tarefas-recorrencias-e-arquivo#005.",
+      "t": "**Faça:** crie uma subtarefa no cartão e tente concluir o cartão com ela aberta.",
+      "r": "**Explique ao cliente:** o trabalho só fecha quando as partes fecham. **Confira:** a conclusão é impedida e o sistema diz o que falta. **Fonte:** fluxo antigo \"Fluxo de tarefas\", bloco 3; manual-12-projetos-e-tarefas#009.",
       "s": "d"
      },
      {
-      "t": "Os quadros de obras encerradas têm as tarefas antigas arquivadas.",
-      "r": "**Como validar:** os quadros ativos mostram só trabalho em andamento. **Fonte:** roteiro-tarefas-03-minhas-tarefas-recorrencias-e-arquivo#012.",
+      "t": "**Faça:** cancele um cartão de teste e tente reabri-lo.",
+      "r": "**Explique ao cliente:** cancelado é definitivo; para pausar, use outra lista ou status. **Confira:** a reabertura é impedida. **Fonte:** fluxo antigo \"Fluxo de tarefas\", bloco 3.",
+      "s": "d"
+     }
+    ]
+   },
+   {
+    "titulo": "6. Colaboração e visões",
+    "onde": "abas do detalhe da tarefa e visões do quadro",
+    "intro": "Mostre como a equipe conversa dentro do cartão em vez de usar mensagens soltas, e como o gestor vê o mesmo quadro de jeitos diferentes.",
+    "passos": [
+     {
+      "t": "**Faça:** na aba **Comentários**, publique um comentário com @menção ao executor de teste.",
+      "r": "**Explique ao cliente:** a pessoa mencionada é notificada uma única vez; o autor não recebe a própria notificação. **Confira:** a notificação na sessão do executor. **Fonte:** manual-12-projetos-e-tarefas#009; fluxo antigo \"Fluxo de tarefas\", bloco 4.",
       "s": "d"
      },
      {
-      "t": "Critério para liberar o módulo seguinte ou encerrar: duas semanas de uso real, sem cartões órfãos e com atrasos cobrados pelo Dashboard; então revise pendências e formalize o encerramento.",
-      "r": "**Como validar:** pendências revisadas e OS aprovadas. **Por quê:** a métrica é o uso com autonomia, não o número de reuniões. **Fonte:** apostila (Parte II: treinamentos, go-live e encerramento).",
-      "s": "d",
-      "campo": "Data de liberação ou encerramento"
+      "t": "**Faça:** na aba **Checklists**, crie um checklist com três itens e marque dois.",
+      "r": "**Explique ao cliente:** o checklist divide a atividade sem criar cartões novos. **Confira:** o percentual atualiza na hora. **Fonte:** procedimento-criar-quadro-e-cartao-em-tarefas; fluxo antigo \"Fluxo de tarefas\", bloco 4.",
+      "s": "d"
+     },
+     {
+      "t": "**Faça:** na aba **Anexos**, anexe um arquivo de teste válido e tente um acima de 10 MB.",
+      "r": "**Explique ao cliente:** os anexos ficam com o cartão, mas há limite de tamanho e de tipo. **Confira:** o arquivo válido entra; o grande é recusado. **Fonte:** fluxo antigo \"Fluxo de tarefas\", bloco 4.",
+      "s": "d"
+     },
+     {
+      "t": "**Faça:** use **Vincular** para ligar o cartão ao pedido ou à obra de teste e abra o vínculo.",
+      "r": "**Explique ao cliente:** o vínculo leva do cartão direto ao registro do ERP. **Confira:** o vínculo abre o registro certo. **Fonte:** manual-12-projetos-e-tarefas#009; fluxo antigo \"Fluxo de tarefas\", bloco 5.",
+      "s": "d"
+     },
+     {
+      "t": "**Faça:** alterne as visões **Kanban**, **Lista**, **Tabela**, **Calendário** e **Gantt** e aplique **Filtros** por responsável.",
+      "r": "**Explique ao cliente:** é o mesmo quadro em formatos diferentes. **Confira:** o cartão de teste mostra a mesma informação em todas as visões. **Fonte:** manual-12-projetos-e-tarefas#009; fluxo antigo \"Fluxo de tarefas\", bloco 5.",
+      "s": "d"
+     }
+    ]
+   },
+   {
+    "titulo": "7. Arquivar e restaurar",
+    "onde": "cabeçalho do cartão e `Tarefas > Arquivadas`",
+    "intro": "Feche o roteiro limpando o quadro de teste sem apagar nada.",
+    "passos": [
+     {
+      "t": "**Faça:** arquive o cartão de teste pelo cabeçalho do detalhe.",
+      "r": "**Explique ao cliente:** arquivar tira o cartão do quadro, mas não apaga. **Confira:** o cartão some do quadro e de Minhas Tarefas. **Fonte:** procedimento-criar-quadro-e-cartao-em-tarefas; regra-tarefas-cartao-so-aparece-em-minhas-tarefas-com-responsavel.",
+      "s": "d"
+     },
+     {
+      "t": "**Faça:** abra `Tarefas > Arquivadas`, abra o cartão e clique em **Restaurar**.",
+      "r": "**Explique ao cliente:** o arquivado abre só para leitura até ser restaurado. **Confira:** o cartão volta ao quadro com comentários, checklist e anexos. **Fonte:** procedimento-criar-quadro-e-cartao-em-tarefas; fluxo antigo \"Fluxo de tarefas\", bloco 4.",
+      "s": "d"
+     },
+     {
+      "t": "**Faça:** arquive o quadro de teste e restaure; depois tente arquivar o quadro padrão.",
+      "r": "**Explique ao cliente:** o quadro padrão de tarefas avulsas é fixo. **Confira:** o quadro de teste volta ao restaurar; o padrão não pode ser renomeado nem arquivado. **Fonte:** fluxo antigo \"Fluxo de tarefas\", bloco 1.",
+      "s": "d"
      }
     ]
    }
   ],
   "resultado": [
    {
-    "t": "Os quadros reais estão criados, com listas que refletem as fases da atividade.",
+    "t": "O quadro de teste tem listas criadas pelo cliente e um cartão com responsável, prioridade e Término Previsto.",
     "s": "d"
    },
    {
-    "t": "Todo cartão tem responsável e término previsto, e cada pessoa trabalha por Minhas Tarefas.",
+    "t": "O cartão apareceu em Minhas Tarefas do executor e no Dashboard do gestor.",
     "s": "d"
    },
    {
-    "t": "O gestor cobra atrasos pelo Dashboard e corrige na tarefa de origem.",
+    "t": "O sistema impediu concluir o cartão com subtarefa aberta e reabrir o cancelado.",
     "s": "d"
    },
    {
-    "t": "Atividades periódicas estão em recorrência e, se combinado, o cronograma de obra sai de um modelo publicado.",
-    "s": "d"
-   },
-   {
-    "t": "O canal antigo de passar tarefas foi abandonado na data combinada.",
+    "t": "Comentário com menção, checklist, anexo e vínculo funcionaram, e o cartão arquivado foi restaurado com tudo.",
     "s": "d"
    }
   ],
   "atencao": [
-   "O cartão nasce sem responsável e não aparece em **Minhas Tarefas** até alguém usar **Adicionar responsável** (regra-tarefas-cartao-so-aparece-em-minhas-tarefas-com-responsavel).",
-   "O prazo é o campo **Término Previsto**; não existe campo Prazo. Sem ele, a tarefa nunca aparece como atrasada (regra-tarefas-cartao-so-aparece-em-minhas-tarefas-com-responsavel).",
-   "Hoje a busca Ctrl+K ainda não encontra o módulo Tarefas; é defeito reportado. Ensine abrir pelo menu de módulos (faq-limitacoes-conhecidas-v1-22-12).",
-   "Recorrência usada para obra com começo e fim gera tarefas que ninguém faz (roteiro-tarefas-03-minhas-tarefas-recorrencias-e-arquivo#005).",
-   "Aplicar um modelo em quadro já preenchido pode duplicar tarefas; modelo alterado precisa de nova versão publicada (roteiro-tarefas-04-etiquetas-modelos-e-automacoes#006 e #008).",
-   "Automações existem só na versão PRO; não prometa sem conferir a licença (roteiro-tarefas-04-etiquetas-modelos-e-automacoes#010).",
-   "Implantar Tarefas antes dos processos que ele organiza vira um quadro sem dono; implante depois de Projetos e Obras ou CRM (apostila, Módulo Tarefas)."
+   "Só em ambiente de teste, com quadros e cartões \"TESTE FLUXO CONSULTOR\" e usuários de teste como responsáveis.",
+   "Hoje a busca Ctrl+K ainda não encontra o módulo Tarefas: abra pelo menu de módulos (é defeito reportado, não regra).",
+   "Cartão sem responsável não aparece em Minhas Tarefas: o erro mais comum na implantação é criar cartões e esquecer o responsável.",
+   "O prazo é o **Término Previsto**; sem ele o cartão nunca aparece como atrasado.",
+   "Mover, comentar ou mencionar em cartão de outra pessoa avisa os responsáveis: não use usuários reais no teste.",
+   "Automações e recorrências criam cartões e enviam notificações sozinhas: só teste com destinatários de teste.",
+   "Arquivar só se desfaz por **Restaurar** em `Tarefas > Arquivadas`."
   ],
   "naoValidado": [
-   "Quadro inicial: o manual-12 diz que o quadro **Tarefas Gerais** já existe com 3 listas; o procedimento e a regra dizem que numa conta nova aparece Nenhum quadro ainda e que o quadro novo nasce sem listas. Confira na tela do cliente.",
-   "Modelos: o roteiro manda abrir **Modelos** no menu Tarefas; o menu listado no manual-12 não tem esse item e mostra o botão **A partir de Modelo** em Meus Quadros. Confira o caminho na tela.",
-   "Nome da tela de arquivados: **Arquivadas** no manual e na base funcional, **Tarefas Arquivadas** no roteiro. Confira na tela.",
-   "Criar o cartão: **+ Adicionar tarefa** na base funcional; no manual-12, o **+** da coluna e **Adicionar**. Confira o rótulo na tela.",
-   "A apostila cita consultar tarefas por equipe; as fontes de tela só mostram filtro por responsável e carga por responsável. Confira se existe visão por equipe."
+   "Quadro padrão: o procedimento registra que numa conta nova aparece \"Nenhum quadro ainda\" e que o quadro nasce sem listas; o manual-12-projetos-e-tarefas diz que o quadro **Tarefas Gerais** (padrão) já existe com as listas A Fazer, Em Andamento e Concluído. Conferir na tela do cliente.",
+   "Criar o cartão: o procedimento cita **+ Adicionar tarefa**; o manual-12-projetos-e-tarefas cita o **+** da coluna e o botão **Adicionar**.",
+   "Limite de trabalho (WIP), dependências, cancelamento, anexos acima de 10 MB e arquivar o quadro vêm só do fluxo antigo (plano de QA de Tarefas) e não foram executados no sistema.",
+   "Vincular o cartão a pedido ou obra: o fluxo antigo marcou como não validado; o manual-12-projetos-e-tarefas descreve o **Vincular**. Conferir na tela antes de ensinar.",
+   "Nomes de status: o fluxo antigo usa Pendente, Em andamento, Em revisão, Concluída e Cancelada; o manual-12-projetos-e-tarefas só cita listas (A Fazer, Em Andamento, Concluído). Conferir os status reais no detalhe da tarefa."
   ],
   "video": {
    "id": "consultor-10-tarefas",

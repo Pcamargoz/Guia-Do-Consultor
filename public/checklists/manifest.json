@@ -3,7 +3,7 @@
   {
    "id": "consultor",
    "nome": "Checklists de implantação do consultor",
-   "desc": "Um checklist por módulo, em 5 etapas: entender o cenário do cliente, preparar, conduzir o treinamento, validar o aprendizado e preparar o go-live. Cada item diz como validar e qual regra de negócio sustenta."
+   "desc": "Um roteiro prático por módulo para fazer junto com o cliente: entre no módulo e siga o fluxo real, do primeiro documento aos reflexos nos outros módulos. Cada passo diz o que fazer, o que explicar ao cliente e o que conferir na tela."
   },
   {
    "id": "fluxos",
@@ -26,165 +26,165 @@
    "grupo": "consultor",
    "id": "implantacao-fundacao",
    "area": "Implantação · Fundação",
-   "titulo": "Implantação da Fundação",
-   "resumo": "Ao final, o cliente tem a empresa emitindo em homologação, cada usuário com o perfil certo e a base de produtos, clientes e cadastros financeiros carregada e conferida. O administrador do cliente sabe convidar usuários, cadastrar produto com a categoria certa e corrigir um participante recusado. Sem a Fundação bem feita, todo pedido sai com preço, imposto ou cliente errado nos módulos seguintes.",
+   "titulo": "Implantação da Fundação: roteiro prático com o cliente",
+   "resumo": "Ao final, o cliente viu a própria empresa configurada em homologação, cada usuário entrando com o perfil certo e um pedido de teste salvo com o cliente, o produto, a condição de pagamento e o CFOP que ele mesmo cadastrou. O administrador do cliente sabe convidar um usuário, cadastrar um cliente e um produto e corrigir um cadastro recusado.",
    "arquivo": "consultores/implantacao-01-fundacao.html",
    "chave": "ff-consultor:implantacao-fundacao",
-   "etapas": 49,
-   "verificadas": 0
+   "etapas": 47,
+   "verificadas": 8
   },
   {
    "grupo": "consultor",
    "id": "implantacao-crm",
    "area": "Implantação · CRM",
-   "titulo": "Implantação de CRM",
-   "resumo": "Ao final, os vendedores cadastram e qualificam leads, convertem em oportunidade, lançam itens, registram atividades e encerram negócios como ganhos ou perdidos, e o gestor acompanha o funil pelos painéis. O CRM é a porta de entrada do processo comercial: o que nasce errado aqui chega errado ao pedido de venda, à produção e ao faturamento.",
+   "titulo": "Implantação de CRM: roteiro prático com o cliente",
+   "resumo": "Ao final, o cliente terá visto um lead virar oportunidade, a oportunidade ganha virar pedido de venda em `Vendas > Pedidos de Venda` e o resultado aparecer nos painéis do CRM. Ele saberá repetir o caminho e conhecerá as três travas do fluxo: BANT e etapa de 60% para converter, item para ganhar e CFOP para gerar o pedido.",
    "arquivo": "consultores/implantacao-02-crm.html",
    "chave": "ff-consultor:implantacao-crm",
-   "etapas": 44,
-   "verificadas": 0
+   "etapas": 34,
+   "verificadas": 27
   },
   {
    "grupo": "consultor",
    "id": "implantacao-integracao-cem",
-   "area": "Implantação · Integração com o CEM",
-   "titulo": "Implantação da Integração com o CEM",
-   "resumo": "Ao final, o cliente importa sozinho uma obra fechada no CEM e gera o pedido de venda certo: cliente reconhecido, produtos com os padrões certos e total igual ao do orçamento. Ele sabe tratar a revisão do orçamento e desfazer uma importação. A integração tira a redigitação do processo comercial, e um erro aqui se repete em todos os pedidos, notas e títulos seguintes.",
+   "area": "Implantação · Integração CEM",
+   "titulo": "Implantação da Integração CEM: roteiro prático com o cliente",
+   "resumo": "Ao final, o cliente importou sozinho uma obra fechada no CEM e sabe conferir no pedido gerado os itens, os preços, o desconto, os impostos, o cliente e a obra. Ele sabe o que trava uma importação, onde corrigir (no CEM ou nos Padrões) e o que acontece quando o orçamento é revisado depois de integrado.",
    "arquivo": "consultores/implantacao-03-integracao-cem.html",
    "chave": "ff-consultor:implantacao-integracao-cem",
-   "etapas": 48,
+   "etapas": 47,
    "verificadas": 0
   },
   {
    "grupo": "consultor",
    "id": "implantacao-vendas",
    "area": "Implantação · Vendas",
-   "titulo": "Implantação de Vendas",
-   "resumo": "Ao final, o cliente lança, aprova, encerra, cancela e fatura pedidos de venda sozinho, em homologação, e entende o que cada ação gera no Faturamento, no Financeiro, na Produção e na Expedição. Vendas inicia o fluxo operacional: um pedido com CFOP, condição ou valor errado leva o erro para a nota, os títulos e a comissão.",
+   "titulo": "Implantação de Vendas: roteiro prático com o cliente",
+   "resumo": "Ao final, o cliente criou e ajustou um pedido, viu um desconto passar pela aprovação, gerou títulos num pedido e faturou outro, e encontrou o título e a nota em cada módulo. Ele sabe por que o sistema recusa cancelar um pedido faturado ou com títulos e qual a ordem para desfazer.",
    "arquivo": "consultores/implantacao-04-vendas.html",
    "chave": "ff-consultor:implantacao-vendas",
-   "etapas": 48,
-   "verificadas": 0
+   "etapas": 44,
+   "verificadas": 14
   },
   {
    "grupo": "consultor",
    "id": "implantacao-faturamento",
    "area": "Implantação · Faturamento",
-   "titulo": "Implantação de Faturamento",
-   "resumo": "Ao final, o faturista do cliente fatura um pedido, transmite a nota, corrige com CC-e, cancela dentro do prazo e gera devolução sem ajuda, e sabe ler o que o sistema aponta quando a nota não sai. O Faturamento liga o comercial ao fiscal, ao estoque e ao financeiro: um CFOP mal marcado ou uma série errada aparecem como título faltando, estoque errado ou nota rejeitada. Todo teste é em **homologação**, com o responsável fiscal do cliente presente.",
+   "titulo": "Implantação de Faturamento: roteiro prático com o cliente",
+   "resumo": "Ao final, o faturista do cliente terá visto um pedido virar nota autorizada em homologação, os títulos nascendo da nota e uma segunda nota cancelada na ordem certa. Ele saberá ler o quadro de impostos, o pré-voo e a rejeição, e saberá o que só o responsável fiscal pode fazer.",
    "arquivo": "consultores/implantacao-05-faturamento.html",
    "chave": "ff-consultor:implantacao-faturamento",
-   "etapas": 52,
-   "verificadas": 0
+   "etapas": 49,
+   "verificadas": 16
   },
   {
    "grupo": "consultor",
    "id": "implantacao-fiscal",
    "area": "Implantação · Fiscal",
-   "titulo": "Implantação do Fiscal",
-   "resumo": "Ao final, o responsável fiscal do cliente sabe onde cada informação tributária entra no sistema (empresa, CFOP, NCM, NCM por Estado), lê o aviso que aparece no item quando falta cadastro e corrige sozinho. **O contador do cliente é peça central:** ele decide regime, CST, alíquotas, MVA, benefícios e textos legais, e confere os valores calculados. O consultor não define tributação; mostra onde cada resposta do contador entra e conduz os testes.",
+   "titulo": "Implantação do Fiscal: roteiro prático com o cliente e o contador",
+   "resumo": "Ao final, o cliente e o contador terão visto cada operação típica (venda interna, interestadual, a não contribuinte, com ST, serviço) calculada sem aviso no item e com valores conferidos. Eles saberão onde cada resposta do contador entra no sistema e como ler o aviso de imposto não calculado.",
    "arquivo": "consultores/implantacao-06-fiscal.html",
    "chave": "ff-consultor:implantacao-fiscal",
-   "etapas": 51,
-   "verificadas": 0
+   "etapas": 44,
+   "verificadas": 6
   },
   {
    "grupo": "consultor",
    "id": "implantacao-financeiro",
    "area": "Implantação · Financeiro",
-   "titulo": "Implantação do Financeiro",
-   "resumo": "Ao final, o financeiro do cliente baixa, estorna, concilia o extrato e lê o fluxo de caixa e o DRE sozinho, com títulos nascendo da nota e da compra sem digitação. O módulo fecha a cadeia comercial: se o saldo inicial, a carga de títulos ou o caminho de baixa forem mal combinados, o caixa do cliente fica errado desde o primeiro dia. Boleto e PIX só vão para produção depois dos testes em homologação.",
+   "titulo": "Implantação do Financeiro: roteiro prático com o cliente",
+   "resumo": "Ao final, o financeiro do cliente terá visto um título nascer do pedido e outro da nota, recebido um deles em duas partes, pago um título da compra e conferido o mesmo dinheiro em Saldos, Extrato, Fluxo de Caixa e DRE. Ele saberá estornar uma baixa e saberá o que o sistema recusa.",
    "arquivo": "consultores/implantacao-07-financeiro.html",
    "chave": "ff-consultor:implantacao-financeiro",
-   "etapas": 50,
-   "verificadas": 0
+   "etapas": 48,
+   "verificadas": 23
   },
   {
    "grupo": "consultor",
    "id": "implantacao-compras",
    "area": "Implantação · Compras",
-   "titulo": "Implantação de Compras",
-   "resumo": "Ao final, o comprador cria solicitações, cota com fornecedores por e-mail, importa as respostas, gera pedidos e acompanha a entrega sem ajuda. O aprovador decide pela alçada e o financeiro sabe onde nasce o contas a pagar. Compras abre a cadeia de suprimentos: um CFOP ou uma alçada mal decididos aqui viram título duplicado, pedido parado e custo errado no estoque.",
+   "titulo": "Implantação de Compras: roteiro prático com o cliente",
+   "resumo": "Ao final, o cliente viu uma necessidade de material virar pedido de compra aprovado, nota de recebimento e título a pagar, e sabe repetir cada passo sozinho. Ele também viu o sistema recusar o que não pode: preço zero, item sem vencedor, autor aprovando o próprio pedido e cancelamento com nota ativa.",
    "arquivo": "consultores/implantacao-08-compras.html",
    "chave": "ff-consultor:implantacao-compras",
-   "etapas": 49,
-   "verificadas": 0
+   "etapas": 47,
+   "verificadas": 16
   },
   {
    "grupo": "consultor",
    "id": "implantacao-recebimento",
    "area": "Implantação · Recebimento",
-   "titulo": "Implantação de Recebimento",
-   "resumo": "Ao final, o recebedor traz as notas do fornecedor pela SEFAZ ou pelo XML, vincula ao pedido de compra, confere a mercadoria e finaliza com estoque, custo e títulos corretos. Ele também sabe cancelar e devolver na ordem certa. O Recebimento é onde a compra vira saldo e dívida: erro aqui aparece no custo do produto e no caixa.",
+   "titulo": "Implantação de Recebimento: roteiro prático com o cliente",
+   "resumo": "Ao final, o cliente viu uma nota de fornecedor entrar, ser vinculada ao pedido, conferida e finalizada, e viu nascer a entrada no estoque e o título a pagar. Ele sabe tratar entrega parcial, cancelar uma nota e gerar a devolução, e sabe o que o sistema recusa.",
    "arquivo": "consultores/implantacao-09-recebimento.html",
    "chave": "ff-consultor:implantacao-recebimento",
-   "etapas": 46,
-   "verificadas": 0
+   "etapas": 44,
+   "verificadas": 14
   },
   {
    "grupo": "consultor",
    "id": "implantacao-estoque",
    "area": "Implantação · Estoque",
-   "titulo": "Implantação de Estoque",
-   "resumo": "Ao final, o cliente tem locais e parâmetros decididos, o saldo inicial carregado e conferido na data de corte, e sabe consultar saldo e disponível, transferir, ajustar, estornar e inventariar sozinho. No Faktory Flow o saldo é controlado por características (cor, comprimento, altura, largura): um saldo inicial errado contamina custo médio, compras, produção e faturamento.",
+   "titulo": "Implantação de Estoque: roteiro prático com o cliente",
+   "resumo": "Ao final, o cliente sabe que o saldo nunca é digitado: ele nasce de movimentos, e cada um deixa rastro no extrato. Ele viu o saldo inicial entrar, as travas de saldo, reserva e inventário funcionarem e o balanço do produto fechar em quantidade e valor.",
    "arquivo": "consultores/implantacao-10-estoque.html",
    "chave": "ff-consultor:implantacao-estoque",
-   "etapas": 47,
-   "verificadas": 0
+   "etapas": 49,
+   "verificadas": 26
   },
   {
    "grupo": "consultor",
    "id": "implantacao-producao",
    "area": "Implantação · Produção",
-   "titulo": "Implantação de Produção",
-   "resumo": "Ao final, o PCP abre e programa as ordens de produção a partir dos pedidos, o almoxarifado separa e baixa os materiais, os operadores apontam as etapas e a conclusão da OP dá entrada do produto acabado no estoque. A Produção liga a venda ao estoque e às compras: cadastro técnico errado aqui vira material faltando, custo errado e obra atrasada.",
+   "titulo": "Implantação de Produção: roteiro prático com o cliente",
+   "resumo": "Ao final, o cliente terá visto uma OP nascer do pedido com etapas e materiais da estrutura, baixar os insumos, registrar o início do trabalho e creditar o produto acabado no estoque com custo. Ele saberá repetir o caminho e conhecerá os alertas que travam a conclusão.",
    "arquivo": "consultores/implantacao-11-producao.html",
    "chave": "ff-consultor:implantacao-producao",
-   "etapas": 41,
-   "verificadas": 0
+   "etapas": 33,
+   "verificadas": 23
   },
   {
    "grupo": "consultor",
    "id": "implantacao-servicos",
    "area": "Implantação · Serviços",
-   "titulo": "Implantação de Serviços",
-   "resumo": "Ao final, o técnico mede os vãos do pedido, outro técnico confere e aprova, a coordenação gera e agenda a instalação, a equipe executa com checklist, a vistoria registra o aceite do cliente e os problemas viram assistência técnica. Serviços é o que acontece na obra depois da venda: medida errada aqui vira esquadria refeita na fábrica e cliente insatisfeito.",
+   "titulo": "Implantação de Serviços: roteiro prático com o cliente",
+   "resumo": "Ao final, o cliente terá visto um pedido virar medição aprovada, instalação concluída com checklist, vistoria com aceite e assistência técnica resolvida, todas ligadas ao mesmo pedido e cliente. Ele saberá que as passagens são por botão e em que ordem registrar os aceites.",
    "arquivo": "consultores/implantacao-12-servicos.html",
    "chave": "ff-consultor:implantacao-servicos",
-   "etapas": 40,
-   "verificadas": 0
+   "etapas": 34,
+   "verificadas": 31
   },
   {
    "grupo": "consultor",
    "id": "implantacao-expedicao",
    "area": "Implantação · Expedição",
-   "titulo": "Implantação de Expedição",
-   "resumo": "Ao final, o cliente libera pedidos faturados, monta cargas pela ocupação do veículo, faz os checkpoints de separação, conferência e carregamento e confirma a entrega sozinho. Também sabe tratar uma ocorrência e decidir entre re-expedir ou cancelar. A Expedição fecha o ciclo do pedido: é aqui que a obra recebe o que foi vendido e produzido.",
+   "titulo": "Implantação de Expedição: roteiro prático com o cliente",
+   "resumo": "Ao final, o cliente terá visto um pedido faturado virar carga, passar pelos checkpoints do pátio e chegar a Entregue com histórico, e saberá repetir sozinho. Também terá visto o que acontece numa ocorrência bloqueante e numa devolução, e por que o saldo do estoque não volta sozinho.",
    "arquivo": "consultores/implantacao-13-expedicao.html",
    "chave": "ff-consultor:implantacao-expedicao",
-   "etapas": 48,
-   "verificadas": 0
+   "etapas": 37,
+   "verificadas": 13
   },
   {
    "grupo": "consultor",
    "id": "implantacao-projetos",
-   "area": "Implantação · Projetos e Obras",
-   "titulo": "Implantação de Projetos e Obras",
-   "resumo": "Ao final, o cliente cadastra cada obra com etapas e resultado previsto, vincula pedidos e documentos à obra e lê sozinho o Painel Financeiro, o Andamento das Obras e o Plano de Resultado. Ele sabe investigar uma diferença no documento de origem, sem mexer no painel. Para uma indústria de esquadrias, é aqui que se descobre se a obra deu margem.",
+   "area": "Implantação · Projetos",
+   "titulo": "Implantação de Projetos: roteiro prático com o cliente",
+   "resumo": "Ao final, o cliente terá visto uma obra de teste receber os documentos dos outros módulos e os painéis mostrarem números coerentes com eles. Saberá cadastrar uma obra, ligar o pedido antes de faturar e ler o Painel Financeiro de Projetos.",
    "arquivo": "consultores/implantacao-14-projetos.html",
    "chave": "ff-consultor:implantacao-projetos",
-   "etapas": 43,
-   "verificadas": 0
+   "etapas": 32,
+   "verificadas": 8
   },
   {
    "grupo": "consultor",
    "id": "implantacao-tarefas",
    "area": "Implantação · Tarefas",
-   "titulo": "Implantação de Tarefas",
-   "resumo": "Ao final, o cliente monta quadros com listas, cria cartões com responsável, prioridade e término previsto, cobra os atrasos e usa recorrências e modelos para o que se repete. Cada pessoa acompanha o próprio trabalho em Minhas Tarefas. Numa indústria de esquadrias, o módulo dá ritmo às atividades da obra e dos departamentos.",
+   "titulo": "Implantação de Tarefas: roteiro prático com o cliente",
+   "resumo": "Ao final, o cliente terá montado um quadro da equipe, distribuído um cartão com responsável e Término Previsto e visto esse cartão chegar a Minhas Tarefas e ao Dashboard. Saberá comentar, mencionar, anexar e arquivar sem perder histórico.",
    "arquivo": "consultores/implantacao-15-tarefas.html",
    "chave": "ff-consultor:implantacao-tarefas",
-   "etapas": 43,
+   "etapas": 35,
    "verificadas": 0
   },
   {
