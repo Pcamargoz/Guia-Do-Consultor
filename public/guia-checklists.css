@@ -42,13 +42,11 @@
   transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out), border-color var(--dur-fast); }
 .ckx-card::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 4px; border-radius: var(--radius-lg) var(--radius-lg) 0 0; background: var(--brand-primary); transform: scaleX(.18); transform-origin: left; transition: transform var(--dur-slow) var(--ease-out); }
 .ckx-card[data-grupo="consultor"]::before { background: var(--brand-accent); }
-.ckx-card[data-grupo="qa"]::before { background: var(--brand-secondary-deep); }
 .ckx-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--brand-primary-300); }
 .ckx-card:hover::before { transform: scaleX(1); }
 .ckx-card-topo { display: flex; align-items: center; gap: 10px; }
 .ckx-ico { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 12px; background: var(--brand-primary-900); color: var(--brand-accent); transition: transform var(--dur-base) var(--ease-spring); }
 .ckx-card[data-grupo="estagiario"] .ckx-ico { background: var(--brand-primary-100); color: var(--brand-primary-800); }
-.ckx-card[data-grupo="qa"] .ckx-ico { background: var(--brand-accent-soft); color: var(--brand-accent-text); }
 .ckx-card:hover .ckx-ico { transform: rotate(-6deg) scale(1.08); }
 .ckx-ico svg { width: 21px; height: 21px; }
 .ckx-area { color: var(--brand-primary-700); font: 800 11px var(--font-display); letter-spacing: .08em; text-transform: uppercase; }

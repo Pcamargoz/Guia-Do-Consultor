@@ -250,14 +250,6 @@ const GRUPOS = [
   { id: 'consultor', nome: 'Checklists de implantação do consultor', desc: 'Um roteiro prático por módulo para fazer junto com o cliente: entre no módulo e siga o fluxo real, do primeiro documento aos reflexos nos outros módulos. Cada passo diz o que fazer, o que explicar ao cliente e o que conferir na tela.' },
   { id: 'fluxos', nome: 'Fluxos principais do estagiário', desc: 'Vendas, Faturamento e Financeiro, os módulos mais maduros, do começo ao fim com os seus registros. Faça depois do onboarding e dos checklists 01 a 04.' },
   { id: 'estagiario', nome: 'Trilha do estagiário', desc: 'Checklists curtos para a integração. Comece pelo onboarding (00) e siga a numeração.' },
-  { id: 'qa', nome: 'Validação dos módulos (QA)', desc: 'Planos completos de validação e homologação de cada módulo, com os achados já registrados.' },
-];
-const QA = [
-  ['CRM', 'Validação do CRM', 'validacao-crm-v2-faktory-flow.html'], ['Compras', 'Validação de Compras', 'validacao-compras-faktory-flow.html'],
-  ['Estoque', 'Validação de Estoque', 'validacao-estoque-faktory-flow.html'], ['Expedição', 'Validação de Expedição', 'validacao-expedicao-faktory-flow.html'],
-  ['Produção', 'Validação da Produção', 'validacao-producao-v2-faktory-flow.html'], ['Projetos', 'Validação de Projetos', 'validacao-projetos-faktory-flow.html'],
-  ['Recebimento', 'Validação de Recebimento', 'validacao-recebimento-faktory-flow.html'], ['Serviços', 'Validação de Serviços', 'validacao-servicos-v2-faktory-flow.html'],
-  ['Tarefas', 'Validação de Tarefas', 'validacao-tarefas-faktory-flow.html'],
 ];
 const resumoEtapas = (c) => {
   const p = contarPassos(c);
@@ -281,7 +273,6 @@ const manifest = {
     ...CHECKLISTS.filter(ehFluxoPrincipal).map(itemEstagiario),
     { grupo: 'estagiario', id: 'onboarding', area: '00 · Comece por aqui', titulo: ONBOARDING.titulo, resumo: ONBOARDING.objetivo, arquivo: `estagiarios/${ONBOARDING.arquivo}`, chave: 'ff-estagiario:onboarding', ...resumoEtapas(ONBOARDING) },
     ...CHECKLISTS.filter((c) => !ehFluxoPrincipal(c)).map(itemEstagiario),
-    ...QA.map(([area, titulo, arquivo]) => ({ grupo: 'qa', id: arquivo.replace(/^validacao-|-faktory-flow\.html$/g, ''), area, titulo, resumo: 'Plano de validação com roteiros, critérios e achados registrados.', arquivo })),
   ],
 };
 

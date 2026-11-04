@@ -14,11 +14,6 @@
    "id": "estagiario",
    "nome": "Trilha do estagiário",
    "desc": "Checklists curtos para a integração. Comece pelo onboarding (00) e siga a numeração."
-  },
-  {
-   "id": "qa",
-   "nome": "Validação dos módulos (QA)",
-   "desc": "Planos completos de validação e homologação de cada módulo, com os achados já registrados."
   }
  ],
  "itens": [
@@ -397,78 +392,6 @@
    "chave": "ff-estagiario:fluxo",
    "etapas": 17,
    "verificadas": 10
-  },
-  {
-   "grupo": "qa",
-   "id": "crm-v2",
-   "area": "CRM",
-   "titulo": "Validação do CRM",
-   "resumo": "Plano de validação com roteiros, critérios e achados registrados.",
-   "arquivo": "validacao-crm-v2-faktory-flow.html"
-  },
-  {
-   "grupo": "qa",
-   "id": "compras",
-   "area": "Compras",
-   "titulo": "Validação de Compras",
-   "resumo": "Plano de validação com roteiros, critérios e achados registrados.",
-   "arquivo": "validacao-compras-faktory-flow.html"
-  },
-  {
-   "grupo": "qa",
-   "id": "estoque",
-   "area": "Estoque",
-   "titulo": "Validação de Estoque",
-   "resumo": "Plano de validação com roteiros, critérios e achados registrados.",
-   "arquivo": "validacao-estoque-faktory-flow.html"
-  },
-  {
-   "grupo": "qa",
-   "id": "expedicao",
-   "area": "Expedição",
-   "titulo": "Validação de Expedição",
-   "resumo": "Plano de validação com roteiros, critérios e achados registrados.",
-   "arquivo": "validacao-expedicao-faktory-flow.html"
-  },
-  {
-   "grupo": "qa",
-   "id": "producao-v2",
-   "area": "Produção",
-   "titulo": "Validação da Produção",
-   "resumo": "Plano de validação com roteiros, critérios e achados registrados.",
-   "arquivo": "validacao-producao-v2-faktory-flow.html"
-  },
-  {
-   "grupo": "qa",
-   "id": "projetos",
-   "area": "Projetos",
-   "titulo": "Validação de Projetos",
-   "resumo": "Plano de validação com roteiros, critérios e achados registrados.",
-   "arquivo": "validacao-projetos-faktory-flow.html"
-  },
-  {
-   "grupo": "qa",
-   "id": "recebimento",
-   "area": "Recebimento",
-   "titulo": "Validação de Recebimento",
-   "resumo": "Plano de validação com roteiros, critérios e achados registrados.",
-   "arquivo": "validacao-recebimento-faktory-flow.html"
-  },
-  {
-   "grupo": "qa",
-   "id": "servicos-v2",
-   "area": "Serviços",
-   "titulo": "Validação de Serviços",
-   "resumo": "Plano de validação com roteiros, critérios e achados registrados.",
-   "arquivo": "validacao-servicos-v2-faktory-flow.html"
-  },
-  {
-   "grupo": "qa",
-   "id": "tarefas",
-   "area": "Tarefas",
-   "titulo": "Validação de Tarefas",
-   "resumo": "Plano de validação com roteiros, critérios e achados registrados.",
-   "arquivo": "validacao-tarefas-faktory-flow.html"
   }
  ]
 }
