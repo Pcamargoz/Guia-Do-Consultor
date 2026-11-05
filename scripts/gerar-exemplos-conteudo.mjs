@@ -1,4 +1,4 @@
-/* Gera os JSON de EXEMPLO (dados fictícios) no formato exato do contrato-componentes.md v1, para o UI/UX
+/* Gera os JSON de EXEMPLO (dados fictícios) no formato exato do contrato-componentes.md (v1 + ajustes da v2), para o UI/UX
    trabalhar sem banco. Usa o mesmo montador da base real com fontes fictícias (scripts/testes/fixtures).
    Uso: node scripts/gerar-exemplos-conteudo.mjs [--saida <pasta>]   (padrão: ./exemplos, fora do git) */
 import { mkdir, writeFile } from 'node:fs/promises';
@@ -7,7 +7,7 @@ import { fileURLToPath } from 'node:url';
 import { parseArgs } from 'node:util';
 import { montarBase } from '../lib/conteudo/montar.js';
 import { montarDetalhe, montarResumo } from '../lib/conteudo/consultas.js';
-import { listaAdmin, mapaEfetivo, mesclarComPadrao, validarAtualizacao, itemAdmin } from '../lib/visibilidade.js';
+import { listaAdmin, mapaEfetivo, mesclarComPadrao, validarAtualizacao, itemAdmin, VALORES_INICIAIS } from '../lib/visibilidade.js';
 import { carregarPlataforma } from './testes/apoio/carregar-plataforma.mjs';
 import { guiaFicticio, harnessFicticio, MAPA_FICTICIO, VERSAO_FICTICIA } from './testes/fixtures/fontes-ficticias.mjs';
 
@@ -62,15 +62,23 @@ export function montarExemplos() {
 
   // Roteador de hash (§3)
   const { Plataforma } = carregarPlataforma();
-  ex.rotas = ['', '#inicio', '#inicial', '#inicial/vendas', '#consultor', '#consultor/estoque', '#consultor/fundamentos', '#pacotes', '#checklist', '#videos', '#apostila', '#admin', '#acervo', '#qualquer-outra-coisa', '#inicial/<script>']
+  ex.rotas = ['', '#inicio', '#inicial', '#inicial/vendas', '#consultor', '#consultor/estoque', '#consultor/fundamentos', '#pacotes', '#checklist', '#videos', '#apostila', '#admin', '#acervo', '#acervo/metodo', '#qualquer-outra-coisa', '#inicial/<script>']
     .map((hash) => ({ hash, rota: { ...Plataforma.lerRota(hash) } }));
+  // Hashes antigos (guia-abas.js, seções do guia antigo, âncoras internas) que continuam valendo
+  ex['rotas-aliases'] = ['#guia', '#dashboard', '#parte1', '#metodo', '#modulos', '#processos', '#diagnostico', '#conclusao', '#pc-nome-42', '#ck-3']
+    .map((hash) => ({ hash, rota: { ...Plataforma.lerRota(hash) } }));
+  // Mesmo roteador com o perfil do estagiário (mapa do GET /api/visibilidade com os valores iniciais do doc 04)
+  const est = carregarPlataforma().Plataforma;
+  est.aplicarVisibilidade(mapaEfetivo(VALORES_INICIAIS, 'estagiario'));
+  ex['rotas-estagiario'] = ['#guia', '#metodo', '#acervo', '#apostila', '#inicial/vendas', '#pacotes']
+    .map((hash) => ({ hash, rota: { ...est.lerRota(hash) } }));
   return ex;
 }
 
 const LEIA_ME = `# Exemplos — FE-20261104-01 (DADOS FICTÍCIOS)
 
 Todos os textos, nomes ("Admin Exemplo", "Cliente Exemplo Ltda") e regras são **fictícios**, marcados "(fictício)".
-Formato: contrato-componentes.md v1. Gerado por \`node scripts/gerar-exemplos-conteudo.mjs\` (mesmo montador da base real).
+Formato: contrato-componentes.md v1 + ajustes da v2 e v3 (reviews do Lead). Gerado por \`node scripts/gerar-exemplos-conteudo.mjs\` (mesmo montador da base real).
 Cada arquivo é exatamente o que \`window.Plataforma\` resolve (sucesso = corpo da API; erro = \`{ erro: { status, mensagem } }\`).
 A API devolve erro como \`{ "erro": "mensagem" }\` com o status HTTP; o cliente converte.
 
@@ -89,7 +97,7 @@ Cenário de visibilidade (linhas fictícias do admin): \`modulo:estoque\` só pa
 | modulo-vendas-consultor-consultor.json | ...&jornada=consultor | consultor | Guia do Consultor, 10 seções, sem o link da apostila |
 | modulo-vendas-consultor-admin.json | ...&jornada=consultor | admin | inclui link da apostila (\`visibilidade: "area:apostila"\`) |
 | modulo-estoque-consultor-consultor.json | ...modulo=estoque&jornada=consultor | consultor | módulo parcial (vídeo em preparação) |
-| modulo-relatorios-inicial-admin.json | ...modulo=relatorios&jornada=inicial | admin | módulo sem conteúdo: tudo em-preparacao, \`oculto: true\` |
+| modulo-relatorios-inicial-admin.json | ...modulo=relatorios&jornada=inicial | admin | módulo em preparação por decisão: tudo em-preparacao, sem blocos (a semente fica guardada na base e não sai), \`oculto: true\` |
 | erro-403-modulo-oculto.json | ...modulo=estoque | estagiário | 403 |
 | erro-404-modulo-inexistente.json | ...modulo=modulo-que-nao-existe | — | 404 |
 | erro-400-jornada-invalida.json | ...jornada=avancada | — | 400 |
@@ -100,9 +108,25 @@ Cenário de visibilidade (linhas fictícias do admin): \`modulo:estoque\` só pa
 | visibilidade-put-400.json | PUT com chave inválida | admin | 400 |
 | visibilidade-put-403.json | PUT | consultor/estagiário | 403 |
 | rotas.json | location.hash → Plataforma.rota | — | roteador de hash |
+| rotas-aliases.json | hashes antigos → Plataforma.rota | — | #guia → Acervo; seções do guia antigo → Acervo + \`secao\`; #pc-nome-*, #ck-* |
+| rotas-estagiario.json | hash → Plataforma.rota com o mapa de visibilidade do estagiário | estagiario | área oculta (Acervo, apostila) → \`inicio\`, sem erro |
 
 Blocos das seções (\`secoes[].blocos[].tipo\`): texto, lista, passos, video, link, tela, fluxo, etapa, regra,
 checklist-aprendizado, progresso, fontes. Todo bloco tem \`fontes\`. Bloco ligado a material tem \`material\` (id).
+
+## Texto estruturado (v2) — nenhum HTML vem dos dados
+
+Os campos de texto corrido \`texto\`, \`intro\`, \`nota\`, \`onde\`, \`confirmar\` e \`resumo\` (no bloco, em \`itens[]\` e em
+\`passos[]\`) chegam como lista de trechos \`[{ "t": "...", "marca"?: "negrito" | "italico" | "link", "href"?: "..." }]\`
+(ou \`null\`), com \`marca\` ∈ negrito | italico | link | tela | codigo. Monte com \`textContent\` (um \`<strong>\`/\`<em>\`/
+\`<a>\`/elemento de tela/\`<code>\` criado por trecho), nunca com innerHTML. \`tela\` = nome ou caminho de tela do glossário
+do Harness (ex.: "Vendas > Pedidos de Venda"); \`codigo\` = campo, valor ou código (ex.: "CFOP", "APROVADO"). Nenhum
+texto tem crase.
+\`href\` só vem em \`marca: "link"\` e é sempre seguro: caminho do site (\`/x\`), rota (\`#inicial/vendas\`) ou \`https://\`.
+Rótulos (\`titulo\`, \`rotulo\`, \`selo\`, \`legenda\` da tela, \`etapas[]\`) são texto puro. No bloco de vídeo, a legenda
+é \`legendas_url\` (v3): "/caminho.vtt" ou "https://….vtt", ou null. Nenhum texto tem "<":
+placeholders das fontes como "<número>" chegam como "‹número›". Exemplo: \`modulo-vendas-consultor-admin.json\`, regra
+"Pedido aprovado…", campo \`confirmar\`.
 `;
 
 async function main() {

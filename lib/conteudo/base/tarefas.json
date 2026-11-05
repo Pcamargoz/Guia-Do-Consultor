@@ -1,0 +1,1825 @@
+{
+ "versao": "2026-11-04",
+ "id": "tarefas",
+ "jornadas": {
+  "inicial": [
+   {
+    "id": "apresentacao",
+    "titulo": "Apresentação",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "texto",
+      "rotulo": "Tarefas: quadros e cartões",
+      "texto": [
+       {
+        "t": "Quadros com listas e cartões para acompanhar quem faz o quê e até quando."
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#tarefas"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Objetivo",
+      "texto": [
+       {
+        "t": "Usar o módulo Tarefas para acompanhar suas atividades: achar seus cartões, atualizar o andamento e registrar comentários."
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#tarefas"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-estagiarios.mjs#tarefas"
+    ]
+   },
+   {
+    "id": "video",
+    "titulo": "Vídeo introdutório",
+    "status": "em-preparacao",
+    "blocos": [],
+    "fontes": []
+   },
+   {
+    "id": "manual",
+    "titulo": "Manual visual resumido",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "passos",
+      "titulo": "2. Achar suas tarefas",
+      "onde": null,
+      "intro": null,
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Abrir o módulo Tarefas pelo menu de módulos (a busca Ctrl+K por \"tarefa\" não encontra o módulo)."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Abrir "
+         },
+         {
+          "t": "Minhas Tarefas",
+          "marca": "negrito"
+         },
+         {
+          "t": " e ver o que está atribuído a você."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Mostra o cartão de treino depois que você se coloca como responsável."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#tarefas"
+      ]
+     },
+     {
+      "tipo": "passos",
+      "titulo": "3. Trabalhar num cartão",
+      "onde": null,
+      "intro": null,
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "No cartão, usar o checklist (aba "
+         },
+         {
+          "t": "Checklists > + Nova checklist > Criar > + Novo item > Adicionar",
+          "marca": "negrito"
+         },
+         {
+          "t": ") e os comentários (aba "
+         },
+         {
+          "t": "Comentários > Comentar",
+          "marca": "negrito"
+         },
+         {
+          "t": ")."
+         }
+        ],
+        "nota": [
+         {
+          "t": "O comentário mostra o toast \"Comentário adicionado!\"; no teste o autor apareceu como \"Usuário\"."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Mover o cartão entre as listas pelo ícone "
+         },
+         {
+          "t": "Mover para outra lista",
+          "marca": "negrito"
+         },
+         {
+          "t": " (arrastar com o mouse também existe, mas não foi testado)."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Arquivar o cartão de teste no fim, pelo cabeçalho do cartão."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Ele passa para "
+         },
+         {
+          "t": "Tarefas > Arquivadas",
+          "marca": "negrito"
+         },
+         {
+          "t": ", onde há o botão "
+         },
+         {
+          "t": "Restaurar",
+          "marca": "negrito"
+         },
+         {
+          "t": "."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#tarefas"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-estagiarios.mjs#tarefas"
+    ]
+   },
+   {
+    "id": "telas",
+    "titulo": "Principais telas",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "lista",
+      "rotulo": "Telas do módulo (glossário do Harness)",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Quadros e cartões"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Tarefas › Meus Quadros"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/glossario/telas.yaml#tarefas.quadros"
+        ]
+       }
+      ],
+      "fontes": [
+       "harness:conhecimento/glossario/telas.yaml#tarefas.quadros"
+      ]
+     }
+    ],
+    "fontes": [
+     "harness:conhecimento/glossario/telas.yaml#tarefas.quadros"
+    ]
+   },
+   {
+    "id": "fluxo",
+    "titulo": "Fluxo operacional básico",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "fluxo",
+      "titulo": "Da criação da tarefa à conclusão.",
+      "etapas": [
+       "Criação da Tarefa",
+       "Definição do Responsável e Prazo",
+       "Execução da Atividade",
+       "Acompanhamento",
+       "Conclusão"
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#tarefas"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:db/migrations/002_modulos_iniciais.sql#tarefas"
+    ]
+   },
+   {
+    "id": "atividade",
+    "titulo": "Atividade prática",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "passos",
+      "titulo": "1. Preparar seus dados: criar o seu primeiro cartão",
+      "onde": [
+       {
+        "t": "módulo "
+       },
+       {
+        "t": "Tarefas",
+        "marca": "codigo"
+       }
+      ],
+      "intro": [
+       {
+        "t": "A sua empresa de treino começa "
+       },
+       {
+        "t": "zerada",
+        "marca": "negrito"
+       },
+       {
+        "t": ": cada módulo usa o que o anterior criou. A tela \"Minhas Tarefas\" começa vazia: ela só mostra o que está atribuído a você. Se faltar permissão ou cadastro-base (botão que não aparece, CFOP, plano de contas, meio de pagamento, unidade de medida, almoxarifado), anote a mensagem em "
+       },
+       {
+        "t": "Problema",
+        "marca": "negrito"
+       },
+       {
+        "t": " e chame o supervisor: a empresa de treino começa zerada e os cadastros-base são feitos por um consultor."
+       }
+      ],
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Abrir o módulo Tarefas pelo menu de módulos e ver "
+         },
+         {
+          "t": "Meus Quadros",
+          "marca": "negrito"
+         },
+         {
+          "t": "."
+         }
+        ],
+        "nota": [
+         {
+          "t": "A busca Ctrl+K por \"tarefa\" não encontra o módulo. Numa conta zerada aparece \"Nenhum quadro ainda\"."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Sem quadro, clicar em "
+         },
+         {
+          "t": "Novo Quadro",
+          "marca": "negrito"
+         },
+         {
+          "t": ", informar o "
+         },
+         {
+          "t": "Nome do Quadro",
+          "marca": "negrito"
+         },
+         {
+          "t": " (\"TESTE ESTAGIÁRIO - quadro de treino\") e o "
+         },
+         {
+          "t": "Tipo",
+          "marca": "negrito"
+         },
+         {
+          "t": " Avulso e clicar em "
+         },
+         {
+          "t": "Criar Quadro",
+          "marca": "negrito"
+         },
+         {
+          "t": ". Abrir o quadro e criar as listas em "
+         },
+         {
+          "t": "+ Adicionar lista",
+          "marca": "negrito"
+         },
+         {
+          "t": " (ex.: \"A fazer\" e \"Feito\")."
+         }
+        ],
+        "nota": [
+         {
+          "t": "O quadro nasce sem listas. Se o seu supervisor já combinou um quadro, use o dele."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Na lista \"A fazer\", clicar em "
+         },
+         {
+          "t": "+ Adicionar tarefa",
+          "marca": "negrito"
+         },
+         {
+          "t": " e criar o cartão \"TESTE ESTAGIÁRIO - cartão 1\". Abrir o cartão, definir "
+         },
+         {
+          "t": "Prioridade",
+          "marca": "negrito"
+         },
+         {
+          "t": " e "
+         },
+         {
+          "t": "Término Previsto",
+          "marca": "negrito"
+         },
+         {
+          "t": " (não existe campo \"Prazo\") e, em "
+         },
+         {
+          "t": "Adicionar responsável",
+          "marca": "negrito"
+         },
+         {
+          "t": ", escolher "
+         },
+         {
+          "t": "você",
+          "marca": "negrito"
+         },
+         {
+          "t": "."
+         }
+        ],
+        "nota": [
+         {
+          "t": "O cartão nasce Pendente e Média. O responsável "
+         },
+         {
+          "t": "não",
+          "marca": "negrito"
+         },
+         {
+          "t": " vem preenchido: sem ele o cartão não aparece em "
+         },
+         {
+          "t": "Minhas Tarefas",
+          "marca": "negrito"
+         },
+         {
+          "t": "."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#tarefas"
+      ]
+     },
+     {
+      "tipo": "link",
+      "material": "tarefas:checklist-inicial",
+      "titulo": "Tarefas: quadros e cartões",
+      "status": "disponivel",
+      "url": "/checklists/estagiarios/14-tarefas.html",
+      "duracao_s": null,
+      "poster": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#tarefas"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-estagiarios.mjs#tarefas"
+    ]
+   },
+   {
+    "id": "checklist",
+    "titulo": "Checklist de aprendizado",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "checklist-aprendizado",
+      "chave": "inicial:tarefas",
+      "itens": [
+       {
+        "id": "entendi",
+        "texto": [
+         {
+          "t": "Entendi o que é o módulo Tarefas e para que serve"
+         }
+        ]
+       },
+       {
+        "id": "acessar-1",
+        "texto": [
+         {
+          "t": "Sei acessar: módulo "
+         },
+         {
+          "t": "Tarefas",
+          "marca": "codigo"
+         }
+        ]
+       },
+       {
+        "id": "executei-2",
+        "texto": [
+         {
+          "t": "Executei: 1. Preparar seus dados: criar o seu primeiro cartão"
+         }
+        ]
+       },
+       {
+        "id": "executei-3",
+        "texto": [
+         {
+          "t": "Executei: 2. Achar suas tarefas"
+         }
+        ]
+       },
+       {
+        "id": "executei-4",
+        "texto": [
+         {
+          "t": "Executei: 3. Trabalhar num cartão"
+         }
+        ]
+       },
+       {
+        "id": "checklist",
+        "texto": [
+         {
+          "t": "Concluí o checklist prático"
+         }
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
+       "guia:scripts/dados-checklists-estagiarios.mjs#tarefas"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
+     "guia:scripts/dados-checklists-estagiarios.mjs#tarefas"
+    ]
+   },
+   {
+    "id": "progresso",
+    "titulo": "Progresso",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "progresso",
+      "chave": "inicial:tarefas",
+      "total": 6,
+      "api": "/api/checklists-progresso",
+      "fontes": [
+       "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md"
+    ]
+   }
+  ],
+  "consultor": [
+   {
+    "id": "visao",
+    "titulo": "Visão funcional",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "texto",
+      "rotulo": "Objetivo",
+      "texto": [
+       {
+        "t": "Organizar e acompanhar atividades das equipes. Controlar responsabilidades, prazos e andamento através de quadros visuais."
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#tarefas"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Papel no fluxo",
+      "texto": [
+       {
+        "t": "Organiza fluxo de trabalho com quadros, colunas e cartões. Cada tarefa pode ter responsável, prazo, prioridade, checklist, comentários, anexos e histórico."
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#tarefas"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Quando implantar",
+      "texto": [
+       {
+        "t": "Após os processos que utilizarão o gerenciamento de atividades (Projetos e Obras, CRM, etc.)."
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#tarefas"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Caminho — Tarefas: quadros, listas e cartões",
+      "texto": [
+       {
+        "t": "Abrir o módulo Tarefas pelo menu de módulos. Hoje a busca Ctrl+K ainda não o encontra: é defeito reportado (ver faq-limitacoes-conhecidas-v1-22-12), não comportamento esperado; a busca de funcionalidades é global. Telas: Meus Quadros, "
+       },
+       {
+        "t": "Minhas Tarefas",
+        "marca": "negrito"
+       },
+       {
+        "t": " e Arquivadas."
+       }
+      ],
+      "fontes": [
+       "harness:conhecimento/produto/funcional/funcional-tarefas-quadros-listas-e-cartoes.md"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:db/migrations/002_modulos_iniciais.sql#tarefas",
+     "harness:conhecimento/produto/funcional/funcional-tarefas-quadros-listas-e-cartoes.md"
+    ]
+   },
+   {
+    "id": "regras",
+    "titulo": "Regras de negócio",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "regra",
+      "titulo": "O cartão só aparece em Minhas Tarefas com responsável",
+      "texto": [
+       {
+        "t": "Um quadro novo (Novo Quadro: Nome do Quadro e Tipo, como Avulso) nasce "
+       },
+       {
+        "t": "sem listas",
+        "marca": "negrito"
+       },
+       {
+        "t": ": elas são criadas em "
+       },
+       {
+        "t": "+ Adicionar lista",
+        "marca": "negrito"
+       },
+       {
+        "t": ", e o cartão em "
+       },
+       {
+        "t": "+ Adicionar tarefa",
+        "marca": "negrito"
+       },
+       {
+        "t": ". O cartão nasce Pendente, prioridade Média e "
+       },
+       {
+        "t": "sem responsável",
+        "marca": "negrito"
+       },
+       {
+        "t": "; só aparece em "
+       },
+       {
+        "t": "Minhas Tarefas",
+        "marca": "negrito"
+       },
+       {
+        "t": " depois de "
+       },
+       {
+        "t": "Adicionar responsável",
+        "marca": "negrito"
+       },
+       {
+        "t": ". O prazo é o campo "
+       },
+       {
+        "t": "Término Previsto",
+        "marca": "negrito"
+       },
+       {
+        "t": " (não existe \"Prazo\"). O cartão se move pelo ícone \"Mover para outra lista\" e se arquiva no cabeçalho (Tarefas › Arquivadas tem "
+       },
+       {
+        "t": "Restaurar",
+        "marca": "negrito"
+       },
+       {
+        "t": "). O módulo é aberto pelo menu de módulos; hoje a busca Ctrl+K ainda não o encontra, mas isso é defeito reportado (ver faq-limitacoes-conhecidas-v1-22-12), não regra."
+       }
+      ],
+      "confirmar": [
+       {
+        "t": "Tarefas › Meus Quadros e Minhas Tarefas."
+       }
+      ],
+      "confianca": "B",
+      "fontes": [
+       "harness:conhecimento/produto/regras-negocio/regra-tarefas-cartao-so-aparece-em-minhas-tarefas-com-responsavel.md"
+      ]
+     },
+     {
+      "tipo": "regra",
+      "titulo": "O prazo é o Término Previsto",
+      "texto": [
+       {
+        "t": "Não existe um campo Prazo: a data limite do cartão é o Término Previsto."
+       }
+      ],
+      "confirmar": null,
+      "confianca": null,
+      "fontes": [
+       "guia:videos/roteiros/consultor-10-tarefas.json#06",
+       "harness-id:funcional-tarefas-quadros-listas-e-cartoes"
+      ]
+     },
+     {
+      "tipo": "regra",
+      "titulo": "Arquivar não apaga",
+      "texto": [
+       {
+        "t": "O cartão arquivado sai das listagens e vai para Tarefas › Arquivadas, com o botão Restaurar."
+       }
+      ],
+      "confirmar": null,
+      "confianca": null,
+      "fontes": [
+       "guia:videos/roteiros/consultor-10-tarefas.json#07",
+       "harness-id:funcional-tarefas-quadros-listas-e-cartoes"
+      ]
+     }
+    ],
+    "fontes": [
+     "harness:conhecimento/produto/regras-negocio/regra-tarefas-cartao-so-aparece-em-minhas-tarefas-com-responsavel.md",
+     "guia:videos/roteiros/consultor-10-tarefas.json#06",
+     "harness-id:funcional-tarefas-quadros-listas-e-cartoes",
+     "guia:videos/roteiros/consultor-10-tarefas.json#07"
+    ]
+   },
+   {
+    "id": "fluxos",
+    "titulo": "Fluxos operacionais",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "fluxo",
+      "titulo": "Da criação da tarefa à conclusão.",
+      "etapas": [
+       "Criação da Tarefa",
+       "Definição do Responsável e Prazo",
+       "Execução da Atividade",
+       "Acompanhamento",
+       "Conclusão"
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#tarefas"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "1. Abrir o módulo e criar o quadro",
+      "onde": [
+       {
+        "t": "Tarefas > Meus Quadros",
+        "marca": "tela"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Comece pelo quadro: é nele que a equipe vai ver o trabalho. Mostre primeiro como chegar ao módulo."
+       }
+      ],
+      "passos_total": 4,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "2. Criar as listas",
+      "onde": [
+       {
+        "t": "dentro do quadro, "
+       },
+       {
+        "t": "+ Adicionar lista",
+        "marca": "negrito"
+       }
+      ],
+      "intro": [
+       {
+        "t": "As listas representam as fases do trabalho. Crie com o cliente as que a equipe vai usar e mostre as regras de lista."
+       }
+      ],
+      "passos_total": 4,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "3. Cartão com responsável e prazo",
+      "onde": [
+       {
+        "t": "lista do quadro e detalhe da tarefa"
+       }
+      ],
+      "intro": [
+       {
+        "t": "O cartão é a atividade distribuída. Sem responsável ele não chega a ninguém; sem Término Previsto não há atraso para cobrar."
+       }
+      ],
+      "passos_total": 5,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "4. Minhas Tarefas e Dashboard",
+      "onde": [
+       {
+        "t": "Tarefas > Minhas Tarefas",
+        "marca": "codigo"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "Tarefas > Dashboard",
+        "marca": "codigo"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Mostre o outro lado: o que o executor vê e o que o gestor acompanha."
+       }
+      ],
+      "passos_total": 3,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "5. Status e regras do cartão",
+      "onde": [
+       {
+        "t": "detalhe da tarefa"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Percorra o ciclo do cartão e demonstre as regras que impedem concluir trabalho que ainda depende de outro."
+       }
+      ],
+      "passos_total": 4,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "6. Colaboração e visões",
+      "onde": [
+       {
+        "t": "abas do detalhe da tarefa e visões do quadro"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Mostre como a equipe conversa dentro do cartão em vez de usar mensagens soltas, e como o gestor vê o mesmo quadro de jeitos diferentes."
+       }
+      ],
+      "passos_total": 5,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "7. Arquivar e restaurar",
+      "onde": [
+       {
+        "t": "cabeçalho do cartão e "
+       },
+       {
+        "t": "Tarefas > Arquivadas",
+        "marca": "codigo"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Feche o roteiro limpando o quadro de teste sem apagar nada."
+       }
+      ],
+      "passos_total": 3,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:db/migrations/002_modulos_iniciais.sql#tarefas",
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas"
+    ]
+   },
+   {
+    "id": "implantacao",
+    "titulo": "Procedimentos de implantação",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "texto",
+      "rotulo": "Implantação de Tarefas: roteiro prático com o cliente",
+      "texto": [
+       {
+        "t": "Ao final, o cliente terá montado um quadro da equipe, distribuído um cartão com responsável e Término Previsto e visto esse cartão chegar a Minhas Tarefas e ao Dashboard. Saberá comentar, mencionar, anexar e arquivar sem perder histórico."
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "rotulo": "Blocos do roteiro de implantação",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "1. Abrir o módulo e criar o quadro"
+         }
+        ],
+        "nota": [
+         {
+          "t": "4 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "2. Criar as listas"
+         }
+        ],
+        "nota": [
+         {
+          "t": "4 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "3. Cartão com responsável e prazo"
+         }
+        ],
+        "nota": [
+         {
+          "t": "5 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "4. Minhas Tarefas e Dashboard"
+         }
+        ],
+        "nota": [
+         {
+          "t": "3 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "5. Status e regras do cartão"
+         }
+        ],
+        "nota": [
+         {
+          "t": "4 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "6. Colaboração e visões"
+         }
+        ],
+        "nota": [
+         {
+          "t": "5 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "7. Arquivar e restaurar"
+         }
+        ],
+        "nota": [
+         {
+          "t": "3 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas"
+      ]
+     },
+     {
+      "tipo": "link",
+      "material": "tarefas:checklist-implantacao",
+      "titulo": "Implantação de Tarefas: roteiro prático com o cliente",
+      "status": "disponivel",
+      "url": "/checklists/consultores/implantacao-15-tarefas.html",
+      "duracao_s": null,
+      "poster": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Orientação de treinamento",
+      "texto": [
+       {
+        "t": "Apresente criação de quadros e colunas. Demonstre criação de cartões (responsáveis, prazos, prioridades, checklists, anexos, comentários). Apresente recursos de acompanhamento (painel, filtros, indicadores de atraso). Finalize com modelos e automações."
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#tarefas"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas",
+     "guia:db/migrations/002_modulos_iniciais.sql#tarefas"
+    ]
+   },
+   {
+    "id": "configuracoes",
+    "titulo": "Configurações importantes",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "lista",
+      "rotulo": "Pré-requisitos",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Licença do módulo Tarefas ativa para a empresa do cliente."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " o módulo "
+         },
+         {
+          "t": "Tarefas",
+          "marca": "negrito"
+         },
+         {
+          "t": " aparece no ícone de grade (menu de módulos). "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " fluxo antigo \"Fluxo de tarefas\" (pré-requisito); manual-12-projetos-e-tarefas#001."
+         }
+        ],
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Dois usuários de teste: o gestor que cria o quadro e um executor que será o responsável do cartão, com uma segunda sessão aberta."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " os dois aparecem na busca de "
+         },
+         {
+          "t": "+ Adicionar responsável",
+          "marca": "negrito"
+         },
+         {
+          "t": ". "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " fluxo antigo \"Fluxo de tarefas\" (pré-requisito)."
+         }
+        ],
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Combinado com o cliente como os quadros serão organizados (um por departamento ou por obra) e quais listas cada um terá."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " os nomes das listas antes de criar. "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " manual-12-projetos-e-tarefas#004."
+         }
+        ],
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas"
+    ]
+   },
+   {
+    "id": "validacoes",
+    "titulo": "Validações funcionais",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "lista",
+      "rotulo": "Resultado esperado",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "O quadro de teste tem listas criadas pelo cliente e um cartão com responsável, prioridade e Término Previsto."
+         }
+        ],
+        "nota": null,
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "O cartão apareceu em Minhas Tarefas do executor e no Dashboard do gestor."
+         }
+        ],
+        "nota": null,
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "O sistema impediu concluir o cartão com subtarefa aberta e reabrir o cancelado."
+         }
+        ],
+        "nota": null,
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Comentário com menção, checklist, anexo e vínculo funcionaram, e o cartão arquivado foi restaurado com tudo."
+         }
+        ],
+        "nota": null,
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "rotulo": "Checklist do módulo",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Criar quadros e organizar tarefas por etapas"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#tarefas"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Criar cartões com responsáveis, prazos e prioridades"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#tarefas"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Usar checklists e comentários"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#tarefas"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Acompanhar atividades pendentes e atrasadas"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#tarefas"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Consultar tarefas por usuário ou equipe"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#tarefas"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Usar modelos para processos repetitivos"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#tarefas"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Compreender integração com Projetos e Obras, CRM e demais processos"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#tarefas"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#tarefas"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas",
+     "guia:db/migrations/002_modulos_iniciais.sql#tarefas"
+    ]
+   },
+   {
+    "id": "integracoes",
+    "titulo": "Integrações e dependências",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "texto",
+      "rotulo": "Relação com os outros módulos",
+      "texto": [
+       {
+        "t": "Organiza fluxo de trabalho com quadros, colunas e cartões. Cada tarefa pode ter responsável, prazo, prioridade, checklist, comentários, anexos e histórico."
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#tarefas"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:db/migrations/002_modulos_iniciais.sql#tarefas"
+    ]
+   },
+   {
+    "id": "problemas",
+    "titulo": "Problemas recorrentes",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "lista",
+      "rotulo": "Atenção",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Só em ambiente de teste, com quadros e cartões \"TESTE FLUXO CONSULTOR\" e usuários de teste como responsáveis."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Hoje a busca Ctrl+K ainda não encontra o módulo Tarefas: abra pelo menu de módulos (é defeito reportado, não regra)."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Cartão sem responsável não aparece em Minhas Tarefas: o erro mais comum na implantação é criar cartões e esquecer o responsável."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "O prazo é o "
+         },
+         {
+          "t": "Término Previsto",
+          "marca": "negrito"
+         },
+         {
+          "t": "; sem ele o cartão nunca aparece como atrasado."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Mover, comentar ou mencionar em cartão de outra pessoa avisa os responsáveis: não use usuários reais no teste."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Automações e recorrências criam cartões e enviam notificações sozinhas: só teste com destinatários de teste."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Arquivar só se desfaz por "
+         },
+         {
+          "t": "Restaurar",
+          "marca": "negrito"
+         },
+         {
+          "t": " em "
+         },
+         {
+          "t": "Tarefas > Arquivadas",
+          "marca": "codigo"
+         },
+         {
+          "t": "."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "rotulo": "Cuidados (vídeo)",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Defeito reportado: a busca Ctrl+K ainda não encontra o módulo. Enquanto isso, abra pelo menu de módulos."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:videos/roteiros/consultor-10-tarefas.json#13"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "O cartão novo não tem responsável: atribua sempre."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:videos/roteiros/consultor-10-tarefas.json#13"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "O autor de comentário pode aparecer como Usuário."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:videos/roteiros/consultor-10-tarefas.json#13"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:videos/roteiros/consultor-10-tarefas.json#13"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "rotulo": "A conferir na tela",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Quadro padrão: o procedimento registra que numa conta nova aparece \"Nenhum quadro ainda\" e que o quadro nasce sem listas; o manual-12-projetos-e-tarefas diz que o quadro "
+         },
+         {
+          "t": "Tarefas Gerais",
+          "marca": "negrito"
+         },
+         {
+          "t": " (padrão) já existe com as listas A Fazer, Em Andamento e Concluído. Conferir na tela do cliente."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Criar o cartão: o procedimento cita "
+         },
+         {
+          "t": "+ Adicionar tarefa",
+          "marca": "negrito"
+         },
+         {
+          "t": "; o manual-12-projetos-e-tarefas cita o "
+         },
+         {
+          "t": "+",
+          "marca": "negrito"
+         },
+         {
+          "t": " da coluna e o botão "
+         },
+         {
+          "t": "Adicionar",
+          "marca": "negrito"
+         },
+         {
+          "t": "."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Limite de trabalho (WIP), dependências, cancelamento, anexos acima de 10 MB e arquivar o quadro vêm só do fluxo antigo (plano de QA de Tarefas) e não foram executados no sistema."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Vincular o cartão a pedido ou obra: o fluxo antigo marcou como não validado; o manual-12-projetos-e-tarefas descreve o "
+         },
+         {
+          "t": "Vincular",
+          "marca": "negrito"
+         },
+         {
+          "t": ". Conferir na tela antes de ensinar."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Nomes de status: o fluxo antigo usa Pendente, Em andamento, Em revisão, Concluída e Cancelada; o manual-12-projetos-e-tarefas só cita listas (A Fazer, Em Andamento, Concluído). Conferir os status reais no detalhe da tarefa."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas",
+     "guia:videos/roteiros/consultor-10-tarefas.json#13"
+    ]
+   },
+   {
+    "id": "videos",
+    "titulo": "Vídeos avançados",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "video",
+      "material": "tarefas:video-consultor",
+      "titulo": "Tarefas",
+      "status": "disponivel",
+      "url": "/videos/consultor-10-tarefas.mp4",
+      "duracao_s": 158,
+      "poster": "/videos/consultor-10-tarefas.jpg",
+      "legendas_url": "/videos/consultor-10-tarefas.vtt",
+      "resumo": [
+       {
+        "t": "Quadro, cartão, regras e colaboração."
+       }
+      ],
+      "fontes": [
+       "guia:public/videos/manifest.json",
+       "guia:videos/roteiros/consultor-10-tarefas.json"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:public/videos/manifest.json",
+     "guia:videos/roteiros/consultor-10-tarefas.json"
+    ]
+   },
+   {
+    "id": "complementares",
+    "titulo": "Materiais complementares",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "link",
+      "material": "tarefas:checklist-inicial",
+      "titulo": "Tarefas: quadros e cartões",
+      "status": "disponivel",
+      "url": "/checklists/estagiarios/14-tarefas.html",
+      "duracao_s": null,
+      "poster": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#tarefas"
+      ]
+     },
+     {
+      "tipo": "link",
+      "material": "tarefas:checklist-implantacao",
+      "titulo": "Implantação de Tarefas: roteiro prático com o cliente",
+      "status": "disponivel",
+      "url": "/checklists/consultores/implantacao-15-tarefas.html",
+      "duracao_s": null,
+      "poster": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas"
+      ]
+     },
+     {
+      "tipo": "link",
+      "titulo": "Apostila do Consultor (PDF)",
+      "url": "/downloads/Apostila-do-Consultor-Faktory-Flow.pdf",
+      "visibilidade": "area:apostila",
+      "fontes": [
+       "guia:public/downloads/Apostila-do-Consultor-Faktory-Flow.pdf"
+      ]
+     },
+     {
+      "tipo": "fontes",
+      "rotulo": "Fontes no Harness",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Como criar um quadro e um cartão em Tarefas"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Procedimento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/produto/procedimentos/procedimento-criar-quadro-e-cartao-em-tarefas.md"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "12 Manual Projetos e Tarefas"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Manual oficial"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/12_Manual_Projetos_e_Tarefas_Timbrado.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "01-quadros-kanban"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/tarefas/01-quadros-kanban.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "02-tarefas-checklists-e-apontamentos"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/tarefas/02-tarefas-checklists-e-apontamentos.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "03-minhas-tarefas-recorrencias-e-arquivo"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/tarefas/03-minhas-tarefas-recorrencias-e-arquivo.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "04-etiquetas-modelos-e-automacoes"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/tarefas/04-etiquetas-modelos-e-automacoes.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "05-dashboard-de-tarefas"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/tarefas/05-dashboard-de-tarefas.docx"
+        ]
+       }
+      ],
+      "fontes": [
+       "harness:conhecimento/produto/procedimentos/procedimento-criar-quadro-e-cartao-em-tarefas.md",
+       "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/12_Manual_Projetos_e_Tarefas_Timbrado.docx",
+       "harness:conhecimento/Roteiros Treinamento/tarefas/01-quadros-kanban.docx",
+       "harness:conhecimento/Roteiros Treinamento/tarefas/02-tarefas-checklists-e-apontamentos.docx",
+       "harness:conhecimento/Roteiros Treinamento/tarefas/03-minhas-tarefas-recorrencias-e-arquivo.docx",
+       "harness:conhecimento/Roteiros Treinamento/tarefas/04-etiquetas-modelos-e-automacoes.docx",
+       "harness:conhecimento/Roteiros Treinamento/tarefas/05-dashboard-de-tarefas.docx"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-estagiarios.mjs#tarefas",
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas",
+     "guia:public/downloads/Apostila-do-Consultor-Faktory-Flow.pdf",
+     "harness:conhecimento/produto/procedimentos/procedimento-criar-quadro-e-cartao-em-tarefas.md",
+     "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/12_Manual_Projetos_e_Tarefas_Timbrado.docx",
+     "harness:conhecimento/Roteiros Treinamento/tarefas/01-quadros-kanban.docx",
+     "harness:conhecimento/Roteiros Treinamento/tarefas/02-tarefas-checklists-e-apontamentos.docx",
+     "harness:conhecimento/Roteiros Treinamento/tarefas/03-minhas-tarefas-recorrencias-e-arquivo.docx",
+     "harness:conhecimento/Roteiros Treinamento/tarefas/04-etiquetas-modelos-e-automacoes.docx",
+     "harness:conhecimento/Roteiros Treinamento/tarefas/05-dashboard-de-tarefas.docx"
+    ]
+   }
+  ]
+ }
+}

@@ -1,0 +1,2047 @@
+{
+ "versao": "2026-11-04",
+ "id": "fundacao",
+ "jornadas": {
+  "inicial": [
+   {
+    "id": "apresentacao",
+    "titulo": "Apresentação",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "texto",
+      "rotulo": "Cadastros básicos",
+      "texto": [
+       {
+        "t": "Clientes, fornecedores, leads, produtos e obras são cadastros compartilhados por todos os módulos."
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#cadastros"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Objetivo",
+      "texto": [
+       {
+        "t": "Localizar e ler os cadastros que todos os processos usam — participante, produto e projeto/obra — e entender por que um erro de cadastro aparece depois na nota fiscal, no financeiro e na produção."
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#cadastros"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-estagiarios.mjs#cadastros"
+    ]
+   },
+   {
+    "id": "video",
+    "titulo": "Vídeo introdutório",
+    "status": "em-preparacao",
+    "blocos": [],
+    "fontes": []
+   },
+   {
+    "id": "manual",
+    "titulo": "Manual visual resumido",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "passos",
+      "titulo": "2. Consultar um participante",
+      "onde": [
+       {
+        "t": "Cadastros > Participantes",
+        "marca": "tela"
+       },
+       {
+        "t": " (aparece no menu de vários módulos)"
+       }
+      ],
+      "intro": null,
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Abrir a lista e pesquisar pelo nome do cliente."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Se não existir, a tela mostra \"Nenhum participante encontrado\"."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Abrir o participante e percorrer as seções: Dados Gerais, Receita / Despesa, Classificação, Endereço, Contato, Contas bancárias, Documentos, Observações, Dados CRM e Informações CRM."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Na seção "
+         },
+         {
+          "t": "Classificação",
+          "marca": "negrito"
+         },
+         {
+          "t": ", ver as chaves É Cliente?, É Fornecedor?, É Funcionário?, É Transportadora?, É Vendedor? e Prospect/Lead."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Você entende que cliente, fornecedor e lead do CRM são o "
+         },
+         {
+          "t": "mesmo cadastro",
+          "marca": "negrito"
+         },
+         {
+          "t": ", só com chaves diferentes."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Na seção "
+         },
+         {
+          "t": "Contato",
+          "marca": "negrito"
+         },
+         {
+          "t": ", ver quem recebe e-mails de Notas Fiscais, Boletos, Vendas e avisos de entrega/serviços."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#cadastros"
+      ]
+     },
+     {
+      "tipo": "passos",
+      "titulo": "3. Conhecer o formulário de novo participante (sem salvar)",
+      "onde": [
+       {
+        "t": "botão "
+       },
+       {
+        "t": "Novo",
+        "marca": "codigo"
+       },
+       {
+        "t": " da lista de participantes"
+       }
+      ],
+      "intro": null,
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Identificar os campos obrigatórios: "
+         },
+         {
+          "t": "Tipo (PF/PJ)",
+          "marca": "negrito"
+         },
+         {
+          "t": " e "
+         },
+         {
+          "t": "Razão Social / Nome",
+          "marca": "negrito"
+         },
+         {
+          "t": "."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Ao tentar salvar vazio, os campos ficam vermelhos e aparece \"Erros de validação\"."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Digitar um CEP e ver o endereço ser preenchido sozinho."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Sair sem salvar (seta voltar ou Cancelar)."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#cadastros"
+      ]
+     },
+     {
+      "tipo": "passos",
+      "titulo": "4. Consultar um produto",
+      "onde": [
+       {
+        "t": "Cadastros > Produtos",
+        "marca": "tela"
+       }
+      ],
+      "intro": null,
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "No estoque, abrir o produto pelo código em "
+         },
+         {
+          "t": "Estoque > Saldo",
+          "marca": "codigo"
+         },
+         {
+          "t": " e ler classificação, unidade, categoria, NCM, dimensões e pesos."
+         }
+        ],
+        "nota": [
+         {
+          "t": "A ficha mostra também o total em estoque, o custo médio e a situação (Ativo)."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#cadastros"
+      ]
+     },
+     {
+      "tipo": "passos",
+      "titulo": "5. Consultar um projeto/obra",
+      "onde": [
+       {
+        "t": "Cadastros > Projetos",
+        "marca": "tela"
+       }
+      ],
+      "intro": null,
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Na lista de Pedidos de Venda, ver a coluna PROJETO: ela mostra a obra de cada pedido (ex.: \"ORC-26-08-0003 - Obra Le Jardin\")."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#cadastros"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-estagiarios.mjs#cadastros"
+    ]
+   },
+   {
+    "id": "telas",
+    "titulo": "Principais telas",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "lista",
+      "rotulo": "Telas do módulo (glossário do Harness)",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Participantes"
+         }
+        ],
+        "nota": [
+         {
+          "t": "‹qualquer módulo› › Cadastros › Participantes"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/glossario/telas.yaml#cadastros.participantes"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Produtos"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Cadastros › Produtos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/glossario/telas.yaml#cadastros.produtos"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Projetos"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Cadastros › Projetos › Novo Projeto"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/glossario/telas.yaml#cadastros.projetos"
+        ]
+       }
+      ],
+      "fontes": [
+       "harness:conhecimento/glossario/telas.yaml#cadastros.participantes",
+       "harness:conhecimento/glossario/telas.yaml#cadastros.produtos",
+       "harness:conhecimento/glossario/telas.yaml#cadastros.projetos"
+      ]
+     }
+    ],
+    "fontes": [
+     "harness:conhecimento/glossario/telas.yaml#cadastros.participantes",
+     "harness:conhecimento/glossario/telas.yaml#cadastros.produtos",
+     "harness:conhecimento/glossario/telas.yaml#cadastros.projetos"
+    ]
+   },
+   {
+    "id": "fluxo",
+    "titulo": "Fluxo operacional básico",
+    "status": "em-preparacao",
+    "blocos": [],
+    "fontes": []
+   },
+   {
+    "id": "atividade",
+    "titulo": "Atividade prática",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "passos",
+      "titulo": "1. Preparar seus dados: cadastrar cliente, produto e obra de treino",
+      "onde": [
+       {
+        "t": "Cadastros > Participantes",
+        "marca": "tela"
+       },
+       {
+        "t": ", "
+       },
+       {
+        "t": "Cadastros > Produtos",
+        "marca": "tela"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "Cadastros > Projetos",
+        "marca": "tela"
+       }
+      ],
+      "intro": [
+       {
+        "t": "A sua empresa de treino começa "
+       },
+       {
+        "t": "zerada",
+        "marca": "negrito"
+       },
+       {
+        "t": ": cada módulo usa o que o anterior criou. Este checklist cria o cliente, o produto e a obra que os checklists seguintes (vendas, estoque, produção, serviços) vão usar: anote o código de cada um. Nas consultas dos blocos abaixo, procure pelos registros que você acabou de criar. Se faltar permissão ou cadastro-base (botão que não aparece, CFOP, plano de contas, meio de pagamento, unidade de medida, almoxarifado), anote a mensagem em "
+       },
+       {
+        "t": "Problema",
+        "marca": "negrito"
+       },
+       {
+        "t": " e chame o supervisor: a empresa de treino começa zerada e os cadastros-base são feitos por um consultor."
+       }
+      ],
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Em "
+         },
+         {
+          "t": "Cadastros > Participantes",
+          "marca": "tela"
+         },
+         {
+          "t": ", criar um participante: em "
+         },
+         {
+          "t": "Dados Gerais",
+          "marca": "negrito"
+         },
+         {
+          "t": ", "
+         },
+         {
+          "t": "Tipo (PF/PJ)",
+          "marca": "negrito"
+         },
+         {
+          "t": ", "
+         },
+         {
+          "t": "Razão Social / Nome",
+          "marca": "negrito"
+         },
+         {
+          "t": " (\"TESTE ESTAGIÁRIO - Cliente\") e "
+         },
+         {
+          "t": "CPF/CNPJ",
+          "marca": "negrito"
+         },
+         {
+          "t": " fictício; em "
+         },
+         {
+          "t": "Endereço",
+          "marca": "negrito"
+         },
+         {
+          "t": ", "
+         },
+         {
+          "t": "CEP",
+          "marca": "negrito"
+         },
+         {
+          "t": " e "
+         },
+         {
+          "t": "Número",
+          "marca": "negrito"
+         },
+         {
+          "t": "; em "
+         },
+         {
+          "t": "Classificação",
+          "marca": "negrito"
+         },
+         {
+          "t": ", ligar "
+         },
+         {
+          "t": "É Cliente?",
+          "marca": "negrito"
+         },
+         {
+          "t": "; em "
+         },
+         {
+          "t": "Contato > Adicionar Contato",
+          "marca": "negrito"
+         },
+         {
+          "t": ", um e-mail de teste. Clicar em "
+         },
+         {
+          "t": "Salvar",
+          "marca": "codigo"
+         },
+         {
+          "t": "."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Mensagem \"Registro salvo com sucesso!\". Também são obrigatórios a "
+         },
+         {
+          "t": "Inscrição Estadual / RG",
+          "marca": "negrito"
+         },
+         {
+          "t": " (Dados Gerais), Bairro, Estado e Cidade (o CEP preenche o endereço). Documento repetido é recusado (troque o número); se o CEP trouxer um bairro curto, como \"Sé\", digite um bairro com 3 letras ou mais."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "No mesmo participante, preencher a "
+         },
+         {
+          "t": "Conta de Fluxo de Caixa Receita",
+          "marca": "negrito"
+         },
+         {
+          "t": " (seção "
+         },
+         {
+          "t": "Receita / Despesa",
+          "marca": "negrito"
+         },
+         {
+          "t": ") e a "
+         },
+         {
+          "t": "Inscrição Estadual / RG",
+          "marca": "negrito"
+         },
+         {
+          "t": " (seção "
+         },
+         {
+          "t": "Dados Gerais",
+          "marca": "negrito"
+         },
+         {
+          "t": ", obrigatória; \"ISENTO\" serve no treino)."
+         }
+        ],
+        "nota": [
+         {
+          "t": "O pedido de venda usa esses dados: sem eles o financeiro do pedido fica incompleto."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Em "
+         },
+         {
+          "t": "Cadastros > Produtos",
+          "marca": "tela"
+         },
+         {
+          "t": ", criar um produto \"TESTE ESTAGIÁRIO - Produto\": "
+         },
+         {
+          "t": "Descrição",
+          "marca": "negrito"
+         },
+         {
+          "t": ", "
+         },
+         {
+          "t": "Categoria do Produto",
+          "marca": "negrito"
+         },
+         {
+          "t": " e, na seção "
+         },
+         {
+          "t": "Classificações Fiscais",
+          "marca": "negrito"
+         },
+         {
+          "t": ", "
+         },
+         {
+          "t": "Unidade de Medida",
+          "marca": "negrito"
+         },
+         {
+          "t": " (cadastrada na empresa com a mesma sigla), "
+         },
+         {
+          "t": "NCM",
+          "marca": "negrito"
+         },
+         {
+          "t": " e "
+         },
+         {
+          "t": "Origem da Mercadoria",
+          "marca": "negrito"
+         },
+         {
+          "t": ". Clicar em "
+         },
+         {
+          "t": "Salvar",
+          "marca": "codigo"
+         },
+         {
+          "t": " (há também "
+         },
+         {
+          "t": "Salvar e Incluir Novo",
+          "marca": "codigo"
+         },
+         {
+          "t": ")."
+         }
+        ],
+        "nota": [
+         {
+          "t": "São 5 campos obrigatórios (os 5 citados). Unidade com sigla diferente (\"PÇ\" ≠ \"PC\") faz o pedido falhar só ao salvar."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Em "
+         },
+         {
+          "t": "Cadastros > Projetos",
+          "marca": "tela"
+         },
+         {
+          "t": ", criar uma obra: "
+         },
+         {
+          "t": "Nome do Projeto",
+          "marca": "negrito"
+         },
+         {
+          "t": " \"TESTE ESTAGIÁRIO - Obra\", "
+         },
+         {
+          "t": "Código",
+          "marca": "negrito"
+         },
+         {
+          "t": ", "
+         },
+         {
+          "t": "Status",
+          "marca": "negrito"
+         },
+         {
+          "t": ", "
+         },
+         {
+          "t": "Cliente",
+          "marca": "negrito"
+         },
+         {
+          "t": " (o seu) e "
+         },
+         {
+          "t": "Responsável",
+          "marca": "negrito"
+         },
+         {
+          "t": ". Clicar em "
+         },
+         {
+          "t": "Salvar",
+          "marca": "codigo"
+         },
+         {
+          "t": "."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Mensagem \"Registro salvo com sucesso!\". Nome do Projeto e Código são obrigatórios; código repetido é recusado."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#cadastros"
+      ]
+     },
+     {
+      "tipo": "link",
+      "material": "fundacao:checklist-inicial",
+      "titulo": "Cadastros básicos",
+      "status": "disponivel",
+      "url": "/checklists/estagiarios/02-cadastros-basicos.html",
+      "duracao_s": null,
+      "poster": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#cadastros"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-estagiarios.mjs#cadastros"
+    ]
+   },
+   {
+    "id": "checklist",
+    "titulo": "Checklist de aprendizado",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "checklist-aprendizado",
+      "chave": "inicial:fundacao",
+      "itens": [
+       {
+        "id": "entendi",
+        "texto": [
+         {
+          "t": "Entendi o que é o módulo Cadastros e Fundação e para que serve"
+         }
+        ]
+       },
+       {
+        "id": "acessar-1",
+        "texto": [
+         {
+          "t": "Sei acessar: "
+         },
+         {
+          "t": "Cadastros > Participantes",
+          "marca": "tela"
+         },
+         {
+          "t": ", "
+         },
+         {
+          "t": "Cadastros > Produtos",
+          "marca": "tela"
+         },
+         {
+          "t": " e "
+         },
+         {
+          "t": "Cadastros > Projetos",
+          "marca": "tela"
+         }
+        ]
+       },
+       {
+        "id": "acessar-2",
+        "texto": [
+         {
+          "t": "Sei acessar: "
+         },
+         {
+          "t": "Cadastros > Participantes",
+          "marca": "tela"
+         },
+         {
+          "t": " (aparece no menu de vários módulos)"
+         }
+        ]
+       },
+       {
+        "id": "acessar-3",
+        "texto": [
+         {
+          "t": "Sei acessar: botão "
+         },
+         {
+          "t": "Novo",
+          "marca": "codigo"
+         },
+         {
+          "t": " da lista de participantes"
+         }
+        ]
+       },
+       {
+        "id": "acessar-4",
+        "texto": [
+         {
+          "t": "Sei acessar: "
+         },
+         {
+          "t": "Cadastros > Produtos",
+          "marca": "tela"
+         }
+        ]
+       },
+       {
+        "id": "acessar-5",
+        "texto": [
+         {
+          "t": "Sei acessar: "
+         },
+         {
+          "t": "Cadastros > Projetos",
+          "marca": "tela"
+         }
+        ]
+       },
+       {
+        "id": "executei-6",
+        "texto": [
+         {
+          "t": "Executei: 1. Preparar seus dados: cadastrar cliente, produto e obra de treino"
+         }
+        ]
+       },
+       {
+        "id": "executei-7",
+        "texto": [
+         {
+          "t": "Executei: 2. Consultar um participante"
+         }
+        ]
+       },
+       {
+        "id": "executei-8",
+        "texto": [
+         {
+          "t": "Executei: 3. Conhecer o formulário de novo participante (sem salvar)"
+         }
+        ]
+       },
+       {
+        "id": "executei-9",
+        "texto": [
+         {
+          "t": "Executei: 4. Consultar um produto"
+         }
+        ]
+       },
+       {
+        "id": "executei-10",
+        "texto": [
+         {
+          "t": "Executei: 5. Consultar um projeto/obra"
+         }
+        ]
+       },
+       {
+        "id": "checklist",
+        "texto": [
+         {
+          "t": "Concluí o checklist prático"
+         }
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
+       "guia:scripts/dados-checklists-estagiarios.mjs#cadastros"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
+     "guia:scripts/dados-checklists-estagiarios.mjs#cadastros"
+    ]
+   },
+   {
+    "id": "progresso",
+    "titulo": "Progresso",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "progresso",
+      "chave": "inicial:fundacao",
+      "total": 12,
+      "api": "/api/checklists-progresso",
+      "fontes": [
+       "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md"
+    ]
+   }
+  ],
+  "consultor": [
+   {
+    "id": "visao",
+    "titulo": "Visão funcional",
+    "status": "em-preparacao",
+    "blocos": [],
+    "fontes": []
+   },
+   {
+    "id": "regras",
+    "titulo": "Regras de negócio",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "regra",
+      "titulo": "Formulário do lead: Informações CRM é a seção da origem e da temperatura",
+      "texto": [
+       {
+        "t": "O "
+       },
+       {
+        "t": "Novo Lead",
+        "marca": "negrito"
+       },
+       {
+        "t": " é o cadastro completo de participante. As seções, na ordem, são Dados Gerais, Receita / Despesa, Classificação, Endereço, Contato, Contas bancárias, Documentos, Observações, "
+       },
+       {
+        "t": "Dados CRM",
+        "marca": "negrito"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "Informações CRM",
+        "marca": "negrito"
+       },
+       {
+        "t": ". "
+       },
+       {
+        "t": "Origem do Lead",
+        "marca": "negrito"
+       },
+       {
+        "t": ", "
+       },
+       {
+        "t": "Temperatura",
+        "marca": "negrito"
+       },
+       {
+        "t": ", "
+       },
+       {
+        "t": "Responsável",
+        "marca": "negrito"
+       },
+       {
+        "t": ", "
+       },
+       {
+        "t": "Budget Estimado",
+        "marca": "negrito"
+       },
+       {
+        "t": ", "
+       },
+       {
+        "t": "Produto de Interesse",
+        "marca": "negrito"
+       },
+       {
+        "t": " e as chaves do BANT ficam em "
+       },
+       {
+        "t": "Informações CRM",
+        "marca": "negrito"
+       },
+       {
+        "t": ". "
+       },
+       {
+        "t": "Dados CRM",
+        "marca": "negrito"
+       },
+       {
+        "t": " é outra seção (Setor de Atuação, CREA / CAU, Linha Preferida, Cor Predominante, Tipo de Vidro Preferido, Obras Simultâneas, Nível PBQPH, % Comissão). Obrigatórios: "
+       },
+       {
+        "t": "Tipo (PF/PJ)",
+        "marca": "negrito"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "Razão Social / Nome",
+        "marca": "negrito"
+       },
+       {
+        "t": "."
+       }
+      ],
+      "confirmar": [
+       {
+        "t": "CRM › Vendas › Leads › Lista de Leads › Novo Lead."
+       }
+      ],
+      "confianca": "B",
+      "fontes": [
+       "harness:conhecimento/produto/regras-negocio/regra-crm-formulario-do-lead-secoes-e-campos.md"
+      ]
+     },
+     {
+      "tipo": "regra",
+      "titulo": "Os dados pertencem à empresa, e uma empresa nova começa vazia",
+      "texto": [
+       {
+        "t": "Clientes, produtos, pedidos, estoque e demais registros pertencem à "
+       },
+       {
+        "t": "empresa",
+        "marca": "negrito"
+       },
+       {
+        "t": ", não ao usuário: quem entra numa empresa vê tudo o que já existe nela. Uma empresa nova começa "
+       },
+       {
+        "t": "vazia",
+        "marca": "negrito"
+       },
+       {
+        "t": " e cada módulo usa o que o anterior criou (lead, participante, pedido, compra, estoque, produção, serviços, nota e títulos). Os cadastros-base (unidade de medida com a mesma sigla do produto, almoxarifado central ativo, condição e meio de pagamento, plano de contas, conta bancária, CFOP e NCM) são configurados por um consultor."
+       }
+      ],
+      "confirmar": [
+       {
+        "t": "Qualquer lista de uma empresa recém-criada."
+       }
+      ],
+      "confianca": "B",
+      "fontes": [
+       "harness:conhecimento/produto/regras-negocio/regra-geral-os-dados-pertencem-a-empresa-e-uma-empresa-nova-comeca-vazia.md"
+      ]
+     },
+     {
+      "tipo": "regra",
+      "titulo": "Item paramétrico da estrutura exige cor",
+      "texto": [
+       {
+        "t": "Ao salvar a estrutura de produto, um item de material paramétrico (perfil, chapa) sem "
+       },
+       {
+        "t": "cor",
+        "marca": "negrito"
+       },
+       {
+        "t": " é recusado com \"Selecione a cor do produto — obrigatória para este tipo de material\". A mensagem cita um identificador interno em vez do código do item. Na entrada de estoque do material, a cor também deve ser informada para o saldo bater."
+       }
+      ],
+      "confirmar": [
+       {
+        "t": "Produção › Configurações › Estrutura de produto."
+       }
+      ],
+      "confianca": "B",
+      "fontes": [
+       "harness:conhecimento/produto/regras-negocio/regra-producao-item-parametrico-da-estrutura-exige-cor.md"
+      ]
+     }
+    ],
+    "fontes": [
+     "harness:conhecimento/produto/regras-negocio/regra-crm-formulario-do-lead-secoes-e-campos.md",
+     "harness:conhecimento/produto/regras-negocio/regra-geral-os-dados-pertencem-a-empresa-e-uma-empresa-nova-comeca-vazia.md",
+     "harness:conhecimento/produto/regras-negocio/regra-producao-item-parametrico-da-estrutura-exige-cor.md"
+    ]
+   },
+   {
+    "id": "fluxos",
+    "titulo": "Fluxos operacionais",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "etapa",
+      "titulo": "1. Empresa e regime",
+      "onde": [
+       {
+        "t": "Minha Assinatura",
+        "marca": "codigo"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "Configurações > Empresas",
+        "marca": "codigo"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Tudo começa na empresa: o regime e o endereço dela decidem os impostos de cada pedido e nota. Faça com o cliente e com os dados do contador na mão."
+       }
+      ],
+      "passos_total": 4,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "2. Certificado digital, série e homologação",
+      "onde": [
+       {
+        "t": "Faturamento > Configurações > Certificados",
+        "marca": "codigo"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Sem certificado e série não existe nota. Este bloco deixa a empresa pronta para emitir, mas sempre em homologação até o fim dos testes."
+       }
+      ],
+      "passos_total": 4,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "3. Perfis e usuários",
+      "onde": [
+       {
+        "t": "Segurança > Perfis de Acesso",
+        "marca": "codigo"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "Segurança > Usuários",
+        "marca": "codigo"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Cada pessoa entra com o perfil da sua função. Faça antes dos cadastros para o próprio cliente executar o resto do roteiro com o usuário dele."
+       }
+      ],
+      "passos_total": 4,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "4. Participantes: clientes, fornecedores e vendedores",
+      "onde": [
+       {
+        "t": "Cadastros > Participantes",
+        "marca": "tela"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Cliente, fornecedor, vendedor e lead são o mesmo cadastro, com chaves diferentes. Cadastre um cliente real com o cliente olhando e mostre onde cada dado vai parar."
+       }
+      ],
+      "passos_total": 5,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "5. Categorias, unidades, NCM, cores e produtos",
+      "onde": [
+       {
+        "t": "grupo "
+       },
+       {
+        "t": "Configurações",
+        "marca": "codigo"
+       },
+       {
+        "t": " do módulo ("
+       },
+       {
+        "t": "Categorias de Produto",
+        "marca": "codigo"
+       },
+       {
+        "t": ", "
+       },
+       {
+        "t": "Unidade de Medida",
+        "marca": "codigo"
+       },
+       {
+        "t": ", "
+       },
+       {
+        "t": "Cores",
+        "marca": "codigo"
+       },
+       {
+        "t": "), "
+       },
+       {
+        "t": "Fiscal > Configurações > NCM",
+        "marca": "codigo"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "Cadastros > Produtos",
+        "marca": "tela"
+       }
+      ],
+      "intro": [
+       {
+        "t": "A categoria decide como o preço é calculado e o tipo do material. Acerte com o cliente antes de cadastrar produtos e muito antes de lançar saldo."
+       }
+      ],
+      "passos_total": 5,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "6. Condições e meios de pagamento, contas e portadores",
+      "onde": [
+       {
+        "t": "Vendas > Configurações > Condições de Pagamento",
+        "marca": "tela"
+       },
+       {
+        "t": " e o grupo "
+       },
+       {
+        "t": "Configurações",
+        "marca": "codigo"
+       },
+       {
+        "t": " do Financeiro ("
+       },
+       {
+        "t": "Contas Bancárias",
+        "marca": "codigo"
+       },
+       {
+        "t": ", "
+       },
+       {
+        "t": "Portadores",
+        "marca": "codigo"
+       },
+       {
+        "t": ", "
+       },
+       {
+        "t": "Planos de Conta",
+        "marca": "codigo"
+       },
+       {
+        "t": ", "
+       },
+       {
+        "t": "Meios de Pagamento",
+        "marca": "codigo"
+       },
+       {
+        "t": ")"
+       }
+      ],
+      "intro": [
+       {
+        "t": "O pedido já nasce com parcelas, meio de pagamento e conta. Estes cadastros vêm antes do primeiro pedido, mesmo que o Financeiro seja implantado depois."
+       }
+      ],
+      "passos_total": 4,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "7. CFOPs de saída",
+      "onde": [
+       {
+        "t": "Fiscal > Configurações > CFOP",
+        "marca": "codigo"
+       }
+      ],
+      "intro": [
+       {
+        "t": "O CFOP decide se o pedido exige condição e parcelas, se a nota gera título e se mexe no estoque. Revise com o contador antes do primeiro pedido."
+       }
+      ],
+      "passos_total": 3,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "8. Carga inicial de produtos e participantes",
+      "onde": [
+       {
+        "t": "listagem de "
+       },
+       {
+        "t": "Cadastros > Produtos",
+        "marca": "tela"
+       },
+       {
+        "t": " e de "
+       },
+       {
+        "t": "Cadastros > Participantes",
+        "marca": "tela"
+       },
+       {
+        "t": ", menu “Mais…”"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Com os cadastros de apoio prontos, traga a base do cliente: produtos primeiro, depois participantes e contatos."
+       }
+      ],
+      "passos_total": 3,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "9. Prova em uso real: obra e pedido de teste",
+      "onde": [
+       {
+        "t": "Cadastros > Projetos",
+        "marca": "tela"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "Vendas > Pedidos de Venda > + Novo Pedido",
+        "marca": "tela"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Um cadastro só está certo quando funciona no documento. Monte um pedido de teste com tudo o que foi cadastrado; cada erro aqui aponta o cadastro a corrigir."
+       }
+      ],
+      "passos_total": 5,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao"
+    ]
+   },
+   {
+    "id": "implantacao",
+    "titulo": "Procedimentos de implantação",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "texto",
+      "rotulo": "Implantação da Fundação: roteiro prático com o cliente",
+      "texto": [
+       {
+        "t": "Ao final, o cliente viu a própria empresa configurada em homologação, cada usuário entrando com o perfil certo e um pedido de teste salvo com o cliente, o produto, a condição de pagamento e o CFOP que ele mesmo cadastrou. O administrador do cliente sabe convidar um usuário, cadastrar um cliente e um produto e corrigir um cadastro recusado."
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "rotulo": "Blocos do roteiro de implantação",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "1. Empresa e regime"
+         }
+        ],
+        "nota": [
+         {
+          "t": "4 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "2. Certificado digital, série e homologação"
+         }
+        ],
+        "nota": [
+         {
+          "t": "4 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "3. Perfis e usuários"
+         }
+        ],
+        "nota": [
+         {
+          "t": "4 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "4. Participantes: clientes, fornecedores e vendedores"
+         }
+        ],
+        "nota": [
+         {
+          "t": "5 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "5. Categorias, unidades, NCM, cores e produtos"
+         }
+        ],
+        "nota": [
+         {
+          "t": "5 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "6. Condições e meios de pagamento, contas e portadores"
+         }
+        ],
+        "nota": [
+         {
+          "t": "4 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "7. CFOPs de saída"
+         }
+        ],
+        "nota": [
+         {
+          "t": "3 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "8. Carga inicial de produtos e participantes"
+         }
+        ],
+        "nota": [
+         {
+          "t": "3 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "9. Prova em uso real: obra e pedido de teste"
+         }
+        ],
+        "nota": [
+         {
+          "t": "5 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao"
+      ]
+     },
+     {
+      "tipo": "link",
+      "material": "fundacao:checklist-implantacao",
+      "titulo": "Implantação da Fundação: roteiro prático com o cliente",
+      "status": "disponivel",
+      "url": "/checklists/consultores/implantacao-01-fundacao.html",
+      "duracao_s": null,
+      "poster": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao"
+    ]
+   },
+   {
+    "id": "configuracoes",
+    "titulo": "Configurações importantes",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "lista",
+      "rotulo": "Pré-requisitos",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "O cliente entregou com antecedência: cartão CNPJ, CNAE, IE, IM e regime de cada empresa (conferidos com o contador), o certificado digital A1 de cada CNPJ emitente, a série e o número da última NF-e, a lista de usuários com e-mail exclusivo e função, e as bases de clientes, fornecedores e produtos."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " a lista de documentos pedida antes do kickoff. "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " Fundação C, pré-requisitos do cliente."
+         }
+        ],
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "A versão contratada aceita o regime de todas as empresas e cabe o número de empresas e de usuários previstos."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " em "
+         },
+         {
+          "t": "Minha Assinatura",
+          "marca": "codigo"
+         },
+         {
+          "t": ". Lucro Presumido, Lucro Real e excesso de sublimite não gravam nas versões Starter e Standard; convite pendente ocupa vaga. "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " CAD-EMP-005, CAD-EMP-019; Fundação D, seção 1."
+         }
+        ],
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "A licença e os módulos foram liberados pela Faktory e o administrador do cliente consegue entrar."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " os módulos contratados aparecem sem cadeado no menu. Módulo fora do plano responde “Módulo não contratado” e se resolve no comercial. "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " Fundação C, pré-requisitos técnicos; Fundação D, seção 1."
+         }
+        ],
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Decisão tomada com o cliente: como ele vende cada tipo de material (por unidade, por peso ou por área)."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " a resposta anotada na ata do kickoff. É a decisão que define o “Preço calculado por” de cada categoria. "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " Fundação C, questionário P1; CAD-PRO-020, CAD-CAT-001."
+         }
+        ],
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao"
+    ]
+   },
+   {
+    "id": "validacoes",
+    "titulo": "Validações funcionais",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "lista",
+      "rotulo": "Resultado esperado",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Cada empresa salva sem aviso, com regime conferido pelo contador, certificado válido, série configurada e ambiente em homologação."
+         }
+        ],
+        "nota": null,
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Todos os usuários previstos entram com o perfil certo e não há convite pendente esquecido."
+         }
+        ],
+        "nota": null,
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Categorias aprovadas pelo cliente (tipo e Preço calculado por), unidades, NCMs, condições, meios, contas, portadores e plano de contas cadastrados."
+         }
+        ],
+        "nota": null,
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Carga de produtos e participantes com a quantidade igual à da origem e amostra conferida."
+         }
+        ],
+        "nota": null,
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Um pedido de teste salvo com o cliente, o produto, a obra, a condição e o CFOP do roteiro."
+         }
+        ],
+        "nota": null,
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "O administrador do cliente cadastrou sozinho um participante e um produto."
+         }
+        ],
+        "nota": null,
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao"
+    ]
+   },
+   {
+    "id": "integracoes",
+    "titulo": "Integrações e dependências",
+    "status": "em-preparacao",
+    "blocos": [],
+    "fontes": []
+   },
+   {
+    "id": "problemas",
+    "titulo": "Problemas recorrentes",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "lista",
+      "rotulo": "Atenção",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Só em ambiente de teste ou homologação; registros com “TESTE FLUXO CONSULTOR”. Nota fiscal só é transmitida com o responsável fiscal."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Senha do certificado e de usuário quem digita é o cliente; o consultor não pede nem guarda."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "O CNPJ da empresa não muda depois de salvo e o tipo da categoria trava quando algum produto tem saldo: confira antes de salvar."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Todo usuário vê todas as empresas; hoje o sistema ainda não restringe acesso por filial. Também não existe tabela de preço por cliente: registre como lacuna na ata."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Não use o NCM “99999999 À classificar” como padrão de nada."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Unidade com sigla diferente da do produto (“PÇ” × “PC”) só aparece como erro ao salvar o pedido."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Cadastro é compartilhado: mudar um participante ou produto afeta notas, títulos, compras e produção."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Convite pendente ocupa vaga na licença: cancele os que não forem usados."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "rotulo": "A conferir na tela",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Nome da opção que sincroniza o emitente com o provedor na tela de Certificados: a gestora marca como não confirmado. Conferir na tela antes de ensinar."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Rótulo do campo do CFOP que diz se ele gera financeiro: a gestora marca como não confirmado. Conferir na tela."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Caminho do NCM: o Manual 01 indica "
+         },
+         {
+          "t": "Fiscal > Configurações > NCM",
+          "marca": "codigo"
+         },
+         {
+          "t": "; a gestora lista a tela no grupo de cadastros. Conferir no menu."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Tipo dos meios de pagamento: a gestora diz que os meios de fábrica já vêm com o código SEFAZ; no teste do fluxo completo “Duplicata Mercantil” foi tratada como boleto ao gerar títulos. Conferir o tipo de cada meio na tela."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao"
+    ]
+   },
+   {
+    "id": "videos",
+    "titulo": "Vídeos avançados",
+    "status": "em-preparacao",
+    "blocos": [],
+    "fontes": []
+   },
+   {
+    "id": "complementares",
+    "titulo": "Materiais complementares",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "link",
+      "material": "fundacao:checklist-inicial",
+      "titulo": "Cadastros básicos",
+      "status": "disponivel",
+      "url": "/checklists/estagiarios/02-cadastros-basicos.html",
+      "duracao_s": null,
+      "poster": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#cadastros"
+      ]
+     },
+     {
+      "tipo": "link",
+      "material": "fundacao:checklist-implantacao",
+      "titulo": "Implantação da Fundação: roteiro prático com o cliente",
+      "status": "disponivel",
+      "url": "/checklists/consultores/implantacao-01-fundacao.html",
+      "duracao_s": null,
+      "poster": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao"
+      ]
+     },
+     {
+      "tipo": "link",
+      "titulo": "Apostila do Consultor (PDF)",
+      "url": "/downloads/Apostila-do-Consultor-Faktory-Flow.pdf",
+      "visibilidade": "area:apostila",
+      "fontes": [
+       "guia:public/downloads/Apostila-do-Consultor-Faktory-Flow.pdf"
+      ]
+     },
+     {
+      "tipo": "fontes",
+      "rotulo": "Fontes no Harness",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Como cadastrar cliente, produto e obra"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Procedimento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/produto/procedimentos/procedimento-cadastrar-cliente-produto-e-obra.md"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "01 Manual Cadastros Base"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Manual oficial"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/01_Manual_Cadastros_Base_Timbrado.docx"
+        ]
+       }
+      ],
+      "fontes": [
+       "harness:conhecimento/produto/procedimentos/procedimento-cadastrar-cliente-produto-e-obra.md",
+       "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/01_Manual_Cadastros_Base_Timbrado.docx"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-estagiarios.mjs#cadastros",
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao",
+     "guia:public/downloads/Apostila-do-Consultor-Faktory-Flow.pdf",
+     "harness:conhecimento/produto/procedimentos/procedimento-cadastrar-cliente-produto-e-obra.md",
+     "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/01_Manual_Cadastros_Base_Timbrado.docx"
+    ]
+   }
+  ]
+ }
+}

@@ -1,0 +1,2760 @@
+{
+ "versao": "2026-11-04",
+ "gerado_de": {
+  "mapa": "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
+  "harness": "harness:conhecimento/"
+ },
+ "modulos": [
+  {
+   "id": "primeiros-passos",
+   "ordem": 0,
+   "titulo": "Primeiros passos",
+   "cor": null,
+   "icone": null,
+   "fontes": [
+    "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
+    "guia:scripts/dados-checklists-estagiarios.mjs#ONBOARDING",
+    "guia:scripts/dados-checklists-estagiarios.mjs#navegacao"
+   ],
+   "subtitulo": "Entrar, trocar de módulo, buscar telas e ler listas.",
+   "em_preparacao": false,
+   "materiais": [
+    {
+     "modulo": "primeiros-passos",
+     "duracao_s": null,
+     "url": null,
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md"
+     ],
+     "id": "primeiros-passos:video-inicial",
+     "tipo": "video",
+     "jornada": "inicial",
+     "titulo": "Vídeo introdutório",
+     "status": "em-preparacao"
+    },
+    {
+     "modulo": "primeiros-passos",
+     "duracao_s": null,
+     "url": null,
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md",
+      "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/00_Manual_Inicio_e_navegacao_Timbrado.docx"
+     ],
+     "id": "primeiros-passos:manual-inicial",
+     "tipo": "manual",
+     "jornada": "inicial",
+     "titulo": "Manual visual resumido",
+     "status": "em-preparacao"
+    },
+    {
+     "modulo": "primeiros-passos",
+     "duracao_s": null,
+     "url": "/checklists/estagiarios/00-onboarding-estagiario.html",
+     "fontes": [
+      "guia:scripts/dados-checklists-estagiarios.mjs#ONBOARDING"
+     ],
+     "id": "primeiros-passos:checklist-inicial",
+     "tipo": "checklist",
+     "jornada": "inicial",
+     "titulo": "Onboarding do estagiário",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "primeiros-passos",
+     "duracao_s": null,
+     "url": "/checklists/estagiarios/01-primeiros-passos-navegacao.html",
+     "fontes": [
+      "guia:scripts/dados-checklists-estagiarios.mjs#navegacao"
+     ],
+     "id": "primeiros-passos:checklist-inicial-2",
+     "tipo": "checklist",
+     "jornada": "inicial",
+     "titulo": "Primeiros passos e navegação",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "primeiros-passos",
+     "duracao_s": null,
+     "url": "#inicial/primeiros-passos",
+     "fontes": [
+      "harness:conhecimento/glossario/telas.yaml#geral.seletor-modulos"
+     ],
+     "id": "primeiros-passos:telas",
+     "tipo": "tela",
+     "jornada": "inicial",
+     "titulo": "Principais telas",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "primeiros-passos",
+     "duracao_s": null,
+     "url": null,
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md"
+     ],
+     "id": "primeiros-passos:video-consultor",
+     "tipo": "video",
+     "jornada": "consultor",
+     "titulo": "Vídeo avançado",
+     "status": "em-preparacao"
+    },
+    {
+     "modulo": "primeiros-passos",
+     "duracao_s": null,
+     "url": null,
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md",
+      "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/00_Manual_Inicio_e_navegacao_Timbrado.docx"
+     ],
+     "id": "primeiros-passos:manual-consultor",
+     "tipo": "manual",
+     "jornada": "consultor",
+     "titulo": "Manual do consultor",
+     "status": "em-preparacao"
+    }
+   ]
+  },
+  {
+   "id": "fundacao",
+   "ordem": 1,
+   "titulo": "Cadastros e Fundação",
+   "cor": null,
+   "icone": null,
+   "fontes": [
+    "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
+    "guia:scripts/dados-checklists-estagiarios.mjs#cadastros",
+    "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao"
+   ],
+   "subtitulo": "Participantes (clientes, fornecedores), produtos e projetos.",
+   "em_preparacao": false,
+   "materiais": [
+    {
+     "modulo": "fundacao",
+     "duracao_s": null,
+     "url": null,
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md"
+     ],
+     "id": "fundacao:video-inicial",
+     "tipo": "video",
+     "jornada": "inicial",
+     "titulo": "Vídeo introdutório",
+     "status": "em-preparacao"
+    },
+    {
+     "modulo": "fundacao",
+     "duracao_s": null,
+     "url": null,
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md",
+      "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/01_Manual_Cadastros_Base_Timbrado.docx"
+     ],
+     "id": "fundacao:manual-inicial",
+     "tipo": "manual",
+     "jornada": "inicial",
+     "titulo": "Manual visual resumido",
+     "status": "em-preparacao"
+    },
+    {
+     "modulo": "fundacao",
+     "duracao_s": null,
+     "url": "/checklists/estagiarios/02-cadastros-basicos.html",
+     "fontes": [
+      "guia:scripts/dados-checklists-estagiarios.mjs#cadastros"
+     ],
+     "id": "fundacao:checklist-inicial",
+     "tipo": "checklist",
+     "jornada": "inicial",
+     "titulo": "Cadastros básicos",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "fundacao",
+     "duracao_s": null,
+     "url": "#inicial/fundacao",
+     "fontes": [
+      "harness:conhecimento/glossario/telas.yaml#cadastros.participantes",
+      "harness:conhecimento/glossario/telas.yaml#cadastros.produtos",
+      "harness:conhecimento/glossario/telas.yaml#cadastros.projetos"
+     ],
+     "id": "fundacao:telas",
+     "tipo": "tela",
+     "jornada": "inicial",
+     "titulo": "Principais telas",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "fundacao",
+     "duracao_s": null,
+     "url": "/checklists/consultores/implantacao-01-fundacao.html",
+     "fontes": [
+      "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao"
+     ],
+     "id": "fundacao:checklist-implantacao",
+     "tipo": "checklist",
+     "jornada": "consultor",
+     "titulo": "Implantação da Fundação: roteiro prático com o cliente",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "fundacao",
+     "duracao_s": null,
+     "url": null,
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md"
+     ],
+     "id": "fundacao:video-consultor",
+     "tipo": "video",
+     "jornada": "consultor",
+     "titulo": "Vídeo avançado",
+     "status": "em-preparacao"
+    },
+    {
+     "modulo": "fundacao",
+     "duracao_s": null,
+     "url": "#consultor/fundacao",
+     "fontes": [
+      "harness:conhecimento/produto/regras-negocio/regra-crm-formulario-do-lead-secoes-e-campos.md",
+      "harness:conhecimento/produto/regras-negocio/regra-geral-os-dados-pertencem-a-empresa-e-uma-empresa-nova-comeca-vazia.md",
+      "harness:conhecimento/produto/regras-negocio/regra-producao-item-parametrico-da-estrutura-exige-cor.md"
+     ],
+     "id": "fundacao:regras",
+     "tipo": "regra",
+     "jornada": "consultor",
+     "titulo": "Regras de negócio",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "fundacao",
+     "duracao_s": null,
+     "url": null,
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md",
+      "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/01_Manual_Cadastros_Base_Timbrado.docx"
+     ],
+     "id": "fundacao:manual-consultor",
+     "tipo": "manual",
+     "jornada": "consultor",
+     "titulo": "Manual do consultor",
+     "status": "em-preparacao"
+    }
+   ]
+  },
+  {
+   "id": "crm",
+   "ordem": 2,
+   "titulo": "CRM",
+   "cor": "#7b1fa2",
+   "icone": "crm",
+   "fontes": [
+    "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
+    "guia:db/migrations/002_modulos_iniciais.sql#crm",
+    "guia:scripts/dados-checklists-estagiarios.mjs#crm",
+    "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+   ],
+   "subtitulo": "Funil, lista e Kanban de leads, conversão.",
+   "em_preparacao": false,
+   "materiais": [
+    {
+     "modulo": "crm",
+     "duracao_s": null,
+     "url": null,
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md"
+     ],
+     "id": "crm:video-inicial",
+     "tipo": "video",
+     "jornada": "inicial",
+     "titulo": "Vídeo introdutório",
+     "status": "em-preparacao"
+    },
+    {
+     "modulo": "crm",
+     "duracao_s": null,
+     "url": null,
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md",
+      "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/02_Manual_CRM_Timbrado.docx"
+     ],
+     "id": "crm:manual-inicial",
+     "tipo": "manual",
+     "jornada": "inicial",
+     "titulo": "Manual visual resumido",
+     "status": "em-preparacao"
+    },
+    {
+     "modulo": "crm",
+     "duracao_s": null,
+     "url": "/checklists/estagiarios/03-crm-leads-oportunidades.html",
+     "fontes": [
+      "guia:scripts/dados-checklists-estagiarios.mjs#crm"
+     ],
+     "id": "crm:checklist-inicial",
+     "tipo": "checklist",
+     "jornada": "inicial",
+     "titulo": "CRM: leads e oportunidades",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "crm",
+     "duracao_s": null,
+     "url": "#inicial/crm",
+     "fontes": [
+      "harness:conhecimento/glossario/telas.yaml#crm.funis-vendas",
+      "harness:conhecimento/glossario/telas.yaml#crm.leads",
+      "harness:conhecimento/glossario/telas.yaml#crm.pipeline",
+      "guia:videos/roteiros/consultor-03-comercial.json"
+     ],
+     "id": "crm:telas",
+     "tipo": "tela",
+     "jornada": "inicial",
+     "titulo": "Principais telas",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "crm",
+     "duracao_s": null,
+     "url": "/checklists/consultores/implantacao-02-crm.html",
+     "fontes": [
+      "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+     ],
+     "id": "crm:checklist-implantacao",
+     "tipo": "checklist",
+     "jornada": "consultor",
+     "titulo": "Implantação de CRM: roteiro prático com o cliente",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "crm",
+     "duracao_s": 220,
+     "url": "/videos/consultor-03-comercial.mp4",
+     "fontes": [
+      "guia:public/videos/manifest.json",
+      "guia:videos/roteiros/consultor-03-comercial.json"
+     ],
+     "id": "crm:video-consultor",
+     "tipo": "video",
+     "jornada": "consultor",
+     "titulo": "Comercial: do lead ao pedido de venda",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "crm",
+     "duracao_s": null,
+     "url": "#consultor/crm",
+     "fontes": [
+      "harness:conhecimento/produto/regras-negocio/regra-crm-conversao-cria-a-oportunidade-sozinha.md",
+      "harness:conhecimento/produto/regras-negocio/regra-crm-converter-lead-exige-etapa-60-e-bant-completo.md",
+      "harness:conhecimento/produto/regras-negocio/regra-crm-formulario-do-lead-secoes-e-campos.md",
+      "harness:conhecimento/produto/regras-negocio/regra-vendas-gerar-pedido-da-oportunidade-exige-cfop-sem-financeiro.md",
+      "guia:videos/roteiros/consultor-03-comercial.json"
+     ],
+     "id": "crm:regras",
+     "tipo": "regra",
+     "jornada": "consultor",
+     "titulo": "Regras de negócio",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "crm",
+     "duracao_s": null,
+     "url": null,
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md",
+      "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/02_Manual_CRM_Timbrado.docx"
+     ],
+     "id": "crm:manual-consultor",
+     "tipo": "manual",
+     "jornada": "consultor",
+     "titulo": "Manual do consultor",
+     "status": "em-preparacao"
+    }
+   ]
+  },
+  {
+   "id": "cem",
+   "ordem": 3,
+   "titulo": "Integração CEM",
+   "cor": null,
+   "icone": null,
+   "fontes": [
+    "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
+    "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+   ],
+   "subtitulo": "Consultor · Implantação · Integração CEM",
+   "em_preparacao": false,
+   "materiais": [
+    {
+     "modulo": "cem",
+     "duracao_s": null,
+     "url": null,
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md"
+     ],
+     "id": "cem:video-inicial",
+     "tipo": "video",
+     "jornada": "inicial",
+     "titulo": "Vídeo introdutório",
+     "status": "em-preparacao"
+    },
+    {
+     "modulo": "cem",
+     "duracao_s": null,
+     "url": null,
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md"
+     ],
+     "id": "cem:manual-inicial",
+     "tipo": "manual",
+     "jornada": "inicial",
+     "titulo": "Manual visual resumido",
+     "status": "em-preparacao"
+    },
+    {
+     "modulo": "cem",
+     "duracao_s": null,
+     "url": "/checklists/consultores/implantacao-03-integracao-cem.html",
+     "fontes": [
+      "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+     ],
+     "id": "cem:checklist-implantacao",
+     "tipo": "checklist",
+     "jornada": "consultor",
+     "titulo": "Implantação da Integração CEM: roteiro prático com o cliente",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "cem",
+     "duracao_s": null,
+     "url": null,
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md"
+     ],
+     "id": "cem:video-consultor",
+     "tipo": "video",
+     "jornada": "consultor",
+     "titulo": "Vídeo avançado",
+     "status": "em-preparacao"
+    },
+    {
+     "modulo": "cem",
+     "duracao_s": null,
+     "url": null,
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md"
+     ],
+     "id": "cem:manual-consultor",
+     "tipo": "manual",
+     "jornada": "consultor",
+     "titulo": "Manual do consultor",
+     "status": "em-preparacao"
+    }
+   ]
+  },
+  {
+   "id": "vendas",
+   "ordem": 4,
+   "titulo": "Vendas",
+   "cor": "#1976d2",
+   "icone": "vendas",
+   "fontes": [
+    "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
+    "guia:db/migrations/002_modulos_iniciais.sql#vendas",
+    "guia:scripts/dados-checklists-estagiarios.mjs#vendas",
+    "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+   ],
+   "subtitulo": "Pedidos, status, novo pedido, metas e comissões.",
+   "em_preparacao": false,
+   "materiais": [
+    {
+     "modulo": "vendas",
+     "duracao_s": 188,
+     "url": "/videos/fluxo-1-vendas.mp4",
+     "fontes": [
+      "guia:public/videos/manifest.json",
+      "guia:videos/roteiros/fluxo-1-vendas.json"
+     ],
+     "id": "vendas:video-inicial",
+     "tipo": "video",
+     "jornada": "inicial",
+     "titulo": "Vendas: o ciclo do pedido de venda",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "vendas",
+     "duracao_s": null,
+     "url": null,
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md",
+      "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/03_Manual_Vendas_Timbrado.docx"
+     ],
+     "id": "vendas:manual-inicial",
+     "tipo": "manual",
+     "jornada": "inicial",
+     "titulo": "Manual visual resumido",
+     "status": "em-preparacao"
+    },
+    {
+     "modulo": "vendas",
+     "duracao_s": null,
+     "url": "/checklists/estagiarios/04-vendas-pedidos.html",
+     "fontes": [
+      "guia:scripts/dados-checklists-estagiarios.mjs#vendas"
+     ],
+     "id": "vendas:checklist-inicial",
+     "tipo": "checklist",
+     "jornada": "inicial",
+     "titulo": "Vendas: pedidos de venda",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "vendas",
+     "duracao_s": null,
+     "url": "/checklists/estagiarios/fluxo-principal-vendas.html",
+     "fontes": [
+      "guia:scripts/dados-fluxos-estagiarios.mjs#fluxo-vendas"
+     ],
+     "id": "vendas:fluxo-principal",
+     "tipo": "fluxo",
+     "jornada": "inicial",
+     "titulo": "Fluxo principal de Vendas: do pedido à operação",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "vendas",
+     "duracao_s": null,
+     "url": "#inicial/vendas",
+     "fontes": [
+      "harness:conhecimento/glossario/telas.yaml#vendas.condicoes-pagamento",
+      "harness:conhecimento/glossario/telas.yaml#vendas.pedidos-de-venda",
+      "harness:conhecimento/glossario/telas.yaml#vendas.novo-pedido",
+      "guia:videos/roteiros/fluxo-1-vendas.json"
+     ],
+     "id": "vendas:telas",
+     "tipo": "tela",
+     "jornada": "inicial",
+     "titulo": "Principais telas",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "vendas",
+     "duracao_s": null,
+     "url": "/checklists/consultores/implantacao-04-vendas.html",
+     "fontes": [
+      "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+     ],
+     "id": "vendas:checklist-implantacao",
+     "tipo": "checklist",
+     "jornada": "consultor",
+     "titulo": "Implantação de Vendas: roteiro prático com o cliente",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "vendas",
+     "duracao_s": 220,
+     "url": "/videos/consultor-03-comercial.mp4",
+     "fontes": [
+      "guia:public/videos/manifest.json",
+      "guia:videos/roteiros/consultor-03-comercial.json"
+     ],
+     "id": "vendas:video-consultor",
+     "tipo": "video",
+     "jornada": "consultor",
+     "titulo": "Comercial: do lead ao pedido de venda",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "vendas",
+     "duracao_s": null,
+     "url": "#consultor/vendas",
+     "fontes": [
+      "harness:conhecimento/produto/regras-negocio/regra-faturamento-faturar-abre-nova-nfe-ligada-ao-pedido.md",
+      "harness:conhecimento/produto/regras-negocio/regra-faturamento-finalizar-nf-gera-os-titulos.md",
+      "harness:conhecimento/produto/regras-negocio/regra-producao-op-copia-o-item-do-pedido-mas-nao-a-quantidade.md",
+      "harness:conhecimento/produto/regras-negocio/regra-servicos-medicao-nasce-do-pedido.md",
+      "harness:conhecimento/produto/regras-negocio/regra-vendas-aprovacoes-cobrem-comissao-e-desconto.md",
+      "harness:conhecimento/produto/regras-negocio/regra-vendas-cfop-depende-de-empresa-e-cliente.md",
+      "harness:conhecimento/produto/regras-negocio/regra-vendas-editar-pedido-somente-em-aberto.md",
+      "harness:conhecimento/produto/regras-negocio/regra-vendas-gerar-pedido-da-oportunidade-exige-cfop-sem-financeiro.md",
+      "harness:conhecimento/produto/regras-negocio/regra-vendas-gerar-titulos-quando-esta-habilitado.md",
+      "harness:conhecimento/produto/regras-negocio/regra-vendas-liberar-para-expedicao-so-em-pedido-faturado.md",
+      "harness:conhecimento/produto/regras-negocio/regra-vendas-parcelas-recalcular-e-recalcular-parcelas.md",
+      "harness:conhecimento/produto/regras-negocio/regra-vendas-pedido-fica-faturado-ao-salvar-a-nota.md",
+      "guia:videos/roteiros/consultor-03-comercial.json"
+     ],
+     "id": "vendas:regras",
+     "tipo": "regra",
+     "jornada": "consultor",
+     "titulo": "Regras de negócio",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "vendas",
+     "duracao_s": null,
+     "url": null,
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md",
+      "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/03_Manual_Vendas_Timbrado.docx"
+     ],
+     "id": "vendas:manual-consultor",
+     "tipo": "manual",
+     "jornada": "consultor",
+     "titulo": "Manual do consultor",
+     "status": "em-preparacao"
+    }
+   ]
+  },
+  {
+   "id": "compras",
+   "ordem": 5,
+   "titulo": "Compras",
+   "cor": "#00838f",
+   "icone": "compras",
+   "fontes": [
+    "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
+    "guia:db/migrations/002_modulos_iniciais.sql#compras",
+    "guia:scripts/dados-checklists-estagiarios.mjs#compras",
+    "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+   ],
+   "subtitulo": "Solicitação, cotação, pedido de compra e linha do tempo.",
+   "em_preparacao": false,
+   "materiais": [
+    {
+     "modulo": "compras",
+     "duracao_s": null,
+     "url": null,
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md"
+     ],
+     "id": "compras:video-inicial",
+     "tipo": "video",
+     "jornada": "inicial",
+     "titulo": "Vídeo introdutório",
+     "status": "em-preparacao"
+    },
+    {
+     "modulo": "compras",
+     "duracao_s": null,
+     "url": null,
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md",
+      "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/04_Manual_Compras_Timbrado.docx"
+     ],
+     "id": "compras:manual-inicial",
+     "tipo": "manual",
+     "jornada": "inicial",
+     "titulo": "Manual visual resumido",
+     "status": "em-preparacao"
+    },
+    {
+     "modulo": "compras",
+     "duracao_s": null,
+     "url": "/checklists/estagiarios/05-compras.html",
+     "fontes": [
+      "guia:scripts/dados-checklists-estagiarios.mjs#compras"
+     ],
+     "id": "compras:checklist-inicial",
+     "tipo": "checklist",
+     "jornada": "inicial",
+     "titulo": "Compras: da necessidade ao pedido",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "compras",
+     "duracao_s": null,
+     "url": "#inicial/compras",
+     "fontes": [
+      "harness:conhecimento/glossario/telas.yaml#compras.solicitacoes",
+      "guia:videos/roteiros/consultor-01-suprimentos.json"
+     ],
+     "id": "compras:telas",
+     "tipo": "tela",
+     "jornada": "inicial",
+     "titulo": "Principais telas",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "compras",
+     "duracao_s": null,
+     "url": "/checklists/consultores/implantacao-08-compras.html",
+     "fontes": [
+      "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+     ],
+     "id": "compras:checklist-implantacao",
+     "tipo": "checklist",
+     "jornada": "consultor",
+     "titulo": "Implantação de Compras: roteiro prático com o cliente",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "compras",
+     "duracao_s": 203,
+     "url": "/videos/consultor-01-suprimentos.mp4",
+     "fontes": [
+      "guia:public/videos/manifest.json",
+      "guia:videos/roteiros/consultor-01-suprimentos.json"
+     ],
+     "id": "compras:video-consultor",
+     "tipo": "video",
+     "jornada": "consultor",
+     "titulo": "Suprimentos: da solicitação ao pagamento",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "compras",
+     "duracao_s": null,
+     "url": "#consultor/compras",
+     "fontes": [
+      "harness:conhecimento/produto/regras-negocio/regra-compras-gerar-pedido-de-compra-abre-o-novo-pedido.md",
+      "harness:conhecimento/produto/regras-negocio/regra-compras-natureza-da-operacao-define-o-cfop.md",
+      "harness:conhecimento/produto/regras-negocio/regra-recebimento-a-mesma-nota-tem-dois-numeros.md",
+      "guia:videos/roteiros/consultor-01-suprimentos.json"
+     ],
+     "id": "compras:regras",
+     "tipo": "regra",
+     "jornada": "consultor",
+     "titulo": "Regras de negócio",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "compras",
+     "duracao_s": null,
+     "url": null,
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md",
+      "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/04_Manual_Compras_Timbrado.docx"
+     ],
+     "id": "compras:manual-consultor",
+     "tipo": "manual",
+     "jornada": "consultor",
+     "titulo": "Manual do consultor",
+     "status": "em-preparacao"
+    }
+   ]
+  },
+  {
+   "id": "recebimento",
+   "ordem": 6,
+   "titulo": "Recebimento",
+   "cor": "#5d4037",
+   "icone": "recebimento",
+   "fontes": [
+    "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
+    "guia:db/migrations/002_modulos_iniciais.sql#recebimento",
+    "guia:scripts/dados-checklists-estagiarios.mjs#recebimento",
+    "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento"
+   ],
+   "subtitulo": "Notas de recebimento, conferência e reflexos.",
+   "em_preparacao": false,
+   "materiais": [
+    {
+     "modulo": "recebimento",
+     "duracao_s": null,
+     "url": null,
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md"
+     ],
+     "id": "recebimento:video-inicial",
+     "tipo": "video",
+     "jornada": "inicial",
+     "titulo": "Vídeo introdutório",
+     "status": "em-preparacao"
+    },
+    {
+     "modulo": "recebimento",
+     "duracao_s": null,
+     "url": null,
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md",
+      "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/05_Manual_Recebimento_Timbrado.docx"
+     ],
+     "id": "recebimento:manual-inicial",
+     "tipo": "manual",
+     "jornada": "inicial",
+     "titulo": "Manual visual resumido",
+     "status": "em-preparacao"
+    },
+    {
+     "modulo": "recebimento",
+     "duracao_s": null,
+     "url": "/checklists/estagiarios/06-recebimento.html",
+     "fontes": [
+      "guia:scripts/dados-checklists-estagiarios.mjs#recebimento"
+     ],
+     "id": "recebimento:checklist-inicial",
+     "tipo": "checklist",
+     "jornada": "inicial",
+     "titulo": "Recebimento de mercadorias",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "recebimento",
+     "duracao_s": null,
+     "url": "#inicial/recebimento",
+     "fontes": [
+      "harness:conhecimento/glossario/telas.yaml#recebimento.nova-nota",
+      "guia:videos/roteiros/consultor-01-suprimentos.json"
+     ],
+     "id": "recebimento:telas",
+     "tipo": "tela",
+     "jornada": "inicial",
+     "titulo": "Principais telas",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "recebimento",
+     "duracao_s": null,
+     "url": "/checklists/consultores/implantacao-09-recebimento.html",
+     "fontes": [
+      "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento"
+     ],
+     "id": "recebimento:checklist-implantacao",
+     "tipo": "checklist",
+     "jornada": "consultor",
+     "titulo": "Implantação de Recebimento: roteiro prático com o cliente",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "recebimento",
+     "duracao_s": 203,
+     "url": "/videos/consultor-01-suprimentos.mp4",
+     "fontes": [
+      "guia:public/videos/manifest.json",
+      "guia:videos/roteiros/consultor-01-suprimentos.json"
+     ],
+     "id": "recebimento:video-consultor",
+     "tipo": "video",
+     "jornada": "consultor",
+     "titulo": "Suprimentos: da solicitação ao pagamento",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "recebimento",
+     "duracao_s": null,
+     "url": "#consultor/recebimento",
+     "fontes": [
+      "harness:conhecimento/produto/regras-negocio/regra-recebimento-a-mesma-nota-tem-dois-numeros.md",
+      "guia:videos/roteiros/consultor-01-suprimentos.json"
+     ],
+     "id": "recebimento:regras",
+     "tipo": "regra",
+     "jornada": "consultor",
+     "titulo": "Regras de negócio",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "recebimento",
+     "duracao_s": null,
+     "url": null,
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md",
+      "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/05_Manual_Recebimento_Timbrado.docx"
+     ],
+     "id": "recebimento:manual-consultor",
+     "tipo": "manual",
+     "jornada": "consultor",
+     "titulo": "Manual do consultor",
+     "status": "em-preparacao"
+    }
+   ]
+  },
+  {
+   "id": "estoque",
+   "ordem": 7,
+   "titulo": "Estoque",
+   "cor": "#455a64",
+   "icone": "estoque",
+   "fontes": [
+    "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
+    "guia:db/migrations/002_modulos_iniciais.sql#estoque",
+    "guia:scripts/dados-checklists-estagiarios.mjs#estoque",
+    "guia:scripts/dados-checklists-implantacao.mjs#implantacao-estoque"
+   ],
+   "subtitulo": "Visão geral, saldo por local, extrato e tipos de movimento.",
+   "em_preparacao": false,
+   "materiais": [
+    {
+     "modulo": "estoque",
+     "duracao_s": null,
+     "url": null,
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md"
+     ],
+     "id": "estoque:video-inicial",
+     "tipo": "video",
+     "jornada": "inicial",
+     "titulo": "Vídeo introdutório",
+     "status": "em-preparacao"
+    },
+    {
+     "modulo": "estoque",
+     "duracao_s": null,
+     "url": null,
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md",
+      "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/06_Manual_Estoque_Timbrado.docx"
+     ],
+     "id": "estoque:manual-inicial",
+     "tipo": "manual",
+     "jornada": "inicial",
+     "titulo": "Manual visual resumido",
+     "status": "em-preparacao"
+    },
+    {
+     "modulo": "estoque",
+     "duracao_s": null,
+     "url": "/checklists/estagiarios/07-estoque.html",
+     "fontes": [
+      "guia:scripts/dados-checklists-estagiarios.mjs#estoque"
+     ],
+     "id": "estoque:checklist-inicial",
+     "tipo": "checklist",
+     "jornada": "inicial",
+     "titulo": "Estoque: saldo e movimentos",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "estoque",
+     "duracao_s": null,
+     "url": "#inicial/estoque",
+     "fontes": [
+      "harness:conhecimento/glossario/telas.yaml#estoque.novo-movimento",
+      "guia:videos/roteiros/consultor-04-estoque.json"
+     ],
+     "id": "estoque:telas",
+     "tipo": "tela",
+     "jornada": "inicial",
+     "titulo": "Principais telas",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "estoque",
+     "duracao_s": null,
+     "url": "/checklists/consultores/implantacao-10-estoque.html",
+     "fontes": [
+      "guia:scripts/dados-checklists-implantacao.mjs#implantacao-estoque"
+     ],
+     "id": "estoque:checklist-implantacao",
+     "tipo": "checklist",
+     "jornada": "consultor",
+     "titulo": "Implantação de Estoque: roteiro prático com o cliente",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "estoque",
+     "duracao_s": 183,
+     "url": "/videos/consultor-04-estoque.mp4",
+     "fontes": [
+      "guia:public/videos/manifest.json",
+      "guia:videos/roteiros/consultor-04-estoque.json"
+     ],
+     "id": "estoque:video-consultor",
+     "tipo": "video",
+     "jornada": "consultor",
+     "titulo": "Estoque: movimento, reserva e inventário",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "estoque",
+     "duracao_s": null,
+     "url": "#consultor/estoque",
+     "fontes": [
+      "harness:conhecimento/produto/regras-negocio/regra-estoque-almoxarifado-central-ativo-e-pre-requisito.md",
+      "harness:conhecimento/produto/regras-negocio/regra-estoque-emprestimo-devolucao-parcial-e-total.md",
+      "harness:conhecimento/produto/regras-negocio/regra-estoque-inventario-congela-o-local-e-exige-outra-pessoa.md",
+      "harness:conhecimento/produto/regras-negocio/regra-estoque-saldo-nasce-de-movimentos.md",
+      "harness:conhecimento/produto/regras-negocio/regra-estoque-transferencia-pendente-reserva-o-disponivel.md",
+      "harness:conhecimento/produto/regras-negocio/regra-faturamento-finalizar-nf-requisitos.md",
+      "harness:conhecimento/produto/regras-negocio/regra-producao-marcar-produzido-gera-entrada-do-produto-acabado.md",
+      "guia:videos/roteiros/consultor-04-estoque.json"
+     ],
+     "id": "estoque:regras",
+     "tipo": "regra",
+     "jornada": "consultor",
+     "titulo": "Regras de negócio",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "estoque",
+     "duracao_s": null,
+     "url": null,
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md",
+      "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/06_Manual_Estoque_Timbrado.docx"
+     ],
+     "id": "estoque:manual-consultor",
+     "tipo": "manual",
+     "jornada": "consultor",
+     "titulo": "Manual do consultor",
+     "status": "em-preparacao"
+    }
+   ]
+  },
+  {
+   "id": "producao",
+   "ordem": 8,
+   "titulo": "Produção",
+   "cor": "#ef6c00",
+   "icone": "producao",
+   "fontes": [
+    "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
+    "guia:db/migrations/002_modulos_iniciais.sql#producao",
+    "guia:scripts/dados-checklists-estagiarios.mjs#producao",
+    "guia:scripts/dados-checklists-implantacao.mjs#implantacao-producao"
+   ],
+   "subtitulo": "Ordem de produção, painéis, alertas e reflexo no estoque.",
+   "em_preparacao": false,
+   "materiais": [
+    {
+     "modulo": "producao",
+     "duracao_s": null,
+     "url": null,
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md"
+     ],
+     "id": "producao:video-inicial",
+     "tipo": "video",
+     "jornada": "inicial",
+     "titulo": "Vídeo introdutório",
+     "status": "em-preparacao"
+    },
+    {
+     "modulo": "producao",
+     "duracao_s": null,
+     "url": null,
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md",
+      "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/07_Manual_Producao_Timbrado.docx"
+     ],
+     "id": "producao:manual-inicial",
+     "tipo": "manual",
+     "jornada": "inicial",
+     "titulo": "Manual visual resumido",
+     "status": "em-preparacao"
+    },
+    {
+     "modulo": "producao",
+     "duracao_s": null,
+     "url": "/checklists/estagiarios/08-producao.html",
+     "fontes": [
+      "guia:scripts/dados-checklists-estagiarios.mjs#producao"
+     ],
+     "id": "producao:checklist-inicial",
+     "tipo": "checklist",
+     "jornada": "inicial",
+     "titulo": "Produção: ordens e apontamentos",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "producao",
+     "duracao_s": null,
+     "url": "#inicial/producao",
+     "fontes": [
+      "harness:conhecimento/glossario/telas.yaml#producao.nova-op",
+      "guia:videos/roteiros/consultor-05-producao.json"
+     ],
+     "id": "producao:telas",
+     "tipo": "tela",
+     "jornada": "inicial",
+     "titulo": "Principais telas",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "producao",
+     "duracao_s": null,
+     "url": "/checklists/consultores/implantacao-11-producao.html",
+     "fontes": [
+      "guia:scripts/dados-checklists-implantacao.mjs#implantacao-producao"
+     ],
+     "id": "producao:checklist-implantacao",
+     "tipo": "checklist",
+     "jornada": "consultor",
+     "titulo": "Implantação de Produção: roteiro prático com o cliente",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "producao",
+     "duracao_s": 173,
+     "url": "/videos/consultor-05-producao.mp4",
+     "fontes": [
+      "guia:public/videos/manifest.json",
+      "guia:videos/roteiros/consultor-05-producao.json"
+     ],
+     "id": "producao:video-consultor",
+     "tipo": "video",
+     "jornada": "consultor",
+     "titulo": "Produção: da estrutura ao produto acabado",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "producao",
+     "duracao_s": null,
+     "url": "#consultor/producao",
+     "fontes": [
+      "harness:conhecimento/produto/regras-negocio/regra-estoque-almoxarifado-central-ativo-e-pre-requisito.md",
+      "harness:conhecimento/produto/regras-negocio/regra-producao-item-parametrico-da-estrutura-exige-cor.md",
+      "harness:conhecimento/produto/regras-negocio/regra-producao-marcar-produzido-gera-entrada-do-produto-acabado.md",
+      "harness:conhecimento/produto/regras-negocio/regra-producao-op-copia-o-item-do-pedido-mas-nao-a-quantidade.md",
+      "harness:conhecimento/produto/regras-negocio/regra-producao-requisicoes-nascem-da-estrutura-ao-salvar.md",
+      "guia:videos/roteiros/consultor-05-producao.json"
+     ],
+     "id": "producao:regras",
+     "tipo": "regra",
+     "jornada": "consultor",
+     "titulo": "Regras de negócio",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "producao",
+     "duracao_s": null,
+     "url": null,
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md",
+      "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/07_Manual_Producao_Timbrado.docx"
+     ],
+     "id": "producao:manual-consultor",
+     "tipo": "manual",
+     "jornada": "consultor",
+     "titulo": "Manual do consultor",
+     "status": "em-preparacao"
+    }
+   ]
+  },
+  {
+   "id": "servicos",
+   "ordem": 9,
+   "titulo": "Serviços e Instalação",
+   "cor": "#ad1457",
+   "icone": "servicos",
+   "fontes": [
+    "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
+    "guia:db/migrations/002_modulos_iniciais.sql#servicos",
+    "guia:scripts/dados-checklists-estagiarios.mjs#servicos",
+    "guia:scripts/dados-checklists-implantacao.mjs#implantacao-servicos"
+   ],
+   "subtitulo": "Medição → instalação → vistoria → assistência técnica.",
+   "em_preparacao": false,
+   "materiais": [
+    {
+     "modulo": "servicos",
+     "duracao_s": null,
+     "url": null,
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md"
+     ],
+     "id": "servicos:video-inicial",
+     "tipo": "video",
+     "jornada": "inicial",
+     "titulo": "Vídeo introdutório",
+     "status": "em-preparacao"
+    },
+    {
+     "modulo": "servicos",
+     "duracao_s": null,
+     "url": null,
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md",
+      "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/11_Manual_Servicos_Timbrado.docx"
+     ],
+     "id": "servicos:manual-inicial",
+     "tipo": "manual",
+     "jornada": "inicial",
+     "titulo": "Manual visual resumido",
+     "status": "em-preparacao"
+    },
+    {
+     "modulo": "servicos",
+     "duracao_s": null,
+     "url": "/checklists/estagiarios/09-servicos-campo.html",
+     "fontes": [
+      "guia:scripts/dados-checklists-estagiarios.mjs#servicos"
+     ],
+     "id": "servicos:checklist-inicial",
+     "tipo": "checklist",
+     "jornada": "inicial",
+     "titulo": "Serviços de campo",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "servicos",
+     "duracao_s": null,
+     "url": "#inicial/servicos",
+     "fontes": [
+      "harness:conhecimento/glossario/telas.yaml#servicos.nova-medicao",
+      "guia:videos/roteiros/consultor-02-servicos.json"
+     ],
+     "id": "servicos:telas",
+     "tipo": "tela",
+     "jornada": "inicial",
+     "titulo": "Principais telas",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "servicos",
+     "duracao_s": null,
+     "url": "/checklists/consultores/implantacao-12-servicos.html",
+     "fontes": [
+      "guia:scripts/dados-checklists-implantacao.mjs#implantacao-servicos"
+     ],
+     "id": "servicos:checklist-implantacao",
+     "tipo": "checklist",
+     "jornada": "consultor",
+     "titulo": "Implantação de Serviços: roteiro prático com o cliente",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "servicos",
+     "duracao_s": 168,
+     "url": "/videos/consultor-02-servicos.mp4",
+     "fontes": [
+      "guia:public/videos/manifest.json",
+      "guia:videos/roteiros/consultor-02-servicos.json"
+     ],
+     "id": "servicos:video-consultor",
+     "tipo": "video",
+     "jornada": "consultor",
+     "titulo": "Serviços de campo: da medição à assistência",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "servicos",
+     "duracao_s": null,
+     "url": "#consultor/servicos",
+     "fontes": [
+      "harness:conhecimento/produto/regras-negocio/regra-servicos-aprovacao-da-medicao-exige-conferente-diferente.md",
+      "harness:conhecimento/produto/regras-negocio/regra-servicos-botao-agendar-so-na-medicao-salva.md",
+      "harness:conhecimento/produto/regras-negocio/regra-servicos-medicao-nasce-do-pedido.md",
+      "harness:conhecimento/produto/regras-negocio/regra-servicos-passagens-por-botao-e-ordem-dos-aceites.md",
+      "guia:videos/roteiros/consultor-02-servicos.json"
+     ],
+     "id": "servicos:regras",
+     "tipo": "regra",
+     "jornada": "consultor",
+     "titulo": "Regras de negócio",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "servicos",
+     "duracao_s": null,
+     "url": null,
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md",
+      "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/11_Manual_Servicos_Timbrado.docx"
+     ],
+     "id": "servicos:manual-consultor",
+     "tipo": "manual",
+     "jornada": "consultor",
+     "titulo": "Manual do consultor",
+     "status": "em-preparacao"
+    }
+   ]
+  },
+  {
+   "id": "projetos",
+   "ordem": 10,
+   "titulo": "Projetos e Obras",
+   "cor": "#00695c",
+   "icone": "projetos",
+   "fontes": [
+    "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
+    "guia:db/migrations/002_modulos_iniciais.sql#projetos",
+    "guia:scripts/dados-checklists-estagiarios.mjs#projetos",
+    "guia:scripts/dados-checklists-implantacao.mjs#implantacao-projetos"
+   ],
+   "subtitulo": "A obra como centro de custo e resultado.",
+   "em_preparacao": false,
+   "materiais": [
+    {
+     "modulo": "projetos",
+     "duracao_s": null,
+     "url": null,
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md"
+     ],
+     "id": "projetos:video-inicial",
+     "tipo": "video",
+     "jornada": "inicial",
+     "titulo": "Vídeo introdutório",
+     "status": "em-preparacao"
+    },
+    {
+     "modulo": "projetos",
+     "duracao_s": null,
+     "url": null,
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md",
+      "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/12_Manual_Projetos_e_Tarefas_Timbrado.docx"
+     ],
+     "id": "projetos:manual-inicial",
+     "tipo": "manual",
+     "jornada": "inicial",
+     "titulo": "Manual visual resumido",
+     "status": "em-preparacao"
+    },
+    {
+     "modulo": "projetos",
+     "duracao_s": null,
+     "url": "/checklists/estagiarios/10-projetos-obras.html",
+     "fontes": [
+      "guia:scripts/dados-checklists-estagiarios.mjs#projetos"
+     ],
+     "id": "projetos:checklist-inicial",
+     "tipo": "checklist",
+     "jornada": "inicial",
+     "titulo": "Projetos e obras",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "projetos",
+     "duracao_s": null,
+     "url": null,
+     "fontes": [
+      "guia:videos/roteiros/consultor-09-projetos.json"
+     ],
+     "id": "projetos:telas",
+     "tipo": "tela",
+     "jornada": "inicial",
+     "titulo": "Principais telas",
+     "status": "em-preparacao"
+    },
+    {
+     "modulo": "projetos",
+     "duracao_s": null,
+     "url": "/checklists/consultores/implantacao-14-projetos.html",
+     "fontes": [
+      "guia:scripts/dados-checklists-implantacao.mjs#implantacao-projetos"
+     ],
+     "id": "projetos:checklist-implantacao",
+     "tipo": "checklist",
+     "jornada": "consultor",
+     "titulo": "Implantação de Projetos: roteiro prático com o cliente",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "projetos",
+     "duracao_s": 147,
+     "url": "/videos/consultor-09-projetos.mp4",
+     "fontes": [
+      "guia:public/videos/manifest.json",
+      "guia:videos/roteiros/consultor-09-projetos.json"
+     ],
+     "id": "projetos:video-consultor",
+     "tipo": "video",
+     "jornada": "consultor",
+     "titulo": "Projetos e obras",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "projetos",
+     "duracao_s": null,
+     "url": "#consultor/projetos",
+     "fontes": [
+      "guia:videos/roteiros/consultor-09-projetos.json"
+     ],
+     "id": "projetos:regras",
+     "tipo": "regra",
+     "jornada": "consultor",
+     "titulo": "Regras de negócio",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "projetos",
+     "duracao_s": null,
+     "url": null,
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md",
+      "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/12_Manual_Projetos_e_Tarefas_Timbrado.docx"
+     ],
+     "id": "projetos:manual-consultor",
+     "tipo": "manual",
+     "jornada": "consultor",
+     "titulo": "Manual do consultor",
+     "status": "em-preparacao"
+    }
+   ]
+  },
+  {
+   "id": "expedicao",
+   "ordem": 11,
+   "titulo": "Expedição",
+   "cor": "#0277bd",
+   "icone": "expedicao",
+   "fontes": [
+    "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
+    "guia:db/migrations/002_modulos_iniciais.sql#expedicao",
+    "guia:scripts/dados-checklists-estagiarios.mjs#expedicao",
+    "guia:scripts/dados-checklists-implantacao.mjs#implantacao-expedicao"
+   ],
+   "subtitulo": "Liberação, carga, checkpoints, rota e entrega.",
+   "em_preparacao": false,
+   "materiais": [
+    {
+     "modulo": "expedicao",
+     "duracao_s": null,
+     "url": null,
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md"
+     ],
+     "id": "expedicao:video-inicial",
+     "tipo": "video",
+     "jornada": "inicial",
+     "titulo": "Vídeo introdutório",
+     "status": "em-preparacao"
+    },
+    {
+     "modulo": "expedicao",
+     "duracao_s": null,
+     "url": null,
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md",
+      "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/09_Manual_Expedicao_Timbrado.docx"
+     ],
+     "id": "expedicao:manual-inicial",
+     "tipo": "manual",
+     "jornada": "inicial",
+     "titulo": "Manual visual resumido",
+     "status": "em-preparacao"
+    },
+    {
+     "modulo": "expedicao",
+     "duracao_s": null,
+     "url": "/checklists/estagiarios/11-expedicao.html",
+     "fontes": [
+      "guia:scripts/dados-checklists-estagiarios.mjs#expedicao"
+     ],
+     "id": "expedicao:checklist-inicial",
+     "tipo": "checklist",
+     "jornada": "inicial",
+     "titulo": "Expedição e entregas",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "expedicao",
+     "duracao_s": null,
+     "url": null,
+     "fontes": [
+      "guia:videos/roteiros/consultor-06-expedicao.json"
+     ],
+     "id": "expedicao:telas",
+     "tipo": "tela",
+     "jornada": "inicial",
+     "titulo": "Principais telas",
+     "status": "em-preparacao"
+    },
+    {
+     "modulo": "expedicao",
+     "duracao_s": null,
+     "url": "/checklists/consultores/implantacao-13-expedicao.html",
+     "fontes": [
+      "guia:scripts/dados-checklists-implantacao.mjs#implantacao-expedicao"
+     ],
+     "id": "expedicao:checklist-implantacao",
+     "tipo": "checklist",
+     "jornada": "consultor",
+     "titulo": "Implantação de Expedição: roteiro prático com o cliente",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "expedicao",
+     "duracao_s": 161,
+     "url": "/videos/consultor-06-expedicao.mp4",
+     "fontes": [
+      "guia:public/videos/manifest.json",
+      "guia:videos/roteiros/consultor-06-expedicao.json"
+     ],
+     "id": "expedicao:video-consultor",
+     "tipo": "video",
+     "jornada": "consultor",
+     "titulo": "Expedição: da carga à entrega",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "expedicao",
+     "duracao_s": null,
+     "url": "#consultor/expedicao",
+     "fontes": [
+      "harness:conhecimento/produto/regras-negocio/regra-vendas-liberar-para-expedicao-so-em-pedido-faturado.md",
+      "guia:videos/roteiros/consultor-06-expedicao.json"
+     ],
+     "id": "expedicao:regras",
+     "tipo": "regra",
+     "jornada": "consultor",
+     "titulo": "Regras de negócio",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "expedicao",
+     "duracao_s": null,
+     "url": null,
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md",
+      "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/09_Manual_Expedicao_Timbrado.docx"
+     ],
+     "id": "expedicao:manual-consultor",
+     "tipo": "manual",
+     "jornada": "consultor",
+     "titulo": "Manual do consultor",
+     "status": "em-preparacao"
+    }
+   ]
+  },
+  {
+   "id": "faturamento",
+   "ordem": 12,
+   "titulo": "Faturamento",
+   "cor": "#f57f17",
+   "icone": "faturamento",
+   "fontes": [
+    "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
+    "guia:db/migrations/002_modulos_iniciais.sql#faturamento",
+    "guia:scripts/dados-checklists-estagiarios.mjs#faturamento",
+    "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento"
+   ],
+   "subtitulo": "Notas fiscais NF-e/NFS-e, status e cuidados.",
+   "em_preparacao": false,
+   "materiais": [
+    {
+     "modulo": "faturamento",
+     "duracao_s": 198,
+     "url": "/videos/consultor-07-faturamento.mp4",
+     "fontes": [
+      "guia:public/videos/manifest.json",
+      "guia:videos/roteiros/consultor-07-faturamento.json"
+     ],
+     "id": "faturamento:video-inicial",
+     "tipo": "video",
+     "jornada": "inicial",
+     "titulo": "Faturamento: do pedido à nota finalizada",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "faturamento",
+     "duracao_s": null,
+     "url": null,
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md",
+      "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/08_Manual_Faturamento_e_Fiscal_Timbrado.docx"
+     ],
+     "id": "faturamento:manual-inicial",
+     "tipo": "manual",
+     "jornada": "inicial",
+     "titulo": "Manual visual resumido",
+     "status": "em-preparacao"
+    },
+    {
+     "modulo": "faturamento",
+     "duracao_s": null,
+     "url": "/checklists/estagiarios/12-faturamento-fiscal.html",
+     "fontes": [
+      "guia:scripts/dados-checklists-estagiarios.mjs#faturamento"
+     ],
+     "id": "faturamento:checklist-inicial",
+     "tipo": "checklist",
+     "jornada": "inicial",
+     "titulo": "Faturamento e Fiscal (consulta)",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "faturamento",
+     "duracao_s": null,
+     "url": "/checklists/estagiarios/fluxo-principal-faturamento.html",
+     "fontes": [
+      "guia:scripts/dados-fluxos-estagiarios.mjs#fluxo-faturamento-estagiario"
+     ],
+     "id": "faturamento:fluxo-principal",
+     "tipo": "fluxo",
+     "jornada": "inicial",
+     "titulo": "Fluxo principal de Faturamento: do pedido à nota finalizada",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "faturamento",
+     "duracao_s": null,
+     "url": "#inicial/faturamento",
+     "fontes": [
+      "harness:conhecimento/glossario/telas.yaml#faturamento.notas-fiscais",
+      "harness:conhecimento/glossario/telas.yaml#faturamento.nova-nfe",
+      "guia:videos/roteiros/consultor-07-faturamento.json"
+     ],
+     "id": "faturamento:telas",
+     "tipo": "tela",
+     "jornada": "inicial",
+     "titulo": "Principais telas",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "faturamento",
+     "duracao_s": null,
+     "url": "/checklists/consultores/implantacao-05-faturamento.html",
+     "fontes": [
+      "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento"
+     ],
+     "id": "faturamento:checklist-implantacao",
+     "tipo": "checklist",
+     "jornada": "consultor",
+     "titulo": "Implantação de Faturamento: roteiro prático com o cliente",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "faturamento",
+     "duracao_s": 198,
+     "url": "/videos/consultor-07-faturamento.mp4",
+     "fontes": [
+      "guia:public/videos/manifest.json",
+      "guia:videos/roteiros/consultor-07-faturamento.json"
+     ],
+     "id": "faturamento:video-consultor",
+     "tipo": "video",
+     "jornada": "consultor",
+     "titulo": "Faturamento: do pedido à nota finalizada",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "faturamento",
+     "duracao_s": 230,
+     "url": "/videos/compra-em-nome-do-cliente.mp4",
+     "fontes": [
+      "guia:public/videos/manifest.json",
+      "guia:videos/roteiros/compra-em-nome-do-cliente.json"
+     ],
+     "id": "faturamento:video-consultor-2",
+     "tipo": "video",
+     "jornada": "consultor",
+     "titulo": "Compra em nome do cliente: Faturamento em Nível e Contrato de Fornecimento",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "faturamento",
+     "duracao_s": null,
+     "url": "#consultor/faturamento",
+     "fontes": [
+      "harness:conhecimento/produto/regras-negocio/regra-estoque-almoxarifado-central-ativo-e-pre-requisito.md",
+      "harness:conhecimento/produto/regras-negocio/regra-faturamento-faturar-abre-nova-nfe-ligada-ao-pedido.md",
+      "harness:conhecimento/produto/regras-negocio/regra-faturamento-finalizar-nf-gera-os-titulos.md",
+      "harness:conhecimento/produto/regras-negocio/regra-faturamento-finalizar-nf-requisitos.md",
+      "harness:conhecimento/produto/regras-negocio/regra-faturamento-lista-de-notas-filtro-padrao-e-menu.md",
+      "harness:conhecimento/produto/regras-negocio/regra-vendas-pedido-fica-faturado-ao-salvar-a-nota.md",
+      "guia:videos/roteiros/consultor-07-faturamento.json",
+      "guia:videos/roteiros/compra-em-nome-do-cliente.json"
+     ],
+     "id": "faturamento:regras",
+     "tipo": "regra",
+     "jornada": "consultor",
+     "titulo": "Regras de negócio",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "faturamento",
+     "duracao_s": null,
+     "url": null,
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md",
+      "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/08_Manual_Faturamento_e_Fiscal_Timbrado.docx"
+     ],
+     "id": "faturamento:manual-consultor",
+     "tipo": "manual",
+     "jornada": "consultor",
+     "titulo": "Manual do consultor",
+     "status": "em-preparacao"
+    }
+   ]
+  },
+  {
+   "id": "fiscal",
+   "ordem": 13,
+   "titulo": "Fiscal",
+   "cor": "#c62828",
+   "icone": "fiscal",
+   "fontes": [
+    "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
+    "guia:db/migrations/002_modulos_iniciais.sql#fiscal",
+    "guia:scripts/dados-checklists-estagiarios.mjs#faturamento",
+    "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+   ],
+   "subtitulo": "Notas fiscais NF-e/NFS-e, status e cuidados.",
+   "em_preparacao": false,
+   "materiais": [
+    {
+     "modulo": "fiscal",
+     "duracao_s": null,
+     "url": null,
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md"
+     ],
+     "id": "fiscal:video-inicial",
+     "tipo": "video",
+     "jornada": "inicial",
+     "titulo": "Vídeo introdutório",
+     "status": "em-preparacao"
+    },
+    {
+     "modulo": "fiscal",
+     "duracao_s": null,
+     "url": null,
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md",
+      "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/08_Manual_Faturamento_e_Fiscal_Timbrado.docx"
+     ],
+     "id": "fiscal:manual-inicial",
+     "tipo": "manual",
+     "jornada": "inicial",
+     "titulo": "Manual visual resumido",
+     "status": "em-preparacao"
+    },
+    {
+     "modulo": "fiscal",
+     "duracao_s": null,
+     "url": "/checklists/estagiarios/12-faturamento-fiscal.html",
+     "fontes": [
+      "guia:scripts/dados-checklists-estagiarios.mjs#faturamento"
+     ],
+     "id": "fiscal:checklist-inicial",
+     "tipo": "checklist",
+     "jornada": "inicial",
+     "titulo": "Faturamento e Fiscal (consulta)",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "fiscal",
+     "duracao_s": null,
+     "url": "/checklists/consultores/implantacao-06-fiscal.html",
+     "fontes": [
+      "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+     ],
+     "id": "fiscal:checklist-implantacao",
+     "tipo": "checklist",
+     "jornada": "consultor",
+     "titulo": "Implantação do Fiscal: roteiro prático com o cliente e o contador",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "fiscal",
+     "duracao_s": null,
+     "url": null,
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md"
+     ],
+     "id": "fiscal:video-consultor",
+     "tipo": "video",
+     "jornada": "consultor",
+     "titulo": "Vídeo avançado",
+     "status": "em-preparacao"
+    },
+    {
+     "modulo": "fiscal",
+     "duracao_s": null,
+     "url": null,
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md",
+      "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/08_Manual_Faturamento_e_Fiscal_Timbrado.docx"
+     ],
+     "id": "fiscal:manual-consultor",
+     "tipo": "manual",
+     "jornada": "consultor",
+     "titulo": "Manual do consultor",
+     "status": "em-preparacao"
+    }
+   ]
+  },
+  {
+   "id": "financeiro",
+   "ordem": 14,
+   "titulo": "Financeiro",
+   "cor": "#2e7d32",
+   "icone": "financeiro",
+   "fontes": [
+    "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
+    "guia:db/migrations/002_modulos_iniciais.sql#financeiro",
+    "guia:scripts/dados-checklists-estagiarios.mjs#financeiro",
+    "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+   ],
+   "subtitulo": "Contas a receber e a pagar, fluxo de caixa e DRE.",
+   "em_preparacao": false,
+   "materiais": [
+    {
+     "modulo": "financeiro",
+     "duracao_s": 184,
+     "url": "/videos/consultor-08-financeiro.mp4",
+     "fontes": [
+      "guia:public/videos/manifest.json",
+      "guia:videos/roteiros/consultor-08-financeiro.json"
+     ],
+     "id": "financeiro:video-inicial",
+     "tipo": "video",
+     "jornada": "inicial",
+     "titulo": "Financeiro: do título ao fluxo de caixa",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "financeiro",
+     "duracao_s": null,
+     "url": null,
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md",
+      "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/10_Manual_Financeiro_Timbrado.docx"
+     ],
+     "id": "financeiro:manual-inicial",
+     "tipo": "manual",
+     "jornada": "inicial",
+     "titulo": "Manual visual resumido",
+     "status": "em-preparacao"
+    },
+    {
+     "modulo": "financeiro",
+     "duracao_s": null,
+     "url": "/checklists/estagiarios/13-financeiro.html",
+     "fontes": [
+      "guia:scripts/dados-checklists-estagiarios.mjs#financeiro"
+     ],
+     "id": "financeiro:checklist-inicial",
+     "tipo": "checklist",
+     "jornada": "inicial",
+     "titulo": "Financeiro (consulta)",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "financeiro",
+     "duracao_s": null,
+     "url": "/checklists/estagiarios/fluxo-principal-financeiro.html",
+     "fontes": [
+      "guia:scripts/dados-fluxos-estagiarios.mjs#fluxo-financeiro-estagiario"
+     ],
+     "id": "financeiro:fluxo-principal",
+     "tipo": "fluxo",
+     "jornada": "inicial",
+     "titulo": "Fluxo principal do Financeiro: do título ao fluxo de caixa",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "financeiro",
+     "duracao_s": null,
+     "url": "#inicial/financeiro",
+     "fontes": [
+      "harness:conhecimento/glossario/telas.yaml#financeiro.contas-a-receber",
+      "harness:conhecimento/glossario/telas.yaml#financeiro.contas-a-pagar",
+      "guia:videos/roteiros/consultor-08-financeiro.json"
+     ],
+     "id": "financeiro:telas",
+     "tipo": "tela",
+     "jornada": "inicial",
+     "titulo": "Principais telas",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "financeiro",
+     "duracao_s": null,
+     "url": "/checklists/consultores/implantacao-07-financeiro.html",
+     "fontes": [
+      "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+     ],
+     "id": "financeiro:checklist-implantacao",
+     "tipo": "checklist",
+     "jornada": "consultor",
+     "titulo": "Implantação do Financeiro: roteiro prático com o cliente",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "financeiro",
+     "duracao_s": 184,
+     "url": "/videos/consultor-08-financeiro.mp4",
+     "fontes": [
+      "guia:public/videos/manifest.json",
+      "guia:videos/roteiros/consultor-08-financeiro.json"
+     ],
+     "id": "financeiro:video-consultor",
+     "tipo": "video",
+     "jornada": "consultor",
+     "titulo": "Financeiro: do título ao fluxo de caixa",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "financeiro",
+     "duracao_s": null,
+     "url": "#consultor/financeiro",
+     "fontes": [
+      "harness:conhecimento/produto/regras-negocio/regra-faturamento-finalizar-nf-gera-os-titulos.md",
+      "harness:conhecimento/produto/regras-negocio/regra-financeiro-baixa-atualiza-saldos-e-extrato.md",
+      "harness:conhecimento/produto/regras-negocio/regra-financeiro-baixa-parcial-cria-titulo-residual.md",
+      "harness:conhecimento/produto/regras-negocio/regra-financeiro-contas-a-receber-filtro-padrao-em-aberto.md",
+      "harness:conhecimento/produto/regras-negocio/regra-financeiro-estornar-baixa-restaura-o-titulo.md",
+      "harness:conhecimento/produto/regras-negocio/regra-financeiro-meio-de-pagamento-boleto-exige-conta-emissora.md",
+      "harness:conhecimento/produto/regras-negocio/regra-financeiro-titulo-manual-e-gerado-duplicam-a-receita.md",
+      "harness:conhecimento/produto/regras-negocio/regra-vendas-gerar-titulos-quando-esta-habilitado.md",
+      "guia:videos/roteiros/consultor-08-financeiro.json"
+     ],
+     "id": "financeiro:regras",
+     "tipo": "regra",
+     "jornada": "consultor",
+     "titulo": "Regras de negócio",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "financeiro",
+     "duracao_s": null,
+     "url": null,
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md",
+      "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/10_Manual_Financeiro_Timbrado.docx"
+     ],
+     "id": "financeiro:manual-consultor",
+     "tipo": "manual",
+     "jornada": "consultor",
+     "titulo": "Manual do consultor",
+     "status": "em-preparacao"
+    }
+   ]
+  },
+  {
+   "id": "tarefas",
+   "ordem": 15,
+   "titulo": "Tarefas",
+   "cor": "#00897b",
+   "icone": "tarefas",
+   "fontes": [
+    "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
+    "guia:db/migrations/002_modulos_iniciais.sql#tarefas",
+    "guia:scripts/dados-checklists-estagiarios.mjs#tarefas",
+    "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas"
+   ],
+   "subtitulo": "Organizar e acompanhar atividades da equipe.",
+   "em_preparacao": false,
+   "materiais": [
+    {
+     "modulo": "tarefas",
+     "duracao_s": null,
+     "url": null,
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md"
+     ],
+     "id": "tarefas:video-inicial",
+     "tipo": "video",
+     "jornada": "inicial",
+     "titulo": "Vídeo introdutório",
+     "status": "em-preparacao"
+    },
+    {
+     "modulo": "tarefas",
+     "duracao_s": null,
+     "url": null,
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md",
+      "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/12_Manual_Projetos_e_Tarefas_Timbrado.docx"
+     ],
+     "id": "tarefas:manual-inicial",
+     "tipo": "manual",
+     "jornada": "inicial",
+     "titulo": "Manual visual resumido",
+     "status": "em-preparacao"
+    },
+    {
+     "modulo": "tarefas",
+     "duracao_s": null,
+     "url": "/checklists/estagiarios/14-tarefas.html",
+     "fontes": [
+      "guia:scripts/dados-checklists-estagiarios.mjs#tarefas"
+     ],
+     "id": "tarefas:checklist-inicial",
+     "tipo": "checklist",
+     "jornada": "inicial",
+     "titulo": "Tarefas: quadros e cartões",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "tarefas",
+     "duracao_s": null,
+     "url": "#inicial/tarefas",
+     "fontes": [
+      "harness:conhecimento/glossario/telas.yaml#tarefas.quadros",
+      "guia:videos/roteiros/consultor-10-tarefas.json"
+     ],
+     "id": "tarefas:telas",
+     "tipo": "tela",
+     "jornada": "inicial",
+     "titulo": "Principais telas",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "tarefas",
+     "duracao_s": null,
+     "url": "/checklists/consultores/implantacao-15-tarefas.html",
+     "fontes": [
+      "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas"
+     ],
+     "id": "tarefas:checklist-implantacao",
+     "tipo": "checklist",
+     "jornada": "consultor",
+     "titulo": "Implantação de Tarefas: roteiro prático com o cliente",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "tarefas",
+     "duracao_s": 158,
+     "url": "/videos/consultor-10-tarefas.mp4",
+     "fontes": [
+      "guia:public/videos/manifest.json",
+      "guia:videos/roteiros/consultor-10-tarefas.json"
+     ],
+     "id": "tarefas:video-consultor",
+     "tipo": "video",
+     "jornada": "consultor",
+     "titulo": "Tarefas",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "tarefas",
+     "duracao_s": null,
+     "url": "#consultor/tarefas",
+     "fontes": [
+      "harness:conhecimento/produto/regras-negocio/regra-tarefas-cartao-so-aparece-em-minhas-tarefas-com-responsavel.md",
+      "guia:videos/roteiros/consultor-10-tarefas.json"
+     ],
+     "id": "tarefas:regras",
+     "tipo": "regra",
+     "jornada": "consultor",
+     "titulo": "Regras de negócio",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "tarefas",
+     "duracao_s": null,
+     "url": null,
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md",
+      "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/12_Manual_Projetos_e_Tarefas_Timbrado.docx"
+     ],
+     "id": "tarefas:manual-consultor",
+     "tipo": "manual",
+     "jornada": "consultor",
+     "titulo": "Manual do consultor",
+     "status": "em-preparacao"
+    }
+   ]
+  },
+  {
+   "id": "relatorios",
+   "ordem": 16,
+   "titulo": "Relatórios e Análises",
+   "cor": "#283593",
+   "icone": "relatorios",
+   "fontes": [
+    "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
+    "guia:db/migrations/002_modulos_iniciais.sql#relatorios"
+   ],
+   "subtitulo": null,
+   "em_preparacao": true,
+   "materiais": [
+    {
+     "modulo": "relatorios",
+     "duracao_s": null,
+     "url": null,
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md"
+     ],
+     "id": "relatorios:video-inicial",
+     "tipo": "video",
+     "jornada": "inicial",
+     "titulo": "Vídeo introdutório",
+     "status": "em-preparacao"
+    },
+    {
+     "modulo": "relatorios",
+     "duracao_s": null,
+     "url": null,
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md"
+     ],
+     "id": "relatorios:manual-inicial",
+     "tipo": "manual",
+     "jornada": "inicial",
+     "titulo": "Manual visual resumido",
+     "status": "em-preparacao"
+    },
+    {
+     "modulo": "relatorios",
+     "duracao_s": null,
+     "url": null,
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md"
+     ],
+     "id": "relatorios:video-consultor",
+     "tipo": "video",
+     "jornada": "consultor",
+     "titulo": "Vídeo avançado",
+     "status": "em-preparacao"
+    },
+    {
+     "modulo": "relatorios",
+     "duracao_s": null,
+     "url": null,
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md"
+     ],
+     "id": "relatorios:manual-consultor",
+     "tipo": "manual",
+     "jornada": "consultor",
+     "titulo": "Manual do consultor",
+     "status": "em-preparacao"
+    }
+   ]
+  },
+  {
+   "id": "alumina",
+   "ordem": 17,
+   "titulo": "Alumina — IA",
+   "cor": "#6a1b9a",
+   "icone": "alumina",
+   "fontes": [
+    "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
+    "guia:db/migrations/002_modulos_iniciais.sql#alumina"
+   ],
+   "subtitulo": null,
+   "em_preparacao": true,
+   "materiais": [
+    {
+     "modulo": "alumina",
+     "duracao_s": null,
+     "url": null,
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md"
+     ],
+     "id": "alumina:video-inicial",
+     "tipo": "video",
+     "jornada": "inicial",
+     "titulo": "Vídeo introdutório",
+     "status": "em-preparacao"
+    },
+    {
+     "modulo": "alumina",
+     "duracao_s": null,
+     "url": null,
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md"
+     ],
+     "id": "alumina:manual-inicial",
+     "tipo": "manual",
+     "jornada": "inicial",
+     "titulo": "Manual visual resumido",
+     "status": "em-preparacao"
+    },
+    {
+     "modulo": "alumina",
+     "duracao_s": null,
+     "url": null,
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md"
+     ],
+     "id": "alumina:video-consultor",
+     "tipo": "video",
+     "jornada": "consultor",
+     "titulo": "Vídeo avançado",
+     "status": "em-preparacao"
+    },
+    {
+     "modulo": "alumina",
+     "duracao_s": null,
+     "url": null,
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md"
+     ],
+     "id": "alumina:manual-consultor",
+     "tipo": "manual",
+     "jornada": "consultor",
+     "titulo": "Manual do consultor",
+     "status": "em-preparacao"
+    }
+   ]
+  },
+  {
+   "id": "fluxo-completo",
+   "ordem": 18,
+   "titulo": "Visão do fluxo completo",
+   "cor": null,
+   "icone": null,
+   "fontes": [
+    "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
+    "guia:scripts/dados-checklists-estagiarios.mjs#fluxo"
+   ],
+   "subtitulo": "Como um pedido passa por todos os módulos.",
+   "em_preparacao": false,
+   "materiais": [
+    {
+     "modulo": "fluxo-completo",
+     "duracao_s": null,
+     "url": null,
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md"
+     ],
+     "id": "fluxo-completo:video-inicial",
+     "tipo": "video",
+     "jornada": "inicial",
+     "titulo": "Vídeo introdutório",
+     "status": "em-preparacao"
+    },
+    {
+     "modulo": "fluxo-completo",
+     "duracao_s": null,
+     "url": null,
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md"
+     ],
+     "id": "fluxo-completo:manual-inicial",
+     "tipo": "manual",
+     "jornada": "inicial",
+     "titulo": "Manual visual resumido",
+     "status": "em-preparacao"
+    },
+    {
+     "modulo": "fluxo-completo",
+     "duracao_s": null,
+     "url": "/checklists/estagiarios/15-visao-fluxo-completo.html",
+     "fontes": [
+      "guia:scripts/dados-checklists-estagiarios.mjs#fluxo"
+     ],
+     "id": "fluxo-completo:checklist-inicial",
+     "tipo": "checklist",
+     "jornada": "inicial",
+     "titulo": "Visão do fluxo completo",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "fluxo-completo",
+     "duracao_s": null,
+     "url": null,
+     "fontes": [
+      "guia:videos/roteiros/consultor-fluxo-completo.json"
+     ],
+     "id": "fluxo-completo:telas",
+     "tipo": "tela",
+     "jornada": "inicial",
+     "titulo": "Principais telas",
+     "status": "em-preparacao"
+    },
+    {
+     "modulo": "fluxo-completo",
+     "duracao_s": 157,
+     "url": "/videos/consultor-fluxo-completo.mp4",
+     "fontes": [
+      "guia:public/videos/manifest.json",
+      "guia:videos/roteiros/consultor-fluxo-completo.json"
+     ],
+     "id": "fluxo-completo:video-consultor",
+     "tipo": "video",
+     "jornada": "consultor",
+     "titulo": "Do pedido à gestão",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "fluxo-completo",
+     "duracao_s": null,
+     "url": "#consultor/fluxo-completo",
+     "fontes": [
+      "guia:videos/roteiros/consultor-fluxo-completo.json"
+     ],
+     "id": "fluxo-completo:regras",
+     "tipo": "regra",
+     "jornada": "consultor",
+     "titulo": "Regras de negócio",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "fluxo-completo",
+     "duracao_s": null,
+     "url": null,
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md"
+     ],
+     "id": "fluxo-completo:manual-consultor",
+     "tipo": "manual",
+     "jornada": "consultor",
+     "titulo": "Manual do consultor",
+     "status": "em-preparacao"
+    }
+   ]
+  }
+ ],
+ "caminhos": {
+  "/checklists/estagiarios/00-onboarding-estagiario.html": [
+   {
+    "modulo": "primeiros-passos",
+    "tipo": "checklist"
+   }
+  ],
+  "/checklists/estagiarios/01-primeiros-passos-navegacao.html": [
+   {
+    "modulo": "primeiros-passos",
+    "tipo": "checklist"
+   }
+  ],
+  "/checklists/estagiarios/02-cadastros-basicos.html": [
+   {
+    "modulo": "fundacao",
+    "tipo": "checklist"
+   }
+  ],
+  "/checklists/consultores/implantacao-01-fundacao.html": [
+   {
+    "modulo": "fundacao",
+    "tipo": "checklist"
+   }
+  ],
+  "/checklists/estagiarios/03-crm-leads-oportunidades.html": [
+   {
+    "modulo": "crm",
+    "tipo": "checklist"
+   }
+  ],
+  "/checklists/consultores/implantacao-02-crm.html": [
+   {
+    "modulo": "crm",
+    "tipo": "checklist"
+   }
+  ],
+  "/videos/consultor-03-comercial.mp4": [
+   {
+    "modulo": "crm",
+    "tipo": "video"
+   },
+   {
+    "modulo": "vendas",
+    "tipo": "video"
+   }
+  ],
+  "/videos/consultor-03-comercial.jpg": [
+   {
+    "modulo": "crm",
+    "tipo": "video"
+   },
+   {
+    "modulo": "vendas",
+    "tipo": "video"
+   }
+  ],
+  "/videos/consultor-03-comercial.vtt": [
+   {
+    "modulo": "crm",
+    "tipo": "video"
+   },
+   {
+    "modulo": "vendas",
+    "tipo": "video"
+   }
+  ],
+  "/checklists/consultores/implantacao-03-integracao-cem.html": [
+   {
+    "modulo": "cem",
+    "tipo": "checklist"
+   }
+  ],
+  "/videos/fluxo-1-vendas.mp4": [
+   {
+    "modulo": "vendas",
+    "tipo": "video"
+   }
+  ],
+  "/videos/fluxo-1-vendas.jpg": [
+   {
+    "modulo": "vendas",
+    "tipo": "video"
+   }
+  ],
+  "/videos/fluxo-1-vendas.vtt": [
+   {
+    "modulo": "vendas",
+    "tipo": "video"
+   }
+  ],
+  "/checklists/estagiarios/04-vendas-pedidos.html": [
+   {
+    "modulo": "vendas",
+    "tipo": "checklist"
+   }
+  ],
+  "/checklists/estagiarios/fluxo-principal-vendas.html": [
+   {
+    "modulo": "vendas",
+    "tipo": "fluxo"
+   }
+  ],
+  "/checklists/consultores/implantacao-04-vendas.html": [
+   {
+    "modulo": "vendas",
+    "tipo": "checklist"
+   }
+  ],
+  "/checklists/estagiarios/05-compras.html": [
+   {
+    "modulo": "compras",
+    "tipo": "checklist"
+   }
+  ],
+  "/checklists/consultores/implantacao-08-compras.html": [
+   {
+    "modulo": "compras",
+    "tipo": "checklist"
+   }
+  ],
+  "/videos/consultor-01-suprimentos.mp4": [
+   {
+    "modulo": "compras",
+    "tipo": "video"
+   },
+   {
+    "modulo": "recebimento",
+    "tipo": "video"
+   }
+  ],
+  "/videos/consultor-01-suprimentos.jpg": [
+   {
+    "modulo": "compras",
+    "tipo": "video"
+   },
+   {
+    "modulo": "recebimento",
+    "tipo": "video"
+   }
+  ],
+  "/videos/consultor-01-suprimentos.vtt": [
+   {
+    "modulo": "compras",
+    "tipo": "video"
+   },
+   {
+    "modulo": "recebimento",
+    "tipo": "video"
+   }
+  ],
+  "/checklists/estagiarios/06-recebimento.html": [
+   {
+    "modulo": "recebimento",
+    "tipo": "checklist"
+   }
+  ],
+  "/checklists/consultores/implantacao-09-recebimento.html": [
+   {
+    "modulo": "recebimento",
+    "tipo": "checklist"
+   }
+  ],
+  "/checklists/estagiarios/07-estoque.html": [
+   {
+    "modulo": "estoque",
+    "tipo": "checklist"
+   }
+  ],
+  "/checklists/consultores/implantacao-10-estoque.html": [
+   {
+    "modulo": "estoque",
+    "tipo": "checklist"
+   }
+  ],
+  "/videos/consultor-04-estoque.mp4": [
+   {
+    "modulo": "estoque",
+    "tipo": "video"
+   }
+  ],
+  "/videos/consultor-04-estoque.jpg": [
+   {
+    "modulo": "estoque",
+    "tipo": "video"
+   }
+  ],
+  "/videos/consultor-04-estoque.vtt": [
+   {
+    "modulo": "estoque",
+    "tipo": "video"
+   }
+  ],
+  "/checklists/estagiarios/08-producao.html": [
+   {
+    "modulo": "producao",
+    "tipo": "checklist"
+   }
+  ],
+  "/checklists/consultores/implantacao-11-producao.html": [
+   {
+    "modulo": "producao",
+    "tipo": "checklist"
+   }
+  ],
+  "/videos/consultor-05-producao.mp4": [
+   {
+    "modulo": "producao",
+    "tipo": "video"
+   }
+  ],
+  "/videos/consultor-05-producao.jpg": [
+   {
+    "modulo": "producao",
+    "tipo": "video"
+   }
+  ],
+  "/videos/consultor-05-producao.vtt": [
+   {
+    "modulo": "producao",
+    "tipo": "video"
+   }
+  ],
+  "/checklists/estagiarios/09-servicos-campo.html": [
+   {
+    "modulo": "servicos",
+    "tipo": "checklist"
+   }
+  ],
+  "/checklists/consultores/implantacao-12-servicos.html": [
+   {
+    "modulo": "servicos",
+    "tipo": "checklist"
+   }
+  ],
+  "/videos/consultor-02-servicos.mp4": [
+   {
+    "modulo": "servicos",
+    "tipo": "video"
+   }
+  ],
+  "/videos/consultor-02-servicos.jpg": [
+   {
+    "modulo": "servicos",
+    "tipo": "video"
+   }
+  ],
+  "/videos/consultor-02-servicos.vtt": [
+   {
+    "modulo": "servicos",
+    "tipo": "video"
+   }
+  ],
+  "/checklists/estagiarios/10-projetos-obras.html": [
+   {
+    "modulo": "projetos",
+    "tipo": "checklist"
+   }
+  ],
+  "/checklists/consultores/implantacao-14-projetos.html": [
+   {
+    "modulo": "projetos",
+    "tipo": "checklist"
+   }
+  ],
+  "/videos/consultor-09-projetos.mp4": [
+   {
+    "modulo": "projetos",
+    "tipo": "video"
+   }
+  ],
+  "/videos/consultor-09-projetos.jpg": [
+   {
+    "modulo": "projetos",
+    "tipo": "video"
+   }
+  ],
+  "/videos/consultor-09-projetos.vtt": [
+   {
+    "modulo": "projetos",
+    "tipo": "video"
+   }
+  ],
+  "/checklists/estagiarios/11-expedicao.html": [
+   {
+    "modulo": "expedicao",
+    "tipo": "checklist"
+   }
+  ],
+  "/checklists/consultores/implantacao-13-expedicao.html": [
+   {
+    "modulo": "expedicao",
+    "tipo": "checklist"
+   }
+  ],
+  "/videos/consultor-06-expedicao.mp4": [
+   {
+    "modulo": "expedicao",
+    "tipo": "video"
+   }
+  ],
+  "/videos/consultor-06-expedicao.jpg": [
+   {
+    "modulo": "expedicao",
+    "tipo": "video"
+   }
+  ],
+  "/videos/consultor-06-expedicao.vtt": [
+   {
+    "modulo": "expedicao",
+    "tipo": "video"
+   }
+  ],
+  "/videos/consultor-07-faturamento.mp4": [
+   {
+    "modulo": "faturamento",
+    "tipo": "video"
+   }
+  ],
+  "/videos/consultor-07-faturamento.jpg": [
+   {
+    "modulo": "faturamento",
+    "tipo": "video"
+   }
+  ],
+  "/videos/consultor-07-faturamento.vtt": [
+   {
+    "modulo": "faturamento",
+    "tipo": "video"
+   }
+  ],
+  "/checklists/estagiarios/12-faturamento-fiscal.html": [
+   {
+    "modulo": "faturamento",
+    "tipo": "checklist"
+   },
+   {
+    "modulo": "fiscal",
+    "tipo": "checklist"
+   }
+  ],
+  "/checklists/estagiarios/fluxo-principal-faturamento.html": [
+   {
+    "modulo": "faturamento",
+    "tipo": "fluxo"
+   }
+  ],
+  "/checklists/consultores/implantacao-05-faturamento.html": [
+   {
+    "modulo": "faturamento",
+    "tipo": "checklist"
+   }
+  ],
+  "/videos/compra-em-nome-do-cliente.mp4": [
+   {
+    "modulo": "faturamento",
+    "tipo": "video"
+   }
+  ],
+  "/videos/compra-em-nome-do-cliente.jpg": [
+   {
+    "modulo": "faturamento",
+    "tipo": "video"
+   }
+  ],
+  "/videos/compra-em-nome-do-cliente.vtt": [
+   {
+    "modulo": "faturamento",
+    "tipo": "video"
+   }
+  ],
+  "/checklists/consultores/implantacao-06-fiscal.html": [
+   {
+    "modulo": "fiscal",
+    "tipo": "checklist"
+   }
+  ],
+  "/videos/consultor-08-financeiro.mp4": [
+   {
+    "modulo": "financeiro",
+    "tipo": "video"
+   }
+  ],
+  "/videos/consultor-08-financeiro.jpg": [
+   {
+    "modulo": "financeiro",
+    "tipo": "video"
+   }
+  ],
+  "/videos/consultor-08-financeiro.vtt": [
+   {
+    "modulo": "financeiro",
+    "tipo": "video"
+   }
+  ],
+  "/checklists/estagiarios/13-financeiro.html": [
+   {
+    "modulo": "financeiro",
+    "tipo": "checklist"
+   }
+  ],
+  "/checklists/estagiarios/fluxo-principal-financeiro.html": [
+   {
+    "modulo": "financeiro",
+    "tipo": "fluxo"
+   }
+  ],
+  "/checklists/consultores/implantacao-07-financeiro.html": [
+   {
+    "modulo": "financeiro",
+    "tipo": "checklist"
+   }
+  ],
+  "/checklists/estagiarios/14-tarefas.html": [
+   {
+    "modulo": "tarefas",
+    "tipo": "checklist"
+   }
+  ],
+  "/checklists/consultores/implantacao-15-tarefas.html": [
+   {
+    "modulo": "tarefas",
+    "tipo": "checklist"
+   }
+  ],
+  "/videos/consultor-10-tarefas.mp4": [
+   {
+    "modulo": "tarefas",
+    "tipo": "video"
+   }
+  ],
+  "/videos/consultor-10-tarefas.jpg": [
+   {
+    "modulo": "tarefas",
+    "tipo": "video"
+   }
+  ],
+  "/videos/consultor-10-tarefas.vtt": [
+   {
+    "modulo": "tarefas",
+    "tipo": "video"
+   }
+  ],
+  "/checklists/estagiarios/15-visao-fluxo-completo.html": [
+   {
+    "modulo": "fluxo-completo",
+    "tipo": "checklist"
+   }
+  ],
+  "/videos/consultor-fluxo-completo.mp4": [
+   {
+    "modulo": "fluxo-completo",
+    "tipo": "video"
+   }
+  ],
+  "/videos/consultor-fluxo-completo.jpg": [
+   {
+    "modulo": "fluxo-completo",
+    "tipo": "video"
+   }
+  ],
+  "/videos/consultor-fluxo-completo.vtt": [
+   {
+    "modulo": "fluxo-completo",
+    "tipo": "video"
+   }
+  ]
+ },
+ "pendencias": [
+  "crm: 8 captura(s) de tela fora de public/telas (copiar de videos/public/telas — doc 03).",
+  "vendas: 8 captura(s) de tela fora de public/telas (copiar de videos/public/telas — doc 03).",
+  "compras: 6 captura(s) de tela fora de public/telas (copiar de videos/public/telas — doc 03).",
+  "recebimento: 6 captura(s) de tela fora de public/telas (copiar de videos/public/telas — doc 03).",
+  "estoque: 6 captura(s) de tela fora de public/telas (copiar de videos/public/telas — doc 03).",
+  "producao: 4 captura(s) de tela fora de public/telas (copiar de videos/public/telas — doc 03).",
+  "servicos: 4 captura(s) de tela fora de public/telas (copiar de videos/public/telas — doc 03).",
+  "projetos: 3 captura(s) de tela fora de public/telas (copiar de videos/public/telas — doc 03).",
+  "expedicao: 4 captura(s) de tela fora de public/telas (copiar de videos/public/telas — doc 03).",
+  "faturamento: 7 captura(s) de tela fora de public/telas (copiar de videos/public/telas — doc 03).",
+  "financeiro: 6 captura(s) de tela fora de public/telas (copiar de videos/public/telas — doc 03).",
+  "tarefas: 5 captura(s) de tela fora de public/telas (copiar de videos/public/telas — doc 03).",
+  "relatorios: em preparação por decisão do Lead (review v1, item 5); conteúdo semente guardado em \"retido\".",
+  "alumina: em preparação por decisão do Lead (review v1, item 5); conteúdo semente guardado em \"retido\".",
+  "fluxo-completo: 8 captura(s) de tela fora de public/telas (copiar de videos/public/telas — doc 03)."
+ ]
+}

@@ -6,7 +6,8 @@ import { MAPA_MODULOS } from '../../../lib/conteudo/mapa-modulos.js';
 export const VERSAO_FICTICIA = '2026-11-04';
 
 /** Três módulos reais do mapa (ids, ordem e títulos do doc 05), com conteúdo fictício:
-    vendas = completo · estoque = só consultor + passos de estagiário · relatorios = nada (em preparação). */
+    vendas = completo (com Markdown leve, placeholder <x> e um link inseguro, para o conversor de trechos)
+    estoque = só consultor + passos de estagiário · relatorios = em preparação por decisão, com semente guardada. */
 export const MAPA_FICTICIO = MAPA_MODULOS.filter((m) => ['vendas', 'estoque', 'relatorios'].includes(m.id));
 
 export function harnessFicticio() {
@@ -17,7 +18,7 @@ export function harnessFicticio() {
   });
   return {
     regras: [
-      regra('regra-exemplo-pedido-aprovado', 'Pedido aprovado não volta a rascunho (fictício)', ['vendas'], 'Exemplo fictício: depois de aprovado, o pedido só pode ser cancelado.', 'Abra **Vendas > Pedidos** e tente editar um pedido aprovado (fictício).'),
+      regra('regra-exemplo-pedido-aprovado', 'Pedido aprovado não volta a rascunho (fictício)', ['vendas'], 'Exemplo fictício: depois de aprovado, o pedido só pode ser cancelado.', 'Abra **Vendas > Pedidos**, pesquise "PV - <número>" e tente editar um pedido *aprovado* em `Vendas > Pedidos` e confira o campo `Situação` = `APROVADO` (fictício). Veja [o vídeo](/videos/fluxo-1-vendas.mp4) e [isto](javascript:alert(1)).'),
       regra('regra-exemplo-saldo-por-local', 'Saldo é controlado por local (fictício)', ['estoque'], 'Exemplo fictício: cada local de estoque tem saldo próprio.', null),
     ],
     funcional: [{ id: 'funcional-exemplo-vendas', titulo: 'Pedidos de venda (fictício)', modulos: ['vendas'], secoes: { Caminho: '`Vendas > Pedidos` (fictício)' }, fonte: 'harness:conhecimento/produto/funcional/funcional-exemplo-vendas.md' }],
@@ -95,7 +96,7 @@ export function guiaFicticio() {
     seed: {
       vendas: { nome: 'Vendas', cor: '#1976d2', icone: 'vendas', objetivo: 'Registrar pedidos de exemplo (fictício).', papel: 'Liga o CRM ao faturamento (fictício).', quando: 'Depois dos cadastros (fictício).', prerequisito: 'Clientes cadastrados (fictício).', fluxoDesc: 'Do orçamento ao pedido aprovado (fictício).', treinamento: 'Mostre um pedido completo (fictício).', fluxo: [{ texto: 'Orçamento' }, { texto: 'Pedido' }, { texto: 'Aprovação' }], checklist: [{ texto: 'Pedido de teste aprovado (fictício).' }] },
       estoque: { nome: 'Estoque', cor: '#455a64', icone: 'estoque', objetivo: 'Controlar saldos de exemplo (fictício).' },
-      relatorios: { nome: 'Relatórios', cor: '#283593', icone: 'relatorios' },
+      relatorios: { nome: 'Relatórios', cor: '#283593', icone: 'relatorios', objetivo: 'Conteúdo semente de relatórios (fictício): guardado, não exibido.', fluxoDesc: 'Relatórios de exemplo (fictício).' },
     },
     publicos: [
       '/checklists/consultores/implantacao-vendas.html',
