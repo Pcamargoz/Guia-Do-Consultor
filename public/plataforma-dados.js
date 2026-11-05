@@ -84,8 +84,7 @@
   /* ---------- Roteador de hash: #inicio · #inicial[/<modulo>] · #consultor[/<modulo>] · ferramentas ----------
      Único roteador da página (review v1 do Lead, item 6): guia-abas.js passa a ouvir "plataforma:rota".
      Hashes antigos continuam valendo (aliases). `secao` = âncora dentro da área (rolar até ela, sem trocar de área).
-     Nota: `#consultor/fundamentos` é aceito como segmento de módulo pelo roteador, mas `fundamentos` NÃO é id
-     do índice (ver proposta na entrega v3.4). */
+     Alias aprovado (Lead v3.4→v3.5): `#consultor/fundamentos` → `{ area: 'acervo', secao: 'metodo' }`. */
   const AREAS_COM_SECAO = ['acervo', 'pacotes', 'checklist', 'videos', 'apostila', 'admin'];
   const SECAO = /^[A-Za-z0-9_-]{1,80}$/;
   // Hash antigo → rota. Fontes: public/guia-abas.js (aba "guia" = guia antigo, que vira o Acervo — doc 03) e
@@ -124,6 +123,10 @@
     if (partes.length === 1) {
       const prefixo = ALIASES_PREFIXO.find(([re]) => re.test(brutas[0]));
       if (prefixo) return { area: prefixo[1], secao: brutas[0] };
+    }
+    // Lead: #consultor/fundamentos → acervo/método (não cria módulo "fundamentos" no índice).
+    if (partes[0] === 'consultor' && partes[1] === 'fundamentos') {
+      return { area: 'acervo', secao: 'metodo' };
     }
     const area = AREAS.includes(partes[0]) ? partes[0] : 'inicio';
     const rota = { area };

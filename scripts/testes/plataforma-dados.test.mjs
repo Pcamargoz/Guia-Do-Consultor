@@ -70,7 +70,7 @@ describe('window.Plataforma — roteador de hash', () => {
     const { Plataforma } = carregarPlataforma();
     const casos = {
       '': { area: 'inicio' }, '#inicio': { area: 'inicio' }, '#inicial': { area: 'inicial' }, '#inicial/vendas': { area: 'inicial', modulo: 'vendas' },
-      '#consultor/fundamentos': { area: 'consultor', modulo: 'fundamentos' }, '#pacotes': { area: 'pacotes' }, '#checklist': { area: 'checklist' },
+      '#consultor/fundamentos': { area: 'acervo', secao: 'metodo' }, '#pacotes': { area: 'pacotes' }, '#checklist': { area: 'checklist' },
       '#videos': { area: 'videos' }, '#apostila': { area: 'apostila' }, '#admin': { area: 'admin' }, '#acervo': { area: 'acervo' },
       '#desconhecida': { area: 'inicio' }, '#inicial/<script>': { area: 'inicial' }, '#pacotes/vendas': { area: 'pacotes', secao: 'vendas' }, '#videos/a/b': { area: 'videos', secao: 'a' }, '#inicio/x': { area: 'inicio' }, '#%E0%A4%A': { area: 'inicio' },
     };
@@ -94,6 +94,16 @@ describe('window.Plataforma — roteador de hash', () => {
     assert.deepEqual({ ...eventos.at(-1).detail }, { area: 'consultor', modulo: 'vendas' });
     Plataforma.irPara({ area: 'qualquer' });
     assert.equal(location.hash, '#inicio');
+  });
+});
+
+describe('window.Plataforma — alias #consultor/fundamentos (v3.5)', () => {
+  it('mapeia para acervo/metodo sem criar módulo fundamentos', () => {
+    const { Plataforma } = carregarPlataforma();
+    assert.deepEqual({ ...Plataforma.lerRota('#consultor/fundamentos') }, { area: 'acervo', secao: 'metodo' });
+    assert.deepEqual({ ...Plataforma.lerRota('#Consultor/Fundamentos') }, { area: 'acervo', secao: 'metodo' });
+    // outros módulos de consultor seguem iguais
+    assert.deepEqual({ ...Plataforma.lerRota('#consultor/estoque') }, { area: 'consultor', modulo: 'estoque' });
   });
 });
 

@@ -68,7 +68,7 @@ async function api(caminho, token, { method = 'GET', body } = {}) {
   });
   let dados = null;
   try { dados = await r.json(); } catch { /* ignore */ }
-  return { status: r.status, dados };
+  return { status: r.status, dados, headers: r.headers };
 }
 
 async function main() {
@@ -114,6 +114,10 @@ async function main() {
     const p = await get(PDF, tok.admin);
     conferir(a.status === 200, `2. admin GET /apostila = 200 (veio ${a.status})`);
     conferir(p.status === 200, `2. admin GET PDF = 200 (veio ${p.status})`);
+    const ccA = (a.headers.get('cache-control') || '').toLowerCase();
+    const ccP = (p.headers.get('cache-control') || '').toLowerCase();
+    conferir(ccA.includes('private') && ccA.includes('no-store'), `2b. /apostila Cache-Control private, no-store (veio "${ccA}")`);
+    conferir(ccP.includes('private') && ccP.includes('no-store'), `2b. PDF Cache-Control private, no-store (veio "${ccP}")`);
   }
 
   // 5 (antes do 3 para poder ocultar): PUT por consultor = 403; por admin = 200
@@ -150,6 +154,8 @@ async function main() {
   {
     const pac = await api('/api/pacotes', tok.estagiario);
     conferir(pac.status === 200, `área pacotes liberada p/ estagiário (GET /api/pacotes = ${pac.status})`);
+    const ccPac = (pac.headers.get('cache-control') || '').toLowerCase();
+    conferir(ccPac.includes('private') && ccPac.includes('no-store'), `API /api/pacotes Cache-Control private, no-store (veio "${ccPac}")`);
     const est = await api('/api/estudo?documento=apostila', tok.estagiario);
     conferir(est.status === 403, `área apostila oculta → GET /api/estudo = 403 (veio ${est.status})`);
     const duv = await api('/api/duvidas?escopo=minhas', tok.estagiario);

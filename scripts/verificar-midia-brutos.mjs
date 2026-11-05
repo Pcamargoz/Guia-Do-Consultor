@@ -8,8 +8,27 @@ import { fileURLToPath } from 'node:url';
 const EXT_MIDIA = /\.(mp4|png|jpe?g)$/i;
 const NOME_ROTEIRO = 'roteiro-telas.md';
 const NOME_MANIFESTO = 'manifesto.md';
-/** `<id>_bruto_vNN.mp4` — id em minúsculas/hífen, versão com pelo menos 2 dígitos. */
-export const NOME_MP4 = /^[a-z0-9_-]+_bruto_v\d{2,}\.mp4$/i;
+/** Escapa metacaracteres de regex (id do módulo no início do nome do mp4). */
+export function escaparRegex(s) {
+  return String(s).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+/**
+ * Padrão do bruto (v3.5): `^<id>_bruto(?:_[a-z0-9-]+)?_v\d{2,}\.mp4$`
+ * Ex.: crm_bruto_v01.mp4, crm_bruto_c03-c07_v01.mp4, financeiro_bruto_v01.mp4.
+ * O id é ancorado e escapado (xcrm-old_bruto_v01.mp4 na pasta crm falha).
+ */
+export function padraoNomeMp4(id) {
+  return new RegExp(`^${escaparRegex(id)}_bruto(?:_[a-z0-9-]+)?_v\\d{2,}\\.mp4$`, 'i');
+}
+
+export function nomeMp4Valido(id, nome) {
+  if (typeof id !== 'string' || !id || typeof nome !== 'string') return false;
+  return padraoNomeMp4(id).test(nome);
+}
+
+/** @deprecated use padraoNomeMp4(id) / nomeMp4Valido — mantido só para testes antigos que checam a forma genérica. */
+export const NOME_MP4 = /^[a-z0-9-]+_bruto(?:_[a-z0-9-]+)?_v\d{2,}\.mp4$/i;
 
 /** Citação resolve para dentro da pasta do módulo? (bloqueia ../ e absoluto). */
 export function citacaoDentroDoModulo(pastaModulo, citado) {
@@ -259,11 +278,9 @@ export function verificarMidiaBrutos(raiz) {
       pendencias.push(`módulo \`${id}\`: pasta midia/brutos/${id}/ sem .mp4`);
     } else {
       for (const m of mp4s) {
-        // Padrão *_bruto_vNN.mp4 (charset seguro); o id do módulo deve aparecer no nome
-        // (aceita crm_bruto_v01.mp4 e gi-crm_c03-c07_bruto_v01.mp4 do estúdio).
-        const okNome = NOME_MP4.test(m) && m.toLowerCase().includes(id.toLowerCase());
-        if (!okNome) {
-          erros.push(`midia/brutos/${id}/${m}: nome fora do padrão \`*_bruto_vNN.mp4\` com o id do módulo (ex.: ${id}_bruto_v01.mp4)`);
+        // v3.5: ^<id>_bruto(?:_[a-z0-9-]+)?_vNN.mp4 (id exato escapado)
+        if (!nomeMp4Valido(id, m)) {
+          erros.push(`midia/brutos/${id}/${m}: nome fora do padrão \`${id}_bruto[_trecho]_vNN.mp4\` (ex.: ${id}_bruto_v01.mp4 ou ${id}_bruto_c03-c07_v01.mp4)`);
         }
       }
     }

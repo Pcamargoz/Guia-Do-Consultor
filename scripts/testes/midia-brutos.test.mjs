@@ -13,6 +13,8 @@ import {
   extrairArquivosCitados,
   mapearColunasTempo,
   NOME_MP4,
+  nomeMp4Valido,
+  padraoNomeMp4,
   citacaoDentroDoModulo,
 } from '../verificar-midia-brutos.mjs';
 
@@ -147,17 +149,47 @@ describe('verificarMidiaBrutos — regras', () => {
     assert.ok(r.pendencias.some((p) => p.includes('sem .mp4')));
   });
 
-  it('v3.4: mp4 com nome fora de <id>_bruto_vNN.mp4 = erro', () => {
+  it('v3.4/v3.5: mp4 com nome fora de ^<id>_bruto[_trecho]_vNN.mp4 = erro', () => {
     const raiz = tmpRaiz();
     escreverModuloCompleto(raiz, 'crm', { mp4: ['gravação.mp4'] });
-    // reescreve roteiro sem citar o nome errado como arquivo existente ok — cita o errado
     writeFileSync(path.join(raiz, 'midia/brutos/crm/roteiro-telas.md'),
       '| Início–fim (s) | Tela |\n|---|---|\n| 0–10 | A |\n\n`gravação.mp4` e `p01.png`.\n');
     const r = verificarMidiaBrutos(raiz);
     assert.equal(r.ok, false);
     assert.ok(r.erros.some((e) => e.includes('grava') && e.includes('padrão')), r.erros.join('\n'));
-    assert.ok(NOME_MP4.test('crm_bruto_v01.mp4'));
-    assert.ok(!NOME_MP4.test('gravação.mp4'));
+    assert.ok(nomeMp4Valido('crm', 'crm_bruto_v01.mp4'));
+    assert.ok(!nomeMp4Valido('crm', 'gravação.mp4'));
+  });
+
+  it('v3.5: crm_bruto_c03-c07_v01 e crm_bruto_c04-c07_v01 passam; xcrm-old na pasta crm falha', () => {
+    assert.ok(nomeMp4Valido('crm', 'crm_bruto_c03-c07_v01.mp4'));
+    assert.ok(nomeMp4Valido('crm', 'crm_bruto_c04-c07_v01.mp4'));
+    assert.ok(nomeMp4Valido('crm', 'crm_bruto_v01.mp4'));
+    assert.equal(nomeMp4Valido('crm', 'xcrm-old_bruto_v01.mp4'), false);
+    assert.equal(nomeMp4Valido('crm', 'gi-crm_c03-c07_bruto_v01.mp4'), false);
+    assert.ok(padraoNomeMp4('crm').test('crm_bruto_c03-c07_v01.mp4'));
+
+    const raiz = tmpRaiz();
+    escreverModuloCompleto(raiz, 'crm', {
+      mp4: ['crm_bruto_c03-c07_v01.mp4', 'crm_bruto_c04-c07_v01.mp4'],
+      roteiro: [
+        '| Início–fim (s) | Tela |',
+        '|---|---|',
+        '| 0–10 | A |',
+        '| 10–20 | B |',
+        '',
+        '`crm_bruto_c03-c07_v01.mp4` `crm_bruto_c04-c07_v01.mp4` `p01.png`.',
+      ].join('\n'),
+    });
+    let r = verificarMidiaBrutos(raiz);
+    assert.equal(r.ok, true, r.erros.join('\n'));
+    assert.equal(r.modulos.crm.status, 'ok');
+
+    // prefixo errado (xcrm-old) dentro de midia/brutos/crm/
+    writeFileSync(path.join(raiz, 'midia/brutos/crm/xcrm-old_bruto_v01.mp4'), '');
+    r = verificarMidiaBrutos(raiz);
+    assert.equal(r.ok, false);
+    assert.ok(r.erros.some((e) => e.includes('xcrm-old_bruto_v01.mp4') && e.includes('padrão')), r.erros.join('\n'));
   });
 
   it('v3.4: citação com ../ ou absoluto fora da pasta = erro', () => {
@@ -272,26 +304,29 @@ function materializarRoteiroReal(raiz, id, srcRoteiro) {
 }
 
 describe('roteiros reais do estúdio (CRM e Vendas)', () => {
-  it('parser + validador aceitam gi-crm e gi-vendas com arquivos fictícios', () => {
+  it('parser lê tempos/arquivos dos markdowns do estúdio', () => {
     const estudio = '/workspace/estudio-audiovisual/02-gravacoes-brutas';
-    const raiz = tmpRaiz();
-    mkdirSync(path.join(raiz, 'midia/brutos'), { recursive: true });
-    writeFileSync(path.join(raiz, 'midia/brutos/README.md'), '# brutos\n');
+    const crmMd = readFileSync(path.join(estudio, 'gi-crm_geral_roteiro-telas_v01.md'), 'utf8');
+    const vendasMd = readFileSync(path.join(estudio, 'gi-vendas_geral_roteiro-telas_v01.md'), 'utf8');
+    const crmArq = extrairArquivosCitados(crmMd);
+    const crmTempos = extrairTemposDoRoteiro(crmMd);
+    const vendasTempos = extrairTemposDoRoteiro(vendasMd);
+    assert.ok(crmArq.some((a) => a.endsWith('.mp4')), 'CRM deve citar mp4');
+    assert.ok(crmArq.some((a) => a.endsWith('.png')), 'CRM deve citar png');
+    assert.ok(crmTempos.length >= 5, `CRM trechos: ${crmTempos.length}`);
+    assert.ok(vendasTempos.length >= 5, `Vendas trechos: ${vendasTempos.length}`);
+    // Nomes do estúdio (gi-crm_…) NÃO passam no padrão v3.5 — a cópia em midia/brutos/ é que conta.
+    assert.equal(nomeMp4Valido('crm', 'gi-crm_c03-c07_bruto_v01.mp4'), false);
+  });
 
-    const crm = materializarRoteiroReal(raiz, 'crm', path.join(estudio, 'gi-crm_geral_roteiro-telas_v01.md'));
-    const vendas = materializarRoteiroReal(raiz, 'vendas', path.join(estudio, 'gi-vendas_geral_roteiro-telas_v01.md'));
-
-    assert.ok(crm.arquivos.some((a) => a.endsWith('.mp4')), 'CRM deve citar mp4');
-    assert.ok(crm.arquivos.some((a) => a.endsWith('.png')), 'CRM deve citar png');
-    assert.ok(crm.tempos.length >= 5, `CRM trechos: ${crm.tempos.length}`);
-    assert.ok(vendas.tempos.length >= 5, `Vendas trechos: ${vendas.tempos.length}`);
-
-    const r = verificarMidiaBrutos(raiz);
-    const errosCrmVendas = r.erros.filter((e) => e.includes('/crm/') || e.includes('/vendas/'));
-    assert.deepEqual(errosCrmVendas, [], errosCrmVendas.join('\n'));
-    assert.equal(r.modulos.crm.status, 'ok');
-    assert.equal(r.modulos.vendas.status, 'ok');
-    assert.ok(r.modulos.crm.trechos >= 5);
-    assert.ok(r.modulos.vendas.trechos >= 5);
+  it('v3.5: midia/brutos real (CRM, Vendas, Financeiro) = 0 erros de nome/estrutura', () => {
+    const r = verificarMidiaBrutos(REPO);
+    const ids = ['crm', 'vendas', 'financeiro'];
+    const erros = r.erros.filter((e) => ids.some((id) => e.includes(`/${id}/`) || e.includes(`/${id}:`)));
+    assert.deepEqual(erros, [], erros.join('\n'));
+    for (const id of ids) {
+      assert.ok(r.modulos[id], `módulo ${id} ausente`);
+      assert.equal(r.modulos[id].status, 'ok', `${id}: ${JSON.stringify(r.modulos[id])}`);
+    }
   });
 });
