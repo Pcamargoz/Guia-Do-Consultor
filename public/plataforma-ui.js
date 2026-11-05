@@ -2,12 +2,17 @@
    Faktory Flow — Plataforma de conhecimento: componentes de UI (FE-20261104-01)
    Segue contrato-componentes.md v1 + contrato-componentes-v2.md (Lead, 2026-11-04).
    Componentes "burros" do §4, expostos em window.PlataformaUI. Não buscam dados:
-   recebem o que window.Plataforma (plataforma-dados.js) carrega e emitem
-   `plataforma:abrir` {modulo, jornada}; se ninguém cancelar o evento, chamam
-   Plataforma.irPara({area, modulo}) — o roteador continua único (v2 §6).
+   recebem o que window.Plataforma (plataforma-dados.js) carrega.
+   Fluxo de navegação (decisão do Lead, UI v1): o componente emite `plataforma:abrir`
+   {modulo, jornada} (cancelável) → quem ouve é a camada de dados, que chama
+   Plataforma.irPara({area, modulo}) → irPara emite `plataforma:rota`, que o guia-abas.js
+   ouve. Fallback: se ninguém der preventDefault em `plataforma:abrir`, este arquivo chama
+   Plataforma.irPara direto — o roteador continua único (v2 §6).
    Segurança (v2 §4): nenhum dado passa por innerHTML. Todo texto entra por
-   textContent/createElement; texto inline [{t, marca, href}] vira nós; href só
-   relativo ou https:. Ícones são SVG estáticos deste arquivo, montados por createElementNS.
+   textContent/createElement; texto inline [{t, marca, href}] vira nós (marcas negrito,
+   italico, link, tela, codigo); string vira texto literal (sem parser de `**`).
+   href: só relativo começando com "/", "./" ou "#" (nunca "//") ou https:.
+   Ícones: fonte única do mapa em PlataformaUI.icones (SVG estáticos deste arquivo).
    Sem bibliotecas, sem script inline, sem CDN (CSP script-src 'self').
    Motion: CSS (tokens --pl-spring-*) + Web Animations API + View Transitions + IntersectionObserver.
    ========================================================================== */
@@ -51,16 +56,18 @@
   }
 
   /* ---------- URLs (v2 §4: só relativo ou https:) ---------- */
-  /** Devolve a URL se for segura (relativa sem esquema, ou https:), senão null. */
+  /** Regra do Lead (UI v1): aceita relativo começando com "/", "./" ou "#" (mas nunca "//")
+   *  ou https:. Recusa todo o resto: javascript:, data:, http:, mailto:, "//host", "../x", "x.html", "?x". */
   function urlSegura(v) {
     if (typeof v !== 'string') return null;
     const u = v.trim();
     if (!u || /[\u0000-\u001f\u007f\s\\]/.test(u)) return null; // controle, espaços e barra invertida
     if (u.startsWith('//')) return null;                          // relativo a protocolo = outro domínio
-    if (/^[a-z][a-z0-9+.-]*:/i.test(u)) {                         // tem esquema: só https
+    if (u.startsWith('/') || u.startsWith('./') || u.startsWith('#')) return u;
+    if (/^https:\/\/[^/]/i.test(u)) {
       try { return new URL(u).protocol === 'https:' ? u : null; } catch { return null; }
     }
-    return u; // relativo: /x, ./x, ../x, x.html, #x, ?x
+    return null;
   }
   const externa = (u) => /^https:/i.test(u) && (() => { try { return new URL(u).origin !== location.origin; } catch { return true; } })();
   function link(href, conteudo, className) {
@@ -76,9 +83,9 @@
   }
 
   /* ---------- texto inline (v2 §4) ---------- */
-  const MARCAS = { negrito: 'strong', italico: 'em', codigo: 'code' };
-  /** Aceita [{t, marca?, href?}] (formato v2) ou string. Na string, **trecho** vira negrito
-   *  (tolerância: os exemplos do Engineer ainda trazem "**Vendas > Pedidos**" em `regra.confirmar`). */
+  // tela = nome/caminho de tela do Flow (glossário do Harness); codigo = campo, valor ou código (JetBrains Mono)
+  const MARCAS = { negrito: ['strong'], italico: ['em'], codigo: ['code', 'pl-marca-codigo'], tela: ['span', 'pl-marca-tela'] };
+  /** Aceita [{t, marca?, href?}] (formato v2) ou string. String vira texto literal (sem parser de `**`). */
   function inline(valor) {
     const frag = document.createDocumentFragment();
     if (Array.isArray(valor)) {
@@ -89,23 +96,25 @@
         if (!t) return;
         const marcas = Array.isArray(parte.marca) ? parte.marca : [parte.marca];
         let no = document.createTextNode(t);
-        marcas.forEach((m) => { if (MARCAS[m]) { const e = document.createElement(MARCAS[m]); e.append(no); no = e; } });
+        marcas.forEach((m) => {
+          if (!MARCAS[m]) return;
+          const [tag, cls] = MARCAS[m];
+          const e = document.createElement(tag);
+          if (cls) e.className = cls;
+          e.append(no); no = e;
+        });
         if (parte.href || marcas.includes('link')) no = link(parte.href, no, 'pl-link') || no; // href inseguro: fica só o texto
         frag.append(no);
       });
       return frag;
     }
-    const s = txt(valor);
-    s.split(/(\*\*[^*]+\*\*)/g).forEach((pedaco) => {
-      if (!pedaco) return;
-      const m = /^\*\*([^*]+)\*\*$/.exec(pedaco);
-      frag.append(m ? h('strong', { text: m[1] }) : document.createTextNode(pedaco));
-    });
+    frag.append(txt(valor)); // literal: "**x**" aparece como digitado
     return frag;
   }
   const temTexto = (v) => (Array.isArray(v) ? v.some((p) => p && txt(typeof p === 'string' ? p : p.t).trim()) : txt(v).trim() !== '');
 
-  /* ---------- ícones (traço 2 px; os de módulo reaproveitam os do index.html) ---------- */
+  /* ---------- ícones: FONTE ÚNICA do mapa (decisão do Lead, UI v1). Exposto em PlataformaUI.icones;
+     o Lead remove a cópia `const icones` do index.html ao integrar. Traço 2 px, viewBox 24. ---------- */
   const ICONES = {
     vendas: '<circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>',
     faturamento: '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>',
@@ -140,6 +149,8 @@
     vazio: '<path d="M3 7h18l-2 13H5z"/><path d="M8 7V5a4 4 0 0 1 8 0v2"/>',
     tentar: '<path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/>'
   };
+  const ATRS_SVG = 'viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"';
+  const ICONES_SVG = Object.freeze(Object.fromEntries(Object.entries(ICONES).filter(([k]) => k !== '_padrao').map(([k, d]) => [k, `<svg ${ATRS_SVG}>${d}</svg>`])));
   const SVG_NS = 'http://www.w3.org/2000/svg';
   const cacheIcone = new Map();
   /** SVG estático deste arquivo (nunca dado externo), parseado como XML e clonado. */
@@ -565,7 +576,7 @@
       const poster = urlSegura(b.poster);
       if (poster) v.poster = poster;
       v.src = url;
-      const leg = urlSegura(b.legenda);
+      const leg = urlSegura(b.legendas_url || b.legenda); // v3: legendas_url (.vtt)
       if (leg) v.append(h('track', { attrs: { kind: 'captions', srclang: 'pt-BR', label: 'Português', src: leg, default: true } }));
       const dur = duracaoFmt(b.duracao_s);
       return h('figure', { className: 'pl-bloco pl-bloco--video' }, v,
@@ -728,6 +739,225 @@
     anunciar(el, `${txt(mod.titulo)}, ${JORNADAS[jornada].nome}: ${plural(secoes.length, 'seção', 'seções')}${nPrep ? `, ${nPrep} em preparação` : ''}.`);
   }
 
+  /* ---------- painel de Visibilidade (admin; contrato §4 + v2) ---------- */
+  const PERFIS_VIS = [['estagiario', 'Estagiário'], ['consultor', 'Consultor']];
+  const GRUPOS_VIS = [
+    ['area', 'Áreas', 'Ocultar uma área esconde a aba e faz o servidor recusar o conteúdo dela.'],
+    ['tipo', 'Tipos de material', 'Vale para todos os módulos: o material some dos cards e das páginas.'],
+    ['modulo', 'Módulos', 'O módulo some da Página Inicial e das duas jornadas.']
+  ];
+  // Nomes das chaves: módulos = títulos do mapa do Engineer (doc 05); áreas/tipos = nome da aba/material.
+  // Quem integra pode trocar por opcoes.nomes { chave: 'Nome' }.
+  const NOMES_VIS = {
+    'area:guia-inicial': 'Guia Inicial', 'area:guia-consultor': 'Guia do Consultor', 'area:pacotes': 'Pacotes',
+    'area:checklists': 'Checklists', 'area:videos': 'Vídeos', 'area:apostila': 'Apostila', 'area:acervo': 'Acervo',
+    'tipo:video': 'Vídeos', 'tipo:manual': 'Manuais', 'tipo:checklist': 'Checklists', 'tipo:fluxo': 'Fluxos',
+    'modulo:primeiros-passos': 'Primeiros passos', 'modulo:fundacao': 'Cadastros e Fundação', 'modulo:crm': 'CRM',
+    'modulo:cem': 'Integração CEM', 'modulo:vendas': 'Vendas', 'modulo:compras': 'Compras', 'modulo:recebimento': 'Recebimento',
+    'modulo:estoque': 'Estoque', 'modulo:producao': 'Produção', 'modulo:servicos': 'Serviços e Instalação',
+    'modulo:projetos': 'Projetos e Obras', 'modulo:expedicao': 'Expedição', 'modulo:faturamento': 'Faturamento',
+    'modulo:fiscal': 'Fiscal', 'modulo:financeiro': 'Financeiro', 'modulo:tarefas': 'Tarefas',
+    'modulo:relatorios': 'Relatórios e Análises', 'modulo:alumina': 'Alumina — IA', 'modulo:fluxo-completo': 'Visão do fluxo completo'
+  };
+  const ICONE_VIS = { 'area:apostila': 'manual', 'area:videos': 'video', 'area:checklists': 'checklist', 'tipo:video': 'video', 'tipo:manual': 'manual', 'tipo:checklist': 'checklist', 'tipo:fluxo': 'fluxo' };
+  const fmtQuando = (d) => { try { return new Date(d).toLocaleString('pt-BR', { dateStyle: 'short', timeStyle: 'short', timeZone: 'America/Sao_Paulo' }); } catch { return ''; } };
+  const metaVis = (it) => (it.atualizado_em
+    ? `Alterado por ${txt(it.atualizado_por_nome) || 'administrador'} em ${fmtQuando(it.atualizado_em)}`
+    : 'Valor inicial, nunca alterado');
+  const resumoPerfis = (it) => {
+    if (!it.visivel) return 'Oculto para estagiários e consultores';
+    const nomes = PERFIS_VIS.filter(([p]) => (it.perfis || []).includes(p)).map(([, n]) => n.toLowerCase());
+    return nomes.length ? `Visível para ${nomes.join(' e ')}` : 'Sem perfil marcado: só administradores veem';
+  };
+
+  /**
+   * @param itens   lista de GET /api/visibilidade?todos=1 [{chave, visivel, perfis, atualizado_por_nome, atualizado_em}]
+   *                | null (carregando) | { erro: {status, mensagem} }
+   * @param opcoes  { onSalvar(item) → Promise<item | {erro}>, onTentar?, desabilitado?: boolean | string, nomes?: {chave: nome} }
+   *                Sem onSalvar (ou desabilitado) o painel fica só leitura. Admin sempre vê tudo (regra do servidor).
+   */
+  function renderPainelVisibilidade(el, itens, opcoes = {}) {
+    el.classList.add('pl-raiz', 'pl-claro', 'pl-vis');
+    if (itens == null) { estadoCarregando(el, { tipo: 'lista', quantidade: 6, texto: 'Carregando a visibilidade…' }); return; }
+    if (!Array.isArray(itens)) {
+      const e = itens.erro || {};
+      estadoErro(el, { mensagem: e.mensagem, status: e.status, onTentar: opcoes.onTentar });
+      return;
+    }
+    if (!itens.length) { estadoVazio(el, 'Nenhuma regra de visibilidade cadastrada. Sem regras, todos os perfis veem tudo.'); return; }
+    limpar(el);
+    el.removeAttribute('aria-busy');
+    const nomes = { ...NOMES_VIS, ...(opcoes.nomes || {}) };
+    const nomeDe = (c) => nomes[c] || txt(c).replace(/^[a-z]+:/, '').replace(/-/g, ' ');
+    const salvarFn = typeof opcoes.onSalvar === 'function' ? opcoes.onSalvar : null;
+    const somenteLeitura = !salvarFn || !!opcoes.desabilitado;
+    const estado = new Map(itens.filter((i) => i && typeof i.chave === 'string').map((i) => [i.chave, { ...i, perfis: [...(i.perfis || [])] }]));
+    const linhas = new Map(); // chave -> {li, atualizar}
+    const idBase = uid('pl-vis');
+
+    async function salvar(chave, novo, origem) {
+      const ln = linhas.get(chave);
+      const anterior = estado.get(chave);
+      ln.ocupado(true, 'Salvando…');
+      let r;
+      try { r = await salvarFn({ chave, visivel: novo.visivel, perfis: [...novo.perfis] }); } catch (e) { r = { erro: { status: 0, mensagem: e && e.message } }; }
+      if (!r || r.erro) {
+        const msg = (r && r.erro && r.erro.mensagem) || 'A alteração não foi salva. Confira a conexão e tente de novo.';
+        ln.ocupado(false);
+        ln.atualizar(anterior);
+        ln.erro(msg, () => salvar(chave, novo, origem));
+        if (chave === 'area:apostila' && !origem) desenharDestaque(msg);
+        return;
+      }
+      const salvo = { ...anterior, ...r, perfis: [...(r.perfis || novo.perfis)] };
+      estado.set(chave, salvo);
+      ln.ocupado(false);
+      ln.atualizar(salvo, true);
+      atualizarContagens();
+      if (chave === 'area:apostila') desenharDestaque();
+      anunciar(el, `${nomeDe(chave)}: ${resumoPerfis(salvo)}. Salvo.`);
+      if (origem && origem.isConnected && !origem.disabled) origem.focus({ preventScroll: true });
+      else if (chave === 'area:apostila' && !origem) { const art = destaque.querySelector('.pl-vis-destaque'); if (art) art.focus({ preventScroll: true }); }
+    }
+
+    function pedir(chave, novo, origem) {
+      if (somenteLeitura) return;
+      const atual = estado.get(chave);
+      const ocultaArea = chave.startsWith('area:') && atual.visivel && !novo.visivel;
+      if (ocultaArea) linhas.get(chave).confirmar(novo, origem);
+      else salvar(chave, novo, origem);
+    }
+
+    function linha(it) {
+      const chave = it.chave;
+      const id = `${idBase}-${chave.replace(/[^a-z0-9-]/gi, '-')}`;
+      const nome = nomeDe(chave);
+      const li = h('li', { className: 'pl-vis-item', data: { chave } });
+      const meta = h('p', { className: 'pl-vis-item__meta' });
+      const resumo = h('p', { className: 'pl-vis-item__resumo', id: `${id}-r` });
+      const sw = h('button', { className: 'pl-switch', id: `${id}-sw`, attrs: { type: 'button', role: 'switch', 'aria-describedby': `${id}-r` } },
+        h('span', { className: 'pl-switch__trilho', attrs: { 'aria-hidden': 'true' } }, h('span', { className: 'pl-switch__bola' })),
+        h('span', { className: 'pl-switch__txt' }),
+        h('span', { className: 'pl-sr', text: ` ${nome}` }));
+      const caixas = PERFIS_VIS.map(([p, rot]) => {
+        const cb = h('input', { id: `${id}-${p}`, attrs: { type: 'checkbox', value: p } });
+        return [p, cb, h('label', { className: 'pl-vis-perfil', attrs: { for: cb.id } }, cb, h('span', null, rot, h('span', { className: 'pl-sr', text: ` vê ${nome}` })))];
+      });
+      const situacao = h('div', { className: 'pl-vis-item__sit', attrs: { 'aria-live': 'polite' } });
+      const confirmacao = h('div', { className: 'pl-vis-confirma', attrs: { hidden: true, role: 'group', 'aria-labelledby': `${id}-c` } });
+      anexar(li, [
+        h('div', { className: 'pl-vis-item__nome' }, h('span', { className: 'pl-vis-item__ic' }, icone(ICONE_VIS[chave] || (chave.startsWith('modulo:') ? chave.slice(7) : '_padrao'))),
+          h('div', null, h('p', { className: 'pl-vis-item__titulo', id: `${id}-t`, text: nome }), resumo, meta)),
+        h('div', { className: 'pl-vis-item__ctrl' },
+          h('div', { className: 'pl-vis-perfis', attrs: { role: 'group', 'aria-label': `Perfis que veem ${nome}` } }, caixas.map((c) => c[2])),
+          sw),
+        situacao, confirmacao]);
+
+      const ler = () => ({ visivel: sw.getAttribute('aria-checked') === 'true', perfis: caixas.filter((c) => c[1].checked).map((c) => c[0]) });
+      function atualizar(v, salvo) {
+        sw.setAttribute('aria-checked', String(!!v.visivel));
+        sw.querySelector('.pl-switch__txt').textContent = v.visivel ? 'Visível' : 'Oculto';
+        caixas.forEach(([p, cb]) => { cb.checked = (v.perfis || []).includes(p); });
+        li.dataset.visivel = String(!!v.visivel);
+        resumo.textContent = resumoPerfis(v);
+        meta.textContent = metaVis(v);
+        if (salvo) {
+          situacao.replaceChildren(h('span', { className: 'pl-vis-ok' }, icone('checklist'), 'Salvo'));
+          li.dataset.salvo = '';
+          window.setTimeout(() => { delete li.dataset.salvo; if (situacao.querySelector('.pl-vis-ok')) situacao.replaceChildren(); }, 2600);
+        }
+      }
+      function ocupado(sim, texto) {
+        li.toggleAttribute('aria-busy', sim);
+        [sw, ...caixas.map((c) => c[1])].forEach((c) => { c.disabled = sim || somenteLeitura; });
+        if (sim) situacao.replaceChildren(h('span', { className: 'pl-vis-salvando' }, h('span', { className: 'pl-vis-giro', attrs: { 'aria-hidden': 'true' } }), texto));
+      }
+      function erro(msg, tentar) {
+        situacao.replaceChildren(h('div', { className: 'pl-vis-erro', attrs: { role: 'alert' } },
+          icone('alerta'), h('span', { text: msg }),
+          h('button', { className: 'pl-botao pl-botao--sec', attrs: { type: 'button' }, on: { click: tentar } }, icone('tentar'), h('span', { text: 'Tentar de novo' }))));
+      }
+      function confirmar(novo, origem) {
+        const cancelar = () => { confirmacao.hidden = true; confirmacao.replaceChildren(); atualizar(estado.get(chave)); delete li.dataset.confirmando; origem && origem.focus(); };
+        const ok = h('button', { className: 'pl-botao pl-botao--perigo', attrs: { type: 'button' }, on: { click: () => { confirmacao.hidden = true; confirmacao.replaceChildren(); delete li.dataset.confirmando; salvar(chave, novo, origem); } } }, `Ocultar ${nome}`);
+        confirmacao.replaceChildren(
+          h('p', { id: `${id}-c` }, h('strong', { text: `Ocultar ${nome} para estagiários e consultores?` }), ' Quem não é administrador deixa de ver a área, e o servidor passa a recusar o conteúdo dela.'),
+          h('div', { className: 'pl-vis-confirma__acoes' }, ok, h('button', { className: 'pl-botao pl-botao--sec', attrs: { type: 'button' }, on: { click: cancelar } }, 'Cancelar')));
+        confirmacao.onkeydown = (e) => { if (e.key === 'Escape') { e.preventDefault(); cancelar(); } };
+        confirmacao.hidden = false;
+        li.dataset.confirmando = '';
+        ok.focus();
+      }
+      sw.addEventListener('click', () => { const v = ler(); pedir(chave, { visivel: !v.visivel, perfis: v.perfis }, sw); });
+      caixas.forEach(([, cb]) => cb.addEventListener('change', () => pedir(chave, ler(), cb)));
+      atualizar(it);
+      ocupado(false);
+      linhas.set(chave, { li, atualizar, ocupado, erro, confirmar });
+      return li;
+    }
+
+    // Destaque: apostila (em standby quando oculta) com Reativar
+    const destaque = h('div', { className: 'pl-vis-destaque-slot' });
+    function desenharDestaque(msgErro) {
+      const ap = estado.get('area:apostila');
+      if (!ap) { destaque.replaceChildren(); return; }
+      const standby = !ap.visivel;
+      const idT = `${idBase}-apostila`;
+      const card = h('article', { className: 'pl-vis-destaque', data: { standby }, attrs: { 'aria-labelledby': idT, tabindex: -1 } },
+        h('span', { className: 'pl-vis-destaque__ic' }, icone('manual')),
+        h('div', { className: 'pl-vis-destaque__txt' },
+          h('div', { className: 'pl-vis-destaque__cab' }, h('h3', { id: idT, text: nomeDe('area:apostila') }),
+            standby ? h('span', { className: 'pl-chip pl-chip--prep' }, icone('relogio'), 'Em standby') : chip('disponivel')),
+          h('p', { text: standby
+            ? 'Oculta para estagiários e consultores. Enquanto estiver em standby, os endereços da apostila respondem 404.'
+            : `${resumoPerfis(ap)}.` }),
+          h('p', { className: 'pl-vis-item__meta', text: metaVis(ap) })));
+      if (standby) {
+        const perfis = ap.perfis && ap.perfis.length ? ap.perfis : PERFIS_VIS.map((p) => p[0]);
+        const b = h('button', { className: 'pl-botao pl-botao--primario pl-vis-destaque__acao', attrs: { type: 'button', 'aria-describedby': idT } }, icone('tentar'), h('span', { text: 'Reativar' }));
+        b.disabled = somenteLeitura;
+        b.addEventListener('click', () => {
+          b.disabled = true;
+          b.setAttribute('aria-busy', 'true');
+          b.lastChild.textContent = 'Reativando…';
+          salvar('area:apostila', { visivel: true, perfis }, null);
+        });
+        card.append(b);
+        if (msgErro) card.append(h('p', { className: 'pl-vis-erro pl-vis-destaque__erro', attrs: { role: 'alert' } }, icone('alerta'), h('span', { text: `A apostila continua em standby. ${msgErro}` })));
+      }
+      destaque.replaceChildren(card);
+    }
+
+    const contagens = [];
+    function atualizarContagens() { contagens.forEach(([pref, el2]) => { const g = [...estado.values()].filter((i) => i.chave.startsWith(`${pref}:`)); el2.textContent = `${g.filter((i) => i.visivel && i.perfis.length).length} de ${g.length} visíveis`; }); }
+
+    const idTit = `${idBase}-titulo`;
+    const raiz = h('section', { className: 'pl-vis__painel', attrs: { 'aria-labelledby': idTit } },
+      h('header', { className: 'pl-vis__cab' },
+        h('h2', { id: idTit, text: 'Visibilidade' }),
+        h('p', { text: 'Escolha o que estagiários e consultores veem. Administradores sempre veem tudo.' })),
+      somenteLeitura ? h('p', { className: 'pl-vis-leitura', attrs: { role: 'note' } }, icone('oculto'),
+        typeof opcoes.desabilitado === 'string' ? opcoes.desabilitado : 'Somente leitura: seu perfil pode ver as regras, mas não alterá-las.') : null,
+      destaque,
+      GRUPOS_VIS.map(([pref, titulo, ajuda]) => {
+        const lista = [...estado.values()].filter((i) => i.chave.startsWith(`${pref}:`));
+        if (!lista.length) return null;
+        const idG = `${idBase}-${pref}`;
+        const cont = h('span', { className: 'pl-vis-grupo__cont' });
+        contagens.push([pref, cont]);
+        return h('section', { className: 'pl-vis-grupo', attrs: { 'aria-labelledby': idG } },
+          h('div', { className: 'pl-vis-grupo__cab' }, h('h3', { id: idG, text: titulo }), cont),
+          h('p', { className: 'pl-vis-grupo__ajuda', text: ajuda }),
+          h('ul', { className: 'pl-vis-lista' }, lista.map(linha)));
+      }));
+    desenharDestaque();
+    atualizarContagens();
+    el.append(raiz);
+    if (somenteLeitura) el.dataset.somenteLeitura = '';
+    else delete el.dataset.somenteLeitura;
+    anunciar(el, `Visibilidade: ${plural(estado.size, 'regra', 'regras')}${estado.get('area:apostila') && !estado.get('area:apostila').visivel ? ', apostila em standby' : ''}.`);
+  }
+
   /* ---------- reação a mudanças de preferência ---------- */
   mqHover.addEventListener?.('change', () => document.querySelectorAll('.pl-card').forEach((c) => c._plAplicar && c._plAplicar()));
 
@@ -736,13 +966,18 @@
     renderCardModulo,
     renderJornada,
     renderModulo,
+    renderPainelVisibilidade,
     estadoCarregando,
     estadoErro,
     estadoVazio,
     transicao,
+    // Fonte única do mapa de ícones (nome -> <svg> completo, mesmo formato da cópia do index.html).
+    // Nomes de módulo: os 19 ids do mapa (vendas, faturamento, …). icone(nome) devolve o SVGElement.
+    icones: ICONES_SVG,
+    icone,
     // utilitários de texto seguro, para o Lead/Engineer reaproveitarem (ex.: painel de Visibilidade)
     texto: Object.freeze({ inline, urlSegura }),
     contrato: 'v2',
-    versao: '2026-11-04-ui-v1'
+    versao: '2026-11-04-ui-v2'
   });
 })();
