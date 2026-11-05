@@ -34,15 +34,20 @@ export default async function middleware(request) {
     return Response.redirect(login, 302);
   }
 
+  // Conteúdo controlado (apostila, PDFs, vídeos, checklists, manuais): nunca cachear no browser —
+  // um estagiário no mesmo aparelho após um admin não pode reaproveitar a cópia em cache.
+  const SEM_CACHE = { 'Cache-Control': 'private, no-store' };
+
   if (caminhoControlado(caminho)) {
     const [linhas, indice] = await Promise.all([carregarLinhas(), carregarIndice()]);
     const mapa = mapaEfetivo(linhas, sessao.papel);
     if (!caminhoVisivel(caminho, mapa, indice.caminhos || {})) {
       return new Response('Não encontrado.', {
         status: 404,
-        headers: { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'private, no-store' },
+        headers: { 'Content-Type': 'text/plain; charset=utf-8', ...SEM_CACHE },
       });
     }
+    return next({ headers: SEM_CACHE });
   }
 
   return next();

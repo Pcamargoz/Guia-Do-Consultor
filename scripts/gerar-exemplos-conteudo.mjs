@@ -60,7 +60,7 @@ export function montarExemplos() {
   ex['visibilidade-put-400'] = { erro: { status: 400, mensagem: validarAtualizacao({ chave: 'area:inexistente', visivel: true, perfis: [] }).erro } };
   ex['visibilidade-put-403'] = { erro: { status: 403, mensagem: 'Apenas administradores podem alterar a visibilidade.' } };
 
-  // Roteador de hash (§3)
+  // Roteador de hash (§3). `#consultor/fundamentos` é alias → acervo/metodo (v3.5).
   const { Plataforma } = carregarPlataforma();
   ex.rotas = ['', '#inicio', '#inicial', '#inicial/vendas', '#consultor', '#consultor/estoque', '#consultor/fundamentos', '#pacotes', '#checklist', '#videos', '#apostila', '#admin', '#acervo', '#acervo/metodo', '#qualquer-outra-coisa', '#inicial/<script>']
     .map((hash) => ({ hash, rota: { ...Plataforma.lerRota(hash) } }));

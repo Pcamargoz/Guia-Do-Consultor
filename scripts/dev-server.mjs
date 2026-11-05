@@ -44,6 +44,14 @@ async function tratar(request) {
   const resposta = await middleware(request);
   if (resposta && !resposta.headers.get('x-middleware-next')) return resposta;
 
+  // Cabeçalhos do next({ headers }) do middleware (ex.: Cache-Control em conteúdo controlado).
+  const doMiddleware = {};
+  if (resposta) {
+    resposta.headers.forEach((v, k) => {
+      if (k !== 'x-middleware-next') doMiddleware[k] = v;
+    });
+  }
+
   if (url.pathname.startsWith('/api/')) {
     // Como no Vercel: uma única função (api/index.js) despacha todas as rotas /api/*.
     const modulo = await import(pathToFileURL(path.join(RAIZ, 'api', 'index.js')));
@@ -53,7 +61,13 @@ async function tratar(request) {
 
   const arquivo = await arquivoPublico(url.pathname);
   if (!arquivo) return new Response('Não encontrado', { status: 404 });
-  const cabecalhos = { 'Content-Type': TIPOS[path.extname(arquivo)] || 'application/octet-stream', 'Cache-Control': 'no-cache' };
+  // Middleware vence no Cache-Control (Headers.forEach usa minúsculas — não misturar com Cache-Control).
+  const { 'cache-control': ccMw, ...restoMw } = doMiddleware;
+  const cabecalhos = {
+    'Content-Type': TIPOS[path.extname(arquivo)] || 'application/octet-stream',
+    'Cache-Control': ccMw || 'no-cache',
+    ...restoMw,
+  };
   if (url.pathname.startsWith('/downloads/')) cabecalhos['Content-Disposition'] = 'attachment';
   return new Response(await readFile(arquivo), { headers: cabecalhos });
 }
