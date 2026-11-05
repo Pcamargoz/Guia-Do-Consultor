@@ -15,7 +15,7 @@ A pasta fica fora do deploy (`.vercelignore`). Valide com `node scripts/verifica
 | 4 | `vendas` | Vendas | **presente** |
 | 5 | `compras` | Compras | pendente |
 | 6 | `recebimento` | Recebimento | pendente |
-| 7 | `estoque` | Estoque | pendente (**próximo**) |
+| 7 | `estoque` | Estoque | **presente** |
 | 8 | `producao` | Produção | pendente |
 | 9 | `servicos` | Serviços e Instalação | pendente |
 | 10 | `projetos` | Projetos e Obras | pendente |
@@ -63,6 +63,11 @@ Origem (estúdio, `02-gravacoes-brutas/`): `gi-<id>_<cenas>_bruto_vNN.mp4`, `gi-
 | financeiro | `gi-financeiro_geral_manifesto_v02.md` | `financeiro/manifesto.md` |
 | financeiro | `gi-financeiro_geral_bruto_v01.mp4` | `financeiro/financeiro_bruto_v01.mp4` |
 | financeiro | `gi-financeiro_<tela>-pMM_print_v01.png` | `financeiro/prints/financeiro_<tela>_MM.png` |
+| estoque | `gi-estoque_geral_roteiro-telas_v02.md` | `estoque/roteiro-telas.md` |
+| estoque | `gi-estoque_geral_manifesto_v02.md` | `estoque/manifesto.md` |
+| estoque | `gi-estoque_c01_bruto_v01.mp4` | `estoque/estoque_bruto_c01_v01.mp4` |
+| estoque | `gi-estoque_c02_bruto_v01.mp4` | `estoque/estoque_bruto_c02_v01.mp4` (`.mkv` do estúdio não sobe) |
+| estoque | `gi-estoque_<tela>-pMM_print_v01.png` | `estoque/prints/estoque_<tela>_MM.png` |
 
 ## Trechos a descartar (segundos do bruto)
 
@@ -86,11 +91,23 @@ Origem (estúdio, `02-gravacoes-brutas/`): `gi-<id>_<cenas>_bruto_vNN.mp4`, `gi-
 - 317–412: telas de Projetos (fora do Financeiro).
 - 887–912: volta ao Dashboard Geral (repetida).
 
-Obs.: o bruto do Financeiro tem 912,4 s; o próximo módulo a gravar é **Estoque**.
+Obs.: o bruto do Financeiro tem 912,4 s. Estoque já montado (c01+c02); próximo módulo a gravar a definir com o Director.
+
+**Estoque — vídeo 1 (`estoque_bruto_c01_v01.mp4`)**
+- ~0–~80: sobra do Financeiro.
+- ~1750–fim: sessão expirada / login (descartar).
+- Timeline fina por tela ainda pendente (offsets aproximados).
+
+**Estoque — vídeo 2 (`estoque_bruto_c02_v01.mp4`)**
+- 0–~45: sobra de CRM › Leads.
+- Slip Documentação da API (~118 s) e loadings longos: evitar no corte.
 
 ## Pendências de cobertura
 
 - **Financeiro:** Painel Financeiro de Projetos será gravado junto com o módulo projetos.
+- **Estoque:** timeline c01 aproximada (falta passagem frame a frame antes da edição).
+- **Estoque:** Meu Portal › Usuários do Portal não aberto.
+- **Estoque:** Relatório 506 e cubos 144/145 não executados (só tela de configuração/filtro).
 
 ## Pendências de regra para o Pedro
 
