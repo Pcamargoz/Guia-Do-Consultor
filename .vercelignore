@@ -2,3 +2,6 @@
 docker-compose.yml
 skills/
 .env
+
+# Mídia bruta (vídeos) fora do deploy.
+midia/
