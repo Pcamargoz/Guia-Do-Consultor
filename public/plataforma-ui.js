@@ -147,7 +147,9 @@
     seta: '<path d="M5 12h14"/><path d="m13 6 6 6-6 6"/>',
     alerta: '<circle cx="12" cy="12" r="9"/><path d="M12 8v5"/><path d="M12 16h.01"/>',
     vazio: '<path d="M3 7h18l-2 13H5z"/><path d="M8 7V5a4 4 0 0 1 8 0v2"/>',
-    tentar: '<path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/>'
+    tentar: '<path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/>',
+    // v2.1: casa da aba/menu "Página Inicial" (substitui o SVG próprio do guia-abas.js; mesma silhueta e traço 2 px).
+    inicio: '<path d="m3 10.5 9-7.5 9 7.5"/><path d="M5 9v10.5a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5V9"/><path d="M10 20v-6h4v6"/>'
   };
   const ATRS_SVG = 'viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"';
   const ICONES_SVG = Object.freeze(Object.fromEntries(Object.entries(ICONES).filter(([k]) => k !== '_padrao').map(([k, d]) => [k, `<svg ${ATRS_SVG}>${d}</svg>`])));
@@ -978,6 +980,6 @@
     // utilitários de texto seguro, para o Lead/Engineer reaproveitarem (ex.: painel de Visibilidade)
     texto: Object.freeze({ inline, urlSegura }),
     contrato: 'v2',
-    versao: '2026-11-04-ui-v2'
+    versao: '2026-11-05-ui-v2.1'
   });
 })();
