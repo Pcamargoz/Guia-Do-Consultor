@@ -14,6 +14,7 @@
     "checklists:lacunas": "node scripts/lacunas-checklists.mjs",
     "testar:checklists-api": "node scripts/testar-checklists-api.mjs",
     "testar:seguranca": "node scripts/testar-seguranca.mjs",
+    "testar:visibilidade": "node scripts/testar-visibilidade.mjs",
     "testar": "node --test \"scripts/testes/*.test.mjs\"",
     "base:gerar": "node scripts/gerar-base-conhecimento.mjs",
     "base:verificar": "node scripts/gerar-base-conhecimento.mjs --verificar",
