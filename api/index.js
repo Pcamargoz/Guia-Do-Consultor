@@ -18,9 +18,13 @@ import * as modulos from '../lib/rotas/modulos.js';
 import * as pacotes from '../lib/rotas/pacotes.js';
 import * as processos from '../lib/rotas/processos.js';
 import * as usuarios from '../lib/rotas/usuarios.js';
+import * as conteudo from '../lib/rotas/conteudo.js';
+import * as visibilidade from '../lib/rotas/visibilidade.js';
 import { ipDe, regraPara, verificarLimite } from '../lib/limite.js';
 
 const ROTAS = {
+  conteudo,
+  visibilidade,
   'auth/eu': authEu,
   'auth/login': authLogin,
   'auth/logout': authLogout,
