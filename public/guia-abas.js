@@ -297,9 +297,19 @@
   sidebar.dataset.abPerfil = 'pendente';
 
   (async () => {
-    await P.visibilidade(); // aplica o mapa do perfil no roteador; erro de rede não bloqueia (o servidor protege)
-    aplicarPerfil();
-    delete sidebar.dataset.abPerfil;
+    // O atributo "pendente" SEMPRE sai (finally): falha, rejeição ou timeout de visibilidade() não podem deixar o menu
+    // invisível. Sem mapa, o menu volta ao estado do perfil já conhecido; o servidor continua protegendo (404/403).
+    try {
+      let limite;
+      await Promise.race([
+        Promise.resolve().then(() => P.visibilidade()),
+        new Promise((_, rej) => { limite = setTimeout(() => rej(new Error('visibilidade: timeout')), 8000); }),
+      ]).finally(() => clearTimeout(limite));
+    } catch (erro) {
+      console.warn('[guia-abas] mapa de visibilidade indisponível:', erro && erro.message);
+    }
+    try { aplicarPerfil(); } catch (erro) { console.warn('[guia-abas] aplicarPerfil falhou:', erro && erro.message); }
+    finally { delete sidebar.dataset.abPerfil; }
     pronto = true;
     mostrar(P.lerRota(location.hash));
     // A aba do administrador só aparece quando guia-admin.js confere a sessão (then registrado antes deste):
