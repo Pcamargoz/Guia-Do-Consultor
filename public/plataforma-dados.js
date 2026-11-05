@@ -1,15 +1,17 @@
-/* Faktory Flow — dados da plataforma de conhecimento (contrato-componentes.md v1, §3).
+/* Faktory Flow — dados da plataforma de conhecimento (contrato-componentes.md v1/v2, §3).
    Cliente de /api/conteudo e /api/visibilidade + roteador de hash. Sem dependências, sem script inline (CSP).
    Expõe window.Plataforma:
-     carregarResumo()              → Promise<Resumo | { erro: { status, mensagem } }>
+     carregarResumo()              → Promise<Resumo | { erro: { status, mensagem } }>  (cache em memória; invalidado ao salvar visibilidade)
      carregarModulo(id, jornada)   → Promise<Detalhe | { erro }>
      visibilidade()                → Promise<{ itens } | { erro }>        (admin: visibilidade({ todos: true }) → lista)
                                      o mapa { chave: boolean } do perfil logado também passa a valer no roteador
      aplicarVisibilidade(itens)    → usa um mapa { chave: boolean } já carregado no roteador (mesmo efeito)
-     salvarVisibilidade(item)      → Promise<item | { erro }>             (PUT, só admin)
+     salvarVisibilidade(item)      → Promise<item | { erro }>             (PUT, só admin; invalida o cache do resumo)
+     invalidarResumo()             → descarta o cache de carregarResumo()
      rota                          → { area, modulo?, secao? } atual; evento window "plataforma:rota" (detail = rota)
      lerRota(hash), irPara(rota)   → utilitários do roteador (o ÚNICO roteador de hash da página)
      ALIASES                       → hashes antigos aceitos (guia-abas.js, guia antigo, âncoras internas)
+   Escuta `plataforma:abrir` (emitido pela UI) e chama irPara; dá preventDefault para a UI não navegar de novo.
    As promessas nunca rejeitam: erro de rede ou HTTP vira { erro: { status, mensagem } } (status 0 = sem conexão). */
 (() => {
   const AREAS = ['inicio', 'inicial', 'consultor', 'acervo', 'pacotes', 'checklist', 'videos', 'apostila', 'admin'];
@@ -46,7 +48,19 @@
     }
   }
 
-  const carregarResumo = () => pedir('/api/conteudo');
+  /* Cache do resumo: a UI chama carregarResumo várias vezes; depois de salvar a Visibilidade o conteúdo
+     filtrado pode mudar, então invalidamos. Erros não ficam em cache. */
+  let prometeResumo = null;
+  const invalidarResumo = () => { prometeResumo = null; };
+  function carregarResumo() {
+    if (!prometeResumo) {
+      prometeResumo = pedir('/api/conteudo').then((r) => {
+        if (r && r.erro) prometeResumo = null;
+        return r;
+      });
+    }
+    return prometeResumo;
+  }
 
   function carregarModulo(id, jornada) {
     if (!SEGMENTO.test(String(id || '')) || !JORNADAS.includes(jornada)) return Promise.resolve(erro(400, 'Módulo ou jornada inválidos.'));
@@ -59,15 +73,19 @@
     return r;
   }
 
-  function salvarVisibilidade(item) {
-    if (!item || typeof item.chave !== 'string') return Promise.resolve(erro(400, 'Item de visibilidade inválido.'));
+  async function salvarVisibilidade(item) {
+    if (!item || typeof item.chave !== 'string') return erro(400, 'Item de visibilidade inválido.');
     const { chave, visivel, perfis } = item;
-    return pedir('/api/visibilidade', { metodo: 'PUT', corpo: { chave, visivel, perfis } });
+    const r = await pedir('/api/visibilidade', { metodo: 'PUT', corpo: { chave, visivel, perfis } });
+    if (r && !r.erro) invalidarResumo();
+    return r;
   }
 
-  /* ---------- Roteador de hash: #inicio · #inicial[/<modulo>] · #consultor[/<modulo>|/fundamentos] · ferramentas ----------
+  /* ---------- Roteador de hash: #inicio · #inicial[/<modulo>] · #consultor[/<modulo>] · ferramentas ----------
      Único roteador da página (review v1 do Lead, item 6): guia-abas.js passa a ouvir "plataforma:rota".
-     Hashes antigos continuam valendo (aliases). `secao` = âncora dentro da área (rolar até ela, sem trocar de área). */
+     Hashes antigos continuam valendo (aliases). `secao` = âncora dentro da área (rolar até ela, sem trocar de área).
+     Nota: `#consultor/fundamentos` é aceito como segmento de módulo pelo roteador, mas `fundamentos` NÃO é id
+     do índice (ver proposta na entrega v3.4). */
   const AREAS_COM_SECAO = ['acervo', 'pacotes', 'checklist', 'videos', 'apostila', 'admin'];
   const SECAO = /^[A-Za-z0-9_-]{1,80}$/;
   // Hash antigo → rota. Fontes: public/guia-abas.js (aba "guia" = guia antigo, que vira o Acervo — doc 03) e
@@ -135,13 +153,27 @@
     atualizar();
   }
 
-  const Plataforma = { carregarResumo, carregarModulo, visibilidade, aplicarVisibilidade, salvarVisibilidade, lerRota, irPara, ALIASES, rota: lerRota(location.hash) };
+  const Plataforma = { carregarResumo, carregarModulo, visibilidade, aplicarVisibilidade, salvarVisibilidade, invalidarResumo, lerRota, irPara, ALIASES, rota: lerRota(location.hash) };
 
   function atualizar() {
     Plataforma.rota = lerRota(location.hash);
     window.dispatchEvent(new CustomEvent('plataforma:rota', { detail: { ...Plataforma.rota } }));
   }
 
+  /** UI emite `plataforma:abrir` { modulo, jornada }; este é o dono da navegação (contrato v2). */
+  function aoAbrir(ev) {
+    const d = ev && ev.detail;
+    if (!d || typeof d !== 'object') return;
+    if (typeof ev.preventDefault === 'function') ev.preventDefault();
+    const area = typeof d.jornada === 'string' ? d.jornada : (typeof d.area === 'string' ? d.area : null);
+    if (!area) return;
+    const destino = { area };
+    if (typeof d.modulo === 'string' && d.modulo) destino.modulo = d.modulo;
+    if (typeof d.secao === 'string' && d.secao) destino.secao = d.secao;
+    irPara(destino);
+  }
+
   window.addEventListener('hashchange', atualizar);
+  window.addEventListener('plataforma:abrir', aoAbrir);
   window.Plataforma = Plataforma;
 })();

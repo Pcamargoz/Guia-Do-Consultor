@@ -120,13 +120,19 @@ describe('window.Plataforma — aliases de hash antigos (review v1, item 6)', ()
     assert.deepEqual(rota('#ck-3'), { area: 'checklist', secao: 'ck-3' });
     for (const h of ['#pc-nome-', '#pc-nome-<x>', '#ck-x', '#ck-12345']) assert.deepEqual(rota(h), { area: 'inicio' }, h);
   });
-  it('todo hash antigo encontrado em public/ resolve para uma área (nenhum cai no início por engano)', () => {
+  it('todo hash encontrado em public/ resolve para uma área (9 áreas atuais; #inicio cai no início de propósito)', () => {
     const abas = [...ler('guia-abas.js').matchAll(/\{ id: '([a-z]+)', rotulo:/g)].map((m) => m[1]);
     const secoes = [...ler('index.html').matchAll(/scrollToSection\('([A-Za-z0-9_-]+)'/g)].map((m) => m[1]);
     const hrefs = [...ler('guia-videos.js').matchAll(/href="#([a-z-]+)"/g)].map((m) => m[1]);
-    assert.deepEqual(abas, ['guia', 'pacotes', 'checklist', 'videos', 'apostila', 'admin']);
+    assert.deepEqual(abas, ['inicio', 'inicial', 'consultor', 'pacotes', 'checklist', 'videos', 'apostila', 'acervo', 'admin']);
     assert.ok(secoes.length >= 7, secoes.join());
-    for (const h of new Set([...abas, ...secoes, ...hrefs])) assert.notEqual(rota(`#${h}`).area, 'inicio', h);
+    for (const h of new Set([...abas, ...secoes, ...hrefs])) {
+      if (h === 'inicio') {
+        assert.equal(rota(`#${h}`).area, 'inicio', h);
+        continue;
+      }
+      assert.notEqual(rota(`#${h}`).area, 'inicio', h);
+    }
     assert.deepEqual(Object.keys(Plataforma.ALIASES).sort(), ['conclusao', 'dashboard', 'diagnostico', 'guia', 'metodo', 'modulos', 'parte1', 'processos']);
   });
   it('chaves herdadas de Object não viram alias', () => {
@@ -203,5 +209,51 @@ describe('window.Plataforma — roteador usa o perfil de visibilidade (v3, item 
     const outra = carregarPlataforma({ fetch }).Plataforma;
     await outra.visibilidade({ todos: true });
     assert.deepEqual({ ...outra.lerRota('#acervo') }, { area: 'acervo' });
+  });
+});
+
+describe('window.Plataforma — plataforma:abrir e cache do resumo (v3.4)', () => {
+  it('escuta plataforma:abrir, chama irPara e dá preventDefault (a UI não navega de novo)', () => {
+    const { Plataforma, location, emitir } = carregarPlataforma({ hash: '#inicio' });
+    const { ev, seguir } = emitir('plataforma:abrir', { modulo: 'vendas', jornada: 'inicial' }, true);
+    assert.equal(seguir, false);
+    assert.equal(ev.defaultPrevented, true);
+    assert.equal(location.hash, '#inicial/vendas');
+    // no mock, hashchange não dispara sozinho (igual ao teste de irPara); o navegador real atualiza a rota
+  });
+  it('plataforma:abrir sem jornada/área é ignorado', () => {
+    const { location, emitir } = carregarPlataforma({ hash: '#inicio' });
+    const { seguir } = emitir('plataforma:abrir', { modulo: 'vendas' }, true);
+    assert.equal(seguir, false); // ainda preventDefault
+    assert.equal(location.hash, '#inicio');
+  });
+  it('carregarResumo reutiliza o cache; salvarVisibilidade invalida', async () => {
+    const corpo = { versao: '2026-11-04', modulos: [{ id: 'vendas' }] };
+    const { chamadas, fetch } = comFetch([
+      resposta(200, corpo),
+      resposta(200, { chave: 'area:apostila', visivel: true, perfis: ['consultor'] }),
+      resposta(200, { versao: '2026-11-04', modulos: [] }),
+    ]);
+    const { Plataforma } = carregarPlataforma({ fetch });
+    const a = await Plataforma.carregarResumo();
+    const b = await Plataforma.carregarResumo();
+    assert.equal(a, b);
+    assert.equal(chamadas.filter((c) => c.url === '/api/conteudo').length, 1);
+    await Plataforma.salvarVisibilidade({ chave: 'area:apostila', visivel: true, perfis: ['consultor'] });
+    const c = await Plataforma.carregarResumo();
+    assert.deepEqual(c, { versao: '2026-11-04', modulos: [] });
+    assert.equal(chamadas.filter((c) => c.url === '/api/conteudo').length, 2);
+  });
+  it('invalidarResumo() descarta o cache sem ir à rede', async () => {
+    const { chamadas, fetch } = comFetch([
+      resposta(200, { versao: 'a', modulos: [] }),
+      resposta(200, { versao: 'b', modulos: [] }),
+    ]);
+    const { Plataforma } = carregarPlataforma({ fetch });
+    await Plataforma.carregarResumo();
+    Plataforma.invalidarResumo();
+    const r = await Plataforma.carregarResumo();
+    assert.equal(r.versao, 'b');
+    assert.equal(chamadas.length, 2);
   });
 });

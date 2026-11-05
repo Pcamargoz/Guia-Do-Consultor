@@ -8,6 +8,20 @@ import { fileURLToPath } from 'node:url';
 const EXT_MIDIA = /\.(mp4|png|jpe?g)$/i;
 const NOME_ROTEIRO = 'roteiro-telas.md';
 const NOME_MANIFESTO = 'manifesto.md';
+/** `<id>_bruto_vNN.mp4` — id em minúsculas/hífen, versão com pelo menos 2 dígitos. */
+export const NOME_MP4 = /^[a-z0-9_-]+_bruto_v\d{2,}\.mp4$/i;
+
+/** Citação resolve para dentro da pasta do módulo? (bloqueia ../ e absoluto). */
+export function citacaoDentroDoModulo(pastaModulo, citado) {
+  if (citado == null) return false;
+  const raw = String(citado).trim();
+  if (!raw || path.isAbsolute(raw) || /^[a-zA-Z]:[\\/]/.test(raw)) return false;
+  // barra inicial estilo Unix também é absoluta em relação à pasta
+  if (raw.startsWith('/') || raw.startsWith('\\')) return false;
+  const alvo = path.resolve(pastaModulo, raw);
+  const raiz = path.resolve(pastaModulo);
+  return alvo === raiz || alvo.startsWith(raiz + path.sep);
+}
 
 /** Converte "0", "44", "211,7", "1:30", "01:02:03", "~55" em segundos (number) ou null. */
 export function parseTempo(raw) {
@@ -235,11 +249,24 @@ export function verificarMidiaBrutos(raiz) {
       : [];
 
     const faltando = [];
-    if (!mp4s.length) faltando.push('.mp4');
     if (!temRoteiro) faltando.push(NOME_ROTEIRO);
     if (!temManifesto) faltando.push(NOME_MANIFESTO);
     if (!temPrints) faltando.push('prints/');
     else if (!pngs.length) faltando.push('prints/*.png (pasta vazia)');
+
+    // v3.4: pasta sem .mp4 = pendência (gravação ainda não chegou), não erro
+    if (!mp4s.length) {
+      pendencias.push(`módulo \`${id}\`: pasta midia/brutos/${id}/ sem .mp4`);
+    } else {
+      for (const m of mp4s) {
+        // Padrão *_bruto_vNN.mp4 (charset seguro); o id do módulo deve aparecer no nome
+        // (aceita crm_bruto_v01.mp4 e gi-crm_c03-c07_bruto_v01.mp4 do estúdio).
+        const okNome = NOME_MP4.test(m) && m.toLowerCase().includes(id.toLowerCase());
+        if (!okNome) {
+          erros.push(`midia/brutos/${id}/${m}: nome fora do padrão \`*_bruto_vNN.mp4\` com o id do módulo (ex.: ${id}_bruto_v01.mp4)`);
+        }
+      }
+    }
 
     if (faltando.length) {
       erros.push(`midia/brutos/${id}/: incompleta — falta ${faltando.join(', ')}`);
@@ -267,6 +294,10 @@ export function verificarMidiaBrutos(raiz) {
     for (const doc of docs) {
       for (const arq of extrairArquivosCitados(doc.texto)) {
         citados.add(arq);
+        if (!citacaoDentroDoModulo(pasta, arq)) {
+          erros.push(`midia/brutos/${id}/: \`${doc.nome}\` cita \`${arq}\` fora da pasta do módulo (../ ou absoluto bloqueados)`);
+          continue;
+        }
         const alvo = path.join(pasta, arq);
         // também aceita em prints/ se o cite for só o basename e estiver em prints/
         const emPrints = path.join(printsDir, path.basename(arq));

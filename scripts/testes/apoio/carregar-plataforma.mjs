@@ -13,11 +13,23 @@ export function carregarPlataforma({ hash = '', fetch: fetchFalso, ffIrParaLogin
   const location = { hash };
   const window = {
     addEventListener: (tipo, fn) => { (ouvintes[tipo] ||= []).push(fn); },
-    dispatchEvent: (ev) => { eventos.push(ev); for (const fn of ouvintes[ev.type] || []) fn(ev); return true; },
+    dispatchEvent: (ev) => {
+      eventos.push(ev);
+      for (const fn of ouvintes[ev.type] || []) fn(ev);
+      return !(ev.cancelable && ev.defaultPrevented);
+    },
     ffIrParaLogin,
     history: { state: null, chamadas: [], replaceState(estado, _titulo, url) { this.chamadas.push(url); location.hash = String(url).startsWith('#') ? url : location.hash; } },
   };
-  class CustomEvent { constructor(type, init = {}) { this.type = type; this.detail = init.detail; } }
+  class CustomEvent {
+    constructor(type, init = {}) {
+      this.type = type;
+      this.detail = init.detail;
+      this.cancelable = !!init.cancelable;
+      this.defaultPrevented = false;
+    }
+    preventDefault() { if (this.cancelable) this.defaultPrevented = true; }
+  }
   const contexto = {
     window, location, CustomEvent, AbortController, setTimeout, clearTimeout,
     fetch: fetchFalso || (async () => { throw new Error('sem rede'); }),
@@ -27,5 +39,9 @@ export function carregarPlataforma({ hash = '', fetch: fetchFalso, ffIrParaLogin
   vm.createContext(contexto);
   vm.runInContext(CODIGO, contexto, { filename: 'plataforma-dados.js' });
   const mudarHash = (novo) => { location.hash = novo; for (const fn of ouvintes.hashchange || []) fn({ type: 'hashchange' }); };
-  return { Plataforma: window.Plataforma, eventos, location, mudarHash, history: window.history };
+  const emitir = (tipo, detail, cancelable = false) => {
+    const ev = new CustomEvent(tipo, { detail, cancelable });
+    return { ev, seguir: window.dispatchEvent(ev) };
+  };
+  return { Plataforma: window.Plataforma, eventos, location, mudarHash, history: window.history, window, emitir, CustomEvent };
 }
