@@ -199,7 +199,7 @@
 .pl-rota li[data-ativo] .pl-rota__no { transform: scale(1.6); background: var(--pl-cor, var(--pl-ceu)); }
 .pl-rota li[data-ativo]::after { opacity: 1; }
 @supports not (container-type: inline-size) {
-  @media (max-width: 639.98px) { .pl-rota__num { display: none; } .pl-rota__no { width: 9px; height: 9px; } }
+  @media (max-width: 599.98px) { .pl-rota__num { display: none; } .pl-rota__no { width: 9px; height: 9px; } }
 }
 @container pl-raiz (max-width: 599.98px) { .pl-rota__num { display: none; } .pl-rota__no { width: 9px; height: 9px; } }
 .pl-rota[data-entrada]::before { animation: pl-rota-linha var(--pl-spring-lenta-dur) var(--pl-spring-lenta) both; }
@@ -347,7 +347,7 @@
 .pl-jornada__titulo { font-size: var(--pl-fs-h1); font-weight: 800; letter-spacing: -.02em; line-height: 1.1; }
 .pl-jornada__texto { color: var(--pl-claro-suave); max-width: 62ch; }
 .pl-trilha { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; }
-@supports not (container-type: inline-size) { @media (min-width: 960px) { .pl-trilha { grid-template-columns: repeat(2, minmax(0, 1fr)); } } }
+@supports not (container-type: inline-size) { @media (min-width: 720px) { .pl-trilha { grid-template-columns: repeat(2, minmax(0, 1fr)); } } }
 @container pl-raiz (min-width: 720px) { .pl-trilha { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .pl-passo {
   --pl-cor: var(--brand-primary);
@@ -387,7 +387,7 @@
 .pl-modulo__cab :where(a, button):focus-visible { outline-color: var(--pl-lima); box-shadow: none; }
 .pl-modulo__grade { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(16px, 3vw, 32px); }
 .pl-modulo__grade > * { min-width: 0; }
-@supports not (container-type: inline-size) { @media (min-width: 960px) { .pl-modulo__grade--sumario { grid-template-columns: 240px minmax(0, 1fr); align-items: start; } } }
+@supports not (container-type: inline-size) { @media (min-width: 820px) { .pl-modulo__grade--sumario { grid-template-columns: 240px minmax(0, 1fr); align-items: start; } } }
 @container pl-raiz (min-width: 820px) { .pl-modulo__grade--sumario { grid-template-columns: 240px minmax(0, 1fr); align-items: start; } }
 .pl-sumario { position: sticky; top: 16px; padding: 12px; border-radius: var(--pl-raio); background: var(--pl-claro-sup); border: 1px solid var(--pl-claro-linha); }
 .pl-sumario h2 { font-size: .95rem; font-weight: 700; color: var(--pl-claro-texto); padding: 6px 10px; }
@@ -396,7 +396,7 @@
 .pl-sumario a::before { counter-increment: s; content: counter(s, decimal-leading-zero); color: var(--brand-primary-700); font: 700 .75rem/1 var(--font-display); }
 .pl-sumario a:hover { background: var(--brand-primary-50); }
 .pl-sumario a[data-prep] { color: var(--pl-claro-suave); }
-@supports not (container-type: inline-size) { @media (max-width: 959.98px) { .pl-sumario { position: static; } .pl-sumario ol { display: flex; flex-wrap: wrap; gap: 4px; } .pl-sumario a { min-height: var(--pl-alvo); padding: 6px 12px; border: 1px solid var(--pl-claro-linha); border-radius: var(--pl-raio-chip); font-size: .85rem; } } }
+@supports not (container-type: inline-size) { @media (max-width: 819.98px) { .pl-sumario { position: static; } .pl-sumario ol { display: flex; flex-wrap: wrap; gap: 4px; } .pl-sumario a { min-height: var(--pl-alvo); padding: 6px 12px; border: 1px solid var(--pl-claro-linha); border-radius: var(--pl-raio-chip); font-size: .85rem; } } }
 @container pl-raiz (max-width: 819.98px) { .pl-sumario { position: static; } .pl-sumario ol { display: flex; flex-wrap: wrap; gap: 4px; } .pl-sumario a { min-height: var(--pl-alvo); padding: 6px 12px; border: 1px solid var(--pl-claro-linha); border-radius: var(--pl-raio-chip); font-size: .85rem; } }
 .pl-secoes { display: grid; gap: 16px; min-width: 0; }
 .pl-secao { scroll-margin-top: 16px; padding: clamp(16px, 2.5vw, 28px); border-radius: var(--pl-raio); background: var(--pl-claro-sup); border: 1px solid var(--pl-claro-linha); box-shadow: var(--shadow-sm); display: grid; gap: 12px; min-width: 0; }
@@ -521,7 +521,7 @@ a.pl-link-card:hover .pl-link-card__seta, a.pl-link-card:focus-visible .pl-link-
 .pl-vis-destaque__acao { grid-column: 2; justify-self: start; }
 .pl-vis-destaque__erro { grid-column: 1 / -1; }
 @supports not (container-type: inline-size) {
-  @media (min-width: 640px) {
+  @media (min-width: 600px) {
     .pl-vis-destaque { grid-template-columns: auto 1fr auto; align-items: center; }
     .pl-vis-destaque__acao { grid-column: 3; grid-row: 1; }
   }
