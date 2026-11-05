@@ -13,8 +13,8 @@ Conferir sem gravar: `node scripts/gerar-base-conhecimento.mjs --harness <pasta>
 ## Marcas de crase (tela / codigo)
 
 - tela pelo glossário de telas do Harness: 113
-- tela inferida pelo módulo (caminho de menu fora do glossário cujo 1º segmento é um módulo do índice): 198
-- codigo: 217
+- tela inferida pelo módulo (caminho de menu fora do glossário cujo 1º segmento é um módulo do índice): 195
+- codigo: 220
 
 ## Telas inferidas pelo módulo — conferir com conhecimento/glossario/telas.yaml
 
@@ -29,7 +29,6 @@ Conferir sem gravar: `node scripts/gerar-base-conhecimento.mjs --harness <pasta>
 | Compras > Configurações > Parâmetros | compras | 1 |
 | Compras > Cotações de Compra | compras | 1 |
 | Compras > Follow-up de Entregas | compras | 1 |
-| Compras > Pedidos de Compra > ⋯ | compras | 1 |
 | CRM > Vendas > Leads > Kanban de Leads | crm | 3 |
 | CRM > Painéis > Visão Geral | crm | 2 |
 | CRM > Vendas > Atividades | crm | 2 |
@@ -97,8 +96,6 @@ Conferir sem gravar: `node scripts/gerar-base-conhecimento.mjs --harness <pasta>
 | Recebimento > Configurações > CFOP | recebimento | 1 |
 | Recebimento > Configurações > Parâmetros de Recebimento | recebimento | 1 |
 | Recebimento > Distribuição DFe | recebimento | 1 |
-| Recebimento > Notas de Recebimento > ⋮ | recebimento | 1 |
-| Recebimento > Notas de Recebimento > ⋮ > Finalizar | recebimento | 1 |
 | Recebimento > Notas de Recebimento > Importar XML | recebimento | 1 |
 | Serviços > Medições | servicos | 4 |
 | Serviços > Configurações > Equipes de Campo | servicos | 3 |

@@ -224,3 +224,20 @@ describe('v3.1 — caminho de menu: glossário, inferido pelo módulo ou codigo'
     assert.equal(criarClassificadorTelas(GLOSSARIO)('Estoque > Locais (fictício)'), 'codigo', 'sem módulos não infere');
   });
 });
+
+describe('v3.2 — caminho com menu de ações (⋯ / ⋮) não é tela inferida', () => {
+  const marca = criarClassificadorTelas([{ nome: 'Notas (fictício)', caminho: 'Recebimento > Notas (fictício)' }], [
+    { id: 'compras', titulo: 'Compras' }, { id: 'recebimento', titulo: 'Recebimento' }, { id: 'estoque', titulo: 'Estoque' },
+  ]);
+  it('segmento ⋯ ou ⋮, ou ação depois deles → codigo', () => {
+    assert.equal(marca('Compras > Pedidos de Compra > ⋯'), 'codigo');
+    assert.equal(marca('Recebimento > Notas de Recebimento > ⋮ > Finalizar'), 'codigo');
+    assert.equal(marca('Recebimento > Notas de Recebimento > ⋮'), 'codigo');
+    assert.equal(marca('Estoque › Saldo › ⋯ › Exportar'), 'codigo');
+    assert.equal(marca.origem('Compras > Pedidos de Compra > ⋯'), null);
+  });
+  it('sem ⋯/⋮ continua inferido; glossário não muda', () => {
+    assert.deepEqual(marca.origem('Compras > Pedidos de Compra'), { tipo: 'modulo', modulo: 'compras' });
+    assert.deepEqual(marca.origem('Recebimento > Notas (fictício)'), { tipo: 'glossario' });
+  });
+});

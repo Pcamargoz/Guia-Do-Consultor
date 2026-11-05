@@ -984,7 +984,7 @@
       "onde": [
        {
         "t": "Recebimento > Notas de Recebimento > ⋮ > Finalizar",
-        "marca": "tela"
+        "marca": "codigo"
        }
       ],
       "intro": [
@@ -1003,7 +1003,7 @@
       "onde": [
        {
         "t": "Recebimento > Notas de Recebimento > ⋮",
-        "marca": "tela"
+        "marca": "codigo"
        }
       ],
       "intro": [
