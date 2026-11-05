@@ -186,3 +186,58 @@ describe('vídeo: legendas_url (v3, item 4)', () => {
     assert.ok(validarDetalhe(link).some((e) => e.includes('só bloco de vídeo')));
   });
 });
+
+describe('v3.1 — caminho de menu: glossário, inferido pelo módulo ou codigo', () => {
+  const GLOSSARIO = [{ nome: 'Pedidos de Venda (fictício)', caminho: 'Vendas > Pedidos de Venda (fictício)' }];
+  const MODULOS = [
+    { id: 'estoque', titulo: 'Estoque' },
+    { id: 'expedicao', titulo: 'Expedição' },
+    { id: 'fundacao', titulo: 'Cadastros e Fundação' },
+    { id: 'servicos', titulo: 'Serviços e Instalação' },
+    { id: 'alumina', titulo: 'Alumina — IA' },
+    { id: 'vendas', titulo: 'Vendas' },
+  ];
+  const marca = criarClassificadorTelas(GLOSSARIO, MODULOS);
+
+  it('glossário continua igual (origem "glossario")', () => {
+    assert.equal(marca('Vendas > Pedidos de Venda (fictício)'), 'tela');
+    assert.equal(marca('Pedidos de Venda (fictício)'), 'tela');
+    assert.deepEqual(marca.origem('Vendas › Pedidos de Venda (fictício)'), { tipo: 'glossario' });
+  });
+
+  it('inferido pelo módulo: 1º segmento é módulo do índice (sem acento/caixa; título até " e "/" — ")', () => {
+    assert.equal(marca('Estoque > Locais (fictício)'), 'tela');
+    assert.deepEqual(marca.origem('Estoque > Locais (fictício)'), { tipo: 'modulo', modulo: 'estoque' });
+    assert.deepEqual(marca.origem('EXPEDICAO >  Montar carga (fictício)'), { tipo: 'modulo', modulo: 'expedicao' });
+    assert.deepEqual(marca.origem('Cadastros > Clientes (fictício)'), { tipo: 'modulo', modulo: 'fundacao' });
+    assert.deepEqual(marca.origem('Serviços › Medições (fictício)'), { tipo: 'modulo', modulo: 'servicos' });
+    assert.deepEqual(marca.origem('Alumina > Conversas (fictício)'), { tipo: 'modulo', modulo: 'alumina' });
+  });
+
+  it('1º segmento desconhecido, sem separador ou sem módulos → codigo', () => {
+    assert.equal(marca('Configurações > Empresas'), 'codigo');
+    assert.equal(marca('⋯ > Faturar'), 'codigo');
+    assert.equal(marca('Segurança > Perfis de Acesso'), 'codigo');
+    assert.equal(marca('Estoque'), 'codigo', 'só o nome do módulo não é caminho de menu');
+    assert.equal(marca('Estoque >'), 'codigo');
+    assert.equal(marca.origem('Configurações > Empresas'), null);
+    assert.equal(criarClassificadorTelas(GLOSSARIO)('Estoque > Locais (fictício)'), 'codigo', 'sem módulos não infere');
+  });
+});
+
+describe('v3.2 — caminho com menu de ações (⋯ / ⋮) não é tela inferida', () => {
+  const marca = criarClassificadorTelas([{ nome: 'Notas (fictício)', caminho: 'Recebimento > Notas (fictício)' }], [
+    { id: 'compras', titulo: 'Compras' }, { id: 'recebimento', titulo: 'Recebimento' }, { id: 'estoque', titulo: 'Estoque' },
+  ]);
+  it('segmento ⋯ ou ⋮, ou ação depois deles → codigo', () => {
+    assert.equal(marca('Compras > Pedidos de Compra > ⋯'), 'codigo');
+    assert.equal(marca('Recebimento > Notas de Recebimento > ⋮ > Finalizar'), 'codigo');
+    assert.equal(marca('Recebimento > Notas de Recebimento > ⋮'), 'codigo');
+    assert.equal(marca('Estoque › Saldo › ⋯ › Exportar'), 'codigo');
+    assert.equal(marca.origem('Compras > Pedidos de Compra > ⋯'), null);
+  });
+  it('sem ⋯/⋮ continua inferido; glossário não muda', () => {
+    assert.deepEqual(marca.origem('Compras > Pedidos de Compra'), { tipo: 'modulo', modulo: 'compras' });
+    assert.deepEqual(marca.origem('Recebimento > Notas (fictício)'), { tipo: 'glossario' });
+  });
+});

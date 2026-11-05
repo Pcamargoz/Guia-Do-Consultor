@@ -55,7 +55,7 @@
       "onde": [
        {
         "t": "Serviços > Dashboard Serviços",
-        "marca": "codigo"
+        "marca": "tela"
        }
       ],
       "intro": null,
@@ -109,7 +109,7 @@
       "onde": [
        {
         "t": "Serviços > Medições",
-        "marca": "codigo"
+        "marca": "tela"
        }
       ],
       "intro": null,
@@ -207,7 +207,7 @@
       "onde": [
        {
         "t": "Serviços > Configurações > Equipes de Campo",
-        "marca": "codigo"
+        "marca": "tela"
        }
       ],
       "intro": null,
@@ -378,7 +378,7 @@
          },
          {
           "t": "Serviços > Medições",
-          "marca": "codigo"
+          "marca": "tela"
          },
          {
           "t": ", clicar em "
@@ -563,7 +563,7 @@
          },
          {
           "t": "Serviços > Dashboard Serviços",
-          "marca": "codigo"
+          "marca": "tela"
          }
         ]
        },
@@ -575,7 +575,7 @@
          },
          {
           "t": "Serviços > Medições",
-          "marca": "codigo"
+          "marca": "tela"
          }
         ]
        },
@@ -599,7 +599,7 @@
          },
          {
           "t": "Serviços > Configurações > Equipes de Campo",
-          "marca": "codigo"
+          "marca": "tela"
          }
         ]
        },
@@ -1111,7 +1111,7 @@
       "onde": [
        {
         "t": "Serviços > Medições",
-        "marca": "codigo"
+        "marca": "tela"
        },
        {
         "t": " (medição \"Aguardando Conferência\")"
@@ -1143,7 +1143,7 @@
        },
        {
         "t": "Serviços > Instalações",
-        "marca": "codigo"
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -1169,7 +1169,7 @@
        },
        {
         "t": "Serviços > Vistorias > + Nova Vistoria",
-        "marca": "codigo"
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -1227,21 +1227,21 @@
       "onde": [
        {
         "t": "Serviços > Cockpit de Campo",
-        "marca": "codigo"
+        "marca": "tela"
        },
        {
         "t": ", "
        },
        {
         "t": "Serviços > Dashboard Serviços",
-        "marca": "codigo"
+        "marca": "tela"
        },
        {
         "t": " e "
        },
        {
         "t": "Serviços > Minha Equipe Agora",
-        "marca": "codigo"
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -1513,7 +1513,7 @@
          },
          {
           "t": "Serviços > Configurações > Equipes de Campo",
-          "marca": "codigo"
+          "marca": "tela"
          },
          {
           "t": ". "
@@ -2051,7 +2051,7 @@
          },
          {
           "t": "Serviços > Configurações > Conferentes",
-          "marca": "codigo"
+          "marca": "tela"
          },
          {
           "t": "; o manual-11-servicos cita "

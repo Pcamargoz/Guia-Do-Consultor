@@ -55,7 +55,7 @@
       "onde": [
        {
         "t": "Recebimento > Dashboard Recebimento",
-        "marca": "codigo"
+        "marca": "tela"
        }
       ],
       "intro": null,
@@ -93,7 +93,7 @@
       "onde": [
        {
         "t": "Recebimento > Notas de Recebimento",
-        "marca": "codigo"
+        "marca": "tela"
        }
       ],
       "intro": null,
@@ -177,7 +177,7 @@
        },
        {
         "t": "Recebimento > Aprovações",
-        "marca": "codigo"
+        "marca": "tela"
        },
        {
         "t": " (é a fila de conferências)"
@@ -260,7 +260,7 @@
          },
          {
           "t": "Estoque > Movimentos",
-          "marca": "codigo"
+          "marca": "tela"
          },
          {
           "t": " e o título em "
@@ -357,7 +357,7 @@
       "onde": [
        {
         "t": "Compras > Pedidos de Compra",
-        "marca": "codigo"
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -394,7 +394,7 @@
          },
          {
           "t": "Compras > Pedidos de Compra",
-          "marca": "codigo"
+          "marca": "tela"
          },
          {
           "t": "), abrir o menu "
@@ -490,7 +490,7 @@
          },
          {
           "t": "Recebimento > Notas de Recebimento",
-          "marca": "codigo"
+          "marca": "tela"
          },
          {
           "t": " a nota aparece como \"NF-‹número do fornecedor›\" e na fila de conferência como \"NR-‹número interno›\": é a mesma nota."
@@ -546,7 +546,7 @@
          },
          {
           "t": "Compras > Pedidos de Compra",
-          "marca": "codigo"
+          "marca": "tela"
          }
         ]
        },
@@ -558,7 +558,7 @@
          },
          {
           "t": "Recebimento > Dashboard Recebimento",
-          "marca": "codigo"
+          "marca": "tela"
          }
         ]
        },
@@ -570,7 +570,7 @@
          },
          {
           "t": "Recebimento > Notas de Recebimento",
-          "marca": "codigo"
+          "marca": "tela"
          }
         ]
        },
@@ -582,7 +582,7 @@
          },
          {
           "t": "Recebimento > Aprovações",
-          "marca": "codigo"
+          "marca": "tela"
          },
          {
           "t": " (é a fila de conferências)"
@@ -862,14 +862,14 @@
       "onde": [
        {
         "t": "Recebimento > Configurações > Parâmetros de Recebimento",
-        "marca": "codigo"
+        "marca": "tela"
        },
        {
         "t": " e "
        },
        {
         "t": "Recebimento > Distribuição DFe",
-        "marca": "codigo"
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -888,14 +888,14 @@
       "onde": [
        {
         "t": "Recebimento > Aguardando manifestação",
-        "marca": "codigo"
+        "marca": "tela"
        },
        {
         "t": " e "
        },
        {
         "t": "Recebimento > Notas de Recebimento > Importar XML",
-        "marca": "codigo"
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -933,7 +933,7 @@
       "onde": [
        {
         "t": "Compras > Pedidos de Compra",
-        "marca": "codigo"
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -955,14 +955,14 @@
        },
        {
         "t": "Recebimento > Aprovações",
-        "marca": "codigo"
+        "marca": "tela"
        },
        {
         "t": " (fluxo antigo) ou "
        },
        {
         "t": "Recebimento > Conferências",
-        "marca": "codigo"
+        "marca": "tela"
        },
        {
         "t": " (gestora)"
@@ -1216,7 +1216,7 @@
          },
          {
           "t": "Compras > Pedidos de Compra",
-          "marca": "codigo"
+          "marca": "tela"
          },
          {
           "t": ", status \"Em Aberto\" e sem alçada pendente. "
@@ -1245,7 +1245,7 @@
          },
          {
           "t": "Estoque > Locais",
-          "marca": "codigo"
+          "marca": "tela"
          },
          {
           "t": " na empresa que recebe (é onde a nota dá entrada)."
@@ -1288,7 +1288,7 @@
          },
          {
           "t": "Recebimento > Configurações > CFOP",
-          "marca": "codigo"
+          "marca": "tela"
          },
          {
           "t": ". Sem plano de contas não nasce título. "
@@ -1830,14 +1830,14 @@
          },
          {
           "t": "Recebimento > Aprovações",
-          "marca": "codigo"
+          "marca": "tela"
          },
          {
           "t": "; a gestora usa "
          },
          {
           "t": "Recebimento > Conferências",
-          "marca": "codigo"
+          "marca": "tela"
          },
          {
           "t": ", visível só com \"Usar Conferência Física\". Conferir o rótulo do menu."

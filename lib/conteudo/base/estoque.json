@@ -55,7 +55,7 @@
       "onde": [
        {
         "t": "Estoque > Visão geral",
-        "marca": "codigo"
+        "marca": "tela"
        }
       ],
       "intro": null,
@@ -93,7 +93,7 @@
       "onde": [
        {
         "t": "Estoque > Saldo",
-        "marca": "codigo"
+        "marca": "tela"
        }
       ],
       "intro": null,
@@ -225,7 +225,7 @@
       "onde": [
        {
         "t": "Estoque > Movimentos",
-        "marca": "codigo"
+        "marca": "tela"
        }
       ],
       "intro": null,
@@ -409,7 +409,7 @@
        },
        {
         "t": "Estoque > Locais",
-        "marca": "codigo"
+        "marca": "tela"
        },
        {
         "t": ". Se faltar permissão ou cadastro-base (botão que não aparece, CFOP, plano de contas, meio de pagamento, unidade de medida, almoxarifado), anote a mensagem em "
@@ -513,7 +513,7 @@
          },
          {
           "t": "Estoque > Saldo",
-          "marca": "codigo"
+          "marca": "tela"
          },
          {
           "t": ", pesquisar o seu produto no campo \"Buscar na lista: produto, código, local...\" e conferir o "
@@ -600,7 +600,7 @@
          },
          {
           "t": "Estoque > Visão geral",
-          "marca": "codigo"
+          "marca": "tela"
          }
         ]
        },
@@ -612,7 +612,7 @@
          },
          {
           "t": "Estoque > Saldo",
-          "marca": "codigo"
+          "marca": "tela"
          }
         ]
        },
@@ -632,7 +632,7 @@
          },
          {
           "t": "Estoque > Movimentos",
-          "marca": "codigo"
+          "marca": "tela"
          }
         ]
        },
@@ -1157,14 +1157,14 @@
       "onde": [
        {
         "t": "Estoque > Locais",
-        "marca": "codigo"
+        "marca": "tela"
        },
        {
         "t": " e "
        },
        {
         "t": "Estoque > Configurações > Parâmetros de Estoque",
-        "marca": "codigo"
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -1183,7 +1183,7 @@
       "onde": [
        {
         "t": "Estoque > Saldo > Mais > Importar saldo",
-        "marca": "codigo"
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -1221,7 +1221,7 @@
       "onde": [
        {
         "t": "Estoque > Movimentos",
-        "marca": "codigo"
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -1240,7 +1240,7 @@
       "onde": [
        {
         "t": "Estoque > Saldo",
-        "marca": "codigo"
+        "marca": "tela"
        },
        {
         "t": " e o código do produto"
@@ -1262,7 +1262,7 @@
       "onde": [
        {
         "t": "Estoque > Transferências",
-        "marca": "codigo"
+        "marca": "tela"
        },
        {
         "t": " e coluna "
@@ -1291,14 +1291,14 @@
       "onde": [
        {
         "t": "Estoque > Inventário",
-        "marca": "codigo"
+        "marca": "tela"
        },
        {
         "t": " e "
        },
        {
         "t": "Estoque > Aprovações > Inventários",
-        "marca": "codigo"
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -1317,7 +1317,7 @@
       "onde": [
        {
         "t": "Estoque > Empréstimos",
-        "marca": "codigo"
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -1336,21 +1336,21 @@
       "onde": [
        {
         "t": "Estoque > Reposição",
-        "marca": "codigo"
+        "marca": "tela"
        },
        {
         "t": ", "
        },
        {
         "t": "Compras > Sugestão de Compra",
-        "marca": "codigo"
+        "marca": "tela"
        },
        {
         "t": " e "
        },
        {
         "t": "Estoque > Reservas órfãs",
-        "marca": "codigo"
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -2192,28 +2192,28 @@
          },
          {
           "t": "Estoque > Locais",
-          "marca": "codigo"
+          "marca": "tela"
          },
          {
           "t": " e "
          },
          {
           "t": "Estoque > Inventário",
-          "marca": "codigo"
+          "marca": "tela"
          },
          {
           "t": "; a gestora usa "
          },
          {
           "t": "Estoque > Configurações > Locais",
-          "marca": "codigo"
+          "marca": "tela"
          },
          {
           "t": " e "
          },
          {
           "t": "Estoque > Inventários",
-          "marca": "codigo"
+          "marca": "tela"
          },
          {
           "t": ". Conferir os rótulos."

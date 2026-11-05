@@ -6,7 +6,7 @@
    (ou HARNESS_DIR=<pasta> no ambiente). --verificar não grava: sai com código 1 se algum arquivo da base
    versionada estiver desatualizado, faltando ou sobrando.
    Nada é inventado: cada bloco cita `fontes`; sem fonte → "em-preparacao". Ver refatoracao-guia-do-consultor/03 e 05. */
-import { readdir, readFile, rm, mkdir, writeFile } from 'node:fs/promises';
+import { readdir, readFile, rm, mkdir, stat, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parseArgs } from 'node:util';
@@ -28,7 +28,8 @@ const comoJson = (x) => `${JSON.stringify(x, null, 1)}\n`;
 
 /** Índice = base sem jornadas nem conteúdo retido (é o que o resumo precisa). */
 export function indiceDaBase(base) {
-  return { ...base, modulos: base.modulos.map(({ jornadas, retido, ...m }) => m) };
+  const { marcas, ...resto } = base; // relatório das marcas fica fora do índice (só LEIA-ME.md e saída do gerador)
+  return { ...resto, modulos: base.modulos.map(({ jornadas, retido, ...m }) => m) };
 }
 
 /**
@@ -54,9 +55,58 @@ Fontes: Harness Faktory Flow (conhecimento/) e dados do Guia gerados do Harness.
 - Leitura: \`lib/conteudo/base.js\` (fs.readFileSync + JSON.parse, sob demanda, id conferido contra o índice).
 
 Conferir sem gravar: \`node scripts/gerar-base-conhecimento.mjs --harness <pasta> --verificar\`.
-`;
+${secaoMarcas(base.marcas)}`;
   return arquivos;
 }
+
+/** Seção do relatório com as marcas de crase (LEIA-ME.md da base e saída do gerador). */
+export function linhasMarcas(marcas) {
+  if (!marcas) return [];
+  const inferidas = marcas.telas_inferidas || [];
+  return [
+    `Marcas de crase: ${marcas.tela_glossario + marcas.tela_modulo} tela (${marcas.tela_glossario} pelo glossário · ${marcas.tela_modulo} inferidas pelo módulo) · ${marcas.codigo} codigo`,
+    `Telas inferidas pelo módulo (fora do glossário; conferir com conhecimento/glossario/telas.yaml): ${inferidas.length}`,
+    ...inferidas.map((x) => `  - "${x.texto}" · módulo ${x.modulo} · ${x.ocorrencias}×`),
+  ];
+}
+
+function secaoMarcas(marcas) {
+  if (!marcas) return '';
+  const inferidas = marcas.telas_inferidas || [];
+  return `
+## Marcas de crase (tela / codigo)
+
+- tela pelo glossário de telas do Harness: ${marcas.tela_glossario}
+- tela inferida pelo módulo (caminho de menu fora do glossário cujo 1º segmento é um módulo do índice): ${marcas.tela_modulo}
+- codigo: ${marcas.codigo}
+
+## Telas inferidas pelo módulo — conferir com conhecimento/glossario/telas.yaml
+
+${inferidas.length ? `| texto | módulo | ocorrências |\n|---|---|---|\n${inferidas.map((x) => `| ${x.texto.replace(/\|/g, '\\|')} | ${x.modulo} | ${x.ocorrencias} |`).join('\n')}\n` : 'Nenhuma.\n'}`;
+}
+
+/** Pasta do Harness: --harness ou HARNESS_DIR. Sem ela, erro claro (nunca falha obscura). */
+export const MENSAGEM_SEM_HARNESS = [
+  'Falta a pasta do Harness (Harness-Arquitetura-Flow), que é a fonte da base.',
+  'Informe de um destes jeitos:',
+  '  node scripts/gerar-base-conhecimento.mjs --harness /caminho/Harness-Arquitetura-Flow [--verificar]',
+  '  HARNESS_DIR=/caminho/Harness-Arquitetura-Flow npm run base:verificar   (ou npm run base:gerar)',
+  'O Harness é só lido; nada é gravado nele.',
+].join('\n');
+
+export async function resolverHarness({ harness, env = process.env } = {}) {
+  const escolhido = (harness || env.HARNESS_DIR || '').trim();
+  if (!escolhido) throw new ErroUso(MENSAGEM_SEM_HARNESS);
+  const pasta = path.resolve(escolhido);
+  try {
+    if (!(await stat(path.join(pasta, 'conhecimento'))).isDirectory()) throw new Error();
+  } catch {
+    throw new ErroUso(`A pasta do Harness não tem "conhecimento/": ${pasta}\nConfira o caminho em --harness ou HARNESS_DIR (deve apontar para Harness-Arquitetura-Flow).`);
+  }
+  return pasta;
+}
+
+export class ErroUso extends Error {}
 
 /** Confere que a base produz respostas válidas no contrato para todos os perfis, módulos e jornadas. */
 export function validarBaseContraContrato(base) {
@@ -106,13 +156,12 @@ export async function compararPasta(saida, arquivos) {
 
 async function main() {
   const { values } = parseArgs({ options: { harness: { type: 'string' }, versao: { type: 'string' }, saida: { type: 'string' }, verificar: { type: 'boolean', default: false } } });
-  const harness = values.harness || process.env.HARNESS_DIR;
-  if (!harness) throw new Error('Informe a pasta do Harness: --harness <pasta Harness-Arquitetura-Flow> ou HARNESS_DIR.');
+  const harness = await resolverHarness({ harness: values.harness });
   const saida = path.resolve(values.saida || PADRAO_SAIDA);
   const versao = values.versao || (values.verificar ? await versaoAtual(saida) : null) || hojeBrt();
   if (!/^\d{4}-\d{2}-\d{2}$/.test(versao)) throw new Error('--versao deve ser AAAA-MM-DD.');
 
-  const base = await gerar({ harness: path.resolve(harness), versao });
+  const base = await gerar({ harness, versao });
   const erros = validarBaseContraContrato(base);
   if (erros.length) {
     console.error(`✖ A base não respeita o contrato (${erros.length} erro(s)):\n  ${erros.slice(0, 30).join('\n  ')}`);
@@ -137,7 +186,7 @@ async function main() {
       if (sobrando.length) console.error(`  sobrando: ${sobrando.join(', ')}`);
       process.exit(1);
     }
-    console.log(`✔ Base em dia (${versao}): ${resumo}\n  ${tamanhos}`);
+    console.log(`✔ Base em dia (${versao}): ${resumo}\n  ${tamanhos}\n  ${linhasMarcas(base.marcas)[0]}`);
     return;
   }
   await mkdir(saida, { recursive: true });
@@ -146,8 +195,12 @@ async function main() {
   for (const [nome, texto] of Object.entries(arquivos)) await writeFile(path.join(saida, nome), texto);
   console.log(`✔ ${rel}/ (${versao}): ${Object.keys(arquivos).length} arquivos · ${resumo}\n  ${tamanhos}`);
   for (const p of base.pendencias) console.log(`  · pendência: ${p}`);
+  for (const l of linhasMarcas(base.marcas)) console.log(`  ${l}`);
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  main().catch((err) => { console.error(err.message); process.exit(1); });
+  main().catch((err) => {
+    console.error(err instanceof ErroUso ? `✖ ${err.message}` : `✖ Erro ao gerar a base: ${err.message}`);
+    process.exit(err instanceof ErroUso ? 2 : 1);
+  });
 }

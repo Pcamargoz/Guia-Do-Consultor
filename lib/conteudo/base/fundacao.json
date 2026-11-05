@@ -218,7 +218,7 @@
          },
          {
           "t": "Estoque > Saldo",
-          "marca": "codigo"
+          "marca": "tela"
          },
          {
           "t": " e ler classificação, unidade, categoria, NCM, dimensões e pesos."
@@ -1091,7 +1091,7 @@
       "onde": [
        {
         "t": "Faturamento > Configurações > Certificados",
-        "marca": "codigo"
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -1186,7 +1186,7 @@
        },
        {
         "t": "Fiscal > Configurações > NCM",
-        "marca": "codigo"
+        "marca": "tela"
        },
        {
         "t": " e "
@@ -1269,7 +1269,7 @@
       "onde": [
        {
         "t": "Fiscal > Configurações > CFOP",
-        "marca": "codigo"
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -1910,7 +1910,7 @@
          },
          {
           "t": "Fiscal > Configurações > NCM",
-          "marca": "codigo"
+          "marca": "tela"
          },
          {
           "t": "; a gestora lista a tela no grupo de cadastros. Conferir no menu."

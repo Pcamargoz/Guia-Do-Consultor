@@ -1301,7 +1301,7 @@
        },
        {
         "t": "Estoque > Movimentos",
-        "marca": "codigo"
+        "marca": "tela"
        },
        {
         "t": ", "
@@ -1619,7 +1619,7 @@
          },
          {
           "t": "Faturamento > Configurações > Certificados",
-          "marca": "codigo"
+          "marca": "tela"
          },
          {
           "t": " (botão \"Configuração Guiada\"). O número é dado na transmissão e nunca volta: série errada colide com a numeração antiga (rejeição 539). "
@@ -1730,7 +1730,7 @@
          },
          {
           "t": "Estoque > Locais",
-          "marca": "codigo"
+          "marca": "tela"
          },
          {
           "t": " (ou local de estoque da obra)."
@@ -1773,7 +1773,7 @@
          },
          {
           "t": "Faturamento > Configurações > CFOP",
-          "marca": "codigo"
+          "marca": "tela"
          },
          {
           "t": " e o NCM do produto. Sem o CST, a nota sai com o quadro \"Impostos não calculados\". "
@@ -2278,7 +2278,7 @@
          },
          {
           "t": "Estoque > Movimentos",
-          "marca": "codigo"
+          "marca": "tela"
          },
          {
           "t": ". Conferir na tela."

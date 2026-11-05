@@ -688,21 +688,21 @@
       "onde": [
        {
         "t": "Fiscal > Configurações > CFOP",
-        "marca": "codigo"
+        "marca": "tela"
        },
        {
         "t": " (também em "
        },
        {
         "t": "Faturamento > Configurações > CFOP",
-        "marca": "codigo"
+        "marca": "tela"
        },
        {
         "t": ") e "
        },
        {
         "t": "Fiscal > Configurações > Textos Fiscais",
-        "marca": "codigo"
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -721,7 +721,7 @@
       "onde": [
        {
         "t": "Fiscal > Configurações > NCM",
-        "marca": "codigo"
+        "marca": "tela"
        },
        {
         "t": " (modal \"NCM por Estado\" na mesma tela)"
@@ -743,14 +743,14 @@
       "onde": [
        {
         "t": "Fiscal > Onboarding Fiscal",
-        "marca": "codigo"
+        "marca": "tela"
        },
        {
         "t": " e "
        },
        {
         "t": "Fiscal > Diagnóstico Fiscal",
-        "marca": "codigo"
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -835,28 +835,28 @@
       "onde": [
        {
         "t": "Fiscal > Regras Fiscais de Serviço",
-        "marca": "codigo"
+        "marca": "tela"
        },
        {
         "t": ", "
        },
        {
         "t": "Fiscal > Escrituração SPED",
-        "marca": "codigo"
+        "marca": "tela"
        },
        {
         "t": ", "
        },
        {
         "t": "Fiscal > Sintegra",
-        "marca": "codigo"
+        "marca": "tela"
        },
        {
         "t": ", "
        },
        {
         "t": "Fiscal > GNRE",
-        "marca": "codigo"
+        "marca": "tela"
        }
       ],
       "intro": [

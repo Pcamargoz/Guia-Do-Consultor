@@ -12,7 +12,8 @@ import { pathToFileURL } from 'node:url';
 import { carregarHarness, lerFrontmatter } from '../../lib/conteudo/fontes.js';
 import { MAPA_MODULOS, SECOES } from '../../lib/conteudo/mapa-modulos.js';
 import { duracaoEmSegundos, montarBase } from '../../lib/conteudo/montar.js';
-import { compararPasta, gerar, hojeBrt, indiceDaBase, serializarBase, validarBaseContraContrato } from '../gerar-base-conhecimento.mjs';
+import { compararPasta, gerar, hojeBrt, indiceDaBase, linhasMarcas, MENSAGEM_SEM_HARNESS, serializarBase, validarBaseContraContrato } from '../gerar-base-conhecimento.mjs';
+import { spawnSync } from 'node:child_process';
 import { guiaFicticio, harnessFicticio, MAPA_FICTICIO, VERSAO_FICTICIA } from './fixtures/fontes-ficticias.mjs';
 
 const RAIZ = path.join(path.dirname(fileURLToPath(import.meta.url)), '../..');
@@ -279,5 +280,48 @@ describe('Harness real', { skip: TEM_HARNESS ? false : `Harness não encontrado 
     const nova = await gerar({ harness: HARNESS, versao: BASE.versao });
     const dif = await compararPasta(PASTA_BASE, serializarBase(nova));
     assert.deepEqual(dif, { desatualizados: [], faltando: [], sobrando: [] }, 'base desatualizada: rode node scripts/gerar-base-conhecimento.mjs --harness <pasta>');
+  });
+});
+
+describe('v3.1 — relatório de telas inferidas e Harness ausente', () => {
+  const base = montarBase({ harness: harnessFicticio(), guia: guiaFicticio(), versao: VERSAO_FICTICIA, mapa: MAPA_FICTICIO });
+
+  it('casos inferidos pelo módulo aparecem no relatório, separados do glossário', () => {
+    assert.deepEqual(base.marcas.telas_inferidas, [{ texto: 'Estoque > Locais', modulo: 'estoque', ocorrencias: 1 }]);
+    assert.equal(base.marcas.tela_modulo, 1);
+    assert.ok(base.marcas.tela_glossario >= 1, 'match do glossário (Vendas > Pedidos) contado à parte');
+    const linhas = linhasMarcas(base.marcas);
+    assert.match(linhas[0], /pelo glossário · 1 inferidas pelo módulo/);
+    assert.ok(linhas.some((l) => l.includes('"Estoque > Locais" · módulo estoque · 1×')));
+    assert.ok(!linhas.some((l) => l.includes('Configurações > Empresas')), 'codigo não entra no relatório');
+    const leia = serializarBase(base)['LEIA-ME.md'];
+    assert.match(leia, /## Telas inferidas pelo módulo/);
+    assert.match(leia, /\| Estoque > Locais \| estoque \| 1 \|/);
+    assert.ok(!('marcas' in indiceDaBase(base)), 'relatório fica fora do indice.json');
+  });
+
+  const rodar = (args, env) => spawnSync(process.execPath, [path.join(RAIZ, 'scripts/gerar-base-conhecimento.mjs'), ...args], { encoding: 'utf8', env, cwd: RAIZ });
+  const semHarnessEnv = () => { const e = { ...process.env }; delete e.HARNESS_DIR; return e; };
+
+  it('sem HARNESS_DIR nem --harness: --verificar e geração saem ≠ 0 com mensagem clara (nada gravado)', () => {
+    const antes = readFileSync(path.join(PASTA_BASE, 'indice.json'), 'utf8');
+    for (const args of [['--verificar'], ['--versao', '2026-01-01']]) {
+      const r = rodar(args, semHarnessEnv());
+      assert.notEqual(r.status, 0, `${args.join(' ')} deveria falhar`);
+      assert.equal(r.status, 2);
+      assert.ok(r.stderr.includes(MENSAGEM_SEM_HARNESS), r.stderr);
+      assert.match(r.stderr, /HARNESS_DIR=/);
+      assert.match(r.stderr, /--harness/);
+    }
+    assert.equal(readFileSync(path.join(PASTA_BASE, 'indice.json'), 'utf8'), antes);
+  });
+
+  it('pasta do Harness sem conhecimento/ também falha com mensagem clara', async () => {
+    const tmp = await mkdtemp(path.join(os.tmpdir(), 'sem-harness-'));
+    try {
+      const r = rodar(['--verificar', '--harness', tmp], semHarnessEnv());
+      assert.equal(r.status, 2);
+      assert.match(r.stderr, /não tem "conhecimento\/"/);
+    } finally { await rm(tmp, { recursive: true, force: true }); }
   });
 });
