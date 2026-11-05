@@ -1,6 +1,6 @@
 /* Servidor de desenvolvimento local que imita o Vercel:
    middleware.js → funções em /api (exports GET/POST/PUT/PATCH/DELETE) → arquivos de public/.
-   Uso: npm run dev   (ou via docker compose, serviço "app") */
+   Escuta em 127.0.0.1 por padrão (HOST=… para mudar). Uso: npm run dev */
 import http from 'node:http';
 import { readFile, stat } from 'node:fs/promises';
 import { fileURLToPath, pathToFileURL } from 'node:url';
@@ -9,6 +9,8 @@ import path from 'node:path';
 const RAIZ = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 const PUBLICO = path.join(RAIZ, 'public');
 const PORTA = Number(process.env.PORT || 3000);
+/** Loopback por padrão (não escuta em 0.0.0.0). Override: HOST=0.0.0.0 npm run dev */
+const HOST = (process.env.HOST && String(process.env.HOST).trim()) || '127.0.0.1';
 const TIPOS = {
   '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8',
   '.png': 'image/png', '.svg': 'image/svg+xml', '.pdf': 'application/pdf', '.ico': 'image/x-icon', '.json': 'application/json',
@@ -97,4 +99,4 @@ http.createServer(async (req, res) => {
     res.writeHead(500, { 'Content-Type': 'text/plain; charset=utf-8' });
     res.end('Erro interno no servidor de desenvolvimento.');
   }
-}).listen(PORTA, () => console.log(`Faktory Flow (dev) em http://localhost:${PORTA}`));
+}).listen(PORTA, HOST, () => console.log(`Faktory Flow (dev) em http://${HOST}:${PORTA}`));
