@@ -12,6 +12,8 @@ import {
   extrairTemposDoRoteiro,
   extrairArquivosCitados,
   mapearColunasTempo,
+  NOME_MP4,
+  citacaoDentroDoModulo,
 } from '../verificar-midia-brutos.mjs';
 
 const REPO = path.join(path.dirname(fileURLToPath(import.meta.url)), '../..');
@@ -121,15 +123,54 @@ describe('verificarMidiaBrutos — regras', () => {
     assert.ok(!r.pendencias.some((p) => p.includes('`crm`')));
   });
 
-  it('regra 2: pasta incompleta (sem mp4 / roteiro / manifesto / prints) = erro', () => {
+  it('regra 2: pasta incompleta (sem roteiro / manifesto / prints) = erro; sem .mp4 = pendência', () => {
     const raiz = tmpRaiz();
     mkdirSync(path.join(raiz, 'midia/brutos/crm'), { recursive: true });
     writeFileSync(path.join(raiz, 'midia/brutos/crm/roteiro-telas.md'), '| Início–fim (s) |\n|---|\n| 0–1 |\n');
     const r = verificarMidiaBrutos(raiz);
     assert.equal(r.ok, false);
-    assert.ok(r.erros.some((e) => e.includes('incompleta') && e.includes('.mp4')));
+    assert.ok(!r.erros.some((e) => e.includes('incompleta') && e.includes('.mp4')), r.erros.join('\n'));
+    assert.ok(r.pendencias.some((p) => p.includes('`crm`') && p.includes('sem .mp4')), r.pendencias.join('\n'));
     assert.ok(r.erros.some((e) => e.includes('manifesto.md')));
     assert.ok(r.erros.some((e) => e.includes('prints/')));
+  });
+
+  it('v3.4: pasta só com roteiro+manifesto+prints (sem mp4) = ok com pendência de mp4', () => {
+    const raiz = tmpRaiz();
+    const pasta = path.join(raiz, 'midia/brutos/crm');
+    mkdirSync(path.join(pasta, 'prints'), { recursive: true });
+    writeFileSync(path.join(pasta, 'roteiro-telas.md'), '| Início–fim (s) | Tela |\n|---|---|\n| 0–10 | A |\n\n`p01.png`\n');
+    writeFileSync(path.join(pasta, 'manifesto.md'), '# m\n');
+    writeFileSync(path.join(pasta, 'prints/p01.png'), '');
+    const r = verificarMidiaBrutos(raiz);
+    assert.equal(r.ok, true, r.erros.join('\n'));
+    assert.ok(r.pendencias.some((p) => p.includes('sem .mp4')));
+  });
+
+  it('v3.4: mp4 com nome fora de <id>_bruto_vNN.mp4 = erro', () => {
+    const raiz = tmpRaiz();
+    escreverModuloCompleto(raiz, 'crm', { mp4: ['gravação.mp4'] });
+    // reescreve roteiro sem citar o nome errado como arquivo existente ok — cita o errado
+    writeFileSync(path.join(raiz, 'midia/brutos/crm/roteiro-telas.md'),
+      '| Início–fim (s) | Tela |\n|---|---|\n| 0–10 | A |\n\n`gravação.mp4` e `p01.png`.\n');
+    const r = verificarMidiaBrutos(raiz);
+    assert.equal(r.ok, false);
+    assert.ok(r.erros.some((e) => e.includes('grava') && e.includes('padrão')), r.erros.join('\n'));
+    assert.ok(NOME_MP4.test('crm_bruto_v01.mp4'));
+    assert.ok(!NOME_MP4.test('gravação.mp4'));
+  });
+
+  it('v3.4: citação com ../ ou absoluto fora da pasta = erro', () => {
+    const raiz = tmpRaiz();
+    escreverModuloCompleto(raiz, 'crm');
+    writeFileSync(path.join(raiz, 'midia/brutos/crm/roteiro-telas.md'),
+      '| Início–fim (s) | Tela |\n|---|---|\n| 0–10 | A |\n\n`../vendas/segredo.mp4` e `/tmp/x.png` e `crm_bruto_v01.mp4`.\n');
+    const r = verificarMidiaBrutos(raiz);
+    assert.equal(r.ok, false);
+    assert.ok(r.erros.some((e) => e.includes('../vendas/segredo.mp4') && e.includes('fora')), r.erros.join('\n'));
+    assert.ok(r.erros.some((e) => e.includes('/tmp/x.png') && e.includes('fora')), r.erros.join('\n'));
+    assert.equal(citacaoDentroDoModulo(path.join(raiz, 'midia/brutos/crm'), 'prints/p01.png'), true);
+    assert.equal(citacaoDentroDoModulo(path.join(raiz, 'midia/brutos/crm'), '../x.mp4'), false);
   });
 
   it('regra 3: pasta com nome fora do índice (ex. 01-crm) = erro', () => {
