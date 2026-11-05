@@ -15,14 +15,14 @@ A pasta fica fora do deploy (`.vercelignore`). Valide com `node scripts/verifica
 | 4 | `vendas` | Vendas | **presente** |
 | 5 | `compras` | Compras | pendente |
 | 6 | `recebimento` | Recebimento | pendente |
-| 7 | `estoque` | Estoque | pendente |
+| 7 | `estoque` | Estoque | pendente (**próximo**) |
 | 8 | `producao` | Produção | pendente |
 | 9 | `servicos` | Serviços e Instalação | pendente |
 | 10 | `projetos` | Projetos e Obras | pendente |
 | 11 | `expedicao` | Expedição | pendente |
 | 12 | `faturamento` | Faturamento | pendente |
 | 13 | `fiscal` | Fiscal | pendente |
-| 14 | `financeiro` | Financeiro | pendente |
+| 14 | `financeiro` | Financeiro | **presente** |
 | 15 | `tarefas` | Tarefas | pendente |
 | 16 | `relatorios` | Relatórios e Análises | pendente |
 | 17 | `alumina` | Alumina — IA | pendente |
@@ -43,7 +43,7 @@ Para editar: abra o `roteiro-telas.md`, corte só os trechos marcados "sim", apl
 
 - Pasta = `id` do módulo no índice (sem número): `crm/`, `vendas/`.
 - Vídeo: `<id>_bruto_vNN.mp4`; quando há mais de uma gravação, `<id>_bruto_cNN-cMM_vNN.mp4` (cenas cobertas). `vNN` = versão do arquivo de origem no estúdio.
-- Prints: `prints/<id>_cNN_MM.png` (cena NN, print MM).
+- Prints: `prints/<id>_cNN_MM.png` (cena NN, print MM); quando a origem é por tela e não por cena (Financeiro), `prints/<id>_<tela>_MM.png`.
 - Roteiro e manifesto: sempre `roteiro-telas.md` e `manifesto.md`.
 
 Origem (estúdio, `02-gravacoes-brutas/`): `gi-<id>_<cenas>_bruto_vNN.mp4`, `gi-<id>_cNN-pMM_print_vNN.png`, `gi-<id>_geral_roteiro-telas_vNN.md`, `gi-<id>_geral_manifesto_vNN.md`.
@@ -59,6 +59,10 @@ Origem (estúdio, `02-gravacoes-brutas/`): `gi-<id>_<cenas>_bruto_vNN.mp4`, `gi-
 | vendas | `gi-vendas_geral_manifesto_v01.md` | `vendas/manifesto.md` |
 | vendas | `gi-vendas_c03-c08_bruto_v01.mp4` | `vendas/vendas_bruto_v01.mp4` |
 | vendas | `gi-vendas_cNN-pMM_print_v01.png` | `vendas/prints/vendas_cNN_MM.png` |
+| financeiro | `gi-financeiro_geral_roteiro-telas_v02.md` | `financeiro/roteiro-telas.md` |
+| financeiro | `gi-financeiro_geral_manifesto_v02.md` | `financeiro/manifesto.md` |
+| financeiro | `gi-financeiro_geral_bruto_v01.mp4` | `financeiro/financeiro_bruto_v01.mp4` |
+| financeiro | `gi-financeiro_<tela>-pMM_print_v01.png` | `financeiro/prints/financeiro_<tela>_MM.png` |
 
 ## Trechos a descartar (segundos do bruto)
 
@@ -76,6 +80,17 @@ Origem (estúdio, `02-gravacoes-brutas/`): `gi-<id>_<cenas>_bruto_vNN.mp4`, `gi-
 - 53–70: descartar tudo, exceto 58,5–62,5 (CFOP bloqueado).
 - 70–150: dropdowns de Empresa, Cliente e Projeto com nomes e CPFs (sensível).
 - 370–380: volta a um Novo Pedido em branco.
+
+**Financeiro (`financeiro_bruto_v01.mp4`)**
+- 0–57: sobra do módulo Vendas.
+- 317–412: telas de Projetos (fora do Financeiro).
+- 887–912: volta ao Dashboard Geral (repetida).
+
+Obs.: o bruto do Financeiro tem 912,4 s; o próximo módulo a gravar é **Estoque**.
+
+## Pendências de cobertura
+
+- **Financeiro:** Painel Financeiro de Projetos será gravado junto com o módulo projetos.
 
 ## Pendências de regra para o Pedro
 
