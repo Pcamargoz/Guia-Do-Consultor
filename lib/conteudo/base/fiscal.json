@@ -1,0 +1,1617 @@
+{
+ "versao": "2026-11-04",
+ "id": "fiscal",
+ "jornadas": {
+  "inicial": [
+   {
+    "id": "apresentacao",
+    "titulo": "Apresentação",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "texto",
+      "rotulo": "Faturamento e Fiscal (consulta)",
+      "texto": [
+       {
+        "t": "Onde o pedido vira nota fiscal. Aqui o estagiário consulta; emissão e transmissão são feitas por quem é responsável."
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#faturamento"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Objetivo",
+      "texto": [
+       {
+        "t": "Encontrar uma nota fiscal, entender seus status e saber quais ações têm efeito fiscal e nunca devem ser feitas em treino."
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#faturamento"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-estagiarios.mjs#faturamento"
+    ]
+   },
+   {
+    "id": "video",
+    "titulo": "Vídeo introdutório",
+    "status": "em-preparacao",
+    "blocos": [],
+    "fontes": []
+   },
+   {
+    "id": "manual",
+    "titulo": "Manual visual resumido",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "passos",
+      "titulo": "2. Consultar notas fiscais",
+      "onde": [
+       {
+        "t": "Faturamento > Notas Fiscais (o módulo já abre nesta tela)"
+       }
+      ],
+      "intro": null,
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Escolher a aba "
+         },
+         {
+          "t": "NF-e",
+          "marca": "negrito"
+         },
+         {
+          "t": " (produto) ou "
+         },
+         {
+          "t": "NFS-e",
+          "marca": "negrito"
+         },
+         {
+          "t": " (serviço)."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Ler os cartões Total, Em Aberto, Autorizadas, Canceladas e Rejeitadas."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Trocar o filtro "
+         },
+         {
+          "t": "Status",
+          "marca": "negrito"
+         },
+         {
+          "t": " (abre em \"Em Aberto\") e o filtro "
+         },
+         {
+          "t": "Ambiente",
+          "marca": "negrito"
+         },
+         {
+          "t": " (Homologação/Produção)."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Notas autorizadas e canceladas só aparecem com o Status certo."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Pesquisar por número ou cliente."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#faturamento"
+      ]
+     },
+     {
+      "tipo": "passos",
+      "titulo": "3. Conhecer as ações de uma nota (sem executar)",
+      "onde": [
+       {
+        "t": "menu ... da linha"
+       }
+      ],
+      "intro": null,
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Reconhecer as opções: Editar, Finalizar NF, Preview da DANFE, Duplicar, Ver Timeline, Anexos e Excluir."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Identificar o botão "
+         },
+         {
+          "t": "Transmitir",
+          "marca": "negrito"
+         },
+         {
+          "t": " (avião de papel) direto na linha e saber que ele envia a nota à SEFAZ."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#faturamento"
+      ]
+     },
+     {
+      "tipo": "passos",
+      "titulo": "4. Saber como o pedido vira nota",
+      "onde": [
+       {
+        "t": "menu ⋯ > Faturar do pedido"
+       }
+      ],
+      "intro": null,
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Saber que a nota nasce do pedido: ⋯ > Faturar importa os itens e abre \"Nova NF-e\" com cliente, CFOP e parcelas do pedido."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Saber que, ao salvar a nota, o pedido já aparece como \"Faturado\" — mesmo com a nota ainda Em Aberto. Confira sempre o status da nota."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Reconhecer o quadro \"Impostos não calculados no item\" e o motivo que ele mostra (ex.: CST de PIS/COFINS ausente na NCM): é assunto do fiscal."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#faturamento"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-estagiarios.mjs#faturamento"
+    ]
+   },
+   {
+    "id": "telas",
+    "titulo": "Principais telas",
+    "status": "em-preparacao",
+    "blocos": [],
+    "fontes": []
+   },
+   {
+    "id": "fluxo",
+    "titulo": "Fluxo operacional básico",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "fluxo",
+      "titulo": "Da configuração fiscal à conferência dos impostos.",
+      "etapas": [
+       "Configuração Fiscal",
+       "Venda",
+       "Faturamento",
+       "Compra",
+       "Recebimento",
+       "Conferência dos Impostos"
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#fiscal"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:db/migrations/002_modulos_iniciais.sql#fiscal"
+    ]
+   },
+   {
+    "id": "atividade",
+    "titulo": "Atividade prática",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "passos",
+      "titulo": "1. Preparar seus dados: faturar o seu pedido (sem transmitir)",
+      "onde": [
+       {
+        "t": "menu ⋯ > Faturar do pedido"
+       }
+      ],
+      "intro": [
+       {
+        "t": "A sua empresa de treino começa "
+       },
+       {
+        "t": "zerada",
+        "marca": "negrito"
+       },
+       {
+        "t": ": cada módulo usa o que o anterior criou. Só faça com "
+       },
+       {
+        "t": "autorização do supervisor",
+        "marca": "negrito"
+       },
+       {
+        "t": " e com a faixa \"Ambiente NF-e: HOMOLOGAÇÃO\" visível: a nota nunca pode ser transmitida no treino. O produto precisa de NCM com CST de PIS/COFINS de saída, senão a nota sai com \"Impostos não calculados\". Se faltar permissão ou cadastro-base (botão que não aparece, CFOP, plano de contas, meio de pagamento, unidade de medida, almoxarifado), anote a mensagem em "
+       },
+       {
+        "t": "Problema",
+        "marca": "negrito"
+       },
+       {
+        "t": " e chame o supervisor: a empresa de treino começa zerada e os cadastros-base são feitos por um consultor."
+       }
+      ],
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "No seu pedido, abrir ⋯ > Faturar: abre a nova nota com a faixa \"Ambiente NF-e: HOMOLOGAÇÃO\" e o diálogo "
+         },
+         {
+          "t": "Selecionar Itens para Importar",
+          "marca": "negrito"
+         },
+         {
+          "t": " (importe os itens do pedido). Em "
+         },
+         {
+          "t": "Observações e Informações Adicionais",
+          "marca": "negrito"
+         },
+         {
+          "t": ", preencher as "
+         },
+         {
+          "t": "Observações Internas",
+          "marca": "negrito"
+         },
+         {
+          "t": " e clicar em "
+         },
+         {
+          "t": "Salvar e Permanecer",
+          "marca": "negrito"
+         },
+         {
+          "t": " (também há "
+         },
+         {
+          "t": "Salvar",
+          "marca": "negrito"
+         },
+         {
+          "t": " e "
+         },
+         {
+          "t": "Cancelar",
+          "marca": "negrito"
+         },
+         {
+          "t": ")."
+         }
+        ],
+        "nota": [
+         {
+          "t": "O pedido passa a \"Faturado\" com a coluna NOTA FISCAL preenchida, mesmo com a nota ainda Em Aberto. Pode aparecer o aviso \"NCM-Estado não configurado para o produto\" (UF de origem e de destino): peça ao supervisor, ele pode bloquear a nota. "
+         },
+         {
+          "t": "Não clique",
+          "marca": "negrito"
+         },
+         {
+          "t": " em Transmitir."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#faturamento"
+      ]
+     },
+     {
+      "tipo": "link",
+      "material": "fiscal:checklist-inicial",
+      "titulo": "Faturamento e Fiscal (consulta)",
+      "status": "disponivel",
+      "url": "/checklists/estagiarios/12-faturamento-fiscal.html",
+      "duracao_s": null,
+      "poster": null,
+      "legenda": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#faturamento"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-estagiarios.mjs#faturamento"
+    ]
+   },
+   {
+    "id": "checklist",
+    "titulo": "Checklist de aprendizado",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "checklist-aprendizado",
+      "chave": "inicial:fiscal",
+      "itens": [
+       {
+        "id": "entendi",
+        "texto": [
+         {
+          "t": "Entendi o que é o módulo Fiscal e para que serve"
+         }
+        ]
+       },
+       {
+        "id": "acessar-1",
+        "texto": [
+         {
+          "t": "Sei acessar: menu ⋯ > Faturar do pedido"
+         }
+        ]
+       },
+       {
+        "id": "acessar-2",
+        "texto": [
+         {
+          "t": "Sei acessar: Faturamento > Notas Fiscais (o módulo já abre nesta tela)"
+         }
+        ]
+       },
+       {
+        "id": "acessar-3",
+        "texto": [
+         {
+          "t": "Sei acessar: menu ... da linha"
+         }
+        ]
+       },
+       {
+        "id": "acessar-4",
+        "texto": [
+         {
+          "t": "Sei acessar: módulo Fiscal"
+         }
+        ]
+       },
+       {
+        "id": "executei-5",
+        "texto": [
+         {
+          "t": "Executei: 1. Preparar seus dados: faturar o seu pedido (sem transmitir)"
+         }
+        ]
+       },
+       {
+        "id": "executei-6",
+        "texto": [
+         {
+          "t": "Executei: 2. Consultar notas fiscais"
+         }
+        ]
+       },
+       {
+        "id": "executei-7",
+        "texto": [
+         {
+          "t": "Executei: 3. Conhecer as ações de uma nota (sem executar)"
+         }
+        ]
+       },
+       {
+        "id": "executei-8",
+        "texto": [
+         {
+          "t": "Executei: 4. Saber como o pedido vira nota"
+         }
+        ]
+       },
+       {
+        "id": "executei-9",
+        "texto": [
+         {
+          "t": "Executei: 5. Saber onde ficam os cadastros fiscais"
+         }
+        ]
+       },
+       {
+        "id": "checklist",
+        "texto": [
+         {
+          "t": "Concluí o checklist prático"
+         }
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
+       "guia:scripts/dados-checklists-estagiarios.mjs#faturamento"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
+     "guia:scripts/dados-checklists-estagiarios.mjs#faturamento"
+    ]
+   },
+   {
+    "id": "progresso",
+    "titulo": "Progresso",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "progresso",
+      "chave": "inicial:fiscal",
+      "total": 11,
+      "api": "/api/checklists-progresso",
+      "fontes": [
+       "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md"
+    ]
+   }
+  ],
+  "consultor": [
+   {
+    "id": "visao",
+    "titulo": "Visão funcional",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "texto",
+      "rotulo": "Objetivo",
+      "texto": [
+       {
+        "t": "Centralizar e automatizar cálculos tributários. Reduzir erros e divergências entre pedido e nota fiscal."
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#fiscal"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Papel no fluxo",
+      "texto": [
+       {
+        "t": "Motor tributário do Faktory Flow. Usado por todos os processos que envolvem impostos."
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#fiscal"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Quando implantar",
+      "texto": [
+       {
+        "t": "No início da implantação dos processos fiscais, antes de Vendas, Compras e Faturamento."
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#fiscal"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Caminho — Faturamento: notas fiscais e a nova NF-e",
+      "texto": [
+       {
+        "t": "Faturamento › Notas Fiscais (abas NF-e e NFS-e). A nota nasce do pedido pelo menu ⋯ › Faturar do pedido, em Vendas › Pedidos de Venda, e abre em /faturamento/notas/novo."
+       }
+      ],
+      "fontes": [
+       "harness:conhecimento/produto/funcional/funcional-faturamento-notas-fiscais.md"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:db/migrations/002_modulos_iniciais.sql#fiscal",
+     "harness:conhecimento/produto/funcional/funcional-faturamento-notas-fiscais.md"
+    ]
+   },
+   {
+    "id": "regras",
+    "titulo": "Regras de negócio",
+    "status": "em-preparacao",
+    "blocos": [],
+    "fontes": []
+   },
+   {
+    "id": "fluxos",
+    "titulo": "Fluxos operacionais",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "fluxo",
+      "titulo": "Da configuração fiscal à conferência dos impostos.",
+      "etapas": [
+       "Configuração Fiscal",
+       "Venda",
+       "Faturamento",
+       "Compra",
+       "Recebimento",
+       "Conferência dos Impostos"
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#fiscal"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "1. Empresa e regime",
+      "onde": [
+       {
+        "t": "Configurações > Empresas"
+       }
+      ],
+      "intro": [
+       {
+        "t": "O regime da empresa é a primeira decisão do motor de impostos: sem ele nada calcula. Vem antes de CFOP e NCM porque muda o caminho inteiro (CSOSN ou CST)."
+       }
+      ],
+      "passos_total": 4,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "2. CFOP e textos fiscais",
+      "onde": [
+       {
+        "t": "Fiscal > Configurações > CFOP (também em Faturamento > Configurações > CFOP) e Fiscal > Configurações > Textos Fiscais"
+       }
+      ],
+      "intro": [
+       {
+        "t": "O CFOP carrega os CSTs padrão e liga ou desliga cada imposto. Aqui se completam os campos fiscais dos CFOPs que o Faturamento já revisou quanto a financeiro e estoque."
+       }
+      ],
+      "passos_total": 4,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "3. NCM e regras de tributação por estado",
+      "onde": [
+       {
+        "t": "Fiscal > Configurações > NCM (modal \"NCM por Estado\" na mesma tela)"
+       }
+      ],
+      "intro": [
+       {
+        "t": "O NCM traz as alíquotas e os CSTs de cada produto; o NCM por Estado traz as exceções por UF de destino (ST, DIFAL, benefício). É a planilha do contador entrando no sistema."
+       }
+      ],
+      "passos_total": 4,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "4. Onboarding e Diagnóstico Fiscal",
+      "onde": [
+       {
+        "t": "Fiscal > Onboarding Fiscal e Fiscal > Diagnóstico Fiscal"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Depois de configurar, o sistema confere a empresa e as tabelas. O cliente aprende que \"liberado\" no Onboarding não garante cálculo certo: só os testes dos blocos seguintes garantem."
+       }
+      ],
+      "passos_total": 3,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "5. Provar o cálculo no pedido de venda",
+      "onde": [
+       {
+        "t": "Vendas > Pedidos de Venda > Novo Pedido"
+       }
+      ],
+      "intro": [
+       {
+        "t": "O motor de impostos é chamado ao salvar o pedido, ao alterar um item e no \"Recalcular\". O contador confere os valores na aba de impostos do item, operação por operação."
+       }
+      ],
+      "passos_total": 5,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "6. Provar o cálculo na nota",
+      "onde": [
+       {
+        "t": "menu ⋯ > Faturar do pedido e Faturamento > Notas Fiscais"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Na nota, o cálculo é refeito ao importar os itens e ao trocar o CFOP. O contador vê o ajuste manual e a transmissão em homologação de cada operação."
+       }
+      ],
+      "passos_total": 5,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "7. O aviso quando falta configuração",
+      "onde": [
+       {
+        "t": "pedido de venda ou nota de teste, aba de impostos do item"
+       }
+      ],
+      "intro": [
+       {
+        "t": "O consultor provoca a falta de cadastro de propósito para o cliente reconhecer o aviso, saber onde corrigir e ver o \"Recalcular\" funcionar."
+       }
+      ],
+      "passos_total": 4,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "8. Serviço, obrigações acessórias e perfis",
+      "onde": [
+       {
+        "t": "Fiscal > Regras Fiscais de Serviço, Fiscal > Escrituração SPED, Fiscal > Sintegra, Fiscal > GNRE"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Fecha o roteiro com o que não é cálculo de mercadoria: ISS e retenções do serviço, quem entrega cada obrigação e quem pode mexer nos cadastros fiscais."
+       }
+      ],
+      "passos_total": 4,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:db/migrations/002_modulos_iniciais.sql#fiscal",
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+    ]
+   },
+   {
+    "id": "implantacao",
+    "titulo": "Procedimentos de implantação",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "texto",
+      "rotulo": "Implantação do Fiscal: roteiro prático com o cliente e o contador",
+      "texto": [
+       {
+        "t": "Ao final, o cliente e o contador terão visto cada operação típica (venda interna, interestadual, a não contribuinte, com ST, serviço) calculada sem aviso no item e com valores conferidos. Eles saberão onde cada resposta do contador entra no sistema e como ler o aviso de imposto não calculado."
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "rotulo": "Blocos do roteiro de implantação",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "1. Empresa e regime"
+         }
+        ],
+        "nota": [
+         {
+          "t": "4 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "2. CFOP e textos fiscais"
+         }
+        ],
+        "nota": [
+         {
+          "t": "4 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "3. NCM e regras de tributação por estado"
+         }
+        ],
+        "nota": [
+         {
+          "t": "4 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "4. Onboarding e Diagnóstico Fiscal"
+         }
+        ],
+        "nota": [
+         {
+          "t": "3 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "5. Provar o cálculo no pedido de venda"
+         }
+        ],
+        "nota": [
+         {
+          "t": "5 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "6. Provar o cálculo na nota"
+         }
+        ],
+        "nota": [
+         {
+          "t": "5 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "7. O aviso quando falta configuração"
+         }
+        ],
+        "nota": [
+         {
+          "t": "4 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "8. Serviço, obrigações acessórias e perfis"
+         }
+        ],
+        "nota": [
+         {
+          "t": "4 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+      ]
+     },
+     {
+      "tipo": "link",
+      "material": "fiscal:checklist-implantacao",
+      "titulo": "Implantação do Fiscal: roteiro prático com o cliente e o contador",
+      "status": "disponivel",
+      "url": "/checklists/consultores/implantacao-06-fiscal.html",
+      "duracao_s": null,
+      "poster": null,
+      "legenda": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Orientação de treinamento",
+      "texto": [
+       {
+        "t": "Apresente cadastros fiscais: NCM, CFOP, CST/CSOSN, CEST, perfis fiscais, textos fiscais, regras de tributação. Demonstre aplicação dos impostos no pedido de venda. Apresente faturamento e envio à SEFAZ. Finalize com compras e recebimentos (impostos de entrada)."
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#fiscal"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal",
+     "guia:db/migrations/002_modulos_iniciais.sql#fiscal"
+    ]
+   },
+   {
+    "id": "configuracoes",
+    "titulo": "Configurações importantes",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "lista",
+      "rotulo": "Pré-requisitos",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Fundação concluída: empresas com regime, CNAE, IE e endereço com IBGE; produtos com NCM, origem e categoria; participantes com UF, IE e as marcas \"Não Contribuinte\" e \"Produtor Rural\" revisadas."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " checklist da Fundação assinado e uma amostra de 10 clientes. "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " FIS C, pré-requisitos; FIS D, seção 2 (FIS-CTX-007)."
+         }
+        ],
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Contador do cliente presente",
+          "marca": "negrito"
+         },
+         {
+          "t": ", com a planilha \"NCM × tributação\" e a lista de CFOPs por operação (CST/CSOSN de ICMS, IPI, PIS, COFINS, CBS, IBS)."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " documentos recebidos antes da sessão. O consultor não decide tributação: toda alíquota, CST, MVA e benefício vem do contador. "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " FIS C, \"Do cliente e do contador\"."
+         }
+        ],
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Módulo fiscal na licença e versão compatível com o regime de todas as empresas; cliente ciente do que é PRO (Escrituração SPED, Perfil SUFRAMA, Mapa de Apuração, MDF-e)."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " "
+         },
+         {
+          "t": "Minha Assinatura",
+          "marca": "italico"
+         },
+         {
+          "t": " e o menu Fiscal sem cadeado. "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " FIS C, comerciais; FIS D, seção 1."
+         }
+        ],
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Ambiente fiscal em "
+         },
+         {
+          "t": "Homologação",
+          "marca": "negrito"
+         },
+         {
+          "t": " (faixa \"Ambiente NF-e: HOMOLOGAÇÃO\" na nota)."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " a faixa na nota de teste. "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " fluxo antigo \"Fluxo de faturamento e fiscal\", pré-requisitos."
+         }
+        ],
+        "selo": "conferido-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Clientes de teste \"TESTE FLUXO CONSULTOR\" para cada operação: PJ com IE na mesma UF, PJ com IE em outra UF e PF não contribuinte em outra UF."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " UF, IE e \"Não Contribuinte\" de cada um. "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " FIS D, seção 3."
+         }
+        ],
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Pré-requisito",
+      "texto": [
+       {
+        "t": "Informações fiscais alinhadas com o cliente e contador (regime tributário, regras, NCM, CFOP, CST/CSOSN)."
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#fiscal"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal",
+     "guia:db/migrations/002_modulos_iniciais.sql#fiscal"
+    ]
+   },
+   {
+    "id": "validacoes",
+    "titulo": "Validações funcionais",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "lista",
+      "rotulo": "Resultado esperado",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Todas as empresas com regime, tipo de atividade, PIS/COFINS e CBS/IBS conferidos pelo contador."
+         }
+        ],
+        "nota": null,
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "CFOPs, NCMs e linhas de NCM por Estado das operações do cliente cadastrados conforme a planilha assinada pelo contador."
+         }
+        ],
+        "nota": null,
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Onboarding Fiscal sem pendência obrigatória em cada empresa."
+         }
+        ],
+        "nota": null,
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Cada operação típica calculada no pedido e na nota sem aviso no item e com valores conferidos; uma NF-e de cada transmitida em homologação."
+         }
+        ],
+        "nota": null,
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "O cliente reconheceu o quadro \"Impostos não calculados no item\" e os avisos de MVA, CST e regime, e corrigiu com \"Recalcular\"."
+         }
+        ],
+        "nota": null,
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Obrigações acessórias combinadas por escrito e lacunas comunicadas ao contador."
+         }
+        ],
+        "nota": null,
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "rotulo": "Checklist do módulo",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Cadastrar e consultar informações fiscais"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#fiscal"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Compreender regras tributárias"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#fiscal"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Identificar cálculo de impostos na venda"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#fiscal"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Emitir notas com configurações cadastradas"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#fiscal"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Realizar compras com cálculo de impostos de entrada"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#fiscal"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Conferir divergências fiscais no recebimento"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#fiscal"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Compreender integração com Vendas, Faturamento, Compras, Recebimento e Financeiro"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#fiscal"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#fiscal"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal",
+     "guia:db/migrations/002_modulos_iniciais.sql#fiscal"
+    ]
+   },
+   {
+    "id": "integracoes",
+    "titulo": "Integrações e dependências",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "texto",
+      "rotulo": "Relação com os outros módulos",
+      "texto": [
+       {
+        "t": "Motor tributário do Faktory Flow. Usado por todos os processos que envolvem impostos."
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#fiscal"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:db/migrations/002_modulos_iniciais.sql#fiscal"
+    ]
+   },
+   {
+    "id": "problemas",
+    "titulo": "Problemas recorrentes",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "lista",
+      "rotulo": "Atenção",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Só ambiente de teste (homologação) e registros com \"TESTE FLUXO CONSULTOR\". "
+         },
+         {
+          "t": "Nota fiscal só é transmitida com o responsável fiscal do cliente.",
+          "marca": "negrito"
+         },
+         {
+          "t": " O consultor não decide tributação: tudo vem do contador."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "O documento salva com imposto zerado e aviso no item quando falta cadastro: o teste não passa só porque salvou."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "\"CBS (%)\" e \"IBS (%)\" preenchidos com 8,80 e 17,70 em 2026 fazem o imposto sair dezenas de vezes maior."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "A lista padrão de CFOP não traz CST de ICMS, PIS e COFINS: empresa do Presumido ou do Real fica com aviso \"Sem CST\" até preencher."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "O Onboarding ainda diz que as pendências \"bloqueiam a liberação para operar\"; hoje ele só informa, e \"liberado\" não garante cálculo certo."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Hoje o sistema ainda não leva para a nota o texto fiscal ligado ao NCM, ao estado ou ao perfil SUFRAMA, e usa 12% de alíquota interestadual em todas as UFs: conferir com o contador."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Não usar CFOP 59xx/69xx (exceto 5949/6949) em NF-e de mercadoria sem testar: hoje ainda dispara ISS."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "rotulo": "A conferir na tela",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Item sem CST: o checklist D da gestora diz que a transmissão é barrada; o documento B da gestora (D-31344.4) diz que a transmissão pede confirmação (\"Transmitir mesmo assim?\"); o Faturamento C lista \"Item N: ICMS CST/CSOSN obrigatório\" no pré-voo. Conferir na tela qual comportamento vale."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Aviso \"NCM-Estado não configurado para o produto\": visto na tela pela trilha dos estagiários (pode bloquear a nota), mas não está nas mensagens da gestora, que diz que sem NCM × Estado o DIFAL usa a alíquota do NCM. Conferir na tela se bloqueia."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Nenhuma tela do módulo Fiscal (CFOP, NCM, Textos Fiscais, Onboarding, Diagnóstico, SPED) foi aberta nos fluxos antigos: os rótulos de campos vêm do código lido pela gestora. Conferir na tela antes de ensinar."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+    ]
+   },
+   {
+    "id": "videos",
+    "titulo": "Vídeos avançados",
+    "status": "em-preparacao",
+    "blocos": [],
+    "fontes": []
+   },
+   {
+    "id": "complementares",
+    "titulo": "Materiais complementares",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "link",
+      "material": "fiscal:checklist-inicial",
+      "titulo": "Faturamento e Fiscal (consulta)",
+      "status": "disponivel",
+      "url": "/checklists/estagiarios/12-faturamento-fiscal.html",
+      "duracao_s": null,
+      "poster": null,
+      "legenda": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#faturamento"
+      ]
+     },
+     {
+      "tipo": "link",
+      "material": "fiscal:checklist-implantacao",
+      "titulo": "Implantação do Fiscal: roteiro prático com o cliente e o contador",
+      "status": "disponivel",
+      "url": "/checklists/consultores/implantacao-06-fiscal.html",
+      "duracao_s": null,
+      "poster": null,
+      "legenda": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+      ]
+     },
+     {
+      "tipo": "link",
+      "titulo": "Apostila do Consultor (PDF)",
+      "url": "/downloads/Apostila-do-Consultor-Faktory-Flow.pdf",
+      "visibilidade": "area:apostila",
+      "fontes": [
+       "guia:public/downloads/Apostila-do-Consultor-Faktory-Flow.pdf"
+      ]
+     },
+     {
+      "tipo": "fontes",
+      "rotulo": "Fontes no Harness",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "08 Manual Faturamento e Fiscal"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Manual oficial"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/08_Manual_Faturamento_e_Fiscal_Timbrado.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "01-painel-onboarding-e-diagnostico"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/fiscal/01-painel-onboarding-e-diagnostico.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "02-cadastros-fiscais"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/fiscal/02-cadastros-fiscais.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "03-regras-fiscais-de-servicos"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/fiscal/03-regras-fiscais-de-servicos.docx"
+        ]
+       }
+      ],
+      "fontes": [
+       "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/08_Manual_Faturamento_e_Fiscal_Timbrado.docx",
+       "harness:conhecimento/Roteiros Treinamento/fiscal/01-painel-onboarding-e-diagnostico.docx",
+       "harness:conhecimento/Roteiros Treinamento/fiscal/02-cadastros-fiscais.docx",
+       "harness:conhecimento/Roteiros Treinamento/fiscal/03-regras-fiscais-de-servicos.docx"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-estagiarios.mjs#faturamento",
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal",
+     "guia:public/downloads/Apostila-do-Consultor-Faktory-Flow.pdf",
+     "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/08_Manual_Faturamento_e_Fiscal_Timbrado.docx",
+     "harness:conhecimento/Roteiros Treinamento/fiscal/01-painel-onboarding-e-diagnostico.docx",
+     "harness:conhecimento/Roteiros Treinamento/fiscal/02-cadastros-fiscais.docx",
+     "harness:conhecimento/Roteiros Treinamento/fiscal/03-regras-fiscais-de-servicos.docx"
+    ]
+   }
+  ]
+ }
+}

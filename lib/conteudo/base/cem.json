@@ -1,0 +1,929 @@
+{
+ "versao": "2026-11-04",
+ "id": "cem",
+ "jornadas": {
+  "inicial": [
+   {
+    "id": "apresentacao",
+    "titulo": "Apresentação",
+    "status": "em-preparacao",
+    "blocos": [],
+    "fontes": []
+   },
+   {
+    "id": "video",
+    "titulo": "Vídeo introdutório",
+    "status": "em-preparacao",
+    "blocos": [],
+    "fontes": []
+   },
+   {
+    "id": "manual",
+    "titulo": "Manual visual resumido",
+    "status": "em-preparacao",
+    "blocos": [],
+    "fontes": []
+   },
+   {
+    "id": "telas",
+    "titulo": "Principais telas",
+    "status": "em-preparacao",
+    "blocos": [],
+    "fontes": []
+   },
+   {
+    "id": "fluxo",
+    "titulo": "Fluxo operacional básico",
+    "status": "em-preparacao",
+    "blocos": [],
+    "fontes": []
+   },
+   {
+    "id": "atividade",
+    "titulo": "Atividade prática",
+    "status": "em-preparacao",
+    "blocos": [],
+    "fontes": []
+   },
+   {
+    "id": "checklist",
+    "titulo": "Checklist de aprendizado",
+    "status": "em-preparacao",
+    "blocos": [],
+    "fontes": []
+   },
+   {
+    "id": "progresso",
+    "titulo": "Progresso",
+    "status": "em-preparacao",
+    "blocos": [],
+    "fontes": []
+   }
+  ],
+  "consultor": [
+   {
+    "id": "visao",
+    "titulo": "Visão funcional",
+    "status": "em-preparacao",
+    "blocos": [],
+    "fontes": []
+   },
+   {
+    "id": "regras",
+    "titulo": "Regras de negócio",
+    "status": "em-preparacao",
+    "blocos": [],
+    "fontes": []
+   },
+   {
+    "id": "fluxos",
+    "titulo": "Fluxos operacionais",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "etapa",
+      "titulo": "1. Escolher o sistema de integração",
+      "onde": [
+       {
+        "t": "Vendas > Configurações > Configurar integração"
+       }
+      ],
+      "intro": [
+       {
+        "t": "A primeira escolha decide por onde o orçamento entra. Faça com o administrador do cliente, porque só ele acessa esta tela."
+       }
+      ],
+      "passos_total": 3,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "2. Conectar o CEM (Desktop ou Mobi)",
+      "onde": [
+       {
+        "t": "Vendas > Configurações > Configurar integração (cards de pareamento ou Configuração CEM Mobi)"
+       }
+      ],
+      "intro": [
+       {
+        "t": "O CEM Desktop conversa com o Flow por um agente instalado na empresa; o CEM Mobi, pela configuração da integração. Faça só o caminho do cliente."
+       }
+      ],
+      "passos_total": 4,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "3. Padrões de Integração",
+      "onde": [
+       {
+        "t": "Vendas > Configurações > Padrões de Integração"
+       }
+      ],
+      "intro": [
+       {
+        "t": "O CEM manda itens que o Flow ainda não conhece. Os Padrões dizem com que NCM, unidade, categoria, CFOP e condição o produto e o pedido nascem. Padrões completos são importação sem parada."
+       }
+      ],
+      "passos_total": 4,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "4. Importar um orçamento real (CEM Desktop)",
+      "onde": [
+       {
+        "t": "Vendas > Pedidos de Venda > Importar CEM"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Agora o cliente importa a obra real escolhida. Ele conduz o mouse; o consultor explica cada etapa da janela Importar do CEM Desktop. Para CEM Mobi ou arquivo, use o bloco 5."
+       }
+      ],
+      "passos_total": 5,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "5. Importar pelo CEM Mobi ou por arquivo",
+      "onde": [
+       {
+        "t": "Vendas > Pedidos de Venda > Importar CEM Mobi ou Importar Arquivo"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Faça este bloco no lugar do bloco 4 quando o cliente usa CEM Mobi ou importa arquivo. O resultado é o mesmo: um pedido de venda Em aberto."
+       }
+      ],
+      "passos_total": 3,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "6. Ler com o cliente o pedido que nasceu da importação",
+      "onde": [
+       {
+        "t": "Vendas > Pedidos de Venda (pedido importado) e Cadastros"
+       }
+      ],
+      "intro": [
+       {
+        "t": "É aqui que o cliente entende o que a integração faz. Abra o pedido gerado e compare, campo a campo, com o orçamento no CEM."
+       }
+      ],
+      "passos_total": 6,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "7. O que trava a importação",
+      "onde": [
+       {
+        "t": "janela de importação em Vendas > Pedidos de Venda"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Demonstre de propósito os bloqueios mais comuns, para o cliente saber se a correção é no CEM ou nos Padrões."
+       }
+      ],
+      "passos_total": 4,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "8. Revisão do orçamento e reimportação",
+      "onde": [
+       {
+        "t": "Vendas > Pedidos de Venda > Importar CEM (ou Importar CEM Mobi)"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Orçamento muda depois de fechado. Mostre ao cliente o que cada tipo de revisão provoca, porque o pedido antigo nunca é alterado sozinho."
+       }
+      ],
+      "passos_total": 4,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "9. Faturamento em Nível (só quando contratado)",
+      "onde": [
+       {
+        "t": "Vendas > Configurações > Configurar integração (card Faturamento em Nível), Níveis de Faturamento e Templates de Rateio"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Faça este bloco só se o cliente vai dividir a obra em níveis (por exemplo, material, esquadria e instalação). A regra de rateio precisa estar definida com o fiscal, o contador e o financeiro."
+       }
+      ],
+      "passos_total": 4,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+    ]
+   },
+   {
+    "id": "implantacao",
+    "titulo": "Procedimentos de implantação",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "texto",
+      "rotulo": "Implantação da Integração CEM: roteiro prático com o cliente",
+      "texto": [
+       {
+        "t": "Ao final, o cliente importou sozinho uma obra fechada no CEM e sabe conferir no pedido gerado os itens, os preços, o desconto, os impostos, o cliente e a obra. Ele sabe o que trava uma importação, onde corrigir (no CEM ou nos Padrões) e o que acontece quando o orçamento é revisado depois de integrado."
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "rotulo": "Blocos do roteiro de implantação",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "1. Escolher o sistema de integração"
+         }
+        ],
+        "nota": [
+         {
+          "t": "3 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "2. Conectar o CEM (Desktop ou Mobi)"
+         }
+        ],
+        "nota": [
+         {
+          "t": "4 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "3. Padrões de Integração"
+         }
+        ],
+        "nota": [
+         {
+          "t": "4 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "4. Importar um orçamento real (CEM Desktop)"
+         }
+        ],
+        "nota": [
+         {
+          "t": "5 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "5. Importar pelo CEM Mobi ou por arquivo"
+         }
+        ],
+        "nota": [
+         {
+          "t": "3 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "6. Ler com o cliente o pedido que nasceu da importação"
+         }
+        ],
+        "nota": [
+         {
+          "t": "6 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "7. O que trava a importação"
+         }
+        ],
+        "nota": [
+         {
+          "t": "4 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "8. Revisão do orçamento e reimportação"
+         }
+        ],
+        "nota": [
+         {
+          "t": "4 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "9. Faturamento em Nível (só quando contratado)"
+         }
+        ],
+        "nota": [
+         {
+          "t": "4 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+      ]
+     },
+     {
+      "tipo": "link",
+      "material": "cem:checklist-implantacao",
+      "titulo": "Implantação da Integração CEM: roteiro prático com o cliente",
+      "status": "disponivel",
+      "url": "/checklists/consultores/implantacao-03-integracao-cem.html",
+      "duracao_s": null,
+      "poster": null,
+      "legenda": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+    ]
+   },
+   {
+    "id": "configuracoes",
+    "titulo": "Configurações importantes",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "lista",
+      "rotulo": "Pré-requisitos",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Fundação concluída: empresa, CFOPs, plano de contas, condições de pagamento, categorias, NCMs e unidades cadastrados."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " o checklist da Fundação assinado. O pedido importado já precisa de condição de pagamento e plano de contas. "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " README da cadeia comercial, ordem de implantação; Integração B, fluxo de configuração."
+         }
+        ],
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Decidido com o cliente: qual sistema de origem (CEM Desktop, CEM Mobi, PrefSuite ou arquivo), qual o modo do código dos produtos e se vai usar Faturamento em Nível."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " as decisões na ata. O sistema escolhido decide qual botão de importação aparece; o modo do código deve ser decidido antes da primeira obra. "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " README da cadeia comercial, decisões X3 e X4; INT-DSK-014."
+         }
+        ],
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "CEM Desktop: máquina Windows onde fica o banco do CEM, com acesso de administrador e o agente FaktoryFlow Agent instalado."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " o agente aberto mostrando o código de pareamento. "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " Integração C, etapa 2; Fundação C, etapa 6."
+         }
+        ],
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Uma obra "
+         },
+         {
+          "t": "fechada",
+          "marca": "negrito"
+         },
+         {
+          "t": " no CEM, real e do cliente, escolhida para a importação de teste; clientes do CEM com CPF/CNPJ e cidade corretos."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " com o orçamentista do cliente. A integração só trabalha com obras fechadas; cidade e UF vêm só do CEM. "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " roteiro Vendas 01, localizar a obra; INT-GER-009, INT-GER-039."
+         }
+        ],
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+    ]
+   },
+   {
+    "id": "validacoes",
+    "titulo": "Validações funcionais",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "lista",
+      "rotulo": "Resultado esperado",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Sistema de integração escolhido e conectado (dispositivo pareado ou CEM Mobi Conectado)."
+         }
+        ],
+        "nota": null,
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Padrões de Integração com o selo Todos completos e os padrões do pedido de venda preenchidos."
+         }
+        ],
+        "nota": null,
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Uma obra real importada sem erro, com o total do pedido igual ao do CEM e os produtos novos criados com os padrões certos."
+         }
+        ],
+        "nota": null,
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "O cliente explicou sozinho de onde vêm os itens, o preço, o desconto, os impostos, o cliente e a obra do pedido importado."
+         }
+        ],
+        "nota": null,
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Uma revisão de orçamento reimportada (Desktop ou Mobi) e o cliente sabe o que fazer com o pedido antigo."
+         }
+        ],
+        "nota": null,
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Faturamento em Nível, se contratado: níveis e template cadastrados e uma obra importada com um pedido por nível."
+         }
+        ],
+        "nota": null,
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+    ]
+   },
+   {
+    "id": "integracoes",
+    "titulo": "Integrações e dependências",
+    "status": "em-preparacao",
+    "blocos": [],
+    "fontes": []
+   },
+   {
+    "id": "problemas",
+    "titulo": "Problemas recorrentes",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "lista",
+      "rotulo": "Atenção",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Só em ambiente de teste ou homologação; pedidos e registros de teste com “TESTE FLUXO CONSULTOR”. Nota fiscal só é transmitida com o responsável fiscal."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "A integração só traz obras "
+         },
+         {
+          "t": "fechadas",
+          "marca": "negrito"
+         },
+         {
+          "t": " no CEM e traz a obra inteira: não há escolha de itens."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Clique uma única vez em Gerar Pedido de Venda ou Importar Pedido e aguarde."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Revisão que troca cor ou medida duplica o item: o pedido antigo continua e precisa ser cancelado ou ajustado à mão."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Hoje o sistema ainda não reativa sozinho um cliente inativo com o mesmo documento: reative antes de importar."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Saneie o cadastro de clientes no CEM (CPF/CNPJ, cidade e UF) antes do go-live: esses dados vêm só da origem."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Não use o NCM “99999999 À classificar” nos Padrões e não inative uma categoria usada num padrão."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "O agente do CEM Desktop precisa ficar ligado: “Nenhum agente desktop online” é máquina desligada ou serviço parado."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "rotulo": "A conferir na tela",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Licença: os roteiros Vendas 01 e 06 dizem que CEM Mobi e Faturamento em Nível são só da versão PRO; a gestora diz que a configuração da integração não é PRO e não marca o Faturamento em Nível como PRO. Conferir na tela e na licença do cliente."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Caminho de Níveis de Faturamento: o roteiro Vendas 06 indica Vendas > Integrações > Níveis de Faturamento; a gestora indica o grupo Configurações de Vendas. Conferir no menu."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Correção de medida, cor ou vidro: o roteiro Vendas 01 orienta cancelar e reimportar o pedido completo; a gestora diz que CEM Desktop e Mobi reimportam só o saldo e que a troca de cor ou medida entra como item novo. Conferir na tela antes de ensinar."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Marcas de e-mail do contato criado pela integração: uma regra diz todas ligadas, inclusive compras (INT-GER-032); outra diz compras desligado (INT-MOB-011). A aba Contato dos Padrões só vale para a importação por arquivo. Conferir no contato criado."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Falha durante a importação: uma regra diz que o pedido é cancelado (INT-GER-023); outras dizem que tudo é excluído, sem deixar pedido (INT-GER-041, INT-NIV-013). Conferir na tela."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Tipo de arquivo: a descrição da opção Arquivos fala em .txt; a regra aceita só XML e JSON. Conferir a mensagem na tela."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Esquadria sem cor, altura ou largura: a regra diz que a importação recusa antes de gravar; a gestora registra que hoje a recusa vem do pedido. Conferir em qual etapa aparece."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+    ]
+   },
+   {
+    "id": "videos",
+    "titulo": "Vídeos avançados",
+    "status": "em-preparacao",
+    "blocos": [],
+    "fontes": []
+   },
+   {
+    "id": "complementares",
+    "titulo": "Materiais complementares",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "link",
+      "material": "cem:checklist-implantacao",
+      "titulo": "Implantação da Integração CEM: roteiro prático com o cliente",
+      "status": "disponivel",
+      "url": "/checklists/consultores/implantacao-03-integracao-cem.html",
+      "duracao_s": null,
+      "poster": null,
+      "legenda": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+      ]
+     },
+     {
+      "tipo": "link",
+      "titulo": "Apostila do Consultor (PDF)",
+      "url": "/downloads/Apostila-do-Consultor-Faktory-Flow.pdf",
+      "visibilidade": "area:apostila",
+      "fontes": [
+       "guia:public/downloads/Apostila-do-Consultor-Faktory-Flow.pdf"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem",
+     "guia:public/downloads/Apostila-do-Consultor-Faktory-Flow.pdf"
+    ]
+   }
+  ]
+ }
+}

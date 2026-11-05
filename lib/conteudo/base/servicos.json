@@ -1,0 +1,2265 @@
+{
+ "versao": "2026-11-04",
+ "id": "servicos",
+ "jornadas": {
+  "inicial": [
+   {
+    "id": "apresentacao",
+    "titulo": "Apresentação",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "texto",
+      "rotulo": "Serviços de campo",
+      "texto": [
+       {
+        "t": "Tudo o que acontece na obra do cliente depois da venda, na sequência Medição → Instalação → Vistoria → Assistência."
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#servicos"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Objetivo",
+      "texto": [
+       {
+        "t": "Ler o painel de serviços, consultar medições e entender como uma medição nasce de um pedido de venda e o que vem depois dela."
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#servicos"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-estagiarios.mjs#servicos"
+    ]
+   },
+   {
+    "id": "video",
+    "titulo": "Vídeo introdutório",
+    "status": "em-preparacao",
+    "blocos": [],
+    "fontes": []
+   },
+   {
+    "id": "manual",
+    "titulo": "Manual visual resumido",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "passos",
+      "titulo": "2. Ler o painel de serviços",
+      "onde": [
+       {
+        "t": "Serviços > Dashboard Serviços"
+       }
+      ],
+      "intro": null,
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Escolher o período (Hoje, 7 dias, 30 dias) e ler os cartões: Agendados, Em execução, Concluídos, Fora do prazo."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Ler o "
+         },
+         {
+          "t": "Pipeline operacional",
+          "marca": "negrito"
+         },
+         {
+          "t": ": Medições a executar → Aprovadas sem instalação → Instalações a executar → Concluídas sem vistoria → Vistorias a executar → Assistências abertas."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Estágios em âmbar são gargalos."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Ler os Alertas operacionais e a Carga por equipe."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#servicos"
+      ]
+     },
+     {
+      "tipo": "passos",
+      "titulo": "3. Consultar medições",
+      "onde": [
+       {
+        "t": "Serviços > Medições"
+       }
+      ],
+      "intro": null,
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Filtrar por Status: Em aberto, Agendada, Em Execução, Aguardando Conferência, Aprovada, Reprovada, Cancelada."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Ler a coluna "
+         },
+         {
+          "t": "% MEDIDO",
+          "marca": "negrito"
+         },
+         {
+          "t": " (vãos medidos sobre o total)."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#servicos"
+      ]
+     },
+     {
+      "tipo": "passos",
+      "titulo": "4. Entender de onde vem a medição (sem salvar)",
+      "onde": [
+       {
+        "t": "+ Nova Medição"
+       }
+      ],
+      "intro": null,
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Ver que a nova medição começa escolhendo um "
+         },
+         {
+          "t": "pedido de venda",
+          "marca": "negrito"
+         },
+         {
+          "t": ": cliente, obra e itens vêm preenchidos."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Ver a opção "
+         },
+         {
+          "t": "Medição avulsa (sem pedido)",
+          "marca": "negrito"
+         },
+         {
+          "t": ": obrigatórios Empresa, Cliente e Técnico Responsável."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Sair sem clicar em \"Usar este registro\" nem em \"Salvar\"."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#servicos"
+      ]
+     },
+     {
+      "tipo": "passos",
+      "titulo": "5. Conhecer as equipes",
+      "onde": [
+       {
+        "t": "Serviços > Configurações > Equipes de Campo"
+       }
+      ],
+      "intro": null,
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Ver as equipes, o tipo, a capacidade diária e o status."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Para abrir uma equipe use o lápis (clicar na linha não abre)."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#servicos"
+      ]
+     },
+     {
+      "tipo": "passos",
+      "titulo": "6. Instalação, vistoria e assistência",
+      "onde": null,
+      "intro": null,
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Saber a sequência: a medição aprovada "
+         },
+         {
+          "t": "não",
+          "marca": "negrito"
+         },
+         {
+          "t": " cria a instalação sozinha (botão \"Gerar Instalação\"); a instalação concluída gera a vistoria só se a geração automática estiver ligada; a assistência vem do botão \"Gerar Assistência Técnica\" da vistoria."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Abrir as listas de Instalações, Vistorias e Assistência Técnica e ler os status."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Vistoria: aprovada, aprovada com ressalvas ou reprovada; o aceite do cliente só vale depois de concluir. Assistência: o aceite é registrado antes de resolver."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#servicos"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-estagiarios.mjs#servicos"
+    ]
+   },
+   {
+    "id": "telas",
+    "titulo": "Principais telas",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "lista",
+      "rotulo": "Telas do módulo (glossário do Harness)",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Nova Medição"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Serviços › Medições › Nova Medição"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/glossario/telas.yaml#servicos.nova-medicao"
+        ]
+       }
+      ],
+      "fontes": [
+       "harness:conhecimento/glossario/telas.yaml#servicos.nova-medicao"
+      ]
+     }
+    ],
+    "fontes": [
+     "harness:conhecimento/glossario/telas.yaml#servicos.nova-medicao"
+    ]
+   },
+   {
+    "id": "fluxo",
+    "titulo": "Fluxo operacional básico",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "fluxo",
+      "titulo": "Da venda à assistência técnica pós-instalação.",
+      "etapas": [
+       "Venda",
+       "Medição em Obra",
+       "Aprovação das Medidas",
+       "Produção",
+       "Agendamento da Instalação",
+       "Execução do Serviço",
+       "Vistoria",
+       "Assistência Técnica"
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#servicos"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:db/migrations/002_modulos_iniciais.sql#servicos"
+    ]
+   },
+   {
+    "id": "atividade",
+    "titulo": "Atividade prática",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "passos",
+      "titulo": "1. Preparar seus dados: agendar uma medição do seu pedido",
+      "onde": [
+       {
+        "t": "Serviços > Medições > + Nova Medição"
+       }
+      ],
+      "intro": [
+       {
+        "t": "A sua empresa de treino começa "
+       },
+       {
+        "t": "zerada",
+        "marca": "negrito"
+       },
+       {
+        "t": ": cada módulo usa o que o anterior criou. A medição nasce do pedido de venda do checklist 04. Os vãos, as fotos e a assinatura só existem depois que um técnico mede: no seu treino a medição ficará agendada. Se faltar permissão ou cadastro-base (botão que não aparece, CFOP, plano de contas, meio de pagamento, unidade de medida, almoxarifado), anote a mensagem em "
+       },
+       {
+        "t": "Problema",
+        "marca": "negrito"
+       },
+       {
+        "t": " e chame o supervisor: a empresa de treino começa zerada e os cadastros-base são feitos por um consultor."
+       }
+      ],
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Em Serviços > Medições, clicar em "
+         },
+         {
+          "t": "Nova Medição",
+          "marca": "negrito"
+         },
+         {
+          "t": " e em "
+         },
+         {
+          "t": "Usar este registro",
+          "marca": "negrito"
+         },
+         {
+          "t": " no seu pedido de venda (ou em "
+         },
+         {
+          "t": "Medição avulsa (sem pedido)",
+          "marca": "negrito"
+         },
+         {
+          "t": "). No diálogo "
+         },
+         {
+          "t": "Importar Itens do Pedido",
+          "marca": "negrito"
+         },
+         {
+          "t": ", marque os itens e o "
+         },
+         {
+          "t": "Nº vãos",
+          "marca": "negrito"
+         },
+         {
+          "t": " de cada um (ou "
+         },
+         {
+          "t": "Cancelar",
+          "marca": "negrito"
+         },
+         {
+          "t": "). Preencher "
+         },
+         {
+          "t": "Empresa",
+          "marca": "negrito"
+         },
+         {
+          "t": " (obrigatória, não vem do pedido) e "
+         },
+         {
+          "t": "Técnico Responsável",
+          "marca": "negrito"
+         },
+         {
+          "t": " (obrigatório); "
+         },
+         {
+          "t": "Cliente",
+          "marca": "negrito"
+         },
+         {
+          "t": " e "
+         },
+         {
+          "t": "Projeto",
+          "marca": "negrito"
+         },
+         {
+          "t": " vêm do pedido; opcionais: "
+         },
+         {
+          "t": "Equipe de Campo",
+          "marca": "negrito"
+         },
+         {
+          "t": ", "
+         },
+         {
+          "t": "Data de Agendamento",
+          "marca": "negrito"
+         },
+         {
+          "t": " e "
+         },
+         {
+          "t": "Duração Prevista (HH:mm)",
+          "marca": "negrito"
+         },
+         {
+          "t": ". Clicar em "
+         },
+         {
+          "t": "Salvar",
+          "marca": "negrito"
+         },
+         {
+          "t": " e, na medição já salva, em "
+         },
+         {
+          "t": "Agendar",
+          "marca": "negrito"
+         },
+         {
+          "t": "."
+         }
+        ],
+        "nota": [
+         {
+          "t": "A página tem as abas Dados Gerais, Vãos, Fotos e Histórico. O botão "
+         },
+         {
+          "t": "Agendar",
+          "marca": "negrito"
+         },
+         {
+          "t": " só existe na medição já salva: o formulário novo mostra apenas Voltar, Salvar e Trocar pedido, mesmo com a Data de Agendamento preenchida. Medição numerada, \"Agendada\" depois de Agendar."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#servicos"
+      ]
+     },
+     {
+      "tipo": "link",
+      "material": "servicos:checklist-inicial",
+      "titulo": "Serviços de campo",
+      "status": "disponivel",
+      "url": "/checklists/estagiarios/09-servicos-campo.html",
+      "duracao_s": null,
+      "poster": null,
+      "legenda": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#servicos"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-estagiarios.mjs#servicos"
+    ]
+   },
+   {
+    "id": "checklist",
+    "titulo": "Checklist de aprendizado",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "checklist-aprendizado",
+      "chave": "inicial:servicos",
+      "itens": [
+       {
+        "id": "entendi",
+        "texto": [
+         {
+          "t": "Entendi o que é o módulo Serviços e Instalação e para que serve"
+         }
+        ]
+       },
+       {
+        "id": "acessar-1",
+        "texto": [
+         {
+          "t": "Sei acessar: Serviços > Medições > + Nova Medição"
+         }
+        ]
+       },
+       {
+        "id": "acessar-2",
+        "texto": [
+         {
+          "t": "Sei acessar: Serviços > Dashboard Serviços"
+         }
+        ]
+       },
+       {
+        "id": "acessar-3",
+        "texto": [
+         {
+          "t": "Sei acessar: Serviços > Medições"
+         }
+        ]
+       },
+       {
+        "id": "acessar-4",
+        "texto": [
+         {
+          "t": "Sei acessar: + Nova Medição"
+         }
+        ]
+       },
+       {
+        "id": "acessar-5",
+        "texto": [
+         {
+          "t": "Sei acessar: Serviços > Configurações > Equipes de Campo"
+         }
+        ]
+       },
+       {
+        "id": "executei-6",
+        "texto": [
+         {
+          "t": "Executei: 1. Preparar seus dados: agendar uma medição do seu pedido"
+         }
+        ]
+       },
+       {
+        "id": "executei-7",
+        "texto": [
+         {
+          "t": "Executei: 2. Ler o painel de serviços"
+         }
+        ]
+       },
+       {
+        "id": "executei-8",
+        "texto": [
+         {
+          "t": "Executei: 3. Consultar medições"
+         }
+        ]
+       },
+       {
+        "id": "executei-9",
+        "texto": [
+         {
+          "t": "Executei: 4. Entender de onde vem a medição (sem salvar)"
+         }
+        ]
+       },
+       {
+        "id": "executei-10",
+        "texto": [
+         {
+          "t": "Executei: 5. Conhecer as equipes"
+         }
+        ]
+       },
+       {
+        "id": "executei-11",
+        "texto": [
+         {
+          "t": "Executei: 6. Instalação, vistoria e assistência"
+         }
+        ]
+       },
+       {
+        "id": "checklist",
+        "texto": [
+         {
+          "t": "Concluí o checklist prático"
+         }
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
+       "guia:scripts/dados-checklists-estagiarios.mjs#servicos"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
+     "guia:scripts/dados-checklists-estagiarios.mjs#servicos"
+    ]
+   },
+   {
+    "id": "progresso",
+    "titulo": "Progresso",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "progresso",
+      "chave": "inicial:servicos",
+      "total": 13,
+      "api": "/api/checklists-progresso",
+      "fontes": [
+       "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md"
+    ]
+   }
+  ],
+  "consultor": [
+   {
+    "id": "visao",
+    "titulo": "Visão funcional",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "texto",
+      "rotulo": "Objetivo",
+      "texto": [
+       {
+        "t": "Controlar atividades fora da fábrica — medição em obra, instalação, vistoria e assistência técnica."
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#servicos"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Papel no fluxo",
+      "texto": [
+       {
+        "t": "Conecta processos comercial, produtivo e operacional. Acompanha a execução em campo."
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#servicos"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Quando implantar",
+      "texto": [
+       {
+        "t": "Após Vendas, Produção e Expedição."
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#servicos"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Caminho — Serviços: medições, instalações, vistorias e assistências",
+      "texto": [
+       {
+        "t": "Serviços › Medições, Instalações, Vistorias, Assistências, Planejamento, Diário de Obra e Configurações (Parâmetros, Conferentes). A medição nasce em "
+       },
+       {
+        "t": "Nova Medição",
+        "marca": "negrito"
+       },
+       {
+        "t": " (lista de pedidos com "
+       },
+       {
+        "t": "Usar este registro",
+        "marca": "negrito"
+       },
+       {
+        "t": ", ou "
+       },
+       {
+        "t": "Medição avulsa (sem pedido)",
+        "marca": "negrito"
+       },
+       {
+        "t": ")."
+       }
+      ],
+      "fontes": [
+       "harness:conhecimento/produto/funcional/funcional-servicos-medicoes-instalacoes-vistorias-assistencias.md"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:db/migrations/002_modulos_iniciais.sql#servicos",
+     "harness:conhecimento/produto/funcional/funcional-servicos-medicoes-instalacoes-vistorias-assistencias.md"
+    ]
+   },
+   {
+    "id": "regras",
+    "titulo": "Regras de negócio",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "regra",
+      "titulo": "Aprovar a medição exige um conferente diferente de quem mediu",
+      "texto": [
+       {
+        "t": "A medição concluída com a assinatura do responsável pela obra fica \"Aguardando Conferência\". A aprovação exige um "
+       },
+       {
+        "t": "conferente",
+        "marca": "negrito"
+       },
+       {
+        "t": " (Serviços › Configurações › Conferentes) vinculado a um participante e "
+       },
+       {
+        "t": "diferente",
+        "marca": "negrito"
+       },
+       {
+        "t": " de quem mediu. Com \"Exigir assinatura\" ligado, o Finalizar da tela de edição só mostra erro: o caminho é Medir vãos, Iniciar e Concluir medição."
+       }
+      ],
+      "confirmar": [
+       {
+        "t": "Serviços › Medições › Medir vãos e Serviços › Configurações › Conferentes."
+       }
+      ],
+      "confianca": "B",
+      "fontes": [
+       "harness:conhecimento/produto/regras-negocio/regra-servicos-aprovacao-da-medicao-exige-conferente-diferente.md"
+      ]
+     },
+     {
+      "tipo": "regra",
+      "titulo": "O botão Agendar só existe na medição já salva",
+      "texto": [
+       {
+        "t": "O formulário de uma nova medição mostra apenas Voltar, "
+       },
+       {
+        "t": "Salvar",
+        "marca": "negrito"
+       },
+       {
+        "t": " e Trocar pedido, mesmo com a "
+       },
+       {
+        "t": "Data de Agendamento",
+        "marca": "negrito"
+       },
+       {
+        "t": " preenchida. O botão "
+       },
+       {
+        "t": "Agendar",
+        "marca": "negrito"
+       },
+       {
+        "t": " aparece na medição já salva, e então ela fica \"Agendada\"."
+       }
+      ],
+      "confirmar": [
+       {
+        "t": "Serviços › Medições, antes e depois de salvar."
+       }
+      ],
+      "confianca": "B",
+      "fontes": [
+       "harness:conhecimento/produto/regras-negocio/regra-servicos-botao-agendar-so-na-medicao-salva.md"
+      ]
+     },
+     {
+      "tipo": "regra",
+      "titulo": "A medição nasce de um pedido e pede Empresa e Técnico",
+      "texto": [
+       {
+        "t": "Em "
+       },
+       {
+        "t": "Serviços › Medições › Nova Medição",
+        "marca": "negrito"
+       },
+       {
+        "t": ", "
+       },
+       {
+        "t": "Usar este registro",
+        "marca": "negrito"
+       },
+       {
+        "t": " no pedido traz "
+       },
+       {
+        "t": "Cliente",
+        "marca": "negrito"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "Projeto",
+        "marca": "negrito"
+       },
+       {
+        "t": "; "
+       },
+       {
+        "t": "Empresa",
+        "marca": "negrito"
+       },
+       {
+        "t": " (obrigatória) e "
+       },
+       {
+        "t": "Técnico Responsável",
+        "marca": "negrito"
+       },
+       {
+        "t": " (obrigatório) não vêm do pedido. Opcionais: Equipe de Campo, Data de Agendamento e Duração Prevista (HH:mm). O diálogo "
+       },
+       {
+        "t": "Importar Itens do Pedido",
+        "marca": "negrito"
+       },
+       {
+        "t": " pede os itens e o "
+       },
+       {
+        "t": "Nº vãos",
+        "marca": "negrito"
+       },
+       {
+        "t": " de cada um. Existe também "
+       },
+       {
+        "t": "Medição avulsa (sem pedido)",
+        "marca": "negrito"
+       },
+       {
+        "t": ". A página tem as abas Dados Gerais, Vãos, Fotos e Histórico."
+       }
+      ],
+      "confirmar": [
+       {
+        "t": "Serviços › Medições › Nova Medição."
+       }
+      ],
+      "confianca": "B",
+      "fontes": [
+       "harness:conhecimento/produto/regras-negocio/regra-servicos-medicao-nasce-do-pedido.md"
+      ]
+     },
+     {
+      "tipo": "regra",
+      "titulo": "Serviços de campo: passagens por botão e a ordem dos aceites",
+      "texto": [
+       {
+        "t": "A cadeia medição → instalação → vistoria → assistência técnica anda "
+       },
+       {
+        "t": "por botão",
+        "marca": "negrito"
+       },
+       {
+        "t": ": a medição "
+       },
+       {
+        "t": "Aprovada",
+        "marca": "negrito"
+       },
+       {
+        "t": " mostra "
+       },
+       {
+        "t": "Gerar Instalação",
+        "marca": "negrito"
+       },
+       {
+        "t": " (aprovar não cria a instalação); a instalação concluída mostra "
+       },
+       {
+        "t": "Ver Vistoria",
+        "marca": "negrito"
+       },
+       {
+        "t": " quando a vistoria já existe; a vistoria reprovada ou aprovada com ressalvas oferece "
+       },
+       {
+        "t": "Gerar Assistência Técnica",
+        "marca": "negrito"
+       },
+       {
+        "t": " (a AT não nasce sozinha). Só a vistoria pode nascer sozinha, quando "
+       },
+       {
+        "t": "Geração automática de vistoria (dias)",
+        "marca": "negrito"
+       },
+       {
+        "t": " está preenchida nos parâmetros (vem vazia, desligada). A instalação concluída mostra o checklist (Conferidos e Conformes) e, com equipe interna, \"Equipe interna: a instalação não gera pagamento\". Na "
+       },
+       {
+        "t": "vistoria",
+        "marca": "negrito"
+       },
+       {
+        "t": ", o aceite do cliente só é aceito "
+       },
+       {
+        "t": "depois",
+        "marca": "negrito"
+       },
+       {
+        "t": " de concluir; na "
+       },
+       {
+        "t": "assistência técnica",
+        "marca": "negrito"
+       },
+       {
+        "t": ", registre o aceite "
+       },
+       {
+        "t": "antes",
+        "marca": "negrito"
+       },
+       {
+        "t": " de "
+       },
+       {
+        "t": "Resolver",
+        "marca": "negrito"
+       },
+       {
+        "t": " (ordem inversa)."
+       }
+      ],
+      "confirmar": [
+       {
+        "t": "Serviços › Medições, Instalações, Vistorias e Assistência Técnica (botões no cabeçalho de cada documento)."
+       }
+      ],
+      "confianca": "B",
+      "fontes": [
+       "harness:conhecimento/produto/regras-negocio/regra-servicos-passagens-por-botao-e-ordem-dos-aceites.md"
+      ]
+     }
+    ],
+    "fontes": [
+     "harness:conhecimento/produto/regras-negocio/regra-servicos-aprovacao-da-medicao-exige-conferente-diferente.md",
+     "harness:conhecimento/produto/regras-negocio/regra-servicos-botao-agendar-so-na-medicao-salva.md",
+     "harness:conhecimento/produto/regras-negocio/regra-servicos-medicao-nasce-do-pedido.md",
+     "harness:conhecimento/produto/regras-negocio/regra-servicos-passagens-por-botao-e-ordem-dos-aceites.md"
+    ]
+   },
+   {
+    "id": "fluxos",
+    "titulo": "Fluxos operacionais",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "fluxo",
+      "titulo": "Da venda à assistência técnica pós-instalação.",
+      "etapas": [
+       "Venda",
+       "Medição em Obra",
+       "Aprovação das Medidas",
+       "Produção",
+       "Agendamento da Instalação",
+       "Execução do Serviço",
+       "Vistoria",
+       "Assistência Técnica"
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#servicos"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "1. Medição: criar e agendar a partir do pedido",
+      "onde": [
+       {
+        "t": "Serviços > Medições > + Nova Medição"
+       }
+      ],
+      "intro": [
+       {
+        "t": "O trabalho de campo começa no pedido vendido. A medição traz cliente, obra e vãos do pedido; a empresa e o técnico são preenchidos aqui."
+       }
+      ],
+      "passos_total": 4,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-servicos"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "2. Medição: medir os vãos e concluir",
+      "onde": [
+       {
+        "t": "aba Vãos da medição e ação Medir vãos na lista de medições"
+       }
+      ],
+      "intro": [
+       {
+        "t": "O técnico lança as medidas reais. Com a assinatura exigida, a conclusão tem um caminho certo: mostre o errado primeiro."
+       }
+      ],
+      "passos_total": 3,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-servicos"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "3. Medição: aprovar com outro conferente",
+      "onde": [
+       {
+        "t": "Serviços > Medições (medição \"Aguardando Conferência\")"
+       }
+      ],
+      "intro": [
+       {
+        "t": "A conferência é o controle de qualidade da medição. Demonstre a trava antes de aprovar."
+       }
+      ],
+      "passos_total": 3,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-servicos"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "4. Instalação",
+      "onde": [
+       {
+        "t": "botão Gerar Instalação da medição e Serviços > Instalações"
+       }
+      ],
+      "intro": [
+       {
+        "t": "A instalação nasce da medição aprovada e leva os vãos medidos como checklist."
+       }
+      ],
+      "passos_total": 4,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-servicos"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "5. Vistoria",
+      "onde": [
+       {
+        "t": "Ver Vistoria na instalação ou Serviços > Vistorias > + Nova Vistoria"
+       }
+      ],
+      "intro": [
+       {
+        "t": "A vistoria confere a obra entregue. Na vistoria, o aceite do cliente vem "
+       },
+       {
+        "t": "depois",
+        "marca": "negrito"
+       },
+       {
+        "t": " de concluir."
+       }
+      ],
+      "passos_total": 5,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-servicos"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "6. Assistência técnica",
+      "onde": [
+       {
+        "t": "botão Gerar Assistência Técnica da vistoria"
+       }
+      ],
+      "intro": [
+       {
+        "t": "A assistência trata o que ficou pendente. Ela não nasce sozinha, e aqui o aceite vem "
+       },
+       {
+        "t": "antes",
+        "marca": "negrito"
+       },
+       {
+        "t": " de resolver."
+       }
+      ],
+      "passos_total": 4,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-servicos"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "7. Gestão de campo",
+      "onde": [
+       {
+        "t": "Serviços > Cockpit de Campo, Serviços > Dashboard Serviços e Serviços > Minha Equipe Agora"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Feche mostrando ao gestor onde ele acompanha as equipes e o resultado dos serviços."
+       }
+      ],
+      "passos_total": 3,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-servicos"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:db/migrations/002_modulos_iniciais.sql#servicos",
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-servicos"
+    ]
+   },
+   {
+    "id": "implantacao",
+    "titulo": "Procedimentos de implantação",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "texto",
+      "rotulo": "Implantação de Serviços: roteiro prático com o cliente",
+      "texto": [
+       {
+        "t": "Ao final, o cliente terá visto um pedido virar medição aprovada, instalação concluída com checklist, vistoria com aceite e assistência técnica resolvida, todas ligadas ao mesmo pedido e cliente. Ele saberá que as passagens são por botão e em que ordem registrar os aceites."
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-servicos"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "rotulo": "Blocos do roteiro de implantação",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "1. Medição: criar e agendar a partir do pedido"
+         }
+        ],
+        "nota": [
+         {
+          "t": "4 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-servicos"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "2. Medição: medir os vãos e concluir"
+         }
+        ],
+        "nota": [
+         {
+          "t": "3 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-servicos"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "3. Medição: aprovar com outro conferente"
+         }
+        ],
+        "nota": [
+         {
+          "t": "3 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-servicos"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "4. Instalação"
+         }
+        ],
+        "nota": [
+         {
+          "t": "4 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-servicos"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "5. Vistoria"
+         }
+        ],
+        "nota": [
+         {
+          "t": "5 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-servicos"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "6. Assistência técnica"
+         }
+        ],
+        "nota": [
+         {
+          "t": "4 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-servicos"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "7. Gestão de campo"
+         }
+        ],
+        "nota": [
+         {
+          "t": "3 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-servicos"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-servicos"
+      ]
+     },
+     {
+      "tipo": "link",
+      "material": "servicos:checklist-implantacao",
+      "titulo": "Implantação de Serviços: roteiro prático com o cliente",
+      "status": "disponivel",
+      "url": "/checklists/consultores/implantacao-12-servicos.html",
+      "duracao_s": null,
+      "poster": null,
+      "legenda": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-servicos"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Orientação de treinamento",
+      "texto": [
+       {
+        "t": "Apresente medição em campo (medidas, fotos, observações, assinaturas). Demonstre acompanhamento da instalação (agenda, equipe, checklist, registro fotográfico, aceite). Apresente vistoria e assistência técnica (histórico, atendimentos, evidências)."
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#servicos"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-servicos",
+     "guia:db/migrations/002_modulos_iniciais.sql#servicos"
+    ]
+   },
+   {
+    "id": "configuracoes",
+    "titulo": "Configurações importantes",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "lista",
+      "rotulo": "Pré-requisitos",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Dois usuários: o "
+         },
+         {
+          "t": "técnico",
+          "marca": "negrito"
+         },
+         {
+          "t": " (participante Funcionário) que mede e o "
+         },
+         {
+          "t": "conferente",
+          "marca": "negrito"
+         },
+         {
+          "t": ", vinculado a outro participante em "
+         },
+         {
+          "t": "Conferentes",
+          "marca": "negrito"
+         },
+         {
+          "t": "."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " a aba Conferentes das configurações de Serviços. Quem confere não pode ser quem mediu. "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " Fluxo de serviços de campo (pré-requisitos); regra-servicos-aprovacao-da-medicao-exige-conferente-diferente."
+         }
+        ],
+        "selo": "conferido-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-servicos"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Equipe de campo",
+          "marca": "negrito"
+         },
+         {
+          "t": " com o técnico como membro. Para testar pagamento de instalação: equipe "
+         },
+         {
+          "t": "Terceirizada",
+          "marca": "negrito"
+         },
+         {
+          "t": " com fornecedor (equipe interna não gera pagamento)."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " Serviços > Configurações > Equipes de Campo. "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " Fluxo de serviços de campo (pré-requisitos); manual-11-servicos, 1.1."
+         }
+        ],
+        "selo": "conferido-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-servicos"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Parâmetros decididos com o cliente: "
+         },
+         {
+          "t": "Exigir conferência de medição",
+          "marca": "negrito"
+         },
+         {
+          "t": ", "
+         },
+         {
+          "t": "Exigir assinatura do responsável pela obra",
+          "marca": "negrito"
+         },
+         {
+          "t": ", "
+         },
+         {
+          "t": "Geração automática de vistoria",
+          "marca": "negrito"
+         },
+         {
+          "t": " (vem vazia = desligada), garantia e prazos. Template de checklist de instalação e, para a assistência, tipos, origens e motivos."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " Configurações > Config. Serviços, abas Parâmetros, Instalação, Assistência e Geral. "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " Fluxo de serviços de campo (pré-requisitos); manual-11-servicos, 1.2."
+         }
+        ],
+        "selo": "conferido-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-servicos"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Pedido de venda de teste (\"TESTE FLUXO CONSULTOR\") com itens de esquadria e, se quiser ver o Diário de Obra, com "
+         },
+         {
+          "t": "Projeto (obra)",
+          "marca": "negrito"
+         },
+         {
+          "t": ". Nomes fictícios para o responsável da obra e para o cliente nos aceites."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " o pedido em Vendas > Pedidos de Venda. "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " Fluxo de serviços de campo (pré-requisitos)."
+         }
+        ],
+        "selo": "conferido-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-servicos"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-servicos"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-servicos"
+    ]
+   },
+   {
+    "id": "validacoes",
+    "titulo": "Validações funcionais",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "lista",
+      "rotulo": "Resultado esperado",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Medição, instalação, vistoria e assistência técnica estão ligadas ao mesmo pedido e cliente de teste."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-servicos"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "A medição foi aprovada por um conferente diferente de quem mediu, e a trava foi demonstrada."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-servicos"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Os aceites foram registrados na ordem certa: depois de concluir a vistoria e antes de resolver a assistência."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-servicos"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "O Dashboard Serviços refletiu as conclusões (quantidade e m²)."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-servicos"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-servicos"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "rotulo": "Checklist do módulo",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Realizar medição em obra e registrar informações"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#servicos"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Comparar medidas com o pedido vendido"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#servicos"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Organizar agenda das equipes"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#servicos"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Registrar checklist, fotos e aceite"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#servicos"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Realizar vistoria e abertura de assistência técnica"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#servicos"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Consultar histórico"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#servicos"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Compreender integração com Vendas, Produção, Expedição, Faturamento e Projetos"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#servicos"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#servicos"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-servicos",
+     "guia:db/migrations/002_modulos_iniciais.sql#servicos"
+    ]
+   },
+   {
+    "id": "integracoes",
+    "titulo": "Integrações e dependências",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "texto",
+      "rotulo": "Relação com os outros módulos",
+      "texto": [
+       {
+        "t": "Conecta processos comercial, produtivo e operacional. Acompanha a execução em campo."
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#servicos"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:db/migrations/002_modulos_iniciais.sql#servicos"
+    ]
+   },
+   {
+    "id": "problemas",
+    "titulo": "Problemas recorrentes",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "lista",
+      "rotulo": "Atenção",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Segurança do ambiente:",
+          "marca": "negrito"
+         },
+         {
+          "t": " use só ambiente de teste, registros com \"TESTE FLUXO CONSULTOR\" e nomes fictícios nas assinaturas e aceites; nota fiscal só é transmitida com o responsável fiscal."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-servicos"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Três passagens são "
+         },
+         {
+          "t": "por botão",
+          "marca": "negrito"
+         },
+         {
+          "t": ": Gerar Instalação, Gerar Assistência Técnica e, opcional, Gerar OS de instalação a partir da OP. Só a vistoria pode nascer sozinha, com a Geração automática de vistoria preenchida."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-servicos"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Só se instala vão realmente medido: com todos os vãos cancelados, o sistema avisa que não há vão medido para instalar."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-servicos"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Hoje datas e horas aparecem em UTC em vários pontos (vistoria, aceite, cockpit): confira o horário antes de concluir que há atraso."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-servicos"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "O template de checklist entra em "
+         },
+         {
+          "t": "toda",
+          "marca": "negrito"
+         },
+         {
+          "t": " instalação nova da empresa: desative o de teste no fim."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-servicos"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Mensagens (toasts) podem cobrir os botões do cabeçalho: feche-as antes de clicar."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-servicos"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "No cadastro do técnico, o CEP preenche o endereço, mas hoje o formulário só aceita depois de redigitar o Endereço."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-servicos"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-servicos"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "rotulo": "Cuidados (vídeo)",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Datas e horas aparecem em UTC em vários pontos: confira antes de achar que há atraso."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:videos/roteiros/consultor-02-servicos.json#12"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "O template de checklist entra em toda instalação nova da empresa."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:videos/roteiros/consultor-02-servicos.json#12"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Mensagens podem cobrir os botões do cabeçalho: feche antes de clicar."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:videos/roteiros/consultor-02-servicos.json#12"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:videos/roteiros/consultor-02-servicos.json#12"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "rotulo": "A conferir na tela",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Concluir a medição: o manual-11-servicos (2.2) diz para lançar os vãos e clicar em "
+         },
+         {
+          "t": "Salvar",
+          "marca": "negrito"
+         },
+         {
+          "t": ", e então a medição vai para aguardando conferência; o teste (Fluxo de serviços de campo) e a regra de conferência dizem que, com \"Exigir assinatura\", o caminho é "
+         },
+         {
+          "t": "Medir vãos",
+          "marca": "negrito"
+         },
+         {
+          "t": " > "
+         },
+         {
+          "t": "Iniciar medição",
+          "marca": "negrito"
+         },
+         {
+          "t": " > "
+         },
+         {
+          "t": "Concluir medição",
+          "marca": "negrito"
+         },
+         {
+          "t": " e que o Finalizar da edição dá erro. Conferir com os parâmetros do cliente."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-servicos"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Aceite da assistência técnica: o plano de validação de Serviços pede o aceite na AT resolvida; no teste o aceite precisou vir antes de "
+         },
+         {
+          "t": "Resolver",
+          "marca": "negrito"
+         },
+         {
+          "t": ". Conferir na tela antes de ensinar."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-servicos"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Caminho dos conferentes: o Fluxo de serviços de campo cita Serviços > Configurações > Conferentes; o manual-11-servicos cita Configurações > Config. Serviços, aba "
+         },
+         {
+          "t": "Conferentes",
+          "marca": "negrito"
+         },
+         {
+          "t": ". Conferir o menu na versão do cliente."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-servicos"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Pagamento de instalação com equipe terceirizada, aplicativo de campo /campo e Diário de Obra com projeto não foram testados."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-servicos"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-servicos"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-servicos",
+     "guia:videos/roteiros/consultor-02-servicos.json#12"
+    ]
+   },
+   {
+    "id": "videos",
+    "titulo": "Vídeos avançados",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "video",
+      "material": "servicos:video-consultor",
+      "titulo": "Serviços de campo: da medição à assistência",
+      "status": "disponivel",
+      "url": "/videos/consultor-02-servicos.mp4",
+      "duracao_s": 168,
+      "poster": "/videos/consultor-02-servicos.jpg",
+      "legenda": "/videos/consultor-02-servicos.vtt",
+      "resumo": [
+       {
+        "t": "Empresa e técnico na medição, o conferente diferente, as passagens por botão e a ordem dos aceites."
+       }
+      ],
+      "fontes": [
+       "guia:public/videos/manifest.json",
+       "guia:videos/roteiros/consultor-02-servicos.json"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:public/videos/manifest.json",
+     "guia:videos/roteiros/consultor-02-servicos.json"
+    ]
+   },
+   {
+    "id": "complementares",
+    "titulo": "Materiais complementares",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "link",
+      "material": "servicos:checklist-inicial",
+      "titulo": "Serviços de campo",
+      "status": "disponivel",
+      "url": "/checklists/estagiarios/09-servicos-campo.html",
+      "duracao_s": null,
+      "poster": null,
+      "legenda": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#servicos"
+      ]
+     },
+     {
+      "tipo": "link",
+      "material": "servicos:checklist-implantacao",
+      "titulo": "Implantação de Serviços: roteiro prático com o cliente",
+      "status": "disponivel",
+      "url": "/checklists/consultores/implantacao-12-servicos.html",
+      "duracao_s": null,
+      "poster": null,
+      "legenda": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-servicos"
+      ]
+     },
+     {
+      "tipo": "link",
+      "titulo": "Apostila do Consultor (PDF)",
+      "url": "/downloads/Apostila-do-Consultor-Faktory-Flow.pdf",
+      "visibilidade": "area:apostila",
+      "fontes": [
+       "guia:public/downloads/Apostila-do-Consultor-Faktory-Flow.pdf"
+      ]
+     },
+     {
+      "tipo": "fontes",
+      "rotulo": "Fontes no Harness",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Como criar e agendar uma medição"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Procedimento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/produto/procedimentos/procedimento-agendar-medicao-do-pedido.md"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "11 Manual Servicos"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Manual oficial"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/11_Manual_Servicos_Timbrado.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "01-planejamento-e-equipe-agora"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/servicos/01-planejamento-e-equipe-agora.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "02-equipes-de-campo-e-aplicativo"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/servicos/02-equipes-de-campo-e-aplicativo.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "03-diario-de-obra"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/servicos/03-diario-de-obra.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "04-medicoes"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/servicos/04-medicoes.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "05-instalacoes"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/servicos/05-instalacoes.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "06-vistorias"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/servicos/06-vistorias.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "07-assistencia-tecnica"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/servicos/07-assistencia-tecnica.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "08-configuracoes-e-notificacoes"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/servicos/08-configuracoes-e-notificacoes.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "09-paineis-e-demonstrativos"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/servicos/09-paineis-e-demonstrativos.docx"
+        ]
+       }
+      ],
+      "fontes": [
+       "harness:conhecimento/produto/procedimentos/procedimento-agendar-medicao-do-pedido.md",
+       "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/11_Manual_Servicos_Timbrado.docx",
+       "harness:conhecimento/Roteiros Treinamento/servicos/01-planejamento-e-equipe-agora.docx",
+       "harness:conhecimento/Roteiros Treinamento/servicos/02-equipes-de-campo-e-aplicativo.docx",
+       "harness:conhecimento/Roteiros Treinamento/servicos/03-diario-de-obra.docx",
+       "harness:conhecimento/Roteiros Treinamento/servicos/04-medicoes.docx",
+       "harness:conhecimento/Roteiros Treinamento/servicos/05-instalacoes.docx",
+       "harness:conhecimento/Roteiros Treinamento/servicos/06-vistorias.docx",
+       "harness:conhecimento/Roteiros Treinamento/servicos/07-assistencia-tecnica.docx",
+       "harness:conhecimento/Roteiros Treinamento/servicos/08-configuracoes-e-notificacoes.docx",
+       "harness:conhecimento/Roteiros Treinamento/servicos/09-paineis-e-demonstrativos.docx"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-estagiarios.mjs#servicos",
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-servicos",
+     "guia:public/downloads/Apostila-do-Consultor-Faktory-Flow.pdf",
+     "harness:conhecimento/produto/procedimentos/procedimento-agendar-medicao-do-pedido.md",
+     "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/11_Manual_Servicos_Timbrado.docx",
+     "harness:conhecimento/Roteiros Treinamento/servicos/01-planejamento-e-equipe-agora.docx",
+     "harness:conhecimento/Roteiros Treinamento/servicos/02-equipes-de-campo-e-aplicativo.docx",
+     "harness:conhecimento/Roteiros Treinamento/servicos/03-diario-de-obra.docx",
+     "harness:conhecimento/Roteiros Treinamento/servicos/04-medicoes.docx",
+     "harness:conhecimento/Roteiros Treinamento/servicos/05-instalacoes.docx",
+     "harness:conhecimento/Roteiros Treinamento/servicos/06-vistorias.docx",
+     "harness:conhecimento/Roteiros Treinamento/servicos/07-assistencia-tecnica.docx",
+     "harness:conhecimento/Roteiros Treinamento/servicos/08-configuracoes-e-notificacoes.docx",
+     "harness:conhecimento/Roteiros Treinamento/servicos/09-paineis-e-demonstrativos.docx"
+    ]
+   }
+  ]
+ }
+}

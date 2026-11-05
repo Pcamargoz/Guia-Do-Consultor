@@ -2,7 +2,8 @@
 import assert from 'node:assert/strict';
 import { describe, it } from 'node:test';
 import { montarBase } from '../../lib/conteudo/montar.js';
-import { COR_PADRAO, montarDetalhe, montarResumo } from '../../lib/conteudo/consultas.js';
+import { checarDetalhe, COR_PADRAO, montarDetalhe, montarResumo } from '../../lib/conteudo/consultas.js';
+import { indiceDaBase } from '../gerar-base-conhecimento.mjs';
 import { validarDetalhe, validarResumo } from '../../lib/conteudo/contrato.js';
 import { guiaFicticio, harnessFicticio, MAPA_FICTICIO, VERSAO_FICTICIA } from './fixtures/fontes-ficticias.mjs';
 
@@ -89,5 +90,83 @@ describe('montarDetalhe', () => {
     montarDetalhe(base, { modulo: 'vendas', jornada: 'inicial', papel: 'estagiario', itens: oculto('tipo:video') });
     montarResumo(base, { papel: 'estagiario', itens: oculto('tipo:checklist') });
     assert.equal(JSON.stringify(base), antes);
+  });
+});
+
+describe('base dividida: índice + conteúdo do módulo sob demanda (review v1, item 7)', () => {
+  const indice = indiceDaBase(base);
+  const conteudoDe = (id) => { const m = base.modulos.find((x) => x.id === id); return { id, jornadas: m.jornadas }; };
+  it('o índice não carrega jornadas nem conteúdo retido', () => {
+    for (const m of indice.modulos) { assert.equal('jornadas' in m, false); assert.equal('retido' in m, false); }
+  });
+  it('resumo com o índice = resumo com a base completa', () => {
+    for (const papel of ['admin', 'consultor', 'estagiario']) assert.deepEqual(montarResumo(indice, { papel }), montarResumo(base, { papel }));
+  });
+  it('checarDetalhe decide 400/404/403 só com o índice (o JSON do módulo nem é lido)', () => {
+    assert.equal(checarDetalhe(indice, { modulo: 'vendas', jornada: 'x', papel: 'admin' }).status, 400);
+    assert.equal(checarDetalhe(indice, { modulo: 'nao-existe', jornada: 'inicial', papel: 'admin' }).status, 404);
+    assert.equal(checarDetalhe(indice, { modulo: '../indice', jornada: 'inicial', papel: 'admin' }).status, 404);
+    assert.equal(checarDetalhe(indice, { modulo: 'vendas', jornada: 'inicial', papel: 'estagiario', itens: oculto('modulo:vendas') }).status, 403);
+    assert.equal(checarDetalhe(indice, { modulo: 'vendas', jornada: 'inicial', papel: 'estagiario' }), null);
+  });
+  it('detalhe com índice + conteúdo = detalhe com a base completa', () => {
+    for (const modulo of ['vendas', 'estoque', 'relatorios']) for (const jornada of ['inicial', 'consultor']) for (const papel of ['admin', 'consultor', 'estagiario']) {
+      assert.deepEqual(montarDetalhe(indice, { modulo, jornada, papel, conteudo: conteudoDe(modulo) }), montarDetalhe(base, { modulo, jornada, papel }), `${modulo}/${jornada}/${papel}`);
+    }
+  });
+  it('conteúdo de outro módulo não é aceito (500, nada vaza)', () => {
+    const r = montarDetalhe(indice, { modulo: 'vendas', jornada: 'inicial', papel: 'admin', conteudo: conteudoDe('estoque') });
+    assert.equal(r.status, 500);
+  });
+});
+
+describe('Relatórios e Alumina em preparação (review v1, item 5)', () => {
+  const rel = base.modulos.find((m) => m.id === 'relatorios');
+  it('na base: tudo em preparação, sem subtítulo; a semente fica guardada em "retido"', () => {
+    assert.equal(rel.em_preparacao, true);
+    assert.equal(rel.subtitulo, null);
+    assert.ok(rel.materiais.every((x) => x.status === 'em-preparacao' && x.url === null));
+    assert.ok([...rel.jornadas.inicial, ...rel.jornadas.consultor].every((s) => s.status === 'em-preparacao' && s.blocos.length === 0));
+    assert.match(JSON.stringify(rel.retido), /Conteúdo semente de relatórios \(fictício\)/);
+    assert.equal(rel.retido.subtitulo, 'Relatórios de exemplo (fictício).');
+  });
+  it('nas respostas (qualquer perfil, inclusive admin): em preparação e nada da semente', () => {
+    for (const papel of ['admin', 'consultor', 'estagiario']) {
+      const resumo = montarResumo(base, { papel }).modulos.find((m) => m.id === 'relatorios');
+      assert.equal(resumo.status, 'em-preparacao', papel);
+      assert.equal(resumo.subtitulo, null, papel);
+      for (const jornada of ['inicial', 'consultor']) {
+        const d = montarDetalhe(base, { modulo: 'relatorios', jornada, papel });
+        assert.equal(d.status, 200);
+        assert.ok(d.corpo.secoes.every((s) => s.status === 'em-preparacao' && s.blocos.length === 0), `${papel}/${jornada}`);
+        assert.doesNotMatch(JSON.stringify(d.corpo), /semente|fictício\)\./, `${papel}/${jornada}`);
+      }
+    }
+  });
+  it('mesmo se alguém puser blocos nas jornadas de um módulo em preparação, eles não saem', () => {
+    const vendas = base.modulos.find((m) => m.id === 'vendas');
+    const forcado = { ...base, modulos: base.modulos.map((m) => (m.id === 'relatorios' ? { ...m, jornadas: vendas.jornadas } : m)) };
+    const d = montarDetalhe(forcado, { modulo: 'relatorios', jornada: 'inicial', papel: 'admin' });
+    assert.ok(d.corpo.secoes.every((s) => s.blocos.length === 0));
+  });
+});
+
+describe('texto estruturado nas respostas (review v1, item 4)', () => {
+  const blocosDe = (corpo) => corpo.secoes.flatMap((s) => s.blocos);
+  it('Markdown leve vira trechos; <x> vira ‹x›; link inseguro vira texto', () => {
+    const d = montarDetalhe(base, { modulo: 'vendas', jornada: 'consultor', papel: 'admin' }).corpo;
+    const regra = blocosDe(d).find((b) => b.tipo === 'regra' && b.titulo.startsWith('Pedido aprovado'));
+    assert.deepEqual(regra.confirmar, [
+      { t: 'Abra ' }, { t: 'Vendas > Pedidos', marca: 'negrito' }, { t: ', pesquise "PV - ‹número›" e tente editar um pedido ' },
+      { t: 'aprovado', marca: 'italico' }, { t: ' em Pedidos (fictício). Veja ' },
+      { t: 'o vídeo', marca: 'link', href: '/videos/fluxo-1-vendas.mp4' }, { t: ' e isto.' },
+    ]);
+    assert.deepEqual(validarDetalhe(d), []);
+  });
+  it('nenhuma resposta tem "<", "**", crase ou "javascript:"', () => {
+    for (const modulo of ['vendas', 'estoque', 'relatorios']) for (const jornada of ['inicial', 'consultor']) {
+      const texto = JSON.stringify(montarDetalhe(base, { modulo, jornada, papel: 'admin' }).corpo);
+      for (const proibido of ['<', '**', '`', 'javascript:']) assert.equal(texto.includes(proibido), false, `${modulo}/${jornada} tem ${proibido}`);
+    }
   });
 });

@@ -5,8 +5,9 @@
      carregarModulo(id, jornada)   → Promise<Detalhe | { erro }>
      visibilidade()                → Promise<{ itens } | { erro }>        (admin: visibilidade({ todos: true }) → lista)
      salvarVisibilidade(item)      → Promise<item | { erro }>             (PUT, só admin)
-     rota                          → { area, modulo? } atual; evento window "plataforma:rota" (detail = rota)
-     lerRota(hash), irPara(rota)   → utilitários do roteador
+     rota                          → { area, modulo?, secao? } atual; evento window "plataforma:rota" (detail = rota)
+     lerRota(hash), irPara(rota)   → utilitários do roteador (o ÚNICO roteador de hash da página)
+     ALIASES                       → hashes antigos aceitos (guia-abas.js, guia antigo, âncoras internas)
    As promessas nunca rejeitam: erro de rede ou HTTP vira { erro: { status, mensagem } } (status 0 = sem conexão). */
 (() => {
   const AREAS = ['inicio', 'inicial', 'consultor', 'acervo', 'pacotes', 'checklist', 'videos', 'apostila', 'admin'];
@@ -58,16 +59,39 @@
     return pedir('/api/visibilidade', { metodo: 'PUT', corpo: { chave, visivel, perfis } });
   }
 
-  /* ---------- Roteador de hash: #inicio · #inicial[/<modulo>] · #consultor[/<modulo>|/fundamentos] · ferramentas ---------- */
+  /* ---------- Roteador de hash: #inicio · #inicial[/<modulo>] · #consultor[/<modulo>|/fundamentos] · ferramentas ----------
+     Único roteador da página (review v1 do Lead, item 6): guia-abas.js passa a ouvir "plataforma:rota".
+     Hashes antigos continuam valendo (aliases). `secao` = âncora dentro da área (rolar até ela, sem trocar de área). */
+  const AREAS_COM_SECAO = ['acervo', 'pacotes', 'checklist', 'videos', 'apostila', 'admin'];
+  const SECAO = /^[A-Za-z0-9_-]{1,80}$/;
+  // Hash antigo → rota. Fontes: public/guia-abas.js (aba "guia" = guia antigo, que vira o Acervo — doc 03) e
+  // public/index.html (seções do guia antigo, roladas por scrollToSection: ids dashboard … conclusao).
+  const ALIASES = Object.freeze({
+    guia: Object.freeze({ area: 'acervo' }),
+    ...Object.fromEntries(['dashboard', 'parte1', 'metodo', 'modulos', 'processos', 'diagnostico', 'conclusao']
+      .map((id) => [id, Object.freeze({ area: 'acervo', secao: id })])),
+  });
+  // Âncoras internas que já mudam o hash hoje: #pc-nome-<id> (guia-pacotes.js) e #ck-<n> (checklists-relatorio.js).
+  const ALIASES_PREFIXO = Object.freeze([[/^pc-nome-[A-Za-z0-9_-]{1,72}$/, 'pacotes'], [/^ck-\d{1,4}$/, 'checklist']]);
+
+  const decodificar = (p) => { try { return decodeURIComponent(p); } catch { return ''; } };
+
   function lerRota(hash) {
-    const partes = String(hash || '').replace(/^#\/?/, '').split('/').filter(Boolean).map((p) => { try { return decodeURIComponent(p).toLowerCase(); } catch { return ''; } });
+    const brutas = String(hash || '').replace(/^#\/?/, '').split('/').filter(Boolean).map(decodificar);
+    const partes = brutas.map((p) => p.toLowerCase());
+    if (partes.length === 1 && Object.hasOwn(ALIASES, partes[0])) return { ...ALIASES[partes[0]] };
+    if (partes.length === 1) {
+      const prefixo = ALIASES_PREFIXO.find(([re]) => re.test(brutas[0]));
+      if (prefixo) return { area: prefixo[1], secao: brutas[0] };
+    }
     const area = AREAS.includes(partes[0]) ? partes[0] : 'inicio';
     const rota = { area };
     if ((area === 'inicial' || area === 'consultor') && partes[1] && SEGMENTO.test(partes[1])) rota.modulo = partes[1];
+    if (AREAS_COM_SECAO.includes(area) && brutas[1] && SECAO.test(brutas[1])) rota.secao = brutas[1];
     return rota;
   }
 
-  const hashDe = (rota) => `#${rota.area}${rota.modulo ? `/${rota.modulo}` : ''}`;
+  const hashDe = (rota) => `#${rota.area}${rota.modulo ? `/${rota.modulo}` : ''}${rota.secao ? `/${rota.secao}` : ''}`;
 
   function irPara(rota) {
     const destino = lerRota(hashDe(rota || { area: 'inicio' }));
@@ -75,7 +99,7 @@
     else atualizar();
   }
 
-  const Plataforma = { carregarResumo, carregarModulo, visibilidade, salvarVisibilidade, lerRota, irPara, rota: lerRota(location.hash) };
+  const Plataforma = { carregarResumo, carregarModulo, visibilidade, salvarVisibilidade, lerRota, irPara, ALIASES, rota: lerRota(location.hash) };
 
   function atualizar() {
     Plataforma.rota = lerRota(location.hash);

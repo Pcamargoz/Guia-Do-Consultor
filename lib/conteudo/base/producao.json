@@ -1,0 +1,2266 @@
+{
+ "versao": "2026-11-04",
+ "id": "producao",
+ "jornadas": {
+  "inicial": [
+   {
+    "id": "apresentacao",
+    "titulo": "Apresentação",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "texto",
+      "rotulo": "Produção: ordens e apontamentos",
+      "texto": [
+       {
+        "t": "A fábrica: a ordem de produção (OP) nasce do pedido ou da obra, consome material do estoque e entrega o produto acabado."
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#producao"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Objetivo",
+      "texto": [
+       {
+        "t": "Consultar ordens de produção, entender status e alertas, acompanhar o chão de fábrica e ver como a produção aparece no estoque — sem apontar nem alterar OPs."
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#producao"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-estagiarios.mjs#producao"
+    ]
+   },
+   {
+    "id": "video",
+    "titulo": "Vídeo introdutório",
+    "status": "em-preparacao",
+    "blocos": [],
+    "fontes": []
+   },
+   {
+    "id": "manual",
+    "titulo": "Manual visual resumido",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "passos",
+      "titulo": "2. Ler a visão geral",
+      "onde": [
+       {
+        "t": "Produção > Visão geral"
+       }
+      ],
+      "intro": null,
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Ler Ritmo do dia, OPs bloqueadas por material e a lista \"Insumos que mais travam\"."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Ver Obras em produção, Fila de entrada, Funil de OPs por etapa e OPs em risco."
+         }
+        ],
+        "nota": [
+         {
+          "t": "A tela se atualiza sozinha a cada 3 minutos (\"Atualizar agora\" força)."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#producao"
+      ]
+     },
+     {
+      "tipo": "passos",
+      "titulo": "3. Consultar ordens de produção",
+      "onde": [
+       {
+        "t": "Produção > Ordens de produção"
+       }
+      ],
+      "intro": null,
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Filtrar por projeto, tipo de operação (Fabricação, Corte, Beneficiamento) e status (Em aberto, Em execução, Pausada, Produzido, Cancelada)."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Passar o mouse sobre os selos de alerta: Conclusão bloqueada, Conclusão travada, Material não baixado, Estoque não creditado."
+         }
+        ],
+        "nota": [
+         {
+          "t": "O texto explica a causa (ex.: obra sem local de estoque ativo)."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Abrir uma OP em execução pelo "
+         },
+         {
+          "t": "olho (Visualizar OP)",
+          "marca": "negrito"
+         },
+         {
+          "t": " e ler número, produto, projeto, pedido de venda, processo, quantidade e status."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Abre um painel \"somente leitura\"."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#producao"
+      ]
+     },
+     {
+      "tipo": "passos",
+      "titulo": "4. Ver os detalhes da OP pelo menu",
+      "onde": [
+       {
+        "t": "Mais ações da linha da OP"
+       }
+      ],
+      "intro": [
+       {
+        "t": "A OP não tem abas: cada detalhe abre por um item do menu."
+       }
+      ],
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Abrir "
+         },
+         {
+          "t": "Etapas de execução da OP",
+          "marca": "negrito"
+         },
+         {
+          "t": " e ler o processo e as etapas (ex.: usinagem → montagem → embalagem). Feche sem salvar."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Abrir "
+         },
+         {
+          "t": "Apontamentos",
+          "marca": "negrito"
+         },
+         {
+          "t": " e ler quem apontou cada etapa, início e fim. Não use \"Iniciar\"."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Abrir "
+         },
+         {
+          "t": "Materiais necessários",
+          "marca": "negrito"
+         },
+         {
+          "t": " e ver as requisições da OP."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Abrir "
+         },
+         {
+          "t": "Linha do tempo",
+          "marca": "negrito"
+         },
+         {
+          "t": " (planejado × real por etapa) e "
+         },
+         {
+          "t": "Custo da OP",
+          "marca": "negrito"
+         },
+         {
+          "t": " (estimado × realizado)."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#producao"
+      ]
+     },
+     {
+      "tipo": "passos",
+      "titulo": "5. Acompanhar o chão de fábrica",
+      "onde": [
+       {
+        "t": "Produção > Painel de fábrica"
+       }
+      ],
+      "intro": null,
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Alternar as visões "
+         },
+         {
+          "t": "Cards",
+          "marca": "negrito"
+         },
+         {
+          "t": ", "
+         },
+         {
+          "t": "Lista",
+          "marca": "negrito"
+         },
+         {
+          "t": " e "
+         },
+         {
+          "t": "Timeline",
+          "marca": "negrito"
+         },
+         {
+          "t": " e ler os contadores Ordens, No prazo e Atrasadas."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Em cada card, ler a etapa atual, as unidades e o % de etapas, "
+         },
+         {
+          "t": "sem clicar em \"Apontar\"",
+          "marca": "negrito"
+         },
+         {
+          "t": "."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#producao"
+      ]
+     },
+     {
+      "tipo": "passos",
+      "titulo": "6. Entender de onde vêm as OPs",
+      "onde": [
+       {
+        "t": "Produção > Integração de Produção"
+       }
+      ],
+      "intro": null,
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Abrir uma integração processada e ler o resumo."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Ex.: \"Gerou 1 OP de montagem · 13 OPs de corte (1 por perfil) · 38 requisições de material\", a partir das esquadrias de uma obra."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#producao"
+      ]
+     },
+     {
+      "tipo": "passos",
+      "titulo": "7. Ver a produção no estoque",
+      "onde": [
+       {
+        "t": "Estoque > Movimentos"
+       }
+      ],
+      "intro": null,
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Encontrar um movimento \"Baixa de componente em OP\" (origem Requisição)."
+         }
+        ],
+        "nota": [
+         {
+          "t": "É o material consumido pela OP."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Encontrar um movimento \"Entrada de produto acabado (OP)\" (origem OP - Conclusão)."
+         }
+        ],
+        "nota": [
+         {
+          "t": "É o produto pronto entrando no estoque quando a OP é concluída."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#producao"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-estagiarios.mjs#producao"
+    ]
+   },
+   {
+    "id": "telas",
+    "titulo": "Principais telas",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "lista",
+      "rotulo": "Telas do módulo (glossário do Harness)",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Nova Ordem de produção"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Produção › Ordens de produção › Nova OP"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/glossario/telas.yaml#producao.nova-op"
+        ]
+       }
+      ],
+      "fontes": [
+       "harness:conhecimento/glossario/telas.yaml#producao.nova-op"
+      ]
+     }
+    ],
+    "fontes": [
+     "harness:conhecimento/glossario/telas.yaml#producao.nova-op"
+    ]
+   },
+   {
+    "id": "fluxo",
+    "titulo": "Fluxo operacional básico",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "fluxo",
+      "titulo": "Do pedido aprovado à liberação do produto finalizado.",
+      "etapas": [
+       "Pedido de Venda",
+       "Ordem de Produção",
+       "Planejamento",
+       "Separação de Materiais",
+       "Produção",
+       "Apontamento das Etapas",
+       "Conclusão da Ordem",
+       "Liberação para Instalação ou Expedição"
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#producao"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:db/migrations/002_modulos_iniciais.sql#producao"
+    ]
+   },
+   {
+    "id": "atividade",
+    "titulo": "Atividade prática",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "passos",
+      "titulo": "1. Preparar seus dados: abrir uma ordem de produção",
+      "onde": [
+       {
+        "t": "Produção > Ordens de produção > Nova OP"
+       }
+      ],
+      "intro": [
+       {
+        "t": "A sua empresa de treino começa "
+       },
+       {
+        "t": "zerada",
+        "marca": "negrito"
+       },
+       {
+        "t": ": cada módulo usa o que o anterior criou. A OP precisa de um produto (checklist 02); se o produto tiver "
+       },
+       {
+        "t": "estrutura de produto",
+        "marca": "negrito"
+       },
+       {
+        "t": " (cadastrada por um consultor), as requisições de material nascem sozinhas ao salvar. Só abra a OP: apontar, baixar material e concluir é trabalho do chão de fábrica e do consultor. Se faltar permissão ou cadastro-base (botão que não aparece, processo, linha de produção, almoxarifado), anote a mensagem em "
+       },
+       {
+        "t": "Problema",
+        "marca": "negrito"
+       },
+       {
+        "t": " e chame o supervisor: a empresa de treino começa zerada e os cadastros-base são feitos por um consultor."
+       }
+      ],
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "No menu de módulos (grade no canto superior esquerdo), abrir "
+         },
+         {
+          "t": "Produção",
+          "marca": "negrito"
+         },
+         {
+          "t": " (abre em Ordens de produção) e clicar em "
+         },
+         {
+          "t": "Nova OP",
+          "marca": "negrito"
+         },
+         {
+          "t": ", no topo à direita."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Deixar o "
+         },
+         {
+          "t": "Número da OP",
+          "marca": "negrito"
+         },
+         {
+          "t": " vazio (o sistema numera), as datas vazias e manter o "
+         },
+         {
+          "t": "Tipo de operação",
+          "marca": "negrito"
+         },
+         {
+          "t": " \"Fabricação\" e a "
+         },
+         {
+          "t": "Linha de produção",
+          "marca": "negrito"
+         },
+         {
+          "t": " como vieram."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Em "
+         },
+         {
+          "t": "Produto",
+          "marca": "negrito"
+         },
+         {
+          "t": ", digitar parte do nome e escolher o seu produto. No diálogo \"Dados do Item\", preencher só o que quiser e clicar em "
+         },
+         {
+          "t": "Aplicar",
+          "marca": "negrito"
+         },
+         {
+          "t": "."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Escolher a "
+         },
+         {
+          "t": "Empresa",
+          "marca": "negrito"
+         },
+         {
+          "t": " (obrigatória, apesar da dica de que herda do pedido) e informar a "
+         },
+         {
+          "t": "Quantidade",
+          "marca": "negrito"
+         },
+         {
+          "t": " (ex.: 2). Opcional: escolher o seu "
+         },
+         {
+          "t": "Pedido de venda",
+          "marca": "negrito"
+         },
+         {
+          "t": " e o "
+         },
+         {
+          "t": "Item do pedido",
+          "marca": "negrito"
+         },
+         {
+          "t": " (copia produto, cor e medidas, mas não a quantidade)."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Clicar em "
+         },
+         {
+          "t": "Salvar",
+          "marca": "negrito"
+         },
+         {
+          "t": ", no rodapé. Não use Esc: ele fecha o painel e perde o formulário."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Mensagem \"Registro salvo com sucesso!\"; a lista ganha uma linha OP-0000NN \"Em aberto\". Em tela estreita a lista mostra só \"#id\": use tela larga. Produto sem estrutura avisa \"OP sem requisições da estrutura\": é esperado no treino."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#producao"
+      ]
+     },
+     {
+      "tipo": "link",
+      "material": "producao:checklist-inicial",
+      "titulo": "Produção: ordens e apontamentos",
+      "status": "disponivel",
+      "url": "/checklists/estagiarios/08-producao.html",
+      "duracao_s": null,
+      "poster": null,
+      "legenda": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#producao"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-estagiarios.mjs#producao"
+    ]
+   },
+   {
+    "id": "checklist",
+    "titulo": "Checklist de aprendizado",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "checklist-aprendizado",
+      "chave": "inicial:producao",
+      "itens": [
+       {
+        "id": "entendi",
+        "texto": [
+         {
+          "t": "Entendi o que é o módulo Produção e para que serve"
+         }
+        ]
+       },
+       {
+        "id": "acessar-1",
+        "texto": [
+         {
+          "t": "Sei acessar: Produção > Ordens de produção > Nova OP"
+         }
+        ]
+       },
+       {
+        "id": "acessar-2",
+        "texto": [
+         {
+          "t": "Sei acessar: Produção > Visão geral"
+         }
+        ]
+       },
+       {
+        "id": "acessar-3",
+        "texto": [
+         {
+          "t": "Sei acessar: Produção > Ordens de produção"
+         }
+        ]
+       },
+       {
+        "id": "acessar-4",
+        "texto": [
+         {
+          "t": "Sei acessar: Mais ações da linha da OP"
+         }
+        ]
+       },
+       {
+        "id": "acessar-5",
+        "texto": [
+         {
+          "t": "Sei acessar: Produção > Painel de fábrica"
+         }
+        ]
+       },
+       {
+        "id": "acessar-6",
+        "texto": [
+         {
+          "t": "Sei acessar: Produção > Integração de Produção"
+         }
+        ]
+       },
+       {
+        "id": "acessar-7",
+        "texto": [
+         {
+          "t": "Sei acessar: Estoque > Movimentos"
+         }
+        ]
+       },
+       {
+        "id": "executei-8",
+        "texto": [
+         {
+          "t": "Executei: 1. Preparar seus dados: abrir uma ordem de produção"
+         }
+        ]
+       },
+       {
+        "id": "executei-9",
+        "texto": [
+         {
+          "t": "Executei: 2. Ler a visão geral"
+         }
+        ]
+       },
+       {
+        "id": "executei-10",
+        "texto": [
+         {
+          "t": "Executei: 3. Consultar ordens de produção"
+         }
+        ]
+       },
+       {
+        "id": "executei-11",
+        "texto": [
+         {
+          "t": "Executei: 4. Ver os detalhes da OP pelo menu"
+         }
+        ]
+       },
+       {
+        "id": "executei-12",
+        "texto": [
+         {
+          "t": "Executei: 5. Acompanhar o chão de fábrica"
+         }
+        ]
+       },
+       {
+        "id": "executei-13",
+        "texto": [
+         {
+          "t": "Executei: 6. Entender de onde vêm as OPs"
+         }
+        ]
+       },
+       {
+        "id": "executei-14",
+        "texto": [
+         {
+          "t": "Executei: 7. Ver a produção no estoque"
+         }
+        ]
+       },
+       {
+        "id": "checklist",
+        "texto": [
+         {
+          "t": "Concluí o checklist prático"
+         }
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
+       "guia:scripts/dados-checklists-estagiarios.mjs#producao"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
+     "guia:scripts/dados-checklists-estagiarios.mjs#producao"
+    ]
+   },
+   {
+    "id": "progresso",
+    "titulo": "Progresso",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "progresso",
+      "chave": "inicial:producao",
+      "total": 16,
+      "api": "/api/checklists-progresso",
+      "fontes": [
+       "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md"
+    ]
+   }
+  ],
+  "consultor": [
+   {
+    "id": "visao",
+    "titulo": "Visão funcional",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "texto",
+      "rotulo": "Objetivo",
+      "texto": [
+       {
+        "t": "Transformar pedidos de venda em ordens de produção, organizando planejamento, consumo de materiais e etapas produtivas."
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#producao"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Papel no fluxo",
+      "texto": [
+       {
+        "t": "Recebe pedidos aprovados de Vendas. Controla fabricação, materiais e custos."
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#producao"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Quando implantar",
+      "texto": [
+       {
+        "t": "Após Vendas e Estoque."
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#producao"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Caminho — Produção: ordens de produção, requisições, apontamento e separação",
+      "texto": [
+       {
+        "t": "Produção › Ordens de produção (botão "
+       },
+       {
+        "t": "Nova OP",
+        "marca": "negrito"
+       },
+       {
+        "t": "), Separação de materiais, Painel de fábrica e Configurações (etapas, processos, linhas e estrutura de produto). Menu ⋯ da OP: Materiais necessários, Etapas de execução da OP, Apontamentos, Custo da OP, Linha do tempo e Mais ações (Marcar produzido, Cancelar OP)."
+       }
+      ],
+      "fontes": [
+       "harness:conhecimento/produto/funcional/funcional-producao-ordens-de-producao-e-separacao.md"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:db/migrations/002_modulos_iniciais.sql#producao",
+     "harness:conhecimento/produto/funcional/funcional-producao-ordens-de-producao-e-separacao.md"
+    ]
+   },
+   {
+    "id": "regras",
+    "titulo": "Regras de negócio",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "regra",
+      "titulo": "Um almoxarifado central ativo é pré-requisito de produção e de nota",
+      "texto": [
+       {
+        "t": "Sem um "
+       },
+       {
+        "t": "almoxarifado central ativo",
+        "marca": "negrito"
+       },
+       {
+        "t": " (Estoque › Locais) o sistema bloqueia a conclusão da ordem de produção (\"Conclusão bloqueada\"), a entrada do produto acabado e a finalização da nota fiscal. Um projeto com local de estoque próprio deve ter esse local ativo."
+       }
+      ],
+      "confirmar": [
+       {
+        "t": "Estoque › Locais."
+       }
+      ],
+      "confianca": "B",
+      "fontes": [
+       "harness:conhecimento/produto/regras-negocio/regra-estoque-almoxarifado-central-ativo-e-pre-requisito.md"
+      ]
+     },
+     {
+      "tipo": "regra",
+      "titulo": "Item paramétrico da estrutura exige cor",
+      "texto": [
+       {
+        "t": "Ao salvar a estrutura de produto, um item de material paramétrico (perfil, chapa) sem "
+       },
+       {
+        "t": "cor",
+        "marca": "negrito"
+       },
+       {
+        "t": " é recusado com \"Selecione a cor do produto — obrigatória para este tipo de material\". A mensagem cita um identificador interno em vez do código do item. Na entrada de estoque do material, a cor também deve ser informada para o saldo bater."
+       }
+      ],
+      "confirmar": [
+       {
+        "t": "Produção › Configurações › Estrutura de produto."
+       }
+      ],
+      "confianca": "B",
+      "fontes": [
+       "harness:conhecimento/produto/regras-negocio/regra-producao-item-parametrico-da-estrutura-exige-cor.md"
+      ]
+     },
+     {
+      "tipo": "regra",
+      "titulo": "Marcar produzido gera a entrada do produto acabado",
+      "texto": [
+       {
+        "t": "Em Mais ações › Marcar produzido, a OP vai para "
+       },
+       {
+        "t": "Produzido",
+        "marca": "negrito"
+       },
+       {
+        "t": " e nasce o movimento \"Entrada de produto acabado (OP)\" no almoxarifado central, com a quantidade e o custo da OP. O custo da OP mostra estimado e realizado (materiais e mão de obra). Um apontamento de tempo que ficou aberto continua aberto mesmo com a OP produzida, e \"Cancelar OP\" continua habilitado numa OP Produzida."
+       }
+      ],
+      "confirmar": [
+       {
+        "t": "Produção › Ordens de produção, Estoque › Movimentos e Mais ações › Custo da OP."
+       }
+      ],
+      "confianca": "B",
+      "fontes": [
+       "harness:conhecimento/produto/regras-negocio/regra-producao-marcar-produzido-gera-entrada-do-produto-acabado.md"
+      ]
+     },
+     {
+      "tipo": "regra",
+      "titulo": "A OP copia produto e medidas do pedido, mas não a quantidade",
+      "texto": [
+       {
+        "t": "Em "
+       },
+       {
+        "t": "Produção › Ordens de produção › Nova OP",
+        "marca": "negrito"
+       },
+       {
+        "t": ", ao escolher "
+       },
+       {
+        "t": "Pedido de venda",
+        "marca": "negrito"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "Item do pedido",
+        "marca": "negrito"
+       },
+       {
+        "t": ", o sistema copia produto, cor e medidas, mas "
+       },
+       {
+        "t": "não",
+        "marca": "negrito"
+       },
+       {
+        "t": " a quantidade, que precisa ser informada. A "
+       },
+       {
+        "t": "Empresa",
+        "marca": "negrito"
+       },
+       {
+        "t": " é obrigatória (a dica diz que ela herda do pedido, mas não herda). O "
+       },
+       {
+        "t": "Número da OP",
+        "marca": "negrito"
+       },
+       {
+        "t": " deve ficar vazio: o sistema numera. Tipo de operação \"Fabricação\" e a linha de produção já vêm preenchidos. Não use Esc no painel: ele fecha e perde o formulário."
+       }
+      ],
+      "confirmar": [
+       {
+        "t": "Produção › Ordens de produção › Nova OP."
+       }
+      ],
+      "confianca": "B",
+      "fontes": [
+       "harness:conhecimento/produto/regras-negocio/regra-producao-op-copia-o-item-do-pedido-mas-nao-a-quantidade.md"
+      ]
+     },
+     {
+      "tipo": "regra",
+      "titulo": "As requisições da OP nascem da estrutura ao salvar",
+      "texto": [
+       {
+        "t": "Se o produto tem "
+       },
+       {
+        "t": "estrutura de produto",
+        "marca": "negrito"
+       },
+       {
+        "t": ", ao salvar a OP as requisições de material são criadas sozinhas (quantidade da estrutura vezes a quantidade da OP), sem usar \"Importar da estrutura\"; reimportar não duplica. Sem estrutura aparece o aviso \"OP sem requisições da estrutura\". Baixar o material pelo menu ⋯ › Materiais necessários ("
+       },
+       {
+        "t": "Baixar",
+        "marca": "negrito"
+       },
+       {
+        "t": ") gera o status \"Atendida Parcialmente\" ou \"Atendida\" e o movimento \"Baixa de componente em OP\"; "
+       },
+       {
+        "t": "Estornar",
+        "marca": "negrito"
+       },
+       {
+        "t": " a baixa informa o motivo e devolve o saldo."
+       }
+      ],
+      "confirmar": [
+       {
+        "t": "Produção › Ordens de produção › ⋯ › Materiais necessários e Estoque › Movimentos."
+       }
+      ],
+      "confianca": "B",
+      "fontes": [
+       "harness:conhecimento/produto/regras-negocio/regra-producao-requisicoes-nascem-da-estrutura-ao-salvar.md"
+      ]
+     }
+    ],
+    "fontes": [
+     "harness:conhecimento/produto/regras-negocio/regra-estoque-almoxarifado-central-ativo-e-pre-requisito.md",
+     "harness:conhecimento/produto/regras-negocio/regra-producao-item-parametrico-da-estrutura-exige-cor.md",
+     "harness:conhecimento/produto/regras-negocio/regra-producao-marcar-produzido-gera-entrada-do-produto-acabado.md",
+     "harness:conhecimento/produto/regras-negocio/regra-producao-op-copia-o-item-do-pedido-mas-nao-a-quantidade.md",
+     "harness:conhecimento/produto/regras-negocio/regra-producao-requisicoes-nascem-da-estrutura-ao-salvar.md"
+    ]
+   },
+   {
+    "id": "fluxos",
+    "titulo": "Fluxos operacionais",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "fluxo",
+      "titulo": "Do pedido aprovado à liberação do produto finalizado.",
+      "etapas": [
+       "Pedido de Venda",
+       "Ordem de Produção",
+       "Planejamento",
+       "Separação de Materiais",
+       "Produção",
+       "Apontamento das Etapas",
+       "Conclusão da Ordem",
+       "Liberação para Instalação ou Expedição"
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#producao"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "1. Estrutura do produto",
+      "onde": [
+       {
+        "t": "Produção > Configurações > Estrutura de produto"
+       }
+      ],
+      "intro": [
+       {
+        "t": "A estrutura diz o que cada unidade consome. Sem ela a OP nasce sem requisições e o estoque não sabe o que baixar."
+       }
+      ],
+      "passos_total": 4,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-producao"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "2. Ordem de produção a partir do pedido",
+      "onde": [
+       {
+        "t": "Produção > Ordens de produção > + Nova OP"
+       }
+      ],
+      "intro": [
+       {
+        "t": "O pedido não tem botão para gerar OP: ela é criada no módulo Produção e vinculada ao pedido e ao item."
+       }
+      ],
+      "passos_total": 3,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-producao"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "3. Requisições e baixa de material",
+      "onde": [
+       {
+        "t": "Mais ações > Materiais necessários"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Cada baixa tira o insumo do estoque. Mostre o reflexo em Estoque a cada movimento."
+       }
+      ],
+      "passos_total": 4,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-producao"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "4. Apontamento: iniciar e finalizar",
+      "onde": [
+       {
+        "t": "botão ▶ da linha da OP, Mais ações > Apontamentos e Produção > Terminal de apontamento"
+       }
+      ],
+      "intro": [
+       {
+        "t": "O apontamento registra quem trabalhou, em que etapa e por quanto tempo. Hoje a finalização ainda é recusada: mostre o início e explique o defeito."
+       }
+      ],
+      "passos_total": 4,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-producao"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "5. Marcar produzido e entrada do produto acabado",
+      "onde": [
+       {
+        "t": "Mais ações > Marcar produzido e Estoque > Movimentos"
+       }
+      ],
+      "intro": [
+       {
+        "t": "É a passagem da Produção para o Estoque: o produto acabado entra no almoxarifado com o custo da OP."
+       }
+      ],
+      "passos_total": 6,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-producao"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "6. Acompanhamento da fábrica",
+      "onde": [
+       {
+        "t": "Produção > Painel de fábrica, Produção > Separação de materiais e Produção > Visão geral"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Feche mostrando onde o PCP e o gestor acompanham as OPs no dia a dia."
+       }
+      ],
+      "passos_total": 4,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-producao"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:db/migrations/002_modulos_iniciais.sql#producao",
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-producao"
+    ]
+   },
+   {
+    "id": "implantacao",
+    "titulo": "Procedimentos de implantação",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "texto",
+      "rotulo": "Implantação de Produção: roteiro prático com o cliente",
+      "texto": [
+       {
+        "t": "Ao final, o cliente terá visto uma OP nascer do pedido com etapas e materiais da estrutura, baixar os insumos, registrar o início do trabalho e creditar o produto acabado no estoque com custo. Ele saberá repetir o caminho e conhecerá os alertas que travam a conclusão."
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-producao"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "rotulo": "Blocos do roteiro de implantação",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "1. Estrutura do produto"
+         }
+        ],
+        "nota": [
+         {
+          "t": "4 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-producao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "2. Ordem de produção a partir do pedido"
+         }
+        ],
+        "nota": [
+         {
+          "t": "3 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-producao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "3. Requisições e baixa de material"
+         }
+        ],
+        "nota": [
+         {
+          "t": "4 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-producao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "4. Apontamento: iniciar e finalizar"
+         }
+        ],
+        "nota": [
+         {
+          "t": "4 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-producao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "5. Marcar produzido e entrada do produto acabado"
+         }
+        ],
+        "nota": [
+         {
+          "t": "6 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-producao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "6. Acompanhamento da fábrica"
+         }
+        ],
+        "nota": [
+         {
+          "t": "4 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-producao"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-producao"
+      ]
+     },
+     {
+      "tipo": "link",
+      "material": "producao:checklist-implantacao",
+      "titulo": "Implantação de Produção: roteiro prático com o cliente",
+      "status": "disponivel",
+      "url": "/checklists/consultores/implantacao-11-producao.html",
+      "duracao_s": null,
+      "poster": null,
+      "legenda": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-producao"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Orientação de treinamento",
+      "texto": [
+       {
+        "t": "Apresente criação de ordens, planejamento, apontamentos e conclusão. Demonstre acompanhamento do progresso e indicadores."
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#producao"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-producao",
+     "guia:db/migrations/002_modulos_iniciais.sql#producao"
+    ]
+   },
+   {
+    "id": "configuracoes",
+    "titulo": "Configurações importantes",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "lista",
+      "rotulo": "Pré-requisitos",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Etapas de produção",
+          "marca": "negrito"
+         },
+         {
+          "t": ", "
+         },
+         {
+          "t": "processo",
+          "marca": "negrito"
+         },
+         {
+          "t": " e "
+         },
+         {
+          "t": "linha de produção",
+          "marca": "negrito"
+         },
+         {
+          "t": " cadastrados, e o processo informado no produto ("
+         },
+         {
+          "t": "Processo de produção padrão",
+          "marca": "negrito"
+         },
+         {
+          "t": ")."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " Produção > Configurações e Cadastros > Produtos. Sem processo no produto a OP não tem etapas, não aparece no Painel de fábrica e o terminal não deixa apontar. "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " manual-07-producao, Parte 1 e 1.1."
+         }
+        ],
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-producao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Insumos da estrutura "
+         },
+         {
+          "t": "com saldo",
+          "marca": "negrito"
+         },
+         {
+          "t": " e "
+         },
+         {
+          "t": "almoxarifado central ativo",
+          "marca": "negrito"
+         },
+         {
+          "t": " na empresa da OP (ou local da obra na mesma empresa)."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " Estoque > Saldo e Estoque > Locais. Sem local ativo a OP não conclui (selo \"Conclusão bloqueada\"). "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " Fluxo de produção (pré-requisitos); manual-07-producao, 2.4."
+         }
+        ],
+        "selo": "conferido-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-producao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Pedido de venda de teste (\"TESTE FLUXO CONSULTOR\") com o produto de teste, e um funcionário cadastrado para apontar."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " o pedido em Vendas > Pedidos de Venda e o funcionário em Cadastros > Participantes. "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " Fluxo de produção (pré-requisitos); procedimento-criar-ordem-de-producao-do-pedido."
+         }
+        ],
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-producao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Saldo dos insumos e do produto acabado anotados antes de começar."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " Estoque > Saldo. "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " Fluxo de produção (pré-requisitos)."
+         }
+        ],
+        "selo": "conferido-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-producao"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-producao"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-producao"
+    ]
+   },
+   {
+    "id": "validacoes",
+    "titulo": "Validações funcionais",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "lista",
+      "rotulo": "Resultado esperado",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "A OP nasceu do pedido com as etapas do processo e as requisições da estrutura."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-producao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "As baixas e o estorno de material bateram com Estoque > Movimentos e o saldo dos insumos."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-producao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Marcar produzido creditou o produto acabado no almoxarifado com a quantidade e o custo da OP."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-producao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "O cliente sabe que hoje a finalização do apontamento ainda é recusada e como registrar o caso para o suporte."
+         }
+        ],
+        "nota": null,
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-producao"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-producao"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "rotulo": "Checklist do módulo",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Gerar ordem de produção a partir de pedido"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#producao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Planejar e acompanhar produção"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#producao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Realizar apontamentos das etapas"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#producao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Consultar andamento das ordens"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#producao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Compreender integração com Vendas, Estoque, Compras e Expedição"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#producao"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#producao"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-producao",
+     "guia:db/migrations/002_modulos_iniciais.sql#producao"
+    ]
+   },
+   {
+    "id": "integracoes",
+    "titulo": "Integrações e dependências",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "texto",
+      "rotulo": "Relação com os outros módulos",
+      "texto": [
+       {
+        "t": "Recebe pedidos aprovados de Vendas. Controla fabricação, materiais e custos."
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#producao"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:db/migrations/002_modulos_iniciais.sql#producao"
+    ]
+   },
+   {
+    "id": "problemas",
+    "titulo": "Problemas recorrentes",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "lista",
+      "rotulo": "Atenção",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Segurança do ambiente:",
+          "marca": "negrito"
+         },
+         {
+          "t": " use só ambiente de teste e registros com \"TESTE FLUXO CONSULTOR\"; nota fiscal só é transmitida com o responsável fiscal."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-producao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Hoje o sistema ainda recusa a finalização do apontamento (\"A data/hora de fim não pode ser no futuro\"): não ensine a finalização como funcionando; anote o horário e avise o suporte."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-producao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "No painel da Nova OP, "
+         },
+         {
+          "t": "Esc",
+          "marca": "negrito"
+         },
+         {
+          "t": " fecha e perde o formulário. A "
+         },
+         {
+          "t": "Empresa",
+          "marca": "negrito"
+         },
+         {
+          "t": " é obrigatória, apesar da dica dizer que herda do pedido."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-producao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Marcar produzido",
+          "marca": "negrito"
+         },
+         {
+          "t": ", "
+         },
+         {
+          "t": "Pausar OP",
+          "marca": "negrito"
+         },
+         {
+          "t": ", "
+         },
+         {
+          "t": "Cancelar OP",
+          "marca": "negrito"
+         },
+         {
+          "t": ", "
+         },
+         {
+          "t": "Replicar OP",
+          "marca": "negrito"
+         },
+         {
+          "t": " e "
+         },
+         {
+          "t": "Gerar OS de instalação",
+          "marca": "negrito"
+         },
+         {
+          "t": " gravam dados. "
+         },
+         {
+          "t": "Cancelar OP",
+          "marca": "negrito"
+         },
+         {
+          "t": " com movimentos de estoque os estorna e continua habilitado numa OP Produzida."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-producao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Na lista, "
+         },
+         {
+          "t": "Iniciar produção",
+          "marca": "negrito"
+         },
+         {
+          "t": " muda a OP para \"Em execução\" com um clique."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-producao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Antes da baixa, o selo de disponibilidade pode descontar duas vezes a reserva da própria OP (ex.: \"2 disponível · falta 6\" com 10 em estoque): confira o saldo em Estoque > Saldo."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-producao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "A "
+         },
+         {
+          "t": "Fila de exceções",
+          "marca": "negrito"
+         },
+         {
+          "t": " tem o botão "
+         },
+         {
+          "t": "Reprocessar",
+          "marca": "negrito"
+         },
+         {
+          "t": ": não reprocesse sem o suporte."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-producao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "OP de produto sem processo não tem etapas, não aparece no Painel de fábrica e não aceita apontamento no terminal."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-producao"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-producao"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "rotulo": "Cuidados (vídeo)",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Iniciar produção muda a OP para Em execução com um clique."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:videos/roteiros/consultor-05-producao.json#12"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Defeito reportado: o apontamento pode recusar a finalização (erro de data futura). Anote o horário e avise o suporte."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:videos/roteiros/consultor-05-producao.json#12"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Fila de exceções: não reprocesse sem o suporte."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:videos/roteiros/consultor-05-producao.json#12"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:videos/roteiros/consultor-05-producao.json#12"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "rotulo": "A conferir na tela",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Entrada do produto acabado: o manual-07-producao (2.4) diz que o apontamento finalizado na última etapa dá entrada do acabado e baixa os componentes (movimentos \"OP – Conclusão\" e \"Requisição\"); no teste (Fluxo de produção) o apontamento não finalizou e a entrada veio de "
+         },
+         {
+          "t": "Marcar produzido",
+          "marca": "negrito"
+         },
+         {
+          "t": ", com o movimento \"Entrada de produto acabado (OP)\". Conferir na tela qual caminho o cliente vai usar."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-producao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Origem da OP: o manual-07-producao (2.1) diz que normalmente as OPs nascem sozinhas pela Integração de Produção (pedido ou projeto vindo do CEM); o procedimento e o teste mostram a OP criada à mão em "
+         },
+         {
+          "t": "Nova OP",
+          "marca": "negrito"
+         },
+         {
+          "t": " com o pedido. Conferir como o cliente recebe os pedidos."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-producao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Submeter, aprovar, rejeitar e reabrir apontamento não foram testados, porque dependem de o apontamento finalizar."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-producao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Reimportar da estrutura numa OP com item manual não foi testado."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-producao"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-producao"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-producao",
+     "guia:videos/roteiros/consultor-05-producao.json#12"
+    ]
+   },
+   {
+    "id": "videos",
+    "titulo": "Vídeos avançados",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "video",
+      "material": "producao:video-consultor",
+      "titulo": "Produção: da estrutura ao produto acabado",
+      "status": "disponivel",
+      "url": "/videos/consultor-05-producao.mp4",
+      "duracao_s": 173,
+      "poster": "/videos/consultor-05-producao.jpg",
+      "legenda": "/videos/consultor-05-producao.vtt",
+      "resumo": [
+       {
+        "t": "Estrutura, ordem de produção, apontamento e entrada do acabado."
+       }
+      ],
+      "fontes": [
+       "guia:public/videos/manifest.json",
+       "guia:videos/roteiros/consultor-05-producao.json"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:public/videos/manifest.json",
+     "guia:videos/roteiros/consultor-05-producao.json"
+    ]
+   },
+   {
+    "id": "complementares",
+    "titulo": "Materiais complementares",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "link",
+      "material": "producao:checklist-inicial",
+      "titulo": "Produção: ordens e apontamentos",
+      "status": "disponivel",
+      "url": "/checklists/estagiarios/08-producao.html",
+      "duracao_s": null,
+      "poster": null,
+      "legenda": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#producao"
+      ]
+     },
+     {
+      "tipo": "link",
+      "material": "producao:checklist-implantacao",
+      "titulo": "Implantação de Produção: roteiro prático com o cliente",
+      "status": "disponivel",
+      "url": "/checklists/consultores/implantacao-11-producao.html",
+      "duracao_s": null,
+      "poster": null,
+      "legenda": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-producao"
+      ]
+     },
+     {
+      "tipo": "link",
+      "titulo": "Apostila do Consultor (PDF)",
+      "url": "/downloads/Apostila-do-Consultor-Faktory-Flow.pdf",
+      "visibilidade": "area:apostila",
+      "fontes": [
+       "guia:public/downloads/Apostila-do-Consultor-Faktory-Flow.pdf"
+      ]
+     },
+     {
+      "tipo": "fontes",
+      "rotulo": "Fontes no Harness",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Como criar uma ordem de produção a partir do pedido"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Procedimento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/produto/procedimentos/procedimento-criar-ordem-de-producao-do-pedido.md"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "07 Manual Producao"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Manual oficial"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/07_Manual_Producao_Timbrado.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "01-ordens-de-producao-com-sistemas-tecnicos"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/producao/01-ordens-de-producao-com-sistemas-tecnicos.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "02-painel-de-fabrica-com-sistemas-tecnicos"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/producao/02-painel-de-fabrica-com-sistemas-tecnicos.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "03-terminal-de-apontamento-com-sistemas-tecnicos"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/producao/03-terminal-de-apontamento-com-sistemas-tecnicos.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "04-separacao-de-materiais-com-sistemas-tecnicos"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/producao/04-separacao-de-materiais-com-sistemas-tecnicos.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "05-integracao-de-producao-com-sistemas-tecnicos"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/producao/05-integracao-de-producao-com-sistemas-tecnicos.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "06-planejamento-com-sistemas-tecnicos"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/producao/06-planejamento-com-sistemas-tecnicos.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "07-equipe-externa-com-sistemas-tecnicos"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/producao/07-equipe-externa-com-sistemas-tecnicos.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "08-cadastros-e-estrutura-produtiva"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/producao/08-cadastros-e-estrutura-produtiva.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "09-visao-geral-demanda-e-demonstrativos"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/producao/09-visao-geral-demanda-e-demonstrativos.docx"
+        ]
+       }
+      ],
+      "fontes": [
+       "harness:conhecimento/produto/procedimentos/procedimento-criar-ordem-de-producao-do-pedido.md",
+       "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/07_Manual_Producao_Timbrado.docx",
+       "harness:conhecimento/Roteiros Treinamento/producao/01-ordens-de-producao-com-sistemas-tecnicos.docx",
+       "harness:conhecimento/Roteiros Treinamento/producao/02-painel-de-fabrica-com-sistemas-tecnicos.docx",
+       "harness:conhecimento/Roteiros Treinamento/producao/03-terminal-de-apontamento-com-sistemas-tecnicos.docx",
+       "harness:conhecimento/Roteiros Treinamento/producao/04-separacao-de-materiais-com-sistemas-tecnicos.docx",
+       "harness:conhecimento/Roteiros Treinamento/producao/05-integracao-de-producao-com-sistemas-tecnicos.docx",
+       "harness:conhecimento/Roteiros Treinamento/producao/06-planejamento-com-sistemas-tecnicos.docx",
+       "harness:conhecimento/Roteiros Treinamento/producao/07-equipe-externa-com-sistemas-tecnicos.docx",
+       "harness:conhecimento/Roteiros Treinamento/producao/08-cadastros-e-estrutura-produtiva.docx",
+       "harness:conhecimento/Roteiros Treinamento/producao/09-visao-geral-demanda-e-demonstrativos.docx"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-estagiarios.mjs#producao",
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-producao",
+     "guia:public/downloads/Apostila-do-Consultor-Faktory-Flow.pdf",
+     "harness:conhecimento/produto/procedimentos/procedimento-criar-ordem-de-producao-do-pedido.md",
+     "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/07_Manual_Producao_Timbrado.docx",
+     "harness:conhecimento/Roteiros Treinamento/producao/01-ordens-de-producao-com-sistemas-tecnicos.docx",
+     "harness:conhecimento/Roteiros Treinamento/producao/02-painel-de-fabrica-com-sistemas-tecnicos.docx",
+     "harness:conhecimento/Roteiros Treinamento/producao/03-terminal-de-apontamento-com-sistemas-tecnicos.docx",
+     "harness:conhecimento/Roteiros Treinamento/producao/04-separacao-de-materiais-com-sistemas-tecnicos.docx",
+     "harness:conhecimento/Roteiros Treinamento/producao/05-integracao-de-producao-com-sistemas-tecnicos.docx",
+     "harness:conhecimento/Roteiros Treinamento/producao/06-planejamento-com-sistemas-tecnicos.docx",
+     "harness:conhecimento/Roteiros Treinamento/producao/07-equipe-externa-com-sistemas-tecnicos.docx",
+     "harness:conhecimento/Roteiros Treinamento/producao/08-cadastros-e-estrutura-produtiva.docx",
+     "harness:conhecimento/Roteiros Treinamento/producao/09-visao-geral-demanda-e-demonstrativos.docx"
+    ]
+   }
+  ]
+ }
+}

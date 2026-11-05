@@ -1,22 +1,25 @@
 /* Gerador da base: regra "nada inventado" (toda informação cita fonte; sem fonte → em-preparacao),
    com fontes fictícias e, quando o Harness está disponível (HARNESS_DIR ou caminho padrão do box), com as fontes reais. */
 import assert from 'node:assert/strict';
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync, readdirSync, statSync } from 'node:fs';
 import { mkdtemp, mkdir, rm, writeFile } from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import { describe, it } from 'node:test';
 import { fileURLToPath } from 'node:url';
-import { BASE } from '../../lib/conteudo/base-conhecimento.js';
+import { carregarBaseCompleta, carregarConteudoModulo, carregarIndice } from '../../lib/conteudo/base.js';
+import { MODULOS } from '../../lib/conteudo/base/carregar.js';
 import { carregarHarness, lerFrontmatter } from '../../lib/conteudo/fontes.js';
 import { MAPA_MODULOS, SECOES } from '../../lib/conteudo/mapa-modulos.js';
 import { duracaoEmSegundos, montarBase } from '../../lib/conteudo/montar.js';
-import { gerar, hojeBrt, serializarBase, validarBaseContraContrato } from '../gerar-base-conhecimento.mjs';
+import { compararPasta, gerar, hojeBrt, indiceDaBase, serializarBase, validarBaseContraContrato } from '../gerar-base-conhecimento.mjs';
 import { guiaFicticio, harnessFicticio, MAPA_FICTICIO, VERSAO_FICTICIA } from './fixtures/fontes-ficticias.mjs';
 
 const RAIZ = path.join(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const HARNESS = process.env.HARNESS_DIR || '/workspace/flow-harness/Harness-Arquitetura-Flow';
 const TEM_HARNESS = existsSync(path.join(HARNESS, 'conhecimento'));
+const PASTA_BASE = path.join(RAIZ, 'lib/conteudo/base');
+const BASE = await carregarBaseCompleta();
 
 /** Percorre a base e devolve todos os nós que deveriam citar fonte. */
 function nosComFonte(base) {
@@ -98,7 +101,35 @@ describe('montarBase com fontes fictícias', () => {
   });
   it('é determinística', () => {
     const outra = montarBase({ harness: harnessFicticio(), guia: guiaFicticio(), versao: VERSAO_FICTICIA, mapa: MAPA_FICTICIO });
-    assert.equal(serializarBase(outra), serializarBase(base));
+    assert.deepEqual(serializarBase(outra), serializarBase(base));
+  });
+  it('serializa em índice + um JSON por módulo + carregar.js com import() estático de cada um', () => {
+    const arq = serializarBase(base);
+    assert.deepEqual(Object.keys(arq).sort(), ['LEIA-ME.md', 'carregar.js', 'estoque.json', 'indice.json', 'relatorios.json', 'vendas.json']);
+    const indice = JSON.parse(arq['indice.json']);
+    assert.deepEqual(indice, JSON.parse(JSON.stringify(indiceDaBase(base))));
+    assert.ok(indice.modulos.every((m) => !('jornadas' in m) && !('retido' in m)));
+    const vendas = JSON.parse(arq['vendas.json']);
+    assert.deepEqual(Object.keys(vendas), ['versao', 'id', 'jornadas']);
+    assert.ok('retido' in JSON.parse(arq['relatorios.json']));
+    for (const id of ['vendas', 'estoque', 'relatorios']) assert.ok(arq['carregar.js'].includes(`import('./${id}.json', { with: { type: 'json' } })`), id);
+  });
+  it('recusa id de módulo que viraria caminho de arquivo perigoso', () => {
+    for (const id of ['../x', 'indice', 'A B']) assert.throws(() => serializarBase({ ...base, modulos: [{ ...base.modulos[0], id }] }), /inválido/, id);
+  });
+  it('compararPasta (base do --verificar) acha desatualizado, faltando e sobrando', async () => {
+    const tmp = await mkdtemp(path.join(os.tmpdir(), 'base-'));
+    try {
+      const arq = serializarBase(base);
+      for (const [n, t] of Object.entries(arq)) await writeFile(path.join(tmp, n), t);
+      assert.deepEqual(await compararPasta(tmp, arq), { desatualizados: [], faltando: [], sobrando: [] });
+      await writeFile(path.join(tmp, 'vendas.json'), '{}');
+      await rm(path.join(tmp, 'estoque.json'));
+      await writeFile(path.join(tmp, 'velho.json'), '{}');
+      assert.deepEqual(await compararPasta(tmp, arq), { desatualizados: ['vendas.json'], faltando: ['estoque.json'], sobrando: ['velho.json'] });
+    } finally {
+      await rm(tmp, { recursive: true, force: true });
+    }
   });
 });
 
@@ -124,7 +155,40 @@ describe('carregarHarness lê um Harness mínimo em pasta temporária', () => {
   });
 });
 
-describe('base versionada (lib/conteudo/base-conhecimento.js)', () => {
+describe('base versionada (lib/conteudo/base/)', () => {
+  it('um arquivo por módulo + índice, e o resumo só precisa do índice (menor que a base)', () => {
+    const nomes = readdirSync(PASTA_BASE).sort();
+    assert.deepEqual(nomes, [...MAPA_MODULOS.map((m) => `${m.id}.json`), 'LEIA-ME.md', 'carregar.js', 'indice.json'].sort());
+    assert.deepEqual(Object.keys(MODULOS), MAPA_MODULOS.map((m) => m.id));
+    const tam = (n) => statSync(path.join(PASTA_BASE, n)).size;
+    const total = nomes.filter((n) => n.endsWith('.json')).reduce((a, n) => a + tam(n), 0);
+    assert.ok(tam('indice.json') < total / 5, `índice ${tam('indice.json')} B de ${total} B`);
+    for (const m of MAPA_MODULOS) assert.ok(tam(`${m.id}.json`) < total / 5, m.id);
+  });
+  it('carga sob demanda: índice e módulo vêm separados; id desconhecido não toca no disco', async () => {
+    const indice = await carregarIndice();
+    assert.ok(indice.modulos.every((m) => !('jornadas' in m)));
+    const vendas = await carregarConteudoModulo('vendas');
+    assert.equal(vendas.id, 'vendas');
+    assert.equal(vendas.jornadas.inicial.length, SECOES.inicial.length);
+    for (const id of ['../indice', 'indice', 'nao-existe', '__proto__', 'constructor', 'toString', null, 1]) assert.equal(await carregarConteudoModulo(id), null, String(id));
+    assert.equal(await carregarConteudoModulo('vendas'), vendas, 'cache por módulo');
+  });
+  it('Relatórios e Alumina: em preparação, com a semente guardada em "retido"', () => {
+    for (const id of ['relatorios', 'alumina']) {
+      const m = BASE.modulos.find((x) => x.id === id);
+      assert.equal(m.em_preparacao, true, id);
+      assert.equal(m.subtitulo, null, id);
+      assert.ok(m.materiais.every((x) => x.status === 'em-preparacao' && x.url === null), id);
+      assert.ok([...m.jornadas.inicial, ...m.jornadas.consultor].every((s) => s.status === 'em-preparacao' && !s.blocos.length), id);
+      assert.ok(m.retido && m.retido.jornadas, id);
+    }
+    assert.equal(BASE.modulos.filter((m) => m.em_preparacao).map((m) => m.id).join(), 'relatorios,alumina');
+  });
+  it('nenhum texto da base servida tem HTML, Markdown leve ou href inseguro', () => {
+    const servido = JSON.stringify(BASE.modulos.map(({ retido, ...m }) => m));
+    for (const proibido of ['<', '**', '`', 'javascript:']) assert.equal(servido.includes(proibido), false, proibido);
+  });
   it('tem os 19 módulos do mapa e respeita o contrato', () => {
     assert.deepEqual(BASE.modulos.map((m) => m.id), MAPA_MODULOS.map((m) => m.id));
     assert.deepEqual(validarBaseContraContrato(BASE), []);
@@ -149,8 +213,8 @@ describe('Harness real', { skip: TEM_HARNESS ? false : `Harness não encontrado 
     for (const f of fontes) if (f.startsWith('harness:')) assert.ok(existsSync(path.join(HARNESS, f.slice(8).split('#')[0])), f);
   });
   it('a base versionada está em dia com o Harness (equivale a --verificar)', async () => {
-    const atual = readFileSync(path.join(RAIZ, 'lib/conteudo/base-conhecimento.js'), 'utf8');
     const nova = await gerar({ harness: HARNESS, versao: BASE.versao });
-    assert.ok(serializarBase(nova) === atual, 'base desatualizada: rode node scripts/gerar-base-conhecimento.mjs --harness <pasta>');
+    const dif = await compararPasta(PASTA_BASE, serializarBase(nova));
+    assert.deepEqual(dif, { desatualizados: [], faltando: [], sobrando: [] }, 'base desatualizada: rode node scripts/gerar-base-conhecimento.mjs --harness <pasta>');
   });
 });

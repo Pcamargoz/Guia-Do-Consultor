@@ -1,7 +1,9 @@
-/* Validadores do contrato v1 e os JSON de exemplo (dados fictícios) entregues ao UI/UX. */
+/* Validadores do contrato (v1 + ajustes da v2: texto em trechos, sem HTML, href seguro) e os JSON de exemplo
+   (dados fictícios) entregues ao UI/UX. */
 import assert from 'node:assert/strict';
 import { describe, it } from 'node:test';
 import { validarDetalhe, validarItemAdmin, validarListaAdmin, validarMaterial, validarResumo, validarVisibilidadeEfetiva } from '../../lib/conteudo/contrato.js';
+import { hrefSeguro, paraInline, textoPuro, validarInline } from '../../lib/conteudo/texto-inline.js';
 import { montarExemplos } from '../gerar-exemplos-conteudo.mjs';
 
 const ex = montarExemplos();
@@ -62,7 +64,7 @@ describe('validadores recusam o que está fora do contrato', () => {
     assert.ok(validarResumo({ modulos: [] }).length > 0);
   });
   it('detalhe', () => {
-    const secao = { id: 'a', titulo: 'A', status: 'disponivel', blocos: [{ tipo: 'texto', texto: 'x', fontes: ['guia:x'] }], fontes: ['guia:x'] };
+    const secao = { id: 'a', titulo: 'A', status: 'disponivel', blocos: [{ tipo: 'texto', texto: [{ t: 'x' }], fontes: ['guia:x'] }], fontes: ['guia:x'] };
     const d = { modulo: { id: 'vendas', titulo: 'Vendas' }, jornada: 'consultor', secoes: Array(10).fill(secao) };
     assert.deepEqual(validarDetalhe(d), []);
     assert.ok(validarDetalhe({ ...d, secoes: d.secoes.slice(0, 9) }).some((e) => e.includes('10')));
@@ -76,5 +78,54 @@ describe('validadores recusam o que está fora do contrato', () => {
     assert.ok(validarItemAdmin({ chave: 'area:apostila', visivel: true, perfis: ['admin'], atualizado_por_nome: null, atualizado_em: null }).length > 0);
     assert.ok(validarItemAdmin({ chave: 'area:apostila', visivel: true, perfis: [], atualizado_por_nome: null, atualizado_em: 'ontem' }).length > 0);
     assert.deepEqual(validarListaAdmin('x'), ['lista: deveria ser array']);
+  });
+});
+
+describe('texto em trechos [{ t, marca?, href? }]: nenhum HTML vem dos dados (review v1, item 4)', () => {
+  const secaoCom = (bloco) => ({ modulo: { id: 'vendas', titulo: 'Vendas' }, jornada: 'consultor', secoes: Array(10).fill({ id: 'a', titulo: 'A', status: 'disponivel', blocos: [{ fontes: ['guia:x'], ...bloco }], fontes: ['guia:x'] }) });
+  it('aceita texto normal, negrito, itálico e link seguro', () => {
+    assert.deepEqual(validarInline([{ t: 'Abra ' }, { t: 'Vendas', marca: 'negrito' }, { t: ' e ' }, { t: 'veja', marca: 'italico' }, { t: ' o vídeo', marca: 'link', href: '/videos/x.mp4' }], 'x'), []);
+    assert.deepEqual(validarInline([{ t: 'rota', marca: 'link', href: '#inicial/vendas' }, { t: 'site', marca: 'link', href: 'https://faktory.com.br/ajuda' }], 'x'), []);
+  });
+  it('recusa HTML ou script em t (inclusive disfarçado)', () => {
+    for (const t of ['<script>alert(1)</script>', '<img src=x onerror=alert(1)>', 'a <b>negrito</b>', '<!-- x -->', '&lt;script&gt;', '&#60;script&#62;', 'x\u0000y', '**sobrou markdown**', 'crase `x`', '[link](/x)']) {
+      assert.ok(validarInline([{ t }], 'x').length > 0, t);
+    }
+  });
+  it('recusa href inseguro e href fora de link', () => {
+    for (const href of ['javascript:alert(1)', 'JavaScript:alert(1)', ' javascript:alert(1)', 'java\tscript:alert(1)', 'jav&#x61;script:alert(1)', 'data:text/html,<script>alert(1)</script>', 'vbscript:msgbox(1)', 'http://inseguro.com', '//outro-site.com', '/\\outro-site.com', 'https://usuario:senha@site.com', 'file:///etc/passwd', '', null]) {
+      assert.equal(hrefSeguro(href), false, String(href));
+      assert.ok(validarInline([{ t: 'x', marca: 'link', href }], 'x').some((e) => e.includes('href')), String(href));
+    }
+    assert.ok(validarInline([{ t: 'x', href: '/ok' }], 'x').some((e) => e.includes('só com marca')));
+    assert.ok(validarInline([{ t: 'x', marca: 'sublinhado' }], 'x').some((e) => e.includes('marca')));
+    assert.ok(validarInline([{ t: 'x', html: '<b>' }], 'x').some((e) => e.includes('fora do contrato')));
+    assert.ok(validarInline('texto solto', 'x').length > 0);
+    assert.ok(validarInline([], 'x').length > 0);
+  });
+  it('validarDetalhe aplica as regras em todo bloco, item e passo', () => {
+    assert.deepEqual(validarDetalhe(secaoCom({ tipo: 'texto', rotulo: 'Objetivo', texto: [{ t: 'ok' }] })), []);
+    assert.ok(validarDetalhe(secaoCom({ tipo: 'texto', texto: 'string crua' })).some((e) => e.includes('trechos')));
+    assert.ok(validarDetalhe(secaoCom({ tipo: 'texto', texto: [{ t: '<script>alert(1)</script>' }] })).some((e) => e.includes('HTML')));
+    assert.ok(validarDetalhe(secaoCom({ tipo: 'texto', rotulo: '<b>x</b>', texto: [{ t: 'ok' }] })).some((e) => e.includes('rotulo')));
+    assert.ok(validarDetalhe(secaoCom({ tipo: 'lista', itens: [{ texto: [{ t: 'a', marca: 'link', href: 'javascript:alert(1)' }] }] })).some((e) => e.includes('href')));
+    assert.ok(validarDetalhe(secaoCom({ tipo: 'passos', passos: [{ texto: [{ t: 'ok' }], nota: [{ t: '<iframe>' }] }] })).some((e) => e.includes('nota')));
+    assert.ok(validarDetalhe(secaoCom({ tipo: 'link', titulo: 'x', url: 'javascript:alert(1)' })).some((e) => e.includes('url')));
+    assert.ok(validarDetalhe(secaoCom({ tipo: 'video', titulo: 'x', url: '/v.mp4', legenda: 'javascript:x' })).some((e) => e.includes('legenda')));
+    assert.ok(validarDetalhe(secaoCom({ tipo: 'fluxo', etapas: ['ok', '<b>'] })).some((e) => e.includes('etapas')));
+    assert.ok(validarDetalhe(secaoCom({ tipo: 'html', texto: [{ t: 'x' }] })).some((e) => e.includes('tipo')));
+  });
+  it('validarMaterial recusa url insegura e título com HTML', () => {
+    assert.ok(validarMaterial({ ...materialOk, url: 'javascript:alert(1)' }).some((e) => e.includes('insegura')));
+    assert.ok(validarMaterial({ ...materialOk, titulo: '<img src=x onerror=alert(1)>' }).some((e) => e.includes('HTML')));
+  });
+  it('conversor: Markdown leve → trechos; nada de HTML passa', () => {
+    assert.deepEqual(paraInline('**A** e *b* e `c` e [d](/x) e [e](javascript:alert(1)) <f>'), [
+      { t: 'A', marca: 'negrito' }, { t: ' e ' }, { t: 'b', marca: 'italico' }, { t: ' e c e ' }, { t: 'd', marca: 'link', href: '/x' }, { t: ' e e ‹f›' },
+    ]);
+    assert.deepEqual(validarInline(paraInline('<script>alert(1)</script> **<b>x</b>**'), 'x'), []);
+    assert.equal(paraInline(''), null);
+    assert.equal(paraInline(null), null);
+    assert.equal(textoPuro('**Vendas** › `Pedidos` <número>'), 'Vendas › Pedidos ‹número›');
   });
 });

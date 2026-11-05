@@ -1,0 +1,2363 @@
+{
+ "versao": "2026-11-04",
+ "id": "faturamento",
+ "jornadas": {
+  "inicial": [
+   {
+    "id": "apresentacao",
+    "titulo": "Apresentação",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "texto",
+      "rotulo": "Faturamento e Fiscal (consulta)",
+      "texto": [
+       {
+        "t": "Onde o pedido vira nota fiscal. Aqui o estagiário consulta; emissão e transmissão são feitas por quem é responsável."
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#faturamento"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Objetivo",
+      "texto": [
+       {
+        "t": "Encontrar uma nota fiscal, entender seus status e saber quais ações têm efeito fiscal e nunca devem ser feitas em treino."
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#faturamento"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-estagiarios.mjs#faturamento"
+    ]
+   },
+   {
+    "id": "video",
+    "titulo": "Vídeo introdutório",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "video",
+      "material": "faturamento:video-inicial",
+      "titulo": "Faturamento: do pedido à nota finalizada",
+      "status": "disponivel",
+      "url": "/videos/consultor-07-faturamento.mp4",
+      "duracao_s": 198,
+      "poster": "/videos/consultor-07-faturamento.jpg",
+      "legenda": "/videos/consultor-07-faturamento.vtt",
+      "resumo": [
+       {
+        "t": "Faturar o pedido, conferir a nota e finalizar sem transmitir."
+       }
+      ],
+      "fontes": [
+       "guia:public/videos/manifest.json",
+       "guia:videos/roteiros/consultor-07-faturamento.json"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:public/videos/manifest.json",
+     "guia:videos/roteiros/consultor-07-faturamento.json"
+    ]
+   },
+   {
+    "id": "manual",
+    "titulo": "Manual visual resumido",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "passos",
+      "titulo": "2. Consultar notas fiscais",
+      "onde": [
+       {
+        "t": "Faturamento > Notas Fiscais (o módulo já abre nesta tela)"
+       }
+      ],
+      "intro": null,
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Escolher a aba "
+         },
+         {
+          "t": "NF-e",
+          "marca": "negrito"
+         },
+         {
+          "t": " (produto) ou "
+         },
+         {
+          "t": "NFS-e",
+          "marca": "negrito"
+         },
+         {
+          "t": " (serviço)."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Ler os cartões Total, Em Aberto, Autorizadas, Canceladas e Rejeitadas."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Trocar o filtro "
+         },
+         {
+          "t": "Status",
+          "marca": "negrito"
+         },
+         {
+          "t": " (abre em \"Em Aberto\") e o filtro "
+         },
+         {
+          "t": "Ambiente",
+          "marca": "negrito"
+         },
+         {
+          "t": " (Homologação/Produção)."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Notas autorizadas e canceladas só aparecem com o Status certo."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Pesquisar por número ou cliente."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#faturamento"
+      ]
+     },
+     {
+      "tipo": "passos",
+      "titulo": "3. Conhecer as ações de uma nota (sem executar)",
+      "onde": [
+       {
+        "t": "menu ... da linha"
+       }
+      ],
+      "intro": null,
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Reconhecer as opções: Editar, Finalizar NF, Preview da DANFE, Duplicar, Ver Timeline, Anexos e Excluir."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Identificar o botão "
+         },
+         {
+          "t": "Transmitir",
+          "marca": "negrito"
+         },
+         {
+          "t": " (avião de papel) direto na linha e saber que ele envia a nota à SEFAZ."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#faturamento"
+      ]
+     },
+     {
+      "tipo": "passos",
+      "titulo": "4. Saber como o pedido vira nota",
+      "onde": [
+       {
+        "t": "menu ⋯ > Faturar do pedido"
+       }
+      ],
+      "intro": null,
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Saber que a nota nasce do pedido: ⋯ > Faturar importa os itens e abre \"Nova NF-e\" com cliente, CFOP e parcelas do pedido."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Saber que, ao salvar a nota, o pedido já aparece como \"Faturado\" — mesmo com a nota ainda Em Aberto. Confira sempre o status da nota."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Reconhecer o quadro \"Impostos não calculados no item\" e o motivo que ele mostra (ex.: CST de PIS/COFINS ausente na NCM): é assunto do fiscal."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#faturamento"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-estagiarios.mjs#faturamento"
+    ]
+   },
+   {
+    "id": "telas",
+    "titulo": "Principais telas",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "lista",
+      "rotulo": "Telas do módulo (glossário do Harness)",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Notas Fiscais"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Faturamento › Notas Fiscais"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/glossario/telas.yaml#faturamento.notas-fiscais"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Nova NF-e"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Vendas › Pedidos de Venda › ⋯ › Faturar"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/glossario/telas.yaml#faturamento.nova-nfe"
+        ]
+       }
+      ],
+      "fontes": [
+       "harness:conhecimento/glossario/telas.yaml#faturamento.notas-fiscais",
+       "harness:conhecimento/glossario/telas.yaml#faturamento.nova-nfe"
+      ]
+     }
+    ],
+    "fontes": [
+     "harness:conhecimento/glossario/telas.yaml#faturamento.notas-fiscais",
+     "harness:conhecimento/glossario/telas.yaml#faturamento.nova-nfe"
+    ]
+   },
+   {
+    "id": "fluxo",
+    "titulo": "Fluxo operacional básico",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "fluxo",
+      "titulo": "Da geração da nota fiscal à liberação para expedição.",
+      "etapas": [
+       "Pedido de Venda",
+       "Geração da NF-e/NFS-e",
+       "Cálculo dos impostos",
+       "Transmissão à SEFAZ/Prefeitura",
+       "Autorização",
+       "Contas a Receber",
+       "Baixa de Estoque",
+       "Liberação para Expedição"
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#faturamento"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:db/migrations/002_modulos_iniciais.sql#faturamento"
+    ]
+   },
+   {
+    "id": "atividade",
+    "titulo": "Atividade prática",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "passos",
+      "titulo": "1. Preparar seus dados: faturar o seu pedido (sem transmitir)",
+      "onde": [
+       {
+        "t": "menu ⋯ > Faturar do pedido"
+       }
+      ],
+      "intro": [
+       {
+        "t": "A sua empresa de treino começa "
+       },
+       {
+        "t": "zerada",
+        "marca": "negrito"
+       },
+       {
+        "t": ": cada módulo usa o que o anterior criou. Só faça com "
+       },
+       {
+        "t": "autorização do supervisor",
+        "marca": "negrito"
+       },
+       {
+        "t": " e com a faixa \"Ambiente NF-e: HOMOLOGAÇÃO\" visível: a nota nunca pode ser transmitida no treino. O produto precisa de NCM com CST de PIS/COFINS de saída, senão a nota sai com \"Impostos não calculados\". Se faltar permissão ou cadastro-base (botão que não aparece, CFOP, plano de contas, meio de pagamento, unidade de medida, almoxarifado), anote a mensagem em "
+       },
+       {
+        "t": "Problema",
+        "marca": "negrito"
+       },
+       {
+        "t": " e chame o supervisor: a empresa de treino começa zerada e os cadastros-base são feitos por um consultor."
+       }
+      ],
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "No seu pedido, abrir ⋯ > Faturar: abre a nova nota com a faixa \"Ambiente NF-e: HOMOLOGAÇÃO\" e o diálogo "
+         },
+         {
+          "t": "Selecionar Itens para Importar",
+          "marca": "negrito"
+         },
+         {
+          "t": " (importe os itens do pedido). Em "
+         },
+         {
+          "t": "Observações e Informações Adicionais",
+          "marca": "negrito"
+         },
+         {
+          "t": ", preencher as "
+         },
+         {
+          "t": "Observações Internas",
+          "marca": "negrito"
+         },
+         {
+          "t": " e clicar em "
+         },
+         {
+          "t": "Salvar e Permanecer",
+          "marca": "negrito"
+         },
+         {
+          "t": " (também há "
+         },
+         {
+          "t": "Salvar",
+          "marca": "negrito"
+         },
+         {
+          "t": " e "
+         },
+         {
+          "t": "Cancelar",
+          "marca": "negrito"
+         },
+         {
+          "t": ")."
+         }
+        ],
+        "nota": [
+         {
+          "t": "O pedido passa a \"Faturado\" com a coluna NOTA FISCAL preenchida, mesmo com a nota ainda Em Aberto. Pode aparecer o aviso \"NCM-Estado não configurado para o produto\" (UF de origem e de destino): peça ao supervisor, ele pode bloquear a nota. "
+         },
+         {
+          "t": "Não clique",
+          "marca": "negrito"
+         },
+         {
+          "t": " em Transmitir."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#faturamento"
+      ]
+     },
+     {
+      "tipo": "link",
+      "material": "faturamento:checklist-inicial",
+      "titulo": "Faturamento e Fiscal (consulta)",
+      "status": "disponivel",
+      "url": "/checklists/estagiarios/12-faturamento-fiscal.html",
+      "duracao_s": null,
+      "poster": null,
+      "legenda": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#faturamento"
+      ]
+     },
+     {
+      "tipo": "link",
+      "material": "faturamento:fluxo-principal",
+      "titulo": "Fluxo principal de Faturamento: do pedido à nota finalizada",
+      "status": "disponivel",
+      "url": "/checklists/estagiarios/fluxo-principal-faturamento.html",
+      "duracao_s": null,
+      "poster": null,
+      "legenda": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-fluxos-estagiarios.mjs#fluxo-faturamento-estagiario"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-estagiarios.mjs#faturamento",
+     "guia:scripts/dados-fluxos-estagiarios.mjs#fluxo-faturamento-estagiario"
+    ]
+   },
+   {
+    "id": "checklist",
+    "titulo": "Checklist de aprendizado",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "checklist-aprendizado",
+      "chave": "inicial:faturamento",
+      "itens": [
+       {
+        "id": "entendi",
+        "texto": [
+         {
+          "t": "Entendi o que é o módulo Faturamento e para que serve"
+         }
+        ]
+       },
+       {
+        "id": "acessar-1",
+        "texto": [
+         {
+          "t": "Sei acessar: menu ⋯ > Faturar do pedido"
+         }
+        ]
+       },
+       {
+        "id": "acessar-2",
+        "texto": [
+         {
+          "t": "Sei acessar: Faturamento > Notas Fiscais (o módulo já abre nesta tela)"
+         }
+        ]
+       },
+       {
+        "id": "acessar-3",
+        "texto": [
+         {
+          "t": "Sei acessar: menu ... da linha"
+         }
+        ]
+       },
+       {
+        "id": "acessar-4",
+        "texto": [
+         {
+          "t": "Sei acessar: módulo Fiscal"
+         }
+        ]
+       },
+       {
+        "id": "executei-5",
+        "texto": [
+         {
+          "t": "Executei: 1. Preparar seus dados: faturar o seu pedido (sem transmitir)"
+         }
+        ]
+       },
+       {
+        "id": "executei-6",
+        "texto": [
+         {
+          "t": "Executei: 2. Consultar notas fiscais"
+         }
+        ]
+       },
+       {
+        "id": "executei-7",
+        "texto": [
+         {
+          "t": "Executei: 3. Conhecer as ações de uma nota (sem executar)"
+         }
+        ]
+       },
+       {
+        "id": "executei-8",
+        "texto": [
+         {
+          "t": "Executei: 4. Saber como o pedido vira nota"
+         }
+        ]
+       },
+       {
+        "id": "executei-9",
+        "texto": [
+         {
+          "t": "Executei: 5. Saber onde ficam os cadastros fiscais"
+         }
+        ]
+       },
+       {
+        "id": "video",
+        "texto": [
+         {
+          "t": "Assisti ao vídeo introdutório"
+         }
+        ]
+       },
+       {
+        "id": "checklist",
+        "texto": [
+         {
+          "t": "Concluí o checklist prático"
+         }
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
+       "guia:scripts/dados-checklists-estagiarios.mjs#faturamento",
+       "guia:public/videos/manifest.json",
+       "guia:videos/roteiros/consultor-07-faturamento.json"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
+     "guia:scripts/dados-checklists-estagiarios.mjs#faturamento",
+     "guia:public/videos/manifest.json",
+     "guia:videos/roteiros/consultor-07-faturamento.json"
+    ]
+   },
+   {
+    "id": "progresso",
+    "titulo": "Progresso",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "progresso",
+      "chave": "inicial:faturamento",
+      "total": 12,
+      "api": "/api/checklists-progresso",
+      "fontes": [
+       "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md"
+    ]
+   }
+  ],
+  "consultor": [
+   {
+    "id": "visao",
+    "titulo": "Visão funcional",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "texto",
+      "rotulo": "Objetivo",
+      "texto": [
+       {
+        "t": "Emitir documentos fiscais (NF-e/NFS-e), transmitir aos órgãos fiscais e integrar com Financeiro, Estoque e Expedição."
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#faturamento"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Papel no fluxo",
+      "texto": [
+       {
+        "t": "Conecta a área comercial às etapas fiscais e operacionais."
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#faturamento"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Quando implantar",
+      "texto": [
+       {
+        "t": "Após o módulo de Vendas e configuração das regras fiscais (CFOP, NCM, impostos, certificado digital)."
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#faturamento"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Caminho — Faturamento: notas fiscais e a nova NF-e",
+      "texto": [
+       {
+        "t": "Faturamento › Notas Fiscais (abas NF-e e NFS-e). A nota nasce do pedido pelo menu ⋯ › Faturar do pedido, em Vendas › Pedidos de Venda, e abre em /faturamento/notas/novo."
+       }
+      ],
+      "fontes": [
+       "harness:conhecimento/produto/funcional/funcional-faturamento-notas-fiscais.md"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:db/migrations/002_modulos_iniciais.sql#faturamento",
+     "harness:conhecimento/produto/funcional/funcional-faturamento-notas-fiscais.md"
+    ]
+   },
+   {
+    "id": "regras",
+    "titulo": "Regras de negócio",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "regra",
+      "titulo": "Um almoxarifado central ativo é pré-requisito de produção e de nota",
+      "texto": [
+       {
+        "t": "Sem um "
+       },
+       {
+        "t": "almoxarifado central ativo",
+        "marca": "negrito"
+       },
+       {
+        "t": " (Estoque › Locais) o sistema bloqueia a conclusão da ordem de produção (\"Conclusão bloqueada\"), a entrada do produto acabado e a finalização da nota fiscal. Um projeto com local de estoque próprio deve ter esse local ativo."
+       }
+      ],
+      "confirmar": [
+       {
+        "t": "Estoque › Locais."
+       }
+      ],
+      "confianca": "B",
+      "fontes": [
+       "harness:conhecimento/produto/regras-negocio/regra-estoque-almoxarifado-central-ativo-e-pre-requisito.md"
+      ]
+     },
+     {
+      "tipo": "regra",
+      "titulo": "Faturar abre uma nova NF-e ligada ao pedido",
+      "texto": [
+       {
+        "t": "Faturar",
+        "marca": "negrito"
+       },
+       {
+        "t": " no menu ⋯ do pedido abre a \"Nova NF-e — Venda de Mercadoria\" com empresa, cliente, vendedor, CFOP, condição e parcelas do pedido; o número do pedido fica vinculado e não pode ser alterado. O diálogo "
+       },
+       {
+        "t": "Selecionar Itens para Importar",
+        "marca": "negrito"
+       },
+       {
+        "t": " abre sozinho e a nota vem vazia até importar os itens (com \"Recalcular impostos\"). As "
+       },
+       {
+        "t": "Observações Internas",
+        "marca": "negrito"
+       },
+       {
+        "t": " ficam em \"Observações e Informações Adicionais\". O transporte vem como \"9 - Sem Transporte\". Botões: Importar Itens do Pedido, Dados da NF-e, Cancelar, Salvar e Permanecer e Salvar."
+       }
+      ],
+      "confirmar": [
+       {
+        "t": "Vendas › Pedidos de Venda › ⋯ › Faturar."
+       }
+      ],
+      "confianca": "B",
+      "fontes": [
+       "harness:conhecimento/produto/regras-negocio/regra-faturamento-faturar-abre-nova-nfe-ligada-ao-pedido.md"
+      ]
+     },
+     {
+      "tipo": "regra",
+      "titulo": "Finalizar a NF-e gera os títulos das parcelas",
+      "texto": [
+       {
+        "t": "Ao "
+       },
+       {
+        "t": "Finalizar NF",
+        "marca": "negrito"
+       },
+       {
+        "t": " de uma nota que veio do pedido, o sistema cria sozinho em "
+       },
+       {
+        "t": "Financeiro › Contas a Receber",
+        "marca": "negrito"
+       },
+       {
+        "t": " um título por parcela, com o "
+       },
+       {
+        "t": "Documento",
+        "marca": "negrito"
+       },
+       {
+        "t": " \"NF - ‹número da nota›\" e os vencimentos e valores das parcelas do pedido. No pedido, a coluna "
+       },
+       {
+        "t": "TÍTULOS",
+        "marca": "negrito"
+       },
+       {
+        "t": " passa a \"Gerados\" e a coluna "
+       },
+       {
+        "t": "NOTA FISCAL",
+        "marca": "negrito"
+       },
+       {
+        "t": " mostra a nota. O menu ⋯ do pedido faturado troca o "
+       },
+       {
+        "t": "Gerar Títulos",
+        "marca": "negrito"
+       },
+       {
+        "t": " por \"Pedido já faturado\", desabilitado, e mostra \"Já faturado: Este pedido já possui nota fiscal emitida\"."
+       }
+      ],
+      "confirmar": [
+       {
+        "t": "Faturamento › Notas Fiscais › ⋯ › Finalizar NF; depois Financeiro › Contas a Receber (pesquisar \"NF - ‹número›\") e Vendas › Pedidos de Venda (limpar o filtro Status)."
+       }
+      ],
+      "confianca": "B",
+      "fontes": [
+       "harness:conhecimento/produto/regras-negocio/regra-faturamento-finalizar-nf-gera-os-titulos.md"
+      ]
+     },
+     {
+      "tipo": "regra",
+      "titulo": "Finalizar NF: o que precisa existir",
+      "texto": [
+       {
+        "t": "Finalizar NF",
+        "marca": "negrito"
+       },
+       {
+        "t": " pede confirmação (\"a nota ficará disponível apenas para visualização\") e deixa a nota "
+       },
+       {
+        "t": "Finalizada",
+        "marca": "negrito"
+       },
+       {
+        "t": " sem transmitir. Precisa de um "
+       },
+       {
+        "t": "almoxarifado central ativo",
+        "marca": "negrito"
+       },
+       {
+        "t": " (ou de local de estoque ativo no projeto); sem isso o sistema responde \"Não foi possível resolver o local de estoque…\" ou \"O projeto … não tem local de estoque ativo\". Se o produto não tem NCM com CST de PIS/COFINS de saída, a nota mostra o quadro \"Impostos não calculados no item\" com o motivo, mas ainda pode ser salva."
+       }
+      ],
+      "confirmar": [
+       {
+        "t": "Faturamento › Notas Fiscais › ⋯ › Finalizar NF; faixa \"Ambiente NF-e: HOMOLOGAÇÃO\" na nota."
+       }
+      ],
+      "confianca": "B",
+      "fontes": [
+       "harness:conhecimento/produto/regras-negocio/regra-faturamento-finalizar-nf-requisitos.md"
+      ]
+     },
+     {
+      "tipo": "regra",
+      "titulo": "Lista de notas: filtro padrão Em Aberto e menu da nota",
+      "texto": [
+       {
+        "t": "A lista em "
+       },
+       {
+        "t": "Faturamento › Notas Fiscais",
+        "marca": "negrito"
+       },
+       {
+        "t": " abre com o Status "
+       },
+       {
+        "t": "Em Aberto",
+        "marca": "negrito"
+       },
+       {
+        "t": ", e os cartões Total, Em Aberto, Autorizadas, Canceladas e Rejeitadas seguem esse filtro: uma nota finalizada ou autorizada só aparece trocando o filtro. As abas são "
+       },
+       {
+        "t": "NF-e",
+        "marca": "negrito"
+       },
+       {
+        "t": " (produto) e "
+       },
+       {
+        "t": "NFS-e",
+        "marca": "negrito"
+       },
+       {
+        "t": " (serviço). O menu ⋯ da nota tem Editar, "
+       },
+       {
+        "t": "Finalizar NF",
+        "marca": "negrito"
+       },
+       {
+        "t": ", Preview da DANFE (abre em nova aba), Duplicar, Ver Timeline, Anexos e Excluir; o avião de papel da linha é "
+       },
+       {
+        "t": "Transmitir",
+        "marca": "negrito"
+       },
+       {
+        "t": "."
+       }
+      ],
+      "confirmar": [
+       {
+        "t": "Faturamento › Notas Fiscais."
+       }
+      ],
+      "confianca": "B",
+      "fontes": [
+       "harness:conhecimento/produto/regras-negocio/regra-faturamento-lista-de-notas-filtro-padrao-e-menu.md"
+      ]
+     },
+     {
+      "tipo": "regra",
+      "titulo": "O pedido passa a Faturado quando a nota é salva",
+      "texto": [
+       {
+        "t": "No menu ⋯ do pedido, "
+       },
+       {
+        "t": "Faturar",
+        "marca": "negrito"
+       },
+       {
+        "t": " abre uma nova NF-e. Assim que a nota é "
+       },
+       {
+        "t": "salva",
+        "marca": "negrito"
+       },
+       {
+        "t": " (por exemplo com "
+       },
+       {
+        "t": "Salvar e Permanecer",
+        "marca": "negrito"
+       },
+       {
+        "t": "), o pedido muda para "
+       },
+       {
+        "t": "Faturado",
+        "marca": "negrito"
+       },
+       {
+        "t": " e a coluna "
+       },
+       {
+        "t": "NOTA FISCAL",
+        "marca": "negrito"
+       },
+       {
+        "t": " da lista é preenchida, mesmo que a nota ainda esteja "
+       },
+       {
+        "t": "Em Aberto",
+        "marca": "negrito"
+       },
+       {
+        "t": "."
+       }
+      ],
+      "confirmar": [
+       {
+        "t": "Vendas › Pedidos de Venda: o Status do pedido e a coluna NOTA FISCAL. Faturamento › Notas Fiscais: o status real da nota (o filtro padrão é Em Aberto)."
+       }
+      ],
+      "confianca": "B",
+      "fontes": [
+       "harness:conhecimento/produto/regras-negocio/regra-vendas-pedido-fica-faturado-ao-salvar-a-nota.md"
+      ]
+     },
+     {
+      "tipo": "regra",
+      "titulo": "Os níveis somam 100%",
+      "texto": [
+       {
+        "t": "No rateio, a soma dos níveis fecha exatamente em cem por cento. Em Um pedido por nível, cada nível vira um pedido."
+       }
+      ],
+      "confirmar": null,
+      "confianca": null,
+      "fontes": [
+       "guia:videos/roteiros/compra-em-nome-do-cliente.json#05",
+       "harness-id:roteiro-vendas-01-pedido-de-venda#012"
+      ]
+     },
+     {
+      "tipo": "regra",
+      "titulo": "Encerrar não fatura",
+      "texto": [
+       {
+        "t": "Encerrar conclui um pedido Em aberto sem faturar o saldo. É o destino do pedido do material do cliente."
+       }
+      ],
+      "confirmar": null,
+      "confianca": null,
+      "fontes": [
+       "guia:videos/roteiros/compra-em-nome-do-cliente.json#06",
+       "harness-id:manual-03-vendas#010"
+      ]
+     },
+     {
+      "tipo": "regra",
+      "titulo": "Compra do cliente não é conta a pagar",
+      "texto": [
+       {
+        "t": "O pedido de compra vinculado ao contrato é por conta do cliente: não gera títulos a pagar da indústria."
+       }
+      ],
+      "confirmar": null,
+      "confianca": null,
+      "fontes": [
+       "guia:videos/roteiros/compra-em-nome-do-cliente.json#07",
+       "harness-id:roteiro-vendas-02-contratos-de-fornecimento#023"
+      ]
+     },
+     {
+      "tipo": "regra",
+      "titulo": "Registrar não é emitir a nota",
+      "texto": [
+       {
+        "t": "Registrar faturamento movimenta o saldo do contrato. A NF-e é feita depois, pelo pedido de venda."
+       }
+      ],
+      "confirmar": null,
+      "confianca": null,
+      "fontes": [
+       "guia:videos/roteiros/compra-em-nome-do-cliente.json#08",
+       "harness-id:roteiro-vendas-02-contratos-de-fornecimento#033"
+      ]
+     }
+    ],
+    "fontes": [
+     "harness:conhecimento/produto/regras-negocio/regra-estoque-almoxarifado-central-ativo-e-pre-requisito.md",
+     "harness:conhecimento/produto/regras-negocio/regra-faturamento-faturar-abre-nova-nfe-ligada-ao-pedido.md",
+     "harness:conhecimento/produto/regras-negocio/regra-faturamento-finalizar-nf-gera-os-titulos.md",
+     "harness:conhecimento/produto/regras-negocio/regra-faturamento-finalizar-nf-requisitos.md",
+     "harness:conhecimento/produto/regras-negocio/regra-faturamento-lista-de-notas-filtro-padrao-e-menu.md",
+     "harness:conhecimento/produto/regras-negocio/regra-vendas-pedido-fica-faturado-ao-salvar-a-nota.md",
+     "guia:videos/roteiros/compra-em-nome-do-cliente.json#05",
+     "harness-id:roteiro-vendas-01-pedido-de-venda#012",
+     "guia:videos/roteiros/compra-em-nome-do-cliente.json#06",
+     "harness-id:manual-03-vendas#010",
+     "guia:videos/roteiros/compra-em-nome-do-cliente.json#07",
+     "harness-id:roteiro-vendas-02-contratos-de-fornecimento#023",
+     "guia:videos/roteiros/compra-em-nome-do-cliente.json#08",
+     "harness-id:roteiro-vendas-02-contratos-de-fornecimento#033"
+    ]
+   },
+   {
+    "id": "fluxos",
+    "titulo": "Fluxos operacionais",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "fluxo",
+      "titulo": "Da geração da nota fiscal à liberação para expedição.",
+      "etapas": [
+       "Pedido de Venda",
+       "Geração da NF-e/NFS-e",
+       "Cálculo dos impostos",
+       "Transmissão à SEFAZ/Prefeitura",
+       "Autorização",
+       "Contas a Receber",
+       "Baixa de Estoque",
+       "Liberação para Expedição"
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#faturamento"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "1. Faturar o pedido",
+      "onde": [
+       {
+        "t": "Vendas > Pedidos de Venda, menu ⋯ > Faturar"
+       }
+      ],
+      "intro": [
+       {
+        "t": "A nota nasce do pedido: o cliente vê que não redigita nada. Vem primeiro porque tudo o que a nota carrega (cliente, CFOP, parcelas) foi decidido no pedido."
+       }
+      ],
+      "passos_total": 3,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "2. Conferir a nota: CFOP, impostos, parcelas e transporte",
+      "onde": [
+       {
+        "t": "tela da nova NF-e"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Aqui o faturista aprende a ler a nota antes de salvar. Erro de cadastro achado agora não vira nota rejeitada nem título errado depois."
+       }
+      ],
+      "passos_total": 5,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "3. Salvar e ver o pedido virar Faturado",
+      "onde": [
+       {
+        "t": "Faturamento > Notas Fiscais e Vendas > Pedidos de Venda"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Salvar cria a nota Em Aberto, ainda sem nada enviado à SEFAZ. O cliente vê na hora o reflexo no pedido e aprende a achar a nota na lista."
+       }
+      ],
+      "passos_total": 5,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "4. Transmitir em homologação com o responsável fiscal",
+      "onde": [
+       {
+        "t": "botão "
+       },
+       {
+        "t": "Transmitir",
+        "marca": "negrito"
+       },
+       {
+        "t": " (avião de papel) na linha da nota, em Faturamento > Notas Fiscais"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Só com o responsável fiscal ao lado e a faixa de homologação visível. O cliente vê o pré-voo, a autorização e o que fazer numa rejeição."
+       }
+      ],
+      "passos_total": 5,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "5. DANFE, XML, e-mail e carta de correção",
+      "onde": [
+       {
+        "t": "menu ⋯ da nota autorizada"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Com a nota autorizada, o faturista entrega o documento ao cliente final e aprende a corrigir o que a lei permite sem cancelar."
+       }
+      ],
+      "passos_total": 3,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "6. Reflexos da nota no financeiro, no estoque e nos painéis",
+      "onde": [
+       {
+        "t": "Financeiro > Contas a Receber, Estoque > Movimentos, Vendas > Pedidos de Venda"
+       }
+      ],
+      "intro": [
+       {
+        "t": "A nota é o documento que movimenta: gera título, baixa estoque e entra nos indicadores. O cliente vê cada efeito no módulo de destino."
+       }
+      ],
+      "passos_total": 5,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "7. Cancelamento na ordem certa",
+      "onde": [
+       {
+        "t": "menu ⋯ > Cancelar da nota autorizada"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Use a segunda nota de teste, autorizada como no bloco 4. A ordem é: estornar o recebimento, tirar o pedido da carga, cancelar a nota e, se for o caso, cancelar o pedido."
+       }
+      ],
+      "passos_total": 5,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "8. Nota gerencial e NFS-e (quando o cliente usar)",
+      "onde": [
+       {
+        "t": "menu ⋯ > Finalizar NF, menu ⋯ > Faturar serviços (NFS-e) do pedido e aba "
+       },
+       {
+        "t": "NFS-e",
+        "marca": "negrito"
+       },
+       {
+        "t": " de Faturamento > Notas Fiscais"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Só se o cliente usa nota gerencial (sem SEFAZ) ou presta serviço. A NFS-e segue um passo a mais que a NF-e: salvar, finalizar e transmitir."
+       }
+      ],
+      "passos_total": 5,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:db/migrations/002_modulos_iniciais.sql#faturamento",
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento"
+    ]
+   },
+   {
+    "id": "implantacao",
+    "titulo": "Procedimentos de implantação",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "texto",
+      "rotulo": "Implantação de Faturamento: roteiro prático com o cliente",
+      "texto": [
+       {
+        "t": "Ao final, o faturista do cliente terá visto um pedido virar nota autorizada em homologação, os títulos nascendo da nota e uma segunda nota cancelada na ordem certa. Ele saberá ler o quadro de impostos, o pré-voo e a rejeição, e saberá o que só o responsável fiscal pode fazer."
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "rotulo": "Blocos do roteiro de implantação",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "1. Faturar o pedido"
+         }
+        ],
+        "nota": [
+         {
+          "t": "3 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "2. Conferir a nota: CFOP, impostos, parcelas e transporte"
+         }
+        ],
+        "nota": [
+         {
+          "t": "5 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "3. Salvar e ver o pedido virar Faturado"
+         }
+        ],
+        "nota": [
+         {
+          "t": "5 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "4. Transmitir em homologação com o responsável fiscal"
+         }
+        ],
+        "nota": [
+         {
+          "t": "5 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "5. DANFE, XML, e-mail e carta de correção"
+         }
+        ],
+        "nota": [
+         {
+          "t": "3 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "6. Reflexos da nota no financeiro, no estoque e nos painéis"
+         }
+        ],
+        "nota": [
+         {
+          "t": "5 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "7. Cancelamento na ordem certa"
+         }
+        ],
+        "nota": [
+         {
+          "t": "5 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "8. Nota gerencial e NFS-e (quando o cliente usar)"
+         }
+        ],
+        "nota": [
+         {
+          "t": "5 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento"
+      ]
+     },
+     {
+      "tipo": "link",
+      "material": "faturamento:checklist-implantacao",
+      "titulo": "Implantação de Faturamento: roteiro prático com o cliente",
+      "status": "disponivel",
+      "url": "/checklists/consultores/implantacao-05-faturamento.html",
+      "duracao_s": null,
+      "poster": null,
+      "legenda": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Orientação de treinamento",
+      "texto": [
+       {
+        "t": "Use um pedido previamente cadastrado. Demonstre da geração da nota até a autorização. Explique carta de correção, cancelamento, inutilização e contingência."
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#faturamento"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento",
+     "guia:db/migrations/002_modulos_iniciais.sql#faturamento"
+    ]
+   },
+   {
+    "id": "configuracoes",
+    "titulo": "Configurações importantes",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "lista",
+      "rotulo": "Pré-requisitos",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Fundação concluída: empresa com regime, IE e endereço com cidade do IBGE, certificado A1 válido e "
+         },
+         {
+          "t": "série e próximo número da NF-e",
+          "marca": "negrito"
+         },
+         {
+          "t": " continuando o sistema antigo."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " Configurações > Empresas e Faturamento > Configurações > Certificados (botão \"Configuração Guiada\"). O número é dado na transmissão e nunca volta: série errada colide com a numeração antiga (rejeição 539). "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " FAT C, pré-requisitos; FAT-TRA-002; README da cadeia, decisão X5."
+         }
+        ],
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Ambiente fiscal em "
+         },
+         {
+          "t": "Homologação",
+          "marca": "negrito"
+         },
+         {
+          "t": ": a nota mostra a faixa \"Ambiente NF-e: HOMOLOGAÇÃO — sem validade fiscal\"."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " a faixa na primeira nota e a coluna Ambiente em Faturamento > Notas Fiscais. "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " fluxo antigo \"Fluxo de faturamento e fiscal\", pré-requisitos; FAT-GER-002."
+         }
+        ],
+        "selo": "conferido-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Dois pedidos de venda de teste \"TESTE FLUXO CONSULTOR\" Em aberto, "
+         },
+         {
+          "t": "sem títulos gerados",
+          "marca": "negrito"
+         },
+         {
+          "t": ", com CFOP que gera financeiro, condição de pagamento e plano de contas: um para transmitir, outro para cancelar."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " em Vendas > Pedidos de Venda, coluna TÍTULOS \"Sem títulos\" e NOTA FISCAL \"—\". "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " README da cadeia, teste ponta a ponta (passos 3 e 7); FAT-TIT-001."
+         }
+        ],
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Almoxarifado central ativo",
+          "marca": "negrito"
+         },
+         {
+          "t": " em Estoque > Locais (ou local de estoque da obra)."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " sem ele \"Finalizar NF\" recusa com \"Não foi possível resolver o local de estoque…\". "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " fluxo antigo \"Fluxo de faturamento e fiscal\", pré-requisitos."
+         }
+        ],
+        "selo": "conferido-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "CFOPs revisados com o contador (\"Gera Financeiro\", \"Movimenta Estoque\", \"Devolução\") e NCM do produto com CST de PIS/COFINS de saída (roteiro de Fiscal feito antes)."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " Faturamento > Configurações > CFOP e o NCM do produto. Sem o CST, a nota sai com o quadro \"Impostos não calculados\". "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " FAT C, etapa 2; fluxo antigo \"Fluxo de faturamento e fiscal\", pré-requisitos."
+         }
+        ],
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Responsável fiscal do cliente presente e perfis definidos: o Faturista emite e transmite, mas não cancela, não emite CC-e nem inutiliza; quem cancela usa Supervisor Fiscal (ou perfil próprio)."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " Segurança > Perfis de Acesso e o usuário do responsável fiscal. "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " README da cadeia, decisão X8; FAT C, etapa 6."
+         }
+        ],
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Decidido quem gera o contas a receber: o pedido ou a nota."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " ata do kickoff. Se o pedido gerou os títulos, a nota não gera de novo. "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " README da cadeia, decisão X2; FAT-TIT-001."
+         }
+        ],
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento"
+    ]
+   },
+   {
+    "id": "validacoes",
+    "titulo": "Validações funcionais",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "lista",
+      "rotulo": "Resultado esperado",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "O pedido virou nota com cliente, itens, CFOP, parcelas e transporte corretos, e o pedido ficou \"Faturado\"."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "A NF-e foi autorizada em homologação com o número da série configurada, com o responsável fiscal presente."
+         }
+        ],
+        "nota": null,
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Os títulos nasceram da nota (ou do pedido, conforme a decisão X2), sem duplicar, e os reflexos no estoque e nos painéis foram conferidos ou anotados."
+         }
+        ],
+        "nota": null,
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "DANFE, XML, e-mail e CC-e funcionaram na nota autorizada."
+         }
+        ],
+        "nota": null,
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "A segunda nota foi cancelada na ordem certa: títulos excluídos, estoque estornado, pedido de volta."
+         }
+        ],
+        "nota": null,
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Os bloqueios (plano de contas, pré-voo, cancelamento com título recebido e com justificativa curta) foram demonstrados."
+         }
+        ],
+        "nota": null,
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "rotulo": "Checklist do módulo",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Gerar NF-e ou NFS-e a partir de um pedido"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#faturamento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Transmitir e acompanhar retorno da autorização"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#faturamento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Emitir DANFE e XML"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#faturamento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Realizar carta de correção e cancelamento (quando aplicável)"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#faturamento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Compreender impactos nos módulos Financeiro, Estoque e Expedição"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#faturamento"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#faturamento"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento",
+     "guia:db/migrations/002_modulos_iniciais.sql#faturamento"
+    ]
+   },
+   {
+    "id": "integracoes",
+    "titulo": "Integrações e dependências",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "texto",
+      "rotulo": "Relação com os outros módulos",
+      "texto": [
+       {
+        "t": "Conecta a área comercial às etapas fiscais e operacionais."
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#faturamento"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:db/migrations/002_modulos_iniciais.sql#faturamento"
+    ]
+   },
+   {
+    "id": "problemas",
+    "titulo": "Problemas recorrentes",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "lista",
+      "rotulo": "Atenção",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Só ambiente de teste (homologação) e registros com \"TESTE FLUXO CONSULTOR\". "
+         },
+         {
+          "t": "Nota fiscal só é transmitida, cancelada ou corrigida com o responsável fiscal do cliente.",
+          "marca": "negrito"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Transmitir",
+          "marca": "negrito"
+         },
+         {
+          "t": " fica a um clique na linha (avião de papel) e é irreversível, mesmo em homologação. "
+         },
+         {
+          "t": "Excluir",
+          "marca": "negrito"
+         },
+         {
+          "t": " está no mesmo menu de Ver Timeline e Anexos."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "O pedido fica \"Faturado\" assim que a nota é "
+         },
+         {
+          "t": "salva",
+          "marca": "negrito"
+         },
+         {
+          "t": ", mesmo Em Aberto: confira sempre o status da nota."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "A lista de notas abre filtrada em \"Em Aberto\"; os cartões de totais seguem esse filtro. Nota autorizada ou cancelada só aparece trocando o Status."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Série errada antes da primeira transmissão colide com a numeração antiga (rejeição 539). O número dado na transmissão nunca volta."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Hoje o sistema ainda recalcula a devolução pelas regras atuais, sem espelhar os tributos da nota original: confira os valores com o contador."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Pedido de contrato de fornecimento só vira nota depois do faturamento no contrato: \"Este pedido está vinculado ao Contrato de Fornecimento #N…\"."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Transmissão em lote: não venda como PRO; hoje o sistema libera em todas as versões."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "rotulo": "Cuidados (vídeo)",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "O avião de papel na linha é Transmitir: é irreversível, mesmo em homologação."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:videos/roteiros/consultor-07-faturamento.json#12"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Excluir fica no mesmo menu de Ver Timeline e Anexos."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:videos/roteiros/consultor-07-faturamento.json#12"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Transmitir, cancelar e inutilizar: só o responsável fiscal."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:videos/roteiros/consultor-07-faturamento.json#12"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:videos/roteiros/consultor-07-faturamento.json#12"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "rotulo": "Cuidados (vídeo)",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "No nível, use um CFOP que gere financeiro."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:videos/roteiros/compra-em-nome-do-cliente.json#34"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "O cliente do pedido é o mesmo do contrato."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:videos/roteiros/compra-em-nome-do-cliente.json#34"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "A origem do abatimento não muda."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:videos/roteiros/compra-em-nome-do-cliente.json#34"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:videos/roteiros/compra-em-nome-do-cliente.json#34"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "rotulo": "A conferir na tela",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Estoque na nota: a gestora diz que a autorização ou a finalização baixa o estoque (FAT-TRA-008, FAT B). No fluxo antigo (conferido em 19/10/2026), a finalização não gerou movimento em Estoque > Movimentos. Conferir na tela."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Finalizar NF: o fluxo antigo trata \"Finalizar NF\" como etapa para encerrar a nota sem transmitir. A gestora diz que a nota finalizada é gerencial, não vai à SEFAZ e depois só pode ser cancelada (FAT-FIN-001/002/004, FAT B). Conferir na tela se uma nota finalizada ainda pode ser transmitida, antes de ensinar a ordem."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Títulos da nota: a gestora diz que a nota gera os títulos na autorização ou na finalização (FAT-TIT-001). No fluxo antigo, a nota finalizada não teve título conferido e os títulos do teste vieram de \"Gerar Títulos\" do pedido depois de Entregue. Conferir na tela."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Histórico da nota: a gestora espera evento no histórico depois da autorização (FAT D). No fluxo antigo, \"Ver Timeline\" apareceu vazia. Conferir na tela."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Transmissão, rejeição, CC-e, cancelamento, reenvio de e-mail, NFS-e e Dashboard Faturamento ainda não foram executados na tela: os nomes de ação vêm do código lido pela gestora."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento",
+     "guia:videos/roteiros/consultor-07-faturamento.json#12",
+     "guia:videos/roteiros/compra-em-nome-do-cliente.json#34"
+    ]
+   },
+   {
+    "id": "videos",
+    "titulo": "Vídeos avançados",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "video",
+      "material": "faturamento:video-consultor",
+      "titulo": "Faturamento: do pedido à nota finalizada",
+      "status": "disponivel",
+      "url": "/videos/consultor-07-faturamento.mp4",
+      "duracao_s": 198,
+      "poster": "/videos/consultor-07-faturamento.jpg",
+      "legenda": "/videos/consultor-07-faturamento.vtt",
+      "resumo": [
+       {
+        "t": "Faturar o pedido, conferir a nota e finalizar sem transmitir."
+       }
+      ],
+      "fontes": [
+       "guia:public/videos/manifest.json",
+       "guia:videos/roteiros/consultor-07-faturamento.json"
+      ]
+     },
+     {
+      "tipo": "video",
+      "material": "faturamento:video-consultor-2",
+      "titulo": "Compra em nome do cliente: Faturamento em Nível e Contrato de Fornecimento",
+      "status": "disponivel",
+      "url": "/videos/compra-em-nome-do-cliente.mp4",
+      "duracao_s": 230,
+      "poster": "/videos/compra-em-nome-do-cliente.jpg",
+      "legenda": "/videos/compra-em-nome-do-cliente.vtt",
+      "resumo": [
+       {
+        "t": "Obra com rateio 40/60: o seu pedido segue o fluxo normal, o do material é encerrado e vira saldo no contrato, abatido pelas compras do cliente."
+       }
+      ],
+      "fontes": [
+       "guia:public/videos/manifest.json",
+       "guia:videos/roteiros/compra-em-nome-do-cliente.json"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:public/videos/manifest.json",
+     "guia:videos/roteiros/consultor-07-faturamento.json",
+     "guia:videos/roteiros/compra-em-nome-do-cliente.json"
+    ]
+   },
+   {
+    "id": "complementares",
+    "titulo": "Materiais complementares",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "link",
+      "material": "faturamento:checklist-inicial",
+      "titulo": "Faturamento e Fiscal (consulta)",
+      "status": "disponivel",
+      "url": "/checklists/estagiarios/12-faturamento-fiscal.html",
+      "duracao_s": null,
+      "poster": null,
+      "legenda": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#faturamento"
+      ]
+     },
+     {
+      "tipo": "link",
+      "material": "faturamento:fluxo-principal",
+      "titulo": "Fluxo principal de Faturamento: do pedido à nota finalizada",
+      "status": "disponivel",
+      "url": "/checklists/estagiarios/fluxo-principal-faturamento.html",
+      "duracao_s": null,
+      "poster": null,
+      "legenda": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-fluxos-estagiarios.mjs#fluxo-faturamento-estagiario"
+      ]
+     },
+     {
+      "tipo": "link",
+      "material": "faturamento:checklist-implantacao",
+      "titulo": "Implantação de Faturamento: roteiro prático com o cliente",
+      "status": "disponivel",
+      "url": "/checklists/consultores/implantacao-05-faturamento.html",
+      "duracao_s": null,
+      "poster": null,
+      "legenda": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento"
+      ]
+     },
+     {
+      "tipo": "link",
+      "titulo": "Apostila do Consultor (PDF)",
+      "url": "/downloads/Apostila-do-Consultor-Faktory-Flow.pdf",
+      "visibilidade": "area:apostila",
+      "fontes": [
+       "guia:public/downloads/Apostila-do-Consultor-Faktory-Flow.pdf"
+      ]
+     },
+     {
+      "tipo": "fontes",
+      "rotulo": "Fontes no Harness",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Como faturar o pedido e finalizar a nota sem transmitir"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Procedimento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/produto/procedimentos/procedimento-faturar-o-pedido-e-finalizar-a-nota.md"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "08 Manual Faturamento e Fiscal"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Manual oficial"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/08_Manual_Faturamento_e_Fiscal_Timbrado.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "01-notas-fiscais"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/faturamento/01-notas-fiscais.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "02-calculos-de-impostos"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/faturamento/02-calculos-de-impostos.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "03-paineis-e-demonstrativos"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/faturamento/03-paineis-e-demonstrativos.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "04-controle-de-terceiros"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/faturamento/04-controle-de-terceiros.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "05-configuracoes-fiscais-e-envios"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/faturamento/05-configuracoes-fiscais-e-envios.docx"
+        ]
+       }
+      ],
+      "fontes": [
+       "harness:conhecimento/produto/procedimentos/procedimento-faturar-o-pedido-e-finalizar-a-nota.md",
+       "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/08_Manual_Faturamento_e_Fiscal_Timbrado.docx",
+       "harness:conhecimento/Roteiros Treinamento/faturamento/01-notas-fiscais.docx",
+       "harness:conhecimento/Roteiros Treinamento/faturamento/02-calculos-de-impostos.docx",
+       "harness:conhecimento/Roteiros Treinamento/faturamento/03-paineis-e-demonstrativos.docx",
+       "harness:conhecimento/Roteiros Treinamento/faturamento/04-controle-de-terceiros.docx",
+       "harness:conhecimento/Roteiros Treinamento/faturamento/05-configuracoes-fiscais-e-envios.docx"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-estagiarios.mjs#faturamento",
+     "guia:scripts/dados-fluxos-estagiarios.mjs#fluxo-faturamento-estagiario",
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento",
+     "guia:public/downloads/Apostila-do-Consultor-Faktory-Flow.pdf",
+     "harness:conhecimento/produto/procedimentos/procedimento-faturar-o-pedido-e-finalizar-a-nota.md",
+     "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/08_Manual_Faturamento_e_Fiscal_Timbrado.docx",
+     "harness:conhecimento/Roteiros Treinamento/faturamento/01-notas-fiscais.docx",
+     "harness:conhecimento/Roteiros Treinamento/faturamento/02-calculos-de-impostos.docx",
+     "harness:conhecimento/Roteiros Treinamento/faturamento/03-paineis-e-demonstrativos.docx",
+     "harness:conhecimento/Roteiros Treinamento/faturamento/04-controle-de-terceiros.docx",
+     "harness:conhecimento/Roteiros Treinamento/faturamento/05-configuracoes-fiscais-e-envios.docx"
+    ]
+   }
+  ]
+ }
+}

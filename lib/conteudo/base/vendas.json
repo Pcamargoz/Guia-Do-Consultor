@@ -1,0 +1,2896 @@
+{
+ "versao": "2026-11-04",
+ "id": "vendas",
+ "jornadas": {
+  "inicial": [
+   {
+    "id": "apresentacao",
+    "titulo": "Apresentação",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "texto",
+      "rotulo": "Vendas: pedidos de venda",
+      "texto": [
+       {
+        "t": "O pedido de venda é onde o fluxo operacional começa: dele saem produção, serviços, expedição, nota e títulos."
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#vendas"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Objetivo",
+      "texto": [
+       {
+        "t": "Encontrar pedidos e entender cada status, conhecer o formulário de pedido sem salvar e ler os indicadores comerciais (dashboard, carteira, metas e comissões)."
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#vendas"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-estagiarios.mjs#vendas"
+    ]
+   },
+   {
+    "id": "video",
+    "titulo": "Vídeo introdutório",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "video",
+      "material": "vendas:video-inicial",
+      "titulo": "Vendas: o ciclo do pedido de venda",
+      "status": "disponivel",
+      "url": "/videos/fluxo-1-vendas.mp4",
+      "duracao_s": 188,
+      "poster": "/videos/fluxo-1-vendas.jpg",
+      "legenda": "/videos/fluxo-1-vendas.vtt",
+      "resumo": [
+       {
+        "t": "O que é o pedido, os status, as quatro regras que mais travam e o pedido criado na tela."
+       }
+      ],
+      "fontes": [
+       "guia:public/videos/manifest.json",
+       "guia:videos/roteiros/fluxo-1-vendas.json"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:public/videos/manifest.json",
+     "guia:videos/roteiros/fluxo-1-vendas.json"
+    ]
+   },
+   {
+    "id": "manual",
+    "titulo": "Manual visual resumido",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "passos",
+      "titulo": "2. Consultar pedidos",
+      "onde": [
+       {
+        "t": "Vendas > Pedidos de Venda"
+       }
+      ],
+      "intro": null,
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Abrir a lista e notar que ela começa filtrada em Status "
+         },
+         {
+          "t": "\"Em Aberto\"",
+          "marca": "negrito"
+         },
+         {
+          "t": " (e volta para esse filtro quando você sai e entra de novo)."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Trocar o Status para \"Todos\" e conhecer os demais: Aprovação pendente, Encerrado, Faturado, Lib. Expedição, Entregue e Cancelado."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Em Filtros, buscar por Cliente, Vendedor, Projeto ou Número do Pedido (ex.: PV-000001)."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Ler as colunas "
+         },
+         {
+          "t": "TÍTULOS",
+          "marca": "negrito"
+         },
+         {
+          "t": " (Gerados / Sem títulos) e "
+         },
+         {
+          "t": "NOTA FISCAL",
+          "marca": "negrito"
+         },
+         {
+          "t": "."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Você identifica se o pedido já tem títulos no financeiro e nota emitida."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#vendas"
+      ]
+     },
+     {
+      "tipo": "passos",
+      "titulo": "3. Conhecer o formulário de pedido (sem salvar)",
+      "onde": [
+       {
+        "t": "botão + Novo Pedido"
+       }
+      ],
+      "intro": null,
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Clicar em "
+         },
+         {
+          "t": "Salvar",
+          "marca": "negrito"
+         },
+         {
+          "t": " com tudo vazio e ler os avisos de Empresa (\"Campo obrigatório\") e Cliente (\"Cliente é obrigatório\")."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Nada é gravado. Empresa e Cliente não têm asterisco: o aviso só aparece ao salvar."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Ver que o "
+         },
+         {
+          "t": "CFOP",
+          "marca": "negrito"
+         },
+         {
+          "t": " fica bloqueado até escolher empresa e cliente (e vem filtrado pelo estado do cliente) e que a "
+         },
+         {
+          "t": "Conta de Fluxo de Caixa",
+          "marca": "negrito"
+         },
+         {
+          "t": " é obrigatória."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Percorrer os blocos Itens do Pedido, Parcelas do Pedido (meio de pagamento e portador), Informações adicionais e Resumo do Pedido."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Sair com "
+         },
+         {
+          "t": "Cancelar",
+          "marca": "negrito"
+         },
+         {
+          "t": " (se o primeiro clique não funcionar, os avisos mudaram o botão de lugar: clique de novo)."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#vendas"
+      ]
+     },
+     {
+      "tipo": "passos",
+      "titulo": "4. Ler os indicadores",
+      "onde": [
+       {
+        "t": "Vendas > Dashboard Vendas"
+       }
+      ],
+      "intro": null,
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Escolher um período (Hoje, Esta semana, Este mês, Este ano) e clicar em "
+         },
+         {
+          "t": "Aplicar",
+          "marca": "negrito"
+         },
+         {
+          "t": "."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Os cartões (Total em vendas, Ticket médio, Em aberto, Pendentes de faturamento) são recalculados."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Saber que o bloco \"Crescimento vs. período anterior\" "
+         },
+         {
+          "t": "não segue",
+          "marca": "negrito"
+         },
+         {
+          "t": " o filtro de datas."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Em Vendas > Demonstrativos > Carteira de Pedidos, ler A faturar, A expedir, Em carga, Expedido, Entregue e o aging por dias."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#vendas"
+      ]
+     },
+     {
+      "tipo": "passos",
+      "titulo": "5. Metas e comissões",
+      "onde": [
+       {
+        "t": "Vendas > Metas de Vendas e Vendas > Controle de Comissão"
+       }
+      ],
+      "intro": null,
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Abrir o painel de Metas: % da meta, projeção, ritmo necessário por dia e cenários pessimista/realista/otimista."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Usar o "
+         },
+         {
+          "t": "Simulador",
+          "marca": "negrito"
+         },
+         {
+          "t": " de comissão: valor 10.000, comissão 5%, Simular."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Comissão estimada R$ 500,00, liberada no recebimento. O simulador não grava nada."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Ver em Comissões os estágios Previstas, A pagar, Em fechamento, Pagas e Estornadas."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#vendas"
+      ]
+     },
+     {
+      "tipo": "passos",
+      "titulo": "6. Ver aprovações pendentes",
+      "onde": [
+       {
+        "t": "Vendas > Aprovações"
+       }
+      ],
+      "intro": null,
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Ver documento, solicitante, valor, tipo e tempo de espera "
+         },
+         {
+          "t": "sem clicar em Aprovar",
+          "marca": "negrito"
+         },
+         {
+          "t": "."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#vendas"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-estagiarios.mjs#vendas"
+    ]
+   },
+   {
+    "id": "telas",
+    "titulo": "Principais telas",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "lista",
+      "rotulo": "Telas do módulo (glossário do Harness)",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Condições de Pagamento"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Vendas › Configurações › Condições de Pagamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/glossario/telas.yaml#vendas.condicoes-pagamento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Pedidos de Venda"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Vendas › Pedidos de Venda"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/glossario/telas.yaml#vendas.pedidos-de-venda"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Novo Pedido"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Vendas › Pedidos de Venda › + Novo Pedido"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/glossario/telas.yaml#vendas.novo-pedido"
+        ]
+       }
+      ],
+      "fontes": [
+       "harness:conhecimento/glossario/telas.yaml#vendas.condicoes-pagamento",
+       "harness:conhecimento/glossario/telas.yaml#vendas.pedidos-de-venda",
+       "harness:conhecimento/glossario/telas.yaml#vendas.novo-pedido"
+      ]
+     }
+    ],
+    "fontes": [
+     "harness:conhecimento/glossario/telas.yaml#vendas.condicoes-pagamento",
+     "harness:conhecimento/glossario/telas.yaml#vendas.pedidos-de-venda",
+     "harness:conhecimento/glossario/telas.yaml#vendas.novo-pedido"
+    ]
+   },
+   {
+    "id": "fluxo",
+    "titulo": "Fluxo operacional básico",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "fluxo",
+      "titulo": "Da importação do orçamento à liberação para os módulos operacionais.",
+      "etapas": [
+       "Projeto no CEM",
+       "Integração do orçamento",
+       "Pedido de venda",
+       "Faturamento",
+       "Geração da NF",
+       "Contas a Receber",
+       "Liberação para Serviços, Produção e Expedição"
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#vendas"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:db/migrations/002_modulos_iniciais.sql#vendas"
+    ]
+   },
+   {
+    "id": "atividade",
+    "titulo": "Atividade prática",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "passos",
+      "titulo": "1. Preparar seus dados: criar um pedido de venda de treino",
+      "onde": [
+       {
+        "t": "Vendas > Pedidos de Venda > + Novo Pedido"
+       }
+      ],
+      "intro": [
+       {
+        "t": "A sua empresa de treino começa "
+       },
+       {
+        "t": "zerada",
+        "marca": "negrito"
+       },
+       {
+        "t": ": cada módulo usa o que o anterior criou. Este pedido é a base de quase todo o resto (compras, produção, serviços, expedição, nota e financeiro): faça com calma e anote o número. Use o cliente, o produto e a obra do checklist 02. Se faltar permissão ou cadastro-base (botão que não aparece, CFOP, plano de contas, meio de pagamento, unidade de medida, almoxarifado), anote a mensagem em "
+       },
+       {
+        "t": "Problema",
+        "marca": "negrito"
+       },
+       {
+        "t": " e chame o supervisor: a empresa de treino começa zerada e os cadastros-base são feitos por um consultor."
+       }
+      ],
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Em "
+         },
+         {
+          "t": "Novo Pedido",
+          "marca": "negrito"
+         },
+         {
+          "t": " (é uma página, não um painel), preencher "
+         },
+         {
+          "t": "Empresa",
+          "marca": "negrito"
+         },
+         {
+          "t": ", "
+         },
+         {
+          "t": "Cliente",
+          "marca": "negrito"
+         },
+         {
+          "t": " (o seu de treino), "
+         },
+         {
+          "t": "Vendedor",
+          "marca": "negrito"
+         },
+         {
+          "t": ", "
+         },
+         {
+          "t": "Condição de Pagamento",
+          "marca": "negrito"
+         },
+         {
+          "t": " e, se quiser, "
+         },
+         {
+          "t": "Projeto (opcional)",
+          "marca": "negrito"
+         },
+         {
+          "t": " (a sua obra). Escolher o "
+         },
+         {
+          "t": "CFOP",
+          "marca": "negrito"
+         },
+         {
+          "t": "."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Escolha a Empresa primeiro (na versão 1.22.13 ela não vem mais preenchida). O CFOP só libera depois de Empresa e Cliente (\"Selecione a empresa e o cliente primeiro\") e vem filtrado pelo estado do cliente. Ao escolher o cliente pode aparecer \"Cliente sem IE informado e não marcado como não contribuinte.\"."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Adicionar o item: ao "
+         },
+         {
+          "t": "escolher o produto",
+          "marca": "negrito"
+         },
+         {
+          "t": " na lista abre o diálogo "
+         },
+         {
+          "t": "Dados do Item",
+          "marca": "negrito"
+         },
+         {
+          "t": "; preencher Altura (mm), Largura (mm), Comprimento (mm), Peso e Cor e clicar em "
+         },
+         {
+          "t": "Aplicar",
+          "marca": "negrito"
+         },
+         {
+          "t": "."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Pode aparecer o quadro \"Impostos não calculados no item\" com o motivo (ex.: CST de PIS/COFINS ausente na NCM). O pedido salva mesmo assim."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Na parcela, escolher o "
+         },
+         {
+          "t": "Meio Pagamento",
+          "marca": "negrito"
+         },
+         {
+          "t": " e o "
+         },
+         {
+          "t": "Portador",
+          "marca": "negrito"
+         },
+         {
+          "t": "; no Resumo, a "
+         },
+         {
+          "t": "Conta de Fluxo de Caixa",
+          "marca": "negrito"
+         },
+         {
+          "t": " (obrigatória) de venda."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Clicar em "
+         },
+         {
+          "t": "Salvar e Permanecer",
+          "marca": "negrito"
+         },
+         {
+          "t": " (no topo; também há "
+         },
+         {
+          "t": "Salvar",
+          "marca": "negrito"
+         },
+         {
+          "t": " e "
+         },
+         {
+          "t": "Cancelar",
+          "marca": "negrito"
+         },
+         {
+          "t": ")."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Mensagem \"Pedido PV-xxxxxx criado\". Na lista: Em aberto, \"Sem títulos\" e Nota Fiscal \"—\"."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#vendas"
+      ]
+     },
+     {
+      "tipo": "link",
+      "material": "vendas:checklist-inicial",
+      "titulo": "Vendas: pedidos de venda",
+      "status": "disponivel",
+      "url": "/checklists/estagiarios/04-vendas-pedidos.html",
+      "duracao_s": null,
+      "poster": null,
+      "legenda": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#vendas"
+      ]
+     },
+     {
+      "tipo": "link",
+      "material": "vendas:fluxo-principal",
+      "titulo": "Fluxo principal de Vendas: do pedido à operação",
+      "status": "disponivel",
+      "url": "/checklists/estagiarios/fluxo-principal-vendas.html",
+      "duracao_s": null,
+      "poster": null,
+      "legenda": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-fluxos-estagiarios.mjs#fluxo-vendas"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-estagiarios.mjs#vendas",
+     "guia:scripts/dados-fluxos-estagiarios.mjs#fluxo-vendas"
+    ]
+   },
+   {
+    "id": "checklist",
+    "titulo": "Checklist de aprendizado",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "checklist-aprendizado",
+      "chave": "inicial:vendas",
+      "itens": [
+       {
+        "id": "entendi",
+        "texto": [
+         {
+          "t": "Entendi o que é o módulo Vendas e para que serve"
+         }
+        ]
+       },
+       {
+        "id": "acessar-1",
+        "texto": [
+         {
+          "t": "Sei acessar: Vendas > Pedidos de Venda > + Novo Pedido"
+         }
+        ]
+       },
+       {
+        "id": "acessar-2",
+        "texto": [
+         {
+          "t": "Sei acessar: Vendas > Pedidos de Venda"
+         }
+        ]
+       },
+       {
+        "id": "acessar-3",
+        "texto": [
+         {
+          "t": "Sei acessar: botão + Novo Pedido"
+         }
+        ]
+       },
+       {
+        "id": "acessar-4",
+        "texto": [
+         {
+          "t": "Sei acessar: Vendas > Dashboard Vendas"
+         }
+        ]
+       },
+       {
+        "id": "acessar-5",
+        "texto": [
+         {
+          "t": "Sei acessar: Vendas > Metas de Vendas e Vendas > Controle de Comissão"
+         }
+        ]
+       },
+       {
+        "id": "acessar-6",
+        "texto": [
+         {
+          "t": "Sei acessar: Vendas > Aprovações"
+         }
+        ]
+       },
+       {
+        "id": "executei-7",
+        "texto": [
+         {
+          "t": "Executei: 1. Preparar seus dados: criar um pedido de venda de treino"
+         }
+        ]
+       },
+       {
+        "id": "executei-8",
+        "texto": [
+         {
+          "t": "Executei: 2. Consultar pedidos"
+         }
+        ]
+       },
+       {
+        "id": "executei-9",
+        "texto": [
+         {
+          "t": "Executei: 3. Conhecer o formulário de pedido (sem salvar)"
+         }
+        ]
+       },
+       {
+        "id": "executei-10",
+        "texto": [
+         {
+          "t": "Executei: 4. Ler os indicadores"
+         }
+        ]
+       },
+       {
+        "id": "executei-11",
+        "texto": [
+         {
+          "t": "Executei: 5. Metas e comissões"
+         }
+        ]
+       },
+       {
+        "id": "executei-12",
+        "texto": [
+         {
+          "t": "Executei: 6. Ver aprovações pendentes"
+         }
+        ]
+       },
+       {
+        "id": "video",
+        "texto": [
+         {
+          "t": "Assisti ao vídeo introdutório"
+         }
+        ]
+       },
+       {
+        "id": "checklist",
+        "texto": [
+         {
+          "t": "Concluí o checklist prático"
+         }
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
+       "guia:scripts/dados-checklists-estagiarios.mjs#vendas",
+       "guia:public/videos/manifest.json",
+       "guia:videos/roteiros/fluxo-1-vendas.json"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
+     "guia:scripts/dados-checklists-estagiarios.mjs#vendas",
+     "guia:public/videos/manifest.json",
+     "guia:videos/roteiros/fluxo-1-vendas.json"
+    ]
+   },
+   {
+    "id": "progresso",
+    "titulo": "Progresso",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "progresso",
+      "chave": "inicial:vendas",
+      "total": 15,
+      "api": "/api/checklists-progresso",
+      "fontes": [
+       "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md"
+    ]
+   }
+  ],
+  "consultor": [
+   {
+    "id": "visao",
+    "titulo": "Visão funcional",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "texto",
+      "rotulo": "Objetivo",
+      "texto": [
+       {
+        "t": "Gerenciar o processo comercial, da criação do pedido ao faturamento. Integrado ao CEM, importa orçamentos sem redigitação."
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#vendas"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Papel no fluxo",
+      "texto": [
+       {
+        "t": "Inicia o fluxo operacional. Alimenta Faturamento, Fiscal, Financeiro, Produção e Expedição."
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#vendas"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Quando implantar",
+      "texto": [
+       {
+        "t": "Após configuração dos cadastros básicos e, preferencialmente, com integração CEM configurada."
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#vendas"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Caminho — Vendas: lista de pedidos e formulário de pedido",
+      "texto": [
+       {
+        "t": "Vendas › Pedidos de Venda. Botão "
+       },
+       {
+        "t": "+ Novo Pedido",
+        "marca": "negrito"
+       },
+       {
+        "t": " (abre uma página, não um painel). Outras telas do módulo: Aprovações, Metas de Vendas, Controle de Comissão, Dashboard Vendas e Demonstrativos (Carteira de Pedidos, Vendas por Período)."
+       }
+      ],
+      "fontes": [
+       "harness:conhecimento/produto/funcional/funcional-vendas-pedidos-de-venda.md"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:db/migrations/002_modulos_iniciais.sql#vendas",
+     "harness:conhecimento/produto/funcional/funcional-vendas-pedidos-de-venda.md"
+    ]
+   },
+   {
+    "id": "regras",
+    "titulo": "Regras de negócio",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "regra",
+      "titulo": "Faturar abre uma nova NF-e ligada ao pedido",
+      "texto": [
+       {
+        "t": "Faturar",
+        "marca": "negrito"
+       },
+       {
+        "t": " no menu ⋯ do pedido abre a \"Nova NF-e — Venda de Mercadoria\" com empresa, cliente, vendedor, CFOP, condição e parcelas do pedido; o número do pedido fica vinculado e não pode ser alterado. O diálogo "
+       },
+       {
+        "t": "Selecionar Itens para Importar",
+        "marca": "negrito"
+       },
+       {
+        "t": " abre sozinho e a nota vem vazia até importar os itens (com \"Recalcular impostos\"). As "
+       },
+       {
+        "t": "Observações Internas",
+        "marca": "negrito"
+       },
+       {
+        "t": " ficam em \"Observações e Informações Adicionais\". O transporte vem como \"9 - Sem Transporte\". Botões: Importar Itens do Pedido, Dados da NF-e, Cancelar, Salvar e Permanecer e Salvar."
+       }
+      ],
+      "confirmar": [
+       {
+        "t": "Vendas › Pedidos de Venda › ⋯ › Faturar."
+       }
+      ],
+      "confianca": "B",
+      "fontes": [
+       "harness:conhecimento/produto/regras-negocio/regra-faturamento-faturar-abre-nova-nfe-ligada-ao-pedido.md"
+      ]
+     },
+     {
+      "tipo": "regra",
+      "titulo": "Finalizar a NF-e gera os títulos das parcelas",
+      "texto": [
+       {
+        "t": "Ao "
+       },
+       {
+        "t": "Finalizar NF",
+        "marca": "negrito"
+       },
+       {
+        "t": " de uma nota que veio do pedido, o sistema cria sozinho em "
+       },
+       {
+        "t": "Financeiro › Contas a Receber",
+        "marca": "negrito"
+       },
+       {
+        "t": " um título por parcela, com o "
+       },
+       {
+        "t": "Documento",
+        "marca": "negrito"
+       },
+       {
+        "t": " \"NF - ‹número da nota›\" e os vencimentos e valores das parcelas do pedido. No pedido, a coluna "
+       },
+       {
+        "t": "TÍTULOS",
+        "marca": "negrito"
+       },
+       {
+        "t": " passa a \"Gerados\" e a coluna "
+       },
+       {
+        "t": "NOTA FISCAL",
+        "marca": "negrito"
+       },
+       {
+        "t": " mostra a nota. O menu ⋯ do pedido faturado troca o "
+       },
+       {
+        "t": "Gerar Títulos",
+        "marca": "negrito"
+       },
+       {
+        "t": " por \"Pedido já faturado\", desabilitado, e mostra \"Já faturado: Este pedido já possui nota fiscal emitida\"."
+       }
+      ],
+      "confirmar": [
+       {
+        "t": "Faturamento › Notas Fiscais › ⋯ › Finalizar NF; depois Financeiro › Contas a Receber (pesquisar \"NF - ‹número›\") e Vendas › Pedidos de Venda (limpar o filtro Status)."
+       }
+      ],
+      "confianca": "B",
+      "fontes": [
+       "harness:conhecimento/produto/regras-negocio/regra-faturamento-finalizar-nf-gera-os-titulos.md"
+      ]
+     },
+     {
+      "tipo": "regra",
+      "titulo": "A OP copia produto e medidas do pedido, mas não a quantidade",
+      "texto": [
+       {
+        "t": "Em "
+       },
+       {
+        "t": "Produção › Ordens de produção › Nova OP",
+        "marca": "negrito"
+       },
+       {
+        "t": ", ao escolher "
+       },
+       {
+        "t": "Pedido de venda",
+        "marca": "negrito"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "Item do pedido",
+        "marca": "negrito"
+       },
+       {
+        "t": ", o sistema copia produto, cor e medidas, mas "
+       },
+       {
+        "t": "não",
+        "marca": "negrito"
+       },
+       {
+        "t": " a quantidade, que precisa ser informada. A "
+       },
+       {
+        "t": "Empresa",
+        "marca": "negrito"
+       },
+       {
+        "t": " é obrigatória (a dica diz que ela herda do pedido, mas não herda). O "
+       },
+       {
+        "t": "Número da OP",
+        "marca": "negrito"
+       },
+       {
+        "t": " deve ficar vazio: o sistema numera. Tipo de operação \"Fabricação\" e a linha de produção já vêm preenchidos. Não use Esc no painel: ele fecha e perde o formulário."
+       }
+      ],
+      "confirmar": [
+       {
+        "t": "Produção › Ordens de produção › Nova OP."
+       }
+      ],
+      "confianca": "B",
+      "fontes": [
+       "harness:conhecimento/produto/regras-negocio/regra-producao-op-copia-o-item-do-pedido-mas-nao-a-quantidade.md"
+      ]
+     },
+     {
+      "tipo": "regra",
+      "titulo": "A medição nasce de um pedido e pede Empresa e Técnico",
+      "texto": [
+       {
+        "t": "Em "
+       },
+       {
+        "t": "Serviços › Medições › Nova Medição",
+        "marca": "negrito"
+       },
+       {
+        "t": ", "
+       },
+       {
+        "t": "Usar este registro",
+        "marca": "negrito"
+       },
+       {
+        "t": " no pedido traz "
+       },
+       {
+        "t": "Cliente",
+        "marca": "negrito"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "Projeto",
+        "marca": "negrito"
+       },
+       {
+        "t": "; "
+       },
+       {
+        "t": "Empresa",
+        "marca": "negrito"
+       },
+       {
+        "t": " (obrigatória) e "
+       },
+       {
+        "t": "Técnico Responsável",
+        "marca": "negrito"
+       },
+       {
+        "t": " (obrigatório) não vêm do pedido. Opcionais: Equipe de Campo, Data de Agendamento e Duração Prevista (HH:mm). O diálogo "
+       },
+       {
+        "t": "Importar Itens do Pedido",
+        "marca": "negrito"
+       },
+       {
+        "t": " pede os itens e o "
+       },
+       {
+        "t": "Nº vãos",
+        "marca": "negrito"
+       },
+       {
+        "t": " de cada um. Existe também "
+       },
+       {
+        "t": "Medição avulsa (sem pedido)",
+        "marca": "negrito"
+       },
+       {
+        "t": ". A página tem as abas Dados Gerais, Vãos, Fotos e Histórico."
+       }
+      ],
+      "confirmar": [
+       {
+        "t": "Serviços › Medições › Nova Medição."
+       }
+      ],
+      "confianca": "B",
+      "fontes": [
+       "harness:conhecimento/produto/regras-negocio/regra-servicos-medicao-nasce-do-pedido.md"
+      ]
+     },
+     {
+      "tipo": "regra",
+      "titulo": "Vendas › Aprovações cobre comissão e desconto",
+      "texto": [
+       {
+        "t": "A tela "
+       },
+       {
+        "t": "Vendas › Aprovações",
+        "marca": "negrito"
+       },
+       {
+        "t": " lista só solicitações de "
+       },
+       {
+        "t": "comissão",
+        "marca": "negrito"
+       },
+       {
+        "t": " e de "
+       },
+       {
+        "t": "desconto",
+        "marca": "negrito"
+       },
+       {
+        "t": ", com as colunas DOCUMENTO, SOLICITANTE, VALOR, TIPO, ESPERA e AÇÕES. Um pedido "
+       },
+       {
+        "t": "sem desconto",
+        "marca": "negrito"
+       },
+       {
+        "t": " não gera aprovação. O desconto do item é o campo "
+       },
+       {
+        "t": "Desconto",
+        "marca": "negrito"
+       },
+       {
+        "t": ", em R$, e aparece no Resumo como \"Descontos\" reduzindo o Total. Quem solicita não vê a própria solicitação, e o botão "
+       },
+       {
+        "t": "Aprovar",
+        "marca": "negrito"
+       },
+       {
+        "t": " da linha aprova com um clique."
+       }
+      ],
+      "confirmar": [
+       {
+        "t": "Vendas › Aprovações e o item do pedido."
+       }
+      ],
+      "confianca": "B",
+      "fontes": [
+       "harness:conhecimento/produto/regras-negocio/regra-vendas-aprovacoes-cobrem-comissao-e-desconto.md"
+      ]
+     },
+     {
+      "tipo": "regra",
+      "titulo": "No Novo Pedido, o CFOP só libera depois de Empresa e Cliente",
+      "texto": [
+       {
+        "t": "Em "
+       },
+       {
+        "t": "Novo Pedido",
+        "marca": "negrito"
+       },
+       {
+        "t": " (uma página) o campo "
+       },
+       {
+        "t": "CFOP",
+        "marca": "negrito"
+       },
+       {
+        "t": " fica bloqueado com \"Selecione a empresa e o cliente primeiro\" e, depois de escolhidos, só oferece CFOPs coerentes com o estado do cliente. Empresa, Cliente, Vendedor e CFOP não têm asterisco, mas o sistema cobra ao salvar. No Resumo, a "
+       },
+       {
+        "t": "Conta de Fluxo de Caixa",
+        "marca": "negrito"
+       },
+       {
+        "t": " é obrigatória."
+       }
+      ],
+      "confirmar": [
+       {
+        "t": "Vendas › Pedidos de Venda › + Novo Pedido."
+       }
+      ],
+      "confianca": "B",
+      "fontes": [
+       "harness:conhecimento/produto/regras-negocio/regra-vendas-cfop-depende-de-empresa-e-cliente.md"
+      ]
+     },
+     {
+      "tipo": "regra",
+      "titulo": "Só o pedido em aberto pode ser editado",
+      "texto": [
+       {
+        "t": "Na lista de pedidos, o "
+       },
+       {
+        "t": "lápis",
+        "marca": "negrito"
+       },
+       {
+        "t": " (Editar pedido) da coluna Ações abre o pedido "
+       },
+       {
+        "t": "Em aberto",
+        "marca": "negrito"
+       },
+       {
+        "t": " para edição. O menu ⋯ do pedido não tem \"Editar\". Pedido "
+       },
+       {
+        "t": "Faturado",
+        "marca": "negrito"
+       },
+       {
+        "t": " ou "
+       },
+       {
+        "t": "Entregue",
+        "marca": "negrito"
+       },
+       {
+        "t": " só tem "
+       },
+       {
+        "t": "Visualizar",
+        "marca": "negrito"
+       },
+       {
+        "t": " (o olho), então campos como "
+       },
+       {
+        "t": "Projeto (opcional)",
+        "marca": "negrito"
+       },
+       {
+        "t": " precisam ser ajustados antes de faturar."
+       }
+      ],
+      "confirmar": [
+       {
+        "t": "Vendas › Pedidos de Venda: coluna Ações do pedido em aberto e do pedido entregue."
+       }
+      ],
+      "confianca": "B",
+      "fontes": [
+       "harness:conhecimento/produto/regras-negocio/regra-vendas-editar-pedido-somente-em-aberto.md"
+      ]
+     },
+     {
+      "tipo": "regra",
+      "titulo": "Gerar Pedido de Venda a partir da oportunidade: CFOP sem financeiro",
+      "texto": [
+       {
+        "t": "No painel da oportunidade ganha, "
+       },
+       {
+        "t": "Gerar Pedido de Venda",
+        "marca": "negrito"
+       },
+       {
+        "t": " pede "
+       },
+       {
+        "t": "Empresa",
+        "marca": "negrito"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "CFOP",
+        "marca": "negrito"
+       },
+       {
+        "t": ". Com um CFOP que "
+       },
+       {
+        "t": "gera financeiro",
+        "marca": "negrito"
+       },
+       {
+        "t": " (como 5101 ou 6101) o sistema recusa, dizendo que Condição de Pagamento, Plano de Conta e Parcelas são obrigatórios, campos que o formulário do handoff não tem. Com um CFOP que "
+       },
+       {
+        "t": "não",
+        "marca": "negrito"
+       },
+       {
+        "t": " gera financeiro (como 5910-1) o pedido nasce com cliente, item e valor da oportunidade; depois basta abrir o pedido, trocar o CFOP e escolher a condição de pagamento, e as parcelas são geradas."
+       }
+      ],
+      "confirmar": [
+       {
+        "t": "CRM › Vendas › Pipeline › oportunidade ganha › Gerar Pedido de Venda. Vendas › Pedidos de Venda para o pedido gerado."
+       }
+      ],
+      "confianca": "B",
+      "fontes": [
+       "harness:conhecimento/produto/regras-negocio/regra-vendas-gerar-pedido-da-oportunidade-exige-cfop-sem-financeiro.md"
+      ]
+     },
+     {
+      "tipo": "regra",
+      "titulo": "Quando Gerar Títulos está habilitado no pedido",
+      "texto": [
+       {
+        "t": "No menu ⋯ do pedido, "
+       },
+       {
+        "t": "Gerar Títulos",
+        "marca": "negrito"
+       },
+       {
+        "t": " fica habilitado em pedido "
+       },
+       {
+        "t": "Em aberto",
+        "marca": "negrito"
+       },
+       {
+        "t": " ou "
+       },
+       {
+        "t": "Entregue",
+        "marca": "negrito"
+       },
+       {
+        "t": " que ainda não tem títulos. Fica desabilitado quando o pedido está "
+       },
+       {
+        "t": "Faturado",
+        "marca": "negrito"
+       },
+       {
+        "t": " ou "
+       },
+       {
+        "t": "Lib. Expedição",
+        "marca": "negrito"
+       },
+       {
+        "t": " (\"Pedido já faturado\") e quando o pedido já tem títulos, caso em que a tela não explica o motivo. Gera um título por parcela."
+       }
+      ],
+      "confirmar": [
+       {
+        "t": "Vendas › Pedidos de Venda › menu ⋯ e coluna TÍTULOS (Gerados / Sem títulos)."
+       }
+      ],
+      "confianca": "B",
+      "fontes": [
+       "harness:conhecimento/produto/regras-negocio/regra-vendas-gerar-titulos-quando-esta-habilitado.md"
+      ]
+     },
+     {
+      "tipo": "regra",
+      "titulo": "Liberar para Expedição só existe em pedido Faturado",
+      "texto": [
+       {
+        "t": "O item "
+       },
+       {
+        "t": "Liberar para Expedição",
+        "marca": "negrito"
+       },
+       {
+        "t": " do menu ⋯ aparece somente em pedido "
+       },
+       {
+        "t": "Faturado",
+        "marca": "negrito"
+       },
+       {
+        "t": ". Em pedido Em aberto ou Entregue não existe, e em pedido "
+       },
+       {
+        "t": "Lib. Expedição",
+        "marca": "negrito"
+       },
+       {
+        "t": " vira "
+       },
+       {
+        "t": "Reverter Liberação",
+        "marca": "negrito"
+       },
+       {
+        "t": ". O aviso da tela Montar Nova Carga manda clicar nesse botão no pedido, mas ele só está no menu do pedido faturado."
+       }
+      ],
+      "confirmar": [
+       {
+        "t": "Vendas › Pedidos de Venda › menu ⋯ de pedidos em status diferentes."
+       }
+      ],
+      "confianca": "B",
+      "fontes": [
+       "harness:conhecimento/produto/regras-negocio/regra-vendas-liberar-para-expedicao-so-em-pedido-faturado.md"
+      ]
+     },
+     {
+      "tipo": "regra",
+      "titulo": "Condição de pagamento e os botões Recalcular",
+      "texto": [
+       {
+        "t": "Trocar a "
+       },
+       {
+        "t": "Condição de Pagamento",
+        "marca": "negrito"
+       },
+       {
+        "t": " regenera as parcelas sozinho. O botão "
+       },
+       {
+        "t": "Recalcular",
+        "marca": "negrito"
+       },
+       {
+        "t": " redivide o total por igual, mantém datas e quantidade e mostra o aviso \"Parcelas recalculadas com base no total do pedido\". O botão "
+       },
+       {
+        "t": "Recalcular Parcelas",
+        "marca": "negrito"
+       },
+       {
+        "t": ", no Resumo, só redivide os valores, sem aviso e sem regenerar datas nem quantidade, embora a dica diga \"conforme a condição de pagamento\"."
+       }
+      ],
+      "confirmar": [
+       {
+        "t": "Vendas › Pedidos de Venda › Editar pedido, bloco Parcelas do Pedido e Resumo do Pedido (sem salvar)."
+       }
+      ],
+      "confianca": "B",
+      "fontes": [
+       "harness:conhecimento/produto/regras-negocio/regra-vendas-parcelas-recalcular-e-recalcular-parcelas.md"
+      ]
+     },
+     {
+      "tipo": "regra",
+      "titulo": "O pedido passa a Faturado quando a nota é salva",
+      "texto": [
+       {
+        "t": "No menu ⋯ do pedido, "
+       },
+       {
+        "t": "Faturar",
+        "marca": "negrito"
+       },
+       {
+        "t": " abre uma nova NF-e. Assim que a nota é "
+       },
+       {
+        "t": "salva",
+        "marca": "negrito"
+       },
+       {
+        "t": " (por exemplo com "
+       },
+       {
+        "t": "Salvar e Permanecer",
+        "marca": "negrito"
+       },
+       {
+        "t": "), o pedido muda para "
+       },
+       {
+        "t": "Faturado",
+        "marca": "negrito"
+       },
+       {
+        "t": " e a coluna "
+       },
+       {
+        "t": "NOTA FISCAL",
+        "marca": "negrito"
+       },
+       {
+        "t": " da lista é preenchida, mesmo que a nota ainda esteja "
+       },
+       {
+        "t": "Em Aberto",
+        "marca": "negrito"
+       },
+       {
+        "t": "."
+       }
+      ],
+      "confirmar": [
+       {
+        "t": "Vendas › Pedidos de Venda: o Status do pedido e a coluna NOTA FISCAL. Faturamento › Notas Fiscais: o status real da nota (o filtro padrão é Em Aberto)."
+       }
+      ],
+      "confianca": "B",
+      "fontes": [
+       "harness:conhecimento/produto/regras-negocio/regra-vendas-pedido-fica-faturado-ao-salvar-a-nota.md"
+      ]
+     },
+     {
+      "tipo": "regra",
+      "titulo": "Converter exige 60% e BANT completo",
+      "texto": [
+       {
+        "t": "Lead numa etapa do Kanban de 60% ou mais e com o BANT completo: Budget, Autoridade, Necessidade e Prazo."
+       }
+      ],
+      "confirmar": null,
+      "confianca": null,
+      "fontes": [
+       "guia:videos/roteiros/consultor-03-comercial.json#04",
+       "harness-id:regra-crm-converter-lead-exige-etapa-60-e-bant-completo"
+      ]
+     },
+     {
+      "tipo": "regra",
+      "titulo": "A conversão cria a oportunidade sozinha",
+      "texto": [
+       {
+        "t": "A oportunidade nasce no Pipeline, na etapa Novo Lead, com o valor do Budget. As atividades do lead não vão junto."
+       }
+      ],
+      "confirmar": null,
+      "confianca": null,
+      "fontes": [
+       "guia:videos/roteiros/consultor-03-comercial.json#05",
+       "harness-id:regra-crm-conversao-cria-a-oportunidade-sozinha"
+      ]
+     },
+     {
+      "tipo": "regra",
+      "titulo": "Itens viram o valor da oportunidade",
+      "texto": [
+       {
+        "t": "Na aba Itens, aplique o quadro Dados do Item antes de salvar. O Valor estimado passa a ser a soma dos itens."
+       }
+      ],
+      "confirmar": null,
+      "confianca": null,
+      "fontes": [
+       "guia:videos/roteiros/consultor-03-comercial.json#06",
+       "harness-id:funcional-crm-leads-pipeline-e-oportunidades"
+      ]
+     }
+    ],
+    "fontes": [
+     "harness:conhecimento/produto/regras-negocio/regra-faturamento-faturar-abre-nova-nfe-ligada-ao-pedido.md",
+     "harness:conhecimento/produto/regras-negocio/regra-faturamento-finalizar-nf-gera-os-titulos.md",
+     "harness:conhecimento/produto/regras-negocio/regra-producao-op-copia-o-item-do-pedido-mas-nao-a-quantidade.md",
+     "harness:conhecimento/produto/regras-negocio/regra-servicos-medicao-nasce-do-pedido.md",
+     "harness:conhecimento/produto/regras-negocio/regra-vendas-aprovacoes-cobrem-comissao-e-desconto.md",
+     "harness:conhecimento/produto/regras-negocio/regra-vendas-cfop-depende-de-empresa-e-cliente.md",
+     "harness:conhecimento/produto/regras-negocio/regra-vendas-editar-pedido-somente-em-aberto.md",
+     "harness:conhecimento/produto/regras-negocio/regra-vendas-gerar-pedido-da-oportunidade-exige-cfop-sem-financeiro.md",
+     "harness:conhecimento/produto/regras-negocio/regra-vendas-gerar-titulos-quando-esta-habilitado.md",
+     "harness:conhecimento/produto/regras-negocio/regra-vendas-liberar-para-expedicao-so-em-pedido-faturado.md",
+     "harness:conhecimento/produto/regras-negocio/regra-vendas-parcelas-recalcular-e-recalcular-parcelas.md",
+     "harness:conhecimento/produto/regras-negocio/regra-vendas-pedido-fica-faturado-ao-salvar-a-nota.md",
+     "guia:videos/roteiros/consultor-03-comercial.json#04",
+     "harness-id:regra-crm-converter-lead-exige-etapa-60-e-bant-completo",
+     "guia:videos/roteiros/consultor-03-comercial.json#05",
+     "harness-id:regra-crm-conversao-cria-a-oportunidade-sozinha",
+     "guia:videos/roteiros/consultor-03-comercial.json#06",
+     "harness-id:funcional-crm-leads-pipeline-e-oportunidades"
+    ]
+   },
+   {
+    "id": "fluxos",
+    "titulo": "Fluxos operacionais",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "fluxo",
+      "titulo": "Da importação do orçamento à liberação para os módulos operacionais.",
+      "etapas": [
+       "Projeto no CEM",
+       "Integração do orçamento",
+       "Pedido de venda",
+       "Faturamento",
+       "Geração da NF",
+       "Contas a Receber",
+       "Liberação para Serviços, Produção e Expedição"
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#vendas"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "1. O pedido: importado ou digitado",
+      "onde": [
+       {
+        "t": "Vendas > Pedidos de Venda (pedido importado ou + Novo Pedido)"
+       }
+      ],
+      "intro": [
+       {
+        "t": "O pedido é onde a operação começa: dele saem produção, expedição, nota e títulos. Use o pedido importado no roteiro da Integração CEM ou digite um com o cliente, com um item de cada categoria."
+       }
+      ],
+      "passos_total": 5,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "2. Ler a lista e ajustar antes de faturar",
+      "onde": [
+       {
+        "t": "Vendas > Pedidos de Venda"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Só o pedido Em aberto é editável. Mostre como achar o pedido, ler a situação dele e corrigir enquanto ainda dá."
+       }
+      ],
+      "passos_total": 4,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "3. Alçada de desconto",
+      "onde": [
+       {
+        "t": "Vendas > Configurações > Alçadas de Desconto e Vendas > Aprovações"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Se o cliente controla desconto, configure a alçada e faça um desconto passar pela aprovação. Sem faixa cadastrada não há alçada."
+       }
+      ],
+      "passos_total": 4,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "4. Títulos pelo pedido e o financeiro nascendo",
+      "onde": [
+       {
+        "t": "menu ⋯ > Gerar Títulos do pedido e Financeiro > Contas a Receber"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Use o pedido A para mostrar a venda que gera o contas a receber antes da nota (venda antecipada, sinal). O pedido B será faturado no bloco 5: nunca faça os dois no mesmo pedido."
+       }
+      ],
+      "passos_total": 4,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "5. Faturar e ver a nota nascer",
+      "onde": [
+       {
+        "t": "menu ⋯ > Faturar do pedido e Faturamento > Notas Fiscais"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Agora o pedido B vira nota. O consultor mostra a nota nascendo do pedido e os títulos nascendo da nota, sem transmitir."
+       }
+      ],
+      "passos_total": 5,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "6. Encerrar e cancelar na ordem certa",
+      "onde": [
+       {
+        "t": "menu ⋯ do pedido (Encerrar, Cancelar) e Financeiro > Contas a Receber"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Desfazer tem ordem: nota, depois títulos, depois pedido. Demonstre as recusas de propósito para o cliente nunca ficar travado."
+       }
+      ],
+      "passos_total": 4,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "7. Liberar para expedição e ver nos indicadores",
+      "onde": [
+       {
+        "t": "menu ⋯ > Liberar para Expedição do pedido, Vendas > Dashboard Vendas e Vendas > Demonstrativos > Carteira de Pedidos"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Para quem contratou Expedição, o pedido só entra na fila de carga quando alguém libera. Feche mostrando os pedidos do roteiro nos indicadores."
+       }
+      ],
+      "passos_total": 4,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "8. Comissões, metas e contrato (só se contratados)",
+      "onde": [
+       {
+        "t": "Vendas > Controle de Comissão, Vendas > Metas de Vendas e Vendas > Contratos de Fornecimento"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Faça cada passo só se o recurso foi contratado. Regime e base da comissão precisam ser decididos antes da primeira nota real."
+       }
+      ],
+      "passos_total": 4,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:db/migrations/002_modulos_iniciais.sql#vendas",
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+    ]
+   },
+   {
+    "id": "implantacao",
+    "titulo": "Procedimentos de implantação",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "texto",
+      "rotulo": "Implantação de Vendas: roteiro prático com o cliente",
+      "texto": [
+       {
+        "t": "Ao final, o cliente criou e ajustou um pedido, viu um desconto passar pela aprovação, gerou títulos num pedido e faturou outro, e encontrou o título e a nota em cada módulo. Ele sabe por que o sistema recusa cancelar um pedido faturado ou com títulos e qual a ordem para desfazer."
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "rotulo": "Blocos do roteiro de implantação",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "1. O pedido: importado ou digitado"
+         }
+        ],
+        "nota": [
+         {
+          "t": "5 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "2. Ler a lista e ajustar antes de faturar"
+         }
+        ],
+        "nota": [
+         {
+          "t": "4 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "3. Alçada de desconto"
+         }
+        ],
+        "nota": [
+         {
+          "t": "4 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "4. Títulos pelo pedido e o financeiro nascendo"
+         }
+        ],
+        "nota": [
+         {
+          "t": "4 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "5. Faturar e ver a nota nascer"
+         }
+        ],
+        "nota": [
+         {
+          "t": "5 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "6. Encerrar e cancelar na ordem certa"
+         }
+        ],
+        "nota": [
+         {
+          "t": "4 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "7. Liberar para expedição e ver nos indicadores"
+         }
+        ],
+        "nota": [
+         {
+          "t": "4 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "8. Comissões, metas e contrato (só se contratados)"
+         }
+        ],
+        "nota": [
+         {
+          "t": "4 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+      ]
+     },
+     {
+      "tipo": "link",
+      "material": "vendas:checklist-implantacao",
+      "titulo": "Implantação de Vendas: roteiro prático com o cliente",
+      "status": "disponivel",
+      "url": "/checklists/consultores/implantacao-04-vendas.html",
+      "duracao_s": null,
+      "poster": null,
+      "legenda": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Orientação de treinamento",
+      "texto": [
+       {
+        "t": "Priorize exemplos reais da empresa. O fluxo pode ser adaptado (ex: usar status \"Encerrado\" e gerar títulos antes do \"Faturado\"). O importante é que os usuários compreendam a lógica do processo."
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#vendas"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas",
+     "guia:db/migrations/002_modulos_iniciais.sql#vendas"
+    ]
+   },
+   {
+    "id": "configuracoes",
+    "titulo": "Configurações importantes",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "lista",
+      "rotulo": "Pré-requisitos",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Fundação concluída: cliente, vendedor, produtos com unidade válida, condições e meios de pagamento, portador, plano de contas e CFOPs de venda revisados com o contador."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " o checklist da Fundação assinado e um pedido de teste já salvo. "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " README da cadeia comercial, ordem de implantação; procedimento Criar pedido de venda."
+         }
+        ],
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Decidido com o cliente: quem gera o contas a receber, o pedido (Gerar Títulos) ou a nota."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " a decisão na ata. Se o pedido gerou os títulos, a nota não gera de novo e o pedido fica com os valores travados. "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " README da cadeia comercial, decisão X2; Manual 03 Vendas, 2.3."
+         }
+        ],
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Ambiente fiscal em "
+         },
+         {
+          "t": "homologação",
+          "marca": "negrito"
+         },
+         {
+          "t": " e almoxarifado central ativo em Estoque > Locais."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " a faixa “Ambiente NF-e: HOMOLOGAÇÃO” na nota e o local ativo. Sem local de estoque a nota não finaliza. "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " teste do fluxo completo, pré-requisitos; procedimento Faturar o pedido e finalizar a nota."
+         }
+        ],
+        "selo": "conferido-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Dois usuários de teste: o vendedor e um aprovador de desconto diferente dele."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " os dois entram e o aprovador vê Vendas > Aprovações. O vendedor não aprova o próprio desconto. "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " Vendas C, etapa 3."
+         }
+        ],
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+    ]
+   },
+   {
+    "id": "validacoes",
+    "titulo": "Validações funcionais",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "lista",
+      "rotulo": "Resultado esperado",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Um pedido criado (ou importado), ajustado e salvo, com parcelas pela condição de pagamento."
+         }
+        ],
+        "nota": null,
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Um desconto acima da alçada passou por Aprovação pendente e foi aprovado por outro usuário."
+         }
+        ],
+        "nota": null,
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Um pedido gerou títulos e outro foi faturado; o título e a nota foram encontrados no Financeiro e no Faturamento."
+         }
+        ],
+        "nota": null,
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "As recusas de cancelamento foram demonstradas e um pedido foi cancelado na ordem nota → títulos → pedido."
+         }
+        ],
+        "nota": null,
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Um pedido faturado foi liberado para expedição (quem tem Expedição) e aparece no Dashboard e na Carteira de Pedidos."
+         }
+        ],
+        "nota": null,
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Nenhuma nota foi transmitida sem o responsável fiscal."
+         }
+        ],
+        "nota": null,
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "rotulo": "Checklist do módulo",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Importar orçamento do CEM (quando aplicável)"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#vendas"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Cadastrar e aprovar pedido de venda"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#vendas"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Realizar faturamento"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#vendas"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Compreender integração com Faturamento, Financeiro, Serviços, Produção e Expedição"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#vendas"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#vendas"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas",
+     "guia:db/migrations/002_modulos_iniciais.sql#vendas"
+    ]
+   },
+   {
+    "id": "integracoes",
+    "titulo": "Integrações e dependências",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "texto",
+      "rotulo": "Relação com os outros módulos",
+      "texto": [
+       {
+        "t": "Inicia o fluxo operacional. Alimenta Faturamento, Fiscal, Financeiro, Produção e Expedição."
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#vendas"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:db/migrations/002_modulos_iniciais.sql#vendas"
+    ]
+   },
+   {
+    "id": "problemas",
+    "titulo": "Problemas recorrentes",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "lista",
+      "rotulo": "Atenção",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Só em ambiente de teste ou homologação; pedidos com “TESTE FLUXO CONSULTOR”. Nota fiscal só é transmitida com o responsável fiscal: o roteiro só finaliza."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Não gere títulos pelo pedido e fature o mesmo pedido: escolha um caminho com o cliente (pedido ou nota) e mantenha."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "O pedido vira Faturado ao "
+         },
+         {
+          "t": "salvar",
+          "marca": "negrito"
+         },
+         {
+          "t": " a nota, mesmo com ela Em Aberto: confira o status da nota em Faturamento > Notas Fiscais."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Encerrado não volta e não cancela: use só quando a venda está fechada sem nota."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Ordem para desfazer: cancelar a nota → excluir ou estornar os títulos → cancelar o pedido (motivo com 10 caracteres ou mais)."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Pedido com títulos só aceita mudar observações e vendedor."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Hoje o campo “% Comissão” do vendedor só aparece no participante quando o cliente tem o módulo CRM; sem CRM, use regra por vendedor."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Há pedidos com o mesmo número em empresas ou séries diferentes e pedidos desdobrados (ex.: PV-000395/2): confira cliente e valor."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "rotulo": "Cuidados (vídeo)",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Ganha não pede confirmação: se clicar sem querer, use Reverter ganho."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:videos/roteiros/consultor-03-comercial.json#14"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Desconto em R$ acima da alçada vai para aprovação de outro usuário."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:videos/roteiros/consultor-03-comercial.json#14"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Reverta o ganho antes de gerar o pedido, nunca depois."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:videos/roteiros/consultor-03-comercial.json#14"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:videos/roteiros/consultor-03-comercial.json#14"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "rotulo": "A conferir na tela",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Quando aparece "
+         },
+         {
+          "t": "Gerar Títulos",
+          "marca": "negrito"
+         },
+         {
+          "t": ": a gestora diz só em pedido Em aberto; o teste do fluxo completo viu a opção desabilitada em Faturado e Lib. Expedição (“Pedido já faturado”) e de volta depois de Entregue; o procedimento cita Em aberto ou Entregue sem títulos. Conferir na tela."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Quando aparece "
+         },
+         {
+          "t": "Liberar para Expedição",
+          "marca": "negrito"
+         },
+         {
+          "t": ": a gestora diz pedido Faturado ou Encerrado; o teste do fluxo completo diz que a opção só aparece depois de faturado. Conferir com um pedido Encerrado."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Encerrado e nota: a gestora mostra que um pedido Encerrado ainda pode receber nota (vira Faturado); o Manual 03 Vendas diz que Encerrar conclui o pedido sem faturar o saldo. Conferir na tela."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Saída de estoque na nota: a gestora diz que o CFOP que movimenta estoque baixa o estoque na nota; no teste do fluxo completo a finalização da nota não gerou saída de estoque. Conferir em Estoque > Movimentos."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Numeração do pedido: a gestora indica, como inferência, que informar à mão o primeiro número faz os seguintes seguirem automáticos. Conferir antes de ensinar."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas",
+     "guia:videos/roteiros/consultor-03-comercial.json#14"
+    ]
+   },
+   {
+    "id": "videos",
+    "titulo": "Vídeos avançados",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "video",
+      "material": "vendas:video-consultor",
+      "titulo": "Comercial: do lead ao pedido de venda",
+      "status": "disponivel",
+      "url": "/videos/consultor-03-comercial.mp4",
+      "duracao_s": 220,
+      "poster": "/videos/consultor-03-comercial.jpg",
+      "legenda": "/videos/consultor-03-comercial.vtt",
+      "resumo": [
+       {
+        "t": "As quatro regras que travam o CRM e o caminho real, do Kanban à oportunidade ganha."
+       }
+      ],
+      "fontes": [
+       "guia:public/videos/manifest.json",
+       "guia:videos/roteiros/consultor-03-comercial.json"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:public/videos/manifest.json",
+     "guia:videos/roteiros/consultor-03-comercial.json"
+    ]
+   },
+   {
+    "id": "complementares",
+    "titulo": "Materiais complementares",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "link",
+      "material": "vendas:checklist-inicial",
+      "titulo": "Vendas: pedidos de venda",
+      "status": "disponivel",
+      "url": "/checklists/estagiarios/04-vendas-pedidos.html",
+      "duracao_s": null,
+      "poster": null,
+      "legenda": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#vendas"
+      ]
+     },
+     {
+      "tipo": "link",
+      "material": "vendas:fluxo-principal",
+      "titulo": "Fluxo principal de Vendas: do pedido à operação",
+      "status": "disponivel",
+      "url": "/checklists/estagiarios/fluxo-principal-vendas.html",
+      "duracao_s": null,
+      "poster": null,
+      "legenda": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-fluxos-estagiarios.mjs#fluxo-vendas"
+      ]
+     },
+     {
+      "tipo": "link",
+      "material": "vendas:checklist-implantacao",
+      "titulo": "Implantação de Vendas: roteiro prático com o cliente",
+      "status": "disponivel",
+      "url": "/checklists/consultores/implantacao-04-vendas.html",
+      "duracao_s": null,
+      "poster": null,
+      "legenda": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+      ]
+     },
+     {
+      "tipo": "link",
+      "titulo": "Apostila do Consultor (PDF)",
+      "url": "/downloads/Apostila-do-Consultor-Faktory-Flow.pdf",
+      "visibilidade": "area:apostila",
+      "fontes": [
+       "guia:public/downloads/Apostila-do-Consultor-Faktory-Flow.pdf"
+      ]
+     },
+     {
+      "tipo": "fontes",
+      "rotulo": "Fontes no Harness",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Como ajustar o pedido antes de faturar"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Procedimento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/produto/procedimentos/procedimento-ajustar-o-pedido-antes-de-faturar.md"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Como criar um pedido de venda"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Procedimento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/produto/procedimentos/procedimento-criar-pedido-de-venda.md"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Como faturar o pedido e finalizar a nota sem transmitir"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Procedimento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/produto/procedimentos/procedimento-faturar-o-pedido-e-finalizar-a-nota.md"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Como gerar os títulos do pedido e receber"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Procedimento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/produto/procedimentos/procedimento-gerar-titulos-e-receber.md"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Como liberar o pedido e montar a carga"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Procedimento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/produto/procedimentos/procedimento-montar-carga-e-liberar-para-expedicao.md"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "03 Manual Vendas"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Manual oficial"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/03_Manual_Vendas_Timbrado.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "01-pedido-de-venda"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/vendas/01-pedido-de-venda.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "02-contratos-de-fornecimento"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/vendas/02-contratos-de-fornecimento.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "03-metas-de-vendas"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/vendas/03-metas-de-vendas.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "04-comissoes"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/vendas/04-comissoes.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "05-paineis-e-demonstrativos"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/vendas/05-paineis-e-demonstrativos.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "06-configuracoes-e-integracoes-de-vendas"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/vendas/06-configuracoes-e-integracoes-de-vendas.docx"
+        ]
+       }
+      ],
+      "fontes": [
+       "harness:conhecimento/produto/procedimentos/procedimento-ajustar-o-pedido-antes-de-faturar.md",
+       "harness:conhecimento/produto/procedimentos/procedimento-criar-pedido-de-venda.md",
+       "harness:conhecimento/produto/procedimentos/procedimento-faturar-o-pedido-e-finalizar-a-nota.md",
+       "harness:conhecimento/produto/procedimentos/procedimento-gerar-titulos-e-receber.md",
+       "harness:conhecimento/produto/procedimentos/procedimento-montar-carga-e-liberar-para-expedicao.md",
+       "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/03_Manual_Vendas_Timbrado.docx",
+       "harness:conhecimento/Roteiros Treinamento/vendas/01-pedido-de-venda.docx",
+       "harness:conhecimento/Roteiros Treinamento/vendas/02-contratos-de-fornecimento.docx",
+       "harness:conhecimento/Roteiros Treinamento/vendas/03-metas-de-vendas.docx",
+       "harness:conhecimento/Roteiros Treinamento/vendas/04-comissoes.docx",
+       "harness:conhecimento/Roteiros Treinamento/vendas/05-paineis-e-demonstrativos.docx",
+       "harness:conhecimento/Roteiros Treinamento/vendas/06-configuracoes-e-integracoes-de-vendas.docx"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-estagiarios.mjs#vendas",
+     "guia:scripts/dados-fluxos-estagiarios.mjs#fluxo-vendas",
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas",
+     "guia:public/downloads/Apostila-do-Consultor-Faktory-Flow.pdf",
+     "harness:conhecimento/produto/procedimentos/procedimento-ajustar-o-pedido-antes-de-faturar.md",
+     "harness:conhecimento/produto/procedimentos/procedimento-criar-pedido-de-venda.md",
+     "harness:conhecimento/produto/procedimentos/procedimento-faturar-o-pedido-e-finalizar-a-nota.md",
+     "harness:conhecimento/produto/procedimentos/procedimento-gerar-titulos-e-receber.md",
+     "harness:conhecimento/produto/procedimentos/procedimento-montar-carga-e-liberar-para-expedicao.md",
+     "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/03_Manual_Vendas_Timbrado.docx",
+     "harness:conhecimento/Roteiros Treinamento/vendas/01-pedido-de-venda.docx",
+     "harness:conhecimento/Roteiros Treinamento/vendas/02-contratos-de-fornecimento.docx",
+     "harness:conhecimento/Roteiros Treinamento/vendas/03-metas-de-vendas.docx",
+     "harness:conhecimento/Roteiros Treinamento/vendas/04-comissoes.docx",
+     "harness:conhecimento/Roteiros Treinamento/vendas/05-paineis-e-demonstrativos.docx",
+     "harness:conhecimento/Roteiros Treinamento/vendas/06-configuracoes-e-integracoes-de-vendas.docx"
+    ]
+   }
+  ]
+ }
+}

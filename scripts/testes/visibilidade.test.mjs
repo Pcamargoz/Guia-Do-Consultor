@@ -1,13 +1,19 @@
 /* Regra de visibilidade (doc 04) como função pura. Os casos 1–5 do doc 04 rodam aqui sem banco;
    o caso 6 (persistência após reiniciar) e o histórico gravado precisam do PostgreSQL → scripts/testar-visibilidade.mjs (pendente). */
 import assert from 'node:assert/strict';
+import { readdirSync } from 'node:fs';
+import path from 'node:path';
 import { describe, it } from 'node:test';
-import { BASE } from '../../lib/conteudo/base-conhecimento.js';
+import { fileURLToPath } from 'node:url';
+import { carregarIndice } from '../../lib/conteudo/base.js';
 import { montarResumo } from '../../lib/conteudo/consultas.js';
 import {
-  CHAVES, VALORES_INICIAIS, caminhoControlado, caminhoVisivel, itemAdmin, itemVisivel, listaAdmin,
-  mapaEfetivo, materialVisivel, mesclarComPadrao, ocultoParaOutros, validarAtualizacao,
+  CAMINHOS_APOSTILA, CHAVES, VALORES_INICIAIS, caminhoControlado, caminhoDaApostila, caminhoVisivel, itemAdmin, itemVisivel, listaAdmin,
+  mapaEfetivo, materialVisivel, mesclarComPadrao, normalizarCaminho, ocultoParaOutros, validarAtualizacao,
 } from '../../lib/visibilidade.js';
+
+const BASE = await carregarIndice(); // índice da base: módulos, materiais e caminhos (sem as jornadas)
+const PUBLIC = path.join(path.dirname(fileURLToPath(import.meta.url)), '../../public');
 
 const PDF = '/downloads/Apostila-do-Consultor-Faktory-Flow.pdf';
 const ocultar = (chave, perfis = ['estagiario', 'consultor']) => [{ chave, visivel: false, perfis }];
@@ -105,9 +111,9 @@ describe('casos obrigatórios do doc 04 (sem banco)', () => {
 });
 
 describe('caminhos de arquivo', () => {
-  it('só apostila, downloads, vídeos, checklists e manuais passam pela regra', () => {
-    for (const c of ['/apostila', '/apostila.html', PDF, '/videos/x.mp4', '/checklists/estagiarios/vendas.html', '/manuais/x.pdf']) assert.equal(caminhoControlado(c), true, c);
-    for (const c of ['/', '/index.html', '/guia.css', '/api/conteudo', '/assets/logo.png']) assert.equal(caminhoControlado(c), false, c);
+  it('só a lista da apostila, vídeos, checklists e manuais passam pela regra', () => {
+    for (const c of [...CAMINHOS_APOSTILA, '/videos/x.mp4', '/checklists/estagiarios/vendas.html', '/manuais/x.pdf']) assert.equal(caminhoControlado(c), true, c);
+    for (const c of ['/', '/index.html', '/guia.css', '/api/conteudo', '/assets/logo.png', '/downloads/outro.pdf']) assert.equal(caminhoControlado(c), false, c);
   });
   it('tipo oculto bloqueia a pasta inteira', () => {
     assert.equal(caminhoVisivel('/checklists/estagiarios/vendas.html', mapaEfetivo(ocultar('tipo:checklist'), 'consultor'), BASE.caminhos), false);
@@ -121,6 +127,61 @@ describe('caminhos de arquivo', () => {
   });
   it('arquivo sem dono na base segue só o tipo', () => {
     assert.equal(caminhoVisivel('/videos/manifest.json', mapaEfetivo([], 'estagiario'), BASE.caminhos), true);
+  });
+});
+
+describe('apostila: lista explícita de caminhos (review v1, item 2)', () => {
+  const est = mapaEfetivo([], 'estagiario');
+  const con = mapaEfetivo([], 'consultor');
+  const adm = mapaEfetivo([], 'admin');
+  it('a lista tem /apostila.html, /apostila-estudo.js, a página limpa e o PDF', () => {
+    for (const c of ['/apostila', '/apostila.html', '/apostila-estudo.js', '/apostila-estudo.css', '/apostila-pdf.js', '/apostila-pdf.css', PDF]) assert.ok(CAMINHOS_APOSTILA.includes(c), c);
+  });
+  it('apostila oculta → nenhum arquivo da lista é servido a estagiário/consultor; admin recebe todos', () => {
+    for (const c of CAMINHOS_APOSTILA) {
+      assert.equal(caminhoVisivel(c, est, BASE.caminhos), false, `estagiário ${c}`);
+      assert.equal(caminhoVisivel(c, con, BASE.caminhos), false, `consultor ${c}`);
+      assert.equal(caminhoVisivel(c, adm, BASE.caminhos), true, `admin ${c}`);
+    }
+  });
+  it('apostila liberada para consultor → servida só a ele', () => {
+    const itens = [{ chave: 'area:apostila', visivel: true, perfis: ['consultor'] }];
+    for (const c of CAMINHOS_APOSTILA) {
+      assert.equal(caminhoVisivel(c, mapaEfetivo(itens, 'consultor'), BASE.caminhos), true, c);
+      assert.equal(caminhoVisivel(c, mapaEfetivo(itens, 'estagiario'), BASE.caminhos), false, c);
+    }
+  });
+  it('variações do mesmo arquivo também ficam bloqueadas (barra final, maiúsculas, %xx, ./.., //, query)', () => {
+    for (const c of ['/apostila/', '/Apostila.HTML', '/apostila%2Ehtml', '/%61postila', '/x/../apostila.html', '/./apostila-estudo.js', '//apostila.html', '/apostila-estudo.js?v=20260924b', '/downloads/apostila-do-consultor-faktory-flow.pdf']) {
+      assert.equal(caminhoDaApostila(c), true, c);
+      assert.equal(caminhoVisivel(c, est, BASE.caminhos), false, c);
+    }
+  });
+  it('sem prefixo solto: arquivos parecidos que não são da apostila não são pegos por acidente', () => {
+    for (const c of ['/apostilas.html', '/apostila-nova.html', '/apostila.html.bak', '/downloads/outro.pdf', '/guia-abas.js']) {
+      assert.equal(caminhoDaApostila(c), false, c);
+      assert.equal(caminhoVisivel(c, est, BASE.caminhos), true, c);
+    }
+  });
+  it('caminho malformado = controlado e oculto (falha fechada)', () => {
+    for (const c of ['/apostila%zz', 'apostila.html', '', null, '/a\\b', '/apostila.html%00']) {
+      assert.equal(caminhoControlado(c), true, String(c));
+      assert.equal(caminhoVisivel(c, adm, BASE.caminhos), false, String(c));
+    }
+    assert.equal(normalizarCaminho('/a/b/'), '/a/b');
+  });
+  it('a lista cobre todo arquivo "apostila*" de public/ (arquivo novo da apostila tem de entrar na lista)', () => {
+    const achados = [];
+    const andar = (dir, rel) => {
+      for (const e of readdirSync(dir, { withFileTypes: true })) {
+        if (e.name.startsWith('.')) continue;
+        if (e.isDirectory()) { if (!['vendor', 'videos', 'checklists'].includes(e.name)) andar(path.join(dir, e.name), `${rel}/${e.name}`); continue; }
+        if (/apostila/i.test(e.name)) achados.push(`${rel}/${e.name}`);
+      }
+    };
+    andar(PUBLIC, '');
+    assert.ok(achados.length >= 6, achados.join(', '));
+    for (const c of achados) assert.ok(CAMINHOS_APOSTILA.includes(c), `fora da lista: ${c}`);
   });
 });
 

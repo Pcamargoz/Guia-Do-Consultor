@@ -1,0 +1,1539 @@
+{
+ "versao": "2026-11-04",
+ "id": "projetos",
+ "jornadas": {
+  "inicial": [
+   {
+    "id": "apresentacao",
+    "titulo": "Apresentação",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "texto",
+      "rotulo": "Projetos e obras",
+      "texto": [
+       {
+        "t": "Na indústria de esquadrias, o \"projeto\" é a obra: ele amarra pedido, produção, compras, estoque, serviços, notas e financeiro."
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#projetos"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Objetivo",
+      "texto": [
+       {
+        "t": "Localizar uma obra, ver o que está ligado a ela e ler os indicadores de progresso e resultado."
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#projetos"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-estagiarios.mjs#projetos"
+    ]
+   },
+   {
+    "id": "video",
+    "titulo": "Vídeo introdutório",
+    "status": "em-preparacao",
+    "blocos": [],
+    "fontes": []
+   },
+   {
+    "id": "manual",
+    "titulo": "Manual visual resumido",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "passos",
+      "titulo": "2. Achar a obra de um pedido",
+      "onde": null,
+      "intro": null,
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Na lista de Pedidos de Venda, ler a coluna PROJETO."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Em Nova Medição, ver que cada pedido mostra a obra vinculada (ou \"Sem obra vinculada\")."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#projetos"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-estagiarios.mjs#projetos"
+    ]
+   },
+   {
+    "id": "telas",
+    "titulo": "Principais telas",
+    "status": "em-preparacao",
+    "blocos": [],
+    "fontes": []
+   },
+   {
+    "id": "fluxo",
+    "titulo": "Fluxo operacional básico",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "fluxo",
+      "titulo": "Do cadastro da obra à análise de resultado.",
+      "etapas": [
+       "Cadastro da Obra",
+       "Planejamento de Materiais",
+       "Compras e Produção",
+       "Execução da Obra",
+       "Acompanhamento Operacional",
+       "Controle Financeiro",
+       "Encerramento e Análise de Resultado"
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#projetos"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:db/migrations/002_modulos_iniciais.sql#projetos"
+    ]
+   },
+   {
+    "id": "atividade",
+    "titulo": "Atividade prática",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "passos",
+      "titulo": "1. Preparar seus dados: ligar a sua obra ao seu pedido",
+      "onde": [
+       {
+        "t": "Vendas > Pedidos de Venda (pedido em aberto)"
+       }
+      ],
+      "intro": [
+       {
+        "t": "A sua empresa de treino começa "
+       },
+       {
+        "t": "zerada",
+        "marca": "negrito"
+       },
+       {
+        "t": ": cada módulo usa o que o anterior criou. A obra amarra pedido, compras, serviços, notas e financeiro. Ligue a sua obra (checklist 02) ao seu pedido (checklist 04) "
+       },
+       {
+        "t": "antes de faturar",
+        "marca": "negrito"
+       },
+       {
+        "t": ". Se faltar permissão ou cadastro-base (botão que não aparece, CFOP, plano de contas, meio de pagamento, unidade de medida, almoxarifado), anote a mensagem em "
+       },
+       {
+        "t": "Problema",
+        "marca": "negrito"
+       },
+       {
+        "t": " e chame o supervisor: a empresa de treino começa zerada e os cadastros-base são feitos por um consultor."
+       }
+      ],
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Em Vendas > Pedidos de Venda, abrir o seu pedido em aberto pelo "
+         },
+         {
+          "t": "lápis",
+          "marca": "negrito"
+         },
+         {
+          "t": " (\"Editar pedido\", coluna Ações), escolher no campo "
+         },
+         {
+          "t": "Projeto (opcional)",
+          "marca": "negrito"
+         },
+         {
+          "t": " a sua obra de treino e clicar em "
+         },
+         {
+          "t": "Salvar e Permanecer",
+          "marca": "negrito"
+         },
+         {
+          "t": "."
+         }
+        ],
+        "nota": [
+         {
+          "t": "A coluna PROJETO da lista passa a mostrar a obra, sem pedir CFOP nem condição. O menu ⋯ do pedido não tem \"Editar\". Pedido Entregue ou Faturado só tem "
+         },
+         {
+          "t": "Visualizar",
+          "marca": "negrito"
+         },
+         {
+          "t": " (o olho): faça isto antes de faturar."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#projetos"
+      ]
+     },
+     {
+      "tipo": "link",
+      "material": "projetos:checklist-inicial",
+      "titulo": "Projetos e obras",
+      "status": "disponivel",
+      "url": "/checklists/estagiarios/10-projetos-obras.html",
+      "duracao_s": null,
+      "poster": null,
+      "legenda": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#projetos"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-estagiarios.mjs#projetos"
+    ]
+   },
+   {
+    "id": "checklist",
+    "titulo": "Checklist de aprendizado",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "checklist-aprendizado",
+      "chave": "inicial:projetos",
+      "itens": [
+       {
+        "id": "entendi",
+        "texto": [
+         {
+          "t": "Entendi o que é o módulo Projetos e Obras e para que serve"
+         }
+        ]
+       },
+       {
+        "id": "acessar-1",
+        "texto": [
+         {
+          "t": "Sei acessar: Vendas > Pedidos de Venda (pedido em aberto)"
+         }
+        ]
+       },
+       {
+        "id": "acessar-2",
+        "texto": [
+         {
+          "t": "Sei acessar: módulo Projetos"
+         }
+        ]
+       },
+       {
+        "id": "acessar-3",
+        "texto": [
+         {
+          "t": "Sei acessar: Financeiro > Painel Financeiro de Projetos"
+         }
+        ]
+       },
+       {
+        "id": "executei-4",
+        "texto": [
+         {
+          "t": "Executei: 1. Preparar seus dados: ligar a sua obra ao seu pedido"
+         }
+        ]
+       },
+       {
+        "id": "executei-5",
+        "texto": [
+         {
+          "t": "Executei: 2. Achar a obra de um pedido"
+         }
+        ]
+       },
+       {
+        "id": "executei-6",
+        "texto": [
+         {
+          "t": "Executei: 3. Consultar a carteira de obras"
+         }
+        ]
+       },
+       {
+        "id": "executei-7",
+        "texto": [
+         {
+          "t": "Executei: 4. Ler o painel financeiro da obra"
+         }
+        ]
+       },
+       {
+        "id": "checklist",
+        "texto": [
+         {
+          "t": "Concluí o checklist prático"
+         }
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
+       "guia:scripts/dados-checklists-estagiarios.mjs#projetos"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
+     "guia:scripts/dados-checklists-estagiarios.mjs#projetos"
+    ]
+   },
+   {
+    "id": "progresso",
+    "titulo": "Progresso",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "progresso",
+      "chave": "inicial:projetos",
+      "total": 9,
+      "api": "/api/checklists-progresso",
+      "fontes": [
+       "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md"
+    ]
+   }
+  ],
+  "consultor": [
+   {
+    "id": "visao",
+    "titulo": "Visão funcional",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "texto",
+      "rotulo": "Objetivo",
+      "texto": [
+       {
+        "t": "Centralizar informações das obras — do planejamento à conclusão. Transforma cada obra em centro de controle e resultado."
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#projetos"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Papel no fluxo",
+      "texto": [
+       {
+        "t": "Conecta todos os processos da obra. Evita informações espalhadas em planilhas."
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#projetos"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Quando implantar",
+      "texto": [
+       {
+        "t": "Após Vendas, Compras, Produção, Estoque e Financeiro."
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#projetos"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:db/migrations/002_modulos_iniciais.sql#projetos"
+    ]
+   },
+   {
+    "id": "regras",
+    "titulo": "Regras de negócio",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "regra",
+      "titulo": "O campo Projeto liga os documentos",
+      "texto": [
+       {
+        "t": "Pedido, OP, solicitação de compra, medição e títulos se ligam à obra pelo campo Projeto. A lista de pedidos mostra a coluna PROJETO."
+       }
+      ],
+      "confirmar": null,
+      "confianca": null,
+      "fontes": [
+       "guia:videos/roteiros/consultor-09-projetos.json#04",
+       "harness-id:funcional-cadastros-participante-produto-e-projeto"
+      ]
+     },
+     {
+      "tipo": "regra",
+      "titulo": "Ligue o projeto antes de faturar",
+      "texto": [
+       {
+        "t": "Só o pedido Em aberto é editado. Depois de faturado ou entregue, não dá mais para ligar a obra."
+       }
+      ],
+      "confirmar": null,
+      "confianca": null,
+      "fontes": [
+       "guia:videos/roteiros/consultor-09-projetos.json#05",
+       "harness-id:regra-vendas-editar-pedido-somente-em-aberto"
+      ]
+     },
+     {
+      "tipo": "regra",
+      "titulo": "Estágios são fases; etapas são passos",
+      "texto": [
+       {
+        "t": "Estágio é a fase macro; etapa é o passo acompanhado, que pode pertencer a um estágio. Ficam nos botões da linha do projeto."
+       }
+      ],
+      "confirmar": null,
+      "confianca": null,
+      "fontes": [
+       "guia:videos/roteiros/consultor-09-projetos.json#06",
+       "harness-id:manual-12-projetos-e-tarefas"
+      ]
+     },
+     {
+      "tipo": "regra",
+      "titulo": "Obra com estoque próprio precisa de local ativo",
+      "texto": [
+       {
+        "t": "Se o projeto tem local de estoque, ele precisa estar ativo, senão a nota e a produção da obra travam."
+       }
+      ],
+      "confirmar": null,
+      "confianca": null,
+      "fontes": [
+       "guia:videos/roteiros/consultor-09-projetos.json#07",
+       "harness-id:regra-estoque-almoxarifado-central-ativo-e-pre-requisito"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:videos/roteiros/consultor-09-projetos.json#04",
+     "harness-id:funcional-cadastros-participante-produto-e-projeto",
+     "guia:videos/roteiros/consultor-09-projetos.json#05",
+     "harness-id:regra-vendas-editar-pedido-somente-em-aberto",
+     "guia:videos/roteiros/consultor-09-projetos.json#06",
+     "harness-id:manual-12-projetos-e-tarefas",
+     "guia:videos/roteiros/consultor-09-projetos.json#07",
+     "harness-id:regra-estoque-almoxarifado-central-ativo-e-pre-requisito"
+    ]
+   },
+   {
+    "id": "fluxos",
+    "titulo": "Fluxos operacionais",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "fluxo",
+      "titulo": "Do cadastro da obra à análise de resultado.",
+      "etapas": [
+       "Cadastro da Obra",
+       "Planejamento de Materiais",
+       "Compras e Produção",
+       "Execução da Obra",
+       "Acompanhamento Operacional",
+       "Controle Financeiro",
+       "Encerramento e Análise de Resultado"
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#projetos"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "1. Cadastrar a obra",
+      "onde": [
+       {
+        "t": "Cadastros > Projetos > Novo Projeto"
+       }
+      ],
+      "intro": [
+       {
+        "t": "A obra vem antes de qualquer documento: é o guarda-chuva que vai receber pedido, produção, medição, nota e títulos."
+       }
+      ],
+      "passos_total": 5,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-projetos"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "2. Estágios e etapas",
+      "onde": [
+       {
+        "t": "botões Estágios e Etapas na linha da obra"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Estágios são as fases macro; etapas são os passos acompanhados. Eles servem de filtro nos documentos de compra e produção da obra."
+       }
+      ],
+      "passos_total": 3,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-projetos"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "3. Ligar o pedido e a medição à obra",
+      "onde": [
+       {
+        "t": "Vendas > Pedidos de Venda e Serviços > Medições > + Nova Medição"
+       }
+      ],
+      "intro": [
+       {
+        "t": "O pedido é o primeiro documento ligado à obra e precisa receber o projeto antes de faturar. A medição herda a obra do pedido."
+       }
+      ],
+      "passos_total": 3,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-projetos"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "4. Produção e compras da obra",
+      "onde": [
+       {
+        "t": "Produção > Ordens de produção > Nova OP e Compras > Solicitações de Compra"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Mostre que produção e compras também carregam a obra, com o filtro de estágio e etapa, para o custo chegar ao painel."
+       }
+      ],
+      "passos_total": 3,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-projetos"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "5. Nota e títulos da obra",
+      "onde": [
+       {
+        "t": "menu ⋯ > Faturar do pedido e Financeiro > Contas a Receber"
+       }
+      ],
+      "intro": [
+       {
+        "t": "A nota com projeto movimenta o estoque da obra. É aqui que aparece o pré-requisito do local de estoque do projeto."
+       }
+      ],
+      "passos_total": 3,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-projetos"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "6. Painéis da obra: previsto × realizado",
+      "onde": [
+       {
+        "t": "Financeiro > Painel Financeiro de Projetos e módulo Projetos"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Com os documentos ligados, leia os painéis com o cliente e prove que os números batem com a origem."
+       }
+      ],
+      "passos_total": 5,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-projetos"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "7. Diário e ciclo de vida da obra",
+      "onde": [
+       {
+        "t": "Projetos > Diário de Obra e ações da linha da obra"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Termine mostrando como registrar o dia a dia da obra e como encerrá-la sem perder o histórico."
+       }
+      ],
+      "passos_total": 3,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-projetos"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:db/migrations/002_modulos_iniciais.sql#projetos",
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-projetos"
+    ]
+   },
+   {
+    "id": "implantacao",
+    "titulo": "Procedimentos de implantação",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "texto",
+      "rotulo": "Implantação de Projetos: roteiro prático com o cliente",
+      "texto": [
+       {
+        "t": "Ao final, o cliente terá visto uma obra de teste receber os documentos dos outros módulos e os painéis mostrarem números coerentes com eles. Saberá cadastrar uma obra, ligar o pedido antes de faturar e ler o Painel Financeiro de Projetos."
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-projetos"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "rotulo": "Blocos do roteiro de implantação",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "1. Cadastrar a obra"
+         }
+        ],
+        "nota": [
+         {
+          "t": "5 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-projetos"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "2. Estágios e etapas"
+         }
+        ],
+        "nota": [
+         {
+          "t": "3 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-projetos"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "3. Ligar o pedido e a medição à obra"
+         }
+        ],
+        "nota": [
+         {
+          "t": "3 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-projetos"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "4. Produção e compras da obra"
+         }
+        ],
+        "nota": [
+         {
+          "t": "3 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-projetos"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "5. Nota e títulos da obra"
+         }
+        ],
+        "nota": [
+         {
+          "t": "3 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-projetos"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "6. Painéis da obra: previsto × realizado"
+         }
+        ],
+        "nota": [
+         {
+          "t": "5 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-projetos"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "7. Diário e ciclo de vida da obra"
+         }
+        ],
+        "nota": [
+         {
+          "t": "3 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-projetos"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-projetos"
+      ]
+     },
+     {
+      "tipo": "link",
+      "material": "projetos:checklist-implantacao",
+      "titulo": "Implantação de Projetos: roteiro prático com o cliente",
+      "status": "disponivel",
+      "url": "/checklists/consultores/implantacao-14-projetos.html",
+      "duracao_s": null,
+      "poster": null,
+      "legenda": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-projetos"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Orientação de treinamento",
+      "texto": [
+       {
+        "t": "Apresente cadastro da obra (cliente, responsável, datas, endereço, orçamento, etapas). Demonstre planejamento de materiais (previsto, comprado, recebido, consumido). Apresente painel operacional e financeiro (orçamento vs. realizado, margem, diário de obra)."
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#projetos"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-projetos",
+     "guia:db/migrations/002_modulos_iniciais.sql#projetos"
+    ]
+   },
+   {
+    "id": "configuracoes",
+    "titulo": "Configurações importantes",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "lista",
+      "rotulo": "Pré-requisitos",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Um cliente de teste cadastrado em Cadastros > Participantes, com "
+         },
+         {
+          "t": "É Cliente?",
+          "marca": "negrito"
+         },
+         {
+          "t": " ligado."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " o participante aparece no seletor "
+         },
+         {
+          "t": "Cliente",
+          "marca": "negrito"
+         },
+         {
+          "t": " do Novo Projeto. "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " procedimento-cadastrar-cliente-produto-e-obra."
+         }
+        ],
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-projetos"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Um "
+         },
+         {
+          "t": "local de estoque do projeto",
+          "marca": "negrito"
+         },
+         {
+          "t": " ativo em Estoque > Locais, ou o almoxarifado central ativo, para finalizar a nota com a obra."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " o local ativo e da mesma empresa das ordens de produção. A nota com projeto movimenta só o local do projeto. "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " fluxo antigo \"Fluxo de projetos e obras\" (pré-requisito); regra-estoque-almoxarifado-central-ativo-e-pre-requisito; manual-12-projetos-e-tarefas#002."
+         }
+        ],
+        "selo": "conferido-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-projetos"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Produto de teste, condição de pagamento e permissão para criar projetos, estágios e etapas."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " o consultor consegue abrir "
+         },
+         {
+          "t": "+ Novo Projeto",
+          "marca": "negrito"
+         },
+         {
+          "t": " e os botões "
+         },
+         {
+          "t": "Estágios",
+          "marca": "negrito"
+         },
+         {
+          "t": " e "
+         },
+         {
+          "t": "Etapas",
+          "marca": "negrito"
+         },
+         {
+          "t": " da lista. "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " fluxo antigo \"Fluxo de projetos e obras\" (pré-requisito)."
+         }
+        ],
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-projetos"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-projetos"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-projetos"
+    ]
+   },
+   {
+    "id": "validacoes",
+    "titulo": "Validações funcionais",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "lista",
+      "rotulo": "Resultado esperado",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "A obra de teste foi cadastrada com código único e aparece em Todos os Projetos."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-projetos"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Pedido, medição, OP, solicitação de compra, nota e títulos estão ligados à obra e aparecem nas abas e filtros."
+         }
+        ],
+        "nota": null,
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-projetos"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "O Painel Financeiro de Projetos mostra vendido, faturado, a receber e resultado coerentes com os documentos."
+         }
+        ],
+        "nota": null,
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-projetos"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "O cliente sabe que o projeto vai no pedido antes de faturar."
+         }
+        ],
+        "nota": null,
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-projetos"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-projetos"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "rotulo": "Checklist do módulo",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Criar e configurar nova obra"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#projetos"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Organizar fases e etapas"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#projetos"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Planejar necessidades de materiais"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#projetos"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Acompanhar compras, produção, estoque e serviços"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#projetos"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Consultar receitas, custos e margem"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#projetos"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Usar diário de obra"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#projetos"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Identificar diferenças entre previsto e realizado"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#projetos"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Compreender integração com Vendas, Compras, Produção, Estoque, Financeiro, Serviços e CRM"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#projetos"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#projetos"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-projetos",
+     "guia:db/migrations/002_modulos_iniciais.sql#projetos"
+    ]
+   },
+   {
+    "id": "integracoes",
+    "titulo": "Integrações e dependências",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "texto",
+      "rotulo": "Relação com os outros módulos",
+      "texto": [
+       {
+        "t": "Conecta todos os processos da obra. Evita informações espalhadas em planilhas."
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#projetos"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:db/migrations/002_modulos_iniciais.sql#projetos"
+    ]
+   },
+   {
+    "id": "problemas",
+    "titulo": "Problemas recorrentes",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "lista",
+      "rotulo": "Atenção",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Só em ambiente de teste, com registros \"TESTE FLUXO CONSULTOR\". A nota da obra só é transmitida com o responsável fiscal."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-projetos"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Ligue o projeto no "
+         },
+         {
+          "t": "pedido",
+          "marca": "negrito"
+         },
+         {
+          "t": ", antes de faturar: depois de faturado o pedido só tem Visualizar."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-projetos"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Hoje o painel ainda mostra \"A faturar\" negativo quando só a nota ou o título carrega o projeto e o pedido não."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-projetos"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Cada projeto tem um único local de estoque, e ele precisa ser da mesma empresa das ordens de produção; sem ele a nota não finaliza."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-projetos"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Excluir uma obra é definitivo e leva junto estágios, etapas e resultado previsto: prefira inativar."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-projetos"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Trocar o cliente de uma obra que já tem pedido e nota: confirme com o time antes."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-projetos"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Postar no Diário de Obra grava dados: use só a obra de teste."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-projetos"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-projetos"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "rotulo": "Cuidados (vídeo)",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Pedido sem projeto não aparece no painel da obra."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:videos/roteiros/consultor-09-projetos.json#11"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Título manual e gerado do mesmo pedido duplicam o painel."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:videos/roteiros/consultor-09-projetos.json#11"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "O painel conta o que foi faturado e recebido, não só o vendido."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:videos/roteiros/consultor-09-projetos.json#11"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:videos/roteiros/consultor-09-projetos.json#11"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "rotulo": "A conferir na tela",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Caminho do cadastro: o fluxo antigo e o procedimento citam Cadastros > Projetos > Novo Projeto; o manual-12-projetos-e-tarefas cita o menu lateral do módulo Projetos (Cadastros > Projetos) com o botão "
+         },
+         {
+          "t": "+ Novo Projeto",
+          "marca": "negrito"
+         },
+         {
+          "t": "."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-projetos"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Caminho do painel: o fluxo antigo cita Financeiro > Painel Financeiro de Projetos; o manual-12-projetos-e-tarefas o coloca no menu do módulo Projetos ou no "
+         },
+         {
+          "t": "Ver Painel",
+          "marca": "negrito"
+         },
+         {
+          "t": " do cartão da obra."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-projetos"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Estágios com peso e conclusão com data vêm só do fluxo antigo (plano de QA); o manual-12-projetos-e-tarefas descreve estágio sem peso e etapa com estágio opcional."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-projetos"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Diário de Obra: o fluxo antigo cita Projetos > Diário de Obra, mas o menu de Projetos descrito no manual-12-projetos-e-tarefas não lista esse item."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-projetos"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "O módulo Projetos (Todos os Projetos, plano de resultado, andamento, dashboard e diário) não foi aberto no sistema; só o cadastro de projeto, o pedido com projeto, a nota com projeto e o painel financeiro foram vistos."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-projetos"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-projetos"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-projetos",
+     "guia:videos/roteiros/consultor-09-projetos.json#11"
+    ]
+   },
+   {
+    "id": "videos",
+    "titulo": "Vídeos avançados",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "video",
+      "material": "projetos:video-consultor",
+      "titulo": "Projetos e obras",
+      "status": "disponivel",
+      "url": "/videos/consultor-09-projetos.mp4",
+      "duracao_s": 147,
+      "poster": "/videos/consultor-09-projetos.jpg",
+      "legenda": "/videos/consultor-09-projetos.vtt",
+      "resumo": [
+       {
+        "t": "Cadastro, estágios, painéis e diário de obra."
+       }
+      ],
+      "fontes": [
+       "guia:public/videos/manifest.json",
+       "guia:videos/roteiros/consultor-09-projetos.json"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:public/videos/manifest.json",
+     "guia:videos/roteiros/consultor-09-projetos.json"
+    ]
+   },
+   {
+    "id": "complementares",
+    "titulo": "Materiais complementares",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "link",
+      "material": "projetos:checklist-inicial",
+      "titulo": "Projetos e obras",
+      "status": "disponivel",
+      "url": "/checklists/estagiarios/10-projetos-obras.html",
+      "duracao_s": null,
+      "poster": null,
+      "legenda": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#projetos"
+      ]
+     },
+     {
+      "tipo": "link",
+      "material": "projetos:checklist-implantacao",
+      "titulo": "Implantação de Projetos: roteiro prático com o cliente",
+      "status": "disponivel",
+      "url": "/checklists/consultores/implantacao-14-projetos.html",
+      "duracao_s": null,
+      "poster": null,
+      "legenda": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-projetos"
+      ]
+     },
+     {
+      "tipo": "link",
+      "titulo": "Apostila do Consultor (PDF)",
+      "url": "/downloads/Apostila-do-Consultor-Faktory-Flow.pdf",
+      "visibilidade": "area:apostila",
+      "fontes": [
+       "guia:public/downloads/Apostila-do-Consultor-Faktory-Flow.pdf"
+      ]
+     },
+     {
+      "tipo": "fontes",
+      "rotulo": "Fontes no Harness",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "12 Manual Projetos e Tarefas"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Manual oficial"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/12_Manual_Projetos_e_Tarefas_Timbrado.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "01-cadastro-e-acompanhamento-de-projetos"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/projetos/01-cadastro-e-acompanhamento-de-projetos.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "02-paineis-e-andamento-das-obras"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/projetos/02-paineis-e-andamento-das-obras.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "03-plano-de-resultado-e-financeiro"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/projetos/03-plano-de-resultado-e-financeiro.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "04-comparacao-e-integracoes"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/projetos/04-comparacao-e-integracoes.docx"
+        ]
+       }
+      ],
+      "fontes": [
+       "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/12_Manual_Projetos_e_Tarefas_Timbrado.docx",
+       "harness:conhecimento/Roteiros Treinamento/projetos/01-cadastro-e-acompanhamento-de-projetos.docx",
+       "harness:conhecimento/Roteiros Treinamento/projetos/02-paineis-e-andamento-das-obras.docx",
+       "harness:conhecimento/Roteiros Treinamento/projetos/03-plano-de-resultado-e-financeiro.docx",
+       "harness:conhecimento/Roteiros Treinamento/projetos/04-comparacao-e-integracoes.docx"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-estagiarios.mjs#projetos",
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-projetos",
+     "guia:public/downloads/Apostila-do-Consultor-Faktory-Flow.pdf",
+     "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/12_Manual_Projetos_e_Tarefas_Timbrado.docx",
+     "harness:conhecimento/Roteiros Treinamento/projetos/01-cadastro-e-acompanhamento-de-projetos.docx",
+     "harness:conhecimento/Roteiros Treinamento/projetos/02-paineis-e-andamento-das-obras.docx",
+     "harness:conhecimento/Roteiros Treinamento/projetos/03-plano-de-resultado-e-financeiro.docx",
+     "harness:conhecimento/Roteiros Treinamento/projetos/04-comparacao-e-integracoes.docx"
+    ]
+   }
+  ]
+ }
+}

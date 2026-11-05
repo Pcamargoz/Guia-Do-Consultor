@@ -1,0 +1,2128 @@
+{
+ "versao": "2026-11-04",
+ "id": "financeiro",
+ "jornadas": {
+  "inicial": [
+   {
+    "id": "apresentacao",
+    "titulo": "Apresentação",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "texto",
+      "rotulo": "Financeiro (consulta)",
+      "texto": [
+       {
+        "t": "O financeiro recebe os títulos que nascem das vendas, das notas e dos recebimentos de compra."
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#financeiro"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Objetivo",
+      "texto": [
+       {
+        "t": "Consultar títulos a receber e a pagar, entender de onde eles vêm e ler o fluxo de caixa e os demonstrativos."
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#financeiro"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-estagiarios.mjs#financeiro"
+    ]
+   },
+   {
+    "id": "video",
+    "titulo": "Vídeo introdutório",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "video",
+      "material": "financeiro:video-inicial",
+      "titulo": "Financeiro: do título ao fluxo de caixa",
+      "status": "disponivel",
+      "url": "/videos/consultor-08-financeiro.mp4",
+      "duracao_s": 184,
+      "poster": "/videos/consultor-08-financeiro.jpg",
+      "legenda": "/videos/consultor-08-financeiro.vtt",
+      "resumo": [
+       {
+        "t": "Gerar os títulos, receber e ler o fluxo de caixa."
+       }
+      ],
+      "fontes": [
+       "guia:public/videos/manifest.json",
+       "guia:videos/roteiros/consultor-08-financeiro.json"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:public/videos/manifest.json",
+     "guia:videos/roteiros/consultor-08-financeiro.json"
+    ]
+   },
+   {
+    "id": "manual",
+    "titulo": "Manual visual resumido",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "passos",
+      "titulo": "2. Partir dos indicadores da tela Início",
+      "onde": null,
+      "intro": null,
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Ler \"Títulos a receber em aberto\" e \"Títulos a pagar em aberto\" em Tarefas do dia."
+         }
+        ],
+        "nota": [
+         {
+          "t": "O atalho leva a Financeiro > Contas a Receber."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Ler Recebido no mês, A receber e A pagar no Resumo do negócio."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#financeiro"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-estagiarios.mjs#financeiro"
+    ]
+   },
+   {
+    "id": "telas",
+    "titulo": "Principais telas",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "lista",
+      "rotulo": "Telas do módulo (glossário do Harness)",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Contas a Receber"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Financeiro › Contas a Receber"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/glossario/telas.yaml#financeiro.contas-a-receber"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Contas a Pagar"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Financeiro › Contas a Pagar"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/glossario/telas.yaml#financeiro.contas-a-pagar"
+        ]
+       }
+      ],
+      "fontes": [
+       "harness:conhecimento/glossario/telas.yaml#financeiro.contas-a-receber",
+       "harness:conhecimento/glossario/telas.yaml#financeiro.contas-a-pagar"
+      ]
+     }
+    ],
+    "fontes": [
+     "harness:conhecimento/glossario/telas.yaml#financeiro.contas-a-receber",
+     "harness:conhecimento/glossario/telas.yaml#financeiro.contas-a-pagar"
+    ]
+   },
+   {
+    "id": "fluxo",
+    "titulo": "Fluxo operacional básico",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "fluxo",
+      "titulo": "Da geração automática de títulos à análise de resultado.",
+      "etapas": [
+       "Pedido de Venda/NF",
+       "Geração automática dos títulos",
+       "Cobrança (boleto/PIX)",
+       "Recebimento ou pagamento",
+       "Conciliação bancária",
+       "Fluxo de Caixa",
+       "DRE e Resultado por Obra"
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#financeiro"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:db/migrations/002_modulos_iniciais.sql#financeiro"
+    ]
+   },
+   {
+    "id": "atividade",
+    "titulo": "Atividade prática",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "passos",
+      "titulo": "1. Preparar seus dados: gerar os títulos do seu pedido",
+      "onde": [
+       {
+        "t": "menu ⋯ > Gerar Títulos do pedido e Financeiro > Contas a Receber"
+       }
+      ],
+      "intro": [
+       {
+        "t": "A sua empresa de treino começa "
+       },
+       {
+        "t": "zerada",
+        "marca": "negrito"
+       },
+       {
+        "t": ": cada módulo usa o que o anterior criou. Os títulos nascem do pedido e dependem de uma conta bancária e de um meio de pagamento configurados. Se o meio da parcela for do tipo "
+       },
+       {
+        "t": "Boleto",
+        "marca": "negrito"
+       },
+       {
+        "t": ", o sistema exige conta emissora: avise o supervisor. Se faltar permissão ou cadastro-base (botão que não aparece, CFOP, plano de contas, meio de pagamento, unidade de medida, almoxarifado), anote a mensagem em "
+       },
+       {
+        "t": "Problema",
+        "marca": "negrito"
+       },
+       {
+        "t": " e chame o supervisor: a empresa de treino começa zerada e os cadastros-base são feitos por um consultor."
+       }
+      ],
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "No seu pedido, abrir ⋯ > Gerar Títulos e confirmar."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Um título por parcela. O item fica habilitado em pedido Em aberto ou Entregue sem títulos; fica desabilitado quando o pedido está Faturado (\"Pedido já faturado\") ou já tem títulos (sem explicação na tela)."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Abrir Financeiro > Contas a Receber, limpar o filtro "
+         },
+         {
+          "t": "Status",
+          "marca": "negrito"
+         },
+         {
+          "t": " (ele vem em \"Em aberto\") e pesquisar o "
+         },
+         {
+          "t": "Documento",
+          "marca": "negrito"
+         },
+         {
+          "t": " do seu pedido (ex.: PV-000033)."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Colunas: PARTICIPANTE, DOCUMENTO, PARCELA, DATA DE VENCIMENTO, STATUS, VALOR TOTAL e AÇÕES. Valor e vencimento iguais à parcela; a coluna TÍTULOS do pedido passa a \"Gerados\"."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#financeiro"
+      ]
+     },
+     {
+      "tipo": "link",
+      "material": "financeiro:checklist-inicial",
+      "titulo": "Financeiro (consulta)",
+      "status": "disponivel",
+      "url": "/checklists/estagiarios/13-financeiro.html",
+      "duracao_s": null,
+      "poster": null,
+      "legenda": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#financeiro"
+      ]
+     },
+     {
+      "tipo": "link",
+      "material": "financeiro:fluxo-principal",
+      "titulo": "Fluxo principal do Financeiro: do título ao fluxo de caixa",
+      "status": "disponivel",
+      "url": "/checklists/estagiarios/fluxo-principal-financeiro.html",
+      "duracao_s": null,
+      "poster": null,
+      "legenda": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-fluxos-estagiarios.mjs#fluxo-financeiro-estagiario"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-estagiarios.mjs#financeiro",
+     "guia:scripts/dados-fluxos-estagiarios.mjs#fluxo-financeiro-estagiario"
+    ]
+   },
+   {
+    "id": "checklist",
+    "titulo": "Checklist de aprendizado",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "checklist-aprendizado",
+      "chave": "inicial:financeiro",
+      "itens": [
+       {
+        "id": "entendi",
+        "texto": [
+         {
+          "t": "Entendi o que é o módulo Financeiro e para que serve"
+         }
+        ]
+       },
+       {
+        "id": "acessar-1",
+        "texto": [
+         {
+          "t": "Sei acessar: menu ⋯ > Gerar Títulos do pedido e Financeiro > Contas a Receber"
+         }
+        ]
+       },
+       {
+        "id": "acessar-2",
+        "texto": [
+         {
+          "t": "Sei acessar: Financeiro > Contas a Receber e Contas a Pagar"
+         }
+        ]
+       },
+       {
+        "id": "executei-3",
+        "texto": [
+         {
+          "t": "Executei: 1. Preparar seus dados: gerar os títulos do seu pedido"
+         }
+        ]
+       },
+       {
+        "id": "executei-4",
+        "texto": [
+         {
+          "t": "Executei: 2. Partir dos indicadores da tela Início"
+         }
+        ]
+       },
+       {
+        "id": "executei-5",
+        "texto": [
+         {
+          "t": "Executei: 3. Consultar títulos"
+         }
+        ]
+       },
+       {
+        "id": "executei-6",
+        "texto": [
+         {
+          "t": "Executei: 4. Ler a visão de gestão"
+         }
+        ]
+       },
+       {
+        "id": "video",
+        "texto": [
+         {
+          "t": "Assisti ao vídeo introdutório"
+         }
+        ]
+       },
+       {
+        "id": "checklist",
+        "texto": [
+         {
+          "t": "Concluí o checklist prático"
+         }
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
+       "guia:scripts/dados-checklists-estagiarios.mjs#financeiro",
+       "guia:public/videos/manifest.json",
+       "guia:videos/roteiros/consultor-08-financeiro.json"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
+     "guia:scripts/dados-checklists-estagiarios.mjs#financeiro",
+     "guia:public/videos/manifest.json",
+     "guia:videos/roteiros/consultor-08-financeiro.json"
+    ]
+   },
+   {
+    "id": "progresso",
+    "titulo": "Progresso",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "progresso",
+      "chave": "inicial:financeiro",
+      "total": 9,
+      "api": "/api/checklists-progresso",
+      "fontes": [
+       "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md"
+    ]
+   }
+  ],
+  "consultor": [
+   {
+    "id": "visao",
+    "titulo": "Visão funcional",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "texto",
+      "rotulo": "Objetivo",
+      "texto": [
+       {
+        "t": "Gerenciar movimentações financeiras — contas a receber, contas a pagar, cobranças, pagamentos, conciliação bancária e fluxo de caixa."
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#financeiro"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Papel no fluxo",
+      "texto": [
+       {
+        "t": "Recebe informações de Vendas, Faturamento, Compras e Recebimento. Elimina lançamentos manuais."
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#financeiro"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Quando implantar",
+      "texto": [
+       {
+        "t": "Após Vendas, Faturamento e configurações financeiras (plano de contas, contas bancárias, meios e condições de pagamento)."
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#financeiro"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Caminho — Financeiro: Contas a Receber, Contas a Pagar, Saldos e Fluxo de Caixa",
+      "texto": [
+       {
+        "t": "Financeiro › Contas a Receber, Contas a Pagar (com a aba Pagamentos), Saldos, Extrato, Fluxo de Caixa, DRE, Budget vs Realizado e Painel Financeiro de Projetos. Configurações: Contas Bancárias, Meios de Pagamento, Planos de Conta, Portadores, Instruções Bancárias e Boleto."
+       }
+      ],
+      "fontes": [
+       "harness:conhecimento/produto/funcional/funcional-financeiro-receber-pagar-saldos-e-fluxo-de-caixa.md"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:db/migrations/002_modulos_iniciais.sql#financeiro",
+     "harness:conhecimento/produto/funcional/funcional-financeiro-receber-pagar-saldos-e-fluxo-de-caixa.md"
+    ]
+   },
+   {
+    "id": "regras",
+    "titulo": "Regras de negócio",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "regra",
+      "titulo": "Finalizar a NF-e gera os títulos das parcelas",
+      "texto": [
+       {
+        "t": "Ao "
+       },
+       {
+        "t": "Finalizar NF",
+        "marca": "negrito"
+       },
+       {
+        "t": " de uma nota que veio do pedido, o sistema cria sozinho em "
+       },
+       {
+        "t": "Financeiro › Contas a Receber",
+        "marca": "negrito"
+       },
+       {
+        "t": " um título por parcela, com o "
+       },
+       {
+        "t": "Documento",
+        "marca": "negrito"
+       },
+       {
+        "t": " \"NF - ‹número da nota›\" e os vencimentos e valores das parcelas do pedido. No pedido, a coluna "
+       },
+       {
+        "t": "TÍTULOS",
+        "marca": "negrito"
+       },
+       {
+        "t": " passa a \"Gerados\" e a coluna "
+       },
+       {
+        "t": "NOTA FISCAL",
+        "marca": "negrito"
+       },
+       {
+        "t": " mostra a nota. O menu ⋯ do pedido faturado troca o "
+       },
+       {
+        "t": "Gerar Títulos",
+        "marca": "negrito"
+       },
+       {
+        "t": " por \"Pedido já faturado\", desabilitado, e mostra \"Já faturado: Este pedido já possui nota fiscal emitida\"."
+       }
+      ],
+      "confirmar": [
+       {
+        "t": "Faturamento › Notas Fiscais › ⋯ › Finalizar NF; depois Financeiro › Contas a Receber (pesquisar \"NF - ‹número›\") e Vendas › Pedidos de Venda (limpar o filtro Status)."
+       }
+      ],
+      "confianca": "B",
+      "fontes": [
+       "harness:conhecimento/produto/regras-negocio/regra-faturamento-finalizar-nf-gera-os-titulos.md"
+      ]
+     },
+     {
+      "tipo": "regra",
+      "titulo": "A baixa atualiza Saldos e Extrato na hora",
+      "texto": [
+       {
+        "t": "Receber um título aumenta, na hora, o saldo da conta bancária em "
+       },
+       {
+        "t": "Financeiro › Saldos",
+        "marca": "negrito"
+       },
+       {
+        "t": " exatamente pelo valor baixado, e o "
+       },
+       {
+        "t": "Extrato",
+        "marca": "negrito"
+       },
+       {
+        "t": " da conta mostra o crédito do dia. Estornar a baixa reduz o saldo na mesma medida. Pagar um título em Contas a Pagar (campos Conta Bancária, Data Pagamento, valores, Meio de Pagamento e Valor Pago) diminui o saldo e cria o débito no Extrato. Não existe item \"Conciliação\" no menu; o mais próximo é o Extrato."
+       }
+      ],
+      "confirmar": [
+       {
+        "t": "Financeiro › Saldos e Extrato, antes e depois de cada baixa."
+       }
+      ],
+      "confianca": "B",
+      "fontes": [
+       "harness:conhecimento/produto/regras-negocio/regra-financeiro-baixa-atualiza-saldos-e-extrato.md"
+      ]
+     },
+     {
+      "tipo": "regra",
+      "titulo": "Baixa parcial cria um título residual",
+      "texto": [
+       {
+        "t": "Em "
+       },
+       {
+        "t": "Receber",
+        "marca": "negrito"
+       },
+       {
+        "t": " (Financeiro › Contas a Receber), informar um "
+       },
+       {
+        "t": "Valor Recebido",
+        "marca": "negrito"
+       },
+       {
+        "t": " menor que o do título gera \"Baixa parcial realizada; título residual criado\": o original fica "
+       },
+       {
+        "t": "Recebido",
+        "marca": "negrito"
+       },
+       {
+        "t": " e nasce um título com o saldo, no mesmo vencimento, com o "
+       },
+       {
+        "t": "próximo número de parcela livre",
+        "marca": "negrito"
+       },
+       {
+        "t": " (/002 quando o título era único; na v1.22.13, numa nota de duas parcelas, o residual da /001 nasceu como /003). A soma dos dois é o valor original. A baixa total do residual mostra \"Título recebido com sucesso\"."
+       }
+      ],
+      "confirmar": [
+       {
+        "t": "Financeiro › Contas a Receber, após a baixa."
+       }
+      ],
+      "confianca": "B",
+      "fontes": [
+       "harness:conhecimento/produto/regras-negocio/regra-financeiro-baixa-parcial-cria-titulo-residual.md"
+      ]
+     },
+     {
+      "tipo": "regra",
+      "titulo": "Contas a Receber abre filtrada em Em aberto",
+      "texto": [
+       {
+        "t": "A lista "
+       },
+       {
+        "t": "Financeiro › Contas a Receber",
+        "marca": "negrito"
+       },
+       {
+        "t": " vem com o filtro "
+       },
+       {
+        "t": "Status",
+        "marca": "negrito"
+       },
+       {
+        "t": " em \"Em aberto\", então títulos recebidos só aparecem limpando o filtro. Colunas: PARTICIPANTE, DOCUMENTO, PARCELA, DATA DE VENCIMENTO, STATUS, VALOR TOTAL e AÇÕES. O DOCUMENTO do título gerado é o número do pedido de venda."
+       }
+      ],
+      "confirmar": [
+       {
+        "t": "Financeiro › Contas a Receber."
+       }
+      ],
+      "confianca": "B",
+      "fontes": [
+       "harness:conhecimento/produto/regras-negocio/regra-financeiro-contas-a-receber-filtro-padrao-em-aberto.md"
+      ]
+     },
+     {
+      "tipo": "regra",
+      "titulo": "Estornar a baixa devolve o título a Em aberto",
+      "texto": [
+       {
+        "t": "Estornar",
+        "marca": "negrito"
+       },
+       {
+        "t": " uma baixa volta o título a "
+       },
+       {
+        "t": "Em aberto",
+        "marca": "negrito"
+       },
+       {
+        "t": " e limpa os dados do recebimento. Estornar a baixa parcial devolve o título ao valor original e o residual "
+       },
+       {
+        "t": "/002",
+        "marca": "negrito"
+       },
+       {
+        "t": " deixa de existir. Em janelas estreitas o diálogo de estorno pode abrir fora da área visível."
+       }
+      ],
+      "confirmar": [
+       {
+        "t": "Financeiro › Contas a Receber › título recebido › Estornar."
+       }
+      ],
+      "confianca": "B",
+      "fontes": [
+       "harness:conhecimento/produto/regras-negocio/regra-financeiro-estornar-baixa-restaura-o-titulo.md"
+      ]
+     },
+     {
+      "tipo": "regra",
+      "titulo": "Meio de pagamento do tipo Boleto exige conta emissora",
+      "texto": [
+       {
+        "t": "Ao "
+       },
+       {
+        "t": "Gerar Títulos",
+        "marca": "negrito"
+       },
+       {
+        "t": ", se o meio de pagamento da parcela é do tipo "
+       },
+       {
+        "t": "Boleto",
+        "marca": "negrito"
+       },
+       {
+        "t": ", o sistema exige uma conta bancária emissora de boletos e recusa com \"Parcela 1: meio de pagamento Boleto exige uma conta bancária…\". A mensagem diz Boleto mesmo quando o meio se chama \"Duplicata Mercantil\" e está cadastrado como tipo Boleto. Os tipos disponíveis em Configurações › Meios de Pagamento são Cartão de Crédito/Débito, Dinheiro, PIX, Boleto, Transferência, Cheque e Outros. Mudar o tipo altera o que sai na nota e é decisão do responsável fiscal."
+       }
+      ],
+      "confirmar": [
+       {
+        "t": "Financeiro › Configurações › Meios de Pagamento (campo Tipo) e Vendas › Pedidos de Venda › Gerar Títulos."
+       }
+      ],
+      "confianca": "B",
+      "fontes": [
+       "harness:conhecimento/produto/regras-negocio/regra-financeiro-meio-de-pagamento-boleto-exige-conta-emissora.md"
+      ]
+     },
+     {
+      "tipo": "regra",
+      "titulo": "Título manual e título gerado do mesmo pedido duplicam a receita",
+      "texto": [
+       {
+        "t": "Se existem um título lançado à mão e o título gerado pelo pedido para o mesmo recebível, a "
+       },
+       {
+        "t": "DRE",
+        "marca": "negrito"
+       },
+       {
+        "t": ", o "
+       },
+       {
+        "t": "Painel Financeiro de Projetos",
+        "marca": "negrito"
+       },
+       {
+        "t": " e o card \"Recebido no mês\" somam os dois. O card "
+       },
+       {
+        "t": "Recebido no mês",
+        "marca": "negrito"
+       },
+       {
+        "t": " do Início também soma o valor original do título numa baixa parcial (baixa de 400 de um título de 865 somou 865)."
+       }
+      ],
+      "confirmar": [
+       {
+        "t": "Financeiro › DRE, Painel Financeiro de Projetos e a tela Início, conferindo contra o Extrato."
+       }
+      ],
+      "confianca": "B",
+      "fontes": [
+       "harness:conhecimento/produto/regras-negocio/regra-financeiro-titulo-manual-e-gerado-duplicam-a-receita.md"
+      ]
+     },
+     {
+      "tipo": "regra",
+      "titulo": "Quando Gerar Títulos está habilitado no pedido",
+      "texto": [
+       {
+        "t": "No menu ⋯ do pedido, "
+       },
+       {
+        "t": "Gerar Títulos",
+        "marca": "negrito"
+       },
+       {
+        "t": " fica habilitado em pedido "
+       },
+       {
+        "t": "Em aberto",
+        "marca": "negrito"
+       },
+       {
+        "t": " ou "
+       },
+       {
+        "t": "Entregue",
+        "marca": "negrito"
+       },
+       {
+        "t": " que ainda não tem títulos. Fica desabilitado quando o pedido está "
+       },
+       {
+        "t": "Faturado",
+        "marca": "negrito"
+       },
+       {
+        "t": " ou "
+       },
+       {
+        "t": "Lib. Expedição",
+        "marca": "negrito"
+       },
+       {
+        "t": " (\"Pedido já faturado\") e quando o pedido já tem títulos, caso em que a tela não explica o motivo. Gera um título por parcela."
+       }
+      ],
+      "confirmar": [
+       {
+        "t": "Vendas › Pedidos de Venda › menu ⋯ e coluna TÍTULOS (Gerados / Sem títulos)."
+       }
+      ],
+      "confianca": "B",
+      "fontes": [
+       "harness:conhecimento/produto/regras-negocio/regra-vendas-gerar-titulos-quando-esta-habilitado.md"
+      ]
+     }
+    ],
+    "fontes": [
+     "harness:conhecimento/produto/regras-negocio/regra-faturamento-finalizar-nf-gera-os-titulos.md",
+     "harness:conhecimento/produto/regras-negocio/regra-financeiro-baixa-atualiza-saldos-e-extrato.md",
+     "harness:conhecimento/produto/regras-negocio/regra-financeiro-baixa-parcial-cria-titulo-residual.md",
+     "harness:conhecimento/produto/regras-negocio/regra-financeiro-contas-a-receber-filtro-padrao-em-aberto.md",
+     "harness:conhecimento/produto/regras-negocio/regra-financeiro-estornar-baixa-restaura-o-titulo.md",
+     "harness:conhecimento/produto/regras-negocio/regra-financeiro-meio-de-pagamento-boleto-exige-conta-emissora.md",
+     "harness:conhecimento/produto/regras-negocio/regra-financeiro-titulo-manual-e-gerado-duplicam-a-receita.md",
+     "harness:conhecimento/produto/regras-negocio/regra-vendas-gerar-titulos-quando-esta-habilitado.md"
+    ]
+   },
+   {
+    "id": "fluxos",
+    "titulo": "Fluxos operacionais",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "fluxo",
+      "titulo": "Da geração automática de títulos à análise de resultado.",
+      "etapas": [
+       "Pedido de Venda/NF",
+       "Geração automática dos títulos",
+       "Cobrança (boleto/PIX)",
+       "Recebimento ou pagamento",
+       "Conciliação bancária",
+       "Fluxo de Caixa",
+       "DRE e Resultado por Obra"
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#financeiro"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "1. Contas, meios de pagamento e plano de contas",
+      "onde": [
+       {
+        "t": "Financeiro > Configurações (Contas Bancárias, Meios de Pagamento, Planos de Conta) e Financeiro > Saldos"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Antes de qualquer título, o cliente vê onde o dinheiro vai cair: a conta bancária, o tipo do meio de pagamento e a conta analítica do plano. Vem primeiro porque é o que trava a geração dos títulos."
+       }
+      ],
+      "passos_total": 4,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "2. Títulos nascendo do pedido",
+      "onde": [
+       {
+        "t": "Vendas > Pedidos de Venda, menu ⋯ > Gerar Títulos"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Quando o cliente cobra antes de faturar (decisão X2), os títulos nascem do pedido. O cliente vê uma parcela virar um título e o pedido marcar \"Gerados\"."
+       }
+      ],
+      "passos_total": 3,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "3. Títulos nascendo da nota",
+      "onde": [
+       {
+        "t": "Financeiro > Contas a Receber"
+       }
+      ],
+      "intro": [
+       {
+        "t": "No caminho mais comum, quem gera o título é a nota. O cliente vê a passagem do Faturamento para o Financeiro e entende por que não há título em dobro."
+       }
+      ],
+      "passos_total": 3,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "4. Receber: total e parcial",
+      "onde": [
+       {
+        "t": "Financeiro > Contas a Receber, ação "
+       },
+       {
+        "t": "Receber",
+        "marca": "negrito"
+       }
+      ],
+      "intro": [
+       {
+        "t": "O recebimento é o momento em que o dinheiro entra. O cliente vê a baixa parcial criar o residual e o saldo da conta subir na hora."
+       }
+      ],
+      "passos_total": 5,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "5. Boleto e PIX em homologação (quando contratados)",
+      "onde": [
+       {
+        "t": "Financeiro > Configurações > Boleto e Financeiro > PIX"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Só se o cliente contratou cobrança registrada ou PIX. Tudo em homologação, banco por banco, antes de virar para produção."
+       }
+      ],
+      "passos_total": 4,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "6. Contas a pagar vindas da compra",
+      "onde": [
+       {
+        "t": "Financeiro > Contas a Pagar"
+       }
+      ],
+      "intro": [
+       {
+        "t": "O lado da compra: a nota de recebimento finalizada gera os títulos a pagar. O cliente paga um deles e vê o saldo descer."
+       }
+      ],
+      "passos_total": 4,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "7. Extrato e conciliação",
+      "onde": [
+       {
+        "t": "Financeiro > Extrato"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Conciliar é baixar pela data e pela conta do extrato do banco. O cliente vê a Mesa de Conciliação e escolhe, por conta, se baixa à mão ou pela conciliação."
+       }
+      ],
+      "passos_total": 5,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "8. Saldos, fluxo de caixa e DRE",
+      "onde": [
+       {
+        "t": "Financeiro > Saldos, Financeiro > Fluxo de Caixa, Financeiro > DRE"
+       }
+      ],
+      "intro": [
+       {
+        "t": "O fechamento do roteiro: o mesmo dinheiro tem de aparecer igual nos saldos, no fluxo de caixa, na DRE e nos painéis."
+       }
+      ],
+      "passos_total": 4,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "9. Estorno e exclusão",
+      "onde": [
+       {
+        "t": "Financeiro > Contas a Receber, ações "
+       },
+       {
+        "t": "Estornar",
+        "marca": "negrito"
+       },
+       {
+        "t": " e excluir"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Corrigir é parte da operação. O cliente aprende a diferença entre estornar uma baixa errada e excluir um título, e vê o que o sistema protege."
+       }
+      ],
+      "passos_total": 4,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:db/migrations/002_modulos_iniciais.sql#financeiro",
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+    ]
+   },
+   {
+    "id": "implantacao",
+    "titulo": "Procedimentos de implantação",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "texto",
+      "rotulo": "Implantação do Financeiro: roteiro prático com o cliente",
+      "texto": [
+       {
+        "t": "Ao final, o financeiro do cliente terá visto um título nascer do pedido e outro da nota, recebido um deles em duas partes, pago um título da compra e conferido o mesmo dinheiro em Saldos, Extrato, Fluxo de Caixa e DRE. Ele saberá estornar uma baixa e saberá o que o sistema recusa."
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "rotulo": "Blocos do roteiro de implantação",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "1. Contas, meios de pagamento e plano de contas"
+         }
+        ],
+        "nota": [
+         {
+          "t": "4 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "2. Títulos nascendo do pedido"
+         }
+        ],
+        "nota": [
+         {
+          "t": "3 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "3. Títulos nascendo da nota"
+         }
+        ],
+        "nota": [
+         {
+          "t": "3 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "4. Receber: total e parcial"
+         }
+        ],
+        "nota": [
+         {
+          "t": "5 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "5. Boleto e PIX em homologação (quando contratados)"
+         }
+        ],
+        "nota": [
+         {
+          "t": "4 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "6. Contas a pagar vindas da compra"
+         }
+        ],
+        "nota": [
+         {
+          "t": "4 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "7. Extrato e conciliação"
+         }
+        ],
+        "nota": [
+         {
+          "t": "5 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "8. Saldos, fluxo de caixa e DRE"
+         }
+        ],
+        "nota": [
+         {
+          "t": "4 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "9. Estorno e exclusão"
+         }
+        ],
+        "nota": [
+         {
+          "t": "4 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+      ]
+     },
+     {
+      "tipo": "link",
+      "material": "financeiro:checklist-implantacao",
+      "titulo": "Implantação do Financeiro: roteiro prático com o cliente",
+      "status": "disponivel",
+      "url": "/checklists/consultores/implantacao-07-financeiro.html",
+      "duracao_s": null,
+      "poster": null,
+      "legenda": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Orientação de treinamento",
+      "texto": [
+       {
+        "t": "Use situações reais. Demonstre da geração automática à baixa, conciliação e demonstrativos. Relacione lançamentos aos processos que os originaram."
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#financeiro"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro",
+     "guia:db/migrations/002_modulos_iniciais.sql#financeiro"
+    ]
+   },
+   {
+    "id": "configuracoes",
+    "titulo": "Configurações importantes",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "lista",
+      "rotulo": "Pré-requisitos",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Módulo financeiro contratado; versão "
+         },
+         {
+          "t": "PRO",
+          "marca": "negrito"
+         },
+         {
+          "t": " se o cliente quer PIX, pagamentos eletrônicos, DDA ou Open Finance."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " menus sem cadeado em Financeiro. Sem o módulo, nenhuma nota gera título. "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " FIN C, comerciais; FAT-TIT-007."
+         }
+        ],
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Plano de contas analítico, contas bancárias, portadores, condições e meios de pagamento feitos na Fundação; saldo inicial das contas "
+         },
+         {
+          "t": "ainda não preenchido",
+          "marca": "negrito"
+         },
+         {
+          "t": "."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " Financeiro > Configurações. O saldo inicial entra só na carga, depois dos testes. "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " FIN C, pré-requisitos e etapa 2; README da cadeia, decisão X7."
+         }
+        ],
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Participante de teste com "
+         },
+         {
+          "t": "Conta de Fluxo de Caixa Receita/Despesa",
+          "marca": "negrito"
+         },
+         {
+          "t": " preenchida."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " no cadastro do participante. Ela decide em que linha do fluxo de caixa o valor cai. "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " fluxo antigo \"Fluxo financeiro\", pré-requisitos."
+         }
+        ],
+        "selo": "conferido-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Pedido de venda de teste \"TESTE FLUXO CONSULTOR\" sem títulos e a nota autorizada do roteiro de Faturamento (de um pedido sem títulos); nota de recebimento finalizada do roteiro de Recebimento."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " coluna TÍTULOS \"Sem títulos\" no pedido e o número da nota e da NR. "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " README da cadeia, teste ponta a ponta; FIN D, E2E-1 e E2E-8."
+         }
+        ],
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Decisões tomadas: quem gera o contas a receber (pedido ou nota) e como se dá baixa em cada conta (à mão, pelo boleto ou pela conciliação)."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " ata do kickoff. Escolher um caminho por conta evita baixar duas vezes. "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " README da cadeia, decisão X2; FIN C, Q5 e Q9."
+         }
+        ],
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+    ]
+   },
+   {
+    "id": "validacoes",
+    "titulo": "Validações funcionais",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "lista",
+      "rotulo": "Resultado esperado",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Títulos gerados pelo pedido com valor e vencimento iguais às parcelas."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Títulos nascidos da nota autorizada, sem duplicar os do pedido."
+         }
+        ],
+        "nota": null,
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Baixa parcial, baixa total e estorno refletidos em Contas a Receber, Saldos e Extrato."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Título a pagar da compra pago e refletido no saldo e no Extrato."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Extrato importado, um movimento conciliado e a conciliação desfeita."
+         }
+        ],
+        "nota": null,
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Fluxo de Caixa, DRE e Saldos conferidos entre si; diferenças anotadas."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Boleto e PIX emitidos e baixados em homologação, quando contratados."
+         }
+        ],
+        "nota": null,
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "rotulo": "Checklist do módulo",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Consultar contas a receber e a pagar"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#financeiro"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Realizar recebimentos e pagamentos"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#financeiro"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Consultar fluxo de caixa e demonstrativos"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#financeiro"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Compreender integração com Vendas, Faturamento, Compras e Recebimento"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#financeiro"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#financeiro"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro",
+     "guia:db/migrations/002_modulos_iniciais.sql#financeiro"
+    ]
+   },
+   {
+    "id": "integracoes",
+    "titulo": "Integrações e dependências",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "texto",
+      "rotulo": "Relação com os outros módulos",
+      "texto": [
+       {
+        "t": "Recebe informações de Vendas, Faturamento, Compras e Recebimento. Elimina lançamentos manuais."
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#financeiro"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:db/migrations/002_modulos_iniciais.sql#financeiro"
+    ]
+   },
+   {
+    "id": "problemas",
+    "titulo": "Problemas recorrentes",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "lista",
+      "rotulo": "Atenção",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Só ambiente de teste e conta de teste, com registros \"TESTE FLUXO CONSULTOR\". Baixar, pagar, estornar e gerar boleto ou PIX movimentam dinheiro de verdade. Nota fiscal só é transmitida com o responsável fiscal."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Meio de pagamento de tipo Boleto sem conta emissora trava \"Gerar Títulos\"; a mensagem diz \"Boleto\" mesmo quando o meio se chama \"Duplicata Mercantil\"."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Título manual e título gerado do mesmo pedido duplicam DRE, painel e \"Recebido no mês\": use um só caminho."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Baixa parcial cria o residual /002: não é duplicidade."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Hoje o card \"Recebido no mês\" ainda soma o valor original do título numa baixa parcial: confira o card contra o Extrato."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "O \"Saldo Inicial\" da conta não tem data: com migração de histórico, ele é o saldo antes do primeiro movimento migrado, não o de hoje."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Em janelas estreitas, o diálogo de "
+         },
+         {
+          "t": "Estornar",
+          "marca": "negrito"
+         },
+         {
+          "t": " pode abrir fora da área visível."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "rotulo": "Cuidados (vídeo)",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Receber, pagar e estornar movem saldo: só conta e valor de teste."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:videos/roteiros/consultor-08-financeiro.json#14"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Título manual e título gerado do mesmo pedido duplicam a receita."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:videos/roteiros/consultor-08-financeiro.json#14"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Confira o card Recebido no mês contra o Extrato."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:videos/roteiros/consultor-08-financeiro.json#14"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:videos/roteiros/consultor-08-financeiro.json#14"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "rotulo": "A conferir na tela",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Quando \"Gerar Títulos\" fica habilitado: no fluxo antigo (conferido em 20/10/2026) a opção fica desabilitada em Faturado e Lib. Expedição e volta depois de Entregue. A gestora diz que o pedido gera títulos quando está Em aberto, sem nota ainda (FIN B; VEN-TIT). Conferir na tela antes de ensinar se um pedido Entregue e já faturado pode gerar títulos."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Saldo inicial do Fluxo de Caixa: a gestora diz saldo cadastrado da conta + movimentos até a véspera (FIN-IND-002). No fluxo antigo, o saldo inicial absorveu o movimento do mês (inicial negativo, final zero). Conferir na tela."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Excluir título: o fluxo antigo diz que excluir (lixeira) é permanente; a gestora diz que é exclusão lógica (FIN-EXC-001). Conferir na tela."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Títulos nascendo da nota, boleto, PIX, importação de extrato e Mesa de Conciliação ainda não foram executados na tela; os nomes de botão vêm do código lido pela gestora."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro",
+     "guia:videos/roteiros/consultor-08-financeiro.json#14"
+    ]
+   },
+   {
+    "id": "videos",
+    "titulo": "Vídeos avançados",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "video",
+      "material": "financeiro:video-consultor",
+      "titulo": "Financeiro: do título ao fluxo de caixa",
+      "status": "disponivel",
+      "url": "/videos/consultor-08-financeiro.mp4",
+      "duracao_s": 184,
+      "poster": "/videos/consultor-08-financeiro.jpg",
+      "legenda": "/videos/consultor-08-financeiro.vtt",
+      "resumo": [
+       {
+        "t": "Gerar os títulos, receber e ler o fluxo de caixa."
+       }
+      ],
+      "fontes": [
+       "guia:public/videos/manifest.json",
+       "guia:videos/roteiros/consultor-08-financeiro.json"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:public/videos/manifest.json",
+     "guia:videos/roteiros/consultor-08-financeiro.json"
+    ]
+   },
+   {
+    "id": "complementares",
+    "titulo": "Materiais complementares",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "link",
+      "material": "financeiro:checklist-inicial",
+      "titulo": "Financeiro (consulta)",
+      "status": "disponivel",
+      "url": "/checklists/estagiarios/13-financeiro.html",
+      "duracao_s": null,
+      "poster": null,
+      "legenda": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#financeiro"
+      ]
+     },
+     {
+      "tipo": "link",
+      "material": "financeiro:fluxo-principal",
+      "titulo": "Fluxo principal do Financeiro: do título ao fluxo de caixa",
+      "status": "disponivel",
+      "url": "/checklists/estagiarios/fluxo-principal-financeiro.html",
+      "duracao_s": null,
+      "poster": null,
+      "legenda": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-fluxos-estagiarios.mjs#fluxo-financeiro-estagiario"
+      ]
+     },
+     {
+      "tipo": "link",
+      "material": "financeiro:checklist-implantacao",
+      "titulo": "Implantação do Financeiro: roteiro prático com o cliente",
+      "status": "disponivel",
+      "url": "/checklists/consultores/implantacao-07-financeiro.html",
+      "duracao_s": null,
+      "poster": null,
+      "legenda": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+      ]
+     },
+     {
+      "tipo": "link",
+      "titulo": "Apostila do Consultor (PDF)",
+      "url": "/downloads/Apostila-do-Consultor-Faktory-Flow.pdf",
+      "visibilidade": "area:apostila",
+      "fontes": [
+       "guia:public/downloads/Apostila-do-Consultor-Faktory-Flow.pdf"
+      ]
+     },
+     {
+      "tipo": "fontes",
+      "rotulo": "Fontes no Harness",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Como gerar os títulos do pedido e receber"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Procedimento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/produto/procedimentos/procedimento-gerar-titulos-e-receber.md"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "10 Manual Financeiro"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Manual oficial"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/10_Manual_Financeiro_Timbrado.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "01-contas-a-receber"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/financeiro/01-contas-a-receber.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "02-contas-a-pagar"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/financeiro/02-contas-a-pagar.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "03-dre"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/financeiro/03-dre.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "04-fluxo-de-caixa"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/financeiro/04-fluxo-de-caixa.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "05-saldos-e-extrato"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/financeiro/05-saldos-e-extrato.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "06-dashboard-financeiro"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/financeiro/06-dashboard-financeiro.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "07-transferencias"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/financeiro/07-transferencias.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "08-pix"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/financeiro/08-pix.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "09-budget-versus-realizado"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/financeiro/09-budget-versus-realizado.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "10-cadastros-financeiros"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/financeiro/10-cadastros-financeiros.docx"
+        ]
+       }
+      ],
+      "fontes": [
+       "harness:conhecimento/produto/procedimentos/procedimento-gerar-titulos-e-receber.md",
+       "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/10_Manual_Financeiro_Timbrado.docx",
+       "harness:conhecimento/Roteiros Treinamento/financeiro/01-contas-a-receber.docx",
+       "harness:conhecimento/Roteiros Treinamento/financeiro/02-contas-a-pagar.docx",
+       "harness:conhecimento/Roteiros Treinamento/financeiro/03-dre.docx",
+       "harness:conhecimento/Roteiros Treinamento/financeiro/04-fluxo-de-caixa.docx",
+       "harness:conhecimento/Roteiros Treinamento/financeiro/05-saldos-e-extrato.docx",
+       "harness:conhecimento/Roteiros Treinamento/financeiro/06-dashboard-financeiro.docx",
+       "harness:conhecimento/Roteiros Treinamento/financeiro/07-transferencias.docx",
+       "harness:conhecimento/Roteiros Treinamento/financeiro/08-pix.docx",
+       "harness:conhecimento/Roteiros Treinamento/financeiro/09-budget-versus-realizado.docx",
+       "harness:conhecimento/Roteiros Treinamento/financeiro/10-cadastros-financeiros.docx"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-estagiarios.mjs#financeiro",
+     "guia:scripts/dados-fluxos-estagiarios.mjs#fluxo-financeiro-estagiario",
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro",
+     "guia:public/downloads/Apostila-do-Consultor-Faktory-Flow.pdf",
+     "harness:conhecimento/produto/procedimentos/procedimento-gerar-titulos-e-receber.md",
+     "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/10_Manual_Financeiro_Timbrado.docx",
+     "harness:conhecimento/Roteiros Treinamento/financeiro/01-contas-a-receber.docx",
+     "harness:conhecimento/Roteiros Treinamento/financeiro/02-contas-a-pagar.docx",
+     "harness:conhecimento/Roteiros Treinamento/financeiro/03-dre.docx",
+     "harness:conhecimento/Roteiros Treinamento/financeiro/04-fluxo-de-caixa.docx",
+     "harness:conhecimento/Roteiros Treinamento/financeiro/05-saldos-e-extrato.docx",
+     "harness:conhecimento/Roteiros Treinamento/financeiro/06-dashboard-financeiro.docx",
+     "harness:conhecimento/Roteiros Treinamento/financeiro/07-transferencias.docx",
+     "harness:conhecimento/Roteiros Treinamento/financeiro/08-pix.docx",
+     "harness:conhecimento/Roteiros Treinamento/financeiro/09-budget-versus-realizado.docx",
+     "harness:conhecimento/Roteiros Treinamento/financeiro/10-cadastros-financeiros.docx"
+    ]
+   }
+  ]
+ }
+}

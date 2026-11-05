@@ -1,0 +1,1828 @@
+{
+ "versao": "2026-11-04",
+ "id": "expedicao",
+ "jornadas": {
+  "inicial": [
+   {
+    "id": "apresentacao",
+    "titulo": "Apresentação",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "texto",
+      "rotulo": "Expedição e entregas",
+      "texto": [
+       {
+        "t": "Do pedido faturado até a mercadoria na mão do cliente: liberar, montar a carga, conferir no pátio e entregar."
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#expedicao"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Objetivo",
+      "texto": [
+       {
+        "t": "Entender as etapas da expedição e acompanhar o status de cargas e entregas, sabendo o que cada botão faz."
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#expedicao"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-estagiarios.mjs#expedicao"
+    ]
+   },
+   {
+    "id": "video",
+    "titulo": "Vídeo introdutório",
+    "status": "em-preparacao",
+    "blocos": [],
+    "fontes": []
+   },
+   {
+    "id": "manual",
+    "titulo": "Manual visual resumido",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "passos",
+      "titulo": "2. Ver o que pode ser expedido",
+      "onde": null,
+      "intro": null,
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Em Pedidos de Venda, filtrar o Status \"Lib. Expedição\"."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Saber que "
+         },
+         {
+          "t": "Liberar para Expedição",
+          "marca": "negrito"
+         },
+         {
+          "t": " (menu ⋯ do pedido) só aparece depois que o pedido é faturado."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Na Carteira de Pedidos (Vendas > Demonstrativos), ler A expedir, Em carga, Expedido e Entregue."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#expedicao"
+      ]
+     },
+     {
+      "tipo": "passos",
+      "titulo": "3. Entender a montagem da carga (sem montar)",
+      "onde": [
+       {
+        "t": "Expedição > Montar Nova Carga"
+       }
+      ],
+      "intro": null,
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Ver as abas \"Por pedido de venda\" e \"Por ordem de produção\" e o filtro \"Exibir apenas pedidos explicitamente liberados\"."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Ler os campos: veículo (peso e volume), "
+         },
+         {
+          "t": "Data prevista de saída",
+          "marca": "negrito"
+         },
+         {
+          "t": ", "
+         },
+         {
+          "t": "Motorista",
+          "marca": "negrito"
+         },
+         {
+          "t": " e Observações."
+         }
+        ],
+        "nota": [
+         {
+          "t": "O resumo mostra a ocupação do veículo (ex.: 23/360 kg)."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Saber que \"Autorizar montagem apesar do bloqueio de produção\" só se usa com aprovação."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#expedicao"
+      ]
+     },
+     {
+      "tipo": "passos",
+      "titulo": "4. Acompanhar uma carga",
+      "onde": [
+       {
+        "t": "detalhe da carga"
+       }
+      ],
+      "intro": null,
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Reconhecer o ciclo: "
+         },
+         {
+          "t": "Em Montagem → Fechada → (Separação, Conferência, Carregamento) → Em Rota → Entregue",
+          "marca": "negrito"
+         },
+         {
+          "t": "."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Ler o bloco de checkpoints: cada volume é bipado ou confirmado na Separação, na Conferência e no Carregamento."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Ler o "
+         },
+         {
+          "t": "Histórico da Carga",
+          "marca": "negrito"
+         },
+         {
+          "t": " (quem fez cada etapa e quando)."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Ver os documentos disponíveis: Romaneio, Romaneio de itens, PDF e Etiquetas."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#expedicao"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-estagiarios.mjs#expedicao"
+    ]
+   },
+   {
+    "id": "telas",
+    "titulo": "Principais telas",
+    "status": "em-preparacao",
+    "blocos": [],
+    "fontes": []
+   },
+   {
+    "id": "fluxo",
+    "titulo": "Fluxo operacional básico",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "fluxo",
+      "titulo": "Do pedido faturado à confirmação de recebimento.",
+      "etapas": [
+       "Pedido Faturado",
+       "Montagem da Carga",
+       "Separação dos Produtos",
+       "Conferência",
+       "Carregamento",
+       "Entrega",
+       "Confirmação de Recebimento"
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#expedicao"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:db/migrations/002_modulos_iniciais.sql#expedicao"
+    ]
+   },
+   {
+    "id": "atividade",
+    "titulo": "Atividade prática",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "passos",
+      "titulo": "1. Preparar seus dados: montar a carga do seu pedido",
+      "onde": [
+       {
+        "t": "menu ⋯ do pedido e Expedição > Montar Nova Carga"
+       }
+      ],
+      "intro": [
+       {
+        "t": "A sua empresa de treino começa "
+       },
+       {
+        "t": "zerada",
+        "marca": "negrito"
+       },
+       {
+        "t": ": cada módulo usa o que o anterior criou. A expedição só aceita pedido "
+       },
+       {
+        "t": "faturado",
+        "marca": "negrito"
+       },
+       {
+        "t": ": faça antes o bloco de preparar do checklist 12. O motorista precisa ter CNH válida. Se faltar permissão ou cadastro-base (botão que não aparece, CFOP, plano de contas, meio de pagamento, unidade de medida, almoxarifado), anote a mensagem em "
+       },
+       {
+        "t": "Problema",
+        "marca": "negrito"
+       },
+       {
+        "t": " e chame o supervisor: a empresa de treino começa zerada e os cadastros-base são feitos por um consultor."
+       }
+      ],
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "No menu ⋯ do pedido "
+         },
+         {
+          "t": "Faturado",
+          "marca": "negrito"
+         },
+         {
+          "t": " (checklist 12), escolher "
+         },
+         {
+          "t": "Liberar para Expedição",
+          "marca": "negrito"
+         },
+         {
+          "t": "."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Em pedido Em aberto ou Entregue o item não existe; em pedido Faturado aparece habilitado; em pedido \"Lib. Expedição\" vira \"Reverter Liberação\". O aviso da tela Montar Nova Carga manda clicar em \"Liberar para Expedição\" no pedido, mas o botão só existe no menu ⋯ do pedido Faturado."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Em Expedição, clicar em "
+         },
+         {
+          "t": "Montar Nova Carga",
+          "marca": "negrito"
+         },
+         {
+          "t": ": marcar o seu pedido em "
+         },
+         {
+          "t": "Pedidos disponíveis",
+          "marca": "negrito"
+         },
+         {
+          "t": ", escolher o "
+         },
+         {
+          "t": "Veículo",
+          "marca": "negrito"
+         },
+         {
+          "t": ", a "
+         },
+         {
+          "t": "Data prevista de saída",
+          "marca": "negrito"
+         },
+         {
+          "t": " e o "
+         },
+         {
+          "t": "Motorista",
+          "marca": "negrito"
+         },
+         {
+          "t": " (obrigatórios) e clicar em "
+         },
+         {
+          "t": "Montar Carga",
+          "marca": "negrito"
+         },
+         {
+          "t": "."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Carga \"Em Montagem\". O número do botão é o contador de pedidos marcados. Pode avisar \"item sem ordem de produção vinculada\" mesmo com OP."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#expedicao"
+      ]
+     },
+     {
+      "tipo": "link",
+      "material": "expedicao:checklist-inicial",
+      "titulo": "Expedição e entregas",
+      "status": "disponivel",
+      "url": "/checklists/estagiarios/11-expedicao.html",
+      "duracao_s": null,
+      "poster": null,
+      "legenda": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#expedicao"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-estagiarios.mjs#expedicao"
+    ]
+   },
+   {
+    "id": "checklist",
+    "titulo": "Checklist de aprendizado",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "checklist-aprendizado",
+      "chave": "inicial:expedicao",
+      "itens": [
+       {
+        "id": "entendi",
+        "texto": [
+         {
+          "t": "Entendi o que é o módulo Expedição e para que serve"
+         }
+        ]
+       },
+       {
+        "id": "acessar-1",
+        "texto": [
+         {
+          "t": "Sei acessar: menu ⋯ do pedido e Expedição > Montar Nova Carga"
+         }
+        ]
+       },
+       {
+        "id": "acessar-2",
+        "texto": [
+         {
+          "t": "Sei acessar: Expedição > Montar Nova Carga"
+         }
+        ]
+       },
+       {
+        "id": "acessar-3",
+        "texto": [
+         {
+          "t": "Sei acessar: detalhe da carga"
+         }
+        ]
+       },
+       {
+        "id": "executei-4",
+        "texto": [
+         {
+          "t": "Executei: 1. Preparar seus dados: montar a carga do seu pedido"
+         }
+        ]
+       },
+       {
+        "id": "executei-5",
+        "texto": [
+         {
+          "t": "Executei: 2. Ver o que pode ser expedido"
+         }
+        ]
+       },
+       {
+        "id": "executei-6",
+        "texto": [
+         {
+          "t": "Executei: 3. Entender a montagem da carga (sem montar)"
+         }
+        ]
+       },
+       {
+        "id": "executei-7",
+        "texto": [
+         {
+          "t": "Executei: 4. Acompanhar uma carga"
+         }
+        ]
+       },
+       {
+        "id": "checklist",
+        "texto": [
+         {
+          "t": "Concluí o checklist prático"
+         }
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
+       "guia:scripts/dados-checklists-estagiarios.mjs#expedicao"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
+     "guia:scripts/dados-checklists-estagiarios.mjs#expedicao"
+    ]
+   },
+   {
+    "id": "progresso",
+    "titulo": "Progresso",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "progresso",
+      "chave": "inicial:expedicao",
+      "total": 9,
+      "api": "/api/checklists-progresso",
+      "fontes": [
+       "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md"
+    ]
+   }
+  ],
+  "consultor": [
+   {
+    "id": "visao",
+    "titulo": "Visão funcional",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "texto",
+      "rotulo": "Objetivo",
+      "texto": [
+       {
+        "t": "Organizar a entrega dos produtos — montagem da carga, conferência, carregamento e transporte."
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#expedicao"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Papel no fluxo",
+      "texto": [
+       {
+        "t": "Recebe pedidos faturados e autorizados. Integra-se a Vendas, Faturamento, Estoque e Produção."
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#expedicao"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Quando implantar",
+      "texto": [
+       {
+        "t": "Após Vendas, Faturamento, Produção e Estoque."
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#expedicao"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:db/migrations/002_modulos_iniciais.sql#expedicao"
+    ]
+   },
+   {
+    "id": "regras",
+    "titulo": "Regras de negócio",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "regra",
+      "titulo": "Liberar para Expedição só existe em pedido Faturado",
+      "texto": [
+       {
+        "t": "O item "
+       },
+       {
+        "t": "Liberar para Expedição",
+        "marca": "negrito"
+       },
+       {
+        "t": " do menu ⋯ aparece somente em pedido "
+       },
+       {
+        "t": "Faturado",
+        "marca": "negrito"
+       },
+       {
+        "t": ". Em pedido Em aberto ou Entregue não existe, e em pedido "
+       },
+       {
+        "t": "Lib. Expedição",
+        "marca": "negrito"
+       },
+       {
+        "t": " vira "
+       },
+       {
+        "t": "Reverter Liberação",
+        "marca": "negrito"
+       },
+       {
+        "t": ". O aviso da tela Montar Nova Carga manda clicar nesse botão no pedido, mas ele só está no menu do pedido faturado."
+       }
+      ],
+      "confirmar": [
+       {
+        "t": "Vendas › Pedidos de Venda › menu ⋯ de pedidos em status diferentes."
+       }
+      ],
+      "confianca": "B",
+      "fontes": [
+       "harness:conhecimento/produto/regras-negocio/regra-vendas-liberar-para-expedicao-so-em-pedido-faturado.md"
+      ]
+     },
+     {
+      "tipo": "regra",
+      "titulo": "Os checkpoints são os da empresa",
+      "texto": [
+       {
+        "t": "Separação, Conferência e Carregamento ligam em Expedição › Configurações › Parâmetros. Ligue só o que a empresa usa."
+       }
+      ],
+      "confirmar": null,
+      "confianca": null,
+      "fontes": [
+       "guia:videos/roteiros/consultor-06-expedicao.json#05",
+       "harness-id:manual-09-expedicao"
+      ]
+     },
+     {
+      "tipo": "regra",
+      "titulo": "Fechou a carga, começa a bipagem",
+      "texto": [
+       {
+        "t": "Fechar Carga libera os checkpoints. Com todos completos, Iniciar Rota coloca a carga Em Rota."
+       }
+      ],
+      "confirmar": null,
+      "confianca": null,
+      "fontes": [
+       "guia:videos/roteiros/consultor-06-expedicao.json#06",
+       "harness-id:manual-09-expedicao"
+      ]
+     },
+     {
+      "tipo": "regra",
+      "titulo": "Ocorrência bloqueante volta à fila",
+      "texto": [
+       {
+        "t": "A entrega fica com ocorrência e o pedido volta para Aguardando Re-Expedição. A devolução confirmada cria pendências de estoque."
+       }
+      ],
+      "confirmar": null,
+      "confianca": null,
+      "fontes": [
+       "guia:videos/roteiros/consultor-06-expedicao.json#07",
+       "harness-id:roteiro-expedicao-05-re-expedicao-e-devolucoes"
+      ]
+     }
+    ],
+    "fontes": [
+     "harness:conhecimento/produto/regras-negocio/regra-vendas-liberar-para-expedicao-so-em-pedido-faturado.md",
+     "guia:videos/roteiros/consultor-06-expedicao.json#05",
+     "harness-id:manual-09-expedicao",
+     "guia:videos/roteiros/consultor-06-expedicao.json#06",
+     "guia:videos/roteiros/consultor-06-expedicao.json#07",
+     "harness-id:roteiro-expedicao-05-re-expedicao-e-devolucoes"
+    ]
+   },
+   {
+    "id": "fluxos",
+    "titulo": "Fluxos operacionais",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "fluxo",
+      "titulo": "Do pedido faturado à confirmação de recebimento.",
+      "etapas": [
+       "Pedido Faturado",
+       "Montagem da Carga",
+       "Separação dos Produtos",
+       "Conferência",
+       "Carregamento",
+       "Entrega",
+       "Confirmação de Recebimento"
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#expedicao"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "1. Cadastros da expedição",
+      "onde": [
+       {
+        "t": "Expedição > Configurações"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Antes da primeira carga, mostre ao cliente o que a montagem usa: veículo, motorista, checkpoints e tipos de ocorrência. Sem isso a carga não fecha ou a ocupação não aparece."
+       }
+      ],
+      "passos_total": 4,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-expedicao"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "2. Liberar o pedido faturado",
+      "onde": [
+       {
+        "t": "Vendas > Pedidos de Venda, menu ⋯ do pedido"
+       }
+      ],
+      "intro": [
+       {
+        "t": "A expedição começa no pedido. Mostre primeiro que a liberação não existe antes de faturar e depois libere o pedido de teste."
+       }
+      ],
+      "passos_total": 3,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-expedicao"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "3. Montar a carga",
+      "onde": [
+       {
+        "t": "Expedição > Visão Geral > + Montar Nova Carga"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Com o pedido na fila, monte a carga escolhendo o veículo pela ocupação. É aqui que o cliente vê peso e volume contra a capacidade."
+       }
+      ],
+      "passos_total": 5,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-expedicao"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "4. Fechar a carga e fazer os checkpoints",
+      "onde": [
+       {
+        "t": "detalhe da carga"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Fechar a carga libera os checkpoints do pátio. O cliente executa a bipagem com o consultor, volume a volume."
+       }
+      ],
+      "passos_total": 4,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-expedicao"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "5. Rota e entrega",
+      "onde": [
+       {
+        "t": "detalhe da carga e Apontamentos do Motorista"
+       }
+      ],
+      "intro": [
+       {
+        "t": "A saída trava os checkpoints e a entrega fecha o ciclo. Termine conferindo o reflexo no pedido de Vendas."
+       }
+      ],
+      "passos_total": 5,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-expedicao"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "6. Ocorrência na rota",
+      "onde": [
+       {
+        "t": "Apontamentos do Motorista > Ocorrência e Expedição > Ocorrências"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Use uma segunda carga de teste, já em rota, para mostrar o que acontece quando a entrega não sai como previsto."
+       }
+      ],
+      "passos_total": 4,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-expedicao"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "7. Devolução e re-expedição",
+      "onde": [
+       {
+        "t": "Expedição > Aguardando Re-Expedição e Expedição > Pendências de Estoque (Devolução)"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Feche o roteiro mostrando a devolução e a passagem para o Estoque, que não é automática."
+       }
+      ],
+      "passos_total": 4,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-expedicao"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:db/migrations/002_modulos_iniciais.sql#expedicao",
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-expedicao"
+    ]
+   },
+   {
+    "id": "implantacao",
+    "titulo": "Procedimentos de implantação",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "texto",
+      "rotulo": "Implantação de Expedição: roteiro prático com o cliente",
+      "texto": [
+       {
+        "t": "Ao final, o cliente terá visto um pedido faturado virar carga, passar pelos checkpoints do pátio e chegar a Entregue com histórico, e saberá repetir sozinho. Também terá visto o que acontece numa ocorrência bloqueante e numa devolução, e por que o saldo do estoque não volta sozinho."
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-expedicao"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "rotulo": "Blocos do roteiro de implantação",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "1. Cadastros da expedição"
+         }
+        ],
+        "nota": [
+         {
+          "t": "4 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-expedicao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "2. Liberar o pedido faturado"
+         }
+        ],
+        "nota": [
+         {
+          "t": "3 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-expedicao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "3. Montar a carga"
+         }
+        ],
+        "nota": [
+         {
+          "t": "5 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-expedicao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "4. Fechar a carga e fazer os checkpoints"
+         }
+        ],
+        "nota": [
+         {
+          "t": "4 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-expedicao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "5. Rota e entrega"
+         }
+        ],
+        "nota": [
+         {
+          "t": "5 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-expedicao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "6. Ocorrência na rota"
+         }
+        ],
+        "nota": [
+         {
+          "t": "4 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-expedicao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "7. Devolução e re-expedição"
+         }
+        ],
+        "nota": [
+         {
+          "t": "4 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-expedicao"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-expedicao"
+      ]
+     },
+     {
+      "tipo": "link",
+      "material": "expedicao:checklist-implantacao",
+      "titulo": "Implantação de Expedição: roteiro prático com o cliente",
+      "status": "disponivel",
+      "url": "/checklists/consultores/implantacao-13-expedicao.html",
+      "duracao_s": null,
+      "poster": null,
+      "legenda": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-expedicao"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Orientação de treinamento",
+      "texto": [
+       {
+        "t": "Apresente criação de cargas, organização por veículo, conferência, carregamento e acompanhamento. Demonstre registro de confirmação de entrega e histórico."
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#expedicao"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-expedicao",
+     "guia:db/migrations/002_modulos_iniciais.sql#expedicao"
+    ]
+   },
+   {
+    "id": "configuracoes",
+    "titulo": "Configurações importantes",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "lista",
+      "rotulo": "Pré-requisitos",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Um pedido de venda de teste "
+         },
+         {
+          "t": "Faturado",
+          "marca": "negrito"
+         },
+         {
+          "t": ", com nota finalizada e sem transmitir (marcado \"TESTE FLUXO CONSULTOR\")."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " em Vendas > Pedidos de Venda, o status "
+         },
+         {
+          "t": "Faturado",
+          "marca": "negrito"
+         },
+         {
+          "t": ". A tela de montagem só lista pedidos liberados, e a liberação só existe em pedido faturado. "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " fluxo antigo \"Fluxo de expedição\" (pré-requisito); regra-vendas-liberar-para-expedicao-so-em-pedido-faturado."
+         }
+        ],
+        "selo": "conferido-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-expedicao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Frota cadastrada: pelo menos um "
+         },
+         {
+          "t": "veículo",
+          "marca": "negrito"
+         },
+         {
+          "t": " com capacidade de peso e volume e um "
+         },
+         {
+          "t": "motorista",
+          "marca": "negrito"
+         },
+         {
+          "t": " com CNH válida."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " em Expedição > Configurações > Veículos e Motoristas. CNH vencida exige justificativa para fechar a carga. "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " fluxo antigo \"Fluxo de expedição\" (pré-requisito); manual-09-expedicao#003 e #004."
+         }
+        ],
+        "selo": "conferido-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-expedicao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Endereço de entrega no cadastro do cliente e peso no cadastro do produto."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " o endereço aparece no resumo da carga; o peso alimenta a ocupação do veículo. "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " fluxo antigo \"Fluxo de expedição\" (pré-requisito); manual-09-expedicao#002."
+         }
+        ],
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-expedicao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Checkpoints da empresa definidos: quais etapas (Separação, Conferência, Carregamento) o cliente vai usar."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " em Expedição > Configurações > Parâmetros. "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " manual-09-expedicao#005."
+         }
+        ],
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-expedicao"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-expedicao"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-expedicao"
+    ]
+   },
+   {
+    "id": "validacoes",
+    "titulo": "Validações funcionais",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "lista",
+      "rotulo": "Resultado esperado",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "O pedido faturado foi liberado, entrou numa carga, passou pelos checkpoints e chegou a "
+         },
+         {
+          "t": "Entregue",
+          "marca": "negrito"
+         },
+         {
+          "t": ", com todo o caminho no Histórico da Carga."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-expedicao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "A Carteira de Pedidos de Vendas mostra o pedido entregue com o número da carga."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-expedicao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Uma ocorrência bloqueante devolveu o pedido à fila de re-expedição e a devolução gerou pendência de estoque sem mexer no saldo."
+         }
+        ],
+        "nota": null,
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-expedicao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "O cliente montou e fechou uma carga sozinho, escolhendo o veículo pela ocupação."
+         }
+        ],
+        "nota": null,
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-expedicao"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-expedicao"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "rotulo": "Checklist do módulo",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Montar carga com pedidos faturados"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#expedicao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Realizar conferência e carregamento"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#expedicao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Acompanhar status das entregas"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#expedicao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Registrar confirmação de recebimento"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#expedicao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Compreender integração com Vendas, Estoque, Produção e Faturamento"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#expedicao"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#expedicao"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-expedicao",
+     "guia:db/migrations/002_modulos_iniciais.sql#expedicao"
+    ]
+   },
+   {
+    "id": "integracoes",
+    "titulo": "Integrações e dependências",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "texto",
+      "rotulo": "Relação com os outros módulos",
+      "texto": [
+       {
+        "t": "Recebe pedidos faturados e autorizados. Integra-se a Vendas, Faturamento, Estoque e Produção."
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#expedicao"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:db/migrations/002_modulos_iniciais.sql#expedicao"
+    ]
+   },
+   {
+    "id": "problemas",
+    "titulo": "Problemas recorrentes",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "lista",
+      "rotulo": "Atenção",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Só em ambiente de teste, com registros \"TESTE FLUXO CONSULTOR\". A nota fiscal do pedido só é transmitida com o responsável fiscal."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-expedicao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Liberar para Expedição",
+          "marca": "negrito"
+         },
+         {
+          "t": " só aparece no pedido "
+         },
+         {
+          "t": "Faturado",
+          "marca": "negrito"
+         },
+         {
+          "t": ", e o aviso da tela de montagem não diz isso: fature antes."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-expedicao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Montar, fechar, "
+         },
+         {
+          "t": "Iniciar Rota",
+          "marca": "negrito"
+         },
+         {
+          "t": ", "
+         },
+         {
+          "t": "Entregue",
+          "marca": "negrito"
+         },
+         {
+          "t": " e cancelar carga alteram a operação. O link de rastreamento e os avisos podem chegar ao cliente final: use e-mail de teste e revogue o link."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-expedicao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Hoje a carga ainda pode avisar \"item sem ordem de produção vinculada\" mesmo com a OP existente: confira a OP antes de carregar."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-expedicao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "A devolução "
+         },
+         {
+          "t": "não",
+          "marca": "negrito"
+         },
+         {
+          "t": " devolve o saldo ao estoque sozinha: depende da entrada manual e da baixa da pendência."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-expedicao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Gerar Títulos",
+          "marca": "negrito"
+         },
+         {
+          "t": " do pedido fica desabilitado em Faturado e Lib. Expedição (\"Pedido já faturado\") e volta depois de Entregue: combine com o Financeiro quando gerar."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-expedicao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Motorista com CNH vencida trava o fechamento sem justificativa: confira a validade antes do dia da implantação."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-expedicao"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-expedicao"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "rotulo": "Cuidados (vídeo)",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Motorista com CNH vencida exige justificativa para fechar a carga."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:videos/roteiros/consultor-06-expedicao.json#12"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "A carga pode avisar produção pendente mesmo com a OP vinculada."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:videos/roteiros/consultor-06-expedicao.json#12"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Devolução não sobe o saldo: trate a pendência de estoque."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:videos/roteiros/consultor-06-expedicao.json#12"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:videos/roteiros/consultor-06-expedicao.json#12"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "rotulo": "A conferir na tela",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Caminho dos cadastros: o fluxo antigo cita Expedição > Cadastros; o manual-09-expedicao usa Expedição > Configurações (Veículos, Motoristas, Parâmetros, Tipos de Ocorrência). O menu lateral tem os dois itens: conferir na tela onde fica cada cadastro."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-expedicao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Caminho da montagem: o fluxo antigo e o procedimento citam Expedição > Montar Nova Carga; o manual-09-expedicao usa Expedição > Visão Geral > + Montar Nova Carga."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-expedicao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Produção pendente: o manual-09-expedicao descreve a opção "
+         },
+         {
+          "t": "Autorizar montagem apesar do bloqueio de produção",
+          "marca": "negrito"
+         },
+         {
+          "t": " com justificativa; o fluxo antigo e o \"Teste do fluxo completo\" registram o aviso \"item sem ordem de produção vinculada\" mesmo com OP (defeito). Conferir na tela qual aviso aparece e se a autorização existe."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-expedicao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Mensagem dos checkpoints: o fluxo antigo registra \"Todos os checkpoints concluídos! Carga pronta para sair\"; o manual-09-expedicao cita só \"Todos os checkpoints concluídos\"."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-expedicao"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Ocorrências, devolução, re-expedição, pendências de estoque e o app do motorista ainda não foram executados no sistema: os blocos 6 e 7 vêm do plano de QA de Expedição pelo fluxo antigo."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-expedicao"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-expedicao"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-expedicao",
+     "guia:videos/roteiros/consultor-06-expedicao.json#12"
+    ]
+   },
+   {
+    "id": "videos",
+    "titulo": "Vídeos avançados",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "video",
+      "material": "expedicao:video-consultor",
+      "titulo": "Expedição: da carga à entrega",
+      "status": "disponivel",
+      "url": "/videos/consultor-06-expedicao.mp4",
+      "duracao_s": 161,
+      "poster": "/videos/consultor-06-expedicao.jpg",
+      "legenda": "/videos/consultor-06-expedicao.vtt",
+      "resumo": [
+       {
+        "t": "Carga, entrega, ocorrência e devolução."
+       }
+      ],
+      "fontes": [
+       "guia:public/videos/manifest.json",
+       "guia:videos/roteiros/consultor-06-expedicao.json"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:public/videos/manifest.json",
+     "guia:videos/roteiros/consultor-06-expedicao.json"
+    ]
+   },
+   {
+    "id": "complementares",
+    "titulo": "Materiais complementares",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "link",
+      "material": "expedicao:checklist-inicial",
+      "titulo": "Expedição e entregas",
+      "status": "disponivel",
+      "url": "/checklists/estagiarios/11-expedicao.html",
+      "duracao_s": null,
+      "poster": null,
+      "legenda": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#expedicao"
+      ]
+     },
+     {
+      "tipo": "link",
+      "material": "expedicao:checklist-implantacao",
+      "titulo": "Implantação de Expedição: roteiro prático com o cliente",
+      "status": "disponivel",
+      "url": "/checklists/consultores/implantacao-13-expedicao.html",
+      "duracao_s": null,
+      "poster": null,
+      "legenda": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-expedicao"
+      ]
+     },
+     {
+      "tipo": "link",
+      "titulo": "Apostila do Consultor (PDF)",
+      "url": "/downloads/Apostila-do-Consultor-Faktory-Flow.pdf",
+      "visibilidade": "area:apostila",
+      "fontes": [
+       "guia:public/downloads/Apostila-do-Consultor-Faktory-Flow.pdf"
+      ]
+     },
+     {
+      "tipo": "fontes",
+      "rotulo": "Fontes no Harness",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Como liberar o pedido e montar a carga"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Procedimento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/produto/procedimentos/procedimento-montar-carga-e-liberar-para-expedicao.md"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "09 Manual Expedicao"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Manual oficial"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/09_Manual_Expedicao_Timbrado.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "01-cadastros-e-parametros"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/expedicao/01-cadastros-e-parametros.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "02-cargas"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/expedicao/02-cargas.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "03-separacao-conferencia-e-carregamento"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/expedicao/03-separacao-conferencia-e-carregamento.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "04-entrega"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/expedicao/04-entrega.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "05-re-expedicao-e-devolucoes"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/expedicao/05-re-expedicao-e-devolucoes.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "06-roteirizacao"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/expedicao/06-roteirizacao.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "07-paineis-e-demonstrativos"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/expedicao/07-paineis-e-demonstrativos.docx"
+        ]
+       }
+      ],
+      "fontes": [
+       "harness:conhecimento/produto/procedimentos/procedimento-montar-carga-e-liberar-para-expedicao.md",
+       "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/09_Manual_Expedicao_Timbrado.docx",
+       "harness:conhecimento/Roteiros Treinamento/expedicao/01-cadastros-e-parametros.docx",
+       "harness:conhecimento/Roteiros Treinamento/expedicao/02-cargas.docx",
+       "harness:conhecimento/Roteiros Treinamento/expedicao/03-separacao-conferencia-e-carregamento.docx",
+       "harness:conhecimento/Roteiros Treinamento/expedicao/04-entrega.docx",
+       "harness:conhecimento/Roteiros Treinamento/expedicao/05-re-expedicao-e-devolucoes.docx",
+       "harness:conhecimento/Roteiros Treinamento/expedicao/06-roteirizacao.docx",
+       "harness:conhecimento/Roteiros Treinamento/expedicao/07-paineis-e-demonstrativos.docx"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-estagiarios.mjs#expedicao",
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-expedicao",
+     "guia:public/downloads/Apostila-do-Consultor-Faktory-Flow.pdf",
+     "harness:conhecimento/produto/procedimentos/procedimento-montar-carga-e-liberar-para-expedicao.md",
+     "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/09_Manual_Expedicao_Timbrado.docx",
+     "harness:conhecimento/Roteiros Treinamento/expedicao/01-cadastros-e-parametros.docx",
+     "harness:conhecimento/Roteiros Treinamento/expedicao/02-cargas.docx",
+     "harness:conhecimento/Roteiros Treinamento/expedicao/03-separacao-conferencia-e-carregamento.docx",
+     "harness:conhecimento/Roteiros Treinamento/expedicao/04-entrega.docx",
+     "harness:conhecimento/Roteiros Treinamento/expedicao/05-re-expedicao-e-devolucoes.docx",
+     "harness:conhecimento/Roteiros Treinamento/expedicao/06-roteirizacao.docx",
+     "harness:conhecimento/Roteiros Treinamento/expedicao/07-paineis-e-demonstrativos.docx"
+    ]
+   }
+  ]
+ }
+}
