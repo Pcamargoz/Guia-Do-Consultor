@@ -197,14 +197,14 @@
       "onde": [
        {
         "t": "Compras > Sugestão de Compra",
-        "marca": "codigo"
+        "marca": "tela"
        },
        {
         "t": " e "
        },
        {
         "t": "Compras > Aprovações",
-        "marca": "codigo"
+        "marca": "tela"
        }
       ],
       "intro": null,
@@ -243,7 +243,7 @@
          },
          {
           "t": "Compras > Aprovações",
-          "marca": "codigo"
+          "marca": "tela"
          },
          {
           "t": ", ver os pedidos aguardando alçada."
@@ -390,7 +390,7 @@
          },
          {
           "t": "Compras > Solicitações de Compra > Nova Solicitação",
-          "marca": "codigo"
+          "marca": "tela"
          },
          {
           "t": ": "
@@ -606,14 +606,14 @@
          },
          {
           "t": "Compras > Sugestão de Compra",
-          "marca": "codigo"
+          "marca": "tela"
          },
          {
           "t": " e "
          },
          {
           "t": "Compras > Aprovações",
-          "marca": "codigo"
+          "marca": "tela"
          }
         ]
        },
@@ -1012,7 +1012,7 @@
       "onde": [
        {
         "t": "Compras > Solicitações de Compra > Nova Solicitação",
-        "marca": "codigo"
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -1031,7 +1031,7 @@
       "onde": [
        {
         "t": "Compras > Sugestão de Compra",
-        "marca": "codigo"
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -1057,7 +1057,7 @@
        },
        {
         "t": "Compras > Cotações de Compra",
-        "marca": "codigo"
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -1083,7 +1083,7 @@
        },
        {
         "t": "Compras > Pedidos de Compra",
-        "marca": "codigo"
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -1102,14 +1102,14 @@
       "onde": [
        {
         "t": "Compras > Configurações > Faixas de Alçada",
-        "marca": "codigo"
+        "marca": "tela"
        },
        {
         "t": " e "
        },
        {
         "t": "Compras > Aprovações",
-        "marca": "codigo"
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -1128,14 +1128,14 @@
       "onde": [
        {
         "t": "Compras > Pedidos de Compra",
-        "marca": "codigo"
+        "marca": "tela"
        },
        {
         "t": ", "
        },
        {
         "t": "Compras > Follow-up de Entregas",
-        "marca": "codigo"
+        "marca": "tela"
        },
        {
         "t": " e "
@@ -1161,7 +1161,7 @@
       "onde": [
        {
         "t": "Compras > Pedidos de Compra > ⋯",
-        "marca": "codigo"
+        "marca": "tela"
        },
        {
         "t": " e "
@@ -1553,7 +1553,7 @@
         "texto": [
          {
           "t": "Compras > Configurações > Parâmetros de Compras",
-          "marca": "codigo"
+          "marca": "tela"
          },
          {
           "t": " revisados: \"Regras de Melhor Opção\" e \"Critérios de preço na Cotação\". Deixe \"Usar aprovação por alçada\" desligado até o bloco 5."
@@ -2046,14 +2046,14 @@
          },
          {
           "t": "Compras > Configurações > Parâmetros",
-          "marca": "codigo"
+          "marca": "tela"
          },
          {
           "t": "; a gestora, "
          },
          {
           "t": "Compras > Configurações > Parâmetros de Compras",
-          "marca": "codigo"
+          "marca": "tela"
          },
          {
           "t": ". Conferir o rótulo do menu."

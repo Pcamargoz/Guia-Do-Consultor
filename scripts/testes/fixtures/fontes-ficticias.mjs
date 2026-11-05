@@ -21,7 +21,7 @@ export function harnessFicticio() {
       regra('regra-exemplo-pedido-aprovado', 'Pedido aprovado não volta a rascunho (fictício)', ['vendas'], 'Exemplo fictício: depois de aprovado, o pedido só pode ser cancelado.', 'Abra **Vendas > Pedidos**, pesquise "PV - <número>" e tente editar um pedido *aprovado* em `Vendas > Pedidos` e confira o campo `Situação` = `APROVADO` (fictício). Veja [o vídeo](/videos/fluxo-1-vendas.mp4) e [isto](javascript:alert(1)).'),
       regra('regra-exemplo-saldo-por-local', 'Saldo é controlado por local (fictício)', ['estoque'], 'Exemplo fictício: cada local de estoque tem saldo próprio.', null),
     ],
-    funcional: [{ id: 'funcional-exemplo-vendas', titulo: 'Pedidos de venda (fictício)', modulos: ['vendas'], secoes: { Caminho: '`Vendas > Pedidos` (fictício)' }, fonte: 'harness:conhecimento/produto/funcional/funcional-exemplo-vendas.md' }],
+    funcional: [{ id: 'funcional-exemplo-vendas', titulo: 'Pedidos de venda (fictício)', modulos: ['vendas'], secoes: { Caminho: '`Vendas > Pedidos` (fictício); para conferir o saldo, `Estoque > Locais` e, no cadastro da empresa, `Configurações > Empresas` (fictício).' }, fonte: 'harness:conhecimento/produto/funcional/funcional-exemplo-vendas.md' }],
     procedimentos: [{ id: 'proc-exemplo-vendas', titulo: 'Emitir pedido de exemplo (fictício)', modulos: ['vendas'], secoes: {}, fonte: 'harness:conhecimento/produto/procedimentos/proc-exemplo-vendas.md' }],
     faq: [],
     metodologia: [],

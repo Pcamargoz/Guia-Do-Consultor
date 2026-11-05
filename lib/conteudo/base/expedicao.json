@@ -107,7 +107,7 @@
       "onde": [
        {
         "t": "Expedição > Montar Nova Carga",
-        "marca": "codigo"
+        "marca": "tela"
        }
       ],
       "intro": null,
@@ -286,7 +286,7 @@
        },
        {
         "t": "Expedição > Montar Nova Carga",
-        "marca": "codigo"
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -474,7 +474,7 @@
          },
          {
           "t": "Expedição > Montar Nova Carga",
-          "marca": "codigo"
+          "marca": "tela"
          }
         ]
        },
@@ -486,7 +486,7 @@
          },
          {
           "t": "Expedição > Montar Nova Carga",
-          "marca": "codigo"
+          "marca": "tela"
          }
         ]
        },
@@ -764,7 +764,7 @@
       "onde": [
        {
         "t": "Expedição > Configurações",
-        "marca": "codigo"
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -812,7 +812,7 @@
       "onde": [
        {
         "t": "Expedição > Visão Geral > + Montar Nova Carga",
-        "marca": "codigo"
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -878,7 +878,7 @@
        },
        {
         "t": "Expedição > Ocorrências",
-        "marca": "codigo"
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -897,14 +897,14 @@
       "onde": [
        {
         "t": "Expedição > Aguardando Re-Expedição",
-        "marca": "codigo"
+        "marca": "tela"
        },
        {
         "t": " e "
        },
        {
         "t": "Expedição > Pendências de Estoque (Devolução)",
-        "marca": "codigo"
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -1179,7 +1179,7 @@
          },
          {
           "t": "Expedição > Configurações > Veículos",
-          "marca": "codigo"
+          "marca": "tela"
          },
          {
           "t": " e "
@@ -1247,7 +1247,7 @@
          },
          {
           "t": "Expedição > Configurações > Parâmetros",
-          "marca": "codigo"
+          "marca": "tela"
          },
          {
           "t": ". "
@@ -1631,14 +1631,14 @@
          },
          {
           "t": "Expedição > Cadastros",
-          "marca": "codigo"
+          "marca": "tela"
          },
          {
           "t": "; o manual-09-expedicao usa "
          },
          {
           "t": "Expedição > Configurações",
-          "marca": "codigo"
+          "marca": "tela"
          },
          {
           "t": " (Veículos, Motoristas, Parâmetros, Tipos de Ocorrência). O menu lateral tem os dois itens: conferir na tela onde fica cada cadastro."
@@ -1657,14 +1657,14 @@
          },
          {
           "t": "Expedição > Montar Nova Carga",
-          "marca": "codigo"
+          "marca": "tela"
          },
          {
           "t": "; o manual-09-expedicao usa "
          },
          {
           "t": "Expedição > Visão Geral > + Montar Nova Carga",
-          "marca": "codigo"
+          "marca": "tela"
          },
          {
           "t": "."

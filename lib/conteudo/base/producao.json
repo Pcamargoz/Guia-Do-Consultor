@@ -55,7 +55,7 @@
       "onde": [
        {
         "t": "Produção > Visão geral",
-        "marca": "codigo"
+        "marca": "tela"
        }
       ],
       "intro": null,
@@ -93,7 +93,7 @@
       "onde": [
        {
         "t": "Produção > Ordens de produção",
-        "marca": "codigo"
+        "marca": "tela"
        }
       ],
       "intro": null,
@@ -245,7 +245,7 @@
       "onde": [
        {
         "t": "Produção > Painel de fábrica",
-        "marca": "codigo"
+        "marca": "tela"
        }
       ],
       "intro": null,
@@ -307,7 +307,7 @@
       "onde": [
        {
         "t": "Produção > Integração de Produção",
-        "marca": "codigo"
+        "marca": "tela"
        }
       ],
       "intro": null,
@@ -336,7 +336,7 @@
       "onde": [
        {
         "t": "Estoque > Movimentos",
-        "marca": "codigo"
+        "marca": "tela"
        }
       ],
       "intro": null,
@@ -673,7 +673,7 @@
          },
          {
           "t": "Produção > Visão geral",
-          "marca": "codigo"
+          "marca": "tela"
          }
         ]
        },
@@ -685,7 +685,7 @@
          },
          {
           "t": "Produção > Ordens de produção",
-          "marca": "codigo"
+          "marca": "tela"
          }
         ]
        },
@@ -712,7 +712,7 @@
          },
          {
           "t": "Produção > Painel de fábrica",
-          "marca": "codigo"
+          "marca": "tela"
          }
         ]
        },
@@ -724,7 +724,7 @@
          },
          {
           "t": "Produção > Integração de Produção",
-          "marca": "codigo"
+          "marca": "tela"
          }
         ]
        },
@@ -736,7 +736,7 @@
          },
          {
           "t": "Estoque > Movimentos",
-          "marca": "codigo"
+          "marca": "tela"
          }
         ]
        },
@@ -1154,7 +1154,7 @@
       "onde": [
        {
         "t": "Produção > Configurações > Estrutura de produto",
-        "marca": "codigo"
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -1228,7 +1228,7 @@
        },
        {
         "t": "Produção > Terminal de apontamento",
-        "marca": "codigo"
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -1254,7 +1254,7 @@
        },
        {
         "t": "Estoque > Movimentos",
-        "marca": "codigo"
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -1273,21 +1273,21 @@
       "onde": [
        {
         "t": "Produção > Painel de fábrica",
-        "marca": "codigo"
+        "marca": "tela"
        },
        {
         "t": ", "
        },
        {
         "t": "Produção > Separação de materiais",
-        "marca": "codigo"
+        "marca": "tela"
        },
        {
         "t": " e "
        },
        {
         "t": "Produção > Visão geral",
-        "marca": "codigo"
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -1509,7 +1509,7 @@
          },
          {
           "t": "Produção > Configurações",
-          "marca": "codigo"
+          "marca": "tela"
          },
          {
           "t": " e "
@@ -1564,14 +1564,14 @@
          },
          {
           "t": "Estoque > Saldo",
-          "marca": "codigo"
+          "marca": "tela"
          },
          {
           "t": " e "
          },
          {
           "t": "Estoque > Locais",
-          "marca": "codigo"
+          "marca": "tela"
          },
          {
           "t": ". Sem local ativo a OP não conclui (selo \"Conclusão bloqueada\"). "
@@ -1646,7 +1646,7 @@
          },
          {
           "t": "Estoque > Saldo",
-          "marca": "codigo"
+          "marca": "tela"
          },
          {
           "t": ". "
@@ -1702,7 +1702,7 @@
          },
          {
           "t": "Estoque > Movimentos",
-          "marca": "codigo"
+          "marca": "tela"
          },
          {
           "t": " e o saldo dos insumos."
@@ -1980,7 +1980,7 @@
          },
          {
           "t": "Estoque > Saldo",
-          "marca": "codigo"
+          "marca": "tela"
          },
          {
           "t": "."

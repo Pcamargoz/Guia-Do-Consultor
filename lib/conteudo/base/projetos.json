@@ -290,7 +290,7 @@
          },
          {
           "t": "Financeiro > Painel Financeiro de Projetos",
-          "marca": "codigo"
+          "marca": "tela"
          }
         ]
        },
@@ -649,7 +649,7 @@
       "onde": [
        {
         "t": "Financeiro > Painel Financeiro de Projetos",
-        "marca": "codigo"
+        "marca": "tela"
        },
        {
         "t": " e módulo "
@@ -675,7 +675,7 @@
       "onde": [
        {
         "t": "Projetos > Diário de Obra",
-        "marca": "codigo"
+        "marca": "tela"
        },
        {
         "t": " e ações da linha da obra"
@@ -937,7 +937,7 @@
          },
          {
           "t": "Estoque > Locais",
-          "marca": "codigo"
+          "marca": "tela"
          },
          {
           "t": ", ou o almoxarifado central ativo, para finalizar a nota com a obra."
@@ -1411,7 +1411,7 @@
          },
          {
           "t": "Financeiro > Painel Financeiro de Projetos",
-          "marca": "codigo"
+          "marca": "tela"
          },
          {
           "t": "; o manual-12-projetos-e-tarefas o coloca no menu do módulo Projetos ou no "
@@ -1449,7 +1449,7 @@
          },
          {
           "t": "Projetos > Diário de Obra",
-          "marca": "codigo"
+          "marca": "tela"
          },
          {
           "t": ", mas o menu de Projetos descrito no manual-12-projetos-e-tarefas não lista esse item."

@@ -932,14 +932,14 @@
       "onde": [
        {
         "t": "Financeiro > Configurações",
-        "marca": "codigo"
+        "marca": "tela"
        },
        {
         "t": " (Contas Bancárias, Meios de Pagamento, Planos de Conta) e "
        },
        {
         "t": "Financeiro > Saldos",
-        "marca": "codigo"
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -1029,14 +1029,14 @@
       "onde": [
        {
         "t": "Financeiro > Configurações > Boleto",
-        "marca": "codigo"
+        "marca": "tela"
        },
        {
         "t": " e "
        },
        {
         "t": "Financeiro > PIX",
-        "marca": "codigo"
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -1074,7 +1074,7 @@
       "onde": [
        {
         "t": "Financeiro > Extrato",
-        "marca": "codigo"
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -1093,21 +1093,21 @@
       "onde": [
        {
         "t": "Financeiro > Saldos",
-        "marca": "codigo"
+        "marca": "tela"
        },
        {
         "t": ", "
        },
        {
         "t": "Financeiro > Fluxo de Caixa",
-        "marca": "codigo"
+        "marca": "tela"
        },
        {
         "t": ", "
        },
        {
         "t": "Financeiro > DRE",
-        "marca": "codigo"
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -1436,7 +1436,7 @@
          },
          {
           "t": "Financeiro > Configurações",
-          "marca": "codigo"
+          "marca": "tela"
          },
          {
           "t": ". O saldo inicial entra só na carga, depois dos testes. "

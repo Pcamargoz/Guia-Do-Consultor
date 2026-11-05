@@ -249,7 +249,7 @@
       "onde": [
        {
         "t": "Vendas > Dashboard Vendas",
-        "marca": "codigo"
+        "marca": "tela"
        }
       ],
       "intro": null,
@@ -297,7 +297,7 @@
          },
          {
           "t": "Vendas > Demonstrativos > Carteira de Pedidos",
-          "marca": "codigo"
+          "marca": "tela"
          },
          {
           "t": ", ler A faturar, A expedir, Em carga, Expedido, Entregue e o aging por dias."
@@ -317,14 +317,14 @@
       "onde": [
        {
         "t": "Vendas > Metas de Vendas",
-        "marca": "codigo"
+        "marca": "tela"
        },
        {
         "t": " e "
        },
        {
         "t": "Vendas > Controle de Comissão",
-        "marca": "codigo"
+        "marca": "tela"
        }
       ],
       "intro": null,
@@ -385,7 +385,7 @@
       "onde": [
        {
         "t": "Vendas > Aprovações",
-        "marca": "codigo"
+        "marca": "tela"
        }
       ],
       "intro": null,
@@ -805,7 +805,7 @@
          },
          {
           "t": "Vendas > Dashboard Vendas",
-          "marca": "codigo"
+          "marca": "tela"
          }
         ]
        },
@@ -817,14 +817,14 @@
          },
          {
           "t": "Vendas > Metas de Vendas",
-          "marca": "codigo"
+          "marca": "tela"
          },
          {
           "t": " e "
          },
          {
           "t": "Vendas > Controle de Comissão",
-          "marca": "codigo"
+          "marca": "tela"
          }
         ]
        },
@@ -836,7 +836,7 @@
          },
          {
           "t": "Vendas > Aprovações",
-          "marca": "codigo"
+          "marca": "tela"
          }
         ]
        },
@@ -1871,14 +1871,14 @@
       "onde": [
        {
         "t": "Vendas > Configurações > Alçadas de Desconto",
-        "marca": "codigo"
+        "marca": "tela"
        },
        {
         "t": " e "
        },
        {
         "t": "Vendas > Aprovações",
-        "marca": "codigo"
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -2008,14 +2008,14 @@
        },
        {
         "t": "Vendas > Dashboard Vendas",
-        "marca": "codigo"
+        "marca": "tela"
        },
        {
         "t": " e "
        },
        {
         "t": "Vendas > Demonstrativos > Carteira de Pedidos",
-        "marca": "codigo"
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -2034,21 +2034,21 @@
       "onde": [
        {
         "t": "Vendas > Controle de Comissão",
-        "marca": "codigo"
+        "marca": "tela"
        },
        {
         "t": ", "
        },
        {
         "t": "Vendas > Metas de Vendas",
-        "marca": "codigo"
+        "marca": "tela"
        },
        {
         "t": " e "
        },
        {
         "t": "Vendas > Contratos de Fornecimento",
-        "marca": "codigo"
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -2329,7 +2329,7 @@
          },
          {
           "t": "Estoque > Locais",
-          "marca": "codigo"
+          "marca": "tela"
          },
          {
           "t": "."
@@ -2372,7 +2372,7 @@
          },
          {
           "t": "Vendas > Aprovações",
-          "marca": "codigo"
+          "marca": "tela"
          },
          {
           "t": ". O vendedor não aprova o próprio desconto. "
@@ -2801,7 +2801,7 @@
          },
          {
           "t": "Estoque > Movimentos",
-          "marca": "codigo"
+          "marca": "tela"
          },
          {
           "t": "."

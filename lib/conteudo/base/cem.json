@@ -86,7 +86,7 @@
       "onde": [
        {
         "t": "Vendas > Configurações > Configurar integração",
-        "marca": "codigo"
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -105,7 +105,7 @@
       "onde": [
        {
         "t": "Vendas > Configurações > Configurar integração",
-        "marca": "codigo"
+        "marca": "tela"
        },
        {
         "t": " (cards de pareamento ou "
@@ -134,7 +134,7 @@
       "onde": [
        {
         "t": "Vendas > Configurações > Padrões de Integração",
-        "marca": "codigo"
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -153,7 +153,7 @@
       "onde": [
        {
         "t": "Vendas > Pedidos de Venda > Importar CEM",
-        "marca": "codigo"
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -179,7 +179,7 @@
       "onde": [
        {
         "t": "Vendas > Pedidos de Venda > Importar CEM Mobi",
-        "marca": "codigo"
+        "marca": "tela"
        },
        {
         "t": " ou "
@@ -253,7 +253,7 @@
       "onde": [
        {
         "t": "Vendas > Pedidos de Venda > Importar CEM",
-        "marca": "codigo"
+        "marca": "tela"
        },
        {
         "t": " (ou "
@@ -282,7 +282,7 @@
       "onde": [
        {
         "t": "Vendas > Configurações > Configurar integração",
-        "marca": "codigo"
+        "marca": "tela"
        },
        {
         "t": " (card "
@@ -916,7 +916,7 @@
          },
          {
           "t": "Vendas > Integrações > Níveis de Faturamento",
-          "marca": "codigo"
+          "marca": "tela"
          },
          {
           "t": "; a gestora indica o grupo "
