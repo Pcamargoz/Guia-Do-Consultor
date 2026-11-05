@@ -1,14 +1,14 @@
 /* Gerador da base: regra "nada inventado" (toda informação cita fonte; sem fonte → em-preparacao),
    com fontes fictícias e, quando o Harness está disponível (HARNESS_DIR ou caminho padrão do box), com as fontes reais. */
 import assert from 'node:assert/strict';
-import { existsSync, readdirSync, statSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
 import { mkdtemp, mkdir, rm, writeFile } from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import { describe, it } from 'node:test';
 import { fileURLToPath } from 'node:url';
-import { carregarBaseCompleta, carregarConteudoModulo, carregarIndice } from '../../lib/conteudo/base.js';
-import { MODULOS } from '../../lib/conteudo/base/carregar.js';
+import { carregarBaseCompleta, carregarConteudoModulo, carregarIndice, criarCarregador, modulosEmCache } from '../../lib/conteudo/base.js';
+import { pathToFileURL } from 'node:url';
 import { carregarHarness, lerFrontmatter } from '../../lib/conteudo/fontes.js';
 import { MAPA_MODULOS, SECOES } from '../../lib/conteudo/mapa-modulos.js';
 import { duracaoEmSegundos, montarBase } from '../../lib/conteudo/montar.js';
@@ -103,16 +103,15 @@ describe('montarBase com fontes fictícias', () => {
     const outra = montarBase({ harness: harnessFicticio(), guia: guiaFicticio(), versao: VERSAO_FICTICIA, mapa: MAPA_FICTICIO });
     assert.deepEqual(serializarBase(outra), serializarBase(base));
   });
-  it('serializa em índice + um JSON por módulo + carregar.js com import() estático de cada um', () => {
+  it('serializa em índice + um JSON por módulo (v3: sem carregar.js nem import attributes)', () => {
     const arq = serializarBase(base);
-    assert.deepEqual(Object.keys(arq).sort(), ['LEIA-ME.md', 'carregar.js', 'estoque.json', 'indice.json', 'relatorios.json', 'vendas.json']);
+    assert.deepEqual(Object.keys(arq).sort(), ['LEIA-ME.md', 'estoque.json', 'indice.json', 'relatorios.json', 'vendas.json']);
     const indice = JSON.parse(arq['indice.json']);
     assert.deepEqual(indice, JSON.parse(JSON.stringify(indiceDaBase(base))));
     assert.ok(indice.modulos.every((m) => !('jornadas' in m) && !('retido' in m)));
     const vendas = JSON.parse(arq['vendas.json']);
     assert.deepEqual(Object.keys(vendas), ['versao', 'id', 'jornadas']);
     assert.ok('retido' in JSON.parse(arq['relatorios.json']));
-    for (const id of ['vendas', 'estoque', 'relatorios']) assert.ok(arq['carregar.js'].includes(`import('./${id}.json', { with: { type: 'json' } })`), id);
   });
   it('recusa id de módulo que viraria caminho de arquivo perigoso', () => {
     for (const id of ['../x', 'indice', 'A B']) assert.throws(() => serializarBase({ ...base, modulos: [{ ...base.modulos[0], id }] }), /inválido/, id);
@@ -158,8 +157,7 @@ describe('carregarHarness lê um Harness mínimo em pasta temporária', () => {
 describe('base versionada (lib/conteudo/base/)', () => {
   it('um arquivo por módulo + índice, e o resumo só precisa do índice (menor que a base)', () => {
     const nomes = readdirSync(PASTA_BASE).sort();
-    assert.deepEqual(nomes, [...MAPA_MODULOS.map((m) => `${m.id}.json`), 'LEIA-ME.md', 'carregar.js', 'indice.json'].sort());
-    assert.deepEqual(Object.keys(MODULOS), MAPA_MODULOS.map((m) => m.id));
+    assert.deepEqual(nomes, [...MAPA_MODULOS.map((m) => `${m.id}.json`), 'LEIA-ME.md', 'indice.json'].sort());
     const tam = (n) => statSync(path.join(PASTA_BASE, n)).size;
     const total = nomes.filter((n) => n.endsWith('.json')).reduce((a, n) => a + tam(n), 0);
     assert.ok(tam('indice.json') < total / 5, `índice ${tam('indice.json')} B de ${total} B`);
@@ -173,6 +171,58 @@ describe('base versionada (lib/conteudo/base/)', () => {
     assert.equal(vendas.jornadas.inicial.length, SECOES.inicial.length);
     for (const id of ['../indice', 'indice', 'nao-existe', '__proto__', 'constructor', 'toString', null, 1]) assert.equal(await carregarConteudoModulo(id), null, String(id));
     assert.equal(await carregarConteudoModulo('vendas'), vendas, 'cache por módulo');
+    assert.ok(modulosEmCache().includes('vendas'));
+  });
+  it('sem import attributes: base.js lê com readFileSync + JSON.parse e new URL(..., import.meta.url)', () => {
+    const fonte = readFileSync(path.join(RAIZ, 'lib/conteudo/base.js'), 'utf8');
+    assert.ok(!/with:\s*\{\s*type/.test(fonte) && !/assert:\s*\{\s*type/.test(fonte));
+    assert.ok(fonte.includes("readFileSync") && fonte.includes('JSON.parse') && fonte.includes("new URL('./base/', import.meta.url)"));
+    for (const n of readdirSync(PASTA_BASE)) assert.ok(!n.endsWith('.js'), n);
+  });
+  it('cache por módulo: cada arquivo é lido do disco uma vez só, e só quando pedido', async () => {
+    const lidos = [];
+    const c = criarCarregador({ pasta: pathToFileURL(PASTA_BASE + path.sep), ler: (url) => { lidos.push(path.basename(fileURLToPath(url))); return readFileSync(url, 'utf8'); } });
+    await c.carregarIndice();
+    await c.carregarIndice();
+    assert.deepEqual(lidos, ['indice.json']);
+    const a = await c.carregarConteudoModulo('estoque');
+    const b = await c.carregarConteudoModulo('estoque');
+    assert.equal(a, b);
+    await c.carregarConteudoModulo('vendas');
+    assert.deepEqual(lidos, ['indice.json', 'estoque.json', 'vendas.json']);
+    assert.deepEqual(c.emCache(), ['estoque', 'vendas']);
+  });
+  it('path traversal: id é conferido contra o indice.json antes de montar o caminho (nada fora da lista toca o disco)', async () => {
+    const tmp = await mkdtemp(path.join(os.tmpdir(), 'base-trav-'));
+    try {
+      const pasta = path.join(tmp, 'base');
+      await mkdir(pasta);
+      await writeFile(path.join(pasta, 'indice.json'), JSON.stringify({ versao: 'x', modulos: [{ id: 'vendas' }, { id: '../segredo' }, { id: 'indice' }] }));
+      await writeFile(path.join(pasta, 'vendas.json'), JSON.stringify({ versao: 'x', id: 'vendas', jornadas: {} }));
+      await writeFile(path.join(pasta, 'extra.json'), JSON.stringify({ versao: 'x', id: 'extra', jornadas: {} })); // existe na pasta, mas não no índice
+      await writeFile(path.join(tmp, 'segredo.json'), JSON.stringify({ id: '../segredo', segredo: true }));
+      const lidos = [];
+      const c = criarCarregador({ pasta: pathToFileURL(pasta + path.sep), ler: (url) => { lidos.push(fileURLToPath(url)); return readFileSync(url, 'utf8'); } });
+      const tentativas = ['../segredo', '..%2Fsegredo', '../base/vendas', './vendas', 'vendas/../../segredo', '/etc/passwd', 'C:\\x', 'indice', 'extra', 'VENDAS', 'vendas.json', 'vendas\u0000', '__proto__', 'constructor', '', ' ', null, undefined, 1, {}, ['vendas']];
+      for (const id of tentativas) assert.equal(await c.carregarConteudoModulo(id), null, String(id));
+      assert.deepEqual(lidos.map((f) => path.relative(tmp, f)), [path.join('base', 'indice.json')]);
+      assert.equal((await c.carregarConteudoModulo('vendas')).id, 'vendas');
+      assert.ok(lidos.every((f) => f.startsWith(pasta + path.sep)));
+    } finally {
+      await rm(tmp, { recursive: true, force: true });
+    }
+  });
+  it('arquivo de módulo que não confere com o índice é recusado (e não fica em cache)', async () => {
+    const tmp = await mkdtemp(path.join(os.tmpdir(), 'base-conf-'));
+    try {
+      await writeFile(path.join(tmp, 'indice.json'), JSON.stringify({ versao: 'x', modulos: [{ id: 'vendas' }] }));
+      await writeFile(path.join(tmp, 'vendas.json'), JSON.stringify({ versao: 'x', id: 'estoque', jornadas: {} }));
+      const c = criarCarregador({ pasta: pathToFileURL(tmp + path.sep) });
+      await assert.rejects(c.carregarConteudoModulo('vendas'), /não confere/);
+      assert.deepEqual(c.emCache(), []);
+    } finally {
+      await rm(tmp, { recursive: true, force: true });
+    }
   });
   it('Relatórios e Alumina: em preparação, com a semente guardada em "retido"', () => {
     for (const id of ['relatorios', 'alumina']) {
@@ -185,9 +235,22 @@ describe('base versionada (lib/conteudo/base/)', () => {
     }
     assert.equal(BASE.modulos.filter((m) => m.em_preparacao).map((m) => m.id).join(), 'relatorios,alumina');
   });
-  it('nenhum texto da base servida tem HTML, Markdown leve ou href inseguro', () => {
-    const servido = JSON.stringify(BASE.modulos.map(({ retido, ...m }) => m));
-    for (const proibido of ['<', '**', '`', 'javascript:']) assert.equal(servido.includes(proibido), false, proibido);
+  it('nenhum arquivo da base gerada tem crase, HTML, Markdown leve ou href inseguro (inclusive "retido")', () => {
+    for (const n of readdirSync(PASTA_BASE).filter((x) => x.endsWith('.json'))) {
+      const texto = readFileSync(path.join(PASTA_BASE, n), 'utf8');
+      for (const proibido of ['`', '<', '**', 'javascript:']) assert.equal(texto.includes(proibido), false, `${n} tem ${proibido}`);
+    }
+  });
+  it('crases do Harness viraram marcas: "tela" (glossário de telas) e "codigo" (o resto)', () => {
+    const marcas = {};
+    const contar = (v) => {
+      if (Array.isArray(v)) v.forEach(contar);
+      else if (v && typeof v === 'object') { if (typeof v.t === 'string' && v.marca) marcas[v.marca] = (marcas[v.marca] || 0) + 1; Object.values(v).forEach(contar); }
+    };
+    contar(BASE.modulos.map(({ retido, ...m }) => m));
+    assert.ok(marcas.tela > 0 && marcas.codigo > 0, JSON.stringify(marcas));
+    const vendas = JSON.stringify(BASE.modulos.find((m) => m.id === 'vendas').jornadas);
+    assert.ok(vendas.includes('{"t":"Vendas > Pedidos de Venda","marca":"tela"}'));
   });
   it('tem os 19 módulos do mapa e respeita o contrato', () => {
     assert.deepEqual(BASE.modulos.map((m) => m.id), MAPA_MODULOS.map((m) => m.id));

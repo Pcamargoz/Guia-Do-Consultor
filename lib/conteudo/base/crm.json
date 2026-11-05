@@ -54,7 +54,11 @@
       "titulo": "1. Preparar seus dados: cadastrar leads de treino",
       "onde": [
        {
-        "t": "botão Novo Lead"
+        "t": "botão "
+       },
+       {
+        "t": "Novo Lead",
+        "marca": "codigo"
        }
       ],
       "intro": [
@@ -141,7 +145,14 @@
        {
         "texto": [
          {
-          "t": "Clicar em Salvar."
+          "t": "Clicar em "
+         },
+         {
+          "t": "Salvar",
+          "marca": "codigo"
+         },
+         {
+          "t": "."
          }
         ],
         "nota": [
@@ -197,7 +208,8 @@
       "titulo": "2. Entender o funil",
       "onde": [
        {
-        "t": "CRM > Painéis > Visão Geral"
+        "t": "CRM > Painéis > Visão Geral",
+        "marca": "codigo"
        }
       ],
       "intro": null,
@@ -234,7 +246,8 @@
       "titulo": "3. Consultar leads",
       "onde": [
        {
-        "t": "CRM > Vendas > Leads > Lista de Leads"
+        "t": "CRM > Vendas > Leads > Lista de Leads",
+        "marca": "codigo"
        }
       ],
       "intro": [
@@ -282,7 +295,14 @@
        {
         "texto": [
          {
-          "t": "Abrir o menu ⋮ de um lead e reconhecer: Converter, Histórico, Tags, Atividades, Desqualificar e Excluir. Feche com Esc."
+          "t": "Abrir o menu "
+         },
+         {
+          "t": "⋮",
+          "marca": "codigo"
+         },
+         {
+          "t": " de um lead e reconhecer: Converter, Histórico, Tags, Atividades, Desqualificar e Excluir. Feche com Esc."
          }
         ],
         "nota": null,
@@ -298,7 +318,8 @@
       "titulo": "4. Movimentar o lead no Kanban",
       "onde": [
        {
-        "t": "CRM > Vendas > Leads > Kanban de Leads"
+        "t": "CRM > Vendas > Leads > Kanban de Leads",
+        "marca": "codigo"
        }
       ],
       "intro": null,
@@ -342,7 +363,14 @@
       "titulo": "5. Entender a conversão (com o supervisor)",
       "onde": [
        {
-        "t": "menu ⋮ > Converter do lead"
+        "t": "menu "
+       },
+       {
+        "t": "⋮ > Converter",
+        "marca": "codigo"
+       },
+       {
+        "t": " do lead"
        }
       ],
       "intro": null,
@@ -377,7 +405,14 @@
        {
         "texto": [
          {
-          "t": "Ver com o supervisor onde o BANT é preenchido: Editar Lead > Budget Estimado e as chaves Autoridade, Necessidade e Prazo/timeline."
+          "t": "Ver com o supervisor onde o BANT é preenchido: "
+         },
+         {
+          "t": "Editar Lead",
+          "marca": "codigo"
+         },
+         {
+          "t": " > Budget Estimado e as chaves Autoridade, Necessidade e Prazo/timeline."
          }
         ],
         "nota": null,
@@ -420,7 +455,15 @@
       "titulo": "6. Oportunidades e atividades",
       "onde": [
        {
-        "t": "CRM > Vendas > Pipeline e CRM > Vendas > Atividades"
+        "t": "CRM > Vendas > Pipeline",
+        "marca": "tela"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "CRM > Vendas > Atividades",
+        "marca": "codigo"
        }
       ],
       "intro": null,
@@ -582,7 +625,6 @@
       "url": "/checklists/estagiarios/03-crm-leads-oportunidades.html",
       "duracao_s": null,
       "poster": null,
-      "legenda": null,
       "resumo": null,
       "fontes": [
        "guia:scripts/dados-checklists-estagiarios.mjs#crm"
@@ -614,7 +656,11 @@
         "id": "acessar-1",
         "texto": [
          {
-          "t": "Sei acessar: botão Novo Lead"
+          "t": "Sei acessar: botão "
+         },
+         {
+          "t": "Novo Lead",
+          "marca": "codigo"
          }
         ]
        },
@@ -622,7 +668,11 @@
         "id": "acessar-2",
         "texto": [
          {
-          "t": "Sei acessar: CRM > Painéis > Visão Geral"
+          "t": "Sei acessar: "
+         },
+         {
+          "t": "CRM > Painéis > Visão Geral",
+          "marca": "codigo"
          }
         ]
        },
@@ -630,7 +680,11 @@
         "id": "acessar-3",
         "texto": [
          {
-          "t": "Sei acessar: CRM > Vendas > Leads > Lista de Leads"
+          "t": "Sei acessar: "
+         },
+         {
+          "t": "CRM > Vendas > Leads > Lista de Leads",
+          "marca": "codigo"
          }
         ]
        },
@@ -638,7 +692,11 @@
         "id": "acessar-4",
         "texto": [
          {
-          "t": "Sei acessar: CRM > Vendas > Leads > Kanban de Leads"
+          "t": "Sei acessar: "
+         },
+         {
+          "t": "CRM > Vendas > Leads > Kanban de Leads",
+          "marca": "codigo"
          }
         ]
        },
@@ -646,7 +704,14 @@
         "id": "acessar-5",
         "texto": [
          {
-          "t": "Sei acessar: menu ⋮ > Converter do lead"
+          "t": "Sei acessar: menu "
+         },
+         {
+          "t": "⋮ > Converter",
+          "marca": "codigo"
+         },
+         {
+          "t": " do lead"
          }
         ]
        },
@@ -654,7 +719,18 @@
         "id": "acessar-6",
         "texto": [
          {
-          "t": "Sei acessar: CRM > Vendas > Pipeline e CRM > Vendas > Atividades"
+          "t": "Sei acessar: "
+         },
+         {
+          "t": "CRM > Vendas > Pipeline",
+          "marca": "tela"
+         },
+         {
+          "t": " e "
+         },
+         {
+          "t": "CRM > Vendas > Atividades",
+          "marca": "codigo"
          }
         ]
        },
@@ -800,7 +876,14 @@
         "marca": "negrito"
        },
        {
-        "t": ". Menu ⋯ do lead: Converter, Histórico, Tags, Atividades, Desqualificar e Excluir."
+        "t": ". Menu "
+       },
+       {
+        "t": "⋯",
+        "marca": "codigo"
+       },
+       {
+        "t": " do lead: Converter, Histórico, Tags, Atividades, Desqualificar e Excluir."
        }
       ],
       "fontes": [
@@ -1125,7 +1208,8 @@
       "titulo": "1. Cadastro do lead",
       "onde": [
        {
-        "t": "CRM > Vendas > Leads > Novo Lead"
+        "t": "CRM > Vendas > Leads > Novo Lead",
+        "marca": "codigo"
        }
       ],
       "intro": [
@@ -1143,7 +1227,15 @@
       "titulo": "2. Qualificação: BANT e Kanban de Leads",
       "onde": [
        {
-        "t": "Editar Lead > Informações CRM e CRM > Vendas > Leads > Kanban de Leads"
+        "t": "Editar Lead > Informações CRM",
+        "marca": "codigo"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "CRM > Vendas > Leads > Kanban de Leads",
+        "marca": "codigo"
        }
       ],
       "intro": [
@@ -1161,7 +1253,15 @@
       "titulo": "3. Conversão do lead",
       "onde": [
        {
-        "t": "CRM > Vendas > Leads > ⋮ > Converter"
+        "t": "CRM > Vendas > Leads",
+        "marca": "tela"
+       },
+       {
+        "t": " > "
+       },
+       {
+        "t": "⋮ > Converter",
+        "marca": "codigo"
        }
       ],
       "intro": [
@@ -1179,7 +1279,11 @@
       "titulo": "4. Oportunidade no Pipeline: itens, atividades e etapas",
       "onde": [
        {
-        "t": "CRM > Vendas > Pipeline > clique no card"
+        "t": "CRM > Vendas > Pipeline",
+        "marca": "tela"
+       },
+       {
+        "t": " > clique no card"
        }
       ],
       "intro": [
@@ -1197,7 +1301,18 @@
       "titulo": "5. Ganhar (e perder) a oportunidade",
       "onde": [
        {
-        "t": "CRM > Vendas > Pipeline > painel da oportunidade ou ⋯ do card"
+        "t": "CRM > Vendas > Pipeline",
+        "marca": "tela"
+       },
+       {
+        "t": " > painel da oportunidade ou "
+       },
+       {
+        "t": "⋯",
+        "marca": "codigo"
+       },
+       {
+        "t": " do card"
        }
       ],
       "intro": [
@@ -1215,7 +1330,11 @@
       "titulo": "6. Gerar o pedido de venda",
       "onde": [
        {
-        "t": "painel da oportunidade ganha > Gerar Pedido de Venda"
+        "t": "painel da oportunidade ganha > "
+       },
+       {
+        "t": "Gerar Pedido de Venda",
+        "marca": "codigo"
        }
       ],
       "intro": [
@@ -1233,7 +1352,22 @@
       "titulo": "7. Resultado nos painéis do CRM",
       "onde": [
        {
-        "t": "CRM > Painéis, CRM > Visão Geral e Clientes > Visão 360°"
+        "t": "CRM > Painéis",
+        "marca": "codigo"
+       },
+       {
+        "t": ", "
+       },
+       {
+        "t": "CRM > Visão Geral",
+        "marca": "codigo"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "Clientes > Visão 360°",
+        "marca": "codigo"
        }
       ],
       "intro": [
@@ -1262,7 +1396,14 @@
       "rotulo": "Implantação de CRM: roteiro prático com o cliente",
       "texto": [
        {
-        "t": "Ao final, o cliente terá visto um lead virar oportunidade, a oportunidade ganha virar pedido de venda em Vendas > Pedidos de Venda e o resultado aparecer nos painéis do CRM. Ele saberá repetir o caminho e conhecerá as três travas do fluxo: BANT e etapa de 60% para converter, item para ganhar e CFOP para gerar o pedido."
+        "t": "Ao final, o cliente terá visto um lead virar oportunidade, a oportunidade ganha virar pedido de venda em "
+       },
+       {
+        "t": "Vendas > Pedidos de Venda",
+        "marca": "tela"
+       },
+       {
+        "t": " e o resultado aparecer nos painéis do CRM. Ele saberá repetir o caminho e conhecerá as três travas do fluxo: BANT e etapa de 60% para converter, item para ganhar e CFOP para gerar o pedido."
        }
       ],
       "fontes": [
@@ -1398,7 +1539,6 @@
       "url": "/checklists/consultores/implantacao-02-crm.html",
       "duracao_s": null,
       "poster": null,
-      "legenda": null,
       "resumo": null,
       "fontes": [
        "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
@@ -1454,7 +1594,14 @@
           "marca": "negrito"
          },
          {
-          "t": " CRM > Configurações e remova etapas de teste esquecidas no fim do funil. "
+          "t": " "
+         },
+         {
+          "t": "CRM > Configurações",
+          "marca": "codigo"
+         },
+         {
+          "t": " e remova etapas de teste esquecidas no fim do funil. "
          },
          {
           "t": "Fonte:",
@@ -1515,7 +1662,14 @@
           "marca": "negrito"
          },
          {
-          "t": " Cadastros > Produtos. "
+          "t": " "
+         },
+         {
+          "t": "Cadastros > Produtos",
+          "marca": "tela"
+         },
+         {
+          "t": ". "
          },
          {
           "t": "Fonte:",
@@ -1942,7 +2096,14 @@
        {
         "texto": [
          {
-          "t": "Como ganhar: o manual-02-crm (2.5) indica ⋯ do card > Marcar como Ganha, com a mensagem \"Oportunidade marcada como ganha!\" e a exigência de ao menos um item; o Fluxo comercial registra o botão "
+          "t": "Como ganhar: o manual-02-crm (2.5) indica "
+         },
+         {
+          "t": "⋯ do card > Marcar como Ganha",
+          "marca": "codigo"
+         },
+         {
+          "t": ", com a mensagem \"Oportunidade marcada como ganha!\" e a exigência de ao menos um item; o Fluxo comercial registra o botão "
          },
          {
           "t": "Ganha",
@@ -1994,7 +2155,7 @@
       "url": "/videos/consultor-03-comercial.mp4",
       "duracao_s": 220,
       "poster": "/videos/consultor-03-comercial.jpg",
-      "legenda": "/videos/consultor-03-comercial.vtt",
+      "legendas_url": "/videos/consultor-03-comercial.vtt",
       "resumo": [
        {
         "t": "As quatro regras que travam o CRM e o caminho real, do Kanban à oportunidade ganha."
@@ -2024,7 +2185,6 @@
       "url": "/checklists/estagiarios/03-crm-leads-oportunidades.html",
       "duracao_s": null,
       "poster": null,
-      "legenda": null,
       "resumo": null,
       "fontes": [
        "guia:scripts/dados-checklists-estagiarios.mjs#crm"
@@ -2038,7 +2198,6 @@
       "url": "/checklists/consultores/implantacao-02-crm.html",
       "duracao_s": null,
       "poster": null,
-      "legenda": null,
       "resumo": null,
       "fontes": [
        "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"

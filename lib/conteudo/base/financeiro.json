@@ -50,7 +50,7 @@
       "url": "/videos/consultor-08-financeiro.mp4",
       "duracao_s": 184,
       "poster": "/videos/consultor-08-financeiro.jpg",
-      "legenda": "/videos/consultor-08-financeiro.vtt",
+      "legendas_url": "/videos/consultor-08-financeiro.vtt",
       "resumo": [
        {
         "t": "Gerar os títulos, receber e ler o fluxo de caixa."
@@ -199,7 +199,18 @@
       "titulo": "1. Preparar seus dados: gerar os títulos do seu pedido",
       "onde": [
        {
-        "t": "menu ⋯ > Gerar Títulos do pedido e Financeiro > Contas a Receber"
+        "t": "menu "
+       },
+       {
+        "t": "⋯ > Gerar Títulos",
+        "marca": "codigo"
+       },
+       {
+        "t": " do pedido e "
+       },
+       {
+        "t": "Financeiro > Contas a Receber",
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -232,7 +243,14 @@
        {
         "texto": [
          {
-          "t": "No seu pedido, abrir ⋯ > Gerar Títulos e confirmar."
+          "t": "No seu pedido, abrir "
+         },
+         {
+          "t": "⋯ > Gerar Títulos",
+          "marca": "codigo"
+         },
+         {
+          "t": " e confirmar."
          }
         ],
         "nota": [
@@ -245,7 +263,14 @@
        {
         "texto": [
          {
-          "t": "Abrir Financeiro > Contas a Receber, limpar o filtro "
+          "t": "Abrir "
+         },
+         {
+          "t": "Financeiro > Contas a Receber",
+          "marca": "tela"
+         },
+         {
+          "t": ", limpar o filtro "
          },
          {
           "t": "Status",
@@ -282,7 +307,6 @@
       "url": "/checklists/estagiarios/13-financeiro.html",
       "duracao_s": null,
       "poster": null,
-      "legenda": null,
       "resumo": null,
       "fontes": [
        "guia:scripts/dados-checklists-estagiarios.mjs#financeiro"
@@ -296,7 +320,6 @@
       "url": "/checklists/estagiarios/fluxo-principal-financeiro.html",
       "duracao_s": null,
       "poster": null,
-      "legenda": null,
       "resumo": null,
       "fontes": [
        "guia:scripts/dados-fluxos-estagiarios.mjs#fluxo-financeiro-estagiario"
@@ -329,7 +352,18 @@
         "id": "acessar-1",
         "texto": [
          {
-          "t": "Sei acessar: menu ⋯ > Gerar Títulos do pedido e Financeiro > Contas a Receber"
+          "t": "Sei acessar: menu "
+         },
+         {
+          "t": "⋯ > Gerar Títulos",
+          "marca": "codigo"
+         },
+         {
+          "t": " do pedido e "
+         },
+         {
+          "t": "Financeiro > Contas a Receber",
+          "marca": "tela"
          }
         ]
        },
@@ -337,7 +371,18 @@
         "id": "acessar-2",
         "texto": [
          {
-          "t": "Sei acessar: Financeiro > Contas a Receber e Contas a Pagar"
+          "t": "Sei acessar: "
+         },
+         {
+          "t": "Financeiro > Contas a Receber",
+          "marca": "tela"
+         },
+         {
+          "t": " e "
+         },
+         {
+          "t": "Contas a Pagar",
+          "marca": "tela"
          }
         ]
        },
@@ -530,7 +575,14 @@
         "marca": "negrito"
        },
        {
-        "t": " mostra a nota. O menu ⋯ do pedido faturado troca o "
+        "t": " mostra a nota. O menu "
+       },
+       {
+        "t": "⋯",
+        "marca": "codigo"
+       },
+       {
+        "t": " do pedido faturado troca o "
        },
        {
         "t": "Gerar Títulos",
@@ -542,7 +594,14 @@
       ],
       "confirmar": [
        {
-        "t": "Faturamento › Notas Fiscais › ⋯ › Finalizar NF; depois Financeiro › Contas a Receber (pesquisar \"NF - ‹número›\") e Vendas › Pedidos de Venda (limpar o filtro Status)."
+        "t": "Faturamento › Notas Fiscais › "
+       },
+       {
+        "t": "⋯",
+        "marca": "codigo"
+       },
+       {
+        "t": " › Finalizar NF; depois Financeiro › Contas a Receber (pesquisar \"NF - ‹número›\") e Vendas › Pedidos de Venda (limpar o filtro Status)."
        }
       ],
       "confianca": "B",
@@ -772,7 +831,14 @@
       "titulo": "Quando Gerar Títulos está habilitado no pedido",
       "texto": [
        {
-        "t": "No menu ⋯ do pedido, "
+        "t": "No menu "
+       },
+       {
+        "t": "⋯",
+        "marca": "codigo"
+       },
+       {
+        "t": " do pedido, "
        },
        {
         "t": "Gerar Títulos",
@@ -812,7 +878,14 @@
       ],
       "confirmar": [
        {
-        "t": "Vendas › Pedidos de Venda › menu ⋯ e coluna TÍTULOS (Gerados / Sem títulos)."
+        "t": "Vendas › Pedidos de Venda › menu "
+       },
+       {
+        "t": "⋯",
+        "marca": "codigo"
+       },
+       {
+        "t": " e coluna TÍTULOS (Gerados / Sem títulos)."
        }
       ],
       "confianca": "B",
@@ -858,7 +931,15 @@
       "titulo": "1. Contas, meios de pagamento e plano de contas",
       "onde": [
        {
-        "t": "Financeiro > Configurações (Contas Bancárias, Meios de Pagamento, Planos de Conta) e Financeiro > Saldos"
+        "t": "Financeiro > Configurações",
+        "marca": "codigo"
+       },
+       {
+        "t": " (Contas Bancárias, Meios de Pagamento, Planos de Conta) e "
+       },
+       {
+        "t": "Financeiro > Saldos",
+        "marca": "codigo"
        }
       ],
       "intro": [
@@ -876,7 +957,15 @@
       "titulo": "2. Títulos nascendo do pedido",
       "onde": [
        {
-        "t": "Vendas > Pedidos de Venda, menu ⋯ > Gerar Títulos"
+        "t": "Vendas > Pedidos de Venda",
+        "marca": "tela"
+       },
+       {
+        "t": ", menu "
+       },
+       {
+        "t": "⋯ > Gerar Títulos",
+        "marca": "codigo"
        }
       ],
       "intro": [
@@ -894,7 +983,8 @@
       "titulo": "3. Títulos nascendo da nota",
       "onde": [
        {
-        "t": "Financeiro > Contas a Receber"
+        "t": "Financeiro > Contas a Receber",
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -912,7 +1002,11 @@
       "titulo": "4. Receber: total e parcial",
       "onde": [
        {
-        "t": "Financeiro > Contas a Receber, ação "
+        "t": "Financeiro > Contas a Receber",
+        "marca": "tela"
+       },
+       {
+        "t": ", ação "
        },
        {
         "t": "Receber",
@@ -934,7 +1028,15 @@
       "titulo": "5. Boleto e PIX em homologação (quando contratados)",
       "onde": [
        {
-        "t": "Financeiro > Configurações > Boleto e Financeiro > PIX"
+        "t": "Financeiro > Configurações > Boleto",
+        "marca": "codigo"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "Financeiro > PIX",
+        "marca": "codigo"
        }
       ],
       "intro": [
@@ -952,7 +1054,8 @@
       "titulo": "6. Contas a pagar vindas da compra",
       "onde": [
        {
-        "t": "Financeiro > Contas a Pagar"
+        "t": "Financeiro > Contas a Pagar",
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -970,7 +1073,8 @@
       "titulo": "7. Extrato e conciliação",
       "onde": [
        {
-        "t": "Financeiro > Extrato"
+        "t": "Financeiro > Extrato",
+        "marca": "codigo"
        }
       ],
       "intro": [
@@ -988,7 +1092,22 @@
       "titulo": "8. Saldos, fluxo de caixa e DRE",
       "onde": [
        {
-        "t": "Financeiro > Saldos, Financeiro > Fluxo de Caixa, Financeiro > DRE"
+        "t": "Financeiro > Saldos",
+        "marca": "codigo"
+       },
+       {
+        "t": ", "
+       },
+       {
+        "t": "Financeiro > Fluxo de Caixa",
+        "marca": "codigo"
+       },
+       {
+        "t": ", "
+       },
+       {
+        "t": "Financeiro > DRE",
+        "marca": "codigo"
        }
       ],
       "intro": [
@@ -1006,7 +1125,11 @@
       "titulo": "9. Estorno e exclusão",
       "onde": [
        {
-        "t": "Financeiro > Contas a Receber, ações "
+        "t": "Financeiro > Contas a Receber",
+        "marca": "tela"
+       },
+       {
+        "t": ", ações "
        },
        {
         "t": "Estornar",
@@ -1210,7 +1333,6 @@
       "url": "/checklists/consultores/implantacao-07-financeiro.html",
       "duracao_s": null,
       "poster": null,
-      "legenda": null,
       "resumo": null,
       "fontes": [
        "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
@@ -1246,7 +1368,14 @@
        {
         "texto": [
          {
-          "t": "Módulo financeiro contratado; versão "
+          "t": "Módulo "
+         },
+         {
+          "t": "financeiro",
+          "marca": "codigo"
+         },
+         {
+          "t": " contratado; versão "
          },
          {
           "t": "PRO",
@@ -1262,7 +1391,14 @@
           "marca": "negrito"
          },
          {
-          "t": " menus sem cadeado em Financeiro. Sem o módulo, nenhuma nota gera título. "
+          "t": " menus sem cadeado em "
+         },
+         {
+          "t": "Financeiro",
+          "marca": "codigo"
+         },
+         {
+          "t": ". Sem o módulo, nenhuma nota gera título. "
          },
          {
           "t": "Fonte:",
@@ -1296,7 +1432,14 @@
           "marca": "negrito"
          },
          {
-          "t": " Financeiro > Configurações. O saldo inicial entra só na carga, depois dos testes. "
+          "t": " "
+         },
+         {
+          "t": "Financeiro > Configurações",
+          "marca": "codigo"
+         },
+         {
+          "t": ". O saldo inicial entra só na carga, depois dos testes. "
          },
          {
           "t": "Fonte:",
@@ -1640,7 +1783,14 @@
        {
         "texto": [
          {
-          "t": "Baixa parcial cria o residual /002: não é duplicidade."
+          "t": "Baixa parcial cria o residual "
+         },
+         {
+          "t": "/002",
+          "marca": "codigo"
+         },
+         {
+          "t": ": não é duplicidade."
          }
         ],
         "nota": null,
@@ -1818,7 +1968,7 @@
       "url": "/videos/consultor-08-financeiro.mp4",
       "duracao_s": 184,
       "poster": "/videos/consultor-08-financeiro.jpg",
-      "legenda": "/videos/consultor-08-financeiro.vtt",
+      "legendas_url": "/videos/consultor-08-financeiro.vtt",
       "resumo": [
        {
         "t": "Gerar os títulos, receber e ler o fluxo de caixa."
@@ -1848,7 +1998,6 @@
       "url": "/checklists/estagiarios/13-financeiro.html",
       "duracao_s": null,
       "poster": null,
-      "legenda": null,
       "resumo": null,
       "fontes": [
        "guia:scripts/dados-checklists-estagiarios.mjs#financeiro"
@@ -1862,7 +2011,6 @@
       "url": "/checklists/estagiarios/fluxo-principal-financeiro.html",
       "duracao_s": null,
       "poster": null,
-      "legenda": null,
       "resumo": null,
       "fontes": [
        "guia:scripts/dados-fluxos-estagiarios.mjs#fluxo-financeiro-estagiario"
@@ -1876,7 +2024,6 @@
       "url": "/checklists/consultores/implantacao-07-financeiro.html",
       "duracao_s": null,
       "poster": null,
-      "legenda": null,
       "resumo": null,
       "fontes": [
        "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"

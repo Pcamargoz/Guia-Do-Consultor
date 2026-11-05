@@ -132,7 +132,14 @@
        {
         "texto": [
          {
-          "t": "Abrir GLOBAIS > Treinamento > Minhas Trilhas e ver se há trilha obrigatória para você."
+          "t": "Abrir "
+         },
+         {
+          "t": "GLOBAIS > Treinamento > Minhas Trilhas",
+          "marca": "codigo"
+         },
+         {
+          "t": " e ver se há trilha obrigatória para você."
          }
         ],
         "nota": [
@@ -152,7 +159,11 @@
       "titulo": "1. Entrar e conferir onde você está",
       "onde": [
        {
-        "t": "tela Início"
+        "t": "tela "
+       },
+       {
+        "t": "Início",
+        "marca": "codigo"
        }
       ],
       "intro": null,
@@ -180,7 +191,14 @@
        {
         "texto": [
          {
-          "t": "Conferir a versão do sistema no rodapé do menu lateral (ex.: Faktory Flow v1.22.11)."
+          "t": "Conferir a versão do sistema no rodapé do menu lateral (ex.: "
+         },
+         {
+          "t": "Faktory Flow v1.22.11",
+          "marca": "codigo"
+         },
+         {
+          "t": ")."
          }
         ],
         "nota": null,
@@ -189,7 +207,28 @@
        {
         "texto": [
          {
-          "t": "Ler os blocos da tela Início: Alertas urgentes, Tarefas do dia e Resumo do negócio."
+          "t": "Ler os blocos da tela Início: "
+         },
+         {
+          "t": "Alertas urgentes",
+          "marca": "codigo"
+         },
+         {
+          "t": ", "
+         },
+         {
+          "t": "Tarefas do dia",
+          "marca": "codigo"
+         },
+         {
+          "t": " e "
+         },
+         {
+          "t": "Resumo do negócio",
+          "marca": "codigo"
+         },
+         {
+          "t": "."
          }
         ],
         "nota": [
@@ -218,7 +257,14 @@
       "titulo": "2. Trocar de módulo",
       "onde": [
        {
-        "t": "botão de grade Abrir menu de módulos (canto superior esquerdo)"
+        "t": "botão de grade "
+       },
+       {
+        "t": "Abrir menu de módulos",
+        "marca": "codigo"
+       },
+       {
+        "t": " (canto superior esquerdo)"
        }
       ],
       "intro": null,
@@ -226,7 +272,14 @@
        {
         "texto": [
          {
-          "t": "Abrir o menu de módulos, digitar o nome em Buscar módulo... e escolher."
+          "t": "Abrir o menu de módulos, digitar o nome em "
+         },
+         {
+          "t": "Buscar módulo...",
+          "marca": "codigo"
+         },
+         {
+          "t": " e escolher."
          }
         ],
         "nota": [
@@ -248,7 +301,14 @@
        {
         "texto": [
          {
-          "t": "Abrir os grupos com seta (>) do menu lateral: Configurações, Relatórios e Tabelas Dinâmicas vêm fechados e escondem telas."
+          "t": "Abrir os grupos com seta ("
+         },
+         {
+          "t": ">",
+          "marca": "codigo"
+         },
+         {
+          "t": ") do menu lateral: Configurações, Relatórios e Tabelas Dinâmicas vêm fechados e escondem telas."
          }
         ],
         "nota": null,
@@ -257,7 +317,21 @@
        {
         "texto": [
          {
-          "t": "Usar Recolher menu (seta ‹) quando precisar de mais espaço para uma lista."
+          "t": "Usar "
+         },
+         {
+          "t": "Recolher menu",
+          "marca": "codigo"
+         },
+         {
+          "t": " (seta "
+         },
+         {
+          "t": "‹",
+          "marca": "codigo"
+         },
+         {
+          "t": ") quando precisar de mais espaço para uma lista."
          }
         ],
         "nota": null,
@@ -273,7 +347,14 @@
       "titulo": "3. Achar uma tela pela busca",
       "onde": [
        {
-        "t": "campo Pesquisar funcionalidades... ou Ctrl+K"
+        "t": "campo "
+       },
+       {
+        "t": "Pesquisar funcionalidades...",
+        "marca": "codigo"
+       },
+       {
+        "t": " ou Ctrl+K"
        }
       ],
       "intro": null,
@@ -317,7 +398,11 @@
       "titulo": "4. Ler uma lista",
       "onde": [
        {
-        "t": "qualquer lista, por exemplo Vendas > Pedidos de Venda"
+        "t": "qualquer lista, por exemplo "
+       },
+       {
+        "t": "Vendas > Pedidos de Venda",
+        "marca": "tela"
        }
       ],
       "intro": null,
@@ -325,7 +410,28 @@
        {
         "texto": [
          {
-          "t": "Identificar os botões do topo: Mais... (Colunas e Exportar para Excel), Filtros e + Novo."
+          "t": "Identificar os botões do topo: "
+         },
+         {
+          "t": "Mais...",
+          "marca": "codigo"
+         },
+         {
+          "t": " (Colunas e Exportar para Excel), "
+         },
+         {
+          "t": "Filtros",
+          "marca": "codigo"
+         },
+         {
+          "t": " e "
+         },
+         {
+          "t": "+ Novo",
+          "marca": "codigo"
+         },
+         {
+          "t": "."
          }
         ],
         "nota": null,
@@ -354,7 +460,21 @@
        {
         "texto": [
          {
-          "t": "Usar Pesquisar..., a paginação (\"Exibindo 1 a N de N itens\") e o botão Atualizar Página."
+          "t": "Usar "
+         },
+         {
+          "t": "Pesquisar...",
+          "marca": "codigo"
+         },
+         {
+          "t": ", a paginação (\"Exibindo 1 a N de N itens\") e o botão "
+         },
+         {
+          "t": "Atualizar Página",
+          "marca": "codigo"
+         },
+         {
+          "t": "."
          }
         ],
         "nota": null,
@@ -363,7 +483,21 @@
        {
         "texto": [
          {
-          "t": "Abrir o menu ... ou ⋮ de uma linha e separar o que é consulta (Histórico, Ver Timeline) do que altera dados (Excluir, Converter, Finalizar). Feche com Esc sem clicar."
+          "t": "Abrir o menu "
+         },
+         {
+          "t": "...",
+          "marca": "codigo"
+         },
+         {
+          "t": " ou "
+         },
+         {
+          "t": "⋮",
+          "marca": "codigo"
+         },
+         {
+          "t": " de uma linha e separar o que é consulta (Histórico, Ver Timeline) do que altera dados (Excluir, Converter, Finalizar). Feche com Esc sem clicar."
          }
         ],
         "nota": null,
@@ -383,7 +517,14 @@
        {
         "texto": [
          {
-          "t": "Abrir o sino de Notificações e ver as abas Geral e Solicitações."
+          "t": "Abrir o sino de "
+         },
+         {
+          "t": "Notificações",
+          "marca": "codigo"
+         },
+         {
+          "t": " e ver as abas Geral e Solicitações."
          }
         ],
         "nota": [
@@ -396,7 +537,14 @@
        {
         "texto": [
          {
-          "t": "Achar o botão ? (manuais de ajuda) no canto das listas."
+          "t": "Achar o botão "
+         },
+         {
+          "t": "?",
+          "marca": "codigo"
+         },
+         {
+          "t": " (manuais de ajuda) no canto das listas."
          }
         ],
         "nota": null,
@@ -405,7 +553,28 @@
        {
         "texto": [
          {
-          "t": "No menu do usuário, conhecer Modo Escuro e Densidade. Não use Configurar E-mail (SMTP)."
+          "t": "No menu do usuário, conhecer "
+         },
+         {
+          "t": "Modo Escuro",
+          "marca": "codigo"
+         },
+         {
+          "t": " e "
+         },
+         {
+          "t": "Densidade",
+          "marca": "codigo"
+         },
+         {
+          "t": ". Não use "
+         },
+         {
+          "t": "Configurar E-mail (SMTP)",
+          "marca": "codigo"
+         },
+         {
+          "t": "."
          }
         ],
         "nota": null,
@@ -421,7 +590,14 @@
       "titulo": "6. Saber o que é administração",
       "onde": [
        {
-        "t": "bloco GLOBAIS no fim do menu lateral"
+        "t": "bloco "
+       },
+       {
+        "t": "GLOBAIS",
+        "marca": "codigo"
+       },
+       {
+        "t": " no fim do menu lateral"
        }
       ],
       "intro": null,
@@ -445,7 +621,14 @@
        {
         "texto": [
          {
-          "t": "Abrir GLOBAIS > Treinamento > Minhas Trilhas e ver suas trilhas obrigatórias (trilhas e quiz da Central de Treinamento)."
+          "t": "Abrir "
+         },
+         {
+          "t": "GLOBAIS > Treinamento > Minhas Trilhas",
+          "marca": "codigo"
+         },
+         {
+          "t": " e ver suas trilhas obrigatórias (trilhas e quiz da Central de Treinamento)."
          }
         ],
         "nota": null,
@@ -603,7 +786,6 @@
       "url": "/checklists/estagiarios/00-onboarding-estagiario.html",
       "duracao_s": null,
       "poster": null,
-      "legenda": null,
       "resumo": null,
       "fontes": [
        "guia:scripts/dados-checklists-estagiarios.mjs#ONBOARDING"
@@ -617,7 +799,6 @@
       "url": "/checklists/estagiarios/01-primeiros-passos-navegacao.html",
       "duracao_s": null,
       "poster": null,
-      "legenda": null,
       "resumo": null,
       "fontes": [
        "guia:scripts/dados-checklists-estagiarios.mjs#navegacao"
@@ -650,7 +831,11 @@
         "id": "acessar-1",
         "texto": [
          {
-          "t": "Sei acessar: tela Início"
+          "t": "Sei acessar: tela "
+         },
+         {
+          "t": "Início",
+          "marca": "codigo"
          }
         ]
        },
@@ -658,7 +843,14 @@
         "id": "acessar-2",
         "texto": [
          {
-          "t": "Sei acessar: botão de grade Abrir menu de módulos (canto superior esquerdo)"
+          "t": "Sei acessar: botão de grade "
+         },
+         {
+          "t": "Abrir menu de módulos",
+          "marca": "codigo"
+         },
+         {
+          "t": " (canto superior esquerdo)"
          }
         ]
        },
@@ -666,7 +858,14 @@
         "id": "acessar-3",
         "texto": [
          {
-          "t": "Sei acessar: campo Pesquisar funcionalidades... ou Ctrl+K"
+          "t": "Sei acessar: campo "
+         },
+         {
+          "t": "Pesquisar funcionalidades...",
+          "marca": "codigo"
+         },
+         {
+          "t": " ou Ctrl+K"
          }
         ]
        },
@@ -674,7 +873,11 @@
         "id": "acessar-4",
         "texto": [
          {
-          "t": "Sei acessar: qualquer lista, por exemplo Vendas > Pedidos de Venda"
+          "t": "Sei acessar: qualquer lista, por exemplo "
+         },
+         {
+          "t": "Vendas > Pedidos de Venda",
+          "marca": "tela"
          }
         ]
        },
@@ -682,7 +885,14 @@
         "id": "acessar-5",
         "texto": [
          {
-          "t": "Sei acessar: bloco GLOBAIS no fim do menu lateral"
+          "t": "Sei acessar: bloco "
+         },
+         {
+          "t": "GLOBAIS",
+          "marca": "codigo"
+         },
+         {
+          "t": " no fim do menu lateral"
          }
         ]
        },
@@ -909,7 +1119,6 @@
       "url": "/checklists/estagiarios/00-onboarding-estagiario.html",
       "duracao_s": null,
       "poster": null,
-      "legenda": null,
       "resumo": null,
       "fontes": [
        "guia:scripts/dados-checklists-estagiarios.mjs#ONBOARDING"
@@ -923,7 +1132,6 @@
       "url": "/checklists/estagiarios/01-primeiros-passos-navegacao.html",
       "duracao_s": null,
       "poster": null,
-      "legenda": null,
       "resumo": null,
       "fontes": [
        "guia:scripts/dados-checklists-estagiarios.mjs#navegacao"

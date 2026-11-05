@@ -4,6 +4,7 @@ import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { describe, it } from 'node:test';
+import { mapaEfetivo, VALORES_INICIAIS } from '../../lib/visibilidade.js';
 import { carregarPlataforma } from './apoio/carregar-plataforma.mjs';
 
 const resposta = (status, corpo) => ({ ok: status >= 200 && status < 300, status, json: async () => corpo });
@@ -145,5 +146,62 @@ describe('window.Plataforma — aliases de hash antigos (review v1, item 6)', ()
     assert.equal(location.hash, '#acervo/metodo');
     P.irPara({ area: 'acervo', secao: '<script>' });
     assert.equal(location.hash, '#acervo');
+  });
+});
+
+describe('window.Plataforma — roteador usa o perfil de visibilidade (v3, item 2)', () => {
+  // Mapas efetivos como o GET /api/visibilidade devolve com os valores iniciais do doc 04.
+  const MAPA = { estagiario: mapaEfetivo(VALORES_INICIAIS, 'estagiario'), consultor: mapaEfetivo(VALORES_INICIAIS, 'consultor'), admin: mapaEfetivo(VALORES_INICIAIS, 'admin') };
+
+  it('estagiário: #guia vai para o início, sem mensagem de erro, sem entrada nova no histórico', async () => {
+    assert.equal(MAPA.estagiario['area:acervo'], false);
+    const { fetch } = comFetch([resposta(200, { itens: MAPA.estagiario })]);
+    const { Plataforma, eventos, location, history } = carregarPlataforma({ hash: '#guia', fetch });
+    assert.deepEqual({ ...Plataforma.rota }, { area: 'acervo' }); // antes do perfil chegar o roteador não filtra
+    const r = await Plataforma.visibilidade();
+    assert.equal(r.erro, undefined);
+    assert.deepEqual({ ...Plataforma.rota }, { area: 'inicio' });
+    assert.equal(eventos.at(-1).type, 'plataforma:rota');
+    assert.deepEqual({ ...eventos.at(-1).detail }, { area: 'inicio' });
+    assert.ok(!('erro' in eventos.at(-1).detail) && !('mensagem' in eventos.at(-1).detail));
+    assert.deepEqual(history.chamadas, ['#inicio']);
+    assert.equal(location.hash, '#inicio');
+  });
+  it('estagiário: seções do guia antigo, #acervo e a apostila (oculta) também vão ao início; o resto abre', () => {
+    const { Plataforma } = carregarPlataforma();
+    Plataforma.aplicarVisibilidade(MAPA.estagiario);
+    for (const h of ['#guia', '#metodo', '#acervo', '#acervo/metodo', '#apostila']) assert.deepEqual({ ...Plataforma.lerRota(h) }, { area: 'inicio' }, h);
+    assert.deepEqual({ ...Plataforma.lerRota('#inicial/vendas') }, { area: 'inicial', modulo: 'vendas' });
+    assert.deepEqual({ ...Plataforma.lerRota('#pc-nome-3') }, { area: 'pacotes', secao: 'pc-nome-3' });
+    Plataforma.irPara({ area: 'acervo', secao: 'metodo' });
+    assert.deepEqual({ ...Plataforma.rota }, { area: 'inicio' });
+  });
+  it('estagiário: hashchange para #guia depois do perfil carregado emite início', () => {
+    const { Plataforma, eventos, mudarHash } = carregarPlataforma({ hash: '#inicio' });
+    Plataforma.aplicarVisibilidade(MAPA.estagiario);
+    assert.equal(eventos.length, 0); // rota não mudou: nada a emitir
+    mudarHash('#guia');
+    assert.deepEqual({ ...eventos.at(-1).detail }, { area: 'inicio' });
+  });
+  it('consultor e admin: #guia continua abrindo o Acervo', () => {
+    for (const papel of ['consultor', 'admin']) {
+      const { Plataforma, history } = carregarPlataforma({ hash: '#guia' });
+      Plataforma.aplicarVisibilidade(MAPA[papel]);
+      assert.deepEqual({ ...Plataforma.rota }, { area: 'acervo' }, papel);
+      assert.deepEqual(history.chamadas, [], papel);
+    }
+  });
+  it('chave ausente no mapa = área fechada; mapa inválido e lista de admin (?todos=1) não mexem no roteador', async () => {
+    const { Plataforma } = carregarPlataforma();
+    Plataforma.aplicarVisibilidade(null);
+    Plataforma.aplicarVisibilidade(['area:acervo']);
+    assert.deepEqual({ ...Plataforma.lerRota('#acervo') }, { area: 'acervo' });
+    Plataforma.aplicarVisibilidade({ 'area:acervo': 'sim' });
+    assert.deepEqual({ ...Plataforma.lerRota('#acervo') }, { area: 'inicio' });
+    assert.deepEqual({ ...Plataforma.lerRota('#admin') }, { area: 'admin' }); // admin não tem chave: protegido pelo servidor
+    const { fetch } = comFetch([resposta(200, [{ chave: 'area:acervo', visivel: false, perfis: [] }])]);
+    const outra = carregarPlataforma({ fetch }).Plataforma;
+    await outra.visibilidade({ todos: true });
+    assert.deepEqual({ ...outra.lerRota('#acervo') }, { area: 'acervo' });
   });
 });

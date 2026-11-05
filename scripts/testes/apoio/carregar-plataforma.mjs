@@ -15,6 +15,7 @@ export function carregarPlataforma({ hash = '', fetch: fetchFalso, ffIrParaLogin
     addEventListener: (tipo, fn) => { (ouvintes[tipo] ||= []).push(fn); },
     dispatchEvent: (ev) => { eventos.push(ev); for (const fn of ouvintes[ev.type] || []) fn(ev); return true; },
     ffIrParaLogin,
+    history: { state: null, chamadas: [], replaceState(estado, _titulo, url) { this.chamadas.push(url); location.hash = String(url).startsWith('#') ? url : location.hash; } },
   };
   class CustomEvent { constructor(type, init = {}) { this.type = type; this.detail = init.detail; } }
   const contexto = {
@@ -26,5 +27,5 @@ export function carregarPlataforma({ hash = '', fetch: fetchFalso, ffIrParaLogin
   vm.createContext(contexto);
   vm.runInContext(CODIGO, contexto, { filename: 'plataforma-dados.js' });
   const mudarHash = (novo) => { location.hash = novo; for (const fn of ouvintes.hashchange || []) fn({ type: 'hashchange' }); };
-  return { Plataforma: window.Plataforma, eventos, location, mudarHash };
+  return { Plataforma: window.Plataforma, eventos, location, mudarHash, history: window.history };
 }

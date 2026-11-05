@@ -126,7 +126,11 @@
       "titulo": "1. Preparar seus dados: ligar a sua obra ao seu pedido",
       "onde": [
        {
-        "t": "Vendas > Pedidos de Venda (pedido em aberto)"
+        "t": "Vendas > Pedidos de Venda",
+        "marca": "tela"
+       },
+       {
+        "t": " (pedido em aberto)"
        }
       ],
       "intro": [
@@ -159,7 +163,14 @@
        {
         "texto": [
          {
-          "t": "Em Vendas > Pedidos de Venda, abrir o seu pedido em aberto pelo "
+          "t": "Em "
+         },
+         {
+          "t": "Vendas > Pedidos de Venda",
+          "marca": "tela"
+         },
+         {
+          "t": ", abrir o seu pedido em aberto pelo "
          },
          {
           "t": "lápis",
@@ -185,7 +196,14 @@
         ],
         "nota": [
          {
-          "t": "A coluna PROJETO da lista passa a mostrar a obra, sem pedir CFOP nem condição. O menu ⋯ do pedido não tem \"Editar\". Pedido Entregue ou Faturado só tem "
+          "t": "A coluna PROJETO da lista passa a mostrar a obra, sem pedir CFOP nem condição. O menu "
+         },
+         {
+          "t": "⋯",
+          "marca": "codigo"
+         },
+         {
+          "t": " do pedido não tem \"Editar\". Pedido Entregue ou Faturado só tem "
          },
          {
           "t": "Visualizar",
@@ -210,7 +228,6 @@
       "url": "/checklists/estagiarios/10-projetos-obras.html",
       "duracao_s": null,
       "poster": null,
-      "legenda": null,
       "resumo": null,
       "fontes": [
        "guia:scripts/dados-checklists-estagiarios.mjs#projetos"
@@ -242,7 +259,14 @@
         "id": "acessar-1",
         "texto": [
          {
-          "t": "Sei acessar: Vendas > Pedidos de Venda (pedido em aberto)"
+          "t": "Sei acessar: "
+         },
+         {
+          "t": "Vendas > Pedidos de Venda",
+          "marca": "tela"
+         },
+         {
+          "t": " (pedido em aberto)"
          }
         ]
        },
@@ -250,7 +274,11 @@
         "id": "acessar-2",
         "texto": [
          {
-          "t": "Sei acessar: módulo Projetos"
+          "t": "Sei acessar: módulo "
+         },
+         {
+          "t": "Projetos",
+          "marca": "tela"
          }
         ]
        },
@@ -258,7 +286,11 @@
         "id": "acessar-3",
         "texto": [
          {
-          "t": "Sei acessar: Financeiro > Painel Financeiro de Projetos"
+          "t": "Sei acessar: "
+         },
+         {
+          "t": "Financeiro > Painel Financeiro de Projetos",
+          "marca": "codigo"
          }
         ]
        },
@@ -484,7 +516,8 @@
       "titulo": "1. Cadastrar a obra",
       "onde": [
        {
-        "t": "Cadastros > Projetos > Novo Projeto"
+        "t": "Cadastros > Projetos > Novo Projeto",
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -502,7 +535,21 @@
       "titulo": "2. Estágios e etapas",
       "onde": [
        {
-        "t": "botões Estágios e Etapas na linha da obra"
+        "t": "botões "
+       },
+       {
+        "t": "Estágios",
+        "marca": "codigo"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "Etapas",
+        "marca": "codigo"
+       },
+       {
+        "t": " na linha da obra"
        }
       ],
       "intro": [
@@ -520,7 +567,15 @@
       "titulo": "3. Ligar o pedido e a medição à obra",
       "onde": [
        {
-        "t": "Vendas > Pedidos de Venda e Serviços > Medições > + Nova Medição"
+        "t": "Vendas > Pedidos de Venda",
+        "marca": "tela"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "Serviços > Medições > + Nova Medição",
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -538,7 +593,15 @@
       "titulo": "4. Produção e compras da obra",
       "onde": [
        {
-        "t": "Produção > Ordens de produção > Nova OP e Compras > Solicitações de Compra"
+        "t": "Produção > Ordens de produção > Nova OP",
+        "marca": "tela"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "Compras > Solicitações de Compra",
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -556,7 +619,18 @@
       "titulo": "5. Nota e títulos da obra",
       "onde": [
        {
-        "t": "menu ⋯ > Faturar do pedido e Financeiro > Contas a Receber"
+        "t": "menu "
+       },
+       {
+        "t": "⋯ > Faturar",
+        "marca": "codigo"
+       },
+       {
+        "t": " do pedido e "
+       },
+       {
+        "t": "Financeiro > Contas a Receber",
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -574,7 +648,15 @@
       "titulo": "6. Painéis da obra: previsto × realizado",
       "onde": [
        {
-        "t": "Financeiro > Painel Financeiro de Projetos e módulo Projetos"
+        "t": "Financeiro > Painel Financeiro de Projetos",
+        "marca": "codigo"
+       },
+       {
+        "t": " e módulo "
+       },
+       {
+        "t": "Projetos",
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -592,7 +674,11 @@
       "titulo": "7. Diário e ciclo de vida da obra",
       "onde": [
        {
-        "t": "Projetos > Diário de Obra e ações da linha da obra"
+        "t": "Projetos > Diário de Obra",
+        "marca": "codigo"
+       },
+       {
+        "t": " e ações da linha da obra"
        }
       ],
       "intro": [
@@ -757,7 +843,6 @@
       "url": "/checklists/consultores/implantacao-14-projetos.html",
       "duracao_s": null,
       "poster": null,
-      "legenda": null,
       "resumo": null,
       "fontes": [
        "guia:scripts/dados-checklists-implantacao.mjs#implantacao-projetos"
@@ -793,7 +878,14 @@
        {
         "texto": [
          {
-          "t": "Um cliente de teste cadastrado em Cadastros > Participantes, com "
+          "t": "Um cliente de teste cadastrado em "
+         },
+         {
+          "t": "Cadastros > Participantes",
+          "marca": "tela"
+         },
+         {
+          "t": ", com "
          },
          {
           "t": "É Cliente?",
@@ -841,7 +933,14 @@
           "marca": "negrito"
          },
          {
-          "t": " ativo em Estoque > Locais, ou o almoxarifado central ativo, para finalizar a nota com a obra."
+          "t": " ativo em "
+         },
+         {
+          "t": "Estoque > Locais",
+          "marca": "codigo"
+         },
+         {
+          "t": ", ou o almoxarifado central ativo, para finalizar a nota com a obra."
          }
         ],
         "nota": [
@@ -1275,7 +1374,21 @@
        {
         "texto": [
          {
-          "t": "Caminho do cadastro: o fluxo antigo e o procedimento citam Cadastros > Projetos > Novo Projeto; o manual-12-projetos-e-tarefas cita o menu lateral do módulo Projetos (Cadastros > Projetos) com o botão "
+          "t": "Caminho do cadastro: o fluxo antigo e o procedimento citam "
+         },
+         {
+          "t": "Cadastros > Projetos > Novo Projeto",
+          "marca": "tela"
+         },
+         {
+          "t": "; o manual-12-projetos-e-tarefas cita o menu lateral do módulo Projetos ("
+         },
+         {
+          "t": "Cadastros > Projetos",
+          "marca": "tela"
+         },
+         {
+          "t": ") com o botão "
          },
          {
           "t": "+ Novo Projeto",
@@ -1294,7 +1407,14 @@
        {
         "texto": [
          {
-          "t": "Caminho do painel: o fluxo antigo cita Financeiro > Painel Financeiro de Projetos; o manual-12-projetos-e-tarefas o coloca no menu do módulo Projetos ou no "
+          "t": "Caminho do painel: o fluxo antigo cita "
+         },
+         {
+          "t": "Financeiro > Painel Financeiro de Projetos",
+          "marca": "codigo"
+         },
+         {
+          "t": "; o manual-12-projetos-e-tarefas o coloca no menu do módulo Projetos ou no "
          },
          {
           "t": "Ver Painel",
@@ -1325,7 +1445,14 @@
        {
         "texto": [
          {
-          "t": "Diário de Obra: o fluxo antigo cita Projetos > Diário de Obra, mas o menu de Projetos descrito no manual-12-projetos-e-tarefas não lista esse item."
+          "t": "Diário de Obra: o fluxo antigo cita "
+         },
+         {
+          "t": "Projetos > Diário de Obra",
+          "marca": "codigo"
+         },
+         {
+          "t": ", mas o menu de Projetos descrito no manual-12-projetos-e-tarefas não lista esse item."
          }
         ],
         "nota": null,
@@ -1370,7 +1497,7 @@
       "url": "/videos/consultor-09-projetos.mp4",
       "duracao_s": 147,
       "poster": "/videos/consultor-09-projetos.jpg",
-      "legenda": "/videos/consultor-09-projetos.vtt",
+      "legendas_url": "/videos/consultor-09-projetos.vtt",
       "resumo": [
        {
         "t": "Cadastro, estágios, painéis e diário de obra."
@@ -1400,7 +1527,6 @@
       "url": "/checklists/estagiarios/10-projetos-obras.html",
       "duracao_s": null,
       "poster": null,
-      "legenda": null,
       "resumo": null,
       "fontes": [
        "guia:scripts/dados-checklists-estagiarios.mjs#projetos"
@@ -1414,7 +1540,6 @@
       "url": "/checklists/consultores/implantacao-14-projetos.html",
       "duracao_s": null,
       "poster": null,
-      "legenda": null,
       "resumo": null,
       "fontes": [
        "guia:scripts/dados-checklists-implantacao.mjs#implantacao-projetos"

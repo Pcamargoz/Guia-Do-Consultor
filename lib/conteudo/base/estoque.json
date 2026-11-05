@@ -54,7 +54,8 @@
       "titulo": "2. Ler a visão geral",
       "onde": [
        {
-        "t": "Estoque > Visão geral"
+        "t": "Estoque > Visão geral",
+        "marca": "codigo"
        }
       ],
       "intro": null,
@@ -91,7 +92,8 @@
       "titulo": "3. Consultar o saldo de um material",
       "onde": [
        {
-        "t": "Estoque > Saldo"
+        "t": "Estoque > Saldo",
+        "marca": "codigo"
        }
       ],
       "intro": null,
@@ -144,7 +146,14 @@
        {
         "texto": [
          {
-          "t": "Usar Mais filtros para filtrar por obra, propriedade (Própria/Cliente) e atributos físicos."
+          "t": "Usar "
+         },
+         {
+          "t": "Mais filtros",
+          "marca": "codigo"
+         },
+         {
+          "t": " para filtrar por obra, propriedade (Própria/Cliente) e atributos físicos."
          }
         ],
         "nota": [
@@ -215,7 +224,8 @@
       "titulo": "5. Rastrear movimentos",
       "onde": [
        {
-        "t": "Estoque > Movimentos"
+        "t": "Estoque > Movimentos",
+        "marca": "codigo"
        }
       ],
       "intro": null,
@@ -264,7 +274,8 @@
       "titulo": "6. Conhecer os tipos de movimento (sem salvar)",
       "onde": [
        {
-        "t": "+ Novo Movimento"
+        "t": "+ Novo Movimento",
+        "marca": "tela"
        }
       ],
       "intro": null,
@@ -374,7 +385,8 @@
       "titulo": "1. Preparar seus dados: dar entrada no seu produto",
       "onde": [
        {
-        "t": "Estoque > Movimentos > + Novo Movimento"
+        "t": "Estoque > Movimentos > + Novo Movimento",
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -393,7 +405,14 @@
         "marca": "negrito"
        },
        {
-        "t": " em Estoque > Locais. Se faltar permissão ou cadastro-base (botão que não aparece, CFOP, plano de contas, meio de pagamento, unidade de medida, almoxarifado), anote a mensagem em "
+        "t": " em "
+       },
+       {
+        "t": "Estoque > Locais",
+        "marca": "codigo"
+       },
+       {
+        "t": ". Se faltar permissão ou cadastro-base (botão que não aparece, CFOP, plano de contas, meio de pagamento, unidade de medida, almoxarifado), anote a mensagem em "
        },
        {
         "t": "Problema",
@@ -490,7 +509,14 @@
        {
         "texto": [
          {
-          "t": "Abrir Estoque > Saldo, pesquisar o seu produto no campo \"Buscar na lista: produto, código, local...\" e conferir o "
+          "t": "Abrir "
+         },
+         {
+          "t": "Estoque > Saldo",
+          "marca": "codigo"
+         },
+         {
+          "t": ", pesquisar o seu produto no campo \"Buscar na lista: produto, código, local...\" e conferir o "
          },
          {
           "t": "Saldo",
@@ -527,7 +553,6 @@
       "url": "/checklists/estagiarios/07-estoque.html",
       "duracao_s": null,
       "poster": null,
-      "legenda": null,
       "resumo": null,
       "fontes": [
        "guia:scripts/dados-checklists-estagiarios.mjs#estoque"
@@ -559,7 +584,11 @@
         "id": "acessar-1",
         "texto": [
          {
-          "t": "Sei acessar: Estoque > Movimentos > + Novo Movimento"
+          "t": "Sei acessar: "
+         },
+         {
+          "t": "Estoque > Movimentos > + Novo Movimento",
+          "marca": "tela"
          }
         ]
        },
@@ -567,7 +596,11 @@
         "id": "acessar-2",
         "texto": [
          {
-          "t": "Sei acessar: Estoque > Visão geral"
+          "t": "Sei acessar: "
+         },
+         {
+          "t": "Estoque > Visão geral",
+          "marca": "codigo"
          }
         ]
        },
@@ -575,7 +608,11 @@
         "id": "acessar-3",
         "texto": [
          {
-          "t": "Sei acessar: Estoque > Saldo"
+          "t": "Sei acessar: "
+         },
+         {
+          "t": "Estoque > Saldo",
+          "marca": "codigo"
          }
         ]
        },
@@ -591,7 +628,11 @@
         "id": "acessar-5",
         "texto": [
          {
-          "t": "Sei acessar: Estoque > Movimentos"
+          "t": "Sei acessar: "
+         },
+         {
+          "t": "Estoque > Movimentos",
+          "marca": "codigo"
          }
         ]
        },
@@ -599,7 +640,11 @@
         "id": "acessar-6",
         "texto": [
          {
-          "t": "Sei acessar: + Novo Movimento"
+          "t": "Sei acessar: "
+         },
+         {
+          "t": "+ Novo Movimento",
+          "marca": "tela"
          }
         ]
        },
@@ -1021,7 +1066,14 @@
       ],
       "confirmar": [
        {
-        "t": "Faturamento › Notas Fiscais › ⋯ › Finalizar NF; faixa \"Ambiente NF-e: HOMOLOGAÇÃO\" na nota."
+        "t": "Faturamento › Notas Fiscais › "
+       },
+       {
+        "t": "⋯",
+        "marca": "codigo"
+       },
+       {
+        "t": " › Finalizar NF; faixa \"Ambiente NF-e: HOMOLOGAÇÃO\" na nota."
        }
       ],
       "confianca": "B",
@@ -1034,7 +1086,14 @@
       "titulo": "Marcar produzido gera a entrada do produto acabado",
       "texto": [
        {
-        "t": "Em Mais ações › Marcar produzido, a OP vai para "
+        "t": "Em "
+       },
+       {
+        "t": "Mais ações › Marcar produzido",
+        "marca": "codigo"
+       },
+       {
+        "t": ", a OP vai para "
        },
        {
         "t": "Produzido",
@@ -1046,7 +1105,14 @@
       ],
       "confirmar": [
        {
-        "t": "Produção › Ordens de produção, Estoque › Movimentos e Mais ações › Custo da OP."
+        "t": "Produção › Ordens de produção, Estoque › Movimentos e "
+       },
+       {
+        "t": "Mais ações › Custo da OP",
+        "marca": "codigo"
+       },
+       {
+        "t": "."
        }
       ],
       "confianca": "B",
@@ -1090,7 +1156,15 @@
       "titulo": "1. Locais e almoxarifado central",
       "onde": [
        {
-        "t": "Estoque > Locais e Estoque > Configurações > Parâmetros de Estoque"
+        "t": "Estoque > Locais",
+        "marca": "codigo"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "Estoque > Configurações > Parâmetros de Estoque",
+        "marca": "codigo"
        }
       ],
       "intro": [
@@ -1108,7 +1182,8 @@
       "titulo": "2. Saldo inicial na data de corte",
       "onde": [
        {
-        "t": "Estoque > Saldo > Mais > Importar saldo"
+        "t": "Estoque > Saldo > Mais > Importar saldo",
+        "marca": "codigo"
        }
       ],
       "intro": [
@@ -1126,7 +1201,8 @@
       "titulo": "3. Entradas e saídas manuais",
       "onde": [
        {
-        "t": "Estoque > Movimentos > + Novo Movimento"
+        "t": "Estoque > Movimentos > + Novo Movimento",
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -1144,7 +1220,8 @@
       "titulo": "4. Entradas e saídas automáticas",
       "onde": [
        {
-        "t": "Estoque > Movimentos"
+        "t": "Estoque > Movimentos",
+        "marca": "codigo"
        }
       ],
       "intro": [
@@ -1162,7 +1239,11 @@
       "titulo": "5. Saldo e extrato",
       "onde": [
        {
-        "t": "Estoque > Saldo e o código do produto"
+        "t": "Estoque > Saldo",
+        "marca": "codigo"
+       },
+       {
+        "t": " e o código do produto"
        }
       ],
       "intro": [
@@ -1180,7 +1261,18 @@
       "titulo": "6. Transferência e reserva",
       "onde": [
        {
-        "t": "Estoque > Transferências e coluna Reservada do Saldo"
+        "t": "Estoque > Transferências",
+        "marca": "codigo"
+       },
+       {
+        "t": " e coluna "
+       },
+       {
+        "t": "Reservada",
+        "marca": "codigo"
+       },
+       {
+        "t": " do Saldo"
        }
       ],
       "intro": [
@@ -1198,7 +1290,15 @@
       "titulo": "7. Inventário com ajuste",
       "onde": [
        {
-        "t": "Estoque > Inventário e Estoque > Aprovações > Inventários"
+        "t": "Estoque > Inventário",
+        "marca": "codigo"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "Estoque > Aprovações > Inventários",
+        "marca": "codigo"
        }
       ],
       "intro": [
@@ -1216,7 +1316,8 @@
       "titulo": "8. Empréstimo entre locais (se o cliente usa)",
       "onde": [
        {
-        "t": "Estoque > Empréstimos"
+        "t": "Estoque > Empréstimos",
+        "marca": "codigo"
        }
       ],
       "intro": [
@@ -1234,7 +1335,22 @@
       "titulo": "9. Reposição e balanço final",
       "onde": [
        {
-        "t": "Estoque > Reposição, Compras > Sugestão de Compra e Estoque > Reservas órfãs"
+        "t": "Estoque > Reposição",
+        "marca": "codigo"
+       },
+       {
+        "t": ", "
+       },
+       {
+        "t": "Compras > Sugestão de Compra",
+        "marca": "codigo"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "Estoque > Reservas órfãs",
+        "marca": "codigo"
        }
       ],
       "intro": [
@@ -1431,7 +1547,6 @@
       "url": "/checklists/consultores/implantacao-10-estoque.html",
       "duracao_s": null,
       "poster": null,
-      "legenda": null,
       "resumo": null,
       "fontes": [
        "guia:scripts/dados-checklists-implantacao.mjs#implantacao-estoque"
@@ -1565,7 +1680,14 @@
           "marca": "negrito"
          },
          {
-          "t": " Segurança > Perfis de Acesso. A regra vale até para Super Usuário. "
+          "t": " "
+         },
+         {
+          "t": "Segurança > Perfis de Acesso",
+          "marca": "codigo"
+         },
+         {
+          "t": ". A regra vale até para Super Usuário. "
          },
          {
           "t": "Fonte:",
@@ -1619,7 +1741,14 @@
           "marca": "negrito"
          },
          {
-          "t": " Minha Assinatura e a ata. "
+          "t": " "
+         },
+         {
+          "t": "Minha Assinatura",
+          "marca": "codigo"
+         },
+         {
+          "t": " e a ata. "
          },
          {
           "t": "Fonte:",
@@ -2059,7 +2188,35 @@
        {
         "texto": [
          {
-          "t": "Caminhos de menu: o fluxo antigo usa Estoque > Locais e Estoque > Inventário; a gestora usa Estoque > Configurações > Locais e Estoque > Inventários. Conferir os rótulos."
+          "t": "Caminhos de menu: o fluxo antigo usa "
+         },
+         {
+          "t": "Estoque > Locais",
+          "marca": "codigo"
+         },
+         {
+          "t": " e "
+         },
+         {
+          "t": "Estoque > Inventário",
+          "marca": "codigo"
+         },
+         {
+          "t": "; a gestora usa "
+         },
+         {
+          "t": "Estoque > Configurações > Locais",
+          "marca": "codigo"
+         },
+         {
+          "t": " e "
+         },
+         {
+          "t": "Estoque > Inventários",
+          "marca": "codigo"
+         },
+         {
+          "t": ". Conferir os rótulos."
          }
         ],
         "nota": null,
@@ -2140,7 +2297,7 @@
       "url": "/videos/consultor-04-estoque.mp4",
       "duracao_s": 183,
       "poster": "/videos/consultor-04-estoque.jpg",
-      "legenda": "/videos/consultor-04-estoque.vtt",
+      "legendas_url": "/videos/consultor-04-estoque.vtt",
       "resumo": [
        {
         "t": "Movimentos, transferência, reserva, inventário e empréstimo."
@@ -2170,7 +2327,6 @@
       "url": "/checklists/estagiarios/07-estoque.html",
       "duracao_s": null,
       "poster": null,
-      "legenda": null,
       "resumo": null,
       "fontes": [
        "guia:scripts/dados-checklists-estagiarios.mjs#estoque"
@@ -2184,7 +2340,6 @@
       "url": "/checklists/consultores/implantacao-10-estoque.html",
       "duracao_s": null,
       "poster": null,
-      "legenda": null,
       "resumo": null,
       "fontes": [
        "guia:scripts/dados-checklists-implantacao.mjs#implantacao-estoque"

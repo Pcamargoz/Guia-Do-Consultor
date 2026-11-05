@@ -153,12 +153,13 @@ describe('Relatórios e Alumina em preparação (review v1, item 5)', () => {
 
 describe('texto estruturado nas respostas (review v1, item 4)', () => {
   const blocosDe = (corpo) => corpo.secoes.flatMap((s) => s.blocos);
-  it('Markdown leve vira trechos; <x> vira ‹x›; link inseguro vira texto', () => {
+  it('Markdown leve vira trechos; crase vira tela (glossário) ou codigo; <x> vira ‹x›; link inseguro vira texto', () => {
     const d = montarDetalhe(base, { modulo: 'vendas', jornada: 'consultor', papel: 'admin' }).corpo;
     const regra = blocosDe(d).find((b) => b.tipo === 'regra' && b.titulo.startsWith('Pedido aprovado'));
     assert.deepEqual(regra.confirmar, [
       { t: 'Abra ' }, { t: 'Vendas > Pedidos', marca: 'negrito' }, { t: ', pesquise "PV - ‹número›" e tente editar um pedido ' },
-      { t: 'aprovado', marca: 'italico' }, { t: ' em Pedidos (fictício). Veja ' },
+      { t: 'aprovado', marca: 'italico' }, { t: ' em ' }, { t: 'Vendas > Pedidos', marca: 'tela' }, { t: ' e confira o campo ' },
+      { t: 'Situação', marca: 'codigo' }, { t: ' = ' }, { t: 'APROVADO', marca: 'codigo' }, { t: ' (fictício). Veja ' },
       { t: 'o vídeo', marca: 'link', href: '/videos/fluxo-1-vendas.mp4' }, { t: ' e isto.' },
     ]);
     assert.deepEqual(validarDetalhe(d), []);

@@ -3,7 +3,8 @@
 import assert from 'node:assert/strict';
 import { describe, it } from 'node:test';
 import { validarDetalhe, validarItemAdmin, validarListaAdmin, validarMaterial, validarResumo, validarVisibilidadeEfetiva } from '../../lib/conteudo/contrato.js';
-import { hrefSeguro, paraInline, textoPuro, validarInline } from '../../lib/conteudo/texto-inline.js';
+import { criarClassificadorTelas, hrefSeguro, MARCAS, paraInline, textoPuro, validarInline } from '../../lib/conteudo/texto-inline.js';
+import { legendasUrlValida } from '../../lib/conteudo/contrato.js';
 import { montarExemplos } from '../gerar-exemplos-conteudo.mjs';
 
 const ex = montarExemplos();
@@ -111,7 +112,7 @@ describe('texto em trechos [{ t, marca?, href? }]: nenhum HTML vem dos dados (re
     assert.ok(validarDetalhe(secaoCom({ tipo: 'lista', itens: [{ texto: [{ t: 'a', marca: 'link', href: 'javascript:alert(1)' }] }] })).some((e) => e.includes('href')));
     assert.ok(validarDetalhe(secaoCom({ tipo: 'passos', passos: [{ texto: [{ t: 'ok' }], nota: [{ t: '<iframe>' }] }] })).some((e) => e.includes('nota')));
     assert.ok(validarDetalhe(secaoCom({ tipo: 'link', titulo: 'x', url: 'javascript:alert(1)' })).some((e) => e.includes('url')));
-    assert.ok(validarDetalhe(secaoCom({ tipo: 'video', titulo: 'x', url: '/v.mp4', legenda: 'javascript:x' })).some((e) => e.includes('legenda')));
+    assert.ok(validarDetalhe(secaoCom({ tipo: 'video', titulo: 'x', url: '/v.mp4', legenda: '/v.vtt' })).some((e) => e.includes('legendas_url')));
     assert.ok(validarDetalhe(secaoCom({ tipo: 'fluxo', etapas: ['ok', '<b>'] })).some((e) => e.includes('etapas')));
     assert.ok(validarDetalhe(secaoCom({ tipo: 'html', texto: [{ t: 'x' }] })).some((e) => e.includes('tipo')));
   });
@@ -121,11 +122,67 @@ describe('texto em trechos [{ t, marca?, href? }]: nenhum HTML vem dos dados (re
   });
   it('conversor: Markdown leve → trechos; nada de HTML passa', () => {
     assert.deepEqual(paraInline('**A** e *b* e `c` e [d](/x) e [e](javascript:alert(1)) <f>'), [
-      { t: 'A', marca: 'negrito' }, { t: ' e ' }, { t: 'b', marca: 'italico' }, { t: ' e c e ' }, { t: 'd', marca: 'link', href: '/x' }, { t: ' e e ‹f›' },
+      { t: 'A', marca: 'negrito' }, { t: ' e ' }, { t: 'b', marca: 'italico' }, { t: ' e ' }, { t: 'c', marca: 'codigo' }, { t: ' e ' }, { t: 'd', marca: 'link', href: '/x' }, { t: ' e e ‹f›' },
     ]);
     assert.deepEqual(validarInline(paraInline('<script>alert(1)</script> **<b>x</b>**'), 'x'), []);
     assert.equal(paraInline(''), null);
     assert.equal(paraInline(null), null);
     assert.equal(textoPuro('**Vendas** › `Pedidos` <número>'), 'Vendas › Pedidos ‹número›');
+  });
+});
+
+describe('marcas "tela" e "codigo" para o que vinha entre crases (v3, item 1)', () => {
+  const GLOSSARIO = [
+    { nome: 'Pedidos de Venda', caminho: 'Vendas › Pedidos de Venda' },
+    { nome: 'Novo Pedido', caminho: 'Vendas › Pedidos de Venda › + Novo Pedido' },
+    { nome: 'Contas a Pagar', caminho: 'Financeiro › Contas a Pagar' },
+  ];
+  const marca = criarClassificadorTelas(GLOSSARIO);
+  it('o contrato aceita as marcas novas e só elas', () => {
+    assert.deepEqual([...MARCAS], ['negrito', 'italico', 'link', 'tela', 'codigo']);
+    assert.deepEqual(validarInline([{ t: 'Pedidos de Venda', marca: 'tela' }, { t: ' e o campo ' }, { t: 'CFOP', marca: 'codigo' }], 'x'), []);
+    assert.ok(validarInline([{ t: 'x', marca: 'code' }], 'x').some((e) => e.includes('marca')));
+    assert.ok(validarInline([{ t: 'x', marca: 'tela', href: '/x' }], 'x').some((e) => e.includes('href')));
+    assert.ok(validarInline([{ t: '   ', marca: 'codigo' }], 'x').some((e) => e.includes('sem texto')));
+    assert.ok(validarInline([{ t: '`CFOP`', marca: 'codigo' }], 'x').some((e) => e.includes('Markdown')));
+    assert.ok(validarInline([{ t: '<b>CFOP</b>', marca: 'codigo' }], 'x').some((e) => e.includes('HTML')));
+  });
+  it('tela = nome ou caminho do glossário (">" ou "›", sem diferença de caixa, "+ " ignorado); o resto é codigo', () => {
+    for (const t of ['Pedidos de Venda', 'pedidos de venda', 'Vendas > Pedidos de Venda', 'Vendas›Pedidos de Venda', 'Vendas > Pedidos de Venda > + Novo Pedido', '+ Novo Pedido', 'Financeiro > Contas a Pagar', '⋯ > Novo Pedido']) assert.equal(marca(t), 'tela', t);
+    for (const t of ['CFOP', 'Situação', 'APROVADO', 'Salvar', 'Vendas', 'Estoque > Saldo', 'PC-nnnn/2', '⋯', 'Contas']) assert.equal(marca(t), 'codigo', t);
+    assert.equal(criarClassificadorTelas()('Pedidos de Venda'), 'codigo');
+  });
+  it('paraInline usa o classificador; sem classificador tudo vira codigo; crase nunca sobra', () => {
+    const tr = paraInline('Abra `Vendas > Pedidos de Venda`, clique em `+ Novo Pedido` e preencha `CFOP` (`5102`). Vazio: `` e ` solta.', { marcaDaCrase: marca });
+    assert.deepEqual(tr, [
+      { t: 'Abra ' }, { t: 'Vendas > Pedidos de Venda', marca: 'tela' }, { t: ', clique em ' }, { t: '+ Novo Pedido', marca: 'tela' },
+      { t: ' e preencha ' }, { t: 'CFOP', marca: 'codigo' }, { t: ' (' }, { t: '5102', marca: 'codigo' }, { t: '). Vazio:  e  solta.' },
+    ]);
+    assert.ok(tr.every((x) => !x.t.includes('`')));
+    assert.deepEqual(paraInline('`Pedidos de Venda`'), [{ t: 'Pedidos de Venda', marca: 'codigo' }]);
+    assert.deepEqual(paraInline('**`Salvar`** e [`ver`](/x)'), [{ t: 'Salvar', marca: 'negrito' }, { t: ' e ' }, { t: 'ver', marca: 'link', href: '/x' }]);
+  });
+});
+
+describe('vídeo: legendas_url (v3, item 4)', () => {
+  const comVideo = (bloco) => ({ modulo: { id: 'vendas', titulo: 'Vendas' }, jornada: 'consultor', secoes: Array(10).fill({ id: 'a', titulo: 'A', status: 'disponivel', blocos: [{ tipo: 'video', titulo: 'x', url: '/v.mp4', fontes: ['guia:x'], ...bloco }], fontes: ['guia:x'] }) });
+  it('aceita caminho relativo do site ou https, terminando em .vtt (ou null)', () => {
+    for (const v of ['/videos/fluxo-1.vtt', '/videos/FLUXO.VTT', 'https://cdn.faktory.com.br/legendas/a.vtt', '/videos/a.vtt?v=2']) assert.equal(legendasUrlValida(v), true, v);
+    for (const v of ['/videos/fluxo-1.vtt', null]) assert.deepEqual(validarDetalhe(comVideo({ legendas_url: v })), [], String(v));
+  });
+  it('recusa http, javascript:, data:, //host, #rota e o que não termina em .vtt', () => {
+    for (const v of ['http://cdn.faktory.com.br/a.vtt', 'javascript:alert(1)//.vtt', 'JavaScript:alert(1)', 'data:text/vtt,WEBVTT', '//evil.com/a.vtt', '#videos/a.vtt', 'videos/a.vtt', '/videos/a.srt', '/videos/a.vtt.mp4', '/videos/a.mp4#.vtt', 'https://x.com/a.vtt/', '', 1]) {
+      assert.equal(legendasUrlValida(v), false, String(v));
+      assert.ok(validarDetalhe(comVideo({ legendas_url: v })).some((e) => e.includes('legendas_url')), String(v));
+    }
+  });
+  it('"legenda" no vídeo é recusada (nome antigo); legendas_url fora de vídeo também; legenda da tela segue texto', () => {
+    assert.ok(validarDetalhe(comVideo({ legenda: '/v.vtt' })).some((e) => e.includes('no vídeo o campo é "legendas_url"')));
+    const tela = comVideo({});
+    tela.secoes = tela.secoes.map((s) => ({ ...s, blocos: [{ tipo: 'tela', titulo: 'T', legenda: 'Fala da cena', url: '/telas/a.png', fontes: ['guia:x'] }] }));
+    assert.deepEqual(validarDetalhe(tela), []);
+    const link = comVideo({});
+    link.secoes = link.secoes.map((s) => ({ ...s, blocos: [{ tipo: 'link', titulo: 'L', url: '/x', legendas_url: null, fontes: ['guia:x'] }] }));
+    assert.ok(validarDetalhe(link).some((e) => e.includes('só bloco de vídeo')));
   });
 });

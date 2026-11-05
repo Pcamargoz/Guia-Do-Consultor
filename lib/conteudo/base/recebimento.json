@@ -54,7 +54,8 @@
       "titulo": "2. Ler o painel do recebimento",
       "onde": [
        {
-        "t": "Recebimento > Dashboard Recebimento"
+        "t": "Recebimento > Dashboard Recebimento",
+        "marca": "codigo"
        }
       ],
       "intro": null,
@@ -91,7 +92,8 @@
       "titulo": "3. Consultar notas de recebimento",
       "onde": [
        {
-        "t": "Recebimento > Notas de Recebimento"
+        "t": "Recebimento > Notas de Recebimento",
+        "marca": "codigo"
        }
       ],
       "intro": null,
@@ -135,7 +137,14 @@
        {
         "texto": [
          {
-          "t": "Abrir o menu ⋮ de uma nota em aberto."
+          "t": "Abrir o menu "
+         },
+         {
+          "t": "⋮",
+          "marca": "codigo"
+         },
+         {
+          "t": " de uma nota em aberto."
          }
         ],
         "nota": [
@@ -164,7 +173,14 @@
       "titulo": "4. Entender a conferência física",
       "onde": [
        {
-        "t": "menu Recebimento > Aprovações (é a fila de conferências)"
+        "t": "menu "
+       },
+       {
+        "t": "Recebimento > Aprovações",
+        "marca": "codigo"
+       },
+       {
+        "t": " (é a fila de conferências)"
        }
       ],
       "intro": null,
@@ -240,7 +256,21 @@
        {
         "texto": [
          {
-          "t": "Depois de finalizada por outra pessoa, conferir o movimento \"Recebimento (NR)\" em Estoque > Movimentos e o título em Financeiro > Contas a Pagar."
+          "t": "Depois de finalizada por outra pessoa, conferir o movimento \"Recebimento (NR)\" em "
+         },
+         {
+          "t": "Estoque > Movimentos",
+          "marca": "codigo"
+         },
+         {
+          "t": " e o título em "
+         },
+         {
+          "t": "Financeiro > Contas a Pagar",
+          "marca": "tela"
+         },
+         {
+          "t": "."
          }
         ],
         "nota": null,
@@ -326,7 +356,8 @@
       "titulo": "1. Preparar seus dados: gerar a nota de recebimento do seu pedido de compra",
       "onde": [
        {
-        "t": "Compras > Pedidos de Compra"
+        "t": "Compras > Pedidos de Compra",
+        "marca": "codigo"
        }
       ],
       "intro": [
@@ -359,7 +390,21 @@
        {
         "texto": [
          {
-          "t": "No pedido de compra do checklist 05 (Compras > Pedidos de Compra), abrir o menu ⋯ e escolher "
+          "t": "No pedido de compra do checklist 05 ("
+         },
+         {
+          "t": "Compras > Pedidos de Compra",
+          "marca": "codigo"
+         },
+         {
+          "t": "), abrir o menu "
+         },
+         {
+          "t": "⋯",
+          "marca": "codigo"
+         },
+         {
+          "t": " e escolher "
          },
          {
           "t": "Gerar Nota de Recebimento",
@@ -441,7 +486,14 @@
           "marca": "negrito"
          },
          {
-          "t": " da lista de pedidos mostra \"NR-0000xx\"; em Recebimento > Notas de Recebimento a nota aparece como \"NF-‹número do fornecedor›\" e na fila de conferência como \"NR-‹número interno›\": é a mesma nota."
+          "t": " da lista de pedidos mostra \"NR-0000xx\"; em "
+         },
+         {
+          "t": "Recebimento > Notas de Recebimento",
+          "marca": "codigo"
+         },
+         {
+          "t": " a nota aparece como \"NF-‹número do fornecedor›\" e na fila de conferência como \"NR-‹número interno›\": é a mesma nota."
          }
         ],
         "selo": "conferido-na-tela"
@@ -459,7 +511,6 @@
       "url": "/checklists/estagiarios/06-recebimento.html",
       "duracao_s": null,
       "poster": null,
-      "legenda": null,
       "resumo": null,
       "fontes": [
        "guia:scripts/dados-checklists-estagiarios.mjs#recebimento"
@@ -491,7 +542,11 @@
         "id": "acessar-1",
         "texto": [
          {
-          "t": "Sei acessar: Compras > Pedidos de Compra"
+          "t": "Sei acessar: "
+         },
+         {
+          "t": "Compras > Pedidos de Compra",
+          "marca": "codigo"
          }
         ]
        },
@@ -499,7 +554,11 @@
         "id": "acessar-2",
         "texto": [
          {
-          "t": "Sei acessar: Recebimento > Dashboard Recebimento"
+          "t": "Sei acessar: "
+         },
+         {
+          "t": "Recebimento > Dashboard Recebimento",
+          "marca": "codigo"
          }
         ]
        },
@@ -507,7 +566,11 @@
         "id": "acessar-3",
         "texto": [
          {
-          "t": "Sei acessar: Recebimento > Notas de Recebimento"
+          "t": "Sei acessar: "
+         },
+         {
+          "t": "Recebimento > Notas de Recebimento",
+          "marca": "codigo"
          }
         ]
        },
@@ -515,7 +578,14 @@
         "id": "acessar-4",
         "texto": [
          {
-          "t": "Sei acessar: menu Recebimento > Aprovações (é a fila de conferências)"
+          "t": "Sei acessar: menu "
+         },
+         {
+          "t": "Recebimento > Aprovações",
+          "marca": "codigo"
+         },
+         {
+          "t": " (é a fila de conferências)"
          }
         ]
        },
@@ -669,7 +739,14 @@
       "titulo": "A nota de recebimento tem dois números",
       "texto": [
        {
-        "t": "No menu ⋯ do pedido de compra, "
+        "t": "No menu "
+       },
+       {
+        "t": "⋯",
+        "marca": "codigo"
+       },
+       {
+        "t": " do pedido de compra, "
        },
        {
         "t": "Gerar Nota de Recebimento",
@@ -688,7 +765,14 @@
       ],
       "confirmar": [
        {
-        "t": "Compras › Pedidos de Compra › ⋯ e Recebimento › Notas de Recebimento."
+        "t": "Compras › Pedidos de Compra › "
+       },
+       {
+        "t": "⋯",
+        "marca": "codigo"
+       },
+       {
+        "t": " e Recebimento › Notas de Recebimento."
        }
       ],
       "confianca": "B",
@@ -777,7 +861,15 @@
       "titulo": "1. Preparar o recebimento: conferência e busca de notas",
       "onde": [
        {
-        "t": "Recebimento > Configurações > Parâmetros de Recebimento e Recebimento > Distribuição DFe"
+        "t": "Recebimento > Configurações > Parâmetros de Recebimento",
+        "marca": "codigo"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "Recebimento > Distribuição DFe",
+        "marca": "codigo"
        }
       ],
       "intro": [
@@ -795,7 +887,15 @@
       "titulo": "2. Receber o XML: DF-e ou arquivo",
       "onde": [
        {
-        "t": "Recebimento > Aguardando manifestação e Recebimento > Notas de Recebimento > Importar XML"
+        "t": "Recebimento > Aguardando manifestação",
+        "marca": "codigo"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "Recebimento > Notas de Recebimento > Importar XML",
+        "marca": "codigo"
        }
       ],
       "intro": [
@@ -813,7 +913,8 @@
       "titulo": "3. Nota a partir do pedido de compra",
       "onde": [
        {
-        "t": "Compras > Pedidos de Compra > ⋯ > Gerar Nota de Recebimento"
+        "t": "Compras > Pedidos de Compra > ⋯ > Gerar Nota de Recebimento",
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -831,7 +932,8 @@
       "titulo": "4. Entrega parcial: desdobro do pedido",
       "onde": [
        {
-        "t": "Compras > Pedidos de Compra"
+        "t": "Compras > Pedidos de Compra",
+        "marca": "codigo"
        }
       ],
       "intro": [
@@ -849,7 +951,21 @@
       "titulo": "5. Conferência física e divergências",
       "onde": [
        {
-        "t": "fila de conferências: Recebimento > Aprovações (fluxo antigo) ou Recebimento > Conferências (gestora)"
+        "t": "fila de conferências: "
+       },
+       {
+        "t": "Recebimento > Aprovações",
+        "marca": "codigo"
+       },
+       {
+        "t": " (fluxo antigo) ou "
+       },
+       {
+        "t": "Recebimento > Conferências",
+        "marca": "codigo"
+       },
+       {
+        "t": " (gestora)"
        }
       ],
       "intro": [
@@ -867,7 +983,8 @@
       "titulo": "6. Finalizar: estoque e título a pagar nascem",
       "onde": [
        {
-        "t": "Recebimento > Notas de Recebimento > ⋮ > Finalizar"
+        "t": "Recebimento > Notas de Recebimento > ⋮ > Finalizar",
+        "marca": "codigo"
        }
       ],
       "intro": [
@@ -885,7 +1002,8 @@
       "titulo": "7. Cancelamento e devolução ao fornecedor",
       "onde": [
        {
-        "t": "Recebimento > Notas de Recebimento > ⋮"
+        "t": "Recebimento > Notas de Recebimento > ⋮",
+        "marca": "codigo"
        }
       ],
       "intro": [
@@ -1050,7 +1168,6 @@
       "url": "/checklists/consultores/implantacao-09-recebimento.html",
       "duracao_s": null,
       "poster": null,
-      "legenda": null,
       "resumo": null,
       "fontes": [
        "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento"
@@ -1095,7 +1212,14 @@
           "marca": "negrito"
          },
          {
-          "t": " Compras > Pedidos de Compra, status \"Em Aberto\" e sem alçada pendente. "
+          "t": " "
+         },
+         {
+          "t": "Compras > Pedidos de Compra",
+          "marca": "codigo"
+         },
+         {
+          "t": ", status \"Em Aberto\" e sem alçada pendente. "
          },
          {
           "t": "Fonte:",
@@ -1117,7 +1241,14 @@
           "marca": "negrito"
          },
          {
-          "t": " em Estoque > Locais na empresa que recebe (é onde a nota dá entrada)."
+          "t": " em "
+         },
+         {
+          "t": "Estoque > Locais",
+          "marca": "codigo"
+         },
+         {
+          "t": " na empresa que recebe (é onde a nota dá entrada)."
          }
         ],
         "nota": [
@@ -1153,7 +1284,14 @@
           "marca": "negrito"
          },
          {
-          "t": " Recebimento > Configurações > CFOP. Sem plano de contas não nasce título. "
+          "t": " "
+         },
+         {
+          "t": "Recebimento > Configurações > CFOP",
+          "marca": "codigo"
+         },
+         {
+          "t": ". Sem plano de contas não nasce título. "
          },
          {
           "t": "Fonte:",
@@ -1228,7 +1366,21 @@
           "marca": "negrito"
          },
          {
-          "t": " Minha Assinatura e Configurações > Certificados. "
+          "t": " "
+         },
+         {
+          "t": "Minha Assinatura",
+          "marca": "codigo"
+         },
+         {
+          "t": " e "
+         },
+         {
+          "t": "Configurações > Certificados",
+          "marca": "codigo"
+         },
+         {
+          "t": ". "
          },
          {
           "t": "Fonte:",
@@ -1331,7 +1483,14 @@
        {
         "texto": [
          {
-          "t": "A entrega parcial criou o PC-nnnn/2 com o saldo."
+          "t": "A entrega parcial criou o "
+         },
+         {
+          "t": "PC-nnnn/2",
+          "marca": "codigo"
+         },
+         {
+          "t": " com o saldo."
          }
         ],
         "nota": null,
@@ -1667,7 +1826,21 @@
        {
         "texto": [
          {
-          "t": "Nome da fila de conferência: o fluxo antigo e a trilha de estagiários (conferidos na tela) usam Recebimento > Aprovações; a gestora usa Recebimento > Conferências, visível só com \"Usar Conferência Física\". Conferir o rótulo do menu."
+          "t": "Nome da fila de conferência: o fluxo antigo e a trilha de estagiários (conferidos na tela) usam "
+         },
+         {
+          "t": "Recebimento > Aprovações",
+          "marca": "codigo"
+         },
+         {
+          "t": "; a gestora usa "
+         },
+         {
+          "t": "Recebimento > Conferências",
+          "marca": "codigo"
+         },
+         {
+          "t": ", visível só com \"Usar Conferência Física\". Conferir o rótulo do menu."
          }
         ],
         "nota": null,
@@ -1731,7 +1904,14 @@
           "marca": "negrito"
          },
          {
-          "t": ". Conferir quando o PC-nnnn/2 aparece."
+          "t": ". Conferir quando o "
+         },
+         {
+          "t": "PC-nnnn/2",
+          "marca": "codigo"
+         },
+         {
+          "t": " aparece."
          }
         ],
         "nota": null,
@@ -1800,7 +1980,7 @@
       "url": "/videos/consultor-01-suprimentos.mp4",
       "duracao_s": 203,
       "poster": "/videos/consultor-01-suprimentos.jpg",
-      "legenda": "/videos/consultor-01-suprimentos.vtt",
+      "legendas_url": "/videos/consultor-01-suprimentos.vtt",
       "resumo": [
        {
         "t": "Cotação opcional, a natureza da operação que define o CFOP, a nota com dois números e a linha do tempo do pedido."
@@ -1830,7 +2010,6 @@
       "url": "/checklists/estagiarios/06-recebimento.html",
       "duracao_s": null,
       "poster": null,
-      "legenda": null,
       "resumo": null,
       "fontes": [
        "guia:scripts/dados-checklists-estagiarios.mjs#recebimento"
@@ -1844,7 +2023,6 @@
       "url": "/checklists/consultores/implantacao-09-recebimento.html",
       "duracao_s": null,
       "poster": null,
-      "legenda": null,
       "resumo": null,
       "fontes": [
        "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento"

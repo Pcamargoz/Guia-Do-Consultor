@@ -50,7 +50,7 @@
       "url": "/videos/fluxo-1-vendas.mp4",
       "duracao_s": 188,
       "poster": "/videos/fluxo-1-vendas.jpg",
-      "legenda": "/videos/fluxo-1-vendas.vtt",
+      "legendas_url": "/videos/fluxo-1-vendas.vtt",
       "resumo": [
        {
         "t": "O que é o pedido, os status, as quatro regras que mais travam e o pedido criado na tela."
@@ -77,7 +77,8 @@
       "titulo": "2. Consultar pedidos",
       "onde": [
        {
-        "t": "Vendas > Pedidos de Venda"
+        "t": "Vendas > Pedidos de Venda",
+        "marca": "tela"
        }
       ],
       "intro": null,
@@ -110,7 +111,14 @@
        {
         "texto": [
          {
-          "t": "Em Filtros, buscar por Cliente, Vendedor, Projeto ou Número do Pedido (ex.: PV-000001)."
+          "t": "Em "
+         },
+         {
+          "t": "Filtros",
+          "marca": "codigo"
+         },
+         {
+          "t": ", buscar por Cliente, Vendedor, Projeto ou Número do Pedido (ex.: PV-000001)."
          }
         ],
         "nota": null,
@@ -153,7 +161,11 @@
       "titulo": "3. Conhecer o formulário de pedido (sem salvar)",
       "onde": [
        {
-        "t": "botão + Novo Pedido"
+        "t": "botão "
+       },
+       {
+        "t": "+ Novo Pedido",
+        "marca": "tela"
        }
       ],
       "intro": null,
@@ -236,7 +248,8 @@
       "titulo": "4. Ler os indicadores",
       "onde": [
        {
-        "t": "Vendas > Dashboard Vendas"
+        "t": "Vendas > Dashboard Vendas",
+        "marca": "codigo"
        }
       ],
       "intro": null,
@@ -280,7 +293,14 @@
        {
         "texto": [
          {
-          "t": "Em Vendas > Demonstrativos > Carteira de Pedidos, ler A faturar, A expedir, Em carga, Expedido, Entregue e o aging por dias."
+          "t": "Em "
+         },
+         {
+          "t": "Vendas > Demonstrativos > Carteira de Pedidos",
+          "marca": "codigo"
+         },
+         {
+          "t": ", ler A faturar, A expedir, Em carga, Expedido, Entregue e o aging por dias."
          }
         ],
         "nota": null,
@@ -296,7 +316,15 @@
       "titulo": "5. Metas e comissões",
       "onde": [
        {
-        "t": "Vendas > Metas de Vendas e Vendas > Controle de Comissão"
+        "t": "Vendas > Metas de Vendas",
+        "marca": "codigo"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "Vendas > Controle de Comissão",
+        "marca": "codigo"
        }
       ],
       "intro": null,
@@ -333,7 +361,14 @@
        {
         "texto": [
          {
-          "t": "Ver em Comissões os estágios Previstas, A pagar, Em fechamento, Pagas e Estornadas."
+          "t": "Ver em "
+         },
+         {
+          "t": "Comissões",
+          "marca": "codigo"
+         },
+         {
+          "t": " os estágios Previstas, A pagar, Em fechamento, Pagas e Estornadas."
          }
         ],
         "nota": null,
@@ -349,7 +384,8 @@
       "titulo": "6. Ver aprovações pendentes",
       "onde": [
        {
-        "t": "Vendas > Aprovações"
+        "t": "Vendas > Aprovações",
+        "marca": "codigo"
        }
       ],
       "intro": null,
@@ -487,7 +523,8 @@
       "titulo": "1. Preparar seus dados: criar um pedido de venda de treino",
       "onde": [
        {
-        "t": "Vendas > Pedidos de Venda > + Novo Pedido"
+        "t": "Vendas > Pedidos de Venda > + Novo Pedido",
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -683,7 +720,6 @@
       "url": "/checklists/estagiarios/04-vendas-pedidos.html",
       "duracao_s": null,
       "poster": null,
-      "legenda": null,
       "resumo": null,
       "fontes": [
        "guia:scripts/dados-checklists-estagiarios.mjs#vendas"
@@ -697,7 +733,6 @@
       "url": "/checklists/estagiarios/fluxo-principal-vendas.html",
       "duracao_s": null,
       "poster": null,
-      "legenda": null,
       "resumo": null,
       "fontes": [
        "guia:scripts/dados-fluxos-estagiarios.mjs#fluxo-vendas"
@@ -730,7 +765,11 @@
         "id": "acessar-1",
         "texto": [
          {
-          "t": "Sei acessar: Vendas > Pedidos de Venda > + Novo Pedido"
+          "t": "Sei acessar: "
+         },
+         {
+          "t": "Vendas > Pedidos de Venda > + Novo Pedido",
+          "marca": "tela"
          }
         ]
        },
@@ -738,7 +777,11 @@
         "id": "acessar-2",
         "texto": [
          {
-          "t": "Sei acessar: Vendas > Pedidos de Venda"
+          "t": "Sei acessar: "
+         },
+         {
+          "t": "Vendas > Pedidos de Venda",
+          "marca": "tela"
          }
         ]
        },
@@ -746,7 +789,11 @@
         "id": "acessar-3",
         "texto": [
          {
-          "t": "Sei acessar: botão + Novo Pedido"
+          "t": "Sei acessar: botão "
+         },
+         {
+          "t": "+ Novo Pedido",
+          "marca": "tela"
          }
         ]
        },
@@ -754,7 +801,11 @@
         "id": "acessar-4",
         "texto": [
          {
-          "t": "Sei acessar: Vendas > Dashboard Vendas"
+          "t": "Sei acessar: "
+         },
+         {
+          "t": "Vendas > Dashboard Vendas",
+          "marca": "codigo"
          }
         ]
        },
@@ -762,7 +813,18 @@
         "id": "acessar-5",
         "texto": [
          {
-          "t": "Sei acessar: Vendas > Metas de Vendas e Vendas > Controle de Comissão"
+          "t": "Sei acessar: "
+         },
+         {
+          "t": "Vendas > Metas de Vendas",
+          "marca": "codigo"
+         },
+         {
+          "t": " e "
+         },
+         {
+          "t": "Vendas > Controle de Comissão",
+          "marca": "codigo"
          }
         ]
        },
@@ -770,7 +832,11 @@
         "id": "acessar-6",
         "texto": [
          {
-          "t": "Sei acessar: Vendas > Aprovações"
+          "t": "Sei acessar: "
+         },
+         {
+          "t": "Vendas > Aprovações",
+          "marca": "codigo"
          }
         ]
        },
@@ -955,7 +1021,14 @@
         "marca": "negrito"
        },
        {
-        "t": " no menu ⋯ do pedido abre a \"Nova NF-e — Venda de Mercadoria\" com empresa, cliente, vendedor, CFOP, condição e parcelas do pedido; o número do pedido fica vinculado e não pode ser alterado. O diálogo "
+        "t": " no menu "
+       },
+       {
+        "t": "⋯",
+        "marca": "codigo"
+       },
+       {
+        "t": " do pedido abre a \"Nova NF-e — Venda de Mercadoria\" com empresa, cliente, vendedor, CFOP, condição e parcelas do pedido; o número do pedido fica vinculado e não pode ser alterado. O diálogo "
        },
        {
         "t": "Selecionar Itens para Importar",
@@ -974,7 +1047,14 @@
       ],
       "confirmar": [
        {
-        "t": "Vendas › Pedidos de Venda › ⋯ › Faturar."
+        "t": "Vendas › Pedidos de Venda › "
+       },
+       {
+        "t": "⋯",
+        "marca": "codigo"
+       },
+       {
+        "t": " › Faturar."
        }
       ],
       "confianca": "B",
@@ -1022,7 +1102,14 @@
         "marca": "negrito"
        },
        {
-        "t": " mostra a nota. O menu ⋯ do pedido faturado troca o "
+        "t": " mostra a nota. O menu "
+       },
+       {
+        "t": "⋯",
+        "marca": "codigo"
+       },
+       {
+        "t": " do pedido faturado troca o "
        },
        {
         "t": "Gerar Títulos",
@@ -1034,7 +1121,14 @@
       ],
       "confirmar": [
        {
-        "t": "Faturamento › Notas Fiscais › ⋯ › Finalizar NF; depois Financeiro › Contas a Receber (pesquisar \"NF - ‹número›\") e Vendas › Pedidos de Venda (limpar o filtro Status)."
+        "t": "Faturamento › Notas Fiscais › "
+       },
+       {
+        "t": "⋯",
+        "marca": "codigo"
+       },
+       {
+        "t": " › Finalizar NF; depois Financeiro › Contas a Receber (pesquisar \"NF - ‹número›\") e Vendas › Pedidos de Venda (limpar o filtro Status)."
        }
       ],
       "confianca": "B",
@@ -1301,7 +1395,14 @@
         "marca": "negrito"
        },
        {
-        "t": " para edição. O menu ⋯ do pedido não tem \"Editar\". Pedido "
+        "t": " para edição. O menu "
+       },
+       {
+        "t": "⋯",
+        "marca": "codigo"
+       },
+       {
+        "t": " do pedido não tem \"Editar\". Pedido "
        },
        {
         "t": "Faturado",
@@ -1400,7 +1501,14 @@
       "titulo": "Quando Gerar Títulos está habilitado no pedido",
       "texto": [
        {
-        "t": "No menu ⋯ do pedido, "
+        "t": "No menu "
+       },
+       {
+        "t": "⋯",
+        "marca": "codigo"
+       },
+       {
+        "t": " do pedido, "
        },
        {
         "t": "Gerar Títulos",
@@ -1440,7 +1548,14 @@
       ],
       "confirmar": [
        {
-        "t": "Vendas › Pedidos de Venda › menu ⋯ e coluna TÍTULOS (Gerados / Sem títulos)."
+        "t": "Vendas › Pedidos de Venda › menu "
+       },
+       {
+        "t": "⋯",
+        "marca": "codigo"
+       },
+       {
+        "t": " e coluna TÍTULOS (Gerados / Sem títulos)."
        }
       ],
       "confianca": "B",
@@ -1460,7 +1575,14 @@
         "marca": "negrito"
        },
        {
-        "t": " do menu ⋯ aparece somente em pedido "
+        "t": " do menu "
+       },
+       {
+        "t": "⋯",
+        "marca": "codigo"
+       },
+       {
+        "t": " aparece somente em pedido "
        },
        {
         "t": "Faturado",
@@ -1486,7 +1608,14 @@
       ],
       "confirmar": [
        {
-        "t": "Vendas › Pedidos de Venda › menu ⋯ de pedidos em status diferentes."
+        "t": "Vendas › Pedidos de Venda › menu "
+       },
+       {
+        "t": "⋯",
+        "marca": "codigo"
+       },
+       {
+        "t": " de pedidos em status diferentes."
        }
       ],
       "confianca": "B",
@@ -1538,7 +1667,14 @@
       "titulo": "O pedido passa a Faturado quando a nota é salva",
       "texto": [
        {
-        "t": "No menu ⋯ do pedido, "
+        "t": "No menu "
+       },
+       {
+        "t": "⋯",
+        "marca": "codigo"
+       },
+       {
+        "t": " do pedido, "
        },
        {
         "t": "Faturar",
@@ -1686,7 +1822,18 @@
       "titulo": "1. O pedido: importado ou digitado",
       "onde": [
        {
-        "t": "Vendas > Pedidos de Venda (pedido importado ou + Novo Pedido)"
+        "t": "Vendas > Pedidos de Venda",
+        "marca": "tela"
+       },
+       {
+        "t": " (pedido importado ou "
+       },
+       {
+        "t": "+ Novo Pedido",
+        "marca": "tela"
+       },
+       {
+        "t": ")"
        }
       ],
       "intro": [
@@ -1704,7 +1851,8 @@
       "titulo": "2. Ler a lista e ajustar antes de faturar",
       "onde": [
        {
-        "t": "Vendas > Pedidos de Venda"
+        "t": "Vendas > Pedidos de Venda",
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -1722,7 +1870,15 @@
       "titulo": "3. Alçada de desconto",
       "onde": [
        {
-        "t": "Vendas > Configurações > Alçadas de Desconto e Vendas > Aprovações"
+        "t": "Vendas > Configurações > Alçadas de Desconto",
+        "marca": "codigo"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "Vendas > Aprovações",
+        "marca": "codigo"
        }
       ],
       "intro": [
@@ -1740,7 +1896,18 @@
       "titulo": "4. Títulos pelo pedido e o financeiro nascendo",
       "onde": [
        {
-        "t": "menu ⋯ > Gerar Títulos do pedido e Financeiro > Contas a Receber"
+        "t": "menu "
+       },
+       {
+        "t": "⋯ > Gerar Títulos",
+        "marca": "codigo"
+       },
+       {
+        "t": " do pedido e "
+       },
+       {
+        "t": "Financeiro > Contas a Receber",
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -1758,7 +1925,18 @@
       "titulo": "5. Faturar e ver a nota nascer",
       "onde": [
        {
-        "t": "menu ⋯ > Faturar do pedido e Faturamento > Notas Fiscais"
+        "t": "menu "
+       },
+       {
+        "t": "⋯ > Faturar",
+        "marca": "codigo"
+       },
+       {
+        "t": " do pedido e "
+       },
+       {
+        "t": "Faturamento > Notas Fiscais",
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -1776,7 +1954,32 @@
       "titulo": "6. Encerrar e cancelar na ordem certa",
       "onde": [
        {
-        "t": "menu ⋯ do pedido (Encerrar, Cancelar) e Financeiro > Contas a Receber"
+        "t": "menu "
+       },
+       {
+        "t": "⋯",
+        "marca": "codigo"
+       },
+       {
+        "t": " do pedido ("
+       },
+       {
+        "t": "Encerrar",
+        "marca": "codigo"
+       },
+       {
+        "t": ", "
+       },
+       {
+        "t": "Cancelar",
+        "marca": "codigo"
+       },
+       {
+        "t": ") e "
+       },
+       {
+        "t": "Financeiro > Contas a Receber",
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -1794,7 +1997,25 @@
       "titulo": "7. Liberar para expedição e ver nos indicadores",
       "onde": [
        {
-        "t": "menu ⋯ > Liberar para Expedição do pedido, Vendas > Dashboard Vendas e Vendas > Demonstrativos > Carteira de Pedidos"
+        "t": "menu "
+       },
+       {
+        "t": "⋯ > Liberar para Expedição",
+        "marca": "codigo"
+       },
+       {
+        "t": " do pedido, "
+       },
+       {
+        "t": "Vendas > Dashboard Vendas",
+        "marca": "codigo"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "Vendas > Demonstrativos > Carteira de Pedidos",
+        "marca": "codigo"
        }
       ],
       "intro": [
@@ -1812,7 +2033,22 @@
       "titulo": "8. Comissões, metas e contrato (só se contratados)",
       "onde": [
        {
-        "t": "Vendas > Controle de Comissão, Vendas > Metas de Vendas e Vendas > Contratos de Fornecimento"
+        "t": "Vendas > Controle de Comissão",
+        "marca": "codigo"
+       },
+       {
+        "t": ", "
+       },
+       {
+        "t": "Vendas > Metas de Vendas",
+        "marca": "codigo"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "Vendas > Contratos de Fornecimento",
+        "marca": "codigo"
        }
       ],
       "intro": [
@@ -1993,7 +2229,6 @@
       "url": "/checklists/consultores/implantacao-04-vendas.html",
       "duracao_s": null,
       "poster": null,
-      "legenda": null,
       "resumo": null,
       "fontes": [
        "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
@@ -2090,7 +2325,14 @@
           "marca": "negrito"
          },
          {
-          "t": " e almoxarifado central ativo em Estoque > Locais."
+          "t": " e almoxarifado central ativo em "
+         },
+         {
+          "t": "Estoque > Locais",
+          "marca": "codigo"
+         },
+         {
+          "t": "."
          }
         ],
         "nota": [
@@ -2126,7 +2368,14 @@
           "marca": "negrito"
          },
          {
-          "t": " os dois entram e o aprovador vê Vendas > Aprovações. O vendedor não aprova o próprio desconto. "
+          "t": " os dois entram e o aprovador vê "
+         },
+         {
+          "t": "Vendas > Aprovações",
+          "marca": "codigo"
+         },
+         {
+          "t": ". O vendedor não aprova o próprio desconto. "
          },
          {
           "t": "Fonte:",
@@ -2365,7 +2614,14 @@
           "marca": "negrito"
          },
          {
-          "t": " a nota, mesmo com ela Em Aberto: confira o status da nota em Faturamento > Notas Fiscais."
+          "t": " a nota, mesmo com ela Em Aberto: confira o status da nota em "
+         },
+         {
+          "t": "Faturamento > Notas Fiscais",
+          "marca": "tela"
+         },
+         {
+          "t": "."
          }
         ],
         "nota": null,
@@ -2541,7 +2797,14 @@
        {
         "texto": [
          {
-          "t": "Saída de estoque na nota: a gestora diz que o CFOP que movimenta estoque baixa o estoque na nota; no teste do fluxo completo a finalização da nota não gerou saída de estoque. Conferir em Estoque > Movimentos."
+          "t": "Saída de estoque na nota: a gestora diz que o CFOP que movimenta estoque baixa o estoque na nota; no teste do fluxo completo a finalização da nota não gerou saída de estoque. Conferir em "
+         },
+         {
+          "t": "Estoque > Movimentos",
+          "marca": "codigo"
+         },
+         {
+          "t": "."
          }
         ],
         "nota": null,
@@ -2586,7 +2849,7 @@
       "url": "/videos/consultor-03-comercial.mp4",
       "duracao_s": 220,
       "poster": "/videos/consultor-03-comercial.jpg",
-      "legenda": "/videos/consultor-03-comercial.vtt",
+      "legendas_url": "/videos/consultor-03-comercial.vtt",
       "resumo": [
        {
         "t": "As quatro regras que travam o CRM e o caminho real, do Kanban à oportunidade ganha."
@@ -2616,7 +2879,6 @@
       "url": "/checklists/estagiarios/04-vendas-pedidos.html",
       "duracao_s": null,
       "poster": null,
-      "legenda": null,
       "resumo": null,
       "fontes": [
        "guia:scripts/dados-checklists-estagiarios.mjs#vendas"
@@ -2630,7 +2892,6 @@
       "url": "/checklists/estagiarios/fluxo-principal-vendas.html",
       "duracao_s": null,
       "poster": null,
-      "legenda": null,
       "resumo": null,
       "fontes": [
        "guia:scripts/dados-fluxos-estagiarios.mjs#fluxo-vendas"
@@ -2644,7 +2905,6 @@
       "url": "/checklists/consultores/implantacao-04-vendas.html",
       "duracao_s": null,
       "poster": null,
-      "legenda": null,
       "resumo": null,
       "fontes": [
        "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"

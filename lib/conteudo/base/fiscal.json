@@ -54,7 +54,11 @@
       "titulo": "2. Consultar notas fiscais",
       "onde": [
        {
-        "t": "Faturamento > Notas Fiscais (o módulo já abre nesta tela)"
+        "t": "Faturamento > Notas Fiscais",
+        "marca": "tela"
+       },
+       {
+        "t": " (o módulo já abre nesta tela)"
        }
       ],
       "intro": null,
@@ -137,7 +141,14 @@
       "titulo": "3. Conhecer as ações de uma nota (sem executar)",
       "onde": [
        {
-        "t": "menu ... da linha"
+        "t": "menu "
+       },
+       {
+        "t": "...",
+        "marca": "codigo"
+       },
+       {
+        "t": " da linha"
        }
       ],
       "intro": null,
@@ -177,7 +188,14 @@
       "titulo": "4. Saber como o pedido vira nota",
       "onde": [
        {
-        "t": "menu ⋯ > Faturar do pedido"
+        "t": "menu "
+       },
+       {
+        "t": "⋯ > Faturar",
+        "marca": "codigo"
+       },
+       {
+        "t": " do pedido"
        }
       ],
       "intro": null,
@@ -185,7 +203,14 @@
        {
         "texto": [
          {
-          "t": "Saber que a nota nasce do pedido: ⋯ > Faturar importa os itens e abre \"Nova NF-e\" com cliente, CFOP e parcelas do pedido."
+          "t": "Saber que a nota nasce do pedido: "
+         },
+         {
+          "t": "⋯ > Faturar",
+          "marca": "codigo"
+         },
+         {
+          "t": " importa os itens e abre \"Nova NF-e\" com cliente, CFOP e parcelas do pedido."
          }
         ],
         "nota": null,
@@ -261,7 +286,14 @@
       "titulo": "1. Preparar seus dados: faturar o seu pedido (sem transmitir)",
       "onde": [
        {
-        "t": "menu ⋯ > Faturar do pedido"
+        "t": "menu "
+       },
+       {
+        "t": "⋯ > Faturar",
+        "marca": "codigo"
+       },
+       {
+        "t": " do pedido"
        }
       ],
       "intro": [
@@ -294,7 +326,14 @@
        {
         "texto": [
          {
-          "t": "No seu pedido, abrir ⋯ > Faturar: abre a nova nota com a faixa \"Ambiente NF-e: HOMOLOGAÇÃO\" e o diálogo "
+          "t": "No seu pedido, abrir "
+         },
+         {
+          "t": "⋯ > Faturar",
+          "marca": "codigo"
+         },
+         {
+          "t": ": abre a nova nota com a faixa \"Ambiente NF-e: HOMOLOGAÇÃO\" e o diálogo "
          },
          {
           "t": "Selecionar Itens para Importar",
@@ -366,7 +405,6 @@
       "url": "/checklists/estagiarios/12-faturamento-fiscal.html",
       "duracao_s": null,
       "poster": null,
-      "legenda": null,
       "resumo": null,
       "fontes": [
        "guia:scripts/dados-checklists-estagiarios.mjs#faturamento"
@@ -398,7 +436,14 @@
         "id": "acessar-1",
         "texto": [
          {
-          "t": "Sei acessar: menu ⋯ > Faturar do pedido"
+          "t": "Sei acessar: menu "
+         },
+         {
+          "t": "⋯ > Faturar",
+          "marca": "codigo"
+         },
+         {
+          "t": " do pedido"
          }
         ]
        },
@@ -406,7 +451,14 @@
         "id": "acessar-2",
         "texto": [
          {
-          "t": "Sei acessar: Faturamento > Notas Fiscais (o módulo já abre nesta tela)"
+          "t": "Sei acessar: "
+         },
+         {
+          "t": "Faturamento > Notas Fiscais",
+          "marca": "tela"
+         },
+         {
+          "t": " (o módulo já abre nesta tela)"
          }
         ]
        },
@@ -414,7 +466,14 @@
         "id": "acessar-3",
         "texto": [
          {
-          "t": "Sei acessar: menu ... da linha"
+          "t": "Sei acessar: menu "
+         },
+         {
+          "t": "...",
+          "marca": "codigo"
+         },
+         {
+          "t": " da linha"
          }
         ]
        },
@@ -422,7 +481,11 @@
         "id": "acessar-4",
         "texto": [
          {
-          "t": "Sei acessar: módulo Fiscal"
+          "t": "Sei acessar: módulo "
+         },
+         {
+          "t": "Fiscal",
+          "marca": "codigo"
          }
         ]
        },
@@ -553,7 +616,14 @@
       "rotulo": "Caminho — Faturamento: notas fiscais e a nova NF-e",
       "texto": [
        {
-        "t": "Faturamento › Notas Fiscais (abas NF-e e NFS-e). A nota nasce do pedido pelo menu ⋯ › Faturar do pedido, em Vendas › Pedidos de Venda, e abre em /faturamento/notas/novo."
+        "t": "Faturamento › Notas Fiscais (abas NF-e e NFS-e). A nota nasce do pedido pelo menu "
+       },
+       {
+        "t": "⋯ › Faturar",
+        "marca": "codigo"
+       },
+       {
+        "t": " do pedido, em Vendas › Pedidos de Venda, e abre em /faturamento/notas/novo."
        }
       ],
       "fontes": [
@@ -598,7 +668,8 @@
       "titulo": "1. Empresa e regime",
       "onde": [
        {
-        "t": "Configurações > Empresas"
+        "t": "Configurações > Empresas",
+        "marca": "codigo"
        }
       ],
       "intro": [
@@ -616,7 +687,22 @@
       "titulo": "2. CFOP e textos fiscais",
       "onde": [
        {
-        "t": "Fiscal > Configurações > CFOP (também em Faturamento > Configurações > CFOP) e Fiscal > Configurações > Textos Fiscais"
+        "t": "Fiscal > Configurações > CFOP",
+        "marca": "codigo"
+       },
+       {
+        "t": " (também em "
+       },
+       {
+        "t": "Faturamento > Configurações > CFOP",
+        "marca": "codigo"
+       },
+       {
+        "t": ") e "
+       },
+       {
+        "t": "Fiscal > Configurações > Textos Fiscais",
+        "marca": "codigo"
        }
       ],
       "intro": [
@@ -634,7 +720,11 @@
       "titulo": "3. NCM e regras de tributação por estado",
       "onde": [
        {
-        "t": "Fiscal > Configurações > NCM (modal \"NCM por Estado\" na mesma tela)"
+        "t": "Fiscal > Configurações > NCM",
+        "marca": "codigo"
+       },
+       {
+        "t": " (modal \"NCM por Estado\" na mesma tela)"
        }
       ],
       "intro": [
@@ -652,7 +742,15 @@
       "titulo": "4. Onboarding e Diagnóstico Fiscal",
       "onde": [
        {
-        "t": "Fiscal > Onboarding Fiscal e Fiscal > Diagnóstico Fiscal"
+        "t": "Fiscal > Onboarding Fiscal",
+        "marca": "codigo"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "Fiscal > Diagnóstico Fiscal",
+        "marca": "codigo"
        }
       ],
       "intro": [
@@ -670,7 +768,8 @@
       "titulo": "5. Provar o cálculo no pedido de venda",
       "onde": [
        {
-        "t": "Vendas > Pedidos de Venda > Novo Pedido"
+        "t": "Vendas > Pedidos de Venda > Novo Pedido",
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -688,7 +787,18 @@
       "titulo": "6. Provar o cálculo na nota",
       "onde": [
        {
-        "t": "menu ⋯ > Faturar do pedido e Faturamento > Notas Fiscais"
+        "t": "menu "
+       },
+       {
+        "t": "⋯ > Faturar",
+        "marca": "codigo"
+       },
+       {
+        "t": " do pedido e "
+       },
+       {
+        "t": "Faturamento > Notas Fiscais",
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -724,7 +834,29 @@
       "titulo": "8. Serviço, obrigações acessórias e perfis",
       "onde": [
        {
-        "t": "Fiscal > Regras Fiscais de Serviço, Fiscal > Escrituração SPED, Fiscal > Sintegra, Fiscal > GNRE"
+        "t": "Fiscal > Regras Fiscais de Serviço",
+        "marca": "codigo"
+       },
+       {
+        "t": ", "
+       },
+       {
+        "t": "Fiscal > Escrituração SPED",
+        "marca": "codigo"
+       },
+       {
+        "t": ", "
+       },
+       {
+        "t": "Fiscal > Sintegra",
+        "marca": "codigo"
+       },
+       {
+        "t": ", "
+       },
+       {
+        "t": "Fiscal > GNRE",
+        "marca": "codigo"
        }
       ],
       "intro": [
@@ -905,7 +1037,6 @@
       "url": "/checklists/consultores/implantacao-06-fiscal.html",
       "duracao_s": null,
       "poster": null,
-      "legenda": null,
       "resumo": null,
       "fontes": [
        "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
@@ -999,7 +1130,14 @@
        {
         "texto": [
          {
-          "t": "Módulo fiscal na licença e versão compatível com o regime de todas as empresas; cliente ciente do que é PRO (Escrituração SPED, Perfil SUFRAMA, Mapa de Apuração, MDF-e)."
+          "t": "Módulo "
+         },
+         {
+          "t": "fiscal",
+          "marca": "codigo"
+         },
+         {
+          "t": " na licença e versão compatível com o regime de todas as empresas; cliente ciente do que é PRO (Escrituração SPED, Perfil SUFRAMA, Mapa de Apuração, MDF-e)."
          }
         ],
         "nota": [
@@ -1496,7 +1634,6 @@
       "url": "/checklists/estagiarios/12-faturamento-fiscal.html",
       "duracao_s": null,
       "poster": null,
-      "legenda": null,
       "resumo": null,
       "fontes": [
        "guia:scripts/dados-checklists-estagiarios.mjs#faturamento"
@@ -1510,7 +1647,6 @@
       "url": "/checklists/consultores/implantacao-06-fiscal.html",
       "duracao_s": null,
       "poster": null,
-      "legenda": null,
       "resumo": null,
       "fontes": [
        "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"

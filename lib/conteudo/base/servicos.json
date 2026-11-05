@@ -54,7 +54,8 @@
       "titulo": "2. Ler o painel de serviços",
       "onde": [
        {
-        "t": "Serviços > Dashboard Serviços"
+        "t": "Serviços > Dashboard Serviços",
+        "marca": "codigo"
        }
       ],
       "intro": null,
@@ -107,7 +108,8 @@
       "titulo": "3. Consultar medições",
       "onde": [
        {
-        "t": "Serviços > Medições"
+        "t": "Serviços > Medições",
+        "marca": "codigo"
        }
       ],
       "intro": null,
@@ -147,7 +149,8 @@
       "titulo": "4. Entender de onde vem a medição (sem salvar)",
       "onde": [
        {
-        "t": "+ Nova Medição"
+        "t": "+ Nova Medição",
+        "marca": "tela"
        }
       ],
       "intro": null,
@@ -203,7 +206,8 @@
       "titulo": "5. Conhecer as equipes",
       "onde": [
        {
-        "t": "Serviços > Configurações > Equipes de Campo"
+        "t": "Serviços > Configurações > Equipes de Campo",
+        "marca": "codigo"
        }
       ],
       "intro": null,
@@ -343,7 +347,8 @@
       "titulo": "1. Preparar seus dados: agendar uma medição do seu pedido",
       "onde": [
        {
-        "t": "Serviços > Medições > + Nova Medição"
+        "t": "Serviços > Medições > + Nova Medição",
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -369,7 +374,14 @@
        {
         "texto": [
          {
-          "t": "Em Serviços > Medições, clicar em "
+          "t": "Em "
+         },
+         {
+          "t": "Serviços > Medições",
+          "marca": "codigo"
+         },
+         {
+          "t": ", clicar em "
          },
          {
           "t": "Nova Medição",
@@ -504,7 +516,6 @@
       "url": "/checklists/estagiarios/09-servicos-campo.html",
       "duracao_s": null,
       "poster": null,
-      "legenda": null,
       "resumo": null,
       "fontes": [
        "guia:scripts/dados-checklists-estagiarios.mjs#servicos"
@@ -536,7 +547,11 @@
         "id": "acessar-1",
         "texto": [
          {
-          "t": "Sei acessar: Serviços > Medições > + Nova Medição"
+          "t": "Sei acessar: "
+         },
+         {
+          "t": "Serviços > Medições > + Nova Medição",
+          "marca": "tela"
          }
         ]
        },
@@ -544,7 +559,11 @@
         "id": "acessar-2",
         "texto": [
          {
-          "t": "Sei acessar: Serviços > Dashboard Serviços"
+          "t": "Sei acessar: "
+         },
+         {
+          "t": "Serviços > Dashboard Serviços",
+          "marca": "codigo"
          }
         ]
        },
@@ -552,7 +571,11 @@
         "id": "acessar-3",
         "texto": [
          {
-          "t": "Sei acessar: Serviços > Medições"
+          "t": "Sei acessar: "
+         },
+         {
+          "t": "Serviços > Medições",
+          "marca": "codigo"
          }
         ]
        },
@@ -560,7 +583,11 @@
         "id": "acessar-4",
         "texto": [
          {
-          "t": "Sei acessar: + Nova Medição"
+          "t": "Sei acessar: "
+         },
+         {
+          "t": "+ Nova Medição",
+          "marca": "tela"
          }
         ]
        },
@@ -568,7 +595,11 @@
         "id": "acessar-5",
         "texto": [
          {
-          "t": "Sei acessar: Serviços > Configurações > Equipes de Campo"
+          "t": "Sei acessar: "
+         },
+         {
+          "t": "Serviços > Configurações > Equipes de Campo",
+          "marca": "codigo"
          }
         ]
        },
@@ -1028,7 +1059,8 @@
       "titulo": "1. Medição: criar e agendar a partir do pedido",
       "onde": [
        {
-        "t": "Serviços > Medições > + Nova Medição"
+        "t": "Serviços > Medições > + Nova Medição",
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -1046,7 +1078,21 @@
       "titulo": "2. Medição: medir os vãos e concluir",
       "onde": [
        {
-        "t": "aba Vãos da medição e ação Medir vãos na lista de medições"
+        "t": "aba "
+       },
+       {
+        "t": "Vãos",
+        "marca": "codigo"
+       },
+       {
+        "t": " da medição e ação "
+       },
+       {
+        "t": "Medir vãos",
+        "marca": "codigo"
+       },
+       {
+        "t": " na lista de medições"
        }
       ],
       "intro": [
@@ -1064,7 +1110,11 @@
       "titulo": "3. Medição: aprovar com outro conferente",
       "onde": [
        {
-        "t": "Serviços > Medições (medição \"Aguardando Conferência\")"
+        "t": "Serviços > Medições",
+        "marca": "codigo"
+       },
+       {
+        "t": " (medição \"Aguardando Conferência\")"
        }
       ],
       "intro": [
@@ -1082,7 +1132,18 @@
       "titulo": "4. Instalação",
       "onde": [
        {
-        "t": "botão Gerar Instalação da medição e Serviços > Instalações"
+        "t": "botão "
+       },
+       {
+        "t": "Gerar Instalação",
+        "marca": "codigo"
+       },
+       {
+        "t": " da medição e "
+       },
+       {
+        "t": "Serviços > Instalações",
+        "marca": "codigo"
        }
       ],
       "intro": [
@@ -1100,7 +1161,15 @@
       "titulo": "5. Vistoria",
       "onde": [
        {
-        "t": "Ver Vistoria na instalação ou Serviços > Vistorias > + Nova Vistoria"
+        "t": "Ver Vistoria",
+        "marca": "codigo"
+       },
+       {
+        "t": " na instalação ou "
+       },
+       {
+        "t": "Serviços > Vistorias > + Nova Vistoria",
+        "marca": "codigo"
        }
       ],
       "intro": [
@@ -1125,7 +1194,14 @@
       "titulo": "6. Assistência técnica",
       "onde": [
        {
-        "t": "botão Gerar Assistência Técnica da vistoria"
+        "t": "botão "
+       },
+       {
+        "t": "Gerar Assistência Técnica",
+        "marca": "codigo"
+       },
+       {
+        "t": " da vistoria"
        }
       ],
       "intro": [
@@ -1150,7 +1226,22 @@
       "titulo": "7. Gestão de campo",
       "onde": [
        {
-        "t": "Serviços > Cockpit de Campo, Serviços > Dashboard Serviços e Serviços > Minha Equipe Agora"
+        "t": "Serviços > Cockpit de Campo",
+        "marca": "codigo"
+       },
+       {
+        "t": ", "
+       },
+       {
+        "t": "Serviços > Dashboard Serviços",
+        "marca": "codigo"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "Serviços > Minha Equipe Agora",
+        "marca": "codigo"
        }
       ],
       "intro": [
@@ -1315,7 +1406,6 @@
       "url": "/checklists/consultores/implantacao-12-servicos.html",
       "duracao_s": null,
       "poster": null,
-      "legenda": null,
       "resumo": null,
       "fontes": [
        "guia:scripts/dados-checklists-implantacao.mjs#implantacao-servicos"
@@ -1419,7 +1509,14 @@
           "marca": "negrito"
          },
          {
-          "t": " Serviços > Configurações > Equipes de Campo. "
+          "t": " "
+         },
+         {
+          "t": "Serviços > Configurações > Equipes de Campo",
+          "marca": "codigo"
+         },
+         {
+          "t": ". "
          },
          {
           "t": "Fonte:",
@@ -1467,7 +1564,14 @@
           "marca": "negrito"
          },
          {
-          "t": " Configurações > Config. Serviços, abas Parâmetros, Instalação, Assistência e Geral. "
+          "t": " "
+         },
+         {
+          "t": "Configurações > Config. Serviços",
+          "marca": "codigo"
+         },
+         {
+          "t": ", abas Parâmetros, Instalação, Assistência e Geral. "
          },
          {
           "t": "Fonte:",
@@ -1501,7 +1605,14 @@
           "marca": "negrito"
          },
          {
-          "t": " o pedido em Vendas > Pedidos de Venda. "
+          "t": " o pedido em "
+         },
+         {
+          "t": "Vendas > Pedidos de Venda",
+          "marca": "tela"
+         },
+         {
+          "t": ". "
          },
          {
           "t": "Fonte:",
@@ -1936,7 +2047,21 @@
        {
         "texto": [
          {
-          "t": "Caminho dos conferentes: o Fluxo de serviços de campo cita Serviços > Configurações > Conferentes; o manual-11-servicos cita Configurações > Config. Serviços, aba "
+          "t": "Caminho dos conferentes: o Fluxo de serviços de campo cita "
+         },
+         {
+          "t": "Serviços > Configurações > Conferentes",
+          "marca": "codigo"
+         },
+         {
+          "t": "; o manual-11-servicos cita "
+         },
+         {
+          "t": "Configurações > Config. Serviços",
+          "marca": "codigo"
+         },
+         {
+          "t": ", aba "
          },
          {
           "t": "Conferentes",
@@ -1955,7 +2080,14 @@
        {
         "texto": [
          {
-          "t": "Pagamento de instalação com equipe terceirizada, aplicativo de campo /campo e Diário de Obra com projeto não foram testados."
+          "t": "Pagamento de instalação com equipe terceirizada, aplicativo de campo "
+         },
+         {
+          "t": "/campo",
+          "marca": "codigo"
+         },
+         {
+          "t": " e Diário de Obra com projeto não foram testados."
          }
         ],
         "nota": null,
@@ -1988,7 +2120,7 @@
       "url": "/videos/consultor-02-servicos.mp4",
       "duracao_s": 168,
       "poster": "/videos/consultor-02-servicos.jpg",
-      "legenda": "/videos/consultor-02-servicos.vtt",
+      "legendas_url": "/videos/consultor-02-servicos.vtt",
       "resumo": [
        {
         "t": "Empresa e técnico na medição, o conferente diferente, as passagens por botão e a ordem dos aceites."
@@ -2018,7 +2150,6 @@
       "url": "/checklists/estagiarios/09-servicos-campo.html",
       "duracao_s": null,
       "poster": null,
-      "legenda": null,
       "resumo": null,
       "fontes": [
        "guia:scripts/dados-checklists-estagiarios.mjs#servicos"
@@ -2032,7 +2163,6 @@
       "url": "/checklists/consultores/implantacao-12-servicos.html",
       "duracao_s": null,
       "poster": null,
-      "legenda": null,
       "resumo": null,
       "fontes": [
        "guia:scripts/dados-checklists-implantacao.mjs#implantacao-servicos"

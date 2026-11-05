@@ -54,7 +54,8 @@
       "titulo": "2. Ler a visão geral",
       "onde": [
        {
-        "t": "Produção > Visão geral"
+        "t": "Produção > Visão geral",
+        "marca": "codigo"
        }
       ],
       "intro": null,
@@ -91,7 +92,8 @@
       "titulo": "3. Consultar ordens de produção",
       "onde": [
        {
-        "t": "Produção > Ordens de produção"
+        "t": "Produção > Ordens de produção",
+        "marca": "codigo"
        }
       ],
       "intro": null,
@@ -148,7 +150,11 @@
       "titulo": "4. Ver os detalhes da OP pelo menu",
       "onde": [
        {
-        "t": "Mais ações da linha da OP"
+        "t": "Mais ações",
+        "marca": "codigo"
+       },
+       {
+        "t": " da linha da OP"
        }
       ],
       "intro": [
@@ -238,7 +244,8 @@
       "titulo": "5. Acompanhar o chão de fábrica",
       "onde": [
        {
-        "t": "Produção > Painel de fábrica"
+        "t": "Produção > Painel de fábrica",
+        "marca": "codigo"
        }
       ],
       "intro": null,
@@ -299,7 +306,8 @@
       "titulo": "6. Entender de onde vêm as OPs",
       "onde": [
        {
-        "t": "Produção > Integração de Produção"
+        "t": "Produção > Integração de Produção",
+        "marca": "codigo"
        }
       ],
       "intro": null,
@@ -327,7 +335,8 @@
       "titulo": "7. Ver a produção no estoque",
       "onde": [
        {
-        "t": "Estoque > Movimentos"
+        "t": "Estoque > Movimentos",
+        "marca": "codigo"
        }
       ],
       "intro": null,
@@ -440,7 +449,8 @@
       "titulo": "1. Preparar seus dados: abrir uma ordem de produção",
       "onde": [
        {
-        "t": "Produção > Ordens de produção > Nova OP"
+        "t": "Produção > Ordens de produção > Nova OP",
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -616,7 +626,6 @@
       "url": "/checklists/estagiarios/08-producao.html",
       "duracao_s": null,
       "poster": null,
-      "legenda": null,
       "resumo": null,
       "fontes": [
        "guia:scripts/dados-checklists-estagiarios.mjs#producao"
@@ -648,7 +657,11 @@
         "id": "acessar-1",
         "texto": [
          {
-          "t": "Sei acessar: Produção > Ordens de produção > Nova OP"
+          "t": "Sei acessar: "
+         },
+         {
+          "t": "Produção > Ordens de produção > Nova OP",
+          "marca": "tela"
          }
         ]
        },
@@ -656,7 +669,11 @@
         "id": "acessar-2",
         "texto": [
          {
-          "t": "Sei acessar: Produção > Visão geral"
+          "t": "Sei acessar: "
+         },
+         {
+          "t": "Produção > Visão geral",
+          "marca": "codigo"
          }
         ]
        },
@@ -664,7 +681,11 @@
         "id": "acessar-3",
         "texto": [
          {
-          "t": "Sei acessar: Produção > Ordens de produção"
+          "t": "Sei acessar: "
+         },
+         {
+          "t": "Produção > Ordens de produção",
+          "marca": "codigo"
          }
         ]
        },
@@ -672,7 +693,14 @@
         "id": "acessar-4",
         "texto": [
          {
-          "t": "Sei acessar: Mais ações da linha da OP"
+          "t": "Sei acessar: "
+         },
+         {
+          "t": "Mais ações",
+          "marca": "codigo"
+         },
+         {
+          "t": " da linha da OP"
          }
         ]
        },
@@ -680,7 +708,11 @@
         "id": "acessar-5",
         "texto": [
          {
-          "t": "Sei acessar: Produção > Painel de fábrica"
+          "t": "Sei acessar: "
+         },
+         {
+          "t": "Produção > Painel de fábrica",
+          "marca": "codigo"
          }
         ]
        },
@@ -688,7 +720,11 @@
         "id": "acessar-6",
         "texto": [
          {
-          "t": "Sei acessar: Produção > Integração de Produção"
+          "t": "Sei acessar: "
+         },
+         {
+          "t": "Produção > Integração de Produção",
+          "marca": "codigo"
          }
         ]
        },
@@ -696,7 +732,11 @@
         "id": "acessar-7",
         "texto": [
          {
-          "t": "Sei acessar: Estoque > Movimentos"
+          "t": "Sei acessar: "
+         },
+         {
+          "t": "Estoque > Movimentos",
+          "marca": "codigo"
          }
         ]
        },
@@ -850,7 +890,14 @@
         "marca": "negrito"
        },
        {
-        "t": "), Separação de materiais, Painel de fábrica e Configurações (etapas, processos, linhas e estrutura de produto). Menu ⋯ da OP: Materiais necessários, Etapas de execução da OP, Apontamentos, Custo da OP, Linha do tempo e Mais ações (Marcar produzido, Cancelar OP)."
+        "t": "), Separação de materiais, Painel de fábrica e Configurações (etapas, processos, linhas e estrutura de produto). Menu "
+       },
+       {
+        "t": "⋯",
+        "marca": "codigo"
+       },
+       {
+        "t": " da OP: Materiais necessários, Etapas de execução da OP, Apontamentos, Custo da OP, Linha do tempo e Mais ações (Marcar produzido, Cancelar OP)."
        }
       ],
       "fontes": [
@@ -923,7 +970,14 @@
       "titulo": "Marcar produzido gera a entrada do produto acabado",
       "texto": [
        {
-        "t": "Em Mais ações › Marcar produzido, a OP vai para "
+        "t": "Em "
+       },
+       {
+        "t": "Mais ações › Marcar produzido",
+        "marca": "codigo"
+       },
+       {
+        "t": ", a OP vai para "
        },
        {
         "t": "Produzido",
@@ -935,7 +989,14 @@
       ],
       "confirmar": [
        {
-        "t": "Produção › Ordens de produção, Estoque › Movimentos e Mais ações › Custo da OP."
+        "t": "Produção › Ordens de produção, Estoque › Movimentos e "
+       },
+       {
+        "t": "Mais ações › Custo da OP",
+        "marca": "codigo"
+       },
+       {
+        "t": "."
        }
       ],
       "confianca": "B",
@@ -1015,7 +1076,14 @@
         "marca": "negrito"
        },
        {
-        "t": ", ao salvar a OP as requisições de material são criadas sozinhas (quantidade da estrutura vezes a quantidade da OP), sem usar \"Importar da estrutura\"; reimportar não duplica. Sem estrutura aparece o aviso \"OP sem requisições da estrutura\". Baixar o material pelo menu ⋯ › Materiais necessários ("
+        "t": ", ao salvar a OP as requisições de material são criadas sozinhas (quantidade da estrutura vezes a quantidade da OP), sem usar \"Importar da estrutura\"; reimportar não duplica. Sem estrutura aparece o aviso \"OP sem requisições da estrutura\". Baixar o material pelo menu "
+       },
+       {
+        "t": "⋯ › Materiais necessários",
+        "marca": "codigo"
+       },
+       {
+        "t": " ("
        },
        {
         "t": "Baixar",
@@ -1034,7 +1102,14 @@
       ],
       "confirmar": [
        {
-        "t": "Produção › Ordens de produção › ⋯ › Materiais necessários e Estoque › Movimentos."
+        "t": "Produção › Ordens de produção › "
+       },
+       {
+        "t": "⋯",
+        "marca": "codigo"
+       },
+       {
+        "t": " › Materiais necessários e Estoque › Movimentos."
        }
       ],
       "confianca": "B",
@@ -1078,7 +1153,8 @@
       "titulo": "1. Estrutura do produto",
       "onde": [
        {
-        "t": "Produção > Configurações > Estrutura de produto"
+        "t": "Produção > Configurações > Estrutura de produto",
+        "marca": "codigo"
        }
       ],
       "intro": [
@@ -1096,7 +1172,8 @@
       "titulo": "2. Ordem de produção a partir do pedido",
       "onde": [
        {
-        "t": "Produção > Ordens de produção > + Nova OP"
+        "t": "Produção > Ordens de produção > + Nova OP",
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -1114,7 +1191,8 @@
       "titulo": "3. Requisições e baixa de material",
       "onde": [
        {
-        "t": "Mais ações > Materiais necessários"
+        "t": "Mais ações > Materiais necessários",
+        "marca": "codigo"
        }
       ],
       "intro": [
@@ -1132,7 +1210,25 @@
       "titulo": "4. Apontamento: iniciar e finalizar",
       "onde": [
        {
-        "t": "botão ▶ da linha da OP, Mais ações > Apontamentos e Produção > Terminal de apontamento"
+        "t": "botão "
+       },
+       {
+        "t": "▶",
+        "marca": "codigo"
+       },
+       {
+        "t": " da linha da OP, "
+       },
+       {
+        "t": "Mais ações > Apontamentos",
+        "marca": "codigo"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "Produção > Terminal de apontamento",
+        "marca": "codigo"
        }
       ],
       "intro": [
@@ -1150,7 +1246,15 @@
       "titulo": "5. Marcar produzido e entrada do produto acabado",
       "onde": [
        {
-        "t": "Mais ações > Marcar produzido e Estoque > Movimentos"
+        "t": "Mais ações > Marcar produzido",
+        "marca": "codigo"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "Estoque > Movimentos",
+        "marca": "codigo"
        }
       ],
       "intro": [
@@ -1168,7 +1272,22 @@
       "titulo": "6. Acompanhamento da fábrica",
       "onde": [
        {
-        "t": "Produção > Painel de fábrica, Produção > Separação de materiais e Produção > Visão geral"
+        "t": "Produção > Painel de fábrica",
+        "marca": "codigo"
+       },
+       {
+        "t": ", "
+       },
+       {
+        "t": "Produção > Separação de materiais",
+        "marca": "codigo"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "Produção > Visão geral",
+        "marca": "codigo"
        }
       ],
       "intro": [
@@ -1317,7 +1436,6 @@
       "url": "/checklists/consultores/implantacao-11-producao.html",
       "duracao_s": null,
       "poster": null,
-      "legenda": null,
       "resumo": null,
       "fontes": [
        "guia:scripts/dados-checklists-implantacao.mjs#implantacao-producao"
@@ -1387,7 +1505,21 @@
           "marca": "negrito"
          },
          {
-          "t": " Produção > Configurações e Cadastros > Produtos. Sem processo no produto a OP não tem etapas, não aparece no Painel de fábrica e o terminal não deixa apontar. "
+          "t": " "
+         },
+         {
+          "t": "Produção > Configurações",
+          "marca": "codigo"
+         },
+         {
+          "t": " e "
+         },
+         {
+          "t": "Cadastros > Produtos",
+          "marca": "tela"
+         },
+         {
+          "t": ". Sem processo no produto a OP não tem etapas, não aparece no Painel de fábrica e o terminal não deixa apontar. "
          },
          {
           "t": "Fonte:",
@@ -1428,7 +1560,21 @@
           "marca": "negrito"
          },
          {
-          "t": " Estoque > Saldo e Estoque > Locais. Sem local ativo a OP não conclui (selo \"Conclusão bloqueada\"). "
+          "t": " "
+         },
+         {
+          "t": "Estoque > Saldo",
+          "marca": "codigo"
+         },
+         {
+          "t": " e "
+         },
+         {
+          "t": "Estoque > Locais",
+          "marca": "codigo"
+         },
+         {
+          "t": ". Sem local ativo a OP não conclui (selo \"Conclusão bloqueada\"). "
          },
          {
           "t": "Fonte:",
@@ -1455,7 +1601,21 @@
           "marca": "negrito"
          },
          {
-          "t": " o pedido em Vendas > Pedidos de Venda e o funcionário em Cadastros > Participantes. "
+          "t": " o pedido em "
+         },
+         {
+          "t": "Vendas > Pedidos de Venda",
+          "marca": "tela"
+         },
+         {
+          "t": " e o funcionário em "
+         },
+         {
+          "t": "Cadastros > Participantes",
+          "marca": "tela"
+         },
+         {
+          "t": ". "
          },
          {
           "t": "Fonte:",
@@ -1482,7 +1642,14 @@
           "marca": "negrito"
          },
          {
-          "t": " Estoque > Saldo. "
+          "t": " "
+         },
+         {
+          "t": "Estoque > Saldo",
+          "marca": "codigo"
+         },
+         {
+          "t": ". "
          },
          {
           "t": "Fonte:",
@@ -1531,7 +1698,14 @@
        {
         "texto": [
          {
-          "t": "As baixas e o estorno de material bateram com Estoque > Movimentos e o saldo dos insumos."
+          "t": "As baixas e o estorno de material bateram com "
+         },
+         {
+          "t": "Estoque > Movimentos",
+          "marca": "codigo"
+         },
+         {
+          "t": " e o saldo dos insumos."
          }
         ],
         "nota": null,
@@ -1802,7 +1976,14 @@
        {
         "texto": [
          {
-          "t": "Antes da baixa, o selo de disponibilidade pode descontar duas vezes a reserva da própria OP (ex.: \"2 disponível · falta 6\" com 10 em estoque): confira o saldo em Estoque > Saldo."
+          "t": "Antes da baixa, o selo de disponibilidade pode descontar duas vezes a reserva da própria OP (ex.: \"2 disponível · falta 6\" com 10 em estoque): confira o saldo em "
+         },
+         {
+          "t": "Estoque > Saldo",
+          "marca": "codigo"
+         },
+         {
+          "t": "."
          }
         ],
         "nota": null,
@@ -1989,7 +2170,7 @@
       "url": "/videos/consultor-05-producao.mp4",
       "duracao_s": 173,
       "poster": "/videos/consultor-05-producao.jpg",
-      "legenda": "/videos/consultor-05-producao.vtt",
+      "legendas_url": "/videos/consultor-05-producao.vtt",
       "resumo": [
        {
         "t": "Estrutura, ordem de produção, apontamento e entrada do acabado."
@@ -2019,7 +2200,6 @@
       "url": "/checklists/estagiarios/08-producao.html",
       "duracao_s": null,
       "poster": null,
-      "legenda": null,
       "resumo": null,
       "fontes": [
        "guia:scripts/dados-checklists-estagiarios.mjs#producao"
@@ -2033,7 +2213,6 @@
       "url": "/checklists/consultores/implantacao-11-producao.html",
       "duracao_s": null,
       "poster": null,
-      "legenda": null,
       "resumo": null,
       "fontes": [
        "guia:scripts/dados-checklists-implantacao.mjs#implantacao-producao"

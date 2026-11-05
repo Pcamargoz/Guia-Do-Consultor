@@ -18,7 +18,7 @@ export function harnessFicticio() {
   });
   return {
     regras: [
-      regra('regra-exemplo-pedido-aprovado', 'Pedido aprovado não volta a rascunho (fictício)', ['vendas'], 'Exemplo fictício: depois de aprovado, o pedido só pode ser cancelado.', 'Abra **Vendas > Pedidos**, pesquise "PV - <número>" e tente editar um pedido *aprovado* em `Pedidos` (fictício). Veja [o vídeo](/videos/fluxo-1-vendas.mp4) e [isto](javascript:alert(1)).'),
+      regra('regra-exemplo-pedido-aprovado', 'Pedido aprovado não volta a rascunho (fictício)', ['vendas'], 'Exemplo fictício: depois de aprovado, o pedido só pode ser cancelado.', 'Abra **Vendas > Pedidos**, pesquise "PV - <número>" e tente editar um pedido *aprovado* em `Vendas > Pedidos` e confira o campo `Situação` = `APROVADO` (fictício). Veja [o vídeo](/videos/fluxo-1-vendas.mp4) e [isto](javascript:alert(1)).'),
       regra('regra-exemplo-saldo-por-local', 'Saldo é controlado por local (fictício)', ['estoque'], 'Exemplo fictício: cada local de estoque tem saldo próprio.', null),
     ],
     funcional: [{ id: 'funcional-exemplo-vendas', titulo: 'Pedidos de venda (fictício)', modulos: ['vendas'], secoes: { Caminho: '`Vendas > Pedidos` (fictício)' }, fonte: 'harness:conhecimento/produto/funcional/funcional-exemplo-vendas.md' }],

@@ -4,6 +4,8 @@
      carregarResumo()              → Promise<Resumo | { erro: { status, mensagem } }>
      carregarModulo(id, jornada)   → Promise<Detalhe | { erro }>
      visibilidade()                → Promise<{ itens } | { erro }>        (admin: visibilidade({ todos: true }) → lista)
+                                     o mapa { chave: boolean } do perfil logado também passa a valer no roteador
+     aplicarVisibilidade(itens)    → usa um mapa { chave: boolean } já carregado no roteador (mesmo efeito)
      salvarVisibilidade(item)      → Promise<item | { erro }>             (PUT, só admin)
      rota                          → { area, modulo?, secao? } atual; evento window "plataforma:rota" (detail = rota)
      lerRota(hash), irPara(rota)   → utilitários do roteador (o ÚNICO roteador de hash da página)
@@ -51,7 +53,11 @@
     return pedir(`/api/conteudo?modulo=${encodeURIComponent(id)}&jornada=${encodeURIComponent(jornada)}`);
   }
 
-  const visibilidade = ({ todos = false } = {}) => pedir(todos ? '/api/visibilidade?todos=1' : '/api/visibilidade');
+  async function visibilidade({ todos = false } = {}) {
+    const r = await pedir(todos ? '/api/visibilidade?todos=1' : '/api/visibilidade');
+    if (!todos && r && !r.erro && r.itens && typeof r.itens === 'object') aplicarVisibilidade(r.itens);
+    return r;
+  }
 
   function salvarVisibilidade(item) {
     if (!item || typeof item.chave !== 'string') return Promise.resolve(erro(400, 'Item de visibilidade inválido.'));
@@ -74,9 +80,26 @@
   // Âncoras internas que já mudam o hash hoje: #pc-nome-<id> (guia-pacotes.js) e #ck-<n> (checklists-relatorio.js).
   const ALIASES_PREFIXO = Object.freeze([[/^pc-nome-[A-Za-z0-9_-]{1,72}$/, 'pacotes'], [/^ck-\d{1,4}$/, 'checklist']]);
 
+  /* Perfil (v3): área oculta para o perfil logado não abre; o roteador manda para o início, sem mensagem de erro
+     (ex.: estagiário com link antigo #guia → Acervo, que é só de consultor por padrão → #inicio).
+     O mapa vem de GET /api/visibilidade (efetivo para o perfil; admin recebe tudo true). Enquanto ele não chega,
+     o roteador não filtra: quem renderiza deve chamar Plataforma.visibilidade() antes do 1º desenho, e o servidor
+     continua recusando o conteúdo oculto (403/404). Área sem chave de visibilidade (inicio, admin) não é filtrada aqui. */
+  const CHAVE_DA_AREA = Object.freeze({
+    inicial: 'area:guia-inicial', consultor: 'area:guia-consultor', acervo: 'area:acervo', pacotes: 'area:pacotes',
+    checklist: 'area:checklists', videos: 'area:videos', apostila: 'area:apostila',
+  });
+  let mapaVisibilidade = null;
+  const areaPermitida = (area) => !mapaVisibilidade || !Object.hasOwn(CHAVE_DA_AREA, area) || mapaVisibilidade[CHAVE_DA_AREA[area]] === true;
+
   const decodificar = (p) => { try { return decodeURIComponent(p); } catch { return ''; } };
 
   function lerRota(hash) {
+    const rota = lerRotaSemPerfil(hash);
+    return areaPermitida(rota.area) ? rota : { area: 'inicio' };
+  }
+
+  function lerRotaSemPerfil(hash) {
     const brutas = String(hash || '').replace(/^#\/?/, '').split('/').filter(Boolean).map(decodificar);
     const partes = brutas.map((p) => p.toLowerCase());
     if (partes.length === 1 && Object.hasOwn(ALIASES, partes[0])) return { ...ALIASES[partes[0]] };
@@ -99,7 +122,20 @@
     else atualizar();
   }
 
-  const Plataforma = { carregarResumo, carregarModulo, visibilidade, salvarVisibilidade, lerRota, irPara, ALIASES, rota: lerRota(location.hash) };
+  const mesmaRota = (a, b) => hashDe(a) === hashDe(b);
+
+  /** Passa a usar o mapa de visibilidade do perfil no roteador; se a rota atual ficou proibida, vai ao início em silêncio. */
+  function aplicarVisibilidade(itens) {
+    if (!itens || typeof itens !== 'object' || Array.isArray(itens)) return;
+    mapaVisibilidade = Object.freeze(Object.fromEntries(Object.entries(itens).filter(([, v]) => typeof v === 'boolean')));
+    const nova = lerRota(location.hash);
+    if (mesmaRota(nova, Plataforma.rota)) return;
+    // troca o endereço sem criar entrada no histórico (o "voltar" não leva de novo à área oculta)
+    if (window.history && typeof window.history.replaceState === 'function') window.history.replaceState(window.history.state ?? null, '', hashDe(nova));
+    atualizar();
+  }
+
+  const Plataforma = { carregarResumo, carregarModulo, visibilidade, aplicarVisibilidade, salvarVisibilidade, lerRota, irPara, ALIASES, rota: lerRota(location.hash) };
 
   function atualizar() {
     Plataforma.rota = lerRota(location.hash);

@@ -244,7 +244,11 @@
       "titulo": "1. Preparar seus dados: criar o seu primeiro cartão",
       "onde": [
        {
-        "t": "módulo Tarefas"
+        "t": "módulo "
+       },
+       {
+        "t": "Tarefas",
+        "marca": "codigo"
        }
       ],
       "intro": [
@@ -410,7 +414,6 @@
       "url": "/checklists/estagiarios/14-tarefas.html",
       "duracao_s": null,
       "poster": null,
-      "legenda": null,
       "resumo": null,
       "fontes": [
        "guia:scripts/dados-checklists-estagiarios.mjs#tarefas"
@@ -442,7 +445,11 @@
         "id": "acessar-1",
         "texto": [
          {
-          "t": "Sei acessar: módulo Tarefas"
+          "t": "Sei acessar: módulo "
+         },
+         {
+          "t": "Tarefas",
+          "marca": "codigo"
          }
         ]
        },
@@ -718,7 +725,8 @@
       "titulo": "1. Abrir o módulo e criar o quadro",
       "onde": [
        {
-        "t": "Tarefas > Meus Quadros"
+        "t": "Tarefas > Meus Quadros",
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -776,7 +784,15 @@
       "titulo": "4. Minhas Tarefas e Dashboard",
       "onde": [
        {
-        "t": "Tarefas > Minhas Tarefas e Tarefas > Dashboard"
+        "t": "Tarefas > Minhas Tarefas",
+        "marca": "codigo"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "Tarefas > Dashboard",
+        "marca": "codigo"
        }
       ],
       "intro": [
@@ -830,7 +846,11 @@
       "titulo": "7. Arquivar e restaurar",
       "onde": [
        {
-        "t": "cabeçalho do cartão e Tarefas > Arquivadas"
+        "t": "cabeçalho do cartão e "
+       },
+       {
+        "t": "Tarefas > Arquivadas",
+        "marca": "codigo"
        }
       ],
       "intro": [
@@ -995,7 +1015,6 @@
       "url": "/checklists/consultores/implantacao-15-tarefas.html",
       "duracao_s": null,
       "poster": null,
-      "legenda": null,
       "resumo": null,
       "fontes": [
        "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas"
@@ -1414,7 +1433,14 @@
           "marca": "negrito"
          },
          {
-          "t": " em Tarefas > Arquivadas."
+          "t": " em "
+         },
+         {
+          "t": "Tarefas > Arquivadas",
+          "marca": "codigo"
+         },
+         {
+          "t": "."
          }
         ],
         "nota": null,
@@ -1596,7 +1622,7 @@
       "url": "/videos/consultor-10-tarefas.mp4",
       "duracao_s": 158,
       "poster": "/videos/consultor-10-tarefas.jpg",
-      "legenda": "/videos/consultor-10-tarefas.vtt",
+      "legendas_url": "/videos/consultor-10-tarefas.vtt",
       "resumo": [
        {
         "t": "Quadro, cartão, regras e colaboração."
@@ -1626,7 +1652,6 @@
       "url": "/checklists/estagiarios/14-tarefas.html",
       "duracao_s": null,
       "poster": null,
-      "legenda": null,
       "resumo": null,
       "fontes": [
        "guia:scripts/dados-checklists-estagiarios.mjs#tarefas"
@@ -1640,7 +1665,6 @@
       "url": "/checklists/consultores/implantacao-15-tarefas.html",
       "duracao_s": null,
       "poster": null,
-      "legenda": null,
       "resumo": null,
       "fontes": [
        "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas"

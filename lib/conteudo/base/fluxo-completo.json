@@ -143,7 +143,14 @@
        {
         "texto": [
          {
-          "t": "Faturamento: ⋯ > Faturar no pedido gera a nota; ela aparece em Notas Fiscais e a coluna NOTA FISCAL do pedido é preenchida."
+          "t": "Faturamento: "
+         },
+         {
+          "t": "⋯ > Faturar",
+          "marca": "codigo"
+         },
+         {
+          "t": " no pedido gera a nota; ela aparece em Notas Fiscais e a coluna NOTA FISCAL do pedido é preenchida."
          }
         ],
         "nota": null,
@@ -348,7 +355,6 @@
       "url": "/checklists/estagiarios/15-visao-fluxo-completo.html",
       "duracao_s": null,
       "poster": null,
-      "legenda": null,
       "resumo": null,
       "fontes": [
        "guia:scripts/dados-checklists-estagiarios.mjs#fluxo"
@@ -627,7 +633,7 @@
       "url": "/videos/consultor-fluxo-completo.mp4",
       "duracao_s": 157,
       "poster": "/videos/consultor-fluxo-completo.jpg",
-      "legenda": "/videos/consultor-fluxo-completo.vtt",
+      "legendas_url": "/videos/consultor-fluxo-completo.vtt",
       "resumo": [
        {
         "t": "O fluxo inteiro, do CRM aos indicadores."
@@ -657,7 +663,6 @@
       "url": "/checklists/estagiarios/15-visao-fluxo-completo.html",
       "duracao_s": null,
       "poster": null,
-      "legenda": null,
       "resumo": null,
       "fontes": [
        "guia:scripts/dados-checklists-estagiarios.mjs#fluxo"

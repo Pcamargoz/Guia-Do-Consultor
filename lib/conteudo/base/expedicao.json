@@ -74,7 +74,14 @@
           "marca": "negrito"
          },
          {
-          "t": " (menu ⋯ do pedido) só aparece depois que o pedido é faturado."
+          "t": " (menu "
+         },
+         {
+          "t": "⋯",
+          "marca": "codigo"
+         },
+         {
+          "t": " do pedido) só aparece depois que o pedido é faturado."
          }
         ],
         "nota": null,
@@ -99,7 +106,8 @@
       "titulo": "3. Entender a montagem da carga (sem montar)",
       "onde": [
        {
-        "t": "Expedição > Montar Nova Carga"
+        "t": "Expedição > Montar Nova Carga",
+        "marca": "codigo"
        }
       ],
       "intro": null,
@@ -267,7 +275,18 @@
       "titulo": "1. Preparar seus dados: montar a carga do seu pedido",
       "onde": [
        {
-        "t": "menu ⋯ do pedido e Expedição > Montar Nova Carga"
+        "t": "menu "
+       },
+       {
+        "t": "⋯",
+        "marca": "codigo"
+       },
+       {
+        "t": " do pedido e "
+       },
+       {
+        "t": "Expedição > Montar Nova Carga",
+        "marca": "codigo"
        }
       ],
       "intro": [
@@ -300,7 +319,14 @@
        {
         "texto": [
          {
-          "t": "No menu ⋯ do pedido "
+          "t": "No menu "
+         },
+         {
+          "t": "⋯",
+          "marca": "codigo"
+         },
+         {
+          "t": " do pedido "
          },
          {
           "t": "Faturado",
@@ -319,7 +345,14 @@
         ],
         "nota": [
          {
-          "t": "Em pedido Em aberto ou Entregue o item não existe; em pedido Faturado aparece habilitado; em pedido \"Lib. Expedição\" vira \"Reverter Liberação\". O aviso da tela Montar Nova Carga manda clicar em \"Liberar para Expedição\" no pedido, mas o botão só existe no menu ⋯ do pedido Faturado."
+          "t": "Em pedido Em aberto ou Entregue o item não existe; em pedido Faturado aparece habilitado; em pedido \"Lib. Expedição\" vira \"Reverter Liberação\". O aviso da tela Montar Nova Carga manda clicar em \"Liberar para Expedição\" no pedido, mas o botão só existe no menu "
+         },
+         {
+          "t": "⋯",
+          "marca": "codigo"
+         },
+         {
+          "t": " do pedido Faturado."
          }
         ],
         "selo": "conferido-na-tela"
@@ -327,7 +360,14 @@
        {
         "texto": [
          {
-          "t": "Em Expedição, clicar em "
+          "t": "Em "
+         },
+         {
+          "t": "Expedição",
+          "marca": "codigo"
+         },
+         {
+          "t": ", clicar em "
          },
          {
           "t": "Montar Nova Carga",
@@ -392,7 +432,6 @@
       "url": "/checklists/estagiarios/11-expedicao.html",
       "duracao_s": null,
       "poster": null,
-      "legenda": null,
       "resumo": null,
       "fontes": [
        "guia:scripts/dados-checklists-estagiarios.mjs#expedicao"
@@ -424,7 +463,18 @@
         "id": "acessar-1",
         "texto": [
          {
-          "t": "Sei acessar: menu ⋯ do pedido e Expedição > Montar Nova Carga"
+          "t": "Sei acessar: menu "
+         },
+         {
+          "t": "⋯",
+          "marca": "codigo"
+         },
+         {
+          "t": " do pedido e "
+         },
+         {
+          "t": "Expedição > Montar Nova Carga",
+          "marca": "codigo"
          }
         ]
        },
@@ -432,7 +482,11 @@
         "id": "acessar-2",
         "texto": [
          {
-          "t": "Sei acessar: Expedição > Montar Nova Carga"
+          "t": "Sei acessar: "
+         },
+         {
+          "t": "Expedição > Montar Nova Carga",
+          "marca": "codigo"
          }
         ]
        },
@@ -580,7 +634,14 @@
         "marca": "negrito"
        },
        {
-        "t": " do menu ⋯ aparece somente em pedido "
+        "t": " do menu "
+       },
+       {
+        "t": "⋯",
+        "marca": "codigo"
+       },
+       {
+        "t": " aparece somente em pedido "
        },
        {
         "t": "Faturado",
@@ -606,7 +667,14 @@
       ],
       "confirmar": [
        {
-        "t": "Vendas › Pedidos de Venda › menu ⋯ de pedidos em status diferentes."
+        "t": "Vendas › Pedidos de Venda › menu "
+       },
+       {
+        "t": "⋯",
+        "marca": "codigo"
+       },
+       {
+        "t": " de pedidos em status diferentes."
        }
       ],
       "confianca": "B",
@@ -695,7 +763,8 @@
       "titulo": "1. Cadastros da expedição",
       "onde": [
        {
-        "t": "Expedição > Configurações"
+        "t": "Expedição > Configurações",
+        "marca": "codigo"
        }
       ],
       "intro": [
@@ -713,7 +782,18 @@
       "titulo": "2. Liberar o pedido faturado",
       "onde": [
        {
-        "t": "Vendas > Pedidos de Venda, menu ⋯ do pedido"
+        "t": "Vendas > Pedidos de Venda",
+        "marca": "tela"
+       },
+       {
+        "t": ", menu "
+       },
+       {
+        "t": "⋯",
+        "marca": "codigo"
+       },
+       {
+        "t": " do pedido"
        }
       ],
       "intro": [
@@ -731,7 +811,8 @@
       "titulo": "3. Montar a carga",
       "onde": [
        {
-        "t": "Expedição > Visão Geral > + Montar Nova Carga"
+        "t": "Expedição > Visão Geral > + Montar Nova Carga",
+        "marca": "codigo"
        }
       ],
       "intro": [
@@ -767,7 +848,11 @@
       "titulo": "5. Rota e entrega",
       "onde": [
        {
-        "t": "detalhe da carga e Apontamentos do Motorista"
+        "t": "detalhe da carga e "
+       },
+       {
+        "t": "Apontamentos do Motorista",
+        "marca": "codigo"
        }
       ],
       "intro": [
@@ -785,7 +870,15 @@
       "titulo": "6. Ocorrência na rota",
       "onde": [
        {
-        "t": "Apontamentos do Motorista > Ocorrência e Expedição > Ocorrências"
+        "t": "Apontamentos do Motorista > Ocorrência",
+        "marca": "codigo"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "Expedição > Ocorrências",
+        "marca": "codigo"
        }
       ],
       "intro": [
@@ -803,7 +896,15 @@
       "titulo": "7. Devolução e re-expedição",
       "onde": [
        {
-        "t": "Expedição > Aguardando Re-Expedição e Expedição > Pendências de Estoque (Devolução)"
+        "t": "Expedição > Aguardando Re-Expedição",
+        "marca": "codigo"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "Expedição > Pendências de Estoque (Devolução)",
+        "marca": "codigo"
        }
       ],
       "intro": [
@@ -968,7 +1069,6 @@
       "url": "/checklists/consultores/implantacao-13-expedicao.html",
       "duracao_s": null,
       "poster": null,
-      "legenda": null,
       "resumo": null,
       "fontes": [
        "guia:scripts/dados-checklists-implantacao.mjs#implantacao-expedicao"
@@ -1020,7 +1120,14 @@
           "marca": "negrito"
          },
          {
-          "t": " em Vendas > Pedidos de Venda, o status "
+          "t": " em "
+         },
+         {
+          "t": "Vendas > Pedidos de Venda",
+          "marca": "tela"
+         },
+         {
+          "t": ", o status "
          },
          {
           "t": "Faturado",
@@ -1068,7 +1175,21 @@
           "marca": "negrito"
          },
          {
-          "t": " em Expedição > Configurações > Veículos e Motoristas. CNH vencida exige justificativa para fechar a carga. "
+          "t": " em "
+         },
+         {
+          "t": "Expedição > Configurações > Veículos",
+          "marca": "codigo"
+         },
+         {
+          "t": " e "
+         },
+         {
+          "t": "Motoristas",
+          "marca": "codigo"
+         },
+         {
+          "t": ". CNH vencida exige justificativa para fechar a carga. "
          },
          {
           "t": "Fonte:",
@@ -1122,7 +1243,14 @@
           "marca": "negrito"
          },
          {
-          "t": " em Expedição > Configurações > Parâmetros. "
+          "t": " em "
+         },
+         {
+          "t": "Expedição > Configurações > Parâmetros",
+          "marca": "codigo"
+         },
+         {
+          "t": ". "
          },
          {
           "t": "Fonte:",
@@ -1499,7 +1627,21 @@
        {
         "texto": [
          {
-          "t": "Caminho dos cadastros: o fluxo antigo cita Expedição > Cadastros; o manual-09-expedicao usa Expedição > Configurações (Veículos, Motoristas, Parâmetros, Tipos de Ocorrência). O menu lateral tem os dois itens: conferir na tela onde fica cada cadastro."
+          "t": "Caminho dos cadastros: o fluxo antigo cita "
+         },
+         {
+          "t": "Expedição > Cadastros",
+          "marca": "codigo"
+         },
+         {
+          "t": "; o manual-09-expedicao usa "
+         },
+         {
+          "t": "Expedição > Configurações",
+          "marca": "codigo"
+         },
+         {
+          "t": " (Veículos, Motoristas, Parâmetros, Tipos de Ocorrência). O menu lateral tem os dois itens: conferir na tela onde fica cada cadastro."
          }
         ],
         "nota": null,
@@ -1511,7 +1653,21 @@
        {
         "texto": [
          {
-          "t": "Caminho da montagem: o fluxo antigo e o procedimento citam Expedição > Montar Nova Carga; o manual-09-expedicao usa Expedição > Visão Geral > + Montar Nova Carga."
+          "t": "Caminho da montagem: o fluxo antigo e o procedimento citam "
+         },
+         {
+          "t": "Expedição > Montar Nova Carga",
+          "marca": "codigo"
+         },
+         {
+          "t": "; o manual-09-expedicao usa "
+         },
+         {
+          "t": "Expedição > Visão Geral > + Montar Nova Carga",
+          "marca": "codigo"
+         },
+         {
+          "t": "."
          }
         ],
         "nota": null,
@@ -1587,7 +1743,7 @@
       "url": "/videos/consultor-06-expedicao.mp4",
       "duracao_s": 161,
       "poster": "/videos/consultor-06-expedicao.jpg",
-      "legenda": "/videos/consultor-06-expedicao.vtt",
+      "legendas_url": "/videos/consultor-06-expedicao.vtt",
       "resumo": [
        {
         "t": "Carga, entrega, ocorrência e devolução."
@@ -1617,7 +1773,6 @@
       "url": "/checklists/estagiarios/11-expedicao.html",
       "duracao_s": null,
       "poster": null,
-      "legenda": null,
       "resumo": null,
       "fontes": [
        "guia:scripts/dados-checklists-estagiarios.mjs#expedicao"
@@ -1631,7 +1786,6 @@
       "url": "/checklists/consultores/implantacao-13-expedicao.html",
       "duracao_s": null,
       "poster": null,
-      "legenda": null,
       "resumo": null,
       "fontes": [
        "guia:scripts/dados-checklists-implantacao.mjs#implantacao-expedicao"

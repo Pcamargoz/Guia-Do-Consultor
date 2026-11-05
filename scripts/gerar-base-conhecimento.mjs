@@ -1,4 +1,4 @@
-/* Gera lib/conteudo/base/ (índice + um JSON por módulo + carregar.js) a partir do Harness Faktory Flow
+/* Gera lib/conteudo/base/ (índice + um JSON por módulo) a partir do Harness Faktory Flow
    (somente leitura) e dos dados já gerados do Harness que estão no Guia (checklists, roteiros de vídeo,
    manifests, seed dos módulos).
    Uso:
@@ -33,7 +33,8 @@ export function indiceDaBase(base) {
 
 /**
  * Base → arquivos da pasta lib/conteudo/base/ ({ nome: texto }):
- *   indice.json · <modulo>.json ({ versao, id, jornadas, retido? }) · carregar.js (imports estáticos) · LEIA-ME.md
+ *   indice.json · <modulo>.json ({ versao, id, jornadas, retido? }) · LEIA-ME.md
+ *   (v3: sem carregar.js; lib/conteudo/base.js lê com fs.readFileSync + JSON.parse)
  */
 export function serializarBase(base) {
   const arquivos = {};
@@ -42,14 +43,6 @@ export function serializarBase(base) {
   for (const m of base.modulos) {
     arquivos[`${m.id}.json`] = comoJson({ versao: base.versao, id: m.id, jornadas: m.jornadas, ...(m.retido ? { retido: m.retido } : {}) });
   }
-  arquivos['carregar.js'] = `/* GERADO por scripts/gerar-base-conhecimento.mjs — não edite à mão.
-   import() estático de cada JSON: carga sob demanda e o rastreador de arquivos da Vercel inclui todos no deploy. */
-export const carregarIndiceJson = () => import('./indice.json', { with: { type: 'json' } });
-
-export const MODULOS = Object.freeze({
-${base.modulos.map((m) => `  '${m.id}': () => import('./${m.id}.json', { with: { type: 'json' } }),`).join('\n')}
-});
-`;
   arquivos['LEIA-ME.md'] = `# Base de conhecimento (GERADA — não edite à mão)
 
 Gerada por \`node scripts/gerar-base-conhecimento.mjs --harness <pasta do Harness>\` (versão ${base.versao}).
@@ -58,7 +51,7 @@ Fontes: Harness Faktory Flow (conhecimento/) e dados do Guia gerados do Harness.
 - \`indice.json\`: versão, módulos (cabeçalho + materiais), caminhos protegidos e pendências. Basta para o resumo.
 - \`<modulo>.json\`: as jornadas (seções e blocos) de um módulo, lidas só quando o módulo é aberto.
   \`retido\` = conteúdo semente de módulo em preparação, guardado e nunca servido.
-- \`carregar.js\`: import() estático de cada arquivo (lib/conteudo/base.js usa).
+- Leitura: \`lib/conteudo/base.js\` (fs.readFileSync + JSON.parse, sob demanda, id conferido contra o índice).
 
 Conferir sem gravar: \`node scripts/gerar-base-conhecimento.mjs --harness <pasta> --verificar\`.
 `;
@@ -149,7 +142,7 @@ async function main() {
   }
   await mkdir(saida, { recursive: true });
   const { sobrando } = await compararPasta(saida, arquivos);
-  for (const nome of sobrando) if (/^[a-z0-9-]+\.json$/.test(nome)) await rm(path.join(saida, nome));
+  for (const nome of sobrando) if (/^[a-z0-9-]+\.json$/.test(nome) || nome === 'carregar.js') await rm(path.join(saida, nome)); // carregar.js: artefato da v2
   for (const [nome, texto] of Object.entries(arquivos)) await writeFile(path.join(saida, nome), texto);
   console.log(`✔ ${rel}/ (${versao}): ${Object.keys(arquivos).length} arquivos · ${resumo}\n  ${tamanhos}`);
   for (const p of base.pendencias) console.log(`  · pendência: ${p}`);

@@ -85,7 +85,8 @@
       "titulo": "1. Escolher o sistema de integração",
       "onde": [
        {
-        "t": "Vendas > Configurações > Configurar integração"
+        "t": "Vendas > Configurações > Configurar integração",
+        "marca": "codigo"
        }
       ],
       "intro": [
@@ -103,7 +104,18 @@
       "titulo": "2. Conectar o CEM (Desktop ou Mobi)",
       "onde": [
        {
-        "t": "Vendas > Configurações > Configurar integração (cards de pareamento ou Configuração CEM Mobi)"
+        "t": "Vendas > Configurações > Configurar integração",
+        "marca": "codigo"
+       },
+       {
+        "t": " (cards de pareamento ou "
+       },
+       {
+        "t": "Configuração CEM Mobi",
+        "marca": "codigo"
+       },
+       {
+        "t": ")"
        }
       ],
       "intro": [
@@ -121,7 +133,8 @@
       "titulo": "3. Padrões de Integração",
       "onde": [
        {
-        "t": "Vendas > Configurações > Padrões de Integração"
+        "t": "Vendas > Configurações > Padrões de Integração",
+        "marca": "codigo"
        }
       ],
       "intro": [
@@ -139,12 +152,20 @@
       "titulo": "4. Importar um orçamento real (CEM Desktop)",
       "onde": [
        {
-        "t": "Vendas > Pedidos de Venda > Importar CEM"
+        "t": "Vendas > Pedidos de Venda > Importar CEM",
+        "marca": "codigo"
        }
       ],
       "intro": [
        {
-        "t": "Agora o cliente importa a obra real escolhida. Ele conduz o mouse; o consultor explica cada etapa da janela Importar do CEM Desktop. Para CEM Mobi ou arquivo, use o bloco 5."
+        "t": "Agora o cliente importa a obra real escolhida. Ele conduz o mouse; o consultor explica cada etapa da janela "
+       },
+       {
+        "t": "Importar do CEM Desktop",
+        "marca": "codigo"
+       },
+       {
+        "t": ". Para CEM Mobi ou arquivo, use o bloco 5."
        }
       ],
       "passos_total": 5,
@@ -157,7 +178,15 @@
       "titulo": "5. Importar pelo CEM Mobi ou por arquivo",
       "onde": [
        {
-        "t": "Vendas > Pedidos de Venda > Importar CEM Mobi ou Importar Arquivo"
+        "t": "Vendas > Pedidos de Venda > Importar CEM Mobi",
+        "marca": "codigo"
+       },
+       {
+        "t": " ou "
+       },
+       {
+        "t": "Importar Arquivo",
+        "marca": "codigo"
        }
       ],
       "intro": [
@@ -175,7 +204,15 @@
       "titulo": "6. Ler com o cliente o pedido que nasceu da importação",
       "onde": [
        {
-        "t": "Vendas > Pedidos de Venda (pedido importado) e Cadastros"
+        "t": "Vendas > Pedidos de Venda",
+        "marca": "tela"
+       },
+       {
+        "t": " (pedido importado) e "
+       },
+       {
+        "t": "Cadastros",
+        "marca": "codigo"
        }
       ],
       "intro": [
@@ -193,7 +230,11 @@
       "titulo": "7. O que trava a importação",
       "onde": [
        {
-        "t": "janela de importação em Vendas > Pedidos de Venda"
+        "t": "janela de importação em "
+       },
+       {
+        "t": "Vendas > Pedidos de Venda",
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -211,7 +252,18 @@
       "titulo": "8. Revisão do orçamento e reimportação",
       "onde": [
        {
-        "t": "Vendas > Pedidos de Venda > Importar CEM (ou Importar CEM Mobi)"
+        "t": "Vendas > Pedidos de Venda > Importar CEM",
+        "marca": "codigo"
+       },
+       {
+        "t": " (ou "
+       },
+       {
+        "t": "Importar CEM Mobi",
+        "marca": "codigo"
+       },
+       {
+        "t": ")"
        }
       ],
       "intro": [
@@ -229,7 +281,29 @@
       "titulo": "9. Faturamento em Nível (só quando contratado)",
       "onde": [
        {
-        "t": "Vendas > Configurações > Configurar integração (card Faturamento em Nível), Níveis de Faturamento e Templates de Rateio"
+        "t": "Vendas > Configurações > Configurar integração",
+        "marca": "codigo"
+       },
+       {
+        "t": " (card "
+       },
+       {
+        "t": "Faturamento em Nível",
+        "marca": "codigo"
+       },
+       {
+        "t": "), "
+       },
+       {
+        "t": "Níveis de Faturamento",
+        "marca": "codigo"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "Templates de Rateio",
+        "marca": "codigo"
        }
       ],
       "intro": [
@@ -425,7 +499,6 @@
       "url": "/checklists/consultores/implantacao-03-integracao-cem.html",
       "duracao_s": null,
       "poster": null,
-      "legenda": null,
       "resumo": null,
       "fontes": [
        "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
@@ -582,7 +655,14 @@
        {
         "texto": [
          {
-          "t": "Sistema de integração escolhido e conectado (dispositivo pareado ou CEM Mobi Conectado)."
+          "t": "Sistema de integração escolhido e conectado (dispositivo pareado ou CEM Mobi "
+         },
+         {
+          "t": "Conectado",
+          "marca": "codigo"
+         },
+         {
+          "t": ")."
          }
         ],
         "nota": null,
@@ -594,7 +674,14 @@
        {
         "texto": [
          {
-          "t": "Padrões de Integração com o selo Todos completos e os padrões do pedido de venda preenchidos."
+          "t": "Padrões de Integração com o selo "
+         },
+         {
+          "t": "Todos completos",
+          "marca": "codigo"
+         },
+         {
+          "t": " e os padrões do pedido de venda preenchidos."
          }
         ],
         "nota": null,
@@ -711,7 +798,21 @@
        {
         "texto": [
          {
-          "t": "Clique uma única vez em Gerar Pedido de Venda ou Importar Pedido e aguarde."
+          "t": "Clique uma única vez em "
+         },
+         {
+          "t": "Gerar Pedido de Venda",
+          "marca": "codigo"
+         },
+         {
+          "t": " ou "
+         },
+         {
+          "t": "Importar Pedido",
+          "marca": "codigo"
+         },
+         {
+          "t": " e aguarde."
          }
         ],
         "nota": null,
@@ -804,7 +905,28 @@
        {
         "texto": [
          {
-          "t": "Caminho de Níveis de Faturamento: o roteiro Vendas 06 indica Vendas > Integrações > Níveis de Faturamento; a gestora indica o grupo Configurações de Vendas. Conferir no menu."
+          "t": "Caminho de "
+         },
+         {
+          "t": "Níveis de Faturamento",
+          "marca": "codigo"
+         },
+         {
+          "t": ": o roteiro Vendas 06 indica "
+         },
+         {
+          "t": "Vendas > Integrações > Níveis de Faturamento",
+          "marca": "codigo"
+         },
+         {
+          "t": "; a gestora indica o grupo "
+         },
+         {
+          "t": "Configurações",
+          "marca": "codigo"
+         },
+         {
+          "t": " de Vendas. Conferir no menu."
          }
         ],
         "nota": null,
@@ -828,7 +950,14 @@
        {
         "texto": [
          {
-          "t": "Marcas de e-mail do contato criado pela integração: uma regra diz todas ligadas, inclusive compras (INT-GER-032); outra diz compras desligado (INT-MOB-011). A aba Contato dos Padrões só vale para a importação por arquivo. Conferir no contato criado."
+          "t": "Marcas de e-mail do contato criado pela integração: uma regra diz todas ligadas, inclusive compras (INT-GER-032); outra diz compras desligado (INT-MOB-011). A aba "
+         },
+         {
+          "t": "Contato",
+          "marca": "codigo"
+         },
+         {
+          "t": " dos Padrões só vale para a importação por arquivo. Conferir no contato criado."
          }
         ],
         "nota": null,
@@ -852,7 +981,14 @@
        {
         "texto": [
          {
-          "t": "Tipo de arquivo: a descrição da opção Arquivos fala em .txt; a regra aceita só XML e JSON. Conferir a mensagem na tela."
+          "t": "Tipo de arquivo: a descrição da opção "
+         },
+         {
+          "t": "Arquivos",
+          "marca": "codigo"
+         },
+         {
+          "t": " fala em .txt; a regra aceita só XML e JSON. Conferir a mensagem na tela."
          }
         ],
         "nota": null,
@@ -903,7 +1039,6 @@
       "url": "/checklists/consultores/implantacao-03-integracao-cem.html",
       "duracao_s": null,
       "poster": null,
-      "legenda": null,
       "resumo": null,
       "fontes": [
        "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"

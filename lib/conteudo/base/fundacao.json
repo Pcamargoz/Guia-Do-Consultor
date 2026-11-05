@@ -54,7 +54,11 @@
       "titulo": "2. Consultar um participante",
       "onde": [
        {
-        "t": "Cadastros > Participantes (aparece no menu de vários módulos)"
+        "t": "Cadastros > Participantes",
+        "marca": "tela"
+       },
+       {
+        "t": " (aparece no menu de vários módulos)"
        }
       ],
       "intro": null,
@@ -134,7 +138,14 @@
       "titulo": "3. Conhecer o formulário de novo participante (sem salvar)",
       "onde": [
        {
-        "t": "botão Novo da lista de participantes"
+        "t": "botão "
+       },
+       {
+        "t": "Novo",
+        "marca": "codigo"
+       },
+       {
+        "t": " da lista de participantes"
        }
       ],
       "intro": null,
@@ -194,7 +205,8 @@
       "titulo": "4. Consultar um produto",
       "onde": [
        {
-        "t": "Cadastros > Produtos"
+        "t": "Cadastros > Produtos",
+        "marca": "tela"
        }
       ],
       "intro": null,
@@ -202,7 +214,14 @@
        {
         "texto": [
          {
-          "t": "No estoque, abrir o produto pelo código em Estoque > Saldo e ler classificação, unidade, categoria, NCM, dimensões e pesos."
+          "t": "No estoque, abrir o produto pelo código em "
+         },
+         {
+          "t": "Estoque > Saldo",
+          "marca": "codigo"
+         },
+         {
+          "t": " e ler classificação, unidade, categoria, NCM, dimensões e pesos."
          }
         ],
         "nota": [
@@ -222,7 +241,8 @@
       "titulo": "5. Consultar um projeto/obra",
       "onde": [
        {
-        "t": "Cadastros > Projetos"
+        "t": "Cadastros > Projetos",
+        "marca": "tela"
        }
       ],
       "intro": null,
@@ -334,7 +354,22 @@
       "titulo": "1. Preparar seus dados: cadastrar cliente, produto e obra de treino",
       "onde": [
        {
-        "t": "Cadastros > Participantes, Cadastros > Produtos e Cadastros > Projetos"
+        "t": "Cadastros > Participantes",
+        "marca": "tela"
+       },
+       {
+        "t": ", "
+       },
+       {
+        "t": "Cadastros > Produtos",
+        "marca": "tela"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "Cadastros > Projetos",
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -360,7 +395,14 @@
        {
         "texto": [
          {
-          "t": "Em Cadastros > Participantes, criar um participante: em "
+          "t": "Em "
+         },
+         {
+          "t": "Cadastros > Participantes",
+          "marca": "tela"
+         },
+         {
+          "t": ", criar um participante: em "
          },
          {
           "t": "Dados Gerais",
@@ -430,7 +472,14 @@
           "marca": "negrito"
          },
          {
-          "t": ", um e-mail de teste. Clicar em Salvar."
+          "t": ", um e-mail de teste. Clicar em "
+         },
+         {
+          "t": "Salvar",
+          "marca": "codigo"
+         },
+         {
+          "t": "."
          }
         ],
         "nota": [
@@ -491,7 +540,14 @@
        {
         "texto": [
          {
-          "t": "Em Cadastros > Produtos, criar um produto \"TESTE ESTAGIÁRIO - Produto\": "
+          "t": "Em "
+         },
+         {
+          "t": "Cadastros > Produtos",
+          "marca": "tela"
+         },
+         {
+          "t": ", criar um produto \"TESTE ESTAGIÁRIO - Produto\": "
          },
          {
           "t": "Descrição",
@@ -533,7 +589,21 @@
           "marca": "negrito"
          },
          {
-          "t": ". Clicar em Salvar (há também Salvar e Incluir Novo)."
+          "t": ". Clicar em "
+         },
+         {
+          "t": "Salvar",
+          "marca": "codigo"
+         },
+         {
+          "t": " (há também "
+         },
+         {
+          "t": "Salvar e Incluir Novo",
+          "marca": "codigo"
+         },
+         {
+          "t": ")."
          }
         ],
         "nota": [
@@ -546,7 +616,14 @@
        {
         "texto": [
          {
-          "t": "Em Cadastros > Projetos, criar uma obra: "
+          "t": "Em "
+         },
+         {
+          "t": "Cadastros > Projetos",
+          "marca": "tela"
+         },
+         {
+          "t": ", criar uma obra: "
          },
          {
           "t": "Nome do Projeto",
@@ -581,7 +658,14 @@
           "marca": "negrito"
          },
          {
-          "t": ". Clicar em Salvar."
+          "t": ". Clicar em "
+         },
+         {
+          "t": "Salvar",
+          "marca": "codigo"
+         },
+         {
+          "t": "."
          }
         ],
         "nota": [
@@ -604,7 +688,6 @@
       "url": "/checklists/estagiarios/02-cadastros-basicos.html",
       "duracao_s": null,
       "poster": null,
-      "legenda": null,
       "resumo": null,
       "fontes": [
        "guia:scripts/dados-checklists-estagiarios.mjs#cadastros"
@@ -636,7 +719,25 @@
         "id": "acessar-1",
         "texto": [
          {
-          "t": "Sei acessar: Cadastros > Participantes, Cadastros > Produtos e Cadastros > Projetos"
+          "t": "Sei acessar: "
+         },
+         {
+          "t": "Cadastros > Participantes",
+          "marca": "tela"
+         },
+         {
+          "t": ", "
+         },
+         {
+          "t": "Cadastros > Produtos",
+          "marca": "tela"
+         },
+         {
+          "t": " e "
+         },
+         {
+          "t": "Cadastros > Projetos",
+          "marca": "tela"
          }
         ]
        },
@@ -644,7 +745,14 @@
         "id": "acessar-2",
         "texto": [
          {
-          "t": "Sei acessar: Cadastros > Participantes (aparece no menu de vários módulos)"
+          "t": "Sei acessar: "
+         },
+         {
+          "t": "Cadastros > Participantes",
+          "marca": "tela"
+         },
+         {
+          "t": " (aparece no menu de vários módulos)"
          }
         ]
        },
@@ -652,7 +760,14 @@
         "id": "acessar-3",
         "texto": [
          {
-          "t": "Sei acessar: botão Novo da lista de participantes"
+          "t": "Sei acessar: botão "
+         },
+         {
+          "t": "Novo",
+          "marca": "codigo"
+         },
+         {
+          "t": " da lista de participantes"
          }
         ]
        },
@@ -660,7 +775,11 @@
         "id": "acessar-4",
         "texto": [
          {
-          "t": "Sei acessar: Cadastros > Produtos"
+          "t": "Sei acessar: "
+         },
+         {
+          "t": "Cadastros > Produtos",
+          "marca": "tela"
          }
         ]
        },
@@ -668,7 +787,11 @@
         "id": "acessar-5",
         "texto": [
          {
-          "t": "Sei acessar: Cadastros > Projetos"
+          "t": "Sei acessar: "
+         },
+         {
+          "t": "Cadastros > Projetos",
+          "marca": "tela"
          }
         ]
        },
@@ -941,7 +1064,15 @@
       "titulo": "1. Empresa e regime",
       "onde": [
        {
-        "t": "Minha Assinatura e Configurações > Empresas"
+        "t": "Minha Assinatura",
+        "marca": "codigo"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "Configurações > Empresas",
+        "marca": "codigo"
        }
       ],
       "intro": [
@@ -959,7 +1090,8 @@
       "titulo": "2. Certificado digital, série e homologação",
       "onde": [
        {
-        "t": "Faturamento > Configurações > Certificados"
+        "t": "Faturamento > Configurações > Certificados",
+        "marca": "codigo"
        }
       ],
       "intro": [
@@ -977,7 +1109,15 @@
       "titulo": "3. Perfis e usuários",
       "onde": [
        {
-        "t": "Segurança > Perfis de Acesso e Segurança > Usuários"
+        "t": "Segurança > Perfis de Acesso",
+        "marca": "codigo"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "Segurança > Usuários",
+        "marca": "codigo"
        }
       ],
       "intro": [
@@ -995,7 +1135,8 @@
       "titulo": "4. Participantes: clientes, fornecedores e vendedores",
       "onde": [
        {
-        "t": "Cadastros > Participantes"
+        "t": "Cadastros > Participantes",
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -1013,7 +1154,46 @@
       "titulo": "5. Categorias, unidades, NCM, cores e produtos",
       "onde": [
        {
-        "t": "grupo Configurações do módulo (Categorias de Produto, Unidade de Medida, Cores), Fiscal > Configurações > NCM e Cadastros > Produtos"
+        "t": "grupo "
+       },
+       {
+        "t": "Configurações",
+        "marca": "codigo"
+       },
+       {
+        "t": " do módulo ("
+       },
+       {
+        "t": "Categorias de Produto",
+        "marca": "codigo"
+       },
+       {
+        "t": ", "
+       },
+       {
+        "t": "Unidade de Medida",
+        "marca": "codigo"
+       },
+       {
+        "t": ", "
+       },
+       {
+        "t": "Cores",
+        "marca": "codigo"
+       },
+       {
+        "t": "), "
+       },
+       {
+        "t": "Fiscal > Configurações > NCM",
+        "marca": "codigo"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "Cadastros > Produtos",
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -1031,7 +1211,46 @@
       "titulo": "6. Condições e meios de pagamento, contas e portadores",
       "onde": [
        {
-        "t": "Vendas > Configurações > Condições de Pagamento e o grupo Configurações do Financeiro (Contas Bancárias, Portadores, Planos de Conta, Meios de Pagamento)"
+        "t": "Vendas > Configurações > Condições de Pagamento",
+        "marca": "tela"
+       },
+       {
+        "t": " e o grupo "
+       },
+       {
+        "t": "Configurações",
+        "marca": "codigo"
+       },
+       {
+        "t": " do Financeiro ("
+       },
+       {
+        "t": "Contas Bancárias",
+        "marca": "codigo"
+       },
+       {
+        "t": ", "
+       },
+       {
+        "t": "Portadores",
+        "marca": "codigo"
+       },
+       {
+        "t": ", "
+       },
+       {
+        "t": "Planos de Conta",
+        "marca": "codigo"
+       },
+       {
+        "t": ", "
+       },
+       {
+        "t": "Meios de Pagamento",
+        "marca": "codigo"
+       },
+       {
+        "t": ")"
        }
       ],
       "intro": [
@@ -1049,7 +1268,8 @@
       "titulo": "7. CFOPs de saída",
       "onde": [
        {
-        "t": "Fiscal > Configurações > CFOP"
+        "t": "Fiscal > Configurações > CFOP",
+        "marca": "codigo"
        }
       ],
       "intro": [
@@ -1067,7 +1287,21 @@
       "titulo": "8. Carga inicial de produtos e participantes",
       "onde": [
        {
-        "t": "listagem de Cadastros > Produtos e de Cadastros > Participantes, menu “Mais…”"
+        "t": "listagem de "
+       },
+       {
+        "t": "Cadastros > Produtos",
+        "marca": "tela"
+       },
+       {
+        "t": " e de "
+       },
+       {
+        "t": "Cadastros > Participantes",
+        "marca": "tela"
+       },
+       {
+        "t": ", menu “Mais…”"
        }
       ],
       "intro": [
@@ -1085,7 +1319,15 @@
       "titulo": "9. Prova em uso real: obra e pedido de teste",
       "onde": [
        {
-        "t": "Cadastros > Projetos e Vendas > Pedidos de Venda > + Novo Pedido"
+        "t": "Cadastros > Projetos",
+        "marca": "tela"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "Vendas > Pedidos de Venda > + Novo Pedido",
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -1281,7 +1523,6 @@
       "url": "/checklists/consultores/implantacao-01-fundacao.html",
       "duracao_s": null,
       "poster": null,
-      "legenda": null,
       "resumo": null,
       "fontes": [
        "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao"
@@ -1340,7 +1581,14 @@
           "marca": "negrito"
          },
          {
-          "t": " em Minha Assinatura. Lucro Presumido, Lucro Real e excesso de sublimite não gravam nas versões Starter e Standard; convite pendente ocupa vaga. "
+          "t": " em "
+         },
+         {
+          "t": "Minha Assinatura",
+          "marca": "codigo"
+         },
+         {
+          "t": ". Lucro Presumido, Lucro Real e excesso de sublimite não gravam nas versões Starter e Standard; convite pendente ocupa vaga. "
          },
          {
           "t": "Fonte:",
@@ -1658,7 +1906,14 @@
        {
         "texto": [
          {
-          "t": "Caminho do NCM: o Manual 01 indica Fiscal > Configurações > NCM; a gestora lista a tela no grupo de cadastros. Conferir no menu."
+          "t": "Caminho do NCM: o Manual 01 indica "
+         },
+         {
+          "t": "Fiscal > Configurações > NCM",
+          "marca": "codigo"
+         },
+         {
+          "t": "; a gestora lista a tela no grupo de cadastros. Conferir no menu."
          }
         ],
         "nota": null,
@@ -1709,7 +1964,6 @@
       "url": "/checklists/estagiarios/02-cadastros-basicos.html",
       "duracao_s": null,
       "poster": null,
-      "legenda": null,
       "resumo": null,
       "fontes": [
        "guia:scripts/dados-checklists-estagiarios.mjs#cadastros"
@@ -1723,7 +1977,6 @@
       "url": "/checklists/consultores/implantacao-01-fundacao.html",
       "duracao_s": null,
       "poster": null,
-      "legenda": null,
       "resumo": null,
       "fontes": [
        "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao"

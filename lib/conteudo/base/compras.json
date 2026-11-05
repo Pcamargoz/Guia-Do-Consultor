@@ -54,7 +54,11 @@
       "titulo": "2. Conhecer o menu na ordem do processo",
       "onde": [
        {
-        "t": "módulo Compras"
+        "t": "módulo "
+       },
+       {
+        "t": "Compras",
+        "marca": "codigo"
        }
       ],
       "intro": null,
@@ -71,7 +75,14 @@
        {
         "texto": [
          {
-          "t": "Abrir o Dashboard Compras e ler os cartões (solicitações em aberto, cotações ativas, pedidos em aberto, total do mês) e o bloco de pedidos recentes."
+          "t": "Abrir o "
+         },
+         {
+          "t": "Dashboard Compras",
+          "marca": "codigo"
+         },
+         {
+          "t": " e ler os cartões (solicitações em aberto, cotações ativas, pedidos em aberto, total do mês) e o bloco de pedidos recentes."
          }
         ],
         "nota": null,
@@ -91,7 +102,21 @@
        {
         "texto": [
          {
-          "t": "Em Solicitações de Compra, localizar uma SC e abrir o menu ⋯."
+          "t": "Em "
+         },
+         {
+          "t": "Solicitações de Compra",
+          "marca": "tela"
+         },
+         {
+          "t": ", localizar uma SC e abrir o menu "
+         },
+         {
+          "t": "⋯",
+          "marca": "codigo"
+         },
+         {
+          "t": "."
          }
         ],
         "nota": [
@@ -104,7 +129,14 @@
        {
         "texto": [
          {
-          "t": "Em Cotações de Compra, abrir uma cotação e percorrer o assistente: Dados Gerais, Itens a Cotar, Cotação (fornecedores) e Comparação."
+          "t": "Em "
+         },
+         {
+          "t": "Cotações de Compra",
+          "marca": "codigo"
+         },
+         {
+          "t": ", abrir uma cotação e percorrer o assistente: Dados Gerais, Itens a Cotar, Cotação (fornecedores) e Comparação."
          }
         ],
         "nota": [
@@ -117,7 +149,14 @@
        {
         "texto": [
          {
-          "t": "Em Pedidos de Compra, abrir um pedido e ler fornecedor, itens, CFOP, entrega prevista e parcelas."
+          "t": "Em "
+         },
+         {
+          "t": "Pedidos de Compra",
+          "marca": "codigo"
+         },
+         {
+          "t": ", abrir um pedido e ler fornecedor, itens, CFOP, entrega prevista e parcelas."
          }
         ],
         "nota": [
@@ -130,7 +169,14 @@
        {
         "texto": [
          {
-          "t": "Abrir ⋯ > Linha do tempo do pedido."
+          "t": "Abrir "
+         },
+         {
+          "t": "⋯ > Linha do tempo",
+          "marca": "codigo"
+         },
+         {
+          "t": " do pedido."
          }
         ],
         "nota": [
@@ -150,7 +196,15 @@
       "titulo": "4. Sugestão e aprovação",
       "onde": [
        {
-        "t": "Compras > Sugestão de Compra e Compras > Aprovações"
+        "t": "Compras > Sugestão de Compra",
+        "marca": "codigo"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "Compras > Aprovações",
+        "marca": "codigo"
        }
       ],
       "intro": null,
@@ -158,7 +212,14 @@
        {
         "texto": [
          {
-          "t": "Em Sugestão de Compra, ler a fórmula \"falta líquida = mínimo − disponível\" "
+          "t": "Em "
+         },
+         {
+          "t": "Sugestão de Compra",
+          "marca": "codigo"
+         },
+         {
+          "t": ", ler a fórmula \"falta líquida = mínimo − disponível\" "
          },
          {
           "t": "sem gerar solicitações",
@@ -178,7 +239,14 @@
        {
         "texto": [
          {
-          "t": "Em Compras > Aprovações, ver os pedidos aguardando alçada."
+          "t": "Em "
+         },
+         {
+          "t": "Compras > Aprovações",
+          "marca": "codigo"
+         },
+         {
+          "t": ", ver os pedidos aguardando alçada."
          }
         ],
         "nota": [
@@ -268,7 +336,15 @@
       "titulo": "1. Preparar seus dados: criar uma solicitação e um pedido de compra",
       "onde": [
        {
-        "t": "Cadastros > Participantes e Compras > Solicitações de Compra"
+        "t": "Cadastros > Participantes",
+        "marca": "tela"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "Compras > Solicitações de Compra",
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -310,7 +386,14 @@
        {
         "texto": [
          {
-          "t": "Em Compras > Solicitações de Compra > Nova Solicitação: "
+          "t": "Em "
+         },
+         {
+          "t": "Compras > Solicitações de Compra > Nova Solicitação",
+          "marca": "codigo"
+         },
+         {
+          "t": ": "
          },
          {
           "t": "Empresa",
@@ -337,7 +420,14 @@
        {
         "texto": [
          {
-          "t": "No menu ⋯ da solicitação, escolher "
+          "t": "No menu "
+         },
+         {
+          "t": "⋯",
+          "marca": "codigo"
+         },
+         {
+          "t": " da solicitação, escolher "
          },
          {
           "t": "Gerar Pedido de Compra",
@@ -413,7 +503,14 @@
        {
         "texto": [
          {
-          "t": "Se o supervisor pedir a cotação: ⋯ > Gerar Cotação (Empresa e Natureza da Operação), fornecedor com data de entrega e condição de pagamento, proposta preenchida e então "
+          "t": "Se o supervisor pedir a cotação: "
+         },
+         {
+          "t": "⋯ > Gerar Cotação",
+          "marca": "codigo"
+         },
+         {
+          "t": " (Empresa e Natureza da Operação), fornecedor com data de entrega e condição de pagamento, proposta preenchida e então "
          },
          {
           "t": "Gerar Pedido de Compra",
@@ -443,7 +540,6 @@
       "url": "/checklists/estagiarios/05-compras.html",
       "duracao_s": null,
       "poster": null,
-      "legenda": null,
       "resumo": null,
       "fontes": [
        "guia:scripts/dados-checklists-estagiarios.mjs#compras"
@@ -475,7 +571,18 @@
         "id": "acessar-1",
         "texto": [
          {
-          "t": "Sei acessar: Cadastros > Participantes e Compras > Solicitações de Compra"
+          "t": "Sei acessar: "
+         },
+         {
+          "t": "Cadastros > Participantes",
+          "marca": "tela"
+         },
+         {
+          "t": " e "
+         },
+         {
+          "t": "Compras > Solicitações de Compra",
+          "marca": "tela"
          }
         ]
        },
@@ -483,7 +590,11 @@
         "id": "acessar-2",
         "texto": [
          {
-          "t": "Sei acessar: módulo Compras"
+          "t": "Sei acessar: módulo "
+         },
+         {
+          "t": "Compras",
+          "marca": "codigo"
          }
         ]
        },
@@ -491,7 +602,18 @@
         "id": "acessar-3",
         "texto": [
          {
-          "t": "Sei acessar: Compras > Sugestão de Compra e Compras > Aprovações"
+          "t": "Sei acessar: "
+         },
+         {
+          "t": "Compras > Sugestão de Compra",
+          "marca": "codigo"
+         },
+         {
+          "t": " e "
+         },
+         {
+          "t": "Compras > Aprovações",
+          "marca": "codigo"
          }
         ]
        },
@@ -637,7 +759,14 @@
       "titulo": "Gerar Pedido de Compra da solicitação abre o Novo Pedido de Compra",
       "texto": [
        {
-        "t": "No menu ⋯ da solicitação (SC), "
+        "t": "No menu "
+       },
+       {
+        "t": "⋯",
+        "marca": "codigo"
+       },
+       {
+        "t": " da solicitação (SC), "
        },
        {
         "t": "Gerar Pedido de Compra",
@@ -705,7 +834,14 @@
       ],
       "confirmar": [
        {
-        "t": "Compras › Solicitações de Compra › ⋯ › Gerar Pedido de Compra."
+        "t": "Compras › Solicitações de Compra › "
+       },
+       {
+        "t": "⋯",
+        "marca": "codigo"
+       },
+       {
+        "t": " › Gerar Pedido de Compra."
        }
       ],
       "confianca": "B",
@@ -785,7 +921,14 @@
       "titulo": "A nota de recebimento tem dois números",
       "texto": [
        {
-        "t": "No menu ⋯ do pedido de compra, "
+        "t": "No menu "
+       },
+       {
+        "t": "⋯",
+        "marca": "codigo"
+       },
+       {
+        "t": " do pedido de compra, "
        },
        {
         "t": "Gerar Nota de Recebimento",
@@ -804,7 +947,14 @@
       ],
       "confirmar": [
        {
-        "t": "Compras › Pedidos de Compra › ⋯ e Recebimento › Notas de Recebimento."
+        "t": "Compras › Pedidos de Compra › "
+       },
+       {
+        "t": "⋯",
+        "marca": "codigo"
+       },
+       {
+        "t": " e Recebimento › Notas de Recebimento."
        }
       ],
       "confianca": "B",
@@ -861,7 +1011,8 @@
       "titulo": "1. Solicitação de compra manual",
       "onde": [
        {
-        "t": "Compras > Solicitações de Compra > Nova Solicitação"
+        "t": "Compras > Solicitações de Compra > Nova Solicitação",
+        "marca": "codigo"
        }
       ],
       "intro": [
@@ -879,7 +1030,8 @@
       "titulo": "2. Sugestão de compra (se o cliente usa estoque mínimo)",
       "onde": [
        {
-        "t": "Compras > Sugestão de Compra"
+        "t": "Compras > Sugestão de Compra",
+        "marca": "codigo"
        }
       ],
       "intro": [
@@ -897,7 +1049,15 @@
       "titulo": "3. Cotação com fornecedores",
       "onde": [
        {
-        "t": "⋯ > Gerar Cotação da SC ou Compras > Cotações de Compra"
+        "t": "⋯ > Gerar Cotação",
+        "marca": "codigo"
+       },
+       {
+        "t": " da SC ou "
+       },
+       {
+        "t": "Compras > Cotações de Compra",
+        "marca": "codigo"
        }
       ],
       "intro": [
@@ -915,7 +1075,15 @@
       "titulo": "4. Gerar o pedido de compra",
       "onde": [
        {
-        "t": "Gerar Pedido de Compra na comparação e Compras > Pedidos de Compra"
+        "t": "Gerar Pedido de Compra",
+        "marca": "codigo"
+       },
+       {
+        "t": " na comparação e "
+       },
+       {
+        "t": "Compras > Pedidos de Compra",
+        "marca": "codigo"
        }
       ],
       "intro": [
@@ -933,7 +1101,15 @@
       "titulo": "5. Aprovação por alçada (se o cliente usa)",
       "onde": [
        {
-        "t": "Compras > Configurações > Faixas de Alçada e Compras > Aprovações"
+        "t": "Compras > Configurações > Faixas de Alçada",
+        "marca": "codigo"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "Compras > Aprovações",
+        "marca": "codigo"
        }
       ],
       "intro": [
@@ -951,7 +1127,22 @@
       "titulo": "6. Enviar o pedido e acompanhar a entrega",
       "onde": [
        {
-        "t": "Compras > Pedidos de Compra, Compras > Follow-up de Entregas e Dashboard Compras"
+        "t": "Compras > Pedidos de Compra",
+        "marca": "codigo"
+       },
+       {
+        "t": ", "
+       },
+       {
+        "t": "Compras > Follow-up de Entregas",
+        "marca": "codigo"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "Dashboard Compras",
+        "marca": "codigo"
        }
       ],
       "intro": [
@@ -969,7 +1160,15 @@
       "titulo": "7. Reflexo no Recebimento e no Financeiro",
       "onde": [
        {
-        "t": "Compras > Pedidos de Compra > ⋯ e Financeiro > Contas a Pagar"
+        "t": "Compras > Pedidos de Compra > ⋯",
+        "marca": "codigo"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "Financeiro > Contas a Pagar",
+        "marca": "tela"
        }
       ],
       "intro": [
@@ -1134,7 +1333,6 @@
       "url": "/checklists/consultores/implantacao-08-compras.html",
       "duracao_s": null,
       "poster": null,
-      "legenda": null,
       "resumo": null,
       "fontes": [
        "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
@@ -1179,7 +1377,14 @@
           "marca": "negrito"
          },
          {
-          "t": " checklist da Fundação assinado e Minha Assinatura. "
+          "t": " checklist da Fundação assinado e "
+         },
+         {
+          "t": "Minha Assinatura",
+          "marca": "codigo"
+         },
+         {
+          "t": ". "
          },
          {
           "t": "Fonte:",
@@ -1347,7 +1552,11 @@
        {
         "texto": [
          {
-          "t": "Compras > Configurações > Parâmetros de Compras revisados: \"Regras de Melhor Opção\" e \"Critérios de preço na Cotação\". Deixe \"Usar aprovação por alçada\" desligado até o bloco 5."
+          "t": "Compras > Configurações > Parâmetros de Compras",
+          "marca": "codigo"
+         },
+         {
+          "t": " revisados: \"Regras de Melhor Opção\" e \"Critérios de preço na Cotação\". Deixe \"Usar aprovação por alçada\" desligado até o bloco 5."
          }
         ],
         "nota": [
@@ -1383,7 +1592,14 @@
           "marca": "negrito"
          },
          {
-          "t": " Segurança > Perfis de Acesso. "
+          "t": " "
+         },
+         {
+          "t": "Segurança > Perfis de Acesso",
+          "marca": "codigo"
+         },
+         {
+          "t": ". "
          },
          {
           "t": "Fonte:",
@@ -1807,7 +2023,14 @@
           "marca": "negrito"
          },
          {
-          "t": ". Conferir em que momento o PC-nnnn/2 aparece."
+          "t": ". Conferir em que momento o "
+         },
+         {
+          "t": "PC-nnnn/2",
+          "marca": "codigo"
+         },
+         {
+          "t": " aparece."
          }
         ],
         "nota": null,
@@ -1819,7 +2042,21 @@
        {
         "texto": [
          {
-          "t": "Caminho dos parâmetros: o fluxo antigo cita Compras > Configurações > Parâmetros; a gestora, Compras > Configurações > Parâmetros de Compras. Conferir o rótulo do menu."
+          "t": "Caminho dos parâmetros: o fluxo antigo cita "
+         },
+         {
+          "t": "Compras > Configurações > Parâmetros",
+          "marca": "codigo"
+         },
+         {
+          "t": "; a gestora, "
+         },
+         {
+          "t": "Compras > Configurações > Parâmetros de Compras",
+          "marca": "codigo"
+         },
+         {
+          "t": ". Conferir o rótulo do menu."
          }
         ],
         "nota": null,
@@ -1878,7 +2115,7 @@
       "url": "/videos/consultor-01-suprimentos.mp4",
       "duracao_s": 203,
       "poster": "/videos/consultor-01-suprimentos.jpg",
-      "legenda": "/videos/consultor-01-suprimentos.vtt",
+      "legendas_url": "/videos/consultor-01-suprimentos.vtt",
       "resumo": [
        {
         "t": "Cotação opcional, a natureza da operação que define o CFOP, a nota com dois números e a linha do tempo do pedido."
@@ -1908,7 +2145,6 @@
       "url": "/checklists/estagiarios/05-compras.html",
       "duracao_s": null,
       "poster": null,
-      "legenda": null,
       "resumo": null,
       "fontes": [
        "guia:scripts/dados-checklists-estagiarios.mjs#compras"
@@ -1922,7 +2158,6 @@
       "url": "/checklists/consultores/implantacao-08-compras.html",
       "duracao_s": null,
       "poster": null,
-      "legenda": null,
       "resumo": null,
       "fontes": [
        "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
