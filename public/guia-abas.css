@@ -36,6 +36,22 @@
 .ab-btn--sec { background: #fff; color: var(--brand-primary-900); border-color: var(--color-line-strong); }
 .ab-btn--sec:hover { background: var(--brand-primary-50); border-color: var(--brand-primary); }
 .ab-btn[hidden] { display: none; }
+
+/* v3.8: .nav-item/.ab-aba definem display:flex/inline-flex e anulam o [hidden] do UA —
+   sem isto, Apostila/Acervo e seções do acervo antigo continuam visíveis para o estagiário
+   enquanto os títulos (.nav-section) somem. */
+.nav-item[hidden],
+.nav-section[hidden],
+.ab-aba[hidden] {
+  display: none !important;
+}
+
+/* Evita flash do menu completo antes de Plataforma.visibilidade() + aplicarPerfil(). */
+.sidebar[data-ab-perfil="pendente"] > .nav-item,
+.sidebar[data-ab-perfil="pendente"] > .nav-section {
+  visibility: hidden;
+}
+
 .ab-btn--destaque { background: var(--brand-accent); border-color: var(--brand-accent); color: var(--brand-accent-ink, #1c2a05); font-weight: 700; }
 .ab-btn--destaque:hover { background: var(--brand-accent); box-shadow: 0 8px 20px rgb(213 221 38 / .45), var(--shadow-md); }
 .ab-btn--destaque svg:last-child { width: 14px; height: 14px; opacity: .7; }

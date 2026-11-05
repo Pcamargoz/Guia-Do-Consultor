@@ -133,7 +133,9 @@
   itensAcervo.forEach((el) => { el.classList.remove('active'); el.dataset.acervo = ''; });
   const primeiroAcervo = itensAcervo[0];
   const antes = (el) => (primeiroAcervo ? primeiroAcervo.before(el) : sidebar.append(el));
-  [navs.inicio, navs.inicial, navs.consultor, tituloSecao('Ferramentas'), navs.pacotes, navs.checklist, navs.videos,
+  const tituloFerramentas = tituloSecao('Ferramentas');
+  tituloFerramentas.dataset.grupoNav = 'ferramentas';
+  [navs.inicio, navs.inicial, navs.consultor, tituloFerramentas, navs.pacotes, navs.checklist, navs.videos,
     navs.apostila, navs.admin].forEach(antes);
   const tituloAcervo = tituloSecao('Acervo');
   tituloAcervo.dataset.acervo = '';
@@ -141,8 +143,11 @@
   antes(navs.acervo);
   navs.acervo.dataset.acervo = '';
 
-  /* ---------- Visibilidade por perfil (só apresentação) ---------- */
+  /* ---------- Visibilidade por perfil (só apresentação) ----------
+     Depende de .nav-item[hidden]/.nav-section[hidden]/.ab-aba[hidden] { display:none !important }
+     em guia-abas.css — senão display:flex do .nav-item anula o atributo hidden (bug v3.8). */
   const permitida = (area) => area === 'inicio' || area === 'admin' || P.lerRota(`#${area}`).area === area;
+  const AREAS_FERRAMENTAS = ['pacotes', 'checklist', 'videos', 'apostila'];
   function aplicarPerfil() {
     for (const a of ABAS) {
       if (a.soAdmin) continue;
@@ -150,6 +155,8 @@
       topo.querySelector(`[data-aba="${a.id}"]`).hidden = !ok;
       if (navs[a.id]) navs[a.id].hidden = !ok;
     }
+    // Título do grupo só se sobrar ao menos um item visível no grupo.
+    tituloFerramentas.hidden = !AREAS_FERRAMENTAS.some(permitida);
     const acervo = permitida('acervo');
     sidebar.querySelectorAll('[data-acervo]').forEach((el) => { el.hidden = !acervo; });
   }
@@ -286,9 +293,13 @@
   let pronto = false;
   window.addEventListener('plataforma:rota', (e) => { if (pronto) mostrar(e.detail || { area: 'inicio' }); });
 
+  // Menu montado já no DOM: esconde itens até o mapa de visibilidade (evita flash do menu completo).
+  sidebar.dataset.abPerfil = 'pendente';
+
   (async () => {
     await P.visibilidade(); // aplica o mapa do perfil no roteador; erro de rede não bloqueia (o servidor protege)
     aplicarPerfil();
+    delete sidebar.dataset.abPerfil;
     pronto = true;
     mostrar(P.lerRota(location.hash));
     // A aba do administrador só aparece quando guia-admin.js confere a sessão (then registrado antes deste):
