@@ -1,0 +1,978 @@
+{
+  "modulo": "recebimento",
+  "titulo": "Recebimento — guia visual",
+  "resumo": "Como a mercadoria do fornecedor entra na empresa: a nota de recebimento nasce do pedido de compra (ou do XML), é conferida e, ao ser finalizada, dá entrada no estoque e gera o título a pagar.",
+  "versaoSistema": "1.22.13 (capturas do ambiente de teste, 19 e 29/10/2026); 1.23.2 (staging, 05/11/2026) na tela Aguardando manifestação",
+  "atualizadoEm": "2026-11-05",
+  "status": "rascunho",
+  "conceitos": [
+    {
+      "titulo": "O que é a nota de recebimento",
+      "icone": "recebimento",
+      "texto": "É o registro da mercadoria que o fornecedor entregou. Ela valida a entrega, atualiza o estoque, gera contas a pagar e conclui o pedido de compra.",
+      "fontes": [
+        "db/migrations/002_modulos_iniciais.sql#recebimento",
+        "funcional-compras-solicitacoes-pedidos-e-recebimento#003"
+      ]
+    },
+    {
+      "titulo": "De onde a nota vem",
+      "icone": "seta",
+      "texto": "A nota pode nascer do pedido de compra (Gerar Nota de Recebimento), de um XML do fornecedor ou ser avulsa. Gerada do pedido, ela já chega preenchida com empresa, fornecedor, CFOP, condição de pagamento e itens.",
+      "fontes": [
+        "funcional-compras-solicitacoes-pedidos-e-recebimento#003",
+        "scripts/dados-checklists-estagiarios.mjs#recebimento"
+      ]
+    },
+    {
+      "titulo": "Uma nota, dois números",
+      "icone": "nota",
+      "texto": "A mesma nota aparece como NF-<número do fornecedor> na lista de Recebimento e como NR-<número interno> na conferência, no pedido de compra e no título. Anote os dois.",
+      "fontes": [
+        "regra-recebimento-a-mesma-nota-tem-dois-numeros"
+      ]
+    },
+    {
+      "titulo": "Finalizar é o momento decisivo",
+      "icone": "cadeado",
+      "texto": "Enquanto está Em Aberto, a nota só registra. Ao finalizar, o sistema movimenta o estoque e gera os títulos a pagar, e isso não pode ser desfeito.",
+      "fontes": [
+        "scripts/dados-checklists-estagiarios.mjs#recebimento",
+        "roteiro-recebimento-01-notas-de-recebimento-com-sistemas-tecnicos#058"
+      ]
+    },
+    {
+      "titulo": "Conferência física (opcional)",
+      "icone": "check",
+      "texto": "Se a empresa liga a conferência física, a nota entra numa fila para o almoxarife contar o material antes de finalizar. É uma decisão de configuração de cada empresa.",
+      "fontes": [
+        "manual-05-recebimento#004",
+        "manual-05-recebimento#008"
+      ]
+    }
+  ],
+  "palavras": [
+    {
+      "termo": "Nota de Recebimento",
+      "definicao": "Documento de entrada da mercadoria do fornecedor. Número interno no formato NR-.",
+      "fontes": [
+        "regra-recebimento-a-mesma-nota-tem-dois-numeros"
+      ]
+    },
+    {
+      "termo": "Nova Nota de Recebimento",
+      "definicao": "Página que abre ao gerar a nota pelo pedido de compra, já preenchida.",
+      "fontes": [
+        "glossario: recebimento.nova-nota"
+      ]
+    },
+    {
+      "termo": "Gerar Nota de Recebimento",
+      "definicao": "Item do menu ⋯ do pedido de compra que cria a nota a partir do pedido.",
+      "fontes": [
+        "glossario: Gerar Nota de Recebimento",
+        "scripts/dados-checklists-estagiarios.mjs#recebimento"
+      ]
+    },
+    {
+      "termo": "Em Aberto",
+      "definicao": "Status da nota salva e ainda não finalizada. A lista de notas abre filtrada nele.",
+      "fontes": [
+        "scripts/dados-checklists-estagiarios.mjs#recebimento"
+      ]
+    },
+    {
+      "termo": "Finalizada",
+      "definicao": "Status da nota depois de Finalizar: estoque movimentado e títulos gerados.",
+      "fontes": [
+        "scripts/dados-checklists-estagiarios.mjs#recebimento",
+        "videos/public/telas/consultor-01-suprimentos/02-notas-recebimento.png"
+      ]
+    },
+    {
+      "termo": "Finalizar",
+      "definicao": "Ação do menu ⋮ da nota em aberto. Movimenta estoque e gera títulos a pagar; não pode ser desfeita.",
+      "fontes": [
+        "scripts/dados-checklists-estagiarios.mjs#recebimento"
+      ]
+    },
+    {
+      "termo": "Importar XML",
+      "definicao": "Botão da lista de notas para criar a nota a partir do arquivo XML do fornecedor.",
+      "fontes": [
+        "scripts/dados-checklists-implantacao.mjs#implantacao-recebimento",
+        "videos/public/telas/consultor-01-suprimentos/02-notas-recebimento.png"
+      ]
+    },
+    {
+      "termo": "Recebimento (NR)",
+      "definicao": "Tipo do movimento de entrada que aparece em Estoque › Movimentos depois da finalização.",
+      "fontes": [
+        "scripts/dados-checklists-estagiarios.mjs#recebimento",
+        "videos/public/telas/consultor-01-suprimentos/03-entrada-estoque.png"
+      ]
+    }
+  ],
+  "mapa": {
+    "antes": [
+      "compras"
+    ],
+    "depois": [
+      "estoque",
+      "financeiro"
+    ],
+    "texto": "Vem depois de Compras: o pedido de compra gera a nota. Ao finalizar, a nota alimenta o Estoque (entrada no almoxarifado central) e o Financeiro (títulos em Contas a Pagar), e conclui o pedido de compra.",
+    "fontes": [
+      "db/migrations/002_modulos_iniciais.sql#recebimento",
+      "scripts/dados-checklists-estagiarios.mjs#recebimento",
+      "oficial-suprimentos-visao#000"
+    ]
+  },
+  "capitulos": [
+    {
+      "id": "conhecer-a-lista",
+      "titulo": "Conhecendo a lista de notas",
+      "nivel": "basico",
+      "objetivo": "Encontrar qualquer nota de recebimento, ler os cartões de resumo e o status de cada nota.",
+      "onde": "Recebimento › Notas de Recebimento",
+      "passos": [
+        {
+          "titulo": "Abra Notas de Recebimento",
+          "texto": "No menu do módulo Recebimento, clique em Notas de Recebimento. Antes de olhar a lista, leia os cartões do alto: eles contam as notas do filtro atual.",
+          "imagem": "/manuais/recebimento/img/01-notas-lista.webp",
+          "alt": "Lista Notas de Recebimento com os cartões de resumo, filtros e uma nota finalizada",
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Notas de Recebimento",
+              "explicacao": "Abre a lista das notas de entrada de mercadoria da empresa.",
+              "caixa": {
+                "x": 0.6,
+                "y": 23.4,
+                "w": 14.4,
+                "h": 3.9
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 2,
+              "rotulo": "Cartões Total, Em Aberto, Finalizadas e Canceladas",
+              "explicacao": "Contam as notas por situação. Em Aberto: ainda não finalizadas. Os números seguem o filtro aplicado na lista.",
+              "caixa": {
+                "x": 18.4,
+                "y": 17.2,
+                "w": 79.9,
+                "h": 12.3
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 3,
+              "rotulo": "+ Nova Nota",
+              "explicacao": "Cria a nota digitando os dados. A nota também pode nascer do pedido de compra ou do XML do fornecedor.",
+              "caixa": {
+                "x": 89.1,
+                "y": 33.3,
+                "w": 8,
+                "h": 5.4
+              },
+              "lado": "baixo"
+            }
+          ],
+          "dica": "Os cartões seguem o filtro aplicado na lista.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-01-suprimentos/02-notas-recebimento.png",
+            "scripts/dados-checklists-estagiarios.mjs#recebimento",
+            "oficial-rec-b-processos#006"
+          ],
+          "largura": 1600,
+          "altura": 900
+        },
+        {
+          "titulo": "Leia o número e o status da nota",
+          "texto": "Em cada linha, confira o NÚMERO DA NOTA e o STATUS. Para abrir a nota só para ler, use o olho (Visualizar).",
+          "imagem": "/manuais/recebimento/img/01-notas-lista.webp",
+          "alt": "Linha da nota NF-990001 com status Finalizada",
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Número da nota",
+              "explicacao": "Nesta lista a nota aparece com o número do fornecedor (NF-…). Na conferência, no pedido e no título, a mesma nota aparece como NR-….",
+              "caixa": {
+                "x": 19.3,
+                "y": 78,
+                "w": 5.6,
+                "h": 3.2
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 2,
+              "rotulo": "Status",
+              "explicacao": "Em Aberto: a nota ainda não foi finalizada. Finalizada: já deu entrada no estoque e gerou o título a pagar.",
+              "caixa": {
+                "x": 83.9,
+                "y": 77.8,
+                "w": 5.9,
+                "h": 3.7
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 3,
+              "rotulo": "Visualizar (olho)",
+              "explicacao": "Abre a nota para leitura, sem alterar nada.",
+              "caixa": {
+                "x": 92.1,
+                "y": 78,
+                "w": 1.9,
+                "h": 3.2
+              },
+              "lado": "baixo"
+            }
+          ],
+          "zoom": {
+            "x": 18.8,
+            "y": 72.2,
+            "w": 80.8,
+            "h": 16.1
+          },
+          "atencao": "A mesma nota tem dois números: NF-<fornecedor> nesta lista e NR-<interno> na conferência, no pedido e no título.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-01-suprimentos/02-notas-recebimento.png",
+            "regra-recebimento-a-mesma-nota-tem-dois-numeros"
+          ],
+          "largura": 1600,
+          "altura": 900
+        },
+        {
+          "titulo": "Troque o filtro Status",
+          "texto": "A lista abre filtrada em Em Aberto. Para ver as notas finalizadas ou canceladas, troque o Status ou limpe o filtro no x.",
+          "imagem": "/manuais/recebimento/img/02-menu-finalizar.webp",
+          "alt": "Filtros da lista com Status Em Aberto selecionado",
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Status",
+              "explicacao": "Mostra só as notas na situação escolhida. Ao abrir a tela, o filtro já vem em Em Aberto.",
+              "caixa": {
+                "x": 45.8,
+                "y": 65,
+                "w": 21.8,
+                "h": 4.2
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 2,
+              "rotulo": "Limpar o filtro (x)",
+              "explicacao": "Tira o filtro de Status: a lista volta a mostrar as notas de todas as situações, inclusive as finalizadas.",
+              "caixa": {
+                "x": 68.6,
+                "y": 65.4,
+                "w": 1.8,
+                "h": 3.3
+              },
+              "lado": "direita"
+            }
+          ],
+          "atencao": "Uma nota finalizada só aparece depois de limpar o filtro: ela não sumiu.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/compra-em-nome-do-cliente/37-finalizar-nr.png",
+            "scripts/dados-checklists-estagiarios.mjs#recebimento"
+          ],
+          "largura": 1600,
+          "altura": 900,
+          "zoom": {
+            "x": 43.8,
+            "y": 61.7,
+            "w": 29.1,
+            "h": 11.1
+          }
+        }
+      ]
+    },
+    {
+      "id": "nota-do-pedido",
+      "titulo": "Gerando a nota a partir do pedido de compra",
+      "nivel": "basico",
+      "objetivo": "Criar a nota de recebimento de um pedido de compra, conferir o que veio preenchido e salvar.",
+      "onde": "Compras › Pedidos de Compra › ⋯ › Gerar Nota de Recebimento",
+      "passos": [
+        {
+          "titulo": "Gere a nota pelo menu do pedido",
+          "texto": "Em Compras › Pedidos de Compra, abra o menu ⋯ do pedido e escolha Gerar Nota de Recebimento.",
+          "dica": "O menu do pedido em aberto também tem Baixar PDF, Linha do tempo, Gerar Título a Pagar, Cancelar e Excluir.",
+          "evidencia": "base",
+          "fontes": [
+            "scripts/dados-checklists-estagiarios.mjs#recebimento",
+            "glossario: Gerar Nota de Recebimento"
+          ]
+        },
+        {
+          "titulo": "Confira os dados que vieram do pedido",
+          "texto": "A página Nova Nota de Recebimento já vem preenchida a partir do pedido de compra. Confira os campos marcados; os que têm * são obrigatórios.",
+          "imagem": "/manuais/recebimento/img/03-nova-nota.webp",
+          "alt": "Página Nova Nota de Recebimento com Empresa, Fornecedor, CFOP, Pedido de Compra (opcional) e Condição de Pagamento preenchidos.",
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Empresa *",
+              "explicacao": "A empresa que está recebendo a mercadoria. Obrigatória.",
+              "caixa": {
+                "x": 18.7,
+                "y": 23,
+                "w": 19.3,
+                "h": 8.2
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 2,
+              "rotulo": "Fornecedor *",
+              "explicacao": "Quem entregou a mercadoria; vem do pedido de compra. Obrigatório.",
+              "caixa": {
+                "x": 38.3,
+                "y": 23,
+                "w": 19.3,
+                "h": 8.2
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 3,
+              "rotulo": "CFOP *",
+              "explicacao": "O código fiscal da entrada (nesta captura, compra para industrialização). Obrigatório.",
+              "caixa": {
+                "x": 57.8,
+                "y": 23,
+                "w": 19.3,
+                "h": 8.2
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 4,
+              "rotulo": "Pedido de Compra (opcional)",
+              "explicacao": "Liga a nota ao pedido que a originou. É por esse vínculo que a nota aparece na linha do tempo do pedido.",
+              "caixa": {
+                "x": 77.4,
+                "y": 23,
+                "w": 19.3,
+                "h": 8.2
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 5,
+              "rotulo": "Condição de Pagamento",
+              "explicacao": "O prazo de pagamento ao fornecedor (nesta captura, 30 Dias); vem do pedido de compra.",
+              "caixa": {
+                "x": 38.3,
+                "y": 32.2,
+                "w": 19.3,
+                "h": 8
+              },
+              "lado": "direita"
+            }
+          ],
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/compra-em-nome-do-cliente/36-nota-recebimento.png",
+            "funcional-compras-solicitacoes-pedidos-e-recebimento#003",
+            "scripts/dados-checklists-estagiarios.mjs#recebimento"
+          ],
+          "largura": 1600,
+          "altura": 900
+        },
+        {
+          "titulo": "Deixe em branco o que não se aplica e clique em Salvar",
+          "texto": "Na compra comum, deixe Material de terceiro (cliente) desmarcado. Se não houver nota fiscal do fornecedor, deixe o Nº NF-e / NFS-e em branco. Depois, clique em Salvar.",
+          "imagem": "/manuais/recebimento/img/03-nova-nota.webp",
+          "alt": "Nova Nota de Recebimento com a caixa Material de terceiro (cliente), o campo Nº NF-e / NFS-e e o botão Salvar.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Material de terceiro (cliente)",
+              "explicacao": "Marque só na compra feita em nome do cliente: aparecem Projeto / Obra e Cliente (terceiro). Nesta captura, a caixa está marcada por ser esse caso.",
+              "caixa": {
+                "x": 19.1,
+                "y": 41.9,
+                "w": 16.5,
+                "h": 3.6
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 2,
+              "rotulo": "Nº NF-e / NFS-e",
+              "explicacao": "O número da nota do fornecedor. Em branco, a própria tela avisa que vira nota gerencial.",
+              "caixa": {
+                "x": 18.7,
+                "y": 58.8,
+                "w": 19.3,
+                "h": 8.3
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 3,
+              "rotulo": "Salvar",
+              "explicacao": "Grava a nota, que fica Em Aberto. Cancelar sai sem gravar.",
+              "caixa": {
+                "x": 92.4,
+                "y": 11.7,
+                "w": 5.4,
+                "h": 5.9
+              },
+              "lado": "baixo"
+            }
+          ],
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/compra-em-nome-do-cliente/36-nota-recebimento.png",
+            "scripts/dados-checklists-estagiarios.mjs#recebimento",
+            "funcional-compras-solicitacoes-pedidos-e-recebimento#003"
+          ],
+          "atencao": "Material de terceiro (cliente) só se marca na compra feita em nome do cliente; na compra comum, deixe desmarcado."
+        }
+      ]
+    },
+    {
+      "id": "finalizar-e-reflexos",
+      "titulo": "Finalizando a nota e vendo os reflexos",
+      "nivel": "basico",
+      "objetivo": "Entender o que a finalização faz e onde conferir o resultado no estoque e no pedido de compra.",
+      "onde": "Recebimento › Notas de Recebimento › ⋮",
+      "passos": [
+        {
+          "titulo": "Abra o menu ⋮ da nota em aberto",
+          "texto": "Na linha da nota Em Aberto, clique em ⋮ (à direita do lápis). Leia as opções antes de escolher: Finalizar não pode ser desfeito.",
+          "imagem": "/manuais/recebimento/img/02-menu-finalizar.webp",
+          "alt": "Menu de ações da nota em aberto com Finalizar, Imprimir Etiquetas, Cancelar e Excluir",
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Menu ⋮ da nota",
+              "explicacao": "Abre as ações da nota que ainda está Em Aberto.",
+              "caixa": {
+                "x": 94.3,
+                "y": 78.2,
+                "w": 1.8,
+                "h": 3.2
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 2,
+              "rotulo": "Finalizar",
+              "explicacao": "Dá entrada da mercadoria no estoque e gera os títulos a pagar. Abre um aviso de confirmação.",
+              "caixa": {
+                "x": 85.9,
+                "y": 83,
+                "w": 6,
+                "h": 3.2
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 3,
+              "rotulo": "Imprimir Etiquetas",
+              "explicacao": "Aparece em cinza (desabilitado) até a conferência da nota ser feita.",
+              "caixa": {
+                "x": 85.9,
+                "y": 86.8,
+                "w": 9.8,
+                "h": 3.1
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 4,
+              "rotulo": "Cancelar",
+              "explicacao": "Cancela a nota que ainda está Em Aberto; ela passa a contar no cartão Canceladas.",
+              "caixa": {
+                "x": 85.9,
+                "y": 90.2,
+                "w": 6,
+                "h": 3.1
+              },
+              "lado": "direita"
+            }
+          ],
+          "zoom": {
+            "x": 70.3,
+            "y": 76.7,
+            "w": 29.5,
+            "h": 22.4
+          },
+          "atencao": "Finalizar movimenta o estoque, gera títulos a pagar e não pode ser desfeito. Leia o aviso da janela antes de confirmar.",
+          "dica": "Imprimir Etiquetas só fica disponível depois da conferência.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/compra-em-nome-do-cliente/37-finalizar-nr.png",
+            "scripts/dados-checklists-estagiarios.mjs#recebimento",
+            "roteiro-recebimento-01-notas-de-recebimento-com-sistemas-tecnicos#058"
+          ],
+          "largura": 1600,
+          "altura": 900
+        },
+        {
+          "titulo": "Confira a entrada no estoque",
+          "texto": "Depois de finalizar a nota, abra Estoque › Movimentos e localize a entrada. Confira o TIPO, a ORIGEM e o destino do material.",
+          "imagem": "/manuais/recebimento/img/05-entrada-estoque.webp",
+          "alt": "Movimento de entrada do tipo Recebimento (NR) com destino no almoxarifado central",
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Número",
+              "explicacao": "O número do movimento de estoque; é por ele que esta captura foi filtrada na busca.",
+              "caixa": {
+                "x": 19.4,
+                "y": 70.4,
+                "w": 3.9,
+                "h": 3.1
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 2,
+              "rotulo": "Tipo: Entrada · Recebimento (NR)",
+              "explicacao": "Diz que o material entrou pela finalização de uma nota de recebimento.",
+              "caixa": {
+                "x": 40.3,
+                "y": 68.2,
+                "w": 5.3,
+                "h": 7.3
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 3,
+              "rotulo": "Origem: Recebimento",
+              "explicacao": "O módulo que gerou o movimento.",
+              "caixa": {
+                "x": 46.4,
+                "y": 70.3,
+                "w": 5.8,
+                "h": 3.3
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 4,
+              "rotulo": "Origem → Destino",
+              "explicacao": "Para onde o material foi: o almoxarifado central da empresa. Sem almoxarifado central ativo, a entrada é bloqueada.",
+              "caixa": {
+                "x": 52.7,
+                "y": 68.1,
+                "w": 11,
+                "h": 7.7
+              },
+              "lado": "baixo"
+            }
+          ],
+          "atencao": "Sem almoxarifado central ativo na empresa, a entrada é bloqueada.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-01-suprimentos/03-entrada-estoque.png",
+            "scripts/dados-checklists-estagiarios.mjs#recebimento",
+            "regra-estoque-almoxarifado-central-ativo-e-pre-requisito"
+          ],
+          "largura": 1600,
+          "altura": 900,
+          "zoom": {
+            "x": 18.8,
+            "y": 63.3,
+            "w": 50.6,
+            "h": 16.9
+          }
+        },
+        {
+          "titulo": "Veja a cadeia na linha do tempo do pedido",
+          "texto": "No pedido de compra, abra ⋯ › Linha do tempo. Leia de cima para baixo: cada documento da compra aparece com o número e o status.",
+          "imagem": "/manuais/recebimento/img/04-linha-do-tempo.webp",
+          "alt": "Painel Linha do tempo do pedido com Solicitação de compra, Cotação, Pedido de compra, Nota de recebimento e Título a pagar, cada um com número e status.",
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Solicitação de compra",
+              "explicacao": "O pedido interno de material que deu início à compra (SC-). Concluída: já virou cotação.",
+              "caixa": {
+                "x": 75.9,
+                "y": 11.6,
+                "w": 11.4,
+                "h": 5.6
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 2,
+              "rotulo": "Cotação",
+              "explicacao": "Os preços consultados com os fornecedores (COT-).",
+              "caixa": {
+                "x": 75.9,
+                "y": 22.9,
+                "w": 11.8,
+                "h": 5.6
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 3,
+              "rotulo": "Pedido de compra",
+              "explicacao": "O pedido enviado ao fornecedor. \"Este pedido\" marca o que você abriu; Recebido indica que a mercadoria chegou.",
+              "caixa": {
+                "x": 75.9,
+                "y": 34.2,
+                "w": 11.1,
+                "h": 5.6
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 4,
+              "rotulo": "Nota de recebimento (NR-)",
+              "explicacao": "A nota da entrega. Finalizada: já deu entrada no estoque e gerou o título.",
+              "caixa": {
+                "x": 75.9,
+                "y": 45.6,
+                "w": 11.2,
+                "h": 5.6
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 5,
+              "rotulo": "Título a pagar",
+              "explicacao": "A conta a pagar ao fornecedor, com o número da nota (NR-). Aqui ele já aparece Pago.",
+              "caixa": {
+                "x": 75.9,
+                "y": 56.9,
+                "w": 11.9,
+                "h": 5.3
+              },
+              "lado": "direita"
+            }
+          ],
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-01-suprimentos/01-linha-do-tempo.png",
+            "videos/roteiros/consultor-01-suprimentos.json#11"
+          ],
+          "largura": 1600,
+          "altura": 900
+        }
+      ]
+    },
+    {
+      "id": "conferencia-e-xml",
+      "titulo": "Conferência física, XML e notas da SEFAZ",
+      "nivel": "avancado",
+      "objetivo": "Saber onde ficam a fila de conferência, a importação de XML e as notas aguardando manifestação, e o que cada uma exige.",
+      "onde": "Recebimento › Configurações › Parâmetros de Recebimento",
+      "passos": [
+        {
+          "titulo": "Reconheça os itens do menu",
+          "texto": "No menu do Recebimento, três itens tratam das notas que chegam de fora e da conferência física. Conheça para que serve cada um antes de usá-los.",
+          "imagem": "/manuais/recebimento/img/01-notas-lista.webp",
+          "alt": "Menu lateral do Recebimento com Aguardando manifestação, Distribuição DFe e Conferências.",
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Aguardando manifestação",
+              "explicacao": "Notas que a SEFAZ mostra contra a empresa. Daqui você responde à SEFAZ e usa Receber para preparar a nota de recebimento (versão PRO).",
+              "caixa": {
+                "x": 0.7,
+                "y": 27.4,
+                "w": 14.4,
+                "h": 3.6
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 2,
+              "rotulo": "Distribuição DFe",
+              "explicacao": "A configuração da busca automática dessas notas, por empresa. Exige o certificado A1 enviado (versão PRO).",
+              "caixa": {
+                "x": 0.7,
+                "y": 31.2,
+                "w": 14.4,
+                "h": 3.6
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 3,
+              "rotulo": "Conferências",
+              "explicacao": "A fila da conferência física: o almoxarife conta o material de cada nota. Só aparece com Usar Conferência Física ligado.",
+              "caixa": {
+                "x": 0.7,
+                "y": 38.6,
+                "w": 14.4,
+                "h": 3.6
+              },
+              "lado": "direita"
+            }
+          ],
+          "atencao": "Divergência de nome, a conferir na tela: nesta captura (19/10) o menu mostra Conferências; o Manual 05 e a trilha do estagiário chamam a fila de Aprovações. O item só aparece com Usar Conferência Física ligado (no staging v1.23.2, de 05/11/2026, ele não aparece no menu).",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-01-suprimentos/02-notas-recebimento.png",
+            "oficial-rec-c-implantacao#006",
+            "oficial-rec-a-regras#005",
+            "oficial-rec-c-implantacao#010",
+            "manual-05-recebimento#008",
+            "scripts/dados-checklists-estagiarios.mjs#recebimento",
+            "videos/capturas/guias-staging/recebimento-dashboard.png (staging v1.23.2, 05/11/2026)"
+          ],
+          "largura": 1600,
+          "altura": 900,
+          "zoom": {
+            "x": 0,
+            "y": 26.2,
+            "w": 25,
+            "h": 17.3
+          }
+        },
+        {
+          "titulo": "Importe o XML do fornecedor",
+          "texto": "Na lista de notas, o botão Importar XML cria a nota a partir do arquivo XML enviado pelo fornecedor, em vez de digitar os dados.",
+          "imagem": "/manuais/recebimento/img/01-notas-lista.webp",
+          "alt": "Lista de Notas de Recebimento com o botão Importar XML ao lado de Exportar.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Importar XML",
+              "explicacao": "Lê o arquivo da nota do fornecedor e confere as unidades antes de criar a nota. Na versão PRO, também liga os produtos e o pedido de compra.",
+              "caixa": {
+                "x": 79.9,
+                "y": 45.2,
+                "w": 9.4,
+                "h": 5.3
+              },
+              "lado": "baixo"
+            }
+          ],
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-01-suprimentos/02-notas-recebimento.png",
+            "oficial-rec-b-processos#006"
+          ]
+        },
+        {
+          "titulo": "Ligue a conferência física nos parâmetros",
+          "texto": "Em Parâmetros de Recebimento, Usar Conferência Física cria a fila de conferência e Exigir Conferência para Finalizar bloqueia a finalização até alguém conferir.",
+          "dica": "Defina as duas chaves com o responsável pelo recebimento da empresa.",
+          "evidencia": "base",
+          "fontes": [
+            "manual-05-recebimento#004",
+            "roteiro-recebimento-01-notas-de-recebimento-com-sistemas-tecnicos#046"
+          ]
+        },
+        {
+          "titulo": "Conheça a conferência",
+          "texto": "Na fila, o botão Conferir já inicia a conferência e registra o responsável na nota. Informe a quantidade de cada item e termine com Concluir Conferência.",
+          "atencao": "Iniciar a conferência trava a nota com o seu usuário; para destravar, use Liberar na fila.",
+          "evidencia": "base",
+          "fontes": [
+            "scripts/dados-checklists-estagiarios.mjs#recebimento",
+            "scripts/dados-checklists-implantacao.mjs#implantacao-recebimento",
+            "oficial-rec-c-implantacao#010"
+          ]
+        },
+        {
+          "titulo": "Cuidado com a manifestação à SEFAZ",
+          "texto": "Em Aguardando manifestação aparecem as notas que os fornecedores emitiram para a empresa. Buscar essas notas na SEFAZ exige Recebimento PRO e certificado A1 da empresa; sem PRO, use só a importação de XML por arquivo.",
+          "atencao": "Responder à SEFAZ (manifestação) é fiscal e irreversível: só com o responsável fiscal e numa nota de teste.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/capturas/guias-staging/recebimento-pendentes.png (staging v1.23.2, 05/11/2026)",
+            "oficial-rec-c-implantacao#006",
+            "oficial-rec-a-regras#005",
+            "roteiro-recebimento-02-notas-pendentes-com-sistemas-tecnicos#014",
+            "scripts/dados-checklists-implantacao.mjs#implantacao-recebimento",
+            "scripts/dados-checklists-estagiarios.mjs#recebimento"
+          ],
+          "imagem": "/manuais/recebimento/img/06-aguardando-manifestacao.webp",
+          "alt": "Tela Aguardando manifestação vazia, com o aviso Busca de notas de fornecedor ainda não ligada e as colunas Manifestação e O que fazer.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Aviso: busca não ligada",
+              "explicacao": "Sem a busca de notas da empresa ligada (Recebimento > Dfe > Configuração, como diz o aviso), esta lista fica vazia. A busca exige o certificado A1 enviado.",
+              "caixa": {
+                "x": 17.8,
+                "y": 12,
+                "w": 80.5,
+                "h": 8
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 2,
+              "rotulo": "O que a tela faz",
+              "explicacao": "Notas que os fornecedores emitiram para a empresa: responda à SEFAZ (manifestação) e clique em Receber para gerar a nota de recebimento.",
+              "caixa": {
+                "x": 23.1,
+                "y": 26.4,
+                "w": 61.9,
+                "h": 2.9
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 3,
+              "rotulo": "Atualizar",
+              "explicacao": "Busca as notas na hora. A busca automática roda a cada 30 minutos, e a nota pode demorar para chegar.",
+              "caixa": {
+                "x": 78.4,
+                "y": 35.8,
+                "w": 7.3,
+                "h": 4.7
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 4,
+              "rotulo": "MANIFESTAÇÃO",
+              "explicacao": "A resposta da empresa à SEFAZ: Confirmar que recebi, Não reconheço ou Operação não realizada (com justificativa).",
+              "caixa": {
+                "x": 60.3,
+                "y": 42.6,
+                "w": 8.5,
+                "h": 3.4
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 5,
+              "rotulo": "O QUE FAZER",
+              "explicacao": "A próxima ação para a nota, como Responder à SEFAZ ou Receber.",
+              "caixa": {
+                "x": 86.6,
+                "y": 42.6,
+                "w": 6.5,
+                "h": 3.4
+              },
+              "lado": "baixo"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "consultor": {
+    "implantacao": [
+      "Antes do recebimento: Compras concluído, com pelo menos dois pedidos de compra aprovados (um de 100 unidades, para testar a entrega parcial). Fonte: REC-NR-007; checklist de implantação do Recebimento.",
+      "Almoxarifado central ativo em Estoque › Locais na empresa que recebe: é onde a nota dá entrada. Fonte: regra-estoque-almoxarifado-central-ativo-e-pre-requisito.",
+      "CFOPs de entrada com Gera Financeiro e Movimenta Estoque decididos com o contador; plano de contas e conta de fluxo no fornecedor ou na empresa. Fonte: REC C, etapa 1; REC-NR-016, REC-FIN-007.",
+      "Produtos comprados com unidade de estoque, embalagem e fator; unidades de medida com as siglas que os fornecedores usam no XML. Fonte: REC-FIN-001, REC-XML-007.",
+      "Registrar na ata: títulos pelo pedido ou pela nota; conferência física sim ou não, e se trava a finalização. Fonte: README de Suprimentos, S2 e S5; REC C, perguntas R6 e R10.",
+      "Para devolução ao fornecedor: Faturamento com série de NF-e configurada. Fonte: REC-DEV-001/002."
+    ],
+    "perguntasDoCliente": [
+      {
+        "pergunta": "Por que a nota aparece com um número na lista e outro no título?",
+        "resposta": "É a mesma nota: NF-<número do fornecedor> na lista de Recebimento e NR-<número interno> na conferência, no pedido de compra e no título.",
+        "fontes": [
+          "regra-recebimento-a-mesma-nota-tem-dois-numeros"
+        ]
+      },
+      {
+        "pergunta": "Finalizei errado. Dá para desfazer?",
+        "resposta": "Não. O caminho de volta é cancelar a nota com motivo, e só depois de estornar os pagamentos.",
+        "fontes": [
+          "scripts/dados-checklists-implantacao.mjs#implantacao-recebimento"
+        ]
+      },
+      {
+        "pergunta": "As notas que já recebemos no sistema antigo entram no Flow?",
+        "resposta": "Não existe importador de notas antigas: elas entram como saldo de estoque e títulos a pagar na data de corte.",
+        "fontes": [
+          "scripts/dados-checklists-implantacao.mjs#implantacao-recebimento"
+        ]
+      },
+      {
+        "pergunta": "Sumiu uma nota da lista.",
+        "resposta": "A lista abre filtrada em Em Aberto: a nota finalizada aparece ao trocar ou limpar o filtro Status.",
+        "fontes": [
+          "scripts/dados-checklists-estagiarios.mjs#recebimento"
+        ]
+      }
+    ],
+    "errosComuns": [
+      {
+        "titulo": "Entrada bloqueada sem almoxarifado central",
+        "texto": "A entrada da nota vai para o almoxarifado central ativo. Sem ele, o sistema bloqueia a finalização.",
+        "fontes": [
+          "regra-estoque-almoxarifado-central-ativo-e-pre-requisito"
+        ]
+      },
+      {
+        "titulo": "Custo de entrada cheio",
+        "texto": "Hoje o sistema ainda dá entrada com custo cheio (com IPI e ICMS-ST, sem descontar crédito), diferente da decisão de produto. Avise o cliente que confere custo.",
+        "fontes": [
+          "scripts/dados-checklists-implantacao.mjs#implantacao-recebimento"
+        ]
+      },
+      {
+        "titulo": "Nota travada na conferência",
+        "texto": "Quem inicia a conferência trava a nota com o próprio usuário. Use Liberar na fila para destravar.",
+        "fontes": [
+          "scripts/dados-checklists-implantacao.mjs#implantacao-recebimento",
+          "oficial-rec-c-implantacao#010"
+        ]
+      },
+      {
+        "titulo": "Procurar \"Conferência\" e não achar",
+        "texto": "Em parte das fontes a fila aparece no menu como Aprovações; em outras, como Conferências, e só com Usar Conferência Física ligado. Confira na tela do cliente.",
+        "fontes": [
+          "scripts/dados-checklists-estagiarios.mjs#recebimento",
+          "manual-05-recebimento#008",
+          "oficial-rec-c-implantacao#010"
+        ]
+      }
+    ]
+  },
+  "fontes": [
+    "db/migrations/002_modulos_iniciais.sql#recebimento",
+    "funcional-compras-solicitacoes-pedidos-e-recebimento#003",
+    "regra-recebimento-a-mesma-nota-tem-dois-numeros",
+    "regra-estoque-almoxarifado-central-ativo-e-pre-requisito",
+    "manual-05-recebimento#004",
+    "manual-05-recebimento#008",
+    "roteiro-recebimento-01-notas-de-recebimento-com-sistemas-tecnicos#046",
+    "roteiro-recebimento-01-notas-de-recebimento-com-sistemas-tecnicos#058",
+    "oficial-rec-c-implantacao#010",
+    "oficial-suprimentos-visao#000",
+    "scripts/dados-checklists-estagiarios.mjs#recebimento",
+    "scripts/dados-checklists-implantacao.mjs#implantacao-recebimento",
+    "videos/roteiros/consultor-01-suprimentos.json",
+    "videos/public/telas/consultor-01-suprimentos/02-notas-recebimento.png",
+    "videos/public/telas/consultor-01-suprimentos/01-linha-do-tempo.png",
+    "videos/public/telas/consultor-01-suprimentos/03-entrada-estoque.png",
+    "videos/public/telas/compra-em-nome-do-cliente/36-nota-recebimento.png",
+    "videos/public/telas/compra-em-nome-do-cliente/37-finalizar-nr.png"
+  ],
+  "pendencias": [
+    "CAPTURA: Compras › Pedidos de Compra — menu ⋯ de um pedido em aberto com Gerar Nota de Recebimento.",
+    "CAPTURA: Recebimento › Notas de Recebimento › ⋮ › Finalizar — janela Finalizar Nota de Recebimento com o aviso.",
+    "CAPTURA: Recebimento › Dashboard Recebimento — fila e cartões (Recebido no período, Notas em aberto, Títulos a gerar, Parcelas a vencer).",
+    "CAPTURA: fila de conferência (Recebimento › Aprovações ou › Conferências) — cartões e abas, e a tela de conferência de uma nota.",
+    "CAPTURA: Recebimento › Configurações › Parâmetros de Recebimento — chaves Usar Conferência Física e Exigir Conferência para Finalizar.",
+    "CAPTURA: Recebimento › Notas de Recebimento › Importar XML — janela de importação.",
+    "DIVERGÊNCIA a conferir na tela: nome da fila de conferência (Aprovações no Manual 05 e na trilha do estagiário × Conferências no roteiro, no manual de implantação e na captura de 19/10). No staging v1.23.2 (05/11/2026) nenhum dos dois aparece no menu (conferência física desligada): segue a conferir.",
+    "RESOLVIDO (staging v1.23.2, 05/11/2026): o item de menu é Aguardando manifestação (Notas pendentes, da captura de 29/10, não aparece mais).",
+    "Validação na tela pendente: guia gerado de capturas e da base, sem sessão no Flow."
+  ]
+}

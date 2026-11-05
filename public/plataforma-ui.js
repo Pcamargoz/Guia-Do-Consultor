@@ -147,6 +147,7 @@
     seta: '<path d="M5 12h14"/><path d="m13 6 6 6-6 6"/>',
     alerta: '<circle cx="12" cy="12" r="9"/><path d="M12 8v5"/><path d="M12 16h.01"/>',
     vazio: '<path d="M3 7h18l-2 13H5z"/><path d="M8 7V5a4 4 0 0 1 8 0v2"/>',
+    busca: '<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>',
     tentar: '<path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/>',
     // v2.1: casa da aba/menu "Página Inicial" (substitui o SVG próprio do guia-abas.js; mesma silhueta e traço 2 px).
     inicio: '<path d="m3 10.5 9-7.5 9 7.5"/><path d="M5 9v10.5a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5V9"/><path d="M10 20v-6h4v6"/>'
@@ -303,7 +304,9 @@
           h('span', { className: 'pl-card__icone' }, icone(modulo.icone || modulo.id)),
           h('div', { className: 'pl-card__nomes' },
             h('h3', { className: 'pl-card__titulo', id: idTitulo },
-              h('button', { className: 'pl-card__abrir', attrs: { type: 'button', 'aria-expanded': 'false', 'aria-controls': idPainel }, text: modulo.titulo })),
+              h('button', { className: 'pl-card__abrir', attrs: { type: 'button', 'aria-expanded': 'false', 'aria-controls': idPainel } },
+                h('span', { text: modulo.titulo }),
+                h('span', { className: 'pl-card__seta', attrs: { 'aria-hidden': 'true' } }, icone('seta')))),
             modulo.subtitulo ? h('p', { className: 'pl-card__sub', text: modulo.subtitulo }) : null),
           h('span', { className: 'pl-card__ordem', attrs: { 'aria-hidden': 'true' }, text: ordemFmt(modulo.ordem) })),
         selos.length ? h('div', { className: 'pl-card__selos' }, selos) : null,
@@ -363,6 +366,8 @@
     card.querySelectorAll('.pl-jornada-btn').forEach((b) => {
       b.addEventListener('click', () => emitirAbrir(card.querySelector('.pl-card__cab'), { modulo: modulo.id, jornada: b.dataset.jornada }));
     });
+    // v2.2: no toque o painel começa fechado; o nome do módulo abre/fecha (antes começava aberto em todos os cards).
+    if (!mqHover.matches) card.setAttribute('data-fechado', '');
     aplicar();
   }
 
@@ -389,17 +394,16 @@
   }
 
   /* ---------- entrada escalonada (IntersectionObserver + WAAPI) ---------- */
-  // Card com hover: o painel sobe por cima do resumo. Cada card ganha altura mínima = cabeçalho + painel
-  // (a linha da grade estica até o maior card dela), assim o painel nunca cobre o título.
+  // Card com hover (v2.2): o painel abre como folha presa ao fim do cabeçalho (--pl-cab), por cima do resumo
+  // e, se precisar, da linha de baixo. O card fica com a altura natural (sem espaço reservado vazio).
   function alturas(grade) {
     let quadro = 0;
     const medir = () => {
       quadro = 0;
       grade.querySelectorAll('.pl-card').forEach((card) => {
-        if (!mqHover.matches) { card.style.removeProperty('--pl-card-min'); return; }
+        if (!mqHover.matches) { card.style.removeProperty('--pl-cab'); return; }
         const cab = card.querySelector('.pl-card__cab');
-        const painel = card.querySelector('.pl-painel');
-        if (cab && painel) card.style.setProperty('--pl-card-min', `${Math.ceil(cab.offsetTop + cab.offsetHeight + 10 + painel.offsetHeight)}px`);
+        if (cab) card.style.setProperty('--pl-cab', `${Math.ceil(cab.offsetTop + cab.offsetHeight + 10)}px`);
       });
     };
     const agendar = () => { if (!quadro) quadro = requestAnimationFrame(medir); };
@@ -449,6 +453,42 @@
     cards.forEach((c) => io.observe(c));
   }
 
+  /* ---------- Caminhos de aprendizagem (v2.2) ----------
+     As duas jornadas no topo da Página Inicial (R-A10, doc 12 P4): para quem é, o que tem e quanto já está publicado.
+     Jornada oculta para o perfil (Plataforma.lerRota devolve outra área) não aparece. Textos descrevem a plataforma,
+     não o Faktory Flow — por isso não precisam de fonte do Harness. */
+  const CAMINHOS = {
+    inicial: {
+      icone: 'primeiros-passos', cta: 'Começar pela trilha',
+      texto: 'Para quem está começando no Faktory Flow. Cada módulo em passos curtos: o que é, como acessar e a operação básica.',
+      itens: [['video', 'Vídeo introdutório'], ['manual', 'Manual visual resumido'], ['checklist', 'Atividade e checklist']]
+    },
+    consultor: {
+      icone: 'manual', cta: 'Abrir a central',
+      texto: 'Para quem implanta e orienta o cliente: regras de negócio com fonte, fluxos, configurações e validações de cada módulo.',
+      itens: [['regra', 'Regras de negócio'], ['fluxo', 'Roteiros de implantação'], ['checklist', 'Validações funcionais']]
+    }
+  };
+  function renderCaminhos(modulos) {
+    const permitida = (j) => !(window.Plataforma && typeof window.Plataforma.lerRota === 'function') || window.Plataforma.lerRota(`#${j}`).area === j;
+    const jornadas = Object.keys(CAMINHOS).filter(permitida);
+    if (!jornadas.length) return null;
+    return h('ul', { className: 'pl-caminhos', attrs: { 'aria-label': 'Caminhos de aprendizagem' } }, jornadas.map((j) => {
+      const c = CAMINHOS[j];
+      const mats = modulos.flatMap((m) => materiaisDe(m, j));
+      const disp = mats.filter((m) => m.status === 'disponivel').length;
+      return h('li', null, h('a', { className: 'pl-caminho', attrs: { href: `#${j}` }, data: { jornada: j } },
+        h('div', { className: 'pl-caminho__topo' },
+          h('span', { className: 'pl-caminho__ic' }, icone(c.icone)),
+          h('div', null, h('h2', { className: 'pl-caminho__titulo', text: JORNADAS[j].nome }), h('p', { className: 'pl-caminho__sobre', text: JORNADAS[j].sub }))),
+        h('p', { className: 'pl-caminho__texto', text: c.texto }),
+        h('ul', { className: 'pl-caminho__itens', attrs: { 'aria-label': `O que tem no ${JORNADAS[j].nome}` } }, c.itens.map(([ic, t]) => h('li', null, icone(ic), t))),
+        h('div', { className: 'pl-caminho__pe' },
+          h('p', { className: 'pl-caminho__conta' }, mats.length ? [h('strong', { text: disp }), ` de ${mats.length} materiais publicados`] : 'Materiais em preparação'),
+          h('span', { className: 'pl-caminho__cta', attrs: { 'aria-hidden': 'true' } }, c.cta, icone('seta')))));
+    }));
+  }
+
   /* ---------- Página Inicial ---------- */
   /**
    * @param {HTMLElement} el contêiner
@@ -474,16 +514,20 @@
     el.setAttribute('aria-labelledby', idH1);
 
     const hero = h('header', { className: 'pl-hero' },
-      h('span', { className: 'pl-hero__selo', text: 'Faktory Flow' }),
       h('h1', { className: 'pl-hero__titulo', id: idH1, text: 'Página Inicial' }),
-      h('p', { className: 'pl-hero__texto', text: 'Escolha um módulo para começar pelo Guia Inicial ou aprofundar no Guia do Consultor.' }),
+      h('p', { className: 'pl-hero__texto', text: 'Aprenda o Faktory Flow no seu ritmo: comece pela trilha do Guia Inicial, aprofunde no Guia do Consultor ou vá direto a um módulo.' }),
       h('p', { className: 'pl-hero__numeros' }, h('strong', { text: modulos.length }), ' módulos, ', h('strong', { text: disp }), ' materiais disponíveis e ', h('strong', { text: total - disp }), ' em preparação.'));
+    const caminhos = renderCaminhos(modulos);
+    const idMods = uid('pl-mods');
+    const tituloMods = h('div', { className: 'pl-secao-titulo' },
+      h('h2', { id: idMods, text: 'Explore por módulo' }),
+      h('p', { text: 'Passe o mouse ou toque no nome para ver os materiais de cada jornada.' }));
     // Rota da trilha: decorativa (aria-hidden); a grade abaixo traz a mesma ordem de forma acessível.
     const rota = h('ol', { className: 'pl-rota', attrs: { 'aria-hidden': 'true' }, style: { '--n': modulos.length } },
       modulos.map((m) => h('li', { data: { modulo: m.id, prep: m.status === 'em-preparacao' }, style: { '--pl-cor': corValida(m.cor) || '#3478A7' } },
         h('span', { className: 'pl-rota__no' }), h('span', { className: 'pl-rota__num', text: ordemFmt(m.ordem) }))));
-    const grade = h('ul', { className: 'pl-grade', attrs: { 'aria-label': 'Módulos' } }, modulos.map((m) => h('li', null, renderCardModulo(m))));
-    el.append(hero, rota, grade);
+    const grade = h('ul', { className: 'pl-grade', attrs: { 'aria-labelledby': idMods } }, modulos.map((m) => h('li', null, renderCardModulo(m))));
+    el.append(hero, caminhos, tituloMods, rota, grade);
     ligarGrade(grade);
     const nos = new Map([...rota.children].map((li) => [li.dataset.modulo, li]));
     grade.addEventListener('pl:card', (e) => { const li = nos.get(e.detail.modulo); if (li) li.toggleAttribute('data-ativo', e.detail.aberto); });
@@ -503,31 +547,85 @@
     if (!lista.length) { estadoVazio(el, 'Seu perfil ainda não tem módulos liberados nesta jornada.'); return; }
     limpar(el);
     el.removeAttribute('aria-busy');
-    const cab = h('header', { className: 'pl-jornada__cab' },
-      h('span', { className: 'pl-sobretitulo', text: JORNADAS[jornada].sub }),
-      h('h1', { className: 'pl-jornada__titulo', text: JORNADAS[jornada].nome }));
-    const ol = h('ol', { className: 'pl-trilha' }, lista.map((m) => {
+    const inicial = jornada === 'inicial';
+    const prog = (m) => Math.max(0, Math.min(1, Number(progresso[m.id]) || 0));
+    const proximo = lista.find((m) => materiaisDe(m, jornada).some((x) => x.status === 'disponivel') && prog(m) < 1);
+    const media = lista.length ? lista.reduce((s, m) => s + prog(m), 0) / lista.length : 0;
+
+    const barraTotal = h('span');
+    barraTotal.style.setProperty('--p', String(media));
+    const busca = inicial ? null : h('label', { className: 'pl-busca' }, icone('busca'),
+      h('span', { className: 'pl-sr', text: 'Filtrar módulos' }),
+      h('input', { attrs: { type: 'search', placeholder: 'Filtrar módulos (ex.: estoque, nota, pedido)', autocomplete: 'off' } }));
+    const hero = h('header', { className: 'pl-jornada__hero' },
+      h('h1', { text: JORNADAS[jornada].nome }),
+      h('p', { text: inicial
+        ? 'Uma trilha em etapas, na ordem em que a empresa trabalha. Em cada módulo: o conceito, as telas principais com imagens guiadas e um checklist para marcar o que você já domina.'
+        : 'A central de quem implanta: regras de negócio com fonte, fluxos operacionais, configurações, validações e erros comuns de cada módulo.' }),
+      h('div', { className: 'pl-jornada__barra' },
+        inicial ? h('div', { className: 'pl-jornada__total' },
+          h('span', null, 'Seu progresso na trilha: ', h('strong', { text: `${Math.round(media * 100)}%` })),
+          h('div', { className: 'pl-progresso', attrs: { role: 'progressbar', 'aria-label': 'Progresso na trilha', 'aria-valuemin': 0, 'aria-valuemax': 100, 'aria-valuenow': Math.round(media * 100) } }, barraTotal)) : busca,
+        inicial && proximo ? h('a', { className: 'pl-continuar', attrs: { href: `#inicial/${encodeURIComponent(proximo.id)}` } },
+          icone('seta'), h('span', null, media > 0 ? 'Continuar' : 'Começar', h('small', { text: proximo.titulo }))) : null));
+
+    const passo = (m) => {
       const mats = materiaisDe(m, jornada);
       const disp = mats.filter((x) => x.status === 'disponivel').length;
-      const p = Math.max(0, Math.min(1, Number(progresso[m.id]) || 0));
-      const pct = Math.round(p * 100);
+      const p = prog(m);
+      const pc = Math.round(p * 100);
       const icon = h('span', { className: 'pl-passo__icone' }, icone(m.icone || m.id));
       const barra = h('span');
       barra.style.setProperty('--p', String(p));
       const prep = m.status === 'em-preparacao' || !mats.length;
-      return h('li', { className: 'pl-passo', style: { '--pl-cor': corValida(m.cor) || '#3478A7' }, data: { status: prep ? 'em-preparacao' : 'disponivel' } },
+      const tipos = ['video', 'manual', 'checklist', 'fluxo'].map((t) => {
+        const doTipo = mats.filter((x) => x.tipo === t);
+        if (!doTipo.length) return null;
+        const ok = doTipo.some((x) => x.status === 'disponivel');
+        return h('span', { className: 'pl-passo__tag', data: { prep: !ok } }, icone(t), { video: 'Vídeo', manual: 'Manual', checklist: 'Checklist', fluxo: 'Fluxo' }[t], ok ? null : h('span', { className: 'pl-sr', text: ' (em preparação)' }));
+      });
+      return h('li', { className: 'pl-passo', style: { '--pl-cor': corValida(m.cor) || '#3478A7' }, data: { status: prep ? 'em-preparacao' : 'disponivel', proximo: inicial && proximo === m, busca: `${txt(m.titulo)} ${txt(m.subtitulo)} ${m.id}`.toLowerCase() } },
         icon,
         h('div', null,
-          h('h2', { className: 'pl-passo__nome' },
+          h('h3', { className: 'pl-passo__nome' },
             h('a', { className: 'pl-passo__abrir', attrs: { href: `#${jornada}/${encodeURIComponent(m.id)}` }, text: m.titulo,
               on: { click: (e) => { e.preventDefault(); emitirAbrir(icon, { modulo: m.id, jornada }); } } })),
-          h('div', { className: 'pl-passo__meta' }, prep ? chip('em-preparacao') : h('span', { text: `${disp} de ${mats.length} materiais disponíveis` }), h('span', { text: `${pct}% concluído` })),
-          h('div', { className: 'pl-progresso', attrs: { role: 'progressbar', 'aria-label': `Progresso em ${txt(m.titulo)}`, 'aria-valuemin': 0, 'aria-valuemax': 100, 'aria-valuenow': pct } }, barra)),
+          m.subtitulo ? h('p', { className: 'pl-passo__sub', text: m.subtitulo }) : null,
+          h('div', { className: 'pl-passo__tags' }, tipos),
+          h('div', { className: 'pl-passo__meta' }, prep ? chip('em-preparacao') : h('span', { text: `${disp} de ${mats.length} materiais publicados` }), inicial ? h('span', { text: `${pc}% concluído` }) : null),
+          inicial ? h('div', { className: 'pl-progresso', attrs: { role: 'progressbar', 'aria-label': `Progresso em ${txt(m.titulo)}`, 'aria-valuemin': 0, 'aria-valuemax': 100, 'aria-valuenow': pc } }, barra) : null),
         h('span', { className: 'pl-card__ordem', attrs: { 'aria-hidden': 'true' }, text: ordemFmt(m.ordem) }));
-    }));
-    el.append(cab, ol);
+    };
+
+    // Fases = ordem do fluxo da empresa (doc 05). Módulo fora da lista cai em "Outros".
+    const usados = new Set();
+    const fases = FASES.map((f) => ({ ...f, mods: lista.filter((m) => f.ids.includes(m.id) && !usados.has(m.id) && usados.add(m.id)) }));
+    const resto = lista.filter((m) => !usados.has(m.id));
+    if (resto.length) fases.push({ titulo: 'Outros', texto: '', mods: resto });
+    const ol = h('ol', { className: 'pl-fases' }, fases.filter((f) => f.mods.length).map((f) => h('li', { className: 'pl-fase' },
+      h('div', { className: 'pl-fase__cab' }, h('h2', { text: f.titulo }), f.texto ? h('p', { text: f.texto }) : null),
+      h('ol', { className: 'pl-trilha' }, f.mods.map(passo)))));
+    const vazioBusca = h('p', { className: 'pl-jornada__vazio-busca', attrs: { hidden: true, role: 'status' }, text: 'Nenhum módulo com esse nome.' });
+    el.append(hero, ol, vazioBusca);
+    if (busca) {
+      busca.querySelector('input').addEventListener('input', (e) => {
+        const q = e.target.value.trim().toLowerCase();
+        let n = 0;
+        el.querySelectorAll('.pl-passo').forEach((li) => { const ok = !q || li.dataset.busca.includes(q); li.toggleAttribute('data-oculto-busca', !ok); if (ok) n++; });
+        el.querySelectorAll('.pl-fase').forEach((f) => { f.hidden = !f.querySelector('.pl-passo:not([data-oculto-busca])'); });
+        vazioBusca.hidden = n > 0;
+      });
+    }
     anunciar(el, `${JORNADAS[jornada].nome}: ${lista.length} módulos.`);
   }
+  const FASES = [
+    { titulo: 'Comece aqui', texto: 'Como o sistema funciona e os cadastros que tudo usa.', ids: ['primeiros-passos', 'fundacao'] },
+    { titulo: 'Comercial', texto: 'Do primeiro contato ao pedido de venda.', ids: ['crm', 'cem', 'vendas'] },
+    { titulo: 'Suprimentos e operação', texto: 'Comprar, receber, guardar, produzir, instalar e entregar.', ids: ['compras', 'recebimento', 'estoque', 'producao', 'servicos', 'projetos', 'expedicao'] },
+    { titulo: 'Fiscal e financeiro', texto: 'Nota fiscal, impostos, contas a pagar e a receber.', ids: ['faturamento', 'fiscal', 'financeiro'] },
+    { titulo: 'Gestão', texto: 'Acompanhar o trabalho e analisar os números.', ids: ['tarefas', 'relatorios', 'alumina'] },
+    { titulo: 'Visão completa', texto: 'O caminho de ponta a ponta, juntando os módulos.', ids: ['fluxo-completo'] }
+  ];
 
   /* ---------- Página do módulo: blocos tipados (v2 §3) ---------- */
   const duracaoFmt = (s) => {
@@ -673,7 +771,7 @@
     if (detalhe.erro) { estadoErro(el, { mensagem: detalhe.erro.mensagem, status: detalhe.erro.status, onTentar: opcoes.onTentar || detalhe.onTentar }); return; }
     const mod = typeof detalhe.modulo === 'string' ? { id: detalhe.modulo, titulo: detalhe.modulo } : (detalhe.modulo || {});
     const jornada = JORNADAS[detalhe.jornada] ? detalhe.jornada : 'inicial';
-    const secoes = detalhe.secoes || [];
+    const secoes = [...(detalhe.secoes || [])];
     limpar(el);
     el.removeAttribute('aria-busy');
 
@@ -684,28 +782,43 @@
     };
     el.addEventListener('plataforma:checklist', (e) => (ouvintes.get(e.detail.chave) || []).forEach((fn) => fn(e.detail.feitos.length)));
 
-    const nav = h('nav', { attrs: { 'aria-label': 'Você está em' } },
-      h('ol', { className: 'pl-trilha-nav' },
-        h('li', null, h('a', { attrs: { href: '#inicio' }, text: 'Página Inicial' })),
-        h('li', null, h('a', { attrs: { href: `#${jornada}` }, text: JORNADAS[jornada].nome })),
-        h('li', { attrs: { 'aria-current': 'page' }, text: mod.titulo })));
-
+    // v2.2: a trilha de navegação fica na barra do topo (shell); aqui o cabeçalho troca de jornada no mesmo módulo.
+    const nav = null;
     const selos = [];
     if (mod.status === 'em-preparacao') selos.push(chip('em-preparacao'));
     if (mod.oculto) selos.push(chipOculto());
+    const guia = opcoes.guia && Array.isArray(opcoes.guia.capitulos) ? opcoes.guia : null;
+    const capsGuia = guia ? guia.capitulos.filter((c) => jornada === 'consultor' || (c.nivel || 'basico') === 'basico') : [];
+    const nPassos = capsGuia.reduce((s, c) => s + (c.passos || []).length, 0);
+    const nImagens = capsGuia.reduce((s, c) => s + (c.passos || []).filter((p) => p.imagem).length, 0);
+    const trocar = h('nav', { className: 'pl-troca', attrs: { 'aria-label': 'Profundidade do conteúdo' } },
+      ['inicial', 'consultor'].map((j) => h('a', {
+        className: 'pl-troca__op', attrs: { href: `#${j}/${encodeURIComponent(mod.id)}`, 'aria-current': j === jornada ? 'page' : null }
+      }, icone(j === 'inicial' ? 'primeiros-passos' : 'manual'), h('span', null, h('strong', { text: JORNADAS[j].nome }), h('small', { text: j === 'inicial' ? 'Conhecer e usar' : 'Implantar e orientar' })))));
+    const fatos = h('ul', { className: 'pl-modulo__fatos', attrs: { 'aria-label': 'Neste módulo' } },
+      h('li', null, h('strong', { text: secoes.length }), plural(secoes.length, ' seção', ' seções').replace(/^\d+/, '')),
+      guia ? h('li', null, h('strong', { text: nImagens }), ' telas ilustradas') : null,
+      guia ? h('li', null, h('strong', { text: nPassos }), ' passos guiados') : null);
     const cab = h('header', { className: 'pl-modulo__cab', style: { '--pl-cor': corValida(mod.cor) || '#3478A7' } },
-      h('span', { className: 'pl-card__icone' }, icone(mod.icone || mod.id)),
-      h('div', { className: 'pl-modulo__nomes' },
-        h('span', { className: 'pl-sobretitulo', text: JORNADAS[jornada].nome }),
-        h('h1', { className: 'pl-modulo__titulo', text: mod.titulo }),
-        mod.subtitulo ? h('p', { className: 'pl-modulo__sub', text: mod.subtitulo }) : null,
-        selos.length ? h('div', { className: 'pl-card__selos' }, selos) : null));
+      h('span', { className: 'pl-modulo__marca', attrs: { 'aria-hidden': 'true' } }, icone(mod.icone || mod.id)),
+      h('div', { className: 'pl-modulo__topo' },
+        h('span', { className: 'pl-card__icone' }, icone(mod.icone || mod.id)),
+        h('div', { className: 'pl-modulo__nomes' },
+          h('h1', { className: 'pl-modulo__titulo', text: mod.titulo }),
+          mod.subtitulo ? h('p', { className: 'pl-modulo__sub', text: mod.subtitulo }) : null,
+          selos.length ? h('div', { className: 'pl-card__selos' }, selos) : null)),
+      h('div', { className: 'pl-modulo__rodape' }, fatos, trocar));
 
-    const comSumario = jornada === 'consultor';
+    // O guia visual entra como seção logo depois da primeira (apresentação / visão funcional).
+    if (guia && capsGuia.length) {
+      secoes.splice(Math.min(1, secoes.length), 0, { id: 'guia-visual', titulo: jornada === 'inicial' ? 'Guia visual: conheça o módulo' : 'Guia visual ilustrado', _guia: true });
+    }
+
+    const comSumario = true;
     const grade = h('div', { className: `pl-modulo__grade${comSumario ? ' pl-modulo__grade--sumario' : ''}` });
     const base = `pl-sec-${txt(mod.id)}`.replace(/[^a-z0-9_-]/gi, '-');
     const ids = secoes.map((s, i) => `${base}-${txt(s.id) || i}`.replace(/[^a-z0-9_-]/gi, '-'));
-    const vazia = (s) => s.status === 'em-preparacao' || !(s.blocos || []).some((b) => b && BLOCOS[b.tipo]);
+    const vazia = (s) => !s._guia && (s.status === 'em-preparacao' || !(s.blocos || []).some((b) => b && BLOCOS[b.tipo]));
     if (comSumario && secoes.length) {
       const idSum = `${base}-sumario`;
       const sum = h('nav', { className: 'pl-sumario', attrs: { 'aria-labelledby': idSum } },
@@ -729,16 +842,209 @@
           h('span', { className: 'pl-secao__num', attrs: { 'aria-hidden': 'true' }, text: i + 1 }),
           h('h2', { className: 'pl-secao__titulo', id: `${ids[i]}-t`, text: s.titulo }),
           prep ? chip('em-preparacao') : null),
-        prep
-          ? h('div', { className: 'pl-prep' }, h('span', { className: 'pl-prep__ic' }, icone('relogio')),
-            h('div', null, h('strong', { text: 'Em preparação' }), h('p', { text: s.mensagem || 'Este conteúdo ainda está sendo produzido e aparece aqui assim que for publicado.' })))
-          : (s.blocos || []).map((b) => renderBloco(b, ctx)),
+        s._guia
+          ? renderGuiaVisual(guia, capsGuia, { jornada, modulo: mod, modulos: opcoes.modulos || [] })
+          : prep
+            ? h('div', { className: 'pl-prep' }, h('span', { className: 'pl-prep__ic' }, icone('relogio')),
+              h('div', null, h('strong', { text: 'Em preparação' }), h('p', { text: s.mensagem || 'Este conteúdo ainda está sendo produzido e aparece aqui assim que for publicado.' })))
+            : (s.blocos || []).map((b) => renderBloco(b, ctx)),
         fontesSecao(s.fontes)));
     });
     grade.append(lista);
-    el.append(nav, cab, grade);
+    el.append(...[nav, cab, grade].filter(Boolean));
+    if (comSumario) espiarSumario(grade);
     const nPrep = secoes.filter(vazia).length;
     anunciar(el, `${txt(mod.titulo)}, ${JORNADAS[jornada].nome}: ${plural(secoes.length, 'seção', 'seções')}${nPrep ? `, ${nPrep} em preparação` : ''}.`);
+  }
+
+  /* ---------- Sumário que acompanha a leitura (v2.2) ---------- */
+  function espiarSumario(grade) {
+    const links = new Map([...grade.querySelectorAll('.pl-sumario a')].map((a) => [a.getAttribute('href').slice(1), a]));
+    if (!links.size || !('IntersectionObserver' in window)) return;
+    const visiveis = new Set();
+    const io = new IntersectionObserver((ents) => {
+      ents.forEach((e) => (e.isIntersecting ? visiveis.add(e.target.id) : visiveis.delete(e.target.id)));
+      const atual = [...links.keys()].find((id) => visiveis.has(id));
+      if (!atual) return;
+      links.forEach((a, id) => { if (id === atual) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current'); });
+    }, { rootMargin: '-20% 0px -65% 0px' });
+    links.forEach((_, id) => { const s = document.getElementById(id); if (s) io.observe(s); });
+  }
+
+  /* ---------- Guia visual ilustrado (contrato-guia-visual.md) ----------
+     Conceitos → palavras do módulo → mapa no fluxo → capítulos com passos e capturas reais anotadas
+     (marcadores numerados, destaque, zoom). Tudo por textContent/createElement; URLs passam por urlSegura. */
+  const pct = (v) => Math.max(0, Math.min(100, Number(v) || 0));
+  const caixaValida = (c) => c && ['x', 'y', 'w', 'h'].every((k) => Number.isFinite(Number(c[k]))) && Number(c.w) > 0 && Number(c.h) > 0;
+  const EVIDENCIA = { 'captura-real': 'Tela real do sistema', base: 'Conferido na base do Harness', 'a-conferir-na-tela': 'A conferir na tela' };
+
+  let ampliador = null;
+  function ampliar(src, alt, legenda) {
+    if (!ampliador) {
+      ampliador = h('dialog', { className: 'pl-amplia', attrs: { 'aria-label': 'Imagem ampliada' } });
+      ampliador.addEventListener('click', (e) => { if (e.target === ampliador || e.target.closest('.pl-amplia__fechar')) ampliador.close(); });
+      document.body.append(ampliador);
+    }
+    const img = h('img', { attrs: { alt: alt || '' } });
+    img.src = src;
+    ampliador.replaceChildren(
+      h('button', { className: 'pl-amplia__fechar', attrs: { type: 'button', 'aria-label': 'Fechar imagem ampliada' } }, '×'),
+      h('figure', null, img, legenda ? h('figcaption', { text: legenda }) : null));
+    if (typeof ampliador.showModal === 'function') ampliador.showModal(); else window.open(src, '_blank', 'noopener');
+  }
+
+  function figuraAnotada(p) {
+    const src = urlSegura(p.imagem);
+    if (!src) return null;
+    const w = Number(p.largura) || 1600, hgt = Number(p.altura) || 900;
+    const img = h('img', { attrs: { alt: txt(p.alt) || txt(p.titulo), loading: 'lazy', decoding: 'async', width: w, height: hgt } });
+    img.src = src;
+    const camada = h('div', { className: 'pl-anota__camada', attrs: { 'aria-hidden': 'true' } });
+    if (caixaValida(p.destaque)) {
+      const d = p.destaque;
+      camada.append(h('span', { className: 'pl-anota__destaque', style: { left: `${pct(d.x)}%`, top: `${pct(d.y)}%`, width: `${pct(d.w)}%`, height: `${pct(d.h)}%` } }));
+    }
+    // Marcadores v2: moldura em volta do alvo (caixa) + selo numerado FORA dela (lado), sem cobrir a informação.
+    // v1 (só x,y): selo no ponto — mantido para guias antigos.
+    const LADOS = ['cima', 'baixo', 'esquerda', 'direita'];
+    const alvo = (m, i, ref) => {
+      const n = m.n ?? i + 1;
+      if (caixaValida(m.caixa)) {
+        const c = ref ? ref(m.caixa) : m.caixa;
+        if (!c) return null;
+        return h('span', { className: 'pl-anota__alvo', data: { lado: LADOS.includes(m.lado) ? m.lado : 'cima' },
+          style: { left: `${c.x}%`, top: `${c.y}%`, width: `${c.w}%`, height: `${c.h}%`, '--i': i } },
+          h('span', { className: 'pl-anota__selo', text: n }));
+      }
+      if (ref || !Number.isFinite(Number(m.x)) || !Number.isFinite(Number(m.y))) return null;
+      return h('span', { className: 'pl-anota__marca', style: { left: `${pct(m.x)}%`, top: `${pct(m.y)}%`, '--i': i }, text: n });
+    };
+    (p.marcadores || []).forEach((m, i) => { const no = alvo(m, i); if (no) camada.append(no); });
+    // Molduras só depois que a imagem chega (antes apareciam soltas sobre o fundo escuro do carregamento).
+    const pronto = () => tela.removeAttribute('data-carregando');
+    img.addEventListener('load', pronto, { once: true });
+    img.addEventListener('error', pronto, { once: true });
+    const tela = h('button', { className: 'pl-anota__tela', data: { carregando: !img.complete }, attrs: { type: 'button', 'aria-label': `Ampliar a tela: ${txt(p.alt) || txt(p.titulo)}` },
+      on: { click: () => ampliar(src, txt(p.alt), txt(p.titulo)) } }, img, camada,
+      h('span', { className: 'pl-anota__lupa', attrs: { 'aria-hidden': 'true' } }, icone('tela'), 'Ampliar'));
+    let zoom = null;
+    if (caixaValida(p.zoom)) {
+      const z = p.zoom;
+      zoom = h('div', { className: 'pl-anota__zoom', attrs: { role: 'img', 'aria-label': `Detalhe ampliado: ${txt(p.titulo)}` },
+        style: {
+          'background-image': `url("${src.replace(/"/g, '%22')}")`,
+          'background-size': `${(100 / pct(z.w)) * 100}% auto`,
+          'background-position': `${pct(z.w) >= 100 ? 0 : (pct(z.x) / (100 - pct(z.w))) * 100}% ${pct(z.h) >= 100 ? 0 : (pct(z.y) / (100 - pct(z.h))) * 100}%`,
+          'aspect-ratio': `${pct(z.w) * w} / ${pct(z.h) * hgt}`
+        } });
+      // As mesmas molduras numeradas dentro do zoom (coordenadas convertidas para o recorte; fora dele, some).
+      const noZoom = (c) => {
+        const x0 = Math.max(c.x, z.x), y0 = Math.max(c.y, z.y);
+        const x1 = Math.min(c.x + c.w, z.x + z.w), y1 = Math.min(c.y + c.h, z.y + z.h);
+        if (x1 <= x0 || y1 <= y0) return null;
+        return { x: ((x0 - z.x) / z.w) * 100, y: ((y0 - z.y) / z.h) * 100, w: ((x1 - x0) / z.w) * 100, h: ((y1 - y0) / z.h) * 100 };
+      };
+      const camZoom = h('div', { className: 'pl-anota__camada', attrs: { 'aria-hidden': 'true' } });
+      (p.marcadores || []).forEach((m, i) => { const no = alvo(m, i, (c) => noZoom({ x: pct(c.x), y: pct(c.y), w: pct(c.w), h: pct(c.h) })); if (no) camZoom.append(no); });
+      if (camZoom.childElementCount) zoom.append(camZoom);
+    }
+    const legenda = (p.marcadores || []).filter((m) => temTexto(m.rotulo));
+    return h('figure', { className: `pl-anota${zoom ? ' pl-anota--zoom' : ''}` },
+      h('div', { className: 'pl-anota__palco' }, tela, zoom),
+      legenda.length ? h('figcaption', null, h('ol', { className: `pl-anota__legenda${legenda.some((m) => temTexto(m.explicacao)) ? ' pl-anota__legenda--rica' : ''}` }, legenda.map((m, i) => h('li', null,
+        h('span', { className: 'pl-anota__num', attrs: { 'aria-hidden': 'true' }, text: m.n ?? i + 1 }),
+        h('span', { className: 'pl-anota__item' }, h('strong', { text: m.rotulo }), temTexto(m.explicacao) ? h('span', { text: m.explicacao }) : null))))) : null);
+  }
+
+  function nomeModulo(id, modulos) {
+    const m = (modulos || []).find((x) => x.id === id);
+    return { id, titulo: m ? m.titulo : id, cor: corValida(m && m.cor) || '#3478A7', icone: (m && m.icone) || id };
+  }
+
+  function renderGuiaVisual(guia, capitulos, { jornada, modulo, modulos }) {
+    const raiz = h('div', { className: 'pl-guia' });
+    const idg = uid('pl-guia');
+    // aviso honesto de status (aprovação é humana — Harness)
+    if (guia.status !== 'aprovado') {
+      raiz.append(h('p', { className: 'pl-guia__status' }, icone('alerta'),
+        h('span', null, h('strong', { text: guia.status === 'revisao' ? 'Em revisão. ' : 'Rascunho. ' }),
+          'Feito com telas reais e com a base do Harness; aguarda a conferência final na tela do sistema e a aprovação da equipe.')));
+    }
+    if (temTexto(guia.resumo)) raiz.append(h('p', { className: 'pl-guia__resumo', text: guia.resumo }));
+
+    // Conceitos: lista editorial com ícones (não cartões iguais)
+    const conceitos = (guia.conceitos || []).filter((c) => temTexto(c.titulo));
+    if (conceitos.length) {
+      raiz.append(h('section', { className: 'pl-guia__bloco', attrs: { 'aria-labelledby': `${idg}-c` } },
+        h('h3', { className: 'pl-guia__h', id: `${idg}-c`, text: 'Entenda primeiro' }),
+        h('ul', { className: 'pl-conceitos' }, conceitos.map((c) => h('li', { className: 'pl-conceito' },
+          h('span', { className: 'pl-conceito__ic' }, icone(ICONES[c.icone] ? c.icone : (modulo.icone || modulo.id))),
+          h('div', null, h('h4', { text: c.titulo }), h('p', { text: c.texto })))))));
+    }
+
+    // Mapa: de onde vem e para onde vai
+    const mapa = guia.mapa;
+    if (mapa && ((mapa.antes || []).length || (mapa.depois || []).length)) {
+      const no = (m, atual) => h('li', { className: `pl-mapa__no${atual ? ' pl-mapa__no--atual' : ''}`, style: { '--pl-cor': m.cor } },
+        h('span', { className: 'pl-mapa__ic' }, icone(m.icone)), h('span', { text: m.titulo }));
+      raiz.append(h('section', { className: 'pl-guia__bloco', attrs: { 'aria-labelledby': `${idg}-m` } },
+        h('h3', { className: 'pl-guia__h', id: `${idg}-m`, text: 'Onde ele entra no fluxo da empresa' }),
+        h('ol', { className: 'pl-mapa', attrs: { 'aria-label': 'Sequência de módulos' } },
+          (mapa.antes || []).map((id) => no(nomeModulo(id, modulos))),
+          no({ ...nomeModulo(modulo.id, modulos), titulo: modulo.titulo }, true),
+          (mapa.depois || []).map((id) => no(nomeModulo(id, modulos)))),
+        temTexto(mapa.texto) ? h('p', { className: 'pl-guia__nota', text: mapa.texto }) : null));
+    }
+
+    // Palavras do módulo
+    const palavras = (guia.palavras || []).filter((p) => temTexto(p.termo));
+    if (palavras.length) {
+      raiz.append(h('section', { className: 'pl-guia__bloco', attrs: { 'aria-labelledby': `${idg}-p` } },
+        h('h3', { className: 'pl-guia__h', id: `${idg}-p`, text: 'Palavras que você vai ver na tela' }),
+        h('dl', { className: 'pl-palavras' }, palavras.map((p) => h('div', null, h('dt', { text: p.termo }), h('dd', { text: p.definicao }))))));
+    }
+
+    // Capítulos: índice + passos ilustrados
+    if (capitulos.length) {
+      const idsCap = capitulos.map((c, i) => `${idg}-cap-${i}`);
+      raiz.append(h('nav', { className: 'pl-caps', attrs: { 'aria-label': 'Capítulos do guia' } },
+        h('ol', null, capitulos.map((c, i) => h('li', null, h('a', { attrs: { href: `#${idsCap[i]}` }, on: { click: (e) => { e.preventDefault(); document.getElementById(idsCap[i])?.scrollIntoView({ behavior: reduzido() ? 'auto' : 'smooth', block: 'start' }); } } },
+          h('span', { className: 'pl-caps__n', text: i + 1 }), h('span', { text: c.titulo }),
+          c.nivel === 'avancado' ? h('span', { className: 'pl-chip pl-chip--neutro pl-chip--mini', text: 'Consultor' }) : null))))));
+      capitulos.forEach((c, i) => {
+        const passos = (c.passos || []).filter((p) => temTexto(p.titulo) || p.imagem);
+        raiz.append(h('section', { className: 'pl-cap', id: idsCap[i], attrs: { 'aria-labelledby': `${idsCap[i]}-t`, tabindex: -1 } },
+          h('header', { className: 'pl-cap__cab' },
+            h('span', { className: 'pl-cap__n', attrs: { 'aria-hidden': 'true' }, text: `Capítulo ${i + 1}` }),
+            h('h3', { className: 'pl-cap__titulo', id: `${idsCap[i]}-t`, text: c.titulo }),
+            temTexto(c.objetivo) ? h('p', { className: 'pl-cap__obj', text: c.objetivo }) : null,
+            temTexto(c.onde) ? h('p', { className: 'pl-onde' }, h('span', { className: 'pl-onde__rot', text: 'Onde: ' }), h('span', { className: 'pl-marca-tela', text: c.onde })) : null),
+          h('ol', { className: 'pl-passos-guia' }, passos.map((p, k) => h('li', { className: 'pl-passo-guia' },
+            h('span', { className: 'pl-passo-guia__n', attrs: { 'aria-hidden': 'true' }, text: k + 1 }),
+            h('div', { className: 'pl-passo-guia__corpo' },
+              h('h4', { className: 'pl-passo-guia__titulo' }, h('span', { className: 'pl-sr', text: `Passo ${k + 1}: ` }), txt(p.titulo)),
+              temTexto(p.texto) ? h('p', { text: p.texto }) : null,
+              figuraAnotada(p),
+              temTexto(p.dica) ? h('p', { className: 'pl-nota-guia pl-nota-guia--dica' }, icone('checklist'), h('span', null, h('strong', { text: 'Dica: ' }), p.dica)) : null,
+              temTexto(p.atencao) ? h('p', { className: 'pl-nota-guia pl-nota-guia--atencao' }, icone('alerta'), h('span', null, h('strong', { text: 'Atenção: ' }), p.atencao)) : null,
+              p.evidencia === 'a-conferir-na-tela' ? h('span', { className: 'pl-chip pl-chip--prep pl-chip--mini' }, icone('relogio'), EVIDENCIA[p.evidencia]) : null))))));
+      });
+    }
+
+    // Bloco do consultor
+    const k = jornada === 'consultor' && guia.consultor;
+    if (k) {
+      const grupos = [];
+      if ((k.implantacao || []).length) grupos.push(h('div', { className: 'pl-cons__g' }, h('h4', { text: 'Ao implantar, confira' }), h('ul', { className: 'pl-cons__lista' }, k.implantacao.map((t) => h('li', null, icone('checklist'), h('span', { text: typeof t === 'string' ? t : t.texto }))))));
+      if ((k.errosComuns || []).length) grupos.push(h('div', { className: 'pl-cons__g' }, h('h4', { text: 'Erros comuns' }), h('ul', { className: 'pl-cons__lista pl-cons__lista--erro' }, k.errosComuns.map((e) => h('li', null, icone('alerta'), h('span', null, h('strong', { text: e.titulo }), temTexto(e.texto) ? ` ${e.texto}` : null))))));
+      if ((k.perguntasDoCliente || []).length) grupos.push(h('div', { className: 'pl-cons__g pl-cons__g--largo' }, h('h4', { text: 'Perguntas que o cliente faz' }),
+        k.perguntasDoCliente.map((q) => h('details', { className: 'pl-faq' }, h('summary', { text: q.pergunta }), h('p', { text: q.resposta })))));
+      if (grupos.length) raiz.append(h('section', { className: 'pl-guia__bloco pl-cons', attrs: { 'aria-labelledby': `${idg}-k` } }, h('h3', { className: 'pl-guia__h', id: `${idg}-k`, text: 'Para o consultor' }), h('div', { className: 'pl-cons__grade' }, grupos)));
+    }
+
+    const fontes = guia.fontes || [];
+    if (fontes.length) raiz.append(h('details', { className: 'pl-fontes' }, h('summary', { text: plural(fontes.length, 'fonte do guia', 'fontes do guia') }), h('ul', null, fontes.map((f) => h('li', null, h('code', { text: f }))))));
+    return raiz;
   }
 
   /* ---------- painel de Visibilidade (admin; contrato §4 + v2) ---------- */
@@ -980,6 +1286,6 @@
     // utilitários de texto seguro, para o Lead/Engineer reaproveitarem (ex.: painel de Visibilidade)
     texto: Object.freeze({ inline, urlSegura }),
     contrato: 'v2',
-    versao: '2026-11-05-ui-v2.1'
+    versao: '2026-11-05-ui-v2.2'
   });
 })();

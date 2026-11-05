@@ -16,6 +16,8 @@ import consultorCompleto from './gerado/consultor-fluxo-completo.json';
 import consultor07 from './gerado/consultor-07-faturamento.json';
 import consultor08 from './gerado/consultor-08-financeiro.json';
 import compraCliente from './gerado/compra-em-nome-do-cliente.json';
+import { IntroVideo, type RoteiroIntro } from './IntroVideo';
+import introVendas from '../roteiros/intro-vendas.json';
 
 // Um vídeo por fluxo. Para incluir outro: roteiros/<id>.json → narrar → preparar → importar aqui.
 const VIDEOS: Dados[] = [fluxo1 as Dados, consultor03 as Dados, consultor07 as Dados, consultor08 as Dados, consultor01 as Dados, consultor02 as Dados, consultor04 as Dados, consultor05 as Dados, consultor06 as Dados, consultor09 as Dados, consultor10 as Dados, consultorCompleto as Dados, compraCliente as Dados];
@@ -38,5 +40,8 @@ export const Root: React.FC = () => (
       <Composition key={`${d.id}-v4`} id={`${d.id}-v4`} component={FluxoVideoV4} fps={FPS} width={1920} height={1080}
         durationInFrames={Math.ceil(d.duracaoTotal * FPS)} defaultProps={props(d)} />
     ))}
+    {/* vídeos de introdução de módulo (sem narração, só música): roteiros/intro-<modulo>.json, ver INTRO-LEIA-ME.md */}
+    <Composition id="intro-vendas" component={IntroVideo} fps={introVendas.fps} width={1920} height={1080}
+      durationInFrames={Math.round(introVendas.duracao * introVendas.fps)} defaultProps={{ roteiro: introVendas as RoteiroIntro }} />
   </>
 );

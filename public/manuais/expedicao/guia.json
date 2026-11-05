@@ -1,0 +1,690 @@
+{
+  "modulo": "expedicao",
+  "titulo": "Expedição — guia visual",
+  "resumo": "Do pedido faturado até a mercadoria na mão do cliente: liberar o pedido, montar a carga, conferir no pátio, sair em rota e entregar, com tudo registrado no histórico.",
+  "versaoSistema": "1.22.13 (capturas do ambiente de teste, 19–22/10/2026)",
+  "atualizadoEm": "2026-11-05",
+  "status": "rascunho",
+  "conceitos": [
+    {
+      "titulo": "Para que serve a Expedição",
+      "icone": "expedicao",
+      "texto": "Organiza a entrega dos produtos: montagem da carga, conferência, carregamento e transporte até o cliente.",
+      "fontes": [
+        "db/migrations/002_modulos_iniciais.sql#expedicao",
+        "manual-09-expedicao#001"
+      ]
+    },
+    {
+      "titulo": "Só pedido faturado entra",
+      "icone": "nota",
+      "texto": "Liberar para Expedição aparece só no menu ⋯ do pedido Faturado. Sem liberar, o pedido não aparece para montar a carga.",
+      "fontes": [
+        "regra-vendas-liberar-para-expedicao-so-em-pedido-faturado",
+        "scripts/dados-checklists-estagiarios.mjs#expedicao"
+      ]
+    },
+    {
+      "titulo": "O ciclo da carga",
+      "icone": "fluxo",
+      "texto": "Em Montagem → Fechada → Separação, Conferência e Carregamento → Em Rota → Entregue. Cada passo fica no Histórico da Carga, com horário.",
+      "fontes": [
+        "scripts/dados-checklists-estagiarios.mjs#expedicao",
+        "manual-09-expedicao#009"
+      ]
+    },
+    {
+      "titulo": "Checkpoints da empresa",
+      "icone": "check",
+      "texto": "Separação, Conferência e Carregamento ligam em Expedição › Configurações › Parâmetros. Ligue só o que a empresa usa; Fechar Carga libera os checkpoints.",
+      "fontes": [
+        "manual-09-expedicao",
+        "videos/roteiros/consultor-06-expedicao.json#05",
+        "videos/roteiros/consultor-06-expedicao.json#06"
+      ]
+    },
+    {
+      "titulo": "Ocorrência e devolução",
+      "icone": "alerta",
+      "texto": "Com ocorrência bloqueante, o pedido volta para Aguardando Re-Expedição. A devolução confirmada cria pendências de estoque.",
+      "fontes": [
+        "roteiro-expedicao-05-re-expedicao-e-devolucoes",
+        "videos/roteiros/consultor-06-expedicao.json#07"
+      ]
+    }
+  ],
+  "palavras": [
+    {
+      "termo": "Liberar para Expedição",
+      "definicao": "Item do menu ⋯ do pedido Faturado. Em pedido Lib. Expedição, vira Reverter Liberação.",
+      "fontes": [
+        "regra-vendas-liberar-para-expedicao-so-em-pedido-faturado"
+      ]
+    },
+    {
+      "termo": "Lib. Expedição",
+      "definicao": "Status do pedido liberado para montar carga.",
+      "fontes": [
+        "regra-vendas-liberar-para-expedicao-so-em-pedido-faturado",
+        "scripts/dados-checklists-estagiarios.mjs#expedicao"
+      ]
+    },
+    {
+      "termo": "Carga",
+      "definicao": "Conjunto de pedidos que sai num veículo com um motorista.",
+      "fontes": [
+        "manual-09-expedicao#001"
+      ]
+    },
+    {
+      "termo": "Montar Nova Carga",
+      "definicao": "Botão que lista os pedidos disponíveis e monta a carga com veículo, data prevista de saída e motorista.",
+      "fontes": [
+        "scripts/dados-checklists-estagiarios.mjs#expedicao",
+        "videos/public/telas/consultor-06-expedicao/01-quadro-cargas.png"
+      ]
+    },
+    {
+      "termo": "Fechar Carga",
+      "definicao": "Ação que fecha a carga e libera os checkpoints.",
+      "fontes": [
+        "manual-09-expedicao#009"
+      ]
+    },
+    {
+      "termo": "Iniciar Rota",
+      "definicao": "Com todos os checkpoints concluídos, coloca a carga Em Rota.",
+      "fontes": [
+        "manual-09-expedicao#009",
+        "roteiro-expedicao-03-separacao-conferencia-e-carregamento#025"
+      ]
+    },
+    {
+      "termo": "Romaneio",
+      "definicao": "Documento da carga; o detalhe também oferece Romaneio de itens, PDF e Etiquetas.",
+      "fontes": [
+        "scripts/dados-checklists-estagiarios.mjs#expedicao",
+        "videos/public/telas/consultor-06-expedicao/02-carga-detalhe.png"
+      ]
+    },
+    {
+      "termo": "Histórico da Carga",
+      "definicao": "Registro de cada passo da carga, com data e hora.",
+      "fontes": [
+        "scripts/dados-checklists-estagiarios.mjs#expedicao",
+        "videos/public/telas/consultor-06-expedicao/03-historico.png"
+      ]
+    }
+  ],
+  "mapa": {
+    "antes": [
+      "vendas",
+      "faturamento",
+      "producao",
+      "estoque"
+    ],
+    "depois": [
+      "servicos"
+    ],
+    "texto": "Recebe os pedidos faturados e liberados. Integra-se a Vendas, Faturamento, Estoque e Produção; depois da entrega, a obra segue para a instalação em Serviços.",
+    "fontes": [
+      "db/migrations/002_modulos_iniciais.sql#expedicao",
+      "db/migrations/002_modulos_iniciais.sql#servicos"
+    ]
+  },
+  "capitulos": [
+    {
+      "id": "liberar-pedido",
+      "titulo": "Liberando o pedido faturado",
+      "nivel": "basico",
+      "objetivo": "Liberar um pedido faturado para que ele apareça na montagem da carga.",
+      "onde": "Vendas › Pedidos de Venda › ⋯",
+      "passos": [
+        {
+          "titulo": "Abra o menu ⋯ do pedido Faturado",
+          "texto": "Em Vendas › Pedidos de Venda, localize o pedido com status Faturado e abra o menu ⋯. Escolha Liberar para Expedição.",
+          "imagem": "/manuais/expedicao/img/01-liberar-para-expedicao.webp",
+          "alt": "Menu do pedido faturado com Liberar para Expedição habilitado e Já faturado desabilitado",
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "STATUS Faturado",
+              "explicacao": "Só o pedido Faturado tem o item Liberar para Expedição.",
+              "caixa": {
+                "x": 72.3,
+                "y": 66.8,
+                "w": 5.6,
+                "h": 3.8
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 2,
+              "rotulo": "Menu ⋯",
+              "explicacao": "Abre o menu de ações do pedido.",
+              "caixa": {
+                "x": 94.1,
+                "y": 67,
+                "w": 2.1,
+                "h": 3.6
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 3,
+              "rotulo": "Liberar para Expedição",
+              "explicacao": "Libera o pedido para entrar numa carga. Depois de liberado, o mesmo item vira Reverter Liberação.",
+              "caixa": {
+                "x": 82.5,
+                "y": 40.1,
+                "w": 13.4,
+                "h": 3.6
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 4,
+              "rotulo": "Já faturado (desabilitado)",
+              "explicacao": "Item cinza com o aviso de que o pedido já possui nota fiscal emitida.",
+              "caixa": {
+                "x": 82.5,
+                "y": 43.9,
+                "w": 13.4,
+                "h": 6.4
+              },
+              "lado": "direita"
+            }
+          ],
+          "zoom": {
+            "x": 50,
+            "y": 35.3,
+            "w": 50,
+            "h": 38.6
+          },
+          "atencao": "Em pedido Em aberto ou Entregue o item não existe. Em pedido Lib. Expedição ele vira Reverter Liberação.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-06-expedicao/00-liberar.png",
+            "regra-vendas-liberar-para-expedicao-so-em-pedido-faturado",
+            "videos/roteiros/consultor-06-expedicao.json#08"
+          ],
+          "largura": 1600,
+          "altura": 900
+        }
+      ]
+    },
+    {
+      "id": "quadro-de-cargas",
+      "titulo": "Conhecendo o quadro de cargas",
+      "nivel": "basico",
+      "objetivo": "Ler em que etapa está cada carga e saber por onde começar uma nova.",
+      "onde": "Expedição › Cargas",
+      "passos": [
+        {
+          "titulo": "Abra Cargas",
+          "texto": "No menu da Expedição, clique em Cargas. O quadro separa as cargas em quatro colunas, da montagem à entrega; os filtros buscam por status, veículo, motorista e período.",
+          "imagem": "/manuais/expedicao/img/02-quadro-de-cargas.webp",
+          "alt": "Quadro de cargas com as colunas Em Montagem, Separado, Em Rota e Entregue",
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Cargas",
+              "explicacao": "Abre o quadro das cargas.",
+              "caixa": {
+                "x": 0.6,
+                "y": 23.6,
+                "w": 14.3,
+                "h": 3.7
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 2,
+              "rotulo": "Em Montagem",
+              "explicacao": "Cargas sendo montadas, aguardando o fechamento.",
+              "caixa": {
+                "x": 19.1,
+                "y": 40.8,
+                "w": 18.9,
+                "h": 15.9
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 3,
+              "rotulo": "Separado",
+              "explicacao": "Cargas que já passaram pela separação.",
+              "caixa": {
+                "x": 38.8,
+                "y": 40.7,
+                "w": 18.9,
+                "h": 12.7
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 4,
+              "rotulo": "Em Rota",
+              "explicacao": "Cargas que saíram para entrega (Iniciar Rota).",
+              "caixa": {
+                "x": 58.4,
+                "y": 40.7,
+                "w": 18.9,
+                "h": 12.7
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 5,
+              "rotulo": "Entregue",
+              "explicacao": "Cargas entregues hoje; as de dias anteriores ficam em + finalizadas anteriores.",
+              "caixa": {
+                "x": 78,
+                "y": 40.7,
+                "w": 18.9,
+                "h": 17.1
+              },
+              "lado": "baixo"
+            }
+          ],
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-06-expedicao/01-quadro-cargas.png",
+            "videos/roteiros/consultor-06-expedicao.json#09"
+          ],
+          "largura": 1600,
+          "altura": 900
+        },
+        {
+          "titulo": "Comece pelo Montar Nova Carga",
+          "texto": "Montar Nova Carga lista só os pedidos faturados ou liberados. Marque os pedidos, escolha Veículo, Data prevista de saída e Motorista (obrigatórios) e clique em Montar Carga.",
+          "imagem": "/manuais/expedicao/img/02-quadro-de-cargas.webp",
+          "alt": "Botões Roteirização, Exportar Excel e Montar Nova Carga no topo do quadro",
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "+ Montar Nova Carga",
+              "explicacao": "Abre a montagem da carga, com os pedidos disponíveis e a ocupação do veículo.",
+              "caixa": {
+                "x": 85.8,
+                "y": 13.8,
+                "w": 11.9,
+                "h": 4.9
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 2,
+              "rotulo": "+ Criar nova carga",
+              "explicacao": "Também começa uma carga, direto na coluna Em Montagem.",
+              "caixa": {
+                "x": 24.8,
+                "y": 51.6,
+                "w": 7.6,
+                "h": 2.7
+              },
+              "lado": "baixo"
+            }
+          ],
+          "atencao": "Montar Carga altera a operação real: só com orientação. O motorista precisa ter CNH válida.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-06-expedicao/01-quadro-cargas.png",
+            "scripts/dados-checklists-estagiarios.mjs#expedicao",
+            "videos/roteiros/consultor-06-expedicao.json#09",
+            "videos/capturas/guias-staging/expedicao-visao-geral.png (staging v1.23.2, 05/11/2026)",
+            "videos/capturas/guias-staging/expedicao-cargas.png (staging v1.23.2, 05/11/2026)"
+          ],
+          "largura": 1600,
+          "altura": 900,
+          "dica": "Na versão 1.23.2 (staging, 05/11/2026), o botão Montar Nova Carga aparece também em Expedição › Visão Geral."
+        }
+      ]
+    },
+    {
+      "id": "acompanhar-carga",
+      "titulo": "Acompanhando uma carga",
+      "nivel": "basico",
+      "objetivo": "Ler o detalhe e o histórico de uma carga: status, ocupação, entregas, documentos e horários.",
+      "onde": "Expedição › Cargas › detalhe da carga",
+      "passos": [
+        {
+          "titulo": "Leia o detalhe da carga",
+          "texto": "No detalhe da carga, confira o status, a Ocupação do veículo e as Entregas. No alto ficam os documentos: Romaneio, Romaneio de itens, PDF e Etiquetas.",
+          "imagem": "/manuais/expedicao/img/03-detalhe-da-carga.webp",
+          "alt": "Detalhe de uma carga entregue com mapa, ocupação do veículo, entregas e botões de documentos",
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Status Entregue",
+              "explicacao": "A carga completou o ciclo: Em Montagem, fechada, checkpoints, Em Rota e Entregue.",
+              "caixa": {
+                "x": 32.1,
+                "y": 8,
+                "w": 6.4,
+                "h": 3.8
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 2,
+              "rotulo": "Romaneio",
+              "explicacao": "O documento da carga. Ao lado ficam Romaneio de itens e PDF.",
+              "caixa": {
+                "x": 65.4,
+                "y": 8.7,
+                "w": 7.5,
+                "h": 4.4
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 3,
+              "rotulo": "Etiquetas",
+              "explicacao": "As etiquetas dos volumes, que são bipadas nos checkpoints.",
+              "caixa": {
+                "x": 89.8,
+                "y": 8.7,
+                "w": 7.3,
+                "h": 4.4
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 4,
+              "rotulo": "Ocupação",
+              "explicacao": "Peso e volume da carga contra a capacidade do veículo (aqui, 23 / 360 kg).",
+              "caixa": {
+                "x": 72.5,
+                "y": 51.6,
+                "w": 23.6,
+                "h": 15.8
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 5,
+              "rotulo": "Entregas",
+              "explicacao": "Os pedidos da carga e a situação de cada entrega; aqui, Confirmado pelo ERP (sem foto).",
+              "caixa": {
+                "x": 19,
+                "y": 72.7,
+                "w": 50.6,
+                "h": 14.4
+              },
+              "lado": "baixo"
+            }
+          ],
+          "dica": "Confirmar a entrega pelo painel pede um motivo por não ter foto ou assinatura: o normal é o motorista confirmar pelo app.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-06-expedicao/02-carga-detalhe.png",
+            "scripts/dados-checklists-estagiarios.mjs#expedicao",
+            "videos/roteiros/consultor-06-expedicao.json#10"
+          ],
+          "largura": 1600,
+          "altura": 900
+        },
+        {
+          "titulo": "Confira o Histórico da Carga",
+          "texto": "Role até o Histórico da Carga: cada passo aparece em ordem, com data e hora, da criação da carga até a saída para a rota.",
+          "imagem": "/manuais/expedicao/img/04-historico-da-carga.webp",
+          "alt": "Histórico da carga com os passos de criação, fechamento, separação, conferência, carregamento e saída",
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Carga criada e fechada",
+              "explicacao": "A carga foi montada e depois fechada. Fechar a carga libera os checkpoints.",
+              "caixa": {
+                "x": 23.4,
+                "y": 12.6,
+                "w": 45.5,
+                "h": 17.4
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 2,
+              "rotulo": "Separação",
+              "explicacao": "Checkpoint de separação: início e fim, com os volumes bipados (1/1).",
+              "caixa": {
+                "x": 23.4,
+                "y": 32,
+                "w": 45.5,
+                "h": 17.4
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 3,
+              "rotulo": "Conferência",
+              "explicacao": "Checkpoint de conferência, com início e fim.",
+              "caixa": {
+                "x": 23.4,
+                "y": 51.6,
+                "w": 45.5,
+                "h": 17.3
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 4,
+              "rotulo": "Carregamento",
+              "explicacao": "Checkpoint de carregamento, com início e fim.",
+              "caixa": {
+                "x": 23.4,
+                "y": 71,
+                "w": 45.5,
+                "h": 17.4
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 5,
+              "rotulo": "Carga saiu para rota",
+              "explicacao": "O Iniciar Rota: a carga fica Em Rota.",
+              "caixa": {
+                "x": 23.4,
+                "y": 90.4,
+                "w": 45.5,
+                "h": 7.7
+              },
+              "lado": "direita"
+            }
+          ],
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-06-expedicao/03-historico.png",
+            "scripts/dados-checklists-estagiarios.mjs#expedicao",
+            "videos/roteiros/consultor-06-expedicao.json#11"
+          ],
+          "largura": 1600,
+          "altura": 900
+        }
+      ]
+    },
+    {
+      "id": "checkpoints-e-devolucao",
+      "titulo": "Checkpoints, rota, ocorrência e devolução",
+      "nivel": "avancado",
+      "objetivo": "Configurar os checkpoints, levar a carga até a rota e tratar ocorrências e devoluções.",
+      "onde": "Expedição › Configurações › Parâmetros",
+      "passos": [
+        {
+          "titulo": "Ligue só os checkpoints que a empresa usa",
+          "texto": "Em Configurações › Parâmetros, as chaves Separação, Conferência e Carregamento definem o fluxo, e o painel mostra como ficará o processo.",
+          "dica": "Uma carga já fechada segue a régua do fechamento: mudar os parâmetros depois não muda as etapas dela.",
+          "evidencia": "base",
+          "fontes": [
+            "plano-expedicao#019",
+            "videos/roteiros/consultor-06-expedicao.json#05"
+          ]
+        },
+        {
+          "titulo": "Feche a carga e aponte os checkpoints",
+          "texto": "Clique em Fechar Carga: aparecem os checkpoints. Em Apontar Separação, bipe a etiqueta de cada volume (ou confirme); repita em Apontar Conferência e Apontar Carregamento.",
+          "atencao": "Fechar carga com motorista de CNH vencida exige justificativa, que fica registrada na carga.",
+          "evidencia": "base",
+          "fontes": [
+            "manual-09-expedicao#009",
+            "scripts/dados-checklists-estagiarios.mjs#expedicao"
+          ]
+        },
+        {
+          "titulo": "Inicie a rota",
+          "texto": "Com todos os checkpoints concluídos, clique em Iniciar Rota. Confira carga, placa e motorista e clique em Confirmar saída: a carga fica Em Rota.",
+          "evidencia": "base",
+          "fontes": [
+            "roteiro-expedicao-03-separacao-conferencia-e-carregamento#025",
+            "manual-09-expedicao#009"
+          ]
+        },
+        {
+          "titulo": "Trate ocorrências e devoluções",
+          "texto": "No menu da Expedição, Ocorrências, Aguardando Re-Expedição e Pendências de Estoque (Devolução) concentram o que voltou da rota. Os parâmetros ficam em Configurações, no fim do menu.",
+          "imagem": "/manuais/expedicao/img/02-quadro-de-cargas.webp",
+          "alt": "Menu lateral da Expedição com Ocorrências, Aguardando Re-Expedição e Pendências de Estoque (Devolução)",
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Ocorrências",
+              "explicacao": "Problemas registrados na rota. Uma ocorrência bloqueante devolve o pedido para a re-expedição.",
+              "caixa": {
+                "x": 0.6,
+                "y": 42.1,
+                "w": 14.4,
+                "h": 3.8
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 2,
+              "rotulo": "Aguardando Re-Expedição",
+              "explicacao": "Os pedidos que voltaram da rota e precisam sair de novo.",
+              "caixa": {
+                "x": 0.6,
+                "y": 45.9,
+                "w": 14.4,
+                "h": 3.8
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 3,
+              "rotulo": "Pendências de Estoque (Devolução)",
+              "explicacao": "A devolução confirmada vira pendência por produto: o saldo não sobe sozinho.",
+              "caixa": {
+                "x": 0.6,
+                "y": 53.4,
+                "w": 14.4,
+                "h": 5.6
+              },
+              "lado": "direita"
+            }
+          ],
+          "atencao": "A devolução não devolve o saldo ao estoque sozinha: depende da entrada manual e da baixa da pendência.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-06-expedicao/01-quadro-cargas.png",
+            "roteiro-expedicao-05-re-expedicao-e-devolucoes",
+            "videos/roteiros/consultor-06-expedicao.json#07",
+            "scripts/dados-checklists-implantacao.mjs#implantacao-expedicao",
+            "videos/capturas/guias-staging/expedicao-ocorrencias.png (staging v1.23.2, 05/11/2026)"
+          ],
+          "largura": 1600,
+          "altura": 900,
+          "zoom": {
+            "x": 0,
+            "y": 41.1,
+            "w": 25,
+            "h": 18.9
+          }
+        }
+      ]
+    }
+  ],
+  "consultor": {
+    "implantacao": [
+      "Pedido de venda de teste Faturado, com nota finalizada e sem transmitir. Fonte: regra-vendas-liberar-para-expedicao-so-em-pedido-faturado; checklist de implantação da Expedição.",
+      "Frota cadastrada: pelo menos um veículo com capacidade de peso e volume e um motorista com CNH válida. Fonte: manual-09-expedicao#003 e #004.",
+      "Endereço de entrega no cadastro do cliente e peso no cadastro do produto. Fonte: manual-09-expedicao#002.",
+      "Checkpoints da empresa definidos com o cliente: quais etapas (Separação, Conferência, Carregamento) vai usar. Fonte: manual-09-expedicao#005.",
+      "Combinar com o Financeiro quando gerar títulos: Gerar Títulos do pedido fica desabilitado em Faturado e Lib. Expedição e volta depois de Entregue. Fonte: checklist de implantação da Expedição."
+    ],
+    "perguntasDoCliente": [
+      {
+        "pergunta": "Por que o pedido não aparece para montar a carga?",
+        "resposta": "Ele ainda não foi faturado e liberado: Liberar para Expedição só existe no menu ⋯ do pedido Faturado.",
+        "fontes": [
+          "regra-vendas-liberar-para-expedicao-so-em-pedido-faturado",
+          "scripts/dados-checklists-estagiarios.mjs#expedicao"
+        ]
+      },
+      {
+        "pergunta": "A tela de montagem manda clicar em Liberar para Expedição, mas não acho o botão.",
+        "resposta": "O aviso não diz que o botão só existe no menu ⋯ do pedido Faturado: fature antes.",
+        "fontes": [
+          "regra-vendas-liberar-para-expedicao-so-em-pedido-faturado"
+        ]
+      },
+      {
+        "pergunta": "O cliente final recebe algum aviso?",
+        "resposta": "O link de rastreamento e os avisos podem chegar ao cliente final: em teste, use e-mail de teste e revogue o link.",
+        "fontes": [
+          "scripts/dados-checklists-implantacao.mjs#implantacao-expedicao"
+        ]
+      }
+    ],
+    "errosComuns": [
+      {
+        "titulo": "Aviso de produção pendente com OP",
+        "texto": "A carga pode avisar \"item sem ordem de produção vinculada\" mesmo com a OP existente: confira a OP antes de carregar.",
+        "fontes": [
+          "scripts/dados-checklists-implantacao.mjs#implantacao-expedicao",
+          "scripts/dados-checklists-estagiarios.mjs#expedicao"
+        ]
+      },
+      {
+        "titulo": "Devolução sem saldo",
+        "texto": "A devolução não sobe o saldo sozinha: trate a pendência de estoque.",
+        "fontes": [
+          "scripts/dados-checklists-implantacao.mjs#implantacao-expedicao",
+          "videos/roteiros/consultor-06-expedicao.json#12"
+        ]
+      },
+      {
+        "titulo": "CNH vencida no dia",
+        "texto": "Motorista com CNH vencida trava o fechamento sem justificativa: confira a validade antes do dia da implantação.",
+        "fontes": [
+          "scripts/dados-checklists-implantacao.mjs#implantacao-expedicao"
+        ]
+      }
+    ]
+  },
+  "fontes": [
+    "db/migrations/002_modulos_iniciais.sql#expedicao",
+    "regra-vendas-liberar-para-expedicao-so-em-pedido-faturado",
+    "manual-09-expedicao#001",
+    "manual-09-expedicao#009",
+    "roteiro-expedicao-03-separacao-conferencia-e-carregamento#025",
+    "roteiro-expedicao-05-re-expedicao-e-devolucoes",
+    "plano-expedicao#019",
+    "scripts/dados-checklists-estagiarios.mjs#expedicao",
+    "scripts/dados-checklists-implantacao.mjs#implantacao-expedicao",
+    "videos/roteiros/consultor-06-expedicao.json",
+    "videos/public/telas/consultor-06-expedicao/00-liberar.png",
+    "videos/public/telas/consultor-06-expedicao/01-quadro-cargas.png",
+    "videos/public/telas/consultor-06-expedicao/02-carga-detalhe.png",
+    "videos/public/telas/consultor-06-expedicao/03-historico.png"
+  ],
+  "pendencias": [
+    "CAPTURA: Expedição › Montar Nova Carga — abas Por pedido de venda e Por ordem de produção, Veículo, Data prevista de saída, Motorista.",
+    "CAPTURA: detalhe de uma carga Fechada com os checkpoints e o botão Apontar Separação.",
+    "CAPTURA: painel de bipagem de um checkpoint.",
+    "CAPTURA: confirmação de Iniciar Rota (Confirmar saída).",
+    "CAPTURA: Expedição › Configurações › Parâmetros — chaves Separação, Conferência e Carregamento.",
+    "CAPTURA: Expedição › Ocorrências, Aguardando Re-Expedição e Pendências de Estoque (Devolução).",
+    "RESOLVIDO (staging v1.23.2, 05/11/2026): o botão + Montar Nova Carga existe em Expedição › Visão Geral e em Expedição › Cargas.",
+    "Validação na tela pendente: guia gerado de capturas e da base, sem sessão no Flow."
+  ]
+}

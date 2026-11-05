@@ -67,6 +67,35 @@
     return pedir(`/api/conteudo?modulo=${encodeURIComponent(id)}&jornada=${encodeURIComponent(jornada)}`);
   }
 
+  /** Guia visual do módulo (public/manuais/<id>/guia.json). Sem guia, oculto ou inválido → null (a página segue sem ele). */
+  async function carregarGuia(id) {
+    if (!SEGMENTO.test(String(id || ''))) return null;
+    const r = await pedir(`/manuais/${encodeURIComponent(id)}/guia.json`);
+    return r && !r.erro && typeof r === 'object' && Array.isArray(r.capitulos) ? r : null;
+  }
+
+  /* ---------- Progresso do checklist de aprendizado (Guia Inicial) ----------
+     Reaproveita /api/checklists-progresso (doc 03): chave "inicial:<modulo>", dados.marcados = { itemId: 1 }, pct 0–100.
+     Erros viram {} / [] (a página segue; o progresso só não aparece). */
+  const CHAVE_PROG = /^[a-z0-9:_-]{3,80}$/;
+  async function progressoResumo() {
+    const r = await pedir('/api/checklists-progresso?lista=1');
+    if (!r || r.erro || !Array.isArray(r.itens)) return {};
+    return Object.fromEntries(r.itens.filter((i) => typeof i.chave === 'string').map((i) => [i.chave, Number(i.pct) || 0]));
+  }
+  async function progresso(chave) {
+    if (!CHAVE_PROG.test(String(chave || ''))) return [];
+    const r = await pedir(`/api/checklists-progresso?chave=${encodeURIComponent(chave)}`);
+    const m = r && !r.erro && r.dados && r.dados.marcados;
+    return m && typeof m === 'object' ? Object.keys(m) : [];
+  }
+  async function salvarProgresso(chave, feitos, total) {
+    if (!CHAVE_PROG.test(String(chave || ''))) return erro(400, 'Checklist inválido.');
+    const marcados = Object.fromEntries((feitos || []).map((id) => [String(id), 1]));
+    const pct = total > 0 ? Math.round((Object.keys(marcados).length * 100) / total) : 0;
+    return pedir(`/api/checklists-progresso?chave=${encodeURIComponent(chave)}`, { metodo: 'PUT', corpo: { dados: { marcados, t: Date.now() }, pct } });
+  }
+
   async function visibilidade({ todos = false } = {}) {
     const r = await pedir(todos ? '/api/visibilidade?todos=1' : '/api/visibilidade');
     if (!todos && r && !r.erro && r.itens && typeof r.itens === 'object') aplicarVisibilidade(r.itens);
@@ -156,7 +185,7 @@
     atualizar();
   }
 
-  const Plataforma = { carregarResumo, carregarModulo, visibilidade, aplicarVisibilidade, salvarVisibilidade, invalidarResumo, lerRota, irPara, ALIASES, rota: lerRota(location.hash) };
+  const Plataforma = { carregarResumo, carregarModulo, carregarGuia, progressoResumo, progresso, salvarProgresso, visibilidade, aplicarVisibilidade, salvarVisibilidade, invalidarResumo, lerRota, irPara, ALIASES, rota: lerRota(location.hash) };
 
   function atualizar() {
     Plataforma.rota = lerRota(location.hash);

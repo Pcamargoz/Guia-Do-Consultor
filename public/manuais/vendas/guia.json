@@ -1,0 +1,1060 @@
+{
+  "modulo": "vendas",
+  "titulo": "Vendas — guia visual",
+  "resumo": "Você vai entender o que é o pedido de venda, ler a lista de pedidos e seus status, criar um pedido do zero e saber o que acontece com ele depois: nota, títulos e expedição.",
+  "versaoSistema": "1.22.13 (capturas de fluxo-1-vendas e compra-em-nome-do-cliente) e 1.23.2 (capturas brutas de 04/11/2026)",
+  "atualizadoEm": "2026-11-05",
+  "status": "rascunho",
+  "conceitos": [
+    {
+      "titulo": "O pedido é o combinado da venda",
+      "texto": "O pedido de venda registra quem compra, o quê, por quanto e como vai pagar. É onde a operação começa: dele saem produção, serviços, expedição, nota fiscal e títulos a receber.",
+      "icone": "vendas",
+      "fontes": [
+        "guia:scripts/dados-checklists-estagiarios.mjs#vendas",
+        "guia:videos/roteiros/fluxo-1-vendas.json#02"
+      ]
+    },
+    {
+      "titulo": "O pedido nasce de três jeitos",
+      "texto": "Digitado na tela Novo Pedido, importado de um orçamento do CEM ou gerado a partir de uma oportunidade ganha no CRM. Nos três casos ele nasce Em aberto e segue o mesmo caminho em Vendas.",
+      "icone": "fluxo",
+      "fontes": [
+        "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas",
+        "oficial-int-c-implantacao#011",
+        "regra-vendas-gerar-pedido-da-oportunidade-exige-cfop-sem-financeiro"
+      ]
+    },
+    {
+      "titulo": "Cada status abre e fecha portas",
+      "texto": "O pedido nasce Em aberto. Quando a nota fiscal é salva, passa a Faturado; depois pode ser liberado para expedição (Lib. Expedição) e, por fim, Entregue. Também existem Aprovação pendente, Encerrado e Cancelado.",
+      "icone": "relogio",
+      "fontes": [
+        "guia:scripts/dados-checklists-estagiarios.mjs#vendas",
+        "regra-vendas-pedido-fica-faturado-ao-salvar-a-nota",
+        "guia:videos/roteiros/fluxo-1-vendas.json#03"
+      ]
+    },
+    {
+      "titulo": "Ajuste tudo enquanto está Em aberto",
+      "texto": "Só o pedido Em aberto pode ser editado, pelo lápis da coluna Ações. Faturado ou Entregue só pode ser visualizado. Por isso, confira projeto, itens e parcelas antes de faturar.",
+      "icone": "regra",
+      "fontes": [
+        "regra-vendas-editar-pedido-somente-em-aberto"
+      ]
+    },
+    {
+      "titulo": "Empresa e Cliente vêm antes do CFOP",
+      "texto": "No Novo Pedido, o CFOP só libera depois de escolher a Empresa e o Cliente, e já vem filtrado pelo estado do cliente. A Conta de Fluxo de Caixa do Resumo é obrigatória.",
+      "icone": "fiscal",
+      "fontes": [
+        "regra-vendas-cfop-depende-de-empresa-e-cliente"
+      ]
+    }
+  ],
+  "palavras": [
+    {
+      "termo": "Pedidos de Venda",
+      "definicao": "A lista de pedidos do módulo, em Vendas › Pedidos de Venda. Abre filtrada em Status Em Aberto.",
+      "fontes": [
+        "funcional-vendas-pedidos-de-venda",
+        "guia:scripts/dados-checklists-estagiarios.mjs#vendas"
+      ]
+    },
+    {
+      "termo": "+ Novo Pedido",
+      "definicao": "Botão da lista que abre a página Novo Pedido de Venda (é uma página, não um painel).",
+      "fontes": [
+        "funcional-vendas-pedidos-de-venda"
+      ]
+    },
+    {
+      "termo": "CFOP",
+      "definicao": "Código fiscal da operação. Decide, entre outras coisas, se o pedido gera parcelas e título a receber.",
+      "fontes": [
+        "regra-vendas-cfop-depende-de-empresa-e-cliente",
+        "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao"
+      ]
+    },
+    {
+      "termo": "Condição de Pagamento",
+      "definicao": "Como o cliente paga (por exemplo, 30/60 dias). Ao trocar a condição, as parcelas são refeitas sozinhas.",
+      "fontes": [
+        "regra-vendas-parcelas-recalcular-e-recalcular-parcelas"
+      ]
+    },
+    {
+      "termo": "Meio Pagamento e Portador",
+      "definicao": "Campos de cada parcela do pedido: a forma de pagamento e quem vai receber o valor.",
+      "fontes": [
+        "funcional-vendas-pedidos-de-venda",
+        "guia:scripts/dados-checklists-estagiarios.mjs#vendas"
+      ]
+    },
+    {
+      "termo": "Conta de Fluxo de Caixa",
+      "definicao": "Conta do plano de contas onde a venda é classificada. Fica no Resumo do Pedido e é obrigatória.",
+      "fontes": [
+        "regra-vendas-cfop-depende-de-empresa-e-cliente"
+      ]
+    },
+    {
+      "termo": "Dados do Item",
+      "definicao": "Quadro que abre ao escolher o produto, com os campos que o tipo do material pede (medidas, peso, cor). Confirme com Aplicar.",
+      "fontes": [
+        "guia:scripts/dados-checklists-estagiarios.mjs#vendas",
+        "guia:videos/roteiros/fluxo-1-vendas.json#11"
+      ]
+    },
+    {
+      "termo": "TÍTULOS (Gerados / Sem títulos)",
+      "definicao": "Coluna da lista que mostra se o pedido já tem títulos no financeiro.",
+      "fontes": [
+        "guia:scripts/dados-checklists-estagiarios.mjs#vendas",
+        "regra-faturamento-finalizar-nf-gera-os-titulos"
+      ]
+    },
+    {
+      "termo": "Faturar",
+      "definicao": "Opção do menu ⋯ do pedido que abre uma nova NF-e ligada ao pedido.",
+      "fontes": [
+        "regra-faturamento-faturar-abre-nova-nfe-ligada-ao-pedido"
+      ]
+    },
+    {
+      "termo": "Gerar Títulos",
+      "definicao": "Opção do menu ⋯ que cria no financeiro um título por parcela, sem passar pela nota.",
+      "fontes": [
+        "regra-vendas-gerar-titulos-quando-esta-habilitado"
+      ]
+    }
+  ],
+  "mapa": {
+    "antes": [
+      "crm",
+      "cem"
+    ],
+    "depois": [
+      "faturamento",
+      "financeiro",
+      "producao",
+      "expedicao"
+    ],
+    "texto": "O pedido chega do CRM (oportunidade ganha) ou do CEM (orçamento importado), ou é digitado. Ele inicia o fluxo operacional e alimenta Faturamento, Fiscal, Financeiro, Produção e Expedição.",
+    "fontes": [
+      "guia:db/migrations/002_modulos_iniciais.sql#vendas",
+      "regra-vendas-gerar-pedido-da-oportunidade-exige-cfop-sem-financeiro",
+      "oficial-int-c-implantacao#011"
+    ]
+  },
+  "capitulos": [
+    {
+      "id": "conhecer-a-lista",
+      "titulo": "Conhecendo a lista de pedidos",
+      "nivel": "basico",
+      "objetivo": "Encontrar um pedido, entender o filtro padrão e ler o status, os títulos e a nota de cada linha.",
+      "onde": "Vendas › Pedidos de Venda",
+      "passos": [
+        {
+          "titulo": "Abra a lista de pedidos",
+          "texto": "No menu lateral do módulo Vendas, clique em Pedidos de Venda. A lista abre mostrando só os pedidos com Status \"Em Aberto\": se não achar um pedido, troque esse filtro.",
+          "imagem": "/manuais/vendas/img/01-lista.webp",
+          "alt": "Lista Pedidos de Venda com o filtro Status em Em Aberto e um pedido na lista.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Pedidos de Venda",
+              "explicacao": "Item do menu que abre a lista de todos os pedidos de venda da empresa.",
+              "caixa": {
+                "x": 0.3,
+                "y": 27.2,
+                "w": 14.8,
+                "h": 3.8
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 2,
+              "rotulo": "+ Novo Pedido",
+              "explicacao": "Abre a página para digitar um pedido novo.",
+              "caixa": {
+                "x": 88.1,
+                "y": 15,
+                "w": 9.1,
+                "h": 5.1
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 3,
+              "rotulo": "Filtro Status",
+              "explicacao": "Começa em Em Aberto e volta para ele sempre que você sai e entra na tela. Troque para Todos para ver os demais.",
+              "caixa": {
+                "x": 70.4,
+                "y": 53.1,
+                "w": 26,
+                "h": 5.4
+              },
+              "lado": "baixo"
+            }
+          ],
+          "dica": "Não achou um pedido? Troque o Status para \"Todos\": o filtro volta para Em Aberto sempre que você sai e entra de novo na tela.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/fluxo-1-vendas/01-lista.png",
+            "guia:scripts/dados-checklists-estagiarios.mjs#vendas"
+          ]
+        },
+        {
+          "titulo": "Leia a linha do pedido",
+          "texto": "Em cada linha, veja o STATUS, a coluna TÍTULOS (Gerados ou Sem títulos) e a coluna NOTA FISCAL. Na coluna Ações ficam o lápis (Editar pedido) e o menu ⋯.",
+          "imagem": "/manuais/vendas/img/01-lista.webp",
+          "alt": "Linha de um pedido Em aberto, Sem títulos, sem nota fiscal, com o lápis e o menu de ações.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Status",
+              "explicacao": "Em que etapa o pedido está. Um pedido recém-salvo aparece como Em aberto.",
+              "caixa": {
+                "x": 73.1,
+                "y": 66.4,
+                "w": 5.4,
+                "h": 5
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 2,
+              "rotulo": "Títulos",
+              "explicacao": "Se o pedido já gerou os títulos (parcelas) no financeiro. Sem títulos: ainda não gerou.",
+              "caixa": {
+                "x": 79.4,
+                "y": 66.4,
+                "w": 5.5,
+                "h": 5
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 3,
+              "rotulo": "Nota fiscal",
+              "explicacao": "Recebe o número da nota quando o pedido é faturado. O traço indica que ainda não há nota.",
+              "caixa": {
+                "x": 85.1,
+                "y": 66.4,
+                "w": 3,
+                "h": 5
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 4,
+              "rotulo": "Editar pedido (lápis)",
+              "explicacao": "Abre o pedido para conferir ou alterar os dados.",
+              "caixa": {
+                "x": 91.7,
+                "y": 66.4,
+                "w": 2.4,
+                "h": 5
+              },
+              "lado": "baixo"
+            }
+          ],
+          "zoom": {
+            "x": 72,
+            "y": 60.4,
+            "w": 26,
+            "h": 19
+          },
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/fluxo-1-vendas/01-lista.png",
+            "guia:scripts/dados-checklists-estagiarios.mjs#vendas",
+            "regra-vendas-editar-pedido-somente-em-aberto"
+          ]
+        },
+        {
+          "titulo": "Veja os outros status com o filtro \"Todos\"",
+          "texto": "Troque o filtro Status para \"Todos\". Agora aparecem pedidos em outras etapas. Repare na coluna Ações: o pedido Em aberto tem o lápis; o Faturado só tem o olho, porque já não pode ser alterado.",
+          "imagem": "/manuais/vendas/img/09-status-todos.webp",
+          "alt": "Lista de pedidos com o filtro Todos, mostrando pedidos Em aberto, Encerrado e Faturado e a dica Visualizar pedido.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Status: Todos",
+              "explicacao": "Mostra os pedidos de todas as etapas, não só os Em Aberto.",
+              "caixa": {
+                "x": 69.5,
+                "y": 44.9,
+                "w": 27,
+                "h": 4.6
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 2,
+              "rotulo": "Encerrado",
+              "explicacao": "Venda concluída sem faturar o saldo. Encerrado não volta e não pode ser cancelado.",
+              "caixa": {
+                "x": 75.1,
+                "y": 67.2,
+                "w": 5.3,
+                "h": 3.8
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 3,
+              "rotulo": "Faturado",
+              "explicacao": "A nota fiscal do pedido já foi salva. Isso não quer dizer que a nota foi autorizada.",
+              "caixa": {
+                "x": 75.1,
+                "y": 72.6,
+                "w": 5.1,
+                "h": 3.8
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 4,
+              "rotulo": "Nota fiscal",
+              "explicacao": "Número da nota emitida a partir do pedido.",
+              "caixa": {
+                "x": 86.8,
+                "y": 78.2,
+                "w": 4.8,
+                "h": 3.6
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 5,
+              "rotulo": "Visualizar pedido (olho)",
+              "explicacao": "Abre o pedido só para leitura. Aparece no lugar do lápis quando o pedido não é mais editável.",
+              "caixa": {
+                "x": 92.3,
+                "y": 72.6,
+                "w": 2.3,
+                "h": 3.9
+              },
+              "lado": "cima"
+            }
+          ],
+          "atencao": "Faturado quer dizer que a nota foi salva, não que ela foi autorizada. Confira o status real da nota em Faturamento › Notas Fiscais.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "midia/brutos/vendas/prints/vendas_c08_02.png",
+            "regra-vendas-pedido-fica-faturado-ao-salvar-a-nota",
+            "regra-vendas-editar-pedido-somente-em-aberto"
+          ],
+          "zoom": {
+            "x": 67.2,
+            "y": 43.3,
+            "w": 32,
+            "h": 41.7
+          }
+        }
+      ]
+    },
+    {
+      "id": "criar-pedido",
+      "titulo": "Criando um pedido de venda",
+      "nivel": "basico",
+      "objetivo": "Preencher o cabeçalho, incluir um item, conferir as parcelas e salvar um pedido Em aberto.",
+      "onde": "Vendas › Pedidos de Venda › + Novo Pedido",
+      "passos": [
+        {
+          "titulo": "Clique em + Novo Pedido e comece pela Empresa",
+          "texto": "Clique em + Novo Pedido. Abre a página Novo Pedido de Venda. Comece pela Empresa e depois o Cliente: até lá o CFOP fica bloqueado.",
+          "imagem": "/manuais/vendas/img/02-novo-pedido.webp",
+          "alt": "Página Novo Pedido de Venda vazia, com o CFOP bloqueado e a mensagem Selecione a empresa e o cliente primeiro.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Empresa",
+              "explicacao": "A empresa que vende. Escolha primeiro: na versão 1.22.13 ela não vem preenchida.",
+              "caixa": {
+                "x": 19.5,
+                "y": 24.4,
+                "w": 25.2,
+                "h": 5.3
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 2,
+              "rotulo": "Cliente",
+              "explicacao": "Quem compra. Junto com a Empresa, libera o CFOP.",
+              "caixa": {
+                "x": 45,
+                "y": 24.4,
+                "w": 25.3,
+                "h": 5.3
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 3,
+              "rotulo": "CFOP bloqueado",
+              "explicacao": "Fica cinza com \"Selecione a empresa e o cliente primeiro\" até os dois estarem escolhidos.",
+              "caixa": {
+                "x": 19.5,
+                "y": 46.7,
+                "w": 25.2,
+                "h": 7.8
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 4,
+              "rotulo": "Salvar e Permanecer",
+              "explicacao": "Grava o pedido e continua na mesma página para você conferir.",
+              "caixa": {
+                "x": 82.3,
+                "y": 10.3,
+                "w": 11.2,
+                "h": 5.3
+              },
+              "lado": "baixo"
+            }
+          ],
+          "atencao": "Empresa e Cliente não têm asterisco, mas o sistema cobra ao salvar (\"Campo obrigatório\" e \"Cliente é obrigatório\").",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/fluxo-1-vendas/02-novo-vazio.png",
+            "regra-vendas-cfop-depende-de-empresa-e-cliente",
+            "guia:scripts/dados-checklists-estagiarios.mjs#vendas"
+          ]
+        },
+        {
+          "titulo": "Escolha Cliente, Vendedor e Condição de Pagamento",
+          "texto": "Escolha o Cliente, o Vendedor e a Condição de Pagamento. Se o pedido é de uma obra, escolha também o Projeto (opcional). Com Empresa e Cliente escolhidos, o CFOP libera.",
+          "imagem": "/manuais/vendas/img/03-cabecalho.webp",
+          "alt": "Cabeçalho do pedido com Empresa, Cliente, Vendedor e Condição de Pagamento preenchidos e o CFOP liberado.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Cliente",
+              "explicacao": "O participante que compra. O estado dele decide quais CFOPs aparecem.",
+              "caixa": {
+                "x": 45,
+                "y": 24.4,
+                "w": 25.3,
+                "h": 5.3
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 2,
+              "rotulo": "Vendedor",
+              "explicacao": "Quem fez a venda; é usado nas comissões e nos indicadores.",
+              "caixa": {
+                "x": 70.6,
+                "y": 24.4,
+                "w": 25.2,
+                "h": 5.3
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 3,
+              "rotulo": "Condição de Pagamento",
+              "explicacao": "Define as parcelas do pedido (ex.: 30/60 dias). Trocar a condição refaz as parcelas.",
+              "caixa": {
+                "x": 45,
+                "y": 34.3,
+                "w": 25.3,
+                "h": 5.7
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 4,
+              "rotulo": "CFOP liberado",
+              "explicacao": "Agora o campo aceita clique: ele define a natureza fiscal da venda.",
+              "caixa": {
+                "x": 19.5,
+                "y": 46.7,
+                "w": 25.2,
+                "h": 5.3
+              },
+              "lado": "baixo"
+            }
+          ],
+          "dica": "Ao escolher o cliente pode aparecer o aviso \"Cliente sem IE informado e não marcado como não contribuinte.\": é cadastro do cliente, confira com quem cuida da Fundação.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/fluxo-1-vendas/03-cabecalho.png",
+            "guia:scripts/dados-checklists-estagiarios.mjs#vendas"
+          ]
+        },
+        {
+          "titulo": "Escolha o CFOP",
+          "texto": "Abra o CFOP. A lista já vem filtrada pelo estado do cliente: neste exemplo, só aparecem operações interestaduais (6xxx).",
+          "imagem": "/manuais/vendas/img/04-cfop.webp",
+          "alt": "Lista de CFOPs aberta no pedido, só com operações interestaduais.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Lista de CFOPs",
+              "explicacao": "Só aparecem os CFOPs coerentes com o estado do cliente; aqui, um cliente de outro estado (6xxx).",
+              "caixa": {
+                "x": 19.8,
+                "y": 52.5,
+                "w": 32.7,
+                "h": 33.9
+              },
+              "lado": "direita"
+            }
+          ],
+          "atencao": "O CFOP decide se o pedido gera parcelas e título. Na gravação de 04/11 (v1.23.2) o 5101-0 mostrou \"Nenhum CFOP deste pedido gera financeiro\", enquanto a base trata o 5101 como CFOP que gera financeiro: a conferir na tela.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/fluxo-1-vendas/03b-cfop.png",
+            "regra-vendas-cfop-depende-de-empresa-e-cliente",
+            "midia/brutos/vendas/roteiro-telas.md"
+          ]
+        },
+        {
+          "titulo": "Inclua o item e preencha Dados do Item",
+          "texto": "Em Itens do Pedido, escolha o produto. Abre o quadro Dados do Item com os campos que o tipo do material pede (aqui, Peso e Cor). Preencha e clique em Aplicar: o item entra na lista do pedido.",
+          "imagem": "/manuais/vendas/img/05-dados-do-item.webp",
+          "alt": "Quadro Dados do Item com os campos Peso e Cor e o botão Aplicar.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Peso",
+              "explicacao": "Parâmetro do item pedido pelo tipo do material.",
+              "caixa": {
+                "x": 28.6,
+                "y": 45,
+                "w": 21.6,
+                "h": 6.1
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 2,
+              "rotulo": "Cor",
+              "explicacao": "Obrigatória neste material (asterisco vermelho).",
+              "caixa": {
+                "x": 50.1,
+                "y": 45.3,
+                "w": 21,
+                "h": 5.6
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 3,
+              "rotulo": "Aplicar",
+              "explicacao": "Confirma os dados e inclui o item no pedido.",
+              "caixa": {
+                "x": 65.7,
+                "y": 59,
+                "w": 5.5,
+                "h": 5.4
+              },
+              "lado": "baixo"
+            }
+          ],
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/fluxo-1-vendas/04-item.png",
+            "guia:scripts/dados-checklists-estagiarios.mjs#vendas",
+            "guia:videos/roteiros/fluxo-1-vendas.json#11"
+          ]
+        },
+        {
+          "titulo": "Confira o item incluído",
+          "texto": "O item aparece com quantidade, valor unitário e total. Se surgir o selo \"Impostos não calculados\", leia o motivo: o pedido salva mesmo assim.",
+          "imagem": "/manuais/vendas/img/10-impostos-nao-calculados.webp",
+          "alt": "Item incluído no pedido com o selo Impostos não calculados e a lixeira do item.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Impostos não calculados",
+              "explicacao": "Aviso de que o cadastro fiscal do item está incompleto. O pedido salva mesmo assim; avise quem cuida do fiscal.",
+              "caixa": {
+                "x": 18.1,
+                "y": 43.1,
+                "w": 10.2,
+                "h": 3.2
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 2,
+              "rotulo": "Lixeira do item",
+              "explicacao": "Remove o item na hora, sem pedir confirmação.",
+              "caixa": {
+                "x": 72,
+                "y": 58.3,
+                "w": 2.7,
+                "h": 4.4
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 3,
+              "rotulo": "Parcelas do Pedido",
+              "explicacao": "Logo abaixo dos itens ficam as parcelas, geradas pela Condição de Pagamento.",
+              "caixa": {
+                "x": 17.3,
+                "y": 74,
+                "w": 10.8,
+                "h": 3.8
+              },
+              "lado": "direita"
+            }
+          ],
+          "atencao": "As lixeiras do item e da parcela apagam na hora, sem pedir confirmação.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "midia/brutos/vendas/prints/vendas_c05_02.png",
+            "guia:scripts/dados-checklists-estagiarios.mjs#vendas",
+            "guia:videos/roteiros/fluxo-1-vendas.json#15"
+          ]
+        },
+        {
+          "titulo": "Preencha as parcelas e a Conta de Fluxo de Caixa",
+          "texto": "Desça até Parcelas do Pedido. Em cada parcela, escolha o Meio Pagamento e o Portador. Depois, no Resumo do Pedido à direita, confira se as parcelas fecham com o total e escolha a Conta de Fluxo de Caixa.",
+          "imagem": "/manuais/vendas/img/06-parcelas.webp",
+          "alt": "Parcelas do pedido com Meio Pagamento e Portador e o Resumo do Pedido com a Conta de Fluxo de Caixa.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Meio Pagamento",
+              "explicacao": "Como o cliente vai pagar a parcela (depósito, boleto…).",
+              "caixa": {
+                "x": 45.8,
+                "y": 30.7,
+                "w": 7.8,
+                "h": 4.9
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 2,
+              "rotulo": "Portador",
+              "explicacao": "Onde o dinheiro vai entrar (ex.: Carteira, uma conta).",
+              "caixa": {
+                "x": 53.8,
+                "y": 30.4,
+                "w": 8,
+                "h": 5.4
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 3,
+              "rotulo": "Parcelas conferem com o total",
+              "explicacao": "Selo verde: a soma das parcelas é igual ao total do pedido.",
+              "caixa": {
+                "x": 76.6,
+                "y": 70,
+                "w": 18,
+                "h": 3.5
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 4,
+              "rotulo": "Conta de Fluxo de Caixa",
+              "explicacao": "Classifica a venda no plano de contas. É obrigatória e pode vir do cadastro do cliente.",
+              "caixa": {
+                "x": 76.6,
+                "y": 79.4,
+                "w": 18,
+                "h": 5
+              },
+              "lado": "esquerda"
+            }
+          ],
+          "zoom": {
+            "x": 43.4,
+            "y": 27.1,
+            "w": 53.5,
+            "h": 61.8
+          },
+          "dica": "Para refazer as parcelas, troque a Condição de Pagamento. O botão Recalcular Parcelas só redivide os valores: não cria datas novas.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/fluxo-1-vendas/05-parcelas.png",
+            "regra-vendas-parcelas-recalcular-e-recalcular-parcelas",
+            "regra-vendas-cfop-depende-de-empresa-e-cliente"
+          ]
+        },
+        {
+          "titulo": "Clique em Salvar e Permanecer",
+          "texto": "O pedido ganha um número e a página passa a se chamar Editar Pedido de Venda. Na primeira gravação a mensagem é \"Pedido PV-xxxxxx criado\"; nesta captura, de uma gravação seguinte, aparece \"atualizado\".",
+          "imagem": "/manuais/vendas/img/07-salvo.webp",
+          "alt": "Pedido salvo: mensagem de confirmação no canto e título Editar Pedido de Venda.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Mensagem de confirmação",
+              "explicacao": "Aparece no canto e confirma a gravação com o número do pedido.",
+              "caixa": {
+                "x": 76.1,
+                "y": 2.5,
+                "w": 22.8,
+                "h": 7.8
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 2,
+              "rotulo": "Editar Pedido de Venda",
+              "explicacao": "Depois de salvo, a página troca de nome: você está editando um pedido que já existe.",
+              "caixa": {
+                "x": 16.6,
+                "y": 10.6,
+                "w": 17.8,
+                "h": 4.7
+              },
+              "lado": "direita"
+            }
+          ],
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/fluxo-1-vendas/06-salvo-b.png",
+            "guia:scripts/dados-checklists-estagiarios.mjs#vendas"
+          ]
+        },
+        {
+          "titulo": "Confira o pedido na lista",
+          "texto": "Volte à lista Pedidos de Venda. O pedido que você salvou aparece no alto: Em aberto, Sem títulos e sem nota fiscal. Enquanto estiver assim, você pode ajustá-lo pelo lápis da coluna Ações.",
+          "imagem": "/manuais/vendas/img/08-lista-pedido-novo.webp",
+          "alt": "Lista de pedidos com o pedido recém-criado Em aberto e Sem títulos.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Pedido recém-criado",
+              "explicacao": "Em aberto, Sem títulos e sem nota: ainda não foi faturado e pode ser alterado pelo lápis.",
+              "caixa": {
+                "x": 18.8,
+                "y": 65.6,
+                "w": 78.4,
+                "h": 6.1
+              },
+              "lado": "esquerda"
+            }
+          ],
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/fluxo-1-vendas/07-lista-novo.png",
+            "guia:scripts/dados-checklists-estagiarios.mjs#vendas"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "indicadores",
+      "titulo": "Lendo os indicadores de vendas",
+      "nivel": "basico",
+      "objetivo": "Saber onde ver o total vendido, a carteira de pedidos, as metas e as comissões.",
+      "onde": "Vendas › Dashboard Vendas",
+      "passos": [
+        {
+          "titulo": "Escolha o período no Dashboard Vendas",
+          "texto": "Escolha Hoje, Esta semana, Este mês ou Este ano e clique em Aplicar. Os cartões Total em vendas, Ticket médio, Em aberto e Pendentes de faturamento são recalculados.",
+          "atencao": "O bloco \"Crescimento vs. período anterior\" não segue o filtro de datas.",
+          "evidencia": "base",
+          "fontes": [
+            "guia:scripts/dados-checklists-estagiarios.mjs#vendas"
+          ]
+        },
+        {
+          "titulo": "Leia a Carteira de Pedidos",
+          "texto": "Em Vendas › Demonstrativos › Carteira de Pedidos, leia A faturar, A expedir, Em carga, Expedido, Entregue e o aging por dias.",
+          "evidencia": "base",
+          "fontes": [
+            "guia:scripts/dados-checklists-estagiarios.mjs#vendas"
+          ]
+        },
+        {
+          "titulo": "Consulte metas e comissões",
+          "texto": "Em Vendas › Metas de Vendas, veja o % da meta, a projeção e os cenários. Em Vendas › Controle de Comissão, o Simulador calcula a comissão sem gravar nada.",
+          "evidencia": "base",
+          "fontes": [
+            "guia:scripts/dados-checklists-estagiarios.mjs#vendas"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "depois-do-pedido",
+      "titulo": "Depois do pedido: faturar, gerar títulos, encerrar e cancelar",
+      "nivel": "avancado",
+      "objetivo": "Saber o que cada opção do menu ⋯ faz, em que status ela aparece e a ordem certa para desfazer.",
+      "onde": "Vendas › Pedidos de Venda › menu ⋯ do pedido",
+      "passos": [
+        {
+          "titulo": "Abra o menu ⋯ de um pedido Em aberto",
+          "texto": "Clique nos três pontos (⋯) da linha de um pedido Em aberto. O menu reúne as ações que levam o pedido adiante. Editar não está aqui: editar é pelo lápis.",
+          "imagem": "/manuais/vendas/img/11-menu-do-pedido.webp",
+          "alt": "Menu de ações do pedido aberto com Baixar PDF, Faturar, Gerar Títulos, Encerrar, Cancelar e Excluir.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Faturar",
+              "explicacao": "Abre uma nota fiscal (NF-e) já ligada ao pedido.",
+              "caixa": {
+                "x": 82.2,
+                "y": 52.5,
+                "w": 14.1,
+                "h": 4.2
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 2,
+              "rotulo": "Gerar Títulos",
+              "explicacao": "Cria no financeiro um título por parcela, sem passar pela nota.",
+              "caixa": {
+                "x": 82.2,
+                "y": 56.1,
+                "w": 14.1,
+                "h": 4.2
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 3,
+              "rotulo": "Encerrar",
+              "explicacao": "Conclui o pedido sem faturar o saldo. Não volta e não cancela depois.",
+              "caixa": {
+                "x": 82.2,
+                "y": 60.6,
+                "w": 14.1,
+                "h": 4.2
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 4,
+              "rotulo": "Cancelar",
+              "explicacao": "Cancela o pedido; com nota ou títulos, desfaça antes nesta ordem: nota, títulos, pedido.",
+              "caixa": {
+                "x": 82.2,
+                "y": 64.2,
+                "w": 14.1,
+                "h": 4.2
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 5,
+              "rotulo": "Títulos Gerados",
+              "explicacao": "Este outro pedido já tem títulos: a nota não gera de novo.",
+              "caixa": {
+                "x": 77.5,
+                "y": 78.9,
+                "w": 5.5,
+                "h": 4.2
+              },
+              "lado": "baixo"
+            }
+          ],
+          "atencao": "Escolha com o cliente um caminho para o contas a receber: Gerar Títulos pelo pedido ou faturar e deixar a nota gerar. Nunca os dois no mesmo pedido.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/compra-em-nome-do-cliente/16-menu-encerrar.png",
+            "regra-vendas-editar-pedido-somente-em-aberto",
+            "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+          ],
+          "zoom": {
+            "x": 68.8,
+            "y": 46.5,
+            "w": 31.3,
+            "h": 38.5
+          }
+        },
+        {
+          "titulo": "Faturar abre uma NF-e ligada ao pedido",
+          "texto": "Faturar abre a Nova NF-e — Venda de Mercadoria com empresa, cliente, vendedor, CFOP, condição e parcelas do pedido. O diálogo Selecionar Itens para Importar abre sozinho. Ao salvar a nota, o pedido passa a Faturado.",
+          "atencao": "O pedido vira Faturado ao salvar a nota, mesmo com a nota Em Aberto. Nota só é transmitida com o responsável fiscal.",
+          "evidencia": "base",
+          "fontes": [
+            "regra-faturamento-faturar-abre-nova-nfe-ligada-ao-pedido",
+            "regra-vendas-pedido-fica-faturado-ao-salvar-a-nota"
+          ]
+        },
+        {
+          "titulo": "Gerar Títulos cria um título por parcela",
+          "texto": "Gerar Títulos fica habilitado em pedido Em aberto ou Entregue que ainda não tem títulos. Em pedido Faturado ou Lib. Expedição aparece \"Pedido já faturado\", desabilitado.",
+          "atencao": "Fontes divergem: a gestora diz que só em pedido Em aberto; o teste do fluxo completo viu a opção voltar depois de Entregue. A conferir na tela.",
+          "evidencia": "a-conferir-na-tela",
+          "fontes": [
+            "regra-vendas-gerar-titulos-quando-esta-habilitado",
+            "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+          ]
+        },
+        {
+          "titulo": "Desfaça na ordem: nota, títulos, pedido",
+          "texto": "Para cancelar um pedido faturado, cancele a nota, depois exclua ou estorne os títulos e só então cancele o pedido, com motivo de 10 caracteres ou mais. Encerrado não volta e não cancela.",
+          "evidencia": "base",
+          "fontes": [
+            "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+          ]
+        },
+        {
+          "titulo": "Libere para expedição o pedido faturado",
+          "texto": "Liberar para Expedição aparece no menu ⋯ do pedido Faturado. Em pedido Lib. Expedição vira Reverter Liberação. Só depois disso o pedido entra na fila de carga.",
+          "atencao": "Fontes divergem: a gestora diz pedido Faturado ou Encerrado; o teste do fluxo completo diz só depois de faturado. A conferir com um pedido Encerrado.",
+          "evidencia": "a-conferir-na-tela",
+          "fontes": [
+            "regra-vendas-liberar-para-expedicao-so-em-pedido-faturado",
+            "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+          ]
+        },
+        {
+          "titulo": "Acompanhe as aprovações de desconto",
+          "texto": "Vendas › Aprovações lista só solicitações de comissão e de desconto (DOCUMENTO, SOLICITANTE, VALOR, TIPO, ESPERA). Pedido sem desconto não gera aprovação, e quem solicita não vê a própria solicitação.",
+          "evidencia": "base",
+          "fontes": [
+            "regra-vendas-aprovacoes-cobrem-comissao-e-desconto"
+          ]
+        }
+      ]
+    }
+  ],
+  "consultor": {
+    "implantacao": [
+      "Fundação concluída: cliente, vendedor, produtos com unidade válida, condições e meios de pagamento, portador, plano de contas e CFOPs de venda revisados com o contador (checklist de implantação de Vendas, pré-requisitos).",
+      "Decisão registrada em ata: quem gera o contas a receber, o pedido (Gerar Títulos) ou a nota. Se o pedido gerou os títulos, a nota não gera de novo (checklist de implantação de Vendas).",
+      "Ambiente fiscal em homologação e almoxarifado central ativo em Estoque › Locais: sem local de estoque a nota não finaliza (checklist de implantação de Vendas).",
+      "Dois usuários de teste: o vendedor e um aprovador de desconto diferente dele (checklist de implantação de Vendas).",
+      "Ao final: um pedido salvo com parcelas, um desconto aprovado por outro usuário, um pedido com títulos e outro faturado, e um cancelamento feito na ordem nota → títulos → pedido (resultado esperado do checklist)."
+    ],
+    "perguntasDoCliente": [
+      {
+        "pergunta": "Por que não consigo editar este pedido?",
+        "resposta": "Só o pedido Em aberto é editável, pelo lápis. Faturado ou Entregue só tem Visualizar. Pedido com títulos só aceita mudar observações e vendedor.",
+        "fontes": [
+          "regra-vendas-editar-pedido-somente-em-aberto",
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+        ]
+      },
+      {
+        "pergunta": "O pedido está Faturado, então a nota foi autorizada?",
+        "resposta": "Não necessariamente. O pedido vira Faturado assim que a nota é salva, mesmo Em Aberto. Confira o status da nota em Faturamento › Notas Fiscais.",
+        "fontes": [
+          "regra-vendas-pedido-fica-faturado-ao-salvar-a-nota"
+        ]
+      },
+      {
+        "pergunta": "Por que o CFOP não abre?",
+        "resposta": "Ele só libera depois de escolher a Empresa e o Cliente, e mostra apenas os CFOPs coerentes com o estado do cliente.",
+        "fontes": [
+          "regra-vendas-cfop-depende-de-empresa-e-cliente"
+        ]
+      },
+      {
+        "pergunta": "Mudei a condição de pagamento. Preciso refazer as parcelas?",
+        "resposta": "Não: trocar a Condição de Pagamento regenera as parcelas. O botão Recalcular redivide por igual mantendo as datas; Recalcular Parcelas, no Resumo, só redivide os valores.",
+        "fontes": [
+          "regra-vendas-parcelas-recalcular-e-recalcular-parcelas"
+        ]
+      }
+    ],
+    "errosComuns": [
+      {
+        "titulo": "Títulos pelo pedido e nota no mesmo pedido.",
+        "texto": "Escolha um caminho com o cliente (pedido ou nota) e mantenha.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+        ]
+      },
+      {
+        "titulo": "Encerrar sem querer.",
+        "texto": "Encerrado não volta e não cancela: use só quando a venda está fechada sem nota.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+        ]
+      },
+      {
+        "titulo": "Cancelar fora de ordem.",
+        "texto": "O sistema recusa cancelar pedido faturado ou com títulos. Ordem: nota → títulos → pedido (motivo com 10 caracteres ou mais).",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+        ]
+      },
+      {
+        "titulo": "Confundir pedidos de mesmo número.",
+        "texto": "Há pedidos com o mesmo número em empresas ou séries diferentes e pedidos desdobrados (ex.: PV-000395/2): confira cliente e valor.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+        ]
+      },
+      {
+        "titulo": "% Comissão que não aparece.",
+        "texto": "Hoje o campo \"% Comissão\" do vendedor só aparece no participante quando o cliente tem o módulo CRM; sem CRM, use regra por vendedor.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+        ]
+      }
+    ]
+  },
+  "fontes": [
+    "guia:scripts/dados-checklists-estagiarios.mjs#vendas",
+    "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas",
+    "guia:videos/roteiros/fluxo-1-vendas.json",
+    "guia:db/migrations/002_modulos_iniciais.sql#vendas",
+    "funcional-vendas-pedidos-de-venda",
+    "regra-vendas-cfop-depende-de-empresa-e-cliente",
+    "regra-vendas-editar-pedido-somente-em-aberto",
+    "regra-vendas-pedido-fica-faturado-ao-salvar-a-nota",
+    "regra-vendas-parcelas-recalcular-e-recalcular-parcelas",
+    "regra-vendas-gerar-titulos-quando-esta-habilitado",
+    "regra-vendas-liberar-para-expedicao-so-em-pedido-faturado",
+    "regra-vendas-aprovacoes-cobrem-comissao-e-desconto",
+    "regra-vendas-gerar-pedido-da-oportunidade-exige-cfop-sem-financeiro",
+    "regra-faturamento-faturar-abre-nova-nfe-ligada-ao-pedido",
+    "regra-faturamento-finalizar-nf-gera-os-titulos",
+    "oficial-int-c-implantacao#011",
+    "videos/public/telas/fluxo-1-vendas/*.png",
+    "videos/public/telas/compra-em-nome-do-cliente/16-menu-encerrar.png",
+    "midia/brutos/vendas/prints/vendas_c05_02.png",
+    "midia/brutos/vendas/prints/vendas_c08_02.png",
+    "midia/brutos/vendas/roteiro-telas.md"
+  ],
+  "pendencias": [
+    "CAPTURA: Vendas › Dashboard Vendas — cartões com filtro de período aplicado.",
+    "CAPTURA: Vendas › Demonstrativos › Carteira de Pedidos — faixas A faturar, A expedir, Em carga, Expedido, Entregue e aging.",
+    "CAPTURA: Vendas › Metas de Vendas e Vendas › Controle de Comissão › Simulador.",
+    "CAPTURA: Vendas › Aprovações — lista com uma solicitação de desconto (sem clicar em Aprovar).",
+    "CAPTURA: Vendas › Pedidos de Venda › ⋯ › Faturar — Nova NF-e com o diálogo Selecionar Itens para Importar (sem transmitir).",
+    "CAPTURA: menu ⋯ de pedido Faturado (Liberar para Expedição, \"Pedido já faturado\") e de pedido Lib. Expedição (Reverter Liberação).",
+    "CAPTURA: toast \"Pedido PV-xxxxxx criado\" da primeira gravação (a captura usada mostra \"atualizado\"; a de 04/11 tem um aviso fiscal laranja com CPF/CNPJ a cobrir).",
+    "DIVERGÊNCIA: CFOP 5101-0 sem financeiro na tela (gravação de 04/11, v1.23.2) × base que trata 5101 como CFOP que gera financeiro.",
+    "DIVERGÊNCIA: quando Gerar Títulos e Liberar para Expedição aparecem (gestora × teste do fluxo completo).",
+    "Capturas de duas versões (1.22.13 e 1.23.2): conferir na tela se os rótulos seguem iguais na versão atual.",
+    "Valores monetários de pedidos de teste mantidos dentro do formulário (parcelas e resumo); valores de lista foram borrados."
+  ]
+}

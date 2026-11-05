@@ -1,0 +1,181 @@
+{
+  "fonte": "midia/brutos/vendas/vendas_bruto_v01.mp4",
+  "observacao": "Tempos em segundos do arquivo bruto (1920x1200). Recorte crop=1920:1080:0:80 antes dos borrões; caixas em coordenadas do quadro já recortado (x, y, w, h). Tempos conferidos em quadros extraídos com ffmpeg em 05/11/2026 (o roteiro-telas tem ±3 s: o clique em + Novo Pedido está em 57 s, não 52 s). Trechos com CFOP (165–200 s), dropdowns com nomes/CPFs (60–150 s), o item com valor 0,00 (237–250 s) e a lista 'Todos' (340 s em diante) ficaram de fora.",
+  "caixas": {
+    "A_B_cabecalho": {
+      "x": 1395,
+      "y": 0,
+      "w": 525,
+      "h": 72,
+      "porque": "união de A (nome, cargo e avatar do usuário: roteiro/manifesto x1640–1920 y0–60; quadro real x1615–1890 y25–62) e B (selo do tenant: manifesto x1480–1650 y25–60; quadro real x1400–1545 y30–58)"
+    },
+    "status_chrome": {
+      "x": 0,
+      "y": 1040,
+      "w": 660,
+      "h": 40,
+      "porque": "barra de status do Chrome com a URL do staging (vista em 326 s, x0–320 y1055–1080)"
+    },
+    "F_vendedor": {
+      "x": 1340,
+      "y": 316,
+      "w": 580,
+      "h": 64,
+      "porque": "campo Vendedor com nome e CPF; união do roteiro (1340,316,525,56) e manifesto (x1440–1920 y355–380); quadro real x1349–1849 y325–365"
+    },
+    "G_empresa": {
+      "x": 318,
+      "y": 316,
+      "w": 512,
+      "h": 64,
+      "porque": "CNPJ da empresa no campo Empresa; união do roteiro (318,316,505,56) e manifesto (x340–830 y355–380); quadro real x317–817 y325–365"
+    },
+    "toast_fiscal": {
+      "x": 1520,
+      "y": 15,
+      "w": 395,
+      "h": 125,
+      "porque": "toast laranja de aviso fiscal (CPF/CNPJ do participante) a partir de 313,43 s; quadro real x1535–1900 y28–125"
+    },
+    "cfop_valor": {
+      "x": 318,
+      "y": 522,
+      "w": 505,
+      "h": 48,
+      "porque": "valor do campo CFOP (5102…) que aparece depois de escolher o produto; o vídeo não mostra comportamento de CFOP (divergência 5101 em aberto)"
+    },
+    "cfop_borda": {
+      "x": 318,
+      "y": 522,
+      "w": 40,
+      "h": 48,
+      "porque": "pedaço do valor do CFOP à esquerda do dropdown de produto aberto (o resto do campo fica sob o dropdown)"
+    }
+  },
+  "cortes": [
+    {
+      "id": "c1-lista",
+      "in": 53.0,
+      "out": 57.8,
+      "borrar": [
+        "A_B_cabecalho",
+        "status_chrome"
+      ],
+      "porque": "lista Pedidos de Venda (filtro Em Aberto, só PV-000012) e clique em + Novo Pedido (57,0 s; tela muda em 57,27 s)"
+    },
+    {
+      "id": "c2-cabecalho",
+      "in": 155.5,
+      "out": 161.0,
+      "borrar": [
+        "A_B_cabecalho",
+        "status_chrome",
+        "F_vendedor",
+        "G_empresa"
+      ],
+      "porque": "cabeçalho preenchido; escolha de 30/60 Dias em Condição de Pagamento (158,95 s)"
+    },
+    {
+      "id": "c3-produto",
+      "in": 200.8,
+      "out": 204.3,
+      "borrar": [
+        "A_B_cabecalho",
+        "status_chrome",
+        "F_vendedor",
+        "G_empresa",
+        {
+          "caixa": "cfop_valor",
+          "desde": 1.7
+        },
+        {
+          "caixa": "cfop_borda",
+          "ate": 1.7
+        }
+      ],
+      "porque": "busca de produto e escolha de AMORTECEDOR (202,5 s); abre Dados do Item (203,1 s)"
+    },
+    {
+      "id": "c4-dados-item",
+      "in": 212.8,
+      "out": 216.3,
+      "borrar": [
+        "A_B_cabecalho",
+        "status_chrome",
+        "F_vendedor",
+        "G_empresa",
+        {
+          "caixa": "cfop_valor",
+          "desde": 2.3
+        }
+      ],
+      "porque": "painel Dados do Item e clique em Aplicar (fecha em 215,2 s)"
+    },
+    {
+      "id": "c5-item",
+      "in": 253.0,
+      "out": 257.5,
+      "borrar": [
+        "A_B_cabecalho",
+        "status_chrome"
+      ],
+      "porque": "só o resultado: item com qtd 10 × 100,00 = R$ 1.000,00 e Resumo do Pedido (cabeçalho já rolado para fora)"
+    },
+    {
+      "id": "c6-meio-pagamento",
+      "in": 272.5,
+      "out": 276.8,
+      "borrar": [
+        "A_B_cabecalho",
+        "status_chrome"
+      ],
+      "porque": "Parcelas do Pedido geradas pela condição 30/60 Dias; escolha de Boleto Bancário em Meio Pagamento (274,6 s)"
+    },
+    {
+      "id": "c7-fluxo-caixa",
+      "in": 300.5,
+      "out": 304.3,
+      "borrar": [
+        "A_B_cabecalho",
+        "status_chrome"
+      ],
+      "porque": "Conta de Fluxo de Caixa (obrigatória) 1.1.1 escolhida em 302,97 s"
+    },
+    {
+      "id": "c8a-salvar",
+      "in": 310.0,
+      "out": 313.0,
+      "borrar": [
+        "A_B_cabecalho",
+        "status_chrome",
+        {
+          "caixa": "toast_fiscal",
+          "desde": 2.65
+        }
+      ],
+      "porque": "clique em Salvar e Permanecer (~312,1 s; o botão vira 'Carregando...' em 312,63 s). Aparece só até ~312,5 s (a cena seguinte cobre o resto); o toast laranja entra em ~312,8 s e já está borrado a partir de 2,65 s"
+    },
+    {
+      "id": "c8b-criado",
+      "in": 313.5,
+      "out": 317.3,
+      "borrar": [
+        "A_B_cabecalho",
+        "status_chrome",
+        "toast_fiscal"
+      ],
+      "porque": "tela Editar Pedido de Venda já carregada com o toast verde 'Pedido PV-000013 criado'; o toast laranja fiscal fica borrado o trecho todo (corte seco depois do clique tira o carregamento de 312,6–313,5 s)"
+    },
+    {
+      "id": "c9-lista-final",
+      "in": 327.5,
+      "out": 336.4,
+      "borrar": [
+        "A_B_cabecalho",
+        "status_chrome",
+        "toast_fiscal"
+      ],
+      "porque": "lista com PV-000013 Em aberto / Sem títulos e cursor no lápis Editar pedido (~335 s); toast laranja borrado o trecho todo"
+    }
+  ]
+}

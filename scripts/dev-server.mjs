@@ -16,6 +16,8 @@ const HOST = (process.env.HOST && String(process.env.HOST).trim()) || '127.0.0.1
 const TIPOS = {
   '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8',
   '.png': 'image/png', '.svg': 'image/svg+xml', '.pdf': 'application/pdf', '.ico': 'image/x-icon', '.json': 'application/json',
+  // guias visuais (webp) e vídeos de fluxo (mp4 + pôster jpg + legendas vtt): sem isto saíam como octet-stream no local
+  '.webp': 'image/webp', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.mp4': 'video/mp4', '.vtt': 'text/vtt; charset=utf-8',
 };
 
 const { default: middleware } = await import(pathToFileURL(path.join(RAIZ, 'middleware.js')));

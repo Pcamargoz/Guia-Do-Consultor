@@ -135,13 +135,61 @@
   const antes = (el) => (primeiroAcervo ? primeiroAcervo.before(el) : sidebar.append(el));
   const tituloFerramentas = tituloSecao('Ferramentas');
   tituloFerramentas.dataset.grupoNav = 'ferramentas';
-  [navs.inicio, navs.inicial, navs.consultor, tituloFerramentas, navs.pacotes, navs.checklist, navs.videos,
+  const tituloAprender = tituloSecao('Aprender');
+  tituloAprender.dataset.grupoNav = 'aprender';
+  [tituloAprender, navs.inicio, navs.inicial, navs.consultor, tituloFerramentas, navs.pacotes, navs.checklist, navs.videos,
     navs.apostila, navs.admin].forEach(antes);
   const tituloAcervo = tituloSecao('Acervo');
   tituloAcervo.dataset.acervo = '';
   antes(tituloAcervo);
   antes(navs.acervo);
   navs.acervo.dataset.acervo = '';
+
+  /* ---------- Shell v2.2 (doc 12 P6): menu lateral único ----------
+     Desktop: o menu lateral é a navegação; a barra do topo mostra onde a pessoa está (área › módulo) + ações + conta.
+     As abas continuam no DOM (papéis tab/tabpanel e atalhos de teclado), mas ficam escondidas por plataforma-shell.css.
+     Celular (≤ 900 px): barra inferior com Início, Guia Inicial, Consultor e Menu; o menu lateral vira gaveta. */
+  const contexto = document.createElement('div');
+  contexto.className = 'sh-contexto';
+  contexto.innerHTML = '<button type="button" class="sh-menu-btn" aria-controls="sh-gaveta" aria-expanded="false" aria-label="Abrir menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg></button><nav class="sh-trilha" aria-label="Você está em"><ol></ol></nav>';
+  topo.prepend(contexto);
+  const trilhaTopo = contexto.querySelector('ol');
+  sidebar.id = 'sh-gaveta';
+  const veu = document.createElement('div');
+  veu.className = 'sh-veu';
+  veu.hidden = true;
+  document.body.append(veu);
+  const baixo = document.createElement('nav');
+  baixo.className = 'sh-baixo';
+  baixo.setAttribute('aria-label', 'Navegação principal');
+  const itemBaixo = (id, rotulo, ic) => `<a href="#${id}" class="sh-baixo__item" data-aba-baixo="${id}">${ic}<span>${rotulo}</span></a>`;
+  baixo.innerHTML = itemBaixo('inicio', 'Início', icone.inicio) + itemBaixo('inicial', 'Guia Inicial', icone.inicial)
+    + itemBaixo('consultor', 'Consultor', icone.consultor)
+    + '<button type="button" class="sh-baixo__item" data-sh-mais aria-controls="sh-gaveta" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg><span>Menu</span></button>';
+  document.body.append(baixo);
+  const gatilhos = [contexto.querySelector('.sh-menu-btn'), baixo.querySelector('[data-sh-mais]')];
+  function gaveta(abrir) {
+    document.body.toggleAttribute('data-sh-gaveta', abrir);
+    veu.hidden = !abrir;
+    gatilhos.forEach((g) => g.setAttribute('aria-expanded', String(abrir)));
+    if (abrir) (sidebar.querySelector('.nav-item:not([hidden])') || sidebar).focus?.();
+  }
+  gatilhos.forEach((g) => g.addEventListener('click', () => gaveta(!document.body.hasAttribute('data-sh-gaveta'))));
+  veu.addEventListener('click', () => gaveta(false));
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && document.body.hasAttribute('data-sh-gaveta')) { gaveta(false); gatilhos[0].focus(); } });
+  baixo.addEventListener('click', (e) => {
+    const a = e.target.closest('[data-aba-baixo]');
+    if (a) { e.preventDefault(); irPara(a.dataset.abaBaixo); }
+  });
+  function trilhaDoTopo(rota, aba, nomeModulo) {
+    const li = (texto, href) => { const l = document.createElement('li'); if (href) { const a = document.createElement('a'); a.href = href; a.textContent = texto; l.append(a); } else { l.textContent = texto; l.setAttribute('aria-current', 'page'); } return l; };
+    const rotulo = (ABAS.find((a) => a.id === aba) || ABAS[0]).rotulo;
+    const itens = [];
+    if (rota.modulo) itens.push(li(rotulo, `#${aba}`), li(nomeModulo || rota.modulo));
+    else itens.push(li(rotulo));
+    trilhaTopo.replaceChildren(...itens);
+    baixo.querySelectorAll('[data-aba-baixo]').forEach((b) => { if (b.dataset.abaBaixo === aba) b.setAttribute('aria-current', 'page'); else b.removeAttribute('aria-current'); });
+  }
 
   /* ---------- Visibilidade por perfil (só apresentação) ----------
      Depende de .nav-item[hidden]/.nav-section[hidden]/.ab-aba[hidden] { display:none !important }
@@ -154,6 +202,8 @@
       const ok = permitida(a.id);
       topo.querySelector(`[data-aba="${a.id}"]`).hidden = !ok;
       if (navs[a.id]) navs[a.id].hidden = !ok;
+      const b = baixo.querySelector(`[data-aba-baixo="${a.id}"]`);
+      if (b) b.hidden = !ok;
     }
     // Título do grupo só se sobrar ao menos um item visível no grupo.
     tituloFerramentas.hidden = !AREAS_FERRAMENTAS.some(permitida);
@@ -188,16 +238,37 @@
     }
     if (rota.modulo) {
       UI.renderModulo(alvo, null);
-      const d = await P.carregarModulo(rota.modulo, area);
-      if (valida()) UI.renderModulo(alvo, d, { onTentar: tentar });
+      // Guia visual ilustrado (contrato-guia-visual.md): opcional; 404 (módulo sem guia ou oculto) = sem guia.
+      const [d, guia, r] = await Promise.all([P.carregarModulo(rota.modulo, area), P.carregarGuia(rota.modulo), carregarResumo()]);
+      // Checklist de aprendizado: carrega o que a pessoa já marcou (por chave encontrada nos blocos do módulo).
+      const chaves = new Set();
+      JSON.stringify(d && !d.erro ? d.secoes || [] : [], (k, v) => { if (v && v.tipo === 'checklist-aprendizado' && typeof v.chave === 'string') chaves.add(v.chave); return v; });
+      const progresso = Object.fromEntries(await Promise.all([...chaves].map(async (c) => [c, await P.progresso(c)])));
+      if (valida()) UI.renderModulo(alvo, d, { onTentar: tentar, guia, progresso, modulos: (r && !r.erro && r.modulos) || [] });
       return;
     }
     UI.renderJornada(alvo, { jornada: area, modulos: null });
-    const r = await carregarResumo(forcar);
+    const [r, pcts] = await Promise.all([carregarResumo(forcar), area === 'inicial' ? P.progressoResumo() : {}]);
     if (!valida()) return;
+    const progresso = Object.fromEntries(Object.entries(pcts).filter(([c]) => c.startsWith('inicial:')).map(([c, p]) => [c.slice(8), p / 100]));
     if (r.erro) UI.renderJornada(alvo, { jornada: area, erro: r.erro, onTentar: tentar });
-    else UI.renderJornada(alvo, { jornada: area, modulos: r.modulos || [] });
+    else UI.renderJornada(alvo, { jornada: area, modulos: r.modulos || [], progresso });
   }
+
+  // Salva o checklist de aprendizado ao marcar/desmarcar (agrupa cliques rápidos por 500 ms).
+  const pendentes = new Map();
+  document.addEventListener('plataforma:checklist', (e) => {
+    const { chave, feitos } = e.detail || {};
+    const fs = e.target && e.target.closest ? e.target.closest('fieldset') : null;
+    const total = fs ? fs.querySelectorAll('input[type="checkbox"]').length : 0;
+    if (!chave) return;
+    clearTimeout(pendentes.get(chave));
+    pendentes.set(chave, setTimeout(async () => {
+      pendentes.delete(chave);
+      const res = await P.salvarProgresso(chave, feitos, total);
+      if (res && res.erro) console.warn('[guia-abas] progresso não salvo:', res.erro.mensagem);
+    }, 500));
+  });
 
   /* ---------- Troca de abas ---------- */
   let atual = null;
@@ -218,6 +289,19 @@
     fila.scrollLeft += (a.left + a.width / 2) - (f.left + f.width / 2);
   }
   addEventListener('resize', centralizarAba);
+
+  // Título da aba do navegador por área (doc 12 P5); na página de módulo, o nome do módulo vem do resumo já em cache.
+  function titulo(rota, aba, chave) {
+    const rotulo = (ABAS.find((a) => a.id === aba) || ABAS[0]).rotulo;
+    document.title = `${rotulo} — Faktory Flow`;
+    trilhaDoTopo(rota, aba);
+    gaveta(false);
+    if (!rota.modulo) return;
+    carregarResumo().then((r) => {
+      const m = r && !r.erro && (r.modulos || []).find((x) => x.id === rota.modulo);
+      if (m && chaveAtual === chave) { document.title = `${m.titulo} · ${rotulo} — Faktory Flow`; trilhaDoTopo(rota, aba, m.titulo); }
+    });
+  }
 
   function mostrar(rota) {
     const aba = paineis[rota.area] ? rota.area : 'inicio';
@@ -244,6 +328,12 @@
     topo.querySelectorAll('[data-so-pacotes]').forEach((el) => { el.hidden = aba !== 'pacotes'; });
     // PDF da apostila: só no Acervo e na Apostila, e só se a apostila não estiver em standby para o perfil.
     topo.querySelectorAll('[data-so-guia]').forEach((el) => { el.hidden = !(['acervo', 'apostila'].includes(aba) && permitida('apostila')); });
+    // R-A91 (doc 12 P3): as seções do guia antigo só aparecem no menu dentro do Acervo; fora dele, fica só o item "Acervo".
+    const verAcervo = permitida('acervo');
+    sidebar.querySelectorAll('[data-acervo]').forEach((el) => {
+      el.hidden = !verAcervo || (el !== navs.acervo && el !== tituloAcervo && aba !== 'acervo');
+    });
+    titulo(rota, aba, chave);
     sidebar.querySelectorAll('.nav-item').forEach((n) => {
       if (n.dataset.abaNav) n.classList.toggle('active', n.dataset.abaNav === aba && aba !== 'acervo');
       else if (aba !== 'acervo') n.classList.remove('active');
@@ -282,6 +372,7 @@
   sidebar.addEventListener('click', (e) => {
     const item = e.target.closest('.nav-item');
     if (!item) return;
+    gaveta(false);
     if (item.dataset.abaNav) { e.preventDefault(); irPara(item.dataset.abaNav); return; }
     if (atual !== 'acervo') {
       mostrar({ area: 'acervo' }); // já visível para o scrollToSection do item, que roda em seguida

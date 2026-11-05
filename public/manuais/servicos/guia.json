@@ -1,0 +1,856 @@
+{
+  "modulo": "servicos",
+  "titulo": "Serviços e Instalação — guia visual",
+  "resumo": "O que acontece na obra do cliente depois da venda, na sequência Medição → Instalação → Vistoria → Assistência técnica, e quais passagens dependem de um botão.",
+  "versaoSistema": "1.22.13 (capturas do ambiente de teste, 19–20/10/2026)",
+  "atualizadoEm": "2026-11-05",
+  "status": "rascunho",
+  "conceitos": [
+    {
+      "titulo": "Serviços de campo",
+      "icone": "servicos",
+      "texto": "O módulo controla as atividades fora da fábrica: medição em obra, instalação, vistoria e assistência técnica.",
+      "fontes": [
+        "db/migrations/002_modulos_iniciais.sql#servicos"
+      ]
+    },
+    {
+      "titulo": "A medição nasce do pedido",
+      "icone": "regua",
+      "texto": "A nova medição começa escolhendo um pedido de venda: cliente e projeto vêm do pedido. Empresa e Técnico Responsável você preenche. Também existe a Medição avulsa (sem pedido).",
+      "fontes": [
+        "regra-servicos-medicao-nasce-do-pedido",
+        "scripts/dados-checklists-estagiarios.mjs#servicos"
+      ]
+    },
+    {
+      "titulo": "As passagens são por botão",
+      "icone": "seta",
+      "texto": "A medição aprovada não cria a instalação sozinha: use Gerar Instalação. A assistência vem do botão Gerar Assistência Técnica da vistoria. Só a vistoria pode nascer sozinha, se o parâmetro estiver ligado.",
+      "fontes": [
+        "regra-servicos-passagens-por-botao-e-ordem-dos-aceites",
+        "videos/roteiros/consultor-02-servicos.json#06"
+      ]
+    },
+    {
+      "titulo": "Quem confere não é quem mediu",
+      "icone": "check",
+      "texto": "A aprovação da medição exige um conferente cadastrado e diferente do técnico que mediu.",
+      "fontes": [
+        "regra-servicos-aprovacao-da-medicao-exige-conferente-diferente"
+      ]
+    },
+    {
+      "titulo": "A ordem dos aceites muda",
+      "icone": "assinatura",
+      "texto": "Na vistoria, o aceite do cliente vale depois de concluir. Na assistência técnica, o aceite é registrado antes de Resolver.",
+      "fontes": [
+        "regra-servicos-passagens-por-botao-e-ordem-dos-aceites",
+        "videos/roteiros/consultor-02-servicos.json#07"
+      ]
+    }
+  ],
+  "palavras": [
+    {
+      "termo": "Medição",
+      "definicao": "Visita para medir os vãos da obra. Número no formato MED-.",
+      "fontes": [
+        "scripts/dados-checklists-estagiarios.mjs#servicos"
+      ]
+    },
+    {
+      "termo": "Nova Medição",
+      "definicao": "Tela que lista os pedidos de venda, com Usar este registro, ou a Medição avulsa (sem pedido).",
+      "fontes": [
+        "regra-servicos-medicao-nasce-do-pedido",
+        "glossario: servicos.nova-medicao"
+      ]
+    },
+    {
+      "termo": "Aguardando Conferência",
+      "definicao": "Status da medição concluída que espera o conferente aprovar.",
+      "fontes": [
+        "regra-servicos-aprovacao-da-medicao-exige-conferente-diferente"
+      ]
+    },
+    {
+      "termo": "Gerar Instalação",
+      "definicao": "Botão da medição Aprovada que cria a instalação.",
+      "fontes": [
+        "regra-servicos-passagens-por-botao-e-ordem-dos-aceites"
+      ]
+    },
+    {
+      "termo": "Instalação",
+      "definicao": "Serviço de instalar as esquadrias medidas. Número no formato INS-.",
+      "fontes": [
+        "videos/public/telas/consultor-02-servicos/02-instalacao.png",
+        "scripts/dados-checklists-estagiarios.mjs#servicos"
+      ]
+    },
+    {
+      "termo": "Vistoria",
+      "definicao": "Verificação da instalação com o cliente: aprovada, aprovada com ressalvas ou reprovada.",
+      "fontes": [
+        "scripts/dados-checklists-estagiarios.mjs#servicos"
+      ]
+    },
+    {
+      "termo": "Gerar Assistência Técnica",
+      "definicao": "Botão da vistoria reprovada ou aprovada com ressalvas que cria a assistência.",
+      "fontes": [
+        "regra-servicos-passagens-por-botao-e-ordem-dos-aceites"
+      ]
+    },
+    {
+      "termo": "Assistência Técnica",
+      "definicao": "Chamado para corrigir um problema na obra. Termina como Resolvido.",
+      "fontes": [
+        "videos/public/telas/consultor-02-servicos/04-assistencias.png",
+        "videos/roteiros/consultor-02-servicos.json#11"
+      ]
+    }
+  ],
+  "mapa": {
+    "antes": [
+      "vendas",
+      "producao"
+    ],
+    "depois": [
+      "projetos",
+      "financeiro"
+    ],
+    "texto": "A medição nasce do pedido de Vendas; a instalação leva à obra o que a Produção fabricou e a Expedição entregou. O módulo conecta o comercial, o produtivo e o operacional.",
+    "fontes": [
+      "db/migrations/002_modulos_iniciais.sql#servicos",
+      "regra-servicos-medicao-nasce-do-pedido"
+    ]
+  },
+  "capitulos": [
+    {
+      "id": "medicao",
+      "titulo": "Conhecendo a medição",
+      "nivel": "basico",
+      "objetivo": "Entender a tela da medição, o que vem do pedido e como a medição leva à instalação.",
+      "onde": "Serviços › Medições",
+      "passos": [
+        {
+          "titulo": "Conheça o menu de Serviços",
+          "texto": "No menu do módulo, a cadeia de serviços aparece em ordem: Medições, Instalações, Vistorias e Assistência Técnica. Acima ficam os painéis (Dashboard Serviços, Cockpit de Campo, Minha Equipe Agora).",
+          "imagem": "/manuais/servicos/img/01-medicao.webp",
+          "alt": "Menu lateral de Serviços com Medições, Instalações, Vistorias e Assistência Técnica em sequência.",
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Medições",
+              "explicacao": "Onde tudo começa: a medição nasce do pedido de venda e o técnico mede os vãos da obra.",
+              "caixa": {
+                "x": 0.5,
+                "y": 44.6,
+                "w": 14.4,
+                "h": 3.4
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 2,
+              "rotulo": "Instalações",
+              "explicacao": "Criada pelo botão Gerar Instalação de uma medição aprovada.",
+              "caixa": {
+                "x": 0.5,
+                "y": 48.4,
+                "w": 14.4,
+                "h": 3.4
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 3,
+              "rotulo": "Vistorias",
+              "explicacao": "A conferência com o cliente depois da instalação. Pode nascer sozinha se a geração automática estiver ligada.",
+              "caixa": {
+                "x": 0.5,
+                "y": 52.2,
+                "w": 14.4,
+                "h": 3.4
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 4,
+              "rotulo": "Assistência Técnica",
+              "explicacao": "Criada por botão a partir da vistoria, quando há problema a resolver.",
+              "caixa": {
+                "x": 0.5,
+                "y": 56,
+                "w": 14.4,
+                "h": 3.4
+              },
+              "lado": "direita"
+            }
+          ],
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-02-servicos/01-medicao-aprovada.png",
+            "scripts/dados-checklists-estagiarios.mjs#servicos",
+            "videos/roteiros/consultor-02-servicos.json#03",
+            "videos/roteiros/consultor-02-servicos.json#06"
+          ],
+          "largura": 1600,
+          "altura": 900,
+          "zoom": {
+            "x": 0,
+            "y": 43.6,
+            "w": 25,
+            "h": 17
+          }
+        },
+        {
+          "titulo": "Conheça as abas da medição",
+          "texto": "A medição se divide em abas. Comece por Dados Gerais e use as outras para ver os vãos, as fotos, a conferência e o histórico.",
+          "imagem": "/manuais/servicos/img/01-medicao.webp",
+          "alt": "Abas da medição: Dados Gerais, Vãos, Fotos, Conferência e Histórico.",
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Dados Gerais",
+              "explicacao": "Empresa, cliente e vínculos da medição (projeto e pedido de venda), agendamento e equipe.",
+              "caixa": {
+                "x": 29,
+                "y": 22.8,
+                "w": 8.6,
+                "h": 3.9
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 2,
+              "rotulo": "Vãos",
+              "explicacao": "Os vãos a medir; o número ao lado mostra quantos são (aqui, 1).",
+              "caixa": {
+                "x": 38.1,
+                "y": 22.9,
+                "w": 5.8,
+                "h": 3.7
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 3,
+              "rotulo": "Fotos",
+              "explicacao": "As fotos registradas na medição.",
+              "caixa": {
+                "x": 44.8,
+                "y": 22.9,
+                "w": 4.5,
+                "h": 3.7
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 4,
+              "rotulo": "Conferência",
+              "explicacao": "A aprovação da medição concluída, feita por um conferente diferente de quem mediu.",
+              "caixa": {
+                "x": 50.3,
+                "y": 22.9,
+                "w": 7.3,
+                "h": 3.7
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 5,
+              "rotulo": "Histórico",
+              "explicacao": "O registro do que aconteceu com a medição.",
+              "caixa": {
+                "x": 58.4,
+                "y": 22.9,
+                "w": 6,
+                "h": 3.7
+              },
+              "lado": "cima"
+            }
+          ],
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-02-servicos/01-medicao-aprovada.png",
+            "scripts/dados-checklists-estagiarios.mjs#servicos",
+            "regra-servicos-aprovacao-da-medicao-exige-conferente-diferente"
+          ],
+          "largura": 1600,
+          "altura": 900,
+          "zoom": {
+            "x": 27.5,
+            "y": 19.1,
+            "w": 38.8,
+            "h": 8.4
+          }
+        },
+        {
+          "titulo": "Leia os Dados Gerais",
+          "texto": "Em Dados Gerais, Cliente e Projeto vêm do pedido de venda. Empresa e Técnico Responsável (obrigatórios, com *) você preenche.",
+          "imagem": "/manuais/servicos/img/01-medicao.webp",
+          "alt": "Aba Dados Gerais da medição com Empresa, Cliente, Projeto, Pedido de Venda e Técnico Responsável.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Empresa *",
+              "explicacao": "Obrigatória e não vem do pedido: você preenche.",
+              "caixa": {
+                "x": 20.1,
+                "y": 39,
+                "w": 26.8,
+                "h": 8
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 2,
+              "rotulo": "Cliente *",
+              "explicacao": "Vem do pedido de venda.",
+              "caixa": {
+                "x": 20.1,
+                "y": 50.6,
+                "w": 26.8,
+                "h": 8
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 3,
+              "rotulo": "Projeto",
+              "explicacao": "A obra; vem do pedido quando ele está ligado a uma. Nesta captura, sem projeto.",
+              "caixa": {
+                "x": 47.1,
+                "y": 50.6,
+                "w": 26.8,
+                "h": 8
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 4,
+              "rotulo": "Pedido de Venda",
+              "explicacao": "O pedido que originou a medição: dele vêm cliente, obra e itens.",
+              "caixa": {
+                "x": 20.1,
+                "y": 59.7,
+                "w": 53.8,
+                "h": 8.2
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 5,
+              "rotulo": "Técnico Responsável *",
+              "explicacao": "Obrigatório e não vem do pedido: quem executa a medição.",
+              "caixa": {
+                "x": 20.1,
+                "y": 81,
+                "w": 26.8,
+                "h": 8
+              },
+              "lado": "esquerda"
+            }
+          ],
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-02-servicos/01-medicao-aprovada.png",
+            "regra-servicos-medicao-nasce-do-pedido",
+            "regra-servicos-botao-agendar-so-na-medicao-salva",
+            "videos/roteiros/consultor-02-servicos.json#04"
+          ],
+          "atencao": "Empresa e Técnico Responsável não vêm do pedido: você preenche. O botão Agendar só aparece depois de salvar a medição."
+        },
+        {
+          "titulo": "Gere a instalação pelo botão",
+          "texto": "Com a medição Aprovada, o botão Gerar Instalação aparece no alto. É ele que leva o serviço à próxima etapa.",
+          "imagem": "/manuais/servicos/img/01-medicao.webp",
+          "alt": "Cabeçalho da medição com status Aprovada e os botões Gerar Instalação e Reabrir medição",
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Status Aprovada",
+              "explicacao": "A medição foi conferida e aprovada.",
+              "caixa": {
+                "x": 37.3,
+                "y": 12.3,
+                "w": 5.4,
+                "h": 3.2
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 2,
+              "rotulo": "Gerar Instalação",
+              "explicacao": "Cria a instalação desta medição. Aprovar a medição não cria a instalação sozinha.",
+              "caixa": {
+                "x": 78.6,
+                "y": 12.9,
+                "w": 8.9,
+                "h": 4.7
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 3,
+              "rotulo": "Vãos medidos",
+              "explicacao": "Quantos vãos já foram medidos do total (aqui, 1 de 1).",
+              "caixa": {
+                "x": 82.1,
+                "y": 32.6,
+                "w": 8.3,
+                "h": 9.1
+              },
+              "lado": "esquerda"
+            }
+          ],
+          "atencao": "Aprovar a medição não cria a instalação sozinha.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-02-servicos/01-medicao-aprovada.png",
+            "regra-servicos-passagens-por-botao-e-ordem-dos-aceites",
+            "videos/roteiros/consultor-02-servicos.json#08"
+          ],
+          "largura": 1600,
+          "altura": 900
+        }
+      ]
+    },
+    {
+      "id": "instalacao",
+      "titulo": "Acompanhando a instalação",
+      "nivel": "basico",
+      "objetivo": "Ler o status da instalação, o checklist e os vínculos com a medição e o pedido.",
+      "onde": "Serviços › Instalações",
+      "passos": [
+        {
+          "titulo": "Leia a instalação concluída",
+          "texto": "Abra a instalação e confira o status. Na aba Checklist ficam os itens conferidos; o quadro lateral resume quantos foram conferidos e quantos estão conformes.",
+          "imagem": "/manuais/servicos/img/02-instalacao.webp",
+          "alt": "Instalação concluída com abas, quadro de itens conferidos e conformes e o botão Ver Vistoria",
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Status Concluída",
+              "explicacao": "A instalação terminou.",
+              "caixa": {
+                "x": 37.9,
+                "y": 12.4,
+                "w": 5.4,
+                "h": 3.1
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 2,
+              "rotulo": "Checklist",
+              "explicacao": "Os itens a conferir na instalação; o número mostra quantos são (aqui, 2).",
+              "caixa": {
+                "x": 37.3,
+                "y": 22.9,
+                "w": 7.6,
+                "h": 3.7
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 3,
+              "rotulo": "Conferidos",
+              "explicacao": "Itens do checklist já conferidos, do total (2/2).",
+              "caixa": {
+                "x": 76.8,
+                "y": 32.7,
+                "w": 8.9,
+                "h": 9.1
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 4,
+              "rotulo": "Conformes",
+              "explicacao": "Itens conferidos que estavam conformes (2/2).",
+              "caixa": {
+                "x": 86.8,
+                "y": 32.7,
+                "w": 8.9,
+                "h": 9.1
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 5,
+              "rotulo": "Ver Vistoria",
+              "explicacao": "Abre a vistoria desta instalação; o botão aparece quando ela já existe.",
+              "caixa": {
+                "x": 83.8,
+                "y": 12.9,
+                "w": 12.5,
+                "h": 4.7
+              },
+              "lado": "baixo"
+            }
+          ],
+          "dica": "Ver Vistoria aparece quando a vistoria da instalação já existe.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-02-servicos/02-instalacao.png",
+            "regra-servicos-passagens-por-botao-e-ordem-dos-aceites",
+            "videos/roteiros/consultor-02-servicos.json#09"
+          ],
+          "largura": 1600,
+          "altura": 900
+        },
+        {
+          "titulo": "Confira os vínculos",
+          "texto": "No bloco Vínculos, confira de onde a instalação veio: a Medição Vinculada e o Pedido de Venda Vinculado.",
+          "imagem": "/manuais/servicos/img/02-instalacao.webp",
+          "alt": "Bloco Vínculos com Medição Vinculada e Pedido de Venda Vinculado",
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Vínculos",
+              "explicacao": "Os documentos relacionados a esta instalação.",
+              "caixa": {
+                "x": 20.3,
+                "y": 64.1,
+                "w": 18.6,
+                "h": 4.4
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 2,
+              "rotulo": "Medição Vinculada",
+              "explicacao": "A medição que gerou a instalação (MED-).",
+              "caixa": {
+                "x": 20.1,
+                "y": 71.9,
+                "w": 26.8,
+                "h": 8
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 3,
+              "rotulo": "Pedido de Venda Vinculado",
+              "explicacao": "O pedido de venda de origem (PV-).",
+              "caixa": {
+                "x": 47.1,
+                "y": 71.9,
+                "w": 26.8,
+                "h": 8
+              },
+              "lado": "direita"
+            }
+          ],
+          "dica": "Com equipe interna, a instalação não gera pagamento ao instalador.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-02-servicos/02-instalacao.png",
+            "videos/roteiros/consultor-02-servicos.json#09",
+            "scripts/dados-checklists-implantacao.mjs#implantacao-servicos"
+          ],
+          "largura": 1600,
+          "altura": 900
+        }
+      ]
+    },
+    {
+      "id": "vistoria-e-assistencia",
+      "titulo": "Vistoria e assistência técnica",
+      "nivel": "basico",
+      "objetivo": "Ler o resultado da vistoria, o aceite do cliente e o status da assistência.",
+      "onde": "Serviços › Vistorias · Assistência Técnica",
+      "passos": [
+        {
+          "titulo": "Leia a lista de vistorias",
+          "texto": "Na lista de Vistorias, cada linha aponta a INSTALAÇÃO vistoriada. Leia o STATUS, o ACEITE CLIENTE e o RESULTADO. Para criar uma, use + Nova Vistoria.",
+          "imagem": "/manuais/servicos/img/03-vistorias.webp",
+          "alt": "Lista de vistorias com uma vistoria concluída, aceite Sim e resultado Aprovada com ressalvas",
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "INSTALAÇÃO",
+              "explicacao": "A instalação que foi vistoriada (INS-).",
+              "caixa": {
+                "x": 48.2,
+                "y": 62,
+                "w": 5.6,
+                "h": 2.9
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 2,
+              "rotulo": "STATUS Concluída",
+              "explicacao": "A vistoria terminou. Na vistoria, o aceite do cliente só vale depois de concluir.",
+              "caixa": {
+                "x": 66.9,
+                "y": 61.7,
+                "w": 5.8,
+                "h": 3.4
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 3,
+              "rotulo": "ACEITE CLIENTE",
+              "explicacao": "Se o cliente registrou o aceite (aqui, Sim).",
+              "caixa": {
+                "x": 73.6,
+                "y": 61.7,
+                "w": 3.5,
+                "h": 3.4
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 4,
+              "rotulo": "RESULTADO",
+              "explicacao": "Aprovada, aprovada com ressalvas ou reprovada; aqui, Aprovada c/ Ressalvas.",
+              "caixa": {
+                "x": 80.8,
+                "y": 60.9,
+                "w": 7.6,
+                "h": 5.1
+              },
+              "lado": "baixo"
+            }
+          ],
+          "zoom": {
+            "x": 46.3,
+            "y": 54.7,
+            "w": 43.8,
+            "h": 15.1
+          },
+          "atencao": "Na vistoria, o aceite do cliente só vale depois de concluir.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-02-servicos/03-vistorias.png",
+            "regra-servicos-passagens-por-botao-e-ordem-dos-aceites",
+            "scripts/dados-checklists-estagiarios.mjs#servicos"
+          ],
+          "largura": 1600,
+          "altura": 900
+        },
+        {
+          "titulo": "Acompanhe a assistência técnica",
+          "texto": "A assistência gerada pela vistoria já vem com o título dela. Leia o STATUS e o PRAZO e use os filtros (Status, Prioridade, Técnico, Fora do Prazo) para achar um chamado.",
+          "imagem": "/manuais/servicos/img/04-assistencias.webp",
+          "alt": "Lista de assistência técnica com um chamado resolvido gerado de uma vistoria",
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "TÍTULO",
+              "explicacao": "A assistência gerada da vistoria já vem com o nome dela (Assistência — vistoria VIST-…).",
+              "caixa": {
+                "x": 26.8,
+                "y": 75.2,
+                "w": 13,
+                "h": 3.1
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 2,
+              "rotulo": "STATUS Resolvido",
+              "explicacao": "O chamado foi resolvido. Na assistência, o aceite do cliente é registrado antes de resolver.",
+              "caixa": {
+                "x": 66.9,
+                "y": 74.9,
+                "w": 5.8,
+                "h": 3.7
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 3,
+              "rotulo": "PRAZO",
+              "explicacao": "A situação do prazo do chamado; aqui, Sem SLA.",
+              "caixa": {
+                "x": 73.6,
+                "y": 75.2,
+                "w": 4.3,
+                "h": 3.1
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 4,
+              "rotulo": "Fora do Prazo",
+              "explicacao": "Filtro para achar os chamados que passaram do prazo.",
+              "caixa": {
+                "x": 45.1,
+                "y": 51.2,
+                "w": 25.1,
+                "h": 6.9
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 5,
+              "rotulo": "+ Nova Assistência",
+              "explicacao": "Abre um chamado manual. A assistência da vistoria é gerada pelo botão Gerar Assistência Técnica, na vistoria.",
+              "caixa": {
+                "x": 85.8,
+                "y": 22.6,
+                "w": 10.4,
+                "h": 4.4
+              },
+              "lado": "baixo"
+            }
+          ],
+          "atencao": "Na assistência, o aceite é registrado antes de Resolver.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-02-servicos/04-assistencias.png",
+            "regra-servicos-passagens-por-botao-e-ordem-dos-aceites",
+            "videos/roteiros/consultor-02-servicos.json#11",
+            "scripts/dados-checklists-estagiarios.mjs#servicos"
+          ],
+          "largura": 1600,
+          "altura": 900
+        }
+      ]
+    },
+    {
+      "id": "medicao-do-pedido-e-aprovacao",
+      "titulo": "Criando a medição e aprovando com o conferente",
+      "nivel": "avancado",
+      "objetivo": "Criar a medição a partir do pedido, medir os vãos e aprovar com outra pessoa.",
+      "onde": "Serviços › Medições › + Nova Medição",
+      "passos": [
+        {
+          "titulo": "Crie a medição pelo pedido",
+          "texto": "Em Nova Medição, clique em Usar este registro no pedido de venda. No diálogo Importar Itens do Pedido, marque os itens e o Nº vãos. Preencha Empresa e Técnico Responsável e clique em Salvar; depois, em Agendar.",
+          "atencao": "Usar este registro pode criar a medição na hora.",
+          "evidencia": "base",
+          "fontes": [
+            "regra-servicos-medicao-nasce-do-pedido",
+            "regra-servicos-botao-agendar-so-na-medicao-salva",
+            "scripts/dados-checklists-estagiarios.mjs#servicos"
+          ]
+        },
+        {
+          "titulo": "Meça os vãos e conclua",
+          "texto": "Com Exigir assinatura ligado, o caminho é Medir vãos, Iniciar e Concluir medição. A medição concluída com a assinatura fica Aguardando Conferência.",
+          "evidencia": "base",
+          "fontes": [
+            "regra-servicos-aprovacao-da-medicao-exige-conferente-diferente"
+          ]
+        },
+        {
+          "titulo": "Aprove com outro conferente",
+          "texto": "A aprovação exige um conferente cadastrado em Serviços › Configurações › Conferentes, vinculado a um participante e diferente de quem mediu.",
+          "evidencia": "base",
+          "fontes": [
+            "regra-servicos-aprovacao-da-medicao-exige-conferente-diferente",
+            "scripts/dados-checklists-implantacao.mjs#implantacao-servicos"
+          ]
+        }
+      ]
+    }
+  ],
+  "consultor": {
+    "implantacao": [
+      "Dois usuários: o técnico (participante Funcionário) que mede e o conferente, vinculado a outro participante em Conferentes. Fonte: regra-servicos-aprovacao-da-medicao-exige-conferente-diferente; checklist de implantação de Serviços.",
+      "Equipe de campo com o técnico como membro. Para testar pagamento de instalação: equipe Terceirizada com fornecedor (equipe interna não gera pagamento). Fonte: manual-11-servicos, 1.1.",
+      "Parâmetros decididos com o cliente: Exigir conferência de medição, Exigir assinatura do responsável pela obra e Geração automática de vistoria (vem vazia, desligada). Fonte: manual-11-servicos, 1.2; regra-servicos-passagens-por-botao-e-ordem-dos-aceites.",
+      "Pedido de venda de teste com itens de esquadria e, para o Diário de Obra, com Projeto (obra). Nomes fictícios nas assinaturas. Fonte: checklist de implantação de Serviços.",
+      "Desativar o template de checklist de teste no fim: ele entra em toda instalação nova da empresa. Fonte: checklist de implantação de Serviços."
+    ],
+    "perguntasDoCliente": [
+      {
+        "pergunta": "Aprovei a medição e a instalação não apareceu.",
+        "resposta": "A instalação nasce pelo botão Gerar Instalação da medição Aprovada; aprovar não cria a instalação.",
+        "fontes": [
+          "regra-servicos-passagens-por-botao-e-ordem-dos-aceites"
+        ]
+      },
+      {
+        "pergunta": "Por que não consigo aprovar a medição que eu mesmo fiz?",
+        "resposta": "A aprovação exige um conferente diferente de quem mediu, cadastrado em Conferentes.",
+        "fontes": [
+          "regra-servicos-aprovacao-da-medicao-exige-conferente-diferente"
+        ]
+      },
+      {
+        "pergunta": "A vistoria pode nascer sozinha?",
+        "resposta": "Sim, só ela: quando Geração automática de vistoria (dias) está preenchida nos parâmetros. Vem vazia (desligada).",
+        "fontes": [
+          "regra-servicos-passagens-por-botao-e-ordem-dos-aceites"
+        ]
+      },
+      {
+        "pergunta": "O horário do serviço está errado.",
+        "resposta": "Hoje datas e horas aparecem em UTC em vários pontos (vistoria, aceite, cockpit): confira antes de concluir que há atraso.",
+        "fontes": [
+          "scripts/dados-checklists-implantacao.mjs#implantacao-servicos",
+          "videos/roteiros/consultor-02-servicos.json#12"
+        ]
+      }
+    ],
+    "errosComuns": [
+      {
+        "titulo": "Instalar vão não medido",
+        "texto": "Só se instala vão realmente medido: com todos os vãos cancelados, o sistema avisa que não há vão medido para instalar.",
+        "fontes": [
+          "scripts/dados-checklists-implantacao.mjs#implantacao-servicos"
+        ]
+      },
+      {
+        "titulo": "Mensagens cobrindo botões",
+        "texto": "Mensagens (toasts) podem cobrir os botões do cabeçalho: feche-as antes de clicar.",
+        "fontes": [
+          "scripts/dados-checklists-implantacao.mjs#implantacao-servicos",
+          "videos/roteiros/consultor-02-servicos.json#12"
+        ]
+      },
+      {
+        "titulo": "Endereço do técnico recusado",
+        "texto": "No cadastro do técnico, o CEP preenche o endereço, mas hoje o formulário só aceita depois de redigitar o Endereço.",
+        "fontes": [
+          "scripts/dados-checklists-implantacao.mjs#implantacao-servicos"
+        ]
+      },
+      {
+        "titulo": "Duas \"Aprovações\" no menu",
+        "texto": "Há dois itens Aprovações no menu de Serviços: o do topo são as comissões do instalador.",
+        "fontes": [
+          "scripts/dados-checklists-estagiarios.mjs#servicos"
+        ]
+      }
+    ]
+  },
+  "fontes": [
+    "db/migrations/002_modulos_iniciais.sql#servicos",
+    "regra-servicos-medicao-nasce-do-pedido",
+    "regra-servicos-botao-agendar-so-na-medicao-salva",
+    "regra-servicos-aprovacao-da-medicao-exige-conferente-diferente",
+    "regra-servicos-passagens-por-botao-e-ordem-dos-aceites",
+    "funcional-servicos-medicoes-instalacoes-vistorias-assistencias",
+    "scripts/dados-checklists-estagiarios.mjs#servicos",
+    "scripts/dados-checklists-implantacao.mjs#implantacao-servicos",
+    "videos/roteiros/consultor-02-servicos.json",
+    "videos/public/telas/consultor-02-servicos/01-medicao-aprovada.png",
+    "videos/public/telas/consultor-02-servicos/02-instalacao.png",
+    "videos/public/telas/consultor-02-servicos/03-vistorias.png",
+    "videos/public/telas/consultor-02-servicos/04-assistencias.png"
+  ],
+  "pendencias": [
+    "CAPTURA: Serviços › Medições › + Nova Medição — lista de pedidos com Usar este registro e a opção Medição avulsa (sem pedido).",
+    "CAPTURA: diálogo Importar Itens do Pedido (itens e Nº vãos).",
+    "CAPTURA: Serviços › Medições — lista com filtro Status e a coluna % MEDIDO.",
+    "CAPTURA: Serviços › Dashboard Serviços — cartões e Pipeline operacional.",
+    "CAPTURA: Serviços › Configurações › Parâmetros e › Conferentes.",
+    "CAPTURA: vistoria reprovada ou aprovada com ressalvas com o botão Gerar Assistência Técnica.",
+    "CAPTURA: Serviços › Cockpit de Campo e Minha Equipe Agora.",
+    "Observação: o menu da captura mostra Assistência Técnica, e o breadcrumb da mesma tela mostra Assistencias; o funcional cita Assistências. A conferir na tela. Confirmado no staging v1.23.2 (05/11/2026): menu e título Assistência Técnica; o caminho no topo continua Assistencias.",
+    "Validação na tela pendente: guia gerado de capturas e da base, sem sessão no Flow.",
+    "A captura servicos-dashboard do staging (05/11/2026) abriu Upgrade › Alumina (IA), não o Dashboard Serviços: a captura do painel segue pendente."
+  ]
+}

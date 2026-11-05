@@ -1,0 +1,1025 @@
+{
+  "modulo": "faturamento",
+  "titulo": "Faturamento — guia visual",
+  "resumo": "Como o pedido de venda vira nota fiscal: faturar, conferir e salvar a NF-e, achar a nota na lista, finalizar e ver os reflexos no estoque, no pedido e no financeiro. A transmissão à SEFAZ fica com o responsável fiscal.",
+  "versaoSistema": "1.22.13 (capturas de 22/10/2026 no ambiente de teste, homologação)",
+  "atualizadoEm": "2026-11-05",
+  "status": "rascunho",
+  "conceitos": [
+    {
+      "titulo": "A nota nasce do pedido",
+      "icone": "faturamento",
+      "texto": "Você não digita a nota do zero. No pedido, Faturar abre uma Nova NF-e já com empresa, cliente, CFOP, condição e parcelas do pedido, e o número do pedido fica vinculado.",
+      "fontes": [
+        "regra-faturamento-faturar-abre-nova-nfe-ligada-ao-pedido",
+        "funcional-faturamento-notas-fiscais"
+      ]
+    },
+    {
+      "titulo": "Salvar a nota já deixa o pedido Faturado",
+      "icone": "vendas",
+      "texto": "Assim que a nota é salva, o pedido muda para Faturado, mesmo com a nota ainda Em Aberto. O status real da nota você confere em Faturamento › Notas Fiscais.",
+      "fontes": [
+        "regra-vendas-pedido-fica-faturado-ao-salvar-a-nota"
+      ]
+    },
+    {
+      "titulo": "Finalizar não é transmitir",
+      "icone": "regra",
+      "texto": "Finalizar NF deixa a nota só para visualização, sem enviar nada à SEFAZ. Transmitir (o avião de papel na linha da nota) envia a nota e é irreversível: é decisão do responsável fiscal.",
+      "fontes": [
+        "regra-faturamento-finalizar-nf-requisitos",
+        "regra-faturamento-lista-de-notas-filtro-padrao-e-menu",
+        "videos/roteiros/consultor-07-faturamento.json#12"
+      ]
+    },
+    {
+      "titulo": "A nota movimenta outros módulos",
+      "icone": "fluxo",
+      "texto": "Ao finalizar a nota, nascem os títulos em Contas a Receber (um por parcela) e uma saída no estoque. No pedido, a coluna TÍTULOS passa a Gerados e a NOTA FISCAL mostra a nota.",
+      "fontes": [
+        "regra-faturamento-finalizar-nf-gera-os-titulos",
+        "videos/roteiros/consultor-07-faturamento.json#11c"
+      ]
+    },
+    {
+      "titulo": "Homologação: nota sem validade fiscal",
+      "icone": "alerta",
+      "texto": "Em treino e implantação, trabalhe com a faixa Ambiente NF-e: HOMOLOGAÇÃO visível. Documentos emitidos nesse ambiente não têm validade fiscal.",
+      "fontes": [
+        "funcional-faturamento-notas-fiscais",
+        "guia:scripts/dados-checklists-estagiarios.mjs#faturamento"
+      ]
+    }
+  ],
+  "palavras": [
+    {
+      "termo": "Faturar",
+      "definicao": "Item do menu ⋯ do pedido de venda que abre a Nova NF-e ligada ao pedido.",
+      "fontes": [
+        "regra-faturamento-faturar-abre-nova-nfe-ligada-ao-pedido",
+        "glossario:vendas.pedidos-de-venda"
+      ]
+    },
+    {
+      "termo": "Nova NF-e",
+      "definicao": "Tela da nota que nasce do pedido (Vendas › Pedidos de Venda › ⋯ › Faturar).",
+      "fontes": [
+        "glossario:faturamento.nova-nfe"
+      ]
+    },
+    {
+      "termo": "Selecionar Itens para Importar",
+      "definicao": "Diálogo que abre sozinho na nova nota para trazer os itens do pedido, com a opção de recalcular impostos.",
+      "fontes": [
+        "regra-faturamento-faturar-abre-nova-nfe-ligada-ao-pedido"
+      ]
+    },
+    {
+      "termo": "Salvar e Permanecer",
+      "definicao": "Botão da Nova NF-e que salva a nota e mantém a tela aberta.",
+      "fontes": [
+        "glossario:faturamento.nova-nfe"
+      ]
+    },
+    {
+      "termo": "Notas Fiscais",
+      "definicao": "Lista de notas (abas NF-e e NFS-e), em Faturamento › Notas Fiscais. Abre filtrada em Em Aberto.",
+      "fontes": [
+        "glossario:faturamento.notas-fiscais",
+        "regra-faturamento-lista-de-notas-filtro-padrao-e-menu"
+      ]
+    },
+    {
+      "termo": "Finalizar NF",
+      "definicao": "Ação do menu ⋯ da nota que a deixa Finalizada, só para visualização, sem transmitir.",
+      "fontes": [
+        "glossario:faturamento.notas-fiscais",
+        "regra-faturamento-finalizar-nf-requisitos"
+      ]
+    },
+    {
+      "termo": "Transmitir",
+      "definicao": "Avião de papel na linha da nota: envia a nota à SEFAZ. Irreversível, mesmo em homologação.",
+      "fontes": [
+        "glossario:faturamento.notas-fiscais",
+        "videos/roteiros/consultor-07-faturamento.json#12"
+      ]
+    },
+    {
+      "termo": "Preview da DANFE",
+      "definicao": "Ação do menu ⋯ da nota para conferir a DANFE em nova aba.",
+      "fontes": [
+        "glossario:faturamento.notas-fiscais",
+        "regra-faturamento-lista-de-notas-filtro-padrao-e-menu"
+      ]
+    },
+    {
+      "termo": "Impostos não calculados no item",
+      "definicao": "Quadro da nota que avisa quando falta cadastro fiscal (por exemplo, CST de PIS/COFINS na NCM). A nota ainda pode ser salva.",
+      "fontes": [
+        "glossario:faturamento.nova-nfe",
+        "regra-faturamento-finalizar-nf-requisitos"
+      ]
+    }
+  ],
+  "mapa": {
+    "antes": [
+      "vendas",
+      "fiscal"
+    ],
+    "depois": [
+      "financeiro",
+      "estoque",
+      "expedicao"
+    ],
+    "texto": "O Faturamento recebe o pedido de Vendas e usa os cadastros do Fiscal (CFOP, NCM). Depois da nota, o Financeiro recebe os títulos, o Estoque registra a saída e a Expedição só libera o pedido que já está Faturado.",
+    "fontes": [
+      "regra-faturamento-faturar-abre-nova-nfe-ligada-ao-pedido",
+      "regra-faturamento-finalizar-nf-gera-os-titulos",
+      "regra-vendas-liberar-para-expedicao-so-em-pedido-faturado",
+      "guia:db/migrations/002_modulos_iniciais.sql#faturamento"
+    ]
+  },
+  "capitulos": [
+    {
+      "id": "do-pedido-a-nota",
+      "titulo": "Do pedido à nova NF-e",
+      "nivel": "basico",
+      "objetivo": "Abrir a nota a partir de um pedido em aberto, importar os itens e salvar a nota sem transmitir.",
+      "onde": "Vendas › Pedidos de Venda › ⋯ › Faturar",
+      "passos": [
+        {
+          "titulo": "Abra o menu do pedido e clique em Faturar",
+          "texto": "Em Vendas › Pedidos de Venda, encontre o pedido com status Em aberto. Abra o menu ⋯ da linha e clique em Faturar: o sistema abre uma nova NF-e já ligada ao pedido.",
+          "imagem": "/manuais/faturamento/img/01-pedido-menu-faturar.webp",
+          "alt": "Lista de Pedidos de Venda com um pedido Em aberto e o menu de ações aberto, mostrando Faturar, Dividir em partes, Gerar Títulos, Encerrar, Cancelar e Excluir.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Status Em aberto",
+              "explicacao": "O ponto de partida: um pedido em aberto, já com itens, parcelas e CFOP certos.",
+              "caixa": {
+                "x": 71.2,
+                "y": 65.8,
+                "w": 6,
+                "h": 5.4
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 2,
+              "rotulo": "Menu ⋯ do pedido",
+              "explicacao": "Abre as ações do pedido. Cancelar e Excluir ficam no mesmo menu, então leia antes de clicar.",
+              "caixa": {
+                "x": 93.9,
+                "y": 66.4,
+                "w": 3,
+                "h": 4.6
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 3,
+              "rotulo": "Faturar",
+              "explicacao": "Abre a Nova NF-e - Venda de Mercadoria com empresa, cliente, vendedor, CFOP, condição e parcelas do pedido.",
+              "caixa": {
+                "x": 82.4,
+                "y": 76.2,
+                "w": 5,
+                "h": 3.6
+              },
+              "lado": "esquerda"
+            }
+          ],
+          "zoom": {
+            "x": 70,
+            "y": 62,
+            "w": 30,
+            "h": 22
+          },
+          "atencao": "Só faça com autorização do supervisor e em homologação. Excluir e Cancelar ficam no mesmo menu.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-07-faturamento/01-menu-faturar.png",
+            "regra-faturamento-faturar-abre-nova-nfe-ligada-ao-pedido",
+            "videos/roteiros/consultor-07-faturamento.json#08"
+          ]
+        },
+        {
+          "titulo": "Importe os itens do pedido",
+          "texto": "A nova nota abre com o diálogo Selecionar Itens para Importar. Confira o item marcado, deixe marcado Recalcular impostos após importação e clique em Importar 1 Item.",
+          "imagem": "/manuais/faturamento/img/02-selecionar-itens.webp",
+          "alt": "Diálogo Selecionar Itens para Importar com um item do pedido marcado, a opção Recalcular impostos após importação marcada e o botão Importar 1 Item.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Item do pedido",
+              "explicacao": "Cada item do pedido vem com uma caixa de seleção: marcado, ele vai para a nota. Qtd. Importar mostra a quantidade.",
+              "caixa": {
+                "x": 19,
+                "y": 35.5,
+                "w": 62,
+                "h": 10.5
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 2,
+              "rotulo": "Recalcular impostos após importação",
+              "explicacao": "Recalcula os impostos dos itens pelas regras fiscais vigentes. O próprio diálogo recomenda deixar marcado.",
+              "caixa": {
+                "x": 18.8,
+                "y": 47.6,
+                "w": 45,
+                "h": 5.6
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 3,
+              "rotulo": "Importar 1 Item",
+              "explicacao": "Leva os itens marcados para a nota. Sem importar, a nota continua vazia.",
+              "caixa": {
+                "x": 72.4,
+                "y": 72.4,
+                "w": 8.8,
+                "h": 5.8
+              },
+              "lado": "baixo"
+            }
+          ],
+          "dica": "A nota vem vazia até você importar os itens.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-07-faturamento/02-importar.png",
+            "regra-faturamento-faturar-abre-nova-nfe-ligada-ao-pedido",
+            "videos/roteiros/consultor-07-faturamento.json#09"
+          ]
+        },
+        {
+          "titulo": "Confira a nota e salve",
+          "texto": "Antes de salvar, confira a faixa de homologação, o pedido vinculado, o status e o quadro de impostos. Depois clique em Salvar e Permanecer.",
+          "imagem": "/manuais/faturamento/img/03-nova-nfe.webp",
+          "alt": "Tela Nova NF-e - Venda de Mercadoria com a faixa de homologação, o pedido vinculado, o CFOP e o quadro Impostos não calculados no item 1.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Ambiente NF-e: HOMOLOGAÇÃO",
+              "explicacao": "Mostra que você está em homologação: documentos emitidos aqui não têm validade fiscal.",
+              "caixa": {
+                "x": 19.4,
+                "y": 21.5,
+                "w": 34.6,
+                "h": 4.6
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 2,
+              "rotulo": "Número do Pedido de Venda",
+              "explicacao": "O pedido de origem fica vinculado à nota e não pode ser alterado (veja o aviso logo abaixo do campo).",
+              "caixa": {
+                "x": 70.6,
+                "y": 55.8,
+                "w": 8,
+                "h": 4.6
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 3,
+              "rotulo": "Status Em Aberto",
+              "explicacao": "A nota nasce Em Aberto: ainda pode ser editada e nada foi transmitido.",
+              "caixa": {
+                "x": 70.6,
+                "y": 69.8,
+                "w": 8,
+                "h": 4.8
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 4,
+              "rotulo": "Impostos não calculados no item 1",
+              "explicacao": "Aparece quando falta cadastro fiscal (por exemplo, CST de PIS/COFINS na NCM) e mostra o motivo. A nota ainda pode ser salva.",
+              "caixa": {
+                "x": 19.6,
+                "y": 86.4,
+                "w": 17.2,
+                "h": 3.8
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 5,
+              "rotulo": "Salvar e Permanecer",
+              "explicacao": "É o botão que cria a nota. Assim que a nota é salva, o pedido passa a Faturado.",
+              "caixa": {
+                "x": 81.2,
+                "y": 12,
+                "w": 11.4,
+                "h": 5.2
+              },
+              "lado": "baixo"
+            }
+          ],
+          "atencao": "O quadro Impostos não calculados mostra o motivo (por exemplo, CST de PIS/COFINS ausente na NCM). A nota ainda pode ser salva, mas o cadastro fiscal é assunto do responsável fiscal.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-07-faturamento/03-nova-nfe.png",
+            "regra-faturamento-faturar-abre-nova-nfe-ligada-ao-pedido",
+            "regra-faturamento-finalizar-nf-requisitos",
+            "funcional-faturamento-notas-fiscais",
+            "videos/roteiros/consultor-07-faturamento.json#10"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lista-de-notas",
+      "titulo": "Encontrando e lendo a nota",
+      "nivel": "basico",
+      "objetivo": "Achar a nota na lista, entender o filtro de status e reconhecer as ações da nota sem executá-las.",
+      "onde": "Faturamento › Notas Fiscais",
+      "passos": [
+        {
+          "titulo": "Abra a lista de notas",
+          "texto": "Em Faturamento › Notas Fiscais, escolha a aba NF-e (produto) ou NFS-e (serviço). Confira o filtro Status: a lista abre em Em Aberto e os cartões de totais seguem esse filtro.",
+          "imagem": "/manuais/faturamento/img/04-lista-notas.webp",
+          "alt": "Lista de notas fiscais na aba NF-e, com cartões Total, Em Aberto, Autorizadas, Canceladas e Rejeitadas, filtro Status em Em Aberto e uma nota Em Aberto.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Notas Fiscais (menu)",
+              "explicacao": "Abre a lista de notas do Faturamento. O título da tela é Documentos Fiscais: os dois nomes são a mesma tela.",
+              "caixa": {
+                "x": 0.6,
+                "y": 23.4,
+                "w": 15,
+                "h": 4
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 2,
+              "rotulo": "Abas NF-e e NFS-e",
+              "explicacao": "NF-e é a nota de produto; NFS-e é a nota de serviço.",
+              "caixa": {
+                "x": 20.4,
+                "y": 26.8,
+                "w": 15,
+                "h": 4.6
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 3,
+              "rotulo": "Cartões de totais",
+              "explicacao": "Total, Em Aberto, Autorizadas, Canceladas e Rejeitadas. Os números seguem o filtro de status.",
+              "caixa": {
+                "x": 20.4,
+                "y": 32.6,
+                "w": 60.8,
+                "h": 10.4
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 4,
+              "rotulo": "Filtro Status",
+              "explicacao": "Abre em Em Aberto. Para ver uma nota finalizada ou autorizada, troque o filtro.",
+              "caixa": {
+                "x": 45.5,
+                "y": 44,
+                "w": 13.6,
+                "h": 5
+              },
+              "lado": "baixo"
+            }
+          ],
+          "dica": "Nota finalizada, autorizada ou cancelada só aparece trocando o filtro Status. Os cartões seguem o filtro.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-07-faturamento/04-lista-notas.png",
+            "regra-faturamento-lista-de-notas-filtro-padrao-e-menu",
+            "guia:scripts/dados-checklists-estagiarios.mjs#faturamento",
+            "videos/roteiros/consultor-07-faturamento.json#11",
+            "videos/capturas/guias-staging/faturamento-notas.png (staging v1.23.2, 05/11/2026; não usada como imagem: traz nomes e valores)"
+          ]
+        },
+        {
+          "titulo": "Conheça o menu da nota e o Transmitir",
+          "texto": "Abra o menu ⋯ da nota para ver as ações. O avião de papel, direto na linha, é o Transmitir: em treino, não clique nele.",
+          "imagem": "/manuais/faturamento/img/04-lista-notas.webp",
+          "alt": "A mesma lista, com o menu de ações da nota aberto e o ícone de avião de papel (Transmitir) na linha.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Transmitir (avião de papel)",
+              "explicacao": "Envia a nota à SEFAZ. É irreversível, mesmo em homologação, e é decisão do responsável fiscal.",
+              "caixa": {
+                "x": 91.2,
+                "y": 60.8,
+                "w": 2.4,
+                "h": 4
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 2,
+              "rotulo": "Menu ⋯ da nota",
+              "explicacao": "Reúne Editar, Finalizar NF, Preview da DANFE, Duplicar, Ver Timeline, Anexos e Excluir.",
+              "caixa": {
+                "x": 93.9,
+                "y": 60.9,
+                "w": 2.6,
+                "h": 4
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 3,
+              "rotulo": "Finalizar NF",
+              "explicacao": "Deixa a nota só para visualização, sem transmitir. Use só com autorização.",
+              "caixa": {
+                "x": 82.6,
+                "y": 70,
+                "w": 7.6,
+                "h": 3.6
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 4,
+              "rotulo": "Preview da DANFE",
+              "explicacao": "Abre a DANFE em uma nova aba, para conferir a nota.",
+              "caixa": {
+                "x": 82.6,
+                "y": 73.7,
+                "w": 10.2,
+                "h": 3.6
+              },
+              "lado": "esquerda"
+            }
+          ],
+          "zoom": {
+            "x": 70,
+            "y": 56,
+            "w": 30,
+            "h": 23
+          },
+          "atencao": "Não clique no avião de papel em treino: Transmitir é irreversível, mesmo em homologação. Excluir fica no mesmo menu, logo abaixo de Ver Timeline e Anexos. Transmitir, cancelar e inutilizar são do responsável fiscal.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-07-faturamento/04-lista-notas.png",
+            "regra-faturamento-lista-de-notas-filtro-padrao-e-menu",
+            "videos/roteiros/consultor-07-faturamento.json#11",
+            "videos/roteiros/consultor-07-faturamento.json#12"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "finalizar-e-reflexos",
+      "titulo": "Finalizar a nota e conferir os reflexos",
+      "nivel": "avancado",
+      "objetivo": "Finalizar a nota com autorização e conferir o que ela movimenta no estoque, no pedido e no financeiro.",
+      "onde": "Faturamento › Notas Fiscais › ⋯ › Finalizar NF",
+      "passos": [
+        {
+          "titulo": "Finalize a nota (com autorização)",
+          "texto": "Com autorização, abra o menu ⋯ da nota, clique em Finalizar NF e leia a confirmação. Clique em Finalizar: a nota fica só para visualização e não é transmitida.",
+          "imagem": "/manuais/faturamento/img/05-finalizar-nf.webp",
+          "alt": "Diálogo Finalizar nota fiscal? avisando que a nota ficará disponível apenas para visualização, com os botões Cancelar e Finalizar.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Finalizar nota fiscal?",
+              "explicacao": "A confirmação avisa que, depois de finalizada, a nota fica só para visualização e não pode mais ser editada.",
+              "caixa": {
+                "x": 37,
+                "y": 41,
+                "w": 24.4,
+                "h": 12
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 2,
+              "rotulo": "Finalizar",
+              "explicacao": "Confirma. A nota não vai para a SEFAZ, mas a finalização baixa o estoque.",
+              "caixa": {
+                "x": 56.8,
+                "y": 53.6,
+                "w": 6.2,
+                "h": 5
+              },
+              "lado": "direita"
+            }
+          ],
+          "zoom": {
+            "x": 33,
+            "y": 36,
+            "w": 34,
+            "h": 24
+          },
+          "atencao": "Sem almoxarifado central ativo (ou local de estoque ativo no projeto) o Finalizar NF recusa com \"Não foi possível resolver o local de estoque…\".",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-07-faturamento/05-finalizar.png",
+            "regra-faturamento-finalizar-nf-requisitos",
+            "videos/roteiros/consultor-07-faturamento.json#11b"
+          ]
+        },
+        {
+          "titulo": "Veja a saída no estoque",
+          "texto": "Em Estoque › Movimentos, procure a linha criada pela finalização e leia três colunas: TIPO, ORIGEM e ORIGEM → DESTINO.",
+          "imagem": "/manuais/faturamento/img/06-saida-estoque.webp",
+          "alt": "Movimentos de Estoque com uma linha de Saída do tipo Expedição (PV), origem NF-e, saindo do almoxarifado central.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Tipo: Saída · Expedição (PV)",
+              "explicacao": "É a baixa de estoque gerada pela nota do pedido de venda.",
+              "caixa": {
+                "x": 39.6,
+                "y": 62.8,
+                "w": 6.4,
+                "h": 13.4
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 2,
+              "rotulo": "Origem: NF-e",
+              "explicacao": "Mostra que o movimento foi gerado pela nota fiscal.",
+              "caixa": {
+                "x": 47.4,
+                "y": 62.8,
+                "w": 4.4,
+                "h": 13.4
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 3,
+              "rotulo": "Origem → Destino",
+              "explicacao": "De onde o material saiu: o almoxarifado central. Sem almoxarifado central ativo, o Finalizar NF recusa.",
+              "caixa": {
+                "x": 58.4,
+                "y": 62.8,
+                "w": 7.8,
+                "h": 13.4
+              },
+              "lado": "cima"
+            }
+          ],
+          "zoom": {
+            "x": 36,
+            "y": 56,
+            "w": 32,
+            "h": 22
+          },
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-07-faturamento/06-saida-estoque.png",
+            "videos/roteiros/consultor-07-faturamento.json#11c",
+            "regra-estoque-almoxarifado-central-ativo-e-pre-requisito"
+          ]
+        },
+        {
+          "titulo": "Confira o saldo antes de finalizar",
+          "texto": "Em Estoque › Saldo, procure o aviso de saldo negativo no topo e a linha do item. Confira o saldo sempre antes de finalizar uma nota.",
+          "imagem": "/manuais/faturamento/img/07-saldo-negativo.webp",
+          "alt": "Saldo de estoque com o selo 1 saldo(s) negativo(s) e um item com saldo -1.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "1 saldo(s) negativo(s)",
+              "explicacao": "Aviso no topo do Saldo de estoque: algum item ficou com saldo abaixo de zero.",
+              "caixa": {
+                "x": 22.7,
+                "y": 20.8,
+                "w": 8.6,
+                "h": 3.8
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 2,
+              "rotulo": "Saldo −1",
+              "explicacao": "O item sem saldo ficou negativo depois da nota: na versão 1.22.13 a nota baixa o estoque mesmo sem saldo.",
+              "caixa": {
+                "x": 69.2,
+                "y": 57.8,
+                "w": 9.6,
+                "h": 4.2
+              },
+              "lado": "baixo"
+            }
+          ],
+          "atencao": "Na versão 1.22.13 a nota baixa o estoque mesmo sem saldo. Confira o saldo antes de finalizar.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-07-faturamento/07-saldo-negativo.png",
+            "videos/roteiros/consultor-07-faturamento.json#11d",
+            "regra-faturamento-finalizar-nf-requisitos"
+          ]
+        },
+        {
+          "titulo": "Veja o reflexo no pedido",
+          "texto": "Em Vendas › Pedidos de Venda (limpe o filtro Status), leia a linha do pedido: o STATUS, a coluna TÍTULOS e a coluna NOTA FISCAL mudaram.",
+          "imagem": "/manuais/faturamento/img/08-pedido-faturado.webp",
+          "alt": "Linha do pedido de venda com status Faturado, títulos Gerados e a nota fiscal ligada.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Status Faturado",
+              "explicacao": "O pedido passa a Faturado assim que a nota é salva, mesmo com a nota ainda em aberto.",
+              "caixa": {
+                "x": 72.4,
+                "y": 66,
+                "w": 5.4,
+                "h": 5
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 2,
+              "rotulo": "Títulos: Gerados",
+              "explicacao": "A finalização da nota criou os títulos das parcelas em Financeiro › Contas a Receber.",
+              "caixa": {
+                "x": 78.8,
+                "y": 66,
+                "w": 5.2,
+                "h": 5
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 3,
+              "rotulo": "Nota fiscal",
+              "explicacao": "Mostra o número da nota ligada ao pedido.",
+              "caixa": {
+                "x": 85,
+                "y": 66,
+                "w": 4.8,
+                "h": 5
+              },
+              "lado": "baixo"
+            }
+          ],
+          "zoom": {
+            "x": 70,
+            "y": 61,
+            "w": 26,
+            "h": 19
+          },
+          "dica": "Os títulos da nota aparecem em Financeiro › Contas a Receber com o Documento \"NF - número da nota\".",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-08-financeiro/00-pedido-faturado.png",
+            "regra-faturamento-finalizar-nf-gera-os-titulos",
+            "regra-vendas-pedido-fica-faturado-ao-salvar-a-nota",
+            "videos/roteiros/consultor-08-financeiro.json#08"
+          ]
+        },
+        {
+          "titulo": "Veja o que muda no menu do pedido",
+          "texto": "Abra o menu ⋯ do pedido faturado. Faturar e Gerar Títulos ficam desabilitados, com o aviso de que o pedido já tem nota, e Liberar para Expedição aparece.",
+          "imagem": "/manuais/faturamento/img/08-pedido-faturado.webp",
+          "alt": "Menu de ações do pedido faturado com Liberar para Expedição, Já faturado e Pedido já faturado desabilitados.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Liberar para Expedição",
+              "explicacao": "Só aparece em pedido Faturado. É por aqui que o pedido segue para a expedição.",
+              "caixa": {
+                "x": 82.6,
+                "y": 39.8,
+                "w": 12,
+                "h": 3.4
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 2,
+              "rotulo": "Já faturado",
+              "explicacao": "Ocupa o lugar de Faturar e avisa: este pedido já possui nota fiscal emitida.",
+              "caixa": {
+                "x": 82.6,
+                "y": 43.4,
+                "w": 11.4,
+                "h": 7
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 3,
+              "rotulo": "Pedido já faturado",
+              "explicacao": "Ocupa o lugar de Gerar Títulos, desabilitado: os títulos já vieram da nota.",
+              "caixa": {
+                "x": 82.6,
+                "y": 50.8,
+                "w": 10,
+                "h": 4
+              },
+              "lado": "direita"
+            }
+          ],
+          "zoom": {
+            "x": 72,
+            "y": 33,
+            "w": 28,
+            "h": 24
+          },
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-08-financeiro/00-pedido-faturado.png",
+            "regra-faturamento-finalizar-nf-gera-os-titulos",
+            "regra-vendas-liberar-para-expedicao-so-em-pedido-faturado",
+            "oficial-ven-a-regras#002"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "contrato-de-fornecimento",
+      "titulo": "Pedido de contrato de fornecimento",
+      "nivel": "avancado",
+      "objetivo": "Entender que, no contrato de fornecimento, registrar o faturamento move o saldo do contrato e a NF-e vem depois, pelo pedido de venda.",
+      "onde": "Vendas › Contratos de Fornecimento › contrato › Faturar",
+      "passos": [
+        {
+          "titulo": "Registre o faturamento no contrato",
+          "texto": "No contrato, clique em Faturar, marque o item e clique em Registrar faturamento. Leia o aviso do diálogo: o registro movimenta o saldo do contrato e a NF-e vem depois, pelo pedido de venda.",
+          "imagem": "/manuais/faturamento/img/09-registrar-faturamento-contrato.webp",
+          "alt": "Diálogo Registrar faturamento do contrato explicando que a NF-e é emitida depois, pelo pedido de venda, com um item marcado e o botão Registrar faturamento.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Aviso do diálogo",
+              "explicacao": "Os itens são rateados para caber no saldo a faturar do contrato. A NF-e é emitida depois, pelo pedido de venda.",
+              "caixa": {
+                "x": 30.2,
+                "y": 38,
+                "w": 39.2,
+                "h": 5.2
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 2,
+              "rotulo": "Item a faturar",
+              "explicacao": "O item do pedido ligado ao contrato. Marcado, ele entra neste faturamento.",
+              "caixa": {
+                "x": 30.4,
+                "y": 47.6,
+                "w": 39.2,
+                "h": 11
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 3,
+              "rotulo": "Registrar faturamento",
+              "explicacao": "Registra o faturamento e movimenta o saldo do contrato. Ainda não cria a nota.",
+              "caixa": {
+                "x": 58,
+                "y": 59.2,
+                "w": 11.6,
+                "h": 5.8
+              },
+              "lado": "direita"
+            }
+          ],
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/compra-em-nome-do-cliente/25-registrar-faturamento.png",
+            "videos/roteiros/compra-em-nome-do-cliente.json#08",
+            "videos/roteiros/compra-em-nome-do-cliente.json#24",
+            "roteiro-vendas-02-contratos-de-fornecimento#033"
+          ]
+        },
+        {
+          "titulo": "Gere a nota em aberto, sem transmitir",
+          "texto": "Depois do registro, leia a pergunta Deseja gerar a nota fiscal? e clique em Gerar notas. Confira também os cartões FATURADO e A FATURAR e o pedido na aba Pedidos de Venda.",
+          "imagem": "/manuais/faturamento/img/10-contrato-gerar-notas.webp",
+          "alt": "Contrato de fornecimento com os cartões Faturado e A faturar e o diálogo Deseja gerar a nota fiscal?, com os botões Agora não e Gerar notas.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Deseja gerar a nota fiscal?",
+              "explicacao": "Avisa que será criada uma nota em aberto por pedido e que nada é transmitido à SEFAZ agora.",
+              "caixa": {
+                "x": 37,
+                "y": 40,
+                "w": 26,
+                "h": 14.4
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 2,
+              "rotulo": "Gerar notas",
+              "explicacao": "Cria as notas em aberto, para você revisar antes de qualquer transmissão.",
+              "caixa": {
+                "x": 55.4,
+                "y": 54.6,
+                "w": 7.8,
+                "h": 5.4
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 3,
+              "rotulo": "Faturado",
+              "explicacao": "Quanto do contrato já foi faturado.",
+              "caixa": {
+                "x": 50.8,
+                "y": 20.6,
+                "w": 14.6,
+                "h": 9
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 4,
+              "rotulo": "A faturar",
+              "explicacao": "Quanto ainda falta faturar no contrato.",
+              "caixa": {
+                "x": 82.2,
+                "y": 18.8,
+                "w": 15.4,
+                "h": 10.6
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 5,
+              "rotulo": "Pedido de venda vinculado",
+              "explicacao": "Na aba Pedidos de Venda do contrato: o pedido que vai virar nota.",
+              "caixa": {
+                "x": 19.8,
+                "y": 71,
+                "w": 15.8,
+                "h": 5.4
+              },
+              "lado": "direita"
+            }
+          ],
+          "atencao": "Pedido de contrato de fornecimento só vira nota depois do faturamento no contrato. Use no nível um CFOP que gere financeiro.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/compra-em-nome-do-cliente/26-contrato-faturado-40.png",
+            "videos/roteiros/compra-em-nome-do-cliente.json#25"
+          ]
+        }
+      ]
+    }
+  ],
+  "consultor": {
+    "implantacao": [
+      "Fundação concluída: empresa com regime, IE e endereço com cidade do IBGE, certificado A1 válido e série e próximo número da NF-e continuando o sistema antigo (Configurações › Empresas; Faturamento › Configurações › Certificados). Fonte: checklist de implantação de Faturamento.",
+      "Ambiente fiscal em Homologação, com a faixa \"Ambiente NF-e: HOMOLOGAÇÃO\" visível na primeira nota. Fonte: checklist de implantação de Faturamento.",
+      "Almoxarifado central ativo em Estoque › Locais (ou local de estoque da obra); sem ele o Finalizar NF recusa. Fonte: regra-estoque-almoxarifado-central-ativo-e-pre-requisito.",
+      "CFOPs revisados com o contador (\"Gera Financeiro\", \"Movimenta Estoque\", \"Devolução\") e NCM do produto com CST de PIS/COFINS de saída. Fonte: checklist de implantação de Faturamento.",
+      "Perfis definidos com o responsável fiscal presente: quem emite e transmite, quem cancela, emite CC-e e inutiliza (Segurança › Perfis de Acesso). Fonte: checklist de implantação de Faturamento.",
+      "Decidido no kickoff quem gera o contas a receber: o pedido ou a nota. Se o pedido gerou os títulos, a nota não gera de novo. Fonte: checklist de implantação de Faturamento."
+    ],
+    "perguntasDoCliente": [
+      {
+        "pergunta": "Por que o pedido aparece Faturado se a nota ainda está Em Aberto?",
+        "resposta": "Porque o pedido muda para Faturado assim que a nota é salva. O status real da nota é conferido em Faturamento › Notas Fiscais.",
+        "fontes": [
+          "regra-vendas-pedido-fica-faturado-ao-salvar-a-nota"
+        ]
+      },
+      {
+        "pergunta": "Por que a nota que eu finalizei sumiu da lista?",
+        "resposta": "A lista abre filtrada em Em Aberto e os cartões seguem esse filtro. Troque o filtro Status para ver notas finalizadas, autorizadas ou canceladas.",
+        "fontes": [
+          "regra-faturamento-lista-de-notas-filtro-padrao-e-menu"
+        ]
+      },
+      {
+        "pergunta": "A nota salvou com imposto zerado. Está certo?",
+        "resposta": "Não. O quadro Impostos não calculados no item mostra o motivo, normalmente um cadastro fiscal faltando. A nota salva assim, mas o cadastro precisa ser corrigido com o responsável fiscal.",
+        "fontes": [
+          "regra-faturamento-finalizar-nf-requisitos",
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+        ]
+      }
+    ],
+    "errosComuns": [
+      {
+        "titulo": "Clicar no avião de papel",
+        "texto": "O avião de papel na linha é Transmitir e é irreversível, mesmo em homologação. Transmitir, cancelar e inutilizar ficam com o responsável fiscal.",
+        "fontes": [
+          "videos/roteiros/consultor-07-faturamento.json#12",
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento"
+        ]
+      },
+      {
+        "titulo": "Finalizar sem conferir o saldo",
+        "texto": "Na 1.22.13 a nota baixa o estoque mesmo sem saldo e o item fica negativo.",
+        "fontes": [
+          "videos/roteiros/consultor-07-faturamento.json#11d",
+          "regra-faturamento-finalizar-nf-requisitos"
+        ]
+      },
+      {
+        "titulo": "Série errada antes da primeira transmissão",
+        "texto": "A série errada colide com a numeração antiga (rejeição 539). O número dado na transmissão nunca volta.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento"
+        ]
+      },
+      {
+        "titulo": "Títulos em dobro",
+        "texto": "Se o pedido já gerou os títulos, a nota não deve gerar de novo. Decida no kickoff quem gera o contas a receber.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento",
+          "regra-financeiro-titulo-manual-e-gerado-duplicam-a-receita"
+        ]
+      }
+    ]
+  },
+  "pendencias": [
+    "CAPTURA: Faturamento › Notas Fiscais › nota autorizada › ⋯ — DANFE, XML, e-mail e carta de correção (bloco 5 do roteiro de implantação). Nenhuma captura de nota autorizada no acervo.",
+    "CAPTURA: Faturamento › Notas Fiscais › ⋯ › Cancelar — cancelamento na ordem certa (bloco 7), com o responsável fiscal.",
+    "CAPTURA: Vendas › Pedidos de Venda › ⋯ › Faturar serviços (NFS-e) e aba NFS-e — nota de serviço (bloco 8).",
+    "CAPTURA: Faturamento › Configurações › Certificados — botão \"Configuração Guiada\" (pré-requisito).",
+    "CAPTURA: transmissão em homologação com o responsável fiscal (pré-voo, autorização e rejeição) — só com autorização explícita, por ação.",
+    "A conferir na tela: item sem CST na transmissão — fontes discordam (barra a transmissão × pede confirmação \"Transmitir mesmo assim?\"). Ver Fiscal.",
+    "Resolvido (staging v1.23.2, 05/11/2026): os dois nomes existem. O menu diz Notas Fiscais e o título da tela e o caminho no alto dizem Documentos Fiscais (endereço documentos-fiscais). O guia usa Notas Fiscais para o menu e cita o título da tela.",
+    "DIVERGÊNCIA (nova, revisão v2): regra-vendas-liberar-para-expedicao-so-em-pedido-faturado diz que Liberar para Expedição aparece só em pedido Faturado; oficial-ven-a-regras#002 (VEN-EXP-001/002) diz que liberar exige Faturado ou Encerrado. A conferir na tela com um pedido Encerrado."
+  ],
+  "fontes": [
+    "regra-faturamento-faturar-abre-nova-nfe-ligada-ao-pedido",
+    "funcional-faturamento-notas-fiscais",
+    "regra-vendas-pedido-fica-faturado-ao-salvar-a-nota",
+    "regra-faturamento-finalizar-nf-requisitos",
+    "regra-faturamento-lista-de-notas-filtro-padrao-e-menu",
+    "videos/roteiros/consultor-07-faturamento.json#12",
+    "regra-faturamento-finalizar-nf-gera-os-titulos",
+    "videos/roteiros/consultor-07-faturamento.json#11c",
+    "guia:scripts/dados-checklists-estagiarios.mjs#faturamento",
+    "glossario:vendas.pedidos-de-venda",
+    "glossario:faturamento.nova-nfe",
+    "glossario:faturamento.notas-fiscais",
+    "regra-vendas-liberar-para-expedicao-so-em-pedido-faturado",
+    "guia:db/migrations/002_modulos_iniciais.sql#faturamento",
+    "videos/public/telas/consultor-07-faturamento/01-menu-faturar.png",
+    "videos/roteiros/consultor-07-faturamento.json#08",
+    "videos/public/telas/consultor-07-faturamento/02-importar.png",
+    "videos/roteiros/consultor-07-faturamento.json#09",
+    "videos/public/telas/consultor-07-faturamento/03-nova-nfe.png",
+    "videos/roteiros/consultor-07-faturamento.json#10",
+    "videos/public/telas/consultor-07-faturamento/04-lista-notas.png",
+    "videos/roteiros/consultor-07-faturamento.json#11",
+    "videos/public/telas/consultor-07-faturamento/05-finalizar.png",
+    "videos/roteiros/consultor-07-faturamento.json#11b",
+    "videos/public/telas/consultor-07-faturamento/06-saida-estoque.png",
+    "regra-estoque-almoxarifado-central-ativo-e-pre-requisito",
+    "videos/public/telas/consultor-07-faturamento/07-saldo-negativo.png",
+    "videos/roteiros/consultor-07-faturamento.json#11d",
+    "videos/public/telas/consultor-08-financeiro/00-pedido-faturado.png",
+    "videos/roteiros/consultor-08-financeiro.json#08",
+    "videos/public/telas/compra-em-nome-do-cliente/25-registrar-faturamento.png",
+    "videos/roteiros/compra-em-nome-do-cliente.json#08",
+    "videos/roteiros/compra-em-nome-do-cliente.json#24",
+    "roteiro-vendas-02-contratos-de-fornecimento#033",
+    "videos/public/telas/compra-em-nome-do-cliente/26-contrato-faturado-40.png",
+    "videos/roteiros/compra-em-nome-do-cliente.json#25",
+    "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal",
+    "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento",
+    "regra-financeiro-titulo-manual-e-gerado-duplicam-a-receita",
+    "videos/capturas/guias-staging/faturamento-notas.png"
+  ]
+}

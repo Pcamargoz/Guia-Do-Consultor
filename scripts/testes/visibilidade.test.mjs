@@ -197,3 +197,16 @@ describe('formato admin', () => {
     assert.equal(listaAdmin([]).length, CHAVES.size);
   });
 });
+
+describe('guias visuais em /manuais/<modulo>/ (contrato-guia-visual.md)', () => {
+  it('módulo oculto esconde o guia e as imagens dele; os outros módulos continuam', () => {
+    const mapa = mapaEfetivo(ocultar('modulo:estoque'), 'estagiario');
+    assert.equal(caminhoVisivel('/manuais/estoque/guia.json', mapa, BASE.caminhos), false);
+    assert.equal(caminhoVisivel('/manuais/estoque/img/01-saldo.webp', mapa, BASE.caminhos), false);
+    assert.equal(caminhoVisivel('/manuais/vendas/guia.json', mapa, BASE.caminhos), true);
+  });
+  it('tipo:manual oculto esconde todos os guias; admin continua vendo', () => {
+    assert.equal(caminhoVisivel('/manuais/vendas/guia.json', mapaEfetivo(ocultar('tipo:manual'), 'consultor'), BASE.caminhos), false);
+    assert.equal(caminhoVisivel('/manuais/estoque/guia.json', mapaEfetivo(ocultar('modulo:estoque'), 'admin'), BASE.caminhos), true);
+  });
+});

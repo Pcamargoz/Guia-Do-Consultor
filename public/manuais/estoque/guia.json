@@ -1,0 +1,1101 @@
+{
+  "modulo": "estoque",
+  "titulo": "Estoque — guia visual",
+  "resumo": "De onde vem o saldo de cada material, como consultá-lo por local e variação, como rastrear os movimentos e como funcionam transferência, inventário e empréstimo.",
+  "versaoSistema": "1.22.13 (capturas do ambiente de teste, 19–22/10/2026)",
+  "atualizadoEm": "2026-11-05",
+  "status": "rascunho",
+  "conceitos": [
+    {
+      "titulo": "O saldo nunca é digitado",
+      "icone": "estoque",
+      "texto": "O saldo é a soma das entradas e saídas. Ele nasce de movimentos: entrada manual, ajustes, transferência, requisição, devolução de uso, empréstimo e descarte, além das entradas do recebimento e da produção.",
+      "fontes": [
+        "regra-estoque-saldo-nasce-de-movimentos",
+        "scripts/dados-checklists-estagiarios.mjs#estoque"
+      ]
+    },
+    {
+      "titulo": "Saldo por local e por variação",
+      "icone": "local",
+      "texto": "Cada produto aparece uma vez por local e por variação (cor e medidas). O estoque do Flow é controlado por características, pensado para esquadrias.",
+      "fontes": [
+        "scripts/dados-checklists-estagiarios.mjs#estoque",
+        "db/migrations/002_modulos_iniciais.sql#estoque"
+      ]
+    },
+    {
+      "titulo": "Saldo e disponível são diferentes",
+      "icone": "seta",
+      "texto": "O disponível desconta as reservas. Uma transferência ainda pendente reserva a quantidade: o disponível cai e o saldo continua igual.",
+      "fontes": [
+        "regra-estoque-transferencia-pendente-reserva-o-disponivel",
+        "videos/roteiros/consultor-04-estoque.json#03"
+      ]
+    },
+    {
+      "titulo": "O almoxarifado central é peça-chave",
+      "icone": "cadeado",
+      "texto": "Sem um almoxarifado central ativo, o recebimento, a conclusão da produção e a finalização da nota fiscal travam.",
+      "fontes": [
+        "regra-estoque-almoxarifado-central-ativo-e-pre-requisito"
+      ]
+    },
+    {
+      "titulo": "O módulo onde todos se encontram",
+      "icone": "fluxo",
+      "texto": "Compras, Recebimento, Produção, Vendas e Faturamento lançam movimentos no estoque, e os saldos se atualizam sozinhos.",
+      "fontes": [
+        "db/migrations/002_modulos_iniciais.sql#estoque",
+        "videos/roteiros/consultor-04-estoque.json#01"
+      ]
+    }
+  ],
+  "palavras": [
+    {
+      "termo": "Saldo",
+      "definicao": "Quantidade existente de um material num local e numa variação.",
+      "fontes": [
+        "scripts/dados-checklists-estagiarios.mjs#estoque"
+      ]
+    },
+    {
+      "termo": "DISPONÍVEL",
+      "definicao": "Saldo menos as reservas. É o que pode ser usado sem invadir uma reserva.",
+      "fontes": [
+        "videos/roteiros/consultor-04-estoque.json#09",
+        "regra-estoque-transferencia-pendente-reserva-o-disponivel"
+      ]
+    },
+    {
+      "termo": "Movimento",
+      "definicao": "Cada entrada ou saída de material. A lista fica em Estoque › Movimentos.",
+      "fontes": [
+        "regra-estoque-saldo-nasce-de-movimentos"
+      ]
+    },
+    {
+      "termo": "Novo Movimento",
+      "definicao": "Formulário para lançar entrada manual, ajustes, transferência, requisição, devolução de uso, empréstimo ou descarte.",
+      "fontes": [
+        "regra-estoque-saldo-nasce-de-movimentos",
+        "glossario: estoque.novo-movimento"
+      ]
+    },
+    {
+      "termo": "Local de destino",
+      "definicao": "Local (almoxarifado) para onde o material vai no movimento. Obrigatório.",
+      "fontes": [
+        "regra-estoque-saldo-nasce-de-movimentos"
+      ]
+    },
+    {
+      "termo": "Almoxarifado central",
+      "definicao": "Local principal da empresa, onde entram recebimento e produção. Precisa estar ativo.",
+      "fontes": [
+        "regra-estoque-almoxarifado-central-ativo-e-pre-requisito"
+      ]
+    },
+    {
+      "termo": "Transferência",
+      "definicao": "Documento que move material entre locais. Pendente reserva; confirmada movimenta.",
+      "fontes": [
+        "regra-estoque-transferencia-pendente-reserva-o-disponivel"
+      ]
+    },
+    {
+      "termo": "Inventário",
+      "definicao": "Contagem física que congela o local e exige outra pessoa para recontar e aprovar.",
+      "fontes": [
+        "regra-estoque-inventario-congela-o-local-e-exige-outra-pessoa"
+      ]
+    },
+    {
+      "termo": "Empréstimo",
+      "definicao": "Saída de material de um local para outro, com data prevista de devolução.",
+      "fontes": [
+        "regra-estoque-emprestimo-devolucao-parcial-e-total"
+      ]
+    }
+  ],
+  "mapa": {
+    "antes": [
+      "compras",
+      "recebimento",
+      "producao"
+    ],
+    "depois": [
+      "producao",
+      "faturamento",
+      "expedicao"
+    ],
+    "texto": "Implante depois dos cadastros de produtos e antes de Compras, Produção e Recebimento. Recebimento e Produção dão entrada; requisições da produção e a nota fiscal finalizada dão saída.",
+    "fontes": [
+      "db/migrations/002_modulos_iniciais.sql#estoque",
+      "regra-faturamento-finalizar-nf-requisitos",
+      "regra-producao-requisicoes-nascem-da-estrutura-ao-salvar"
+    ]
+  },
+  "capitulos": [
+    {
+      "id": "consultar-saldo",
+      "titulo": "Consultando o saldo",
+      "nivel": "basico",
+      "objetivo": "Encontrar quanto existe de um material, em qual local e em qual variação.",
+      "onde": "Estoque › Saldo",
+      "passos": [
+        {
+          "titulo": "Abra Saldo e pesquise o produto",
+          "texto": "No menu do Estoque, clique em Saldo. Digite o código ou a descrição do produto no campo de busca; para filtrar por obra ou propriedade, use Mais filtros.",
+          "imagem": "/manuais/estoque/img/01-saldo.webp",
+          "alt": "Tela Saldo de estoque com a busca preenchida e três linhas de produto",
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Saldo",
+              "explicacao": "Abre a tela Saldo de estoque: onde está cada material, com o saldo por local.",
+              "caixa": {
+                "x": 0.6,
+                "y": 19.9,
+                "w": 14.3,
+                "h": 3.7
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 2,
+              "rotulo": "Busca",
+              "explicacao": "Procure pelo código ou pela descrição. A busca aplicada aparece logo abaixo como etiqueta (Busca: …), com o x para limpar.",
+              "caixa": {
+                "x": 19.6,
+                "y": 29.7,
+                "w": 29,
+                "h": 6.1
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 3,
+              "rotulo": "Mais filtros",
+              "explicacao": "Filtra por obra, propriedade (Própria ou Cliente) e atributos físicos.",
+              "caixa": {
+                "x": 70.6,
+                "y": 17.3,
+                "w": 10.1,
+                "h": 4.8
+              },
+              "lado": "baixo"
+            }
+          ],
+          "dica": "Os filtros ficam salvos no seu navegador; use Limpar filtros se algo sumir.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-04-estoque/02-saldo.png",
+            "scripts/dados-checklists-estagiarios.mjs#estoque"
+          ],
+          "largura": 1600,
+          "altura": 900
+        },
+        {
+          "titulo": "Ache a linha certa do produto",
+          "texto": "O mesmo produto aparece uma vez para cada LOCAL e para cada variação (a cor aparece abaixo da descrição). Antes de ler o saldo, confira se está na linha da cor e do local que você procura.",
+          "imagem": "/manuais/estoque/img/01-saldo.webp",
+          "alt": "Lista de saldo com o mesmo produto em duas linhas, uma para cada cor, no mesmo local.",
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Variação: Azul França Brilhante",
+              "explicacao": "A cor do produto 3639 nesta linha. Cada cor tem o seu próprio saldo.",
+              "caixa": {
+                "x": 26.8,
+                "y": 53,
+                "w": 9.3,
+                "h": 2.6
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 2,
+              "rotulo": "Variação: Branco Neve Epóxi",
+              "explicacao": "O mesmo produto 3639, em outra cor: por isso aparece em outra linha.",
+              "caixa": {
+                "x": 26.8,
+                "y": 59.6,
+                "w": 8.6,
+                "h": 2.4
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 3,
+              "rotulo": "LOCAL",
+              "explicacao": "O local de estoque onde está essa quantidade. Um produto guardado em dois locais aparece em duas linhas.",
+              "caixa": {
+                "x": 48.3,
+                "y": 50.7,
+                "w": 11.4,
+                "h": 5
+              },
+              "lado": "direita"
+            }
+          ],
+          "zoom": {
+            "x": 22.2,
+            "y": 43.6,
+            "w": 40.6,
+            "h": 19.6
+          },
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-04-estoque/02-saldo.png",
+            "scripts/dados-checklists-estagiarios.mjs#estoque"
+          ],
+          "largura": 1600,
+          "altura": 900
+        },
+        {
+          "titulo": "Leia Saldo e Disponível",
+          "texto": "Na linha certa, leia o SALDO e o DISPONÍVEL. Para ver de onde veio cada quantidade, clique em Detalhe.",
+          "imagem": "/manuais/estoque/img/01-saldo.webp",
+          "alt": "Linha de saldo com o selo SALDO 2, DISPONÍVEL 2 e o botão Detalhe.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "SALDO",
+              "explicacao": "Quanto existe neste local. Ninguém digita o saldo: ele é a soma das entradas e saídas.",
+              "caixa": {
+                "x": 69.7,
+                "y": 45.3,
+                "w": 3.3,
+                "h": 2.9
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 2,
+              "rotulo": "DISPONÍVEL",
+              "explicacao": "O que pode ser usado: o saldo menos as reservas (por exemplo, de uma transferência pendente).",
+              "caixa": {
+                "x": 76.9,
+                "y": 45.3,
+                "w": 1.9,
+                "h": 2.9
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 3,
+              "rotulo": "Detalhe",
+              "explicacao": "Abre o extrato do produto, com as posições por local e o histórico de movimentos.",
+              "caixa": {
+                "x": 85.2,
+                "y": 44.9,
+                "w": 6.5,
+                "h": 3.9
+              },
+              "lado": "cima"
+            }
+          ],
+          "zoom": {
+            "x": 68.8,
+            "y": 39.4,
+            "w": 27.8,
+            "h": 10.3
+          },
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-04-estoque/02-saldo.png",
+            "regra-estoque-saldo-nasce-de-movimentos",
+            "videos/roteiros/consultor-04-estoque.json#03",
+            "videos/roteiros/consultor-04-estoque.json#09",
+            "scripts/dados-checklists-estagiarios.mjs#estoque"
+          ]
+        },
+        {
+          "titulo": "Repare nos saldos negativos",
+          "texto": "O selo vermelho no alto conta os saldos negativos da lista, e a linha negativa aparece em vermelho. Nesta captura, ela veio da saída da nota fiscal.",
+          "imagem": "/manuais/estoque/img/01-saldo.webp",
+          "alt": "Selo 1 saldo(s) negativo(s) e linha com saldo -1 em vermelho",
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Selo de saldos negativos",
+              "explicacao": "Quantas linhas da lista estão com saldo abaixo de zero.",
+              "caixa": {
+                "x": 22.8,
+                "y": 21.4,
+                "w": 8.6,
+                "h": 3.1
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 2,
+              "rotulo": "SALDO negativo",
+              "explicacao": "Saiu mais do que entrou neste local e nesta cor. Aqui foi a saída da nota fiscal finalizada sem saldo.",
+              "caixa": {
+                "x": 69.2,
+                "y": 57.9,
+                "w": 3.9,
+                "h": 3.6
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 3,
+              "rotulo": "DISPONÍVEL negativo",
+              "explicacao": "O disponível acompanha o saldo e também fica negativo.",
+              "caixa": {
+                "x": 76.7,
+                "y": 58.1,
+                "w": 2.3,
+                "h": 3.1
+              },
+              "lado": "baixo"
+            }
+          ],
+          "atencao": "Na versão 1.22.13, finalizar a NF gera a saída mesmo sem saldo: o item pode ficar negativo. Confira o saldo antes de faturar.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-04-estoque/02-saldo.png",
+            "videos/roteiros/consultor-04-estoque.json#07",
+            "videos/roteiros/consultor-04-estoque.json#09"
+          ],
+          "largura": 1600,
+          "altura": 900
+        }
+      ]
+    },
+    {
+      "id": "rastrear-movimentos",
+      "titulo": "Rastreando os movimentos",
+      "nivel": "basico",
+      "objetivo": "Descobrir de onde veio cada entrada e para onde foi cada saída.",
+      "onde": "Estoque › Movimentos",
+      "passos": [
+        {
+          "titulo": "Abra Movimentos e filtre",
+          "texto": "No menu do Estoque, clique em Movimentos. Use a busca ou os filtros (Tipo, Origem, Produto, Local, datas) para achar o movimento que você procura.",
+          "imagem": "/manuais/estoque/img/03-movimento-recebimento.webp",
+          "alt": "Tela Movimentos de Estoque com a busca, os filtros e um movimento de entrada do recebimento.",
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Movimentos",
+              "explicacao": "O histórico de entradas, saídas, transferências e reavaliações do estoque.",
+              "caixa": {
+                "x": 0.6,
+                "y": 23.6,
+                "w": 14.3,
+                "h": 3.7
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 2,
+              "rotulo": "Busca",
+              "explicacao": "Procure pelo número do movimento. Nesta captura, a busca é 000005.",
+              "caixa": {
+                "x": 20.2,
+                "y": 26.9,
+                "w": 28.8,
+                "h": 5.2
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 3,
+              "rotulo": "Filtros",
+              "explicacao": "Empresa, Data início e Data fim, Tipo, Origem, Propriedade, Local (origem ou destino), Produto e Terceiro / Participante. Combine para estreitar a lista.",
+              "caixa": {
+                "x": 19.1,
+                "y": 36.7,
+                "w": 77.9,
+                "h": 24.8
+              },
+              "lado": "cima"
+            }
+          ],
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-01-suprimentos/03-entrada-estoque.png",
+            "scripts/dados-checklists-estagiarios.mjs#estoque"
+          ],
+          "largura": 1600,
+          "altura": 900
+        },
+        {
+          "titulo": "Leia a entrada do recebimento",
+          "texto": "Em cada linha, leia o TIPO, a ORIGEM e o caminho ORIGEM → DESTINO. Esta é a entrada gerada pela nota de recebimento.",
+          "imagem": "/manuais/estoque/img/03-movimento-recebimento.webp",
+          "alt": "Linha do movimento 000005: Entrada, Recebimento (NR), origem Recebimento, destino almoxarifado central.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Tipo: Entrada · Recebimento (NR)",
+              "explicacao": "O material entrou pela finalização de uma nota de recebimento.",
+              "caixa": {
+                "x": 40.3,
+                "y": 68.2,
+                "w": 5.3,
+                "h": 7.3
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 2,
+              "rotulo": "Origem: Recebimento",
+              "explicacao": "O módulo que gerou o movimento.",
+              "caixa": {
+                "x": 46.4,
+                "y": 70.3,
+                "w": 5.8,
+                "h": 3.3
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 3,
+              "rotulo": "Origem → Destino",
+              "explicacao": "Para onde o material foi: o almoxarifado central. Sem almoxarifado central ativo, o recebimento trava.",
+              "caixa": {
+                "x": 52.7,
+                "y": 68.1,
+                "w": 11,
+                "h": 7.7
+              },
+              "lado": "baixo"
+            }
+          ],
+          "zoom": {
+            "x": 29.4,
+            "y": 63.3,
+            "w": 40,
+            "h": 16.9
+          },
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-01-suprimentos/03-entrada-estoque.png",
+            "scripts/dados-checklists-estagiarios.mjs#estoque",
+            "regra-estoque-almoxarifado-central-ativo-e-pre-requisito"
+          ]
+        },
+        {
+          "titulo": "Reconheça as saídas",
+          "texto": "Duas saídas comuns: Expedição (PV), com origem NF-e, é a nota fiscal finalizada; Baixa de componente em OP, com origem Requisição, é o material consumido pela produção.",
+          "imagem": "/manuais/estoque/img/04-movimentos-saida.webp",
+          "alt": "Duas saídas: Expedição (PV) com origem NF-e e Baixa de componente em OP com origem Requisição",
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Saída · Expedição (PV)",
+              "explicacao": "Lançada quando a nota fiscal do pedido de venda é finalizada. Pode deixar o saldo negativo se faltar material.",
+              "caixa": {
+                "x": 39.6,
+                "y": 69.9,
+                "w": 6,
+                "h": 5.8
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 2,
+              "rotulo": "Origem NF-e",
+              "explicacao": "O documento que gerou a saída: a nota fiscal.",
+              "caixa": {
+                "x": 47.4,
+                "y": 71.3,
+                "w": 3.1,
+                "h": 3.1
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 3,
+              "rotulo": "Saída · Baixa de componente em OP",
+              "explicacao": "O material consumido por uma ordem de produção.",
+              "caixa": {
+                "x": 39.6,
+                "y": 78.1,
+                "w": 6.5,
+                "h": 9.3
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 4,
+              "rotulo": "Origem Requisição",
+              "explicacao": "A requisição de material da OP, que nasce da estrutura do produto.",
+              "caixa": {
+                "x": 47.4,
+                "y": 81.2,
+                "w": 4.9,
+                "h": 3.3
+              },
+              "lado": "direita"
+            }
+          ],
+          "zoom": {
+            "x": 29.4,
+            "y": 63.3,
+            "w": 33.1,
+            "h": 25
+          },
+          "atencao": "Abra um movimento só para ler: Estornar altera o estoque.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-04-estoque/03-saida-nf.png",
+            "scripts/dados-checklists-estagiarios.mjs#estoque",
+            "videos/roteiros/consultor-04-estoque.json#10"
+          ],
+          "largura": 1600,
+          "altura": 900
+        }
+      ]
+    },
+    {
+      "id": "novo-movimento",
+      "titulo": "Lançando um novo movimento",
+      "nivel": "basico",
+      "objetivo": "Conhecer os tipos de movimento e os campos obrigatórios de uma entrada manual.",
+      "onde": "Estoque › Movimentos › + Novo Movimento",
+      "passos": [
+        {
+          "titulo": "Escolha o tipo de movimento",
+          "texto": "Em + Novo Movimento, o passo 1 é o Tipo de movimento. Clique no tipo e leia a frase logo abaixo: ela explica o que o tipo escolhido faz.",
+          "imagem": "/manuais/estoque/img/02-novo-movimento.webp",
+          "alt": "Passo 1 do Novo movimento de estoque com os oito tipos de movimento",
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Tipo de movimento",
+              "explicacao": "O passo 1 do formulário: escolha a operação que será registrada.",
+              "caixa": {
+                "x": 22.4,
+                "y": 29.6,
+                "w": 15.2,
+                "h": 4.8
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 2,
+              "rotulo": "Os 8 tipos",
+              "explicacao": "Entrada manual, Ajuste positivo, Ajuste negativo, Transferência, Requisição, Devolução de uso, Empréstimo e Descarte. O escolhido fica com a borda verde (aqui, Entrada manual).",
+              "caixa": {
+                "x": 19.7,
+                "y": 36.8,
+                "w": 67.5,
+                "h": 10.2
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 3,
+              "rotulo": "Descrição do tipo",
+              "explicacao": "Explica o tipo escolhido. Para Entrada manual: Entrada avulsa fora de NF.",
+              "caixa": {
+                "x": 19.8,
+                "y": 47.6,
+                "w": 75.8,
+                "h": 4.2
+              },
+              "lado": "baixo"
+            }
+          ],
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-04-estoque/01-novo-movimento.png",
+            "regra-estoque-saldo-nasce-de-movimentos",
+            "scripts/dados-checklists-estagiarios.mjs#estoque"
+          ],
+          "largura": 1600,
+          "altura": 900
+        },
+        {
+          "titulo": "Informe Empresa e Local de destino e salve",
+          "texto": "Escolha a Empresa (obrigatória e não vem preenchida) e o Local de destino. Na linha do item, mais abaixo, informe Produto, Quantidade e Custo unit. Salve com Salvar (Ctrl+S).",
+          "imagem": "/manuais/estoque/img/02-novo-movimento.webp",
+          "alt": "Campos Empresa, Propriedade e Local de destino e os botões do rodapé",
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Empresa *",
+              "explicacao": "A empresa dona do estoque. Obrigatória e vem vazia: escolha antes de salvar.",
+              "caixa": {
+                "x": 19.7,
+                "y": 65,
+                "w": 25,
+                "h": 7.3
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 2,
+              "rotulo": "Propriedade",
+              "explicacao": "De quem é o material: Própria (da empresa) ou Cliente (terceiro).",
+              "caixa": {
+                "x": 45.1,
+                "y": 64.9,
+                "w": 25,
+                "h": 6.3
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 3,
+              "rotulo": "Local de destino *",
+              "explicacao": "O local de estoque que recebe o material. Obrigatório.",
+              "caixa": {
+                "x": 19.7,
+                "y": 85.4,
+                "w": 37.8,
+                "h": 7.3
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 4,
+              "rotulo": "Salvar (Ctrl+S)",
+              "explicacao": "Grava o movimento: o saldo e o custo médio do produto são atualizados. O atalho Ctrl+S também salva.",
+              "caixa": {
+                "x": 87.1,
+                "y": 93.7,
+                "w": 10,
+                "h": 5.3
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 5,
+              "rotulo": "Salvar e novo",
+              "explicacao": "Grava e já começa outro movimento.",
+              "caixa": {
+                "x": 78.9,
+                "y": 93.9,
+                "w": 8,
+                "h": 5.1
+              },
+              "lado": "cima"
+            }
+          ],
+          "atencao": "Cancelar (Esc) sai sem salvar. Em treino, use só para conhecer os tipos.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-04-estoque/01-novo-movimento.png",
+            "regra-estoque-saldo-nasce-de-movimentos",
+            "scripts/dados-checklists-estagiarios.mjs#estoque"
+          ],
+          "largura": 1600,
+          "altura": 900
+        }
+      ]
+    },
+    {
+      "id": "transferencia-inventario-emprestimo",
+      "titulo": "Transferência, inventário e empréstimo",
+      "nivel": "avancado",
+      "objetivo": "Entender as três operações que mais geram dúvida: reserva da transferência, congelamento do inventário e devolução do empréstimo.",
+      "onde": "Estoque › Transferências · Inventários · Empréstimos",
+      "passos": [
+        {
+          "titulo": "Transferência: pendente reserva, confirmada movimenta",
+          "texto": "Em Transferências, use o filtro Status Pendentes para ver as transferências que ainda reservam a origem. Confirmar movimenta o saldo; excluir a pendente libera a reserva.",
+          "imagem": "/manuais/estoque/img/05-transferencias.webp",
+          "alt": "Tela Transferências de Estoque filtrada em Pendentes, sem registros, com a explicação da tela",
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Regra escrita na tela",
+              "explicacao": "Pendentes reservam a origem; confirmar efetiva o movimento. Na pendente, o disponível cai e o saldo fica igual.",
+              "caixa": {
+                "x": 23.3,
+                "y": 20.4,
+                "w": 44.8,
+                "h": 3
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 2,
+              "rotulo": "Status: Pendentes",
+              "explicacao": "Mostra só as transferências que ainda não foram confirmadas. Nesta captura, não há nenhuma.",
+              "caixa": {
+                "x": 55,
+                "y": 37.8,
+                "w": 5.9,
+                "h": 4
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 3,
+              "rotulo": "Explicação da lista vazia",
+              "explicacao": "Diz de onde vêm as pendentes (plano de suprimento ou Nova transferência) e o que fazer: confirmar ou excluir.",
+              "caixa": {
+                "x": 44.1,
+                "y": 63.8,
+                "w": 27.9,
+                "h": 9.4
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 4,
+              "rotulo": "+ Nova transferência",
+              "explicacao": "Cria uma transferência entre locais. Origem igual ao destino e quantidade zero são recusadas.",
+              "caixa": {
+                "x": 85.8,
+                "y": 17.9,
+                "w": 11.1,
+                "h": 4.7
+              },
+              "lado": "baixo"
+            }
+          ],
+          "atencao": "Origem igual ao destino, quantidade zero ou negativa e transferência sem produto são recusadas.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-04-estoque/06-transferencias.png",
+            "regra-estoque-transferencia-pendente-reserva-o-disponivel",
+            "videos/roteiros/consultor-04-estoque.json#05"
+          ],
+          "largura": 1600,
+          "altura": 900
+        },
+        {
+          "titulo": "Inventário: o local fica congelado",
+          "texto": "Iniciar um inventário fotografa o saldo e bloqueia os movimentos no local, como diz a própria tela. Na lista, leia o STATUS de cada inventário.",
+          "imagem": "/manuais/estoque/img/06-inventarios.webp",
+          "alt": "Lista de inventários com dois inventários cancelados e a explicação no cabeçalho",
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Aviso da tela",
+              "explicacao": "Enquanto um inventário está ativo no local, os movimentos de saldo ficam bloqueados. A contagem tem até 3 etapas, com funções separadas.",
+              "caixa": {
+                "x": 22.2,
+                "y": 16.1,
+                "w": 52.3,
+                "h": 5.1
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 2,
+              "rotulo": "STATUS Cancelado",
+              "explicacao": "Inventário cancelado com motivo: o local é liberado sem gerar ajuste de saldo.",
+              "caixa": {
+                "x": 24.1,
+                "y": 41.1,
+                "w": 5.9,
+                "h": 8.9
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 3,
+              "rotulo": "APROVAÇÃO",
+              "explicacao": "A aprovação do inventário precisa ser de outra pessoa, até para o Super Usuário. Aqui aparece — porque nenhum foi aprovado.",
+              "caixa": {
+                "x": 86.9,
+                "y": 37,
+                "w": 5.9,
+                "h": 13
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 4,
+              "rotulo": "+ Novo inventário",
+              "explicacao": "Inicia um inventário: fotografa o saldo e congela o local.",
+              "caixa": {
+                "x": 88.1,
+                "y": 14.4,
+                "w": 9.9,
+                "h": 4.8
+              },
+              "lado": "baixo"
+            }
+          ],
+          "atencao": "A segunda contagem e a aprovação precisam ser de outra pessoa, até para Super Usuário: crie os usuários antes.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-04-estoque/04-inventarios.png",
+            "regra-estoque-inventario-congela-o-local-e-exige-outra-pessoa",
+            "videos/roteiros/consultor-04-estoque.json#06",
+            "videos/roteiros/consultor-04-estoque.json#12",
+            "videos/capturas/guias-staging/estoque-inventarios.png (staging v1.23.2, 05/11/2026)"
+          ],
+          "largura": 1600,
+          "altura": 900,
+          "dica": "Na versão 1.23.2 (staging, 05/11/2026), a tela diz: o inventário Geral bloqueia o local; Cíclico e Pontual bloqueiam os produtos selecionados desde a abertura. A conferir na tela."
+        },
+        {
+          "titulo": "Empréstimo: leia os cartões",
+          "texto": "Em Empréstimos, os cartões do alto resumem os empréstimos entre obras pela situação da devolução. Para registrar um novo, use + Registrar empréstimo.",
+          "imagem": "/manuais/estoque/img/07-emprestimos.webp",
+          "alt": "Tela Empréstimos entre obras com os cartões Em aberto, Parcial, Devolvidos e Pendente total.",
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Em aberto",
+              "explicacao": "Empréstimos aguardando devolução.",
+              "caixa": {
+                "x": 17.6,
+                "y": 30.1,
+                "w": 9.4,
+                "h": 10.2
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 2,
+              "rotulo": "Parcial",
+              "explicacao": "Empréstimos com devolução em andamento: parte do material já voltou.",
+              "caixa": {
+                "x": 38.3,
+                "y": 30.1,
+                "w": 10.1,
+                "h": 10.2
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 3,
+              "rotulo": "Devolvidos",
+              "explicacao": "Empréstimos concluídos: todo o material voltou.",
+              "caixa": {
+                "x": 59.1,
+                "y": 30.1,
+                "w": 8.8,
+                "h": 10.2
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 4,
+              "rotulo": "Pendente total",
+              "explicacao": "Quanto ainda falta devolver do total emprestado (aqui, 0 de 4 emprestados).",
+              "caixa": {
+                "x": 79.8,
+                "y": 30.1,
+                "w": 9,
+                "h": 10.2
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 5,
+              "rotulo": "+ Registrar empréstimo",
+              "explicacao": "Registra o empréstimo de material de um local para outro, com data de devolução.",
+              "caixa": {
+                "x": 85.6,
+                "y": 14.4,
+                "w": 12.3,
+                "h": 4.8
+              },
+              "lado": "baixo"
+            }
+          ],
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-04-estoque/05-emprestimo.png",
+            "regra-estoque-emprestimo-devolucao-parcial-e-total",
+            "videos/roteiros/consultor-04-estoque.json#13"
+          ],
+          "largura": 1600,
+          "altura": 900
+        },
+        {
+          "titulo": "Empréstimo: acompanhe a devolução na linha",
+          "texto": "Na linha do empréstimo, leia o STATUS, quanto já foi devolvido, o PROGRESSO e o PRAZO.",
+          "imagem": "/manuais/estoque/img/07-emprestimos.webp",
+          "alt": "Linha do empréstimo 000009: Devolvido, 4/4 tudo devolvido, progresso 100% e prazo 3 dias atrasada.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "STATUS Devolvido",
+              "explicacao": "Todo o material emprestado voltou.",
+              "caixa": {
+                "x": 63.6,
+                "y": 59.8,
+                "w": 5.6,
+                "h": 3.2
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 2,
+              "rotulo": "DEVOLVIDO / TOTAL",
+              "explicacao": "Quanto já voltou do total emprestado. 4/4: tudo devolvido.",
+              "caixa": {
+                "x": 71.7,
+                "y": 59.2,
+                "w": 6.1,
+                "h": 4.4
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 3,
+              "rotulo": "PROGRESSO",
+              "explicacao": "A devolução em %. A tela diz que o andamento é atualizado a cada devolução.",
+              "caixa": {
+                "x": 78.4,
+                "y": 60.1,
+                "w": 5.3,
+                "h": 2.4
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 4,
+              "rotulo": "PRAZO",
+              "explicacao": "A situação do prazo de devolução. Nesta captura aparece \"3 dias atrasada\" mesmo com tudo devolvido: a conferir na tela.",
+              "caixa": {
+                "x": 84.4,
+                "y": 59.1,
+                "w": 5,
+                "h": 4.4
+              },
+              "lado": "baixo"
+            }
+          ],
+          "zoom": {
+            "x": 62.5,
+            "y": 53.1,
+            "w": 36.9,
+            "h": 14.2
+          },
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-04-estoque/05-emprestimo.png",
+            "regra-estoque-emprestimo-devolucao-parcial-e-total",
+            "videos/roteiros/consultor-04-estoque.json#13"
+          ],
+          "dica": "A devolução pode ser parcial e depois total; devolver mais do que foi emprestado é recusado."
+        }
+      ]
+    }
+  ],
+  "consultor": {
+    "implantacao": [
+      "Fundação concluída: tipo de categoria, unidade de estoque e fator de embalagem de cada produto conferidos, e cores cadastradas. Fonte: checklist de implantação do Estoque (README de Suprimentos, ordem 3; CAD-CAT-004, EST-SLD-003).",
+      "Locais e almoxarifado central ativo em Estoque › Locais antes de qualquer recebimento, produção ou nota. Fonte: regra-estoque-almoxarifado-central-ativo-e-pre-requisito.",
+      "Data de corte combinada com o cliente, depois da contagem física e das últimas notas do sistema antigo; saldo inicial por Estoque › Saldo › Mais › Importar saldo, com a planilha de custo aceita pela contabilidade. Fonte: checklist de implantação do Estoque, fluxo 2.",
+      "Três usuários de teste: quem cria e quem confirma a transferência; dois contadores e um aprovador do inventário. Fonte: README de Suprimentos, S9; EST-INV-004 a 007.",
+      "Saber se o cliente usa inventário (PRO), localizações (PRO) e empréstimo, e quem pode retirar material reservado. Fonte: EST C, etapas 3 e 5; EST-MOV-010."
+    ],
+    "perguntasDoCliente": [
+      {
+        "pergunta": "Posso corrigir o saldo digitando o número certo?",
+        "resposta": "Não. O saldo nasce de movimentos: a correção é um ajuste (positivo ou negativo) ou um inventário com aprovação.",
+        "fontes": [
+          "regra-estoque-saldo-nasce-de-movimentos",
+          "regra-estoque-inventario-congela-o-local-e-exige-outra-pessoa"
+        ]
+      },
+      {
+        "pergunta": "Por que o disponível é menor que o saldo?",
+        "resposta": "Há reserva: por exemplo, uma transferência pendente. O número da coluna Reservada do Saldo abre a reserva.",
+        "fontes": [
+          "regra-estoque-transferencia-pendente-reserva-o-disponivel"
+        ]
+      },
+      {
+        "pergunta": "Onde ficam as reservas no menu?",
+        "resposta": "Não existe item Reservas no menu: a reserva está na coluna RESERVADA do Saldo (oculta por padrão) e na aba Reservas do produto.",
+        "fontes": [
+          "scripts/dados-checklists-implantacao.mjs#implantacao-estoque",
+          "scripts/dados-checklists-estagiarios.mjs#estoque"
+        ]
+      },
+      {
+        "pergunta": "Por que o item ficou negativo depois de faturar?",
+        "resposta": "Na versão 1.22.13, finalizar a NF lança a saída Expedição (PV) mesmo sem saldo. Confira o saldo antes de faturar.",
+        "fontes": [
+          "regra-faturamento-finalizar-nf-requisitos",
+          "videos/roteiros/consultor-04-estoque.json#07"
+        ]
+      }
+    ],
+    "errosComuns": [
+      {
+        "titulo": "Lançar antes do saldo inicial",
+        "texto": "Nada se lança antes do saldo inicial nas mesmas variações: o retroativo é recusado e o custo médio se perde.",
+        "fontes": [
+          "scripts/dados-checklists-implantacao.mjs#implantacao-estoque"
+        ]
+      },
+      {
+        "titulo": "Mesmo usuário na segunda contagem",
+        "texto": "A segunda contagem do inventário diz prossiga, mas recusa o mesmo usuário. A aprovação também exige outra pessoa.",
+        "fontes": [
+          "videos/roteiros/consultor-04-estoque.json#14",
+          "regra-estoque-inventario-congela-o-local-e-exige-outra-pessoa"
+        ]
+      },
+      {
+        "titulo": "Inventário esquecido aberto",
+        "texto": "Inventário aberto congela o local. Não deixe inventário de teste aberto em empresa de produção.",
+        "fontes": [
+          "scripts/dados-checklists-implantacao.mjs#implantacao-estoque"
+        ]
+      },
+      {
+        "titulo": "Material reservado saindo",
+        "texto": "Nesta versão, uma saída ainda passa por cima de material reservado: confira o disponível.",
+        "fontes": [
+          "videos/roteiros/consultor-04-estoque.json#14"
+        ]
+      },
+      {
+        "titulo": "Dois caminhos para a mesma operação",
+        "texto": "Transferência e Empréstimo existem como tipo de movimento e como telas próprias: use um só caminho por teste.",
+        "fontes": [
+          "scripts/dados-checklists-implantacao.mjs#implantacao-estoque"
+        ]
+      }
+    ]
+  },
+  "fontes": [
+    "regra-estoque-saldo-nasce-de-movimentos",
+    "regra-estoque-transferencia-pendente-reserva-o-disponivel",
+    "regra-estoque-inventario-congela-o-local-e-exige-outra-pessoa",
+    "regra-estoque-emprestimo-devolucao-parcial-e-total",
+    "regra-estoque-almoxarifado-central-ativo-e-pre-requisito",
+    "regra-faturamento-finalizar-nf-requisitos",
+    "funcional-estoque-movimentos-saldo-transferencia-inventario",
+    "db/migrations/002_modulos_iniciais.sql#estoque",
+    "scripts/dados-checklists-estagiarios.mjs#estoque",
+    "scripts/dados-checklists-implantacao.mjs#implantacao-estoque",
+    "videos/roteiros/consultor-04-estoque.json",
+    "videos/public/telas/consultor-04-estoque/02-saldo.png",
+    "videos/public/telas/consultor-04-estoque/01-novo-movimento.png",
+    "videos/public/telas/consultor-04-estoque/03-saida-nf.png",
+    "videos/public/telas/consultor-04-estoque/06-transferencias.png",
+    "videos/public/telas/consultor-04-estoque/04-inventarios.png",
+    "videos/public/telas/consultor-04-estoque/05-emprestimo.png",
+    "videos/public/telas/consultor-01-suprimentos/03-entrada-estoque.png"
+  ],
+  "pendencias": [
+    "CAPTURA: Estoque › Visão geral — indicadores e bloco Pendências de hoje.",
+    "CAPTURA: Estoque › Saldo › Detalhe (extrato do produto) — abas Posições e Histórico.",
+    "CAPTURA: Estoque › Saldo com a coluna RESERVADA visível (vem oculta por padrão).",
+    "CAPTURA: Estoque › Locais — almoxarifado central ativo.",
+    "CAPTURA: Estoque › Saldo › Mais › Importar saldo — janela de importação (só leitura).",
+    "CAPTURA: Estoque › Transferências — transferência pendente com Confirmar e Excluir.",
+    "CAPTURA: inventário em contagem e Estoque › Aprovações › Inventários.",
+    "RESOLVIDO (staging v1.23.2, 05/11/2026): o menu mostra Inventários e Inventário — Contagem; Estoque › Inventário (checklist de implantação) está desatualizado.",
+    "Validação na tela pendente: guia gerado de capturas e da base, sem sessão no Flow.",
+    "DIVERGÊNCIA nova (staging v1.23.2, 05/11/2026): a tela Inventários diz que o inventário Geral bloqueia o local e que Cíclico e Pontual bloqueiam só os produtos selecionados; a regra da base e a captura de 1.22.13 falam em congelar o local. A conferir na tela.",
+    "Empréstimos (captura 05-emprestimo): o PRAZO mostra \"3 dias atrasada\" num empréstimo já Devolvido (4/4). A conferir na tela se o prazo deveria sumir após a devolução total."
+  ]
+}

@@ -1,0 +1,724 @@
+{
+  "modulo": "producao",
+  "titulo": "Produção — guia visual",
+  "resumo": "Como o pedido vira ordem de produção (OP), consome material do estoque e entrega o produto acabado com custo — e onde acompanhar cada OP.",
+  "versaoSistema": "1.22.13 (capturas do ambiente de teste, 21/10/2026)",
+  "atualizadoEm": "2026-11-05",
+  "status": "rascunho",
+  "conceitos": [
+    {
+      "titulo": "O que é a ordem de produção",
+      "icone": "producao",
+      "texto": "A OP é a ordem para a fábrica produzir um item. Ela nasce do pedido de venda ou da obra, consome material do estoque e entrega o produto acabado.",
+      "fontes": [
+        "scripts/dados-checklists-estagiarios.mjs#producao",
+        "db/migrations/002_modulos_iniciais.sql#producao"
+      ]
+    },
+    {
+      "titulo": "Tudo começa na estrutura do produto",
+      "icone": "lista",
+      "texto": "A estrutura é a lista de materiais e quantidades de cada produto. Ao salvar a OP, as requisições de material nascem sozinhas: quantidade da estrutura vezes a quantidade da OP.",
+      "fontes": [
+        "regra-producao-requisicoes-nascem-da-estrutura-ao-salvar",
+        "videos/roteiros/consultor-05-producao.json#02"
+      ]
+    },
+    {
+      "titulo": "Status da OP",
+      "icone": "status",
+      "texto": "Em aberto ainda não entrou na execução; Em execução já começou; Pausada está interrompida; Produzido é o estado final; Cancelada saiu do processo.",
+      "fontes": [
+        "roteiro-producao-02-painel-de-fabrica-com-sistemas-tecnicos#022",
+        "scripts/dados-checklists-estagiarios.mjs#producao"
+      ]
+    },
+    {
+      "titulo": "Produzido gera a entrada do acabado",
+      "icone": "estoque",
+      "texto": "Marcar produzido leva a OP a Produzido e lança a Entrada de produto acabado (OP) no almoxarifado central, com a quantidade e o custo da OP.",
+      "fontes": [
+        "regra-producao-marcar-produzido-gera-entrada-do-produto-acabado"
+      ]
+    },
+    {
+      "titulo": "A OP não tem abas",
+      "icone": "menu",
+      "texto": "Cada detalhe da OP abre por um item do menu da linha: Materiais necessários, Etapas de execução da OP, Apontamentos, Custo da OP e Linha do tempo.",
+      "fontes": [
+        "scripts/dados-checklists-estagiarios.mjs#producao",
+        "funcional-producao-ordens-de-producao-e-separacao#000"
+      ]
+    }
+  ],
+  "palavras": [
+    {
+      "termo": "Ordem de produção (OP)",
+      "definicao": "Ordem para fabricar uma quantidade de um produto. Número no formato OP-.",
+      "fontes": [
+        "funcional-producao-ordens-de-producao-e-separacao#000"
+      ]
+    },
+    {
+      "termo": "Nova OP",
+      "definicao": "Botão no topo de Ordens de produção que abre o painel da nova ordem.",
+      "fontes": [
+        "funcional-producao-ordens-de-producao-e-separacao#000",
+        "glossario: producao.nova-op"
+      ]
+    },
+    {
+      "termo": "Estrutura de produto",
+      "definicao": "Lista de materiais e quantidades do produto, em Produção › Configurações.",
+      "fontes": [
+        "regra-producao-requisicoes-nascem-da-estrutura-ao-salvar",
+        "scripts/dados-checklists-implantacao.mjs#implantacao-producao"
+      ]
+    },
+    {
+      "termo": "Requisição",
+      "definicao": "Pedido de material da OP ao estoque. Baixada, vira o movimento Baixa de componente em OP.",
+      "fontes": [
+        "regra-producao-requisicoes-nascem-da-estrutura-ao-salvar"
+      ]
+    },
+    {
+      "termo": "Apontamento",
+      "definicao": "Registro de quem trabalhou em cada etapa, com início e fim.",
+      "fontes": [
+        "scripts/dados-checklists-estagiarios.mjs#producao"
+      ]
+    },
+    {
+      "termo": "Marcar produzido",
+      "definicao": "Ação de Mais ações que conclui a OP e lança a entrada do produto acabado.",
+      "fontes": [
+        "regra-producao-marcar-produzido-gera-entrada-do-produto-acabado"
+      ]
+    },
+    {
+      "termo": "Custo da OP",
+      "definicao": "Janela que compara custo estimado e realizado, com o detalhe por etapa.",
+      "fontes": [
+        "regra-producao-marcar-produzido-gera-entrada-do-produto-acabado",
+        "videos/public/telas/consultor-05-producao/03-custo.png"
+      ]
+    },
+    {
+      "termo": "Painel de fábrica",
+      "definicao": "Visão do chão de fábrica em Cards, Lista ou Timeline, com OPs no prazo e atrasadas.",
+      "fontes": [
+        "scripts/dados-checklists-estagiarios.mjs#producao"
+      ]
+    }
+  ],
+  "mapa": {
+    "antes": [
+      "vendas",
+      "estoque"
+    ],
+    "depois": [
+      "estoque",
+      "expedicao",
+      "servicos"
+    ],
+    "texto": "Recebe os pedidos de Vendas e usa o material do Estoque. O produto acabado volta para o Estoque e segue para a Expedição e para a instalação em Serviços.",
+    "fontes": [
+      "db/migrations/002_modulos_iniciais.sql#producao",
+      "scripts/dados-checklists-estagiarios.mjs#producao"
+    ]
+  },
+  "capitulos": [
+    {
+      "id": "lista-de-ops",
+      "titulo": "Conhecendo a lista de ordens de produção",
+      "nivel": "basico",
+      "objetivo": "Encontrar uma OP, ler o status e saber o que cada botão da linha faz.",
+      "onde": "Produção › Ordens de produção",
+      "passos": [
+        {
+          "titulo": "Abra Ordens de produção",
+          "texto": "No menu de módulos, abra Produção: ele abre em Ordens de produção. Leia os cartões do alto e localize o botão Nova OP, no topo à direita.",
+          "imagem": "/manuais/producao/img/01-ordens-de-producao.webp",
+          "alt": "Lista Ordem de produção com cartões de peso e área produzidos e o botão Nova OP",
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Ordens de produção",
+              "explicacao": "A lista das ordens de produção (OP): o que a fábrica vai produzir, quanto e em que status.",
+              "caixa": {
+                "x": 0.6,
+                "y": 19.9,
+                "w": 14.3,
+                "h": 3.7
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 2,
+              "rotulo": "Cartões de produção",
+              "explicacao": "Peso e área produzidos hoje e no mês, a partir dos apontamentos finalizados.",
+              "caixa": {
+                "x": 17.9,
+                "y": 23.8,
+                "w": 80.1,
+                "h": 20.1
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 3,
+              "rotulo": "+ Nova OP",
+              "explicacao": "Abre o formulário de uma nova ordem de produção (veja o capítulo avançado).",
+              "caixa": {
+                "x": 90.1,
+                "y": 15.2,
+                "w": 6.8,
+                "h": 4.7
+              },
+              "lado": "baixo"
+            }
+          ],
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-05-producao/01-op-lista.png",
+            "scripts/dados-checklists-estagiarios.mjs#producao"
+          ],
+          "largura": 1600,
+          "altura": 900
+        },
+        {
+          "titulo": "Filtre e leia o status da OP",
+          "texto": "Use os filtros de tipo de operação e de status (há também Filtrar por Projeto). Na linha, leia o NÚMERO, o TIPO DE OPERAÇÃO e o STATUS da OP.",
+          "imagem": "/manuais/producao/img/01-ordens-de-producao.webp",
+          "alt": "Filtros e a linha da OP-000110 de Fabricação com status Produzido",
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Todos os tipos de operação",
+              "explicacao": "Filtra por tipo: Fabricação, Corte ou Beneficiamento.",
+              "caixa": {
+                "x": 56.6,
+                "y": 53.4,
+                "w": 14.5,
+                "h": 4.7
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 2,
+              "rotulo": "Todos os status",
+              "explicacao": "Filtra por status: Em aberto, Em execução, Pausada, Produzido ou Cancelada.",
+              "caixa": {
+                "x": 71.3,
+                "y": 53.4,
+                "w": 10.4,
+                "h": 4.7
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 3,
+              "rotulo": "NÚMERO",
+              "explicacao": "O número da OP, dado pelo sistema ao salvar (OP-…).",
+              "caixa": {
+                "x": 22.3,
+                "y": 65.6,
+                "w": 5.5,
+                "h": 3.1
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 4,
+              "rotulo": "TIPO DE OPERAÇÃO",
+              "explicacao": "O tipo desta OP; nesta captura, Fabricação.",
+              "caixa": {
+                "x": 69.6,
+                "y": 65.4,
+                "w": 6.1,
+                "h": 3.3
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 5,
+              "rotulo": "STATUS",
+              "explicacao": "Produzido é o estado final: os botões de apontar e de excluir ficam travados.",
+              "caixa": {
+                "x": 78.2,
+                "y": 65.4,
+                "w": 5.9,
+                "h": 3.3
+              },
+              "lado": "baixo"
+            }
+          ],
+          "zoom": {
+            "x": 18.8,
+            "y": 47.8,
+            "w": 66.3,
+            "h": 26.1
+          },
+          "dica": "Produzido é o estado final: nessa OP, os botões de apontar e excluir ficam travados.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-05-producao/01-op-lista.png",
+            "scripts/dados-checklists-estagiarios.mjs#producao",
+            "videos/roteiros/consultor-05-producao.json#08"
+          ],
+          "largura": 1600,
+          "altura": 900
+        },
+        {
+          "titulo": "Conheça os botões da linha",
+          "texto": "Na coluna AÇÕES, cada botão faz uma coisa. Em treino, use só o olho (Visualizar OP) e o ⋯.",
+          "imagem": "/manuais/producao/img/01-ordens-de-producao.webp",
+          "alt": "Botões de ação da linha da OP: iniciar, visualizar, excluir e mais ações",
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "▶ Iniciar produção",
+              "explicacao": "Muda a OP para Em execução com um clique. Aqui aparece travado porque a OP já está Produzido.",
+              "caixa": {
+                "x": 85,
+                "y": 64.7,
+                "w": 2.8,
+                "h": 4.9
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 2,
+              "rotulo": "Visualizar OP (olho)",
+              "explicacao": "Abre a OP num painel somente leitura.",
+              "caixa": {
+                "x": 88,
+                "y": 64.7,
+                "w": 2.8,
+                "h": 4.9
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 3,
+              "rotulo": "Excluir (lixeira)",
+              "explicacao": "Exclui a OP. Também fica travado em OP Produzido.",
+              "caixa": {
+                "x": 91,
+                "y": 64.7,
+                "w": 2.8,
+                "h": 4.9
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 4,
+              "rotulo": "⋯ detalhes e Mais ações",
+              "explicacao": "Abre os detalhes da OP (Etapas de execução, Apontamentos, Materiais necessários, Linha do tempo, Custo da OP) e as Mais ações.",
+              "caixa": {
+                "x": 94.1,
+                "y": 65.3,
+                "w": 2.2,
+                "h": 3.6
+              },
+              "lado": "baixo"
+            }
+          ],
+          "zoom": {
+            "x": 71.9,
+            "y": 59.4,
+            "w": 25.8,
+            "h": 14.1
+          },
+          "atencao": "Iniciar produção muda a OP para Em execução com um clique. Em treino, use só o olho.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-05-producao/01-op-lista.png",
+            "scripts/dados-checklists-estagiarios.mjs#producao",
+            "scripts/dados-checklists-implantacao.mjs#implantacao-producao"
+          ],
+          "largura": 1600,
+          "altura": 900
+        }
+      ]
+    },
+    {
+      "id": "acompanhar-op",
+      "titulo": "Acompanhando custo e tempo da OP",
+      "nivel": "basico",
+      "objetivo": "Comparar o planejado com o realizado em custo e em tempo.",
+      "onde": "Produção › Ordens de produção › ⋯",
+      "passos": [
+        {
+          "titulo": "Abra o Custo da OP",
+          "texto": "No menu ⋯ da linha, abra Custo da OP. Compare Estimado, Realizado e Variação no Resumo de custo e veja o Detalhamento por etapa.",
+          "imagem": "/manuais/producao/img/02-custo-da-op.webp",
+          "alt": "Painel Custo da OP com Resumo de custo (Estimado, Realizado, Variação), o selo Dentro do planejado e o Detalhamento por etapa. Valores borrados.",
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Estimado",
+              "explicacao": "O custo previsto para a OP.",
+              "caixa": {
+                "x": 58.7,
+                "y": 16.2,
+                "w": 6.4,
+                "h": 4.8
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 2,
+              "rotulo": "Realizado",
+              "explicacao": "O custo que de fato aconteceu na produção.",
+              "caixa": {
+                "x": 71.1,
+                "y": 16.2,
+                "w": 6.5,
+                "h": 4.8
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 3,
+              "rotulo": "Variação",
+              "explicacao": "A diferença entre o realizado e o estimado.",
+              "caixa": {
+                "x": 83.6,
+                "y": 16.2,
+                "w": 9.2,
+                "h": 4.8
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 4,
+              "rotulo": "Detalhamento por etapa",
+              "explicacao": "Estimado, realizado e variação de cada etapa do processo (nesta captura, Cortar vidro).",
+              "caixa": {
+                "x": 58.6,
+                "y": 22.6,
+                "w": 37.8,
+                "h": 8.1
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 5,
+              "rotulo": "Selo do resultado",
+              "explicacao": "Resume a comparação; aqui, Dentro do planejado.",
+              "caixa": {
+                "x": 87.8,
+                "y": 11.3,
+                "w": 8.8,
+                "h": 3.3
+              },
+              "lado": "esquerda"
+            }
+          ],
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-05-producao/03-custo.png",
+            "scripts/dados-checklists-estagiarios.mjs#producao",
+            "regra-producao-marcar-produzido-gera-entrada-do-produto-acabado"
+          ],
+          "largura": 1600,
+          "altura": 900,
+          "zoom": {
+            "x": 56.3,
+            "y": 9.8,
+            "w": 42.5,
+            "h": 28.6
+          }
+        },
+        {
+          "titulo": "Veja a linha do tempo",
+          "texto": "Em Linha do tempo, compare o Tempo planejado com o Tempo real até agora e leia as Etapas em ordem, cada uma com o seu status.",
+          "imagem": "/manuais/producao/img/03-linha-do-tempo.webp",
+          "alt": "Linha do tempo da OP com etapas, tempo planejado, tempo real e etapas em ordem",
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Tempo planejado",
+              "explicacao": "As horas previstas para as etapas da OP (aqui, 8.0h).",
+              "caixa": {
+                "x": 58.1,
+                "y": 26.1,
+                "w": 8.3,
+                "h": 5.8
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 2,
+              "rotulo": "Tempo real até agora",
+              "explicacao": "As horas apontadas. Aqui ficou 0.0h por causa do defeito no apontamento descrito abaixo.",
+              "caixa": {
+                "x": 73.2,
+                "y": 26.1,
+                "w": 8.4,
+                "h": 5.8
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 3,
+              "rotulo": "Etapa",
+              "explicacao": "Cada etapa do processo, em ordem, com o planejado e o real (nesta captura, Cortar vidro).",
+              "caixa": {
+                "x": 28.8,
+                "y": 41.7,
+                "w": 55.1,
+                "h": 6.7
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 4,
+              "rotulo": "Status da etapa",
+              "explicacao": "Em que situação a etapa está; aqui, Pronto.",
+              "caixa": {
+                "x": 84.3,
+                "y": 41.6,
+                "w": 3.8,
+                "h": 3
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 5,
+              "rotulo": "Abrir detalhe da OP",
+              "explicacao": "Abre o detalhe da ordem de produção.",
+              "caixa": {
+                "x": 79,
+                "y": 51.8,
+                "w": 10.3,
+                "h": 4.8
+              },
+              "lado": "esquerda"
+            }
+          ],
+          "atencao": "Defeito reportado: o apontamento pode recusar a finalização (\"A data/hora de fim não pode ser no futuro\"), e o tempo real fica zerado. Anote o horário e avise o suporte.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-05-producao/04-linha-tempo.png",
+            "videos/roteiros/consultor-05-producao.json#10",
+            "scripts/dados-checklists-implantacao.mjs#implantacao-producao"
+          ],
+          "largura": 1600,
+          "altura": 900
+        }
+      ]
+    },
+    {
+      "id": "producao-no-estoque",
+      "titulo": "Vendo a produção no estoque",
+      "nivel": "basico",
+      "objetivo": "Encontrar no estoque o material consumido e o produto acabado de uma OP.",
+      "onde": "Estoque › Movimentos",
+      "passos": [
+        {
+          "titulo": "Encontre a entrada do produto acabado",
+          "texto": "Em Estoque › Movimentos, procure a entrada da OP. Confira o TIPO (Entrada de produto acabado (OP)), a ORIGEM (OP - Conclusão) e o destino no almoxarifado central.",
+          "imagem": "/manuais/producao/img/04-entrada-acabado.webp",
+          "alt": "Movimento de entrada de produto acabado (OP) com origem OP - Conclusão",
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Tipo: Entrada de produto acabado (OP)",
+              "explicacao": "O produto pronto entrou no estoque porque a OP foi marcada como produzida.",
+              "caixa": {
+                "x": 39.8,
+                "y": 68.2,
+                "w": 5.4,
+                "h": 9.1
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 2,
+              "rotulo": "Origem: OP - Conclusão",
+              "explicacao": "O movimento nasceu da conclusão da OP.",
+              "caixa": {
+                "x": 46.8,
+                "y": 71.3,
+                "w": 6.4,
+                "h": 3.1
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 3,
+              "rotulo": "Origem → Destino",
+              "explicacao": "O almoxarifado central, que precisa estar ativo: sem ele, a conclusão da OP fica bloqueada.",
+              "caixa": {
+                "x": 53.9,
+                "y": 69.3,
+                "w": 9.5,
+                "h": 7.3
+              },
+              "lado": "baixo"
+            }
+          ],
+          "dica": "O material consumido aparece como Baixa de componente em OP, com origem Requisição.",
+          "atencao": "Sem almoxarifado central ativo, a conclusão da OP fica bloqueada.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-05-producao/05-entrada-acabado.png",
+            "scripts/dados-checklists-estagiarios.mjs#producao",
+            "regra-estoque-almoxarifado-central-ativo-e-pre-requisito"
+          ],
+          "largura": 1600,
+          "altura": 900,
+          "zoom": {
+            "x": 29.4,
+            "y": 63.3,
+            "w": 40,
+            "h": 17.8
+          }
+        }
+      ]
+    },
+    {
+      "id": "nova-op-e-conclusao",
+      "titulo": "Abrindo a OP do pedido e concluindo",
+      "nivel": "avancado",
+      "objetivo": "Saber o que a Nova OP copia do pedido, o que nasce ao salvar e o que Marcar produzido grava.",
+      "onde": "Produção › Ordens de produção › Nova OP",
+      "passos": [
+        {
+          "titulo": "Preencha a Nova OP",
+          "texto": "Deixe o Número da OP vazio (o sistema numera). Escolha Pedido de venda e Item do pedido: eles copiam produto, cor e medidas, mas não a quantidade. Informe Quantidade e Empresa e clique em Salvar.",
+          "atencao": "A Empresa é obrigatória, apesar da dica dizer que herda do pedido. Não use Esc: ele fecha o painel e perde o formulário.",
+          "evidencia": "base",
+          "fontes": [
+            "regra-producao-op-copia-o-item-do-pedido-mas-nao-a-quantidade",
+            "scripts/dados-checklists-estagiarios.mjs#producao"
+          ]
+        },
+        {
+          "titulo": "Confira as requisições",
+          "texto": "Se o produto tem estrutura, as requisições já existem ao salvar. Veja em ⋯ › Materiais necessários; baixar o material gera Baixa de componente em OP.",
+          "dica": "Sem estrutura aparece o aviso \"OP sem requisições da estrutura\".",
+          "evidencia": "base",
+          "fontes": [
+            "regra-producao-requisicoes-nascem-da-estrutura-ao-salvar"
+          ]
+        },
+        {
+          "titulo": "Marque produzido",
+          "texto": "Em Mais ações › Marcar produzido, informe a Quantidade produzida e confirme. A OP vai para Produzido e o produto acabado entra no estoque.",
+          "atencao": "Divergência, a conferir na tela: o roteiro diz que as etapas abertas são encerradas pela conclusão; o plano de validação diz que marcar Produzido com etapas pendentes é bloqueado.",
+          "evidencia": "base",
+          "fontes": [
+            "regra-producao-marcar-produzido-gera-entrada-do-produto-acabado",
+            "roteiro-producao-01-ordens-de-producao-com-sistemas-tecnicos#055",
+            "plano-producao#025"
+          ]
+        }
+      ]
+    }
+  ],
+  "consultor": {
+    "implantacao": [
+      "Etapas de produção, processo e linha de produção cadastrados, e o processo informado no produto (Processo de produção padrão). Fonte: manual-07-producao, Parte 1 e 1.1.",
+      "Insumos da estrutura com saldo e almoxarifado central ativo na empresa da OP (ou local da obra na mesma empresa). Fonte: manual-07-producao, 2.4; regra-estoque-almoxarifado-central-ativo-e-pre-requisito.",
+      "Pedido de venda de teste com o produto de teste e um funcionário cadastrado para apontar. Fonte: procedimento-criar-ordem-de-producao-do-pedido.",
+      "Anotar o saldo dos insumos e do produto acabado antes de começar, para conferir as baixas e a entrada. Fonte: checklist de implantação da Produção.",
+      "Item paramétrico (perfil, chapa) da estrutura precisa de cor; na entrada de estoque a cor também deve bater. Fonte: regra-producao-item-parametrico-da-estrutura-exige-cor."
+    ],
+    "perguntasDoCliente": [
+      {
+        "pergunta": "Por que a OP não trouxe a quantidade do pedido?",
+        "resposta": "A OP copia produto, cor e medidas do item do pedido, mas a quantidade é informada na OP.",
+        "fontes": [
+          "regra-producao-op-copia-o-item-do-pedido-mas-nao-a-quantidade"
+        ]
+      },
+      {
+        "pergunta": "Preciso importar a estrutura em toda OP?",
+        "resposta": "Não. Com estrutura cadastrada, as requisições nascem ao salvar; reimportar não duplica.",
+        "fontes": [
+          "regra-producao-requisicoes-nascem-da-estrutura-ao-salvar"
+        ]
+      },
+      {
+        "pergunta": "A OP não aparece no Painel de fábrica.",
+        "resposta": "OP de produto sem processo não tem etapas, não aparece no Painel de fábrica e não aceita apontamento no terminal.",
+        "fontes": [
+          "scripts/dados-checklists-implantacao.mjs#implantacao-producao"
+        ]
+      }
+    ],
+    "errosComuns": [
+      {
+        "titulo": "Estrutura recusada sem cor",
+        "texto": "Perfil e chapa sem cor são recusados com \"Selecione a cor do produto — obrigatória para este tipo de material\".",
+        "fontes": [
+          "regra-producao-item-parametrico-da-estrutura-exige-cor"
+        ]
+      },
+      {
+        "titulo": "Conclusão bloqueada",
+        "texto": "Sem almoxarifado central ativo, a conclusão da OP e a entrada do acabado são bloqueadas (\"Conclusão bloqueada\").",
+        "fontes": [
+          "regra-estoque-almoxarifado-central-ativo-e-pre-requisito"
+        ]
+      },
+      {
+        "titulo": "Selo de disponibilidade enganoso",
+        "texto": "Antes da baixa, o selo pode descontar duas vezes a reserva da própria OP. Confira o saldo em Estoque › Saldo.",
+        "fontes": [
+          "scripts/dados-checklists-implantacao.mjs#implantacao-producao"
+        ]
+      },
+      {
+        "titulo": "Cancelar OP produzida",
+        "texto": "Cancelar OP continua habilitado numa OP Produzida e, com movimentos de estoque, os estorna. Use só com orientação.",
+        "fontes": [
+          "scripts/dados-checklists-implantacao.mjs#implantacao-producao",
+          "regra-producao-marcar-produzido-gera-entrada-do-produto-acabado"
+        ]
+      },
+      {
+        "titulo": "Reprocessar na fila de exceções",
+        "texto": "A Fila de exceções tem o botão Reprocessar: não reprocesse sem o suporte.",
+        "fontes": [
+          "scripts/dados-checklists-implantacao.mjs#implantacao-producao",
+          "scripts/dados-checklists-estagiarios.mjs#producao"
+        ]
+      }
+    ]
+  },
+  "fontes": [
+    "db/migrations/002_modulos_iniciais.sql#producao",
+    "funcional-producao-ordens-de-producao-e-separacao#000",
+    "regra-producao-op-copia-o-item-do-pedido-mas-nao-a-quantidade",
+    "regra-producao-requisicoes-nascem-da-estrutura-ao-salvar",
+    "regra-producao-item-parametrico-da-estrutura-exige-cor",
+    "regra-producao-marcar-produzido-gera-entrada-do-produto-acabado",
+    "regra-estoque-almoxarifado-central-ativo-e-pre-requisito",
+    "roteiro-producao-01-ordens-de-producao-com-sistemas-tecnicos#055",
+    "roteiro-producao-02-painel-de-fabrica-com-sistemas-tecnicos#022",
+    "plano-producao#025",
+    "scripts/dados-checklists-estagiarios.mjs#producao",
+    "scripts/dados-checklists-implantacao.mjs#implantacao-producao",
+    "videos/roteiros/consultor-05-producao.json",
+    "videos/public/telas/consultor-05-producao/01-op-lista.png",
+    "videos/public/telas/consultor-05-producao/03-custo.png",
+    "videos/public/telas/consultor-05-producao/04-linha-tempo.png",
+    "videos/public/telas/consultor-05-producao/05-entrada-acabado.png"
+  ],
+  "pendencias": [
+    "CAPTURA: Produção › Ordens de produção › Nova OP — painel da nova OP com Pedido de venda, Item do pedido, Quantidade e Empresa.",
+    "CAPTURA: menu ⋯ da linha da OP — Materiais necessários, Etapas de execução da OP, Apontamentos, Custo da OP, Linha do tempo e Mais ações.",
+    "CAPTURA: ⋯ › Materiais necessários — requisições da OP.",
+    "CAPTURA: Mais ações › Marcar produzido — janela com Quantidade produzida.",
+    "CAPTURA: Produção › Painel de fábrica — visões Cards, Lista e Timeline.",
+    "CAPTURA: Produção › Visão geral e Produção › Configurações › Estrutura de produto.",
+    "DIVERGÊNCIA a conferir na tela: marcar Produzido com etapas pendentes (roteiro: etapas são encerradas; plano de validação: bloqueado).",
+    "Observação: a captura 04-linha-tempo tem o caminho Produção › Planejamento › Op Timeline; o menu ⋯ chama o item de Linha do tempo.",
+    "Validação na tela pendente: guia gerado de capturas e da base, sem sessão no Flow."
+  ]
+}

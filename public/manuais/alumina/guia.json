@@ -1,0 +1,41 @@
+{
+  "modulo": "alumina",
+  "titulo": "Alumina (IA) — guia visual",
+  "resumo": "Guia em preparação. A base tem só a visão geral da Alumina e o plano de validação; não há roteiro de tela nem captura.",
+  "versaoSistema": "a definir (sem captura)",
+  "atualizadoEm": "2026-11-05",
+  "status": "rascunho",
+  "conceitos": [
+    {
+      "titulo": "O que é a Alumina",
+      "icone": "alumina",
+      "texto": "Assistente dentro do Faktory Flow para consultar informações, analisar dados e sugerir ações por linguagem natural, por texto ou voz. É implantada depois dos módulos operacionais, quando já há dados.",
+      "fontes": [
+        "metodologia-apostila-do-consultor#025"
+      ]
+    },
+    {
+      "titulo": "Nada muda sem confirmação",
+      "icone": "regra",
+      "texto": "O fluxo é pergunta → consulta → análise → sugestão → confirmação → execução registrada. Ações que alteram dados só executam depois de uma prévia e da confirmação do usuário, e a Alumina respeita as permissões de cada um.",
+      "fontes": [
+        "metodologia-apostila-do-consultor#025",
+        "plano-alumina#002"
+      ]
+    }
+  ],
+  "palavras": [],
+  "capitulos": [],
+  "fontes": [
+    "metodologia-apostila-do-consultor#025",
+    "plano-alumina#002"
+  ],
+  "pendencias": [
+    "Sem fonte revisada: a seção Alumina da Apostila do Consultor está marcada \"Rever\" no original (metodologia-apostila-do-consultor#025/#034). O módulo está marcado para revisão no banco do Guia.",
+    "A base só tem plano_validacao (plano-alumina, testes de licença, permissões, groundedness, voz e rollout) — serve para regras, não para passos de tela.",
+    "CAPTURA: abertura da Alumina (chat) e uma pergunta de consulta com resposta e origem dos dados.",
+    "CAPTURA: uma ação sugerida com prévia e confirmação — só em ambiente de teste e com autorização explícita.",
+    "CAPTURA: o que muda para um usuário sem permissão (resposta recusada).",
+    "Conferir na tela os nomes de interface (nenhum termo da Alumina está no glossário do Harness)."
+  ]
+}

@@ -1,0 +1,711 @@
+{
+  "modulo": "projetos",
+  "titulo": "Projetos e Obras — guia visual",
+  "resumo": "Como a obra (o projeto) amarra pedido, produção, compras, serviços, notas e financeiro, e onde acompanhar o resultado de cada obra.",
+  "versaoSistema": "1.22.13 (capturas do ambiente de teste, 20/10/2026)",
+  "atualizadoEm": "2026-11-05",
+  "status": "rascunho",
+  "conceitos": [
+    {
+      "titulo": "O projeto é a obra",
+      "icone": "projetos",
+      "texto": "Na indústria de esquadrias, o projeto é a obra. Cada obra vira um centro de controle e de resultado, do planejamento à conclusão.",
+      "fontes": [
+        "scripts/dados-checklists-estagiarios.mjs#projetos",
+        "db/migrations/002_modulos_iniciais.sql#projetos"
+      ]
+    },
+    {
+      "titulo": "O campo Projeto liga os documentos",
+      "icone": "link",
+      "texto": "Pedido, OP, solicitação de compra, medição e títulos se ligam à obra pelo campo Projeto. A lista de pedidos mostra a coluna PROJETO.",
+      "fontes": [
+        "funcional-cadastros-participante-produto-e-projeto",
+        "videos/roteiros/consultor-09-projetos.json#04"
+      ]
+    },
+    {
+      "titulo": "Ligue a obra antes de faturar",
+      "icone": "cadeado",
+      "texto": "Só o pedido Em aberto pode ser editado. Depois de faturado ou entregue, o pedido só tem Visualizar e não dá mais para ligar a obra.",
+      "fontes": [
+        "regra-vendas-editar-pedido-somente-em-aberto",
+        "scripts/dados-checklists-estagiarios.mjs#projetos"
+      ]
+    },
+    {
+      "titulo": "Estágios e etapas",
+      "icone": "lista",
+      "texto": "Estágio é a fase macro da obra; etapa é o passo acompanhado, que pode pertencer a um estágio. Os dois ficam nos botões da linha do projeto.",
+      "fontes": [
+        "manual-12-projetos-e-tarefas#003",
+        "videos/roteiros/consultor-09-projetos.json#06"
+      ]
+    },
+    {
+      "titulo": "O painel junta tudo",
+      "icone": "painel",
+      "texto": "O Painel Financeiro de Projetos mostra avisos, pendências e os valores vendido, faturado, a faturar, a receber, a pagar e o resultado da obra.",
+      "fontes": [
+        "manual-12-projetos-e-tarefas#006"
+      ]
+    }
+  ],
+  "palavras": [
+    {
+      "termo": "Projeto",
+      "definicao": "Cadastro da obra: nome, código, cliente e status.",
+      "fontes": [
+        "plano-projetos#012",
+        "videos/roteiros/consultor-09-projetos.json#02"
+      ]
+    },
+    {
+      "termo": "Novo Projeto",
+      "definicao": "Botão da lista de projetos para cadastrar uma obra.",
+      "fontes": [
+        "plano-projetos#012",
+        "videos/public/telas/consultor-09-projetos/01-projetos.png"
+      ]
+    },
+    {
+      "termo": "Estágios",
+      "definicao": "Fases macro da obra (ex.: Levantamento de Material).",
+      "fontes": [
+        "manual-12-projetos-e-tarefas#003"
+      ]
+    },
+    {
+      "termo": "Etapas",
+      "definicao": "Passos acompanhados da obra; cada etapa pode pertencer a um estágio.",
+      "fontes": [
+        "manual-12-projetos-e-tarefas#003"
+      ]
+    },
+    {
+      "termo": "Projeto (opcional)",
+      "definicao": "Campo do pedido de venda que liga o pedido à obra.",
+      "fontes": [
+        "scripts/dados-checklists-estagiarios.mjs#projetos"
+      ]
+    },
+    {
+      "termo": "Painel Financeiro de Projetos",
+      "definicao": "Painel da obra com avisos, pendências e cartões financeiros.",
+      "fontes": [
+        "manual-12-projetos-e-tarefas#006"
+      ]
+    },
+    {
+      "termo": "Pendências do projeto",
+      "definicao": "Lista clicável de pedidos sem faturamento, títulos vencidos e pendências de campo da obra.",
+      "fontes": [
+        "manual-12-projetos-e-tarefas#006",
+        "plano-projetos#044"
+      ]
+    },
+    {
+      "termo": "Avisos inteligentes",
+      "definicao": "Análise automática da obra, por exemplo material consumido acima do progresso.",
+      "fontes": [
+        "manual-12-projetos-e-tarefas#006"
+      ]
+    }
+  ],
+  "mapa": {
+    "antes": [
+      "vendas",
+      "compras",
+      "producao",
+      "estoque",
+      "financeiro"
+    ],
+    "depois": [],
+    "texto": "Implante depois de Vendas, Compras, Produção, Estoque e Financeiro: o projeto conecta todos os processos da obra e evita informação espalhada em planilhas.",
+    "fontes": [
+      "db/migrations/002_modulos_iniciais.sql#projetos",
+      "metodologia-apostila-do-consultor#021"
+    ]
+  },
+  "capitulos": [
+    {
+      "id": "cadastro-da-obra",
+      "titulo": "Conhecendo a lista de projetos",
+      "nivel": "basico",
+      "objetivo": "Localizar uma obra, ler o status e saber onde ficam etapas e estágios.",
+      "onde": "Cadastros › Projetos",
+      "passos": [
+        {
+          "titulo": "Abra a lista de projetos",
+          "texto": "No menu, em Cadastros, clique em Projetos. A lista mostra cada obra com NOME, CÓDIGO, CLIENTE, STATUS e ATIVO; para cadastrar uma obra, use + Novo Projeto.",
+          "imagem": "/manuais/projetos/img/01-projetos.webp",
+          "alt": "Lista de projetos com duas obras de teste, status, botões Etapas e Estágios",
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Cadastros › Projetos",
+              "explicacao": "Abre a lista das obras (projetos) cadastradas.",
+              "caixa": {
+                "x": 2.9,
+                "y": 55.6,
+                "w": 12,
+                "h": 3.9
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 2,
+              "rotulo": "Caminho no topo",
+              "explicacao": "Nesta captura, o caminho mostra Configurações › Projetos, embora o item esteja em Cadastros no menu: a conferir na tela.",
+              "caixa": {
+                "x": 17.1,
+                "y": 2.4,
+                "w": 16.6,
+                "h": 3.3
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 3,
+              "rotulo": "+ Novo Projeto",
+              "explicacao": "Cadastra uma nova obra: nome, código, cliente e status.",
+              "caixa": {
+                "x": 89.3,
+                "y": 13.4,
+                "w": 8.5,
+                "h": 4.7
+              },
+              "lado": "baixo"
+            }
+          ],
+          "atencao": "A conferir na tela: o menu mostra Cadastros › Projetos, mas o caminho no topo da tela mostra Configurações › Projetos.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-09-projetos/01-projetos.png",
+            "plano-projetos#012",
+            "videos/roteiros/consultor-09-projetos.json#02",
+            "videos/roteiros/consultor-09-projetos.json#09",
+            "videos/capturas/guias-staging/projetos-todos.png (staging v1.23.2, 05/11/2026)"
+          ],
+          "largura": 1600,
+          "altura": 900,
+          "dica": "Na versão 1.23.2 (staging, 05/11/2026) existe o módulo Projetos, com Dashboard Projetos, Todos os Projetos e Painel Financeiro de Projetos no menu; Cadastros › Projetos continua no menu desse módulo."
+        },
+        {
+          "titulo": "Leia a linha da obra e use Etapas e Estágios",
+          "texto": "Na linha da obra, leia o STATUS e o ATIVO. Os botões Etapas e Estágios abrem os passos acompanhados e as fases da obra; o lápis edita o cadastro.",
+          "imagem": "/manuais/projetos/img/01-projetos.webp",
+          "alt": "Linha da obra com status Planejamento, Ativo Sim e os botões Etapas, Estágios e o lápis.",
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "STATUS",
+              "explicacao": "A fase da obra; aqui, Planejamento (na linha de cima, Em andamento).",
+              "caixa": {
+                "x": 51.8,
+                "y": 43.1,
+                "w": 7,
+                "h": 3.3
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 2,
+              "rotulo": "ATIVO",
+              "explicacao": "Se a obra está ativa (Sim). Para tirar uma obra de uso, prefira inativar a excluir.",
+              "caixa": {
+                "x": 76.3,
+                "y": 43.1,
+                "w": 3.5,
+                "h": 3.3
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 3,
+              "rotulo": "Etapas",
+              "explicacao": "Os passos acompanhados da obra, como medição dos vãos, produção e instalação.",
+              "caixa": {
+                "x": 80.6,
+                "y": 42.6,
+                "w": 4.9,
+                "h": 4.7
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 4,
+              "rotulo": "Estágios",
+              "explicacao": "As fases macro da obra, como levantamento de material. Cada etapa pode pertencer a um estágio.",
+              "caixa": {
+                "x": 85.6,
+                "y": 42.6,
+                "w": 5.5,
+                "h": 4.7
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 5,
+              "rotulo": "Editar (lápis)",
+              "explicacao": "Abre o cadastro da obra para editar.",
+              "caixa": {
+                "x": 91.3,
+                "y": 42.6,
+                "w": 3,
+                "h": 4.7
+              },
+              "lado": "baixo"
+            }
+          ],
+          "zoom": {
+            "x": 51.3,
+            "y": 31.3,
+            "w": 46.9,
+            "h": 19.3
+          },
+          "atencao": "Excluir uma obra é definitivo e leva junto estágios, etapas e resultado previsto: prefira inativar.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-09-projetos/01-projetos.png",
+            "manual-12-projetos-e-tarefas#003",
+            "videos/roteiros/consultor-09-projetos.json#06",
+            "scripts/dados-checklists-implantacao.mjs#implantacao-projetos"
+          ],
+          "largura": 1600,
+          "altura": 900
+        }
+      ]
+    },
+    {
+      "id": "ligar-pedido",
+      "titulo": "Ligando o pedido à obra",
+      "nivel": "basico",
+      "objetivo": "Ver a obra de cada pedido e ligar a obra ao pedido antes de faturar.",
+      "onde": "Vendas › Pedidos de Venda",
+      "passos": [
+        {
+          "titulo": "Leia a coluna PROJETO",
+          "texto": "Na lista de Pedidos de Venda, a coluna PROJETO mostra a obra de cada pedido. Para ver só os pedidos de uma obra, use o filtro Projeto.",
+          "imagem": "/manuais/projetos/img/02-pedidos-coluna-projeto.webp",
+          "alt": "Lista de pedidos de venda com a coluna Projeto e o filtro Projeto",
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Filtro Projeto",
+              "explicacao": "Mostra só os pedidos da obra escolhida.",
+              "caixa": {
+                "x": 45.4,
+                "y": 46.3,
+                "w": 25.1,
+                "h": 4.4
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 2,
+              "rotulo": "PROJETO",
+              "explicacao": "A obra ligada ao pedido. Pedido sem projeto não aparece no painel da obra.",
+              "caixa": {
+                "x": 22.5,
+                "y": 66.6,
+                "w": 12.1,
+                "h": 4.8
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 3,
+              "rotulo": "STATUS Em aberto",
+              "explicacao": "Só o pedido Em aberto pode ser editado para ligar a obra.",
+              "caixa": {
+                "x": 73.2,
+                "y": 66.3,
+                "w": 5.1,
+                "h": 5.1
+              },
+              "lado": "baixo"
+            }
+          ],
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-09-projetos/00-pedido-projeto.png",
+            "videos/roteiros/consultor-09-projetos.json#08"
+          ],
+          "largura": 1600,
+          "altura": 900,
+          "zoom": {
+            "x": 18.8,
+            "y": 42,
+            "w": 66.3,
+            "h": 35.8
+          }
+        },
+        {
+          "titulo": "Ligue a obra pelo lápis do pedido",
+          "texto": "No pedido Em aberto, clique no lápis (Editar pedido), escolha a obra em Projeto (opcional) e clique em Salvar e Permanecer.",
+          "imagem": "/manuais/projetos/img/02-pedidos-coluna-projeto.webp",
+          "alt": "Lápis de edição e menu na linha do pedido em aberto",
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Editar pedido (lápis)",
+              "explicacao": "Abre o pedido para escolher a obra no campo Projeto (opcional).",
+              "caixa": {
+                "x": 92.1,
+                "y": 67,
+                "w": 1.8,
+                "h": 3.8
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 2,
+              "rotulo": "Menu ⋯",
+              "explicacao": "O menu de ações do pedido. Ele não tem Editar.",
+              "caixa": {
+                "x": 94.2,
+                "y": 67,
+                "w": 2,
+                "h": 3.8
+              },
+              "lado": "baixo"
+            }
+          ],
+          "zoom": {
+            "x": 71.9,
+            "y": 60.6,
+            "w": 25.6,
+            "h": 17.2
+          },
+          "atencao": "O menu ⋯ não tem Editar. Pedido Faturado ou Entregue só tem Visualizar: ligue a obra antes de faturar.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-09-projetos/00-pedido-projeto.png",
+            "scripts/dados-checklists-estagiarios.mjs#projetos",
+            "regra-vendas-editar-pedido-somente-em-aberto"
+          ],
+          "largura": 1600,
+          "altura": 900
+        }
+      ]
+    },
+    {
+      "id": "painel-da-obra",
+      "titulo": "Lendo o painel financeiro da obra",
+      "nivel": "basico",
+      "objetivo": "Escolher uma obra e ler avisos, pendências e os cartões financeiros.",
+      "onde": "Projetos › Painel Financeiro de Projetos",
+      "passos": [
+        {
+          "titulo": "Escolha a obra e leia avisos e pendências",
+          "texto": "No seletor do topo, escolha a obra. Leia os Avisos inteligentes (análise automática) e as Pendências do projeto; a seta da linha abre o documento pendente.",
+          "imagem": "/manuais/projetos/img/03-painel-financeiro.webp",
+          "alt": "Painel Financeiro de Projetos com o seletor da obra, avisos inteligentes e pendências do projeto",
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Seletor da obra",
+              "explicacao": "Escolha a obra que o painel vai mostrar.",
+              "caixa": {
+                "x": 37.8,
+                "y": 15.6,
+                "w": 24.4,
+                "h": 4.7
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 2,
+              "rotulo": "Baixar PDF",
+              "explicacao": "Gera o PDF do painel da obra.",
+              "caixa": {
+                "x": 62.9,
+                "y": 15.6,
+                "w": 7.8,
+                "h": 4.7
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 3,
+              "rotulo": "Avisos inteligentes",
+              "explicacao": "Análise automática da obra. Aqui: nenhum alerta relevante, obra dentro do esperado.",
+              "caixa": {
+                "x": 19,
+                "y": 40,
+                "w": 77.9,
+                "h": 8.7
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 4,
+              "rotulo": "Pendências do projeto",
+              "explicacao": "O que falta resolver na obra, como um pedido em aberto ainda sem faturamento.",
+              "caixa": {
+                "x": 19,
+                "y": 56.8,
+                "w": 75.1,
+                "h": 4.4
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 5,
+              "rotulo": "Abrir o documento (seta)",
+              "explicacao": "Abre o documento da pendência.",
+              "caixa": {
+                "x": 94.3,
+                "y": 57.1,
+                "w": 2.1,
+                "h": 3.8
+              },
+              "lado": "cima"
+            }
+          ],
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-09-projetos/02-painel-obra.png",
+            "manual-12-projetos-e-tarefas#006",
+            "videos/roteiros/consultor-09-projetos.json#10",
+            "videos/capturas/guias-staging/projetos-painel-financeiro.png (staging v1.23.2, 05/11/2026)"
+          ],
+          "largura": 1600,
+          "altura": 900
+        },
+        {
+          "titulo": "Leia vendido, faturado e a faturar",
+          "texto": "Os três primeiros cartões mostram quanto foi vendido para a obra, quanto já foi faturado e quanto ainda falta faturar.",
+          "imagem": "/manuais/projetos/img/03-painel-financeiro.webp",
+          "alt": "Cartões Valor vendido, Valor faturado e A faturar do painel da obra, com os valores borrados.",
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Valor vendido",
+              "explicacao": "O total dos pedidos de venda ligados à obra.",
+              "caixa": {
+                "x": 19,
+                "y": 65.1,
+                "w": 7.5,
+                "h": 3.1
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 2,
+              "rotulo": "Valor faturado",
+              "explicacao": "O que já virou nota autorizada. No painel, a receita é a nota, não o pedido.",
+              "caixa": {
+                "x": 32.3,
+                "y": 65.1,
+                "w": 8.1,
+                "h": 3.1
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 3,
+              "rotulo": "A faturar",
+              "explicacao": "O que foi vendido e ainda não foi faturado.",
+              "caixa": {
+                "x": 45.5,
+                "y": 65.1,
+                "w": 5.5,
+                "h": 3.1
+              },
+              "lado": "baixo"
+            }
+          ],
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-09-projetos/02-painel-obra.png",
+            "manual-12-projetos-e-tarefas#006",
+            "scripts/dados-checklists-estagiarios.mjs#projetos",
+            "videos/roteiros/consultor-09-projetos.json#10",
+            "videos/roteiros/consultor-09-projetos.json#11"
+          ],
+          "largura": 1600,
+          "altura": 900
+        },
+        {
+          "titulo": "Leia a receber, a pagar e o resultado",
+          "texto": "Os três últimos cartões mostram o que a obra ainda tem a receber e a pagar e o resultado. Role a tela para ver a saúde da obra, os percentuais e os valores por m².",
+          "imagem": "/manuais/projetos/img/03-painel-financeiro.webp",
+          "alt": "Cartões A receber em aberto, A pagar em aberto e Resultado do painel da obra, com os valores borrados.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "A receber em aberto",
+              "explicacao": "Os títulos a receber da obra que o cliente ainda não pagou.",
+              "caixa": {
+                "x": 58.8,
+                "y": 65.1,
+                "w": 6.8,
+                "h": 4.7
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 2,
+              "rotulo": "A pagar em aberto",
+              "explicacao": "Os títulos a pagar da obra que ainda não foram pagos.",
+              "caixa": {
+                "x": 72,
+                "y": 65.1,
+                "w": 9.1,
+                "h": 3.1
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 3,
+              "rotulo": "Resultado",
+              "explicacao": "O resultado da obra. No painel, custo é o valor destinado ou comprometido, não o que saiu do caixa.",
+              "caixa": {
+                "x": 85.1,
+                "y": 65.1,
+                "w": 5.8,
+                "h": 3.1
+              },
+              "lado": "baixo"
+            }
+          ],
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-09-projetos/02-painel-obra.png",
+            "manual-12-projetos-e-tarefas#006",
+            "scripts/dados-checklists-estagiarios.mjs#projetos",
+            "videos/roteiros/consultor-09-projetos.json#11"
+          ],
+          "atencao": "No painel, custo é o valor destinado/comprometido e receita é a nota autorizada, não o pedido. Pedido sem projeto não aparece no painel."
+        }
+      ]
+    },
+    {
+      "id": "obra-na-implantacao",
+      "titulo": "Montando a obra na implantação",
+      "nivel": "avancado",
+      "objetivo": "Cadastrar a obra com estágios e etapas e garantir que a nota e a produção da obra não travem.",
+      "onde": "Cadastros › Projetos › Novo Projeto",
+      "passos": [
+        {
+          "titulo": "Cadastre etapas e estágios",
+          "texto": "Em Etapas, escolha o Estágio (opcional), digite a descrição da etapa e clique em +. Use a alça ⋮⋮ para reordenar.",
+          "dica": "Nos estágios, distribua os pesos com cuidado para o progresso não ficar enganoso.",
+          "evidencia": "base",
+          "fontes": [
+            "manual-12-projetos-e-tarefas#003",
+            "roteiro-projetos-01-cadastro-e-acompanhamento-de-projetos#009"
+          ]
+        },
+        {
+          "titulo": "Garanta o local de estoque da obra",
+          "texto": "Se o projeto tem local de estoque próprio, ele precisa estar ativo e ser da mesma empresa das ordens de produção.",
+          "atencao": "Sem local ativo, a nota e a produção da obra travam (\"O projeto … não tem local de estoque ativo\").",
+          "evidencia": "base",
+          "fontes": [
+            "regra-estoque-almoxarifado-central-ativo-e-pre-requisito",
+            "regra-faturamento-finalizar-nf-requisitos",
+            "scripts/dados-checklists-implantacao.mjs#implantacao-projetos"
+          ]
+        }
+      ]
+    }
+  ],
+  "consultor": {
+    "implantacao": [
+      "Cliente de teste em Cadastros › Participantes com É Cliente? ligado. Fonte: procedimento-cadastrar-cliente-produto-e-obra.",
+      "Local de estoque do projeto ativo em Estoque › Locais, ou almoxarifado central ativo, para finalizar a nota com a obra. Fonte: regra-estoque-almoxarifado-central-ativo-e-pre-requisito.",
+      "Produto de teste, condição de pagamento e permissão para criar projetos, estágios e etapas. Fonte: checklist de implantação de Projetos.",
+      "Categorias de produto e plano de contas com contas analíticas de receita e despesa, usadas no resultado previsto. Fonte: plano-projetos#012.",
+      "Ligar o projeto no pedido antes de faturar, e conferir no painel previsto × realizado. Fonte: regra-vendas-editar-pedido-somente-em-aberto; checklist de implantação de Projetos, fluxo 6."
+    ],
+    "perguntasDoCliente": [
+      {
+        "pergunta": "Faturei o pedido e esqueci de ligar a obra. E agora?",
+        "resposta": "Depois de faturado, o pedido só tem Visualizar e não dá mais para ligar a obra. Ligue sempre antes de faturar.",
+        "fontes": [
+          "regra-vendas-editar-pedido-somente-em-aberto",
+          "scripts/dados-checklists-estagiarios.mjs#projetos"
+        ]
+      },
+      {
+        "pergunta": "Por que o painel mostra A faturar negativo?",
+        "resposta": "Hoje o painel ainda mostra A faturar negativo quando só a nota ou o título carrega o projeto e o pedido não.",
+        "fontes": [
+          "scripts/dados-checklists-implantacao.mjs#implantacao-projetos"
+        ]
+      },
+      {
+        "pergunta": "O valor do painel está duplicado.",
+        "resposta": "Título manual e título gerado do mesmo pedido duplicam o painel.",
+        "fontes": [
+          "videos/roteiros/consultor-09-projetos.json#11"
+        ]
+      }
+    ],
+    "errosComuns": [
+      {
+        "titulo": "Pedido sem projeto",
+        "texto": "Pedido sem projeto não aparece no painel da obra.",
+        "fontes": [
+          "videos/roteiros/consultor-09-projetos.json#11"
+        ]
+      },
+      {
+        "titulo": "Ler custo como saída de caixa",
+        "texto": "No painel, custo é o valor destinado/comprometido, não o que saiu do caixa, e receita é a nota autorizada, não o pedido.",
+        "fontes": [
+          "scripts/dados-checklists-estagiarios.mjs#projetos"
+        ]
+      },
+      {
+        "titulo": "Local de estoque de outra empresa",
+        "texto": "Cada projeto tem um único local de estoque, e ele precisa ser da mesma empresa das ordens de produção; sem ele a nota não finaliza.",
+        "fontes": [
+          "scripts/dados-checklists-implantacao.mjs#implantacao-projetos"
+        ]
+      },
+      {
+        "titulo": "Trocar o cliente da obra",
+        "texto": "Trocar o cliente de uma obra que já tem pedido e nota: confirme com o time antes.",
+        "fontes": [
+          "scripts/dados-checklists-implantacao.mjs#implantacao-projetos"
+        ]
+      }
+    ]
+  },
+  "fontes": [
+    "db/migrations/002_modulos_iniciais.sql#projetos",
+    "funcional-cadastros-participante-produto-e-projeto",
+    "regra-vendas-editar-pedido-somente-em-aberto",
+    "regra-estoque-almoxarifado-central-ativo-e-pre-requisito",
+    "regra-faturamento-finalizar-nf-requisitos",
+    "manual-12-projetos-e-tarefas#003",
+    "manual-12-projetos-e-tarefas#006",
+    "plano-projetos#012",
+    "plano-projetos#044",
+    "roteiro-projetos-01-cadastro-e-acompanhamento-de-projetos#009",
+    "roteiro-projetos-03-plano-de-resultado-e-financeiro#009",
+    "metodologia-apostila-do-consultor#021",
+    "scripts/dados-checklists-estagiarios.mjs#projetos",
+    "scripts/dados-checklists-implantacao.mjs#implantacao-projetos",
+    "videos/roteiros/consultor-09-projetos.json",
+    "videos/public/telas/consultor-09-projetos/00-pedido-projeto.png",
+    "videos/public/telas/consultor-09-projetos/01-projetos.png",
+    "videos/public/telas/consultor-09-projetos/02-painel-obra.png"
+  ],
+  "pendencias": [
+    "CAPTURA: Cadastros › Projetos › Novo Projeto — formulário da obra.",
+    "CAPTURA: painel Etapas do Projeto (botão Etapas da linha) e painel de Estágios.",
+    "CAPTURA: tela Todos os Projetos (vitrine em cartões, botão Ver Painel).",
+    "CAPTURA: pedido de venda em edição com o campo Projeto (opcional) e Salvar e Permanecer.",
+    "CAPTURA: Projetos › Diário de Obra (só leitura).",
+    "RESOLVIDO (staging v1.23.2, 05/11/2026): o painel fica no menu do módulo Projetos › Painel Financeiro de Projetos (caminho no topo: Projetos › Painel). A trilha do estagiário e o checklist de implantação citam Financeiro › Painel Financeiro de Projetos: atualizar essas fontes.",
+    "DIVERGÊNCIA a conferir na tela: Cadastros › Projetos (menu e plano de validação) × Configurações › Projetos (caminho no topo da captura).",
+    "Validação na tela pendente: guia gerado de capturas e da base, sem sessão no Flow."
+  ]
+}
