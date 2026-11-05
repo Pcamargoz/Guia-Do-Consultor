@@ -20,7 +20,7 @@
 
   const svg = (d) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">${d}</svg>`;
   const icone = {
-    inicio: UI.icone('inicio'),
+    inicio: UI.icones.inicio,
     inicial: UI.icones['primeiros-passos'],
     consultor: UI.icones.manual,
     acervo: svg('<rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/>'),
