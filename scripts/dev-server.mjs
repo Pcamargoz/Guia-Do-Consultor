@@ -1,6 +1,8 @@
 /* Servidor de desenvolvimento local que imita o Vercel:
    middleware.js → funções em /api (exports GET/POST/PUT/PATCH/DELETE) → arquivos de public/.
-   Escuta em 127.0.0.1 por padrão (HOST=… para mudar). Uso: npm run dev */
+   Escuta em 127.0.0.1 por padrão (HOST=… para mudar). Uso: npm run dev
+   (ou via docker compose, serviço "app": HOST=0.0.0.0 no environment do compose;
+   o mapeamento 127.0.0.1:8081:3000 limita a publicação ao loopback do host). */
 import http from 'node:http';
 import { readFile, stat } from 'node:fs/promises';
 import { fileURLToPath, pathToFileURL } from 'node:url';
