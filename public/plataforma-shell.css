@@ -1,0 +1,166 @@
+/* ==========================================================================
+   Faktory Flow — Shell da plataforma (v2.2, doc 12 P6). Carregado DEPOIS de guia-abas.css e do <style> do index.
+   Uma navegação só: menu lateral (desktop) / barra inferior + gaveta (≤ 900 px).
+   A barra do topo deixa de repetir as 9 abas e passa a dizer onde a pessoa está (área › módulo).
+   Usa os tokens de brand-system.css e plataforma.css; sem script inline (CSP).
+   ========================================================================== */
+
+/* ---------- Superfícies do navegador (seleção, rolagem) ---------- */
+.ff-guide ::selection { background: rgb(213 221 38 / .55); color: var(--brand-primary-950); }
+.ff-guide { scrollbar-color: var(--brand-primary-300) transparent; }
+.ff-guide body, body.ff-guide { background: var(--pl-claro-fundo); font-family: var(--font-body); }
+
+/* ---------- Menu lateral ---------- */
+.ff-guide .app { grid-template-columns: 264px minmax(0, 1fr); }
+.ff-guide .sidebar {
+  background:
+    radial-gradient(120% 40% at 0% 0%, rgb(111 168 207 / .14), transparent 60%),
+    linear-gradient(180deg, var(--brand-primary-950), #081A29);
+  box-shadow: none; border-right: 1px solid rgb(185 212 231 / .08);
+  padding: 20px 12px 24px;
+  scrollbar-width: thin; scrollbar-color: rgb(185 212 231 / .25) transparent;
+}
+.ff-guide .logo-container { padding: 0 8px 18px; margin-bottom: 8px; border-bottom: 1px solid rgb(185 212 231 / .1); }
+.ff-guide .nav-section {
+  padding: 18px 12px 6px; margin: 0; opacity: 1;
+  font: 600 .78rem/1.2 var(--font-display); letter-spacing: .01em; text-transform: none;
+  color: var(--brand-primary-300);
+}
+.ff-guide .sidebar .nav-item {
+  position: relative; gap: 12px; min-height: 40px; padding: 8px 12px; margin: 1px 0;
+  border: 0; border-radius: 10px;
+  color: rgb(243 248 252 / .78); font: 500 .9rem/1.3 var(--font-body);
+  transition: background-color var(--pl-dur), color var(--pl-dur);
+}
+.ff-guide .sidebar .nav-item svg { width: 18px; height: 18px; color: var(--brand-primary-300); transition: color var(--pl-dur), transform var(--pl-spring-rapida-dur) var(--pl-spring-rapida); }
+.ff-guide .sidebar .nav-item:hover { background: rgb(255 255 255 / .06); color: #fff; border: 0; }
+.ff-guide .sidebar .nav-item:hover svg { color: #fff; transform: translateX(1px); }
+.ff-guide .sidebar .nav-item.active {
+  background: linear-gradient(90deg, rgb(213 221 38 / .16), rgb(213 221 38 / .04));
+  color: #fff; font-weight: 600; border: 0;
+  box-shadow: inset 0 0 0 1px rgb(213 221 38 / .22);
+}
+.ff-guide .sidebar .nav-item.active svg { color: var(--pl-lima); }
+.ff-guide .sidebar .nav-item.active::after { /* ponto lima à direita: estado ativo sem borda lateral grossa */
+  content: ''; position: absolute; right: 12px; top: 50%; width: 6px; height: 6px; margin-top: -3px;
+  border-radius: 50%; background: var(--pl-lima); box-shadow: 0 0 10px rgb(213 221 38 / .8);
+}
+.ff-guide .sidebar .nav-item:focus-visible { outline: 2px solid var(--pl-lima); outline-offset: 2px; }
+
+/* ---------- Barra do topo: contexto + ações + conta ---------- */
+.ff-guide .main { max-width: 1240px; padding: 28px clamp(20px, 3vw, 44px) 56px; }
+.ab-topo { top: 14px; padding: 6px 8px 6px 10px; margin-bottom: 24px; border-radius: 16px; border-color: rgb(19 41 61 / .08);
+  background: rgb(255 255 255 / .82); box-shadow: 0 1px 0 rgb(255 255 255 / .8) inset, 0 10px 30px -12px rgb(12 36 56 / .22); }
+.ab-topo .ab-abas { display: none; } /* as áreas estão no menu lateral; as abas seguem no DOM para os papéis ARIA */
+.sh-contexto { display: flex; align-items: center; gap: 8px; min-width: 0; flex: 1; }
+.sh-menu-btn { display: none; place-items: center; width: 44px; height: 44px; flex: none; border: 0; border-radius: 12px; background: var(--brand-primary-50); color: var(--brand-primary-900); cursor: pointer; }
+.sh-menu-btn svg { width: 20px; height: 20px; }
+.sh-trilha { min-width: 0; }
+.sh-trilha ol { display: flex; align-items: center; gap: 6px; margin: 0; padding: 0 4px; list-style: none; min-width: 0; }
+.sh-trilha li { display: inline-flex; align-items: center; gap: 6px; min-width: 0; font: 700 1rem/1.2 var(--font-display); color: var(--brand-primary-950); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sh-trilha li + li::before { content: ''; width: 6px; height: 6px; flex: none; border-right: 1.5px solid var(--brand-primary-300); border-top: 1.5px solid var(--brand-primary-300); transform: rotate(45deg); margin-right: 4px; }
+.sh-trilha a { display: inline-flex; align-items: center; min-height: 44px; color: var(--brand-primary-700); font-weight: 600; text-decoration: none; border-radius: 8px; padding-inline: 2px; }
+.sh-trilha a:hover { color: var(--brand-primary-950); text-decoration: underline; text-underline-offset: 4px; }
+
+/* ---------- Barra inferior (celular) ---------- */
+.sh-baixo { display: none; }
+.sh-veu { position: fixed; inset: 0; z-index: 940; background: rgb(8 26 41 / .55); backdrop-filter: blur(3px); }
+.sh-veu[hidden] { display: none; }
+
+@media (max-width: 900px) {
+  .ff-guide .app { grid-template-columns: minmax(0, 1fr); }
+  .ff-guide .sidebar {
+    position: fixed; inset: 0 auto 0 0; z-index: 950; width: min(86vw, 320px); height: 100dvh; overflow-y: auto;
+    transform: translateX(-104%); visibility: hidden;
+    transition: transform .42s var(--pl-spring-fallback), visibility 0s .42s;
+    box-shadow: 24px 0 60px rgb(4 14 24 / .45);
+  }
+  .ff-guide .sidebar .nav-section { display: block; }
+  body[data-sh-gaveta] .sidebar { transform: none; visibility: visible; transition: transform .42s var(--pl-spring-fallback), visibility 0s; }
+  .sh-menu-btn { display: grid; }
+  .ab-topo { position: sticky; top: 8px; flex-wrap: nowrap; border-radius: 16px; }
+  .ab-topo .ab-acoes { order: initial; width: auto; }
+  .sh-trilha li { font-size: .95rem; }
+  .sh-trilha li:not(:last-child) { display: none; } /* no celular, só onde a pessoa está */
+  .ff-guide .main { padding: 12px 14px calc(88px + env(safe-area-inset-bottom)); }
+
+  .sh-baixo {
+    display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr);
+    position: fixed; left: 10px; right: 10px; bottom: calc(10px + env(safe-area-inset-bottom)); z-index: 930;
+    padding: 6px; border-radius: 20px;
+    background: rgb(12 36 56 / .92); backdrop-filter: blur(16px) saturate(1.3); -webkit-backdrop-filter: blur(16px) saturate(1.3);
+    border: 1px solid rgb(185 212 231 / .14); box-shadow: 0 18px 40px -10px rgb(4 14 24 / .6);
+  }
+  .sh-baixo[hidden], .sh-baixo__item[hidden] { display: none; }
+  .sh-baixo__item {
+    display: grid; justify-items: center; gap: 3px; min-height: 52px; padding: 7px 4px 6px; border: 0; border-radius: 14px;
+    background: transparent; color: var(--brand-primary-300); font: 600 .72rem/1.1 var(--font-display); text-decoration: none; cursor: pointer;
+    transition: background-color var(--pl-dur), color var(--pl-dur);
+  }
+  .sh-baixo__item svg { width: 22px; height: 22px; transition: transform var(--pl-spring-rapida-dur) var(--pl-spring-rapida); }
+  .sh-baixo__item[aria-current="page"] { color: #fff; background: rgb(213 221 38 / .14); }
+  .sh-baixo__item[aria-current="page"] svg { color: var(--pl-lima); transform: translateY(-1px); }
+  .sh-baixo__item:focus-visible { outline: 2px solid var(--pl-lima); outline-offset: 1px; }
+}
+@media (max-width: 600px) {
+  .ab-topo .ab-acoes:not(:has(> :not([hidden]))) { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ff-guide .sidebar, body[data-sh-gaveta] .sidebar { transition: none; }
+}
+@media print { .sh-baixo, .sh-veu, .sh-menu-btn { display: none !important; } }
+
+/* Formas decorativas flutuantes (brand-motion.js): só na Página Inicial. Nas páginas de leitura elas passavam
+   por cima do texto e das capturas. */
+.ff-guide .ff-stage { display: none; }
+.ff-guide:has(.ab-painel--inicio:not([hidden])) .ff-stage { display: block; }
+
+/* Gaveta no celular: anula a "faixa horizontal" antiga do brand-system.css (§8) — o menu volta a ser coluna. */
+@media (max-width: 900px) {
+  .ff-guide .sidebar { display: block; overflow-x: hidden; overflow-y: auto; scroll-snap-type: none; padding: 20px 12px 28px; animation: none; }
+  .ff-guide .sidebar .nav-section { display: block; }
+  .ff-guide .logo-container { padding: 0 8px 16px; margin-bottom: 8px; border-bottom: 1px solid rgb(185 212 231 / .1); }
+  .ff-guide .logo-svg { width: 150px; }
+  .ff-guide .sidebar .nav-item { margin: 1px 0; padding: 10px 12px; min-height: 44px; font-size: .95rem; white-space: normal; }
+}
+/* Sumário do módulo no celular: uma linha que rola na horizontal, sem empurrar o conteúdo para baixo. */
+@media (max-width: 819.98px) {
+  .pl-sumario { position: sticky; top: 72px; z-index: 5; margin-inline: -14px; padding: 6px 14px; background: color-mix(in srgb, var(--pl-claro-fundo) 92%, transparent); backdrop-filter: blur(8px); }
+  .pl-sumario h2 { display: none; }
+  .pl-sumario ol { flex-wrap: nowrap !important; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px; }
+  .pl-sumario ol::-webkit-scrollbar { display: none; }
+  .pl-sumario li { flex: none; }
+  .pl-sumario a { white-space: nowrap; }
+}
+
+/* ---------- Busca nos guias (v2.3) ---------- */
+.sh-busca { position: relative; display: flex; align-items: center; flex: 1 1 280px; max-width: 420px; margin-left: auto; }
+.sh-busca > svg { position: absolute; left: 12px; width: 17px; height: 17px; color: var(--brand-primary-700); pointer-events: none; }
+.sh-busca input { width: 100%; min-height: 42px; padding: 8px 40px 8px 38px; border-radius: 12px; border: 1px solid var(--color-line); background: var(--brand-primary-50); color: var(--brand-primary-950); font: 500 .92rem/1.2 var(--font-body); transition: background-color var(--pl-dur), border-color var(--pl-dur), box-shadow var(--pl-dur); }
+.sh-busca input::placeholder { color: var(--brand-primary-700); opacity: .8; }
+.sh-busca input:focus { outline: none; background: #fff; border-color: var(--brand-primary-300); box-shadow: 0 0 0 4px rgb(52 120 167 / .15); }
+.sh-busca kbd { position: absolute; right: 10px; padding: 2px 7px; border-radius: 6px; border: 1px solid var(--color-line); background: #fff; color: var(--brand-primary-700); font: 600 .75rem/1.2 var(--pl-fonte-mono); }
+.sh-busca input:focus + kbd { display: none; }
+.sh-busca__lista { position: absolute; top: calc(100% + 8px); left: 0; right: 0; z-index: 960; max-height: min(60vh, 460px); overflow-y: auto; margin: 0; padding: 6px; list-style: none;
+  border-radius: 14px; background: #fff; border: 1px solid var(--color-line); box-shadow: 0 24px 48px -16px rgb(12 36 56 / .35); }
+.sh-busca__lista[hidden] { display: none; }
+.sh-busca__item { display: grid; gap: 2px; padding: 9px 12px; border-radius: 10px; cursor: pointer; }
+.sh-busca__item strong { font: 700 .92rem/1.3 var(--font-display); color: var(--brand-primary-950); }
+.sh-busca__item span { font-size: .78rem; color: var(--color-muted); }
+.sh-busca__item:hover, .sh-busca__item[aria-selected="true"] { background: var(--brand-primary-50); }
+.sh-busca__vazio { padding: 12px; color: var(--color-muted); font-size: .9rem; }
+@media (prefers-reduced-motion: no-preference) {
+  .sh-busca__lista:not([hidden]) { animation: sh-desce .2s var(--pl-ease); }
+}
+@keyframes sh-desce { from { opacity: 0; transform: translateY(-4px); } }
+/* Trecho encontrado pela busca: destaque breve */
+.sh-achado { border-radius: 12px; animation: sh-achado 2.6s var(--pl-ease); }
+@keyframes sh-achado { 0%, 60% { box-shadow: 0 0 0 4px rgb(213 221 38 / .7); background: rgb(213 221 38 / .12); } 100% { box-shadow: 0 0 0 4px rgb(213 221 38 / 0); } }
+@media (max-width: 900px) {
+  .sh-busca { flex: 1 1 auto; max-width: none; margin-left: 4px; }
+  .sh-busca kbd { display: none; }
+  .sh-trilha { display: none; }
+}
+
+/* v3 (06/11): página clara — as formas flutuantes antigas do brand-motion saem também da Página Inicial. */
+.ff-guide:has(.ab-painel--inicio:not([hidden])) .ff-stage { display: none; }

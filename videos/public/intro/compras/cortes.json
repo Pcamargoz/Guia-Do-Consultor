@@ -1,0 +1,140 @@
+{
+  "fonte": "midia/brutos/compras/compras_bruto_c02_v01.mp4",
+  "recorte": "crop=1920:1080:0:0",
+  "observacao": "Bruto c02, 1920x1080 nativo: sem recorte real. Telas paradas: \"lento\" estica o trecho até a duração da cena, sem movimento real a perder. Tempos e caixas conferidos em quadros extraídos em 06/11/2026.",
+  "caixas": {
+    "A_B_cabecalho": {
+      "x": 1395,
+      "y": 8,
+      "w": 510,
+      "h": 56,
+      "porque": "selo do tenant, nome, cargo e avatar do usuário"
+    },
+    "dash_fornecedor": {
+      "x": 305,
+      "y": 372,
+      "w": 55,
+      "h": 32,
+      "porque": "nome de fornecedor em Desempenho de fornecedores"
+    },
+    "solic_linha": {
+      "x": 340,
+      "y": 330,
+      "w": 500,
+      "h": 90,
+      "porque": "documento, empresa, produto e cor da solicitação"
+    },
+    "solic_projeto": {
+      "x": 1545,
+      "y": 330,
+      "w": 130,
+      "h": 90,
+      "porque": "coluna Projeto: código e nome de pessoa"
+    },
+    "ped_numero": {
+      "x": 358,
+      "y": 545,
+      "w": 92,
+      "h": 185,
+      "porque": "códigos PC"
+    },
+    "ped_fornecedor_valor": {
+      "x": 840,
+      "y": 545,
+      "w": 270,
+      "h": 185,
+      "porque": "fornecedor e valor total"
+    },
+    "ped_nota": {
+      "x": 1522,
+      "y": 545,
+      "w": 110,
+      "h": 185,
+      "porque": "códigos NR"
+    },
+    "fu_documento": {
+      "x": 310,
+      "y": 605,
+      "w": 95,
+      "h": 195,
+      "porque": "códigos PC"
+    },
+    "fu_fornecedor": {
+      "x": 602,
+      "y": 605,
+      "w": 52,
+      "h": 195,
+      "porque": "fornecedor"
+    }
+  },
+  "cortes": [
+    {
+      "id": "k1-dashboard",
+      "in": 0.3,
+      "out": 3.4,
+      "borrar": [
+        "A_B_cabecalho",
+        "dash_fornecedor"
+      ],
+      "porque": "Dashboard Compras, topo antes da rolagem (a rolagem mostra pedidos e valores: fora)",
+      "lento": 2.129
+    },
+    {
+      "id": "k2-solicitacoes",
+      "in": 8.2,
+      "out": 12.9,
+      "borrar": [
+        "A_B_cabecalho",
+        "solic_linha",
+        "solic_projeto"
+      ],
+      "porque": "Solicitações de Compra: documento, empresa, produto, cor e a coluna Projeto (nome de pessoa) borrados",
+      "lento": 1.404
+    },
+    {
+      "id": "k3-sugestao",
+      "in": 14,
+      "out": 19.4,
+      "borrar": [
+        "A_B_cabecalho"
+      ],
+      "porque": "Sugestão de Compra, sem registros",
+      "lento": 1.222
+    },
+    {
+      "id": "k4-cotacoes",
+      "in": 20.6,
+      "out": 26,
+      "borrar": [
+        "A_B_cabecalho"
+      ],
+      "porque": "Cotações de Compra, sem registros",
+      "lento": 1.315
+    },
+    {
+      "id": "k5-pedidos",
+      "in": 27.2,
+      "out": 32.4,
+      "borrar": [
+        "A_B_cabecalho",
+        "ped_numero",
+        "ped_fornecedor_valor",
+        "ped_nota"
+      ],
+      "porque": "Pedidos de Compra: números, fornecedor, valores e notas borrados; status visíveis",
+      "lento": 1.365
+    },
+    {
+      "id": "k6-followup",
+      "in": 33.6,
+      "out": 38.9,
+      "borrar": [
+        "A_B_cabecalho",
+        "fu_documento",
+        "fu_fornecedor"
+      ],
+      "porque": "Follow-up de Entregas: documentos e fornecedor borrados",
+      "lento": 1.245
+    }
+  ]
+}

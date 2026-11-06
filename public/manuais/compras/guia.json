@@ -1,0 +1,1401 @@
+{
+  "modulo": "compras",
+  "titulo": "Compras — guia visual",
+  "resumo": "Você vai entender o caminho do material: alguém precisa (solicitação), a empresa compara fornecedores (cotação), fecha o compromisso (pedido de compra) e acompanha até a entrega no Recebimento.",
+  "versaoSistema": "1.22.13 (consultor-01-suprimentos e compra-em-nome-do-cliente) e 1.23.2 (staging, 05/11/2026)",
+  "atualizadoEm": "2026-11-06",
+  "status": "rascunho",
+  "conceitos": [
+    {
+      "titulo": "Três documentos, uma sequência",
+      "texto": "Solicitação (SC) registra a necessidade, sem fornecedor nem preço. Cotação (COT) compara fornecedores. Pedido de compra (PC) é o compromisso com o fornecedor. A cotação é opcional: dá para gerar o pedido direto da solicitação.",
+      "icone": "compras",
+      "fontes": [
+        "guia:scripts/dados-checklists-estagiarios.mjs#compras",
+        "regra-compras-gerar-pedido-de-compra-abre-o-novo-pedido"
+      ]
+    },
+    {
+      "titulo": "Fornecedor é um participante",
+      "texto": "O fornecedor é o mesmo cadastro de participante da Fundação, com a chave É Fornecedor? ligada.",
+      "icone": "fundacao",
+      "fontes": [
+        "guia:scripts/dados-checklists-estagiarios.mjs#compras"
+      ]
+    },
+    {
+      "titulo": "A Natureza da Operação define o CFOP",
+      "texto": "Na cotação, a Natureza da Operação (Consumo, Produção, Revenda ou Ativo Imobilizado) define sozinha o CFOP do pedido de compra, conforme a origem do fornecedor.",
+      "icone": "fiscal",
+      "fontes": [
+        "regra-compras-natureza-da-operacao-define-o-cfop"
+      ]
+    },
+    {
+      "titulo": "Gerar o pedido conclui o que veio antes",
+      "texto": "Quando o pedido é gerado, a solicitação e a cotação passam a Concluída e não voltam atrás. A Linha do tempo do pedido mostra a cadeia inteira: SC, cotação, PC, nota de recebimento e título.",
+      "icone": "fluxo",
+      "fontes": [
+        "guia:scripts/dados-checklists-estagiarios.mjs#compras"
+      ]
+    },
+    {
+      "titulo": "A compra termina no Recebimento",
+      "texto": "O pedido entregue vira uma nota de recebimento (NR) no módulo Recebimento. O título a pagar nasce pelo pedido ou pela nota, nunca pelos dois.",
+      "icone": "recebimento",
+      "fontes": [
+        "guia:scripts/dados-checklists-estagiarios.mjs#compras",
+        "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+      ]
+    }
+  ],
+  "palavras": [
+    {
+      "termo": "Solicitações de Compra",
+      "definicao": "Lista das necessidades de material (SC-). A solicitação não tem etapa de aprovação.",
+      "fontes": [
+        "funcional-compras-solicitacoes-pedidos-e-recebimento",
+        "guia:scripts/dados-checklists-estagiarios.mjs#compras"
+      ]
+    },
+    {
+      "termo": "Nova Solicitação",
+      "definicao": "Botão que abre uma solicitação: Empresa, data de necessidade, produto e quantidade.",
+      "fontes": [
+        "funcional-compras-solicitacoes-pedidos-e-recebimento",
+        "guia:scripts/dados-checklists-estagiarios.mjs#compras"
+      ]
+    },
+    {
+      "termo": "Gerar Cotação / Gerar Pedido de Compra",
+      "definicao": "Opções do menu ⋯ da solicitação.",
+      "fontes": [
+        "funcional-compras-solicitacoes-pedidos-e-recebimento"
+      ]
+    },
+    {
+      "termo": "Cotações de Compra",
+      "definicao": "Assistente de quatro passos: Dados Gerais, Itens a Cotar, Cotação (propostas) e Comparação (análise e vencedor).",
+      "fontes": [
+        "regra-compras-natureza-da-operacao-define-o-cfop"
+      ]
+    },
+    {
+      "termo": "Natureza da Operação",
+      "definicao": "Campo obrigatório da cotação que define o CFOP do pedido de compra.",
+      "fontes": [
+        "regra-compras-natureza-da-operacao-define-o-cfop"
+      ]
+    },
+    {
+      "termo": "Aplicar Melhor Opção",
+      "definicao": "Botão da Comparação que grava o vencedor de cada item conforme o critério escolhido. Antes dele, nada é gravado.",
+      "fontes": [
+        "regra-compras-natureza-da-operacao-define-o-cfop"
+      ]
+    },
+    {
+      "termo": "Pedidos de Compra",
+      "definicao": "Lista dos compromissos com fornecedores (PC-).",
+      "fontes": [
+        "roteiro-compras-07-pedidos-de-compra#000"
+      ]
+    },
+    {
+      "termo": "Linha do tempo",
+      "definicao": "Painel do pedido de compra que mostra SC, cotação, PC, nota de recebimento e título, cada um com seu status.",
+      "fontes": [
+        "guia:scripts/dados-checklists-estagiarios.mjs#compras"
+      ]
+    },
+    {
+      "termo": "Sugestão de Compra",
+      "definicao": "Tela que calcula a falta líquida (mínimo − disponível) dos itens com estoque mínimo cadastrado.",
+      "fontes": [
+        "guia:scripts/dados-checklists-estagiarios.mjs#compras"
+      ]
+    }
+  ],
+  "mapa": {
+    "antes": [
+      "fundacao",
+      "estoque",
+      "producao"
+    ],
+    "depois": [
+      "recebimento",
+      "financeiro",
+      "fiscal"
+    ],
+    "texto": "Compras recebe demandas de Produção, Estoque ou solicitações manuais e segue para Recebimento, Financeiro e Fiscal.",
+    "fontes": [
+      "guia:db/migrations/002_modulos_iniciais.sql#compras"
+    ]
+  },
+  "capitulos": [
+    {
+      "id": "menu-na-ordem",
+      "titulo": "O menu de Compras na ordem do processo",
+      "nivel": "basico",
+      "objetivo": "Reconhecer as telas do módulo e a ordem em que o material anda.",
+      "onde": "Compras",
+      "passos": [
+        {
+          "titulo": "Leia o menu de cima para baixo",
+          "texto": "Os itens do menu seguem o processo: Solicitações de Compra, Sugestão de Compra, Cotações de Compra, Pedidos de Compra, Aprovações, Contratos de Entrega e Follow-up de Entregas.",
+          "imagem": "/manuais/compras/img/01-solicitacoes.webp",
+          "alt": "Menu do módulo Compras e a lista Solicitações de Compra com uma solicitação.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Solicitações de Compra",
+              "explicacao": "Onde a necessidade de material é registrada (SC).",
+              "caixa": {
+                "x": 0.2,
+                "y": 23.3,
+                "w": 15,
+                "h": 4.2
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 2,
+              "rotulo": "Cotações de Compra",
+              "explicacao": "Onde a empresa compara fornecedores (COT).",
+              "caixa": {
+                "x": 0.2,
+                "y": 30.8,
+                "w": 15,
+                "h": 4.4
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 3,
+              "rotulo": "Pedidos de Compra",
+              "explicacao": "O compromisso fechado com o fornecedor (PC).",
+              "caixa": {
+                "x": 0.2,
+                "y": 34.6,
+                "w": 15,
+                "h": 4.6
+              },
+              "lado": "direita"
+            }
+          ],
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-01-suprimentos/00-solicitacao.png",
+            "guia:scripts/dados-checklists-estagiarios.mjs#compras"
+          ],
+          "zoom": {
+            "x": 0,
+            "y": 15.3,
+            "w": 25.8,
+            "h": 36.4
+          }
+        },
+        {
+          "titulo": "Leia o Dashboard Compras",
+          "imagem": "/manuais/compras/img/06-dashboard.webp",
+          "alt": "Dashboard Compras com os cartões Sugestão de compra, SC em aberto, SC urgentes / vencidas, Cotações ativas, Pedidos em aberto e Total PC este mês.",
+          "largura": 1600,
+          "altura": 900,
+          "texto": "Clique em Dashboard Compras, o primeiro item do menu. Os cartões do alto resumem o ciclo; embaixo ficam o Funil de Compras (SC → Cotação → Pedido) e o Status dos Pedidos de Compra.",
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Sugestão de compra",
+              "explicacao": "Itens que o sistema sugere comprar pelo estoque mínimo.",
+              "caixa": {
+                "x": 18.2,
+                "y": 21.7,
+                "w": 12.6,
+                "h": 13.6
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 2,
+              "rotulo": "SC em aberto",
+              "explicacao": "Solicitações de compra ainda não atendidas.",
+              "caixa": {
+                "x": 31.5,
+                "y": 21.7,
+                "w": 12.6,
+                "h": 13.6
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 3,
+              "rotulo": "Cotações ativas",
+              "explicacao": "Cotações em andamento com fornecedores.",
+              "caixa": {
+                "x": 58,
+                "y": 21.7,
+                "w": 12.7,
+                "h": 13.6
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 4,
+              "rotulo": "Pedidos em aberto",
+              "explicacao": "Pedidos de compra ainda não recebidos.",
+              "caixa": {
+                "x": 71.2,
+                "y": 21.7,
+                "w": 12.6,
+                "h": 13.6
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 5,
+              "rotulo": "Total PC este mês",
+              "explicacao": "Valor dos pedidos de compra do mês.",
+              "caixa": {
+                "x": 84.4,
+                "y": 21.7,
+                "w": 12.7,
+                "h": 13.6
+              },
+              "lado": "baixo"
+            }
+          ],
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/capturas/guias-staging/compras-dashboard.png (staging v1.23.2, 05/11/2026)",
+            "guia:scripts/dados-checklists-estagiarios.mjs#compras"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "da-solicitacao-ao-pedido",
+      "titulo": "Da solicitação ao pedido de compra",
+      "nivel": "basico",
+      "objetivo": "Registrar uma necessidade e transformá-la em pedido de compra, com ou sem cotação.",
+      "onde": "Compras › Solicitações de Compra",
+      "passos": [
+        {
+          "titulo": "Crie a solicitação",
+          "texto": "Clique em Nova Solicitação, informe Empresa, data de necessidade, produto e quantidade e salve. A SC nasce Em Aberto.",
+          "imagem": "/manuais/compras/img/01-solicitacoes.webp",
+          "alt": "Lista Solicitações de Compra com o botão Nova Solicitação e o menu de ações da linha.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Nova Solicitação",
+              "explicacao": "Abre uma solicitação: Empresa, data de necessidade, produto e quantidade.",
+              "caixa": {
+                "x": 87.6,
+                "y": 13.3,
+                "w": 10.4,
+                "h": 5
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 2,
+              "rotulo": "Menu ⋯ da solicitação",
+              "explicacao": "Tem Gerar Cotação, Gerar Pedido de Compra e Excluir.",
+              "caixa": {
+                "x": 94.8,
+                "y": 43.2,
+                "w": 2.7,
+                "h": 4.6
+              },
+              "lado": "cima"
+            }
+          ],
+          "dica": "Produto de chapa ou perfil pede a Cor ao ser escolhido (quadro Dados do Item › Aplicar). Projeto em branco faz a entrada cair no almoxarifado central.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-01-suprimentos/00-solicitacao.png",
+            "guia:scripts/dados-checklists-estagiarios.mjs#compras"
+          ],
+          "zoom": {
+            "x": 81.3,
+            "y": 12.2,
+            "w": 18.4,
+            "h": 38.1
+          }
+        },
+        {
+          "titulo": "Conheça o formulário Nova Solicitação de Compra",
+          "texto": "O formulário abre à direita. Preencha Empresa, Data Necessidade, Produto e Quantidade; Data Cadastro já vem com a data de hoje. Observações e Tags ficam recolhidas no fim. Clique em Salvar: a SC nasce Em Aberto.",
+          "imagem": "/manuais/compras/img/09-nova-solicitacao.webp",
+          "alt": "Formulário Nova Solicitação de Compra com Documento, Empresa, Projeto, Estágio e Etapa do Projeto, Data Cadastro, Data Necessidade, Produto, Quantidade, Peso e Área.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Documento",
+              "explicacao": "Deixe em branco: o número (SC-…) é gerado ao salvar.",
+              "caixa": {
+                "x": 52.1,
+                "y": 16.1,
+                "w": 23,
+                "h": 4.7
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 2,
+              "rotulo": "Empresa",
+              "explicacao": "Obrigatória: a empresa que vai comprar.",
+              "caixa": {
+                "x": 75.3,
+                "y": 16.1,
+                "w": 23,
+                "h": 4.7
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 3,
+              "rotulo": "Projeto",
+              "explicacao": "Opcional. Em branco, a entrada do material cai no almoxarifado central.",
+              "caixa": {
+                "x": 52.1,
+                "y": 24.7,
+                "w": 15.3,
+                "h": 4.7
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 4,
+              "rotulo": "Data Necessidade",
+              "explicacao": "Quando o material precisa chegar.",
+              "caixa": {
+                "x": 75.3,
+                "y": 33.1,
+                "w": 23,
+                "h": 4.7
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 5,
+              "rotulo": "Produto e Quantidade",
+              "explicacao": "Busque por código, descrição ou EAN. Chapa ou perfil pede a Cor em Dados do Item; a quantidade arredonda para a embalagem do fornecedor.",
+              "caixa": {
+                "x": 52.1,
+                "y": 47.8,
+                "w": 46.4,
+                "h": 5
+              },
+              "lado": "cima"
+            }
+          ],
+          "zoom": {
+            "x": 49,
+            "y": 8.1,
+            "w": 51,
+            "h": 46
+          },
+          "atencao": "O documento não grava sem as características que a categoria exige (ex.: perfil sem comprimento): o sistema lista a pendência.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/capturas/guias-staging/compras-nova-solicitacao.png (staging v1.23.2, 05/11/2026)",
+            "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+          ]
+        },
+        {
+          "titulo": "Gere o pedido e complete o Novo Pedido de Compra",
+          "texto": "No menu ⋯ da solicitação, escolha Gerar Pedido de Compra. Abre o Novo Pedido de Compra com o produto já preenchido: informe Fornecedor, Comprador, Condição de Pagamento, CFOP e o Valor Unitário, confira a Conta de Fluxo de Caixa e clique em Salvar.",
+          "imagem": "/manuais/compras/img/02-novo-pedido-de-compra.webp",
+          "alt": "Página Novo Pedido de Compra com Empresa, Fornecedor, Comprador, Condição de Pagamento, CFOP e Status Em Edição.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Fornecedor",
+              "explicacao": "O participante com É Fornecedor? ligado.",
+              "caixa": {
+                "x": 45.2,
+                "y": 27.9,
+                "w": 24.8,
+                "h": 5.4
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 2,
+              "rotulo": "Comprador",
+              "explicacao": "Quem é o responsável pela compra.",
+              "caixa": {
+                "x": 70.5,
+                "y": 27.9,
+                "w": 24.9,
+                "h": 5.4
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 3,
+              "rotulo": "Condição de Pagamento",
+              "explicacao": "Define as parcelas a pagar.",
+              "caixa": {
+                "x": 45.2,
+                "y": 37.9,
+                "w": 24.8,
+                "h": 5.4
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 4,
+              "rotulo": "CFOP",
+              "explicacao": "Natureza fiscal da compra. Obrigatório, mesmo sem asterisco.",
+              "caixa": {
+                "x": 20,
+                "y": 50,
+                "w": 18.6,
+                "h": 5.6
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 5,
+              "rotulo": "Status",
+              "explicacao": "Na tela de edição aparece Em Edição; na lista, Em Aberto.",
+              "caixa": {
+                "x": 76.7,
+                "y": 50,
+                "w": 18.7,
+                "h": 5.6
+              },
+              "lado": "baixo"
+            }
+          ],
+          "atencao": "Sem CFOP aparece \"Campos Obrigatórios Não Preenchidos\" com \"CFOP é obrigatório\". O status da lista (Em Aberto) pode diferir do da tela de edição (Em Edição): a conferir na tela.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/compra-em-nome-do-cliente/32-pedido-de-compra.png",
+            "regra-compras-gerar-pedido-de-compra-abre-o-novo-pedido",
+            "guia:scripts/dados-checklists-estagiarios.mjs#compras"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cotacao",
+      "titulo": "Cotando com fornecedores",
+      "nivel": "basico",
+      "objetivo": "Percorrer o assistente da cotação e entender como o vencedor vira pedido.",
+      "onde": "Compras › Cotações de Compra",
+      "passos": [
+        {
+          "titulo": "Abra a lista de cotações",
+          "imagem": "/manuais/compras/img/07-cotacoes.webp",
+          "alt": "Lista Cotações de Compra com os cartões Total de cotações, Em Aberto, Concluída e Vencidas, os filtros rápidos e o botão + Nova Cotação.",
+          "largura": 1600,
+          "altura": 900,
+          "texto": "Abra Compras › Cotações de Compra. Os cartões contam as cotações por situação, e os filtros rápidos mostram só as Vencidas, Em Aberto, Concluída ou Cancelada. A cotação nasce pelo ⋯ da solicitação (Gerar Cotação) ou por + Nova Cotação.",
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "+ Nova Cotação",
+              "explicacao": "Cria uma cotação nova.",
+              "caixa": {
+                "x": 87,
+                "y": 15,
+                "w": 9.4,
+                "h": 5
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 2,
+              "rotulo": "Cartões de situação",
+              "explicacao": "Total de cotações, Em Aberto, Concluída e Vencidas.",
+              "caixa": {
+                "x": 17.7,
+                "y": 23.5,
+                "w": 79.8,
+                "h": 16.4
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 3,
+              "rotulo": "Filtros rápidos",
+              "explicacao": "Um clique mostra só as cotações daquela situação ou de um projeto.",
+              "caixa": {
+                "x": 18.8,
+                "y": 51.7,
+                "w": 36.9,
+                "h": 4.4
+              },
+              "lado": "direita"
+            }
+          ],
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/capturas/guias-staging/compras-cotacoes.png (staging v1.23.2, 05/11/2026)",
+            "guia:scripts/dados-checklists-estagiarios.mjs#compras"
+          ]
+        },
+        {
+          "titulo": "Percorra os quatro passos do assistente",
+          "texto": "A cotação tem Dados Gerais, Itens a Cotar, Cotação (propostas dos fornecedores) e Comparação (análise e vencedor). Em Dados Gerais, escolha a Natureza da Operação: ela define o CFOP do pedido.",
+          "imagem": "/manuais/compras/img/03-cotacao-dados-gerais.webp",
+          "alt": "Cotação concluída aberta no passo Dados Gerais, com os quatro passos do assistente e o campo Natureza da Operação.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Dados Gerais",
+              "explicacao": "Empresa, validade e a Natureza da Operação.",
+              "caixa": {
+                "x": 18.2,
+                "y": 27.1,
+                "w": 19.6,
+                "h": 8.3
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 2,
+              "rotulo": "Itens a Cotar",
+              "explicacao": "Os produtos e quantidades vindos da solicitação.",
+              "caixa": {
+                "x": 38,
+                "y": 27.1,
+                "w": 19.6,
+                "h": 8.3
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 3,
+              "rotulo": "Cotação",
+              "explicacao": "As propostas de cada fornecedor.",
+              "caixa": {
+                "x": 57.7,
+                "y": 27.1,
+                "w": 19.6,
+                "h": 8.3
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 4,
+              "rotulo": "Comparação",
+              "explicacao": "Análise das propostas e escolha do vencedor.",
+              "caixa": {
+                "x": 77.5,
+                "y": 27.1,
+                "w": 19.6,
+                "h": 8.3
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 5,
+              "rotulo": "Natureza da Operação",
+              "explicacao": "Consumo, Produção, Revenda ou Ativo Imobilizado: define sozinha o CFOP do pedido.",
+              "caixa": {
+                "x": 19.8,
+                "y": 63.3,
+                "w": 37.4,
+                "h": 5
+              },
+              "lado": "cima"
+            }
+          ],
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-01-suprimentos/01b-cotacao.png",
+            "regra-compras-natureza-da-operacao-define-o-cfop"
+          ]
+        },
+        {
+          "titulo": "Compare e aplique a melhor opção",
+          "texto": "Em Comparação, escolha o critério (Regra das Configurações, Menor Preço ou Menor Prazo, por fornecedor ou por item) e clique em Aplicar Melhor Opção. Os pedidos gerados aparecem em Pedidos de Compra Gerados.",
+          "imagem": "/manuais/compras/img/04-cotacao-comparacao.webp",
+          "alt": "Passo Comparação da cotação com os critérios, o vencedor por item e os pedidos de compra gerados.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Critério de Comparação",
+              "explicacao": "Como escolher o vencedor: pela regra das Configurações, menor preço ou menor prazo.",
+              "caixa": {
+                "x": 19.2,
+                "y": 50.8,
+                "w": 38.5,
+                "h": 5.7
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 2,
+              "rotulo": "Aplicar Melhor Opção",
+              "explicacao": "Grava o vencedor de cada item. Antes do clique, nada é gravado.",
+              "caixa": {
+                "x": 83.5,
+                "y": 45,
+                "w": 12.6,
+                "h": 4.9
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 3,
+              "rotulo": "Vencedores por item",
+              "explicacao": "Prévia de qual fornecedor ganha cada item.",
+              "caixa": {
+                "x": 19.2,
+                "y": 71.7,
+                "w": 76.9,
+                "h": 10.8
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 4,
+              "rotulo": "Pedidos de Compra Gerados",
+              "explicacao": "Os pedidos de compra que nasceram desta cotação.",
+              "caixa": {
+                "x": 19.2,
+                "y": 86.9,
+                "w": 76.9,
+                "h": 9.2
+              },
+              "lado": "esquerda"
+            }
+          ],
+          "atencao": "Gerar Cotação, Gerar Pedido de Compra, enviar cotação por e-mail e marcar vencedor criam documentos e enviam mensagens: em treino, só com orientação.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-01-suprimentos/01c-comparacao.png",
+            "regra-compras-natureza-da-operacao-define-o-cfop",
+            "guia:scripts/dados-checklists-estagiarios.mjs#compras"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "linha-do-tempo",
+      "titulo": "Acompanhando o pedido de compra",
+      "nivel": "basico",
+      "objetivo": "Dizer em que etapa está uma compra, da solicitação ao título a pagar.",
+      "onde": "Compras › Pedidos de Compra",
+      "passos": [
+        {
+          "titulo": "Leia a lista de pedidos de compra",
+          "imagem": "/manuais/compras/img/08-pedidos-de-compra.webp",
+          "alt": "Lista Pedidos de Compra com as colunas Status, Títulos e Nota de Recebimento.",
+          "largura": 1600,
+          "altura": 900,
+          "texto": "Abra Compras › Pedidos de Compra. Cada linha mostra o Status do pedido, se já tem títulos no financeiro e a nota de recebimento. O menu ⋯ da linha leva à Linha do tempo.",
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Status",
+              "explicacao": "Situação do pedido; aqui, Recebido (a mercadoria já entrou).",
+              "caixa": {
+                "x": 63.3,
+                "y": 55.8,
+                "w": 4.4,
+                "h": 3.3
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 2,
+              "rotulo": "Títulos",
+              "explicacao": "Gerados ou Sem títulos: se já há conta a pagar no financeiro.",
+              "caixa": {
+                "x": 70.5,
+                "y": 55.8,
+                "w": 5.3,
+                "h": 3.3
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 3,
+              "rotulo": "Nota de Recebimento",
+              "explicacao": "O número NR da entrada, ou \"Nota em aberto\" se ainda não foi finalizada.",
+              "caixa": {
+                "x": 78.2,
+                "y": 55.8,
+                "w": 11.6,
+                "h": 3.3
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 4,
+              "rotulo": "Menu ⋯",
+              "explicacao": "Abre a Linha do tempo e as outras ações do pedido.",
+              "caixa": {
+                "x": 94,
+                "y": 60.3,
+                "w": 2.3,
+                "h": 4
+              },
+              "lado": "direita"
+            }
+          ],
+          "zoom": {
+            "x": 61.7,
+            "y": 52.8,
+            "w": 37.3,
+            "h": 30.6
+          },
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/capturas/guias-staging/compras-pedidos.png (staging v1.23.2, 05/11/2026)",
+            "guia:scripts/dados-checklists-estagiarios.mjs#compras",
+            "regra-recebimento-a-mesma-nota-tem-dois-numeros"
+          ]
+        },
+        {
+          "titulo": "Abra a Linha do tempo do pedido",
+          "texto": "No menu ⋯ do pedido de compra, abra Linha do tempo. Ela mostra, em ordem de data, a solicitação, a cotação, o pedido, a nota de recebimento e o título a pagar, cada um com seu status.",
+          "imagem": "/manuais/compras/img/05-linha-do-tempo.webp",
+          "alt": "Painel Linha do tempo do pedido com solicitação, cotação, pedido de compra, nota de recebimento e título a pagar.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Solicitação de compra",
+              "explicacao": "A necessidade original. Fica Concluída quando o pedido é gerado.",
+              "caixa": {
+                "x": 75.3,
+                "y": 10.3,
+                "w": 23.4,
+                "h": 11.1
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 2,
+              "rotulo": "Cotação",
+              "explicacao": "A comparação de fornecedores, também concluída.",
+              "caixa": {
+                "x": 75.3,
+                "y": 21.5,
+                "w": 23.4,
+                "h": 11.1
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 3,
+              "rotulo": "Este pedido",
+              "explicacao": "O pedido de compra que você abriu.",
+              "caixa": {
+                "x": 75.3,
+                "y": 32.8,
+                "w": 23.4,
+                "h": 11.1
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 4,
+              "rotulo": "Nota de recebimento",
+              "explicacao": "A entrada da mercadoria, no módulo Recebimento.",
+              "caixa": {
+                "x": 75.3,
+                "y": 44,
+                "w": 23.4,
+                "h": 11.1
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 5,
+              "rotulo": "Título a pagar",
+              "explicacao": "A conta a pagar ao fornecedor, no Financeiro.",
+              "caixa": {
+                "x": 75.3,
+                "y": 55.3,
+                "w": 23.4,
+                "h": 11.1
+              },
+              "lado": "esquerda"
+            }
+          ],
+          "atencao": "Depois que o pedido é recebido, Cancelar e Excluir ficam desabilitados.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-01-suprimentos/01-linha-do-tempo.png",
+            "guia:scripts/dados-checklists-estagiarios.mjs#compras"
+          ]
+        },
+        {
+          "titulo": "Acompanhe as entregas no Follow-up",
+          "texto": "Abra Compras › Follow-up de Entregas. O acompanhamento nasce sozinho com o pedido de compra. Comece pelo cartão Atrasados, depois Próx. Vencimento, e use Meu Follow-up para ver só os seus. O olho de cada linha abre o detalhe para registrar o contato com o fornecedor.",
+          "imagem": "/manuais/compras/img/12-followup.webp",
+          "alt": "Follow-up de Entregas com os cartões Total Ativo, Atrasados, Próx. Vencimento e Encerrados, os filtros rápidos e a lista de pedidos com Status, Prazo e o olho de detalhe.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Cartões",
+              "explicacao": "Total Ativo, Atrasados, Próx. Vencimento e Encerrados: batem com a lista e filtram ao clicar.",
+              "caixa": {
+                "x": 17.6,
+                "y": 23.1,
+                "w": 79.8,
+                "h": 18.6
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 2,
+              "rotulo": "Filtros rápidos",
+              "explicacao": "Todos, Atrasados, Próx. Vencimento, Aguardando, Parcialmente Recebido, Encerrados e Meu Follow-up.",
+              "caixa": {
+                "x": 19.9,
+                "y": 55.6,
+                "w": 55,
+                "h": 4.2
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 3,
+              "rotulo": "Status",
+              "explicacao": "Aguardando, Próx. Vencimento ou Atrasado, recalculados todo dia de manhã; Encerrado quando a entrega termina.",
+              "caixa": {
+                "x": 66.3,
+                "y": 67.8,
+                "w": 6.6,
+                "h": 20
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 4,
+              "rotulo": "Prazo",
+              "explicacao": "Dias restantes ou atraso; ✓ Entregue quando concluído; Sem data quando não há entrega prevista.",
+              "caixa": {
+                "x": 80.7,
+                "y": 67.8,
+                "w": 8.1,
+                "h": 20
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 5,
+              "rotulo": "Detalhe",
+              "explicacao": "O olho abre a data atual, os itens pendentes e as interações com o fornecedor.",
+              "caixa": {
+                "x": 93,
+                "y": 68.1,
+                "w": 2.2,
+                "h": 3.6
+              },
+              "lado": "esquerda"
+            }
+          ],
+          "zoom": {
+            "x": 17,
+            "y": 20,
+            "w": 83,
+            "h": 70
+          },
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/capturas/guias-staging/compras-followup.png (staging v1.23.2, 05/11/2026)",
+            "manual-04-compras#008",
+            "plano-compras#094",
+            "roteiro-compras-06-follow-up-de-entregas-com-sistemas-tecnicos#016",
+            "roteiro-compras-06-follow-up-de-entregas-com-sistemas-tecnicos#072",
+            "oficial-com-b-processos#005",
+            "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sugestao-alcada-reflexos",
+      "titulo": "Sugestão, alçada e reflexos no Recebimento e no Financeiro",
+      "nivel": "avancado",
+      "objetivo": "Configurar o que o cliente usa (estoque mínimo, alçada) e mostrar onde a compra termina.",
+      "onde": "Compras › Sugestão de Compra, Compras › Aprovações e Financeiro › Contas a Pagar",
+      "passos": [
+        {
+          "titulo": "Sugestão de compra (se o cliente usa estoque mínimo)",
+          "texto": "Abra Compras › Sugestão de Compra. A conta está no topo: falta líquida = mínimo − disponível. Escolha a Empresa (obrigatória para gerar), filtre pela curva e deixe Só com falta marcado. A lista vazia (\"Nenhum item precisando de compra.\") é normal quando nenhum produto tem estoque mínimo; o mínimo fica no produto, em Cadastros › Produtos › Suprimentos.",
+          "imagem": "/manuais/compras/img/10-sugestao.webp",
+          "alt": "Sugestão de Compra com a fórmula da falta líquida, o campo Empresa, a busca por produto, os botões de curva Todas, A, B e C, a opção Só com falta e a tabela vazia.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Fórmula",
+              "explicacao": "Disponível = tenho + vai chegar − vai sair; é a mesma conta do demonstrativo de estoque mínimo.",
+              "caixa": {
+                "x": 20.3,
+                "y": 16.1,
+                "w": 57,
+                "h": 3.1
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 2,
+              "rotulo": "Empresa",
+              "explicacao": "Obrigatória para gerar as solicitações.",
+              "caixa": {
+                "x": 19.1,
+                "y": 21.9,
+                "w": 16.3,
+                "h": 4.4
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 3,
+              "rotulo": "Curva",
+              "explicacao": "Todas, A, B ou C: separa pela importância do valor em estoque, não pela urgência.",
+              "caixa": {
+                "x": 74.8,
+                "y": 21.8,
+                "w": 14.9,
+                "h": 4.7
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 4,
+              "rotulo": "Só com falta",
+              "explicacao": "Marcado, mostra só o que falta; desmarque para ver todo o estoque.",
+              "caixa": {
+                "x": 89.8,
+                "y": 22.5,
+                "w": 7.3,
+                "h": 3.3
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 5,
+              "rotulo": "Colunas",
+              "explicacao": "Tenho, Vai sair, Vai chegar, Mínimo e Falta líquida: leia a linha toda antes de selecionar.",
+              "caixa": {
+                "x": 30.7,
+                "y": 30,
+                "w": 38.6,
+                "h": 3.3
+              },
+              "lado": "baixo"
+            }
+          ],
+          "zoom": {
+            "x": 18,
+            "y": 11.9,
+            "w": 81,
+            "h": 24.3
+          },
+          "atencao": "A sugestão só lista itens com estoque mínimo e apura pelo produto, não pela cor ou medida. Ao gerar, a quantidade é recalculada na hora.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/capturas/guias-staging/compras-sugestao.png (staging v1.23.2, 05/11/2026)",
+            "manual-04-compras#009",
+            "plano-compras#023",
+            "plano-compras#024",
+            "roteiro-compras-04-sugestao-de-compra-com-sistemas-tecnicos#022",
+            "roteiro-compras-04-sugestao-de-compra-com-sistemas-tecnicos#025",
+            "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras",
+            "guia:scripts/dados-checklists-estagiarios.mjs#compras"
+          ]
+        },
+        {
+          "titulo": "Aprovação por alçada (se o cliente usa)",
+          "texto": "Cadastre as faixas em Compras › Configurações › Faixas de Alçada e só então ligue \"Usar aprovação por alçada\". O pedido acima da faixa espera em Compras › Aprovações, com o nível da faixa; pendente, ele não gera título nem nota de recebimento.",
+          "imagem": "/manuais/compras/img/11-aprovacoes.webp",
+          "alt": "Tela Aprovações de Compras, vazia, com as colunas Documento, Solicitante, Valor, Fornecedor, Nível, Solicitado em, Espera e Ações.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Aprovações",
+              "explicacao": "Item do menu de Compras, depois de Pedidos de Compra.",
+              "caixa": {
+                "x": 0.6,
+                "y": 39.3,
+                "w": 14.4,
+                "h": 3.1
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 2,
+              "rotulo": "Aprovações",
+              "explicacao": "Pedidos de compra aguardando a sua decisão.",
+              "caixa": {
+                "x": 22.3,
+                "y": 12.8,
+                "w": 22.2,
+                "h": 6.1
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 3,
+              "rotulo": "Colunas",
+              "explicacao": "Documento, Solicitante, Valor, Fornecedor, Nível da faixa, Solicitado em e Espera.",
+              "caixa": {
+                "x": 18.6,
+                "y": 32.6,
+                "w": 79.2,
+                "h": 2.5
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 4,
+              "rotulo": "Lista vazia",
+              "explicacao": "Nenhum pedido aguardando você.",
+              "caixa": {
+                "x": 47.2,
+                "y": 49.7,
+                "w": 21.6,
+                "h": 3.1
+              },
+              "lado": "baixo"
+            }
+          ],
+          "atencao": "Quem cria o pedido não aprova (\"Você não pode decidir um documento que você mesmo criou.\"). A alçada vem desligada: ligue só depois das faixas e da carga de pedidos em aberto, senão os pedidos importados ficam pendentes.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/capturas/guias-staging/compras-aprovacoes.png (staging v1.23.2, 05/11/2026)",
+            "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+          ]
+        },
+        {
+          "titulo": "Gere a nota de recebimento pelo pedido",
+          "texto": "No menu ⋯ do pedido, Gerar Nota de Recebimento abre a Nova Nota de Recebimento já preenchida com o pedido. A mesma nota aparece como NF-‹número do fornecedor› no Recebimento e como NR-‹número interno› no pedido e no título.",
+          "evidencia": "base",
+          "fontes": [
+            "regra-recebimento-a-mesma-nota-tem-dois-numeros"
+          ]
+        },
+        {
+          "titulo": "Títulos a pagar: pelo pedido ou pela nota",
+          "texto": "Siga a decisão da ata: o título nasce pelo pedido ou pela nota, nunca pelos dois. Com títulos gerados, itens e parcelas do pedido travam.",
+          "atencao": "O meio de pagamento da parcela não chega ao Contas a Pagar: informe de novo.",
+          "evidencia": "base",
+          "fontes": [
+            "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras",
+            "guia:videos/roteiros/consultor-01-suprimentos.json#14"
+          ]
+        }
+      ]
+    }
+  ],
+  "consultor": {
+    "implantacao": [
+      "Fundação concluída e assinada; módulo Compras ativo (Compras PRO só se usar Contratos de Entrega) (checklist de implantação de Compras).",
+      "Fornecedor com É Fornecedor? e Conta a Pagar ligados, Conta de Fluxo de Caixa Despesa preenchida e contato com E-mail Compras.",
+      "Insumo com NCM, unidade, categoria com \"Preço calculado por\", embalagem e fator: sem NCM a solicitação não entra na cotação.",
+      "CFOPs de entrada das naturezas usadas, com \"gera financeiro\" decidido com o contador.",
+      "Decisões em ata: títulos pelo pedido ou pela nota, e se haverá aprovação por alçada.",
+      "Compras › Configurações › Parâmetros de Compras revisados (Regras de Melhor Opção e Critérios de preço na Cotação). O rótulo exato do menu está a conferir (Parâmetros × Parâmetros de Compras)."
+    ],
+    "perguntasDoCliente": [
+      {
+        "pergunta": "Preciso sempre fazer cotação?",
+        "resposta": "Não. A cotação é opcional: no menu ⋯ da solicitação, Gerar Pedido de Compra abre o pedido direto.",
+        "fontes": [
+          "regra-compras-gerar-pedido-de-compra-abre-o-novo-pedido"
+        ]
+      },
+      {
+        "pergunta": "De onde vem o CFOP do pedido de compra?",
+        "resposta": "Pela cotação, da Natureza da Operação, conforme a origem do fornecedor. Pelo caminho direto, é informado no Novo Pedido de Compra.",
+        "fontes": [
+          "regra-compras-natureza-da-operacao-define-o-cfop",
+          "regra-compras-gerar-pedido-de-compra-abre-o-novo-pedido"
+        ]
+      },
+      {
+        "pergunta": "Por que um item não aparece na Sugestão de Compra?",
+        "resposta": "A sugestão só lista itens com estoque mínimo cadastrado.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+        ]
+      },
+      {
+        "pergunta": "Como sei quais entregas estão atrasadas?",
+        "resposta": "Em Compras › Follow-up de Entregas, clique no cartão Atrasados; o status é recalculado todo dia de manhã.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras",
+          "roteiro-compras-06-follow-up-de-entregas-com-sistemas-tecnicos#072"
+        ]
+      }
+    ],
+    "errosComuns": [
+      {
+        "titulo": "E-mail de teste chegando ao fornecedor.",
+        "texto": "Enviar por e-mail entrega de verdade: use e-mails internos da equipe.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+        ]
+      },
+      {
+        "titulo": "Título pelo pedido e pela nota.",
+        "texto": "Escolha um caminho e mantenha; com títulos, o pedido trava.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+        ]
+      },
+      {
+        "titulo": "Imposto de entrada com sinal negativo.",
+        "texto": "Hoje o pedido de compra mostra o crédito de imposto com sinal negativo (COM-PC-018): avise quem confere impostos no PC.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+        ]
+      },
+      {
+        "titulo": "Enviar o PC por e-mail pela tela do pedido.",
+        "texto": "Hoje ainda não envia: use Baixar PDF.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+        ]
+      }
+    ],
+    "configuracoes": [
+      {
+        "item": "Parâmetros de Compras",
+        "onde": "Compras › Configurações › Parâmetros de Compras (rótulo a conferir)",
+        "porque": "\"Regras de Melhor Opção\" e \"Critérios de preço na Cotação\" decidem o vencedor sugerido; \"Usar aprovação por alçada\" fica desligado até as faixas existirem.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+        ]
+      },
+      {
+        "item": "Faixas de Alçada",
+        "onde": "Compras › Configurações › Faixas de Alçada",
+        "porque": "Níveis sem sobreposição e dois aprovadores por faixa: faixa com um só aprovador deixa sem aprovador o pedido criado por ele.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+        ]
+      },
+      {
+        "item": "Fornecedor",
+        "onde": "Cadastros › Participantes",
+        "porque": "É Fornecedor? e Conta a Pagar ligados, Conta de Fluxo de Caixa Despesa preenchida e contato com E-mail Compras (use e-mail interno em teste).",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+        ]
+      },
+      {
+        "item": "Insumo",
+        "onde": "Cadastros › Produtos",
+        "porque": "NCM, unidade, categoria com \"Preço calculado por\", embalagem e fator. Sem NCM a solicitação não entra na cotação; a embalagem arredonda a quantidade.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+        ]
+      },
+      {
+        "item": "Estoque mínimo",
+        "onde": "Cadastros › Produtos › Suprimentos",
+        "porque": "Sem mínimo o produto não aparece na Sugestão de Compra.",
+        "fontes": [
+          "manual-04-compras#009",
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+        ]
+      },
+      {
+        "item": "CFOPs de entrada",
+        "onde": "Fiscal › Configurações › CFOP",
+        "porque": "A Natureza da Operação da cotação define o CFOP do pedido conforme a origem do fornecedor; \"gera financeiro\" decidido com o contador.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+        ]
+      }
+    ],
+    "integracoes": [
+      {
+        "acao": "Gerar Pedido de Compra na comparação",
+        "modulo": "Compras",
+        "efeito": "Nasce um pedido por fornecedor vencedor; a SC e a cotação ficam Concluída sozinhas.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+        ]
+      },
+      {
+        "acao": "Salvar o pedido de compra",
+        "modulo": "Compras (Follow-up de Entregas)",
+        "efeito": "O acompanhamento da entrega nasce sozinho e é recalculado todo dia de manhã.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras",
+          "oficial-com-b-processos#005"
+        ]
+      },
+      {
+        "acao": "Gerar Título a Pagar",
+        "modulo": "Financeiro (Contas a Pagar)",
+        "efeito": "Um título por parcela, origem PC; itens e parcelas do pedido travam e a nota desse pedido não gera título.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+        ]
+      },
+      {
+        "acao": "Gerar Nota de Recebimento",
+        "modulo": "Recebimento",
+        "efeito": "Abre a nota preenchida com o pedido; a mesma nota é NF-‹número do fornecedor› na lista e NR-‹número interno› no pedido e no título.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+        ]
+      },
+      {
+        "acao": "Receber só parte do pedido",
+        "modulo": "Compras",
+        "efeito": "Cria o pedido filho com o saldo (PC-nnnn/2) em aberto.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras",
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento"
+        ]
+      },
+      {
+        "acao": "Finalizar a nota no Recebimento",
+        "modulo": "Compras, Estoque e Financeiro",
+        "efeito": "O pedido vira Recebido (só pelo Recebimento); depois disso os títulos saem da nota, não do pedido.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras",
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento"
+        ]
+      },
+      {
+        "acao": "Gerar solicitações pela Sugestão de Compra",
+        "modulo": "Compras (Solicitações) e Estoque",
+        "efeito": "Uma SC por linha, Em Aberto; a conta é a mesma do demonstrativo de estoque mínimo e evita duplicar em menos de 5 minutos.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras",
+          "plano-compras#023"
+        ]
+      }
+    ],
+    "roteiroDemonstracao": [
+      {
+        "passo": "Abra o Dashboard Compras",
+        "mostrar": "Cartões do ciclo, Funil de Compras e Status dos Pedidos de Compra.",
+        "fontes": [
+          "videos/capturas/guias-staging/compras-dashboard.png (staging v1.23.2, 05/11/2026)"
+        ]
+      },
+      {
+        "passo": "Crie uma solicitação",
+        "mostrar": "Nova Solicitação de Compra com Empresa, Data Necessidade, Produto e Quantidade; SC Em Aberto.",
+        "fontes": [
+          "videos/capturas/guias-staging/compras-nova-solicitacao.png (staging v1.23.2, 05/11/2026)",
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+        ]
+      },
+      {
+        "passo": "Gere o pedido direto da SC",
+        "mostrar": "⋯ › Gerar Pedido de Compra e os campos Fornecedor, Comprador, Condição de Pagamento, CFOP e Valor Unitário.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+        ]
+      },
+      {
+        "passo": "Mostre a cotação",
+        "mostrar": "Lista de cotações, os quatro passos do assistente e Aplicar Melhor Opção na Comparação.",
+        "fontes": [
+          "videos/capturas/guias-staging/compras-cotacoes.png (staging v1.23.2, 05/11/2026)",
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+        ]
+      },
+      {
+        "passo": "Leia o pedido e a Linha do tempo",
+        "mostrar": "Status, títulos e nota na lista; a cadeia SC → COT → PC → NR → título.",
+        "fontes": [
+          "videos/capturas/guias-staging/compras-pedidos.png (staging v1.23.2, 05/11/2026)",
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+        ]
+      },
+      {
+        "passo": "Acompanhe no Follow-up de Entregas",
+        "mostrar": "Cartões Atrasados e Próx. Vencimento, filtros rápidos e o prazo de cada pedido.",
+        "fontes": [
+          "videos/capturas/guias-staging/compras-followup.png (staging v1.23.2, 05/11/2026)",
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+        ]
+      },
+      {
+        "passo": "Se o cliente usa, mostre Sugestão e Aprovações",
+        "mostrar": "Falta líquida com a curva e a fila de aprovação por nível.",
+        "fontes": [
+          "videos/capturas/guias-staging/compras-sugestao.png (staging v1.23.2, 05/11/2026)",
+          "videos/capturas/guias-staging/compras-aprovacoes.png (staging v1.23.2, 05/11/2026)",
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+        ]
+      }
+    ]
+  },
+  "fontes": [
+    "guia:scripts/dados-checklists-estagiarios.mjs#compras",
+    "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras",
+    "guia:videos/roteiros/consultor-01-suprimentos.json",
+    "guia:db/migrations/002_modulos_iniciais.sql#compras",
+    "funcional-compras-solicitacoes-pedidos-e-recebimento",
+    "regra-compras-gerar-pedido-de-compra-abre-o-novo-pedido",
+    "regra-compras-natureza-da-operacao-define-o-cfop",
+    "regra-recebimento-a-mesma-nota-tem-dois-numeros",
+    "videos/public/telas/consultor-01-suprimentos/00-solicitacao.png",
+    "videos/public/telas/consultor-01-suprimentos/01-linha-do-tempo.png",
+    "videos/public/telas/consultor-01-suprimentos/01b-cotacao.png",
+    "videos/public/telas/consultor-01-suprimentos/01c-comparacao.png",
+    "videos/public/telas/compra-em-nome-do-cliente/32-pedido-de-compra.png",
+    "videos/capturas/guias-staging/compras-dashboard.png (staging v1.23.2, 05/11/2026)",
+    "videos/capturas/guias-staging/compras-cotacoes.png (staging v1.23.2, 05/11/2026)",
+    "videos/capturas/guias-staging/compras-pedidos.png (staging v1.23.2, 05/11/2026)",
+    "videos/capturas/guias-staging/compras-solicitacoes.png (staging v1.23.2, 05/11/2026)",
+    "videos/capturas/guias-staging/compras-nova-solicitacao.png (staging v1.23.2, 05/11/2026)",
+    "videos/capturas/guias-staging/compras-followup.png (staging v1.23.2, 05/11/2026)",
+    "manual-04-compras#008",
+    "plano-compras#094",
+    "roteiro-compras-06-follow-up-de-entregas-com-sistemas-tecnicos#016",
+    "roteiro-compras-06-follow-up-de-entregas-com-sistemas-tecnicos#072",
+    "oficial-com-b-processos#005",
+    "videos/capturas/guias-staging/compras-sugestao.png (staging v1.23.2, 05/11/2026)",
+    "manual-04-compras#009",
+    "plano-compras#023",
+    "plano-compras#024",
+    "roteiro-compras-04-sugestao-de-compra-com-sistemas-tecnicos#022",
+    "roteiro-compras-04-sugestao-de-compra-com-sistemas-tecnicos#025",
+    "videos/capturas/guias-staging/compras-aprovacoes.png (staging v1.23.2, 05/11/2026)",
+    "guia:videos/roteiros/consultor-01-suprimentos.json#14",
+    "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento"
+  ],
+  "pendencias": [
+    "CAPTURA: quadro Dados do Item com Cor na Nova Solicitação; Sugestão de Compra com itens (produto com estoque mínimo) e Aprovações com um pedido pendente.",
+    "DIVERGÊNCIA: colunas da Sugestão de Compra — roteiro-compras-04#025 cita Valor unitário e Valor estimado; a tela (staging 05/11/2026) mostra Embalagem, Curva e Necessidade, sem colunas de valor.",
+    "A CONFERIR: o atalho de cada cartão do Follow-up (o plano diz que filtram ao clicar).",
+    "CAPTURA: menu ⋯ da solicitação aberto (Gerar Cotação, Gerar Pedido de Compra, Excluir).",
+    "CAPTURA: menu ⋯ do pedido de compra aberto (Linha do tempo, Gerar Nota de Recebimento).",
+    "CAPTURA: passos Itens a Cotar e Cotação (propostas) da cotação.",
+    "CAPTURA: Compras › Configurações › Parâmetros de Compras e Faixas de Alçada (conferir o rótulo do menu).",
+    "DIVERGÊNCIA: status do pedido de compra — Em Aberto na lista e Em Edição na tela (trilha) × gestora (Em aberto, Recebido, Cancelado).",
+    "DIVERGÊNCIA: momento do desdobro do PC parcial (salvar × finalizar a nota de recebimento).",
+    "CONFIRMADO NA TELA (staging v1.23.2, 05/11/2026): o Dashboard mostra \"Status dos Pedidos de Compra\" com Em aberto e Recebido; a lista mostra Recebido. O cartão do dashboard se chama \"Total PC este mês\" e o bloco \"pedidos recentes\" não apareceu na parte capturada."
+  ]
+}

@@ -1,0 +1,823 @@
+{
+  "modulo": "cem",
+  "titulo": "Integração CEM — guia visual",
+  "resumo": "Você vai entender como um orçamento fechado no CEM vira pedido de venda no Flow sem redigitação: onde escolher e conectar o sistema de origem, por onde importar, o que conferir no pedido gerado e como funciona o Faturamento em Nível.",
+  "versaoSistema": "1.22.13 (capturas de compra-em-nome-do-cliente)",
+  "atualizadoEm": "2026-11-06",
+  "status": "rascunho",
+  "conceitos": [
+    {
+      "titulo": "O orçamento do CEM vira pedido de venda",
+      "texto": "A integração traz uma obra fechada no CEM para o Flow e gera um pedido de venda Em aberto, que segue o caminho normal de Vendas. Não é preciso digitar os itens de novo.",
+      "icone": "cem",
+      "fontes": [
+        "oficial-int-c-implantacao#011",
+        "guia:db/migrations/002_modulos_iniciais.sql#vendas"
+      ]
+    },
+    {
+      "titulo": "Um sistema de origem por empresa",
+      "texto": "Em Configurar integração escolhe-se CEM Desktop, CEM Mobi, PrefSuite ou Arquivos. Só o botão de importação do sistema escolhido aparece na lista de pedidos (Importar CEM, Importar CEM Mobi ou Importar Arquivo).",
+      "icone": "regra",
+      "fontes": [
+        "oficial-int-c-implantacao#003",
+        "oficial-int-d-checklist#000",
+        "videos/public/telas/compra-em-nome-do-cliente/01-configurar-integracao.png"
+      ]
+    },
+    {
+      "titulo": "Só obra fechada, e a obra inteira",
+      "texto": "A integração só traz obras fechadas no CEM e traz a obra toda: não há escolha de itens. Cliente, CPF/CNPJ, cidade e UF vêm do CEM, por isso o cadastro de clientes no CEM precisa estar correto.",
+      "icone": "alerta",
+      "fontes": [
+        "oficial-int-c-implantacao#011",
+        "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+      ]
+    },
+    {
+      "titulo": "Os Padrões completam o que o CEM não manda",
+      "texto": "O CEM manda itens que o Flow ainda não conhece. Os Padrões de Integração dizem com que NCM, unidade, categoria, CFOP e condição o produto e o pedido nascem. Padrões completos são importação sem parada.",
+      "icone": "fundacao",
+      "fontes": [
+        "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+      ]
+    },
+    {
+      "titulo": "Revisão de orçamento nunca altera o pedido antigo",
+      "texto": "Se o orçamento cresce depois de integrado, CEM Desktop e Mobi reimportam só o saldo num novo pedido. Trocar cor ou medida traz o item de novo, e o pedido antigo precisa ser cancelado ou ajustado à mão.",
+      "icone": "fluxo",
+      "fontes": [
+        "oficial-int-a-regras#003",
+        "oficial-int-b-processos#000"
+      ]
+    }
+  ],
+  "palavras": [
+    {
+      "termo": "Configurar integração",
+      "definicao": "Tela do grupo Configurações de Vendas onde se escolhe o sistema de origem e se conecta o CEM. Só o administrador acessa.",
+      "fontes": [
+        "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem",
+        "oficial-int-d-checklist#000"
+      ]
+    },
+    {
+      "termo": "CEM Desktop",
+      "definicao": "Integração local com o CEM instalado na empresa, por um agente (FaktoryFlow Agent) pareado com o Flow.",
+      "fontes": [
+        "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+      ]
+    },
+    {
+      "termo": "CEM Mobi",
+      "definicao": "Integração pela API do CEM Mobi, configurada em Configuração CEM Mobi e conferida com Testar Conexão.",
+      "fontes": [
+        "oficial-int-d-checklist#000",
+        "videos/public/telas/compra-em-nome-do-cliente/01-configurar-integracao.png"
+      ]
+    },
+    {
+      "termo": "Padrões de Integração",
+      "definicao": "Valores com que o produto novo e o pedido importado nascem (NCM, unidade, categoria, CFOP, plano, condição e meio).",
+      "fontes": [
+        "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem",
+        "oficial-int-d-checklist#000"
+      ]
+    },
+    {
+      "termo": "Importar CEM / Importar CEM Mobi / Importar Arquivo",
+      "definicao": "Botões da lista Pedidos de Venda que abrem a janela de importação; só aparece o do sistema escolhido.",
+      "fontes": [
+        "oficial-int-c-implantacao#011",
+        "oficial-int-c-implantacao#003"
+      ]
+    },
+    {
+      "termo": "Pendente, Integrada, Parcial",
+      "definicao": "Estados da obra: ainda não importada, importada com pedido ativo, ou com saldo a importar depois de uma revisão.",
+      "fontes": [
+        "oficial-int-b-processos#000"
+      ]
+    },
+    {
+      "termo": "Faturamento em Nível",
+      "definicao": "Opção que divide cada item da obra em níveis (por exemplo, material e instalação), cada um com sua empresa, CFOP e condição de pagamento.",
+      "fontes": [
+        "videos/public/telas/compra-em-nome-do-cliente/01-configurar-integracao.png",
+        "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+      ]
+    },
+    {
+      "termo": "Níveis de Faturamento e Templates de Rateio",
+      "definicao": "Cadastros do Faturamento em Nível: os níveis e o rateio padrão de percentuais entre eles.",
+      "fontes": [
+        "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+      ]
+    }
+  ],
+  "mapa": {
+    "antes": [
+      "fundacao"
+    ],
+    "depois": [
+      "vendas"
+    ],
+    "texto": "A integração depende da Fundação pronta (empresa, CFOPs, plano de contas, condições, categorias, NCMs e unidades) e entrega um pedido de venda Em aberto ao módulo Vendas.",
+    "fontes": [
+      "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem",
+      "oficial-int-c-implantacao#011"
+    ]
+  },
+  "capitulos": [
+    {
+      "id": "escolher-e-conectar",
+      "titulo": "Escolhendo e conectando o sistema de origem",
+      "nivel": "basico",
+      "objetivo": "Saber onde fica a configuração da integração, qual sistema está ativo e se a conexão está funcionando.",
+      "onde": "Vendas › Configurações › Configurar integração",
+      "passos": [
+        {
+          "titulo": "Abra Configurar integração e veja o sistema ativo",
+          "texto": "No grupo Configurações do menu de Vendas, abra Configurar integração. Os cartões no alto mostram os sistemas de origem possíveis; o escolhido fica marcado e aparece em \"Sistema ativo\".",
+          "imagem": "/manuais/cem/img/01-configurar-integracao.webp",
+          "alt": "Tela de integração com os cartões CEM Desktop, CEM Mobi, PrefSuite e Arquivos, com CEM Mobi marcado como sistema ativo.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Configurar integração",
+              "explicacao": "Item do grupo Configurações de Vendas. Só o administrador acessa.",
+              "caixa": {
+                "x": 2.8,
+                "y": 72.4,
+                "w": 12.3,
+                "h": 4
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 2,
+              "rotulo": "Sistemas de origem",
+              "explicacao": "CEM Desktop e PrefSuite precisam de um agente instalado na empresa; CEM Mobi usa a API; Arquivos é importação manual.",
+              "caixa": {
+                "x": 28.5,
+                "y": 7.8,
+                "w": 58.4,
+                "h": 20.3
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 3,
+              "rotulo": "Sistema ativo",
+              "explicacao": "O sistema escolhido. Só o botão de importação dele aparece na lista de pedidos.",
+              "caixa": {
+                "x": 28.4,
+                "y": 28.6,
+                "w": 11.3,
+                "h": 3.3
+              },
+              "lado": "direita"
+            }
+          ],
+          "atencao": "Faça com o administrador do cliente: só ele acessa esta tela. PrefSuite está fora do beta e não deve ser implantado.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/compra-em-nome-do-cliente/01-configurar-integracao.png",
+            "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem",
+            "oficial-int-c-implantacao#003"
+          ]
+        },
+        {
+          "titulo": "Confira a conexão do CEM Mobi",
+          "texto": "No bloco Configuração CEM Mobi, o selo Conectado e a última conexão mostram que a API responde. Use Testar Conexão para conferir. URL da API e API Key são preenchidas pelo administrador.",
+          "imagem": "/manuais/cem/img/01-configurar-integracao.webp",
+          "alt": "Bloco Configuração CEM Mobi com o selo Conectado e os botões Editar, Testar Conexão e Remover Conexão.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Conectado",
+              "explicacao": "O Flow conseguiu falar com a API do CEM Mobi na última conexão.",
+              "caixa": {
+                "x": 81.1,
+                "y": 38.9,
+                "w": 6.1,
+                "h": 3.5
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 2,
+              "rotulo": "Testar Conexão",
+              "explicacao": "Confere a conexão agora; o sucesso diz quantos pedidos foram encontrados.",
+              "caixa": {
+                "x": 33,
+                "y": 59.6,
+                "w": 8.8,
+                "h": 5
+              },
+              "lado": "baixo"
+            }
+          ],
+          "zoom": {
+            "x": 27,
+            "y": 35.6,
+            "w": 62.1,
+            "h": 33.9
+          },
+          "dica": "O teste bem-sucedido mostra \"Conexão realizada com sucesso! N pedido(s) encontrado(s).\". No CEM Desktop, a conferência é o dispositivo pareado e online.",
+          "atencao": "Chave de API é segredo do cliente: o consultor não anota nem guarda.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/compra-em-nome-do-cliente/01-configurar-integracao.png",
+            "oficial-int-d-checklist#000"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "importar",
+      "titulo": "Importando um orçamento",
+      "nivel": "basico",
+      "objetivo": "Achar o botão de importação e conhecer as etapas da janela até gerar o pedido.",
+      "onde": "Vendas › Pedidos de Venda › Importar CEM Mobi (ou Importar CEM / Importar Arquivo)",
+      "passos": [
+        {
+          "titulo": "Clique no botão de importação da lista de pedidos",
+          "texto": "Em Vendas › Pedidos de Venda, o botão de importação fica ao lado das opções de visualização. Aqui aparece Importar CEM Mobi porque é o sistema ativo.",
+          "imagem": "/manuais/cem/img/02-importar-cem-mobi.webp",
+          "alt": "Lista Pedidos de Venda vazia com o botão Importar CEM Mobi.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Pedidos de Venda",
+              "explicacao": "A importação começa na lista de pedidos.",
+              "caixa": {
+                "x": 0.3,
+                "y": 27.1,
+                "w": 14.8,
+                "h": 4
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 2,
+              "rotulo": "Importar CEM Mobi",
+              "explicacao": "Abre a janela que traz a obra do CEM e gera o pedido.",
+              "caixa": {
+                "x": 74.1,
+                "y": 26.9,
+                "w": 11.7,
+                "h": 5.1
+              },
+              "lado": "baixo"
+            }
+          ],
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/compra-em-nome-do-cliente/05-pedidos.png",
+            "oficial-int-c-implantacao#003"
+          ]
+        },
+        {
+          "titulo": "Siga as etapas da janela de importação",
+          "texto": "CEM Mobi: Pedidos › Itens › (Rateio) › Decisões › Confirmação. CEM Desktop: Selecionar Obra › Dados do Cliente › Itens da Obra › (Rateio) › Confirmação › Gerar pedido. Arquivo: Upload › Dados › Pagamento › Itens › (Rateio) › Confirmação.",
+          "atencao": "Clique uma única vez em Gerar Pedido de Venda ou Importar Pedido e aguarde. Na importação por arquivo, o rascunho se perde ao fechar a aba.",
+          "evidencia": "base",
+          "fontes": [
+            "oficial-int-c-implantacao#011",
+            "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+          ]
+        },
+        {
+          "titulo": "Confira o pedido que nasceu da importação",
+          "texto": "Abra o pedido gerado (Em aberto) e compare com o orçamento no CEM: itens, preços, desconto, impostos, cliente e obra. O total do pedido deve ser igual ao do CEM.",
+          "evidencia": "base",
+          "fontes": [
+            "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "padroes-e-bloqueios",
+      "titulo": "Padrões de Integração e o que trava a importação",
+      "nivel": "avancado",
+      "objetivo": "Deixar os Padrões completos e saber se cada bloqueio se corrige no CEM ou nos Padrões.",
+      "onde": "Vendas › Configurações › Padrões de Integração",
+      "passos": [
+        {
+          "titulo": "Complete os Padrões de Integração",
+          "texto": "Preencha os padrões por tipo de item até o selo Todos completos e a aba Pedido de Venda com CFOP, plano, condição e meio.",
+          "atencao": "Não use o NCM \"99999999 À classificar\" nos Padrões e não inative uma categoria usada num padrão.",
+          "evidencia": "base",
+          "fontes": [
+            "oficial-int-d-checklist#000",
+            "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+          ]
+        },
+        {
+          "titulo": "Diagnostique o bloqueio pela origem",
+          "texto": "Obra que não aparece: confira a base escolhida e se a obra está fechada. Nenhuma obra carrega: o agente desktop está online? CPF/CNPJ errado ou item sem valor: corrija no CEM. Botão Avançar parado: procure o campo obrigatório destacado.",
+          "atencao": "\"Nenhum agente desktop online\" é máquina desligada ou serviço parado. Cliente inativo com o mesmo documento: reative antes de importar.",
+          "evidencia": "base",
+          "fontes": [
+            "roteiro-vendas-01-pedido-de-venda#035",
+            "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "revisao",
+      "titulo": "Revisão do orçamento e reimportação",
+      "nivel": "avancado",
+      "objetivo": "Explicar ao cliente o que cada tipo de revisão provoca no Flow.",
+      "onde": "Vendas › Pedidos de Venda › Importar CEM (ou Importar CEM Mobi)",
+      "passos": [
+        {
+          "titulo": "Quantidade maior: novo pedido só com o saldo",
+          "texto": "No CEM Desktop e no Mobi, aumentar a quantidade gera um segundo pedido só com o saldo, com a etiqueta CEM_INCREMENTAL. O primeiro pedido não é alterado. Obra sem alteração não gera pedido novo.",
+          "evidencia": "base",
+          "fontes": [
+            "oficial-int-a-regras#003",
+            "oficial-int-d-checklist#003"
+          ]
+        },
+        {
+          "titulo": "Cor ou medida trocada: o item vem de novo",
+          "texto": "Item que mudou de cor ou medida conta como item novo. O pedido antigo continua com a versão antiga e precisa ser cancelado ou ajustado à mão.",
+          "atencao": "Fontes divergem: o roteiro Vendas 01 orienta cancelar e reimportar o pedido completo; a gestora diz que Desktop e Mobi reimportam só o saldo. A conferir na tela antes de ensinar.",
+          "evidencia": "a-conferir-na-tela",
+          "fontes": [
+            "oficial-int-a-regras#003",
+            "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+          ]
+        },
+        {
+          "titulo": "Desfazer é cancelar ou excluir o pedido",
+          "texto": "Cancelar o pedido devolve a obra para Pendente. Quem importa por arquivo precisa cancelar o pedido para reimportar.",
+          "evidencia": "base",
+          "fontes": [
+            "oficial-int-b-processos#000",
+            "oficial-int-a-regras#003",
+            "oficial-int-d-checklist#003"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faturamento-em-nivel",
+      "titulo": "Faturamento em Nível (só quando contratado)",
+      "nivel": "avancado",
+      "objetivo": "Ligar o Faturamento em Nível, cadastrar os níveis e um template de rateio.",
+      "onde": "Vendas › Configurações › Configurar integração, Níveis de Faturamento e Templates de Rateio",
+      "passos": [
+        {
+          "titulo": "Ligue o Faturamento em Nível",
+          "texto": "No cartão Faturamento em Nível, Ativado faz a importação perguntar, obra a obra, se divide cada item em níveis (por template ou manualmente) ou importa sem divisão. Desativado: cada produto vira um único item de venda.",
+          "imagem": "/manuais/cem/img/01-configurar-integracao.webp",
+          "alt": "Cartão Faturamento em Nível com a chave Ativado e a explicação de Desativado e Ativado.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Faturamento em Nível",
+              "explicacao": "Divide cada item da obra em níveis de faturamento, cada um com sua empresa, CFOP e condição.",
+              "caixa": {
+                "x": 28.2,
+                "y": 71.4,
+                "w": 13.9,
+                "h": 3.9
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 2,
+              "rotulo": "Ativado",
+              "explicacao": "Ligado, a importação pergunta obra a obra se divide em níveis.",
+              "caixa": {
+                "x": 79,
+                "y": 76.8,
+                "w": 7.4,
+                "h": 4
+              },
+              "lado": "cima"
+            }
+          ],
+          "zoom": {
+            "x": 27,
+            "y": 69.4,
+            "w": 62.1,
+            "h": 23.9
+          },
+          "atencao": "A regra de rateio precisa estar definida com o fiscal, o contador e o financeiro. Licença: os roteiros dizem que é só da versão PRO; a gestora não marca como PRO. A conferir na licença do cliente.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/compra-em-nome-do-cliente/01-configurar-integracao.png",
+            "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+          ]
+        },
+        {
+          "titulo": "Cadastre os Níveis de Faturamento",
+          "texto": "Em Níveis de Faturamento, clique em + Novo Nível. Cada nível tem Código, Prefixo, Nome, Tipo, Peso e Ordem.",
+          "imagem": "/manuais/cem/img/03-niveis-de-faturamento.webp",
+          "alt": "Lista Níveis de Faturamento com dois níveis cadastrados e o botão + Novo Nível.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "+ Novo Nível",
+              "explicacao": "Cadastra um nível (por exemplo, fornecimento da indústria ou material comprado pelo cliente).",
+              "caixa": {
+                "x": 90,
+                "y": 13.2,
+                "w": 8,
+                "h": 5.1
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 2,
+              "rotulo": "Nome do nível",
+              "explicacao": "Como o nível aparece no rateio e nos pedidos.",
+              "caixa": {
+                "x": 33.9,
+                "y": 35.8,
+                "w": 13.3,
+                "h": 4.2
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 3,
+              "rotulo": "Peso",
+              "explicacao": "Como o valor é distribuído entre os níveis.",
+              "caixa": {
+                "x": 65,
+                "y": 35.8,
+                "w": 8.8,
+                "h": 4.2
+              },
+              "lado": "direita"
+            }
+          ],
+          "atencao": "Caminho: a captura mostra a tela no grupo Configurações de Vendas; o roteiro Vendas 06 indica Vendas › Integrações › Níveis de Faturamento. A conferir no menu da versão atual.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/compra-em-nome-do-cliente/03-niveis-lista.png",
+            "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+          ]
+        },
+        {
+          "titulo": "Monte um Template de Rateio",
+          "texto": "Em Templates de Rateio, crie um template: dê um Nome, escolha os níveis e o percentual de cada um. Empresa, CFOP, Conta de Fluxo de Caixa e Condição podem ser definidos por nível. Quando a Soma fechar 100%, clique em Salvar.",
+          "imagem": "/manuais/cem/img/04-template-de-rateio.webp",
+          "alt": "Novo Template de Rateio com dois níveis, percentuais 40 e 60 e a barra Soma 100%.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Nome",
+              "explicacao": "Nome do template, escolhido na hora de importar a obra.",
+              "caixa": {
+                "x": 19.2,
+                "y": 22.4,
+                "w": 28.6,
+                "h": 5.3
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 2,
+              "rotulo": "Nível e Percentual",
+              "explicacao": "Cada linha é um nível com a parte do valor que vai para ele.",
+              "caixa": {
+                "x": 19.8,
+                "y": 35.8,
+                "w": 16.3,
+                "h": 12.2
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 3,
+              "rotulo": "CFOP por nível",
+              "explicacao": "Cada nível pode sair com seu próprio CFOP (e empresa, conta e condição).",
+              "caixa": {
+                "x": 48.8,
+                "y": 35.8,
+                "w": 20.6,
+                "h": 12.2
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 4,
+              "rotulo": "Soma",
+              "explicacao": "Precisa fechar 100% para salvar.",
+              "caixa": {
+                "x": 19.3,
+                "y": 57.2,
+                "w": 77.4,
+                "h": 7.5
+              },
+              "lado": "cima"
+            }
+          ],
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/compra-em-nome-do-cliente/04-template-rateio.png",
+            "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+          ]
+        }
+      ]
+    }
+  ],
+  "consultor": {
+    "implantacao": [
+      "Fundação concluída: empresa, CFOPs, plano de contas, condições de pagamento, categorias, NCMs e unidades (checklist de implantação da Integração CEM).",
+      "Decidido em ata: sistema de origem (CEM Desktop, CEM Mobi, PrefSuite ou arquivo), modo do código dos produtos e uso de Faturamento em Nível. O modo do código fica gravado em cada obra: decida antes da primeira.",
+      "CEM Desktop: máquina Windows com o banco do CEM, acesso de administrador e o FaktoryFlow Agent instalado mostrando o código de pareamento.",
+      "Uma obra fechada, real e do cliente, escolhida com o orçamentista; clientes do CEM com CPF/CNPJ, cidade e UF corretos.",
+      "Ao final: sistema conectado, Padrões com Todos completos, uma obra importada com total igual ao do CEM, uma revisão reimportada e, se contratado, uma obra importada com um pedido por nível."
+    ],
+    "perguntasDoCliente": [
+      {
+        "pergunta": "Posso importar só parte da obra?",
+        "resposta": "Não. A integração traz a obra inteira, e só obras fechadas no CEM.",
+        "fontes": [
+          "oficial-int-c-implantacao#011"
+        ]
+      },
+      {
+        "pergunta": "Mudei o orçamento depois de importar. O pedido atualiza sozinho?",
+        "resposta": "Não. O pedido antigo nunca é alterado: aumento de quantidade gera um pedido novo só com o saldo (Desktop e Mobi), e troca de cor ou medida traz o item de novo.",
+        "fontes": [
+          "oficial-int-a-regras#003"
+        ]
+      },
+      {
+        "pergunta": "Por que o botão Importar CEM não aparece?",
+        "resposta": "Só aparece o botão do sistema escolhido em Configurar integração: Importar CEM, Importar CEM Mobi ou Importar Arquivo.",
+        "fontes": [
+          "oficial-int-c-implantacao#003"
+        ]
+      },
+      {
+        "pergunta": "A importação falhou no meio. Ficou lixo no sistema?",
+        "resposta": "O checklist de implantação (INT-GER-041) diz que nada fica gravado além do cliente e que corrigir e repetir é seguro; outra fonte fala em pedido cancelado (divergência registrada nas pendências). Antes de repetir, procure o pedido na lista.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+        ]
+      }
+    ],
+    "errosComuns": [
+      {
+        "titulo": "Cliente com cadastro errado no CEM.",
+        "texto": "CPF/CNPJ, cidade e UF vêm só da origem: saneie no CEM antes do go-live.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+        ]
+      },
+      {
+        "titulo": "Clicar duas vezes em Gerar Pedido de Venda.",
+        "texto": "Clique uma vez e aguarde.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+        ]
+      },
+      {
+        "titulo": "Agente do CEM Desktop desligado.",
+        "texto": "\"Nenhum agente desktop online\" é máquina desligada ou serviço parado.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+        ]
+      },
+      {
+        "titulo": "NCM genérico nos Padrões.",
+        "texto": "Não use \"99999999 À classificar\".",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+        ]
+      },
+      {
+        "titulo": "Reimportar a mesma obra esperando atualizar.",
+        "texto": "Obra já integrada sem mudança não gera pedido (\"…já está integrada integralmente…\"); quantidade maior gera um pedido só com o saldo.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+        ]
+      }
+    ],
+    "configuracoes": [
+      {
+        "item": "Sistema de integração",
+        "onde": "Vendas › Configurações › Configurar integração (seletor do topo)",
+        "porque": "Define o único botão de importação da lista de pedidos (Importar CEM, Importar CEM Mobi, Importar PrefSuite ou Importar Arquivo). Sem escolha, vale Arquivos. Só o administrador acessa.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+        ]
+      },
+      {
+        "item": "Pareamento do CEM Desktop",
+        "onde": "Vendas › Configurações › Configurar integração (cards de pareamento)",
+        "porque": "O código XXX-XXX do agente vale 10 minutos; muitos erros seguidos bloqueiam o usuário por 15 minutos. O agente precisa ficar ligado.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+        ]
+      },
+      {
+        "item": "Configuração CEM Mobi",
+        "onde": "Vendas › Configurações › Configurar integração › Configuração CEM Mobi",
+        "porque": "Endereço, chave e código da função; só importe depois de \"Conexão realizada com sucesso!\" e do selo Conectado.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+        ]
+      },
+      {
+        "item": "Modo do código dos produtos",
+        "onde": "Vendas › Configurações › Padrões de Integração › aba Importação",
+        "porque": "Fica gravado em cada obra: mudar depois não afeta obras já integradas. Decida antes da primeira obra.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+        ]
+      },
+      {
+        "item": "Padrões por tipo de item",
+        "onde": "Vendas › Configurações › Padrões de Integração",
+        "porque": "NCM, unidade e categoria de cada tipo (perfil, vidro, componente, esquadria…) até o selo Todos completos; produto novo do CEM nasce com eles.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+        ]
+      },
+      {
+        "item": "Código de serviço (LC 116)",
+        "onde": "Padrões de Integração › bloco Serviço",
+        "porque": "Vazio, vale o da empresa; sem nenhum, a importação de orçamento com serviço para.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+        ]
+      },
+      {
+        "item": "Padrões do pedido",
+        "onde": "Padrões de Integração › aba Pedido de Venda",
+        "porque": "CFOP Padrão, Plano de Conta Padrão, Condição de Pagamento Padrão e Meio de Pagamento Padrão chegam preenchidos na confirmação da importação.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+        ]
+      },
+      {
+        "item": "Faturamento em Nível",
+        "onde": "Configurar integração (card Faturamento em Nível), Níveis de Faturamento e Templates de Rateio",
+        "porque": "Os menus de níveis e templates só aparecem com a chave ligada; precisa de ao menos um nível do tipo Produto e template somando 100%.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+        ]
+      }
+    ],
+    "integracoes": [
+      {
+        "acao": "Importar a obra",
+        "modulo": "Cadastros (Participantes)",
+        "efeito": "Cria o cliente ou reaproveita pelo CPF/CNPJ (Será vinculado, Será criado ou Bloqueado) e cria o contato sem duplicar, com as marcas de e-mail.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+        ]
+      },
+      {
+        "acao": "Importar a obra",
+        "modulo": "Cadastros (Produtos e Cores)",
+        "efeito": "Produto novo nasce com NCM, unidade e categoria do Padrão do tipo e só com o preço de custo; cores novas são cadastradas sozinhas.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+        ]
+      },
+      {
+        "acao": "Importar a obra",
+        "modulo": "Cadastros (Projetos)",
+        "efeito": "Cria ou reaproveita o projeto pelo código da obra; as observações internas trazem obra, contato, vendedor, previsão e cores.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+        ]
+      },
+      {
+        "acao": "Importar a obra",
+        "modulo": "Vendas",
+        "efeito": "Pedido Em aberto; preço unitário = total ÷ quantidade do orçamento; impostos calculados na criação, com aviso no item que falhar.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem",
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+        ]
+      },
+      {
+        "acao": "Importar a obra",
+        "modulo": "Estoque, Financeiro, Comissão e Produção",
+        "efeito": "Nada acontece nesses módulos: tudo nasce depois, a partir do pedido de venda.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+        ]
+      },
+      {
+        "acao": "Importar com \"Um pedido por nível\"",
+        "modulo": "Vendas e Faturamento",
+        "efeito": "Um pedido por nível com valor, cada um com a empresa, o CFOP e a condição da linha; nível de serviço vai para NFS-e e o de produto, para NF-e.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+        ]
+      }
+    ],
+    "roteiroDemonstracao": [
+      {
+        "passo": "Abra Configurar integração",
+        "mostrar": "Os cartões de sistema e o \"Sistema ativo\".",
+        "fontes": [
+          "videos/public/telas/compra-em-nome-do-cliente/01-configurar-integracao.png",
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+        ]
+      },
+      {
+        "passo": "Confira a conexão",
+        "mostrar": "Selo Conectado e Testar Conexão no bloco Configuração CEM Mobi (ou o dispositivo pareado do CEM Desktop).",
+        "fontes": [
+          "videos/public/telas/compra-em-nome-do-cliente/01-configurar-integracao.png",
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+        ]
+      },
+      {
+        "passo": "Mostre os Padrões de Integração",
+        "mostrar": "Selo Todos completos e a aba Pedido de Venda com os padrões.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+        ]
+      },
+      {
+        "passo": "Clique no botão de importação",
+        "mostrar": "Em Vendas › Pedidos de Venda, só o botão do sistema escolhido (aqui, Importar CEM Mobi).",
+        "fontes": [
+          "videos/public/telas/compra-em-nome-do-cliente/05-pedidos.png",
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+        ]
+      },
+      {
+        "passo": "Importe uma obra fechada de teste",
+        "mostrar": "As etapas da janela até a Confirmação; um único clique em Gerar Pedido de Venda ou Importar Pedido.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+        ]
+      },
+      {
+        "passo": "Leia o pedido importado com o cliente",
+        "mostrar": "Total igual ao do CEM, cliente, projeto e produtos criados; Em aberto, Sem títulos.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+        ]
+      },
+      {
+        "passo": "Se contratado, mostre o Faturamento em Nível",
+        "mostrar": "Níveis de Faturamento e um Template de Rateio somando 100%.",
+        "fontes": [
+          "videos/public/telas/compra-em-nome-do-cliente/03-niveis-lista.png",
+          "videos/public/telas/compra-em-nome-do-cliente/04-template-rateio.png",
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+        ]
+      }
+    ]
+  },
+  "fontes": [
+    "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem",
+    "oficial-int-a-regras#003",
+    "oficial-int-b-processos#000",
+    "oficial-int-c-implantacao#003",
+    "oficial-int-c-implantacao#011",
+    "oficial-int-d-checklist#000",
+    "oficial-int-d-checklist#003",
+    "roteiro-vendas-01-pedido-de-venda#035",
+    "videos/public/telas/compra-em-nome-do-cliente/01-configurar-integracao.png",
+    "videos/public/telas/compra-em-nome-do-cliente/03-niveis-lista.png",
+    "videos/public/telas/compra-em-nome-do-cliente/04-template-rateio.png",
+    "videos/public/telas/compra-em-nome-do-cliente/05-pedidos.png",
+    "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+  ],
+  "pendencias": [
+    "CAPTURA: Vendas › Configurações › Padrões de Integração — cartão Padrões por tipo de item com o selo Todos completos e a aba Pedido de Venda.",
+    "CAPTURA: janela Importar CEM Mobi — etapas Pedidos, Itens, Decisões e Confirmação (obra de teste).",
+    "CAPTURA: janela Importar do CEM Desktop — Selecionar Obra, Dados do Cliente, Itens da Obra e Confirmação (precisa de agente pareado).",
+    "CAPTURA: Importar Arquivo — Upload e mensagem do tipo de arquivo aceito.",
+    "CAPTURA: pedido de venda gerado pela importação (Editar Pedido de Venda) com itens e projeto.",
+    "CAPTURA: cartão CEM Desktop com Dispositivos pareados e Bancos de Dados Configurados.",
+    "DIVERGÊNCIA: licença PRO do CEM Mobi e do Faturamento em Nível (roteiros Vendas 01 e 06 × gestora).",
+    "DIVERGÊNCIA: caminho de Níveis de Faturamento (Vendas › Integrações × grupo Configurações; a captura v1.22.13 mostra Configurações).",
+    "DIVERGÊNCIA: correção de cor, medida ou vidro (cancelar e reimportar tudo × reimportar só o saldo).",
+    "DIVERGÊNCIA: falha durante a importação (pedido cancelado × tudo excluído) e tipo de arquivo (.txt na descrição × XML e JSON na regra).",
+    "Módulo sem trilha de estagiário nem vídeo: todo o conteúdo básico vem do checklist de implantação e da documentação oficial da Integração (INT).",
+    "SEM CAPTURA NOVA nesta rodada (06/11/2026): nenhuma das capturas do staging de 05/11 é da Integração CEM; os passos de importação, padrões e revisão seguem sem imagem."
+  ]
+}

@@ -1,0 +1,1184 @@
+{
+ "versao": "2026-11-06",
+ "id": "primeiros-passos",
+ "jornadas": {
+  "inicial": [
+   {
+    "id": "apresentacao",
+    "titulo": "Apresentação",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "texto",
+      "rotulo": "Onboarding do estagiário",
+      "texto": [
+       {
+        "t": "Seu roteiro para aprender o Faktory Flow aos poucos: primeiro a navegação, depois cada módulo na ordem do fluxo da empresa — do primeiro contato com o cliente até o dinheiro no caixa."
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#ONBOARDING"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Objetivo",
+      "texto": [
+       {
+        "t": "Organizar suas primeiras semanas: o que pedir antes de começar, a ordem recomendada dos checklists e os combinados de segurança. Ao final, você deve saber encontrar qualquer tela, criar os seus registros de treino, consultar o que já existe sem alterar nada e explicar como um pedido passa pelos módulos."
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#ONBOARDING"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Primeiros passos e navegação",
+      "texto": [
+       {
+        "t": "O básico que vale para todas as telas do Faktory Flow. Nada aqui altera dados."
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#navegacao"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Objetivo",
+      "texto": [
+       {
+        "t": "Encontrar qualquer tela do sistema, entender o que aparece no topo e no menu, e ler uma lista (filtros, colunas, ações) sem alterar nenhum registro."
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#navegacao"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-estagiarios.mjs#ONBOARDING",
+     "guia:scripts/dados-checklists-estagiarios.mjs#navegacao"
+    ]
+   },
+   {
+    "id": "video",
+    "titulo": "Vídeo introdutório",
+    "status": "em-preparacao",
+    "blocos": [],
+    "fontes": []
+   },
+   {
+    "id": "manual",
+    "titulo": "Manual visual resumido",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "passos",
+      "titulo": "Antes do primeiro dia",
+      "onde": null,
+      "intro": null,
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Saber qual ambiente usar para treinar (endereço do staging ou do dev) e qual empresa selecionar."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Ter o navegador atualizado e, de preferência, uma tela larga: as listas ficam espremidas em janelas pequenas."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#ONBOARDING"
+      ]
+     },
+     {
+      "tipo": "passos",
+      "titulo": "Semana 1 — Navegação e cadastros",
+      "onde": null,
+      "intro": [
+       {
+        "t": "Objetivo: sentir-se à vontade nas telas. Os únicos registros que você cria são os de treino, no início de cada checklist."
+       }
+      ],
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Concluir o checklist "
+         },
+         {
+          "t": "01 · Primeiros passos e navegação",
+          "marca": "negrito"
+         },
+         {
+          "t": "."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Abrir "
+         },
+         {
+          "t": "GLOBAIS > Treinamento > Minhas Trilhas",
+          "marca": "codigo"
+         },
+         {
+          "t": " e ver se há trilha obrigatória para você."
+         }
+        ],
+        "nota": [
+         {
+          "t": "A Central de Treinamento mostra trilhas, pontos e progresso."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#ONBOARDING"
+      ]
+     },
+     {
+      "tipo": "passos",
+      "titulo": "1. Entrar e conferir onde você está",
+      "onde": [
+       {
+        "t": "tela "
+       },
+       {
+        "t": "Início",
+        "marca": "codigo"
+       }
+      ],
+      "intro": null,
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Fazer login e conferir o "
+         },
+         {
+          "t": "selo da empresa",
+          "marca": "negrito"
+         },
+         {
+          "t": " no topo da tela."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Aparece o aviso \"Empresa selecionada automaticamente\" e o nome da empresa no selo."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Conferir a versão do sistema no rodapé do menu lateral (ex.: "
+         },
+         {
+          "t": "Faktory Flow v1.22.11",
+          "marca": "codigo"
+         },
+         {
+          "t": ")."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Ler os blocos da tela Início: "
+         },
+         {
+          "t": "Alertas urgentes",
+          "marca": "codigo"
+         },
+         {
+          "t": ", "
+         },
+         {
+          "t": "Tarefas do dia",
+          "marca": "codigo"
+         },
+         {
+          "t": " e "
+         },
+         {
+          "t": "Resumo do negócio",
+          "marca": "codigo"
+         },
+         {
+          "t": "."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Cada alerta é um atalho para a tela já filtrada (ex.: pedidos aguardando faturamento → Pedidos de Venda)."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Esperar o aviso \"Verificando permissões...\" sumir antes de clicar em algo."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#navegacao"
+      ]
+     },
+     {
+      "tipo": "passos",
+      "titulo": "2. Trocar de módulo",
+      "onde": [
+       {
+        "t": "botão de grade "
+       },
+       {
+        "t": "Abrir menu de módulos",
+        "marca": "codigo"
+       },
+       {
+        "t": " (canto superior esquerdo)"
+       }
+      ],
+      "intro": null,
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Abrir o menu de módulos, digitar o nome em "
+         },
+         {
+          "t": "Buscar módulo...",
+          "marca": "codigo"
+         },
+         {
+          "t": " e escolher."
+         }
+        ],
+        "nota": [
+         {
+          "t": "O topo do menu lateral passa a mostrar \"MÓDULO\" com o nome escolhido. A tecla Esc fecha o painel."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Reconhecer os 15 módulos: Vendas, Compras, CRM, Recebimento, Estoque, Produção, Serviços, Financeiro, Fiscal, Faturamento, Expedição, Projetos, Tarefas, Config. Interna e Implantação."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Abrir os grupos com seta ("
+         },
+         {
+          "t": ">",
+          "marca": "codigo"
+         },
+         {
+          "t": ") do menu lateral: Configurações, Relatórios e Tabelas Dinâmicas vêm fechados e escondem telas."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Usar "
+         },
+         {
+          "t": "Recolher menu",
+          "marca": "codigo"
+         },
+         {
+          "t": " (seta "
+         },
+         {
+          "t": "‹",
+          "marca": "codigo"
+         },
+         {
+          "t": ") quando precisar de mais espaço para uma lista."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#navegacao"
+      ]
+     },
+     {
+      "tipo": "passos",
+      "titulo": "3. Achar uma tela pela busca",
+      "onde": [
+       {
+        "t": "campo "
+       },
+       {
+        "t": "Pesquisar funcionalidades...",
+        "marca": "codigo"
+       },
+       {
+        "t": " ou Ctrl+K"
+       }
+      ],
+      "intro": null,
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Pressionar Ctrl+K e digitar \"pedido\"."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Aparecem sugestões como Pedidos de Compra e Pedidos de Venda. Use ↑↓ e Enter."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Lembrar que a busca encontra "
+         },
+         {
+          "t": "telas",
+          "marca": "negrito"
+         },
+         {
+          "t": ", não registros: para achar um pedido pelo número, use a pesquisa dentro da lista."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#navegacao"
+      ]
+     },
+     {
+      "tipo": "passos",
+      "titulo": "4. Ler uma lista",
+      "onde": [
+       {
+        "t": "qualquer lista, por exemplo "
+       },
+       {
+        "t": "Vendas > Pedidos de Venda",
+        "marca": "tela"
+       }
+      ],
+      "intro": null,
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Identificar os botões do topo: "
+         },
+         {
+          "t": "Mais...",
+          "marca": "codigo"
+         },
+         {
+          "t": " (Colunas e Exportar para Excel), "
+         },
+         {
+          "t": "Filtros",
+          "marca": "codigo"
+         },
+         {
+          "t": " e "
+         },
+         {
+          "t": "+ Novo",
+          "marca": "codigo"
+         },
+         {
+          "t": "."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Conferir o "
+         },
+         {
+          "t": "filtro padrão",
+          "marca": "negrito"
+         },
+         {
+          "t": " antes de concluir que algo não existe (ex.: Pedidos de Venda abre só com Status \"Em Aberto\")."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Ao trocar o Status para \"Todos\", a lista mostra também pedidos faturados e cancelados."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Usar "
+         },
+         {
+          "t": "Pesquisar...",
+          "marca": "codigo"
+         },
+         {
+          "t": ", a paginação (\"Exibindo 1 a N de N itens\") e o botão "
+         },
+         {
+          "t": "Atualizar Página",
+          "marca": "codigo"
+         },
+         {
+          "t": "."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Abrir o menu "
+         },
+         {
+          "t": "...",
+          "marca": "codigo"
+         },
+         {
+          "t": " ou "
+         },
+         {
+          "t": "⋮",
+          "marca": "codigo"
+         },
+         {
+          "t": " de uma linha e separar o que é consulta (Histórico, Ver Timeline) do que altera dados (Excluir, Converter, Finalizar). Feche com Esc sem clicar."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#navegacao"
+      ]
+     },
+     {
+      "tipo": "passos",
+      "titulo": "5. Notificações, ajuda e preferências",
+      "onde": null,
+      "intro": null,
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Abrir o sino de "
+         },
+         {
+          "t": "Notificações",
+          "marca": "codigo"
+         },
+         {
+          "t": " e ver as abas Geral e Solicitações."
+         }
+        ],
+        "nota": [
+         {
+          "t": "A lista pode mostrar \"0 notificações\" por um instante antes de carregar; espere."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Achar o botão "
+         },
+         {
+          "t": "?",
+          "marca": "codigo"
+         },
+         {
+          "t": " (manuais de ajuda) no canto das listas."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "No menu do usuário, conhecer "
+         },
+         {
+          "t": "Modo Escuro",
+          "marca": "codigo"
+         },
+         {
+          "t": " e "
+         },
+         {
+          "t": "Densidade",
+          "marca": "codigo"
+         },
+         {
+          "t": ". Não use "
+         },
+         {
+          "t": "Configurar E-mail (SMTP)",
+          "marca": "codigo"
+         },
+         {
+          "t": "."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#navegacao"
+      ]
+     },
+     {
+      "tipo": "passos",
+      "titulo": "6. Saber o que é administração",
+      "onde": [
+       {
+        "t": "bloco "
+       },
+       {
+        "t": "GLOBAIS",
+        "marca": "codigo"
+       },
+       {
+        "t": " no fim do menu lateral"
+       }
+      ],
+      "intro": null,
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Percorrer Painel de Controle, Configurações, Segurança, Treinamento, Aplicativos e Assinatura "
+         },
+         {
+          "t": "só lendo",
+          "marca": "negrito"
+         },
+         {
+          "t": "."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Abrir "
+         },
+         {
+          "t": "GLOBAIS > Treinamento > Minhas Trilhas",
+          "marca": "codigo"
+         },
+         {
+          "t": " e ver suas trilhas obrigatórias (trilhas e quiz da Central de Treinamento)."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#navegacao"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-estagiarios.mjs#ONBOARDING",
+     "guia:scripts/dados-checklists-estagiarios.mjs#navegacao"
+    ]
+   },
+   {
+    "id": "telas",
+    "titulo": "Principais telas",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "lista",
+      "rotulo": "Telas do módulo (glossário do Harness)",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Seletor de módulos (ícone de grade)"
+         }
+        ],
+        "nota": [
+         {
+          "t": "ícone de grade (canto superior esquerdo)"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/glossario/telas.yaml#geral.seletor-modulos"
+        ]
+       }
+      ],
+      "fontes": [
+       "harness:conhecimento/glossario/telas.yaml#geral.seletor-modulos"
+      ]
+     }
+    ],
+    "fontes": [
+     "harness:conhecimento/glossario/telas.yaml#geral.seletor-modulos"
+    ]
+   },
+   {
+    "id": "fluxo",
+    "titulo": "Fluxo operacional básico",
+    "status": "em-preparacao",
+    "blocos": [],
+    "fontes": []
+   },
+   {
+    "id": "atividade",
+    "titulo": "Atividade prática",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "passos",
+      "titulo": "Antes de começar — Por que a sua conta vem zerada",
+      "onde": null,
+      "intro": [
+       {
+        "t": "No Faktory Flow, cada módulo usa o que o anterior criou: lead, cliente, pedido, compra, estoque, produção, serviços, nota e títulos. Uma empresa nova não tem nada disso, então cada checklist começa com "
+       },
+       {
+        "t": "Preparar seus dados",
+        "marca": "negrito"
+       },
+       {
+        "t": ": você cria o registro de que ele precisa e anota o número."
+       }
+      ],
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Entender a ordem: o que você criar no checklist 02 (cliente, produto, obra) é usado no 04 (pedido), que alimenta 05 a 13. Por isso a trilha segue a numeração."
+         }
+        ],
+        "nota": null,
+        "selo": "documento"
+       },
+       {
+        "texto": [
+         {
+          "t": "Combinar com o supervisor os "
+         },
+         {
+          "t": "cadastros-base",
+          "marca": "negrito"
+         },
+         {
+          "t": " que só um consultor configura: unidade de medida, almoxarifado central ativo, condição e meio de pagamento (que não seja boleto sem conta emissora), plano de contas, conta bancária, CFOP e NCM do produto, técnico e conferente de serviços."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Dar o nome "
+         },
+         {
+          "t": "TESTE ESTAGIÁRIO - …",
+          "marca": "negrito"
+         },
+         {
+          "t": " a tudo o que você criar e anotar o número de cada registro nos campos dos checklists: o checklist "
+         },
+         {
+          "t": "15",
+          "marca": "negrito"
+         },
+         {
+          "t": " reúne todos."
+         }
+        ],
+        "nota": null,
+        "selo": "documento"
+       },
+       {
+        "texto": [
+         {
+          "t": "Se um botão não aparecer ou o sistema negar permissão, anotar em "
+         },
+         {
+          "t": "Problema",
+          "marca": "negrito"
+         },
+         {
+          "t": " e avisar o supervisor: pode ser permissão do seu perfil ou cadastro-base faltando."
+         }
+        ],
+        "nota": null,
+        "selo": "documento"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#ONBOARDING"
+      ]
+     },
+     {
+      "tipo": "link",
+      "material": "primeiros-passos:checklist-inicial",
+      "titulo": "Onboarding do estagiário",
+      "status": "disponivel",
+      "url": "/checklists/estagiarios/00-onboarding-estagiario.html",
+      "duracao_s": null,
+      "poster": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#ONBOARDING"
+      ]
+     },
+     {
+      "tipo": "link",
+      "material": "primeiros-passos:checklist-inicial-2",
+      "titulo": "Primeiros passos e navegação",
+      "status": "disponivel",
+      "url": "/checklists/estagiarios/01-primeiros-passos-navegacao.html",
+      "duracao_s": null,
+      "poster": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#navegacao"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-estagiarios.mjs#ONBOARDING",
+     "guia:scripts/dados-checklists-estagiarios.mjs#navegacao"
+    ]
+   },
+   {
+    "id": "checklist",
+    "titulo": "Checklist de aprendizado",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "checklist-aprendizado",
+      "chave": "inicial:primeiros-passos",
+      "itens": [
+       {
+        "id": "entendi",
+        "texto": [
+         {
+          "t": "Entendi o que é o módulo Primeiros passos e para que serve"
+         }
+        ]
+       },
+       {
+        "id": "acessar-1",
+        "texto": [
+         {
+          "t": "Sei acessar: tela "
+         },
+         {
+          "t": "Início",
+          "marca": "codigo"
+         }
+        ]
+       },
+       {
+        "id": "acessar-2",
+        "texto": [
+         {
+          "t": "Sei acessar: botão de grade "
+         },
+         {
+          "t": "Abrir menu de módulos",
+          "marca": "codigo"
+         },
+         {
+          "t": " (canto superior esquerdo)"
+         }
+        ]
+       },
+       {
+        "id": "acessar-3",
+        "texto": [
+         {
+          "t": "Sei acessar: campo "
+         },
+         {
+          "t": "Pesquisar funcionalidades...",
+          "marca": "codigo"
+         },
+         {
+          "t": " ou Ctrl+K"
+         }
+        ]
+       },
+       {
+        "id": "acessar-4",
+        "texto": [
+         {
+          "t": "Sei acessar: qualquer lista, por exemplo "
+         },
+         {
+          "t": "Vendas > Pedidos de Venda",
+          "marca": "tela"
+         }
+        ]
+       },
+       {
+        "id": "acessar-5",
+        "texto": [
+         {
+          "t": "Sei acessar: bloco "
+         },
+         {
+          "t": "GLOBAIS",
+          "marca": "codigo"
+         },
+         {
+          "t": " no fim do menu lateral"
+         }
+        ]
+       },
+       {
+        "id": "executei-6",
+        "texto": [
+         {
+          "t": "Executei: Antes do primeiro dia"
+         }
+        ]
+       },
+       {
+        "id": "executei-7",
+        "texto": [
+         {
+          "t": "Executei: Antes de começar — Por que a sua conta vem zerada"
+         }
+        ]
+       },
+       {
+        "id": "executei-8",
+        "texto": [
+         {
+          "t": "Executei: Semana 1 — Navegação e cadastros"
+         }
+        ]
+       },
+       {
+        "id": "executei-9",
+        "texto": [
+         {
+          "t": "Executei: Semana 2 — O lado comercial"
+         }
+        ]
+       },
+       {
+        "id": "executei-10",
+        "texto": [
+         {
+          "t": "Executei: Semana 3 — Suprimentos e operação"
+         }
+        ]
+       },
+       {
+        "id": "executei-11",
+        "texto": [
+         {
+          "t": "Executei: Semana 4 — Gestão"
+         }
+        ]
+       },
+       {
+        "id": "executei-12",
+        "texto": [
+         {
+          "t": "Executei: Semana 5 — Os fluxos dos módulos mais maduros (grupo \"Fluxos principais do estagiário\" da biblioteca)"
+         }
+        ]
+       },
+       {
+        "id": "executei-13",
+        "texto": [
+         {
+          "t": "Executei: 1. Entrar e conferir onde você está"
+         }
+        ]
+       },
+       {
+        "id": "executei-14",
+        "texto": [
+         {
+          "t": "Executei: 2. Trocar de módulo"
+         }
+        ]
+       },
+       {
+        "id": "executei-15",
+        "texto": [
+         {
+          "t": "Executei: 3. Achar uma tela pela busca"
+         }
+        ]
+       },
+       {
+        "id": "executei-16",
+        "texto": [
+         {
+          "t": "Executei: 4. Ler uma lista"
+         }
+        ]
+       },
+       {
+        "id": "executei-17",
+        "texto": [
+         {
+          "t": "Executei: 5. Notificações, ajuda e preferências"
+         }
+        ]
+       },
+       {
+        "id": "executei-18",
+        "texto": [
+         {
+          "t": "Executei: 6. Saber o que é administração"
+         }
+        ]
+       },
+       {
+        "id": "checklist",
+        "texto": [
+         {
+          "t": "Concluí o checklist prático"
+         }
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
+       "guia:scripts/dados-checklists-estagiarios.mjs#ONBOARDING",
+       "guia:scripts/dados-checklists-estagiarios.mjs#navegacao"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
+     "guia:scripts/dados-checklists-estagiarios.mjs#ONBOARDING",
+     "guia:scripts/dados-checklists-estagiarios.mjs#navegacao"
+    ]
+   },
+   {
+    "id": "progresso",
+    "titulo": "Progresso",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "progresso",
+      "chave": "inicial:primeiros-passos",
+      "total": 20,
+      "api": "/api/checklists-progresso",
+      "fontes": [
+       "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md"
+    ]
+   }
+  ],
+  "consultor": [
+   {
+    "id": "visao",
+    "titulo": "Visão funcional",
+    "status": "em-preparacao",
+    "blocos": [],
+    "fontes": []
+   },
+   {
+    "id": "regras",
+    "titulo": "Regras de negócio",
+    "status": "em-preparacao",
+    "blocos": [],
+    "fontes": []
+   },
+   {
+    "id": "fluxos",
+    "titulo": "Fluxos operacionais",
+    "status": "em-preparacao",
+    "blocos": [],
+    "fontes": []
+   },
+   {
+    "id": "implantacao",
+    "titulo": "Procedimentos de implantação",
+    "status": "em-preparacao",
+    "blocos": [],
+    "fontes": []
+   },
+   {
+    "id": "configuracoes",
+    "titulo": "Configurações importantes",
+    "status": "em-preparacao",
+    "blocos": [],
+    "fontes": []
+   },
+   {
+    "id": "validacoes",
+    "titulo": "Validações funcionais",
+    "status": "em-preparacao",
+    "blocos": [],
+    "fontes": []
+   },
+   {
+    "id": "integracoes",
+    "titulo": "Integrações e dependências",
+    "status": "em-preparacao",
+    "blocos": [],
+    "fontes": []
+   },
+   {
+    "id": "problemas",
+    "titulo": "Problemas recorrentes",
+    "status": "em-preparacao",
+    "blocos": [],
+    "fontes": []
+   },
+   {
+    "id": "videos",
+    "titulo": "Vídeos avançados",
+    "status": "em-preparacao",
+    "blocos": [],
+    "fontes": []
+   },
+   {
+    "id": "complementares",
+    "titulo": "Materiais complementares",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "link",
+      "material": "primeiros-passos:checklist-inicial",
+      "titulo": "Onboarding do estagiário",
+      "status": "disponivel",
+      "url": "/checklists/estagiarios/00-onboarding-estagiario.html",
+      "duracao_s": null,
+      "poster": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#ONBOARDING"
+      ]
+     },
+     {
+      "tipo": "link",
+      "material": "primeiros-passos:checklist-inicial-2",
+      "titulo": "Primeiros passos e navegação",
+      "status": "disponivel",
+      "url": "/checklists/estagiarios/01-primeiros-passos-navegacao.html",
+      "duracao_s": null,
+      "poster": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#navegacao"
+      ]
+     },
+     {
+      "tipo": "link",
+      "titulo": "Apostila do Consultor (PDF)",
+      "url": "/downloads/Apostila-do-Consultor-Faktory-Flow.pdf",
+      "visibilidade": "area:apostila",
+      "fontes": [
+       "guia:public/downloads/Apostila-do-Consultor-Faktory-Flow.pdf"
+      ]
+     },
+     {
+      "tipo": "fontes",
+      "rotulo": "Fontes no Harness",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "00 Manual Inicio e navegacao"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Manual oficial"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/00_Manual_Inicio_e_navegacao_Timbrado.docx"
+        ]
+       }
+      ],
+      "fontes": [
+       "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/00_Manual_Inicio_e_navegacao_Timbrado.docx"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-estagiarios.mjs#ONBOARDING",
+     "guia:scripts/dados-checklists-estagiarios.mjs#navegacao",
+     "guia:public/downloads/Apostila-do-Consultor-Faktory-Flow.pdf",
+     "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/00_Manual_Inicio_e_navegacao_Timbrado.docx"
+    ]
+   }
+  ]
+ }
+}

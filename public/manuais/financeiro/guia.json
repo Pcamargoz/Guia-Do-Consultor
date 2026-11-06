@@ -1,0 +1,1630 @@
+{
+ "modulo": "financeiro",
+ "titulo": "Financeiro — guia visual",
+ "resumo": "De onde vêm os títulos, como receber (inclusive em parte), onde conferir o dinheiro (Saldos, Extrato e Fluxo de Caixa) e quais cadastros sustentam o módulo.",
+ "versaoSistema": "1.22.13 (capturas de 22/10/2026) e 1.23.2 (tour só leitura de 05/11/2026), ambiente de teste · Fluxo de Caixa (Hierarquias) e DRE: staging v1.23.2, 05/11/2026 · Fluxo de Caixa (Hierarquias) e DRE: staging v1.23.2, 05/11/2026 · Fluxo de Caixa (Hierarquias) e DRE: staging v1.23.2, 05/11/2026",
+ "atualizadoEm": "2026-11-06",
+ "status": "rascunho",
+ "conceitos": [
+  {
+   "titulo": "Título: o dinheiro a receber ou a pagar",
+   "icone": "financeiro",
+   "texto": "Cada parcela vira um título. Os títulos a receber nascem do pedido (Gerar Títulos) ou da nota finalizada; os títulos a pagar nascem da nota de recebimento da compra.",
+   "fontes": [
+    "regra-faturamento-finalizar-nf-gera-os-titulos",
+    "regra-vendas-gerar-titulos-quando-esta-habilitado",
+    "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+   ]
+  },
+  {
+   "titulo": "Receber é dar baixa",
+   "icone": "checklist",
+   "texto": "Quando o cliente paga, você recebe o título escolhendo a conta bancária. O saldo da conta em Saldos sobe na hora e o Extrato mostra o crédito do dia.",
+   "fontes": [
+    "regra-financeiro-baixa-atualiza-saldos-e-extrato",
+    "funcional-financeiro-receber-pagar-saldos-e-fluxo-de-caixa#001"
+   ]
+  },
+  {
+   "titulo": "Baixa parcial não é duplicidade",
+   "icone": "regra",
+   "texto": "Receber menos que o valor deixa o título original Recebido e cria um título residual com o saldo, no mesmo vencimento. A soma dos dois dá o valor original.",
+   "fontes": [
+    "regra-financeiro-baixa-parcial-cria-titulo-residual"
+   ]
+  },
+  {
+   "titulo": "Os cadastros que sustentam o financeiro",
+   "icone": "fundacao",
+   "texto": "Conta bancária, meio de pagamento e plano de contas vêm antes de qualquer título. Meio de pagamento do tipo Boleto exige uma conta emissora, senão os títulos não saem.",
+   "fontes": [
+    "regra-financeiro-meio-de-pagamento-boleto-exige-conta-emissora",
+    "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+   ]
+  },
+  {
+   "titulo": "A visão de gestão",
+   "icone": "relatorios",
+   "texto": "Saldos mostra o saldo de cada conta, o Extrato mostra o movimento do dia, o Fluxo de Caixa mostra entradas e saídas por período e a DRE soma por competência.",
+   "fontes": [
+    "funcional-financeiro-receber-pagar-saldos-e-fluxo-de-caixa#003"
+   ]
+  }
+ ],
+ "palavras": [
+  {
+   "termo": "Contas a Receber",
+   "definicao": "Lista de títulos a receber (Financeiro › Contas a Receber). Abre filtrada em Em aberto.",
+   "fontes": [
+    "glossario:financeiro.contas-a-receber",
+    "regra-financeiro-contas-a-receber-filtro-padrao-em-aberto"
+   ]
+  },
+  {
+   "termo": "Contas a Pagar",
+   "definicao": "Lista de títulos a pagar (Financeiro › Contas a Pagar), com o botão Pagar.",
+   "fontes": [
+    "glossario:financeiro.contas-a-pagar",
+    "funcional-financeiro-receber-pagar-saldos-e-fluxo-de-caixa#002"
+   ]
+  },
+  {
+   "termo": "Gerar Títulos",
+   "definicao": "Item do menu ⋯ do pedido de venda que cria um título por parcela, em pedido Em aberto ou Entregue sem títulos.",
+   "fontes": [
+    "glossario:vendas.pedidos-de-venda",
+    "regra-vendas-gerar-titulos-quando-esta-habilitado"
+   ]
+  },
+  {
+   "termo": "Receber",
+   "definicao": "Ação do título a receber que abre o diálogo de baixa.",
+   "fontes": [
+    "glossario:financeiro.contas-a-receber",
+    "funcional-financeiro-receber-pagar-saldos-e-fluxo-de-caixa#001"
+   ]
+  },
+  {
+   "termo": "Conta Bancária",
+   "definicao": "Campo obrigatório do Receber, sem valor padrão: a conta onde o dinheiro entra.",
+   "fontes": [
+    "glossario:financeiro.contas-a-receber",
+    "funcional-financeiro-receber-pagar-saldos-e-fluxo-de-caixa#001"
+   ]
+  },
+  {
+   "termo": "Valor Recebido",
+   "definicao": "Campo do Receber. Menor que o valor do título gera a baixa parcial.",
+   "fontes": [
+    "glossario:financeiro.contas-a-receber",
+    "regra-financeiro-baixa-parcial-cria-titulo-residual"
+   ]
+  },
+  {
+   "termo": "Estornar",
+   "definicao": "Desfaz uma baixa: o título volta a Em aberto e o saldo da conta diminui na mesma medida.",
+   "fontes": [
+    "glossario:financeiro.contas-a-receber",
+    "regra-financeiro-estornar-baixa-restaura-o-titulo",
+    "regra-financeiro-baixa-atualiza-saldos-e-extrato"
+   ]
+  },
+  {
+   "termo": "Saldos",
+   "definicao": "Tela com o saldo de cada conta bancária; muda na hora da baixa.",
+   "fontes": [
+    "funcional-financeiro-receber-pagar-saldos-e-fluxo-de-caixa#003"
+   ]
+  },
+  {
+   "termo": "Extrato",
+   "definicao": "Movimentos de uma conta no período, com débito, crédito e saldo.",
+   "fontes": [
+    "funcional-financeiro-receber-pagar-saldos-e-fluxo-de-caixa#003",
+    "regra-financeiro-baixa-atualiza-saldos-e-extrato"
+   ]
+  },
+  {
+   "termo": "Fluxo de Caixa",
+   "definicao": "Entradas, saídas, saldo inicial e final por período, projetado e realizado.",
+   "fontes": [
+    "funcional-financeiro-receber-pagar-saldos-e-fluxo-de-caixa#003",
+    "manual-10-financeiro#011"
+   ]
+  }
+ ],
+ "mapa": {
+  "antes": [
+   "vendas",
+   "faturamento",
+   "compras",
+   "recebimento"
+  ],
+  "depois": [],
+  "texto": "O Financeiro recebe os títulos que nascem das vendas, das notas e dos recebimentos de compra. Ele não depende de lançamento manual: os títulos chegam dos módulos de origem.",
+  "fontes": [
+   "guia:scripts/dados-checklists-estagiarios.mjs#financeiro",
+   "guia:db/migrations/002_modulos_iniciais.sql#financeiro"
+  ]
+ },
+ "capitulos": [
+  {
+   "id": "conhecer-o-modulo",
+   "titulo": "Conhecendo o Financeiro",
+   "nivel": "basico",
+   "objetivo": "Reconhecer as telas principais: o painel, os títulos a receber e os títulos a pagar.",
+   "onde": "Financeiro › Dashboard Financeiro",
+   "passos": [
+    {
+     "titulo": "Abra o painel do Financeiro",
+     "texto": "O módulo abre no Dashboard Financeiro. Escolha a Data Inicial e a Data Final (ou um atalho, como Este mês) e clique em Aplicar. Depois leia os cartões de totais do período.",
+     "imagem": "/manuais/financeiro/img/01-dashboard-financeiro.webp",
+     "alt": "Dashboard Financeiro com filtros de empresa, projeto e período e cartões de totais com os valores borrados.",
+     "largura": 1600,
+     "altura": 900,
+     "marcadores": [
+      {
+       "n": 1,
+       "rotulo": "Dashboard Financeiro",
+       "explicacao": "Primeiro item do menu do Financeiro: a visão consolidada de contas a receber e a pagar.",
+       "caixa": {
+        "x": 0.6,
+        "y": 13.8,
+        "w": 9.6,
+        "h": 3.8
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 2,
+       "rotulo": "Período",
+       "explicacao": "Data Inicial e Data Final do que você quer ver. Ao lado ficam os atalhos Hoje, Esta semana, Este mês e Este ano.",
+       "caixa": {
+        "x": 16,
+        "y": 27,
+        "w": 15.8,
+        "h": 5.8
+       },
+       "lado": "esquerda"
+      },
+      {
+       "n": 3,
+       "rotulo": "Aplicar",
+       "explicacao": "Atualiza os cartões com o período e os filtros escolhidos.",
+       "caixa": {
+        "x": 91.4,
+        "y": 28.6,
+        "w": 5.4,
+        "h": 4.6
+       },
+       "lado": "esquerda"
+      },
+      {
+       "n": 4,
+       "rotulo": "Cartões de totais",
+       "explicacao": "Total a Receber, Total a Pagar, Perdas/Ganhos e Em Atraso (CR) no período.",
+       "caixa": {
+        "x": 15.4,
+        "y": 36,
+        "w": 82,
+        "h": 10.8
+       },
+       "lado": "baixo"
+      },
+      {
+       "n": 5,
+       "rotulo": "Realizado no período",
+       "explicacao": "Total Recebido e Total Pago são as baixas feitas; Saldo do Período é recebido menos pago.",
+       "caixa": {
+        "x": 15.4,
+        "y": 51.8,
+        "w": 82,
+        "h": 12
+       },
+       "lado": "baixo"
+      }
+     ],
+     "evidencia": "captura-real",
+     "fontes": [
+      "midia/brutos/financeiro/prints/financeiro_dashboard-geral_01.png",
+      "roteiro-financeiro-06-dashboard-financeiro#001",
+      "oficial-fin-c-implantacao#011"
+     ]
+    },
+    {
+     "titulo": "Consulte os títulos a receber",
+     "texto": "Em Contas a Receber há uma linha por parcela. Confira o filtro Status (abre em Em aberto), leia o DOCUMENTO e a PARCELA de cada linha e use o botão Receber para dar baixa.",
+     "imagem": "/manuais/financeiro/img/02-contas-a-receber.webp",
+     "alt": "Contas a Receber com cartões de totais borrados, filtro Status em Em aberto e dois títulos de uma nota, cada um com o botão Receber.",
+     "largura": 1600,
+     "altura": 900,
+     "marcadores": [
+      {
+       "n": 1,
+       "rotulo": "Contas a Receber",
+       "explicacao": "Os títulos que a empresa tem a receber, uma linha por parcela.",
+       "caixa": {
+        "x": 0.8,
+        "y": 19.8,
+        "w": 9.8,
+        "h": 4
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 2,
+       "rotulo": "Filtro Status",
+       "explicacao": "Abre em Em aberto. Para achar um título já recebido, limpe o filtro.",
+       "caixa": {
+        "x": 44.6,
+        "y": 41.8,
+        "w": 14.6,
+        "h": 5.4
+       },
+       "lado": "cima"
+      },
+      {
+       "n": 3,
+       "rotulo": "Documento e parcela",
+       "explicacao": "De onde o título veio (aqui, NF - 020, a nota) e qual parcela ele é (001, 002…).",
+       "caixa": {
+        "x": 40.8,
+        "y": 48.4,
+        "w": 12.4,
+        "h": 15
+       },
+       "lado": "baixo"
+      },
+      {
+       "n": 4,
+       "rotulo": "Status Em aberto",
+       "explicacao": "O título ainda não foi recebido.",
+       "caixa": {
+        "x": 68.6,
+        "y": 53.6,
+        "w": 5.8,
+        "h": 9.4
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 5,
+       "rotulo": "Receber",
+       "explicacao": "Abre o diálogo para registrar o recebimento (a baixa) da parcela.",
+       "caixa": {
+        "x": 88.8,
+        "y": 53,
+        "w": 5.6,
+        "h": 5.2
+       },
+       "lado": "cima"
+      }
+     ],
+     "evidencia": "captura-real",
+     "fontes": [
+      "videos/public/telas/consultor-08-financeiro/01-contas-receber.png",
+      "regra-financeiro-contas-a-receber-filtro-padrao-em-aberto",
+      "funcional-financeiro-receber-pagar-saldos-e-fluxo-de-caixa#001",
+      "videos/roteiros/consultor-08-financeiro.json#09"
+     ]
+    },
+    {
+     "titulo": "Consulte os títulos a pagar",
+     "texto": "Contas a Pagar funciona do mesmo jeito: uma linha por parcela, filtro Status em Em aberto e o botão Pagar em cada título. No alto ficam as abas Lista, Pagamentos e Boletos DDA.",
+     "imagem": "/manuais/financeiro/img/03-contas-a-pagar.webp",
+     "alt": "Contas a Pagar com as abas Lista, Pagamentos e Boletos DDA, filtro Status em Em aberto e um título com o botão Pagar.",
+     "largura": 1600,
+     "altura": 900,
+     "marcadores": [
+      {
+       "n": 1,
+       "rotulo": "Abas Lista, Pagamentos e Boletos DDA",
+       "explicacao": "Lista mostra os títulos; Pagamentos e Boletos DDA são outras visões de Contas a Pagar.",
+       "caixa": {
+        "x": 14.2,
+        "y": 9.2,
+        "w": 14.6,
+        "h": 4.4
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 2,
+       "rotulo": "Filtro Status",
+       "explicacao": "Também abre em Em aberto.",
+       "caixa": {
+        "x": 41.4,
+        "y": 39.8,
+        "w": 12,
+        "h": 5
+       },
+       "lado": "cima"
+      },
+      {
+       "n": 3,
+       "rotulo": "Pagar",
+       "explicacao": "Abre o diálogo Pagar: Conta Bancária, Data Pagamento, Meio de Pagamento e Valor Pago, com Confirmar Pagamento.",
+       "caixa": {
+        "x": 91.4,
+        "y": 49.6,
+        "w": 3.8,
+        "h": 4
+       },
+       "lado": "baixo"
+      }
+     ],
+     "evidencia": "captura-real",
+     "fontes": [
+      "midia/brutos/financeiro/prints/financeiro_contas-a-pagar_01.png",
+      "glossario:financeiro.contas-a-pagar",
+      "funcional-financeiro-receber-pagar-saldos-e-fluxo-de-caixa#002",
+      "funcional-financeiro-receber-pagar-saldos-e-fluxo-de-caixa#002"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "receber-um-titulo",
+   "titulo": "Receber um título",
+   "nivel": "basico",
+   "objetivo": "Saber de onde o título veio, dar baixa total ou parcial e conferir o saldo da conta.",
+   "onde": "Financeiro › Contas a Receber › Receber",
+   "passos": [
+    {
+     "titulo": "Veja de onde o título veio",
+     "texto": "No pedido de venda faturado, leia a linha: a coluna TÍTULOS mostra Gerados e a NOTA FISCAL mostra a nota que gerou os títulos.",
+     "imagem": "/manuais/financeiro/img/04-pedido-titulos-gerados.webp",
+     "alt": "Pedido de venda Faturado com a coluna Títulos em Gerados, a nota fiscal ligada e o menu mostrando Pedido já faturado.",
+     "largura": 1600,
+     "altura": 900,
+     "marcadores": [
+      {
+       "n": 1,
+       "rotulo": "Status Faturado",
+       "explicacao": "O pedido já tem nota.",
+       "caixa": {
+        "x": 72.4,
+        "y": 66,
+        "w": 5.4,
+        "h": 5
+       },
+       "lado": "baixo"
+      },
+      {
+       "n": 2,
+       "rotulo": "Títulos: Gerados",
+       "explicacao": "A finalização da nota criou um título por parcela em Contas a Receber.",
+       "caixa": {
+        "x": 78.8,
+        "y": 66,
+        "w": 5.2,
+        "h": 5
+       },
+       "lado": "baixo"
+      },
+      {
+       "n": 3,
+       "rotulo": "Nota fiscal",
+       "explicacao": "A nota ligada ao pedido. Em Contas a Receber, o Documento do título aparece como \"NF - número da nota\".",
+       "caixa": {
+        "x": 85,
+        "y": 66,
+        "w": 4.8,
+        "h": 5
+       },
+       "lado": "baixo"
+      }
+     ],
+     "zoom": {
+      "x": 70,
+      "y": 61,
+      "w": 26,
+      "h": 19
+     },
+     "dica": "Gerar Títulos só fica habilitado em pedido Em aberto ou Entregue que ainda não tem títulos.",
+     "evidencia": "captura-real",
+     "fontes": [
+      "videos/public/telas/consultor-08-financeiro/00-pedido-faturado.png",
+      "regra-faturamento-finalizar-nf-gera-os-titulos",
+      "videos/roteiros/consultor-08-financeiro.json#08"
+     ]
+    },
+    {
+     "titulo": "Preencha o Receber",
+     "texto": "Clique em Receber. Escolha a Conta Bancária (obrigatória, vem vazia), confira o Meio de Pagamento e informe o Valor Recebido. Clique em Pré-visualizar para conferir e, por fim, em Receber.",
+     "imagem": "/manuais/financeiro/img/05-receber.webp",
+     "alt": "Diálogo Receber Contas a Receber com Conta Bancária, Data Recebimento, Desconto, Acréscimo, Juros, Multa, Meio de Pagamento, Valor Recebido e os botões Pré-visualizar e Receber.",
+     "largura": 1600,
+     "altura": 900,
+     "marcadores": [
+      {
+       "n": 1,
+       "rotulo": "Conta Bancária",
+       "explicacao": "Obrigatória e sem padrão: é a conta onde o dinheiro entra.",
+       "caixa": {
+        "x": 28.8,
+        "y": 34.6,
+        "w": 13.8,
+        "h": 7.8
+       },
+       "lado": "esquerda"
+      },
+      {
+       "n": 2,
+       "rotulo": "Meio de Pagamento",
+       "explicacao": "Como o cliente pagou (aqui, Depósito Bancário).",
+       "caixa": {
+        "x": 43,
+        "y": 52.2,
+        "w": 13.8,
+        "h": 8.2
+       },
+       "lado": "baixo"
+      },
+      {
+       "n": 3,
+       "rotulo": "Valor Recebido",
+       "explicacao": "Obrigatório. Se for menor que o título, o sistema faz baixa parcial.",
+       "caixa": {
+        "x": 57,
+        "y": 52.2,
+        "w": 14.4,
+        "h": 8.4
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 4,
+       "rotulo": "Pré-visualizar",
+       "explicacao": "Mostra o resultado antes de gravar.",
+       "caixa": {
+        "x": 62.8,
+        "y": 60.8,
+        "w": 8.4,
+        "h": 5.2
+       },
+       "lado": "esquerda"
+      },
+      {
+       "n": 5,
+       "rotulo": "Receber",
+       "explicacao": "Grava a baixa: o saldo da conta sobe na hora.",
+       "caixa": {
+        "x": 65.2,
+        "y": 67.4,
+        "w": 6,
+        "h": 5.2
+       },
+       "lado": "direita"
+      }
+     ],
+     "atencao": "Receber, pagar e estornar movem o saldo de verdade: em treino, use só conta e valor de teste.",
+     "evidencia": "captura-real",
+     "fontes": [
+      "videos/public/telas/consultor-08-financeiro/03-receber.png",
+      "funcional-financeiro-receber-pagar-saldos-e-fluxo-de-caixa#001",
+      "videos/roteiros/consultor-08-financeiro.json#11"
+     ]
+    },
+    {
+     "titulo": "Entenda a baixa parcial",
+     "texto": "Se o Valor Recebido for menor que o do título, aparece o aviso \"Baixa parcial realizada; título residual criado\". Confira na lista: o residual ganha o próximo número de parcela livre.",
+     "imagem": "/manuais/financeiro/img/06-baixa-parcial.webp",
+     "alt": "Contas a Receber com a mensagem Baixa parcial realizada; título residual criado e o título residual na lista.",
+     "largura": 1600,
+     "altura": 900,
+     "marcadores": [
+      {
+       "n": 1,
+       "rotulo": "Aviso de baixa parcial",
+       "explicacao": "Confirma que só parte do título foi recebida e que o restante virou um novo título.",
+       "caixa": {
+        "x": 76,
+        "y": 3.2,
+        "w": 22.6,
+        "h": 5.6
+       },
+       "lado": "esquerda"
+      },
+      {
+       "n": 2,
+       "rotulo": "Parcela residual 003",
+       "explicacao": "O que faltou receber, com o próximo número de parcela livre.",
+       "caixa": {
+        "x": 50.2,
+        "y": 53.4,
+        "w": 4,
+        "h": 4.4
+       },
+       "lado": "esquerda"
+      },
+      {
+       "n": 3,
+       "rotulo": "Parcela 002",
+       "explicacao": "A parcela seguinte continua Em aberto, sem mudança.",
+       "caixa": {
+        "x": 50.2,
+        "y": 59.2,
+        "w": 4,
+        "h": 4.4
+       },
+       "lado": "esquerda"
+      }
+     ],
+     "dica": "Não é duplicidade: a soma do recebido com o residual dá o valor original.",
+     "evidencia": "captura-real",
+     "fontes": [
+      "videos/public/telas/consultor-08-financeiro/03b-parcial.png",
+      "regra-financeiro-baixa-parcial-cria-titulo-residual",
+      "videos/roteiros/consultor-08-financeiro.json#12"
+     ]
+    },
+    {
+     "titulo": "Confira o saldo da conta",
+     "texto": "Em Financeiro › Saldos, escolha os filtros e clique em Aplicar Filtros. Anote o SALDO ATUAL da conta antes da baixa e confira depois: ele sobe exatamente pelo valor recebido.",
+     "imagem": "/manuais/financeiro/img/07-saldos.webp",
+     "alt": "Saldos Bancários com um cartão por conta, rótulo SALDO ATUAL e valores e dados das contas borrados.",
+     "largura": 1600,
+     "altura": 900,
+     "marcadores": [
+      {
+       "n": 1,
+       "rotulo": "Saldos",
+       "explicacao": "Mostra o saldo de cada conta bancária.",
+       "caixa": {
+        "x": 0.8,
+        "y": 42.8,
+        "w": 5.6,
+        "h": 3.8
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 2,
+       "rotulo": "Aplicar Filtros",
+       "explicacao": "Atualiza os cartões com o banco, o tipo de conta e a data de referência escolhidos.",
+       "caixa": {
+        "x": 79,
+        "y": 28.4,
+        "w": 20.2,
+        "h": 5.4
+       },
+       "lado": "cima"
+      },
+      {
+       "n": 3,
+       "rotulo": "Saldo atual da conta",
+       "explicacao": "Cada cartão é uma conta. O saldo muda na hora da baixa; no alto, Saldo Total soma todas as contas.",
+       "caixa": {
+        "x": 16.8,
+        "y": 35.8,
+        "w": 19.8,
+        "h": 23.4
+       },
+       "lado": "baixo"
+      }
+     ],
+     "evidencia": "captura-real",
+     "fontes": [
+      "videos/public/telas/consultor-08-financeiro/02-saldo-antes.png",
+      "regra-financeiro-baixa-atualiza-saldos-e-extrato",
+      "videos/roteiros/consultor-08-financeiro.json#10",
+      "videos/roteiros/consultor-08-financeiro.json#13"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "extrato-e-fluxo",
+   "titulo": "Extrato, Fluxo de Caixa e DRE",
+   "nivel": "avancado",
+   "objetivo": "Conferir o mesmo dinheiro no Extrato da conta, no Fluxo de Caixa (por plano de contas) e na DRE.",
+   "onde": "Financeiro › Extrato · Financeiro › Fluxo de Caixa · Financeiro › DRE",
+   "passos": [
+    {
+     "titulo": "Abra o Extrato da conta",
+     "texto": "No Extrato, escolha a Conta Bancária e o Período (Data Início e Data Fim). Na lista, a baixa aparece como crédito do dia e o pagamento como débito.",
+     "imagem": "/manuais/financeiro/img/08-extrato.webp",
+     "alt": "Extrato Bancário com o seletor de conta bancária, o período e as colunas Data, Status, Histórico, Documento, Débito, Crédito e Saldo.",
+     "largura": 1600,
+     "altura": 900,
+     "marcadores": [
+      {
+       "n": 1,
+       "rotulo": "Extrato",
+       "explicacao": "Os movimentos de uma conta bancária, dia a dia.",
+       "caixa": {
+        "x": 0.8,
+        "y": 33,
+        "w": 4.8,
+        "h": 3.8
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 2,
+       "rotulo": "Conta Bancária",
+       "explicacao": "Escolha a conta que quer ver.",
+       "caixa": {
+        "x": 15,
+        "y": 24.6,
+        "w": 41,
+        "h": 11
+       },
+       "lado": "baixo"
+      },
+      {
+       "n": 3,
+       "rotulo": "Período",
+       "explicacao": "Data Início e Data Fim. Embaixo há atalhos: Hoje, Ontem, Esta Semana e Este Mês.",
+       "caixa": {
+        "x": 57.6,
+        "y": 29.4,
+        "w": 41,
+        "h": 5.6
+       },
+       "lado": "baixo"
+      },
+      {
+       "n": 4,
+       "rotulo": "Débito, Crédito e Saldo",
+       "explicacao": "Recebimento entra como crédito; pagamento, como débito. O saldo acompanha cada linha.",
+       "caixa": {
+        "x": 72,
+        "y": 56.2,
+        "w": 15,
+        "h": 3.8
+       },
+       "lado": "baixo"
+      }
+     ],
+     "atencao": "Não existe item \"Conciliação\" no menu; o mais próximo é o Extrato.",
+     "evidencia": "captura-real",
+     "fontes": [
+      "midia/brutos/financeiro/prints/financeiro_extrato_01.png",
+      "regra-financeiro-baixa-atualiza-saldos-e-extrato",
+      "funcional-financeiro-receber-pagar-saldos-e-fluxo-de-caixa#003"
+     ]
+    },
+    {
+     "titulo": "Leia o Fluxo de Caixa",
+     "texto": "No Fluxo de Caixa, escolha em Visualizar o que ver (abre em Ambos) e use Mostrar, em Configurações e Filtros, para a conta e o período. As abas mudam a visão; o Resumo separa o realizado do projetado.",
+     "imagem": "/manuais/financeiro/img/09-fluxo-de-caixa.webp",
+     "alt": "Fluxo de Caixa com o seletor Visualizar, o bloco Configurações e Filtros, as abas Hierarquias, Resumo, Gráficos, Tabelas e Exportar e cartões de resumo com valores borrados.",
+     "largura": 1600,
+     "altura": 900,
+     "marcadores": [
+      {
+       "n": 1,
+       "rotulo": "Visualizar",
+       "explicacao": "Abre em Ambos: realizado e projetado juntos.",
+       "caixa": {
+        "x": 88.4,
+        "y": 11.2,
+        "w": 9.6,
+        "h": 4.6
+       },
+       "lado": "esquerda"
+      },
+      {
+       "n": 2,
+       "rotulo": "Mostrar",
+       "explicacao": "Abre Configurações e Filtros, com a conta e o período.",
+       "caixa": {
+        "x": 93.2,
+        "y": 20.8,
+        "w": 5.2,
+        "h": 4.6
+       },
+       "lado": "esquerda"
+      },
+      {
+       "n": 3,
+       "rotulo": "Abas de visão",
+       "explicacao": "Hierarquias (agrupa pelo plano de contas), Resumo, Gráficos, Tabelas e Exportar.",
+       "caixa": {
+        "x": 14.2,
+        "y": 29,
+        "w": 84.8,
+        "h": 6.4
+       },
+       "lado": "esquerda"
+      },
+      {
+       "n": 4,
+       "rotulo": "Resumo Realizado e Resumo Projetado",
+       "explicacao": "O Realizado mostra os valores efetivamente movimentados (Saldo Inicial, Entradas, Saídas, Saldo Final); o Projetado inclui os títulos em aberto.",
+       "caixa": {
+        "x": 14.2,
+        "y": 37.4,
+        "w": 84.8,
+        "h": 48.6
+       },
+       "lado": "baixo"
+      }
+     ],
+     "evidencia": "captura-real",
+     "fontes": [
+      "midia/brutos/financeiro/prints/financeiro_fluxo-de-caixa_01.png",
+      "manual-10-financeiro#011",
+      "funcional-financeiro-receber-pagar-saldos-e-fluxo-de-caixa#003"
+     ]
+    },
+    {
+     "largura": 1600,
+     "altura": 900,
+     "evidencia": "captura-real",
+     "titulo": "Leia a Estrutura Hierárquica",
+     "texto": "Na aba Hierarquias do Fluxo de Caixa, o quadro Estrutura Hierárquica segue o Plano de Contas da empresa. Leia Entradas, Saídas e Líquido de cada linha, do Saldo Inicial Bancos ao Saldo Final. Clique numa linha para abrir os títulos dela.",
+     "imagem": "/manuais/financeiro/img/15-fluxo-de-caixa-hierarquias.webp",
+     "alt": "Fluxo de Caixa na aba Hierarquias, com o quadro Estrutura Hierárquica (Visão Total, Contas vazias, Tipo e Nível) e as linhas Saldo Inicial Bancos, 1 - Receitas Operacionais (Somatória), 1.1 - Venda de Produtos (Somatória), 1.1.1 - Venda de Esquadrias/Estruturas e Saldo Final; os valores estão borrados.",
+     "marcadores": [
+      {
+       "n": 1,
+       "rotulo": "Hierarquias",
+       "explicacao": "Aba padrão do Fluxo de Caixa: valores agrupados pelo plano de contas.",
+       "caixa": {
+        "x": 17.8,
+        "y": 34.7,
+        "w": 15.7,
+        "h": 4.8
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 2,
+       "rotulo": "Visão, Contas vazias, Tipo e Nível",
+       "explicacao": "Filtros da árvore. Na visão Total, a tabela mostra Estrutura, Entradas, Saídas e Líquido.",
+       "caixa": {
+        "x": 59.8,
+        "y": 47,
+        "w": 38.1,
+        "h": 4.4
+       },
+       "lado": "cima"
+      },
+      {
+       "n": 3,
+       "rotulo": "Saldo Inicial Bancos",
+       "explicacao": "Soma do saldo inicial das contas escolhidas antes do período.",
+       "caixa": {
+        "x": 18.1,
+        "y": 59.1,
+        "w": 18.4,
+        "h": 3.1
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 4,
+       "rotulo": "Linhas com Somatória",
+       "explicacao": "Reúnem os valores das contas abaixo delas. As linhas mais detalhadas (como 1.1.1) são as contas que recebem os lançamentos; clique nelas para ver os títulos.",
+       "caixa": {
+        "x": 18.5,
+        "y": 63.2,
+        "w": 28.6,
+        "h": 7.9
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 5,
+       "rotulo": "Saldo Final",
+       "explicacao": "Último número da tabela. Compare o inicial e o final com Financeiro › Saldos.",
+       "caixa": {
+        "x": 18.1,
+        "y": 75.9,
+        "w": 18.4,
+        "h": 3.3
+       },
+       "lado": "direita"
+      }
+     ],
+     "dica": "Entradas aparecem em verde e saídas em vermelho; o Líquido é a diferença. A janela Itens de uma linha separa Contas a Pagar e Contas a Receber.",
+     "atencao": "Na 1.22.12 o Saldo Inicial veio negativo (igual ao movimento do mês) e o Saldo Final zerado: não use esses dois números como resultado sem conferir contra Saldos. A conferir na tela na versão do cliente.",
+     "fontes": [
+      "videos/capturas/guias-staging/financeiro-fluxo-caixa.png (staging v1.23.2, 05/11/2026)",
+      "roteiro-financeiro-04-fluxo-de-caixa#015",
+      "roteiro-financeiro-04-fluxo-de-caixa#018",
+      "manual-10-financeiro#011",
+      "faq-limitacoes-conhecidas-v1-22-12#002",
+      "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+     ]
+    },
+    {
+     "largura": 1600,
+     "altura": 900,
+     "evidencia": "captura-real",
+     "titulo": "Abra a DRE e escolha o período",
+     "texto": "No menu do Financeiro, clique em DRE. Escolha o período por um atalho ou pelas datas, o Modo e, se quiser, empresa, participante ou projeto. Clique em Aplicar.",
+     "imagem": "/manuais/financeiro/img/16-dre.webp",
+     "alt": "Tela Demonstrativo de Resultado com os atalhos Mês Atual, Mês Anterior, Trimestre, Ano e Últimos 12 meses, os campos Período, Granularidade, Modo (Competência), Empresas, Participante e Projetos e o botão Aplicar.",
+     "marcadores": [
+      {
+       "n": 1,
+       "rotulo": "Atalhos",
+       "explicacao": "Mês Atual, Mês Anterior, Trimestre, Ano e Últimos 12 meses preenchem o período.",
+       "caixa": {
+        "x": 17.7,
+        "y": 24.5,
+        "w": 32.8,
+        "h": 3.4
+       },
+       "lado": "esquerda"
+      },
+      {
+       "n": 2,
+       "rotulo": "Período, Granularidade e Modo",
+       "explicacao": "Competência usa a data do documento; Caixa usa a data da baixa.",
+       "caixa": {
+        "x": 18,
+        "y": 31,
+        "w": 46,
+        "h": 6.5
+       },
+       "lado": "baixo"
+      },
+      {
+       "n": 3,
+       "rotulo": "Aplicar",
+       "explicacao": "Os números só mudam depois de clicar.",
+       "caixa": {
+        "x": 84,
+        "y": 33.5,
+        "w": 13.3,
+        "h": 4
+       },
+       "lado": "baixo"
+      }
+     ],
+     "zoom": {
+      "x": 14,
+      "y": 22,
+      "w": 85,
+      "h": 24
+     },
+     "atencao": "A DRE depende do plano de contas: cada conta precisa da Categoria DRE certa, que define em que linha o valor cai.",
+     "fontes": [
+      "videos/capturas/guias-staging/financeiro-dre.png (staging v1.23.2, 05/11/2026)",
+      "manual-10-financeiro#012",
+      "manual-10-financeiro#006",
+      "oficial-fin-a-regras#006"
+     ]
+    },
+    {
+     "largura": 1600,
+     "altura": 900,
+     "evidencia": "captura-real",
+     "titulo": "Leia o resultado da DRE",
+     "texto": "Leia os cartões de resultado e a tabela por linha da DRE. Para saber de onde veio um valor, clique em Contas na linha: abrem as contas e os títulos que a formam.",
+     "imagem": "/manuais/financeiro/img/16-dre.webp",
+     "alt": "Cartões Receita Bruta, Receita Líquida, Lucro Bruto, Resultado Operacional, LAIR e Resultado Líquido e a tabela Demonstrativo de Resultado do Exercício com as linhas (1) Receita Operacional Bruta, (2) Deduções/Impostos sobre Vendas, (3) Receita Operacional Líquida e (4) Custos Diretos, com o botão Contas e a coluna Total.",
+     "marcadores": [
+      {
+       "n": 1,
+       "rotulo": "Cartões de resultado",
+       "explicacao": "Receita Bruta, Receita Líquida, Lucro Bruto, Resultado Operacional, LAIR e Resultado Líquido do período.",
+       "caixa": {
+        "x": 17,
+        "y": 51.7,
+        "w": 81.3,
+        "h": 9.4
+       },
+       "lado": "esquerda"
+      },
+      {
+       "n": 2,
+       "rotulo": "Análise vertical e horizontal",
+       "explicacao": "Marque para ver percentuais na tabela.",
+       "caixa": {
+        "x": 57.7,
+        "y": 64.8,
+        "w": 20.7,
+        "h": 2.4
+       },
+       "lado": "baixo"
+      },
+      {
+       "n": 3,
+       "rotulo": "Linha e botão Contas",
+       "explicacao": "Cada linha é uma categoria da DRE, como Receita Operacional Bruta. Contas abre as contas e os títulos que formam o valor.",
+       "caixa": {
+        "x": 17.6,
+        "y": 77.6,
+        "w": 20.7,
+        "h": 4.4
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 4,
+       "rotulo": "Total",
+       "explicacao": "Valor da linha no período escolhido.",
+       "caixa": {
+        "x": 84.4,
+        "y": 72.7,
+        "w": 14,
+        "h": 4.2
+       },
+       "lado": "esquerda"
+      }
+     ],
+     "zoom": {
+      "x": 14,
+      "y": 49,
+      "w": 85,
+      "h": 36
+     },
+     "atencao": "Título manual e título gerado do mesmo pedido somam duas vezes na DRE. Se uma receita esperada não aparece, abra o título e confira o Projeto e o Plano de Conta antes de decidir pela DRE.",
+     "fontes": [
+      "videos/capturas/guias-staging/financeiro-dre.png (staging v1.23.2, 05/11/2026)",
+      "manual-10-financeiro#012",
+      "roteiro-financeiro-03-dre#017",
+      "roteiro-financeiro-03-dre#026",
+      "regra-financeiro-titulo-manual-e-gerado-duplicam-a-receita"
+     ]
+    },
+    {
+     "titulo": "Veja o resultado por projeto",
+     "texto": "Abra Painel Financeiro de Projetos (está no menu do Financeiro e no de Projetos) e escolha a obra em Buscar projeto…. A tela junta vendas, notas fiscais, receitas e custos do projeto.",
+     "imagem": "/manuais/financeiro/img/14-painel-financeiro-de-projetos.webp",
+     "alt": "Painel Financeiro de Projetos antes de escolher um projeto, com o campo Buscar projeto e os selos Vendas, Notas Fiscais, Receitas e Custos.",
+     "largura": 1600,
+     "altura": 900,
+     "marcadores": [
+      {
+       "n": 1,
+       "rotulo": "Painel Financeiro de Projetos",
+       "explicacao": "Item do menu (aqui, aberto pelo módulo Projetos).",
+       "caixa": {
+        "x": 0.8,
+        "y": 23.6,
+        "w": 13.6,
+        "h": 3.6
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 2,
+       "rotulo": "Buscar projeto…",
+       "explicacao": "Escolha o projeto. Sem projeto, a tela fica vazia.",
+       "caixa": {
+        "x": 37.8,
+        "y": 15.4,
+        "w": 24.4,
+        "h": 5.2
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 3,
+       "rotulo": "O que o painel mostra",
+       "explicacao": "O panorama financeiro do projeto: vendas, faturamento, contas a receber e a pagar.",
+       "caixa": {
+        "x": 44,
+        "y": 47,
+        "w": 28,
+        "h": 10.6
+       },
+       "lado": "direita"
+      }
+     ],
+     "evidencia": "captura-real",
+     "fontes": [
+      "videos/capturas/guias-staging/projetos-painel-financeiro.png (staging v1.23.2, 05/11/2026)",
+      "funcional-financeiro-receber-pagar-saldos-e-fluxo-de-caixa#000"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cadastros-do-financeiro",
+   "titulo": "Os cadastros que o Financeiro usa",
+   "nivel": "avancado",
+   "objetivo": "Saber onde ficam conta bancária, meio de pagamento e plano de contas, e o que trava a geração dos títulos.",
+   "onde": "Financeiro › Configurações",
+   "passos": [
+    {
+     "titulo": "Contas Bancárias",
+     "texto": "Em Configurações › Contas Bancárias ficam as contas onde o dinheiro entra e sai, cada uma com o seu TIPO DE CONTA. É daqui que vem a Conta Bancária do Receber e do Pagar.",
+     "imagem": "/manuais/financeiro/img/10-contas-bancarias.webp",
+     "alt": "Lista de Contas Bancárias com as colunas Descrição, Banco, Agência e Conta borradas e a coluna Tipo de Conta visível.",
+     "largura": 1600,
+     "altura": 900,
+     "marcadores": [
+      {
+       "n": 1,
+       "rotulo": "Contas Bancárias",
+       "explicacao": "No grupo Configurações do menu do Financeiro.",
+       "caixa": {
+        "x": 2.6,
+        "y": 49.6,
+        "w": 8,
+        "h": 3.4
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 2,
+       "rotulo": "Nova Conta",
+       "explicacao": "Cadastra uma conta. Faça só com o responsável financeiro.",
+       "caixa": {
+        "x": 91.4,
+        "y": 11.6,
+        "w": 7,
+        "h": 4.4
+       },
+       "lado": "baixo"
+      },
+      {
+       "n": 3,
+       "rotulo": "Tipo de Conta",
+       "explicacao": "Conta Corrente, Conta Poupança e outros tipos.",
+       "caixa": {
+        "x": 73,
+        "y": 27,
+        "w": 7.2,
+        "h": 17.4
+       },
+       "lado": "direita"
+      }
+     ],
+     "evidencia": "captura-real",
+     "fontes": [
+      "midia/brutos/financeiro/prints/financeiro_config-contas-bancarias_01.png",
+      "funcional-financeiro-receber-pagar-saldos-e-fluxo-de-caixa#000",
+      "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+     ]
+    },
+    {
+     "titulo": "Meios de Pagamento",
+     "texto": "Em Configurações › Meios de Pagamento, leia a coluna TIPO: é ela que define o comportamento do meio. Um meio do tipo Boleto exige conta bancária emissora para gerar os títulos.",
+     "imagem": "/manuais/financeiro/img/11-meios-de-pagamento.webp",
+     "alt": "Lista de Meios de Pagamento com as colunas Descrição, Tipo e Ativo; Duplicata Mercantil aparece com o tipo Boleto.",
+     "largura": 1600,
+     "altura": 900,
+     "marcadores": [
+      {
+       "n": 1,
+       "rotulo": "Meios de Pagamento",
+       "explicacao": "No grupo Configurações do menu do Financeiro.",
+       "caixa": {
+        "x": 2.6,
+        "y": 52.6,
+        "w": 9.4,
+        "h": 3.6
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 2,
+       "rotulo": "Coluna TIPO",
+       "explicacao": "Define o comportamento: Boleto, Cartão de Crédito, Cheque, Transferência, PIX…",
+       "caixa": {
+        "x": 58.2,
+        "y": 27,
+        "w": 7.2,
+        "h": 51
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 3,
+       "rotulo": "Duplicata Mercantil",
+       "explicacao": "O nome é Duplicata Mercantil, mas o tipo é Boleto: ele segue a regra do boleto.",
+       "caixa": {
+        "x": 15.4,
+        "y": 64.8,
+        "w": 7.4,
+        "h": 4.4
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 4,
+       "rotulo": "Novo Meio",
+       "explicacao": "Cadastra um meio de pagamento.",
+       "caixa": {
+        "x": 91.6,
+        "y": 11.6,
+        "w": 6.8,
+        "h": 4.4
+       },
+       "lado": "baixo"
+      }
+     ],
+     "atencao": "A recusa diz \"Boleto\" mesmo quando o meio se chama Duplicata Mercantil, se ele estiver cadastrado como tipo Boleto. Mudar o tipo é decisão do responsável fiscal.",
+     "evidencia": "captura-real",
+     "fontes": [
+      "midia/brutos/financeiro/prints/financeiro_config-meios-de-pagamento_01.png",
+      "regra-financeiro-meio-de-pagamento-boleto-exige-conta-emissora"
+     ]
+    },
+    {
+     "titulo": "Planos de Conta",
+     "texto": "Em Configurações › Planos de Conta, escolha ver em árvore (Estruturado) ou em Lista. Na árvore, abra cada conta pela setinha e use + Filho para criar uma conta dentro dela.",
+     "imagem": "/manuais/financeiro/img/12-planos-de-conta.webp",
+     "alt": "Planos de Conta em modo Estruturado, com contas de Receita e Despesa e os botões + Filho, editar e excluir.",
+     "largura": 1600,
+     "altura": 900,
+     "marcadores": [
+      {
+       "n": 1,
+       "rotulo": "Planos de Conta",
+       "explicacao": "No grupo Configurações do menu do Financeiro.",
+       "caixa": {
+        "x": 2.6,
+        "y": 67,
+        "w": 8,
+        "h": 3.6
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 2,
+       "rotulo": "Estruturado ou Lista",
+       "explicacao": "Estruturado mostra a árvore de contas; Lista mostra tudo em linhas.",
+       "caixa": {
+        "x": 14.8,
+        "y": 10.6,
+        "w": 9.2,
+        "h": 4.2
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 3,
+       "rotulo": "Abrir a conta",
+       "explicacao": "A setinha expande a conta e mostra as contas filhas.",
+       "caixa": {
+        "x": 16.2,
+        "y": 37,
+        "w": 3.6,
+        "h": 12.6
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 4,
+       "rotulo": "+ Filho",
+       "explicacao": "Cria uma conta dentro desta.",
+       "caixa": {
+        "x": 87.2,
+        "y": 36.8,
+        "w": 4.6,
+        "h": 13
+       },
+       "lado": "esquerda"
+      },
+      {
+       "n": 5,
+       "rotulo": "Nova conta",
+       "explicacao": "Cria uma conta no primeiro nível.",
+       "caixa": {
+        "x": 90.6,
+        "y": 17.4,
+        "w": 7,
+        "h": 4.4
+       },
+       "lado": "esquerda"
+      }
+     ],
+     "dica": "O plano de contas analítico é feito na Fundação; o Fluxo de Caixa agrupa por ele.",
+     "evidencia": "captura-real",
+     "fontes": [
+      "midia/brutos/financeiro/prints/financeiro_config-planos-de-conta_01.png",
+      "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro",
+      "manual-10-financeiro#011"
+     ]
+    },
+    {
+     "titulo": "Saiba onde fica o PIX",
+     "texto": "Em Financeiro › PIX ficam as cobranças com QR Code. Antes de criar cobranças, o PIX precisa estar ativo numa conta bancária, com o certificado digital enviado.",
+     "imagem": "/manuais/financeiro/img/13-pix.webp",
+     "alt": "Tela PIX com as abas Cobranças, Recebimentos e Conciliação, o aviso de ativação em Configurações › Contas Bancárias › Serviços financeiros e o estado PIX ainda não configurado com o botão Configurar agora.",
+     "largura": 1600,
+     "altura": 900,
+     "marcadores": [
+      {
+       "n": 1,
+       "rotulo": "PIX",
+       "explicacao": "Item do menu do Financeiro: cobranças PIX com QR Code, com baixa automática quando o cliente paga.",
+       "caixa": {
+        "x": 0.8,
+        "y": 42.8,
+        "w": 5,
+        "h": 3.8
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 2,
+       "rotulo": "Abas Cobranças, Recebimentos e Conciliação",
+       "explicacao": "As visões do PIX: o que foi cobrado, o que entrou e a conferência.",
+       "caixa": {
+        "x": 17.8,
+        "y": 20,
+        "w": 20.8,
+        "h": 4.8
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 3,
+       "rotulo": "Ativação e credenciais",
+       "explicacao": "O PIX se ativa em Configurações › Contas Bancárias › Serviços financeiros da conta.",
+       "caixa": {
+        "x": 64.4,
+        "y": 15.6,
+        "w": 33.8,
+        "h": 3.4
+       },
+       "lado": "baixo"
+      },
+      {
+       "n": 4,
+       "rotulo": "PIX ainda não configurado",
+       "explicacao": "Sem PIX ativo numa conta e sem certificado digital, não há cobrança. Configurar agora leva à ativação.",
+       "caixa": {
+        "x": 37,
+        "y": 42,
+        "w": 27.8,
+        "h": 12.8
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 5,
+       "rotulo": "Nova cobrança",
+       "explicacao": "Fica desabilitado até o PIX ser configurado.",
+       "caixa": {
+        "x": 88.2,
+        "y": 25.4,
+        "w": 9.8,
+        "h": 5
+       },
+       "lado": "baixo"
+      }
+     ],
+     "atencao": "PIX só em homologação e se o cliente contratou. Ativar exige conta bancária e certificado: é decisão do responsável financeiro.",
+     "evidencia": "captura-real",
+     "fontes": [
+      "videos/capturas/guias-staging/financeiro-pix.png (staging v1.23.2, 05/11/2026)"
+     ]
+    }
+   ]
+  }
+ ],
+ "consultor": {
+  "implantacao": [
+   "Módulo financeiro contratado; versão PRO se o cliente quer PIX, pagamentos eletrônicos, DDA ou Open Finance. Sem o módulo, nenhuma nota gera título. Fonte: checklist de implantação do Financeiro.",
+   "Plano de contas analítico, contas bancárias, portadores, condições e meios de pagamento feitos na Fundação; saldo inicial das contas preenchido só na carga, depois dos testes. Fonte: checklist de implantação do Financeiro.",
+   "Participante de teste com Conta de Fluxo de Caixa Receita/Despesa preenchida: ela decide em que linha do fluxo de caixa o valor cai. Fonte: checklist de implantação do Financeiro.",
+   "Decisões do kickoff: quem gera o contas a receber (pedido ou nota) e como se dá baixa em cada conta (à mão, pelo boleto ou pela conciliação). Fonte: checklist de implantação do Financeiro.",
+   "No fim do roteiro, confira Fluxo de Caixa, DRE e Saldos entre si e o card Recebido no mês contra o Extrato; anote qualquer diferença. Fonte: checklist de implantação do Financeiro (bloco 8).",
+   "Plano de contas com contas analíticas debaixo das sintéticas e Categoria DRE em cada conta, revisado com o cliente antes da carga. Fonte: manual-10-financeiro#006."
+  ],
+  "perguntasDoCliente": [
+   {
+    "pergunta": "Recebi uma parte e apareceu outro título. Duplicou?",
+    "resposta": "Não. É o título residual da baixa parcial: o original fica Recebido e o residual guarda o saldo, no mesmo vencimento.",
+    "fontes": [
+     "regra-financeiro-baixa-parcial-cria-titulo-residual"
+    ]
+   },
+   {
+    "pergunta": "Onde está o título que já recebi?",
+    "resposta": "Contas a Receber abre filtrada em Em aberto. Limpe o filtro Status para ver os recebidos.",
+    "fontes": [
+     "regra-financeiro-contas-a-receber-filtro-padrao-em-aberto"
+    ]
+   },
+   {
+    "pergunta": "Por que o Gerar Títulos não funciona?",
+    "resposta": "Se o meio de pagamento da parcela é do tipo Boleto, falta a conta emissora. E o Gerar Títulos fica desabilitado em pedido Faturado ou que já tem títulos.",
+    "fontes": [
+     "regra-financeiro-meio-de-pagamento-boleto-exige-conta-emissora",
+     "regra-vendas-gerar-titulos-quando-esta-habilitado"
+    ]
+   },
+   {
+    "pergunta": "Qual a diferença entre Competência e Caixa na DRE?",
+    "resposta": "Competência usa a data do documento; Caixa usa a data da baixa (do recebimento ou do pagamento).",
+    "fontes": [
+     "manual-10-financeiro#012",
+     "oficial-fin-a-regras#006"
+    ]
+   },
+   {
+    "pergunta": "A receita da obra não aparece na DRE. Por quê?",
+    "resposta": "Abra o título e confira o Projeto e o Plano de Conta; no Contas a Pagar, confira também o rateio entre projetos. Corrija na origem.",
+    "fontes": [
+     "roteiro-financeiro-03-dre#026"
+    ]
+   }
+  ],
+  "errosComuns": [
+   {
+    "titulo": "Título manual e título gerado para o mesmo pedido",
+    "texto": "DRE, Painel Financeiro de Projetos e o card Recebido no mês somam os dois. Use um só caminho.",
+    "fontes": [
+     "regra-financeiro-titulo-manual-e-gerado-duplicam-a-receita"
+    ]
+   },
+   {
+    "titulo": "Confiar no card Recebido no mês",
+    "texto": "Hoje o card ainda soma o valor original do título numa baixa parcial: confira contra o Extrato.",
+    "fontes": [
+     "regra-financeiro-titulo-manual-e-gerado-duplicam-a-receita",
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+    ]
+   },
+   {
+    "titulo": "Saldo inicial sem data",
+    "texto": "Com migração de histórico, o Saldo Inicial da conta é o saldo antes do primeiro movimento migrado, não o de hoje.",
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+    ]
+   },
+   {
+    "titulo": "Estorno fora da tela",
+    "texto": "Em janelas estreitas, o diálogo de Estornar pode abrir fora da área visível.",
+    "fontes": [
+     "regra-financeiro-estornar-baixa-restaura-o-titulo"
+    ]
+   },
+   {
+    "titulo": "Lançar em conta sintética",
+    "texto": "Título em conta com contas-filhas é recusado: \"Movimentações financeiras só podem ser associadas a contas analíticas do fluxo de caixa.\"",
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+    ]
+   },
+   {
+    "titulo": "Baixar o mesmo título por dois caminhos",
+    "texto": "Baixa à mão, retorno do boleto e conciliação no mesmo título duplicam ou travam. Escolha um caminho de baixa por conta.",
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+    ]
+   }
+  ],
+  "configuracoes": [
+   {
+    "item": "Contas Bancárias (saldo inicial e conta emissora)",
+    "onde": "Financeiro › Configurações › Contas Bancárias",
+    "porque": "O Fluxo de Caixa parte do saldo inicial da conta: ele só entra na carga, conferido com o banco. Para boleto, a conta precisa ser emissora.",
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro",
+     "oficial-fin-a-regras#006"
+    ]
+   },
+   {
+    "item": "Meios de Pagamento (Tipo)",
+    "onde": "Financeiro › Configurações › Meios de Pagamento",
+    "porque": "O Tipo define o comportamento: meio do tipo Boleto sem conta emissora trava o Gerar Títulos.",
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro",
+     "regra-financeiro-meio-de-pagamento-boleto-exige-conta-emissora"
+    ]
+   },
+   {
+    "item": "Planos de Conta (analíticas e Categoria DRE)",
+    "onde": "Financeiro › Configurações › Planos de Conta",
+    "porque": "Só a conta analítica recebe lançamento; a Categoria DRE decide a linha da DRE. É a base do Fluxo de Caixa e da DRE.",
+    "fontes": [
+     "manual-10-financeiro#006",
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+    ]
+   },
+   {
+    "item": "Conta de Fluxo de Caixa Receita/Despesa do participante",
+    "onde": "Cadastro do participante",
+    "porque": "Decide em que linha do Fluxo de Caixa o valor do título cai.",
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+    ]
+   },
+   {
+    "item": "Boleto em homologação (se contratado)",
+    "onde": "Financeiro › Configurações › Boleto, aba Assistente de Configuração",
+    "porque": "Empresa, Ambiente, Credenciais, Conta Bancária e Conclusão; sem a conta sincronizada, o boleto não é gerado.",
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+    ]
+   },
+   {
+    "item": "PIX (PRO)",
+    "onde": "Contas Bancárias › Serviços financeiros da conta › Habilitar PIX",
+    "porque": "Sem o certificado da conta PIX, a conta não cobra.",
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro",
+     "videos/capturas/guias-staging/financeiro-pix.png (staging v1.23.2, 05/11/2026)"
+    ]
+   }
+  ],
+  "integracoes": [
+   {
+    "acao": "Gerar Títulos no pedido de venda",
+    "modulo": "Financeiro",
+    "efeito": "Um título a receber por parcela da condição de pagamento; a coluna TÍTULOS do pedido passa a Gerados.",
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+    ]
+   },
+   {
+    "acao": "Autorizar ou finalizar a nota com CFOP que gera financeiro",
+    "modulo": "Financeiro",
+    "efeito": "Títulos por parcela, com o plano de contas e o meio da nota, se o pedido ainda não tinha gerado.",
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro",
+     "oficial-fat-a-regras#004"
+    ]
+   },
+   {
+    "acao": "Finalizar a nota de recebimento",
+    "modulo": "Financeiro e Estoque",
+    "efeito": "Gera os títulos a pagar junto com a entrada no estoque (tudo ou nada); cancelar a NR exclui os títulos em aberto.",
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+    ]
+   },
+   {
+    "acao": "Receber ou pagar um título",
+    "modulo": "Saldos, Extrato e Início",
+    "efeito": "O saldo da conta muda na hora pelo valor baixado e o Extrato mostra o crédito ou o débito; o Resumo do negócio da tela Início também muda.",
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro",
+     "funcional-financeiro-receber-pagar-saldos-e-fluxo-de-caixa#003"
+    ]
+   },
+   {
+    "acao": "Emitir nota de devolução",
+    "modulo": "Financeiro › Devoluções",
+    "efeito": "Não gera título: vira pendência no Painel de Devoluções, onde o financeiro decide abater ou restituir.",
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+    ]
+   },
+   {
+    "acao": "Cancelar a nota",
+    "modulo": "Financeiro",
+    "efeito": "Os títulos em aberto da nota são excluídos (e a baixa do boleto é pedida).",
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento"
+    ]
+   },
+   {
+    "acao": "Lançar o título numa conta do plano",
+    "modulo": "Fluxo de Caixa e DRE",
+    "efeito": "A conta analítica decide a linha no Fluxo de Caixa; a Categoria DRE, a linha na DRE.",
+    "fontes": [
+     "manual-10-financeiro#006",
+     "plano-financeiro#012"
+    ]
+   }
+  ],
+  "roteiroDemonstracao": [
+   {
+    "passo": "Abra o Dashboard Financeiro",
+    "mostrar": "Período, Aplicar e os cartões de totais.",
+    "fontes": [
+     "videos/roteiros/consultor-08-financeiro.json#09"
+    ]
+   },
+   {
+    "passo": "Mostre Contas a Receber",
+    "mostrar": "Filtro Status em Em aberto, documento e parcela de cada título.",
+    "fontes": [
+     "regra-financeiro-contas-a-receber-filtro-padrao-em-aberto"
+    ]
+   },
+   {
+    "passo": "Receba um título de teste",
+    "mostrar": "Conta Bancária, Valor Recebido e Pré-visualizar; depois a baixa parcial com o título residual.",
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro",
+     "regra-financeiro-baixa-parcial-cria-titulo-residual"
+    ]
+   },
+   {
+    "passo": "Confira Saldos e Extrato",
+    "mostrar": "O saldo da conta e o crédito do dia, pelo valor baixado.",
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+    ]
+   },
+   {
+    "passo": "Abra o Fluxo de Caixa em Hierarquias",
+    "mostrar": "A Estrutura Hierárquica pelo plano de contas e a janela Itens de uma linha.",
+    "fontes": [
+     "roteiro-financeiro-04-fluxo-de-caixa#015",
+     "roteiro-financeiro-04-fluxo-de-caixa#018"
+    ]
+   },
+   {
+    "passo": "Abra a DRE",
+    "mostrar": "Modo Competência × Caixa, os cartões de resultado e o botão Contas de uma linha.",
+    "fontes": [
+     "manual-10-financeiro#012"
+    ]
+   },
+   {
+    "passo": "Feche no Painel Financeiro de Projetos",
+    "mostrar": "O resultado da obra do pedido de teste.",
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+    ]
+   }
+  ]
+ },
+ "pendencias": [
+  "CAPTURA: Financeiro › Contas a Receber › título recebido › Estornar — diálogo de estorno e o título voltando a Em aberto (o tour de 05/11 foi só leitura).",
+  "CAPTURA: Financeiro › Contas a Pagar › Pagar — diálogo Pagar (Conta Bancária, Data Pagamento, Valor Pago, Confirmar Pagamento).",
+  "CAPTURA: Financeiro › Budget vs Realizado — sem regra de leitura na base; não entrou. (A DRE entrou no capricho de 06/11 com a captura do staging v1.23.2 e manual-10-financeiro#012; a captura veio sem lançamentos no período.)",
+  "CAPTURA: Financeiro › Configurações › Boleto — só em homologação e se o cliente contratou (bloco 5). O print de Boleto tem CNPJ, e-mail e endereço: precisa de borrão. (A tela PIX, sem configuração, foi capturada no staging v1.23.2, 05/11/2026.)",
+  "A conferir na tela: Gerar Títulos em pedido Entregue já faturado (fluxo antigo × gestora); saldo inicial do Fluxo de Caixa; exclusão de título permanente × lógica (base, Financeiro › Problemas recorrentes).",
+  "Versões diferentes nas capturas: 1.22.13 (vídeo do consultor) e 1.23.2 (tour de 05/11). O layout do cabeçalho mudou entre elas.",
+  "Resolvido (staging v1.23.2, 05/11/2026): Painel Financeiro de Projetos capturado (aberto pelo módulo Projetos, sem projeto escolhido). Falta captura com um projeto selecionado.",
+  "A conferir (nova, revisão v2): a base diz que não existe item \"Conciliação\" no menu (regra-financeiro-baixa-atualiza-saldos-e-extrato); a tela PIX (staging v1.23.2, 05/11/2026) tem uma aba Conciliação. Não é item de menu, mas conferir o que ela faz antes de ensinar.",
+  "Revisão v2: a captura nova financeiro-dashboard (staging v1.23.2, 05/11/2026) traz valores em R$ sem borrão; o guia segue com a captura antiga já borrada. A captura nova financeiro-contas-pagar não trouxe o diálogo Pagar.",
+  "Não usada (capricho 06/11): videos/capturas/guias-staging/financeiro-contas-receber.png (staging v1.23.2) traz nomes de pessoas e valores; o guia segue com a captura já borrada de 22/10 (NF - 020), que mostra os títulos de uma nota.",
+  "A conferir na tela: DRE — o botão Contas e as análises vertical e horizontal vêm do manual-10-financeiro#012; a captura do staging estava sem lançamentos e não mostra o que abre ao clicar."
+ ],
+ "fontes": [
+  "regra-faturamento-finalizar-nf-gera-os-titulos",
+  "regra-vendas-gerar-titulos-quando-esta-habilitado",
+  "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro",
+  "regra-financeiro-baixa-atualiza-saldos-e-extrato",
+  "funcional-financeiro-receber-pagar-saldos-e-fluxo-de-caixa#001",
+  "regra-financeiro-baixa-parcial-cria-titulo-residual",
+  "regra-financeiro-meio-de-pagamento-boleto-exige-conta-emissora",
+  "funcional-financeiro-receber-pagar-saldos-e-fluxo-de-caixa#003",
+  "glossario:financeiro.contas-a-receber",
+  "regra-financeiro-contas-a-receber-filtro-padrao-em-aberto",
+  "glossario:financeiro.contas-a-pagar",
+  "funcional-financeiro-receber-pagar-saldos-e-fluxo-de-caixa#002",
+  "glossario:vendas.pedidos-de-venda",
+  "regra-financeiro-estornar-baixa-restaura-o-titulo",
+  "manual-10-financeiro#011",
+  "guia:scripts/dados-checklists-estagiarios.mjs#financeiro",
+  "guia:db/migrations/002_modulos_iniciais.sql#financeiro",
+  "midia/brutos/financeiro/prints/financeiro_dashboard-geral_01.png",
+  "roteiro-financeiro-06-dashboard-financeiro#001",
+  "oficial-fin-c-implantacao#011",
+  "videos/public/telas/consultor-08-financeiro/01-contas-receber.png",
+  "videos/roteiros/consultor-08-financeiro.json#09",
+  "midia/brutos/financeiro/prints/financeiro_contas-a-pagar_01.png",
+  "videos/public/telas/consultor-08-financeiro/00-pedido-faturado.png",
+  "videos/roteiros/consultor-08-financeiro.json#08",
+  "videos/public/telas/consultor-08-financeiro/03-receber.png",
+  "videos/roteiros/consultor-08-financeiro.json#11",
+  "videos/public/telas/consultor-08-financeiro/03b-parcial.png",
+  "videos/roteiros/consultor-08-financeiro.json#12",
+  "videos/public/telas/consultor-08-financeiro/02-saldo-antes.png",
+  "videos/roteiros/consultor-08-financeiro.json#10",
+  "videos/roteiros/consultor-08-financeiro.json#13",
+  "midia/brutos/financeiro/prints/financeiro_extrato_01.png",
+  "midia/brutos/financeiro/prints/financeiro_fluxo-de-caixa_01.png",
+  "midia/brutos/financeiro/prints/financeiro_config-contas-bancarias_01.png",
+  "funcional-financeiro-receber-pagar-saldos-e-fluxo-de-caixa#000",
+  "midia/brutos/financeiro/prints/financeiro_config-meios-de-pagamento_01.png",
+  "midia/brutos/financeiro/prints/financeiro_config-planos-de-conta_01.png",
+  "regra-financeiro-titulo-manual-e-gerado-duplicam-a-receita",
+  "midia/brutos/financeiro/manifesto.md",
+  "midia/brutos/financeiro/roteiro-telas.md",
+  "videos/capturas/guias-staging/financeiro-pix.png",
+  "videos/capturas/guias-staging/projetos-painel-financeiro.png",
+  "videos/capturas/guias-staging/financeiro-fluxo-caixa.png (staging v1.23.2, 05/11/2026)",
+  "videos/capturas/guias-staging/financeiro-dre.png (staging v1.23.2, 05/11/2026)",
+  "roteiro-financeiro-04-fluxo-de-caixa#015",
+  "roteiro-financeiro-04-fluxo-de-caixa#018",
+  "manual-10-financeiro#012",
+  "manual-10-financeiro#006",
+  "roteiro-financeiro-03-dre#017",
+  "roteiro-financeiro-03-dre#026",
+  "oficial-fin-a-regras#006",
+  "plano-financeiro#012",
+  "faq-limitacoes-conhecidas-v1-22-12#002",
+  "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento"
+ ]
+}

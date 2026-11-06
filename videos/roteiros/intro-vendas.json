@@ -1,0 +1,457 @@
+{
+  "id": "intro-vendas",
+  "modulo": "Vendas",
+  "fps": 30,
+  "duracao": 47,
+  "musica": {
+    "arquivo": "musica/intro-vendas.wav",
+    "bpm": 120,
+    "entrada": 4,
+    "final": 42,
+    "acentos": [
+      29
+    ]
+  },
+  "abertura": {
+    "duracao": 4,
+    "titulo": "Vendas",
+    "linha": "Guia Inicial · Crie e acompanhe pedidos de venda."
+  },
+  "fechamento": {
+    "inicio": 42,
+    "duracao": 5,
+    "titulo": "Guia Inicial › Vendas",
+    "linha": "Próximo passo"
+  },
+  "transicao_s": 0.4,
+  "cenas": [
+    {
+      "id": "c1-lista",
+      "clipe": "intro/vendas/c1-lista.mp4",
+      "inicio": 4,
+      "duracao": 4,
+      "desde": 0.6,
+      "entrada": "zoom",
+      "camera": [
+        {
+          "t": 0,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 0.8,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 3,
+          "x": 1500,
+          "y": 300,
+          "zoom": 1.6
+        }
+      ],
+      "cliques": [
+        {
+          "t": 3.35,
+          "x": 1801,
+          "y": 165
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.4,
+          "ate": 3.5,
+          "texto": "Centralize seus pedidos.",
+          "posicao": "inf-esq"
+        }
+      ]
+    },
+    {
+      "id": "c2-cabecalho",
+      "clipe": "intro/vendas/c2-cabecalho.mp4",
+      "inicio": 8,
+      "duracao": 5,
+      "desde": 0.3,
+      "entrada": "deslize",
+      "camera": [
+        {
+          "t": 0,
+          "x": 1090,
+          "y": 520,
+          "zoom": 1.35
+        },
+        {
+          "t": 2.6,
+          "x": 1000,
+          "y": 580,
+          "zoom": 1.55
+        },
+        {
+          "t": 5,
+          "x": 1000,
+          "y": 520,
+          "zoom": 1.5
+        }
+      ],
+      "cliques": [
+        {
+          "t": 3.2,
+          "x": 900,
+          "y": 743
+        }
+      ],
+      "realces": [
+        {
+          "t": 3.3,
+          "ate": 4.8,
+          "x": 833,
+          "y": 414,
+          "w": 502,
+          "h": 42
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.5,
+          "ate": 4.6,
+          "texto": "Escolha a condição de pagamento.",
+          "posicao": "inf-esq"
+        }
+      ]
+    },
+    {
+      "id": "c3-produto",
+      "clipe": "intro/vendas/c3-produto.mp4",
+      "inicio": 13,
+      "duracao": 3,
+      "desde": 0.3,
+      "entrada": "zoom",
+      "camera": [
+        {
+          "t": 0,
+          "x": 760,
+          "y": 720,
+          "zoom": 1.5
+        },
+        {
+          "t": 1.4,
+          "x": 700,
+          "y": 700,
+          "zoom": 1.65
+        },
+        {
+          "t": 3,
+          "x": 820,
+          "y": 640,
+          "zoom": 1.45
+        }
+      ],
+      "cliques": [
+        {
+          "t": 1.35,
+          "x": 500,
+          "y": 540
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.4,
+          "ate": 5.3,
+          "texto": "Adicione os itens.",
+          "posicao": "inf-dir"
+        }
+      ]
+    },
+    {
+      "id": "c4-dados-item",
+      "clipe": "intro/vendas/c4-dados-item.mp4",
+      "inicio": 16,
+      "duracao": 2.5,
+      "desde": 0.5,
+      "entrada": "corte",
+      "camera": [
+        {
+          "t": 0,
+          "x": 960,
+          "y": 560,
+          "zoom": 1.5
+        },
+        {
+          "t": 2.5,
+          "x": 1000,
+          "y": 580,
+          "zoom": 1.6
+        }
+      ],
+      "cliques": [
+        {
+          "t": 1.65,
+          "x": 1254,
+          "y": 648
+        }
+      ]
+    },
+    {
+      "id": "c5-item",
+      "clipe": "intro/vendas/c5-item.mp4",
+      "inicio": 18.5,
+      "duracao": 4,
+      "desde": 0.5,
+      "entrada": "zoom",
+      "camera": [
+        {
+          "t": 0,
+          "x": 1060,
+          "y": 560,
+          "zoom": 1.2
+        },
+        {
+          "t": 2,
+          "x": 1100,
+          "y": 590,
+          "zoom": 1.28
+        },
+        {
+          "t": 4,
+          "x": 1120,
+          "y": 600,
+          "zoom": 1.3
+        }
+      ],
+      "realces": [
+        {
+          "t": 0.6,
+          "ate": 2.4,
+          "x": 354,
+          "y": 530,
+          "w": 1074,
+          "h": 38
+        },
+        {
+          "t": 2,
+          "ate": 3.8,
+          "x": 1551,
+          "y": 644,
+          "w": 278,
+          "h": 22
+        }
+      ]
+    },
+    {
+      "id": "c6-meio-pagamento",
+      "clipe": "intro/vendas/c6-meio-pagamento.mp4",
+      "inicio": 22.5,
+      "duracao": 3.5,
+      "desde": 0.6,
+      "entrada": "deslize",
+      "camera": [
+        {
+          "t": 0,
+          "x": 860,
+          "y": 560,
+          "zoom": 1.35
+        },
+        {
+          "t": 1.3,
+          "x": 900,
+          "y": 620,
+          "zoom": 1.55
+        },
+        {
+          "t": 3.5,
+          "x": 860,
+          "y": 600,
+          "zoom": 1.5
+        }
+      ],
+      "cliques": [
+        {
+          "t": 1.45,
+          "x": 980,
+          "y": 674
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.4,
+          "ate": 6.2,
+          "texto": "Parcelas geradas pela condição.",
+          "posicao": "inf-esq"
+        }
+      ]
+    },
+    {
+      "id": "c7-fluxo-caixa",
+      "clipe": "intro/vendas/c7-fluxo-caixa.mp4",
+      "inicio": 26,
+      "duracao": 3,
+      "desde": 0.5,
+      "entrada": "corte",
+      "camera": [
+        {
+          "t": 0,
+          "x": 1320,
+          "y": 660,
+          "zoom": 1.55
+        },
+        {
+          "t": 3,
+          "x": 1320,
+          "y": 620,
+          "zoom": 1.65
+        }
+      ],
+      "cliques": [
+        {
+          "t": 1.8,
+          "x": 1696,
+          "y": 834
+        }
+      ]
+    },
+    {
+      "id": "c8a-salvar",
+      "clipe": "intro/vendas/c8a-salvar.mp4",
+      "inicio": 29,
+      "duracao": 1.8,
+      "desde": 0.9,
+      "entrada": "zoom",
+      "camera": [
+        {
+          "t": 0,
+          "x": 1400,
+          "y": 360,
+          "zoom": 1.5
+        },
+        {
+          "t": 1.2,
+          "x": 1500,
+          "y": 300,
+          "zoom": 1.7
+        },
+        {
+          "t": 1.8,
+          "x": 1500,
+          "y": 300,
+          "zoom": 1.72
+        }
+      ],
+      "cliques": [
+        {
+          "t": 1.2,
+          "x": 1726,
+          "y": 122
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.5,
+          "ate": 4.4,
+          "texto": "Salvar e Permanecer",
+          "posicao": "inf-esq",
+          "tela": true
+        }
+      ]
+    },
+    {
+      "id": "c8b-criado",
+      "clipe": "intro/vendas/c8b-criado.mp4",
+      "inicio": 30.8,
+      "duracao": 3.2,
+      "desde": 0.3,
+      "entrada": "corte",
+      "camera": [
+        {
+          "t": 0,
+          "x": 1500,
+          "y": 320,
+          "zoom": 1.6
+        },
+        {
+          "t": 3.2,
+          "x": 1450,
+          "y": 360,
+          "zoom": 1.5
+        }
+      ],
+      "realces": [
+        {
+          "t": 0.3,
+          "ate": 2.9,
+          "x": 1544,
+          "y": 232,
+          "w": 350,
+          "h": 70
+        }
+      ]
+    },
+    {
+      "id": "c9-lista-final",
+      "clipe": "intro/vendas/c9-lista-final.mp4",
+      "inicio": 34,
+      "duracao": 8,
+      "desde": 0.4,
+      "entrada": "deslize",
+      "camera": [
+        {
+          "t": 0,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 1,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 3.6,
+          "x": 1150,
+          "y": 600,
+          "zoom": 1.4
+        },
+        {
+          "t": 6.2,
+          "x": 1300,
+          "y": 600,
+          "zoom": 1.55
+        },
+        {
+          "t": 8,
+          "x": 1300,
+          "y": 600,
+          "zoom": 1.55
+        }
+      ],
+      "realces": [
+        {
+          "t": 2.2,
+          "ate": 5.6,
+          "x": 306,
+          "y": 602,
+          "w": 1562,
+          "h": 40
+        }
+      ],
+      "cliques": [
+        {
+          "t": 6.4,
+          "x": 1804,
+          "y": 622,
+          "tipo": "hover"
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.6,
+          "ate": 7.4,
+          "texto": "Acompanhe cada pedido.",
+          "posicao": "inf-esq"
+        }
+      ]
+    }
+  ]
+}

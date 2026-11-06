@@ -1,0 +1,1281 @@
+{
+ "modulo": "fluxo-completo",
+ "titulo": "O fluxo completo — guia visual",
+ "resumo": "O caminho de uma venda pelo Faktory Flow, do lead no CRM até os títulos no Financeiro e o painel da obra: o que cada módulo entrega para o seguinte e o sinal, em cada tela, de que o pedido avançou.",
+ "versaoSistema": "1.22.13 (capturas de 19 a 22/10/2026 no ambiente de teste) · Início, busca e Compras: staging v1.23.2, 05/11/2026",
+ "atualizadoEm": "2026-11-06",
+ "status": "rascunho",
+ "conceitos": [
+  {
+   "titulo": "Uma venda atravessa vários módulos",
+   "icone": "fluxo-completo",
+   "texto": "A oportunidade do CRM vira pedido em Vendas. O pedido gera a medição em Serviços e a ordem de produção, depois a nota no Faturamento, a carga na Expedição e, no fim, os títulos no Financeiro. Tudo chega ao painel da obra.",
+   "fontes": [
+    "videos/roteiros/consultor-fluxo-completo.json#02",
+    "videos/roteiros/consultor-fluxo-completo.json#03",
+    "guia:scripts/dados-checklists-estagiarios.mjs#fluxo"
+   ]
+  },
+  {
+   "titulo": "Cada passagem tem um botão",
+   "icone": "seta",
+   "texto": "Quase nada passa sozinho de um módulo para o outro: Gerar Instalação, Faturar, Liberar para Expedição e Gerar Títulos são botões. Saber qual botão leva ao próximo módulo é metade do trabalho.",
+   "fontes": [
+    "regra-servicos-passagens-por-botao-e-ordem-dos-aceites",
+    "videos/roteiros/consultor-fluxo-completo.json#04",
+    "glossario:vendas.pedidos-de-venda"
+   ]
+  },
+  {
+   "titulo": "O que nasce sozinho",
+   "icone": "regra",
+   "texto": "Algumas coisas nascem de outro registro: a oportunidade nasce da conversão do lead, os títulos nascem da nota finalizada e a entrada do produto acabado nasce do Produzido da OP.",
+   "fontes": [
+    "videos/roteiros/consultor-fluxo-completo.json#05",
+    "regra-faturamento-finalizar-nf-gera-os-titulos",
+    "regra-producao-marcar-produzido-gera-entrada-do-produto-acabado"
+   ]
+  },
+  {
+   "titulo": "A ordem importa",
+   "icone": "alerta",
+   "texto": "Ajuste o pedido e ligue a obra antes de faturar. Liberar para Expedição só aparece no pedido Faturado. No CRM, reverta o ganho antes de gerar o pedido, nunca depois.",
+   "fontes": [
+    "videos/roteiros/consultor-fluxo-completo.json#06",
+    "regra-vendas-editar-pedido-somente-em-aberto",
+    "regra-vendas-liberar-para-expedicao-so-em-pedido-faturado"
+   ]
+  },
+  {
+   "titulo": "Cada tela mostra um sinal de avanço",
+   "icone": "tela",
+   "texto": "Você acompanha o pedido pelos sinais: a coluna PROJETO mostra a obra, a NOTA FISCAL é preenchida ao faturar e a coluna TÍTULOS passa a Gerados quando os títulos aparecem em Contas a Receber.",
+   "fontes": [
+    "guia:scripts/dados-checklists-estagiarios.mjs#fluxo",
+    "regra-faturamento-finalizar-nf-gera-os-titulos"
+   ]
+  }
+ ],
+ "palavras": [
+  {
+   "termo": "Pipeline",
+   "definicao": "Funil de oportunidades do CRM (CRM › Vendas › Pipeline).",
+   "fontes": [
+    "glossario:crm.pipeline"
+   ]
+  },
+  {
+   "termo": "Pedido de Venda",
+   "definicao": "Documento de Vendas que puxa a operação, a nota e os títulos.",
+   "fontes": [
+    "glossario:vendas.pedidos-de-venda",
+    "guia:scripts/dados-checklists-estagiarios.mjs#fluxo"
+   ]
+  },
+  {
+   "termo": "Medição",
+   "definicao": "Documento de Serviços que nasce do pedido; aprovada, mostra Gerar Instalação.",
+   "fontes": [
+    "regra-servicos-passagens-por-botao-e-ordem-dos-aceites",
+    "guia:scripts/dados-checklists-estagiarios.mjs#fluxo"
+   ]
+  },
+  {
+   "termo": "Ordem de produção (OP)",
+   "definicao": "Documento da Produção; ao marcar Produzido, nasce a entrada do produto acabado no estoque.",
+   "fontes": [
+    "regra-producao-marcar-produzido-gera-entrada-do-produto-acabado"
+   ]
+  },
+  {
+   "termo": "Faturar",
+   "definicao": "Item do menu ⋯ do pedido que abre a nota fiscal ligada ao pedido.",
+   "fontes": [
+    "glossario:vendas.pedidos-de-venda",
+    "regra-faturamento-faturar-abre-nova-nfe-ligada-ao-pedido"
+   ]
+  },
+  {
+   "termo": "Liberar para Expedição",
+   "definicao": "Item do menu ⋯ que só aparece no pedido Faturado.",
+   "fontes": [
+    "glossario:vendas.pedidos-de-venda",
+    "regra-vendas-liberar-para-expedicao-so-em-pedido-faturado"
+   ]
+  },
+  {
+   "termo": "Carga",
+   "definicao": "Documento da Expedição; o Histórico da Carga mostra cada etapa até a saída para a rota.",
+   "fontes": [
+    "videos/roteiros/consultor-fluxo-completo.json#12",
+    "guia:scripts/dados-checklists-estagiarios.mjs#fluxo"
+   ]
+  },
+  {
+   "termo": "Título",
+   "definicao": "Parcela a receber ou a pagar no Financeiro; os da venda nascem da nota finalizada ou do Gerar Títulos do pedido.",
+   "fontes": [
+    "regra-faturamento-finalizar-nf-gera-os-titulos",
+    "regra-vendas-gerar-titulos-quando-esta-habilitado"
+   ]
+  },
+  {
+   "termo": "Painel Financeiro de Projetos",
+   "definicao": "Painel da obra que junta vendido, faturado e as pendências de cada documento.",
+   "fontes": [
+    "funcional-financeiro-receber-pagar-saldos-e-fluxo-de-caixa#000",
+    "videos/roteiros/consultor-fluxo-completo.json#14"
+   ]
+  }
+ ],
+ "mapa": {
+  "antes": [],
+  "depois": [
+   "crm",
+   "vendas",
+   "servicos",
+   "producao",
+   "compras",
+   "faturamento",
+   "expedicao",
+   "financeiro",
+   "projetos"
+  ],
+  "texto": "Ordem de uma venda no Flow: CRM (lead e oportunidade) → Vendas (pedido) → Serviços e Produção (medição e OP) com Compras e Recebimento abastecendo o material → Faturamento (nota) → Expedição (carga, só com o pedido faturado e liberado) → Financeiro (títulos) → painel da obra. A tela Início mostra o que está parado em cada etapa.",
+  "fontes": [
+   "videos/roteiros/consultor-fluxo-completo.json#02",
+   "videos/roteiros/consultor-fluxo-completo.json#03",
+   "guia:scripts/dados-checklists-estagiarios.mjs#fluxo",
+   "regra-vendas-liberar-para-expedicao-so-em-pedido-faturado",
+   "manual-00-inicio-e-navegacao#002",
+   "plano-expedicao#024"
+  ]
+ },
+ "capitulos": [
+  {
+   "id": "comece-pelo-inicio",
+   "titulo": "Antes de começar: a tela Início e a busca",
+   "nivel": "basico",
+   "objetivo": "Saber onde o sistema mostra o que está pendente em toda a empresa e como chegar a qualquer tela do fluxo.",
+   "onde": "Início · Pesquisar funcionalidades (Ctrl + K)",
+   "passos": [
+    {
+     "largura": 1600,
+     "altura": 900,
+     "evidencia": "captura-real",
+     "titulo": "Leia a tela Início",
+     "texto": "Ao entrar, o Flow abre o Início. Leia os Alertas urgentes, as Tarefas do dia e o Resumo do negócio. Clique num alerta ou cartão para ir direto à tela dele.",
+     "imagem": "/manuais/fluxo-completo/img/10-inicio.webp",
+     "alt": "Tela Início com a saudação, os Alertas urgentes (Contas a receber vencendo, Ordens de produção atrasadas, Pedidos de venda em aberto), as Tarefas do dia e o Resumo do negócio com Recebido no mês, A receber, A pagar e Pedidos no mês; nome e valores borrados.",
+     "marcadores": [
+      {
+       "n": 1,
+       "rotulo": "Alertas urgentes",
+       "explicacao": "O que está parado no fluxo: títulos vencendo, ordens de produção atrasadas, pedidos esperando faturamento.",
+       "caixa": {
+        "x": 18.2,
+        "y": 35.2,
+        "w": 11.5,
+        "h": 4.2
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 2,
+       "rotulo": "Pedidos de venda em aberto",
+       "explicacao": "Exemplo de alerta do fluxo: pedidos que ainda aguardam faturamento. A seta leva à lista.",
+       "caixa": {
+        "x": 18.6,
+        "y": 61.9,
+        "w": 17.9,
+        "h": 6.2
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 3,
+       "rotulo": "Tarefas do dia",
+       "explicacao": "Pendências do dia, como títulos a receber e a pagar em aberto.",
+       "caixa": {
+        "x": 18.2,
+        "y": 76.9,
+        "w": 16.3,
+        "h": 3.7
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 4,
+       "rotulo": "Resumo do negócio",
+       "explicacao": "Recebido no mês, A receber, A pagar e Pedidos no mês: o fim do fluxo, no Financeiro.",
+       "caixa": {
+        "x": 45.8,
+        "y": 76.9,
+        "w": 13,
+        "h": 3.7
+       },
+       "lado": "direita"
+      }
+     ],
+     "atencao": "Hoje o card Recebido no mês ainda soma o valor original do título numa baixa parcial: confira contra o Extrato.",
+     "fontes": [
+      "videos/capturas/guias-staging/inicio-dashboard.png (staging v1.23.2, 05/11/2026)",
+      "manual-00-inicio-e-navegacao#002",
+      "funcional-financeiro-receber-pagar-saldos-e-fluxo-de-caixa#003",
+      "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+     ]
+    },
+    {
+     "largura": 1600,
+     "altura": 900,
+     "evidencia": "captura-real",
+     "titulo": "Ache qualquer tela pela busca",
+     "texto": "Clique em Pesquisar funcionalidades (ou use Ctrl + K) e digite o nome da tela, por exemplo \"pedido\". Escolha o resultado com as setas e Enter.",
+     "imagem": "/manuais/fluxo-completo/img/11-busca.webp",
+     "alt": "Busca Pesquisar funcionalidades com o texto \"pedido\" e os resultados Pedidos de Compra (Compras), Pedidos de Venda (Vendas) e Pedidos do campo (Produção - Equipe externa), com as teclas navegar, Enter selecionar e Esc fechar.",
+     "marcadores": [
+      {
+       "n": 1,
+       "rotulo": "Pesquisar funcionalidades",
+       "explicacao": "Busca telas e funções, não dados cadastrados. Respeita as suas permissões e a licença da empresa.",
+       "caixa": {
+        "x": 46.6,
+        "y": 1.9,
+        "w": 19.9,
+        "h": 4.4
+       },
+       "lado": "esquerda"
+      },
+      {
+       "n": 2,
+       "rotulo": "Resultados",
+       "explicacao": "Cada resultado mostra a tela e o módulo dela, como Pedidos de Compra (Compras) e Pedidos de Venda (Vendas).",
+       "caixa": {
+        "x": 47,
+        "y": 7.9,
+        "w": 19.1,
+        "h": 21.9
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 3,
+       "rotulo": "Teclas",
+       "explicacao": "Setas para navegar, Enter para abrir e Esc para fechar.",
+       "caixa": {
+        "x": 47.4,
+        "y": 30.8,
+        "w": 18.6,
+        "h": 3.2
+       },
+       "lado": "baixo"
+      }
+     ],
+     "atencao": "Hoje a busca ainda não encontra o módulo Tarefas: abra-o pelo menu de módulos.",
+     "fontes": [
+      "videos/capturas/guias-staging/primeiros-passos-busca.png (staging v1.23.2, 05/11/2026)",
+      "roteiro-geral-07-primeiros-passos-e-navegacao#006",
+      "manual-00-inicio-e-navegacao#004",
+      "faq-limitacoes-conhecidas-v1-22-12#015"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "etapa-crm",
+   "titulo": "Etapa 1 · CRM: do contato à oportunidade",
+   "nivel": "basico",
+   "objetivo": "Reconhecer a oportunidade que nasce da conversão do lead.",
+   "onde": "CRM › Vendas › Pipeline",
+   "passos": [
+    {
+     "titulo": "Encontre a oportunidade no Pipeline",
+     "texto": "Em CRM › Vendas › Pipeline, procure a oportunidade criada pela conversão do lead. Ela aparece na primeira etapa do funil, com o selo Aberta.",
+     "imagem": "/manuais/fluxo-completo/img/01-crm-pipeline.webp",
+     "alt": "Pipeline de Vendas do CRM com a etapa Novo Lead e três oportunidades com status Aberta; valores borrados.",
+     "largura": 1600,
+     "altura": 900,
+     "marcadores": [
+      {
+       "n": 1,
+       "rotulo": "Pipeline",
+       "explicacao": "No grupo Vendas do menu do CRM: o funil de oportunidades.",
+       "caixa": {
+        "x": 3,
+        "y": 28.6,
+        "w": 12,
+        "h": 4.6
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 2,
+       "rotulo": "Funil",
+       "explicacao": "O funil em uso (aqui, Funil de vendas principal). Cada funil tem as suas etapas.",
+       "caixa": {
+        "x": 52.4,
+        "y": 11.4,
+        "w": 12.4,
+        "h": 4.2
+       },
+       "lado": "esquerda"
+      },
+      {
+       "n": 3,
+       "rotulo": "Etapa Novo Lead",
+       "explicacao": "A primeira coluna do funil, com quantas oportunidades estão nela.",
+       "caixa": {
+        "x": 19,
+        "y": 23,
+        "w": 8.6,
+        "h": 5.6
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 4,
+       "rotulo": "Oportunidade Aberta",
+       "explicacao": "Cada cartão é uma oportunidade. Aberta: ainda em negociação.",
+       "caixa": {
+        "x": 19,
+        "y": 51.4,
+        "w": 14.8,
+        "h": 16.8
+       },
+       "lado": "direita"
+      }
+     ],
+     "evidencia": "captura-real",
+     "fontes": [
+      "videos/public/telas/consultor-fluxo-completo/01-crm.png",
+      "videos/roteiros/consultor-fluxo-completo.json#07",
+      "guia:scripts/dados-checklists-estagiarios.mjs#fluxo",
+      "glossario:crm.pipeline"
+     ],
+     "dica": "Depois: com a oportunidade ganha, o pedido de venda nasce em Gerar Pedido de Venda (etapa 2)."
+    }
+   ]
+  },
+  {
+   "id": "etapa-vendas",
+   "titulo": "Etapa 2 · Vendas: o pedido",
+   "nivel": "basico",
+   "objetivo": "Ler o pedido de venda que nasce da oportunidade ganha e saber o que ele ainda não tem.",
+   "onde": "Vendas › Pedidos de Venda",
+   "passos": [
+    {
+     "titulo": "Leia o pedido em aberto",
+     "texto": "Em Vendas › Pedidos de Venda, leia a linha do pedido: ele nasce Em aberto, Sem títulos e sem nota fiscal. Na coluna PROJETO aparece a obra quando o pedido está ligado a ela (o traço indica pedido sem projeto).",
+     "imagem": "/manuais/fluxo-completo/img/02-vendas-pedido.webp",
+     "alt": "Lista de Pedidos de Venda com dois pedidos Em aberto, Sem títulos e nota fiscal vazia; um deles ligado a uma obra na coluna Projeto.",
+     "largura": 1600,
+     "altura": 900,
+     "marcadores": [
+      {
+       "n": 1,
+       "rotulo": "Status Em aberto",
+       "explicacao": "O pedido ainda pode ser ajustado. É daqui que sai o Faturar.",
+       "caixa": {
+        "x": 72.8,
+        "y": 71.4,
+        "w": 6.6,
+        "h": 6
+       },
+       "lado": "baixo"
+      },
+      {
+       "n": 2,
+       "rotulo": "Títulos: Sem títulos",
+       "explicacao": "Ainda não há parcelas no financeiro.",
+       "caixa": {
+        "x": 79.4,
+        "y": 71.4,
+        "w": 6.4,
+        "h": 6
+       },
+       "lado": "baixo"
+      },
+      {
+       "n": 3,
+       "rotulo": "Nota fiscal",
+       "explicacao": "O traço indica que ainda não há nota.",
+       "caixa": {
+        "x": 85.6,
+        "y": 71.4,
+        "w": 3.8,
+        "h": 6
+       },
+       "lado": "baixo"
+      }
+     ],
+     "zoom": {
+      "x": 66,
+      "y": 58,
+      "w": 34,
+      "h": 29
+     },
+     "dica": "Ajuste o pedido e ligue a obra antes de faturar. Depois: o pedido segue para a operação (Serviços e Produção) e, quando pronto, para o Faturar.",
+     "evidencia": "captura-real",
+     "fontes": [
+      "videos/public/telas/consultor-fluxo-completo/02-pedido.png",
+      "videos/roteiros/consultor-fluxo-completo.json#08",
+      "guia:scripts/dados-checklists-estagiarios.mjs#fluxo"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "etapa-operacao",
+   "titulo": "Etapa 3 · Serviços e Produção: a operação",
+   "nivel": "basico",
+   "objetivo": "Ver o pedido chegar à medição da obra e à ordem de produção.",
+   "onde": "Serviços › Medições · Produção › Ordens de produção",
+   "passos": [
+    {
+     "titulo": "Confira a medição aprovada",
+     "texto": "Em Serviços › Medições, abra a medição que nasceu do pedido de venda. Confira o selo Aprovada e o botão Gerar Instalação: aprovar não cria a instalação sozinha.",
+     "imagem": "/manuais/fluxo-completo/img/03-servicos-medicao.webp",
+     "alt": "Medição com o selo Aprovada, os botões Gerar Instalação e Reabrir medição e o campo Pedido de Venda de origem.",
+     "largura": 1600,
+     "altura": 634,
+     "marcadores": [
+      {
+       "n": 1,
+       "rotulo": "Medição Aprovada",
+       "explicacao": "O número da medição e o status. Aprovada libera o próximo passo.",
+       "caixa": {
+        "x": 21.6,
+        "y": 16.6,
+        "w": 21.4,
+        "h": 5.8
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 2,
+       "rotulo": "Gerar Instalação",
+       "explicacao": "Cria a instalação a partir da medição aprovada. É uma passagem por botão.",
+       "caixa": {
+        "x": 78.4,
+        "y": 16.6,
+        "w": 9.2,
+        "h": 5.8
+       },
+       "lado": "baixo"
+      },
+      {
+       "n": 3,
+       "rotulo": "Pedido de Venda de origem",
+       "explicacao": "O pedido que deu origem à medição.",
+       "caixa": {
+        "x": 20,
+        "y": 88.6,
+        "w": 53.6,
+        "h": 7.6
+       },
+       "lado": "esquerda"
+      }
+     ],
+     "evidencia": "captura-real",
+     "fontes": [
+      "videos/public/telas/consultor-fluxo-completo/03-medicao.png",
+      "regra-servicos-passagens-por-botao-e-ordem-dos-aceites",
+      "videos/roteiros/consultor-fluxo-completo.json#09",
+      "guia:scripts/dados-checklists-estagiarios.mjs#fluxo"
+     ]
+    },
+    {
+     "titulo": "Confira a OP produzida",
+     "texto": "Em Produção › Ordens de produção, procure a OP e confira o STATUS. Marcada como Produzido, a OP lança a entrada do produto acabado no almoxarifado central, com a quantidade e o custo da OP.",
+     "imagem": "/manuais/fluxo-completo/img/04-producao-op.webp",
+     "alt": "Lista de ordens de produção com uma OP de Fabricação no status Produzido.",
+     "largura": 1600,
+     "altura": 716,
+     "marcadores": [
+      {
+       "n": 1,
+       "rotulo": "Ordens de produção",
+       "explicacao": "A lista das OPs.",
+       "caixa": {
+        "x": 0.6,
+        "y": 25.4,
+        "w": 15,
+        "h": 4.8
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 2,
+       "rotulo": "Linha da OP",
+       "explicacao": "O número da OP (OP-…), o produto que ela fabrica e a quantidade.",
+       "caixa": {
+        "x": 21.4,
+        "y": 80.2,
+        "w": 43.8,
+        "h": 7.8
+       },
+       "lado": "baixo"
+      },
+      {
+       "n": 3,
+       "rotulo": "Status Produzido",
+       "explicacao": "A OP terminou: o produto acabado entrou no estoque.",
+       "caixa": {
+        "x": 78.2,
+        "y": 80.2,
+        "w": 6.8,
+        "h": 7.8
+       },
+       "lado": "baixo"
+      }
+     ],
+     "dica": "As requisições de material nascem da OP; o consumo aparece no estoque como \"Baixa de componente em OP\". Depois: o material que falta vem de Compras e Recebimento (etapa 4).",
+     "evidencia": "captura-real",
+     "fontes": [
+      "videos/public/telas/consultor-fluxo-completo/04-producao.png",
+      "regra-producao-marcar-produzido-gera-entrada-do-produto-acabado",
+      "videos/roteiros/consultor-fluxo-completo.json#10",
+      "videos/roteiros/consultor-fluxo-completo.json#05",
+      "guia:scripts/dados-checklists-estagiarios.mjs#fluxo"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "etapa-compras",
+   "titulo": "Etapa 4 · Compras e Recebimento: o material",
+   "nivel": "basico",
+   "objetivo": "Ver o material comprado chegar ao estoque e virar contas a pagar.",
+   "onde": "Compras › Pedidos de Compra",
+   "passos": [
+    {
+     "largura": 1600,
+     "altura": 900,
+     "evidencia": "captura-real",
+     "titulo": "Confira a compra e o recebimento",
+     "texto": "Em Compras › Pedidos de Compra, leia a linha do pedido: STATUS mostra se o material já foi recebido, TÍTULOS se as contas a pagar já existem e NOTA DE RECEBIMENTO a nota que deu entrada no estoque.",
+     "imagem": "/manuais/fluxo-completo/img/12-compras-pedidos.webp",
+     "alt": "Lista Pedidos de Compra com as colunas Número do pedido, Data de cadastro, Fornecedor, Valor total (borrado), Status (Recebido), Títulos (Sem títulos ou Gerados) e Nota de recebimento (NR-000001 a NR-000003 ou Nota em aberto).",
+     "marcadores": [
+      {
+       "n": 1,
+       "rotulo": "Status Recebido",
+       "explicacao": "Quer dizer que o recebimento foi concluído. Quem muda o status é a Nota de Recebimento, não um arrasto manual.",
+       "caixa": {
+        "x": 63.3,
+        "y": 60,
+        "w": 5.7,
+        "h": 20.6
+       },
+       "lado": "baixo"
+      },
+      {
+       "n": 2,
+       "rotulo": "Títulos",
+       "explicacao": "Gerados: as contas a pagar já existem. No fluxo normal, o título nasce quando a nota de recebimento é finalizada.",
+       "caixa": {
+        "x": 70.4,
+        "y": 60,
+        "w": 6.6,
+        "h": 20.6
+       },
+       "lado": "baixo"
+      },
+      {
+       "n": 3,
+       "rotulo": "Nota de recebimento",
+       "explicacao": "A NR ligada ao pedido. Finalizada, ela dá entrada no estoque e gera os títulos a pagar; \"Nota em aberto\" ainda não fez isso.",
+       "caixa": {
+        "x": 78.4,
+        "y": 60,
+        "w": 8.1,
+        "h": 20.6
+       },
+       "lado": "baixo"
+      }
+     ],
+     "zoom": {
+      "x": 52,
+      "y": 54,
+      "w": 46,
+      "h": 34
+     },
+     "dica": "Depois: com o material em estoque, a produção segue e o pedido de venda chega ao Faturar (etapa 5).",
+     "atencao": "Finalizar a nota de recebimento movimenta o estoque e gera os títulos a pagar e não pode ser desfeito.",
+     "fontes": [
+      "videos/capturas/guias-staging/compras-pedidos.png (staging v1.23.2, 05/11/2026)",
+      "manual-04-compras#007",
+      "roteiro-compras-07-pedidos-de-compra#003",
+      "manual-05-recebimento#009",
+      "funcional-compras-solicitacoes-pedidos-e-recebimento#002"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "etapa-faturamento",
+   "titulo": "Etapa 5 · Faturamento: a nota",
+   "nivel": "basico",
+   "objetivo": "Achar a nota que o Faturar do pedido gerou.",
+   "onde": "Faturamento › Notas Fiscais",
+   "passos": [
+    {
+     "titulo": "Ache a nota do pedido",
+     "texto": "O Faturar do pedido gera a nota, que aparece em Faturamento › Notas Fiscais com status Em Aberto. Finalizar NF é feito com autorização; o avião de papel (Transmitir) fica com o responsável fiscal.",
+     "imagem": "/manuais/fluxo-completo/img/05-faturamento-nota.webp",
+     "alt": "Lista de notas fiscais com uma nota Em Aberto, o menu com Finalizar NF e o ícone de avião de papel na linha.",
+     "largura": 1600,
+     "altura": 900,
+     "marcadores": [
+      {
+       "n": 1,
+       "rotulo": "Transmitir (avião de papel)",
+       "explicacao": "Envia à SEFAZ. Irreversível, mesmo em homologação: não clique em treino.",
+       "caixa": {
+        "x": 91.2,
+        "y": 60.8,
+        "w": 2.4,
+        "h": 4.6
+       },
+       "lado": "cima"
+      },
+      {
+       "n": 2,
+       "rotulo": "Finalizar NF",
+       "explicacao": "Deixa a nota só para visualização e baixa o estoque. Só com autorização.",
+       "caixa": {
+        "x": 82.6,
+        "y": 70,
+        "w": 7.6,
+        "h": 3.6
+       },
+       "lado": "esquerda"
+      }
+     ],
+     "zoom": {
+      "x": 70,
+      "y": 54,
+      "w": 30,
+      "h": 25
+     },
+     "atencao": "Confira o saldo antes de finalizar: na 1.22.13 a nota baixa o estoque mesmo sem saldo.",
+     "evidencia": "captura-real",
+     "fontes": [
+      "videos/public/telas/consultor-fluxo-completo/05-nota.png",
+      "regra-faturamento-faturar-abre-nova-nfe-ligada-ao-pedido",
+      "regra-faturamento-lista-de-notas-filtro-padrao-e-menu",
+      "videos/roteiros/consultor-fluxo-completo.json#11"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "etapa-expedicao",
+   "titulo": "Etapa 6 · Expedição: a carga",
+   "nivel": "basico",
+   "objetivo": "Acompanhar o pedido faturado e liberado dentro da carga.",
+   "onde": "Expedição › Cargas",
+   "passos": [
+    {
+     "titulo": "Acompanhe a carga",
+     "texto": "Depois de faturado, o pedido é liberado para a expedição e entra numa carga. Em Expedição › Cargas, abra a carga e leia o Histórico da Carga, de Carga criada até Carga saiu para rota.",
+     "imagem": "/manuais/fluxo-completo/img/06-expedicao-carga.webp",
+     "alt": "Histórico da Carga com as etapas Carga criada, Carga fechada, Separação, Conferência, Carregamento e Carga saiu para rota.",
+     "largura": 1600,
+     "altura": 900,
+     "marcadores": [
+      {
+       "n": 1,
+       "rotulo": "Histórico da Carga",
+       "explicacao": "A linha do tempo da carga, com data e hora de cada etapa.",
+       "caixa": {
+        "x": 19.4,
+        "y": 7.2,
+        "w": 11.6,
+        "h": 4.6
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 2,
+       "rotulo": "Carga criada",
+       "explicacao": "A primeira etapa: a carga foi montada.",
+       "caixa": {
+        "x": 23.6,
+        "y": 12.2,
+        "w": 45.2,
+        "h": 8
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 3,
+       "rotulo": "Separação, Conferência e Carregamento",
+       "explicacao": "As etapas do meio. Cada uma registra início e conclusão, com os volumes.",
+       "caixa": {
+        "x": 23.6,
+        "y": 31.8,
+        "w": 45.2,
+        "h": 56.8
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 4,
+       "rotulo": "Carga saiu para rota",
+       "explicacao": "A última etapa: a carga saiu para a entrega.",
+       "caixa": {
+        "x": 23.6,
+        "y": 89.6,
+        "w": 45.2,
+        "h": 8
+       },
+       "lado": "direita"
+      }
+     ],
+     "evidencia": "captura-real",
+     "fontes": [
+      "videos/public/telas/consultor-fluxo-completo/06-expedicao.png",
+      "videos/roteiros/consultor-fluxo-completo.json#12",
+      "guia:scripts/dados-checklists-estagiarios.mjs#fluxo",
+      "regra-vendas-liberar-para-expedicao-so-em-pedido-faturado"
+     ],
+     "dica": "Depois: os títulos da nota esperam o recebimento no Financeiro."
+    }
+   ]
+  },
+  {
+   "id": "etapa-financeiro",
+   "titulo": "Etapa 7 · Financeiro e gestão: o dinheiro e a obra",
+   "nivel": "basico",
+   "objetivo": "Encontrar os títulos da nota e fechar no resultado da obra.",
+   "onde": "Financeiro › Contas a Receber · Painel Financeiro de Projetos",
+   "passos": [
+    {
+     "titulo": "Encontre os títulos da nota",
+     "texto": "Em Financeiro › Contas a Receber, procure os títulos pelo Documento \"NF - número\": há um por parcela. Use Receber para dar baixa, inclusive em parte.",
+     "imagem": "/manuais/fluxo-completo/img/07-financeiro-titulos.webp",
+     "alt": "Contas a Receber com os títulos de uma nota e a mensagem Baixa parcial realizada; título residual criado.",
+     "largura": 1600,
+     "altura": 900,
+     "marcadores": [
+      {
+       "n": 1,
+       "rotulo": "Documento NF - 020",
+       "explicacao": "O título veio da nota fiscal: o Documento leva o número da nota.",
+       "caixa": {
+        "x": 40.8,
+        "y": 48.4,
+        "w": 6.4,
+        "h": 15
+       },
+       "lado": "baixo"
+      },
+      {
+       "n": 2,
+       "rotulo": "Parcelas",
+       "explicacao": "Uma linha por parcela. A 003 é o residual de uma baixa parcial.",
+       "caixa": {
+        "x": 50.2,
+        "y": 48.4,
+        "w": 4,
+        "h": 15
+       },
+       "lado": "baixo"
+      },
+      {
+       "n": 3,
+       "rotulo": "Aviso de baixa parcial",
+       "explicacao": "Aparece quando você recebe menos que o valor do título.",
+       "caixa": {
+        "x": 76,
+        "y": 3.2,
+        "w": 22.6,
+        "h": 5.6
+       },
+       "lado": "esquerda"
+      },
+      {
+       "n": 4,
+       "rotulo": "Receber",
+       "explicacao": "Abre o diálogo de recebimento da parcela.",
+       "caixa": {
+        "x": 88.8,
+        "y": 53,
+        "w": 5.6,
+        "h": 5.2
+       },
+       "lado": "cima"
+      }
+     ],
+     "evidencia": "captura-real",
+     "fontes": [
+      "videos/public/telas/consultor-fluxo-completo/07-financeiro.png",
+      "regra-faturamento-finalizar-nf-gera-os-titulos",
+      "regra-financeiro-baixa-parcial-cria-titulo-residual",
+      "videos/roteiros/consultor-fluxo-completo.json#13"
+     ]
+    },
+    {
+     "titulo": "Leia o painel da obra",
+     "texto": "No Painel Financeiro de Projetos, escolha a obra. Leia as Pendências do projeto e os cartões VALOR VENDIDO e A FATURAR para saber o que ainda falta faturar.",
+     "imagem": "/manuais/fluxo-completo/img/08-painel-projetos.webp",
+     "alt": "Painel Financeiro de Projetos de uma obra de teste com Pendências do projeto e os cartões Valor vendido, Valor faturado, A faturar, A receber em aberto, A pagar em aberto e Resultado, com valores borrados.",
+     "largura": 1600,
+     "altura": 900,
+     "marcadores": [
+      {
+       "n": 1,
+       "rotulo": "Projeto selecionado",
+       "explicacao": "Escolha a obra aqui. O painel mostra só os números dela.",
+       "caixa": {
+        "x": 35.4,
+        "y": 14.2,
+        "w": 26.4,
+        "h": 5.4
+       },
+       "lado": "baixo"
+      },
+      {
+       "n": 2,
+       "rotulo": "Pendências do projeto",
+       "explicacao": "O que está parado na obra, como um pedido em aberto pendente de faturamento.",
+       "caixa": {
+        "x": 18.8,
+        "y": 51.6,
+        "w": 79.2,
+        "h": 9.8
+       },
+       "lado": "cima"
+      },
+      {
+       "n": 3,
+       "rotulo": "Valor vendido",
+       "explicacao": "A soma das vendas da obra (o valor fica no cartão, logo abaixo do nome).",
+       "caixa": {
+        "x": 18.8,
+        "y": 64.2,
+        "w": 12,
+        "h": 5.4
+       },
+       "lado": "baixo"
+      },
+      {
+       "n": 4,
+       "rotulo": "A faturar",
+       "explicacao": "O que foi vendido e ainda não virou nota.",
+       "caixa": {
+        "x": 45.2,
+        "y": 64.2,
+        "w": 12,
+        "h": 5.4
+       },
+       "lado": "baixo"
+      }
+     ],
+     "atencao": "Título manual e título gerado do mesmo pedido somam duas vezes no painel.",
+     "evidencia": "captura-real",
+     "fontes": [
+      "videos/public/telas/consultor-fluxo-completo/08-gestao.png",
+      "videos/roteiros/consultor-fluxo-completo.json#14",
+      "funcional-financeiro-receber-pagar-saldos-e-fluxo-de-caixa#000"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ordem-das-passagens",
+   "titulo": "A ordem das passagens",
+   "nivel": "avancado",
+   "objetivo": "Evitar os erros de ordem que travam o fluxo.",
+   "onde": "Vendas › Pedidos de Venda › ⋯",
+   "passos": [
+    {
+     "titulo": "Libere para expedição só depois de faturar",
+     "texto": "Abra o menu ⋯ de um pedido Faturado: só nele aparece Liberar para Expedição. Em pedido Em aberto ou Entregue o item não existe; em pedido Lib. Expedição ele vira Reverter Liberação.",
+     "imagem": "/manuais/fluxo-completo/img/09-liberar-para-expedicao.webp",
+     "alt": "Pedido de venda Faturado com o menu de ações aberto mostrando Liberar para Expedição e, abaixo, Pedido já faturado desabilitado.",
+     "largura": 1600,
+     "altura": 900,
+     "marcadores": [
+      {
+       "n": 1,
+       "rotulo": "Liberar para Expedição",
+       "explicacao": "Envia o pedido para a expedição. Só existe em pedido Faturado.",
+       "caixa": {
+        "x": 82.6,
+        "y": 39.8,
+        "w": 12,
+        "h": 3.4
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 2,
+       "rotulo": "Status Faturado",
+       "explicacao": "O pedido já tem nota: por isso o item aparece no menu.",
+       "caixa": {
+        "x": 72.4,
+        "y": 66,
+        "w": 5.4,
+        "h": 5
+       },
+       "lado": "baixo"
+      },
+      {
+       "n": 3,
+       "rotulo": "Títulos: Gerados",
+       "explicacao": "A nota finalizada já criou os títulos.",
+       "caixa": {
+        "x": 78.8,
+        "y": 66,
+        "w": 5.2,
+        "h": 5
+       },
+       "lado": "baixo"
+      }
+     ],
+     "zoom": {
+      "x": 54,
+      "y": 37,
+      "w": 46,
+      "h": 40
+     },
+     "evidencia": "captura-real",
+     "fontes": [
+      "videos/public/telas/consultor-08-financeiro/00-pedido-faturado.png",
+      "regra-vendas-liberar-para-expedicao-so-em-pedido-faturado",
+      "oficial-ven-a-regras#002"
+     ]
+    },
+    {
+     "titulo": "Escolha quem gera os títulos",
+     "texto": "Os títulos nascem do pedido (Gerar Títulos) ou da nota finalizada. Use um só caminho: título manual e título gerado do mesmo pedido duplicam a receita.",
+     "evidencia": "base",
+     "fontes": [
+      "regra-vendas-gerar-titulos-quando-esta-habilitado",
+      "regra-faturamento-finalizar-nf-gera-os-titulos",
+      "regra-financeiro-titulo-manual-e-gerado-duplicam-a-receita"
+     ]
+    }
+   ]
+  }
+ ],
+ "consultor": {
+  "implantacao": [
+   "No teste ponta a ponta, use só dados de teste (\"TESTE FLUXO CONSULTOR\") e registre tudo o que criou para limpar depois. Fonte: roteiro do vídeo do fluxo completo (cuidados).",
+   "Para seguir o fluxo, reúna os números de cada etapa: lead, pedido de venda, pedido de compra, nota de recebimento, movimento de estoque, OP, medição, obra, carga, nota e títulos. Fonte: trilha do estagiário, Visão do fluxo completo.",
+   "Decida no kickoff quem gera o contas a receber (pedido ou nota). Fonte: checklists de implantação de Faturamento e Financeiro.",
+   "Faça o teste ponta a ponta só depois dos roteiros de cada módulo (Fundação, Fiscal, Vendas, Compras/Recebimento, Faturamento, Financeiro), com o responsável fiscal para transmitir. Fonte: checklists de implantação de Faturamento e Fiscal.",
+   "Confira peso em todos os itens do pedido de teste antes de liberar para expedição. Fonte: plano-expedicao#024."
+  ],
+  "perguntasDoCliente": [
+   {
+    "pergunta": "Por que não consigo liberar o pedido para a expedição?",
+    "resposta": "Liberar para Expedição só aparece no menu do pedido Faturado. Fature o pedido antes.",
+    "fontes": [
+     "regra-vendas-liberar-para-expedicao-so-em-pedido-faturado"
+    ]
+   },
+   {
+    "pergunta": "Aprovei a medição e a instalação não apareceu. Por quê?",
+    "resposta": "Aprovar não cria a instalação. Na medição Aprovada, clique em Gerar Instalação.",
+    "fontes": [
+     "regra-servicos-passagens-por-botao-e-ordem-dos-aceites"
+    ]
+   },
+   {
+    "pergunta": "O pedido aparece Faturado, mas a nota está Em Aberto. Está errado?",
+    "resposta": "Não. O pedido muda para Faturado assim que a nota é salva; o status da nota é conferido em Faturamento › Notas Fiscais.",
+    "fontes": [
+     "regra-vendas-pedido-fica-faturado-ao-salvar-a-nota"
+    ]
+   },
+   {
+    "pergunta": "O pedido faturado não apareceu na Expedição sozinho. Está errado?",
+    "resposta": "Não. Desde 26/08/2026 a liberação é só manual: use Liberar para Expedição no menu do pedido.",
+    "fontes": [
+     "plano-expedicao#024"
+    ]
+   },
+   {
+    "pergunta": "Onde vejo o que está parado no fluxo?",
+    "resposta": "Na tela Início, em Alertas urgentes (por exemplo, pedidos aguardando faturamento e ordens de produção atrasadas). Clicar no alerta leva à tela.",
+    "fontes": [
+     "manual-00-inicio-e-navegacao#002"
+    ]
+   }
+  ],
+  "errosComuns": [
+   {
+    "titulo": "Transmitir a nota no teste",
+    "texto": "Transmitir, cancelar e inutilizar nota é decisão do responsável fiscal.",
+    "fontes": [
+     "videos/roteiros/consultor-fluxo-completo.json#15"
+    ]
+   },
+   {
+    "titulo": "Finalizar sem saldo",
+    "texto": "A nota baixa o estoque mesmo sem saldo: confira antes de finalizar.",
+    "fontes": [
+     "videos/roteiros/consultor-fluxo-completo.json#15",
+     "videos/roteiros/consultor-07-faturamento.json#11d"
+    ]
+   },
+   {
+    "titulo": "Reverter o ganho depois de gerar o pedido",
+    "texto": "No CRM, reverta o ganho antes de gerar o pedido, nunca depois.",
+    "fontes": [
+     "videos/roteiros/consultor-fluxo-completo.json#06"
+    ]
+   },
+   {
+    "titulo": "Esperar que a passagem aconteça sozinha",
+    "texto": "Quase toda passagem é um botão: Gerar Instalação, Faturar, Liberar para Expedição, Gerar Títulos.",
+    "fontes": [
+     "videos/roteiros/consultor-fluxo-completo.json#04",
+     "regra-servicos-passagens-por-botao-e-ordem-dos-aceites"
+    ]
+   },
+   {
+    "titulo": "Item sem peso na hora de liberar",
+    "texto": "Sem peso cadastrado em todos os itens, a liberação para expedição é recusada.",
+    "fontes": [
+     "plano-expedicao#024"
+    ]
+   }
+  ],
+  "configuracoes": [
+   {
+    "item": "Fundação completa antes do teste ponta a ponta",
+    "onde": "Configurações › Empresas, Participantes e Produtos",
+    "porque": "Empresa com regime, IE e endereço com IBGE, certificado e série da NF-e; sem isso o fluxo para no Fiscal ou no Faturamento.",
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento",
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+    ]
+   },
+   {
+    "item": "Almoxarifado central ativo",
+    "onde": "Estoque › Locais",
+    "porque": "Sem ele o Finalizar NF recusa e a OP não lança a entrada do produto acabado no lugar certo.",
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento",
+     "regra-estoque-almoxarifado-central-ativo-e-pre-requisito"
+    ]
+   },
+   {
+    "item": "CFOP com Gera Financeiro e Movimenta Estoque revisados",
+    "onde": "Faturamento › Configurações › CFOP",
+    "porque": "É o CFOP que decide se a nota gera os títulos e mexe no estoque.",
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento"
+    ]
+   },
+   {
+    "item": "Peso cadastrado em todo item vendido",
+    "onde": "Cadastro do produto",
+    "porque": "Sem peso, a liberação para expedição é recusada.",
+    "fontes": [
+     "plano-expedicao#024"
+    ]
+   },
+   {
+    "item": "Plano de contas, contas bancárias e meios de pagamento",
+    "onde": "Financeiro › Configurações",
+    "porque": "Os títulos do pedido, da nota e da nota de recebimento precisam de conta analítica e de meio válido.",
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+    ]
+   }
+  ],
+  "integracoes": [
+   {
+    "acao": "Converter o lead e ganhar a oportunidade",
+    "modulo": "Vendas",
+    "efeito": "Gerar Pedido de Venda cria o pedido Em aberto, sem títulos e sem nota.",
+    "fontes": [
+     "videos/roteiros/consultor-fluxo-completo.json#07",
+     "videos/roteiros/consultor-fluxo-completo.json#08",
+     "guia:scripts/dados-checklists-estagiarios.mjs#fluxo"
+    ]
+   },
+   {
+    "acao": "Aprovar a medição",
+    "modulo": "Serviços",
+    "efeito": "Não cria a instalação sozinha: clique em Gerar Instalação.",
+    "fontes": [
+     "regra-servicos-passagens-por-botao-e-ordem-dos-aceites"
+    ]
+   },
+   {
+    "acao": "Marcar a OP como Produzido",
+    "modulo": "Estoque",
+    "efeito": "Entrada do produto acabado no almoxarifado central, com a quantidade e o custo da OP; o consumo sai como baixa de componente.",
+    "fontes": [
+     "regra-producao-marcar-produzido-gera-entrada-do-produto-acabado",
+     "videos/roteiros/consultor-fluxo-completo.json#10"
+    ]
+   },
+   {
+    "acao": "Finalizar a nota de recebimento",
+    "modulo": "Estoque e Financeiro",
+    "efeito": "Entrada do material no estoque, pedido de compra Recebido e títulos a pagar.",
+    "fontes": [
+     "manual-05-recebimento#009"
+    ]
+   },
+   {
+    "acao": "Faturar o pedido e salvar a nota",
+    "modulo": "Vendas e Faturamento",
+    "efeito": "O pedido fica Faturado; a nota nasce Em Aberto.",
+    "fontes": [
+     "regra-vendas-pedido-fica-faturado-ao-salvar-a-nota"
+    ]
+   },
+   {
+    "acao": "Liberar para Expedição",
+    "modulo": "Expedição",
+    "efeito": "O pedido faturado entra em Pedidos disponíveis para Montar Nova Carga. Desde 26/08/2026 a liberação é só manual.",
+    "fontes": [
+     "plano-expedicao#024",
+     "procedimento-montar-carga-e-liberar-para-expedicao#002"
+    ]
+   },
+   {
+    "acao": "Gerar Títulos no pedido ou autorizar/finalizar a nota",
+    "modulo": "Financeiro",
+    "efeito": "Títulos a receber por parcela; use um só caminho para não duplicar a receita.",
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro",
+     "regra-financeiro-titulo-manual-e-gerado-duplicam-a-receita"
+    ]
+   }
+  ],
+  "roteiroDemonstracao": [
+   {
+    "passo": "Comece pela tela Início",
+    "mostrar": "Alertas urgentes e Resumo do negócio: o fluxo inteiro resumido.",
+    "fontes": [
+     "manual-00-inicio-e-navegacao#002"
+    ]
+   },
+   {
+    "passo": "Mostre a oportunidade no Pipeline",
+    "mostrar": "A oportunidade aberta que nasceu do lead.",
+    "fontes": [
+     "videos/roteiros/consultor-fluxo-completo.json#07"
+    ]
+   },
+   {
+    "passo": "Abra o pedido de venda",
+    "mostrar": "Em aberto, Sem títulos, sem nota e com a obra ligada.",
+    "fontes": [
+     "videos/roteiros/consultor-fluxo-completo.json#08"
+    ]
+   },
+   {
+    "passo": "Mostre a operação",
+    "mostrar": "Medição Aprovada com Gerar Instalação e a OP Produzido.",
+    "fontes": [
+     "regra-servicos-passagens-por-botao-e-ordem-dos-aceites",
+     "videos/roteiros/consultor-fluxo-completo.json#09",
+     "videos/roteiros/consultor-fluxo-completo.json#10"
+    ]
+   },
+   {
+    "passo": "Mostre a compra",
+    "mostrar": "Pedido de compra Recebido com a nota de recebimento e os títulos a pagar.",
+    "fontes": [
+     "manual-04-compras#007"
+    ]
+   },
+   {
+    "passo": "Mostre a nota e a carga",
+    "mostrar": "A nota do pedido em Notas Fiscais e o Histórico da Carga.",
+    "fontes": [
+     "videos/roteiros/consultor-fluxo-completo.json#11",
+     "videos/roteiros/consultor-fluxo-completo.json#12"
+    ]
+   },
+   {
+    "passo": "Feche no dinheiro",
+    "mostrar": "Os títulos da nota em Contas a Receber e o Painel Financeiro de Projetos da obra.",
+    "fontes": [
+     "videos/roteiros/consultor-fluxo-completo.json#13",
+     "videos/roteiros/consultor-fluxo-completo.json#14"
+    ]
+   }
+  ]
+ },
+ "pendencias": [
+  "CAPTURA: CRM › Vendas › Leads › converter lead — a conversão que cria a oportunidade (o vídeo do CRM tem a cena, mas sem captura no acervo deste guia).",
+  "CAPTURA: oportunidade ganha › Gerar Pedido de Venda — a passagem CRM → Vendas.",
+  "Reduzida (capricho 06/11): a lista Compras › Pedidos de Compra (staging v1.23.2) entrou na etapa 4. Falta captura da Nota de Recebimento finalizada e do título a pagar dela.",
+  "CAPTURA: Expedição › Cargas › Montar Nova Carga — o pedido liberado entrando na carga.",
+  "CAPTURA: Estoque › Movimentos — \"Baixa de componente em OP\" e \"Entrada de produto acabado (OP)\" lado a lado.",
+  "DIVERGÊNCIA de ordem: o pedido do responsável cita \"Expedição → Faturamento\", mas na base o Liberar para Expedição só existe em pedido Faturado (regra-vendas-liberar-para-expedicao-so-em-pedido-faturado). O guia segue a base: Faturamento antes de Expedição.",
+  "O painel da obra foi capturado pelo caminho Projetos › Painel com o módulo Vendas aberto no menu lateral; o título da tela é \"Painel Financeiro de Projetos\". Conferir na tela o caminho de menu a ensinar.",
+  "DIVERGÊNCIA (nova, revisão v2): oficial-ven-a-regras#002 (VEN-EXP-001/002) diz que liberar para expedição exige pedido Faturado ou Encerrado; regra-vendas-liberar-para-expedicao-so-em-pedido-faturado diz só Faturado. A conferir na tela com um pedido Encerrado.",
+  "Ordem do pedido do responsável (CRM → Vendas → Produção/Compras → Expedição → Faturamento → Financeiro) × base (Faturamento antes de Expedição): o guia segue a base, com uma etapa por módulo. Confirmar com o responsável.",
+  "As capturas do fluxo são de dois momentos (1.22.13, 19 a 22/10, e staging 1.23.2, 05/11): números de pedido e nota não se correspondem entre as etapas."
+ ],
+ "fontes": [
+  "videos/roteiros/consultor-fluxo-completo.json#02",
+  "videos/roteiros/consultor-fluxo-completo.json#03",
+  "guia:scripts/dados-checklists-estagiarios.mjs#fluxo",
+  "regra-servicos-passagens-por-botao-e-ordem-dos-aceites",
+  "videos/roteiros/consultor-fluxo-completo.json#04",
+  "glossario:vendas.pedidos-de-venda",
+  "videos/roteiros/consultor-fluxo-completo.json#05",
+  "regra-faturamento-finalizar-nf-gera-os-titulos",
+  "regra-producao-marcar-produzido-gera-entrada-do-produto-acabado",
+  "videos/roteiros/consultor-fluxo-completo.json#06",
+  "regra-vendas-editar-pedido-somente-em-aberto",
+  "regra-vendas-liberar-para-expedicao-so-em-pedido-faturado",
+  "glossario:crm.pipeline",
+  "regra-faturamento-faturar-abre-nova-nfe-ligada-ao-pedido",
+  "videos/roteiros/consultor-fluxo-completo.json#12",
+  "regra-vendas-gerar-titulos-quando-esta-habilitado",
+  "funcional-financeiro-receber-pagar-saldos-e-fluxo-de-caixa#000",
+  "videos/roteiros/consultor-fluxo-completo.json#14",
+  "videos/public/telas/consultor-fluxo-completo/01-crm.png",
+  "videos/roteiros/consultor-fluxo-completo.json#07",
+  "videos/public/telas/consultor-fluxo-completo/02-pedido.png",
+  "videos/roteiros/consultor-fluxo-completo.json#08",
+  "videos/public/telas/consultor-fluxo-completo/03-medicao.png",
+  "videos/roteiros/consultor-fluxo-completo.json#09",
+  "videos/public/telas/consultor-fluxo-completo/04-producao.png",
+  "videos/roteiros/consultor-fluxo-completo.json#10",
+  "videos/public/telas/consultor-fluxo-completo/05-nota.png",
+  "regra-faturamento-lista-de-notas-filtro-padrao-e-menu",
+  "videos/roteiros/consultor-fluxo-completo.json#11",
+  "videos/public/telas/consultor-fluxo-completo/06-expedicao.png",
+  "videos/public/telas/consultor-fluxo-completo/07-financeiro.png",
+  "regra-financeiro-baixa-parcial-cria-titulo-residual",
+  "videos/roteiros/consultor-fluxo-completo.json#13",
+  "videos/public/telas/consultor-fluxo-completo/08-gestao.png",
+  "videos/public/telas/consultor-08-financeiro/00-pedido-faturado.png",
+  "regra-financeiro-titulo-manual-e-gerado-duplicam-a-receita",
+  "regra-vendas-pedido-fica-faturado-ao-salvar-a-nota",
+  "videos/roteiros/consultor-fluxo-completo.json#15",
+  "videos/roteiros/consultor-07-faturamento.json#11d",
+  "videos/roteiros/consultor-fluxo-completo.json",
+  "videos/capturas/guias-staging/inicio-dashboard.png (staging v1.23.2, 05/11/2026)",
+  "videos/capturas/guias-staging/primeiros-passos-busca.png (staging v1.23.2, 05/11/2026)",
+  "videos/capturas/guias-staging/compras-pedidos.png (staging v1.23.2, 05/11/2026)",
+  "manual-00-inicio-e-navegacao#002",
+  "manual-00-inicio-e-navegacao#004",
+  "roteiro-geral-07-primeiros-passos-e-navegacao#006",
+  "faq-limitacoes-conhecidas-v1-22-12#015",
+  "manual-04-compras#007",
+  "manual-05-recebimento#009",
+  "roteiro-compras-07-pedidos-de-compra#003",
+  "funcional-compras-solicitacoes-pedidos-e-recebimento#002",
+  "plano-expedicao#024",
+  "procedimento-montar-carga-e-liberar-para-expedicao#002",
+  "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento",
+  "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal",
+  "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+ ]
+}

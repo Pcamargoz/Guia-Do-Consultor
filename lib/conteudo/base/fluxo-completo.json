@@ -1,0 +1,711 @@
+{
+ "versao": "2026-11-06",
+ "id": "fluxo-completo",
+ "jornadas": {
+  "inicial": [
+   {
+    "id": "apresentacao",
+    "titulo": "Apresentação",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "texto",
+      "rotulo": "Visão do fluxo completo",
+      "texto": [
+       {
+        "t": "Um mapa para seguir um pedido de verdade pelo sistema e ver onde cada etapa aparece."
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#fluxo"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Objetivo",
+      "texto": [
+       {
+        "t": "Seguir um pedido existente pelos módulos e reconhecer, em cada tela, o sinal de que ele avançou."
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#fluxo"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-estagiarios.mjs#fluxo"
+    ]
+   },
+   {
+    "id": "video",
+    "titulo": "Vídeo de apoio",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "video",
+      "material": "fluxo-completo:video-apoio",
+      "titulo": "Do pedido à gestão (vídeo de apoio)",
+      "status": "disponivel",
+      "url": "/videos/consultor-fluxo-completo.mp4",
+      "duracao_s": 157,
+      "poster": "/videos/consultor-fluxo-completo.jpg",
+      "legendas_url": "/videos/consultor-fluxo-completo.vtt",
+      "resumo": [
+       {
+        "t": "Apoio do Guia do Consultor, com narração e regras de negócio. O vídeo introdutório deste módulo está em preparação. O fluxo inteiro, do CRM aos indicadores."
+       }
+      ],
+      "fontes": [
+       "guia:public/videos/manifest.json",
+       "guia:videos/roteiros/consultor-fluxo-completo.json"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:public/videos/manifest.json",
+     "guia:videos/roteiros/consultor-fluxo-completo.json"
+    ]
+   },
+   {
+    "id": "manual",
+    "titulo": "Manual visual resumido",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "passos",
+      "titulo": "2. Do contato ao pedido",
+      "onde": null,
+      "intro": null,
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "CRM: o lead é cadastrado, avança no Kanban e é convertido (vira participante \"convertido\")."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Vendas: o pedido de venda é criado para o cliente; a coluna PROJETO mostra a obra."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#fluxo"
+      ]
+     },
+     {
+      "tipo": "passos",
+      "titulo": "3. Do pedido à operação",
+      "onde": null,
+      "intro": null,
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Serviços: a medição nasce do pedido de venda e mostra a obra."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Produção: a OP consome material (movimento \"Baixa de componente em OP\") e entrega o produto acabado (\"Entrada de produto acabado (OP)\")."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Compras e Recebimento: o pedido de compra entregue vira nota de recebimento, entra no estoque e gera contas a pagar."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Produção: a OP é criada à mão em Produção > Nova OP, escolhendo o pedido de venda e o item."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Expedição: depois de faturado, o pedido é liberado (\"Lib. Expedição\"), entra numa carga e é entregue."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#fluxo"
+      ]
+     },
+     {
+      "tipo": "passos",
+      "titulo": "4. Da nota ao resultado",
+      "onde": null,
+      "intro": null,
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Faturamento: "
+         },
+         {
+          "t": "⋯ > Faturar",
+          "marca": "codigo"
+         },
+         {
+          "t": " no pedido gera a nota; ela aparece em Notas Fiscais e a coluna NOTA FISCAL do pedido é preenchida."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Financeiro: a coluna TÍTULOS do pedido mostra \"Gerados\" e os títulos aparecem em Contas a Receber."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#fluxo"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-estagiarios.mjs#fluxo"
+    ]
+   },
+   {
+    "id": "telas",
+    "titulo": "Principais telas",
+    "status": "em-preparacao",
+    "blocos": [],
+    "fontes": []
+   },
+   {
+    "id": "fluxo",
+    "titulo": "Fluxo operacional básico",
+    "status": "em-preparacao",
+    "blocos": [],
+    "fontes": []
+   },
+   {
+    "id": "atividade",
+    "titulo": "Atividade prática",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "passos",
+      "titulo": "1. Preparar seus dados: reunir os registros que você criou",
+      "onde": [
+       {
+        "t": "campos de registro dos checklists 03 a 13"
+       }
+      ],
+      "intro": [
+       {
+        "t": "A sua empresa de treino começa "
+       },
+       {
+        "t": "zerada",
+        "marca": "negrito"
+       },
+       {
+        "t": ": cada módulo usa o que o anterior criou. Este checklist percorre o caminho do pedido usando "
+       },
+       {
+        "t": "os seus",
+        "marca": "negrito"
+       },
+       {
+        "t": " registros. Junte aqui os números anotados nos checklists anteriores; o que faltar, volte e crie, ou use um pedido indicado pelo supervisor. Se faltar permissão ou cadastro-base (botão que não aparece, CFOP, plano de contas, meio de pagamento, unidade de medida, almoxarifado), anote a mensagem em "
+       },
+       {
+        "t": "Problema",
+        "marca": "negrito"
+       },
+       {
+        "t": " e chame o supervisor: a empresa de treino começa zerada e os cadastros-base são feitos por um consultor."
+       }
+      ],
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Anotar o "
+         },
+         {
+          "t": "lead",
+          "marca": "negrito"
+         },
+         {
+          "t": " que você criou (checklist 03) e o "
+         },
+         {
+          "t": "pedido de venda",
+          "marca": "negrito"
+         },
+         {
+          "t": " (checklist 04)."
+         }
+        ],
+        "nota": null,
+        "selo": "documento"
+       },
+       {
+        "texto": [
+         {
+          "t": "Anotar o "
+         },
+         {
+          "t": "pedido de compra",
+          "marca": "negrito"
+         },
+         {
+          "t": " (05) e a "
+         },
+         {
+          "t": "nota de recebimento",
+          "marca": "negrito"
+         },
+         {
+          "t": " (06)."
+         }
+        ],
+        "nota": null,
+        "selo": "documento"
+       },
+       {
+        "texto": [
+         {
+          "t": "Anotar o "
+         },
+         {
+          "t": "movimento de estoque",
+          "marca": "negrito"
+         },
+         {
+          "t": " (07), a "
+         },
+         {
+          "t": "OP",
+          "marca": "negrito"
+         },
+         {
+          "t": " (08) e a "
+         },
+         {
+          "t": "medição",
+          "marca": "negrito"
+         },
+         {
+          "t": " (09)."
+         }
+        ],
+        "nota": null,
+        "selo": "documento"
+       },
+       {
+        "texto": [
+         {
+          "t": "Anotar a "
+         },
+         {
+          "t": "obra",
+          "marca": "negrito"
+         },
+         {
+          "t": " (10), a "
+         },
+         {
+          "t": "carga",
+          "marca": "negrito"
+         },
+         {
+          "t": " (11), a "
+         },
+         {
+          "t": "nota",
+          "marca": "negrito"
+         },
+         {
+          "t": " (12) e os "
+         },
+         {
+          "t": "títulos",
+          "marca": "negrito"
+         },
+         {
+          "t": " (13)."
+         }
+        ],
+        "nota": null,
+        "selo": "documento"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#fluxo"
+      ]
+     },
+     {
+      "tipo": "link",
+      "material": "fluxo-completo:checklist-inicial",
+      "titulo": "Visão do fluxo completo",
+      "status": "disponivel",
+      "url": "/checklists/estagiarios/15-visao-fluxo-completo.html",
+      "duracao_s": null,
+      "poster": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#fluxo"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-estagiarios.mjs#fluxo"
+    ]
+   },
+   {
+    "id": "checklist",
+    "titulo": "Checklist de aprendizado",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "checklist-aprendizado",
+      "chave": "inicial:fluxo-completo",
+      "itens": [
+       {
+        "id": "entendi",
+        "texto": [
+         {
+          "t": "Entendi o que é o módulo Visão do fluxo completo e para que serve"
+         }
+        ]
+       },
+       {
+        "id": "acessar-1",
+        "texto": [
+         {
+          "t": "Sei acessar: campos de registro dos checklists 03 a 13"
+         }
+        ]
+       },
+       {
+        "id": "executei-2",
+        "texto": [
+         {
+          "t": "Executei: 1. Preparar seus dados: reunir os registros que você criou"
+         }
+        ]
+       },
+       {
+        "id": "executei-3",
+        "texto": [
+         {
+          "t": "Executei: 2. Do contato ao pedido"
+         }
+        ]
+       },
+       {
+        "id": "executei-4",
+        "texto": [
+         {
+          "t": "Executei: 3. Do pedido à operação"
+         }
+        ]
+       },
+       {
+        "id": "executei-5",
+        "texto": [
+         {
+          "t": "Executei: 4. Da nota ao resultado"
+         }
+        ]
+       },
+       {
+        "id": "checklist",
+        "texto": [
+         {
+          "t": "Concluí o checklist prático"
+         }
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
+       "guia:scripts/dados-checklists-estagiarios.mjs#fluxo"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
+     "guia:scripts/dados-checklists-estagiarios.mjs#fluxo"
+    ]
+   },
+   {
+    "id": "progresso",
+    "titulo": "Progresso",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "progresso",
+      "chave": "inicial:fluxo-completo",
+      "total": 7,
+      "api": "/api/checklists-progresso",
+      "fontes": [
+       "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md"
+    ]
+   }
+  ],
+  "consultor": [
+   {
+    "id": "visao",
+    "titulo": "Visão funcional",
+    "status": "em-preparacao",
+    "blocos": [],
+    "fontes": []
+   },
+   {
+    "id": "regras",
+    "titulo": "Regras de negócio",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "regra",
+      "titulo": "Cada passagem tem um botão",
+      "texto": [
+       {
+        "t": "Gerar Pedido de Venda, Gerar Instalação, Faturar, Liberar para Expedição, Gerar Títulos: quase nada acontece sozinho."
+       }
+      ],
+      "confirmar": null,
+      "confianca": null,
+      "fontes": [
+       "guia:videos/roteiros/consultor-fluxo-completo.json#04",
+       "harness-id:regra-servicos-passagens-por-botao-e-ordem-dos-aceites"
+      ]
+     },
+     {
+      "tipo": "regra",
+      "titulo": "O que nasce sozinho",
+      "texto": [
+       {
+        "t": "A oportunidade nasce da conversão; as requisições, da OP; os títulos, da nota finalizada; a entrada do acabado, do Produzido."
+       }
+      ],
+      "confirmar": null,
+      "confianca": null,
+      "fontes": [
+       "guia:videos/roteiros/consultor-fluxo-completo.json#05",
+       "harness-id:regra-faturamento-finalizar-nf-gera-os-titulos"
+      ]
+     },
+     {
+      "tipo": "regra",
+      "titulo": "A ordem importa",
+      "texto": [
+       {
+        "t": "Ajuste e ligue o pedido à obra antes de faturar; libere para expedição só depois de faturar; reverta o ganho antes de gerar o pedido."
+       }
+      ],
+      "confirmar": null,
+      "confianca": null,
+      "fontes": [
+       "guia:videos/roteiros/consultor-fluxo-completo.json#06",
+       "harness-id:regra-vendas-editar-pedido-somente-em-aberto"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:videos/roteiros/consultor-fluxo-completo.json#04",
+     "harness-id:regra-servicos-passagens-por-botao-e-ordem-dos-aceites",
+     "guia:videos/roteiros/consultor-fluxo-completo.json#05",
+     "harness-id:regra-faturamento-finalizar-nf-gera-os-titulos",
+     "guia:videos/roteiros/consultor-fluxo-completo.json#06",
+     "harness-id:regra-vendas-editar-pedido-somente-em-aberto"
+    ]
+   },
+   {
+    "id": "fluxos",
+    "titulo": "Fluxos operacionais",
+    "status": "em-preparacao",
+    "blocos": [],
+    "fontes": []
+   },
+   {
+    "id": "implantacao",
+    "titulo": "Procedimentos de implantação",
+    "status": "em-preparacao",
+    "blocos": [],
+    "fontes": []
+   },
+   {
+    "id": "configuracoes",
+    "titulo": "Configurações importantes",
+    "status": "em-preparacao",
+    "blocos": [],
+    "fontes": []
+   },
+   {
+    "id": "validacoes",
+    "titulo": "Validações funcionais",
+    "status": "em-preparacao",
+    "blocos": [],
+    "fontes": []
+   },
+   {
+    "id": "integracoes",
+    "titulo": "Integrações e dependências",
+    "status": "em-preparacao",
+    "blocos": [],
+    "fontes": []
+   },
+   {
+    "id": "problemas",
+    "titulo": "Problemas recorrentes",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "lista",
+      "rotulo": "Cuidados (vídeo)",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Transmitir, cancelar e inutilizar nota: só o responsável fiscal."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:videos/roteiros/consultor-fluxo-completo.json#15"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Confira o saldo antes de finalizar a nota: ela baixa mesmo sem estoque."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:videos/roteiros/consultor-fluxo-completo.json#15"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Use só dados de teste, e registre o que criou para limpar depois."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:videos/roteiros/consultor-fluxo-completo.json#15"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:videos/roteiros/consultor-fluxo-completo.json#15"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:videos/roteiros/consultor-fluxo-completo.json#15"
+    ]
+   },
+   {
+    "id": "videos",
+    "titulo": "Vídeos avançados",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "video",
+      "material": "fluxo-completo:video-consultor",
+      "titulo": "Do pedido à gestão",
+      "status": "disponivel",
+      "url": "/videos/consultor-fluxo-completo.mp4",
+      "duracao_s": 157,
+      "poster": "/videos/consultor-fluxo-completo.jpg",
+      "legendas_url": "/videos/consultor-fluxo-completo.vtt",
+      "resumo": [
+       {
+        "t": "O fluxo inteiro, do CRM aos indicadores."
+       }
+      ],
+      "fontes": [
+       "guia:public/videos/manifest.json",
+       "guia:videos/roteiros/consultor-fluxo-completo.json"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:public/videos/manifest.json",
+     "guia:videos/roteiros/consultor-fluxo-completo.json"
+    ]
+   },
+   {
+    "id": "complementares",
+    "titulo": "Materiais complementares",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "link",
+      "material": "fluxo-completo:checklist-inicial",
+      "titulo": "Visão do fluxo completo",
+      "status": "disponivel",
+      "url": "/checklists/estagiarios/15-visao-fluxo-completo.html",
+      "duracao_s": null,
+      "poster": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#fluxo"
+      ]
+     },
+     {
+      "tipo": "link",
+      "titulo": "Apostila do Consultor (PDF)",
+      "url": "/downloads/Apostila-do-Consultor-Faktory-Flow.pdf",
+      "visibilidade": "area:apostila",
+      "fontes": [
+       "guia:public/downloads/Apostila-do-Consultor-Faktory-Flow.pdf"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-estagiarios.mjs#fluxo",
+     "guia:public/downloads/Apostila-do-Consultor-Faktory-Flow.pdf"
+    ]
+   }
+  ]
+ }
+}

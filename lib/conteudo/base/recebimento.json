@@ -1,0 +1,2224 @@
+{
+ "versao": "2026-11-06",
+ "id": "recebimento",
+ "jornadas": {
+  "inicial": [
+   {
+    "id": "apresentacao",
+    "titulo": "Apresentação",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "texto",
+      "rotulo": "Recebimento de mercadorias",
+      "texto": [
+       {
+        "t": "Quando o fornecedor entrega: a nota entra, o material é conferido e o sistema atualiza estoque e contas a pagar."
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#recebimento"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Objetivo",
+      "texto": [
+       {
+        "t": "Localizar notas de recebimento, entender a conferência física e saber o que a finalização da nota provoca no estoque, no pedido de compra e no financeiro."
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#recebimento"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-estagiarios.mjs#recebimento"
+    ]
+   },
+   {
+    "id": "video",
+    "titulo": "Vídeo de apoio",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "video",
+      "material": "recebimento:video-apoio",
+      "titulo": "Suprimentos: da solicitação ao pagamento (vídeo de apoio)",
+      "status": "disponivel",
+      "url": "/videos/consultor-01-suprimentos.mp4",
+      "duracao_s": 203,
+      "poster": "/videos/consultor-01-suprimentos.jpg",
+      "legendas_url": "/videos/consultor-01-suprimentos.vtt",
+      "resumo": [
+       {
+        "t": "Apoio do Guia do Consultor, com narração e regras de negócio. O vídeo introdutório deste módulo está em preparação. Cotação opcional, a natureza da operação que define o CFOP, a nota com dois números e a linha do tempo do pedido."
+       }
+      ],
+      "fontes": [
+       "guia:public/videos/manifest.json",
+       "guia:videos/roteiros/consultor-01-suprimentos.json"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:public/videos/manifest.json",
+     "guia:videos/roteiros/consultor-01-suprimentos.json"
+    ]
+   },
+   {
+    "id": "manual",
+    "titulo": "Manual visual resumido",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "passos",
+      "titulo": "2. Ler o painel do recebimento",
+      "onde": [
+       {
+        "t": "Recebimento > Dashboard Recebimento",
+        "marca": "tela"
+       }
+      ],
+      "intro": null,
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Ver a fila de notas a conferir, os pedidos esperados e os cartões \"Recebido no período\" e \"Notas em aberto\"."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Ver os cartões \"Títulos a gerar\" e \"Parcelas a vencer\"."
+         }
+        ],
+        "nota": [
+         {
+          "t": "\"Parcelas a vencer\" leva a Financeiro > Contas a Pagar."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#recebimento"
+      ]
+     },
+     {
+      "tipo": "passos",
+      "titulo": "3. Consultar notas de recebimento",
+      "onde": [
+       {
+        "t": "Recebimento > Notas de Recebimento",
+        "marca": "tela"
+       }
+      ],
+      "intro": null,
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Ler os cartões Total, Em Aberto, Finalizadas e Canceladas e trocar o filtro "
+         },
+         {
+          "t": "Status",
+          "marca": "negrito"
+         },
+         {
+          "t": " (abre em \"Em Aberto\")."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Uma nota finalizada só aparece depois de limpar o filtro. Os cartões seguem o filtro."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Reconhecer que a mesma nota tem "
+         },
+         {
+          "t": "dois números",
+          "marca": "negrito"
+         },
+         {
+          "t": ": \"NF-‹número do fornecedor›\" na lista e \"NR-‹número interno›\" na conferência, no pedido e no título."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Abrir o menu "
+         },
+         {
+          "t": "⋮",
+          "marca": "codigo"
+         },
+         {
+          "t": " de uma nota em aberto."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Opções Finalizar, Imprimir Etiquetas (só depois da conferência), Cancelar e Excluir."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Saber as origens de uma nota: gerada pelo pedido de compra, por XML ou avulsa."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#recebimento"
+      ]
+     },
+     {
+      "tipo": "passos",
+      "titulo": "4. Entender a conferência física",
+      "onde": [
+       {
+        "t": "menu "
+       },
+       {
+        "t": "Recebimento > Aprovações",
+        "marca": "tela"
+       },
+       {
+        "t": " (é a fila de conferências)"
+       }
+      ],
+      "intro": null,
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Abrir a fila e ler os cartões (Aguardando conferência, Em conferência, Conferidas hoje) e as abas "
+         },
+         {
+          "t": "sem iniciar",
+          "marca": "negrito"
+         },
+         {
+          "t": "."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Saber que o botão "
+         },
+         {
+          "t": "Conferir",
+          "marca": "negrito"
+         },
+         {
+          "t": " já inicia a conferência e que o responsável fica registrado na nota."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Saber que a conferência registra a quantidade de cada item e só termina com "
+         },
+         {
+          "t": "Concluir Conferência",
+          "marca": "negrito"
+         },
+         {
+          "t": "."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#recebimento"
+      ]
+     },
+     {
+      "tipo": "passos",
+      "titulo": "5. Saber o que a finalização provoca",
+      "onde": null,
+      "intro": null,
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Ler o aviso da finalização: \"movimenta estoque e gera títulos a pagar… não pode ser desfeita\"."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Depois de finalizada por outra pessoa, conferir o movimento \"Recebimento (NR)\" em "
+         },
+         {
+          "t": "Estoque > Movimentos",
+          "marca": "tela"
+         },
+         {
+          "t": " e o título em "
+         },
+         {
+          "t": "Financeiro > Contas a Pagar",
+          "marca": "tela"
+         },
+         {
+          "t": "."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#recebimento"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-estagiarios.mjs#recebimento"
+    ]
+   },
+   {
+    "id": "telas",
+    "titulo": "Principais telas",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "lista",
+      "rotulo": "Telas do módulo (glossário do Harness)",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Nova Nota de Recebimento"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Compras › Pedidos de Compra › ⋯ › Gerar Nota de Recebimento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/glossario/telas.yaml#recebimento.nova-nota"
+        ]
+       }
+      ],
+      "fontes": [
+       "harness:conhecimento/glossario/telas.yaml#recebimento.nova-nota"
+      ]
+     }
+    ],
+    "fontes": [
+     "harness:conhecimento/glossario/telas.yaml#recebimento.nova-nota"
+    ]
+   },
+   {
+    "id": "fluxo",
+    "titulo": "Fluxo operacional básico",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "fluxo",
+      "titulo": "Da importação da nota fiscal à geração das contas a pagar.",
+      "etapas": [
+       "Importação da NF",
+       "Conferência dos Produtos",
+       "Validação das Divergências",
+       "Finalização do Recebimento",
+       "Entrada no Estoque",
+       "Geração das Contas a Pagar"
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#recebimento"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:db/migrations/002_modulos_iniciais.sql#recebimento"
+    ]
+   },
+   {
+    "id": "atividade",
+    "titulo": "Atividade prática",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "passos",
+      "titulo": "1. Preparar seus dados: gerar a nota de recebimento do seu pedido de compra",
+      "onde": [
+       {
+        "t": "Compras > Pedidos de Compra",
+        "marca": "tela"
+       }
+      ],
+      "intro": [
+       {
+        "t": "A sua empresa de treino começa "
+       },
+       {
+        "t": "zerada",
+        "marca": "negrito"
+       },
+       {
+        "t": ": cada módulo usa o que o anterior criou. A nota de recebimento nasce do pedido de compra do checklist 05. "
+       },
+       {
+        "t": "Não finalize",
+        "marca": "negrito"
+       },
+       {
+        "t": " a nota: a finalização movimenta estoque e financeiro (veja o bloco \"Saber o que a finalização provoca\"). Se faltar permissão ou cadastro-base (botão que não aparece, CFOP, plano de contas, meio de pagamento, unidade de medida, almoxarifado), anote a mensagem em "
+       },
+       {
+        "t": "Problema",
+        "marca": "negrito"
+       },
+       {
+        "t": " e chame o supervisor: a empresa de treino começa zerada e os cadastros-base são feitos por um consultor."
+       }
+      ],
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "No pedido de compra do checklist 05 ("
+         },
+         {
+          "t": "Compras > Pedidos de Compra",
+          "marca": "tela"
+         },
+         {
+          "t": "), abrir o menu "
+         },
+         {
+          "t": "⋯",
+          "marca": "codigo"
+         },
+         {
+          "t": " e escolher "
+         },
+         {
+          "t": "Gerar Nota de Recebimento",
+          "marca": "negrito"
+         },
+         {
+          "t": ". Abre a página "
+         },
+         {
+          "t": "Nova Nota de Recebimento",
+          "marca": "negrito"
+         },
+         {
+          "t": " já preenchida a partir do pedido ("
+         },
+         {
+          "t": "Empresa",
+          "marca": "negrito"
+         },
+         {
+          "t": ", "
+         },
+         {
+          "t": "Fornecedor",
+          "marca": "negrito"
+         },
+         {
+          "t": ", "
+         },
+         {
+          "t": "CFOP",
+          "marca": "negrito"
+         },
+         {
+          "t": ", "
+         },
+         {
+          "t": "Pedido de Compra (opcional)",
+          "marca": "negrito"
+         },
+         {
+          "t": ", "
+         },
+         {
+          "t": "Condição de Pagamento",
+          "marca": "negrito"
+         },
+         {
+          "t": ", os itens e, no Resumo, a "
+         },
+         {
+          "t": "Conta de Fluxo de Caixa",
+          "marca": "negrito"
+         },
+         {
+          "t": "). Conferir e clicar em "
+         },
+         {
+          "t": "Salvar",
+          "marca": "negrito"
+         },
+         {
+          "t": " (ou em "
+         },
+         {
+          "t": "Cancelar",
+          "marca": "negrito"
+         },
+         {
+          "t": " para sair)."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Os outros campos podem ficar em branco: Projeto, Material de terceiro (cliente), Nº NF-e / NFS-e (\"deixe em branco para nota gerencial\"), Série, Data de Emissão, Natureza da Operação e Chave de Acesso NF-e (44 posições). O menu do pedido em aberto tem: Baixar PDF, Linha do tempo, Gerar Nota de Recebimento, Gerar Título a Pagar, Cancelar e Excluir. Depois, a coluna "
+         },
+         {
+          "t": "NOTA DE RECEBIMENTO",
+          "marca": "negrito"
+         },
+         {
+          "t": " da lista de pedidos mostra \"NR-0000xx\"; em "
+         },
+         {
+          "t": "Recebimento > Notas de Recebimento",
+          "marca": "tela"
+         },
+         {
+          "t": " a nota aparece como \"NF-‹número do fornecedor›\" e na fila de conferência como \"NR-‹número interno›\": é a mesma nota."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#recebimento"
+      ]
+     },
+     {
+      "tipo": "link",
+      "material": "recebimento:checklist-inicial",
+      "titulo": "Recebimento de mercadorias",
+      "status": "disponivel",
+      "url": "/checklists/estagiarios/06-recebimento.html",
+      "duracao_s": null,
+      "poster": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#recebimento"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-estagiarios.mjs#recebimento"
+    ]
+   },
+   {
+    "id": "checklist",
+    "titulo": "Checklist de aprendizado",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "checklist-aprendizado",
+      "chave": "inicial:recebimento",
+      "itens": [
+       {
+        "id": "entendi",
+        "texto": [
+         {
+          "t": "Entendi o que é o módulo Recebimento e para que serve"
+         }
+        ]
+       },
+       {
+        "id": "acessar-1",
+        "texto": [
+         {
+          "t": "Sei acessar: "
+         },
+         {
+          "t": "Compras > Pedidos de Compra",
+          "marca": "tela"
+         }
+        ]
+       },
+       {
+        "id": "acessar-2",
+        "texto": [
+         {
+          "t": "Sei acessar: "
+         },
+         {
+          "t": "Recebimento > Dashboard Recebimento",
+          "marca": "tela"
+         }
+        ]
+       },
+       {
+        "id": "acessar-3",
+        "texto": [
+         {
+          "t": "Sei acessar: "
+         },
+         {
+          "t": "Recebimento > Notas de Recebimento",
+          "marca": "tela"
+         }
+        ]
+       },
+       {
+        "id": "acessar-4",
+        "texto": [
+         {
+          "t": "Sei acessar: menu "
+         },
+         {
+          "t": "Recebimento > Aprovações",
+          "marca": "tela"
+         },
+         {
+          "t": " (é a fila de conferências)"
+         }
+        ]
+       },
+       {
+        "id": "executei-5",
+        "texto": [
+         {
+          "t": "Executei: 1. Preparar seus dados: gerar a nota de recebimento do seu pedido de compra"
+         }
+        ]
+       },
+       {
+        "id": "executei-6",
+        "texto": [
+         {
+          "t": "Executei: 2. Ler o painel do recebimento"
+         }
+        ]
+       },
+       {
+        "id": "executei-7",
+        "texto": [
+         {
+          "t": "Executei: 3. Consultar notas de recebimento"
+         }
+        ]
+       },
+       {
+        "id": "executei-8",
+        "texto": [
+         {
+          "t": "Executei: 4. Entender a conferência física"
+         }
+        ]
+       },
+       {
+        "id": "executei-9",
+        "texto": [
+         {
+          "t": "Executei: 5. Saber o que a finalização provoca"
+         }
+        ]
+       },
+       {
+        "id": "checklist",
+        "texto": [
+         {
+          "t": "Concluí o checklist prático"
+         }
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
+       "guia:scripts/dados-checklists-estagiarios.mjs#recebimento"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
+     "guia:scripts/dados-checklists-estagiarios.mjs#recebimento"
+    ]
+   },
+   {
+    "id": "progresso",
+    "titulo": "Progresso",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "progresso",
+      "chave": "inicial:recebimento",
+      "total": 11,
+      "api": "/api/checklists-progresso",
+      "fontes": [
+       "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md"
+    ]
+   }
+  ],
+  "consultor": [
+   {
+    "id": "visao",
+    "titulo": "Visão funcional",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "texto",
+      "rotulo": "Objetivo",
+      "texto": [
+       {
+        "t": "Controlar entrada de mercadorias — importação da NF do fornecedor, conferência e integração com Estoque, Compras, Financeiro e Fiscal."
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#recebimento"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Papel no fluxo",
+      "texto": [
+       {
+        "t": "Valida a entrega do fornecedor. Atualiza estoque, gera contas a pagar e finaliza pedido de compra."
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#recebimento"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Quando implantar",
+      "texto": [
+       {
+        "t": "Após Compras."
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#recebimento"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Caminho — Compras e Recebimento: solicitação, cotação, pedido e nota",
+      "texto": [
+       {
+        "t": "Compras › Solicitações de Compra, Sugestão de Compra, Cotações, Pedidos de Compra, Aprovações, Contratos de Entrega e Follow-up de Entregas. Recebimento › Notas de Recebimento e a fila de conferência (menu \"Aprovações\")."
+       }
+      ],
+      "fontes": [
+       "harness:conhecimento/produto/funcional/funcional-compras-solicitacoes-pedidos-e-recebimento.md"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:db/migrations/002_modulos_iniciais.sql#recebimento",
+     "harness:conhecimento/produto/funcional/funcional-compras-solicitacoes-pedidos-e-recebimento.md"
+    ]
+   },
+   {
+    "id": "regras",
+    "titulo": "Regras de negócio",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "regra",
+      "titulo": "A nota de recebimento tem dois números",
+      "texto": [
+       {
+        "t": "No menu "
+       },
+       {
+        "t": "⋯",
+        "marca": "codigo"
+       },
+       {
+        "t": " do pedido de compra, "
+       },
+       {
+        "t": "Gerar Nota de Recebimento",
+        "marca": "negrito"
+       },
+       {
+        "t": " abre a página "
+       },
+       {
+        "t": "Nova Nota de Recebimento",
+        "marca": "negrito"
+       },
+       {
+        "t": " já preenchida a partir do pedido (Empresa, Fornecedor, CFOP, Pedido de Compra, Condição de Pagamento, itens e Conta de Fluxo de Caixa). A mesma nota aparece como \"NF-‹número do fornecedor›\" na lista de Recebimento e como \"NR-‹número interno›\" na conferência, no pedido de compra e no título. A lista de notas abre com Status \"Em Aberto\". A conferência física fica no menu como \"Aprovações\"."
+       }
+      ],
+      "confirmar": [
+       {
+        "t": "Compras › Pedidos de Compra › "
+       },
+       {
+        "t": "⋯",
+        "marca": "codigo"
+       },
+       {
+        "t": " e Recebimento › Notas de Recebimento."
+       }
+      ],
+      "confianca": "B",
+      "fontes": [
+       "harness:conhecimento/produto/regras-negocio/regra-recebimento-a-mesma-nota-tem-dois-numeros.md"
+      ]
+     },
+     {
+      "tipo": "regra",
+      "titulo": "A cotação é opcional",
+      "texto": [
+       {
+        "t": "Da solicitação dá para ir direto ao pedido. Gerar Pedido de Compra abre o Novo Pedido para completar e salvar."
+       }
+      ],
+      "confirmar": null,
+      "confianca": null,
+      "fontes": [
+       "guia:videos/roteiros/consultor-01-suprimentos.json#04",
+       "harness-id:regra-compras-gerar-pedido-de-compra-abre-o-novo-pedido"
+      ]
+     },
+     {
+      "tipo": "regra",
+      "titulo": "A natureza da operação define o CFOP",
+      "texto": [
+       {
+        "t": "Na cotação, a Natureza da Operação (Consumo, Produção, Revenda ou Ativo) define o CFOP do pedido de compra."
+       }
+      ],
+      "confirmar": null,
+      "confianca": null,
+      "fontes": [
+       "guia:videos/roteiros/consultor-01-suprimentos.json#05",
+       "harness-id:regra-compras-natureza-da-operacao-define-o-cfop"
+      ]
+     },
+     {
+      "tipo": "regra",
+      "titulo": "Sem almoxarifado central, nada entra",
+      "texto": [
+       {
+        "t": "A entrada do recebimento vai para o almoxarifado central ativo. Sem ele, o sistema bloqueia."
+       }
+      ],
+      "confirmar": null,
+      "confianca": null,
+      "fontes": [
+       "guia:videos/roteiros/consultor-01-suprimentos.json#07",
+       "harness-id:regra-estoque-almoxarifado-central-ativo-e-pre-requisito"
+      ]
+     }
+    ],
+    "fontes": [
+     "harness:conhecimento/produto/regras-negocio/regra-recebimento-a-mesma-nota-tem-dois-numeros.md",
+     "guia:videos/roteiros/consultor-01-suprimentos.json#04",
+     "harness-id:regra-compras-gerar-pedido-de-compra-abre-o-novo-pedido",
+     "guia:videos/roteiros/consultor-01-suprimentos.json#05",
+     "harness-id:regra-compras-natureza-da-operacao-define-o-cfop",
+     "guia:videos/roteiros/consultor-01-suprimentos.json#07",
+     "harness-id:regra-estoque-almoxarifado-central-ativo-e-pre-requisito"
+    ]
+   },
+   {
+    "id": "fluxos",
+    "titulo": "Fluxos operacionais",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "fluxo",
+      "titulo": "Da importação da nota fiscal à geração das contas a pagar.",
+      "etapas": [
+       "Importação da NF",
+       "Conferência dos Produtos",
+       "Validação das Divergências",
+       "Finalização do Recebimento",
+       "Entrada no Estoque",
+       "Geração das Contas a Pagar"
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#recebimento"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "1. Preparar o recebimento: conferência e busca de notas",
+      "onde": [
+       {
+        "t": "Recebimento > Configurações > Parâmetros de Recebimento",
+        "marca": "tela"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "Recebimento > Distribuição DFe",
+        "marca": "tela"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Antes da primeira nota, ligue com o cliente só o que ele vai usar. Todos os parâmetros nascem desligados."
+       }
+      ],
+      "passos_total": 3,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "2. Receber o XML: DF-e ou arquivo",
+      "onde": [
+       {
+        "t": "Recebimento > Aguardando manifestação",
+        "marca": "tela"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "Recebimento > Notas de Recebimento > Importar XML",
+        "marca": "tela"
+       }
+      ],
+      "intro": [
+       {
+        "t": "A nota do fornecedor chega pelo DF-e (PRO) ou por arquivo XML. Mostre os dois caminhos e como a nota se liga ao pedido de compra."
+       }
+      ],
+      "passos_total": 5,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "3. Nota a partir do pedido de compra",
+      "onde": [
+       {
+        "t": "Compras > Pedidos de Compra > ⋯ > Gerar Nota de Recebimento",
+        "marca": "tela"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Sem XML em mãos, a nota nasce do próprio pedido. É o caminho conferido na tela e o mais usado no treinamento."
+       }
+      ],
+      "passos_total": 5,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "4. Entrega parcial: desdobro do pedido",
+      "onde": [
+       {
+        "t": "Compras > Pedidos de Compra",
+        "marca": "tela"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Fornecedor que entrega em partes é comum. Mostre que o saldo não se perde: vira um pedido filho."
+       }
+      ],
+      "passos_total": 3,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "5. Conferência física e divergências",
+      "onde": [
+       {
+        "t": "fila de conferências: "
+       },
+       {
+        "t": "Recebimento > Aprovações",
+        "marca": "tela"
+       },
+       {
+        "t": " (fluxo antigo) ou "
+       },
+       {
+        "t": "Recebimento > Conferências",
+        "marca": "tela"
+       },
+       {
+        "t": " (gestora)"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Com a conferência ligada, alguém conta o que chegou antes da entrada. Use uma nota com dois itens para mostrar uma contagem igual e uma divergente."
+       }
+      ],
+      "passos_total": 5,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "6. Finalizar: estoque e título a pagar nascem",
+      "onde": [
+       {
+        "t": "Recebimento > Notas de Recebimento > ⋮ > Finalizar",
+        "marca": "codigo"
+       }
+      ],
+      "intro": [
+       {
+        "t": "A finalização é o momento que muda o estoque e o financeiro. Faça com o cliente e confira os reflexos nos outros módulos."
+       }
+      ],
+      "passos_total": 6,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "7. Cancelamento e devolução ao fornecedor",
+      "onde": [
+       {
+        "t": "Recebimento > Notas de Recebimento > ⋮",
+        "marca": "codigo"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Feche mostrando como desfazer uma entrada errada e como devolver mercadoria. A NF-e de devolução só é transmitida com o responsável fiscal."
+       }
+      ],
+      "passos_total": 4,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:db/migrations/002_modulos_iniciais.sql#recebimento",
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento"
+    ]
+   },
+   {
+    "id": "implantacao",
+    "titulo": "Procedimentos de implantação",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "texto",
+      "rotulo": "Implantação de Recebimento: roteiro prático com o cliente",
+      "texto": [
+       {
+        "t": "Ao final, o cliente viu uma nota de fornecedor entrar, ser vinculada ao pedido, conferida e finalizada, e viu nascer a entrada no estoque e o título a pagar. Ele sabe tratar entrega parcial, cancelar uma nota e gerar a devolução, e sabe o que o sistema recusa."
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "rotulo": "Blocos do roteiro de implantação",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "1. Preparar o recebimento: conferência e busca de notas"
+         }
+        ],
+        "nota": [
+         {
+          "t": "3 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "2. Receber o XML: DF-e ou arquivo"
+         }
+        ],
+        "nota": [
+         {
+          "t": "5 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "3. Nota a partir do pedido de compra"
+         }
+        ],
+        "nota": [
+         {
+          "t": "5 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "4. Entrega parcial: desdobro do pedido"
+         }
+        ],
+        "nota": [
+         {
+          "t": "3 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "5. Conferência física e divergências"
+         }
+        ],
+        "nota": [
+         {
+          "t": "5 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "6. Finalizar: estoque e título a pagar nascem"
+         }
+        ],
+        "nota": [
+         {
+          "t": "6 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "7. Cancelamento e devolução ao fornecedor"
+         }
+        ],
+        "nota": [
+         {
+          "t": "4 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento"
+      ]
+     },
+     {
+      "tipo": "link",
+      "material": "recebimento:checklist-implantacao",
+      "titulo": "Implantação de Recebimento: roteiro prático com o cliente",
+      "status": "disponivel",
+      "url": "/checklists/consultores/implantacao-09-recebimento.html",
+      "duracao_s": null,
+      "poster": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Orientação de treinamento",
+      "texto": [
+       {
+        "t": "Apresente importação da NF-e, conferência, tratamento de divergências e finalização. Demonstre integração automática com Estoque, Compras, Financeiro e Fiscal."
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#recebimento"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento",
+     "guia:db/migrations/002_modulos_iniciais.sql#recebimento"
+    ]
+   },
+   {
+    "id": "configuracoes",
+    "titulo": "Configurações importantes",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "lista",
+      "rotulo": "Pré-requisitos",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Roteiro de Compras concluído: pelo menos dois pedidos de compra aprovados (um deles de 100 unidades, para a entrega parcial)."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " "
+         },
+         {
+          "t": "Compras > Pedidos de Compra",
+          "marca": "tela"
+         },
+         {
+          "t": ", status \"Em Aberto\" e sem alçada pendente. "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " REC-NR-007; trilha de estagiários 06."
+         }
+        ],
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Almoxarifado central ativo",
+          "marca": "negrito"
+         },
+         {
+          "t": " em "
+         },
+         {
+          "t": "Estoque > Locais",
+          "marca": "tela"
+         },
+         {
+          "t": " na empresa que recebe (é onde a nota dá entrada)."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " a lista de locais. "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " fluxo antigo de suprimentos (pré-requisito); README de Suprimentos, S6."
+         }
+        ],
+        "selo": "conferido-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "CFOPs de entrada com \"Gera Financeiro\" e \"Movimenta Estoque\" decididos com o contador; plano de contas e conta de fluxo no fornecedor ou na empresa."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " "
+         },
+         {
+          "t": "Recebimento > Configurações > CFOP",
+          "marca": "tela"
+         },
+         {
+          "t": ". Sem plano de contas não nasce título. "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " REC C, etapa 1; REC-NR-016, REC-FIN-007."
+         }
+        ],
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Produtos comprados com unidade de estoque, "
+         },
+         {
+          "t": "embalagem e fator",
+          "marca": "negrito"
+         },
+         {
+          "t": "; unidades de medida com as siglas que os fornecedores usam no XML."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " abra dois produtos e a tela de unidades. "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " REC-FIN-001, REC-XML-007."
+         }
+        ],
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Para buscar notas na SEFAZ: Recebimento "
+         },
+         {
+          "t": "PRO",
+          "marca": "negrito"
+         },
+         {
+          "t": " e "
+         },
+         {
+          "t": "certificado A1",
+          "marca": "negrito"
+         },
+         {
+          "t": " da empresa enviado ao Flow. Sem PRO, use só a importação de XML por arquivo."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " "
+         },
+         {
+          "t": "Minha Assinatura",
+          "marca": "codigo"
+         },
+         {
+          "t": " e "
+         },
+         {
+          "t": "Configurações > Certificados",
+          "marca": "codigo"
+         },
+         {
+          "t": ". "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " README de Suprimentos, S4; REC-DFE-001, REC-DFE-009."
+         }
+        ],
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Decisões da ata: títulos pelo pedido ou pela nota; conferência física sim ou não, e se trava a finalização."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " a ata. "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " README de Suprimentos, S2 e S5; REC C, perguntas R6 e R10."
+         }
+        ],
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Para devolução: Faturamento com série de NF-e configurada."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " a série no Faturamento. "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " REC-DEV-001/002."
+         }
+        ],
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento"
+    ]
+   },
+   {
+    "id": "validacoes",
+    "titulo": "Validações funcionais",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "lista",
+      "rotulo": "Resultado esperado",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Uma nota entrou por XML (DF-e ou arquivo) e outra pelo pedido de compra, com os dois números (NF e NR) anotados."
+         }
+        ],
+        "nota": null,
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "A entrega parcial criou o "
+         },
+         {
+          "t": "PC-nnnn/2",
+          "marca": "codigo"
+         },
+         {
+          "t": " com o saldo."
+         }
+        ],
+        "nota": null,
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "A conferência registrou uma contagem igual e uma divergente."
+         }
+        ],
+        "nota": null,
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "A finalização gerou a entrada \"Recebimento (NR)\" no almoxarifado central e o título a pagar com o documento NR."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Um título só por parcela, pela nota ou pelo pedido conforme a ata."
+         }
+        ],
+        "nota": null,
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "O cliente viu o sistema recusar: XML repetido, quantidade acima do pedido, finalizar sem conferência e cancelar com título pago."
+         }
+        ],
+        "nota": null,
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "rotulo": "Checklist do módulo",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Importar NF de fornecedor"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#recebimento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Conferir itens recebidos"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#recebimento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Registrar divergências ou avarias"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#recebimento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Finalizar recebimento"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#recebimento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Compreender integração com Compras, Estoque, Financeiro e Fiscal"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#recebimento"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#recebimento"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento",
+     "guia:db/migrations/002_modulos_iniciais.sql#recebimento"
+    ]
+   },
+   {
+    "id": "integracoes",
+    "titulo": "Integrações e dependências",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "texto",
+      "rotulo": "Relação com os outros módulos",
+      "texto": [
+       {
+        "t": "Valida a entrega do fornecedor. Atualiza estoque, gera contas a pagar e finaliza pedido de compra."
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#recebimento"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:db/migrations/002_modulos_iniciais.sql#recebimento"
+    ]
+   },
+   {
+    "id": "problemas",
+    "titulo": "Problemas recorrentes",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "lista",
+      "rotulo": "Atenção",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Só em ambiente de teste. Nomeie os registros com \"TESTE FLUXO CONSULTOR\". Nota fiscal de devolução só é transmitida com o responsável fiscal do cliente."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Responder à SEFAZ",
+          "marca": "negrito"
+         },
+         {
+          "t": " (manifestação) é fiscal e não se desfaz: faça só com o responsável fiscal e numa nota de teste."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Finalizar",
+          "marca": "negrito"
+         },
+         {
+          "t": " não pode ser desfeito: movimenta estoque e gera títulos. O caminho de volta é cancelar com motivo, e só depois de estornar pagamentos."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "A mesma nota tem dois números: \"NF-‹fornecedor›\" na lista e \"NR-‹interno›\" na conferência, no pedido e no título. Anote os dois."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "A lista de notas abre filtrada em \"Em Aberto\": a nota finalizada some até limpar o filtro."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Iniciar a conferência trava a nota com o seu usuário; para destravar, use "
+         },
+         {
+          "t": "Liberar",
+          "marca": "negrito"
+         },
+         {
+          "t": " na fila."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Hoje o sistema ainda dá entrada com custo cheio (com IPI e ICMS-ST, sem descontar crédito), diferente da decisão de produto. Avise o cliente que confere custo."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Não existe importador de notas antigas: as notas já recebidas no sistema anterior entram como saldo de estoque e título a pagar."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "rotulo": "Cuidados (vídeo)",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Finalizar a nota de recebimento não pode ser desfeito."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:videos/roteiros/consultor-01-suprimentos.json#14"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "O meio de pagamento da parcela não chega ao Pagar: informe de novo."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:videos/roteiros/consultor-01-suprimentos.json#14"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "A Sugestão de Compra só lista itens com estoque mínimo."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:videos/roteiros/consultor-01-suprimentos.json#14"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:videos/roteiros/consultor-01-suprimentos.json#14"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "rotulo": "A conferir na tela",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Nome da fila de conferência: o fluxo antigo e a trilha de estagiários (conferidos na tela) usam "
+         },
+         {
+          "t": "Recebimento > Aprovações",
+          "marca": "tela"
+         },
+         {
+          "t": "; a gestora usa "
+         },
+         {
+          "t": "Recebimento > Conferências",
+          "marca": "tela"
+         },
+         {
+          "t": ", visível só com \"Usar Conferência Física\". Conferir o rótulo do menu."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Quantidade que entra no estoque com divergência: a regra oficial diz que entra a quantidade da "
+         },
+         {
+          "t": "nota",
+          "marca": "negrito"
+         },
+         {
+          "t": " (REC-CON-004, D-196); o da gestora indica que o código pode dar entrada na quantidade "
+         },
+         {
+          "t": "conferida",
+          "marca": "negrito"
+         },
+         {
+          "t": ". Conferir na tela com a nota de 8 de 10."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Custo da entrada: REC-FIN-004 diz custo sem o tributo recuperável no regime normal; o README de Suprimentos (S8) e o Estoque dizem que hoje entra cheio (WI #30480). Conferir o custo médio antes de explicar."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Momento do desdobro do PC: REC-NR-009 diz que "
+         },
+         {
+          "t": "salvar",
+          "marca": "negrito"
+         },
+         {
+          "t": " a nota já desdobra; o checklist D de Compras descreve gerar a nota parcial "
+         },
+         {
+          "t": "e finalizar",
+          "marca": "negrito"
+         },
+         {
+          "t": ". Conferir quando o "
+         },
+         {
+          "t": "PC-nnnn/2",
+          "marca": "codigo"
+         },
+         {
+          "t": " aparece."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Nome da caixa do DF-e: a gestora usa \"Aguardando manifestação\"; a trilha de estagiários cita \"Notas pendentes\". Conferir o menu."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Conferência física como PRO: a gestora diz que, sem PRO, os parâmetros ficam inertes (D-198); o fluxo antigo trata só como parâmetro. Conferir a licença do cliente."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Não conferidos na tela pelo fluxo antigo: DF-e, importação de XML, divergência e avaria na conferência, cancelamento e devolução."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento",
+     "guia:videos/roteiros/consultor-01-suprimentos.json#14"
+    ]
+   },
+   {
+    "id": "videos",
+    "titulo": "Vídeos avançados",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "video",
+      "material": "recebimento:video-consultor",
+      "titulo": "Suprimentos: da solicitação ao pagamento",
+      "status": "disponivel",
+      "url": "/videos/consultor-01-suprimentos.mp4",
+      "duracao_s": 203,
+      "poster": "/videos/consultor-01-suprimentos.jpg",
+      "legendas_url": "/videos/consultor-01-suprimentos.vtt",
+      "resumo": [
+       {
+        "t": "Cotação opcional, a natureza da operação que define o CFOP, a nota com dois números e a linha do tempo do pedido."
+       }
+      ],
+      "fontes": [
+       "guia:public/videos/manifest.json",
+       "guia:videos/roteiros/consultor-01-suprimentos.json"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:public/videos/manifest.json",
+     "guia:videos/roteiros/consultor-01-suprimentos.json"
+    ]
+   },
+   {
+    "id": "complementares",
+    "titulo": "Materiais complementares",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "link",
+      "material": "recebimento:checklist-inicial",
+      "titulo": "Recebimento de mercadorias",
+      "status": "disponivel",
+      "url": "/checklists/estagiarios/06-recebimento.html",
+      "duracao_s": null,
+      "poster": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#recebimento"
+      ]
+     },
+     {
+      "tipo": "link",
+      "material": "recebimento:checklist-implantacao",
+      "titulo": "Implantação de Recebimento: roteiro prático com o cliente",
+      "status": "disponivel",
+      "url": "/checklists/consultores/implantacao-09-recebimento.html",
+      "duracao_s": null,
+      "poster": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento"
+      ]
+     },
+     {
+      "tipo": "link",
+      "titulo": "Apostila do Consultor (PDF)",
+      "url": "/downloads/Apostila-do-Consultor-Faktory-Flow.pdf",
+      "visibilidade": "area:apostila",
+      "fontes": [
+       "guia:public/downloads/Apostila-do-Consultor-Faktory-Flow.pdf"
+      ]
+     },
+     {
+      "tipo": "fontes",
+      "rotulo": "Fontes no Harness",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Como ir da solicitação de compra à nota de recebimento"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Procedimento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/produto/procedimentos/procedimento-criar-solicitacao-pedido-de-compra-e-nota-de-recebimento.md"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "05 Manual Recebimento"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Manual oficial"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/05_Manual_Recebimento_Timbrado.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "01-notas-de-recebimento-com-sistemas-tecnicos"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/recebimento/01-notas-de-recebimento-com-sistemas-tecnicos.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "02-notas-pendentes-com-sistemas-tecnicos"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/recebimento/02-notas-pendentes-com-sistemas-tecnicos.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "03-controle-de-terceiros-com-sistemas-tecnicos"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/recebimento/03-controle-de-terceiros-com-sistemas-tecnicos.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "04-conferencias-e-inspecao"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/recebimento/04-conferencias-e-inspecao.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "05-configuracoes-de-recebimento"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/recebimento/05-configuracoes-de-recebimento.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "06-paineis-e-demonstrativos"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/recebimento/06-paineis-e-demonstrativos.docx"
+        ]
+       }
+      ],
+      "fontes": [
+       "harness:conhecimento/produto/procedimentos/procedimento-criar-solicitacao-pedido-de-compra-e-nota-de-recebimento.md",
+       "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/05_Manual_Recebimento_Timbrado.docx",
+       "harness:conhecimento/Roteiros Treinamento/recebimento/01-notas-de-recebimento-com-sistemas-tecnicos.docx",
+       "harness:conhecimento/Roteiros Treinamento/recebimento/02-notas-pendentes-com-sistemas-tecnicos.docx",
+       "harness:conhecimento/Roteiros Treinamento/recebimento/03-controle-de-terceiros-com-sistemas-tecnicos.docx",
+       "harness:conhecimento/Roteiros Treinamento/recebimento/04-conferencias-e-inspecao.docx",
+       "harness:conhecimento/Roteiros Treinamento/recebimento/05-configuracoes-de-recebimento.docx",
+       "harness:conhecimento/Roteiros Treinamento/recebimento/06-paineis-e-demonstrativos.docx"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-estagiarios.mjs#recebimento",
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento",
+     "guia:public/downloads/Apostila-do-Consultor-Faktory-Flow.pdf",
+     "harness:conhecimento/produto/procedimentos/procedimento-criar-solicitacao-pedido-de-compra-e-nota-de-recebimento.md",
+     "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/05_Manual_Recebimento_Timbrado.docx",
+     "harness:conhecimento/Roteiros Treinamento/recebimento/01-notas-de-recebimento-com-sistemas-tecnicos.docx",
+     "harness:conhecimento/Roteiros Treinamento/recebimento/02-notas-pendentes-com-sistemas-tecnicos.docx",
+     "harness:conhecimento/Roteiros Treinamento/recebimento/03-controle-de-terceiros-com-sistemas-tecnicos.docx",
+     "harness:conhecimento/Roteiros Treinamento/recebimento/04-conferencias-e-inspecao.docx",
+     "harness:conhecimento/Roteiros Treinamento/recebimento/05-configuracoes-de-recebimento.docx",
+     "harness:conhecimento/Roteiros Treinamento/recebimento/06-paineis-e-demonstrativos.docx"
+    ]
+   }
+  ]
+ }
+}

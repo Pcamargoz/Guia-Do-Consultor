@@ -1,0 +1,2435 @@
+{
+ "versao": "2026-11-06",
+ "id": "crm",
+ "jornadas": {
+  "inicial": [
+   {
+    "id": "apresentacao",
+    "titulo": "Apresentação",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "texto",
+      "rotulo": "CRM: leads e oportunidades",
+      "texto": [
+       {
+        "t": "A porta de entrada do processo comercial: do primeiro contato até a oportunidade pronta para virar pedido."
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#crm"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Objetivo",
+      "texto": [
+       {
+        "t": "Cadastrar leads de treino na sua conta do CRM, consultar o funil comercial, movimentá-los no Kanban e entender as regras para converter um lead."
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#crm"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-estagiarios.mjs#crm"
+    ]
+   },
+   {
+    "id": "video",
+    "titulo": "Vídeo de apoio",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "video",
+      "material": "crm:video-apoio",
+      "titulo": "Comercial: do lead ao pedido de venda (vídeo de apoio)",
+      "status": "disponivel",
+      "url": "/videos/consultor-03-comercial.mp4",
+      "duracao_s": 220,
+      "poster": "/videos/consultor-03-comercial.jpg",
+      "legendas_url": "/videos/consultor-03-comercial.vtt",
+      "resumo": [
+       {
+        "t": "Apoio do Guia do Consultor, com narração e regras de negócio. O vídeo introdutório deste módulo está em preparação. As quatro regras que travam o CRM e o caminho real, do Kanban à oportunidade ganha."
+       }
+      ],
+      "fontes": [
+       "guia:public/videos/manifest.json",
+       "guia:videos/roteiros/consultor-03-comercial.json"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:public/videos/manifest.json",
+     "guia:videos/roteiros/consultor-03-comercial.json"
+    ]
+   },
+   {
+    "id": "manual",
+    "titulo": "Manual visual resumido",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "passos",
+      "titulo": "1. Preparar seus dados: cadastrar leads de treino",
+      "onde": [
+       {
+        "t": "botão "
+       },
+       {
+        "t": "Novo Lead",
+        "marca": "codigo"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Faça este bloco primeiro.",
+        "marca": "negrito"
+       },
+       {
+        "t": " A sua conta no CRM começa sem leads, e os blocos seguintes (filtros, Kanban, menu do lead, conversão) precisam dos seus leads para funcionar. O formulário é o cadastro completo de participante: preencha só o necessário. Se ele pedir CNPJ/CPF ou CEP, use números fictícios (documento repetido é recusado, então troque o número se aparecer o aviso); se o CEP trouxer um bairro curto, como \"Sé\", digite um bairro com 3 letras ou mais. Use um e-mail de teste, nunca o de um cliente real."
+       }
+      ],
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Preencher "
+         },
+         {
+          "t": "Tipo (PF/PJ)",
+          "marca": "negrito"
+         },
+         {
+          "t": " e "
+         },
+         {
+          "t": "Razão Social / Nome",
+          "marca": "negrito"
+         },
+         {
+          "t": " começando por \"TESTE ESTAGIÁRIO\" (ex.: \"TESTE ESTAGIÁRIO - Maria 1\")."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Na seção "
+         },
+         {
+          "t": "Informações CRM",
+          "marca": "negrito"
+         },
+         {
+          "t": ", preencher Origem do Lead, Temperatura e Responsável (deixe "
+         },
+         {
+          "t": "você",
+          "marca": "negrito"
+         },
+         {
+          "t": " como Responsável)."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Só "
+         },
+         {
+          "t": "Tipo (PF/PJ)",
+          "marca": "negrito"
+         },
+         {
+          "t": " e "
+         },
+         {
+          "t": "Razão Social / Nome",
+          "marca": "negrito"
+         },
+         {
+          "t": " são obrigatórios. Não confunda com a seção "
+         },
+         {
+          "t": "Dados CRM",
+          "marca": "negrito"
+         },
+         {
+          "t": ", logo acima: ela tem Setor de Atuação, CREA/CAU e preferências do cliente, e não é necessária agora. O Budget Estimado e as chaves Autoridade, Necessidade e Prazo (o BANT) também ficam em Informações CRM."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Clicar em "
+         },
+         {
+          "t": "Salvar",
+          "marca": "codigo"
+         },
+         {
+          "t": "."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Mensagem \"Registro salvo com sucesso!\" e o lead aparece na lista com Status \"Novo\"."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Conferir na lista se a Temperatura gravou como você escolheu."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Cadastrar um "
+         },
+         {
+          "t": "segundo",
+          "marca": "negrito"
+         },
+         {
+          "t": " lead de treino (\"TESTE ESTAGIÁRIO - Maria 2\") com "
+         },
+         {
+          "t": "outra Temperatura",
+          "marca": "negrito"
+         },
+         {
+          "t": " (ex.: Quente), repetindo os passos acima."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Com dois leads de temperaturas diferentes, os filtros, o Kanban e o menu do lead têm o que mostrar. Os dois aparecem na Lista de Leads e no Kanban de Leads, na primeira coluna (Inbound). No teste, escolher Quente gravou Morno uma vez: por isso existe o passo de conferir a Temperatura na lista."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#crm"
+      ]
+     },
+     {
+      "tipo": "passos",
+      "titulo": "2. Entender o funil",
+      "onde": [
+       {
+        "t": "CRM > Painéis > Visão Geral",
+        "marca": "tela"
+       }
+      ],
+      "intro": null,
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Ler a \"Jornada do cliente\": Leads Novos → Qualificando → Oportunidades → Valor em Jogo."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Cada cartão leva à lista de leads ou ao Pipeline."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Ler a faixa de alerta (leads aguardando qualificação, atividades atrasadas)."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#crm"
+      ]
+     },
+     {
+      "tipo": "passos",
+      "titulo": "3. Consultar leads",
+      "onde": [
+       {
+        "t": "CRM > Vendas > Leads > Lista de Leads",
+        "marca": "tela"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Agora você já tem os seus leads de treino (bloco 1) para ver nas listas."
+       }
+      ],
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Usar os filtros rápidos: Status (Novo, Em Qualificação, Qualificado, Convertido, Desqualificado), Temperatura (Frio a Urgente), Só minhas e Tag."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Dica: com Só minhas ligado, devem ficar só os seus leads de treino."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Alternar entre "
+         },
+         {
+          "t": "Lista",
+          "marca": "negrito"
+         },
+         {
+          "t": " e "
+         },
+         {
+          "t": "Kanban",
+          "marca": "negrito"
+         },
+         {
+          "t": " no topo da tela."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Abrir o menu "
+         },
+         {
+          "t": "⋮",
+          "marca": "codigo"
+         },
+         {
+          "t": " de um lead e reconhecer: Converter, Histórico, Tags, Atividades, Desqualificar e Excluir. Feche com Esc."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#crm"
+      ]
+     },
+     {
+      "tipo": "passos",
+      "titulo": "4. Movimentar o lead no Kanban",
+      "onde": [
+       {
+        "t": "CRM > Vendas > Leads > Kanban de Leads",
+        "marca": "tela"
+       }
+      ],
+      "intro": null,
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Reconhecer as etapas e seus percentuais: Inbound 10%, Pesquisado 25%, Conectado 40%, MQL 60%, SQL 80%, Demo agendada 90%."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Arrastar o card do seu lead para a próxima etapa e clicar em "
+         },
+         {
+          "t": "Confirmar",
+          "marca": "negrito"
+         },
+         {
+          "t": " no diálogo \"Mover lead\"."
+         }
+        ],
+        "nota": [
+         {
+          "t": "O card fica na nova coluna e a mudança entra no histórico do lead."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#crm"
+      ]
+     },
+     {
+      "tipo": "passos",
+      "titulo": "5. Entender a conversão (com o supervisor)",
+      "onde": [
+       {
+        "t": "menu "
+       },
+       {
+        "t": "⋮ > Converter",
+        "marca": "codigo"
+       },
+       {
+        "t": " do lead"
+       }
+      ],
+      "intro": null,
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Saber as duas regras: o lead precisa estar numa etapa de "
+         },
+         {
+          "t": "60% ou mais",
+          "marca": "negrito"
+         },
+         {
+          "t": " e com o "
+         },
+         {
+          "t": "BANT completo",
+          "marca": "negrito"
+         },
+         {
+          "t": " (budget, autoridade, necessidade e prazo)."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Sem isso, o sistema avisa o que falta e não converte."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Ver com o supervisor onde o BANT é preenchido: "
+         },
+         {
+          "t": "Editar Lead",
+          "marca": "codigo"
+         },
+         {
+          "t": " > Budget Estimado e as chaves Autoridade, Necessidade e Prazo/timeline."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Saber o que a conversão faz: o lead fica \"convertido\", o participante passa a ter "
+         },
+         {
+          "t": "\"É Cliente?\"",
+          "marca": "negrito"
+         },
+         {
+          "t": " ligado e uma "
+         },
+         {
+          "t": "oportunidade é criada sozinha",
+          "marca": "negrito"
+         },
+         {
+          "t": " no Pipeline (valor = budget). O pedido é criado depois, em Vendas."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Mensagem \"Lead convertido com sucesso!\". O aviso não menciona a oportunidade: procure no Pipeline."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#crm"
+      ]
+     },
+     {
+      "tipo": "passos",
+      "titulo": "6. Oportunidades e atividades",
+      "onde": [
+       {
+        "t": "CRM > Vendas > Pipeline",
+        "marca": "tela"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "CRM > Vendas > Atividades",
+        "marca": "tela"
+       }
+      ],
+      "intro": null,
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Abrir o Pipeline, escolher a aba do funil (\"Funil de vendas principal\") e ver as oportunidades por etapa."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Cada card mostra valor, probabilidade, \"hoje na etapa\" e o menu ⋮ (Editar, Marcar como Ganha, Marcar como Perdida, Pausar, Cancelar)."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Abrir uma oportunidade (⋮ > Editar) e ver as abas Detalhes, Itens, Atividades e Histórico."
+         }
+        ],
+        "nota": [
+         {
+          "t": "O Histórico registra a criação na conversão e cada mudança de etapa."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Abrir Atividades e Agenda e ver as atividades da semana e as atrasadas."
+         }
+        ],
+        "nota": [
+         {
+          "t": "A lista de atividades não diz de qual lead/cliente é cada uma."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#crm"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-estagiarios.mjs#crm"
+    ]
+   },
+   {
+    "id": "telas",
+    "titulo": "Principais telas",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "lista",
+      "rotulo": "Telas do módulo (glossário do Harness)",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Funis de Vendas"
+         }
+        ],
+        "nota": [
+         {
+          "t": "CRM › Configurações › Funis de Vendas"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/glossario/telas.yaml#crm.funis-vendas"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Leads"
+         }
+        ],
+        "nota": [
+         {
+          "t": "CRM › Vendas › Leads"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/glossario/telas.yaml#crm.leads"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Pipeline"
+         }
+        ],
+        "nota": [
+         {
+          "t": "CRM › Vendas › Pipeline"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/glossario/telas.yaml#crm.pipeline"
+        ]
+       }
+      ],
+      "fontes": [
+       "harness:conhecimento/glossario/telas.yaml#crm.funis-vendas",
+       "harness:conhecimento/glossario/telas.yaml#crm.leads",
+       "harness:conhecimento/glossario/telas.yaml#crm.pipeline"
+      ]
+     }
+    ],
+    "fontes": [
+     "harness:conhecimento/glossario/telas.yaml#crm.funis-vendas",
+     "harness:conhecimento/glossario/telas.yaml#crm.leads",
+     "harness:conhecimento/glossario/telas.yaml#crm.pipeline"
+    ]
+   },
+   {
+    "id": "fluxo",
+    "titulo": "Fluxo operacional básico",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "fluxo",
+      "titulo": "Da captação do lead ao acompanhamento pós-venda.",
+      "etapas": [
+       "Captação de Leads",
+       "Qualificação",
+       "Negociação",
+       "Conversão em Pedido de Venda",
+       "Pós-venda e Acompanhamento"
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#crm"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:db/migrations/002_modulos_iniciais.sql#crm"
+    ]
+   },
+   {
+    "id": "atividade",
+    "titulo": "Atividade prática",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "link",
+      "material": "crm:checklist-inicial",
+      "titulo": "CRM: leads e oportunidades",
+      "status": "disponivel",
+      "url": "/checklists/estagiarios/03-crm-leads-oportunidades.html",
+      "duracao_s": null,
+      "poster": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#crm"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-estagiarios.mjs#crm"
+    ]
+   },
+   {
+    "id": "checklist",
+    "titulo": "Checklist de aprendizado",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "checklist-aprendizado",
+      "chave": "inicial:crm",
+      "itens": [
+       {
+        "id": "entendi",
+        "texto": [
+         {
+          "t": "Entendi o que é o módulo CRM e para que serve"
+         }
+        ]
+       },
+       {
+        "id": "acessar-1",
+        "texto": [
+         {
+          "t": "Sei acessar: botão "
+         },
+         {
+          "t": "Novo Lead",
+          "marca": "codigo"
+         }
+        ]
+       },
+       {
+        "id": "acessar-2",
+        "texto": [
+         {
+          "t": "Sei acessar: "
+         },
+         {
+          "t": "CRM > Painéis > Visão Geral",
+          "marca": "tela"
+         }
+        ]
+       },
+       {
+        "id": "acessar-3",
+        "texto": [
+         {
+          "t": "Sei acessar: "
+         },
+         {
+          "t": "CRM > Vendas > Leads > Lista de Leads",
+          "marca": "tela"
+         }
+        ]
+       },
+       {
+        "id": "acessar-4",
+        "texto": [
+         {
+          "t": "Sei acessar: "
+         },
+         {
+          "t": "CRM > Vendas > Leads > Kanban de Leads",
+          "marca": "tela"
+         }
+        ]
+       },
+       {
+        "id": "acessar-5",
+        "texto": [
+         {
+          "t": "Sei acessar: menu "
+         },
+         {
+          "t": "⋮ > Converter",
+          "marca": "codigo"
+         },
+         {
+          "t": " do lead"
+         }
+        ]
+       },
+       {
+        "id": "acessar-6",
+        "texto": [
+         {
+          "t": "Sei acessar: "
+         },
+         {
+          "t": "CRM > Vendas > Pipeline",
+          "marca": "tela"
+         },
+         {
+          "t": " e "
+         },
+         {
+          "t": "CRM > Vendas > Atividades",
+          "marca": "tela"
+         }
+        ]
+       },
+       {
+        "id": "executei-7",
+        "texto": [
+         {
+          "t": "Executei: 1. Preparar seus dados: cadastrar leads de treino"
+         }
+        ]
+       },
+       {
+        "id": "executei-8",
+        "texto": [
+         {
+          "t": "Executei: 2. Entender o funil"
+         }
+        ]
+       },
+       {
+        "id": "executei-9",
+        "texto": [
+         {
+          "t": "Executei: 3. Consultar leads"
+         }
+        ]
+       },
+       {
+        "id": "executei-10",
+        "texto": [
+         {
+          "t": "Executei: 4. Movimentar o lead no Kanban"
+         }
+        ]
+       },
+       {
+        "id": "executei-11",
+        "texto": [
+         {
+          "t": "Executei: 5. Entender a conversão (com o supervisor)"
+         }
+        ]
+       },
+       {
+        "id": "executei-12",
+        "texto": [
+         {
+          "t": "Executei: 6. Oportunidades e atividades"
+         }
+        ]
+       },
+       {
+        "id": "checklist",
+        "texto": [
+         {
+          "t": "Concluí o checklist prático"
+         }
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
+       "guia:scripts/dados-checklists-estagiarios.mjs#crm"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
+     "guia:scripts/dados-checklists-estagiarios.mjs#crm"
+    ]
+   },
+   {
+    "id": "progresso",
+    "titulo": "Progresso",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "progresso",
+      "chave": "inicial:crm",
+      "total": 14,
+      "api": "/api/checklists-progresso",
+      "fontes": [
+       "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md"
+    ]
+   }
+  ],
+  "consultor": [
+   {
+    "id": "visao",
+    "titulo": "Visão funcional",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "texto",
+      "rotulo": "Objetivo",
+      "texto": [
+       {
+        "t": "Gerenciar o relacionamento com clientes, do primeiro contato ao pós-venda."
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#crm"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Papel no fluxo",
+      "texto": [
+       {
+        "t": "Porta de entrada do processo comercial. Oportunidades são convertidas em pedidos de venda."
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#crm"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Quando implantar",
+      "texto": [
+       {
+        "t": "Antes do módulo de Vendas."
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#crm"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Caminho — CRM: leads, Kanban, conversão e pipeline",
+      "texto": [
+       {
+        "t": "CRM › Vendas › Leads (Lista de Leads e Kanban de Leads), Pipeline, Atividades, Agenda e Aprovações; CRM › Painéis (Visão Geral, Dashboard Executivo, Resultado do Mês). Botão "
+       },
+       {
+        "t": "Novo Lead",
+        "marca": "negrito"
+       },
+       {
+        "t": ". Menu "
+       },
+       {
+        "t": "⋯",
+        "marca": "codigo"
+       },
+       {
+        "t": " do lead: Converter, Histórico, Tags, Atividades, Desqualificar e Excluir."
+       }
+      ],
+      "fontes": [
+       "harness:conhecimento/produto/funcional/funcional-crm-leads-pipeline-e-oportunidades.md"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:db/migrations/002_modulos_iniciais.sql#crm",
+     "harness:conhecimento/produto/funcional/funcional-crm-leads-pipeline-e-oportunidades.md"
+    ]
+   },
+   {
+    "id": "regras",
+    "titulo": "Regras de negócio",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "regra",
+      "titulo": "A conversão cria a oportunidade e marca o participante como cliente",
+      "texto": [
+       {
+        "t": "Converter Lead",
+        "marca": "negrito"
+       },
+       {
+        "t": " mostra \"Lead convertido com sucesso!\", deixa o lead como convertido, liga "
+       },
+       {
+        "t": "É Cliente?",
+        "marca": "negrito"
+       },
+       {
+        "t": " no participante e cria "
+       },
+       {
+        "t": "sozinha",
+        "marca": "negrito"
+       },
+       {
+        "t": " uma oportunidade no Pipeline (etapa \"Novo Lead\", valor igual ao Budget Estimado), sem avisar disso. As atividades do lead não migram para a oportunidade. O Valor estimado passa a ser a soma dos itens quando itens são adicionados."
+       }
+      ],
+      "confirmar": [
+       {
+        "t": "CRM › Vendas › Pipeline após converter."
+       }
+      ],
+      "confianca": "B",
+      "fontes": [
+       "harness:conhecimento/produto/regras-negocio/regra-crm-conversao-cria-a-oportunidade-sozinha.md"
+      ]
+     },
+     {
+      "tipo": "regra",
+      "titulo": "Converter lead: etapa de 60% ou mais e BANT completo",
+      "texto": [
+       {
+        "t": "O lead só converte quando está numa etapa do Kanban de "
+       },
+       {
+        "t": "60% ou mais",
+        "marca": "negrito"
+       },
+       {
+        "t": " (MQL, SQL…) "
+       },
+       {
+        "t": "e",
+        "marca": "negrito"
+       },
+       {
+        "t": " com o "
+       },
+       {
+        "t": "BANT completo",
+        "marca": "negrito"
+       },
+       {
+        "t": ": "
+       },
+       {
+        "t": "Budget Estimado",
+        "marca": "negrito"
+       },
+       {
+        "t": " e as chaves "
+       },
+       {
+        "t": "Autoridade de decisão confirmada",
+        "marca": "negrito"
+       },
+       {
+        "t": ", "
+       },
+       {
+        "t": "Necessidade claramente identificada",
+        "marca": "negrito"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "Prazo/timeline definido",
+        "marca": "negrito"
+       },
+       {
+        "t": ". Sem isso o sistema avisa o que falta e não converte. As duas condições existem juntas: não há conflito entre as fontes que citam só uma delas."
+       }
+      ],
+      "confirmar": [
+       {
+        "t": "CRM › Vendas › Leads › Kanban de Leads e Editar Lead › Informações CRM."
+       }
+      ],
+      "confianca": "B",
+      "fontes": [
+       "harness:conhecimento/produto/regras-negocio/regra-crm-converter-lead-exige-etapa-60-e-bant-completo.md"
+      ]
+     },
+     {
+      "tipo": "regra",
+      "titulo": "Formulário do lead: Informações CRM é a seção da origem e da temperatura",
+      "texto": [
+       {
+        "t": "O "
+       },
+       {
+        "t": "Novo Lead",
+        "marca": "negrito"
+       },
+       {
+        "t": " é o cadastro completo de participante. As seções, na ordem, são Dados Gerais, Receita / Despesa, Classificação, Endereço, Contato, Contas bancárias, Documentos, Observações, "
+       },
+       {
+        "t": "Dados CRM",
+        "marca": "negrito"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "Informações CRM",
+        "marca": "negrito"
+       },
+       {
+        "t": ". "
+       },
+       {
+        "t": "Origem do Lead",
+        "marca": "negrito"
+       },
+       {
+        "t": ", "
+       },
+       {
+        "t": "Temperatura",
+        "marca": "negrito"
+       },
+       {
+        "t": ", "
+       },
+       {
+        "t": "Responsável",
+        "marca": "negrito"
+       },
+       {
+        "t": ", "
+       },
+       {
+        "t": "Budget Estimado",
+        "marca": "negrito"
+       },
+       {
+        "t": ", "
+       },
+       {
+        "t": "Produto de Interesse",
+        "marca": "negrito"
+       },
+       {
+        "t": " e as chaves do BANT ficam em "
+       },
+       {
+        "t": "Informações CRM",
+        "marca": "negrito"
+       },
+       {
+        "t": ". "
+       },
+       {
+        "t": "Dados CRM",
+        "marca": "negrito"
+       },
+       {
+        "t": " é outra seção (Setor de Atuação, CREA / CAU, Linha Preferida, Cor Predominante, Tipo de Vidro Preferido, Obras Simultâneas, Nível PBQPH, % Comissão). Obrigatórios: "
+       },
+       {
+        "t": "Tipo (PF/PJ)",
+        "marca": "negrito"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "Razão Social / Nome",
+        "marca": "negrito"
+       },
+       {
+        "t": "."
+       }
+      ],
+      "confirmar": [
+       {
+        "t": "CRM › Vendas › Leads › Lista de Leads › Novo Lead."
+       }
+      ],
+      "confianca": "B",
+      "fontes": [
+       "harness:conhecimento/produto/regras-negocio/regra-crm-formulario-do-lead-secoes-e-campos.md"
+      ]
+     },
+     {
+      "tipo": "regra",
+      "titulo": "Gerar Pedido de Venda a partir da oportunidade: CFOP sem financeiro",
+      "texto": [
+       {
+        "t": "No painel da oportunidade ganha, "
+       },
+       {
+        "t": "Gerar Pedido de Venda",
+        "marca": "negrito"
+       },
+       {
+        "t": " pede "
+       },
+       {
+        "t": "Empresa",
+        "marca": "negrito"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "CFOP",
+        "marca": "negrito"
+       },
+       {
+        "t": ". Com um CFOP que "
+       },
+       {
+        "t": "gera financeiro",
+        "marca": "negrito"
+       },
+       {
+        "t": " (como 5101 ou 6101) o sistema recusa, dizendo que Condição de Pagamento, Plano de Conta e Parcelas são obrigatórios, campos que o formulário do handoff não tem. Com um CFOP que "
+       },
+       {
+        "t": "não",
+        "marca": "negrito"
+       },
+       {
+        "t": " gera financeiro (como 5910-1) o pedido nasce com cliente, item e valor da oportunidade; depois basta abrir o pedido, trocar o CFOP e escolher a condição de pagamento, e as parcelas são geradas."
+       }
+      ],
+      "confirmar": [
+       {
+        "t": "CRM › Vendas › Pipeline › oportunidade ganha › Gerar Pedido de Venda. Vendas › Pedidos de Venda para o pedido gerado."
+       }
+      ],
+      "confianca": "B",
+      "fontes": [
+       "harness:conhecimento/produto/regras-negocio/regra-vendas-gerar-pedido-da-oportunidade-exige-cfop-sem-financeiro.md"
+      ]
+     },
+     {
+      "tipo": "regra",
+      "titulo": "Itens viram o valor da oportunidade",
+      "texto": [
+       {
+        "t": "Na aba Itens, aplique o quadro Dados do Item antes de salvar. O Valor estimado passa a ser a soma dos itens."
+       }
+      ],
+      "confirmar": null,
+      "confianca": null,
+      "fontes": [
+       "guia:videos/roteiros/consultor-03-comercial.json#06",
+       "harness-id:funcional-crm-leads-pipeline-e-oportunidades"
+      ]
+     }
+    ],
+    "fontes": [
+     "harness:conhecimento/produto/regras-negocio/regra-crm-conversao-cria-a-oportunidade-sozinha.md",
+     "harness:conhecimento/produto/regras-negocio/regra-crm-converter-lead-exige-etapa-60-e-bant-completo.md",
+     "harness:conhecimento/produto/regras-negocio/regra-crm-formulario-do-lead-secoes-e-campos.md",
+     "harness:conhecimento/produto/regras-negocio/regra-vendas-gerar-pedido-da-oportunidade-exige-cfop-sem-financeiro.md",
+     "guia:videos/roteiros/consultor-03-comercial.json#06",
+     "harness-id:funcional-crm-leads-pipeline-e-oportunidades"
+    ]
+   },
+   {
+    "id": "fluxos",
+    "titulo": "Fluxos operacionais",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "fluxo",
+      "titulo": "Da captação do lead ao acompanhamento pós-venda.",
+      "etapas": [
+       "Captação de Leads",
+       "Qualificação",
+       "Negociação",
+       "Conversão em Pedido de Venda",
+       "Pós-venda e Acompanhamento"
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#crm"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "1. Cadastro do lead",
+      "onde": [
+       {
+        "t": "CRM > Vendas > Leads > Novo Lead",
+        "marca": "tela"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Tudo começa no contato ainda não qualificado. Mostre ao cliente que o lead já é o cadastro completo do participante."
+       }
+      ],
+      "passos_total": 4,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "2. Qualificação: BANT e Kanban de Leads",
+      "onde": [
+       {
+        "t": "Editar Lead > Informações CRM",
+        "marca": "codigo"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "CRM > Vendas > Leads > Kanban de Leads",
+        "marca": "tela"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Antes de converter, o lead precisa provar que é um negócio real. Comece pela trava, para o cliente ver por que a qualificação existe."
+       }
+      ],
+      "passos_total": 3,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "3. Conversão do lead",
+      "onde": [
+       {
+        "t": "CRM > Vendas > Leads",
+        "marca": "tela"
+       },
+       {
+        "t": " > "
+       },
+       {
+        "t": "⋮ > Converter",
+        "marca": "codigo"
+       }
+      ],
+      "intro": [
+       {
+        "t": "A conversão faz três coisas de uma vez, e só uma delas é avisada na tela. Mostre cada reflexo."
+       }
+      ],
+      "passos_total": 4,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "4. Oportunidade no Pipeline: itens, atividades e etapas",
+      "onde": [
+       {
+        "t": "CRM > Vendas > Pipeline",
+        "marca": "tela"
+       },
+       {
+        "t": " > clique no card"
+       }
+      ],
+      "intro": [
+       {
+        "t": "É aqui que o vendedor trabalha o negócio no dia a dia. Os itens são obrigatórios para ganhar e viram os itens do pedido."
+       }
+      ],
+      "passos_total": 5,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "5. Ganhar (e perder) a oportunidade",
+      "onde": [
+       {
+        "t": "CRM > Vendas > Pipeline",
+        "marca": "tela"
+       },
+       {
+        "t": " > painel da oportunidade ou "
+       },
+       {
+        "t": "⋯",
+        "marca": "codigo"
+       },
+       {
+        "t": " do card"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Mostre a trava do item numa segunda oportunidade e encerre a principal como ganha. A segunda oportunidade serve também para mostrar a perda."
+       }
+      ],
+      "passos_total": 3,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "6. Gerar o pedido de venda",
+      "onde": [
+       {
+        "t": "painel da oportunidade ganha > "
+       },
+       {
+        "t": "Gerar Pedido de Venda",
+        "marca": "codigo"
+       }
+      ],
+      "intro": [
+       {
+        "t": "É a passagem do CRM para Vendas. Demonstre de propósito a recusa com CFOP de venda e depois o caminho que funciona."
+       }
+      ],
+      "passos_total": 4,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "7. Resultado nos painéis do CRM",
+      "onde": [
+       {
+        "t": "CRM > Painéis",
+        "marca": "tela"
+       },
+       {
+        "t": ", "
+       },
+       {
+        "t": "CRM > Visão Geral",
+        "marca": "tela"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "Clientes > Visão 360°",
+        "marca": "codigo"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Feche mostrando ao gestor onde ele acompanha o funil, o ganho e a perda do teste."
+       }
+      ],
+      "passos_total": 3,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:db/migrations/002_modulos_iniciais.sql#crm",
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+    ]
+   },
+   {
+    "id": "implantacao",
+    "titulo": "Procedimentos de implantação",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "texto",
+      "rotulo": "Implantação de CRM: roteiro prático com o cliente",
+      "texto": [
+       {
+        "t": "Ao final, o cliente terá visto um lead virar oportunidade, a oportunidade ganha virar pedido de venda em "
+       },
+       {
+        "t": "Vendas > Pedidos de Venda",
+        "marca": "tela"
+       },
+       {
+        "t": " e o resultado aparecer nos painéis do CRM. Ele saberá repetir o caminho e conhecerá as três travas do fluxo: BANT e etapa de 60% para converter, item para ganhar e CFOP para gerar o pedido."
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "rotulo": "Blocos do roteiro de implantação",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "1. Cadastro do lead"
+         }
+        ],
+        "nota": [
+         {
+          "t": "4 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "2. Qualificação: BANT e Kanban de Leads"
+         }
+        ],
+        "nota": [
+         {
+          "t": "3 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "3. Conversão do lead"
+         }
+        ],
+        "nota": [
+         {
+          "t": "4 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "4. Oportunidade no Pipeline: itens, atividades e etapas"
+         }
+        ],
+        "nota": [
+         {
+          "t": "5 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "5. Ganhar (e perder) a oportunidade"
+         }
+        ],
+        "nota": [
+         {
+          "t": "3 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "6. Gerar o pedido de venda"
+         }
+        ],
+        "nota": [
+         {
+          "t": "4 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "7. Resultado nos painéis do CRM"
+         }
+        ],
+        "nota": [
+         {
+          "t": "3 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+      ]
+     },
+     {
+      "tipo": "link",
+      "material": "crm:checklist-implantacao",
+      "titulo": "Implantação de CRM: roteiro prático com o cliente",
+      "status": "disponivel",
+      "url": "/checklists/consultores/implantacao-02-crm.html",
+      "duracao_s": null,
+      "poster": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Orientação de treinamento",
+      "texto": [
+       {
+        "t": "Apresente o funil de vendas. Demonstre cadastro de oportunidades, registro de atividades e conversão. Mostre como o CRM auxilia no pós-venda."
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#crm"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm",
+     "guia:db/migrations/002_modulos_iniciais.sql#crm"
+    ]
+   },
+   {
+    "id": "configuracoes",
+    "titulo": "Configurações importantes",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "lista",
+      "rotulo": "Pré-requisitos",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Funil de Vendas",
+          "marca": "negrito"
+         },
+         {
+          "t": " com etapas conferidas e "
+         },
+         {
+          "t": "Funil de Leads",
+          "marca": "negrito"
+         },
+         {
+          "t": " cadastrados (sem o primeiro não existe Pipeline; sem o segundo não existe Kanban de Leads). Tipos de Atividade, Origens de Lead, Temperaturas e Motivos de Perda cadastrados."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " "
+         },
+         {
+          "t": "CRM > Configurações",
+          "marca": "tela"
+         },
+         {
+          "t": " e remova etapas de teste esquecidas no fim do funil. "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " manual-02-crm, Parte 1; Fluxo comercial (pré-requisitos)."
+         }
+        ],
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Dados de contato de teste: razão social começando por \"TESTE FLUXO CONSULTOR\", CNPJ/CPF fictício "
+         },
+         {
+          "t": "ainda não usado",
+          "marca": "negrito"
+         },
+         {
+          "t": " e e-mail de caixa pública temporária."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " o sistema recusa documento repetido. "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " Fluxo comercial (pré-requisitos)."
+         }
+        ],
+        "selo": "conferido-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Produto de teste com unidade válida e preço de tabela."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " "
+         },
+         {
+          "t": "Cadastros > Produtos",
+          "marca": "tela"
+         },
+         {
+          "t": ". "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " Fluxo comercial (pré-requisitos)."
+         }
+        ],
+        "selo": "conferido-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Para o pedido nascer completo: participante com "
+         },
+         {
+          "t": "Conta de Fluxo de Caixa Receita",
+          "marca": "negrito"
+         },
+         {
+          "t": " e Inscrição Estadual/RG preenchidas (o formulário do lead não exige), condição de pagamento cadastrada e um CFOP que "
+         },
+         {
+          "t": "não",
+          "marca": "negrito"
+         },
+         {
+          "t": " gera financeiro disponível (ex.: 5910-1)."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " com o consultor responsável pela configuração fiscal. "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " Fluxo comercial (pré-requisitos); regra-vendas-gerar-pedido-da-oportunidade-exige-cfop-sem-financeiro."
+         }
+        ],
+        "selo": "conferido-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+    ]
+   },
+   {
+    "id": "validacoes",
+    "titulo": "Validações funcionais",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "lista",
+      "rotulo": "Resultado esperado",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "O lead de teste foi qualificado (BANT e etapa de 60%), convertido, e o participante ficou marcado como cliente."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "A oportunidade nasceu sozinha no Pipeline, recebeu item, atividade e mudança de etapa, e foi marcada como ganha."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "O pedido de venda foi gerado a partir da oportunidade, completado com CFOP de venda e condição de pagamento, e aparece em Vendas como \"A faturar\"."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "O ganho e a perda do teste aparecem nos painéis do CRM."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "rotulo": "Checklist do módulo",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Cadastrar contato ou oportunidade"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#crm"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Movimentar oportunidades no funil"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#crm"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Registrar atividades e acompanhamentos"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#crm"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Converter oportunidade em pedido de venda"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#crm"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Consultar histórico e visão do cliente"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#crm"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#crm"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm",
+     "guia:db/migrations/002_modulos_iniciais.sql#crm"
+    ]
+   },
+   {
+    "id": "integracoes",
+    "titulo": "Integrações e dependências",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "texto",
+      "rotulo": "Relação com os outros módulos",
+      "texto": [
+       {
+        "t": "Porta de entrada do processo comercial. Oportunidades são convertidas em pedidos de venda."
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#crm"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:db/migrations/002_modulos_iniciais.sql#crm"
+    ]
+   },
+   {
+    "id": "problemas",
+    "titulo": "Problemas recorrentes",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "lista",
+      "rotulo": "Atenção",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Segurança do ambiente:",
+          "marca": "negrito"
+         },
+         {
+          "t": " use só ambiente de teste, registros com \"TESTE FLUXO CONSULTOR\" e e-mail de caixa temporária; nota fiscal só é transmitida com o responsável fiscal."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Gerar Pedido de Venda",
+          "marca": "negrito"
+         },
+         {
+          "t": " recusa CFOP que gera financeiro: use um CFOP sem financeiro e ajuste o pedido depois. Valide a passagem com o consultor responsável pela configuração fiscal antes de treinar o cliente."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Hoje o sistema ainda deixa o botão "
+         },
+         {
+          "t": "Gerar Pedido de Venda",
+          "marca": "negrito"
+         },
+         {
+          "t": " disponível depois de gerar, e o painel da oportunidade pode parar de abrir: anote o nº do pedido e não clique de novo."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Ganha",
+          "marca": "negrito"
+         },
+         {
+          "t": " não pede confirmação. "
+         },
+         {
+          "t": "Reverter ganho",
+          "marca": "negrito"
+         },
+         {
+          "t": " não remove a oportunidade de Pós-Venda criada ao ganhar, e ganhar de novo cria outra: reverta antes de gerar o pedido."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Recolher e reabrir a seção "
+         },
+         {
+          "t": "Informações CRM",
+          "marca": "negrito"
+         },
+         {
+          "t": " no formulário do lead apaga a origem escolhida."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Hoje datas de fechamento e de previsão podem aparecer 1 dia antes do informado, e a Temperatura do lead pode mudar sozinha: confira na tela."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "As atividades do lead não vão para a oportunidade, e o pedido gerado não herda vendedor nem condição de pagamento."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "rotulo": "Cuidados (vídeo)",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Ganha não pede confirmação: se clicar sem querer, use Reverter ganho."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:videos/roteiros/consultor-03-comercial.json#14"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Desconto em R$ acima da alçada vai para aprovação de outro usuário."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:videos/roteiros/consultor-03-comercial.json#14"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Reverta o ganho antes de gerar o pedido, nunca depois."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:videos/roteiros/consultor-03-comercial.json#14"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:videos/roteiros/consultor-03-comercial.json#14"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "rotulo": "A conferir na tela",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Janela "
+         },
+         {
+          "t": "Converter Lead",
+          "marca": "negrito"
+         },
+         {
+          "t": ": o manual-02-crm (2.2) diz que ela permite escolher o funil, a etapa inicial (padrão Prospecção) e o valor; no teste de 19/10 (Fluxo comercial) a oportunidade nasceu sozinha na etapa \"Novo Lead\" com o valor do Budget. Conferir na tela qual etapa o cliente verá."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Como ganhar: o manual-02-crm (2.5) indica "
+         },
+         {
+          "t": "⋯ do card > Marcar como Ganha",
+          "marca": "codigo"
+         },
+         {
+          "t": ", com a mensagem \"Oportunidade marcada como ganha!\" e a exigência de ao menos um item; o Fluxo comercial registra o botão "
+         },
+         {
+          "t": "Ganha",
+          "marca": "negrito"
+         },
+         {
+          "t": " no painel da oportunidade, sem citar a exigência do item. Conferir o caminho e a trava antes de demonstrar."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Probabilidade: o manual-02-crm (2.3) diz que ela muda sozinha conforme a etapa; no teste o percentual do card só atualizou ao recarregar e, no ganho, a etapa e a probabilidade não foram para 100%."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm",
+     "guia:videos/roteiros/consultor-03-comercial.json#14"
+    ]
+   },
+   {
+    "id": "videos",
+    "titulo": "Vídeos avançados",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "video",
+      "material": "crm:video-consultor",
+      "titulo": "Comercial: do lead ao pedido de venda",
+      "status": "disponivel",
+      "url": "/videos/consultor-03-comercial.mp4",
+      "duracao_s": 220,
+      "poster": "/videos/consultor-03-comercial.jpg",
+      "legendas_url": "/videos/consultor-03-comercial.vtt",
+      "resumo": [
+       {
+        "t": "As quatro regras que travam o CRM e o caminho real, do Kanban à oportunidade ganha."
+       }
+      ],
+      "fontes": [
+       "guia:public/videos/manifest.json",
+       "guia:videos/roteiros/consultor-03-comercial.json"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:public/videos/manifest.json",
+     "guia:videos/roteiros/consultor-03-comercial.json"
+    ]
+   },
+   {
+    "id": "complementares",
+    "titulo": "Materiais complementares",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "link",
+      "material": "crm:checklist-inicial",
+      "titulo": "CRM: leads e oportunidades",
+      "status": "disponivel",
+      "url": "/checklists/estagiarios/03-crm-leads-oportunidades.html",
+      "duracao_s": null,
+      "poster": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#crm"
+      ]
+     },
+     {
+      "tipo": "link",
+      "material": "crm:checklist-implantacao",
+      "titulo": "Implantação de CRM: roteiro prático com o cliente",
+      "status": "disponivel",
+      "url": "/checklists/consultores/implantacao-02-crm.html",
+      "duracao_s": null,
+      "poster": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+      ]
+     },
+     {
+      "tipo": "link",
+      "titulo": "Apostila do Consultor (PDF)",
+      "url": "/downloads/Apostila-do-Consultor-Faktory-Flow.pdf",
+      "visibilidade": "area:apostila",
+      "fontes": [
+       "guia:public/downloads/Apostila-do-Consultor-Faktory-Flow.pdf"
+      ]
+     },
+     {
+      "tipo": "fontes",
+      "rotulo": "Fontes no Harness",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Como cadastrar um lead e convertê-lo em oportunidade"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Procedimento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/produto/procedimentos/procedimento-cadastrar-lead-e-converter-em-oportunidade.md"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "02 Manual CRM"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Manual oficial"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/02_Manual_CRM_Timbrado.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "01-leads"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/CRM/01-leads.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "02-pipeline-de-oportunidades"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/CRM/02-pipeline-de-oportunidades.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "03-atividades-e-agenda"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/CRM/03-atividades-e-agenda.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "04-clientes-e-visao-360"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/CRM/04-clientes-e-visao-360.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "05-projetos-de-obra"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/CRM/05-projetos-de-obra.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "06-engajamento"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/CRM/06-engajamento.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "07-configurar-o-crm"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/CRM/07-configurar-o-crm.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "08-paineis-e-demonstrativos"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/CRM/08-paineis-e-demonstrativos.docx"
+        ]
+       }
+      ],
+      "fontes": [
+       "harness:conhecimento/produto/procedimentos/procedimento-cadastrar-lead-e-converter-em-oportunidade.md",
+       "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/02_Manual_CRM_Timbrado.docx",
+       "harness:conhecimento/Roteiros Treinamento/CRM/01-leads.docx",
+       "harness:conhecimento/Roteiros Treinamento/CRM/02-pipeline-de-oportunidades.docx",
+       "harness:conhecimento/Roteiros Treinamento/CRM/03-atividades-e-agenda.docx",
+       "harness:conhecimento/Roteiros Treinamento/CRM/04-clientes-e-visao-360.docx",
+       "harness:conhecimento/Roteiros Treinamento/CRM/05-projetos-de-obra.docx",
+       "harness:conhecimento/Roteiros Treinamento/CRM/06-engajamento.docx",
+       "harness:conhecimento/Roteiros Treinamento/CRM/07-configurar-o-crm.docx",
+       "harness:conhecimento/Roteiros Treinamento/CRM/08-paineis-e-demonstrativos.docx"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-estagiarios.mjs#crm",
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm",
+     "guia:public/downloads/Apostila-do-Consultor-Faktory-Flow.pdf",
+     "harness:conhecimento/produto/procedimentos/procedimento-cadastrar-lead-e-converter-em-oportunidade.md",
+     "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/02_Manual_CRM_Timbrado.docx",
+     "harness:conhecimento/Roteiros Treinamento/CRM/01-leads.docx",
+     "harness:conhecimento/Roteiros Treinamento/CRM/02-pipeline-de-oportunidades.docx",
+     "harness:conhecimento/Roteiros Treinamento/CRM/03-atividades-e-agenda.docx",
+     "harness:conhecimento/Roteiros Treinamento/CRM/04-clientes-e-visao-360.docx",
+     "harness:conhecimento/Roteiros Treinamento/CRM/05-projetos-de-obra.docx",
+     "harness:conhecimento/Roteiros Treinamento/CRM/06-engajamento.docx",
+     "harness:conhecimento/Roteiros Treinamento/CRM/07-configurar-o-crm.docx",
+     "harness:conhecimento/Roteiros Treinamento/CRM/08-paineis-e-demonstrativos.docx"
+    ]
+   }
+  ]
+ }
+}

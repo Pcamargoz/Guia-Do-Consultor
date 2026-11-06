@@ -1,0 +1,429 @@
+{
+  "fonte": "midia/brutos/crm/crm_bruto_c04-c07_v01.mp4",
+  "observacao": "Tempos em segundos do bruto (1920x1200), recorte crop=1920:1080:0:80 antes dos borrões; caixas no quadro recortado (x,y,w,h). Só trechos marcados sim no roteiro-telas.md (v02). Tempos e caixas conferidos em quadros extraídos com ffmpeg em 06/11/2026. Fora: 0–31 e 106–125 s do vídeo 2 (espera, dropdown de Responsável com usuários reais e toast de erro com ID), a 1ª tentativa de Budget (5.000.000,00), o arrasto do card (o nome se move) e a Central CRM do vídeo 1 (42–45 s: saudação com nome e valores). Por conservadorismo, também borrados o nome do lead fictício (Marcenaria Exemplo Ltda), o Budget, os valores, códigos OPO e percentuais do Pipeline (os 5 % não aparecem legíveis).",
+  "caixas": {
+    "A_B_cabecalho": {
+      "x": 1395,
+      "y": 0,
+      "w": 525,
+      "h": 72,
+      "porque": "A (nome, cargo e avatar do usuário; manifesto x1640–1920 y0–60; quadro real x1615–1890 y25–62) + B (selo METALURGICA TEST; quadro real x1400–1545 y30–58)"
+    },
+    "B_selo": {
+      "x": 1395,
+      "y": 0,
+      "w": 148,
+      "h": 72,
+      "porque": "só o selo do tenant, enquanto um toast cobre o nome do usuário (para o toast ficar legível)"
+    },
+    "A_faixa": {
+      "x": 1543,
+      "y": 0,
+      "w": 377,
+      "h": 31,
+      "porque": "topo do nome do usuário que aparece acima do toast (toast começa em y≈30)"
+    },
+    "A_borda": {
+      "x": 1894,
+      "y": 0,
+      "w": 26,
+      "h": 72,
+      "porque": "borda do avatar à direita do toast"
+    },
+    "status_chrome": {
+      "x": 0,
+      "y": 1040,
+      "w": 660,
+      "h": 40,
+      "porque": "barra de status do Chrome com a URL do staging (vista no vídeo 1, x0–280 y1060–1080)"
+    },
+    "lista_nome_empresa": {
+      "x": 365,
+      "y": 562,
+      "w": 545,
+      "h": 265,
+      "porque": "D: colunas NOME e EMPRESA da Lista de Leads (leads de teste de terceiros e o lead fictício); x375–870 y575–810; também atrás do painel lateral (o desfoque do próprio app deixa os nomes adivinháveis)"
+    },
+    "lista_resp": {
+      "x": 1470,
+      "y": 562,
+      "w": 190,
+      "h": 265,
+      "porque": "C: coluna RESPONSÁVEL com o nome real do usuário (até x1660, onde abre o menu ⋯)"
+    },
+    "lista_resp_l1": {
+      "x": 1655,
+      "y": 565,
+      "w": 65,
+      "h": 45,
+      "porque": "C: fim do nome do Responsável na 1ª linha (x até 1705)"
+    },
+    "resp_campo": {
+      "x": 1436,
+      "y": 528,
+      "w": 460,
+      "h": 90,
+      "porque": "C: campo Responsável no painel do lead (roteiro 1435,530,450,56; quadros reais y540–580 no Editar e y575–610 no Novo)"
+    },
+    "budget": {
+      "x": 994,
+      "y": 612,
+      "w": 444,
+      "h": 50,
+      "porque": "valor do Budget Estimado (R$); quadro real x998–1434 y618–655"
+    },
+    "card_inbound": {
+      "x": 310,
+      "y": 380,
+      "w": 215,
+      "h": 48,
+      "porque": "nome do lead fictício no card (coluna Inbound); x316–490 y385–422"
+    },
+    "card_mql": {
+      "x": 1062,
+      "y": 380,
+      "w": 215,
+      "h": 48,
+      "porque": "nome do lead fictício no card (coluna MQL); x1072–1245 y385–422"
+    },
+    "dialog_nome": {
+      "x": 783,
+      "y": 448,
+      "w": 400,
+      "h": 46,
+      "porque": "nome do lead no diálogo Converter Lead em Participante; x790–960 y455–488"
+    },
+    "pipe_total": {
+      "x": 430,
+      "y": 162,
+      "w": 165,
+      "h": 36,
+      "porque": "E: Total R$ do funil (roteiro 430,162,165,36)"
+    },
+    "pipe_totais_col": {
+      "x": 305,
+      "y": 266,
+      "w": 1565,
+      "h": 32,
+      "porque": "E: valor R$ de cada etapa; y272–290"
+    },
+    "pipe_cards_l1": {
+      "x": 310,
+      "y": 352,
+      "w": 1040,
+      "h": 110,
+      "porque": "E: nomes, valores, códigos OPO e % dos cards da 1ª linha (outras oportunidades); y355–455"
+    },
+    "pipe_card2": {
+      "x": 310,
+      "y": 512,
+      "w": 235,
+      "h": 110,
+      "porque": "E: card Construtora Horizonte (nome, valor, código, %); y515–615"
+    },
+    "pipe_card3": {
+      "x": 310,
+      "y": 672,
+      "w": 235,
+      "h": 110,
+      "porque": "card do lead convertido: nome, R$, código OPO e % (os 5 % ficam ilegíveis de propósito); y675–775"
+    },
+    "lista_resp_full": {
+      "x": 1470,
+      "y": 562,
+      "w": 250,
+      "h": 265,
+      "porque": "C: coluna RESPONSÁVEL inteira (o nome vai até x1705) quando o menu ⋯ não está aberto"
+    },
+    "resp_nome_novo": {
+      "x": 1446,
+      "y": 576,
+      "w": 256,
+      "h": 34,
+      "porque": "C: só o nome no campo Responsável do Novo Lead (texto x1454–1677 y581–605)"
+    },
+    "resp_nome_editar": {
+      "x": 1446,
+      "y": 542,
+      "w": 256,
+      "h": 36,
+      "porque": "C: só o nome no campo Responsável do Editar Lead (texto x1454–1677 y548–572)"
+    },
+    "budget_valor": {
+      "x": 1345,
+      "y": 620,
+      "w": 90,
+      "h": 32,
+      "porque": "só o valor do Budget Estimado (texto x1355–1425 y625–647)"
+    }
+  },
+  "cortes": [
+    {
+      "id": "c1-lista",
+      "fonte": "midia/brutos/crm/crm_bruto_c03-c07_v01.mp4",
+      "in": 45.5,
+      "out": 51.6,
+      "borrar": [
+        "A_B_cabecalho",
+        "status_chrome",
+        "lista_nome_empresa",
+        "lista_resp_full"
+      ],
+      "porque": "vídeo 1: Lista de Leads (sim, com borrão) e o botão + Novo Lead (clique sintético no fim; o clique real do vídeo 2 está no trecho descartado 0–31 s)"
+    },
+    {
+      "id": "c2-origem",
+      "in": 53,
+      "out": 57.8,
+      "borrar": [
+        "A_B_cabecalho",
+        "status_chrome",
+        "resp_campo",
+        "budget",
+        "lista_nome_empresa"
+      ],
+      "porque": "painel Novo Lead › Informações CRM: lista de Origem do Lead aberta e escolha de Indicação (~56,4 s)"
+    },
+    {
+      "id": "c3-salvar",
+      "in": 133.5,
+      "out": 139.8,
+      "borrar": [
+        {
+          "caixa": "A_B_cabecalho",
+          "ate": 2.75
+        },
+        {
+          "caixa": "B_selo",
+          "desde": 2.75
+        },
+        {
+          "caixa": "A_faixa",
+          "desde": 2.75
+        },
+        {
+          "caixa": "A_borda",
+          "desde": 2.75
+        },
+        "status_chrome",
+        {
+          "caixa": "resp_campo",
+          "ate": 2.5
+        },
+        "lista_nome_empresa",
+        {
+          "caixa": "lista_resp_full",
+          "desde": 2.45
+        },
+        {
+          "caixa": "lista_resp_l1",
+          "desde": 2.45
+        }
+      ],
+      "porque": "Salvar (~135,3 s; Salvando... em 135,4 s), lista em 136,0 s com o toast Registro salvo com sucesso!"
+    },
+    {
+      "id": "c4-bant",
+      "in": 206.5,
+      "out": 214.5,
+      "borrar": [
+        "A_B_cabecalho",
+        "status_chrome",
+        "resp_campo",
+        "budget",
+        "lista_nome_empresa"
+      ],
+      "porque": "Editar Lead › Informações CRM: switches Autoridade (~207,3 s), Necessidade (~210,3 s) e Prazo/timeline (~212,8 s); Budget já em 50.000,00 (borrado)"
+    },
+    {
+      "id": "c5-kanban",
+      "in": 231,
+      "out": 233.9,
+      "borrar": [
+        "A_B_cabecalho",
+        "status_chrome",
+        "card_inbound"
+      ],
+      "porque": "Kanban de Leads, funil Qualificação de Leads, card parado em Inbound (o arrasto começa em ~234 s e fica de fora)"
+    },
+    {
+      "id": "c6-mover",
+      "in": 241,
+      "out": 245.6,
+      "borrar": [
+        {
+          "caixa": "A_B_cabecalho",
+          "ate": 2.45
+        },
+        {
+          "caixa": "B_selo",
+          "desde": 2.45
+        },
+        {
+          "caixa": "A_faixa",
+          "desde": 2.45
+        },
+        {
+          "caixa": "A_borda",
+          "desde": 2.45
+        },
+        "status_chrome",
+        "card_mql",
+        "card_inbound"
+      ],
+      "porque": "diálogo Mover lead, Confirmar (~242,65 s), card em MQL e toast Lead movido! (opaco em ~243,45 s)"
+    },
+    {
+      "id": "c7-menu",
+      "in": 251,
+      "out": 257.2,
+      "borrar": [
+        "A_B_cabecalho",
+        "status_chrome",
+        {
+          "caixa": "lista_nome_empresa",
+          "ate": 5.1
+        },
+        {
+          "caixa": "lista_resp",
+          "ate": 5.1
+        },
+        {
+          "caixa": "lista_resp_l1",
+          "ate": 5.1
+        },
+        {
+          "caixa": "dialog_nome",
+          "desde": 5.1
+        },
+        {
+          "caixa": "lista_resp_full",
+          "ate": 0.75
+        }
+      ],
+      "porque": "menu ⋯ (~251,6 s) › Converter (~255,8 s) › diálogo Converter Lead em Participante (256,2 s)"
+    },
+    {
+      "id": "c8-converter",
+      "in": 264.8,
+      "out": 268.8,
+      "borrar": [
+        {
+          "caixa": "A_B_cabecalho",
+          "ate": 2.15
+        },
+        {
+          "caixa": "B_selo",
+          "desde": 2.15
+        },
+        {
+          "caixa": "A_faixa",
+          "desde": 2.15
+        },
+        {
+          "caixa": "A_borda",
+          "desde": 2.15
+        },
+        "status_chrome",
+        {
+          "caixa": "dialog_nome",
+          "ate": 1.75
+        },
+        {
+          "caixa": "lista_nome_empresa",
+          "desde": 1.9
+        },
+        {
+          "caixa": "lista_resp_full",
+          "desde": 1.9
+        },
+        {
+          "caixa": "lista_resp_l1",
+          "desde": 1.9
+        }
+      ],
+      "porque": "Converter Lead (~266,1 s), lista em 267,0 s e toast Lead convertido com sucesso! (opaco em ~266,9 s)"
+    },
+    {
+      "id": "c9-pipeline",
+      "in": 272,
+      "out": 280.8,
+      "borrar": [
+        "A_B_cabecalho",
+        "status_chrome",
+        "pipe_total",
+        "pipe_totais_col",
+        "pipe_cards_l1",
+        "pipe_card2",
+        "pipe_card3"
+      ],
+      "porque": "Pipeline de Vendas, Funil de vendas principal: a oportunidade do lead convertido na etapa Novo Lead (valores, códigos e % borrados)"
+    },
+    {
+      "id": "c2-origem-v2",
+      "in": 53,
+      "out": 57.8,
+      "borrar": [
+        "A_B_cabecalho",
+        "status_chrome",
+        "lista_nome_empresa"
+      ],
+      "porque": "v2: Responsável (Selecione responsável) e Budget (0,00) sem dado neste trecho, conferido em quadros de 53 a 57,8 s: sem borrão no formulário"
+    },
+    {
+      "id": "c3-salvar-v2",
+      "in": 133.5,
+      "out": 140.75,
+      "borrar": [
+        {
+          "caixa": "A_B_cabecalho",
+          "ate": 2.75
+        },
+        {
+          "caixa": "B_selo",
+          "desde": 2.75
+        },
+        {
+          "caixa": "A_faixa",
+          "desde": 2.75
+        },
+        {
+          "caixa": "A_borda",
+          "desde": 2.75
+        },
+        "status_chrome",
+        {
+          "caixa": "resp_nome_novo",
+          "ate": 2.5
+        },
+        "lista_nome_empresa",
+        {
+          "caixa": "lista_resp_full",
+          "desde": 2.45
+        },
+        {
+          "caixa": "lista_resp_l1",
+          "desde": 2.45
+        },
+        {
+          "caixa": "A_B_cabecalho",
+          "desde": 6.55
+        }
+      ],
+      "porque": "v2: caixa só no nome; vai até 140,75 s para a cena da lista, que pula o esqueleto e o relance do formulário ao fechar (clip 1,75 a 3,1 s); o toast sai em ~6,7 s e descobre o nome: cabeçalho inteiro borrado de novo a partir de 6,55 s"
+    },
+    {
+      "id": "c4-bant-v2",
+      "in": 206.5,
+      "out": 214.5,
+      "borrar": [
+        "A_B_cabecalho",
+        "status_chrome",
+        "resp_nome_editar",
+        "budget_valor",
+        "lista_nome_empresa"
+      ],
+      "porque": "v2: caixas só no nome e no valor; rolagem parada no trecho inteiro (quadros de 206,5 a 214,5 s)"
+    }
+  ]
+}

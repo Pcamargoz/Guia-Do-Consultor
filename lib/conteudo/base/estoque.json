@@ -1,0 +1,2595 @@
+{
+ "versao": "2026-11-06",
+ "id": "estoque",
+ "jornadas": {
+  "inicial": [
+   {
+    "id": "apresentacao",
+    "titulo": "Apresentação",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "texto",
+      "rotulo": "Estoque: saldo e movimentos",
+      "texto": [
+       {
+        "t": "O saldo nunca é digitado: ele é a soma das entradas e saídas que vêm de compras, produção, vendas e ajustes."
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#estoque"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Objetivo",
+      "texto": [
+       {
+        "t": "Consultar quanto existe de cada material, em qual local e variação (cor e medidas), e rastrear de onde veio cada movimento."
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#estoque"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-estagiarios.mjs#estoque"
+    ]
+   },
+   {
+    "id": "video",
+    "titulo": "Vídeo de apoio",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "video",
+      "material": "estoque:video-apoio",
+      "titulo": "Estoque: movimento, reserva e inventário (vídeo de apoio)",
+      "status": "disponivel",
+      "url": "/videos/consultor-04-estoque.mp4",
+      "duracao_s": 183,
+      "poster": "/videos/consultor-04-estoque.jpg",
+      "legendas_url": "/videos/consultor-04-estoque.vtt",
+      "resumo": [
+       {
+        "t": "Apoio do Guia do Consultor, com narração e regras de negócio. O vídeo introdutório deste módulo está em preparação. Movimentos, transferência, reserva, inventário e empréstimo."
+       }
+      ],
+      "fontes": [
+       "guia:public/videos/manifest.json",
+       "guia:videos/roteiros/consultor-04-estoque.json"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:public/videos/manifest.json",
+     "guia:videos/roteiros/consultor-04-estoque.json"
+    ]
+   },
+   {
+    "id": "manual",
+    "titulo": "Manual visual resumido",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "passos",
+      "titulo": "2. Ler a visão geral",
+      "onde": [
+       {
+        "t": "Estoque > Visão geral",
+        "marca": "tela"
+       }
+      ],
+      "intro": null,
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Escolher empresa, obra e período (Hoje, 7, 30 ou 90 dias)."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Os indicadores (valor em estoque, saúde do estoque, necessidade de reposição) são recalculados."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Ler o bloco \"Pendências de hoje\": saldos negativos, empréstimos vencidos, inventários e encerramentos."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#estoque"
+      ]
+     },
+     {
+      "tipo": "passos",
+      "titulo": "3. Consultar o saldo de um material",
+      "onde": [
+       {
+        "t": "Estoque > Saldo",
+        "marca": "tela"
+       }
+      ],
+      "intro": null,
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Pesquisar pelo código ou descrição do produto."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Achar a linha certa: cada produto aparece uma vez por "
+         },
+         {
+          "t": "local",
+          "marca": "negrito"
+         },
+         {
+          "t": " e por "
+         },
+         {
+          "t": "variação",
+          "marca": "negrito"
+         },
+         {
+          "t": " (cor + comprimento)."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Ler SALDO, RESERVADA, CUSTO MÉDIO e VALOR TOTAL."
+         }
+        ],
+        "nota": [
+         {
+          "t": "O número da coluna RESERVADA abre as reservas daquela posição."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Usar "
+         },
+         {
+          "t": "Mais filtros",
+          "marca": "codigo"
+         },
+         {
+          "t": " para filtrar por obra, propriedade (Própria/Cliente) e atributos físicos."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Os filtros ficam salvos no seu navegador; use \"Limpar filtros\" se algo \"sumir\"."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#estoque"
+      ]
+     },
+     {
+      "tipo": "passos",
+      "titulo": "4. Ver o extrato do produto",
+      "onde": [
+       {
+        "t": "clique no código do produto na tela Saldo"
+       }
+      ],
+      "intro": null,
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Abrir a aba "
+         },
+         {
+          "t": "Posições",
+          "marca": "negrito"
+         },
+         {
+          "t": " e ver o saldo por local."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Abrir a aba "
+         },
+         {
+          "t": "Histórico",
+          "marca": "negrito"
+         },
+         {
+          "t": " e ler data, número, tipo, quantidade e motivo de cada movimento."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Você vê de onde veio o material (ex.: \"Entrada de produto acabado por conclusão da OP...\")."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#estoque"
+      ]
+     },
+     {
+      "tipo": "passos",
+      "titulo": "5. Rastrear movimentos",
+      "onde": [
+       {
+        "t": "Estoque > Movimentos",
+        "marca": "tela"
+       }
+      ],
+      "intro": null,
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Filtrar por produto, local ou data."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Reconhecer as origens: Recebimento (NR), Requisição (baixa em OP), OP - Conclusão e Estorno."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Abrir um movimento e ler origem, destino e itens, "
+         },
+         {
+          "t": "sem clicar em Estornar",
+          "marca": "negrito"
+         },
+         {
+          "t": "."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#estoque"
+      ]
+     },
+     {
+      "tipo": "passos",
+      "titulo": "6. Conhecer os tipos de movimento (sem salvar)",
+      "onde": [
+       {
+        "t": "+ Novo Movimento",
+        "marca": "tela"
+       }
+      ],
+      "intro": null,
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Ler a descrição dos 8 tipos: Entrada manual, Ajuste positivo, Ajuste negativo, Transferência, Requisição, Devolução de uso, Empréstimo e Descarte."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Sair com "
+         },
+         {
+          "t": "Cancelar (Esc)",
+          "marca": "negrito"
+         },
+         {
+          "t": "."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#estoque"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-estagiarios.mjs#estoque"
+    ]
+   },
+   {
+    "id": "telas",
+    "titulo": "Principais telas",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "lista",
+      "rotulo": "Telas do módulo (glossário do Harness)",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Novo Movimento"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Estoque › Movimentos › + Novo Movimento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/glossario/telas.yaml#estoque.novo-movimento"
+        ]
+       }
+      ],
+      "fontes": [
+       "harness:conhecimento/glossario/telas.yaml#estoque.novo-movimento"
+      ]
+     }
+    ],
+    "fontes": [
+     "harness:conhecimento/glossario/telas.yaml#estoque.novo-movimento"
+    ]
+   },
+   {
+    "id": "fluxo",
+    "titulo": "Fluxo operacional básico",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "fluxo",
+      "titulo": "Da entrada de mercadorias à reposição automática.",
+      "etapas": [
+       "Entrada de Mercadorias",
+       "Controle de Saldo",
+       "Reserva de Materiais",
+       "Movimentações",
+       "Consumo pela Produção ou Faturamento",
+       "Reposição Automática"
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#estoque"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:db/migrations/002_modulos_iniciais.sql#estoque"
+    ]
+   },
+   {
+    "id": "atividade",
+    "titulo": "Atividade prática",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "passos",
+      "titulo": "1. Preparar seus dados: dar entrada no seu produto",
+      "onde": [
+       {
+        "t": "Estoque > Movimentos > + Novo Movimento",
+        "marca": "tela"
+       }
+      ],
+      "intro": [
+       {
+        "t": "A sua empresa de treino começa "
+       },
+       {
+        "t": "zerada",
+        "marca": "negrito"
+       },
+       {
+        "t": ": cada módulo usa o que o anterior criou. O saldo nunca é digitado: ele nasce de movimentos. Sem uma entrada, o seu produto aparece com saldo zero. Precisa existir um "
+       },
+       {
+        "t": "almoxarifado central ativo",
+        "marca": "negrito"
+       },
+       {
+        "t": " em "
+       },
+       {
+        "t": "Estoque > Locais",
+        "marca": "tela"
+       },
+       {
+        "t": ". Se faltar permissão ou cadastro-base (botão que não aparece, CFOP, plano de contas, meio de pagamento, unidade de medida, almoxarifado), anote a mensagem em "
+       },
+       {
+        "t": "Problema",
+        "marca": "negrito"
+       },
+       {
+        "t": " e chame o supervisor: a empresa de treino começa zerada e os cadastros-base são feitos por um consultor."
+       }
+      ],
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Em "
+         },
+         {
+          "t": "Novo Movimento",
+          "marca": "negrito"
+         },
+         {
+          "t": ", escolher o "
+         },
+         {
+          "t": "Tipo",
+          "marca": "negrito"
+         },
+         {
+          "t": " \"Entrada manual\", a "
+         },
+         {
+          "t": "Empresa",
+          "marca": "negrito"
+         },
+         {
+          "t": " (obrigatória, não vem preenchida) e o "
+         },
+         {
+          "t": "Local de destino",
+          "marca": "negrito"
+         },
+         {
+          "t": "; na linha do item, o "
+         },
+         {
+          "t": "Produto",
+          "marca": "negrito"
+         },
+         {
+          "t": ", a "
+         },
+         {
+          "t": "Quantidade",
+          "marca": "negrito"
+         },
+         {
+          "t": " e o "
+         },
+         {
+          "t": "Custo unit.",
+          "marca": "negrito"
+         },
+         {
+          "t": ". Salvar com "
+         },
+         {
+          "t": "Salvar",
+          "marca": "negrito"
+         },
+         {
+          "t": " (atalho "
+         },
+         {
+          "t": "Ctrl+S",
+          "marca": "negrito"
+         },
+         {
+          "t": "; há também "
+         },
+         {
+          "t": "Salvar e novo",
+          "marca": "negrito"
+         },
+         {
+          "t": ")."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Tipos disponíveis: Entrada manual, Ajuste positivo, Ajuste negativo, Transferência, Requisição, Devolução de uso, Empréstimo e Descarte. Movimento numerado na lista; saldo e custo médio do produto atualizados."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Abrir "
+         },
+         {
+          "t": "Estoque > Saldo",
+          "marca": "tela"
+         },
+         {
+          "t": ", pesquisar o seu produto no campo \"Buscar na lista: produto, código, local...\" e conferir o "
+         },
+         {
+          "t": "Saldo",
+          "marca": "negrito"
+         },
+         {
+          "t": " e o "
+         },
+         {
+          "t": "Valor total",
+          "marca": "negrito"
+         },
+         {
+          "t": "."
+         }
+        ],
+        "nota": [
+         {
+          "t": "O saldo é igual à quantidade que você deu entrada."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#estoque"
+      ]
+     },
+     {
+      "tipo": "link",
+      "material": "estoque:checklist-inicial",
+      "titulo": "Estoque: saldo e movimentos",
+      "status": "disponivel",
+      "url": "/checklists/estagiarios/07-estoque.html",
+      "duracao_s": null,
+      "poster": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#estoque"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-estagiarios.mjs#estoque"
+    ]
+   },
+   {
+    "id": "checklist",
+    "titulo": "Checklist de aprendizado",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "checklist-aprendizado",
+      "chave": "inicial:estoque",
+      "itens": [
+       {
+        "id": "entendi",
+        "texto": [
+         {
+          "t": "Entendi o que é o módulo Estoque e para que serve"
+         }
+        ]
+       },
+       {
+        "id": "acessar-1",
+        "texto": [
+         {
+          "t": "Sei acessar: "
+         },
+         {
+          "t": "Estoque > Movimentos > + Novo Movimento",
+          "marca": "tela"
+         }
+        ]
+       },
+       {
+        "id": "acessar-2",
+        "texto": [
+         {
+          "t": "Sei acessar: "
+         },
+         {
+          "t": "Estoque > Visão geral",
+          "marca": "tela"
+         }
+        ]
+       },
+       {
+        "id": "acessar-3",
+        "texto": [
+         {
+          "t": "Sei acessar: "
+         },
+         {
+          "t": "Estoque > Saldo",
+          "marca": "tela"
+         }
+        ]
+       },
+       {
+        "id": "acessar-4",
+        "texto": [
+         {
+          "t": "Sei acessar: clique no código do produto na tela Saldo"
+         }
+        ]
+       },
+       {
+        "id": "acessar-5",
+        "texto": [
+         {
+          "t": "Sei acessar: "
+         },
+         {
+          "t": "Estoque > Movimentos",
+          "marca": "tela"
+         }
+        ]
+       },
+       {
+        "id": "acessar-6",
+        "texto": [
+         {
+          "t": "Sei acessar: "
+         },
+         {
+          "t": "+ Novo Movimento",
+          "marca": "tela"
+         }
+        ]
+       },
+       {
+        "id": "executei-7",
+        "texto": [
+         {
+          "t": "Executei: 1. Preparar seus dados: dar entrada no seu produto"
+         }
+        ]
+       },
+       {
+        "id": "executei-8",
+        "texto": [
+         {
+          "t": "Executei: 2. Ler a visão geral"
+         }
+        ]
+       },
+       {
+        "id": "executei-9",
+        "texto": [
+         {
+          "t": "Executei: 3. Consultar o saldo de um material"
+         }
+        ]
+       },
+       {
+        "id": "executei-10",
+        "texto": [
+         {
+          "t": "Executei: 4. Ver o extrato do produto"
+         }
+        ]
+       },
+       {
+        "id": "executei-11",
+        "texto": [
+         {
+          "t": "Executei: 5. Rastrear movimentos"
+         }
+        ]
+       },
+       {
+        "id": "executei-12",
+        "texto": [
+         {
+          "t": "Executei: 6. Conhecer os tipos de movimento (sem salvar)"
+         }
+        ]
+       },
+       {
+        "id": "checklist",
+        "texto": [
+         {
+          "t": "Concluí o checklist prático"
+         }
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
+       "guia:scripts/dados-checklists-estagiarios.mjs#estoque"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
+     "guia:scripts/dados-checklists-estagiarios.mjs#estoque"
+    ]
+   },
+   {
+    "id": "progresso",
+    "titulo": "Progresso",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "progresso",
+      "chave": "inicial:estoque",
+      "total": 14,
+      "api": "/api/checklists-progresso",
+      "fontes": [
+       "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md"
+    ]
+   }
+  ],
+  "consultor": [
+   {
+    "id": "visao",
+    "titulo": "Visão funcional",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "texto",
+      "rotulo": "Objetivo",
+      "texto": [
+       {
+        "t": "Controlar movimentação de materiais. No Faktory Flow, o estoque é controlado por características (cor, largura, altura, comprimento), ideal para esquadrias."
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#estoque"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Papel no fluxo",
+      "texto": [
+       {
+        "t": "Módulo central. Integra-se a Compras, Recebimento, Produção, Vendas e Faturamento. Saldos atualizados automaticamente."
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#estoque"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Quando implantar",
+      "texto": [
+       {
+        "t": "Após configuração dos cadastros de produtos e antes de Compras, Produção e Recebimento."
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#estoque"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Caminho — Estoque: movimentos, saldo, transferência, inventário e empréstimo",
+      "texto": [
+       {
+        "t": "Estoque › Visão geral (bloco Pendências de hoje), Saldo, Movimentos, Transferências, Inventário (com Aprovações › Inventários), Empréstimos, Reposição, Locais, Encerramentos e Demonstrativos. Compras › Sugestão de Compra recebe a falta líquida da reposição."
+       }
+      ],
+      "fontes": [
+       "harness:conhecimento/produto/funcional/funcional-estoque-movimentos-saldo-transferencia-inventario.md"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:db/migrations/002_modulos_iniciais.sql#estoque",
+     "harness:conhecimento/produto/funcional/funcional-estoque-movimentos-saldo-transferencia-inventario.md"
+    ]
+   },
+   {
+    "id": "regras",
+    "titulo": "Regras de negócio",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "regra",
+      "titulo": "Um almoxarifado central ativo é pré-requisito de produção e de nota",
+      "texto": [
+       {
+        "t": "Sem um "
+       },
+       {
+        "t": "almoxarifado central ativo",
+        "marca": "negrito"
+       },
+       {
+        "t": " (Estoque › Locais) o sistema bloqueia a conclusão da ordem de produção (\"Conclusão bloqueada\"), a entrada do produto acabado e a finalização da nota fiscal. Um projeto com local de estoque próprio deve ter esse local ativo."
+       }
+      ],
+      "confirmar": [
+       {
+        "t": "Estoque › Locais."
+       }
+      ],
+      "confianca": "B",
+      "fontes": [
+       "harness:conhecimento/produto/regras-negocio/regra-estoque-almoxarifado-central-ativo-e-pre-requisito.md"
+      ]
+     },
+     {
+      "tipo": "regra",
+      "titulo": "Empréstimo entre locais e devoluções",
+      "texto": [
+       {
+        "t": "O "
+       },
+       {
+        "t": "Empréstimo",
+        "marca": "negrito"
+       },
+       {
+        "t": " sai do local de origem com uma data prevista de devolução e aparece como aberto. A devolução pode ser parcial (progresso em %) e depois total; devolver mais do que foi emprestado é recusado. Ao devolver tudo o valor do material volta ao que era antes, nos dois locais. Um empréstimo passado do prazo aparece como vencido."
+       }
+      ],
+      "confirmar": [
+       {
+        "t": "Estoque › Empréstimos."
+       }
+      ],
+      "confianca": "B",
+      "fontes": [
+       "harness:conhecimento/produto/regras-negocio/regra-estoque-emprestimo-devolucao-parcial-e-total.md"
+      ]
+     },
+     {
+      "tipo": "regra",
+      "titulo": "Inventário congela o local e exige outra pessoa para recontar e aprovar",
+      "texto": [
+       {
+        "t": "Iniciar um inventário fotografa o saldo e "
+       },
+       {
+        "t": "congela o local",
+        "marca": "negrito"
+       },
+       {
+        "t": ": movimentos e um segundo inventário no mesmo local são recusados. A contagem é cega. A segunda contagem tem de ser feita por "
+       },
+       {
+        "t": "outra pessoa",
+        "marca": "negrito"
+       },
+       {
+        "t": " (\"deve ser feita por outra pessoa\"), e a aprovação do inventário também, regra que vale até para Super Usuário (o botão Aprovar fica desabilitado). Cancelar o inventário com motivo libera o local sem gerar ajuste. Os parâmetros \"bloquear saída que invade reserva\" e \"empenhar material de OP\" não existem na versão 1.22.12."
+       }
+      ],
+      "confirmar": [
+       {
+        "t": "Estoque › Inventário e Estoque › Aprovações › Inventários."
+       }
+      ],
+      "confianca": "B",
+      "fontes": [
+       "harness:conhecimento/produto/regras-negocio/regra-estoque-inventario-congela-o-local-e-exige-outra-pessoa.md"
+      ]
+     },
+     {
+      "tipo": "regra",
+      "titulo": "O saldo de estoque nunca é digitado: nasce de movimentos",
+      "texto": [
+       {
+        "t": "O saldo vem de movimentos: "
+       },
+       {
+        "t": "Entrada manual",
+        "marca": "negrito"
+       },
+       {
+        "t": ", "
+       },
+       {
+        "t": "Ajuste positivo",
+        "marca": "negrito"
+       },
+       {
+        "t": ", "
+       },
+       {
+        "t": "Ajuste negativo",
+        "marca": "negrito"
+       },
+       {
+        "t": ", "
+       },
+       {
+        "t": "Transferência",
+        "marca": "negrito"
+       },
+       {
+        "t": ", "
+       },
+       {
+        "t": "Requisição",
+        "marca": "negrito"
+       },
+       {
+        "t": ", "
+       },
+       {
+        "t": "Devolução de uso",
+        "marca": "negrito"
+       },
+       {
+        "t": ", "
+       },
+       {
+        "t": "Empréstimo",
+        "marca": "negrito"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "Descarte",
+        "marca": "negrito"
+       },
+       {
+        "t": " (os tipos do Novo Movimento), além das entradas de recebimento e de produto acabado. No Novo Movimento, "
+       },
+       {
+        "t": "Empresa",
+        "marca": "negrito"
+       },
+       {
+        "t": " é obrigatória e não vem preenchida, o campo é "
+       },
+       {
+        "t": "Local de destino",
+        "marca": "negrito"
+       },
+       {
+        "t": " e a coluna do valor é "
+       },
+       {
+        "t": "Custo unit.",
+        "marca": "negrito"
+       },
+       {
+        "t": ". Salvar com "
+       },
+       {
+        "t": "Salvar",
+        "marca": "negrito"
+       },
+       {
+        "t": " (atalho Ctrl+S) ou "
+       },
+       {
+        "t": "Salvar e novo",
+        "marca": "negrito"
+       },
+       {
+        "t": ". Um movimento pode ser estornado, o que cria o movimento \"Estorno\" e marca o original como Estornado."
+       }
+      ],
+      "confirmar": [
+       {
+        "t": "Estoque › Movimentos › + Novo Movimento e Estoque › Saldo."
+       }
+      ],
+      "confianca": "B",
+      "fontes": [
+       "harness:conhecimento/produto/regras-negocio/regra-estoque-saldo-nasce-de-movimentos.md"
+      ]
+     },
+     {
+      "tipo": "regra",
+      "titulo": "Transferência pendente reserva a quantidade",
+      "texto": [
+       {
+        "t": "Uma transferência em rascunho (número "
+       },
+       {
+        "t": "TRF-",
+        "marca": "negrito"
+       },
+       {
+        "t": ") "
+       },
+       {
+        "t": "não",
+        "marca": "negrito"
+       },
+       {
+        "t": " baixa o saldo da origem, mas reserva a quantidade: o "
+       },
+       {
+        "t": "disponível",
+        "marca": "negrito"
+       },
+       {
+        "t": " desce enquanto o saldo continua igual. O número da coluna "
+       },
+       {
+        "t": "Reservada",
+        "marca": "negrito"
+       },
+       {
+        "t": " do Saldo abre a reserva. Origem igual ao destino, quantidade zero ou negativa e transferência sem produto são recusados. Confirmar baixa a origem e sobe o destino pelo mesmo valor e consome a reserva; excluir a transferência pendente libera a reserva. Depois de confirmada, os botões Confirmar e Excluir somem."
+       }
+      ],
+      "confirmar": [
+       {
+        "t": "Estoque › Transferências e Estoque › Saldo (a coluna Reservada vem oculta por padrão)."
+       }
+      ],
+      "confianca": "B",
+      "fontes": [
+       "harness:conhecimento/produto/regras-negocio/regra-estoque-transferencia-pendente-reserva-o-disponivel.md"
+      ]
+     },
+     {
+      "tipo": "regra",
+      "titulo": "Finalizar NF: o que precisa existir",
+      "texto": [
+       {
+        "t": "Finalizar NF",
+        "marca": "negrito"
+       },
+       {
+        "t": " pede confirmação (\"a nota ficará disponível apenas para visualização\") e deixa a nota "
+       },
+       {
+        "t": "Finalizada",
+        "marca": "negrito"
+       },
+       {
+        "t": " sem transmitir. Precisa de um "
+       },
+       {
+        "t": "almoxarifado central ativo",
+        "marca": "negrito"
+       },
+       {
+        "t": " (ou de local de estoque ativo no projeto); sem isso o sistema responde \"Não foi possível resolver o local de estoque…\" ou \"O projeto … não tem local de estoque ativo\". Se o produto não tem NCM com CST de PIS/COFINS de saída, a nota mostra o quadro \"Impostos não calculados no item\" com o motivo, mas ainda pode ser salva."
+       }
+      ],
+      "confirmar": [
+       {
+        "t": "Faturamento › Notas Fiscais › "
+       },
+       {
+        "t": "⋯",
+        "marca": "codigo"
+       },
+       {
+        "t": " › Finalizar NF; faixa \"Ambiente NF-e: HOMOLOGAÇÃO\" na nota."
+       }
+      ],
+      "confianca": "B",
+      "fontes": [
+       "harness:conhecimento/produto/regras-negocio/regra-faturamento-finalizar-nf-requisitos.md"
+      ]
+     },
+     {
+      "tipo": "regra",
+      "titulo": "Marcar produzido gera a entrada do produto acabado",
+      "texto": [
+       {
+        "t": "Em "
+       },
+       {
+        "t": "Mais ações › Marcar produzido",
+        "marca": "codigo"
+       },
+       {
+        "t": ", a OP vai para "
+       },
+       {
+        "t": "Produzido",
+        "marca": "negrito"
+       },
+       {
+        "t": " e nasce o movimento \"Entrada de produto acabado (OP)\" no almoxarifado central, com a quantidade e o custo da OP. O custo da OP mostra estimado e realizado (materiais e mão de obra). Um apontamento de tempo que ficou aberto continua aberto mesmo com a OP produzida, e \"Cancelar OP\" continua habilitado numa OP Produzida."
+       }
+      ],
+      "confirmar": [
+       {
+        "t": "Produção › Ordens de produção, Estoque › Movimentos e "
+       },
+       {
+        "t": "Mais ações › Custo da OP",
+        "marca": "codigo"
+       },
+       {
+        "t": "."
+       }
+      ],
+      "confianca": "B",
+      "fontes": [
+       "harness:conhecimento/produto/regras-negocio/regra-producao-marcar-produzido-gera-entrada-do-produto-acabado.md"
+      ]
+     }
+    ],
+    "fontes": [
+     "harness:conhecimento/produto/regras-negocio/regra-estoque-almoxarifado-central-ativo-e-pre-requisito.md",
+     "harness:conhecimento/produto/regras-negocio/regra-estoque-emprestimo-devolucao-parcial-e-total.md",
+     "harness:conhecimento/produto/regras-negocio/regra-estoque-inventario-congela-o-local-e-exige-outra-pessoa.md",
+     "harness:conhecimento/produto/regras-negocio/regra-estoque-saldo-nasce-de-movimentos.md",
+     "harness:conhecimento/produto/regras-negocio/regra-estoque-transferencia-pendente-reserva-o-disponivel.md",
+     "harness:conhecimento/produto/regras-negocio/regra-faturamento-finalizar-nf-requisitos.md",
+     "harness:conhecimento/produto/regras-negocio/regra-producao-marcar-produzido-gera-entrada-do-produto-acabado.md"
+    ]
+   },
+   {
+    "id": "fluxos",
+    "titulo": "Fluxos operacionais",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "fluxo",
+      "titulo": "Da entrada de mercadorias à reposição automática.",
+      "etapas": [
+       "Entrada de Mercadorias",
+       "Controle de Saldo",
+       "Reserva de Materiais",
+       "Movimentações",
+       "Consumo pela Produção ou Faturamento",
+       "Reposição Automática"
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#estoque"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "1. Locais e almoxarifado central",
+      "onde": [
+       {
+        "t": "Estoque > Locais",
+        "marca": "tela"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "Estoque > Configurações > Parâmetros de Estoque",
+        "marca": "tela"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Tudo no estoque acontece num local. Comece garantindo o almoxarifado central em cada empresa, porque é nele que a nota de recebimento e a produção dão entrada."
+       }
+      ],
+      "passos_total": 4,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-estoque"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "2. Saldo inicial na data de corte",
+      "onde": [
+       {
+        "t": "Estoque > Saldo > Mais > Importar saldo",
+        "marca": "tela"
+       }
+      ],
+      "intro": [
+       {
+        "t": "O saldo de abertura entra por planilha, antes de qualquer compra ou nota no Flow. Faça com um arquivo de teste de poucas linhas."
+       }
+      ],
+      "passos_total": 4,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-estoque"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "3. Entradas e saídas manuais",
+      "onde": [
+       {
+        "t": "Estoque > Movimentos > + Novo Movimento",
+        "marca": "tela"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Os movimentos manuais cobrem o que não vem de documento: entrada avulsa, ajuste, descarte. Mostre também que movimento não se edita: corrige-se por estorno."
+       }
+      ],
+      "passos_total": 5,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-estoque"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "4. Entradas e saídas automáticas",
+      "onde": [
+       {
+        "t": "Estoque > Movimentos",
+        "marca": "tela"
+       }
+      ],
+      "intro": [
+       {
+        "t": "A maior parte do estoque se move sozinha, pelos documentos dos outros módulos. Mostre ao cliente onde ver cada origem."
+       }
+      ],
+      "passos_total": 3,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-estoque"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "5. Saldo e extrato",
+      "onde": [
+       {
+        "t": "Estoque > Saldo",
+        "marca": "tela"
+       },
+       {
+        "t": " e o código do produto"
+       }
+      ],
+      "intro": [
+       {
+        "t": "É a tela que o cliente mais vai consultar. Ensine a achar a linha certa e a ler de onde veio cada quantidade."
+       }
+      ],
+      "passos_total": 3,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-estoque"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "6. Transferência e reserva",
+      "onde": [
+       {
+        "t": "Estoque > Transferências",
+        "marca": "tela"
+       },
+       {
+        "t": " e coluna "
+       },
+       {
+        "t": "Reservada",
+        "marca": "codigo"
+       },
+       {
+        "t": " do Saldo"
+       }
+      ],
+      "intro": [
+       {
+        "t": "A transferência mostra a diferença entre saldo e disponível: enquanto pendente, ela reserva a quantidade na origem."
+       }
+      ],
+      "passos_total": 7,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-estoque"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "7. Inventário com ajuste",
+      "onde": [
+       {
+        "t": "Estoque > Inventário",
+        "marca": "tela"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "Estoque > Aprovações > Inventários",
+        "marca": "tela"
+       }
+      ],
+      "intro": [
+       {
+        "t": "O inventário confere o físico contra o sistema e ajusta a diferença. Ele congela o local e exige pessoas diferentes para contar e aprovar."
+       }
+      ],
+      "passos_total": 6,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-estoque"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "8. Empréstimo entre locais (se o cliente usa)",
+      "onde": [
+       {
+        "t": "Estoque > Empréstimos",
+        "marca": "tela"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Para quem empresta material entre locais ou obras com data de volta. Pule o bloco se o cliente não usa."
+       }
+      ],
+      "passos_total": 3,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-estoque"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "9. Reposição e balanço final",
+      "onde": [
+       {
+        "t": "Estoque > Reposição",
+        "marca": "tela"
+       },
+       {
+        "t": ", "
+       },
+       {
+        "t": "Compras > Sugestão de Compra",
+        "marca": "tela"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "Estoque > Reservas órfãs",
+        "marca": "tela"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Feche provando que tudo o que foi feito fecha no saldo e ligando o estoque ao Compras pela reposição."
+       }
+      ],
+      "passos_total": 3,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-estoque"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:db/migrations/002_modulos_iniciais.sql#estoque",
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-estoque"
+    ]
+   },
+   {
+    "id": "implantacao",
+    "titulo": "Procedimentos de implantação",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "texto",
+      "rotulo": "Implantação de Estoque: roteiro prático com o cliente",
+      "texto": [
+       {
+        "t": "Ao final, o cliente sabe que o saldo nunca é digitado: ele nasce de movimentos, e cada um deixa rastro no extrato. Ele viu o saldo inicial entrar, as travas de saldo, reserva e inventário funcionarem e o balanço do produto fechar em quantidade e valor."
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-estoque"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "rotulo": "Blocos do roteiro de implantação",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "1. Locais e almoxarifado central"
+         }
+        ],
+        "nota": [
+         {
+          "t": "4 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-estoque"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "2. Saldo inicial na data de corte"
+         }
+        ],
+        "nota": [
+         {
+          "t": "4 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-estoque"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "3. Entradas e saídas manuais"
+         }
+        ],
+        "nota": [
+         {
+          "t": "5 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-estoque"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "4. Entradas e saídas automáticas"
+         }
+        ],
+        "nota": [
+         {
+          "t": "3 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-estoque"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "5. Saldo e extrato"
+         }
+        ],
+        "nota": [
+         {
+          "t": "3 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-estoque"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "6. Transferência e reserva"
+         }
+        ],
+        "nota": [
+         {
+          "t": "7 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-estoque"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "7. Inventário com ajuste"
+         }
+        ],
+        "nota": [
+         {
+          "t": "6 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-estoque"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "8. Empréstimo entre locais (se o cliente usa)"
+         }
+        ],
+        "nota": [
+         {
+          "t": "3 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-estoque"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "9. Reposição e balanço final"
+         }
+        ],
+        "nota": [
+         {
+          "t": "3 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-estoque"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-estoque"
+      ]
+     },
+     {
+      "tipo": "link",
+      "material": "estoque:checklist-implantacao",
+      "titulo": "Implantação de Estoque: roteiro prático com o cliente",
+      "status": "disponivel",
+      "url": "/checklists/consultores/implantacao-10-estoque.html",
+      "duracao_s": null,
+      "poster": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-estoque"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Orientação de treinamento",
+      "texto": [
+       {
+        "t": "Apresente saldo por características, movimentações, reservas, transferências, inventário e reposição automática. Demonstre consulta de saldos e integração com a operação."
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#estoque"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-estoque",
+     "guia:db/migrations/002_modulos_iniciais.sql#estoque"
+    ]
+   },
+   {
+    "id": "configuracoes",
+    "titulo": "Configurações importantes",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "lista",
+      "rotulo": "Pré-requisitos",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Fundação concluída: "
+         },
+         {
+          "t": "tipo de categoria",
+          "marca": "negrito"
+         },
+         {
+          "t": " final, "
+         },
+         {
+          "t": "unidade de estoque",
+          "marca": "negrito"
+         },
+         {
+          "t": " e "
+         },
+         {
+          "t": "fator de embalagem",
+          "marca": "negrito"
+         },
+         {
+          "t": " de cada produto conferidos, e cores cadastradas."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " amostra de produtos. Depois do saldo, o tipo da categoria trava. "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " README de Suprimentos, ordem 3; CAD-CAT-004, EST-SLD-003."
+         }
+        ],
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-estoque"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Produto de teste de "
+         },
+         {
+          "t": "uso controlado em estoque",
+          "marca": "negrito"
+         },
+         {
+          "t": ", com "
+         },
+         {
+          "t": "Origem da Mercadoria",
+          "marca": "negrito"
+         },
+         {
+          "t": " preenchida e preço de custo no cadastro."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " o cadastro do produto. Sem origem, o salvar avisa só no fim; sem custo, a sobra do inventário trava a aprovação. "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " fluxo antigo de estoque (pré-requisito e atenção); EST-INV-008."
+         }
+        ],
+        "selo": "conferido-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-estoque"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Três usuários de teste: quem cria e quem confirma a transferência; dois contadores e um aprovador do inventário."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " "
+         },
+         {
+          "t": "Segurança > Perfis de Acesso",
+          "marca": "codigo"
+         },
+         {
+          "t": ". A regra vale até para Super Usuário. "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " README de Suprimentos, S9; EST-INV-004 a 007."
+         }
+        ],
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-estoque"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Data de corte combinada com o cliente, depois da contagem física e das últimas notas do sistema antigo, e a planilha de saldo com custo aceito pela contabilidade."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " a ata. "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " README de Suprimentos, S7; EST C, etapa 4."
+         }
+        ],
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-estoque"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Saber se o cliente usa inventário (PRO), localizações (PRO) e empréstimo, e quem pode retirar material reservado."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " "
+         },
+         {
+          "t": "Minha Assinatura",
+          "marca": "codigo"
+         },
+         {
+          "t": " e a ata. "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " EST C, etapas 3 e 5; EST-MOV-010."
+         }
+        ],
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-estoque"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-estoque"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-estoque"
+    ]
+   },
+   {
+    "id": "validacoes",
+    "titulo": "Validações funcionais",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "lista",
+      "rotulo": "Resultado esperado",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Cada empresa tem almoxarifado central ativo, e o saldo inicial entrou na data de corte conferido contra a planilha."
+         }
+        ],
+        "nota": null,
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-estoque"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Entrada manual, ajustes e estorno mudaram o saldo e ficaram no extrato."
+         }
+        ],
+        "nota": null,
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-estoque"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "A entrada da nota de recebimento apareceu como \"Recebimento (NR)\" no almoxarifado central."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-estoque"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "A transferência pendente reservou o disponível e a confirmada moveu o saldo entre os locais."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-estoque"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "O inventário congelou o local, exigiu outras pessoas e gerou o ajuste da diferença."
+         }
+        ],
+        "nota": null,
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-estoque"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "O balanço do produto fechou em quantidade e valor e não sobraram reservas órfãs."
+         }
+        ],
+        "nota": null,
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-estoque"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-estoque"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "rotulo": "Checklist do módulo",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Consultar saldos dos produtos"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#estoque"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Realizar movimentações e transferências"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#estoque"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Entender reservas de materiais"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#estoque"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Executar inventários e ajustes"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#estoque"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Compreender integração com Compras, Recebimento, Produção, Vendas e Faturamento"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#estoque"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#estoque"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-estoque",
+     "guia:db/migrations/002_modulos_iniciais.sql#estoque"
+    ]
+   },
+   {
+    "id": "integracoes",
+    "titulo": "Integrações e dependências",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "texto",
+      "rotulo": "Relação com os outros módulos",
+      "texto": [
+       {
+        "t": "Módulo central. Integra-se a Compras, Recebimento, Produção, Vendas e Faturamento. Saldos atualizados automaticamente."
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#estoque"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:db/migrations/002_modulos_iniciais.sql#estoque"
+    ]
+   },
+   {
+    "id": "problemas",
+    "titulo": "Problemas recorrentes",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "lista",
+      "rotulo": "Atenção",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Só em ambiente de teste. Nomeie os registros com \"TESTE FLUXO CONSULTOR\" e não deixe inventário aberto em empresa de produção: ele congela o local."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-estoque"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Ctrl+S salva",
+          "marca": "negrito"
+         },
+         {
+          "t": " o movimento. "
+         },
+         {
+          "t": "Importar saldo",
+          "marca": "negrito"
+         },
+         {
+          "t": ", "
+         },
+         {
+          "t": "Estornar",
+          "marca": "negrito"
+         },
+         {
+          "t": ", "
+         },
+         {
+          "t": "Aprovar inventário",
+          "marca": "negrito"
+         },
+         {
+          "t": " e aprovar "
+         },
+         {
+          "t": "Encerramentos",
+          "marca": "negrito"
+         },
+         {
+          "t": " alteram o estoque e não têm desfazer."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-estoque"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Nada se lança antes do saldo inicial nas mesmas variações: o retroativo é recusado e o custo médio se perde."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-estoque"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "A 2ª contagem e a aprovação do inventário exigem "
+         },
+         {
+          "t": "outra pessoa",
+          "marca": "negrito"
+         },
+         {
+          "t": ", até para Super Usuário: crie os usuários antes."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-estoque"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Transferência e Empréstimo existem como tipo de movimento "
+         },
+         {
+          "t": "e",
+          "marca": "negrito"
+         },
+         {
+          "t": " como telas próprias: use um só caminho por teste."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-estoque"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Não existe item \"Reservas\" no menu: a reserva está na coluna RESERVADA do Saldo (vem oculta por padrão) e na aba Reservas do produto."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-estoque"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Hoje o sistema ainda dá entrada da nota com custo cheio (com IPI e ICMS-ST, sem descontar crédito). Avise o cliente que confere custo médio."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-estoque"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Os avisos na tela não somem sozinhos e podem cobrir botões: feche-os antes de continuar."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-estoque"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-estoque"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "rotulo": "Cuidados (vídeo)",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Sem almoxarifado central ativo, recebimento, produção e nota travam."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:videos/roteiros/consultor-04-estoque.json#14"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "A segunda contagem do inventário diz prossiga, mas recusa o mesmo usuário."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:videos/roteiros/consultor-04-estoque.json#14"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Material reservado ainda pode sair: confira o disponível."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:videos/roteiros/consultor-04-estoque.json#14"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:videos/roteiros/consultor-04-estoque.json#14"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "rotulo": "A conferir na tela",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Saída sobre material reservado: o fluxo antigo (conferido na tela, v1.22.12) viu a requisição passar sobre 3 unidades reservadas, deixando o disponível negativo; a gestora diz que retirar reserva alheia exige a permissão a permissão de retirar material reservado e mostra mensagem de recusa (EST-MOV-010, D-285). Conferir antes de ensinar."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-estoque"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Parâmetros de Estoque: o fluxo antigo diz que na v1.22.12 só existe \"bloquear saída sem saldo\"; a gestora lista também \"Permitir movimento com data passada\", \"Dias máximos para movimento retroativo\", \"Usar localizações por local\", alerta de fator e retalho mínimo. Conferir a tela."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-estoque"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Caminhos de menu: o fluxo antigo usa "
+         },
+         {
+          "t": "Estoque > Locais",
+          "marca": "tela"
+         },
+         {
+          "t": " e "
+         },
+         {
+          "t": "Estoque > Inventário",
+          "marca": "tela"
+         },
+         {
+          "t": "; a gestora usa "
+         },
+         {
+          "t": "Estoque > Configurações > Locais",
+          "marca": "tela"
+         },
+         {
+          "t": " e "
+         },
+         {
+          "t": "Estoque > Inventários",
+          "marca": "tela"
+         },
+         {
+          "t": ". Conferir os rótulos."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-estoque"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Extrato da transferência: o fluxo antigo esperava saída e entrada com o mesmo número TRF-, mas viu um movimento único com origem e destino. Conferir como aparece antes de explicar."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-estoque"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Inventário como PRO: a gestora marca inventário e localizações como PRO; o fluxo antigo executou o inventário sem citar licença. Conferir a assinatura do cliente."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-estoque"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Custo da entrada pela nota: hoje entra com IPI e ICMS-ST e sem crédito (EST-SLD-004, README S8), o que diverge das decisões D-199/D-465 (WI #30480). Conferir o custo médio depois da NR."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-estoque"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Não conferidos na tela: importação de saldo inicial, ajustes positivo e negativo, mês encerrado, auditoria e aprovação do inventário, regra criar × confirmar da transferência e Reservas órfãs."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-estoque"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-estoque"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-estoque",
+     "guia:videos/roteiros/consultor-04-estoque.json#14"
+    ]
+   },
+   {
+    "id": "videos",
+    "titulo": "Vídeos avançados",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "video",
+      "material": "estoque:video-consultor",
+      "titulo": "Estoque: movimento, reserva e inventário",
+      "status": "disponivel",
+      "url": "/videos/consultor-04-estoque.mp4",
+      "duracao_s": 183,
+      "poster": "/videos/consultor-04-estoque.jpg",
+      "legendas_url": "/videos/consultor-04-estoque.vtt",
+      "resumo": [
+       {
+        "t": "Movimentos, transferência, reserva, inventário e empréstimo."
+       }
+      ],
+      "fontes": [
+       "guia:public/videos/manifest.json",
+       "guia:videos/roteiros/consultor-04-estoque.json"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:public/videos/manifest.json",
+     "guia:videos/roteiros/consultor-04-estoque.json"
+    ]
+   },
+   {
+    "id": "complementares",
+    "titulo": "Materiais complementares",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "link",
+      "material": "estoque:checklist-inicial",
+      "titulo": "Estoque: saldo e movimentos",
+      "status": "disponivel",
+      "url": "/checklists/estagiarios/07-estoque.html",
+      "duracao_s": null,
+      "poster": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#estoque"
+      ]
+     },
+     {
+      "tipo": "link",
+      "material": "estoque:checklist-implantacao",
+      "titulo": "Implantação de Estoque: roteiro prático com o cliente",
+      "status": "disponivel",
+      "url": "/checklists/consultores/implantacao-10-estoque.html",
+      "duracao_s": null,
+      "poster": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-estoque"
+      ]
+     },
+     {
+      "tipo": "link",
+      "titulo": "Apostila do Consultor (PDF)",
+      "url": "/downloads/Apostila-do-Consultor-Faktory-Flow.pdf",
+      "visibilidade": "area:apostila",
+      "fontes": [
+       "guia:public/downloads/Apostila-do-Consultor-Faktory-Flow.pdf"
+      ]
+     },
+     {
+      "tipo": "fontes",
+      "rotulo": "Fontes no Harness",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Como dar entrada manual no estoque"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Procedimento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/produto/procedimentos/procedimento-dar-entrada-manual-no-estoque.md"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "06 Manual Estoque"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Manual oficial"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/06_Manual_Estoque_Timbrado.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "01-movimentos-de-estoque-com-sistemas-tecnicos"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/estoque/01-movimentos-de-estoque-com-sistemas-tecnicos.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "02-transferencias-de-estoque-com-sistemas-tecnicos"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/estoque/02-transferencias-de-estoque-com-sistemas-tecnicos.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "03-inventarios-com-sistemas-tecnicos"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/estoque/03-inventarios-com-sistemas-tecnicos.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "04-emprestimos-com-sistemas-tecnicos"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/estoque/04-emprestimos-com-sistemas-tecnicos.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "05-encerramentos-com-sistemas-tecnicos"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/estoque/05-encerramentos-com-sistemas-tecnicos.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "06-reposicao-com-sistemas-tecnicos"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/estoque/06-reposicao-com-sistemas-tecnicos.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "07-visao-geral-e-saldos"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/estoque/07-visao-geral-e-saldos.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "08-locais-localizacoes-e-parametros"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/estoque/08-locais-localizacoes-e-parametros.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "09-paineis-e-demonstrativos"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/estoque/09-paineis-e-demonstrativos.docx"
+        ]
+       }
+      ],
+      "fontes": [
+       "harness:conhecimento/produto/procedimentos/procedimento-dar-entrada-manual-no-estoque.md",
+       "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/06_Manual_Estoque_Timbrado.docx",
+       "harness:conhecimento/Roteiros Treinamento/estoque/01-movimentos-de-estoque-com-sistemas-tecnicos.docx",
+       "harness:conhecimento/Roteiros Treinamento/estoque/02-transferencias-de-estoque-com-sistemas-tecnicos.docx",
+       "harness:conhecimento/Roteiros Treinamento/estoque/03-inventarios-com-sistemas-tecnicos.docx",
+       "harness:conhecimento/Roteiros Treinamento/estoque/04-emprestimos-com-sistemas-tecnicos.docx",
+       "harness:conhecimento/Roteiros Treinamento/estoque/05-encerramentos-com-sistemas-tecnicos.docx",
+       "harness:conhecimento/Roteiros Treinamento/estoque/06-reposicao-com-sistemas-tecnicos.docx",
+       "harness:conhecimento/Roteiros Treinamento/estoque/07-visao-geral-e-saldos.docx",
+       "harness:conhecimento/Roteiros Treinamento/estoque/08-locais-localizacoes-e-parametros.docx",
+       "harness:conhecimento/Roteiros Treinamento/estoque/09-paineis-e-demonstrativos.docx"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-estagiarios.mjs#estoque",
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-estoque",
+     "guia:public/downloads/Apostila-do-Consultor-Faktory-Flow.pdf",
+     "harness:conhecimento/produto/procedimentos/procedimento-dar-entrada-manual-no-estoque.md",
+     "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/06_Manual_Estoque_Timbrado.docx",
+     "harness:conhecimento/Roteiros Treinamento/estoque/01-movimentos-de-estoque-com-sistemas-tecnicos.docx",
+     "harness:conhecimento/Roteiros Treinamento/estoque/02-transferencias-de-estoque-com-sistemas-tecnicos.docx",
+     "harness:conhecimento/Roteiros Treinamento/estoque/03-inventarios-com-sistemas-tecnicos.docx",
+     "harness:conhecimento/Roteiros Treinamento/estoque/04-emprestimos-com-sistemas-tecnicos.docx",
+     "harness:conhecimento/Roteiros Treinamento/estoque/05-encerramentos-com-sistemas-tecnicos.docx",
+     "harness:conhecimento/Roteiros Treinamento/estoque/06-reposicao-com-sistemas-tecnicos.docx",
+     "harness:conhecimento/Roteiros Treinamento/estoque/07-visao-geral-e-saldos.docx",
+     "harness:conhecimento/Roteiros Treinamento/estoque/08-locais-localizacoes-e-parametros.docx",
+     "harness:conhecimento/Roteiros Treinamento/estoque/09-paineis-e-demonstrativos.docx"
+    ]
+   }
+  ]
+ }
+}

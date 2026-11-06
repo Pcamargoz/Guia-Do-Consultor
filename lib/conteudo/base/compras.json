@@ -1,0 +1,2413 @@
+{
+ "versao": "2026-11-06",
+ "id": "compras",
+ "jornadas": {
+  "inicial": [
+   {
+    "id": "apresentacao",
+    "titulo": "Apresentação",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "texto",
+      "rotulo": "Compras: da necessidade ao pedido",
+      "texto": [
+       {
+        "t": "O caminho do material: alguém precisa → cotação com fornecedores → pedido de compra → entrega no Recebimento."
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#compras"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Objetivo",
+      "texto": [
+       {
+        "t": "Entender a sequência de documentos de compra (SC → COT → PC), onde consultar cada um, ler a linha do tempo do pedido e saber o que acontece depois da entrega."
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#compras"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-estagiarios.mjs#compras"
+    ]
+   },
+   {
+    "id": "video",
+    "titulo": "Vídeo de apoio",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "video",
+      "material": "compras:video-apoio",
+      "titulo": "Suprimentos: da solicitação ao pagamento (vídeo de apoio)",
+      "status": "disponivel",
+      "url": "/videos/consultor-01-suprimentos.mp4",
+      "duracao_s": 203,
+      "poster": "/videos/consultor-01-suprimentos.jpg",
+      "legendas_url": "/videos/consultor-01-suprimentos.vtt",
+      "resumo": [
+       {
+        "t": "Apoio do Guia do Consultor, com narração e regras de negócio. O vídeo introdutório deste módulo está em preparação. Cotação opcional, a natureza da operação que define o CFOP, a nota com dois números e a linha do tempo do pedido."
+       }
+      ],
+      "fontes": [
+       "guia:public/videos/manifest.json",
+       "guia:videos/roteiros/consultor-01-suprimentos.json"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:public/videos/manifest.json",
+     "guia:videos/roteiros/consultor-01-suprimentos.json"
+    ]
+   },
+   {
+    "id": "manual",
+    "titulo": "Manual visual resumido",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "passos",
+      "titulo": "2. Conhecer o menu na ordem do processo",
+      "onde": [
+       {
+        "t": "módulo "
+       },
+       {
+        "t": "Compras",
+        "marca": "codigo"
+       }
+      ],
+      "intro": null,
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Ver que os itens do menu seguem o processo: Solicitações → Sugestão → Cotações → Pedidos → Aprovações → Contratos de Entrega → Follow-up de Entregas."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Abrir o "
+         },
+         {
+          "t": "Dashboard Compras",
+          "marca": "codigo"
+         },
+         {
+          "t": " e ler os cartões (solicitações em aberto, cotações ativas, pedidos em aberto, total do mês) e o bloco de pedidos recentes."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#compras"
+      ]
+     },
+     {
+      "tipo": "passos",
+      "titulo": "3. Consultar os documentos de compra",
+      "onde": null,
+      "intro": null,
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Em "
+         },
+         {
+          "t": "Solicitações de Compra",
+          "marca": "tela"
+         },
+         {
+          "t": ", localizar uma SC e abrir o menu "
+         },
+         {
+          "t": "⋯",
+          "marca": "codigo"
+         },
+         {
+          "t": "."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Opções Gerar Cotação, Gerar Pedido de Compra e Excluir. A solicitação não tem etapa de aprovação."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Em "
+         },
+         {
+          "t": "Cotações de Compra",
+          "marca": "codigo"
+         },
+         {
+          "t": ", abrir uma cotação e percorrer o assistente: Dados Gerais, Itens a Cotar, Cotação (fornecedores) e Comparação."
+         }
+        ],
+        "nota": [
+         {
+          "t": "A Natureza da Operação escolhida define o CFOP do pedido."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Em "
+         },
+         {
+          "t": "Pedidos de Compra",
+          "marca": "codigo"
+         },
+         {
+          "t": ", abrir um pedido e ler fornecedor, itens, CFOP, entrega prevista e parcelas."
+         }
+        ],
+        "nota": [
+         {
+          "t": "O status da lista (\"Em Aberto\") pode diferir do da tela de edição (\"Em Edição\")."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Abrir "
+         },
+         {
+          "t": "⋯ > Linha do tempo",
+          "marca": "codigo"
+         },
+         {
+          "t": " do pedido."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Mostra SC, cotação, pedido, nota de recebimento e título, cada um com seu status."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#compras"
+      ]
+     },
+     {
+      "tipo": "passos",
+      "titulo": "4. Sugestão e aprovação",
+      "onde": [
+       {
+        "t": "Compras > Sugestão de Compra",
+        "marca": "tela"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "Compras > Aprovações",
+        "marca": "tela"
+       }
+      ],
+      "intro": null,
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Em "
+         },
+         {
+          "t": "Sugestão de Compra",
+          "marca": "codigo"
+         },
+         {
+          "t": ", ler a fórmula \"falta líquida = mínimo − disponível\" "
+         },
+         {
+          "t": "sem gerar solicitações",
+          "marca": "negrito"
+         },
+         {
+          "t": "."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Só aparecem itens com estoque mínimo cadastrado."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Em "
+         },
+         {
+          "t": "Compras > Aprovações",
+          "marca": "tela"
+         },
+         {
+          "t": ", ver os pedidos aguardando alçada."
+         }
+        ],
+        "nota": [
+         {
+          "t": "A aprovação por alçada vem desligada: sem ela o pedido já nasce pronto para receber."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#compras"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-estagiarios.mjs#compras"
+    ]
+   },
+   {
+    "id": "telas",
+    "titulo": "Principais telas",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "lista",
+      "rotulo": "Telas do módulo (glossário do Harness)",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Solicitações de Compra"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Compras › Solicitações de Compra"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/glossario/telas.yaml#compras.solicitacoes"
+        ]
+       }
+      ],
+      "fontes": [
+       "harness:conhecimento/glossario/telas.yaml#compras.solicitacoes"
+      ]
+     }
+    ],
+    "fontes": [
+     "harness:conhecimento/glossario/telas.yaml#compras.solicitacoes"
+    ]
+   },
+   {
+    "id": "fluxo",
+    "titulo": "Fluxo operacional básico",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "fluxo",
+      "titulo": "Da identificação da necessidade ao recebimento da mercadoria.",
+      "etapas": [
+       "Necessidade de Compra",
+       "Cotação",
+       "Comparação de Fornecedores",
+       "Pedido de Compra",
+       "Acompanhamento da Entrega",
+       "Recebimento da Mercadoria"
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#compras"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:db/migrations/002_modulos_iniciais.sql#compras"
+    ]
+   },
+   {
+    "id": "atividade",
+    "titulo": "Atividade prática",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "passos",
+      "titulo": "1. Preparar seus dados: criar uma solicitação e um pedido de compra",
+      "onde": [
+       {
+        "t": "Cadastros > Participantes",
+        "marca": "tela"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "Compras > Solicitações de Compra",
+        "marca": "tela"
+       }
+      ],
+      "intro": [
+       {
+        "t": "A sua empresa de treino começa "
+       },
+       {
+        "t": "zerada",
+        "marca": "negrito"
+       },
+       {
+        "t": ": cada módulo usa o que o anterior criou. A compra precisa de um fornecedor, que é o mesmo cadastro de participante com outra chave ligada. Anote os números: o checklist 06 (recebimento) parte do seu pedido de compra. Se faltar permissão ou cadastro-base (botão que não aparece, CFOP, plano de contas, meio de pagamento, unidade de medida, almoxarifado), anote a mensagem em "
+       },
+       {
+        "t": "Problema",
+        "marca": "negrito"
+       },
+       {
+        "t": " e chame o supervisor: a empresa de treino começa zerada e os cadastros-base são feitos por um consultor."
+       }
+      ],
+      "passos": [
+       {
+        "texto": [
+         {
+          "t": "Cadastrar um participante \"TESTE ESTAGIÁRIO - Fornecedor\" com "
+         },
+         {
+          "t": "É Fornecedor?",
+          "marca": "negrito"
+         },
+         {
+          "t": " ligado, como no checklist 02."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Em "
+         },
+         {
+          "t": "Compras > Solicitações de Compra > Nova Solicitação",
+          "marca": "tela"
+         },
+         {
+          "t": ": "
+         },
+         {
+          "t": "Empresa",
+          "marca": "negrito"
+         },
+         {
+          "t": ", data de necessidade, produto e quantidade. Salvar."
+         }
+        ],
+        "nota": [
+         {
+          "t": "SC \"Em Aberto\". Produto de chapa ou perfil pede a "
+         },
+         {
+          "t": "Cor",
+          "marca": "negrito"
+         },
+         {
+          "t": " ao ser escolhido (diálogo \"Dados do Item\" > Aplicar). Projeto em branco faz a entrada cair no almoxarifado central."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "No menu "
+         },
+         {
+          "t": "⋯",
+          "marca": "codigo"
+         },
+         {
+          "t": " da solicitação, escolher "
+         },
+         {
+          "t": "Gerar Pedido de Compra",
+          "marca": "negrito"
+         },
+         {
+          "t": " (a cotação é opcional). Abre o "
+         },
+         {
+          "t": "Novo Pedido de Compra",
+          "marca": "negrito"
+         },
+         {
+          "t": " com o produto já preenchido: informar "
+         },
+         {
+          "t": "Fornecedor",
+          "marca": "negrito"
+         },
+         {
+          "t": ", "
+         },
+         {
+          "t": "Comprador",
+          "marca": "negrito"
+         },
+         {
+          "t": ", "
+         },
+         {
+          "t": "Condição de Pagamento",
+          "marca": "negrito"
+         },
+         {
+          "t": ", "
+         },
+         {
+          "t": "CFOP",
+          "marca": "negrito"
+         },
+         {
+          "t": " (obrigatório) e o "
+         },
+         {
+          "t": "Valor Unitário",
+          "marca": "negrito"
+         },
+         {
+          "t": "; conferir a "
+         },
+         {
+          "t": "Conta de Fluxo de Caixa",
+          "marca": "negrito"
+         },
+         {
+          "t": " sugerida e clicar em "
+         },
+         {
+          "t": "Salvar",
+          "marca": "negrito"
+         },
+         {
+          "t": "."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Nasce o PC \"Em Aberto\" e \"Sem títulos\"; na linha do tempo a SC aparece como Concluída. Sem CFOP o diálogo \"Campos Obrigatórios Não Preenchidos\" avisa \"CFOP é obrigatório\" (o rótulo não tem asterisco)."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       },
+       {
+        "texto": [
+         {
+          "t": "Se o supervisor pedir a cotação: "
+         },
+         {
+          "t": "⋯ > Gerar Cotação",
+          "marca": "codigo"
+         },
+         {
+          "t": " (Empresa e Natureza da Operação), fornecedor com data de entrega e condição de pagamento, proposta preenchida e então "
+         },
+         {
+          "t": "Gerar Pedido de Compra",
+          "marca": "negrito"
+         },
+         {
+          "t": "."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Ao gerar o pedido, a solicitação e a cotação aparecem como Concluída na linha do tempo."
+         }
+        ],
+        "selo": "conferido-na-tela"
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#compras"
+      ]
+     },
+     {
+      "tipo": "link",
+      "material": "compras:checklist-inicial",
+      "titulo": "Compras: da necessidade ao pedido",
+      "status": "disponivel",
+      "url": "/checklists/estagiarios/05-compras.html",
+      "duracao_s": null,
+      "poster": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#compras"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-estagiarios.mjs#compras"
+    ]
+   },
+   {
+    "id": "checklist",
+    "titulo": "Checklist de aprendizado",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "checklist-aprendizado",
+      "chave": "inicial:compras",
+      "itens": [
+       {
+        "id": "entendi",
+        "texto": [
+         {
+          "t": "Entendi o que é o módulo Compras e para que serve"
+         }
+        ]
+       },
+       {
+        "id": "acessar-1",
+        "texto": [
+         {
+          "t": "Sei acessar: "
+         },
+         {
+          "t": "Cadastros > Participantes",
+          "marca": "tela"
+         },
+         {
+          "t": " e "
+         },
+         {
+          "t": "Compras > Solicitações de Compra",
+          "marca": "tela"
+         }
+        ]
+       },
+       {
+        "id": "acessar-2",
+        "texto": [
+         {
+          "t": "Sei acessar: módulo "
+         },
+         {
+          "t": "Compras",
+          "marca": "codigo"
+         }
+        ]
+       },
+       {
+        "id": "acessar-3",
+        "texto": [
+         {
+          "t": "Sei acessar: "
+         },
+         {
+          "t": "Compras > Sugestão de Compra",
+          "marca": "tela"
+         },
+         {
+          "t": " e "
+         },
+         {
+          "t": "Compras > Aprovações",
+          "marca": "tela"
+         }
+        ]
+       },
+       {
+        "id": "executei-4",
+        "texto": [
+         {
+          "t": "Executei: 1. Preparar seus dados: criar uma solicitação e um pedido de compra"
+         }
+        ]
+       },
+       {
+        "id": "executei-5",
+        "texto": [
+         {
+          "t": "Executei: 2. Conhecer o menu na ordem do processo"
+         }
+        ]
+       },
+       {
+        "id": "executei-6",
+        "texto": [
+         {
+          "t": "Executei: 3. Consultar os documentos de compra"
+         }
+        ]
+       },
+       {
+        "id": "executei-7",
+        "texto": [
+         {
+          "t": "Executei: 4. Sugestão e aprovação"
+         }
+        ]
+       },
+       {
+        "id": "checklist",
+        "texto": [
+         {
+          "t": "Concluí o checklist prático"
+         }
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
+       "guia:scripts/dados-checklists-estagiarios.mjs#compras"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
+     "guia:scripts/dados-checklists-estagiarios.mjs#compras"
+    ]
+   },
+   {
+    "id": "progresso",
+    "titulo": "Progresso",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "progresso",
+      "chave": "inicial:compras",
+      "total": 9,
+      "api": "/api/checklists-progresso",
+      "fontes": [
+       "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md"
+    ]
+   }
+  ],
+  "consultor": [
+   {
+    "id": "visao",
+    "titulo": "Visão funcional",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "texto",
+      "rotulo": "Objetivo",
+      "texto": [
+       {
+        "t": "Gerenciar aquisição de materiais — cotações, comparação de fornecedores, pedidos e acompanhamento de entregas."
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#compras"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Papel no fluxo",
+      "texto": [
+       {
+        "t": "Recebe demandas de Produção, Estoque ou solicitações manuais. Segue para Recebimento, Financeiro e Fiscal."
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#compras"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Quando implantar",
+      "texto": [
+       {
+        "t": "Após Estoque e Produção."
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#compras"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Caminho — Compras e Recebimento: solicitação, cotação, pedido e nota",
+      "texto": [
+       {
+        "t": "Compras › Solicitações de Compra, Sugestão de Compra, Cotações, Pedidos de Compra, Aprovações, Contratos de Entrega e Follow-up de Entregas. Recebimento › Notas de Recebimento e a fila de conferência (menu \"Aprovações\")."
+       }
+      ],
+      "fontes": [
+       "harness:conhecimento/produto/funcional/funcional-compras-solicitacoes-pedidos-e-recebimento.md"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:db/migrations/002_modulos_iniciais.sql#compras",
+     "harness:conhecimento/produto/funcional/funcional-compras-solicitacoes-pedidos-e-recebimento.md"
+    ]
+   },
+   {
+    "id": "regras",
+    "titulo": "Regras de negócio",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "regra",
+      "titulo": "Gerar Pedido de Compra da solicitação abre o Novo Pedido de Compra",
+      "texto": [
+       {
+        "t": "No menu "
+       },
+       {
+        "t": "⋯",
+        "marca": "codigo"
+       },
+       {
+        "t": " da solicitação (SC), "
+       },
+       {
+        "t": "Gerar Pedido de Compra",
+        "marca": "negrito"
+       },
+       {
+        "t": " não grava direto: abre "
+       },
+       {
+        "t": "Novo Pedido de Compra",
+        "marca": "negrito"
+       },
+       {
+        "t": " com o produto já preenchido, onde se informa "
+       },
+       {
+        "t": "Fornecedor",
+        "marca": "negrito"
+       },
+       {
+        "t": ", "
+       },
+       {
+        "t": "Comprador",
+        "marca": "negrito"
+       },
+       {
+        "t": ", "
+       },
+       {
+        "t": "Condição de Pagamento",
+        "marca": "negrito"
+       },
+       {
+        "t": ", "
+       },
+       {
+        "t": "CFOP",
+        "marca": "negrito"
+       },
+       {
+        "t": " (obrigatório, sem asterisco), o "
+       },
+       {
+        "t": "Valor Unitário",
+        "marca": "negrito"
+       },
+       {
+        "t": " e se confere a "
+       },
+       {
+        "t": "Conta de Fluxo de Caixa",
+        "marca": "negrito"
+       },
+       {
+        "t": " sugerida. A cotação é opcional. Ao salvar, o pedido fica \"Em Aberto\" e \"Sem títulos\", e a solicitação aparece como Concluída na linha do tempo. Produto de chapa ou perfil pede a "
+       },
+       {
+        "t": "Cor",
+        "marca": "negrito"
+       },
+       {
+        "t": " na solicitação."
+       }
+      ],
+      "confirmar": [
+       {
+        "t": "Compras › Solicitações de Compra › "
+       },
+       {
+        "t": "⋯",
+        "marca": "codigo"
+       },
+       {
+        "t": " › Gerar Pedido de Compra."
+       }
+      ],
+      "confianca": "B",
+      "fontes": [
+       "harness:conhecimento/produto/regras-negocio/regra-compras-gerar-pedido-de-compra-abre-o-novo-pedido.md"
+      ]
+     },
+     {
+      "tipo": "regra",
+      "titulo": "Na cotação, a Natureza da Operação define o CFOP do pedido de compra",
+      "texto": [
+       {
+        "t": "A cotação (Compras › Cotações de Compra) é um assistente de quatro passos: "
+       },
+       {
+        "t": "Dados Gerais",
+        "marca": "negrito"
+       },
+       {
+        "t": ", "
+       },
+       {
+        "t": "Itens a Cotar",
+        "marca": "negrito"
+       },
+       {
+        "t": ", "
+       },
+       {
+        "t": "Cotação",
+        "marca": "negrito"
+       },
+       {
+        "t": " (propostas dos fornecedores) e "
+       },
+       {
+        "t": "Comparação",
+        "marca": "negrito"
+       },
+       {
+        "t": " (análise e vencedor). Em Dados Gerais, a "
+       },
+       {
+        "t": "Natureza da Operação",
+        "marca": "negrito"
+       },
+       {
+        "t": " (obrigatória: Consumo, Produção, Revenda ou Ativo Imobilizado) \"define o CFOP do pedido de compra automaticamente, conforme a origem do fornecedor\" (ex.: Produção → 2101). Na Comparação escolhe-se o critério (Regra das Configurações, Menor Preço ou Menor Prazo, por fornecedor ou por item) e "
+       },
+       {
+        "t": "Aplicar Melhor Opção",
+        "marca": "negrito"
+       },
+       {
+        "t": "; nada é gravado antes disso. "
+       },
+       {
+        "t": "Gerar Pedido de Compra",
+        "marca": "negrito"
+       },
+       {
+        "t": " cria um pedido por fornecedor vencedor. A cotação é opcional."
+       }
+      ],
+      "confirmar": [
+       {
+        "t": "Compras › Cotações de Compra › Visualizar cotação."
+       }
+      ],
+      "confianca": "B",
+      "fontes": [
+       "harness:conhecimento/produto/regras-negocio/regra-compras-natureza-da-operacao-define-o-cfop.md"
+      ]
+     },
+     {
+      "tipo": "regra",
+      "titulo": "A nota de recebimento tem dois números",
+      "texto": [
+       {
+        "t": "No menu "
+       },
+       {
+        "t": "⋯",
+        "marca": "codigo"
+       },
+       {
+        "t": " do pedido de compra, "
+       },
+       {
+        "t": "Gerar Nota de Recebimento",
+        "marca": "negrito"
+       },
+       {
+        "t": " abre a página "
+       },
+       {
+        "t": "Nova Nota de Recebimento",
+        "marca": "negrito"
+       },
+       {
+        "t": " já preenchida a partir do pedido (Empresa, Fornecedor, CFOP, Pedido de Compra, Condição de Pagamento, itens e Conta de Fluxo de Caixa). A mesma nota aparece como \"NF-‹número do fornecedor›\" na lista de Recebimento e como \"NR-‹número interno›\" na conferência, no pedido de compra e no título. A lista de notas abre com Status \"Em Aberto\". A conferência física fica no menu como \"Aprovações\"."
+       }
+      ],
+      "confirmar": [
+       {
+        "t": "Compras › Pedidos de Compra › "
+       },
+       {
+        "t": "⋯",
+        "marca": "codigo"
+       },
+       {
+        "t": " e Recebimento › Notas de Recebimento."
+       }
+      ],
+      "confianca": "B",
+      "fontes": [
+       "harness:conhecimento/produto/regras-negocio/regra-recebimento-a-mesma-nota-tem-dois-numeros.md"
+      ]
+     },
+     {
+      "tipo": "regra",
+      "titulo": "Sem almoxarifado central, nada entra",
+      "texto": [
+       {
+        "t": "A entrada do recebimento vai para o almoxarifado central ativo. Sem ele, o sistema bloqueia."
+       }
+      ],
+      "confirmar": null,
+      "confianca": null,
+      "fontes": [
+       "guia:videos/roteiros/consultor-01-suprimentos.json#07",
+       "harness-id:regra-estoque-almoxarifado-central-ativo-e-pre-requisito"
+      ]
+     }
+    ],
+    "fontes": [
+     "harness:conhecimento/produto/regras-negocio/regra-compras-gerar-pedido-de-compra-abre-o-novo-pedido.md",
+     "harness:conhecimento/produto/regras-negocio/regra-compras-natureza-da-operacao-define-o-cfop.md",
+     "harness:conhecimento/produto/regras-negocio/regra-recebimento-a-mesma-nota-tem-dois-numeros.md",
+     "guia:videos/roteiros/consultor-01-suprimentos.json#07",
+     "harness-id:regra-estoque-almoxarifado-central-ativo-e-pre-requisito"
+    ]
+   },
+   {
+    "id": "fluxos",
+    "titulo": "Fluxos operacionais",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "fluxo",
+      "titulo": "Da identificação da necessidade ao recebimento da mercadoria.",
+      "etapas": [
+       "Necessidade de Compra",
+       "Cotação",
+       "Comparação de Fornecedores",
+       "Pedido de Compra",
+       "Acompanhamento da Entrega",
+       "Recebimento da Mercadoria"
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#compras"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "1. Solicitação de compra manual",
+      "onde": [
+       {
+        "t": "Compras > Solicitações de Compra > Nova Solicitação",
+        "marca": "tela"
+       }
+      ],
+      "intro": [
+       {
+        "t": "A compra começa pela necessidade. Mostre ao cliente que a solicitação registra o que falta, sem fornecedor e sem preço, e que ela não tem etapa de aprovação."
+       }
+      ],
+      "passos_total": 4,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "2. Sugestão de compra (se o cliente usa estoque mínimo)",
+      "onde": [
+       {
+        "t": "Compras > Sugestão de Compra",
+        "marca": "tela"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Para quem repõe insumos por estoque mínimo, a sugestão cria as solicitações sozinha. Pule o bloco se o cliente não usa estoque mínimo."
+       }
+      ],
+      "passos_total": 3,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "3. Cotação com fornecedores",
+      "onde": [
+       {
+        "t": "⋯ > Gerar Cotação",
+        "marca": "codigo"
+       },
+       {
+        "t": " da SC ou "
+       },
+       {
+        "t": "Compras > Cotações de Compra",
+        "marca": "tela"
+       }
+      ],
+      "intro": [
+       {
+        "t": "A cotação compara fornecedores e define o vencedor de cada item. É um assistente de quatro passos: Dados Gerais, Itens a Cotar, Cotação e Comparação."
+       }
+      ],
+      "passos_total": 7,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "4. Gerar o pedido de compra",
+      "onde": [
+       {
+        "t": "Gerar Pedido de Compra",
+        "marca": "codigo"
+       },
+       {
+        "t": " na comparação e "
+       },
+       {
+        "t": "Compras > Pedidos de Compra",
+        "marca": "tela"
+       }
+      ],
+      "intro": [
+       {
+        "t": "O pedido é o compromisso com o fornecedor. Mostre os dois caminhos: pela cotação (um pedido por vencedor) e direto da solicitação, sem cotação."
+       }
+      ],
+      "passos_total": 6,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "5. Aprovação por alçada (se o cliente usa)",
+      "onde": [
+       {
+        "t": "Compras > Configurações > Faixas de Alçada",
+        "marca": "tela"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "Compras > Aprovações",
+        "marca": "tela"
+       }
+      ],
+      "intro": [
+       {
+        "t": "A alçada segura o pedido acima de um valor até alguém aprovar. Ligue a chave só depois das faixas cadastradas. Pule o bloco se o cliente não aprova compras."
+       }
+      ],
+      "passos_total": 5,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "6. Enviar o pedido e acompanhar a entrega",
+      "onde": [
+       {
+        "t": "Compras > Pedidos de Compra",
+        "marca": "tela"
+       },
+       {
+        "t": ", "
+       },
+       {
+        "t": "Compras > Follow-up de Entregas",
+        "marca": "tela"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "Dashboard Compras",
+        "marca": "codigo"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Com o pedido aprovado, o comprador envia ao fornecedor e acompanha o prazo até a mercadoria chegar."
+       }
+      ],
+      "passos_total": 3,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "7. Reflexo no Recebimento e no Financeiro",
+      "onde": [
+       {
+        "t": "Compras > Pedidos de Compra > ⋯",
+        "marca": "codigo"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "Financeiro > Contas a Pagar",
+        "marca": "tela"
+       }
+      ],
+      "intro": [
+       {
+        "t": "O pedido termina no Recebimento. Mostre onde nasce o título a pagar conforme a decisão da ata (pelo pedido ou pela nota) e o que trava o cancelamento."
+       }
+      ],
+      "passos_total": 6,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:db/migrations/002_modulos_iniciais.sql#compras",
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+    ]
+   },
+   {
+    "id": "implantacao",
+    "titulo": "Procedimentos de implantação",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "texto",
+      "rotulo": "Implantação de Compras: roteiro prático com o cliente",
+      "texto": [
+       {
+        "t": "Ao final, o cliente viu uma necessidade de material virar pedido de compra aprovado, nota de recebimento e título a pagar, e sabe repetir cada passo sozinho. Ele também viu o sistema recusar o que não pode: preço zero, item sem vencedor, autor aprovando o próprio pedido e cancelamento com nota ativa."
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "rotulo": "Blocos do roteiro de implantação",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "1. Solicitação de compra manual"
+         }
+        ],
+        "nota": [
+         {
+          "t": "4 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "2. Sugestão de compra (se o cliente usa estoque mínimo)"
+         }
+        ],
+        "nota": [
+         {
+          "t": "3 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "3. Cotação com fornecedores"
+         }
+        ],
+        "nota": [
+         {
+          "t": "7 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "4. Gerar o pedido de compra"
+         }
+        ],
+        "nota": [
+         {
+          "t": "6 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "5. Aprovação por alçada (se o cliente usa)"
+         }
+        ],
+        "nota": [
+         {
+          "t": "5 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "6. Enviar o pedido e acompanhar a entrega"
+         }
+        ],
+        "nota": [
+         {
+          "t": "3 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "7. Reflexo no Recebimento e no Financeiro"
+         }
+        ],
+        "nota": [
+         {
+          "t": "6 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+      ]
+     },
+     {
+      "tipo": "link",
+      "material": "compras:checklist-implantacao",
+      "titulo": "Implantação de Compras: roteiro prático com o cliente",
+      "status": "disponivel",
+      "url": "/checklists/consultores/implantacao-08-compras.html",
+      "duracao_s": null,
+      "poster": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+      ]
+     },
+     {
+      "tipo": "texto",
+      "rotulo": "Orientação de treinamento",
+      "texto": [
+       {
+        "t": "Apresente solicitações, cotações, pedidos e acompanhamento. Demonstre integração com Recebimento, Financeiro e Estoque."
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#compras"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras",
+     "guia:db/migrations/002_modulos_iniciais.sql#compras"
+    ]
+   },
+   {
+    "id": "configuracoes",
+    "titulo": "Configurações importantes",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "lista",
+      "rotulo": "Pré-requisitos",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Fundação concluída e assinada; módulo Compras ativo (Compras PRO só se usar Contratos de Entrega)."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " checklist da Fundação assinado e "
+         },
+         {
+          "t": "Minha Assinatura",
+          "marca": "codigo"
+         },
+         {
+          "t": ". "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " COM D, seção 1; COM-GER-004."
+         }
+        ],
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Fornecedor de teste com "
+         },
+         {
+          "t": "É Fornecedor?",
+          "marca": "negrito"
+         },
+         {
+          "t": " e "
+         },
+         {
+          "t": "Conta a Pagar",
+          "marca": "negrito"
+         },
+         {
+          "t": " ligados, "
+         },
+         {
+          "t": "Conta de Fluxo de Caixa Despesa",
+          "marca": "negrito"
+         },
+         {
+          "t": " preenchida e contato com "
+         },
+         {
+          "t": "E-mail Compras",
+          "marca": "negrito"
+         },
+         {
+          "t": " (use um e-mail interno da equipe)."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " o cadastro do participante. "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " fluxo antigo de suprimentos (pré-requisito); COM-RFQ-004, COM-COT-019."
+         }
+        ],
+        "selo": "conferido-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Insumo de teste com NCM, unidade, categoria com \"Preço calculado por\", embalagem e fator; perfil e esquadria com as características da categoria (cor, medidas)."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " abra o produto. Sem NCM a solicitação não entra na cotação. "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " COM-COT-003, COM-SC-001, COM-SC-003."
+         }
+        ],
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "CFOPs de entrada (1xxx/2xxx, e 3xxx se importa) das naturezas usadas, com \"gera financeiro\" decidido com o contador; condições de pagamento com parcelas; meios de pagamento."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " a lista de CFOPs assinada pelo contador. "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " README de Suprimentos, decisão S1; COM-COT-010, COM-PC-002."
+         }
+        ],
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Decisões registradas em ata: títulos a pagar "
+         },
+         {
+          "t": "pelo pedido ou pela nota",
+          "marca": "negrito"
+         },
+         {
+          "t": " (nunca pelos dois) e se haverá "
+         },
+         {
+          "t": "aprovação por alçada",
+          "marca": "negrito"
+         },
+         {
+          "t": ". A alçada vem desligada."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " a ata. "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " README de Suprimentos, decisões S2 e S3; fluxo antigo de suprimentos (pré-requisito)."
+         }
+        ],
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Compras > Configurações > Parâmetros de Compras",
+          "marca": "tela"
+         },
+         {
+          "t": " revisados: \"Regras de Melhor Opção\" e \"Critérios de preço na Cotação\". Deixe \"Usar aprovação por alçada\" desligado até o bloco 5."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " a tela de parâmetros. "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " COM C, etapa 2; COM-PAR-001, COM-COT-008."
+         }
+        ],
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Dois usuários de teste: o comprador e um aprovador (quem cria o pedido não aprova)."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " "
+         },
+         {
+          "t": "Segurança > Perfis de Acesso",
+          "marca": "codigo"
+         },
+         {
+          "t": ". "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " COM-ALC-007 (D-661); COM C, etapa 10."
+         }
+        ],
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+    ]
+   },
+   {
+    "id": "validacoes",
+    "titulo": "Validações funcionais",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "lista",
+      "rotulo": "Resultado esperado",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Uma SC manual virou cotação com dois fornecedores, vencedor por item e pedido de compra, e outra SC virou pedido direto."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Se a alçada é usada: o pedido acima da faixa esperou aprovação, o autor não aprovou e outro usuário aprovou."
+         }
+        ],
+        "nota": null,
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "O pedido gerou a nota de recebimento, e a entrega parcial criou o PC residual."
+         }
+        ],
+        "nota": null,
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Um título só por parcela nasceu, pelo pedido ou pela nota, conforme a ata."
+         }
+        ],
+        "nota": null,
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "A Linha do tempo do PC mostra SC → COT → PC → NR → título."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "O cliente viu o sistema recusar: perfil sem comprimento, item sem vencedor, preço zero e cancelamento com nota ativa."
+         }
+        ],
+        "nota": null,
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "rotulo": "Checklist do módulo",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Gerar solicitação de compra"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#compras"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Realizar cotação com fornecedores"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#compras"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Emitir pedido de compra"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#compras"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Acompanhar entrega dos materiais"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#compras"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Compreender integração com Produção, Recebimento, Financeiro e Estoque"
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:db/migrations/002_modulos_iniciais.sql#compras"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#compras"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras",
+     "guia:db/migrations/002_modulos_iniciais.sql#compras"
+    ]
+   },
+   {
+    "id": "integracoes",
+    "titulo": "Integrações e dependências",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "texto",
+      "rotulo": "Relação com os outros módulos",
+      "texto": [
+       {
+        "t": "Recebe demandas de Produção, Estoque ou solicitações manuais. Segue para Recebimento, Financeiro e Fiscal."
+       }
+      ],
+      "fontes": [
+       "guia:db/migrations/002_modulos_iniciais.sql#compras"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:db/migrations/002_modulos_iniciais.sql#compras"
+    ]
+   },
+   {
+    "id": "problemas",
+    "titulo": "Problemas recorrentes",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "lista",
+      "rotulo": "Atenção",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Só em ambiente de teste. Nomeie os registros com \"TESTE FLUXO CONSULTOR\" e use e-mails internos da equipe em "
+         },
+         {
+          "t": "Enviar por e-mail",
+          "marca": "negrito"
+         },
+         {
+          "t": ": o envio chega de verdade ao fornecedor."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Gerar o pedido conclui a SC e a cotação automaticamente. Depois que o pedido é recebido, Cancelar e Excluir ficam desabilitados: planeje a limpeza."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Títulos a pagar nascem "
+         },
+         {
+          "t": "pelo pedido ou pela nota, nunca pelos dois",
+          "marca": "negrito"
+         },
+         {
+          "t": ". Com títulos gerados, os itens e parcelas do pedido travam."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Ligue \"Usar aprovação por alçada\" só depois das faixas e da carga de pedidos em aberto; senão os pedidos importados ficam pendentes. Cadastre dois aprovadores por faixa."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Hoje o sistema ainda mostra o crédito de imposto de entrada com sinal negativo no pedido de compra (COM-PC-018). Avise o cliente que confere impostos no PC."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Hoje o sistema ainda não envia o pedido de compra por e-mail a partir da tela do pedido: use "
+         },
+         {
+          "t": "Baixar PDF",
+          "marca": "negrito"
+         },
+         {
+          "t": "."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "A sugestão de compra só lista itens com "
+         },
+         {
+          "t": "estoque mínimo",
+          "marca": "negrito"
+         },
+         {
+          "t": " cadastrado e apura pelo produto, não pela cor ou medida."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "A nota fiscal de devolução que nasce do Recebimento só é transmitida com o responsável fiscal do cliente."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "rotulo": "Cuidados (vídeo)",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Finalizar a nota de recebimento não pode ser desfeito."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:videos/roteiros/consultor-01-suprimentos.json#14"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "O meio de pagamento da parcela não chega ao Pagar: informe de novo."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:videos/roteiros/consultor-01-suprimentos.json#14"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "A Sugestão de Compra só lista itens com estoque mínimo."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:videos/roteiros/consultor-01-suprimentos.json#14"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:videos/roteiros/consultor-01-suprimentos.json#14"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "rotulo": "A conferir na tela",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Status do pedido de compra: a trilha de estagiários (conferida na tela) viu \"Em Aberto\" na lista e \"Em Edição\" na tela de edição; a gestora lista só Em aberto, Recebido e Cancelado (COM-PC-004). Conferir na tela antes de ensinar."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Momento do desdobro do PC parcial: a gestora diz que "
+         },
+         {
+          "t": "salvar",
+          "marca": "negrito"
+         },
+         {
+          "t": " a nota já desdobra (REC-NR-009); o checklist D de Compras descreve gerar a nota parcial "
+         },
+         {
+          "t": "e finalizar",
+          "marca": "negrito"
+         },
+         {
+          "t": ". Conferir em que momento o "
+         },
+         {
+          "t": "PC-nnnn/2",
+          "marca": "codigo"
+         },
+         {
+          "t": " aparece."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Caminho dos parâmetros: o fluxo antigo cita "
+         },
+         {
+          "t": "Compras > Configurações > Parâmetros",
+          "marca": "tela"
+         },
+         {
+          "t": "; a gestora, "
+         },
+         {
+          "t": "Compras > Configurações > Parâmetros de Compras",
+          "marca": "tela"
+         },
+         {
+          "t": ". Conferir o rótulo do menu."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Não conferidos na tela pelo fluxo antigo: aprovação por alçada ligada (rótulos dos botões da fila de aprovação estão pendentes na gestora), "
+         },
+         {
+          "t": "Enviar por e-mail",
+          "marca": "negrito"
+         },
+         {
+          "t": ", "
+         },
+         {
+          "t": "Importar resposta do fornecedor",
+          "marca": "negrito"
+         },
+         {
+          "t": ", Follow-up de Entregas e a sugestão gerando SCs."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras",
+     "guia:videos/roteiros/consultor-01-suprimentos.json#14"
+    ]
+   },
+   {
+    "id": "videos",
+    "titulo": "Vídeos avançados",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "video",
+      "material": "compras:video-consultor",
+      "titulo": "Suprimentos: da solicitação ao pagamento",
+      "status": "disponivel",
+      "url": "/videos/consultor-01-suprimentos.mp4",
+      "duracao_s": 203,
+      "poster": "/videos/consultor-01-suprimentos.jpg",
+      "legendas_url": "/videos/consultor-01-suprimentos.vtt",
+      "resumo": [
+       {
+        "t": "Cotação opcional, a natureza da operação que define o CFOP, a nota com dois números e a linha do tempo do pedido."
+       }
+      ],
+      "fontes": [
+       "guia:public/videos/manifest.json",
+       "guia:videos/roteiros/consultor-01-suprimentos.json"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:public/videos/manifest.json",
+     "guia:videos/roteiros/consultor-01-suprimentos.json"
+    ]
+   },
+   {
+    "id": "complementares",
+    "titulo": "Materiais complementares",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "link",
+      "material": "compras:checklist-inicial",
+      "titulo": "Compras: da necessidade ao pedido",
+      "status": "disponivel",
+      "url": "/checklists/estagiarios/05-compras.html",
+      "duracao_s": null,
+      "poster": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-checklists-estagiarios.mjs#compras"
+      ]
+     },
+     {
+      "tipo": "link",
+      "material": "compras:checklist-implantacao",
+      "titulo": "Implantação de Compras: roteiro prático com o cliente",
+      "status": "disponivel",
+      "url": "/checklists/consultores/implantacao-08-compras.html",
+      "duracao_s": null,
+      "poster": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+      ]
+     },
+     {
+      "tipo": "link",
+      "titulo": "Apostila do Consultor (PDF)",
+      "url": "/downloads/Apostila-do-Consultor-Faktory-Flow.pdf",
+      "visibilidade": "area:apostila",
+      "fontes": [
+       "guia:public/downloads/Apostila-do-Consultor-Faktory-Flow.pdf"
+      ]
+     },
+     {
+      "tipo": "fontes",
+      "rotulo": "Fontes no Harness",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Como ir da solicitação de compra à nota de recebimento"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Procedimento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/produto/procedimentos/procedimento-criar-solicitacao-pedido-de-compra-e-nota-de-recebimento.md"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "04 Manual Compras"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Manual oficial"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/04_Manual_Compras_Timbrado.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "01-integracao-de-estoque-com-sistemas-tecnicos"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/compras/01-integracao-de-estoque-com-sistemas-tecnicos.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "02-solicitacao-de-compra-com-sistemas-tecnicos"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/compras/02-solicitacao-de-compra-com-sistemas-tecnicos.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "03-cotacao-de-compra-com-sistemas-tecnicos"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/compras/03-cotacao-de-compra-com-sistemas-tecnicos.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "04-sugestao-de-compra-com-sistemas-tecnicos"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/compras/04-sugestao-de-compra-com-sistemas-tecnicos.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "05-contratos-de-entrega-com-sistemas-tecnicos"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/compras/05-contratos-de-entrega-com-sistemas-tecnicos.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "06-follow-up-de-entregas-com-sistemas-tecnicos"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/compras/06-follow-up-de-entregas-com-sistemas-tecnicos.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "07-pedidos-de-compra"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/compras/07-pedidos-de-compra.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "08-aprovacoes-e-configuracoes"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/compras/08-aprovacoes-e-configuracoes.docx"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "09-paineis-e-demonstrativos"
+         }
+        ],
+        "nota": [
+         {
+          "t": "Roteiro de treinamento"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "harness:conhecimento/Roteiros Treinamento/compras/09-paineis-e-demonstrativos.docx"
+        ]
+       }
+      ],
+      "fontes": [
+       "harness:conhecimento/produto/procedimentos/procedimento-criar-solicitacao-pedido-de-compra-e-nota-de-recebimento.md",
+       "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/04_Manual_Compras_Timbrado.docx",
+       "harness:conhecimento/Roteiros Treinamento/compras/01-integracao-de-estoque-com-sistemas-tecnicos.docx",
+       "harness:conhecimento/Roteiros Treinamento/compras/02-solicitacao-de-compra-com-sistemas-tecnicos.docx",
+       "harness:conhecimento/Roteiros Treinamento/compras/03-cotacao-de-compra-com-sistemas-tecnicos.docx",
+       "harness:conhecimento/Roteiros Treinamento/compras/04-sugestao-de-compra-com-sistemas-tecnicos.docx",
+       "harness:conhecimento/Roteiros Treinamento/compras/05-contratos-de-entrega-com-sistemas-tecnicos.docx",
+       "harness:conhecimento/Roteiros Treinamento/compras/06-follow-up-de-entregas-com-sistemas-tecnicos.docx",
+       "harness:conhecimento/Roteiros Treinamento/compras/07-pedidos-de-compra.docx",
+       "harness:conhecimento/Roteiros Treinamento/compras/08-aprovacoes-e-configuracoes.docx",
+       "harness:conhecimento/Roteiros Treinamento/compras/09-paineis-e-demonstrativos.docx"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-estagiarios.mjs#compras",
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras",
+     "guia:public/downloads/Apostila-do-Consultor-Faktory-Flow.pdf",
+     "harness:conhecimento/produto/procedimentos/procedimento-criar-solicitacao-pedido-de-compra-e-nota-de-recebimento.md",
+     "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/04_Manual_Compras_Timbrado.docx",
+     "harness:conhecimento/Roteiros Treinamento/compras/01-integracao-de-estoque-com-sistemas-tecnicos.docx",
+     "harness:conhecimento/Roteiros Treinamento/compras/02-solicitacao-de-compra-com-sistemas-tecnicos.docx",
+     "harness:conhecimento/Roteiros Treinamento/compras/03-cotacao-de-compra-com-sistemas-tecnicos.docx",
+     "harness:conhecimento/Roteiros Treinamento/compras/04-sugestao-de-compra-com-sistemas-tecnicos.docx",
+     "harness:conhecimento/Roteiros Treinamento/compras/05-contratos-de-entrega-com-sistemas-tecnicos.docx",
+     "harness:conhecimento/Roteiros Treinamento/compras/06-follow-up-de-entregas-com-sistemas-tecnicos.docx",
+     "harness:conhecimento/Roteiros Treinamento/compras/07-pedidos-de-compra.docx",
+     "harness:conhecimento/Roteiros Treinamento/compras/08-aprovacoes-e-configuracoes.docx",
+     "harness:conhecimento/Roteiros Treinamento/compras/09-paineis-e-demonstrativos.docx"
+    ]
+   }
+  ]
+ }
+}

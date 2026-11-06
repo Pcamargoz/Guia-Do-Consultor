@@ -1,0 +1,44 @@
+{
+  "modulo": "relatorios",
+  "titulo": "Relatórios e Análises — guia visual",
+  "resumo": "Guia em preparação. A base ainda não tem fonte revisada de telas e passos do módulo Relatórios; por isso este guia não tem capítulos.",
+  "versaoSistema": "a definir (sem captura)",
+  "atualizadoEm": "2026-11-05",
+  "status": "rascunho",
+  "conceitos": [
+    {
+      "titulo": "Para que serve",
+      "icone": "relatorios",
+      "texto": "Transformar os dados dos módulos em informação: relatórios personalizados, tabelas dinâmicas e indicadores. É implantado depois dos módulos operacionais, quando já há dados e movimentações.",
+      "fontes": [
+        "metodologia-apostila-do-consultor#023",
+        "guia:db/migrations/002_modulos_iniciais.sql#relatorios"
+      ]
+    },
+    {
+      "titulo": "Exportar resultado × exportar configuração",
+      "icone": "manual",
+      "texto": "Na Tabela Dinâmica, o resultado contém os dados calculados; a configuração contém só a organização de linhas, colunas, valores e filtros (arquivo JSON). Exportar o resultado é recurso PRO e exige permissão.",
+      "fontes": [
+        "roteiro-geral-03-tabelas-dinamicas#038",
+        "roteiro-geral-03-tabelas-dinamicas#036"
+      ]
+    }
+  ],
+  "palavras": [],
+  "capitulos": [],
+  "fontes": [
+    "metodologia-apostila-do-consultor#023",
+    "guia:db/migrations/002_modulos_iniciais.sql#relatorios",
+    "roteiro-geral-03-tabelas-dinamicas#038",
+    "roteiro-geral-03-tabelas-dinamicas#036"
+  ],
+  "pendencias": [
+    "Sem fonte revisada: a seção Relatórios e Análises da Apostila do Consultor está marcada \"Rever\" no original (metodologia-apostila-do-consultor#023/#034). O roteiro geral de Tabelas Dinâmicas está marcado como possivelmente desatualizado.",
+    "Sem regra_negocio nem funcional do módulo na base; o filtro de módulo \"relatorios\" não existe no kb_search do Harness.",
+    "CAPTURA: Relatórios (lista de relatórios padrão) — o tour do Financeiro de 05/11 tem prints de Relatórios › Extrato - Movimentação e Resumo Financeiro (midia/brutos/financeiro/prints/), com nomes de terceiros a borrar; falta o menu Relatórios em si.",
+    "CAPTURA: Tabelas Dinâmicas › um cubo › Executar, Mais ações › Exportar resultado (PRO) e Exportar configuração.",
+    "CAPTURA: construtor de relatórios (seleção, filtros, agrupamentos) e compartilhamento — citados só na semente do módulo (002_modulos_iniciais.sql).",
+    "Decidir com o responsável se Tabelas Dinâmicas fica neste guia ou nos guias de cada módulo (o Financeiro tem Tabelas Dinâmicas próprias no menu)."
+  ]
+}

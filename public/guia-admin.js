@@ -732,3 +732,43 @@
     avisar(`PDF exportado (${plural(paginas, 'página', 'páginas')}).`);
   }
 })();
+
+/* ---------- Seção Visibilidade (FE-20261104-01 · UI) ----------
+   O que cada perfil vê (áreas, tipos de material e módulos), com a apostila em destaque ("Em standby" + Reativar).
+   Desenho: window.PlataformaUI.renderPainelVisibilidade (plataforma-ui.js). Dados: window.Plataforma
+   (plataforma-dados.js): visibilidade({ todos: true }) e salvarVisibilidade(item). Só administradores; o servidor
+   também recusa (403) quem não é. Ponto de montagem: <section id="painel-visibilidade"> (pedido ao Lead no index.html). */
+(() => {
+  const alvo = document.getElementById('painel-visibilidade');
+  const UI = window.PlataformaUI;
+  const dados = window.Plataforma;
+  if (!alvo || !window.ffSessao || !UI?.renderPainelVisibilidade || !dados?.visibilidade) return;
+  let carregando = false;
+  let carregado = false;
+
+  async function carregar() {
+    if (carregando) return;
+    carregando = true;
+    UI.renderPainelVisibilidade(alvo, null);
+    const r = await dados.visibilidade({ todos: true });
+    carregando = false;
+    if (r?.erro?.status === 401) { window.ffIrParaLogin?.(); return; }
+    carregado = !r?.erro;
+    UI.renderPainelVisibilidade(alvo, r, {
+      onTentar: carregar,
+      onSalvar: async (item) => {
+        const salvo = await dados.salvarVisibilidade(item);
+        if (salvo?.erro?.status === 401) window.ffIrParaLogin?.();
+        return salvo;
+      },
+    });
+  }
+
+  window.ffSessao.then((usuario) => {
+    const admin = Boolean(usuario?.permissoes?.includes('gerenciar_usuarios'));
+    if (!admin) { alvo.remove(); return; }
+    alvo.hidden = false;
+    if (location.hash === '#admin') carregar();
+    document.addEventListener('ff:aba', (e) => { if (e.detail?.aba === 'admin' && !carregado) carregar(); });
+  });
+})();

@@ -1,6 +1,6 @@
 # Ambiente LOCAL que imita o Vercel + Neon (produção roda no Vercel).
 #
-#   docker compose -p faktory-manual up -d            → http://localhost:8081 (login obrigatório)
+#   docker compose -p faktory-manual up -d            → http://127.0.0.1:8081 (login; porta só no loopback do host)
 #   docker compose -p faktory-manual --profile pdf run --rm gerar-pdf
 #                                                     → regenera public/downloads/Apostila-do-Consultor-Faktory-Flow.pdf
 #
@@ -29,6 +29,9 @@ services:
     depends_on:
       db: { condition: service_healthy }
     working_dir: /app
+    # Porta publicada no host para acesso local e pela rede.
+    # HOST=0.0.0.0: o processo no container precisa escutar em todas as interfaces
+    # para o publish do Docker alcançar o app (dev-server default é 127.0.0.1).
     ports: ["8081:3000"]
     environment:
       DATABASE_URL: postgres://faktory:faktory@db:5432/faktory
@@ -37,6 +40,7 @@ services:
       ADMIN_PASSWORD: ${ADMIN_PASSWORD}
       ADMIN_NOME: ${ADMIN_NOME:-Administrador}
       PORT: "3000"
+      HOST: "0.0.0.0"
     command: ["sh", "-c", "npm ci --no-audit --no-fund && node scripts/migrar.mjs && node scripts/dev-server.mjs"]
     volumes:
       - ./:/app

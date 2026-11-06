@@ -1,0 +1,412 @@
+{
+  "id": "intro-financeiro",
+  "modulo": "Financeiro",
+  "fps": 30,
+  "duracao": 47.5,
+  "musica": {
+    "arquivo": "musica/intro-financeiro.wav",
+    "bpm": 120,
+    "entrada": 4,
+    "final": 42.5,
+    "acentos": [
+      23
+    ]
+  },
+  "abertura": {
+    "duracao": 4,
+    "titulo": "Financeiro",
+    "linha": "Guia Inicial · Receber, pagar e acompanhar o caixa."
+  },
+  "fechamento": {
+    "inicio": 42.5,
+    "duracao": 5,
+    "titulo": "Guia Inicial › Financeiro",
+    "linha": "Próximo passo"
+  },
+  "transicao_s": 0.4,
+  "cenas": [
+    {
+      "id": "f1-dashboard",
+      "clipe": "intro/financeiro/f1-dashboard.mp4",
+      "inicio": 4,
+      "duracao": 7,
+      "desde": 0.2,
+      "entrada": "zoom",
+      "camera": [
+        {
+          "t": 0,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 1,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 3,
+          "x": 1080,
+          "y": 470,
+          "zoom": 1.3
+        },
+        {
+          "t": 5.3,
+          "x": 1080,
+          "y": 470,
+          "zoom": 1.32
+        },
+        {
+          "t": 6.4,
+          "x": 520,
+          "y": 320,
+          "zoom": 1.5
+        },
+        {
+          "t": 7,
+          "x": 500,
+          "y": 300,
+          "zoom": 1.5
+        }
+      ],
+      "realces": [
+        {
+          "t": 1.4,
+          "ate": 4.6,
+          "x": 297,
+          "y": 395,
+          "w": 1573,
+          "h": 107
+        }
+      ],
+      "cliques": [
+        {
+          "t": 6.9,
+          "x": 97,
+          "y": 203
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.5,
+          "ate": 5.6,
+          "texto": "Uma visão consolidada.",
+          "posicao": "inf-esq"
+        }
+      ]
+    },
+    {
+      "id": "f2-receber",
+      "clipe": "intro/financeiro/f2-receber.mp4",
+      "inicio": 11,
+      "duracao": 7,
+      "desde": 0.4,
+      "entrada": "corte",
+      "camera": [
+        {
+          "t": 0,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 0.8,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 2.6,
+          "x": 1060,
+          "y": 430,
+          "zoom": 1.5
+        },
+        {
+          "t": 5.2,
+          "x": 1060,
+          "y": 430,
+          "zoom": 1.52
+        },
+        {
+          "t": 6.3,
+          "x": 500,
+          "y": 320,
+          "zoom": 1.5
+        },
+        {
+          "t": 7,
+          "x": 480,
+          "y": 300,
+          "zoom": 1.5
+        }
+      ],
+      "realces": [
+        {
+          "t": 2.8,
+          "ate": 5.2,
+          "x": 949,
+          "y": 391,
+          "w": 176,
+          "h": 36
+        }
+      ],
+      "cliques": [
+        {
+          "t": 6.9,
+          "x": 90,
+          "y": 237
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.5,
+          "ate": 5.6,
+          "texto": "Títulos a receber em aberto.",
+          "posicao": "inf-dir"
+        }
+      ]
+    },
+    {
+      "id": "f3-pagar",
+      "clipe": "intro/financeiro/f3-pagar.mp4",
+      "inicio": 18,
+      "duracao": 5,
+      "desde": 0.4,
+      "entrada": "corte",
+      "camera": [
+        {
+          "t": 0,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 0.6,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 2,
+          "x": 900,
+          "y": 360,
+          "zoom": 1.3
+        },
+        {
+          "t": 3.6,
+          "x": 880,
+          "y": 380,
+          "zoom": 1.32
+        },
+        {
+          "t": 4.5,
+          "x": 520,
+          "y": 420,
+          "zoom": 1.4
+        },
+        {
+          "t": 5,
+          "x": 500,
+          "y": 430,
+          "zoom": 1.4
+        }
+      ],
+      "realces": [
+        {
+          "t": 1.2,
+          "ate": 3.6,
+          "x": 274,
+          "y": 104,
+          "w": 276,
+          "h": 38
+        }
+      ],
+      "cliques": [
+        {
+          "t": 4.6,
+          "x": 87,
+          "y": 476
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.4,
+          "ate": 3.8,
+          "texto": "E os títulos a pagar.",
+          "posicao": "inf-dir"
+        }
+      ]
+    },
+    {
+      "id": "f4-fluxo",
+      "clipe": "intro/financeiro/f4-fluxo.mp4",
+      "inicio": 23,
+      "duracao": 7,
+      "desde": 0.3,
+      "entrada": "zoom",
+      "camera": [
+        {
+          "t": 0,
+          "x": 1080,
+          "y": 360,
+          "zoom": 1.45
+        },
+        {
+          "t": 1.1,
+          "x": 1083,
+          "y": 345,
+          "zoom": 1.55
+        },
+        {
+          "t": 3.2,
+          "x": 1080,
+          "y": 700,
+          "zoom": 1.05
+        },
+        {
+          "t": 7,
+          "x": 1080,
+          "y": 720,
+          "zoom": 1.1
+        }
+      ],
+      "cliques": [
+        {
+          "t": 1,
+          "x": 1083,
+          "y": 341
+        }
+      ],
+      "realces": [
+        {
+          "t": 1.2,
+          "ate": 3,
+          "x": 927,
+          "y": 320,
+          "w": 312,
+          "h": 44
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.6,
+          "ate": 6.4,
+          "texto": "Projetado vs realizado.",
+          "posicao": "inf-esq"
+        }
+      ]
+    },
+    {
+      "id": "f5-budget",
+      "clipe": "intro/financeiro/f5-budget.mp4",
+      "inicio": 30,
+      "duracao": 5.5,
+      "desde": 0.4,
+      "entrada": "deslize",
+      "camera": [
+        {
+          "t": 0,
+          "x": 1090,
+          "y": 280,
+          "zoom": 1.45
+        },
+        {
+          "t": 3.8,
+          "x": 1090,
+          "y": 300,
+          "zoom": 1.5
+        },
+        {
+          "t": 4.8,
+          "x": 520,
+          "y": 460,
+          "zoom": 1.35
+        },
+        {
+          "t": 5.5,
+          "x": 500,
+          "y": 470,
+          "zoom": 1.35
+        }
+      ],
+      "realces": [
+        {
+          "t": 1,
+          "ate": 4,
+          "x": 537,
+          "y": 287,
+          "w": 1101,
+          "h": 76
+        }
+      ],
+      "cliques": [
+        {
+          "t": 5.2,
+          "x": 54,
+          "y": 545
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.4,
+          "ate": 4.4,
+          "texto": "Budget vs Realizado",
+          "posicao": "inf-esq"
+        }
+      ]
+    },
+    {
+      "id": "f6-dre",
+      "clipe": "intro/financeiro/f6-dre.mp4",
+      "inicio": 35.5,
+      "duracao": 7,
+      "desde": 0.4,
+      "entrada": "corte",
+      "camera": [
+        {
+          "t": 0,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 1,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 3,
+          "x": 1080,
+          "y": 520,
+          "zoom": 1.3
+        },
+        {
+          "t": 7,
+          "x": 1080,
+          "y": 560,
+          "zoom": 1.38
+        }
+      ],
+      "realces": [
+        {
+          "t": 3.2,
+          "ate": 6.4,
+          "x": 285,
+          "y": 585,
+          "w": 700,
+          "h": 45
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.5,
+          "ate": 6.6,
+          "texto": "E o resultado no DRE.",
+          "posicao": "inf-dir"
+        }
+      ]
+    }
+  ]
+}

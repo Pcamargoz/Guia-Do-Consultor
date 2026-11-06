@@ -1,0 +1,211 @@
+{
+  "fonte": "midia/brutos/financeiro/financeiro_bruto_v01.mp4",
+  "observacao": "Tempos em segundos do bruto (1920x1200), recorte crop=1920:1080:0:80 antes dos borrões; caixas no quadro recortado. Só trechos sim do roteiro-telas.md v02 (tour só leitura). Conferidos em quadros extraídos com ffmpeg em 06/11/2026. Fora: Saldos, Extrato, Contas Bancárias e Boleto (D/G: banco, agência, conta, CNPJ), Chaves de API, os carregamentos (~60 s) e tudo de 0–57, 317–412 e 887–912 s. Todos os valores em R$ diferentes de zero, nomes de participantes e códigos de documento ficam borrados.",
+  "caixas": {
+    "A_B_cabecalho": {
+      "x": 1395,
+      "y": 0,
+      "w": 525,
+      "h": 72,
+      "porque": "A (nome, cargo e avatar; manifesto x1640–1920 y0–60; real x1615–1890 y25–62) + B (selo METALURGICA TEST; real x1400–1545 y30–58)"
+    },
+    "status_chrome": {
+      "x": 0,
+      "y": 1040,
+      "w": 660,
+      "h": 40,
+      "porque": "B: barra de status do Chrome com a URL do staging (manifesto x0–600 y1040–1080; real x0–410 y1058–1078)"
+    },
+    "dash_totais": {
+      "x": 300,
+      "y": 443,
+      "w": 1565,
+      "h": 48,
+      "porque": "Dashboard: TOTAL A RECEBER / A PAGAR / PERDAS/GANHOS / EM ATRASO (y450–482)"
+    },
+    "dash_rentab": {
+      "x": 300,
+      "y": 786,
+      "w": 1565,
+      "h": 42,
+      "porque": "Dashboard: Rentabilidade (Resultado líquido e margem; y792–820)"
+    },
+    "dash_inad": {
+      "x": 1370,
+      "y": 912,
+      "w": 495,
+      "h": 64,
+      "porque": "Dashboard: Inadimplência 95,4 % e valores (y918–968)"
+    },
+    "dash_eixo": {
+      "x": 300,
+      "y": 932,
+      "w": 82,
+      "h": 148,
+      "porque": "Dashboard: rótulos R$ do eixo do gráfico (x310–375)"
+    },
+    "cr_cards": {
+      "x": 280,
+      "y": 286,
+      "w": 1620,
+      "h": 42,
+      "porque": "Contas a Receber: valores dos 4 cards (y290–322)"
+    },
+    "cr_part_doc": {
+      "x": 362,
+      "y": 488,
+      "w": 555,
+      "h": 464,
+      "porque": "C: PARTICIPANTE (nomes de pessoas e empresas) e DOCUMENTO (códigos) das 9 linhas; manifesto C x356–731 y484–956"
+    },
+    "cr_valor": {
+      "x": 1505,
+      "y": 488,
+      "w": 132,
+      "h": 464,
+      "porque": "C: VALOR TOTAL (manifesto x1480–1635)"
+    },
+    "cp_cards": {
+      "x": 280,
+      "y": 334,
+      "w": 1620,
+      "h": 42,
+      "porque": "Contas a Pagar: valores dos 4 cards (y338–370)"
+    },
+    "cp_linha": {
+      "x": 362,
+      "y": 538,
+      "w": 330,
+      "h": 38,
+      "porque": "C: participante e documento da única linha (y545–568)"
+    },
+    "cp_valor": {
+      "x": 1535,
+      "y": 538,
+      "w": 110,
+      "h": 38,
+      "porque": "C: VALOR TOTAL da linha"
+    },
+    "fc_resumo1": {
+      "x": 280,
+      "y": 603,
+      "w": 1620,
+      "h": 48,
+      "porque": "Fluxo de Caixa › Resumo Realizado: valores (y610–642)"
+    },
+    "fc_resumo2": {
+      "x": 280,
+      "y": 876,
+      "w": 1620,
+      "h": 46,
+      "porque": "Fluxo de Caixa › Resumo Projetado: valores (y882–914)"
+    },
+    "fc_eixo": {
+      "x": 278,
+      "y": 528,
+      "w": 60,
+      "h": 552,
+      "porque": "Fluxo de Caixa › Gráficos: rótulos de valor do eixo (x290–322)"
+    },
+    "bg_badges": {
+      "x": 535,
+      "y": 244,
+      "w": 522,
+      "h": 30,
+      "porque": "Budget vs Realizado: Previsto/Realizado/Diferença em R$ (y248–268)"
+    },
+    "bg_linha": {
+      "x": 995,
+      "y": 328,
+      "w": 355,
+      "h": 30,
+      "porque": "Budget vs Realizado: Previsto, Realizado e Diferença R$ da linha (y333–353)"
+    }
+  },
+  "cortes": [
+    {
+      "id": "f1-dashboard",
+      "in": 67,
+      "out": 74.4,
+      "borrar": [
+        "A_B_cabecalho",
+        "status_chrome",
+        "dash_totais",
+        "dash_rentab",
+        "dash_inad",
+        "dash_eixo"
+      ],
+      "porque": "Dashboard Financeiro carregado (66–74 s) e clique em Contas a Receber no menu (~74,1 s)"
+    },
+    {
+      "id": "f2-receber",
+      "in": 75.4,
+      "out": 83,
+      "borrar": [
+        "A_B_cabecalho",
+        "status_chrome",
+        "cr_cards",
+        "cr_part_doc",
+        "cr_valor"
+      ],
+      "porque": "Contas a Receber (lista em 75,6 s; filtro Status Em aberto) e clique em Contas a Pagar (~82,7 s)"
+    },
+    {
+      "id": "f3-pagar",
+      "in": 83.4,
+      "out": 89,
+      "borrar": [
+        "A_B_cabecalho",
+        "status_chrome",
+        "cp_cards",
+        "cp_linha",
+        "cp_valor"
+      ],
+      "porque": "Contas a Pagar (lista em 83,6 s), abas Lista / Pagamentos / Boletos DDA"
+    },
+    {
+      "id": "f4-fluxo",
+      "in": 255.5,
+      "out": 263,
+      "borrar": [
+        "A_B_cabecalho",
+        "status_chrome",
+        {
+          "caixa": "fc_resumo1",
+          "ate": 1.6
+        },
+        {
+          "caixa": "fc_resumo2",
+          "ate": 1.6
+        },
+        {
+          "caixa": "fc_eixo",
+          "desde": 1.2
+        }
+      ],
+      "porque": "Fluxo de Caixa: aba Resumo e clique em Gráficos (~256,8 s), Curva diária Realizado × Projetado"
+    },
+    {
+      "id": "f5-budget",
+      "in": 279.6,
+      "out": 286,
+      "borrar": [
+        "A_B_cabecalho",
+        "status_chrome",
+        "bg_badges",
+        "bg_linha"
+      ],
+      "porque": "Budget vs Realizado (Budget › Comparativo), já carregado"
+    },
+    {
+      "id": "f6-dre",
+      "in": 300,
+      "out": 307.6,
+      "borrar": [
+        "A_B_cabecalho",
+        "status_chrome"
+      ],
+      "porque": "Demonstrativo de Resultado (DRE): todos os valores R$ 0,00, nada a borrar além do cabeçalho"
+    }
+  ]
+}

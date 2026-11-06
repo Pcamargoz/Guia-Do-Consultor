@@ -1,0 +1,1489 @@
+{
+ "modulo": "fiscal",
+ "titulo": "Fiscal — guia visual",
+ "resumo": "O que é o motor de impostos do Flow, onde ficam CFOP, NCM e Textos Fiscais, como reconhecer um imposto não calculado na nota e como conferir a configuração no Onboarding Fiscal.",
+ "versaoSistema": "1.22.13 (única captura: a Nova NF-e de 22/10/2026). As telas do módulo Fiscal ainda não foram capturadas. · telas do Fiscal: staging v1.23.2, 05/11/2026 · MDF-e e Regras Fiscais de Serviço: staging v1.23.2, 05/11/2026",
+ "atualizadoEm": "2026-11-06",
+ "status": "rascunho",
+ "conceitos": [
+  {
+   "titulo": "O Fiscal é o motor de impostos",
+   "icone": "fiscal",
+   "texto": "O módulo Fiscal centraliza os cálculos tributários usados por todos os processos com impostos: venda, faturamento, compra e recebimento.",
+   "fontes": [
+    "guia:db/migrations/002_modulos_iniciais.sql#fiscal",
+    "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+   ]
+  },
+  {
+   "titulo": "Quem decide a tributação é o contador",
+   "icone": "regra",
+   "texto": "Toda alíquota, CST, MVA e benefício vem do contador do cliente. O consultor configura o que o contador definiu e não decide tributação.",
+   "fontes": [
+    "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal",
+    "roteiro-fiscal-01-painel-onboarding-e-diagnostico#007"
+   ]
+  },
+  {
+   "titulo": "CFOP, NCM e NCM por Estado",
+   "icone": "manual",
+   "texto": "O CFOP liga ou desliga cada imposto e traz os CSTs padrão. O NCM traz alíquotas e CSTs do produto. O NCM por Estado traz as exceções por UF de destino.",
+   "fontes": [
+    "funcional-faturamento-notas-fiscais#003",
+    "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal",
+    "manual-08-faturamento-e-fiscal#004"
+   ]
+  },
+  {
+   "titulo": "Imposto não calculado avisa, mas não impede salvar",
+   "icone": "alerta",
+   "texto": "Quando falta cadastro, a nota mostra o quadro Impostos não calculados no item, com o motivo, e ainda pode ser salva com o imposto zerado. O teste não passa só porque salvou.",
+   "fontes": [
+    "regra-faturamento-finalizar-nf-requisitos",
+    "glossario:faturamento.nova-nfe",
+    "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+   ]
+  },
+  {
+   "titulo": "Onboarding Fiscal confere a configuração",
+   "icone": "checklist",
+   "texto": "O Onboarding Fiscal funciona como lista de verificação: analisa os cadastros da empresa e mostra o que está OK e o que está pendente. Ele não substitui a decisão do contador.",
+   "fontes": [
+    "roteiro-fiscal-01-painel-onboarding-e-diagnostico#003",
+    "roteiro-fiscal-01-painel-onboarding-e-diagnostico#007"
+   ]
+  }
+ ],
+ "palavras": [
+  {
+   "termo": "CFOP",
+   "definicao": "Código da operação fiscal. No CFOP, a chave \"Gera Financeiro\" decide se o pedido exige parcelas.",
+   "fontes": [
+    "glossario:vendas.novo-pedido",
+    "funcional-faturamento-notas-fiscais#003"
+   ]
+  },
+  {
+   "termo": "NCM",
+   "definicao": "Classificação fiscal do produto, com alíquotas e CSTs de IPI, PIS e COFINS.",
+   "fontes": [
+    "glossario:cadastros.produtos",
+    "oficial-fis-c-implantacao#006"
+   ]
+  },
+  {
+   "termo": "NCM por Estado",
+   "definicao": "Janela aberta pelo ícone 🌐 na linha do NCM, com o ICMS por UF de origem e destino.",
+   "fontes": [
+    "manual-08-faturamento-e-fiscal#004",
+    "funcional-faturamento-notas-fiscais#003"
+   ]
+  },
+  {
+   "termo": "CEST",
+   "definicao": "Fica em Editar NCM, aba ICMS.",
+   "fontes": [
+    "funcional-faturamento-notas-fiscais#003"
+   ]
+  },
+  {
+   "termo": "CST ICMS e CSOSN",
+   "definicao": "Ficam em NCM por Estado e em Editar CFOP: CST para Lucro Presumido/Real, CSOSN para Simples Nacional.",
+   "fontes": [
+    "funcional-faturamento-notas-fiscais#003",
+    "manual-08-faturamento-e-fiscal#004"
+   ]
+  },
+  {
+   "termo": "Textos Fiscais",
+   "definicao": "Mensagens obrigatórias da nota, ligadas ao CFOP (Fiscal › Configurações › Textos Fiscais).",
+   "fontes": [
+    "oficial-fis-c-implantacao#010",
+    "manual-08-faturamento-e-fiscal#002"
+   ]
+  },
+  {
+   "termo": "Onboarding Fiscal",
+   "definicao": "Conferência inicial das configurações fiscais da empresa, com Itens obrigatórios e Itens condicionais ou informativos.",
+   "fontes": [
+    "roteiro-fiscal-01-painel-onboarding-e-diagnostico#003",
+    "roteiro-fiscal-01-painel-onboarding-e-diagnostico#005"
+   ]
+  },
+  {
+   "termo": "Recalcular",
+   "definicao": "Botão que refaz o cálculo dos impostos depois de corrigir o cadastro.",
+   "fontes": [
+    "glossario:vendas.novo-pedido",
+    "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+   ]
+  },
+  {
+   "termo": "Impostos não calculados no item",
+   "definicao": "Quadro da nota que mostra o motivo do imposto não calculado.",
+   "fontes": [
+    "glossario:faturamento.nova-nfe"
+   ]
+  }
+ ],
+ "mapa": {
+  "antes": [
+   "fundacao"
+  ],
+  "depois": [
+   "vendas",
+   "faturamento",
+   "compras",
+   "recebimento"
+  ],
+  "texto": "O Fiscal usa a Fundação (empresa com regime, produtos com NCM, participantes com UF e IE) e alimenta o cálculo de impostos de Vendas, Faturamento, Compras e Recebimento. A configuração fiscal vem antes; o treinamento fiscal acompanha o Faturamento.",
+  "fontes": [
+   "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal",
+   "guia:db/migrations/002_modulos_iniciais.sql#fiscal",
+   "metodologia-apostila-do-consultor#034"
+  ]
+ },
+ "capitulos": [
+  {
+   "id": "onde-ficam-os-cadastros",
+   "titulo": "Onde ficam os cadastros fiscais",
+   "nivel": "basico",
+   "objetivo": "Saber onde ficam CFOP, NCM, NCM por Estado e Textos Fiscais, mesmo sem alterá-los.",
+   "onde": "Fiscal › Painel Fiscal",
+   "passos": [
+    {
+     "titulo": "Abra o Painel Fiscal",
+     "texto": "No menu do módulo Fiscal, clique em Painel Fiscal. No alto ficam os atalhos (notas, onboarding, diagnóstico); embaixo, os grupos de cadastros, como Classificação Fiscal e Configurações Fiscais.",
+     "imagem": "/manuais/fiscal/img/03-painel-fiscal.webp",
+     "alt": "Painel Fiscal com os atalhos Notas Fiscais (NF-e), NFS-e, DF-e Recebidas, Certificados Digitais, Onboarding Fiscal, Regras Fiscais de Serviço, Descrições de Serviço, Alíquota de Crédito do Simples e Diagnóstico Fiscal, e os grupos Classificação Fiscal, ICMS, IPI, PIS/COFINS, Reforma Tributária e Configurações Fiscais.",
+     "largura": 1600,
+     "altura": 900,
+     "marcadores": [
+      {
+       "n": 1,
+       "rotulo": "Painel Fiscal",
+       "explicacao": "Primeiro item do menu do Fiscal: abre esta tela com todos os cadastros do módulo.",
+       "caixa": {
+        "x": 0.8,
+        "y": 15.8,
+        "w": 8.6,
+        "h": 4.2
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 2,
+       "rotulo": "Atalhos",
+       "explicacao": "Cartões que levam direto às telas mais usadas: notas, certificados, Onboarding Fiscal, Diagnóstico Fiscal e regras de serviço.",
+       "caixa": {
+        "x": 18.8,
+        "y": 23,
+        "w": 77.8,
+        "h": 17.4
+       },
+       "lado": "baixo"
+      },
+      {
+       "n": 3,
+       "rotulo": "Classificação Fiscal",
+       "explicacao": "Grupo com NCM, CEST, CFOP e Origem da Mercadoria (veja o próximo passo).",
+       "caixa": {
+        "x": 20,
+        "y": 53.4,
+        "w": 20,
+        "h": 5.4
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 4,
+       "rotulo": "Configurações Fiscais",
+       "explicacao": "Grupo das parametrizações do módulo; nele fica, por exemplo, Textos Fiscais.",
+       "caixa": {
+        "x": 72.6,
+        "y": 90.6,
+        "w": 19,
+        "h": 5.6
+       },
+       "lado": "direita"
+      }
+     ],
+     "atencao": "Os atalhos variam conforme o plano e as permissões. O manual oficial também cita o caminho Fiscal › Configurações › NCM/CFOP, que não aparece nesta captura: a conferir na tela.",
+     "evidencia": "captura-real",
+     "fontes": [
+      "videos/capturas/guias-staging/fiscal-painel.png (staging v1.23.2, 05/11/2026)",
+      "roteiro-fiscal-01-painel-onboarding-e-diagnostico#002",
+      "roteiro-fiscal-02-cadastros-fiscais#002"
+     ]
+    },
+    {
+     "titulo": "Encontre NCM, CEST e CFOP",
+     "texto": "No grupo Classificação Fiscal do Painel Fiscal, clique no cadastro que quer consultar. Só consulte: alterar cadastro fiscal é tarefa do responsável fiscal.",
+     "imagem": "/manuais/fiscal/img/04-classificacao-fiscal-detalhe.webp",
+     "alt": "Recorte ampliado do grupo Classificação Fiscal com NCM, CEST, CFOP e Origem da Mercadoria.",
+     "largura": 1600,
+     "altura": 1248,
+     "marcadores": [
+      {
+       "n": 1,
+       "rotulo": "Classificação Fiscal",
+       "explicacao": "O grupo reúne os códigos que classificam o produto e a operação.",
+       "caixa": {
+        "x": 15.6,
+        "y": 8,
+        "w": 63.6,
+        "h": 12.6
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 2,
+       "rotulo": "NCM",
+       "explicacao": "Nomenclatura Comum do Mercosul: o código do produto. Nele ficam IPI, PIS e COFINS e o NCM por Estado.",
+       "caixa": {
+        "x": 10,
+        "y": 26.4,
+        "w": 55.6,
+        "h": 11.4
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 3,
+       "rotulo": "CEST",
+       "explicacao": "Código Especificador da Substituição Tributária. Também aparece em Editar NCM, aba ICMS.",
+       "caixa": {
+        "x": 10,
+        "y": 43.4,
+        "w": 61.6,
+        "h": 11.4
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 4,
+       "rotulo": "CFOP",
+       "explicacao": "Código Fiscal de Operações e Prestações: diz que operação a nota faz e quais impostos se aplicam.",
+       "caixa": {
+        "x": 10,
+        "y": 60.6,
+        "w": 64.6,
+        "h": 11.4
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 5,
+       "rotulo": "Origem da Mercadoria",
+       "explicacao": "Se o produto é de origem nacional ou importada.",
+       "caixa": {
+        "x": 10,
+        "y": 77.6,
+        "w": 48.6,
+        "h": 11.4
+       },
+       "lado": "direita"
+      }
+     ],
+     "evidencia": "captura-real",
+     "fontes": [
+      "videos/capturas/guias-staging/fiscal-painel.png (staging v1.23.2, 05/11/2026, recorte ampliado)",
+      "manual-08-faturamento-e-fiscal#004",
+      "oficial-fis-c-implantacao#006"
+     ]
+    },
+    {
+     "titulo": "Conheça o CFOP",
+     "texto": "O CFOP fica no Painel Fiscal, grupo Classificação Fiscal (também em Faturamento › Configurações › CFOP). Nele estão os CSTs e as chaves que aplicam cada imposto; \"Gera Financeiro\" decide se o pedido exige parcelas.",
+     "atencao": "A lista padrão de CFOP não traz CST de ICMS, PIS e COFINS: empresa do Presumido ou do Real fica com aviso \"Sem CST\" até preencher.",
+     "evidencia": "base",
+     "fontes": [
+      "oficial-fis-c-implantacao#006",
+      "funcional-faturamento-notas-fiscais#003",
+      "manual-08-faturamento-e-fiscal#002",
+      "videos/capturas/guias-staging/fiscal-painel.png (staging v1.23.2, 05/11/2026)",
+      "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+     ],
+     "imagem": "/manuais/fiscal/img/03-painel-fiscal.webp",
+     "largura": 1600,
+     "altura": 900,
+     "alt": "Painel Fiscal ampliado nos grupos Classificação Fiscal (NCM, CEST, CFOP, Origem da Mercadoria) e ICMS (CST de ICMS, CSOSN, Perfil SUFRAMA).",
+     "marcadores": [
+      {
+       "n": 1,
+       "rotulo": "CFOP",
+       "explicacao": "Abre a lista de CFOP. Em cada um ficam os CSTs, as chaves Aplicar ICMS, Aplicar PIS e Aplicar COFINS e a marca Gera Financeiro.",
+       "caixa": {
+        "x": 20.8,
+        "y": 73,
+        "w": 17.2,
+        "h": 4.1
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 2,
+       "rotulo": "CST de ICMS",
+       "explicacao": "Código usado pelas empresas do Lucro Presumido e do Real.",
+       "caixa": {
+        "x": 46.9,
+        "y": 60.6,
+        "w": 13,
+        "h": 4
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 3,
+       "rotulo": "CSOSN",
+       "explicacao": "Código usado pelas empresas do Simples Nacional no lugar do CST de ICMS.",
+       "caixa": {
+        "x": 46.9,
+        "y": 66.9,
+        "w": 19.8,
+        "h": 4
+       },
+       "lado": "direita"
+      }
+     ],
+     "zoom": {
+      "x": 18,
+      "y": 52,
+      "w": 52,
+      "h": 36
+     }
+    },
+    {
+     "titulo": "Conheça o NCM e o NCM por Estado",
+     "texto": "No Painel Fiscal, grupo Classificação Fiscal › NCM, o lápis edita IPI, PIS e COFINS e o ícone 🌐 abre o NCM por Estado, com Estado Origem, Estado Destino e ICMS %. O CEST fica em Editar NCM, aba ICMS.",
+     "evidencia": "base",
+     "fontes": [
+      "manual-08-faturamento-e-fiscal#004",
+      "funcional-faturamento-notas-fiscais#003",
+      "videos/capturas/guias-staging/fiscal-painel.png (staging v1.23.2, 05/11/2026)",
+      "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+     ],
+     "imagem": "/manuais/fiscal/img/03-painel-fiscal.webp",
+     "largura": 1600,
+     "altura": 900,
+     "alt": "Painel Fiscal com destaque nos itens NCM e CEST do grupo Classificação Fiscal.",
+     "marcadores": [
+      {
+       "n": 1,
+       "rotulo": "NCM",
+       "explicacao": "Abre a lista de NCM. O lápis edita IPI, PIS e COFINS; o ícone de globo abre o NCM por Estado, com uma linha por estado de destino.",
+       "caixa": {
+        "x": 20.8,
+        "y": 60.6,
+        "w": 15.1,
+        "h": 4.2
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 2,
+       "rotulo": "CEST",
+       "explicacao": "Obrigatório nos NCMs com substituição tributária: sem ele a SEFAZ rejeita a nota (rejeição 806).",
+       "caixa": {
+        "x": 20.8,
+        "y": 66.9,
+        "w": 16.4,
+        "h": 4.2
+       },
+       "lado": "direita"
+      }
+     ],
+     "atencao": "Sem o CST de PIS/COFINS de saída no NCM, o item sai com o quadro Impostos não calculados. Todo NCM com ST precisa de linha com MVA para cada UF de destino.",
+     "zoom": {
+      "x": 18,
+      "y": 52,
+      "w": 30,
+      "h": 30
+     }
+    },
+    {
+     "titulo": "Conheça os Textos Fiscais",
+     "texto": "Os Textos Fiscais ficam no Painel Fiscal, grupo Configurações Fiscais. São as mensagens da nota, ligadas ao CFOP pelos campos de texto fiscal.",
+     "atencao": "Hoje o texto ligado ao NCM, ao NCM por Estado ou ao perfil SUFRAMA ainda não sai na nota.",
+     "evidencia": "base",
+     "fontes": [
+      "oficial-fis-c-implantacao#010",
+      "videos/capturas/guias-staging/fiscal-painel.png (staging v1.23.2, 05/11/2026)",
+      "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+     ],
+     "imagem": "/manuais/fiscal/img/03-painel-fiscal.webp",
+     "largura": 1600,
+     "altura": 900,
+     "alt": "Painel Fiscal ampliado no grupo Configurações Fiscais, com o item Textos Fiscais.",
+     "marcadores": [
+      {
+       "n": 1,
+       "rotulo": "Configurações Fiscais",
+       "explicacao": "Grupo das parametrizações do módulo, no canto inferior direito do Painel Fiscal.",
+       "caixa": {
+        "x": 72.7,
+        "y": 90.7,
+        "w": 19,
+        "h": 4.6
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 2,
+       "rotulo": "Textos Fiscais",
+       "explicacao": "Cadastro das mensagens legais da nota; cada texto é ligado ao CFOP nos campos Texto Fiscal ICMS, IPI, PIS e COFINS.",
+       "caixa": {
+        "x": 73.2,
+        "y": 97.2,
+        "w": 9.1,
+        "h": 2.8
+       },
+       "lado": "direita"
+      }
+     ],
+     "zoom": {
+      "x": 70,
+      "y": 86,
+      "w": 29,
+      "h": 14
+     }
+    }
+   ]
+  },
+  {
+   "id": "ver-o-imposto-na-nota",
+   "titulo": "Reconhecendo o imposto na nota",
+   "nivel": "basico",
+   "objetivo": "Ler o aviso de imposto não calculado e saber o que fazer.",
+   "onde": "Vendas › Pedidos de Venda › ⋯ › Faturar",
+   "passos": [
+    {
+     "titulo": "Encontre o aviso na nova NF-e",
+     "texto": "Na Nova NF-e aberta pelo Faturar, confira a faixa de homologação e o CFOP. Depois desça até o quadro Impostos não calculados no item: ele aparece quando falta cadastro fiscal do produto.",
+     "imagem": "/manuais/fiscal/img/01-nova-nfe-impostos.webp",
+     "alt": "Tela Nova NF-e com a faixa de homologação, o campo CFOP e o quadro Impostos não calculados no item 1 explicando que falta o CST de PIS e COFINS na NCM.",
+     "largura": 1600,
+     "altura": 900,
+     "marcadores": [
+      {
+       "n": 1,
+       "rotulo": "Ambiente NF-e: HOMOLOGAÇÃO",
+       "explicacao": "Mostra que a nota é de teste: documentos emitidos aqui não têm validade fiscal.",
+       "caixa": {
+        "x": 19.6,
+        "y": 21.9,
+        "w": 34,
+        "h": 4.2
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 2,
+       "rotulo": "CFOP",
+       "explicacao": "Código fiscal da operação, trazido do pedido. É um dos cadastros que o aviso manda conferir.",
+       "caixa": {
+        "x": 20,
+        "y": 69.6,
+        "w": 24.8,
+        "h": 5.2
+       },
+       "lado": "baixo"
+      },
+      {
+       "n": 3,
+       "rotulo": "Impostos não calculados no item 1",
+       "explicacao": "Aviso de que nenhum tributo foi calculado para este item. O motivo vem logo abaixo, no próprio quadro.",
+       "caixa": {
+        "x": 19.6,
+        "y": 86.4,
+        "w": 17.2,
+        "h": 3.8
+       },
+       "lado": "direita"
+      }
+     ],
+     "evidencia": "captura-real",
+     "fontes": [
+      "videos/public/telas/consultor-07-faturamento/03-nova-nfe.png",
+      "regra-faturamento-finalizar-nf-requisitos",
+      "glossario:faturamento.nova-nfe",
+      "videos/roteiros/consultor-07-faturamento.json#10"
+     ]
+    },
+    {
+     "titulo": "Leia o motivo no quadro",
+     "texto": "Leia o quadro de perto: ele diz qual cadastro falta e o que acontece se você salvar assim. Leve o motivo ao responsável fiscal.",
+     "imagem": "/manuais/fiscal/img/02-impostos-nao-calculados-detalhe.webp",
+     "alt": "Recorte ampliado do quadro Impostos não calculados no item 1, com o motivo (CST de PIS e de COFINS de saída não configurados na NCM) e o aviso de que a nota pode ser salva com os impostos zerados.",
+     "largura": 1600,
+     "altura": 248,
+     "marcadores": [
+      {
+       "n": 1,
+       "rotulo": "Impostos não calculados no item 1",
+       "explicacao": "Diz em qual item da nota o imposto não foi calculado.",
+       "caixa": {
+        "x": 5.6,
+        "y": 14,
+        "w": 27.6,
+        "h": 15
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 2,
+       "rotulo": "Motivo",
+       "explicacao": "Aponta o que falta. Aqui, o CST de PIS e o de COFINS de saída não estão configurados na NCM do produto.",
+       "caixa": {
+        "x": 5.6,
+        "y": 46.5,
+        "w": 89.6,
+        "h": 28.5
+       },
+       "lado": "esquerda"
+      },
+      {
+       "n": 3,
+       "rotulo": "A nota pode ser salva assim",
+       "explicacao": "Salvar é possível, mas os impostos listados ficam zerados até o cadastro ser corrigido e você usar Recalcular.",
+       "caixa": {
+        "x": 5.6,
+        "y": 78,
+        "w": 89.6,
+        "h": 21.5
+       },
+       "lado": "esquerda"
+      }
+     ],
+     "atencao": "A nota salva assim, com os impostos zerados. Não altere cadastro fiscal sozinho: chame o responsável fiscal.",
+     "evidencia": "captura-real",
+     "fontes": [
+      "videos/public/telas/consultor-07-faturamento/03-nova-nfe.png (recorte ampliado do quadro)",
+      "regra-faturamento-finalizar-nf-requisitos",
+      "videos/roteiros/consultor-07-faturamento.json#10"
+     ]
+    },
+    {
+     "titulo": "Corrija e recalcule",
+     "texto": "Depois que o responsável fiscal corrige o cadastro indicado, use Recalcular para refazer o cálculo. O motor de impostos também é chamado ao salvar o pedido e ao alterar um item.",
+     "evidencia": "captura-real",
+     "fontes": [
+      "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal",
+      "glossario:vendas.novo-pedido",
+      "videos/public/telas/consultor-07-faturamento/03-nova-nfe.png (recorte ampliado do quadro)"
+     ],
+     "imagem": "/manuais/fiscal/img/02-impostos-nao-calculados-detalhe.webp",
+     "largura": 1600,
+     "altura": 248,
+     "alt": "Quadro Impostos não calculados no item 1 com o motivo (CST de PIS e de COFINS de saída não configurados na NCM) e a orientação \"Corrija o cadastro indicado e use Recalcular\".",
+     "marcadores": [
+      {
+       "n": 1,
+       "rotulo": "Cadastro a corrigir",
+       "explicacao": "O motivo diz qual cadastro falta, por tributo. Aqui: o CST de PIS e de COFINS de saída no NCM do produto.",
+       "caixa": {
+        "x": 5.6,
+        "y": 46.5,
+        "w": 89.6,
+        "h": 28.5
+       },
+       "lado": "esquerda"
+      },
+      {
+       "n": 2,
+       "rotulo": "Use Recalcular",
+       "explicacao": "Depois que o responsável fiscal corrige o cadastro, Recalcular aplica a correção no documento já salvo; ele não se refaz sozinho.",
+       "caixa": {
+        "x": 5.6,
+        "y": 78,
+        "w": 89.6,
+        "h": 21.5
+       },
+       "lado": "esquerda"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "onboarding-fiscal",
+   "titulo": "Conferindo a configuração no Onboarding Fiscal",
+   "nivel": "avancado",
+   "objetivo": "Usar o Onboarding Fiscal para achar configuração faltando antes de faturar.",
+   "onde": "Fiscal › Onboarding Fiscal",
+   "passos": [
+    {
+     "titulo": "Rode o Onboarding Fiscal",
+     "texto": "Em Fiscal › Onboarding Fiscal, escolha a Empresa principal e clique em Atualizar. Leia a faixa de resumo: ela mostra quantas pendências obrigatórias existem e o regime da empresa.",
+     "imagem": "/manuais/fiscal/img/05-onboarding-fiscal.webp",
+     "alt": "Tela Onboarding Fiscal com o seletor Empresa principal, o botão Atualizar, a faixa \"1 pendência(s) obrigatória(s) — go-live bloqueado\" e os quadros Itens obrigatórios e Itens condicionais / informativos.",
+     "largura": 1600,
+     "altura": 900,
+     "marcadores": [
+      {
+       "n": 1,
+       "rotulo": "Empresa principal",
+       "explicacao": "A empresa que está sendo conferida. O checklist é por empresa.",
+       "caixa": {
+        "x": 72.8,
+        "y": 13.6,
+        "w": 16.8,
+        "h": 5.6
+       },
+       "lado": "baixo"
+      },
+      {
+       "n": 2,
+       "rotulo": "Atualizar",
+       "explicacao": "Refaz a conferência depois de cada correção.",
+       "caixa": {
+        "x": 89.6,
+        "y": 13.4,
+        "w": 7.6,
+        "h": 5.8
+       },
+       "lado": "baixo"
+      },
+      {
+       "n": 3,
+       "rotulo": "Faixa de resumo",
+       "explicacao": "Quantas pendências obrigatórias existem e se o go-live está bloqueado, com o regime (aqui, Simples Nacional) e a data da verificação.",
+       "caixa": {
+        "x": 19.6,
+        "y": 27.2,
+        "w": 26.8,
+        "h": 6
+       },
+       "lado": "direita"
+      }
+     ],
+     "atencao": "Se o regime estiver diferente do usado pela empresa, não continue sozinho: confirme com o contador.",
+     "evidencia": "captura-real",
+     "fontes": [
+      "roteiro-fiscal-01-painel-onboarding-e-diagnostico#003",
+      "roteiro-fiscal-01-painel-onboarding-e-diagnostico#004",
+      "videos/capturas/guias-staging/fiscal-onboarding.png (staging v1.23.2, 05/11/2026)"
+     ]
+    },
+    {
+     "titulo": "Leia os itens obrigatórios",
+     "texto": "No quadro Itens obrigatórios, cada linha tem um selo: OK para o que está certo e pendente para o que falta. Use o Corrigir da linha pendente, corrija um item por vez e clique em Atualizar de novo.",
+     "imagem": "/manuais/fiscal/img/06-onboarding-obrigatorios-detalhe.webp",
+     "alt": "Recorte ampliado do quadro Itens obrigatórios: cinco itens com selo OK e o item Certificado digital válido com selo pendente e o link Corrigir.",
+     "largura": 1600,
+     "altura": 1242,
+     "marcadores": [
+      {
+       "n": 1,
+       "rotulo": "Itens obrigatórios",
+       "explicacao": "A tela avisa: bloqueiam o go-live enquanto estiverem pendentes.",
+       "caixa": {
+        "x": 2.6,
+        "y": 5.2,
+        "w": 55,
+        "h": 8.6
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 2,
+       "rotulo": "Selo OK",
+       "explicacao": "O item está configurado. A linha de baixo diz o que foi encontrado.",
+       "caixa": {
+        "x": 88.8,
+        "y": 17.2,
+        "w": 7.6,
+        "h": 6
+       },
+       "lado": "esquerda"
+      },
+      {
+       "n": 3,
+       "rotulo": "Item pendente",
+       "explicacao": "O que falta e o motivo. Aqui: certificado digital não cadastrado.",
+       "caixa": {
+        "x": 3.4,
+        "y": 79.6,
+        "w": 38,
+        "h": 8.4
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 4,
+       "rotulo": "Selo pendente",
+       "explicacao": "Marca o item que ainda bloqueia o go-live.",
+       "caixa": {
+        "x": 82.8,
+        "y": 79.8,
+        "w": 13.4,
+        "h": 6
+       },
+       "lado": "esquerda"
+      },
+      {
+       "n": 5,
+       "rotulo": "Corrigir",
+       "explicacao": "Leva à tela onde o item é corrigido.",
+       "caixa": {
+        "x": 7.4,
+        "y": 88.6,
+        "w": 10.8,
+        "h": 4.8
+       },
+       "lado": "direita"
+      }
+     ],
+     "atencao": "A tela diz que pendência obrigatória bloqueia o go-live; o checklist de implantação diz que, na prática, o Onboarding só informa e que \"liberado\" não garante cálculo certo. A conferir na tela se o bloqueio impede emitir.",
+     "evidencia": "captura-real",
+     "fontes": [
+      "roteiro-fiscal-01-painel-onboarding-e-diagnostico#005",
+      "roteiro-fiscal-01-painel-onboarding-e-diagnostico#010",
+      "videos/capturas/guias-staging/fiscal-onboarding.png (staging v1.23.2, 05/11/2026, recorte ampliado)"
+     ]
+    },
+    {
+     "titulo": "Trate os itens condicionais com o contador",
+     "texto": "No quadro Itens condicionais / informativos, leia o motivo de cada linha: muitos itens dependem do regime e da operação (PIS/COFINS, ST, CBS e IBS). Não altere um cadastro só para o aviso sumir.",
+     "imagem": "/manuais/fiscal/img/05-onboarding-fiscal.webp",
+     "alt": "Quadro Itens condicionais / informativos com Alíquotas PIS/COFINS e MVA por UF como OK (não aplicáveis no Simples Nacional) e Alíquota CBS/IBS pendente.",
+     "largura": 1600,
+     "altura": 900,
+     "marcadores": [
+      {
+       "n": 1,
+       "rotulo": "Itens condicionais / informativos",
+       "explicacao": "Aplicáveis conforme o regime e o perfil da empresa (PIS/COFINS, ST, CBS/IBS).",
+       "caixa": {
+        "x": 59.6,
+        "y": 38.4,
+        "w": 25.4,
+        "h": 5.8
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 2,
+       "rotulo": "OK por não se aplicar",
+       "explicacao": "Aqui aparece OK com \"Não aplicável: regime Simples Nacional\": o item não vale para esse regime.",
+       "caixa": {
+        "x": 60.2,
+        "y": 45.4,
+        "w": 28,
+        "h": 4.6
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 3,
+       "rotulo": "Alíquota CBS/IBS pendente",
+       "explicacao": "Item da reforma tributária, informativo até a reforma. Trate com o contador.",
+       "caixa": {
+        "x": 60.2,
+        "y": 58,
+        "w": 26,
+        "h": 5
+       },
+       "lado": "direita"
+      }
+     ],
+     "zoom": {
+      "x": 58,
+      "y": 35,
+      "w": 42,
+      "h": 33
+     },
+     "evidencia": "captura-real",
+     "fontes": [
+      "roteiro-fiscal-01-painel-onboarding-e-diagnostico#006",
+      "videos/capturas/guias-staging/fiscal-onboarding.png (staging v1.23.2, 05/11/2026)"
+     ]
+    },
+    {
+     "titulo": "Consulte o Diagnóstico Fiscal",
+     "texto": "Em Fiscal › Diagnóstico Fiscal, veja quais tabelas fiscais estão preenchidas para o cliente. A tela é só de consulta: use para saber o que falta antes de chamar o suporte.",
+     "imagem": "/manuais/fiscal/img/07-diagnostico-fiscal.webp",
+     "alt": "Tela Diagnóstico Fiscal com a faixa Tabelas fiscais do cliente completas e os quadros Cadastros do cliente (CSOSN, NCM, NCM x Estado, CFOP) e Cadastros globais (CST ICMS, CST IPI, CST PIS, CST COFINS, CST CBS, CST IBS, CEST, Estados), todos com OK.",
+     "largura": 1600,
+     "altura": 900,
+     "marcadores": [
+      {
+       "n": 1,
+       "rotulo": "Diagnóstico Fiscal",
+       "explicacao": "Item do menu do Fiscal. O endereço da tela é diagnostico-seed.",
+       "caixa": {
+        "x": 0.8,
+        "y": 19.6,
+        "w": 9.8,
+        "h": 4.2
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 2,
+       "rotulo": "Para que serve",
+       "explicacao": "Mostra, só para consulta, quais tabelas fiscais estão preenchidas. É usado pelo suporte para achar o que falta configurar.",
+       "caixa": {
+        "x": 18.8,
+        "y": 17.8,
+        "w": 65,
+        "h": 6.2
+       },
+       "lado": "baixo"
+      },
+      {
+       "n": 3,
+       "rotulo": "Resumo",
+       "explicacao": "Diz se as tabelas fiscais do cliente estão completas.",
+       "caixa": {
+        "x": 19.6,
+        "y": 27.4,
+        "w": 20.4,
+        "h": 5.4
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 4,
+       "rotulo": "Cadastros do cliente",
+       "explicacao": "Tabelas próprias de cada cliente: CSOSN, NCM, alíquotas por UF (NCM x Estado) e CFOP, com a quantidade.",
+       "caixa": {
+        "x": 19,
+        "y": 36.8,
+        "w": 38.6,
+        "h": 25.6
+       },
+       "lado": "baixo"
+      },
+      {
+       "n": 5,
+       "rotulo": "Cadastros globais",
+       "explicacao": "Tabelas compartilhadas pelo sistema: CSTs, CEST, Estados e CBS/IBS.",
+       "caixa": {
+        "x": 58.6,
+        "y": 36.8,
+        "w": 38.4,
+        "h": 41.4
+       },
+       "lado": "baixo"
+      }
+     ],
+     "evidencia": "captura-real",
+     "fontes": [
+      "videos/capturas/guias-staging/fiscal-diagnostico.png (staging v1.23.2, 05/11/2026)",
+      "roteiro-fiscal-01-painel-onboarding-e-diagnostico#008",
+      "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "servico-e-obrigacoes",
+   "titulo": "Serviço e obrigações acessórias",
+   "nivel": "avancado",
+   "objetivo": "Saber onde ficam as regras de serviço e as obrigações acessórias, para combinar com o contador.",
+   "onde": "Fiscal › Regras Fiscais de Serviço · Fiscal › Escrituração SPED",
+   "passos": [
+    {
+     "titulo": "Localize serviço e obrigações",
+     "texto": "No menu do Fiscal ficam Escrituração SPED, Regras Fiscais de Serviço (ISS e retenções), GNRE e Sintegra. Combine com o contador quem entrega cada obrigação antes de usar Nova Escrituração.",
+     "imagem": "/manuais/fiscal/img/08-escrituracao-sped.webp",
+     "alt": "Tela Escrituração Fiscal SPED vazia, com o botão Nova Escrituração e, no menu do Fiscal, Escrituração SPED, Regras Fiscais de Serviço, GNRE e Sintegra.",
+     "largura": 1600,
+     "altura": 900,
+     "marcadores": [
+      {
+       "n": 1,
+       "rotulo": "Escrituração SPED",
+       "explicacao": "Geração, monitoramento, validação e guarda da EFD ICMS/IPI e da EFD Contribuições.",
+       "caixa": {
+        "x": 0.8,
+        "y": 27,
+        "w": 9.6,
+        "h": 4.2
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 2,
+       "rotulo": "Regras Fiscais de Serviço",
+       "explicacao": "Tributação da NFS-e por serviço: ISS e retenções.",
+       "caixa": {
+        "x": 0.8,
+        "y": 34.4,
+        "w": 12.4,
+        "h": 4.2
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 3,
+       "rotulo": "GNRE",
+       "explicacao": "Obrigação ligada ao recolhimento de ICMS por guia. Combine com o contador quem cuida dela.",
+       "caixa": {
+        "x": 0.8,
+        "y": 48.2,
+        "w": 5.4,
+        "h": 4.2
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 4,
+       "rotulo": "Sintegra",
+       "explicacao": "Arquivo de obrigação acessória. Combine com o contador quem entrega.",
+       "caixa": {
+        "x": 0.8,
+        "y": 56.4,
+        "w": 6,
+        "h": 4.2
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 5,
+       "rotulo": "Nova Escrituração",
+       "explicacao": "Começa uma escrituração SPED. Só use com o contador.",
+       "caixa": {
+        "x": 42.6,
+        "y": 12.8,
+        "w": 11.6,
+        "h": 5.4
+       },
+       "lado": "direita"
+      }
+     ],
+     "atencao": "Escrituração SPED, Perfil SUFRAMA, Mapa de Apuração e MDF-e são PRO. A NFS-e e a Inutilização de Numeração dependem dos recursos contratados.",
+     "evidencia": "captura-real",
+     "fontes": [
+      "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal",
+      "roteiro-fiscal-03-regras-fiscais-de-servicos#003",
+      "videos/capturas/guias-staging/fiscal-sped.png (staging v1.23.2, 05/11/2026)",
+      "videos/capturas/guias-staging/fiscal-painel.png (staging v1.23.2, 05/11/2026)"
+     ]
+    },
+    {
+     "largura": 1600,
+     "altura": 900,
+     "evidencia": "captura-real",
+     "titulo": "Abra as Regras Fiscais de Serviço",
+     "texto": "Em Fiscal › Regras Fiscais de Serviço, leia as colunas da lista. Cadastre as regras com o contador: uma por código LC 116, cidade e tipo de tomador.",
+     "imagem": "/manuais/fiscal/img/10-regras-fiscais-de-servico.webp",
+     "alt": "Tela Regras Fiscais de Serviço, \"Tributação automática de NFSe por serviço, cidade e tomador\", com os botões Simular, Mais..., Filtros e + Nova Regra, as colunas LC 116, Descrição, Tomador, Alíq. ISS, Prioridade, Ativo e Ações e a lista vazia com o botão + Criar Regra.",
+     "marcadores": [
+      {
+       "n": 1,
+       "rotulo": "Regras Fiscais de Serviço",
+       "explicacao": "Item do menu do Fiscal (também é atalho no Painel Fiscal).",
+       "caixa": {
+        "x": 0.6,
+        "y": 34.9,
+        "w": 12.4,
+        "h": 3.2
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 2,
+       "rotulo": "Para que serve",
+       "explicacao": "A regra decide o ISS e as retenções da NFS-e por serviço, cidade e tomador. A NFS-e não passa pelo motor de impostos do produto.",
+       "caixa": {
+        "x": 22.4,
+        "y": 13,
+        "w": 26,
+        "h": 6
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 3,
+       "rotulo": "Colunas da regra",
+       "explicacao": "LC 116, Descrição, Tomador, Alíq. ISS, Prioridade e Ativo. A regra mais específica vence; entre duas iguais, vence a de menor número de prioridade.",
+       "caixa": {
+        "x": 18.1,
+        "y": 31.3,
+        "w": 79.8,
+        "h": 3.9
+       },
+       "lado": "cima"
+      },
+      {
+       "n": 4,
+       "rotulo": "+ Criar Regra",
+       "explicacao": "Com a lista vazia, começa o primeiro cadastro.",
+       "caixa": {
+        "x": 53.9,
+        "y": 53.5,
+        "w": 8.2,
+        "h": 4.4
+       },
+       "lado": "direita"
+      }
+     ],
+     "dica": "Regra inativa ou com vigência encerrada não é aplicada. Sem regra que case, vale a alíquota municipal ou a padrão do código LC 116.",
+     "atencao": "Instalação, montagem e construção civil (itens 7.02, 7.04 e 7.05 da LC 116): o ISS é devido no município da obra, não no da fábrica. A regra só preenche o que estiver vazio na nota.",
+     "fontes": [
+      "videos/capturas/guias-staging/fiscal-regras-nfse.png (staging v1.23.2, 05/11/2026)",
+      "roteiro-fiscal-03-regras-fiscais-de-servicos#003",
+      "plano-fiscal#094",
+      "plano-fiscal#088",
+      "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+     ]
+    },
+    {
+     "largura": 1600,
+     "altura": 900,
+     "evidencia": "captura-real",
+     "titulo": "Simule antes de usar",
+     "texto": "Antes de emitir uma nota com uma regra nova, clique em Simular, informe o Código LC 116, o Tipo de tomador e as cidades, e confira qual regra o sistema escolhe e a alíquota de ISS.",
+     "imagem": "/manuais/fiscal/img/10-regras-fiscais-de-servico.webp",
+     "alt": "Botões Simular, Mais..., Filtros e + Nova Regra no alto da tela Regras Fiscais de Serviço.",
+     "marcadores": [
+      {
+       "n": 1,
+       "rotulo": "Simular",
+       "explicacao": "Mostra qual regra seria escolhida e a alíquota de ISS. \"Nenhuma regra\" pede revisar os critérios.",
+       "caixa": {
+        "x": 72.6,
+        "y": 13.9,
+        "w": 6,
+        "h": 3.9
+       },
+       "lado": "baixo"
+      },
+      {
+       "n": 2,
+       "rotulo": "+ Nova Regra",
+       "explicacao": "Cadastra a regra: código LC 116, cidade, tipo de tomador, ISS, retenções, NBS e IBS/CBS.",
+       "caixa": {
+        "x": 90,
+        "y": 13.9,
+        "w": 7.7,
+        "h": 3.9
+       },
+       "lado": "baixo"
+      }
+     ],
+     "zoom": {
+      "x": 70,
+      "y": 9,
+      "w": 29,
+      "h": 16
+     },
+     "atencao": "Se o resultado for uma regra diferente da esperada, compare cidades, tipo de tomador, prioridade e as outras regras. Valide um caso com o contador.",
+     "fontes": [
+      "videos/capturas/guias-staging/fiscal-regras-nfse.png (staging v1.23.2, 05/11/2026)",
+      "roteiro-fiscal-03-regras-fiscais-de-servicos#010",
+      "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal",
+      "plano-fiscal#094"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mdfe",
+   "titulo": "Manifesto do transporte (MDF-e)",
+   "nivel": "avancado",
+   "objetivo": "Saber onde ficam os manifestos do transporte próprio e como ler a situação de cada um.",
+   "onde": "Fiscal › MDF-e",
+   "passos": [
+    {
+     "largura": 1600,
+     "altura": 900,
+     "evidencia": "captura-real",
+     "titulo": "Conheça a tela do MDF-e",
+     "texto": "Em Fiscal › MDF-e ficam os manifestos (modelo 58) de cada empresa. Leia os cartões por situação e use os filtros Status e Ambiente. O botão + Novo MDF-e começa um manifesto.",
+     "imagem": "/manuais/fiscal/img/09-mdfe.webp",
+     "alt": "Tela Manifesto eletrônico de documentos fiscais (MDF-e) com os cartões Total, Em aberto, A encerrar, Encerrados, Cancelados e Rejeitados, a busca, os filtros Status e Ambiente, o botão + Novo MDF-e e a lista vazia.",
+     "marcadores": [
+      {
+       "n": 1,
+       "rotulo": "MDF-e",
+       "explicacao": "Item do menu do Fiscal. O manifesto acompanha o transporte feito com veículo próprio, ligado à Expedição.",
+       "caixa": {
+        "x": 0.6,
+        "y": 52.6,
+        "w": 14.2,
+        "h": 3.3
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 2,
+       "rotulo": "Como funciona",
+       "explicacao": "A própria tela explica: o MDF-e salvo fica Em aberto e é enviado à SEFAZ em Ações › Transmitir.",
+       "caixa": {
+        "x": 24,
+        "y": 15.7,
+        "w": 46.4,
+        "h": 5.6
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 3,
+       "rotulo": "Cartões por situação",
+       "explicacao": "Total, Em aberto, A encerrar, Encerrados, Cancelados e Rejeitados.",
+       "caixa": {
+        "x": 21.1,
+        "y": 28.2,
+        "w": 73.8,
+        "h": 9.3
+       },
+       "lado": "esquerda"
+      },
+      {
+       "n": 4,
+       "rotulo": "+ Novo MDF-e",
+       "explicacao": "Começa um manifesto novo para a empresa.",
+       "caixa": {
+        "x": 88,
+        "y": 16.5,
+        "w": 8.2,
+        "h": 3.9
+       },
+       "lado": "baixo"
+      }
+     ],
+     "atencao": "MDF-e é da versão PRO. Transmitir vai à SEFAZ: só com o responsável fiscal e em homologação durante a implantação.",
+     "fontes": [
+      "videos/capturas/guias-staging/fiscal-mdfe.png (staging v1.23.2, 05/11/2026)",
+      "oficial-fat-c-implantacao#013",
+      "manual-08-faturamento-e-fiscal#010",
+      "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+     ]
+    }
+   ]
+  }
+ ],
+ "consultor": {
+  "implantacao": [
+   "Fundação concluída: empresas com regime, CNAE, IE e endereço com IBGE; produtos com NCM, origem e categoria; participantes com UF, IE e as marcas \"Não Contribuinte\" e \"Produtor Rural\" revisadas. Fonte: checklist de implantação do Fiscal.",
+   "Contador do cliente presente, com a planilha \"NCM × tributação\" e a lista de CFOPs por operação, recebidas antes da sessão. Fonte: checklist de implantação do Fiscal.",
+   "Módulo fiscal na licença e cliente ciente do que é PRO (Escrituração SPED, Perfil SUFRAMA, Mapa de Apuração, MDF-e). Fonte: checklist de implantação do Fiscal.",
+   "Ambiente fiscal em Homologação e clientes de teste para cada operação: PJ com IE na mesma UF, PJ com IE em outra UF e PF não contribuinte em outra UF. Fonte: checklist de implantação do Fiscal.",
+   "Ordem do roteiro: empresa e regime; CFOP e textos fiscais; NCM e NCM por Estado; Onboarding; provar o cálculo no pedido e na nota; provocar o aviso de cadastro faltando; serviço, obrigações e perfis. Fonte: checklist de implantação do Fiscal.",
+   "Combine com o cliente quem pede cada correção: estados, CST, CSOSN, CEST e LC 116 são mantidos pela Faktory (pedido ao suporte); NCM, NCM por Estado, CFOP, textos fiscais e regras de serviço são do cliente, com o contador. Fonte: checklist de implantação do Fiscal (bloco 4).",
+   "Prestador de serviço: uma Regra Fiscal de Serviço por código LC 116, cidade e tipo de tomador, conferida numa NFS-e de teste. Prestador do Presumido ou do Real com retenção de PIS/COFINS/CSLL/IRRF: hoje a tela da empresa ainda não tem esses campos (acionar o suporte). Fonte: checklist de implantação do Fiscal (bloco 8)."
+  ],
+  "perguntasDoCliente": [
+   {
+    "pergunta": "O Onboarding diz que estou liberado. O cálculo está certo?",
+    "resposta": "Não necessariamente. O Onboarding encontra configuração ausente, mas só os testes de cada operação no pedido e na nota, conferidos pelo contador, garantem o cálculo.",
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal",
+     "roteiro-fiscal-01-painel-onboarding-e-diagnostico#007"
+    ]
+   },
+   {
+    "pergunta": "A nota salvou com imposto zerado. Posso emitir?",
+    "resposta": "Não. O quadro Impostos não calculados mostra o cadastro que falta. Corrija com o responsável fiscal e use Recalcular.",
+    "fontes": [
+     "regra-faturamento-finalizar-nf-requisitos",
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+    ]
+   },
+   {
+    "pergunta": "Corrigi o NCM. A nota que já estava salva atualiza sozinha?",
+    "resposta": "Não. O cálculo não se refaz sozinho nos documentos já salvos: use Recalcular no pedido ou na nota.",
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+    ]
+   },
+   {
+    "pergunta": "Quem corrige um CST ou CSOSN errado na tabela?",
+    "resposta": "CST, CSOSN, CEST, estados e LC 116 são tabelas mantidas pela Faktory: peça ao suporte. NCM, CFOP, textos e regras de serviço são do cliente, com o contador.",
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+    ]
+   }
+  ],
+  "errosComuns": [
+   {
+    "titulo": "CBS e IBS com alíquota cheia em 2026",
+    "texto": "\"CBS (%)\" e \"IBS (%)\" preenchidos com 8,80 e 17,70 em 2026 fazem o imposto sair dezenas de vezes maior.",
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+    ]
+   },
+   {
+    "titulo": "CFOP de serviço em nota de mercadoria",
+    "texto": "Não usar CFOP 59xx/69xx (exceto 5949/6949) em NF-e de mercadoria sem testar: hoje ainda dispara ISS.",
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+    ]
+   },
+   {
+    "titulo": "Confiar na alíquota interestadual",
+    "texto": "Hoje o sistema usa 12% de alíquota interestadual em todas as UFs: conferir com o contador.",
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+    ]
+   },
+   {
+    "titulo": "Cliente alterando tabela nacional",
+    "texto": "CST, CSOSN, CEST e demais tabelas nacionais devem ser recusadas para o usuário do cliente. Se ele conseguir editar, reporte como crítico.",
+    "fontes": [
+     "plano-fiscal#007"
+    ]
+   },
+   {
+    "titulo": "Achar que o pedido está certo porque salvou",
+    "texto": "O documento salva com imposto zerado e aviso no item quando falta cadastro. O teste só passa sem aviso.",
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+    ]
+   },
+   {
+    "titulo": "ISS no município errado",
+    "texto": "Para instalação e construção civil (LC 116 itens 7.02, 7.04, 7.05) o ISS é devido no município da obra. Cadastre a regra pela cidade do tomador e simule.",
+    "fontes": [
+     "plano-fiscal#088",
+     "roteiro-fiscal-03-regras-fiscais-de-servicos#010"
+    ]
+   }
+  ],
+  "configuracoes": [
+   {
+    "item": "Regime de Apuração e Tipo de Atividade",
+    "onde": "Configurações › Empresas, seção Dados Gerais",
+    "porque": "No Simples o ICMS usa CSOSN; no Presumido e no Real usa CST. Tipo Industrial destaca IPI. Sem regime, nada calcula.",
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+    ]
+   },
+   {
+    "item": "PIS/COFINS, CBS (%) e IBS (%) da empresa",
+    "onde": "Configurações › Empresas, seção Configuração Fiscal",
+    "porque": "CBS e IBS ficam vazios em 2026 (vale a alíquota de teste); preenchidos com 8,80 e 17,70 o imposto sai dezenas de vezes maior.",
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+    ]
+   },
+   {
+    "item": "CPF do contador",
+    "onde": "Configurações › Empresas, seção Parâmetros (CPF/CNPJ do Contador)",
+    "porque": "O SPED exige CPF de 11 dígitos; com o CNPJ do escritório a escrituração trava.",
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+    ]
+   },
+   {
+    "item": "CFOP (CSTs, CSOSN, Aplicar ICMS/PIS/COFINS, Gera Financeiro, Movimenta Estoque)",
+    "onde": "Fiscal › Painel Fiscal › Classificação Fiscal › CFOP (também Faturamento › Configurações › CFOP)",
+    "porque": "A lista padrão não traz CST de ICMS, PIS e COFINS: empresa do Presumido ou do Real fica com aviso \"Sem CST\" até preencher.",
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal",
+     "oficial-fis-a-regras#005"
+    ]
+   },
+   {
+    "item": "NCM, CEST e NCM por Estado",
+    "onde": "Fiscal › Painel Fiscal › Classificação Fiscal › NCM",
+    "porque": "O NCM é carga do cliente. Sem CST de PIS/COFINS de saída o item sai sem imposto; sem linha com MVA por UF, o ST sai zerado.",
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal",
+     "oficial-fis-a-regras#005"
+    ]
+   },
+   {
+    "item": "Textos Fiscais ligados ao CFOP",
+    "onde": "Fiscal › Painel Fiscal › Configurações Fiscais › Textos Fiscais",
+    "porque": "Hoje só o texto ligado ao CFOP sai na nota.",
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+    ]
+   },
+   {
+    "item": "Certificado digital válido",
+    "onde": "Fiscal › Painel Fiscal › Certificados Digitais",
+    "porque": "O Onboarding Fiscal cobra certificado válido entre os itens obrigatórios.",
+    "fontes": [
+     "oficial-fis-a-regras#006",
+     "videos/capturas/guias-staging/fiscal-painel.png (staging v1.23.2, 05/11/2026)"
+    ]
+   },
+   {
+    "item": "Regras Fiscais de Serviço",
+    "onde": "Fiscal › Regras Fiscais de Serviço",
+    "porque": "Sem regra, a NFS-e usa a alíquota municipal ou a padrão do LC 116; retenções só vêm da regra.",
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal",
+     "plano-fiscal#094"
+    ]
+   },
+   {
+    "item": "Alíquota de Crédito do Simples (CSOSN 101)",
+    "onde": "Fiscal › Alíquota de Crédito do Simples",
+    "porque": "Sem a alíquota da competência nem a da empresa, o crédito sai zero.",
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+    ]
+   }
+  ],
+  "integracoes": [
+   {
+    "acao": "Salvar o pedido ou alterar um item",
+    "modulo": "Vendas",
+    "efeito": "O motor de impostos calcula pelo cadastro fiscal; se faltar algo, o item mostra Impostos não calculados e o pedido salva assim.",
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal",
+     "glossario:vendas.novo-pedido"
+    ]
+   },
+   {
+    "acao": "Faturar com \"Recalcular impostos\"",
+    "modulo": "Faturamento",
+    "efeito": "A nota recalcula pelas regras atuais; trocar o CFOP de um item resolve o CST de novo.",
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+    ]
+   },
+   {
+    "acao": "CFOP com Gera Financeiro",
+    "modulo": "Financeiro",
+    "efeito": "A nota gera um título por parcela; sem a marca (remessa, retorno), não gera.",
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento",
+     "oficial-fat-a-regras#004"
+    ]
+   },
+   {
+    "acao": "CFOP com Movimenta Estoque",
+    "modulo": "Estoque",
+    "efeito": "A nota dá saída do produto.",
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento"
+    ]
+   },
+   {
+    "acao": "Texto Fiscal ligado ao CFOP",
+    "modulo": "Faturamento (DANFE)",
+    "efeito": "O texto sai na nota; ligado ao NCM, ao estado ou ao perfil SUFRAMA, hoje não sai.",
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+    ]
+   },
+   {
+    "acao": "Regra Fiscal de Serviço que casa com o serviço",
+    "modulo": "Faturamento (NFS-e)",
+    "efeito": "Preenche ISS, retenções, NBS e IBS/CBS que estiverem vazios na NFS-e.",
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal",
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento"
+    ]
+   }
+  ],
+  "roteiroDemonstracao": [
+   {
+    "passo": "Abra o Painel Fiscal",
+    "mostrar": "Os atalhos e os grupos de cadastro; diga o que é tabela da Faktory e o que é do cliente.",
+    "fontes": [
+     "videos/capturas/guias-staging/fiscal-painel.png (staging v1.23.2, 05/11/2026)",
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+    ]
+   },
+   {
+    "passo": "Abra NCM e CFOP com o contador",
+    "mostrar": "Um NCM do produto típico (CST de PIS/COFINS de saída, NCM por Estado) e o CFOP de venda (CSTs e marcas).",
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+    ]
+   },
+   {
+    "passo": "Rode o Onboarding Fiscal",
+    "mostrar": "Itens obrigatórios e condicionais da empresa; lembre que ele só informa.",
+    "fontes": [
+     "oficial-fis-a-regras#006",
+     "videos/capturas/guias-staging/fiscal-onboarding.png (staging v1.23.2, 05/11/2026)"
+    ]
+   },
+   {
+    "passo": "Mostre o Diagnóstico Fiscal",
+    "mostrar": "Tabelas do cliente × tabelas globais.",
+    "fontes": [
+     "videos/capturas/guias-staging/fiscal-diagnostico.png (staging v1.23.2, 05/11/2026)"
+    ]
+   },
+   {
+    "passo": "Prove o cálculo num pedido de teste",
+    "mostrar": "O item com o quadro Impostos não calculados (se aparecer) e o Recalcular depois de corrigir o cadastro.",
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+    ]
+   },
+   {
+    "passo": "Se o cliente presta serviço, mostre as Regras Fiscais de Serviço",
+    "mostrar": "Uma regra por LC 116, cidade e tomador e o Simular.",
+    "fontes": [
+     "videos/capturas/guias-staging/fiscal-regras-nfse.png (staging v1.23.2, 05/11/2026)",
+     "roteiro-fiscal-03-regras-fiscais-de-servicos#010"
+    ]
+   },
+   {
+    "passo": "Se o cliente tem PRO, mostre SPED e MDF-e",
+    "mostrar": "Nova Escrituração com o Diagnóstico de prontidão e a tela do MDF-e, sem transmitir.",
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal",
+     "videos/capturas/guias-staging/fiscal-mdfe.png (staging v1.23.2, 05/11/2026)"
+    ]
+   }
+  ]
+ },
+ "pendencias": [
+  "CAPTURA: Fiscal › Configurações › CFOP › Editar CFOP — campos CST ICMS, CSOSN, Aplicar ICMS/PIS/COFINS e Gera Financeiro.",
+  "CAPTURA: Fiscal › Configurações › NCM — lápis (IPI/PIS/COFINS) e ícone 🌐 com a janela NCM por Estado.",
+  "CAPTURA: Fiscal › Configurações › Textos Fiscais — lista e vínculo com o CFOP.",
+  "CAPTURA: pedido de venda › item › aba de impostos — onde o contador confere o cálculo (bloco 5).",
+  "A conferir na tela: item sem CST na transmissão (barrada × \"Transmitir mesmo assim?\" × pré-voo) e o aviso \"NCM-Estado não configurado para o produto\" (bloqueia ou não).",
+  "O roteiro-fiscal-02 está marcado como possivelmente desatualizado e o roteiro-fiscal-01 tem versão pendente na base: conferir na tela antes de ensinar.",
+  "CAPTURA: Fiscal › Regras Fiscais de Serviço › Nova Regra (formulário da regra) e o resultado do Simular. A lista foi capturada vazia (staging v1.23.2, 05/11/2026) e entrou nos passos \"Abra as Regras Fiscais de Serviço\" e \"Simule antes de usar\". Escrituração SPED foi capturada vazia (sem escrituração).",
+  "DIVERGÊNCIA (reduzida, staging v1.23.2, 05/11/2026): o Painel Fiscal mostra NCM, CEST e CFOP no grupo Classificação Fiscal e Textos Fiscais em Configurações Fiscais. Falta conferir se o caminho Fiscal › Configurações › NCM/CFOP (manual-08, FIS C) ainda existe.",
+  "DIVERGÊNCIA (reduzida, staging v1.23.2, 05/11/2026): a tela Onboarding Fiscal diz que itens obrigatórios pendentes bloqueiam o go-live (como o roteiro-fiscal-01#004); o checklist de implantação diz que ele só informa. Falta conferir se o bloqueio impede emitir.",
+  "Resolvido (staging v1.23.2, 05/11/2026): o nome no menu é Diagnóstico Fiscal (endereço diagnostico-seed); a tela diz que é só de consulta e usada pelo suporte. Virou o passo \"Consulte o Diagnóstico Fiscal\". Conferir se o item aparece para perfis sem acesso de suporte.",
+  "CAPTURA: o botão Recalcular no pedido ou na nota. O passo \"Corrija e recalcule\" usa o quadro Impostos não calculados, que manda usar Recalcular, mas nenhuma captura mostra o botão.",
+  "A conferir na tela: MDF-e (staging v1.23.2, 05/11/2026) — a base só traz a rota e que é PRO (oficial-fat-c-implantacao#013); a regra de encerramento (\"A encerrar\") e a ligação com a carga da Expedição não têm fonte de uso.",
+  "O roteiro-fiscal-03 (Regras Fiscais de Serviço) está marcado como possivelmente desatualizado; o Simular foi confirmado só como botão na captura."
+ ],
+ "fontes": [
+  "guia:db/migrations/002_modulos_iniciais.sql#fiscal",
+  "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal",
+  "roteiro-fiscal-01-painel-onboarding-e-diagnostico#007",
+  "funcional-faturamento-notas-fiscais#003",
+  "manual-08-faturamento-e-fiscal#004",
+  "regra-faturamento-finalizar-nf-requisitos",
+  "glossario:faturamento.nova-nfe",
+  "roteiro-fiscal-01-painel-onboarding-e-diagnostico#003",
+  "glossario:vendas.novo-pedido",
+  "glossario:cadastros.produtos",
+  "oficial-fis-c-implantacao#006",
+  "oficial-fis-c-implantacao#010",
+  "manual-08-faturamento-e-fiscal#002",
+  "roteiro-fiscal-01-painel-onboarding-e-diagnostico#005",
+  "metodologia-apostila-do-consultor#034",
+  "roteiro-fiscal-01-painel-onboarding-e-diagnostico#002",
+  "roteiro-fiscal-02-cadastros-fiscais#002",
+  "videos/public/telas/consultor-07-faturamento/03-nova-nfe.png",
+  "videos/roteiros/consultor-07-faturamento.json#10",
+  "roteiro-fiscal-01-painel-onboarding-e-diagnostico#004",
+  "roteiro-fiscal-01-painel-onboarding-e-diagnostico#010",
+  "roteiro-fiscal-01-painel-onboarding-e-diagnostico#006",
+  "roteiro-fiscal-03-regras-fiscais-de-servicos#003",
+  "plano-fiscal#007",
+  "videos/capturas/guias-staging/fiscal-painel.png",
+  "videos/capturas/guias-staging/fiscal-onboarding.png",
+  "videos/capturas/guias-staging/fiscal-diagnostico.png",
+  "videos/capturas/guias-staging/fiscal-sped.png",
+  "videos/capturas/guias-staging/fiscal-mdfe.png (staging v1.23.2, 05/11/2026)",
+  "videos/capturas/guias-staging/fiscal-regras-nfse.png (staging v1.23.2, 05/11/2026)",
+  "videos/capturas/guias-staging/fiscal-painel.png (staging v1.23.2, 05/11/2026)",
+  "roteiro-fiscal-03-regras-fiscais-de-servicos#010",
+  "plano-fiscal#094",
+  "plano-fiscal#088",
+  "oficial-fis-a-regras#005",
+  "oficial-fis-a-regras#006",
+  "oficial-fat-c-implantacao#013",
+  "manual-08-faturamento-e-fiscal#010",
+  "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento"
+ ]
+}

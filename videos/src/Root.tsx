@@ -17,6 +17,12 @@ import consultor07 from './gerado/consultor-07-faturamento.json';
 import consultor08 from './gerado/consultor-08-financeiro.json';
 import sugestaoTags from './gerado/sugestao-tags-financeiro.json';
 import compraCliente from './gerado/compra-em-nome-do-cliente.json';
+import { IntroVideo, type RoteiroIntro } from './IntroVideo';
+import introVendas from '../roteiros/intro-vendas.json';
+import introCrm from '../roteiros/intro-crm.json';
+import introFinanceiro from '../roteiros/intro-financeiro.json';
+import introEstoque from '../roteiros/intro-estoque.json';
+import introCompras from '../roteiros/intro-compras.json';
 
 // Um vídeo por fluxo. Para incluir outro: roteiros/<id>.json → narrar → preparar → importar aqui.
 // sugestaoTags é um vídeo interno, sem voz, que não vai para o Guia.
@@ -40,5 +46,16 @@ export const Root: React.FC = () => (
       <Composition key={`${d.id}-v4`} id={`${d.id}-v4`} component={FluxoVideoV4} fps={FPS} width={1920} height={1080}
         durationInFrames={Math.ceil(d.duracaoTotal * FPS)} defaultProps={props(d)} />
     ))}
+    {/* vídeos de introdução de módulo (sem narração, só música): roteiros/intro-<modulo>.json, ver INTRO-LEIA-ME.md */}
+    <Composition id="intro-vendas" component={IntroVideo} fps={introVendas.fps} width={1920} height={1080}
+      durationInFrames={Math.round(introVendas.duracao * introVendas.fps)} defaultProps={{ roteiro: introVendas as RoteiroIntro }} />
+    <Composition id="intro-crm" component={IntroVideo} fps={introCrm.fps} width={1920} height={1080}
+      durationInFrames={Math.round(introCrm.duracao * introCrm.fps)} defaultProps={{ roteiro: introCrm as RoteiroIntro }} />
+    <Composition id="intro-financeiro" component={IntroVideo} fps={introFinanceiro.fps} width={1920} height={1080}
+      durationInFrames={Math.round(introFinanceiro.duracao * introFinanceiro.fps)} defaultProps={{ roteiro: introFinanceiro as RoteiroIntro }} />
+    <Composition id="intro-estoque" component={IntroVideo} fps={introEstoque.fps} width={1920} height={1080}
+      durationInFrames={Math.round(introEstoque.duracao * introEstoque.fps)} defaultProps={{ roteiro: introEstoque as RoteiroIntro }} />
+    <Composition id="intro-compras" component={IntroVideo} fps={introCompras.fps} width={1920} height={1080}
+      durationInFrames={Math.round(introCompras.duracao * introCompras.fps)} defaultProps={{ roteiro: introCompras as RoteiroIntro }} />
   </>
 );

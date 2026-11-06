@@ -197,3 +197,7 @@
 /* Barra da seção de problemas: contagem e exportação dos problemas do filtro */
 .pnl-prob-barra { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 16px; margin: 0 0 12px; }
 .pnl-prob-barra .pnl-contagem { margin: 0; }
+
+/* prévia FE-20261104-01: campo não estoura o espaço por causa da opção mais longa do <select> */
+.pnl-campo { max-width: 100%; min-width: 0; }
+.pnl-campo select { flex: 1 1 auto; min-width: 0; max-width: 100%; text-overflow: ellipsis; }

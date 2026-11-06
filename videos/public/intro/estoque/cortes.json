@@ -1,0 +1,108 @@
+{
+  "fonte": "midia/brutos/estoque/estoque_bruto_c01_v01.mp4",
+  "observacao": "Tempos em segundos dos brutos (1920x1200), recorte crop=1920:1080:0:80 antes dos borrões; caixas no quadro recortado. Só trechos sim do roteiro-telas.md v02. O mapa de c01 no roteiro é aproximado: os tempos abaixo foram conferidos em quadros extraídos com ffmpeg em 06/11/2026 (Visão geral 76–97 s com rolagem a partir de ~82 s; Saldo até 431,2 s; Movimentos a partir de 432,5 s; Demonstrativos 715–747 s). Fora: c01 0–~80 (Financeiro) e 1700 s em diante (sessão expirada), c02 0–45 (CRM Leads), Chaves de API, Documentação da API, Participantes e Projetos (C), carregamentos. Regras do Harness não demonstradas (tour só leitura) não viram texto.",
+  "caixas": {
+    "A_B_cabecalho": {
+      "x": 1395,
+      "y": 0,
+      "w": 525,
+      "h": 72,
+      "porque": "A (nome, cargo e avatar; manifesto x1640–1920 y0–60; real x1615–1890 y25–62) + B (selo METALURGICA TEST; real x1400–1545 y30–58)"
+    },
+    "status_chrome": {
+      "x": 0,
+      "y": 1040,
+      "w": 660,
+      "h": 40,
+      "porque": "B: barra de status do Chrome com a URL do staging (real x0–365 y1058–1078)"
+    },
+    "locais_codigo": {
+      "x": 295,
+      "y": 335,
+      "w": 120,
+      "h": 80,
+      "porque": "C: códigos OBRA-… (código de registro do ambiente)"
+    },
+    "locais_nome": {
+      "x": 450,
+      "y": 335,
+      "w": 385,
+      "h": 80,
+      "porque": "C: nome da obra com nome de pessoa (x456–822)"
+    },
+    "locais_empresa_projeto": {
+      "x": 1036,
+      "y": 335,
+      "w": 725,
+      "h": 80,
+      "porque": "C: EMPRESA (inclui nome real de usuário) e PROJETO (nome de pessoa); x1043–1716"
+    }
+  },
+  "cortes": [
+    {
+      "id": "e1-visao-geral",
+      "in": 80,
+      "out": 88.5,
+      "borrar": [
+        "A_B_cabecalho",
+        "status_chrome"
+      ],
+      "porque": "c01 Estoque › Visão geral: topo (Visão geral do estoque, Indicadores principais) e início da rolagem (~82 s); só valores zerados"
+    },
+    {
+      "id": "e2-saldo",
+      "in": 424,
+      "out": 431.2,
+      "borrar": [
+        "A_B_cabecalho",
+        "status_chrome"
+      ],
+      "porque": "c01 Estoque › Saldo: Saldo de estoque vazio (Sem resultados), botão + Novo movimento; a tela muda em ~431,5 s"
+    },
+    {
+      "id": "e3-movimentos",
+      "in": 432.6,
+      "out": 440,
+      "borrar": [
+        "A_B_cabecalho",
+        "status_chrome"
+      ],
+      "porque": "c01 Estoque › Movimentos: Movimentos de Estoque carregado em 432,5 s (Nenhum movimento encontrado)"
+    },
+    {
+      "id": "e4-demonstrativos",
+      "in": 738,
+      "out": 746.5,
+      "borrar": [
+        "A_B_cabecalho",
+        "status_chrome"
+      ],
+      "porque": "c01 Estoque › Demonstrativos: hub Demonstrativos de Estoque (antes de abrir Posição de Estoque em ~748 s)"
+    },
+    {
+      "id": "e5-locais",
+      "fonte": "midia/brutos/estoque/estoque_bruto_c02_v01.mp4",
+      "in": 134,
+      "out": 138.6,
+      "borrar": [
+        "A_B_cabecalho",
+        "status_chrome",
+        "locais_codigo",
+        "locais_nome",
+        "locais_empresa_projeto"
+      ],
+      "porque": "c02 Locais de Estoque (2 itens) com o layout final das colunas (134,0 s) até a troca para Localizações (~138,6 s)"
+    },
+    {
+      "id": "e6-configuracoes",
+      "fonte": "midia/brutos/estoque/estoque_bruto_c02_v01.mp4",
+      "in": 147.8,
+      "out": 155,
+      "borrar": [
+        "A_B_cabecalho",
+        "status_chrome"
+      ],
+      "porque": "c02 Configurações do Estoque (Parâmetros de Estoque) carregada em 148,0 s e rolagem até Sobras de corte"
+    }
+  ]
+}

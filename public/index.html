@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex">
-<title>Guia do Consultor — Faktory Flow</title>
+<title>Página Inicial — Faktory Flow</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -869,20 +869,40 @@
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&family=JetBrains+Mono:wght@500&display=swap">
 <link rel="stylesheet" href="brand-system.css?v=20260925">
+<link rel="stylesheet" href="plataforma.css?v=20261105h">
+<link rel="stylesheet" href="plataforma-guia.css?v=20261105p">
+<link rel="stylesheet" href="plataforma-v3.css?v=20261106m">
 <link rel="stylesheet" href="guia-editor.css?v=20260925">
 <link rel="stylesheet" href="guia-textos.css?v=20260925">
 <link rel="stylesheet" href="guia-processos.css?v=20260925">
 <link rel="stylesheet" href="guia-abas.css?v=20261020f">
 <link rel="stylesheet" href="guia-checklists.css?v=20261023a">
+<style>
+  /* FE-20261104-01 (Lead): com 9 abas, a fila não cabe em telas até 600px. Ela rola dentro dela mesma, sem criar
+     rolagem horizontal na página; guia-abas.js centraliza a aba ativa. Fica aqui porque guia-abas.css não é do Lead. */
+  /* Com 9 abas, os rótulos de todas não cabem nem em 1920px (o .main tem 1200px): fica só o da aba ativa, como o
+     guia-abas.css já faz até 1280px. Os nomes continuam no title e no aria-label de cada aba. */
+  .ab-aba:not([aria-selected="true"]) span { display: none; }
+  @media (max-width: 600px) {
+    .ab-abas { max-width: 100%; min-width: 0; overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: none; }
+    .ab-abas::-webkit-scrollbar { display: none; }
+    .ab-aba { flex: 0 0 auto; min-width: 44px; }
+  }
+</style>
 <link rel="stylesheet" href="guia-videos.css?v=20261022a">
 <link rel="stylesheet" href="guia-admin.css?v=20261025f">
 <link rel="stylesheet" href="guia-horas.css?v=20261020g">
 <link rel="stylesheet" href="guia-configuracoes.css?v=20260925">
 <link rel="stylesheet" href="guia-duvidas.css?v=20260924c">
+<link rel="stylesheet" href="plataforma-shell.css?v=20261105q">
 <script src="brand-motion.js?v=20260925" defer></script>
-<script src="guia-abas.js?v=20261025a" defer></script>
+<script src="plataforma-ui.js?v=20261105p" defer></script>
+<script src="plataforma-icones.js?v=20261106a" defer></script>
+<script src="plataforma-v3.js?v=20261106g" defer></script>
+<script src="plataforma-dados.js?v=20261106a" defer></script>
+<script src="guia-abas.js?v=20261106a" defer></script>
 <script src="checklists-relatorio.js?v=20261023a" defer></script>
 <script src="guia-checklists.js?v=20261023a" defer></script>
 <script src="guia-videos.js?v=20261022b" defer></script>
@@ -953,6 +973,15 @@
 
   <!-- ==================== MAIN ==================== -->
   <main class="main">
+
+    <!-- ===== PONTOS DE MONTAGEM DA PLATAFORMA (FE-20261104-01) =====
+         guia-abas.js liga cada um à sua aba antes de mover o guia antigo para o Acervo:
+         #painel-inicio (Página Inicial), #painel-inicial (Guia Inicial), #painel-consultor (Guia do Consultor)
+         e #painel-visibilidade (aba Painel, só administradores; guia-admin.js tira o hidden). -->
+    <section id="painel-inicio" class="pl-raiz" aria-label="Página Inicial" hidden></section>
+    <section id="painel-inicial" class="pl-raiz" aria-label="Guia Inicial" hidden></section>
+    <section id="painel-consultor" class="pl-raiz" aria-label="Guia do Consultor" hidden></section>
+    <section id="painel-visibilidade" class="pl-raiz" hidden></section>
 
     <!-- ===== DASHBOARD ===== -->
     <section id="dashboard" class="fade-in">
@@ -1311,24 +1340,11 @@
 </div>
 
 <script>
-/* ==================== ÍCONES SVG ==================== */
-const icones = {
-  vendas: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>',
-  faturamento: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>',
-  financeiro: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>',
-  crm: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
-  producao: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 20h20"/><path d="M5 20V8l5 4V8l5 4V8l4 4v8"/></svg>',
-  compras: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>',
-  recebimento: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>',
-  estoque: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>',
-  expedicao: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>',
-  servicos: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>',
-  projetos: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg>',
-  fiscal: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11H3v10h6V11zM21 3h-6v18h6V3zM15 7H9v14h6V7z"/></svg>',
-  relatorios: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>',
-  tarefas: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>',
-  alumina: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>'
-};
+/* ==================== ÍCONES SVG ====================
+   Fonte única: window.PlataformaUI.icones (plataforma-ui.js, carregado com defer antes do DOMContentLoaded).
+   `icones` segue como nome global só porque guia-editor.js (iconeDe) o lê: é uma visão do mapa da UI, sem SVG
+   duplicado aqui. Lida na hora do uso, então funciona mesmo este script rodando antes dos que têm defer. */
+const icones = new Proxy({}, { get: (_, nome) => (window.PlataformaUI && window.PlataformaUI.icones[nome]) || '' });
 
 /* ==================== DADOS DOS MÓDULOS ==================== */
 const modulos = [

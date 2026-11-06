@@ -1,0 +1,1313 @@
+{
+  "modulo": "crm",
+  "titulo": "CRM — guia visual",
+  "resumo": "Você vai conhecer o caminho comercial no Flow: cadastrar um lead, qualificá-lo no Kanban, convertê-lo em oportunidade e trabalhar essa oportunidade no Pipeline até ela virar pedido de venda.",
+  "versaoSistema": "1.22.13 (capturas de consultor-03-comercial) e 1.23.2 (capturas brutas de 04/11/2026 e do staging de 05/11/2026)",
+  "atualizadoEm": "2026-11-06",
+  "status": "rascunho",
+  "conceitos": [
+    {
+      "titulo": "O CRM é a porta de entrada da venda",
+      "texto": "Ele acompanha o cliente desde o primeiro contato até a oportunidade pronta para virar pedido. O pedido é criado depois, em Vendas.",
+      "icone": "crm",
+      "fontes": [
+        "guia:scripts/dados-checklists-estagiarios.mjs#crm",
+        "guia:db/migrations/002_modulos_iniciais.sql#crm"
+      ]
+    },
+    {
+      "titulo": "Lead é um contato ainda não qualificado",
+      "texto": "O lead já é o cadastro completo do participante: o mesmo cadastro que depois vira cliente, com a chave Prospect/Lead ligada. Só Tipo (PF/PJ) e Razão Social / Nome são obrigatórios.",
+      "icone": "fundacao",
+      "fontes": [
+        "regra-crm-formulario-do-lead-secoes-e-campos",
+        "guia:scripts/dados-checklists-estagiarios.mjs#crm"
+      ]
+    },
+    {
+      "titulo": "Qualificar é provar que o negócio é real",
+      "texto": "O lead anda pelas etapas do Kanban de Leads (Inbound 10%, Pesquisado 25%, Conectado 40%, MQL 60%, SQL 80%…). Para converter, precisa estar numa etapa de 60% ou mais e com o BANT completo.",
+      "icone": "regra",
+      "fontes": [
+        "regra-crm-converter-lead-exige-etapa-60-e-bant-completo",
+        "guia:scripts/dados-checklists-estagiarios.mjs#crm"
+      ]
+    },
+    {
+      "titulo": "A conversão cria a oportunidade sozinha",
+      "texto": "Ao converter, o lead fica Convertido, o participante passa a ter É Cliente? ligado e uma oportunidade nasce no Pipeline, na etapa Novo Lead, com o valor do Budget. A tela só avisa a conversão.",
+      "icone": "fluxo",
+      "fontes": [
+        "regra-crm-conversao-cria-a-oportunidade-sozinha"
+      ]
+    },
+    {
+      "titulo": "No Pipeline o vendedor trabalha o negócio",
+      "texto": "Cada oportunidade tem itens, atividades e histórico. Os itens viram o valor da oportunidade e, quando ela é ganha, os itens do pedido de venda.",
+      "icone": "vendas",
+      "fontes": [
+        "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm",
+        "guia:videos/roteiros/consultor-03-comercial.json#06"
+      ]
+    }
+  ],
+  "palavras": [
+    {
+      "termo": "Lead",
+      "definicao": "Contato comercial ainda em qualificação. Fica em CRM › Vendas › Leads (Lista ou Kanban).",
+      "fontes": [
+        "manual-02-crm#2.2",
+        "guia:scripts/dados-checklists-estagiarios.mjs#crm"
+      ]
+    },
+    {
+      "termo": "Novo Lead",
+      "definicao": "Botão da lista de leads que abre o cadastro completo de participante.",
+      "fontes": [
+        "manual-02-crm#2.2"
+      ]
+    },
+    {
+      "termo": "Informações CRM",
+      "definicao": "Seção do lead com Origem do Lead, Temperatura, Responsável, Budget Estimado, Produto de Interesse e as chaves do BANT. Não confundir com a seção Dados CRM.",
+      "fontes": [
+        "regra-crm-formulario-do-lead-secoes-e-campos"
+      ]
+    },
+    {
+      "termo": "Temperatura",
+      "definicao": "Quão quente está o lead: Frio, Morno, Quente ou Urgente.",
+      "fontes": [
+        "manual-02-crm#2.2",
+        "guia:scripts/dados-checklists-estagiarios.mjs#crm"
+      ]
+    },
+    {
+      "termo": "BANT",
+      "definicao": "Budget Estimado e as chaves Autoridade de decisão confirmada, Necessidade claramente identificada e Prazo/timeline definido.",
+      "fontes": [
+        "regra-crm-converter-lead-exige-etapa-60-e-bant-completo"
+      ]
+    },
+    {
+      "termo": "Kanban de Leads",
+      "definicao": "Quadro com as etapas do funil de leads e seus percentuais. Mover o card pede confirmação no diálogo Mover lead.",
+      "fontes": [
+        "funcional-crm-leads-pipeline-e-oportunidades",
+        "guia:scripts/dados-checklists-estagiarios.mjs#crm"
+      ]
+    },
+    {
+      "termo": "Converter Lead",
+      "definicao": "Ação do menu ⋮ do lead que marca o lead como convertido e cria a oportunidade.",
+      "fontes": [
+        "manual-02-crm#2.2",
+        "regra-crm-conversao-cria-a-oportunidade-sozinha"
+      ]
+    },
+    {
+      "termo": "Pipeline",
+      "definicao": "Quadro de oportunidades por etapa, em CRM › Vendas › Pipeline, com uma aba por funil (por exemplo, Funil de vendas principal).",
+      "fontes": [
+        "manual-02-crm#2.1",
+        "funcional-crm-leads-pipeline-e-oportunidades"
+      ]
+    },
+    {
+      "termo": "Oportunidade",
+      "definicao": "O negócio em andamento, com valor, probabilidade, itens, atividades e histórico. Termina como Ganha ou Perdida.",
+      "fontes": [
+        "guia:scripts/dados-checklists-estagiarios.mjs#crm",
+        "funcional-crm-leads-pipeline-e-oportunidades"
+      ]
+    }
+  ],
+  "mapa": {
+    "antes": [
+      "fundacao"
+    ],
+    "depois": [
+      "vendas"
+    ],
+    "texto": "O CRM usa o cadastro de participantes da Fundação e entrega a Vendas: a oportunidade ganha gera o pedido de venda.",
+    "fontes": [
+      "guia:db/migrations/002_modulos_iniciais.sql#crm",
+      "regra-vendas-gerar-pedido-da-oportunidade-exige-cfop-sem-financeiro"
+    ]
+  },
+  "capitulos": [
+    {
+      "id": "conhecer-os-leads",
+      "titulo": "Conhecendo e cadastrando leads",
+      "nivel": "basico",
+      "objetivo": "Achar a lista de leads, usar os filtros rápidos e cadastrar um lead com as informações do CRM.",
+      "onde": "CRM › Vendas › Leads › Lista de Leads",
+      "passos": [
+        {
+          "titulo": "Abra a Lista de Leads",
+          "texto": "No menu do CRM, abra Vendas › Leads › Lista de Leads. Use os filtros rápidos de Status e Temperatura para achar um lead e, no topo, alterne entre a Lista e o Kanban. O menu ⋮ de cada linha tem Converter, Histórico e outras ações.",
+          "imagem": "/manuais/crm/img/01-lista-de-leads.webp",
+          "alt": "Lista de Leads com os filtros de Status e Temperatura, o botão Novo Lead e as colunas da lista.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Lista de Leads",
+              "explicacao": "Item do menu que abre todos os leads da empresa em formato de lista.",
+              "caixa": {
+                "x": 3.6,
+                "y": 24.6,
+                "w": 9.1,
+                "h": 3.8
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 2,
+              "rotulo": "Filtro Status",
+              "explicacao": "Mostra só os leads numa situação: Novo, Em Qualificação, Qualificado, Convertido ou Desqualificado.",
+              "caixa": {
+                "x": 15.7,
+                "y": 20.7,
+                "w": 32.7,
+                "h": 3.8
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 3,
+              "rotulo": "Filtro Temperatura",
+              "explicacao": "Separa os leads pelo interesse: Frio, Morno, Quente ou Urgente.",
+              "caixa": {
+                "x": 48.9,
+                "y": 20.7,
+                "w": 32.7,
+                "h": 3.8
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 4,
+              "rotulo": "Lista / Kanban",
+              "explicacao": "Troca a visualização: a lista em linhas ou o quadro por etapas.",
+              "caixa": {
+                "x": 87.2,
+                "y": 11.7,
+                "w": 10.2,
+                "h": 4.2
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 5,
+              "rotulo": "Novo Lead",
+              "explicacao": "Abre o cadastro de um lead novo.",
+              "caixa": {
+                "x": 89.8,
+                "y": 32.1,
+                "w": 6.9,
+                "h": 4.4
+              },
+              "lado": "baixo"
+            }
+          ],
+          "atencao": "Excluir e Desqualificar ficam no mesmo menu ⋮ que Histórico. O telefone da lista é um link que liga de verdade.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "midia/brutos/crm/prints/crm_c03_01.png",
+            "guia:scripts/dados-checklists-estagiarios.mjs#crm"
+          ]
+        },
+        {
+          "titulo": "Clique em Novo Lead e preencha o obrigatório",
+          "texto": "Clique em Novo Lead. Abre o cadastro completo de participante, o mesmo usado para clientes e fornecedores. Só dois campos são obrigatórios: Tipo (PF/PJ) e Razão Social / Nome. Repare que a chave Prospect/Lead já vem ligada.",
+          "imagem": "/manuais/crm/img/02-novo-lead.webp",
+          "alt": "Painel Novo Lead com Tipo (PF/PJ) aberto, Razão Social / Nome e a seção Classificação com Prospect/Lead ligado.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Tipo (PF/PJ)",
+              "explicacao": "Pessoa Física ou Pessoa Jurídica. Obrigatório.",
+              "caixa": {
+                "x": 62.7,
+                "y": 12.9,
+                "w": 12.3,
+                "h": 5.4
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 2,
+              "rotulo": "Razão Social / Nome",
+              "explicacao": "O nome do contato ou da empresa. Obrigatório.",
+              "caixa": {
+                "x": 50.9,
+                "y": 20.6,
+                "w": 12.5,
+                "h": 5
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 3,
+              "rotulo": "Classificação",
+              "explicacao": "Chaves que dizem o papel do participante: cliente, fornecedor, vendedor, lead…",
+              "caixa": {
+                "x": 51.2,
+                "y": 67.8,
+                "w": 47.3,
+                "h": 3.6
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 4,
+              "rotulo": "Prospect/Lead",
+              "explicacao": "Ligada: este participante é um lead do CRM.",
+              "caixa": {
+                "x": 51.8,
+                "y": 87.6,
+                "w": 3,
+                "h": 3.9
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 5,
+              "rotulo": "Salvar",
+              "explicacao": "Grava o lead; aparece \"Registro salvo com sucesso!\".",
+              "caixa": {
+                "x": 94.9,
+                "y": 92.1,
+                "w": 4.2,
+                "h": 4.7
+              },
+              "lado": "cima"
+            }
+          ],
+          "dica": "Em treino, use CNPJ/CPF fictício ainda não usado: documento repetido é recusado.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "midia/brutos/crm/prints/crm_c04_01.png",
+            "regra-crm-formulario-do-lead-secoes-e-campos",
+            "guia:scripts/dados-checklists-estagiarios.mjs#crm"
+          ]
+        },
+        {
+          "titulo": "Preencha a seção Informações CRM",
+          "texto": "Ainda no lead, abra a seção Informações CRM. Escolha a Origem do Lead e a Temperatura e deixe você como Responsável. Quando tiver as respostas do cliente, preencha o Budget Estimado e ligue as três chaves do BANT. Clique em Salvar.",
+          "imagem": "/manuais/crm/img/03-informacoes-crm.webp",
+          "alt": "Seção Informações CRM do lead com Origem do Lead, Temperatura, Budget Estimado e as chaves do BANT ligadas.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Informações CRM",
+              "explicacao": "Seção com os dados comerciais do lead. Não confunda com Dados CRM, logo acima.",
+              "caixa": {
+                "x": 51.9,
+                "y": 33.3,
+                "w": 46.1,
+                "h": 3.9
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 2,
+              "rotulo": "Origem do Lead",
+              "explicacao": "Como o contato chegou (indicação, site…).",
+              "caixa": {
+                "x": 52,
+                "y": 40,
+                "w": 11.4,
+                "h": 4.7
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 3,
+              "rotulo": "Temperatura",
+              "explicacao": "Quão quente está o interesse. Confira depois de salvar: pode mudar sozinha.",
+              "caixa": {
+                "x": 63.4,
+                "y": 40,
+                "w": 11.6,
+                "h": 4.7
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 4,
+              "rotulo": "Budget Estimado",
+              "explicacao": "Quanto o cliente pretende investir. Vira o valor da oportunidade na conversão.",
+              "caixa": {
+                "x": 52,
+                "y": 48.3,
+                "w": 22.9,
+                "h": 5.3
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 5,
+              "rotulo": "Chaves do BANT",
+              "explicacao": "Autoridade, Necessidade e Prazo confirmados. Com o Budget, completam o BANT exigido para converter.",
+              "caixa": {
+                "x": 51.9,
+                "y": 68.9,
+                "w": 27.3,
+                "h": 10.1
+              },
+              "lado": "esquerda"
+            }
+          ],
+          "atencao": "Recolher e reabrir a seção Informações CRM apaga a origem escolhida. A Temperatura pode mudar sozinha ao salvar: confira na lista.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-03-comercial/02-bant.png",
+            "regra-crm-formulario-do-lead-secoes-e-campos",
+            "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "qualificar-no-kanban",
+      "titulo": "Qualificando o lead no Kanban",
+      "nivel": "basico",
+      "objetivo": "Ler as etapas do funil de leads e mover um lead de etapa.",
+      "onde": "CRM › Vendas › Leads › Kanban de Leads",
+      "passos": [
+        {
+          "titulo": "Conheça as etapas e os percentuais",
+          "texto": "Clique em Kanban no topo da lista. Cada coluna é uma etapa do funil de leads, com o número de leads e um percentual. O lead novo entra na primeira coluna, Inbound.",
+          "imagem": "/manuais/crm/img/04-kanban-de-leads.webp",
+          "alt": "Kanban de Leads com as colunas Inbound, Pesquisado, Conectado, MQL e SQL.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Inbound · 10%",
+              "explicacao": "Primeira etapa: onde todo lead novo começa.",
+              "caixa": {
+                "x": 18.4,
+                "y": 27.2,
+                "w": 15.3,
+                "h": 5.3
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 2,
+              "rotulo": "MQL · 60%",
+              "explicacao": "A partir desta etapa (60% ou mais) o lead já pode ser convertido, se o BANT estiver completo.",
+              "caixa": {
+                "x": 65.5,
+                "y": 27.2,
+                "w": 15.3,
+                "h": 5.3
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 3,
+              "rotulo": "SQL · 80%",
+              "explicacao": "Etapa seguinte, ainda mais qualificada.",
+              "caixa": {
+                "x": 81.3,
+                "y": 27.2,
+                "w": 15.4,
+                "h": 5.3
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 4,
+              "rotulo": "Card do lead",
+              "explicacao": "Cada lead é um card com o nome e a temperatura. Arraste para mudar de etapa.",
+              "caixa": {
+                "x": 18.8,
+                "y": 33.5,
+                "w": 14.3,
+                "h": 10.1
+              },
+              "lado": "direita"
+            }
+          ],
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-03-comercial/01-kanban.png",
+            "guia:scripts/dados-checklists-estagiarios.mjs#crm",
+            "regra-crm-converter-lead-exige-etapa-60-e-bant-completo"
+          ]
+        },
+        {
+          "titulo": "Arraste o card e clique em Confirmar",
+          "texto": "Arraste o card para a próxima etapa. No diálogo Mover lead, escreva uma observação (opcional) e clique em Confirmar. A mudança entra no histórico do lead.",
+          "imagem": "/manuais/crm/img/05-mover-lead.webp",
+          "alt": "Diálogo Mover lead com o campo de observação e os botões Cancelar e Confirmar.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Observação",
+              "explicacao": "Opcional: anote por que o lead mudou de etapa. Fica no histórico.",
+              "caixa": {
+                "x": 37.2,
+                "y": 46.4,
+                "w": 25.6,
+                "h": 10
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 2,
+              "rotulo": "Confirmar",
+              "explicacao": "Só aqui a mudança é gravada.",
+              "caixa": {
+                "x": 55.9,
+                "y": 57.6,
+                "w": 6.8,
+                "h": 5.3
+              },
+              "lado": "baixo"
+            }
+          ],
+          "atencao": "A mudança só grava depois de Confirmar: clicar fora do diálogo cancela sem aviso.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-03-comercial/01b-mover.png",
+            "guia:scripts/dados-checklists-estagiarios.mjs#crm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "converter-o-lead",
+      "titulo": "Convertendo o lead",
+      "nivel": "basico",
+      "objetivo": "Converter um lead qualificado e saber o que a conversão cria.",
+      "onde": "CRM › Vendas › Leads › menu ⋮ › Converter",
+      "passos": [
+        {
+          "titulo": "Abra Converter no menu ⋮ do lead",
+          "texto": "Com o lead numa etapa de 60% ou mais e o BANT completo, abra o menu ⋮ e escolha Converter. Na janela Converter Lead em Participante, clique em Converter Lead.",
+          "imagem": "/manuais/crm/img/06-converter-lead.webp",
+          "alt": "Janela Converter Lead em Participante com o aviso Participante já vinculado e o botão Converter Lead.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Participante já vinculado",
+              "explicacao": "O lead já é um participante: a conversão só o marca como convertido e cliente.",
+              "caixa": {
+                "x": 38,
+                "y": 47.6,
+                "w": 26,
+                "h": 7.5
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 2,
+              "rotulo": "Converter Lead",
+              "explicacao": "Confirma a conversão.",
+              "caixa": {
+                "x": 54.9,
+                "y": 64.2,
+                "w": 9.1,
+                "h": 5.4
+              },
+              "lado": "baixo"
+            }
+          ],
+          "atencao": "Sem a etapa de 60% ou sem o BANT completo, o sistema avisa o que falta e não converte. O bloqueio não foi capturado.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-03-comercial/03b-dialogo.png",
+            "regra-crm-converter-lead-exige-etapa-60-e-bant-completo"
+          ]
+        },
+        {
+          "titulo": "Confira o lead convertido",
+          "texto": "Aparece \"Lead convertido com sucesso!\" e o Status do lead passa a Convertido. A mensagem não fala da oportunidade: ela foi criada no Pipeline.",
+          "imagem": "/manuais/crm/img/07-lead-convertido.webp",
+          "alt": "Lista de leads com a mensagem Lead convertido com sucesso! e o lead com status Convertido.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Lead convertido com sucesso!",
+              "explicacao": "Confirma a conversão. A oportunidade criada não é citada: ela está no Pipeline.",
+              "caixa": {
+                "x": 76.1,
+                "y": 2.2,
+                "w": 22.7,
+                "h": 6.9
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 2,
+              "rotulo": "Status Convertido",
+              "explicacao": "O lead saiu da qualificação e virou cliente.",
+              "caixa": {
+                "x": 72,
+                "y": 64.3,
+                "w": 6,
+                "h": 4
+              },
+              "lado": "esquerda"
+            }
+          ],
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-03-comercial/03c-convertido.png",
+            "regra-crm-conversao-cria-a-oportunidade-sozinha"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pipeline",
+      "titulo": "Trabalhando a oportunidade no Pipeline",
+      "nivel": "basico",
+      "objetivo": "Encontrar a oportunidade criada na conversão, conhecer o painel dela e acompanhar as atividades.",
+      "onde": "CRM › Vendas › Pipeline",
+      "passos": [
+        {
+          "titulo": "Encontre a oportunidade na etapa Novo Lead",
+          "texto": "No menu do CRM, abra Vendas › Pipeline e escolha a aba do funil (Funil de vendas principal). A oportunidade criada pela conversão está na primeira coluna, Novo Lead, com o valor do Budget.",
+          "imagem": "/manuais/crm/img/08-pipeline.webp",
+          "alt": "Pipeline de Vendas no Funil de vendas principal, com três oportunidades na etapa Novo Lead.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Aba do funil",
+              "explicacao": "Cada aba é um funil de vendas. A oportunidade da conversão vai para o Funil de vendas principal.",
+              "caixa": {
+                "x": 52.2,
+                "y": 11.9,
+                "w": 12.7,
+                "h": 4.6
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 2,
+              "rotulo": "Card da oportunidade",
+              "explicacao": "Mostra a situação (Aberta), o cliente, o valor, o código OPO e a probabilidade da etapa.",
+              "caixa": {
+                "x": 18.8,
+                "y": 68.9,
+                "w": 15.3,
+                "h": 19.4
+              },
+              "lado": "direita"
+            }
+          ],
+          "atencao": "A probabilidade de 5% na etapa Novo Lead foi vista na tela e não tem fonte na base. O manual diz que a probabilidade muda com a etapa; no teste, o card só atualizou ao recarregar: a conferir na tela.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-03-comercial/04-pipeline.png",
+            "regra-crm-conversao-cria-a-oportunidade-sozinha",
+            "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+          ]
+        },
+        {
+          "titulo": "Clique no card e conheça o painel",
+          "texto": "Clique no card. Abre o painel da oportunidade, com as abas Detalhes, Itens, Atividades e Histórico. No rodapé ficam as ações: Gerar Proposta, Ganha, Perdida, Pausar e Cancelar.",
+          "imagem": "/manuais/crm/img/09-oportunidade.webp",
+          "alt": "Painel da oportunidade com as abas Detalhes, Itens, Atividades e Histórico e os botões Gerar Proposta, Ganha e Perdida.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Abas",
+              "explicacao": "Detalhes, Itens (os produtos negociados), Atividades e Histórico (cada mudança de etapa).",
+              "caixa": {
+                "x": 47.7,
+                "y": 11.7,
+                "w": 20.9,
+                "h": 4.6
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 2,
+              "rotulo": "Probabilidade de Fechamento",
+              "explicacao": "Definida pela etapa do funil em que a oportunidade está.",
+              "caixa": {
+                "x": 49.7,
+                "y": 39.2,
+                "w": 47.9,
+                "h": 5.1
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 3,
+              "rotulo": "Etapa atual",
+              "explicacao": "Onde a oportunidade está no funil.",
+              "caixa": {
+                "x": 49.8,
+                "y": 52.9,
+                "w": 47.6,
+                "h": 6.7
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 4,
+              "rotulo": "Gerar Proposta",
+              "explicacao": "Monta a proposta comercial em PDF.",
+              "caixa": {
+                "x": 49.8,
+                "y": 83.9,
+                "w": 23.8,
+                "h": 5.1
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 5,
+              "rotulo": "Ganha",
+              "explicacao": "Encerra como ganha, sem pedir confirmação.",
+              "caixa": {
+                "x": 49.8,
+                "y": 88.8,
+                "w": 23.8,
+                "h": 5.1
+              },
+              "lado": "esquerda"
+            }
+          ],
+          "dica": "Na aba Itens, aplique o quadro Dados do Item antes de salvar: o Valor estimado passa a ser a soma dos itens.",
+          "atencao": "As atividades do lead não vão para a oportunidade.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-03-comercial/05-painel.png",
+            "guia:scripts/dados-checklists-estagiarios.mjs#crm",
+            "guia:videos/roteiros/consultor-03-comercial.json#06",
+            "regra-crm-conversao-cria-a-oportunidade-sozinha"
+          ]
+        },
+        {
+          "titulo": "Acompanhe as atividades",
+          "imagem": "/manuais/crm/img/11-atividades.webp",
+          "alt": "Tela Atividades do CRM com os filtros Tipo, Status e Prioridade, o botão + Nova Atividade e a lista de atividades.",
+          "largura": 1600,
+          "altura": 900,
+          "texto": "No menu do CRM, abra Vendas › Atividades. Filtre por Tipo, Status e Prioridade e crie com + Nova Atividade. A Agenda, logo abaixo no menu, mostra as atividades no calendário.",
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Atividades",
+              "explicacao": "Reuniões, ligações e tarefas comerciais registradas.",
+              "caixa": {
+                "x": 2.7,
+                "y": 36.7,
+                "w": 12.5,
+                "h": 3.9
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 2,
+              "rotulo": "Agenda",
+              "explicacao": "As mesmas atividades em formato de calendário.",
+              "caixa": {
+                "x": 2.7,
+                "y": 40.4,
+                "w": 12.5,
+                "h": 3.9
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 3,
+              "rotulo": "Filtros",
+              "explicacao": "Tipo, Status e Prioridade da atividade.",
+              "caixa": {
+                "x": 17.3,
+                "y": 20,
+                "w": 81.3,
+                "h": 7.6
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 4,
+              "rotulo": "+ Nova Atividade",
+              "explicacao": "Registra uma atividade nova.",
+              "caixa": {
+                "x": 88.2,
+                "y": 33.5,
+                "w": 9.8,
+                "h": 5
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 5,
+              "rotulo": "Colunas da lista",
+              "explicacao": "Tipo, Título, Data prevista, Status, Prioridade e Temperatura. Não há coluna de lead ou cliente.",
+              "caixa": {
+                "x": 17.8,
+                "y": 52.2,
+                "w": 80.2,
+                "h": 4.3
+              },
+              "lado": "cima"
+            }
+          ],
+          "atencao": "A lista de atividades não diz de qual lead ou cliente é cada uma (confirmado no staging v1.23.2, 05/11/2026). As atividades do lead não vão para a oportunidade.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/capturas/guias-staging/crm-atividades.png (staging v1.23.2, 05/11/2026)",
+            "guia:scripts/dados-checklists-estagiarios.mjs#crm",
+            "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+          ]
+        },
+        {
+          "titulo": "Veja a sua semana na Agenda",
+          "texto": "No menu do CRM, abra Vendas › Agenda. Ela mostra a semana do usuário logado, dia a dia; cada card é uma atividade e clicar abre o detalhe. Dia sem atividade aparece como Livre.",
+          "imagem": "/manuais/crm/img/12-agenda.webp",
+          "alt": "Agenda do CRM com os cartões Total, Pendentes, Realizadas e Conversão, a navegação da semana com Hoje, os filtros Tipo, Status e Prioridade e os dias da semana marcados como Livre.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Totais da semana",
+              "explicacao": "Total, Pendentes, Realizadas e o percentual de conclusão: devem bater com os cards da semana.",
+              "caixa": {
+                "x": 18.4,
+                "y": 21.5,
+                "w": 79.2,
+                "h": 9.2
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 2,
+              "rotulo": "Semana",
+              "explicacao": "As setas levam para a semana anterior ou a próxima; a semana começa na segunda-feira.",
+              "caixa": {
+                "x": 19.4,
+                "y": 34.4,
+                "w": 15.2,
+                "h": 4.2
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 3,
+              "rotulo": "Hoje",
+              "explicacao": "Volta para a semana atual.",
+              "caixa": {
+                "x": 34.8,
+                "y": 34.9,
+                "w": 2.7,
+                "h": 3.3
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 4,
+              "rotulo": "Filtros",
+              "explicacao": "Tipo, Status e Prioridade; a busca procura no título ou na descrição.",
+              "caixa": {
+                "x": 66.9,
+                "y": 40.3,
+                "w": 30,
+                "h": 7.2
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 5,
+              "rotulo": "+ Nova atividade",
+              "explicacao": "Cria uma atividade direto na agenda.",
+              "caixa": {
+                "x": 88.1,
+                "y": 14,
+                "w": 9.5,
+                "h": 4.4
+              },
+              "lado": "baixo"
+            }
+          ],
+          "zoom": {
+            "x": 17,
+            "y": 11.9,
+            "w": 82,
+            "h": 37.2
+          },
+          "atencao": "A Agenda mostra só as atividades do usuário logado. Para ver a de um vendedor, use Vendas › Atividades com o filtro de responsável.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/capturas/guias-staging/crm-agenda.png (staging v1.23.2, 05/11/2026)",
+            "manual-02-crm#017",
+            "plano-crm#034",
+            "roteiro-crm-03-atividades-e-agenda#010"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "proposta-ganho-pedido",
+      "titulo": "Proposta, ganho e passagem para Vendas",
+      "nivel": "avancado",
+      "objetivo": "Gerar a proposta, encerrar a oportunidade como ganha e gerar o pedido de venda sem travar.",
+      "onde": "CRM › Vendas › Pipeline › painel da oportunidade",
+      "passos": [
+        {
+          "titulo": "Gere a proposta comercial",
+          "texto": "No painel, clique em Gerar Proposta. Escolha o Template, a Empresa emitente, a Validade (dias) e as Condições de pagamento e clique em Gerar PDF.",
+          "imagem": "/manuais/crm/img/10-gerar-proposta.webp",
+          "alt": "Janela Gerar Proposta Comercial com Template, Empresa emitente, Validade, Condições de pagamento e o botão Gerar PDF.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Template",
+              "explicacao": "Modelo do documento da proposta.",
+              "caixa": {
+                "x": 35.2,
+                "y": 30.3,
+                "w": 29.5,
+                "h": 5.6
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 2,
+              "rotulo": "Validade (dias)",
+              "explicacao": "Por quantos dias a proposta vale.",
+              "caixa": {
+                "x": 35.2,
+                "y": 47.6,
+                "w": 29.5,
+                "h": 5.3
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 3,
+              "rotulo": "Condições de pagamento",
+              "explicacao": "Escolha uma condição cadastrada; o texto continua editável e é o que sai no PDF.",
+              "caixa": {
+                "x": 35.2,
+                "y": 56,
+                "w": 29.5,
+                "h": 5.3
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 4,
+              "rotulo": "Gerar PDF",
+              "explicacao": "Cria o arquivo da proposta.",
+              "caixa": {
+                "x": 50,
+                "y": 72.4,
+                "w": 14.8,
+                "h": 5.6
+              },
+              "lado": "baixo"
+            }
+          ],
+          "atencao": "Proposta e envio por e-mail ou link para o cliente: em treino, só com e-mail de teste.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/public/telas/consultor-03-comercial/05b-proposta.png",
+            "funcional-crm-leads-pipeline-e-oportunidades",
+            "guia:scripts/dados-checklists-estagiarios.mjs#crm"
+          ]
+        },
+        {
+          "titulo": "Acompanhe as aprovações de desconto",
+          "texto": "Quando o desconto da oportunidade passa do limite configurado, o vendedor pede a aprovação pela oportunidade. O aprovador abre Vendas › Aprovações no menu do CRM e aprova ou rejeita; ao rejeitar, informa o motivo. O histórico guarda quem pediu, quem decidiu e o resultado.",
+          "imagem": "/manuais/crm/img/13-aprovacoes-de-desconto.webp",
+          "alt": "Tela Aprovações de Desconto do CRM, vazia, com as colunas Oportunidade, Desconto (%), Valor do Desconto, Solicitada em, Espera e Ações.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Aprovações",
+              "explicacao": "Fica no grupo Vendas do menu do CRM.",
+              "caixa": {
+                "x": 0.6,
+                "y": 33.5,
+                "w": 14.4,
+                "h": 3.1
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 2,
+              "rotulo": "Aprovações de Desconto",
+              "explicacao": "Descontos aguardando a sua decisão. Aprovar ou rejeitar aqui vale o mesmo que pelo aplicativo.",
+              "caixa": {
+                "x": 22.3,
+                "y": 12.8,
+                "w": 43.9,
+                "h": 6.1
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 3,
+              "rotulo": "Colunas",
+              "explicacao": "Oportunidade, percentual e valor do desconto, quando foi pedido e há quanto tempo espera.",
+              "caixa": {
+                "x": 18.6,
+                "y": 31.8,
+                "w": 79.2,
+                "h": 3.1
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 4,
+              "rotulo": "Lista vazia",
+              "explicacao": "Nenhum desconto pendente para você. O vendedor não aprova o próprio desconto.",
+              "caixa": {
+                "x": 45.9,
+                "y": 48.6,
+                "w": 24.1,
+                "h": 3.6
+              },
+              "lado": "baixo"
+            }
+          ],
+          "atencao": "As faixas ficam em CRM › Configurações › Aprovações de Desconto (plano de validação); o roteiro de treinamento indica CRM › Configurar › Pipeline › Aprovações de Desconto. A conferir na tela.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/capturas/guias-staging/crm-aprovacoes.png (staging v1.23.2, 05/11/2026)",
+            "roteiro-crm-02-pipeline-de-oportunidades#007",
+            "plano-crm#028",
+            "plano-crm#111",
+            "roteiro-crm-07-configurar-o-crm#004"
+          ]
+        },
+        {
+          "titulo": "Marque a oportunidade como ganha",
+          "texto": "Ganha não pede confirmação. Se clicar sem querer, use Reverter ganho, sempre antes de gerar o pedido.",
+          "atencao": "Fontes divergem: o manual-02-crm indica ⋯ do card › Marcar como Ganha, exigindo ao menos um item; o fluxo comercial registra o botão Ganha no painel, sem citar o item. A conferir na tela.",
+          "evidencia": "a-conferir-na-tela",
+          "fontes": [
+            "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm",
+            "guia:videos/roteiros/consultor-03-comercial.json#14"
+          ]
+        },
+        {
+          "titulo": "Gere o pedido de venda com CFOP sem financeiro",
+          "texto": "No painel da oportunidade ganha, Gerar Pedido de Venda pede Empresa e CFOP. Use um CFOP que não gera financeiro (como 5910-1); depois abra o pedido em Vendas, troque o CFOP e escolha a condição de pagamento.",
+          "atencao": "Com CFOP que gera financeiro (como 5101 ou 6101) o sistema recusa. O botão continua disponível depois de gerar: anote o número do pedido e não clique de novo.",
+          "evidencia": "base",
+          "fontes": [
+            "regra-vendas-gerar-pedido-da-oportunidade-exige-cfop-sem-financeiro",
+            "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+          ]
+        }
+      ]
+    }
+  ],
+  "consultor": {
+    "implantacao": [
+      "Funil de Vendas com etapas conferidas e Funil de Leads cadastrados: sem o primeiro não existe Pipeline; sem o segundo não existe Kanban de Leads. Tipos de Atividade, Origens de Lead, Temperaturas e Motivos de Perda cadastrados (CRM › Configurações; checklist de implantação de CRM).",
+      "Remova etapas de teste esquecidas no fim do funil (checklist de implantação de CRM).",
+      "Para o pedido nascer completo: participante com Conta de Fluxo de Caixa Receita e Inscrição Estadual/RG, condição de pagamento cadastrada e um CFOP que não gera financeiro disponível (ex.: 5910-1).",
+      "Ao final: lead qualificado e convertido, oportunidade com item, atividade e mudança de etapa marcada como ganha, pedido gerado e completado em Vendas, ganho e perda visíveis nos painéis do CRM (resultado esperado)."
+    ],
+    "perguntasDoCliente": [
+      {
+        "pergunta": "Por que não consigo converter este lead?",
+        "resposta": "O lead precisa estar numa etapa do Kanban de 60% ou mais e com o BANT completo: Budget Estimado e as chaves de Autoridade, Necessidade e Prazo.",
+        "fontes": [
+          "regra-crm-converter-lead-exige-etapa-60-e-bant-completo"
+        ]
+      },
+      {
+        "pergunta": "Converti o lead. Onde está a oportunidade?",
+        "resposta": "No Pipeline, na etapa Novo Lead, com o valor do Budget. A mensagem de conversão não fala dela.",
+        "fontes": [
+          "regra-crm-conversao-cria-a-oportunidade-sozinha"
+        ]
+      },
+      {
+        "pergunta": "O pedido gerado veio sem vendedor e sem condição de pagamento. É erro?",
+        "resposta": "Hoje o pedido gerado não herda vendedor nem condição de pagamento: complete em Vendas › Pedidos de Venda.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+        ]
+      },
+      {
+        "pergunta": "O gestor pode ver a agenda de um vendedor?",
+        "resposta": "A Agenda mostra só as atividades do usuário logado. Use Vendas › Atividades com o filtro de responsável ou os Demonstrativos filtrados pelo vendedor.",
+        "fontes": [
+          "manual-02-crm#017"
+        ]
+      }
+    ],
+    "errosComuns": [
+      {
+        "titulo": "Gerar o pedido com CFOP de venda.",
+        "texto": "Gerar Pedido de Venda recusa CFOP que gera financeiro: use um sem financeiro e ajuste o pedido depois.",
+        "fontes": [
+          "regra-vendas-gerar-pedido-da-oportunidade-exige-cfop-sem-financeiro"
+        ]
+      },
+      {
+        "titulo": "Ganhar duas vezes.",
+        "texto": "Reverter ganho não remove a oportunidade de Pós-Venda criada ao ganhar, e ganhar de novo cria outra: reverta antes de gerar o pedido.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+        ]
+      },
+      {
+        "titulo": "Confiar na Temperatura e nas datas sem conferir.",
+        "texto": "Hoje a Temperatura pode mudar sozinha e datas de fechamento e previsão podem aparecer 1 dia antes: confira na tela.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+        ]
+      },
+      {
+        "titulo": "Mexer em Engajamento no treino.",
+        "texto": "Campanhas, Cadências e Automações enviam mensagens a clientes.",
+        "fontes": [
+          "guia:scripts/dados-checklists-estagiarios.mjs#crm"
+        ]
+      }
+    ],
+    "configuracoes": [
+      {
+        "item": "Funil de Vendas",
+        "onde": "CRM › Configurações",
+        "porque": "Sem ele não existe Pipeline. Confira as etapas e remova etapas de teste esquecidas no fim do funil.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm",
+          "manual-02-crm"
+        ]
+      },
+      {
+        "item": "Funil de Leads",
+        "onde": "CRM › Configurações",
+        "porque": "Sem ele não existe Kanban de Leads; a conversão exige o lead numa etapa de 60% ou mais.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm",
+          "regra-crm-converter-lead-exige-etapa-60-e-bant-completo"
+        ]
+      },
+      {
+        "item": "Tipos de Atividade, Origens de Lead, Temperaturas e Motivos de Perda",
+        "onde": "CRM › Configurações",
+        "porque": "Alimentam o formulário do lead, as atividades e os indicadores; o motivo de perda vira indicador para o gestor.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+        ]
+      },
+      {
+        "item": "Aprovações de Desconto",
+        "onde": "CRM › Configurações › Aprovações de Desconto (caminho a conferir)",
+        "porque": "Regra com o percentual mínimo que exige aprovação, o aprovador (usuário fixo, supervisor direto ou perfil) e a prioridade. Teste com um caso controlado antes de liberar.",
+        "fontes": [
+          "roteiro-crm-07-configurar-o-crm#004",
+          "plano-crm#028"
+        ]
+      },
+      {
+        "item": "CFOP sem financeiro",
+        "onde": "Fiscal › Configurações › CFOP",
+        "porque": "Gerar Pedido de Venda recusa CFOP que gera financeiro: deixe disponível um sem financeiro (ex.: 5910-1), validado com o responsável fiscal.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm",
+          "regra-vendas-gerar-pedido-da-oportunidade-exige-cfop-sem-financeiro"
+        ]
+      },
+      {
+        "item": "Participante completo para o pedido",
+        "onde": "Cadastros › Participantes",
+        "porque": "O formulário do lead não exige Conta de Fluxo de Caixa Receita nem Inscrição Estadual / RG, mas o pedido precisa delas.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+        ]
+      }
+    ],
+    "integracoes": [
+      {
+        "acao": "Converter o lead",
+        "modulo": "Cadastros (Participantes)",
+        "efeito": "O participante passa a ter É Cliente? ligado e Prospect/Lead desligado.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm",
+          "regra-crm-conversao-cria-a-oportunidade-sozinha"
+        ]
+      },
+      {
+        "acao": "Converter o lead",
+        "modulo": "CRM (Pipeline)",
+        "efeito": "Cria a oportunidade sem avisar, com o valor do Budget Estimado; as atividades do lead não vão junto.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm",
+          "regra-crm-conversao-cria-a-oportunidade-sozinha"
+        ]
+      },
+      {
+        "acao": "Marcar como Ganha",
+        "modulo": "CRM (Pós-Venda)",
+        "efeito": "Cria uma oportunidade de Pós-Venda. Reverter ganho não a remove, e ganhar de novo cria outra.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+        ]
+      },
+      {
+        "acao": "Gerar Pedido de Venda",
+        "modulo": "Vendas",
+        "efeito": "Pedido Em aberto com cliente, item e valor da oportunidade; sem vendedor e sem condição de pagamento. O vínculo fica só na Obs. Interna.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm",
+          "regra-vendas-gerar-pedido-da-oportunidade-exige-cfop-sem-financeiro"
+        ]
+      },
+      {
+        "acao": "Completar o pedido gerado",
+        "modulo": "Vendas (Dashboard e Carteira de Pedidos)",
+        "efeito": "O pedido aparece na Carteira de Pedidos como A faturar e segue as regras de Vendas.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+        ]
+      }
+    ],
+    "roteiroDemonstracao": [
+      {
+        "passo": "Abra a Lista de Leads",
+        "mostrar": "Filtros de Status e Temperatura e a troca entre Lista e Kanban.",
+        "fontes": [
+          "funcional-crm-leads-pipeline-e-oportunidades#000",
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+        ]
+      },
+      {
+        "passo": "Cadastre um lead de teste",
+        "mostrar": "Novo Lead com Tipo (PF/PJ) e Razão Social / Nome; Informações CRM com origem, temperatura, Budget e BANT.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+        ]
+      },
+      {
+        "passo": "Qualifique no Kanban de Leads",
+        "mostrar": "Arraste até uma etapa de 60% ou mais e confirme o diálogo Mover lead.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+        ]
+      },
+      {
+        "passo": "Converta o lead",
+        "mostrar": "\"Lead convertido com sucesso!\" e o status Convertido.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+        ]
+      },
+      {
+        "passo": "Abra a oportunidade no Pipeline",
+        "mostrar": "Card em Novo Lead com o Budget; painel com Detalhes, Itens, Atividades e Histórico.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm",
+          "manual-02-crm#012"
+        ]
+      },
+      {
+        "passo": "Mostre Atividades e Agenda",
+        "mostrar": "Lista com filtros e a semana do vendedor com os totais.",
+        "fontes": [
+          "videos/capturas/guias-staging/crm-atividades.png (staging v1.23.2, 05/11/2026)",
+          "videos/capturas/guias-staging/crm-agenda.png (staging v1.23.2, 05/11/2026)"
+        ]
+      },
+      {
+        "passo": "Gere a proposta e ganhe",
+        "mostrar": "Gerar Proposta (Template, Empresa, Validade, Condições) e o botão Ganha.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+        ]
+      },
+      {
+        "passo": "Feche nos painéis",
+        "mostrar": "CRM › Painéis › Resultado do Mês com ganhas × perdidas e motivos de perda.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+        ]
+      }
+    ]
+  },
+  "fontes": [
+    "guia:scripts/dados-checklists-estagiarios.mjs#crm",
+    "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm",
+    "guia:videos/roteiros/consultor-03-comercial.json",
+    "guia:db/migrations/002_modulos_iniciais.sql#crm",
+    "manual-02-crm",
+    "funcional-crm-leads-pipeline-e-oportunidades",
+    "regra-crm-formulario-do-lead-secoes-e-campos",
+    "regra-crm-converter-lead-exige-etapa-60-e-bant-completo",
+    "regra-crm-conversao-cria-a-oportunidade-sozinha",
+    "regra-vendas-gerar-pedido-da-oportunidade-exige-cfop-sem-financeiro",
+    "videos/public/telas/consultor-03-comercial/*.png",
+    "midia/brutos/crm/prints/crm_c03_01.png",
+    "midia/brutos/crm/prints/crm_c04_01.png",
+    "midia/brutos/crm/roteiro-telas.md",
+    "videos/capturas/guias-staging/crm-atividades.png (staging v1.23.2, 05/11/2026)",
+    "videos/capturas/guias-staging/crm-pipeline.png (staging v1.23.2, 05/11/2026)",
+    "videos/public/telas/consultor-03-comercial/02-bant.png",
+    "videos/public/telas/consultor-03-comercial/01-kanban.png",
+    "videos/public/telas/consultor-03-comercial/01b-mover.png",
+    "videos/public/telas/consultor-03-comercial/03b-dialogo.png",
+    "videos/public/telas/consultor-03-comercial/03c-convertido.png",
+    "videos/public/telas/consultor-03-comercial/04-pipeline.png",
+    "videos/public/telas/consultor-03-comercial/05-painel.png",
+    "guia:videos/roteiros/consultor-03-comercial.json#06",
+    "videos/capturas/guias-staging/crm-agenda.png (staging v1.23.2, 05/11/2026)",
+    "manual-02-crm#017",
+    "plano-crm#034",
+    "roteiro-crm-03-atividades-e-agenda#010",
+    "videos/public/telas/consultor-03-comercial/05b-proposta.png",
+    "videos/capturas/guias-staging/crm-aprovacoes.png (staging v1.23.2, 05/11/2026)",
+    "roteiro-crm-02-pipeline-de-oportunidades#007",
+    "plano-crm#028",
+    "plano-crm#111",
+    "roteiro-crm-07-configurar-o-crm#004",
+    "guia:videos/roteiros/consultor-03-comercial.json#14",
+    "funcional-crm-leads-pipeline-e-oportunidades#000",
+    "manual-02-crm#012"
+  ],
+  "pendencias": [
+    "DIVERGÊNCIA: caminho das regras de Aprovações de Desconto — plano-crm#028 (CRM › Configurações › Aprovações de Desconto) × roteiro-crm-07#004 (CRM › Configurar › Pipeline › Aprovações de Desconto).",
+    "A CONFERIR: o 4º cartão da Agenda se chama \"Conversão\" na tela (staging 05/11/2026); o manual-02-crm#017 fala em taxa de conclusão.",
+    "CAPTURA: aprovação de desconto com uma solicitação na lista (sem clicar em Aprovar) e o pedido de aprovação na oportunidade.",
+    "CAPTURA: CRM › Painéis › Visão Geral — Jornada do cliente (Leads Novos → Qualificando → Oportunidades → Valor em Jogo) e faixa de alertas.",
+    "CAPTURA: CRM › Vendas › Leads › menu ⋮ do lead aberto (Converter, Histórico, Tags, Atividades, Desqualificar, Excluir) — sem clicar.",
+    "CAPTURA: aviso de bloqueio ao converter um lead abaixo de 60% ou com BANT incompleto.",
+    "CAPTURA: aba Itens da oportunidade com o quadro Dados do Item.",
+    "CAPTURA: botão Ganha / Marcar como Ganha e o painel da oportunidade ganha com Gerar Pedido de Venda (Empresa e CFOP).",
+    "DIVERGÊNCIA: janela Converter Lead — manual-02-crm (2.2) diz que permite escolher funil, etapa (Prospecção) e valor; a captura e o teste de 19/10 mostram a janela sem essas escolhas e a oportunidade nascendo em Novo Lead.",
+    "DIVERGÊNCIA: caminho e trava do ganho (⋯ › Marcar como Ganha com item obrigatório × botão Ganha no painel).",
+    "SEM FONTE: probabilidade de 5% na etapa Novo Lead (observada na tela).",
+    "Capturas de duas versões (1.22.13 e 1.23.2): conferir na tela se os rótulos seguem iguais.",
+    "CONFIRMADO NA TELA (staging v1.23.2, 05/11/2026): Atividades sem coluna de lead/cliente; Pipeline com abas de vários funis (inclui Funil de vendas principal) e os botões Visões, CSV, Excel e + Nova Oportunidade."
+  ]
+}
