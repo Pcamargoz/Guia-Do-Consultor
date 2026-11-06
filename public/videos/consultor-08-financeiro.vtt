@@ -1,124 +1,124 @@
 WEBVTT
 
-00:00:00.000 --> 00:00:01.983
+00:00:01.100 --> 00:00:03.378
 O pedido foi faturado.
 
-00:00:01.983 --> 00:00:04.280
+00:00:03.378 --> 00:00:05.970
 Agora o dinheiro precisa entrar.
 
-00:00:04.280 --> 00:00:09.881
+00:00:05.970 --> 00:00:11.849
 Neste vídeo, vamos ver de onde nascem os títulos, como receber, inclusive em parte,
 
-00:00:09.881 --> 00:00:12.410
+00:00:11.849 --> 00:00:14.121
 e como conferir o saldo da conta.
 
-00:00:12.410 --> 00:00:19.125
+00:00:14.121 --> 00:00:20.985
 Tudo começa nas parcelas do pedido: a condição de pagamento define quantas são e quando vencem.
 
-00:00:19.125 --> 00:00:22.281
+00:00:21.285 --> 00:00:24.817
 As parcelas viram títulos em Contas a Receber.
 
-00:00:22.281 --> 00:00:28.189
+00:00:24.817 --> 00:00:30.825
 Quando o cliente paga, você recebe o título, e o saldo da conta bancária sobe na hora.
 
-00:00:28.189 --> 00:00:29.492
+00:00:30.905 --> 00:00:32.420
 Primeira regra.
 
-00:00:29.492 --> 00:00:36.282
+00:00:32.420 --> 00:00:39.695
 O Gerar Títulos do pedido só fica habilitado em pedido em aberto ou entregue que ainda não tem títulos.
 
-00:00:36.282 --> 00:00:43.523
+00:00:39.695 --> 00:00:47.219
 E, quando você finaliza a nota fiscal, os títulos são gerados sozinhos, com o número da nota como documento.
 
-00:00:43.523 --> 00:00:44.554
+00:00:47.219 --> 00:00:49.195
 Segunda.
 
-00:00:44.554 --> 00:00:50.836
+00:00:49.195 --> 00:00:55.843
 Se o meio de pagamento da parcela é do tipo boleto, o sistema exige uma conta bancária emissora.
 
-00:00:50.836 --> 00:00:53.063
+00:00:55.843 --> 00:00:58.381
 Sem ela, os títulos não saem.
 
-00:00:53.063 --> 00:00:57.691
+00:00:58.381 --> 00:01:02.689
 Confira o tipo do meio antes, e não troque sem falar com o fiscal.
 
-00:00:57.691 --> 00:00:58.719
+00:01:02.689 --> 00:01:03.894
 Terceira.
 
-00:00:58.719 --> 00:01:05.518
-Se você recebe menos que o valor do título, o original fica recebido e nasce um título novo com o saldo,
+00:01:03.894 --> 00:01:06.823
+Se você recebe menos que o valor do título,
 
-00:01:05.518 --> 00:01:07.040
-no mesmo vencimento.
+00:01:06.823 --> 00:01:13.629
+o original fica recebido e nasce um título novo com o saldo remanescente, no mesmo vencimento.
 
-00:01:07.040 --> 00:01:11.073
+00:01:13.629 --> 00:01:17.428
 Não é duplicidade: a soma dos dois dá o valor original.
 
-00:01:11.073 --> 00:01:11.916
+00:01:17.428 --> 00:01:18.585
 Quarta.
 
-00:01:11.916 --> 00:01:14.813
+00:01:18.585 --> 00:01:21.632
 Contas a Receber abre filtrada em em aberto.
 
-00:01:14.813 --> 00:01:19.107
+00:01:21.632 --> 00:01:25.832
 Para achar um título já recebido, limpe o filtro de status.
 
-00:01:19.107 --> 00:01:25.450
+00:01:25.832 --> 00:01:32.532
 Veja o pedido depois de faturado: a coluna títulos mostra gerados, e a nota fiscal está ligada.
 
-00:01:25.450 --> 00:01:30.602
+00:01:32.532 --> 00:01:37.768
 No menu, o Gerar Títulos não aparece mais: ele virou pedido já faturado.
 
-00:01:30.602 --> 00:01:36.792
+00:01:37.848 --> 00:01:44.664
 Em Financeiro, Contas a Receber, os títulos da nota estão lá: uma linha por parcela, em aberto.
 
-00:01:36.792 --> 00:01:38.737
+00:01:44.664 --> 00:01:46.733
 Vamos receber o primeiro.
 
-00:01:38.737 --> 00:01:42.364
+00:01:46.813 --> 00:01:50.773
 Antes, anote o saldo da conta em Financeiro, Saldos.
 
-00:01:42.364 --> 00:01:47.859
+00:01:50.773 --> 00:01:56.605
 A conta de teste está com mil duzentos e trinta reais e setenta e seis centavos.
 
-00:01:47.859 --> 00:01:52.981
+00:01:56.685 --> 00:02:02.385
 No Receber, escolha a conta bancária, que é obrigatória e não vem preenchida,
 
-00:01:52.981 --> 00:01:55.536
+00:02:02.385 --> 00:02:05.259
 o meio de pagamento e o valor recebido.
 
-00:01:55.536 --> 00:01:59.850
+00:02:05.259 --> 00:02:09.523
 Aqui, cinquenta reais de um título de cento e vinte e cinco.
 
-00:01:59.850 --> 00:02:05.461
+00:02:09.523 --> 00:02:15.721
 O sistema confirma a baixa parcial e cria o título residual de setenta e cinco reais.
 
-00:02:05.461 --> 00:02:10.774
+00:02:15.721 --> 00:02:21.018
 Repare no número: ele pega a próxima parcela livre, aqui a zero zero três.
 
-00:02:10.774 --> 00:02:15.957
+00:02:21.098 --> 00:02:26.636
 De volta aos saldos: a conta subiu exatamente os cinquenta reais, na hora.
 
-00:02:15.957 --> 00:02:17.569
+00:02:26.936 --> 00:02:28.769
 Três cuidados.
 
-00:02:17.569 --> 00:02:23.068
+00:02:28.769 --> 00:02:34.599
 Receber, pagar e estornar movem o saldo de verdade: use só conta e valor de teste.
 
-00:02:23.068 --> 00:02:28.365
+00:02:34.599 --> 00:02:40.436
 Um título manual e um gerado para o mesmo pedido duplicam a receita nos painéis.
 
-00:02:28.365 --> 00:02:34.906
+00:02:40.436 --> 00:02:46.930
 E o card recebido no mês pode somar o valor cheio numa baixa parcial: confira contra o extrato.
 
-00:02:34.906 --> 00:02:38.367
+00:02:46.930 --> 00:02:50.693
 Resumindo: os títulos nascem do pedido ou da nota.
 
-00:02:38.367 --> 00:02:40.765
+00:02:50.693 --> 00:02:53.394
 A baixa parcial cria um residual.
 
-00:02:40.765 --> 00:02:43.940
+00:02:53.394 --> 00:02:56.976
 E confira o saldo antes e depois de cada baixa.
 
-00:02:43.940 --> 00:02:49.016
+00:02:56.976 --> 00:03:02.347
 No próximo vídeo, o fluxo de suprimentos, da solicitação ao pagamento.

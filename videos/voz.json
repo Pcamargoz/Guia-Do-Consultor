@@ -1,10 +1,10 @@
 {
-  "nome": "Voz L fixa: clonada da amostra L (voz desenhada masculina, adulto jovem, tom grave, seed 640) que o usuário escolheu em 23/10/2026. Clonar da amostra deixa o timbre igual em todas as frases; a voz só desenhada mudava a cada frase. A voz clonada anterior está em voz-pedro.json.",
+  "nome": "Voz L fixa: clonada da amostra L (voz desenhada masculina, adulto jovem, tom grave, seed 640) que o usuário escolheu em 23/10/2026. Clonar da amostra deixa o timbre igual em todas as frases; a voz só desenhada mudava a cada frase. A voz clonada anterior está em voz-pedro.json. Em 24/10/2026 o documento de melhorias pediu voz feminina e ritmo mais lento: o usuário ouviu 8 vozes femininas, preferiu manter a voz L e aceitou só o ritmo (velocidade 0,95 -> 0,9).",
   "language": "pt",
   "ref_audio": "voz/referencia-voz-l.wav",
   "ref_text": "No Faktory Flow, a venda começa bem antes do pedido: ela começa num lead. Neste vídeo, vamos seguir o fluxo comercial inteiro, do primeiro contato até o pedido de venda, e ver onde ele costuma travar.",
   "seed": 640,
-  "speed": 0.95,
+  "speed": 0.9,
   "num_step": 64,
   "postprocess_output": true,
   "denoise": true

@@ -11,24 +11,24 @@
    "cena": "abertura",
    "fala": "No Faktory Flow, a venda começa bem antes do pedido: ela começa num lead. Neste vídeo, vamos seguir o fluxo comercial inteiro, do primeiro contato até o pedido de venda, e ver onde ele costuma travar.",
    "inicio": 0,
-   "duracao": 13.437,
-   "fala_s": 12.887,
+   "duracao": 14.231,
+   "fala_s": 13.331,
    "audio": "audio/consultor-03-comercial/01.wav",
    "legendas": [
     {
      "texto": "No Faktory Flow, a venda começa bem antes do pedido: ela começa num lead.",
      "ini": 0,
-     "fim": 4.591
+     "fim": 4.788
     },
     {
      "texto": "Neste vídeo, vamos seguir o fluxo comercial inteiro, do primeiro contato até o pedido de venda,",
-     "ini": 4.871,
-     "fim": 10.852
+     "ini": 5.288,
+     "fim": 11.276
     },
     {
      "texto": "e ver onde ele costuma travar.",
-     "ini": 11.132,
-     "fim": 12.887
+     "ini": 11.776,
+     "fim": 13.771
     }
    ]
   },
@@ -45,20 +45,20 @@
    ],
    "destaque": 0,
    "fala": "Tudo começa no lead: um contato que ainda não é cliente. Você registra as atividades com ele e qualifica o interesse.",
-   "inicio": 13.437,
-   "duracao": 8.173,
-   "fala_s": 7.623,
+   "inicio": 14.231,
+   "duracao": 8.629,
+   "fala_s": 7.729,
    "audio": "audio/consultor-03-comercial/02.wav",
    "legendas": [
     {
      "texto": "Tudo começa no lead: um contato que ainda não é cliente.",
      "ini": 0,
-     "fim": 3.459
+     "fim": 3.656
     },
     {
      "texto": "Você registra as atividades com ele e qualifica o interesse.",
-     "ini": 3.739,
-     "fim": 7.623
+     "ini": 4.156,
+     "fim": 7.949
     }
    ]
   },
@@ -67,25 +67,25 @@
    "cena": "status",
    "destaque": 4,
    "fala": "Quando o lead está pronto, você converte. Ele vira uma oportunidade no Pipeline, recebe itens e uma proposta. Se o cliente fechar, a oportunidade é ganha e gera o pedido de venda.",
-   "inicio": 21.61,
-   "duracao": 12.062,
-   "fala_s": 11.512,
+   "inicio": 22.86,
+   "duracao": 13.384,
+   "fala_s": 12.484,
    "audio": "audio/consultor-03-comercial/03.wav",
    "legendas": [
     {
      "texto": "Quando o lead está pronto, você converte.",
      "ini": 0,
-     "fim": 2.526
+     "fim": 2.768
     },
     {
      "texto": "Ele vira uma oportunidade no Pipeline, recebe itens e uma proposta.",
-     "ini": 2.806,
-     "fim": 7.044
+     "ini": 3.268,
+     "fim": 7.797
     },
     {
      "texto": "Se o cliente fechar, a oportunidade é ganha e gera o pedido de venda.",
-     "ini": 7.324,
-     "fim": 11.512
+     "ini": 8.297,
+     "fim": 12.924
     }
    ]
   },
@@ -99,35 +99,35 @@
    "fonte": "regra-crm-converter-lead-exige-etapa-60-e-bant-completo",
    "fala": "Primeira regra. O lead só converte se estiver numa etapa do Kanban de sessenta por cento ou mais, como MQL ou SQL, e com o BANT completo: budget, autoridade, necessidade e prazo. As duas condições valem juntas. O BANT fica na seção Informações CRM.",
    "critica": true,
-   "inicio": 33.672,
-   "duracao": 17.383,
-   "fala_s": 16.833,
+   "inicio": 36.244,
+   "duracao": 18.544,
+   "fala_s": 17.644,
    "audio": "audio/consultor-03-comercial/04.wav",
    "legendas": [
     {
      "texto": "Primeira regra.",
      "ini": 0,
-     "fim": 1.023
+     "fim": 1.015
     },
     {
      "texto": "O lead só converte se estiver numa etapa do Kanban de sessenta por cento ou mais, como MQL ou SQL,",
-     "ini": 1.303,
-     "fim": 7.51
+     "ini": 1.515,
+     "fim": 8.017
     },
     {
      "texto": "e com o BANT completo: budget, autoridade, necessidade e prazo.",
-     "ini": 7.79,
-     "fim": 11.749
+     "ini": 8.517,
+     "fim": 12.814
     },
     {
      "texto": "As duas condições valem juntas.",
-     "ini": 12.029,
-     "fim": 14.111
+     "ini": 13.314,
+     "fim": 15.506
     },
     {
      "texto": "O BANT fica na seção Informações CRM.",
-     "ini": 14.391,
-     "fim": 16.833
+     "ini": 16.006,
+     "fim": 18.524
     }
    ]
   },
@@ -140,30 +140,30 @@
    "texto": "A oportunidade nasce no Pipeline, na etapa Novo Lead, com o valor do Budget. As atividades do lead não vão junto.",
    "fonte": "regra-crm-conversao-cria-a-oportunidade-sozinha",
    "fala": "Segunda. A conversão cria a oportunidade sozinha, sem avisar. Ela aparece no Pipeline, na etapa Novo Lead, com o valor do budget. E atenção: as atividades do lead não migram para a oportunidade.",
-   "inicio": 51.055,
-   "duracao": 13.783,
-   "fala_s": 13.233,
+   "inicio": 54.788,
+   "duracao": 15.424,
+   "fala_s": 14.524,
    "audio": "audio/consultor-03-comercial/05.wav",
    "legendas": [
     {
      "texto": "Segunda.",
      "ini": 0,
-     "fim": 0.751
+     "fim": 1.476
     },
     {
      "texto": "A conversão cria a oportunidade sozinha, sem avisar.",
-     "ini": 1.031,
-     "fim": 4.266
+     "ini": 1.976,
+     "fim": 5.457
     },
     {
      "texto": "Ela aparece no Pipeline, na etapa Novo Lead, com o valor do budget.",
-     "ini": 4.546,
-     "fim": 8.783
+     "ini": 5.957,
+     "fim": 10.396
     },
     {
      "texto": "E atenção: as atividades do lead não migram para a oportunidade.",
-     "ini": 9.063,
-     "fim": 13.233
+     "ini": 10.896,
+     "fim": 15.184
     }
    ]
   },
@@ -176,25 +176,25 @@
    "texto": "Na aba Itens, aplique o quadro Dados do Item antes de salvar. O Valor estimado passa a ser a soma dos itens.",
    "fonte": "funcional-crm-leads-pipeline-e-oportunidades",
    "fala": "Terceira. Na aba Itens da oportunidade, aplique o quadro Dados do Item antes de salvar. A partir daí, o valor estimado passa a ser a soma dos itens, e não mais o budget.",
-   "inicio": 64.838,
-   "duracao": 11.616,
-   "fala_s": 11.066,
+   "inicio": 70.212,
+   "duracao": 12.31,
+   "fala_s": 11.41,
    "audio": "audio/consultor-03-comercial/06.wav",
    "legendas": [
     {
      "texto": "Terceira.",
      "ini": 0,
-     "fim": 0.748
+     "fim": 0.705
     },
     {
      "texto": "Na aba Itens da oportunidade, aplique o quadro Dados do Item antes de salvar.",
-     "ini": 1.028,
-     "fim": 5.895
+     "ini": 1.205,
+     "fim": 6.232
     },
     {
      "texto": "A partir daí, o valor estimado passa a ser a soma dos itens, e não mais o budget.",
-     "ini": 6.175,
-     "fim": 11.067
+     "ini": 6.732,
+     "fim": 11.85
     }
    ]
   },
@@ -207,35 +207,35 @@
    "texto": "Com CFOP que gera financeiro, o Gerar Pedido de Venda recusa. Use um CFOP sem financeiro e ajuste o pedido depois.",
    "fonte": "regra-vendas-gerar-pedido-da-oportunidade-exige-cfop-sem-financeiro",
    "fala": "Quarta, e a mais importante. Na oportunidade ganha, o Gerar Pedido de Venda pede só a Empresa e o CFOP. Se o CFOP gera financeiro, o sistema recusa, porque faltam condição de pagamento e parcelas. O contorno: gere com um CFOP sem financeiro e, depois, abra o pedido, troque o CFOP e escolha a condição de pagamento.",
-   "inicio": 76.454,
-   "duracao": 23.028,
-   "fala_s": 22.478,
+   "inicio": 82.522,
+   "duracao": 24.214,
+   "fala_s": 23.314,
    "audio": "audio/consultor-03-comercial/07.wav",
    "legendas": [
     {
      "texto": "Quarta, e a mais importante.",
      "ini": 0,
-     "fim": 1.926
+     "fim": 2.022
     },
     {
      "texto": "Na oportunidade ganha, o Gerar Pedido de Venda pede só a Empresa e o CFOP.",
-     "ini": 2.206,
-     "fim": 7.303
+     "ini": 2.522,
+     "fim": 7.843
     },
     {
      "texto": "Se o CFOP gera financeiro, o sistema recusa, porque faltam condição de pagamento e parcelas.",
-     "ini": 7.583,
-     "fim": 13.828
+     "ini": 8.343,
+     "fim": 14.823
     },
     {
      "texto": "O contorno: gere com um CFOP sem financeiro e, depois, abra o pedido,",
-     "ini": 14.108,
-     "fim": 18.771
+     "ini": 15.323,
+     "fim": 20.301
     },
     {
      "texto": "troque o CFOP e escolha a condição de pagamento.",
-     "ini": 19.051,
-     "fim": 22.478
+     "ini": 20.801,
+     "fim": 24.193
     }
    ]
   },
@@ -254,25 +254,25 @@
     "MQL · 60%"
    ],
    "impacto": 1,
-   "inicio": 99.482,
-   "duracao": 9.485,
-   "fala_s": 8.935,
+   "inicio": 106.736,
+   "duracao": 10.357,
+   "fala_s": 9.457,
    "audio": "audio/consultor-03-comercial/08.wav",
    "legendas": [
     {
      "texto": "Na prática: em CRM, Vendas, Leads, abra o Kanban.",
      "ini": 0,
-     "fim": 2.945
+     "fim": 3.125
     },
     {
      "texto": "Cada coluna mostra o percentual da etapa.",
-     "ini": 3.225,
-     "fim": 5.667
+     "ini": 3.625,
+     "fim": 6.184
     },
     {
      "texto": "O lead novo começa em Inbound, com dez por cento.",
-     "ini": 5.947,
-     "fim": 8.935
+     "ini": 6.684,
+     "fim": 9.897
     }
    ],
    "imagem": "telas/consultor-03-comercial/01-kanban.png",
@@ -305,20 +305,20 @@
     "Mover lead",
     "Confirmar"
    ],
-   "inicio": 108.967,
-   "duracao": 7.589,
-   "fala_s": 7.039,
+   "inicio": 117.093,
+   "duracao": 8.237,
+   "fala_s": 7.337,
    "audio": "audio/consultor-03-comercial/08b.wav",
    "legendas": [
     {
      "texto": "Arraste o card até MQL, de sessenta por cento.",
      "ini": 0,
-     "fim": 2.935
+     "fim": 2.971
     },
     {
      "texto": "O sistema pede uma observação opcional: confirme o movimento.",
-     "ini": 3.215,
-     "fim": 7.039
+     "ini": 3.471,
+     "fim": 7.557
     }
    ],
    "imagem": "telas/consultor-03-comercial/01b-mover.png",
@@ -353,25 +353,25 @@
     "Autoridade de decisão confirmada",
     null
    ],
-   "inicio": 116.556,
-   "duracao": 10.378,
-   "fala_s": 9.828,
+   "inicio": 125.33,
+   "duracao": 10.641,
+   "fala_s": 9.741,
    "audio": "audio/consultor-03-comercial/09.wav",
    "legendas": [
     {
      "texto": "No Editar Lead, em Informações CRM, preencha o budget estimado e ligue as três chaves do BANT: autoridade,",
      "ini": 0,
-     "fim": 6.872
+     "fim": 7.131
     },
     {
      "texto": "necessidade e prazo.",
-     "ini": 7.152,
-     "fim": 8.866
+     "ini": 7.631,
+     "fim": 9.032
     },
     {
      "texto": "Salve.",
-     "ini": 9.146,
-     "fim": 9.828
+     "ini": 9.532,
+     "fim": 10.181
     }
    ],
    "imagem": "telas/consultor-03-comercial/02-bant.png",
@@ -410,15 +410,15 @@
     "Converter Lead em Participante",
     "Converter Lead"
    ],
-   "inicio": 126.934,
-   "duracao": 4.816,
-   "fala_s": 4.266,
+   "inicio": 135.971,
+   "duracao": 5.417,
+   "fala_s": 4.517,
    "audio": "audio/consultor-03-comercial/10.wav",
    "legendas": [
     {
      "texto": "Agora, no menu do lead, use Converter e confirme em Converter Lead.",
      "ini": 0,
-     "fim": 4.266
+     "fim": 4.517
     }
    ],
    "imagem": "telas/consultor-03-comercial/03b-dialogo.png",
@@ -461,20 +461,20 @@
    "nomes": [
     "Lead convertido com sucesso!"
    ],
-   "inicio": 131.75,
-   "duracao": 7.209,
-   "fala_s": 6.659,
+   "inicio": 141.388,
+   "duracao": 7.911,
+   "fala_s": 7.011,
    "audio": "audio/consultor-03-comercial/10b.wav",
    "legendas": [
     {
      "texto": "A mensagem diz só que o lead foi convertido.",
      "ini": 0,
-     "fim": 2.678
+     "fim": 2.897
     },
     {
      "texto": "Ela não fala da oportunidade: você a encontra no Pipeline.",
-     "ini": 2.958,
-     "fim": 6.659
+     "ini": 3.397,
+     "fim": 7.231
     }
    ],
    "imagem": "telas/consultor-03-comercial/03c-convertido.png",
@@ -501,20 +501,20 @@
     null,
     null
    ],
-   "inicio": 138.959,
-   "duracao": 6.873,
-   "fala_s": 6.323,
+   "inicio": 149.299,
+   "duracao": 7.371,
+   "fala_s": 6.471,
    "audio": "audio/consultor-03-comercial/11.wav",
    "legendas": [
     {
      "texto": "No Pipeline, a oportunidade já está lá, na etapa Novo Lead, com o valor do budget.",
      "ini": 0,
-     "fim": 5.051
+     "fim": 5.222
     },
     {
      "texto": "Abra o card.",
-     "ini": 5.331,
-     "fim": 6.323
+     "ini": 5.722,
+     "fim": 6.691
     }
    ],
    "imagem": "telas/consultor-03-comercial/04-pipeline.png",
@@ -549,25 +549,25 @@
     "Empresa emitente",
     "Gerar PDF"
    ],
-   "inicio": 145.832,
-   "duracao": 13.475,
-   "fala_s": 12.925,
+   "inicio": 156.67,
+   "duracao": 14.649,
+   "fala_s": 13.749,
    "audio": "audio/consultor-03-comercial/12.wav",
    "legendas": [
     {
      "texto": "Em Gerar Proposta, escolha o template, a empresa emitente, que vem vazia,",
      "ini": 0,
-     "fim": 4.606
+     "fim": 4.889
     },
     {
      "texto": "a validade e uma condição de pagamento cadastrada, e gere o PDF.",
-     "ini": 4.886,
-     "fim": 8.819
+     "ini": 5.389,
+     "fim": 9.624
     },
     {
      "texto": "Depois, mova a etapa à mão: a proposta não muda a etapa sozinha.",
-     "ini": 9.099,
-     "fim": 12.925
+     "ini": 10.124,
+     "fim": 14.189
     }
    ],
    "imagem": "telas/consultor-03-comercial/05b-proposta.png",
@@ -603,20 +603,20 @@
    "nomes": [
     "Ganha"
    ],
-   "inicio": 159.307,
-   "duracao": 9.483,
-   "fala_s": 8.933,
+   "inicio": 171.319,
+   "duracao": 10.456,
+   "fala_s": 9.556,
    "audio": "audio/consultor-03-comercial/13.wav",
    "legendas": [
     {
      "texto": "Com o sim do cliente, clique em Ganha e, em seguida, em Gerar Pedido de Venda.",
      "ini": 0,
-     "fim": 4.831
+     "fim": 5.109
     },
     {
      "texto": "Escolha a Empresa e um CFOP sem financeiro, e confirme.",
-     "ini": 5.111,
-     "fim": 8.933
+     "ini": 5.609,
+     "fim": 9.776
     }
    ],
    "imagem": "telas/consultor-03-comercial/05-painel.png",
@@ -644,30 +644,30 @@
     "Reverta o ganho antes de gerar o pedido, nunca depois."
    ],
    "fala": "Três cuidados. O botão Ganha não pede confirmação: se clicar sem querer, use Reverter ganho. Desconto em reais acima da alçada vai para aprovação, e quem aprova precisa ser outro usuário. E, se precisar reverter o ganho, faça isso antes de gerar o pedido, nunca depois.",
-   "inicio": 168.79,
-   "duracao": 18.578,
-   "fala_s": 18.028,
+   "inicio": 181.775,
+   "duracao": 19.821,
+   "fala_s": 18.921,
    "audio": "audio/consultor-03-comercial/14.wav",
    "legendas": [
     {
      "texto": "Três cuidados.",
      "ini": 0,
-     "fim": 1.332
+     "fim": 1.333
     },
     {
      "texto": "O botão Ganha não pede confirmação: se clicar sem querer, use Reverter ganho.",
-     "ini": 1.612,
-     "fim": 6.554
+     "ini": 1.833,
+     "fim": 7.044
     },
     {
      "texto": "Desconto em reais acima da alçada vai para aprovação, e quem aprova precisa ser outro usuário.",
-     "ini": 6.834,
-     "fim": 12.817
+     "ini": 7.544,
+     "fim": 13.766
     },
     {
      "texto": "E, se precisar reverter o ganho, faça isso antes de gerar o pedido, nunca depois.",
-     "ini": 13.097,
-     "fim": 18.028
+     "ini": 14.266,
+     "fim": 19.581
     }
    ]
   },
@@ -680,33 +680,33 @@
     "Pedido com CFOP sem financeiro, depois ajuste"
    ],
    "fala": "Resumindo: sessenta por cento e BANT completo para converter. A oportunidade nasce sozinha no Pipeline. E o pedido sai com um CFOP sem financeiro, que você ajusta depois. No próximo vídeo, o faturamento e o fiscal.",
-   "inicio": 187.368,
-   "duracao": 15.125,
-   "fala_s": 14.575,
+   "inicio": 201.596,
+   "duracao": 16.183,
+   "fala_s": 15.283,
    "audio": "audio/consultor-03-comercial/15.wav",
    "legendas": [
     {
      "texto": "Resumindo: sessenta por cento e BANT completo para converter.",
      "ini": 0,
-     "fim": 3.973
+     "fim": 4.136
     },
     {
      "texto": "A oportunidade nasce sozinha no Pipeline.",
-     "ini": 4.253,
-     "fim": 6.961
+     "ini": 4.636,
+     "fim": 7.505
     },
     {
      "texto": "E o pedido sai com um CFOP sem financeiro, que você ajusta depois.",
-     "ini": 7.241,
-     "fim": 11.694
+     "ini": 8.005,
+     "fim": 12.693
     },
     {
      "texto": "No próximo vídeo, o faturamento e o fiscal.",
-     "ini": 11.974,
-     "fim": 14.575
+     "ini": 13.193,
+     "fim": 15.943
     }
    ]
   }
  ],
- "duracaoTotal": 203.993
+ "duracaoTotal": 219.279
 }

@@ -1,100 +1,100 @@
 WEBVTT
 
-00:00:00.000 --> 00:00:03.573
+00:00:01.100 --> 00:00:04.999
 Para o cliente de esquadrias, tudo gira em torno da obra.
 
-00:00:03.573 --> 00:00:10.036
+00:00:04.999 --> 00:00:11.955
 Neste vídeo, vamos ver como o projeto amarra pedido, produção, compras, serviços e financeiro,
 
-00:00:10.036 --> 00:00:12.964
+00:00:11.955 --> 00:00:14.878
 e como acompanhar a obra num painel só.
 
-00:00:12.964 --> 00:00:18.234
+00:00:14.878 --> 00:00:20.478
 Tudo começa no cadastro do projeto: nome, código, cliente e status da obra.
 
-00:00:18.234 --> 00:00:23.764
+00:00:20.778 --> 00:00:26.960
 O projeto ganha estágios e etapas, os documentos são ligados a ele pelo campo projeto,
 
-00:00:23.764 --> 00:00:29.695
+00:00:26.960 --> 00:00:33.012
 e o painel da obra junta tudo: vendido, faturado, a receber, a pagar e as pendências.
 
-00:00:29.695 --> 00:00:30.998
+00:00:33.092 --> 00:00:34.607
 Primeira regra.
 
-00:00:30.998 --> 00:00:38.213
+00:00:34.607 --> 00:00:42.473
 É o campo projeto que liga cada documento à obra: pedido, ordem de produção, solicitação de compra, medição.
 
-00:00:38.213 --> 00:00:42.029
+00:00:42.473 --> 00:00:46.288
 Sem ele, o documento não aparece no painel da obra.
 
-00:00:42.029 --> 00:00:43.060
+00:00:46.288 --> 00:00:48.264
 Segunda.
 
-00:00:43.060 --> 00:00:46.384
+00:00:48.264 --> 00:00:51.946
 Ligue o pedido à obra enquanto ele está em aberto.
 
-00:00:46.384 --> 00:00:52.824
+00:00:51.946 --> 00:00:58.702
 Depois de faturado ou entregue, o pedido só pode ser visualizado, e o vínculo não entra mais.
 
-00:00:52.824 --> 00:00:53.852
+00:00:58.702 --> 00:00:59.907
 Terceira.
 
-00:00:53.852 --> 00:00:58.375
+00:00:59.907 --> 00:01:04.890
 Estágios são as fases macro da obra, como levantamento de material.
 
-00:00:58.375 --> 00:01:03.616
+00:01:04.890 --> 00:01:10.761
 Etapas são os passos acompanhados, como medição dos vãos, produção e instalação.
 
-00:01:03.616 --> 00:01:06.640
+00:01:10.761 --> 00:01:13.526
 Cada etapa pode pertencer a um estágio.
 
-00:01:06.640 --> 00:01:07.483
+00:01:13.526 --> 00:01:14.683
 Quarta.
 
-00:01:07.483 --> 00:01:11.710
+00:01:14.683 --> 00:01:19.315
 Se a obra tem local de estoque próprio, ele precisa estar ativo.
 
-00:01:11.710 --> 00:01:17.197
+00:01:19.315 --> 00:01:25.076
 Sem isso, a finalização da nota e a conclusão da produção da obra são recusadas.
 
-00:01:17.197 --> 00:01:22.465
+00:01:25.076 --> 00:01:30.950
 Na prática: na lista de pedidos, a coluna projeto mostra a obra de cada pedido.
 
-00:01:22.465 --> 00:01:25.985
+00:01:30.950 --> 00:01:34.580
 Este aqui está ligado à obra comercial de teste.
 
-00:01:25.985 --> 00:01:31.733
+00:01:34.660 --> 00:01:40.919
 Em Cadastros, Projetos, cada obra tem status e, na linha, os botões etapas e estágios,
 
-00:01:31.733 --> 00:01:35.496
+00:01:40.919 --> 00:01:44.853
 onde você monta as fases e os passos acompanhados.
 
-00:01:35.496 --> 00:01:40.815
+00:01:44.933 --> 00:01:50.661
 E o painel financeiro do projeto junta tudo: avisos automáticos, pendências,
 
-00:01:40.815 --> 00:01:46.805
+00:01:50.661 --> 00:01:57.000
 como este pedido ainda sem faturamento, e os cartões de vendido, faturado e a faturar.
 
-00:01:46.805 --> 00:01:48.417
+00:01:57.080 --> 00:01:58.913
 Três cuidados.
 
-00:01:48.417 --> 00:01:51.717
+00:01:58.913 --> 00:02:02.555
 Pedido sem projeto não aparece no painel da obra.
 
-00:01:51.717 --> 00:01:56.870
+00:02:02.555 --> 00:02:08.274
 Um título manual e um gerado para o mesmo pedido duplicam os números do painel.
 
-00:01:56.870 --> 00:02:02.507
+00:02:08.274 --> 00:02:13.880
 E o painel separa vendido, faturado e recebido: diferença entre eles não é erro.
 
-00:02:02.507 --> 00:02:05.560
+00:02:13.880 --> 00:02:17.259
 Resumindo: o campo projeto liga tudo à obra.
 
-00:02:05.560 --> 00:02:07.828
+00:02:17.259 --> 00:02:19.871
 Ligue o pedido antes de faturar.
 
-00:02:07.828 --> 00:02:10.541
+00:02:19.871 --> 00:02:22.915
 E acompanhe a obra no painel financeiro.
 
-00:02:10.541 --> 00:02:13.098
+00:02:22.915 --> 00:02:25.504
 No próximo vídeo, as tarefas.

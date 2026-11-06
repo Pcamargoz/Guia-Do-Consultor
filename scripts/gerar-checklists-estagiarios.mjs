@@ -1,5 +1,5 @@
 /* Gera os checklists da Trilha do Estagiário (dados-checklists-estagiarios.mjs) e do Consultor
-   (dados-checklist-consultor.mjs + dados-fluxos-consultor.mjs), mais o public/checklists/manifest.json que alimenta a aba "Checklist" do guia.
+   (dados-checklists-implantacao.mjs: checklists de implantação por módulo, gerados do Harness), mais o public/checklists/manifest.json que alimenta a aba "Checklist" do guia.
    Visual em checklist-modelo/estilo.css, comportamento em checklist-modelo/comportamento.js.
    Cada checklist é um HTML independente (abre offline e guarda o progresso no navegador; dentro do guia, logado, o progresso e as imagens anexadas ficam na conta de cada usuário).
    Saída: <raiz>/estagiarios/, <raiz>/consultores/ e <raiz>/manifest.json, em public/checklists (servido pelo guia) e Checklists (cópia de trabalho).
@@ -9,10 +9,7 @@ import { existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import { CHECKLISTS, ONBOARDING, META } from './dados-checklists-estagiarios.mjs';
-import { CONSULTOR } from './dados-checklist-consultor.mjs';
-import { FLUXOS } from './dados-fluxos-consultor.mjs';
-import { FLUXOS_OPERACAO } from './dados-fluxos-operacao.mjs';
-import { FLUXOS_GESTAO } from './dados-fluxos-gestao.mjs';
+import { CHECKLISTS_IMPLANTACAO } from './dados-checklists-implantacao.mjs';
 
 const AQUI = path.dirname(fileURLToPath(import.meta.url));
 const RAIZ = path.join(AQUI, '..');
@@ -250,17 +247,9 @@ ${blocoAnotacoes('Dúvidas gerais, combinados com o supervisor, acessos que falt
 
 /* ---------- Catálogo e manifest ---------- */
 const GRUPOS = [
-  { id: 'consultor', nome: 'Fluxos do consultor', desc: 'Testes funcionais ponta a ponta: faça, confira o reflexo no módulo seguinte e anote os registros.' },
+  { id: 'consultor', nome: 'Checklists de implantação do consultor', desc: 'Um roteiro prático por módulo para fazer junto com o cliente: entre no módulo e siga o fluxo real, do primeiro documento aos reflexos nos outros módulos. Cada passo diz o que fazer, o que explicar ao cliente e o que conferir na tela.' },
   { id: 'fluxos', nome: 'Fluxos principais do estagiário', desc: 'Vendas, Faturamento e Financeiro, os módulos mais maduros, do começo ao fim com os seus registros. Faça depois do onboarding e dos checklists 01 a 04.' },
   { id: 'estagiario', nome: 'Trilha do estagiário', desc: 'Checklists curtos para a integração. Comece pelo onboarding (00) e siga a numeração.' },
-  { id: 'qa', nome: 'Validação dos módulos (QA)', desc: 'Planos completos de validação e homologação de cada módulo, com os achados já registrados.' },
-];
-const QA = [
-  ['CRM', 'Validação do CRM', 'validacao-crm-v2-faktory-flow.html'], ['Compras', 'Validação de Compras', 'validacao-compras-faktory-flow.html'],
-  ['Estoque', 'Validação de Estoque', 'validacao-estoque-faktory-flow.html'], ['Expedição', 'Validação de Expedição', 'validacao-expedicao-faktory-flow.html'],
-  ['Produção', 'Validação da Produção', 'validacao-producao-v2-faktory-flow.html'], ['Projetos', 'Validação de Projetos', 'validacao-projetos-faktory-flow.html'],
-  ['Recebimento', 'Validação de Recebimento', 'validacao-recebimento-faktory-flow.html'], ['Serviços', 'Validação de Serviços', 'validacao-servicos-v2-faktory-flow.html'],
-  ['Tarefas', 'Validação de Tarefas', 'validacao-tarefas-faktory-flow.html'],
 ];
 const resumoEtapas = (c) => {
   const p = contarPassos(c);
@@ -268,7 +257,7 @@ const resumoEtapas = (c) => {
   return { etapas: p.length, verificadas: p.filter((x) => x.s === 'v').length, ...(dev ? { emDesenvolvimento: dev } : {}) };
 };
 
-const consultores = [CONSULTOR, ...FLUXOS, ...FLUXOS_OPERACAO, ...FLUXOS_GESTAO];
+const consultores = CHECKLISTS_IMPLANTACAO;
 [ONBOARDING, ...CHECKLISTS, ...consultores].forEach((c) => conferir(c, c.arquivo));
 const ids = [ONBOARDING, ...CHECKLISTS, ...consultores].map((c) => c.arquivo);
 if (new Set(ids).size !== ids.length) throw new Error('arquivos de saída repetidos');
@@ -284,17 +273,16 @@ const manifest = {
     ...CHECKLISTS.filter(ehFluxoPrincipal).map(itemEstagiario),
     { grupo: 'estagiario', id: 'onboarding', area: '00 · Comece por aqui', titulo: ONBOARDING.titulo, resumo: ONBOARDING.objetivo, arquivo: `estagiarios/${ONBOARDING.arquivo}`, chave: 'ff-estagiario:onboarding', ...resumoEtapas(ONBOARDING) },
     ...CHECKLISTS.filter((c) => !ehFluxoPrincipal(c)).map(itemEstagiario),
-    ...QA.map(([area, titulo, arquivo]) => ({ grupo: 'qa', id: arquivo.replace(/^validacao-|-faktory-flow\.html$/g, ''), area, titulo, resumo: 'Plano de validação com roteiros, critérios e achados registrados.', arquivo })),
   ],
 };
 
 const saidas = {
   estagiarios: [[ONBOARDING.arquivo, onboarding(ONBOARDING)], ...CHECKLISTS.map((c) => [c.arquivo, checklist(c)])],
   consultores: consultores.map((c) => [c.arquivo, checklist(c, {
-    prefixo: 'consultor', marca: 'Fluxos do Consultor', rodape: c.rodape, rotuloRes: 'Conferir',
-    fim: 'Fluxo concluído. Registre os defeitos encontrados e limpe os registros de teste.',
-    avisoPendente: 'Valide no ambiente de teste antes de usar em um cliente.',
-    placeholderNotas: 'Anote defeitos (com os passos para reproduzir), números de registros criados e o que precisa de configuração…',
+    prefixo: 'consultor', marca: 'Implantação · Consultor', rodape: c.rodape, rotuloRes: 'Orientação',
+    fim: 'Implantação do módulo concluída. Registre as pendências, combine o acompanhamento do go-live e libere o próximo módulo.',
+    avisoPendente: 'As fontes discordam nestes pontos: confira na tela do ambiente de teste antes de ensinar ao cliente.',
+    placeholderNotas: 'Anote dúvidas e dificuldades do cliente, decisões tomadas, pendências e quem ficou responsável por cada uma…',
   })]),
 };
 for (const raiz of raizes) {

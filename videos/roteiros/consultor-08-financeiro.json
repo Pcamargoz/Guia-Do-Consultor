@@ -57,9 +57,9 @@
       "n": 3,
       "titulo": "Baixa parcial cria um título residual",
       "icone": "estrela",
-      "texto": "Receber menos que o valor deixa o original Recebido e cria um novo título com o saldo, no mesmo vencimento.",
+      "texto": "Receber menos que o valor deixa o original Recebido e cria um novo título com o saldo remanescente, no mesmo vencimento.",
       "fonte": "regra-financeiro-baixa-parcial-cria-titulo-residual",
-      "fala": "Terceira. Se você recebe menos que o valor do título, o original fica recebido e nasce um título novo com o saldo, no mesmo vencimento. Não é duplicidade: a soma dos dois dá o valor original."
+      "fala": "Terceira. Se você recebe menos que o valor do título, o original fica recebido e nasce um título novo com o saldo remanescente, no mesmo vencimento. Não é duplicidade: a soma dos dois dá o valor original."
     },
     {
       "id": "07",

@@ -169,7 +169,7 @@
       $('[data-visor-baixar]').setAttribute('download', i.arquivo.split('/').pop());
       frame.style.height = '';
       $('[data-ir]').hidden = true;
-      // Os planos de QA são páginas próprias, sem progresso salvo: ficam sem exportar, importar e recomeçar.
+      // Página sem chave de progresso no manifest: fica sem exportar, importar e recomeçar.
       $('[data-acoes-ck]').hidden = !i.chave;
       fecharMenu();
       frame.src = urlAbrir(i);

@@ -9,7 +9,7 @@
 // Comando: POST http://127.0.0.1:3999/  corpo JSON {"acao": "...", ...}
 //   goto {url} · url · texto · arvore {seletor?} · clicar {alvo} · preencher {alvo, valor}
 //   escolher {alvo, valor} · tecla {tecla} · esperar {ms} · rolar {y}
-//   captura {fluxo, nome, alvos?: [alvo], ocultar?: [alvo]} · fechar
+//   captura {fluxo, nome, alvos?: [alvo], ocultar?: [alvo], mascarar?: [alvo]} · fechar
 // alvo: {role, name, exact?} | {text, exact?} | {label} | {placeholder} | {css}, com {nth?} opcional.
 import http from 'node:http';
 import fs from 'node:fs';
@@ -82,7 +82,7 @@ const ACOES = {
     return { ok: true };
   },
   rolar: async ({ y = 0 }) => { await page.mouse.wheel(0, y); await page.waitForTimeout(400); return { ok: true }; },
-  captura: async ({ fluxo, nome, alvos = [], ocultar = [] }) => {
+  captura: async ({ fluxo, nome, alvos = [], ocultar = [], mascarar = [] }) => {
     const pasta = path.join(RAIZ, 'capturas', fluxo);
     fs.mkdirSync(pasta, { recursive: true });
     await page.mouse.move(1599, 899); // tira o cursor real de cima dos elementos
@@ -96,7 +96,10 @@ const ACOES = {
       for (const el of els) { await el.evaluate((e) => { e.dataset.vis = e.style.visibility; e.style.visibility = 'hidden'; }); escondidos.push(el); }
     }
     const arq = path.join(pasta, `${nome}.png`);
-    await page.screenshot({ path: arq, animations: 'disabled' });
+    // mascarar (Playwright `mask`): pinta o dado pessoal já no print, sem depender do `borrar` do roteiro; caret: 'hide'
+    // tira o cursor de texto piscando dos campos (no print ele aparecia ou não conforme o instante)
+    await page.screenshot({ path: arq, animations: 'disabled', caret: 'hide',
+      mask: mascarar.map((a) => localizar({ ...a, todos: true })), maskColor: '#E9ECF1' });
     for (const el of escondidos) await el.evaluate((e) => { e.style.visibility = e.dataset.vis || ''; }).catch(() => {});
     const meta = { nome, url: page.url(), largura: 1920, altura: 1080, caixas, em: new Date().toISOString() };
     fs.writeFileSync(path.join(pasta, `${nome}.json`), JSON.stringify(meta, null, 1));

@@ -11,24 +11,24 @@
    "cena": "abertura",
    "fala": "Na fábrica, o pedido vira ordem de produção, consome material e entrega o produto acabado no estoque, com custo. Neste vídeo, vamos ver o que precisa existir antes e o que cada botão grava.",
    "inicio": 0,
-   "duracao": 12.861,
-   "fala_s": 12.311,
+   "duracao": 13.836,
+   "fala_s": 12.936,
    "audio": "audio/consultor-05-producao/01.wav",
    "legendas": [
     {
      "texto": "Na fábrica, o pedido vira ordem de produção, consome material e entrega o produto acabado no estoque,",
      "ini": 0,
-     "fim": 6.413
+     "fim": 6.808
     },
     {
      "texto": "com custo.",
-     "ini": 6.693,
-     "fim": 7.468
+     "ini": 7.308,
+     "fim": 8.084
     },
     {
      "texto": "Neste vídeo, vamos ver o que precisa existir antes e o que cada botão grava.",
-     "ini": 7.748,
-     "fim": 12.311
+     "ini": 8.584,
+     "fim": 13.376
     }
    ]
   },
@@ -45,15 +45,15 @@
    ],
    "destaque": 0,
    "fala": "Tudo começa na estrutura do produto: a lista de materiais e quantidades de cada item.",
-   "inicio": 12.861,
-   "duracao": 5.899,
-   "fala_s": 5.349,
+   "inicio": 13.836,
+   "duracao": 6.302,
+   "fala_s": 5.402,
    "audio": "audio/consultor-05-producao/02.wav",
    "legendas": [
     {
      "texto": "Tudo começa na estrutura do produto: a lista de materiais e quantidades de cada item.",
      "ini": 0,
-     "fim": 5.349
+     "fim": 5.402
     }
    ]
   },
@@ -62,20 +62,20 @@
    "cena": "status",
    "destaque": 4,
    "fala": "A ordem de produção nasce do pedido e já traz as requisições da estrutura. O material é baixado, a ordem é marcada como produzida, e o produto acabado entra no estoque com o custo real.",
-   "inicio": 18.76,
-   "duracao": 12.362,
-   "fala_s": 11.812,
+   "inicio": 20.138,
+   "duracao": 13.246,
+   "fala_s": 12.346,
    "audio": "audio/consultor-05-producao/03.wav",
    "legendas": [
     {
      "texto": "A ordem de produção nasce do pedido e já traz as requisições da estrutura.",
      "ini": 0,
-     "fim": 4.593
+     "fim": 4.781
     },
     {
      "texto": "O material é baixado, a ordem é marcada como produzida, e o produto acabado entra no estoque com o custo real.",
-     "ini": 4.873,
-     "fim": 11.812
+     "ini": 5.281,
+     "fim": 12.566
     }
    ]
   },
@@ -88,35 +88,35 @@
    "texto": "Pedido e Item do pedido trazem produto, cor e medidas. Quantidade e Empresa você informa. Não use Esc: perde o formulário.",
    "fonte": "regra-producao-op-copia-o-item-do-pedido-mas-nao-a-quantidade",
    "fala": "Primeira regra. Na nova ordem de produção, o item do pedido traz o produto, a cor e as medidas, mas não a quantidade, que você informa. A empresa também é obrigatória, apesar da dica dizer que vem do pedido. E não use a tecla esc: ela fecha o painel e perde o que foi digitado.",
-   "inicio": 31.122,
-   "duracao": 18.713,
-   "fala_s": 18.163,
+   "inicio": 33.384,
+   "duracao": 19.561,
+   "fala_s": 18.661,
    "audio": "audio/consultor-05-producao/04.wav",
    "legendas": [
     {
      "texto": "Primeira regra.",
      "ini": 0,
-     "fim": 1.023
+     "fim": 1.015
     },
     {
      "texto": "Na nova ordem de produção, o item do pedido traz o produto, a cor e as medidas, mas não a quantidade,",
-     "ini": 1.303,
-     "fim": 7.509
+     "ini": 1.515,
+     "fim": 7.988
     },
     {
      "texto": "que você informa.",
-     "ini": 7.789,
-     "fim": 8.857
+     "ini": 8.488,
+     "fim": 9.574
     },
     {
      "texto": "A empresa também é obrigatória, apesar da dica dizer que vem do pedido.",
-     "ini": 9.137,
-     "fim": 13.61
+     "ini": 10.074,
+     "fim": 14.638
     },
     {
      "texto": "E não use a tecla esc: ela fecha o painel e perde o que foi digitado.",
-     "ini": 13.89,
-     "fim": 18.163
+     "ini": 15.138,
+     "fim": 19.541
     }
    ]
   },
@@ -129,30 +129,30 @@
    "texto": "Ao salvar a OP, as requisições são criadas sozinhas: quantidade da estrutura vezes a da OP.",
    "fonte": "regra-producao-requisicoes-nascem-da-estrutura-ao-salvar",
    "fala": "Segunda. Se o produto tem estrutura, as requisições de material nascem sozinhas ao salvar a ordem: a quantidade da estrutura vezes a da ordem. Sem estrutura, o sistema avisa que a ordem está sem requisições.",
-   "inicio": 49.835,
-   "duracao": 14.732,
-   "fala_s": 14.182,
+   "inicio": 52.945,
+   "duracao": 16.405,
+   "fala_s": 15.505,
    "audio": "audio/consultor-05-producao/05.wav",
    "legendas": [
     {
      "texto": "Segunda.",
      "ini": 0,
-     "fim": 0.751
+     "fim": 1.476
     },
     {
      "texto": "Se o produto tem estrutura,",
-     "ini": 1.031,
-     "fim": 2.861
+     "ini": 1.976,
+     "fim": 3.803
     },
     {
      "texto": "as requisições de material nascem sozinhas ao salvar a ordem: a quantidade da estrutura vezes a da ordem.",
-     "ini": 3.141,
-     "fim": 9.95
+     "ini": 4.303,
+     "fim": 11.365
     },
     {
      "texto": "Sem estrutura, o sistema avisa que a ordem está sem requisições.",
-     "ini": 10.23,
-     "fim": 14.182
+     "ini": 11.865,
+     "fim": 16.165
     }
    ]
   },
@@ -165,30 +165,30 @@
    "texto": "Perfil e chapa sem cor são recusados na estrutura. Na entrada de estoque, a cor também precisa bater.",
    "fonte": "regra-producao-item-parametrico-da-estrutura-exige-cor",
    "fala": "Terceira. Material paramétrico, como perfil e chapa, precisa de cor na estrutura. Sem ela, o sistema recusa. E a entrada de estoque do material também precisa ter a cor, senão o saldo não bate.",
-   "inicio": 64.567,
-   "duracao": 13.621,
-   "fala_s": 13.071,
+   "inicio": 69.35,
+   "duracao": 14.415,
+   "fala_s": 13.515,
    "audio": "audio/consultor-05-producao/06.wav",
    "legendas": [
     {
      "texto": "Terceira.",
      "ini": 0,
-     "fim": 0.748
+     "fim": 0.705
     },
     {
      "texto": "Material paramétrico, como perfil e chapa, precisa de cor na estrutura.",
-     "ini": 1.028,
-     "fim": 5.534
+     "ini": 1.205,
+     "fim": 5.979
     },
     {
      "texto": "Sem ela, o sistema recusa.",
-     "ini": 5.814,
-     "fim": 7.679
+     "ini": 6.479,
+     "fim": 8.436
     },
     {
      "texto": "E a entrada de estoque do material também precisa ter a cor, senão o saldo não bate.",
-     "ini": 7.959,
-     "fim": 13.071
+     "ini": 8.936,
+     "fim": 14.175
     }
    ]
   },
@@ -202,30 +202,30 @@
    "fonte": "regra-producao-marcar-produzido-gera-entrada-do-produto-acabado",
    "fala": "Quarta. Marcar produzido leva a ordem ao estado final e lança a entrada de produto acabado no almoxarifado central, com a quantidade e o custo. Sem almoxarifado ativo, a conclusão fica bloqueada.",
    "critica": true,
-   "inicio": 78.188,
-   "duracao": 14.144,
-   "fala_s": 13.594,
+   "inicio": 83.765,
+   "duracao": 15.141,
+   "fala_s": 14.241,
    "audio": "audio/consultor-05-producao/07.wav",
    "legendas": [
     {
      "texto": "Quarta.",
      "ini": 0,
-     "fim": 0.563
+     "fim": 0.657
     },
     {
      "texto": "Marcar produzido leva a ordem ao estado final e lança a entrada de produto acabado no almoxarifado central,",
-     "ini": 0.843,
-     "fim": 7.818
+     "ini": 1.157,
+     "fim": 8.429
     },
     {
      "texto": "com a quantidade e o custo.",
-     "ini": 8.098,
-     "fim": 9.932
+     "ini": 8.929,
+     "fim": 10.948
     },
     {
      "texto": "Sem almoxarifado ativo, a conclusão fica bloqueada.",
-     "ini": 10.212,
-     "fim": 13.594
+     "ini": 11.448,
+     "fim": 14.901
     }
    ]
   },
@@ -245,20 +245,20 @@
     "Fabricação",
     "Produzido"
    ],
-   "inicio": 92.332,
-   "duracao": 9.635,
-   "fala_s": 9.085,
+   "inicio": 98.906,
+   "duracao": 10.393,
+   "fala_s": 9.493,
    "audio": "audio/consultor-05-producao/08.wav",
    "legendas": [
     {
      "texto": "Na prática: esta ordem de fabricação já está produzida.",
      "ini": 0,
-     "fim": 3.422
+     "fim": 3.524
     },
     {
      "texto": "Repare que os botões de apontar e excluir ficam travados: produzido é o estado final.",
-     "ini": 3.702,
-     "fim": 9.085
+     "ini": 4.024,
+     "fim": 9.713
     }
    ],
    "imagem": "telas/consultor-05-producao/01-op-lista.png",
@@ -299,15 +299,15 @@
     "Realizado",
     "Etapa"
    ],
-   "inicio": 101.967,
-   "duracao": 5.716,
-   "fala_s": 5.166,
+   "inicio": 109.299,
+   "duracao": 6.371,
+   "fala_s": 5.471,
    "audio": "audio/consultor-05-producao/09.wav",
    "legendas": [
     {
      "texto": "No custo da ordem, você compara o estimado com o realizado, e vê o detalhe por etapa.",
      "ini": 0,
-     "fim": 5.166
+     "fim": 5.471
     }
    ],
    "imagem": "telas/consultor-05-producao/03-custo.png",
@@ -341,30 +341,30 @@
     1
    ],
    "rotulo": "Mais ações › Linha do tempo",
-   "fala": "Na linha do tempo, o tempo planejado e o real. Aqui o real ficou zerado, porque o apontamento não chegou a ser finalizado: uma limitação conhecida desta versão.",
+   "fala": "Na linha do tempo, o tempo planejado e o real. Aqui o real ficou zerado: hoje o sistema ainda recusa finalizar o apontamento, com um erro de data futura. É um defeito já reportado.",
    "nomes": [
     "Tempo planejado",
     "Tempo real até agora"
    ],
-   "inicio": 107.683,
-   "duracao": 11.424,
-   "fala_s": 10.874,
+   "inicio": 115.67,
+   "duracao": 13.265,
+   "fala_s": 12.365,
    "audio": "audio/consultor-05-producao/10.wav",
    "legendas": [
     {
      "texto": "Na linha do tempo, o tempo planejado e o real.",
      "ini": 0,
-     "fim": 2.742
+     "fim": 2.981
     },
     {
-     "texto": "Aqui o real ficou zerado,",
-     "ini": 3.022,
-     "fim": 4.869
+     "texto": "Aqui o real ficou zerado: hoje o sistema ainda recusa finalizar o apontamento, com um erro de data futura.",
+     "ini": 3.481,
+     "fim": 10.494
     },
     {
-     "texto": "porque o apontamento não chegou a ser finalizado: uma limitação conhecida desta versão.",
-     "ini": 5.149,
-     "fim": 10.874
+     "texto": "É um defeito já reportado.",
+     "ini": 10.994,
+     "fim": 12.805
     }
    ],
    "imagem": "telas/consultor-05-producao/04-linha-tempo.png",
@@ -398,15 +398,15 @@
     "Entrada de produto acabado (OP)"
    ],
    "impacto": 1,
-   "inicio": 119.107,
-   "duracao": 4.821,
-   "fala_s": 4.271,
+   "inicio": 128.935,
+   "duracao": 5.449,
+   "fala_s": 4.549,
    "audio": "audio/consultor-05-producao/11.wav",
    "legendas": [
     {
      "texto": "E, no estoque, a entrada de produto acabado da ordem, com o custo real.",
      "ini": 0,
-     "fim": 4.271
+     "fim": 4.549
     }
    ],
    "imagem": "telas/consultor-05-producao/05-entrada-acabado.png",
@@ -430,34 +430,39 @@
    "cena": "alertas",
    "itens": [
     "Iniciar produção muda a OP para Em execução com um clique.",
-    "O apontamento pode não finalizar: anote o horário e avise o suporte.",
+    "Defeito reportado: o apontamento pode recusar a finalização (erro de data futura). Anote o horário e avise o suporte.",
     "Fila de exceções: não reprocesse sem o suporte."
    ],
-   "fala": "Três cuidados. O iniciar produção da lista muda a ordem para em execução com um clique só. O apontamento de horas pode recusar a finalização por causa do horário: anote e avise o suporte. E, na fila de exceções, não reprocesse nada sem o suporte.",
-   "inicio": 123.928,
-   "duracao": 17.093,
-   "fala_s": 16.543,
+   "fala": "Três cuidados. O iniciar produção da lista muda a ordem para em execução com um clique só. O apontamento de horas ainda pode recusar a finalização com um erro de data futura, um defeito já reportado: anote o horário e avise o suporte. E, na fila de exceções, não reprocesse nada sem o suporte.",
+   "inicio": 134.384,
+   "duracao": 21.499,
+   "fala_s": 20.599,
    "audio": "audio/consultor-05-producao/12.wav",
    "legendas": [
     {
      "texto": "Três cuidados.",
      "ini": 0,
-     "fim": 1.332
+     "fim": 1.333
     },
     {
      "texto": "O iniciar produção da lista muda a ordem para em execução com um clique só.",
-     "ini": 1.612,
-     "fim": 6.279
+     "ini": 1.833,
+     "fim": 6.759
     },
     {
-     "texto": "O apontamento de horas pode recusar a finalização por causa do horário: anote e avise o suporte.",
-     "ini": 6.559,
-     "fim": 12.714
+     "texto": "O apontamento de horas ainda pode recusar a finalização com um erro de data futura,",
+     "ini": 7.259,
+     "fim": 12.698
+    },
+    {
+     "texto": "um defeito já reportado: anote o horário e avise o suporte.",
+     "ini": 13.198,
+     "fim": 17.114
     },
     {
      "texto": "E, na fila de exceções, não reprocesse nada sem o suporte.",
-     "ini": 12.994,
-     "fim": 16.543
+     "ini": 17.614,
+     "fim": 21.479
     }
    ]
   },
@@ -470,33 +475,33 @@
     "Produzido lança o acabado com custo"
    ],
    "fala": "Resumindo: na ordem de produção, a quantidade e a empresa você informa. As requisições nascem da estrutura. E marcar produzido lança o acabado no estoque, com custo. No próximo vídeo, a expedição.",
-   "inicio": 141.021,
-   "duracao": 13.713,
-   "fala_s": 13.163,
+   "inicio": 155.883,
+   "duracao": 14.664,
+   "fala_s": 13.764,
    "audio": "audio/consultor-05-producao/13.wav",
    "legendas": [
     {
      "texto": "Resumindo: na ordem de produção, a quantidade e a empresa você informa.",
      "ini": 0,
-     "fim": 4.463
+     "fim": 4.661
     },
     {
      "texto": "As requisições nascem da estrutura.",
-     "ini": 4.743,
-     "fim": 7.029
+     "ini": 5.161,
+     "fim": 7.602
     },
     {
      "texto": "E marcar produzido lança o acabado no estoque, com custo.",
-     "ini": 7.309,
-     "fim": 10.913
+     "ini": 8.102,
+     "fim": 11.965
     },
     {
      "texto": "No próximo vídeo, a expedição.",
-     "ini": 11.193,
-     "fim": 13.163
+     "ini": 12.465,
+     "fim": 14.424
     }
    ]
   }
  ],
- "duracaoTotal": 156.234
+ "duracaoTotal": 172.047
 }

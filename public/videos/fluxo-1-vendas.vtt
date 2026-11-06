@@ -1,157 +1,157 @@
 WEBVTT
 
-00:00:00.000 --> 00:00:02.766
+00:00:01.100 --> 00:00:04.101
 Toda venda da empresa começa num pedido.
 
-00:00:02.766 --> 00:00:07.516
+00:00:04.101 --> 00:00:09.160
 Neste vídeo, você vai entender o ciclo do pedido de venda no Faktory Flow,
 
-00:00:07.516 --> 00:00:10.459
+00:00:09.160 --> 00:00:12.155
 e como evitar os tropeços mais comuns.
 
-00:00:10.459 --> 00:00:15.639
+00:00:12.155 --> 00:00:17.895
 O pedido é o combinado da venda: quem compra, o quê, por quanto e como vai pagar.
 
-00:00:15.639 --> 00:00:17.539
+00:00:17.895 --> 00:00:20.059
 Ele nasce Em aberto.
 
-00:00:17.539 --> 00:00:21.012
+00:00:20.059 --> 00:00:23.560
 Enquanto está assim, você ainda pode mudar tudo.
 
-00:00:21.012 --> 00:00:24.317
+00:00:23.560 --> 00:00:27.259
 Quando a nota fiscal é salva, ele passa a Faturado.
 
-00:00:24.317 --> 00:00:28.466
+00:00:27.259 --> 00:00:31.888
 Depois, pode ser liberado para expedição e, por fim, entregue.
 
-00:00:28.466 --> 00:00:30.781
+00:00:31.888 --> 00:00:34.586
 Cada status abre e fecha portas.
 
-00:00:30.781 --> 00:00:32.651
+00:00:34.586 --> 00:00:35.858
 Vamos ver quais.
 
-00:00:32.651 --> 00:00:33.954
+00:00:35.858 --> 00:00:37.373
 Primeira regra.
 
-00:00:33.954 --> 00:00:39.662
+00:00:37.373 --> 00:00:43.527
 No Novo Pedido, o CFOP só libera depois que você escolhe a Empresa e o Cliente.
 
-00:00:39.662 --> 00:00:42.785
+00:00:43.527 --> 00:00:46.845
 E ele já vem filtrado pelo estado do cliente.
 
-00:00:42.785 --> 00:00:43.816
+00:00:46.845 --> 00:00:48.821
 Segunda.
 
-00:00:43.816 --> 00:00:48.177
+00:00:48.821 --> 00:00:53.081
 No Resumo do Pedido, a Conta de Fluxo de Caixa é obrigatória.
 
-00:00:48.177 --> 00:00:49.205
+00:00:53.161 --> 00:00:54.366
 Terceira.
 
-00:00:49.205 --> 00:00:53.767
+00:00:54.366 --> 00:00:59.368
 Só o pedido Em aberto pode ser editado, pelo lápis da coluna Ações.
 
-00:00:53.767 --> 00:00:57.111
+00:00:59.368 --> 00:01:03.188
 Depois de faturado, você só consegue visualizar.
 
-00:00:57.111 --> 00:01:01.493
+00:01:03.188 --> 00:01:07.365
 Por isso, ajuste projeto, itens e parcelas antes de faturar.
 
-00:01:01.493 --> 00:01:02.336
+00:01:07.365 --> 00:01:08.522
 Quarta.
 
-00:01:02.336 --> 00:01:08.083
+00:01:08.522 --> 00:01:14.690
 O pedido fica Faturado assim que a nota é salva, mesmo que a nota ainda esteja em aberto.
 
-00:01:08.083 --> 00:01:10.909
+00:01:14.690 --> 00:01:17.933
 Faturado não quer dizer nota autorizada.
 
-00:01:10.909 --> 00:01:13.364
+00:01:17.933 --> 00:01:20.075
 Confira sempre em Faturamento.
 
-00:01:13.364 --> 00:01:15.111
+00:01:20.075 --> 00:01:21.966
 Agora, na prática.
 
-00:01:15.111 --> 00:01:17.307
+00:01:21.966 --> 00:01:24.543
 Abra Vendas, Pedidos de Venda.
 
-00:01:17.307 --> 00:01:20.636
+00:01:24.543 --> 00:01:28.145
 A lista já abre filtrada nos pedidos Em aberto.
 
-00:01:20.636 --> 00:01:24.114
+00:01:28.145 --> 00:01:32.012
 Clique em Novo Pedido e comece escolhendo a Empresa.
 
-00:01:24.114 --> 00:01:27.566
+00:01:32.012 --> 00:01:35.564
 Repare que o CFOP ainda está bloqueado.
 
-00:01:27.566 --> 00:01:31.293
+00:01:35.644 --> 00:01:39.915
 Escolha o Cliente, o Vendedor e a Condição de Pagamento.
 
-00:01:31.293 --> 00:01:33.844
+00:01:39.915 --> 00:01:42.587
 Agora, sim, o CFOP libera.
 
-00:01:33.844 --> 00:01:37.068
+00:01:42.667 --> 00:01:46.313
 E a lista já vem filtrada pelo estado do cliente.
 
-00:01:37.068 --> 00:01:40.621
+00:01:46.313 --> 00:01:50.168
 Aqui, só aparecem as operações interestaduais.
 
-00:01:40.621 --> 00:01:42.337
+00:01:50.248 --> 00:01:52.002
 Adicione o produto.
 
-00:01:42.337 --> 00:01:47.028
+00:01:52.002 --> 00:01:57.104
 Abre o quadro Dados do Item, com os campos que o tipo do material pede.
 
-00:01:47.028 --> 00:01:49.525
+00:01:57.104 --> 00:01:59.553
 Preencha e clique em Aplicar.
 
-00:01:49.525 --> 00:01:52.982
+00:01:59.553 --> 00:02:03.378
 Na parcela, escolha o Meio Pagamento e o Portador.
 
-00:01:52.982 --> 00:01:59.760
+00:02:03.378 --> 00:02:10.559
 No Resumo, confira a Conta de Fluxo de Caixa: ela é obrigatória, e pode já vir do cadastro do cliente.
 
-00:01:59.760 --> 00:02:01.917
+00:02:10.639 --> 00:02:13.062
 Clique em Salvar e Permanecer.
 
-00:02:01.917 --> 00:02:07.264
+00:02:13.062 --> 00:02:18.685
 Pronto: o pedido ganha um número, e a tela passa a ser Editar Pedido de Venda.
 
-00:02:07.264 --> 00:02:11.146
+00:02:18.765 --> 00:02:23.154
 Na lista, ele está Em aberto, sem títulos e sem nota fiscal.
 
-00:02:11.146 --> 00:02:12.615
+00:02:23.154 --> 00:02:24.753
 Precisa ajustar?
 
-00:02:12.615 --> 00:02:14.236
+00:02:24.753 --> 00:02:26.600
 Use o lápis.
 
-00:02:14.236 --> 00:02:20.505
+00:02:26.600 --> 00:02:32.698
 Para mudar as parcelas, troque a Condição de Pagamento: as parcelas se refazem sozinhas.
 
-00:02:20.505 --> 00:02:22.117
+00:02:32.698 --> 00:02:34.531
 Três cuidados.
 
-00:02:22.117 --> 00:02:26.817
+00:02:34.531 --> 00:02:39.786
 As lixeiras do item e da parcela apagam na hora, sem pedir confirmação.
 
-00:02:26.817 --> 00:02:32.110
+00:02:39.786 --> 00:02:45.496
 O botão Recalcular Parcelas só redivide os valores: ele não cria datas novas.
 
-00:02:32.110 --> 00:02:39.153
+00:02:45.496 --> 00:02:53.053
 E, se o item tiver desconto, o pedido vai para Vendas, Aprovações, e outra pessoa, com perfil de aprovação,
 
-00:02:39.153 --> 00:02:41.126
+00:02:53.053 --> 00:02:54.449
 precisa aprovar.
 
-00:02:41.126 --> 00:02:44.590
+00:02:54.449 --> 00:02:58.212
 Resumindo: Empresa e Cliente antes do CFOP.
 
-00:02:44.590 --> 00:02:46.815
+00:02:58.212 --> 00:03:00.674
 Conta de Fluxo de Caixa sempre.
 
-00:02:46.815 --> 00:02:49.101
+00:03:00.674 --> 00:03:03.273
 E ajuste tudo antes de faturar.
 
-00:02:49.101 --> 00:02:52.621
+00:03:03.273 --> 00:03:07.028
 No próximo vídeo, você vai faturar este pedido.

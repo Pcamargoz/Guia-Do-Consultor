@@ -1,6 +1,7 @@
-/* Faktory Flow — Abas do Guia do Consultor: "Guia", "Pacotes e Horas", "Checklist", "Vídeos de fluxo" e "Apostila".
+/* Faktory Flow — Abas do Guia do Consultor: "Guia", "Pacotes e Horas", "Checklist", "Vídeos de fluxo", "Apostila" e,
+   só para administradores, "Painel" (nasce escondida; guia-admin.js mostra quando a sessão confirma o perfil).
    Cabeçalho com as abas + ações da aba atual; a apostila abre dentro do guia em modo leitura
-   (iframe carregado só na primeira visita) — o Modo Estudo fica na apostila aberta em nova aba. Endereços diretos: #pacotes, #checklist, #videos e #apostila.
+   (iframe carregado só na primeira visita) — o Modo Estudo fica na apostila aberta em nova aba. Endereços diretos: #pacotes, #checklist, #videos, #apostila e #admin.
    Ao trocar de aba dispara o evento "ff:aba" (detail.aba) no document. */
 (() => {
   const PDF = '/downloads/Apostila-do-Consultor-Faktory-Flow.pdf';
@@ -20,6 +21,7 @@
     planilha: svg('<path d="M4 3h12l4 4v14H4z"/><path d="M16 3v5h5M8 12h8M8 16h8M12 9v10"/>'),
     externo: svg('<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>'),
     email: svg('<rect x="2" y="4" width="20" height="16" rx="2"/><path d="m3 6 9 7 9-7"/>'),
+    admin: svg('<path d="M3 3v18h18"/><rect x="7" y="12" width="3" height="5" rx="1"/><rect x="12" y="8" width="3" height="9" rx="1"/><rect x="17" y="5" width="3" height="12" rx="1"/>'),
     estudo: svg('<path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v17H6.5A2.5 2.5 0 0 1 4 17.5z"/><path d="M4 17.5A2.5 2.5 0 0 1 6.5 15H20"/><path d="M9 7h7M9 10h5"/>'),
   };
   const ABAS = [
@@ -28,6 +30,7 @@
     { id: 'checklist', rotulo: 'Checklist' },
     { id: 'videos', rotulo: 'Vídeos de fluxo' },
     { id: 'apostila', rotulo: 'Apostila' },
+    { id: 'admin', rotulo: 'Painel', titulo: 'Painel do administrador: progresso e problemas dos checklists de todos os usuários', soAdmin: true },
   ];
 
   /* ---------- Cabeçalho com abas ---------- */
@@ -35,7 +38,7 @@
   topo.className = 'ab-topo';
   topo.innerHTML = `
     <div class="ab-abas" role="tablist" aria-label="Conteúdo">
-      ${ABAS.map((a) => `<button type="button" class="ab-aba" role="tab" id="aba-${a.id}" aria-controls="painel-${a.id}" data-aba="${a.id}" aria-label="${a.rotulo}" title="${a.rotulo}">${icone[a.id]}<span>${a.rotulo}</span></button>`).join('')}
+      ${ABAS.map((a) => `<button type="button" class="ab-aba" role="tab" id="aba-${a.id}" aria-controls="painel-${a.id}" data-aba="${a.id}" aria-label="${a.titulo || a.rotulo}" title="${a.titulo || a.rotulo}"${a.soAdmin ? ' hidden data-so-admin' : ''}>${icone[a.id]}<span>${a.rotulo}</span></button>`).join('')}
     </div>
     <div class="ab-acoes">
       <a class="ab-btn ab-btn--destaque" href="/apostila" target="_blank" rel="noopener" data-so-apostila hidden aria-label="Estudar em nova aba" title="Grifos, anotações e checklist ficam disponíveis na apostila aberta em nova aba">${icone.estudo}<span>Estudar em nova aba</span>${icone.externo}</a>
@@ -58,7 +61,7 @@
   const paineis = { guia: criarPainel('guia', 'div') };
   while (topo.nextSibling) paineis.guia.appendChild(topo.nextSibling);
   main.appendChild(paineis.guia);
-  for (const id of ['pacotes', 'checklist', 'videos', 'apostila']) {
+  for (const id of ['pacotes', 'checklist', 'videos', 'apostila', 'admin']) {
     paineis[id] = criarPainel(id);
     paineis[id].hidden = true;
     main.appendChild(paineis[id]);
@@ -79,11 +82,15 @@
     checklist: navItem('checklist', 'Checklist'),
     videos: navItem('videos', 'Vídeos de fluxo'),
     apostila: navItem('apostila', 'Apostila do Consultor'),
+    admin: navItem('admin', 'Painel do administrador'),
   };
+  navs.admin.hidden = true;
+  navs.admin.dataset.soAdmin = '';
   const modulos = secao('Módulos');
   (modulos ? modulos.nextElementSibling : sidebar.lastElementChild).after(navs.pacotes);
   navs.pacotes.after(navs.checklist);
   navs.checklist.after(navs.videos);
+  navs.videos.after(navs.admin);
   const referencia = secao('Referência');
   (referencia ? referencia.nextElementSibling : sidebar.lastElementChild).after(navs.apostila);
 
@@ -108,7 +115,7 @@
     });
     topo.querySelectorAll('[data-so-apostila]').forEach((el) => { el.hidden = aba !== 'apostila'; });
     topo.querySelectorAll('[data-so-pacotes]').forEach((el) => { el.hidden = aba !== 'pacotes'; });
-    topo.querySelectorAll('[data-so-guia]').forEach((el) => { el.hidden = aba === 'pacotes' || aba === 'checklist' || aba === 'videos'; });
+    topo.querySelectorAll('[data-so-guia]').forEach((el) => { el.hidden = aba === 'pacotes' || aba === 'checklist' || aba === 'videos' || aba === 'admin'; });
     sidebar.querySelectorAll('.nav-item').forEach((n) => {
       if (aba !== 'guia') n.classList.toggle('active', n.dataset.abaNav === aba);
       else if (n.dataset.abaNav) n.classList.remove('active');
@@ -138,9 +145,11 @@
   topo.querySelector('.ab-abas').addEventListener('keydown', (e) => {
     if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(e.key)) return;
     e.preventDefault();
-    const i = ABAS.findIndex((a) => a.id === atual);
-    const proximo = { ArrowLeft: i - 1, ArrowRight: i + 1, Home: 0, End: ABAS.length - 1 }[e.key];
-    irPara(ABAS[(proximo + ABAS.length) % ABAS.length].id);
+    // só as abas visíveis (a do administrador fica fora para os outros perfis)
+    const visiveis = ABAS.filter((a) => !topo.querySelector(`[data-aba="${a.id}"]`).hidden);
+    const i = visiveis.findIndex((a) => a.id === atual);
+    const proximo = { ArrowLeft: i - 1, ArrowRight: i + 1, Home: 0, End: visiveis.length - 1 }[e.key];
+    irPara(visiveis[(proximo + visiveis.length) % visiveis.length].id);
     topo.querySelector(`[data-aba="${atual}"]`).focus();
   });
 

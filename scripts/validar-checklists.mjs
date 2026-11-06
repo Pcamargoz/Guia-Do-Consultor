@@ -18,7 +18,7 @@ const ler = (p) => readFile(p, 'utf8');
 const ultimoScript = (html) => html.slice(html.lastIndexOf('<script>') + 8, html.lastIndexOf('</script>'));
 
 const manifest = JSON.parse(await ler(path.join(PUB, 'manifest.json')));
-checar(manifest.grupos?.length === 4, 'manifest tem os 4 grupos');
+checar(manifest.grupos?.length === 3, 'manifest tem os 3 grupos');
 const gruposValidos = new Set(manifest.grupos.map((g) => g.id));
 
 /* Regra de download: lida do próprio arquivo da rota */
@@ -38,9 +38,8 @@ for (const i of manifest.itens) {
   const caminho = path.join(PUB, i.arquivo);
   if (!checar(existsSync(caminho), `${rotulo}: arquivo existe`)) continue;
   const html = await ler(caminho);
-  try { new Function(i.grupo === 'qa' ? html.slice(html.indexOf('<script>\n/* =') + 8, html.lastIndexOf('</script>')) : ultimoScript(html)); ok.push(`${rotulo}: script válido`); }
+  try { new Function(ultimoScript(html)); ok.push(`${rotulo}: script válido`); }
   catch (e) { falhas.push(`${rotulo}: script com erro — ${e.message}`); }
-  if (i.grupo === 'qa') continue;
 
   const corpo = html.slice(0, html.lastIndexOf("<script>"));
   const dataIds = [...corpo.matchAll(/data-id="([^"]+)"/g)].map((m) => m[1]);

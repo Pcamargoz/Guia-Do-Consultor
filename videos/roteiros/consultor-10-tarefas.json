@@ -154,11 +154,11 @@
       "id": "13",
       "cena": "alertas",
       "itens": [
-        "A busca Ctrl+K não encontra o módulo: abra pelo menu de módulos.",
+        "Defeito reportado: a busca Ctrl+K ainda não encontra o módulo. Enquanto isso, abra pelo menu de módulos.",
         "O cartão novo não tem responsável: atribua sempre.",
         "O autor de comentário pode aparecer como Usuário."
       ],
-      "fala": "Três cuidados. A busca do control K não encontra o módulo de tarefas: abra pelo menu de módulos. Todo cartão novo nasce sem responsável: atribua sempre. E o autor de um comentário pode aparecer apenas como usuário."
+      "fala": "Três cuidados. A busca do control K ainda não encontra o módulo de tarefas, um defeito já reportado: enquanto isso, abra pelo menu de módulos. Todo cartão novo nasce sem responsável: atribua sempre. E o autor de um comentário pode aparecer apenas como usuário."
     },
     {
       "id": "14",

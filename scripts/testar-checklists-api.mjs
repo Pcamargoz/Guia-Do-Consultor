@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 import crypto from 'node:crypto';
-/* Teste de ponta a ponta da API de progresso e anexos dos checklists.
+/* Teste de ponta a ponta da API de progresso e anexos dos checklists e do painel do administrador.
    Precisa do app rodando (docker compose up -d → http://localhost:8081) e do .env com o admin local.
    Uso: node scripts/testar-checklists-api.mjs   (TESTE_URL troca o endereço). Cria 2 usuários de teste e os remove no fim. */
 const BASE = process.env.TESTE_URL || 'http://localhost:8081';
@@ -72,6 +72,20 @@ const linha = r.d.itens.find((i) => i.chave === CH);
 t('lista: pct e nº de imagens', linha && linha.pct === 40 && linha.anexos === 7, JSON.stringify(r.d));
 r = await req(B, 'GET', '/api/checklists-progresso?lista=1');
 t('lista de B vazia', r.d.itens.length === 0);
+
+// Painel do administrador: só o perfil Administrador lê o progresso e os problemas de todos
+t('painel: estagiário → 403', (await req(A, 'GET', '/api/checklists-admin')).s === 403);
+t('painel: sem login → 401', (await req(null, 'GET', '/api/checklists-admin')).s === 401);
+t('painel: imagem sem ser admin → 403', (await req(B, 'GET', `/api/checklists-admin?anexo=${idAnexo}`)).s === 403);
+r = await req(admin.cookie, 'GET', '/api/checklists-admin');
+const idA = ids[0];
+const progA = r.d.progresso?.find((p) => p.usuario === idA && p.chave === CH);
+t('painel: admin vê o progresso de A', r.s === 200 && progA && progA.pct === 40 && progA.marcados === 2 && progA.anexos === 7, JSON.stringify(progA));
+const probA = r.d.problemas?.find((p) => p.usuario === idA && p.chave === CH);
+t('painel: admin vê o problema de A com o registro', probA && probA.item === 'f1-2' && probA.problema === 'não abriu' && probA.anexos.length === 1, JSON.stringify(probA));
+t('painel: resumo não traz os bytes das imagens', !JSON.stringify(r.d).includes('"dados"'));
+r = await req(admin.cookie, 'GET', `/api/checklists-admin?anexo=${idAnexo}`);
+t('painel: admin abre a imagem de A', r.s === 200 && r.h.get('content-type') === 'image/png' && Buffer.compare(r.d, png) === 0);
 t('remove 1 imagem', (await req(A, 'DELETE', `/api/checklists-anexos?id=${idAnexo}`)).s === 200);
 t('imagem removida some', (await req(A, 'GET', `/api/checklists-anexos?id=${idAnexo}`)).s === 404);
 r = await req(A, 'DELETE', `/api/checklists-progresso?chave=${CH}`);

@@ -1,139 +1,139 @@
 WEBVTT
 
-00:00:00.000 --> 00:00:02.402
+00:00:01.100 --> 00:00:03.824
 Depois do pedido vem a nota fiscal.
 
-00:00:02.402 --> 00:00:04.963
+00:00:03.824 --> 00:00:06.781
 Neste vídeo, vamos faturar um pedido,
 
-00:00:04.963 --> 00:00:10.908
+00:00:06.781 --> 00:00:12.803
 conferir a nota e entender o que é do consultor e o que é decisão do responsável fiscal.
 
-00:00:10.908 --> 00:00:16.664
+00:00:12.803 --> 00:00:18.897
 O ponto de partida é um pedido em aberto, já com itens, parcelas e CFOP certos.
 
-00:00:16.664 --> 00:00:19.761
+00:00:19.197 --> 00:00:22.607
 Faturar abre uma nota nova ligada ao pedido.
 
-00:00:19.761 --> 00:00:22.118
+00:00:22.607 --> 00:00:25.250
 Você salva, confere e finaliza.
 
-00:00:22.118 --> 00:00:28.494
+00:00:25.250 --> 00:00:32.064
 A transmissão para a SEFAZ é a última etapa, e ela não é do consultor: é do responsável fiscal.
 
-00:00:28.494 --> 00:00:29.797
+00:00:32.064 --> 00:00:33.579
 Primeira regra.
 
-00:00:29.797 --> 00:00:37.259
+00:00:33.579 --> 00:00:41.589
 Faturar abre uma nova NF-e com empresa, cliente, CFOP, condição e parcelas do pedido,
 
-00:00:37.259 --> 00:00:39.712
+00:00:41.589 --> 00:00:44.255
 e o número do pedido fica vinculado.
 
-00:00:39.712 --> 00:00:44.689
+00:00:44.255 --> 00:00:49.044
 A nota vem vazia até você importar os itens, com recalcular impostos.
 
-00:00:44.689 --> 00:00:45.720
+00:00:49.044 --> 00:00:51.020
 Segunda.
 
-00:00:45.720 --> 00:00:51.306
+00:00:51.020 --> 00:00:56.898
 Assim que a nota é salva, o pedido passa a Faturado, mesmo com a nota ainda em aberto.
 
-00:00:51.306 --> 00:00:56.630
+00:00:56.898 --> 00:01:02.377
 Por isso, o status real da nota você confere em Faturamento, Notas Fiscais.
 
-00:00:56.630 --> 00:00:57.658
+00:01:02.377 --> 00:01:03.582
 Terceira.
 
-00:00:57.658 --> 00:01:02.409
+00:01:03.582 --> 00:01:08.397
 Para finalizar, a empresa precisa de um almoxarifado central ativo,
 
-00:01:02.409 --> 00:01:05.368
+00:01:08.397 --> 00:01:11.659
 ou o projeto precisa de um local de estoque.
 
-00:01:05.368 --> 00:01:07.746
+00:01:11.659 --> 00:01:14.435
 Sem isso, o Finalizar NF recusa.
 
-00:01:07.746 --> 00:01:10.682
+00:01:14.435 --> 00:01:16.850
 E, ao finalizar, a nota baixa o estoque.
 
-00:01:10.682 --> 00:01:11.525
+00:01:16.850 --> 00:01:18.007
 Quarta.
 
-00:01:11.525 --> 00:01:17.272
+00:01:18.007 --> 00:01:24.359
 A lista de notas abre filtrada em Em Aberto, e os cartões de totais seguem esse filtro.
 
-00:01:17.272 --> 00:01:22.214
+00:01:24.359 --> 00:01:29.468
 Uma nota finalizada só aparece quando você troca o filtro de status.
 
-00:01:22.214 --> 00:01:26.331
+00:01:29.468 --> 00:01:33.902
 Na prática: no menu do pedido em aberto, clique em Faturar.
 
-00:01:26.331 --> 00:01:31.729
+00:01:34.202 --> 00:01:40.219
 A nova NF-e abre com o diálogo para importar os itens do pedido.
 
-00:01:31.729 --> 00:01:35.086
+00:01:40.219 --> 00:01:43.672
 Deixe marcado recalcular impostos e importe.
 
-00:01:35.086 --> 00:01:39.344
+00:01:43.752 --> 00:01:48.516
 Repare na faixa de homologação: a nota não tem validade fiscal.
 
-00:01:39.344 --> 00:01:45.578
+00:01:48.516 --> 00:01:55.278
 E aqui está o aviso de impostos não calculados, com o motivo: falta o CST de PIS e COFINS na NCM.
 
-00:01:45.578 --> 00:01:49.329
+00:01:55.278 --> 00:01:59.074
 Mesmo assim, dá para salvar em Salvar e Permanecer.
 
-00:01:49.329 --> 00:01:54.948
+00:01:59.074 --> 00:02:05.323
 Em Faturamento, Notas Fiscais, aba NF-e, a nota aparece em aberto.
 
-00:01:54.948 --> 00:01:59.508
+00:02:05.323 --> 00:02:10.362
 No menu dela estão o Finalizar NF e o Preview da DANFE, para conferir.
 
-00:01:59.508 --> 00:02:02.981
+00:02:10.362 --> 00:02:13.914
 E, ao lado, o avião de papel: esse é o Transmitir.
 
-00:02:02.981 --> 00:02:06.670
+00:02:13.914 --> 00:02:17.977
 Com a autorização, clique em Finalizar NF e confirme.
 
-00:02:06.670 --> 00:02:13.233
+00:02:17.977 --> 00:02:24.840
 A nota fica só para visualização, e o pedido sai da lista de em aberto: agora ele está faturado.
 
-00:02:13.233 --> 00:02:19.129
+00:02:24.920 --> 00:02:31.188
 E a finalização mexe no estoque: nasce uma saída do tipo expedição, com origem na nota,
 
-00:02:19.129 --> 00:02:21.341
+00:02:31.188 --> 00:02:33.624
 no almoxarifado central.
 
-00:02:21.341 --> 00:02:24.754
+00:02:33.704 --> 00:02:37.533
 Atenção: nesta versão, ela baixa mesmo sem saldo.
 
-00:02:24.754 --> 00:02:26.965
+00:02:37.533 --> 00:02:39.996
 Aqui o item ficou negativo.
 
-00:02:26.965 --> 00:02:30.236
+00:02:39.996 --> 00:02:43.421
 Por isso, confira o saldo antes de finalizar.
 
-00:02:30.236 --> 00:02:31.848
+00:02:43.421 --> 00:02:45.254
 Três cuidados.
 
-00:02:31.848 --> 00:02:37.985
+00:02:45.254 --> 00:02:51.890
 O avião de papel na linha da nota é o Transmitir, e ele é irreversível, mesmo em homologação.
 
-00:02:37.985 --> 00:02:41.046
+00:02:51.890 --> 00:02:55.391
 O Excluir fica no mesmo menu do Ver Timeline.
 
-00:02:41.046 --> 00:02:47.164
+00:02:55.391 --> 00:03:01.623
 E transmitir, cancelar ou inutilizar numeração é sempre decisão do responsável fiscal.
 
-00:02:47.164 --> 00:02:50.928
+00:03:01.623 --> 00:03:05.652
 Resumindo: importe os itens com recalcular impostos.
 
-00:02:50.928 --> 00:02:53.746
+00:03:05.652 --> 00:03:08.730
 A nota salva já deixa o pedido faturado.
 
-00:02:53.746 --> 00:02:56.480
+00:03:08.730 --> 00:03:11.643
 E a transmissão é do responsável fiscal.
 
-00:02:56.480 --> 00:03:01.074
+00:03:11.643 --> 00:03:16.375
 No próximo vídeo, o financeiro: títulos, baixa e fluxo de caixa.

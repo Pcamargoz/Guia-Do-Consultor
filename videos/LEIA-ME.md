@@ -2,11 +2,13 @@
 
 Vídeos animados com narração e legenda que explicam cada fluxo do Faktory Flow: o conceito, as regras de negócio e as telas reais do ambiente de teste. Ficam na aba **Vídeos de fluxo** do Guia e dentro do checklist de cada fluxo.
 
-> **Retomando em outra sessão do Claude Code?** Leia primeiro [Estado e plano](#estado-e-plano-para-retomar), depois [Como retomar](#como-retomar-passo-a-passo). A narração e o visual de cada trecho dos 12 vídeos estão em [ROTEIROS.md](ROTEIROS.md).
+> **Retomando em outra sessão do Claude Code?** Leia primeiro [Estado e plano](#estado-e-plano-para-retomar), depois [Como retomar](#como-retomar-passo-a-passo). A narração e o visual de cada trecho dos 12 vídeos estão em [ROTEIROS.md](ROTEIROS.md). O que ainda dá para melhorar na próxima refação está em [MELHORIAS-PENDENTES.md](MELHORIAS-PENDENTES.md).
 
 ## Estado e plano (para retomar)
 
-> **23/10/2026, fim do dia:** os 12 vídeos estão publicados com o motor v4. O **motor v5 está pronto e é o padrão** do `src/Root.tsx` (o v4 ficou como `<id>-v4`), mas **nenhum vídeo foi refeito**: o usuário pediu para refazer só com ordem dele. Quando ele mandar, rode a fila normalmente (`node scripts/lote.mjs <ids…>`); a narração em cache é reaproveitada. Depois de cada vídeo: `node scripts/qa.mjs ../public/videos/<id>.mp4 --folha out/<id>-folha.jpg`.
+> **25/10/2026:** os **12 vídeos publicados são do motor v6** ("sem engasgos", padrão do `src/Root.tsx`; o v5 e o v4 ficaram como `<id>-v5` e `<id>-v4`), com a voz L a 0,9 e o ritmo mais lento pedido no documento "Melhorias vídeos fluxo checklist consultor" (o usuário ouviu 16 vozes femininas e manteve a voz L). Para refazer: `node scripts/lote.mjs <ids…>` (narração, conferência por transcrição, render, engasgos; a narração em cache é reaproveitada; `SEM_CONFERENCIA=1` pula a conferência num re-render). A conferência usa o Python do VoiceStudio (`F:\VoiceStudio\project\.venv`, ou `VOICESTUDIO_PY`). O que o v6 corrige e por quê: `docs/motor-de-video/v6-sem-engasgos.md` no Harness.
+>
+> Testar o motor sem refazer vídeo: `node scripts/remotion-em-partes.mjs <id> out/teste.mp4 --de <s> --ate <s>` (só o trecho, sem som) e `node scripts/engasgos.mjs <id> out/teste.mp4 --inicio <s>`.
 
 Atualizado em 23/10/2026. Estação nova: `C:\Users\pedro\OneDrive\Desktop\Guia-Do-Consultor` (RTX 3050, VoiceStudio 0.5.6 com o modelo OmniVoice na GPU). O usuário aprovou a **voz L fixa** e pediu o **motor v4** (motions ousados, telas avançadas) nos 12 vídeos, o piloto incluído, sem prévia.
 

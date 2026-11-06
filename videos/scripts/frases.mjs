@@ -4,7 +4,7 @@ import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 
-export const PAUSA_ENTRE_FRASES = 0.28; // s de silêncio que narrar.mjs põe entre as frases de um trecho
+export const PAUSA_ENTRE_FRASES = 0.5; // s de silêncio entre as frases de um trecho (0,28 até 24/10/2026: o pedido foi um ritmo mais lento, para fixar o conteúdo)
 
 // Pronúncia: a fala usa a forma escrita do roteiro; aqui só ajustes para o motor ler certo (não aparecem na legenda).
 const PRONUNCIA = [[/\bCFOP\b/g, 'cê-efe-ó-pê'], [/\bPV\b/g, 'pê-vê'], [/\bNF-e\b/g, 'nota fiscal eletrônica']];

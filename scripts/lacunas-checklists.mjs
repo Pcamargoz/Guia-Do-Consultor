@@ -5,10 +5,7 @@ import { writeFile, mkdir } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import { CHECKLISTS, ONBOARDING } from './dados-checklists-estagiarios.mjs';
-import { CONSULTOR } from './dados-checklist-consultor.mjs';
-import { FLUXOS } from './dados-fluxos-consultor.mjs';
-import { FLUXOS_OPERACAO } from './dados-fluxos-operacao.mjs';
-import { FLUXOS_GESTAO } from './dados-fluxos-gestao.mjs';
+import { CHECKLISTS_IMPLANTACAO } from './dados-checklists-implantacao.mjs';
 
 const RAIZ = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 const ROTULO = { d: 'doc', n: 'n/v' };
@@ -27,7 +24,7 @@ function lacunas(c) {
   return blocos;
 }
 
-const todos = [...CHECKLISTS, ...[CONSULTOR, ...FLUXOS, ...FLUXOS_OPERACAO, ...FLUXOS_GESTAO], ONBOARDING];
+const todos = [...CHECKLISTS, ...CHECKLISTS_IMPLANTACAO, ONBOARDING];
 let total = 0;
 const secoes = [];
 for (const c of todos) {

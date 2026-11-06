@@ -2,8 +2,8 @@
  "grupos": [
   {
    "id": "consultor",
-   "nome": "Fluxos do consultor",
-   "desc": "Testes funcionais ponta a ponta: faça, confira o reflexo no módulo seguinte e anote os registros."
+   "nome": "Checklists de implantação do consultor",
+   "desc": "Um roteiro prático por módulo para fazer junto com o cliente: entre no módulo e siga o fluxo real, do primeiro documento aos reflexos nos outros módulos. Cada passo diz o que fazer, o que explicar ao cliente e o que conferir na tela."
   },
   {
    "id": "fluxos",
@@ -14,133 +14,172 @@
    "id": "estagiario",
    "nome": "Trilha do estagiário",
    "desc": "Checklists curtos para a integração. Comece pelo onboarding (00) e siga a numeração."
-  },
-  {
-   "id": "qa",
-   "nome": "Validação dos módulos (QA)",
-   "desc": "Planos completos de validação e homologação de cada módulo, com os achados já registrados."
   }
  ],
  "itens": [
   {
    "grupo": "consultor",
-   "id": "fluxo-completo",
-   "area": "Teste de fluxo",
-   "titulo": "Teste do fluxo completo: do pedido à gestão",
-   "resumo": "Executar o ciclo completo com registros \"TESTE FLUXO CONSULTOR\" — lead, pedido, medição, OP, nota, expedição, títulos e indicadores — confirmando em cada passagem que o módulo seguinte recebeu a informação, e registrar os bloqueios e defeitos encontrados.",
-   "arquivo": "consultores/teste-fluxo-pedido-ate-gestao.html",
-   "chave": "ff-consultor:fluxo-completo",
-   "etapas": 50,
-   "verificadas": 46
+   "id": "implantacao-fundacao",
+   "area": "Implantação · Fundação",
+   "titulo": "Implantação da Fundação: roteiro prático com o cliente",
+   "resumo": "Ao final, o cliente viu a própria empresa configurada em homologação, cada usuário entrando com o perfil certo e um pedido de teste salvo com o cliente, o produto, a condição de pagamento e o CFOP que ele mesmo cadastrou. O administrador do cliente sabe convidar um usuário, cadastrar um cliente e um produto e corrigir um cadastro recusado.",
+   "arquivo": "consultores/implantacao-01-fundacao.html",
+   "chave": "ff-consultor:implantacao-fundacao",
+   "etapas": 47,
+   "verificadas": 8
   },
   {
    "grupo": "consultor",
-   "id": "fluxo-suprimentos",
-   "area": "Fluxo de suprimentos",
-   "titulo": "Fluxo de suprimentos: da solicitação ao pagamento",
-   "resumo": "Provar que uma necessidade de material vira pedido de compra, entra no estoque pelo recebimento e gera o título a pagar, até o pagamento aparecer no saldo bancário e no fluxo de caixa.",
-   "arquivo": "consultores/fluxo-01-suprimentos.html",
-   "chave": "ff-consultor:fluxo-suprimentos",
-   "etapas": 29,
-   "verificadas": 28
+   "id": "implantacao-crm",
+   "area": "Implantação · CRM",
+   "titulo": "Implantação de CRM: roteiro prático com o cliente",
+   "resumo": "Ao final, o cliente terá visto um lead virar oportunidade, a oportunidade ganha virar pedido de venda em `Vendas > Pedidos de Venda` e o resultado aparecer nos painéis do CRM. Ele saberá repetir o caminho e conhecerá as três travas do fluxo: BANT e etapa de 60% para converter, item para ganhar e CFOP para gerar o pedido.",
+   "arquivo": "consultores/implantacao-02-crm.html",
+   "chave": "ff-consultor:implantacao-crm",
+   "etapas": 34,
+   "verificadas": 27
   },
   {
    "grupo": "consultor",
-   "id": "fluxo-servicos",
-   "area": "Fluxo de serviços",
-   "titulo": "Fluxo de serviços de campo: da medição à assistência",
-   "resumo": "Provar que um pedido de venda vira medição aprovada, instalação concluída com checklist, vistoria com aceite e assistência técnica resolvida, e conferir onde cada serviço aparece na gestão de campo.",
-   "arquivo": "consultores/fluxo-02-servicos-campo.html",
-   "chave": "ff-consultor:fluxo-servicos",
-   "etapas": 26,
-   "verificadas": 26
+   "id": "implantacao-integracao-cem",
+   "area": "Implantação · Integração CEM",
+   "titulo": "Implantação da Integração CEM: roteiro prático com o cliente",
+   "resumo": "Ao final, o cliente importou sozinho uma obra fechada no CEM e sabe conferir no pedido gerado os itens, os preços, o desconto, os impostos, o cliente e a obra. Ele sabe o que trava uma importação, onde corrigir (no CEM ou nos Padrões) e o que acontece quando o orçamento é revisado depois de integrado.",
+   "arquivo": "consultores/implantacao-03-integracao-cem.html",
+   "chave": "ff-consultor:implantacao-integracao-cem",
+   "etapas": 47,
+   "verificadas": 0
   },
   {
    "grupo": "consultor",
-   "id": "fluxo-comercial",
-   "area": "Fluxo comercial",
-   "titulo": "Fluxo comercial: do lead ao pedido de venda",
-   "resumo": "Provar que um contato vira oportunidade, proposta e, por fim, pedido de venda — e identificar o que precisa estar configurado (alçada, condição de pagamento, plano de contas, CFOP) para a passagem final funcionar.",
-   "arquivo": "consultores/fluxo-03-comercial.html",
-   "chave": "ff-consultor:fluxo-comercial",
-   "etapas": 31,
-   "verificadas": 30
+   "id": "implantacao-vendas",
+   "area": "Implantação · Vendas",
+   "titulo": "Implantação de Vendas: roteiro prático com o cliente",
+   "resumo": "Ao final, o cliente criou e ajustou um pedido, viu um desconto passar pela aprovação, gerou títulos num pedido e faturou outro, e encontrou o título e a nota em cada módulo. Ele sabe por que o sistema recusa cancelar um pedido faturado ou com títulos e qual a ordem para desfazer.",
+   "arquivo": "consultores/implantacao-04-vendas.html",
+   "chave": "ff-consultor:implantacao-vendas",
+   "etapas": 44,
+   "verificadas": 14
   },
   {
    "grupo": "consultor",
-   "id": "fluxo-estoque",
-   "area": "Fluxo de estoque",
-   "titulo": "Fluxo de estoque: movimento, transferência, reserva, inventário e empréstimo",
-   "resumo": "Provar que cada operação de estoque muda o saldo (e o disponível) do jeito certo, respeita as travas (saldo, reserva, inventário, mês encerrado) e deixa rastro no extrato — e que o balanço fecha ao final.",
-   "arquivo": "consultores/fluxo-04-estoque.html",
-   "chave": "ff-consultor:fluxo-estoque",
-   "etapas": 37,
-   "verificadas": 22
+   "id": "implantacao-faturamento",
+   "area": "Implantação · Faturamento",
+   "titulo": "Implantação de Faturamento: roteiro prático com o cliente",
+   "resumo": "Ao final, o faturista do cliente terá visto um pedido virar nota autorizada em homologação, os títulos nascendo da nota e uma segunda nota cancelada na ordem certa. Ele saberá ler o quadro de impostos, o pré-voo e a rejeição, e saberá o que só o responsável fiscal pode fazer.",
+   "arquivo": "consultores/implantacao-05-faturamento.html",
+   "chave": "ff-consultor:implantacao-faturamento",
+   "etapas": 49,
+   "verificadas": 16
   },
   {
    "grupo": "consultor",
-   "id": "fluxo-producao",
-   "area": "Fluxo de produção",
-   "titulo": "Fluxo de produção: estrutura, ordem, apontamento e entrada do produto acabado",
-   "resumo": "Provar que uma OP nasce com processo e materiais corretos, baixa os insumos, registra as horas, e entrega o produto acabado no estoque com custo real — e conhecer os alertas que travam a conclusão.",
-   "arquivo": "consultores/fluxo-05-producao.html",
-   "chave": "ff-consultor:fluxo-producao",
-   "etapas": 32,
-   "verificadas": 21
-  },
-  {
-   "grupo": "consultor",
-   "id": "fluxo-expedicao",
-   "area": "Fluxo de expedição",
-   "titulo": "Fluxo de expedição: da carga à entrega, ocorrência e devolução",
-   "resumo": "Provar que um pedido faturado vira carga, passa pelos checkpoints do pátio e é entregue com histórico — e que ocorrências e devoluções devolvem o pedido à fila sem duplicar saldo.",
-   "arquivo": "consultores/fluxo-06-expedicao.html",
-   "chave": "ff-consultor:fluxo-expedicao",
-   "etapas": 24,
-   "verificadas": 11
-  },
-  {
-   "grupo": "consultor",
-   "id": "fluxo-faturamento",
-   "area": "Fluxo de faturamento e fiscal",
-   "titulo": "Fluxo de faturamento e fiscal: do pedido à nota finalizada",
-   "resumo": "Provar que o pedido vira nota com cliente, CFOP, parcelas e impostos corretos, que a finalização trava a nota e atualiza pedido e estoque, e reconhecer o que só o responsável fiscal pode fazer.",
-   "arquivo": "consultores/fluxo-07-faturamento-fiscal.html",
-   "chave": "ff-consultor:fluxo-faturamento",
-   "etapas": 27,
-   "verificadas": 20
-  },
-  {
-   "grupo": "consultor",
-   "id": "fluxo-financeiro",
-   "area": "Fluxo financeiro",
-   "titulo": "Fluxo financeiro: títulos, baixa, saldos e fluxo de caixa",
-   "resumo": "Provar que os títulos nascem do pedido (ou da nota/recebimento), que a baixa move o saldo da conta e o fluxo de caixa, e que os painéis de gestão mostram o mesmo número.",
-   "arquivo": "consultores/fluxo-08-financeiro.html",
-   "chave": "ff-consultor:fluxo-financeiro",
-   "etapas": 26,
-   "verificadas": 25
-  },
-  {
-   "grupo": "consultor",
-   "id": "fluxo-projetos",
-   "area": "Fluxo de projetos e obras",
-   "titulo": "Fluxo de projetos e obras: cadastro, estágios, painéis e diário",
-   "resumo": "Provar que a obra de teste recebe os documentos dos outros módulos, que estágios e etapas filtram as listagens e que os painéis (financeiro, progresso, resultado) mostram números coerentes.",
-   "arquivo": "consultores/fluxo-09-projetos-obra.html",
-   "chave": "ff-consultor:fluxo-projetos",
-   "etapas": 23,
+   "id": "implantacao-fiscal",
+   "area": "Implantação · Fiscal",
+   "titulo": "Implantação do Fiscal: roteiro prático com o cliente e o contador",
+   "resumo": "Ao final, o cliente e o contador terão visto cada operação típica (venda interna, interestadual, a não contribuinte, com ST, serviço) calculada sem aviso no item e com valores conferidos. Eles saberão onde cada resposta do contador entra no sistema e como ler o aviso de imposto não calculado.",
+   "arquivo": "consultores/implantacao-06-fiscal.html",
+   "chave": "ff-consultor:implantacao-fiscal",
+   "etapas": 44,
    "verificadas": 6
   },
   {
    "grupo": "consultor",
-   "id": "fluxo-tarefas",
-   "area": "Fluxo de tarefas",
-   "titulo": "Fluxo de tarefas: quadro, cartão, regras e colaboração",
-   "resumo": "Provar que um quadro respeita as regras de lista, WIP, status e dependência por todas as telas, e que a colaboração (comentário, menção, anexo) funciona sem duplicar nem vazar entre empresas.",
-   "arquivo": "consultores/fluxo-10-tarefas.html",
-   "chave": "ff-consultor:fluxo-tarefas",
-   "etapas": 24,
+   "id": "implantacao-financeiro",
+   "area": "Implantação · Financeiro",
+   "titulo": "Implantação do Financeiro: roteiro prático com o cliente",
+   "resumo": "Ao final, o financeiro do cliente terá visto um título nascer do pedido e outro da nota, recebido um deles em duas partes, pago um título da compra e conferido o mesmo dinheiro em Saldos, Extrato, Fluxo de Caixa e DRE. Ele saberá estornar uma baixa e saberá o que o sistema recusa.",
+   "arquivo": "consultores/implantacao-07-financeiro.html",
+   "chave": "ff-consultor:implantacao-financeiro",
+   "etapas": 48,
+   "verificadas": 23
+  },
+  {
+   "grupo": "consultor",
+   "id": "implantacao-compras",
+   "area": "Implantação · Compras",
+   "titulo": "Implantação de Compras: roteiro prático com o cliente",
+   "resumo": "Ao final, o cliente viu uma necessidade de material virar pedido de compra aprovado, nota de recebimento e título a pagar, e sabe repetir cada passo sozinho. Ele também viu o sistema recusar o que não pode: preço zero, item sem vencedor, autor aprovando o próprio pedido e cancelamento com nota ativa.",
+   "arquivo": "consultores/implantacao-08-compras.html",
+   "chave": "ff-consultor:implantacao-compras",
+   "etapas": 47,
+   "verificadas": 16
+  },
+  {
+   "grupo": "consultor",
+   "id": "implantacao-recebimento",
+   "area": "Implantação · Recebimento",
+   "titulo": "Implantação de Recebimento: roteiro prático com o cliente",
+   "resumo": "Ao final, o cliente viu uma nota de fornecedor entrar, ser vinculada ao pedido, conferida e finalizada, e viu nascer a entrada no estoque e o título a pagar. Ele sabe tratar entrega parcial, cancelar uma nota e gerar a devolução, e sabe o que o sistema recusa.",
+   "arquivo": "consultores/implantacao-09-recebimento.html",
+   "chave": "ff-consultor:implantacao-recebimento",
+   "etapas": 44,
+   "verificadas": 14
+  },
+  {
+   "grupo": "consultor",
+   "id": "implantacao-estoque",
+   "area": "Implantação · Estoque",
+   "titulo": "Implantação de Estoque: roteiro prático com o cliente",
+   "resumo": "Ao final, o cliente sabe que o saldo nunca é digitado: ele nasce de movimentos, e cada um deixa rastro no extrato. Ele viu o saldo inicial entrar, as travas de saldo, reserva e inventário funcionarem e o balanço do produto fechar em quantidade e valor.",
+   "arquivo": "consultores/implantacao-10-estoque.html",
+   "chave": "ff-consultor:implantacao-estoque",
+   "etapas": 49,
+   "verificadas": 26
+  },
+  {
+   "grupo": "consultor",
+   "id": "implantacao-producao",
+   "area": "Implantação · Produção",
+   "titulo": "Implantação de Produção: roteiro prático com o cliente",
+   "resumo": "Ao final, o cliente terá visto uma OP nascer do pedido com etapas e materiais da estrutura, baixar os insumos, registrar o início do trabalho e creditar o produto acabado no estoque com custo. Ele saberá repetir o caminho e conhecerá os alertas que travam a conclusão.",
+   "arquivo": "consultores/implantacao-11-producao.html",
+   "chave": "ff-consultor:implantacao-producao",
+   "etapas": 33,
+   "verificadas": 23
+  },
+  {
+   "grupo": "consultor",
+   "id": "implantacao-servicos",
+   "area": "Implantação · Serviços",
+   "titulo": "Implantação de Serviços: roteiro prático com o cliente",
+   "resumo": "Ao final, o cliente terá visto um pedido virar medição aprovada, instalação concluída com checklist, vistoria com aceite e assistência técnica resolvida, todas ligadas ao mesmo pedido e cliente. Ele saberá que as passagens são por botão e em que ordem registrar os aceites.",
+   "arquivo": "consultores/implantacao-12-servicos.html",
+   "chave": "ff-consultor:implantacao-servicos",
+   "etapas": 34,
+   "verificadas": 31
+  },
+  {
+   "grupo": "consultor",
+   "id": "implantacao-expedicao",
+   "area": "Implantação · Expedição",
+   "titulo": "Implantação de Expedição: roteiro prático com o cliente",
+   "resumo": "Ao final, o cliente terá visto um pedido faturado virar carga, passar pelos checkpoints do pátio e chegar a Entregue com histórico, e saberá repetir sozinho. Também terá visto o que acontece numa ocorrência bloqueante e numa devolução, e por que o saldo do estoque não volta sozinho.",
+   "arquivo": "consultores/implantacao-13-expedicao.html",
+   "chave": "ff-consultor:implantacao-expedicao",
+   "etapas": 37,
+   "verificadas": 13
+  },
+  {
+   "grupo": "consultor",
+   "id": "implantacao-projetos",
+   "area": "Implantação · Projetos",
+   "titulo": "Implantação de Projetos: roteiro prático com o cliente",
+   "resumo": "Ao final, o cliente terá visto uma obra de teste receber os documentos dos outros módulos e os painéis mostrarem números coerentes com eles. Saberá cadastrar uma obra, ligar o pedido antes de faturar e ler o Painel Financeiro de Projetos.",
+   "arquivo": "consultores/implantacao-14-projetos.html",
+   "chave": "ff-consultor:implantacao-projetos",
+   "etapas": 32,
+   "verificadas": 8
+  },
+  {
+   "grupo": "consultor",
+   "id": "implantacao-tarefas",
+   "area": "Implantação · Tarefas",
+   "titulo": "Implantação de Tarefas: roteiro prático com o cliente",
+   "resumo": "Ao final, o cliente terá montado um quadro da equipe, distribuído um cartão com responsável e Término Previsto e visto esse cartão chegar a Minhas Tarefas e ao Dashboard. Saberá comentar, mencionar, anexar e arquivar sem perder histórico.",
+   "arquivo": "consultores/implantacao-15-tarefas.html",
+   "chave": "ff-consultor:implantacao-tarefas",
+   "etapas": 35,
    "verificadas": 0
   },
   {
@@ -353,78 +392,6 @@
    "chave": "ff-estagiario:fluxo",
    "etapas": 17,
    "verificadas": 10
-  },
-  {
-   "grupo": "qa",
-   "id": "crm-v2",
-   "area": "CRM",
-   "titulo": "Validação do CRM",
-   "resumo": "Plano de validação com roteiros, critérios e achados registrados.",
-   "arquivo": "validacao-crm-v2-faktory-flow.html"
-  },
-  {
-   "grupo": "qa",
-   "id": "compras",
-   "area": "Compras",
-   "titulo": "Validação de Compras",
-   "resumo": "Plano de validação com roteiros, critérios e achados registrados.",
-   "arquivo": "validacao-compras-faktory-flow.html"
-  },
-  {
-   "grupo": "qa",
-   "id": "estoque",
-   "area": "Estoque",
-   "titulo": "Validação de Estoque",
-   "resumo": "Plano de validação com roteiros, critérios e achados registrados.",
-   "arquivo": "validacao-estoque-faktory-flow.html"
-  },
-  {
-   "grupo": "qa",
-   "id": "expedicao",
-   "area": "Expedição",
-   "titulo": "Validação de Expedição",
-   "resumo": "Plano de validação com roteiros, critérios e achados registrados.",
-   "arquivo": "validacao-expedicao-faktory-flow.html"
-  },
-  {
-   "grupo": "qa",
-   "id": "producao-v2",
-   "area": "Produção",
-   "titulo": "Validação da Produção",
-   "resumo": "Plano de validação com roteiros, critérios e achados registrados.",
-   "arquivo": "validacao-producao-v2-faktory-flow.html"
-  },
-  {
-   "grupo": "qa",
-   "id": "projetos",
-   "area": "Projetos",
-   "titulo": "Validação de Projetos",
-   "resumo": "Plano de validação com roteiros, critérios e achados registrados.",
-   "arquivo": "validacao-projetos-faktory-flow.html"
-  },
-  {
-   "grupo": "qa",
-   "id": "recebimento",
-   "area": "Recebimento",
-   "titulo": "Validação de Recebimento",
-   "resumo": "Plano de validação com roteiros, critérios e achados registrados.",
-   "arquivo": "validacao-recebimento-faktory-flow.html"
-  },
-  {
-   "grupo": "qa",
-   "id": "servicos-v2",
-   "area": "Serviços",
-   "titulo": "Validação de Serviços",
-   "resumo": "Plano de validação com roteiros, critérios e achados registrados.",
-   "arquivo": "validacao-servicos-v2-faktory-flow.html"
-  },
-  {
-   "grupo": "qa",
-   "id": "tarefas",
-   "area": "Tarefas",
-   "titulo": "Validação de Tarefas",
-   "resumo": "Plano de validação com roteiros, critérios e achados registrados.",
-   "arquivo": "validacao-tarefas-faktory-flow.html"
   }
  ]
 }

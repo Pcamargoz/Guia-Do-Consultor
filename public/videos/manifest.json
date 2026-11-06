@@ -1,5 +1,5 @@
 {
-  "atualizado": "2026-10-22",
+  "atualizado": "2026-10-29",
   "trilhas": [
     {
       "id": "fluxos",
@@ -11,7 +11,7 @@
           "numero": "Fluxo 1",
           "titulo": "Vendas: o ciclo do pedido de venda",
           "resumo": "O que é o pedido, os status, as quatro regras que mais travam e o pedido criado na tela.",
-          "duracao": "2 min 54 s",
+          "duracao": "3 min 08 s",
           "status": "pronto",
           "checklist": "estagiarios/fluxo-principal-vendas.html"
         },
@@ -22,7 +22,7 @@
           "resumo": "Faturar o pedido, conferir a nota e finalizar sem transmitir.",
           "status": "pronto",
           "checklist": "estagiarios/fluxo-principal-faturamento.html",
-          "duracao": "3 min 03 s"
+          "duracao": "3 min 18 s"
         },
         {
           "id": "consultor-08-financeiro",
@@ -31,7 +31,7 @@
           "resumo": "Gerar os títulos, receber e ler o fluxo de caixa.",
           "status": "pronto",
           "checklist": "estagiarios/fluxo-principal-financeiro.html",
-          "duracao": "2 min 50 s"
+          "duracao": "3 min 04 s"
         }
       ]
     },
@@ -46,8 +46,8 @@
           "titulo": "Suprimentos: da solicitação ao pagamento",
           "resumo": "Cotação opcional, a natureza da operação que define o CFOP, a nota com dois números e a linha do tempo do pedido.",
           "status": "pronto",
-          "checklist": "consultores/fluxo-01-suprimentos.html",
-          "duracao": "3 min 08 s"
+          "checklist": "consultores/implantacao-08-compras.html",
+          "duracao": "3 min 23 s"
         },
         {
           "id": "consultor-02-servicos",
@@ -55,8 +55,8 @@
           "titulo": "Serviços de campo: da medição à assistência",
           "resumo": "Empresa e técnico na medição, o conferente diferente, as passagens por botão e a ordem dos aceites.",
           "status": "pronto",
-          "checklist": "consultores/fluxo-02-servicos-campo.html",
-          "duracao": "2 min 36 s"
+          "checklist": "consultores/implantacao-12-servicos.html",
+          "duracao": "2 min 48 s"
         },
         {
           "id": "consultor-03-comercial",
@@ -64,8 +64,8 @@
           "titulo": "Comercial: do lead ao pedido de venda",
           "resumo": "As quatro regras que travam o CRM e o caminho real, do Kanban à oportunidade ganha.",
           "status": "pronto",
-          "checklist": "consultores/fluxo-03-comercial.html",
-          "duracao": "3 min 24 s"
+          "checklist": "consultores/implantacao-04-vendas.html",
+          "duracao": "3 min 40 s"
         },
         {
           "id": "consultor-04-estoque",
@@ -73,8 +73,8 @@
           "titulo": "Estoque: movimento, reserva e inventário",
           "resumo": "Movimentos, transferência, reserva, inventário e empréstimo.",
           "status": "pronto",
-          "checklist": "consultores/fluxo-04-estoque.html",
-          "duracao": "2 min 49 s"
+          "checklist": "consultores/implantacao-10-estoque.html",
+          "duracao": "3 min 03 s"
         },
         {
           "id": "consultor-05-producao",
@@ -82,8 +82,8 @@
           "titulo": "Produção: da estrutura ao produto acabado",
           "resumo": "Estrutura, ordem de produção, apontamento e entrada do acabado.",
           "status": "pronto",
-          "checklist": "consultores/fluxo-05-producao.html",
-          "duracao": "2 min 36 s"
+          "checklist": "consultores/implantacao-11-producao.html",
+          "duracao": "2 min 53 s"
         },
         {
           "id": "consultor-06-expedicao",
@@ -91,8 +91,8 @@
           "titulo": "Expedição: da carga à entrega",
           "resumo": "Carga, entrega, ocorrência e devolução.",
           "status": "pronto",
-          "checklist": "consultores/fluxo-06-expedicao.html",
-          "duracao": "2 min 30 s"
+          "checklist": "consultores/implantacao-13-expedicao.html",
+          "duracao": "2 min 41 s"
         },
         {
           "id": "consultor-07-faturamento",
@@ -100,8 +100,8 @@
           "titulo": "Faturamento e fiscal: do pedido à nota finalizada",
           "resumo": "Faturar, importar os itens, o aviso de impostos, finalizar sem transmitir e o que é do responsável fiscal.",
           "status": "pronto",
-          "checklist": "consultores/fluxo-07-faturamento-fiscal.html",
-          "duracao": "3 min 03 s"
+          "checklist": "consultores/implantacao-05-faturamento.html",
+          "duracao": "3 min 18 s"
         },
         {
           "id": "consultor-08-financeiro",
@@ -109,8 +109,8 @@
           "titulo": "Financeiro: títulos, baixa e saldos",
           "resumo": "De onde nascem os títulos, a baixa parcial com o título residual e o saldo antes e depois.",
           "status": "pronto",
-          "checklist": "consultores/fluxo-08-financeiro.html",
-          "duracao": "2 min 50 s"
+          "checklist": "consultores/implantacao-07-financeiro.html",
+          "duracao": "3 min 04 s"
         },
         {
           "id": "consultor-09-projetos",
@@ -118,8 +118,8 @@
           "titulo": "Projetos e obras",
           "resumo": "Cadastro, estágios, painéis e diário de obra.",
           "status": "pronto",
-          "checklist": "consultores/fluxo-09-projetos-obra.html",
-          "duracao": "2 min 15 s"
+          "checklist": "consultores/implantacao-14-projetos.html",
+          "duracao": "2 min 27 s"
         },
         {
           "id": "consultor-10-tarefas",
@@ -127,8 +127,8 @@
           "titulo": "Tarefas",
           "resumo": "Quadro, cartão, regras e colaboração.",
           "status": "pronto",
-          "checklist": "consultores/fluxo-10-tarefas.html",
-          "duracao": "2 min 22 s"
+          "checklist": "consultores/implantacao-15-tarefas.html",
+          "duracao": "2 min 38 s"
         },
         {
           "id": "consultor-fluxo-completo",
@@ -136,8 +136,22 @@
           "titulo": "Do pedido à gestão",
           "resumo": "O fluxo inteiro, do CRM aos indicadores.",
           "status": "pronto",
-          "checklist": "consultores/teste-fluxo-pedido-ate-gestao.html",
-          "duracao": "2 min 24 s"
+          "duracao": "2 min 37 s"
+        }
+      ]
+    },
+    {
+      "id": "cenarios",
+      "nome": "Cenários de implantação",
+      "descricao": "Situações reais de clientes, montadas de ponta a ponta no Faktory Flow: a configuração, o caminho na tela e o que cuidar.",
+      "videos": [
+        {
+          "id": "compra-em-nome-do-cliente",
+          "numero": "Vendas",
+          "titulo": "Compra em nome do cliente: Faturamento em Nível e Contrato de Fornecimento",
+          "resumo": "Obra com rateio 40/60: o seu pedido segue o fluxo normal, o do material é encerrado e vira saldo no contrato, abatido pelas compras do cliente.",
+          "status": "pronto",
+          "duracao": "3 min 50 s"
         }
       ]
     }

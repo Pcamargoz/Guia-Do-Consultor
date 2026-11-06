@@ -115,7 +115,7 @@
         1
       ],
       "rotulo": "Mais ações › Linha do tempo",
-      "fala": "Na linha do tempo, o tempo planejado e o real. Aqui o real ficou zerado, porque o apontamento não chegou a ser finalizado: uma limitação conhecida desta versão.",
+      "fala": "Na linha do tempo, o tempo planejado e o real. Aqui o real ficou zerado: hoje o sistema ainda recusa finalizar o apontamento, com um erro de data futura. É um defeito já reportado.",
       "nomes": [
         "Tempo planejado",
         "Tempo real até agora"
@@ -142,10 +142,10 @@
       "cena": "alertas",
       "itens": [
         "Iniciar produção muda a OP para Em execução com um clique.",
-        "O apontamento pode não finalizar: anote o horário e avise o suporte.",
+        "Defeito reportado: o apontamento pode recusar a finalização (erro de data futura). Anote o horário e avise o suporte.",
         "Fila de exceções: não reprocesse sem o suporte."
       ],
-      "fala": "Três cuidados. O iniciar produção da lista muda a ordem para em execução com um clique só. O apontamento de horas pode recusar a finalização por causa do horário: anote e avise o suporte. E, na fila de exceções, não reprocesse nada sem o suporte."
+      "fala": "Três cuidados. O iniciar produção da lista muda a ordem para em execução com um clique só. O apontamento de horas ainda pode recusar a finalização com um erro de data futura, um defeito já reportado: anote o horário e avise o suporte. E, na fila de exceções, não reprocesse nada sem o suporte."
     },
     {
       "id": "13",

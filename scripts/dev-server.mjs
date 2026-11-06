@@ -16,6 +16,11 @@ const TIPOS = {
 
 const { default: middleware } = await import(pathToFileURL(path.join(RAIZ, 'middleware.js')));
 
+// Cabeçalhos do vercel.json (segurança, CSP, cache), para testar localmente como em produção. As fontes de lá são
+// simples ("/(.*)", "/(.*)\\.(css|js)", "/downloads/(.*)"), então viram expressão regular direto.
+const REGRAS_CABECALHOS = JSON.parse(await readFile(path.join(RAIZ, 'vercel.json'), 'utf8')).headers
+  .map((r) => ({ padrao: new RegExp(`^${r.source}$`), cabecalhos: r.headers }));
+
 async function arquivoPublico(pathname) {
   const limpo = path.normalize(decodeURIComponent(pathname)).replace(/^([/\\])+/, '');
   const candidatos = pathname.endsWith('/') ? [path.join(limpo, 'index.html')] : [limpo, `${limpo}.html`];
@@ -64,6 +69,11 @@ http.createServer(async (req, res) => {
     const resposta = await tratar(request);
     const saida = {};
     resposta.headers.forEach((v, k) => { if (k !== 'x-middleware-next') saida[k] = v; });
+    const caminho = new URL(request.url).pathname;
+    for (const regra of REGRAS_CABECALHOS) {
+      if (!regra.padrao.test(caminho)) continue;
+      for (const { key, value } of regra.cabecalhos) if (!(key.toLowerCase() in saida)) saida[key.toLowerCase()] = value;
+    }
     const cookies = resposta.headers.getSetCookie?.() || [];
     if (cookies.length) saida['set-cookie'] = cookies;
     res.writeHead(resposta.status, saida);

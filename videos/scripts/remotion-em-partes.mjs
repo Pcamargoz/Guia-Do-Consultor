@@ -29,8 +29,10 @@ if (process.argv.includes('--filho')) {
 
 // ---- modo principal: bundle uma vez, um processo por bloco, junta no fim ----
 const [id, saida] = process.argv.slice(2);
-if (!id || !saida) { console.error('uso: node scripts/remotion-em-partes.mjs <id> <saida.mp4> [--escala 0.5] [--crf 18] [--public-dir pasta]'); process.exit(1); }
-const pasta = path.join(RAIZ, 'out', `partes-${id}`);
+if (!id || !saida) { console.error('uso: node scripts/remotion-em-partes.mjs <id> <saida.mp4> [--escala 0.5] [--crf 18] [--public-dir pasta] [--de <s> --ate <s>]'); process.exit(1); }
+// --de/--ate (segundos da composição): só um trecho, sem som, para testar o motor sem refazer o vídeo
+const trecho = arg('de') !== undefined && arg('ate') !== undefined ? [Math.round(Number(arg('de')) * 30), Math.round(Number(arg('ate')) * 30)] : null;
+const pasta = path.join(RAIZ, 'out', trecho ? `partes-${id}-${trecho[0]}-${trecho[1]}` : `partes-${id}`);
 fs.mkdirSync(pasta, { recursive: true });
 const { bundle } = await import('@remotion/bundler');
 const publicDir = arg('public-dir') ? path.resolve(RAIZ, arg('public-dir')) : undefined;
@@ -54,14 +56,15 @@ const roda = (destino, a, b, rotulo) => {
 };
 
 const blocos = [];
-for (let ini = 0; ini < total; ini += QUADROS_POR_BLOCO) blocos.push([ini, Math.min(total, ini + QUADROS_POR_BLOCO) - 1]);
+const [q0, q1] = trecho ? [Math.max(0, trecho[0]), Math.min(total, trecho[1])] : [0, total];
+for (let ini = q0; ini < q1; ini += QUADROS_POR_BLOCO) blocos.push([ini, Math.min(q1, ini + QUADROS_POR_BLOCO) - 1]);
 blocos.forEach(([a, b], i) => roda(path.join(pasta, `bloco-${String(i).padStart(3, '0')}.mp4`), a, b, `bloco ${i + 1}/${blocos.length}`));
 const audio = path.join(pasta, 'audio.wav');
-roda(audio, 'audio', null, 'áudio');
+if (!trecho) roda(audio, 'audio', null, 'áudio');
 
 const lista = path.join(pasta, 'lista.txt');
 fs.writeFileSync(lista, blocos.map((_, i) => `file '${path.join(pasta, `bloco-${String(i).padStart(3, '0')}.mp4`).replace(/\\/g, '/')}'`).join('\n'));
-execFileSync('ffmpeg', ['-y', '-loglevel', 'error', '-f', 'concat', '-safe', '0', '-i', lista, '-i', audio, '-map', '0:v', '-map', '1:a',
-  '-c:v', 'copy', '-c:a', 'aac', '-b:a', '256k', '-shortest', saida]);
+execFileSync('ffmpeg', ['-y', '-loglevel', 'error', '-f', 'concat', '-safe', '0', '-i', lista,
+  ...(trecho ? ['-c:v', 'copy'] : ['-i', audio, '-map', '0:v', '-map', '1:a', '-c:v', 'copy', '-c:a', 'aac', '-b:a', '256k', '-shortest']), saida]);
 fs.rmSync(pasta, { recursive: true, force: true });
 console.log(`pronto: ${saida}`);
