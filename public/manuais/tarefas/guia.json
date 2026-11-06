@@ -1,700 +1,1009 @@
 {
-  "modulo": "tarefas",
-  "titulo": "Tarefas — guia visual",
-  "resumo": "Como o módulo Tarefas organiza o trabalho em quadros, listas e cartões, e o detalhe que faz o cartão chegar à pessoa certa: o responsável.",
-  "versaoSistema": "1.22.13 (capturas de 22/10/2026 no ambiente de teste)",
-  "atualizadoEm": "2026-11-05",
-  "status": "rascunho",
-  "conceitos": [
-    {
-      "titulo": "Quadro",
-      "icone": "tarefas",
-      "texto": "O quadro agrupa as tarefas de um projeto, de um cliente ou de uma equipe. Ele nasce com nome e tipo (por exemplo, Avulso) e sem listas.",
-      "fontes": [
-        "regra-tarefas-cartao-so-aparece-em-minhas-tarefas-com-responsavel",
-        "videos/roteiros/consultor-10-tarefas.json#02"
-      ]
-    },
-    {
-      "titulo": "Lista",
-      "icone": "checklist",
-      "texto": "As listas são as fases do trabalho, como \"A fazer\" e \"Feito\". Você cria cada lista em + Adicionar lista, dentro do quadro.",
-      "fontes": [
-        "regra-tarefas-cartao-so-aparece-em-minhas-tarefas-com-responsavel",
-        "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas"
-      ]
-    },
-    {
-      "titulo": "Cartão",
-      "icone": "manual",
-      "texto": "Cada tarefa é um cartão, criado em + Adicionar tarefa. Ele nasce Pendente, com prioridade Média. O prazo do cartão é o Término Previsto: não existe campo \"Prazo\".",
-      "fontes": [
-        "regra-tarefas-cartao-so-aparece-em-minhas-tarefas-com-responsavel",
-        "funcional-tarefas-quadros-listas-e-cartoes"
-      ]
-    },
-    {
-      "titulo": "Sem responsável, ninguém vê o cartão",
-      "icone": "alerta",
-      "texto": "O cartão nasce sem responsável e só aparece em Minhas Tarefas depois de Adicionar responsável. É o esquecimento mais comum na implantação.",
-      "fontes": [
-        "regra-tarefas-cartao-so-aparece-em-minhas-tarefas-com-responsavel",
-        "videos/roteiros/consultor-10-tarefas.json#05"
-      ]
-    },
-    {
-      "titulo": "Arquivar não apaga",
-      "icone": "oculto",
-      "texto": "O cartão arquivado sai das listas e vai para Tarefas › Arquivadas, onde o botão Restaurar traz ele de volta.",
-      "fontes": [
-        "funcional-tarefas-quadros-listas-e-cartoes",
-        "regra-tarefas-cartao-so-aparece-em-minhas-tarefas-com-responsavel",
-        "videos/roteiros/consultor-10-tarefas.json#07"
-      ]
-    }
-  ],
-  "palavras": [
-    {
-      "termo": "Meus Quadros",
-      "definicao": "Tela com os seus quadros e o botão Novo Quadro (Tarefas › Meus Quadros).",
-      "fontes": [
-        "glossario:tarefas.quadros",
-        "funcional-tarefas-quadros-listas-e-cartoes"
-      ]
-    },
-    {
-      "termo": "Novo Quadro",
-      "definicao": "Botão que cria um quadro pedindo Nome do Quadro e Tipo.",
-      "fontes": [
-        "glossario:tarefas.quadros",
-        "regra-tarefas-cartao-so-aparece-em-minhas-tarefas-com-responsavel"
-      ]
-    },
-    {
-      "termo": "+ Adicionar lista",
-      "definicao": "Cria uma lista (coluna) dentro do quadro.",
-      "fontes": [
-        "funcional-tarefas-quadros-listas-e-cartoes#001",
-        "regra-tarefas-cartao-so-aparece-em-minhas-tarefas-com-responsavel"
-      ]
-    },
-    {
-      "termo": "+ Adicionar tarefa",
-      "definicao": "Cria um cartão dentro de uma lista.",
-      "fontes": [
-        "funcional-tarefas-quadros-listas-e-cartoes#002",
-        "regra-tarefas-cartao-so-aparece-em-minhas-tarefas-com-responsavel"
-      ]
-    },
-    {
-      "termo": "Adicionar responsável",
-      "definicao": "Botão do cartão que define quem vai executar a tarefa.",
-      "fontes": [
-        "glossario:tarefas.quadros"
-      ]
-    },
-    {
-      "termo": "Término Previsto",
-      "definicao": "Data limite do cartão. Sem ela o cartão nunca aparece como atrasado.",
-      "fontes": [
-        "glossario:tarefas.quadros",
-        "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas"
-      ]
-    },
-    {
-      "termo": "Minhas Tarefas",
-      "definicao": "Tela com os cartões atribuídos a você.",
-      "fontes": [
-        "glossario:tarefas",
-        "regra-tarefas-cartao-so-aparece-em-minhas-tarefas-com-responsavel"
-      ]
-    },
-    {
-      "termo": "Checklists",
-      "definicao": "Aba do cartão para listas de itens a cumprir.",
-      "fontes": [
-        "glossario:tarefas.quadros"
-      ]
-    },
-    {
-      "termo": "Arquivadas",
-      "definicao": "Tela com os cartões arquivados, cada um com o botão Restaurar.",
-      "fontes": [
-        "funcional-tarefas-quadros-listas-e-cartoes",
-        "roteiro-tarefas-03-minhas-tarefas-recorrencias-e-arquivo#010"
-      ]
-    },
-    {
-      "termo": "Restaurar",
-      "definicao": "Botão que traz o cartão arquivado de volta.",
-      "fontes": [
-        "glossario:tarefas.quadros"
-      ]
-    }
-  ],
-  "mapa": {
-    "antes": [
-      "projetos",
-      "crm"
-    ],
-    "depois": [],
-    "texto": "Tarefas organiza as atividades de qualquer área. É implantado depois dos processos que vão usá-lo, como Projetos e Obras e CRM.",
-    "fontes": [
-      "guia:db/migrations/002_modulos_iniciais.sql#tarefas"
-    ]
-  },
-  "capitulos": [
-    {
-      "id": "abrir-e-criar-quadro",
-      "titulo": "Abrindo o módulo e montando o quadro",
-      "nivel": "basico",
-      "objetivo": "Chegar ao módulo, criar um quadro e as listas dele.",
-      "onde": "Tarefas › Meus Quadros",
-      "passos": [
-        {
-          "titulo": "Abra o módulo pelo menu de módulos",
-          "texto": "Clique na grade do menu de módulos (canto superior esquerdo), abra Tarefas e entre em Meus Quadros. Para criar um quadro, clique em Novo Quadro e informe o Nome do Quadro e o Tipo.",
-          "imagem": "/manuais/tarefas/img/01-meus-quadros.webp",
-          "alt": "Tela Meus Quadros com o botão Novo Quadro e um quadro de treino do tipo Avulso.",
-          "largura": 1600,
-          "altura": 534,
-          "marcadores": [
-            {
-              "n": 1,
-              "rotulo": "Meus Quadros",
-              "explicacao": "Lista os seus quadros. Um quadro agrupa as tarefas de um projeto, de um cliente ou de uma equipe.",
-              "caixa": {
-                "x": 0.6,
-                "y": 39.4,
-                "w": 9.6,
-                "h": 7
-              },
-              "lado": "direita"
-            },
-            {
-              "n": 2,
-              "rotulo": "Novo Quadro",
-              "explicacao": "Cria um quadro. Ele pede só o nome e o tipo.",
-              "caixa": {
-                "x": 87.6,
-                "y": 23.2,
-                "w": 9,
-                "h": 9
-              },
-              "lado": "cima"
-            },
-            {
-              "n": 3,
-              "rotulo": "Quadro criado",
-              "explicacao": "O cartão do quadro mostra o nome, o tipo (aqui, Avulso) e quantas listas ele tem.",
-              "caixa": {
-                "x": 18.8,
-                "y": 55.6,
-                "w": 19,
-                "h": 35
-              },
-              "lado": "direita"
-            }
-          ],
-          "atencao": "Hoje a busca Ctrl+K ainda não encontra o módulo Tarefas. É defeito reportado: abra pelo menu de módulos.",
-          "evidencia": "captura-real",
-          "fontes": [
-            "videos/public/telas/consultor-10-tarefas/01-meus-quadros.png",
-            "regra-tarefas-cartao-so-aparece-em-minhas-tarefas-com-responsavel",
-            "funcional-tarefas-quadros-listas-e-cartoes",
-            "videos/roteiros/consultor-10-tarefas.json#08"
-          ]
-        },
-        {
-          "titulo": "Crie as listas e os cartões",
-          "texto": "Dentro do quadro, crie as listas em + Adicionar lista (por exemplo, A FAZER e FEITO). Depois, em cada lista, clique em + Adicionar tarefa para criar um cartão.",
-          "imagem": "/manuais/tarefas/img/02-quadro-listas.webp",
-          "alt": "Quadro em visão Kanban com as listas A FAZER e FEITO, o botão + Adicionar lista e o link + Adicionar tarefa em cada lista.",
-          "largura": 1600,
-          "altura": 534,
-          "marcadores": [
-            {
-              "n": 1,
-              "rotulo": "+ Adicionar lista",
-              "explicacao": "Cria uma nova lista (coluna). O quadro novo nasce sem listas.",
-              "caixa": {
-                "x": 58.2,
-                "y": 47.4,
-                "w": 18.8,
-                "h": 10.4
-              },
-              "lado": "baixo"
-            },
-            {
-              "n": 2,
-              "rotulo": "Lista A FAZER",
-              "explicacao": "Cada lista é uma coluna do quadro. O número ao lado do nome conta os cartões dela.",
-              "caixa": {
-                "x": 18.4,
-                "y": 48.6,
-                "w": 8,
-                "h": 7.4
-              },
-              "lado": "direita"
-            },
-            {
-              "n": 3,
-              "rotulo": "+ Adicionar tarefa",
-              "explicacao": "Cria um cartão (uma tarefa) dentro da lista.",
-              "caixa": {
-                "x": 23.6,
-                "y": 68.2,
-                "w": 8,
-                "h": 6.4
-              },
-              "lado": "direita"
-            },
-            {
-              "n": 4,
-              "rotulo": "Visões do quadro",
-              "explicacao": "O mesmo quadro pode ser visto em Kanban, Lista, Tabela, Calendário e Gantt.",
-              "caixa": {
-                "x": 55.2,
-                "y": 19.6,
-                "w": 26.9,
-                "h": 8
-              },
-              "lado": "baixo"
-            }
-          ],
-          "evidencia": "captura-real",
-          "fontes": [
-            "videos/public/telas/consultor-10-tarefas/02-quadro.png",
-            "regra-tarefas-cartao-so-aparece-em-minhas-tarefas-com-responsavel",
-            "funcional-tarefas-quadros-listas-e-cartoes",
-            "videos/roteiros/consultor-10-tarefas.json#09",
-            "manual-12-projetos-e-tarefas#009"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "cartao-com-responsavel",
-      "titulo": "O cartão com responsável e prazo",
-      "nivel": "basico",
-      "objetivo": "Preencher o cartão para que ele chegue a quem vai executar.",
-      "onde": "Tarefas › Meus Quadros › quadro › cartão",
-      "passos": [
-        {
-          "titulo": "Defina prazo e responsável",
-          "texto": "Abra o cartão: ele nasce Pendente, com prioridade Média e sem responsável. Preencha o TÉRMINO PREVISTO e, em RESPONSÁVEIS, clique em + Adicionar responsável para escolher a pessoa.",
-          "imagem": "/manuais/tarefas/img/03-cartao.webp",
-          "alt": "Painel do cartão com Status Pendente, Prioridade Média, Término Previsto vazio e, embaixo, Responsáveis com Nenhum responsável e o link Adicionar responsável.",
-          "largura": 1600,
-          "altura": 900,
-          "marcadores": [
-            {
-              "n": 1,
-              "rotulo": "Status",
-              "explicacao": "Em que etapa a tarefa está. O cartão novo nasce Pendente.",
-              "caixa": {
-                "x": 44.6,
-                "y": 8.6,
-                "w": 13.4,
-                "h": 6.6
-              },
-              "lado": "esquerda"
-            },
-            {
-              "n": 2,
-              "rotulo": "Prioridade",
-              "explicacao": "A urgência da tarefa. O cartão novo nasce com Média.",
-              "caixa": {
-                "x": 44.6,
-                "y": 16.6,
-                "w": 13.4,
-                "h": 6.2
-              },
-              "lado": "esquerda"
-            },
-            {
-              "n": 3,
-              "rotulo": "Término Previsto",
-              "explicacao": "É o prazo do cartão (não existe um campo chamado prazo). Atrasos aparecem no dashboard.",
-              "caixa": {
-                "x": 44.6,
-                "y": 32.2,
-                "w": 13.4,
-                "h": 6.8
-              },
-              "lado": "esquerda"
-            },
-            {
-              "n": 4,
-              "rotulo": "Responsáveis",
-              "explicacao": "Mostra Nenhum responsável até você clicar em + Adicionar responsável e escolher a pessoa.",
-              "caixa": {
-                "x": 44.6,
-                "y": 88.6,
-                "w": 8.6,
-                "h": 7.2
-              },
-              "lado": "esquerda"
-            }
-          ],
-          "atencao": "Sem responsável o cartão não aparece em Minhas Tarefas de ninguém.",
-          "evidencia": "captura-real",
-          "fontes": [
-            "videos/public/telas/consultor-10-tarefas/03-cartao.png",
-            "regra-tarefas-cartao-so-aparece-em-minhas-tarefas-com-responsavel",
-            "funcional-tarefas-quadros-listas-e-cartoes",
-            "videos/roteiros/consultor-10-tarefas.json#10",
-            "manual-12-projetos-e-tarefas#009"
-          ]
-        },
-        {
-          "titulo": "Trabalhe dentro do cartão",
-          "texto": "Do lado direito do cartão ficam as abas Comentários, Checklists, Horas, Anexos, Ordem e datas e Histórico. Para registrar uma conversa, escreva na caixa da aba Comentários e clique em Comentar.",
-          "imagem": "/manuais/tarefas/img/04-cartao-abas.webp",
-          "alt": "O mesmo cartão destacando as abas Comentários, Checklists, Horas, Anexos, Ordem e datas e Histórico e a caixa de comentário.",
-          "largura": 1600,
-          "altura": 900,
-          "marcadores": [
-            {
-              "n": 1,
-              "rotulo": "Comentários",
-              "explicacao": "Conversa sobre a tarefa, registrada no próprio cartão. Use em vez de mensagens soltas.",
-              "caixa": {
-                "x": 61.6,
-                "y": 29.4,
-                "w": 6.8,
-                "h": 3.6
-              },
-              "lado": "cima"
-            },
-            {
-              "n": 2,
-              "rotulo": "Checklists",
-              "explicacao": "Passos da tarefa: + Nova checklist › Criar e depois + Novo item › Adicionar.",
-              "caixa": {
-                "x": 68.9,
-                "y": 29.4,
-                "w": 5.5,
-                "h": 3.6
-              },
-              "lado": "cima"
-            },
-            {
-              "n": 3,
-              "rotulo": "Anexos",
-              "explicacao": "Arquivos que acompanham a tarefa, como fotos e documentos. Evite dados sensíveis.",
-              "caixa": {
-                "x": 80.4,
-                "y": 29.4,
-                "w": 4.4,
-                "h": 3.6
-              },
-              "lado": "cima"
-            },
-            {
-              "n": 4,
-              "rotulo": "Caixa de comentário",
-              "explicacao": "Escreva o comentário aqui. Use @ para mencionar alguém.",
-              "caixa": {
-                "x": 60.8,
-                "y": 34.6,
-                "w": 38.2,
-                "h": 8
-              },
-              "lado": "baixo"
-            },
-            {
-              "n": 5,
-              "rotulo": "Comentar",
-              "explicacao": "Grava o comentário. O sistema confirma com Comentário adicionado!",
-              "caixa": {
-                "x": 60.8,
-                "y": 43.4,
-                "w": 6,
-                "h": 4
-              },
-              "lado": "direita"
-            }
-          ],
-          "zoom": {
-            "x": 60,
-            "y": 24,
-            "w": 40,
-            "h": 25
-          },
-          "dica": "No teste, o autor do comentário apareceu como \"Usuário\".",
-          "evidencia": "captura-real",
-          "fontes": [
-            "videos/public/telas/consultor-10-tarefas/03-cartao.png",
-            "funcional-tarefas-quadros-listas-e-cartoes",
-            "guia:scripts/dados-checklists-estagiarios.mjs#tarefas",
-            "videos/roteiros/consultor-10-tarefas.json#10",
-            "funcional-tarefas-quadros-listas-e-cartoes#002",
-            "roteiro-tarefas-02-tarefas-checklists-e-apontamentos#010"
-          ]
-        },
-        {
-          "titulo": "Confira em Minhas Tarefas",
-          "texto": "Com o responsável definido, abra Tarefas › Minhas Tarefas com o usuário de quem foi atribuído. Confira os indicadores no alto e o cartão no grupo Pendente.",
-          "imagem": "/manuais/tarefas/img/05-minhas-tarefas.webp",
-          "alt": "Tela Minhas Tarefas com indicadores Em andamento, Atrasadas, Urgentes e Concluídas e um cartão Pendente de prioridade Média atribuído ao usuário.",
-          "largura": 1600,
-          "altura": 534,
-          "marcadores": [
-            {
-              "n": 1,
-              "rotulo": "Minhas Tarefas",
-              "explicacao": "As tarefas atribuídas a você. Cartão sem responsável não aparece aqui para ninguém.",
-              "caixa": {
-                "x": 0.6,
-                "y": 33,
-                "w": 9.4,
-                "h": 7
-              },
-              "lado": "direita"
-            },
-            {
-              "n": 2,
-              "rotulo": "Indicadores",
-              "explicacao": "Em andamento, Atrasadas, Urgentes e Concluídas. Contam todas as suas tarefas, não só as desta página.",
-              "caixa": {
-                "x": 18.3,
-                "y": 33.4,
-                "w": 30,
-                "h": 15
-              },
-              "lado": "direita"
-            },
-            {
-              "n": 3,
-              "rotulo": "Cartão atribuído a você",
-              "explicacao": "Mostra o título, o quadro de origem, o status e a prioridade.",
-              "caixa": {
-                "x": 18.3,
-                "y": 71.6,
-                "w": 26,
-                "h": 22.4
-              },
-              "lado": "direita"
-            }
-          ],
-          "evidencia": "captura-real",
-          "fontes": [
-            "videos/public/telas/consultor-10-tarefas/04-minhas-tarefas.png",
-            "regra-tarefas-cartao-so-aparece-em-minhas-tarefas-com-responsavel",
-            "videos/roteiros/consultor-10-tarefas.json#11"
-          ]
-        },
-        {
-          "titulo": "Acompanhe no Dashboard de Tarefas",
-          "texto": "Em Tarefas › Dashboard, escolha o quadro e o período nos filtros do alto. Leia os cartões de prazo: Tarefas Atrasadas e Vencem em 7 dias mostram o que precisa de atenção.",
-          "imagem": "/manuais/tarefas/img/07-dashboard.webp",
-          "alt": "Dashboard de Tarefas com os filtros Todos os quadros e Últimos 30 dias, os cartões Tarefas Atrasadas, Vencem em 7 dias, Tempo de Execução e Tempo Total e os gráficos Tarefas por Status e Tarefas por Prioridade.",
-          "largura": 1600,
-          "altura": 900,
-          "marcadores": [
-            {
-              "n": 1,
-              "rotulo": "Dashboard",
-              "explicacao": "Primeiro item do menu de Tarefas: a visão geral para quem acompanha a equipe.",
-              "caixa": {
-                "x": 0.6,
-                "y": 15.8,
-                "w": 7.4,
-                "h": 4.2
-              },
-              "lado": "direita"
-            },
-            {
-              "n": 2,
-              "rotulo": "Filtros do quadro e do período",
-              "explicacao": "Todos os quadros ou um quadro só, e o período (aqui, Últimos 30 dias).",
-              "caixa": {
-                "x": 67.8,
-                "y": 13.2,
-                "w": 21.8,
-                "h": 4.6
-              },
-              "lado": "esquerda"
-            },
-            {
-              "n": 3,
-              "rotulo": "Cartões de prazo e tempo",
-              "explicacao": "Tarefas Atrasadas (passaram do prazo) e Vencem em 7 dias: clique para ver a lista. Tempo de Execução e Tempo Total medem do início, ou da criação, até a conclusão.",
-              "caixa": {
-                "x": 18.4,
-                "y": 19.8,
-                "w": 78.4,
-                "h": 11.6
-              },
-              "lado": "baixo"
-            }
-          ],
-          "evidencia": "captura-real",
-          "dica": "O prazo que alimenta os atrasos é o Término Previsto do cartão.",
-          "fontes": [
-            "videos/capturas/guias-staging/tarefas-dashboard.png (staging v1.23.2, 05/11/2026)",
-            "manual-12-projetos-e-tarefas#009"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "arquivar-e-restaurar",
-      "titulo": "Arquivar e restaurar",
-      "nivel": "avancado",
-      "objetivo": "Limpar o quadro sem perder nada.",
-      "onde": "Tarefas › Arquivadas",
-      "passos": [
-        {
-          "titulo": "Restaure um cartão arquivado",
-          "texto": "O cartão arquivado sai das listas e vai para Tarefas › Arquivadas, com a data em que foi arquivado. Para trazê-lo de volta, clique em Restaurar.",
-          "imagem": "/manuais/tarefas/img/06-arquivadas.webp",
-          "alt": "Tela Tarefas Arquivadas com dois cartões arquivados, a data de arquivamento e o botão Restaurar em cada um.",
-          "largura": 1600,
-          "altura": 534,
-          "marcadores": [
-            {
-              "n": 1,
-              "rotulo": "Arquivadas",
-              "explicacao": "Guarda os cartões arquivados. Arquivar não apaga.",
-              "caixa": {
-                "x": 0.6,
-                "y": 52,
-                "w": 9,
-                "h": 7
-              },
-              "lado": "direita"
-            },
-            {
-              "n": 2,
-              "rotulo": "Cartão arquivado, com a data",
-              "explicacao": "O título do cartão e a data e hora em que ele foi arquivado.",
-              "caixa": {
-                "x": 20.6,
-                "y": 58.2,
-                "w": 19.8,
-                "h": 8.6
-              },
-              "lado": "direita"
-            },
-            {
-              "n": 3,
-              "rotulo": "Restaurar",
-              "explicacao": "Devolve o cartão ao quadro.",
-              "caixa": {
-                "x": 89.4,
-                "y": 59.4,
-                "w": 7.6,
-                "h": 6.2
-              },
-              "lado": "cima"
-            }
-          ],
-          "dica": "Arquivar só se desfaz por Restaurar, em Tarefas › Arquivadas.",
-          "evidencia": "captura-real",
-          "fontes": [
-            "videos/public/telas/consultor-10-tarefas/05-arquivadas.png",
-            "regra-tarefas-cartao-so-aparece-em-minhas-tarefas-com-responsavel",
-            "funcional-tarefas-quadros-listas-e-cartoes",
-            "videos/roteiros/consultor-10-tarefas.json#12"
-          ]
-        }
-      ]
-    }
-  ],
-  "consultor": {
-    "implantacao": [
-      "Licença do módulo Tarefas ativa: o módulo aparece no ícone de grade (menu de módulos). Fonte: checklist de implantação de Tarefas.",
-      "Dois usuários de teste: o gestor que cria o quadro e um executor que será o responsável do cartão, com uma segunda sessão aberta. Fonte: checklist de implantação de Tarefas.",
-      "Combinado com o cliente como os quadros serão organizados (um por departamento ou por obra) e quais listas cada um terá. Fonte: checklist de implantação de Tarefas (manual-12-projetos-e-tarefas#004)."
-    ],
-    "perguntasDoCliente": [
-      {
-        "pergunta": "Criei a tarefa e a pessoa não está vendo. Por quê?",
-        "resposta": "O cartão nasce sem responsável. Ele só aparece em Minhas Tarefas depois de Adicionar responsável.",
-        "fontes": [
-          "regra-tarefas-cartao-so-aparece-em-minhas-tarefas-com-responsavel"
-        ]
-      },
-      {
-        "pergunta": "Onde coloco o prazo?",
-        "resposta": "No campo Término Previsto do cartão. Sem ele o cartão nunca aparece como atrasado.",
-        "fontes": [
-          "funcional-tarefas-quadros-listas-e-cartoes",
-          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas"
-        ]
-      },
-      {
-        "pergunta": "Arquivei por engano. Perdi o cartão?",
-        "resposta": "Não. Ele está em Tarefas › Arquivadas, com o botão Restaurar.",
-        "fontes": [
-          "funcional-tarefas-quadros-listas-e-cartoes"
-        ]
-      }
-    ],
-    "errosComuns": [
-      {
-        "titulo": "Cartão sem responsável",
-        "texto": "O erro mais comum na implantação é criar cartões e esquecer o responsável: o cartão não chega a ninguém.",
-        "fontes": [
-          "regra-tarefas-cartao-so-aparece-em-minhas-tarefas-com-responsavel",
-          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas"
-        ]
-      },
-      {
-        "titulo": "Testar com usuários reais",
-        "texto": "Mover, comentar ou mencionar em cartão de outra pessoa avisa os responsáveis. Automações e recorrências criam cartões e enviam notificações sozinhas: só teste com destinatários de teste.",
-        "fontes": [
-          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas"
-        ]
-      },
-      {
-        "titulo": "Procurar o módulo pela busca",
-        "texto": "Hoje a busca Ctrl+K ainda não encontra o módulo Tarefas (defeito reportado). Abra pelo menu de módulos.",
-        "fontes": [
-          "faq-limitacoes-conhecidas-v1-22-12",
-          "videos/roteiros/consultor-10-tarefas.json#13"
-        ]
-      }
-    ]
-  },
-  "pendencias": [
-    "CAPTURA: Tarefas › Meus Quadros › Novo Quadro — diálogo com Nome do Quadro, Tipo e Criar Quadro.",
-    "CAPTURA: cartão › ícone \"Mover para outra lista\" e ícone de arquivar no cabeçalho do cartão — a captura atual não identifica com certeza qual ícone é o Arquivar.",
-    "CAPTURA: Tarefas › Tarefas Avulsas e Tarefas › Todas as Tarefas — aparecem no menu, sem fonte de uso na base.",
-    "A conferir na tela: quadro padrão \"Tarefas Gerais\" com listas prontas (manual-12) × conta nova com \"Nenhum quadro ainda\" e quadro sem listas (procedimento).",
-    "A conferir na tela: nomes de status do cartão (fluxo antigo: Pendente, Em andamento, Em revisão, Concluída, Cancelada) e o Vincular do cartão a pedido ou obra.",
-    "Resolvido (staging v1.23.2, 05/11/2026): Tarefas › Dashboard capturado e incluído no passo \"Acompanhe no Dashboard de Tarefas\". Os gráficos Tarefas Concluídas por Semana e Carga por Responsável estavam sem dados na captura.",
-    "Revisão v2: no cabeçalho do cartão (captura 03-cartao), entre o ícone de atualizar e a lixeira, há um ícone com desenho de caixa de arquivo. Parece ser o Arquivar citado em funcional-tarefas-quadros-listas-e-cartoes#002, mas o nome não aparece na captura. A conferir na tela (tooltip) antes de marcar."
-  ],
-  "fontes": [
+ "modulo": "tarefas",
+ "titulo": "Tarefas — guia visual",
+ "resumo": "Como o módulo Tarefas organiza o trabalho em quadros, listas e cartões, e o detalhe que faz o cartão chegar à pessoa certa: o responsável.",
+ "versaoSistema": "1.22.13 (capturas de 22/10/2026 no ambiente de teste) · Dashboard, Meus Quadros com o quadro padrão e Tarefas Avulsas: staging v1.23.2, 05/11/2026",
+ "atualizadoEm": "2026-11-06",
+ "status": "rascunho",
+ "conceitos": [
+  {
+   "titulo": "Quadro",
+   "icone": "tarefas",
+   "texto": "O quadro agrupa as tarefas de um projeto, de um cliente ou de uma equipe. Ele nasce com nome e tipo (por exemplo, Avulso) e sem listas.",
+   "fontes": [
     "regra-tarefas-cartao-so-aparece-em-minhas-tarefas-com-responsavel",
-    "videos/roteiros/consultor-10-tarefas.json#02",
-    "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas",
+    "videos/roteiros/consultor-10-tarefas.json#02"
+   ]
+  },
+  {
+   "titulo": "Lista",
+   "icone": "checklist",
+   "texto": "As listas são as fases do trabalho, como \"A fazer\" e \"Feito\". Você cria cada lista em + Adicionar lista, dentro do quadro.",
+   "fontes": [
+    "regra-tarefas-cartao-so-aparece-em-minhas-tarefas-com-responsavel",
+    "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas"
+   ]
+  },
+  {
+   "titulo": "Cartão",
+   "icone": "manual",
+   "texto": "Cada tarefa é um cartão, criado em + Adicionar tarefa. Ele nasce Pendente, com prioridade Média. O prazo do cartão é o Término Previsto: não existe campo \"Prazo\".",
+   "fontes": [
+    "regra-tarefas-cartao-so-aparece-em-minhas-tarefas-com-responsavel",
+    "funcional-tarefas-quadros-listas-e-cartoes"
+   ]
+  },
+  {
+   "titulo": "Sem responsável, ninguém vê o cartão",
+   "icone": "alerta",
+   "texto": "O cartão nasce sem responsável e só aparece em Minhas Tarefas depois de Adicionar responsável. É o esquecimento mais comum na implantação.",
+   "fontes": [
+    "regra-tarefas-cartao-so-aparece-em-minhas-tarefas-com-responsavel",
+    "videos/roteiros/consultor-10-tarefas.json#05"
+   ]
+  },
+  {
+   "titulo": "Arquivar não apaga",
+   "icone": "oculto",
+   "texto": "O cartão arquivado sai das listas e vai para Tarefas › Arquivadas, onde o botão Restaurar traz ele de volta.",
+   "fontes": [
     "funcional-tarefas-quadros-listas-e-cartoes",
-    "videos/roteiros/consultor-10-tarefas.json#05",
-    "videos/roteiros/consultor-10-tarefas.json#07",
+    "regra-tarefas-cartao-so-aparece-em-minhas-tarefas-com-responsavel",
+    "videos/roteiros/consultor-10-tarefas.json#07"
+   ]
+  }
+ ],
+ "palavras": [
+  {
+   "termo": "Meus Quadros",
+   "definicao": "Tela com os seus quadros e o botão Novo Quadro (Tarefas › Meus Quadros).",
+   "fontes": [
     "glossario:tarefas.quadros",
+    "funcional-tarefas-quadros-listas-e-cartoes"
+   ]
+  },
+  {
+   "termo": "Novo Quadro",
+   "definicao": "Botão que cria um quadro pedindo Nome do Quadro e Tipo.",
+   "fontes": [
+    "glossario:tarefas.quadros",
+    "regra-tarefas-cartao-so-aparece-em-minhas-tarefas-com-responsavel"
+   ]
+  },
+  {
+   "termo": "+ Adicionar lista",
+   "definicao": "Cria uma lista (coluna) dentro do quadro.",
+   "fontes": [
     "funcional-tarefas-quadros-listas-e-cartoes#001",
+    "regra-tarefas-cartao-so-aparece-em-minhas-tarefas-com-responsavel"
+   ]
+  },
+  {
+   "termo": "+ Adicionar tarefa",
+   "definicao": "Cria um cartão dentro de uma lista.",
+   "fontes": [
     "funcional-tarefas-quadros-listas-e-cartoes#002",
+    "regra-tarefas-cartao-so-aparece-em-minhas-tarefas-com-responsavel"
+   ]
+  },
+  {
+   "termo": "Adicionar responsável",
+   "definicao": "Botão do cartão que define quem vai executar a tarefa.",
+   "fontes": [
+    "glossario:tarefas.quadros"
+   ]
+  },
+  {
+   "termo": "Término Previsto",
+   "definicao": "Data limite do cartão. Sem ela o cartão nunca aparece como atrasado.",
+   "fontes": [
+    "glossario:tarefas.quadros",
+    "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas"
+   ]
+  },
+  {
+   "termo": "Minhas Tarefas",
+   "definicao": "Tela com os cartões atribuídos a você.",
+   "fontes": [
     "glossario:tarefas",
-    "roteiro-tarefas-03-minhas-tarefas-recorrencias-e-arquivo#010",
-    "guia:db/migrations/002_modulos_iniciais.sql#tarefas",
-    "videos/public/telas/consultor-10-tarefas/01-meus-quadros.png",
-    "videos/roteiros/consultor-10-tarefas.json#08",
-    "videos/public/telas/consultor-10-tarefas/02-quadro.png",
-    "videos/roteiros/consultor-10-tarefas.json#09",
-    "videos/public/telas/consultor-10-tarefas/03-cartao.png",
-    "videos/roteiros/consultor-10-tarefas.json#10",
-    "guia:scripts/dados-checklists-estagiarios.mjs#tarefas",
-    "videos/public/telas/consultor-10-tarefas/04-minhas-tarefas.png",
-    "videos/roteiros/consultor-10-tarefas.json#11",
-    "videos/public/telas/consultor-10-tarefas/05-arquivadas.png",
-    "videos/roteiros/consultor-10-tarefas.json#12",
-    "faq-limitacoes-conhecidas-v1-22-12",
-    "videos/roteiros/consultor-10-tarefas.json#13",
-    "procedimento-criar-quadro-e-cartao-em-tarefas",
-    "videos/capturas/guias-staging/tarefas-dashboard.png"
+    "regra-tarefas-cartao-so-aparece-em-minhas-tarefas-com-responsavel"
+   ]
+  },
+  {
+   "termo": "Checklists",
+   "definicao": "Aba do cartão para listas de itens a cumprir.",
+   "fontes": [
+    "glossario:tarefas.quadros"
+   ]
+  },
+  {
+   "termo": "Arquivadas",
+   "definicao": "Tela com os cartões arquivados, cada um com o botão Restaurar.",
+   "fontes": [
+    "funcional-tarefas-quadros-listas-e-cartoes",
+    "roteiro-tarefas-03-minhas-tarefas-recorrencias-e-arquivo#010"
+   ]
+  },
+  {
+   "termo": "Restaurar",
+   "definicao": "Botão que traz o cartão arquivado de volta.",
+   "fontes": [
+    "glossario:tarefas.quadros"
+   ]
+  }
+ ],
+ "mapa": {
+  "antes": [
+   "projetos",
+   "crm"
+  ],
+  "depois": [],
+  "texto": "Tarefas organiza as atividades de qualquer área. É implantado depois dos processos que vão usá-lo, como Projetos e Obras e CRM.",
+  "fontes": [
+   "guia:db/migrations/002_modulos_iniciais.sql#tarefas"
   ]
+ },
+ "capitulos": [
+  {
+   "id": "abrir-e-criar-quadro",
+   "titulo": "Abrindo o módulo e montando o quadro",
+   "nivel": "basico",
+   "objetivo": "Chegar ao módulo, criar um quadro e as listas dele.",
+   "onde": "Tarefas › Meus Quadros",
+   "passos": [
+    {
+     "titulo": "Abra o módulo pelo menu de módulos",
+     "texto": "Clique na grade do menu de módulos (canto superior esquerdo), abra Tarefas e entre em Meus Quadros. Para criar um quadro, clique em Novo Quadro e informe o Nome do Quadro e o Tipo.",
+     "imagem": "/manuais/tarefas/img/01-meus-quadros.webp",
+     "alt": "Tela Meus Quadros com o botão Novo Quadro e um quadro de treino do tipo Avulso.",
+     "largura": 1600,
+     "altura": 534,
+     "marcadores": [
+      {
+       "n": 1,
+       "rotulo": "Meus Quadros",
+       "explicacao": "Lista os seus quadros. Um quadro agrupa as tarefas de um projeto, de um cliente ou de uma equipe.",
+       "caixa": {
+        "x": 0.6,
+        "y": 39.4,
+        "w": 9.6,
+        "h": 7
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 2,
+       "rotulo": "Novo Quadro",
+       "explicacao": "Cria um quadro. Ele pede só o nome e o tipo.",
+       "caixa": {
+        "x": 87.6,
+        "y": 23.2,
+        "w": 9,
+        "h": 9
+       },
+       "lado": "cima"
+      },
+      {
+       "n": 3,
+       "rotulo": "Quadro criado",
+       "explicacao": "O cartão do quadro mostra o nome, o tipo (aqui, Avulso) e quantas listas ele tem.",
+       "caixa": {
+        "x": 18.8,
+        "y": 55.6,
+        "w": 19,
+        "h": 35
+       },
+       "lado": "direita"
+      }
+     ],
+     "atencao": "Hoje a busca Ctrl+K ainda não encontra o módulo Tarefas. É defeito reportado: abra pelo menu de módulos.",
+     "evidencia": "captura-real",
+     "fontes": [
+      "videos/public/telas/consultor-10-tarefas/01-meus-quadros.png",
+      "regra-tarefas-cartao-so-aparece-em-minhas-tarefas-com-responsavel",
+      "funcional-tarefas-quadros-listas-e-cartoes",
+      "videos/roteiros/consultor-10-tarefas.json#08"
+     ]
+    },
+    {
+     "largura": 1600,
+     "altura": 900,
+     "evidencia": "captura-real",
+     "titulo": "Conheça o quadro padrão Tarefas Gerais",
+     "texto": "Em Meus Quadros, repare no quadro Tarefas Gerais, marcado como PADRÃO: é o quadro das tarefas avulsas. Os quadros que você cria aparecem ao lado, com o tipo escolhido.",
+     "imagem": "/manuais/tarefas/img/09-meus-quadros-padrao.webp",
+     "alt": "Meus Quadros com o resumo 2 quadros, 4 listas, 0 tarefas e dois cartões de quadro: Tarefas Gerais (tipo Geral, selo PADRÃO, 3 listas) e Empresa (tipo Avulso, 1 lista).",
+     "marcadores": [
+      {
+       "n": 1,
+       "rotulo": "Resumo",
+       "explicacao": "Quantos quadros, listas e tarefas você enxerga.",
+       "caixa": {
+        "x": 19,
+        "y": 24.6,
+        "w": 18.6,
+        "h": 3.1
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 2,
+       "rotulo": "Tarefas Gerais",
+       "explicacao": "Quadro padrão, do tipo Geral. Recebe as tarefas criadas sem a escolha de outro quadro.",
+       "caixa": {
+        "x": 19,
+        "y": 33.3,
+        "w": 18.6,
+        "h": 20.2
+       },
+       "lado": "baixo"
+      },
+      {
+       "n": 3,
+       "rotulo": "Selo PADRÃO",
+       "explicacao": "O quadro padrão não pode ser renomeado nem arquivado.",
+       "caixa": {
+        "x": 32.3,
+        "y": 48.4,
+        "w": 4.2,
+        "h": 2.7
+       },
+       "lado": "cima"
+      },
+      {
+       "n": 4,
+       "rotulo": "Quadro criado por você",
+       "explicacao": "Um quadro feito em Novo Quadro, aqui do tipo Avulso, com o número de listas.",
+       "caixa": {
+        "x": 38.6,
+        "y": 33.3,
+        "w": 18.5,
+        "h": 20.2
+       },
+       "lado": "baixo"
+      }
+     ],
+     "zoom": {
+      "x": 18,
+      "y": 20,
+      "w": 41,
+      "h": 40
+     },
+     "fontes": [
+      "videos/capturas/guias-staging/tarefas-quadros.png (staging v1.23.2, 05/11/2026)",
+      "roteiro-tarefas-01-quadros-kanban#002",
+      "manual-12-projetos-e-tarefas#004",
+      "plano-tarefas#041"
+     ]
+    },
+    {
+     "largura": 1600,
+     "altura": 900,
+     "evidencia": "captura-real",
+     "titulo": "Use as Tarefas Avulsas",
+     "texto": "Clique em Tarefas Avulsas no menu: abre direto o quadro padrão Tarefas Gerais. Crie a tarefa em + Adicionar tarefa, na lista certa, e troque a visão quando precisar.",
+     "imagem": "/manuais/tarefas/img/08-tarefas-gerais.webp",
+     "alt": "Quadro Tarefas Gerais (Geral, PADRÃO) aberto pelo menu Tarefas Avulsas, com as visões Kanban, Lista, Tabela, Calendário e Gantt, as listas A FAZER, EM ANDAMENTO (com um cartão de teste) e CONCLUÍDO, + Adicionar lista e a legenda de prioridade.",
+     "marcadores": [
+      {
+       "n": 1,
+       "rotulo": "Tarefas Avulsas",
+       "explicacao": "Atalho do menu para o quadro padrão das tarefas avulsas.",
+       "caixa": {
+        "x": 0.6,
+        "y": 27.6,
+        "w": 11.9,
+        "h": 3.2
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 2,
+       "rotulo": "Tarefas Gerais",
+       "explicacao": "O quadro padrão: tipo Geral, selo PADRÃO.",
+       "caixa": {
+        "x": 23.4,
+        "y": 12.3,
+        "w": 15.6,
+        "h": 3.4
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 3,
+       "rotulo": "Visões",
+       "explicacao": "Kanban, Lista, Tabela, Calendário e Gantt mostram o mesmo quadro em formatos diferentes.",
+       "caixa": {
+        "x": 57.9,
+        "y": 12.3,
+        "w": 26.4,
+        "h": 3.4
+       },
+       "lado": "baixo"
+      },
+      {
+       "n": 4,
+       "rotulo": "Listas",
+       "explicacao": "A FAZER, EM ANDAMENTO e CONCLUÍDO, com o número de cartões de cada uma. Em cada lista, + Adicionar tarefa cria um cartão.",
+       "caixa": {
+        "x": 18.2,
+        "y": 28.2,
+        "w": 58.8,
+        "h": 19.4
+       },
+       "lado": "baixo"
+      },
+      {
+       "n": 5,
+       "rotulo": "Prioridade",
+       "explicacao": "A cor do cartão indica a prioridade: Urgente, Alta, Média ou Baixa.",
+       "caixa": {
+        "x": 18.2,
+        "y": 50,
+        "w": 15.9,
+        "h": 2
+       },
+       "lado": "direita"
+      }
+     ],
+     "dica": "Uma Nova tarefa criada sem escolher quadro pode ir para este quadro padrão.",
+     "fontes": [
+      "videos/capturas/guias-staging/tarefas-avulsas.png (staging v1.23.2, 05/11/2026)",
+      "roteiro-tarefas-01-quadros-kanban#002",
+      "manual-12-projetos-e-tarefas#004",
+      "roteiro-tarefas-03-minhas-tarefas-recorrencias-e-arquivo#003",
+      "funcional-tarefas-quadros-listas-e-cartoes#001"
+     ]
+    },
+    {
+     "titulo": "Crie as listas e os cartões",
+     "texto": "Dentro do quadro, crie as listas em + Adicionar lista (por exemplo, A FAZER e FEITO). Depois, em cada lista, clique em + Adicionar tarefa para criar um cartão.",
+     "imagem": "/manuais/tarefas/img/02-quadro-listas.webp",
+     "alt": "Quadro em visão Kanban com as listas A FAZER e FEITO, o botão + Adicionar lista e o link + Adicionar tarefa em cada lista.",
+     "largura": 1600,
+     "altura": 534,
+     "marcadores": [
+      {
+       "n": 1,
+       "rotulo": "+ Adicionar lista",
+       "explicacao": "Cria uma nova lista (coluna). O quadro novo nasce sem listas.",
+       "caixa": {
+        "x": 58.2,
+        "y": 47.4,
+        "w": 18.8,
+        "h": 10.4
+       },
+       "lado": "baixo"
+      },
+      {
+       "n": 2,
+       "rotulo": "Lista A FAZER",
+       "explicacao": "Cada lista é uma coluna do quadro. O número ao lado do nome conta os cartões dela.",
+       "caixa": {
+        "x": 18.4,
+        "y": 48.6,
+        "w": 8,
+        "h": 7.4
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 3,
+       "rotulo": "+ Adicionar tarefa",
+       "explicacao": "Cria um cartão (uma tarefa) dentro da lista.",
+       "caixa": {
+        "x": 23.6,
+        "y": 68.2,
+        "w": 8,
+        "h": 6.4
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 4,
+       "rotulo": "Visões do quadro",
+       "explicacao": "O mesmo quadro pode ser visto em Kanban, Lista, Tabela, Calendário e Gantt.",
+       "caixa": {
+        "x": 55.2,
+        "y": 19.6,
+        "w": 26.9,
+        "h": 8
+       },
+       "lado": "baixo"
+      }
+     ],
+     "evidencia": "captura-real",
+     "fontes": [
+      "videos/public/telas/consultor-10-tarefas/02-quadro.png",
+      "regra-tarefas-cartao-so-aparece-em-minhas-tarefas-com-responsavel",
+      "funcional-tarefas-quadros-listas-e-cartoes",
+      "videos/roteiros/consultor-10-tarefas.json#09",
+      "manual-12-projetos-e-tarefas#009"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cartao-com-responsavel",
+   "titulo": "O cartão com responsável e prazo",
+   "nivel": "basico",
+   "objetivo": "Preencher o cartão para que ele chegue a quem vai executar.",
+   "onde": "Tarefas › Meus Quadros › quadro › cartão",
+   "passos": [
+    {
+     "titulo": "Defina prazo e responsável",
+     "texto": "Abra o cartão: ele nasce Pendente, com prioridade Média e sem responsável. Preencha o TÉRMINO PREVISTO e, em RESPONSÁVEIS, clique em + Adicionar responsável para escolher a pessoa.",
+     "imagem": "/manuais/tarefas/img/03-cartao.webp",
+     "alt": "Painel do cartão com Status Pendente, Prioridade Média, Término Previsto vazio e, embaixo, Responsáveis com Nenhum responsável e o link Adicionar responsável.",
+     "largura": 1600,
+     "altura": 900,
+     "marcadores": [
+      {
+       "n": 1,
+       "rotulo": "Status",
+       "explicacao": "Em que etapa a tarefa está. O cartão novo nasce Pendente.",
+       "caixa": {
+        "x": 44.6,
+        "y": 8.6,
+        "w": 13.4,
+        "h": 6.6
+       },
+       "lado": "esquerda"
+      },
+      {
+       "n": 2,
+       "rotulo": "Prioridade",
+       "explicacao": "A urgência da tarefa. O cartão novo nasce com Média.",
+       "caixa": {
+        "x": 44.6,
+        "y": 16.6,
+        "w": 13.4,
+        "h": 6.2
+       },
+       "lado": "esquerda"
+      },
+      {
+       "n": 3,
+       "rotulo": "Término Previsto",
+       "explicacao": "É o prazo do cartão (não existe um campo chamado prazo). Atrasos aparecem no dashboard.",
+       "caixa": {
+        "x": 44.6,
+        "y": 32.2,
+        "w": 13.4,
+        "h": 6.8
+       },
+       "lado": "esquerda"
+      },
+      {
+       "n": 4,
+       "rotulo": "Responsáveis",
+       "explicacao": "Mostra Nenhum responsável até você clicar em + Adicionar responsável e escolher a pessoa.",
+       "caixa": {
+        "x": 44.6,
+        "y": 88.6,
+        "w": 8.6,
+        "h": 7.2
+       },
+       "lado": "esquerda"
+      }
+     ],
+     "atencao": "Sem responsável o cartão não aparece em Minhas Tarefas de ninguém.",
+     "evidencia": "captura-real",
+     "fontes": [
+      "videos/public/telas/consultor-10-tarefas/03-cartao.png",
+      "regra-tarefas-cartao-so-aparece-em-minhas-tarefas-com-responsavel",
+      "funcional-tarefas-quadros-listas-e-cartoes",
+      "videos/roteiros/consultor-10-tarefas.json#10",
+      "manual-12-projetos-e-tarefas#009"
+     ]
+    },
+    {
+     "titulo": "Trabalhe dentro do cartão",
+     "texto": "Do lado direito do cartão ficam as abas Comentários, Checklists, Horas, Anexos, Ordem e datas e Histórico. Para registrar uma conversa, escreva na caixa da aba Comentários e clique em Comentar.",
+     "imagem": "/manuais/tarefas/img/04-cartao-abas.webp",
+     "alt": "O mesmo cartão destacando as abas Comentários, Checklists, Horas, Anexos, Ordem e datas e Histórico e a caixa de comentário.",
+     "largura": 1600,
+     "altura": 900,
+     "marcadores": [
+      {
+       "n": 1,
+       "rotulo": "Comentários",
+       "explicacao": "Conversa sobre a tarefa, registrada no próprio cartão. Use em vez de mensagens soltas.",
+       "caixa": {
+        "x": 61.6,
+        "y": 29.4,
+        "w": 6.8,
+        "h": 3.6
+       },
+       "lado": "cima"
+      },
+      {
+       "n": 2,
+       "rotulo": "Checklists",
+       "explicacao": "Passos da tarefa: + Nova checklist › Criar e depois + Novo item › Adicionar.",
+       "caixa": {
+        "x": 68.9,
+        "y": 29.4,
+        "w": 5.5,
+        "h": 3.6
+       },
+       "lado": "cima"
+      },
+      {
+       "n": 3,
+       "rotulo": "Anexos",
+       "explicacao": "Arquivos que acompanham a tarefa, como fotos e documentos. Evite dados sensíveis.",
+       "caixa": {
+        "x": 80.4,
+        "y": 29.4,
+        "w": 4.4,
+        "h": 3.6
+       },
+       "lado": "cima"
+      },
+      {
+       "n": 4,
+       "rotulo": "Caixa de comentário",
+       "explicacao": "Escreva o comentário aqui. Use @ para mencionar alguém.",
+       "caixa": {
+        "x": 60.8,
+        "y": 34.6,
+        "w": 38.2,
+        "h": 8
+       },
+       "lado": "baixo"
+      },
+      {
+       "n": 5,
+       "rotulo": "Comentar",
+       "explicacao": "Grava o comentário. O sistema confirma com Comentário adicionado!",
+       "caixa": {
+        "x": 60.8,
+        "y": 43.4,
+        "w": 6,
+        "h": 4
+       },
+       "lado": "direita"
+      }
+     ],
+     "zoom": {
+      "x": 60,
+      "y": 24,
+      "w": 40,
+      "h": 25
+     },
+     "dica": "No teste, o autor do comentário apareceu como \"Usuário\".",
+     "evidencia": "captura-real",
+     "fontes": [
+      "videos/public/telas/consultor-10-tarefas/03-cartao.png",
+      "funcional-tarefas-quadros-listas-e-cartoes",
+      "guia:scripts/dados-checklists-estagiarios.mjs#tarefas",
+      "videos/roteiros/consultor-10-tarefas.json#10",
+      "funcional-tarefas-quadros-listas-e-cartoes#002",
+      "roteiro-tarefas-02-tarefas-checklists-e-apontamentos#010"
+     ]
+    },
+    {
+     "titulo": "Confira em Minhas Tarefas",
+     "texto": "Com o responsável definido, abra Tarefas › Minhas Tarefas com o usuário de quem foi atribuído. Confira os indicadores no alto e o cartão no grupo Pendente.",
+     "imagem": "/manuais/tarefas/img/05-minhas-tarefas.webp",
+     "alt": "Tela Minhas Tarefas com indicadores Em andamento, Atrasadas, Urgentes e Concluídas e um cartão Pendente de prioridade Média atribuído ao usuário.",
+     "largura": 1600,
+     "altura": 534,
+     "marcadores": [
+      {
+       "n": 1,
+       "rotulo": "Minhas Tarefas",
+       "explicacao": "As tarefas atribuídas a você. Cartão sem responsável não aparece aqui para ninguém.",
+       "caixa": {
+        "x": 0.6,
+        "y": 33,
+        "w": 9.4,
+        "h": 7
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 2,
+       "rotulo": "Indicadores",
+       "explicacao": "Em andamento, Atrasadas, Urgentes e Concluídas. Contam todas as suas tarefas, não só as desta página.",
+       "caixa": {
+        "x": 18.3,
+        "y": 33.4,
+        "w": 30,
+        "h": 15
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 3,
+       "rotulo": "Cartão atribuído a você",
+       "explicacao": "Mostra o título, o quadro de origem, o status e a prioridade.",
+       "caixa": {
+        "x": 18.3,
+        "y": 71.6,
+        "w": 26,
+        "h": 22.4
+       },
+       "lado": "direita"
+      }
+     ],
+     "evidencia": "captura-real",
+     "fontes": [
+      "videos/public/telas/consultor-10-tarefas/04-minhas-tarefas.png",
+      "regra-tarefas-cartao-so-aparece-em-minhas-tarefas-com-responsavel",
+      "videos/roteiros/consultor-10-tarefas.json#11"
+     ]
+    },
+    {
+     "titulo": "Acompanhe no Dashboard de Tarefas",
+     "texto": "Em Tarefas › Dashboard, escolha o quadro e o período nos filtros do alto. Leia os cartões de prazo: Tarefas Atrasadas e Vencem em 7 dias mostram o que precisa de atenção.",
+     "imagem": "/manuais/tarefas/img/07-dashboard.webp",
+     "alt": "Dashboard de Tarefas com os filtros Todos os quadros e Últimos 30 dias, os cartões Tarefas Atrasadas, Vencem em 7 dias, Tempo de Execução e Tempo Total e os gráficos Tarefas por Status e Tarefas por Prioridade.",
+     "largura": 1600,
+     "altura": 900,
+     "marcadores": [
+      {
+       "n": 1,
+       "rotulo": "Dashboard",
+       "explicacao": "Primeiro item do menu de Tarefas: a visão geral para quem acompanha a equipe.",
+       "caixa": {
+        "x": 0.6,
+        "y": 15.8,
+        "w": 7.4,
+        "h": 4.2
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 2,
+       "rotulo": "Filtros do quadro e do período",
+       "explicacao": "Todos os quadros ou um quadro só, e o período (aqui, Últimos 30 dias).",
+       "caixa": {
+        "x": 67.8,
+        "y": 13.2,
+        "w": 21.8,
+        "h": 4.6
+       },
+       "lado": "esquerda"
+      },
+      {
+       "n": 3,
+       "rotulo": "Cartões de prazo e tempo",
+       "explicacao": "Tarefas Atrasadas (passaram do prazo) e Vencem em 7 dias: clique para ver a lista. Tempo de Execução e Tempo Total medem do início, ou da criação, até a conclusão.",
+       "caixa": {
+        "x": 18.4,
+        "y": 19.8,
+        "w": 78.4,
+        "h": 11.6
+       },
+       "lado": "baixo"
+      }
+     ],
+     "evidencia": "captura-real",
+     "dica": "O prazo que alimenta os atrasos é o Término Previsto do cartão.",
+     "fontes": [
+      "videos/capturas/guias-staging/tarefas-dashboard.png (staging v1.23.2, 05/11/2026)",
+      "manual-12-projetos-e-tarefas#009"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "arquivar-e-restaurar",
+   "titulo": "Arquivar e restaurar",
+   "nivel": "avancado",
+   "objetivo": "Limpar o quadro sem perder nada.",
+   "onde": "Tarefas › Arquivadas",
+   "passos": [
+    {
+     "titulo": "Restaure um cartão arquivado",
+     "texto": "O cartão arquivado sai das listas e vai para Tarefas › Arquivadas, com a data em que foi arquivado. Para trazê-lo de volta, clique em Restaurar.",
+     "imagem": "/manuais/tarefas/img/06-arquivadas.webp",
+     "alt": "Tela Tarefas Arquivadas com dois cartões arquivados, a data de arquivamento e o botão Restaurar em cada um.",
+     "largura": 1600,
+     "altura": 534,
+     "marcadores": [
+      {
+       "n": 1,
+       "rotulo": "Arquivadas",
+       "explicacao": "Guarda os cartões arquivados. Arquivar não apaga.",
+       "caixa": {
+        "x": 0.6,
+        "y": 52,
+        "w": 9,
+        "h": 7
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 2,
+       "rotulo": "Cartão arquivado, com a data",
+       "explicacao": "O título do cartão e a data e hora em que ele foi arquivado.",
+       "caixa": {
+        "x": 20.6,
+        "y": 58.2,
+        "w": 19.8,
+        "h": 8.6
+       },
+       "lado": "direita"
+      },
+      {
+       "n": 3,
+       "rotulo": "Restaurar",
+       "explicacao": "Devolve o cartão ao quadro.",
+       "caixa": {
+        "x": 89.4,
+        "y": 59.4,
+        "w": 7.6,
+        "h": 6.2
+       },
+       "lado": "cima"
+      }
+     ],
+     "dica": "Arquivar só se desfaz por Restaurar, em Tarefas › Arquivadas.",
+     "evidencia": "captura-real",
+     "fontes": [
+      "videos/public/telas/consultor-10-tarefas/05-arquivadas.png",
+      "regra-tarefas-cartao-so-aparece-em-minhas-tarefas-com-responsavel",
+      "funcional-tarefas-quadros-listas-e-cartoes",
+      "videos/roteiros/consultor-10-tarefas.json#12"
+     ]
+    }
+   ]
+  }
+ ],
+ "consultor": {
+  "implantacao": [
+   "Licença do módulo Tarefas ativa: o módulo aparece no ícone de grade (menu de módulos). Fonte: checklist de implantação de Tarefas.",
+   "Dois usuários de teste: o gestor que cria o quadro e um executor que será o responsável do cartão, com uma segunda sessão aberta. Fonte: checklist de implantação de Tarefas.",
+   "Combinado com o cliente como os quadros serão organizados (um por departamento ou por obra) e quais listas cada um terá. Fonte: checklist de implantação de Tarefas (manual-12-projetos-e-tarefas#004).",
+   "Mostre o quadro padrão Tarefas Gerais (Tarefas Avulsas) e combine o que vai nele e o que vai nos quadros por equipe ou obra. Fonte: roteiro-tarefas-01-quadros-kanban#002; manual-12-projetos-e-tarefas#004.",
+   "Teste com cartões e quadros \"TESTE FLUXO CONSULTOR\" e usuários de teste: automações e recorrências criam cartões e notificam sozinhas. Fonte: checklist de implantação de Tarefas."
+  ],
+  "perguntasDoCliente": [
+   {
+    "pergunta": "Criei a tarefa e a pessoa não está vendo. Por quê?",
+    "resposta": "O cartão nasce sem responsável. Ele só aparece em Minhas Tarefas depois de Adicionar responsável.",
+    "fontes": [
+     "regra-tarefas-cartao-so-aparece-em-minhas-tarefas-com-responsavel"
+    ]
+   },
+   {
+    "pergunta": "Onde coloco o prazo?",
+    "resposta": "No campo Término Previsto do cartão. Sem ele o cartão nunca aparece como atrasado.",
+    "fontes": [
+     "funcional-tarefas-quadros-listas-e-cartoes",
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas"
+    ]
+   },
+   {
+    "pergunta": "Arquivei por engano. Perdi o cartão?",
+    "resposta": "Não. Ele está em Tarefas › Arquivadas, com o botão Restaurar.",
+    "fontes": [
+     "funcional-tarefas-quadros-listas-e-cartoes"
+    ]
+   },
+   {
+    "pergunta": "Posso apagar ou renomear o quadro Tarefas Gerais?",
+    "resposta": "Não. Ele é o quadro padrão das tarefas avulsas e não pode ser renomeado nem arquivado.",
+    "fontes": [
+     "roteiro-tarefas-01-quadros-kanban#002",
+     "plano-tarefas#041"
+    ]
+   }
+  ],
+  "errosComuns": [
+   {
+    "titulo": "Cartão sem responsável",
+    "texto": "O erro mais comum na implantação é criar cartões e esquecer o responsável: o cartão não chega a ninguém.",
+    "fontes": [
+     "regra-tarefas-cartao-so-aparece-em-minhas-tarefas-com-responsavel",
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas"
+    ]
+   },
+   {
+    "titulo": "Testar com usuários reais",
+    "texto": "Mover, comentar ou mencionar em cartão de outra pessoa avisa os responsáveis. Automações e recorrências criam cartões e enviam notificações sozinhas: só teste com destinatários de teste.",
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas"
+    ]
+   },
+   {
+    "titulo": "Procurar o módulo pela busca",
+    "texto": "Hoje a busca Ctrl+K ainda não encontra o módulo Tarefas (defeito reportado). Abra pelo menu de módulos.",
+    "fontes": [
+     "faq-limitacoes-conhecidas-v1-22-12",
+     "videos/roteiros/consultor-10-tarefas.json#13"
+    ]
+   },
+   {
+    "titulo": "Cartão sem Término Previsto",
+    "texto": "Sem o Término Previsto o cartão nunca aparece como atrasado no Dashboard.",
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas"
+    ]
+   }
+  ],
+  "configuracoes": [
+   {
+    "item": "Licença do módulo Tarefas",
+    "onde": "Menu de módulos (ícone de grade)",
+    "porque": "Sem a licença o módulo não aparece. Hoje a busca Ctrl+K ainda não encontra o módulo: abra pelo menu de módulos.",
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas",
+     "faq-limitacoes-conhecidas-v1-22-12#015"
+    ]
+   },
+   {
+    "item": "Organização dos quadros e das listas",
+    "onde": "Tarefas › Meus Quadros (Novo Quadro ou A partir de Modelo)",
+    "porque": "Um quadro por departamento ou por obra, com as listas combinadas antes; A partir de Modelo copia a estrutura de um quadro-modelo.",
+    "fontes": [
+     "manual-12-projetos-e-tarefas#004",
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas"
+    ]
+   },
+   {
+    "item": "Quadro padrão das tarefas avulsas",
+    "onde": "Tarefas › Tarefas Avulsas",
+    "porque": "Recebe as tarefas criadas sem outro quadro; não pode ser renomeado nem arquivado. Cada empresa tem o seu.",
+    "fontes": [
+     "roteiro-tarefas-01-quadros-kanban#002",
+     "plano-tarefas#041"
+    ]
+   },
+   {
+    "item": "Permissões de quadro e de tarefa dos usuários",
+    "onde": "Perfis de acesso dos usuários",
+    "porque": "Quem pode criar tarefa, mas não administrar quadro, usa o fluxo sem ganhar poderes extras; sem permissão nenhuma, a página explica o acesso que falta.",
+    "fontes": [
+     "plano-tarefas#041"
+    ]
+   }
+  ],
+  "integracoes": [
+   {
+    "acao": "Adicionar responsável ao cartão",
+    "modulo": "Minhas Tarefas",
+    "efeito": "O cartão aparece em Minhas Tarefas do responsável; sem responsável, não aparece para ninguém.",
+    "fontes": [
+     "regra-tarefas-cartao-so-aparece-em-minhas-tarefas-com-responsavel"
+    ]
+   },
+   {
+    "acao": "Preencher o Término Previsto",
+    "modulo": "Dashboard de Tarefas",
+    "efeito": "O cartão passa a contar como atrasado ou a vencer nos cartões de prazo.",
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas",
+     "manual-12-projetos-e-tarefas#010"
+    ]
+   },
+   {
+    "acao": "Comentar com @menção",
+    "modulo": "Notificações",
+    "efeito": "A pessoa mencionada é avisada uma vez; o autor não recebe a própria notificação.",
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas"
+    ]
+   },
+   {
+    "acao": "Vincular o cartão a um pedido ou obra",
+    "modulo": "Vendas e Projetos",
+    "efeito": "O vínculo leva do cartão direto ao registro do ERP (a conferir na tela).",
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas"
+    ]
+   },
+   {
+    "acao": "Criar uma Nova tarefa sem escolher quadro",
+    "modulo": "Tarefas Avulsas",
+    "efeito": "A tarefa pode ir para o quadro padrão Tarefas Gerais.",
+    "fontes": [
+     "roteiro-tarefas-03-minhas-tarefas-recorrencias-e-arquivo#003"
+    ]
+   }
+  ],
+  "roteiroDemonstracao": [
+   {
+    "passo": "Abra o módulo pelo menu de módulos",
+    "mostrar": "Meus Quadros, o quadro padrão Tarefas Gerais e o botão Novo Quadro.",
+    "fontes": [
+     "videos/capturas/guias-staging/tarefas-quadros.png (staging v1.23.2, 05/11/2026)",
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas"
+    ]
+   },
+   {
+    "passo": "Crie um quadro de teste com listas",
+    "mostrar": "Novo Quadro com Nome do Quadro e Tipo; depois + Adicionar lista.",
+    "fontes": [
+     "funcional-tarefas-quadros-listas-e-cartoes#001"
+    ]
+   },
+   {
+    "passo": "Crie um cartão e preencha",
+    "mostrar": "Prioridade, Término Previsto e + Adicionar responsável (usuário de teste).",
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas"
+    ]
+   },
+   {
+    "passo": "Mostre Minhas Tarefas na sessão do executor",
+    "mostrar": "O cartão com responsável aparece; um sem responsável não.",
+    "fontes": [
+     "regra-tarefas-cartao-so-aparece-em-minhas-tarefas-com-responsavel"
+    ]
+   },
+   {
+    "passo": "Trabalhe dentro do cartão",
+    "mostrar": "Comentários com @menção, Checklists e Anexos.",
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas"
+    ]
+   },
+   {
+    "passo": "Mostre o Dashboard e as visões",
+    "mostrar": "Cartões de prazo no Dashboard e Kanban, Lista, Tabela, Calendário e Gantt no quadro.",
+    "fontes": [
+     "manual-12-projetos-e-tarefas#010",
+     "videos/capturas/guias-staging/tarefas-avulsas.png (staging v1.23.2, 05/11/2026)"
+    ]
+   },
+   {
+    "passo": "Arquive e restaure",
+    "mostrar": "O cartão sai do quadro e volta por Tarefas › Arquivadas › Restaurar.",
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas"
+    ]
+   }
+  ]
+ },
+ "pendencias": [
+  "CAPTURA: Tarefas › Meus Quadros › Novo Quadro — diálogo com Nome do Quadro, Tipo e Criar Quadro.",
+  "CAPTURA: cartão › ícone \"Mover para outra lista\" e ícone de arquivar no cabeçalho do cartão — a captura atual não identifica com certeza qual ícone é o Arquivar.",
+  "Reduzida (staging v1.23.2, 05/11/2026): o quadro padrão Tarefas Gerais (Geral, PADRÃO) existe e abre por Tarefas Avulsas, com as listas A FAZER, EM ANDAMENTO e CONCLUÍDO, como no manual-12. Falta conferir numa conta nova se ele já nasce com as listas (o procedimento fala em \"Nenhum quadro ainda\" e quadro sem listas).",
+  "A conferir na tela: nomes de status do cartão (fluxo antigo: Pendente, Em andamento, Em revisão, Concluída, Cancelada) e o Vincular do cartão a pedido ou obra.",
+  "Resolvido (staging v1.23.2, 05/11/2026): Tarefas › Dashboard capturado e incluído no passo \"Acompanhe no Dashboard de Tarefas\". Os gráficos Tarefas Concluídas por Semana e Carga por Responsável estavam sem dados na captura.",
+  "Revisão v2: no cabeçalho do cartão (captura 03-cartao), entre o ícone de atualizar e a lixeira, há um ícone com desenho de caixa de arquivo. Parece ser o Arquivar citado em funcional-tarefas-quadros-listas-e-cartoes#002, mas o nome não aparece na captura. A conferir na tela (tooltip) antes de marcar.",
+  "CAPTURA: Tarefas › Todas as Tarefas — aparece no menu, sem fonte de uso na base.",
+  "Não usada (capricho 06/11): videos/capturas/guias-staging/tarefas-minhas.png (staging v1.23.2) veio vazia (\"Nenhuma tarefa atribuída a você\"); o guia segue com a captura de 22/10, que mostra um cartão atribuído."
+ ],
+ "fontes": [
+  "regra-tarefas-cartao-so-aparece-em-minhas-tarefas-com-responsavel",
+  "videos/roteiros/consultor-10-tarefas.json#02",
+  "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas",
+  "funcional-tarefas-quadros-listas-e-cartoes",
+  "videos/roteiros/consultor-10-tarefas.json#05",
+  "videos/roteiros/consultor-10-tarefas.json#07",
+  "glossario:tarefas.quadros",
+  "funcional-tarefas-quadros-listas-e-cartoes#001",
+  "funcional-tarefas-quadros-listas-e-cartoes#002",
+  "glossario:tarefas",
+  "roteiro-tarefas-03-minhas-tarefas-recorrencias-e-arquivo#010",
+  "guia:db/migrations/002_modulos_iniciais.sql#tarefas",
+  "videos/public/telas/consultor-10-tarefas/01-meus-quadros.png",
+  "videos/roteiros/consultor-10-tarefas.json#08",
+  "videos/public/telas/consultor-10-tarefas/02-quadro.png",
+  "videos/roteiros/consultor-10-tarefas.json#09",
+  "videos/public/telas/consultor-10-tarefas/03-cartao.png",
+  "videos/roteiros/consultor-10-tarefas.json#10",
+  "guia:scripts/dados-checklists-estagiarios.mjs#tarefas",
+  "videos/public/telas/consultor-10-tarefas/04-minhas-tarefas.png",
+  "videos/roteiros/consultor-10-tarefas.json#11",
+  "videos/public/telas/consultor-10-tarefas/05-arquivadas.png",
+  "videos/roteiros/consultor-10-tarefas.json#12",
+  "faq-limitacoes-conhecidas-v1-22-12",
+  "videos/roteiros/consultor-10-tarefas.json#13",
+  "procedimento-criar-quadro-e-cartao-em-tarefas",
+  "videos/capturas/guias-staging/tarefas-dashboard.png",
+  "videos/capturas/guias-staging/tarefas-quadros.png (staging v1.23.2, 05/11/2026)",
+  "videos/capturas/guias-staging/tarefas-avulsas.png (staging v1.23.2, 05/11/2026)",
+  "roteiro-tarefas-01-quadros-kanban#002",
+  "plano-tarefas#041",
+  "manual-12-projetos-e-tarefas#004",
+  "manual-12-projetos-e-tarefas#010",
+  "roteiro-tarefas-03-minhas-tarefas-recorrencias-e-arquivo#003",
+  "faq-limitacoes-conhecidas-v1-22-12#015"
+ ]
 }

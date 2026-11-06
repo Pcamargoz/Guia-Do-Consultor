@@ -84,3 +84,42 @@
 - Próximo passo / pedido: capturas que ainda faltam continuam nas `pendencias` de cada guia (formulários de Participante e
   Produto, Projetos, Ctrl+K, menu de módulos, Agenda, Padrões de Integração, janelas de importação CEM, Dashboard/Carteira/
   Aprovações/Faturar de Vendas, Nova Solicitação, ⋯ do pedido de compra, Itens a Cotar/Cotação).
+
+## 2026-11-06 · documentacao-a · Capricho (iniciante + consultor veterano, contrato v2 + v2.1)
+- Descoberta: 17 capturas novas do staging (v1.23.2, 05/11) entraram nos guias, todas olhadas antes e borradas com ffmpeg
+  (saudação com nome, valores em R$ da Início e do Dashboard Vendas, nomes de clientes e valores na lista de pedidos,
+  nomes de pessoas, clientes e orçamentos em Projetos, listas esmaecidas atrás dos formulários). Saída 1600×900 webp q82.
+  Bloco `consultor` v2.1 (`configuracoes`, `integracoes`, `roteiroDemonstracao`) preenchido nos 6 módulos, com fonte.
+
+  | Módulo | Passos (com imagem) | Básicos (com imagem) | Imagens novas | Config. | Integrações | Demonstração |
+  |---|---|---|---|---|---|---|
+  | primeiros-passos | 11 (10) | 11 (10) | 04-menu-de-modulos, 05-busca, 06-notificacoes, 07-globais | 3 | 3 | 7 |
+  | fundacao | 14 (8) | 8 (7) | 04-novo-participante, 05-novo-produto, 06-projetos | 10 | 7 | 7 |
+  | crm | 15 (13) | 11 (11) | 12-agenda, 13-aprovacoes-de-desconto | 6 | 5 | 8 |
+  | cem | 13 (6) | 5 (3) | — (nenhuma captura nova é da integração) | 8 | 6 | 7 |
+  | vendas | 21 (17) | 15 (15) | 12-dashboard, 13-demonstrativos, 14-metas, 15-aprovacoes | 7 | 7 | 8 |
+  | compras | 15 (13) | 11 (11) | 09-nova-solicitacao, 10-sugestao, 11-aprovacoes, 12-followup | 6 | 7 | 7 |
+
+- Passos novos para o iniciante: "Abra e feche um grupo do menu", "Conheça o bloco GLOBAIS" (primeiros-passos);
+  "Clique em + Novo Participante e conheça os Dados Gerais", "Escolha a conta de fluxo e o papel do participante",
+  "Clique em + Novo Produto e preencha os Dados Básicos", "Preencha as Classificações Fiscais e salve" (fundacao);
+  "Veja a sua semana na Agenda", "Acompanhe as aprovações de desconto" (crm); "Leia os cartões do Dashboard" (vendas);
+  "Conheça o formulário Nova Solicitação de Compra", "Acompanhe as entregas no Follow-up" (compras). Passos que eram só
+  texto ganharam imagem: grade de módulos, Ctrl+K, sino, projetos, Dashboard/Demonstrativos/Metas/Aprovações de Vendas,
+  Sugestão e Aprovações de Compras.
+- Evidência: `harness_contexto(documento)`; `kb_search` (aprovação de desconto CRM, Follow-up, Painel de Controle/Alertas,
+  Agenda, Sugestão de Compra, Projetos, participante, Metas/Demonstrativos) — ids usados: `manual-02-crm#017`, `plano-crm#028/#034/#111`,
+  `roteiro-crm-02…#007`, `roteiro-crm-07…#004`, `manual-04-compras#008/#009`, `plano-compras#023/#024/#094`, `roteiro-compras-04…#022/#025`,
+  `roteiro-compras-06…#016/#072`, `oficial-com-b-processos#005`, `roteiro-geral-04-avisos-e-alertas#019/#020`,
+  `manual-12-projetos-e-tarefas#002`, `roteiro-projetos-01…#009`, `funcional-cadastros-participante-produto-e-projeto#000/#001`,
+  `manual-01-cadastros-base#002`, `oficial-cad-a-regras#000`, `manual-03-vendas#012`, `plano-vendas#063`,
+  `roteiro-vendas-03-metas-de-vendas#007`, `oficial-ven-c-implantacao#009`; checklists de implantação (fundação, CRM, CEM,
+  vendas, compras, recebimento). Prévias com molduras, número no lado e recorte do zoom olhadas para cada passo novo.
+  JSON validado: imagens existem, ≤ 5 marcadores, todos com caixa/lado/explicacao, todo item do consultor com fonte, `status: rascunho`.
+- Divergências novas (em `pendencias`): chave Ativo do novo participante (trilha × captura); caminho de Projetos (menu ×
+  caminho no alto); caminho das regras de Aprovações de Desconto do CRM (plano × roteiro); cartão "Conversão" da Agenda ×
+  "taxa de conclusão"; faixas da Carteira de Pedidos (base × card); nome do Dashboard (menu × título × caminho); colunas da
+  Sugestão de Compra (roteiro com valores × tela sem valores); painel Módulos com 16 itens no staging (Config. Interna, Implantação).
+- Continua sem imagem (falta captura): preferências do usuário (primeiros-passos); seções Endereço/Contato do participante
+  (fundacao); janelas de importação e pedido importado (cem); vários passos avançados.
+- Não verificado: nada foi conferido ao vivo no Flow nesta rodada (só capturas). Guias seguem `status: rascunho`.

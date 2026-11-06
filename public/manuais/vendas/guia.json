@@ -2,8 +2,8 @@
   "modulo": "vendas",
   "titulo": "Vendas — guia visual",
   "resumo": "Você vai entender o que é o pedido de venda, ler a lista de pedidos e seus status, criar um pedido do zero e saber o que acontece com ele depois: nota, títulos e expedição.",
-  "versaoSistema": "1.22.13 (capturas de fluxo-1-vendas e compra-em-nome-do-cliente) e 1.23.2 (capturas brutas de 04/11/2026)",
-  "atualizadoEm": "2026-11-05",
+  "versaoSistema": "1.22.13 (capturas de fluxo-1-vendas e compra-em-nome-do-cliente) e 1.23.2 (capturas brutas de 04/11/2026 e do staging de 05/11/2026)",
+  "atualizadoEm": "2026-11-06",
   "status": "rascunho",
   "conceitos": [
     {
@@ -775,31 +775,330 @@
       "id": "indicadores",
       "titulo": "Lendo os indicadores de vendas",
       "nivel": "basico",
-      "objetivo": "Saber onde ver o total vendido, a carteira de pedidos, as metas e as comissões.",
+      "objetivo": "Ler o Dashboard Vendas, abrir os Demonstrativos e saber onde ficam metas, comissões e aprovações.",
       "onde": "Vendas › Dashboard Vendas",
       "passos": [
         {
           "titulo": "Escolha o período no Dashboard Vendas",
-          "texto": "Escolha Hoje, Esta semana, Este mês ou Este ano e clique em Aplicar. Os cartões Total em vendas, Ticket médio, Em aberto e Pendentes de faturamento são recalculados.",
-          "atencao": "O bloco \"Crescimento vs. período anterior\" não segue o filtro de datas.",
-          "evidencia": "base",
+          "texto": "Abra Vendas › Dashboard Vendas. Escolha a Empresa e, se quiser, o Projeto/Obra; depois as datas ou um atalho (Hoje, Esta semana, Este mês, Este ano) e clique em Aplicar.",
+          "imagem": "/manuais/vendas/img/12-dashboard.webp",
+          "alt": "Filtros do Dashboard de Vendas: Empresa, Projeto/Obra, Data Inicial, Data Final, atalhos de período e o botão Aplicar.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Empresa",
+              "explicacao": "Todas as empresas ou uma só.",
+              "caixa": {
+                "x": 19.4,
+                "y": 25.8,
+                "w": 38,
+                "h": 4.4
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 2,
+              "rotulo": "Projeto/Obra",
+              "explicacao": "Mostra só os pedidos de uma obra.",
+              "caixa": {
+                "x": 58,
+                "y": 25.8,
+                "w": 37.9,
+                "h": 4.4
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 3,
+              "rotulo": "Data Inicial e Data Final",
+              "explicacao": "O período dos pedidos considerados.",
+              "caixa": {
+                "x": 19.4,
+                "y": 34,
+                "w": 18.9,
+                "h": 4.4
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 4,
+              "rotulo": "Atalhos de período",
+              "explicacao": "Hoje, Esta semana, Este mês e Este ano preenchem as datas.",
+              "caixa": {
+                "x": 38.9,
+                "y": 34,
+                "w": 18,
+                "h": 4.4
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 5,
+              "rotulo": "Aplicar",
+              "explicacao": "Recalcula os cartões com os filtros escolhidos.",
+              "caixa": {
+                "x": 89.8,
+                "y": 34,
+                "w": 6.2,
+                "h": 4.4
+              },
+              "lado": "esquerda"
+            }
+          ],
+          "zoom": {
+            "x": 17,
+            "y": 21,
+            "w": 81,
+            "h": 21.9
+          },
+          "evidencia": "captura-real",
           "fontes": [
+            "videos/capturas/guias-staging/vendas-dashboard.png (staging v1.23.2, 05/11/2026)",
+            "manual-03-vendas#012",
+            "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas",
             "guia:scripts/dados-checklists-estagiarios.mjs#vendas"
           ]
         },
         {
-          "titulo": "Leia a Carteira de Pedidos",
-          "texto": "Em Vendas › Demonstrativos › Carteira de Pedidos, leia A faturar, A expedir, Em carga, Expedido, Entregue e o aging por dias.",
-          "evidencia": "base",
+          "titulo": "Leia os cartões do Dashboard",
+          "texto": "Os cartões resumem o período: Total em vendas, Ticket médio, Taxa de faturamento, Em aberto, Pedidos encerrados e Pendentes de faturamento. Mais abaixo, o Pipeline de Vendas lista os pedidos em aberto por valor, com os dias parados.",
+          "imagem": "/manuais/vendas/img/12-dashboard.webp",
+          "alt": "Cartões do Dashboard de Vendas: Total em vendas, Ticket médio, Taxa de faturamento, Em aberto, Pedidos encerrados e Pendentes de faturamento (valores borrados).",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Total em vendas",
+              "explicacao": "Valor dos pedidos no período e nos filtros escolhidos.",
+              "caixa": {
+                "x": 18.4,
+                "y": 42.6,
+                "w": 12.5,
+                "h": 14.3
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 2,
+              "rotulo": "Ticket médio",
+              "explicacao": "Valor médio por pedido; embaixo, quantos pedidos entraram na conta.",
+              "caixa": {
+                "x": 31.6,
+                "y": 42.6,
+                "w": 12.4,
+                "h": 14.3
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 3,
+              "rotulo": "Taxa de faturamento",
+              "explicacao": "Quanto dos pedidos já foi faturado; embaixo, quantos faturados.",
+              "caixa": {
+                "x": 44.8,
+                "y": 42.6,
+                "w": 12.5,
+                "h": 14.3
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 4,
+              "rotulo": "Em aberto",
+              "explicacao": "Pedidos aguardando, ainda Em aberto.",
+              "caixa": {
+                "x": 58,
+                "y": 42.6,
+                "w": 12.5,
+                "h": 14.3
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 5,
+              "rotulo": "Pendentes de faturamento",
+              "explicacao": "Pedidos que ainda não viraram nota.",
+              "caixa": {
+                "x": 84.5,
+                "y": 42.6,
+                "w": 12.5,
+                "h": 14.3
+              },
+              "lado": "cima"
+            }
+          ],
+          "zoom": {
+            "x": 17,
+            "y": 39,
+            "w": 82,
+            "h": 19
+          },
+          "atencao": "O bloco \"Crescimento vs. período anterior\" não segue o filtro de datas: compara janelas relativas a hoje.",
+          "evidencia": "captura-real",
           "fontes": [
+            "videos/capturas/guias-staging/vendas-dashboard.png (staging v1.23.2, 05/11/2026)",
+            "manual-03-vendas#012",
+            "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+          ]
+        },
+        {
+          "titulo": "Abra os Demonstrativos e a Carteira de Pedidos",
+          "texto": "Abra Vendas › Demonstrativos. São seis relatórios com exportação XLSX e PDF. Clique em Abrir no card Carteira de Pedidos e leia onde cada pedido está parado: a faturar, a expedir, em carga, entregue, e o aging por dias.",
+          "imagem": "/manuais/vendas/img/13-demonstrativos.webp",
+          "alt": "Demonstrativos de Vendas com os cards Vendas por Período, Carteira de Pedidos, Desempenho por Vendedor, Vendas por Obra, Mix por Linha e Cor e Desconto Concedido.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Vendas por Período",
+              "explicacao": "Quanto foi vendido (pedidos colocados) no período.",
+              "caixa": {
+                "x": 18.4,
+                "y": 20.6,
+                "w": 39.2,
+                "h": 18.3
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 2,
+              "rotulo": "Carteira de Pedidos",
+              "explicacao": "A posição de hoje: o que falta faturar e expedir.",
+              "caixa": {
+                "x": 59,
+                "y": 22.6,
+                "w": 37,
+                "h": 8.9
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 3,
+              "rotulo": "Abrir",
+              "explicacao": "Abre o relatório, com filtros e exportação.",
+              "caixa": {
+                "x": 59.6,
+                "y": 34.2,
+                "w": 3.1,
+                "h": 2.8
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 4,
+              "rotulo": "Desempenho por Vendedor",
+              "explicacao": "Vendido × meta × comissão, por vendedor.",
+              "caixa": {
+                "x": 18.4,
+                "y": 40.3,
+                "w": 39.2,
+                "h": 16.1
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 5,
+              "rotulo": "Vendas por Obra",
+              "explicacao": "Quanto cada obra representa.",
+              "caixa": {
+                "x": 58.4,
+                "y": 40.3,
+                "w": 39.2,
+                "h": 16.1
+              },
+              "lado": "direita"
+            }
+          ],
+          "zoom": {
+            "x": 16,
+            "y": 18.1,
+            "w": 84,
+            "h": 41
+          },
+          "atencao": "A base lista as faixas A faturar, A expedir, Em carga, Expedido e Entregue; o card da tela (staging 05/11/2026) cita a faturar, a expedir, em carga, entregue e re-expedição. A conferir dentro do relatório.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/capturas/guias-staging/vendas-demonstrativos.png (staging v1.23.2, 05/11/2026)",
+            "manual-03-vendas#012",
+            "plano-vendas#063",
+            "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas",
             "guia:scripts/dados-checklists-estagiarios.mjs#vendas"
           ]
         },
         {
           "titulo": "Consulte metas e comissões",
-          "texto": "Em Vendas › Metas de Vendas, veja o % da meta, a projeção e os cenários. Em Vendas › Controle de Comissão, o Simulador calcula a comissão sem gravar nada.",
-          "evidencia": "base",
+          "texto": "No menu de Vendas, abra o grupo Metas de Vendas: Dashboard é o painel (% da meta, projeção e cenários) e Cadastro é a lista de metas. Em Controle de Comissão, o Simulador calcula a comissão sem gravar nada.",
+          "imagem": "/manuais/vendas/img/14-metas.webp",
+          "alt": "Menu lateral de Vendas com o grupo Metas de Vendas aberto (Dashboard e Cadastro) e o grupo Controle de Comissão.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Metas de Vendas",
+              "explicacao": "Grupo do painel e do cadastro de metas (recurso PRO).",
+              "caixa": {
+                "x": 0.6,
+                "y": 35.6,
+                "w": 14.4,
+                "h": 3.1
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 2,
+              "rotulo": "Dashboard",
+              "explicacao": "Painel de metas: % da meta, projeção e cenários.",
+              "caixa": {
+                "x": 3.3,
+                "y": 39.4,
+                "w": 11.7,
+                "h": 3.1
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 3,
+              "rotulo": "Cadastro",
+              "explicacao": "Metas mensais por empresa ou por vendedor, sem vigência sobreposta.",
+              "caixa": {
+                "x": 3.3,
+                "y": 43.1,
+                "w": 11.7,
+                "h": 3.1
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 4,
+              "rotulo": "Controle de Comissão",
+              "explicacao": "Configurações, regras e o Simulador de comissão.",
+              "caixa": {
+                "x": 0.6,
+                "y": 47.2,
+                "w": 14.4,
+                "h": 3.1
+              },
+              "lado": "direita"
+            }
+          ],
+          "zoom": {
+            "x": 0,
+            "y": 30,
+            "w": 20,
+            "h": 23.1
+          },
+          "atencao": "Sem meta cadastrada, o painel mostra \"0% da meta — No ritmo\", que não é resultado real. Meta por equipe não existe.",
+          "evidencia": "captura-real",
           "fontes": [
+            "videos/capturas/guias-staging/vendas-metas-menu.png (staging v1.23.2, 05/11/2026)",
+            "roteiro-vendas-03-metas-de-vendas#007",
+            "oficial-ven-c-implantacao#009",
+            "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas",
             "guia:scripts/dados-checklists-estagiarios.mjs#vendas"
           ]
         }
@@ -935,9 +1234,65 @@
         },
         {
           "titulo": "Acompanhe as aprovações de desconto",
-          "texto": "Vendas › Aprovações lista só solicitações de comissão e de desconto (DOCUMENTO, SOLICITANTE, VALOR, TIPO, ESPERA). Pedido sem desconto não gera aprovação, e quem solicita não vê a própria solicitação.",
-          "evidencia": "base",
+          "texto": "Vendas › Aprovações lista as solicitações de comissão e de desconto de pedido de venda que aguardam a sua decisão. Pedido sem desconto não gera aprovação, e quem solicita não vê a própria solicitação. O pedido com desconto acima da faixa fica em Aprovação pendente e não fatura nem encerra até a decisão.",
+          "imagem": "/manuais/vendas/img/15-aprovacoes.webp",
+          "alt": "Tela Aprovações de Vendas, vazia, com as colunas Documento, Solicitante, Valor, Tipo, Espera e Ações.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Aprovações",
+              "explicacao": "Item do menu de Vendas, logo abaixo de Demonstrativos.",
+              "caixa": {
+                "x": 0.6,
+                "y": 23.9,
+                "w": 14.4,
+                "h": 3.1
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 2,
+              "rotulo": "Aprovações",
+              "explicacao": "Comissões e descontos de pedido de venda aguardando a sua decisão.",
+              "caixa": {
+                "x": 22.3,
+                "y": 12.8,
+                "w": 30,
+                "h": 6.1
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 3,
+              "rotulo": "Colunas",
+              "explicacao": "Documento, Solicitante, Valor, Tipo (comissão ou desconto) e Espera.",
+              "caixa": {
+                "x": 18.6,
+                "y": 32.6,
+                "w": 79.2,
+                "h": 2.5
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 4,
+              "rotulo": "Lista vazia",
+              "explicacao": "Nenhuma comissão ou desconto aguardando você.",
+              "caixa": {
+                "x": 43.2,
+                "y": 49.7,
+                "w": 29.6,
+                "h": 3.1
+              },
+              "lado": "baixo"
+            }
+          ],
+          "evidencia": "captura-real",
           "fontes": [
+            "videos/capturas/guias-staging/vendas-aprovacoes.png (staging v1.23.2, 05/11/2026)",
+            "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas",
             "regra-vendas-aprovacoes-cobrem-comissao-e-desconto"
           ]
         }
@@ -981,6 +1336,13 @@
         "fontes": [
           "regra-vendas-parcelas-recalcular-e-recalcular-parcelas"
         ]
+      },
+      {
+        "pergunta": "Por que o pedido não fatura nem encerra?",
+        "resposta": "Se ele está em Aprovação pendente (desconto acima da faixa), espera o aprovador em Vendas › Aprovações; depois volta a Em aberto.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+        ]
       }
     ],
     "errosComuns": [
@@ -1019,6 +1381,186 @@
           "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
         ]
       }
+    ],
+    "configuracoes": [
+      {
+        "item": "Condições de Pagamento",
+        "onde": "Vendas › Configurações › Condições de Pagamento",
+        "porque": "As parcelas do pedido seguem os percentuais da condição; trocar a condição no pedido regenera as parcelas.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao",
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+        ]
+      },
+      {
+        "item": "CFOPs de venda",
+        "onde": "Fiscal › Configurações › CFOP",
+        "porque": "O CFOP decide se o pedido exige condição, plano e parcelas (\"O CFOP do pedido gera financeiro, então estes campos são obrigatórios: …\").",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas",
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao"
+        ]
+      },
+      {
+        "item": "Alçadas de Desconto",
+        "onde": "Vendas › Configurações › Alçadas de Desconto",
+        "porque": "Faixas por empresa (percentual ou valor, nível e aprovador), sem sobreposição. Desconto que vem do CEM, do Mobi ou do arquivo não conta para a alçada.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+        ]
+      },
+      {
+        "item": "Local de estoque",
+        "onde": "Estoque › Locais",
+        "porque": "Sem almoxarifado central ativo a nota do pedido não finaliza e o número da nota é consumido.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+        ]
+      },
+      {
+        "item": "Controle de Comissão",
+        "onde": "Vendas › Controle de Comissão › Configurações e Regras",
+        "porque": "\"Quando a comissão conta\" (No recebimento / No faturamento) e a base valem só para comissões novas; o pagamento gera título no Contas a Pagar.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+        ]
+      },
+      {
+        "item": "Metas de Vendas",
+        "onde": "Vendas › Metas de Vendas › Cadastro",
+        "porque": "Metas mensais por empresa ou vendedor (PRO); o realizado são os pedidos não cancelados pela data do pedido.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas",
+          "oficial-ven-c-implantacao#009"
+        ]
+      },
+      {
+        "item": "Contratos de Fornecimento",
+        "onde": "Vendas › Contratos de Fornecimento",
+        "porque": "Valor global só muda em rascunho; pedido vinculado não cancela e só vira nota pelo Faturar do contrato.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+        ]
+      }
+    ],
+    "integracoes": [
+      {
+        "acao": "Gerar Títulos",
+        "modulo": "Financeiro (Contas a Receber)",
+        "efeito": "Um título por parcela; os campos financeiros do pedido travam (\"…pois o pedido possui títulos a receber ativos vinculados…\").",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+        ]
+      },
+      {
+        "acao": "Faturar",
+        "modulo": "Faturamento",
+        "efeito": "Abre a Nova NF-e com cliente, CFOP, parcelas e impostos do pedido; ao salvar a nota, o pedido passa a Faturado.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+        ]
+      },
+      {
+        "acao": "Salvar a nota de um pedido sem títulos",
+        "modulo": "Financeiro (Contas a Receber)",
+        "efeito": "Quando o CFOP gera financeiro, é a nota que gera os títulos.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+        ]
+      },
+      {
+        "acao": "Liberar para Expedição",
+        "modulo": "Expedição",
+        "efeito": "O pedido entra na fila de carga (exige o módulo Expedição); item físico sem peso impede a liberação.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+        ]
+      },
+      {
+        "acao": "Cancelar pedido com OP ativa",
+        "modulo": "Produção",
+        "efeito": "A OP não é cancelada: o sistema avisa, pede confirmação e marca a OP.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+        ]
+      },
+      {
+        "acao": "Pagar a comissão",
+        "modulo": "Financeiro (Contas a Pagar)",
+        "efeito": "Gera título a pagar da comissão.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+        ]
+      },
+      {
+        "acao": "Pedido nascido no CRM ou no CEM",
+        "modulo": "CRM e Integração CEM",
+        "efeito": "Chega Em aberto e segue as regras de Vendas; o do CRM vem sem vendedor e sem condição de pagamento.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm",
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+        ]
+      }
+    ],
+    "roteiroDemonstracao": [
+      {
+        "passo": "Abra a lista Pedidos de Venda",
+        "mostrar": "Filtro padrão Em Aberto e, com \"Todos\", os outros status; colunas TÍTULOS e NOTA FISCAL.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+        ]
+      },
+      {
+        "passo": "Comece um + Novo Pedido",
+        "mostrar": "Empresa → Cliente libera o CFOP filtrado pelo estado do cliente.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+        ]
+      },
+      {
+        "passo": "Inclua um item e as parcelas",
+        "mostrar": "Dados do Item com Aplicar, Meio Pagamento, Portador e Conta de Fluxo de Caixa.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+        ]
+      },
+      {
+        "passo": "Salve e confira na lista",
+        "mostrar": "\"Pedido PV-xxxxxx criado\"; na lista, Em aberto, Sem títulos e Nota Fiscal \"—\".",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+        ]
+      },
+      {
+        "passo": "Abra o menu ⋯ do pedido",
+        "mostrar": "Faturar, Gerar Títulos, Encerrar e Cancelar, e a decisão pedido × nota para o contas a receber.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+        ]
+      },
+      {
+        "passo": "Mostre o Dashboard Vendas",
+        "mostrar": "Filtro de período com Aplicar e os cartões recalculados.",
+        "fontes": [
+          "videos/capturas/guias-staging/vendas-dashboard.png (staging v1.23.2, 05/11/2026)"
+        ]
+      },
+      {
+        "passo": "Abra Demonstrativos › Carteira de Pedidos",
+        "mostrar": "Onde cada pedido está parado e o aging.",
+        "fontes": [
+          "videos/capturas/guias-staging/vendas-demonstrativos.png (staging v1.23.2, 05/11/2026)",
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+        ]
+      },
+      {
+        "passo": "Feche com Aprovações",
+        "mostrar": "Fila de comissões e descontos; o vendedor não aprova o próprio desconto.",
+        "fontes": [
+          "videos/capturas/guias-staging/vendas-aprovacoes.png (staging v1.23.2, 05/11/2026)",
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+        ]
+      }
     ]
   },
   "fontes": [
@@ -1042,13 +1584,33 @@
     "videos/public/telas/compra-em-nome-do-cliente/16-menu-encerrar.png",
     "midia/brutos/vendas/prints/vendas_c05_02.png",
     "midia/brutos/vendas/prints/vendas_c08_02.png",
-    "midia/brutos/vendas/roteiro-telas.md"
+    "midia/brutos/vendas/roteiro-telas.md",
+    "videos/public/telas/fluxo-1-vendas/01-lista.png",
+    "videos/public/telas/fluxo-1-vendas/02-novo-vazio.png",
+    "videos/public/telas/fluxo-1-vendas/03-cabecalho.png",
+    "videos/public/telas/fluxo-1-vendas/03b-cfop.png",
+    "videos/public/telas/fluxo-1-vendas/04-item.png",
+    "guia:videos/roteiros/fluxo-1-vendas.json#11",
+    "guia:videos/roteiros/fluxo-1-vendas.json#15",
+    "videos/public/telas/fluxo-1-vendas/05-parcelas.png",
+    "videos/public/telas/fluxo-1-vendas/06-salvo-b.png",
+    "videos/public/telas/fluxo-1-vendas/07-lista-novo.png",
+    "videos/capturas/guias-staging/vendas-dashboard.png (staging v1.23.2, 05/11/2026)",
+    "manual-03-vendas#012",
+    "videos/capturas/guias-staging/vendas-demonstrativos.png (staging v1.23.2, 05/11/2026)",
+    "plano-vendas#063",
+    "videos/capturas/guias-staging/vendas-metas-menu.png (staging v1.23.2, 05/11/2026)",
+    "roteiro-vendas-03-metas-de-vendas#007",
+    "oficial-ven-c-implantacao#009",
+    "videos/capturas/guias-staging/vendas-aprovacoes.png (staging v1.23.2, 05/11/2026)",
+    "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao",
+    "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm",
+    "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
   ],
   "pendencias": [
-    "CAPTURA: Vendas › Dashboard Vendas — cartões com filtro de período aplicado.",
-    "CAPTURA: Vendas › Demonstrativos › Carteira de Pedidos — faixas A faturar, A expedir, Em carga, Expedido, Entregue e aging.",
-    "CAPTURA: Vendas › Metas de Vendas e Vendas › Controle de Comissão › Simulador.",
-    "CAPTURA: Vendas › Aprovações — lista com uma solicitação de desconto (sem clicar em Aprovar).",
+    "CAPTURA: Carteira de Pedidos aberta (faixas e aging), painel de Metas e Simulador de comissão, e Vendas › Aprovações com uma solicitação (sem clicar em Aprovar).",
+    "DIVERGÊNCIA: faixas da Carteira de Pedidos — base (A faturar, A expedir, Em carga, Expedido, Entregue) × card da tela (a faturar, a expedir, em carga, entregue e re-expedição).",
+    "A CONFERIR: nome do Dashboard — menu \"Dashboard Vendas\", título \"Dashboard de Vendas\" e caminho no alto \"Dashboard Geral\" (staging 05/11/2026).",
     "CAPTURA: Vendas › Pedidos de Venda › ⋯ › Faturar — Nova NF-e com o diálogo Selecionar Itens para Importar (sem transmitir).",
     "CAPTURA: menu ⋯ de pedido Faturado (Liberar para Expedição, \"Pedido já faturado\") e de pedido Lib. Expedição (Reverter Liberação).",
     "CAPTURA: toast \"Pedido PV-xxxxxx criado\" da primeira gravação (a captura usada mostra \"atualizado\"; a de 04/11 tem um aviso fiscal laranja com CPF/CNPJ a cobrir).",

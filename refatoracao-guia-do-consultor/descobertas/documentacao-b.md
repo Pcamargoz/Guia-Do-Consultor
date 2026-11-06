@@ -100,3 +100,40 @@ onde os itens são pequenos ou próximos, sem `destaque` combinado com vários m
   estoque-inventarios, producao-dashboard, servicos-dashboard, servicos-assistencias, projetos-todos, projetos-painel-financeiro,
   expedicao-visao-geral, expedicao-cargas, expedicao-ocorrencias. Algumas mostram nomes de clientes e valores (ex.: projetos-todos,
   recebimento-dashboard) e exigiriam borrão. As demais capturas da lista não foram abertas.
+
+## Capricho (05–06/11/2026) — iniciante + consultor veterano
+
+Rodada final nos guias de recebimento, estoque, producao, servicos, projetos e expedicao: capturas do staging v1.23.2
+(`videos/capturas/guias-staging/`) tratadas com borrão (valores em R$, nomes de clientes/obras/equipes, IDs de cliente/técnico,
+placa/veículo/motorista), olhadas antes e depois; webp 1600×900 q82. Todo passo básico tem imagem anotada v2. Bloco `consultor`
+v2.1 preenchido (configuracoes, integracoes, roteiroDemonstracao) com fontes do checklist de implantação, da base do Harness e de
+`lib/conteudo/base/<modulo>.json`. Status segue `rascunho`.
+
+| Módulo | Passos (com imagem) | Básicos com imagem | Imagens novas | Config. / Integr. / Roteiro / Implant. / Perguntas / Erros |
+|---|---|---|---|---|
+| Recebimento | 15 (13) | 10/10 | 07-notas-staging, 08-nova-nota-escolher, 09-dashboard | 6 / 7 / 8 / 8 / 7 / 7 |
+| Estoque | 17 (17) | 11/11 | 08-visao-geral, 09-movimentos-filtros, 10-inventarios-tipos, 11-reposicao | 6 / 7 / 7 / 7 / 7 / 7 |
+| Produção | 13 (11) | 11/11 | 05-nova-op, 06-painel-de-fabrica, 07-separacao-de-materiais, 08-visao-geral | 7 / 8 / 7 / 8 / 5 / 7 |
+| Serviços | 17 (14) | 14/14 | 05-nova-medicao, 06-medicoes-lista, 07-instalacoes-lista, 08-cockpit-de-campo | 8 / 7 / 8 / 7 / 6 / 7 |
+| Projetos | 13 (12) | 10/10 | 04-lista-de-projetos, 05-todos-os-projetos, 06-painel-escolher-obra, 07-andamento-das-obras | 6 / 6 / 8 / 7 / 5 / 6 |
+| Expedição | 14 (13) | 6/6 | 05-visao-geral, 06-cargas-staging, 07-conferencia, 08-ocorrencias, 09-pendencias, 10-roteirizacao | 8 / 7 / 8 / 7 / 5 / 5 |
+
+Sem imagem (sem captura): recebimento — 2 passos da conferência física; produção — requisições e Marcar produzido; serviços —
+diálogo de itens, medir vãos, aprovação; projetos — local de estoque da obra; expedição — Parâmetros (checkpoints).
+Não usadas: `servicos-dashboard` (abriu Upgrade › Alumina) e `servicos-diario-obra`.
+
+### Divergências novas (a conferir na tela; também em `pendencias` de cada guia)
+- Recebimento: lista do staging mostra NR-000004, a regra diz que a lista mostra NF-.
+- Estoque: inventário Geral bloqueia o local × Cíclico/Pontual só os produtos (tela) × base "congela o local"; Reposição "até o
+  máximo" (tela) × COM-SUG-001 (máximo não usado).
+- Produção: dica do campo Empresa da Nova OP ("em branco, herda do pedido") × procedimento/teste (obrigatória); Painel de fábrica
+  com Kanban/Timeline/Tabela/Gantt (tela) × Cards/Lista/Timeline (checklist) — guia segue a tela.
+- Serviços: staging sem "Aprovações" no menu × erro comum "duas Aprovações"; Configurações › Config. Serviços × Serviços ›
+  Configurações; linha de Instalações com número fora do formato INS-.
+- Projetos: topo da lista em Configurações › Projetos; menu tem Insumos da Obra e não Diário de Obra; botão Cronograma sem fonte.
+- Expedição: telas Separação/Conferência/Carregamento × checkpoints no detalhe da carga (mesmo registro?); Pendências de Expedição
+  fora do manual-09; coluna Separado (Cargas) × Fechada (Visão Geral); licença PRO da roteirização não descrita.
+
+### Verificado
+JSON dos 6 guias abre; todas as imagens referenciadas existem e nenhuma sobra sem uso; `previa.js` sem problemas nos 6 módulos
+(80 prévias em `%TEMP%\guias-capricho-b\previa\`), prévias novas olhadas inclusive zooms. Validação na tela do Flow continua pendente.

@@ -1,9 +1,9 @@
 {
   "modulo": "primeiros-passos",
   "titulo": "Primeiros passos — guia visual",
-  "resumo": "Você vai reconhecer as partes da tela do Faktory Flow, trocar de módulo, achar qualquer tela pela busca e ler uma lista sem alterar nenhum registro. O que vale aqui vale para todos os módulos.",
-  "versaoSistema": "1.23.2 (tela Início, staging 05/11/2026) e 1.22.13 (exemplos de lista em Vendas › Pedidos de Venda)",
-  "atualizadoEm": "2026-11-05",
+  "resumo": "Você vai reconhecer as partes da tela do Faktory Flow, trocar de módulo, achar qualquer tela pela busca (Ctrl+K), abrir os grupos do menu, ler uma lista sem alterar nenhum registro e saber onde ficam avisos e administração. O que vale aqui vale para todos os módulos.",
+  "versaoSistema": "1.23.2 (Início, menu de módulos, busca, notificações e GLOBAIS no staging, 05/11/2026) e 1.22.13 (exemplos de lista em Vendas › Pedidos de Venda)",
+  "atualizadoEm": "2026-11-06",
   "status": "rascunho",
   "conceitos": [
     {
@@ -352,6 +352,150 @@
             "videos/capturas/guias-staging/inicio-dashboard.png (staging v1.23.2, 05/11/2026)",
             "guia:scripts/dados-checklists-estagiarios.mjs#navegacao"
           ]
+        },
+        {
+          "titulo": "Abra e feche um grupo do menu",
+          "texto": "Clique no nome de um grupo com seta para abrir ou fechar. Seta para baixo: o grupo está aberto e mostra as telas. Seta para o lado: o grupo está fechado e esconde telas. Se não achar uma tela, abra os grupos antes de concluir que ela não existe.",
+          "imagem": "/manuais/primeiros-passos/img/07-globais.webp",
+          "alt": "Menu lateral do módulo Vendas com Metas de Vendas fechado, Cadastros aberto mostrando Participantes, Produtos e Projetos, e Relatórios fechado.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Grupo fechado",
+              "explicacao": "Metas de Vendas com a seta para o lado: as telas do grupo estão escondidas.",
+              "caixa": {
+                "x": 0.6,
+                "y": 35.6,
+                "w": 14.4,
+                "h": 3.1
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 2,
+              "rotulo": "Grupo aberto",
+              "explicacao": "Cadastros com a seta para baixo: as telas aparecem logo abaixo, com recuo.",
+              "caixa": {
+                "x": 0.6,
+                "y": 44.4,
+                "w": 14.4,
+                "h": 3.1
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 3,
+              "rotulo": "Tela do grupo",
+              "explicacao": "Participantes, Produtos e Projetos: o grupo Cadastros aparece em vários módulos com essas telas.",
+              "caixa": {
+                "x": 3,
+                "y": 48.3,
+                "w": 12,
+                "h": 10.6
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 4,
+              "rotulo": "Relatórios",
+              "explicacao": "Outro grupo fechado: relatórios e consultas do módulo.",
+              "caixa": {
+                "x": 0.6,
+                "y": 60.1,
+                "w": 14.4,
+                "h": 3.1
+              },
+              "lado": "direita"
+            }
+          ],
+          "zoom": {
+            "x": 0,
+            "y": 31.9,
+            "w": 20,
+            "h": 31.9
+          },
+          "dica": "O grupo Cadastros (Participantes, Produtos, Projetos) aparece nos menus de Vendas, CRM e Compras: é o mesmo cadastro em todos.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/capturas/guias-staging/primeiros-passos-globais.png (staging v1.23.2, 05/11/2026)",
+            "videos/capturas/guias-staging/crm-agenda.png (staging v1.23.2, 05/11/2026)",
+            "videos/capturas/guias-staging/compras-sugestao.png (staging v1.23.2, 05/11/2026)",
+            "guia:scripts/dados-checklists-estagiarios.mjs#navegacao"
+          ]
+        },
+        {
+          "titulo": "Conheça o bloco GLOBAIS",
+          "texto": "No fim do menu lateral fica o bloco GLOBAIS, igual em todos os módulos: Painel de Controle, Configurações, Segurança, Treinamento, Aplicativos e Assinatura. Abra Painel de Controle para ver os itens. São telas de administração: só leia.",
+          "imagem": "/manuais/primeiros-passos/img/07-globais.webp",
+          "alt": "Bloco GLOBAIS no fim do menu lateral com Painel de Controle aberto: Personalização e processos, Alertas automáticos e Configurar relatórios.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "GLOBAIS",
+              "explicacao": "Bloco de administração do sistema, abaixo do menu do módulo.",
+              "caixa": {
+                "x": 0.8,
+                "y": 74.3,
+                "w": 4.4,
+                "h": 2.2
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 2,
+              "rotulo": "Painel de Controle",
+              "explicacao": "Grupo de administração; a seta abre os itens.",
+              "caixa": {
+                "x": 0.6,
+                "y": 77.9,
+                "w": 14.4,
+                "h": 3.1
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 3,
+              "rotulo": "Personalização e processos",
+              "explicacao": "Item de administração do Painel de Controle: abra só com o administrador.",
+              "caixa": {
+                "x": 3,
+                "y": 82.1,
+                "w": 12,
+                "h": 4.7
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 4,
+              "rotulo": "Alertas automáticos",
+              "explicacao": "Regras para o sistema avisar as pessoas certas quando algo acontece. Só na versão PRO e com permissão de alertas.",
+              "caixa": {
+                "x": 3,
+                "y": 87.8,
+                "w": 12,
+                "h": 3.1
+              },
+              "lado": "direita"
+            }
+          ],
+          "zoom": {
+            "x": 0,
+            "y": 70,
+            "w": 20,
+            "h": 27.8
+          },
+          "atencao": "Na versão Standard, Alertas automáticos avisa que o recurso é do plano PRO. Na versão PRO, \"Acesso Negado\" quer dizer permissão: fale com o administrador.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/capturas/guias-staging/primeiros-passos-globais.png (staging v1.23.2, 05/11/2026)",
+            "guia:scripts/dados-checklists-estagiarios.mjs#navegacao",
+            "roteiro-geral-04-avisos-e-alertas#019",
+            "roteiro-geral-04-avisos-e-alertas#020"
+          ]
         }
       ]
     },
@@ -364,18 +508,166 @@
       "passos": [
         {
           "titulo": "Troque de módulo pela grade",
-          "texto": "Clique na grade do canto superior esquerdo, digite o nome em Buscar módulo... e escolha. O topo do menu lateral passa a mostrar o módulo escolhido. Esc fecha o painel.",
-          "evidencia": "base",
+          "texto": "Clique na grade do canto superior esquerdo (Abrir menu de módulos). Abre o painel Módulos: digite o nome em Buscar módulo... ou clique no cartão. O topo do menu lateral passa a mostrar o módulo escolhido. O × ou a tecla Esc fecham o painel sem trocar.",
+          "imagem": "/manuais/primeiros-passos/img/04-menu-de-modulos.webp",
+          "alt": "Painel Módulos aberto sobre a tela Início, com o campo Buscar módulo..., os cartões dos módulos, o CRM destacado e o rodapé com 16 itens e Esc para fechar.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Abrir menu de módulos",
+              "explicacao": "O botão de grade abre e fecha este painel.",
+              "caixa": {
+                "x": 1.2,
+                "y": 2.4,
+                "w": 1.8,
+                "h": 3.2
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 2,
+              "rotulo": "Buscar módulo...",
+              "explicacao": "Digite parte do nome para filtrar os cartões.",
+              "caixa": {
+                "x": 2.3,
+                "y": 15.1,
+                "w": 22.5,
+                "h": 3.9
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 3,
+              "rotulo": "Módulo atual",
+              "explicacao": "O cartão do módulo em que você está fica destacado (aqui, CRM).",
+              "caixa": {
+                "x": 2,
+                "y": 31.3,
+                "w": 7.5,
+                "h": 10.3
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 4,
+              "rotulo": "Fechar",
+              "explicacao": "Fecha o painel sem trocar de módulo.",
+              "caixa": {
+                "x": 23,
+                "y": 10.1,
+                "w": 1.6,
+                "h": 2.8
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 5,
+              "rotulo": "Esc para fechar",
+              "explicacao": "Atalho de teclado para fechar o painel.",
+              "caixa": {
+                "x": 19.2,
+                "y": 87.1,
+                "w": 5.8,
+                "h": 2.8
+              },
+              "lado": "cima"
+            }
+          ],
+          "zoom": {
+            "x": 0,
+            "y": 0,
+            "w": 30,
+            "h": 91.9
+          },
+          "atencao": "O painel mostra os módulos liberados para a empresa. Módulo fora do plano não está contratado: quem resolve é o comercial, não o suporte.",
+          "evidencia": "captura-real",
           "fontes": [
+            "videos/capturas/guias-staging/primeiros-passos-menu-modulos.png (staging v1.23.2, 05/11/2026)",
+            "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao",
             "guia:scripts/dados-checklists-estagiarios.mjs#navegacao"
           ]
         },
         {
           "titulo": "Ache a tela com Ctrl+K",
-          "texto": "Pressione Ctrl+K e digite, por exemplo, \"pedido\". Aparecem Pedidos de Compra e Pedidos de Venda: use ↑↓ e Enter. A busca respeita as suas permissões e as licenças da empresa.",
+          "texto": "Pressione Ctrl+K (ou clique em Pesquisar funcionalidades) e digite parte do nome, por exemplo \"pedido\". Cada resultado mostra a tela e, embaixo, o módulo dela. Use ↑↓ para navegar, Enter para abrir e Esc para fechar. A busca respeita as suas permissões e as licenças da empresa.",
+          "imagem": "/manuais/primeiros-passos/img/05-busca.webp",
+          "alt": "Busca de funcionalidades com \"pedido\" digitado e três resultados: Pedidos de Compra (Compras), Pedidos de Venda (Vendas) e Pedidos do campo (Produção - Equipe externa).",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Pesquisar funcionalidades",
+              "explicacao": "Campo da busca de telas; o × limpa o texto.",
+              "caixa": {
+                "x": 46.6,
+                "y": 1.8,
+                "w": 20.2,
+                "h": 4.6
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 2,
+              "rotulo": "Pedidos de Compra",
+              "explicacao": "Resultado selecionado (em azul). Embaixo, o módulo: Compras.",
+              "caixa": {
+                "x": 47,
+                "y": 7.9,
+                "w": 19.1,
+                "h": 7.4
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 3,
+              "rotulo": "Pedidos de Venda",
+              "explicacao": "Mesma palavra em outro módulo: confira o nome embaixo (Vendas) antes de abrir.",
+              "caixa": {
+                "x": 47,
+                "y": 15.7,
+                "w": 19.1,
+                "h": 6.4
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 4,
+              "rotulo": "Pedidos do campo",
+              "explicacao": "Tela de Produção - Equipe externa: a busca procura em todos os módulos que você pode abrir.",
+              "caixa": {
+                "x": 47,
+                "y": 22.8,
+                "w": 19.1,
+                "h": 6.7
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 5,
+              "rotulo": "Atalhos",
+              "explicacao": "↑↓ navegar, Enter selecionar, Esc fechar.",
+              "caixa": {
+                "x": 47.2,
+                "y": 31,
+                "w": 19.3,
+                "h": 3.1
+              },
+              "lado": "baixo"
+            }
+          ],
+          "zoom": {
+            "x": 40,
+            "y": 0,
+            "w": 33,
+            "h": 40.3
+          },
           "atencao": "Hoje a busca ainda não encontra o módulo Tarefas: abra-o pelo menu de módulos.",
-          "evidencia": "base",
+          "evidencia": "captura-real",
           "fontes": [
+            "videos/capturas/guias-staging/primeiros-passos-busca.png (staging v1.23.2, 05/11/2026)",
             "roteiro-geral-07-primeiros-passos-e-navegacao#006",
             "guia:scripts/dados-checklists-estagiarios.mjs#navegacao",
             "faq-limitacoes-conhecidas-v1-22-12#015"
@@ -541,9 +833,82 @@
       "passos": [
         {
           "titulo": "Abra o sino de notificações",
-          "texto": "O sino tem as abas Geral e Solicitações. A lista pode mostrar \"0 notificações\" por um instante antes de carregar: espere.",
-          "evidencia": "base",
+          "texto": "Clique no sino, à direita do selo da empresa. O painel tem as abas Geral e Solicitações e diz quantas notificações há. Sem avisos, aparece \"Você está em dia\". A lista pode mostrar \"0 notificações\" por um instante antes de carregar: espere.",
+          "imagem": "/manuais/primeiros-passos/img/06-notificacoes.webp",
+          "alt": "Painel de notificações aberto com as abas Geral e Solicitações, o contador 0 notificações, Marcar todas como lidas, a mensagem Você está em dia e o link Ver histórico completo.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Sino",
+              "explicacao": "Abre e fecha o painel de notificações.",
+              "caixa": {
+                "x": 77.7,
+                "y": 2.2,
+                "w": 1.9,
+                "h": 3.6
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 2,
+              "rotulo": "Geral",
+              "explicacao": "Avisos do dia a dia do sistema.",
+              "caixa": {
+                "x": 54.5,
+                "y": 7.9,
+                "w": 12.1,
+                "h": 3.5
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 3,
+              "rotulo": "Solicitações",
+              "explicacao": "Avisos de solicitações. O próprio painel avisa que eles ainda vêm de um fluxo diferente do Geral.",
+              "caixa": {
+                "x": 66.8,
+                "y": 7.9,
+                "w": 12.1,
+                "h": 3.5
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 4,
+              "rotulo": "Marcar todas como lidas",
+              "explicacao": "Marca os avisos da lista como lidos.",
+              "caixa": {
+                "x": 69.8,
+                "y": 16.4,
+                "w": 9.4,
+                "h": 2.8
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 5,
+              "rotulo": "Ver histórico completo",
+              "explicacao": "Abre as notificações anteriores.",
+              "caixa": {
+                "x": 62.2,
+                "y": 36.3,
+                "w": 8.8,
+                "h": 2.8
+              },
+              "lado": "direita"
+            }
+          ],
+          "zoom": {
+            "x": 52,
+            "y": 0,
+            "w": 30,
+            "h": 41.9
+          },
+          "evidencia": "captura-real",
           "fontes": [
+            "videos/capturas/guias-staging/primeiros-passos-notificacoes.png (staging v1.23.2, 05/11/2026)",
             "guia:scripts/dados-checklists-estagiarios.mjs#navegacao"
           ]
         },
@@ -563,7 +928,8 @@
     "implantacao": [
       "Antes do primeiro acesso de cada pessoa: usuário e senha pessoais, o ambiente certo (teste ou produção) e a empresa a selecionar (trilha do estagiário, onboarding).",
       "Mostre a versão no rodapé do menu e o selo da empresa no cabeçalho: são as duas primeiras conferências quando algo parece diferente.",
-      "Explique que a empresa nova começa vazia e que os cadastros-base (unidade, almoxarifado, condição e meio de pagamento, plano de contas, conta bancária, CFOP e NCM) vêm antes de qualquer documento."
+      "Explique que a empresa nova começa vazia e que os cadastros-base (unidade, almoxarifado, condição e meio de pagamento, plano de contas, conta bancária, CFOP e NCM) vêm antes de qualquer documento.",
+      "No primeiro acesso de cada usuário, abra com ele o painel Módulos e confira que aparecem só os módulos contratados e liberados para o perfil (Minha Assinatura e Segurança › Perfis de Acesso)."
     ],
     "perguntasDoCliente": [
       {
@@ -609,6 +975,123 @@
         "fontes": [
           "guia:scripts/dados-checklists-estagiarios.mjs#onboarding"
         ]
+      },
+      {
+        "titulo": "Concluir que a tela não existe.",
+        "texto": "Antes, abra os grupos do menu com seta, procure no Ctrl+K e confira o filtro padrão da lista.",
+        "fontes": [
+          "guia:scripts/dados-checklists-estagiarios.mjs#navegacao",
+          "roteiro-geral-07-primeiros-passos-e-navegacao#006"
+        ]
+      }
+    ],
+    "configuracoes": [
+      {
+        "item": "Minha Assinatura",
+        "onde": "Minha Assinatura (bloco GLOBAIS › Assinatura)",
+        "porque": "Mostra a versão, os limites de empresas e de usuários e os módulos contratados. Módulo fora do plano responde \"Módulo não contratado\" e se resolve no comercial.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao"
+        ]
+      },
+      {
+        "item": "Perfis de Acesso e Usuários",
+        "onde": "Segurança › Perfis de Acesso e Segurança › Usuários",
+        "porque": "O menu e a busca Ctrl+K mostram só o que o perfil libera. Usuário sem perfil entra e não vê nada.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao",
+          "roteiro-geral-07-primeiros-passos-e-navegacao#006"
+        ]
+      },
+      {
+        "item": "Alertas automáticos",
+        "onde": "Painel de Controle › Alertas automáticos (GLOBAIS)",
+        "porque": "Regras para avisar as pessoas certas quando algo acontece ou num horário. Só na versão PRO e com as permissões de alertas.",
+        "fontes": [
+          "roteiro-geral-04-avisos-e-alertas#019",
+          "roteiro-geral-04-avisos-e-alertas#020"
+        ]
+      }
+    ],
+    "integracoes": [
+      {
+        "acao": "Clicar na seta de um Alerta urgente da Início",
+        "modulo": "Vendas, Financeiro e Produção",
+        "efeito": "Abre a tela do módulo ligada ao alerta (ex.: pedidos aguardando faturamento → Pedidos de Venda).",
+        "fontes": [
+          "videos/capturas/guias-staging/inicio-dashboard.png (staging v1.23.2, 05/11/2026)"
+        ]
+      },
+      {
+        "acao": "Selo da empresa no cabeçalho",
+        "modulo": "Todos",
+        "efeito": "Tudo o que se vê e se grava é da empresa selecionada; as configurações de integração também valem para a empresa ativa.",
+        "fontes": [
+          "guia:scripts/dados-checklists-estagiarios.mjs#navegacao",
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+        ]
+      },
+      {
+        "acao": "Escolher um resultado no Ctrl+K",
+        "modulo": "Qualquer módulo",
+        "efeito": "Abre a tela do módulo indicado embaixo do resultado, se o perfil e a licença permitirem.",
+        "fontes": [
+          "videos/capturas/guias-staging/primeiros-passos-busca.png (staging v1.23.2, 05/11/2026)",
+          "roteiro-geral-07-primeiros-passos-e-navegacao#006"
+        ]
+      }
+    ],
+    "roteiroDemonstracao": [
+      {
+        "passo": "Mostre a tela Início",
+        "mostrar": "Alertas urgentes com a seta de atalho, Tarefas do dia e Resumo do negócio (passo \"Confira a tela Início\").",
+        "fontes": [
+          "videos/capturas/guias-staging/inicio-dashboard.png (staging v1.23.2, 05/11/2026)"
+        ]
+      },
+      {
+        "passo": "Leia o cabeçalho e o menu lateral",
+        "mostrar": "Caminho da tela, selo da empresa, MÓDULO atual, grupos com seta e a versão no rodapé.",
+        "fontes": [
+          "videos/capturas/guias-staging/inicio-dashboard.png (staging v1.23.2, 05/11/2026)",
+          "videos/capturas/guias-staging/primeiros-passos-globais.png (staging v1.23.2, 05/11/2026)"
+        ]
+      },
+      {
+        "passo": "Troque de módulo pela grade",
+        "mostrar": "Painel Módulos com Buscar módulo... e o fechamento por Esc.",
+        "fontes": [
+          "videos/capturas/guias-staging/primeiros-passos-menu-modulos.png (staging v1.23.2, 05/11/2026)"
+        ]
+      },
+      {
+        "passo": "Ache uma tela com Ctrl+K",
+        "mostrar": "\"pedido\" traz Pedidos de Compra, Pedidos de Venda e Pedidos do campo, cada um com o módulo embaixo.",
+        "fontes": [
+          "videos/capturas/guias-staging/primeiros-passos-busca.png (staging v1.23.2, 05/11/2026)"
+        ]
+      },
+      {
+        "passo": "Abra Vendas › Pedidos de Venda",
+        "mostrar": "Mais…, Filtros, + Novo Pedido e o filtro padrão Status \"Em Aberto\".",
+        "fontes": [
+          "videos/public/telas/compra-em-nome-do-cliente/05-pedidos.png"
+        ]
+      },
+      {
+        "passo": "Abra o menu ⋯ de uma linha sem clicar",
+        "mostrar": "Baixar PDF só consulta; Faturar, Encerrar, Cancelar e Excluir alteram dados.",
+        "fontes": [
+          "videos/public/telas/compra-em-nome-do-cliente/16-menu-encerrar.png"
+        ]
+      },
+      {
+        "passo": "Feche com o sino e o bloco GLOBAIS",
+        "mostrar": "Abas Geral e Solicitações; Painel de Controle como área de administração.",
+        "fontes": [
+          "videos/capturas/guias-staging/primeiros-passos-notificacoes.png (staging v1.23.2, 05/11/2026)",
+          "videos/capturas/guias-staging/primeiros-passos-globais.png (staging v1.23.2, 05/11/2026)"
+        ]
       }
     ]
   },
@@ -622,13 +1105,23 @@
     "regra-geral-os-dados-pertencem-a-empresa-e-uma-empresa-nova-comeca-vazia",
     "videos/public/telas/compra-em-nome-do-cliente/05-pedidos.png",
     "videos/public/telas/compra-em-nome-do-cliente/16-menu-encerrar.png",
-    "videos/capturas/guias-staging/inicio-dashboard.png (staging v1.23.2, 05/11/2026)"
+    "videos/capturas/guias-staging/inicio-dashboard.png (staging v1.23.2, 05/11/2026)",
+    "videos/capturas/guias-staging/primeiros-passos-globais.png (staging v1.23.2, 05/11/2026)",
+    "videos/capturas/guias-staging/crm-agenda.png (staging v1.23.2, 05/11/2026)",
+    "videos/capturas/guias-staging/compras-sugestao.png (staging v1.23.2, 05/11/2026)",
+    "roteiro-geral-04-avisos-e-alertas#019",
+    "roteiro-geral-04-avisos-e-alertas#020",
+    "videos/capturas/guias-staging/primeiros-passos-menu-modulos.png (staging v1.23.2, 05/11/2026)",
+    "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao",
+    "videos/capturas/guias-staging/primeiros-passos-busca.png (staging v1.23.2, 05/11/2026)",
+    "videos/capturas/guias-staging/primeiros-passos-notificacoes.png (staging v1.23.2, 05/11/2026)",
+    "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
   ],
   "pendencias": [
-    "CAPTURA: painel Abrir menu de módulos aberto, com o campo Buscar módulo... e os 15 módulos.",
-    "CAPTURA: busca Ctrl+K com \"pedido\" digitado e as sugestões Pedidos de Compra e Pedidos de Venda.",
-    "CAPTURA: sino de Notificações aberto (abas Geral e Solicitações) e menu do usuário (Modo Escuro, Densidade).",
-    "CAPTURA: bloco GLOBAIS expandido (Painel de Controle, Configurações, Segurança, Treinamento › Minhas Trilhas, Aplicativos, Assinatura).",
+    "CAPTURA: menu do usuário (Modo Escuro, Densidade) — o passo \"Conheça as preferências do usuário\" segue sem imagem.",
+    "A CONFERIR: no staging (05/11/2026) o painel Módulos mostra 16 itens, incluindo CEM Mobi, Config. Interna e Implantação. Confirmar quais aparecem no ambiente de um cliente antes de citar a quantidade.",
+    "A CONFERIR: aba Solicitações do sino — o painel diz que avisos de solicitações \"ainda vêm de fluxos diferentes\"; sem fonte na base sobre o que entra em cada aba.",
+    "SEM FONTE NA BASE: o que fazem Personalização e processos e Configurar relatórios (Painel de Controle). Só os nomes vêm da captura.",
     "Alumina e \"Apresentar na TV\" não foram abertos na exploração (trilha do estagiário, não validado).",
     "DECISÃO DO COORDENADOR: o capítulo \"Lendo uma lista\" ainda usa capturas de Vendas › Pedidos de Venda (exemplo citado pela trilha, por mostrar o filtro padrão). Os capítulos de tela usam a Início (staging v1.23.2, 05/11/2026)."
   ]

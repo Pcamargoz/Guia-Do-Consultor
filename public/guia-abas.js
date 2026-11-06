@@ -181,6 +181,105 @@
     const a = e.target.closest('[data-aba-baixo]');
     if (a) { e.preventDefault(); irPara(a.dataset.abaBaixo); }
   });
+  /* ---------- Busca nos guias (v2.3): passos, conceitos, palavras, configurações e erros de todos os módulos ----------
+     Índice montado no navegador a partir dos guia.json visíveis ao perfil (o servidor já filtra: guia oculto = 404).
+     Atalho "/" foca a busca. Resultado leva ao módulo e rola até o trecho (destaque breve). */
+  const semAcento = (s) => String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+  const busca = document.createElement('div');
+  busca.className = 'sh-busca';
+  busca.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>'
+    + '<input type="search" id="sh-busca-campo" placeholder="Buscar nos guias…" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="sh-busca-lista" aria-autocomplete="list" aria-label="Buscar nos guias de todos os módulos">'
+    + '<kbd aria-hidden="true">/</kbd><ul id="sh-busca-lista" class="sh-busca__lista" role="listbox" hidden></ul>';
+  contexto.append(busca);
+  const campo = busca.querySelector('input');
+  const lista = busca.querySelector('ul');
+  let indice = null;
+  async function montarIndice() {
+    if (indice) return indice;
+    const r = await carregarResumo();
+    const mods = (r && !r.erro && r.modulos) || [];
+    const itens = [];
+    await Promise.all(mods.map(async (m) => {
+      const g = await P.carregarGuia(m.id);
+      if (!g) return;
+      const add = (tipo, titulo, texto, jornada, foco) => { if (titulo) itens.push({ modulo: m.id, nomeModulo: m.titulo, tipo, titulo: String(titulo), texto: String(texto || ''), jornada, foco: foco || String(titulo), chave: semAcento(`${titulo} ${texto} ${m.titulo}`) }); };
+      (g.conceitos || []).forEach((c) => add('Conceito', c.titulo, c.texto, 'inicial'));
+      (g.palavras || []).forEach((p) => add('Palavra da tela', p.termo, p.definicao, 'inicial'));
+      (g.capitulos || []).forEach((c) => (c.passos || []).forEach((p) => add(c.nivel === 'avancado' ? 'Passo (consultor)' : 'Passo', p.titulo, `${c.titulo} · ${p.texto || ''}`, c.nivel === 'avancado' ? 'consultor' : 'inicial')));
+      const k = g.consultor || {};
+      (k.configuracoes || []).forEach((c) => add('Configuração', c.item || c.titulo, `${c.onde || ''} ${c.porque || ''}`, 'consultor'));
+      (k.errosComuns || []).forEach((e) => add('Erro comum', e.titulo, e.texto, 'consultor'));
+      (k.perguntasDoCliente || []).forEach((q) => add('Pergunta do cliente', q.pergunta, q.resposta, 'consultor'));
+      (k.integracoes || []).forEach((x) => add('Integração', x.acao || x.titulo, `→ ${x.modulo || ''} ${x.efeito || ''}`, 'consultor'));
+    }));
+    indice = itens;
+    return itens;
+  }
+  let ativo = -1, resultados = [];
+  const fecharBusca = () => { lista.hidden = true; campo.setAttribute('aria-expanded', 'false'); ativo = -1; };
+  function desenharResultados(q) {
+    lista.replaceChildren();
+    if (!q) { fecharBusca(); return; }
+    const termos = semAcento(q).split(/\s+/).filter(Boolean);
+    resultados = indice.filter((i) => termos.every((t) => i.chave.includes(t)))
+      .sort((a, b) => (semAcento(b.titulo).includes(termos[0]) ? 1 : 0) - (semAcento(a.titulo).includes(termos[0]) ? 1 : 0)).slice(0, 12);
+    if (!resultados.length) {
+      const li = document.createElement('li'); li.className = 'sh-busca__vazio'; li.textContent = 'Nada encontrado nos guias. Tente outra palavra.'; lista.append(li);
+    }
+    resultados.forEach((r, i) => {
+      const li = document.createElement('li');
+      li.id = `sh-busca-${i}`; li.setAttribute('role', 'option'); li.className = 'sh-busca__item';
+      const t = document.createElement('strong'); t.textContent = r.titulo;
+      const meta = document.createElement('span'); meta.textContent = `${r.tipo} · ${r.nomeModulo} · ${r.jornada === 'consultor' ? 'Guia do Consultor' : 'Guia Inicial'}`;
+      li.append(t, meta);
+      li.addEventListener('mousedown', (e) => { e.preventDefault(); abrirResultado(r); });
+      lista.append(li);
+    });
+    lista.hidden = false; campo.setAttribute('aria-expanded', 'true'); ativo = -1;
+  }
+  function abrirResultado(r) {
+    window.__plFoco = r.foco;
+    fecharBusca(); campo.value = ''; campo.blur();
+    if (P.rota && P.rota.area === r.jornada && P.rota.modulo === r.modulo) { focarTrecho(paineis[r.jornada]); return; } // já está na página
+    P.irPara({ area: r.jornada, modulo: r.modulo });
+  }
+  campo.addEventListener('focus', () => { montarIndice(); });
+  campo.addEventListener('input', async () => { await montarIndice(); desenharResultados(campo.value.trim()); });
+  campo.addEventListener('keydown', (e) => {
+    const itens = [...lista.querySelectorAll('[role="option"]')];
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+      if (!itens.length) return;
+      e.preventDefault();
+      ativo = (ativo + (e.key === 'ArrowDown' ? 1 : -1) + itens.length) % itens.length;
+      itens.forEach((x, i) => x.setAttribute('aria-selected', String(i === ativo)));
+      campo.setAttribute('aria-activedescendant', itens[ativo].id);
+      itens[ativo].scrollIntoView({ block: 'nearest' });
+    } else if (e.key === 'Enter' && resultados.length) { e.preventDefault(); abrirResultado(resultados[Math.max(0, ativo)]); }
+    else if (e.key === 'Escape') { fecharBusca(); campo.blur(); }
+  });
+  campo.addEventListener('blur', () => setTimeout(fecharBusca, 120));
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== '/' || e.ctrlKey || e.metaKey || e.altKey) return;
+    const t = e.target;
+    if (t && (t.isContentEditable || /^(input|textarea|select)$/i.test(t.tagName))) return;
+    e.preventDefault(); campo.focus();
+  });
+  // Depois que a página do módulo é desenhada: rola até o trecho escolhido na busca e destaca.
+  function focarTrecho(raiz) {
+    const alvo = window.__plFoco;
+    if (!alvo) return;
+    window.__plFoco = null;
+    const n = semAcento(alvo);
+    const el = [...raiz.querySelectorAll('.pl-passo-guia__titulo, .pl-conceito h4, .pl-palavras dt, .pl-cons__config dt, .pl-cons__lista strong, .pl-faq summary, .pl-cons__seta strong')]
+      .find((x) => semAcento(x.textContent).includes(n));
+    const bloco = el && (el.closest('.pl-passo-guia, .pl-conceito, .pl-palavras > div, .pl-cons__config > div, .pl-cons__lista li, .pl-faq, .pl-cons__integra li') || el);
+    if (!bloco) return;
+    if (bloco.tagName === 'DETAILS') bloco.open = true;
+    bloco.scrollIntoView({ block: 'center', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    bloco.classList.add('sh-achado');
+    setTimeout(() => bloco.classList.remove('sh-achado'), 2600);
+  }
+
   function trilhaDoTopo(rota, aba, nomeModulo) {
     const li = (texto, href) => { const l = document.createElement('li'); if (href) { const a = document.createElement('a'); a.href = href; a.textContent = texto; l.append(a); } else { l.textContent = texto; l.setAttribute('aria-current', 'page'); } return l; };
     const rotulo = (ABAS.find((a) => a.id === aba) || ABAS[0]).rotulo;
@@ -230,6 +329,22 @@
     const area = rota.area;
     const { alvo, valida } = novoAlvo(area);
     const tentar = () => desenhar(rota, true);
+    const V3 = window.PlataformaV3;
+    const progressoInicial = async () => {
+      const pcts = await P.progressoResumo();
+      return Object.fromEntries(Object.entries(pcts).filter(([c]) => c.startsWith('inicial:')).map(([c, p]) => [c.slice(8), p / 100]));
+    };
+    if (area === 'inicio' && V3) {
+      // v3: #inicio = vitrine dos módulos; #inicio/<modulo> = página do módulo (as duas jornadas).
+      const desenho = rota.modulo ? V3.renderHubModulo : V3.renderPaginaInicial;
+      desenho(alvo, null);
+      const [r, progresso] = await Promise.all([carregarResumo(forcar), progressoInicial()]);
+      if (!valida()) return;
+      if (!rota.modulo) { V3.renderPaginaInicial(alvo, r, { onTentar: tentar, progresso }); return; }
+      const m = r && !r.erro ? (r.modulos || []).find((x) => x.id === rota.modulo) : null;
+      V3.renderHubModulo(alvo, r && r.erro ? r : (m || { erro: { status: 404, mensagem: 'Este módulo não existe ou não está liberado para o seu perfil.' } }), { onTentar: tentar, progresso, modulos: (r && r.modulos) || [] });
+      return;
+    }
     if (area === 'inicio') {
       UI.renderPaginaInicial(alvo, null);
       const r = await carregarResumo(forcar);
@@ -244,15 +359,15 @@
       const chaves = new Set();
       JSON.stringify(d && !d.erro ? d.secoes || [] : [], (k, v) => { if (v && v.tipo === 'checklist-aprendizado' && typeof v.chave === 'string') chaves.add(v.chave); return v; });
       const progresso = Object.fromEntries(await Promise.all([...chaves].map(async (c) => [c, await P.progresso(c)])));
-      if (valida()) UI.renderModulo(alvo, d, { onTentar: tentar, guia, progresso, modulos: (r && !r.erro && r.modulos) || [] });
+      if (valida()) { UI.renderModulo(alvo, d, { onTentar: tentar, guia, progresso, modulos: (r && !r.erro && r.modulos) || [] }); requestAnimationFrame(() => focarTrecho(alvo)); }
       return;
     }
-    UI.renderJornada(alvo, { jornada: area, modulos: null });
-    const [r, pcts] = await Promise.all([carregarResumo(forcar), area === 'inicial' ? P.progressoResumo() : {}]);
+    const J = V3 || UI;
+    J.renderJornada(alvo, { jornada: area, modulos: null });
+    const [r, progresso] = await Promise.all([carregarResumo(forcar), area === 'inicial' ? progressoInicial() : {}]);
     if (!valida()) return;
-    const progresso = Object.fromEntries(Object.entries(pcts).filter(([c]) => c.startsWith('inicial:')).map(([c, p]) => [c.slice(8), p / 100]));
-    if (r.erro) UI.renderJornada(alvo, { jornada: area, erro: r.erro, onTentar: tentar });
-    else UI.renderJornada(alvo, { jornada: area, modulos: r.modulos || [], progresso });
+    if (r.erro) J.renderJornada(alvo, { jornada: area, erro: r.erro, onTentar: tentar });
+    else J.renderJornada(alvo, { jornada: area, modulos: r.modulos || [], progresso });
   }
 
   // Salva o checklist de aprendizado ao marcar/desmarcar (agrupa cliques rápidos por 500 ms).

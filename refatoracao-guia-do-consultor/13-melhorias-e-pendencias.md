@@ -80,3 +80,26 @@ Validação: navegador em 1440, 1280 e 375 px; `npm run testar` = 190/191 (a fal
 | 8 | ~~Progresso do Guia Inicial não era salvo~~ **Resolvido 05/11**: o checklist de aprendizado grava em `/api/checklists-progresso` (chave `inicial:<modulo>`) e a trilha lê o resumo — testado (marcar 3/15 em Vendas → recarregar mantém; trilha mostra 20%) | — |
 | 9 | `.codex/hooks.json` criado pela atualização do Impeccable dentro da worktree — não commitar; apagar se não for desejado | Responsável |
 | 10 | Commit/PR da branch | Responsável |
+
+## 5. Rodada 06/11 — redesign v3 (claro) e capricho dos guias
+
+**Interface (pedido do responsável: Página Inicial e Guia Inicial "premium", claras, sem listas no hover):**
+- Novos `public/plataforma-v3.js` + `public/plataforma-v3.css` (componentes: vitrine, página do módulo, jornadas).
+- Página Inicial clara (branco + azul + verde, lima só em destaque), luz suave e fios animados no fundo (decorativos,
+  param com movimento reduzido), caminhos Guia Inicial / Guia do Consultor, navegação por **fases** (substitui a
+  linha numerada 00–18), cards espaçados com **ícones ilustrados próprios dos 19 módulos** (SVG em duas camadas),
+  hover com elevação, borda e ícone animado — **sem lista no hover**; clique abre a **página do módulo**.
+- **Página do módulo** (`#inicio/<modulo>`, rota nova): hero na cor do módulo, materiais do Guia Inicial e do Guia do
+  Consultor lado a lado com estado real, progresso salvo, módulo anterior/próximo.
+- **Guia Inicial** como jornada: contadores reais (concluídos / em andamento / disponíveis), barra da trilha,
+  destaque "Seu próximo passo / Continue de onde parou", trilha vertical por fase com estados (concluído, em
+  andamento, disponível, em preparação) e barras animadas. Guia do Consultor com o mesmo desenho + filtro.
+- **Busca nos guias** na barra do topo (atalho `/`): passos, conceitos, palavras, configurações, erros comuns,
+  perguntas do cliente e integrações de todos os módulos; leva ao trecho e destaca.
+- Validado em 1440 e 375 px; teclado (foco visível, Enter/Tab); sem rolagem lateral; `npm run testar` 189/191
+  (falhas: #26 antiga; #15 = `docker-compose.yml` alterado fora desta sessão — porta 8081 aberta para a rede).
+
+**Conteúdo (3 especialistas, "capricho"):** todos os passos básicos com imagem anotada v2 na maioria dos módulos,
+novas capturas do staging integradas (formulários, painéis), bloco do consultor completo (configurações, integrações,
+roteiro de demonstração, implantação, perguntas, erros). Base regenerada: **112 materiais disponíveis** (antes 78).
+Pendências de tela/divergências em `descobertas/documentacao-{a,b,c}.md` (entradas "Capricho").

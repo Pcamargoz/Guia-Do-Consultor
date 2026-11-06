@@ -86,3 +86,31 @@ bancárias, nome de pessoa no contrato, descrição da conta no Receber/Extrato.
   aba "Conciliação" na tela PIX × "não existe Conciliação no menu" (regra-financeiro-baixa-atualiza-saldos-e-extrato).
 - Não verificado: ícone de arquivar no cabeçalho do cartão de Tarefas (sem marcador); renderização no PlataformaUI
   não testada no navegador (proibido nesta tarefa). Nada conferido em tela com sessão; tudo segue `rascunho`. Sem commit.
+
+## 2026-11-06 · documentacao-c · Capricho (iniciante + consultor veterano, contrato v2 + v2.1)
+
+- Descoberta: as capturas novas do staging v1.23.2 (05/11) cobrem telas que faltavam nos guias do grupo C. Entraram
+  12 imagens novas (webp 1600×900 q82, borrão com ffmpeg boxblur e olhadas antes e depois):
+  faturamento `11-dashboard-faturamento`, `12-controle-de-terceiros`; fiscal `09-mdfe`, `10-regras-fiscais-de-servico`;
+  financeiro `15-fluxo-de-caixa-hierarquias` (valores borrados), `16-dre`; tarefas `08-tarefas-gerais`,
+  `09-meus-quadros-padrao`; fluxo-completo `10-inicio` e `11-busca` (saudação com nome e valores borrados),
+  `12-compras-pedidos` (valor total borrado).
+- Iniciante: todo passo básico dos cinco guias tem imagem anotada v2 (fiscal ganhou imagem nos passos CFOP, NCM,
+  Textos Fiscais e Corrija e recalcule, com zoom sobre o Painel Fiscal e o quadro de impostos). Fluxo completo
+  reorganizado: capítulo "Antes de começar" (Início e busca) + um capítulo por etapa (CRM, Vendas, Serviços/Produção,
+  Compras/Recebimento, Faturamento, Expedição, Financeiro e obra), cada um com tela real e "Depois:" na dica.
+- Consultor: `configuracoes`, `integracoes` e `roteiroDemonstracao` preenchidos nos cinco guias (fontes: checklists de
+  implantação, regras oficiais FAT/FIS/FIN, planos de validação, manuais oficiais e roteiros); `implantacao`,
+  `perguntasDoCliente` e `errosComuns` reforçados.
+- Não usadas: `financeiro-contas-receber` (nomes e valores; a captura antiga já borrada é melhor), `tarefas-minhas`
+  (vazia), `faturamento-notas`/`financeiro-dashboard` (seguem fora pelo mesmo motivo da revisão v2).
+- Evidência: prévias com caixas e números (ffmpeg drawbox/drawtext) em `C:\Users\PEDROS~2\AppData\Local\Temp\guias-capricho-c\`,
+  olhadas uma a uma (tela e zoom) e ajustadas onde o número caía sobre texto; validador `valida.mjs` na mesma pasta:
+  JSON válido, toda imagem existe e bate com largura/altura, ≤ 5 marcadores, todos v2, caixas dentro do zoom, status rascunho.
+- Pendências novas: Controle de Terceiros e Dashboard de Faturamento capturados vazios; MDF-e sem fonte de uso além da
+  rota/PRO; DRE sem lançamentos (o que abre o botão Contas vem só do manual-10); botão Recalcular sem captura; ordem
+  Expedição × Faturamento do pedido do responsável (o guia segue a base); termos fora do glossário mas literais na base
+  (Controle de Terceiros, Dashboard Faturamento, MDF-e, Regras Fiscais de Serviço, DRE, Estrutura Hierárquica,
+  Tarefas Avulsas, Tarefas Gerais, Pesquisar funcionalidades, Alertas urgentes, Resumo do negócio) — sugerir ao glossário.
+- Não verificado: nada conferido em tela com sessão (sem navegador nesta tarefa); renderização no PlataformaUI não testada.
+  Relatórios e Alumina sem captura nova: intocados. Sem commit.

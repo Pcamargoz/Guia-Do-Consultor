@@ -853,6 +853,15 @@
     grade.append(lista);
     el.append(...[nav, cab, grade].filter(Boolean));
     if (comSumario) espiarSumario(grade);
+    // Link de material que aponta para esta mesma página (ex.: "Guia visual ilustrado") → rola até o guia.
+    const secGuia = el.querySelector('.pl-secao[data-secao="guia-visual"]');
+    if (secGuia) {
+      el.querySelectorAll(`a.pl-link-card[href="#${jornada}/${encodeURIComponent(mod.id)}"]`).forEach((a) => a.addEventListener('click', (e) => {
+        e.preventDefault();
+        secGuia.scrollIntoView({ behavior: reduzido() ? 'auto' : 'smooth', block: 'start' });
+        secGuia.focus({ preventScroll: true });
+      }));
+    }
     const nPrep = secoes.filter(vazia).length;
     anunciar(el, `${txt(mod.titulo)}, ${JORNADAS[jornada].nome}: ${plural(secoes.length, 'seção', 'seções')}${nPrep ? `, ${nPrep} em preparação` : ''}.`);
   }
@@ -1035,6 +1044,17 @@
     const k = jornada === 'consultor' && guia.consultor;
     if (k) {
       const grupos = [];
+      const txtItem = (t) => (typeof t === 'string' ? t : txt(t && (t.texto || t.titulo)));
+      if ((k.configuracoes || []).length) grupos.push(h('div', { className: 'pl-cons__g pl-cons__g--largo' }, h('h4', { text: 'Configurações que o módulo precisa' }),
+        h('dl', { className: 'pl-cons__config' }, k.configuracoes.map((c) => h('div', null,
+          h('dt', null, h('span', { text: txtItem(c.item || c.titulo || c) }), temTexto(c.onde) ? h('span', { className: 'pl-marca-tela', text: c.onde }) : null),
+          temTexto(c.porque) ? h('dd', { text: c.porque }) : null)))));
+      if ((k.integracoes || []).length) grupos.push(h('div', { className: 'pl-cons__g pl-cons__g--largo' }, h('h4', { text: 'Como este módulo afeta os outros' }),
+        h('ul', { className: 'pl-cons__integra' }, k.integracoes.map((x) => h('li', null,
+          h('span', { className: 'pl-cons__seta' }, h('strong', { text: txtItem(x.acao || x.titulo || x) }), icone('seta'), h('span', { text: txt(x.modulo) })),
+          temTexto(x.efeito) ? h('span', { className: 'pl-cons__efeito', text: x.efeito }) : null)))));
+      if ((k.roteiroDemonstracao || []).length) grupos.push(h('div', { className: 'pl-cons__g pl-cons__g--largo' }, h('h4', { text: 'Roteiro para demonstrar ao cliente' }),
+        h('ol', { className: 'pl-cons__demo' }, k.roteiroDemonstracao.map((d) => h('li', null, h('strong', { text: txtItem(d.passo || d.titulo || d) }), temTexto(d.mostrar) ? h('span', { text: d.mostrar }) : null)))));
       if ((k.implantacao || []).length) grupos.push(h('div', { className: 'pl-cons__g' }, h('h4', { text: 'Ao implantar, confira' }), h('ul', { className: 'pl-cons__lista' }, k.implantacao.map((t) => h('li', null, icone('checklist'), h('span', { text: typeof t === 'string' ? t : t.texto }))))));
       if ((k.errosComuns || []).length) grupos.push(h('div', { className: 'pl-cons__g' }, h('h4', { text: 'Erros comuns' }), h('ul', { className: 'pl-cons__lista pl-cons__lista--erro' }, k.errosComuns.map((e) => h('li', null, icone('alerta'), h('span', null, h('strong', { text: e.titulo }), temTexto(e.texto) ? ` ${e.texto}` : null))))));
       if ((k.perguntasDoCliente || []).length) grupos.push(h('div', { className: 'pl-cons__g pl-cons__g--largo' }, h('h4', { text: 'Perguntas que o cliente faz' }),

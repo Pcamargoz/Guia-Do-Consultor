@@ -115,3 +115,17 @@ Regras v2:
 6. Texto do passo: diga o que fazer e o que observar; a `explicacao` diz o que cada item significa para quem nunca viu o sistema.
    Nada sem fonte (base do Harness, roteiros, checklists, captura).
 7. Confira desenhando a prévia (ffmpeg `drawbox` nas caixas + número no lado) e OLHANDO o resultado, inclusive do recorte de zoom.
+
+## v2.1 — bloco `consultor` ampliado (05/11/2026) — para consultores veteranos
+
+```jsonc
+"consultor": {
+  "configuracoes": [ { "item": "Parâmetros de Estoque", "onde": "Estoque › Configurações › Parâmetros de Estoque", "porque": "Define se o saldo pode ficar negativo…", "fontes": ["…"] } ],
+  "integracoes":   [ { "acao": "Finalizar a nota de recebimento", "modulo": "Estoque", "efeito": "Dá entrada do material no local…", "fontes": ["…"] } ],
+  "roteiroDemonstracao": [ { "passo": "Mostre a lista de notas", "mostrar": "Cartões Em Aberto/Finalizadas e o filtro padrão", "fontes": ["…"] } ],
+  "implantacao": ["…"], "perguntasDoCliente": [ … ], "errosComuns": [ … ]
+}
+```
+Regras: tudo com fonte (checklists de implantação `scripts/dados-checklists-implantacao.mjs` — "Confira/Fonte", regras de negócio,
+planos de validação, roteiros do consultor). `roteiroDemonstracao` = 4–8 passos que um consultor segue para apresentar o
+módulo ao cliente usando as telas do guia. Nada inventado.

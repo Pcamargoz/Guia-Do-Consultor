@@ -2,8 +2,8 @@
   "modulo": "crm",
   "titulo": "CRM — guia visual",
   "resumo": "Você vai conhecer o caminho comercial no Flow: cadastrar um lead, qualificá-lo no Kanban, convertê-lo em oportunidade e trabalhar essa oportunidade no Pipeline até ela virar pedido de venda.",
-  "versaoSistema": "1.22.13 (capturas de consultor-03-comercial) e 1.23.2 (capturas brutas de 04/11/2026)",
-  "atualizadoEm": "2026-11-05",
+  "versaoSistema": "1.22.13 (capturas de consultor-03-comercial) e 1.23.2 (capturas brutas de 04/11/2026 e do staging de 05/11/2026)",
+  "atualizadoEm": "2026-11-06",
   "status": "rascunho",
   "conceitos": [
     {
@@ -779,6 +779,90 @@
             "guia:scripts/dados-checklists-estagiarios.mjs#crm",
             "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
           ]
+        },
+        {
+          "titulo": "Veja a sua semana na Agenda",
+          "texto": "No menu do CRM, abra Vendas › Agenda. Ela mostra a semana do usuário logado, dia a dia; cada card é uma atividade e clicar abre o detalhe. Dia sem atividade aparece como Livre.",
+          "imagem": "/manuais/crm/img/12-agenda.webp",
+          "alt": "Agenda do CRM com os cartões Total, Pendentes, Realizadas e Conversão, a navegação da semana com Hoje, os filtros Tipo, Status e Prioridade e os dias da semana marcados como Livre.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Totais da semana",
+              "explicacao": "Total, Pendentes, Realizadas e o percentual de conclusão: devem bater com os cards da semana.",
+              "caixa": {
+                "x": 18.4,
+                "y": 21.5,
+                "w": 79.2,
+                "h": 9.2
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 2,
+              "rotulo": "Semana",
+              "explicacao": "As setas levam para a semana anterior ou a próxima; a semana começa na segunda-feira.",
+              "caixa": {
+                "x": 19.4,
+                "y": 34.4,
+                "w": 15.2,
+                "h": 4.2
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 3,
+              "rotulo": "Hoje",
+              "explicacao": "Volta para a semana atual.",
+              "caixa": {
+                "x": 34.8,
+                "y": 34.9,
+                "w": 2.7,
+                "h": 3.3
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 4,
+              "rotulo": "Filtros",
+              "explicacao": "Tipo, Status e Prioridade; a busca procura no título ou na descrição.",
+              "caixa": {
+                "x": 66.9,
+                "y": 40.3,
+                "w": 30,
+                "h": 7.2
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 5,
+              "rotulo": "+ Nova atividade",
+              "explicacao": "Cria uma atividade direto na agenda.",
+              "caixa": {
+                "x": 88.1,
+                "y": 14,
+                "w": 9.5,
+                "h": 4.4
+              },
+              "lado": "baixo"
+            }
+          ],
+          "zoom": {
+            "x": 17,
+            "y": 11.9,
+            "w": 82,
+            "h": 37.2
+          },
+          "atencao": "A Agenda mostra só as atividades do usuário logado. Para ver a de um vendedor, use Vendas › Atividades com o filtro de responsável.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/capturas/guias-staging/crm-agenda.png (staging v1.23.2, 05/11/2026)",
+            "manual-02-crm#017",
+            "plano-crm#034",
+            "roteiro-crm-03-atividades-e-agenda#010"
+          ]
         }
       ]
     },
@@ -855,6 +939,73 @@
           ]
         },
         {
+          "titulo": "Acompanhe as aprovações de desconto",
+          "texto": "Quando o desconto da oportunidade passa do limite configurado, o vendedor pede a aprovação pela oportunidade. O aprovador abre Vendas › Aprovações no menu do CRM e aprova ou rejeita; ao rejeitar, informa o motivo. O histórico guarda quem pediu, quem decidiu e o resultado.",
+          "imagem": "/manuais/crm/img/13-aprovacoes-de-desconto.webp",
+          "alt": "Tela Aprovações de Desconto do CRM, vazia, com as colunas Oportunidade, Desconto (%), Valor do Desconto, Solicitada em, Espera e Ações.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Aprovações",
+              "explicacao": "Fica no grupo Vendas do menu do CRM.",
+              "caixa": {
+                "x": 0.6,
+                "y": 33.5,
+                "w": 14.4,
+                "h": 3.1
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 2,
+              "rotulo": "Aprovações de Desconto",
+              "explicacao": "Descontos aguardando a sua decisão. Aprovar ou rejeitar aqui vale o mesmo que pelo aplicativo.",
+              "caixa": {
+                "x": 22.3,
+                "y": 12.8,
+                "w": 43.9,
+                "h": 6.1
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 3,
+              "rotulo": "Colunas",
+              "explicacao": "Oportunidade, percentual e valor do desconto, quando foi pedido e há quanto tempo espera.",
+              "caixa": {
+                "x": 18.6,
+                "y": 31.8,
+                "w": 79.2,
+                "h": 3.1
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 4,
+              "rotulo": "Lista vazia",
+              "explicacao": "Nenhum desconto pendente para você. O vendedor não aprova o próprio desconto.",
+              "caixa": {
+                "x": 45.9,
+                "y": 48.6,
+                "w": 24.1,
+                "h": 3.6
+              },
+              "lado": "baixo"
+            }
+          ],
+          "atencao": "As faixas ficam em CRM › Configurações › Aprovações de Desconto (plano de validação); o roteiro de treinamento indica CRM › Configurar › Pipeline › Aprovações de Desconto. A conferir na tela.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/capturas/guias-staging/crm-aprovacoes.png (staging v1.23.2, 05/11/2026)",
+            "roteiro-crm-02-pipeline-de-oportunidades#007",
+            "plano-crm#028",
+            "plano-crm#111",
+            "roteiro-crm-07-configurar-o-crm#004"
+          ]
+        },
+        {
           "titulo": "Marque a oportunidade como ganha",
           "texto": "Ganha não pede confirmação. Se clicar sem querer, use Reverter ganho, sempre antes de gerar o pedido.",
           "atencao": "Fontes divergem: o manual-02-crm indica ⋯ do card › Marcar como Ganha, exigindo ao menos um item; o fluxo comercial registra o botão Ganha no painel, sem citar o item. A conferir na tela.",
@@ -905,6 +1056,13 @@
         "fontes": [
           "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
         ]
+      },
+      {
+        "pergunta": "O gestor pode ver a agenda de um vendedor?",
+        "resposta": "A Agenda mostra só as atividades do usuário logado. Use Vendas › Atividades com o filtro de responsável ou os Demonstrativos filtrados pelo vendedor.",
+        "fontes": [
+          "manual-02-crm#017"
+        ]
       }
     ],
     "errosComuns": [
@@ -936,6 +1094,166 @@
           "guia:scripts/dados-checklists-estagiarios.mjs#crm"
         ]
       }
+    ],
+    "configuracoes": [
+      {
+        "item": "Funil de Vendas",
+        "onde": "CRM › Configurações",
+        "porque": "Sem ele não existe Pipeline. Confira as etapas e remova etapas de teste esquecidas no fim do funil.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm",
+          "manual-02-crm"
+        ]
+      },
+      {
+        "item": "Funil de Leads",
+        "onde": "CRM › Configurações",
+        "porque": "Sem ele não existe Kanban de Leads; a conversão exige o lead numa etapa de 60% ou mais.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm",
+          "regra-crm-converter-lead-exige-etapa-60-e-bant-completo"
+        ]
+      },
+      {
+        "item": "Tipos de Atividade, Origens de Lead, Temperaturas e Motivos de Perda",
+        "onde": "CRM › Configurações",
+        "porque": "Alimentam o formulário do lead, as atividades e os indicadores; o motivo de perda vira indicador para o gestor.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+        ]
+      },
+      {
+        "item": "Aprovações de Desconto",
+        "onde": "CRM › Configurações › Aprovações de Desconto (caminho a conferir)",
+        "porque": "Regra com o percentual mínimo que exige aprovação, o aprovador (usuário fixo, supervisor direto ou perfil) e a prioridade. Teste com um caso controlado antes de liberar.",
+        "fontes": [
+          "roteiro-crm-07-configurar-o-crm#004",
+          "plano-crm#028"
+        ]
+      },
+      {
+        "item": "CFOP sem financeiro",
+        "onde": "Fiscal › Configurações › CFOP",
+        "porque": "Gerar Pedido de Venda recusa CFOP que gera financeiro: deixe disponível um sem financeiro (ex.: 5910-1), validado com o responsável fiscal.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm",
+          "regra-vendas-gerar-pedido-da-oportunidade-exige-cfop-sem-financeiro"
+        ]
+      },
+      {
+        "item": "Participante completo para o pedido",
+        "onde": "Cadastros › Participantes",
+        "porque": "O formulário do lead não exige Conta de Fluxo de Caixa Receita nem Inscrição Estadual / RG, mas o pedido precisa delas.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+        ]
+      }
+    ],
+    "integracoes": [
+      {
+        "acao": "Converter o lead",
+        "modulo": "Cadastros (Participantes)",
+        "efeito": "O participante passa a ter É Cliente? ligado e Prospect/Lead desligado.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm",
+          "regra-crm-conversao-cria-a-oportunidade-sozinha"
+        ]
+      },
+      {
+        "acao": "Converter o lead",
+        "modulo": "CRM (Pipeline)",
+        "efeito": "Cria a oportunidade sem avisar, com o valor do Budget Estimado; as atividades do lead não vão junto.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm",
+          "regra-crm-conversao-cria-a-oportunidade-sozinha"
+        ]
+      },
+      {
+        "acao": "Marcar como Ganha",
+        "modulo": "CRM (Pós-Venda)",
+        "efeito": "Cria uma oportunidade de Pós-Venda. Reverter ganho não a remove, e ganhar de novo cria outra.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+        ]
+      },
+      {
+        "acao": "Gerar Pedido de Venda",
+        "modulo": "Vendas",
+        "efeito": "Pedido Em aberto com cliente, item e valor da oportunidade; sem vendedor e sem condição de pagamento. O vínculo fica só na Obs. Interna.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm",
+          "regra-vendas-gerar-pedido-da-oportunidade-exige-cfop-sem-financeiro"
+        ]
+      },
+      {
+        "acao": "Completar o pedido gerado",
+        "modulo": "Vendas (Dashboard e Carteira de Pedidos)",
+        "efeito": "O pedido aparece na Carteira de Pedidos como A faturar e segue as regras de Vendas.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+        ]
+      }
+    ],
+    "roteiroDemonstracao": [
+      {
+        "passo": "Abra a Lista de Leads",
+        "mostrar": "Filtros de Status e Temperatura e a troca entre Lista e Kanban.",
+        "fontes": [
+          "funcional-crm-leads-pipeline-e-oportunidades#000",
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+        ]
+      },
+      {
+        "passo": "Cadastre um lead de teste",
+        "mostrar": "Novo Lead com Tipo (PF/PJ) e Razão Social / Nome; Informações CRM com origem, temperatura, Budget e BANT.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+        ]
+      },
+      {
+        "passo": "Qualifique no Kanban de Leads",
+        "mostrar": "Arraste até uma etapa de 60% ou mais e confirme o diálogo Mover lead.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+        ]
+      },
+      {
+        "passo": "Converta o lead",
+        "mostrar": "\"Lead convertido com sucesso!\" e o status Convertido.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+        ]
+      },
+      {
+        "passo": "Abra a oportunidade no Pipeline",
+        "mostrar": "Card em Novo Lead com o Budget; painel com Detalhes, Itens, Atividades e Histórico.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm",
+          "manual-02-crm#012"
+        ]
+      },
+      {
+        "passo": "Mostre Atividades e Agenda",
+        "mostrar": "Lista com filtros e a semana do vendedor com os totais.",
+        "fontes": [
+          "videos/capturas/guias-staging/crm-atividades.png (staging v1.23.2, 05/11/2026)",
+          "videos/capturas/guias-staging/crm-agenda.png (staging v1.23.2, 05/11/2026)"
+        ]
+      },
+      {
+        "passo": "Gere a proposta e ganhe",
+        "mostrar": "Gerar Proposta (Template, Empresa, Validade, Condições) e o botão Ganha.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+        ]
+      },
+      {
+        "passo": "Feche nos painéis",
+        "mostrar": "CRM › Painéis › Resultado do Mês com ganhas × perdidas e motivos de perda.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+        ]
+      }
     ]
   },
   "fontes": [
@@ -954,15 +1272,38 @@
     "midia/brutos/crm/prints/crm_c04_01.png",
     "midia/brutos/crm/roteiro-telas.md",
     "videos/capturas/guias-staging/crm-atividades.png (staging v1.23.2, 05/11/2026)",
-    "videos/capturas/guias-staging/crm-pipeline.png (staging v1.23.2, 05/11/2026)"
+    "videos/capturas/guias-staging/crm-pipeline.png (staging v1.23.2, 05/11/2026)",
+    "videos/public/telas/consultor-03-comercial/02-bant.png",
+    "videos/public/telas/consultor-03-comercial/01-kanban.png",
+    "videos/public/telas/consultor-03-comercial/01b-mover.png",
+    "videos/public/telas/consultor-03-comercial/03b-dialogo.png",
+    "videos/public/telas/consultor-03-comercial/03c-convertido.png",
+    "videos/public/telas/consultor-03-comercial/04-pipeline.png",
+    "videos/public/telas/consultor-03-comercial/05-painel.png",
+    "guia:videos/roteiros/consultor-03-comercial.json#06",
+    "videos/capturas/guias-staging/crm-agenda.png (staging v1.23.2, 05/11/2026)",
+    "manual-02-crm#017",
+    "plano-crm#034",
+    "roteiro-crm-03-atividades-e-agenda#010",
+    "videos/public/telas/consultor-03-comercial/05b-proposta.png",
+    "videos/capturas/guias-staging/crm-aprovacoes.png (staging v1.23.2, 05/11/2026)",
+    "roteiro-crm-02-pipeline-de-oportunidades#007",
+    "plano-crm#028",
+    "plano-crm#111",
+    "roteiro-crm-07-configurar-o-crm#004",
+    "guia:videos/roteiros/consultor-03-comercial.json#14",
+    "funcional-crm-leads-pipeline-e-oportunidades#000",
+    "manual-02-crm#012"
   ],
   "pendencias": [
+    "DIVERGÊNCIA: caminho das regras de Aprovações de Desconto — plano-crm#028 (CRM › Configurações › Aprovações de Desconto) × roteiro-crm-07#004 (CRM › Configurar › Pipeline › Aprovações de Desconto).",
+    "A CONFERIR: o 4º cartão da Agenda se chama \"Conversão\" na tela (staging 05/11/2026); o manual-02-crm#017 fala em taxa de conclusão.",
+    "CAPTURA: aprovação de desconto com uma solicitação na lista (sem clicar em Aprovar) e o pedido de aprovação na oportunidade.",
     "CAPTURA: CRM › Painéis › Visão Geral — Jornada do cliente (Leads Novos → Qualificando → Oportunidades → Valor em Jogo) e faixa de alertas.",
     "CAPTURA: CRM › Vendas › Leads › menu ⋮ do lead aberto (Converter, Histórico, Tags, Atividades, Desqualificar, Excluir) — sem clicar.",
     "CAPTURA: aviso de bloqueio ao converter um lead abaixo de 60% ou com BANT incompleto.",
     "CAPTURA: aba Itens da oportunidade com o quadro Dados do Item.",
     "CAPTURA: botão Ganha / Marcar como Ganha e o painel da oportunidade ganha com Gerar Pedido de Venda (Empresa e CFOP).",
-    "CAPTURA: CRM › Vendas › Agenda (calendário).",
     "DIVERGÊNCIA: janela Converter Lead — manual-02-crm (2.2) diz que permite escolher funil, etapa (Prospecção) e valor; a captura e o teste de 19/10 mostram a janela sem essas escolhas e a oportunidade nascendo em Novo Lead.",
     "DIVERGÊNCIA: caminho e trava do ganho (⋯ › Marcar como Ganha com item obrigatório × botão Ganha no painel).",
     "SEM FONTE: probabilidade de 5% na etapa Novo Lead (observada na tela).",

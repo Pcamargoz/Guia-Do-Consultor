@@ -2,8 +2,8 @@
   "modulo": "recebimento",
   "titulo": "Recebimento — guia visual",
   "resumo": "Como a mercadoria do fornecedor entra na empresa: a nota de recebimento nasce do pedido de compra (ou do XML), é conferida e, ao ser finalizada, dá entrada no estoque e gera o título a pagar.",
-  "versaoSistema": "1.22.13 (capturas do ambiente de teste, 19 e 29/10/2026); 1.23.2 (staging, 05/11/2026) na tela Aguardando manifestação",
-  "atualizadoEm": "2026-11-05",
+  "versaoSistema": "1.22.13 (capturas do ambiente de teste, 19 e 29/10/2026); 1.23.2 (staging, 05/11/2026) no Dashboard, na lista de notas, na Nova nota e em Aguardando manifestação",
+  "atualizadoEm": "2026-11-06",
   "status": "rascunho",
   "conceitos": [
     {
@@ -133,48 +133,136 @@
       "id": "conhecer-a-lista",
       "titulo": "Conhecendo a lista de notas",
       "nivel": "basico",
-      "objetivo": "Encontrar qualquer nota de recebimento, ler os cartões de resumo e o status de cada nota.",
-      "onde": "Recebimento › Notas de Recebimento",
+      "objetivo": "Achar as notas que pedem ação no painel, encontrar qualquer nota na lista e ler os cartões de resumo e o status de cada uma.",
+      "onde": "Recebimento › Dashboard Recebimento · Notas de Recebimento",
       "passos": [
         {
+          "titulo": "Comece pelo Dashboard Recebimento",
+          "texto": "No menu do Recebimento, clique em Dashboard Recebimento. Escolha empresa, obra e período e leia a faixa Hoje: ela diz quantas notas esperam conferência e o que falta gerar. Em Precisa de ação hoje, cada nota já traz o botão da próxima ação.",
+          "imagem": "/manuais/recebimento/img/09-dashboard.webp",
+          "alt": "Dashboard Recebimento com filtros, faixa Hoje, cartões de indicadores e as listas Precisa de ação hoje e Entregas atrasadas; valores borrados.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Empresa, obra e período",
+              "explicacao": "Filtram todo o painel. O período (Hoje, 7, 30 ou 90 dias) vale para os indicadores do período.",
+              "caixa": {
+                "x": 18.3,
+                "y": 20.2,
+                "w": 44.5,
+                "h": 4.8
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 2,
+              "rotulo": "Faixa Hoje e cartões",
+              "explicacao": "O resumo do dia: notas A conferir, Entregas atrasadas, Saldo a receber dos pedidos e o valor A faturar.",
+              "caixa": {
+                "x": 18.3,
+                "y": 26.5,
+                "w": 78.7,
+                "h": 18.3
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 3,
+              "rotulo": "Indicadores do período",
+              "explicacao": "Recebido no período, Notas em aberto, Finalizadas no período, Fornecedores ativos e Prazo de conferência (da entrada à finalização).",
+              "caixa": {
+                "x": 18.3,
+                "y": 46.1,
+                "w": 78.7,
+                "h": 13.2
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 4,
+              "rotulo": "Precisa de ação hoje",
+              "explicacao": "As notas que pedem uma ação, com o motivo (ex.: em aberto há vários dias, finalizada sem título a pagar) e o botão da ação (Conferir e finalizar, Gerar contas a pagar).",
+              "caixa": {
+                "x": 18.3,
+                "y": 60.6,
+                "w": 38.9,
+                "h": 28.8
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 5,
+              "rotulo": "Entregas atrasadas",
+              "explicacao": "Pedidos de compra com entrega vencida. Vazio, a tela mostra Sem entregas atrasadas.",
+              "caixa": {
+                "x": 58,
+                "y": 60.6,
+                "w": 39,
+                "h": 28.8
+              },
+              "lado": "direita"
+            }
+          ],
+          "dica": "O gestor usa este painel para acompanhar o recebido no período e o saldo a receber dos pedidos.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/capturas/guias-staging/recebimento-dashboard.png (staging v1.23.2, 05/11/2026; valores borrados)",
+            "scripts/dados-checklists-implantacao.mjs#implantacao-recebimento (bloco 6: dashboards de Compras e de Recebimento)"
+          ]
+        },
+        {
           "titulo": "Abra Notas de Recebimento",
-          "texto": "No menu do módulo Recebimento, clique em Notas de Recebimento. Antes de olhar a lista, leia os cartões do alto: eles contam as notas do filtro atual.",
-          "imagem": "/manuais/recebimento/img/01-notas-lista.webp",
-          "alt": "Lista Notas de Recebimento com os cartões de resumo, filtros e uma nota finalizada",
+          "texto": "No menu do Recebimento, clique em Notas de Recebimento. Antes de olhar a lista, leia os cartões do alto: eles contam as notas (e o valor) do filtro atual.",
+          "imagem": "/manuais/recebimento/img/07-notas-staging.webp",
+          "alt": "Lista Notas de Recebimento (v1.23.2) com cartões Total, Em Aberto, Finalizadas e Canceladas, botões Nova Nota e Importar XML, filtros e uma nota Em Aberto; valores borrados.",
           "marcadores": [
             {
               "n": 1,
               "rotulo": "Notas de Recebimento",
               "explicacao": "Abre a lista das notas de entrada de mercadoria da empresa.",
               "caixa": {
-                "x": 0.6,
-                "y": 23.4,
+                "x": 0.5,
+                "y": 23.6,
                 "w": 14.4,
-                "h": 3.9
+                "h": 3.6
               },
               "lado": "direita"
             },
             {
               "n": 2,
               "rotulo": "Cartões Total, Em Aberto, Finalizadas e Canceladas",
-              "explicacao": "Contam as notas por situação. Em Aberto: ainda não finalizadas. Os números seguem o filtro aplicado na lista.",
+              "explicacao": "Contam as notas por situação, com o valor de cada grupo. Em Aberto: ainda não finalizadas. Os números seguem o filtro aplicado na lista.",
               "caixa": {
-                "x": 18.4,
-                "y": 17.2,
-                "w": 79.9,
-                "h": 12.3
+                "x": 17.9,
+                "y": 17.6,
+                "w": 80.3,
+                "h": 11.7
               },
               "lado": "cima"
             },
             {
               "n": 3,
-              "rotulo": "+ Nova Nota",
-              "explicacao": "Cria a nota digitando os dados. A nota também pode nascer do pedido de compra ou do XML do fornecedor.",
+              "rotulo": "Qual a função desta tela?",
+              "explicacao": "Mostra para que serve a tela, sem sair dela.",
               "caixa": {
-                "x": 89.1,
-                "y": 33.3,
-                "w": 8,
-                "h": 5.4
+                "x": 84.3,
+                "y": 12.3,
+                "w": 13.8,
+                "h": 4.4
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 4,
+              "rotulo": "+ Nova Nota",
+              "explicacao": "Cria a nota. A tela seguinte pede o pedido de compra (ou a remessa de beneficiamento) que dá origem à nota.",
+              "caixa": {
+                "x": 89.3,
+                "y": 33.7,
+                "w": 7.5,
+                "h": 4.5
               },
               "lado": "baixo"
             }
@@ -182,7 +270,7 @@
           "dica": "Os cartões seguem o filtro aplicado na lista.",
           "evidencia": "captura-real",
           "fontes": [
-            "videos/public/telas/consultor-01-suprimentos/02-notas-recebimento.png",
+            "videos/capturas/guias-staging/recebimento-notas.png (staging v1.23.2, 05/11/2026; valores borrados)",
             "scripts/dados-checklists-estagiarios.mjs#recebimento",
             "oficial-rec-b-processos#006"
           ],
@@ -238,11 +326,12 @@
             "w": 80.8,
             "h": 16.1
           },
-          "atencao": "A mesma nota tem dois números: NF-<fornecedor> nesta lista e NR-<interno> na conferência, no pedido e no título.",
+          "atencao": "A mesma nota tem dois números: NF-<fornecedor> nesta lista e NR-<interno> na conferência, no pedido e no título. No staging v1.23.2 (05/11/2026), uma nota aparece na lista como NR-…: a conferir na tela.",
           "evidencia": "captura-real",
           "fontes": [
             "videos/public/telas/consultor-01-suprimentos/02-notas-recebimento.png",
-            "regra-recebimento-a-mesma-nota-tem-dois-numeros"
+            "regra-recebimento-a-mesma-nota-tem-dois-numeros",
+            "videos/capturas/guias-staging/recebimento-notas.png (staging v1.23.2, 05/11/2026)"
           ],
           "largura": 1600,
           "altura": 900
@@ -300,21 +389,89 @@
       "titulo": "Gerando a nota a partir do pedido de compra",
       "nivel": "basico",
       "objetivo": "Criar a nota de recebimento de um pedido de compra, conferir o que veio preenchido e salvar.",
-      "onde": "Compras › Pedidos de Compra › ⋯ › Gerar Nota de Recebimento",
+      "onde": "Compras › Pedidos de Compra › ⋯ › Gerar Nota de Recebimento · Recebimento › Notas de Recebimento › + Nova Nota",
       "passos": [
         {
-          "titulo": "Gere a nota pelo menu do pedido",
-          "texto": "Em Compras › Pedidos de Compra, abra o menu ⋯ do pedido e escolha Gerar Nota de Recebimento.",
-          "dica": "O menu do pedido em aberto também tem Baixar PDF, Linha do tempo, Gerar Título a Pagar, Cancelar e Excluir.",
-          "evidencia": "base",
+          "titulo": "Escolha o pedido que dá origem à nota",
+          "texto": "Pelo pedido: em Compras › Pedidos de Compra, abra o menu ⋯ do pedido aprovado e escolha Gerar Nota de Recebimento. Pelo Recebimento: clique em + Nova Nota, procure o pedido pelo número ou pelo fornecedor e escolha-o. Nos dois caminhos a nota vem preenchida com fornecedor e itens.",
+          "evidencia": "captura-real",
           "fontes": [
+            "videos/capturas/guias-staging/recebimento-nova-nota.png (staging v1.23.2, 05/11/2026)",
             "scripts/dados-checklists-estagiarios.mjs#recebimento",
-            "glossario: Gerar Nota de Recebimento"
-          ]
+            "glossario: Gerar Nota de Recebimento",
+            "scripts/dados-checklists-implantacao.mjs#implantacao-recebimento (bloco 3; REC-NR-007)"
+          ],
+          "imagem": "/manuais/recebimento/img/08-nova-nota-escolher.webp",
+          "alt": "Tela Nova nota de recebimento com as abas Pedido de Compra e Remessa de beneficiamento, a busca por número ou fornecedor, o filtro Obra, a caixa Esconder pedidos já recebidos e o botão Nota avulsa (sem pedido).",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Pedido de Compra · Remessa de beneficiamento",
+              "explicacao": "De onde a nota nasce: de um pedido de compra ou da remessa que voltou do beneficiamento, como diz a própria tela.",
+              "caixa": {
+                "x": 19.8,
+                "y": 21.3,
+                "w": 24.4,
+                "h": 4.9
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 2,
+              "rotulo": "Buscar por número ou fornecedor",
+              "explicacao": "Digite o número do pedido (ex.: PC-…) ou o nome do fornecedor para achar o pedido.",
+              "caixa": {
+                "x": 20.2,
+                "y": 32.4,
+                "w": 25.2,
+                "h": 5.6
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 3,
+              "rotulo": "Obra",
+              "explicacao": "Mostra só os pedidos de uma obra. Todas as obras: sem filtro.",
+              "caixa": {
+                "x": 45.6,
+                "y": 32.4,
+                "w": 18.6,
+                "h": 5.6
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 4,
+              "rotulo": "Esconder pedidos já recebidos",
+              "explicacao": "Marcada, a lista esconde os pedidos já usados. Se nada aparecer, desmarque para vê-los, como orienta a tela.",
+              "caixa": {
+                "x": 20.2,
+                "y": 38.2,
+                "w": 13.3,
+                "h": 3.2
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 5,
+              "rotulo": "Nota avulsa (sem pedido)",
+              "explicacao": "Cria a nota sem pedido de compra, digitando os dados.",
+              "caixa": {
+                "x": 82,
+                "y": 13.6,
+                "w": 14.6,
+                "h": 4.7
+              },
+              "lado": "baixo"
+            }
+          ],
+          "atencao": "Só pedido aprovado entra em nota: com alçada pendente, o sistema recusa (\"… não pode ser importado para recebimento\")."
         },
         {
           "titulo": "Confira os dados que vieram do pedido",
-          "texto": "A página Nova Nota de Recebimento já vem preenchida a partir do pedido de compra. Confira os campos marcados; os que têm * são obrigatórios.",
+          "texto": "A página Nova Nota de Recebimento já vem preenchida a partir do pedido de compra. Confira os campos marcados (os que têm * são obrigatórios), os itens e a Conta de Fluxo de Caixa; informe o Nº da NF, a Série e a Data de Emissão da nota do fornecedor.",
           "imagem": "/manuais/recebimento/img/03-nova-nota.webp",
           "alt": "Página Nova Nota de Recebimento com Empresa, Fornecedor, CFOP, Pedido de Compra (opcional) e Condição de Pagamento preenchidos.",
           "marcadores": [
@@ -383,10 +540,12 @@
           "fontes": [
             "videos/public/telas/compra-em-nome-do-cliente/36-nota-recebimento.png",
             "funcional-compras-solicitacoes-pedidos-e-recebimento#003",
-            "scripts/dados-checklists-estagiarios.mjs#recebimento"
+            "scripts/dados-checklists-estagiarios.mjs#recebimento",
+            "scripts/dados-checklists-implantacao.mjs#implantacao-recebimento (blocos 3 e 4; REC-NR-008, REC-NR-009)"
           ],
           "largura": 1600,
-          "altura": 900
+          "altura": 900,
+          "dica": "Recebeu só parte do pedido? Gere a nota com a quantidade entregue: o pedido original fica com o recebido e o saldo vai para um pedido filho (PC-…/2). Quantidade acima do saldo do pedido é recusada."
         },
         {
           "titulo": "Deixe em branco o que não se aplica e clique em Salvar",
@@ -582,7 +741,8 @@
           "fontes": [
             "videos/public/telas/consultor-01-suprimentos/03-entrada-estoque.png",
             "scripts/dados-checklists-estagiarios.mjs#recebimento",
-            "regra-estoque-almoxarifado-central-ativo-e-pre-requisito"
+            "regra-estoque-almoxarifado-central-ativo-e-pre-requisito",
+            "scripts/dados-checklists-implantacao.mjs#implantacao-recebimento (bloco 6; REC-FIN-007)"
           ],
           "largura": 1600,
           "altura": 900,
@@ -591,7 +751,8 @@
             "y": 63.3,
             "w": 50.6,
             "h": 16.9
-          }
+          },
+          "dica": "No Financeiro › Contas a Pagar nasce um título por parcela, com o documento NR-…; se o pedido de compra já gerou os títulos, a nota não gera de novo."
         },
         {
           "titulo": "Veja a cadeia na linha do tempo do pedido",
@@ -878,7 +1039,9 @@
       "CFOPs de entrada com Gera Financeiro e Movimenta Estoque decididos com o contador; plano de contas e conta de fluxo no fornecedor ou na empresa. Fonte: REC C, etapa 1; REC-NR-016, REC-FIN-007.",
       "Produtos comprados com unidade de estoque, embalagem e fator; unidades de medida com as siglas que os fornecedores usam no XML. Fonte: REC-FIN-001, REC-XML-007.",
       "Registrar na ata: títulos pelo pedido ou pela nota; conferência física sim ou não, e se trava a finalização. Fonte: README de Suprimentos, S2 e S5; REC C, perguntas R6 e R10.",
-      "Para devolução ao fornecedor: Faturamento com série de NF-e configurada. Fonte: REC-DEV-001/002."
+      "Para devolução ao fornecedor: Faturamento com série de NF-e configurada. Fonte: REC-DEV-001/002.",
+      "Para buscar notas na SEFAZ: Recebimento PRO e certificado A1 da empresa enviado ao Flow; sem PRO, use só a importação de XML por arquivo. Fonte: checklist de implantação do Recebimento (README de Suprimentos, S4; REC-DFE-001, REC-DFE-009).",
+      "Defina quem pode manifestar à SEFAZ: a manifestação vai à SEFAZ e não se desfaz. Fonte: checklist de implantação do Recebimento, bloco 2 (REC-DFE-006)."
     ],
     "perguntasDoCliente": [
       {
@@ -907,6 +1070,27 @@
         "resposta": "A lista abre filtrada em Em Aberto: a nota finalizada aparece ao trocar ou limpar o filtro Status.",
         "fontes": [
           "scripts/dados-checklists-estagiarios.mjs#recebimento"
+        ]
+      },
+      {
+        "pergunta": "O fornecedor entregou só parte do pedido. Como fica?",
+        "resposta": "Gere a nota com a quantidade entregue: o pedido original fica com o recebido e o saldo vai para o pedido filho PC-…/2, que recebe a próxima nota.",
+        "fontes": [
+          "scripts/dados-checklists-implantacao.mjs#implantacao-recebimento (bloco 4; REC-NR-009, REC-NR-010)"
+        ]
+      },
+      {
+        "pergunta": "Por que a nota finalizada não gerou título a pagar?",
+        "resposta": "Quando o pedido de compra já gerou os títulos (ou a compra é por conta do cliente), a nota não gera de novo. Confira também o CFOP (Gera Financeiro) e o plano de contas.",
+        "fontes": [
+          "scripts/dados-checklists-implantacao.mjs#implantacao-recebimento (pré-requisitos e bloco 6; REC-FIN-007, REC-NR-016)"
+        ]
+      },
+      {
+        "pergunta": "O fornecedor mandou o XML duas vezes. Vai duplicar?",
+        "resposta": "Não: a chave de acesso impede a nota em dobro e o sistema diz em qual NR ela já foi importada.",
+        "fontes": [
+          "scripts/dados-checklists-implantacao.mjs#implantacao-recebimento (bloco 2; REC-XML-002)"
         ]
       }
     ],
@@ -941,6 +1125,211 @@
           "manual-05-recebimento#008",
           "oficial-rec-c-implantacao#010"
         ]
+      },
+      {
+        "titulo": "Cancelar nota com título pago",
+        "texto": "O sistema recusa. A ordem é estornar o pagamento em Contas a Pagar e só depois cancelar a nota.",
+        "fontes": [
+          "oficial-rec-a-regras#002 (REC-CAN-002)",
+          "scripts/dados-checklists-implantacao.mjs#implantacao-recebimento (bloco 7)"
+        ]
+      },
+      {
+        "titulo": "Tentar corrigir a nota finalizada",
+        "texto": "Só notas em aberto podem ser alteradas. Corrige-se cancelando e relançando.",
+        "fontes": [
+          "scripts/dados-checklists-implantacao.mjs#implantacao-recebimento (bloco 6; REC-NR-014)"
+        ]
+      },
+      {
+        "titulo": "Devolução de nota digitada sem chave",
+        "texto": "Gerar Devolução exige a chave de acesso da NF-e do fornecedor; a nota digitada sem XML fica sem chave.",
+        "fontes": [
+          "scripts/dados-checklists-implantacao.mjs#implantacao-recebimento (blocos 3 e 7; REC-DEV-002)"
+        ]
+      }
+    ],
+    "configuracoes": [
+      {
+        "item": "Usar Conferência Física e Exigir Conferência para Finalizar",
+        "onde": "Recebimento › Configurações › Parâmetros de Recebimento",
+        "porque": "A primeira cria a fila de conferência; a segunda trava a finalização até alguém conferir. Os parâmetros nascem desligados; sem PRO ficam inertes (a conferir na licença).",
+        "fontes": [
+          "scripts/dados-checklists-implantacao.mjs#implantacao-recebimento (bloco 1; REC-CON-001, REC-CON-007)",
+          "manual-05-recebimento#004"
+        ]
+      },
+      {
+        "item": "Usar Registro de Avarias",
+        "onde": "Recebimento › Configurações › Parâmetros de Recebimento",
+        "porque": "Avaria e inspeção dependem da conferência: com ela desligada, o sistema recusa ligar a avaria.",
+        "fontes": [
+          "scripts/dados-checklists-implantacao.mjs#implantacao-recebimento (bloco 1; REC-PAR-002)"
+        ]
+      },
+      {
+        "item": "Distribuição DFe: Configuração ativa e busca automática a cada 30 minutos",
+        "onde": "Recebimento › Distribuição DFe",
+        "porque": "Traz para Aguardando manifestação as notas emitidas contra a empresa. Exige Recebimento PRO e certificado A1 enviado; sem certificado, salvar é recusado.",
+        "fontes": [
+          "scripts/dados-checklists-implantacao.mjs#implantacao-recebimento (pré-requisitos e bloco 1; REC-DFE-001, REC-DFE-014)"
+        ]
+      },
+      {
+        "item": "CFOPs de entrada com Gera Financeiro e Movimenta Estoque",
+        "onde": "Recebimento › Configurações › CFOP",
+        "porque": "Decidem se a nota gera título e se dá entrada no estoque (só para item de produto que controla estoque). Sem plano de contas não nasce título.",
+        "fontes": [
+          "scripts/dados-checklists-implantacao.mjs#implantacao-recebimento (pré-requisitos; REC-NR-016, REC-FIN-007)",
+          "oficial-rec-a-regras#001 (REC-FIN-003)"
+        ]
+      },
+      {
+        "item": "Almoxarifado central ativo",
+        "onde": "Estoque › Locais",
+        "porque": "É onde a nota dá entrada. Sem ele, a finalização é bloqueada.",
+        "fontes": [
+          "scripts/dados-checklists-implantacao.mjs#implantacao-recebimento (pré-requisitos)",
+          "regra-estoque-almoxarifado-central-ativo-e-pre-requisito"
+        ]
+      },
+      {
+        "item": "Unidade de estoque, embalagem e fator dos produtos comprados; siglas das unidades",
+        "onde": "Cadastro do produto e tela de unidades de medida",
+        "porque": "A finalização exige fator de embalagem em todo item, e a importação de XML confere as unidades pelas siglas que o fornecedor usa.",
+        "fontes": [
+          "scripts/dados-checklists-implantacao.mjs#implantacao-recebimento (pré-requisitos; REC-FIN-001, REC-XML-007)",
+          "oficial-rec-a-regras#001"
+        ]
+      }
+    ],
+    "integracoes": [
+      {
+        "acao": "Gerar Nota de Recebimento no pedido de compra",
+        "modulo": "Recebimento",
+        "efeito": "Abre a Nova Nota de Recebimento preenchida com empresa, fornecedor, CFOP, condição de pagamento e itens do pedido.",
+        "fontes": [
+          "funcional-compras-solicitacoes-pedidos-e-recebimento#003",
+          "scripts/dados-checklists-implantacao.mjs#implantacao-recebimento (bloco 3)"
+        ]
+      },
+      {
+        "acao": "Salvar a nota com entrega parcial",
+        "modulo": "Compras",
+        "efeito": "O pedido original fica com o recebido e o saldo vai para o pedido filho PC-…/2. O momento do desdobro (salvar × finalizar) está a conferir.",
+        "fontes": [
+          "scripts/dados-checklists-implantacao.mjs#implantacao-recebimento (bloco 4; REC-NR-009, REC-NR-010)",
+          "plano-recebimento#002"
+        ]
+      },
+      {
+        "acao": "Finalizar a nota",
+        "modulo": "Estoque",
+        "efeito": "Entrada Recebimento (NR) no almoxarifado central, na unidade de estoque, recalculando o custo médio. Tudo ou nada com os títulos: se falhar, a nota segue Em Aberto com o motivo.",
+        "fontes": [
+          "scripts/dados-checklists-implantacao.mjs#implantacao-recebimento (bloco 6)",
+          "oficial-rec-a-regras#001 (REC-FIN-002/006, REC-FIN-004)"
+        ]
+      },
+      {
+        "acao": "Finalizar a nota",
+        "modulo": "Financeiro",
+        "efeito": "Um título a pagar por parcela, com o documento NR-…, salvo quando o pedido já gerou títulos ou a compra é por conta do cliente.",
+        "fontes": [
+          "scripts/dados-checklists-implantacao.mjs#implantacao-recebimento (bloco 6; REC-FIN-007)"
+        ]
+      },
+      {
+        "acao": "Finalizar a nota",
+        "modulo": "Compras",
+        "efeito": "Pedido Recebido, coluna NOTA DE RECEBIMENTO preenchida e a cadeia SC → COT → PC → NR → título na Linha do tempo.",
+        "fontes": [
+          "scripts/dados-checklists-implantacao.mjs#implantacao-recebimento (blocos 4 e 6)",
+          "videos/roteiros/consultor-01-suprimentos.json#11"
+        ]
+      },
+      {
+        "acao": "Gerar Devolução (nota importada por XML)",
+        "modulo": "Faturamento",
+        "efeito": "Cria a NF-e de devolução em rascunho. O estoque baixa só na autorização e o título não muda. Exige a chave de acesso da nota do fornecedor.",
+        "fontes": [
+          "scripts/dados-checklists-implantacao.mjs#implantacao-recebimento (bloco 7; REC-DEV-001 a 003)",
+          "oficial-rec-a-regras#002"
+        ]
+      },
+      {
+        "acao": "Cancelar a nota finalizada (com motivo)",
+        "modulo": "Estoque, Financeiro e Compras",
+        "efeito": "Estorna o estoque, exclui os títulos em aberto e reabre o pedido; o pedido filho continua. Título pago impede o cancelamento.",
+        "fontes": [
+          "oficial-rec-a-regras#002 (REC-CAN-001, REC-CAN-002, REC-CAN-004)"
+        ]
+      }
+    ],
+    "roteiroDemonstracao": [
+      {
+        "passo": "Abra o Dashboard Recebimento",
+        "mostrar": "A faixa Hoje e a lista Precisa de ação hoje com Conferir e finalizar e Gerar contas a pagar.",
+        "fontes": [
+          "videos/capturas/guias-staging/recebimento-dashboard.png",
+          "scripts/dados-checklists-implantacao.mjs#implantacao-recebimento (bloco 6)"
+        ]
+      },
+      {
+        "passo": "Mostre a lista de notas",
+        "mostrar": "Os cartões Total, Em Aberto, Finalizadas e Canceladas e o filtro Status, que abre em Em Aberto.",
+        "fontes": [
+          "videos/capturas/guias-staging/recebimento-notas.png",
+          "scripts/dados-checklists-estagiarios.mjs#recebimento"
+        ]
+      },
+      {
+        "passo": "Gere a nota a partir de um pedido aprovado",
+        "mostrar": "+ Nova Nota (ou ⋯ › Gerar Nota de Recebimento no pedido) e a nota já preenchida; os dois números NF e NR.",
+        "fontes": [
+          "videos/capturas/guias-staging/recebimento-nova-nota.png",
+          "scripts/dados-checklists-implantacao.mjs#implantacao-recebimento (bloco 3)",
+          "regra-recebimento-a-mesma-nota-tem-dois-numeros"
+        ]
+      },
+      {
+        "passo": "Faça uma entrega parcial",
+        "mostrar": "O pedido original Recebido e o PC-…/2 com o saldo.",
+        "fontes": [
+          "scripts/dados-checklists-implantacao.mjs#implantacao-recebimento (bloco 4)"
+        ]
+      },
+      {
+        "passo": "Finalize a nota de teste",
+        "mostrar": "O aviso de que não se desfaz e a nota Finalizada (limpando o filtro).",
+        "fontes": [
+          "scripts/dados-checklists-implantacao.mjs#implantacao-recebimento (bloco 6)",
+          "videos/public/telas/compra-em-nome-do-cliente/37-finalizar-nr.png"
+        ]
+      },
+      {
+        "passo": "Siga os reflexos",
+        "mostrar": "A entrada Recebimento (NR) em Estoque › Movimentos, o título NR-… em Contas a Pagar e a Linha do tempo do pedido.",
+        "fontes": [
+          "scripts/dados-checklists-implantacao.mjs#implantacao-recebimento (bloco 6)",
+          "videos/public/telas/consultor-01-suprimentos/03-entrada-estoque.png",
+          "videos/public/telas/consultor-01-suprimentos/01-linha-do-tempo.png"
+        ]
+      },
+      {
+        "passo": "Mostre o que o sistema recusa",
+        "mostrar": "XML repetido, quantidade acima do pedido e edição de nota finalizada.",
+        "fontes": [
+          "scripts/dados-checklists-implantacao.mjs#implantacao-recebimento (blocos 2, 3 e 6; REC-XML-002, REC-NR-008, REC-NR-014)"
+        ]
+      },
+      {
+        "passo": "Se o cliente tem PRO, abra Aguardando manifestação",
+        "mostrar": "Atualizar, Responder à SEFAZ e Receber; manifestar só com o responsável fiscal.",
+        "fontes": [
+          "videos/capturas/guias-staging/recebimento-pendentes.png",
+          "scripts/dados-checklists-implantacao.mjs#implantacao-recebimento (bloco 2)"
+        ]
       }
     ]
   },
@@ -962,17 +1351,26 @@
     "videos/public/telas/consultor-01-suprimentos/01-linha-do-tempo.png",
     "videos/public/telas/consultor-01-suprimentos/03-entrada-estoque.png",
     "videos/public/telas/compra-em-nome-do-cliente/36-nota-recebimento.png",
-    "videos/public/telas/compra-em-nome-do-cliente/37-finalizar-nr.png"
+    "videos/public/telas/compra-em-nome-do-cliente/37-finalizar-nr.png",
+    "videos/capturas/guias-staging/recebimento-dashboard.png",
+    "videos/capturas/guias-staging/recebimento-notas.png",
+    "videos/capturas/guias-staging/recebimento-nova-nota.png",
+    "oficial-rec-a-regras#001",
+    "oficial-rec-a-regras#002",
+    "plano-recebimento#002"
   ],
   "pendencias": [
+    "RESOLVIDO (staging v1.23.2, 05/11/2026): Dashboard Recebimento capturado (valores borrados); os cartões reais são A conferir, Entregas atrasadas, Saldo a receber, A faturar, Recebido no período, Notas em aberto, Finalizadas no período, Fornecedores ativos e Prazo de conferência.",
     "CAPTURA: Compras › Pedidos de Compra — menu ⋯ de um pedido em aberto com Gerar Nota de Recebimento.",
     "CAPTURA: Recebimento › Notas de Recebimento › ⋮ › Finalizar — janela Finalizar Nota de Recebimento com o aviso.",
-    "CAPTURA: Recebimento › Dashboard Recebimento — fila e cartões (Recebido no período, Notas em aberto, Títulos a gerar, Parcelas a vencer).",
     "CAPTURA: fila de conferência (Recebimento › Aprovações ou › Conferências) — cartões e abas, e a tela de conferência de uma nota.",
     "CAPTURA: Recebimento › Configurações › Parâmetros de Recebimento — chaves Usar Conferência Física e Exigir Conferência para Finalizar.",
     "CAPTURA: Recebimento › Notas de Recebimento › Importar XML — janela de importação.",
     "DIVERGÊNCIA a conferir na tela: nome da fila de conferência (Aprovações no Manual 05 e na trilha do estagiário × Conferências no roteiro, no manual de implantação e na captura de 19/10). No staging v1.23.2 (05/11/2026) nenhum dos dois aparece no menu (conferência física desligada): segue a conferir.",
     "RESOLVIDO (staging v1.23.2, 05/11/2026): o item de menu é Aguardando manifestação (Notas pendentes, da captura de 29/10, não aparece mais).",
-    "Validação na tela pendente: guia gerado de capturas e da base, sem sessão no Flow."
+    "Validação na tela pendente: guia gerado de capturas e da base, sem sessão no Flow.",
+    "DIVERGÊNCIA a conferir na tela: no staging v1.23.2 (05/11/2026) a lista de notas mostra NR-000004 na coluna NÚMERO DA NOTA; a regra \"a mesma nota tem dois números\" diz que a lista mostra NF-<número do fornecedor>. Conferir quando a lista mostra NR-.",
+    "DIVERGÊNCIAS do checklist de implantação (a conferir na tela): quantidade que entra com divergência na conferência (nota × conferida); custo de entrada (sem tributo recuperável × cheio hoje); momento do desdobro do pedido (salvar × finalizar).",
+    "CAPTURA: Recebimento › Configurações › CFOP e Recebimento › Distribuição DFe (só leitura), para o bloco de configurações do consultor."
   ]
 }

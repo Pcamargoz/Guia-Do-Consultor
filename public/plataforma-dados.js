@@ -159,7 +159,8 @@
     }
     const area = AREAS.includes(partes[0]) ? partes[0] : 'inicio';
     const rota = { area };
-    if ((area === 'inicial' || area === 'consultor') && partes[1] && SEGMENTO.test(partes[1])) rota.modulo = partes[1];
+    // #inicio/<modulo> = página do módulo (v3): reúne os materiais das duas jornadas.
+    if ((area === 'inicial' || area === 'consultor' || area === 'inicio') && partes[1] && SEGMENTO.test(partes[1])) rota.modulo = partes[1];
     if (AREAS_COM_SECAO.includes(area) && brutas[1] && SECAO.test(brutas[1])) rota.secao = brutas[1];
     return rota;
   }

@@ -240,3 +240,21 @@
 @media (prefers-reduced-motion: no-preference) { .pl-anota__tela[data-carregando] { animation: pl-brilho 1.4s linear infinite; } }
 @keyframes pl-brilho { to { background-position: -300% 0; } }
 .pl-anota__camada { transition: opacity .3s var(--pl-ease); }
+
+/* Bloco do consultor ampliado: configurações, integrações e roteiro de demonstração */
+.pl-cons__config { display: grid; gap: 0; margin: 0; grid-template-columns: minmax(0, 1fr); border-top: 1px solid var(--pl-claro-linha); }
+@container pl-raiz (min-width: 760px) { .pl-cons__config { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 32px; } }
+.pl-cons__config > div { padding: 12px 0; border-bottom: 1px solid var(--pl-claro-linha); }
+.pl-cons__config dt { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; font: 700 .95rem/1.35 var(--font-display); color: var(--pl-claro-texto); }
+.pl-cons__config dd { margin: 4px 0 0; font-size: .92rem; line-height: 1.55; color: var(--pl-claro-suave); }
+.pl-cons__integra { display: grid; gap: 10px; margin: 0; padding: 0 !important; list-style: none; }
+.pl-cons__integra li { display: grid; gap: 3px; padding: 12px 14px; border-radius: 12px; background: var(--pl-claro-sup); border: 1px solid var(--pl-claro-linha); }
+.pl-cons__seta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: .93rem; color: var(--pl-claro-texto); }
+.pl-cons__seta svg { width: 16px; height: 16px; color: var(--brand-primary); }
+.pl-cons__seta > span:last-child { font: 700 .9rem/1.2 var(--font-display); color: var(--brand-primary-800); }
+.pl-cons__efeito { font-size: .9rem; color: var(--pl-claro-suave); line-height: 1.5; }
+.pl-cons__demo { display: grid; gap: 10px; margin: 0; padding: 0 !important; list-style: none; counter-reset: d; }
+.pl-cons__demo li { counter-increment: d; display: grid; grid-template-columns: 30px minmax(0, 1fr); column-gap: 12px; row-gap: 2px; align-items: start; }
+.pl-cons__demo li::before { content: counter(d); grid-row: span 2; display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: var(--brand-primary-950); color: var(--pl-lima); font: 800 .8rem/1 var(--font-display); }
+.pl-cons__demo strong { font: 700 .95rem/1.35 var(--font-display); color: var(--pl-claro-texto); }
+.pl-cons__demo span { font-size: .92rem; color: var(--pl-claro-suave); line-height: 1.5; }

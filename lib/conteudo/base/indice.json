@@ -1,5 +1,5 @@
 {
- "versao": "2026-11-04",
+ "versao": "2026-11-06",
  "gerado_de": {
   "mapa": "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
   "harness": "harness:conhecimento/"
@@ -35,16 +35,15 @@
     {
      "modulo": "primeiros-passos",
      "duracao_s": null,
-     "url": null,
+     "url": "#inicial/primeiros-passos",
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md",
-      "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/00_Manual_Inicio_e_navegacao_Timbrado.docx"
+      "guia:public/manuais/primeiros-passos/guia.json"
      ],
      "id": "primeiros-passos:manual-inicial",
      "tipo": "manual",
      "jornada": "inicial",
-     "titulo": "Manual visual resumido",
-     "status": "em-preparacao"
+     "titulo": "Guia visual ilustrado (11 passos, 7 telas)",
+     "status": "disponivel"
     },
     {
      "modulo": "primeiros-passos",
@@ -101,16 +100,15 @@
     {
      "modulo": "primeiros-passos",
      "duracao_s": null,
-     "url": null,
+     "url": "#consultor/primeiros-passos",
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md",
-      "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/00_Manual_Inicio_e_navegacao_Timbrado.docx"
+      "guia:public/manuais/primeiros-passos/guia.json"
      ],
      "id": "primeiros-passos:manual-consultor",
      "tipo": "manual",
      "jornada": "consultor",
-     "titulo": "Manual do consultor",
-     "status": "em-preparacao"
+     "titulo": "Guia visual ilustrado (11 passos, 7 telas)",
+     "status": "disponivel"
     }
    ]
   },
@@ -144,16 +142,15 @@
     {
      "modulo": "fundacao",
      "duracao_s": null,
-     "url": null,
+     "url": "#inicial/fundacao",
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md",
-      "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/01_Manual_Cadastros_Base_Timbrado.docx"
+      "guia:public/manuais/fundacao/guia.json"
      ],
      "id": "fundacao:manual-inicial",
      "tipo": "manual",
      "jornada": "inicial",
-     "titulo": "Manual visual resumido",
-     "status": "em-preparacao"
+     "titulo": "Guia visual ilustrado (8 passos, 6 telas)",
+     "status": "disponivel"
     },
     {
      "modulo": "fundacao",
@@ -227,16 +224,15 @@
     {
      "modulo": "fundacao",
      "duracao_s": null,
-     "url": null,
+     "url": "#consultor/fundacao",
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md",
-      "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/01_Manual_Cadastros_Base_Timbrado.docx"
+      "guia:public/manuais/fundacao/guia.json"
      ],
      "id": "fundacao:manual-consultor",
      "tipo": "manual",
      "jornada": "consultor",
-     "titulo": "Manual do consultor",
-     "status": "em-preparacao"
+     "titulo": "Guia visual ilustrado (14 passos, 6 telas)",
+     "status": "disponivel"
     }
    ]
   },
@@ -271,16 +267,15 @@
     {
      "modulo": "crm",
      "duracao_s": null,
-     "url": null,
+     "url": "#inicial/crm",
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md",
-      "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/02_Manual_CRM_Timbrado.docx"
+      "guia:public/manuais/crm/guia.json"
      ],
      "id": "crm:manual-inicial",
      "tipo": "manual",
      "jornada": "inicial",
-     "titulo": "Manual visual resumido",
-     "status": "em-preparacao"
+     "titulo": "Guia visual ilustrado (11 passos, 13 telas)",
+     "status": "disponivel"
     },
     {
      "modulo": "crm",
@@ -358,16 +353,15 @@
     {
      "modulo": "crm",
      "duracao_s": null,
-     "url": null,
+     "url": "#consultor/crm",
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md",
-      "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/02_Manual_CRM_Timbrado.docx"
+      "guia:public/manuais/crm/guia.json"
      ],
      "id": "crm:manual-consultor",
      "tipo": "manual",
      "jornada": "consultor",
-     "titulo": "Manual do consultor",
-     "status": "em-preparacao"
+     "titulo": "Guia visual ilustrado (15 passos, 13 telas)",
+     "status": "disponivel"
     }
    ]
   },
@@ -400,15 +394,15 @@
     {
      "modulo": "cem",
      "duracao_s": null,
-     "url": null,
+     "url": "#inicial/cem",
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md"
+      "guia:public/manuais/cem/guia.json"
      ],
      "id": "cem:manual-inicial",
      "tipo": "manual",
      "jornada": "inicial",
-     "titulo": "Manual visual resumido",
-     "status": "em-preparacao"
+     "titulo": "Guia visual ilustrado (5 passos, 4 telas)",
+     "status": "disponivel"
     },
     {
      "modulo": "cem",
@@ -439,15 +433,15 @@
     {
      "modulo": "cem",
      "duracao_s": null,
-     "url": null,
+     "url": "#consultor/cem",
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md"
+      "guia:public/manuais/cem/guia.json"
      ],
      "id": "cem:manual-consultor",
      "tipo": "manual",
      "jornada": "consultor",
-     "titulo": "Manual do consultor",
-     "status": "em-preparacao"
+     "titulo": "Guia visual ilustrado (13 passos, 4 telas)",
+     "status": "disponivel"
     }
    ]
   },
@@ -483,16 +477,15 @@
     {
      "modulo": "vendas",
      "duracao_s": null,
-     "url": null,
+     "url": "#inicial/vendas",
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md",
-      "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/03_Manual_Vendas_Timbrado.docx"
+      "guia:public/manuais/vendas/guia.json"
      ],
      "id": "vendas:manual-inicial",
      "tipo": "manual",
      "jornada": "inicial",
-     "titulo": "Manual visual resumido",
-     "status": "em-preparacao"
+     "titulo": "Guia visual ilustrado (15 passos, 15 telas)",
+     "status": "disponivel"
     },
     {
      "modulo": "vendas",
@@ -591,16 +584,15 @@
     {
      "modulo": "vendas",
      "duracao_s": null,
-     "url": null,
+     "url": "#consultor/vendas",
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md",
-      "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/03_Manual_Vendas_Timbrado.docx"
+      "guia:public/manuais/vendas/guia.json"
      ],
      "id": "vendas:manual-consultor",
      "tipo": "manual",
      "jornada": "consultor",
-     "titulo": "Manual do consultor",
-     "status": "em-preparacao"
+     "titulo": "Guia visual ilustrado (21 passos, 15 telas)",
+     "status": "disponivel"
     }
    ]
   },
@@ -635,16 +627,15 @@
     {
      "modulo": "compras",
      "duracao_s": null,
-     "url": null,
+     "url": "#inicial/compras",
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md",
-      "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/04_Manual_Compras_Timbrado.docx"
+      "guia:public/manuais/compras/guia.json"
      ],
      "id": "compras:manual-inicial",
      "tipo": "manual",
      "jornada": "inicial",
-     "titulo": "Manual visual resumido",
-     "status": "em-preparacao"
+     "titulo": "Guia visual ilustrado (11 passos, 12 telas)",
+     "status": "disponivel"
     },
     {
      "modulo": "compras",
@@ -719,16 +710,15 @@
     {
      "modulo": "compras",
      "duracao_s": null,
-     "url": null,
+     "url": "#consultor/compras",
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md",
-      "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/04_Manual_Compras_Timbrado.docx"
+      "guia:public/manuais/compras/guia.json"
      ],
      "id": "compras:manual-consultor",
      "tipo": "manual",
      "jornada": "consultor",
-     "titulo": "Manual do consultor",
-     "status": "em-preparacao"
+     "titulo": "Guia visual ilustrado (15 passos, 12 telas)",
+     "status": "disponivel"
     }
    ]
   },
@@ -763,16 +753,15 @@
     {
      "modulo": "recebimento",
      "duracao_s": null,
-     "url": null,
+     "url": "#inicial/recebimento",
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md",
-      "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/05_Manual_Recebimento_Timbrado.docx"
+      "guia:public/manuais/recebimento/guia.json"
      ],
      "id": "recebimento:manual-inicial",
      "tipo": "manual",
      "jornada": "inicial",
-     "titulo": "Manual visual resumido",
-     "status": "em-preparacao"
+     "titulo": "Guia visual ilustrado (10 passos, 9 telas)",
+     "status": "disponivel"
     },
     {
      "modulo": "recebimento",
@@ -845,16 +834,15 @@
     {
      "modulo": "recebimento",
      "duracao_s": null,
-     "url": null,
+     "url": "#consultor/recebimento",
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md",
-      "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/05_Manual_Recebimento_Timbrado.docx"
+      "guia:public/manuais/recebimento/guia.json"
      ],
      "id": "recebimento:manual-consultor",
      "tipo": "manual",
      "jornada": "consultor",
-     "titulo": "Manual do consultor",
-     "status": "em-preparacao"
+     "titulo": "Guia visual ilustrado (15 passos, 9 telas)",
+     "status": "disponivel"
     }
    ]
   },
@@ -889,16 +877,15 @@
     {
      "modulo": "estoque",
      "duracao_s": null,
-     "url": null,
+     "url": "#inicial/estoque",
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md",
-      "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/06_Manual_Estoque_Timbrado.docx"
+      "guia:public/manuais/estoque/guia.json"
      ],
      "id": "estoque:manual-inicial",
      "tipo": "manual",
      "jornada": "inicial",
-     "titulo": "Manual visual resumido",
-     "status": "em-preparacao"
+     "titulo": "Guia visual ilustrado (11 passos, 11 telas)",
+     "status": "disponivel"
     },
     {
      "modulo": "estoque",
@@ -977,16 +964,15 @@
     {
      "modulo": "estoque",
      "duracao_s": null,
-     "url": null,
+     "url": "#consultor/estoque",
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md",
-      "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/06_Manual_Estoque_Timbrado.docx"
+      "guia:public/manuais/estoque/guia.json"
      ],
      "id": "estoque:manual-consultor",
      "tipo": "manual",
      "jornada": "consultor",
-     "titulo": "Manual do consultor",
-     "status": "em-preparacao"
+     "titulo": "Guia visual ilustrado (17 passos, 11 telas)",
+     "status": "disponivel"
     }
    ]
   },
@@ -1021,16 +1007,15 @@
     {
      "modulo": "producao",
      "duracao_s": null,
-     "url": null,
+     "url": "#inicial/producao",
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md",
-      "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/07_Manual_Producao_Timbrado.docx"
+      "guia:public/manuais/producao/guia.json"
      ],
      "id": "producao:manual-inicial",
      "tipo": "manual",
      "jornada": "inicial",
-     "titulo": "Manual visual resumido",
-     "status": "em-preparacao"
+     "titulo": "Guia visual ilustrado (11 passos, 8 telas)",
+     "status": "disponivel"
     },
     {
      "modulo": "producao",
@@ -1107,16 +1092,15 @@
     {
      "modulo": "producao",
      "duracao_s": null,
-     "url": null,
+     "url": "#consultor/producao",
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md",
-      "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/07_Manual_Producao_Timbrado.docx"
+      "guia:public/manuais/producao/guia.json"
      ],
      "id": "producao:manual-consultor",
      "tipo": "manual",
      "jornada": "consultor",
-     "titulo": "Manual do consultor",
-     "status": "em-preparacao"
+     "titulo": "Guia visual ilustrado (13 passos, 8 telas)",
+     "status": "disponivel"
     }
    ]
   },
@@ -1151,16 +1135,15 @@
     {
      "modulo": "servicos",
      "duracao_s": null,
-     "url": null,
+     "url": "#inicial/servicos",
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md",
-      "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/11_Manual_Servicos_Timbrado.docx"
+      "guia:public/manuais/servicos/guia.json"
      ],
      "id": "servicos:manual-inicial",
      "tipo": "manual",
      "jornada": "inicial",
-     "titulo": "Manual visual resumido",
-     "status": "em-preparacao"
+     "titulo": "Guia visual ilustrado (14 passos, 8 telas)",
+     "status": "disponivel"
     },
     {
      "modulo": "servicos",
@@ -1236,16 +1219,15 @@
     {
      "modulo": "servicos",
      "duracao_s": null,
-     "url": null,
+     "url": "#consultor/servicos",
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md",
-      "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/11_Manual_Servicos_Timbrado.docx"
+      "guia:public/manuais/servicos/guia.json"
      ],
      "id": "servicos:manual-consultor",
      "tipo": "manual",
      "jornada": "consultor",
-     "titulo": "Manual do consultor",
-     "status": "em-preparacao"
+     "titulo": "Guia visual ilustrado (17 passos, 8 telas)",
+     "status": "disponivel"
     }
    ]
   },
@@ -1280,16 +1262,15 @@
     {
      "modulo": "projetos",
      "duracao_s": null,
-     "url": null,
+     "url": "#inicial/projetos",
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md",
-      "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/12_Manual_Projetos_e_Tarefas_Timbrado.docx"
+      "guia:public/manuais/projetos/guia.json"
      ],
      "id": "projetos:manual-inicial",
      "tipo": "manual",
      "jornada": "inicial",
-     "titulo": "Manual visual resumido",
-     "status": "em-preparacao"
+     "titulo": "Guia visual ilustrado (10 passos, 7 telas)",
+     "status": "disponivel"
     },
     {
      "modulo": "projetos",
@@ -1360,16 +1341,15 @@
     {
      "modulo": "projetos",
      "duracao_s": null,
-     "url": null,
+     "url": "#consultor/projetos",
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md",
-      "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/12_Manual_Projetos_e_Tarefas_Timbrado.docx"
+      "guia:public/manuais/projetos/guia.json"
      ],
      "id": "projetos:manual-consultor",
      "tipo": "manual",
      "jornada": "consultor",
-     "titulo": "Manual do consultor",
-     "status": "em-preparacao"
+     "titulo": "Guia visual ilustrado (13 passos, 7 telas)",
+     "status": "disponivel"
     }
    ]
   },
@@ -1404,16 +1384,15 @@
     {
      "modulo": "expedicao",
      "duracao_s": null,
-     "url": null,
+     "url": "#inicial/expedicao",
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md",
-      "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/09_Manual_Expedicao_Timbrado.docx"
+      "guia:public/manuais/expedicao/guia.json"
      ],
      "id": "expedicao:manual-inicial",
      "tipo": "manual",
      "jornada": "inicial",
-     "titulo": "Manual visual resumido",
-     "status": "em-preparacao"
+     "titulo": "Guia visual ilustrado (6 passos, 10 telas)",
+     "status": "disponivel"
     },
     {
      "modulo": "expedicao",
@@ -1485,16 +1464,15 @@
     {
      "modulo": "expedicao",
      "duracao_s": null,
-     "url": null,
+     "url": "#consultor/expedicao",
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md",
-      "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/09_Manual_Expedicao_Timbrado.docx"
+      "guia:public/manuais/expedicao/guia.json"
      ],
      "id": "expedicao:manual-consultor",
      "tipo": "manual",
      "jornada": "consultor",
-     "titulo": "Manual do consultor",
-     "status": "em-preparacao"
+     "titulo": "Guia visual ilustrado (14 passos, 10 telas)",
+     "status": "disponivel"
     }
    ]
   },
@@ -1530,16 +1508,15 @@
     {
      "modulo": "faturamento",
      "duracao_s": null,
-     "url": null,
+     "url": "#inicial/faturamento",
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md",
-      "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/08_Manual_Faturamento_e_Fiscal_Timbrado.docx"
+      "guia:public/manuais/faturamento/guia.json"
      ],
      "id": "faturamento:manual-inicial",
      "tipo": "manual",
      "jornada": "inicial",
-     "titulo": "Manual visual resumido",
-     "status": "em-preparacao"
+     "titulo": "Guia visual ilustrado (6 passos, 12 telas)",
+     "status": "disponivel"
     },
     {
      "modulo": "faturamento",
@@ -1646,16 +1623,15 @@
     {
      "modulo": "faturamento",
      "duracao_s": null,
-     "url": null,
+     "url": "#consultor/faturamento",
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md",
-      "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/08_Manual_Faturamento_e_Fiscal_Timbrado.docx"
+      "guia:public/manuais/faturamento/guia.json"
      ],
      "id": "faturamento:manual-consultor",
      "tipo": "manual",
      "jornada": "consultor",
-     "titulo": "Manual do consultor",
-     "status": "em-preparacao"
+     "titulo": "Guia visual ilustrado (15 passos, 12 telas)",
+     "status": "disponivel"
     }
    ]
   },
@@ -1690,16 +1666,15 @@
     {
      "modulo": "fiscal",
      "duracao_s": null,
-     "url": null,
+     "url": "#inicial/fiscal",
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md",
-      "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/08_Manual_Faturamento_e_Fiscal_Timbrado.docx"
+      "guia:public/manuais/fiscal/guia.json"
      ],
      "id": "fiscal:manual-inicial",
      "tipo": "manual",
      "jornada": "inicial",
-     "titulo": "Manual visual resumido",
-     "status": "em-preparacao"
+     "titulo": "Guia visual ilustrado (8 passos, 10 telas)",
+     "status": "disponivel"
     },
     {
      "modulo": "fiscal",
@@ -1743,16 +1718,15 @@
     {
      "modulo": "fiscal",
      "duracao_s": null,
-     "url": null,
+     "url": "#consultor/fiscal",
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md",
-      "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/08_Manual_Faturamento_e_Fiscal_Timbrado.docx"
+      "guia:public/manuais/fiscal/guia.json"
      ],
      "id": "fiscal:manual-consultor",
      "tipo": "manual",
      "jornada": "consultor",
-     "titulo": "Manual do consultor",
-     "status": "em-preparacao"
+     "titulo": "Guia visual ilustrado (16 passos, 10 telas)",
+     "status": "disponivel"
     }
    ]
   },
@@ -1788,16 +1762,15 @@
     {
      "modulo": "financeiro",
      "duracao_s": null,
-     "url": null,
+     "url": "#inicial/financeiro",
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md",
-      "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/10_Manual_Financeiro_Timbrado.docx"
+      "guia:public/manuais/financeiro/guia.json"
      ],
      "id": "financeiro:manual-inicial",
      "tipo": "manual",
      "jornada": "inicial",
-     "titulo": "Manual visual resumido",
-     "status": "em-preparacao"
+     "titulo": "Guia visual ilustrado (7 passos, 16 telas)",
+     "status": "disponivel"
     },
     {
      "modulo": "financeiro",
@@ -1891,16 +1864,15 @@
     {
      "modulo": "financeiro",
      "duracao_s": null,
-     "url": null,
+     "url": "#consultor/financeiro",
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md",
-      "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/10_Manual_Financeiro_Timbrado.docx"
+      "guia:public/manuais/financeiro/guia.json"
      ],
      "id": "financeiro:manual-consultor",
      "tipo": "manual",
      "jornada": "consultor",
-     "titulo": "Manual do consultor",
-     "status": "em-preparacao"
+     "titulo": "Guia visual ilustrado (17 passos, 16 telas)",
+     "status": "disponivel"
     }
    ]
   },
@@ -1935,16 +1907,15 @@
     {
      "modulo": "tarefas",
      "duracao_s": null,
-     "url": null,
+     "url": "#inicial/tarefas",
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md",
-      "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/12_Manual_Projetos_e_Tarefas_Timbrado.docx"
+      "guia:public/manuais/tarefas/guia.json"
      ],
      "id": "tarefas:manual-inicial",
      "tipo": "manual",
      "jornada": "inicial",
-     "titulo": "Manual visual resumido",
-     "status": "em-preparacao"
+     "titulo": "Guia visual ilustrado (8 passos, 9 telas)",
+     "status": "disponivel"
     },
     {
      "modulo": "tarefas",
@@ -2017,16 +1988,15 @@
     {
      "modulo": "tarefas",
      "duracao_s": null,
-     "url": null,
+     "url": "#consultor/tarefas",
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md",
-      "harness:conhecimento/Manuais_Faktory_Flow_Timbrados/12_Manual_Projetos_e_Tarefas_Timbrado.docx"
+      "guia:public/manuais/tarefas/guia.json"
      ],
      "id": "tarefas:manual-consultor",
      "tipo": "manual",
      "jornada": "consultor",
-     "titulo": "Manual do consultor",
-     "status": "em-preparacao"
+     "titulo": "Guia visual ilustrado (9 passos, 9 telas)",
+     "status": "disponivel"
     }
    ]
   },
@@ -2193,15 +2163,15 @@
     {
      "modulo": "fluxo-completo",
      "duracao_s": null,
-     "url": null,
+     "url": "#inicial/fluxo-completo",
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md"
+      "guia:public/manuais/fluxo-completo/guia.json"
      ],
      "id": "fluxo-completo:manual-inicial",
      "tipo": "manual",
      "jornada": "inicial",
-     "titulo": "Manual visual resumido",
-     "status": "em-preparacao"
+     "titulo": "Guia visual ilustrado (11 passos, 12 telas)",
+     "status": "disponivel"
     },
     {
      "modulo": "fluxo-completo",
@@ -2259,15 +2229,15 @@
     {
      "modulo": "fluxo-completo",
      "duracao_s": null,
-     "url": null,
+     "url": "#consultor/fluxo-completo",
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md"
+      "guia:public/manuais/fluxo-completo/guia.json"
      ],
      "id": "fluxo-completo:manual-consultor",
      "tipo": "manual",
      "jornada": "consultor",
-     "titulo": "Manual do consultor",
-     "status": "em-preparacao"
+     "titulo": "Guia visual ilustrado (13 passos, 12 telas)",
+     "status": "disponivel"
     }
    ]
   }

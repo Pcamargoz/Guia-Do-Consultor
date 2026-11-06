@@ -3,7 +3,7 @@
   "titulo": "Compras — guia visual",
   "resumo": "Você vai entender o caminho do material: alguém precisa (solicitação), a empresa compara fornecedores (cotação), fecha o compromisso (pedido de compra) e acompanha até a entrega no Recebimento.",
   "versaoSistema": "1.22.13 (consultor-01-suprimentos e compra-em-nome-do-cliente) e 1.23.2 (staging, 05/11/2026)",
-  "atualizadoEm": "2026-11-05",
+  "atualizadoEm": "2026-11-06",
   "status": "rascunho",
   "conceitos": [
     {
@@ -326,6 +326,88 @@
             "w": 18.4,
             "h": 38.1
           }
+        },
+        {
+          "titulo": "Conheça o formulário Nova Solicitação de Compra",
+          "texto": "O formulário abre à direita. Preencha Empresa, Data Necessidade, Produto e Quantidade; Data Cadastro já vem com a data de hoje. Observações e Tags ficam recolhidas no fim. Clique em Salvar: a SC nasce Em Aberto.",
+          "imagem": "/manuais/compras/img/09-nova-solicitacao.webp",
+          "alt": "Formulário Nova Solicitação de Compra com Documento, Empresa, Projeto, Estágio e Etapa do Projeto, Data Cadastro, Data Necessidade, Produto, Quantidade, Peso e Área.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Documento",
+              "explicacao": "Deixe em branco: o número (SC-…) é gerado ao salvar.",
+              "caixa": {
+                "x": 52.1,
+                "y": 16.1,
+                "w": 23,
+                "h": 4.7
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 2,
+              "rotulo": "Empresa",
+              "explicacao": "Obrigatória: a empresa que vai comprar.",
+              "caixa": {
+                "x": 75.3,
+                "y": 16.1,
+                "w": 23,
+                "h": 4.7
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 3,
+              "rotulo": "Projeto",
+              "explicacao": "Opcional. Em branco, a entrada do material cai no almoxarifado central.",
+              "caixa": {
+                "x": 52.1,
+                "y": 24.7,
+                "w": 15.3,
+                "h": 4.7
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 4,
+              "rotulo": "Data Necessidade",
+              "explicacao": "Quando o material precisa chegar.",
+              "caixa": {
+                "x": 75.3,
+                "y": 33.1,
+                "w": 23,
+                "h": 4.7
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 5,
+              "rotulo": "Produto e Quantidade",
+              "explicacao": "Busque por código, descrição ou EAN. Chapa ou perfil pede a Cor em Dados do Item; a quantidade arredonda para a embalagem do fornecedor.",
+              "caixa": {
+                "x": 52.1,
+                "y": 47.8,
+                "w": 46.4,
+                "h": 5
+              },
+              "lado": "cima"
+            }
+          ],
+          "zoom": {
+            "x": 49,
+            "y": 8.1,
+            "w": 51,
+            "h": 46
+          },
+          "atencao": "O documento não grava sem as características que a categoria exige (ex.: perfil sem comprimento): o sistema lista a pendência.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/capturas/guias-staging/compras-nova-solicitacao.png (staging v1.23.2, 05/11/2026)",
+            "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+          ]
         },
         {
           "titulo": "Gere o pedido e complete o Novo Pedido de Compra",
@@ -758,6 +840,92 @@
             "videos/public/telas/consultor-01-suprimentos/01-linha-do-tempo.png",
             "guia:scripts/dados-checklists-estagiarios.mjs#compras"
           ]
+        },
+        {
+          "titulo": "Acompanhe as entregas no Follow-up",
+          "texto": "Abra Compras › Follow-up de Entregas. O acompanhamento nasce sozinho com o pedido de compra. Comece pelo cartão Atrasados, depois Próx. Vencimento, e use Meu Follow-up para ver só os seus. O olho de cada linha abre o detalhe para registrar o contato com o fornecedor.",
+          "imagem": "/manuais/compras/img/12-followup.webp",
+          "alt": "Follow-up de Entregas com os cartões Total Ativo, Atrasados, Próx. Vencimento e Encerrados, os filtros rápidos e a lista de pedidos com Status, Prazo e o olho de detalhe.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Cartões",
+              "explicacao": "Total Ativo, Atrasados, Próx. Vencimento e Encerrados: batem com a lista e filtram ao clicar.",
+              "caixa": {
+                "x": 17.6,
+                "y": 23.1,
+                "w": 79.8,
+                "h": 18.6
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 2,
+              "rotulo": "Filtros rápidos",
+              "explicacao": "Todos, Atrasados, Próx. Vencimento, Aguardando, Parcialmente Recebido, Encerrados e Meu Follow-up.",
+              "caixa": {
+                "x": 19.9,
+                "y": 55.6,
+                "w": 55,
+                "h": 4.2
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 3,
+              "rotulo": "Status",
+              "explicacao": "Aguardando, Próx. Vencimento ou Atrasado, recalculados todo dia de manhã; Encerrado quando a entrega termina.",
+              "caixa": {
+                "x": 66.3,
+                "y": 67.8,
+                "w": 6.6,
+                "h": 20
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 4,
+              "rotulo": "Prazo",
+              "explicacao": "Dias restantes ou atraso; ✓ Entregue quando concluído; Sem data quando não há entrega prevista.",
+              "caixa": {
+                "x": 80.7,
+                "y": 67.8,
+                "w": 8.1,
+                "h": 20
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 5,
+              "rotulo": "Detalhe",
+              "explicacao": "O olho abre a data atual, os itens pendentes e as interações com o fornecedor.",
+              "caixa": {
+                "x": 93,
+                "y": 68.1,
+                "w": 2.2,
+                "h": 3.6
+              },
+              "lado": "esquerda"
+            }
+          ],
+          "zoom": {
+            "x": 17,
+            "y": 20,
+            "w": 83,
+            "h": 70
+          },
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/capturas/guias-staging/compras-followup.png (staging v1.23.2, 05/11/2026)",
+            "manual-04-compras#008",
+            "plano-compras#094",
+            "roteiro-compras-06-follow-up-de-entregas-com-sistemas-tecnicos#016",
+            "roteiro-compras-06-follow-up-de-entregas-com-sistemas-tecnicos#072",
+            "oficial-com-b-processos#005",
+            "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+          ]
         }
       ]
     },
@@ -770,19 +938,153 @@
       "passos": [
         {
           "titulo": "Sugestão de compra (se o cliente usa estoque mínimo)",
-          "texto": "A Sugestão de Compra lê a falta líquida (mínimo − disponível) e pode criar as solicitações. Só lista itens com estoque mínimo cadastrado e apura pelo produto, não pela cor ou medida.",
-          "evidencia": "base",
+          "texto": "Abra Compras › Sugestão de Compra. A conta está no topo: falta líquida = mínimo − disponível. Escolha a Empresa (obrigatória para gerar), filtre pela curva e deixe Só com falta marcado. A lista vazia (\"Nenhum item precisando de compra.\") é normal quando nenhum produto tem estoque mínimo; o mínimo fica no produto, em Cadastros › Produtos › Suprimentos.",
+          "imagem": "/manuais/compras/img/10-sugestao.webp",
+          "alt": "Sugestão de Compra com a fórmula da falta líquida, o campo Empresa, a busca por produto, os botões de curva Todas, A, B e C, a opção Só com falta e a tabela vazia.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Fórmula",
+              "explicacao": "Disponível = tenho + vai chegar − vai sair; é a mesma conta do demonstrativo de estoque mínimo.",
+              "caixa": {
+                "x": 20.3,
+                "y": 16.1,
+                "w": 57,
+                "h": 3.1
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 2,
+              "rotulo": "Empresa",
+              "explicacao": "Obrigatória para gerar as solicitações.",
+              "caixa": {
+                "x": 19.1,
+                "y": 21.9,
+                "w": 16.3,
+                "h": 4.4
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 3,
+              "rotulo": "Curva",
+              "explicacao": "Todas, A, B ou C: separa pela importância do valor em estoque, não pela urgência.",
+              "caixa": {
+                "x": 74.8,
+                "y": 21.8,
+                "w": 14.9,
+                "h": 4.7
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 4,
+              "rotulo": "Só com falta",
+              "explicacao": "Marcado, mostra só o que falta; desmarque para ver todo o estoque.",
+              "caixa": {
+                "x": 89.8,
+                "y": 22.5,
+                "w": 7.3,
+                "h": 3.3
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 5,
+              "rotulo": "Colunas",
+              "explicacao": "Tenho, Vai sair, Vai chegar, Mínimo e Falta líquida: leia a linha toda antes de selecionar.",
+              "caixa": {
+                "x": 30.7,
+                "y": 30,
+                "w": 38.6,
+                "h": 3.3
+              },
+              "lado": "baixo"
+            }
+          ],
+          "zoom": {
+            "x": 18,
+            "y": 11.9,
+            "w": 81,
+            "h": 24.3
+          },
+          "atencao": "A sugestão só lista itens com estoque mínimo e apura pelo produto, não pela cor ou medida. Ao gerar, a quantidade é recalculada na hora.",
+          "evidencia": "captura-real",
           "fontes": [
-            "guia:scripts/dados-checklists-estagiarios.mjs#compras",
-            "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+            "videos/capturas/guias-staging/compras-sugestao.png (staging v1.23.2, 05/11/2026)",
+            "manual-04-compras#009",
+            "plano-compras#023",
+            "plano-compras#024",
+            "roteiro-compras-04-sugestao-de-compra-com-sistemas-tecnicos#022",
+            "roteiro-compras-04-sugestao-de-compra-com-sistemas-tecnicos#025",
+            "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras",
+            "guia:scripts/dados-checklists-estagiarios.mjs#compras"
           ]
         },
         {
           "titulo": "Aprovação por alçada (se o cliente usa)",
-          "texto": "Cadastre as faixas em Compras › Configurações › Faixas de Alçada e só então ligue \"Usar aprovação por alçada\". O pedido acima da faixa espera em Compras › Aprovações; quem cria o pedido não aprova.",
-          "atencao": "A alçada vem desligada. Ligue só depois das faixas e da carga de pedidos em aberto, senão os pedidos importados ficam pendentes. Rótulos da fila de aprovação ainda não conferidos na tela.",
-          "evidencia": "a-conferir-na-tela",
+          "texto": "Cadastre as faixas em Compras › Configurações › Faixas de Alçada e só então ligue \"Usar aprovação por alçada\". O pedido acima da faixa espera em Compras › Aprovações, com o nível da faixa; pendente, ele não gera título nem nota de recebimento.",
+          "imagem": "/manuais/compras/img/11-aprovacoes.webp",
+          "alt": "Tela Aprovações de Compras, vazia, com as colunas Documento, Solicitante, Valor, Fornecedor, Nível, Solicitado em, Espera e Ações.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Aprovações",
+              "explicacao": "Item do menu de Compras, depois de Pedidos de Compra.",
+              "caixa": {
+                "x": 0.6,
+                "y": 39.3,
+                "w": 14.4,
+                "h": 3.1
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 2,
+              "rotulo": "Aprovações",
+              "explicacao": "Pedidos de compra aguardando a sua decisão.",
+              "caixa": {
+                "x": 22.3,
+                "y": 12.8,
+                "w": 22.2,
+                "h": 6.1
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 3,
+              "rotulo": "Colunas",
+              "explicacao": "Documento, Solicitante, Valor, Fornecedor, Nível da faixa, Solicitado em e Espera.",
+              "caixa": {
+                "x": 18.6,
+                "y": 32.6,
+                "w": 79.2,
+                "h": 2.5
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 4,
+              "rotulo": "Lista vazia",
+              "explicacao": "Nenhum pedido aguardando você.",
+              "caixa": {
+                "x": 47.2,
+                "y": 49.7,
+                "w": 21.6,
+                "h": 3.1
+              },
+              "lado": "baixo"
+            }
+          ],
+          "atencao": "Quem cria o pedido não aprova (\"Você não pode decidir um documento que você mesmo criou.\"). A alçada vem desligada: ligue só depois das faixas e da carga de pedidos em aberto, senão os pedidos importados ficam pendentes.",
+          "evidencia": "captura-real",
           "fontes": [
+            "videos/capturas/guias-staging/compras-aprovacoes.png (staging v1.23.2, 05/11/2026)",
             "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
           ]
         },
@@ -838,6 +1140,14 @@
         "fontes": [
           "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
         ]
+      },
+      {
+        "pergunta": "Como sei quais entregas estão atrasadas?",
+        "resposta": "Em Compras › Follow-up de Entregas, clique no cartão Atrasados; o status é recalculado todo dia de manhã.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras",
+          "roteiro-compras-06-follow-up-de-entregas-com-sistemas-tecnicos#072"
+        ]
       }
     ],
     "errosComuns": [
@@ -869,6 +1179,176 @@
           "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
         ]
       }
+    ],
+    "configuracoes": [
+      {
+        "item": "Parâmetros de Compras",
+        "onde": "Compras › Configurações › Parâmetros de Compras (rótulo a conferir)",
+        "porque": "\"Regras de Melhor Opção\" e \"Critérios de preço na Cotação\" decidem o vencedor sugerido; \"Usar aprovação por alçada\" fica desligado até as faixas existirem.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+        ]
+      },
+      {
+        "item": "Faixas de Alçada",
+        "onde": "Compras › Configurações › Faixas de Alçada",
+        "porque": "Níveis sem sobreposição e dois aprovadores por faixa: faixa com um só aprovador deixa sem aprovador o pedido criado por ele.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+        ]
+      },
+      {
+        "item": "Fornecedor",
+        "onde": "Cadastros › Participantes",
+        "porque": "É Fornecedor? e Conta a Pagar ligados, Conta de Fluxo de Caixa Despesa preenchida e contato com E-mail Compras (use e-mail interno em teste).",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+        ]
+      },
+      {
+        "item": "Insumo",
+        "onde": "Cadastros › Produtos",
+        "porque": "NCM, unidade, categoria com \"Preço calculado por\", embalagem e fator. Sem NCM a solicitação não entra na cotação; a embalagem arredonda a quantidade.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+        ]
+      },
+      {
+        "item": "Estoque mínimo",
+        "onde": "Cadastros › Produtos › Suprimentos",
+        "porque": "Sem mínimo o produto não aparece na Sugestão de Compra.",
+        "fontes": [
+          "manual-04-compras#009",
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+        ]
+      },
+      {
+        "item": "CFOPs de entrada",
+        "onde": "Fiscal › Configurações › CFOP",
+        "porque": "A Natureza da Operação da cotação define o CFOP do pedido conforme a origem do fornecedor; \"gera financeiro\" decidido com o contador.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+        ]
+      }
+    ],
+    "integracoes": [
+      {
+        "acao": "Gerar Pedido de Compra na comparação",
+        "modulo": "Compras",
+        "efeito": "Nasce um pedido por fornecedor vencedor; a SC e a cotação ficam Concluída sozinhas.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+        ]
+      },
+      {
+        "acao": "Salvar o pedido de compra",
+        "modulo": "Compras (Follow-up de Entregas)",
+        "efeito": "O acompanhamento da entrega nasce sozinho e é recalculado todo dia de manhã.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras",
+          "oficial-com-b-processos#005"
+        ]
+      },
+      {
+        "acao": "Gerar Título a Pagar",
+        "modulo": "Financeiro (Contas a Pagar)",
+        "efeito": "Um título por parcela, origem PC; itens e parcelas do pedido travam e a nota desse pedido não gera título.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+        ]
+      },
+      {
+        "acao": "Gerar Nota de Recebimento",
+        "modulo": "Recebimento",
+        "efeito": "Abre a nota preenchida com o pedido; a mesma nota é NF-‹número do fornecedor› na lista e NR-‹número interno› no pedido e no título.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+        ]
+      },
+      {
+        "acao": "Receber só parte do pedido",
+        "modulo": "Compras",
+        "efeito": "Cria o pedido filho com o saldo (PC-nnnn/2) em aberto.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras",
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento"
+        ]
+      },
+      {
+        "acao": "Finalizar a nota no Recebimento",
+        "modulo": "Compras, Estoque e Financeiro",
+        "efeito": "O pedido vira Recebido (só pelo Recebimento); depois disso os títulos saem da nota, não do pedido.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras",
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento"
+        ]
+      },
+      {
+        "acao": "Gerar solicitações pela Sugestão de Compra",
+        "modulo": "Compras (Solicitações) e Estoque",
+        "efeito": "Uma SC por linha, Em Aberto; a conta é a mesma do demonstrativo de estoque mínimo e evita duplicar em menos de 5 minutos.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras",
+          "plano-compras#023"
+        ]
+      }
+    ],
+    "roteiroDemonstracao": [
+      {
+        "passo": "Abra o Dashboard Compras",
+        "mostrar": "Cartões do ciclo, Funil de Compras e Status dos Pedidos de Compra.",
+        "fontes": [
+          "videos/capturas/guias-staging/compras-dashboard.png (staging v1.23.2, 05/11/2026)"
+        ]
+      },
+      {
+        "passo": "Crie uma solicitação",
+        "mostrar": "Nova Solicitação de Compra com Empresa, Data Necessidade, Produto e Quantidade; SC Em Aberto.",
+        "fontes": [
+          "videos/capturas/guias-staging/compras-nova-solicitacao.png (staging v1.23.2, 05/11/2026)",
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+        ]
+      },
+      {
+        "passo": "Gere o pedido direto da SC",
+        "mostrar": "⋯ › Gerar Pedido de Compra e os campos Fornecedor, Comprador, Condição de Pagamento, CFOP e Valor Unitário.",
+        "fontes": [
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+        ]
+      },
+      {
+        "passo": "Mostre a cotação",
+        "mostrar": "Lista de cotações, os quatro passos do assistente e Aplicar Melhor Opção na Comparação.",
+        "fontes": [
+          "videos/capturas/guias-staging/compras-cotacoes.png (staging v1.23.2, 05/11/2026)",
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+        ]
+      },
+      {
+        "passo": "Leia o pedido e a Linha do tempo",
+        "mostrar": "Status, títulos e nota na lista; a cadeia SC → COT → PC → NR → título.",
+        "fontes": [
+          "videos/capturas/guias-staging/compras-pedidos.png (staging v1.23.2, 05/11/2026)",
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+        ]
+      },
+      {
+        "passo": "Acompanhe no Follow-up de Entregas",
+        "mostrar": "Cartões Atrasados e Próx. Vencimento, filtros rápidos e o prazo de cada pedido.",
+        "fontes": [
+          "videos/capturas/guias-staging/compras-followup.png (staging v1.23.2, 05/11/2026)",
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+        ]
+      },
+      {
+        "passo": "Se o cliente usa, mostre Sugestão e Aprovações",
+        "mostrar": "Falta líquida com a curva e a fila de aprovação por nível.",
+        "fontes": [
+          "videos/capturas/guias-staging/compras-sugestao.png (staging v1.23.2, 05/11/2026)",
+          "videos/capturas/guias-staging/compras-aprovacoes.png (staging v1.23.2, 05/11/2026)",
+          "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+        ]
+      }
     ]
   },
   "fontes": [
@@ -888,14 +1368,31 @@
     "videos/capturas/guias-staging/compras-dashboard.png (staging v1.23.2, 05/11/2026)",
     "videos/capturas/guias-staging/compras-cotacoes.png (staging v1.23.2, 05/11/2026)",
     "videos/capturas/guias-staging/compras-pedidos.png (staging v1.23.2, 05/11/2026)",
-    "videos/capturas/guias-staging/compras-solicitacoes.png (staging v1.23.2, 05/11/2026)"
+    "videos/capturas/guias-staging/compras-solicitacoes.png (staging v1.23.2, 05/11/2026)",
+    "videos/capturas/guias-staging/compras-nova-solicitacao.png (staging v1.23.2, 05/11/2026)",
+    "videos/capturas/guias-staging/compras-followup.png (staging v1.23.2, 05/11/2026)",
+    "manual-04-compras#008",
+    "plano-compras#094",
+    "roteiro-compras-06-follow-up-de-entregas-com-sistemas-tecnicos#016",
+    "roteiro-compras-06-follow-up-de-entregas-com-sistemas-tecnicos#072",
+    "oficial-com-b-processos#005",
+    "videos/capturas/guias-staging/compras-sugestao.png (staging v1.23.2, 05/11/2026)",
+    "manual-04-compras#009",
+    "plano-compras#023",
+    "plano-compras#024",
+    "roteiro-compras-04-sugestao-de-compra-com-sistemas-tecnicos#022",
+    "roteiro-compras-04-sugestao-de-compra-com-sistemas-tecnicos#025",
+    "videos/capturas/guias-staging/compras-aprovacoes.png (staging v1.23.2, 05/11/2026)",
+    "guia:videos/roteiros/consultor-01-suprimentos.json#14",
+    "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento"
   ],
   "pendencias": [
-    "CAPTURA: Compras › Solicitações de Compra › Nova Solicitação — formulário vazio e o quadro Dados do Item com Cor.",
+    "CAPTURA: quadro Dados do Item com Cor na Nova Solicitação; Sugestão de Compra com itens (produto com estoque mínimo) e Aprovações com um pedido pendente.",
+    "DIVERGÊNCIA: colunas da Sugestão de Compra — roteiro-compras-04#025 cita Valor unitário e Valor estimado; a tela (staging 05/11/2026) mostra Embalagem, Curva e Necessidade, sem colunas de valor.",
+    "A CONFERIR: o atalho de cada cartão do Follow-up (o plano diz que filtram ao clicar).",
     "CAPTURA: menu ⋯ da solicitação aberto (Gerar Cotação, Gerar Pedido de Compra, Excluir).",
     "CAPTURA: menu ⋯ do pedido de compra aberto (Linha do tempo, Gerar Nota de Recebimento).",
     "CAPTURA: passos Itens a Cotar e Cotação (propostas) da cotação.",
-    "CAPTURA: Compras › Sugestão de Compra (sem gerar solicitações) e Compras › Aprovações.",
     "CAPTURA: Compras › Configurações › Parâmetros de Compras e Faixas de Alçada (conferir o rótulo do menu).",
     "DIVERGÊNCIA: status do pedido de compra — Em Aberto na lista e Em Edição na tela (trilha) × gestora (Em aberto, Recebido, Cancelado).",
     "DIVERGÊNCIA: momento do desdobro do PC parcial (salvar × finalizar a nota de recebimento).",

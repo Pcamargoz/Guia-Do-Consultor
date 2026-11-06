@@ -72,7 +72,7 @@ describe('window.Plataforma — roteador de hash', () => {
       '': { area: 'inicio' }, '#inicio': { area: 'inicio' }, '#inicial': { area: 'inicial' }, '#inicial/vendas': { area: 'inicial', modulo: 'vendas' },
       '#consultor/fundamentos': { area: 'acervo', secao: 'metodo' }, '#pacotes': { area: 'pacotes' }, '#checklist': { area: 'checklist' },
       '#videos': { area: 'videos' }, '#apostila': { area: 'apostila' }, '#admin': { area: 'admin' }, '#acervo': { area: 'acervo' },
-      '#desconhecida': { area: 'inicio' }, '#inicial/<script>': { area: 'inicial' }, '#pacotes/vendas': { area: 'pacotes', secao: 'vendas' }, '#videos/a/b': { area: 'videos', secao: 'a' }, '#inicio/x': { area: 'inicio' }, '#%E0%A4%A': { area: 'inicio' },
+      '#desconhecida': { area: 'inicio' }, '#inicial/<script>': { area: 'inicial' }, '#pacotes/vendas': { area: 'pacotes', secao: 'vendas' }, '#videos/a/b': { area: 'videos', secao: 'a' }, '#inicio/x': { area: 'inicio', modulo: 'x' }, /* v3 (06/11): #inicio/<modulo> = página do módulo */ '#inicio/<x>': { area: 'inicio' }, '#%E0%A4%A': { area: 'inicio' },
     };
     for (const [hash, rota] of Object.entries(casos)) assert.deepEqual({ ...Plataforma.lerRota(hash) }, rota, hash);
   });

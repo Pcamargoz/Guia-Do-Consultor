@@ -2,8 +2,8 @@
   "modulo": "estoque",
   "titulo": "Estoque — guia visual",
   "resumo": "De onde vem o saldo de cada material, como consultá-lo por local e variação, como rastrear os movimentos e como funcionam transferência, inventário e empréstimo.",
-  "versaoSistema": "1.22.13 (capturas do ambiente de teste, 19–22/10/2026)",
-  "atualizadoEm": "2026-11-05",
+  "versaoSistema": "1.22.13 (capturas do ambiente de teste, 19–22/10/2026); 1.23.2 (staging, 05/11/2026) na Visão geral, nos filtros de Movimentos, em Inventários e em Reposição",
+  "atualizadoEm": "2026-11-06",
   "status": "rascunho",
   "conceitos": [
     {
@@ -137,6 +137,129 @@
     ]
   },
   "capitulos": [
+    {
+      "id": "visao-geral",
+      "titulo": "Conhecendo a visão geral do estoque",
+      "nivel": "basico",
+      "objetivo": "Abrir o painel do estoque, filtrar por empresa, obra e período e entender o que cada indicador principal mostra.",
+      "onde": "Estoque › Visão geral",
+      "passos": [
+        {
+          "titulo": "Abra a Visão geral e use os atalhos",
+          "texto": "No menu do Estoque, clique em Visão geral. Pelos atalhos do alto você vai direto para o saldo, os movimentos e os inventários; em Escopo da análise, escolha empresa, obra e período.",
+          "imagem": "/manuais/estoque/img/08-visao-geral.webp",
+          "alt": "Visão geral do estoque com os atalhos Consultar saldos, Ver movimentos e Gerenciar inventários e os filtros de Escopo da análise; valores borrados.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Visão geral",
+              "explicacao": "O painel do módulo: valor, disponibilidade, necessidade de reposição e eficiência numa só tela.",
+              "caixa": {
+                "x": 0.5,
+                "y": 16.3,
+                "w": 14.4,
+                "h": 3.5
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 2,
+              "rotulo": "Consultar saldos · Ver movimentos · Gerenciar inventários",
+              "explicacao": "Atalhos para as três telas mais usadas: quantidades por produto, entradas e saídas, e contagem física.",
+              "caixa": {
+                "x": 60,
+                "y": 17.3,
+                "w": 34.8,
+                "h": 14.8
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 3,
+              "rotulo": "Escopo da análise",
+              "explicacao": "Empresa, obra e período (Hoje, 7, 30 ou 90 dias). Os filtros atualizam todos os indicadores da página.",
+              "caixa": {
+                "x": 19.9,
+                "y": 44.9,
+                "w": 44.4,
+                "h": 4.8
+              },
+              "lado": "direita"
+            }
+          ],
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/capturas/guias-staging/estoque-visao-geral.png (staging v1.23.2, 05/11/2026; valores borrados)"
+          ]
+        },
+        {
+          "titulo": "Leia os indicadores principais",
+          "texto": "Leia os quatro cartões de Indicadores principais. Cada um explica, no próprio cartão, o que conta; a linha de baixo detalha o número.",
+          "imagem": "/manuais/estoque/img/08-visao-geral.webp",
+          "alt": "Cartões Valor em estoque próprio, Saúde do estoque, Necessidade de reposição e Capital sem giro; valores em reais borrados.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Valor em estoque próprio",
+              "explicacao": "Custo atual dos materiais próprios com saldo disponível. Não inclui material que pertence a clientes.",
+              "caixa": {
+                "x": 19,
+                "y": 60.3,
+                "w": 18.8,
+                "h": 25.7
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 2,
+              "rotulo": "Saúde do estoque",
+              "explicacao": "Percentual de produtos com saldo dentro do mínimo e do máximo cadastrados; embaixo, quantos estão em ruptura, abaixo do mínimo ou negativos.",
+              "caixa": {
+                "x": 38.4,
+                "y": 60.3,
+                "w": 18.9,
+                "h": 25.7
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 3,
+              "rotulo": "Necessidade de reposição",
+              "explicacao": "Itens sem saldo ou abaixo do estoque mínimo, que exigem compra ou reposição.",
+              "caixa": {
+                "x": 57.9,
+                "y": 60.3,
+                "w": 19,
+                "h": 25.7
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 4,
+              "rotulo": "Capital sem giro",
+              "explicacao": "Valor parado em produtos sem saída há mais de 180 dias: sinal de excesso ou obsolescência.",
+              "caixa": {
+                "x": 77.5,
+                "y": 60.3,
+                "w": 18.8,
+                "h": 25.7
+              },
+              "lado": "baixo"
+            }
+          ],
+          "dica": "Sem estoque mínimo e máximo nos produtos, a Saúde do estoque e a reposição não têm referência: cadastre-os nos produtos que a empresa repõe.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/capturas/guias-staging/estoque-visao-geral.png (staging v1.23.2, 05/11/2026; valores borrados)",
+            "videos/capturas/guias-staging/estoque-locais-reposicao.png (texto da tela vazia)"
+          ]
+        }
+      ]
+    },
     {
       "id": "consultar-saldo",
       "titulo": "Consultando o saldo",
@@ -376,55 +499,75 @@
       "onde": "Estoque › Movimentos",
       "passos": [
         {
-          "titulo": "Abra Movimentos e filtre",
-          "texto": "No menu do Estoque, clique em Movimentos. Use a busca ou os filtros (Tipo, Origem, Produto, Local, datas) para achar o movimento que você procura.",
-          "imagem": "/manuais/estoque/img/03-movimento-recebimento.webp",
-          "alt": "Tela Movimentos de Estoque com a busca, os filtros e um movimento de entrada do recebimento.",
+          "titulo": "Abra Movimentos e use os filtros",
+          "texto": "No menu do Estoque, clique em Movimentos. Combine os filtros para achar o movimento: Empresa, Data início e Data fim, e os marcados abaixo.",
+          "imagem": "/manuais/estoque/img/09-movimentos-filtros.webp",
+          "alt": "Tela Movimentos de Estoque (v1.23.2) com os filtros Empresa, Data início, Data fim, Tipo, Origem, Propriedade, Local (origem ou destino), Produto e Terceiro / Participante.",
           "marcadores": [
             {
               "n": 1,
-              "rotulo": "Movimentos",
-              "explicacao": "O histórico de entradas, saídas, transferências e reavaliações do estoque.",
+              "rotulo": "Tipo",
+              "explicacao": "O tipo do movimento, como Recebimento (NR), Expedição (PV) ou Baixa de componente em OP.",
               "caixa": {
-                "x": 0.6,
-                "y": 23.6,
-                "w": 14.3,
-                "h": 3.7
+                "x": 20,
+                "y": 47.1,
+                "w": 18.4,
+                "h": 3.9
               },
-              "lado": "direita"
+              "lado": "baixo"
             },
             {
               "n": 2,
-              "rotulo": "Busca",
-              "explicacao": "Procure pelo número do movimento. Nesta captura, a busca é 000005.",
+              "rotulo": "Origem",
+              "explicacao": "O módulo ou documento que gerou o movimento, como Recebimento, NF-e ou Requisição.",
               "caixa": {
-                "x": 20.2,
-                "y": 26.9,
-                "w": 28.8,
-                "h": 5.2
+                "x": 38.9,
+                "y": 47.1,
+                "w": 18.5,
+                "h": 3.9
               },
-              "lado": "direita"
+              "lado": "baixo"
             },
             {
               "n": 3,
-              "rotulo": "Filtros",
-              "explicacao": "Empresa, Data início e Data fim, Tipo, Origem, Propriedade, Local (origem ou destino), Produto e Terceiro / Participante. Combine para estreitar a lista.",
+              "rotulo": "Local (origem ou destino)",
+              "explicacao": "Mostra os movimentos que saíram do local ou entraram nele.",
               "caixa": {
-                "x": 19.1,
-                "y": 36.7,
-                "w": 77.9,
-                "h": 24.8
+                "x": 76.9,
+                "y": 47.1,
+                "w": 18.5,
+                "h": 4.6
               },
-              "lado": "cima"
+              "lado": "baixo"
+            },
+            {
+              "n": 4,
+              "rotulo": "Produto",
+              "explicacao": "Procura pelo código, pela descrição ou pelo EAN do produto.",
+              "caixa": {
+                "x": 20,
+                "y": 55.2,
+                "w": 37.3,
+                "h": 4.8
+              },
+              "lado": "baixo"
             }
           ],
           "evidencia": "captura-real",
           "fontes": [
-            "videos/public/telas/consultor-01-suprimentos/03-entrada-estoque.png",
-            "scripts/dados-checklists-estagiarios.mjs#estoque"
+            "videos/capturas/guias-staging/estoque-movimentos.png (staging v1.23.2, 05/11/2026)",
+            "scripts/dados-checklists-estagiarios.mjs#estoque",
+            "scripts/dados-checklists-implantacao.mjs#implantacao-estoque (bloco 4)"
           ],
           "largura": 1600,
-          "altura": 900
+          "altura": 900,
+          "zoom": {
+            "x": 19,
+            "y": 36,
+            "w": 78,
+            "h": 28
+          },
+          "dica": "Para conferir a entrada de uma nota, filtre o Produto e o período: a linha aparece com o tipo Recebimento (NR)."
         },
         {
           "titulo": "Leia a entrada do recebimento",
@@ -697,10 +840,10 @@
     },
     {
       "id": "transferencia-inventario-emprestimo",
-      "titulo": "Transferência, inventário e empréstimo",
+      "titulo": "Transferência, inventário, empréstimo e reposição",
       "nivel": "avancado",
       "objetivo": "Entender as três operações que mais geram dúvida: reserva da transferência, congelamento do inventário e devolução do empréstimo.",
-      "onde": "Estoque › Transferências · Inventários · Empréstimos",
+      "onde": "Estoque › Transferências · Inventários · Empréstimos · Reposição",
       "passos": [
         {
           "titulo": "Transferência: pendente reserva, confirmada movimenta",
@@ -768,7 +911,7 @@
           "altura": 900
         },
         {
-          "titulo": "Inventário: o local fica congelado",
+          "titulo": "Inventário: leia a lista e o status",
           "texto": "Iniciar um inventário fotografa o saldo e bloqueia os movimentos no local, como diz a própria tela. Na lista, leia o STATUS de cada inventário.",
           "imagem": "/manuais/estoque/img/06-inventarios.webp",
           "alt": "Lista de inventários com dois inventários cancelados e a explicação no cabeçalho",
@@ -834,6 +977,60 @@
           "largura": 1600,
           "altura": 900,
           "dica": "Na versão 1.23.2 (staging, 05/11/2026), a tela diz: o inventário Geral bloqueia o local; Cíclico e Pontual bloqueiam os produtos selecionados desde a abertura. A conferir na tela."
+        },
+        {
+          "titulo": "Inventário: escolha o tipo pela regra da tela",
+          "texto": "Em Inventários, leia a frase do alto antes de abrir um novo: ela diz quem fica bloqueado em cada tipo. Abra com + Novo inventário (empresa, local e tipo). A contagem fica em Inventário — Contagem.",
+          "imagem": "/manuais/estoque/img/10-inventarios-tipos.webp",
+          "alt": "Tela Inventários (v1.23.2) com a frase sobre os tipos Geral, Cíclico e Pontual, o botão + Novo inventário e o menu Inventário — Contagem.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Inventário — Contagem",
+              "explicacao": "Item do menu ligado à contagem. A contagem é cega: o conferente não vê o saldo do sistema.",
+              "caixa": {
+                "x": 0.5,
+                "y": 42.3,
+                "w": 14.4,
+                "h": 3.5
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 2,
+              "rotulo": "Regra dos tipos",
+              "explicacao": "Contagem em até três etapas (1ª, 2ª, 3ª) com funções separadas. O Geral bloqueia o local; Cíclico e Pontual bloqueiam só os produtos selecionados, desde a abertura.",
+              "caixa": {
+                "x": 22,
+                "y": 16.3,
+                "w": 53.4,
+                "h": 4.8
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 3,
+              "rotulo": "+ Novo inventário",
+              "explicacao": "Abre um inventário: empresa, local e tipo. Não existem dois inventários ativos no mesmo local.",
+              "caixa": {
+                "x": 88.1,
+                "y": 14.7,
+                "w": 9.7,
+                "h": 4.3
+              },
+              "lado": "baixo"
+            }
+          ],
+          "atencao": "Divergência a conferir na tela: esta tela (v1.23.2) diz que só o Geral bloqueia o local; a regra da base e o checklist dizem que iniciar o inventário congela o local.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/capturas/guias-staging/estoque-inventarios.png (staging v1.23.2, 05/11/2026)",
+            "plano-estoque#048",
+            "regra-estoque-inventario-congela-o-local-e-exige-outra-pessoa",
+            "scripts/dados-checklists-implantacao.mjs#implantacao-estoque (bloco 7)"
+          ]
         },
         {
           "titulo": "Empréstimo: leia os cartões",
@@ -981,6 +1178,78 @@
             "videos/roteiros/consultor-04-estoque.json#13"
           ],
           "dica": "A devolução pode ser parcial e depois total; devolver mais do que foi emprestado é recusado."
+        },
+        {
+          "titulo": "Reposição: do estoque mínimo à solicitação de compra",
+          "texto": "Em Reposição (menu do Estoque), a lista mostra os produtos abaixo do mínimo, com a sugestão de quanto repor. Clique numa célula para ver os documentos do cálculo e use Gerar solicitação de compra para mandar a necessidade ao Compras.",
+          "imagem": "/manuais/estoque/img/11-reposicao.webp",
+          "alt": "Tela Reposição de estoque (v1.23.2) com a fórmula do disponível projetado, os botões Atualizar e Gerar solicitação de compra e a mensagem Nenhum produto abaixo do mínimo.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Como a sugestão é calculada",
+              "explicacao": "Disponível projetado = saldo + entradas em aberto (SC/PC) − saídas em aberto (PV + requisições de OP). A sugestão repõe até o máximo (ou o mínimo).",
+              "caixa": {
+                "x": 22.9,
+                "y": 18.4,
+                "w": 50.5,
+                "h": 4.9
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 2,
+              "rotulo": "Atualizar",
+              "explicacao": "Recalcula a lista com os documentos atuais.",
+              "caixa": {
+                "x": 74.8,
+                "y": 16.9,
+                "w": 6.7,
+                "h": 4.3
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 3,
+              "rotulo": "Gerar solicitação de compra",
+              "explicacao": "Cria as solicitações de compra dos itens; elas aparecem no Compras. Fica apagado enquanto não há item na lista.",
+              "caixa": {
+                "x": 81.8,
+                "y": 16.9,
+                "w": 14.8,
+                "h": 4.3
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 4,
+              "rotulo": "Lista vazia",
+              "explicacao": "Sem estoque mínimo/máximo nos produtos, nada aparece aqui, como avisa a própria tela.",
+              "caixa": {
+                "x": 40.4,
+                "y": 34.5,
+                "w": 35.4,
+                "h": 5.5
+              },
+              "lado": "baixo"
+            }
+          ],
+          "zoom": {
+            "x": 22,
+            "y": 14,
+            "w": 76,
+            "h": 30
+          },
+          "atencao": "A tela diz que repõe até o máximo; a regra da Sugestão de Compra (Compras) diz que o máximo não é usado. A conferir na tela antes de explicar ao cliente.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/capturas/guias-staging/estoque-locais-reposicao.png (staging v1.23.2, 05/11/2026)",
+            "plano-estoque#081",
+            "oficial-com-a-regras#001 (COM-SUG-001)",
+            "scripts/dados-checklists-implantacao.mjs#implantacao-estoque (bloco 9)"
+          ]
         }
       ]
     }
@@ -991,7 +1260,9 @@
       "Locais e almoxarifado central ativo em Estoque › Locais antes de qualquer recebimento, produção ou nota. Fonte: regra-estoque-almoxarifado-central-ativo-e-pre-requisito.",
       "Data de corte combinada com o cliente, depois da contagem física e das últimas notas do sistema antigo; saldo inicial por Estoque › Saldo › Mais › Importar saldo, com a planilha de custo aceita pela contabilidade. Fonte: checklist de implantação do Estoque, fluxo 2.",
       "Três usuários de teste: quem cria e quem confirma a transferência; dois contadores e um aprovador do inventário. Fonte: README de Suprimentos, S9; EST-INV-004 a 007.",
-      "Saber se o cliente usa inventário (PRO), localizações (PRO) e empréstimo, e quem pode retirar material reservado. Fonte: EST C, etapas 3 e 5; EST-MOV-010."
+      "Saber se o cliente usa inventário (PRO), localizações (PRO) e empréstimo, e quem pode retirar material reservado. Fonte: EST C, etapas 3 e 5; EST-MOV-010.",
+      "Anotar com o cliente o estado dos Parâmetros de Estoque (Bloquear saída sem saldo, retroativo) antes do primeiro movimento. Fonte: checklist de implantação do Estoque, bloco 1.",
+      "Antes do go-live: balanço do produto de teste fechando em quantidade e valor e Estoque › Reservas órfãs vazia. Fonte: checklist de implantação do Estoque, bloco 9 (EST-RES-003)."
     ],
     "perguntasDoCliente": [
       {
@@ -1023,6 +1294,29 @@
         "fontes": [
           "regra-faturamento-finalizar-nf-requisitos",
           "videos/roteiros/consultor-04-estoque.json#07"
+        ]
+      },
+      {
+        "pergunta": "Lancei um movimento errado. Posso editar?",
+        "resposta": "Não: movimento não se edita. Use Estornar (uma vez só; o estorno entra na data de hoje) e lance de novo.",
+        "fontes": [
+          "oficial-est-a-regras#001 (EST-MOV-001, EST-MOV-004/005)",
+          "scripts/dados-checklists-implantacao.mjs#implantacao-estoque (bloco 3)"
+        ]
+      },
+      {
+        "pergunta": "Por que o produto não aparece na Reposição?",
+        "resposta": "A Reposição só lista produtos com estoque mínimo/máximo cadastrado e abaixo do mínimo.",
+        "fontes": [
+          "videos/capturas/guias-staging/estoque-locais-reposicao.png",
+          "scripts/dados-checklists-implantacao.mjs#implantacao-estoque (bloco 9)"
+        ]
+      },
+      {
+        "pergunta": "Posso ter dois almoxarifados centrais?",
+        "resposta": "Um por empresa. Para promover outro, rebaixe o atual antes.",
+        "fontes": [
+          "scripts/dados-checklists-implantacao.mjs#implantacao-estoque (bloco 1; EST-LOC-002)"
         ]
       }
     ],
@@ -1062,6 +1356,193 @@
         "fontes": [
           "scripts/dados-checklists-implantacao.mjs#implantacao-estoque"
         ]
+      },
+      {
+        "titulo": "Produto “sumiu” do Saldo",
+        "texto": "Os filtros do Saldo ficam salvos no navegador. Use Limpar filtros antes de concluir que não há saldo.",
+        "fontes": [
+          "scripts/dados-checklists-implantacao.mjs#implantacao-estoque (bloco 5)"
+        ]
+      },
+      {
+        "titulo": "Inventário Simples marcando Bateu com diferença",
+        "texto": "Limitação conhecida da v1.22.12: no inventário Simples, 4 contados contra 5 no sistema aparece como Bateu. Confira a diferença no resumo.",
+        "fontes": [
+          "faq-limitacoes-conhecidas-v1-22-12#012"
+        ]
+      }
+    ],
+    "configuracoes": [
+      {
+        "item": "Almoxarifado central ativo (um por empresa)",
+        "onde": "Estoque › Locais (a gestora cita Estoque › Configurações › Locais: a conferir)",
+        "porque": "É onde a nota de recebimento e a produção dão entrada; sem ele a nota não finaliza e a produção não conclui. A instalação inicial só cria o central da primeira empresa.",
+        "fontes": [
+          "scripts/dados-checklists-implantacao.mjs#implantacao-estoque (bloco 1; EST-LOC-002)",
+          "regra-estoque-almoxarifado-central-ativo-e-pre-requisito"
+        ]
+      },
+      {
+        "item": "Parâmetros de Estoque: Bloquear saída sem saldo e movimento retroativo",
+        "onde": "Parâmetros de Estoque",
+        "porque": "Decidem se o saldo pode ficar negativo e até quando se lança com data passada. Valem para a empresa inteira; anote o estado com o cliente antes de começar.",
+        "fontes": [
+          "scripts/dados-checklists-implantacao.mjs#implantacao-estoque (bloco 1; EST-MOV-010)"
+        ]
+      },
+      {
+        "item": "Usar localizações por local (PRO)",
+        "onde": "Parâmetros de Estoque",
+        "porque": "É irreversível depois de ligado. Decida com o cliente antes.",
+        "fontes": [
+          "scripts/dados-checklists-implantacao.mjs#implantacao-estoque (bloco 1 e pré-requisitos)"
+        ]
+      },
+      {
+        "item": "Estoque mínimo e máximo nos produtos repostos",
+        "onde": "Cadastro do produto",
+        "porque": "Sem eles, Reposição, Sugestão de Compra e Saúde do estoque ficam sem referência.",
+        "fontes": [
+          "scripts/dados-checklists-implantacao.mjs#implantacao-estoque (bloco 9)",
+          "videos/capturas/guias-staging/estoque-locais-reposicao.png"
+        ]
+      },
+      {
+        "item": "Perfis: criar × confirmar transferência; contar, recontar e aprovar inventário",
+        "onde": "Segurança › Perfis de Acesso",
+        "porque": "A 2ª contagem e a aprovação exigem outra pessoa, até para Super Usuário; criar e confirmar transferência são permissões diferentes.",
+        "fontes": [
+          "scripts/dados-checklists-implantacao.mjs#implantacao-estoque (pré-requisitos; EST-INV-004 a 007)",
+          "plano-estoque#004"
+        ]
+      },
+      {
+        "item": "Saldo inicial na data de corte",
+        "onde": "Estoque › Saldo › Mais › Importar saldo",
+        "porque": "O saldo de abertura entra por planilha, antes de qualquer compra ou nota; o custo vira o custo médio de abertura.",
+        "fontes": [
+          "scripts/dados-checklists-implantacao.mjs#implantacao-estoque (bloco 2; EST-IMP-001 a 004)"
+        ]
+      }
+    ],
+    "integracoes": [
+      {
+        "acao": "Finalizar a nota de recebimento",
+        "modulo": "Estoque",
+        "efeito": "Entrada Recebimento (NR) no almoxarifado central, recalculando o custo médio.",
+        "fontes": [
+          "scripts/dados-checklists-implantacao.mjs#implantacao-estoque (bloco 4)",
+          "videos/public/telas/consultor-01-suprimentos/03-entrada-estoque.png"
+        ]
+      },
+      {
+        "acao": "Autorizar a NF-e de venda",
+        "modulo": "Estoque",
+        "efeito": "Saída ligada à nota (Expedição (PV), origem NF-e). Documento emitido antes da contratação do Estoque não movimenta. O momento exato (autorizar × finalizar) está a conferir.",
+        "fontes": [
+          "scripts/dados-checklists-implantacao.mjs#implantacao-estoque (bloco 4; EST-INT-002)",
+          "regra-faturamento-finalizar-nf-requisitos"
+        ]
+      },
+      {
+        "acao": "Requisição e conclusão da OP",
+        "modulo": "Estoque",
+        "efeito": "Baixa de componente em OP (origem Requisição) e entrada do produto acabado (OP - Conclusão).",
+        "fontes": [
+          "scripts/dados-checklists-implantacao.mjs#implantacao-estoque (bloco 4; EST-MOV-002)",
+          "regra-producao-requisicoes-nascem-da-estrutura-ao-salvar"
+        ]
+      },
+      {
+        "acao": "Criar transferência (pendente) e confirmar",
+        "modulo": "Estoque",
+        "efeito": "Pendente reserva o disponível na origem; confirmada move o saldo e consome a reserva; excluir a pendente libera a reserva.",
+        "fontes": [
+          "scripts/dados-checklists-implantacao.mjs#implantacao-estoque (bloco 6)",
+          "regra-estoque-transferencia-pendente-reserva-o-disponivel"
+        ]
+      },
+      {
+        "acao": "Liberar o plano de suprimento (MRP) da Integração de Estoque",
+        "modulo": "Estoque",
+        "efeito": "Cria transferências pendentes, como explica a tela Transferências.",
+        "fontes": [
+          "videos/capturas/guias-staging/estoque-transferencias.png (staging v1.23.2)",
+          "plano-estoque#080"
+        ]
+      },
+      {
+        "acao": "Aprovar o inventário",
+        "modulo": "Estoque",
+        "efeito": "Cada diferença vira ajuste com origem inventário; o saldo passa a bater com a contagem e o local é liberado.",
+        "fontes": [
+          "scripts/dados-checklists-implantacao.mjs#implantacao-estoque (bloco 7; EST-INV-007, EST-INV-008)"
+        ]
+      },
+      {
+        "acao": "Gerar solicitação de compra na Reposição",
+        "modulo": "Compras",
+        "efeito": "Cria solicitações de compra, uma por produto, marcadas como vindas da reposição.",
+        "fontes": [
+          "plano-estoque#081",
+          "scripts/dados-checklists-implantacao.mjs#implantacao-estoque (bloco 9)"
+        ]
+      }
+    ],
+    "roteiroDemonstracao": [
+      {
+        "passo": "Abra a Visão geral",
+        "mostrar": "Os atalhos, o Escopo da análise e os quatro indicadores principais.",
+        "fontes": [
+          "videos/capturas/guias-staging/estoque-visao-geral.png"
+        ]
+      },
+      {
+        "passo": "Mostre o Saldo de um produto",
+        "mostrar": "A linha por local e por cor, Saldo × Disponível e o Detalhe.",
+        "fontes": [
+          "videos/public/telas/consultor-04-estoque/02-saldo.png",
+          "videos/roteiros/consultor-04-estoque.json",
+          "scripts/dados-checklists-implantacao.mjs#implantacao-estoque (bloco 5)"
+        ]
+      },
+      {
+        "passo": "Lance uma Entrada manual e estorne",
+        "mostrar": "Empresa obrigatória, Ctrl+S, o movimento numerado e o Estornar que devolve o saldo.",
+        "fontes": [
+          "scripts/dados-checklists-implantacao.mjs#implantacao-estoque (bloco 3; EST-MOV-001, EST-MOV-004)"
+        ]
+      },
+      {
+        "passo": "Rastreie a entrada de uma nota",
+        "mostrar": "Movimentos filtrado por produto e período, com o tipo Recebimento (NR).",
+        "fontes": [
+          "videos/capturas/guias-staging/estoque-movimentos.png",
+          "scripts/dados-checklists-implantacao.mjs#implantacao-estoque (bloco 4)"
+        ]
+      },
+      {
+        "passo": "Crie uma transferência pendente e confirme",
+        "mostrar": "A reserva no disponível da origem e o saldo movido ao confirmar (dois usuários).",
+        "fontes": [
+          "scripts/dados-checklists-implantacao.mjs#implantacao-estoque (bloco 6)"
+        ]
+      },
+      {
+        "passo": "Faça um inventário com três pessoas",
+        "mostrar": "O bloqueio, a contagem cega, a 2ª contagem por outra pessoa e o ajuste na aprovação.",
+        "fontes": [
+          "scripts/dados-checklists-implantacao.mjs#implantacao-estoque (bloco 7)",
+          "videos/capturas/guias-staging/estoque-inventarios.png"
+        ]
+      },
+      {
+        "passo": "Feche com a Reposição e as Reservas órfãs",
+        "mostrar": "O item abaixo do mínimo virando solicitação de compra e a lista de Reservas órfãs vazia.",
+        "fontes": [
+          "scripts/dados-checklists-implantacao.mjs#implantacao-estoque (bloco 9)",
+          "videos/capturas/guias-staging/estoque-locais-reposicao.png"
+        ]
       }
     ]
   },
@@ -1083,10 +1564,20 @@
     "videos/public/telas/consultor-04-estoque/06-transferencias.png",
     "videos/public/telas/consultor-04-estoque/04-inventarios.png",
     "videos/public/telas/consultor-04-estoque/05-emprestimo.png",
-    "videos/public/telas/consultor-01-suprimentos/03-entrada-estoque.png"
+    "videos/public/telas/consultor-01-suprimentos/03-entrada-estoque.png",
+    "videos/capturas/guias-staging/estoque-visao-geral.png",
+    "videos/capturas/guias-staging/estoque-movimentos.png",
+    "videos/capturas/guias-staging/estoque-inventarios.png",
+    "videos/capturas/guias-staging/estoque-locais-reposicao.png",
+    "plano-estoque#048",
+    "plano-estoque#080",
+    "plano-estoque#081",
+    "oficial-est-a-regras#001",
+    "oficial-com-a-regras#001",
+    "faq-limitacoes-conhecidas-v1-22-12#012"
   ],
   "pendencias": [
-    "CAPTURA: Estoque › Visão geral — indicadores e bloco Pendências de hoje.",
+    "RESOLVIDO (staging v1.23.2, 05/11/2026): Visão geral capturada (valores borrados). Os cartões reais são Valor em estoque próprio, Saúde do estoque, Necessidade de reposição e Capital sem giro; o bloco \"Pendências de hoje\" não aparece no topo da captura.",
     "CAPTURA: Estoque › Saldo › Detalhe (extrato do produto) — abas Posições e Histórico.",
     "CAPTURA: Estoque › Saldo com a coluna RESERVADA visível (vem oculta por padrão).",
     "CAPTURA: Estoque › Locais — almoxarifado central ativo.",
@@ -1096,6 +1587,9 @@
     "RESOLVIDO (staging v1.23.2, 05/11/2026): o menu mostra Inventários e Inventário — Contagem; Estoque › Inventário (checklist de implantação) está desatualizado.",
     "Validação na tela pendente: guia gerado de capturas e da base, sem sessão no Flow.",
     "DIVERGÊNCIA nova (staging v1.23.2, 05/11/2026): a tela Inventários diz que o inventário Geral bloqueia o local e que Cíclico e Pontual bloqueiam só os produtos selecionados; a regra da base e a captura de 1.22.13 falam em congelar o local. A conferir na tela.",
-    "Empréstimos (captura 05-emprestimo): o PRAZO mostra \"3 dias atrasada\" num empréstimo já Devolvido (4/4). A conferir na tela se o prazo deveria sumir após a devolução total."
+    "Empréstimos (captura 05-emprestimo): o PRAZO mostra \"3 dias atrasada\" num empréstimo já Devolvido (4/4). A conferir na tela se o prazo deveria sumir após a devolução total.",
+    "DIVERGÊNCIA a conferir na tela: Reposição (Estoque) diz que a sugestão repõe até o máximo (ou o mínimo); a regra da Sugestão de Compra (COM-SUG-001) diz que o máximo não é usado. Conferir se as duas telas calculam diferente.",
+    "DIVERGÊNCIAS do checklist de implantação (a conferir na tela): saída sobre material reservado (passou na v1.22.12 × recusa sem permissão); Parâmetros de Estoque existentes; caminho Estoque › Locais × Estoque › Configurações › Locais; inventário e localizações como PRO.",
+    "MENU no staging v1.23.2 com itens ainda sem passo no guia: Integrações, Aprovações, Encerramentos, Conferência de saldo e Reservas órfãs."
   ]
 }
