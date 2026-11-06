@@ -39,10 +39,33 @@
    },
    {
     "id": "video",
-    "titulo": "Vídeo introdutório",
-    "status": "em-preparacao",
-    "blocos": [],
-    "fontes": []
+    "titulo": "Vídeo de apoio",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "video",
+      "material": "projetos:video-apoio",
+      "titulo": "Projetos e obras (vídeo de apoio)",
+      "status": "disponivel",
+      "url": "/videos/consultor-09-projetos.mp4",
+      "duracao_s": 147,
+      "poster": "/videos/consultor-09-projetos.jpg",
+      "legendas_url": "/videos/consultor-09-projetos.vtt",
+      "resumo": [
+       {
+        "t": "Apoio do Guia do Consultor, com narração e regras de negócio. O vídeo introdutório deste módulo está em preparação. Cadastro, estágios, painéis e diário de obra."
+       }
+      ],
+      "fontes": [
+       "guia:public/videos/manifest.json",
+       "guia:videos/roteiros/consultor-09-projetos.json"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:public/videos/manifest.json",
+     "guia:videos/roteiros/consultor-09-projetos.json"
+    ]
    },
    {
     "id": "manual",

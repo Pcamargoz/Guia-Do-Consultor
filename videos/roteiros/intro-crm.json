@@ -1,0 +1,517 @@
+{
+  "id": "intro-crm",
+  "modulo": "CRM",
+  "fps": 30,
+  "duracao": 50,
+  "musica": {
+    "arquivo": "musica/intro-crm.wav",
+    "bpm": 120,
+    "entrada": 4,
+    "final": 45,
+    "acentos": [
+      25
+    ]
+  },
+  "abertura": {
+    "duracao": 4,
+    "titulo": "CRM",
+    "linha": "Guia Inicial · Do lead à oportunidade."
+  },
+  "fechamento": {
+    "inicio": 45,
+    "duracao": 5,
+    "titulo": "Guia Inicial › CRM",
+    "linha": "Próximo passo"
+  },
+  "transicao_s": 0.4,
+  "cenas": [
+    {
+      "id": "c1-lista",
+      "clipe": "intro/crm/c1-lista.mp4",
+      "inicio": 4,
+      "duracao": 5,
+      "desde": 0.4,
+      "entrada": "zoom",
+      "camera": [
+        {
+          "t": 0,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 1.2,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 4.2,
+          "x": 1500,
+          "y": 420,
+          "zoom": 1.6
+        },
+        {
+          "t": 5,
+          "x": 1520,
+          "y": 410,
+          "zoom": 1.62
+        }
+      ],
+      "cliques": [
+        {
+          "t": 4.4,
+          "x": 1790,
+          "y": 371
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.4,
+          "ate": 4.2,
+          "texto": "Cadastre seus leads.",
+          "posicao": "inf-esq"
+        }
+      ]
+    },
+    {
+      "id": "c2-origem",
+      "clipe": "intro/crm/c2-origem-v2.mp4",
+      "inicio": 9,
+      "duracao": 4,
+      "desde": 0.6,
+      "entrada": "deslize",
+      "camera": [
+        {
+          "t": 0,
+          "x": 1390,
+          "y": 690,
+          "zoom": 1.7
+        },
+        {
+          "t": 2.2,
+          "x": 1400,
+          "y": 700,
+          "zoom": 1.85
+        },
+        {
+          "t": 4,
+          "x": 1400,
+          "y": 700,
+          "zoom": 1.87
+        }
+      ],
+      "cliques": [
+        {
+          "t": 2.8,
+          "x": 1062,
+          "y": 706
+        }
+      ],
+      "realces": [
+        {
+          "t": 3,
+          "ate": 3.9,
+          "x": 998,
+          "y": 540,
+          "w": 212,
+          "h": 40
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.4,
+          "ate": 3.35,
+          "texto": "Informe a Origem do Lead.",
+          "posicao": "inf-dir"
+        }
+      ]
+    },
+    {
+      "id": "c3a-salvar",
+      "clipe": "intro/crm/c3-salvar-v2.mp4",
+      "inicio": 13,
+      "duracao": 1.35,
+      "desde": 0.8,
+      "entrada": "corte",
+      "camera": [
+        {
+          "t": 0,
+          "x": 1450,
+          "y": 800,
+          "zoom": 1.85
+        },
+        {
+          "t": 1.35,
+          "x": 1452,
+          "y": 817,
+          "zoom": 2.05
+        }
+      ],
+      "cliques": [
+        {
+          "t": 0.95,
+          "x": 1862,
+          "y": 1020
+        }
+      ]
+    },
+    {
+      "id": "c3b-lista",
+      "clipe": "intro/crm/c3-salvar-v2.mp4",
+      "inicio": 14.35,
+      "duracao": 3.65,
+      "desde": 3.35,
+      "entrada": "corte",
+      "camera": [
+        {
+          "t": 0,
+          "x": 1450,
+          "y": 300,
+          "zoom": 1.35
+        },
+        {
+          "t": 3.65,
+          "x": 1450,
+          "y": 280,
+          "zoom": 1.45
+        }
+      ],
+      "realces": [
+        {
+          "t": 0.3,
+          "ate": 3.2,
+          "x": 1545,
+          "y": 35,
+          "w": 350,
+          "h": 50
+        }
+      ]
+    },
+    {
+      "id": "c4-bant",
+      "clipe": "intro/crm/c4-bant-v2.mp4",
+      "inicio": 18,
+      "duracao": 7,
+      "desde": 0.5,
+      "entrada": "zoom",
+      "camera": [
+        {
+          "t": 0,
+          "x": 1390,
+          "y": 760,
+          "zoom": 1.75
+        },
+        {
+          "t": 1,
+          "x": 1395,
+          "y": 775,
+          "zoom": 1.9
+        },
+        {
+          "t": 7,
+          "x": 1400,
+          "y": 780,
+          "zoom": 1.95
+        }
+      ],
+      "cliques": [
+        {
+          "t": 0.3,
+          "x": 1020,
+          "y": 868
+        },
+        {
+          "t": 3.3,
+          "x": 1241,
+          "y": 868
+        },
+        {
+          "t": 5.8,
+          "x": 1463,
+          "y": 868
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.5,
+          "ate": 6.4,
+          "texto": "Complete o BANT.",
+          "posicao": "sup-dir"
+        }
+      ]
+    },
+    {
+      "id": "c5-kanban",
+      "clipe": "intro/crm/c5-kanban.mp4",
+      "inicio": 25,
+      "duracao": 2.5,
+      "desde": 0.2,
+      "entrada": "deslize",
+      "camera": [
+        {
+          "t": 0,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 0.6,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 2.5,
+          "x": 700,
+          "y": 480,
+          "zoom": 1.3
+        }
+      ],
+      "realces": [
+        {
+          "t": 0.8,
+          "ate": 2.3,
+          "x": 306,
+          "y": 375,
+          "w": 222,
+          "h": 86
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.4,
+          "ate": 5.6,
+          "texto": "Mova o lead para MQL.",
+          "posicao": "inf-esq"
+        }
+      ]
+    },
+    {
+      "id": "c6-mover",
+      "clipe": "intro/crm/c6-mover.mp4",
+      "inicio": 27.5,
+      "duracao": 3.5,
+      "desde": 0.6,
+      "entrada": "corte",
+      "camera": [
+        {
+          "t": 0,
+          "x": 980,
+          "y": 560,
+          "zoom": 1.25
+        },
+        {
+          "t": 0.6,
+          "x": 1000,
+          "y": 580,
+          "zoom": 1.35
+        },
+        {
+          "t": 1.5,
+          "x": 1170,
+          "y": 450,
+          "zoom": 1.4
+        },
+        {
+          "t": 3.5,
+          "x": 1170,
+          "y": 440,
+          "zoom": 1.5
+        }
+      ],
+      "cliques": [
+        {
+          "t": 1.05,
+          "x": 1108,
+          "y": 634
+        }
+      ],
+      "realces": [
+        {
+          "t": 1.8,
+          "ate": 3.3,
+          "x": 1062,
+          "y": 375,
+          "w": 222,
+          "h": 86
+        }
+      ]
+    },
+    {
+      "id": "c7a-menu",
+      "clipe": "intro/crm/c7-menu.mp4",
+      "inicio": 31,
+      "duracao": 2,
+      "desde": 0.3,
+      "entrada": "zoom",
+      "camera": [
+        {
+          "t": 0,
+          "x": 1500,
+          "y": 620,
+          "zoom": 1.4
+        },
+        {
+          "t": 2,
+          "x": 1620,
+          "y": 640,
+          "zoom": 1.6
+        }
+      ],
+      "cliques": [
+        {
+          "t": 0.3,
+          "x": 1820,
+          "y": 586
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.4,
+          "ate": 6.2,
+          "texto": "Converta o lead.",
+          "posicao": "inf-esq"
+        }
+      ]
+    },
+    {
+      "id": "c7b-converter",
+      "clipe": "intro/crm/c7-menu.mp4",
+      "inicio": 33,
+      "duracao": 1.5,
+      "desde": 4.4,
+      "entrada": "corte",
+      "camera": [
+        {
+          "t": 0,
+          "x": 1620,
+          "y": 640,
+          "zoom": 1.6
+        },
+        {
+          "t": 0.7,
+          "x": 1600,
+          "y": 640,
+          "zoom": 1.6
+        },
+        {
+          "t": 1.5,
+          "x": 1100,
+          "y": 560,
+          "zoom": 1.3
+        }
+      ],
+      "cliques": [
+        {
+          "t": 0.4,
+          "x": 1730,
+          "y": 626
+        }
+      ]
+    },
+    {
+      "id": "c8-converter",
+      "clipe": "intro/crm/c8-converter.mp4",
+      "inicio": 34.5,
+      "duracao": 3,
+      "desde": 0.8,
+      "entrada": "corte",
+      "camera": [
+        {
+          "t": 0,
+          "x": 1060,
+          "y": 580,
+          "zoom": 1.35
+        },
+        {
+          "t": 0.7,
+          "x": 1080,
+          "y": 640,
+          "zoom": 1.45
+        },
+        {
+          "t": 1.4,
+          "x": 1450,
+          "y": 280,
+          "zoom": 1.4
+        },
+        {
+          "t": 3,
+          "x": 1450,
+          "y": 270,
+          "zoom": 1.45
+        }
+      ],
+      "cliques": [
+        {
+          "t": 0.5,
+          "x": 1110,
+          "y": 694
+        }
+      ],
+      "realces": [
+        {
+          "t": 1.6,
+          "ate": 2.8,
+          "x": 1545,
+          "y": 35,
+          "w": 350,
+          "h": 50
+        }
+      ]
+    },
+    {
+      "id": "c9-pipeline",
+      "clipe": "intro/crm/c9-pipeline.mp4",
+      "inicio": 37.5,
+      "duracao": 7.5,
+      "desde": 0.5,
+      "entrada": "deslize",
+      "camera": [
+        {
+          "t": 0,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 1,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 3.4,
+          "x": 560,
+          "y": 560,
+          "zoom": 1.45
+        },
+        {
+          "t": 7.5,
+          "x": 560,
+          "y": 580,
+          "zoom": 1.5
+        }
+      ],
+      "realces": [
+        {
+          "t": 2.6,
+          "ate": 6.8,
+          "x": 306,
+          "y": 634,
+          "w": 236,
+          "h": 216
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.6,
+          "ate": 6.8,
+          "texto": "Vira oportunidade no Pipeline.",
+          "posicao": "inf-dir"
+        }
+      ]
+    }
+  ]
+}

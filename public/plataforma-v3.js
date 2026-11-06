@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Faktory Flow — Plataforma de aprendizagem v3 (redesign claro, 06/11/2026)
+   Faktory Flow — Plataforma de aprendizagem v4 "linha de fluxo" (06/11/2026; o arquivo mantém o nome v3)
    Página Inicial (vitrine dos módulos), página do módulo (hub das duas jornadas) e as jornadas
    Guia Inicial / Guia do Consultor como trilhas por fase. Componentes "burros": recebem o resumo de
    /api/conteudo e o progresso já carregados por guia-abas.js. Sem innerHTML com dados, sem CSS/JS externo (CSP).
@@ -30,43 +30,9 @@
   }
   const ic = (nome) => UI.icone(nome);
 
-  /* ---------- Ícones ilustrados dos módulos (grid 32, duas camadas: preenchimento suave + traço) ---------- */
-  const F = 'fill="currentColor" fill-opacity=".16" stroke="none"';
-  const ICONES = {
-    'primeiros-passos': `<path ${F} d="M6 26c4-1 6-4 9-7s6-5 11-5v12H6z"/><path d="M6 26c4-1 6-4 9-7s6-5 11-5"/><path d="M22 5v10"/><path d="M22 5l6 2.5-6 2.5"/><circle cx="8" cy="24.5" r="1.4"/><path d="M12 21.5l.8-.8M15.5 18.5l.8-.7M19 16l.9-.5" stroke-dasharray="0.5 2.5"/>`,
-    fundacao: `<path ${F} d="M5 22l11 5 11-5-11-5z"/><path d="M5 22l11 5 11-5"/><path d="M5 17l11 5 11-5"/><path d="M5 12l11 5 11-5-11-5z"/><path d="M16 7v5" opacity=".5"/>`,
-    crm: `<path ${F} d="M5 7h22l-8 10v8l-6 2V17z"/><path d="M5 7h22l-8 10v8l-6 2V17z"/><circle cx="11" cy="11" r="1.3"/><circle cx="16" cy="11" r="1.3"/><circle cx="21" cy="11" r="1.3"/><path d="M16 14.5v0"/>`,
-    cem: `<rect ${F} x="3.5" y="6" width="11" height="9" rx="2"/><rect ${F} x="17.5" y="17" width="11" height="9" rx="2"/><rect x="3.5" y="6" width="11" height="9" rx="2"/><rect x="17.5" y="17" width="11" height="9" rx="2"/><path d="M9 15v4a2 2 0 0 0 2 2h6.5"/><path d="M23 17v-4a2 2 0 0 0-2-2h-6.5"/><path d="M15 19l2.5 2-2.5 2M17 9l-2.5 2 2.5 2"/>`,
-    vendas: `<path ${F} d="M8 9h20l-2.5 10H10z"/><path d="M3 5h3.5L10 19h15.5L28 9H7.6"/><circle cx="12" cy="25" r="2"/><circle cx="23" cy="25" r="2"/><path d="M14 13h8M15 16h6"/>`,
-    compras: `<path ${F} d="M7 11h18l-1.5 15h-15z"/><path d="M7 11h18l-1.5 15h-15z"/><path d="M12 11V8a4 4 0 0 1 8 0v3"/><path d="M16 15v6M13.5 18.5L16 21l2.5-2.5"/>`,
-    recebimento: `<path ${F} d="M5 13l11-5 11 5v11l-11 5-11-5z"/><path d="M5 13l11-5 11 5v11l-11 5-11-5z"/><path d="M5 13l11 5 11-5M16 18v11"/><path d="M16 2v8M13 7l3 3 3-3"/>`,
-    estoque: `<path ${F} d="M4 27V11l12-6 12 6v16z"/><path d="M4 27V11l12-6 12 6v16"/><path d="M8 27V15h16v12"/><path d="M8 20h16"/><rect x="11" y="16.5" width="4" height="3.5" rx=".5"/><rect x="17" y="21.5" width="4" height="5.5" rx=".5"/><rect x="11" y="21.5" width="4" height="5.5" rx=".5"/>`,
-    producao: `<path ${F} d="M3 27V14l7 4v-4l7 4v-4l7 4V6h5v21z"/><path d="M3 27V14l7 4v-4l7 4v-4l7 4V6h5v21z"/><path d="M3 27h26"/><rect x="7" y="21" width="3" height="3" rx=".5"/><rect x="14" y="21" width="3" height="3" rx=".5"/><path d="M26.5 3v1.5" opacity=".6"/>`,
-    servicos: `<path ${F} d="M19.5 5.5a6 6 0 0 0-7.6 7.6L4.6 20.4a2.6 2.6 0 0 0 3.7 3.7l7.3-7.3a6 6 0 0 0 7.6-7.6l-3.7 3.7-3.3-.4-.4-3.3z"/><path d="M19.5 5.5a6 6 0 0 0-7.6 7.6L4.6 20.4a2.6 2.6 0 0 0 3.7 3.7l7.3-7.3a6 6 0 0 0 7.6-7.6l-3.7 3.7-3.3-.4-.4-3.3z"/><circle cx="6.5" cy="22.2" r=".8"/><path d="M22 20l5 5M24.5 18.5l2 2"/>`,
-    projetos: `<path ${F} d="M6 27V12l8-4v19z"/><path d="M6 27V12l8-4v19"/><path d="M14 27V15h9v12"/><path d="M3 27h26"/><path d="M9 15h2M9 19h2M9 23h2M17 19h3M17 23h3"/><path d="M23 15V4h-9M23 4l5 3M20 4v4" opacity=".75"/>`,
-    expedicao: `<path ${F} d="M3 8h15v14H3zM18 13h6l4 5v4H18z"/><path d="M3 8h15v14H3z"/><path d="M18 13h6l4 5v4H18"/><circle cx="8.5" cy="23.5" r="2.5"/><circle cx="23" cy="23.5" r="2.5"/><path d="M6 12h7M6 15.5h5"/>`,
-    faturamento: `<path ${F} d="M8 3h11l6 6v20H8z"/><path d="M8 3h11l6 6v20H8z"/><path d="M19 3v6h6"/><path d="M12 14h9M12 18h9M12 22h5"/><circle cx="21.5" cy="23.5" r="3.5" fill="currentColor" fill-opacity=".25"/><path d="M21.5 22v3M20.3 23.5h2.4"/>`,
-    fiscal: `<path ${F} d="M7 4h18v24l-3-2-3 2-3-2-3 2-3-2-3 2z"/><path d="M7 4h18v24l-3-2-3 2-3-2-3 2-3-2-3 2z"/><circle cx="12.5" cy="11" r="1.6"/><circle cx="19.5" cy="18" r="1.6"/><path d="M20 10l-8 9"/><path d="M11 23h10" opacity=".6"/>`,
-    financeiro: `<rect ${F} x="3" y="8" width="26" height="17" rx="3"/><rect x="3" y="8" width="26" height="17" rx="3"/><path d="M3 13h26"/><path d="M7 20h5"/><circle cx="23" cy="20" r="2.2"/><circle cx="20" cy="20" r="2.2"/><path d="M8 5h16" opacity=".6"/>`,
-    tarefas: `<rect ${F} x="3" y="5" width="7.5" height="22" rx="1.8"/><rect x="3" y="5" width="7.5" height="22" rx="1.8"/><rect x="12.3" y="5" width="7.5" height="16" rx="1.8"/><rect x="21.5" y="5" width="7.5" height="11" rx="1.8"/><path d="M5 9.5h3.5M5 13h3.5M14.3 9.5h3.5M23.5 9.5h3.5"/><path d="M14.5 15l1.3 1.3 2.5-2.5"/>`,
-    relatorios: `<rect ${F} x="4" y="4" width="24" height="24" rx="3"/><rect x="4" y="4" width="24" height="24" rx="3"/><path d="M9 23v-5M14 23v-9M19 23v-6M24 23V10"/><path d="M8 13l5-4 5 3 6-5" opacity=".7"/>`,
-    alumina: `<path ${F} d="M16 3l2.6 7.4L26 13l-7.4 2.6L16 23l-2.6-7.4L6 13l7.4-2.6z"/><path d="M16 3l2.6 7.4L26 13l-7.4 2.6L16 23l-2.6-7.4L6 13l7.4-2.6z"/><path d="M25 21l.9 2.6 2.6.9-2.6.9-.9 2.6-.9-2.6-2.6-.9 2.6-.9z"/><path d="M7 22l.6 1.4L9 24l-1.4.6L7 26l-.6-1.4L5 24l1.4-.6z"/>`,
-    'fluxo-completo': `<circle ${F} cx="16" cy="16" r="11"/><circle cx="7" cy="9" r="3"/><circle cx="25" cy="9" r="3"/><circle cx="25" cy="23" r="3"/><circle cx="7" cy="23" r="3"/><path d="M10 9h12M25 12v8M22 23H10M7 20v-8"/><path d="M20 7.5l2 1.5-2 1.5M26.5 18l-1.5 2-1.5-2M12 24.5L10 23l2-1.5M5.5 14L7 12l1.5 2"/>`,
-  };
   const SVG = 'http://www.w3.org/2000/svg';
-  const cacheIc = new Map();
-  /** Ícone ilustrado do módulo (SVG estático deste arquivo, nunca dado externo). */
-  function iconeModulo(id) {
-    const chave = ICONES[id] ? id : 'fluxo-completo';
-    if (!cacheIc.has(chave)) {
-      const doc = new DOMParser().parseFromString(`<svg xmlns="${SVG}">${ICONES[chave]}</svg>`, 'image/svg+xml');
-      const svg = document.createElementNS(SVG, 'svg');
-      for (const [k, v] of Object.entries({ viewBox: '0 0 32 32', fill: 'none', stroke: 'currentColor', 'stroke-width': '1.6', 'stroke-linecap': 'round', 'stroke-linejoin': 'round', 'aria-hidden': 'true', focusable: 'false', class: 'v3-ic' })) svg.setAttribute(k, v);
-      [...doc.documentElement.childNodes].forEach((n) => svg.append(document.importNode(n, true)));
-      cacheIc.set(chave, svg);
-    }
-    return cacheIc.get(chave).cloneNode(true);
-  }
+  /** Ilustração do módulo (plataforma-icones.js); sem o arquivo, cai no ícone simples da UI. */
+  const iconeModulo = (id) => (window.PlataformaIcones ? window.PlataformaIcones.modulo(id) : UI.icone(id));
 
   /* ---------- Fases do processo da empresa (doc 05) ---------- */
   const FASES = [
@@ -107,48 +73,168 @@
     return `#${mat.jornada}/${m.id}`;
   }
 
-  /* ---------- Movimento: revelar ao entrar na tela, barras de progresso que enchem ---------- */
+  /* ---------- Movimento ---------- */
+  /** Entrada ao aparecer na tela. O conteúdo é sempre visível por padrão: a animação (WAAPI) só roda por cima,
+      então um navegador lento, aba oculta ou falha de observador nunca deixa a página em branco. */
   function revelar(raiz, seletor) {
-    const itens = [...raiz.querySelectorAll(seletor)];
-    if (reduzido() || !('IntersectionObserver' in window)) { itens.forEach((e) => e.setAttribute('data-v3-visto', '')); return; }
-    raiz.setAttribute('data-v3-anima', '');
+    if (reduzido() || !('IntersectionObserver' in window) || !Element.prototype.animate) return;
     let lote = 0, zerar = 0;
     const io = new IntersectionObserver((ents) => {
       ents.filter((e) => e.isIntersecting).forEach((e) => {
         io.unobserve(e.target);
-        const atraso = Math.min(lote++, 8) * 55;
-        clearTimeout(zerar); zerar = setTimeout(() => { lote = 0; }, 140);
-        setTimeout(() => e.target.setAttribute('data-v3-visto', ''), atraso);
+        e.target.animate([{ opacity: 0, transform: 'translateY(16px)' }, { opacity: 1, transform: 'none' }],
+          { duration: 620, delay: Math.min(lote++, 7) * 55, easing: 'cubic-bezier(.16, 1, .3, 1)', fill: 'backwards' });
+        clearTimeout(zerar); zerar = setTimeout(() => { lote = 0; }, 160);
       });
-    }, { rootMargin: '0px 0px -6% 0px', threshold: 0.08 });
-    itens.forEach((e) => io.observe(e));
+    }, { rootMargin: '0px 0px -4% 0px', threshold: 0.04 });
+    raiz.querySelectorAll(seletor).forEach((e) => io.observe(e));
   }
   function barra(p, rotulo) {
     const pc = Math.round(Math.max(0, Math.min(1, p)) * 100);
-    const preenchida = h('span', { className: 'v3-barra__fill' });
-    preenchida.style.setProperty('--p', String(pc / 100));
+    const preenchida = h('span', { className: 'v3-barra__fill', style: { '--p': String(pc / 100) } });
     return h('span', { className: 'v3-barra', attrs: { role: 'progressbar', 'aria-label': rotulo, 'aria-valuemin': 0, 'aria-valuemax': 100, 'aria-valuenow': pc } }, preenchida);
+  }
+  /** Um traço por material: cheio = publicado, vazio = em preparação. */
+  function tracos(lista, rotulo) {
+    const d = disponiveis(lista).length;
+    return h('span', { className: 'v3-tracos' },
+      h('span', { className: 'v3-tracos__nome', text: rotulo }),
+      h('span', { className: 'v3-tracos__fila', attrs: { 'aria-hidden': 'true' } }, lista.map((x) => h('i', { data: { on: x.status === 'disponivel' } }))),
+      h('span', { className: 'v3-tracos__n' }, h('b', { text: d }), `/${lista.length}`),
+      h('span', { className: 'pl-sr', text: ` materiais publicados em ${rotulo}` }));
+  }
+  /** Anel de progresso real (0–1). */
+  function anel(p, rotulo) {
+    const pc = Math.round(Math.max(0, Math.min(1, p)) * 100);
+    const svg = document.createElementNS(SVG, 'svg');
+    svg.setAttribute('viewBox', '0 0 120 120'); svg.setAttribute('aria-hidden', 'true'); svg.setAttribute('class', 'v3-anel__svg');
+    ['v3-anel__fundo', 'v3-anel__valor'].forEach((c) => {
+      const k = document.createElementNS(SVG, 'circle');
+      for (const [a, v] of Object.entries({ cx: 60, cy: 60, r: 52, pathLength: 100, class: c })) k.setAttribute(a, v);
+      svg.append(k);
+    });
+    return h('span', { className: 'v3-anel', style: { '--p': String(pc) }, attrs: { role: 'img', 'aria-label': `${rotulo}: ${pc}%` } }, svg,
+      h('span', { className: 'v3-anel__n', attrs: { 'aria-hidden': 'true' } }, h('b', { text: pc }), '%'));
   }
   /** Navega com View Transition (quando há), mantendo o roteador único (hash). */
   function irPara(origem, href) {
     if (!href) return;
-    if (href.startsWith('#')) UI.transicao(origem, () => { location.hash = href; });
+    // Na página do módulo o palco já tem o nome da transição: repetir o nome faria o navegador cancelá-la.
+    if (href.startsWith('#')) UI.transicao(document.querySelector('.v3-hub__palco') ? null : origem, () => { location.hash = href; });
     else window.location.assign(href);
   }
-  const fundoVivo = () => h('div', { className: 'v3-fundo', attrs: { 'aria-hidden': 'true' } },
-    h('span', { className: 'v3-fundo__luz v3-fundo__luz--a' }), h('span', { className: 'v3-fundo__luz v3-fundo__luz--b' }), h('span', { className: 'v3-fundo__luz v3-fundo__luz--c' }),
-    (() => {
-      const svg = document.createElementNS(SVG, 'svg');
-      svg.setAttribute('viewBox', '0 0 1200 400'); svg.setAttribute('preserveAspectRatio', 'none'); svg.setAttribute('class', 'v3-fundo__fios');
-      ['M-20 300 C 200 220, 380 360, 600 260 S 980 120, 1220 200', 'M-20 340 C 240 280, 420 400, 660 300 S 1000 180, 1220 260', 'M-20 120 C 180 60, 420 180, 640 110 S 1020 20, 1220 80'].forEach((d, i) => {
-        const p = document.createElementNS(SVG, 'path'); p.setAttribute('d', d); p.setAttribute('class', `v3-fio v3-fio--${i + 1}`); svg.append(p);
+  const clicarIr = (href, alvo) => (e) => { e.preventDefault(); irPara(alvo ? e.currentTarget.querySelector(alvo) : e.currentTarget, href); };
+  /** Marca de concluído (traço único, lê bem em tamanho pequeno). */
+  function visto() {
+    const svg = document.createElementNS(SVG, 'svg');
+    svg.setAttribute('viewBox', '0 0 16 16'); svg.setAttribute('fill', 'none'); svg.setAttribute('stroke', 'currentColor'); svg.setAttribute('stroke-width', '2.4');
+    svg.setAttribute('stroke-linecap', 'round'); svg.setAttribute('stroke-linejoin', 'round'); svg.setAttribute('aria-hidden', 'true');
+    const p = document.createElementNS(SVG, 'path'); p.setAttribute('d', 'M3.500 8.500l3 3 6-7'); svg.append(p);
+    return svg;
+  }
+  const permitida = (j) => !(window.Plataforma && window.Plataforma.lerRota) || window.Plataforma.lerRota(`#${j}`).area === j;
+  const hrefModulo = (id) => `#inicio/${encodeURIComponent(id)}`;
+
+  /** Luz que acompanha o ponteiro nos cartões (só com mouse e movimento permitido). Delegado: um ouvinte por página. */
+  function ligarLuz(raiz, seletor) {
+    if (reduzido() || !window.matchMedia('(hover: hover)').matches) return;
+    let quadro = 0;
+    raiz.addEventListener('pointermove', (e) => {
+      const c = e.target.closest && e.target.closest(seletor);
+      if (!c || quadro) return;
+      quadro = requestAnimationFrame(() => {
+        quadro = 0;
+        const r = c.getBoundingClientRect();
+        c.style.setProperty('--mx', `${e.clientX - r.left}px`);
+        c.style.setProperty('--my', `${e.clientY - r.top}px`);
       });
-      return svg;
-    })());
+    }, { passive: true });
+  }
+
+  /** Fundo da página: luz suave e a grade de blocos da marca (decorativo, parado com movimento reduzido). */
+  const ceu = () => h('div', { className: 'v3-ceu', attrs: { 'aria-hidden': 'true' } },
+    h('span', { className: 'v3-ceu__luz v3-ceu__luz--a' }), h('span', { className: 'v3-ceu__luz v3-ceu__luz--b' }), h('span', { className: 'v3-ceu__grade' }));
+
+  /** Linha de fases: navega entre as fases e acompanha a rolagem. Substitui a régua 00–18.
+      `medidor(fase)` opcional devolve 0–1 (progresso real da fase); sem ele, mostra os módulos da fase como pontos. */
+  function linhaDeFases(raiz, fases, ids, medidor) {
+    const itens = new Map();
+    const nav = h('nav', { className: 'v3-linha', attrs: { 'aria-label': 'Fases do processo' } },
+      h('ol', null, fases.map((f, i) => {
+        const a = h('a', { attrs: { href: `#${ids.get(f.id)}` }, on: { click: (e) => {
+          e.preventDefault();
+          const alvo = document.getElementById(ids.get(f.id));
+          if (!alvo) return;
+          alvo.scrollIntoView({ behavior: reduzido() ? 'auto' : 'smooth', block: 'start' });
+          alvo.focus({ preventScroll: true });
+        } } },
+        h('span', { className: 'v3-linha__nome' }, h('span', { className: 'v3-linha__n', text: i + 1 }), h('span', { text: f.titulo })),
+        medidor
+          ? h('span', { className: 'v3-linha__medidor', attrs: { 'aria-hidden': 'true' } }, h('i', { style: { '--p': String(medidor(f)) } }))
+          : h('span', { className: 'v3-linha__pontos', attrs: { 'aria-hidden': 'true' } }, f.mods.map((m) => h('i', { style: { '--c': corValida(m.cor) } }))));
+        itens.set(f.id, a);
+        return h('li', { style: { '--peso': String(f.mods.length) } }, a);
+      })));
+    if ('IntersectionObserver' in window) {
+      const fila = nav.querySelector('ol');
+      const ativar = (id) => itens.forEach((a, k) => {
+        if (k === id) {
+          a.setAttribute('aria-current', 'true');
+          if (fila.scrollWidth > fila.clientWidth) fila.scrollTo({ left: a.parentElement.offsetLeft - 16, behavior: reduzido() ? 'auto' : 'smooth' });
+        } else a.removeAttribute('aria-current');
+      });
+      const io = new IntersectionObserver((ents) => {
+        ents.filter((e) => e.isIntersecting).forEach((e) => ativar(e.target.dataset.fase));
+      }, { rootMargin: '-30% 0px -60% 0px' });
+      requestAnimationFrame(() => raiz.querySelectorAll('[data-fase]').forEach((s) => io.observe(s)));
+    }
+    return nav;
+  }
 
   /* ======================================================================
-     PÁGINA INICIAL — vitrine dos módulos
+     PÁGINA INICIAL
      ====================================================================== */
+  /** Horizonte de fábrica: cada coluna é uma fase e cada bloco um módulo real. Atalho de mouse/toque; os mesmos
+      destinos existem nos cartões abaixo, por isso fica fora da ordem do teclado e do leitor de tela. */
+  function horizonte(fases) {
+    const padrao = 'Os módulos, fase a fase';
+    const legenda = h('p', { className: 'v3-sky__legenda', text: padrao });
+    let ordem = 0;
+    const bloco = (m) => {
+      const href = hrefModulo(m.id);
+      return h('a', { className: 'v3-sky__bloco', attrs: { href, tabindex: -1 }, data: { prep: m.status === 'em-preparacao' }, style: { '--c': corValida(m.cor), '--i': String(ordem++) },
+        on: { click: clicarIr(href), pointerenter: () => { legenda.textContent = m.titulo; }, pointerleave: () => { legenda.textContent = padrao; } } }, iconeModulo(m.id));
+    };
+    // Torres de até 4 blocos: uma fase longa vira um galpão largo, não uma coluna solta.
+    const torres = (mods) => { const t = []; for (let i = 0; i < mods.length; i += 4) t.push(mods.slice(i, i + 4)); return t; };
+    const colunas = fases.map((f) => h('div', { className: 'v3-sky__fase' }, torres(f.mods).map((t) => h('div', { className: 'v3-sky__col' }, t.map(bloco)))));
+    return h('div', { className: 'v3-sky', attrs: { 'aria-hidden': 'true' } }, h('div', { className: 'v3-sky__cena' }, colunas), legenda);
+  }
+
+  /** Largura de cada cartão (em 6 colunas) conforme a quantidade de módulos da fase: é o que quebra a grade repetida. */
+  const MOSAICO = { 1: [6], 2: [3, 3], 3: [2, 2, 2], 4: [3, 3, 3, 3], 5: [3, 3, 2, 2, 2], 6: [2, 2, 2, 2, 2, 2], 7: [3, 3, 2, 2, 2, 3, 3] };
+  const larguras = (n) => MOSAICO[n] || Array(n).fill(2);
+
+  function cartaoModulo(m, largura, progresso) {
+    const ini = doMod(m, 'inicial'), con = doMod(m, 'consultor');
+    const est = estadoDe(m, 'inicial', progresso);
+    const href = hrefModulo(m.id);
+    const selo = est.id === 'preparacao' ? h('span', { className: 'v3-selo v3-selo--prep' }, ic('relogio'), 'Em preparação')
+      : est.id === 'concluido' ? h('span', { className: 'v3-selo v3-selo--ok' }, visto(), 'Concluído')
+        : est.id === 'andamento' ? h('span', { className: 'v3-selo v3-selo--andamento', text: est.rotulo }) : null;
+    return h('li', { className: 'v3-item', style: { '--span': String(largura) } }, h('a', {
+      className: `v3-card ${largura >= 3 ? 'v3-card--largo' : ''}`, attrs: { href }, data: { estado: est.id }, style: { '--c': corValida(m.cor) }, on: { click: clicarIr(href, '.v3-card__palco') } },
+    h('span', { className: 'v3-card__luz', attrs: { 'aria-hidden': 'true' } }),
+    h('span', { className: 'v3-card__palco' }, iconeModulo(m.id)),
+    h('span', { className: 'v3-card__corpo' },
+      selo ? h('span', { className: 'v3-card__selo' }, selo) : null,
+      h('span', { className: 'v3-card__titulo', text: m.titulo }),
+      m.subtitulo ? h('span', { className: 'v3-card__sub', text: m.subtitulo }) : null,
+      h('span', { className: 'v3-card__rodape' }, ini.length ? tracos(ini, 'Guia Inicial') : null, con.length ? tracos(con, 'Consultor') : null)),
+    h('span', { className: 'v3-card__seta', attrs: { 'aria-hidden': 'true' } }, ic('seta')),
+    est.p > 0 ? barra(est.p, `Progresso em ${m.titulo}`) : null));
+  }
+
   function renderPaginaInicial(el, resumo, opcoes = {}) {
     el.classList.add('pl-raiz', 'v3', 'v3-inicio');
     el.classList.remove('pl-escuro', 'pl-inicio');
@@ -161,74 +247,53 @@
     const progresso = opcoes.progresso || {};
     const tot = (j) => modulos.reduce((s, m) => s + doMod(m, j).length, 0);
     const disp = (j) => modulos.reduce((s, m) => s + disponiveis(doMod(m, j)).length, 0);
-    const permitida = (j) => !(window.Plataforma && window.Plataforma.lerRota) || window.Plataforma.lerRota(`#${j}`).area === j;
     const idH1 = uid('v3-h1');
     el.setAttribute('aria-labelledby', idH1);
+    const fases = agrupar(modulos);
+    const ids = new Map(fases.map((f) => [f.id, uid(`v3-fase-${f.id}`)]));
 
     const caminho = (j) => {
       const inicial = j === 'inicial';
-      return h('a', { className: `v3-caminho v3-caminho--${j}`, attrs: { href: `#${j}` }, on: { click: (e) => { e.preventDefault(); irPara(e.currentTarget, `#${j}`); } } },
+      const href = `#${j}`;
+      return h('a', { className: `v3-caminho v3-caminho--${j}`, attrs: { href }, on: { click: clicarIr(href) } },
         h('span', { className: 'v3-caminho__ic' }, ic(inicial ? 'primeiros-passos' : 'manual')),
         h('span', { className: 'v3-caminho__txt' },
           h('strong', { text: inicial ? 'Guia Inicial' : 'Guia do Consultor' }),
           h('span', { text: inicial ? 'Para quem está começando: conceitos, telas guiadas e checklist por módulo.' : 'Para quem implanta: regras com fonte, configurações, validações e erros comuns.' }),
           h('small', null, h('b', { text: disp(j) }), ` de ${tot(j)} materiais publicados`)),
-        h('span', { className: 'v3-caminho__seta' }, ic('seta')));
+        h('span', { className: 'v3-caminho__seta', attrs: { 'aria-hidden': 'true' } }, ic('seta')));
     };
 
-    const hero = h('header', { className: 'v3-hero' }, fundoVivo(),
-      h('div', { className: 'v3-hero__conteudo' },
-        h('h1', { className: 'v3-hero__titulo', id: idH1 }, 'Aprenda o ', h('span', { className: 'v3-marca', text: 'Faktory Flow' }), ' do seu jeito'),
-        h('p', { className: 'v3-hero__texto', text: 'Escolha um caminho de aprendizagem ou explore um módulo. Cada módulo reúne, num só lugar, o que o iniciante precisa para usar e o que o consultor precisa para implantar.' }),
-        h('div', { className: 'v3-caminhos' }, ['inicial', 'consultor'].filter(permitida).map(caminho))));
+    const hero = h('header', { className: 'v3-hero' },
+      h('div', { className: 'v3-hero__texto' },
+        h('h1', { className: 'v3-hero__titulo', id: idH1 }, 'Aprenda o ', h('span', { className: 'v3-marca', text: 'Faktory Flow' }), ' na ordem em que a empresa trabalha'),
+        h('p', { className: 'v3-hero__sub', text: 'Do primeiro contato com o cliente à nota fiscal: cada módulo reúne o que o iniciante precisa para usar e o que o consultor precisa para implantar.' })),
+      horizonte(fases),
+      h('div', { className: 'v3-caminhos' }, ['inicial', 'consultor'].filter(permitida).map(caminho)));
 
-    const fases = agrupar(modulos);
-    const idsFase = new Map(fases.map((f) => [f.id, uid(`v3-fase-${f.id}`)]));
-    const navFases = h('nav', { className: 'v3-fases-nav', attrs: { 'aria-label': 'Fases do processo' } },
-      h('ol', null, fases.map((f, i) => h('li', null, h('a', { attrs: { href: `#${idsFase.get(f.id)}` }, on: { click: (e) => { e.preventDefault(); const alvo = document.getElementById(idsFase.get(f.id)); alvo && alvo.scrollIntoView({ behavior: reduzido() ? 'auto' : 'smooth', block: 'start' }); } } },
-        h('span', { className: 'v3-fases-nav__n', text: i + 1 }), h('span', { text: f.titulo }),
-        h('span', { className: 'v3-fases-nav__pontos', attrs: { 'aria-hidden': 'true' } }, f.mods.map((m) => h('i', { style: { '--c': corValida(m.cor) } }))))))));
-
-    const card = (m) => {
-      const ini = doMod(m, 'inicial'), con = doMod(m, 'consultor');
-      const est = estadoDe(m, 'inicial', progresso);
-      const href = `#inicio/${encodeURIComponent(m.id)}`;
-      return h('li', { className: 'v3-item' }, h('a', {
-        className: 'v3-card', attrs: { href }, data: { estado: est.id }, style: { '--c': corValida(m.cor) },
-        on: { click: (e) => { e.preventDefault(); irPara(e.currentTarget.querySelector('.v3-card__ic'), href); } }
-      },
-      h('span', { className: 'v3-card__brilho', attrs: { 'aria-hidden': 'true' } }),
-      h('span', { className: 'v3-card__topo' },
-        h('span', { className: 'v3-card__ic' }, iconeModulo(m.id)),
-        est.id === 'preparacao' ? h('span', { className: 'v3-selo v3-selo--prep' }, ic('relogio'), 'Em preparação')
-          : est.id === 'concluido' ? h('span', { className: 'v3-selo v3-selo--ok' }, ic('checklist'), 'Concluído')
-            : est.id === 'andamento' ? h('span', { className: 'v3-selo v3-selo--andamento', text: est.rotulo }) : null),
-      h('span', { className: 'v3-card__titulo', text: m.titulo }),
-      m.subtitulo ? h('span', { className: 'v3-card__sub', text: m.subtitulo }) : null,
-      h('span', { className: 'v3-card__rodape' },
-        h('span', { className: 'v3-card__meta' }, h('i', { className: 'v3-ponto v3-ponto--inicial' }), h('span', null, h('b', { text: disponiveis(ini).length }), ` de ${ini.length} · Inicial`)),
-        h('span', { className: 'v3-card__meta' }, h('i', { className: 'v3-ponto v3-ponto--consultor' }), h('span', null, h('b', { text: disponiveis(con).length }), ` de ${con.length} · Consultor`)),
-        h('span', { className: 'v3-card__seta', attrs: { 'aria-hidden': 'true' } }, ic('seta'))),
-      est.p > 0 ? barra(est.p, `Progresso em ${m.titulo}`) : null));
-    };
-
-    const vitrine = h('section', { className: 'v3-vitrine', attrs: { 'aria-labelledby': uid('v3-vit') } },
+    const idVit = `${idH1}-vit`;
+    const vitrine = h('section', { className: 'v3-vitrine', attrs: { 'aria-labelledby': idVit } },
       h('div', { className: 'v3-secao-cab' },
-        h('h2', { id: el.getAttribute('aria-labelledby') + '-vit', text: 'Explore os módulos' }),
-        h('p', { text: 'Organizados na ordem em que a empresa trabalha. Clique em um módulo para ver tudo o que existe sobre ele.' })),
-      navFases,
-      fases.map((f) => h('section', { className: 'v3-fase', id: idsFase.get(f.id), attrs: { 'aria-labelledby': `${idsFase.get(f.id)}-t`, tabindex: -1 } },
-        h('div', { className: 'v3-fase__cab' }, h('h3', { id: `${idsFase.get(f.id)}-t`, text: f.titulo }), f.texto ? h('p', { text: f.texto }) : null),
-        h('ul', { className: 'v3-grade' }, f.mods.map(card)))));
-    vitrine.setAttribute('aria-labelledby', `${idH1}-vit`);
-    vitrine.querySelector('h2').id = `${idH1}-vit`;
+        h('h2', { id: idVit, text: 'Explore os módulos' }),
+        h('p', { text: 'Clique em um módulo para ver tudo o que existe sobre ele, nas duas jornadas.' })),
+      linhaDeFases(el, fases, ids),
+      fases.map((f, i) => {
+        const w = larguras(f.mods.length);
+        return h('section', { className: 'v3-fase', id: ids.get(f.id), data: { fase: f.id }, attrs: { 'aria-labelledby': `${ids.get(f.id)}-t`, tabindex: -1 } },
+          h('div', { className: 'v3-fase__cab' },
+            h('span', { className: 'v3-fase__n', attrs: { 'aria-hidden': 'true' }, text: i + 1 }),
+            h('h3', { id: `${ids.get(f.id)}-t`, text: f.titulo }),
+            f.texto ? h('p', { text: f.texto }) : null),
+          h('ul', { className: 'v3-grade' }, f.mods.map((m, k) => cartaoModulo(m, w[k], progresso))));
+      }));
 
-    el.append(hero, vitrine);
+    el.append(ceu(), hero, vitrine);
+    ligarLuz(el, '.v3-card');
     revelar(el, '.v3-item, .v3-fase__cab, .v3-caminho');
   }
 
   /* ======================================================================
-     PÁGINA DO MÓDULO — hub com as duas jornadas
+     PÁGINA DO MÓDULO — as duas jornadas
      ====================================================================== */
   function renderHubModulo(el, modulo, opcoes = {}) {
     el.classList.add('pl-raiz', 'v3', 'v3-hub');
@@ -240,16 +305,14 @@
     const m = modulo;
     const cor = corValida(m.cor);
     const progresso = opcoes.progresso || {};
-    const permitida = (j) => !(window.Plataforma && window.Plataforma.lerRota) || window.Plataforma.lerRota(`#${j}`).area === j;
-
     const fase = FASES.find((f) => f.ids.includes(m.id));
+
     const hero = h('header', { className: 'v3-hub__hero', style: { '--c': cor } },
-      h('span', { className: 'v3-hub__marca', attrs: { 'aria-hidden': 'true' } }, iconeModulo(m.id)),
-      h('span', { className: 'v3-hub__ic' }, iconeModulo(m.id)),
       h('div', { className: 'v3-hub__nomes' },
+        fase ? h('p', { className: 'v3-hub__fase' }, h('b', { text: fase.titulo }), ` · ${fase.texto}`) : null,
         h('h1', { className: 'v3-hub__titulo', text: m.titulo }),
-        m.subtitulo ? h('p', { className: 'v3-hub__sub', text: m.subtitulo }) : null,
-        fase ? h('p', { className: 'v3-hub__fase' }, 'Fase ', h('b', { text: fase.titulo }), ` · ${fase.texto}`) : null));
+        m.subtitulo ? h('p', { className: 'v3-hub__sub', text: m.subtitulo }) : null),
+      h('span', { className: 'v3-hub__palco' }, iconeModulo(m.id)));
 
     const coluna = (j) => {
       const inicial = j === 'inicial';
@@ -274,7 +337,7 @@
         inicial ? h('div', { className: 'v3-col__prog' }, h('span', { text: est.id === 'preparacao' ? 'Materiais em preparação' : `Seu progresso: ${Math.round(est.p * 100)}%` }), barra(est.p, `Progresso no Guia Inicial de ${m.titulo}`)) : null,
         h('ul', { className: 'v3-mats' }, mats.length ? mats.map(item) : h('li', null, h('div', { className: 'v3-mat', data: { prep: true } }, h('span', { className: 'v3-mat__ic' }, ic('relogio')), h('span', { className: 'v3-mat__txt' }, h('strong', { text: 'Materiais em preparação' }))))),
         est.id !== 'preparacao'
-          ? h('a', { className: `v3-botao ${inicial ? 'v3-botao--primario' : 'v3-botao--secundario'}`, attrs: { href: principal }, on: { click: (e) => { e.preventDefault(); irPara(e.currentTarget, principal); } } },
+          ? h('a', { className: `v3-botao ${inicial ? 'v3-botao--primario' : 'v3-botao--secundario'}`, attrs: { href: principal }, on: { click: clicarIr(principal) } },
             inicial ? (est.p > 0 ? 'Continuar estudando' : 'Começar pelo Guia Inicial') : 'Abrir no Guia do Consultor', ic('seta'))
           : null);
     };
@@ -283,18 +346,42 @@
     // Navegação para os vizinhos na ordem da trilha (dados do resumo).
     const lista = (opcoes.modulos || []).slice().sort((a, b) => (a.ordem ?? 99) - (b.ordem ?? 99));
     const i = lista.findIndex((x) => x.id === m.id);
-    const viz = (x, rot) => (x ? h('a', { className: 'v3-viz', attrs: { href: `#inicio/${encodeURIComponent(x.id)}` }, style: { '--c': corValida(x.cor) },
-      on: { click: (e) => { e.preventDefault(); irPara(e.currentTarget, `#inicio/${encodeURIComponent(x.id)}`); } } },
-    h('small', { text: rot }), h('span', { className: 'v3-viz__ic' }, iconeModulo(x.id)), h('strong', { text: x.titulo })) : h('span'));
+    const viz = (x, rot) => (x ? h('a', { className: 'v3-viz', attrs: { href: hrefModulo(x.id) }, style: { '--c': corValida(x.cor) }, on: { click: clicarIr(hrefModulo(x.id)) } },
+      h('small', { text: rot }), h('span', { className: 'v3-viz__ic' }, iconeModulo(x.id)), h('strong', { text: x.titulo })) : h('span'));
     const vizinhos = i >= 0 ? h('nav', { className: 'v3-vizinhos', attrs: { 'aria-label': 'Outros módulos' } }, viz(lista[i - 1], 'Módulo anterior'), viz(lista[i + 1], 'Próximo módulo')) : null;
 
-    el.append(...[hero, colunas, vizinhos].filter(Boolean));
+    el.append(...[ceu(), hero, colunas, vizinhos].filter(Boolean));
     revelar(el, '.v3-col, .v3-mats li, .v3-viz');
   }
 
   /* ======================================================================
      JORNADAS — Guia Inicial (trilha com progresso) e Guia do Consultor (índice)
      ====================================================================== */
+  /** Próximo passo do Guia Inicial: os materiais reais do módulo, na ordem sugerida pelo guia. */
+  function missao(m, e) {
+    const href = `#inicial/${encodeURIComponent(m.id)}`;
+    const ordem = ['video', 'manual', 'tela', 'fluxo', 'checklist'];
+    const mats = doMod(m, 'inicial').slice().sort((a, b) => ordem.indexOf(a.tipo) - ordem.indexOf(b.tipo));
+    const passo = (mat) => {
+      const destino = destinoMaterial(mat, m);
+      const [nomeIc, nomeTipo] = TIPO[mat.tipo] || ['manual', 'Material'];
+      const dentro = [h('span', { className: 'v3-passo__ic' }, ic(mat.status === 'disponivel' ? nomeIc : 'relogio')),
+        h('span', { className: 'v3-passo__txt' }, h('strong', { text: nomeTipo }), h('small', { text: mat.status === 'disponivel' ? mat.titulo : 'Em preparação' }))];
+      return h('li', null, destino
+        ? h('a', { className: 'v3-passo', attrs: { href: destino }, on: { click: (ev) => { if (destino.startsWith('#')) { ev.preventDefault(); irPara(ev.currentTarget, destino); } } } }, dentro)
+        : h('div', { className: 'v3-passo', data: { prep: true } }, dentro));
+    };
+    return h('section', { className: 'v3-missao', style: { '--c': corValida(m.cor) }, attrs: { 'aria-label': 'Seu próximo passo' } },
+      h('span', { className: 'v3-missao__palco' }, iconeModulo(m.id)),
+      h('div', { className: 'v3-missao__corpo' },
+        h('p', { className: 'v3-missao__rotulo', text: e.id === 'andamento' ? 'Continue de onde parou' : 'Comece por aqui' }),
+        h('h2', { text: m.titulo }),
+        m.subtitulo ? h('p', { className: 'v3-missao__sub', text: m.subtitulo }) : null,
+        e.p > 0 ? barra(e.p, `Progresso em ${m.titulo}`) : null,
+        h('a', { className: 'v3-botao v3-botao--primario', attrs: { href }, on: { click: clicarIr(href) } }, e.id === 'andamento' ? 'Continuar estudando' : 'Começar o módulo', ic('seta'))),
+      h('ol', { className: 'v3-passos' }, mats.map(passo)));
+  }
+
   function renderJornada(el, { jornada = 'inicial', modulos, progresso = {}, erro, onTentar } = {}) {
     el.classList.add('pl-raiz', 'v3', 'v3-jornada', `v3-jornada--${jornada}`);
     el.classList.remove('pl-claro', 'pl-jornada');
@@ -312,39 +399,29 @@
     const media = ativos.length ? ativos.reduce((s, m) => s + estados.get(m.id).p, 0) / ativos.length : 0;
     const proximo = inicial ? (lista.find((m) => estados.get(m.id).id === 'andamento') || lista.find((m) => estados.get(m.id).id === 'disponivel')) : null;
     const idH1 = uid('v3-j');
+    const fases = agrupar(lista);
+    const ids = new Map(fases.map((f) => [f.id, uid(`v3-t-${f.id}`)]));
+    const progressoFase = (f) => {
+      const v = f.mods.filter((m) => estados.get(m.id).id !== 'preparacao');
+      return v.length ? v.reduce((s, m) => s + estados.get(m.id).p, 0) / v.length : 0;
+    };
 
-    const hero = h('header', { className: 'v3-jhero' }, fundoVivo(),
-      h('div', { className: 'v3-jhero__conteudo' },
+    const hero = h('header', { className: 'v3-jhero' },
+      h('div', { className: 'v3-jhero__texto' },
         h('h1', { id: idH1, text: inicial ? 'Guia Inicial' : 'Guia do Consultor' }),
-        h('p', { className: 'v3-jhero__texto', text: inicial
-          ? 'Sua trilha de capacitação no Faktory Flow, na ordem em que a empresa trabalha. Em cada módulo: o conceito, as telas guiadas com imagens e um checklist para marcar o que você já domina.'
+        h('p', { className: 'v3-jhero__sub', text: inicial
+          ? 'Sua trilha de capacitação no Faktory Flow, na ordem em que a empresa trabalha. Em cada módulo: o conceito, as telas guiadas e um checklist para marcar o que você já domina.'
           : 'A central de quem implanta: regras de negócio com fonte, configurações, fluxos, validações e os erros que mais aparecem em cada módulo.' }),
-        inicial ? h('dl', { className: 'v3-numeros' },
+        inicial ? null : h('label', { className: 'v3-busca' }, ic('busca'), h('span', { className: 'pl-sr', text: 'Filtrar módulos' }),
+          h('input', { attrs: { type: 'search', placeholder: 'Filtrar módulos (ex.: estoque, nota, pedido)', autocomplete: 'off' } }))),
+      inicial ? h('div', { className: 'v3-placar' },
+        anel(media, 'Progresso na trilha'),
+        h('dl', null,
           h('div', null, h('dt', { text: 'Concluídos' }), h('dd', { text: concl })),
           h('div', null, h('dt', { text: 'Em andamento' }), h('dd', { text: andam })),
-          h('div', null, h('dt', { text: 'Disponíveis para estudar' }), h('dd', { text: ativos.length })),
-          h('div', { className: 'v3-numeros__barra' }, h('dt', { text: `Progresso na trilha: ${Math.round(media * 100)}%` }), h('dd', null, barra(media, 'Progresso na trilha'))))
-          : h('label', { className: 'v3-busca' }, ic('busca'), h('span', { className: 'pl-sr', text: 'Filtrar módulos' }),
-            h('input', { attrs: { type: 'search', placeholder: 'Filtrar módulos (ex.: estoque, nota, pedido)', autocomplete: 'off' } }))));
+          h('div', null, h('dt', { text: 'Para estudar' }), h('dd', { text: Math.max(0, ativos.length - concl - andam) })))) : null);
 
-    // Próximo passo recomendado (Guia Inicial): o primeiro em andamento; senão o primeiro disponível.
-    let destaque = null;
-    if (proximo) {
-      const e = estados.get(proximo.id);
-      const mats = disponiveis(doMod(proximo, 'inicial'));
-      const href = `#inicial/${encodeURIComponent(proximo.id)}`;
-      destaque = h('a', { className: 'v3-proximo', attrs: { href }, style: { '--c': corValida(proximo.cor) }, on: { click: (ev) => { ev.preventDefault(); irPara(ev.currentTarget.querySelector('.v3-proximo__ic'), href); } } },
-        h('span', { className: 'v3-proximo__ic' }, iconeModulo(proximo.id)),
-        h('span', { className: 'v3-proximo__txt' },
-          h('small', { text: e.id === 'andamento' ? 'Continue de onde parou' : 'Seu próximo passo' }),
-          h('strong', { text: proximo.titulo }),
-          proximo.subtitulo ? h('span', { text: proximo.subtitulo }) : null,
-          h('span', { className: 'v3-proximo__mats' }, mats.slice(0, 4).map((x) => h('span', { className: 'v3-tag' }, ic((TIPO[x.tipo] || ['manual'])[0]), (TIPO[x.tipo] || [0, 'Material'])[1])))),
-        h('span', { className: 'v3-proximo__cta' }, e.id === 'andamento' ? 'Continuar' : 'Começar', ic('seta')),
-        e.p > 0 ? barra(e.p, `Progresso em ${proximo.titulo}`) : null);
-    }
-
-    const etapa = (m) => {
+    const etapa = (m, posicao) => {
       const e = estados.get(m.id);
       const mats = doMod(m, jornada);
       const href = `#${jornada}/${encodeURIComponent(m.id)}`;
@@ -352,30 +429,44 @@
         const doTipo = mats.filter((x) => x.tipo === t);
         if (!doTipo.length) return null;
         const ok = doTipo.some((x) => x.status === 'disponivel');
-        return h('span', { className: 'v3-tag', data: { prep: !ok } }, ic((TIPO[t] || ['manual'])[0]), TIPO[t][1], ok ? null : h('span', { className: 'pl-sr', text: ' (em preparação)' }));
+        return h('span', { className: 'v3-tag', data: { prep: !ok } }, ic(ok ? (TIPO[t] || ['manual'])[0] : 'relogio'), TIPO[t][1], ok ? null : h('span', { className: 'pl-sr', text: ' (em preparação)' }));
       });
-      return h('li', { className: 'v3-etapa', data: { estado: e.id, proximo: proximo === m, busca: `${txt(m.titulo)} ${txt(m.subtitulo)} ${m.id}`.toLowerCase() }, style: { '--c': corValida(m.cor) } },
-        h('span', { className: 'v3-etapa__no', attrs: { 'aria-hidden': 'true' } }, e.id === 'concluido' ? ic('checklist') : null),
-        h('a', { className: 'v3-etapa__card', attrs: { href }, on: { click: (ev) => { ev.preventDefault(); irPara(ev.currentTarget.querySelector('.v3-etapa__ic'), href); } } },
-          h('span', { className: 'v3-etapa__ic' }, iconeModulo(m.id)),
+      const seloId = e.id === 'preparacao' ? 'prep' : e.id === 'concluido' ? 'ok' : e.id === 'andamento' ? 'andamento' : 'disp';
+      return h('li', { className: 'v3-etapa', data: { estado: e.id, proximo: proximo === m, busca: `${txt(m.titulo)} ${txt(m.subtitulo)} ${m.id}`.toLowerCase() }, style: { '--c': corValida(m.cor), '--r': String(posicao + 1), '--p': String(Math.round(e.p * 100)) } },
+        h('span', { className: 'v3-etapa__no', attrs: { 'aria-hidden': 'true' } }, e.id === 'concluido' ? visto() : e.id === 'preparacao' ? ic('relogio') : null),
+        h('a', { className: 'v3-etapa__card', attrs: { href }, on: { click: clicarIr(href, '.v3-etapa__palco') } },
+          h('span', { className: 'v3-etapa__palco' }, iconeModulo(m.id)),
           h('span', { className: 'v3-etapa__txt' },
             h('strong', { text: m.titulo }),
             m.subtitulo ? h('span', { className: 'v3-etapa__sub', text: m.subtitulo }) : null,
-            h('span', { className: 'v3-etapa__tags' }, tipos)),
-          h('span', { className: 'v3-etapa__lado' },
-            h('span', { className: `v3-selo v3-selo--${e.id === 'preparacao' ? 'prep' : e.id === 'concluido' ? 'ok' : e.id === 'andamento' ? 'andamento' : 'disp'}` }, e.id === 'preparacao' ? ic('relogio') : null,
-              inicial ? e.rotulo : (e.id === 'preparacao' ? 'Em preparação' : `${disponiveis(mats).length} de ${mats.length} publicados`)),
-            inicial && e.p > 0 ? barra(e.p, `Progresso em ${m.titulo}`) : null),
+            h('span', { className: 'v3-etapa__tags' }, tipos),
+            h('span', { className: 'v3-etapa__estado' },
+              h('span', { className: `v3-selo v3-selo--${seloId}` }, e.id === 'concluido' ? visto() : e.id === 'preparacao' ? ic('relogio') : null,
+                inicial ? e.rotulo : (e.id === 'preparacao' ? 'Em preparação' : `${disponiveis(mats).length} de ${mats.length} publicados`)),
+              inicial && e.p > 0 ? barra(e.p, `Progresso em ${m.titulo}`) : null)),
           h('span', { className: 'v3-etapa__seta', attrs: { 'aria-hidden': 'true' } }, ic('seta'))));
     };
-    const fases = agrupar(lista);
-    const trilha = h('ol', { className: 'v3-trilha' }, fases.map((f, i) => h('li', { className: 'v3-tfase' },
-      h('div', { className: 'v3-tfase__cab' }, h('span', { className: 'v3-tfase__n', attrs: { 'aria-hidden': 'true' }, text: i + 1 }),
-        h('div', null, h('h2', { text: f.titulo }), f.texto ? h('p', { text: f.texto }) : null)),
-      h('ol', { className: 'v3-etapas' }, f.mods.map(etapa)))));
+
+    /** Fração da espinha acesa na fase: módulos concluídos em sequência, a partir do primeiro. */
+    const feitoAte = (f) => {
+      const i = f.mods.findIndex((m) => estados.get(m.id).id !== 'concluido');
+      return i < 0 ? 1 : i / f.mods.length;
+    };
+    const trilha = h('ol', { className: 'v3-trilha' }, fases.map((f, i) => {
+      const v = f.mods.filter((m) => estados.get(m.id).id !== 'preparacao').length;
+      const c = f.mods.filter((m) => estados.get(m.id).id === 'concluido').length;
+      const resumo = inicial ? (v ? `${c} de ${v} ${v === 1 ? 'módulo concluído' : 'módulos concluídos'}` : 'Em preparação') : `${f.mods.length} ${f.mods.length === 1 ? 'módulo' : 'módulos'}`;
+      return h('li', { className: 'v3-tfase', id: ids.get(f.id), data: { fase: f.id, completa: inicial && v > 0 && c === v }, attrs: { tabindex: -1 } },
+        h('div', { className: 'v3-tfase__cab' },
+          h('span', { className: 'v3-tfase__n', attrs: { 'aria-hidden': 'true' }, text: i + 1 }),
+          h('div', { className: 'v3-tfase__nomes' }, h('h2', { text: f.titulo }), f.texto ? h('p', { text: f.texto }) : null),
+          h('span', { className: 'v3-tfase__resumo', text: resumo })),
+        h('ol', { className: 'v3-etapas', style: { '--feito': String(feitoAte(f)) } }, f.mods.map(etapa)));
+    }));
+
     const vazioBusca = h('p', { className: 'v3-vazio', attrs: { hidden: true, role: 'status' }, text: 'Nenhum módulo com esse nome.' });
     el.setAttribute('aria-labelledby', idH1);
-    el.append(...[hero, destaque, trilha, vazioBusca].filter(Boolean));
+    el.append(...[ceu(), hero, proximo ? missao(proximo, estados.get(proximo.id)) : null, linhaDeFases(el, fases, ids, inicial ? progressoFase : null), trilha, vazioBusca].filter(Boolean));
     const campo = el.querySelector('.v3-busca input');
     if (campo) campo.addEventListener('input', () => {
       const q = campo.value.trim().toLowerCase();
@@ -384,8 +475,9 @@
       el.querySelectorAll('.v3-tfase').forEach((f) => { f.hidden = !f.querySelector('.v3-etapa:not([hidden])'); });
       vazioBusca.hidden = n > 0;
     });
-    revelar(el, '.v3-etapa, .v3-tfase__cab, .v3-proximo');
+    ligarLuz(el, '.v3-etapa__card');
+    revelar(el, '.v3-etapa, .v3-tfase__cab, .v3-missao');
   }
 
-  window.PlataformaV3 = Object.freeze({ renderPaginaInicial, renderHubModulo, renderJornada, iconeModulo, FASES, versao: '2026-11-06-v3' });
+  window.PlataformaV3 = Object.freeze({ renderPaginaInicial, renderHubModulo, renderJornada, iconeModulo, FASES, versao: '2026-11-06-v4' });
 })();

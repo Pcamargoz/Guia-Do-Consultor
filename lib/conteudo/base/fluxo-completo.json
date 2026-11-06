@@ -39,10 +39,33 @@
    },
    {
     "id": "video",
-    "titulo": "Vídeo introdutório",
-    "status": "em-preparacao",
-    "blocos": [],
-    "fontes": []
+    "titulo": "Vídeo de apoio",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "video",
+      "material": "fluxo-completo:video-apoio",
+      "titulo": "Do pedido à gestão (vídeo de apoio)",
+      "status": "disponivel",
+      "url": "/videos/consultor-fluxo-completo.mp4",
+      "duracao_s": 157,
+      "poster": "/videos/consultor-fluxo-completo.jpg",
+      "legendas_url": "/videos/consultor-fluxo-completo.vtt",
+      "resumo": [
+       {
+        "t": "Apoio do Guia do Consultor, com narração e regras de negócio. O vídeo introdutório deste módulo está em preparação. O fluxo inteiro, do CRM aos indicadores."
+       }
+      ],
+      "fontes": [
+       "guia:public/videos/manifest.json",
+       "guia:videos/roteiros/consultor-fluxo-completo.json"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:public/videos/manifest.json",
+     "guia:videos/roteiros/consultor-fluxo-completo.json"
+    ]
    },
    {
     "id": "manual",

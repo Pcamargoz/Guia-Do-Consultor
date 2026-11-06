@@ -39,10 +39,33 @@
    },
    {
     "id": "video",
-    "titulo": "Vídeo introdutório",
-    "status": "em-preparacao",
-    "blocos": [],
-    "fontes": []
+    "titulo": "Vídeo de apoio",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "video",
+      "material": "estoque:video-apoio",
+      "titulo": "Estoque: movimento, reserva e inventário (vídeo de apoio)",
+      "status": "disponivel",
+      "url": "/videos/consultor-04-estoque.mp4",
+      "duracao_s": 183,
+      "poster": "/videos/consultor-04-estoque.jpg",
+      "legendas_url": "/videos/consultor-04-estoque.vtt",
+      "resumo": [
+       {
+        "t": "Apoio do Guia do Consultor, com narração e regras de negócio. O vídeo introdutório deste módulo está em preparação. Movimentos, transferência, reserva, inventário e empréstimo."
+       }
+      ],
+      "fontes": [
+       "guia:public/videos/manifest.json",
+       "guia:videos/roteiros/consultor-04-estoque.json"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:public/videos/manifest.json",
+     "guia:videos/roteiros/consultor-04-estoque.json"
+    ]
    },
    {
     "id": "manual",

@@ -39,10 +39,33 @@
    },
    {
     "id": "video",
-    "titulo": "Vídeo introdutório",
-    "status": "em-preparacao",
-    "blocos": [],
-    "fontes": []
+    "titulo": "Vídeo de apoio",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "video",
+      "material": "compras:video-apoio",
+      "titulo": "Suprimentos: da solicitação ao pagamento (vídeo de apoio)",
+      "status": "disponivel",
+      "url": "/videos/consultor-01-suprimentos.mp4",
+      "duracao_s": 203,
+      "poster": "/videos/consultor-01-suprimentos.jpg",
+      "legendas_url": "/videos/consultor-01-suprimentos.vtt",
+      "resumo": [
+       {
+        "t": "Apoio do Guia do Consultor, com narração e regras de negócio. O vídeo introdutório deste módulo está em preparação. Cotação opcional, a natureza da operação que define o CFOP, a nota com dois números e a linha do tempo do pedido."
+       }
+      ],
+      "fontes": [
+       "guia:public/videos/manifest.json",
+       "guia:videos/roteiros/consultor-01-suprimentos.json"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:public/videos/manifest.json",
+     "guia:videos/roteiros/consultor-01-suprimentos.json"
+    ]
    },
    {
     "id": "manual",

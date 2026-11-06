@@ -266,6 +266,20 @@
     },
     {
      "modulo": "crm",
+     "duracao_s": 220,
+     "url": "/videos/consultor-03-comercial.mp4",
+     "fontes": [
+      "guia:public/videos/manifest.json",
+      "guia:videos/roteiros/consultor-03-comercial.json"
+     ],
+     "id": "crm:video-apoio",
+     "tipo": "video",
+     "jornada": "inicial",
+     "titulo": "Comercial: do lead ao pedido de venda (vídeo de apoio)",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "crm",
      "duracao_s": null,
      "url": "#inicial/crm",
      "fontes": [
@@ -558,6 +572,20 @@
     },
     {
      "modulo": "vendas",
+     "duracao_s": 230,
+     "url": "/videos/compra-em-nome-do-cliente.mp4",
+     "fontes": [
+      "guia:public/videos/manifest.json",
+      "guia:videos/roteiros/compra-em-nome-do-cliente.json"
+     ],
+     "id": "vendas:video-consultor-apoio",
+     "tipo": "video",
+     "jornada": "consultor",
+     "titulo": "Compra em nome do cliente: Faturamento em Nível e Contrato de Fornecimento (vídeo de apoio)",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "vendas",
      "duracao_s": null,
      "url": "#consultor/vendas",
      "fontes": [
@@ -623,6 +651,20 @@
      "jornada": "inicial",
      "titulo": "Vídeo introdutório",
      "status": "em-preparacao"
+    },
+    {
+     "modulo": "compras",
+     "duracao_s": 203,
+     "url": "/videos/consultor-01-suprimentos.mp4",
+     "fontes": [
+      "guia:public/videos/manifest.json",
+      "guia:videos/roteiros/consultor-01-suprimentos.json"
+     ],
+     "id": "compras:video-apoio",
+     "tipo": "video",
+     "jornada": "inicial",
+     "titulo": "Suprimentos: da solicitação ao pagamento (vídeo de apoio)",
+     "status": "disponivel"
     },
     {
      "modulo": "compras",
@@ -752,6 +794,20 @@
     },
     {
      "modulo": "recebimento",
+     "duracao_s": 203,
+     "url": "/videos/consultor-01-suprimentos.mp4",
+     "fontes": [
+      "guia:public/videos/manifest.json",
+      "guia:videos/roteiros/consultor-01-suprimentos.json"
+     ],
+     "id": "recebimento:video-apoio",
+     "tipo": "video",
+     "jornada": "inicial",
+     "titulo": "Suprimentos: da solicitação ao pagamento (vídeo de apoio)",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "recebimento",
      "duracao_s": null,
      "url": "#inicial/recebimento",
      "fontes": [
@@ -873,6 +929,20 @@
      "jornada": "inicial",
      "titulo": "Vídeo introdutório",
      "status": "em-preparacao"
+    },
+    {
+     "modulo": "estoque",
+     "duracao_s": 183,
+     "url": "/videos/consultor-04-estoque.mp4",
+     "fontes": [
+      "guia:public/videos/manifest.json",
+      "guia:videos/roteiros/consultor-04-estoque.json"
+     ],
+     "id": "estoque:video-apoio",
+     "tipo": "video",
+     "jornada": "inicial",
+     "titulo": "Estoque: movimento, reserva e inventário (vídeo de apoio)",
+     "status": "disponivel"
     },
     {
      "modulo": "estoque",
@@ -1006,6 +1076,20 @@
     },
     {
      "modulo": "producao",
+     "duracao_s": 173,
+     "url": "/videos/consultor-05-producao.mp4",
+     "fontes": [
+      "guia:public/videos/manifest.json",
+      "guia:videos/roteiros/consultor-05-producao.json"
+     ],
+     "id": "producao:video-apoio",
+     "tipo": "video",
+     "jornada": "inicial",
+     "titulo": "Produção: da estrutura ao produto acabado (vídeo de apoio)",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "producao",
      "duracao_s": null,
      "url": "#inicial/producao",
      "fontes": [
@@ -1131,6 +1215,20 @@
      "jornada": "inicial",
      "titulo": "Vídeo introdutório",
      "status": "em-preparacao"
+    },
+    {
+     "modulo": "servicos",
+     "duracao_s": 168,
+     "url": "/videos/consultor-02-servicos.mp4",
+     "fontes": [
+      "guia:public/videos/manifest.json",
+      "guia:videos/roteiros/consultor-02-servicos.json"
+     ],
+     "id": "servicos:video-apoio",
+     "tipo": "video",
+     "jornada": "inicial",
+     "titulo": "Serviços de campo: da medição à assistência (vídeo de apoio)",
+     "status": "disponivel"
     },
     {
      "modulo": "servicos",
@@ -1261,6 +1359,20 @@
     },
     {
      "modulo": "projetos",
+     "duracao_s": 147,
+     "url": "/videos/consultor-09-projetos.mp4",
+     "fontes": [
+      "guia:public/videos/manifest.json",
+      "guia:videos/roteiros/consultor-09-projetos.json"
+     ],
+     "id": "projetos:video-apoio",
+     "tipo": "video",
+     "jornada": "inicial",
+     "titulo": "Projetos e obras (vídeo de apoio)",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "projetos",
      "duracao_s": null,
      "url": "#inicial/projetos",
      "fontes": [
@@ -1380,6 +1492,20 @@
      "jornada": "inicial",
      "titulo": "Vídeo introdutório",
      "status": "em-preparacao"
+    },
+    {
+     "modulo": "expedicao",
+     "duracao_s": 161,
+     "url": "/videos/consultor-06-expedicao.mp4",
+     "fontes": [
+      "guia:public/videos/manifest.json",
+      "guia:videos/roteiros/consultor-06-expedicao.json"
+     ],
+     "id": "expedicao:video-apoio",
+     "tipo": "video",
+     "jornada": "inicial",
+     "titulo": "Expedição: da carga à entrega (vídeo de apoio)",
+     "status": "disponivel"
     },
     {
      "modulo": "expedicao",
@@ -1665,6 +1791,20 @@
     },
     {
      "modulo": "fiscal",
+     "duracao_s": 198,
+     "url": "/videos/consultor-07-faturamento.mp4",
+     "fontes": [
+      "guia:public/videos/manifest.json",
+      "guia:videos/roteiros/consultor-07-faturamento.json"
+     ],
+     "id": "fiscal:video-apoio",
+     "tipo": "video",
+     "jornada": "inicial",
+     "titulo": "Faturamento: do pedido à nota finalizada (vídeo de apoio)",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "fiscal",
      "duracao_s": null,
      "url": "#inicial/fiscal",
      "fontes": [
@@ -1714,6 +1854,20 @@
      "jornada": "consultor",
      "titulo": "Vídeo avançado",
      "status": "em-preparacao"
+    },
+    {
+     "modulo": "fiscal",
+     "duracao_s": 198,
+     "url": "/videos/consultor-07-faturamento.mp4",
+     "fontes": [
+      "guia:public/videos/manifest.json",
+      "guia:videos/roteiros/consultor-07-faturamento.json"
+     ],
+     "id": "fiscal:video-consultor-apoio",
+     "tipo": "video",
+     "jornada": "consultor",
+     "titulo": "Faturamento: do pedido à nota finalizada (vídeo de apoio)",
+     "status": "disponivel"
     },
     {
      "modulo": "fiscal",
@@ -1903,6 +2057,20 @@
      "jornada": "inicial",
      "titulo": "Vídeo introdutório",
      "status": "em-preparacao"
+    },
+    {
+     "modulo": "tarefas",
+     "duracao_s": 158,
+     "url": "/videos/consultor-10-tarefas.mp4",
+     "fontes": [
+      "guia:public/videos/manifest.json",
+      "guia:videos/roteiros/consultor-10-tarefas.json"
+     ],
+     "id": "tarefas:video-apoio",
+     "tipo": "video",
+     "jornada": "inicial",
+     "titulo": "Tarefas (vídeo de apoio)",
+     "status": "disponivel"
     },
     {
      "modulo": "tarefas",
@@ -2162,6 +2330,20 @@
     },
     {
      "modulo": "fluxo-completo",
+     "duracao_s": 157,
+     "url": "/videos/consultor-fluxo-completo.mp4",
+     "fontes": [
+      "guia:public/videos/manifest.json",
+      "guia:videos/roteiros/consultor-fluxo-completo.json"
+     ],
+     "id": "fluxo-completo:video-apoio",
+     "tipo": "video",
+     "jornada": "inicial",
+     "titulo": "Do pedido à gestão (vídeo de apoio)",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "fluxo-completo",
      "duracao_s": null,
      "url": "#inicial/fluxo-completo",
      "fontes": [
@@ -2267,18 +2449,6 @@
     "tipo": "checklist"
    }
   ],
-  "/checklists/estagiarios/03-crm-leads-oportunidades.html": [
-   {
-    "modulo": "crm",
-    "tipo": "checklist"
-   }
-  ],
-  "/checklists/consultores/implantacao-02-crm.html": [
-   {
-    "modulo": "crm",
-    "tipo": "checklist"
-   }
-  ],
   "/videos/consultor-03-comercial.mp4": [
    {
     "modulo": "crm",
@@ -2307,6 +2477,18 @@
    {
     "modulo": "vendas",
     "tipo": "video"
+   }
+  ],
+  "/checklists/estagiarios/03-crm-leads-oportunidades.html": [
+   {
+    "modulo": "crm",
+    "tipo": "checklist"
+   }
+  ],
+  "/checklists/consultores/implantacao-02-crm.html": [
+   {
+    "modulo": "crm",
+    "tipo": "checklist"
    }
   ],
   "/checklists/consultores/implantacao-03-integracao-cem.html": [
@@ -2351,16 +2533,34 @@
     "tipo": "checklist"
    }
   ],
-  "/checklists/estagiarios/05-compras.html": [
+  "/videos/compra-em-nome-do-cliente.mp4": [
    {
-    "modulo": "compras",
-    "tipo": "checklist"
+    "modulo": "vendas",
+    "tipo": "video"
+   },
+   {
+    "modulo": "faturamento",
+    "tipo": "video"
    }
   ],
-  "/checklists/consultores/implantacao-08-compras.html": [
+  "/videos/compra-em-nome-do-cliente.jpg": [
    {
-    "modulo": "compras",
-    "tipo": "checklist"
+    "modulo": "vendas",
+    "tipo": "video"
+   },
+   {
+    "modulo": "faturamento",
+    "tipo": "video"
+   }
+  ],
+  "/videos/compra-em-nome-do-cliente.vtt": [
+   {
+    "modulo": "vendas",
+    "tipo": "video"
+   },
+   {
+    "modulo": "faturamento",
+    "tipo": "video"
    }
   ],
   "/videos/consultor-01-suprimentos.mp4": [
@@ -2393,6 +2593,18 @@
     "tipo": "video"
    }
   ],
+  "/checklists/estagiarios/05-compras.html": [
+   {
+    "modulo": "compras",
+    "tipo": "checklist"
+   }
+  ],
+  "/checklists/consultores/implantacao-08-compras.html": [
+   {
+    "modulo": "compras",
+    "tipo": "checklist"
+   }
+  ],
   "/checklists/estagiarios/06-recebimento.html": [
    {
     "modulo": "recebimento",
@@ -2402,18 +2614,6 @@
   "/checklists/consultores/implantacao-09-recebimento.html": [
    {
     "modulo": "recebimento",
-    "tipo": "checklist"
-   }
-  ],
-  "/checklists/estagiarios/07-estoque.html": [
-   {
-    "modulo": "estoque",
-    "tipo": "checklist"
-   }
-  ],
-  "/checklists/consultores/implantacao-10-estoque.html": [
-   {
-    "modulo": "estoque",
     "tipo": "checklist"
    }
   ],
@@ -2435,15 +2635,15 @@
     "tipo": "video"
    }
   ],
-  "/checklists/estagiarios/08-producao.html": [
+  "/checklists/estagiarios/07-estoque.html": [
    {
-    "modulo": "producao",
+    "modulo": "estoque",
     "tipo": "checklist"
    }
   ],
-  "/checklists/consultores/implantacao-11-producao.html": [
+  "/checklists/consultores/implantacao-10-estoque.html": [
    {
-    "modulo": "producao",
+    "modulo": "estoque",
     "tipo": "checklist"
    }
   ],
@@ -2465,15 +2665,15 @@
     "tipo": "video"
    }
   ],
-  "/checklists/estagiarios/09-servicos-campo.html": [
+  "/checklists/estagiarios/08-producao.html": [
    {
-    "modulo": "servicos",
+    "modulo": "producao",
     "tipo": "checklist"
    }
   ],
-  "/checklists/consultores/implantacao-12-servicos.html": [
+  "/checklists/consultores/implantacao-11-producao.html": [
    {
-    "modulo": "servicos",
+    "modulo": "producao",
     "tipo": "checklist"
    }
   ],
@@ -2495,15 +2695,15 @@
     "tipo": "video"
    }
   ],
-  "/checklists/estagiarios/10-projetos-obras.html": [
+  "/checklists/estagiarios/09-servicos-campo.html": [
    {
-    "modulo": "projetos",
+    "modulo": "servicos",
     "tipo": "checklist"
    }
   ],
-  "/checklists/consultores/implantacao-14-projetos.html": [
+  "/checklists/consultores/implantacao-12-servicos.html": [
    {
-    "modulo": "projetos",
+    "modulo": "servicos",
     "tipo": "checklist"
    }
   ],
@@ -2525,15 +2725,15 @@
     "tipo": "video"
    }
   ],
-  "/checklists/estagiarios/11-expedicao.html": [
+  "/checklists/estagiarios/10-projetos-obras.html": [
    {
-    "modulo": "expedicao",
+    "modulo": "projetos",
     "tipo": "checklist"
    }
   ],
-  "/checklists/consultores/implantacao-13-expedicao.html": [
+  "/checklists/consultores/implantacao-14-projetos.html": [
    {
-    "modulo": "expedicao",
+    "modulo": "projetos",
     "tipo": "checklist"
    }
   ],
@@ -2555,9 +2755,25 @@
     "tipo": "video"
    }
   ],
+  "/checklists/estagiarios/11-expedicao.html": [
+   {
+    "modulo": "expedicao",
+    "tipo": "checklist"
+   }
+  ],
+  "/checklists/consultores/implantacao-13-expedicao.html": [
+   {
+    "modulo": "expedicao",
+    "tipo": "checklist"
+   }
+  ],
   "/videos/consultor-07-faturamento.mp4": [
    {
     "modulo": "faturamento",
+    "tipo": "video"
+   },
+   {
+    "modulo": "fiscal",
     "tipo": "video"
    }
   ],
@@ -2565,11 +2781,19 @@
    {
     "modulo": "faturamento",
     "tipo": "video"
+   },
+   {
+    "modulo": "fiscal",
+    "tipo": "video"
    }
   ],
   "/videos/consultor-07-faturamento.vtt": [
    {
     "modulo": "faturamento",
+    "tipo": "video"
+   },
+   {
+    "modulo": "fiscal",
     "tipo": "video"
    }
   ],
@@ -2593,24 +2817,6 @@
    {
     "modulo": "faturamento",
     "tipo": "checklist"
-   }
-  ],
-  "/videos/compra-em-nome-do-cliente.mp4": [
-   {
-    "modulo": "faturamento",
-    "tipo": "video"
-   }
-  ],
-  "/videos/compra-em-nome-do-cliente.jpg": [
-   {
-    "modulo": "faturamento",
-    "tipo": "video"
-   }
-  ],
-  "/videos/compra-em-nome-do-cliente.vtt": [
-   {
-    "modulo": "faturamento",
-    "tipo": "video"
    }
   ],
   "/checklists/consultores/implantacao-06-fiscal.html": [
@@ -2655,18 +2861,6 @@
     "tipo": "checklist"
    }
   ],
-  "/checklists/estagiarios/14-tarefas.html": [
-   {
-    "modulo": "tarefas",
-    "tipo": "checklist"
-   }
-  ],
-  "/checklists/consultores/implantacao-15-tarefas.html": [
-   {
-    "modulo": "tarefas",
-    "tipo": "checklist"
-   }
-  ],
   "/videos/consultor-10-tarefas.mp4": [
    {
     "modulo": "tarefas",
@@ -2685,9 +2879,15 @@
     "tipo": "video"
    }
   ],
-  "/checklists/estagiarios/15-visao-fluxo-completo.html": [
+  "/checklists/estagiarios/14-tarefas.html": [
    {
-    "modulo": "fluxo-completo",
+    "modulo": "tarefas",
+    "tipo": "checklist"
+   }
+  ],
+  "/checklists/consultores/implantacao-15-tarefas.html": [
+   {
+    "modulo": "tarefas",
     "tipo": "checklist"
    }
   ],
@@ -2707,6 +2907,12 @@
    {
     "modulo": "fluxo-completo",
     "tipo": "video"
+   }
+  ],
+  "/checklists/estagiarios/15-visao-fluxo-completo.html": [
+   {
+    "modulo": "fluxo-completo",
+    "tipo": "checklist"
    }
   ]
  },

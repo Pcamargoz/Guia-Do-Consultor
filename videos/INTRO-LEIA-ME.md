@@ -54,3 +54,10 @@ O `qa.mjs` funciona sem narração. O único "silêncio" que ele mostra é a cau
 | **Pendentes, sem gravação** | primeiros-passos, fundacao, cem, compras, recebimento, estoque, producao, servicos, projetos, expedicao, faturamento, fiscal, tarefas, relatorios, alumina, fluxo-completo |
 
 Os 16 pendentes precisam primeiro de uma gravação no staging, com dados fictícios e login feito pelo Pedro, e de um roteiro de telas.
+
+
+## Brutos gravados com `scripts/gravar-video.mjs` (06/11/2026)
+
+- Saem em 1920×1080 nativo: no `cortes.json`, use `"recorte": "crop=1920:1080:0:0"` (quadro inteiro). Sem o campo, vale o `crop=1920:1080:0:80` dos brutos antigos.
+- `lento` em um corte estica a tela parada (ex.: `1.5`). Use com critério e confira o ritmo.
+- O cursor não aparece no bruto: o clique é sintético no `IntroVideo`.

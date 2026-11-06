@@ -2859,11 +2859,31 @@
        "guia:public/videos/manifest.json",
        "guia:videos/roteiros/consultor-03-comercial.json"
       ]
+     },
+     {
+      "tipo": "video",
+      "material": "vendas:video-consultor-apoio",
+      "titulo": "Compra em nome do cliente: Faturamento em Nível e Contrato de Fornecimento (vídeo de apoio)",
+      "status": "disponivel",
+      "url": "/videos/compra-em-nome-do-cliente.mp4",
+      "duracao_s": 230,
+      "poster": "/videos/compra-em-nome-do-cliente.jpg",
+      "legendas_url": "/videos/compra-em-nome-do-cliente.vtt",
+      "resumo": [
+       {
+        "t": "Não é o vídeo próprio deste módulo. Obra com rateio 40/60: o seu pedido segue o fluxo normal, o do material é encerrado e vira saldo no contrato, abatido pelas compras do cliente."
+       }
+      ],
+      "fontes": [
+       "guia:public/videos/manifest.json",
+       "guia:videos/roteiros/compra-em-nome-do-cliente.json"
+      ]
      }
     ],
     "fontes": [
      "guia:public/videos/manifest.json",
-     "guia:videos/roteiros/consultor-03-comercial.json"
+     "guia:videos/roteiros/consultor-03-comercial.json",
+     "guia:videos/roteiros/compra-em-nome-do-cliente.json"
     ]
    },
    {

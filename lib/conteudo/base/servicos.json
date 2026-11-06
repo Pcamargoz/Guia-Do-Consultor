@@ -39,10 +39,33 @@
    },
    {
     "id": "video",
-    "titulo": "Vídeo introdutório",
-    "status": "em-preparacao",
-    "blocos": [],
-    "fontes": []
+    "titulo": "Vídeo de apoio",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "video",
+      "material": "servicos:video-apoio",
+      "titulo": "Serviços de campo: da medição à assistência (vídeo de apoio)",
+      "status": "disponivel",
+      "url": "/videos/consultor-02-servicos.mp4",
+      "duracao_s": 168,
+      "poster": "/videos/consultor-02-servicos.jpg",
+      "legendas_url": "/videos/consultor-02-servicos.vtt",
+      "resumo": [
+       {
+        "t": "Apoio do Guia do Consultor, com narração e regras de negócio. O vídeo introdutório deste módulo está em preparação. Empresa e técnico na medição, o conferente diferente, as passagens por botão e a ordem dos aceites."
+       }
+      ],
+      "fontes": [
+       "guia:public/videos/manifest.json",
+       "guia:videos/roteiros/consultor-02-servicos.json"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:public/videos/manifest.json",
+     "guia:videos/roteiros/consultor-02-servicos.json"
+    ]
    },
    {
     "id": "manual",

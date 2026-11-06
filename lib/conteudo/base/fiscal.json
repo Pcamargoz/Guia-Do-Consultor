@@ -39,10 +39,33 @@
    },
    {
     "id": "video",
-    "titulo": "Vídeo introdutório",
-    "status": "em-preparacao",
-    "blocos": [],
-    "fontes": []
+    "titulo": "Vídeo de apoio",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "video",
+      "material": "fiscal:video-apoio",
+      "titulo": "Faturamento: do pedido à nota finalizada (vídeo de apoio)",
+      "status": "disponivel",
+      "url": "/videos/consultor-07-faturamento.mp4",
+      "duracao_s": 198,
+      "poster": "/videos/consultor-07-faturamento.jpg",
+      "legendas_url": "/videos/consultor-07-faturamento.vtt",
+      "resumo": [
+       {
+        "t": "Apoio do Guia do Consultor, com narração e regras de negócio. O vídeo introdutório deste módulo está em preparação. Faturar o pedido, conferir a nota e finalizar sem transmitir."
+       }
+      ],
+      "fontes": [
+       "guia:public/videos/manifest.json",
+       "guia:videos/roteiros/consultor-07-faturamento.json"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:public/videos/manifest.json",
+     "guia:videos/roteiros/consultor-07-faturamento.json"
+    ]
    },
    {
     "id": "manual",
@@ -1617,9 +1640,32 @@
    {
     "id": "videos",
     "titulo": "Vídeos avançados",
-    "status": "em-preparacao",
-    "blocos": [],
-    "fontes": []
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "video",
+      "material": "fiscal:video-consultor-apoio",
+      "titulo": "Faturamento: do pedido à nota finalizada (vídeo de apoio)",
+      "status": "disponivel",
+      "url": "/videos/consultor-07-faturamento.mp4",
+      "duracao_s": 198,
+      "poster": "/videos/consultor-07-faturamento.jpg",
+      "legendas_url": "/videos/consultor-07-faturamento.vtt",
+      "resumo": [
+       {
+        "t": "Não é o vídeo próprio deste módulo. Faturar o pedido, conferir a nota e finalizar sem transmitir."
+       }
+      ],
+      "fontes": [
+       "guia:public/videos/manifest.json",
+       "guia:videos/roteiros/consultor-07-faturamento.json"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:public/videos/manifest.json",
+     "guia:videos/roteiros/consultor-07-faturamento.json"
+    ]
    },
    {
     "id": "complementares",

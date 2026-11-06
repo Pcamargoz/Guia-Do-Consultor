@@ -39,10 +39,33 @@
    },
    {
     "id": "video",
-    "titulo": "Vídeo introdutório",
-    "status": "em-preparacao",
-    "blocos": [],
-    "fontes": []
+    "titulo": "Vídeo de apoio",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "video",
+      "material": "crm:video-apoio",
+      "titulo": "Comercial: do lead ao pedido de venda (vídeo de apoio)",
+      "status": "disponivel",
+      "url": "/videos/consultor-03-comercial.mp4",
+      "duracao_s": 220,
+      "poster": "/videos/consultor-03-comercial.jpg",
+      "legendas_url": "/videos/consultor-03-comercial.vtt",
+      "resumo": [
+       {
+        "t": "Apoio do Guia do Consultor, com narração e regras de negócio. O vídeo introdutório deste módulo está em preparação. As quatro regras que travam o CRM e o caminho real, do Kanban à oportunidade ganha."
+       }
+      ],
+      "fontes": [
+       "guia:public/videos/manifest.json",
+       "guia:videos/roteiros/consultor-03-comercial.json"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:public/videos/manifest.json",
+     "guia:videos/roteiros/consultor-03-comercial.json"
+    ]
    },
    {
     "id": "manual",

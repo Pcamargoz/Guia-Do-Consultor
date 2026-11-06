@@ -22,8 +22,9 @@ export type Cena = {
 export type RoteiroIntro = {
   id: string; modulo: string; fps: number; duracao: number;
   musica: { arquivo: string; bpm: number; entrada: number; final: number; acentos?: number[] };
-  abertura: { duracao: number; rotulo: string; titulo: string; linha: string };
-  fechamento: { inicio: number; duracao: number; rotulo: string; titulo: string };
+  // sem rótulo pequeno acima do título (o padrão de design proíbe kicker/eyebrow): o contexto vai numa linha menor abaixo
+  abertura: { duracao: number; titulo: string; linha: string };
+  fechamento: { inicio: number; duracao: number; titulo: string; linha: string };
   transicao_s: number; cenas: Cena[];
 };
 
@@ -162,8 +163,6 @@ const Abertura: React.FC<{ a: RoteiroIntro['abertura'] }> = ({ a }) => {
       <Formas t={t} />
       <Img src={staticFile('logo_faktory_flow.png')} style={{ position: 'absolute', left: 140, top: 110, width: 250, opacity: mola(0.05) }} />
       <div style={{ position: 'absolute', left: 140, top: 360 }}>
-        <div style={{ fontFamily: SANS, fontWeight: 650, fontSize: 30, letterSpacing: '0.16em', textTransform: 'uppercase', color: K.azul,
-          opacity: mola(0.15), transform: `translateY(${(1 - mola(0.15)) * 20}px)` }}>{a.rotulo}</div>
         <div style={{ overflow: 'hidden', paddingBottom: 8 }}>
           <div style={{ fontFamily: DISPLAY, fontWeight: 800, fontSize: 200, lineHeight: 1.0, color: K.tinta, letterSpacing: '-0.035em',
             transform: `translateY(${(1 - mola(0.25)) * 210}px)` }}>{a.titulo}</div>
@@ -188,14 +187,14 @@ const Fechamento: React.FC<{ f: RoteiroIntro['fechamento'] }> = ({ f }) => {
     <AbsoluteFill style={{ background: K.fundo, overflow: 'hidden', clipPath: `circle(${entra * 140}% at 50% 50%)` }}>
       <Formas t={t + 3} />
       <AbsoluteFill style={{ alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
-        <div style={{ fontFamily: SANS, fontWeight: 650, fontSize: 32, letterSpacing: '0.16em', textTransform: 'uppercase', color: K.azul,
-          opacity: mola(0.25) }}>{f.rotulo}</div>
-        <div style={{ overflow: 'hidden', marginTop: 12 }}>
+        <div style={{ overflow: 'hidden' }}>
           <div style={{ fontFamily: DISPLAY, fontWeight: 800, fontSize: 104, color: K.tinta, letterSpacing: '-0.03em',
             transform: `translateY(${(1 - mola(0.35)) * 120}px)` }}>{f.titulo}</div>
         </div>
-        <div style={{ height: 12, width: 220 * mola(0.7), background: K.lima, borderRadius: 6, marginTop: 22 }} />
-        <Img src={staticFile('logo_faktory_flow.png')} style={{ width: 230, marginTop: 90, opacity: mola(0.9) }} />
+        <div style={{ height: 12, width: 220 * mola(0.6), background: K.lima, borderRadius: 6, marginTop: 22 }} />
+        <div style={{ fontFamily: SANS, fontWeight: 500, fontSize: 46, color: K.tinta, opacity: 0.8 * mola(0.75), marginTop: 30,
+          transform: `translateY(${(1 - mola(0.75)) * 30}px)` }}>{f.linha}</div>
+        <Img src={staticFile('logo_faktory_flow.png')} style={{ width: 230, marginTop: 80, opacity: mola(0.95) }} />
       </AbsoluteFill>
     </AbsoluteFill>
   );

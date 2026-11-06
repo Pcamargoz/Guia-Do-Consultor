@@ -103,3 +103,27 @@ Validação: navegador em 1440, 1280 e 375 px; `npm run testar` = 190/191 (a fal
 novas capturas do staging integradas (formulários, painéis), bloco do consultor completo (configurações, integrações,
 roteiro de demonstração, implantação, perguntas, erros). Base regenerada: **112 materiais disponíveis** (antes 78).
 Pendências de tela/divergências em `descobertas/documentacao-{a,b,c}.md` (entradas "Capricho").
+
+## 6. Rodada 06/11 (tarde) — redesign v4 "linha de fluxo"
+
+Sobre o v3 (mesmos arquivos e a mesma API `PlataformaV3`, sem dependência nova, decisão D2 mantida). **Sem commit.**
+
+- `public/plataforma-icones.js` (novo): 19 ilustrações próprias em camadas, com a cor do módulo e uma parte que se move em hover/foco. Em repouso ficam completas.
+- Página Inicial: horizonte de módulos (cada torre é uma fase, cada bloco um módulo real), linha de fases com rolagem acompanhada (substitui a régua 00–18), mosaico de cartões por fase, traços por material publicado. Sem lista no hover.
+- Guia Inicial: placar com anel de progresso real, próximo passo com os materiais do módulo, trilha com espinha central que acende com os módulos concluídos em sequência, medidor por fase, estados concluído / em andamento / disponível / em preparação.
+- Largura: páginas v3 vão até 1600 px; a leitura dos guias segue na medida editorial. Fases com mais respiro e separador (pedido do responsável).
+- Entrada de conteúdo por WAAPI sobre conteúdo sempre visível: animação nunca esconde conteúdo. Corrigido nome duplicado de View Transition na página do módulo. Hover sem efeito grudado no toque.
+- `PRODUCT.md` criado na raiz (exigência do Impeccable), resumindo os docs 00 e 07.
+
+Validação: Chrome headless por CDP contra servidor de teste com a base real (sem login e sem banco), em 1920, 1440, 1280, 1024, 768 e 375 px: sem rolagem lateral; fluxo cartão → módulo → vizinho → jornada sem erro; movimento reduzido sem animação. axe sem violações em 4 telas (o axe não avaliou contraste; medição própria de 605 textos sem reprovação, gradientes fora da conta). Teclado: foco visível, Enter abre o módulo. Detector Impeccable: 0 achados. Testes no contêiner: 189/191, as mesmas 2 falhas anteriores.
+
+Pendente: passada final logado na 8082 pelo agente (o responsável já viu a versão logada na tela dele e aprovou a direção) e revisão humana das ilustrações.
+
+## 7. Rodada 06/11 (fim do dia) — gravações, reaproveitamento e intros
+
+Sem commit e sem publicação. Detalhes: `descobertas/producao-midia-2026-11.md` e `descobertas/edicao-video.md`.
+
+- 10 brutos novos do staging v1.23.2, só leitura, em 1920×1080 nativo (cena `c02`) + `cem` c01 curto. Verificador OK.
+- 13 vínculos de vídeos já publicados em 12 módulos, como **vídeo de apoio** (`videosApoio` em `lib/conteudo/mapa-modulos.js`, `materialApoio` em `lib/conteudo/montar.js`). Base: 125 materiais disponíveis de 154. Os 16 intros em preparação seguem em preparação. Falta teste automatizado para o vídeo de apoio.
+- Intros em `videos/out/`: `intro-vendas-v2`, `intro-crm-v2`, `intro-estoque-v2`, `intro-financeiro-v2`, `intro-compras-previa`. QA aprovada; revisão humana pendente.
+- Pendências: 9 intros (decidir a duração), CEM sem material suficiente, Relatórios e Alumina sem base, decisão sobre mover o motor de vídeo para o Harness do Faktory Flow, passada final logada na 8082 pelo agente.

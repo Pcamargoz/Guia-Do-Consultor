@@ -1,0 +1,322 @@
+{
+  "id": "intro-estoque",
+  "modulo": "Estoque",
+  "fps": 30,
+  "duracao": 45,
+  "musica": {
+    "arquivo": "musica/intro-estoque.wav",
+    "bpm": 120,
+    "entrada": 4,
+    "final": 40,
+    "acentos": [
+      22
+    ]
+  },
+  "abertura": {
+    "duracao": 4,
+    "titulo": "Estoque",
+    "linha": "Guia Inicial · Saldos, movimentos e locais."
+  },
+  "fechamento": {
+    "inicio": 40,
+    "duracao": 5,
+    "titulo": "Guia Inicial › Estoque",
+    "linha": "Próximo passo"
+  },
+  "transicao_s": 0.4,
+  "cenas": [
+    {
+      "id": "e1-visao-geral",
+      "clipe": "intro/estoque/e1-visao-geral.mp4",
+      "inicio": 4,
+      "duracao": 7.5,
+      "desde": 0.3,
+      "entrada": "zoom",
+      "camera": [
+        {
+          "t": 0,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 1.2,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 3,
+          "x": 1080,
+          "y": 560,
+          "zoom": 1.15
+        },
+        {
+          "t": 7.5,
+          "x": 1090,
+          "y": 580,
+          "zoom": 1.2
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.5,
+          "ate": 6.6,
+          "texto": "Visão geral do estoque.",
+          "posicao": "inf-esq"
+        }
+      ]
+    },
+    {
+      "id": "e2-saldo",
+      "clipe": "intro/estoque/e2-saldo.mp4",
+      "inicio": 11.5,
+      "duracao": 5,
+      "desde": 1,
+      "entrada": "deslize",
+      "camera": [
+        {
+          "t": 0,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 0.6,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 2.4,
+          "x": 1150,
+          "y": 330,
+          "zoom": 1.45
+        },
+        {
+          "t": 3.9,
+          "x": 1150,
+          "y": 330,
+          "zoom": 1.47
+        },
+        {
+          "t": 4.6,
+          "x": 560,
+          "y": 300,
+          "zoom": 1.4
+        },
+        {
+          "t": 5,
+          "x": 540,
+          "y": 300,
+          "zoom": 1.4
+        }
+      ],
+      "realces": [
+        {
+          "t": 1.2,
+          "ate": 2.6,
+          "x": 369,
+          "y": 173,
+          "w": 350,
+          "h": 22
+        },
+        {
+          "t": 2.4,
+          "ate": 4,
+          "x": 1318,
+          "y": 151,
+          "w": 157,
+          "h": 36
+        }
+      ],
+      "cliques": [
+        {
+          "t": 4.75,
+          "x": 80,
+          "y": 235
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.4,
+          "ate": 4.2,
+          "texto": "Saldo por local.",
+          "posicao": "inf-esq"
+        }
+      ]
+    },
+    {
+      "id": "e3-movimentos",
+      "clipe": "intro/estoque/e3-movimentos.mp4",
+      "inicio": 16.5,
+      "duracao": 5.5,
+      "desde": 0.3,
+      "entrada": "corte",
+      "camera": [
+        {
+          "t": 0,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 0.6,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 3,
+          "x": 820,
+          "y": 400,
+          "zoom": 1.35
+        },
+        {
+          "t": 5.5,
+          "x": 840,
+          "y": 420,
+          "zoom": 1.4
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.5,
+          "ate": 4.8,
+          "texto": "Entradas, saídas e transferências.",
+          "posicao": "inf-dir"
+        }
+      ]
+    },
+    {
+      "id": "e4-demonstrativos",
+      "clipe": "intro/estoque/e4-demonstrativos.mp4",
+      "inicio": 22,
+      "duracao": 7.5,
+      "desde": 0.4,
+      "entrada": "zoom",
+      "camera": [
+        {
+          "t": 0,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 1,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 4,
+          "x": 1080,
+          "y": 330,
+          "zoom": 1.35
+        },
+        {
+          "t": 7.5,
+          "x": 1120,
+          "y": 360,
+          "zoom": 1.42
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.6,
+          "ate": 6.8,
+          "texto": "Demonstrativos em XLSX e PDF.",
+          "posicao": "inf-esq"
+        }
+      ]
+    },
+    {
+      "id": "e5-locais",
+      "clipe": "intro/estoque/e5-locais.mp4",
+      "inicio": 29.5,
+      "duracao": 4,
+      "desde": 0.2,
+      "entrada": "deslize",
+      "camera": [
+        {
+          "t": 0,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 0.5,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 2.5,
+          "x": 1080,
+          "y": 300,
+          "zoom": 1.3
+        },
+        {
+          "t": 4,
+          "x": 1090,
+          "y": 310,
+          "zoom": 1.32
+        }
+      ],
+      "realces": [
+        {
+          "t": 1,
+          "ate": 3.6,
+          "x": 361,
+          "y": 125,
+          "w": 430,
+          "h": 46
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.7,
+          "ate": 3.15,
+          "texto": "Almoxarifados, obras e outros locais.",
+          "posicao": "inf-esq"
+        }
+      ]
+    },
+    {
+      "id": "e6-configuracoes",
+      "clipe": "intro/estoque/e6-configuracoes.mp4",
+      "inicio": 33.5,
+      "duracao": 6.5,
+      "desde": 0.4,
+      "entrada": "zoom",
+      "camera": [
+        {
+          "t": 0,
+          "x": 1080,
+          "y": 500,
+          "zoom": 1.05
+        },
+        {
+          "t": 1.5,
+          "x": 1080,
+          "y": 480,
+          "zoom": 1.2
+        },
+        {
+          "t": 6.5,
+          "x": 1080,
+          "y": 520,
+          "zoom": 1.28
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.5,
+          "ate": 6,
+          "texto": "Configurações do Estoque",
+          "posicao": "inf-esq"
+        }
+      ]
+    }
+  ]
+}

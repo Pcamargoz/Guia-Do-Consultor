@@ -39,10 +39,33 @@
    },
    {
     "id": "video",
-    "titulo": "Vídeo introdutório",
-    "status": "em-preparacao",
-    "blocos": [],
-    "fontes": []
+    "titulo": "Vídeo de apoio",
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "video",
+      "material": "tarefas:video-apoio",
+      "titulo": "Tarefas (vídeo de apoio)",
+      "status": "disponivel",
+      "url": "/videos/consultor-10-tarefas.mp4",
+      "duracao_s": 158,
+      "poster": "/videos/consultor-10-tarefas.jpg",
+      "legendas_url": "/videos/consultor-10-tarefas.vtt",
+      "resumo": [
+       {
+        "t": "Apoio do Guia do Consultor, com narração e regras de negócio. O vídeo introdutório deste módulo está em preparação. Quadro, cartão, regras e colaboração."
+       }
+      ],
+      "fontes": [
+       "guia:public/videos/manifest.json",
+       "guia:videos/roteiros/consultor-10-tarefas.json"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:public/videos/manifest.json",
+     "guia:videos/roteiros/consultor-10-tarefas.json"
+    ]
    },
    {
     "id": "manual",
