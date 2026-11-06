@@ -25,7 +25,8 @@ export type Trecho = {
   itens?: string[]; topicos?: string[];
   legendas?: { texto: string; ini: number; fim: number }[] | null;
 };
-export type Dados = { id: string; titulo: string; subtitulo: string; trilha: string; proximo: string; icone?: string; trechos: Trecho[]; duracaoTotal: number };
+// semVoz: vídeo só com música e legenda (sem narração); a música não abaixa nos trechos de fala
+export type Dados = { id: string; titulo: string; subtitulo: string; trilha: string; proximo: string; icone?: string; semVoz?: boolean; trechos: Trecho[]; duracaoTotal: number };
 
 // Um significado por cor, o filme inteiro: azul da marca = estado atual e foco; limão da marca = marcador (não existe
 // na interface do Flow, então acha o olho em qualquer tela); laranja = cuidado; verde = concluído.
@@ -146,6 +147,7 @@ const ICONES: Record<string, string> = {
   cadeado: '<rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>',
   aberto: '<rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/>',
   check: '<path d="M20 6 9 17l-5-5"/>',
+  tag: '<path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"/><circle cx="7.5" cy="7.5" r="1.5"/>',
   seta: '<path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>',
   funil: '<path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"/>',
   estrela: '<path d="M11.5 2.6a.6.6 0 0 1 1 0l2.6 5.3 5.8.8a.6.6 0 0 1 .4 1l-4.2 4.1 1 5.8a.6.6 0 0 1-.9.6L12 17.5l-5.2 2.7a.6.6 0 0 1-.9-.6l1-5.8L2.7 9.7a.6.6 0 0 1 .4-1l5.8-.8Z"/>',
@@ -459,8 +461,10 @@ const Regra: React.FC<{ r: Trecho; dur: number; fundo?: 'papel' | 'escuro' }> = 
   const qi = q - 15, tremor = slam && qi >= 0 && qi < 5 ? 18 * Math.exp(-qi / 1.7) : 0;
   const ang = random(`tremor-regra-${Math.floor(q)}`) * 2 * Math.PI;
   const escuro = fundo === 'escuro';
+  // empurrão lento da câmera durante a leitura: o cartão nunca fica parado (regra longa sem voz reprovava na imagem parada)
+  const deriva = interpolate(t0, [0, dur], [0, 1], clamp);
   return (
-    <AbsoluteFill style={{ fontFamily: SANS, transform: tremor ? `translate(${Math.cos(ang) * tremor * 0.6}px, ${Math.sin(ang) * tremor}px)` : undefined }}>
+    <AbsoluteFill style={{ fontFamily: SANS, transform: `translate(${(tremor ? Math.cos(ang) * tremor * 0.6 : 0) - 28 * deriva}px, ${(tremor ? Math.sin(ang) * tremor : 0) - 10 * deriva}px) scale(${1 + 0.045 * deriva})` }}>
       {/* fundo próprio da regra: no empurrão de pilha as regras alternam papel e azul escuro */}
       {fundo && <AbsoluteFill style={{ background: escuro ? '#1C4867' : C.bg }} />}
       {slam ? <><Som em={IMPACTO_SLAM} nome="sub-boom" db={-6} /><Som em={IMPACTO_SLAM} nome="clac" db={-8} /></> : <SomEm em={f(2)} src="sfx/tick.wav" volume={0.22} />}
@@ -1071,7 +1075,7 @@ const MUSICA_BASE = 0.2, MUSICA_SOB_VOZ = 0.062;
 const volumeMusica = (d: Dados, respiros: [number, number][]) => (fr: number) => {
   const t = fr / FPS;
   let fala = 0;
-  for (const r of d.trechos) {
+  for (const r of d.semVoz ? [] : d.trechos) {
     const a = r.inicio, b = r.inicio + r.fala_s;
     fala = Math.max(fala, Math.min(prog(t, a - 0.2, 0.2, Easing.linear), 1 - prog(t, b, 0.4, Easing.linear)));
   }

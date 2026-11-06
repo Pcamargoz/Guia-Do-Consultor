@@ -1,0 +1,174 @@
+{
+  "id": "sugestao-tags-financeiro",
+  "titulo": "Tags cadastradas no Financeiro",
+  "subtitulo": "Sugestão de melhoria para o time de desenvolvimento",
+  "trilha": "Sugestão de melhoria · Financeiro",
+  "proximo": "Validar o formato com o QA",
+  "icone": "tag",
+  "semVoz": true,
+  "observacao": "Vídeo interno, sem narração: a fala vira só legenda. Telas de HOJE = HTML real do Flow staging v1.22.13 (23/10/2026), dados trocados por fictícios. Telas da PROPOSTA = mesma tela com o componente novo desenhado e marcado com o selo PROPOSTA. Fontes da tela não estão na base faktory-doc.",
+  "trechos": [
+    {
+      "id": "01",
+      "cena": "abertura",
+      "fala": "Toda manhã, o financeiro separa os títulos renegociados para cobrar. Mas hoje cada pessoa digita a tag do jeito dela."
+    },
+    {
+      "id": "02",
+      "cena": "status",
+      "tituloCena": "Hoje: a tag é texto livre",
+      "etapas": ["Digita a tag", "Cada um escreve de um jeito", "Filtro por texto", "Lista de cobrança incompleta"],
+      "destaque": 0,
+      "fala": "Um título recebe Renegociado. Outro, renegociada. Outro, Reneg com ponto. Para o sistema, são três tags diferentes."
+    },
+    {
+      "id": "03",
+      "cena": "status",
+      "destaque": 3,
+      "fala": "Na hora de filtrar, quem busca Renegociado não vê os outros dois. A cobrança trabalha com uma lista incompleta e ninguém percebe."
+    },
+    {
+      "id": "04",
+      "cena": "regra",
+      "n": 1,
+      "titulo": "No título, Tags é texto livre",
+      "icone": "lapis",
+      "texto": "Editar Título › Tags: “Digite uma tag e pressione Enter”. Até 30 caracteres e 20 tags. Não há lista para escolher.",
+      "fonte": "tela do Flow staging v1.22.13 (23/10/2026)",
+      "fala": "Primeiro, o que a tela mostra hoje. No Editar Título, o campo Tags pede para digitar e apertar Enter. Não existe lista das tags já usadas."
+    },
+    {
+      "id": "05",
+      "cena": "regra",
+      "n": 2,
+      "titulo": "Na edição em massa, também é texto",
+      "icone": "lapis",
+      "texto": "Editar em massa › Tags é uma caixa de texto. Um erro de digitação vai para todos os títulos selecionados de uma vez.",
+      "fonte": "tela do Flow staging v1.22.13 (23/10/2026)",
+      "fala": "No Editar em massa, Tags também é uma caixa de texto. Um erro de digitação ali vai para todos os títulos selecionados."
+    },
+    {
+      "id": "06",
+      "cena": "regra",
+      "n": 3,
+      "titulo": "Filtrar por tag depende de escrever igual",
+      "icone": "funil",
+      "texto": "O filtro Tags fica em Filtros › Campos técnicos e compara o texto digitado (Contém). Variação escrita não entra no resultado.",
+      "fonte": "tela do Flow staging v1.22.13 (23/10/2026)",
+      "critica": true,
+      "fala": "Este é o ponto que mais pesa. O filtro por tag fica escondido em Campos técnicos e compara o texto digitado. Se a tag foi escrita de outro jeito, o título some do resultado."
+    },
+    {
+      "id": "07",
+      "cena": "regra",
+      "n": 4,
+      "titulo": "O CRM já tem o cadastro de tags",
+      "icone": "tag",
+      "texto": "CRM › Tags: nome, cor, descrição e status. Tag inativa some das opções novas e continua onde já foi aplicada.",
+      "fonte": "roteiro-crm-07-configurar-o-crm#011 · plano-crm#074 (B, revisar) · tela staging",
+      "fala": "E a peça que falta já existe no sistema. O CRM tem um cadastro de tags com nome, cor, descrição e status. A tag inativa sai das opções, mas continua onde já foi usada."
+    },
+    {
+      "id": "08",
+      "cena": "tela",
+      "captura": "02-lista-selecao-hoje",
+      "focos": [0, 1],
+      "rotulo": "Financeiro › Contas a Receber (hoje)",
+      "nomes": [null, "Editar em massa (2)"],
+      "fala": "Vamos ao caminho de hoje. Em Contas a Receber, você marca os títulos e abre o Editar em massa."
+    },
+    {
+      "id": "09",
+      "cena": "tela",
+      "captura": "03-editar-massa-hoje",
+      "focos": [2, 0],
+      "rotulo": "Editar em massa (hoje)",
+      "nomes": ["Editar em massa", "Tags"],
+      "fala": "O campo Tags é uma caixa vazia. Quem aplica precisa lembrar o nome exato da tag, sem nenhuma ajuda."
+    },
+    {
+      "id": "10",
+      "cena": "tela",
+      "captura": "04-titulo-tags-hoje",
+      "focos": [0, 1],
+      "rotulo": "Editar Título a Receber › Tags (hoje)",
+      "nomes": ["Digite uma tag e pressione Enter", "0 de 20 tags"],
+      "fala": "No título, a mesma coisa: digitar e apertar Enter. O sistema aceita qualquer texto, até o que já existe escrito de outro jeito."
+    },
+    {
+      "id": "11",
+      "cena": "tela",
+      "captura": "08-filtro-tags-hoje",
+      "focos": [0, 1],
+      "rotulo": "Filtros › Campos técnicos › Tags (hoje)",
+      "nomes": ["Tags", "Digite o valor..."],
+      "fala": "Para filtrar, a tag fica no fim dos Campos técnicos, e o filtro compara o texto digitado. Aqui a lista de cobrança fica incompleta."
+    },
+    {
+      "id": "12",
+      "cena": "tela",
+      "captura": "06-crm-lead-tags",
+      "focos": [1, 0],
+      "rotulo": "CRM › Leads › Tags do lead",
+      "nomes": [null, null],
+      "fala": "Agora o CRM, que o QA testou. A seleção de tags do lead abre pelo menu de cada lead, numa lista solta, sem busca. O QA tem razão: isso não é para copiar."
+    },
+    {
+      "id": "13",
+      "cena": "tela",
+      "captura": "07-crm-leads-filtro",
+      "focos": [1, 0],
+      "rotulo": "CRM › Leads › filtro Tag",
+      "nomes": ["Tag:", null],
+      "fala": "O que vale levar do CRM é o cadastro e este filtro: um clique na tag e a lista mostra só aqueles registros."
+    },
+    {
+      "id": "14",
+      "cena": "tela",
+      "captura": "10-titulo-proposta",
+      "focos": [0, 1, 2],
+      "impacto": 1,
+      "rotulo": "Editar Título › Tags (proposta)",
+      "nomes": ["Tags", "Renegociado", "Aguardando NF do cliente"],
+      "fala": "A proposta. O campo Tags vira uma busca nas tags cadastradas. Digitou reneg, aparece Renegociado, com a cor. Enter escolhe. Não dá para criar variação."
+    },
+    {
+      "id": "15",
+      "cena": "tela",
+      "captura": "11-massa-proposta",
+      "focos": [1, 0, 2],
+      "rotulo": "Editar em massa › Tags (proposta)",
+      "nomes": ["Adicionar", null, "Aplicar"],
+      "fala": "No Editar em massa, o mesmo seletor e uma escolha clara: adicionar, remover ou substituir as tags dos títulos selecionados. Depois, Aplicar."
+    },
+    {
+      "id": "16",
+      "cena": "tela",
+      "captura": "12-lista-proposta",
+      "focos": [0, 1, 2],
+      "rotulo": "Contas a Receber › filtro Tag (proposta)",
+      "nomes": ["Renegociado", "TAGS", null],
+      "fala": "E o ganho aparece na lista. Um clique em Renegociado e a cobrança vê todos os renegociados, sem esquecer nenhum. A coluna TAGS mostra as cores do cadastro."
+    },
+    {
+      "id": "17",
+      "cena": "alertas",
+      "itens": [
+        "Tags já digitadas: mapear para as cadastradas antes de ligar o seletor.",
+        "Edição em massa: a tela diz se adiciona, remove ou substitui.",
+        "Tag inativa: sai das opções, mas fica nos títulos antigos."
+      ],
+      "fala": "Três cuidados para o desenvolvimento. As tags já digitadas precisam ser mapeadas para as cadastradas. A edição em massa precisa dizer se adiciona, remove ou substitui. E a tag inativa sai das opções, mas fica nos títulos antigos."
+    },
+    {
+      "id": "18",
+      "cena": "fechamento",
+      "topicos": [
+        "Cadastrar a tag uma vez",
+        "Escolher na lista, com busca",
+        "Filtrar sem depender da digitação"
+      ],
+      "fala": "Resumindo: cadastrar a tag uma vez, escolher na lista com busca e filtrar sem depender da digitação. Próximo passo: validar este formato com o QA."
+    }
+  ]
+}

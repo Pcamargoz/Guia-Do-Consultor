@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "guia-estatico",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8765", "--bind", "127.0.0.1", "--directory", "C:\\Users\\Pedro Santos\\Desktop\\HTML PARA MANUAL DO USUARIO\\public"],
+      "port": 8765
+    },
+    {
+      "name": "rascunho-relatorio",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8766", "--bind", "127.0.0.1", "--directory", "C:\\Users\\PEDROS~2\\AppData\\Local\\Temp\\claude\\C--Users-Pedro-Santos-Desktop-HTML-PARA-MANUAL-DO-USUARIO-Checklists\\649d66f8-c605-483c-bb48-4ad3e0e1e12b\\scratchpad"],
+      "port": 8766
+    }
+  ]
+}
