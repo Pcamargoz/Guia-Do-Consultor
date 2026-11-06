@@ -39,9 +39,28 @@
    },
    {
     "id": "video",
-    "titulo": "Vídeo de apoio",
+    "titulo": "Vídeo introdutório",
     "status": "disponivel",
     "blocos": [
+     {
+      "tipo": "video",
+      "material": "servicos:video-inicial",
+      "titulo": "Serviços e Instalação: vídeo introdutório",
+      "status": "disponivel",
+      "url": "/videos/intro-servicos.mp4",
+      "duracao_s": 28,
+      "poster": "/videos/intro-servicos.jpg",
+      "legendas_url": "/videos/intro-servicos.vtt",
+      "resumo": [
+       {
+        "t": "Guia Inicial · Da medição à assistência."
+       }
+      ],
+      "fontes": [
+       "guia:public/videos/manifest.json",
+       "guia:videos/roteiros/intro-servicos.json"
+      ]
+     },
      {
       "tipo": "video",
       "material": "servicos:video-apoio",
@@ -53,7 +72,7 @@
       "legendas_url": "/videos/consultor-02-servicos.vtt",
       "resumo": [
        {
-        "t": "Apoio do Guia do Consultor, com narração e regras de negócio. O vídeo introdutório deste módulo está em preparação. Empresa e técnico na medição, o conferente diferente, as passagens por botão e a ordem dos aceites."
+        "t": "Apoio do Guia do Consultor, com narração e regras de negócio. Empresa e técnico na medição, o conferente diferente, as passagens por botão e a ordem dos aceites."
        }
       ],
       "fontes": [
@@ -64,6 +83,7 @@
     ],
     "fontes": [
      "guia:public/videos/manifest.json",
+     "guia:videos/roteiros/intro-servicos.json",
      "guia:videos/roteiros/consultor-02-servicos.json"
     ]
    },
@@ -675,6 +695,14 @@
         ]
        },
        {
+        "id": "video",
+        "texto": [
+         {
+          "t": "Assisti ao vídeo introdutório"
+         }
+        ]
+       },
+       {
         "id": "checklist",
         "texto": [
          {
@@ -685,13 +713,19 @@
       ],
       "fontes": [
        "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
-       "guia:scripts/dados-checklists-estagiarios.mjs#servicos"
+       "guia:scripts/dados-checklists-estagiarios.mjs#servicos",
+       "guia:public/videos/manifest.json",
+       "guia:videos/roteiros/intro-servicos.json",
+       "guia:videos/roteiros/consultor-02-servicos.json"
       ]
      }
     ],
     "fontes": [
      "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
-     "guia:scripts/dados-checklists-estagiarios.mjs#servicos"
+     "guia:scripts/dados-checklists-estagiarios.mjs#servicos",
+     "guia:public/videos/manifest.json",
+     "guia:videos/roteiros/intro-servicos.json",
+     "guia:videos/roteiros/consultor-02-servicos.json"
     ]
    },
    {
@@ -702,7 +736,7 @@
      {
       "tipo": "progresso",
       "chave": "inicial:servicos",
-      "total": 13,
+      "total": 14,
       "api": "/api/checklists-progresso",
       "fontes": [
        "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md"

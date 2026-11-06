@@ -1,0 +1,60 @@
+{
+  "fonte": "midia/brutos/tarefas/tarefas_bruto_c02_v01.mp4",
+  "recorte": "crop=1920:1080:0:0",
+  "observacao": "Bruto c02, 1920x1080 nativo. Duração natural: sem lento. Trechos parados escolhidos por freezedetect, sem a rolagem; caixas conferidas em quadros extraídos em 06/11/2026.",
+  "caixas": {
+    "A_B_cabecalho": {
+      "x": 1395,
+      "y": 8,
+      "w": 510,
+      "h": 56,
+      "porque": "selo do tenant, nome, cargo e avatar do usuário"
+    },
+    "tg_card": {
+      "x": 645,
+      "y": 312,
+      "w": 160,
+      "h": 26,
+      "porque": "título do cartão"
+    }
+  },
+  "cortes": [
+    {
+      "id": "t1-dashboard",
+      "in": 0.2,
+      "out": 4.75,
+      "borrar": [
+        "A_B_cabecalho"
+      ],
+      "porque": "Dashboard de Tarefas."
+    },
+    {
+      "id": "t2-minhas",
+      "in": 6.8,
+      "out": 9.35,
+      "borrar": [
+        "A_B_cabecalho"
+      ],
+      "porque": "Minhas Tarefas."
+    },
+    {
+      "id": "t3-quadros",
+      "in": 13.3,
+      "out": 15.85,
+      "borrar": [
+        "A_B_cabecalho"
+      ],
+      "porque": "Meus Quadros."
+    },
+    {
+      "id": "t4-kanban",
+      "in": 20.1,
+      "out": 25.15,
+      "borrar": [
+        "A_B_cabecalho",
+        "tg_card"
+      ],
+      "porque": "Um quadro em Kanban."
+    }
+  ]
+}

@@ -65,9 +65,32 @@
    {
     "id": "video",
     "titulo": "Vídeo introdutório",
-    "status": "em-preparacao",
-    "blocos": [],
-    "fontes": []
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "video",
+      "material": "primeiros-passos:video-inicial",
+      "titulo": "Primeiros passos: vídeo introdutório",
+      "status": "disponivel",
+      "url": "/videos/intro-primeiros-passos.mp4",
+      "duracao_s": 26,
+      "poster": "/videos/intro-primeiros-passos.jpg",
+      "legendas_url": "/videos/intro-primeiros-passos.vtt",
+      "resumo": [
+       {
+        "t": "Guia Inicial · Como se localizar no sistema."
+       }
+      ],
+      "fontes": [
+       "guia:public/videos/manifest.json",
+       "guia:videos/roteiros/intro-primeiros-passos.json"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:public/videos/manifest.json",
+     "guia:videos/roteiros/intro-primeiros-passos.json"
+    ]
    },
    {
     "id": "manual",
@@ -1001,6 +1024,14 @@
         ]
        },
        {
+        "id": "video",
+        "texto": [
+         {
+          "t": "Assisti ao vídeo introdutório"
+         }
+        ]
+       },
+       {
         "id": "checklist",
         "texto": [
          {
@@ -1012,14 +1043,18 @@
       "fontes": [
        "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
        "guia:scripts/dados-checklists-estagiarios.mjs#ONBOARDING",
-       "guia:scripts/dados-checklists-estagiarios.mjs#navegacao"
+       "guia:scripts/dados-checklists-estagiarios.mjs#navegacao",
+       "guia:public/videos/manifest.json",
+       "guia:videos/roteiros/intro-primeiros-passos.json"
       ]
      }
     ],
     "fontes": [
      "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
      "guia:scripts/dados-checklists-estagiarios.mjs#ONBOARDING",
-     "guia:scripts/dados-checklists-estagiarios.mjs#navegacao"
+     "guia:scripts/dados-checklists-estagiarios.mjs#navegacao",
+     "guia:public/videos/manifest.json",
+     "guia:videos/roteiros/intro-primeiros-passos.json"
     ]
    },
    {
@@ -1030,7 +1065,7 @@
      {
       "tipo": "progresso",
       "chave": "inicial:primeiros-passos",
-      "total": 20,
+      "total": 21,
       "api": "/api/checklists-progresso",
       "fontes": [
        "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md"

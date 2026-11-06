@@ -86,6 +86,7 @@ export function guiaFicticio() {
     },
     manifestVideos: {
       trilhas: [
+        { id: 'introducoes', videos: [{ id: 'intro-vendas', titulo: 'Vendas: vídeo introdutório (fictício)', resumo: 'Intro de exemplo.', duracao: '0 min 47 s', status: 'pronto' }] },
         { id: 'fluxos', videos: [{ id: 'fluxo-1-vendas', titulo: 'Vendas — do pedido à aprovação (fictício)', resumo: 'Vídeo de exemplo.', duracao: '3 min 08 s', status: 'pronto' }] },
         { id: 'consultores', videos: [
           { id: 'consultor-03-comercial', titulo: 'Comercial para consultores (fictício)', resumo: 'Vídeo de exemplo.', duracao: '4 min 30 s', status: 'pronto' },
@@ -110,6 +111,9 @@ export function guiaFicticio() {
       '/videos/fluxo-1-vendas.jpg',
       '/videos/fluxo-1-vendas.mp4',
       '/videos/fluxo-1-vendas.vtt',
+      '/videos/intro-vendas.jpg',
+      '/videos/intro-vendas.mp4',
+      '/videos/intro-vendas.vtt',
     ],
   };
 }

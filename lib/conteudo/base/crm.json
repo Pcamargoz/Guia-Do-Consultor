@@ -39,9 +39,28 @@
    },
    {
     "id": "video",
-    "titulo": "Vídeo de apoio",
+    "titulo": "Vídeo introdutório",
     "status": "disponivel",
     "blocos": [
+     {
+      "tipo": "video",
+      "material": "crm:video-inicial",
+      "titulo": "CRM: vídeo introdutório",
+      "status": "disponivel",
+      "url": "/videos/intro-crm.mp4",
+      "duracao_s": 50,
+      "poster": "/videos/intro-crm.jpg",
+      "legendas_url": "/videos/intro-crm.vtt",
+      "resumo": [
+       {
+        "t": "Guia Inicial · Do lead à oportunidade."
+       }
+      ],
+      "fontes": [
+       "guia:public/videos/manifest.json",
+       "guia:videos/roteiros/intro-crm.json"
+      ]
+     },
      {
       "tipo": "video",
       "material": "crm:video-apoio",
@@ -53,7 +72,7 @@
       "legendas_url": "/videos/consultor-03-comercial.vtt",
       "resumo": [
        {
-        "t": "Apoio do Guia do Consultor, com narração e regras de negócio. O vídeo introdutório deste módulo está em preparação. As quatro regras que travam o CRM e o caminho real, do Kanban à oportunidade ganha."
+        "t": "Apoio do Guia do Consultor, com narração e regras de negócio. As quatro regras que travam o CRM e o caminho real, do Kanban à oportunidade ganha."
        }
       ],
       "fontes": [
@@ -64,6 +83,7 @@
     ],
     "fontes": [
      "guia:public/videos/manifest.json",
+     "guia:videos/roteiros/intro-crm.json",
      "guia:videos/roteiros/consultor-03-comercial.json"
     ]
    },
@@ -806,6 +826,14 @@
         ]
        },
        {
+        "id": "video",
+        "texto": [
+         {
+          "t": "Assisti ao vídeo introdutório"
+         }
+        ]
+       },
+       {
         "id": "checklist",
         "texto": [
          {
@@ -816,13 +844,19 @@
       ],
       "fontes": [
        "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
-       "guia:scripts/dados-checklists-estagiarios.mjs#crm"
+       "guia:scripts/dados-checklists-estagiarios.mjs#crm",
+       "guia:public/videos/manifest.json",
+       "guia:videos/roteiros/intro-crm.json",
+       "guia:videos/roteiros/consultor-03-comercial.json"
       ]
      }
     ],
     "fontes": [
      "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
-     "guia:scripts/dados-checklists-estagiarios.mjs#crm"
+     "guia:scripts/dados-checklists-estagiarios.mjs#crm",
+     "guia:public/videos/manifest.json",
+     "guia:videos/roteiros/intro-crm.json",
+     "guia:videos/roteiros/consultor-03-comercial.json"
     ]
    },
    {
@@ -833,7 +867,7 @@
      {
       "tipo": "progresso",
       "chave": "inicial:crm",
-      "total": 14,
+      "total": 15,
       "api": "/api/checklists-progresso",
       "fontes": [
        "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md"

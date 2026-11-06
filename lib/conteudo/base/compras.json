@@ -39,9 +39,28 @@
    },
    {
     "id": "video",
-    "titulo": "Vídeo de apoio",
+    "titulo": "Vídeo introdutório",
     "status": "disponivel",
     "blocos": [
+     {
+      "tipo": "video",
+      "material": "compras:video-inicial",
+      "titulo": "Compras: vídeo introdutório",
+      "status": "disponivel",
+      "url": "/videos/intro-compras.mp4",
+      "duracao_s": 34,
+      "poster": "/videos/intro-compras.jpg",
+      "legendas_url": "/videos/intro-compras.vtt",
+      "resumo": [
+       {
+        "t": "Guia Inicial · Da solicitação ao pedido."
+       }
+      ],
+      "fontes": [
+       "guia:public/videos/manifest.json",
+       "guia:videos/roteiros/intro-compras.json"
+      ]
+     },
      {
       "tipo": "video",
       "material": "compras:video-apoio",
@@ -53,7 +72,7 @@
       "legendas_url": "/videos/consultor-01-suprimentos.vtt",
       "resumo": [
        {
-        "t": "Apoio do Guia do Consultor, com narração e regras de negócio. O vídeo introdutório deste módulo está em preparação. Cotação opcional, a natureza da operação que define o CFOP, a nota com dois números e a linha do tempo do pedido."
+        "t": "Apoio do Guia do Consultor, com narração e regras de negócio. Cotação opcional, a natureza da operação que define o CFOP, a nota com dois números e a linha do tempo do pedido."
        }
       ],
       "fontes": [
@@ -64,6 +83,7 @@
     ],
     "fontes": [
      "guia:public/videos/manifest.json",
+     "guia:videos/roteiros/intro-compras.json",
      "guia:videos/roteiros/consultor-01-suprimentos.json"
     ]
    },
@@ -673,6 +693,14 @@
         ]
        },
        {
+        "id": "video",
+        "texto": [
+         {
+          "t": "Assisti ao vídeo introdutório"
+         }
+        ]
+       },
+       {
         "id": "checklist",
         "texto": [
          {
@@ -683,13 +711,19 @@
       ],
       "fontes": [
        "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
-       "guia:scripts/dados-checklists-estagiarios.mjs#compras"
+       "guia:scripts/dados-checklists-estagiarios.mjs#compras",
+       "guia:public/videos/manifest.json",
+       "guia:videos/roteiros/intro-compras.json",
+       "guia:videos/roteiros/consultor-01-suprimentos.json"
       ]
      }
     ],
     "fontes": [
      "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
-     "guia:scripts/dados-checklists-estagiarios.mjs#compras"
+     "guia:scripts/dados-checklists-estagiarios.mjs#compras",
+     "guia:public/videos/manifest.json",
+     "guia:videos/roteiros/intro-compras.json",
+     "guia:videos/roteiros/consultor-01-suprimentos.json"
     ]
    },
    {
@@ -700,7 +734,7 @@
      {
       "tipo": "progresso",
       "chave": "inicial:compras",
-      "total": 9,
+      "total": 10,
       "api": "/api/checklists-progresso",
       "fontes": [
        "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md"

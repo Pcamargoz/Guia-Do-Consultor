@@ -1,0 +1,239 @@
+{
+  "id": "intro-servicos",
+  "modulo": "servicos",
+  "fps": 30,
+  "duracao": 28,
+  "musica": {
+    "arquivo": "musica/intro-servicos.wav",
+    "bpm": 120,
+    "entrada": 4,
+    "final": 23,
+    "acentos": [
+      12
+    ]
+  },
+  "abertura": {
+    "duracao": 4,
+    "titulo": "Serviços",
+    "linha": "Guia Inicial · Da medição à assistência."
+  },
+  "fechamento": {
+    "inicio": 23,
+    "duracao": 5,
+    "titulo": "Guia Inicial › Serviços",
+    "linha": "Próximo passo"
+  },
+  "transicao_s": 0.4,
+  "cenas": [
+    {
+      "id": "s1-cockpit",
+      "clipe": "intro/servicos/s1-cockpit.mp4",
+      "inicio": 4,
+      "duracao": 3.5,
+      "desde": 0.3,
+      "entrada": "zoom",
+      "camera": [
+        {
+          "t": 0,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 0.5,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 2.63,
+          "x": 1000,
+          "y": 340,
+          "zoom": 1.15
+        },
+        {
+          "t": 3.5,
+          "x": 1006,
+          "y": 346,
+          "zoom": 1.17
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.3,
+          "ate": 2.7,
+          "texto": "Cockpit de Campo.",
+          "posicao": "inf-dir"
+        }
+      ]
+    },
+    {
+      "id": "s2-medicoes",
+      "clipe": "intro/servicos/s2-medicoes.mp4",
+      "inicio": 7.5,
+      "duracao": 4.5,
+      "desde": 0.3,
+      "entrada": "corte",
+      "camera": [
+        {
+          "t": 0,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 0.5,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 3.38,
+          "x": 1100,
+          "y": 420,
+          "zoom": 1.2
+        },
+        {
+          "t": 4.5,
+          "x": 1106,
+          "y": 426,
+          "zoom": 1.22
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.3,
+          "ate": 3.7,
+          "texto": "Medições.",
+          "posicao": "inf-esq"
+        }
+      ]
+    },
+    {
+      "id": "s3-instalacoes",
+      "clipe": "intro/servicos/s3-instalacoes.mp4",
+      "inicio": 12,
+      "duracao": 4,
+      "desde": 0.3,
+      "entrada": "corte",
+      "camera": [
+        {
+          "t": 0,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 0.5,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 3,
+          "x": 1100,
+          "y": 420,
+          "zoom": 1.2
+        },
+        {
+          "t": 4,
+          "x": 1106,
+          "y": 426,
+          "zoom": 1.22
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.3,
+          "ate": 3.2,
+          "texto": "Instalações.",
+          "posicao": "inf-esq"
+        }
+      ]
+    },
+    {
+      "id": "s4-vistorias",
+      "clipe": "intro/servicos/s4-vistorias.mp4",
+      "inicio": 16,
+      "duracao": 4,
+      "desde": 0.3,
+      "entrada": "corte",
+      "camera": [
+        {
+          "t": 0,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 0.5,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 3,
+          "x": 1100,
+          "y": 420,
+          "zoom": 1.2
+        },
+        {
+          "t": 4,
+          "x": 1106,
+          "y": 426,
+          "zoom": 1.22
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.3,
+          "ate": 3.2,
+          "texto": "Vistorias e aceites.",
+          "posicao": "inf-esq"
+        }
+      ]
+    },
+    {
+      "id": "s5-assistencia",
+      "clipe": "intro/servicos/s5-assistencia.mp4",
+      "inicio": 20,
+      "duracao": 3,
+      "desde": 0.3,
+      "entrada": "corte",
+      "camera": [
+        {
+          "t": 0,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 0.5,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 2.25,
+          "x": 1100,
+          "y": 420,
+          "zoom": 1.2
+        },
+        {
+          "t": 3,
+          "x": 1106,
+          "y": 426,
+          "zoom": 1.22
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.3,
+          "ate": 2.2,
+          "texto": "Assistência Técnica.",
+          "posicao": "inf-esq"
+        }
+      ]
+    }
+  ]
+}

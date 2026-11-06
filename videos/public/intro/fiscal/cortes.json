@@ -1,0 +1,52 @@
+{
+  "fonte": "midia/brutos/fiscal/fiscal_bruto_c02_v01.mp4",
+  "recorte": "crop=1920:1080:0:0",
+  "observacao": "Bruto c02, 1920x1080 nativo. Duração natural: sem lento. Trechos parados escolhidos por freezedetect, sem a rolagem; caixas conferidas em quadros extraídos em 06/11/2026.",
+  "caixas": {
+    "A_B_cabecalho": {
+      "x": 1395,
+      "y": 8,
+      "w": 510,
+      "h": 56,
+      "porque": "selo do tenant, nome, cargo e avatar do usuário"
+    }
+  },
+  "cortes": [
+    {
+      "id": "c1-painel",
+      "in": 0.2,
+      "out": 3.25,
+      "borrar": [
+        "A_B_cabecalho"
+      ],
+      "porque": "Cadastros e tabelas fiscais."
+    },
+    {
+      "id": "c2-diagnostico",
+      "in": 6.8,
+      "out": 11.85,
+      "borrar": [
+        "A_B_cabecalho"
+      ],
+      "porque": "Diagnóstico Fiscal."
+    },
+    {
+      "id": "c3-sped",
+      "in": 13.2,
+      "out": 15.75,
+      "borrar": [
+        "A_B_cabecalho"
+      ],
+      "porque": "Escrituração Fiscal SPED."
+    },
+    {
+      "id": "c4-mdfe",
+      "in": 19.9,
+      "out": 24.45,
+      "borrar": [
+        "A_B_cabecalho"
+      ],
+      "porque": "MDF-e."
+    }
+  ]
+}

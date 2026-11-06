@@ -85,7 +85,16 @@ describe('montarBase com fontes fictícias', () => {
     assert.equal(est.status, 'em-preparacao');
     assert.ok(base.pendencias.some((p) => p.includes('consultor-04-estoque')));
     const ven = base.modulos.find((m) => m.id === 'vendas').materiais.find((x) => x.id === 'vendas:video-inicial');
-    assert.equal(ven.duracao_s, 188);
+    assert.equal(ven.duracao_s, 47);
+    assert.equal(ven.url, '/videos/intro-vendas.mp4');
+  });
+  it('intro vira o vídeo do módulo e o narrado segue como vídeo de apoio, sem contar como introdutório', () => {
+    const mats = base.modulos.find((m) => m.id === 'vendas').materiais;
+    const apoio = mats.find((x) => x.id === 'vendas:video-apoio');
+    assert.equal(apoio.url, '/videos/fluxo-1-vendas.mp4');
+    assert.equal(apoio.status, 'disponivel');
+    assert.match(apoio.titulo, /\(vídeo de apoio\)$/);
+    assert.equal(apoio.duracao_s, 188);
   });
   it('captura de tela só entra se publicada; o resto vira pendência', () => {
     const telas = base.modulos.find((m) => m.id === 'vendas').jornadas.inicial.find((s) => s.id === 'telas').blocos.filter((b) => b.tipo === 'tela');

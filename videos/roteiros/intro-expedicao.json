@@ -1,0 +1,239 @@
+{
+  "id": "intro-expedicao",
+  "modulo": "expedicao",
+  "fps": 30,
+  "duracao": 25.5,
+  "musica": {
+    "arquivo": "musica/intro-expedicao.wav",
+    "bpm": 120,
+    "entrada": 4,
+    "final": 20.5,
+    "acentos": [
+      10
+    ]
+  },
+  "abertura": {
+    "duracao": 4,
+    "titulo": "Expedição",
+    "linha": "Guia Inicial · Da carga à entrega."
+  },
+  "fechamento": {
+    "inicio": 20.5,
+    "duracao": 5,
+    "titulo": "Guia Inicial › Expedição",
+    "linha": "Próximo passo"
+  },
+  "transicao_s": 0.4,
+  "cenas": [
+    {
+      "id": "x1-visao",
+      "clipe": "intro/expedicao/x1-visao.mp4",
+      "inicio": 4,
+      "duracao": 4.5,
+      "desde": 0.3,
+      "entrada": "zoom",
+      "camera": [
+        {
+          "t": 0,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 0.5,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 3.38,
+          "x": 1000,
+          "y": 400,
+          "zoom": 1.2
+        },
+        {
+          "t": 4.5,
+          "x": 1006,
+          "y": 406,
+          "zoom": 1.22
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.3,
+          "ate": 3.7,
+          "texto": "Visão geral das cargas.",
+          "posicao": "inf-dir"
+        }
+      ]
+    },
+    {
+      "id": "x2-cargas",
+      "clipe": "intro/expedicao/x2-cargas.mp4",
+      "inicio": 8.5,
+      "duracao": 4.5,
+      "desde": 0.3,
+      "entrada": "corte",
+      "camera": [
+        {
+          "t": 0,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 0.5,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 3.38,
+          "x": 1000,
+          "y": 400,
+          "zoom": 1.2
+        },
+        {
+          "t": 4.5,
+          "x": 1006,
+          "y": 406,
+          "zoom": 1.22
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.3,
+          "ate": 3.7,
+          "texto": "Cargas por status.",
+          "posicao": "inf-dir"
+        }
+      ]
+    },
+    {
+      "id": "x3-separacao",
+      "clipe": "intro/expedicao/x3-separacao.mp4",
+      "inicio": 13,
+      "duracao": 2,
+      "desde": 0.3,
+      "entrada": "corte",
+      "camera": [
+        {
+          "t": 0,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 0.4,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 1.5,
+          "x": 1000,
+          "y": 350,
+          "zoom": 1.15
+        },
+        {
+          "t": 2,
+          "x": 1006,
+          "y": 356,
+          "zoom": 1.17
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.3,
+          "ate": 1.2,
+          "texto": "Separação.",
+          "posicao": "inf-esq"
+        }
+      ]
+    },
+    {
+      "id": "x4-conferencia",
+      "clipe": "intro/expedicao/x4-conferencia.mp4",
+      "inicio": 15,
+      "duracao": 2,
+      "desde": 0.3,
+      "entrada": "corte",
+      "camera": [
+        {
+          "t": 0,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 0.4,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 1.5,
+          "x": 1000,
+          "y": 350,
+          "zoom": 1.15
+        },
+        {
+          "t": 2,
+          "x": 1006,
+          "y": 356,
+          "zoom": 1.17
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.3,
+          "ate": 1.2,
+          "texto": "Conferência.",
+          "posicao": "inf-esq"
+        }
+      ]
+    },
+    {
+      "id": "x5-roteirizacao",
+      "clipe": "intro/expedicao/x5-roteirizacao.mp4",
+      "inicio": 17,
+      "duracao": 3.5,
+      "desde": 0.3,
+      "entrada": "corte",
+      "camera": [
+        {
+          "t": 0,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 0.5,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 2.63,
+          "x": 1100,
+          "y": 420,
+          "zoom": 1.2
+        },
+        {
+          "t": 3.5,
+          "x": 1106,
+          "y": 426,
+          "zoom": 1.22
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.3,
+          "ate": 2.7,
+          "texto": "Roteirização Inteligente.",
+          "posicao": "inf-esq"
+        }
+      ]
+    }
+  ]
+}

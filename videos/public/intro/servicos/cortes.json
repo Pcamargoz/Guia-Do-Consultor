@@ -1,0 +1,141 @@
+{
+  "fonte": "midia/brutos/servicos/servicos_bruto_c02_v01.mp4",
+  "recorte": "crop=1920:1080:0:0",
+  "observacao": "Bruto c02, 1920x1080 nativo. Duração natural: sem lento. Trechos parados escolhidos por freezedetect, sem a rolagem; caixas conferidas em quadros extraídos em 06/11/2026.",
+  "caixas": {
+    "A_B_cabecalho": {
+      "x": 1395,
+      "y": 8,
+      "w": 510,
+      "h": 56,
+      "porque": "selo do tenant, nome, cargo e avatar do usuário"
+    },
+    "cp_equipe": {
+      "x": 325,
+      "y": 505,
+      "w": 160,
+      "h": 115,
+      "porque": "equipes"
+    },
+    "cp_rota": {
+      "x": 320,
+      "y": 835,
+      "w": 280,
+      "h": 40,
+      "porque": "equipes"
+    },
+    "med_cod": {
+      "x": 310,
+      "y": 545,
+      "w": 105,
+      "h": 115,
+      "porque": "códigos MED"
+    },
+    "med_cli": {
+      "x": 765,
+      "y": 545,
+      "w": 225,
+      "h": 115,
+      "porque": "cliente e técnico"
+    },
+    "med_eq": {
+      "x": 1575,
+      "y": 545,
+      "w": 105,
+      "h": 115,
+      "porque": "equipe"
+    },
+    "ins_cod": {
+      "x": 310,
+      "y": 545,
+      "w": 100,
+      "h": 70,
+      "porque": "códigos INS"
+    },
+    "ins_cli": {
+      "x": 945,
+      "y": 545,
+      "w": 260,
+      "h": 70,
+      "porque": "cliente e técnico"
+    },
+    "ins_eq": {
+      "x": 1575,
+      "y": 545,
+      "w": 100,
+      "h": 70,
+      "porque": "equipe"
+    },
+    "vis_cod": {
+      "x": 310,
+      "y": 540,
+      "w": 150,
+      "h": 35,
+      "porque": "código"
+    },
+    "vis_mid": {
+      "x": 732,
+      "y": 540,
+      "w": 380,
+      "h": 35,
+      "porque": "cliente, instalação e vistoriador"
+    }
+  },
+  "cortes": [
+    {
+      "id": "s1-cockpit",
+      "in": 0.2,
+      "out": 4.25,
+      "borrar": [
+        "A_B_cabecalho",
+        "cp_equipe",
+        "cp_rota"
+      ],
+      "porque": "Cockpit de Campo."
+    },
+    {
+      "id": "s2-medicoes",
+      "in": 7.5,
+      "out": 12.55,
+      "borrar": [
+        "A_B_cabecalho",
+        "med_cod",
+        "med_cli",
+        "med_eq"
+      ],
+      "porque": "Medições."
+    },
+    {
+      "id": "s3-instalacoes",
+      "in": 13.3,
+      "out": 17.85,
+      "borrar": [
+        "A_B_cabecalho",
+        "ins_cod",
+        "ins_cli",
+        "ins_eq"
+      ],
+      "porque": "Instalações."
+    },
+    {
+      "id": "s4-vistorias",
+      "in": 19.6,
+      "out": 24.15,
+      "borrar": [
+        "A_B_cabecalho",
+        "vis_cod",
+        "vis_mid"
+      ],
+      "porque": "Vistorias e aceites."
+    },
+    {
+      "id": "s5-assistencia",
+      "in": 26.2,
+      "out": 29.75,
+      "borrar": [
+        "A_B_cabecalho"
+      ],
+      "porque": "Assistência Técnica."
+    }
+  ]
+}

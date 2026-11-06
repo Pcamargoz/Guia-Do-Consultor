@@ -40,9 +40,32 @@
    {
     "id": "video",
     "titulo": "Vídeo introdutório",
-    "status": "em-preparacao",
-    "blocos": [],
-    "fontes": []
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "video",
+      "material": "fundacao:video-inicial",
+      "titulo": "Cadastros e Fundação: vídeo introdutório",
+      "status": "disponivel",
+      "url": "/videos/intro-fundacao.mp4",
+      "duracao_s": 24,
+      "poster": "/videos/intro-fundacao.jpg",
+      "legendas_url": "/videos/intro-fundacao.vtt",
+      "resumo": [
+       {
+        "t": "Guia Inicial · A base de todos os módulos."
+       }
+      ],
+      "fontes": [
+       "guia:public/videos/manifest.json",
+       "guia:videos/roteiros/intro-fundacao.json"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:public/videos/manifest.json",
+     "guia:videos/roteiros/intro-fundacao.json"
+    ]
    },
    {
     "id": "manual",
@@ -836,6 +859,14 @@
         ]
        },
        {
+        "id": "video",
+        "texto": [
+         {
+          "t": "Assisti ao vídeo introdutório"
+         }
+        ]
+       },
+       {
         "id": "checklist",
         "texto": [
          {
@@ -846,13 +877,17 @@
       ],
       "fontes": [
        "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
-       "guia:scripts/dados-checklists-estagiarios.mjs#cadastros"
+       "guia:scripts/dados-checklists-estagiarios.mjs#cadastros",
+       "guia:public/videos/manifest.json",
+       "guia:videos/roteiros/intro-fundacao.json"
       ]
      }
     ],
     "fontes": [
      "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
-     "guia:scripts/dados-checklists-estagiarios.mjs#cadastros"
+     "guia:scripts/dados-checklists-estagiarios.mjs#cadastros",
+     "guia:public/videos/manifest.json",
+     "guia:videos/roteiros/intro-fundacao.json"
     ]
    },
    {
@@ -863,7 +898,7 @@
      {
       "tipo": "progresso",
       "chave": "inicial:fundacao",
-      "total": 12,
+      "total": 13,
       "api": "/api/checklists-progresso",
       "fontes": [
        "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md"

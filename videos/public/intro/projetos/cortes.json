@@ -1,0 +1,117 @@
+{
+  "fonte": "midia/brutos/projetos/projetos_bruto_c02_v01.mp4",
+  "recorte": "crop=1920:1080:0:0",
+  "observacao": "Bruto c02, 1920x1080 nativo. Duração natural: sem lento. Trechos parados escolhidos por freezedetect, sem a rolagem; caixas conferidas em quadros extraídos em 06/11/2026.",
+  "caixas": {
+    "A_B_cabecalho": {
+      "x": 1395,
+      "y": 8,
+      "w": 510,
+      "h": 56,
+      "porque": "selo do tenant, nome, cargo e avatar do usuário"
+    },
+    "dj_kpi": {
+      "x": 305,
+      "y": 225,
+      "w": 1560,
+      "h": 62,
+      "porque": "valores"
+    },
+    "dj_obras": {
+      "x": 325,
+      "y": 368,
+      "w": 560,
+      "h": 510,
+      "porque": "obras, códigos e nomes de pessoas"
+    },
+    "dj_l1": {
+      "x": 305,
+      "y": 950,
+      "w": 770,
+      "h": 130,
+      "porque": "obras e valores"
+    },
+    "dj_l2": {
+      "x": 1100,
+      "y": 950,
+      "w": 770,
+      "h": 130,
+      "porque": "obras e valores"
+    },
+    "tp_r1": {
+      "x": 295,
+      "y": 460,
+      "w": 1580,
+      "h": 172,
+      "porque": "cartões: nomes, códigos e valores"
+    },
+    "tp_r2": {
+      "x": 295,
+      "y": 762,
+      "w": 1580,
+      "h": 158,
+      "porque": "cartões"
+    },
+    "tp_r3": {
+      "x": 295,
+      "y": 1045,
+      "w": 1580,
+      "h": 35,
+      "porque": "cartões"
+    }
+  },
+  "cortes": [
+    {
+      "id": "j1-dashboard",
+      "in": 0.3,
+      "out": 3.35,
+      "borrar": [
+        "A_B_cabecalho",
+        "dj_kpi",
+        "dj_obras",
+        "dj_l1",
+        "dj_l2"
+      ],
+      "porque": "Dashboard Projetos."
+    },
+    {
+      "id": "j2-todos",
+      "in": 6.8,
+      "out": 9.35,
+      "borrar": [
+        "A_B_cabecalho",
+        "tp_r1",
+        "tp_r2",
+        "tp_r3"
+      ],
+      "porque": "Todos os projetos."
+    },
+    {
+      "id": "j3-painel",
+      "in": 13.4,
+      "out": 17.45,
+      "borrar": [
+        "A_B_cabecalho"
+      ],
+      "porque": "Painel Financeiro de Projetos."
+    },
+    {
+      "id": "j4-andamento",
+      "in": 19.3,
+      "out": 22.85,
+      "borrar": [
+        "A_B_cabecalho"
+      ],
+      "porque": "Andamento das Obras."
+    },
+    {
+      "id": "j5-insumos",
+      "in": 25.7,
+      "out": 29.25,
+      "borrar": [
+        "A_B_cabecalho"
+      ],
+      "porque": "Insumos da Obra."
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "fonte": "midia/brutos/fundacao/fundacao_bruto_c02_v01.mp4",
+  "recorte": "crop=1920:1080:0:0",
+  "observacao": "Bruto c02, 1920x1080 nativo. Duração natural: sem lento. Trechos parados escolhidos por freezedetect, sem a rolagem; caixas conferidas em quadros extraídos em 06/11/2026.",
+  "caixas": {
+    "A_B_cabecalho": {
+      "x": 1395,
+      "y": 8,
+      "w": 510,
+      "h": 56,
+      "porque": "selo do tenant, nome, cargo e avatar do usuário"
+    },
+    "part": {
+      "x": 290,
+      "y": 325,
+      "w": 1085,
+      "h": 520,
+      "porque": "código, razão social, nome fantasia e CPF/CNPJ"
+    },
+    "prod": {
+      "x": 340,
+      "y": 325,
+      "w": 955,
+      "h": 540,
+      "porque": "código e descrição"
+    },
+    "prod2": {
+      "x": 1490,
+      "y": 325,
+      "w": 185,
+      "h": 540,
+      "porque": "NCM e preço"
+    },
+    "pj_nome": {
+      "x": 295,
+      "y": 325,
+      "w": 805,
+      "h": 520,
+      "porque": "nome, código e cliente do projeto"
+    },
+    "pj_orc": {
+      "x": 1405,
+      "y": 325,
+      "w": 130,
+      "h": 520,
+      "porque": "orçamento"
+    }
+  },
+  "cortes": [
+    {
+      "id": "f1-participantes",
+      "in": 0.2,
+      "out": 6.25,
+      "borrar": [
+        "A_B_cabecalho",
+        "part"
+      ],
+      "porque": "Participantes."
+    },
+    {
+      "id": "f2-produtos",
+      "in": 7.1,
+      "out": 12.65,
+      "borrar": [
+        "A_B_cabecalho",
+        "prod",
+        "prod2"
+      ],
+      "porque": "Produtos."
+    },
+    {
+      "id": "f3-projetos",
+      "in": 13.3,
+      "out": 18.35,
+      "borrar": [
+        "A_B_cabecalho",
+        "pj_nome",
+        "pj_orc"
+      ],
+      "porque": "Projetos."
+    }
+  ]
+}

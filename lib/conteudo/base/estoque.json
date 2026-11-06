@@ -39,9 +39,28 @@
    },
    {
     "id": "video",
-    "titulo": "Vídeo de apoio",
+    "titulo": "Vídeo introdutório",
     "status": "disponivel",
     "blocos": [
+     {
+      "tipo": "video",
+      "material": "estoque:video-inicial",
+      "titulo": "Estoque: vídeo introdutório",
+      "status": "disponivel",
+      "url": "/videos/intro-estoque.mp4",
+      "duracao_s": 45,
+      "poster": "/videos/intro-estoque.jpg",
+      "legendas_url": "/videos/intro-estoque.vtt",
+      "resumo": [
+       {
+        "t": "Guia Inicial · Saldos, movimentos e locais."
+       }
+      ],
+      "fontes": [
+       "guia:public/videos/manifest.json",
+       "guia:videos/roteiros/intro-estoque.json"
+      ]
+     },
      {
       "tipo": "video",
       "material": "estoque:video-apoio",
@@ -53,7 +72,7 @@
       "legendas_url": "/videos/consultor-04-estoque.vtt",
       "resumo": [
        {
-        "t": "Apoio do Guia do Consultor, com narração e regras de negócio. O vídeo introdutório deste módulo está em preparação. Movimentos, transferência, reserva, inventário e empréstimo."
+        "t": "Apoio do Guia do Consultor, com narração e regras de negócio. Movimentos, transferência, reserva, inventário e empréstimo."
        }
       ],
       "fontes": [
@@ -64,6 +83,7 @@
     ],
     "fontes": [
      "guia:public/videos/manifest.json",
+     "guia:videos/roteiros/intro-estoque.json",
      "guia:videos/roteiros/consultor-04-estoque.json"
     ]
    },
@@ -720,6 +740,14 @@
         ]
        },
        {
+        "id": "video",
+        "texto": [
+         {
+          "t": "Assisti ao vídeo introdutório"
+         }
+        ]
+       },
+       {
         "id": "checklist",
         "texto": [
          {
@@ -730,13 +758,19 @@
       ],
       "fontes": [
        "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
-       "guia:scripts/dados-checklists-estagiarios.mjs#estoque"
+       "guia:scripts/dados-checklists-estagiarios.mjs#estoque",
+       "guia:public/videos/manifest.json",
+       "guia:videos/roteiros/intro-estoque.json",
+       "guia:videos/roteiros/consultor-04-estoque.json"
       ]
      }
     ],
     "fontes": [
      "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
-     "guia:scripts/dados-checklists-estagiarios.mjs#estoque"
+     "guia:scripts/dados-checklists-estagiarios.mjs#estoque",
+     "guia:public/videos/manifest.json",
+     "guia:videos/roteiros/intro-estoque.json",
+     "guia:videos/roteiros/consultor-04-estoque.json"
     ]
    },
    {
@@ -747,7 +781,7 @@
      {
       "tipo": "progresso",
       "chave": "inicial:estoque",
-      "total": 14,
+      "total": 15,
       "api": "/api/checklists-progresso",
       "fontes": [
        "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md"

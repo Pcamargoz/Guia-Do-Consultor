@@ -1,0 +1,161 @@
+{
+  "fonte": "midia/brutos/primeiros-passos/primeiros-passos_bruto_c02_v01.mp4",
+  "recorte": "crop=1920:1080:0:0",
+  "observacao": "Bruto c02, 1920x1080 nativo. Duração natural: sem lento. Trechos parados escolhidos por freezedetect, sem a rolagem; caixas conferidas em quadros extraídos em 06/11/2026.",
+  "caixas": {
+    "A_B_cabecalho": {
+      "x": 1395,
+      "y": 8,
+      "w": 510,
+      "h": 56,
+      "porque": "selo do tenant, nome, cargo e avatar do usuário"
+    },
+    "saud": {
+      "x": 290,
+      "y": 150,
+      "w": 240,
+      "h": 50,
+      "porque": "saudação com o nome do usuário"
+    },
+    "saud_mod": {
+      "x": 415,
+      "y": 150,
+      "w": 125,
+      "h": 50,
+      "porque": "fim da saudação ao lado do painel Módulos"
+    },
+    "r1": {
+      "x": 900,
+      "y": 660,
+      "w": 100,
+      "h": 40,
+      "porque": "valor recebido"
+    },
+    "r2": {
+      "x": 1275,
+      "y": 660,
+      "w": 130,
+      "h": 40,
+      "porque": "valor a receber"
+    },
+    "r3": {
+      "x": 1595,
+      "y": 660,
+      "w": 110,
+      "h": 40,
+      "porque": "valor a pagar"
+    },
+    "r4": {
+      "x": 900,
+      "y": 775,
+      "w": 110,
+      "h": 40,
+      "porque": "pedidos no mês"
+    },
+    "pv": {
+      "x": 462,
+      "y": 598,
+      "w": 95,
+      "h": 80,
+      "porque": "códigos PV"
+    },
+    "cli": {
+      "x": 878,
+      "y": 598,
+      "w": 255,
+      "h": 80,
+      "porque": "clientes"
+    },
+    "val": {
+      "x": 1200,
+      "y": 598,
+      "w": 95,
+      "h": 80,
+      "porque": "valores"
+    }
+  },
+  "cortes": [
+    {
+      "id": "p1-inicio",
+      "in": 0.2,
+      "out": 2.75,
+      "borrar": [
+        "A_B_cabecalho",
+        "saud",
+        "r1",
+        "r2",
+        "r3",
+        "r4"
+      ],
+      "porque": "Seu painel do dia."
+    },
+    {
+      "id": "p2-modulos",
+      "in": 6.8,
+      "out": 10.35,
+      "borrar": [
+        "A_B_cabecalho",
+        "saud_mod",
+        "r1",
+        "r2",
+        "r3",
+        "r4"
+      ],
+      "porque": "Todos os módulos aqui."
+    },
+    {
+      "id": "p3-menu",
+      "in": 11.8,
+      "out": 14.85,
+      "borrar": [
+        "A_B_cabecalho",
+        "saud",
+        "r1",
+        "r2",
+        "r3",
+        "r4"
+      ],
+      "porque": "Menu do módulo."
+    },
+    {
+      "id": "p4-busca",
+      "in": 15.2,
+      "out": 20.25,
+      "borrar": [
+        "A_B_cabecalho",
+        "saud",
+        "r1",
+        "r2",
+        "r3",
+        "r4"
+      ],
+      "porque": "Busque qualquer tela."
+    },
+    {
+      "id": "p5-notificacoes",
+      "in": 21.9,
+      "out": 24.95,
+      "borrar": [
+        "A_B_cabecalho",
+        "saud",
+        "r1",
+        "r2",
+        "r3",
+        "r4"
+      ],
+      "porque": "Suas notificações."
+    },
+    {
+      "id": "p6-pedidos",
+      "in": 27.6,
+      "out": 30.15,
+      "borrar": [
+        "A_B_cabecalho",
+        "pv",
+        "cli",
+        "val"
+      ],
+      "porque": "E cada tela do módulo."
+    }
+  ]
+}

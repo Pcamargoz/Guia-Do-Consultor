@@ -1,0 +1,281 @@
+{
+  "id": "intro-primeiros-passos",
+  "modulo": "primeiros-passos",
+  "fps": 30,
+  "duracao": 25.5,
+  "musica": {
+    "arquivo": "musica/intro-primeiros-passos.wav",
+    "bpm": 120,
+    "entrada": 4,
+    "final": 20.5,
+    "acentos": [
+      10
+    ]
+  },
+  "abertura": {
+    "duracao": 4,
+    "titulo": "Primeiros passos",
+    "linha": "Guia Inicial · Como se localizar no sistema."
+  },
+  "fechamento": {
+    "inicio": 20.5,
+    "duracao": 5,
+    "titulo": "Guia Inicial › Primeiros passos",
+    "linha": "Próximo passo"
+  },
+  "transicao_s": 0.4,
+  "cenas": [
+    {
+      "id": "p1-inicio",
+      "clipe": "intro/primeiros-passos/p1-inicio.mp4",
+      "inicio": 4,
+      "duracao": 2,
+      "desde": 0.3,
+      "entrada": "zoom",
+      "camera": [
+        {
+          "t": 0,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 0.4,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 1.5,
+          "x": 760,
+          "y": 400,
+          "zoom": 1.15
+        },
+        {
+          "t": 2,
+          "x": 766,
+          "y": 406,
+          "zoom": 1.17
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.3,
+          "ate": 1.2,
+          "texto": "Seu painel do dia.",
+          "posicao": "inf-esq"
+        }
+      ]
+    },
+    {
+      "id": "p2-modulos",
+      "clipe": "intro/primeiros-passos/p2-modulos.mp4",
+      "inicio": 6,
+      "duracao": 3,
+      "desde": 0.3,
+      "entrada": "corte",
+      "camera": [
+        {
+          "t": 0,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 0.5,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 2.25,
+          "x": 520,
+          "y": 500,
+          "zoom": 1.35
+        },
+        {
+          "t": 3,
+          "x": 526,
+          "y": 506,
+          "zoom": 1.37
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.3,
+          "ate": 2.2,
+          "texto": "Todos os módulos aqui.",
+          "posicao": "inf-dir"
+        }
+      ]
+    },
+    {
+      "id": "p3-menu",
+      "clipe": "intro/primeiros-passos/p3-menu.mp4",
+      "inicio": 9,
+      "duracao": 2.5,
+      "desde": 0.3,
+      "entrada": "corte",
+      "camera": [
+        {
+          "t": 0,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 0.5,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 1.88,
+          "x": 500,
+          "y": 480,
+          "zoom": 1.4
+        },
+        {
+          "t": 2.5,
+          "x": 506,
+          "y": 486,
+          "zoom": 1.42
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.3,
+          "ate": 1.7,
+          "texto": "Menu do módulo.",
+          "posicao": "inf-dir"
+        }
+      ]
+    },
+    {
+      "id": "p4-busca",
+      "clipe": "intro/primeiros-passos/p4-busca.mp4",
+      "inicio": 11.5,
+      "duracao": 4.5,
+      "desde": 0.3,
+      "entrada": "corte",
+      "camera": [
+        {
+          "t": 0,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 0.5,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 3.38,
+          "x": 1300,
+          "y": 300,
+          "zoom": 1.5
+        },
+        {
+          "t": 4.5,
+          "x": 1306,
+          "y": 306,
+          "zoom": 1.52
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.3,
+          "ate": 3.7,
+          "texto": "Busque qualquer tela.",
+          "posicao": "inf-esq"
+        }
+      ]
+    },
+    {
+      "id": "p5-notificacoes",
+      "clipe": "intro/primeiros-passos/p5-notificacoes.mp4",
+      "inicio": 16,
+      "duracao": 2.5,
+      "desde": 0.3,
+      "entrada": "corte",
+      "camera": [
+        {
+          "t": 0,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 0.5,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 1.88,
+          "x": 1300,
+          "y": 340,
+          "zoom": 1.4
+        },
+        {
+          "t": 2.5,
+          "x": 1306,
+          "y": 346,
+          "zoom": 1.42
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.3,
+          "ate": 1.7,
+          "texto": "Suas notificações.",
+          "posicao": "inf-esq"
+        }
+      ]
+    },
+    {
+      "id": "p6-pedidos",
+      "clipe": "intro/primeiros-passos/p6-pedidos.mp4",
+      "inicio": 18.5,
+      "duracao": 2,
+      "desde": 0.3,
+      "entrada": "corte",
+      "camera": [
+        {
+          "t": 0,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 0.4,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 1.5,
+          "x": 1000,
+          "y": 420,
+          "zoom": 1.15
+        },
+        {
+          "t": 2,
+          "x": 1006,
+          "y": 426,
+          "zoom": 1.17
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.3,
+          "ate": 1.2,
+          "texto": "E cada tela do módulo.",
+          "posicao": "inf-dir"
+        }
+      ]
+    }
+  ]
+}

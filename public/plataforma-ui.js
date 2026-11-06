@@ -677,7 +677,8 @@
       if (poster) v.poster = poster;
       v.src = url;
       const leg = urlSegura(b.legendas_url || b.legenda); // v3: legendas_url (.vtt)
-      if (leg) v.append(h('track', { attrs: { kind: 'captions', srclang: 'pt-BR', label: 'Português', src: leg, default: true } }));
+      // Intro não tem fala e já traz o texto na imagem: a legenda fica disponível, mas desligada.
+      if (leg) v.append(h('track', { attrs: { kind: 'captions', srclang: 'pt-BR', label: 'Português', src: leg, default: !/\/intro-[^/]+\.vtt$/.test(leg) } }));
       const dur = duracaoFmt(b.duracao_s);
       return h('figure', { className: 'pl-bloco pl-bloco--video' }, v,
         h('figcaption', null, h('strong', { text: b.titulo }), dur ? h('span', { className: 'pl-nota', text: dur }) : null, temTexto(b.resumo) ? h('span', null, inline(b.resumo)) : null));

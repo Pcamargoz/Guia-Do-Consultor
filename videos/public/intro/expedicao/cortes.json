@@ -1,0 +1,85 @@
+{
+  "fonte": "midia/brutos/expedicao/expedicao_bruto_c02_v01.mp4",
+  "recorte": "crop=1920:1080:0:0",
+  "observacao": "Bruto c02, 1920x1080 nativo. Duração natural: sem lento. Trechos parados escolhidos por freezedetect, sem a rolagem; caixas conferidas em quadros extraídos em 06/11/2026.",
+  "caixas": {
+    "A_B_cabecalho": {
+      "x": 1395,
+      "y": 8,
+      "w": 510,
+      "h": 56,
+      "porque": "selo do tenant, nome, cargo e avatar do usuário"
+    },
+    "ex_cargas": {
+      "x": 495,
+      "y": 690,
+      "w": 220,
+      "h": 100,
+      "porque": "números das cargas"
+    },
+    "cg_c1": {
+      "x": 435,
+      "y": 462,
+      "w": 220,
+      "h": 120,
+      "porque": "carga, placa e motorista"
+    },
+    "cg_c2": {
+      "x": 1105,
+      "y": 462,
+      "w": 220,
+      "h": 120,
+      "porque": "carga, placa e motorista"
+    }
+  },
+  "cortes": [
+    {
+      "id": "x1-visao",
+      "in": 0.2,
+      "out": 5.25,
+      "borrar": [
+        "A_B_cabecalho",
+        "ex_cargas"
+      ],
+      "porque": "Visão geral das cargas."
+    },
+    {
+      "id": "x2-cargas",
+      "in": 7.8,
+      "out": 12.85,
+      "borrar": [
+        "A_B_cabecalho",
+        "cg_c1",
+        "cg_c2"
+      ],
+      "porque": "Cargas por status."
+    },
+    {
+      "id": "x3-separacao",
+      "in": 13.6,
+      "out": 16.15,
+      "borrar": [
+        "A_B_cabecalho"
+      ],
+      "porque": "Separação."
+    },
+    {
+      "id": "x4-conferencia",
+      "in": 19.8,
+      "out": 22.35,
+      "borrar": [
+        "A_B_cabecalho"
+      ],
+      "porque": "Conferência."
+    },
+    {
+      "id": "x5-roteirizacao",
+      "in": 26.2,
+      "out": 30.25,
+      "borrar": [
+        "A_B_cabecalho"
+      ],
+      "porque": "Roteirização Inteligente."
+    }
+  ]
+}

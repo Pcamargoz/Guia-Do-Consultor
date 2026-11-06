@@ -1,0 +1,203 @@
+{
+  "id": "intro-tarefas",
+  "modulo": "tarefas",
+  "fps": 30,
+  "duracao": 21.5,
+  "musica": {
+    "arquivo": "musica/intro-tarefas.wav",
+    "bpm": 120,
+    "entrada": 4,
+    "final": 16.5,
+    "acentos": [
+      8
+    ]
+  },
+  "abertura": {
+    "duracao": 4,
+    "titulo": "Tarefas",
+    "linha": "Guia Inicial · Quadros, cartões e responsáveis."
+  },
+  "fechamento": {
+    "inicio": 16.5,
+    "duracao": 5,
+    "titulo": "Guia Inicial › Tarefas",
+    "linha": "Próximo passo"
+  },
+  "transicao_s": 0.4,
+  "cenas": [
+    {
+      "id": "t1-dashboard",
+      "clipe": "intro/tarefas/t1-dashboard.mp4",
+      "inicio": 4,
+      "duracao": 4,
+      "desde": 0.3,
+      "entrada": "zoom",
+      "camera": [
+        {
+          "t": 0,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 0.5,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 3,
+          "x": 1000,
+          "y": 340,
+          "zoom": 1.15
+        },
+        {
+          "t": 4,
+          "x": 1006,
+          "y": 346,
+          "zoom": 1.17
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.3,
+          "ate": 3.2,
+          "texto": "Dashboard de Tarefas.",
+          "posicao": "inf-dir"
+        }
+      ]
+    },
+    {
+      "id": "t2-minhas",
+      "clipe": "intro/tarefas/t2-minhas.mp4",
+      "inicio": 8,
+      "duracao": 2,
+      "desde": 0.3,
+      "entrada": "corte",
+      "camera": [
+        {
+          "t": 0,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 0.4,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 1.5,
+          "x": 1000,
+          "y": 320,
+          "zoom": 1.2
+        },
+        {
+          "t": 2,
+          "x": 1006,
+          "y": 326,
+          "zoom": 1.22
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.3,
+          "ate": 1.2,
+          "texto": "Minhas Tarefas.",
+          "posicao": "inf-esq"
+        }
+      ]
+    },
+    {
+      "id": "t3-quadros",
+      "clipe": "intro/tarefas/t3-quadros.mp4",
+      "inicio": 10,
+      "duracao": 2,
+      "desde": 0.3,
+      "entrada": "corte",
+      "camera": [
+        {
+          "t": 0,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 0.4,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 1.5,
+          "x": 900,
+          "y": 340,
+          "zoom": 1.25
+        },
+        {
+          "t": 2,
+          "x": 906,
+          "y": 346,
+          "zoom": 1.27
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.3,
+          "ate": 1.2,
+          "texto": "Meus Quadros.",
+          "posicao": "inf-dir"
+        }
+      ]
+    },
+    {
+      "id": "t4-kanban",
+      "clipe": "intro/tarefas/t4-kanban.mp4",
+      "inicio": 12,
+      "duracao": 4.5,
+      "desde": 0.3,
+      "entrada": "corte",
+      "camera": [
+        {
+          "t": 0,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 0.5,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 3.38,
+          "x": 900,
+          "y": 380,
+          "zoom": 1.3
+        },
+        {
+          "t": 4.5,
+          "x": 906,
+          "y": 386,
+          "zoom": 1.32
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.3,
+          "ate": 1.8,
+          "texto": "Um quadro em Kanban.",
+          "posicao": "inf-esq"
+        },
+        {
+          "t": 2.2,
+          "ate": 3.7,
+          "texto": "A fazer, em andamento, concluído.",
+          "posicao": "inf-esq"
+        }
+      ]
+    }
+  ]
+}

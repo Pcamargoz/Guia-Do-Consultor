@@ -1,0 +1,239 @@
+{
+  "id": "intro-projetos",
+  "modulo": "projetos",
+  "fps": 30,
+  "duracao": 23,
+  "musica": {
+    "arquivo": "musica/intro-projetos.wav",
+    "bpm": 120,
+    "entrada": 4,
+    "final": 18,
+    "acentos": [
+      9
+    ]
+  },
+  "abertura": {
+    "duracao": 4,
+    "titulo": "Projetos",
+    "linha": "Guia Inicial · A obra em um só lugar."
+  },
+  "fechamento": {
+    "inicio": 18,
+    "duracao": 5,
+    "titulo": "Guia Inicial › Projetos",
+    "linha": "Próximo passo"
+  },
+  "transicao_s": 0.4,
+  "cenas": [
+    {
+      "id": "j1-dashboard",
+      "clipe": "intro/projetos/j1-dashboard.mp4",
+      "inicio": 4,
+      "duracao": 2.5,
+      "desde": 0.3,
+      "entrada": "zoom",
+      "camera": [
+        {
+          "t": 0,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 0.5,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 1.88,
+          "x": 1000,
+          "y": 300,
+          "zoom": 1.15
+        },
+        {
+          "t": 2.5,
+          "x": 1006,
+          "y": 306,
+          "zoom": 1.17
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.3,
+          "ate": 1.7,
+          "texto": "Dashboard Projetos.",
+          "posicao": "inf-dir"
+        }
+      ]
+    },
+    {
+      "id": "j2-todos",
+      "clipe": "intro/projetos/j2-todos.mp4",
+      "inicio": 6.5,
+      "duracao": 2,
+      "desde": 0.3,
+      "entrada": "corte",
+      "camera": [
+        {
+          "t": 0,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 0.4,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 1.5,
+          "x": 1000,
+          "y": 280,
+          "zoom": 1.15
+        },
+        {
+          "t": 2,
+          "x": 1006,
+          "y": 286,
+          "zoom": 1.17
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.3,
+          "ate": 1.2,
+          "texto": "Todos os projetos.",
+          "posicao": "inf-dir"
+        }
+      ]
+    },
+    {
+      "id": "j3-painel",
+      "clipe": "intro/projetos/j3-painel.mp4",
+      "inicio": 8.5,
+      "duracao": 3.5,
+      "desde": 0.3,
+      "entrada": "corte",
+      "camera": [
+        {
+          "t": 0,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 0.5,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 2.63,
+          "x": 800,
+          "y": 380,
+          "zoom": 1.3
+        },
+        {
+          "t": 3.5,
+          "x": 806,
+          "y": 386,
+          "zoom": 1.32
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.3,
+          "ate": 2.7,
+          "texto": "Painel Financeiro de Projetos.",
+          "posicao": "inf-dir"
+        }
+      ]
+    },
+    {
+      "id": "j4-andamento",
+      "clipe": "intro/projetos/j4-andamento.mp4",
+      "inicio": 12,
+      "duracao": 3,
+      "desde": 0.3,
+      "entrada": "corte",
+      "camera": [
+        {
+          "t": 0,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 0.5,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 2.25,
+          "x": 1000,
+          "y": 420,
+          "zoom": 1.2
+        },
+        {
+          "t": 3,
+          "x": 1006,
+          "y": 426,
+          "zoom": 1.22
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.3,
+          "ate": 2.2,
+          "texto": "Andamento das Obras.",
+          "posicao": "inf-esq"
+        }
+      ]
+    },
+    {
+      "id": "j5-insumos",
+      "clipe": "intro/projetos/j5-insumos.mp4",
+      "inicio": 15,
+      "duracao": 3,
+      "desde": 0.3,
+      "entrada": "corte",
+      "camera": [
+        {
+          "t": 0,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 0.5,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 2.25,
+          "x": 1000,
+          "y": 420,
+          "zoom": 1.2
+        },
+        {
+          "t": 3,
+          "x": 1006,
+          "y": 426,
+          "zoom": 1.22
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.3,
+          "ate": 2.2,
+          "texto": "Insumos da Obra.",
+          "posicao": "inf-esq"
+        }
+      ]
+    }
+  ]
+}

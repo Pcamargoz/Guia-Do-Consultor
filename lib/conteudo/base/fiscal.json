@@ -39,9 +39,28 @@
    },
    {
     "id": "video",
-    "titulo": "Vídeo de apoio",
+    "titulo": "Vídeo introdutório",
     "status": "disponivel",
     "blocos": [
+     {
+      "tipo": "video",
+      "material": "fiscal:video-inicial",
+      "titulo": "Fiscal: vídeo introdutório",
+      "status": "disponivel",
+      "url": "/videos/intro-fiscal.mp4",
+      "duracao_s": 22,
+      "poster": "/videos/intro-fiscal.jpg",
+      "legendas_url": "/videos/intro-fiscal.vtt",
+      "resumo": [
+       {
+        "t": "Guia Inicial · Tabelas, escrituração e documentos."
+       }
+      ],
+      "fontes": [
+       "guia:public/videos/manifest.json",
+       "guia:videos/roteiros/intro-fiscal.json"
+      ]
+     },
      {
       "tipo": "video",
       "material": "fiscal:video-apoio",
@@ -53,7 +72,7 @@
       "legendas_url": "/videos/consultor-07-faturamento.vtt",
       "resumo": [
        {
-        "t": "Apoio do Guia do Consultor, com narração e regras de negócio. O vídeo introdutório deste módulo está em preparação. Faturar o pedido, conferir a nota e finalizar sem transmitir."
+        "t": "Apoio do Guia do Consultor, com narração e regras de negócio. Faturar o pedido, conferir a nota e finalizar sem transmitir."
        }
       ],
       "fontes": [
@@ -64,6 +83,7 @@
     ],
     "fontes": [
      "guia:public/videos/manifest.json",
+     "guia:videos/roteiros/intro-fiscal.json",
      "guia:videos/roteiros/consultor-07-faturamento.json"
     ]
    },
@@ -553,6 +573,14 @@
         ]
        },
        {
+        "id": "video",
+        "texto": [
+         {
+          "t": "Assisti ao vídeo introdutório"
+         }
+        ]
+       },
+       {
         "id": "checklist",
         "texto": [
          {
@@ -563,13 +591,19 @@
       ],
       "fontes": [
        "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
-       "guia:scripts/dados-checklists-estagiarios.mjs#faturamento"
+       "guia:scripts/dados-checklists-estagiarios.mjs#faturamento",
+       "guia:public/videos/manifest.json",
+       "guia:videos/roteiros/intro-fiscal.json",
+       "guia:videos/roteiros/consultor-07-faturamento.json"
       ]
      }
     ],
     "fontes": [
      "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
-     "guia:scripts/dados-checklists-estagiarios.mjs#faturamento"
+     "guia:scripts/dados-checklists-estagiarios.mjs#faturamento",
+     "guia:public/videos/manifest.json",
+     "guia:videos/roteiros/intro-fiscal.json",
+     "guia:videos/roteiros/consultor-07-faturamento.json"
     ]
    },
    {
@@ -580,7 +614,7 @@
      {
       "tipo": "progresso",
       "chave": "inicial:fiscal",
-      "total": 11,
+      "total": 12,
       "api": "/api/checklists-progresso",
       "fontes": [
        "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md"

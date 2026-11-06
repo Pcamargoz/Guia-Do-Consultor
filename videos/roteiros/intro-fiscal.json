@@ -1,0 +1,203 @@
+{
+  "id": "intro-fiscal",
+  "modulo": "fiscal",
+  "fps": 30,
+  "duracao": 22,
+  "musica": {
+    "arquivo": "musica/intro-fiscal.wav",
+    "bpm": 120,
+    "entrada": 4,
+    "final": 17,
+    "acentos": [
+      9
+    ]
+  },
+  "abertura": {
+    "duracao": 4,
+    "titulo": "Fiscal",
+    "linha": "Guia Inicial · Tabelas, escrituração e documentos."
+  },
+  "fechamento": {
+    "inicio": 17,
+    "duracao": 5,
+    "titulo": "Guia Inicial › Fiscal",
+    "linha": "Próximo passo"
+  },
+  "transicao_s": 0.4,
+  "cenas": [
+    {
+      "id": "c1-painel",
+      "clipe": "intro/fiscal/c1-painel.mp4",
+      "inicio": 4,
+      "duracao": 2.5,
+      "desde": 0.3,
+      "entrada": "zoom",
+      "camera": [
+        {
+          "t": 0,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 0.5,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 1.88,
+          "x": 1000,
+          "y": 340,
+          "zoom": 1.15
+        },
+        {
+          "t": 2.5,
+          "x": 1006,
+          "y": 346,
+          "zoom": 1.17
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.3,
+          "ate": 1.7,
+          "texto": "Cadastros e tabelas fiscais.",
+          "posicao": "inf-dir"
+        }
+      ]
+    },
+    {
+      "id": "c2-diagnostico",
+      "clipe": "intro/fiscal/c2-diagnostico.mp4",
+      "inicio": 6.5,
+      "duracao": 4.5,
+      "desde": 0.3,
+      "entrada": "corte",
+      "camera": [
+        {
+          "t": 0,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 0.5,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 3.38,
+          "x": 1000,
+          "y": 420,
+          "zoom": 1.2
+        },
+        {
+          "t": 4.5,
+          "x": 1006,
+          "y": 426,
+          "zoom": 1.22
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.3,
+          "ate": 1.8,
+          "texto": "Diagnóstico Fiscal.",
+          "posicao": "inf-dir"
+        },
+        {
+          "t": 2.2,
+          "ate": 3.7,
+          "texto": "O que falta configurar.",
+          "posicao": "inf-dir"
+        }
+      ]
+    },
+    {
+      "id": "c3-sped",
+      "clipe": "intro/fiscal/c3-sped.mp4",
+      "inicio": 11,
+      "duracao": 2,
+      "desde": 0.3,
+      "entrada": "corte",
+      "camera": [
+        {
+          "t": 0,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 0.4,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 1.5,
+          "x": 1000,
+          "y": 360,
+          "zoom": 1.15
+        },
+        {
+          "t": 2,
+          "x": 1006,
+          "y": 366,
+          "zoom": 1.17
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.3,
+          "ate": 1.2,
+          "texto": "Escrituração Fiscal SPED.",
+          "posicao": "inf-esq"
+        }
+      ]
+    },
+    {
+      "id": "c4-mdfe",
+      "clipe": "intro/fiscal/c4-mdfe.mp4",
+      "inicio": 13,
+      "duracao": 4,
+      "desde": 0.3,
+      "entrada": "corte",
+      "camera": [
+        {
+          "t": 0,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 0.5,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 3,
+          "x": 1000,
+          "y": 420,
+          "zoom": 1.2
+        },
+        {
+          "t": 4,
+          "x": 1006,
+          "y": 426,
+          "zoom": 1.22
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.3,
+          "ate": 3.2,
+          "texto": "MDF-e.",
+          "posicao": "inf-esq"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,203 @@
+{
+  "id": "intro-recebimento",
+  "modulo": "recebimento",
+  "fps": 30,
+  "duracao": 22,
+  "musica": {
+    "arquivo": "musica/intro-recebimento.wav",
+    "bpm": 120,
+    "entrada": 4,
+    "final": 17,
+    "acentos": [
+      9
+    ]
+  },
+  "abertura": {
+    "duracao": 4,
+    "titulo": "Recebimento",
+    "linha": "Guia Inicial · A entrada de materiais."
+  },
+  "fechamento": {
+    "inicio": 17,
+    "duracao": 5,
+    "titulo": "Guia Inicial › Recebimento",
+    "linha": "Próximo passo"
+  },
+  "transicao_s": 0.4,
+  "cenas": [
+    {
+      "id": "r1-dashboard",
+      "clipe": "intro/recebimento/r1-dashboard.mp4",
+      "inicio": 4,
+      "duracao": 2.5,
+      "desde": 0.3,
+      "entrada": "zoom",
+      "camera": [
+        {
+          "t": 0,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 0.5,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 1.88,
+          "x": 1000,
+          "y": 380,
+          "zoom": 1.15
+        },
+        {
+          "t": 2.5,
+          "x": 1006,
+          "y": 386,
+          "zoom": 1.17
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.3,
+          "ate": 1.7,
+          "texto": "O que conferir hoje.",
+          "posicao": "inf-dir"
+        }
+      ]
+    },
+    {
+      "id": "r2-notas",
+      "clipe": "intro/recebimento/r2-notas.mp4",
+      "inicio": 6.5,
+      "duracao": 4,
+      "desde": 0.3,
+      "entrada": "corte",
+      "camera": [
+        {
+          "t": 0,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 0.5,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 3,
+          "x": 1100,
+          "y": 400,
+          "zoom": 1.2
+        },
+        {
+          "t": 4,
+          "x": 1106,
+          "y": 406,
+          "zoom": 1.22
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.3,
+          "ate": 1.55,
+          "texto": "Notas de Recebimento.",
+          "posicao": "inf-esq"
+        },
+        {
+          "t": 1.95,
+          "ate": 3.2,
+          "texto": "Importe o XML.",
+          "posicao": "inf-esq"
+        }
+      ]
+    },
+    {
+      "id": "r3-manifestacao",
+      "clipe": "intro/recebimento/r3-manifestacao.mp4",
+      "inicio": 10.5,
+      "duracao": 3,
+      "desde": 0.3,
+      "entrada": "corte",
+      "camera": [
+        {
+          "t": 0,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 0.5,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 2.25,
+          "x": 1100,
+          "y": 330,
+          "zoom": 1.25
+        },
+        {
+          "t": 3,
+          "x": 1106,
+          "y": 336,
+          "zoom": 1.27
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.3,
+          "ate": 2.2,
+          "texto": "Aguardando manifestação.",
+          "posicao": "inf-esq"
+        }
+      ]
+    },
+    {
+      "id": "r4-terceiros",
+      "clipe": "intro/recebimento/r4-terceiros.mp4",
+      "inicio": 13.5,
+      "duracao": 3.5,
+      "desde": 0.3,
+      "entrada": "corte",
+      "camera": [
+        {
+          "t": 0,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 0.5,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 2.63,
+          "x": 1100,
+          "y": 360,
+          "zoom": 1.2
+        },
+        {
+          "t": 3.5,
+          "x": 1106,
+          "y": 366,
+          "zoom": 1.22
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.3,
+          "ate": 2.7,
+          "texto": "Controle de Terceiros.",
+          "posicao": "inf-esq"
+        }
+      ]
+    }
+  ]
+}

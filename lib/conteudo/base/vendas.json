@@ -45,7 +45,26 @@
      {
       "tipo": "video",
       "material": "vendas:video-inicial",
-      "titulo": "Vendas: o ciclo do pedido de venda",
+      "titulo": "Vendas: vídeo introdutório",
+      "status": "disponivel",
+      "url": "/videos/intro-vendas.mp4",
+      "duracao_s": 47,
+      "poster": "/videos/intro-vendas.jpg",
+      "legendas_url": "/videos/intro-vendas.vtt",
+      "resumo": [
+       {
+        "t": "Guia Inicial · Crie e acompanhe pedidos de venda."
+       }
+      ],
+      "fontes": [
+       "guia:public/videos/manifest.json",
+       "guia:videos/roteiros/intro-vendas.json"
+      ]
+     },
+     {
+      "tipo": "video",
+      "material": "vendas:video-apoio",
+      "titulo": "Vendas: o ciclo do pedido de venda (vídeo de apoio)",
       "status": "disponivel",
       "url": "/videos/fluxo-1-vendas.mp4",
       "duracao_s": 188,
@@ -53,7 +72,7 @@
       "legendas_url": "/videos/fluxo-1-vendas.vtt",
       "resumo": [
        {
-        "t": "O que é o pedido, os status, as quatro regras que mais travam e o pedido criado na tela."
+        "t": "Apoio do Guia do Consultor, com narração e regras de negócio. O que é o pedido, os status, as quatro regras que mais travam e o pedido criado na tela."
        }
       ],
       "fontes": [
@@ -64,6 +83,7 @@
     ],
     "fontes": [
      "guia:public/videos/manifest.json",
+     "guia:videos/roteiros/intro-vendas.json",
      "guia:videos/roteiros/fluxo-1-vendas.json"
     ]
    },
@@ -909,6 +929,7 @@
        "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
        "guia:scripts/dados-checklists-estagiarios.mjs#vendas",
        "guia:public/videos/manifest.json",
+       "guia:videos/roteiros/intro-vendas.json",
        "guia:videos/roteiros/fluxo-1-vendas.json"
       ]
      }
@@ -917,6 +938,7 @@
      "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
      "guia:scripts/dados-checklists-estagiarios.mjs#vendas",
      "guia:public/videos/manifest.json",
+     "guia:videos/roteiros/intro-vendas.json",
      "guia:videos/roteiros/fluxo-1-vendas.json"
     ]
    },

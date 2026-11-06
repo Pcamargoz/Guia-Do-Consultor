@@ -98,3 +98,26 @@ const partes = [`[0:v]${cfg.recorte ?? 'crop=1920:1080:0:80'}${c.lento ? `,setpt
 | cem | c01 nativa, 12 s | 2 | pendência: curto demais para um intro, sem esticar |
 
 Com 4 ou 5 telas de cerca de 6 s, o intro fica entre 33 e 40 s, abaixo do mínimo de 45 s do padrão, a menos que se estique ou se grave mais. Em todas as listas, conferir colunas com nome de pessoa antes de renderizar, e olhar o clipe inteiro: a gravação rola a página no meio de algumas telas (em Follow-up de Entregas da c01, 38 px).
+
+## 6. Intros de duração natural (ordem do responsável, 06/11)
+
+Bruto c02, sem `lento`, cortado pelo `cortar-intro.mjs`. Escolhi os trechos parados de cada tela com `freezedetect`, fora da rolagem. Não publicado. Cada linha abaixo é gravada ao fim do render e da QA do módulo.
+
+| Módulo | Arquivo | QA | Resultado |
+|---|---|---|---|
+| compras | `out/intro-compras-v2.mp4` | duração 34.0 s · volume -14.3 LUFS · pico real -1.2 dBFS | aprovado |
+| primeiros-passos | `out/intro-primeiros-passos.mp4` | duração 25.5 s · volume -14.5 LUFS · pico real -1 dBFS | aprovado |
+| fundacao | `out/intro-fundacao.mp4` | duração 24.0 s · volume -14.5 LUFS · pico real -1 dBFS | aprovado |
+| recebimento | `out/intro-recebimento.mp4` | duração 22.0 s · volume -14.3 LUFS · pico real -1.1 dBFS | aprovado |
+| producao | `out/intro-producao.mp4` | duração 24.0 s · volume -14.5 LUFS · pico real -1 dBFS | aprovado |
+| servicos | `out/intro-servicos.mp4` | duração 28.0 s · volume -14.1 LUFS · pico real -1.1 dBFS | aprovado |
+| projetos | `out/intro-projetos.mp4` | duração 23.0 s · volume -14.1 LUFS · pico real -1.9 dBFS | aprovado |
+| expedicao | `out/intro-expedicao.mp4` | duração 25.5 s · volume -14.5 LUFS · pico real -1 dBFS | aprovado |
+| fiscal | `out/intro-fiscal.mp4` | duração 22.0 s · volume -14.3 LUFS · pico real -1.1 dBFS | aprovado |
+| tarefas | `out/intro-tarefas.mp4` | duração 21.5 s · volume -14.5 LUFS · pico real -1.2 dBFS | aprovado |
+
+Notas da rodada:
+- Todos ficaram acima do mínimo de 20 s, com 5 ou 6 chamadas e sem `lento`. O `intro-compras-previa.mp4` (46 s, com `lento`) fica substituído pelo `intro-compras-v2.mp4`.
+- Quadros conferidos antes do render, no início e no fim de cada clipe. A conferência achou e corrigiu: mensagem com nome de pessoa em Fila de exceções, fim de CPF/CNPJ em Participantes, cliente e orçamento em Projetos, cliente em Vistorias e fim do nome do cliente em Pedidos de Venda.
+- Muito borrão em Cadastros (Participantes e Projetos), Todos os projetos e Dashboard Projetos: a tela é quase toda de nomes. Vale o responsável olhar se essas cenas ficam.
+- Pendências: CEM (12 s, 2 telas) e Faturamento não têm intro nem bruto c02.

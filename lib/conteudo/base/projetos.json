@@ -39,9 +39,28 @@
    },
    {
     "id": "video",
-    "titulo": "Vídeo de apoio",
+    "titulo": "Vídeo introdutório",
     "status": "disponivel",
     "blocos": [
+     {
+      "tipo": "video",
+      "material": "projetos:video-inicial",
+      "titulo": "Projetos e Obras: vídeo introdutório",
+      "status": "disponivel",
+      "url": "/videos/intro-projetos.mp4",
+      "duracao_s": 23,
+      "poster": "/videos/intro-projetos.jpg",
+      "legendas_url": "/videos/intro-projetos.vtt",
+      "resumo": [
+       {
+        "t": "Guia Inicial · A obra em um só lugar."
+       }
+      ],
+      "fontes": [
+       "guia:public/videos/manifest.json",
+       "guia:videos/roteiros/intro-projetos.json"
+      ]
+     },
      {
       "tipo": "video",
       "material": "projetos:video-apoio",
@@ -53,7 +72,7 @@
       "legendas_url": "/videos/consultor-09-projetos.vtt",
       "resumo": [
        {
-        "t": "Apoio do Guia do Consultor, com narração e regras de negócio. O vídeo introdutório deste módulo está em preparação. Cadastro, estágios, painéis e diário de obra."
+        "t": "Apoio do Guia do Consultor, com narração e regras de negócio. Cadastro, estágios, painéis e diário de obra."
        }
       ],
       "fontes": [
@@ -64,6 +83,7 @@
     ],
     "fontes": [
      "guia:public/videos/manifest.json",
+     "guia:videos/roteiros/intro-projetos.json",
      "guia:videos/roteiros/consultor-09-projetos.json"
     ]
    },
@@ -350,6 +370,14 @@
         ]
        },
        {
+        "id": "video",
+        "texto": [
+         {
+          "t": "Assisti ao vídeo introdutório"
+         }
+        ]
+       },
+       {
         "id": "checklist",
         "texto": [
          {
@@ -360,13 +388,19 @@
       ],
       "fontes": [
        "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
-       "guia:scripts/dados-checklists-estagiarios.mjs#projetos"
+       "guia:scripts/dados-checklists-estagiarios.mjs#projetos",
+       "guia:public/videos/manifest.json",
+       "guia:videos/roteiros/intro-projetos.json",
+       "guia:videos/roteiros/consultor-09-projetos.json"
       ]
      }
     ],
     "fontes": [
      "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
-     "guia:scripts/dados-checklists-estagiarios.mjs#projetos"
+     "guia:scripts/dados-checklists-estagiarios.mjs#projetos",
+     "guia:public/videos/manifest.json",
+     "guia:videos/roteiros/intro-projetos.json",
+     "guia:videos/roteiros/consultor-09-projetos.json"
     ]
    },
    {
@@ -377,7 +411,7 @@
      {
       "tipo": "progresso",
       "chave": "inicial:projetos",
-      "total": 9,
+      "total": 10,
       "api": "/api/checklists-progresso",
       "fontes": [
        "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md"

@@ -39,9 +39,28 @@
    },
    {
     "id": "video",
-    "titulo": "Vídeo de apoio",
+    "titulo": "Vídeo introdutório",
     "status": "disponivel",
     "blocos": [
+     {
+      "tipo": "video",
+      "material": "producao:video-inicial",
+      "titulo": "Produção: vídeo introdutório",
+      "status": "disponivel",
+      "url": "/videos/intro-producao.mp4",
+      "duracao_s": 24,
+      "poster": "/videos/intro-producao.jpg",
+      "legendas_url": "/videos/intro-producao.vtt",
+      "resumo": [
+       {
+        "t": "Guia Inicial · Da ordem à separação."
+       }
+      ],
+      "fontes": [
+       "guia:public/videos/manifest.json",
+       "guia:videos/roteiros/intro-producao.json"
+      ]
+     },
      {
       "tipo": "video",
       "material": "producao:video-apoio",
@@ -53,7 +72,7 @@
       "legendas_url": "/videos/consultor-05-producao.vtt",
       "resumo": [
        {
-        "t": "Apoio do Guia do Consultor, com narração e regras de negócio. O vídeo introdutório deste módulo está em preparação. Estrutura, ordem de produção, apontamento e entrada do acabado."
+        "t": "Apoio do Guia do Consultor, com narração e regras de negócio. Estrutura, ordem de produção, apontamento e entrada do acabado."
        }
       ],
       "fontes": [
@@ -64,6 +83,7 @@
     ],
     "fontes": [
      "guia:public/videos/manifest.json",
+     "guia:videos/roteiros/intro-producao.json",
      "guia:videos/roteiros/consultor-05-producao.json"
     ]
    },
@@ -820,6 +840,14 @@
         ]
        },
        {
+        "id": "video",
+        "texto": [
+         {
+          "t": "Assisti ao vídeo introdutório"
+         }
+        ]
+       },
+       {
         "id": "checklist",
         "texto": [
          {
@@ -830,13 +858,19 @@
       ],
       "fontes": [
        "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
-       "guia:scripts/dados-checklists-estagiarios.mjs#producao"
+       "guia:scripts/dados-checklists-estagiarios.mjs#producao",
+       "guia:public/videos/manifest.json",
+       "guia:videos/roteiros/intro-producao.json",
+       "guia:videos/roteiros/consultor-05-producao.json"
       ]
      }
     ],
     "fontes": [
      "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
-     "guia:scripts/dados-checklists-estagiarios.mjs#producao"
+     "guia:scripts/dados-checklists-estagiarios.mjs#producao",
+     "guia:public/videos/manifest.json",
+     "guia:videos/roteiros/intro-producao.json",
+     "guia:videos/roteiros/consultor-05-producao.json"
     ]
    },
    {
@@ -847,7 +881,7 @@
      {
       "tipo": "progresso",
       "chave": "inicial:producao",
-      "total": 16,
+      "total": 17,
       "api": "/api/checklists-progresso",
       "fontes": [
        "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md"

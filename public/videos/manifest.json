@@ -1,6 +1,125 @@
 {
-  "atualizado": "2026-10-29",
+  "atualizado": "2026-11-06",
   "trilhas": [
+    {
+      "id": "introducoes",
+      "nome": "Vídeos introdutórios",
+      "descricao": "Um vídeo curto por módulo, sem narração, para conhecer as telas antes de estudar.",
+      "videos": [
+        {
+          "id": "intro-primeiros-passos",
+          "numero": "Intro",
+          "titulo": "Primeiros passos: vídeo introdutório",
+          "resumo": "Guia Inicial · Como se localizar no sistema.",
+          "duracao": "0 min 26 s",
+          "status": "pronto"
+        },
+        {
+          "id": "intro-fundacao",
+          "numero": "Intro",
+          "titulo": "Cadastros e Fundação: vídeo introdutório",
+          "resumo": "Guia Inicial · A base de todos os módulos.",
+          "duracao": "0 min 24 s",
+          "status": "pronto"
+        },
+        {
+          "id": "intro-crm",
+          "numero": "Intro",
+          "titulo": "CRM: vídeo introdutório",
+          "resumo": "Guia Inicial · Do lead à oportunidade.",
+          "duracao": "0 min 50 s",
+          "status": "pronto"
+        },
+        {
+          "id": "intro-vendas",
+          "numero": "Intro",
+          "titulo": "Vendas: vídeo introdutório",
+          "resumo": "Guia Inicial · Crie e acompanhe pedidos de venda.",
+          "duracao": "0 min 47 s",
+          "status": "pronto"
+        },
+        {
+          "id": "intro-compras",
+          "numero": "Intro",
+          "titulo": "Compras: vídeo introdutório",
+          "resumo": "Guia Inicial · Da solicitação ao pedido.",
+          "duracao": "0 min 34 s",
+          "status": "pronto"
+        },
+        {
+          "id": "intro-recebimento",
+          "numero": "Intro",
+          "titulo": "Recebimento: vídeo introdutório",
+          "resumo": "Guia Inicial · A entrada de materiais.",
+          "duracao": "0 min 22 s",
+          "status": "pronto"
+        },
+        {
+          "id": "intro-estoque",
+          "numero": "Intro",
+          "titulo": "Estoque: vídeo introdutório",
+          "resumo": "Guia Inicial · Saldos, movimentos e locais.",
+          "duracao": "0 min 45 s",
+          "status": "pronto"
+        },
+        {
+          "id": "intro-producao",
+          "numero": "Intro",
+          "titulo": "Produção: vídeo introdutório",
+          "resumo": "Guia Inicial · Da ordem à separação.",
+          "duracao": "0 min 24 s",
+          "status": "pronto"
+        },
+        {
+          "id": "intro-servicos",
+          "numero": "Intro",
+          "titulo": "Serviços e Instalação: vídeo introdutório",
+          "resumo": "Guia Inicial · Da medição à assistência.",
+          "duracao": "0 min 28 s",
+          "status": "pronto"
+        },
+        {
+          "id": "intro-projetos",
+          "numero": "Intro",
+          "titulo": "Projetos e Obras: vídeo introdutório",
+          "resumo": "Guia Inicial · A obra em um só lugar.",
+          "duracao": "0 min 23 s",
+          "status": "pronto"
+        },
+        {
+          "id": "intro-expedicao",
+          "numero": "Intro",
+          "titulo": "Expedição: vídeo introdutório",
+          "resumo": "Guia Inicial · Da carga à entrega.",
+          "duracao": "0 min 26 s",
+          "status": "pronto"
+        },
+        {
+          "id": "intro-fiscal",
+          "numero": "Intro",
+          "titulo": "Fiscal: vídeo introdutório",
+          "resumo": "Guia Inicial · Tabelas, escrituração e documentos.",
+          "duracao": "0 min 22 s",
+          "status": "pronto"
+        },
+        {
+          "id": "intro-financeiro",
+          "numero": "Intro",
+          "titulo": "Financeiro: vídeo introdutório",
+          "resumo": "Guia Inicial · Receber, pagar e acompanhar o caixa.",
+          "duracao": "0 min 48 s",
+          "status": "pronto"
+        },
+        {
+          "id": "intro-tarefas",
+          "numero": "Intro",
+          "titulo": "Tarefas: vídeo introdutório",
+          "resumo": "Guia Inicial · Quadros, cartões e responsáveis.",
+          "duracao": "0 min 22 s",
+          "status": "pronto"
+        }
+      ]
+    },
     {
       "id": "fluxos",
       "nome": "Fluxos principais do estagiário",

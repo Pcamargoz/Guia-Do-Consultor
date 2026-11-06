@@ -1,0 +1,156 @@
+{
+  "fonte": "midia/brutos/recebimento/recebimento_bruto_c02_v01.mp4",
+  "recorte": "crop=1920:1080:0:0",
+  "observacao": "Bruto c02, 1920x1080 nativo. Duração natural: sem lento. Trechos parados escolhidos por freezedetect, sem a rolagem; caixas conferidas em quadros extraídos em 06/11/2026.",
+  "caixas": {
+    "A_B_cabecalho": {
+      "x": 1395,
+      "y": 8,
+      "w": 510,
+      "h": 56,
+      "porque": "selo do tenant, nome, cargo e avatar do usuário"
+    },
+    "rb_faixa": {
+      "x": 305,
+      "y": 250,
+      "w": 560,
+      "h": 42,
+      "porque": "resumo com valor"
+    },
+    "rb_faturar": {
+      "x": 1570,
+      "y": 325,
+      "w": 180,
+      "h": 45,
+      "porque": "valor"
+    },
+    "rb_k1": {
+      "x": 305,
+      "y": 462,
+      "w": 180,
+      "h": 58,
+      "porque": "valor"
+    },
+    "rb_k2": {
+      "x": 625,
+      "y": 492,
+      "w": 110,
+      "h": 26,
+      "porque": "valor"
+    },
+    "rb_k3": {
+      "x": 945,
+      "y": 492,
+      "w": 110,
+      "h": 26,
+      "porque": "valor"
+    },
+    "rb_lista": {
+      "x": 305,
+      "y": 612,
+      "w": 760,
+      "h": 170,
+      "porque": "códigos NR e valores"
+    },
+    "rb_destaque": {
+      "x": 1745,
+      "y": 975,
+      "w": 120,
+      "h": 40,
+      "porque": "valor"
+    },
+    "rb_eixo": {
+      "x": 300,
+      "y": 1040,
+      "w": 120,
+      "h": 40,
+      "porque": "valor do gráfico"
+    },
+    "rc_k1": {
+      "x": 295,
+      "y": 220,
+      "w": 100,
+      "h": 28,
+      "porque": "valor"
+    },
+    "rc_k2": {
+      "x": 690,
+      "y": 220,
+      "w": 100,
+      "h": 28,
+      "porque": "valor"
+    },
+    "rc_nr": {
+      "x": 310,
+      "y": 700,
+      "w": 100,
+      "h": 36,
+      "porque": "código NR"
+    },
+    "rc_for": {
+      "x": 1105,
+      "y": 700,
+      "w": 60,
+      "h": 36,
+      "porque": "fornecedor"
+    },
+    "rc_val": {
+      "x": 1340,
+      "y": 700,
+      "w": 100,
+      "h": 36,
+      "porque": "valor"
+    }
+  },
+  "cortes": [
+    {
+      "id": "r1-dashboard",
+      "in": 0.2,
+      "out": 3.25,
+      "borrar": [
+        "A_B_cabecalho",
+        "rb_faixa",
+        "rb_faturar",
+        "rb_k1",
+        "rb_k2",
+        "rb_k3",
+        "rb_lista",
+        "rb_destaque",
+        "rb_eixo"
+      ],
+      "porque": "O que conferir hoje."
+    },
+    {
+      "id": "r2-notas",
+      "in": 8.3,
+      "out": 12.85,
+      "borrar": [
+        "A_B_cabecalho",
+        "rc_k1",
+        "rc_k2",
+        "rc_nr",
+        "rc_for",
+        "rc_val"
+      ],
+      "porque": "Notas de Recebimento."
+    },
+    {
+      "id": "r3-manifestacao",
+      "in": 13.3,
+      "out": 16.85,
+      "borrar": [
+        "A_B_cabecalho"
+      ],
+      "porque": "Aguardando manifestação."
+    },
+    {
+      "id": "r4-terceiros",
+      "in": 19.6,
+      "out": 23.65,
+      "borrar": [
+        "A_B_cabecalho"
+      ],
+      "porque": "Controle de Terceiros."
+    }
+  ]
+}

@@ -1,0 +1,262 @@
+{
+  "id": "intro-producao",
+  "modulo": "producao",
+  "fps": 30,
+  "duracao": 24,
+  "musica": {
+    "arquivo": "musica/intro-producao.wav",
+    "bpm": 120,
+    "entrada": 4,
+    "final": 19,
+    "acentos": [
+      10
+    ]
+  },
+  "abertura": {
+    "duracao": 4,
+    "titulo": "Produção",
+    "linha": "Guia Inicial · Da ordem à separação."
+  },
+  "fechamento": {
+    "inicio": 19,
+    "duracao": 5,
+    "titulo": "Guia Inicial › Produção",
+    "linha": "Próximo passo"
+  },
+  "transicao_s": 0.4,
+  "cenas": [
+    {
+      "id": "d1-dashboard",
+      "clipe": "intro/producao/d1-dashboard.mp4",
+      "inicio": 4,
+      "duracao": 2.5,
+      "desde": 0.3,
+      "entrada": "zoom",
+      "camera": [
+        {
+          "t": 0,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 0.5,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 1.88,
+          "x": 1000,
+          "y": 350,
+          "zoom": 1.2
+        },
+        {
+          "t": 2.5,
+          "x": 1006,
+          "y": 356,
+          "zoom": 1.22
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.3,
+          "ate": 1.7,
+          "texto": "Dashboard de Produção.",
+          "posicao": "inf-dir"
+        }
+      ]
+    },
+    {
+      "id": "d2a-ordens",
+      "clipe": "intro/producao/d2a-ordens.mp4",
+      "inicio": 6.5,
+      "duracao": 1.5,
+      "desde": 0.3,
+      "entrada": "corte",
+      "camera": [
+        {
+          "t": 0,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 0.3,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 1.13,
+          "x": 1000,
+          "y": 500,
+          "zoom": 1.08
+        },
+        {
+          "t": 1.5,
+          "x": 1006,
+          "y": 506,
+          "zoom": 1.1
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.3,
+          "ate": 1.95,
+          "texto": "Ordem de produção.",
+          "posicao": "inf-dir"
+        }
+      ]
+    },
+    {
+      "id": "d2b-ordens",
+      "clipe": "intro/producao/d2b-ordens.mp4",
+      "inicio": 8,
+      "duracao": 1,
+      "desde": 0.3,
+      "entrada": "corte",
+      "camera": [
+        {
+          "t": 0,
+          "x": 1000,
+          "y": 500,
+          "zoom": 1.08
+        },
+        {
+          "t": 1,
+          "x": 1000,
+          "y": 500,
+          "zoom": 1.09
+        }
+      ],
+      "textos": []
+    },
+    {
+      "id": "d3-painel",
+      "clipe": "intro/producao/d3-painel.mp4",
+      "inicio": 9,
+      "duracao": 3.5,
+      "desde": 0.3,
+      "entrada": "corte",
+      "camera": [
+        {
+          "t": 0,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 0.5,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 2.63,
+          "x": 1100,
+          "y": 340,
+          "zoom": 1.2
+        },
+        {
+          "t": 3.5,
+          "x": 1106,
+          "y": 346,
+          "zoom": 1.22
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.3,
+          "ate": 2.7,
+          "texto": "Painel de fábrica.",
+          "posicao": "inf-dir"
+        }
+      ]
+    },
+    {
+      "id": "d4-excecoes",
+      "clipe": "intro/producao/d4-excecoes.mp4",
+      "inicio": 12.5,
+      "duracao": 3,
+      "desde": 0.3,
+      "entrada": "corte",
+      "camera": [
+        {
+          "t": 0,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 0.5,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 2.25,
+          "x": 1000,
+          "y": 360,
+          "zoom": 1.15
+        },
+        {
+          "t": 3,
+          "x": 1006,
+          "y": 366,
+          "zoom": 1.17
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.3,
+          "ate": 2.2,
+          "texto": "Fila de exceções.",
+          "posicao": "inf-esq"
+        }
+      ]
+    },
+    {
+      "id": "d5-separacao",
+      "clipe": "intro/producao/d5-separacao.mp4",
+      "inicio": 15.5,
+      "duracao": 3.5,
+      "desde": 0.3,
+      "entrada": "corte",
+      "camera": [
+        {
+          "t": 0,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 0.5,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 2.63,
+          "x": 1100,
+          "y": 420,
+          "zoom": 1.2
+        },
+        {
+          "t": 3.5,
+          "x": 1106,
+          "y": 426,
+          "zoom": 1.22
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.3,
+          "ate": 2.7,
+          "texto": "Separação de materiais.",
+          "posicao": "inf-esq"
+        }
+      ]
+    }
+  ]
+}

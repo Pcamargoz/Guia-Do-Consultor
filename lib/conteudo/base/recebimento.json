@@ -39,9 +39,28 @@
    },
    {
     "id": "video",
-    "titulo": "Vídeo de apoio",
+    "titulo": "Vídeo introdutório",
     "status": "disponivel",
     "blocos": [
+     {
+      "tipo": "video",
+      "material": "recebimento:video-inicial",
+      "titulo": "Recebimento: vídeo introdutório",
+      "status": "disponivel",
+      "url": "/videos/intro-recebimento.mp4",
+      "duracao_s": 22,
+      "poster": "/videos/intro-recebimento.jpg",
+      "legendas_url": "/videos/intro-recebimento.vtt",
+      "resumo": [
+       {
+        "t": "Guia Inicial · A entrada de materiais."
+       }
+      ],
+      "fontes": [
+       "guia:public/videos/manifest.json",
+       "guia:videos/roteiros/intro-recebimento.json"
+      ]
+     },
      {
       "tipo": "video",
       "material": "recebimento:video-apoio",
@@ -53,7 +72,7 @@
       "legendas_url": "/videos/consultor-01-suprimentos.vtt",
       "resumo": [
        {
-        "t": "Apoio do Guia do Consultor, com narração e regras de negócio. O vídeo introdutório deste módulo está em preparação. Cotação opcional, a natureza da operação que define o CFOP, a nota com dois números e a linha do tempo do pedido."
+        "t": "Apoio do Guia do Consultor, com narração e regras de negócio. Cotação opcional, a natureza da operação que define o CFOP, a nota com dois números e a linha do tempo do pedido."
        }
       ],
       "fontes": [
@@ -64,6 +83,7 @@
     ],
     "fontes": [
      "guia:public/videos/manifest.json",
+     "guia:videos/roteiros/intro-recebimento.json",
      "guia:videos/roteiros/consultor-01-suprimentos.json"
     ]
    },
@@ -653,6 +673,14 @@
         ]
        },
        {
+        "id": "video",
+        "texto": [
+         {
+          "t": "Assisti ao vídeo introdutório"
+         }
+        ]
+       },
+       {
         "id": "checklist",
         "texto": [
          {
@@ -663,13 +691,19 @@
       ],
       "fontes": [
        "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
-       "guia:scripts/dados-checklists-estagiarios.mjs#recebimento"
+       "guia:scripts/dados-checklists-estagiarios.mjs#recebimento",
+       "guia:public/videos/manifest.json",
+       "guia:videos/roteiros/intro-recebimento.json",
+       "guia:videos/roteiros/consultor-01-suprimentos.json"
       ]
      }
     ],
     "fontes": [
      "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
-     "guia:scripts/dados-checklists-estagiarios.mjs#recebimento"
+     "guia:scripts/dados-checklists-estagiarios.mjs#recebimento",
+     "guia:public/videos/manifest.json",
+     "guia:videos/roteiros/intro-recebimento.json",
+     "guia:videos/roteiros/consultor-01-suprimentos.json"
     ]
    },
    {
@@ -680,7 +714,7 @@
      {
       "tipo": "progresso",
       "chave": "inicial:recebimento",
-      "total": 11,
+      "total": 12,
       "api": "/api/checklists-progresso",
       "fontes": [
        "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md"

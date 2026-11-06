@@ -1,0 +1,167 @@
+{
+  "id": "intro-fundacao",
+  "modulo": "fundacao",
+  "fps": 30,
+  "duracao": 24,
+  "musica": {
+    "arquivo": "musica/intro-fundacao.wav",
+    "bpm": 120,
+    "entrada": 4,
+    "final": 19,
+    "acentos": [
+      10
+    ]
+  },
+  "abertura": {
+    "duracao": 4,
+    "titulo": "Cadastros",
+    "linha": "Guia Inicial · A base de todos os módulos."
+  },
+  "fechamento": {
+    "inicio": 19,
+    "duracao": 5,
+    "titulo": "Guia Inicial › Cadastros",
+    "linha": "Próximo passo"
+  },
+  "transicao_s": 0.4,
+  "cenas": [
+    {
+      "id": "f1-participantes",
+      "clipe": "intro/fundacao/f1-participantes.mp4",
+      "inicio": 4,
+      "duracao": 5.5,
+      "desde": 0.3,
+      "entrada": "zoom",
+      "camera": [
+        {
+          "t": 0,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 0.5,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 4.13,
+          "x": 1100,
+          "y": 300,
+          "zoom": 1.2
+        },
+        {
+          "t": 5.5,
+          "x": 1106,
+          "y": 306,
+          "zoom": 1.22
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.3,
+          "ate": 2.3,
+          "texto": "Participantes.",
+          "posicao": "inf-esq"
+        },
+        {
+          "t": 2.7,
+          "ate": 4.7,
+          "texto": "Clientes, fornecedores e outros.",
+          "posicao": "inf-esq"
+        }
+      ]
+    },
+    {
+      "id": "f2-produtos",
+      "clipe": "intro/fundacao/f2-produtos.mp4",
+      "inicio": 9.5,
+      "duracao": 5,
+      "desde": 0.3,
+      "entrada": "corte",
+      "camera": [
+        {
+          "t": 0,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 0.5,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 3.75,
+          "x": 1100,
+          "y": 300,
+          "zoom": 1.2
+        },
+        {
+          "t": 5,
+          "x": 1106,
+          "y": 306,
+          "zoom": 1.22
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.3,
+          "ate": 2.05,
+          "texto": "Produtos.",
+          "posicao": "inf-esq"
+        },
+        {
+          "t": 2.45,
+          "ate": 4.2,
+          "texto": "Categoria e status de cada um.",
+          "posicao": "inf-esq"
+        }
+      ]
+    },
+    {
+      "id": "f3-projetos",
+      "clipe": "intro/fundacao/f3-projetos.mp4",
+      "inicio": 14.5,
+      "duracao": 4.5,
+      "desde": 0.3,
+      "entrada": "corte",
+      "camera": [
+        {
+          "t": 0,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 0.5,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 3.38,
+          "x": 1100,
+          "y": 300,
+          "zoom": 1.2
+        },
+        {
+          "t": 4.5,
+          "x": 1106,
+          "y": 306,
+          "zoom": 1.22
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.3,
+          "ate": 3.7,
+          "texto": "Projetos.",
+          "posicao": "inf-esq"
+        }
+      ]
+    }
+  ]
+}

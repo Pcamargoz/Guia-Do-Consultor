@@ -21,16 +21,17 @@
    "materiais": [
     {
      "modulo": "primeiros-passos",
-     "duracao_s": null,
-     "url": null,
+     "duracao_s": 26,
+     "url": "/videos/intro-primeiros-passos.mp4",
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md"
+      "guia:public/videos/manifest.json",
+      "guia:videos/roteiros/intro-primeiros-passos.json"
      ],
      "id": "primeiros-passos:video-inicial",
      "tipo": "video",
      "jornada": "inicial",
-     "titulo": "Vídeo introdutório",
-     "status": "em-preparacao"
+     "titulo": "Primeiros passos: vídeo introdutório",
+     "status": "disponivel"
     },
     {
      "modulo": "primeiros-passos",
@@ -128,16 +129,17 @@
    "materiais": [
     {
      "modulo": "fundacao",
-     "duracao_s": null,
-     "url": null,
+     "duracao_s": 24,
+     "url": "/videos/intro-fundacao.mp4",
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md"
+      "guia:public/videos/manifest.json",
+      "guia:videos/roteiros/intro-fundacao.json"
      ],
      "id": "fundacao:video-inicial",
      "tipo": "video",
      "jornada": "inicial",
-     "titulo": "Vídeo introdutório",
-     "status": "em-preparacao"
+     "titulo": "Cadastros e Fundação: vídeo introdutório",
+     "status": "disponivel"
     },
     {
      "modulo": "fundacao",
@@ -253,16 +255,17 @@
    "materiais": [
     {
      "modulo": "crm",
-     "duracao_s": null,
-     "url": null,
+     "duracao_s": 50,
+     "url": "/videos/intro-crm.mp4",
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md"
+      "guia:public/videos/manifest.json",
+      "guia:videos/roteiros/intro-crm.json"
      ],
      "id": "crm:video-inicial",
      "tipo": "video",
      "jornada": "inicial",
-     "titulo": "Vídeo introdutório",
-     "status": "em-preparacao"
+     "titulo": "CRM: vídeo introdutório",
+     "status": "disponivel"
     },
     {
      "modulo": "crm",
@@ -476,16 +479,30 @@
    "materiais": [
     {
      "modulo": "vendas",
+     "duracao_s": 47,
+     "url": "/videos/intro-vendas.mp4",
+     "fontes": [
+      "guia:public/videos/manifest.json",
+      "guia:videos/roteiros/intro-vendas.json"
+     ],
+     "id": "vendas:video-inicial",
+     "tipo": "video",
+     "jornada": "inicial",
+     "titulo": "Vendas: vídeo introdutório",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "vendas",
      "duracao_s": 188,
      "url": "/videos/fluxo-1-vendas.mp4",
      "fontes": [
       "guia:public/videos/manifest.json",
       "guia:videos/roteiros/fluxo-1-vendas.json"
      ],
-     "id": "vendas:video-inicial",
+     "id": "vendas:video-apoio",
      "tipo": "video",
      "jornada": "inicial",
-     "titulo": "Vendas: o ciclo do pedido de venda",
+     "titulo": "Vendas: o ciclo do pedido de venda (vídeo de apoio)",
      "status": "disponivel"
     },
     {
@@ -641,16 +658,17 @@
    "materiais": [
     {
      "modulo": "compras",
-     "duracao_s": null,
-     "url": null,
+     "duracao_s": 34,
+     "url": "/videos/intro-compras.mp4",
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md"
+      "guia:public/videos/manifest.json",
+      "guia:videos/roteiros/intro-compras.json"
      ],
      "id": "compras:video-inicial",
      "tipo": "video",
      "jornada": "inicial",
-     "titulo": "Vídeo introdutório",
-     "status": "em-preparacao"
+     "titulo": "Compras: vídeo introdutório",
+     "status": "disponivel"
     },
     {
      "modulo": "compras",
@@ -781,16 +799,17 @@
    "materiais": [
     {
      "modulo": "recebimento",
-     "duracao_s": null,
-     "url": null,
+     "duracao_s": 22,
+     "url": "/videos/intro-recebimento.mp4",
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md"
+      "guia:public/videos/manifest.json",
+      "guia:videos/roteiros/intro-recebimento.json"
      ],
      "id": "recebimento:video-inicial",
      "tipo": "video",
      "jornada": "inicial",
-     "titulo": "Vídeo introdutório",
-     "status": "em-preparacao"
+     "titulo": "Recebimento: vídeo introdutório",
+     "status": "disponivel"
     },
     {
      "modulo": "recebimento",
@@ -919,16 +938,17 @@
    "materiais": [
     {
      "modulo": "estoque",
-     "duracao_s": null,
-     "url": null,
+     "duracao_s": 45,
+     "url": "/videos/intro-estoque.mp4",
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md"
+      "guia:public/videos/manifest.json",
+      "guia:videos/roteiros/intro-estoque.json"
      ],
      "id": "estoque:video-inicial",
      "tipo": "video",
      "jornada": "inicial",
-     "titulo": "Vídeo introdutório",
-     "status": "em-preparacao"
+     "titulo": "Estoque: vídeo introdutório",
+     "status": "disponivel"
     },
     {
      "modulo": "estoque",
@@ -1063,16 +1083,17 @@
    "materiais": [
     {
      "modulo": "producao",
-     "duracao_s": null,
-     "url": null,
+     "duracao_s": 24,
+     "url": "/videos/intro-producao.mp4",
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md"
+      "guia:public/videos/manifest.json",
+      "guia:videos/roteiros/intro-producao.json"
      ],
      "id": "producao:video-inicial",
      "tipo": "video",
      "jornada": "inicial",
-     "titulo": "Vídeo introdutório",
-     "status": "em-preparacao"
+     "titulo": "Produção: vídeo introdutório",
+     "status": "disponivel"
     },
     {
      "modulo": "producao",
@@ -1205,16 +1226,17 @@
    "materiais": [
     {
      "modulo": "servicos",
-     "duracao_s": null,
-     "url": null,
+     "duracao_s": 28,
+     "url": "/videos/intro-servicos.mp4",
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md"
+      "guia:public/videos/manifest.json",
+      "guia:videos/roteiros/intro-servicos.json"
      ],
      "id": "servicos:video-inicial",
      "tipo": "video",
      "jornada": "inicial",
-     "titulo": "Vídeo introdutório",
-     "status": "em-preparacao"
+     "titulo": "Serviços e Instalação: vídeo introdutório",
+     "status": "disponivel"
     },
     {
      "modulo": "servicos",
@@ -1346,16 +1368,17 @@
    "materiais": [
     {
      "modulo": "projetos",
-     "duracao_s": null,
-     "url": null,
+     "duracao_s": 23,
+     "url": "/videos/intro-projetos.mp4",
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md"
+      "guia:public/videos/manifest.json",
+      "guia:videos/roteiros/intro-projetos.json"
      ],
      "id": "projetos:video-inicial",
      "tipo": "video",
      "jornada": "inicial",
-     "titulo": "Vídeo introdutório",
-     "status": "em-preparacao"
+     "titulo": "Projetos e Obras: vídeo introdutório",
+     "status": "disponivel"
     },
     {
      "modulo": "projetos",
@@ -1482,16 +1505,17 @@
    "materiais": [
     {
      "modulo": "expedicao",
-     "duracao_s": null,
-     "url": null,
+     "duracao_s": 26,
+     "url": "/videos/intro-expedicao.mp4",
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md"
+      "guia:public/videos/manifest.json",
+      "guia:videos/roteiros/intro-expedicao.json"
      ],
      "id": "expedicao:video-inicial",
      "tipo": "video",
      "jornada": "inicial",
-     "titulo": "Vídeo introdutório",
-     "status": "em-preparacao"
+     "titulo": "Expedição: vídeo introdutório",
+     "status": "disponivel"
     },
     {
      "modulo": "expedicao",
@@ -1778,16 +1802,17 @@
    "materiais": [
     {
      "modulo": "fiscal",
-     "duracao_s": null,
-     "url": null,
+     "duracao_s": 22,
+     "url": "/videos/intro-fiscal.mp4",
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md"
+      "guia:public/videos/manifest.json",
+      "guia:videos/roteiros/intro-fiscal.json"
      ],
      "id": "fiscal:video-inicial",
      "tipo": "video",
      "jornada": "inicial",
-     "titulo": "Vídeo introdutório",
-     "status": "em-preparacao"
+     "titulo": "Fiscal: vídeo introdutório",
+     "status": "disponivel"
     },
     {
      "modulo": "fiscal",
@@ -1901,16 +1926,30 @@
    "materiais": [
     {
      "modulo": "financeiro",
+     "duracao_s": 48,
+     "url": "/videos/intro-financeiro.mp4",
+     "fontes": [
+      "guia:public/videos/manifest.json",
+      "guia:videos/roteiros/intro-financeiro.json"
+     ],
+     "id": "financeiro:video-inicial",
+     "tipo": "video",
+     "jornada": "inicial",
+     "titulo": "Financeiro: vídeo introdutório",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "financeiro",
      "duracao_s": 184,
      "url": "/videos/consultor-08-financeiro.mp4",
      "fontes": [
       "guia:public/videos/manifest.json",
       "guia:videos/roteiros/consultor-08-financeiro.json"
      ],
-     "id": "financeiro:video-inicial",
+     "id": "financeiro:video-apoio",
      "tipo": "video",
      "jornada": "inicial",
-     "titulo": "Financeiro: do título ao fluxo de caixa",
+     "titulo": "Financeiro: do título ao fluxo de caixa (vídeo de apoio)",
      "status": "disponivel"
     },
     {
@@ -2047,16 +2086,17 @@
    "materiais": [
     {
      "modulo": "tarefas",
-     "duracao_s": null,
-     "url": null,
+     "duracao_s": 22,
+     "url": "/videos/intro-tarefas.mp4",
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md"
+      "guia:public/videos/manifest.json",
+      "guia:videos/roteiros/intro-tarefas.json"
      ],
      "id": "tarefas:video-inicial",
      "tipo": "video",
      "jornada": "inicial",
-     "titulo": "Vídeo introdutório",
-     "status": "em-preparacao"
+     "titulo": "Tarefas: vídeo introdutório",
+     "status": "disponivel"
     },
     {
      "modulo": "tarefas",
@@ -2425,6 +2465,24 @@
   }
  ],
  "caminhos": {
+  "/videos/intro-primeiros-passos.mp4": [
+   {
+    "modulo": "primeiros-passos",
+    "tipo": "video"
+   }
+  ],
+  "/videos/intro-primeiros-passos.jpg": [
+   {
+    "modulo": "primeiros-passos",
+    "tipo": "video"
+   }
+  ],
+  "/videos/intro-primeiros-passos.vtt": [
+   {
+    "modulo": "primeiros-passos",
+    "tipo": "video"
+   }
+  ],
   "/checklists/estagiarios/00-onboarding-estagiario.html": [
    {
     "modulo": "primeiros-passos",
@@ -2437,6 +2495,24 @@
     "tipo": "checklist"
    }
   ],
+  "/videos/intro-fundacao.mp4": [
+   {
+    "modulo": "fundacao",
+    "tipo": "video"
+   }
+  ],
+  "/videos/intro-fundacao.jpg": [
+   {
+    "modulo": "fundacao",
+    "tipo": "video"
+   }
+  ],
+  "/videos/intro-fundacao.vtt": [
+   {
+    "modulo": "fundacao",
+    "tipo": "video"
+   }
+  ],
   "/checklists/estagiarios/02-cadastros-basicos.html": [
    {
     "modulo": "fundacao",
@@ -2447,6 +2523,24 @@
    {
     "modulo": "fundacao",
     "tipo": "checklist"
+   }
+  ],
+  "/videos/intro-crm.mp4": [
+   {
+    "modulo": "crm",
+    "tipo": "video"
+   }
+  ],
+  "/videos/intro-crm.jpg": [
+   {
+    "modulo": "crm",
+    "tipo": "video"
+   }
+  ],
+  "/videos/intro-crm.vtt": [
+   {
+    "modulo": "crm",
+    "tipo": "video"
    }
   ],
   "/videos/consultor-03-comercial.mp4": [
@@ -2495,6 +2589,24 @@
    {
     "modulo": "cem",
     "tipo": "checklist"
+   }
+  ],
+  "/videos/intro-vendas.mp4": [
+   {
+    "modulo": "vendas",
+    "tipo": "video"
+   }
+  ],
+  "/videos/intro-vendas.jpg": [
+   {
+    "modulo": "vendas",
+    "tipo": "video"
+   }
+  ],
+  "/videos/intro-vendas.vtt": [
+   {
+    "modulo": "vendas",
+    "tipo": "video"
    }
   ],
   "/videos/fluxo-1-vendas.mp4": [
@@ -2563,6 +2675,24 @@
     "tipo": "video"
    }
   ],
+  "/videos/intro-compras.mp4": [
+   {
+    "modulo": "compras",
+    "tipo": "video"
+   }
+  ],
+  "/videos/intro-compras.jpg": [
+   {
+    "modulo": "compras",
+    "tipo": "video"
+   }
+  ],
+  "/videos/intro-compras.vtt": [
+   {
+    "modulo": "compras",
+    "tipo": "video"
+   }
+  ],
   "/videos/consultor-01-suprimentos.mp4": [
    {
     "modulo": "compras",
@@ -2605,6 +2735,24 @@
     "tipo": "checklist"
    }
   ],
+  "/videos/intro-recebimento.mp4": [
+   {
+    "modulo": "recebimento",
+    "tipo": "video"
+   }
+  ],
+  "/videos/intro-recebimento.jpg": [
+   {
+    "modulo": "recebimento",
+    "tipo": "video"
+   }
+  ],
+  "/videos/intro-recebimento.vtt": [
+   {
+    "modulo": "recebimento",
+    "tipo": "video"
+   }
+  ],
   "/checklists/estagiarios/06-recebimento.html": [
    {
     "modulo": "recebimento",
@@ -2615,6 +2763,24 @@
    {
     "modulo": "recebimento",
     "tipo": "checklist"
+   }
+  ],
+  "/videos/intro-estoque.mp4": [
+   {
+    "modulo": "estoque",
+    "tipo": "video"
+   }
+  ],
+  "/videos/intro-estoque.jpg": [
+   {
+    "modulo": "estoque",
+    "tipo": "video"
+   }
+  ],
+  "/videos/intro-estoque.vtt": [
+   {
+    "modulo": "estoque",
+    "tipo": "video"
    }
   ],
   "/videos/consultor-04-estoque.mp4": [
@@ -2647,6 +2813,24 @@
     "tipo": "checklist"
    }
   ],
+  "/videos/intro-producao.mp4": [
+   {
+    "modulo": "producao",
+    "tipo": "video"
+   }
+  ],
+  "/videos/intro-producao.jpg": [
+   {
+    "modulo": "producao",
+    "tipo": "video"
+   }
+  ],
+  "/videos/intro-producao.vtt": [
+   {
+    "modulo": "producao",
+    "tipo": "video"
+   }
+  ],
   "/videos/consultor-05-producao.mp4": [
    {
     "modulo": "producao",
@@ -2675,6 +2859,24 @@
    {
     "modulo": "producao",
     "tipo": "checklist"
+   }
+  ],
+  "/videos/intro-servicos.mp4": [
+   {
+    "modulo": "servicos",
+    "tipo": "video"
+   }
+  ],
+  "/videos/intro-servicos.jpg": [
+   {
+    "modulo": "servicos",
+    "tipo": "video"
+   }
+  ],
+  "/videos/intro-servicos.vtt": [
+   {
+    "modulo": "servicos",
+    "tipo": "video"
    }
   ],
   "/videos/consultor-02-servicos.mp4": [
@@ -2707,6 +2909,24 @@
     "tipo": "checklist"
    }
   ],
+  "/videos/intro-projetos.mp4": [
+   {
+    "modulo": "projetos",
+    "tipo": "video"
+   }
+  ],
+  "/videos/intro-projetos.jpg": [
+   {
+    "modulo": "projetos",
+    "tipo": "video"
+   }
+  ],
+  "/videos/intro-projetos.vtt": [
+   {
+    "modulo": "projetos",
+    "tipo": "video"
+   }
+  ],
   "/videos/consultor-09-projetos.mp4": [
    {
     "modulo": "projetos",
@@ -2735,6 +2955,24 @@
    {
     "modulo": "projetos",
     "tipo": "checklist"
+   }
+  ],
+  "/videos/intro-expedicao.mp4": [
+   {
+    "modulo": "expedicao",
+    "tipo": "video"
+   }
+  ],
+  "/videos/intro-expedicao.jpg": [
+   {
+    "modulo": "expedicao",
+    "tipo": "video"
+   }
+  ],
+  "/videos/intro-expedicao.vtt": [
+   {
+    "modulo": "expedicao",
+    "tipo": "video"
    }
   ],
   "/videos/consultor-06-expedicao.mp4": [
@@ -2819,10 +3057,46 @@
     "tipo": "checklist"
    }
   ],
+  "/videos/intro-fiscal.mp4": [
+   {
+    "modulo": "fiscal",
+    "tipo": "video"
+   }
+  ],
+  "/videos/intro-fiscal.jpg": [
+   {
+    "modulo": "fiscal",
+    "tipo": "video"
+   }
+  ],
+  "/videos/intro-fiscal.vtt": [
+   {
+    "modulo": "fiscal",
+    "tipo": "video"
+   }
+  ],
   "/checklists/consultores/implantacao-06-fiscal.html": [
    {
     "modulo": "fiscal",
     "tipo": "checklist"
+   }
+  ],
+  "/videos/intro-financeiro.mp4": [
+   {
+    "modulo": "financeiro",
+    "tipo": "video"
+   }
+  ],
+  "/videos/intro-financeiro.jpg": [
+   {
+    "modulo": "financeiro",
+    "tipo": "video"
+   }
+  ],
+  "/videos/intro-financeiro.vtt": [
+   {
+    "modulo": "financeiro",
+    "tipo": "video"
    }
   ],
   "/videos/consultor-08-financeiro.mp4": [
@@ -2859,6 +3133,24 @@
    {
     "modulo": "financeiro",
     "tipo": "checklist"
+   }
+  ],
+  "/videos/intro-tarefas.mp4": [
+   {
+    "modulo": "tarefas",
+    "tipo": "video"
+   }
+  ],
+  "/videos/intro-tarefas.jpg": [
+   {
+    "modulo": "tarefas",
+    "tipo": "video"
+   }
+  ],
+  "/videos/intro-tarefas.vtt": [
+   {
+    "modulo": "tarefas",
+    "tipo": "video"
    }
   ],
   "/videos/consultor-10-tarefas.mp4": [

@@ -39,9 +39,28 @@
    },
    {
     "id": "video",
-    "titulo": "Vídeo de apoio",
+    "titulo": "Vídeo introdutório",
     "status": "disponivel",
     "blocos": [
+     {
+      "tipo": "video",
+      "material": "expedicao:video-inicial",
+      "titulo": "Expedição: vídeo introdutório",
+      "status": "disponivel",
+      "url": "/videos/intro-expedicao.mp4",
+      "duracao_s": 26,
+      "poster": "/videos/intro-expedicao.jpg",
+      "legendas_url": "/videos/intro-expedicao.vtt",
+      "resumo": [
+       {
+        "t": "Guia Inicial · Da carga à entrega."
+       }
+      ],
+      "fontes": [
+       "guia:public/videos/manifest.json",
+       "guia:videos/roteiros/intro-expedicao.json"
+      ]
+     },
      {
       "tipo": "video",
       "material": "expedicao:video-apoio",
@@ -53,7 +72,7 @@
       "legendas_url": "/videos/consultor-06-expedicao.vtt",
       "resumo": [
        {
-        "t": "Apoio do Guia do Consultor, com narração e regras de negócio. O vídeo introdutório deste módulo está em preparação. Carga, entrega, ocorrência e devolução."
+        "t": "Apoio do Guia do Consultor, com narração e regras de negócio. Carga, entrega, ocorrência e devolução."
        }
       ],
       "fontes": [
@@ -64,6 +83,7 @@
     ],
     "fontes": [
      "guia:public/videos/manifest.json",
+     "guia:videos/roteiros/intro-expedicao.json",
      "guia:videos/roteiros/consultor-06-expedicao.json"
     ]
    },
@@ -554,6 +574,14 @@
         ]
        },
        {
+        "id": "video",
+        "texto": [
+         {
+          "t": "Assisti ao vídeo introdutório"
+         }
+        ]
+       },
+       {
         "id": "checklist",
         "texto": [
          {
@@ -564,13 +592,19 @@
       ],
       "fontes": [
        "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
-       "guia:scripts/dados-checklists-estagiarios.mjs#expedicao"
+       "guia:scripts/dados-checklists-estagiarios.mjs#expedicao",
+       "guia:public/videos/manifest.json",
+       "guia:videos/roteiros/intro-expedicao.json",
+       "guia:videos/roteiros/consultor-06-expedicao.json"
       ]
      }
     ],
     "fontes": [
      "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
-     "guia:scripts/dados-checklists-estagiarios.mjs#expedicao"
+     "guia:scripts/dados-checklists-estagiarios.mjs#expedicao",
+     "guia:public/videos/manifest.json",
+     "guia:videos/roteiros/intro-expedicao.json",
+     "guia:videos/roteiros/consultor-06-expedicao.json"
     ]
    },
    {
@@ -581,7 +615,7 @@
      {
       "tipo": "progresso",
       "chave": "inicial:expedicao",
-      "total": 9,
+      "total": 10,
       "api": "/api/checklists-progresso",
       "fontes": [
        "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md"
