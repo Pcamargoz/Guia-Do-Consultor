@@ -2,7 +2,7 @@
   "modulo": "recebimento",
   "titulo": "Recebimento — guia visual",
   "resumo": "Como a mercadoria do fornecedor entra na empresa: a nota de recebimento nasce do pedido de compra (ou do XML), é conferida e, ao ser finalizada, dá entrada no estoque e gera o título a pagar.",
-  "versaoSistema": "1.22.13 (capturas do ambiente de teste, 19 e 29/10/2026); 1.23.2 (staging, 05/11/2026) no Dashboard, na lista de notas, na Nova nota e em Aguardando manifestação",
+  "versaoSistema": "1.22.13 (capturas do ambiente de teste, 19 e 29/10/2026); 1.23.2 (staging, 05 e 06/11/2026) no Dashboard, na lista de notas, na Nova nota, em Aguardando manifestação, nos Parâmetros e na Fila de Conferências",
   "atualizadoEm": "2026-11-06",
   "status": "rascunho",
   "conceitos": [
@@ -881,7 +881,7 @@
               "lado": "direita"
             }
           ],
-          "atencao": "Divergência de nome, a conferir na tela: nesta captura (19/10) o menu mostra Conferências; o Manual 05 e a trilha do estagiário chamam a fila de Aprovações. O item só aparece com Usar Conferência Física ligado (no staging v1.23.2, de 05/11/2026, ele não aparece no menu).",
+          "atencao": "O nome certo da fila é Conferências (staging v1.23.2, 06/11/2026). O Manual 05 e a trilha do estagiário ainda dizem Aprovações.",
           "evidencia": "captura-real",
           "fontes": [
             "videos/public/telas/consultor-01-suprimentos/02-notas-recebimento.png",
@@ -932,21 +932,108 @@
           "titulo": "Ligue a conferência física nos parâmetros",
           "texto": "Em Parâmetros de Recebimento, Usar Conferência Física cria a fila de conferência e Exigir Conferência para Finalizar bloqueia a finalização até alguém conferir.",
           "dica": "Defina as duas chaves com o responsável pelo recebimento da empresa.",
-          "evidencia": "base",
+          "evidencia": "captura-real",
           "fontes": [
+            "captura staging /recebimento/configuracoes/parametros (staging v1.23.2, 06/11/2026)",
             "manual-05-recebimento#004",
             "roteiro-recebimento-01-notas-de-recebimento-com-sistemas-tecnicos#046"
+          ],
+          "imagem": "/manuais/recebimento/img/10-parametros.webp",
+          "alt": "Tela Parâmetros de Recebimento com as chaves Usar Conferência Física e Exigir Conferência para Finalizar desligadas e o botão Salvar parâmetros.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Usar Conferência Física",
+              "explicacao": "Liga a conferência item a item: habilita a fila de conferências e o registro das quantidades conferidas.",
+              "caixa": {
+                "x": 41.5,
+                "y": 19.6,
+                "w": 30.4,
+                "h": 7
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 2,
+              "rotulo": "Exigir Conferência para Finalizar",
+              "explicacao": "Bloqueia a finalização da nota se a conferência não estiver concluída. A tela recomenda para controle rígido.",
+              "caixa": {
+                "x": 41.5,
+                "y": 27.2,
+                "w": 30.4,
+                "h": 6.9
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 3,
+              "rotulo": "Salvar parâmetros",
+              "explicacao": "Só depois deste botão a mudança vale.",
+              "caixa": {
+                "x": 63.2,
+                "y": 77.8,
+                "w": 10.1,
+                "h": 5
+              },
+              "lado": "esquerda"
+            }
           ]
         },
         {
           "titulo": "Conheça a conferência",
-          "texto": "Na fila, o botão Conferir já inicia a conferência e registra o responsável na nota. Informe a quantidade de cada item e termine com Concluir Conferência.",
-          "atencao": "Iniciar a conferência trava a nota com o seu usuário; para destravar, use Liberar na fila.",
-          "evidencia": "base",
+          "texto": "Com Usar Conferência Física ligada, o menu mostra Conferências, que abre a Fila de Conferências. Na fila, o botão Conferir já inicia a conferência e registra o responsável na nota. Informe a quantidade de cada item e termine com Concluir Conferência.",
+          "atencao": "Iniciar a conferência trava a nota com o seu usuário; para destravar, use Liberar na fila. Com o parâmetro desligado, o menu não mostra Conferências e a tela avisa \"Conferência física não está habilitada\".",
+          "evidencia": "captura-real",
           "fontes": [
+            "captura staging /recebimento/conferencias, aberta pelo endereço com o parâmetro desligado (staging v1.23.2, 06/11/2026)",
+            "oficial-rec-c-implantacao#010",
+            "plano-recebimento#042",
             "scripts/dados-checklists-estagiarios.mjs#recebimento",
-            "scripts/dados-checklists-implantacao.mjs#implantacao-recebimento",
-            "oficial-rec-c-implantacao#010"
+            "scripts/dados-checklists-implantacao.mjs#implantacao-recebimento"
+          ],
+          "imagem": "/manuais/recebimento/img/11-fila-de-conferencias.webp",
+          "alt": "Tela Fila de Conferências vazia, com as abas Todas pendentes, Não conferidas, Em conferência e Conferidas e a mensagem de fila em dia.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Abas da fila",
+              "explicacao": "Separam as notas: Todas pendentes, Não conferidas, Em conferência e Conferidas.",
+              "caixa": {
+                "x": 15.1,
+                "y": 10.6,
+                "w": 26.6,
+                "h": 4.3
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 2,
+              "rotulo": "Status Conferência e Responsável",
+              "explicacao": "Mostram em que pé está cada nota e quem está conferindo.",
+              "caixa": {
+                "x": 62.3,
+                "y": 44.3,
+                "w": 19.8,
+                "h": 2.6
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 3,
+              "rotulo": "Fila em dia",
+              "explicacao": "Mensagem de quando nenhuma nota espera conferência.",
+              "caixa": {
+                "x": 41.3,
+                "y": 58.3,
+                "w": 26.6,
+                "h": 3.1
+              },
+              "lado": "baixo"
+            }
           ]
         },
         {
@@ -1119,7 +1206,7 @@
       },
       {
         "titulo": "Procurar \"Conferência\" e não achar",
-        "texto": "Em parte das fontes a fila aparece no menu como Aprovações; em outras, como Conferências, e só com Usar Conferência Física ligado. Confira na tela do cliente.",
+        "texto": "No menu, a fila é Conferências e só aparece com Usar Conferência Física ligado. Algumas fontes ainda dizem Aprovações: no staging v1.23.2 esse endereço não existe.",
         "fontes": [
           "scripts/dados-checklists-estagiarios.mjs#recebimento",
           "manual-05-recebimento#008",
@@ -1363,14 +1450,14 @@
     "RESOLVIDO (staging v1.23.2, 05/11/2026): Dashboard Recebimento capturado (valores borrados); os cartões reais são A conferir, Entregas atrasadas, Saldo a receber, A faturar, Recebido no período, Notas em aberto, Finalizadas no período, Fornecedores ativos e Prazo de conferência.",
     "CAPTURA: Compras › Pedidos de Compra — menu ⋯ de um pedido em aberto com Gerar Nota de Recebimento.",
     "CAPTURA: Recebimento › Notas de Recebimento › ⋮ › Finalizar — janela Finalizar Nota de Recebimento com o aviso.",
-    "CAPTURA: fila de conferência (Recebimento › Aprovações ou › Conferências) — cartões e abas, e a tela de conferência de uma nota.",
-    "CAPTURA: Recebimento › Configurações › Parâmetros de Recebimento — chaves Usar Conferência Física e Exigir Conferência para Finalizar.",
     "CAPTURA: Recebimento › Notas de Recebimento › Importar XML — janela de importação.",
-    "DIVERGÊNCIA a conferir na tela: nome da fila de conferência (Aprovações no Manual 05 e na trilha do estagiário × Conferências no roteiro, no manual de implantação e na captura de 19/10). No staging v1.23.2 (05/11/2026) nenhum dos dois aparece no menu (conferência física desligada): segue a conferir.",
     "RESOLVIDO (staging v1.23.2, 05/11/2026): o item de menu é Aguardando manifestação (Notas pendentes, da captura de 29/10, não aparece mais).",
     "Validação na tela pendente: guia gerado de capturas e da base, sem sessão no Flow.",
     "DIVERGÊNCIA a conferir na tela: no staging v1.23.2 (05/11/2026) a lista de notas mostra NR-000004 na coluna NÚMERO DA NOTA; a regra \"a mesma nota tem dois números\" diz que a lista mostra NF-<número do fornecedor>. Conferir quando a lista mostra NR-.",
     "DIVERGÊNCIAS do checklist de implantação (a conferir na tela): quantidade que entra com divergência na conferência (nota × conferida); custo de entrada (sem tributo recuperável × cheio hoje); momento do desdobro do pedido (salvar × finalizar).",
-    "CAPTURA: Recebimento › Configurações › CFOP e Recebimento › Distribuição DFe (só leitura), para o bloco de configurações do consultor."
+    "CAPTURA: Recebimento › Configurações › CFOP e Recebimento › Distribuição DFe (só leitura), para o bloco de configurações do consultor.",
+    "RESOLVIDO (staging v1.23.2, 06/11/2026): a fila é Recebimento › Conferências (título Fila de Conferências, /recebimento/conferencias). /recebimento/aprovacoes dá Página não encontrada. O Manual 05 e a trilha do estagiário, que dizem Aprovações, precisam de correção.",
+    "CAPTURA: tela de conferência de uma nota e fila com notas. Precisa de autorização do responsável: exige ligar Usar Conferência Física e iniciar uma conferência, que gravam dados.",
+    "CAPTURA: Recebimento › Notas de Recebimento › Importar XML. Não aberta nesta rodada (botão de importação fica fora do limite de só leitura)."
   ]
 }

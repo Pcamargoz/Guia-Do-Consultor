@@ -1,9 +1,9 @@
 {
   "modulo": "relatorios",
   "titulo": "Relatórios e Análises — guia visual",
-  "resumo": "Guia em preparação. A base ainda não tem fonte revisada de telas e passos do módulo Relatórios; por isso este guia não tem capítulos.",
-  "versaoSistema": "a definir (sem captura)",
-  "atualizadoEm": "2026-11-05",
+  "resumo": "Onde ficam as análises do Flow: os Demonstrativos de cada módulo, o grupo Relatórios do menu e a lista completa em Configurar relatórios. Você aprende a abrir, filtrar e ler um relatório.",
+  "versaoSistema": "1.23.2 (staging, 06/11/2026)",
+  "atualizadoEm": "2026-11-06",
   "status": "rascunho",
   "conceitos": [
     {
@@ -16,6 +16,33 @@
       ]
     },
     {
+      "titulo": "Demonstrativo ou relatório",
+      "icone": "relatorios",
+      "texto": "Os Demonstrativos são telas de análise prontas de cada módulo, com exportação em XLSX e PDF. Os relatórios são consultas com colunas, filtros e totais escolhidos: uns vêm do sistema, outros são criados pela empresa.",
+      "fontes": [
+        "manual-03-vendas#012",
+        "roteiro-geral-02-relatorios-personalizados#001",
+        "captura staging /vendas/demonstrativos e /relatorios (staging v1.23.2, 06/11/2026)"
+      ]
+    },
+    {
+      "titulo": "Fonte de Dados",
+      "icone": "manual",
+      "texto": "Todo relatório busca as informações numa Fonte de Dados: a gaveta com os campos que ele pode usar. Se o campo que você quer não aparece, peça ao responsável para conferir se existe uma fonte adequada.",
+      "fontes": [
+        "roteiro-geral-02-relatorios-personalizados#002"
+      ]
+    },
+    {
+      "titulo": "O que depende do plano",
+      "icone": "regra",
+      "texto": "Ver e executar um relatório existente depende da permissão de acesso. Criar e configurar relatórios personalizados é recurso da versão PRO.",
+      "fontes": [
+        "roteiro-geral-02-relatorios-personalizados#003",
+        "roteiro-geral-02-relatorios-personalizados#028"
+      ]
+    },
+    {
       "titulo": "Exportar resultado × exportar configuração",
       "icone": "manual",
       "texto": "Na Tabela Dinâmica, o resultado contém os dados calculados; a configuração contém só a organização de linhas, colunas, valores e filtros (arquivo JSON). Exportar o resultado é recurso PRO e exige permissão.",
@@ -25,20 +52,948 @@
       ]
     }
   ],
-  "palavras": [],
-  "capitulos": [],
+  "palavras": [
+    {
+      "termo": "Demonstrativos",
+      "definicao": "Item do menu de cada módulo com telas de análise prontas e exportação em XLSX e PDF.",
+      "fontes": [
+        "manual-03-vendas#012",
+        "manual-06-estoque#012"
+      ]
+    },
+    {
+      "termo": "Relatórios",
+      "definicao": "Grupo do menu do módulo com os relatórios daquela área. É também o nome da página com a lista completa.",
+      "fontes": [
+        "roteiro-geral-02-relatorios-personalizados#004",
+        "captura staging (staging v1.23.2, 06/11/2026)"
+      ]
+    },
+    {
+      "termo": "Relatórios Personalizados",
+      "definicao": "Lista principal da página Relatórios.",
+      "fontes": [
+        "roteiro-geral-02-relatorios-personalizados#004"
+      ]
+    },
+    {
+      "termo": "Padrão do sistema",
+      "definicao": "Selo dos relatórios que já vêm no Flow.",
+      "fontes": [
+        "captura staging /relatorios (staging v1.23.2, 06/11/2026)"
+      ]
+    },
+    {
+      "termo": "Fonte de Dados",
+      "definicao": "De onde o relatório busca as informações.",
+      "fontes": [
+        "roteiro-geral-02-relatorios-personalizados#002"
+      ]
+    },
+    {
+      "termo": "Quebra",
+      "definicao": "Separação dos registros em grupos, por exemplo por pedido ou por vendedor.",
+      "fontes": [
+        "roteiro-geral-02-relatorios-personalizados#018"
+      ]
+    },
+    {
+      "termo": "Filtros Avançados",
+      "definicao": "Janela para escolher coluna, operador e valor do filtro.",
+      "fontes": [
+        "roteiro-geral-02-relatorios-personalizados#015"
+      ]
+    },
+    {
+      "termo": "Minhas Exportações",
+      "definicao": "Gaveta com as exportações Na fila, Concluídas e as que Falharam.",
+      "fontes": [
+        "roteiro-geral-02-relatorios-personalizados#024"
+      ]
+    }
+  ],
+  "mapa": {
+    "antes": [
+      "vendas",
+      "compras",
+      "estoque",
+      "producao",
+      "faturamento",
+      "financeiro"
+    ],
+    "depois": [],
+    "texto": "Os relatórios só mostram o que os módulos já registraram: por isso entram depois dos módulos operacionais.",
+    "fontes": [
+      "metodologia-apostila-do-consultor#023"
+    ]
+  },
+  "capitulos": [
+    {
+      "id": "demonstrativos",
+      "titulo": "Demonstrativos de cada módulo",
+      "nivel": "basico",
+      "objetivo": "Encontrar os Demonstrativos de um módulo e saber o que cada tela responde.",
+      "onde": "<Módulo> › Demonstrativos",
+      "passos": [
+        {
+          "titulo": "Abra os Demonstrativos do módulo",
+          "texto": "No menu lateral do módulo, clique em Demonstrativos. Cada cartão é uma tela de análise: leia a descrição e clique em Abrir.",
+          "imagem": "/manuais/relatorios/img/01-demonstrativos-vendas.webp",
+          "alt": "Tela Demonstrativos de Vendas com seis cartões: Vendas por Período, Carteira de Pedidos, Desempenho por Vendedor, Vendas por Obra, Mix por Linha e Cor e Desconto Concedido.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Demonstrativos",
+              "explicacao": "Item do menu lateral do módulo.",
+              "caixa": {
+                "x": 0.4,
+                "y": 16.5,
+                "w": 12.5,
+                "h": 3.1
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 2,
+              "rotulo": "XLSX e PDF",
+              "explicacao": "O subtítulo avisa os formatos de exportação das telas.",
+              "caixa": {
+                "x": 18,
+                "y": 13.5,
+                "w": 24.5,
+                "h": 2.8
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 3,
+              "rotulo": "Carteira de Pedidos",
+              "explicacao": "Cada cartão diz o que a tela responde. Esta é a foto do que falta faturar, expedir e entregar.",
+              "caixa": {
+                "x": 57.1,
+                "y": 17.4,
+                "w": 40.8,
+                "h": 12.6
+              },
+              "lado": "cima"
+            }
+          ],
+          "evidencia": "captura-real",
+          "fontes": [
+            "captura staging /vendas/demonstrativos (staging v1.23.2, 06/11/2026)",
+            "manual-03-vendas#012"
+          ]
+        },
+        {
+          "titulo": "Abra um demonstrativo e filtre",
+          "texto": "Em Carteira de Pedidos, escolha Empresa, Vendedor, Projeto/Obra e Cliente no alto da tela. Os botões XLSX e PDF ficam à direita. Abaixo vêm o total, os recortes, o gráfico Aging por recorte e a lista Pedidos.",
+          "imagem": "/manuais/relatorios/img/02-carteira-de-pedidos.webp",
+          "alt": "Tela Carteira de Pedidos com filtros, botões XLSX e PDF, cartão da carteira total, recortes e gráfico Aging por recorte, com valores borrados.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Filtros",
+              "explicacao": "Empresa, Vendedor, Projeto/Obra e Cliente reduzem a análise.",
+              "caixa": {
+                "x": 15.9,
+                "y": 22.2,
+                "w": 33.9,
+                "h": 5.7
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 2,
+              "rotulo": "XLSX e PDF",
+              "explicacao": "Exportam a tela no formato escolhido.",
+              "caixa": {
+                "x": 87.7,
+                "y": 23.9,
+                "w": 9,
+                "h": 4.1
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 3,
+              "rotulo": "Carteira Total",
+              "explicacao": "A foto de hoje: o valor em carteira e as Previsões vencidas.",
+              "caixa": {
+                "x": 15.4,
+                "y": 31.1,
+                "w": 54.4,
+                "h": 16.9
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 4,
+              "rotulo": "Recortes",
+              "explicacao": "Quanto da carteira está em cada etapa. Aqui: A faturar, A expedir e Outros / Manual.",
+              "caixa": {
+                "x": 15.4,
+                "y": 49.6,
+                "w": 40.6,
+                "h": 9.6
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 5,
+              "rotulo": "Aging por recorte",
+              "explicacao": "Mostra há quantos dias o valor está parado em cada recorte.",
+              "caixa": {
+                "x": 15.4,
+                "y": 61.1,
+                "w": 82,
+                "h": 37
+              },
+              "lado": "direita"
+            }
+          ],
+          "evidencia": "captura-real",
+          "fontes": [
+            "captura staging /vendas/demonstrativos/carteira (staging v1.23.2, 06/11/2026)",
+            "roteiro-vendas-05-paineis-e-demonstrativos#009"
+          ]
+        },
+        {
+          "titulo": "Conheça os Demonstrativos de Recebimento",
+          "texto": "Em Recebimento › Demonstrativos há seis telas. A Expedição também tem seis, de Ocupação por Volume e Comprimento a Km e Custo por Entrega.",
+          "imagem": "/manuais/relatorios/img/11-demonstrativos-recebimento.webp",
+          "alt": "Tela Demonstrativos de Recebimento com seis cartões.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Divergências de conferência",
+              "explicacao": "Onde a quantidade contada na conferência diferiu da nota.",
+              "caixa": {
+                "x": 43.2,
+                "y": 17.4,
+                "w": 26.9,
+                "h": 9.6
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 2,
+              "rotulo": "Aguardando conferência",
+              "explicacao": "A fila do recebimento: a conferir, em conferência e rascunhos incompletos.",
+              "caixa": {
+                "x": 43.2,
+                "y": 28.3,
+                "w": 26.9,
+                "h": 9.4
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 3,
+              "rotulo": "Contas a Pagar Geradas",
+              "explicacao": "O dinheiro a pagar que o recebimento gerou.",
+              "caixa": {
+                "x": 71,
+                "y": 28.3,
+                "w": 26.9,
+                "h": 9.4
+              },
+              "lado": "baixo"
+            }
+          ],
+          "evidencia": "captura-real",
+          "fontes": [
+            "captura staging /recebimento/demonstrativos e /expedicao/demonstrativos (staging v1.23.2, 06/11/2026)",
+            "plano-recebimento#089",
+            "oficial-rec-c-implantacao#012"
+          ]
+        },
+        {
+          "titulo": "Conheça os Demonstrativos de Compras",
+          "texto": "Em Compras › Demonstrativos há dez telas, de Compras por Período a Contratos de Fornecimento (saldo).",
+          "imagem": "/manuais/relatorios/img/03-demonstrativos-compras.webp",
+          "alt": "Tela Demonstrativos de Compras com dez cartões.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Gasto por Fornecedor",
+              "explicacao": "Ranking de quanto cada fornecedor recebeu no período.",
+              "caixa": {
+                "x": 43.8,
+                "y": 17,
+                "w": 26.6,
+                "h": 9.3
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 2,
+              "rotulo": "Curva ABC de Compras",
+              "explicacao": "Produtos que concentram o gasto, classificados em A, B e C.",
+              "caixa": {
+                "x": 15.3,
+                "y": 28,
+                "w": 26.9,
+                "h": 9.3
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 3,
+              "rotulo": "Backlog de Compras por Obra",
+              "explicacao": "Por obra: solicitações não atendidas e pedidos não recebidos.",
+              "caixa": {
+                "x": 71.4,
+                "y": 38.9,
+                "w": 26.9,
+                "h": 9.3
+              },
+              "lado": "baixo"
+            }
+          ],
+          "evidencia": "captura-real",
+          "fontes": [
+            "captura staging /compras/demonstrativos (staging v1.23.2, 06/11/2026)",
+            "manual-04-compras#010"
+          ]
+        },
+        {
+          "titulo": "Conheça os Demonstrativos de Estoque",
+          "texto": "Em Estoque › Demonstrativos há nove telas. Comece por Posição de Estoque: a foto do que você tem, onde está e quanto vale.",
+          "imagem": "/manuais/relatorios/img/04-demonstrativos-estoque.webp",
+          "alt": "Tela Demonstrativos de Estoque com nove cartões.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Posição de Estoque",
+              "explicacao": "A foto do estoque agora: o que você tem, onde está e quanto vale.",
+              "caixa": {
+                "x": 15.2,
+                "y": 16.7,
+                "w": 27,
+                "h": 9.3
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 2,
+              "rotulo": "Estoque por Obra",
+              "explicacao": "Quanto de estoque está comprometido com cada obra.",
+              "caixa": {
+                "x": 71.3,
+                "y": 27.6,
+                "w": 27,
+                "h": 9.3
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 3,
+              "rotulo": "Estoque parado",
+              "explicacao": "Há quanto tempo cada item está sem movimentação.",
+              "caixa": {
+                "x": 71.3,
+                "y": 38.5,
+                "w": 27,
+                "h": 9.3
+              },
+              "lado": "baixo"
+            }
+          ],
+          "evidencia": "captura-real",
+          "fontes": [
+            "captura staging /estoque/demonstrativos (staging v1.23.2, 06/11/2026)",
+            "manual-06-estoque#012"
+          ]
+        },
+        {
+          "titulo": "Conheça os Demonstrativos de Produção",
+          "texto": "Em Produção › Demonstrativos há dez telas, com períodos fechados. Ordens no Prazo (OTD) mostra quantas ordens ficaram prontas no prazo prometido.",
+          "imagem": "/manuais/relatorios/img/05-demonstrativos-producao.webp",
+          "alt": "Tela Demonstrativos de Produção com dez cartões.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Ordens no Prazo (OTD)",
+              "explicacao": "Quantas ordens ficaram prontas no prazo prometido e quantas atrasaram.",
+              "caixa": {
+                "x": 15.3,
+                "y": 17,
+                "w": 26.9,
+                "h": 9.3
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 2,
+              "rotulo": "Refugo e Perda",
+              "explicacao": "Quanto material foi perdido e onde: por etapa, produto e operador.",
+              "caixa": {
+                "x": 43.2,
+                "y": 17,
+                "w": 27.1,
+                "h": 9.3
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 3,
+              "rotulo": "Paradas de Máquina/Linha",
+              "explicacao": "Quanto tempo a produção ficou parada, por motivo e linha.",
+              "caixa": {
+                "x": 15.3,
+                "y": 38.9,
+                "w": 26.9,
+                "h": 9.3
+              },
+              "lado": "esquerda"
+            }
+          ],
+          "evidencia": "captura-real",
+          "fontes": [
+            "captura staging /producao/demonstrativos (staging v1.23.2, 06/11/2026)"
+          ]
+        },
+        {
+          "titulo": "Conheça os Demonstrativos de Faturamento",
+          "texto": "Em Faturamento › Demonstrativos há onze telas. O Pacote do Contador reúne, num ZIP mensal, os XMLs, o mapa de apuração e o resumo.",
+          "imagem": "/manuais/relatorios/img/06-demonstrativos-faturamento.webp",
+          "alt": "Tela Demonstrativos de Faturamento com onze cartões.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Situação das Notas",
+              "explicacao": "Autorizadas, presas, rejeitadas e gaps de numeração.",
+              "caixa": {
+                "x": 71.3,
+                "y": 27.6,
+                "w": 27,
+                "h": 9.3
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 2,
+              "rotulo": "Painel de Saúde Fiscal",
+              "explicacao": "Semáforo do faturamento: certificados a vencer, notas presas e pendências.",
+              "caixa": {
+                "x": 15.2,
+                "y": 49.4,
+                "w": 27,
+                "h": 9.3
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 3,
+              "rotulo": "Pacote do Contador",
+              "explicacao": "ZIP mensal com os XMLs, o mapa de apuração e o resumo.",
+              "caixa": {
+                "x": 43.2,
+                "y": 49.4,
+                "w": 27,
+                "h": 9.3
+              },
+              "lado": "baixo"
+            }
+          ],
+          "evidencia": "captura-real",
+          "fontes": [
+            "captura staging /faturamento/demonstrativos (staging v1.23.2, 06/11/2026)"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "relatorios-do-menu",
+      "titulo": "Relatórios do menu do módulo",
+      "nivel": "basico",
+      "objetivo": "Executar um relatório pronto, filtrar o resultado e ler os totais.",
+      "onde": "<Módulo> › Relatórios",
+      "passos": [
+        {
+          "titulo": "Abra o grupo Relatórios",
+          "texto": "No menu lateral do módulo, clique em Relatórios. O grupo abre e mostra os relatórios daquela área. Clique no relatório que você quer.",
+          "imagem": "/manuais/relatorios/img/07-grupo-relatorios.webp",
+          "alt": "Menu lateral de Vendas com o grupo Relatórios aberto, com Vendas - Desempenho, Vendas - Pedidos de Venda em Aberto e Vendas - Pedidos de Venda Entrados. Um relatório de teste está borrado.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Relatórios",
+              "explicacao": "Grupo do menu do módulo. Abre e fecha com um clique.",
+              "caixa": {
+                "x": 0.6,
+                "y": 50,
+                "w": 12.3,
+                "h": 2.8
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 2,
+              "rotulo": "Relatórios da área",
+              "explicacao": "Cada item abre um relatório. Em Vendas: Desempenho, Pedidos de Venda em Aberto e Pedidos de Venda Entrados.",
+              "caixa": {
+                "x": 2.1,
+                "y": 58,
+                "w": 11.5,
+                "h": 13
+              },
+              "lado": "direita"
+            }
+          ],
+          "atencao": "O roteiro geral cita os itens Relatórios do módulo e Ver todos os relatórios, que não aparecem no grupo na tela de 06/11/2026.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "captura staging /vendas/pedidos, grupo Relatórios aberto (staging v1.23.2, 06/11/2026)",
+            "roteiro-geral-02-relatorios-personalizados#004"
+          ]
+        },
+        {
+          "titulo": "Escolha a empresa",
+          "texto": "Com mais de uma empresa ativa, o relatório só roda depois que você escolhe a Empresa no alto da página. Confira o nome antes de analisar os valores.",
+          "imagem": "/manuais/relatorios/img/08-escolher-empresa.webp",
+          "alt": "Relatório Vendas - Pedidos de Venda em Aberto aguardando a escolha do campo Empresa.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Empresa",
+              "explicacao": "Campo obrigatório quando há mais de uma empresa ativa.",
+              "caixa": {
+                "x": 16.5,
+                "y": 9.3,
+                "w": 24.5,
+                "h": 4.4
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 2,
+              "rotulo": "Aviso da tela",
+              "explicacao": "Enquanto a Empresa estiver vazia, o relatório não roda.",
+              "caixa": {
+                "x": 45.2,
+                "y": 20,
+                "w": 22.9,
+                "h": 3
+              },
+              "lado": "baixo"
+            }
+          ],
+          "evidencia": "captura-real",
+          "fontes": [
+            "captura staging /relatorios/186 (staging v1.23.2, 06/11/2026)",
+            "roteiro-geral-02-relatorios-personalizados#011"
+          ]
+        },
+        {
+          "titulo": "Filtre o resultado",
+          "texto": "Use o Filtro por data: confira o campo de data, escolha um período rápido ou preencha De e Até e clique em Aplicar intervalo. Para outras condições, use Filtros Avançados.",
+          "imagem": "/manuais/relatorios/img/09-resultado.webp",
+          "alt": "Resultado do relatório com Filtro por data, botões e tabela, com empresa, pedidos, clientes, produtos e valores borrados.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Filtro por data",
+              "explicacao": "Confira o campo de data e clique num período rápido: Ontem, 7 dias, 30 dias, Este mês, Mês passado ou Este ano.",
+              "caixa": {
+                "x": 15.1,
+                "y": 24.6,
+                "w": 41.7,
+                "h": 4.1
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 2,
+              "rotulo": "De, Até e Aplicar intervalo",
+              "explicacao": "Para outro período, preencha as datas e clique em Aplicar intervalo.",
+              "caixa": {
+                "x": 57.1,
+                "y": 24.6,
+                "w": 40.8,
+                "h": 4.1
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 3,
+              "rotulo": "Filtros Avançados",
+              "explicacao": "Abre a janela para escolher coluna, operador e valor.",
+              "caixa": {
+                "x": 56.9,
+                "y": 18,
+                "w": 9.3,
+                "h": 3.7
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 4,
+              "rotulo": "Digite para buscar nos resultados",
+              "explicacao": "Procura só na página aberta. Para buscar em tudo, use os filtros.",
+              "caixa": {
+                "x": 14.8,
+                "y": 30.4,
+                "w": 83.1,
+                "h": 3.7
+              },
+              "lado": "baixo"
+            }
+          ],
+          "zoom": {
+            "x": 14.1,
+            "y": 14.8,
+            "w": 84.9,
+            "h": 23.1
+          },
+          "evidencia": "captura-real",
+          "fontes": [
+            "captura staging /relatorios/186 com a empresa escolhida, sem exportar (staging v1.23.2, 06/11/2026)",
+            "roteiro-geral-02-relatorios-personalizados#014",
+            "roteiro-geral-02-relatorios-personalizados#015",
+            "roteiro-geral-02-relatorios-personalizados#017"
+          ]
+        },
+        {
+          "titulo": "Leia, atualize e exporte",
+          "texto": "O resultado vem separado em grupos, com subtotal em cada um e Totais Gerais no fim. Tabela e Gráfico trocam a visão, Atualizar roda de novo, e Excel e PDF geram o arquivo.",
+          "imagem": "/manuais/relatorios/img/09-resultado.webp",
+          "alt": "Resultado do relatório com os botões Tabela, Gráfico, Atualizar, Excel, PDF e Configurar.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Tabela e Gráfico",
+              "explicacao": "Trocam a forma de ver os mesmos dados.",
+              "caixa": {
+                "x": 66.1,
+                "y": 18,
+                "w": 9.9,
+                "h": 3.7
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 2,
+              "rotulo": "Atualizar",
+              "explicacao": "Roda o relatório de novo. Use depois de mudar os filtros.",
+              "caixa": {
+                "x": 76.1,
+                "y": 18,
+                "w": 5.9,
+                "h": 3.7
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 3,
+              "rotulo": "Excel e PDF",
+              "explicacao": "Colocam a exportação na fila. Quando o arquivo fica pronto, o download começa sozinho.",
+              "caixa": {
+                "x": 82.5,
+                "y": 18,
+                "w": 8.5,
+                "h": 3.7
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 4,
+              "rotulo": "Configurar",
+              "explicacao": "Botão do relatório; sem fonte na base sobre o que faz.",
+              "caixa": {
+                "x": 91.5,
+                "y": 18,
+                "w": 6.5,
+                "h": 3.7
+              },
+              "lado": "baixo"
+            }
+          ],
+          "zoom": {
+            "x": 64.6,
+            "y": 15.7,
+            "w": 33.9,
+            "h": 10.2
+          },
+          "dica": "Confira empresa, período e filtros antes de exportar.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "captura staging /relatorios/186, botões não clicados (staging v1.23.2, 06/11/2026)",
+            "roteiro-geral-02-relatorios-personalizados#012",
+            "roteiro-geral-02-relatorios-personalizados#013",
+            "roteiro-geral-02-relatorios-personalizados#020",
+            "roteiro-geral-02-relatorios-personalizados#022",
+            "roteiro-geral-02-relatorios-personalizados#023"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lista-de-relatorios",
+      "titulo": "A lista completa de relatórios",
+      "nivel": "avancado",
+      "objetivo": "Achar qualquer relatório, de todos os módulos, e saber onde ficam a criação e as exportações.",
+      "onde": "Painel de Controle › Configurar relatórios",
+      "passos": [
+        {
+          "titulo": "Abra a lista e procure o relatório",
+          "texto": "Em Painel de Controle › Configurar relatórios abre a página Relatórios. Os cartões dão os números do mês, as abas separam a lista e o campo Pesquisar... reduz os resultados.",
+          "imagem": "/manuais/relatorios/img/10-lista-de-relatorios.webp",
+          "alt": "Página Relatórios com os cartões de números, as abas Todos, Meus Relatórios, Compartilhados e Favoritos e a lista Relatórios Personalizados.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Cartões",
+              "explicacao": "Relatórios ativos, Favoritos, Execuções no mês e Exportações no mês.",
+              "caixa": {
+                "x": 14.2,
+                "y": 19.8,
+                "w": 84.5,
+                "h": 9.6
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 2,
+              "rotulo": "Abas",
+              "explicacao": "Todos, Meus Relatórios, Compartilhados e Favoritos separam a lista.",
+              "caixa": {
+                "x": 14.2,
+                "y": 30.7,
+                "w": 23.8,
+                "h": 3.9
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 3,
+              "rotulo": "Pesquisar...",
+              "explicacao": "Digite parte do nome ou da descrição do relatório.",
+              "caixa": {
+                "x": 16.3,
+                "y": 49.3,
+                "w": 23.4,
+                "h": 3.1
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 4,
+              "rotulo": "Executar",
+              "explicacao": "Abre o relatório com a configuração salva.",
+              "caixa": {
+                "x": 83.8,
+                "y": 57.8,
+                "w": 6,
+                "h": 40.7
+              },
+              "lado": "esquerda"
+            }
+          ],
+          "evidencia": "captura-real",
+          "fontes": [
+            "captura staging /relatorios, aberta pelo menu Painel de Controle › Configurar relatórios (staging v1.23.2, 06/11/2026)",
+            "roteiro-geral-02-relatorios-personalizados#005",
+            "roteiro-geral-02-relatorios-personalizados#006",
+            "roteiro-geral-02-relatorios-personalizados#007",
+            "roteiro-geral-02-relatorios-personalizados#010"
+          ]
+        },
+        {
+          "titulo": "Conheça as ações do alto da página",
+          "texto": "Gerenciar Fontes de Dados, Minhas Exportações, Criar manualmente e Criar com Alumina ficam no alto. Criar um relatório é recurso da versão PRO.",
+          "imagem": "/manuais/relatorios/img/10-lista-de-relatorios.webp",
+          "alt": "Alto da página Relatórios com Gerenciar Fontes de Dados, Minhas Exportações, Criar manualmente e Criar com Alumina.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Gerenciar Fontes de Dados",
+              "explicacao": "Fica com o administrador: a fonte precisa de quem conhece os dados e as regras de acesso.",
+              "caixa": {
+                "x": 37.5,
+                "y": 15.6,
+                "w": 11.3,
+                "h": 2.8
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 2,
+              "rotulo": "Minhas Exportações",
+              "explicacao": "Abre a gaveta com as exportações Na fila, Concluídas e as que Falharam.",
+              "caixa": {
+                "x": 49.5,
+                "y": 15.6,
+                "w": 9.2,
+                "h": 2.8
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 3,
+              "rotulo": "Criar manualmente e Criar com Alumina",
+              "explicacao": "As duas formas de criar um relatório, na versão PRO.",
+              "caixa": {
+                "x": 78.3,
+                "y": 8.5,
+                "w": 20.4,
+                "h": 4.3
+              },
+              "lado": "baixo"
+            }
+          ],
+          "zoom": {
+            "x": 36.5,
+            "y": 7.4,
+            "w": 62.5,
+            "h": 14.8
+          },
+          "atencao": "Os arquivos exportados ficam disponíveis por sete dias.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "captura staging /relatorios (staging v1.23.2, 06/11/2026)",
+            "roteiro-geral-02-relatorios-personalizados#024",
+            "roteiro-geral-02-relatorios-personalizados#025",
+            "roteiro-geral-02-relatorios-personalizados#029",
+            "roteiro-geral-02-relatorios-personalizados#038"
+          ]
+        }
+      ]
+    }
+  ],
+  "consultor": {
+    "implantacao": [
+      "Implante depois dos módulos operacionais, com dados cadastrados e movimentações. (metodologia-apostila-do-consultor#023)",
+      "Na validação do módulo, crie um relatório, aplique filtros, agrupamentos e totais, use tabelas dinâmicas, consulte dados de módulos diferentes, exporte e compartilhe. (metodologia-apostila-do-consultor#023, seção marcada \"Rever\" no original)",
+      "Grupo Relatórios do menu no staging v1.23.2 (06/11/2026): Vendas 3 relatórios, Recebimento 2, Faturamento 2, Financeiro 8, Fiscal 1, Estoque 1, sem contar relatório de teste. A página Relatórios mostra 24 ativos."
+    ],
+    "perguntasDoCliente": [
+      {
+        "pergunta": "Por que o relatório não mostra nada ao abrir?",
+        "resposta": "Com mais de uma empresa ativa, ele espera a escolha do campo Empresa. A tela avisa: Selecione a empresa acima para executar este relatório.",
+        "fontes": [
+          "roteiro-geral-02-relatorios-personalizados#011",
+          "captura staging /relatorios/186 (staging v1.23.2, 06/11/2026)"
+        ]
+      },
+      {
+        "pergunta": "Por que a busca não achou uma linha que existe?",
+        "resposta": "A busca do campo Digite para buscar nos resultados olha só a página aberta. Para procurar em tudo, use os filtros do relatório.",
+        "fontes": [
+          "roteiro-geral-02-relatorios-personalizados#017"
+        ]
+      },
+      {
+        "pergunta": "Quem não tem PRO usa relatórios?",
+        "resposta": "Pode ver e executar os relatórios existentes, se tiver acesso. Criar e configurar exige a versão PRO e a permissão de criar.",
+        "fontes": [
+          "roteiro-geral-02-relatorios-personalizados#028"
+        ]
+      }
+    ],
+    "errosComuns": [
+      {
+        "titulo": "Escolher a empresa sem conferir",
+        "texto": "Não escolha a empresa só porque ela aparece primeiro: confira o nome antes de analisar ou exportar os valores.",
+        "fontes": [
+          "roteiro-geral-02-relatorios-personalizados#011"
+        ]
+      },
+      {
+        "titulo": "Ler os totais antes de terminar a carga",
+        "texto": "Espere o carregamento terminar antes de conferir os totais.",
+        "fontes": [
+          "roteiro-geral-02-relatorios-personalizados#012"
+        ]
+      }
+    ],
+    "roteiroDemonstracao": [
+      {
+        "passo": "Mostre os Demonstrativos de Vendas",
+        "mostrar": "Os cartões e o aviso de exportação em XLSX e PDF",
+        "fontes": [
+          "manual-03-vendas#012"
+        ]
+      },
+      {
+        "passo": "Abra Carteira de Pedidos",
+        "mostrar": "Os filtros Empresa, Vendedor, Projeto/Obra e Cliente",
+        "fontes": [
+          "roteiro-vendas-05-paineis-e-demonstrativos#009"
+        ]
+      },
+      {
+        "passo": "Abra um relatório do grupo Relatórios",
+        "mostrar": "A escolha da Empresa antes de rodar",
+        "fontes": [
+          "roteiro-geral-02-relatorios-personalizados#011"
+        ]
+      },
+      {
+        "passo": "Filtre um período",
+        "mostrar": "Filtro por data, com 30 dias ou Este mês",
+        "fontes": [
+          "roteiro-geral-02-relatorios-personalizados#014"
+        ]
+      },
+      {
+        "passo": "Mostre a lista completa",
+        "mostrar": "Painel de Controle › Configurar relatórios, cartões e abas",
+        "fontes": [
+          "roteiro-geral-02-relatorios-personalizados#005",
+          "roteiro-geral-02-relatorios-personalizados#006"
+        ]
+      }
+    ]
+  },
   "fontes": [
     "metodologia-apostila-do-consultor#023",
     "guia:db/migrations/002_modulos_iniciais.sql#relatorios",
     "roteiro-geral-03-tabelas-dinamicas#038",
-    "roteiro-geral-03-tabelas-dinamicas#036"
+    "roteiro-geral-03-tabelas-dinamicas#036",
+    "roteiro-geral-02-relatorios-personalizados",
+    "roteiro-vendas-05-paineis-e-demonstrativos#009",
+    "manual-03-vendas#012",
+    "manual-04-compras#010",
+    "manual-06-estoque#012",
+    "manual-02-crm#018",
+    "midia/brutos/relatorios/manifesto.md"
   ],
   "pendencias": [
-    "Sem fonte revisada: a seção Relatórios e Análises da Apostila do Consultor está marcada \"Rever\" no original (metodologia-apostila-do-consultor#023/#034). O roteiro geral de Tabelas Dinâmicas está marcado como possivelmente desatualizado.",
-    "Sem regra_negocio nem funcional do módulo na base; o filtro de módulo \"relatorios\" não existe no kb_search do Harness.",
-    "CAPTURA: Relatórios (lista de relatórios padrão) — o tour do Financeiro de 05/11 tem prints de Relatórios › Extrato - Movimentação e Resumo Financeiro (midia/brutos/financeiro/prints/), com nomes de terceiros a borrar; falta o menu Relatórios em si.",
+    "Fonte: a seção Relatórios e Análises da Apostila do Consultor está marcada \"Rever\" no original (metodologia-apostila-do-consultor#023/#034). O roteiro-geral-02 está sem versão definida: o guia usa dele só o que a tela confirmou ou o que está citado no passo.",
+    "DIVERGÊNCIA: roteiro-geral-02#004 manda abrir o grupo Relatórios e clicar em Relatórios do módulo ou Ver todos os relatórios. A tela (06/11/2026) lista os relatórios direto no grupo, sem esses itens; a lista completa fica em Painel de Controle › Configurar relatórios.",
+    "DIVERGÊNCIA: roteiro-geral-02#008 cita em Ações Executar, Editar, Ajustar com Alumina e Excluir. Nos relatórios Padrão do sistema a tela mostra Executar, Duplicar como base, Editar e Ajustar com Alumina. A conferir num relatório criado pela empresa.",
+    "SEM FONTE NA BASE: botões Relatórios Corporativos e Atualizações Distribuídas (página Relatórios) e Configurar (resultado do relatório). Só os nomes vêm da tela; não foram abertos.",
+    "NÃO VERIFICADO: a sessão do staging caiu logo depois de abrir /cubos em 06/11/2026 e voltou sozinha mais tarde. A causa não foi apurada e a tela não foi reaberta, para não derrubar a sessão de novo. Tabelas Dinâmicas (/cubos, /cubos/134 a 136) segue sem tela.",
     "CAPTURA: Tabelas Dinâmicas › um cubo › Executar, Mais ações › Exportar resultado (PRO) e Exportar configuração.",
-    "CAPTURA: construtor de relatórios (seleção, filtros, agrupamentos) e compartilhamento — citados só na semente do módulo (002_modulos_iniciais.sql).",
-    "Decidir com o responsável se Tabelas Dinâmicas fica neste guia ou nos guias de cada módulo (o Financeiro tem Tabelas Dinâmicas próprias no menu)."
+    "CAPTURA: construtor de relatórios (seleção, filtros, agrupamentos), compartilhamento e Minhas Exportações. Criar e exportar ficaram de fora pelo limite de só leitura: precisa de autorização do responsável.",
+    "Decidir com o responsável se Tabelas Dinâmicas fica neste guia ou nos guias de cada módulo: o menu mostra o grupo em Vendas, Financeiro, Recebimento e Estoque, e o Painel de Controle tem o item Tabelas Dinâmicas.",
+    "O relatório \"Teste de criação de relatorio 1\" aparece no grupo Relatórios de Vendas do staging; foi ignorado e está borrado no print."
   ]
 }

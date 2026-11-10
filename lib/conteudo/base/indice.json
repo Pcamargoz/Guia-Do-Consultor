@@ -1,5 +1,5 @@
 {
- "versao": "2026-11-06",
+ "versao": "2026-11-10",
  "gerado_de": {
   "mapa": "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
   "harness": "harness:conhecimento/"
@@ -43,7 +43,7 @@
      "id": "primeiros-passos:manual-inicial",
      "tipo": "manual",
      "jornada": "inicial",
-     "titulo": "Guia visual ilustrado (11 passos, 7 telas)",
+     "titulo": "Guia visual ilustrado (11 passos, 8 telas)",
      "status": "disponivel"
     },
     {
@@ -108,7 +108,7 @@
      "id": "primeiros-passos:manual-consultor",
      "tipo": "manual",
      "jornada": "consultor",
-     "titulo": "Guia visual ilustrado (11 passos, 7 telas)",
+     "titulo": "Guia visual ilustrado (11 passos, 8 telas)",
      "status": "disponivel"
     }
    ]
@@ -151,7 +151,7 @@
      "id": "fundacao:manual-inicial",
      "tipo": "manual",
      "jornada": "inicial",
-     "titulo": "Guia visual ilustrado (8 passos, 6 telas)",
+     "titulo": "Guia visual ilustrado (9 passos, 13 telas)",
      "status": "disponivel"
     },
     {
@@ -233,7 +233,7 @@
      "id": "fundacao:manual-consultor",
      "tipo": "manual",
      "jornada": "consultor",
-     "titulo": "Guia visual ilustrado (14 passos, 6 telas)",
+     "titulo": "Guia visual ilustrado (15 passos, 13 telas)",
      "status": "disponivel"
     }
    ]
@@ -418,7 +418,7 @@
      "id": "cem:manual-inicial",
      "tipo": "manual",
      "jornada": "inicial",
-     "titulo": "Guia visual ilustrado (5 passos, 4 telas)",
+     "titulo": "Guia visual ilustrado (5 passos, 6 telas)",
      "status": "disponivel"
     },
     {
@@ -457,7 +457,7 @@
      "id": "cem:manual-consultor",
      "tipo": "manual",
      "jornada": "consultor",
-     "titulo": "Guia visual ilustrado (13 passos, 4 telas)",
+     "titulo": "Guia visual ilustrado (14 passos, 6 telas)",
      "status": "disponivel"
     }
    ]
@@ -835,7 +835,7 @@
      "id": "recebimento:manual-inicial",
      "tipo": "manual",
      "jornada": "inicial",
-     "titulo": "Guia visual ilustrado (10 passos, 9 telas)",
+     "titulo": "Guia visual ilustrado (10 passos, 11 telas)",
      "status": "disponivel"
     },
     {
@@ -916,7 +916,7 @@
      "id": "recebimento:manual-consultor",
      "tipo": "manual",
      "jornada": "consultor",
-     "titulo": "Guia visual ilustrado (15 passos, 9 telas)",
+     "titulo": "Guia visual ilustrado (15 passos, 11 telas)",
      "status": "disponivel"
     }
    ]
@@ -1404,7 +1404,7 @@
      "id": "projetos:manual-inicial",
      "tipo": "manual",
      "jornada": "inicial",
-     "titulo": "Guia visual ilustrado (10 passos, 7 telas)",
+     "titulo": "Guia visual ilustrado (10 passos, 9 telas)",
      "status": "disponivel"
     },
     {
@@ -1423,7 +1423,7 @@
     {
      "modulo": "projetos",
      "duracao_s": null,
-     "url": null,
+     "url": "#inicial/projetos",
      "fontes": [
       "guia:videos/roteiros/consultor-09-projetos.json"
      ],
@@ -1431,7 +1431,7 @@
      "tipo": "tela",
      "jornada": "inicial",
      "titulo": "Principais telas",
-     "status": "em-preparacao"
+     "status": "disponivel"
     },
     {
      "modulo": "projetos",
@@ -1483,7 +1483,7 @@
      "id": "projetos:manual-consultor",
      "tipo": "manual",
      "jornada": "consultor",
-     "titulo": "Guia visual ilustrado (13 passos, 7 telas)",
+     "titulo": "Guia visual ilustrado (14 passos, 9 telas)",
      "status": "disponivel"
     }
    ]
@@ -1541,7 +1541,7 @@
      "id": "expedicao:manual-inicial",
      "tipo": "manual",
      "jornada": "inicial",
-     "titulo": "Guia visual ilustrado (6 passos, 10 telas)",
+     "titulo": "Guia visual ilustrado (6 passos, 11 telas)",
      "status": "disponivel"
     },
     {
@@ -1560,7 +1560,7 @@
     {
      "modulo": "expedicao",
      "duracao_s": null,
-     "url": null,
+     "url": "#inicial/expedicao",
      "fontes": [
       "guia:videos/roteiros/consultor-06-expedicao.json"
      ],
@@ -1568,7 +1568,7 @@
      "tipo": "tela",
      "jornada": "inicial",
      "titulo": "Principais telas",
-     "status": "em-preparacao"
+     "status": "disponivel"
     },
     {
      "modulo": "expedicao",
@@ -1621,7 +1621,7 @@
      "id": "expedicao:manual-consultor",
      "tipo": "manual",
      "jornada": "consultor",
-     "titulo": "Guia visual ilustrado (14 passos, 10 telas)",
+     "titulo": "Guia visual ilustrado (14 passos, 11 telas)",
      "status": "disponivel"
     }
    ]
@@ -1643,16 +1643,30 @@
    "materiais": [
     {
      "modulo": "faturamento",
+     "duracao_s": 25,
+     "url": "/videos/intro-faturamento.mp4",
+     "fontes": [
+      "guia:public/videos/manifest.json",
+      "guia:videos/roteiros/intro-faturamento.json"
+     ],
+     "id": "faturamento:video-inicial",
+     "tipo": "video",
+     "jornada": "inicial",
+     "titulo": "Faturamento: vídeo introdutório",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "faturamento",
      "duracao_s": 198,
      "url": "/videos/consultor-07-faturamento.mp4",
      "fontes": [
       "guia:public/videos/manifest.json",
       "guia:videos/roteiros/consultor-07-faturamento.json"
      ],
-     "id": "faturamento:video-inicial",
+     "id": "faturamento:video-apoio",
      "tipo": "video",
      "jornada": "inicial",
-     "titulo": "Faturamento: do pedido à nota finalizada",
+     "titulo": "Faturamento: do pedido à nota finalizada (vídeo de apoio)",
      "status": "disponivel"
     },
     {
@@ -2226,12 +2240,13 @@
      "duracao_s": null,
      "url": null,
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md"
+      "guia:public/videos/manifest.json",
+      "guia:videos/roteiros/intro-relatorios.json"
      ],
      "id": "relatorios:video-inicial",
      "tipo": "video",
      "jornada": "inicial",
-     "titulo": "Vídeo introdutório",
+     "titulo": "Relatórios e Análises: vídeo introdutório",
      "status": "em-preparacao"
     },
     {
@@ -2239,12 +2254,12 @@
      "duracao_s": null,
      "url": null,
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md"
+      "guia:public/manuais/relatorios/guia.json"
      ],
      "id": "relatorios:manual-inicial",
      "tipo": "manual",
      "jornada": "inicial",
-     "titulo": "Manual visual resumido",
+     "titulo": "Guia visual ilustrado (11 passos, 11 telas)",
      "status": "em-preparacao"
     },
     {
@@ -2265,12 +2280,12 @@
      "duracao_s": null,
      "url": null,
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md"
+      "guia:public/manuais/relatorios/guia.json"
      ],
      "id": "relatorios:manual-consultor",
      "tipo": "manual",
      "jornada": "consultor",
-     "titulo": "Manual do consultor",
+     "titulo": "Guia visual ilustrado (13 passos, 11 telas)",
      "status": "em-preparacao"
     }
    ]
@@ -2357,16 +2372,17 @@
    "materiais": [
     {
      "modulo": "fluxo-completo",
-     "duracao_s": null,
-     "url": null,
+     "duracao_s": 37,
+     "url": "/videos/intro-fluxo-completo.mp4",
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md"
+      "guia:public/videos/manifest.json",
+      "guia:videos/roteiros/intro-fluxo-completo.json"
      ],
      "id": "fluxo-completo:video-inicial",
      "tipo": "video",
      "jornada": "inicial",
-     "titulo": "Vídeo introdutório",
-     "status": "em-preparacao"
+     "titulo": "Visão do fluxo completo: vídeo introdutório",
+     "status": "disponivel"
     },
     {
      "modulo": "fluxo-completo",
@@ -2392,7 +2408,7 @@
      "id": "fluxo-completo:manual-inicial",
      "tipo": "manual",
      "jornada": "inicial",
-     "titulo": "Guia visual ilustrado (11 passos, 12 telas)",
+     "titulo": "Guia visual ilustrado (11 passos, 13 telas)",
      "status": "disponivel"
     },
     {
@@ -2411,7 +2427,7 @@
     {
      "modulo": "fluxo-completo",
      "duracao_s": null,
-     "url": null,
+     "url": "#inicial/fluxo-completo",
      "fontes": [
       "guia:videos/roteiros/consultor-fluxo-completo.json"
      ],
@@ -2419,7 +2435,7 @@
      "tipo": "tela",
      "jornada": "inicial",
      "titulo": "Principais telas",
-     "status": "em-preparacao"
+     "status": "disponivel"
     },
     {
      "modulo": "fluxo-completo",
@@ -2458,7 +2474,7 @@
      "id": "fluxo-completo:manual-consultor",
      "tipo": "manual",
      "jornada": "consultor",
-     "titulo": "Guia visual ilustrado (13 passos, 12 telas)",
+     "titulo": "Guia visual ilustrado (13 passos, 13 telas)",
      "status": "disponivel"
     }
    ]
@@ -3005,6 +3021,24 @@
     "tipo": "checklist"
    }
   ],
+  "/videos/intro-faturamento.mp4": [
+   {
+    "modulo": "faturamento",
+    "tipo": "video"
+   }
+  ],
+  "/videos/intro-faturamento.jpg": [
+   {
+    "modulo": "faturamento",
+    "tipo": "video"
+   }
+  ],
+  "/videos/intro-faturamento.vtt": [
+   {
+    "modulo": "faturamento",
+    "tipo": "video"
+   }
+  ],
   "/videos/consultor-07-faturamento.mp4": [
    {
     "modulo": "faturamento",
@@ -3181,6 +3215,42 @@
    {
     "modulo": "tarefas",
     "tipo": "checklist"
+   }
+  ],
+  "/videos/intro-relatorios.mp4": [
+   {
+    "modulo": "relatorios",
+    "tipo": "video"
+   }
+  ],
+  "/videos/intro-relatorios.jpg": [
+   {
+    "modulo": "relatorios",
+    "tipo": "video"
+   }
+  ],
+  "/videos/intro-relatorios.vtt": [
+   {
+    "modulo": "relatorios",
+    "tipo": "video"
+   }
+  ],
+  "/videos/intro-fluxo-completo.mp4": [
+   {
+    "modulo": "fluxo-completo",
+    "tipo": "video"
+   }
+  ],
+  "/videos/intro-fluxo-completo.jpg": [
+   {
+    "modulo": "fluxo-completo",
+    "tipo": "video"
+   }
+  ],
+  "/videos/intro-fluxo-completo.vtt": [
+   {
+    "modulo": "fluxo-completo",
+    "tipo": "video"
    }
   ],
   "/videos/consultor-fluxo-completo.mp4": [

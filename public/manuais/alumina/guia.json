@@ -3,7 +3,7 @@
   "titulo": "Alumina (IA) — guia visual",
   "resumo": "Guia em preparação. A base tem só a visão geral da Alumina e o plano de validação; não há roteiro de tela nem captura.",
   "versaoSistema": "a definir (sem captura)",
-  "atualizadoEm": "2026-11-05",
+  "atualizadoEm": "2026-11-06",
   "status": "rascunho",
   "conceitos": [
     {
@@ -36,6 +36,7 @@
     "CAPTURA: abertura da Alumina (chat) e uma pergunta de consulta com resposta e origem dos dados.",
     "CAPTURA: uma ação sugerida com prévia e confirmação — só em ambiente de teste e com autorização explícita.",
     "CAPTURA: o que muda para um usuário sem permissão (resposta recusada).",
-    "Conferir na tela os nomes de interface (nenhum termo da Alumina está no glossário do Harness)."
+    "Conferir na tela os nomes de interface (nenhum termo da Alumina está no glossário do Harness).",
+    "A CONFERIR (staging v1.23.2, 06/11/2026): o botão Abrir Alumina (Ctrl+Alt+A) do menu leva a Upgrade › Alumina (IA), com o aviso \"O módulo Alumina (IA) já está incluso no seu plano\", sem painel funcional. Nenhum passo de uso foi escrito: não há tela para conferir. Precisa do responsável definir como habilitar a Alumina no ambiente de teste."
   ]
 }

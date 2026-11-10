@@ -95,6 +95,14 @@
           "status": "pronto"
         },
         {
+          "id": "intro-faturamento",
+          "numero": "Intro",
+          "titulo": "Faturamento: vídeo introdutório",
+          "resumo": "Guia Inicial · Do pedido à nota.",
+          "duracao": "0 min 25 s",
+          "status": "pronto"
+        },
+        {
           "id": "intro-fiscal",
           "numero": "Intro",
           "titulo": "Fiscal: vídeo introdutório",
@@ -116,6 +124,22 @@
           "titulo": "Tarefas: vídeo introdutório",
           "resumo": "Guia Inicial · Quadros, cartões e responsáveis.",
           "duracao": "0 min 22 s",
+          "status": "pronto"
+        },
+        {
+          "id": "intro-relatorios",
+          "numero": "Intro",
+          "titulo": "Relatórios e Análises: vídeo introdutório",
+          "resumo": "Guia Inicial · Os demonstrativos de cada módulo.",
+          "duracao": "0 min 29 s",
+          "status": "pronto"
+        },
+        {
+          "id": "intro-fluxo-completo",
+          "numero": "Intro",
+          "titulo": "Visão do fluxo completo: vídeo introdutório",
+          "resumo": "Guia Inicial · Do pedido ao financeiro.",
+          "duracao": "0 min 37 s",
           "status": "pronto"
         }
       ]

@@ -2,7 +2,7 @@
   "modulo": "expedicao",
   "titulo": "Expedição — guia visual",
   "resumo": "Do pedido faturado até a mercadoria na mão do cliente: liberar o pedido, montar a carga, conferir no pátio, sair em rota e entregar, com tudo registrado no histórico.",
-  "versaoSistema": "1.22.13 (capturas do ambiente de teste, 19–22/10/2026); 1.23.2 (staging, 05/11/2026) nas telas Visão Geral, Cargas, Conferência, Ocorrências, Pendências de Expedição e Roteirização",
+  "versaoSistema": "1.22.13 (capturas do ambiente de teste, 19–22/10/2026); 1.23.2 (staging, 05 e 06/11/2026) nas telas Visão Geral, Cargas, Conferência, Ocorrências, Pendências de Expedição, Roteirização e Parâmetros",
   "atualizadoEm": "2026-11-06",
   "status": "rascunho",
   "conceitos": [
@@ -592,10 +592,67 @@
           "titulo": "Ligue só os checkpoints que a empresa usa",
           "texto": "Em Configurações › Parâmetros, as chaves Separação, Conferência e Carregamento definem o fluxo, e o painel mostra como ficará o processo.",
           "dica": "Uma carga já fechada segue a régua do fechamento: mudar os parâmetros depois não muda as etapas dela.",
-          "evidencia": "base",
+          "evidencia": "captura-real",
           "fontes": [
+            "captura staging /expedicao/configuracoes/parametros (staging v1.23.2, 06/11/2026)",
+            "manual-09-expedicao#005",
+            "roteiro-expedicao-01-cadastros-e-parametros#028",
             "plano-expedicao#019",
             "videos/roteiros/consultor-06-expedicao.json#05"
+          ],
+          "imagem": "/manuais/expedicao/img/11-parametros.webp",
+          "alt": "Tela Parâmetros da Expedição com as chaves Separação, Conferência e Carregamento ligadas e o quadro Fluxo resultante.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Separação",
+              "explicacao": "Registra a saída dos volumes do estoque: o operador bipa cada volume ao separar os pedidos.",
+              "caixa": {
+                "x": 41.5,
+                "y": 28.9,
+                "w": 29.9,
+                "h": 8.7
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 2,
+              "rotulo": "Conferência",
+              "explicacao": "Valida o romaneio antes de carregar o veículo.",
+              "caixa": {
+                "x": 41.5,
+                "y": 39.3,
+                "w": 29.9,
+                "h": 8.7
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 3,
+              "rotulo": "Carregamento",
+              "explicacao": "Confirma que cada volume foi colocado no veículo. É o checkpoint final antes da saída.",
+              "caixa": {
+                "x": 41.5,
+                "y": 49.6,
+                "w": 29.9,
+                "h": 8.7
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 4,
+              "rotulo": "Fluxo resultante",
+              "explicacao": "Mostra a sequência que a equipe vai seguir, de Carga fechada até Saída para entrega.",
+              "caixa": {
+                "x": 41.3,
+                "y": 71.1,
+                "w": 29.5,
+                "h": 5.9
+              },
+              "lado": "esquerda"
+            }
           ]
         },
         {
@@ -1360,13 +1417,13 @@
     "CAPTURA: detalhe de uma carga Fechada com os checkpoints e o botão Apontar Separação.",
     "CAPTURA: painel de bipagem de um checkpoint.",
     "CAPTURA: confirmação de Iniciar Rota (Confirmar saída).",
-    "CAPTURA: Expedição › Configurações › Parâmetros — chaves Separação, Conferência e Carregamento.",
     "RESOLVIDO (staging v1.23.2, 05/11/2026): o botão + Montar Nova Carga existe em Expedição › Visão Geral e em Expedição › Cargas.",
     "Validação na tela pendente: guia gerado de capturas e da base, sem sessão no Flow.",
     "RESOLVIDO (staging v1.23.2, 05/11/2026): telas Ocorrências, Conferência, Pendências de Expedição e Roteirização capturadas (sem registros) e usadas no guia; o quadro de Cargas mostra o botão Fechar Carga na carga Em Montagem.",
     "A conferir na tela: o checklist e o manual descrevem os checkpoints pelo detalhe da carga (Apontar Separação, Apontar Conferência, Apontar Carregamento); o staging tem também as telas Separação, Conferência e Carregamento no menu. Confirmar se as duas formas registram o mesmo checkpoint.",
     "Pendências de Expedição (menu e tela no staging 1.23.2) não aparece na lista de menu do manual-09-expedicao#001: atualizar a fonte.",
     "Quadro de Cargas (staging) tem a coluna Separado; os cartões da Visão Geral mostram Fechada. Conferir na tela em que coluna fica a carga Fechada antes da separação.",
-    "Licença: plano-expedicao#085 diz que a roteirização é recurso PRO comercialmente, mas liberada a qualquer empresa com o módulo. Não entrou no guia; confirmar com o time antes de responder ao cliente."
+    "Licença: plano-expedicao#085 diz que a roteirização é recurso PRO comercialmente, mas liberada a qualquer empresa com o módulo. Não entrou no guia; confirmar com o time antes de responder ao cliente.",
+    "RESOLVIDO (staging v1.23.2, 06/11/2026): Parâmetros da Expedição capturado. O menu diz Configurações › Parâmetros; o roteiro-expedicao-01#023 diz \"Abra Configurar\": atualizar a fonte."
   ]
 }

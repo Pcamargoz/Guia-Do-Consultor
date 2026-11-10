@@ -1,0 +1,245 @@
+{
+  "id": "intro-faturamento",
+  "modulo": "faturamento",
+  "fps": 30,
+  "duracao": 25,
+  "musica": {
+    "arquivo": "musica/intro-faturamento.wav",
+    "bpm": 120,
+    "entrada": 4,
+    "final": 20,
+    "acentos": [
+      10
+    ]
+  },
+  "abertura": {
+    "duracao": 4,
+    "titulo": "Faturamento",
+    "linha": "Guia Inicial · Do pedido à nota."
+  },
+  "fechamento": {
+    "inicio": 20,
+    "duracao": 5,
+    "titulo": "Guia Inicial › Faturamento",
+    "linha": "Próximo passo"
+  },
+  "transicao_s": 0.4,
+  "cenas": [
+    {
+      "id": "a1-dashboard",
+      "clipe": "intro/faturamento/a1-dashboard.mp4",
+      "inicio": 4,
+      "duracao": 2.5,
+      "desde": 0.3,
+      "entrada": "zoom",
+      "camera": [
+        {
+          "t": 0,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 0.5,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 1.88,
+          "x": 1000,
+          "y": 400,
+          "zoom": 1.15
+        },
+        {
+          "t": 2.5,
+          "x": 1006,
+          "y": 406,
+          "zoom": 1.17
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.3,
+          "ate": 1.7,
+          "texto": "Dashboard de Faturamento.",
+          "posicao": "inf-dir"
+        }
+      ]
+    },
+    {
+      "id": "a2-documentos",
+      "clipe": "intro/faturamento/a2-documentos.mp4",
+      "inicio": 6.5,
+      "duracao": 4,
+      "desde": 0.3,
+      "entrada": "corte",
+      "camera": [
+        {
+          "t": 0,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 0.5,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 3,
+          "x": 1000,
+          "y": 520,
+          "zoom": 1.2
+        },
+        {
+          "t": 4,
+          "x": 1006,
+          "y": 526,
+          "zoom": 1.22
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.3,
+          "ate": 1.55,
+          "texto": "Documentos Fiscais.",
+          "posicao": "inf-dir"
+        },
+        {
+          "t": 1.95,
+          "ate": 3.2,
+          "texto": "Cada nota com seu status.",
+          "posicao": "inf-dir"
+        }
+      ]
+    },
+    {
+      "id": "a3-terceiros",
+      "clipe": "intro/faturamento/a3-terceiros.mp4",
+      "inicio": 10.5,
+      "duracao": 3.5,
+      "desde": 0.3,
+      "entrada": "corte",
+      "camera": [
+        {
+          "t": 0,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 0.5,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 2.63,
+          "x": 1100,
+          "y": 380,
+          "zoom": 1.2
+        },
+        {
+          "t": 3.5,
+          "x": 1106,
+          "y": 386,
+          "zoom": 1.22
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.3,
+          "ate": 2.7,
+          "texto": "Controle de Terceiros.",
+          "posicao": "inf-esq"
+        }
+      ]
+    },
+    {
+      "id": "a4-futuras",
+      "clipe": "intro/faturamento/a4-futuras.mp4",
+      "inicio": 14,
+      "duracao": 2,
+      "desde": 0.3,
+      "entrada": "corte",
+      "camera": [
+        {
+          "t": 0,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 0.4,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 1.5,
+          "x": 1000,
+          "y": 400,
+          "zoom": 1.15
+        },
+        {
+          "t": 2,
+          "x": 1006,
+          "y": 406,
+          "zoom": 1.17
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.3,
+          "ate": 1.2,
+          "texto": "Vendas futuras.",
+          "posicao": "inf-esq"
+        }
+      ]
+    },
+    {
+      "id": "a5-demonstrativos",
+      "clipe": "intro/faturamento/a5-demonstrativos.mp4",
+      "inicio": 16,
+      "duracao": 4,
+      "desde": 0.3,
+      "entrada": "corte",
+      "camera": [
+        {
+          "t": 0,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 0.5,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 3,
+          "x": 1000,
+          "y": 420,
+          "zoom": 1.2
+        },
+        {
+          "t": 4,
+          "x": 1006,
+          "y": 426,
+          "zoom": 1.22
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.3,
+          "ate": 3.2,
+          "texto": "Demonstrativos de Faturamento.",
+          "posicao": "inf-dir"
+        }
+      ]
+    }
+  ]
+}

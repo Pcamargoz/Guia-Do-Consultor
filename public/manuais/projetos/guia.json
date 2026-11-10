@@ -2,7 +2,7 @@
   "modulo": "projetos",
   "titulo": "Projetos e Obras — guia visual",
   "resumo": "Como a obra (o projeto) amarra pedido, produção, compras, serviços, notas e financeiro, e onde acompanhar o resultado de cada obra.",
-  "versaoSistema": "1.22.13 (capturas do ambiente de teste, 20/10/2026); 1.23.2 (staging, 05/11/2026) nas telas Todos os Projetos, lista de projetos, Painel Financeiro (sem obra) e Andamento das Obras",
+  "versaoSistema": "1.22.13 (capturas do ambiente de teste, 20/10/2026); 1.23.2 (staging, 05 e 06/11/2026) nas telas Todos os Projetos, lista de projetos, Painel Financeiro (sem obra), Andamento das Obras, Novo Projeto e Locais de Estoque",
   "atualizadoEm": "2026-11-06",
   "status": "rascunho",
   "conceitos": [
@@ -831,6 +831,80 @@
           ]
         },
         {
+          "titulo": "Conheça o painel Novo Projeto",
+          "texto": "O painel abre em Dados Gerais. Nome do Projeto e Código têm asterisco de obrigatório. Abaixo ficam as seções Datas e Orçamento, Observações, Resultados Previstos e Endereços do Projeto.",
+          "imagem": "/manuais/projetos/img/09-novo-projeto.webp",
+          "alt": "Painel Novo Projeto com Dados Gerais aberto e as seções Datas e Orçamento, Observações, Resultados Previstos e Endereços do Projeto fechadas.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Nome do Projeto",
+              "explicacao": "Campo obrigatório: o nome da obra.",
+              "caixa": {
+                "x": 51.8,
+                "y": 11.3,
+                "w": 23.2,
+                "h": 6.3
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 2,
+              "rotulo": "Código",
+              "explicacao": "Campo obrigatório: o código da obra.",
+              "caixa": {
+                "x": 75.4,
+                "y": 11.3,
+                "w": 11.3,
+                "h": 6.3
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 3,
+              "rotulo": "Cliente",
+              "explicacao": "Quem contratou a obra.",
+              "caixa": {
+                "x": 51.8,
+                "y": 18.5,
+                "w": 23.2,
+                "h": 6.3
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 4,
+              "rotulo": "Ativo",
+              "explicacao": "Chave que vem ligada no projeto novo.",
+              "caixa": {
+                "x": 51.8,
+                "y": 32.4,
+                "w": 5.2,
+                "h": 5.7
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 5,
+              "rotulo": "Seções fechadas",
+              "explicacao": "Clique no título para abrir Datas e Orçamento, Observações, Resultados Previstos e Endereços do Projeto.",
+              "caixa": {
+                "x": 51.8,
+                "y": 41.3,
+                "w": 46.9,
+                "h": 17.8
+              },
+              "lado": "esquerda"
+            }
+          ],
+          "evidencia": "captura-real",
+          "fontes": [
+            "captura staging /configuracoes/projetos › Novo Projeto (sem salvar) (staging v1.23.2, 06/11/2026)"
+          ]
+        },
+        {
           "titulo": "Cadastre etapas e estágios",
           "texto": "Na linha da obra, clique em Estágios e crie as fases da obra; depois clique em Etapas, escolha o Estágio (opcional), digite a descrição da etapa e clique em +. Use a alça ⋮⋮ para reordenar.",
           "dica": "Nos estágios, distribua os pesos com cuidado para o progresso não ficar enganoso.",
@@ -893,13 +967,56 @@
         },
         {
           "titulo": "Garanta o local de estoque da obra",
-          "texto": "Se o projeto tem local de estoque próprio, ele precisa estar ativo e ser da mesma empresa das ordens de produção.",
+          "texto": "Em Estoque › Configurações › Locais, confira o local da obra. Se o projeto tem local de estoque próprio, ele precisa estar ativo e ser da mesma empresa das ordens de produção.",
           "atencao": "Sem local ativo, a nota e a produção da obra travam (\"O projeto … não tem local de estoque ativo\").",
-          "evidencia": "base",
+          "evidencia": "captura-real",
           "fontes": [
+            "captura staging /estoque/locais (staging v1.23.2, 06/11/2026)",
             "regra-estoque-almoxarifado-central-ativo-e-pre-requisito",
             "regra-faturamento-finalizar-nf-requisitos",
             "scripts/dados-checklists-implantacao.mjs#implantacao-projetos"
+          ],
+          "imagem": "/manuais/projetos/img/08-locais-de-estoque.webp",
+          "alt": "Lista Locais de Estoque com o filtro Situação em Ativos e dois locais do tipo Obra, com nomes, empresa e projeto borrados.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Situação",
+              "explicacao": "O filtro abre em Ativos: o local da obra precisa aparecer aqui.",
+              "caixa": {
+                "x": 80.6,
+                "y": 21.3,
+                "w": 11.1,
+                "h": 3.7
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 2,
+              "rotulo": "Empresa",
+              "explicacao": "Precisa ser a mesma empresa das ordens de produção.",
+              "caixa": {
+                "x": 54,
+                "y": 26.9,
+                "w": 13.3,
+                "h": 11.9
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 3,
+              "rotulo": "Projeto",
+              "explicacao": "A obra ligada ao local.",
+              "caixa": {
+                "x": 67.8,
+                "y": 26.9,
+                "w": 22.9,
+                "h": 11.9
+              },
+              "lado": "baixo"
+            }
           ]
         }
       ]
@@ -1207,7 +1324,6 @@
     "videos/capturas/guias-staging/projetos-andamento.png"
   ],
   "pendencias": [
-    "CAPTURA: Cadastros › Projetos › Novo Projeto — formulário da obra.",
     "CAPTURA: painel Etapas do Projeto (botão Etapas da linha) e painel de Estágios.",
     "CAPTURA: pedido de venda em edição com o campo Projeto (opcional) e Salvar e Permanecer.",
     "CAPTURA: Projetos › Diário de Obra (só leitura).",
@@ -1216,6 +1332,8 @@
     "Validação na tela pendente: guia gerado de capturas e da base, sem sessão no Flow.",
     "RESOLVIDO (staging v1.23.2, 05/11/2026): Todos os Projetos capturada e usada no guia (cartões, indicadores, filtros, Ver Painel). A captura \"projetos-novo-projeto\" mostra só a lista com o botão + Novo Projeto: o formulário continua sem captura.",
     "Menu de Projetos no staging 1.23.2 tem Insumos da Obra (não citado no manual-12-projetos-e-tarefas#001) e não tem Diário de Obra (citado no fluxo antigo do checklist). Os cartões de Todos os Projetos têm o botão Cronograma, sem fonte na base. Atualizar as fontes ou conferir na tela.",
-    "O caminho no topo da lista de projetos continua Configurações › Projetos no staging 1.23.2 (divergência com Cadastros › Projetos segue aberta)."
+    "O caminho no topo da lista de projetos continua Configurações › Projetos no staging 1.23.2 (divergência com Cadastros › Projetos segue aberta).",
+    "RESOLVIDO (staging v1.23.2, 06/11/2026): formulário Novo Projeto capturado. O painel não tem campo de local de estoque; o local fica em Estoque › Configurações › Locais, com a coluna Projeto.",
+    "CORREÇÃO (staging v1.23.2, 06/11/2026): Painel Financeiro de Projetos aparece nos dois menus, Projetos e Financeiro (mesma tela, /projetos/painel). A trilha e o checklist não estão errados: a nota de 05/11 que pedia para atualizar essas fontes não vale."
   ]
 }

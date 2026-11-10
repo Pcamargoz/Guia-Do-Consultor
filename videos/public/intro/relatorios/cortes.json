@@ -1,0 +1,61 @@
+{
+  "fonte": "midia/brutos/relatorios/relatorios_bruto_c02_v01.mp4",
+  "recorte": "crop=1920:1080:0:0",
+  "observacao": "Bruto c02, 1920x1080 nativo. Duração natural: sem lento. Trechos parados escolhidos por freezedetect; caixas conferidas em quadros extraídos em 06/11/2026.",
+  "caixas": {
+    "A_B_cabecalho": {
+      "x": 1395,
+      "y": 8,
+      "w": 510,
+      "h": 56,
+      "porque": "selo do tenant, nome, cargo e avatar do usuário"
+    }
+  },
+  "cortes": [
+    {
+      "id": "l1-vendas",
+      "in": 0.3,
+      "out": 5.35,
+      "borrar": [
+        "A_B_cabecalho"
+      ],
+      "porque": "Demonstrativos de Vendas."
+    },
+    {
+      "id": "l2-compras",
+      "in": 15.8,
+      "out": 20.35,
+      "borrar": [
+        "A_B_cabecalho"
+      ],
+      "porque": "Demonstrativos de Compras."
+    },
+    {
+      "id": "l3-estoque",
+      "in": 30.7,
+      "out": 35.25,
+      "borrar": [
+        "A_B_cabecalho"
+      ],
+      "porque": "Demonstrativos de Estoque."
+    },
+    {
+      "id": "l4-producao",
+      "in": 44.7,
+      "out": 49.25,
+      "borrar": [
+        "A_B_cabecalho"
+      ],
+      "porque": "Demonstrativos de Produção."
+    },
+    {
+      "id": "l5-relatorio",
+      "in": 58.7,
+      "out": 62.75,
+      "borrar": [
+        "A_B_cabecalho"
+      ],
+      "porque": "Escolha a empresa e execute."
+    }
+  ]
+}

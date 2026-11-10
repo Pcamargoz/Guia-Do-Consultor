@@ -2,7 +2,7 @@
   "modulo": "fundacao",
   "titulo": "Cadastros e Fundação — guia visual",
   "resumo": "Você vai entender os cadastros que todos os módulos usam — participante, produto e projeto — e, no Guia do Consultor, a ordem para deixar a empresa pronta antes do primeiro pedido.",
-  "versaoSistema": "1.23.2 (capturas do staging, 05/11/2026); textos da trilha conferidos em 16 e 19/10/2026 (v1.22.x)",
+  "versaoSistema": "1.23.2 (capturas do staging, 05 e 06/11/2026); textos da trilha conferidos em 16 e 19/10/2026 (v1.22.x)",
   "atualizadoEm": "2026-11-06",
   "status": "rascunho",
   "conceitos": [
@@ -176,7 +176,7 @@
             {
               "n": 4,
               "rotulo": "Status",
-              "explicacao": "Mostra se o cadastro está Ativo. Num formulário novo a chave Ativo pode vir desligada.",
+              "explicacao": "Mostra se o cadastro está Ativo. Num formulário novo a chave Ativo vem ligada.",
               "caixa": {
                 "x": 76.4,
                 "y": 36.3,
@@ -373,14 +373,151 @@
         },
         {
           "titulo": "Conheça as outras seções do cadastro",
-          "texto": "Abaixo de Classificação vêm Endereço, Contato, Contas bancárias, Documentos, Observações, Dados CRM e Informações CRM. Em Endereço, digite o CEP e veja o endereço preenchido sozinho. Em Contato, veja quem recebe e-mails de Notas Fiscais, Boletos, Vendas e avisos.",
-          "evidencia": "base",
+          "texto": "Abaixo de Classificação vêm Endereço, Contato, Contas bancárias, Documentos, Observações e Dados CRM. Em Endereço, digite o CEP e veja o endereço preenchido sozinho.",
+          "evidencia": "captura-real",
           "fontes": [
+            "captura staging /participantes › Novo Participante (staging v1.23.2, 06/11/2026)",
             "guia:scripts/dados-checklists-estagiarios.mjs#cadastros",
             "regra-crm-formulario-do-lead-secoes-e-campos",
             "funcional-cadastros-participante-produto-e-projeto#000"
           ],
-          "atencao": "O Bairro exige pelo menos 3 letras: bairros curtos trazidos pelo CEP, como \"Sé\", são recusados ao salvar."
+          "atencao": "O Bairro exige pelo menos 3 letras: bairros curtos trazidos pelo CEP, como \"Sé\", são recusados ao salvar.",
+          "imagem": "/manuais/fundacao/img/07-secoes-do-participante.webp",
+          "alt": "Painel Novo Participante rolado até as seções Endereço, Contato, Contas bancárias, Documentos, Observações e Dados CRM.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Endereço",
+              "explicacao": "Comece pelo CEP: o endereço vem preenchido. Endereço, Número, Bairro, Estado e Cidade têm asterisco de obrigatório.",
+              "caixa": {
+                "x": 51.5,
+                "y": 21.9,
+                "w": 46.8,
+                "h": 24.8
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 2,
+              "rotulo": "Contato",
+              "explicacao": "Guarda as pessoas do cadastro. O botão Adicionar Contato abre os campos de cada uma.",
+              "caixa": {
+                "x": 51.5,
+                "y": 48.1,
+                "w": 46.8,
+                "h": 16.7
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 3,
+              "rotulo": "Contas bancárias, Documentos e Observações",
+              "explicacao": "Seções fechadas: clique no título para abrir.",
+              "caixa": {
+                "x": 51.5,
+                "y": 66.7,
+                "w": 46.8,
+                "h": 12.4
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 4,
+              "rotulo": "Dados CRM",
+              "explicacao": "Última seção do painel, também fechada.",
+              "caixa": {
+                "x": 51.5,
+                "y": 80.4,
+                "w": 46.8,
+                "h": 3
+              },
+              "lado": "esquerda"
+            }
+          ]
+        },
+        {
+          "titulo": "Veja quem recebe os e-mails do contato",
+          "texto": "Em Contato, clique em Adicionar Contato. No fim do bloco ficam as chaves que dizem o que essa pessoa recebe: E-mail Notas Fiscais, E-mail Boletos, E-mail Compras, E-mail Vendas, Recebe aviso de entrega e Recebe avisos de Serviços.",
+          "imagem": "/manuais/fundacao/img/08-contato-do-participante.webp",
+          "alt": "Bloco Contato 1 aberto com os campos Nome, E-mail, Telefone, Celular e WhatsApp e as chaves de e-mail e de avisos.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "E-mail Notas Fiscais",
+              "explicacao": "Ligada, a pessoa recebe os e-mails de nota fiscal.",
+              "caixa": {
+                "x": 52.7,
+                "y": 55.2,
+                "w": 6.8,
+                "h": 3.3
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 2,
+              "rotulo": "E-mail Boletos",
+              "explicacao": "Ligada, a pessoa recebe os e-mails de boleto.",
+              "caixa": {
+                "x": 61.7,
+                "y": 55.4,
+                "w": 7.3,
+                "h": 3
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 3,
+              "rotulo": "E-mail Compras",
+              "explicacao": "Ligada, a pessoa recebe os e-mails de compras.",
+              "caixa": {
+                "x": 70.6,
+                "y": 55.4,
+                "w": 7.9,
+                "h": 3
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 4,
+              "rotulo": "E-mail Vendas",
+              "explicacao": "Ligada, a pessoa recebe os e-mails de vendas.",
+              "caixa": {
+                "x": 79.6,
+                "y": 55.4,
+                "w": 7.3,
+                "h": 3
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 5,
+              "rotulo": "Recebe aviso de entrega",
+              "explicacao": "Ligada, a pessoa recebe o aviso de entrega.",
+              "caixa": {
+                "x": 88.5,
+                "y": 55.2,
+                "w": 8,
+                "h": 3.3
+              },
+              "lado": "cima"
+            }
+          ],
+          "zoom": {
+            "x": 52.1,
+            "y": 51.9,
+            "w": 45.3,
+            "h": 12
+          },
+          "atencao": "Vazio, o WhatsApp vai para o celular; telefone fixo nunca recebe WhatsApp (aviso da própria tela).",
+          "evidencia": "captura-real",
+          "fontes": [
+            "captura staging /participantes › Novo Participante › Adicionar Contato (staging v1.23.2, 06/11/2026)",
+            "guia:scripts/dados-checklists-estagiarios.mjs#cadastros"
+          ]
         }
       ]
     },
@@ -739,46 +876,278 @@
         },
         {
           "titulo": "Certificado digital, série e homologação",
-          "texto": "Em Faturamento › Configurações › Certificados, deixe a empresa pronta para emitir, sempre em homologação até o fim dos testes.",
-          "atencao": "A senha do certificado quem digita é o cliente. O nome da opção que sincroniza o emitente com o provedor está a conferir na tela.",
-          "evidencia": "a-conferir-na-tela",
+          "texto": "Em Faturamento › Configurações › Certificados, veja cada empresa numa linha, com Ambiente, Status e Validade. Deixe a empresa pronta para emitir, sempre em homologação até o fim dos testes. O botão Configuração Guiada abre o assistente Configuração de Certificados, que começa em Selecione a Empresa.",
+          "atencao": "A senha do certificado quem digita é o cliente. A base diz que o emitente é sincronizado no passo final da Configuração Guiada; o nome dessa opção segue a conferir, porque ver o passo final exige escolher uma empresa e seguir o assistente.",
+          "evidencia": "captura-real",
           "fontes": [
+            "captura staging /configuracoes/certificados e /configuracoes/certificados/wizard (staging v1.23.2, 06/11/2026)",
+            "oficial-fat-c-implantacao#008",
             "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao"
-          ]
+          ],
+          "imagem": "/manuais/fundacao/img/09-certificados.webp",
+          "alt": "Lista Configurações • Certificados com três empresas em Homologação e Status Não Configurado, com nome e CNPJ borrados.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Ambiente",
+              "explicacao": "Homologação é o ambiente de teste. Mantenha assim até o fim dos testes.",
+              "caixa": {
+                "x": 49.2,
+                "y": 15.7,
+                "w": 6,
+                "h": 17.8
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 2,
+              "rotulo": "Status",
+              "explicacao": "Não Configurado: a empresa ainda não tem certificado pronto para emitir.",
+              "caixa": {
+                "x": 67.8,
+                "y": 15.7,
+                "w": 7.1,
+                "h": 17.8
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 3,
+              "rotulo": "Provedor NFe",
+              "explicacao": "Botão da linha da empresa, ao lado de Status e Enviar PFX.",
+              "caixa": {
+                "x": 85.4,
+                "y": 19.6,
+                "w": 6.5,
+                "h": 13.9
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 4,
+              "rotulo": "Enviar PFX",
+              "explicacao": "Caminho para enviar o arquivo do certificado.",
+              "caixa": {
+                "x": 92.1,
+                "y": 19.6,
+                "w": 4.9,
+                "h": 13.9
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 5,
+              "rotulo": "Configuração Guiada",
+              "explicacao": "Abre o assistente da configuração.",
+              "caixa": {
+                "x": 87.8,
+                "y": 9.8,
+                "w": 10.8,
+                "h": 4.6
+              },
+              "lado": "esquerda"
+            }
+          ],
+          "zoom": {
+            "x": 48.4,
+            "y": 8.9,
+            "w": 50.3,
+            "h": 26.9
+          }
         },
         {
           "titulo": "Perfis e usuários",
-          "texto": "Em Segurança › Perfis de Acesso e Segurança › Usuários, cada pessoa entra com o perfil da sua função. Faça antes dos cadastros para o cliente executar o resto com o próprio usuário.",
+          "texto": "Em Segurança › Perfis de Acesso, cada cartão é um perfil, com a descrição, a situação e a quantidade de permissões. Em Segurança › Usuários, cada pessoa entra com o perfil da sua função. Faça antes dos cadastros para o cliente executar o resto com o próprio usuário.",
           "atencao": "Convite pendente ocupa vaga na licença. Todo usuário vê todas as empresas: hoje não há restrição por filial.",
-          "evidencia": "base",
+          "evidencia": "captura-real",
           "fontes": [
+            "captura staging /seguranca/perfis e /seguranca/usuarios (staging v1.23.2, 06/11/2026)",
+            "roteiro-geral-01-usuarios-e-perfis-de-acesso#007",
             "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao"
+          ],
+          "imagem": "/manuais/fundacao/img/10-perfis-de-acesso.webp",
+          "alt": "Tela Perfis de Acesso com o botão Novo Perfil, a busca e cartões de perfis como Administrador, Comprador e Faturista.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Buscar perfis...",
+              "explicacao": "Filtra os cartões pelo nome do perfil.",
+              "caixa": {
+                "x": 21.6,
+                "y": 18.5,
+                "w": 20,
+                "h": 3.7
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 2,
+              "rotulo": "Cartão do perfil",
+              "explicacao": "Mostra o nome, a descrição, se está Ativo e quantas permissões tem.",
+              "caixa": {
+                "x": 21.7,
+                "y": 24.5,
+                "w": 22.6,
+                "h": 15
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 3,
+              "rotulo": "Novo Perfil",
+              "explicacao": "Cria um perfil para uma função que os cartões não atendem.",
+              "caixa": {
+                "x": 83.6,
+                "y": 11.3,
+                "w": 8.1,
+                "h": 4.8
+              },
+              "lado": "baixo"
+            }
           ]
         },
         {
           "titulo": "Categorias, unidades, NCM, cores e produtos",
-          "texto": "No grupo Configurações do módulo (Categorias de Produto, Unidade de Medida, Cores), no NCM e em Cadastros › Produtos. A categoria decide o tipo do material e o \"Preço calculado por\".",
-          "atencao": "O tipo da categoria trava quando algum produto tem saldo. Caminho do NCM a conferir: o Manual 01 indica Fiscal › Configurações › NCM; a gestora lista no grupo de cadastros.",
-          "evidencia": "a-conferir-na-tela",
+          "texto": "No grupo Configurações do módulo ficam Categorias de Produto, Unidade de Medida, Cores e NCM; o produto fica em Cadastros › Produtos. A categoria decide o tipo do material e o \"Preço calculado por\".",
+          "atencao": "O tipo da categoria trava quando algum produto tem saldo.",
+          "evidencia": "captura-real",
           "fontes": [
+            "captura staging /configuracoes/categorias-produto, /cadastros/unidade-medida, /configuracoes/cores e /cadastros/ncm (staging v1.23.2, 06/11/2026)",
+            "oficial-cad-d-checklist#004",
+            "oficial-cad-a-regras#002",
             "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao"
+          ],
+          "imagem": "/manuais/fundacao/img/11-categorias-de-produto.webp",
+          "alt": "Lista Categorias de Produto com as colunas Tipo e Preço Calculado Por e o botão Nova Categoria.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Nova Categoria",
+              "explicacao": "Cria uma categoria. Defina as categorias antes de importar produtos.",
+              "caixa": {
+                "x": 89.9,
+                "y": 10.9,
+                "w": 8.5,
+                "h": 4.4
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 2,
+              "rotulo": "Tipo",
+              "explicacao": "O tipo do material. Esquadria, Perfil (Barra), Superfície, Componente, Kit e Outro aparecem na lista.",
+              "caixa": {
+                "x": 42,
+                "y": 26.3,
+                "w": 6.3,
+                "h": 41.3
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 3,
+              "rotulo": "Preço Calculado Por",
+              "explicacao": "Como o preço é calculado: Unidade, Peso ou Área. Perfil costuma ir em Peso; Superfície e Vidro, em Área.",
+              "caixa": {
+                "x": 57.7,
+                "y": 26.3,
+                "w": 9.4,
+                "h": 41.3
+              },
+              "lado": "direita"
+            }
           ]
         },
         {
           "titulo": "Pagamento, contas, portadores e CFOPs",
-          "texto": "Condições de Pagamento (Vendas › Configurações), Contas Bancárias, Portadores, Planos de Conta e Meios de Pagamento (Configurações do Financeiro) e os CFOPs de saída (Fiscal › Configurações › CFOP), revisados com o contador.",
-          "evidencia": "base",
+          "texto": "Condições de Pagamento (Vendas › Configurações), Contas Bancárias, Portadores, Planos de Conta e Meios de Pagamento (Configurações do Financeiro) e os CFOPs de saída (Fiscal › Configurações › CFOP), revisados com o contador. Ao editar um CFOP, a chave Gera Financeiro diz se ele gera títulos.",
+          "evidencia": "captura-real",
           "fontes": [
+            "captura staging /cadastros/cfops e Editar CFOP (sem salvar) (staging v1.23.2, 06/11/2026)",
             "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao"
+          ],
+          "imagem": "/manuais/fundacao/img/12-cfop.webp",
+          "alt": "Lista Códigos Fiscais de Operações (CFOP) com a busca e as colunas Código, Sequência, Descrição e Entrada/Saída.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Pesquisar...",
+              "explicacao": "Procure o CFOP pelo código ou pela descrição.",
+              "caixa": {
+                "x": 16.3,
+                "y": 21.2,
+                "w": 23.3,
+                "h": 3.3
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 2,
+              "rotulo": "Entrada/Saída",
+              "explicacao": "Mostra o sentido do CFOP. A lista começa pelos de entrada: passe de página para revisar os de saída.",
+              "caixa": {
+                "x": 82.8,
+                "y": 26.3,
+                "w": 8.1,
+                "h": 52.4
+              },
+              "lado": "esquerda"
+            }
           ]
         },
         {
           "titulo": "Carga inicial e pedido de teste",
-          "texto": "Pelo menu Mais… das listas de Produtos e Participantes, carregue primeiro os produtos, depois participantes e contatos. Feche com uma obra e um pedido de teste usando tudo o que foi cadastrado.",
-          "evidencia": "base",
+          "texto": "Pelo menu Mais… das listas de Produtos e Participantes, use Importar Dados para cadastrar em lote via planilha: carregue primeiro os produtos, depois participantes e contatos. Feche com uma obra e um pedido de teste usando tudo o que foi cadastrado.",
+          "evidencia": "captura-real",
           "fontes": [
+            "captura staging /produtos e /participantes, menu Mais… (staging v1.23.2, 06/11/2026)",
             "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao"
-          ]
+          ],
+          "imagem": "/manuais/fundacao/img/13-produtos-menu-mais.webp",
+          "alt": "Lista Produtos com o menu Mais… aberto, mostrando Colunas, Exportar para Excel, Importar Dados e Campos Personalizados.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Mais...",
+              "explicacao": "Abre o menu da lista, no alto da tela.",
+              "caixa": {
+                "x": 81.6,
+                "y": 11.1,
+                "w": 4.1,
+                "h": 4.1
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 2,
+              "rotulo": "Importar Dados",
+              "explicacao": "Cadastra em lote via planilha.",
+              "caixa": {
+                "x": 72.6,
+                "y": 26.7,
+                "w": 12.5,
+                "h": 4.3
+              },
+              "lado": "esquerda"
+            }
+          ],
+          "zoom": {
+            "x": 68.8,
+            "y": 9.6,
+            "w": 30.2,
+            "h": 28.7
+          },
+          "atencao": "O checklist de implantação chama a opção de \"Importar … via Excel\"; na tela o nome é Importar Dados."
         }
       ]
     }
@@ -1079,16 +1448,17 @@
     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
   ],
   "pendencias": [
-    "CAPTURA: participante — seção Contato (marcas de e-mail de Notas Fiscais, Boletos, Vendas) e mensagem \"Erros de validação\" ao salvar vazio.",
-    "CAPTURA: formulário + Novo Projeto (Nome do Projeto, Código, Status, Cliente, Responsável).",
-    "DIVERGÊNCIA: chave Ativo do novo participante — a trilha do estagiário diz que pode vir desligada; a captura de 05/11/2026 mostra ligada.",
     "DIVERGÊNCIA: caminho de Projetos — o menu mostra Cadastros › Projetos e o caminho no alto da tela mostra Início › Configurações › Projetos (staging 05/11/2026).",
     "SEM FONTE NA BASE: Procedência, Grupo de Produto e Processo de produção padrão do Novo Produto (só os nomes vêm da captura); não foram explicados.",
-    "CAPTURA: participante — seção Contato (marcas de e-mail de Notas Fiscais, Boletos, Vendas).",
-    "CAPTURA (consultor): formulário de Configurações › Empresas (regime), Faturamento › Configurações › Certificados (sem senha na tela), Segurança › Perfis de Acesso e Usuários, Categorias de Produto (Preço calculado por), Fiscal › Configurações › CFOP.",
-    "DIVERGÊNCIA: caminho do NCM (Fiscal › Configurações › NCM × grupo de cadastros).",
-    "DIVERGÊNCIA: tipo dos meios de pagamento de fábrica (código SEFAZ × Duplicata Mercantil tratada como boleto no teste).",
-    "A CONFERIR: rótulo do campo do CFOP que diz se ele gera financeiro; nome da opção de sincronizar o emitente com o provedor (Certificados).",
-    "CONFIRMADO NA TELA (staging v1.23.2, 05/11/2026): botões + Novo Participante, + Novo Produto e + Nova Empresa; Empresas em Configurações › Empresas; lista de Produtos ainda abre (formulário não conferido). Produtos de teste com NCM 99999999."
+    "CONFIRMADO NA TELA (staging v1.23.2, 05/11/2026): botões + Novo Participante, + Novo Produto e + Nova Empresa; Empresas em Configurações › Empresas; lista de Produtos ainda abre (formulário não conferido). Produtos de teste com NCM 99999999.",
+    "RESOLVIDO (staging v1.23.2, 06/11/2026): seção Contato capturada. Além dos e-mails que a trilha cita, a tela traz E-mail Compras e Recebe avisos de Serviços.",
+    "RESOLVIDO (staging v1.23.2, 05 e 06/11/2026): a chave Ativo do novo participante vem ligada. A trilha do estagiário, que diz que pode vir desligada, precisa de correção.",
+    "RESOLVIDO (staging v1.23.2, 06/11/2026): NCM fica em Fiscal › Configurações › NCM e também no grupo Configurações de Faturamento e Recebimento (mesma tela, /cadastros/ncm).",
+    "RESOLVIDO (staging v1.23.2, 06/11/2026): o rótulo do CFOP é Gera Financeiro, em Editar CFOP › Informações Principais.",
+    "RESOLVIDO em parte (staging v1.23.2, 06/11/2026): em Meios de Pagamento, Duplicata Mercantil aparece com Tipo Boleto. O código SEFAZ de cada meio não aparece nessa lista.",
+    "DIVERGÊNCIA (06/11/2026): a seção Informações CRM citada pela trilha e pela regra do CRM não aparece no painel de participante do staging, nem no novo nem no já salvo; a tela mostra só Dados CRM.",
+    "A CONFERIR: nome da opção que sincroniza o emitente com o provedor. Fica no passo final da Configuração Guiada, que não foi percorrida nesta rodada.",
+    "O formulário + Novo Projeto foi capturado no guia Projetos (obra-na-implantacao).",
+    "CAPTURA (consultor): formulário de Configurações › Empresas (regime). A lista Segurança › Usuários foi aberta, mas não entrou no guia porque mostra nomes e e-mails: o passo usa Perfis de Acesso."
   ]
 }

@@ -121,3 +121,19 @@ Notas da rodada:
 - Quadros conferidos antes do render, no início e no fim de cada clipe. A conferência achou e corrigiu: mensagem com nome de pessoa em Fila de exceções, fim de CPF/CNPJ em Participantes, cliente e orçamento em Projetos, cliente em Vistorias e fim do nome do cliente em Pedidos de Venda.
 - Muito borrão em Cadastros (Participantes e Projetos), Todos os projetos e Dashboard Projetos: a tela é quase toda de nomes. Vale o responsável olhar se essas cenas ficam.
 - Pendências: CEM (12 s, 2 telas) e Faturamento não têm intro nem bruto c02.
+
+## 7. Intro do fluxo completo (06/11)
+
+Montado só com clipes já cortados e borrados dos outros intros, sem corte novo. Não publicado.
+
+| Módulo | Arquivo | QA | Resultado |
+|---|---|---|---|
+| faturamento | `out/intro-faturamento.mp4` | duração 25.0 s · volume -14.1 LUFS · pico real -1.7 dBFS | aprovado |
+| relatorios | `out/intro-relatorios.mp4` | duração 29.0 s · volume -14 LUFS · pico real -2.1 dBFS | aprovado |
+
+Notas:
+- `intro-faturamento` e `intro-relatorios`: bruto c02, duração natural. Relatórios não vai ao ar enquanto o módulo estiver em preparação. Alumina sem intro, por decisão do responsável.
+- `intro-fluxo-completo`: 9 cenas, reaproveitando `vendas/c9-lista-final`, `compras/k5-pedidos`, `recebimento/r2-notas`, `estoque/e3-movimentos`, `producao/d2a-ordens` e `d2b-ordens`, `expedicao/x2-cargas`, `faturamento/a2-documentos` e `financeiro/f2-receber`. Fiscal saiu da montagem, trocado pelo trecho de Faturamento. São 8 chamadas, uma por módulo, acima das 5 a 7 do padrão.
+- **Ordem:** Faturamento antes de Expedição, como na base (roteiro `consultor-fluxo-completo` e `manual-00-inicio-e-navegacao#007`). Corrigido a pedido do coordenador; o render anterior tinha a ordem invertida.
+- Conferência dos vídeos finais a 2 quadros por segundo em Fluxo completo e Faturamento e a 1,5 em Relatórios; sem dado sensível legível.
+| fluxo-completo | `out/intro-fluxo-completo.mp4` | duração 37.0 s · volume -14.1 LUFS · pico real -2.4 dBFS | aprovado |

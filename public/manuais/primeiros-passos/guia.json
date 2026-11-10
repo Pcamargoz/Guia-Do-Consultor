@@ -2,7 +2,7 @@
   "modulo": "primeiros-passos",
   "titulo": "Primeiros passos — guia visual",
   "resumo": "Você vai reconhecer as partes da tela do Faktory Flow, trocar de módulo, achar qualquer tela pela busca (Ctrl+K), abrir os grupos do menu, ler uma lista sem alterar nenhum registro e saber onde ficam avisos e administração. O que vale aqui vale para todos os módulos.",
-  "versaoSistema": "1.23.2 (Início, menu de módulos, busca, notificações e GLOBAIS no staging, 05/11/2026) e 1.22.13 (exemplos de lista em Vendas › Pedidos de Venda)",
+  "versaoSistema": "1.23.2 (Início, menu de módulos, busca, notificações e GLOBAIS no staging, 05/11/2026; menu do usuário, 06/11/2026) e 1.22.13 (exemplos de lista em Vendas › Pedidos de Venda)",
   "atualizadoEm": "2026-11-06",
   "status": "rascunho",
   "conceitos": [
@@ -914,12 +914,73 @@
         },
         {
           "titulo": "Conheça as preferências do usuário",
-          "texto": "No menu do usuário ficam Modo Escuro e Densidade. Não use Configurar E-mail (SMTP) nem Sair do Sistema sem combinar com o supervisor.",
+          "texto": "Clique no botão com o seu nome, no canto direito do topo. No menu do usuário ficam Modo Escuro e Densidade. Não use Configurar E-mail (SMTP) nem Sair do Sistema sem combinar com o supervisor.",
           "atencao": "O login tem limite de tentativas e pode bloquear o acesso por 15 minutos.",
-          "evidencia": "base",
+          "evidencia": "captura-real",
           "fontes": [
+            "captura staging /dashboard, menu do usuário (staging v1.23.2, 06/11/2026)",
             "guia:scripts/dados-checklists-estagiarios.mjs#navegacao"
-          ]
+          ],
+          "imagem": "/manuais/primeiros-passos/img/08-menu-do-usuario.webp",
+          "alt": "Menu do usuário aberto no canto direito do topo, com Conta do Usuário, Configurar E-mail (SMTP), Modo Escuro, Densidade, Personalizar avatar e Sair do Sistema.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Configurar E-mail (SMTP)",
+              "explicacao": "Fica no menu, mas a trilha pede para não usar sem combinar com o supervisor.",
+              "caixa": {
+                "x": 87.5,
+                "y": 10,
+                "w": 10.8,
+                "h": 2.6
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 2,
+              "rotulo": "Modo Escuro",
+              "explicacao": "Preferência de aparência da tela, a primeira que vale conhecer.",
+              "caixa": {
+                "x": 87.5,
+                "y": 13.9,
+                "w": 6.7,
+                "h": 2.4
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 3,
+              "rotulo": "Densidade",
+              "explicacao": "Preferência de exibição. O menu mostra a opção em uso: aqui, Confortável.",
+              "caixa": {
+                "x": 87.5,
+                "y": 16.9,
+                "w": 10.1,
+                "h": 2.4
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 4,
+              "rotulo": "Sair do Sistema",
+              "explicacao": "Encerra a sua sessão. Não use sem combinar com o supervisor.",
+              "caixa": {
+                "x": 87.5,
+                "y": 23.6,
+                "w": 7.4,
+                "h": 2.4
+              },
+              "lado": "esquerda"
+            }
+          ],
+          "zoom": {
+            "x": 81.3,
+            "y": 5.6,
+            "w": 18.2,
+            "h": 21.9
+          }
         }
       ]
     }
@@ -1118,11 +1179,11 @@
     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
   ],
   "pendencias": [
-    "CAPTURA: menu do usuário (Modo Escuro, Densidade) — o passo \"Conheça as preferências do usuário\" segue sem imagem.",
     "A CONFERIR: no staging (05/11/2026) o painel Módulos mostra 16 itens, incluindo CEM Mobi, Config. Interna e Implantação. Confirmar quais aparecem no ambiente de um cliente antes de citar a quantidade.",
     "A CONFERIR: aba Solicitações do sino — o painel diz que avisos de solicitações \"ainda vêm de fluxos diferentes\"; sem fonte na base sobre o que entra em cada aba.",
-    "SEM FONTE NA BASE: o que fazem Personalização e processos e Configurar relatórios (Painel de Controle). Só os nomes vêm da captura.",
+    "SEM FONTE NA BASE: o que faz Personalização e processos (Painel de Controle). Configurar relatórios abre a página Relatórios (/relatorios), explicada no guia Relatórios (staging v1.23.2, 06/11/2026).",
     "Alumina e \"Apresentar na TV\" não foram abertos na exploração (trilha do estagiário, não validado).",
-    "DECISÃO DO COORDENADOR: o capítulo \"Lendo uma lista\" ainda usa capturas de Vendas › Pedidos de Venda (exemplo citado pela trilha, por mostrar o filtro padrão). Os capítulos de tela usam a Início (staging v1.23.2, 05/11/2026)."
+    "DECISÃO DO COORDENADOR: o capítulo \"Lendo uma lista\" ainda usa capturas de Vendas › Pedidos de Venda (exemplo citado pela trilha, por mostrar o filtro padrão). Os capítulos de tela usam a Início (staging v1.23.2, 05/11/2026).",
+    "RESOLVIDO (staging v1.23.2, 06/11/2026): menu do usuário capturado. Além de Modo Escuro e Densidade, ele traz Conta do Usuário, Configurar E-mail (SMTP), Personalizar avatar e Sair do Sistema."
   ]
 }

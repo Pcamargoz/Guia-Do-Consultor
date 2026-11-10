@@ -1,5 +1,5 @@
 {
- "versao": "2026-11-06",
+ "versao": "2026-11-10",
  "id": "relatorios",
  "jornadas": {
   "inicial": [
@@ -139,29 +139,30 @@
   "materiais": [
    {
     "modulo": "relatorios",
-    "duracao_s": null,
-    "url": null,
+    "duracao_s": 29,
+    "url": "/videos/intro-relatorios.mp4",
     "fontes": [
-     "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md"
+     "guia:public/videos/manifest.json",
+     "guia:videos/roteiros/intro-relatorios.json"
     ],
     "id": "relatorios:video-inicial",
     "tipo": "video",
     "jornada": "inicial",
-    "titulo": "Vídeo introdutório",
-    "status": "em-preparacao"
+    "titulo": "Relatórios e Análises: vídeo introdutório",
+    "status": "disponivel"
    },
    {
     "modulo": "relatorios",
     "duracao_s": null,
-    "url": null,
+    "url": "#inicial/relatorios",
     "fontes": [
-     "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md"
+     "guia:public/manuais/relatorios/guia.json"
     ],
     "id": "relatorios:manual-inicial",
     "tipo": "manual",
     "jornada": "inicial",
-    "titulo": "Manual visual resumido",
-    "status": "em-preparacao"
+    "titulo": "Guia visual ilustrado (11 passos, 11 telas)",
+    "status": "disponivel"
    },
    {
     "modulo": "relatorios",
@@ -179,15 +180,15 @@
    {
     "modulo": "relatorios",
     "duracao_s": null,
-    "url": null,
+    "url": "#consultor/relatorios",
     "fontes": [
-     "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md"
+     "guia:public/manuais/relatorios/guia.json"
     ],
     "id": "relatorios:manual-consultor",
     "tipo": "manual",
     "jornada": "consultor",
-    "titulo": "Manual do consultor",
-    "status": "em-preparacao"
+    "titulo": "Guia visual ilustrado (13 passos, 11 telas)",
+    "status": "disponivel"
    }
   ],
   "jornadas": {
@@ -202,9 +203,32 @@
     {
      "id": "video",
      "titulo": "Vídeo introdutório",
-     "status": "em-preparacao",
-     "blocos": [],
-     "fontes": []
+     "status": "disponivel",
+     "blocos": [
+      {
+       "tipo": "video",
+       "material": "relatorios:video-inicial",
+       "titulo": "Relatórios e Análises: vídeo introdutório",
+       "status": "disponivel",
+       "url": "/videos/intro-relatorios.mp4",
+       "duracao_s": 29,
+       "poster": "/videos/intro-relatorios.jpg",
+       "legendas_url": "/videos/intro-relatorios.vtt",
+       "resumo": [
+        {
+         "t": "Guia Inicial · Os demonstrativos de cada módulo."
+        }
+       ],
+       "fontes": [
+        "guia:public/videos/manifest.json",
+        "guia:videos/roteiros/intro-relatorios.json"
+       ]
+      }
+     ],
+     "fontes": [
+      "guia:public/videos/manifest.json",
+      "guia:videos/roteiros/intro-relatorios.json"
+     ]
     },
     {
      "id": "manual",

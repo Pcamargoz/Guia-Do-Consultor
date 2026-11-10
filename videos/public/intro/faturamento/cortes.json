@@ -1,0 +1,85 @@
+{
+  "fonte": "midia/brutos/faturamento/faturamento_bruto_c02_v01.mp4",
+  "recorte": "crop=1920:1080:0:0",
+  "observacao": "Bruto c02, 1920x1080 nativo. Duração natural: sem lento. Trechos parados escolhidos por freezedetect; caixas conferidas em quadros extraídos em 06/11/2026.",
+  "caixas": {
+    "A_B_cabecalho": {
+      "x": 1395,
+      "y": 8,
+      "w": 510,
+      "h": 56,
+      "porque": "selo do tenant, nome, cargo e avatar do usuário"
+    },
+    "ft_emp": {
+      "x": 355,
+      "y": 622,
+      "w": 150,
+      "h": 95,
+      "porque": "empresa"
+    },
+    "ft_cli": {
+      "x": 630,
+      "y": 622,
+      "w": 530,
+      "h": 95,
+      "porque": "cliente/tomador e projeto: nomes de pessoas"
+    },
+    "ft_val": {
+      "x": 1250,
+      "y": 622,
+      "w": 105,
+      "h": 95,
+      "porque": "valor"
+    }
+  },
+  "cortes": [
+    {
+      "id": "a1-dashboard",
+      "in": 0.2,
+      "out": 3.25,
+      "borrar": [
+        "A_B_cabecalho"
+      ],
+      "porque": "Dashboard de Faturamento."
+    },
+    {
+      "id": "a2-documentos",
+      "in": 8.4,
+      "out": 12.95,
+      "borrar": [
+        "A_B_cabecalho",
+        "ft_emp",
+        "ft_cli",
+        "ft_val"
+      ],
+      "porque": "Documentos Fiscais."
+    },
+    {
+      "id": "a3-terceiros",
+      "in": 13.4,
+      "out": 17.45,
+      "borrar": [
+        "A_B_cabecalho"
+      ],
+      "porque": "Controle de Terceiros."
+    },
+    {
+      "id": "a4-futuras",
+      "in": 19.6,
+      "out": 22.15,
+      "borrar": [
+        "A_B_cabecalho"
+      ],
+      "porque": "Vendas futuras."
+    },
+    {
+      "id": "a5-demonstrativos",
+      "in": 25.9,
+      "out": 30.45,
+      "borrar": [
+        "A_B_cabecalho"
+      ],
+      "porque": "Demonstrativos de Faturamento."
+    }
+  ]
+}

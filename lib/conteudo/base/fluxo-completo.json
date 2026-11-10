@@ -1,5 +1,5 @@
 {
- "versao": "2026-11-06",
+ "versao": "2026-11-10",
  "id": "fluxo-completo",
  "jornadas": {
   "inicial": [
@@ -39,9 +39,28 @@
    },
    {
     "id": "video",
-    "titulo": "Vídeo de apoio",
+    "titulo": "Vídeo introdutório",
     "status": "disponivel",
     "blocos": [
+     {
+      "tipo": "video",
+      "material": "fluxo-completo:video-inicial",
+      "titulo": "Visão do fluxo completo: vídeo introdutório",
+      "status": "disponivel",
+      "url": "/videos/intro-fluxo-completo.mp4",
+      "duracao_s": 37,
+      "poster": "/videos/intro-fluxo-completo.jpg",
+      "legendas_url": "/videos/intro-fluxo-completo.vtt",
+      "resumo": [
+       {
+        "t": "Guia Inicial · Do pedido ao financeiro."
+       }
+      ],
+      "fontes": [
+       "guia:public/videos/manifest.json",
+       "guia:videos/roteiros/intro-fluxo-completo.json"
+      ]
+     },
      {
       "tipo": "video",
       "material": "fluxo-completo:video-apoio",
@@ -53,7 +72,7 @@
       "legendas_url": "/videos/consultor-fluxo-completo.vtt",
       "resumo": [
        {
-        "t": "Apoio do Guia do Consultor, com narração e regras de negócio. O vídeo introdutório deste módulo está em preparação. O fluxo inteiro, do CRM aos indicadores."
+        "t": "Apoio do Guia do Consultor, com narração e regras de negócio. O fluxo inteiro, do CRM aos indicadores."
        }
       ],
       "fontes": [
@@ -64,6 +83,7 @@
     ],
     "fontes": [
      "guia:public/videos/manifest.json",
+     "guia:videos/roteiros/intro-fluxo-completo.json",
      "guia:videos/roteiros/consultor-fluxo-completo.json"
     ]
    },
@@ -446,6 +466,14 @@
         ]
        },
        {
+        "id": "video",
+        "texto": [
+         {
+          "t": "Assisti ao vídeo introdutório"
+         }
+        ]
+       },
+       {
         "id": "checklist",
         "texto": [
          {
@@ -456,13 +484,19 @@
       ],
       "fontes": [
        "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
-       "guia:scripts/dados-checklists-estagiarios.mjs#fluxo"
+       "guia:scripts/dados-checklists-estagiarios.mjs#fluxo",
+       "guia:public/videos/manifest.json",
+       "guia:videos/roteiros/intro-fluxo-completo.json",
+       "guia:videos/roteiros/consultor-fluxo-completo.json"
       ]
      }
     ],
     "fontes": [
      "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
-     "guia:scripts/dados-checklists-estagiarios.mjs#fluxo"
+     "guia:scripts/dados-checklists-estagiarios.mjs#fluxo",
+     "guia:public/videos/manifest.json",
+     "guia:videos/roteiros/intro-fluxo-completo.json",
+     "guia:videos/roteiros/consultor-fluxo-completo.json"
     ]
    },
    {
@@ -473,7 +507,7 @@
      {
       "tipo": "progresso",
       "chave": "inicial:fluxo-completo",
-      "total": 7,
+      "total": 8,
       "api": "/api/checklists-progresso",
       "fontes": [
        "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md"

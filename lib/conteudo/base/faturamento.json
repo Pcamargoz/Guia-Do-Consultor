@@ -1,5 +1,5 @@
 {
- "versao": "2026-11-06",
+ "versao": "2026-11-10",
  "id": "faturamento",
  "jornadas": {
   "inicial": [
@@ -45,7 +45,26 @@
      {
       "tipo": "video",
       "material": "faturamento:video-inicial",
-      "titulo": "Faturamento: do pedido à nota finalizada",
+      "titulo": "Faturamento: vídeo introdutório",
+      "status": "disponivel",
+      "url": "/videos/intro-faturamento.mp4",
+      "duracao_s": 25,
+      "poster": "/videos/intro-faturamento.jpg",
+      "legendas_url": "/videos/intro-faturamento.vtt",
+      "resumo": [
+       {
+        "t": "Guia Inicial · Do pedido à nota."
+       }
+      ],
+      "fontes": [
+       "guia:public/videos/manifest.json",
+       "guia:videos/roteiros/intro-faturamento.json"
+      ]
+     },
+     {
+      "tipo": "video",
+      "material": "faturamento:video-apoio",
+      "titulo": "Faturamento: do pedido à nota finalizada (vídeo de apoio)",
       "status": "disponivel",
       "url": "/videos/consultor-07-faturamento.mp4",
       "duracao_s": 198,
@@ -53,7 +72,7 @@
       "legendas_url": "/videos/consultor-07-faturamento.vtt",
       "resumo": [
        {
-        "t": "Faturar o pedido, conferir a nota e finalizar sem transmitir."
+        "t": "Apoio do Guia do Consultor, com narração e regras de negócio. Faturar o pedido, conferir a nota e finalizar sem transmitir."
        }
       ],
       "fontes": [
@@ -64,6 +83,7 @@
     ],
     "fontes": [
      "guia:public/videos/manifest.json",
+     "guia:videos/roteiros/intro-faturamento.json",
      "guia:videos/roteiros/consultor-07-faturamento.json"
     ]
    },
@@ -635,6 +655,7 @@
        "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
        "guia:scripts/dados-checklists-estagiarios.mjs#faturamento",
        "guia:public/videos/manifest.json",
+       "guia:videos/roteiros/intro-faturamento.json",
        "guia:videos/roteiros/consultor-07-faturamento.json"
       ]
      }
@@ -643,6 +664,7 @@
      "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
      "guia:scripts/dados-checklists-estagiarios.mjs#faturamento",
      "guia:public/videos/manifest.json",
+     "guia:videos/roteiros/intro-faturamento.json",
      "guia:videos/roteiros/consultor-07-faturamento.json"
     ]
    },

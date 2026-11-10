@@ -1,0 +1,245 @@
+{
+  "id": "intro-relatorios",
+  "modulo": "relatorios",
+  "fps": 30,
+  "duracao": 29,
+  "musica": {
+    "arquivo": "musica/intro-relatorios.wav",
+    "bpm": 120,
+    "entrada": 4,
+    "final": 24,
+    "acentos": [
+      12
+    ]
+  },
+  "abertura": {
+    "duracao": 4,
+    "titulo": "Relatórios",
+    "linha": "Guia Inicial · Os demonstrativos de cada módulo."
+  },
+  "fechamento": {
+    "inicio": 24,
+    "duracao": 5,
+    "titulo": "Guia Inicial › Relatórios",
+    "linha": "Próximo passo"
+  },
+  "transicao_s": 0.4,
+  "cenas": [
+    {
+      "id": "l1-vendas",
+      "clipe": "intro/relatorios/l1-vendas.mp4",
+      "inicio": 4,
+      "duracao": 4.5,
+      "desde": 0.3,
+      "entrada": "zoom",
+      "camera": [
+        {
+          "t": 0,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 0.5,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 3.38,
+          "x": 1000,
+          "y": 340,
+          "zoom": 1.2
+        },
+        {
+          "t": 4.5,
+          "x": 1006,
+          "y": 346,
+          "zoom": 1.22
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.3,
+          "ate": 1.8,
+          "texto": "Demonstrativos de Vendas.",
+          "posicao": "inf-dir"
+        },
+        {
+          "t": 2.2,
+          "ate": 3.7,
+          "texto": "Exportação em XLSX e PDF.",
+          "posicao": "inf-dir"
+        }
+      ]
+    },
+    {
+      "id": "l2-compras",
+      "clipe": "intro/relatorios/l2-compras.mp4",
+      "inicio": 8.5,
+      "duracao": 4,
+      "desde": 0.3,
+      "entrada": "corte",
+      "camera": [
+        {
+          "t": 0,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 0.5,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 3,
+          "x": 1000,
+          "y": 340,
+          "zoom": 1.2
+        },
+        {
+          "t": 4,
+          "x": 1006,
+          "y": 346,
+          "zoom": 1.22
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.3,
+          "ate": 3.2,
+          "texto": "Demonstrativos de Compras.",
+          "posicao": "inf-dir"
+        }
+      ]
+    },
+    {
+      "id": "l3-estoque",
+      "clipe": "intro/relatorios/l3-estoque.mp4",
+      "inicio": 12.5,
+      "duracao": 4,
+      "desde": 0.3,
+      "entrada": "corte",
+      "camera": [
+        {
+          "t": 0,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 0.5,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 3,
+          "x": 1000,
+          "y": 320,
+          "zoom": 1.2
+        },
+        {
+          "t": 4,
+          "x": 1006,
+          "y": 326,
+          "zoom": 1.22
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.3,
+          "ate": 3.2,
+          "texto": "Demonstrativos de Estoque.",
+          "posicao": "inf-dir"
+        }
+      ]
+    },
+    {
+      "id": "l4-producao",
+      "clipe": "intro/relatorios/l4-producao.mp4",
+      "inicio": 16.5,
+      "duracao": 4,
+      "desde": 0.3,
+      "entrada": "corte",
+      "camera": [
+        {
+          "t": 0,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 0.5,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 3,
+          "x": 1000,
+          "y": 340,
+          "zoom": 1.2
+        },
+        {
+          "t": 4,
+          "x": 1006,
+          "y": 346,
+          "zoom": 1.22
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.3,
+          "ate": 3.2,
+          "texto": "Demonstrativos de Produção.",
+          "posicao": "inf-dir"
+        }
+      ]
+    },
+    {
+      "id": "l5-relatorio",
+      "clipe": "intro/relatorios/l5-relatorio.mp4",
+      "inicio": 20.5,
+      "duracao": 3.5,
+      "desde": 0.3,
+      "entrada": "corte",
+      "camera": [
+        {
+          "t": 0,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 0.5,
+          "x": 960,
+          "y": 540,
+          "zoom": 1
+        },
+        {
+          "t": 2.63,
+          "x": 900,
+          "y": 300,
+          "zoom": 1.3
+        },
+        {
+          "t": 3.5,
+          "x": 906,
+          "y": 306,
+          "zoom": 1.32
+        }
+      ],
+      "textos": [
+        {
+          "t": 0.3,
+          "ate": 2.7,
+          "texto": "Escolha a empresa e execute.",
+          "posicao": "inf-dir"
+        }
+      ]
+    }
+  ]
+}

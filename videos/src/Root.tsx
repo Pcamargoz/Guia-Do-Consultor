@@ -22,6 +22,9 @@ import introCrm from '../roteiros/intro-crm.json';
 import introFinanceiro from '../roteiros/intro-financeiro.json';
 import introEstoque from '../roteiros/intro-estoque.json';
 import introCompras from '../roteiros/intro-compras.json';
+import introRelatorios from '../roteiros/intro-relatorios.json';
+import introFaturamento from '../roteiros/intro-faturamento.json';
+import introFluxoCompleto from '../roteiros/intro-fluxo-completo.json';
 import introTarefas from '../roteiros/intro-tarefas.json';
 import introFiscal from '../roteiros/intro-fiscal.json';
 import introExpedicao from '../roteiros/intro-expedicao.json';
@@ -80,6 +83,12 @@ export const Root: React.FC = () => (
       durationInFrames={Math.round(introFiscal.duracao * introFiscal.fps)} defaultProps={{ roteiro: introFiscal as RoteiroIntro }} />
     <Composition id="intro-tarefas" component={IntroVideo} fps={introTarefas.fps} width={1920} height={1080}
       durationInFrames={Math.round(introTarefas.duracao * introTarefas.fps)} defaultProps={{ roteiro: introTarefas as RoteiroIntro }} />
+    <Composition id="intro-fluxo-completo" component={IntroVideo} fps={introFluxoCompleto.fps} width={1920} height={1080}
+      durationInFrames={Math.round(introFluxoCompleto.duracao * introFluxoCompleto.fps)} defaultProps={{ roteiro: introFluxoCompleto as RoteiroIntro }} />
+    <Composition id="intro-faturamento" component={IntroVideo} fps={introFaturamento.fps} width={1920} height={1080}
+      durationInFrames={Math.round(introFaturamento.duracao * introFaturamento.fps)} defaultProps={{ roteiro: introFaturamento as RoteiroIntro }} />
+    <Composition id="intro-relatorios" component={IntroVideo} fps={introRelatorios.fps} width={1920} height={1080}
+      durationInFrames={Math.round(introRelatorios.duracao * introRelatorios.fps)} defaultProps={{ roteiro: introRelatorios as RoteiroIntro }} />
     <Composition id="intro-compras" component={IntroVideo} fps={introCompras.fps} width={1920} height={1080}
       durationInFrames={Math.round(introCompras.duracao * introCompras.fps)} defaultProps={{ roteiro: introCompras as RoteiroIntro }} />
   </>
