@@ -35,7 +35,8 @@
     }
     return el;
   }
-  const ic = (nome) => UI.icone(nome);
+  const GL = window.MetodologiaGlifos;
+  const ic = (nome) => (GL && GL.tem(nome) ? GL.glifo(nome) : UI.icone(nome));
   const ilustracao = (id) => (window.PlataformaIcones ? window.PlataformaIcones.modulo(id) : ic(id));
   const reduzido = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
   const semAcento = (s) => String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();

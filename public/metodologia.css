@@ -721,3 +721,35 @@ html.mov .mt-medidores { animation: ff-chega 700ms var(--mov-ease) both 480ms; }
 .mt-card__prog-barra { position: relative; width: 56px; height: 4px; border-radius: 4px; background: var(--color-success-soft); overflow: hidden; }
 .mt-card__prog-barra::after { content: ""; position: absolute; inset: 0; transform-origin: left; transform: scaleX(var(--p, 0)); background: var(--color-success); border-radius: inherit; }
 @media (max-width: 640px) { .mt-mapa__area { font-size: 9.5px; letter-spacing: -.01em; padding: 0 1px; } }
+
+/* ---------- glifos próprios (metodologia-glifos.js): traço fino + preenchimento suave + destaque ---------- */
+.mt-glifo { overflow: visible; }
+.mt-glifo .g-f { fill: currentColor; stroke: none; opacity: .2; }
+.mt-glifo .g-a { fill: var(--g-acento, currentColor); stroke: none; }
+.mt-glifo .g-as { stroke: var(--g-acento, currentColor); }
+/* no escuro o destaque é o lima da marca; no claro, a cor do próprio contexto */
+.mt-hero__dir, .mt-mapa, .mt-medidores, .ff, .mt-player { --g-acento: #D5DD26; }
+
+/* nó do mapa: vidro tingido pela cor do módulo, brilho interno e glifo maior */
+.mt-no { width: 46px; height: 46px; border-radius: 14px; color: #F4F8FB;
+  border: 1px solid color-mix(in srgb, var(--c) 40%, rgb(255 255 255 / .22));
+  background:
+    radial-gradient(120% 90% at 30% 0%, rgb(255 255 255 / .16), transparent 55%),
+    linear-gradient(165deg, color-mix(in srgb, var(--c) 70%, #0b2236), color-mix(in srgb, var(--c) 34%, #071726));
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / .2), inset 0 -8px 16px rgb(0 0 0 / .18), 0 8px 18px rgb(0 0 0 / .32); }
+.mt-no__ic { display: grid; place-items: center; }
+.mt-no__ic svg { width: 23px; height: 23px; }
+.mt-no .mt-glifo .g-f { opacity: .28; }
+.mt-no:hover, .mt-no:focus-visible { border-color: rgb(213 221 38 / .75); box-shadow: inset 0 1px 0 rgb(255 255 255 / .25), 0 0 0 4px rgb(213 221 38 / .12), 0 14px 28px rgb(0 0 0 / .42); }
+.mt-no:hover .g-a, .mt-no:focus-visible .g-a { animation: mt-glifo-pulso .9s var(--mov-ease, ease) 1; }
+@keyframes mt-glifo-pulso { 40% { opacity: .55; } }
+.mt-mapa__linhas path { stroke: rgb(185 212 231 / .26); }
+@media (max-width: 640px) {
+  .mt-no { width: 38px; height: 38px; border-radius: 11px; }
+  .mt-no__ic svg { width: 19px; height: 19px; }
+}
+/* medidores: glifo do material no centro do anel */
+.mt-medidor__ic svg { width: 22px; height: 22px; }
+.mt-medidor[data-vazio="true"] .mt-glifo { --g-acento: #A9C2D6; }
+@media (prefers-reduced-motion: reduce) { .mt-no .g-a { animation: none !important; } }
+.mt-recurso[aria-selected="true"] { --g-acento: #fff; }
