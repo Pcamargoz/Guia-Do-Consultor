@@ -13,16 +13,6 @@
 .mt-cab__titulo { margin: 0; font: 800 clamp(2rem, 3.4vw, 3rem)/1.04 var(--font-display); letter-spacing: -.03em; color: var(--brand-primary-950); text-wrap: balance; }
 .mt-cab__lead { margin: 12px 0 0; max-width: 64ch; color: var(--color-muted); font-size: 16px; line-height: 1.6; text-wrap: pretty; }
 
-/* cobertura: o que existe e o que falta (dado real, não decoração) */
-.mt-cobertura { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px 28px; width: min(100%, 560px); margin: 0; }
-.mt-cobertura__item { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: baseline; column-gap: 10px; row-gap: 6px; }
-@media (max-width: 560px) { .mt-cobertura { grid-template-columns: 1fr; } }
-.mt-cobertura dt { display: inline-flex; align-items: center; gap: 7px; color: var(--color-muted); font: 600 13px var(--font-body); }
-.mt-cobertura dt svg { width: 16px; height: 16px; color: var(--brand-primary); }
-.mt-cobertura dd { margin: 0; justify-self: end; color: var(--color-muted); font-size: 13px; font-variant-numeric: tabular-nums; }
-.mt-cobertura dd strong { color: var(--brand-primary-950); font: 800 20px var(--font-display); }
-.mt-cobertura__trilho { grid-column: 1 / -1; height: 4px; border-radius: 4px; background: var(--color-line); overflow: hidden; }
-.mt-cobertura__trilho i { display: block; height: 100%; width: 100%; transform-origin: left; transform: scaleX(var(--p, 0)); background: var(--brand-primary); border-radius: inherit; transition: transform var(--dur-stage) var(--ease-out); }
 
 /* ---------- barra: busca local, filtros, ações ---------- */
 .mt-barra { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; margin: 24px 0 8px; }
@@ -64,37 +54,6 @@
 .mt-grupo__cab { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 16px; margin-bottom: 16px; }
 .mt-grupo__cab h2 { margin: 0; font: 750 1.2rem/1.2 var(--font-display); letter-spacing: -.015em; color: var(--brand-primary-950); }
 .mt-grupo__cab p { margin: 0; color: var(--color-muted); font-size: 14px; }
-.mt-cards { display: grid; gap: 16px; margin: 0; padding: 0; list-style: none; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); }
-.mt-card-item { display: flex; }
-.mt-card { --c: #3478A7; position: relative; display: grid; grid-template-columns: 76px minmax(0, 1fr); grid-template-rows: auto 1fr; column-gap: 16px; width: 100%; padding: 18px 18px 16px; text-align: left;
-  border: 1px solid var(--color-line); border-radius: 18px; background: #fff; color: inherit; font: inherit; cursor: pointer;
-  box-shadow: 0 1px 2px rgb(12 36 56 / .04);
-  transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out), border-color var(--dur-fast); }
-.mt-card:hover { transform: translateY(-3px); border-color: color-mix(in srgb, var(--c) 40%, var(--color-line)); box-shadow: 0 2px 4px rgb(12 36 56 / .04), 0 16px 34px rgb(12 36 56 / .10); }
-.mt-card:active { transform: translateY(-1px); }
-.mt-card__palco { grid-row: 1 / 3; display: grid; place-items: center; width: 76px; height: 76px; border-radius: 16px; background: color-mix(in srgb, var(--c) 9%, #fff); }
-.mt-card__palco .fi-wrap, .mt-card__palco svg { width: 62px; height: 62px; }
-.mt-card__corpo { display: grid; gap: 4px; align-content: start; padding-right: 22px; }
-.mt-card__titulo { font: 750 1.06rem/1.25 var(--font-display); color: var(--brand-primary-950); letter-spacing: -.01em; }
-.mt-card__sub { color: var(--color-muted); font-size: 13px; line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-.mt-card__seta { position: absolute; top: 18px; right: 16px; color: color-mix(in srgb, var(--c) 70%, var(--color-muted)); opacity: .5; transition: transform var(--dur-base) var(--ease-out), opacity var(--dur-fast); }
-.mt-card__seta svg { width: 18px; height: 18px; }
-.mt-card:hover .mt-card__seta { opacity: 1; transform: translateX(3px); }
-.mt-card__recs { grid-column: 1 / -1; display: grid; gap: 2px; margin: 14px 0 0; padding: 12px 0 0; list-style: none; border-top: 1px dashed var(--color-line); }
-.mt-card .mt-selo { grid-column: 1 / -1; margin-top: 10px; }
-.mt-card:is(:hover, :focus-visible) .fi :is([class^="m-"], [class*=" m-"]) { animation: var(--anim, none) cubic-bezier(.16,1,.3,1) both; }
-
-/* linha de recurso (vídeo / checklist / manual) */
-.mt-rec { position: relative; display: grid; grid-template-columns: 18px 72px minmax(0, 1fr); align-items: center; gap: 8px; min-height: 26px; font-size: 13px; }
-.mt-rec__ic { display: grid; place-items: center; color: var(--brand-primary); }
-.mt-rec__ic svg { width: 15px; height: 15px; }
-.mt-rec__nome { color: var(--brand-primary-950); font-weight: 600; }
-.mt-rec__det { color: var(--color-muted); font-variant-numeric: tabular-nums; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.mt-rec[data-estado="preparacao"] .mt-rec__ic, .mt-rec[data-estado="oculto"] .mt-rec__ic { color: var(--color-line-strong); }
-.mt-rec[data-estado="preparacao"] :is(.mt-rec__nome, .mt-rec__det), .mt-rec[data-estado="oculto"] :is(.mt-rec__nome, .mt-rec__det) { color: color-mix(in srgb, var(--color-muted) 75%, #fff); }
-.mt-rec[data-estado="revisar"] .mt-rec__ic { color: var(--color-warning-line); }
-.mt-rec__barra { position: absolute; left: 106px; right: 0; bottom: 1px; height: 2px; border-radius: 2px; background: var(--color-line); overflow: hidden; }
-.mt-rec__barra::after { content: ""; position: absolute; inset: 0; transform-origin: left; transform: scaleX(var(--p, 0)); background: var(--color-success); }
 
 .mt-selo { display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; border-radius: 999px; font: 600 12px var(--font-body); width: max-content; }
 .mt-selo svg { width: 14px; height: 14px; }
@@ -481,9 +440,6 @@ html.mov [data-revela]:not(.visto) { opacity: 0; transform: translateY(18px); }
 html.mov [data-revela-lista] > * { transition: opacity .55s var(--mov-ease) var(--mov-atraso, 0ms), transform .8s var(--mov-ease) var(--mov-atraso, 0ms); }
 html.mov [data-revela-lista]:not(.visto) > * { opacity: 0; transform: translateY(22px) scale(.985); }
 /* barras de cobertura enchem quando aparecem */
-html.mov .mt-cobertura:not(.visto) .mt-cobertura__trilho i { transform: scaleX(0); }
-html.mov .mt-cobertura .mt-cobertura__item:nth-child(2) i { transition-delay: 90ms; }
-html.mov .mt-cobertura .mt-cobertura__item:nth-child(3) i { transition-delay: 180ms; }
 
 /* indicador deslizante dos filtros (substitui o fundo fixo do botão ativo) */
 .mt-segmento { position: relative; isolation: isolate; }
@@ -559,7 +515,6 @@ html.mov [data-revela]:not(.visto) .mov-palavras--revela .mov-palavra > span { t
 html.mov .mov-foco { animation: mov-foco 900ms var(--mov-ease) both 220ms; }
 @keyframes mov-foco { from { opacity: 0; filter: blur(6px); transform: translateY(6px); } }
 /* contadores: algarismos de largura fixa enquanto sobem (nada pula de lugar) */
-.mt-cobertura dd strong { font-variant-numeric: tabular-nums; display: inline-block; min-width: 1.2ch; text-align: right; }
 /* Metodologia Faktory Flow: o título de cada seção ganha um traço de lima que se desenha ao entrar na tela */
 .ff-secao__titulo::after { content: ""; display: block; width: 48px; height: 2px; margin-top: 12px; border-radius: 2px; background: var(--ff-lima); transform-origin: left; box-shadow: 0 0 10px rgb(213 221 38 / .45); }
 html.mov .ff-secao__titulo::after { transition: transform 1s var(--mov-ease) .25s; }
@@ -578,3 +533,191 @@ html.mov .ff-secao:not(.visto) .ff-secao__titulo::after { transform: scaleX(0); 
 html.mov .ff-dev { animation: ff-chega 700ms var(--mov-ease) both 320ms; }
 html.mov .ff-dev__ponto { animation: ff-pulsa 2.4s ease-in-out infinite 1.2s; }
 @keyframes ff-pulsa { 50% { opacity: .45; box-shadow: 0 0 4px rgb(213 221 38 / .4); } }
+
+/* =====================================================================
+   Metodologia do Consultor — redesign (13/11/2026)
+   Abertura em duas partes (texto | mapa dos módulos em azul-marinho), medidores de MATERIAIS PUBLICADOS,
+   ferramentas numa barra só e cartões com materiais visuais. Cores: tokens da marca; os tons de azul-marinho
+   (#0f2d47, #071725) são os mesmos da área escura.
+   ===================================================================== */
+.mt-catalogo { --mt-medida: 1360px; padding-top: 4px; }
+
+/* ---------- abertura ---------- */
+.mt-hero { display: grid; margin: 10px 0 22px; border-radius: 28px; overflow: hidden; background: #fff; border: 1px solid var(--color-line);
+  box-shadow: 0 1px 2px rgb(12 36 56 / .04), 0 30px 70px -34px rgb(12 36 56 / .35); }
+@media (min-width: 1100px) { .mt-hero { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); } }
+.mt-hero__esq { display: grid; align-content: center; gap: 22px; padding: clamp(28px, 4vw, 56px) clamp(24px, 3.6vw, 52px);
+  background: radial-gradient(110% 70% at 0% 0%, var(--brand-primary-50), #fff 62%); }
+.mt-hero__titulo { display: grid; margin: 0; font: 800 clamp(2.5rem, 4.4vw, 4.1rem)/.98 var(--font-display); letter-spacing: -.04em; color: var(--brand-primary-950); }
+.mt-hero__l2 { color: var(--brand-primary); }
+.mt-hero__lead { margin: 0; max-width: 42ch; color: var(--color-muted); font-size: 16.5px; line-height: 1.6; text-wrap: pretty; }
+.mt-hero__fatos { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.mt-hero__fatos li { padding: 6px 12px; border-radius: 999px; background: #fff; border: 1px solid var(--color-line); color: var(--color-muted); font-size: 13px; }
+.mt-hero__fatos strong { color: var(--brand-primary-950); font-weight: 700; font-variant-numeric: tabular-nums; }
+.mt-hero__acoes { display: flex; flex-wrap: wrap; gap: 10px; }
+.mt-hero__acoes .mt-botao { min-height: 46px; padding: 0 18px; border-radius: 13px; }
+.mt-kbd { display: inline-grid; place-items: center; min-width: 22px; height: 22px; margin-left: 4px; padding: 0 6px; border-radius: 6px; background: rgb(255 255 255 / .16); border: 1px solid rgb(255 255 255 / .28); font: 600 12px var(--font-body); }
+
+.mt-hero__dir { position: relative; isolation: isolate; display: grid; gap: 22px; padding: clamp(22px, 3vw, 36px); overflow: hidden; color: #E4EEF6;
+  background: linear-gradient(155deg, #0f2d47 0%, var(--brand-primary-950) 46%, #071725 100%); }
+.mt-hero__luz { position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: radial-gradient(46% 56% at 88% 4%, rgb(213 221 38 / .13), transparent 70%), radial-gradient(60% 70% at 4% 100%, rgb(52 120 167 / .38), transparent 72%); }
+
+/* mapa dos módulos */
+.mt-mapa { display: grid; gap: 14px; margin: 0; }
+.mt-mapa__cab { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; }
+.mt-mapa__titulo { color: #fff; font: 700 14.5px var(--font-display); letter-spacing: -.005em; }
+.mt-mapa__chaves { display: flex; gap: 14px; color: #A9C2D6; font-size: 12px; }
+.mt-chave { display: inline-flex; align-items: center; gap: 6px; }
+.mt-chave i { width: 8px; height: 8px; border-radius: 50%; background: var(--k); }
+:is(.mt-chave, .mt-medidor, .mt-no__marcas i)[data-tipo="video"] { --k: var(--brand-accent); }
+:is(.mt-chave, .mt-medidor, .mt-no__marcas i)[data-tipo="checklist"] { --k: var(--brand-secondary); }
+:is(.mt-chave, .mt-medidor, .mt-no__marcas i)[data-tipo="manual"] { --k: #fff; }
+.mt-mapa__palco { position: relative; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 6px; min-height: 340px; }
+.mt-mapa__linhas { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.mt-mapa__linhas path { fill: none; stroke: rgb(185 212 231 / .2); stroke-width: 1; stroke-dasharray: 1; }
+.mt-mapa__col { display: grid; grid-template-rows: 1fr auto; justify-items: center; gap: 12px; min-width: 0; }
+.mt-mapa__nos { display: flex; flex-direction: column; justify-content: center; gap: 13px; margin: 0; padding: 0; list-style: none; }
+.mt-no { position: relative; display: grid; place-items: center; width: 42px; height: 42px; padding: 0; border-radius: 12px; cursor: pointer; color: #fff;
+  border: 1px solid rgb(255 255 255 / .16); background: color-mix(in srgb, var(--c) 42%, #0b2236);
+  box-shadow: 0 6px 16px rgb(0 0 0 / .28); transition: transform .4s var(--mov-mola), border-color .2s, box-shadow .25s; }
+.mt-no__ic svg { width: 20px; height: 20px; }
+.mt-no:hover, .mt-no:focus-visible { transform: translateY(-2px) scale(1.08); border-color: rgb(255 255 255 / .5); box-shadow: 0 0 0 4px rgb(255 255 255 / .07), 0 12px 26px rgb(0 0 0 / .4); outline: none; }
+.mt-no[data-completo="true"] { border-color: rgb(213 221 38 / .7); box-shadow: 0 0 18px rgb(213 221 38 / .25), 0 6px 16px rgb(0 0 0 / .28); }
+.mt-no__marcas { position: absolute; left: 50%; bottom: -8px; display: flex; gap: 3px; padding: 2px 4px; border-radius: 999px; transform: translateX(-50%); background: #0a1d2e; border: 1px solid rgb(255 255 255 / .12); }
+.mt-no__marcas i { width: 5px; height: 5px; border-radius: 50%; box-shadow: inset 0 0 0 1px rgb(255 255 255 / .35); }
+.mt-no__marcas i[data-ok="true"] { background: var(--k); box-shadow: none; }
+.mt-mapa__area { color: #A9C2D6; font: 600 11.5px/1.25 var(--font-body); text-align: center; }
+.mt-mapa__legenda { min-height: 2.6em; margin: 0; color: #E4EEF6; font-size: 13px; line-height: 1.35; }
+
+/* medidores de materiais publicados */
+.mt-medidores { display: grid; gap: 12px; padding-top: 18px; border-top: 1px solid rgb(185 212 231 / .14); }
+.mt-medidores__titulo { margin: 0; color: #A9C2D6; font: 600 12.5px var(--font-body); }
+.mt-medidores__lista { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.mt-medidor { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.mt-medidor__grafico { position: relative; flex: none; width: 56px; height: 56px; }
+.mt-medidor__anel { display: block; width: 56px; height: 56px; }
+.mt-medidor__trilho { fill: none; stroke: rgb(255 255 255 / .1); stroke-width: 5; }
+.mt-medidor__arco { fill: none; stroke: var(--k); stroke-width: 5; stroke-linecap: round; transition: stroke-dashoffset 1.3s var(--mov-ease); }
+.mt-medidor__ic { position: absolute; inset: 0; display: grid; place-items: center; color: var(--k); }
+.mt-medidor__ic svg { width: 19px; height: 19px; }
+.mt-medidor[data-vazio="true"] .mt-medidor__ic { color: #A9C2D6; }
+.mt-medidor__txt { display: grid; gap: 1px; min-width: 0; }
+.mt-medidor__valor { display: flex; align-items: baseline; gap: 2px; }
+.mt-medidor__num { color: #fff; font: 800 30px/1 var(--font-display); letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
+.mt-medidor__de { color: #A9C2D6; font-size: 13px; }
+.mt-medidor__nome { color: #A9C2D6; font-size: 12.5px; line-height: 1.3; }
+@media (max-width: 640px) {
+  .mt-medidores__lista { grid-template-columns: 1fr; gap: 12px; }
+  .mt-mapa__palco { gap: 2px; min-height: 360px; }
+  .mt-no { width: 36px; height: 36px; border-radius: 10px; }
+  .mt-no__ic svg { width: 17px; height: 17px; }
+  .mt-mapa__area { font-size: 10.5px; }
+  .mt-mapa__chaves { gap: 10px; }
+}
+
+/* ---------- barra de ferramentas (busca · filtros · contagem) ---------- */
+.mt-ferramentas { position: sticky; top: 78px; z-index: 6; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; margin: 0 0 6px; padding: 8px; border-radius: 18px;
+  background: rgb(255 255 255 / .88); -webkit-backdrop-filter: saturate(160%) blur(14px); backdrop-filter: saturate(160%) blur(14px);
+  border: 1px solid var(--color-line); box-shadow: 0 10px 30px -18px rgb(12 36 56 / .28); }
+.mt-ferramentas .mt-busca-local { flex: 1 1 240px; max-width: 340px; }
+.mt-ferramentas .mt-busca-local input { min-height: 42px; border-color: transparent; background: var(--color-surface-alt); }
+.mt-ferramentas .mt-busca-local input:hover { border-color: var(--color-line); }
+.mt-ferramentas .mt-busca-local input:focus { background: #fff; }
+.mt-ferramentas .mt-contagem { margin: 0 6px 0 auto; }
+.mt-segmento__n { display: inline-grid; place-items: center; min-width: 20px; height: 20px; margin-left: 7px; padding: 0 6px; border-radius: 999px; background: rgb(12 36 56 / .06); color: var(--color-muted); font: 650 11.5px var(--font-body); font-variant-numeric: tabular-nums; }
+.mt-segmento__op[aria-pressed="true"] .mt-segmento__n { background: var(--brand-primary-950); color: #fff; }
+@media (max-width: 900px) { .mt-ferramentas { top: 8px; } .mt-ferramentas .mt-contagem { display: none; } }
+
+/* ---------- cartões ---------- */
+.mt-catalogo .mt-grupos { margin-top: 8px; }
+.mt-cards { display: grid; gap: 16px; margin: 0; padding: 0; list-style: none; grid-template-columns: repeat(auto-fill, minmax(min(100%, 330px), 1fr)); }
+.mt-card-item { display: flex; }
+.mt-card { --c: #3478A7; --mx: 50%; --my: 0%; position: relative; isolation: isolate; display: flex; flex-direction: column; gap: 16px; width: 100%; padding: 18px; overflow: hidden; text-align: left;
+  border: 1px solid var(--color-line); border-radius: 22px; background: #fff; color: inherit; font: inherit; cursor: pointer;
+  box-shadow: 0 1px 2px rgb(12 36 56 / .04); transition: transform .5s var(--mov-mola), box-shadow .35s var(--mov-ease), border-color .25s; }
+.mt-card::before { content: ""; position: absolute; inset: 0; z-index: -1; opacity: 0; transition: opacity .35s;
+  background: radial-gradient(380px circle at var(--mx) var(--my), color-mix(in srgb, var(--c) 12%, transparent), transparent 62%); }
+.mt-card:hover::before { opacity: 1; }
+.mt-card:hover { transform: translateY(-3px); border-color: color-mix(in srgb, var(--c) 36%, var(--color-line)); box-shadow: 0 2px 4px rgb(12 36 56 / .04), 0 24px 46px -20px rgb(12 36 56 / .24); }
+.mt-card:active { transform: translateY(-1px); }
+.mt-card__cab { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.mt-card__palco { display: grid; place-items: center; width: 72px; height: 72px; border-radius: 18px;
+  background: linear-gradient(145deg, color-mix(in srgb, var(--c) 15%, #fff), color-mix(in srgb, var(--c) 5%, #fff));
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--c) 14%, transparent); transition: transform .5s var(--mov-mola); }
+.mt-card__palco .fi-wrap, .mt-card__palco svg { width: 58px; height: 58px; }
+.mt-card:hover .mt-card__palco { transform: rotate(-3deg) scale(1.04); }
+.mt-card:is(:hover, :focus-visible) .fi :is([class^="m-"], [class*=" m-"]) { animation: var(--anim, none) cubic-bezier(.16, 1, .3, 1) both; }
+.mt-status { display: inline-flex; align-items: center; gap: 7px; padding: 5px 11px; border-radius: 999px; border: 1px solid var(--color-line); background: var(--color-surface-alt); color: var(--color-muted); font: 650 12px var(--font-body); white-space: nowrap; }
+.mt-status i { width: 6px; height: 6px; border-radius: 50%; background: var(--color-line-strong); }
+.mt-status[data-tipo="completo"] { background: var(--brand-accent-soft); border-color: var(--brand-accent-line); color: var(--brand-accent-text); }
+.mt-status[data-tipo="completo"] i { background: var(--brand-accent); box-shadow: 0 0 8px rgb(213 221 38 / .8); }
+.mt-status[data-tipo="parcial"] { background: var(--brand-primary-50); border-color: var(--brand-primary-200); color: var(--brand-primary-800); }
+.mt-status[data-tipo="parcial"] i { background: var(--brand-primary); }
+.mt-card__corpo { display: grid; gap: 4px; }
+.mt-card__area { color: color-mix(in srgb, var(--c) 72%, var(--color-muted)); font: 650 12px var(--font-body); }
+.mt-card__titulo { color: var(--brand-primary-950); font: 750 1.22rem/1.2 var(--font-display); letter-spacing: -.015em; }
+.mt-card__sub { color: var(--color-muted); font-size: 13.5px; line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.mt-card__mats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; margin: 0; padding: 0; list-style: none; }
+.mt-mat { position: relative; display: grid; gap: 3px; min-width: 0; padding: 10px 10px 9px; border-radius: 13px; overflow: hidden;
+  background: color-mix(in srgb, var(--c) 6%, #fff); border: 1px solid color-mix(in srgb, var(--c) 20%, var(--color-line)); }
+.mt-mat__ic { color: var(--c); }
+.mt-mat__ic svg { width: 16px; height: 16px; }
+.mt-mat__nome { color: var(--brand-primary-950); font: 650 12.5px var(--font-display); }
+.mt-mat__det { color: var(--color-muted); font-size: 11.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mt-mat[data-estado="preparacao"], .mt-mat[data-estado="oculto"] { background: transparent; border: 1px dashed var(--color-line-strong); }
+.mt-mat[data-estado="preparacao"] :is(.mt-mat__ic, .mt-mat__nome, .mt-mat__det), .mt-mat[data-estado="oculto"] :is(.mt-mat__ic, .mt-mat__nome, .mt-mat__det) { color: color-mix(in srgb, var(--color-muted) 70%, #fff); }
+.mt-mat[data-estado="revisar"] .mt-mat__det { color: var(--color-warning); font-weight: 600; }
+.mt-mat__prog { position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: color-mix(in srgb, var(--c) 14%, transparent); }
+.mt-mat__prog::after { content: ""; position: absolute; inset: 0; transform-origin: left; transform: scaleX(var(--p, 0)); background: var(--color-success); }
+.mt-card__pe { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: auto; padding-top: 12px; border-top: 1px solid var(--color-line); }
+.mt-card__frase { min-width: 0; color: var(--color-muted); font-size: 12.5px; line-height: 1.4; }
+.mt-card__acao { display: inline-flex; flex: none; align-items: center; gap: 6px; color: var(--brand-primary-700); font: 700 13px var(--font-display); transition: color .2s; }
+.mt-card__acao svg { width: 16px; height: 16px; transition: transform .4s var(--mov-mola); }
+.mt-card:hover .mt-card__acao { color: var(--brand-primary-950); }
+.mt-card:hover .mt-card__acao svg { transform: translateX(4px); }
+.mt-card .mt-selo { margin: 0; }
+
+/* ---------- menu lateral: ícones em pastilhas, ativo com barra de lima e superfície ---------- */
+.ff-guide .sidebar .nav-item { gap: 11px; min-height: 42px; padding: 7px 12px 7px 10px; }
+.ff-guide .sidebar .nav-item svg { flex: none; box-sizing: content-box; width: 17px; height: 17px; padding: 5px; border-radius: 9px; background: rgb(255 255 255 / .04); transition: color .2s, background-color .2s, transform .35s var(--mov-mola); }
+.ff-guide .sidebar .nav-item:hover svg { background: rgb(255 255 255 / .09); transform: none; }
+.ff-guide .sidebar .nav-item.active { background: rgb(255 255 255 / .07); box-shadow: inset 0 0 0 1px rgb(255 255 255 / .06); }
+.ff-guide .sidebar .nav-item.active svg { background: var(--brand-accent); color: var(--brand-accent-ink); }
+.ff-guide .sidebar .nav-item.active::after { right: auto; left: -12px; top: 9px; bottom: 9px; width: 3px; height: auto; margin: 0; border-radius: 0 3px 3px 0; box-shadow: 0 0 12px rgb(213 221 38 / .7); }
+.ff-guide .sidebar .nav-section { display: flex; align-items: center; gap: 10px; padding: 20px 12px 8px; color: #8FB0C8; font-size: .74rem; letter-spacing: .02em; }
+.ff-guide .sidebar .nav-section::after { content: ""; flex: 1; height: 1px; background: rgb(185 212 231 / .12); }
+.ff-guide .sidebar .nav-section[hidden] { display: none !important; }
+.nav-item.ab-nav-destaque::after { content: none; }
+.ff-guide .sidebar .nav-item.ab-nav-destaque.active::after { content: ""; }
+
+/* ---------- entrada coordenada da página ---------- */
+html.mov .mt-hero { animation: mt-hero-entra 800ms var(--mov-ease) both; }
+html.mov .mt-hero__dir { animation: mt-painel-entra 900ms var(--mov-ease) both 120ms; }
+html.mov .mt-hero__fatos, html.mov .mt-hero__acoes { animation: ff-chega 700ms var(--mov-ease) both; }
+html.mov .mt-hero__fatos { animation-delay: 360ms; }
+html.mov .mt-hero__acoes { animation-delay: 440ms; }
+html.mov .mt-no { animation: mt-no-entra 700ms var(--mov-mola) both; animation-delay: calc(260ms + var(--i, 0) * 28ms); }
+html.mov .mt-mapa__linhas path { animation: mt-traca 1.2s var(--mov-ease) both; animation-delay: calc(520ms + var(--k, 0) * 16ms); }
+html.mov .mt-medidores { animation: ff-chega 700ms var(--mov-ease) both 480ms; }
+@keyframes mt-hero-entra { from { opacity: 0; transform: translateY(14px); } }
+@keyframes mt-painel-entra { from { clip-path: inset(0 0 0 8% round 28px); } }
+@keyframes mt-no-entra { from { opacity: 0; transform: scale(.55); } }
+@keyframes mt-traca { from { stroke-dashoffset: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  .mt-hero, .mt-hero__dir, .mt-no, .mt-mapa__linhas path, .mt-medidores, .mt-hero__fatos, .mt-hero__acoes { animation: none !important; }
+  .mt-card, .mt-card__palco, .mt-medidor__arco { transition: none !important; }
+}
+
+/* ---------- acertos da validação visual (13/11/2026) ---------- */
+.mt-hero__acoes { display: grid; grid-template-columns: 1fr; width: min(100%, 320px); }
+.mt-hero__acoes .mt-botao { justify-content: flex-start; }
+.mt-hero__acoes .mt-kbd { margin-left: auto; }
+.mt-medidor__valor { gap: 5px; }
+.mt-mapa__area { display: flex; align-items: flex-start; justify-content: center; min-height: 2.5em; }
+.mt-mat__det { white-space: normal; line-height: 1.3; }
+.mt-card__dica { color: var(--color-muted); font-size: 12.5px; }
+.mt-card__prog { display: inline-flex; align-items: center; gap: 8px; color: var(--color-success); font: 650 12.5px var(--font-body); }
+.mt-card__prog-barra { position: relative; width: 56px; height: 4px; border-radius: 4px; background: var(--color-success-soft); overflow: hidden; }
+.mt-card__prog-barra::after { content: ""; position: absolute; inset: 0; transform-origin: left; transform: scaleX(var(--p, 0)); background: var(--color-success); border-radius: inherit; }
+@media (max-width: 640px) { .mt-mapa__area { font-size: 9.5px; letter-spacing: -.01em; padding: 0 1px; } }

@@ -111,45 +111,163 @@
       extra || null);
   }
 
-  /** Número que sobe até o valor real quando a tela abre. */
-  function contador(n) {
-    const el = h('strong', { text: n, 'aria-label': String(n) });
-    if (MOV) MOV.contar(el, n, { atraso: 260 });
-    return el;
-  }
-
-  /** Cobertura real dos materiais (não é métrica decorativa: diz o que existe e o que falta). */
-  function cobertura(modulos) {
-    const total = modulos.length;
-    return h('dl', { className: 'mt-cobertura', 'aria-label': 'Materiais publicados', 'data-revela': '' },
-      TIPOS.map(([t, nome, icone]) => {
-        const n = modulos.filter((m) => m.recursos?.[t]?.status === 'disponivel').length;
-        return h('div', { className: 'mt-cobertura__item', style: { '--p': total ? n / total : 0 } },
-          h('dt', null, ic(icone), nome), h('dd', null, contador(n), ` de ${total}`),
-          h('span', { className: 'mt-cobertura__trilho', 'aria-hidden': 'true' }, h('i')));
-      }));
-  }
-
   /* ============================================================
      1. Metodologia do Consultor — catálogo de módulos
+     Abertura em duas partes: à esquerda título, texto curto e ações; à direita o mapa dos módulos (por área, na ordem
+     da operação) com a disponibilidade real dos três materiais e os medidores de materiais publicados.
+     Os medidores contam MATERIAIS PUBLICADOS, nunca progresso do consultor.
      ============================================================ */
-  function linhaRecurso(m, tipo, nome, icone, progresso) {
-    const r = m.recursos?.[tipo];
-    const e = estadoRecurso(r);
-    let detalhe = e.id === 'preparacao' ? 'Em preparação' : e.id === 'oculto' ? 'Indisponível' : '';
-    if (r && r.status === 'disponivel') {
-      if (tipo === 'checklist') detalhe = progresso != null ? `${r.itens} itens · ${progresso}% feito` : `${r.itens} itens`;
-      if (tipo === 'manual') detalhe = `${plural(r.passos, 'passo', 'passos')} · ${plural(r.telas, 'tela', 'telas')}`;
-      if (tipo === 'video') detalhe = duracao(r.duracao_s);
-    }
-    return h('li', { className: 'mt-rec', data: { estado: e.id } },
-      h('span', { className: 'mt-rec__ic' }, ic(icone)),
-      h('span', { className: 'mt-rec__nome', text: nome }),
-      h('span', { className: 'mt-rec__det', text: detalhe }),
-      tipo === 'checklist' && progresso ? h('span', { className: 'mt-rec__barra', style: { '--p': progresso / 100 }, 'aria-hidden': 'true' }) : null);
+  const TIPO_COR = { video: 'video', checklist: 'checklist', manual: 'manual' };
+  const ROTULO_CURTO = { video: 'Vídeo', checklist: 'Checklist', manual: 'Manual' };
+  const AREA_CURTA = { base: 'Base', comercial: 'Comercial', operacao: 'Operação', fiscal: 'Fiscal e financeiro', gestao: 'Gestão', completo: 'Ponta a ponta', outros: 'Outros' };
+  const svgEl = (tag, attrs = {}) => { const el = document.createElementNS('http://www.w3.org/2000/svg', tag); for (const [k, v] of Object.entries(attrs)) el.setAttribute(k, String(v)); return el; };
+  const disponivel = (m, t) => m.recursos?.[t]?.status === 'disponivel';
+  const nPublicados = (m) => TIPOS.filter(([t]) => disponivel(m, t)).length;
+
+  function frasePublicados(m) {
+    const sim = TIPOS.filter(([t]) => disponivel(m, t)).map(([t]) => ROTULO_CURTO[t].toLowerCase());
+    const nao = TIPOS.filter(([t]) => !disponivel(m, t)).map(([t]) => ROTULO_CURTO[t].toLowerCase());
+    if (!sim.length) return 'Materiais em preparação';
+    if (!nao.length) return 'Vídeo, checklist e manual publicados';
+    const lista = (xs) => (xs.length > 1 ? `${xs.slice(0, -1).join(', ')} e ${xs.at(-1)}` : xs[0]);
+    return `${lista(sim)} ${sim.length > 1 ? 'publicados' : 'publicado'} · ${lista(nao)} em preparação`;
   }
 
-  function cartao(m, progresso) {
+  /** Medidor circular de materiais publicados (anel + número), com o total de módulos como base. */
+  function medidor(tipo, nome, n, total, atraso) {
+    const R = 22;
+    const C = 2 * Math.PI * R;
+    const s = svgEl('svg', { viewBox: '0 0 56 56', class: 'mt-medidor__anel', 'aria-hidden': 'true' });
+    s.append(svgEl('circle', { cx: 28, cy: 28, r: R, class: 'mt-medidor__trilho' }));
+    const arco = svgEl('circle', { cx: 28, cy: 28, r: R, class: 'mt-medidor__arco', 'stroke-dasharray': C.toFixed(2), 'stroke-dashoffset': C.toFixed(2), transform: 'rotate(-90 28 28)' });
+    s.append(arco);
+    const alvoOffset = (C * (1 - (total ? n / total : 0))).toFixed(2);
+    requestAnimationFrame(() => setTimeout(() => arco.setAttribute('stroke-dashoffset', alvoOffset), MOV && !MOV.reduzido() ? atraso : 0));
+    const num = h('strong', { className: 'mt-medidor__num', 'aria-hidden': 'true', text: n });
+    if (MOV) MOV.contar(num, n, { atraso: atraso + 80 });
+    return h('div', { className: 'mt-medidor', data: { tipo: TIPO_COR[tipo], vazio: n === 0 } },
+      h('span', { className: 'mt-medidor__grafico' }, s, h('span', { className: 'mt-medidor__ic' }, ic(tipo))),
+      h('span', { className: 'mt-medidor__txt' },
+        h('span', { className: 'mt-medidor__valor' }, num, h('span', { className: 'mt-medidor__de', text: ` de ${total}` })),
+        h('span', { className: 'mt-medidor__nome', text: nome })),
+      h('span', { className: 'mt-sr', text: `${nome}: ${n} de ${total} módulos com o material publicado.` }));
+  }
+
+  /** Mapa dos módulos: uma coluna por área, na ordem da operação; cada módulo é um ponto clicável. */
+  function mapaModulos(modulos) {
+    const grupos = agrupar(modulos);
+    const legenda = h('p', { className: 'mt-mapa__legenda', 'aria-live': 'polite' });
+    const padrao = `${plural(modulos.length, 'módulo', 'módulos')} em ${grupos.length} áreas. Passe o mouse ou o foco num módulo para ver os materiais.`;
+    legenda.textContent = padrao;
+    const linhas = svgEl('svg', { class: 'mt-mapa__linhas', 'aria-hidden': 'true' });
+    let n = 0;
+    const colunas = grupos.map((g, gi) => h('div', { className: 'mt-mapa__col', data: { area: g.id }, style: { '--col': gi } },
+      h('ol', { className: 'mt-mapa__nos', 'aria-label': g.titulo }, g.mods.map((m) => {
+        const k = n++;
+        const marcas = h('span', { className: 'mt-no__marcas', 'aria-hidden': 'true' }, TIPOS.map(([t]) => h('i', { data: { tipo: t, ok: disponivel(m, t) } })));
+        const no = h('button', { type: 'button', className: 'mt-no', style: { '--c': corValida(m.cor), '--i': k }, data: { completo: nPublicados(m) === 3, id: m.id },
+          'aria-label': `${m.titulo}: ${frasePublicados(m)}. Abrir módulo.`,
+          on: {
+            click: () => { if (MOV) MOV.nomear(document.querySelector(`.mt-card-item[data-flip="${m.id}"] .mt-card__palco`), 'mt-palco'); ir({ area: 'metodologia', modulo: m.id }); },
+            pointerenter: () => { legenda.textContent = `${m.titulo} — ${frasePublicados(m)}`; },
+            pointerleave: () => { legenda.textContent = padrao; },
+            focus: () => { legenda.textContent = `${m.titulo} — ${frasePublicados(m)}`; },
+            blur: () => { legenda.textContent = padrao; },
+          } },
+        h('span', { className: 'mt-no__ic' }, ic(m.id)), marcas);
+        return h('li', null, no);
+      })),
+      h('span', { className: 'mt-mapa__area', text: AREA_CURTA[g.id] || g.titulo })));
+    const palco = h('div', { className: 'mt-mapa__palco' }, linhas, ...colunas);
+    // Ligações: cada módulo se liga ao módulo central da área seguinte (a operação passa de uma área para a outra).
+    function desenharLinhas() {
+      const caixa = palco.getBoundingClientRect();
+      if (!caixa.width) return;
+      linhas.setAttribute('viewBox', `0 0 ${caixa.width.toFixed(0)} ${caixa.height.toFixed(0)}`);
+      linhas.replaceChildren();
+      const centro = (el) => { const r = el.getBoundingClientRect(); return { x: r.left - caixa.left + r.width / 2, y: r.top - caixa.top + r.height / 2, w: r.width }; };
+      const cols = [...palco.querySelectorAll('.mt-mapa__col')].map((c) => [...c.querySelectorAll('.mt-no')]);
+      let k = 0;
+      cols.forEach((nos, ci) => {
+        const prox = cols[ci + 1];
+        if (!prox || !prox.length) return;
+        const alvo = centro(prox[Math.floor((prox.length - 1) / 2)]);
+        nos.forEach((no) => {
+          const a = centro(no);
+          const x1 = a.x + a.w / 2 + 4;
+          const x2 = alvo.x - alvo.w / 2 - 4;
+          const meio = (x1 + x2) / 2;
+          linhas.append(svgEl('path', { d: `M${x1.toFixed(1)} ${a.y.toFixed(1)} C${meio.toFixed(1)} ${a.y.toFixed(1)} ${meio.toFixed(1)} ${alvo.y.toFixed(1)} ${x2.toFixed(1)} ${alvo.y.toFixed(1)}`, pathLength: 1, style: `--k:${k++}` }));
+        });
+      });
+    }
+    const ro = 'ResizeObserver' in window ? new ResizeObserver(() => desenharLinhas()) : null;
+    if (ro) ro.observe(palco);
+    limpezas.push(() => ro && ro.disconnect());
+    requestAnimationFrame(desenharLinhas);
+    return h('figure', { className: 'mt-mapa', 'aria-labelledby': 'mt-mapa-t' },
+      h('figcaption', { className: 'mt-mapa__cab' },
+        h('span', { id: 'mt-mapa-t', className: 'mt-mapa__titulo', text: 'Mapa dos módulos' }),
+        h('span', { className: 'mt-mapa__chaves', 'aria-hidden': 'true' }, TIPOS.map(([t]) => h('span', { className: 'mt-chave', data: { tipo: t } }, h('i'), ROTULO_CURTO[t])))),
+      palco, legenda);
+  }
+
+  function heroCatalogo(modulos, relatorio) {
+    const total = modulos.length;
+    const conta = (t) => modulos.filter((m) => disponivel(m, t)).length;
+    const completosN = modulos.filter(completos).length;
+    const titulo = h('h1', { className: 'mt-hero__titulo' },
+      h('span', { className: 'mt-hero__l1', text: 'Metodologia' }), ' ',
+      h('span', { className: 'mt-hero__l2', text: 'do Consultor' }));
+    if (MOV) { MOV.palavras(titulo.querySelector('.mt-hero__l1')); MOV.palavras(titulo.querySelector('.mt-hero__l2'), { atraso: 90 }); }
+    const buscar = h('button', { type: 'button', className: 'mt-botao', on: { click: () => document.getElementById('sh-busca-campo')?.focus() } },
+      ic('busca'), 'Buscar na Metodologia', h('kbd', { className: 'mt-kbd', text: '/', 'aria-hidden': 'true' }));
+    return h('section', { className: 'mt-hero', 'aria-labelledby': 'mt-hero-t' },
+      h('div', { className: 'mt-hero__esq' },
+        (titulo.id = 'mt-hero-t', titulo),
+        h('p', { className: 'mt-hero__lead mov-foco', text: 'Os módulos do Faktory Flow, cada um com vídeo completo, checklist de implantação e manual de apoio. Abra na ordem que a implantação pedir.' }),
+        h('ul', { className: 'mt-hero__fatos' },
+          h('li', null, h('strong', { text: total }), ' módulos'),
+          h('li', null, h('strong', { text: agrupar(modulos).length }), ' áreas da operação'),
+          completosN ? h('li', null, h('strong', { text: completosN }), completosN === 1 ? ' módulo com os 3 materiais' : ' módulos com os 3 materiais') : null),
+        h('div', { className: 'mt-hero__acoes' }, buscar, relatorio)),
+      h('div', { className: 'mt-hero__dir' },
+        h('div', { className: 'mt-hero__luz', 'aria-hidden': 'true' }),
+        mapaModulos(modulos),
+        h('div', { className: 'mt-medidores', role: 'group', 'aria-label': `Materiais publicados nos ${total} módulos` },
+          h('p', { className: 'mt-medidores__titulo', text: 'Materiais publicados' }),
+          h('div', { className: 'mt-medidores__lista' },
+            medidor('video', 'Vídeos completos', conta('video'), total, 500),
+            medidor('checklist', 'Checklists de implantação', conta('checklist'), total, 620),
+            medidor('manual', 'Manuais de apoio', conta('manual'), total, 740)))));
+  }
+
+  /* ---------- cartão do módulo ---------- */
+  function material(m, tipo, progresso) {
+    const r = m.recursos?.[tipo];
+    const e = estadoRecurso(r);
+    let det = e.id === 'preparacao' ? 'Em preparação' : e.id === 'oculto' ? 'Indisponível' : '';
+    if (r && r.status === 'disponivel') {
+      if (tipo === 'checklist') det = `${r.itens} itens`;
+      if (tipo === 'manual') det = plural(r.passos, 'passo', 'passos');
+      if (tipo === 'video') det = duracao(r.duracao_s);
+      if (r.revisar) det = 'Revisar';
+    }
+    return h('li', { className: 'mt-mat', data: { estado: e.id, tipo } },
+      h('span', { className: 'mt-mat__ic' }, ic(tipo)),
+      h('span', { className: 'mt-mat__nome', text: ROTULO_CURTO[tipo] }),
+      h('span', { className: 'mt-mat__det', text: det }),
+      tipo === 'checklist' && progresso ? h('span', { className: 'mt-mat__prog', style: { '--p': progresso / 100 }, title: `Seu progresso no checklist: ${progresso}%` }) : null);
+  }
+
+  function seloModulo(m) {
+    const n = nPublicados(m);
+    if (n === 3) return h('span', { className: 'mt-status', data: { tipo: 'completo' } }, h('i'), 'Completo');
+    if (n === 0) return h('span', { className: 'mt-status', data: { tipo: 'preparacao' } }, h('i'), 'Em preparação');
+    return h('span', { className: 'mt-status', data: { tipo: 'parcial' } }, h('i'), `${n} de 3 materiais`);
+  }
+
+  function cartao(m, progresso, area) {
     const p = m.recursos?.checklist ? progresso[m.recursos.checklist.chave] : null;
     const cor = corValida(m.cor);
     const nomeId = `mt-c-${m.id}`;
@@ -158,17 +276,34 @@
       if (MOV) { MOV.nomear(card.querySelector('.mt-card__palco'), 'mt-palco'); MOV.nomear(card.querySelector('.mt-card__titulo'), 'mt-titulo'); }
       ir({ area: 'metodologia', modulo: m.id });
     };
+    // Luz que acompanha o ponteiro (só com mouse; uma atualização por quadro).
+    let quadro = 0;
+    const luz = (e) => {
+      if (e.pointerType !== 'mouse' || quadro) return;
+      const alvo = e.currentTarget;
+      quadro = requestAnimationFrame(() => {
+        quadro = 0;
+        const r = alvo.getBoundingClientRect();
+        alvo.style.setProperty('--mx', `${(e.clientX - r.left).toFixed(0)}px`);
+        alvo.style.setProperty('--my', `${(e.clientY - r.top).toFixed(0)}px`);
+      });
+    };
     const li = h('li', { className: 'mt-card-item', data: { flip: m.id } },
-      h('button', { className: 'mt-card', type: 'button', style: { '--c': cor }, 'aria-labelledby': nomeId,
-        data: { completo: completos(m) }, on: { click: abrirModulo } },
-      h('span', { className: 'mt-card__palco', 'aria-hidden': 'true' }, h('span', { className: 'fi-wrap fi' }, ilustracao(m.id))),
-      h('span', { className: 'mt-card__corpo' },
-        h('span', { className: 'mt-card__titulo', id: nomeId, text: m.titulo }),
-        m.subtitulo ? h('span', { className: 'mt-card__sub', text: m.subtitulo }) : null),
-      h('ul', { className: 'mt-card__recs', 'aria-label': 'Materiais' }, TIPOS.map(([t, nome, i]) => linhaRecurso(m, t, nome.split(' ')[0], i, t === 'checklist' ? p : null))),
-      m.oculto ? h('span', { className: 'mt-selo mt-selo--oculto' }, ic('oculto'), 'Oculto para os outros perfis') : null,
-      h('span', { className: 'mt-card__seta', 'aria-hidden': 'true' }, ic('seta'))));
-    // Voltando do módulo: o cartão dele recebe os nomes e a ilustração "volta" para o lugar.
+      h('button', { className: 'mt-card', type: 'button', style: { '--c': cor }, 'aria-labelledby': nomeId, 'aria-describedby': `${nomeId}-d`,
+        data: { completo: completos(m) }, on: { click: abrirModulo, pointermove: luz } },
+        h('span', { className: 'mt-card__cab' },
+          h('span', { className: 'mt-card__palco', 'aria-hidden': 'true' }, h('span', { className: 'fi-wrap fi' }, ilustracao(m.id))),
+          seloModulo(m)),
+        h('span', { className: 'mt-card__corpo' },
+          h('span', { className: 'mt-card__titulo', id: nomeId, text: m.titulo }),
+          m.subtitulo ? h('span', { className: 'mt-card__sub', text: m.subtitulo }) : null),
+        h('ul', { className: 'mt-card__mats', 'aria-label': 'Materiais' }, TIPOS.map(([t]) => material(m, t, t === 'checklist' ? p : null))),
+        h('span', { className: 'mt-card__pe' },
+          h('span', { id: `${nomeId}-d`, className: 'mt-sr', text: `${frasePublicados(m)}.${area ? ` Área: ${area}.` : ''}` }),
+          m.oculto ? h('span', { className: 'mt-selo mt-selo--oculto' }, ic('oculto'), 'Oculto para os outros perfis')
+            : p ? h('span', { className: 'mt-card__prog' }, h('span', { className: 'mt-card__prog-barra', style: { '--p': p / 100 }, 'aria-hidden': 'true' }), `Seu checklist: ${p}%`)
+              : h('span', { className: 'mt-card__dica', text: nPublicados(m) ? 'Vídeo, checklist e manual' : 'Materiais em preparação' }),
+          h('span', { className: 'mt-card__acao', 'aria-hidden': 'true' }, 'Abrir', ic('seta')))));
     if (MOV && ultimoModulo === m.id) { MOV.nomear(li.querySelector('.mt-card__palco'), 'mt-palco'); MOV.nomear(li.querySelector('.mt-card__titulo'), 'mt-titulo'); }
     return li;
   }
@@ -190,14 +325,15 @@
       if (filtro === 'revisar') return TIPOS.some(([t]) => m.recursos?.[t]?.revisar);
       return true;
     };
+    const quantos = (f) => modulos.filter((m) => (f === 'completos' ? completos(m) : f === 'pendentes' ? !completos(m) : f === 'revisar' ? TIPOS.some(([t]) => m.recursos?.[t]?.revisar) : true)).length;
     function desenharGrade() {
       const lista = modulos.filter(passa);
-      contagem.textContent = `${plural(lista.length, 'módulo', 'módulos')}`;
+      contagem.textContent = lista.length === modulos.length ? `${plural(lista.length, 'módulo', 'módulos')}` : `${lista.length} de ${plural(modulos.length, 'módulo', 'módulos')}`;
       if (!lista.length) { grade.replaceChildren(vazio('Nenhum módulo com esse filtro. Limpe a busca ou escolha outro filtro.')); return; }
       grade.replaceChildren(...agrupar(lista).map((g) => h('section', { className: 'mt-grupo', 'aria-labelledby': `mt-g-${g.id}` },
         h('div', { className: 'mt-grupo__cab', 'data-revela': '' }, h('h2', { id: `mt-g-${g.id}`, text: g.titulo }), g.texto ? h('p', { text: g.texto }) : null,
           h('span', { className: 'mt-grupo__n', text: plural(g.mods.length, 'módulo', 'módulos') })),
-        h('ul', { className: 'mt-cards', 'data-revela-lista': '' }, g.mods.map((m) => cartao(m, progresso))))));
+        h('ul', { className: 'mt-cards', 'data-revela-lista': '' }, g.mods.map((m) => cartao(m, progresso, g.titulo))))));
     }
     // Filtrar ou buscar: os cartões que ficam deslizam até o lugar novo (FLIP); na primeira vez, revelam na rolagem.
     let primeiraVez = true;
@@ -208,18 +344,17 @@
     const FILTROS = [['todos', 'Todos'], ['completos', 'Com os 3 materiais'], ['pendentes', 'Com material em preparação'], ['revisar', 'Para revisar']];
     const filtros = h('div', { className: 'mt-segmento', role: 'group', 'aria-label': 'Filtrar módulos' },
       FILTROS.map(([id, rot]) => h('button', { type: 'button', className: 'mt-segmento__op', 'aria-pressed': String(id === filtro), data: { filtro: id },
-        on: { click: (e) => { filtro = id; filtros.querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.filtro === id))); trilho?.mover(); redesenhar(); e.currentTarget.focus(); } } }, rot)));
+        on: { click: (e) => { filtro = id; filtros.querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.filtro === id))); trilho?.mover(); redesenhar(); e.currentTarget.focus(); } } },
+        rot, h('span', { className: 'mt-segmento__n', text: quantos(id) }))));
     let trilho = null;
     const busca = h('label', { className: 'mt-busca-local' }, ic('busca'),
       h('span', { className: 'mt-sr', text: 'Filtrar módulos pelo nome' }),
       h('input', { type: 'search', placeholder: 'Filtrar módulos…', autocomplete: 'off', on: { input: (e) => { termo = semAcento(e.target.value.trim()); redesenhar(); } } }));
-    const relatorio = h('button', { type: 'button', className: 'mt-botao mt-botao--sec', on: { click: (e) => relatorioGeral(e.currentTarget, modulos) } }, ic('alerta'), 'Relatório de problemas');
-    alvo.replaceChildren(h('div', { className: 'mt-pagina' },
-      cabecalho('Metodologia do Consultor',
-        'Todos os módulos do Faktory Flow, agrupados por área na ordem em que a operação acontece. Abra qualquer um, na ordem que a implantação pedir: cada módulo reúne o vídeo completo, o checklist de implantação e o manual de apoio.',
-        cobertura(modulos)),
-      h('div', { className: 'mt-barra' }, busca, filtros, relatorio),
-      contagem, grade));
+    const relatorio = h('button', { type: 'button', className: 'mt-botao mt-botao--sec', title: 'Baixar os problemas registrados nos checklists dos módulos, com as imagens', on: { click: (e) => relatorioGeral(e.currentTarget, modulos) } }, ic('alerta'), 'Relatório de problemas');
+    alvo.replaceChildren(h('div', { className: 'mt-pagina mt-catalogo' },
+      heroCatalogo(modulos, relatorio),
+      h('div', { className: 'mt-ferramentas', 'data-revela': '' }, busca, filtros, contagem),
+      grade));
     redesenhar();
     if (MOV) { trilho = MOV.indicador(filtros, '[aria-pressed="true"]', 'mt-segmento__trilho'); limpezas.push(trilho.destruir); }
     ultimoModulo = null;
