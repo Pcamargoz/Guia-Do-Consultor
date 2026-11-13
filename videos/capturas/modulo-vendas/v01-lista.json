@@ -1,0 +1,33 @@
+{
+ "nome": "v01-lista",
+ "url": "https://staging.flow.faktory.com.br/vendas/pedidos",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "Em Aberto",
+    "exact": true
+   },
+   "caixa": {
+    "x": 1370,
+    "y": 589,
+    "w": 83,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Novo Pedido"
+   },
+   "caixa": {
+    "x": 1687,
+    "y": 168,
+    "w": 157,
+    "h": 43
+   }
+  }
+ ],
+ "em": "2026-11-13T12:09:32.801Z"
+}

@@ -1,0 +1,33 @@
+{
+ "nome": "v03-itens",
+ "url": "https://staging.flow.faktory.com.br/vendas/pedidos/novo",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "Dados do Item",
+    "exact": true
+   },
+   "caixa": {
+    "x": 558,
+    "y": 389,
+    "w": 804,
+    "h": 22
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Aplicar"
+   },
+   "caixa": {
+    "x": 1267,
+    "y": 643,
+    "w": 95,
+    "h": 48
+   }
+  }
+ ],
+ "em": "2026-11-13T12:11:24.333Z"
+}

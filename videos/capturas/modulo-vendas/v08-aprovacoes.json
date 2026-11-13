@@ -1,0 +1,20 @@
+{
+ "nome": "v08-aprovacoes",
+ "url": "https://staging.flow.faktory.com.br/vendas/aprovacoes",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "Comissões e descontos de pedido de venda aguardando a sua decisão"
+   },
+   "caixa": {
+    "x": 433,
+    "y": 176,
+    "w": 566,
+    "h": 24
+   }
+  }
+ ],
+ "em": "2026-11-13T12:20:20.133Z"
+}

@@ -1,0 +1,21 @@
+{
+ "nome": "v13-carteira",
+ "url": "https://staging.flow.faktory.com.br/vendas/demonstrativos/carteira",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "A faturar",
+    "exact": true
+   },
+   "caixa": {
+    "x": 375,
+    "y": 664,
+    "w": 194,
+    "h": 20
+   }
+  }
+ ],
+ "em": "2026-11-13T12:22:24.856Z"
+}

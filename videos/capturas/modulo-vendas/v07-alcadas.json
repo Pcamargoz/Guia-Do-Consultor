@@ -1,0 +1,20 @@
+{
+ "nome": "v07-alcadas",
+ "url": "https://staging.flow.faktory.com.br/vendas/configuracoes/alcadas-desconto",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "css": "tbody tr:first-child"
+   },
+   "caixa": {
+    "x": 348,
+    "y": 381,
+    "w": 1532,
+    "h": 53
+   }
+  }
+ ],
+ "em": "2026-11-13T12:20:08.709Z"
+}

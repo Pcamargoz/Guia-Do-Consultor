@@ -1,0 +1,21 @@
+{
+ "nome": "v14-comissao",
+ "url": "https://staging.flow.faktory.com.br/vendas/comissoes/simulador",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "Quando libera",
+    "exact": true
+   },
+   "caixa": {
+    "x": 399,
+    "y": 766,
+    "w": 430,
+    "h": 19
+   }
+  }
+ ],
+ "em": "2026-11-13T12:22:49.000Z"
+}

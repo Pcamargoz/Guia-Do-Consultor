@@ -1,0 +1,369 @@
+{
+ "id": "modulo-vendas",
+ "titulo": "Vendas",
+ "subtitulo": "O módulo completo: do pedido à expedição",
+ "trilha": "Metodologia do Consultor · vídeo completo do módulo",
+ "proximo": "Faturamento",
+ "fontes": [
+  "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas",
+  "guia:public/manuais/vendas/guia.json",
+  "harness:funcional-vendas-pedidos-de-venda",
+  "harness:oficial-ven-a-regras",
+  "harness:oficial-ven-b-processos"
+ ],
+ "trechos": [
+  {
+   "id": "01",
+   "cena": "abertura",
+   "fala": "Toda venda da empresa passa por um pedido. Neste vídeo, você vai ver o módulo de Vendas inteiro, na ordem em que ele é implantado com o cliente: o pedido, o ajuste, o desconto, os títulos, a nota, o encerramento e a expedição."
+  },
+  {
+   "id": "02",
+   "cena": "status",
+   "destaque": 0,
+   "fala": "O pedido é o combinado da venda: quem compra, o quê, por quanto e como vai pagar. Ele nasce Em aberto, e só nesse status pode ser editado."
+  },
+  {
+   "id": "03",
+   "cena": "status",
+   "destaque": 1,
+   "fala": "Depois ele pode ser faturado, liberado para a expedição e entregue. No caminho, ainda aparecem Aprovação pendente, quando há desconto, Encerrado e Cancelado."
+  },
+  {
+   "id": "04",
+   "cena": "regra",
+   "n": 1,
+   "titulo": "CFOP depois de Empresa e Cliente",
+   "icone": "cfop",
+   "texto": "O CFOP só libera depois da Empresa e do Cliente, e já vem filtrado pelo estado do cliente.",
+   "fonte": "regra-vendas-cfop-depende-de-empresa-e-cliente",
+   "fala": "Primeira regra. No Novo Pedido, o CFOP fica bloqueado até você escolher a Empresa e o Cliente. Depois, ele só mostra os CFOPs que combinam com o estado do cliente."
+  },
+  {
+   "id": "05",
+   "cena": "regra",
+   "n": 2,
+   "titulo": "A condição de pagamento gera as parcelas",
+   "icone": "nota",
+   "texto": "Trocar a condição regenera as parcelas. Recalcular redivide o total; Recalcular Parcelas só redivide os valores.",
+   "fonte": "regra-vendas-parcelas-recalcular-e-recalcular-parcelas",
+   "fala": "Segunda. Trocar a condição de pagamento regenera as parcelas sozinho. O botão Recalcular redivide o total por igual. Já o Recalcular Parcelas, no Resumo, só redivide os valores, sem mudar datas nem quantidade."
+  },
+  {
+   "id": "06",
+   "cena": "regra",
+   "n": 3,
+   "titulo": "Só o pedido em aberto é editado",
+   "icone": "lapis",
+   "texto": "O lápis da lista edita o pedido Em aberto. Faturado ou Entregue só se visualiza.",
+   "fonte": "regra-vendas-editar-pedido-somente-em-aberto",
+   "fala": "Terceira. Só o pedido Em aberto pode ser editado, pelo lápis da lista. Faturado ou Entregue só se visualiza. Por isso, ajuste tudo antes de faturar, inclusive o projeto."
+  },
+  {
+   "id": "07",
+   "cena": "regra",
+   "n": 4,
+   "titulo": "Desconto passa por Aprovações",
+   "icone": "cadeado",
+   "texto": "Vendas › Aprovações lista desconto e comissão. Quem solicita não aprova a própria solicitação.",
+   "fonte": "regra-vendas-aprovacoes-cobrem-comissao-e-desconto",
+   "fala": "Quarta. Desconto acima da alçada vai para Vendas, Aprovações, e outra pessoa aprova. Quem solicita não vê a própria solicitação. Pedido sem desconto não gera aprovação."
+  },
+  {
+   "id": "08",
+   "cena": "regra",
+   "n": 5,
+   "titulo": "Pedido ou nota: um caminho para o financeiro",
+   "icone": "tag",
+   "texto": "Gerar Títulos só no pedido Em aberto ou Entregue sem títulos. Escolha com o cliente se os títulos nascem do pedido ou da nota.",
+   "fonte": "regra-vendas-gerar-titulos-quando-esta-habilitado",
+   "fala": "Quinta, a que mais trava. Gerar Títulos só funciona no pedido Em aberto, ou Entregue, que ainda não tem títulos. Combine com o cliente: os títulos nascem do pedido ou da nota. Nunca dos dois.",
+   "critica": true
+  },
+  {
+   "id": "09",
+   "cena": "regra",
+   "n": 6,
+   "titulo": "Faturado ao salvar a nota",
+   "icone": "nota",
+   "texto": "O pedido passa a Faturado assim que a nota é salva, mesmo com a nota ainda Em Aberto.",
+   "fonte": "regra-vendas-pedido-fica-faturado-ao-salvar-a-nota",
+   "fala": "Sexta. O pedido vira Faturado no momento em que a nota é salva, mesmo que ela ainda esteja Em Aberto. Então confira sempre o status da nota, não só o do pedido."
+  },
+  {
+   "id": "10",
+   "cena": "regra",
+   "n": 7,
+   "titulo": "Expedição só depois de faturar",
+   "icone": "caminhao",
+   "texto": "Liberar para Expedição aparece só no pedido Faturado; depois vira Reverter Liberação.",
+   "fonte": "regra-vendas-liberar-para-expedicao-so-em-pedido-faturado",
+   "fala": "E a sétima. Liberar para Expedição só aparece no pedido Faturado. A liberação nunca é automática. Depois de liberado, o mesmo botão vira Reverter Liberação."
+  },
+  {
+   "id": "11",
+   "cena": "tela",
+   "captura": "v01-lista",
+   "titulo": "Vendas › Pedidos de Venda",
+   "rotulo": "Vendas › Pedidos de Venda",
+   "focos": [
+    0,
+    1
+   ],
+   "nomes": [
+    "Status",
+    "+ Novo Pedido"
+   ],
+   "fala": "Agora, na tela. Abra Vendas, Pedidos de Venda. A lista já abre filtrada nos pedidos Em aberto. O pedido pode vir importado ou ser digitado em Novo Pedido."
+  },
+  {
+   "id": "12",
+   "cena": "tela",
+   "captura": "v02-novo",
+   "titulo": "Novo Pedido: cabeçalho",
+   "rotulo": "Vendas › Pedidos de Venda › Novo",
+   "focos": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "nomes": [
+    "Empresa",
+    "Cliente",
+    "Condição de Pagamento",
+    "CFOP"
+   ],
+   "impacto": 3,
+   "fala": "No cabeçalho, preencha Empresa, Cliente, Vendedor e Condição de Pagamento. Só então escolha o CFOP. É ele que decide se o pedido exige condição, plano de contas e parcelas."
+  },
+  {
+   "id": "13",
+   "cena": "tela",
+   "captura": "v03-itens",
+   "titulo": "Itens e Dados do Item",
+   "rotulo": "Novo Pedido › Itens",
+   "focos": [
+    0,
+    1
+   ],
+   "nomes": [
+    "Dados do Item",
+    "Aplicar"
+   ],
+   "fala": "Nos itens, cada produto tem os seus Dados do Item. O valor é calculado pela categoria: por unidade, peso, área, ou por cor e medida na esquadria. Depois de preencher, clique em Aplicar."
+  },
+  {
+   "id": "14",
+   "cena": "tela",
+   "captura": "v04-parcelas",
+   "titulo": "Parcelas e Resumo",
+   "rotulo": "Novo Pedido › Parcelas e Resumo",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "Meio Pagamento",
+    "Portador",
+    "Conta de Fluxo de Caixa"
+   ],
+   "fala": "Nas parcelas, escolha o meio de pagamento e o portador. No Resumo, a Conta de Fluxo de Caixa é obrigatória. Para gravar, use Salvar e Permanecer: o pedido ganha número e a tela continua aberta."
+  },
+  {
+   "id": "15",
+   "cena": "tela",
+   "captura": "v05-status",
+   "titulo": "Status, títulos e nota na lista",
+   "rotulo": "Vendas › Pedidos de Venda · Todos",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "Status",
+    "Títulos",
+    "Nota Fiscal"
+   ],
+   "fala": "Troque o filtro para Todos e leia a lista. As colunas Títulos e Nota Fiscal mostram, de relance, se o pedido já foi para o financeiro e se já tem nota."
+  },
+  {
+   "id": "16",
+   "cena": "tela",
+   "captura": "v06-editar",
+   "titulo": "Editar e Recalcular",
+   "rotulo": "Editar Pedido de Venda",
+   "focos": [
+    0,
+    1
+   ],
+   "nomes": [
+    "Recalcular",
+    "Parcelas do Pedido"
+   ],
+   "fala": "Para ajustar, use o lápis do pedido Em aberto. Trocou a condição? As parcelas se refazem. Escolha também o Projeto, se houver obra: sem ele, o painel financeiro do projeto fica incoerente."
+  },
+  {
+   "id": "17",
+   "cena": "tela",
+   "captura": "v07-alcadas",
+   "titulo": "Vendas › Configurações › Alçadas de Desconto",
+   "rotulo": "Vendas › Configurações › Alçadas de Desconto",
+   "focos": [
+    0
+   ],
+   "nomes": [
+    null
+   ],
+   "fala": "As alçadas de desconto são cadastradas com o gestor, por empresa: o limite em percentual ou valor, o nível e quem aprova. As faixas não podem se sobrepor."
+  },
+  {
+   "id": "18",
+   "cena": "tela",
+   "captura": "v08-aprovacoes",
+   "titulo": "Vendas › Aprovações",
+   "rotulo": "Vendas › Aprovações",
+   "focos": [
+    0
+   ],
+   "nomes": [
+    null
+   ],
+   "fala": "Um pedido com desconto acima da faixa fica em Aprovação pendente, e não fatura nem encerra. O aprovador abre Vendas, Aprovações, e aprova na linha."
+  },
+  {
+   "id": "19",
+   "cena": "tela",
+   "captura": "v09-menu",
+   "titulo": "Menu do pedido",
+   "rotulo": "Pedido › menu ⋯",
+   "focos": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "nomes": [
+    "Gerar Títulos",
+    "Faturar",
+    "Encerrar",
+    "Cancelar"
+   ],
+   "fala": "O menu de três pontos do pedido concentra as ações: Gerar Títulos, Faturar, Encerrar e Cancelar. O que aparece depende do status do pedido."
+  },
+  {
+   "id": "20",
+   "cena": "tela",
+   "captura": "v10-receber",
+   "titulo": "Financeiro › Contas a Receber",
+   "rotulo": "Financeiro › Contas a Receber",
+   "focos": [
+    0,
+    1
+   ],
+   "nomes": [
+    "Status",
+    null
+   ],
+   "fala": "Gerou os títulos pelo pedido? Eles aparecem em Financeiro, Contas a Receber, um por parcela. Limpe o filtro de status e pesquise pelo documento. A partir daí, o pedido só aceita mudar observações e vendedor."
+  },
+  {
+   "id": "21",
+   "cena": "tela",
+   "captura": "v11-notas",
+   "titulo": "Faturamento › Notas Fiscais",
+   "rotulo": "Faturamento › Notas Fiscais",
+   "focos": [
+    0
+   ],
+   "nomes": [
+    "NF-e"
+   ],
+   "fala": "Se o caminho é a nota, use Faturar no pedido. A nota nasce com cliente, CFOP, parcelas e impostos. Ela aparece em Faturamento, Notas Fiscais, filtrada em Em Aberto. Finalizar a nota gera os títulos; transmitir é só com o responsável fiscal."
+  },
+  {
+   "id": "22",
+   "cena": "tela",
+   "captura": "v12-dashboard",
+   "titulo": "Vendas › Dashboard Vendas",
+   "rotulo": "Vendas › Dashboard Vendas",
+   "focos": [
+    0
+   ],
+   "nomes": [
+    null
+   ],
+   "fala": "Com o pedido faturado e liberado, ele entra na fila de carga da Expedição. E aparece nos indicadores: no Dashboard de Vendas, escolha o período e clique em Aplicar."
+  },
+  {
+   "id": "23",
+   "cena": "tela",
+   "captura": "v13-carteira",
+   "titulo": "Demonstrativos › Carteira de Pedidos",
+   "rotulo": "Vendas › Demonstrativos › Carteira de Pedidos",
+   "focos": [
+    0
+   ],
+   "nomes": [
+    null
+   ],
+   "fala": "A Carteira de Pedidos mostra onde cada pedido está parado: a faturar, a expedir, em carga, expedido ou entregue, com o tempo em dias."
+  },
+  {
+   "id": "24",
+   "cena": "tela",
+   "captura": "v14-comissao",
+   "titulo": "Controle de Comissão › Simulador",
+   "rotulo": "Vendas › Controle de Comissão",
+   "focos": [
+    0
+   ],
+   "nomes": [
+    null
+   ],
+   "fala": "Se o cliente contratou, configure também as comissões: quando a comissão conta, no faturamento ou no recebimento, e a base. O Simulador mostra o resultado sem gravar nada."
+  },
+  {
+   "id": "25",
+   "cena": "tela",
+   "captura": "v15-metas",
+   "titulo": "Vendas › Metas de Vendas",
+   "rotulo": "Vendas › Metas de Vendas",
+   "focos": [
+    0
+   ],
+   "nomes": [
+    null
+   ],
+   "fala": "As metas são mensais, por empresa ou por vendedor. O realizado são os pedidos não cancelados, pela data do pedido."
+  },
+  {
+   "id": "26",
+   "cena": "alertas",
+   "itens": [
+    "Pedido com títulos só aceita mudar observações e vendedor.",
+    "Encerrado não volta e não cancela: só para venda fechada sem nota.",
+    "Para desfazer: cancele a nota, depois os títulos, depois o pedido."
+   ],
+   "fala": "Três cuidados. Pedido com títulos só aceita mudar observações e vendedor. Encerrar fecha a venda sem nota, e não volta nem cancela. E, para desfazer, a ordem é sempre: cancelar a nota, excluir os títulos e, por último, cancelar o pedido, com um motivo de pelo menos dez caracteres."
+  },
+  {
+   "id": "27",
+   "cena": "fechamento",
+   "topicos": [
+    "Empresa e Cliente antes do CFOP",
+    "Ajuste tudo antes de faturar",
+    "Títulos pelo pedido ou pela nota: um só"
+   ],
+   "fala": "Resumindo: Empresa e Cliente antes do CFOP. Ajuste tudo enquanto o pedido está Em aberto. E escolha com o cliente um caminho só para os títulos. O checklist de implantação e o manual de Vendas estão logo abaixo deste vídeo."
+  }
+ ],
+ "pendencias": [
+  "Liberar para Expedição: a regra da base diz só Faturado; o guia de Expedição registra Faturado ou Encerrado. Conferir na tela antes de narrar.",
+  "Telas gravadas no staging v1.23.2 (homologação), só leitura, exceto o que o responsável autorizar.",
+  "Contratos de Fornecimento ficou fora deste vídeo (módulo contratado à parte): avaliar um capítulo próprio.",
+  "v06-editar: o PV-000024 tem CFOP sem financeiro (parcelas desabilitadas), entao o Resumo nao mostra Recalcular Parcelas; o botao aparece no pedido novo (v03). Se quiser os dois botoes na mesma tela, regravar v06 num pedido de teste com CFOP que gera financeiro."
+ ]
+}

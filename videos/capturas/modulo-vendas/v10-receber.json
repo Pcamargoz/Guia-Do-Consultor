@@ -1,0 +1,32 @@
+{
+ "nome": "v10-receber",
+ "url": "https://staging.flow.faktory.com.br/financeiro/contas-receber",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "Status",
+    "exact": true
+   },
+   "caixa": {
+    "x": 696,
+    "y": 468,
+    "w": 50,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "css": "thead th:has-text(\"Documento\")"
+   },
+   "caixa": {
+    "x": 760,
+    "y": 525,
+    "w": 190,
+    "h": 43
+   }
+  }
+ ],
+ "em": "2026-11-13T12:23:36.950Z"
+}

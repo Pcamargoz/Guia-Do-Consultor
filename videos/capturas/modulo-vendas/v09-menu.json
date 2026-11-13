@@ -1,0 +1,57 @@
+{
+ "nome": "v09-menu",
+ "url": "https://staging.flow.faktory.com.br/vendas/pedidos",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "menuitem",
+    "name": "Gerar Títulos"
+   },
+   "caixa": {
+    "x": 1553,
+    "y": 617,
+    "w": 257,
+    "h": 38
+   }
+  },
+  {
+   "alvo": {
+    "role": "menuitem",
+    "name": "Faturar"
+   },
+   "caixa": {
+    "x": 1553,
+    "y": 540,
+    "w": 257,
+    "h": 38
+   }
+  },
+  {
+   "alvo": {
+    "role": "menuitem",
+    "name": "Encerrar"
+   },
+   "caixa": {
+    "x": 1553,
+    "y": 666,
+    "w": 257,
+    "h": 38
+   }
+  },
+  {
+   "alvo": {
+    "role": "menuitem",
+    "name": "Cancelar"
+   },
+   "caixa": {
+    "x": 1553,
+    "y": 704,
+    "w": 257,
+    "h": 38
+   }
+  }
+ ],
+ "em": "2026-11-13T12:19:44.520Z"
+}

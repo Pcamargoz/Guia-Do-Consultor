@@ -1,0 +1,42 @@
+{
+ "nome": "v05-status",
+ "url": "https://staging.flow.faktory.com.br/vendas/pedidos",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "css": "thead th:nth-child(7)"
+   },
+   "caixa": {
+    "x": 1359,
+    "y": 663,
+    "w": 131,
+    "h": 46
+   }
+  },
+  {
+   "alvo": {
+    "css": "thead th:nth-child(8)"
+   },
+   "caixa": {
+    "x": 1491,
+    "y": 663,
+    "w": 125,
+    "h": 46
+   }
+  },
+  {
+   "alvo": {
+    "css": "thead th:nth-child(9)"
+   },
+   "caixa": {
+    "x": 1616,
+    "y": 663,
+    "w": 104,
+    "h": 46
+   }
+  }
+ ],
+ "em": "2026-11-13T12:19:27.335Z"
+}

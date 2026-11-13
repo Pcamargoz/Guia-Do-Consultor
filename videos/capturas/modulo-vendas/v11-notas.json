@@ -1,0 +1,21 @@
+{
+ "nome": "v11-notas",
+ "url": "https://staging.flow.faktory.com.br/faturamento/documentos-fiscais",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "NF-e",
+    "exact": true
+   },
+   "caixa": {
+    "x": 463,
+    "y": 304,
+    "w": 40,
+    "h": 24
+   }
+  }
+ ],
+ "em": "2026-11-13T12:24:09.520Z"
+}

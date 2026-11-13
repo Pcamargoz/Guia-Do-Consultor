@@ -1,0 +1,57 @@
+{
+ "nome": "v02-novo",
+ "url": "https://staging.flow.faktory.com.br/vendas/pedidos/novo",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "css": "main [role=combobox]",
+    "nth": 0
+   },
+   "caixa": {
+    "x": 380,
+    "y": 268,
+    "w": 472,
+    "h": 48
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Selecione o cliente"
+   },
+   "caixa": {
+    "x": 871,
+    "y": 268,
+    "w": 472,
+    "h": 48
+   }
+  },
+  {
+   "alvo": {
+    "css": "main [role=combobox]",
+    "nth": 1
+   },
+   "caixa": {
+    "x": 871,
+    "y": 376,
+    "w": 472,
+    "h": 48
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Selecione o CFOP"
+   },
+   "caixa": {
+    "x": 380,
+    "y": 508,
+    "w": 472,
+    "h": 48
+   }
+  }
+ ],
+ "em": "2026-11-13T12:11:00.163Z"
+}

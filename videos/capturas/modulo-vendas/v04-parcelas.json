@@ -1,0 +1,44 @@
+{
+ "nome": "v04-parcelas",
+ "url": "https://staging.flow.faktory.com.br/vendas/pedidos/novo?id=1785",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "Meio Pagamento",
+    "exact": true
+   },
+   "caixa": {
+    "x": 887,
+    "y": 798,
+    "w": 116,
+    "h": 18
+   }
+  },
+  {
+   "alvo": {
+    "text": "Portador",
+    "exact": true
+   },
+   "caixa": {
+    "x": 1041,
+    "y": 798,
+    "w": 60,
+    "h": 18
+   }
+  },
+  {
+   "alvo": {
+    "text": "Conta de Fluxo de Caixa"
+   },
+   "caixa": {
+    "x": 1476,
+    "y": 666,
+    "w": 334,
+    "h": 24
+   }
+  }
+ ],
+ "em": "2026-11-13T12:25:00.969Z"
+}

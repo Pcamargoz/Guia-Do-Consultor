@@ -1,0 +1,21 @@
+{
+ "nome": "v12-dashboard",
+ "url": "https://staging.flow.faktory.com.br/vendas/dashboard-geral",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Aplicar"
+   },
+   "caixa": {
+    "x": 1727,
+    "y": 371,
+    "w": 112,
+    "h": 43
+   }
+  }
+ ],
+ "em": "2026-11-13T12:25:28.162Z"
+}
