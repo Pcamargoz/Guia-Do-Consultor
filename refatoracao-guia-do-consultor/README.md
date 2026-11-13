@@ -4,7 +4,11 @@ Esta pasta reúne **todo o contexto** da reestruturação do Guia do Consultor e
 treinamento, capacitação, documentação e consulta operacional do Faktory Flow. Qualquer pessoa ou
 agente que retomar o trabalho deve começar por aqui.
 
-> Situação em 04/11/2026: **planejamento e diagnóstico concluídos**; implementação ainda não iniciada
+> **Situação em 13/11/2026: a navegação virou METODOLOGIA** (doc [14](14-metodologia.md)): Metodologia do Consultor,
+> Manuais de Apoio, Biblioteca de Vídeos e Metodologia Faktory Flow; um módulo = vídeo + checklist + manual; endereço sem
+> rotas. Próximo passo: gravar e editar os 19 vídeos completos de módulo (hoje todos "Em preparação").
+>
+> Situação em 04/11/2026 (histórico): **planejamento e diagnóstico concluídos**; implementação ainda não iniciada
 > no código do Guia. Nada do sistema atual foi alterado. Veja [09 — pendências e como retomar](09-pendencias-e-como-retomar.md).
 
 ## Leitura recomendada (nesta ordem)

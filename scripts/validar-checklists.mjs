@@ -74,14 +74,16 @@ if (existsSync(COPIA)) {
 
 /* Guia */
 const index = await ler(path.join(RAIZ, 'public/index.html'));
-for (const arq of ['guia-checklists.css', 'guia-checklists.js', 'guia-abas.css', 'guia-abas.js']) {
+// Doc 14: os checklists de implantação abrem na página do módulo da Metodologia (metodologia.js).
+// A biblioteca antiga (guia-checklists.js) fica no repositório, fora da página.
+for (const arq of ['metodologia.css', 'metodologia.js', 'checklists-relatorio.js', 'guia-abas.css', 'guia-abas.js']) {
   checar(index.includes(arq) && existsSync(path.join(RAIZ, 'public', arq)), `index.html carrega ${arq}`);
 }
-try { execFileSync(process.execPath, ['--check', path.join(RAIZ, 'public/guia-checklists.js')]); ok.push('guia-checklists.js: sintaxe'); }
-catch (e) { falhas.push(`guia-checklists.js: sintaxe — ${e.message.split('\n')[0]}`); }
-const css = await ler(path.join(RAIZ, 'public/guia-checklists.css'));
-checar((css.match(/{/g) || []).length === (css.match(/}/g) || []).length, 'guia-checklists.css: chaves balanceadas');
-checar(css.includes('prefers-reduced-motion'), 'guia-checklists.css respeita prefers-reduced-motion');
+try { execFileSync(process.execPath, ['--check', path.join(RAIZ, 'public/metodologia.js')]); ok.push('metodologia.js: sintaxe'); }
+catch (e) { falhas.push(`metodologia.js: sintaxe — ${e.message.split('\n')[0]}`); }
+const css = await ler(path.join(RAIZ, 'public/metodologia.css'));
+checar((css.match(/{/g) || []).length === (css.match(/}/g) || []).length, 'metodologia.css: chaves balanceadas');
+checar(css.includes('prefers-reduced-motion'), 'metodologia.css respeita prefers-reduced-motion');
 checar(!/\.ck-(item|lista|toolbar)/.test(await ler(path.join(RAIZ, 'public/guia-abas.css'))), 'guia-abas.css sem estilos antigos de checklist');
 
 console.log('\nEtapas por checklist (total · verificadas · documentação · não validadas)');

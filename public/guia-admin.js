@@ -56,7 +56,8 @@
     const admin = Boolean(usuario?.permissoes?.includes('gerenciar_usuarios'));
     if (!admin) {
       painel.remove();
-      if (location.hash === '#admin') window.ffIrParaAba?.('guia');
+      // Endereço limpo (doc 14): a rota vem do roteador, não do hash.
+      if (window.Plataforma?.rota?.area === 'admin' || location.hash === '#admin') window.ffIrParaAba?.('metodologia');
       return;
     }
     document.querySelectorAll('[data-so-admin]').forEach((el) => { el.hidden = false; });

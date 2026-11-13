@@ -14,7 +14,13 @@
    Escuta `plataforma:abrir` (emitido pela UI) e chama irPara; dá preventDefault para a UI não navegar de novo.
    As promessas nunca rejeitam: erro de rede ou HTTP vira { erro: { status, mensagem } } (status 0 = sem conexão). */
 (() => {
-  const AREAS = ['inicio', 'inicial', 'consultor', 'acervo', 'pacotes', 'checklist', 'videos', 'apostila', 'admin'];
+  // Metodologia (doc 14): #metodologia[/<modulo>] · #manuais[/<modulo>] · #videos[/<modulo>] · #metodologia-ff[/<secao>].
+  // Pacotes e Horas e o Painel continuam como ferramentas. As áreas antigas viram aliases (ALIASES_AREA).
+  const AREAS = ['metodologia', 'manuais', 'videos', 'metodologia-ff', 'pacotes', 'admin'];
+  const AREA_INICIAL = 'metodologia';
+  const AREAS_COM_MODULO = ['metodologia', 'manuais', 'videos'];
+  // Área antiga → área nova (o módulo, quando vem no endereço, é mantido).
+  const ALIASES_AREA = Object.freeze({ inicio: 'metodologia', inicial: 'metodologia', consultor: 'metodologia', checklist: 'metodologia', acervo: 'metodologia-ff', apostila: 'metodologia-ff' });
   const JORNADAS = ['inicial', 'consultor'];
   const SEGMENTO = /^[a-z0-9-]{1,60}$/;
   const TEMPO_LIMITE_MS = 15000;
@@ -114,17 +120,17 @@
      Único roteador da página (review v1 do Lead, item 6): guia-abas.js passa a ouvir "plataforma:rota".
      Hashes antigos continuam valendo (aliases). `secao` = âncora dentro da área (rolar até ela, sem trocar de área).
      Alias aprovado (Lead v3.4→v3.5): `#consultor/fundamentos` → `{ area: 'acervo', secao: 'metodo' }`. */
-  const AREAS_COM_SECAO = ['acervo', 'pacotes', 'checklist', 'videos', 'apostila', 'admin'];
+  const AREAS_COM_SECAO = ['metodologia-ff', 'pacotes', 'admin'];
   const SECAO = /^[A-Za-z0-9_-]{1,80}$/;
   // Hash antigo → rota. Fontes: public/guia-abas.js (aba "guia" = guia antigo, que vira o Acervo — doc 03) e
   // public/index.html (seções do guia antigo, roladas por scrollToSection: ids dashboard … conclusao).
   const ALIASES = Object.freeze({
-    guia: Object.freeze({ area: 'acervo' }),
+    guia: Object.freeze({ area: 'metodologia-ff' }),
     ...Object.fromEntries(['dashboard', 'parte1', 'metodo', 'modulos', 'processos', 'diagnostico', 'conclusao']
-      .map((id) => [id, Object.freeze({ area: 'acervo', secao: id })])),
+      .map((id) => [id, Object.freeze({ area: 'metodologia-ff' })])),
   });
-  // Âncoras internas que já mudam o hash hoje: #pc-nome-<id> (guia-pacotes.js) e #ck-<n> (checklists-relatorio.js).
-  const ALIASES_PREFIXO = Object.freeze([[/^pc-nome-[A-Za-z0-9_-]{1,72}$/, 'pacotes'], [/^ck-\d{1,4}$/, 'checklist']]);
+  // Âncoras internas que já mudam o hash hoje: #pc-nome-<id> (guia-pacotes.js) e #ck-<n> (relatório de problemas).
+  const ALIASES_PREFIXO = Object.freeze([[/^pc-nome-[A-Za-z0-9_-]{1,72}$/, 'pacotes'], [/^ck-\d{1,4}$/, 'metodologia']]);
 
   /* Perfil (v3): área oculta para o perfil logado não abre; o roteador manda para o início, sem mensagem de erro
      (ex.: estagiário com link antigo #guia → Acervo, que é só de consultor por padrão → #inicio).
@@ -132,8 +138,7 @@
      o roteador não filtra: quem renderiza deve chamar Plataforma.visibilidade() antes do 1º desenho, e o servidor
      continua recusando o conteúdo oculto (403/404). Área sem chave de visibilidade (inicio, admin) não é filtrada aqui. */
   const CHAVE_DA_AREA = Object.freeze({
-    inicial: 'area:guia-inicial', consultor: 'area:guia-consultor', acervo: 'area:acervo', pacotes: 'area:pacotes',
-    checklist: 'area:checklists', videos: 'area:videos', apostila: 'area:apostila',
+    metodologia: 'area:metodologia', manuais: 'area:manuais', videos: 'area:videos', 'metodologia-ff': 'area:metodologia-ff', pacotes: 'area:pacotes',
   });
   let mapaVisibilidade = null;
   const areaPermitida = (area) => !mapaVisibilidade || !Object.hasOwn(CHAVE_DA_AREA, area) || mapaVisibilidade[CHAVE_DA_AREA[area]] === true;
@@ -142,7 +147,9 @@
 
   function lerRota(hash) {
     const rota = lerRotaSemPerfil(hash);
-    return areaPermitida(rota.area) ? rota : { area: 'inicio' };
+    if (areaPermitida(rota.area)) return rota;
+    const outra = AREAS.find((a) => a !== 'admin' && areaPermitida(a));
+    return { area: outra || AREA_INICIAL };
   }
 
   function lerRotaSemPerfil(hash) {
@@ -153,43 +160,61 @@
       const prefixo = ALIASES_PREFIXO.find(([re]) => re.test(brutas[0]));
       if (prefixo) return { area: prefixo[1], secao: brutas[0] };
     }
-    // Lead: #consultor/fundamentos → acervo/método (não cria módulo "fundamentos" no índice).
-    if (partes[0] === 'consultor' && partes[1] === 'fundamentos') {
-      return { area: 'acervo', secao: 'metodo' };
-    }
-    const area = AREAS.includes(partes[0]) ? partes[0] : 'inicio';
+    // Lead: #consultor/fundamentos → a metodologia institucional (antes: acervo/método).
+    if (partes[0] === 'consultor' && partes[1] === 'fundamentos') return { area: 'metodologia-ff' };
+    const pedida = Object.hasOwn(ALIASES_AREA, partes[0]) ? ALIASES_AREA[partes[0]] : partes[0];
+    const area = AREAS.includes(pedida) ? pedida : AREA_INICIAL;
     const rota = { area };
-    // #inicio/<modulo> = página do módulo (v3): reúne os materiais das duas jornadas.
-    if ((area === 'inicial' || area === 'consultor' || area === 'inicio') && partes[1] && SEGMENTO.test(partes[1])) rota.modulo = partes[1];
-    if (AREAS_COM_SECAO.includes(area) && brutas[1] && SECAO.test(brutas[1])) rota.secao = brutas[1];
+    if (AREAS_COM_MODULO.includes(area) && partes[1] && SEGMENTO.test(partes[1])) rota.modulo = partes[1];
+    if (AREAS_COM_SECAO.includes(area) && pedida === partes[0] && brutas[1] && SECAO.test(brutas[1])) rota.secao = brutas[1];
     return rota;
   }
 
   const hashDe = (rota) => `#${rota.area}${rota.modulo ? `/${rota.modulo}` : ''}${rota.secao ? `/${rota.secao}` : ''}`;
 
-  function irPara(rota) {
-    const destino = lerRota(hashDe(rota || { area: 'inicio' }));
-    if (location.hash !== hashDe(destino)) location.hash = hashDe(destino);
-    else atualizar();
+  /* Endereço limpo (pedido do responsável em 12/11/2026): a rota vive em history.state, nunca na barra de endereço.
+     O "voltar" do navegador continua funcionando (popstate); um endereço antigo com # abre a tela certa e é limpo. */
+  const ENDERECO = () => location.pathname + location.search;
+  const rotaDoHistorico = () => {
+    const r = window.history && window.history.state && window.history.state.ffRota;
+    return r && typeof r === 'object' && typeof r.area === 'string' ? lerRota(hashDe(r)) : null;
+  };
+  function gravar(rota, novaEntrada) {
+    if (!window.history || typeof window.history.replaceState !== 'function') return;
+    const estado = { ...(window.history.state || {}), ffRota: { ...rota } };
+    if (novaEntrada) window.history.pushState(estado, '', ENDERECO());
+    else window.history.replaceState(estado, '', ENDERECO());
+  }
+  function rotaInicial() {
+    const rota = location.hash && location.hash.length > 1 ? lerRota(location.hash) : (rotaDoHistorico() || { area: AREA_INICIAL });
+    gravar(rota, false);
+    return rota;
   }
 
-  const mesmaRota = (a, b) => hashDe(a) === hashDe(b);
+  function irPara(rota) {
+    const destino = lerRota(hashDe(rota || { area: AREA_INICIAL }));
+    if (!mesmaRota(destino, Plataforma.rota)) gravar(destino, true);
+    atualizar(destino);
+  }
+
+  const mesmaRota = (a, b) => Boolean(a && b) && hashDe(a) === hashDe(b);
 
   /** Passa a usar o mapa de visibilidade do perfil no roteador; se a rota atual ficou proibida, vai ao início em silêncio. */
   function aplicarVisibilidade(itens) {
     if (!itens || typeof itens !== 'object' || Array.isArray(itens)) return;
     mapaVisibilidade = Object.freeze(Object.fromEntries(Object.entries(itens).filter(([, v]) => typeof v === 'boolean')));
-    const nova = lerRota(location.hash);
+    const nova = lerRota(hashDe(Plataforma.rota));
     if (mesmaRota(nova, Plataforma.rota)) return;
-    // troca o endereço sem criar entrada no histórico (o "voltar" não leva de novo à área oculta)
-    if (window.history && typeof window.history.replaceState === 'function') window.history.replaceState(window.history.state ?? null, '', hashDe(nova));
-    atualizar();
+    // troca a rota sem criar entrada no histórico (o "voltar" não leva de novo à área oculta)
+    gravar(nova, false);
+    atualizar(nova);
   }
 
-  const Plataforma = { carregarResumo, carregarModulo, carregarGuia, progressoResumo, progresso, salvarProgresso, visibilidade, aplicarVisibilidade, salvarVisibilidade, invalidarResumo, lerRota, irPara, ALIASES, rota: lerRota(location.hash) };
+  const Plataforma = { carregarResumo, carregarModulo, carregarGuia, progressoResumo, progresso, salvarProgresso, visibilidade, aplicarVisibilidade, salvarVisibilidade, invalidarResumo, lerRota, irPara, ALIASES, rota: null };
+  Plataforma.rota = rotaInicial();
 
-  function atualizar() {
-    Plataforma.rota = lerRota(location.hash);
+  function atualizar(rota) {
+    Plataforma.rota = rota || rotaDoHistorico() || { area: AREA_INICIAL };
     window.dispatchEvent(new CustomEvent('plataforma:rota', { detail: { ...Plataforma.rota } }));
   }
 
@@ -206,7 +231,14 @@
     irPara(destino);
   }
 
-  window.addEventListener('hashchange', atualizar);
+  // Link interno com # (ex.: href="#manuais/crm"): vira rota e o endereço volta a ficar limpo.
+  window.addEventListener('hashchange', () => {
+    if (!location.hash || location.hash.length < 2) return;
+    const rota = lerRota(location.hash);
+    gravar(rota, false);
+    atualizar(rota);
+  });
+  window.addEventListener('popstate', () => atualizar(rotaDoHistorico() || { area: AREA_INICIAL }));
   window.addEventListener('plataforma:abrir', aoAbrir);
   window.Plataforma = Plataforma;
 })();

@@ -150,7 +150,13 @@
     busca: '<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>',
     tentar: '<path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/>',
     // v2.1: casa da aba/menu "Página Inicial" (substitui o SVG próprio do guia-abas.js; mesma silhueta e traço 2 px).
-    inicio: '<path d="m3 10.5 9-7.5 9 7.5"/><path d="M5 9v10.5a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5V9"/><path d="M10 20v-6h4v6"/>'
+    inicio: '<path d="m3 10.5 9-7.5 9 7.5"/><path d="M5 9v10.5a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5V9"/><path d="M10 20v-6h4v6"/>',
+    // Metodologia (doc 14)
+    voltar: '<path d="M19 12H5"/><path d="m11 18-6-6 6-6"/>',
+    baixar: '<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5M12 15V3"/>',
+    externo: '<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6M10 14 21 3"/>',
+    copiar: '<rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h8"/>',
+    metodologia: '<path d="M4 19.5V5a2 2 0 0 1 2-2h12v14H6a2 2 0 0 0-2 2.5"/><path d="M6 21h12v-4"/><path d="m9 9 2 2 4-4"/>'
   };
   const ATRS_SVG = 'viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"';
   const ICONES_SVG = Object.freeze(Object.fromEntries(Object.entries(ICONES).filter(([k]) => k !== '_padrao').map(([k, d]) => [k, `<svg ${ATRS_SVG}>${d}</svg>`])));
@@ -1072,13 +1078,16 @@
   const GRUPOS_VIS = [
     ['area', 'Áreas', 'Ocultar uma área esconde a aba e faz o servidor recusar o conteúdo dela.'],
     ['tipo', 'Tipos de material', 'Vale para todos os módulos: o material some dos cards e das páginas.'],
-    ['modulo', 'Módulos', 'O módulo some da Página Inicial e das duas jornadas.']
+    ['modulo', 'Módulos', 'O módulo some da Metodologia, das bibliotecas e da busca.'],
+    ['recurso', 'Materiais de cada módulo', 'Publica ou oculta só o vídeo, o checklist ou o manual de um módulo. O servidor passa a recusar o arquivo oculto.']
   ];
   // Nomes das chaves: módulos = títulos do mapa do Engineer (doc 05); áreas/tipos = nome da aba/material.
   // Quem integra pode trocar por opcoes.nomes { chave: 'Nome' }.
   const NOMES_VIS = {
-    'area:guia-inicial': 'Guia Inicial', 'area:guia-consultor': 'Guia do Consultor', 'area:pacotes': 'Pacotes',
-    'area:checklists': 'Checklists', 'area:videos': 'Vídeos', 'area:apostila': 'Apostila', 'area:acervo': 'Acervo',
+    'area:metodologia': 'Metodologia do Consultor', 'area:manuais': 'Manuais de Apoio', 'area:videos': 'Biblioteca de Vídeos',
+    'area:metodologia-ff': 'Metodologia Faktory Flow', 'area:pacotes': 'Pacotes e Horas',
+    'area:guia-inicial': 'Guia Inicial (antigo, fora do menu)', 'area:guia-consultor': 'Guia do Consultor (antigo, fora do menu)',
+    'area:checklists': 'Biblioteca de checklists (antiga, fora do menu)', 'area:apostila': 'Apostila', 'area:acervo': 'Acervo (antigo, fora do menu)',
     'tipo:video': 'Vídeos', 'tipo:manual': 'Manuais', 'tipo:checklist': 'Checklists', 'tipo:fluxo': 'Fluxos',
     'modulo:primeiros-passos': 'Primeiros passos', 'modulo:fundacao': 'Cadastros e Fundação', 'modulo:crm': 'CRM',
     'modulo:cem': 'Integração CEM', 'modulo:vendas': 'Vendas', 'modulo:compras': 'Compras', 'modulo:recebimento': 'Recebimento',
@@ -1116,7 +1125,13 @@
     limpar(el);
     el.removeAttribute('aria-busy');
     const nomes = { ...NOMES_VIS, ...(opcoes.nomes || {}) };
-    const nomeDe = (c) => nomes[c] || txt(c).replace(/^[a-z]+:/, '').replace(/-/g, ' ');
+    const TIPO_REC = { video: 'Vídeo', checklist: 'Checklist', manual: 'Manual' };
+    const nomeDe = (c) => {
+      if (nomes[c]) return nomes[c];
+      const r = /^recurso:(.+)-(video|checklist|manual)$/.exec(c);
+      if (r) return `${nomes[`modulo:${r[1]}`] || r[1]} · ${TIPO_REC[r[2]]}`;
+      return txt(c).replace(/^[a-z]+:/, '').replace(/-/g, ' ');
+    };
     const salvarFn = typeof opcoes.onSalvar === 'function' ? opcoes.onSalvar : null;
     const somenteLeitura = !salvarFn || !!opcoes.desabilitado;
     const estado = new Map(itens.filter((i) => i && typeof i.chave === 'string').map((i) => [i.chave, { ...i, perfis: [...(i.perfis || [])] }]));
@@ -1174,7 +1189,7 @@
       const situacao = h('div', { className: 'pl-vis-item__sit', attrs: { 'aria-live': 'polite' } });
       const confirmacao = h('div', { className: 'pl-vis-confirma', attrs: { hidden: true, role: 'group', 'aria-labelledby': `${id}-c` } });
       anexar(li, [
-        h('div', { className: 'pl-vis-item__nome' }, h('span', { className: 'pl-vis-item__ic' }, icone(ICONE_VIS[chave] || (chave.startsWith('modulo:') ? chave.slice(7) : '_padrao'))),
+        h('div', { className: 'pl-vis-item__nome' }, h('span', { className: 'pl-vis-item__ic' }, icone(ICONE_VIS[chave] || (chave.startsWith('modulo:') ? chave.slice(7) : (chave.startsWith('recurso:') ? chave.replace(/^recurso:.+-(video|checklist|manual)$/, '$1') : '_padrao')))),
           h('div', null, h('p', { className: 'pl-vis-item__titulo', id: `${id}-t`, text: nome }), resumo, meta)),
         h('div', { className: 'pl-vis-item__ctrl' },
           h('div', { className: 'pl-vis-perfis', attrs: { role: 'group', 'aria-label': `Perfis que veem ${nome}` } }, caixas.map((c) => c[2])),
@@ -1295,6 +1310,7 @@
     renderJornada,
     renderModulo,
     renderPainelVisibilidade,
+    renderGuiaVisual,
     estadoCarregando,
     estadoErro,
     estadoVazio,

@@ -1,0 +1,1004 @@
+{
+  "titulo": "Metodologia Faktory Flow",
+  "subtitulo": "Manual principal da implantação",
+  "versao": "1.0",
+  "atualizadoEm": "2026-11-12",
+  "status": "rascunho",
+  "resumo": "Este manual reúne, em um só lugar, como a equipe de implantação conduz um projeto do Faktory Flow, da atribuição do cliente ao encerramento, e como os módulos do ERP se encaixam na implantação. Implantar não é só instalar o sistema: é preparar a empresa para usá-lo com autonomia. Todo o conteúdo vem das apostilas de metodologia e dos documentos oficiais da base de conhecimento; onde a base ainda não cobre um tema, a seção aparece como em preparação.",
+  "frentes": [
+    {
+      "id": "gestao",
+      "titulo": "Gestão do setor",
+      "resumo": "Como a equipe de implantação se organiza, registra, planeja, comunica, treina, valida e encerra cada projeto seguindo o Método Faktory.",
+      "secoes": [
+        {
+          "id": "organizacao-equipe",
+          "titulo": "Organização e responsabilidades da equipe",
+          "status": "disponivel",
+          "resumo": "Quem faz o quê na implantação, do lado da Faktory e do lado do cliente, e os limites de atuação do consultor.",
+          "blocos": [
+            {
+              "tipo": "paragrafo",
+              "texto": "A implantação envolve dois papéis internos e três papéis no cliente. A coordenação de Implantação abre o projeto e define o responsável; o consultor conduz o projeto do início ao encerramento. No cliente, o sponsor, o gerente do projeto e o key user dividem as decisões, o acompanhamento e as validações."
+            },
+            {
+              "tipo": "tabela",
+              "colunas": ["Papel", "Lado", "Responsabilidade"],
+              "linhas": [
+                ["Coordenação de Implantação", "Faktory", "Cria o card do cliente na Plataforma 360 e o atribui ao consultor responsável."],
+                ["Consultor de Implantação", "Faktory", "Facilitador do projeto: compreende os processos do cliente, organiza as etapas, registra decisões, conduz os treinamentos e formaliza cada atendimento em OS."],
+                ["Sponsor", "Cliente", "Dá apoio ao projeto e toma as decisões estratégicas."],
+                ["Gerente do projeto", "Cliente", "Acompanha o cronograma, centraliza as decisões, administra as horas e recebe os e-mails de documentação."],
+                ["Key user", "Cliente", "Conhece os processos, participa das validações e é a referência para os demais usuários."]
+              ]
+            },
+            {
+              "tipo": "paragrafo",
+              "texto": "O consultor é um facilitador, não um instrutor de telas: o trabalho dele é traduzir a realidade do cliente para dentro do sistema. É a atuação do consultor, com o envolvimento do cliente, que transforma a ferramenta em solução aplicada à rotina."
+            },
+            {
+              "tipo": "tabela",
+              "colunas": ["O consultor faz", "O consultor não faz"],
+              "linhas": [
+                ["Compreende os processos do cliente antes de treinar.", "Não promete funcionalidades que não existem."],
+                ["Organiza as etapas e registra as decisões.", "Não decide regras internas, fiscais ou contábeis pelo cliente."],
+                ["Identifica riscos e pendências, com responsáveis e prazos.", "Não assume responsabilidades que pertencem à gestão da empresa."],
+                ["Desenvolve a autonomia dos usuários.", ""],
+                ["Diferencia erro de parametrização, falha operacional e bug.", ""]
+              ]
+            },
+            {
+              "tipo": "aviso",
+              "nivel": "atencao",
+              "texto": "Questões fiscais (NCM, CFOP, CST e tributação) são validadas pelo cliente e pelo contador dele. O consultor orienta, mas não decide."
+            },
+            {
+              "tipo": "lista",
+              "itens": [
+                "Conhecimento dos módulos: saber como cada área se conecta, do primeiro contato à entrega e à análise de resultados.",
+                "Compreensão dos processos: implantar respeitando a realidade do cliente, sem replicar telas que não gerem valor.",
+                "Análise de problemas: identificar a causa antes de encaminhar, diferenciando configuração, operação e bug.",
+                "Comunicação organizada: registrar decisões, acompanhar pendências, formalizar entregas e manter o cliente alinhado."
+              ]
+            },
+            {
+              "tipo": "citacao",
+              "texto": "O consultor é o elo entre o cliente e a tecnologia: compreende a operação, traduz os processos para o sistema e conduz uma transformação na forma como a empresa trabalha.",
+              "autor": "Apostila do Consultor de Implantação, conclusão"
+            }
+          ],
+          "fontes": [
+            "metodologia-apostila-procedimentos-implantacao#006",
+            "metodologia-apostila-procedimentos-implantacao#007",
+            "metodologia-apostila-procedimentos-implantacao#008",
+            "metodologia-apostila-procedimentos-implantacao#009",
+            "metodologia-apostila-procedimentos-implantacao#000",
+            "metodologia-mapa-mental-implantacao#005",
+            "metodologia-apostila-do-consultor#003",
+            "metodologia-apostila-do-consultor#004",
+            "metodologia-apostila-do-consultor#033"
+          ]
+        },
+        {
+          "id": "processos-internos",
+          "titulo": "Processos internos e padrões de atendimento",
+          "status": "disponivel",
+          "resumo": "As regras de registro, de gravação, de pastas e de diagnóstico que valem para todo projeto e todo atendimento.",
+          "blocos": [
+            {
+              "tipo": "paragrafo",
+              "texto": "Todo projeto segue o mesmo padrão de registro. A Plataforma 360 é o sistema de controle da implantação: cada cliente é um card, criado pela coordenação, com responsável, status e checklist. O WhatsApp serve para contato rápido, mas não é ferramenta de controle."
+            },
+            {
+              "tipo": "lista",
+              "itens": [
+                "Registre todas as atividades do projeto na Plataforma 360.",
+                "Atualize o card e o checklist do cliente diariamente, avançando as etapas conforme a evolução do projeto.",
+                "Abra OS (Ordem de Serviço) para todas as demandas do cliente.",
+                "Use a aba RA do 360 somente para a reunião de alinhamento; vincule os treinamentos à fase e à tarefa da implantação.",
+                "Faça todas as reuniões com o cliente pelo Microsoft Teams, sempre com gravação (obrigatória).",
+                "Salve cada gravação nos dois locais: pasta Treinamento do cliente no SharePoint (arquivo interno) e pasta do cliente no OneDrive (acesso do cliente)."
+              ]
+            },
+            {
+              "tipo": "tabela",
+              "colunas": ["Local", "O que guarda"],
+              "linhas": [
+                ["SharePoint da Implantação › Documentos", "Arquivos enviados pelo cliente."],
+                ["SharePoint da Implantação › Implantação", "Documentos do projeto: RA, OS e cronograma."],
+                ["SharePoint da Implantação › Treinamento", "Gravações das reuniões e dos treinamentos."],
+                ["OneDrive › pasta do cliente", "Gravações e manuais destinados ao cliente, que ele baixa e usa como guia de revisão."]
+              ]
+            },
+            {
+              "tipo": "paragrafo",
+              "texto": "A OS de atendimento formaliza cada atendimento e mantém o histórico do projeto. Ela é gerada vinculada ao cliente e à implantação, detalha o que foi tratado, quais tarefas foram finalizadas e quais estão pendentes (internas e do cliente), é enviada ao cliente no mesmo dia e salva na pasta Implantação do SharePoint."
+            },
+            {
+              "tipo": "aviso",
+              "nivel": "info",
+              "texto": "A OS de atendimento da implantação não é a OS de instalação do módulo Produção do Faktory Flow. São registros diferentes."
+            },
+            {
+              "tipo": "passos",
+              "itens": [
+                { "titulo": "Entender o problema", "texto": "Antes de encaminhar um chamado, identifique se a situação é de configuração, falta de conhecimento do processo, erro operacional ou problema real do sistema." },
+                { "titulo": "Reproduzir o cenário", "texto": "Refaça a operação nas mesmas condições relatadas pelo cliente." },
+                { "titulo": "Validar configurações", "texto": "Confira os cadastros e parâmetros envolvidos na operação." },
+                { "titulo": "Testar alternativas", "texto": "Compare com outro produto, outro cliente ou uma nova operação." },
+                { "titulo": "Identificar a causa", "texto": "Separe erro de parametrização, falha operacional e bug." },
+                { "titulo": "Corrigir ou encaminhar", "texto": "Corrija o que é configuração ou operação; encaminhe somente o que é falha do sistema." }
+              ]
+            },
+            {
+              "tipo": "tabela",
+              "colunas": ["Código", "Link útil", "Uso"],
+              "linhas": [
+                ["L01", "Plataforma 360", "Cards, checklist, questionário e aba RA."],
+                ["L02", "SharePoint da Implantação", "Pastas dos clientes, por consultor."],
+                ["L03", "OneDrive", "Pastas dos clientes, com gravações e manuais para o cliente."],
+                ["L04", "Modelo de cronograma", "Planejamento do projeto (etapa 5.4)."],
+                ["L05", "Modelos de e-mail", "Cronograma, CFOP, NCM, RA e demais envios (etapas 5.4 e 5.5)."],
+                ["L08", "Modelos de importação", "Participantes, produtos e Contas a Pagar e a Receber (3º e-mail)."],
+                ["L09", "Documentos de encerramento", "4º e-mail (etapa 5.12)."]
+              ]
+            }
+          ],
+          "fontes": [
+            "metodologia-apostila-procedimentos-implantacao#001",
+            "metodologia-apostila-procedimentos-implantacao#002",
+            "metodologia-apostila-procedimentos-implantacao#003",
+            "metodologia-apostila-procedimentos-implantacao#004",
+            "metodologia-apostila-procedimentos-implantacao#005",
+            "metodologia-apostila-procedimentos-implantacao#023",
+            "metodologia-apostila-procedimentos-implantacao#029",
+            "metodologia-mapa-mental-implantacao#003",
+            "metodologia-mapa-mental-implantacao#004",
+            "metodologia-apostila-do-consultor#027",
+            "metodologia-apostila-do-consultor#031"
+          ]
+        },
+        {
+          "id": "planejamento-acompanhamento",
+          "titulo": "Planejamento e acompanhamento dos projetos",
+          "status": "disponivel",
+          "resumo": "O Método Faktory em 12 etapas, as fases do template no 360, o cronograma e o checklist geral do projeto.",
+          "blocos": [
+            {
+              "tipo": "paragrafo",
+              "texto": "A implantação segue o Método Faktory: uma sequência padronizada e obrigatória em que cada etapa tem objetivo próprio e depende da conclusão da anterior. Não antecipe atividades sem os pré-requisitos prontos."
+            },
+            {
+              "tipo": "tabela",
+              "colunas": ["Etapa", "O que acontece", "Onde fica o registro"],
+              "linhas": [
+                ["5.1 Atribuição", "A coordenação cria o card e o atribui ao consultor, que cria as pastas do cliente.", "Card no 360"],
+                ["5.2 Primeiro contato", "O consultor contata o cliente para agendar a RA.", "WhatsApp"],
+                ["5.3 Reunião de alinhamento", "Conhecer o cliente e definir o projeto.", "360, aba RA"],
+                ["5.4 Cronograma", "Organizar datas, módulos e participantes, obter aprovação e agendar reuniões.", "SharePoint (Implantação) e Teams"],
+                ["5.5 E-mails", "Solicitar documentos ao gerente do projeto.", "E-mail"],
+                ["5.6 Configuração", "Criar a conta, parametrizar e garantir os pré-requisitos.", "Checklist no 360"],
+                ["5.7 a 5.9 Treinamentos", "Ensinar processos, gerar OS e enviar material.", "360 (fase e tarefa), OS e OneDrive"],
+                ["5.10 Preparação", "Validar cadastros, acessos e fluxos.", "Checklist no 360"],
+                ["5.11 Go-live", "Entrada em produção assistida.", "OS"],
+                ["5.12 Encerramento", "Formalizar a conclusão e transferir para o Suporte.", "4º e-mail e card no 360"]
+              ]
+            },
+            {
+              "tipo": "tabela",
+              "colunas": ["Fase do template no 360", "Etapas correspondentes"],
+              "linhas": [
+                ["Reunião de alinhamento", "5.1 a 5.3"],
+                ["Planejamento", "5.4 e 5.5"],
+                ["Configuração", "5.6"],
+                ["Implantação", "5.7 a 5.9"],
+                ["Preparação de go-live", "5.10"],
+                ["Go-live e encerramento", "5.11 e 5.12"]
+              ]
+            },
+            {
+              "tipo": "passos",
+              "itens": [
+                { "titulo": "Elaborar o cronograma", "texto": "Use o modelo padrão (L04) com base no que foi registrado na reunião de alinhamento: quais módulos, em que ordem, com quais usuários e objetivos." },
+                { "titulo": "Seguir a sequência de módulos", "texto": "Respeite a sequência recomendada de implantação dos módulos (ver Frente 2, Dependências e integrações entre módulos)." },
+                { "titulo": "Deixar intervalos", "texto": "Deixe intervalos entre os dias de treinamento, para não sobrecarregar o cliente e manter margem para ajustes." },
+                { "titulo": "Enviar para aprovação", "texto": "Envie o cronograma ao cliente pelo modelo de e-mail (L05) e salve-o na pasta Implantação do SharePoint." },
+                { "titulo": "Agendar", "texto": "Com a aprovação, valide a agenda de treinamentos e agende as reuniões no calendário do Teams." }
+              ]
+            },
+            {
+              "tipo": "aviso",
+              "nivel": "atencao",
+              "texto": "Ponto de controle: a configuração do ambiente e os treinamentos só começam depois que o cronograma for aprovado pelo cliente."
+            },
+            {
+              "tipo": "lista",
+              "itens": [
+                "Atribuição: card criado, atribuído e com responsável, status e checklist; pastas criadas no SharePoint (Documentos, Implantação, Treinamento) e no OneDrive.",
+                "RA: primeiro contato realizado; reunião gravada; questionário e aba RA preenchidos no 360 (data, participantes, assunto, link da gravação).",
+                "Cronograma: elaborado com intervalos entre os treinamentos, aprovado pelo cliente e com as reuniões agendadas no Teams.",
+                "E-mails: 1º e-mail enviado ao gerente do projeto; 2º e 3º enviados, se necessários.",
+                "Configuração: conta criada e dados básicos configurados; usuários, acessos e permissões validados; integração CEM e Agent Faktory (se CEM Desktop) funcionando; internet e acesso remoto confirmados.",
+                "Treinamentos: cada treinamento gravado e registrado no 360 (fase e tarefa); OS gerada e enviada no mesmo dia; materiais no OneDrive.",
+                "Preparação: cadastros, usuários, processos, configurações fiscais, fluxos financeiros e integrações validados.",
+                "Go-live: movimentações em produção acompanhadas.",
+                "Encerramento: pendências revisadas e OS aprovadas; reunião de encerramento com feedback; 4º e-mail enviado e card atualizado."
+              ]
+            },
+            {
+              "tipo": "aviso",
+              "nivel": "info",
+              "texto": "O checklist geral acima não substitui o checklist do card no 360, que é atualizado diariamente."
+            }
+          ],
+          "fontes": [
+            "metodologia-apostila-procedimentos-implantacao#003",
+            "metodologia-apostila-procedimentos-implantacao#010",
+            "metodologia-apostila-procedimentos-implantacao#012",
+            "metodologia-apostila-procedimentos-implantacao#017",
+            "metodologia-apostila-procedimentos-implantacao#018",
+            "metodologia-apostila-procedimentos-implantacao#028",
+            "metodologia-mapa-mental-implantacao#001",
+            "metodologia-mapa-mental-implantacao#002",
+            "metodologia-apostila-do-consultor#002",
+            "metodologia-apostila-do-consultor#006"
+          ]
+        },
+        {
+          "id": "comunicacao-clientes",
+          "titulo": "Comunicação com clientes",
+          "status": "disponivel",
+          "resumo": "Canais, reunião de alinhamento, e-mails de documentação e entrega de materiais ao cliente.",
+          "blocos": [
+            {
+              "tipo": "tabela",
+              "colunas": ["Canal", "Uso"],
+              "linhas": [
+                ["WhatsApp", "Primeiro contato e grupo para centralizar as dúvidas da equipe do cliente. Não é ferramenta de controle."],
+                ["Microsoft Teams", "Todas as reuniões e treinamentos, sempre gravados."],
+                ["E-mail", "Cronograma para aprovação e os quatro e-mails de documentação ao gerente do projeto."],
+                ["OneDrive", "Gravações, manuais, vídeos e materiais de apoio para o cliente."],
+                ["Plataforma 360 e OS", "Onde ficam registrados decisões, pendências e atendimentos."]
+              ]
+            },
+            {
+              "tipo": "paragrafo",
+              "texto": "A reunião de alinhamento (RA) é o início oficial do projeto. Nela o consultor conhece o cliente, apresenta a metodologia Faktory, alinha expectativas e define como a implantação será conduzida. Pré-requisito: card criado e atribuído no 360."
+            },
+            {
+              "tipo": "lista",
+              "itens": [
+                "O que apresentar na RA: escopo contratado e etapas do projeto; papel de cada participante; como funcionam os atendimentos, os registros em OS e os reagendamentos; a transição para o Suporte ao final do projeto.",
+                "Questionário no 360, bloco 01 Identificação: empresa e CNPJ/CPF, quantidade de usuários, responsáveis com telefone e e-mail, e-mail de login, canal para envio de documentos, gerente do projeto, key user e sponsor, endereços físico e de faturamento.",
+                "Bloco 02 Reunião de alinhamento: regime tributário, contador, cidade e UF, emissão de NF-e e NFS-e, inscrições estadual e municipal, certificado digital (A1, A3 ou não possui), boleto e bancos, sistema atual e sistema técnico, equipe de TI e servidor, ferramenta de acesso remoto.",
+                "Bloco 03 Informações importantes: como o cliente capta leads, percorre a jornada comercial até o fechamento e fatura.",
+                "Bloco 04 Disponibilidade: período preferido para as reuniões e ata livre com observações.",
+                "Confirme também a atividade principal da empresa, os módulos contratados, as integrações (CEM Desktop ou CEM Mobi) e como a empresa emite nota fiscal e controla o financeiro hoje."
+              ]
+            },
+            {
+              "tipo": "passos",
+              "itens": [
+                { "titulo": "Conduzir a RA", "texto": "Faça a reunião pelo Teams, com gravação, apresentando a metodologia e os itens da RA." },
+                { "titulo": "Preencher o questionário", "texto": "Preencha o questionário da reunião de alinhamento no 360." },
+                { "titulo": "Registrar na aba RA", "texto": "Registre data, participantes, assunto e link da gravação." },
+                { "titulo": "Salvar a gravação", "texto": "Salve no SharePoint (Treinamento) e no OneDrive." }
+              ]
+            },
+            {
+              "tipo": "tabela",
+              "colunas": ["E-mail", "Quando", "Conteúdo"],
+              "linhas": [
+                ["1º", "Após a RA", "Planilha de CFOP; cópias de DANFE (NF-e e NFS-e); parametrização de e-mail; perfil de usuário (criação de usuários e permissões)."],
+                ["2º", "Se necessário", "Cobrança escritural (homologação de boletos)."],
+                ["3º", "Se necessário", "Importação do sistema anterior: participantes, produtos e Contas a Pagar e a Receber (modelos L08)."],
+                ["4º", "No encerramento", "Documentos de encerramento (L09)."]
+              ]
+            },
+            {
+              "tipo": "aviso",
+              "nivel": "info",
+              "texto": "Todos os e-mails de documentação vão para o gerente do projeto, que centraliza as decisões no cliente. Após cada treinamento, lembre o cliente de baixar os materiais do OneDrive."
+            }
+          ],
+          "fontes": [
+            "metodologia-apostila-procedimentos-implantacao#005",
+            "metodologia-apostila-procedimentos-implantacao#013",
+            "metodologia-apostila-procedimentos-implantacao#014",
+            "metodologia-apostila-procedimentos-implantacao#015",
+            "metodologia-apostila-procedimentos-implantacao#016",
+            "metodologia-apostila-procedimentos-implantacao#019",
+            "metodologia-apostila-procedimentos-implantacao#024",
+            "metodologia-apostila-do-consultor#004",
+            "metodologia-apostila-do-consultor#007",
+            "metodologia-mapa-mental-implantacao#001"
+          ]
+        },
+        {
+          "id": "treinamentos",
+          "titulo": "Organização e execução dos treinamentos",
+          "status": "disponivel",
+          "resumo": "O ciclo Treinamento, OS e Material, e os princípios para ensinar processos e não telas.",
+          "blocos": [
+            {
+              "tipo": "paragrafo",
+              "texto": "O treinamento é a etapa de maior interação com o cliente. É o momento em que a tarefa da implantação é executada junto com ele, nas datas do cronograma aprovado. Mais do que apresentar funcionalidades, o consultor ensina processos."
+            },
+            {
+              "tipo": "lista",
+              "itens": [
+                "Quando usar cada função.",
+                "Por que usá-la.",
+                "Quais informações são obrigatórias.",
+                "Quais impactos a ação gera nos demais módulos."
+              ]
+            },
+            {
+              "tipo": "passos",
+              "itens": [
+                { "titulo": "Treinamento (5.7)", "texto": "Realize o treinamento pelo Teams, com gravação, e execute a tarefa prevista junto com o cliente. Registre no 360 vinculado à fase e à tarefa da implantação e salve a gravação no SharePoint (Treinamento) e no OneDrive." },
+                { "titulo": "OS de atendimento (5.8)", "texto": "Ao final, gere a OS vinculada ao cliente e à implantação, detalhando o que foi tratado, finalizado e pendente (interno e do cliente). Envie no mesmo dia e salve na pasta Implantação do SharePoint." },
+                { "titulo": "Envio de material (5.9)", "texto": "Disponibilize no OneDrive os manuais, vídeos e materiais de apoio do assunto tratado, para garantir a autonomia do cliente e reduzir dúvidas futuras." }
+              ]
+            },
+            {
+              "tipo": "aviso",
+              "nivel": "info",
+              "texto": "O ciclo Treinamento, OS e Material (etapas 5.7, 5.8 e 5.9) se repete a cada treinamento até concluir o cronograma."
+            },
+            {
+              "tipo": "lista",
+              "itens": [
+                "Ensine processos, não funcionalidades.",
+                "Mostre o impacto de cada ação nos módulos seguintes.",
+                "Use exemplos da rotina do cliente e priorize exemplos reais.",
+                "Uma etapa só termina quando o cliente compreende, executa e valida.",
+                "Treine os módulos de forma integrada: todos fazem parte de um único fluxo operacional."
+              ]
+            },
+            {
+              "tipo": "citacao",
+              "texto": "Um pedido de venda gera nota fiscal e títulos no Contas a Receber; por isso Vendas, Faturamento, Fiscal e Financeiro devem ser treinados de forma conectada.",
+              "autor": "Apostila de Procedimentos de Implantação, princípios de condução"
+            },
+            {
+              "tipo": "paragrafo",
+              "texto": "Para cada módulo, a apostila do consultor traz o objetivo, o papel na operação, quando implantar, o fluxo operacional, a condução do treinamento, as boas práticas e um checklist de validação com os pontos a confirmar antes de considerar o módulo implantado. Esses checklists estão resumidos na Frente 2."
+            }
+          ],
+          "fontes": [
+            "metodologia-apostila-procedimentos-implantacao#011",
+            "metodologia-apostila-procedimentos-implantacao#021",
+            "metodologia-apostila-procedimentos-implantacao#022",
+            "metodologia-apostila-procedimentos-implantacao#023",
+            "metodologia-apostila-procedimentos-implantacao#024",
+            "metodologia-mapa-mental-implantacao#002",
+            "metodologia-mapa-mental-implantacao#006",
+            "metodologia-apostila-do-consultor#009",
+            "metodologia-apostila-do-consultor#010",
+            "metodologia-apostila-do-consultor#011"
+          ]
+        },
+        {
+          "id": "validacoes-go-live",
+          "titulo": "Validações, Go-Live e acompanhamento pós-implantação",
+          "status": "disponivel",
+          "resumo": "O que validar antes de entrar em produção, como conduzir a produção assistida e os testes ponta a ponta de homologação.",
+          "blocos": [
+            {
+              "tipo": "paragrafo",
+              "texto": "Antes da entrada em produção, o consultor valida se a empresa está preparada para usar o sistema na operação diária. O objetivo não é eliminar todas as dúvidas, mas garantir que o cliente tenha segurança para iniciar o uso do sistema."
+            },
+            {
+              "tipo": "lista",
+              "itens": [
+                "Principais cadastros realizados.",
+                "Usuários com acesso.",
+                "Processos testados.",
+                "Configurações fiscais revisadas.",
+                "Fluxos financeiros validados.",
+                "Integrações previstas funcionando."
+              ]
+            },
+            {
+              "tipo": "tabela",
+              "colunas": ["Passo", "Teste ponta a ponta da cadeia comercial (homologação)", "Evidência esperada"],
+              "linhas": [
+                ["1", "Importar um orçamento real do CEM ou digitar o pedido.", "Pedido Em aberto com itens, preço e impostos."],
+                ["2", "Dar desconto acima da alçada e aprovar.", "Pedido passa por Aprovação pendente e volta."],
+                ["3", "Faturar e transmitir a NF-e em homologação.", "Nota autorizada, com o número configurado."],
+                ["4", "Conferir os títulos nascidos da nota ou do pedido.", "Parcelas iguais à condição de pagamento."],
+                ["5", "Emitir boleto em homologação.", "Boleto registrado no provedor."],
+                ["6", "Baixar o título (retorno ou baixa manual).", "Título recebido; comissão liberada, se o regime for por recebimento."],
+                ["7", "Cancelar uma segunda nota de teste dentro do prazo da UF.", "Nota cancelada, títulos excluídos e pedido volta a faturar."],
+                ["8", "Cancelar o pedido de teste, na ordem nota, títulos, pedido.", "Pedido Cancelado, com motivo."]
+              ]
+            },
+            {
+              "tipo": "tabela",
+              "colunas": ["Passo", "Teste ponta a ponta de suprimentos (homologação)", "Evidência esperada"],
+              "linhas": [
+                ["1", "Criar uma solicitação e uma cotação com dois fornecedores, enviando por e-mail.", "Cotação com respostas importadas."],
+                ["2", "Escolher o vencedor de cada item e gerar o pedido.", "Pedido de compra gerado; item sem vencedor recusado."],
+                ["3", "Aprovar o pedido pela alçada com outro usuário.", "Pedido aprovado; o autor não consegue aprovar."],
+                ["4", "Receber o XML e importar o pedido na nota.", "Nota de recebimento vinculada; pedido desdobrado se parcial."],
+                ["5", "Finalizar a nota.", "Saldo da variação aumentou; custo médio recalculado."],
+                ["6", "Conferir o título a pagar (pelo pedido ou pela nota).", "Um título só, com as parcelas da condição."],
+                ["7", "Transferir parte do material e fazer um inventário com ajuste.", "Movimentos de transferência e de ajuste no extrato."]
+              ]
+            },
+            {
+              "tipo": "paragrafo",
+              "texto": "No go-live a empresa passa a usar o Faktory Flow como sistema oficial. Os primeiros dias costumam gerar dúvidas, ajustes e validações adicionais, por isso a entrada em produção é assistida: o consultor acompanha as movimentações em produção, garante que o cliente esteja operando corretamente e registra cada demanda em OS."
+            },
+            {
+              "tipo": "aviso",
+              "nivel": "atencao",
+              "texto": "O ambiente fiscal fica em homologação até a validação da etapa de testes. A virada para produção (ambiente fiscal e bancário) acontece na data combinada com o cliente, depois do teste ponta a ponta e da carga de títulos em aberto e saldos iniciais."
+            }
+          ],
+          "fontes": [
+            "metodologia-apostila-procedimentos-implantacao#025",
+            "metodologia-apostila-procedimentos-implantacao#026",
+            "metodologia-apostila-do-consultor#009",
+            "metodologia-mapa-mental-implantacao#001",
+            "oficial-cadeia-comercial-visao#002",
+            "oficial-cadeia-comercial-visao#003",
+            "oficial-suprimentos-visao#003",
+            "oficial-cad-c-implantacao#012"
+          ]
+        },
+        {
+          "id": "encerramento-qualidade",
+          "titulo": "Procedimentos de encerramento e qualidade",
+          "status": "disponivel",
+          "resumo": "Como formalizar a conclusão, transferir o cliente para o Suporte e medir o sucesso da implantação.",
+          "blocos": [
+            {
+              "tipo": "paragrafo",
+              "texto": "A implantação está concluída quando os objetivos foram alcançados e o cliente está apto a usar o sistema na rotina."
+            },
+            {
+              "tipo": "passos",
+              "itens": [
+                { "titulo": "Revisar pendências", "texto": "Revise todas as pendências do projeto." },
+                { "titulo": "Confirmar treinamentos", "texto": "Confirme que os treinamentos previstos no cronograma foram realizados." },
+                { "titulo": "Garantir OS aprovadas", "texto": "Garanta que as Ordens de Serviço estejam aprovadas." },
+                { "titulo": "Reunião de encerramento", "texto": "Faça a reunião de encerramento, com gravação, e colete o feedback do cliente." },
+                { "titulo": "Enviar o 4º e-mail", "texto": "Envie os documentos de encerramento (L09) ao gerente do projeto." },
+                { "titulo": "Formalizar e atualizar o card", "texto": "Formalize a conclusão com o cliente e atualize o card no 360." }
+              ]
+            },
+            {
+              "tipo": "aviso",
+              "nivel": "atencao",
+              "texto": "Depois do encerramento, as dúvidas operacionais passam para o Suporte. Novos acompanhamentos consultivos exigem nova carga de horas."
+            },
+            {
+              "tipo": "paragrafo",
+              "texto": "A qualidade da implantação não é medida pela quantidade de reuniões, mas pela capacidade do cliente de usar o Faktory Flow com autonomia, segurança e confiança."
+            },
+            {
+              "tipo": "lista",
+              "itens": [
+                "Encerramento: pendências revisadas e OS aprovadas.",
+                "Reunião de encerramento realizada, gravada e com feedback coletado.",
+                "4º e-mail enviado.",
+                "Card do cliente atualizado no 360."
+              ]
+            }
+          ],
+          "fontes": [
+            "metodologia-apostila-procedimentos-implantacao#027",
+            "metodologia-apostila-procedimentos-implantacao#028",
+            "metodologia-mapa-mental-implantacao#001",
+            "metodologia-apostila-do-consultor#009",
+            "metodologia-apostila-do-consultor#033"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "implantacao",
+      "titulo": "Metodologia de utilização e implantação",
+      "resumo": "O que é o Faktory Flow, como seus módulos se organizam e dependem uns dos outros, e os padrões de configuração, validação e boas práticas na implantação.",
+      "secoes": [
+        {
+          "id": "visao-geral-faktory-flow",
+          "titulo": "Visão geral do Faktory Flow",
+          "status": "disponivel",
+          "resumo": "Um ERP que centraliza e integra os processos da empresa, pensado para a indústria de esquadrias.",
+          "blocos": [
+            {
+              "tipo": "paragrafo",
+              "texto": "O Faktory Flow centraliza e integra os processos da empresa em um único ambiente. Os módulos fazem parte de um único fluxo operacional: os cadastros-base alimentam CRM e Vendas, que alimentam Produção, Faturamento, Expedição e Financeiro."
+            },
+            {
+              "tipo": "paragrafo",
+              "texto": "O sistema é voltado para a indústria de esquadrias. O estoque, por exemplo, é controlado por características do material (cor, largura, altura, comprimento), e o módulo de Vendas pode importar orçamentos do sistema técnico CEM sem redigitação."
+            },
+            {
+              "tipo": "aviso",
+              "nivel": "info",
+              "texto": "Os dados pertencem à empresa, não ao usuário: quem entra numa empresa vê tudo o que já existe nela. Uma empresa nova começa vazia, e cada módulo usa o que o anterior criou (lead, participante, pedido, compra, estoque, produção, serviços, nota e títulos)."
+            },
+            {
+              "tipo": "lista",
+              "itens": [
+                "Ao entrar, o sistema abre o `Início`, com alertas urgentes, tarefas do dia e o resumo do negócio.",
+                "Para trocar de módulo, use o ícone de grade no canto superior esquerdo; o menu lateral muda para as telas do módulo escolhido.",
+                "O grupo `Cadastros` (Participantes, Produtos, Projetos) aparece em todos os módulos.",
+                "`Ctrl + K` abre a busca de funcionalidades e `Ctrl + Alt + A` abre a Alumina.",
+                "Padrão das telas de cadastro: lista com busca, botão `Novo`, formulário lateral e `Salvar`."
+              ]
+            },
+            {
+              "tipo": "tabela",
+              "colunas": ["Etapa do fluxo ponta a ponta", "O que acontece"],
+              "linhas": [
+                ["CRM", "O lead é qualificado e vira oportunidade no pipeline."],
+                ["Vendas", "O pedido de venda é lançado e gera as parcelas a receber."],
+                ["Produção", "O pedido vira ordem de produção, planejada e apontada até a entrada do produto acabado."],
+                ["Compras e Recebimento", "O material que falta é comprado, recebido, conferido e entra no estoque, gerando o contas a pagar."],
+                ["Faturamento", "A NF-e é emitida a partir do pedido."],
+                ["Expedição", "O pedido faturado é liberado, carregado e entregue."],
+                ["Serviços", "A instalação é agendada e concluída na obra."],
+                ["Financeiro", "Recebimentos e pagamentos aparecem no extrato, no DRE e no painel financeiro do projeto."]
+              ]
+            },
+            {
+              "tipo": "aviso",
+              "nivel": "atencao",
+              "texto": "A busca de funcionalidades (Ctrl + K) ainda não encontra o módulo Tarefas na versão 1.22.12. Enquanto não for corrigido, abra o módulo pelo menu de módulos."
+            }
+          ],
+          "fontes": [
+            "metodologia-apostila-do-consultor#002",
+            "metodologia-apostila-do-consultor#010",
+            "metodologia-apostila-do-consultor#011",
+            "metodologia-apostila-do-consultor#018",
+            "manual-00-inicio-e-navegacao#001",
+            "manual-00-inicio-e-navegacao#002",
+            "manual-00-inicio-e-navegacao#003",
+            "manual-00-inicio-e-navegacao#004",
+            "manual-00-inicio-e-navegacao#007",
+            "regra-geral-os-dados-pertencem-a-empresa-e-uma-empresa-nova-comeca-vazia#000",
+            "faq-limitacoes-conhecidas-v1-22-12#015"
+          ]
+        },
+        {
+          "id": "estrutura-funcional",
+          "titulo": "Estrutura funcional do ERP",
+          "status": "disponivel",
+          "resumo": "Os módulos da plataforma e o que cada um faz.",
+          "blocos": [
+            {
+              "tipo": "tabela",
+              "colunas": ["Módulo", "O que faz"],
+              "linhas": [
+                ["Primeiros passos", "Entrada no sistema, escolha da empresa, troca de módulo, menu lateral, busca de funcionalidades e saída, para quem usa o Faktory Flow pela primeira vez."],
+                ["Cadastros e Fundação", "Empresa, certificado, usuários e perfis, participantes, produtos, NCM, unidades, condições de pagamento e demais cadastros-base usados por todos os módulos."],
+                ["CRM", "Relacionamento com o cliente, do primeiro contato ao pós-venda: leads, funil, oportunidades, atividades e conversão em pedido de venda."],
+                ["Integração CEM", "Importa orçamentos do sistema técnico (CEM Desktop, CEM Mobi ou arquivo) para pedidos de venda, sem redigitação."],
+                ["Vendas", "Recebe o negócio fechado, registra o pedido de venda, gera as parcelas a receber, entrega o pedido ao Faturamento e à Expedição e controla metas e comissões."],
+                ["Compras", "Aquisição de materiais: solicitação, cotação, comparação de fornecedores, pedido de compra, aprovação e follow-up de entrega."],
+                ["Recebimento", "Portão de entrada da fábrica: registra a nota do fornecedor, confere o material, dá entrada no estoque e gera o contas a pagar."],
+                ["Estoque", "Onde está cada material e quanto vale, com controle por características (cor e medidas): saldo, movimentos, transferências, inventário e reposição."],
+                ["Produção", "Transforma o pedido ou a obra em ordens de produção, planeja no PCP, acompanha a fábrica no painel e registra os apontamentos."],
+                ["Serviços e Instalação", "Trabalho de campo das esquadrias: medição, aprovação, instalação, vistoria e assistência técnica."],
+                ["Projetos e Obras", "Cada obra como centro de controle e resultado: cliente, orçamento, etapas, andamento e resultado financeiro."],
+                ["Expedição", "Leva o pedido faturado até o cliente: liberação, montagem e fechamento da carga, separação, conferência, carregamento, rota e confirmação da entrega."],
+                ["Faturamento", "Emite os documentos fiscais (NF-e de venda, remessa, devolução e NFS-e) a partir dos pedidos e os transmite aos órgãos fiscais."],
+                ["Fiscal", "Guarda as tabelas tributárias (NCM, CFOP, CST, alíquotas por estado) e os certificados, centraliza os cálculos tributários e mostra o que falta configurar."],
+                ["Financeiro", "Contas a receber e a pagar, baixas, extrato bancário, PIX, transferências, fluxo de caixa, DRE e painel financeiro de projetos."],
+                ["Tarefas", "Quadros estilo kanban para distribuir e acompanhar atividades da equipe, com responsáveis, prazos, checklists e modelos."],
+                ["Relatórios e Análises", "Relatórios personalizados e tabelas dinâmicas para transformar os dados em informação, com filtros, agrupamentos, gráficos e exportação."],
+                ["Alumina (IA)", "Assistente de inteligência artificial para consultar informações, analisar dados e executar ações por linguagem natural, sempre com confirmação."]
+              ]
+            },
+            {
+              "tipo": "aviso",
+              "nivel": "info",
+              "texto": "As Tabelas Dinâmicas e a Alumina estão disponíveis somente na versão PRO e dependem da permissão adequada no perfil de acesso do usuário. Módulos fora do plano contratado aparecem com cadeado."
+            },
+            {
+              "tipo": "aviso",
+              "nivel": "atencao",
+              "texto": "Na apostila do consultor, as seções de Serviços e Instalação, Projetos e Obras, Relatórios e Análises e Alumina (IA) estão marcadas para revisão. Confirme os detalhes desses módulos nos manuais oficiais antes de usá-los em treinamento."
+            }
+          ],
+          "fontes": [
+            "roteiro-geral-07-primeiros-passos-e-navegacao#000",
+            "manual-01-cadastros-base#001",
+            "oficial-cad-c-implantacao#010",
+            "metodologia-apostila-do-consultor#014",
+            "metodologia-apostila-do-consultor#011",
+            "oficial-int-c-implantacao#005",
+            "manual-03-vendas#001",
+            "manual-04-compras#001",
+            "metodologia-apostila-do-consultor#016",
+            "manual-05-recebimento#001",
+            "manual-06-estoque#001",
+            "metodologia-apostila-do-consultor#018",
+            "manual-07-producao#001",
+            "manual-11-servicos#001",
+            "metodologia-apostila-do-consultor#021",
+            "manual-12-projetos-e-tarefas#001",
+            "manual-09-expedicao#001",
+            "manual-08-faturamento-e-fiscal#001",
+            "metodologia-apostila-do-consultor#022",
+            "manual-10-financeiro#001",
+            "metodologia-apostila-do-consultor#024",
+            "metodologia-apostila-do-consultor#023",
+            "roteiro-geral-02-relatorios-personalizados#001",
+            "roteiro-geral-03-tabelas-dinamicas#001",
+            "metodologia-apostila-do-consultor#025",
+            "roteiro-geral-12-alumina#000",
+            "oficial-cad-c-implantacao#000",
+            "metodologia-apostila-do-consultor#034"
+          ]
+        },
+        {
+          "id": "dependencias-modulos",
+          "titulo": "Dependências e integrações entre módulos",
+          "status": "disponivel",
+          "resumo": "A ordem recomendada de implantação e o que cada módulo precisa dos outros.",
+          "blocos": [
+            {
+              "tipo": "paragrafo",
+              "texto": "Os primeiros módulos a implantar são Vendas, Faturamento, Fiscal e Financeiro, porque formam a cadeia que leva do pedido à nota e aos títulos. A sequência lógica recomendada para o cronograma é Integração CEM, Vendas, Faturamento e Fiscal, Financeiro. Os demais módulos seguem o escopo contratado e a necessidade do cliente."
+            },
+            {
+              "tipo": "tabela",
+              "colunas": ["Módulo", "Quando implantar", "Integra com"],
+              "linhas": [
+                ["CRM", "Antes de Vendas.", "Vendas (oportunidades viram pedidos)."],
+                ["Vendas", "Após os cadastros básicos e, de preferência, com a integração CEM configurada.", "Faturamento, Fiscal, Financeiro, Produção, Serviços e Expedição."],
+                ["Fiscal", "No início da implantação dos processos fiscais, antes de Vendas, Compras e Faturamento, com as informações fiscais alinhadas com o cliente e o contador.", "Vendas, Faturamento, Compras e Recebimento."],
+                ["Faturamento", "Após Vendas e a configuração das regras fiscais (CFOP, NCM, impostos, certificado digital).", "Financeiro, Estoque e Expedição."],
+                ["Financeiro", "Após Vendas, Faturamento e as configurações financeiras (plano de contas, contas bancárias, meios e condições de pagamento).", "Vendas, Faturamento, Compras e Recebimento."],
+                ["Estoque", "Após os cadastros de produtos e antes de Compras, Produção e Recebimento.", "Compras, Recebimento, Produção, Vendas e Faturamento."],
+                ["Produção", "Após Vendas e Estoque.", "Vendas, Estoque, Compras e Expedição."],
+                ["Compras", "Após Estoque e Produção.", "Produção, Recebimento, Financeiro e Estoque."],
+                ["Recebimento", "Após Compras.", "Compras, Estoque, Financeiro e Fiscal."],
+                ["Expedição", "Após Vendas, Faturamento, Produção e Estoque.", "Vendas, Estoque, Produção e Faturamento."],
+                ["Serviços e Instalação", "Após Vendas, Produção e Expedição.", "Vendas, Produção, Expedição, Faturamento e Projetos."],
+                ["Projetos e Obras", "Após Vendas, Compras, Produção, Estoque e Financeiro.", "Vendas, Compras, Produção, Estoque, Financeiro, Serviços e CRM."],
+                ["Tarefas", "Após os processos que usarão o gerenciamento de atividades (Projetos e Obras, CRM etc.).", "Os processos que distribuem atividades."],
+                ["Relatórios e Análises", "Após os principais módulos operacionais, com dados cadastrados e movimentações realizadas.", "Dados de todos os módulos."],
+                ["Alumina (IA)", "Após os principais módulos operacionais, com dados suficientes para consultas.", "Informações dos módulos que o usuário tem permissão para acessar."]
+              ]
+            },
+            {
+              "tipo": "passos",
+              "itens": [
+                { "titulo": "Decisões da cadeia comercial em ata", "texto": "Registre em ata as decisões que atravessam Vendas, Faturamento, Fiscal e Financeiro (ver Padrões operacionais)." },
+                { "titulo": "Financeiro de apoio", "texto": "Contas, boleto em homologação e plano de contas. Vem antes da integração porque o pedido importado já precisa de condição de pagamento e plano de contas, quando há Financeiro e o CFOP gera financeiro." },
+                { "titulo": "Integração ligada", "texto": "Integração configurada e um orçamento importado." },
+                { "titulo": "Pedido de venda", "texto": "Alçada, comissão, metas e contratos, conforme o contratado." },
+                { "titulo": "Faturamento", "texto": "CFOPs, textos fiscais e NFS-e." },
+                { "titulo": "Teste ponta a ponta", "texto": "Um único caso real passando pelos quatro módulos." },
+                { "titulo": "Carga inicial financeira", "texto": "Títulos em aberto e saldos iniciais, reconciliados com o sistema antigo." },
+                { "titulo": "Virada para produção", "texto": "Ambiente fiscal e bancário, na data combinada com o cliente." }
+              ]
+            },
+            {
+              "tipo": "passos",
+              "itens": [
+                { "titulo": "Decisões de suprimentos em ata", "texto": "Registre em ata as decisões de Compras, Recebimento e Estoque, com o contador para os CFOPs de entrada e o custo da entrada." },
+                { "titulo": "Locais de estoque", "texto": "Almoxarifado central em cada empresa, locais de obra e localizações." },
+                { "titulo": "Categorias e unidades", "texto": "Tipos de categoria, unidade de estoque e fator conferidos, porque travam depois do saldo." },
+                { "titulo": "Saldo inicial", "texto": "Importado na data de corte e conferido. Vem antes de compras e notas, porque qualquer entrada anterior à data de corte nas mesmas variações bagunça o saldo e o custo médio." },
+                { "titulo": "Compras", "texto": "Parâmetros, naturezas e CFOPs, condições e alçada (ligada por último)." },
+                { "titulo": "Recebimento", "texto": "Busca de notas na SEFAZ ou XML e parâmetros de conferência." },
+                { "titulo": "Carga de pedidos de compra em aberto", "texto": "Pedidos do sistema antigo conferidos." },
+                { "titulo": "Teste ponta a ponta", "texto": "Os sete passos de suprimentos com evidência." }
+              ]
+            },
+            {
+              "tipo": "aviso",
+              "nivel": "atencao",
+              "texto": "Sem um almoxarifado central ativo (`Estoque > Locais`), o sistema bloqueia a conclusão da ordem de produção, a entrada do produto acabado e a finalização da nota fiscal. Inclua esse item nos pré-requisitos de Produção e de Faturamento."
+            },
+            {
+              "tipo": "aviso",
+              "nivel": "info",
+              "texto": "Divergência entre fontes: a ordem geral coloca Fiscal depois de Vendas e Faturamento, mas o módulo Fiscal pede para ser configurado antes de Vendas, Compras e Faturamento. Leitura adotada pela própria apostila: a configuração fiscal vem antes; o treinamento fiscal acompanha o Faturamento."
+            }
+          ],
+          "fontes": [
+            "metodologia-apostila-do-consultor#008",
+            "metodologia-apostila-do-consultor#011",
+            "metodologia-apostila-do-consultor#012",
+            "metodologia-apostila-do-consultor#013",
+            "metodologia-apostila-do-consultor#014",
+            "metodologia-apostila-do-consultor#015",
+            "metodologia-apostila-do-consultor#016",
+            "metodologia-apostila-do-consultor#017",
+            "metodologia-apostila-do-consultor#018",
+            "metodologia-apostila-do-consultor#019",
+            "metodologia-apostila-do-consultor#020",
+            "metodologia-apostila-do-consultor#021",
+            "metodologia-apostila-do-consultor#022",
+            "metodologia-apostila-do-consultor#023",
+            "metodologia-apostila-do-consultor#024",
+            "metodologia-apostila-do-consultor#025",
+            "metodologia-apostila-do-consultor#034",
+            "oficial-cadeia-comercial-visao#002",
+            "oficial-suprimentos-visao#002",
+            "regra-estoque-almoxarifado-central-ativo-e-pre-requisito#000",
+            "roteiro-geral-12-alumina#000"
+          ]
+        },
+        {
+          "id": "padroes-operacionais",
+          "titulo": "Padrões operacionais de implantação",
+          "status": "disponivel",
+          "resumo": "A ordem de condução, a forma de apresentar cada módulo e as decisões que precisam ser tomadas juntas no início.",
+          "blocos": [
+            {
+              "tipo": "paragrafo",
+              "texto": "A condução segue uma ordem lógica, e cada etapa prepara a próxima. Antes de ensinar o sistema, o consultor precisa compreender o projeto que conduz."
+            },
+            {
+              "tipo": "passos",
+              "itens": [
+                { "titulo": "Conhecer o cliente", "texto": "Atividade principal, processo comercial, como emite nota e controla o financeiro hoje." },
+                { "titulo": "Confirmar o escopo", "texto": "Módulos contratados e integrações (CEM Desktop ou CEM Mobi)." },
+                { "titulo": "Identificar usuários", "texto": "Quem vai usar o sistema, com qual função, e os papéis no projeto." },
+                { "titulo": "Verificar pré-requisitos", "texto": "Acessos, permissões, internet estável, acesso remoto e, se usar CEM Desktop, o Agent Faktory." },
+                { "titulo": "Definir datas", "texto": "Cronograma aprovado pelo cliente." },
+                { "titulo": "Treinar", "texto": "Processos conectados entre módulos, com exemplos da rotina do cliente." },
+                { "titulo": "Registrar na OS", "texto": "Cada atendimento formalizado no mesmo dia." }
+              ]
+            },
+            {
+              "tipo": "lista",
+              "itens": [
+                "Objetivo do módulo.",
+                "Papel na operação.",
+                "Quando implantar.",
+                "Fluxo operacional.",
+                "Condução do treinamento.",
+                "Boas práticas.",
+                "Checklist de validação: pontos a confirmar antes de considerar o módulo implantado."
+              ]
+            },
+            {
+              "tipo": "paragrafo",
+              "texto": "Algumas decisões precisam ser tomadas juntas, na reunião de início de cada cadeia, porque uma escolha errada em um módulo só aparece em outro. Elas são registradas em ata antes da configuração."
+            },
+            {
+              "tipo": "tabela",
+              "colunas": ["Cadeia", "Decisão", "Módulos afetados"],
+              "linhas": [
+                ["Comercial", "Quais CFOPs geram financeiro e movimentam estoque. Não existe cadastro de natureza de operação: a natureza é a descrição do CFOP.", "Vendas, Faturamento, Financeiro, Estoque"],
+                ["Comercial", "Quem gera o contas a receber: o pedido ou a nota. Se o pedido gerou os títulos, a nota não gera de novo.", "Vendas, Faturamento, Financeiro"],
+                ["Comercial", "Qual sistema de origem (CEM Desktop, Mobi ou arquivo); decide qual botão de importação aparece em Pedidos de Venda.", "Integração, Vendas"],
+                ["Comercial", "Faturamento em Nível: dividir a obra em partes (material, esquadria, instalação).", "Integração, Vendas, Faturamento"],
+                ["Comercial", "Série e próximo número da NF-e, continuando o sistema antigo, antes da primeira transmissão.", "Faturamento"],
+                ["Comercial", "Regime e base da comissão (PRO) antes da primeira nota real.", "Vendas, Financeiro"],
+                ["Comercial", "Carga do financeiro: só títulos em aberto ou histórico, combinada com o saldo inicial das contas.", "Financeiro"],
+                ["Comercial", "Perfis de quem cancela notas, emite carta de correção e inutiliza numeração.", "Faturamento, Vendas"],
+                ["Suprimentos", "CFOPs de entrada por natureza de operação, com gera financeiro e movimenta estoque corretos.", "Compras, Recebimento, Estoque, Financeiro"],
+                ["Suprimentos", "Títulos a pagar pelo pedido ou pela nota, nunca pelos dois.", "Compras, Recebimento, Financeiro"],
+                ["Suprimentos", "Alçada de compra: ligar só depois das faixas cadastradas e da carga inicial, com dois aprovadores por faixa.", "Compras"],
+                ["Suprimentos", "Almoxarifado central em cada empresa e data de corte do saldo inicial.", "Estoque, Recebimento, Faturamento"]
+              ]
+            },
+            {
+              "tipo": "aviso",
+              "nivel": "info",
+              "texto": "O método aparece em 7 etapas na Apostila do Consultor e em 12 etapas na Apostila de Procedimentos. São o mesmo método; para etapas, papéis e registros vale a Apostila de Procedimentos, e para módulos, processos e diagnóstico vale a Apostila do Consultor."
+            }
+          ],
+          "fontes": [
+            "metodologia-apostila-do-consultor#001",
+            "metodologia-apostila-do-consultor#005",
+            "metodologia-apostila-do-consultor#006",
+            "metodologia-apostila-do-consultor#007",
+            "metodologia-apostila-do-consultor#010",
+            "oficial-cadeia-comercial-visao#001",
+            "oficial-suprimentos-visao#001"
+          ]
+        },
+        {
+          "id": "configuracao-validacao",
+          "titulo": "Procedimentos gerais de configuração e validação",
+          "status": "disponivel",
+          "resumo": "O que pedir ao cliente, a ordem de configuração da base e como validar cada módulo antes de considerá-lo implantado.",
+          "blocos": [
+            {
+              "tipo": "tabela",
+              "colunas": ["Pedir ao cliente com antecedência", "Usado em"],
+              "linhas": [
+                ["Certificado digital A1 (arquivo .pfx) e senha de cada CNPJ emitente.", "Certificado, série e ambiente"],
+                ["Cartão CNPJ, CNAE principal, IE, IM e regime de apuração de cada empresa, confirmados com o contador.", "Empresa"],
+                ["Última NF-e emitida por empresa: série e número.", "Continuar a numeração"],
+                ["Lista de usuários: nome, e-mail exclusivo e função.", "Perfis e usuários"],
+                ["Base de clientes e fornecedores.", "Carga inicial"],
+                ["Base de produtos com NCM, unidade e tipo.", "Cadastros de produto e carga inicial"],
+                ["Bancos e contas usados, carteira de boleto e plano de contas do contador.", "Cadastros financeiros"],
+                ["Se usa CEM: máquina Windows onde fica o banco, com acesso de administrador.", "Padrões de Integração e agente"]
+              ]
+            },
+            {
+              "tipo": "passos",
+              "itens": [
+                { "titulo": "Empresa", "texto": "Em `Configurações > Empresas`, confira todos os dados, preencha CNPJ, razão social, CNAE, regime de apuração, endereço, IE e IM, e cadastre as filiais. O CNPJ não muda depois de salvo." },
+                { "titulo": "Certificado, série e ambiente", "texto": "Envie o certificado A1 de cada empresa, configure a série e o próximo número da NF-e e mantenha o ambiente em homologação até a validação." },
+                { "titulo": "Perfis e usuários", "texto": "Parta dos perfis prontos, convide cada usuário já com o perfil e confira que todo usuário ativo tem pelo menos um perfil. Usuário sem perfil entra e não vê nada; convite pendente ocupa vaga na licença." },
+                { "titulo": "Cadastros de produto", "texto": "Categorias (com tipo e preço calculado por corretos), unidades de medida, NCM, grupos de produto e cores. Acerte o tipo da categoria antes de lançar saldo, porque depois ele trava." },
+                { "titulo": "Cadastros financeiros de apoio", "texto": "Bancos, contas bancárias, portadores, planos de conta, condições de pagamento (parcelas somam 100%) e meios de pagamento." },
+                { "titulo": "Padrões de Integração e agente", "texto": "Só para quem usa CEM: padrões de NCM, unidade, categoria, CFOP e plano de contas por tipo de produto, padrões do pedido de venda, instalação do agente e ativação da integração. Não use o NCM 99999999 como padrão." },
+                { "titulo": "Carga inicial", "texto": "Por planilha (base pequena ou média) ou pelo migrador da equipe de implantação (ERP anterior com histórico). Ordem: produtos, participantes, contatos, com a base limpa antes." },
+                { "titulo": "Parâmetros gerais", "texto": "Calendário da empresa (feriados e expediente) e aprovações, se o cliente quiser alçada. Os parâmetros de cada módulo ficam no manual do módulo." }
+              ]
+            },
+            {
+              "tipo": "tabela",
+              "colunas": ["Módulo", "Checklist de validação (confirmar antes de considerar implantado)"],
+              "linhas": [
+                ["CRM", "Cadastrar contato ou oportunidade; movimentar no funil; registrar atividades; converter em pedido de venda; consultar histórico e visão do cliente."],
+                ["Vendas", "Importar orçamento do CEM (quando aplicável); cadastrar e aprovar pedido; faturar; compreender a integração com Faturamento, Financeiro, Serviços, Produção e Expedição."],
+                ["Faturamento", "Gerar NF-e ou NFS-e a partir de um pedido; transmitir e acompanhar a autorização; emitir DANFE e XML; carta de correção e cancelamento (quando aplicável)."],
+                ["Fiscal", "Cadastrar e consultar informações fiscais; identificar o cálculo de impostos na venda; emitir notas com as configurações; comprar com impostos de entrada; conferir divergências fiscais no recebimento."],
+                ["Financeiro", "Consultar contas a receber e a pagar; receber e pagar; consultar fluxo de caixa e demonstrativos."],
+                ["Estoque", "Consultar saldos; fazer movimentações e transferências; entender reservas; executar inventários e ajustes."],
+                ["Produção", "Gerar ordem de produção a partir do pedido; planejar e acompanhar; apontar as etapas; consultar o andamento."],
+                ["Compras", "Gerar solicitação; cotar com fornecedores; emitir pedido de compra; acompanhar a entrega."],
+                ["Recebimento", "Importar a nota do fornecedor; conferir itens; registrar divergências ou avarias; finalizar o recebimento."],
+                ["Expedição", "Montar carga com pedidos faturados; conferir e carregar; acompanhar o status; registrar a confirmação de recebimento."],
+                ["Serviços e Instalação", "Medir em obra; comparar medidas com o pedido; organizar a agenda das equipes; registrar checklist, fotos e aceite; vistoria e assistência técnica."],
+                ["Projetos e Obras", "Criar e configurar a obra; organizar fases e etapas; planejar materiais; consultar receitas, custos e margem; usar o diário de obra; comparar previsto e realizado."],
+                ["Tarefas", "Criar quadros e cartões com responsáveis, prazos e prioridades; usar checklists e comentários; acompanhar pendentes e atrasadas; usar modelos."],
+                ["Relatórios e Análises", "Criar relatório; aplicar filtros, agrupamentos e totais; usar tabelas dinâmicas; exportar em Excel, PDF ou CSV; compartilhar."],
+                ["Alumina (IA)", "Perguntar por texto ou voz; consultar informações dos módulos; interpretar respostas e gráficos; compreender a confirmação de ações; entender permissões e segurança."]
+              ]
+            },
+            {
+              "tipo": "passos",
+              "itens": [
+                { "titulo": "O que perguntar", "texto": "Qual nota está tentando emitir, qual mensagem de erro aparece, se acontece com todos os pedidos ou só um, se já emitiu antes e se acontece em homologação ou produção." },
+                { "titulo": "Onde olhar", "texto": "Produto (NCM e tributação), cliente (CNPJ, inscrição estadual, endereço) e fiscal (CFOP, CST/CSOSN, série da nota, certificado digital)." },
+                { "titulo": "Como validar", "texto": "Conferir o cadastro do produto e os dados fiscais, criar uma nova operação, tentar emitir de novo e comparar com outro produto ou cliente." }
+              ]
+            }
+          ],
+          "fontes": [
+            "oficial-cad-c-implantacao#002",
+            "oficial-cad-c-implantacao#010",
+            "oficial-cad-c-implantacao#011",
+            "oficial-cad-c-implantacao#012",
+            "oficial-cad-c-implantacao#013",
+            "oficial-cad-c-implantacao#014",
+            "oficial-cad-c-implantacao#015",
+            "oficial-cad-c-implantacao#016",
+            "oficial-cad-c-implantacao#017",
+            "oficial-cad-c-implantacao#018",
+            "metodologia-apostila-do-consultor#011",
+            "metodologia-apostila-do-consultor#012",
+            "metodologia-apostila-do-consultor#013",
+            "metodologia-apostila-do-consultor#014",
+            "metodologia-apostila-do-consultor#015",
+            "metodologia-apostila-do-consultor#016",
+            "metodologia-apostila-do-consultor#017",
+            "metodologia-apostila-do-consultor#018",
+            "metodologia-apostila-do-consultor#019",
+            "metodologia-apostila-do-consultor#020",
+            "metodologia-apostila-do-consultor#021",
+            "metodologia-apostila-do-consultor#022",
+            "metodologia-apostila-do-consultor#023",
+            "metodologia-apostila-do-consultor#024",
+            "metodologia-apostila-do-consultor#025",
+            "metodologia-apostila-do-consultor#032"
+          ]
+        },
+        {
+          "id": "boas-praticas-transversais",
+          "titulo": "Boas práticas e regras transversais aos módulos",
+          "status": "disponivel",
+          "resumo": "Regras que valem em qualquer módulo e armadilhas que aparecem entre módulos.",
+          "blocos": [
+            {
+              "tipo": "lista",
+              "itens": [
+                "Comece cada implantação pelos pré-requisitos e cadastros-base: uma empresa nova começa vazia e nada deve ser presumido como existente.",
+                "Configure contas bancárias, plano de contas e meios de pagamento antes de operar o Financeiro e incentive a geração automática de títulos.",
+                "Valide as configurações fiscais e o certificado digital (e sua validade) antes dos testes de faturamento.",
+                "Valide os dados importados do CEM antes de aprovar o pedido e explique os status do pedido.",
+                "Evite criar pedidos antes da aprovação comercial e garanta produtos, valores e condições corretamente cadastrados.",
+                "Vincule corretamente vendas e obras, registre custos reais e use o diário de obra.",
+                "Prefira inativar a excluir: o registro inativo some das listas de seleção, mas o histórico continua; excluir só funciona para registros sem movimentação."
+              ]
+            },
+            {
+              "tipo": "aviso",
+              "nivel": "atencao",
+              "texto": "Títulos a receber ou a pagar devem nascer de um só lugar: do pedido ou da nota, nunca dos dois. Um título lançado à mão junto com o título gerado pelo pedido para o mesmo recebível duplica a receita na DRE, no Painel Financeiro de Projetos e no card Recebido no mês."
+            },
+            {
+              "tipo": "aviso",
+              "nivel": "atencao",
+              "texto": "O saldo de estoque nunca é digitado: nasce de movimentos (entradas, ajustes, transferências, requisições, devoluções, empréstimos, descartes, recebimentos e produto acabado). A carga inicial entra na data de corte e nada pode ser lançado antes nas mesmas variações."
+            },
+            {
+              "tipo": "paragrafo",
+              "texto": "Erros fiscais costumam vir de cadastro ou parametrização. O consultor não define regras tributárias: a configuração é validada pelo responsável fiscal do cliente."
+            },
+            {
+              "tipo": "tabela",
+              "colunas": ["Limitação conhecida (v1.22.12)", "Como tratar na implantação"],
+              "linhas": [
+                ["O apontamento de produção não finaliza (o servidor recusa o horário de fim).", "Dizer que hoje o sistema ainda recusa a finalização, orientar anotar o horário e avisar o suporte."],
+                ["Fluxo de Caixa mostra saldo inicial negativo e saldo final zero.", "Não usar esses dois números como resultado."],
+                ["Saída de estoque passa sobre material reservado.", "Não descrever bloqueio de reserva como funcionamento atual."],
+                ["Finalizar a nota não criou movimento de saída de estoque nos testes.", "Não afirmar que a nota baixa o estoque."],
+                ["Uma finalização de nota que falha pode consumir o número da nota.", "Conferir a numeração após falhas."],
+                ["Aviso NCM-Estado não configurado pode bloquear a emissão da nota.", "Corrigir a configuração da NCM por estado antes de faturar."],
+                ["Depois de gerar o pedido, o painel da oportunidade pode não abrir e o botão continua disponível.", "Cuidado para não duplicar o pedido."]
+              ]
+            },
+            {
+              "tipo": "aviso",
+              "nivel": "info",
+              "texto": "Teste em homologação antes de avisar o cliente de uma limitação: muitas correções já entraram no sistema enquanto a documentação ainda descreve o defeito."
+            }
+          ],
+          "fontes": [
+            "regra-geral-os-dados-pertencem-a-empresa-e-uma-empresa-nova-comeca-vazia#003",
+            "metodologia-apostila-do-consultor#011",
+            "metodologia-apostila-do-consultor#012",
+            "metodologia-apostila-do-consultor#013",
+            "metodologia-apostila-do-consultor#028",
+            "metodologia-apostila-do-consultor#030",
+            "manual-01-cadastros-base#008",
+            "oficial-cadeia-comercial-visao#001",
+            "oficial-suprimentos-visao#001",
+            "regra-financeiro-titulo-manual-e-gerado-duplicam-a-receita#000",
+            "regra-estoque-saldo-nasce-de-movimentos#000",
+            "faq-limitacoes-conhecidas-v1-22-12#001",
+            "faq-limitacoes-conhecidas-v1-22-12#002",
+            "faq-limitacoes-conhecidas-v1-22-12#004",
+            "faq-limitacoes-conhecidas-v1-22-12#005",
+            "faq-limitacoes-conhecidas-v1-22-12#006",
+            "faq-limitacoes-conhecidas-v1-22-12#007",
+            "faq-limitacoes-conhecidas-v1-22-12#011",
+            "oficial-cadeia-comercial-visao#004"
+          ]
+        }
+      ]
+    }
+  ],
+  "glossario": [
+    { "termo": "360 (Plataforma 360)", "definicao": "Plataforma em que os projetos de implantação são registrados e acompanhados.", "fonte": "metodologia-apostila-procedimentos-implantacao#030" },
+    { "termo": "Agent Faktory", "definicao": "Componente configurado para clientes que usam o CEM Desktop.", "fonte": "metodologia-apostila-procedimentos-implantacao#030" },
+    { "termo": "Card", "definicao": "Registro do cliente no 360, com responsável, status e checklist.", "fonte": "metodologia-apostila-procedimentos-implantacao#030" },
+    { "termo": "CEM Desktop / CEM Mobi", "definicao": "Sistemas técnicos integrados ao Faktory Flow por pareamento.", "fonte": "metodologia-apostila-procedimentos-implantacao#030" },
+    { "termo": "CFOP", "definicao": "Código Fiscal de Operações e Prestações.", "fonte": "metodologia-apostila-procedimentos-implantacao#030" },
+    { "termo": "CST", "definicao": "Código de Situação Tributária.", "fonte": "metodologia-apostila-procedimentos-implantacao#030" },
+    { "termo": "DANFE", "definicao": "Documento Auxiliar da Nota Fiscal Eletrônica.", "fonte": "metodologia-apostila-procedimentos-implantacao#030" },
+    { "termo": "Gerente do projeto", "definicao": "Responsável, no cliente, por acompanhar o cronograma e centralizar as decisões.", "fonte": "metodologia-apostila-procedimentos-implantacao#030" },
+    { "termo": "Go-live", "definicao": "Entrada do sistema em produção, com acompanhamento assistido.", "fonte": "metodologia-apostila-procedimentos-implantacao#030" },
+    { "termo": "Key user", "definicao": "Usuário-chave do cliente, referência nos processos e nas validações.", "fonte": "metodologia-apostila-procedimentos-implantacao#030" },
+    { "termo": "Método Faktory", "definicao": "Sequência padronizada de etapas da implantação em que cada etapa tem objetivo próprio e depende da conclusão da anterior.", "fonte": "metodologia-apostila-procedimentos-implantacao#010" },
+    { "termo": "NCM", "definicao": "Nomenclatura Comum do Mercosul.", "fonte": "metodologia-apostila-procedimentos-implantacao#030" },
+    { "termo": "NF-e / NFS-e", "definicao": "Nota Fiscal Eletrônica / Nota Fiscal de Serviços Eletrônica.", "fonte": "metodologia-apostila-procedimentos-implantacao#030" },
+    { "termo": "OS", "definicao": "Ordem de Serviço, registro formal de cada atendimento. Não confundir com a OS de instalação do módulo Produção.", "fonte": "metodologia-apostila-procedimentos-implantacao#030" },
+    { "termo": "Produção assistida", "definicao": "Forma de conduzir o go-live: o consultor acompanha as movimentações em produção e registra cada demanda em OS.", "fonte": "metodologia-apostila-procedimentos-implantacao#026" },
+    { "termo": "RA", "definicao": "Reunião de alinhamento, início oficial do projeto.", "fonte": "metodologia-apostila-procedimentos-implantacao#030" },
+    { "termo": "Sponsor", "definicao": "Patrocinador do projeto no cliente, responsável pelas decisões estratégicas.", "fonte": "metodologia-apostila-procedimentos-implantacao#030" }
+  ],
+  "pendencias": [
+    "Organização da equipe: a base só descreve coordenação e consultor; não há organograma, cargos adicionais, quantidade de consultores, regra de distribuição de clientes nem a interface formal com o Suporte.",
+    "Processos internos: a apostila marca como pendente em qual sistema a OS de atendimento é gerada e como é enviada ao cliente (etapa 5.8). Não há prazos de resposta (SLA) nem regra de reagendamento detalhada, embora os reagendamentos sejam citados na RA.",
+    "Links L10 (OS) e L11 (materiais) são citados no texto, mas não aparecem na tabela de links da apostila.",
+    "Planejamento: a base não define duração típica de projeto, carga de horas por módulo, intervalo mínimo entre treinamentos nem critérios de atraso.",
+    "Comunicação: o conteúdo dos modelos de e-mail (L05) e dos documentos de encerramento (L09) não está na base.",
+    "Go-live: a duração do período de produção assistida e o critério para encerrá-lo não estão definidos.",
+    "Encerramento e qualidade: não há indicadores de qualidade (ex.: satisfação, prazo cumprido) nem modelo de coleta de feedback; a única métrica citada é a autonomia, segurança e confiança do cliente.",
+    "Apostila do Consultor: seções de Serviços e Instalação, Projetos e Obras, Relatórios e Análises e Alumina (IA) marcadas para revisão; estudo de caso (Parte VI) ainda sem conteúdo.",
+    "Primeiros passos, Integração CEM, Tarefas e Relatórios e Análises não têm regra oficial de implantação própria (documentos A, C e D) como os módulos da cadeia comercial e de suprimentos; Produção, Expedição, Serviços, Projetos e CRM também não têm manual oficial de implantação (documento C).",
+    "Ambas as apostilas de metodologia estão em validação (confiança B) e ainda precisam de revisão humana antes da publicação."
+  ]
+}

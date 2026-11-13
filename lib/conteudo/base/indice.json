@@ -1,5 +1,5 @@
 {
- "versao": "2026-11-06",
+ "versao": "2026-11-12",
  "gerado_de": {
   "mapa": "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
   "harness": "harness:conhecimento/"
@@ -110,7 +110,41 @@
      "titulo": "Guia visual ilustrado (11 passos, 7 telas)",
      "status": "disponivel"
     }
-   ]
+   ],
+   "recursos": {
+    "video": {
+     "status": "em-preparacao",
+     "titulo": "Vídeo completo do módulo",
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/14-metodologia.md"
+     ]
+    },
+    "checklist": {
+     "status": "em-preparacao",
+     "titulo": "Checklist de implantação",
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/14-metodologia.md"
+     ]
+    },
+    "manual": {
+     "status": "disponivel",
+     "id": "primeiros-passos",
+     "titulo": "Primeiros passos — guia visual",
+     "resumo": "Você vai reconhecer as partes da tela do Faktory Flow, trocar de módulo, achar qualquer tela pela busca (Ctrl+K), abrir os grupos do menu, ler uma lista sem alterar nenhum registro e saber onde ficam avisos e administração. O que vale aqui vale para todos os módulos.",
+     "url": "#manuais/primeiros-passos",
+     "dados": "/manuais/primeiros-passos/guia.json",
+     "capitulos": 4,
+     "passos": 11,
+     "telas": 7,
+     "situacao": "rascunho",
+     "versaoSistema": "1.23.2",
+     "atualizadoEm": "2026-11-06",
+     "revisar": false,
+     "fontes": [
+      "guia:public/manuais/primeiros-passos/guia.json"
+     ]
+    }
+   }
   },
   {
    "id": "fundacao",
@@ -234,7 +268,58 @@
      "titulo": "Guia visual ilustrado (14 passos, 6 telas)",
      "status": "disponivel"
     }
-   ]
+   ],
+   "recursos": {
+    "video": {
+     "status": "em-preparacao",
+     "titulo": "Vídeo completo do módulo",
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/14-metodologia.md"
+     ]
+    },
+    "checklist": {
+     "status": "disponivel",
+     "id": "implantacao-fundacao",
+     "chave": "ff-consultor:implantacao-fundacao",
+     "titulo": "Implantação da Fundação: roteiro prático com o cliente",
+     "resumo": "Ao final, o cliente viu a própria empresa configurada em homologação, cada usuário entrando com o perfil certo e um pedido de teste salvo com o cliente, o produto, a condição de pagamento e o CFOP que ele mesmo cadastrou. O administrador do cliente sabe convidar um usuário, cadastrar um cliente e um produto e corrigir um cadastro recusado.",
+     "url": "/checklists/consultores/implantacao-01-fundacao.html",
+     "itens": 47,
+     "grupos": [
+      "1. Empresa e regime",
+      "2. Certificado digital, série e homologação",
+      "3. Perfis e usuários",
+      "4. Participantes: clientes, fornecedores e vendedores",
+      "5. Categorias, unidades, NCM, cores e produtos",
+      "6. Condições e meios de pagamento, contas e portadores",
+      "7. CFOPs de saída",
+      "8. Carga inicial de produtos e participantes",
+      "9. Prova em uso real: obra e pedido de teste"
+     ],
+     "atualizadoEm": "2026-10-29",
+     "fontes": [
+      "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao"
+     ]
+    },
+    "manual": {
+     "status": "disponivel",
+     "id": "fundacao",
+     "titulo": "Cadastros e Fundação — guia visual",
+     "resumo": "Você vai entender os cadastros que todos os módulos usam — participante, produto e projeto — e, no Guia do Consultor, a ordem para deixar a empresa pronta antes do primeiro pedido.",
+     "url": "#manuais/fundacao",
+     "dados": "/manuais/fundacao/guia.json",
+     "capitulos": 3,
+     "passos": 14,
+     "telas": 6,
+     "situacao": "rascunho",
+     "versaoSistema": "1.23.2",
+     "atualizadoEm": "2026-11-06",
+     "revisar": false,
+     "fontes": [
+      "guia:public/manuais/fundacao/guia.json"
+     ]
+    }
+   }
   },
   {
    "id": "crm",
@@ -377,7 +462,56 @@
      "titulo": "Guia visual ilustrado (15 passos, 13 telas)",
      "status": "disponivel"
     }
-   ]
+   ],
+   "recursos": {
+    "video": {
+     "status": "em-preparacao",
+     "titulo": "Vídeo completo do módulo",
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/14-metodologia.md"
+     ]
+    },
+    "checklist": {
+     "status": "disponivel",
+     "id": "implantacao-crm",
+     "chave": "ff-consultor:implantacao-crm",
+     "titulo": "Implantação de CRM: roteiro prático com o cliente",
+     "resumo": "Ao final, o cliente terá visto um lead virar oportunidade, a oportunidade ganha virar pedido de venda em Vendas > Pedidos de Venda e o resultado aparecer nos painéis do CRM. Ele saberá repetir o caminho e conhecerá as três travas do fluxo: BANT e etapa de 60% para converter, item para ganhar e CFOP para gerar o pedido.",
+     "url": "/checklists/consultores/implantacao-02-crm.html",
+     "itens": 34,
+     "grupos": [
+      "1. Cadastro do lead",
+      "2. Qualificação: BANT e Kanban de Leads",
+      "3. Conversão do lead",
+      "4. Oportunidade no Pipeline: itens, atividades e etapas",
+      "5. Ganhar (e perder) a oportunidade",
+      "6. Gerar o pedido de venda",
+      "7. Resultado nos painéis do CRM"
+     ],
+     "atualizadoEm": "2026-10-29",
+     "fontes": [
+      "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm"
+     ]
+    },
+    "manual": {
+     "status": "disponivel",
+     "id": "crm",
+     "titulo": "CRM — guia visual",
+     "resumo": "Você vai conhecer o caminho comercial no Flow: cadastrar um lead, qualificá-lo no Kanban, convertê-lo em oportunidade e trabalhar essa oportunidade no Pipeline até ela virar pedido de venda.",
+     "url": "#manuais/crm",
+     "dados": "/manuais/crm/guia.json",
+     "capitulos": 5,
+     "passos": 15,
+     "telas": 13,
+     "situacao": "rascunho",
+     "versaoSistema": "1.23.2",
+     "atualizadoEm": "2026-11-06",
+     "revisar": false,
+     "fontes": [
+      "guia:public/manuais/crm/guia.json"
+     ]
+    }
+   }
   },
   {
    "id": "cem",
@@ -457,7 +591,58 @@
      "titulo": "Guia visual ilustrado (13 passos, 4 telas)",
      "status": "disponivel"
     }
-   ]
+   ],
+   "recursos": {
+    "video": {
+     "status": "em-preparacao",
+     "titulo": "Vídeo completo do módulo",
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/14-metodologia.md"
+     ]
+    },
+    "checklist": {
+     "status": "disponivel",
+     "id": "implantacao-integracao-cem",
+     "chave": "ff-consultor:implantacao-integracao-cem",
+     "titulo": "Implantação da Integração CEM: roteiro prático com o cliente",
+     "resumo": "Ao final, o cliente importou sozinho uma obra fechada no CEM e sabe conferir no pedido gerado os itens, os preços, o desconto, os impostos, o cliente e a obra. Ele sabe o que trava uma importação, onde corrigir (no CEM ou nos Padrões) e o que acontece quando o orçamento é revisado depois de integrado.",
+     "url": "/checklists/consultores/implantacao-03-integracao-cem.html",
+     "itens": 47,
+     "grupos": [
+      "1. Escolher o sistema de integração",
+      "2. Conectar o CEM (Desktop ou Mobi)",
+      "3. Padrões de Integração",
+      "4. Importar um orçamento real (CEM Desktop)",
+      "5. Importar pelo CEM Mobi ou por arquivo",
+      "6. Ler com o cliente o pedido que nasceu da importação",
+      "7. O que trava a importação",
+      "8. Revisão do orçamento e reimportação",
+      "9. Faturamento em Nível (só quando contratado)"
+     ],
+     "atualizadoEm": "2026-10-29",
+     "fontes": [
+      "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+     ]
+    },
+    "manual": {
+     "status": "disponivel",
+     "id": "cem",
+     "titulo": "Integração CEM — guia visual",
+     "resumo": "Você vai entender como um orçamento fechado no CEM vira pedido de venda no Flow sem redigitação: onde escolher e conectar o sistema de origem, por onde importar, o que conferir no pedido gerado e como funciona o Faturamento em Nível.",
+     "url": "#manuais/cem",
+     "dados": "/manuais/cem/guia.json",
+     "capitulos": 5,
+     "passos": 13,
+     "telas": 4,
+     "situacao": "rascunho",
+     "versaoSistema": "1.22.13",
+     "atualizadoEm": "2026-11-06",
+     "revisar": true,
+     "fontes": [
+      "guia:public/manuais/cem/guia.json"
+     ]
+    }
+   }
   },
   {
    "id": "vendas",
@@ -622,7 +807,57 @@
      "titulo": "Guia visual ilustrado (21 passos, 15 telas)",
      "status": "disponivel"
     }
-   ]
+   ],
+   "recursos": {
+    "video": {
+     "status": "em-preparacao",
+     "titulo": "Vídeo completo do módulo",
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/14-metodologia.md"
+     ]
+    },
+    "checklist": {
+     "status": "disponivel",
+     "id": "implantacao-vendas",
+     "chave": "ff-consultor:implantacao-vendas",
+     "titulo": "Implantação de Vendas: roteiro prático com o cliente",
+     "resumo": "Ao final, o cliente criou e ajustou um pedido, viu um desconto passar pela aprovação, gerou títulos num pedido e faturou outro, e encontrou o título e a nota em cada módulo. Ele sabe por que o sistema recusa cancelar um pedido faturado ou com títulos e qual a ordem para desfazer.",
+     "url": "/checklists/consultores/implantacao-04-vendas.html",
+     "itens": 44,
+     "grupos": [
+      "1. O pedido: importado ou digitado",
+      "2. Ler a lista e ajustar antes de faturar",
+      "3. Alçada de desconto",
+      "4. Títulos pelo pedido e o financeiro nascendo",
+      "5. Faturar e ver a nota nascer",
+      "6. Encerrar e cancelar na ordem certa",
+      "7. Liberar para expedição e ver nos indicadores",
+      "8. Comissões, metas e contrato (só se contratados)"
+     ],
+     "atualizadoEm": "2026-10-29",
+     "fontes": [
+      "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas"
+     ]
+    },
+    "manual": {
+     "status": "disponivel",
+     "id": "vendas",
+     "titulo": "Vendas — guia visual",
+     "resumo": "Você vai entender o que é o pedido de venda, ler a lista de pedidos e seus status, criar um pedido do zero e saber o que acontece com ele depois: nota, títulos e expedição.",
+     "url": "#manuais/vendas",
+     "dados": "/manuais/vendas/guia.json",
+     "capitulos": 4,
+     "passos": 21,
+     "telas": 15,
+     "situacao": "rascunho",
+     "versaoSistema": "1.23.2",
+     "atualizadoEm": "2026-11-06",
+     "revisar": false,
+     "fontes": [
+      "guia:public/manuais/vendas/guia.json"
+     ]
+    }
+   }
   },
   {
    "id": "compras",
@@ -762,7 +997,56 @@
      "titulo": "Guia visual ilustrado (15 passos, 12 telas)",
      "status": "disponivel"
     }
-   ]
+   ],
+   "recursos": {
+    "video": {
+     "status": "em-preparacao",
+     "titulo": "Vídeo completo do módulo",
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/14-metodologia.md"
+     ]
+    },
+    "checklist": {
+     "status": "disponivel",
+     "id": "implantacao-compras",
+     "chave": "ff-consultor:implantacao-compras",
+     "titulo": "Implantação de Compras: roteiro prático com o cliente",
+     "resumo": "Ao final, o cliente viu uma necessidade de material virar pedido de compra aprovado, nota de recebimento e título a pagar, e sabe repetir cada passo sozinho. Ele também viu o sistema recusar o que não pode: preço zero, item sem vencedor, autor aprovando o próprio pedido e cancelamento com nota ativa.",
+     "url": "/checklists/consultores/implantacao-08-compras.html",
+     "itens": 47,
+     "grupos": [
+      "1. Solicitação de compra manual",
+      "2. Sugestão de compra (se o cliente usa estoque mínimo)",
+      "3. Cotação com fornecedores",
+      "4. Gerar o pedido de compra",
+      "5. Aprovação por alçada (se o cliente usa)",
+      "6. Enviar o pedido e acompanhar a entrega",
+      "7. Reflexo no Recebimento e no Financeiro"
+     ],
+     "atualizadoEm": "2026-10-29",
+     "fontes": [
+      "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras"
+     ]
+    },
+    "manual": {
+     "status": "disponivel",
+     "id": "compras",
+     "titulo": "Compras — guia visual",
+     "resumo": "Você vai entender o caminho do material: alguém precisa (solicitação), a empresa compara fornecedores (cotação), fecha o compromisso (pedido de compra) e acompanha até a entrega no Recebimento.",
+     "url": "#manuais/compras",
+     "dados": "/manuais/compras/guia.json",
+     "capitulos": 5,
+     "passos": 15,
+     "telas": 12,
+     "situacao": "rascunho",
+     "versaoSistema": "1.23.2",
+     "atualizadoEm": "2026-11-06",
+     "revisar": false,
+     "fontes": [
+      "guia:public/manuais/compras/guia.json"
+     ]
+    }
+   }
   },
   {
    "id": "recebimento",
@@ -900,7 +1184,56 @@
      "titulo": "Guia visual ilustrado (15 passos, 9 telas)",
      "status": "disponivel"
     }
-   ]
+   ],
+   "recursos": {
+    "video": {
+     "status": "em-preparacao",
+     "titulo": "Vídeo completo do módulo",
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/14-metodologia.md"
+     ]
+    },
+    "checklist": {
+     "status": "disponivel",
+     "id": "implantacao-recebimento",
+     "chave": "ff-consultor:implantacao-recebimento",
+     "titulo": "Implantação de Recebimento: roteiro prático com o cliente",
+     "resumo": "Ao final, o cliente viu uma nota de fornecedor entrar, ser vinculada ao pedido, conferida e finalizada, e viu nascer a entrada no estoque e o título a pagar. Ele sabe tratar entrega parcial, cancelar uma nota e gerar a devolução, e sabe o que o sistema recusa.",
+     "url": "/checklists/consultores/implantacao-09-recebimento.html",
+     "itens": 44,
+     "grupos": [
+      "1. Preparar o recebimento: conferência e busca de notas",
+      "2. Receber o XML: DF-e ou arquivo",
+      "3. Nota a partir do pedido de compra",
+      "4. Entrega parcial: desdobro do pedido",
+      "5. Conferência física e divergências",
+      "6. Finalizar: estoque e título a pagar nascem",
+      "7. Cancelamento e devolução ao fornecedor"
+     ],
+     "atualizadoEm": "2026-10-29",
+     "fontes": [
+      "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento"
+     ]
+    },
+    "manual": {
+     "status": "disponivel",
+     "id": "recebimento",
+     "titulo": "Recebimento — guia visual",
+     "resumo": "Como a mercadoria do fornecedor entra na empresa: a nota de recebimento nasce do pedido de compra (ou do XML), é conferida e, ao ser finalizada, dá entrada no estoque e gera o título a pagar.",
+     "url": "#manuais/recebimento",
+     "dados": "/manuais/recebimento/guia.json",
+     "capitulos": 4,
+     "passos": 15,
+     "telas": 9,
+     "situacao": "rascunho",
+     "versaoSistema": "1.23.2",
+     "atualizadoEm": "2026-11-06",
+     "revisar": false,
+     "fontes": [
+      "guia:public/manuais/recebimento/guia.json"
+     ]
+    }
+   }
   },
   {
    "id": "estoque",
@@ -1044,7 +1377,58 @@
      "titulo": "Guia visual ilustrado (17 passos, 11 telas)",
      "status": "disponivel"
     }
-   ]
+   ],
+   "recursos": {
+    "video": {
+     "status": "em-preparacao",
+     "titulo": "Vídeo completo do módulo",
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/14-metodologia.md"
+     ]
+    },
+    "checklist": {
+     "status": "disponivel",
+     "id": "implantacao-estoque",
+     "chave": "ff-consultor:implantacao-estoque",
+     "titulo": "Implantação de Estoque: roteiro prático com o cliente",
+     "resumo": "Ao final, o cliente sabe que o saldo nunca é digitado: ele nasce de movimentos, e cada um deixa rastro no extrato. Ele viu o saldo inicial entrar, as travas de saldo, reserva e inventário funcionarem e o balanço do produto fechar em quantidade e valor.",
+     "url": "/checklists/consultores/implantacao-10-estoque.html",
+     "itens": 49,
+     "grupos": [
+      "1. Locais e almoxarifado central",
+      "2. Saldo inicial na data de corte",
+      "3. Entradas e saídas manuais",
+      "4. Entradas e saídas automáticas",
+      "5. Saldo e extrato",
+      "6. Transferência e reserva",
+      "7. Inventário com ajuste",
+      "8. Empréstimo entre locais (se o cliente usa)",
+      "9. Reposição e balanço final"
+     ],
+     "atualizadoEm": "2026-10-29",
+     "fontes": [
+      "guia:scripts/dados-checklists-implantacao.mjs#implantacao-estoque"
+     ]
+    },
+    "manual": {
+     "status": "disponivel",
+     "id": "estoque",
+     "titulo": "Estoque — guia visual",
+     "resumo": "De onde vem o saldo de cada material, como consultá-lo por local e variação, como rastrear os movimentos e como funcionam transferência, inventário e empréstimo.",
+     "url": "#manuais/estoque",
+     "dados": "/manuais/estoque/guia.json",
+     "capitulos": 5,
+     "passos": 17,
+     "telas": 11,
+     "situacao": "rascunho",
+     "versaoSistema": "1.23.2",
+     "atualizadoEm": "2026-11-06",
+     "revisar": false,
+     "fontes": [
+      "guia:public/manuais/estoque/guia.json"
+     ]
+    }
+   }
   },
   {
    "id": "producao",
@@ -1186,7 +1570,55 @@
      "titulo": "Guia visual ilustrado (13 passos, 8 telas)",
      "status": "disponivel"
     }
-   ]
+   ],
+   "recursos": {
+    "video": {
+     "status": "em-preparacao",
+     "titulo": "Vídeo completo do módulo",
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/14-metodologia.md"
+     ]
+    },
+    "checklist": {
+     "status": "disponivel",
+     "id": "implantacao-producao",
+     "chave": "ff-consultor:implantacao-producao",
+     "titulo": "Implantação de Produção: roteiro prático com o cliente",
+     "resumo": "Ao final, o cliente terá visto uma OP nascer do pedido com etapas e materiais da estrutura, baixar os insumos, registrar o início do trabalho e creditar o produto acabado no estoque com custo. Ele saberá repetir o caminho e conhecerá os alertas que travam a conclusão.",
+     "url": "/checklists/consultores/implantacao-11-producao.html",
+     "itens": 33,
+     "grupos": [
+      "1. Estrutura do produto",
+      "2. Ordem de produção a partir do pedido",
+      "3. Requisições e baixa de material",
+      "4. Apontamento: iniciar e finalizar",
+      "5. Marcar produzido e entrada do produto acabado",
+      "6. Acompanhamento da fábrica"
+     ],
+     "atualizadoEm": "2026-10-29",
+     "fontes": [
+      "guia:scripts/dados-checklists-implantacao.mjs#implantacao-producao"
+     ]
+    },
+    "manual": {
+     "status": "disponivel",
+     "id": "producao",
+     "titulo": "Produção — guia visual",
+     "resumo": "Como o pedido vira ordem de produção (OP), consome material do estoque e entrega o produto acabado com custo — e onde acompanhar cada OP.",
+     "url": "#manuais/producao",
+     "dados": "/manuais/producao/guia.json",
+     "capitulos": 6,
+     "passos": 13,
+     "telas": 8,
+     "situacao": "rascunho",
+     "versaoSistema": "1.23.2",
+     "atualizadoEm": "2026-11-06",
+     "revisar": false,
+     "fontes": [
+      "guia:public/manuais/producao/guia.json"
+     ]
+    }
+   }
   },
   {
    "id": "servicos",
@@ -1327,7 +1759,56 @@
      "titulo": "Guia visual ilustrado (17 passos, 8 telas)",
      "status": "disponivel"
     }
-   ]
+   ],
+   "recursos": {
+    "video": {
+     "status": "em-preparacao",
+     "titulo": "Vídeo completo do módulo",
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/14-metodologia.md"
+     ]
+    },
+    "checklist": {
+     "status": "disponivel",
+     "id": "implantacao-servicos",
+     "chave": "ff-consultor:implantacao-servicos",
+     "titulo": "Implantação de Serviços: roteiro prático com o cliente",
+     "resumo": "Ao final, o cliente terá visto um pedido virar medição aprovada, instalação concluída com checklist, vistoria com aceite e assistência técnica resolvida, todas ligadas ao mesmo pedido e cliente. Ele saberá que as passagens são por botão e em que ordem registrar os aceites.",
+     "url": "/checklists/consultores/implantacao-12-servicos.html",
+     "itens": 34,
+     "grupos": [
+      "1. Medição: criar e agendar a partir do pedido",
+      "2. Medição: medir os vãos e concluir",
+      "3. Medição: aprovar com outro conferente",
+      "4. Instalação",
+      "5. Vistoria",
+      "6. Assistência técnica",
+      "7. Gestão de campo"
+     ],
+     "atualizadoEm": "2026-10-29",
+     "fontes": [
+      "guia:scripts/dados-checklists-implantacao.mjs#implantacao-servicos"
+     ]
+    },
+    "manual": {
+     "status": "disponivel",
+     "id": "servicos",
+     "titulo": "Serviços e Instalação — guia visual",
+     "resumo": "O que acontece na obra do cliente depois da venda, na sequência Medição → Instalação → Vistoria → Assistência técnica, e quais passagens dependem de um botão.",
+     "url": "#manuais/servicos",
+     "dados": "/manuais/servicos/guia.json",
+     "capitulos": 6,
+     "passos": 17,
+     "telas": 8,
+     "situacao": "rascunho",
+     "versaoSistema": "1.23.2",
+     "atualizadoEm": "2026-11-06",
+     "revisar": false,
+     "fontes": [
+      "guia:public/manuais/servicos/guia.json"
+     ]
+    }
+   }
   },
   {
    "id": "projetos",
@@ -1463,7 +1944,56 @@
      "titulo": "Guia visual ilustrado (13 passos, 7 telas)",
      "status": "disponivel"
     }
-   ]
+   ],
+   "recursos": {
+    "video": {
+     "status": "em-preparacao",
+     "titulo": "Vídeo completo do módulo",
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/14-metodologia.md"
+     ]
+    },
+    "checklist": {
+     "status": "disponivel",
+     "id": "implantacao-projetos",
+     "chave": "ff-consultor:implantacao-projetos",
+     "titulo": "Implantação de Projetos: roteiro prático com o cliente",
+     "resumo": "Ao final, o cliente terá visto uma obra de teste receber os documentos dos outros módulos e os painéis mostrarem números coerentes com eles. Saberá cadastrar uma obra, ligar o pedido antes de faturar e ler o Painel Financeiro de Projetos.",
+     "url": "/checklists/consultores/implantacao-14-projetos.html",
+     "itens": 32,
+     "grupos": [
+      "1. Cadastrar a obra",
+      "2. Estágios e etapas",
+      "3. Ligar o pedido e a medição à obra",
+      "4. Produção e compras da obra",
+      "5. Nota e títulos da obra",
+      "6. Painéis da obra: previsto × realizado",
+      "7. Diário e ciclo de vida da obra"
+     ],
+     "atualizadoEm": "2026-10-29",
+     "fontes": [
+      "guia:scripts/dados-checklists-implantacao.mjs#implantacao-projetos"
+     ]
+    },
+    "manual": {
+     "status": "disponivel",
+     "id": "projetos",
+     "titulo": "Projetos e Obras — guia visual",
+     "resumo": "Como a obra (o projeto) amarra pedido, produção, compras, serviços, notas e financeiro, e onde acompanhar o resultado de cada obra.",
+     "url": "#manuais/projetos",
+     "dados": "/manuais/projetos/guia.json",
+     "capitulos": 4,
+     "passos": 13,
+     "telas": 7,
+     "situacao": "rascunho",
+     "versaoSistema": "1.23.2",
+     "atualizadoEm": "2026-11-06",
+     "revisar": false,
+     "fontes": [
+      "guia:public/manuais/projetos/guia.json"
+     ]
+    }
+   }
   },
   {
    "id": "expedicao",
@@ -1600,7 +2130,56 @@
      "titulo": "Guia visual ilustrado (14 passos, 10 telas)",
      "status": "disponivel"
     }
-   ]
+   ],
+   "recursos": {
+    "video": {
+     "status": "em-preparacao",
+     "titulo": "Vídeo completo do módulo",
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/14-metodologia.md"
+     ]
+    },
+    "checklist": {
+     "status": "disponivel",
+     "id": "implantacao-expedicao",
+     "chave": "ff-consultor:implantacao-expedicao",
+     "titulo": "Implantação de Expedição: roteiro prático com o cliente",
+     "resumo": "Ao final, o cliente terá visto um pedido faturado virar carga, passar pelos checkpoints do pátio e chegar a Entregue com histórico, e saberá repetir sozinho. Também terá visto o que acontece numa ocorrência bloqueante e numa devolução, e por que o saldo do estoque não volta sozinho.",
+     "url": "/checklists/consultores/implantacao-13-expedicao.html",
+     "itens": 37,
+     "grupos": [
+      "1. Cadastros da expedição",
+      "2. Liberar o pedido faturado",
+      "3. Montar a carga",
+      "4. Fechar a carga e fazer os checkpoints",
+      "5. Rota e entrega",
+      "6. Ocorrência na rota",
+      "7. Devolução e re-expedição"
+     ],
+     "atualizadoEm": "2026-10-29",
+     "fontes": [
+      "guia:scripts/dados-checklists-implantacao.mjs#implantacao-expedicao"
+     ]
+    },
+    "manual": {
+     "status": "disponivel",
+     "id": "expedicao",
+     "titulo": "Expedição — guia visual",
+     "resumo": "Do pedido faturado até a mercadoria na mão do cliente: liberar o pedido, montar a carga, conferir no pátio, sair em rota e entregar, com tudo registrado no histórico.",
+     "url": "#manuais/expedicao",
+     "dados": "/manuais/expedicao/guia.json",
+     "capitulos": 4,
+     "passos": 14,
+     "telas": 10,
+     "situacao": "rascunho",
+     "versaoSistema": "1.23.2",
+     "atualizadoEm": "2026-11-06",
+     "revisar": false,
+     "fontes": [
+      "guia:public/manuais/expedicao/guia.json"
+     ]
+    }
+   }
   },
   {
    "id": "faturamento",
@@ -1759,7 +2338,57 @@
      "titulo": "Guia visual ilustrado (15 passos, 12 telas)",
      "status": "disponivel"
     }
-   ]
+   ],
+   "recursos": {
+    "video": {
+     "status": "em-preparacao",
+     "titulo": "Vídeo completo do módulo",
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/14-metodologia.md"
+     ]
+    },
+    "checklist": {
+     "status": "disponivel",
+     "id": "implantacao-faturamento",
+     "chave": "ff-consultor:implantacao-faturamento",
+     "titulo": "Implantação de Faturamento: roteiro prático com o cliente",
+     "resumo": "Ao final, o faturista do cliente terá visto um pedido virar nota autorizada em homologação, os títulos nascendo da nota e uma segunda nota cancelada na ordem certa. Ele saberá ler o quadro de impostos, o pré-voo e a rejeição, e saberá o que só o responsável fiscal pode fazer.",
+     "url": "/checklists/consultores/implantacao-05-faturamento.html",
+     "itens": 49,
+     "grupos": [
+      "1. Faturar o pedido",
+      "2. Conferir a nota: CFOP, impostos, parcelas e transporte",
+      "3. Salvar e ver o pedido virar Faturado",
+      "4. Transmitir em homologação com o responsável fiscal",
+      "5. DANFE, XML, e-mail e carta de correção",
+      "6. Reflexos da nota no financeiro, no estoque e nos painéis",
+      "7. Cancelamento na ordem certa",
+      "8. Nota gerencial e NFS-e (quando o cliente usar)"
+     ],
+     "atualizadoEm": "2026-10-29",
+     "fontes": [
+      "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento"
+     ]
+    },
+    "manual": {
+     "status": "disponivel",
+     "id": "faturamento",
+     "titulo": "Faturamento — guia visual",
+     "resumo": "Como o pedido de venda vira nota fiscal: faturar, conferir e salvar a NF-e, achar a nota na lista, finalizar e ver os reflexos no estoque, no pedido e no financeiro. A transmissão à SEFAZ fica com o responsável fiscal.",
+     "url": "#manuais/faturamento",
+     "dados": "/manuais/faturamento/guia.json",
+     "capitulos": 6,
+     "passos": 15,
+     "telas": 12,
+     "situacao": "rascunho",
+     "versaoSistema": "1.23.2",
+     "atualizadoEm": "2026-11-06",
+     "revisar": false,
+     "fontes": [
+      "guia:public/manuais/faturamento/guia.json"
+     ]
+    }
+   }
   },
   {
    "id": "fiscal",
@@ -1882,7 +2511,57 @@
      "titulo": "Guia visual ilustrado (16 passos, 10 telas)",
      "status": "disponivel"
     }
-   ]
+   ],
+   "recursos": {
+    "video": {
+     "status": "em-preparacao",
+     "titulo": "Vídeo completo do módulo",
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/14-metodologia.md"
+     ]
+    },
+    "checklist": {
+     "status": "disponivel",
+     "id": "implantacao-fiscal",
+     "chave": "ff-consultor:implantacao-fiscal",
+     "titulo": "Implantação do Fiscal: roteiro prático com o cliente e o contador",
+     "resumo": "Ao final, o cliente e o contador terão visto cada operação típica (venda interna, interestadual, a não contribuinte, com ST, serviço) calculada sem aviso no item e com valores conferidos. Eles saberão onde cada resposta do contador entra no sistema e como ler o aviso de imposto não calculado.",
+     "url": "/checklists/consultores/implantacao-06-fiscal.html",
+     "itens": 44,
+     "grupos": [
+      "1. Empresa e regime",
+      "2. CFOP e textos fiscais",
+      "3. NCM e regras de tributação por estado",
+      "4. Onboarding e Diagnóstico Fiscal",
+      "5. Provar o cálculo no pedido de venda",
+      "6. Provar o cálculo na nota",
+      "7. O aviso quando falta configuração",
+      "8. Serviço, obrigações acessórias e perfis"
+     ],
+     "atualizadoEm": "2026-10-29",
+     "fontes": [
+      "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal"
+     ]
+    },
+    "manual": {
+     "status": "disponivel",
+     "id": "fiscal",
+     "titulo": "Fiscal — guia visual",
+     "resumo": "O que é o motor de impostos do Flow, onde ficam CFOP, NCM e Textos Fiscais, como reconhecer um imposto não calculado na nota e como conferir a configuração no Onboarding Fiscal.",
+     "url": "#manuais/fiscal",
+     "dados": "/manuais/fiscal/guia.json",
+     "capitulos": 5,
+     "passos": 16,
+     "telas": 10,
+     "situacao": "rascunho",
+     "versaoSistema": "1.23.2",
+     "atualizadoEm": "2026-11-06",
+     "revisar": false,
+     "fontes": [
+      "guia:public/manuais/fiscal/guia.json"
+     ]
+    }
+   }
   },
   {
    "id": "financeiro",
@@ -2028,7 +2707,58 @@
      "titulo": "Guia visual ilustrado (17 passos, 16 telas)",
      "status": "disponivel"
     }
-   ]
+   ],
+   "recursos": {
+    "video": {
+     "status": "em-preparacao",
+     "titulo": "Vídeo completo do módulo",
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/14-metodologia.md"
+     ]
+    },
+    "checklist": {
+     "status": "disponivel",
+     "id": "implantacao-financeiro",
+     "chave": "ff-consultor:implantacao-financeiro",
+     "titulo": "Implantação do Financeiro: roteiro prático com o cliente",
+     "resumo": "Ao final, o financeiro do cliente terá visto um título nascer do pedido e outro da nota, recebido um deles em duas partes, pago um título da compra e conferido o mesmo dinheiro em Saldos, Extrato, Fluxo de Caixa e DRE. Ele saberá estornar uma baixa e saberá o que o sistema recusa.",
+     "url": "/checklists/consultores/implantacao-07-financeiro.html",
+     "itens": 48,
+     "grupos": [
+      "1. Contas, meios de pagamento e plano de contas",
+      "2. Títulos nascendo do pedido",
+      "3. Títulos nascendo da nota",
+      "4. Receber: total e parcial",
+      "5. Boleto e PIX em homologação (quando contratados)",
+      "6. Contas a pagar vindas da compra",
+      "7. Extrato e conciliação",
+      "8. Saldos, fluxo de caixa e DRE",
+      "9. Estorno e exclusão"
+     ],
+     "atualizadoEm": "2026-10-29",
+     "fontes": [
+      "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro"
+     ]
+    },
+    "manual": {
+     "status": "disponivel",
+     "id": "financeiro",
+     "titulo": "Financeiro — guia visual",
+     "resumo": "De onde vêm os títulos, como receber (inclusive em parte), onde conferir o dinheiro (Saldos, Extrato e Fluxo de Caixa) e quais cadastros sustentam o módulo.",
+     "url": "#manuais/financeiro",
+     "dados": "/manuais/financeiro/guia.json",
+     "capitulos": 4,
+     "passos": 17,
+     "telas": 16,
+     "situacao": "rascunho",
+     "versaoSistema": "1.23.2",
+     "atualizadoEm": "2026-11-06",
+     "revisar": false,
+     "fontes": [
+      "guia:public/manuais/financeiro/guia.json"
+     ]
+    }
+   }
   },
   {
    "id": "tarefas",
@@ -2166,7 +2896,56 @@
      "titulo": "Guia visual ilustrado (9 passos, 9 telas)",
      "status": "disponivel"
     }
-   ]
+   ],
+   "recursos": {
+    "video": {
+     "status": "em-preparacao",
+     "titulo": "Vídeo completo do módulo",
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/14-metodologia.md"
+     ]
+    },
+    "checklist": {
+     "status": "disponivel",
+     "id": "implantacao-tarefas",
+     "chave": "ff-consultor:implantacao-tarefas",
+     "titulo": "Implantação de Tarefas: roteiro prático com o cliente",
+     "resumo": "Ao final, o cliente terá montado um quadro da equipe, distribuído um cartão com responsável e Término Previsto e visto esse cartão chegar a Minhas Tarefas e ao Dashboard. Saberá comentar, mencionar, anexar e arquivar sem perder histórico.",
+     "url": "/checklists/consultores/implantacao-15-tarefas.html",
+     "itens": 35,
+     "grupos": [
+      "1. Abrir o módulo e criar o quadro",
+      "2. Criar as listas",
+      "3. Cartão com responsável e prazo",
+      "4. Minhas Tarefas e Dashboard",
+      "5. Status e regras do cartão",
+      "6. Colaboração e visões",
+      "7. Arquivar e restaurar"
+     ],
+     "atualizadoEm": "2026-10-29",
+     "fontes": [
+      "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas"
+     ]
+    },
+    "manual": {
+     "status": "disponivel",
+     "id": "tarefas",
+     "titulo": "Tarefas — guia visual",
+     "resumo": "Como o módulo Tarefas organiza o trabalho em quadros, listas e cartões, e o detalhe que faz o cartão chegar à pessoa certa: o responsável.",
+     "url": "#manuais/tarefas",
+     "dados": "/manuais/tarefas/guia.json",
+     "capitulos": 3,
+     "passos": 9,
+     "telas": 9,
+     "situacao": "rascunho",
+     "versaoSistema": "1.23.2",
+     "atualizadoEm": "2026-11-06",
+     "revisar": false,
+     "fontes": [
+      "guia:public/manuais/tarefas/guia.json"
+     ]
+    }
+   }
   },
   {
    "id": "relatorios",
@@ -2233,7 +3012,30 @@
      "titulo": "Manual do consultor",
      "status": "em-preparacao"
     }
-   ]
+   ],
+   "recursos": {
+    "video": {
+     "status": "em-preparacao",
+     "titulo": "Vídeo completo do módulo",
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/14-metodologia.md"
+     ]
+    },
+    "checklist": {
+     "status": "em-preparacao",
+     "titulo": "Checklist de implantação",
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/14-metodologia.md"
+     ]
+    },
+    "manual": {
+     "status": "em-preparacao",
+     "titulo": "Manual de apoio",
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/14-metodologia.md"
+     ]
+    }
+   }
   },
   {
    "id": "alumina",
@@ -2300,7 +3102,30 @@
      "titulo": "Manual do consultor",
      "status": "em-preparacao"
     }
-   ]
+   ],
+   "recursos": {
+    "video": {
+     "status": "em-preparacao",
+     "titulo": "Vídeo completo do módulo",
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/14-metodologia.md"
+     ]
+    },
+    "checklist": {
+     "status": "em-preparacao",
+     "titulo": "Checklist de implantação",
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/14-metodologia.md"
+     ]
+    },
+    "manual": {
+     "status": "em-preparacao",
+     "titulo": "Manual de apoio",
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/14-metodologia.md"
+     ]
+    }
+   }
   },
   {
    "id": "fluxo-completo",
@@ -2421,6 +3246,1284 @@
      "titulo": "Guia visual ilustrado (13 passos, 12 telas)",
      "status": "disponivel"
     }
+   ],
+   "recursos": {
+    "video": {
+     "status": "em-preparacao",
+     "titulo": "Vídeo completo do módulo",
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/14-metodologia.md"
+     ]
+    },
+    "checklist": {
+     "status": "em-preparacao",
+     "titulo": "Checklist de implantação",
+     "fontes": [
+      "guia:refatoracao-guia-do-consultor/14-metodologia.md"
+     ]
+    },
+    "manual": {
+     "status": "disponivel",
+     "id": "fluxo-completo",
+     "titulo": "O fluxo completo — guia visual",
+     "resumo": "O caminho de uma venda pelo Faktory Flow, do lead no CRM até os títulos no Financeiro e o painel da obra: o que cada módulo entrega para o seguinte e o sinal, em cada tela, de que o pedido avançou.",
+     "url": "#manuais/fluxo-completo",
+     "dados": "/manuais/fluxo-completo/guia.json",
+     "capitulos": 9,
+     "passos": 13,
+     "telas": 12,
+     "situacao": "rascunho",
+     "versaoSistema": "1.23.2",
+     "atualizadoEm": "2026-11-06",
+     "revisar": false,
+     "fontes": [
+      "guia:public/manuais/fluxo-completo/guia.json"
+     ]
+    }
+   }
+  }
+ ],
+ "videos": [
+  {
+   "id": "fluxo-1-vendas",
+   "titulo": "Vendas: o ciclo do pedido de venda",
+   "resumo": "O que é o pedido, os status, as quatro regras que mais travam e o pedido criado na tela.",
+   "url": "/videos/fluxo-1-vendas.mp4",
+   "poster": "/videos/fluxo-1-vendas.jpg",
+   "legendas": "/videos/fluxo-1-vendas.vtt",
+   "duracao_s": 188,
+   "capitulos": [
+    {
+     "t": 1.1,
+     "titulo": "Abertura",
+     "grupo": "Abertura"
+    },
+    {
+     "t": 12.2,
+     "titulo": "Conceito",
+     "grupo": "Conceito"
+    },
+    {
+     "t": 35.9,
+     "titulo": "CFOP depois de Empresa e Cliente",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 46.8,
+     "titulo": "Conta de Fluxo de Caixa é obrigatória",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 53.2,
+     "titulo": "Só o pedido Em aberto é editado",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 67.4,
+     "titulo": "Faturado não é nota autorizada",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 80.1,
+     "titulo": "Vendas › Pedidos de Venda",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 88.1,
+     "titulo": "+ Novo Pedido",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 95.6,
+     "titulo": "Cliente, Vendedor e Condição de Pagamento",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 102.7,
+     "titulo": "CFOP",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 110.2,
+     "titulo": "Dados do Item",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 119.6,
+     "titulo": "Parcelas do Pedido e Resumo",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 130.6,
+     "titulo": "Salvar e Permanecer",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 138.8,
+     "titulo": "Em aberto · Sem títulos",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 152.7,
+     "titulo": "Cuidados",
+     "grupo": "Cuidados"
+    },
+    {
+     "t": 174.4,
+     "titulo": "Fechamento",
+     "grupo": "Fechamento"
+    }
+   ],
+   "modulos": [
+    "vendas"
+   ],
+   "versaoSistema": "1.22.13",
+   "revisar": true,
+   "fontes": [
+    "guia:public/videos/manifest.json",
+    "guia:videos/roteiros/fluxo-1-vendas.json",
+    "guia:videos/src/gerado/fluxo-1-vendas.json"
+   ]
+  },
+  {
+   "id": "consultor-07-faturamento",
+   "titulo": "Faturamento: do pedido à nota finalizada",
+   "resumo": "Faturar o pedido, conferir a nota e finalizar sem transmitir.",
+   "url": "/videos/consultor-07-faturamento.mp4",
+   "poster": "/videos/consultor-07-faturamento.jpg",
+   "legendas": "/videos/consultor-07-faturamento.vtt",
+   "duracao_s": 198,
+   "capitulos": [
+    {
+     "t": 1.1,
+     "titulo": "Abertura",
+     "grupo": "Abertura"
+    },
+    {
+     "t": 12.8,
+     "titulo": "Conceito",
+     "grupo": "Conceito"
+    },
+    {
+     "t": 32.1,
+     "titulo": "Faturar abre uma NF-e ligada ao pedido",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 49,
+     "titulo": "Salvou a nota, o pedido é Faturado",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 62.4,
+     "titulo": "Finalizar exige almoxarifado ativo",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 76.9,
+     "titulo": "A lista abre só com as notas Em Aberto",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 89.5,
+     "titulo": "Pedido › ⋯ › Faturar",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 94.2,
+     "titulo": "Selecionar Itens para Importar",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 103.8,
+     "titulo": "Nova NF-e › Homologação",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 119.1,
+     "titulo": "Faturamento › Notas Fiscais",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 133.9,
+     "titulo": "Finalizar NF",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 144.9,
+     "titulo": "Estoque › Movimentos",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 153.7,
+     "titulo": "Estoque › Saldo",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 163.4,
+     "titulo": "Cuidados",
+     "grupo": "Cuidados"
+    },
+    {
+     "t": 181.6,
+     "titulo": "Fechamento",
+     "grupo": "Fechamento"
+    }
+   ],
+   "modulos": [
+    "faturamento",
+    "fiscal"
+   ],
+   "versaoSistema": "1.22.13",
+   "revisar": true,
+   "fontes": [
+    "guia:public/videos/manifest.json",
+    "guia:videos/roteiros/consultor-07-faturamento.json",
+    "guia:videos/src/gerado/consultor-07-faturamento.json"
+   ]
+  },
+  {
+   "id": "consultor-08-financeiro",
+   "titulo": "Financeiro: do título ao fluxo de caixa",
+   "resumo": "Gerar os títulos, receber e ler o fluxo de caixa.",
+   "url": "/videos/consultor-08-financeiro.mp4",
+   "poster": "/videos/consultor-08-financeiro.jpg",
+   "legendas": "/videos/consultor-08-financeiro.vtt",
+   "duracao_s": 184,
+   "capitulos": [
+    {
+     "t": 1.1,
+     "titulo": "Abertura",
+     "grupo": "Abertura"
+    },
+    {
+     "t": 14.1,
+     "titulo": "Conceito",
+     "grupo": "Conceito"
+    },
+    {
+     "t": 30.9,
+     "titulo": "Os títulos nascem do pedido ou da nota",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 47.2,
+     "titulo": "Boleto exige conta emissora",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 62.7,
+     "titulo": "Baixa parcial cria um título residual",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 77.4,
+     "titulo": "A lista abre só com os títulos Em aberto",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 85.8,
+     "titulo": "Pedido faturado › títulos gerados",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 97.8,
+     "titulo": "Financeiro › Contas a Receber",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 106.8,
+     "titulo": "Financeiro › Saldos (antes)",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 116.7,
+     "titulo": "Receber",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 129.5,
+     "titulo": "Baixa parcial",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 141.1,
+     "titulo": "Financeiro › Saldos (depois)",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 146.9,
+     "titulo": "Cuidados",
+     "grupo": "Cuidados"
+    },
+    {
+     "t": 166.9,
+     "titulo": "Fechamento",
+     "grupo": "Fechamento"
+    }
+   ],
+   "modulos": [
+    "financeiro"
+   ],
+   "versaoSistema": "1.22.13",
+   "revisar": true,
+   "fontes": [
+    "guia:public/videos/manifest.json",
+    "guia:videos/roteiros/consultor-08-financeiro.json",
+    "guia:videos/src/gerado/consultor-08-financeiro.json"
+   ]
+  },
+  {
+   "id": "consultor-01-suprimentos",
+   "titulo": "Suprimentos: da solicitação ao pagamento",
+   "resumo": "Cotação opcional, a natureza da operação que define o CFOP, a nota com dois números e a linha do tempo do pedido.",
+   "url": "/videos/consultor-01-suprimentos.mp4",
+   "poster": "/videos/consultor-01-suprimentos.jpg",
+   "legendas": "/videos/consultor-01-suprimentos.vtt",
+   "duracao_s": 203,
+   "capitulos": [
+    {
+     "t": 1.1,
+     "titulo": "Abertura",
+     "grupo": "Abertura"
+    },
+    {
+     "t": 12.7,
+     "titulo": "Conceito",
+     "grupo": "Conceito"
+    },
+    {
+     "t": 33.4,
+     "titulo": "A cotação é opcional",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 49.6,
+     "titulo": "A natureza da operação define o CFOP",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 64.9,
+     "titulo": "A mesma nota tem dois números",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 82.8,
+     "titulo": "Sem almoxarifado central, nada entra",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 96.5,
+     "titulo": "Compras › Solicitações de Compra",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 109.9,
+     "titulo": "Cotação · Dados Gerais",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 122.6,
+     "titulo": "Cotação · Comparação",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 133.7,
+     "titulo": "Pedido de compra › Linha do tempo",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 147.2,
+     "titulo": "Recebimento › Notas de Recebimento",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 157.7,
+     "titulo": "Estoque › Movimentos",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 165.5,
+     "titulo": "Cuidados",
+     "grupo": "Cuidados"
+    },
+    {
+     "t": 186.5,
+     "titulo": "Fechamento",
+     "grupo": "Fechamento"
+    }
+   ],
+   "modulos": [
+    "compras",
+    "recebimento"
+   ],
+   "versaoSistema": "1.22.13",
+   "revisar": true,
+   "fontes": [
+    "guia:public/videos/manifest.json",
+    "guia:videos/roteiros/consultor-01-suprimentos.json",
+    "guia:videos/src/gerado/consultor-01-suprimentos.json"
+   ]
+  },
+  {
+   "id": "consultor-02-servicos",
+   "titulo": "Serviços de campo: da medição à assistência",
+   "resumo": "Empresa e técnico na medição, o conferente diferente, as passagens por botão e a ordem dos aceites.",
+   "url": "/videos/consultor-02-servicos.mp4",
+   "poster": "/videos/consultor-02-servicos.jpg",
+   "legendas": "/videos/consultor-02-servicos.vtt",
+   "duracao_s": 168,
+   "capitulos": [
+    {
+     "t": 1.1,
+     "titulo": "Abertura",
+     "grupo": "Abertura"
+    },
+    {
+     "t": 13.1,
+     "titulo": "Conceito",
+     "grupo": "Conceito"
+    },
+    {
+     "t": 33.5,
+     "titulo": "Empresa e técnico não vêm do pedido",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 47.1,
+     "titulo": "Quem confere não pode ser quem mediu",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 59.3,
+     "titulo": "As passagens são por botão",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 76.8,
+     "titulo": "A ordem dos aceites muda",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 88.9,
+     "titulo": "Serviços › Medições",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 98.7,
+     "titulo": "Serviços › Instalações",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 112.1,
+     "titulo": "Serviços › Vistorias",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 121,
+     "titulo": "Serviços › Assistência Técnica",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 130.3,
+     "titulo": "Cuidados",
+     "grupo": "Cuidados"
+    },
+    {
+     "t": 151.4,
+     "titulo": "Fechamento",
+     "grupo": "Fechamento"
+    }
+   ],
+   "modulos": [
+    "servicos"
+   ],
+   "versaoSistema": "1.22.13",
+   "revisar": true,
+   "fontes": [
+    "guia:public/videos/manifest.json",
+    "guia:videos/roteiros/consultor-02-servicos.json",
+    "guia:videos/src/gerado/consultor-02-servicos.json"
+   ]
+  },
+  {
+   "id": "consultor-03-comercial",
+   "titulo": "Comercial: do lead ao pedido de venda",
+   "resumo": "As quatro regras que travam o CRM e o caminho real, do Kanban à oportunidade ganha.",
+   "url": "/videos/consultor-03-comercial.mp4",
+   "poster": "/videos/consultor-03-comercial.jpg",
+   "legendas": "/videos/consultor-03-comercial.vtt",
+   "duracao_s": 220,
+   "capitulos": [
+    {
+     "t": 0,
+     "titulo": "Abertura",
+     "grupo": "Abertura"
+    },
+    {
+     "t": 14.2,
+     "titulo": "Conceito",
+     "grupo": "Conceito"
+    },
+    {
+     "t": 36.2,
+     "titulo": "Converter exige 60% e BANT completo",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 54.8,
+     "titulo": "A conversão cria a oportunidade sozinha",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 70.2,
+     "titulo": "Itens viram o valor da oportunidade",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 82.5,
+     "titulo": "Gerar o pedido: use um CFOP sem financeiro",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 106.7,
+     "titulo": "CRM › Vendas › Leads › Kanban",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 117.1,
+     "titulo": "Mover lead",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 125.3,
+     "titulo": "Editar Lead › Informações CRM",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 136,
+     "titulo": "⋯ › Converter",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 141.4,
+     "titulo": "Lead convertido",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 149.3,
+     "titulo": "CRM › Vendas › Pipeline",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 156.7,
+     "titulo": "Gerar Proposta",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 171.3,
+     "titulo": "Ganha › Gerar Pedido de Venda",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 181.8,
+     "titulo": "Cuidados",
+     "grupo": "Cuidados"
+    },
+    {
+     "t": 201.6,
+     "titulo": "Fechamento",
+     "grupo": "Fechamento"
+    }
+   ],
+   "modulos": [
+    "crm",
+    "vendas"
+   ],
+   "versaoSistema": "1.22.13",
+   "revisar": true,
+   "fontes": [
+    "guia:public/videos/manifest.json",
+    "guia:videos/roteiros/consultor-03-comercial.json",
+    "guia:videos/src/gerado/consultor-03-comercial.json"
+   ]
+  },
+  {
+   "id": "consultor-04-estoque",
+   "titulo": "Estoque: movimento, reserva e inventário",
+   "resumo": "Movimentos, transferência, reserva, inventário e empréstimo.",
+   "url": "/videos/consultor-04-estoque.mp4",
+   "poster": "/videos/consultor-04-estoque.jpg",
+   "legendas": "/videos/consultor-04-estoque.vtt",
+   "duracao_s": 183,
+   "capitulos": [
+    {
+     "t": 1.1,
+     "titulo": "Abertura",
+     "grupo": "Abertura"
+    },
+    {
+     "t": 14.3,
+     "titulo": "Conceito",
+     "grupo": "Conceito"
+    },
+    {
+     "t": 35.6,
+     "titulo": "O saldo nasce de movimentos",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 50.5,
+     "titulo": "Transferência pendente reserva o disponível",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 66.3,
+     "titulo": "Inventário congela o local",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 80.7,
+     "titulo": "A nota finalizada baixa o estoque",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 95.9,
+     "titulo": "Estoque › Movimentos › Novo",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 103,
+     "titulo": "Estoque › Saldo",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 113.4,
+     "titulo": "Estoque › Movimentos",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 120.5,
+     "titulo": "Estoque › Transferências",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 128.9,
+     "titulo": "Estoque › Inventários",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 139.2,
+     "titulo": "Estoque › Empréstimos",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 147.9,
+     "titulo": "Cuidados",
+     "grupo": "Cuidados"
+    },
+    {
+     "t": 168,
+     "titulo": "Fechamento",
+     "grupo": "Fechamento"
+    }
+   ],
+   "modulos": [
+    "estoque"
+   ],
+   "versaoSistema": "1.22.13",
+   "revisar": true,
+   "fontes": [
+    "guia:public/videos/manifest.json",
+    "guia:videos/roteiros/consultor-04-estoque.json",
+    "guia:videos/src/gerado/consultor-04-estoque.json"
+   ]
+  },
+  {
+   "id": "consultor-05-producao",
+   "titulo": "Produção: da estrutura ao produto acabado",
+   "resumo": "Estrutura, ordem de produção, apontamento e entrada do acabado.",
+   "url": "/videos/consultor-05-producao.mp4",
+   "poster": "/videos/consultor-05-producao.jpg",
+   "legendas": "/videos/consultor-05-producao.vtt",
+   "duracao_s": 173,
+   "capitulos": [
+    {
+     "t": 1.1,
+     "titulo": "Abertura",
+     "grupo": "Abertura"
+    },
+    {
+     "t": 14.9,
+     "titulo": "Conceito",
+     "grupo": "Conceito"
+    },
+    {
+     "t": 34.5,
+     "titulo": "A OP copia o item, não a quantidade",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 54,
+     "titulo": "As requisições nascem da estrutura",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 70.4,
+     "titulo": "Item paramétrico exige cor",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 84.9,
+     "titulo": "Produzido gera a entrada do acabado",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 100,
+     "titulo": "Produção › Ordens de produção",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 110.4,
+     "titulo": "Mais ações › Custo da OP",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 116.8,
+     "titulo": "Mais ações › Linha do tempo",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 130,
+     "titulo": "Estoque › Movimentos",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 135.5,
+     "titulo": "Cuidados",
+     "grupo": "Cuidados"
+    },
+    {
+     "t": 157,
+     "titulo": "Fechamento",
+     "grupo": "Fechamento"
+    }
+   ],
+   "modulos": [
+    "producao"
+   ],
+   "versaoSistema": "1.22.13",
+   "revisar": true,
+   "fontes": [
+    "guia:public/videos/manifest.json",
+    "guia:videos/roteiros/consultor-05-producao.json",
+    "guia:videos/src/gerado/consultor-05-producao.json"
+   ]
+  },
+  {
+   "id": "consultor-06-expedicao",
+   "titulo": "Expedição: da carga à entrega",
+   "resumo": "Carga, entrega, ocorrência e devolução.",
+   "url": "/videos/consultor-06-expedicao.mp4",
+   "poster": "/videos/consultor-06-expedicao.jpg",
+   "legendas": "/videos/consultor-06-expedicao.vtt",
+   "duracao_s": 161,
+   "capitulos": [
+    {
+     "t": 1.1,
+     "titulo": "Abertura",
+     "grupo": "Abertura"
+    },
+    {
+     "t": 13.3,
+     "titulo": "Conceito",
+     "grupo": "Conceito"
+    },
+    {
+     "t": 31.9,
+     "titulo": "Liberar só existe em pedido Faturado",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 44.5,
+     "titulo": "Os checkpoints são os da empresa",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 59,
+     "titulo": "Fechou a carga, começa a bipagem",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 75.5,
+     "titulo": "Ocorrência bloqueante volta à fila",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 90.9,
+     "titulo": "Pedido faturado › ⋯",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 97.9,
+     "titulo": "Expedição › Cargas",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 109.5,
+     "titulo": "Carga #20261000001",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 119.5,
+     "titulo": "Histórico da Carga",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 129.7,
+     "titulo": "Cuidados",
+     "grupo": "Cuidados"
+    },
+    {
+     "t": 146.7,
+     "titulo": "Fechamento",
+     "grupo": "Fechamento"
+    }
+   ],
+   "modulos": [
+    "expedicao"
+   ],
+   "versaoSistema": "1.22.13",
+   "revisar": true,
+   "fontes": [
+    "guia:public/videos/manifest.json",
+    "guia:videos/roteiros/consultor-06-expedicao.json",
+    "guia:videos/src/gerado/consultor-06-expedicao.json"
+   ]
+  },
+  {
+   "id": "consultor-09-projetos",
+   "titulo": "Projetos e obras",
+   "resumo": "Cadastro, estágios, painéis e diário de obra.",
+   "url": "/videos/consultor-09-projetos.mp4",
+   "poster": "/videos/consultor-09-projetos.jpg",
+   "legendas": "/videos/consultor-09-projetos.vtt",
+   "duracao_s": 147,
+   "capitulos": [
+    {
+     "t": 1.1,
+     "titulo": "Abertura",
+     "grupo": "Abertura"
+    },
+    {
+     "t": 14.9,
+     "titulo": "Conceito",
+     "grupo": "Conceito"
+    },
+    {
+     "t": 33.1,
+     "titulo": "O campo Projeto liga os documentos",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 46.3,
+     "titulo": "Ligue o projeto antes de faturar",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 58.7,
+     "titulo": "Estágios são fases; etapas são passos",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 73.5,
+     "titulo": "Obra com estoque próprio precisa de local ativo",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 85.1,
+     "titulo": "Vendas › Pedidos de Venda",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 94.7,
+     "titulo": "Cadastros › Projetos",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 104.9,
+     "titulo": "Painel Financeiro de Projetos",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 117.1,
+     "titulo": "Cuidados",
+     "grupo": "Cuidados"
+    },
+    {
+     "t": 133.9,
+     "titulo": "Fechamento",
+     "grupo": "Fechamento"
+    }
+   ],
+   "modulos": [
+    "projetos"
+   ],
+   "versaoSistema": "1.22.13",
+   "revisar": true,
+   "fontes": [
+    "guia:public/videos/manifest.json",
+    "guia:videos/roteiros/consultor-09-projetos.json",
+    "guia:videos/src/gerado/consultor-09-projetos.json"
+   ]
+  },
+  {
+   "id": "consultor-10-tarefas",
+   "titulo": "Tarefas",
+   "resumo": "Quadro, cartão, regras e colaboração.",
+   "url": "/videos/consultor-10-tarefas.mp4",
+   "poster": "/videos/consultor-10-tarefas.jpg",
+   "legendas": "/videos/consultor-10-tarefas.vtt",
+   "duracao_s": 158,
+   "capitulos": [
+    {
+     "t": 1.1,
+     "titulo": "Abertura",
+     "grupo": "Abertura"
+    },
+    {
+     "t": 17.2,
+     "titulo": "Conceito",
+     "grupo": "Conceito"
+    },
+    {
+     "t": 35.8,
+     "titulo": "O quadro nasce sem listas",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 46.7,
+     "titulo": "Sem responsável, ninguém vê o cartão",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 63.2,
+     "titulo": "O prazo é o Término Previsto",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 70.4,
+     "titulo": "Arquivar não apaga",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 80.7,
+     "titulo": "Tarefas › Meus Quadros",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 87.5,
+     "titulo": "Quadro · Kanban",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 98.9,
+     "titulo": "Cartão",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 110.3,
+     "titulo": "Tarefas › Minhas Tarefas",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 116.4,
+     "titulo": "Tarefas › Arquivadas",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 123.2,
+     "titulo": "Cuidados",
+     "grupo": "Cuidados"
+    },
+    {
+     "t": 142.7,
+     "titulo": "Fechamento",
+     "grupo": "Fechamento"
+    }
+   ],
+   "modulos": [
+    "tarefas"
+   ],
+   "versaoSistema": "1.22.13",
+   "revisar": true,
+   "fontes": [
+    "guia:public/videos/manifest.json",
+    "guia:videos/roteiros/consultor-10-tarefas.json",
+    "guia:videos/src/gerado/consultor-10-tarefas.json"
+   ]
+  },
+  {
+   "id": "consultor-fluxo-completo",
+   "titulo": "Do pedido à gestão",
+   "resumo": "O fluxo inteiro, do CRM aos indicadores.",
+   "url": "/videos/consultor-fluxo-completo.mp4",
+   "poster": "/videos/consultor-fluxo-completo.jpg",
+   "legendas": "/videos/consultor-fluxo-completo.vtt",
+   "duracao_s": 157,
+   "capitulos": [
+    {
+     "t": 1.1,
+     "titulo": "Abertura",
+     "grupo": "Abertura"
+    },
+    {
+     "t": 13.6,
+     "titulo": "Conceito",
+     "grupo": "Conceito"
+    },
+    {
+     "t": 30.4,
+     "titulo": "Cada passagem tem um botão",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 45.4,
+     "titulo": "O que nasce sozinho",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 61.6,
+     "titulo": "A ordem importa",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 75.3,
+     "titulo": "1 · CRM › Pipeline",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 81.2,
+     "titulo": "2 · Vendas › Pedido",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 85.9,
+     "titulo": "3 · Serviços › Medição",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 92.1,
+     "titulo": "4 · Produção › OP",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 97.6,
+     "titulo": "5 · Faturamento › Nota",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 106.3,
+     "titulo": "6 · Expedição › Carga",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 112.7,
+     "titulo": "7 · Financeiro › Contas a Receber",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 118.2,
+     "titulo": "8 · Gestão › Painel da obra",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 125,
+     "titulo": "Cuidados",
+     "grupo": "Cuidados"
+    },
+    {
+     "t": 144,
+     "titulo": "Fechamento",
+     "grupo": "Fechamento"
+    }
+   ],
+   "modulos": [
+    "fluxo-completo"
+   ],
+   "versaoSistema": "1.22.13",
+   "revisar": true,
+   "fontes": [
+    "guia:public/videos/manifest.json",
+    "guia:videos/roteiros/consultor-fluxo-completo.json",
+    "guia:videos/src/gerado/consultor-fluxo-completo.json"
+   ]
+  },
+  {
+   "id": "compra-em-nome-do-cliente",
+   "titulo": "Compra em nome do cliente: Faturamento em Nível e Contrato de Fornecimento",
+   "resumo": "Obra com rateio 40/60: o seu pedido segue o fluxo normal, o do material é encerrado e vira saldo no contrato, abatido pelas compras do cliente.",
+   "url": "/videos/compra-em-nome-do-cliente.mp4",
+   "poster": "/videos/compra-em-nome-do-cliente.jpg",
+   "legendas": "/videos/compra-em-nome-do-cliente.vtt",
+   "duracao_s": 230,
+   "capitulos": [
+    {
+     "t": 0,
+     "titulo": "Abertura",
+     "grupo": "Abertura"
+    },
+    {
+     "t": 7.9,
+     "titulo": "Conceito",
+     "grupo": "Conceito"
+    },
+    {
+     "t": 20.9,
+     "titulo": "Os níveis somam 100%",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 26.9,
+     "titulo": "Encerrar não fatura",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 32.9,
+     "titulo": "Compra do cliente não é conta a pagar",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 40,
+     "titulo": "Registrar não é emitir a nota",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 47.7,
+     "titulo": "Vendas › Configurações › Configurar integração",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 55.3,
+     "titulo": "Vendas › Configurações › Níveis de Faturamento",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 62.9,
+     "titulo": "Vendas › Configurações › Templates de Rateio",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 70.5,
+     "titulo": "Vendas › Pedidos de Venda",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 78.1,
+     "titulo": "Importar do CEM Mobi › Rateio",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 88.7,
+     "titulo": "Pedidos de Venda › ⋯ › Gerar Títulos",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 96.3,
+     "titulo": "Pedidos de Venda › ⋯ › Encerrar",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 103.9,
+     "titulo": "Vendas › Pedidos de Venda",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 111.5,
+     "titulo": "Vendas › Contratos de Fornecimento",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 116.3,
+     "titulo": "Contratos de Fornecimento › Novo Contrato",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 126.9,
+     "titulo": "Contrato › Rascunho",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 131.5,
+     "titulo": "Contrato › Vincular pedido de venda",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 139.1,
+     "titulo": "Contrato › Registrar faturamento",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 146.7,
+     "titulo": "Contrato de Fornecimento",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 154.3,
+     "titulo": "Faturamento › Nova NF-e",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 162.7,
+     "titulo": "Compras › Novo Pedido de Compra",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 170.3,
+     "titulo": "Contrato › Vincular pedido de compra",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 177.9,
+     "titulo": "Recebimento › Nova Nota de Recebimento",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 185.5,
+     "titulo": "Recebimento › Notas de Recebimento",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 191.1,
+     "titulo": "Contrato › Abater saldo",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 198.7,
+     "titulo": "Contrato de Fornecimento",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 209.3,
+     "titulo": "Cuidados",
+     "grupo": "Cuidados"
+    },
+    {
+     "t": 221,
+     "titulo": "Fechamento",
+     "grupo": "Fechamento"
+    }
+   ],
+   "modulos": [
+    "vendas",
+    "faturamento"
+   ],
+   "versaoSistema": "1.22.13",
+   "revisar": true,
+   "fontes": [
+    "guia:public/videos/manifest.json",
+    "guia:videos/roteiros/compra-em-nome-do-cliente.json",
+    "guia:videos/src/gerado/compra-em-nome-do-cliente.json"
    ]
   }
  ],
@@ -2437,6 +4540,12 @@
     "tipo": "checklist"
    }
   ],
+  "/manuais/primeiros-passos/guia.json": [
+   {
+    "modulo": "primeiros-passos",
+    "tipo": "manual"
+   }
+  ],
   "/checklists/estagiarios/02-cadastros-basicos.html": [
    {
     "modulo": "fundacao",
@@ -2447,6 +4556,12 @@
    {
     "modulo": "fundacao",
     "tipo": "checklist"
+   }
+  ],
+  "/manuais/fundacao/guia.json": [
+   {
+    "modulo": "fundacao",
+    "tipo": "manual"
    }
   ],
   "/videos/consultor-03-comercial.mp4": [
@@ -2491,10 +4606,22 @@
     "tipo": "checklist"
    }
   ],
+  "/manuais/crm/guia.json": [
+   {
+    "modulo": "crm",
+    "tipo": "manual"
+   }
+  ],
   "/checklists/consultores/implantacao-03-integracao-cem.html": [
    {
     "modulo": "cem",
     "tipo": "checklist"
+   }
+  ],
+  "/manuais/cem/guia.json": [
+   {
+    "modulo": "cem",
+    "tipo": "manual"
    }
   ],
   "/videos/fluxo-1-vendas.mp4": [
@@ -2563,6 +4690,12 @@
     "tipo": "video"
    }
   ],
+  "/manuais/vendas/guia.json": [
+   {
+    "modulo": "vendas",
+    "tipo": "manual"
+   }
+  ],
   "/videos/consultor-01-suprimentos.mp4": [
    {
     "modulo": "compras",
@@ -2605,6 +4738,12 @@
     "tipo": "checklist"
    }
   ],
+  "/manuais/compras/guia.json": [
+   {
+    "modulo": "compras",
+    "tipo": "manual"
+   }
+  ],
   "/checklists/estagiarios/06-recebimento.html": [
    {
     "modulo": "recebimento",
@@ -2615,6 +4754,12 @@
    {
     "modulo": "recebimento",
     "tipo": "checklist"
+   }
+  ],
+  "/manuais/recebimento/guia.json": [
+   {
+    "modulo": "recebimento",
+    "tipo": "manual"
    }
   ],
   "/videos/consultor-04-estoque.mp4": [
@@ -2647,6 +4792,12 @@
     "tipo": "checklist"
    }
   ],
+  "/manuais/estoque/guia.json": [
+   {
+    "modulo": "estoque",
+    "tipo": "manual"
+   }
+  ],
   "/videos/consultor-05-producao.mp4": [
    {
     "modulo": "producao",
@@ -2675,6 +4826,12 @@
    {
     "modulo": "producao",
     "tipo": "checklist"
+   }
+  ],
+  "/manuais/producao/guia.json": [
+   {
+    "modulo": "producao",
+    "tipo": "manual"
    }
   ],
   "/videos/consultor-02-servicos.mp4": [
@@ -2707,6 +4864,12 @@
     "tipo": "checklist"
    }
   ],
+  "/manuais/servicos/guia.json": [
+   {
+    "modulo": "servicos",
+    "tipo": "manual"
+   }
+  ],
   "/videos/consultor-09-projetos.mp4": [
    {
     "modulo": "projetos",
@@ -2737,6 +4900,12 @@
     "tipo": "checklist"
    }
   ],
+  "/manuais/projetos/guia.json": [
+   {
+    "modulo": "projetos",
+    "tipo": "manual"
+   }
+  ],
   "/videos/consultor-06-expedicao.mp4": [
    {
     "modulo": "expedicao",
@@ -2765,6 +4934,12 @@
    {
     "modulo": "expedicao",
     "tipo": "checklist"
+   }
+  ],
+  "/manuais/expedicao/guia.json": [
+   {
+    "modulo": "expedicao",
+    "tipo": "manual"
    }
   ],
   "/videos/consultor-07-faturamento.mp4": [
@@ -2819,10 +4994,22 @@
     "tipo": "checklist"
    }
   ],
+  "/manuais/faturamento/guia.json": [
+   {
+    "modulo": "faturamento",
+    "tipo": "manual"
+   }
+  ],
   "/checklists/consultores/implantacao-06-fiscal.html": [
    {
     "modulo": "fiscal",
     "tipo": "checklist"
+   }
+  ],
+  "/manuais/fiscal/guia.json": [
+   {
+    "modulo": "fiscal",
+    "tipo": "manual"
    }
   ],
   "/videos/consultor-08-financeiro.mp4": [
@@ -2861,6 +5048,12 @@
     "tipo": "checklist"
    }
   ],
+  "/manuais/financeiro/guia.json": [
+   {
+    "modulo": "financeiro",
+    "tipo": "manual"
+   }
+  ],
   "/videos/consultor-10-tarefas.mp4": [
    {
     "modulo": "tarefas",
@@ -2891,6 +5084,12 @@
     "tipo": "checklist"
    }
   ],
+  "/manuais/tarefas/guia.json": [
+   {
+    "modulo": "tarefas",
+    "tipo": "manual"
+   }
+  ],
   "/videos/consultor-fluxo-completo.mp4": [
    {
     "modulo": "fluxo-completo",
@@ -2913,6 +5112,12 @@
    {
     "modulo": "fluxo-completo",
     "tipo": "checklist"
+   }
+  ],
+  "/manuais/fluxo-completo/guia.json": [
+   {
+    "modulo": "fluxo-completo",
+    "tipo": "manual"
    }
   ]
  },

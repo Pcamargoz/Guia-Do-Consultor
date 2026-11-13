@@ -57,11 +57,20 @@ describe('validadores recusam o que está fora do contrato', () => {
     assert.ok(validarMaterial({ ...materialOk, duracao_s: 1.5 }).length > 0);
   });
   it('resumo', () => {
-    const modulo = { id: 'vendas', ordem: 1, titulo: 'Vendas', subtitulo: null, cor: '#123456', icone: 'vendas', status: 'disponivel', oculto: false, materiais: [materialOk] };
-    assert.deepEqual(validarResumo({ versao: '2026-11-04', modulos: [modulo] }), []);
-    assert.ok(validarResumo({ versao: '2026-11-04', modulos: [modulo, modulo] }).some((e) => e.includes('repetido')));
-    assert.ok(validarResumo({ versao: '2026-11-04', modulos: [{ ...modulo, cor: 'azul' }] }).length > 0);
-    assert.ok(validarResumo({ versao: '2026-11-04', modulos: [{ ...modulo, oculto: true }] }, { admin: false }).some((e) => e.includes('só admin')));
+    const prep = (titulo) => ({ status: 'em-preparacao', titulo, fontes: ['guia:x'], oculto: false });
+    const recursos = { video: prep('Vídeo completo do módulo'), checklist: null, manual: prep('Manual de apoio') };
+    const modulo = { id: 'vendas', ordem: 1, titulo: 'Vendas', subtitulo: null, cor: '#123456', icone: 'vendas', status: 'disponivel', oculto: false, materiais: [materialOk], recursos };
+    assert.deepEqual(validarResumo({ versao: '2026-11-04', videos: [], modulos: [modulo] }), []);
+    // Metodologia (doc 14): recurso em preparação não leva url; disponível exige url segura e fonte
+    assert.ok(validarResumo({ versao: '2026-11-04', videos: [], modulos: [{ ...modulo, recursos: { ...recursos, video: { ...recursos.video, url: '/x.mp4' } } }] }).some((e) => e.includes('em preparação não leva')));
+    const manualOk = { status: 'disponivel', id: 'vendas', titulo: 'Manual', resumo: null, url: '#manuais/vendas', dados: '/manuais/vendas/guia.json', capitulos: 3, passos: 10, telas: 4, situacao: 'rascunho', versaoSistema: '1.23.2', atualizadoEm: '2026-11-06', revisar: false, fontes: ['guia:x'], oculto: false };
+    assert.deepEqual(validarResumo({ versao: '2026-11-04', videos: [], modulos: [{ ...modulo, recursos: { ...recursos, manual: manualOk } }] }), []);
+    assert.ok(validarResumo({ versao: '2026-11-04', videos: [], modulos: [{ ...modulo, recursos: { ...recursos, manual: { ...manualOk, url: 'javascript:alert(1)' } } }] }).some((e) => e.includes('insegura')));
+    assert.ok(validarResumo({ versao: '2026-11-04', videos: [], modulos: [{ ...modulo, recursos: { ...recursos, manual: { ...manualOk, fontes: [] } } }] }).some((e) => e.includes('sem fonte')));
+    assert.ok(validarResumo({ versao: '2026-11-04', videos: [], modulos: [{ ...modulo, recursos: undefined }] }).length > 0);
+    assert.ok(validarResumo({ versao: '2026-11-04', videos: [], modulos: [modulo, modulo] }).some((e) => e.includes('repetido')));
+    assert.ok(validarResumo({ versao: '2026-11-04', videos: [], modulos: [{ ...modulo, cor: 'azul' }] }).length > 0);
+    assert.ok(validarResumo({ versao: '2026-11-04', videos: [], modulos: [{ ...modulo, oculto: true }] }, { admin: false }).some((e) => e.includes('só admin')));
     assert.ok(validarResumo({ modulos: [] }).length > 0);
   });
   it('detalhe', () => {

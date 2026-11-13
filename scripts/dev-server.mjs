@@ -75,7 +75,19 @@ async function tratar(request) {
     ...restoMw,
   };
   if (url.pathname.startsWith('/downloads/')) cabecalhos['Content-Disposition'] = 'attachment';
-  return new Response(await readFile(arquivo), { headers: cabecalhos });
+  const corpo = await readFile(arquivo);
+  // Pedido parcial (Range), como no Vercel: sem ele o player não consegue pular para um capítulo do vídeo.
+  cabecalhos['Accept-Ranges'] = 'bytes';
+  const faixa = /^bytes=(\d*)-(\d*)$/.exec(request.headers.get('range') || '');
+  if (faixa && (faixa[1] || faixa[2])) {
+    const total = corpo.length;
+    let ini = faixa[1] ? Number(faixa[1]) : total - Number(faixa[2]);
+    let fim = faixa[1] && faixa[2] ? Number(faixa[2]) : total - 1;
+    ini = Math.max(0, ini); fim = Math.min(fim, total - 1);
+    if (ini > fim || ini >= total) return new Response(null, { status: 416, headers: { 'Content-Range': `bytes */${total}` } });
+    return new Response(corpo.subarray(ini, fim + 1), { status: 206, headers: { ...cabecalhos, 'Content-Range': `bytes ${ini}-${fim}/${total}`, 'Content-Length': String(fim - ini + 1) } });
+  }
+  return new Response(corpo, { headers: cabecalhos });
 }
 
 http.createServer(async (req, res) => {
