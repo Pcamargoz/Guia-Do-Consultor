@@ -724,7 +724,24 @@
     }
   }
 
+  /* Pedido do responsável (13/11/2026): por enquanto a área fica vazia, só com "Em desenvolvimento".
+     O manual escrito continua em /metodologia/manual-faktory-flow.json; para publicar de novo, troque para false. */
+  const FF_EM_DESENVOLVIMENTO = true;
+
+  function ffEmDesenvolvimento(alvo) {
+    alvo.replaceChildren(h('div', { className: 'ff' },
+      h('header', { className: 'ff-abertura ff-abertura--vazia' },
+        h('div', { className: 'ff-abertura__luz', 'aria-hidden': 'true' }),
+        h('p', { className: 'ff-abertura__marca' }, h('span', { className: 'ff-ponto', 'aria-hidden': 'true' }), 'Manual principal da implantação'),
+        h('h1', { className: 'ff-abertura__titulo' },
+          h('span', { className: 'ff-linha' }, h('span', { text: 'Metodologia' })),
+          h('span', { className: 'ff-linha ff-linha--lima' }, h('span', { text: 'Faktory Flow' }))),
+        h('p', { className: 'ff-dev', role: 'status' }, h('span', { className: 'ff-dev__ponto', 'aria-hidden': 'true' }), 'Em desenvolvimento'))));
+    return null;
+  }
+
   async function metodologiaFF(alvo, rota, ctx) {
+    if (FF_EM_DESENVOLVIMENTO) return ffEmDesenvolvimento(alvo);
     alvo.replaceChildren(h('div', { className: 'ff' }, h('div', { className: 'mt-carregando mt-carregando--escuro', role: 'status' }, h('span', { className: 'mt-carregando__barra', 'aria-hidden': 'true' }), 'Carregando a Metodologia Faktory Flow…')));
     const man = await carregarManualFF();
     if (!ctx.valida()) return null;
@@ -899,7 +916,7 @@
       (k.errosComuns || []).forEach((e) => add('Erro comum', e.titulo, e.texto, rota, e.titulo, onde));
       (k.perguntasDoCliente || []).forEach((q) => add('Pergunta do cliente', q.pergunta, q.resposta, rota, q.pergunta, onde));
     }));
-    const man = await carregarManualFF();
+    const man = FF_EM_DESENVOLVIMENTO ? null : await carregarManualFF();
     if (man && !man.erro) {
       for (const f of man.frentes) for (const s of f.secoes) {
         add('Metodologia Faktory Flow', s.titulo, `${s.resumo || ''} ${(s.blocos || []).map((b) => b.texto || (b.itens || []).map((i) => (typeof i === 'string' ? i : `${i.titulo} ${i.texto || ''}`)).join(' ')).join(' ')}`, { area: 'metodologia-ff', secao: s.id }, null, f.titulo);

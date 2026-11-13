@@ -569,3 +569,12 @@ html.mov .ff-secao:not(.visto) .ff-secao__titulo::after { transform: scaleX(0); 
 @media (prefers-reduced-motion: reduce) {
   .mov-palavra > span, .mov-foco { animation: none !important; transition: none !important; transform: none !important; filter: none !important; opacity: 1 !important; }
 }
+
+/* Metodologia Faktory Flow em desenvolvimento: só a abertura, ocupando a tela */
+.ff-abertura--vazia { min-height: calc(100vh - 120px); align-content: center; border-bottom: 0; }
+.ff-dev { display: inline-flex; align-items: center; gap: 12px; width: max-content; margin: 8px 0 0; padding: 10px 18px; border: 1px solid rgb(213 221 38 / .4); border-radius: 999px;
+  background: rgb(213 221 38 / .08); color: var(--brand-accent); font: 700 15px var(--font-display); letter-spacing: .01em; }
+.ff-dev__ponto { width: 8px; height: 8px; border-radius: 50%; background: var(--brand-accent); box-shadow: 0 0 12px rgb(213 221 38 / .7); }
+html.mov .ff-dev { animation: ff-chega 700ms var(--mov-ease) both 320ms; }
+html.mov .ff-dev__ponto { animation: ff-pulsa 2.4s ease-in-out infinite 1.2s; }
+@keyframes ff-pulsa { 50% { opacity: .45; box-shadow: 0 0 4px rgb(213 221 38 / .4); } }
