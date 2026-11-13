@@ -92,30 +92,40 @@
     return h('div', { className: 'mt-vazio' }, h('span', { className: 'mt-vazio__ic' }, ic('relogio')), h('p', { text: texto }), acao || null);
   }
 
-  /* Entrada única por tela: só posição, nunca opacidade. Numa aba em segundo plano a animação não avança, e o conteúdo tem de estar visível mesmo assim. */
+  /* Movimento (movimento.js): revelar na rolagem, uma vez, com stagger curto. As limpezas saem na troca de tela. */
+  const MOV = window.FFMovimento || null;
+  const limpezas = [];
   function entrar(raiz) {
-    if (reduzido() || !raiz.animate) return;
-    const itens = [...raiz.querySelectorAll('[data-entra]')].slice(0, 24);
-    itens.forEach((el, i) => el.animate(
-      [{ transform: 'translateY(14px)' }, { transform: 'none' }],
-      { duration: 520, delay: Math.min(i, 12) * 34, easing: 'cubic-bezier(.16,1,.3,1)', fill: 'backwards' }));
+    if (!MOV) return;
+    limpezas.push(MOV.revelar(raiz));
   }
+  let ultimoModulo = null; // para o elemento compartilhado na volta ao catálogo
+
+  /* Títulos com as palavras subindo por máscara (movimento.js); sem movimento, o título fica como está. */
+  const titulo1 = (el, opcoes) => (MOV ? MOV.palavras(el, opcoes) : el);
 
   /* ---------- cabeçalho comum das seções claras ---------- */
   function cabecalho(titulo, texto, extra) {
     return h('header', { className: 'mt-cab' },
-      h('div', { className: 'mt-cab__txt' }, h('h1', { className: 'mt-cab__titulo', text: titulo }), texto ? h('p', { className: 'mt-cab__lead', text: texto }) : null),
+      h('div', { className: 'mt-cab__txt' }, titulo1(h('h1', { className: 'mt-cab__titulo', text: titulo })), texto ? h('p', { className: 'mt-cab__lead mov-foco', text: texto }) : null),
       extra || null);
+  }
+
+  /** Número que sobe até o valor real quando a tela abre. */
+  function contador(n) {
+    const el = h('strong', { text: n, 'aria-label': String(n) });
+    if (MOV) MOV.contar(el, n, { atraso: 260 });
+    return el;
   }
 
   /** Cobertura real dos materiais (não é métrica decorativa: diz o que existe e o que falta). */
   function cobertura(modulos) {
     const total = modulos.length;
-    return h('dl', { className: 'mt-cobertura', 'aria-label': 'Materiais publicados' },
+    return h('dl', { className: 'mt-cobertura', 'aria-label': 'Materiais publicados', 'data-revela': '' },
       TIPOS.map(([t, nome, icone]) => {
         const n = modulos.filter((m) => m.recursos?.[t]?.status === 'disponivel').length;
         return h('div', { className: 'mt-cobertura__item', style: { '--p': total ? n / total : 0 } },
-          h('dt', null, ic(icone), nome), h('dd', null, h('strong', { text: n }), ` de ${total}`),
+          h('dt', null, ic(icone), nome), h('dd', null, contador(n), ` de ${total}`),
           h('span', { className: 'mt-cobertura__trilho', 'aria-hidden': 'true' }, h('i')));
       }));
   }
@@ -143,9 +153,14 @@
     const p = m.recursos?.checklist ? progresso[m.recursos.checklist.chave] : null;
     const cor = corValida(m.cor);
     const nomeId = `mt-c-${m.id}`;
-    return h('li', { className: 'mt-card-item', data: { entra: '' } },
+    const abrirModulo = (e) => {
+      const card = e.currentTarget;
+      if (MOV) { MOV.nomear(card.querySelector('.mt-card__palco'), 'mt-palco'); MOV.nomear(card.querySelector('.mt-card__titulo'), 'mt-titulo'); }
+      ir({ area: 'metodologia', modulo: m.id });
+    };
+    const li = h('li', { className: 'mt-card-item', data: { flip: m.id } },
       h('button', { className: 'mt-card', type: 'button', style: { '--c': cor }, 'aria-labelledby': nomeId,
-        data: { completo: completos(m) }, on: { click: () => ir({ area: 'metodologia', modulo: m.id }) } },
+        data: { completo: completos(m) }, on: { click: abrirModulo } },
       h('span', { className: 'mt-card__palco', 'aria-hidden': 'true' }, h('span', { className: 'fi-wrap fi' }, ilustracao(m.id))),
       h('span', { className: 'mt-card__corpo' },
         h('span', { className: 'mt-card__titulo', id: nomeId, text: m.titulo }),
@@ -153,6 +168,9 @@
       h('ul', { className: 'mt-card__recs', 'aria-label': 'Materiais' }, TIPOS.map(([t, nome, i]) => linhaRecurso(m, t, nome.split(' ')[0], i, t === 'checklist' ? p : null))),
       m.oculto ? h('span', { className: 'mt-selo mt-selo--oculto' }, ic('oculto'), 'Oculto para os outros perfis') : null,
       h('span', { className: 'mt-card__seta', 'aria-hidden': 'true' }, ic('seta'))));
+    // Voltando do módulo: o cartão dele recebe os nomes e a ilustração "volta" para o lugar.
+    if (MOV && ultimoModulo === m.id) { MOV.nomear(li.querySelector('.mt-card__palco'), 'mt-palco'); MOV.nomear(li.querySelector('.mt-card__titulo'), 'mt-titulo'); }
+    return li;
   }
 
   async function catalogo(alvo, ctx) {
@@ -177,18 +195,24 @@
       contagem.textContent = `${plural(lista.length, 'módulo', 'módulos')}`;
       if (!lista.length) { grade.replaceChildren(vazio('Nenhum módulo com esse filtro. Limpe a busca ou escolha outro filtro.')); return; }
       grade.replaceChildren(...agrupar(lista).map((g) => h('section', { className: 'mt-grupo', 'aria-labelledby': `mt-g-${g.id}` },
-        h('div', { className: 'mt-grupo__cab' }, h('h2', { id: `mt-g-${g.id}`, text: g.titulo }), g.texto ? h('p', { text: g.texto }) : null,
+        h('div', { className: 'mt-grupo__cab', 'data-revela': '' }, h('h2', { id: `mt-g-${g.id}`, text: g.titulo }), g.texto ? h('p', { text: g.texto }) : null,
           h('span', { className: 'mt-grupo__n', text: plural(g.mods.length, 'módulo', 'módulos') })),
-        h('ul', { className: 'mt-cards' }, g.mods.map((m) => cartao(m, progresso))))));
-      entrar(grade);
+        h('ul', { className: 'mt-cards', 'data-revela-lista': '' }, g.mods.map((m) => cartao(m, progresso))))));
+    }
+    // Filtrar ou buscar: os cartões que ficam deslizam até o lugar novo (FLIP); na primeira vez, revelam na rolagem.
+    let primeiraVez = true;
+    function redesenhar() {
+      if (primeiraVez || !MOV) { desenharGrade(); primeiraVez = false; return; }
+      MOV.layout(grade, desenharGrade);
     }
     const FILTROS = [['todos', 'Todos'], ['completos', 'Com os 3 materiais'], ['pendentes', 'Com material em preparação'], ['revisar', 'Para revisar']];
     const filtros = h('div', { className: 'mt-segmento', role: 'group', 'aria-label': 'Filtrar módulos' },
       FILTROS.map(([id, rot]) => h('button', { type: 'button', className: 'mt-segmento__op', 'aria-pressed': String(id === filtro), data: { filtro: id },
-        on: { click: (e) => { filtro = id; filtros.querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.filtro === id))); desenharGrade(); e.currentTarget.focus(); } } }, rot)));
+        on: { click: (e) => { filtro = id; filtros.querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.filtro === id))); trilho?.mover(); redesenhar(); e.currentTarget.focus(); } } }, rot)));
+    let trilho = null;
     const busca = h('label', { className: 'mt-busca-local' }, ic('busca'),
       h('span', { className: 'mt-sr', text: 'Filtrar módulos pelo nome' }),
-      h('input', { type: 'search', placeholder: 'Filtrar módulos…', autocomplete: 'off', on: { input: (e) => { termo = semAcento(e.target.value.trim()); desenharGrade(); } } }));
+      h('input', { type: 'search', placeholder: 'Filtrar módulos…', autocomplete: 'off', on: { input: (e) => { termo = semAcento(e.target.value.trim()); redesenhar(); } } }));
     const relatorio = h('button', { type: 'button', className: 'mt-botao mt-botao--sec', on: { click: (e) => relatorioGeral(e.currentTarget, modulos) } }, ic('alerta'), 'Relatório de problemas');
     alvo.replaceChildren(h('div', { className: 'mt-pagina' },
       cabecalho('Metodologia do Consultor',
@@ -196,7 +220,9 @@
         cobertura(modulos)),
       h('div', { className: 'mt-barra' }, busca, filtros, relatorio),
       contagem, grade));
-    desenharGrade();
+    redesenhar();
+    if (MOV) { trilho = MOV.indicador(filtros, '[aria-pressed="true"]', 'mt-segmento__trilho'); limpezas.push(trilho.destruir); }
+    ultimoModulo = null;
   }
 
   /* ============================================================
@@ -244,9 +270,12 @@
       abas.querySelector(`[data-tipo="${alvoTab}"]`).focus();
     }
     let destruir = null;
+    let marcador = null;
     function trocar(t) {
       aba = t;
+      ultimoModulo = m.id;
       abas.querySelectorAll('[role="tab"]').forEach((b) => { const on = b.dataset.tipo === t; b.setAttribute('aria-selected', String(on)); b.tabIndex = on ? 0 : -1; });
+      marcador?.mover();
       painel.setAttribute('aria-labelledby', `mt-tab-${t}`);
       if (destruir) { destruir(); destruir = null; }
       const rec = m.recursos?.[t];
@@ -264,14 +293,15 @@
       h('nav', { className: 'mt-volta', 'aria-label': 'Navegação' },
         h('button', { type: 'button', className: 'mt-link', on: { click: () => ir({ area: 'metodologia' }) } }, ic('voltar'), 'Metodologia do Consultor')),
       h('header', { className: 'mt-modulo__cab' },
-        h('span', { className: 'mt-modulo__palco', 'aria-hidden': 'true' }, h('span', { className: 'fi-wrap fi' }, ilustracao(m.id))),
+        h('span', { className: 'mt-modulo__palco', 'aria-hidden': 'true', style: MOV ? { 'view-transition-name': 'mt-palco' } : null }, h('span', { className: 'fi-wrap fi' }, ilustracao(m.id))),
         h('div', { className: 'mt-modulo__txt' },
-          h('h1', { className: 'mt-modulo__titulo', text: m.titulo }),
-          m.subtitulo ? h('p', { className: 'mt-modulo__lead', text: m.subtitulo }) : null,
+          titulo1(h('h1', { className: 'mt-modulo__titulo', text: m.titulo, style: MOV ? { 'view-transition-name': 'mt-titulo' } : null }), { atraso: 180 }),
+          m.subtitulo ? h('p', { className: 'mt-modulo__lead mov-foco', text: m.subtitulo }) : null,
           m.oculto ? h('span', { className: 'mt-selo mt-selo--oculto' }, ic('oculto'), 'Oculto para os outros perfis') : null)),
       abas, painel,
       h('nav', { className: 'mt-vizinhos', 'aria-label': 'Outros módulos' }, vizinho(anterior, 'Módulo anterior', 'ant'), vizinho(proximo, 'Próximo módulo', 'prox'))));
     trocar(aba);
+    if (MOV) { marcador = MOV.indicador(abas, '[aria-selected="true"]', 'mt-recursos__marca'); limpezas.push(marcador.destruir); }
     return () => { if (destruir) destruir(); };
   }
 
@@ -416,7 +446,7 @@
           h('button', { type: 'button', className: 'mt-link', on: { click: () => ir({ area: 'manuais' }) } }, ic('voltar'), 'Manuais de Apoio')),
         h('header', { className: 'mt-leitor__cab' },
           h('span', { className: 'mt-leitor__ic', 'aria-hidden': 'true' }, h('span', { className: 'fi-wrap fi' }, ilustracao(m.id))),
-          h('div', null, h('h1', { text: m.recursos?.manual?.titulo || `${m.titulo} — manual de apoio` }),
+          h('div', null, titulo1(h('h1', { text: m.recursos?.manual?.titulo || `${m.titulo} — manual de apoio` })),
             m.recursos?.manual?.resumo ? h('p', { className: 'mt-cab__lead', text: m.recursos.manual.resumo }) : null)),
         painel));
       await painelManual(painel, m, m.recursos?.manual, modulos, ctx, { naBiblioteca: true, foco: window.__mtFoco });
@@ -437,10 +467,10 @@
         return true;
       });
       if (!lista.length) { corpo.replaceChildren(vazio('Nenhum manual com esse filtro.')); return; }
-      corpo.replaceChildren(h('ul', { className: 'mt-docs' }, lista.map((m) => {
+      corpo.replaceChildren(h('ul', { className: 'mt-docs', 'data-revela-lista': '' }, lista.map((m) => {
         const rec = m.recursos.manual;
         const ok = rec.status === 'disponivel';
-        return h('li', { className: 'mt-doc', data: { entra: '', estado: estadoRecurso(rec).id }, style: { '--c': corValida(m.cor) } },
+        return h('li', { className: 'mt-doc', data: { flip: m.id, estado: estadoRecurso(rec).id }, style: { '--c': corValida(m.cor) } },
           h('span', { className: 'mt-doc__ic', 'aria-hidden': 'true' }, ic(m.id)),
           h('div', { className: 'mt-doc__txt' },
             h('h2', { className: 'mt-doc__titulo' }, ok
@@ -459,19 +489,23 @@
       })));
       entrar(corpo);
     }
+    let primeira = true;
+    const redesenharDocs = () => { if (primeira || !MOV) { desenhar(); primeira = false; return; } MOV.layout(corpo, desenhar); };
     const FILTROS = [['todos', 'Todos'], ['disponiveis', 'Disponíveis'], ['revisar', 'Para revisar'], ['preparacao', 'Em preparação']];
     const filtros = h('div', { className: 'mt-segmento', role: 'group', 'aria-label': 'Filtrar manuais' },
       FILTROS.map(([id, rot]) => h('button', { type: 'button', className: 'mt-segmento__op', 'aria-pressed': String(id === filtro), data: { filtro: id },
-        on: { click: () => { filtro = id; filtros.querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.filtro === id))); desenhar(); } } }, rot)));
+        on: { click: () => { filtro = id; filtros.querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.filtro === id))); trilhoDocs?.mover(); redesenharDocs(); } } }, rot)));
+    let trilhoDocs = null;
     const n = disponiveis.filter((m) => m.recursos.manual.status === 'disponivel').length;
     alvo.replaceChildren(h('div', { className: 'mt-pagina' },
       cabecalho('Manuais de Apoio', `Os manuais dos módulos, os mesmos da Metodologia do Consultor. ${n} de ${disponiveis.length} publicados. Leia aqui, imprima ou salve em PDF.`),
       h('div', { className: 'mt-barra' },
         h('label', { className: 'mt-busca-local' }, ic('busca'), h('span', { className: 'mt-sr', text: 'Buscar manual por nome ou módulo' }),
-          h('input', { type: 'search', placeholder: 'Buscar manual ou módulo…', autocomplete: 'off', on: { input: (e) => { termo = semAcento(e.target.value.trim()); desenhar(); } } })),
+          h('input', { type: 'search', placeholder: 'Buscar manual ou módulo…', autocomplete: 'off', on: { input: (e) => { termo = semAcento(e.target.value.trim()); redesenharDocs(); } } })),
         filtros),
       corpo));
-    desenhar();
+    redesenharDocs();
+    if (MOV) { trilhoDocs = MOV.indicador(filtros, '[aria-pressed="true"]', 'mt-segmento__trilho'); limpezas.push(trilhoDocs.destruir); }
   }
 
   /* ============================================================
@@ -497,7 +531,7 @@
         h('div', { className: 'mt-assistir__grade' },
           h('div', { className: 'mt-assistir__principal' }, player.el,
             h('div', { className: 'mt-assistir__info' },
-              h('h1', { text: v.titulo }),
+              titulo1(h('h1', { text: v.titulo }), { atraso: 120 }),
               h('p', { className: 'mt-assistir__meta' }, [duracao(v.duracao_s), v.modulos.length ? v.modulos.map(nomeMod).join(' · ') : null, v.revisar ? `gravado na v${v.versaoSistema}` : null].filter(Boolean).join('  ·  ')),
               v.resumo ? h('p', { className: 'mt-assistir__resumo', text: v.resumo }) : null,
               v.modulos.length ? h('div', { className: 'mt-assistir__mods' }, v.modulos.map((id) => h('button', { type: 'button', className: 'mt-chip mt-chip--link', on: { click: () => ir({ area: 'metodologia', modulo: id }) } }, ic(id), nomeMod(id)))) : null)),
@@ -510,11 +544,11 @@
       return player.destruir;
     }
     let termo = '';
-    const grade = h('ul', { className: 'mt-videos' });
+    const grade = h('ul', { className: 'mt-videos', 'data-revela-lista': '' });
     function desenhar() {
       const vis = lista.filter((v) => !termo || semAcento(`${v.titulo} ${v.resumo || ''} ${v.modulos.map(nomeMod).join(' ')}`).includes(termo));
       if (!vis.length) { grade.replaceChildren(h('li', null, vazio(lista.length ? 'Nenhum vídeo com essa busca.' : 'Nenhum vídeo publicado para o seu perfil.'))); return; }
-      grade.replaceChildren(...vis.map((v) => h('li', { data: { entra: '' } },
+      grade.replaceChildren(...vis.map((v) => h('li', { data: { flip: v.id } },
         h('button', { type: 'button', className: 'mt-video', on: { click: () => ir({ area: 'videos', modulo: v.id }) } },
           h('span', { className: 'mt-video__capa' },
             v.poster ? h('img', { src: v.poster, alt: '', loading: 'lazy', width: 640, height: 360 }) : h('span', { className: 'mt-rel__sem' }, ic('video')),
@@ -530,7 +564,7 @@
       cabecalho('Biblioteca de Vídeos', `Os vídeos de fluxo já publicados, com narração, legenda e capítulos. Os vídeos completos de cada módulo entram aqui e na Metodologia do Consultor conforme forem gravados.`),
       h('div', { className: 'mt-barra' },
         h('label', { className: 'mt-busca-local' }, ic('busca'), h('span', { className: 'mt-sr', text: 'Buscar vídeo' }),
-          h('input', { type: 'search', placeholder: 'Buscar por assunto ou módulo…', autocomplete: 'off', on: { input: (e) => { termo = semAcento(e.target.value.trim()); desenhar(); } } }))),
+          h('input', { type: 'search', placeholder: 'Buscar por assunto ou módulo…', autocomplete: 'off', on: { input: (e) => { termo = semAcento(e.target.value.trim()); if (MOV) MOV.layout(grade, desenhar); else desenhar(); } } }))),
       grade));
     desenhar();
     return null;
@@ -706,10 +740,10 @@
       if (el) { el.scrollIntoView({ behavior: reduzido() ? 'auto' : 'smooth', block: 'start' }); el.focus({ preventScroll: true }); }
     }
     const conteudo = man.frentes.map((f, fi) => h('section', { className: 'ff-frente', 'aria-labelledby': `ff-f-${f.id}` },
-      h('header', { className: 'ff-frente__cab' },
+      h('header', { className: 'ff-frente__cab', 'data-revela': '' },
         h('span', { className: 'ff-frente__n', 'aria-hidden': 'true', text: fi + 1 }),
-        h('div', null, h('h2', { id: `ff-f-${f.id}`, className: 'ff-frente__titulo', text: f.titulo }), f.resumo ? h('p', { text: f.resumo }) : null)),
-      f.secoes.map((s) => h('section', { className: 'ff-secao', id: idSec(s), tabindex: -1, 'aria-labelledby': `${idSec(s)}-t`, data: { status: s.status } },
+        h('div', null, titulo1(h('h2', { id: `ff-f-${f.id}`, className: 'ff-frente__titulo mov-palavras--revela', text: f.titulo })), f.resumo ? h('p', { text: f.resumo }) : null)),
+      f.secoes.map((s) => h('section', { className: 'ff-secao', id: idSec(s), tabindex: -1, 'aria-labelledby': `${idSec(s)}-t`, 'data-revela-lista': '', data: { status: s.status } },
         h('h3', { className: 'ff-secao__titulo', id: `${idSec(s)}-t`, text: s.titulo }),
         s.resumo ? h('p', { className: 'ff-secao__resumo', text: s.resumo }) : null,
         s.status !== 'disponivel' ? h('p', { className: 'ff-aviso ff-aviso--info' }, ic('relogio'), h('span', { text: 'Seção em preparação: a base de conhecimento ainda não cobre este tema.' })) : null,
@@ -718,13 +752,17 @@
           h('ul', null, s.fontes.map((x) => h('li', null, h('code', { text: x }))))) : null))));
     const glossario = (man.glossario || []).length ? h('section', { className: 'ff-glossario', 'aria-labelledby': 'ff-glossario-t' },
       h('h2', { id: 'ff-glossario-t', className: 'ff-frente__titulo', text: 'Glossário da implantação' }),
-      h('dl', null, man.glossario.map((g) => h('div', null, h('dt', { text: g.termo }), h('dd', { text: g.definicao }))))) : null;
+      h('dl', { 'data-revela-lista': '' }, man.glossario.map((g) => h('div', null, h('dt', { text: g.termo }), h('dd', { text: g.definicao }))))) : null;
     const disponiveis = secoes.filter((s) => s.status === 'disponivel').length;
-    alvo.replaceChildren(h('div', { className: 'ff' },
+    const progresso = h('div', { className: 'ff-progresso', 'aria-hidden': 'true' }, h('i'));
+    alvo.replaceChildren(h('div', { className: 'ff' }, progresso,
       h('header', { className: 'ff-abertura' },
         h('div', { className: 'ff-abertura__luz', 'aria-hidden': 'true' }),
         h('p', { className: 'ff-abertura__marca' }, h('span', { className: 'ff-ponto', 'aria-hidden': 'true' }), 'Manual principal da implantação'),
-        h('h1', { className: 'ff-abertura__titulo' }, 'Metodologia', h('br'), h('span', { text: 'Faktory Flow' })),
+        // título em duas linhas que sobem por máscara (o momento autoral da área)
+        h('h1', { className: 'ff-abertura__titulo' },
+          h('span', { className: 'ff-linha' }, h('span', { text: 'Metodologia' })),
+          h('span', { className: 'ff-linha ff-linha--lima' }, h('span', { text: 'Faktory Flow' }))),
         man.resumo ? h('p', { className: 'ff-abertura__lead', text: man.resumo }) : null,
         h('dl', { className: 'ff-abertura__fatos' },
           h('div', null, h('dt', { text: 'Frentes' }), h('dd', { text: man.frentes.map((f) => f.titulo).join(' e ') })),
@@ -747,7 +785,30 @@
     }
     if (rota.secao) requestAnimationFrame(() => rolar(rota.secao));
     if (window.__mtFoco) { const f = window.__mtFoco; window.__mtFoco = null; requestAnimationFrame(() => focarTexto(alvo, f)); }
-    return () => obs && obs.disconnect();
+    // Leitura guiada pela rolagem: a linha de lima mostra quanto do manual já passou; a luz do topo anda mais devagar
+    // que o texto (parallax discreto, só enquanto a abertura está na tela). rAF + passivo; sai na troca de tela.
+    const corpo = alvo.querySelector('.ff-corpo');
+    const luz = alvo.querySelector('.ff-abertura__luz');
+    const abertura = alvo.querySelector('.ff-abertura');
+    let pedido = 0;
+    const aoRolar = () => {
+      if (pedido) return;
+      pedido = requestAnimationFrame(() => {
+        pedido = 0;
+        const r = corpo.getBoundingClientRect();
+        const total = Math.max(1, r.height - innerHeight * 0.6);
+        const p = Math.min(1, Math.max(0, -r.top / total));
+        progresso.style.setProperty('--p', p.toFixed(4));
+        progresso.classList.toggle('on', r.top < innerHeight * 0.4);
+        if (luz && !(MOV && MOV.reduzido())) {
+          const a = abertura.getBoundingClientRect();
+          if (a.bottom > 0) luz.style.transform = `translate3d(0, ${(-a.top * 0.35).toFixed(1)}px, 0)`;
+        }
+      });
+    };
+    addEventListener('scroll', aoRolar, { passive: true });
+    aoRolar();
+    return () => { if (obs) obs.disconnect(); removeEventListener('scroll', aoRolar); cancelAnimationFrame(pedido); };
   }
 
   /* ============================================================
@@ -867,6 +928,7 @@
   let destruirAtual = null;
   async function desenhar(area, alvo, rota, ctx) {
     if (destruirAtual) { try { destruirAtual(); } catch { /* nada */ } destruirAtual = null; }
+    while (limpezas.length) { const f = limpezas.pop(); try { if (typeof f === 'function') f(); } catch { /* nada */ } }
     let fim = null;
     if (area === 'metodologia') fim = rota.modulo ? await paginaModulo(alvo, rota, ctx) : await catalogo(alvo, ctx);
     else if (area === 'manuais') fim = await manuais(alvo, rota, ctx);

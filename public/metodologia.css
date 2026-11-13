@@ -351,7 +351,7 @@
 .ff-abertura__marca { display: inline-flex; align-items: center; gap: 10px; margin: 0; color: var(--ff-suave); font: 600 14px var(--font-body); }
 .ff-ponto { width: 9px; height: 9px; border-radius: 50%; background: var(--ff-lima); box-shadow: 0 0 0 4px rgb(213 221 38 / .16), 0 0 18px rgb(213 221 38 / .6); }
 .ff-abertura__titulo { margin: 0; font: 800 clamp(3rem, 8.4vw, 6rem)/.94 var(--font-display); letter-spacing: -.04em; color: #fff; text-wrap: balance; }
-.ff-abertura__titulo span { color: var(--ff-lima); }
+.ff-linha--lima > span { color: var(--ff-lima); }
 .ff-abertura__lead { margin: 0; max-width: 62ch; color: var(--ff-suave); font-size: clamp(16px, 1.4vw, 18px); line-height: 1.65; text-wrap: pretty; }
 .ff-abertura__fatos { display: flex; flex-wrap: wrap; gap: 14px 40px; margin: 8px 0 0; }
 .ff-abertura__fatos dt { color: var(--ff-suave); font: 600 12.5px var(--font-body); }
@@ -466,3 +466,106 @@ body.ab-modo-ff .sh-busca svg, body.ab-modo-ff .sh-busca kbd { color: #A9C2D6; }
 .mt-grupo + .mt-grupo { border-top: 1px solid var(--color-line); }
 .mt-grupo:first-child { padding-top: 8px; }
 .mt-grupo__n { margin-left: auto; padding: 2px 10px; border-radius: 999px; background: var(--color-surface-alt); border: 1px solid var(--color-line); color: var(--color-muted); font: 600 12px var(--font-body); font-variant-numeric: tabular-nums; }
+
+/* =====================================================================
+   Movimento (movimento.js · doc 15). Só com html.mov (script rodou e o usuário não pediu movimento reduzido):
+   sem JS, nada fica escondido. Durações: 160 resposta · 320 estado · 420 layout · 640–900 momento autoral.
+   ===================================================================== */
+:root { --mov-ease: cubic-bezier(.16, 1, .3, 1); --mov-sai: cubic-bezier(.4, 0, 1, 1);
+  --mov-mola: linear(0, .12 3%, .42 9%, .74 16%, .93 23%, 1.025 31%, 1.04 37%, 1.02 46%, 1.003 58%, .999 72%, 1); }
+@supports not (transition-timing-function: linear(0, 1)) { :root { --mov-mola: var(--mov-ease); } }
+
+/* revelar na rolagem (uma vez) */
+html.mov [data-revela] { transition: opacity .6s var(--mov-ease) var(--mov-atraso, 0ms), transform .8s var(--mov-ease) var(--mov-atraso, 0ms); }
+html.mov [data-revela]:not(.visto) { opacity: 0; transform: translateY(18px); }
+html.mov [data-revela-lista] > * { transition: opacity .55s var(--mov-ease) var(--mov-atraso, 0ms), transform .8s var(--mov-ease) var(--mov-atraso, 0ms); }
+html.mov [data-revela-lista]:not(.visto) > * { opacity: 0; transform: translateY(22px) scale(.985); }
+/* barras de cobertura enchem quando aparecem */
+html.mov .mt-cobertura:not(.visto) .mt-cobertura__trilho i { transform: scaleX(0); }
+html.mov .mt-cobertura .mt-cobertura__item:nth-child(2) i { transition-delay: 90ms; }
+html.mov .mt-cobertura .mt-cobertura__item:nth-child(3) i { transition-delay: 180ms; }
+
+/* indicador deslizante dos filtros (substitui o fundo fixo do botão ativo) */
+.mt-segmento { position: relative; isolation: isolate; }
+.mt-segmento__trilho { position: absolute; left: 0; top: 0; z-index: -1; border-radius: 9px; background: #fff; box-shadow: 0 1px 2px rgb(12 36 56 / .08), 0 4px 12px rgb(12 36 56 / .06); pointer-events: none; }
+.mt-segmento:has(.mt-segmento__trilho) .mt-segmento__op[aria-pressed="true"] { background: transparent; box-shadow: none; }
+.mt-segmento__op { position: relative; transition: color var(--dur-fast); }
+
+/* marca deslizante das abas do módulo: um anel na cor do módulo que viaja até a aba escolhida */
+.mt-recursos { position: relative; }
+.mt-recursos__marca { position: absolute; left: 0; top: 0; z-index: 2; border-radius: 16px; pointer-events: none;
+  box-shadow: inset 0 0 0 1.5px var(--c), 0 10px 26px color-mix(in srgb, var(--c) 16%, transparent); }
+.mt-recursos:has(.mt-recursos__marca) .mt-recurso[aria-selected="true"] { box-shadow: none; border-color: transparent; }
+.mt-recursos:has(.mt-recursos__marca) .mt-recurso::after { display: none; }
+.mt-recurso[aria-selected="true"] .mt-recurso__ic { background: var(--c); color: #fff; transition: background-color var(--dur-base), color var(--dur-base); }
+
+/* troca de tela: menu e barra do topo ficam; o conteúdo sai rápido e o novo chega suave.
+   A ilustração e o título do módulo viajam do cartão para o cabeçalho (e voltam). */
+.sidebar { view-transition-name: sh-menu; }
+.ab-topo { view-transition-name: sh-topo; }
+::view-transition-old(root) { animation: mt-vt-sai 170ms var(--mov-sai) both; }
+::view-transition-new(root) { animation: mt-vt-entra 420ms var(--mov-ease) both; }
+::view-transition-group(mt-palco), ::view-transition-group(mt-titulo) { animation-duration: 520ms; animation-timing-function: var(--mov-ease); }
+::view-transition-old(mt-titulo), ::view-transition-new(mt-titulo) { animation-duration: 260ms; height: 100%; object-fit: none; object-position: left center; }
+::view-transition-group(sh-menu), ::view-transition-group(sh-topo) { animation: none; }
+@keyframes mt-vt-sai { to { opacity: 0; transform: scale(.992); } }
+@keyframes mt-vt-entra { from { opacity: 0; transform: translateY(10px); } }
+
+/* módulo: a ilustração entra com uma mola curta depois da viagem */
+html.mov .mt-modulo__palco { animation: mt-palco-pousa 700ms var(--mov-mola) both 120ms; }
+@keyframes mt-palco-pousa { from { transform: scale(.94); } }
+
+/* player: o botão grande respira na entrada e responde com mola */
+html.mov .mt-player__grande { transition: transform var(--dur-base) var(--mov-mola), opacity var(--dur-base); }
+html.mov .mt-player[data-estado="parado"] .mt-player__grande { animation: mt-respira 2.6s ease-in-out 1s 2; }
+@keyframes mt-respira { 50% { box-shadow: 0 0 0 18px rgb(213 221 38 / .08), 0 18px 40px rgb(0 0 0 / .35); } }
+
+/* Metodologia Faktory Flow — título por máscara, linha de leitura e passos que se desenham */
+.ff-linha { display: block; overflow: hidden; padding-bottom: .06em; margin-bottom: -.06em; }
+.ff-linha > span { display: block; }
+html.mov .ff-linha > span { animation: ff-sobe 900ms var(--mov-ease) both; }
+html.mov .ff-linha--lima > span { animation-delay: 110ms; }
+html.mov .ff-abertura__lead, html.mov .ff-abertura__fatos, html.mov .ff-abertura__acoes, html.mov .ff-abertura__marca { animation: ff-chega 700ms var(--mov-ease) both; }
+html.mov .ff-abertura__marca { animation-delay: 0ms; }
+html.mov .ff-abertura__lead { animation-delay: 260ms; }
+html.mov .ff-abertura__fatos { animation-delay: 340ms; }
+html.mov .ff-abertura__acoes { animation-delay: 420ms; }
+@keyframes ff-sobe { from { transform: translateY(104%); } }
+@keyframes ff-chega { from { opacity: 0; transform: translateY(12px); } }
+.ff-abertura__luz { will-change: transform; }
+.ff-progresso { position: sticky; top: 0; z-index: 30; height: 2px; margin-bottom: -2px; pointer-events: none; opacity: 0; transition: opacity var(--dur-base); }
+.ff-progresso.on { opacity: 1; }
+.ff-progresso i { display: block; height: 100%; transform-origin: left; transform: scaleX(var(--p, 0)); background: var(--brand-accent); box-shadow: 0 0 12px rgb(213 221 38 / .55); }
+@supports (animation-timeline: view()) {
+  html.mov .ff-passos li::after { transform-origin: top; animation: ff-traco linear both; animation-timeline: view(); animation-range: entry 20% cover 55%; }
+  @keyframes ff-traco { from { transform: scaleY(0); } }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
+  .mt-segmento__trilho, .mt-recursos__marca { transition: none; }
+}
+
+/* ---------- texto (paleta e fontes da marca; sem texto em degradê) ---------- */
+.mov-palavra { display: inline-block; overflow: hidden; vertical-align: top; padding: .02em .02em .1em; margin: -.02em -.02em -.1em; }
+.mov-palavra > span { display: inline-block; }
+/* títulos de página: as palavras sobem por máscara, uma depois da outra (passo de 55 ms) */
+html.mov [data-mov-palavras]:not(.mov-palavras--revela) .mov-palavra > span { animation: mov-palavra 820ms var(--mov-ease) both; animation-delay: calc(var(--i, 0) * 55ms + var(--d, 0ms)); }
+@keyframes mov-palavra { from { transform: translateY(108%) rotate(2deg); } }
+/* títulos dentro do texto (Metodologia Faktory Flow): sobem quando a seção entra na tela */
+html.mov .mov-palavras--revela .mov-palavra > span { transition: transform 900ms var(--mov-ease); transition-delay: calc(var(--i, 0) * 60ms + 120ms); }
+html.mov [data-revela]:not(.visto) .mov-palavras--revela .mov-palavra > span { transform: translateY(108%); }
+/* textos de abertura: do desfoque leve ao nítido, depois do título */
+html.mov .mov-foco { animation: mov-foco 900ms var(--mov-ease) both 220ms; }
+@keyframes mov-foco { from { opacity: 0; filter: blur(6px); transform: translateY(6px); } }
+/* contadores: algarismos de largura fixa enquanto sobem (nada pula de lugar) */
+.mt-cobertura dd strong { font-variant-numeric: tabular-nums; display: inline-block; min-width: 1.2ch; text-align: right; }
+/* Metodologia Faktory Flow: o título de cada seção ganha um traço de lima que se desenha ao entrar na tela */
+.ff-secao__titulo::after { content: ""; display: block; width: 48px; height: 2px; margin-top: 12px; border-radius: 2px; background: var(--ff-lima); transform-origin: left; box-shadow: 0 0 10px rgb(213 221 38 / .45); }
+html.mov .ff-secao__titulo::after { transition: transform 1s var(--mov-ease) .25s; }
+html.mov .ff-secao:not(.visto) .ff-secao__titulo::after { transform: scaleX(0); }
+/* seleção e realce de texto dentro da área escura: lima com tinta escura (contraste alto) */
+.ff mark { background: rgb(213 221 38 / .22); color: #fff; border-radius: 3px; padding: 0 .15em; }
+@media (prefers-reduced-motion: reduce) {
+  .mov-palavra > span, .mov-foco { animation: none !important; transition: none !important; transform: none !important; filter: none !important; opacity: 1 !important; }
+}

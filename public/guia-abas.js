@@ -343,15 +343,23 @@
     });
   }
 
+  /* Troca de tela com View Transition (movimento.js): menu e topo ficam, o conteúdo troca e, entre o cartão e a
+     página do módulo, a ilustração e o título viajam. A 1ª tela e a troca dentro da mesma tela não animam. */
   function mostrar(rota) {
     const aba = paineis[rota.area] && rota.area !== 'acervo' ? rota.area : 'metodologia';
     const chave = `${aba}/${rota.modulo || ''}/${aba === 'metodologia' ? rota.secao || '' : ''}`;
     if (chave === chaveAtual) { rolarAte(rota.secao); return; }
+    const MOV = window.FFMovimento;
+    if (MOV && chaveAtual) MOV.transicao(() => mostrarAgora(rota, aba, chave));
+    else mostrarAgora(rota, aba, chave);
+  }
+
+  function mostrarAgora(rota, aba, chave) {
     const trocouAba = aba !== atual;
     atual = aba;
     chaveAtual = chave;
 
-    if (NOVAS.includes(aba)) desenhar({ ...rota, area: aba });
+    const desenho = NOVAS.includes(aba) ? desenhar({ ...rota, area: aba }) : null;
     for (const [id, painel] of Object.entries(paineis)) painel.hidden = id !== aba;
     document.body.classList.toggle('ab-modo-ff', aba === 'metodologia-ff');
     topo.querySelectorAll('.ab-aba').forEach((b) => {
@@ -368,6 +376,7 @@
     if (trocouAba || NOVAS.includes(aba)) scrollTo({ top: 0, behavior: 'instant' });
     rolarAte(rota.secao);
     if (trocouAba) document.dispatchEvent(new CustomEvent('ff:aba', { detail: { aba } }));
+    return desenho;
   }
 
   // Navegação: sempre pelo roteador único. Aceita área ("pacotes") ou alias antigo ("guia").
@@ -402,6 +411,8 @@
   // Único gatilho de troca de área: o evento do roteador (plataforma-dados.js). Até o 1º desenho, nada é mostrado.
   let pronto = false;
   window.addEventListener('plataforma:rota', (e) => { if (pronto) mostrar(e.detail || { area: 'metodologia' }); });
+  // Resposta de pressão (escala curta com mola) em botões, cartões e controles do player.
+  window.FFMovimento?.pressao(document);
 
   // Menu montado já no DOM: esconde itens até o mapa de visibilidade (evita flash do menu completo).
   sidebar.dataset.abPerfil = 'pendente';
