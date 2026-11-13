@@ -753,3 +753,61 @@ html.mov .mt-medidores { animation: ff-chega 700ms var(--mov-ease) both 480ms; }
 .mt-medidor[data-vazio="true"] .mt-glifo { --g-acento: #A9C2D6; }
 @media (prefers-reduced-motion: reduce) { .mt-no .g-a { animation: none !important; } }
 .mt-recurso[aria-selected="true"] { --g-acento: #fff; }
+
+/* ---------- glifos vivos: cada módulo com um gesto próprio ----------
+   No mapa: movimento contínuo e discreto (só o destaque se move), em ritmos diferentes para não marchar junto.
+   Nos demais lugares: o gesto acontece ao passar o mouse ou focar. Tudo desliga com movimento reduzido. */
+.mt-glifo .g-a, .mt-glifo .g-as { transform-box: fill-box; transform-origin: center; }
+@keyframes gl-flutua { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-1.6px); } }
+@keyframes gl-cai { 0% { transform: translateY(-2.5px); opacity: 0; } 30%, 70% { opacity: 1; } 100% { transform: translateY(2.5px); opacity: 0; } }
+@keyframes gl-desce { 0%, 100% { transform: translateY(-1.2px); } 50% { transform: translateY(1.6px); } }
+@keyframes gl-pisca { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: .35; transform: scale(.7); } }
+@keyframes gl-brilho { 0%, 100% { transform: scale(1) rotate(0); } 50% { transform: scale(1.35) rotate(45deg); } }
+@keyframes gl-gira { to { transform: rotate(360deg); } }
+@keyframes gl-balanca { 0%, 100% { transform: rotate(0); } 25% { transform: rotate(-12deg); } 75% { transform: rotate(9deg); } }
+@keyframes gl-sobe { 0% { transform: translateY(2px); opacity: 0; } 25%, 75% { opacity: 1; } 100% { transform: translateY(-3px); opacity: 0; } }
+@keyframes gl-anda { 0%, 100% { transform: translateX(-1px); } 50% { transform: translateX(1.4px); } }
+@keyframes gl-traco { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes gl-cresce { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(.62); } }
+@keyframes gl-pulso { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.3); } }
+@keyframes gl-caminho { 0%, 100% { transform: translate(0, 0); } 33% { transform: translate(-13px, 0); } 66% { transform: translate(0, -12px); } }
+
+/* o gesto de cada glifo (variável --gl = animação do destaque) */
+.mt-glifo[data-glifo="primeiros-passos"] { --gl: gl-pulso 2.4s ease-in-out infinite; }
+.mt-glifo[data-glifo="fundacao"] { --gl: gl-flutua 2.8s ease-in-out infinite; }
+.mt-glifo[data-glifo="crm"] { --gl: gl-cai 2.2s ease-in infinite; }
+.mt-glifo[data-glifo="cem"] { --gl: gl-pisca 1.6s steps(2, jump-none) infinite; }
+.mt-glifo[data-glifo="vendas"] { --gl: gl-pulso 2.6s ease-in-out infinite; }
+.mt-glifo[data-glifo="compras"] { --gl: gl-flutua 2.4s ease-in-out infinite; }
+.mt-glifo[data-glifo="recebimento"] { --gl: gl-desce 1.8s ease-in-out infinite; }
+.mt-glifo[data-glifo="estoque"] { --gl: gl-flutua 2.2s ease-in-out infinite; }
+.mt-glifo[data-glifo="producao"] { --gl: gl-sobe 2.6s ease-out infinite; }
+.mt-glifo[data-glifo="servicos"] { --gl: gl-pisca 2.4s ease-in-out infinite; }
+.mt-glifo[data-glifo="projetos"] { --gl: gl-anda 2.6s ease-in-out infinite; }
+.mt-glifo[data-glifo="expedicao"] { --gl: gl-anda 1.4s ease-in-out infinite; }
+.mt-glifo[data-glifo="faturamento"] { --gl: gl-pisca 2.2s ease-in-out infinite; }
+.mt-glifo[data-glifo="fiscal"] { --gl: gl-balanca 3s ease-in-out infinite; }
+.mt-glifo[data-glifo="financeiro"] { --gl: gl-flutua 1.9s ease-in-out infinite; }
+.mt-glifo[data-glifo="tarefas"] { --gl: gl-pulso 2s ease-in-out infinite; }
+.mt-glifo[data-glifo="relatorios"] { --gl: gl-cresce 2.2s ease-in-out infinite; }
+.mt-glifo[data-glifo="alumina"] { --gl: gl-brilho 2.4s ease-in-out infinite; }
+.mt-glifo[data-glifo="fluxo-completo"] { --gl: gl-caminho 3.6s cubic-bezier(.6, 0, .3, 1) infinite; }
+.mt-glifo[data-glifo="video"] { --gl: gl-pulso 2s ease-in-out infinite; }
+.mt-glifo[data-glifo="checklist"] { --gl: gl-pulso 2.2s ease-in-out infinite; }
+.mt-glifo[data-glifo="manual"] { --gl: gl-anda 2.4s ease-in-out infinite; }
+.mt-glifo[data-glifo="relatorios"] .g-as { transform-origin: bottom; }
+.mt-glifo[data-glifo="vendas"] .g-a, .mt-glifo[data-glifo="fiscal"] .g-as { transform-origin: center; }
+
+@media (prefers-reduced-motion: no-preference) {
+  /* mapa: sempre vivo, com fase diferente por nó */
+  .mt-no .mt-glifo :is(.g-a, .g-as) { animation: var(--gl); animation-delay: calc(var(--i, 0) * -370ms); }
+  /* o nó inteiro respira devagar, cada um no seu tempo */
+  html.mov .mt-no__ic { animation: gl-flutua 5.5s ease-in-out infinite; animation-delay: calc(var(--i, 0) * -610ms); }
+  .mt-no:hover .mt-no__ic, .mt-no:focus-visible .mt-no__ic { animation-duration: 1.6s; }
+  .mt-no:hover .mt-glifo :is(.g-a, .g-as), .mt-no:focus-visible .mt-glifo :is(.g-a, .g-as) { animation-duration: .9s; }
+  /* medidores: só os materiais já publicados se movem */
+  .mt-medidor:not([data-vazio="true"]) .mt-glifo :is(.g-a, .g-as) { animation: var(--gl); }
+  /* demais lugares: o gesto aparece no hover/foco */
+  :is(.mt-recurso, .mt-doc, .mt-mat, .mt-chip--link, .mt-botao, .mt-card-item):is(:hover, :focus-visible, :focus-within) .mt-glifo :is(.g-a, .g-as) { animation: var(--gl); }
+}
+@media (prefers-reduced-motion: reduce) { .mt-glifo :is(.g-a, .g-as), .mt-no__ic { animation: none !important; } }
