@@ -46,7 +46,16 @@
   const data = (d) => { if (!d) return ''; const x = new Date(`${String(d).slice(0, 10)}T12:00:00`); return Number.isNaN(x.getTime()) ? '' : x.toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' }); };
   const ir = (rota) => P.irPara(rota);
   const TIPOS = [['video', 'Vídeo completo', 'video'], ['checklist', 'Checklist de implantação', 'checklist'], ['manual', 'Manual de apoio', 'manual']];
-  const FASES = (window.PlataformaV3 && window.PlataformaV3.FASES) || [{ id: 'todos', titulo: 'Módulos', texto: '', ids: [] }];
+  /* Áreas do catálogo: na ordem em que a operação da empresa acontece, com nomes neutros. É organização, não trilha:
+     nenhum grupo diz por onde começar (pedido do responsável, 13/11/2026). */
+  const FASES = [
+    { id: 'base', titulo: 'Base do sistema', texto: 'Navegação e os cadastros que os outros módulos usam.', ids: ['primeiros-passos', 'fundacao'] },
+    { id: 'comercial', titulo: 'Comercial', texto: 'Do primeiro contato com o cliente ao pedido de venda.', ids: ['crm', 'cem', 'vendas'] },
+    { id: 'operacao', titulo: 'Suprimentos e operação', texto: 'Comprar, receber, guardar, produzir, instalar e entregar.', ids: ['compras', 'recebimento', 'estoque', 'producao', 'servicos', 'projetos', 'expedicao'] },
+    { id: 'fiscal', titulo: 'Fiscal e financeiro', texto: 'Nota fiscal, tributos, contas a pagar e a receber.', ids: ['faturamento', 'fiscal', 'financeiro'] },
+    { id: 'gestao', titulo: 'Gestão e análise', texto: 'Acompanhar o trabalho da equipe e analisar os números.', ids: ['tarefas', 'relatorios', 'alumina'] },
+    { id: 'completo', titulo: 'Visão de ponta a ponta', texto: 'Como os módulos se ligam numa operação completa.', ids: ['fluxo-completo'] },
+  ];
   const SITUACAO = { aprovado: 'Aprovado', revisao: 'Em revisão', rascunho: 'Rascunho' };
 
   function agrupar(modulos) {
@@ -168,7 +177,8 @@
       contagem.textContent = `${plural(lista.length, 'módulo', 'módulos')}`;
       if (!lista.length) { grade.replaceChildren(vazio('Nenhum módulo com esse filtro. Limpe a busca ou escolha outro filtro.')); return; }
       grade.replaceChildren(...agrupar(lista).map((g) => h('section', { className: 'mt-grupo', 'aria-labelledby': `mt-g-${g.id}` },
-        h('div', { className: 'mt-grupo__cab' }, h('h2', { id: `mt-g-${g.id}`, text: g.titulo }), g.texto ? h('p', { text: g.texto }) : null),
+        h('div', { className: 'mt-grupo__cab' }, h('h2', { id: `mt-g-${g.id}`, text: g.titulo }), g.texto ? h('p', { text: g.texto }) : null,
+          h('span', { className: 'mt-grupo__n', text: plural(g.mods.length, 'módulo', 'módulos') })),
         h('ul', { className: 'mt-cards' }, g.mods.map((m) => cartao(m, progresso))))));
       entrar(grade);
     }
@@ -182,7 +192,7 @@
     const relatorio = h('button', { type: 'button', className: 'mt-botao mt-botao--sec', on: { click: (e) => relatorioGeral(e.currentTarget, modulos) } }, ic('alerta'), 'Relatório de problemas');
     alvo.replaceChildren(h('div', { className: 'mt-pagina' },
       cabecalho('Metodologia do Consultor',
-        'Todos os módulos do Faktory Flow. Cada módulo reúne um vídeo completo, o checklist de implantação e o manual de apoio, no mesmo lugar.',
+        'Todos os módulos do Faktory Flow, agrupados por área na ordem em que a operação acontece. Abra qualquer um, na ordem que a implantação pedir: cada módulo reúne o vídeo completo, o checklist de implantação e o manual de apoio.',
         cobertura(modulos)),
       h('div', { className: 'mt-barra' }, busca, filtros, relatorio),
       contagem, grade));
