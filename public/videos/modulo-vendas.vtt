@@ -1,0 +1,307 @@
+WEBVTT
+
+00:00:01.100 --> 00:00:05.749
+Toda venda da empresa passa por um pedido.
+
+00:00:05.749 --> 00:00:11.615
+Neste vídeo, você vai ver o módulo de Vendas inteiro,
+
+00:00:11.615 --> 00:00:16.817
+na ordem em que ele é implantado com o cliente:
+
+00:00:16.817 --> 00:00:22.461
+o pedido, o ajuste, o desconto, os títulos, a nota,
+
+00:00:22.461 --> 00:00:26.271
+o encerramento e a expedição.
+
+00:00:26.571 --> 00:00:30.336
+O pedido é o combinado da venda:
+
+00:00:30.336 --> 00:00:35.983
+quem compra, o quê, por quanto e como vai pagar.
+
+00:00:35.983 --> 00:00:43.171
+Ele nasce Em aberto, e só nesse status pode ser editado.
+
+00:00:43.471 --> 00:00:49.152
+Depois ele pode ser faturado, liberado para a expedição e entregue.
+
+00:00:49.152 --> 00:00:54.749
+No caminho, ainda aparecem Aprovação pendente, quando há desconto,
+
+00:00:54.749 --> 00:00:57.214
+Encerrado e Cancelado.
+
+00:00:57.514 --> 00:00:59.111
+Primeira regra.
+
+00:00:59.111 --> 00:01:07.416
+No Novo Pedido, o CFOP fica bloqueado até você escolher a Empresa e o Cliente.
+
+00:01:07.416 --> 00:01:15.257
+Depois, ele só mostra os CFOPs que combinam com o estado do cliente.
+
+00:01:15.557 --> 00:01:16.293
+Segunda.
+
+00:01:16.293 --> 00:01:21.812
+Trocar a condição de pagamento regenera as parcelas sozinho.
+
+00:01:21.812 --> 00:01:26.043
+O botão Recalcular redivide o total por igual.
+
+00:01:26.043 --> 00:01:31.562
+Já o Recalcular Parcelas, no Resumo, só redivide os valores,
+
+00:01:31.562 --> 00:01:35.014
+sem mudar datas nem quantidade.
+
+00:01:35.314 --> 00:01:36.212
+Terceira.
+
+00:01:36.212 --> 00:01:42.202
+Só o pedido Em aberto pode ser editado, pelo lápis da lista.
+
+00:01:42.202 --> 00:01:45.895
+Faturado ou Entregue só se visualiza.
+
+00:01:45.895 --> 00:01:52.485
+Por isso, ajuste tudo antes de faturar, inclusive o projeto.
+
+00:01:52.785 --> 00:01:53.415
+Quarta.
+
+00:01:53.415 --> 00:02:00.259
+Desconto acima da alçada vai para Vendas, Aprovações, e outra pessoa aprova.
+
+00:02:00.259 --> 00:02:04.130
+Quem solicita não vê a própria solicitação.
+
+00:02:04.130 --> 00:02:08.242
+Pedido sem desconto não gera aprovação.
+
+00:02:08.542 --> 00:02:11.230
+Quinta, a que mais trava.
+
+00:02:11.230 --> 00:02:17.574
+Gerar Títulos só funciona no pedido Em aberto, ou Entregue,
+
+00:02:17.574 --> 00:02:20.370
+que ainda não tem títulos.
+
+00:02:20.370 --> 00:02:22.736
+Combine com o cliente:
+
+00:02:22.736 --> 00:02:26.929
+os títulos nascem do pedido ou da nota.
+
+00:02:26.929 --> 00:02:29.142
+Nunca dos dois.
+
+00:02:29.442 --> 00:02:30.141
+Sexta.
+
+00:02:30.141 --> 00:02:36.663
+O pedido vira Faturado no momento em que a nota é salva,
+
+00:02:36.663 --> 00:02:40.973
+mesmo que ela ainda esteja Em Aberto.
+
+00:02:40.973 --> 00:02:48.328
+Então confira sempre o status da nota, não só o do pedido.
+
+00:02:48.628 --> 00:02:49.655
+E a sétima.
+
+00:02:49.655 --> 00:02:54.604
+Liberar para Expedição só aparece no pedido Faturado.
+
+00:02:54.604 --> 00:02:57.498
+A liberação nunca é automática.
+
+00:02:57.498 --> 00:03:03.514
+Depois de liberado, o mesmo botão vira Reverter Liberação.
+
+00:03:03.814 --> 00:03:05.403
+Agora, na tela.
+
+00:03:05.403 --> 00:03:08.582
+Abra Vendas, Pedidos de Venda.
+
+00:03:08.582 --> 00:03:13.562
+A lista já abre filtrada nos pedidos Em aberto.
+
+00:03:13.562 --> 00:03:20.414
+O pedido pode vir importado ou ser digitado em Novo Pedido.
+
+00:03:20.714 --> 00:03:27.927
+No cabeçalho, preencha Empresa, Cliente, Vendedor e Condição de Pagamento.
+
+00:03:27.927 --> 00:03:30.267
+Só então escolha o CFOP.
+
+00:03:30.267 --> 00:03:37.885
+É ele que decide se o pedido exige condição, plano de contas e parcelas.
+
+00:03:38.185 --> 00:03:43.365
+Nos itens, cada produto tem os seus Dados do Item.
+
+00:03:43.365 --> 00:03:46.992
+O valor é calculado pela categoria:
+
+00:03:46.992 --> 00:03:53.001
+por unidade, peso, área, ou por cor e medida na esquadria.
+
+00:03:53.001 --> 00:03:57.642
+Depois de preencher, clique em Aplicar.
+
+00:03:57.942 --> 00:04:03.731
+Nas parcelas, escolha o meio de pagamento e o portador.
+
+00:04:03.731 --> 00:04:09.100
+No Resumo, a Conta de Fluxo de Caixa é obrigatória.
+
+00:04:09.100 --> 00:04:12.995
+Para gravar, use Salvar e Permanecer:
+
+00:04:12.995 --> 00:04:18.542
+o pedido ganha número e a tela continua aberta.
+
+00:04:18.842 --> 00:04:23.835
+Troque o filtro para Todos e leia a lista.
+
+00:04:23.835 --> 00:04:30.136
+As colunas Títulos e Nota Fiscal mostram, de relance,
+
+00:04:30.136 --> 00:04:37.156
+se o pedido já foi para o financeiro e se já tem nota.
+
+00:04:37.456 --> 00:04:42.028
+Para ajustar, use o lápis do pedido Em aberto.
+
+00:04:42.028 --> 00:04:43.816
+Trocou a condição?
+
+00:04:43.816 --> 00:04:46.102
+As parcelas se refazem.
+
+00:04:46.102 --> 00:04:50.177
+Escolha também o Projeto, se houver obra:
+
+00:04:50.177 --> 00:04:56.342
+sem ele, o painel financeiro do projeto fica incoerente.
+
+00:04:56.642 --> 00:05:03.484
+As alçadas de desconto são cadastradas com o gestor, por empresa:
+
+00:05:03.484 --> 00:05:09.274
+o limite em percentual ou valor, o nível e quem aprova.
+
+00:05:09.274 --> 00:05:13.242
+As faixas não podem se sobrepor.
+
+00:05:13.542 --> 00:05:19.946
+Um pedido com desconto acima da faixa fica em Aprovação pendente,
+
+00:05:19.946 --> 00:05:22.409
+e não fatura nem encerra.
+
+00:05:22.409 --> 00:05:28.428
+O aprovador abre Vendas, Aprovações, e aprova na linha.
+
+00:05:28.728 --> 00:05:33.833
+O menu de três pontos do pedido concentra as ações:
+
+00:05:33.833 --> 00:05:38.238
+Gerar Títulos, Faturar, Encerrar e Cancelar.
+
+00:05:38.238 --> 00:05:43.042
+O que aparece depende do status do pedido.
+
+00:05:43.342 --> 00:05:46.185
+Gerou os títulos pelo pedido?
+
+00:05:46.185 --> 00:05:52.264
+Eles aparecem em Financeiro, Contas a Receber, um por parcela.
+
+00:05:52.264 --> 00:05:57.264
+Limpe o filtro de status e pesquise pelo documento.
+
+00:05:57.264 --> 00:06:03.942
+A partir daí, o pedido só aceita mudar observações e vendedor.
+
+00:06:04.242 --> 00:06:08.799
+Se o caminho é a nota, use Faturar no pedido.
+
+00:06:08.799 --> 00:06:14.065
+A nota nasce com cliente, CFOP, parcelas e impostos.
+
+00:06:14.065 --> 00:06:20.647
+Ela aparece em Faturamento, Notas Fiscais, filtrada em Em Aberto.
+
+00:06:20.647 --> 00:06:28.842
+Finalizar a nota gera os títulos; transmitir é só com o responsável fiscal.
+
+00:06:29.142 --> 00:06:36.711
+Com o pedido faturado e liberado, ele entra na fila de carga da Expedição.
+
+00:06:36.711 --> 00:06:39.371
+E aparece nos indicadores:
+
+00:06:39.371 --> 00:06:46.313
+no Dashboard de Vendas, escolha o período e clique em Aplicar.
+
+00:06:46.613 --> 00:06:52.639
+A Carteira de Pedidos mostra onde cada pedido está parado:
+
+00:06:52.639 --> 00:07:00.927
+a faturar, a expedir, em carga, expedido ou entregue, com o tempo em dias.
+
+00:07:01.227 --> 00:07:06.339
+Se o cliente contratou, configure também as comissões:
+
+00:07:06.339 --> 00:07:12.777
+quando a comissão conta, no faturamento ou no recebimento, e a base.
+
+00:07:12.777 --> 00:07:17.827
+O Simulador mostra o resultado sem gravar nada.
+
+00:07:18.127 --> 00:07:23.184
+As metas são mensais, por empresa ou por vendedor.
+
+00:07:23.184 --> 00:07:30.156
+O realizado são os pedidos não cancelados, pela data do pedido.
+
+00:07:30.456 --> 00:07:31.876
+Três cuidados.
+
+00:07:31.876 --> 00:07:37.760
+Pedido com títulos só aceita mudar observações e vendedor.
+
+00:07:37.760 --> 00:07:43.543
+Encerrar fecha a venda sem nota, e não volta nem cancela.
+
+00:07:43.543 --> 00:07:47.094
+E, para desfazer, a ordem é sempre:
+
+00:07:47.094 --> 00:07:54.094
+cancelar a nota, excluir os títulos e, por último, cancelar o pedido,
+
+00:07:54.094 --> 00:07:59.056
+com um motivo de pelo menos dez caracteres.
+
+00:07:59.356 --> 00:08:00.400
+Resumindo:
+
+00:08:00.400 --> 00:08:03.740
+Empresa e Cliente antes do CFOP.
+
+00:08:03.740 --> 00:08:08.436
+Ajuste tudo enquanto o pedido está Em aberto.
+
+00:08:08.436 --> 00:08:14.072
+E escolha com o cliente um caminho só para os títulos.
+
+00:08:14.072 --> 00:08:22.813
+O checklist de implantação e o manual de Vendas estão logo abaixo deste vídeo.

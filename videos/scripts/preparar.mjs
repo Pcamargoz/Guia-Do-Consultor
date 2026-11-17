@@ -15,7 +15,9 @@ const roteiro = JSON.parse(fs.readFileSync(path.join(RAIZ, 'roteiros', `${id}.js
 const arqTempos = path.join(RAIZ, 'public', 'audio', id, 'tempos.json');
 const tempos = fs.existsSync(arqTempos) ? JSON.parse(fs.readFileSync(arqTempos, 'utf8')) : {};
 const PAUSA = 0.9; // respiro entre um trecho e o seguinte (s); 0,55 até 24/10/2026 (pedido de ritmo mais lento)
-const PALAVRAS_POR_S = 140 / 60; // estimativa quando ainda não há áudio
+// estimativa quando ainda não há áudio; sem voz (semVoz), o tempo é o de LEITURA da legenda: mais lento e com um mínimo por trecho
+const PALAVRAS_POR_S = (roteiro.semVoz ? (roteiro.leituraPpm ?? 105) : 140) / 60;
+const MIN_LEITURA = 3.2;
 
 // Legenda frase a frase: a narração é gerada uma frase por vez (frases/<hash>.wav) e emendada com uma pausa fixa,
 // então o início e a duração de cada frase são exatos. Sem os áudios, a legenda divide o tempo pelo tamanho do texto.
@@ -63,7 +65,8 @@ const faltando = [];
 const trechos = roteiro.trechos.map((t) => {
   const audio = tempos[t.id];
   let fala = audio?.duracao ?? t.fala.split(/\s+/).length / PALAVRAS_POR_S;
-  if (!audio) faltando.push(t.id);
+  if (!audio && roteiro.semVoz) fala = Math.max(fala, MIN_LEITURA);
+  if (!audio && !roteiro.semVoz) faltando.push(t.id);
   const caixas = t.captura ? [...caixasBase(t), ...(t.caixasExtras ?? [])] : null;
   // focoMin (no roteiro, em s): cada foco da tela fica pelo menos esse tempo, para a lupa não passar rápido demais.
   // O motor reparte fala_s entre os focos (0,7 s de entrada + uma fatia por foco).

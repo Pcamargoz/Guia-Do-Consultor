@@ -18,10 +18,13 @@ describe('recursos da Metodologia na base', () => {
   it('todo módulo tem exatamente vídeo, checklist e manual', () => {
     for (const m of indice.modulos) assert.deepEqual(Object.keys(m.recursos).sort(), [...TIPOS_RECURSO].sort(), m.id);
   });
-  it('nenhum vídeo existente vira vídeo do módulo (decisão de 12/11/2026): todos em preparação', () => {
+  it('nenhum vídeo existente vira vídeo do módulo (decisão de 12/11/2026): só o vídeo próprio do módulo (modulo-*)', () => {
     for (const m of indice.modulos) {
-      assert.equal(MAPA_MODULOS.find((d) => d.id === m.id).video, null);
-      assert.equal(m.recursos.video.status, 'em-preparacao', m.id);
+      const video = MAPA_MODULOS.find((d) => d.id === m.id).video;
+      if (video === null) { assert.equal(m.recursos.video.status, 'em-preparacao', m.id); continue; }
+      assert.equal(video, `modulo-${m.id}`, `${m.id}: vídeo do módulo é o próprio, nunca um vídeo antigo`);
+      assert.equal(m.recursos.video.status, 'disponivel', m.id);
+      assert.equal(m.recursos.video.url, `/videos/${video}.mp4`, m.id);
     }
   });
   it('a Biblioteca de Vídeos traz os vídeos publicados, com capítulos em ordem e fonte', () => {

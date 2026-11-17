@@ -1,5 +1,5 @@
 {
- "versao": "2026-11-12",
+ "versao": "2026-11-17",
  "gerado_de": {
   "mapa": "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
   "harness": "harness:conhecimento/"
@@ -810,10 +810,153 @@
    ],
    "recursos": {
     "video": {
-     "status": "em-preparacao",
-     "titulo": "Vídeo completo do módulo",
+     "status": "disponivel",
+     "id": "modulo-vendas",
+     "titulo": "Vendas: o módulo completo",
+     "resumo": "Toda venda da empresa passa por um pedido. Neste vídeo, você vai ver o módulo de Vendas inteiro, na ordem em que ele é implantado com o cliente: o pedido, o ajuste, o desconto, os títulos, a nota, o encerramento e a expedição.",
+     "url": "/videos/modulo-vendas.mp4",
+     "poster": "/videos/modulo-vendas.jpg",
+     "legendas": "/videos/modulo-vendas.vtt",
+     "duracao_s": 505,
+     "capitulos": [
+      {
+       "t": 1.1,
+       "titulo": "Abertura",
+       "grupo": "Abertura"
+      },
+      {
+       "t": 26.6,
+       "titulo": "Conceito",
+       "grupo": "Conceito"
+      },
+      {
+       "t": 57.5,
+       "titulo": "CFOP depois de Empresa e Cliente",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 75.6,
+       "titulo": "A condição de pagamento gera as parcelas",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 95.3,
+       "titulo": "Só o pedido em aberto é editado",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 112.8,
+       "titulo": "Desconto passa por Aprovações",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 128.5,
+       "titulo": "Pedido ou nota: um caminho para o financeiro",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 149.4,
+       "titulo": "Faturado ao salvar a nota",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 168.6,
+       "titulo": "Expedição só depois de faturar",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 183.8,
+       "titulo": "Vendas › Pedidos de Venda",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 200.7,
+       "titulo": "Novo Pedido: cabeçalho",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 218.2,
+       "titulo": "Itens e Dados do Item",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 237.9,
+       "titulo": "Parcelas e Resumo",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 258.8,
+       "titulo": "Status, títulos e nota na lista",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 277.5,
+       "titulo": "Editar e Recalcular",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 296.6,
+       "titulo": "Vendas › Configurações › Alçadas de Desconto",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 313.5,
+       "titulo": "Vendas › Aprovações",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 328.7,
+       "titulo": "Menu do pedido",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 343.3,
+       "titulo": "Financeiro › Contas a Receber",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 364.2,
+       "titulo": "Faturamento › Notas Fiscais",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 389.1,
+       "titulo": "Vendas › Dashboard Vendas",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 406.6,
+       "titulo": "Demonstrativos › Carteira de Pedidos",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 421.2,
+       "titulo": "Controle de Comissão › Simulador",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 438.1,
+       "titulo": "Vendas › Metas de Vendas",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 450.5,
+       "titulo": "Cuidados",
+       "grupo": "Cuidados"
+      },
+      {
+       "t": 479.4,
+       "titulo": "Fechamento",
+       "grupo": "Fechamento"
+      }
+     ],
+     "compartilhado": [],
+     "versaoSistema": "1.22.13",
+     "revisar": true,
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/14-metodologia.md"
+      "guia:public/videos/manifest.json",
+      "guia:videos/roteiros/modulo-vendas.json",
+      "guia:videos/src/gerado/modulo-vendas.json"
      ]
     },
     "checklist": {
@@ -2341,10 +2484,133 @@
    ],
    "recursos": {
     "video": {
-     "status": "em-preparacao",
-     "titulo": "Vídeo completo do módulo",
+     "status": "disponivel",
+     "id": "modulo-faturamento",
+     "titulo": "Faturamento: o módulo completo",
+     "resumo": "Toda nota de venda nasce de um pedido. Neste vídeo: faturar, conferir a nota, salvar, transmitir, ver os reflexos e cancelar na ordem certa.",
+     "url": "/videos/modulo-faturamento.mp4",
+     "poster": "/videos/modulo-faturamento.jpg",
+     "legendas": "/videos/modulo-faturamento.vtt",
+     "duracao_s": 345,
+     "capitulos": [
+      {
+       "t": 1.1,
+       "titulo": "Abertura",
+       "grupo": "Abertura"
+      },
+      {
+       "t": 15.7,
+       "titulo": "Conceito",
+       "grupo": "Conceito"
+      },
+      {
+       "t": 39.2,
+       "titulo": "A nota nasce do pedido",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 53.3,
+       "titulo": "Salvou, o pedido fica Faturado",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 69,
+       "titulo": "Plano de Contas obrigatório",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 84.8,
+       "titulo": "A lista abre em Em Aberto",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 97.7,
+       "titulo": "Títulos: pelo pedido ou pela nota",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 115.2,
+       "titulo": "Número e série não voltam",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 129.8,
+       "titulo": "Cancelar tem ordem",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 146.1,
+       "titulo": "Faturar o pedido",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 160.7,
+       "titulo": "A nova NF-e",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 181,
+       "titulo": "Itens e impostos",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 194.5,
+       "titulo": "Transporte e observações",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 209.1,
+       "titulo": "O pedido virou Faturado",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 222,
+       "titulo": "A lista de notas",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 236.1,
+       "titulo": "O menu da nota",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 254.7,
+       "titulo": "Os títulos da nota",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 269.3,
+       "titulo": "Sem título em dobro",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 278.8,
+       "titulo": "Dashboard Faturamento",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 290,
+       "titulo": "Serviço sai em NFS-e",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 302.9,
+       "titulo": "Cuidados",
+       "grupo": "Cuidados"
+      },
+      {
+       "t": 324.9,
+       "titulo": "Fechamento",
+       "grupo": "Fechamento"
+      }
+     ],
+     "compartilhado": [],
+     "versaoSistema": "1.22.13",
+     "revisar": true,
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/14-metodologia.md"
+      "guia:public/videos/manifest.json",
+      "guia:videos/roteiros/modulo-faturamento.json",
+      "guia:videos/src/gerado/modulo-faturamento.json"
      ]
     },
     "checklist": {
@@ -4525,6 +4791,288 @@
     "guia:videos/roteiros/compra-em-nome-do-cliente.json",
     "guia:videos/src/gerado/compra-em-nome-do-cliente.json"
    ]
+  },
+  {
+   "id": "modulo-vendas",
+   "titulo": "Vendas: o módulo completo",
+   "resumo": "Toda venda da empresa passa por um pedido. Neste vídeo, você vai ver o módulo de Vendas inteiro, na ordem em que ele é implantado com o cliente: o pedido, o ajuste, o desconto, os títulos, a nota, o encerramento e a expedição.",
+   "url": "/videos/modulo-vendas.mp4",
+   "poster": "/videos/modulo-vendas.jpg",
+   "legendas": "/videos/modulo-vendas.vtt",
+   "duracao_s": 505,
+   "capitulos": [
+    {
+     "t": 1.1,
+     "titulo": "Abertura",
+     "grupo": "Abertura"
+    },
+    {
+     "t": 26.6,
+     "titulo": "Conceito",
+     "grupo": "Conceito"
+    },
+    {
+     "t": 57.5,
+     "titulo": "CFOP depois de Empresa e Cliente",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 75.6,
+     "titulo": "A condição de pagamento gera as parcelas",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 95.3,
+     "titulo": "Só o pedido em aberto é editado",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 112.8,
+     "titulo": "Desconto passa por Aprovações",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 128.5,
+     "titulo": "Pedido ou nota: um caminho para o financeiro",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 149.4,
+     "titulo": "Faturado ao salvar a nota",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 168.6,
+     "titulo": "Expedição só depois de faturar",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 183.8,
+     "titulo": "Vendas › Pedidos de Venda",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 200.7,
+     "titulo": "Novo Pedido: cabeçalho",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 218.2,
+     "titulo": "Itens e Dados do Item",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 237.9,
+     "titulo": "Parcelas e Resumo",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 258.8,
+     "titulo": "Status, títulos e nota na lista",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 277.5,
+     "titulo": "Editar e Recalcular",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 296.6,
+     "titulo": "Vendas › Configurações › Alçadas de Desconto",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 313.5,
+     "titulo": "Vendas › Aprovações",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 328.7,
+     "titulo": "Menu do pedido",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 343.3,
+     "titulo": "Financeiro › Contas a Receber",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 364.2,
+     "titulo": "Faturamento › Notas Fiscais",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 389.1,
+     "titulo": "Vendas › Dashboard Vendas",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 406.6,
+     "titulo": "Demonstrativos › Carteira de Pedidos",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 421.2,
+     "titulo": "Controle de Comissão › Simulador",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 438.1,
+     "titulo": "Vendas › Metas de Vendas",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 450.5,
+     "titulo": "Cuidados",
+     "grupo": "Cuidados"
+    },
+    {
+     "t": 479.4,
+     "titulo": "Fechamento",
+     "grupo": "Fechamento"
+    }
+   ],
+   "modulos": [
+    "vendas"
+   ],
+   "versaoSistema": "1.22.13",
+   "revisar": true,
+   "fontes": [
+    "guia:public/videos/manifest.json",
+    "guia:videos/roteiros/modulo-vendas.json",
+    "guia:videos/src/gerado/modulo-vendas.json"
+   ]
+  },
+  {
+   "id": "modulo-faturamento",
+   "titulo": "Faturamento: o módulo completo",
+   "resumo": "Toda nota de venda nasce de um pedido. Neste vídeo: faturar, conferir a nota, salvar, transmitir, ver os reflexos e cancelar na ordem certa.",
+   "url": "/videos/modulo-faturamento.mp4",
+   "poster": "/videos/modulo-faturamento.jpg",
+   "legendas": "/videos/modulo-faturamento.vtt",
+   "duracao_s": 345,
+   "capitulos": [
+    {
+     "t": 1.1,
+     "titulo": "Abertura",
+     "grupo": "Abertura"
+    },
+    {
+     "t": 15.7,
+     "titulo": "Conceito",
+     "grupo": "Conceito"
+    },
+    {
+     "t": 39.2,
+     "titulo": "A nota nasce do pedido",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 53.3,
+     "titulo": "Salvou, o pedido fica Faturado",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 69,
+     "titulo": "Plano de Contas obrigatório",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 84.8,
+     "titulo": "A lista abre em Em Aberto",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 97.7,
+     "titulo": "Títulos: pelo pedido ou pela nota",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 115.2,
+     "titulo": "Número e série não voltam",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 129.8,
+     "titulo": "Cancelar tem ordem",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 146.1,
+     "titulo": "Faturar o pedido",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 160.7,
+     "titulo": "A nova NF-e",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 181,
+     "titulo": "Itens e impostos",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 194.5,
+     "titulo": "Transporte e observações",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 209.1,
+     "titulo": "O pedido virou Faturado",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 222,
+     "titulo": "A lista de notas",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 236.1,
+     "titulo": "O menu da nota",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 254.7,
+     "titulo": "Os títulos da nota",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 269.3,
+     "titulo": "Sem título em dobro",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 278.8,
+     "titulo": "Dashboard Faturamento",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 290,
+     "titulo": "Serviço sai em NFS-e",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 302.9,
+     "titulo": "Cuidados",
+     "grupo": "Cuidados"
+    },
+    {
+     "t": 324.9,
+     "titulo": "Fechamento",
+     "grupo": "Fechamento"
+    }
+   ],
+   "modulos": [
+    "faturamento"
+   ],
+   "versaoSistema": "1.22.13",
+   "revisar": true,
+   "fontes": [
+    "guia:public/videos/manifest.json",
+    "guia:videos/roteiros/modulo-faturamento.json",
+    "guia:videos/src/gerado/modulo-faturamento.json"
+   ]
   }
  ],
  "caminhos": {
@@ -4687,6 +5235,24 @@
    },
    {
     "modulo": "faturamento",
+    "tipo": "video"
+   }
+  ],
+  "/videos/modulo-vendas.mp4": [
+   {
+    "modulo": "vendas",
+    "tipo": "video"
+   }
+  ],
+  "/videos/modulo-vendas.jpg": [
+   {
+    "modulo": "vendas",
+    "tipo": "video"
+   }
+  ],
+  "/videos/modulo-vendas.vtt": [
+   {
+    "modulo": "vendas",
     "tipo": "video"
    }
   ],
@@ -4992,6 +5558,24 @@
    {
     "modulo": "faturamento",
     "tipo": "checklist"
+   }
+  ],
+  "/videos/modulo-faturamento.mp4": [
+   {
+    "modulo": "faturamento",
+    "tipo": "video"
+   }
+  ],
+  "/videos/modulo-faturamento.jpg": [
+   {
+    "modulo": "faturamento",
+    "tipo": "video"
+   }
+  ],
+  "/videos/modulo-faturamento.vtt": [
+   {
+    "modulo": "faturamento",
+    "tipo": "video"
    }
   ],
   "/manuais/faturamento/guia.json": [

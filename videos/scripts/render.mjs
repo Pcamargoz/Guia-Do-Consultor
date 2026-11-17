@@ -46,7 +46,28 @@ const hms = (s) => { const h = Math.floor(s / 3600), m = Math.floor((s % 3600) /
 // o motor pode pôr quadros antes do vídeo (abertura fria do v5): a diferença entre o master e a narração desloca a legenda
 const durMaster = Number(execFileSync('ffprobe', ['-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', master]).toString().trim());
 const desloc = durMaster - dados.duracaoTotal > 0.8 ? 33 / 30 : 0;
-const cues = dados.trechos.flatMap((t) => (t.legendas ?? []).map((l) => ({ ini: desloc + t.inicio + l.ini, fim: desloc + t.inicio + l.fim + 0.6, texto: l.texto })));
+// sem narração (semVoz) não há tempo medido por frase: reparte o fala_s do trecho pelo tamanho de cada pedaço, como a
+// legenda queimada do motor (pedacos de até 78 caracteres, quebrando na pontuação e depois nas vírgulas)
+const pedacos = (fala) => {
+  const out = [];
+  for (const fr of (fala.match(/[^.!?:]+[.!?:]?/g) ?? [fala]).map((x) => x.trim()).filter(Boolean)) {
+    if (fr.length <= 78) { out.push(fr); continue; }
+    let atual = '';
+    for (const parte of fr.split(/(?<=,)\s+/)) {
+      if ((atual + ' ' + parte).trim().length > 78 && atual) { out.push(atual.trim()); atual = parte; } else atual = (atual + ' ' + parte).trim();
+    }
+    if (atual) out.push(atual);
+  }
+  return out;
+};
+const legendasDe = (t) => {
+  if (t.legendas?.length) return t.legendas;
+  const ps = pedacos(t.fala ?? '');
+  const total = ps.reduce((a, x) => a + x.length, 0) || 1;
+  let acc = 0;
+  return ps.map((texto) => { const ini = (acc / total) * t.fala_s; acc += texto.length; return { texto, ini, fim: (acc / total) * t.fala_s }; });
+};
+const cues = dados.trechos.flatMap((t) => legendasDe(t).map((l) => ({ ini: desloc + t.inicio + l.ini, fim: desloc + t.inicio + l.fim + 0.6, texto: l.texto })));
 cues.forEach((c, i) => { if (cues[i + 1]) c.fim = Math.min(Math.max(c.fim, c.ini + 1.8), cues[i + 1].ini); });
 fs.writeFileSync(path.join(GUIA, `${id}.vtt`), 'WEBVTT\n\n' + cues.map((c) => `${hms(c.ini)} --> ${hms(c.fim)}\n${c.texto}\n`).join('\n'));
 // capa: o quadro do título (2,5 s)
@@ -56,7 +77,15 @@ const seg = Math.round(durMaster);
 const duracao = `${Math.floor(seg / 60)} min ${String(seg % 60).padStart(2, '0')} s`;
 const arqManifest = path.join(GUIA, 'manifest.json');
 const manifest = JSON.parse(fs.readFileSync(arqManifest, 'utf8'));
-for (const t of manifest.trilhas) for (const v of t.videos) if (v.id === id) { v.duracao = duracao; v.status = 'pronto'; }
+let achou = false;
+for (const t of manifest.trilhas) for (const v of t.videos) if (v.id === id) { v.duracao = duracao; v.status = 'pronto'; achou = true; }
+// vídeo completo de módulo (Metodologia) que ainda não está no manifest: entra na trilha "modulos"
+if (!achou && id.startsWith('modulo-')) {
+  let trilha = manifest.trilhas.find((t) => t.id === 'modulos');
+  if (!trilha) manifest.trilhas.push(trilha = { id: 'modulos', nome: 'Vídeos completos dos módulos',
+    descricao: 'Um vídeo por módulo, na ordem da implantação: conceito, regras de negócio e o caminho nas telas reais, explicado por legendas, zoom e animação.', videos: [] });
+  trilha.videos.push({ id, numero: 'Módulo', titulo: `${dados.titulo}: o módulo completo`, resumo: dados.trechos[0]?.fala ?? dados.subtitulo, duracao, status: 'pronto' });
+}
 fs.writeFileSync(arqManifest, JSON.stringify(manifest, null, 2) + '\n');
 const mb = (fs.statSync(web).size / 1048576).toFixed(1);
 console.log(`publicado: public/videos/${id}.mp4 (${mb} MB, ${duracao})`);

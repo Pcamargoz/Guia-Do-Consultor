@@ -1,0 +1,45 @@
+{
+ "nome": "f04-transporte",
+ "url": "https://staging.flow.faktory.com.br/faturamento/notas/novo?id=1206&tipo=nfe",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "Modalidade de Frete",
+    "exact": true
+   },
+   "caixa": {
+    "x": 376,
+    "y": 572,
+    "w": 164,
+    "h": 20
+   }
+  },
+  {
+   "alvo": {
+    "text": "Observações Internas",
+    "exact": true
+   },
+   "caixa": {
+    "x": 366,
+    "y": 277,
+    "w": 177,
+    "h": 20
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Dados da NF-e"
+   },
+   "caixa": {
+    "x": 1275,
+    "y": 115,
+    "w": 159,
+    "h": 48
+   }
+  }
+ ],
+ "em": "2026-11-17T11:05:45.129Z"
+}

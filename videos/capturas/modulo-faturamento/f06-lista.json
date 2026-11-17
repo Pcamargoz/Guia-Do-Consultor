@@ -1,0 +1,44 @@
+{
+ "nome": "f06-lista",
+ "url": "https://staging.flow.faktory.com.br/faturamento/documentos-fiscais",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "NF-e",
+    "exact": true
+   },
+   "caixa": {
+    "x": 463,
+    "y": 305,
+    "w": 40,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "css": "main [role=combobox]",
+    "nth": 0
+   },
+   "caixa": {
+    "x": 927,
+    "y": 484,
+    "w": 192,
+    "h": 43
+   }
+  },
+  {
+   "alvo": {
+    "css": "thead th:has-text(\"Status\")"
+   },
+   "caixa": {
+    "x": 1569,
+    "y": 550,
+    "w": 132,
+    "h": 43
+   }
+  }
+ ],
+ "em": "2026-11-17T11:04:20.012Z"
+}

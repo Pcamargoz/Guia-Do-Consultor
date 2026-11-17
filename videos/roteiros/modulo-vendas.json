@@ -4,6 +4,9 @@
  "subtitulo": "O módulo completo: do pedido à expedição",
  "trilha": "Metodologia do Consultor · vídeo completo do módulo",
  "proximo": "Faturamento",
+ "icone": "carrinho",
+ "semVoz": true,
+ "focoMin": 2.6,
  "fontes": [
   "guia:scripts/dados-checklists-implantacao.mjs#implantacao-vendas",
   "guia:public/manuais/vendas/guia.json",

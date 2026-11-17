@@ -1,0 +1,668 @@
+{
+ "id": "modulo-faturamento",
+ "titulo": "Faturamento",
+ "subtitulo": "O módulo completo: do pedido à nota fiscal",
+ "trilha": "Metodologia do Consultor · vídeo completo do módulo",
+ "proximo": "Fiscal",
+ "icone": "nota",
+ "semVoz": true,
+ "focoMin": 2.6,
+ "fontes": [
+  "guia:scripts/dados-checklists-implantacao.mjs#implantacao-faturamento",
+  "harness:funcional-faturamento-notas-fiscais",
+  "harness:oficial-fat-a-regras",
+  "harness:oficial-fat-b-processos",
+  "harness:regra-faturamento-faturar-abre-nova-nfe-ligada-ao-pedido",
+  "harness:regra-faturamento-lista-de-notas-filtro-padrao-e-menu",
+  "harness:regra-faturamento-finalizar-nf-gera-os-titulos",
+  "harness:regra-faturamento-finalizar-nf-requisitos",
+  "harness:regra-vendas-pedido-fica-faturado-ao-salvar-a-nota"
+ ],
+ "trechos": [
+  {
+   "id": "01",
+   "cena": "abertura",
+   "fala": "Toda nota de venda nasce de um pedido. Neste vídeo: faturar, conferir a nota, salvar, transmitir, ver os reflexos e cancelar na ordem certa.",
+   "inicio": 0,
+   "duracao": 14.614,
+   "fala_s": 13.714,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "02",
+   "cena": "status",
+   "etapas": [
+    "Em Aberto",
+    "Autorizada",
+    "Finalizada",
+    "Cancelada"
+   ],
+   "destaque": 0,
+   "fala": "A nota nasce Em Aberto. Ainda dá para editar, e nada foi enviado à SEFAZ.",
+   "inicio": 14.614,
+   "duracao": 9.471,
+   "fala_s": 8.571,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "03",
+   "cena": "status",
+   "etapas": [
+    "Em Aberto",
+    "Autorizada",
+    "Finalizada",
+    "Cancelada"
+   ],
+   "destaque": 1,
+   "fala": "Transmitida, ela fica Autorizada, com chave e protocolo. Finalizada é a nota gerencial: não vai à SEFAZ. As duas só podem ser canceladas.",
+   "inicio": 24.085,
+   "duracao": 14.043,
+   "fala_s": 13.143,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "04",
+   "cena": "regra",
+   "n": 1,
+   "titulo": "A nota nasce do pedido",
+   "icone": "nota",
+   "texto": "Faturar abre a nova NF-e com empresa, cliente, CFOP, condição e parcelas do pedido. O número do pedido fica vinculado.",
+   "fonte": "regra-faturamento-faturar-abre-nova-nfe-ligada-ao-pedido",
+   "fala": "Regra 1. Faturar, no menu do pedido, abre a nova NF-e já preenchida com o que foi combinado no pedido. Ninguém redigita nada.",
+   "inicio": 38.128,
+   "duracao": 14.043,
+   "fala_s": 13.143,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "05",
+   "cena": "regra",
+   "n": 2,
+   "titulo": "Salvou, o pedido fica Faturado",
+   "icone": "check",
+   "texto": "O pedido vira Faturado assim que a nota é salva, mesmo com a nota Em Aberto.",
+   "fonte": "regra-vendas-pedido-fica-faturado-ao-salvar-a-nota",
+   "fala": "Regra 2. O pedido fica Faturado no momento em que a nota é salva, mesmo Em Aberto. O status que vale é sempre o da nota.",
+   "inicio": 52.171,
+   "duracao": 15.757,
+   "fala_s": 14.857,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "06",
+   "cena": "regra",
+   "n": 3,
+   "titulo": "Plano de Contas obrigatório",
+   "icone": "cadeado",
+   "texto": "Se o CFOP gera financeiro, a nota não salva sem o Plano de Contas. CFOP de remessa ou retorno dispensa.",
+   "fonte": "oficial-fat-a-regras#FAT-NFE-001",
+   "fala": "Regra 3. Quando o CFOP gera financeiro, a nota precisa saber em que conta o título vai cair. Sem o Plano de Contas, ela não salva.",
+   "inicio": 67.928,
+   "duracao": 15.757,
+   "fala_s": 14.857,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "07",
+   "cena": "regra",
+   "n": 4,
+   "titulo": "A lista abre em Em Aberto",
+   "icone": "funil",
+   "texto": "Notas Fiscais abre filtrada em Em Aberto, e os cartões de totais seguem o filtro.",
+   "fonte": "regra-faturamento-lista-de-notas-filtro-padrao-e-menu",
+   "fala": "Regra 4. A lista de notas abre filtrada em Em Aberto. Nota autorizada, finalizada ou cancelada só aparece trocando o Status.",
+   "inicio": 83.685,
+   "duracao": 12.9,
+   "fala_s": 12,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "08",
+   "cena": "regra",
+   "n": 5,
+   "titulo": "Títulos: pelo pedido ou pela nota",
+   "icone": "tag",
+   "texto": "A nota gera um título por parcela. Se o pedido já gerou, a nota não gera de novo.",
+   "fonte": "regra-faturamento-finalizar-nf-gera-os-titulos",
+   "critica": true,
+   "fala": "Regra 5. Os títulos a receber nascem da nota, um por parcela. Se o pedido já gerou os títulos, a nota não gera de novo. Combine um caminho só.",
+   "inicio": 96.585,
+   "duracao": 17.471,
+   "fala_s": 16.571,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "09",
+   "cena": "regra",
+   "n": 6,
+   "titulo": "Número e série não voltam",
+   "icone": "alerta",
+   "texto": "Número e série são dados na transmissão e nunca voltam. Série errada colide com a numeração antiga (rejeição 539).",
+   "fonte": "oficial-fat-a-regras#FAT-TRA-002",
+   "critica": true,
+   "fala": "Regra 6. O número da nota é dado na transmissão e nunca volta. Configure a série antes da primeira nota, continuando o sistema antigo.",
+   "inicio": 114.056,
+   "duracao": 14.614,
+   "fala_s": 13.714,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "10",
+   "cena": "regra",
+   "n": 7,
+   "titulo": "Cancelar tem ordem",
+   "icone": "cadeado",
+   "texto": "Não cancela com título recebido, pedido em carga ou nota em processamento. Justificativa com 15 caracteres ou mais.",
+   "fonte": "oficial-fat-a-regras#FAT-CAN-001-002",
+   "fala": "Regra 7. Para cancelar, primeiro desfaça o que veio depois: estorne o recebimento e tire o pedido da carga. A justificativa precisa de 15 caracteres ou mais.",
+   "inicio": 128.67,
+   "duracao": 16.329,
+   "fala_s": 15.429,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "11",
+   "cena": "tela",
+   "captura": "f01-faturar",
+   "titulo": "Faturar o pedido",
+   "rotulo": "Vendas › Pedidos de Venda › menu ⋯",
+   "focos": [
+    0
+   ],
+   "nomes": [
+    "Faturar"
+   ],
+   "fala": "No pedido Em aberto, abra o menu ⋯ e clique em Faturar. Os itens entram pelo diálogo Selecionar Itens para Importar, com Recalcular impostos.",
+   "inicio": 144.999,
+   "duracao": 14.614,
+   "fala_s": 13.714,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-faturamento/f01-faturar.png",
+   "caixas": [
+    {
+     "x": 1571,
+     "y": 546,
+     "w": 257,
+     "h": 38
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "12",
+   "cena": "tela",
+   "captura": "f02-nota",
+   "titulo": "A nova NF-e",
+   "rotulo": "Faturamento › Notas › Editar NF-e",
+   "focos": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "nomes": [
+    "Ambiente NF-e: HOMOLOGAÇÃO",
+    "Vinculado ao Pedido de Venda",
+    "CFOP",
+    null
+   ],
+   "impacto": 2,
+   "fala": "Confira a faixa de Homologação no topo. O pedido fica vinculado e não muda. O CFOP decide se a nota gera título e se mexe no estoque. Este aqui não gera financeiro: sem parcelas.",
+   "inicio": 159.613,
+   "duracao": 20.329,
+   "fala_s": 19.429,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-faturamento/f02-nota.png",
+   "caixas": [
+    {
+     "x": 380,
+     "y": 247,
+     "w": 296,
+     "h": 24
+    },
+    {
+     "x": 1360,
+     "y": 688,
+     "w": 434,
+     "h": 38
+    },
+    {
+     "x": 390,
+     "y": 755,
+     "w": 466,
+     "h": 24
+    },
+    {
+     "x": 875,
+     "y": 688,
+     "w": 466,
+     "h": 38
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "13",
+   "cena": "tela",
+   "captura": "f03-itens",
+   "titulo": "Itens e impostos",
+   "rotulo": "Editar NF-e › Itens da Nota Fiscal",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "Itens da Nota Fiscal",
+    "Resumo da Nota Fiscal",
+    "Impostos"
+   ],
+   "fala": "Confira os itens e o Resumo. Se aparecer Impostos não calculados no item, o motivo está no cadastro fiscal, não na nota.",
+   "inicio": 179.942,
+   "duracao": 13.471,
+   "fala_s": 12.571,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-faturamento/f03-itens.png",
+   "caixas": [
+    {
+     "x": 395,
+     "y": 566,
+     "w": 238,
+     "h": 34
+    },
+    {
+     "x": 1487,
+     "y": 566,
+     "w": 334,
+     "h": 34
+    },
+    {
+     "x": 1487,
+     "y": 737,
+     "w": 74,
+     "h": 24
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "14",
+   "cena": "tela",
+   "captura": "f04-transporte",
+   "titulo": "Transporte e observações",
+   "rotulo": "Editar NF-e › Transporte",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "Modalidade de Frete",
+    "Observações Internas",
+    "Dados da NF-e"
+   ],
+   "fala": "O frete vem como 9 - Sem Transporte. Observações Internas não saem na nota. Destinatário, referências e informações adicionais ficam em Dados da NF-e.",
+   "inicio": 193.413,
+   "duracao": 14.614,
+   "fala_s": 13.714,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-faturamento/f04-transporte.png",
+   "caixas": [
+    {
+     "x": 376,
+     "y": 572,
+     "w": 164,
+     "h": 20
+    },
+    {
+     "x": 366,
+     "y": 277,
+     "w": 177,
+     "h": 20
+    },
+    {
+     "x": 1275,
+     "y": 115,
+     "w": 159,
+     "h": 48
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "15",
+   "cena": "tela",
+   "captura": "f08-pedido-faturado",
+   "titulo": "O pedido virou Faturado",
+   "rotulo": "Vendas › Pedidos de Venda · Faturado",
+   "focos": [
+    0,
+    1
+   ],
+   "nomes": [
+    "Status",
+    "Nota Fiscal"
+   ],
+   "fala": "Clique em Salvar e Permanecer. De volta aos pedidos, o pedido já aparece Faturado, com a nota na coluna Nota Fiscal.",
+   "inicio": 208.027,
+   "duracao": 12.9,
+   "fala_s": 12,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-faturamento/f08-pedido-faturado.png",
+   "caixas": [
+    {
+     "x": 1368,
+     "y": 560,
+     "w": 122,
+     "h": 46
+    },
+    {
+     "x": 1615,
+     "y": 560,
+     "w": 104,
+     "h": 46
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "16",
+   "cena": "tela",
+   "captura": "f06-lista",
+   "titulo": "A lista de notas",
+   "rotulo": "Faturamento › Notas Fiscais",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "NF-e",
+    "Status",
+    null
+   ],
+   "fala": "Em Notas Fiscais, a aba NF-e é a de produto. Troque o Status para Todos para ver as notas autorizadas, finalizadas e canceladas.",
+   "inicio": 220.927,
+   "duracao": 14.043,
+   "fala_s": 13.143,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-faturamento/f06-lista.png",
+   "caixas": [
+    {
+     "x": 463,
+     "y": 305,
+     "w": 40,
+     "h": 24
+    },
+    {
+     "x": 927,
+     "y": 484,
+     "w": 192,
+     "h": 43
+    },
+    {
+     "x": 1569,
+     "y": 550,
+     "w": 132,
+     "h": 43
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "17",
+   "cena": "tela",
+   "captura": "f07-menu-nota",
+   "titulo": "O menu da nota",
+   "rotulo": "Notas Fiscais › menu ⋯",
+   "focos": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "nomes": [
+    "Finalizar NF",
+    "Preview da DANFE",
+    "Excluir",
+    null
+   ],
+   "impacto": 3,
+   "fala": "No menu: Preview da DANFE para conferir, Finalizar NF para a nota gerencial, Excluir só sem existência fiscal. O avião de papel na linha é Transmitir: um clique e não volta.",
+   "inicio": 234.97,
+   "duracao": 18.614,
+   "fala_s": 17.714,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-faturamento/f07-menu-nota.png",
+   "caixas": [
+    {
+     "x": 1553,
+     "y": 683,
+     "w": 257,
+     "h": 38
+    },
+    {
+     "x": 1553,
+     "y": 722,
+     "w": 257,
+     "h": 38
+    },
+    {
+     "x": 1553,
+     "y": 897,
+     "w": 257,
+     "h": 38
+    },
+    {
+     "x": 1715,
+     "y": 946,
+     "w": 48,
+     "h": 48
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "18",
+   "cena": "tela",
+   "captura": "f10-receber",
+   "titulo": "Os títulos da nota",
+   "rotulo": "Financeiro › Contas a Receber",
+   "focos": [
+    0,
+    1
+   ],
+   "nomes": [
+    "Documento",
+    "NF - 012"
+   ],
+   "fala": "Em Contas a Receber, limpe o filtro e pesquise o número: a nota gerou um título por parcela, com o documento NF - número.",
+   "inicio": 253.584,
+   "duracao": 14.614,
+   "fala_s": 13.714,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-faturamento/f10-receber.png",
+   "caixas": [
+    {
+     "x": 759,
+     "y": 527,
+     "w": 190,
+     "h": 43
+    },
+    {
+     "x": 759,
+     "y": 571,
+     "w": 190,
+     "h": 63
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "19",
+   "cena": "tela",
+   "captura": "f09-ja-faturado",
+   "titulo": "Sem título em dobro",
+   "rotulo": "Pedido faturado › menu ⋯",
+   "focos": [
+    0,
+    1
+   ],
+   "nomes": [
+    "Já faturado",
+    "Pedido já faturado"
+   ],
+   "fala": "No pedido faturado, Gerar Títulos some: aparece Pedido já faturado, desabilitado. A receita não duplica.",
+   "inicio": 268.198,
+   "duracao": 9.471,
+   "fala_s": 8.571,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-faturamento/f09-ja-faturado.png",
+   "caixas": [
+    {
+     "x": 1553,
+     "y": 760,
+     "w": 257,
+     "h": 78
+    },
+    {
+     "x": 1553,
+     "y": 838,
+     "w": 257,
+     "h": 38
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "20",
+   "cena": "tela",
+   "captura": "f11-dashboard",
+   "titulo": "Dashboard Faturamento",
+   "rotulo": "Faturamento › Dashboard Faturamento",
+   "focos": [
+    0,
+    1
+   ],
+   "nomes": [
+    "Saúde fiscal",
+    "Resumo por Tipo de Nota"
+   ],
+   "fala": "No Dashboard, notas autorizadas e finalizadas contam como faturadas; canceladas ficam fora. A Saúde fiscal mostra as pendências.",
+   "inicio": 277.669,
+   "duracao": 11.186,
+   "fala_s": 10.286,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-faturamento/f11-dashboard.png",
+   "caixas": [
+    {
+     "x": 423,
+     "y": 479,
+     "w": 208,
+     "h": 24
+    },
+    {
+     "x": 376,
+     "y": 762,
+     "w": 1464,
+     "h": 24
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "21",
+   "cena": "tela",
+   "captura": "f12-nfse",
+   "titulo": "Serviço sai em NFS-e",
+   "rotulo": "Faturamento › Notas Fiscais › NFS-e",
+   "focos": [
+    0,
+    1
+   ],
+   "nomes": [
+    "NFS-e",
+    "Nova NFS-e"
+   ],
+   "fala": "Se o pedido tem serviço, ele sai numa NFS-e, pelo menu Faturar serviços. O ISS vem da Regra Fiscal de Serviço.",
+   "inicio": 288.855,
+   "duracao": 12.9,
+   "fala_s": 12,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-faturamento/f12-nfse.png",
+   "caixas": [
+    {
+     "x": 602,
+     "y": 305,
+     "w": 51,
+     "h": 24
+    },
+    {
+     "x": 1704,
+     "y": 168,
+     "w": 152,
+     "h": 43
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "22",
+   "cena": "alertas",
+   "itens": [
+    "Transmitir, cancelar e CC-e só com o responsável fiscal do cliente.",
+    "O pedido fica Faturado ao salvar: confira o status da nota.",
+    "Cancelar a nota exclui os títulos em aberto e devolve o pedido."
+   ],
+   "fala": "Três cuidados. Transmitir, cancelar e carta de correção só com o responsável fiscal. O status que vale é o da nota. E cancelar a nota exclui os títulos em aberto, estorna o estoque e devolve o pedido.",
+   "inicio": 301.755,
+   "duracao": 22.043,
+   "fala_s": 21.143,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "23",
+   "cena": "fechamento",
+   "topicos": [
+    "A nota nasce do pedido",
+    "Série configurada antes da 1ª nota",
+    "Títulos: pedido ou nota, um só"
+   ],
+   "fala": "Resumindo: a nota nasce do pedido. Configure a série antes da primeira transmissão. E escolha um caminho só para os títulos. O checklist e o manual de Faturamento estão logo abaixo.",
+   "inicio": 323.798,
+   "duracao": 18.614,
+   "fala_s": 17.714,
+   "audio": null,
+   "legendas": null
+  }
+ ],
+ "pendencias": [
+  "Staging v1.23.4 não tem nenhuma nota Autorizada (nunca houve transmissão): transmissão, rejeição, CC-e e cancelamento aparecem só nas regras, sem tela.",
+  "f02-f04 usam a nota Em Aberto do PV-000010 (CFOP 5101 sem financeiro): a tela mostra 'sem parcelas'; regravar num pedido TESTE FLUXO CONSULTOR com CFOP que gera financeiro, se quiser mostrar as parcelas e o Plano de Contas.",
+  "Não cliquei em Faturar (cria nota): f01 mostra só o menu. O diálogo Selecionar Itens para Importar fica sem tela até autorização para faturar um pedido de teste.",
+  "Certificados / Configuração Guiada (série) não foi gravado: o link não aparece no menu de Configurações do Faturamento no staging."
+ ],
+ "duracaoTotal": 343.912
+}

@@ -1,0 +1,45 @@
+{
+ "nome": "f03-itens",
+ "url": "https://staging.flow.faktory.com.br/faturamento/notas/novo?id=1206&tipo=nfe",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "Itens da Nota Fiscal",
+    "exact": true
+   },
+   "caixa": {
+    "x": 395,
+    "y": 566,
+    "w": 238,
+    "h": 34
+   }
+  },
+  {
+   "alvo": {
+    "text": "Resumo da Nota Fiscal",
+    "exact": true
+   },
+   "caixa": {
+    "x": 1487,
+    "y": 566,
+    "w": 334,
+    "h": 34
+   }
+  },
+  {
+   "alvo": {
+    "text": "Impostos",
+    "exact": true
+   },
+   "caixa": {
+    "x": 1487,
+    "y": 737,
+    "w": 74,
+    "h": 24
+   }
+  }
+ ],
+ "em": "2026-11-17T11:05:30.824Z"
+}

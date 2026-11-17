@@ -1,0 +1,54 @@
+{
+ "nome": "f02-nota",
+ "url": "https://staging.flow.faktory.com.br/faturamento/notas/novo?id=1206&tipo=nfe",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "Ambiente NF-e: HOMOLOGAÇÃO"
+   },
+   "caixa": {
+    "x": 380,
+    "y": 247,
+    "w": 296,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "text": "Vinculado ao Pedido de Venda"
+   },
+   "caixa": {
+    "x": 1360,
+    "y": 688,
+    "w": 434,
+    "h": 38
+   }
+  },
+  {
+   "alvo": {
+    "text": "CFOP",
+    "exact": true
+   },
+   "caixa": {
+    "x": 390,
+    "y": 755,
+    "w": 466,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "text": "Nenhum CFOP desta nota"
+   },
+   "caixa": {
+    "x": 875,
+    "y": 688,
+    "w": 466,
+    "h": 38
+   }
+  }
+ ],
+ "em": "2026-11-17T11:05:04.418Z"
+}

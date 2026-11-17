@@ -1,0 +1,21 @@
+{
+ "nome": "f01-faturar",
+ "url": "https://staging.flow.faktory.com.br/vendas/pedidos",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "menuitem",
+    "name": "Faturar"
+   },
+   "caixa": {
+    "x": 1571,
+    "y": 546,
+    "w": 257,
+    "h": 38
+   }
+  }
+ ],
+ "em": "2026-11-17T11:06:03.298Z"
+}

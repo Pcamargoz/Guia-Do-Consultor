@@ -1,0 +1,32 @@
+{
+ "nome": "f11-dashboard",
+ "url": "https://staging.flow.faktory.com.br/faturamento/dashboard-geral",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "Saúde fiscal: Tudo em dia"
+   },
+   "caixa": {
+    "x": 423,
+    "y": 479,
+    "w": 208,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "text": "Resumo por Tipo de Nota",
+    "exact": true
+   },
+   "caixa": {
+    "x": 376,
+    "y": 762,
+    "w": 1464,
+    "h": 24
+   }
+  }
+ ],
+ "em": "2026-11-17T11:09:42.615Z"
+}

@@ -1,0 +1,33 @@
+{
+ "nome": "f09-ja-faturado",
+ "url": "https://staging.flow.faktory.com.br/vendas/pedidos",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "menuitem",
+    "name": "Já faturado"
+   },
+   "caixa": {
+    "x": 1553,
+    "y": 760,
+    "w": 257,
+    "h": 78
+   }
+  },
+  {
+   "alvo": {
+    "role": "menuitem",
+    "name": "Pedido já faturado"
+   },
+   "caixa": {
+    "x": 1553,
+    "y": 838,
+    "w": 257,
+    "h": 38
+   }
+  }
+ ],
+ "em": "2026-11-17T11:06:35.696Z"
+}

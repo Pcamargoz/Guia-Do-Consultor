@@ -1,0 +1,31 @@
+{
+ "nome": "f08-pedido-faturado",
+ "url": "https://staging.flow.faktory.com.br/vendas/pedidos",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "css": "thead th:nth-child(7)"
+   },
+   "caixa": {
+    "x": 1368,
+    "y": 560,
+    "w": 122,
+    "h": 46
+   }
+  },
+  {
+   "alvo": {
+    "css": "thead th:nth-child(9)"
+   },
+   "caixa": {
+    "x": 1615,
+    "y": 560,
+    "w": 104,
+    "h": 46
+   }
+  }
+ ],
+ "em": "2026-11-17T11:06:22.540Z"
+}

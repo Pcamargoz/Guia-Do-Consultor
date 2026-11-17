@@ -154,6 +154,29 @@
           "duracao": "3 min 50 s"
         }
       ]
+    },
+    {
+      "id": "modulos",
+      "nome": "Vídeos completos dos módulos",
+      "descricao": "Um vídeo por módulo, na ordem da implantação: conceito, regras de negócio e o caminho nas telas reais, explicado por legendas, zoom e animação.",
+      "videos": [
+        {
+          "id": "modulo-vendas",
+          "numero": "Módulo",
+          "titulo": "Vendas: o módulo completo",
+          "resumo": "Toda venda da empresa passa por um pedido. Neste vídeo, você vai ver o módulo de Vendas inteiro, na ordem em que ele é implantado com o cliente: o pedido, o ajuste, o desconto, os títulos, a nota, o encerramento e a expedição.",
+          "duracao": "8 min 25 s",
+          "status": "pronto"
+        },
+        {
+          "id": "modulo-faturamento",
+          "numero": "Módulo",
+          "titulo": "Faturamento: o módulo completo",
+          "resumo": "Toda nota de venda nasce de um pedido. Neste vídeo: faturar, conferir a nota, salvar, transmitir, ver os reflexos e cancelar na ordem certa.",
+          "duracao": "5 min 45 s",
+          "status": "pronto"
+        }
+      ]
     }
   ]
 }
