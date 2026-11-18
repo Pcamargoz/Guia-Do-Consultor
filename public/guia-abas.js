@@ -28,6 +28,7 @@
     metodologia: UI.icones.metodologia || UI.icones.inicio,
     manuais: UI.icones.manual,
     'metodologia-ff': svg('<path d="M12 2.5 14.6 8l5.9.6-4.4 4 1.3 5.8L12 15.4l-5.4 3 1.3-5.8-4.4-4L9.4 8z"/>'),
+    estrutura: svg('<rect x="9" y="3" width="6" height="5" rx="1.2"/><rect x="3" y="16" width="6" height="5" rx="1.2"/><rect x="15" y="16" width="6" height="5" rx="1.2"/><path d="M12 8v4M6 16v-2h12v2"/>'),
     inicial: UI.icones['primeiros-passos'],
     consultor: UI.icones.manual,
     acervo: svg('<rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/>'),
@@ -46,10 +47,11 @@
     { id: 'manuais', rotulo: 'Manuais de Apoio' },
     { id: 'videos', rotulo: 'Biblioteca de Vídeos' },
     { id: 'metodologia-ff', rotulo: 'Metodologia Faktory Flow' },
+    { id: 'estrutura', rotulo: 'Estrutura' },
     { id: 'pacotes', rotulo: 'Pacotes e Horas' },
     { id: 'admin', rotulo: 'Painel', titulo: 'Painel do administrador: visibilidade, progresso e problemas dos checklists', soAdmin: true },
   ];
-  const NOVAS = ['metodologia', 'manuais', 'videos', 'metodologia-ff'];
+  const NOVAS = ['metodologia', 'manuais', 'videos', 'metodologia-ff', 'estrutura'];
   const M = window.Metodologia;
 
   /* ---------- Cabeçalho com abas ---------- */
@@ -126,6 +128,7 @@
     manuais: navItem('manuais', 'Manuais de Apoio'),
     videos: navItem('videos', 'Biblioteca de Vídeos'),
     'metodologia-ff': navItem('metodologia-ff', 'Metodologia Faktory Flow'),
+    estrutura: navItem('estrutura', 'Estrutura do setor'),
     pacotes: navItem('pacotes', 'Pacotes e Horas'),
     admin: navItem('admin', 'Painel do administrador'),
   };
@@ -141,7 +144,10 @@
   tituloFerramentas.dataset.grupoNav = 'ferramentas';
   const tituloAprender = tituloSecao('Metodologia');
   tituloAprender.dataset.grupoNav = 'metodologia';
-  [tituloAprender, navs.metodologia, navs.manuais, navs.videos, navs['metodologia-ff'], tituloFerramentas, navs.pacotes, navs.admin].forEach(antes);
+  // Estrutura (18/11/2026): grupo próprio logo abaixo da Metodologia.
+  const tituloEstrutura = tituloSecao('Estrutura');
+  tituloEstrutura.dataset.grupoNav = 'estrutura';
+  [tituloAprender, navs.metodologia, navs.manuais, navs.videos, navs['metodologia-ff'], tituloEstrutura, navs.estrutura, tituloFerramentas, navs.pacotes, navs.admin].forEach(antes);
   // Seções do guia antigo: preservadas no DOM, nunca no menu (doc 14).
   itensAcervo.forEach((el) => { el.hidden = true; });
 
@@ -267,7 +273,8 @@
     }
     // Título do grupo só se sobrar ao menos um item visível no grupo.
     tituloFerramentas.hidden = !AREAS_FERRAMENTAS.some(permitida) && navs.admin.hidden;
-    tituloAprender.hidden = !NOVAS.some(permitida);
+    tituloAprender.hidden = !NOVAS.filter((a) => a !== 'estrutura').some(permitida);
+    tituloEstrutura.hidden = !permitida('estrutura');
   }
 
   /* ---------- Desenho das áreas novas (PlataformaUI) ---------- */
@@ -291,6 +298,7 @@
     if (!M) { UI.estadoErro(alvo, { mensagem: 'A Metodologia não carregou. Atualize a página.', status: 0 }); return; }
     await M.desenhar(area, alvo, rota, { resumo: (f) => carregarResumo(forcar || f), valida, irPara: (r) => P.irPara(r) });
     if (valida() && rota.area === 'metodologia-ff') document.title = 'Metodologia Faktory Flow';
+    if (valida() && rota.area === 'estrutura') document.title = 'Estrutura do setor Faktory Flow';
   }
 
   // Salva o checklist de aprendizado ao marcar/desmarcar (agrupa cliques rápidos por 500 ms).

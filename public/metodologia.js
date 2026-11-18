@@ -876,8 +876,294 @@
     return null;
   }
 
+  /* ---------- Apostila: Guia do Consultor de Implantação (PDF oficial, 18/11/2026) ----------
+     Dados em /metodologia/guia-do-consultor.json (versão, status, sumário com a página de cada capítulo, tirado do .docx da
+     mesma versão); o PDF fica em /metodologia/ (login + area:metodologia-ff, ver lib/visibilidade.js).
+     Desktop: sumário fixo à esquerda e o PDF ao lado, no leitor do próprio navegador (#page=N salta para o capítulo).
+     Celular: o leitor embutido de PDF não é confiável; cada capítulo abre o PDF na página certa, em nova aba. */
+  let apostila = null;
+  async function carregarApostila() {
+    if (apostila) return apostila;
+    try {
+      const r = await fetch('/metodologia/guia-do-consultor.json', { credentials: 'same-origin', cache: 'no-cache' });
+      if (r.status === 401 && window.ffIrParaLogin) { window.ffIrParaLogin(); return null; }
+      if (!r.ok) return { erro: { status: r.status, mensagem: r.status === 404 ? 'A apostila não está liberada para o seu perfil.' : `Não foi possível carregar a apostila (erro ${r.status}).` } };
+      const j = await r.json();
+      if (!j || !j.pdf || !Array.isArray(j.partes)) return { erro: { status: 500, mensagem: 'A apostila veio num formato inesperado.' } };
+      apostila = j;
+      return j;
+    } catch { return { erro: { status: 0, mensagem: 'Sem conexão com o servidor. Tente de novo.' } }; }
+  }
+  const SVG_NS = 'http://www.w3.org/2000/svg';
+  function traco(d) {
+    const s = document.createElementNS(SVG_NS, 'svg');
+    s.setAttribute('viewBox', '0 0 24 24'); s.setAttribute('fill', 'none'); s.setAttribute('stroke', 'currentColor');
+    s.setAttribute('stroke-width', '1.8'); s.setAttribute('stroke-linecap', 'round'); s.setAttribute('stroke-linejoin', 'round'); s.setAttribute('aria-hidden', 'true');
+    for (const p of d.split('|')) { const e = document.createElementNS(SVG_NS, 'path'); e.setAttribute('d', p); s.append(e); }
+    return s;
+  }
+  const TRACOS = {
+    baixar: 'M12 4v11|m7 10 5 5 5-5|M5 20h14',
+    abrir: 'M14 4h6v6|M20 4l-9 9|M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5',
+    livro: 'M4 5.5A2.5 2.5 0 0 1 6.5 3H20v17H6.5A2.5 2.5 0 0 1 4 17.5z|M4 17.5A2.5 2.5 0 0 1 6.5 15H20|M9 7h7|M9 10h5',
+  };
+  const mapaPaginas = (a) => a.partes.flatMap((p) => [{ pagina: p.pagina, parte: p }, ...p.capitulos.map((c) => ({ pagina: c.pagina, parte: p, cap: c }))]);
+  const ehCelular = () => matchMedia('(max-width: 899px)').matches;
+
+  async function apostilaFF(alvo, rota) {
+    alvo.replaceChildren(h('div', { className: 'ff' }, h('div', { className: 'mt-carregando mt-carregando--escuro', role: 'status' }, h('span', { className: 'mt-carregando__barra', 'aria-hidden': 'true' }), 'Carregando a apostila…')));
+    const a = await carregarApostila();
+    if (!a) return null;
+    if (a.erro) { UI.estadoErro(alvo, { ...a.erro, onTentar: () => { apostila = null; apostilaFF(alvo, rota); } }); return null; }
+    const pedida = Number((/^pagina-(\d{1,3})$/.exec(rota.secao || '') || [])[1]) || 1;
+    let pagina = Math.min(Math.max(pedida, 1), a.paginas || 999);
+    const urlPagina = (p) => `${a.pdf}#page=${p}&view=FitH`;
+    const capitulos = [];
+
+    const leitorSr = h('p', { className: 'mt-sr', 'aria-live': 'polite' });
+    const rotuloPagina = h('span', { className: 'ff-pdf__pagina' });
+    const abrirAqui = h('a', { className: 'ff-pdf__link', href: urlPagina(pagina), target: '_blank', rel: 'noopener' }, traco(TRACOS.abrir), 'Abrir esta página em nova aba');
+    const quadro = ehCelular() ? null : h('iframe', { className: 'ff-pdf__quadro', title: `${a.titulo}: PDF, ${a.paginas} páginas`, src: urlPagina(pagina) });
+    function marcar(p) {
+      pagina = p;
+      // capítulo atual = o último que começa até esta página
+      const atual = capitulos.filter((x) => x.pagina <= p).pop();
+      capitulos.forEach((x) => x.botao.setAttribute('aria-current', String(x === atual)));
+      rotuloPagina.textContent = `Página ${p} de ${a.paginas}`;
+      abrirAqui.href = urlPagina(p);
+      if (atual) leitorSr.textContent = `${atual.titulo}, página ${p}.`;
+    }
+    function irPagina(p) {
+      if (!quadro) { window.open(urlPagina(p), '_blank', 'noopener'); return; }
+      // Trocar só o #page do src: o leitor do navegador salta sem baixar o PDF de novo.
+      quadro.src = urlPagina(p);
+      marcar(p);
+    }
+
+    const sumario = h('nav', { className: 'ff-indice ff-sumario', 'aria-label': 'Sumário da apostila' },
+      a.partes.map((parte) => h('div', { className: 'ff-indice__frente' },
+        h('p', { className: 'ff-indice__frente-titulo', text: parte.titulo }),
+        h('ol', null, parte.capitulos.map((c) => {
+          const botao = h('a', { href: urlPagina(c.pagina), on: { click: (e) => { e.preventDefault(); irPagina(c.pagina); } } },
+            h('span', { className: 'ff-sumario__n', text: String(c.n ?? '').padStart(2, '0') }),
+            h('span', { className: 'ff-sumario__t', text: c.titulo }),
+            h('span', { className: 'ff-sumario__p', text: `p. ${c.pagina}`, 'aria-hidden': 'true' }));
+          capitulos.push({ pagina: c.pagina, titulo: c.titulo, botao });
+          return h('li', null, botao);
+        })))));
+
+    const nCap = capitulos.length;
+    const visor = quadro
+      ? h('section', { className: 'ff-pdf', 'aria-label': 'Leitor da apostila' },
+        h('div', { className: 'ff-pdf__barra' }, rotuloPagina, abrirAqui), quadro, leitorSr)
+      : h('section', { className: 'ff-pdf ff-pdf--celular', 'aria-label': 'Apostila no celular' },
+        h('p', { className: 'ff-p', text: 'No celular, a apostila abre no leitor de PDF do aparelho. Toque num capítulo do sumário para abrir direto na página dele.' }));
+
+    alvo.replaceChildren(h('div', { className: 'ff ff--apostila' },
+      h('header', { className: 'ff-abertura' },
+        h('div', { className: 'ff-abertura__luz', 'aria-hidden': 'true' }),
+        h('p', { className: 'ff-abertura__marca' }, h('span', { className: 'ff-ponto', 'aria-hidden': 'true' }), a.subtitulo),
+        h('h1', { className: 'ff-abertura__titulo ff-abertura__titulo--apostila' },
+          h('span', { className: 'ff-linha' }, h('span', { text: 'Guia do Consultor' })),
+          h('span', { className: 'ff-linha ff-linha--lima' }, h('span', { text: 'de Implantação' }))),
+        h('p', { className: 'ff-abertura__lead', text: a.resumo }),
+        h('dl', { className: 'ff-abertura__fatos' },
+          [['Versão', `${a.versao} · ${a.data}`], ['Situação', a.status], ['Conteúdo', `${a.partes.length} partes · ${nCap} capítulos · ${a.paginas} páginas`], ['Público', a.publico], ['Classificação', a.classificacao]]
+            .map(([t, d]) => h('div', null, h('dt', { text: t }), h('dd', { text: d })))),
+        h('div', { className: 'ff-abertura__acoes' },
+          h('a', { className: 'ff-botao', href: a.pdf, target: '_blank', rel: 'noopener' }, traco(TRACOS.livro), 'Ler em tela cheia'),
+          h('a', { className: 'ff-botao ff-botao--sec', href: a.pdf, download: a.pdf.split('/').pop() }, traco(TRACOS.baixar), 'Baixar PDF'))),
+      h('div', { className: 'ff-corpo ff-corpo--apostila' }, sumario, visor)));
+    marcar(pagina);
+    if (pedida > 1 && !quadro) window.open(urlPagina(pagina), '_blank', 'noopener');
+    return null;
+  }
+
+  /* ============================================================
+     6. Estrutura do setor Faktory Flow (18/11/2026)
+     Dados em /estrutura/estrutura.json (login + area:estrutura). Funções, conexões, pilares, papéis do cliente e
+     processos vêm do Guia do Consultor v1.3, cada um com a página de origem (abre a apostila na página).
+     Equipe e organograma ficam vazios até a coordenação preencher: nenhum nome é inventado aqui.
+     Para preencher depois: estrutura.json → equipe.pessoas [{ nome, funcao (id de funcoes), modulos[], contato }]
+     e hierarquia.niveis [{ titulo, funcoes: [ids] }].
+     ============================================================ */
+  let estruturaDados = null;
+  async function carregarEstrutura() {
+    if (estruturaDados) return estruturaDados;
+    try {
+      const r = await fetch('/estrutura/estrutura.json', { credentials: 'same-origin', cache: 'no-cache' });
+      if (r.status === 401 && window.ffIrParaLogin) { window.ffIrParaLogin(); return null; }
+      if (!r.ok) return { erro: { status: r.status, mensagem: r.status === 404 ? 'A Estrutura não está liberada para o seu perfil.' : `Não foi possível carregar (erro ${r.status}).` } };
+      const j = await r.json();
+      if (!j || !Array.isArray(j.funcoes)) return { erro: { status: 500, mensagem: 'A Estrutura veio num formato inesperado.' } };
+      estruturaDados = j;
+      return j;
+    } catch { return { erro: { status: 0, mensagem: 'Sem conexão com o servidor. Tente de novo.' } }; }
+  }
+  const noGuia = (pagina, rotulo) => h('button', { type: 'button', className: 'es-fonte', on: { click: () => ir({ area: 'metodologia-ff', secao: `pagina-${pagina}` }) } },
+    traco(TRACOS.livro), rotulo || `Guia do Consultor, p. ${pagina}`);
+  const secaoEs = (id, n, titulo, texto, ...corpo) => h('section', { className: 'es-secao', id: `es-${id}`, 'aria-labelledby': `es-${id}-t` },
+    h('header', { className: 'es-secao__cab' },
+      h('span', { className: 'es-secao__n', text: n, 'aria-hidden': 'true' }),
+      h('div', null, h('h2', { className: 'es-secao__titulo', id: `es-${id}-t`, text: titulo }), texto ? h('p', { className: 'es-secao__lead', text: texto }) : null)),
+    ...corpo);
+
+  /* ---------- Organograma e Liderança ----------
+     Pessoas em estrutura.json → equipe.pessoas; a hierarquia sai só do campo `lider` (trocar a liderança = trocar um id).
+     Foto: equipe.pessoas[].foto (sem arquivo ou com erro, fica a inicial; estagiários: "Foto em breve").
+     Linhas em SVG desenhadas depois do layout (ResizeObserver) entre o pé do card do líder e o topo do liderado.
+     Passar o mouse ou focar um card acende a cadeia inteira (líder acima e liderados abaixo) nas duas seções. */
+  const iniciais = (nome) => String(nome || '').split(/\s+/).filter(Boolean).slice(0, 2).map((p) => p[0]).join('').toUpperCase();
+  function fotoPessoa(p, classe) {
+    const caixa = h('div', { className: classe });
+    caixa.append(h('span', { className: 'es-foto__inicial', 'aria-hidden': 'true', text: iniciais(p.nome) }));
+    if (p.foto) {
+      const img = h('img', { src: p.foto, alt: '', loading: 'lazy', decoding: 'async', draggable: 'false' });
+      img.addEventListener('load', () => caixa.classList.add('es-foto--ok'));
+      img.addEventListener('error', () => img.remove());
+      caixa.append(img);
+    } else caixa.classList.add('es-foto--breve');
+    return caixa;
+  }
+  function cardPessoa(p, selo, extra) {
+    return h('article', { className: `es-card es-card--${p.grupo}`, 'data-id': p.id, tabindex: '0', 'aria-label': `${p.nome}. ${selo ? `${selo}, ` : ''}${p.cargo}.` },
+      fotoPessoa(p, 'es-foto es-card__foto'),
+      h('div', { className: 'es-card__corpo' },
+        selo ? h('span', { className: 'es-card__selo', text: selo }) : null,
+        h('h3', { className: 'es-card__nome', text: p.nome }),
+        h('p', { className: 'es-card__cargo', text: p.cargo }),
+        p.foto ? null : h('p', { className: 'es-card__breve', text: 'Foto em breve' }),
+        extra || null));
+  }
+  function linhasEntre(caixa, svg, pares) {
+    const desenhar = () => {
+      const base = caixa.getBoundingClientRect();
+      if (!base.width) return;
+      svg.setAttribute('viewBox', `0 0 ${base.width} ${base.height}`);
+      svg.replaceChildren(...pares.map(([de, para], i) => {
+        const a = caixa.querySelector(`[data-id="${de}"]`), b = caixa.querySelector(`[data-id="${para}"]`);
+        if (!a || !b) return null;
+        const ra = a.getBoundingClientRect(), rb = b.getBoundingClientRect();
+        const x1 = ra.left + ra.width / 2 - base.left, y1 = ra.bottom - base.top, x2 = rb.left + rb.width / 2 - base.left, y2 = rb.top - base.top;
+        const ym = (y1 + y2) / 2;
+        const caminho = svgEl('path', { d: `M${x1},${y1} C${x1},${ym} ${x2},${ym} ${x2},${y2}`, class: 'es-linha', 'data-de': de, 'data-para': para, style: `--i:${i}` });
+        return caminho;
+      }).filter(Boolean));
+    };
+    const ro = new ResizeObserver(() => requestAnimationFrame(desenhar));
+    ro.observe(caixa);
+    limpezas.push(() => ro.disconnect());
+    // a entrada escalonada (data-revela) desloca os cards enquanto anima: redesenha quando ela termina
+    const tempos = [450, 1100, 1800].map((ms) => setTimeout(() => requestAnimationFrame(desenhar), ms));
+    limpezas.push(() => tempos.forEach(clearTimeout));
+    caixa.addEventListener('transitionend', (e) => { if (e.propertyName === 'transform' && e.target.matches?.('.es-card, .es-mini, [data-revela]')) requestAnimationFrame(desenhar); });
+    // fotos carregam depois: redesenha quando o card muda de altura
+    caixa.querySelectorAll('img').forEach((img) => img.addEventListener('load', () => requestAnimationFrame(desenhar), { once: true }));
+  }
+  /* Foco na cadeia: o card, o líder (para cima, até o topo) e todos os liderados (para baixo). */
+  function ligarCadeia(raiz, pessoas) {
+    const porId = Object.fromEntries(pessoas.map((p) => [p.id, p]));
+    const cadeia = (id) => {
+      const ids = new Set([id]);
+      for (let p = porId[id]; p && p.lider; p = porId[p.lider]) ids.add(p.lider);
+      const descer = (x) => pessoas.filter((p) => p.lider === x).forEach((p) => { ids.add(p.id); descer(p.id); });
+      descer(id);
+      return ids;
+    };
+    let atual = null;
+    const acender = (id) => {
+      if (id === atual) return;
+      atual = id;
+      const ids = id ? cadeia(id) : null;
+      raiz.classList.toggle('es--foco', !!ids);
+      raiz.querySelectorAll('[data-id]').forEach((el) => el.classList.toggle('es-aceso', !!ids && ids.has(el.dataset.id)));
+      raiz.querySelectorAll('.es-linha').forEach((l) => l.classList.toggle('es-aceso', !!ids && ids.has(l.dataset.de) && ids.has(l.dataset.para)));
+    };
+    raiz.addEventListener('pointerover', (e) => { const c = e.target.closest?.('.es-card, .es-mini'); acender(c ? c.dataset.id : null); });
+    raiz.addEventListener('pointerleave', () => acender(null));
+    raiz.addEventListener('focusin', (e) => { const c = e.target.closest?.('.es-card, .es-mini'); if (c) acender(c.dataset.id); });
+    raiz.addEventListener('focusout', (e) => { if (!raiz.contains(e.relatedTarget)) acender(null); });
+  }
+
+  async function estrutura(alvo, rota) {
+    carregando(alvo, 'Carregando a Estrutura…');
+    const d = await carregarEstrutura();
+    if (!d) return null;
+    if (d.erro) { falha(alvo, d, () => { estruturaDados = null; estrutura(alvo, rota); }); return null; }
+    const pessoas = d.equipe?.pessoas || [];
+    const seloDe = (p) => (d.equipe?.grupos || []).find((g) => g.id === p.grupo)?.selo || '';
+    const liderados = (id) => pessoas.filter((p) => p.lider === id);
+    const topo = pessoas.filter((p) => !p.lider);
+    const segundo = pessoas.filter((p) => p.lider && topo.some((t) => t.id === p.lider));
+    const jornada = d.processos?.jornada || [];
+    const internos = d.processos?.internos || [];
+    const nomes = (lista) => lista.map((p) => p.nome).reduce((txt, n, i, l) => (i === 0 ? n : i === l.length - 1 ? `${txt} e ${n}` : `${txt}, ${n}`), '');
+
+    /* 01 · Organograma: coordenação no topo, consultores abaixo, ligados por curvas */
+    const orgSvg = svgEl('svg', { class: 'es-linhas', 'aria-hidden': 'true' });
+    const org = h('div', { className: 'es-org' }, orgSvg,
+      h('div', { className: 'es-org__nivel es-org__nivel--topo', 'data-revela': '' }, topo.map((p) => cardPessoa(p, seloDe(p),
+        liderados(p.id).length ? h('p', { className: 'es-card__lidera', text: `Lidera ${nomes(liderados(p.id))}` }) : null))),
+      h('div', { className: 'es-org__nivel', 'data-revela-lista': '' }, segundo.map((p) => {
+        const l = liderados(p.id);
+        return cardPessoa(p, seloDe(p), h('p', { className: `es-card__lidera${l.length ? '' : ' es-card__lidera--vazio'}`, text: l.length ? `Líder de ${nomes(l)}` : (d.equipe?.semLiderado || 'Sem liderado informado.') }));
+      })));
+    linhasEntre(org, orgSvg, segundo.map((p) => [p.lider, p.id]));
+
+    /* 02 · Liderança: cada consultor com o estagiário que acompanha */
+    const lidSvg = svgEl('svg', { class: 'es-linhas', 'aria-hidden': 'true' });
+    const mini = (p) => h('div', { className: 'es-mini', 'data-id': p.id, tabindex: '0', 'aria-label': `${p.nome}, ${seloDe(p) || p.cargo}` },
+      fotoPessoa(p, 'es-foto es-mini__foto'),
+      h('div', null, h('strong', { text: p.nome }), h('span', { text: seloDe(p) || p.cargo })));
+    const lideranca = h('div', { className: 'es-lid' }, lidSvg,
+      h('ol', { className: 'es-lid__colunas', 'data-revela-lista': '' }, segundo.map((p) => {
+        const l = liderados(p.id);
+        return h('li', { className: 'es-lid__coluna' }, mini(p),
+          l.length ? h('div', { className: 'es-lid__liderados' }, l.map((x) => cardPessoa(x, seloDe(x))))
+            : h('div', { className: 'es-lid__vazio', role: 'note' }, h('span', { className: 'es-lid__vazio-ponto', 'aria-hidden': 'true' }), h('p', { text: d.equipe?.semLiderado || 'Sem liderado informado.' })));
+      })));
+    linhasEntre(lideranca, lidSvg, segundo.flatMap((p) => liderados(p.id).map((x) => [p.id, x.id])));
+
+    const ancoras = [['organograma', 'Organograma'], ['lideranca', 'Liderança'], ['funcoes', 'Funções'], ['processos', 'Processos'], ['pilares', 'Pilares e cliente']];
+    const nEst = pessoas.filter((p) => p.grupo === 'estagiarios').length;
+    const pagina = h('div', { className: 'mt-pagina es' },
+      cabecalho(d.titulo, d.resumo, h('ul', { className: 'es-numeros' },
+        [[topo.length, topo.length === 1 ? 'coordenação' : 'coordenações'], [segundo.length, 'consultores'], [nEst, nEst === 1 ? 'estagiário' : 'estagiários'], [d.funcoes.length, 'funções no Guia']]
+          .map(([n, t]) => h('li', null, h('strong', { text: String(n) }), h('span', { text: t }))))),
+      h('nav', { className: 'es-ancoras', 'aria-label': 'Seções da Estrutura' }, ancoras.map(([id, t]) => h('a', { href: `#es-${id}`, on: { click: (e) => { e.preventDefault(); document.getElementById(`es-${id}`)?.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' }); } } }, t)),
+        h('span', { className: 'es-ancoras__fonte' }, noGuia(7, d.fonte?.titulo || 'Guia do Consultor'))),
+
+      secaoEs('organograma', '01', 'Organograma', topo.length ? `${nomes(topo)} coordena o setor; ${nomes(segundo)} conduzem as implantações.` : null, org),
+      secaoEs('lideranca', '02', 'Liderança', 'Quem acompanha cada estagiário. Passe o mouse ou o foco num card para ver a cadeia inteira.', lideranca),
+
+      secaoEs('funcoes', '03', 'Funções e responsabilidades', 'O que cada função faz na implantação, do jeito que o Guia do Consultor descreve.',
+        h('ol', { className: 'es-funcoes', 'data-revela-lista': '' }, d.funcoes.map((f, i) => h('li', { className: `es-funcao${f.id === 'consultor' ? ' es-funcao--destaque' : ''}` },
+          h('span', { className: 'es-funcao__n', text: String(i + 1).padStart(2, '0'), 'aria-hidden': 'true' }),
+          h('h3', { className: 'es-funcao__titulo', text: f.titulo }),
+          h('p', { className: 'es-funcao__texto', text: f.texto }),
+          f.pagina ? noGuia(f.pagina) : null)))),
+
+      secaoEs('processos', '04', 'Processos internos', 'A jornada da implantação, etapa por etapa, e os processos do dia a dia. Cada item abre o capítulo no Guia.',
+        h('ol', { className: 'es-jornada', 'data-revela-lista': '' }, jornada.map((e) => h('li', null,
+          h('button', { type: 'button', className: 'es-etapa', on: { click: () => ir({ area: 'metodologia-ff', secao: `pagina-${e.pagina}` }) } },
+            h('span', { className: 'es-etapa__n', text: `Etapa ${e.etapa}` }), h('span', { className: 'es-etapa__t', text: e.titulo }), h('span', { className: 'es-etapa__p', text: `Guia, p. ${e.pagina}` }))))),
+        h('ul', { className: 'es-internos' }, internos.map((p) => h('li', { className: 'es-interno' },
+          h('h3', { text: p.titulo }), h('p', { text: p.texto }), noGuia(p.pagina))))),
+
+      secaoEs('pilares', '05', 'Pilares e papéis do cliente', 'Os quatro pilares de uma implantação estruturada e quem é quem do lado do cliente.',
+        h('div', { className: 'es-duas' },
+          h('div', null, h('h3', { className: 'es-sub', text: 'Pilares da implantação' }),
+            h('ul', { className: 'es-lista' }, (d.pilares || []).map((p) => h('li', null, h('strong', { text: p.titulo }), h('span', { text: p.texto })))), d.pilaresPagina ? noGuia(d.pilaresPagina) : null),
+          h('div', null, h('h3', { className: 'es-sub', text: 'Papéis do cliente' }),
+            h('ul', { className: 'es-lista' }, (d.papeisCliente || []).map((p) => h('li', null, h('strong', { text: p.titulo }), h('span', { text: p.texto })))), d.papeisClientePagina ? noGuia(d.papeisClientePagina) : null))));
+    ligarCadeia(pagina, pessoas);
+    alvo.replaceChildren(pagina);
+    if (rota.secao) requestAnimationFrame(() => document.getElementById(`es-${rota.secao}`)?.scrollIntoView({ block: 'start' }));
+    return null;
+  }
+
   async function metodologiaFF(alvo, rota, ctx) {
-    if (FF_EM_DESENVOLVIMENTO) return ffEmDesenvolvimento(alvo);
+    if (FF_EM_DESENVOLVIMENTO) return apostilaFF(alvo, rota, ctx);
     alvo.replaceChildren(h('div', { className: 'ff' }, h('div', { className: 'mt-carregando mt-carregando--escuro', role: 'status' }, h('span', { className: 'mt-carregando__barra', 'aria-hidden': 'true' }), 'Carregando a Metodologia Faktory Flow…')));
     const man = await carregarManualFF();
     if (!ctx.valida()) return null;
@@ -1052,6 +1338,17 @@
       (k.errosComuns || []).forEach((e) => add('Erro comum', e.titulo, e.texto, rota, e.titulo, onde));
       (k.perguntasDoCliente || []).forEach((q) => add('Pergunta do cliente', q.pergunta, q.resposta, rota, q.pergunta, onde));
     }));
+    const ap = await carregarApostila();
+    if (ap && !ap.erro) {
+      add('Apostila', ap.titulo, `${ap.subtitulo} ${ap.resumo} apostila guia do consultor`, { area: 'metodologia-ff' }, null, 'Metodologia Faktory Flow');
+      for (const p of ap.partes) for (const c of p.capitulos) add('Capítulo da apostila', `${c.n}. ${c.titulo}`, p.titulo, { area: 'metodologia-ff', secao: `pagina-${c.pagina}` }, null, `Guia do Consultor · p. ${c.pagina}`);
+    }
+    const es = await carregarEstrutura();
+    if (es && !es.erro) {
+      for (const p of es.equipe?.pessoas || []) add('Pessoa', p.nome, `${p.cargo} ${p.grupo}`, { area: 'estrutura', secao: 'organograma' }, null, 'Estrutura do setor');
+      for (const f of es.funcoes) add('Função', f.titulo, f.texto, { area: 'estrutura', secao: 'funcoes' }, null, 'Estrutura do setor');
+      for (const e of es.processos?.jornada || []) add('Etapa da jornada', `Etapa ${e.etapa}: ${e.titulo}`, 'processo jornada implantação', { area: 'estrutura', secao: 'processos' }, null, 'Estrutura do setor');
+    }
     const man = FF_EM_DESENVOLVIMENTO ? null : await carregarManualFF();
     if (man && !man.erro) {
       for (const f of man.frentes) for (const s of f.secoes) {
@@ -1087,6 +1384,7 @@
     else if (area === 'manuais') fim = await manuais(alvo, rota, ctx);
     else if (area === 'videos') fim = await videos(alvo, rota, ctx);
     else if (area === 'metodologia-ff') fim = await metodologiaFF(alvo, rota, ctx);
+    else if (area === 'estrutura') fim = await estrutura(alvo, rota, ctx);
     if (typeof fim === 'function') destruirAtual = fim;
     if (ctx.valida()) entrar(alvo);
   }

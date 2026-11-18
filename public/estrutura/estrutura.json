@@ -1,0 +1,249 @@
+{
+ "versao": "2026-11-18",
+ "titulo": "Estrutura do setor Faktory Flow",
+ "resumo": "Quem coordena, quem conduz as implantações e quem acompanha cada estagiário no setor Faktory Flow. As funções e os processos vêm do Guia do Consultor de Implantação.",
+ "fonte": {
+  "titulo": "Guia do Consultor de Implantação v1.3 (13/11/2026)",
+  "area": "metodologia-ff"
+ },
+ "equipe": {
+  "nota": "Para mudar uma liderança, troque o campo lider da pessoa. Foto: salve /estrutura/fotos/<id>.jpg e preencha foto com esse caminho (sem foto, o card mostra a inicial).",
+  "grupos": [
+   {
+    "id": "coordenacao",
+    "titulo": "Coordenação",
+    "selo": "Coordenação"
+   },
+   {
+    "id": "consultores",
+    "titulo": "Consultores",
+    "selo": "Consultoria"
+   },
+   {
+    "id": "estagiarios",
+    "titulo": "Estagiários",
+    "selo": "Estágio"
+   }
+  ],
+  "pessoas": [
+   {
+    "id": "rafaela",
+    "nome": "Rafaela",
+    "cargo": "Coordenadora do setor Faktory Flow",
+    "grupo": "coordenacao",
+    "lider": null,
+    "foto": null
+   },
+   {
+    "id": "pedro",
+    "nome": "Pedro",
+    "cargo": "Implantação",
+    "grupo": "consultores",
+    "lider": "rafaela",
+    "foto": null
+   },
+   {
+    "id": "isabella",
+    "nome": "Isabella",
+    "cargo": "Implantação",
+    "grupo": "consultores",
+    "lider": "rafaela",
+    "foto": null
+   },
+   {
+    "id": "iago",
+    "nome": "Iago",
+    "cargo": "Implantação",
+    "grupo": "consultores",
+    "lider": "rafaela",
+    "foto": null
+   },
+   {
+    "id": "kauan",
+    "nome": "Kauan",
+    "cargo": "Implantação",
+    "grupo": "consultores",
+    "lider": "rafaela",
+    "foto": null
+   },
+   {
+    "id": "nathan-vieira",
+    "nome": "Nathan Vieira",
+    "cargo": "Implantação",
+    "grupo": "estagiarios",
+    "lider": "pedro",
+    "foto": null
+   },
+   {
+    "id": "maria-fernanda",
+    "nome": "Maria Fernanda",
+    "cargo": "Implantação",
+    "grupo": "estagiarios",
+    "lider": "isabella",
+    "foto": null
+   },
+   {
+    "id": "vitor-fazano",
+    "nome": "Vitor Fazano",
+    "cargo": "Implantação",
+    "grupo": "estagiarios",
+    "lider": "iago",
+    "foto": null
+   }
+  ],
+  "semLiderado": "Sem estagiário vinculado informado até o momento."
+ },
+ "funcoes": [
+  {
+   "id": "coordenacao",
+   "titulo": "Coordenação de Implantação",
+   "texto": "Cria o card do cliente na Plataforma 360 e o atribui ao consultor responsável. Define prioridades, apoia a equipe e recebe observações sobre as OS.",
+   "pagina": 7
+  },
+  {
+   "id": "consultor",
+   "titulo": "Consultor de Implantação",
+   "texto": "Conduz o projeto do primeiro contato ao encerramento: RA, cronograma, configuração, treinamentos, OS, go-live e transição para o Suporte. É dono dos tickets que abre e responsável pelos registros do projeto.",
+   "pagina": 7
+  },
+  {
+   "id": "centralizacao",
+   "titulo": "Centralização operacional",
+   "texto": "Organiza as demandas internas do Flow: acompanha os tickets e a comunicação com o QA Flow, monitora versões e novidades, realiza testes iniciais e apoia prototipagens e alinhamentos. Mantém a equipe informada e produz guias de novidades.",
+   "pagina": 7
+  },
+  {
+   "id": "documentacao",
+   "titulo": "Documentação e metodologia",
+   "texto": "Recebe os materiais elaborados pela centralização, consolida o conteúdo na metodologia, aplica o padrão oficial dos documentos de Implantação e organiza as pastas.",
+   "pagina": 7
+  },
+  {
+   "id": "qa",
+   "titulo": "QA Flow",
+   "texto": "Analisa os tickets e retorna com dúvidas, andamento, correção ou liberação para validação.",
+   "pagina": 7
+  },
+  {
+   "id": "suporte",
+   "titulo": "Suporte Técnico",
+   "texto": "Assume o atendimento das demandas do dia a dia após o encerramento da implantação, exclusivamente para funcionalidades implantadas e acompanhadas no go-live.",
+   "pagina": 7
+  },
+  {
+   "id": "comercial",
+   "titulo": "Departamento Comercial",
+   "texto": "Negocia com o cliente a contratação de horas adicionais quando há atividades fora do escopo inicial.",
+   "pagina": 7
+  }
+ ],
+ "pilares": [
+  {
+   "titulo": "Conhecimento dos módulos",
+   "texto": "Entender como cada área se conecta, do primeiro contato comercial à entrega e à análise de resultados."
+  },
+  {
+   "titulo": "Compreensão dos processos",
+   "texto": "Implantar respeitando a realidade operacional do cliente, evitando replicar telas sem gerar valor."
+  },
+  {
+   "titulo": "Análise de problemas",
+   "texto": "Identificar a causa antes de encaminhar, com postura consultiva, diferenciando configuração, operação e bug."
+  },
+  {
+   "titulo": "Comunicação organizada",
+   "texto": "Registrar decisões, acompanhar pendências, formalizar entregas e manter o cliente alinhado durante todo o projeto."
+  }
+ ],
+ "pilaresPagina": 6,
+ "papeisCliente": [
+  {
+   "titulo": "Sponsor",
+   "texto": "Patrocinador do projeto. Dá apoio e toma as decisões estratégicas. Assina o cronograma."
+  },
+  {
+   "titulo": "Gerente do projeto",
+   "texto": "Acompanha o cronograma, centraliza as decisões e administra as horas. É o destinatário dos e-mails de documentação."
+  },
+  {
+   "titulo": "Key user (usuário-chave)",
+   "texto": "Conhece os processos, participa das validações e é referência para os demais usuários."
+  },
+  {
+   "titulo": "Contador do cliente",
+   "texto": "Valida as questões fiscais e tributárias (regime, NCM, CFOP, CST/CSOSN, alíquotas). É envolvido diretamente na configuração do módulo Fiscal."
+  }
+ ],
+ "papeisClientePagina": 7,
+ "processos": {
+  "jornada": [
+   {
+    "etapa": "1 e 2",
+    "titulo": "Atribuição do cliente e primeiro contato",
+    "pagina": 23
+   },
+   {
+    "etapa": "3",
+    "titulo": "Reunião de Alinhamento (RA)",
+    "pagina": 24
+   },
+   {
+    "etapa": "4",
+    "titulo": "Cronograma, aprovação e agendamento",
+    "pagina": 26
+   },
+   {
+    "etapa": "5",
+    "titulo": "E-mails de documentação",
+    "pagina": 27
+   },
+   {
+    "etapa": "6",
+    "titulo": "Configuração do ambiente",
+    "pagina": 29
+   },
+   {
+    "etapa": "7",
+    "titulo": "Treinamentos, OS e envio de material",
+    "pagina": 30
+   },
+   {
+    "etapa": "8",
+    "titulo": "Preparação para o go-live",
+    "pagina": 33
+   },
+   {
+    "etapa": "9",
+    "titulo": "Go-live (produção assistida)",
+    "pagina": 33
+   },
+   {
+    "etapa": "10",
+    "titulo": "Encerramento e transição para o Suporte",
+    "pagina": 35
+   }
+  ],
+  "internos": [
+   {
+    "titulo": "Diagnóstico de problemas",
+    "texto": "Antes de encaminhar, diferenciar configuração, operação e bug.",
+    "pagina": 14
+   },
+   {
+    "titulo": "Fluxo de tickets e centralização operacional",
+    "texto": "Como as demandas internas chegam à centralização e ao QA Flow.",
+    "pagina": 15
+   },
+   {
+    "titulo": "Boas práticas do consultor",
+    "texto": "Postura e registros esperados no dia a dia da implantação.",
+    "pagina": 17
+   },
+   {
+    "titulo": "Desenvolvimento de novos consultores e estagiários",
+    "texto": "Como a área prepara quem chega.",
+    "pagina": 19
+   }
+  ]
+ }
+}
