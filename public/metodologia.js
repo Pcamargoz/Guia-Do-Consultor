@@ -1116,9 +1116,11 @@
       fotoPessoa(p, 'es-foto es-mini__foto'),
       h('div', null, h('strong', { text: p.nome }), h('span', { text: seloDe(p) || p.cargo })));
     const lideranca = h('div', { className: 'es-lid' }, lidSvg,
-      h('ol', { className: 'es-lid__colunas', 'data-revela-lista': '' }, segundo.map((p) => {
+      h('ol', { className: 'es-lid__colunas', 'data-revela-lista': '', style: { '--total': String(segundo.reduce((s, p) => s + Math.max(1, liderados(p.id).length), 0)) } }, segundo.map((p) => {
         const l = liderados(p.id);
-        return h('li', { className: 'es-lid__coluna' }, mini(p),
+        // a coluna ocupa uma faixa por estagiário: os cards ficam lado a lado, cada um com a sua linha até o líder
+        const n = Math.max(1, l.length);
+        return h('li', { className: 'es-lid__coluna', style: { '--n': String(n) } }, mini(p),
           l.length ? h('div', { className: 'es-lid__liderados' }, l.map((x) => cardPessoa(x, seloDe(x))))
             : h('div', { className: 'es-lid__vazio', role: 'note' }, h('span', { className: 'es-lid__vazio-ponto', 'aria-hidden': 'true' }), h('p', { text: d.equipe?.semLiderado || 'Sem liderado informado.' })));
       })));

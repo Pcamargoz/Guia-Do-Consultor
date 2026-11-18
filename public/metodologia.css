@@ -985,3 +985,13 @@ body.ab-modo-ff .main { overflow-x: clip; }
 /* fotos da equipe (18/11/2026): recortes dos cards oficiais em 6:5 — a proporção do card segue a da foto, sem corte nem distorção */
 .es-card__foto { aspect-ratio: 6 / 5; }
 .es-foto img { object-position: 50% 30%; }
+/* liderança com mais de um estagiário por líder (18/11/2026): faixa por estagiário, cards lado a lado */
+.es-lid__colunas { grid-template-columns: repeat(auto-fill, minmax(min(100%, 176px), 1fr)); grid-auto-flow: dense; }
+.es-lid__coluna { grid-column: span var(--n, 1); }
+.es-lid__liderados { grid-template-columns: repeat(var(--n, 1), minmax(0, 1fr)); justify-items: center; }
+.es-lid__liderados .es-card { max-width: 230px; }
+@media (max-width: 620px) { .es-lid__coluna { grid-column: 1 / -1; } .es-lid__liderados .es-card__nome { font-size: 18px; } }
+@media (min-width: 1180px) { .es-lid__colunas { grid-template-columns: repeat(var(--total, 4), minmax(0, 1fr)); } }
+.es-lid__coluna { grid-template-rows: auto 1fr; }
+.es-lid__liderados { align-items: stretch; height: 100%; }
+.es-lid__liderados .es-card { height: 100%; }

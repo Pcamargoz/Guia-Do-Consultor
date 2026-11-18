@@ -72,11 +72,27 @@
     "cargo": "Implantação",
     "grupo": "estagiarios",
     "lider": "pedro",
+    "foto": "/estrutura/fotos/nathan-vieira.jpg"
+   },
+   {
+    "id": "caua-americano",
+    "nome": "Cauã Americano",
+    "cargo": "Implantação",
+    "grupo": "estagiarios",
+    "lider": "pedro",
     "foto": null
    },
    {
     "id": "maria-fernanda",
     "nome": "Maria Fernanda",
+    "cargo": "Implantação",
+    "grupo": "estagiarios",
+    "lider": "isabella",
+    "foto": "/estrutura/fotos/maria-fernanda.jpg"
+   },
+   {
+    "id": "tauany",
+    "nome": "Tauany",
     "cargo": "Implantação",
     "grupo": "estagiarios",
     "lider": "isabella",
@@ -88,7 +104,7 @@
     "cargo": "Implantação",
     "grupo": "estagiarios",
     "lider": "iago",
-    "foto": null
+    "foto": "/estrutura/fotos/vitor-fazano.jpg"
    }
   ],
   "semLiderado": "Sem estagiário vinculado informado até o momento."
