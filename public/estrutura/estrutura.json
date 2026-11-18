@@ -7,7 +7,7 @@
   "area": "metodologia-ff"
  },
  "equipe": {
-  "nota": "Para mudar uma liderança, troque o campo lider da pessoa. Foto: salve /estrutura/fotos/<id>.jpg e preencha foto com esse caminho (sem foto, o card mostra a inicial).",
+  "nota": "Para mudar uma liderança, troque o campo lider da pessoa. Foto: salve /estrutura/fotos/<id>.jpg e preencha foto com esse caminho (sem foto, o card mostra a inicial). Quem não lidera estagiário pode ter atribuicoes [{ id, titulo, texto, icone }], mostradas na Liderança no lugar dos estagiários.",
   "grupos": [
    {
     "id": "coordenacao",
@@ -64,7 +64,21 @@
     "cargo": "Implantação",
     "grupo": "consultores",
     "lider": "rafaela",
-    "foto": "/estrutura/fotos/kauan.jpg"
+    "foto": "/estrutura/fotos/kauan.jpg",
+    "atribuicoes": [
+     {
+      "id": "chamados",
+      "titulo": "Chamados",
+      "texto": "Atribuído aos chamados do setor.",
+      "icone": "chamado"
+     },
+     {
+      "id": "qa",
+      "titulo": "QA / Desenvolvimento",
+      "texto": "Faz o filtro dos chamados direto com o time de QA e desenvolvimento.",
+      "icone": "qa"
+     }
+    ]
    },
    {
     "id": "nathan-vieira",

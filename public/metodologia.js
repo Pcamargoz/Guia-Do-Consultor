@@ -1076,12 +1076,13 @@
       atual = id;
       const ids = id ? cadeia(id) : null;
       raiz.classList.toggle('es--foco', !!ids);
-      raiz.querySelectorAll('[data-id]').forEach((el) => el.classList.toggle('es-aceso', !!ids && ids.has(el.dataset.id)));
-      raiz.querySelectorAll('.es-linha').forEach((l) => l.classList.toggle('es-aceso', !!ids && ids.has(l.dataset.de) && ids.has(l.dataset.para)));
+      const dono = (x) => String(x || '').split('--')[0];
+      raiz.querySelectorAll('[data-id]').forEach((el) => el.classList.toggle('es-aceso', !!ids && ids.has(dono(el.dataset.id))));
+      raiz.querySelectorAll('.es-linha').forEach((l) => l.classList.toggle('es-aceso', !!ids && ids.has(dono(l.dataset.de)) && ids.has(dono(l.dataset.para))));
     };
-    raiz.addEventListener('pointerover', (e) => { const c = e.target.closest?.('.es-card, .es-mini'); acender(c ? c.dataset.id : null); });
+    raiz.addEventListener('pointerover', (e) => { const c = e.target.closest?.('.es-card, .es-mini, .es-frente'); acender(c ? c.dataset.id.split('--')[0] : null); });
     raiz.addEventListener('pointerleave', () => acender(null));
-    raiz.addEventListener('focusin', (e) => { const c = e.target.closest?.('.es-card, .es-mini'); if (c) acender(c.dataset.id); });
+    raiz.addEventListener('focusin', (e) => { const c = e.target.closest?.('.es-card, .es-mini, .es-frente'); if (c) acender(c.dataset.id.split('--')[0]); });
     raiz.addEventListener('focusout', (e) => { if (!raiz.contains(e.relatedTarget)) acender(null); });
   }
 
@@ -1106,9 +1107,27 @@
         liderados(p.id).length ? h('p', { className: 'es-card__lidera', text: `Lidera ${nomes(liderados(p.id))}` }) : null))),
       h('div', { className: 'es-org__nivel', 'data-revela-lista': '' }, segundo.map((p) => {
         const l = liderados(p.id);
-        return cardPessoa(p, seloDe(p), h('p', { className: `es-card__lidera${l.length ? '' : ' es-card__lidera--vazio'}`, text: l.length ? `Líder de ${nomes(l)}` : (d.equipe?.semLiderado || 'Sem liderado informado.') }));
+        const atrib = p.atribuicoes || [];
+        return cardPessoa(p, seloDe(p), h('p', { className: `es-card__lidera${l.length || atrib.length ? '' : ' es-card__lidera--vazio'}`, text: l.length ? `Líder de ${nomes(l)}` : atrib.length ? `Atribuído a ${atrib.map((a) => a.titulo).join(' e ')}` : (d.equipe?.semLiderado || 'Sem liderado informado.') }));
       })));
     linhasEntre(org, orgSvg, segundo.map((p) => [p.lider, p.id]));
+
+    /* Frentes de quem não acompanha estagiário (ex.: Kauan: Chamados → filtro → QA / Desenvolvimento).
+       Fio entre as frentes com um ponto que desce em laço: o fluxo do chamado até o time de QA. */
+    const ICONE_FRENTE = { chamado: 'M4 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v2a2 2 0 0 0 0 4v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2a2 2 0 0 0 0-4z|M13 5v2|M13 11v2|M13 15v2',
+      qa: 'M9 3h6|M10 3v6l-5 9a2 2 0 0 0 1.7 3h10.6a2 2 0 0 0 1.7-3l-5-9V3|M7.5 15h9' };
+    const frentes = (p) => h('div', { className: 'es-frentes', 'data-revela-lista': '' },
+      h('p', { className: 'es-frentes__rotulo' }, h('span', { className: 'es-frentes__ponto', 'aria-hidden': 'true' }), 'Atribuições'),
+      ...(p.atribuicoes || []).flatMap((a, i, l) => [
+        h('article', { className: `es-frente es-frente--${a.id}`, 'data-id': `${p.id}--${a.id}`, tabindex: '0', style: { '--k': String(i) }, on: { pointermove: (e) => { const r = e.currentTarget.getBoundingClientRect(); e.currentTarget.style.setProperty('--mx', `${e.clientX - r.left - r.width / 2}px`); e.currentTarget.style.setProperty('--my', `${e.clientY - r.top - r.height / 2}px`); } } },
+          h('span', { className: 'es-frente__icone', 'aria-hidden': 'true' }, traco(ICONE_FRENTE[a.icone] || ICONE_FRENTE.chamado)),
+          h('h3', { className: 'es-frente__titulo' }, titulo1(h('span', { text: a.titulo }), { atraso: 180 + i * 160 })),
+          h('p', { className: 'es-frente__texto', text: a.texto })),
+        i < l.length - 1 ? h('div', { className: 'es-fio', 'aria-hidden': 'true' }, h('span', { className: 'es-fio__ponto' }), h('span', { className: 'es-fio__rotulo', text: 'filtro' })) : null,
+      ]));
+
+    // faixas da coluna: uma por estagiário; quem tem atribuições ganha duas (os cartões das frentes têm texto)
+    const faixas = (p) => (liderados(p.id).length || ((p.atribuicoes || []).length ? 2 : 1));
 
     /* 02 · Liderança: cada consultor com o estagiário que acompanha */
     const lidSvg = svgEl('svg', { class: 'es-linhas', 'aria-hidden': 'true' });
@@ -1116,15 +1135,16 @@
       fotoPessoa(p, 'es-foto es-mini__foto'),
       h('div', null, h('strong', { text: p.nome }), h('span', { text: seloDe(p) || p.cargo })));
     const lideranca = h('div', { className: 'es-lid' }, lidSvg,
-      h('ol', { className: 'es-lid__colunas', 'data-revela-lista': '', style: { '--total': String(segundo.reduce((s, p) => s + Math.max(1, liderados(p.id).length), 0)) } }, segundo.map((p) => {
+      h('ol', { className: 'es-lid__colunas', 'data-revela-lista': '', style: { '--total': String(segundo.reduce((s, p) => s + faixas(p), 0)) } }, segundo.map((p) => {
         const l = liderados(p.id);
         // a coluna ocupa uma faixa por estagiário: os cards ficam lado a lado, cada um com a sua linha até o líder
-        const n = Math.max(1, l.length);
+        const n = faixas(p);
         return h('li', { className: 'es-lid__coluna', style: { '--n': String(n) } }, mini(p),
           l.length ? h('div', { className: 'es-lid__liderados' }, l.map((x) => cardPessoa(x, seloDe(x))))
+            : (p.atribuicoes || []).length ? frentes(p)
             : h('div', { className: 'es-lid__vazio', role: 'note' }, h('span', { className: 'es-lid__vazio-ponto', 'aria-hidden': 'true' }), h('p', { text: d.equipe?.semLiderado || 'Sem liderado informado.' })));
       })));
-    linhasEntre(lideranca, lidSvg, segundo.flatMap((p) => liderados(p.id).map((x) => [p.id, x.id])));
+    linhasEntre(lideranca, lidSvg, segundo.flatMap((p) => (liderados(p.id).length ? liderados(p.id).map((x) => [p.id, x.id]) : (p.atribuicoes || []).slice(0, 1).map((a) => [p.id, `${p.id}--${a.id}`]))));
 
     const ancoras = [['organograma', 'Organograma'], ['lideranca', 'Liderança'], ['funcoes', 'Funções'], ['processos', 'Processos'], ['pilares', 'Pilares e cliente']];
     const nEst = pessoas.filter((p) => p.grupo === 'estagiarios').length;

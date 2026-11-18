@@ -992,6 +992,47 @@ body.ab-modo-ff .main { overflow-x: clip; }
 .es-lid__liderados .es-card { max-width: 230px; }
 @media (max-width: 620px) { .es-lid__coluna { grid-column: 1 / -1; } .es-lid__liderados .es-card__nome { font-size: 18px; } }
 @media (min-width: 1180px) { .es-lid__colunas { grid-template-columns: repeat(var(--total, 4), minmax(0, 1fr)); } }
-.es-lid__coluna { grid-template-rows: auto 1fr; }
-.es-lid__liderados { align-items: stretch; height: 100%; }
-.es-lid__liderados .es-card { height: 100%; }
+.es-lid__liderados { align-items: start; }
+
+/* ---------- Frentes (Kauan: Chamados → filtro → QA / Desenvolvimento), 18/11/2026 ----------
+   Cartões escuros com brilho lima que acompanha o cursor, fio animado entre as frentes. */
+.es-frentes { display: grid; justify-items: stretch; width: 100%; max-width: 240px; height: 100%; }
+.es-frentes__rotulo { display: inline-flex; align-items: center; gap: 8px; justify-self: center; margin: 0 0 12px; color: var(--es-suave); font: 700 11px var(--font-body); letter-spacing: .1em; text-transform: uppercase; }
+.es-frentes__ponto { width: 7px; height: 7px; border-radius: 50%; background: var(--es-lima); box-shadow: 0 0 0 4px rgb(213 221 38 / .22); animation: es-pulso 2.4s ease-in-out infinite; }
+@keyframes es-pulso { 50% { box-shadow: 0 0 0 7px rgb(213 221 38 / .06); } }
+.es-frente { position: relative; z-index: 1; display: grid; gap: 8px; padding: 18px 18px 20px; overflow: hidden; isolation: isolate; border-radius: 20px; outline: none;
+  background: linear-gradient(165deg, #173f5f 0%, var(--es-tinta) 55%, #0b2236 100%); color: #fff;
+  box-shadow: 0 1px 0 rgb(255 255 255 / .06) inset, 0 18px 40px -26px rgb(18 50 76 / .8);
+  transition: transform 520ms var(--es-mola), box-shadow 520ms var(--es-mola), opacity 360ms ease, filter 360ms ease; }
+.es-frente::before { content: ""; position: absolute; inset: -40%; z-index: -1; opacity: 0;
+  background: radial-gradient(closest-side, rgb(213 221 38 / .28), transparent 70%); transform: translate(var(--mx, 0), var(--my, 0));
+  transition: opacity 400ms ease; }
+.es-frente::after { content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1px; pointer-events: none;
+  background: linear-gradient(135deg, rgb(213 221 38 / .55), rgb(213 221 38 / 0) 40%, rgb(52 120 167 / .5)); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; }
+.es-frente:hover, .es-frente:focus-visible { transform: translateY(-5px); box-shadow: 0 1px 0 rgb(255 255 255 / .08) inset, 0 30px 60px -28px rgb(18 50 76 / .85); }
+.es-frente:hover::before, .es-frente:focus-visible::before { opacity: 1; }
+.es-frente:focus-visible { box-shadow: 0 0 0 3px #fff, 0 0 0 6px var(--es-azul); }
+.es-frente__icone { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 12px; background: rgb(213 221 38 / .14); color: var(--es-lima); }
+.es-frente__icone svg { width: 22px; height: 22px; }
+.es-frente__titulo { margin: 4px 0 0; font: 800 18px/1.2 var(--font-display); letter-spacing: -.01em; color: #fff; }
+.es-frente__texto { margin: 0; color: #B9CDDD; font-size: 13.5px; line-height: 1.55; text-wrap: pretty; }
+.es-frente--qa .es-frente__icone { background: rgb(52 120 167 / .3); color: #9FD0F0; }
+
+.es-fio { position: relative; display: grid; place-items: center; height: 56px; }
+.es-fio::before { content: ""; position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; transform: translateX(-50%);
+  background: repeating-linear-gradient(180deg, rgb(52 120 167 / .5) 0 6px, transparent 6px 11px); }
+.es-fio__ponto { position: absolute; top: 0; left: 50%; width: 9px; height: 9px; margin-left: -4.5px; border-radius: 50%; background: var(--es-lima);
+  box-shadow: 0 0 0 4px rgb(213 221 38 / .25), 0 0 14px rgb(213 221 38 / .9); animation: es-desce 1.8s cubic-bezier(.45, 0, .55, 1) infinite; }
+@keyframes es-desce { 0% { transform: translateY(0); opacity: 0; } 15% { opacity: 1; } 85% { opacity: 1; } 100% { transform: translateY(47px); opacity: 0; } }
+.es-fio__rotulo { position: relative; padding: 2px 9px; border: 1px solid var(--es-linha); border-radius: 999px; background: #fff; color: var(--es-azul); font: 700 10.5px var(--font-body); letter-spacing: .08em; text-transform: uppercase; }
+.es--foco .es-frente:not(.es-aceso) { opacity: .42; filter: saturate(.55); }
+
+@media (prefers-reduced-motion: reduce) {
+  .es-fio__ponto, .es-frentes__ponto { animation: none; }
+  .es-fio__ponto { top: 50%; opacity: 1; }
+  .es-frente { transition: none; }
+  .es-frente:hover, .es-frente:focus-visible { transform: none; }
+}
+
+.es-frentes { max-width: 260px; height: auto; }
+.es-frente__titulo { overflow-wrap: anywhere; }
