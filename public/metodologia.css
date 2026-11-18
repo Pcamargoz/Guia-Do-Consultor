@@ -982,3 +982,6 @@ html.mov .mt-medidores { animation: ff-chega 700ms var(--mov-ease) both 480ms; }
 .ff-abertura__titulo--apostila { overflow-wrap: anywhere; }
 @media (max-width: 480px) { .ff-abertura__titulo--apostila { font-size: clamp(2.1rem, 10.5vw, 2.6rem); } }
 body.ab-modo-ff .main { overflow-x: clip; }
+/* fotos da equipe (18/11/2026): recortes dos cards oficiais em 6:5 — a proporção do card segue a da foto, sem corte nem distorção */
+.es-card__foto { aspect-ratio: 6 / 5; }
+.es-foto img { object-position: 50% 30%; }

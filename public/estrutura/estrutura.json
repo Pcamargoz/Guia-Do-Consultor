@@ -32,7 +32,7 @@
     "cargo": "Coordenadora do setor Faktory Flow",
     "grupo": "coordenacao",
     "lider": null,
-    "foto": null
+    "foto": "/estrutura/fotos/rafaela.jpg"
    },
    {
     "id": "pedro",
@@ -40,7 +40,7 @@
     "cargo": "Implantação",
     "grupo": "consultores",
     "lider": "rafaela",
-    "foto": null
+    "foto": "/estrutura/fotos/pedro.jpg"
    },
    {
     "id": "isabella",
@@ -48,7 +48,7 @@
     "cargo": "Implantação",
     "grupo": "consultores",
     "lider": "rafaela",
-    "foto": null
+    "foto": "/estrutura/fotos/isabella.jpg"
    },
    {
     "id": "iago",
@@ -56,7 +56,7 @@
     "cargo": "Implantação",
     "grupo": "consultores",
     "lider": "rafaela",
-    "foto": null
+    "foto": "/estrutura/fotos/iago.jpg"
    },
    {
     "id": "kauan",
@@ -64,7 +64,7 @@
     "cargo": "Implantação",
     "grupo": "consultores",
     "lider": "rafaela",
-    "foto": null
+    "foto": "/estrutura/fotos/kauan.jpg"
    },
    {
     "id": "nathan-vieira",
