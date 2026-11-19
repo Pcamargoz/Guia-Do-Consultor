@@ -245,7 +245,10 @@
       grade.replaceChildren(...lista.map((q, i) => cartaoQuadro(q, i)));
     }
     const ferramentas = segmento || busca ? h('div', { className: 'ld-ferramentas' }, segmento, busca) : null;
-    casca.replaceChildren(abertura, h('div', { className: 'ld-corpo' }, ferramentas, grade));
+    const secaoCab = r.quadros.length ? h('header', { className: 'ld-secao-cab', 'data-revela': '' },
+      h('p', { className: 'ld-secao-cab__olho', text: eu.papel === 'estagiario' ? 'Seus quadros' : 'Quadros' }),
+      h('h2', { text: eu.papel === 'estagiario' ? 'Onde você está trabalhando' : 'Cada líder, um quadro' })) : null;
+    casca.replaceChildren(abertura, h('div', { className: 'ld-corpo' }, secaoCab, ferramentas, grade));
     const trilho = segmento && MOV ? MOV.indicador(segmento, '[aria-pressed="true"]', 'ld-segmento__ind') : null;
     if (trilho) est.limpar.push(() => trilho.destruir());
     redesenhar();
