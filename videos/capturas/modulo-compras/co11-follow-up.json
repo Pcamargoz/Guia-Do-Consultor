@@ -1,0 +1,45 @@
+{
+ "nome": "co11-follow-up",
+ "url": "https://staging.flow.faktory.com.br/compras/followup-entregas",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "Atrasados",
+    "exact": true
+   },
+   "caixa": {
+    "x": 752,
+    "y": 328,
+    "w": 326,
+    "h": 21
+   }
+  },
+  {
+   "alvo": {
+    "css": "thead th",
+    "nth": 3
+   },
+   "caixa": {
+    "x": 1269,
+    "y": 685,
+    "w": 277,
+    "h": 43
+   }
+  },
+  {
+   "alvo": {
+    "css": "thead th",
+    "nth": 4
+   },
+   "caixa": {
+    "x": 1546,
+    "y": 685,
+    "w": 220,
+    "h": 43
+   }
+  }
+ ],
+ "em": "2026-11-17T14:16:01.026Z"
+}

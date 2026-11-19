@@ -1,5 +1,5 @@
 {
- "versao": "2026-11-17",
+ "versao": "2026-11-19",
  "gerado_de": {
   "mapa": "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
   "harness": "harness:conhecimento/"
@@ -271,10 +271,148 @@
    ],
    "recursos": {
     "video": {
-     "status": "em-preparacao",
-     "titulo": "Vídeo completo do módulo",
+     "status": "disponivel",
+     "id": "modulo-fundacao",
+     "titulo": "Cadastros e Fundação: o módulo completo",
+     "resumo": "Todo módulo usa os cadastros da Fundação. Neste vídeo: empresa e regime, certificado e série, usuários, participantes, produtos, pagamento, CFOP, carga inicial e o pedido de teste.",
+     "url": "/videos/modulo-fundacao.mp4",
+     "poster": "/videos/modulo-fundacao.jpg",
+     "legendas": "/videos/modulo-fundacao.vtt",
+     "duracao_s": 465,
+     "capitulos": [
+      {
+       "t": 1.1,
+       "titulo": "Abertura",
+       "grupo": "Abertura"
+      },
+      {
+       "t": 17.4,
+       "titulo": "Conceito",
+       "grupo": "Conceito"
+      },
+      {
+       "t": 43.8,
+       "titulo": "A versão limita o regime",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 61.3,
+       "titulo": "O CNPJ não muda",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 76.5,
+       "titulo": "Sem certificado, sem nota",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 90.5,
+       "titulo": "Um cadastro, vários papéis",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 107.4,
+       "titulo": "CPF/CNPJ não repete",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 122,
+       "titulo": "A categoria decide o preço",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 139.5,
+       "titulo": "Sigla da unidade igual",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 159.2,
+       "titulo": "Minha Assinatura",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 179.6,
+       "titulo": "A empresa e o regime",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 197.6,
+       "titulo": "Certificado e série",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 217.9,
+       "titulo": "Perfis de Acesso",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 238.3,
+       "titulo": "Usuários e convites",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 260.9,
+       "titulo": "Participantes",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 274.4,
+       "titulo": "Dados Gerais",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 290.1,
+       "titulo": "Conta de fluxo e papel",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 308.7,
+       "titulo": "Categorias de Produto",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 326.8,
+       "titulo": "Classificações Fiscais",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 343.1,
+       "titulo": "Condição de pagamento",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 362.3,
+       "titulo": "CFOPs de saída",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 383.8,
+       "titulo": "Carga via Excel",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 403.5,
+       "titulo": "A prova: pedido de teste",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 421.6,
+       "titulo": "Cuidados",
+       "grupo": "Cuidados"
+      },
+      {
+       "t": 444.2,
+       "titulo": "Fechamento",
+       "grupo": "Fechamento"
+      }
+     ],
+     "compartilhado": [],
+     "versaoSistema": "1.22.13",
+     "revisar": true,
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/14-metodologia.md"
+      "guia:public/videos/manifest.json",
+      "guia:videos/roteiros/modulo-fundacao.json",
+      "guia:videos/src/gerado/modulo-fundacao.json"
      ]
     },
     "checklist": {
@@ -465,10 +603,128 @@
    ],
    "recursos": {
     "video": {
-     "status": "em-preparacao",
-     "titulo": "Vídeo completo do módulo",
+     "status": "disponivel",
+     "id": "modulo-crm",
+     "titulo": "CRM: o módulo completo",
+     "resumo": "Todo pedido do CRM começa num lead. Neste vídeo: cadastrar, qualificar pelo BANT, converter, trabalhar a oportunidade no Pipeline, ganhar, gerar o pedido e ler os painéis.",
+     "url": "/videos/modulo-crm.mp4",
+     "poster": "/videos/modulo-crm.jpg",
+     "legendas": "/videos/modulo-crm.vtt",
+     "duracao_s": 392,
+     "capitulos": [
+      {
+       "t": 1.1,
+       "titulo": "Abertura",
+       "grupo": "Abertura"
+      },
+      {
+       "t": 17.4,
+       "titulo": "Conceito",
+       "grupo": "Conceito"
+      },
+      {
+       "t": 42.1,
+       "titulo": "O lead já é o participante",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 57.3,
+       "titulo": "A qualificação mora em Informações CRM",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 72.5,
+       "titulo": "Converter: 60% e BANT",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 91.6,
+       "titulo": "A oportunidade nasce sozinha",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 108,
+       "titulo": "Atividades não migram",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 124.9,
+       "titulo": "Perda pede motivo",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 139.5,
+       "titulo": "Pedido: CFOP sem financeiro",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 157.5,
+       "titulo": "Lista de Leads",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 172.7,
+       "titulo": "Novo Lead",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 190.8,
+       "titulo": "Informações CRM e BANT",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 205.9,
+       "titulo": "Kanban de Leads",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 228.6,
+       "titulo": "Converter",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 245.5,
+       "titulo": "O Pipeline",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 264.6,
+       "titulo": "Ganhar, perder, pausar",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 282.7,
+       "titulo": "Atividades",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 305.3,
+       "titulo": "Visão Geral: a jornada",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 327.9,
+       "titulo": "Resultado do Mês",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 348.8,
+       "titulo": "Cuidados",
+       "grupo": "Cuidados"
+      },
+      {
+       "t": 369.1,
+       "titulo": "Fechamento",
+       "grupo": "Fechamento"
+      }
+     ],
+     "compartilhado": [],
+     "versaoSistema": "1.22.13",
+     "revisar": true,
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/14-metodologia.md"
+      "guia:public/videos/manifest.json",
+      "guia:videos/roteiros/modulo-crm.json",
+      "guia:videos/src/gerado/modulo-crm.json"
      ]
     },
     "checklist": {
@@ -594,10 +850,138 @@
    ],
    "recursos": {
     "video": {
-     "status": "em-preparacao",
-     "titulo": "Vídeo completo do módulo",
+     "status": "disponivel",
+     "id": "modulo-cem",
+     "titulo": "Integração CEM: o módulo completo",
+     "resumo": "O orçamento fechado no CEM vira pedido de venda sem redigitar. Neste vídeo: escolher e conectar o sistema, completar os Padrões, importar, ler o pedido, reimportar e o Faturamento em Nível.",
+     "url": "/videos/modulo-cem.mp4",
+     "poster": "/videos/modulo-cem.jpg",
+     "legendas": "/videos/modulo-cem.vtt",
+     "duracao_s": 437,
+     "capitulos": [
+      {
+       "t": 0,
+       "titulo": "Abertura",
+       "grupo": "Abertura"
+      },
+      {
+       "t": 18.6,
+       "titulo": "Conceito",
+       "grupo": "Conceito"
+      },
+      {
+       "t": 49,
+       "titulo": "Só o administrador configura",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 64.7,
+       "titulo": "Modo do código antes da 1ª obra",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 80.5,
+       "titulo": "Padrões completos, sem parada",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 98.5,
+       "titulo": "O preço é o do CEM",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 117.7,
+       "titulo": "Confirmação com 4 obrigatórios",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 135.2,
+       "titulo": "Corrija na origem",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 151.5,
+       "titulo": "Reimportar traz só o saldo",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 169.6,
+       "titulo": "Configurar integração",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 184.8,
+       "titulo": "Conexão do CEM Mobi",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 204.5,
+       "titulo": "Padrões por tipo de item",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 225.4,
+       "titulo": "Padrões do pedido",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 242.3,
+       "titulo": "O botão de importação",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 259.2,
+       "titulo": "Escolher a obra",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 280.1,
+       "titulo": "Itens da Obra",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 299.3,
+       "titulo": "Decisões",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 319.1,
+       "titulo": "O pedido que nasceu",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 341.7,
+       "titulo": "Faturamento em Nível",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 358,
+       "titulo": "Níveis de Faturamento",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 378.3,
+       "titulo": "Templates de Rateio",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 391.2,
+       "titulo": "Cuidados",
+       "grupo": "Cuidados"
+      },
+      {
+       "t": 410.4,
+       "titulo": "Fechamento",
+       "grupo": "Fechamento"
+      }
+     ],
+     "compartilhado": [],
+     "versaoSistema": "1.22.13",
+     "revisar": true,
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/14-metodologia.md"
+      "guia:public/videos/manifest.json",
+      "guia:videos/roteiros/modulo-cem.json",
+      "guia:videos/src/gerado/modulo-cem.json"
      ]
     },
     "checklist": {
@@ -1143,10 +1527,143 @@
    ],
    "recursos": {
     "video": {
-     "status": "em-preparacao",
-     "titulo": "Vídeo completo do módulo",
+     "status": "disponivel",
+     "id": "modulo-compras",
+     "titulo": "Compras: o módulo completo",
+     "resumo": "Toda compra começa por uma necessidade. Neste vídeo: solicitação, sugestão, cotação, pedido de compra, alçada, acompanhamento da entrega e o reflexo no Recebimento e no Financeiro.",
+     "url": "/videos/modulo-compras.mp4",
+     "poster": "/videos/modulo-compras.jpg",
+     "legendas": "/videos/modulo-compras.vtt",
+     "duracao_s": 420,
+     "capitulos": [
+      {
+       "t": 1.1,
+       "titulo": "Abertura",
+       "grupo": "Abertura"
+      },
+      {
+       "t": 16.9,
+       "titulo": "Conceito",
+       "grupo": "Conceito"
+      },
+      {
+       "t": 45.5,
+       "titulo": "A categoria exige as características",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 59.6,
+       "titulo": "A natureza define o CFOP",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 74.2,
+       "titulo": "Vencedor por item",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 89.4,
+       "titulo": "Um pedido por vencedor",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 105.7,
+       "titulo": "Pedido nunca a zero",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 120.9,
+       "titulo": "Títulos: pelo pedido ou pela nota",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 136.6,
+       "titulo": "Quem cria não aprova",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 153,
+       "titulo": "Solicitações de Compra",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 166.4,
+       "titulo": "Nova Solicitação",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 180.5,
+       "titulo": "Dois caminhos a partir da SC",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 196.8,
+       "titulo": "Sugestão de Compra",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 213.1,
+       "titulo": "Cotações de Compra",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 230.6,
+       "titulo": "Os quatro passos da cotação",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 249.2,
+       "titulo": "Pedidos de Compra",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 269,
+       "titulo": "Pedido direto, sem cotação",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 287.6,
+       "titulo": "Aprovações por alçada",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 307.3,
+       "titulo": "Follow-up de Entregas",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 320.8,
+       "titulo": "Dashboard Compras",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 336.6,
+       "titulo": "O menu do pedido",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 355.8,
+       "titulo": "A cadeia inteira da compra",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 374.9,
+       "titulo": "Cuidados",
+       "grupo": "Cuidados"
+      },
+      {
+       "t": 397.6,
+       "titulo": "Fechamento",
+       "grupo": "Fechamento"
+      }
+     ],
+     "compartilhado": [],
+     "versaoSistema": "1.22.13",
+     "revisar": true,
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/14-metodologia.md"
+      "guia:public/videos/manifest.json",
+      "guia:videos/roteiros/modulo-compras.json",
+      "guia:videos/src/gerado/modulo-compras.json"
      ]
     },
     "checklist": {
@@ -1330,10 +1847,143 @@
    ],
    "recursos": {
     "video": {
-     "status": "em-preparacao",
-     "titulo": "Vídeo completo do módulo",
+     "status": "disponivel",
+     "id": "modulo-recebimento",
+     "titulo": "Recebimento: o módulo completo",
+     "resumo": "Toda mercadoria que chega passa por uma nota de recebimento. Neste vídeo: preparar o módulo, receber o XML, gerar a nota pelo pedido, entrega parcial, finalizar e ver o estoque e o título a pagar.",
+     "url": "/videos/modulo-recebimento.mp4",
+     "poster": "/videos/modulo-recebimento.jpg",
+     "legendas": "/videos/modulo-recebimento.vtt",
+     "duracao_s": 437,
+     "capitulos": [
+      {
+       "t": 1.1,
+       "titulo": "Abertura",
+       "grupo": "Abertura"
+      },
+      {
+       "t": 22,
+       "titulo": "Conceito",
+       "grupo": "Conceito"
+      },
+      {
+       "t": 47.2,
+       "titulo": "Uma nota, dois números",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 63.6,
+       "titulo": "O CFOP decide tudo",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 82.2,
+       "titulo": "Só pedido aberto e aprovado",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 100.8,
+       "titulo": "Entrega parcial vira pedido filho",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 118.3,
+       "titulo": "Finalizar não volta",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 135.7,
+       "titulo": "XML não entra duas vezes",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 152.6,
+       "titulo": "Cancelar tem ordem",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 168.4,
+       "titulo": "Parâmetros de Recebimento",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 183.6,
+       "titulo": "Distribuição DFe",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 198.2,
+       "titulo": "Aguardando manifestação",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 217.4,
+       "titulo": "Importar XML",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 237.7,
+       "titulo": "Escolher o pedido",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 256.3,
+       "titulo": "A nota preenchida pelo pedido",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 275.5,
+       "titulo": "Notas de Recebimento",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 291.3,
+       "titulo": "O menu da nota",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 304.7,
+       "titulo": "O pedido mostra a nota",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 325.6,
+       "titulo": "Finalizar a nota",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 344.2,
+       "titulo": "A entrada no estoque",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 361.1,
+       "titulo": "O título a pagar",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 378.6,
+       "titulo": "Dashboard Recebimento",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 396.7,
+       "titulo": "Cuidados",
+       "grupo": "Cuidados"
+      },
+      {
+       "t": 415.8,
+       "titulo": "Fechamento",
+       "grupo": "Fechamento"
+      }
+     ],
+     "compartilhado": [],
+     "versaoSistema": "1.22.13",
+     "revisar": true,
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/14-metodologia.md"
+      "guia:public/videos/manifest.json",
+      "guia:videos/roteiros/modulo-recebimento.json",
+      "guia:videos/src/gerado/modulo-recebimento.json"
      ]
     },
     "checklist": {
@@ -1523,10 +2173,143 @@
    ],
    "recursos": {
     "video": {
-     "status": "em-preparacao",
-     "titulo": "Vídeo completo do módulo",
+     "status": "disponivel",
+     "id": "modulo-estoque",
+     "titulo": "Estoque: o módulo completo",
+     "resumo": "No Flow, o saldo nunca é digitado: ele nasce de movimentos. Neste vídeo: locais, saldo inicial, movimentos, saldo e extrato, transferência, inventário, empréstimo e reposição.",
+     "url": "/videos/modulo-estoque.mp4",
+     "poster": "/videos/modulo-estoque.jpg",
+     "legendas": "/videos/modulo-estoque.vtt",
+     "duracao_s": 406,
+     "capitulos": [
+      {
+       "t": 1.1,
+       "titulo": "Abertura",
+       "grupo": "Abertura"
+      },
+      {
+       "t": 16.3,
+       "titulo": "Conceito",
+       "grupo": "Conceito"
+      },
+      {
+       "t": 44.9,
+       "titulo": "O saldo nasce de movimentos",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 61.3,
+       "titulo": "Movimento não se edita",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 75.9,
+       "titulo": "Almoxarifado central ativo",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 88.8,
+       "titulo": "Saldo inicial primeiro",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 104.5,
+       "titulo": "Saldo por local e variação",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 121.4,
+       "titulo": "Pendente reserva o disponível",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 137.2,
+       "titulo": "Inventário exige outra pessoa",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 154.1,
+       "titulo": "Locais de estoque",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 168.1,
+       "titulo": "Parâmetros de Estoque",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 189,
+       "titulo": "Importar saldo inicial",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 207.1,
+       "titulo": "Novo Movimento",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 225.1,
+       "titulo": "Movimentos: de onde vem cada um",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 243.2,
+       "titulo": "Saldo e disponível",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 258.9,
+       "titulo": "O extrato do produto",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 271.3,
+       "titulo": "Transferências",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 288.2,
+       "titulo": "Inventários",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 306.2,
+       "titulo": "Empréstimos entre obras",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 320.2,
+       "titulo": "Reposição",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 337.1,
+       "titulo": "Reservas órfãs",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 348.3,
+       "titulo": "Visão geral do estoque",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 365.8,
+       "titulo": "Cuidados",
+       "grupo": "Cuidados"
+      },
+      {
+       "t": 382.7,
+       "titulo": "Fechamento",
+       "grupo": "Fechamento"
+      }
+     ],
+     "compartilhado": [],
+     "versaoSistema": "1.22.13",
+     "revisar": true,
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/14-metodologia.md"
+      "guia:public/videos/manifest.json",
+      "guia:videos/roteiros/modulo-estoque.json",
+      "guia:videos/src/gerado/modulo-estoque.json"
      ]
     },
     "checklist": {
@@ -1716,10 +2499,138 @@
    ],
    "recursos": {
     "video": {
-     "status": "em-preparacao",
-     "titulo": "Vídeo completo do módulo",
+     "status": "disponivel",
+     "id": "modulo-producao",
+     "titulo": "Produção: o módulo completo",
+     "resumo": "A OP é a ordem para a fábrica produzir um item. Neste vídeo: estrutura do produto, OP a partir do pedido, baixa de material, apontamento e a entrada do produto acabado no estoque.",
+     "url": "/videos/modulo-producao.mp4",
+     "poster": "/videos/modulo-producao.jpg",
+     "legendas": "/videos/modulo-producao.vtt",
+     "duracao_s": 405,
+     "capitulos": [
+      {
+       "t": 0,
+       "titulo": "Abertura",
+       "grupo": "Abertura"
+      },
+      {
+       "t": 19.8,
+       "titulo": "Conceito",
+       "grupo": "Conceito"
+      },
+      {
+       "t": 44.4,
+       "titulo": "Processo no produto",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 59.6,
+       "titulo": "Paramétrico exige cor",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 73.6,
+       "titulo": "A OP não copia a quantidade",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 88.8,
+       "titulo": "Requisições nascem ao salvar",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 104,
+       "titulo": "Baixa parcial e estorno",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 119.2,
+       "titulo": "Marcar produzido credita o acabado",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 133.8,
+       "titulo": "Sem almoxarifado, não conclui",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 149.6,
+       "titulo": "A estrutura do produto",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 169.9,
+       "titulo": "A lista de OPs",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 190.8,
+       "titulo": "Nova OP a partir do pedido",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 208.8,
+       "titulo": "O menu da OP",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 226.9,
+       "titulo": "Materiais necessários",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 242.1,
+       "titulo": "Sem etapas, sem apontamento",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 260.1,
+       "titulo": "Onde fica o Terminal",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 280.4,
+       "titulo": "O acabado entrou no estoque",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 298.5,
+       "titulo": "Custo da OP",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 316,
+       "titulo": "Painel de fábrica",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 335.7,
+       "titulo": "Separação de materiais",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 349.8,
+       "titulo": "Visão geral da produção",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 365.5,
+       "titulo": "Cuidados",
+       "grupo": "Cuidados"
+      },
+      {
+       "t": 384.1,
+       "titulo": "Fechamento",
+       "grupo": "Fechamento"
+      }
+     ],
+     "compartilhado": [],
+     "versaoSistema": "1.22.13",
+     "revisar": true,
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/14-metodologia.md"
+      "guia:public/videos/manifest.json",
+      "guia:videos/roteiros/modulo-producao.json",
+      "guia:videos/src/gerado/modulo-producao.json"
      ]
     },
     "checklist": {
@@ -1905,10 +2816,138 @@
    ],
    "recursos": {
     "video": {
-     "status": "em-preparacao",
-     "titulo": "Vídeo completo do módulo",
+     "status": "disponivel",
+     "id": "modulo-servicos",
+     "titulo": "Serviços e Instalação: o módulo completo",
+     "resumo": "O trabalho de campo começa no pedido vendido. Neste vídeo: medição, conferência, instalação, vistoria, assistência técnica e a gestão das equipes.",
+     "url": "/videos/modulo-servicos.mp4",
+     "poster": "/videos/modulo-servicos.jpg",
+     "legendas": "/videos/modulo-servicos.vtt",
+     "duracao_s": 387,
+     "capitulos": [
+      {
+       "t": 1.1,
+       "titulo": "Abertura",
+       "grupo": "Abertura"
+      },
+      {
+       "t": 14,
+       "titulo": "Conceito",
+       "grupo": "Conceito"
+      },
+      {
+       "t": 38.7,
+       "titulo": "A medição nasce do pedido",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 56.7,
+       "titulo": "Agendar só depois de salvar",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 70.2,
+       "titulo": "Quem mede não confere",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 80.8,
+       "titulo": "As passagens são por botão",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 96,
+       "titulo": "Vistoria automática só se ligar",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 110.6,
+       "titulo": "Aceite da vistoria no fim",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 120.1,
+       "titulo": "Equipe interna não gera pagamento",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 131.8,
+       "titulo": "A lista de medições",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 148.1,
+       "titulo": "Escolher o pedido",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 164.5,
+       "titulo": "A medição por dentro",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 180.8,
+       "titulo": "Os vãos medidos",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 198.3,
+       "titulo": "De onde nasce a instalação",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 218,
+       "titulo": "A instalação concluída",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 238.4,
+       "titulo": "A lista de vistorias",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 255.8,
+       "titulo": "A vistoria por dentro",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 276.2,
+       "titulo": "Assistência Técnica",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 294.8,
+       "titulo": "As abas da assistência",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 311.1,
+       "titulo": "Cockpit de Campo",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 332,
+       "titulo": "Como vai a operação?",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 352.3,
+       "titulo": "Cuidados",
+       "grupo": "Cuidados"
+      },
+      {
+       "t": 368.7,
+       "titulo": "Fechamento",
+       "grupo": "Fechamento"
+      }
+     ],
+     "compartilhado": [],
+     "versaoSistema": "1.22.13",
+     "revisar": true,
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/14-metodologia.md"
+      "guia:public/videos/manifest.json",
+      "guia:videos/roteiros/modulo-servicos.json",
+      "guia:videos/src/gerado/modulo-servicos.json"
      ]
     },
     "checklist": {
@@ -2090,10 +3129,133 @@
    ],
    "recursos": {
     "video": {
-     "status": "em-preparacao",
-     "titulo": "Vídeo completo do módulo",
+     "status": "disponivel",
+     "id": "modulo-projetos",
+     "titulo": "Projetos e Obras: o módulo completo",
+     "resumo": "Na indústria de esquadrias, o projeto é a obra. Neste vídeo: cadastrar a obra, organizar estágios e etapas, ligar pedido, OP, nota e títulos, e ler o previsto × realizado.",
+     "url": "/videos/modulo-projetos.mp4",
+     "poster": "/videos/modulo-projetos.jpg",
+     "legendas": "/videos/modulo-projetos.vtt",
+     "duracao_s": 387,
+     "capitulos": [
+      {
+       "t": 1.1,
+       "titulo": "Abertura",
+       "grupo": "Abertura"
+      },
+      {
+       "t": 19.1,
+       "titulo": "Conceito",
+       "grupo": "Conceito"
+      },
+      {
+       "t": 43.2,
+       "titulo": "Nome e Código obrigatórios",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 57.3,
+       "titulo": "O campo Projeto liga tudo",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 74.7,
+       "titulo": "Ligue a obra antes de faturar",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 89.4,
+       "titulo": "Local de estoque da obra ativo",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 104.5,
+       "titulo": "Estágio e etapa em cascata",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 119.2,
+       "titulo": "Com documento, não se exclui",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 132.1,
+       "titulo": "Painel não é o caixa",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 146.7,
+       "titulo": "A lista de obras",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 163.6,
+       "titulo": "Cadastrar a obra",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 179.3,
+       "titulo": "A carteira de obras",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 195.1,
+       "titulo": "Os estágios da obra",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 212.6,
+       "titulo": "As etapas da obra",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 232.3,
+       "titulo": "O pedido da obra",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 252.1,
+       "titulo": "OPs da obra",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 273.5,
+       "titulo": "Os títulos da obra",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 291.6,
+       "titulo": "Painel Financeiro de Projetos",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 309.1,
+       "titulo": "Andamento das Obras",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 327.7,
+       "titulo": "Dashboard Projetos",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 346.3,
+       "titulo": "Cuidados",
+       "grupo": "Cuidados"
+      },
+      {
+       "t": 367.2,
+       "titulo": "Fechamento",
+       "grupo": "Fechamento"
+      }
+     ],
+     "compartilhado": [],
+     "versaoSistema": "1.22.13",
+     "revisar": true,
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/14-metodologia.md"
+      "guia:public/videos/manifest.json",
+      "guia:videos/roteiros/modulo-projetos.json",
+      "guia:videos/src/gerado/modulo-projetos.json"
      ]
     },
     "checklist": {
@@ -5073,6 +6235,1240 @@
     "guia:videos/roteiros/modulo-faturamento.json",
     "guia:videos/src/gerado/modulo-faturamento.json"
    ]
+  },
+  {
+   "id": "modulo-fundacao",
+   "titulo": "Cadastros e Fundação: o módulo completo",
+   "resumo": "Todo módulo usa os cadastros da Fundação. Neste vídeo: empresa e regime, certificado e série, usuários, participantes, produtos, pagamento, CFOP, carga inicial e o pedido de teste.",
+   "url": "/videos/modulo-fundacao.mp4",
+   "poster": "/videos/modulo-fundacao.jpg",
+   "legendas": "/videos/modulo-fundacao.vtt",
+   "duracao_s": 465,
+   "capitulos": [
+    {
+     "t": 1.1,
+     "titulo": "Abertura",
+     "grupo": "Abertura"
+    },
+    {
+     "t": 17.4,
+     "titulo": "Conceito",
+     "grupo": "Conceito"
+    },
+    {
+     "t": 43.8,
+     "titulo": "A versão limita o regime",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 61.3,
+     "titulo": "O CNPJ não muda",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 76.5,
+     "titulo": "Sem certificado, sem nota",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 90.5,
+     "titulo": "Um cadastro, vários papéis",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 107.4,
+     "titulo": "CPF/CNPJ não repete",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 122,
+     "titulo": "A categoria decide o preço",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 139.5,
+     "titulo": "Sigla da unidade igual",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 159.2,
+     "titulo": "Minha Assinatura",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 179.6,
+     "titulo": "A empresa e o regime",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 197.6,
+     "titulo": "Certificado e série",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 217.9,
+     "titulo": "Perfis de Acesso",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 238.3,
+     "titulo": "Usuários e convites",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 260.9,
+     "titulo": "Participantes",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 274.4,
+     "titulo": "Dados Gerais",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 290.1,
+     "titulo": "Conta de fluxo e papel",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 308.7,
+     "titulo": "Categorias de Produto",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 326.8,
+     "titulo": "Classificações Fiscais",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 343.1,
+     "titulo": "Condição de pagamento",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 362.3,
+     "titulo": "CFOPs de saída",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 383.8,
+     "titulo": "Carga via Excel",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 403.5,
+     "titulo": "A prova: pedido de teste",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 421.6,
+     "titulo": "Cuidados",
+     "grupo": "Cuidados"
+    },
+    {
+     "t": 444.2,
+     "titulo": "Fechamento",
+     "grupo": "Fechamento"
+    }
+   ],
+   "modulos": [
+    "fundacao"
+   ],
+   "versaoSistema": "1.22.13",
+   "revisar": true,
+   "fontes": [
+    "guia:public/videos/manifest.json",
+    "guia:videos/roteiros/modulo-fundacao.json",
+    "guia:videos/src/gerado/modulo-fundacao.json"
+   ]
+  },
+  {
+   "id": "modulo-crm",
+   "titulo": "CRM: o módulo completo",
+   "resumo": "Todo pedido do CRM começa num lead. Neste vídeo: cadastrar, qualificar pelo BANT, converter, trabalhar a oportunidade no Pipeline, ganhar, gerar o pedido e ler os painéis.",
+   "url": "/videos/modulo-crm.mp4",
+   "poster": "/videos/modulo-crm.jpg",
+   "legendas": "/videos/modulo-crm.vtt",
+   "duracao_s": 392,
+   "capitulos": [
+    {
+     "t": 1.1,
+     "titulo": "Abertura",
+     "grupo": "Abertura"
+    },
+    {
+     "t": 17.4,
+     "titulo": "Conceito",
+     "grupo": "Conceito"
+    },
+    {
+     "t": 42.1,
+     "titulo": "O lead já é o participante",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 57.3,
+     "titulo": "A qualificação mora em Informações CRM",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 72.5,
+     "titulo": "Converter: 60% e BANT",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 91.6,
+     "titulo": "A oportunidade nasce sozinha",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 108,
+     "titulo": "Atividades não migram",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 124.9,
+     "titulo": "Perda pede motivo",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 139.5,
+     "titulo": "Pedido: CFOP sem financeiro",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 157.5,
+     "titulo": "Lista de Leads",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 172.7,
+     "titulo": "Novo Lead",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 190.8,
+     "titulo": "Informações CRM e BANT",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 205.9,
+     "titulo": "Kanban de Leads",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 228.6,
+     "titulo": "Converter",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 245.5,
+     "titulo": "O Pipeline",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 264.6,
+     "titulo": "Ganhar, perder, pausar",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 282.7,
+     "titulo": "Atividades",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 305.3,
+     "titulo": "Visão Geral: a jornada",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 327.9,
+     "titulo": "Resultado do Mês",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 348.8,
+     "titulo": "Cuidados",
+     "grupo": "Cuidados"
+    },
+    {
+     "t": 369.1,
+     "titulo": "Fechamento",
+     "grupo": "Fechamento"
+    }
+   ],
+   "modulos": [
+    "crm"
+   ],
+   "versaoSistema": "1.22.13",
+   "revisar": true,
+   "fontes": [
+    "guia:public/videos/manifest.json",
+    "guia:videos/roteiros/modulo-crm.json",
+    "guia:videos/src/gerado/modulo-crm.json"
+   ]
+  },
+  {
+   "id": "modulo-cem",
+   "titulo": "Integração CEM: o módulo completo",
+   "resumo": "O orçamento fechado no CEM vira pedido de venda sem redigitar. Neste vídeo: escolher e conectar o sistema, completar os Padrões, importar, ler o pedido, reimportar e o Faturamento em Nível.",
+   "url": "/videos/modulo-cem.mp4",
+   "poster": "/videos/modulo-cem.jpg",
+   "legendas": "/videos/modulo-cem.vtt",
+   "duracao_s": 437,
+   "capitulos": [
+    {
+     "t": 0,
+     "titulo": "Abertura",
+     "grupo": "Abertura"
+    },
+    {
+     "t": 18.6,
+     "titulo": "Conceito",
+     "grupo": "Conceito"
+    },
+    {
+     "t": 49,
+     "titulo": "Só o administrador configura",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 64.7,
+     "titulo": "Modo do código antes da 1ª obra",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 80.5,
+     "titulo": "Padrões completos, sem parada",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 98.5,
+     "titulo": "O preço é o do CEM",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 117.7,
+     "titulo": "Confirmação com 4 obrigatórios",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 135.2,
+     "titulo": "Corrija na origem",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 151.5,
+     "titulo": "Reimportar traz só o saldo",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 169.6,
+     "titulo": "Configurar integração",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 184.8,
+     "titulo": "Conexão do CEM Mobi",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 204.5,
+     "titulo": "Padrões por tipo de item",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 225.4,
+     "titulo": "Padrões do pedido",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 242.3,
+     "titulo": "O botão de importação",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 259.2,
+     "titulo": "Escolher a obra",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 280.1,
+     "titulo": "Itens da Obra",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 299.3,
+     "titulo": "Decisões",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 319.1,
+     "titulo": "O pedido que nasceu",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 341.7,
+     "titulo": "Faturamento em Nível",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 358,
+     "titulo": "Níveis de Faturamento",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 378.3,
+     "titulo": "Templates de Rateio",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 391.2,
+     "titulo": "Cuidados",
+     "grupo": "Cuidados"
+    },
+    {
+     "t": 410.4,
+     "titulo": "Fechamento",
+     "grupo": "Fechamento"
+    }
+   ],
+   "modulos": [
+    "cem"
+   ],
+   "versaoSistema": "1.22.13",
+   "revisar": true,
+   "fontes": [
+    "guia:public/videos/manifest.json",
+    "guia:videos/roteiros/modulo-cem.json",
+    "guia:videos/src/gerado/modulo-cem.json"
+   ]
+  },
+  {
+   "id": "modulo-compras",
+   "titulo": "Compras: o módulo completo",
+   "resumo": "Toda compra começa por uma necessidade. Neste vídeo: solicitação, sugestão, cotação, pedido de compra, alçada, acompanhamento da entrega e o reflexo no Recebimento e no Financeiro.",
+   "url": "/videos/modulo-compras.mp4",
+   "poster": "/videos/modulo-compras.jpg",
+   "legendas": "/videos/modulo-compras.vtt",
+   "duracao_s": 420,
+   "capitulos": [
+    {
+     "t": 1.1,
+     "titulo": "Abertura",
+     "grupo": "Abertura"
+    },
+    {
+     "t": 16.9,
+     "titulo": "Conceito",
+     "grupo": "Conceito"
+    },
+    {
+     "t": 45.5,
+     "titulo": "A categoria exige as características",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 59.6,
+     "titulo": "A natureza define o CFOP",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 74.2,
+     "titulo": "Vencedor por item",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 89.4,
+     "titulo": "Um pedido por vencedor",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 105.7,
+     "titulo": "Pedido nunca a zero",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 120.9,
+     "titulo": "Títulos: pelo pedido ou pela nota",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 136.6,
+     "titulo": "Quem cria não aprova",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 153,
+     "titulo": "Solicitações de Compra",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 166.4,
+     "titulo": "Nova Solicitação",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 180.5,
+     "titulo": "Dois caminhos a partir da SC",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 196.8,
+     "titulo": "Sugestão de Compra",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 213.1,
+     "titulo": "Cotações de Compra",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 230.6,
+     "titulo": "Os quatro passos da cotação",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 249.2,
+     "titulo": "Pedidos de Compra",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 269,
+     "titulo": "Pedido direto, sem cotação",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 287.6,
+     "titulo": "Aprovações por alçada",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 307.3,
+     "titulo": "Follow-up de Entregas",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 320.8,
+     "titulo": "Dashboard Compras",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 336.6,
+     "titulo": "O menu do pedido",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 355.8,
+     "titulo": "A cadeia inteira da compra",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 374.9,
+     "titulo": "Cuidados",
+     "grupo": "Cuidados"
+    },
+    {
+     "t": 397.6,
+     "titulo": "Fechamento",
+     "grupo": "Fechamento"
+    }
+   ],
+   "modulos": [
+    "compras"
+   ],
+   "versaoSistema": "1.22.13",
+   "revisar": true,
+   "fontes": [
+    "guia:public/videos/manifest.json",
+    "guia:videos/roteiros/modulo-compras.json",
+    "guia:videos/src/gerado/modulo-compras.json"
+   ]
+  },
+  {
+   "id": "modulo-recebimento",
+   "titulo": "Recebimento: o módulo completo",
+   "resumo": "Toda mercadoria que chega passa por uma nota de recebimento. Neste vídeo: preparar o módulo, receber o XML, gerar a nota pelo pedido, entrega parcial, finalizar e ver o estoque e o título a pagar.",
+   "url": "/videos/modulo-recebimento.mp4",
+   "poster": "/videos/modulo-recebimento.jpg",
+   "legendas": "/videos/modulo-recebimento.vtt",
+   "duracao_s": 437,
+   "capitulos": [
+    {
+     "t": 1.1,
+     "titulo": "Abertura",
+     "grupo": "Abertura"
+    },
+    {
+     "t": 22,
+     "titulo": "Conceito",
+     "grupo": "Conceito"
+    },
+    {
+     "t": 47.2,
+     "titulo": "Uma nota, dois números",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 63.6,
+     "titulo": "O CFOP decide tudo",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 82.2,
+     "titulo": "Só pedido aberto e aprovado",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 100.8,
+     "titulo": "Entrega parcial vira pedido filho",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 118.3,
+     "titulo": "Finalizar não volta",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 135.7,
+     "titulo": "XML não entra duas vezes",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 152.6,
+     "titulo": "Cancelar tem ordem",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 168.4,
+     "titulo": "Parâmetros de Recebimento",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 183.6,
+     "titulo": "Distribuição DFe",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 198.2,
+     "titulo": "Aguardando manifestação",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 217.4,
+     "titulo": "Importar XML",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 237.7,
+     "titulo": "Escolher o pedido",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 256.3,
+     "titulo": "A nota preenchida pelo pedido",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 275.5,
+     "titulo": "Notas de Recebimento",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 291.3,
+     "titulo": "O menu da nota",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 304.7,
+     "titulo": "O pedido mostra a nota",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 325.6,
+     "titulo": "Finalizar a nota",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 344.2,
+     "titulo": "A entrada no estoque",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 361.1,
+     "titulo": "O título a pagar",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 378.6,
+     "titulo": "Dashboard Recebimento",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 396.7,
+     "titulo": "Cuidados",
+     "grupo": "Cuidados"
+    },
+    {
+     "t": 415.8,
+     "titulo": "Fechamento",
+     "grupo": "Fechamento"
+    }
+   ],
+   "modulos": [
+    "recebimento"
+   ],
+   "versaoSistema": "1.22.13",
+   "revisar": true,
+   "fontes": [
+    "guia:public/videos/manifest.json",
+    "guia:videos/roteiros/modulo-recebimento.json",
+    "guia:videos/src/gerado/modulo-recebimento.json"
+   ]
+  },
+  {
+   "id": "modulo-estoque",
+   "titulo": "Estoque: o módulo completo",
+   "resumo": "No Flow, o saldo nunca é digitado: ele nasce de movimentos. Neste vídeo: locais, saldo inicial, movimentos, saldo e extrato, transferência, inventário, empréstimo e reposição.",
+   "url": "/videos/modulo-estoque.mp4",
+   "poster": "/videos/modulo-estoque.jpg",
+   "legendas": "/videos/modulo-estoque.vtt",
+   "duracao_s": 406,
+   "capitulos": [
+    {
+     "t": 1.1,
+     "titulo": "Abertura",
+     "grupo": "Abertura"
+    },
+    {
+     "t": 16.3,
+     "titulo": "Conceito",
+     "grupo": "Conceito"
+    },
+    {
+     "t": 44.9,
+     "titulo": "O saldo nasce de movimentos",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 61.3,
+     "titulo": "Movimento não se edita",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 75.9,
+     "titulo": "Almoxarifado central ativo",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 88.8,
+     "titulo": "Saldo inicial primeiro",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 104.5,
+     "titulo": "Saldo por local e variação",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 121.4,
+     "titulo": "Pendente reserva o disponível",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 137.2,
+     "titulo": "Inventário exige outra pessoa",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 154.1,
+     "titulo": "Locais de estoque",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 168.1,
+     "titulo": "Parâmetros de Estoque",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 189,
+     "titulo": "Importar saldo inicial",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 207.1,
+     "titulo": "Novo Movimento",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 225.1,
+     "titulo": "Movimentos: de onde vem cada um",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 243.2,
+     "titulo": "Saldo e disponível",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 258.9,
+     "titulo": "O extrato do produto",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 271.3,
+     "titulo": "Transferências",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 288.2,
+     "titulo": "Inventários",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 306.2,
+     "titulo": "Empréstimos entre obras",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 320.2,
+     "titulo": "Reposição",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 337.1,
+     "titulo": "Reservas órfãs",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 348.3,
+     "titulo": "Visão geral do estoque",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 365.8,
+     "titulo": "Cuidados",
+     "grupo": "Cuidados"
+    },
+    {
+     "t": 382.7,
+     "titulo": "Fechamento",
+     "grupo": "Fechamento"
+    }
+   ],
+   "modulos": [
+    "estoque"
+   ],
+   "versaoSistema": "1.22.13",
+   "revisar": true,
+   "fontes": [
+    "guia:public/videos/manifest.json",
+    "guia:videos/roteiros/modulo-estoque.json",
+    "guia:videos/src/gerado/modulo-estoque.json"
+   ]
+  },
+  {
+   "id": "modulo-producao",
+   "titulo": "Produção: o módulo completo",
+   "resumo": "A OP é a ordem para a fábrica produzir um item. Neste vídeo: estrutura do produto, OP a partir do pedido, baixa de material, apontamento e a entrada do produto acabado no estoque.",
+   "url": "/videos/modulo-producao.mp4",
+   "poster": "/videos/modulo-producao.jpg",
+   "legendas": "/videos/modulo-producao.vtt",
+   "duracao_s": 405,
+   "capitulos": [
+    {
+     "t": 0,
+     "titulo": "Abertura",
+     "grupo": "Abertura"
+    },
+    {
+     "t": 19.8,
+     "titulo": "Conceito",
+     "grupo": "Conceito"
+    },
+    {
+     "t": 44.4,
+     "titulo": "Processo no produto",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 59.6,
+     "titulo": "Paramétrico exige cor",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 73.6,
+     "titulo": "A OP não copia a quantidade",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 88.8,
+     "titulo": "Requisições nascem ao salvar",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 104,
+     "titulo": "Baixa parcial e estorno",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 119.2,
+     "titulo": "Marcar produzido credita o acabado",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 133.8,
+     "titulo": "Sem almoxarifado, não conclui",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 149.6,
+     "titulo": "A estrutura do produto",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 169.9,
+     "titulo": "A lista de OPs",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 190.8,
+     "titulo": "Nova OP a partir do pedido",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 208.8,
+     "titulo": "O menu da OP",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 226.9,
+     "titulo": "Materiais necessários",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 242.1,
+     "titulo": "Sem etapas, sem apontamento",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 260.1,
+     "titulo": "Onde fica o Terminal",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 280.4,
+     "titulo": "O acabado entrou no estoque",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 298.5,
+     "titulo": "Custo da OP",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 316,
+     "titulo": "Painel de fábrica",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 335.7,
+     "titulo": "Separação de materiais",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 349.8,
+     "titulo": "Visão geral da produção",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 365.5,
+     "titulo": "Cuidados",
+     "grupo": "Cuidados"
+    },
+    {
+     "t": 384.1,
+     "titulo": "Fechamento",
+     "grupo": "Fechamento"
+    }
+   ],
+   "modulos": [
+    "producao"
+   ],
+   "versaoSistema": "1.22.13",
+   "revisar": true,
+   "fontes": [
+    "guia:public/videos/manifest.json",
+    "guia:videos/roteiros/modulo-producao.json",
+    "guia:videos/src/gerado/modulo-producao.json"
+   ]
+  },
+  {
+   "id": "modulo-servicos",
+   "titulo": "Serviços e Instalação: o módulo completo",
+   "resumo": "O trabalho de campo começa no pedido vendido. Neste vídeo: medição, conferência, instalação, vistoria, assistência técnica e a gestão das equipes.",
+   "url": "/videos/modulo-servicos.mp4",
+   "poster": "/videos/modulo-servicos.jpg",
+   "legendas": "/videos/modulo-servicos.vtt",
+   "duracao_s": 387,
+   "capitulos": [
+    {
+     "t": 1.1,
+     "titulo": "Abertura",
+     "grupo": "Abertura"
+    },
+    {
+     "t": 14,
+     "titulo": "Conceito",
+     "grupo": "Conceito"
+    },
+    {
+     "t": 38.7,
+     "titulo": "A medição nasce do pedido",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 56.7,
+     "titulo": "Agendar só depois de salvar",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 70.2,
+     "titulo": "Quem mede não confere",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 80.8,
+     "titulo": "As passagens são por botão",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 96,
+     "titulo": "Vistoria automática só se ligar",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 110.6,
+     "titulo": "Aceite da vistoria no fim",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 120.1,
+     "titulo": "Equipe interna não gera pagamento",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 131.8,
+     "titulo": "A lista de medições",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 148.1,
+     "titulo": "Escolher o pedido",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 164.5,
+     "titulo": "A medição por dentro",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 180.8,
+     "titulo": "Os vãos medidos",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 198.3,
+     "titulo": "De onde nasce a instalação",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 218,
+     "titulo": "A instalação concluída",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 238.4,
+     "titulo": "A lista de vistorias",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 255.8,
+     "titulo": "A vistoria por dentro",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 276.2,
+     "titulo": "Assistência Técnica",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 294.8,
+     "titulo": "As abas da assistência",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 311.1,
+     "titulo": "Cockpit de Campo",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 332,
+     "titulo": "Como vai a operação?",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 352.3,
+     "titulo": "Cuidados",
+     "grupo": "Cuidados"
+    },
+    {
+     "t": 368.7,
+     "titulo": "Fechamento",
+     "grupo": "Fechamento"
+    }
+   ],
+   "modulos": [
+    "servicos"
+   ],
+   "versaoSistema": "1.22.13",
+   "revisar": true,
+   "fontes": [
+    "guia:public/videos/manifest.json",
+    "guia:videos/roteiros/modulo-servicos.json",
+    "guia:videos/src/gerado/modulo-servicos.json"
+   ]
+  },
+  {
+   "id": "modulo-projetos",
+   "titulo": "Projetos e Obras: o módulo completo",
+   "resumo": "Na indústria de esquadrias, o projeto é a obra. Neste vídeo: cadastrar a obra, organizar estágios e etapas, ligar pedido, OP, nota e títulos, e ler o previsto × realizado.",
+   "url": "/videos/modulo-projetos.mp4",
+   "poster": "/videos/modulo-projetos.jpg",
+   "legendas": "/videos/modulo-projetos.vtt",
+   "duracao_s": 387,
+   "capitulos": [
+    {
+     "t": 1.1,
+     "titulo": "Abertura",
+     "grupo": "Abertura"
+    },
+    {
+     "t": 19.1,
+     "titulo": "Conceito",
+     "grupo": "Conceito"
+    },
+    {
+     "t": 43.2,
+     "titulo": "Nome e Código obrigatórios",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 57.3,
+     "titulo": "O campo Projeto liga tudo",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 74.7,
+     "titulo": "Ligue a obra antes de faturar",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 89.4,
+     "titulo": "Local de estoque da obra ativo",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 104.5,
+     "titulo": "Estágio e etapa em cascata",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 119.2,
+     "titulo": "Com documento, não se exclui",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 132.1,
+     "titulo": "Painel não é o caixa",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 146.7,
+     "titulo": "A lista de obras",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 163.6,
+     "titulo": "Cadastrar a obra",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 179.3,
+     "titulo": "A carteira de obras",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 195.1,
+     "titulo": "Os estágios da obra",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 212.6,
+     "titulo": "As etapas da obra",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 232.3,
+     "titulo": "O pedido da obra",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 252.1,
+     "titulo": "OPs da obra",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 273.5,
+     "titulo": "Os títulos da obra",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 291.6,
+     "titulo": "Painel Financeiro de Projetos",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 309.1,
+     "titulo": "Andamento das Obras",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 327.7,
+     "titulo": "Dashboard Projetos",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 346.3,
+     "titulo": "Cuidados",
+     "grupo": "Cuidados"
+    },
+    {
+     "t": 367.2,
+     "titulo": "Fechamento",
+     "grupo": "Fechamento"
+    }
+   ],
+   "modulos": [
+    "projetos"
+   ],
+   "versaoSistema": "1.22.13",
+   "revisar": true,
+   "fontes": [
+    "guia:public/videos/manifest.json",
+    "guia:videos/roteiros/modulo-projetos.json",
+    "guia:videos/src/gerado/modulo-projetos.json"
+   ]
   }
  ],
  "caminhos": {
@@ -5104,6 +7500,24 @@
    {
     "modulo": "fundacao",
     "tipo": "checklist"
+   }
+  ],
+  "/videos/modulo-fundacao.mp4": [
+   {
+    "modulo": "fundacao",
+    "tipo": "video"
+   }
+  ],
+  "/videos/modulo-fundacao.jpg": [
+   {
+    "modulo": "fundacao",
+    "tipo": "video"
+   }
+  ],
+  "/videos/modulo-fundacao.vtt": [
+   {
+    "modulo": "fundacao",
+    "tipo": "video"
    }
   ],
   "/manuais/fundacao/guia.json": [
@@ -5154,6 +7568,24 @@
     "tipo": "checklist"
    }
   ],
+  "/videos/modulo-crm.mp4": [
+   {
+    "modulo": "crm",
+    "tipo": "video"
+   }
+  ],
+  "/videos/modulo-crm.jpg": [
+   {
+    "modulo": "crm",
+    "tipo": "video"
+   }
+  ],
+  "/videos/modulo-crm.vtt": [
+   {
+    "modulo": "crm",
+    "tipo": "video"
+   }
+  ],
   "/manuais/crm/guia.json": [
    {
     "modulo": "crm",
@@ -5164,6 +7596,24 @@
    {
     "modulo": "cem",
     "tipo": "checklist"
+   }
+  ],
+  "/videos/modulo-cem.mp4": [
+   {
+    "modulo": "cem",
+    "tipo": "video"
+   }
+  ],
+  "/videos/modulo-cem.jpg": [
+   {
+    "modulo": "cem",
+    "tipo": "video"
+   }
+  ],
+  "/videos/modulo-cem.vtt": [
+   {
+    "modulo": "cem",
+    "tipo": "video"
    }
   ],
   "/manuais/cem/guia.json": [
@@ -5304,6 +7754,24 @@
     "tipo": "checklist"
    }
   ],
+  "/videos/modulo-compras.mp4": [
+   {
+    "modulo": "compras",
+    "tipo": "video"
+   }
+  ],
+  "/videos/modulo-compras.jpg": [
+   {
+    "modulo": "compras",
+    "tipo": "video"
+   }
+  ],
+  "/videos/modulo-compras.vtt": [
+   {
+    "modulo": "compras",
+    "tipo": "video"
+   }
+  ],
   "/manuais/compras/guia.json": [
    {
     "modulo": "compras",
@@ -5320,6 +7788,24 @@
    {
     "modulo": "recebimento",
     "tipo": "checklist"
+   }
+  ],
+  "/videos/modulo-recebimento.mp4": [
+   {
+    "modulo": "recebimento",
+    "tipo": "video"
+   }
+  ],
+  "/videos/modulo-recebimento.jpg": [
+   {
+    "modulo": "recebimento",
+    "tipo": "video"
+   }
+  ],
+  "/videos/modulo-recebimento.vtt": [
+   {
+    "modulo": "recebimento",
+    "tipo": "video"
    }
   ],
   "/manuais/recebimento/guia.json": [
@@ -5358,6 +7844,24 @@
     "tipo": "checklist"
    }
   ],
+  "/videos/modulo-estoque.mp4": [
+   {
+    "modulo": "estoque",
+    "tipo": "video"
+   }
+  ],
+  "/videos/modulo-estoque.jpg": [
+   {
+    "modulo": "estoque",
+    "tipo": "video"
+   }
+  ],
+  "/videos/modulo-estoque.vtt": [
+   {
+    "modulo": "estoque",
+    "tipo": "video"
+   }
+  ],
   "/manuais/estoque/guia.json": [
    {
     "modulo": "estoque",
@@ -5392,6 +7896,24 @@
    {
     "modulo": "producao",
     "tipo": "checklist"
+   }
+  ],
+  "/videos/modulo-producao.mp4": [
+   {
+    "modulo": "producao",
+    "tipo": "video"
+   }
+  ],
+  "/videos/modulo-producao.jpg": [
+   {
+    "modulo": "producao",
+    "tipo": "video"
+   }
+  ],
+  "/videos/modulo-producao.vtt": [
+   {
+    "modulo": "producao",
+    "tipo": "video"
    }
   ],
   "/manuais/producao/guia.json": [
@@ -5430,6 +7952,24 @@
     "tipo": "checklist"
    }
   ],
+  "/videos/modulo-servicos.mp4": [
+   {
+    "modulo": "servicos",
+    "tipo": "video"
+   }
+  ],
+  "/videos/modulo-servicos.jpg": [
+   {
+    "modulo": "servicos",
+    "tipo": "video"
+   }
+  ],
+  "/videos/modulo-servicos.vtt": [
+   {
+    "modulo": "servicos",
+    "tipo": "video"
+   }
+  ],
   "/manuais/servicos/guia.json": [
    {
     "modulo": "servicos",
@@ -5464,6 +8004,24 @@
    {
     "modulo": "projetos",
     "tipo": "checklist"
+   }
+  ],
+  "/videos/modulo-projetos.mp4": [
+   {
+    "modulo": "projetos",
+    "tipo": "video"
+   }
+  ],
+  "/videos/modulo-projetos.jpg": [
+   {
+    "modulo": "projetos",
+    "tipo": "video"
+   }
+  ],
+  "/videos/modulo-projetos.vtt": [
+   {
+    "modulo": "projetos",
+    "tipo": "video"
    }
   ],
   "/manuais/projetos/guia.json": [

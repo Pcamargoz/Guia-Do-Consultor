@@ -19,6 +19,16 @@ import sugestaoTags from './gerado/sugestao-tags-financeiro.json';
 import compraCliente from './gerado/compra-em-nome-do-cliente.json';
 import moduloVendas from './gerado/modulo-vendas.json';
 import moduloFaturamento from './gerado/modulo-faturamento.json';
+import moduloExpedicao from './gerado/modulo-expedicao.json';
+import moduloProjetos from './gerado/modulo-projetos.json';
+import moduloServicos from './gerado/modulo-servicos.json';
+import moduloProducao from './gerado/modulo-producao.json';
+import moduloEstoque from './gerado/modulo-estoque.json';
+import moduloRecebimento from './gerado/modulo-recebimento.json';
+import moduloCompras from './gerado/modulo-compras.json';
+import moduloCem from './gerado/modulo-cem.json';
+import moduloCrm from './gerado/modulo-crm.json';
+import moduloFundacao from './gerado/modulo-fundacao.json';
 import { IntroVideo, type RoteiroIntro } from './IntroVideo';
 import introVendas from '../roteiros/intro-vendas.json';
 import introCrm from '../roteiros/intro-crm.json';
@@ -28,7 +38,7 @@ import introCompras from '../roteiros/intro-compras.json';
 
 // Um vídeo por fluxo. Para incluir outro: roteiros/<id>.json → narrar → preparar → importar aqui.
 // sugestaoTags é um vídeo interno, sem voz, que não vai para o Guia.
-const VIDEOS: Dados[] = [fluxo1 as Dados, consultor03 as Dados, consultor07 as Dados, consultor08 as Dados, consultor01 as Dados, consultor02 as Dados, consultor04 as Dados, consultor05 as Dados, consultor06 as Dados, consultor09 as Dados, consultor10 as Dados, consultorCompleto as Dados, compraCliente as Dados, sugestaoTags as Dados, moduloVendas as Dados, moduloFaturamento as Dados];
+const VIDEOS: Dados[] = [fluxo1 as Dados, consultor03 as Dados, consultor07 as Dados, consultor08 as Dados, consultor01 as Dados, consultor02 as Dados, consultor04 as Dados, consultor05 as Dados, consultor06 as Dados, consultor09 as Dados, consultor10 as Dados, consultorCompleto as Dados, compraCliente as Dados, sugestaoTags as Dados, moduloVendas as Dados, moduloFaturamento as Dados, moduloFundacao as Dados, moduloCrm as Dados, moduloCem as Dados, moduloCompras as Dados, moduloRecebimento as Dados, moduloEstoque as Dados, moduloProducao as Dados, moduloServicos as Dados, moduloProjetos as Dados, moduloExpedicao as Dados];
 const temMusica = (id: string) => getStaticFiles().some((f) => f.name === `musica/${id}.wav`);
 const props = (d: Dados) => ({ dados: d, musica: temMusica(d.id) ? `musica/${d.id}.wav` : undefined });
 

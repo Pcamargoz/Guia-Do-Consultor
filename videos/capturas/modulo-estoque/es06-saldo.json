@@ -1,0 +1,57 @@
+{
+ "nome": "es06-saldo",
+ "url": "https://staging.flow.faktory.com.br/estoque/saldo",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "textbox",
+    "name": "Buscar produto"
+   },
+   "caixa": {
+    "x": 385,
+    "y": 294,
+    "w": 538,
+    "h": 48
+   }
+  },
+  {
+   "alvo": {
+    "css": "thead th",
+    "nth": 3
+   },
+   "caixa": {
+    "x": 845,
+    "y": 358,
+    "w": 329,
+    "h": 43
+   }
+  },
+  {
+   "alvo": {
+    "css": "thead th",
+    "nth": 5
+   },
+   "caixa": {
+    "x": 1323,
+    "y": 358,
+    "w": 79,
+    "h": 43
+   }
+  },
+  {
+   "alvo": {
+    "css": "thead th",
+    "nth": 6
+   },
+   "caixa": {
+    "x": 1401,
+    "y": 358,
+    "w": 109,
+    "h": 43
+   }
+  }
+ ],
+ "em": "2026-11-17T14:25:15.045Z"
+}

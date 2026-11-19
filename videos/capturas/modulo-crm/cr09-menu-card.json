@@ -1,0 +1,57 @@
+{
+ "nome": "cr09-menu-card",
+ "url": "https://staging.flow.faktory.com.br/crm/pipeline",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "menuitem",
+    "name": "Marcar como Ganha"
+   },
+   "caixa": {
+    "x": 433,
+    "y": 609,
+    "w": 199,
+    "h": 62
+   }
+  },
+  {
+   "alvo": {
+    "role": "menuitem",
+    "name": "Marcar como Perdida"
+   },
+   "caixa": {
+    "x": 433,
+    "y": 672,
+    "w": 199,
+    "h": 62
+   }
+  },
+  {
+   "alvo": {
+    "role": "menuitem",
+    "name": "Pausar"
+   },
+   "caixa": {
+    "x": 433,
+    "y": 734,
+    "w": 199,
+    "h": 38
+   }
+  },
+  {
+   "alvo": {
+    "role": "menuitem",
+    "name": "Cancelar"
+   },
+   "caixa": {
+    "x": 433,
+    "y": 772,
+    "w": 199,
+    "h": 38
+   }
+  }
+ ],
+ "em": "2026-11-17T13:50:32.742Z"
+}

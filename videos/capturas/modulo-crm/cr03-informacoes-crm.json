@@ -1,0 +1,67 @@
+{
+ "nome": "cr03-informacoes-crm",
+ "url": "https://staging.flow.faktory.com.br/crm/leads",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "Selecione origem do lead"
+   },
+   "caixa": {
+    "x": 1021,
+    "y": 461,
+    "w": 143,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "text": "Temperatura",
+    "exact": true
+   },
+   "caixa": {
+    "x": 1223,
+    "y": 420,
+    "w": 102,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "text": "Selecione responsável"
+   },
+   "caixa": {
+    "x": 1457,
+    "y": 461,
+    "w": 179,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "text": "Budget Estimado (R$)",
+    "exact": true
+   },
+   "caixa": {
+    "x": 1006,
+    "y": 511,
+    "w": 175,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "role": "switch",
+    "name": "Autoridade de decisão confirmada"
+   },
+   "caixa": {
+    "x": 1006,
+    "y": 828,
+    "w": 53,
+    "h": 29
+   }
+  }
+ ],
+ "em": "2026-11-17T13:47:42.122Z"
+}

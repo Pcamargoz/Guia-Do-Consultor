@@ -1,0 +1,58 @@
+{
+ "nome": "co12-dashboard",
+ "url": "https://staging.flow.faktory.com.br/compras",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "SC em aberto",
+    "exact": true
+   },
+   "caixa": {
+    "x": 633,
+    "y": 283,
+    "w": 94,
+    "h": 18
+   }
+  },
+  {
+   "alvo": {
+    "text": "Cotações ativas",
+    "exact": true
+   },
+   "caixa": {
+    "x": 1141,
+    "y": 283,
+    "w": 110,
+    "h": 18
+   }
+  },
+  {
+   "alvo": {
+    "text": "Pedidos em aberto",
+    "exact": true,
+    "nth": 0
+   },
+   "caixa": {
+    "x": 1395,
+    "y": 283,
+    "w": 129,
+    "h": 18
+   }
+  },
+  {
+   "alvo": {
+    "text": "Total PC este mês",
+    "exact": true
+   },
+   "caixa": {
+    "x": 1649,
+    "y": 283,
+    "w": 124,
+    "h": 18
+   }
+  }
+ ],
+ "em": "2026-11-17T14:16:30.612Z"
+}

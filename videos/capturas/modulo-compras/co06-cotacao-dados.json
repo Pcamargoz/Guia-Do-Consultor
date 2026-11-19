@@ -1,0 +1,44 @@
+{
+ "nome": "co06-cotacao-dados",
+ "url": "https://staging.flow.faktory.com.br/compras/cotacoes/novo",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Ir para Dados Gerais"
+   },
+   "caixa": {
+    "x": 355,
+    "y": 284,
+    "w": 365,
+    "h": 82
+   }
+  },
+  {
+   "alvo": {
+    "text": "Natureza da Operação *"
+   },
+   "caixa": {
+    "x": 385,
+    "y": 650,
+    "w": 194,
+    "h": 20
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Ir para Comparação"
+   },
+   "caixa": {
+    "x": 1495,
+    "y": 284,
+    "w": 365,
+    "h": 82
+   }
+  }
+ ],
+ "em": "2026-11-17T14:13:08.103Z"
+}

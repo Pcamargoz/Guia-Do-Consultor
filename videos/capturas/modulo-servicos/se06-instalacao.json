@@ -1,0 +1,59 @@
+{
+ "nome": "se06-instalacao",
+ "url": "https://staging.flow.faktory.com.br/servicos/instalacoes/novo?id=6",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "Concluída",
+    "exact": true,
+    "nth": 0
+   },
+   "caixa": {
+    "x": 726,
+    "y": 138,
+    "w": 97,
+    "h": 26
+   }
+  },
+  {
+   "alvo": {
+    "text": "Conformes",
+    "exact": true
+   },
+   "caixa": {
+    "x": 1715,
+    "y": 427,
+    "w": 70,
+    "h": 17
+   }
+  },
+  {
+   "alvo": {
+    "text": "Medição Vinculada",
+    "exact": true
+   },
+   "caixa": {
+    "x": 394,
+    "y": 780,
+    "w": 498,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Ver Vistoria",
+    "exact": false
+   },
+   "caixa": {
+    "x": 1539,
+    "y": 143,
+    "w": 308,
+    "h": 43
+   }
+  }
+ ],
+ "em": "2026-11-17T16:11:26.998Z"
+}

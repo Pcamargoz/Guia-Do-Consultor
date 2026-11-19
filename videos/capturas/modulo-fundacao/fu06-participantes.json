@@ -1,0 +1,45 @@
+{
+ "nome": "fu06-participantes",
+ "url": "https://staging.flow.faktory.com.br/participantes",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "placeholder": "Pesquisar..."
+   },
+   "caixa": {
+    "x": 376,
+    "y": 275,
+    "w": 538,
+    "h": 43
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Novo Participante"
+   },
+   "caixa": {
+    "x": 1665,
+    "y": 149,
+    "w": 198,
+    "h": 43
+   }
+  },
+  {
+   "alvo": {
+    "role": "cell",
+    "name": "Status",
+    "exact": true
+   },
+   "caixa": {
+    "x": 1459,
+    "y": 338,
+    "w": 278,
+    "h": 43
+   }
+  }
+ ],
+ "em": "2026-11-17T13:39:57.936Z"
+}

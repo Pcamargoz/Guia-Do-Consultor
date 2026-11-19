@@ -1,0 +1,69 @@
+{
+ "nome": "pr03-nova-op",
+ "url": "https://staging.flow.faktory.com.br/producao/ordem-producao",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "textbox",
+    "name": "Número da OP"
+   },
+   "caixa": {
+    "x": 1006,
+    "y": 139,
+    "w": 208,
+    "h": 48
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Pedido de venda vinculado à ordem de produção"
+   },
+   "caixa": {
+    "x": 1441,
+    "y": 499,
+    "w": 426,
+    "h": 48
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Empresa da ordem de produção"
+   },
+   "caixa": {
+    "x": 1006,
+    "y": 499,
+    "w": 426,
+    "h": 48
+   }
+  },
+  {
+   "alvo": {
+    "placeholder": "0,00"
+   },
+   "caixa": {
+    "x": 1006,
+    "y": 629,
+    "w": 208,
+    "h": 48
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Salvar",
+    "exact": true
+   },
+   "caixa": {
+    "x": 1812,
+    "y": 986,
+    "w": 79,
+    "h": 48
+   }
+  }
+ ],
+ "em": "2026-11-17T14:32:10.324Z"
+}

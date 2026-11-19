@@ -1,0 +1,558 @@
+{
+ "id": "modulo-recebimento",
+ "titulo": "Recebimento",
+ "subtitulo": "O módulo completo: da nota do fornecedor ao estoque e ao título a pagar",
+ "trilha": "Metodologia do Consultor · vídeo completo do módulo",
+ "proximo": "Estoque",
+ "icone": "caixa",
+ "semVoz": true,
+ "focoMin": 2.6,
+ "fontes": [
+  "guia:scripts/dados-checklists-implantacao.mjs#implantacao-recebimento",
+  "guia:public/manuais/recebimento/guia.json",
+  "harness:oficial-rec-a-regras",
+  "harness:regra-recebimento-a-mesma-nota-tem-dois-numeros"
+ ],
+ "trechos": [
+  {
+   "id": "01",
+   "cena": "abertura",
+   "fala": "Toda mercadoria que chega passa por uma nota de recebimento. Neste vídeo: preparar o módulo, receber o XML, gerar a nota pelo pedido, entrega parcial, finalizar e ver o estoque e o título a pagar."
+  },
+  {
+   "id": "02",
+   "cena": "status",
+   "etapas": [
+    "Em Aberto",
+    "Finalizada",
+    "Cancelada"
+   ],
+   "destaque": 0,
+   "fala": "A nota nasce Em Aberto. Nesse status ela só registra: dá para editar, e nada mexeu no estoque nem no financeiro."
+  },
+  {
+   "id": "03",
+   "cena": "status",
+   "etapas": [
+    "Em Aberto",
+    "Finalizada",
+    "Cancelada"
+   ],
+   "destaque": 1,
+   "fala": "Finalizada, ela dá entrada no estoque e gera os títulos a pagar. Não volta: para desfazer, só cancelando com motivo."
+  },
+  {
+   "id": "04",
+   "cena": "regra",
+   "n": 1,
+   "titulo": "Uma nota, dois números",
+   "icone": "nota",
+   "texto": "A mesma nota aparece como NF-<número do fornecedor> na lista e como NR-<número interno> na conferência, no pedido e no título.",
+   "fonte": "regra-recebimento-a-mesma-nota-tem-dois-numeros",
+   "fala": "Regra 1. A mesma nota tem dois números: NF, do fornecedor, e NR, interno. O NR aparece no pedido de compra e no título. Anote os dois."
+  },
+  {
+   "id": "05",
+   "cena": "regra",
+   "n": 2,
+   "titulo": "O CFOP decide tudo",
+   "icone": "cfop",
+   "texto": "Não existe tipo de nota: o CFOP de entrada decide se gera financeiro, se movimenta estoque e se é material de terceiros.",
+   "fonte": "oficial-rec-a-regras#REC-NR-016",
+   "fala": "Regra 2. Não existe tipo de nota. O CFOP de entrada decide se a nota gera título, se mexe no estoque e se é material de terceiros. Revise com o contador."
+  },
+  {
+   "id": "06",
+   "cena": "regra",
+   "n": 3,
+   "titulo": "Só pedido aberto e aprovado",
+   "icone": "compra",
+   "texto": "A nota só importa pedido de compra em aberto e aprovado na alçada. A quantidade não passa do saldo do item do pedido.",
+   "fonte": "oficial-rec-a-regras#REC-NR-007-008",
+   "fala": "Regra 3. A nota só puxa pedido de compra em aberto e aprovado. E não recebe mais que o saldo do item: recebeu a mais, ajuste o pedido ou abra outro."
+  },
+  {
+   "id": "07",
+   "cena": "regra",
+   "n": 4,
+   "titulo": "Entrega parcial vira pedido filho",
+   "icone": "seta",
+   "texto": "Na entrega parcial, o pedido original fica Recebido com o que chegou, e o saldo vai para PC-nnnn/2, em aberto.",
+   "fonte": "oficial-rec-a-regras#REC-NR-009",
+   "fala": "Regra 4. Entrega parcial não perde o saldo. O pedido original fica com o que chegou, e o restante vai para um pedido filho, PC barra 2, em aberto."
+  },
+  {
+   "id": "08",
+   "cena": "regra",
+   "n": 5,
+   "titulo": "Finalizar não volta",
+   "icone": "alerta",
+   "texto": "Finalizar dá entrada no estoque e gera os títulos na mesma transação: tudo ou nada. Nota finalizada não se edita.",
+   "fonte": "oficial-rec-a-regras#REC-FIN-002-006",
+   "critica": true,
+   "fala": "Regra 5. Finalizar mexe no estoque e gera os títulos de uma vez. Se algo falhar, nada acontece e a nota segue Em Aberto. Finalizada, ela não se edita."
+  },
+  {
+   "id": "09",
+   "cena": "regra",
+   "n": 6,
+   "titulo": "XML não entra duas vezes",
+   "icone": "check",
+   "texto": "A chave de acesso impede importar o mesmo XML duas vezes. Só uma nota cancelada libera a chave.",
+   "fonte": "oficial-rec-a-regras#REC-XML-001-002",
+   "fala": "Regra 6. A chave de acesso impede a nota em dobro. O mesmo XML não entra duas vezes, a não ser que a nota anterior tenha sido cancelada."
+  },
+  {
+   "id": "10",
+   "cena": "regra",
+   "n": 7,
+   "titulo": "Cancelar tem ordem",
+   "icone": "cadeado",
+   "texto": "Cancelar exige motivo e desfaz estoque, títulos em aberto e pedido. Título já pago impede: estorne o pagamento antes.",
+   "fonte": "oficial-rec-a-regras#REC-CAN-001-002",
+   "critica": true,
+   "fala": "Regra 7. Cancelar desfaz o estoque, os títulos e reabre o pedido. Mas, com título pago, não cancela: primeiro estorne o pagamento em Contas a Pagar."
+  },
+  {
+   "id": "11",
+   "cena": "tela",
+   "captura": "re01-parametros",
+   "titulo": "Parâmetros de Recebimento",
+   "rotulo": "Recebimento › Configurações › Parâmetros de Recebimento",
+   "focos": [
+    0,
+    1
+   ],
+   "nomes": [
+    "Usar Conferência Física",
+    "Exigir Conferência para Finalizar"
+   ],
+   "impacto": 1,
+   "fala": "Antes da primeira nota, abra Parâmetros de Recebimento. A conferência nasce desligada. Usar Conferência Física cria a fila; Exigir Conferência para Finalizar trava a finalização.",
+   "plano": {
+    "menu": "Recebimento › Configurações › Parâmetros de Recebimento",
+    "mostrar": "Tela de parâmetros com as chaves de conferência",
+    "alvos": [
+     "chave Usar Conferência Física",
+     "chave Exigir Conferência para Finalizar"
+    ],
+    "acoes": [
+     "abrir a tela",
+     "não ligar nenhuma chave nem salvar"
+    ]
+   }
+  },
+  {
+   "id": "12",
+   "cena": "tela",
+   "captura": "re02-distribuicao-dfe",
+   "titulo": "Distribuição DFe",
+   "rotulo": "Recebimento › Distribuição DFe",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "Configuração ativa",
+    "Buscar automaticamente a cada 30 minutos",
+    "Salvar configuração"
+   ],
+   "impacto": 0,
+   "fala": "Em Distribuição DFe, a empresa liga a busca das notas na SEFAZ. Exige Recebimento PRO e certificado A1. Sem PRO, use só Importar XML.",
+   "plano": {
+    "menu": "Recebimento › Distribuição DFe",
+    "mostrar": "Cartão de configuração da empresa",
+    "alvos": [
+     "opção Configuração ativa",
+     "opção Buscar automaticamente a cada 30 minutos",
+     "botão Salvar configuração"
+    ],
+    "acoes": [
+     "abrir a tela",
+     "não marcar nada nem clicar em Salvar configuração"
+    ]
+   }
+  },
+  {
+   "id": "13",
+   "cena": "tela",
+   "captura": "re03-aguardando",
+   "titulo": "Aguardando manifestação",
+   "rotulo": "Recebimento › Aguardando manifestação",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "Atualizar",
+    "Manifestação",
+    "O que fazer"
+   ],
+   "impacto": 1,
+   "fala": "Em Aguardando manifestação ficam as notas emitidas contra a empresa, quando a busca está ligada. Responder à SEFAZ não se desfaz: só com o responsável fiscal. Receber cria a nota de recebimento.",
+   "plano": {
+    "menu": "Recebimento › Aguardando manifestação",
+    "mostrar": "Caixa de notas a manifestar (ou o aviso de busca não ligada)",
+    "alvos": [
+     "botão Atualizar",
+     "coluna MANIFESTAÇÃO",
+     "coluna O QUE FAZER"
+    ],
+    "acoes": [
+     "abrir a tela",
+     "não clicar em Atualizar, Responder à SEFAZ nem Receber"
+    ]
+   }
+  },
+  {
+   "id": "14",
+   "cena": "tela",
+   "captura": "re04-importar-xml",
+   "titulo": "Importar XML",
+   "rotulo": "Recebimento › Notas de Recebimento › Importar XML",
+   "focos": [
+    0,
+    1
+   ],
+   "nomes": [
+    "Importar XML NF-e",
+    "Arraste o arquivo .xml"
+   ],
+   "fala": "Sem DF-e, a nota entra por Importar XML. Ela é criada em edição para completar os vínculos. O fornecedor novo é cadastrado pelo próprio XML, sem duplicar pelo CNPJ. Os impostos do XML valem.",
+   "plano": {
+    "menu": "Recebimento › Notas de Recebimento › Importar XML",
+    "mostrar": "Janela de importação aberta, sem arquivo escolhido",
+    "alvos": [
+     "botão Importar XML",
+     "área de envio do arquivo"
+    ],
+    "acoes": [
+     "clicar em Importar XML",
+     "não enviar arquivo; fechar a janela"
+    ]
+   }
+  },
+  {
+   "id": "15",
+   "cena": "tela",
+   "captura": "re05-nova-nota",
+   "titulo": "Escolher o pedido",
+   "rotulo": "Recebimento › Notas de Recebimento › + Nova Nota",
+   "focos": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "nomes": [
+    "Pedido de Compra",
+    "Buscar por número ou fornecedor",
+    "Esconder pedidos já recebidos",
+    "Nota avulsa (sem pedido)"
+   ],
+   "impacto": 0,
+   "fala": "Sem XML, a nota nasce do pedido. Em + Nova Nota, busque o pedido de compra pelo número ou pelo fornecedor; os já recebidos ficam escondidos. Sem pedido, use Nota avulsa.",
+   "plano": {
+    "menu": "Recebimento › Notas de Recebimento › + Nova Nota",
+    "mostrar": "Seleção da origem da nota com a lista de pedidos de compra",
+    "alvos": [
+     "origem Pedido de Compra",
+     "campo Buscar por número ou fornecedor",
+     "opção Esconder pedidos já recebidos",
+     "opção Nota avulsa (sem pedido)"
+    ],
+    "acoes": [
+     "clicar em + Nova Nota",
+     "não escolher pedido nesta captura"
+    ]
+   }
+  },
+  {
+   "id": "16",
+   "cena": "tela",
+   "captura": "re06-nota-do-pedido",
+   "titulo": "A nota preenchida pelo pedido",
+   "rotulo": "Notas de Recebimento › Editando NR-000004",
+   "focos": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "nomes": [
+    "Empresa *",
+    "Fornecedor *",
+    "CFOP *",
+    "Pedido de Compra",
+    "Condição de Pagamento"
+   ],
+   "impacto": 2,
+   "fala": "A nota vem preenchida pelo pedido: Empresa, Fornecedor, CFOP, Pedido de Compra e Condição de Pagamento. Informe Nº da NF, Série e Data de Emissão. Sem XML, a chave fica em branco.",
+   "plano": {
+    "menu": "Recebimento › Notas de Recebimento › lápis da NR-000004 (Em Aberto, vinda do PC-000004)",
+    "mostrar": "Nota Em Aberto já preenchida pelo pedido, sem salvar (não há PC Em Aberto no ambiente)",
+    "alvos": [
+     "campo Empresa *",
+     "campo Fornecedor *",
+     "campo CFOP *",
+     "campo Pedido de Compra",
+     "campo Condição de Pagamento"
+    ],
+    "acoes": [
+     "abrir a NR-000004 pelo lápis",
+     "não clicar em Salvar; sair sem gravar"
+    ]
+   }
+  },
+  {
+   "id": "17",
+   "cena": "tela",
+   "captura": "re07-lista-notas",
+   "titulo": "Notas de Recebimento",
+   "rotulo": "Recebimento › Notas de Recebimento",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "Total",
+    "Número da Nota",
+    "Status"
+   ],
+   "impacto": 2,
+   "fala": "Os cartões contam as notas do filtro atual. A lista abre em Em Aberto: a nota finalizada só aparece trocando o Status ou limpando o filtro.",
+   "plano": {
+    "menu": "Recebimento › Notas de Recebimento",
+    "mostrar": "Cartões Total, Em Aberto, Finalizadas e Canceladas e a lista de notas",
+    "alvos": [
+     "cartões do topo",
+     "coluna NÚMERO DA NOTA",
+     "filtro Status"
+    ],
+    "acoes": [
+     "abrir a lista",
+     "limpar o filtro Status para mostrar todas (só leitura)"
+    ]
+   }
+  },
+  {
+   "id": "18",
+   "cena": "tela",
+   "captura": "re08-menu-nota",
+   "titulo": "O menu da nota",
+   "rotulo": "Notas de Recebimento › menu ⋮",
+   "focos": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "nomes": [
+    "Finalizar",
+    "Imprimir Etiquetas",
+    "Cancelar",
+    "Excluir"
+   ],
+   "impacto": 0,
+   "fala": "No menu ⋮ da nota Em Aberto: Finalizar, Imprimir Etiquetas, Cancelar e Excluir. Leia antes de clicar: Finalizar não pode ser desfeito.",
+   "plano": {
+    "menu": "Recebimento › Notas de Recebimento",
+    "mostrar": "Menu ⋮ aberto na linha de uma nota Em Aberto",
+    "alvos": [
+     "Finalizar",
+     "Imprimir Etiquetas",
+     "Cancelar",
+     "Excluir"
+    ],
+    "acoes": [
+     "abrir menu ⋮ de uma nota Em Aberto",
+     "não clicar em nenhuma opção"
+    ]
+   }
+  },
+  {
+   "id": "19",
+   "cena": "tela",
+   "captura": "re09-pedidos-nr",
+   "titulo": "O pedido mostra a nota",
+   "rotulo": "Compras › Pedidos de Compra",
+   "focos": [
+    0,
+    1
+   ],
+   "nomes": [
+    "Status",
+    "Nota de Recebimento"
+   ],
+   "impacto": 1,
+   "fala": "Em Pedidos de Compra, a coluna Nota de Recebimento mostra o NR de cada pedido, ou Nota em aberto enquanto ela não é finalizada. É por ela que o comprador sabe o que já chegou.",
+   "plano": {
+    "menu": "Compras › Pedidos de Compra",
+    "mostrar": "Lista com um PC Recebido e o NR na coluna NOTA DE RECEBIMENTO",
+    "alvos": [
+     "coluna Status",
+     "coluna NOTA DE RECEBIMENTO"
+    ],
+    "acoes": [
+     "abrir a lista",
+     "limpar o filtro de status se necessário (só leitura)"
+    ]
+   }
+  },
+  {
+   "id": "20",
+   "cena": "tela",
+   "captura": "re10-finalizar",
+   "titulo": "Finalizar a nota",
+   "rotulo": "Notas de Recebimento › ⋮ › Finalizar",
+   "focos": [
+    0,
+    1
+   ],
+   "nomes": [
+    "Finalizar Nota de Recebimento",
+    "Tem certeza que deseja finalizar"
+   ],
+   "impacto": 1,
+   "fala": "Finalizar abre um aviso: a nota movimenta o estoque e gera os títulos a pagar, conforme os parâmetros do recebimento, e não pode ser desfeita. Confirme só com a nota conferida.",
+   "plano": {
+    "menu": "Recebimento › Notas de Recebimento › menu ⋮ › Finalizar",
+    "mostrar": "Janela Finalizar Nota de Recebimento com o aviso, antes de confirmar",
+    "alvos": [
+     "título Finalizar Nota de Recebimento",
+     "texto do aviso"
+    ],
+    "acoes": [
+     "abrir menu ⋮ de uma nota Em Aberto de teste",
+     "clicar em Finalizar",
+     "NÃO confirmar: fechar no Cancelar ou no X"
+    ]
+   }
+  },
+  {
+   "id": "21",
+   "cena": "tela",
+   "captura": "re11-movimentos",
+   "titulo": "A entrada no estoque",
+   "rotulo": "Estoque › Movimentos",
+   "focos": [
+    0,
+    1
+   ],
+   "nomes": [
+    "Origem",
+    "Recebimento"
+   ],
+   "impacto": 0,
+   "fala": "Finalizada a nota, abra Estoque › Movimentos e filtre a Origem por Recebimento. A entrada da nota aparece ali, no almoxarifado central quando o projeto fica em branco.",
+   "plano": {
+    "menu": "Estoque › Movimentos",
+    "mostrar": "Lista de movimentos com o filtro Origem aberto na opção Recebimento (não há entrada de NR no ambiente)",
+    "alvos": [
+     "filtro Origem",
+     "opção Recebimento"
+    ],
+    "acoes": [
+     "abrir a lista",
+     "abrir o filtro Origem sem aplicar"
+    ]
+   }
+  },
+  {
+   "id": "22",
+   "cena": "tela",
+   "captura": "re12-contas-pagar",
+   "titulo": "O título a pagar",
+   "rotulo": "Financeiro › Contas a Pagar",
+   "focos": [
+    0,
+    1
+   ],
+   "nomes": [
+    "Documento",
+    "NR-000001"
+   ],
+   "impacto": 1,
+   "fala": "Em Contas a Pagar, nasce um título por parcela, com o documento NR. Não nasce se o pedido já gerou os títulos ou se não há plano de contas.",
+   "plano": {
+    "menu": "Financeiro › Contas a Pagar",
+    "mostrar": "Lista filtrada mostrando um título com documento NR-",
+    "alvos": [
+     "coluna Documento",
+     "valor NR-xxxxx na linha"
+    ],
+    "acoes": [
+     "abrir a lista",
+     "pesquisar pelo número NR de uma nota finalizada (só leitura)"
+    ]
+   }
+  },
+  {
+   "id": "23",
+   "cena": "tela",
+   "captura": "re13-dashboard",
+   "titulo": "Dashboard Recebimento",
+   "rotulo": "Recebimento › Dashboard Recebimento",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "Hoje",
+    "Precisa de ação hoje",
+    "Recebido no período"
+   ],
+   "impacto": 1,
+   "fala": "No Dashboard Recebimento, a faixa Hoje diz o que espera conferência. Em Precisa de ação hoje, cada nota traz o botão da próxima ação. Recebido no período soma as entradas.",
+   "plano": {
+    "menu": "Recebimento › Dashboard Recebimento",
+    "mostrar": "Faixa Hoje, cartões e o bloco Precisa de ação hoje",
+    "alvos": [
+     "faixa Hoje",
+     "bloco Precisa de ação hoje",
+     "cartão Recebido no período"
+    ],
+    "acoes": [
+     "abrir o dashboard",
+     "não clicar nos botões de ação das notas"
+    ]
+   }
+  },
+  {
+   "id": "24",
+   "cena": "alertas",
+   "itens": [
+    "Responder à SEFAZ e a NF-e de devolução: só com o responsável fiscal.",
+    "Finalizar não volta: confira a nota antes.",
+    "Título pago impede cancelar: estorne o pagamento primeiro."
+   ],
+   "fala": "Três cuidados. Manifestação e devolução só com o responsável fiscal. Finalizar mexe no estoque e no financeiro e não volta. E, com título pago, estorne o pagamento antes de cancelar a nota."
+  },
+  {
+   "id": "25",
+   "cena": "fechamento",
+   "topicos": [
+    "NF e NR: a mesma nota",
+    "O CFOP decide estoque e título",
+    "Finalizar não volta"
+   ],
+   "fala": "Resumindo: a mesma nota tem dois números, NF e NR. O CFOP de entrada decide estoque e título. E finalizar não volta. O checklist e o manual de Recebimento estão logo abaixo."
+  }
+ ],
+ "pendencias": [
+  "Capturas em ambiente de teste, somente leitura: nenhuma nota foi salva, finalizada, cancelada ou manifestada. re06 mostra a nota preenchida e não salva; re10 mostra o aviso de Finalizar sem confirmar (cuidado na gravação). Recusas (XML repetido, quantidade acima do saldo, PC pendente de alçada, finalizar sem conferência, cancelar com título pago) ficam só nas regras.",
+  "Fila de conferência sem tela: nome divergente (Recebimento › Aprovações × Conferências) e no staging v1.23.2 nenhum dos dois aparece com a conferência desligada. Conferir, avaria e Concluir Conferência ficam fora do vídeo.",
+  "Não validado, não narrado: quantidade que entra com divergência (nota × conferida, REC-CON-004), custo da entrada (sem tributo recuperável × cheio hoje, REC-FIN-004) e momento do desdobro do PC (salvar × finalizar). A regra 4 cita só o resultado do desdobro.",
+  "Nome da caixa do DF-e: Aguardando manifestação (staging 05/11) × Notas pendentes (trilha). DF-e e manifestação exigem PRO e certificado A1: re02/re03 podem sair com o aviso de busca não ligada.",
+  "Devolução ao fornecedor (Identificar item incorreto, Gerar Devolução) sem tela: precisa de nota importada por XML e criaria NF-e em rascunho.",
+  "Divergência confirmada (v1.23.6): a lista de Notas de Recebimento mostra NR-000004 na coluna Número da Nota, não NF-<fornecedor>. A regra 1 segue a fonte; conferir com o produto.",
+  "Staging sem PC Em Aberto: re06 mostra a NR-000004 (Em Aberto, vinda do PC-000004) aberta pelo lápis, sem salvar; o campo Fornecedor sai mascarado (CNPJ do fornecedor está na lista de máscaras).",
+  "Staging sem movimento de estoque de NR (NR-000001 a 3 finalizadas não geraram movimento; só há 1 entrada manual): re11 mostra o filtro Origem › Recebimento aberto, sem a linha da entrada.",
+  "re02: o cartão Configurar abre com Configuração ativa e Buscar a cada 30 min já marcados (não salvo)."
+ ]
+}

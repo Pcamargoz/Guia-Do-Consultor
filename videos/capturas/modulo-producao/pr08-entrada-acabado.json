@@ -1,0 +1,44 @@
+{
+ "nome": "pr08-entrada-acabado",
+ "url": "https://staging.flow.faktory.com.br/estoque/movimentos",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Tipo de movimento"
+   },
+   "caixa": {
+    "x": 386,
+    "y": 514,
+    "w": 353,
+    "h": 36
+   }
+  },
+  {
+   "alvo": {
+    "role": "option",
+    "name": "Entrada produto acabado"
+   },
+   "caixa": {
+    "x": 388,
+    "y": 859,
+    "w": 338,
+    "h": 38
+   }
+  },
+  {
+   "alvo": {
+    "text": "Entrada manual diversa"
+   },
+   "caixa": {
+    "x": 779,
+    "y": 775,
+    "w": 107,
+    "h": 40
+   }
+  }
+ ],
+ "em": "2026-11-17T16:04:29.229Z"
+}

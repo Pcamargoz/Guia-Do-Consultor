@@ -1,0 +1,46 @@
+{
+ "nome": "se11-cockpit",
+ "url": "https://staging.flow.faktory.com.br/servicos/planejamento",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "Equipe",
+    "exact": true
+   },
+   "caixa": {
+    "x": 366,
+    "y": 590,
+    "w": 195,
+    "h": 75
+   }
+  },
+  {
+   "alvo": {
+    "text": "A agendar",
+    "exact": true,
+    "nth": 1
+   },
+   "caixa": {
+    "x": 1520,
+    "y": 602,
+    "w": 84,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "text": "Como vai a operação?",
+    "exact": true
+   },
+   "caixa": {
+    "x": 365,
+    "y": 344,
+    "w": 1486,
+    "h": 24
+   }
+  }
+ ],
+ "em": "2026-11-17T16:13:34.487Z"
+}

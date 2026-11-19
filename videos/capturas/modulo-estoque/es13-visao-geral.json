@@ -1,0 +1,57 @@
+{
+ "nome": "es13-visao-geral",
+ "url": "https://staging.flow.faktory.com.br/estoque",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "Valor em estoque próprio",
+    "exact": true
+   },
+   "caixa": {
+    "x": 390,
+    "y": 571,
+    "w": 205,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "text": "Saúde do estoque",
+    "exact": true
+   },
+   "caixa": {
+    "x": 765,
+    "y": 571,
+    "w": 146,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "text": "Necessidade de reposição",
+    "exact": true
+   },
+   "caixa": {
+    "x": 1140,
+    "y": 571,
+    "w": 215,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "text": "Capital sem giro",
+    "exact": true
+   },
+   "caixa": {
+    "x": 1515,
+    "y": 571,
+    "w": 131,
+    "h": 24
+   }
+  }
+ ],
+ "em": "2026-11-17T14:23:06.179Z"
+}

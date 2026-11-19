@@ -1,0 +1,57 @@
+{
+ "nome": "cr04-kanban",
+ "url": "https://staging.flow.faktory.com.br/crm/leads/kanban",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Qualificação de Leads"
+   },
+   "caixa": {
+    "x": 504,
+    "y": 226,
+    "w": 217,
+    "h": 43
+   }
+  },
+  {
+   "alvo": {
+    "text": "Inbound",
+    "exact": true
+   },
+   "caixa": {
+    "x": 371,
+    "y": 374,
+    "w": 257,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "text": "MQL",
+    "exact": true
+   },
+   "caixa": {
+    "x": 1278,
+    "y": 374,
+    "w": 257,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "text": "SQL",
+    "exact": true
+   },
+   "caixa": {
+    "x": 1580,
+    "y": 374,
+    "w": 257,
+    "h": 24
+   }
+  }
+ ],
+ "em": "2026-11-17T13:48:24.793Z"
+}

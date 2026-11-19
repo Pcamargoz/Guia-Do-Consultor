@@ -1,0 +1,57 @@
+{
+ "nome": "ce04-padroes-pedido",
+ "url": "https://staging.flow.faktory.com.br/configuracoes/padroes-importacao",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "CFOP Padrão",
+    "exact": true
+   },
+   "caixa": {
+    "x": 558,
+    "y": 371,
+    "w": 107,
+    "h": 20
+   }
+  },
+  {
+   "alvo": {
+    "text": "Plano de Conta Padrão",
+    "exact": true
+   },
+   "caixa": {
+    "x": 1123,
+    "y": 371,
+    "w": 183,
+    "h": 20
+   }
+  },
+  {
+   "alvo": {
+    "text": "Condição de Pagamento Padrão",
+    "exact": true
+   },
+   "caixa": {
+    "x": 558,
+    "y": 467,
+    "w": 258,
+    "h": 20
+   }
+  },
+  {
+   "alvo": {
+    "text": "Meio de Pagamento Padrão",
+    "exact": true
+   },
+   "caixa": {
+    "x": 1123,
+    "y": 467,
+    "w": 221,
+    "h": 20
+   }
+  }
+ ],
+ "em": "2026-11-17T13:57:11.975Z"
+}

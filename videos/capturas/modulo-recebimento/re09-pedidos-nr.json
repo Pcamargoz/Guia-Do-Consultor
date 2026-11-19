@@ -1,0 +1,33 @@
+{
+ "nome": "re09-pedidos-nr",
+ "url": "https://staging.flow.faktory.com.br/compras/pedidos",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "css": "thead th",
+    "nth": 5
+   },
+   "caixa": {
+    "x": 1209,
+    "y": 602,
+    "w": 137,
+    "h": 43
+   }
+  },
+  {
+   "alvo": {
+    "css": "thead th",
+    "nth": 7
+   },
+   "caixa": {
+    "x": 1496,
+    "y": 602,
+    "w": 254,
+    "h": 43
+   }
+  }
+ ],
+ "em": "2026-11-17T14:21:17.021Z"
+}

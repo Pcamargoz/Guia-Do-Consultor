@@ -1,0 +1,45 @@
+{
+ "nome": "pj05-etapas",
+ "url": "https://staging.flow.faktory.com.br/configuracoes/projetos",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "combobox",
+    "name": "",
+    "nth": 0
+   },
+   "caixa": {
+    "x": 1369,
+    "y": 166,
+    "w": 503,
+    "h": 43
+   }
+  },
+  {
+   "alvo": {
+    "role": "textbox",
+    "name": "Nova Etapa"
+   },
+   "caixa": {
+    "x": 1369,
+    "y": 218,
+    "w": 436,
+    "h": 48
+   }
+  },
+  {
+   "alvo": {
+    "text": "Esta obra ainda não tem estágios"
+   },
+   "caixa": {
+    "x": 1369,
+    "y": 276,
+    "w": 503,
+    "h": 38
+   }
+  }
+ ],
+ "em": "2026-11-17T16:23:34.685Z"
+}

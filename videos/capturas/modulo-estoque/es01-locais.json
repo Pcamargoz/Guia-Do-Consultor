@@ -1,0 +1,33 @@
+{
+ "nome": "es01-locais",
+ "url": "https://staging.flow.faktory.com.br/estoque/locais",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "Almoxarifado Central – MetaTest Estruturas",
+    "exact": true
+   },
+   "caixa": {
+    "x": 515,
+    "y": 462,
+    "w": 312,
+    "h": 47
+   }
+  },
+  {
+   "alvo": {
+    "text": "Situação",
+    "exact": true
+   },
+   "caixa": {
+    "x": 1475,
+    "y": 288,
+    "w": 69,
+    "h": 24
+   }
+  }
+ ],
+ "em": "2026-11-17T14:23:42.952Z"
+}

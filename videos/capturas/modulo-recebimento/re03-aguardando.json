@@ -1,0 +1,45 @@
+{
+ "nome": "re03-aguardando",
+ "url": "https://staging.flow.faktory.com.br/recebimento/notas-pendentes",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Atualizar"
+   },
+   "caixa": {
+    "x": 1507,
+    "y": 391,
+    "w": 131,
+    "h": 43
+   }
+  },
+  {
+   "alvo": {
+    "css": "thead th",
+    "nth": 5
+   },
+   "caixa": {
+    "x": 1153,
+    "y": 458,
+    "w": 210,
+    "h": 43
+   }
+  },
+  {
+   "alvo": {
+    "css": "thead th",
+    "nth": 7
+   },
+   "caixa": {
+    "x": 1591,
+    "y": 458,
+    "w": 269,
+    "h": 43
+   }
+  }
+ ],
+ "em": "2026-11-17T14:20:39.495Z"
+}

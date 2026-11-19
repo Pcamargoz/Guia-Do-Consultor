@@ -1,0 +1,265 @@
+WEBVTT
+
+00:00:01.100 --> 00:00:06.136
+A OP é a ordem para a fábrica produzir um item.
+
+00:00:06.136 --> 00:00:07.421
+Neste vídeo:
+
+00:00:07.421 --> 00:00:14.171
+estrutura do produto, OP a partir do pedido, baixa de material,
+
+00:00:14.171 --> 00:00:20.557
+apontamento e a entrada do produto acabado no estoque.
+
+00:00:20.857 --> 00:00:23.160
+A OP nasce Em aberto:
+
+00:00:23.160 --> 00:00:26.340
+ainda não entrou na execução.
+
+00:00:26.340 --> 00:00:32.314
+Iniciar o apontamento já coloca a OP Em execução.
+
+00:00:32.614 --> 00:00:35.878
+Em execução, a fábrica já começou.
+
+00:00:35.878 --> 00:00:42.118
+Marcar produzido encerra a OP como Produzido e credita o acabado.
+
+00:00:42.118 --> 00:00:45.214
+Cancelada sai do processo.
+
+00:00:45.514 --> 00:00:46.342
+Regra 1.
+
+00:00:46.342 --> 00:00:50.897
+A OP copia as etapas do processo do produto.
+
+00:00:50.897 --> 00:00:58.144
+Sem Processo de produção padrão no produto, não há etapas, nem painel,
+
+00:00:58.144 --> 00:01:00.400
+nem apontamento.
+
+00:01:00.700 --> 00:01:01.491
+Regra 2.
+
+00:01:01.491 --> 00:01:07.519
+Material paramétrico, como perfil ou chapa, sempre exige cor.
+
+00:01:07.519 --> 00:01:14.443
+Na estrutura e também na entrada de estoque, para o saldo bater.
+
+00:01:14.743 --> 00:01:15.657
+Regra 3.
+
+00:01:15.657 --> 00:01:23.086
+Ao escolher Pedido de venda e Item do pedido, a OP copia produto,
+
+00:01:23.086 --> 00:01:24.686
+cor e medidas.
+
+00:01:24.686 --> 00:01:29.629
+A Quantidade e a Empresa você informa.
+
+00:01:29.929 --> 00:01:30.701
+Regra 4.
+
+00:01:30.701 --> 00:01:33.307
+Se o produto tem estrutura,
+
+00:01:33.307 --> 00:01:38.906
+as requisições de material nascem sozinhas ao salvar a OP.
+
+00:01:38.906 --> 00:01:44.815
+Sem estrutura, aparece OP sem requisições da estrutura.
+
+00:01:45.115 --> 00:01:45.914
+Regra 5.
+
+00:01:45.914 --> 00:01:52.408
+A baixa pode ser parcial, conforme o material sai para a fábrica.
+
+00:01:52.408 --> 00:02:00.001
+Estornar corrige uma baixa errada, com motivo, sem apagar o histórico.
+
+00:02:00.301 --> 00:02:01.151
+Regra 6.
+
+00:02:01.151 --> 00:02:07.317
+Marcar produzido encerra a OP e credita o produto acabado.
+
+00:02:07.317 --> 00:02:14.615
+O custo unitário é o custo real da OP dividido pela quantidade.
+
+00:02:14.915 --> 00:02:15.724
+Regra 7.
+
+00:02:15.724 --> 00:02:22.798
+Antes da primeira OP, confira o almoxarifado central ativo na empresa.
+
+00:02:22.798 --> 00:02:30.372
+Sem ele, a conclusão fica bloqueada e o acabado não entra no estoque.
+
+00:02:30.672 --> 00:02:37.389
+A estrutura é a lista de materiais e quantidades de cada produto.
+
+00:02:37.389 --> 00:02:41.213
+Aqui, a JANELA DE CORRER tem 2 itens.
+
+00:02:41.213 --> 00:02:47.517
+Em Nova Estrutura, escolha o acabado e inclua os componentes,
+
+00:02:47.517 --> 00:02:50.701
+com cor nos paramétricos.
+
+00:02:51.001 --> 00:02:54.914
+Produção abre em Ordens de produção.
+
+00:02:54.914 --> 00:02:57.631
+Leia o STATUS de cada OP.
+
+00:02:57.631 --> 00:03:00.349
+Cuidado com o ▶ da linha:
+
+00:03:00.349 --> 00:03:04.262
+ele inicia a produção com um clique.
+
+00:03:04.262 --> 00:03:11.601
+Selos como Estoque pendente mostram o que falta para concluir.
+
+00:03:11.901 --> 00:03:19.662
+Na Nova OP, deixe o Número da OP vazio e vincule o Pedido de venda.
+
+00:03:19.662 --> 00:03:26.380
+Informe Empresa e Quantidade e clique em Salvar no rodapé.
+
+00:03:26.380 --> 00:03:29.644
+Esc fecha e perde tudo.
+
+00:03:29.944 --> 00:03:31.567
+No menu ⋯ da OP:
+
+00:03:31.567 --> 00:03:35.929
+as Etapas de execução copiadas do processo,
+
+00:03:35.929 --> 00:03:40.291
+os Materiais necessários e os Apontamentos.
+
+00:03:40.291 --> 00:03:44.855
+No mesmo menu, Marcar produzido encerra a OP:
+
+00:03:44.855 --> 00:03:47.687
+não clique sem querer.
+
+00:03:47.987 --> 00:03:54.137
+Uma requisição por componente, com requisitado, atendido e saldo.
+
+00:03:54.137 --> 00:03:59.908
+Baixar retira o material do estoque e registra o custo na OP.
+
+00:03:59.908 --> 00:04:02.873
+Estornar devolve o saldo.
+
+00:04:03.173 --> 00:04:07.107
+Os apontamentos dependem das etapas da OP.
+
+00:04:07.107 --> 00:04:11.979
+Nesta OP o processo Cortar vidros não trouxe etapas:
+
+00:04:11.979 --> 00:04:14.227
+Nenhuma etapa vinculada.
+
+00:04:14.227 --> 00:04:20.916
+Por isso Apontamentos avisa que a OP não tem etapas configuradas.
+
+00:04:21.216 --> 00:04:29.164
+No chão de fábrica, o operador abre o Terminal de apontamento no tablet:
+
+00:04:29.164 --> 00:04:34.353
+escolhe operador, OP e etapa e toca em Iniciar.
+
+00:04:34.353 --> 00:04:41.245
+A Separação — Operação é o app de quem separa o material.
+
+00:04:41.545 --> 00:04:44.061
+Depois de Marcar produzido,
+
+00:04:44.061 --> 00:04:49.837
+em Estoque › Movimentos filtre o Tipo Entrada produto acabado.
+
+00:04:49.837 --> 00:04:54.309
+Neste ambiente só há uma Entrada manual diversa:
+
+00:04:54.309 --> 00:04:59.288
+a OP produzida ainda está com Estoque pendente.
+
+00:04:59.588 --> 00:05:05.614
+Em Custo da OP, o gestor compara Estimado, Realizado e Variação.
+
+00:05:05.614 --> 00:05:13.052
+Esta OP mostra tudo zerado porque não teve etapas nem apontamentos; com etapas,
+
+00:05:13.052 --> 00:05:16.759
+aparece o detalhamento por etapa.
+
+00:05:17.059 --> 00:05:21.643
+O Painel de fábrica mostra a fila por etapa.
+
+00:05:21.643 --> 00:05:24.248
+Filtre e escolha a visão:
+
+00:05:24.248 --> 00:05:27.790
+Kanban, Timeline, Tabela ou Gantt.
+
+00:05:27.790 --> 00:05:36.516
+OP sem processo de produção não aparece no quadro, como avisa a faixa amarela.
+
+00:05:36.816 --> 00:05:41.745
+A separação prepara o material antes da bancada.
+
+00:05:41.745 --> 00:05:45.749
+Escolha as OPs e clique em Gerar lista.
+
+00:05:45.749 --> 00:05:50.559
+Separar no app também baixa a requisição.
+
+00:05:50.859 --> 00:05:52.560
+Na Visão geral:
+
+00:05:52.560 --> 00:05:59.365
+ritmo do dia, OPs bloqueadas por material e o valor travado.
+
+00:05:59.365 --> 00:06:06.316
+Os Insumos que mais travam são a lista de compra do dia.
+
+00:06:06.616 --> 00:06:08.066
+Três cuidados.
+
+00:06:08.066 --> 00:06:13.349
+Hoje a finalização do apontamento ainda é recusada:
+
+00:06:13.349 --> 00:06:16.871
+anote o horário e avise o suporte.
+
+00:06:16.871 --> 00:06:20.497
+Na Nova OP, Esc perde o formulário.
+
+00:06:20.497 --> 00:06:24.930
+E vários botões gravam com um clique.
+
+00:06:25.230 --> 00:06:26.214
+Resumindo:
+
+00:06:26.214 --> 00:06:29.855
+processo e estrutura vêm antes da OP.
+
+00:06:29.855 --> 00:06:33.004
+As requisições nascem ao salvar.
+
+00:06:33.004 --> 00:06:37.728
+E Marcar produzido credita o acabado no estoque.
+
+00:06:37.728 --> 00:06:43.544
+O checklist e o manual de Produção estão logo abaixo.

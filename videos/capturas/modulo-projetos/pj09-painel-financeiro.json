@@ -1,0 +1,67 @@
+{
+ "nome": "pj09-painel-financeiro",
+ "url": "https://staging.flow.faktory.com.br/projetos/painel?projetoId=350",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "Avisos inteligentes",
+    "exact": true
+   },
+   "caixa": {
+    "x": 404,
+    "y": 440,
+    "w": 153,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "text": "valor vendido"
+   },
+   "caixa": {
+    "x": 376,
+    "y": 576,
+    "w": 122,
+    "h": 19
+   }
+  },
+  {
+   "alvo": {
+    "text": "valor faturado"
+   },
+   "caixa": {
+    "x": 630,
+    "y": 576,
+    "w": 134,
+    "h": 19
+   }
+  },
+  {
+   "alvo": {
+    "text": "a faturar",
+    "nth": 0
+   },
+   "caixa": {
+    "x": 884,
+    "y": 576,
+    "w": 82,
+    "h": 19
+   }
+  },
+  {
+   "alvo": {
+    "text": "resultado",
+    "nth": 0
+   },
+   "caixa": {
+    "x": 1646,
+    "y": 576,
+    "w": 88,
+    "h": 19
+   }
+  }
+ ],
+ "em": "2026-11-17T16:28:13.643Z"
+}

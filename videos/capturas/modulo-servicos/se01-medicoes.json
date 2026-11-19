@@ -1,0 +1,58 @@
+{
+ "nome": "se01-medicoes",
+ "url": "https://staging.flow.faktory.com.br/servicos/medicoes",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Nova Medição"
+   },
+   "caixa": {
+    "x": 1686,
+    "y": 168,
+    "w": 171,
+    "h": 43
+   }
+  },
+  {
+   "alvo": {
+    "role": "cell",
+    "name": "Status",
+    "exact": true
+   },
+   "caixa": {
+    "x": 1067,
+    "y": 595,
+    "w": 277,
+    "h": 43
+   }
+  },
+  {
+   "alvo": {
+    "role": "cell",
+    "name": "% Medido",
+    "exact": true
+   },
+   "caixa": {
+    "x": 1344,
+    "y": 595,
+    "w": 205,
+    "h": 43
+   }
+  },
+  {
+   "alvo": {
+    "css": "tbody tr:first-child td:last-child"
+   },
+   "caixa": {
+    "x": 1706,
+    "y": 638,
+    "w": 154,
+    "h": 59
+   }
+  }
+ ],
+ "em": "2026-11-17T16:07:44.666Z"
+}

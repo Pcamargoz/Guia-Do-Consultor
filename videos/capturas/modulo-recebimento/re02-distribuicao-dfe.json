@@ -1,0 +1,45 @@
+{
+ "nome": "re02-distribuicao-dfe",
+ "url": "https://staging.flow.faktory.com.br/recebimento/dfe/configuracao",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "Configuração ativa",
+    "exact": true
+   },
+   "caixa": {
+    "x": 385,
+    "y": 337,
+    "w": 179,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "text": "Buscar automaticamente a cada 30 minutos",
+    "exact": true
+   },
+   "caixa": {
+    "x": 584,
+    "y": 337,
+    "w": 377,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Salvar configuração"
+   },
+   "caixa": {
+    "x": 1642,
+    "y": 376,
+    "w": 200,
+    "h": 48
+   }
+  }
+ ],
+ "em": "2026-11-17T14:20:22.314Z"
+}

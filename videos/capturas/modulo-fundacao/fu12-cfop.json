@@ -1,0 +1,45 @@
+{
+ "nome": "fu12-cfop",
+ "url": "https://staging.flow.faktory.com.br/cadastros/cfops",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "heading",
+    "name": "Códigos Fiscais de Operações (CFOP)"
+   },
+   "caixa": {
+    "x": 433,
+    "y": 140,
+    "w": 420,
+    "h": 34
+   }
+  },
+  {
+   "alvo": {
+    "text": "5101",
+    "exact": true
+   },
+   "caixa": {
+    "x": 362,
+    "y": 402,
+    "w": 32,
+    "h": 23
+   }
+  },
+  {
+   "alvo": {
+    "text": "Venda de produção do estabelecimento",
+    "exact": true
+   },
+   "caixa": {
+    "x": 751,
+    "y": 382,
+    "w": 673,
+    "h": 64
+   }
+  }
+ ],
+ "em": "2026-11-17T13:44:01.230Z"
+}

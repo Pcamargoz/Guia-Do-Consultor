@@ -1,0 +1,45 @@
+{
+ "nome": "se12-dashboard",
+ "url": "https://staging.flow.faktory.com.br/servicos/planejamento/saude-operacao",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "Conclusões hoje",
+    "exact": true
+   },
+   "caixa": {
+    "x": 661,
+    "y": 298,
+    "w": 134,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "text": "Ocupação das equipes",
+    "exact": true
+   },
+   "caixa": {
+    "x": 661,
+    "y": 508,
+    "w": 184,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "text": "Visitas atrasadas",
+    "exact": true
+   },
+   "caixa": {
+    "x": 661,
+    "y": 718,
+    "w": 137,
+    "h": 24
+   }
+  }
+ ],
+ "em": "2026-11-17T16:14:06.155Z"
+}

@@ -1,0 +1,45 @@
+{
+ "nome": "se10-assistencia",
+ "url": "https://staging.flow.faktory.com.br/servicos/assistencias/novo",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "tab",
+    "name": "Agendamento"
+   },
+   "caixa": {
+    "x": 554,
+    "y": 250,
+    "w": 168,
+    "h": 36
+   }
+  },
+  {
+   "alvo": {
+    "role": "tab",
+    "name": "Defeitos"
+   },
+   "caixa": {
+    "x": 726,
+    "y": 250,
+    "w": 122,
+    "h": 36
+   }
+  },
+  {
+   "alvo": {
+    "role": "tab",
+    "name": "Solução + Custos"
+   },
+   "caixa": {
+    "x": 962,
+    "y": 250,
+    "w": 197,
+    "h": 36
+   }
+  }
+ ],
+ "em": "2026-11-17T16:12:33.937Z"
+}

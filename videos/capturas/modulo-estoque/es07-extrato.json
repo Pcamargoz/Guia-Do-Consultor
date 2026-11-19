@@ -1,0 +1,33 @@
+{
+ "nome": "es07-extrato",
+ "url": "https://staging.flow.faktory.com.br/estoque/saldo/81?porVariacao=true&corId=16&comprimento=4000.0000",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "tab",
+    "name": "Posições (1)"
+   },
+   "caixa": {
+    "x": 390,
+    "y": 629,
+    "w": 126,
+    "h": 38
+   }
+  },
+  {
+   "alvo": {
+    "role": "tab",
+    "name": "Histórico (1)"
+   },
+   "caixa": {
+    "x": 722,
+    "y": 629,
+    "w": 125,
+    "h": 38
+   }
+  }
+ ],
+ "em": "2026-11-17T14:25:44.889Z"
+}

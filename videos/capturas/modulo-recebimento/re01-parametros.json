@@ -1,0 +1,33 @@
+{
+ "nome": "re01-parametros",
+ "url": "https://staging.flow.faktory.com.br/recebimento/configuracoes/parametros",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "Usar Conferência Física",
+    "exact": true
+   },
+   "caixa": {
+    "x": 763,
+    "y": 263,
+    "w": 617,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "text": "Exigir Conferência para Finalizar",
+    "exact": true
+   },
+   "caixa": {
+    "x": 763,
+    "y": 359,
+    "w": 617,
+    "h": 24
+   }
+  }
+ ],
+ "em": "2026-11-17T14:19:55.153Z"
+}

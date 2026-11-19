@@ -1,0 +1,45 @@
+{
+ "nome": "fu08-classificacao",
+ "url": "https://staging.flow.faktory.com.br/participantes",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "Conta de Fluxo de Caixa Receita",
+    "exact": true
+   },
+   "caixa": {
+    "x": 1006,
+    "y": 314,
+    "w": 259,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "role": "switch",
+    "name": "É Cliente?"
+   },
+   "caixa": {
+    "x": 1006,
+    "y": 509,
+    "w": 53,
+    "h": 29
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Cancelar"
+   },
+   "caixa": {
+    "x": 1690,
+    "y": 986,
+    "w": 103,
+    "h": 48
+   }
+  }
+ ],
+ "em": "2026-11-17T13:40:55.964Z"
+}

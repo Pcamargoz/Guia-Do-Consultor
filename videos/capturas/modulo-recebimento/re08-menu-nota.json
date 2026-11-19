@@ -1,0 +1,57 @@
+{
+ "nome": "re08-menu-nota",
+ "url": "https://staging.flow.faktory.com.br/recebimento/notas",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "menuitem",
+    "name": "Finalizar"
+   },
+   "caixa": {
+    "x": 1648,
+    "y": 895,
+    "w": 191,
+    "h": 38
+   }
+  },
+  {
+   "alvo": {
+    "role": "menuitem",
+    "name": "Imprimir Etiquetas"
+   },
+   "caixa": {
+    "x": 1648,
+    "y": 933,
+    "w": 191,
+    "h": 38
+   }
+  },
+  {
+   "alvo": {
+    "role": "menuitem",
+    "name": "Cancelar"
+   },
+   "caixa": {
+    "x": 1648,
+    "y": 972,
+    "w": 191,
+    "h": 38
+   }
+  },
+  {
+   "alvo": {
+    "role": "menuitem",
+    "name": "Excluir"
+   },
+   "caixa": {
+    "x": 1648,
+    "y": 1021,
+    "w": 191,
+    "h": 38
+   }
+  }
+ ],
+ "em": "2026-11-17T14:17:41.010Z"
+}

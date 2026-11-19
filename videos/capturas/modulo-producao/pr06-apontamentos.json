@@ -1,0 +1,32 @@
+{
+ "nome": "pr06-apontamentos",
+ "url": "https://staging.flow.faktory.com.br/producao/ordem-producao",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "combobox",
+    "nth": 0
+   },
+   "caixa": {
+    "x": 980,
+    "y": 128,
+    "w": 453,
+    "h": 48
+   }
+  },
+  {
+   "alvo": {
+    "text": "Nenhuma etapa vinculada."
+   },
+   "caixa": {
+    "x": 980,
+    "y": 191,
+    "w": 920,
+    "h": 24
+   }
+  }
+ ],
+ "em": "2026-11-17T16:07:12.779Z"
+}

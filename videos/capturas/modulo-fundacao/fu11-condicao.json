@@ -1,0 +1,56 @@
+{
+ "nome": "fu11-condicao",
+ "url": "https://staging.flow.faktory.com.br/configuracoes/condicoes-pagamento",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "textbox",
+    "name": "Descrição *"
+   },
+   "caixa": {
+    "x": 1193,
+    "y": 388,
+    "w": 315,
+    "h": 48
+   }
+  },
+  {
+   "alvo": {
+    "css": "[role=dialog] [role=combobox]",
+    "nth": 0
+   },
+   "caixa": {
+    "x": 1527,
+    "y": 388,
+    "w": 315,
+    "h": 48
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Adicionar"
+   },
+   "caixa": {
+    "x": 1705,
+    "y": 582,
+    "w": 137,
+    "h": 43
+   }
+  },
+  {
+   "alvo": {
+    "text": "Total: 100.00%"
+   },
+   "caixa": {
+    "x": 1564,
+    "y": 590,
+    "w": 131,
+    "h": 26
+   }
+  }
+ ],
+ "em": "2026-11-17T13:43:39.760Z"
+}

@@ -1,0 +1,46 @@
+{
+ "nome": "se08-vistoria-ressalvas",
+ "url": "https://staging.flow.faktory.com.br/servicos/vistorias/novo?id=3",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "Aprovada",
+    "exact": true,
+    "nth": 0
+   },
+   "caixa": {
+    "x": 923,
+    "y": 138,
+    "w": 94,
+    "h": 26
+   }
+  },
+  {
+   "alvo": {
+    "role": "tab",
+    "name": "Ressalvas e Pendências"
+   },
+   "caixa": {
+    "x": 787,
+    "y": 250,
+    "w": 248,
+    "h": 36
+   }
+  },
+  {
+   "alvo": {
+    "role": "tab",
+    "name": "Aceite do Cliente"
+   },
+   "caixa": {
+    "x": 1040,
+    "y": 250,
+    "w": 192,
+    "h": 36
+   }
+  }
+ ],
+ "em": "2026-11-17T16:12:01.805Z"
+}

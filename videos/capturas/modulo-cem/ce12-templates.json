@@ -1,0 +1,55 @@
+{
+ "nome": "ce12-templates",
+ "url": "https://staging.flow.faktory.com.br/configuracoes/rateio-templates/novo?id=8",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "Nível *",
+    "exact": true
+   },
+   "caixa": {
+    "x": 376,
+    "y": 313,
+    "w": 211,
+    "h": 68
+   }
+  },
+  {
+   "alvo": {
+    "text": "Percentual *",
+    "exact": true
+   },
+   "caixa": {
+    "x": 587,
+    "y": 313,
+    "w": 106,
+    "h": 68
+   }
+  },
+  {
+   "alvo": {
+    "css": "th:has-text(\"CFOP\")"
+   },
+   "caixa": {
+    "x": 932,
+    "y": 313,
+    "w": 403,
+    "h": 68
+   }
+  },
+  {
+   "alvo": {
+    "text": "Soma: 100% ✓"
+   },
+   "caixa": {
+    "x": 391,
+    "y": 638,
+    "w": 118,
+    "h": 24
+   }
+  }
+ ],
+ "em": "2026-11-17T14:06:58.563Z"
+}

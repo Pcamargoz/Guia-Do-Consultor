@@ -1,0 +1,57 @@
+{
+ "nome": "fu01-assinatura",
+ "url": "https://staging.flow.faktory.com.br/minha-licenca",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "Enterprise",
+    "exact": true
+   },
+   "caixa": {
+    "x": 412,
+    "y": 257,
+    "w": 1392,
+    "h": 51
+   }
+  },
+  {
+   "alvo": {
+    "text": "Usuários do Sistema",
+    "exact": true
+   },
+   "caixa": {
+    "x": 447,
+    "y": 692,
+    "w": 159,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "text": "Empresas ativas",
+    "exact": true
+   },
+   "caixa": {
+    "x": 1338,
+    "y": 692,
+    "w": 128,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "text": "Módulos disponíveis hoje",
+    "exact": true
+   },
+   "caixa": {
+    "x": 1041,
+    "y": 685,
+    "w": 182,
+    "h": 49
+   }
+  }
+ ],
+ "em": "2026-11-17T13:33:52.610Z"
+}

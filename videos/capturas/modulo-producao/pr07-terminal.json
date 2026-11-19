@@ -1,0 +1,33 @@
+{
+ "nome": "pr07-terminal",
+ "url": "https://staging.flow.faktory.com.br/producao/ordem-producao",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "link",
+    "name": "Terminal de apontamento"
+   },
+   "caixa": {
+    "x": 10,
+    "y": 376,
+    "w": 276,
+    "h": 38
+   }
+  },
+  {
+   "alvo": {
+    "role": "link",
+    "name": "Separação — Operação"
+   },
+   "caixa": {
+    "x": 10,
+    "y": 457,
+    "w": 276,
+    "h": 38
+   }
+  }
+ ],
+ "em": "2026-11-17T16:03:51.113Z"
+}

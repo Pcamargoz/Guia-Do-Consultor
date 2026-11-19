@@ -1,0 +1,555 @@
+{
+ "id": "modulo-producao",
+ "titulo": "Produção",
+ "subtitulo": "O módulo completo: do pedido ao produto acabado no estoque",
+ "trilha": "Metodologia do Consultor · vídeo completo do módulo",
+ "proximo": "Serviços e Instalação",
+ "icone": "fabrica",
+ "semVoz": true,
+ "focoMin": 2.6,
+ "fontes": [
+  "guia:scripts/dados-checklists-implantacao.mjs#implantacao-producao",
+  "guia:public/manuais/producao/guia.json",
+  "harness:funcional-producao-ordens-de-producao-e-separacao",
+  "harness:regra-producao-item-parametrico-da-estrutura-exige-cor",
+  "harness:regra-producao-op-copia-o-item-do-pedido-mas-nao-a-quantidade",
+  "harness:regra-producao-requisicoes-nascem-da-estrutura-ao-salvar",
+  "harness:regra-producao-marcar-produzido-gera-entrada-do-produto-acabado"
+ ],
+ "trechos": [
+  {
+   "id": "01",
+   "cena": "abertura",
+   "fala": "A OP é a ordem para a fábrica produzir um item. Neste vídeo: estrutura do produto, OP a partir do pedido, baixa de material, apontamento e a entrada do produto acabado no estoque."
+  },
+  {
+   "id": "02",
+   "cena": "status",
+   "etapas": [
+    "Em aberto",
+    "Em execução",
+    "Produzido",
+    "Cancelada"
+   ],
+   "destaque": 0,
+   "fala": "A OP nasce Em aberto: ainda não entrou na execução. Iniciar o apontamento já coloca a OP Em execução."
+  },
+  {
+   "id": "03",
+   "cena": "status",
+   "etapas": [
+    "Em aberto",
+    "Em execução",
+    "Produzido",
+    "Cancelada"
+   ],
+   "destaque": 1,
+   "fala": "Em execução, a fábrica já começou. Marcar produzido encerra a OP como Produzido e credita o acabado. Cancelada sai do processo."
+  },
+  {
+   "id": "04",
+   "cena": "regra",
+   "n": 1,
+   "titulo": "Processo no produto",
+   "icone": "ferramenta",
+   "texto": "O produto precisa do Processo de produção padrão. Sem processo, a OP não tem etapas, não aparece no Painel de fábrica e o terminal não deixa apontar.",
+   "fonte": "implantacao-producao#prerequisitos",
+   "fala": "Regra 1. A OP copia as etapas do processo do produto. Sem Processo de produção padrão no produto, não há etapas, nem painel, nem apontamento."
+  },
+  {
+   "id": "05",
+   "cena": "regra",
+   "n": 2,
+   "titulo": "Paramétrico exige cor",
+   "icone": "lapis",
+   "texto": "Perfil ou chapa sem cor na estrutura é recusado: \"Selecione a cor do produto — obrigatória para este tipo de material\".",
+   "fonte": "regra-producao-item-parametrico-da-estrutura-exige-cor",
+   "fala": "Regra 2. Material paramétrico, como perfil ou chapa, sempre exige cor. Na estrutura e também na entrada de estoque, para o saldo bater."
+  },
+  {
+   "id": "06",
+   "cena": "regra",
+   "n": 3,
+   "titulo": "A OP não copia a quantidade",
+   "icone": "carrinho",
+   "texto": "A OP copia produto, cor e medidas do item do pedido, mas não a quantidade. A Empresa é obrigatória e o Número da OP fica vazio.",
+   "fonte": "regra-producao-op-copia-o-item-do-pedido-mas-nao-a-quantidade",
+   "fala": "Regra 3. Ao escolher Pedido de venda e Item do pedido, a OP copia produto, cor e medidas. A Quantidade e a Empresa você informa."
+  },
+  {
+   "id": "07",
+   "cena": "regra",
+   "n": 4,
+   "titulo": "Requisições nascem ao salvar",
+   "icone": "tarefa",
+   "texto": "Com estrutura, salvar a OP cria as requisições: quantidade da estrutura vezes a da OP. Reimportar não duplica.",
+   "fonte": "regra-producao-requisicoes-nascem-da-estrutura-ao-salvar",
+   "fala": "Regra 4. Se o produto tem estrutura, as requisições de material nascem sozinhas ao salvar a OP. Sem estrutura, aparece OP sem requisições da estrutura."
+  },
+  {
+   "id": "08",
+   "cena": "regra",
+   "n": 5,
+   "titulo": "Baixa parcial e estorno",
+   "icone": "estoque",
+   "texto": "Baixar parte gera Atendida Parcialmente; tudo, Atendida. Estornar pede motivo e devolve o saldo.",
+   "fonte": "regra-producao-requisicoes-nascem-da-estrutura-ao-salvar",
+   "fala": "Regra 5. A baixa pode ser parcial, conforme o material sai para a fábrica. Estornar corrige uma baixa errada, com motivo, sem apagar o histórico."
+  },
+  {
+   "id": "09",
+   "cena": "regra",
+   "n": 6,
+   "titulo": "Marcar produzido credita o acabado",
+   "icone": "check",
+   "texto": "Marcar produzido leva a OP a Produzido e gera \"Entrada de produto acabado (OP)\" no almoxarifado central, com o custo da OP.",
+   "fonte": "regra-producao-marcar-produzido-gera-entrada-do-produto-acabado",
+   "fala": "Regra 6. Marcar produzido encerra a OP e credita o produto acabado. O custo unitário é o custo real da OP dividido pela quantidade."
+  },
+  {
+   "id": "10",
+   "cena": "regra",
+   "n": 7,
+   "titulo": "Sem almoxarifado, não conclui",
+   "icone": "cadeado",
+   "texto": "Sem almoxarifado central ativo na empresa da OP, ou local da obra, a OP mostra o selo Conclusão bloqueada.",
+   "fonte": "implantacao-producao#prerequisitos",
+   "critica": true,
+   "fala": "Regra 7. Antes da primeira OP, confira o almoxarifado central ativo na empresa. Sem ele, a conclusão fica bloqueada e o acabado não entra no estoque."
+  },
+  {
+   "id": "11",
+   "cena": "tela",
+   "captura": "pr01-estrutura",
+   "titulo": "A estrutura do produto",
+   "rotulo": "Produção › Configurações › Estrutura de produto",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "Nova Estrutura",
+    "Produto",
+    "Qt. itens"
+   ],
+   "impacto": 2,
+   "fala": "A estrutura é a lista de materiais e quantidades de cada produto. Aqui, a JANELA DE CORRER tem 2 itens. Em Nova Estrutura, escolha o acabado e inclua os componentes, com cor nos paramétricos.",
+   "plano": {
+    "menu": "Produção › Configurações › Estrutura de produto",
+    "mostrar": "A lista de estruturas com ao menos uma estrutura cadastrada e a quantidade de itens visível",
+    "alvos": [
+     "botão + Nova Estrutura",
+     "coluna Produto da lista",
+     "coluna com a quantidade de itens da primeira estrutura"
+    ],
+    "acoes": [
+     "abrir Produção › Configurações › Estrutura de produto",
+     "não clicar em + Nova Estrutura nem em Salvar"
+    ]
+   }
+  },
+  {
+   "id": "12",
+   "cena": "tela",
+   "captura": "pr02-ordens",
+   "titulo": "A lista de OPs",
+   "rotulo": "Produção › Ordens de produção",
+   "focos": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "nomes": [
+    "Nova OP",
+    "STATUS",
+    "▶ Iniciar produção",
+    "Estoque pendente"
+   ],
+   "impacto": 2,
+   "fala": "Produção abre em Ordens de produção. Leia o STATUS de cada OP. Cuidado com o ▶ da linha: ele inicia a produção com um clique. Selos como Estoque pendente mostram o que falta para concluir.",
+   "plano": {
+    "menu": "Produção › Ordens de produção",
+    "mostrar": "A lista com OPs em status diferentes e, se houver, uma OP com selo de alerta (Conclusão bloqueada, Material não baixado)",
+    "alvos": [
+     "botão + Nova OP",
+     "coluna STATUS",
+     "botão ▶ da primeira linha",
+     "selo de alerta de uma OP"
+    ],
+    "acoes": [
+     "filtro em Todos os status",
+     "passar o mouse sobre um selo de alerta para mostrar a causa",
+     "não clicar no ▶"
+    ]
+   }
+  },
+  {
+   "id": "13",
+   "cena": "tela",
+   "captura": "pr03-nova-op",
+   "titulo": "Nova OP a partir do pedido",
+   "rotulo": "Ordens de produção › + Nova OP",
+   "focos": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "nomes": [
+    "Número da OP",
+    "Pedido de venda",
+    "Empresa",
+    "Quantidade",
+    "Salvar"
+   ],
+   "impacto": 3,
+   "fala": "Na Nova OP, deixe o Número da OP vazio e vincule o Pedido de venda. Informe Empresa e Quantidade e clique em Salvar no rodapé. Esc fecha e perde tudo.",
+   "plano": {
+    "menu": "Produção › Ordens de produção › + Nova OP",
+    "mostrar": "O painel Nova Ordem de produção aberto, vazio, com Número da OP, Tipo de operação Fabricação e Linha de produção",
+    "alvos": [
+     "campo Número da OP",
+     "campo Pedido de venda",
+     "campo Empresa",
+     "campo Quantidade",
+     "botão Salvar do rodapé"
+    ],
+    "acoes": [
+     "clicar em + Nova OP",
+     "rolar o painel até mostrar Empresa, Pedido de venda e Quantidade",
+     "não salvar; fechar pelo X ao terminar"
+    ]
+   }
+  },
+  {
+   "id": "14",
+   "cena": "tela",
+   "captura": "pr04-menu-op",
+   "titulo": "O menu da OP",
+   "rotulo": "Ordens de produção › menu ⋯",
+   "focos": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "nomes": [
+    "Etapas de execução da OP",
+    "Materiais necessários",
+    "Apontamentos",
+    "Marcar produzido"
+   ],
+   "impacto": 3,
+   "fala": "No menu ⋯ da OP: as Etapas de execução copiadas do processo, os Materiais necessários e os Apontamentos. No mesmo menu, Marcar produzido encerra a OP: não clique sem querer.",
+   "plano": {
+    "menu": "Produção › Ordens de produção › menu ⋯ › Mais ações",
+    "mostrar": "O menu ⋯ aberto na linha de uma OP Em aberto ou Em execução, com o submenu Mais ações expandido",
+    "alvos": [
+     "Etapas de execução da OP",
+     "Materiais necessários",
+     "Apontamentos",
+     "Marcar produzido"
+    ],
+    "acoes": [
+     "abrir menu ⋯ da linha de uma OP",
+     "passar o mouse em Mais ações",
+     "não clicar em Marcar produzido, Pausar OP, Cancelar OP, Replicar OP nem Gerar OS de instalação"
+    ]
+   }
+  },
+  {
+   "id": "15",
+   "cena": "tela",
+   "captura": "pr05-materiais",
+   "titulo": "Materiais necessários",
+   "rotulo": "Menu ⋯ › Materiais necessários",
+   "focos": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "nomes": [
+    "Requisitado",
+    "Atendido",
+    "Baixar",
+    "Estornar"
+   ],
+   "impacto": 2,
+   "fala": "Uma requisição por componente, com requisitado, atendido e saldo. Baixar retira o material do estoque e registra o custo na OP. Estornar devolve o saldo.",
+   "plano": {
+    "menu": "Produção › Ordens de produção › menu ⋯ › Materiais necessários",
+    "mostrar": "As requisições de uma OP com estrutura, de preferência uma Atendida Parcialmente, e o selo disponível/falta",
+    "alvos": [
+     "coluna Requisitado",
+     "coluna Atendido",
+     "botão Baixar de uma requisição",
+     "botão Estornar de uma baixa"
+    ],
+    "acoes": [
+     "abrir menu ⋯ da OP e clicar em Materiais necessários",
+     "não clicar em Baixar nem em Estornar"
+    ]
+   }
+  },
+  {
+   "id": "16",
+   "cena": "tela",
+   "captura": "pr06-apontamentos",
+   "titulo": "Sem etapas, sem apontamento",
+   "rotulo": "Menu ⋯ › Etapas de execução da OP",
+   "focos": [
+    0,
+    1
+   ],
+   "nomes": [
+    "Processo Cortar vidros",
+    "Nenhuma etapa vinculada."
+   ],
+   "fala": "Os apontamentos dependem das etapas da OP. Nesta OP o processo Cortar vidros não trouxe etapas: Nenhuma etapa vinculada. Por isso Apontamentos avisa que a OP não tem etapas configuradas.",
+   "plano": {
+    "menu": "Produção › Ordens de produção › menu ⋯ › Apontamentos",
+    "mostrar": "Painel Etapas de execução da OP OP-000001 sem etapas (no staging nenhuma OP tem etapas, então Apontamentos é recusado)",
+    "alvos": [
+     "coluna Etapa",
+     "coluna Funcionário",
+     "situação do apontamento aberto (sem fim)"
+    ],
+    "acoes": [
+     "abrir menu ⋯ da OP Em execução e clicar em Apontamentos",
+     "não iniciar nem finalizar apontamento"
+    ]
+   }
+  },
+  {
+   "id": "17",
+   "cena": "tela",
+   "captura": "pr07-terminal",
+   "titulo": "Onde fica o Terminal",
+   "rotulo": "Produção › menu lateral",
+   "focos": [
+    0,
+    1
+   ],
+   "nomes": [
+    "Terminal de apontamento",
+    "Separação — Operação"
+   ],
+   "fala": "No chão de fábrica, o operador abre o Terminal de apontamento no tablet: escolhe operador, OP e etapa e toca em Iniciar. A Separação — Operação é o app de quem separa o material.",
+   "plano": {
+    "menu": "Produção › Terminal de apontamento",
+    "mostrar": "A tela inicial do terminal com a escolha da tarefa",
+    "alvos": [
+     "tarefa Apontar",
+     "seleção de operador"
+    ],
+    "acoes": [
+     "abrir Produção › Terminal de apontamento",
+     "não tocar em Iniciar nem em Finalizar"
+    ]
+   }
+  },
+  {
+   "id": "18",
+   "cena": "tela",
+   "captura": "pr08-entrada-acabado",
+   "titulo": "O acabado entrou no estoque",
+   "rotulo": "Estoque › Movimentos",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "Tipo",
+    "Entrada produto acabado",
+    "Entrada manual diversa"
+   ],
+   "impacto": 0,
+   "fala": "Depois de Marcar produzido, em Estoque › Movimentos filtre o Tipo Entrada produto acabado. Neste ambiente só há uma Entrada manual diversa: a OP produzida ainda está com Estoque pendente.",
+   "plano": {
+    "menu": "Estoque › Movimentos",
+    "mostrar": "Um movimento do tipo Entrada de produto acabado (OP) de uma OP já Produzido, com origem e destino visíveis",
+    "alvos": [
+     "tipo Entrada de produto acabado (OP)",
+     "origem OP - Conclusão",
+     "destino almoxarifado central"
+    ],
+    "acoes": [
+     "filtrar ou pesquisar o tipo Entrada de produto acabado (OP)",
+     "abrir o detalhe do movimento, se houver"
+    ]
+   }
+  },
+  {
+   "id": "19",
+   "cena": "tela",
+   "captura": "pr09-custo",
+   "titulo": "Custo da OP",
+   "rotulo": "Menu ⋯ › Custo da OP",
+   "focos": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "nomes": [
+    "Estimado",
+    "Realizado",
+    "Variação",
+    "Resumo de custo"
+   ],
+   "impacto": 1,
+   "fala": "Em Custo da OP, o gestor compara Estimado, Realizado e Variação. Esta OP mostra tudo zerado porque não teve etapas nem apontamentos; com etapas, aparece o detalhamento por etapa.",
+   "plano": {
+    "menu": "Produção › Ordens de produção › menu ⋯ › Custo da OP",
+    "mostrar": "O painel Custo da OP de uma OP Produzido, com Resumo de custo e Detalhamento por etapa (valores podem ser borrados)",
+    "alvos": [
+     "Estimado",
+     "Realizado",
+     "Variação",
+     "Detalhamento por etapa"
+    ],
+    "acoes": [
+     "abrir menu ⋯ da OP Produzido e clicar em Custo da OP"
+    ]
+   }
+  },
+  {
+   "id": "20",
+   "cena": "tela",
+   "captura": "pr10-painel",
+   "titulo": "Painel de fábrica",
+   "rotulo": "Produção › Painel de fábrica",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "Filtros",
+    "Kanban · Timeline · Tabela · Gantt",
+    "OPs sem processo"
+   ],
+   "impacto": 2,
+   "fala": "O Painel de fábrica mostra a fila por etapa. Filtre e escolha a visão: Kanban, Timeline, Tabela ou Gantt. OP sem processo de produção não aparece no quadro, como avisa a faixa amarela.",
+   "plano": {
+    "menu": "Produção › Painel de fábrica",
+    "mostrar": "O painel na visão Kanban com cards de OP e os contadores Ordens / No prazo / Atrasadas",
+    "alvos": [
+     "bloco Filtros",
+     "seletor de visão Kanban · Timeline · Tabela · Gantt",
+     "botão Apontar de um card"
+    ],
+    "acoes": [
+     "abrir Produção › Painel de fábrica na visão Kanban",
+     "não clicar em Apontar"
+    ]
+   }
+  },
+  {
+   "id": "21",
+   "cena": "tela",
+   "captura": "pr11-separacao",
+   "titulo": "Separação de materiais",
+   "rotulo": "Produção › Separação de materiais",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "Por período",
+    "Gerar lista",
+    "Todas"
+   ],
+   "fala": "A separação prepara o material antes da bancada. Escolha as OPs e clique em Gerar lista. Separar no app também baixa a requisição.",
+   "plano": {
+    "menu": "Produção › Separação de materiais",
+    "mostrar": "A tela com os modos de seleção e as listas já existentes na aba Todas",
+    "alvos": [
+     "seletor Por período · Por OPs · Por projeto",
+     "botão Gerar lista",
+     "abas Abertas · Concluídas · Canceladas · Todas"
+    ],
+    "acoes": [
+     "abrir Produção › Separação de materiais",
+     "clicar na aba Todas",
+     "não clicar em Gerar lista, Concluir nem Cancelar"
+    ]
+   }
+  },
+  {
+   "id": "22",
+   "cena": "tela",
+   "captura": "pr12-visao-geral",
+   "titulo": "Visão geral da produção",
+   "rotulo": "Produção › Visão geral",
+   "focos": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "nomes": [
+    "Ritmo do dia",
+    "OPs bloqueadas por material",
+    "Valor travado",
+    "Insumos que mais travam"
+   ],
+   "impacto": 3,
+   "fala": "Na Visão geral: ritmo do dia, OPs bloqueadas por material e o valor travado. Os Insumos que mais travam são a lista de compra do dia.",
+   "plano": {
+    "menu": "Produção › Visão geral",
+    "mostrar": "O Dashboard de Produção inteiro, com os quatro blocos visíveis",
+    "alvos": [
+     "Ritmo do dia",
+     "OPs bloqueadas por material",
+     "Valor travado",
+     "Insumos que mais travam"
+    ],
+    "acoes": [
+     "abrir Produção › Visão geral"
+    ]
+   }
+  },
+  {
+   "id": "23",
+   "cena": "alertas",
+   "itens": [
+    "Finalizar apontamento ainda é recusado: anote o horário e avise o suporte.",
+    "Na Nova OP, Esc fecha o painel e perde o formulário.",
+    "▶, Apontar, Marcar produzido e Cancelar OP gravam com um clique."
+   ],
+   "fala": "Três cuidados. Hoje a finalização do apontamento ainda é recusada: anote o horário e avise o suporte. Na Nova OP, Esc perde o formulário. E vários botões gravam com um clique."
+  },
+  {
+   "id": "24",
+   "cena": "fechamento",
+   "topicos": [
+    "Processo e estrutura antes da OP",
+    "Requisições nascem ao salvar",
+    "Marcar produzido credita o acabado"
+   ],
+   "fala": "Resumindo: processo e estrutura vêm antes da OP. As requisições nascem ao salvar. E Marcar produzido credita o acabado no estoque. O checklist e o manual de Produção estão logo abaixo."
+  }
+ ],
+ "pendencias": [
+  "Capturas em ambiente de teste somente leitura: criar estrutura, salvar OP, baixar e estornar material, iniciar/finalizar apontamento, Marcar produzido e Gerar lista não são executados. pr01, pr03, pr05, pr06, pr07 e pr11 mostram listas ou formulários sem gravar; os resultados (requisições criadas, status Atendida, entrada do acabado) dependem de OPs que já existam no ambiente.",
+  "pr06/pr08/pr09 precisam de uma OP já Em execução (com apontamento aberto) e de uma OP já Produzido no ambiente; se não houver, a cena fica sem tela até autorização para executar o fluxo com um pedido TESTE FLUXO CONSULTOR.",
+  "As recusas (item paramétrico sem cor, estrutura com período sobreposto, apontamento duplicado, quantidade zero, requisição em OP Produzida) aparecem só como regra, sem tela, porque exigem tentar salvar.",
+  "Não validado (checklist): entrada do acabado pelo apontamento da última etapa (manual-07-producao 2.4) × por Marcar produzido (teste). O vídeo segue a regra validada (Marcar produzido); conferir qual caminho o cliente usa.",
+  "Não validado (checklist): origem da OP pela Integração de Produção (CEM) × criada à mão em Nova OP. O vídeo mostra a Nova OP manual.",
+  "Não validado: submeter, aprovar, rejeitar e reabrir apontamento; reimportar da estrutura numa OP com item manual.",
+  "Divergência: a dica do campo Empresa da Nova OP diz que herda do pedido; procedimento e teste dizem que é obrigatória. O vídeo afirma obrigatória (regra do Harness).",
+  "Divergência: visões do Painel de fábrica — checklist cita Cards, Lista e Timeline; captura do staging e manual mostram Kanban, Timeline, Tabela e Gantt. O vídeo segue o manual; conferir na gravação.",
+  "Produção › Visão geral abre a tela com título Dashboard de Produção; conferir o nome no menu ao gravar.",
+  "Gravação 17/11: nenhuma OP do staging tem etapas (Apontamentos responde \"Esta OP não tem etapas configuradas\"); pr06 virou \"Sem etapas, sem apontamento\" (Etapas de execução da OP-000001).",
+  "Gravação 17/11: /producao/terminal abre o aviso \"Este usuário já está conectado / Transferir acesso\" (Aplicativos em uso em outra sessão); não transferido. pr07 mostra só o item do menu; regravar o terminal quando houver sessão livre.",
+  "Gravação 17/11: não há movimento Entrada produto acabado no staging (OP-000001 Produzido com Estoque pendente); pr08 mostra o filtro Tipo aberto.",
+  "Gravação 17/11: Custo da OP-000001 zerado e sem Detalhamento por etapa; Painel de fábrica com Kanban vazio (15 OPs sem processo)."
+ ]
+}

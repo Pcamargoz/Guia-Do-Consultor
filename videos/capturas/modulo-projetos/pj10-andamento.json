@@ -1,0 +1,45 @@
+{
+ "nome": "pj10-andamento",
+ "url": "https://staging.flow.faktory.com.br/projetos/andamento?projetoId=412",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "combobox"
+   },
+   "caixa": {
+    "x": 1322,
+    "y": 149,
+    "w": 538,
+    "h": 48
+   }
+  },
+  {
+   "alvo": {
+    "text": "Linha do tempo da obra",
+    "exact": true
+   },
+   "caixa": {
+    "x": 380,
+    "y": 426,
+    "w": 244,
+    "h": 29
+   }
+  },
+  {
+   "alvo": {
+    "text": "Vendido",
+    "exact": true,
+    "nth": 0
+   },
+   "caixa": {
+    "x": 386,
+    "y": 509,
+    "w": 53,
+    "h": 20
+   }
+  }
+ ],
+ "em": "2026-11-17T16:28:50.843Z"
+}

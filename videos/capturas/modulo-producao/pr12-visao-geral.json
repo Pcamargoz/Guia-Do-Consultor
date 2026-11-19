@@ -1,0 +1,56 @@
+{
+ "nome": "pr12-visao-geral",
+ "url": "https://staging.flow.faktory.com.br/producao/dashboard",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "Ritmo do dia",
+    "exact": true
+   },
+   "caixa": {
+    "x": 404,
+    "y": 239,
+    "w": 100,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "text": "OPs bloqueadas por material",
+    "exact": true
+   },
+   "caixa": {
+    "x": 404,
+    "y": 571,
+    "w": 234,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "text": "R$ 24,00"
+   },
+   "caixa": {
+    "x": 1500,
+    "y": 644,
+    "w": 324,
+    "h": 27
+   }
+  },
+  {
+   "alvo": {
+    "text": "Insumos que mais travam",
+    "exact": false
+   },
+   "caixa": {
+    "x": 376,
+    "y": 722,
+    "w": 1464,
+    "h": 19
+   }
+  }
+ ],
+ "em": "2026-11-17T16:06:27.920Z"
+}

@@ -1,0 +1,286 @@
+WEBVTT
+
+00:00:01.100 --> 00:00:03.940
+No Flow, o saldo nunca é digitado:
+
+00:00:03.940 --> 00:00:05.946
+ele nasce de movimentos.
+
+00:00:05.946 --> 00:00:06.948
+Neste vídeo:
+
+00:00:06.948 --> 00:00:13.464
+locais, saldo inicial, movimentos, saldo e extrato, transferência, inventário,
+
+00:00:13.464 --> 00:00:15.986
+empréstimo e reposição.
+
+00:00:16.286 --> 00:00:21.025
+O inventário confere o físico contra o sistema.
+
+00:00:21.025 --> 00:00:26.471
+Em andamento, ele fotografa o saldo e congela o local:
+
+00:00:26.471 --> 00:00:30.600
+nada se movimenta ali até terminar.
+
+00:00:30.900 --> 00:00:38.124
+Aprovado, cada diferença vira um ajuste de estoque e o local é liberado.
+
+00:00:38.124 --> 00:00:44.643
+Cancelado com motivo, o local é liberado sem ajuste nenhum.
+
+00:00:44.943 --> 00:00:45.777
+Regra 1.
+
+00:00:45.777 --> 00:00:47.966
+Ninguém digita saldo.
+
+00:00:47.966 --> 00:00:50.885
+Ele é a soma dos movimentos:
+
+00:00:50.885 --> 00:00:57.349
+os manuais, da tela, e os automáticos, que vêm do recebimento,
+
+00:00:57.349 --> 00:01:00.972
+da produção e do faturamento.
+
+00:01:01.272 --> 00:01:02.091
+Regra 2.
+
+00:01:02.091 --> 00:01:05.263
+Movimento lançado não se edita.
+
+00:01:05.263 --> 00:01:06.799
+Errou, estorne:
+
+00:01:06.799 --> 00:01:13.860
+nasce o movimento Estorno, o original fica Estornado e o saldo volta.
+
+00:01:13.860 --> 00:01:15.660
+Só uma vez.
+
+00:01:15.886 --> 00:01:16.660
+Regra 3.
+
+00:01:16.660 --> 00:01:21.983
+Cada empresa precisa do seu almoxarifado central ativo.
+
+00:01:21.983 --> 00:01:28.486
+Sem ele, o recebimento não finaliza e a produção não conclui.
+
+00:01:28.786 --> 00:01:29.666
+Regra 4.
+
+00:01:29.666 --> 00:01:33.408
+O saldo inicial vem antes de tudo.
+
+00:01:33.408 --> 00:01:40.451
+Movimento com data anterior a outro do mesmo produto é recusado:
+
+00:01:40.451 --> 00:01:44.243
+nada se lança antes da carga.
+
+00:01:44.543 --> 00:01:45.484
+Regra 5.
+
+00:01:45.484 --> 00:01:54.308
+O mesmo produto aparece uma vez por local e por variação, de cor e medidas.
+
+00:01:54.308 --> 00:02:01.143
+Antes de ler o saldo, confira se está na linha certa.
+
+00:02:01.443 --> 00:02:02.205
+Regra 6.
+
+00:02:02.205 --> 00:02:04.395
+Saldo não é disponível.
+
+00:02:04.395 --> 00:02:09.729
+A transferência pendente reserva a quantidade na origem:
+
+00:02:09.729 --> 00:02:13.348
+o saldo fica igual e o disponível cai.
+
+00:02:13.348 --> 00:02:16.900
+Confirmar move; excluir libera.
+
+00:02:17.200 --> 00:02:18.077
+Regra 7.
+
+00:02:18.077 --> 00:02:21.584
+A contagem do inventário é cega.
+
+00:02:21.584 --> 00:02:28.159
+A segunda contagem e a aprovação têm de ser de outra pessoa,
+
+00:02:28.159 --> 00:02:30.679
+até para Super Usuário.
+
+00:02:30.679 --> 00:02:33.800
+Crie os usuários antes.
+
+00:02:34.100 --> 00:02:36.545
+Tudo acontece num local.
+
+00:02:36.545 --> 00:02:42.047
+Confira um almoxarifado central ativo em cada empresa.
+
+00:02:42.047 --> 00:02:45.205
+Local de obra não se cria aqui:
+
+00:02:45.205 --> 00:02:47.843
+nasce com o projeto.
+
+00:02:48.143 --> 00:02:50.810
+Nos Parâmetros de Estoque,
+
+00:02:50.810 --> 00:02:56.656
+anote com o cliente o estado de Bloquear saída sem saldo.
+
+00:02:56.656 --> 00:03:02.399
+Ligado, a saída maior que o saldo é recusada; desligado,
+
+00:03:02.399 --> 00:03:05.271
+o saldo pode ficar negativo.
+
+00:03:05.271 --> 00:03:08.743
+Vale para a empresa inteira.
+
+00:03:09.043 --> 00:03:14.791
+O saldo de abertura entra por planilha, na data de corte.
+
+00:03:14.791 --> 00:03:17.917
+Baixe uma das Planilhas Modelo,
+
+00:03:17.917 --> 00:03:23.867
+corrija na Validação até zerar os erros e só então execute.
+
+00:03:23.867 --> 00:03:26.786
+Reimportar não duplica.
+
+00:03:27.086 --> 00:03:33.553
+Em + Novo Movimento, escolha o Tipo e leia a frase abaixo dele.
+
+00:03:33.553 --> 00:03:38.172
+A Empresa é obrigatória e não vem preenchida.
+
+00:03:38.172 --> 00:03:44.829
+Informe Local de destino, Produto, Quantidade e Custo unit.
+
+00:03:45.129 --> 00:03:50.228
+Em Movimentos, filtre por produto, data e Tipo,
+
+00:03:50.228 --> 00:03:54.460
+e leia o Tipo e a Origem de cada linha.
+
+00:03:54.460 --> 00:04:02.872
+Recebimento, expedição e baixa de OP vêm dos documentos, não desta tela.
+
+00:04:03.172 --> 00:04:10.425
+Em Saldo, pesquise o produto e ache a linha do local e da cor.
+
+00:04:10.425 --> 00:04:13.233
+Leia SALDO e DISPONÍVEL:
+
+00:04:13.233 --> 00:04:18.629
+o disponível é o saldo menos as reservas.
+
+00:04:18.929 --> 00:04:21.736
+Clique no código do produto.
+
+00:04:21.736 --> 00:04:24.543
+A aba Histórico é o extrato:
+
+00:04:24.543 --> 00:04:30.958
+data, número, tipo, quantidade e motivo de cada movimento.
+
+00:04:31.258 --> 00:04:32.993
+Em Transferências,
+
+00:04:32.993 --> 00:04:40.607
+a pendente reserva a origem; confirmar move o saldo e excluir libera a reserva.
+
+00:04:40.607 --> 00:04:45.138
+O filtro Pendentes mostra as que ainda esperam.
+
+00:04:45.138 --> 00:04:47.858
+Nada fica em trânsito.
+
+00:04:48.158 --> 00:04:51.824
+Em Inventários, leia a frase do alto:
+
+00:04:51.824 --> 00:04:59.752
+o Geral bloqueia o local; Cíclico e Pontual bloqueiam só os produtos escolhidos.
+
+00:04:59.752 --> 00:05:01.635
+Na lista, o Status.
+
+00:05:01.635 --> 00:05:05.901
+Agende a contagem fora do expediente.
+
+00:05:06.201 --> 00:05:12.316
+Em Empréstimos, os cartões separam Em aberto, Parcial e Devolvidos.
+
+00:05:12.316 --> 00:05:19.944
+A devolução pode ser parcial; devolver mais do que foi emprestado é recusado.
+
+00:05:20.244 --> 00:05:25.323
+Em Reposição, aparecem os produtos abaixo do estoque mínimo,
+
+00:05:25.323 --> 00:05:27.524
+pelo disponível projetado.
+
+00:05:27.524 --> 00:05:32.688
+Gerar solicitação de compra manda a necessidade para Compras.
+
+00:05:32.688 --> 00:05:36.844
+Sem mínimo cadastrado, o item não aparece.
+
+00:05:37.144 --> 00:05:40.730
+Antes do go-live, abra Reservas órfãs.
+
+00:05:40.730 --> 00:05:45.071
+Toda reserva precisa de um documento pendente:
+
+00:05:45.071 --> 00:05:48.030
+a lista deve estar vazia.
+
+00:05:48.330 --> 00:05:53.171
+Na Visão geral, os quatro cartões resumem o estoque:
+
+00:05:53.171 --> 00:05:59.315
+valor próprio, saúde, necessidade de reposição e capital sem giro.
+
+00:05:59.315 --> 00:06:05.501
+Os atalhos levam ao saldo, aos movimentos e aos inventários.
+
+00:06:05.801 --> 00:06:07.088
+Três cuidados.
+
+00:06:07.088 --> 00:06:12.881
+Importar saldo, estornar e aprovar inventário não têm desfazer.
+
+00:06:12.881 --> 00:06:16.284
+Nada se lança antes do saldo inicial.
+
+00:06:16.284 --> 00:06:19.594
+E inventário aberto congela o local:
+
+00:06:19.594 --> 00:06:22.401
+nunca o deixe esquecido.
+
+00:06:22.701 --> 00:06:23.735
+Resumindo:
+
+00:06:23.735 --> 00:06:29.213
+o saldo nasce de movimentos e se corrige por estorno.
+
+00:06:29.213 --> 00:06:34.175
+Cada empresa tem seu almoxarifado central ativo.
+
+00:06:34.175 --> 00:06:37.897
+E o saldo inicial vem antes de tudo.
+
+00:06:37.897 --> 00:06:43.872
+O checklist e o manual de Estoque estão logo abaixo.

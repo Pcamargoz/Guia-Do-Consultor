@@ -1,0 +1,32 @@
+{
+ "nome": "re04-importar-xml",
+ "url": "https://staging.flow.faktory.com.br/recebimento/notas",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "heading",
+    "name": "Importar XML NF-e"
+   },
+   "caixa": {
+    "x": 683,
+    "y": 322,
+    "w": 554,
+    "h": 22
+   }
+  },
+  {
+   "alvo": {
+    "text": "Arraste o arquivo .xml aqui ou clique no botao abaixo"
+   },
+   "caixa": {
+    "x": 724,
+    "y": 535,
+    "w": 473,
+    "h": 24
+   }
+  }
+ ],
+ "em": "2026-11-17T14:21:03.652Z"
+}

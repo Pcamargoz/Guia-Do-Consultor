@@ -23,7 +23,7 @@ if (process.argv.includes('--filho')) {
   const audio = a === 'audio';
   await renderMedia({ serveUrl, composition, outputLocation: saida, browserExecutable, overwrite: true,
     ...(audio ? { codec: 'wav' } : { codec: 'h264', frameRange: [Number(a), Number(b)], muted: true, scale: Number(arg('escala') ?? 1),
-      crf: Number(arg('crf') ?? 18), imageFormat: 'jpeg', jpegQuality: 95, concurrency: 6 }) });
+      crf: Number(arg('crf') ?? 18), imageFormat: 'jpeg', jpegQuality: 95, concurrency: Number(process.env.REMOTION_CONC ?? 6) }) });
   process.exit(0);
 }
 

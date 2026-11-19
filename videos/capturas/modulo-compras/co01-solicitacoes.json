@@ -1,0 +1,45 @@
+{
+ "nome": "co01-solicitacoes",
+ "url": "https://staging.flow.faktory.com.br/compras/solicitacoes",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "link",
+    "name": "Solicitações de Compra"
+   },
+   "caixa": {
+    "x": 10,
+    "y": 256,
+    "w": 276,
+    "h": 38
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Nova Solicitação"
+   },
+   "caixa": {
+    "x": 1674,
+    "y": 149,
+    "w": 190,
+    "h": 43
+   }
+  },
+  {
+   "alvo": {
+    "css": "thead th",
+    "nth": 1
+   },
+   "caixa": {
+    "x": 392,
+    "y": 346,
+    "w": 150,
+    "h": 43
+   }
+  }
+ ],
+ "em": "2026-11-17T14:09:48.983Z"
+}

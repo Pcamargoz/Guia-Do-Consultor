@@ -1,0 +1,72 @@
+{
+ "nome": "pj02-novo-projeto",
+ "url": "https://staging.flow.faktory.com.br/configuracoes/projetos",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "textbox",
+    "name": "Nome do Projeto*"
+   },
+   "caixa": {
+    "x": 1006,
+    "y": 176,
+    "w": 435,
+    "h": 48
+   }
+  },
+  {
+   "alvo": {
+    "role": "textbox",
+    "name": "Código*"
+   },
+   "caixa": {
+    "x": 1450,
+    "y": 176,
+    "w": 213,
+    "h": 48
+   }
+  },
+  {
+   "alvo": {
+    "role": "combobox",
+    "name": "",
+    "nth": 0
+   },
+   "caixa": {
+    "x": 1673,
+    "y": 176,
+    "w": 213,
+    "h": 48
+   }
+  },
+  {
+   "alvo": {
+    "role": "combobox",
+    "name": "",
+    "nth": 1
+   },
+   "caixa": {
+    "x": 1006,
+    "y": 268,
+    "w": 435,
+    "h": 48
+   }
+  },
+  {
+   "alvo": {
+    "role": "combobox",
+    "name": "",
+    "nth": 2
+   },
+   "caixa": {
+    "x": 1450,
+    "y": 268,
+    "w": 435,
+    "h": 48
+   }
+  }
+ ],
+ "em": "2026-11-17T16:23:54.165Z"
+}

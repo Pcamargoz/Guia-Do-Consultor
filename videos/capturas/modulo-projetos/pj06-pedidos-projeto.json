@@ -1,0 +1,47 @@
+{
+ "nome": "pj06-pedidos-projeto",
+ "url": "https://staging.flow.faktory.com.br/vendas/pedidos",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Selecione o projeto"
+   },
+   "caixa": {
+    "x": 870,
+    "y": 504,
+    "w": 474,
+    "h": 43
+   }
+  },
+  {
+   "alvo": {
+    "role": "cell",
+    "name": "Projeto",
+    "exact": true
+   },
+   "caixa": {
+    "x": 425,
+    "y": 665,
+    "w": 287,
+    "h": 46
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Editar pedido",
+    "nth": 0
+   },
+   "caixa": {
+    "x": 1734,
+    "y": 725,
+    "w": 38,
+    "h": 38
+   }
+  }
+ ],
+ "em": "2026-11-17T16:24:38.352Z"
+}

@@ -1,0 +1,57 @@
+{
+ "nome": "fu03-certificados",
+ "url": "https://staging.flow.faktory.com.br/configuracoes/certificados",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "Não Configurado",
+    "exact": true
+   },
+   "caixa": {
+    "x": 1277,
+    "y": 282,
+    "w": 115,
+    "h": 46
+   }
+  },
+  {
+   "alvo": {
+    "text": "Validade",
+    "exact": true
+   },
+   "caixa": {
+    "x": 1406,
+    "y": 203,
+    "w": 100,
+    "h": 68
+   }
+  },
+  {
+   "alvo": {
+    "text": "Homologação",
+    "exact": true
+   },
+   "caixa": {
+    "x": 920,
+    "y": 292,
+    "w": 123,
+    "h": 26
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "🚀 Configuração Guiada"
+   },
+   "caixa": {
+    "x": 1646,
+    "y": 134,
+    "w": 236,
+    "h": 48
+   }
+  }
+ ],
+ "em": "2026-11-17T13:37:33.914Z"
+}

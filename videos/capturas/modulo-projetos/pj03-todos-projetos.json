@@ -1,0 +1,47 @@
+{
+ "nome": "pj03-todos-projetos",
+ "url": "https://staging.flow.faktory.com.br/projetos",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "Ativos",
+    "exact": true
+   },
+   "caixa": {
+    "x": 448,
+    "y": 344,
+    "w": 42,
+    "h": 18
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Todos",
+    "exact": true
+   },
+   "caixa": {
+    "x": 907,
+    "y": 412,
+    "w": 74,
+    "h": 43
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Ver Painel",
+    "nth": 0
+   },
+   "caixa": {
+    "x": 541,
+    "y": 799,
+    "w": 151,
+    "h": 43
+   }
+  }
+ ],
+ "em": "2026-11-17T16:15:03.376Z"
+}

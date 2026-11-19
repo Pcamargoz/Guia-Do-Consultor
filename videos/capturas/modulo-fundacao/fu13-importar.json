@@ -1,0 +1,34 @@
+{
+ "nome": "fu13-importar",
+ "url": "https://staging.flow.faktory.com.br/produtos",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Mais...",
+    "exact": true
+   },
+   "caixa": {
+    "x": 1487,
+    "y": 149,
+    "w": 85,
+    "h": 43
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Importar Dados Cadastrar em lote via planilha"
+   },
+   "caixa": {
+    "x": 1276,
+    "y": 341,
+    "w": 286,
+    "h": 58
+   }
+  }
+ ],
+ "em": "2026-11-17T13:44:26.634Z"
+}

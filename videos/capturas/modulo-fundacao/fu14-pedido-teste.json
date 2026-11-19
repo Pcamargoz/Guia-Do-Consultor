@@ -1,0 +1,65 @@
+{
+ "nome": "fu14-pedido-teste",
+ "url": "https://staging.flow.faktory.com.br/vendas/pedidos/novo",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "Selecione a empresa"
+   },
+   "caixa": {
+    "x": 396,
+    "y": 281,
+    "w": 166,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "text": "Selecione o cliente"
+   },
+   "caixa": {
+    "x": 887,
+    "y": 281,
+    "w": 407,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "text": "Selecione o vendedor"
+   },
+   "caixa": {
+    "x": 1378,
+    "y": 281,
+    "w": 407,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "text": "Selecione a condição de pagamento"
+   },
+   "caixa": {
+    "x": 887,
+    "y": 389,
+    "w": 289,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Selecione o CFOP"
+   },
+   "caixa": {
+    "x": 380,
+    "y": 509,
+    "w": 472,
+    "h": 48
+   }
+  }
+ ],
+ "em": "2026-11-17T13:44:58.189Z"
+}

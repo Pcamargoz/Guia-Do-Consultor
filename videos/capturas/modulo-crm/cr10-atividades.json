@@ -1,0 +1,54 @@
+{
+ "nome": "cr10-atividades",
+ "url": "https://staging.flow.faktory.com.br/crm/atividades",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "Todos os tipos"
+   },
+   "caixa": {
+    "x": 358,
+    "y": 256,
+    "w": 116,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "text": "Todos os status"
+   },
+   "caixa": {
+    "x": 877,
+    "y": 256,
+    "w": 125,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "text": "Todas as prioridades"
+   },
+   "caixa": {
+    "x": 1396,
+    "y": 256,
+    "w": 166,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Nova Atividade"
+   },
+   "caixa": {
+    "x": 1699,
+    "y": 368,
+    "w": 177,
+    "h": 43
+   }
+  }
+ ],
+ "em": "2026-11-17T13:55:26.190Z"
+}

@@ -1,0 +1,45 @@
+{
+ "nome": "ce06-selecionar",
+ "url": "https://staging.flow.faktory.com.br/vendas/pedidos",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "Selecionar Pedido",
+    "exact": true
+   },
+   "caixa": {
+    "x": 138,
+    "y": 122,
+    "w": 126,
+    "h": 19
+   }
+  },
+  {
+   "alvo": {
+    "text": "Situação",
+    "exact": true
+   },
+   "caixa": {
+    "x": 1499,
+    "y": 278,
+    "w": 138,
+    "h": 53
+   }
+  },
+  {
+   "alvo": {
+    "text": "Disponível",
+    "exact": true
+   },
+   "caixa": {
+    "x": 1518,
+    "y": 355,
+    "w": 99,
+    "h": 26
+   }
+  }
+ ],
+ "em": "2026-11-17T14:00:55.429Z"
+}

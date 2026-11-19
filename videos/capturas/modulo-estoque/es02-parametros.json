@@ -1,0 +1,21 @@
+{
+ "nome": "es02-parametros",
+ "url": "https://staging.flow.faktory.com.br/estoque/configuracoes",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "Bloquear saída sem saldo",
+    "exact": true
+   },
+   "caixa": {
+    "x": 706,
+    "y": 592,
+    "w": 732,
+    "h": 24
+   }
+  }
+ ],
+ "em": "2026-11-17T14:23:34.330Z"
+}

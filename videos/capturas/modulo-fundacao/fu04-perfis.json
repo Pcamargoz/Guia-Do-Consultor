@@ -1,0 +1,45 @@
+{
+ "nome": "fu04-perfis",
+ "url": "https://staging.flow.faktory.com.br/seguranca/perfis",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "heading",
+    "name": "Perfis de Acesso"
+   },
+   "caixa": {
+    "x": 365,
+    "y": 144,
+    "w": 440,
+    "h": 38
+   }
+  },
+  {
+   "alvo": {
+    "text": "17 perfis",
+    "exact": true
+   },
+   "caixa": {
+    "x": 845,
+    "y": 251,
+    "w": 85,
+    "h": 26
+   }
+  },
+  {
+   "alvo": {
+    "text": "Faturista",
+    "exact": true
+   },
+   "caixa": {
+    "x": 1393,
+    "y": 558,
+    "w": 121,
+    "h": 34
+   }
+  }
+ ],
+ "em": "2026-11-17T13:37:56.755Z"
+}

@@ -1,0 +1,576 @@
+{
+ "id": "modulo-compras",
+ "titulo": "Compras",
+ "subtitulo": "O módulo completo: da solicitação ao pedido de compra",
+ "trilha": "Metodologia do Consultor · vídeo completo do módulo",
+ "proximo": "Recebimento",
+ "icone": "compra",
+ "semVoz": true,
+ "focoMin": 2.6,
+ "fontes": [
+  "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras",
+  "guia:public/manuais/compras/guia.json",
+  "harness:oficial-com-a-regras",
+  "harness:regra-compras-gerar-pedido-de-compra-abre-o-novo-pedido",
+  "harness:regra-compras-natureza-da-operacao-define-o-cfop",
+  "harness:regra-recebimento-a-mesma-nota-tem-dois-numeros"
+ ],
+ "trechos": [
+  {
+   "id": "01",
+   "cena": "abertura",
+   "fala": "Toda compra começa por uma necessidade. Neste vídeo: solicitação, sugestão, cotação, pedido de compra, alçada, acompanhamento da entrega e o reflexo no Recebimento e no Financeiro."
+  },
+  {
+   "id": "02",
+   "cena": "status",
+   "etapas": [
+    "Em Aberto",
+    "Em cotação",
+    "Concluída",
+    "Cancelada"
+   ],
+   "destaque": 0,
+   "fala": "A solicitação nasce Em Aberto. Ela registra o que falta, sem fornecedor e sem preço. Só Em Aberto ela pode ser editada ou excluída."
+  },
+  {
+   "id": "03",
+   "cena": "status",
+   "etapas": [
+    "Em Aberto",
+    "Em cotação",
+    "Concluída",
+    "Cancelada"
+   ],
+   "destaque": 1,
+   "fala": "Na cotação, ela fica Em cotação. Gerado o pedido, a solicitação e a cotação viram Concluída sozinhas. Cancelada é o único status manual."
+  },
+  {
+   "id": "04",
+   "cena": "regra",
+   "n": 1,
+   "titulo": "A categoria exige as características",
+   "icone": "lapis",
+   "texto": "A solicitação não grava sem as características da categoria: cor no perfil e na chapa; cor, altura e largura na esquadria.",
+   "fonte": "oficial-com-a-regras#COM-SC-001",
+   "fala": "Regra 1. A solicitação não grava sem o que a categoria exige. Perfil pede cor e comprimento; esquadria pede cor, altura e largura."
+  },
+  {
+   "id": "05",
+   "cena": "regra",
+   "n": 2,
+   "titulo": "A natureza define o CFOP",
+   "icone": "cfop",
+   "texto": "Na cotação, a Natureza da Operação define o CFOP do pedido conforme a origem do fornecedor (ex.: Produção → 2101).",
+   "fonte": "regra-compras-natureza-da-operacao-define-o-cfop",
+   "fala": "Regra 2. Na cotação, a Natureza da Operação decide o CFOP de entrada do pedido, conforme a origem do fornecedor. Natureza errada, CFOP errado."
+  },
+  {
+   "id": "06",
+   "cena": "regra",
+   "n": 3,
+   "titulo": "Vencedor por item",
+   "icone": "estrela",
+   "texto": "O vencedor é escolhido por item. A escolha manual vale mais que Aplicar Melhor Opção.",
+   "fonte": "oficial-com-a-regras#COM-COT-007-008",
+   "fala": "Regra 3. A cotação escolhe um vencedor para cada item. Se você trocar o vencedor à mão, Aplicar Melhor Opção não desfaz a sua escolha."
+  },
+  {
+   "id": "07",
+   "cena": "regra",
+   "n": 4,
+   "titulo": "Um pedido por vencedor",
+   "icone": "compra",
+   "texto": "Gerar Pedido de Compra cria um pedido por fornecedor vencedor. Item sem vencedor ou vencedor sem condição de pagamento barra tudo.",
+   "fonte": "oficial-com-a-regras#COM-COT-009",
+   "fala": "Regra 4. Cada fornecedor vencedor ganha o seu pedido. Se um item ficou sem vencedor, ou o vencedor está sem condição de pagamento, nenhum pedido é gerado."
+  },
+  {
+   "id": "08",
+   "cena": "regra",
+   "n": 5,
+   "titulo": "Pedido nunca a zero",
+   "icone": "alerta",
+   "texto": "Pedido de compra não grava item com valor unitário zero, venha de onde vier. O CFOP de compra é obrigatório.",
+   "fonte": "oficial-com-a-regras#COM-PC-001",
+   "fala": "Regra 5. O pedido de compra não grava item a zero, nem sem CFOP de compra. O CFOP é obrigatório mesmo sem asterisco na tela."
+  },
+  {
+   "id": "09",
+   "cena": "regra",
+   "n": 6,
+   "titulo": "Títulos: pelo pedido ou pela nota",
+   "icone": "tag",
+   "texto": "O título a pagar nasce pelo pedido ou pela nota de recebimento, nunca pelos dois. Com títulos gerados, itens e parcelas do pedido travam.",
+   "fonte": "oficial-com-a-regras#COM-PC-005",
+   "critica": true,
+   "fala": "Regra 6. O título a pagar nasce pelo pedido ou pela nota de recebimento. Nunca pelos dois. Registre a decisão em ata antes do primeiro pedido."
+  },
+  {
+   "id": "10",
+   "cena": "regra",
+   "n": 7,
+   "titulo": "Quem cria não aprova",
+   "icone": "cadeado",
+   "texto": "Com alçada ligada, o pedido acima da faixa espera aprovação. Quem criou o pedido não aprova, nem Super Usuário. Pendente não gera título nem nota.",
+   "fonte": "oficial-com-a-regras#COM-ALC-007",
+   "critica": true,
+   "fala": "Regra 7. Na alçada, quem cria o pedido não aprova, nem Super Usuário. Cadastre dois aprovadores por faixa. Pedido pendente não gera título nem nota de recebimento."
+  },
+  {
+   "id": "11",
+   "cena": "tela",
+   "captura": "co01-solicitacoes",
+   "titulo": "Solicitações de Compra",
+   "rotulo": "Compras › Solicitações de Compra",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "Solicitações de Compra",
+    "Nova Solicitação",
+    "Documento"
+   ],
+   "impacto": 1,
+   "fala": "A compra começa em Solicitações de Compra. Cada linha é uma SC, identificada pelo Documento. Uma nova necessidade entra por Nova Solicitação.",
+   "plano": {
+    "menu": "Compras › Solicitações de Compra",
+    "mostrar": "Lista de SCs com pelo menos uma Em Aberto e o menu lateral de Compras visível",
+    "alvos": [
+     "Solicitações de Compra (item do menu)",
+     "botão Nova Solicitação",
+     "coluna Documento (a coluna Status fica sob a coluna fixa Ações)"
+    ],
+    "acoes": [
+     "abrir Compras › Solicitações de Compra",
+     "não criar nem editar nada"
+    ]
+   }
+  },
+  {
+   "id": "12",
+   "cena": "tela",
+   "captura": "co02-nova-solicitacao",
+   "titulo": "Nova Solicitação",
+   "rotulo": "Solicitações de Compra › Nova Solicitação",
+   "focos": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "nomes": [
+    "Empresa",
+    "Projeto",
+    "Data Necessidade",
+    "Produto"
+   ],
+   "impacto": 1,
+   "fala": "Informe Empresa, Data Necessidade, Produto e Quantidade. Projeto em branco faz a entrada cair no almoxarifado central. Perfil e chapa pedem a Cor.",
+   "plano": {
+    "menu": "Compras › Solicitações de Compra › Nova Solicitação",
+    "mostrar": "Formulário Nova Solicitação de Compra aberto, vazio",
+    "alvos": [
+     "campo Empresa",
+     "campo Projeto",
+     "campo Data Necessidade",
+     "campo Produto"
+    ],
+    "acoes": [
+     "clicar em Nova Solicitação",
+     "não preencher nem salvar; fechar sem gravar"
+    ]
+   }
+  },
+  {
+   "id": "13",
+   "cena": "tela",
+   "captura": "co03-menu-sc",
+   "titulo": "Dois caminhos a partir da SC",
+   "rotulo": "Solicitações de Compra › menu ⋯",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "Gerar Cotação",
+    "Gerar Pedido de Compra",
+    "Excluir"
+   ],
+   "impacto": 0,
+   "fala": "No menu ⋯ da SC, a compra segue por Gerar Cotação ou direto por Gerar Pedido de Compra. A cotação é opcional. Excluir só vale Em Aberto.",
+   "plano": {
+    "menu": "Compras › Solicitações de Compra",
+    "mostrar": "Menu ⋯ aberto na linha de uma SC Em Aberto",
+    "alvos": [
+     "Gerar Cotação",
+     "Gerar Pedido de Compra",
+     "Excluir"
+    ],
+    "acoes": [
+     "abrir menu ⋯ da primeira SC Em Aberto",
+     "não clicar em nenhuma opção"
+    ]
+   }
+  },
+  {
+   "id": "14",
+   "cena": "tela",
+   "captura": "co04-sugestao",
+   "titulo": "Sugestão de Compra",
+   "rotulo": "Compras › Sugestão de Compra",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "falta líquida = mínimo − disponível",
+    "Empresa",
+    "Só com falta"
+   ],
+   "fala": "Quem repõe por estoque mínimo usa a Sugestão de Compra. A falta líquida considera o que já vai chegar. Sem estoque mínimo cadastrado, o item não aparece.",
+   "plano": {
+    "menu": "Compras › Sugestão de Compra",
+    "mostrar": "Tela da sugestão com a fórmula no topo e os filtros",
+    "alvos": [
+     "texto da fórmula da falta líquida",
+     "filtro Empresa",
+     "opção Só com falta"
+    ],
+    "acoes": [
+     "abrir a tela",
+     "não clicar em gerar solicitações"
+    ]
+   }
+  },
+  {
+   "id": "15",
+   "cena": "tela",
+   "captura": "co05-cotacoes",
+   "titulo": "Cotações de Compra",
+   "rotulo": "Compras › Cotações de Compra",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "Nova Cotação",
+    "Total de cotações",
+    "Filtros rápidos"
+   ],
+   "fala": "Em Cotações de Compra, os cartões contam as cotações por situação. Os filtros rápidos mostram as Vencidas, Em Aberto, Concluída ou Cancelada. Uma cotação nova entra por Nova Cotação.",
+   "plano": {
+    "menu": "Compras › Cotações de Compra",
+    "mostrar": "Lista de cotações com os cartões de situação e os filtros rápidos",
+    "alvos": [
+     "botão + Nova Cotação",
+     "cartões de situação",
+     "filtros rápidos"
+    ],
+    "acoes": [
+     "abrir a lista",
+     "não criar cotação"
+    ]
+   }
+  },
+  {
+   "id": "16",
+   "cena": "tela",
+   "captura": "co06-cotacao-dados",
+   "titulo": "Os quatro passos da cotação",
+   "rotulo": "Cotações de Compra › Nova Cotação › Dados Gerais",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "Dados Gerais",
+    "Natureza da Operação",
+    "Comparação"
+   ],
+   "impacto": 1,
+   "fala": "A cotação tem quatro passos: Dados Gerais, Itens a Cotar, Cotação e Comparação. Em Dados Gerais, a Natureza da Operação define o CFOP do pedido. A Comparação só libera com fornecedores.",
+   "plano": {
+    "menu": "Compras › Cotações de Compra › Nova Cotação",
+    "mostrar": "Nova Cotação aberta no passo Dados Gerais, com a barra dos 4 passos (não há cotação no ambiente)",
+    "alvos": [
+     "passo Dados Gerais",
+     "campo Natureza da Operação",
+     "passo Comparação"
+    ],
+    "acoes": [
+     "clicar em Nova Cotação",
+     "não preencher nem clicar em Criar Cotação/Salvar"
+    ]
+   }
+  },
+  {
+   "id": "18",
+   "cena": "tela",
+   "captura": "co08-pedidos",
+   "titulo": "Pedidos de Compra",
+   "rotulo": "Compras › Pedidos de Compra",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "Status",
+    "Títulos",
+    "Nota de Recebimento"
+   ],
+   "impacto": 1,
+   "fala": "Em Pedidos de Compra, cada linha mostra o Status, se já tem Títulos no financeiro e a Nota de Recebimento. Aqui os quatro estão Recebidos e só o PC-000001 já tem títulos Gerados.",
+   "plano": {
+    "menu": "Compras › Pedidos de Compra",
+    "mostrar": "Lista com um PC Em Aberto Sem títulos e, se houver, um PC Recebido",
+    "alvos": [
+     "coluna Status",
+     "coluna Títulos",
+     "coluna Nota de Recebimento"
+    ],
+    "acoes": [
+     "abrir a lista",
+     "limpar o filtro de status se necessário (só leitura)"
+    ]
+   }
+  },
+  {
+   "id": "19",
+   "cena": "tela",
+   "captura": "co09-novo-pedido",
+   "titulo": "Pedido direto, sem cotação",
+   "rotulo": "Solicitações de Compra › ⋯ › Gerar Pedido de Compra",
+   "focos": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "nomes": [
+    "Fornecedor",
+    "Comprador",
+    "Condição de Pagamento",
+    "CFOP",
+    "Valor Unitário"
+   ],
+   "impacto": 3,
+   "fala": "Sem cotação, Gerar Pedido de Compra abre o Novo Pedido de Compra. Informe Fornecedor, Comprador, Condição de Pagamento, CFOP e Valor Unitário. O CFOP só libera depois de empresa e fornecedor.",
+   "plano": {
+    "menu": "Compras › Solicitações de Compra › menu ⋯ › Gerar Pedido de Compra",
+    "mostrar": "Formulário Novo Pedido de Compra aberto com o produto da SC já preenchido",
+    "alvos": [
+     "campo Fornecedor",
+     "campo Comprador",
+     "campo Condição de Pagamento",
+     "campo CFOP",
+     "campo Valor Unitário"
+    ],
+    "acoes": [
+     "abrir menu ⋯ de uma SC Em Aberto",
+     "clicar em Gerar Pedido de Compra",
+     "não salvar; fechar o formulário sem gravar"
+    ]
+   }
+  },
+  {
+   "id": "20",
+   "cena": "tela",
+   "captura": "co10-aprovacoes",
+   "titulo": "Aprovações por alçada",
+   "rotulo": "Compras › Aprovações",
+   "focos": [
+    0,
+    1
+   ],
+   "nomes": [
+    "Aprovações",
+    "Nível"
+   ],
+   "fala": "Com a alçada ligada, o pedido acima da faixa espera em Aprovações, com o Nível da faixa. Aqui a fila está vazia. Ligue Usar aprovação por alçada só depois de cadastrar as faixas.",
+   "plano": {
+    "menu": "Compras › Aprovações",
+    "mostrar": "Fila de aprovações (vazia, se a alçada estiver desligada)",
+    "alvos": [
+     "título Aprovações",
+     "colunas da fila ou mensagem de lista vazia"
+    ],
+    "acoes": [
+     "abrir a tela",
+     "não aprovar nem rejeitar nada"
+    ]
+   }
+  },
+  {
+   "id": "21",
+   "cena": "tela",
+   "captura": "co11-follow-up",
+   "titulo": "Follow-up de Entregas",
+   "rotulo": "Compras › Follow-up de Entregas",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "Atrasados",
+    "Status",
+    "Prazo"
+   ],
+   "impacto": 0,
+   "fala": "O Follow-up de Entregas nasce sozinho com o pedido. Comece pelo cartão Atrasados, depois Próx. Vencimento. Meu Follow-up mostra só os seus.",
+   "plano": {
+    "menu": "Compras › Follow-up de Entregas",
+    "mostrar": "Cartões no topo e a lista de acompanhamentos",
+    "alvos": [
+     "cartões (Atrasados, Próx. Vencimento)",
+     "coluna Status",
+     "coluna Prazo"
+    ],
+    "acoes": [
+     "abrir a tela",
+     "não registrar contato"
+    ]
+   }
+  },
+  {
+   "id": "22",
+   "cena": "tela",
+   "captura": "co12-dashboard",
+   "titulo": "Dashboard Compras",
+   "rotulo": "Compras › Dashboard Compras",
+   "focos": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "nomes": [
+    "SC em aberto",
+    "Cotações ativas",
+    "Pedidos em aberto",
+    "Total PC este mês"
+   ],
+   "fala": "O Dashboard Compras é a visão do gestor: SC em aberto, Cotações ativas, Pedidos em aberto e Total PC este mês. Embaixo, o Funil de Compras.",
+   "plano": {
+    "menu": "Compras › Dashboard Compras",
+    "mostrar": "Cartões do topo do dashboard",
+    "alvos": [
+     "cartão SC em aberto",
+     "cartão Cotações ativas",
+     "cartão Pedidos em aberto",
+     "cartão Total PC este mês"
+    ],
+    "acoes": [
+     "abrir o dashboard"
+    ]
+   }
+  },
+  {
+   "id": "23",
+   "cena": "tela",
+   "captura": "co13-menu-pedido",
+   "titulo": "O menu do pedido",
+   "rotulo": "Pedidos de Compra › menu ⋯",
+   "focos": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "nomes": [
+    "Gerar Título a Pagar",
+    "Gerar Nota de Recebimento",
+    "Baixar PDF",
+    "Cancelar"
+   ],
+   "impacto": 0,
+   "fala": "No menu ⋯ do pedido: Baixar PDF para enviar ao fornecedor, Gerar Nota de Recebimento e Gerar Título a Pagar. Num pedido já Recebido, como este, essas opções e Cancelar ficam travadas.",
+   "plano": {
+    "menu": "Compras › Pedidos de Compra",
+    "mostrar": "Menu ⋯ aberto na linha do PC-000003 (Recebido; não há PC Em Aberto no ambiente)",
+    "alvos": [
+     "Gerar Título a Pagar",
+     "Gerar Nota de Recebimento",
+     "Baixar PDF",
+     "Cancelar"
+    ],
+    "acoes": [
+     "abrir menu ⋯ de um PC Em Aberto",
+     "não clicar em nenhuma opção"
+    ]
+   }
+  },
+  {
+   "id": "24",
+   "cena": "tela",
+   "captura": "co14-linha-do-tempo",
+   "titulo": "A cadeia inteira da compra",
+   "rotulo": "Pedidos de Compra › ⋯ › Linha do tempo",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "Este pedido",
+    "Nota de recebimento",
+    "Título a pagar"
+   ],
+   "impacto": 2,
+   "fala": "A Linha do tempo mostra a cadeia do pedido, da solicitação ao título: aqui, o pedido, a nota de recebimento e o título a pagar. O pedido só fica Recebido pelo Recebimento.",
+   "plano": {
+    "menu": "Compras › Pedidos de Compra › menu ⋯ › Linha do tempo",
+    "mostrar": "Linha do tempo do PC-000001 (Recebido, com NR e título)",
+    "alvos": [
+     "Este pedido",
+     "Nota de recebimento",
+     "Título a pagar"
+    ],
+    "acoes": [
+     "abrir menu ⋯ de um PC Recebido",
+     "clicar em Linha do tempo"
+    ]
+   }
+  },
+  {
+   "id": "25",
+   "cena": "alertas",
+   "itens": [
+    "Enviar por e-mail chega de verdade ao fornecedor: use e-mail interno no teste.",
+    "Títulos a pagar: pelo pedido ou pela nota, nunca pelos dois.",
+    "Cancelar o pedido: primeiro a nota, depois os títulos."
+   ],
+   "fala": "Três cuidados. Enviar por e-mail chega de verdade ao fornecedor. Títulos saem pelo pedido ou pela nota, nunca pelos dois. E o pedido com nota de recebimento ativa não cancela: desfaça nota, títulos e só então o pedido."
+  },
+  {
+   "id": "26",
+   "cena": "fechamento",
+   "topicos": [
+    "Natureza certa, CFOP certo",
+    "Títulos: pedido ou nota, um só",
+    "Dois aprovadores por faixa"
+   ],
+   "fala": "Resumindo: escolha a natureza certa na cotação. Decida em ata onde nasce o título a pagar. E, se usar alçada, cadastre dois aprovadores por faixa. O checklist e o manual de Compras estão logo abaixo."
+  }
+ ],
+ "pendencias": [
+  "Capturas em ambiente de teste, somente leitura: nenhuma SC, cotação ou PC foi criado. co02 e co09 mostram o formulário aberto e não salvo; os avisos de recusa (perfil sem comprimento, preço zero, item sem vencedor, autor aprovando, cancelamento com NR ativa) ficam só nas regras, sem tela.",
+  "Status do pedido de compra não validado (naoValidado): a trilha viu Em Aberto na lista e Em Edição na tela de edição; a gestora lista Em aberto, Recebido e Cancelado (COM-PC-004). Por isso as cenas de status usam os status da solicitação (COM-SC-004).",
+  "Momento do desdobro do PC parcial (PC-nnnn/2): salvar × finalizar a nota de recebimento (REC-NR-009 × COM D). Não narrado.",
+  "Não conferidos na tela: alçada ligada (botões da fila de Aprovações), Enviar por e-mail, Importar resposta do fornecedor, Follow-up com itens e a Sugestão gerando SCs. co10 e co04 podem sair com lista vazia.",
+  "Caminho dos parâmetros a conferir: Compras › Configurações › Parâmetros × Parâmetros de Compras; Faixas de Alçada sem tela neste vídeo.",
+  "Hoje o crédito de imposto de entrada ainda sai negativo no PC (COM-PC-018) e o PC não é enviado por e-mail pela tela: usar Baixar PDF.",
+  "Staging sem nenhuma cotação: co06 mostra a Nova Cotação aberta e não salva; a cena co07 (Comparação e vencedores) foi removida. Gravar Comparação/Aplicar Melhor Opção/Pedidos de Compra Gerados quando houver cotação Concluída.",
+  "Staging sem PC Em Aberto (os 4 estão Recebidos): co13 mostra o menu de um PC Recebido, com as ações travadas; co14 usa o PC-000001, que não veio de SC nem de cotação (a linha do tempo mostra só pedido, NR e título).",
+  "co01: a coluna Status da lista de SCs fica coberta pela coluna fixa Ações em 1920px; o foco foi para a coluna Documento."
+ ]
+}

@@ -1,0 +1,45 @@
+{
+ "nome": "es10-emprestimos",
+ "url": "https://staging.flow.faktory.com.br/estoque/emprestimos",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "Em aberto",
+    "exact": true
+   },
+   "caixa": {
+    "x": 347,
+    "y": 332,
+    "w": 338,
+    "h": 21
+   }
+  },
+  {
+   "alvo": {
+    "text": "Parcial",
+    "exact": true
+   },
+   "caixa": {
+    "x": 745,
+    "y": 332,
+    "w": 338,
+    "h": 21
+   }
+  },
+  {
+   "alvo": {
+    "text": "Devolvidos",
+    "exact": true
+   },
+   "caixa": {
+    "x": 1144,
+    "y": 332,
+    "w": 338,
+    "h": 21
+   }
+  }
+ ],
+ "em": "2026-11-17T14:27:20.641Z"
+}

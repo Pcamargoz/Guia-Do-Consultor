@@ -1,0 +1,271 @@
+WEBVTT
+
+00:00:01.100 --> 00:00:04.314
+Todo pedido do CRM começa num lead.
+
+00:00:04.314 --> 00:00:05.416
+Neste vídeo:
+
+00:00:05.416 --> 00:00:09.366
+cadastrar, qualificar pelo BANT, converter,
+
+00:00:09.366 --> 00:00:17.129
+trabalhar a oportunidade no Pipeline, ganhar, gerar o pedido e ler os painéis.
+
+00:00:17.429 --> 00:00:23.121
+O lead nasce Novo, na primeira coluna do Kanban, Inbound.
+
+00:00:23.121 --> 00:00:28.315
+Ainda é só um contato, sem negócio comprovado.
+
+00:00:28.615 --> 00:00:32.116
+Em Qualificação, o vendedor confirma o BANT.
+
+00:00:32.116 --> 00:00:35.060
+Qualificado, ele pode ser convertido.
+
+00:00:35.060 --> 00:00:38.242
+Convertido, vira cliente e oportunidade.
+
+00:00:38.242 --> 00:00:41.786
+Fora do caminho, fica Desqualificado.
+
+00:00:42.086 --> 00:00:42.869
+Regra 1.
+
+00:00:42.869 --> 00:00:50.990
+Novo Lead abre o mesmo cadastro de participante usado para clientes e fornecedores.
+
+00:00:50.990 --> 00:00:56.972
+Só Tipo (PF/PJ) e Razão Social / Nome são obrigatórios.
+
+00:00:57.272 --> 00:00:58.044
+Regra 2.
+
+00:00:58.044 --> 00:01:01.230
+Origem, Temperatura, Responsável,
+
+00:01:01.230 --> 00:01:07.118
+Budget Estimado e as chaves do BANT ficam em Informações CRM.
+
+00:01:07.118 --> 00:01:12.158
+Não confunda com Dados CRM, que é outra seção.
+
+00:01:12.458 --> 00:01:13.396
+Regra 3.
+
+00:01:13.396 --> 00:01:19.022
+O lead só converte com as duas condições juntas:
+
+00:01:19.022 --> 00:01:24.531
+etapa de 60% ou mais no Kanban e BANT completo.
+
+00:01:24.531 --> 00:01:31.344
+Sem isso, o sistema avisa o que falta e não converte.
+
+00:01:31.644 --> 00:01:32.472
+Regra 4.
+
+00:01:32.472 --> 00:01:35.268
+A conversão liga É Cliente?
+
+00:01:35.268 --> 00:01:42.827
+no participante e cria a oportunidade no Pipeline, com o valor do Budget.
+
+00:01:42.827 --> 00:01:45.002
+A mensagem não avisa:
+
+00:01:45.002 --> 00:01:47.673
+procure no Pipeline.
+
+00:01:47.973 --> 00:01:48.821
+Regra 5.
+
+00:01:48.821 --> 00:01:54.119
+As atividades do lead não vão para a oportunidade.
+
+00:01:54.119 --> 00:01:58.357
+Registre as próximas já na oportunidade.
+
+00:01:58.357 --> 00:02:04.573
+Com itens lançados, o valor passa a ser a soma deles.
+
+00:02:04.873 --> 00:02:05.657
+Regra 6.
+
+00:02:05.657 --> 00:02:08.987
+Marcar como Perdida pede o motivo:
+
+00:02:08.987 --> 00:02:13.983
+Preço, Concorrência, Timing, Sem Resposta ou Outro.
+
+00:02:13.983 --> 00:02:19.187
+É esse motivo que vira indicador para o gestor.
+
+00:02:19.487 --> 00:02:20.299
+Regra 7.
+
+00:02:20.299 --> 00:02:25.776
+Gerar Pedido de Venda recusa CFOP que gera financeiro.
+
+00:02:25.776 --> 00:02:29.834
+Use um CFOP sem financeiro, como 5910-1.
+
+00:02:29.834 --> 00:02:37.230
+Depois, no pedido, troque o CFOP e escolha a condição de pagamento.
+
+00:02:37.530 --> 00:02:45.075
+Em CRM, Vendas, Leads, a lista tem filtros rápidos de Status e Temperatura.
+
+00:02:45.075 --> 00:02:48.898
+No topo, alterne entre Lista e Kanban.
+
+00:02:48.898 --> 00:02:52.416
+Novo Lead cadastra o contato.
+
+00:02:52.716 --> 00:02:57.442
+Novo Lead abre o cadastro completo de participante.
+
+00:02:57.442 --> 00:03:02.353
+Preencha Tipo (PF/PJ) e Razão Social / Nome; no lead,
+
+00:03:02.353 --> 00:03:04.855
+CPF/CNPJ não é obrigatório.
+
+00:03:04.855 --> 00:03:10.459
+Em Classificação, a chave Prospect/Lead já vem ligada.
+
+00:03:10.759 --> 00:03:16.820
+Em Informações CRM, escolha Origem do Lead, Temperatura e Responsável.
+
+00:03:16.820 --> 00:03:23.313
+Com as respostas do cliente, preencha o Budget Estimado e ligue Autoridade,
+
+00:03:23.313 --> 00:03:25.645
+Necessidade e Prazo.
+
+00:03:25.945 --> 00:03:33.072
+No Kanban de Leads, escolha o funil, como Qualificação de Leads.
+
+00:03:33.072 --> 00:03:40.866
+Cada coluna é uma etapa com seu percentual, e o lead entra em Inbound.
+
+00:03:40.866 --> 00:03:43.205
+A etapa só muda aqui:
+
+00:03:43.205 --> 00:03:48.259
+arraste o card e confirme em Mover lead.
+
+00:03:48.559 --> 00:03:53.416
+No menu ⋮ do lead ficam Converter, Histórico, Tags,
+
+00:03:53.416 --> 00:03:55.988
+Atividades e Desqualificar.
+
+00:03:55.988 --> 00:04:01.226
+Converter só funciona com etapa de 60% e BANT completo.
+
+00:04:01.226 --> 00:04:01.988
+Atenção:
+
+00:04:01.988 --> 00:04:05.159
+Excluir fica no mesmo menu.
+
+00:04:05.459 --> 00:04:09.512
+Depois de converter, procure no Pipeline.
+
+00:04:09.512 --> 00:04:11.785
+Escolha a aba do funil.
+
+00:04:11.785 --> 00:04:18.012
+A oportunidade criada pela conversão entra na coluna Novo Lead,
+
+00:04:18.012 --> 00:04:20.187
+com o valor do Budget.
+
+00:04:20.187 --> 00:04:24.345
+Nova Oportunidade cria uma sem lead.
+
+00:04:24.645 --> 00:04:31.667
+O menu ⋯ do card tem Editar, Marcar como Ganha, Marcar como Perdida,
+
+00:04:31.667 --> 00:04:33.526
+Pausar e Cancelar.
+
+00:04:33.526 --> 00:04:35.798
+Perdida pede o motivo.
+
+00:04:35.798 --> 00:04:37.657
+Ganhou sem querer?
+
+00:04:37.657 --> 00:04:42.388
+Reverter ganho, antes de gerar o pedido.
+
+00:04:42.688 --> 00:04:48.637
+Em Vendas, Atividades, filtre por Tipo, Status e Prioridade,
+
+00:04:48.637 --> 00:04:52.702
+e registre a interação em Nova Atividade.
+
+00:04:52.702 --> 00:04:59.048
+A atividade ligada à oportunidade alimenta a agenda do vendedor.
+
+00:04:59.048 --> 00:05:05.002
+A lista não mostra de qual lead ou cliente é cada uma.
+
+00:05:05.302 --> 00:05:11.617
+Na Visão Geral, a faixa de alertas aponta o que resolver.
+
+00:05:11.617 --> 00:05:18.375
+A jornada vai de leads novos a oportunidades e Valor em Jogo,
+
+00:05:18.375 --> 00:05:22.474
+somando as abertas de todos os funis.
+
+00:05:22.474 --> 00:05:27.616
+Resultado do Mês abre o painel do gestor.
+
+00:05:27.916 --> 00:05:30.685
+Clique em Resultado do Mês:
+
+00:05:30.685 --> 00:05:36.737
+o Resumo de Vendas, também em Painéis, Dashboard Executivo.
+
+00:05:36.737 --> 00:05:39.813
+O gestor lê ganhas e perdidas,
+
+00:05:39.813 --> 00:05:45.352
+a taxa de ganho e os três principais motivos de perda,
+
+00:05:45.352 --> 00:05:48.516
+para a reunião comercial.
+
+00:05:48.816 --> 00:05:50.190
+Três cuidados.
+
+00:05:50.190 --> 00:05:52.839
+Ganha não pede confirmação:
+
+00:05:52.839 --> 00:05:56.862
+se errar, Reverter ganho antes do pedido.
+
+00:05:56.862 --> 00:06:04.124
+Depois de gerar, o botão continua ativo e um novo clique duplica o pedido.
+
+00:06:04.124 --> 00:06:08.845
+E recolher Informações CRM apaga a origem.
+
+00:06:09.145 --> 00:06:10.163
+Resumindo:
+
+00:06:10.163 --> 00:06:14.644
+BANT completo e etapa de 60% para converter.
+
+00:06:14.644 --> 00:06:18.819
+A oportunidade nasce sozinha no Pipeline.
+
+00:06:18.819 --> 00:06:24.828
+E o pedido sai com CFOP sem financeiro, ajustado em Vendas.
+
+00:06:24.828 --> 00:06:30.316
+O checklist e o manual do CRM estão logo abaixo.

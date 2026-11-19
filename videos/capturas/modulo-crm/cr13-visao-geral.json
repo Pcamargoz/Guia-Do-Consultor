@@ -1,0 +1,55 @@
+{
+ "nome": "cr13-visao-geral",
+ "url": "https://staging.flow.faktory.com.br/crm",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "1 lead novo aguardando qualificação"
+   },
+   "caixa": {
+    "x": 428,
+    "y": 289,
+    "w": 1259,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "text": "JORNADA DO CLIENTE — ONDE ESTÃO SEUS CONTATOS?"
+   },
+   "caixa": {
+    "x": 365,
+    "y": 372,
+    "w": 1486,
+    "h": 19
+   }
+  },
+  {
+   "alvo": {
+    "text": "Valor em Jogo",
+    "exact": true
+   },
+   "caixa": {
+    "x": 1515,
+    "y": 529,
+    "w": 310,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "text": "Resultado do Mês",
+    "exact": true
+   },
+   "caixa": {
+    "x": 1592,
+    "y": 742,
+    "w": 233,
+    "h": 24
+   }
+  }
+ ],
+ "em": "2026-11-17T13:54:19.364Z"
+}

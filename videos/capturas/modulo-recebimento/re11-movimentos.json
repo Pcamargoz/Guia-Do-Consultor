@@ -1,0 +1,33 @@
+{
+ "nome": "re11-movimentos",
+ "url": "https://staging.flow.faktory.com.br/estoque/movimentos",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "Origem",
+    "exact": true
+   },
+   "caixa": {
+    "x": 754,
+    "y": 490,
+    "w": 353,
+    "h": 19
+   }
+  },
+  {
+   "alvo": {
+    "role": "option",
+    "name": "Recebimento"
+   },
+   "caixa": {
+    "x": 760,
+    "y": 635,
+    "w": 343,
+    "h": 34
+   }
+  }
+ ],
+ "em": "2026-11-17T14:21:58.523Z"
+}

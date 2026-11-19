@@ -1,0 +1,45 @@
+{
+ "nome": "re07-lista-notas",
+ "url": "https://staging.flow.faktory.com.br/recebimento/notas",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "Total",
+    "exact": true
+   },
+   "caixa": {
+    "x": 366,
+    "y": 212,
+    "w": 332,
+    "h": 19
+   }
+  },
+  {
+   "alvo": {
+    "css": "thead th",
+    "nth": 0
+   },
+   "caixa": {
+    "x": 367,
+    "y": 787,
+    "w": 272,
+    "h": 43
+   }
+  },
+  {
+   "alvo": {
+    "text": "Status",
+    "exact": true
+   },
+   "caixa": {
+    "x": 874,
+    "y": 679,
+    "w": 478,
+    "h": 19
+   }
+  }
+ ],
+ "em": "2026-11-17T14:17:22.846Z"
+}

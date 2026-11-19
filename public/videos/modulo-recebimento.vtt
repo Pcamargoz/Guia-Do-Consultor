@@ -1,0 +1,286 @@
+WEBVTT
+
+00:00:01.100 --> 00:00:07.318
+Toda mercadoria que chega passa por uma nota de recebimento.
+
+00:00:07.318 --> 00:00:08.561
+Neste vídeo:
+
+00:00:08.561 --> 00:00:16.437
+preparar o módulo, receber o XML, gerar a nota pelo pedido, entrega parcial,
+
+00:00:16.437 --> 00:00:21.700
+finalizar e ver o estoque e o título a pagar.
+
+00:00:22.000 --> 00:00:24.509
+A nota nasce Em Aberto.
+
+00:00:24.509 --> 00:00:27.673
+Nesse status ela só registra:
+
+00:00:27.673 --> 00:00:34.600
+dá para editar, e nada mexeu no estoque nem no financeiro.
+
+00:00:34.900 --> 00:00:41.316
+Finalizada, ela dá entrada no estoque e gera os títulos a pagar.
+
+00:00:41.316 --> 00:00:42.319
+Não volta:
+
+00:00:42.319 --> 00:00:46.929
+para desfazer, só cancelando com motivo.
+
+00:00:47.229 --> 00:00:48.178
+Regra 1.
+
+00:00:48.178 --> 00:00:51.739
+A mesma nota tem dois números:
+
+00:00:51.739 --> 00:00:55.656
+NF, do fornecedor, e NR, interno.
+
+00:00:55.656 --> 00:01:00.996
+O NR aparece no pedido de compra e no título.
+
+00:01:00.996 --> 00:01:03.258
+Anote os dois.
+
+00:01:03.558 --> 00:01:04.509
+Regra 2.
+
+00:01:04.509 --> 00:01:07.362
+Não existe tipo de nota.
+
+00:01:07.362 --> 00:01:12.950
+O CFOP de entrada decide se a nota gera título,
+
+00:01:12.950 --> 00:01:18.657
+se mexe no estoque e se é material de terceiros.
+
+00:01:18.657 --> 00:01:21.872
+Revise com o contador.
+
+00:01:22.172 --> 00:01:23.149
+Regra 3.
+
+00:01:23.149 --> 00:01:29.624
+A nota só puxa pedido de compra em aberto e aprovado.
+
+00:01:29.624 --> 00:01:34.266
+E não recebe mais que o saldo do item:
+
+00:01:34.266 --> 00:01:40.486
+recebeu a mais, ajuste o pedido ou abra outro.
+
+00:01:40.786 --> 00:01:41.713
+Regra 4.
+
+00:01:41.713 --> 00:01:45.653
+Entrega parcial não perde o saldo.
+
+00:01:45.653 --> 00:01:50.288
+O pedido original fica com o que chegou,
+
+00:01:50.288 --> 00:01:57.957
+e o restante vai para um pedido filho, PC barra 2, em aberto.
+
+00:01:58.257 --> 00:01:59.159
+Regra 5.
+
+00:01:59.159 --> 00:02:05.359
+Finalizar mexe no estoque e gera os títulos de uma vez.
+
+00:02:05.359 --> 00:02:11.559
+Se algo falhar, nada acontece e a nota segue Em Aberto.
+
+00:02:11.559 --> 00:02:15.428
+Finalizada, ela não se edita.
+
+00:02:15.728 --> 00:02:16.690
+Regra 6.
+
+00:02:16.690 --> 00:02:21.623
+A chave de acesso impede a nota em dobro.
+
+00:02:21.623 --> 00:02:25.593
+O mesmo XML não entra duas vezes,
+
+00:02:25.593 --> 00:02:32.328
+a não ser que a nota anterior tenha sido cancelada.
+
+00:02:32.628 --> 00:02:33.448
+Regra 7.
+
+00:02:33.448 --> 00:02:39.186
+Cancelar desfaz o estoque, os títulos e reabre o pedido.
+
+00:02:39.186 --> 00:02:42.669
+Mas, com título pago, não cancela:
+
+00:02:42.669 --> 00:02:48.085
+primeiro estorne o pagamento em Contas a Pagar.
+
+00:02:48.385 --> 00:02:52.849
+Antes da primeira nota, abra Parâmetros de Recebimento.
+
+00:02:52.849 --> 00:02:55.284
+A conferência nasce desligada.
+
+00:02:55.284 --> 00:03:03.271
+Usar Conferência Física cria a fila; Exigir Conferência para Finalizar trava a finalização.
+
+00:03:03.571 --> 00:03:10.166
+Em Distribuição DFe, a empresa liga a busca das notas na SEFAZ.
+
+00:03:10.166 --> 00:03:14.249
+Exige Recebimento PRO e certificado A1.
+
+00:03:14.249 --> 00:03:17.885
+Sem PRO, use só Importar XML.
+
+00:03:18.185 --> 00:03:24.729
+Em Aguardando manifestação ficam as notas emitidas contra a empresa,
+
+00:03:24.729 --> 00:03:27.328
+quando a busca está ligada.
+
+00:03:27.328 --> 00:03:30.408
+Responder à SEFAZ não se desfaz:
+
+00:03:30.408 --> 00:03:33.103
+só com o responsável fiscal.
+
+00:03:33.103 --> 00:03:37.071
+Receber cria a nota de recebimento.
+
+00:03:37.371 --> 00:03:41.527
+Sem DF-e, a nota entra por Importar XML.
+
+00:03:41.527 --> 00:03:46.722
+Ela é criada em edição para completar os vínculos.
+
+00:03:46.722 --> 00:03:54.203
+O fornecedor novo é cadastrado pelo próprio XML, sem duplicar pelo CNPJ.
+
+00:03:54.203 --> 00:03:57.400
+Os impostos do XML valem.
+
+00:03:57.700 --> 00:04:01.115
+Sem XML, a nota nasce do pedido.
+
+00:04:01.115 --> 00:04:02.715
+Em + Nova Nota,
+
+00:04:02.715 --> 00:04:12.426
+busque o pedido de compra pelo número ou pelo fornecedor; os já recebidos ficam escondidos.
+
+00:04:12.426 --> 00:04:16.014
+Sem pedido, use Nota avulsa.
+
+00:04:16.314 --> 00:04:19.847
+A nota vem preenchida pelo pedido:
+
+00:04:19.847 --> 00:04:26.912
+Empresa, Fornecedor, CFOP, Pedido de Compra e Condição de Pagamento.
+
+00:04:26.912 --> 00:04:31.275
+Informe Nº da NF, Série e Data de Emissão.
+
+00:04:31.275 --> 00:04:35.200
+Sem XML, a chave fica em branco.
+
+00:04:35.500 --> 00:04:40.163
+Os cartões contam as notas do filtro atual.
+
+00:04:40.163 --> 00:04:42.983
+A lista abre em Em Aberto:
+
+00:04:42.983 --> 00:04:50.957
+a nota finalizada só aparece trocando o Status ou limpando o filtro.
+
+00:04:51.257 --> 00:04:53.944
+No menu ⋮ da nota Em Aberto:
+
+00:04:53.944 --> 00:04:58.742
+Finalizar, Imprimir Etiquetas, Cancelar e Excluir.
+
+00:04:58.742 --> 00:05:00.757
+Leia antes de clicar:
+
+00:05:00.757 --> 00:05:04.428
+Finalizar não pode ser desfeito.
+
+00:05:04.728 --> 00:05:13.745
+Em Pedidos de Compra, a coluna Nota de Recebimento mostra o NR de cada pedido,
+
+00:05:13.745 --> 00:05:19.294
+ou Nota em aberto enquanto ela não é finalizada.
+
+00:05:19.294 --> 00:05:25.328
+É por ela que o comprador sabe o que já chegou.
+
+00:05:25.628 --> 00:05:28.085
+Finalizar abre um aviso:
+
+00:05:28.085 --> 00:05:33.512
+a nota movimenta o estoque e gera os títulos a pagar,
+
+00:05:33.512 --> 00:05:39.963
+conforme os parâmetros do recebimento, e não pode ser desfeita.
+
+00:05:39.963 --> 00:05:43.942
+Confirme só com a nota conferida.
+
+00:05:44.242 --> 00:05:45.998
+Finalizada a nota,
+
+00:05:45.998 --> 00:05:51.852
+abra Estoque › Movimentos e filtre a Origem por Recebimento.
+
+00:05:51.852 --> 00:05:54.779
+A entrada da nota aparece ali,
+
+00:05:54.779 --> 00:06:00.842
+no almoxarifado central quando o projeto fica em branco.
+
+00:06:01.142 --> 00:06:09.187
+Em Contas a Pagar, nasce um título por parcela, com o documento NR.
+
+00:06:09.187 --> 00:06:18.313
+Não nasce se o pedido já gerou os títulos ou se não há plano de contas.
+
+00:06:18.613 --> 00:06:25.511
+No Dashboard Recebimento, a faixa Hoje diz o que espera conferência.
+
+00:06:25.511 --> 00:06:32.003
+Em Precisa de ação hoje, cada nota traz o botão da próxima ação.
+
+00:06:32.003 --> 00:06:36.356
+Recebido no período soma as entradas.
+
+00:06:36.656 --> 00:06:38.032
+Três cuidados.
+
+00:06:38.032 --> 00:06:43.243
+Manifestação e devolução só com o responsável fiscal.
+
+00:06:43.243 --> 00:06:48.552
+Finalizar mexe no estoque e no financeiro e não volta.
+
+00:06:48.552 --> 00:06:55.542
+E, com título pago, estorne o pagamento antes de cancelar a nota.
+
+00:06:55.842 --> 00:06:56.924
+Resumindo:
+
+00:06:56.924 --> 00:07:01.144
+a mesma nota tem dois números, NF e NR.
+
+00:07:01.144 --> 00:07:05.688
+O CFOP de entrada decide estoque e título.
+
+00:07:05.688 --> 00:07:08.069
+E finalizar não volta.
+
+00:07:08.069 --> 00:07:14.728
+O checklist e o manual de Recebimento estão logo abaixo.

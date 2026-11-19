@@ -1,0 +1,985 @@
+{
+ "id": "modulo-servicos",
+ "titulo": "Serviços e Instalação",
+ "subtitulo": "O módulo completo: da medição à assistência técnica",
+ "trilha": "Metodologia do Consultor · vídeo completo do módulo",
+ "proximo": "Projetos e Obras",
+ "icone": "ferramenta",
+ "semVoz": true,
+ "focoMin": 2.6,
+ "fontes": [
+  "guia:scripts/dados-checklists-implantacao.mjs#implantacao-servicos",
+  "guia:public/manuais/servicos/guia.json",
+  "harness:funcional-servicos-medicoes-instalacoes-vistorias-assistencias",
+  "harness:regra-servicos-medicao-nasce-do-pedido",
+  "harness:regra-servicos-botao-agendar-so-na-medicao-salva",
+  "harness:regra-servicos-aprovacao-da-medicao-exige-conferente-diferente",
+  "harness:regra-servicos-passagens-por-botao-e-ordem-dos-aceites"
+ ],
+ "trechos": [
+  {
+   "id": "01",
+   "cena": "abertura",
+   "fala": "O trabalho de campo começa no pedido vendido. Neste vídeo: medição, conferência, instalação, vistoria, assistência técnica e a gestão das equipes.",
+   "inicio": 0,
+   "duracao": 12.9,
+   "fala_s": 12,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "02",
+   "cena": "status",
+   "etapas": [
+    "Agendada",
+    "Aguardando Conferência",
+    "Aprovada"
+   ],
+   "destaque": 0,
+   "fala": "A medição salva fica Agendada pelo botão Agendar. Depois o técnico vai à obra e mede cada vão.",
+   "inicio": 12.9,
+   "duracao": 11.186,
+   "fala_s": 10.286,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "03",
+   "cena": "status",
+   "etapas": [
+    "Agendada",
+    "Aguardando Conferência",
+    "Aprovada"
+   ],
+   "destaque": 1,
+   "fala": "Concluída com a assinatura da obra, a medição fica Aguardando Conferência. Outro usuário confere e aprova. Só a medição Aprovada vira instalação.",
+   "inicio": 24.086,
+   "duracao": 13.471,
+   "fala_s": 12.571,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "04",
+   "cena": "regra",
+   "n": 1,
+   "titulo": "A medição nasce do pedido",
+   "icone": "carrinho",
+   "texto": "Usar este registro traz Cliente e Projeto do pedido. Empresa e Técnico Responsável são obrigatórios e não vêm do pedido.",
+   "fonte": "regra-servicos-medicao-nasce-do-pedido",
+   "fala": "Regra 1. A medição nasce do pedido: Cliente e Projeto vêm junto. Empresa e Técnico Responsável você preenche. Existe Medição avulsa, mas o normal é medir o que foi vendido.",
+   "inicio": 37.557,
+   "duracao": 18.043,
+   "fala_s": 17.143,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "05",
+   "cena": "regra",
+   "n": 2,
+   "titulo": "Agendar só depois de salvar",
+   "icone": "tarefa",
+   "texto": "A medição nova mostra só Voltar, Salvar e Trocar pedido. O botão Agendar aparece na medição salva.",
+   "fonte": "regra-servicos-botao-agendar-so-na-medicao-salva",
+   "fala": "Regra 2. Mesmo com a Data de Agendamento preenchida, a medição só fica Agendada pelo botão Agendar, que aparece depois de salvar.",
+   "inicio": 55.6,
+   "duracao": 13.471,
+   "fala_s": 12.571,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "06",
+   "cena": "regra",
+   "n": 3,
+   "titulo": "Quem mede não confere",
+   "icone": "cadeado",
+   "texto": "A aprovação exige um conferente vinculado a um participante e diferente do técnico que mediu.",
+   "fonte": "regra-servicos-aprovacao-da-medicao-exige-conferente-diferente",
+   "fala": "Regra 3. Quem mede não aprova a própria medição. Cadastre antes um conferente, vinculado a outro participante.",
+   "inicio": 69.071,
+   "duracao": 10.614,
+   "fala_s": 9.714,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "07",
+   "cena": "regra",
+   "n": 4,
+   "titulo": "As passagens são por botão",
+   "icone": "seta",
+   "texto": "Aprovar não cria a instalação: use Gerar Instalação. A assistência também não nasce sozinha: use Gerar Assistência Técnica na vistoria.",
+   "fonte": "regra-servicos-passagens-por-botao-e-ordem-dos-aceites",
+   "critica": true,
+   "fala": "Regra 4. A cadeia anda por botão. Gerar Instalação na medição aprovada e Gerar Assistência Técnica na vistoria. Se ninguém clicar, o serviço fica parado.",
+   "inicio": 79.685,
+   "duracao": 15.186,
+   "fala_s": 14.286,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "08",
+   "cena": "regra",
+   "n": 5,
+   "titulo": "Vistoria automática só se ligar",
+   "icone": "funil",
+   "texto": "Só a vistoria nasce sozinha, quando a Geração automática de vistoria (dias) está preenchida. Ela vem vazia, desligada.",
+   "fonte": "regra-servicos-passagens-por-botao-e-ordem-dos-aceites",
+   "fala": "Regra 5. A vistoria só nasce sozinha se a Geração automática de vistoria estiver preenchida nos parâmetros. Ela vem vazia: decida com o cliente.",
+   "inicio": 94.871,
+   "duracao": 14.614,
+   "fala_s": 13.714,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "09",
+   "cena": "regra",
+   "n": 6,
+   "titulo": "Aceite da vistoria no fim",
+   "icone": "check",
+   "texto": "Na vistoria, o aceite do cliente só é aceito depois de concluir. Antes disso, o sistema recusa.",
+   "fonte": "regra-servicos-passagens-por-botao-e-ordem-dos-aceites",
+   "fala": "Regra 6. O cliente aceita uma vistoria terminada. Conclua primeiro, depois clique em Registrar Aceite.",
+   "inicio": 109.485,
+   "duracao": 9.471,
+   "fala_s": 8.571,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "10",
+   "cena": "regra",
+   "n": 7,
+   "titulo": "Equipe interna não gera pagamento",
+   "icone": "tag",
+   "texto": "O tipo da equipe define a execução. Com equipe interna, a instalação mostra \"Equipe interna: a instalação não gera pagamento\".",
+   "fonte": "regra-servicos-passagens-por-botao-e-ordem-dos-aceites",
+   "fala": "Regra 7. Pagamento de instalador só existe com equipe Terceirizada ligada a um fornecedor. Equipe interna não gera pagamento.",
+   "inicio": 118.956,
+   "duracao": 11.757,
+   "fala_s": 10.857,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "11",
+   "cena": "tela",
+   "captura": "se01-medicoes",
+   "titulo": "A lista de medições",
+   "rotulo": "Serviços › Medições",
+   "focos": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "nomes": [
+    "Nova Medição",
+    "STATUS",
+    "% MEDIDO",
+    "AÇÕES"
+   ],
+   "fala": "Em Medições, leia o STATUS e o quanto já foi medido em % MEDIDO: Agendada, Em Execução, Aguardando Conferência. Nas AÇÕES fica Medir vãos, usado em campo.",
+   "plano": {
+    "menu": "Serviços › Medições",
+    "mostrar": "A lista com medições em status diferentes (Agendada, Aguardando Conferência, Aprovada) e a coluna % MEDIDO",
+    "alvos": [
+     "botão + Nova Medição",
+     "coluna STATUS",
+     "coluna % MEDIDO",
+     "coluna AÇÕES da primeira linha"
+    ],
+    "acoes": [
+     "abrir Serviços › Medições",
+     "ajustar os Filtros para mostrar todos os status",
+     "não clicar em Medir vãos"
+    ]
+   },
+   "inicio": 130.713,
+   "duracao": 16.329,
+   "fala_s": 15.429,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-servicos/se01-medicoes.png",
+   "caixas": [
+    {
+     "x": 1686,
+     "y": 168,
+     "w": 171,
+     "h": 43
+    },
+    {
+     "x": 1067,
+     "y": 595,
+     "w": 277,
+     "h": 43
+    },
+    {
+     "x": 1344,
+     "y": 595,
+     "w": 205,
+     "h": 43
+    },
+    {
+     "x": 1706,
+     "y": 638,
+     "w": 154,
+     "h": 59
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "12",
+   "cena": "tela",
+   "captura": "se02-nova-medicao",
+   "titulo": "Escolher o pedido",
+   "rotulo": "Medições › + Nova Medição",
+   "focos": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "nomes": [
+    "Medição avulsa (sem pedido)",
+    "Buscar por número, cliente ou produto",
+    "Esconder pedidos que já têm medição",
+    "Usar este registro"
+   ],
+   "impacto": 3,
+   "fala": "Em + Nova Medição, busque o pedido. Se não aparecer, ajuste o Status e desmarque Esconder pedidos que já têm medição. Depois clique em Usar este registro.",
+   "plano": {
+    "menu": "Serviços › Medições › + Nova Medição",
+    "mostrar": "A lista de pedidos para escolher, com a busca, o filtro de status e o botão Usar este registro",
+    "alvos": [
+     "Medição avulsa (sem pedido)",
+     "campo Buscar por número, cliente ou produto",
+     "caixa Esconder pedidos que já têm medição",
+     "botão Usar este registro da primeira linha"
+    ],
+    "acoes": [
+     "clicar em + Nova Medição",
+     "não clicar em Usar este registro (abre o formulário e o diálogo de importação)"
+    ]
+   },
+   "inicio": 147.042,
+   "duracao": 16.329,
+   "fala_s": 15.429,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-servicos/se02-nova-medicao.png",
+   "caixas": [
+    {
+     "x": 1581,
+     "y": 120,
+     "w": 308,
+     "h": 48
+    },
+    {
+     "x": 347,
+     "y": 249,
+     "w": 498,
+     "h": 48
+    },
+    {
+     "x": 347,
+     "y": 311,
+     "w": 1522,
+     "h": 19
+    },
+    {
+     "x": 350,
+     "y": 599,
+     "w": 332,
+     "h": 19
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "13",
+   "cena": "tela",
+   "captura": "se03-medicao",
+   "titulo": "A medição por dentro",
+   "rotulo": "Serviços › Medições › MED-000001",
+   "focos": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "nomes": [
+    "Dados Gerais",
+    "Técnico Responsável *",
+    "Aguardando Conferência",
+    "Aprovar"
+   ],
+   "impacto": 3,
+   "fala": "Na aba Dados Gerais, Empresa e Técnico Responsável são obrigatórios. Aguardando Conferência, a medição mostra Aprovar e Reprovar a outro conferente. Depois de aprovada, aparece Gerar Instalação.",
+   "plano": {
+    "menu": "Serviços › Medições › abrir uma medição Aprovada",
+    "mostrar": "O cabeçalho com o status Aprovada e o botão Gerar Instalação, e a aba Dados Gerais",
+    "alvos": [
+     "aba Dados Gerais",
+     "campo Técnico Responsável *",
+     "status Aprovada no cabeçalho",
+     "botão Gerar Instalação"
+    ],
+    "acoes": [
+     "filtrar a lista por Aprovada e abrir a primeira",
+     "não clicar em Gerar Instalação nem em Salvar"
+    ]
+   },
+   "inicio": 163.371,
+   "duracao": 16.329,
+   "fala_s": 15.429,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-servicos/se03-medicao.png",
+   "caixas": [
+    {
+     "x": 558,
+     "y": 250,
+     "w": 163,
+     "h": 36
+    },
+    {
+     "x": 394,
+     "y": 878,
+     "w": 498,
+     "h": 24
+    },
+    {
+     "x": 720,
+     "y": 138,
+     "w": 201,
+     "h": 26
+    },
+    {
+     "x": 1492,
+     "y": 143,
+     "w": 119,
+     "h": 43
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "14",
+   "cena": "tela",
+   "captura": "se04-vaos",
+   "titulo": "Os vãos medidos",
+   "rotulo": "Medição › aba Vãos",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "Medidos",
+    "Largura",
+    "Altura"
+   ],
+   "fala": "Cada vão é uma abertura da obra. Na aba Vãos, informe Largura e Altura em mm. Com Exigir assinatura ligado, conclua por Medir vãos, com a assinatura da obra.",
+   "plano": {
+    "menu": "Serviços › Medições › medição Aprovada › aba Vãos",
+    "mostrar": "Os vãos agrupados por produto, com um vão expandido mostrando Largura e Altura",
+    "alvos": [
+     "aba Vãos",
+     "campo Largura de um vão expandido",
+     "campo Altura do mesmo vão"
+    ],
+    "acoes": [
+     "na mesma medição, clicar na aba Vãos",
+     "expandir o primeiro vão",
+     "não alterar medidas nem salvar"
+    ]
+   },
+   "inicio": 179.7,
+   "duracao": 17.471,
+   "fala_s": 16.571,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-servicos/se04-vaos.png",
+   "caixas": [
+    {
+     "x": 501,
+     "y": 221,
+     "w": 139,
+     "h": 38
+    },
+    {
+     "x": 455,
+     "y": 557,
+     "w": 437,
+     "h": 53
+    },
+    {
+     "x": 911,
+     "y": 557,
+     "w": 437,
+     "h": 53
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "15",
+   "cena": "tela",
+   "captura": "se05-nova-instalacao",
+   "titulo": "De onde nasce a instalação",
+   "rotulo": "Serviços › Instalações › + Nova Instalação",
+   "focos": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "nomes": [
+    "Pedido de Venda · Ordem de Produção · Medição",
+    "Medição",
+    "Esconder medições que já têm instalação",
+    "Nenhum registro encontrado"
+   ],
+   "fala": "A instalação pode nascer de Pedido de Venda, Ordem de Produção ou Medição. A aba Medição lista as aprovadas que ainda não têm instalação; aqui não há nenhuma, então a lista vem vazia.",
+   "plano": {
+    "menu": "Serviços › Instalações › + Nova Instalação",
+    "mostrar": "O diálogo de origem com a aba Medição selecionada e a lista de medições aprovadas sem instalação",
+    "alvos": [
+     "aba Medição",
+     "primeira medição aprovada da lista"
+    ],
+    "acoes": [
+     "clicar em + Nova Instalação",
+     "clicar na aba Medição",
+     "não gerar nada; fechar o diálogo"
+    ]
+   },
+   "inicio": 197.171,
+   "duracao": 19.757,
+   "fala_s": 18.857,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-servicos/se05-nova-instalacao.png",
+   "caixas": [
+    {
+     "x": 374,
+     "y": 230,
+     "w": 464,
+     "h": 50
+    },
+    {
+     "x": 734,
+     "y": 236,
+     "w": 98,
+     "h": 38
+    },
+    {
+     "x": 395,
+     "y": 419,
+     "w": 1438,
+     "h": 19
+    },
+    {
+     "x": 395,
+     "y": 453,
+     "w": 1438,
+     "h": 19
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "16",
+   "cena": "tela",
+   "captura": "se06-instalacao",
+   "titulo": "A instalação concluída",
+   "rotulo": "Serviços › Instalações › instalação Concluída",
+   "focos": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "nomes": [
+    "Concluída",
+    "Conformes",
+    "Medição Vinculada",
+    "Ver Vistoria"
+   ],
+   "impacto": 1,
+   "fala": "Em Executar, marque cada item como Conforme e conclua. A instalação concluída mostra Conferidos e Conformes, os Vínculos com medição e pedido, e Ver Vistoria. Nesta, o checklist ficou 0/2 e sem medição vinculada.",
+   "plano": {
+    "menu": "Serviços › Instalações › abrir uma instalação Concluída",
+    "mostrar": "A instalação Concluída com o checklist (Conferidos e Conformes), o bloco Vínculos e o botão Ver Vistoria",
+    "alvos": [
+     "status Concluída",
+     "contador Conformes do checklist",
+     "Medição Vinculada no bloco Vínculos",
+     "botão Ver Vistoria"
+    ],
+    "acoes": [
+     "abrir a lista de Instalações e filtrar por Concluída",
+     "abrir a primeira",
+     "rolar até Vínculos se necessário"
+    ]
+   },
+   "inicio": 216.928,
+   "duracao": 20.329,
+   "fala_s": 19.429,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-servicos/se06-instalacao.png",
+   "caixas": [
+    {
+     "x": 726,
+     "y": 138,
+     "w": 97,
+     "h": 26
+    },
+    {
+     "x": 1715,
+     "y": 427,
+     "w": 70,
+     "h": 17
+    },
+    {
+     "x": 394,
+     "y": 780,
+     "w": 498,
+     "h": 24
+    },
+    {
+     "x": 1539,
+     "y": 143,
+     "w": 308,
+     "h": 43
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "17",
+   "cena": "tela",
+   "captura": "se07-vistorias",
+   "titulo": "A lista de vistorias",
+   "rotulo": "Serviços › Vistorias",
+   "focos": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "nomes": [
+    "INSTALAÇÃO",
+    "STATUS",
+    "ACEITE CLIENTE",
+    "RESULTADO"
+   ],
+   "impacto": 3,
+   "fala": "Cada vistoria fica ligada a uma instalação. O RESULTADO pode ser Aprovada, Aprovada c/ Ressalvas ou Reprovada. Esta, da INS-000001, está Concluída e Aprovada, ainda sem aceite do cliente.",
+   "plano": {
+    "menu": "Serviços › Vistorias",
+    "mostrar": "A lista de vistorias com ao menos uma Concluída e com aceite do cliente",
+    "alvos": [
+     "coluna INSTALAÇÃO",
+     "coluna STATUS",
+     "coluna ACEITE CLIENTE",
+     "coluna RESULTADO"
+    ],
+    "acoes": [
+     "abrir Serviços › Vistorias com o filtro em todos os status"
+    ]
+   },
+   "inicio": 237.257,
+   "duracao": 17.471,
+   "fala_s": 16.571,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-servicos/se07-vistorias.png",
+   "caixas": [
+    {
+     "x": 889,
+     "y": 595,
+     "w": 162,
+     "h": 43
+    },
+    {
+     "x": 1220,
+     "y": 595,
+     "w": 143,
+     "h": 43
+    },
+    {
+     "x": 1363,
+     "y": 595,
+     "w": 191,
+     "h": 43
+    },
+    {
+     "x": 1553,
+     "y": 595,
+     "w": 153,
+     "h": 43
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "18",
+   "cena": "tela",
+   "captura": "se08-vistoria-ressalvas",
+   "titulo": "A vistoria por dentro",
+   "rotulo": "Serviços › Vistorias › VIS da INS-000001",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "Aprovada",
+    "Ressalvas e Pendências",
+    "Aceite do Cliente"
+   ],
+   "impacto": 2,
+   "fala": "Esta vistoria foi Aprovada sem ressalvas. Quando há ressalvas, elas ficam na aba Ressalvas e Pendências e o cabeçalho oferece Gerar Assistência Técnica. O aceite do cliente se registra na aba Aceite do Cliente.",
+   "plano": {
+    "menu": "Serviços › Vistorias › abrir uma vistoria Aprovada c/ Ressalvas ou Reprovada",
+    "mostrar": "O cabeçalho da vistoria concluída com o resultado e os botões Registrar Aceite e Gerar Assistência Técnica",
+    "alvos": [
+     "resultado Aprovada c/ Ressalvas",
+     "botão Registrar Aceite (ou o selo Aceite Registrado)",
+     "botão Gerar Assistência Técnica"
+    ],
+    "acoes": [
+     "abrir a vistoria pela lista",
+     "não clicar em Registrar Aceite nem em Gerar Assistência Técnica"
+    ]
+   },
+   "inicio": 254.728,
+   "duracao": 20.329,
+   "fala_s": 19.429,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-servicos/se08-vistoria-ressalvas.png",
+   "caixas": [
+    {
+     "x": 923,
+     "y": 138,
+     "w": 94,
+     "h": 26
+    },
+    {
+     "x": 787,
+     "y": 250,
+     "w": 248,
+     "h": 36
+    },
+    {
+     "x": 1040,
+     "y": 250,
+     "w": 192,
+     "h": 36
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "19",
+   "cena": "tela",
+   "captura": "se09-assistencias",
+   "titulo": "Assistência Técnica",
+   "rotulo": "Serviços › Assistência Técnica",
+   "focos": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "nomes": [
+    "TÍTULO",
+    "STATUS",
+    "PRAZO",
+    "+ Nova Assistência"
+   ],
+   "impacto": 2,
+   "fala": "Na Assistência Técnica, acompanhe o STATUS e o PRAZO de cada chamado; o filtro Fora do Prazo mostra os atrasados. Aguardar Peça pausa o prazo. Neste ambiente ainda não há chamados.",
+   "plano": {
+    "menu": "Serviços › Assistência Técnica",
+    "mostrar": "A lista de assistências com uma Resolvida e, se houver, uma Fora do Prazo",
+    "alvos": [
+     "coluna TÍTULO",
+     "coluna STATUS",
+     "coluna PRAZO",
+     "botão + Nova Assistência"
+    ],
+    "acoes": [
+     "abrir Serviços › Assistência Técnica com todos os status",
+     "não clicar em + Nova Assistência"
+    ]
+   },
+   "inicio": 275.057,
+   "duracao": 18.614,
+   "fala_s": 17.714,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-servicos/se09-assistencias.png",
+   "caixas": [
+    {
+     "x": 571,
+     "y": 672,
+     "w": 139,
+     "h": 43
+    },
+    {
+     "x": 1205,
+     "y": 672,
+     "w": 144,
+     "h": 43
+    },
+    {
+     "x": 1348,
+     "y": 672,
+     "w": 133,
+     "h": 43
+    },
+    {
+     "x": 1651,
+     "y": 168,
+     "w": 194,
+     "h": 43
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "20",
+   "cena": "tela",
+   "captura": "se10-assistencia",
+   "titulo": "As abas da assistência",
+   "rotulo": "Assistência Técnica › + Nova Assistência",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "Agendamento",
+    "Defeitos",
+    "Solução + Custos"
+   ],
+   "fala": "Na assistência, a aba Agendamento define técnico, equipe e o Prazo em horas. Registre Defeitos e Peças, preencha Solução + Custos e só então resolva o chamado.",
+   "plano": {
+    "menu": "Serviços › Assistência Técnica › abrir uma AT em atendimento ou Resolvida",
+    "mostrar": "A AT aberta com a aba Agendamento e a área Solução + Custos",
+    "alvos": [
+     "aba Agendamento",
+     "Solução + Custos",
+     "botão Resolver (ou status Resolvida)"
+    ],
+    "acoes": [
+     "abrir uma AT pela lista",
+     "clicar na aba Agendamento",
+     "não clicar em Agendar Atendimento, Iniciar Atendimento, Aguardar Peça nem Resolver"
+    ]
+   },
+   "inicio": 293.671,
+   "duracao": 16.329,
+   "fala_s": 15.429,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-servicos/se10-assistencia.png",
+   "caixas": [
+    {
+     "x": 554,
+     "y": 250,
+     "w": 168,
+     "h": 36
+    },
+    {
+     "x": 726,
+     "y": 250,
+     "w": 122,
+     "h": 36
+    },
+    {
+     "x": 962,
+     "y": 250,
+     "w": 197,
+     "h": 36
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "21",
+   "cena": "tela",
+   "captura": "se11-cockpit",
+   "titulo": "Cockpit de Campo",
+   "rotulo": "Serviços › Cockpit de Campo",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "Equipe",
+    "A agendar",
+    "Como vai a operação?"
+   ],
+   "impacto": 0,
+   "fala": "O Cockpit de Campo mostra a semana por equipe, a fila A agendar e o resumo Como vai a operação?. Ele usa a capacidade diária para não sobrecarregar a agenda. Nesta semana não há visitas.",
+   "plano": {
+    "menu": "Serviços › Cockpit de Campo",
+    "mostrar": "A semana com a Agenda das equipes, a coluna A agendar e o bloco Como vai a operação?",
+    "alvos": [
+     "Agenda das equipes",
+     "A agendar",
+     "Como vai a operação?"
+    ],
+    "acoes": [
+     "abrir Serviços › Cockpit de Campo na visão Calendário",
+     "não arrastar serviços na agenda"
+    ]
+   },
+   "inicio": 310,
+   "duracao": 20.9,
+   "fala_s": 20,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-servicos/se11-cockpit.png",
+   "caixas": [
+    {
+     "x": 366,
+     "y": 590,
+     "w": 195,
+     "h": 75
+    },
+    {
+     "x": 1520,
+     "y": 602,
+     "w": 84,
+     "h": 24
+    },
+    {
+     "x": 365,
+     "y": 344,
+     "w": 1486,
+     "h": 24
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "22",
+   "cena": "tela",
+   "captura": "se12-dashboard",
+   "titulo": "Como vai a operação?",
+   "rotulo": "Serviços › Como vai a operação",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "Conclusões hoje",
+    "Ocupação das equipes",
+    "Visitas atrasadas"
+   ],
+   "impacto": 2,
+   "fala": "Em Como vai a operação?, o gestor vê conclusões do dia, ocupação das equipes e visitas atrasadas. Vermelho pede ação, como equipes ociosas. Clique num indicador para ver as visitas por trás do número.",
+   "plano": {
+    "menu": "Serviços › Dashboard Serviços",
+    "mostrar": "Os cartões do topo e, rolando, o Pipeline operacional com o estágio Aprovadas sem instalação",
+    "alvos": [
+     "cartão Concluídos",
+     "Pipeline operacional",
+     "estágio Aprovadas sem instalação"
+    ],
+    "acoes": [
+     "abrir Serviços › Dashboard Serviços",
+     "se abrir Upgrade › Alumina (IA) em vez do painel, parar e registrar",
+     "rolar até o Pipeline operacional"
+    ]
+   },
+   "inicio": 330.9,
+   "duracao": 20.329,
+   "fala_s": 19.429,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-servicos/se12-dashboard.png",
+   "caixas": [
+    {
+     "x": 661,
+     "y": 298,
+     "w": 134,
+     "h": 24
+    },
+    {
+     "x": 661,
+     "y": 508,
+     "w": 184,
+     "h": 24
+    },
+    {
+     "x": 661,
+     "y": 718,
+     "w": 137,
+     "h": 24
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "23",
+   "cena": "alertas",
+   "itens": [
+    "Datas e horas podem aparecer em UTC: confira antes de apontar atraso.",
+    "O template de checklist entra em toda instalação nova: desative o de teste.",
+    "Só se instala vão medido: vão cancelado não vai para a instalação."
+   ],
+   "fala": "Três cuidados. Datas e horas podem aparecer em UTC. O template de checklist entra em toda instalação nova da empresa. E só se instala vão realmente medido.",
+   "inicio": 351.229,
+   "duracao": 16.329,
+   "fala_s": 15.429,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "24",
+   "cena": "fechamento",
+   "topicos": [
+    "A medição nasce do pedido",
+    "Quem mede não confere",
+    "Cada passagem é um botão"
+   ],
+   "fala": "Resumindo: a medição nasce do pedido. Quem mede não confere. E cada passagem da cadeia é um botão. O checklist e o manual de Serviços estão logo abaixo.",
+   "inicio": 367.558,
+   "duracao": 16.9,
+   "fala_s": 16,
+   "audio": null,
+   "legendas": null
+  }
+ ],
+ "pendencias": [
+  "Capturas em ambiente de teste somente leitura: criar e salvar medição, importar itens, agendar, medir, concluir, aprovar, gerar instalação, executar, vistoriar, registrar aceite e gerar/resolver AT não são executados. As telas dependem de medição Aprovada, instalação Concluída, vistoria com ressalvas e AT já existentes no ambiente.",
+  "Sem tela (exigem gravar): diálogo Importar Itens do Pedido (Nº vãos), formulário da medição nova com só Voltar/Salvar/Trocar pedido, botão Agendar, Medir vãos › Iniciar/Concluir medição com assinatura, recusa do conferente igual ao técnico e recusa do aceite antes de concluir a vistoria.",
+  "Não validado (checklist): concluir a medição — manual-11-servicos 2.2 diz Salvar; teste e regra dizem Medir vãos › Iniciar › Concluir com Exigir assinatura. O vídeo fala de forma condicional ('com Exigir assinatura ligado').",
+  "Não validado (checklist): aceite da assistência técnica antes de Resolver (teste) × na AT resolvida (plano de validação). A regra do Harness afirma 'aceite antes de Resolver', mas o vídeo NÃO apresenta isso como regra; se10 só diz para preencher Solução + Custos antes de Resolver.",
+  "Não validado (checklist): caminho dos conferentes — Serviços › Configurações › Conferentes × Configurações › Config. Serviços › aba Conferentes. Por isso a tela de configuração ficou fora do vídeo.",
+  "Não validado: pagamento de instalação com equipe terceirizada, app /campo e Diário de Obra com projeto.",
+  "se12: no staging (05/11/2026) a captura do Dashboard Serviços abriu Upgrade › Alumina (IA); conferir se o painel está liberado no ambiente antes de gravar.",
+  "Minha Equipe Agora (bloco 7) ficou sem tela para manter o limite de 12; o manual também registra a captura como pendente.",
+  "Nomes a conferir na gravação: aba Agendamento e Solução + Custos da AT (vêm do checklist, sem captura no manual); a lista de Instalações do staging tem um Nº INSTALAÇÃO '5' fora do formato INS-.",
+  "Gravação 17/11: staging sem medição Aprovada (só Agendada, Em Execução e Aguardando Conferência); se03/se04 usam a MED-000001 Aguardando Conferência, sem o botão Gerar Instalação.",
+  "Gravação 17/11: a única vistoria (INS-000001) é Aprovada sem ressalvas e sem aceite; se08 não mostra Registrar Aceite nem Gerar Assistência Técnica.",
+  "Gravação 17/11: Assistência Técnica sem nenhum chamado; se10 mostra as abas do formulário + Nova Assistência (sem salvar).",
+  "Gravação 17/11: Dashboard Serviços (/servicos e link do menu) abre /upgrade/ai; se12 trocado por Como vai a operação? (/servicos/planejamento/saude-operacao). Regravar quando o painel abrir."
+ ],
+ "duracaoTotal": 385.958
+}

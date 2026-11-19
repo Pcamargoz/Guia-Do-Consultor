@@ -1,0 +1,33 @@
+{
+ "nome": "re12-contas-pagar",
+ "url": "https://staging.flow.faktory.com.br/financeiro/contas-pagar",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "Documento",
+    "exact": true
+   },
+   "caixa": {
+    "x": 635,
+    "y": 648,
+    "w": 102,
+    "h": 22
+   }
+  },
+  {
+   "alvo": {
+    "text": "NR-000001",
+    "exact": true
+   },
+   "caixa": {
+    "x": 621,
+    "y": 681,
+    "w": 194,
+    "h": 63
+   }
+  }
+ ],
+ "em": "2026-11-17T14:22:13.015Z"
+}

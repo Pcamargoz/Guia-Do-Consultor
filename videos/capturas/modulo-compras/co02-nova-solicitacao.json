@@ -1,0 +1,57 @@
+{
+ "nome": "co02-nova-solicitacao",
+ "url": "https://staging.flow.faktory.com.br/compras/solicitacoes",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "Empresa*",
+    "exact": true
+   },
+   "caixa": {
+    "x": 1450,
+    "y": 148,
+    "w": 84,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "css": "[role=dialog] [role=combobox]",
+    "nth": 1
+   },
+   "caixa": {
+    "x": 1006,
+    "y": 268,
+    "w": 287,
+    "h": 48
+   }
+  },
+  {
+   "alvo": {
+    "text": "Data Necessidade",
+    "exact": true
+   },
+   "caixa": {
+    "x": 1450,
+    "y": 330,
+    "w": 146,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Produto (código/descrição/EAN)"
+   },
+   "caixa": {
+    "x": 1006,
+    "y": 520,
+    "w": 657,
+    "h": 48
+   }
+  }
+ ],
+ "em": "2026-11-17T14:10:55.060Z"
+}

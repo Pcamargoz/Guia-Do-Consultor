@@ -1,0 +1,32 @@
+{
+ "nome": "pj04-estagios",
+ "url": "https://staging.flow.faktory.com.br/configuracoes/projetos",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "textbox",
+    "name": "Novo Estágio"
+   },
+   "caixa": {
+    "x": 1297,
+    "y": 166,
+    "w": 508,
+    "h": 48
+   }
+  },
+  {
+   "alvo": {
+    "text": "Nenhum estágio cadastrado"
+   },
+   "caixa": {
+    "x": 1297,
+    "y": 233,
+    "w": 575,
+    "h": 106
+   }
+  }
+ ],
+ "em": "2026-11-17T16:23:41.899Z"
+}

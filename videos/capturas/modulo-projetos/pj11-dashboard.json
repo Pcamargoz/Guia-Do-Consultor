@@ -1,0 +1,54 @@
+{
+ "nome": "pj11-dashboard",
+ "url": "https://staging.flow.faktory.com.br/projetos/geral",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "R$ 230.937,40"
+   },
+   "caixa": {
+    "x": 376,
+    "y": 275,
+    "w": 245,
+    "h": 38
+   }
+  },
+  {
+   "alvo": {
+    "text": "R$ 50.340,00"
+   },
+   "caixa": {
+    "x": 680,
+    "y": 275,
+    "w": 245,
+    "h": 38
+   }
+  },
+  {
+   "alvo": {
+    "text": "R$ 160.596,21"
+   },
+   "caixa": {
+    "x": 985,
+    "y": 275,
+    "w": 245,
+    "h": 38
+   }
+  },
+  {
+   "alvo": {
+    "text": "Obras que precisam de atenção",
+    "exact": true
+   },
+   "caixa": {
+    "x": 404,
+    "y": 395,
+    "w": 257,
+    "h": 24
+   }
+  }
+ ],
+ "em": "2026-11-17T16:31:00.496Z"
+}

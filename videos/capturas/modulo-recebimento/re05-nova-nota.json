@@ -1,0 +1,58 @@
+{
+ "nome": "re05-nova-nota",
+ "url": "https://staging.flow.faktory.com.br/recebimento/notas/novo",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Pedido de Compra"
+   },
+   "caixa": {
+    "x": 380,
+    "y": 236,
+    "w": 177,
+    "h": 38
+   }
+  },
+  {
+   "alvo": {
+    "text": "Buscar por número ou fornecedor",
+    "exact": true
+   },
+   "caixa": {
+    "x": 395,
+    "y": 330,
+    "w": 470,
+    "h": 20
+   }
+  },
+  {
+   "alvo": {
+    "role": "checkbox",
+    "name": "Esconder pedidos já recebidos"
+   },
+   "caixa": {
+    "x": 395,
+    "y": 419,
+    "w": 19,
+    "h": 19
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Nota avulsa (sem pedido)",
+    "nth": 0
+   },
+   "caixa": {
+    "x": 1576,
+    "y": 149,
+    "w": 276,
+    "h": 48
+   }
+  }
+ ],
+ "em": "2026-11-17T14:18:37.473Z"
+}

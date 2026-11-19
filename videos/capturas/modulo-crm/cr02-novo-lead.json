@@ -1,0 +1,45 @@
+{
+ "nome": "cr02-novo-lead",
+ "url": "https://staging.flow.faktory.com.br/crm/leads",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "textbox",
+    "name": "Razão Social / Nome*"
+   },
+   "caixa": {
+    "x": 990,
+    "y": 157,
+    "w": 442,
+    "h": 48
+   }
+  },
+  {
+   "alvo": {
+    "role": "textbox",
+    "name": "CPF/CNPJ"
+   },
+   "caixa": {
+    "x": 990,
+    "y": 253,
+    "w": 442,
+    "h": 48
+   }
+  },
+  {
+   "alvo": {
+    "role": "switch",
+    "name": "Prospect/Lead"
+   },
+   "caixa": {
+    "x": 1006,
+    "y": 934,
+    "w": 53,
+    "h": 29
+   }
+  }
+ ],
+ "em": "2026-11-17T13:47:13.574Z"
+}

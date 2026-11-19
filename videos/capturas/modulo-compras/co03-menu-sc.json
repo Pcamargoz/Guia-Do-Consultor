@@ -1,0 +1,45 @@
+{
+ "nome": "co03-menu-sc",
+ "url": "https://staging.flow.faktory.com.br/compras/solicitacoes",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "menuitem",
+    "name": "Gerar Cotação"
+   },
+   "caixa": {
+    "x": 1572,
+    "y": 511,
+    "w": 257,
+    "h": 38
+   }
+  },
+  {
+   "alvo": {
+    "role": "menuitem",
+    "name": "Gerar Pedido de Compra"
+   },
+   "caixa": {
+    "x": 1572,
+    "y": 549,
+    "w": 257,
+    "h": 38
+   }
+  },
+  {
+   "alvo": {
+    "role": "menuitem",
+    "name": "Excluir"
+   },
+   "caixa": {
+    "x": 1572,
+    "y": 599,
+    "w": 257,
+    "h": 38
+   }
+  }
+ ],
+ "em": "2026-11-17T14:11:14.223Z"
+}

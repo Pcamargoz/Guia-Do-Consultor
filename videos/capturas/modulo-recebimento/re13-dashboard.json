@@ -1,0 +1,44 @@
+{
+ "nome": "re13-dashboard",
+ "url": "https://staging.flow.faktory.com.br/recebimento/dashboard",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "Hoje: 1 nota para conferir"
+   },
+   "caixa": {
+    "x": 380,
+    "y": 308,
+    "w": 1454,
+    "h": 34
+   }
+  },
+  {
+   "alvo": {
+    "text": "Precisa de ação hoje",
+    "exact": true
+   },
+   "caixa": {
+    "x": 380,
+    "y": 683,
+    "w": 692,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "text": "Recebido no período",
+    "exact": true
+   },
+   "caixa": {
+    "x": 380,
+    "y": 527,
+    "w": 172,
+    "h": 19
+   }
+  }
+ ],
+ "em": "2026-11-17T14:19:32.804Z"
+}

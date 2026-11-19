@@ -1,0 +1,44 @@
+{
+ "nome": "es09-inventarios",
+ "url": "https://staging.flow.faktory.com.br/estoque/inventarios",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "Contagem física multi-etapa"
+   },
+   "caixa": {
+    "x": 433,
+    "y": 176,
+    "w": 1031,
+    "h": 48
+   }
+  },
+  {
+   "alvo": {
+    "css": "thead th",
+    "nth": 1
+   },
+   "caixa": {
+    "x": 559,
+    "y": 396,
+    "w": 192,
+    "h": 39
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Novo inventário"
+   },
+   "caixa": {
+    "x": 1694,
+    "y": 161,
+    "w": 181,
+    "h": 43
+   }
+  }
+ ],
+ "em": "2026-11-17T14:27:07.070Z"
+}

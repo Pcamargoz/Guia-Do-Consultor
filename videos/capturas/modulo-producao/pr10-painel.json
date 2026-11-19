@@ -1,0 +1,43 @@
+{
+ "nome": "pr10-painel",
+ "url": "https://staging.flow.faktory.com.br/producao/painel-producao",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Filtros do painel"
+   },
+   "caixa": {
+    "x": 352,
+    "y": 150,
+    "w": 117,
+    "h": 29
+   }
+  },
+  {
+   "alvo": {
+    "role": "tablist"
+   },
+   "caixa": {
+    "x": 341,
+    "y": 653,
+    "w": 1516,
+    "h": 48
+   }
+  },
+  {
+   "alvo": {
+    "text": "sem processo de produção definido"
+   },
+   "caixa": {
+    "x": 356,
+    "y": 721,
+    "w": 616,
+    "h": 19
+   }
+  }
+ ],
+ "em": "2026-11-17T16:05:13.786Z"
+}

@@ -1,0 +1,45 @@
+{
+ "nome": "co05-cotacoes",
+ "url": "https://staging.flow.faktory.com.br/compras/cotacoes",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Nova Cotação"
+   },
+   "caixa": {
+    "x": 1676,
+    "y": 168,
+    "w": 169,
+    "h": 43
+   }
+  },
+  {
+   "alvo": {
+    "text": "Total de cotações",
+    "exact": true
+   },
+   "caixa": {
+    "x": 366,
+    "y": 328,
+    "w": 326,
+    "h": 21
+   }
+  },
+  {
+   "alvo": {
+    "text": "Filtros rápidos:",
+    "exact": true
+   },
+   "caixa": {
+    "x": 366,
+    "y": 574,
+    "w": 102,
+    "h": 19
+   }
+  }
+ ],
+ "em": "2026-11-17T14:12:52.939Z"
+}

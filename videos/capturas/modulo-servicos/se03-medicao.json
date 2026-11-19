@@ -1,0 +1,57 @@
+{
+ "nome": "se03-medicao",
+ "url": "https://staging.flow.faktory.com.br/servicos/medicoes/novo?id=15",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "tab",
+    "name": "Dados Gerais"
+   },
+   "caixa": {
+    "x": 558,
+    "y": 250,
+    "w": 163,
+    "h": 36
+   }
+  },
+  {
+   "alvo": {
+    "text": "Técnico Responsável",
+    "exact": false
+   },
+   "caixa": {
+    "x": 394,
+    "y": 878,
+    "w": 498,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "text": "Aguardando Conferência",
+    "nth": 0
+   },
+   "caixa": {
+    "x": 720,
+    "y": 138,
+    "w": 201,
+    "h": 26
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Aprovar"
+   },
+   "caixa": {
+    "x": 1492,
+    "y": 143,
+    "w": 119,
+    "h": 43
+   }
+  }
+ ],
+ "em": "2026-11-17T16:09:16.451Z"
+}

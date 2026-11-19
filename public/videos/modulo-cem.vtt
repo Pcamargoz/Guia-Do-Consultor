@@ -1,0 +1,280 @@
+WEBVTT
+
+00:00:01.100 --> 00:00:07.005
+O orçamento fechado no CEM vira pedido de venda sem redigitar.
+
+00:00:07.005 --> 00:00:08.148
+Neste vídeo:
+
+00:00:08.148 --> 00:00:15.385
+escolher e conectar o sistema, completar os Padrões, importar, ler o pedido,
+
+00:00:15.385 --> 00:00:19.414
+reimportar e o Faturamento em Nível.
+
+00:00:19.714 --> 00:00:25.221
+A obra fechada no CEM aparece Pendente na importação.
+
+00:00:25.221 --> 00:00:28.026
+Ela não tem status próprio:
+
+00:00:28.026 --> 00:00:31.743
+o estado vem do pedido gerado.
+
+00:00:32.043 --> 00:00:37.126
+Importada, fica Integrada, com um pedido Em aberto.
+
+00:00:37.126 --> 00:00:43.704
+Se o orçamento cresce no CEM, fica Parcial até reimportar o saldo.
+
+00:00:43.704 --> 00:00:49.786
+Cancelar ou excluir o pedido devolve a obra a Pendente.
+
+00:00:50.086 --> 00:00:50.878
+Regra 1.
+
+00:00:50.878 --> 00:00:57.019
+Configurar integração só abre para o administrador do cliente.
+
+00:00:57.019 --> 00:01:05.543
+O sistema escolhido decide os cards da tela e o botão de importação dos pedidos.
+
+00:01:05.843 --> 00:01:06.686
+Regra 2.
+
+00:01:06.686 --> 00:01:13.008
+Decida o modo do código dos produtos antes da primeira obra.
+
+00:01:13.008 --> 00:01:15.642
+Ele fica gravado na obra:
+
+00:01:15.642 --> 00:01:21.300
+mudar depois não corrige as obras já integradas.
+
+00:01:21.600 --> 00:01:22.463
+Regra 3.
+
+00:01:22.463 --> 00:01:26.344
+Produto novo do CEM nasce com o NCM,
+
+00:01:26.344 --> 00:01:30.872
+a unidade e a categoria do Padrão do tipo.
+
+00:01:30.872 --> 00:01:34.322
+Sem o padrão, a importação para.
+
+00:01:34.322 --> 00:01:39.343
+Padrões completos, importação sem parada.
+
+00:01:39.643 --> 00:01:40.519
+Regra 4.
+
+00:01:40.519 --> 00:01:45.775
+O preço do item é o preço de venda do orçamento,
+
+00:01:45.775 --> 00:01:49.169
+total dividido pela quantidade.
+
+00:01:49.169 --> 00:01:53.111
+O cadastro do produto não interfere.
+
+00:01:53.111 --> 00:01:58.529
+O desconto da obra é rateado entre os itens.
+
+00:01:58.829 --> 00:01:59.618
+Regra 5.
+
+00:01:59.618 --> 00:02:05.043
+Para gerar o pedido, a confirmação exige Empresa, CFOP,
+
+00:02:05.043 --> 00:02:08.989
+Plano de Contas e Condição de Pagamento.
+
+00:02:08.989 --> 00:02:16.000
+Os Padrões do Pedido de Venda já trazem esses campos preenchidos.
+
+00:02:16.300 --> 00:02:17.257
+Regra 6.
+
+00:02:17.257 --> 00:02:21.682
+Cidade e UF do cliente vêm só do CEM.
+
+00:02:21.682 --> 00:02:30.294
+Documento, cidade, medida ou item sem valor de venda se corrigem no CEM,
+
+00:02:30.294 --> 00:02:32.329
+não no Flow.
+
+00:02:32.629 --> 00:02:33.431
+Regra 7.
+
+00:02:33.431 --> 00:02:40.950
+Reimportar traz só o saldo, num novo pedido com a etiqueta CEM_INCREMENTAL.
+
+00:02:40.950 --> 00:02:43.857
+O pedido anterior nunca muda.
+
+00:02:43.857 --> 00:02:50.372
+Quantidade que diminui se ajusta à mão no pedido Em aberto.
+
+00:02:50.672 --> 00:02:54.682
+Em Vendas, Configurações, Configurar integração,
+
+00:02:54.682 --> 00:02:58.107
+os cartões mostram os sistemas de origem:
+
+00:02:58.107 --> 00:03:01.867
+CEM Desktop, CEM Mobi, PrefSuite ou Arquivos.
+
+00:03:01.867 --> 00:03:05.558
+O escolhido aparece em Sistema ativo.
+
+00:03:05.858 --> 00:03:08.851
+No card Configuração CEM Mobi,
+
+00:03:08.851 --> 00:03:15.137
+o selo Conectado e a Última conexão mostram que a API responde.
+
+00:03:15.137 --> 00:03:19.627
+Sem conexão confirmada, não adianta importar.
+
+00:03:19.627 --> 00:03:25.315
+No CEM Desktop, a conexão é o pareamento do agente.
+
+00:03:25.615 --> 00:03:29.820
+Em Padrões de Integração, aba Importação,
+
+00:03:29.820 --> 00:03:35.256
+escolha o modo em Cadastrar produto como obra + Tipo.
+
+00:03:35.256 --> 00:03:39.461
+Em Padrões por tipo de item, informe NCM,
+
+00:03:39.461 --> 00:03:46.215
+unidade e categoria de cada tipo até o selo Todos completos.
+
+00:03:46.515 --> 00:03:52.662
+Na aba Pedido de Venda, preencha CFOP Padrão, Plano de Conta Padrão,
+
+00:03:52.662 --> 00:03:57.724
+Condição de Pagamento Padrão e Meio de Pagamento Padrão.
+
+00:03:57.724 --> 00:04:03.115
+Eles chegam preenchidos na confirmação da importação.
+
+00:04:03.415 --> 00:04:10.495
+Em Pedidos de Venda, ao lado das opções de visualização, aparece um só botão,
+
+00:04:10.495 --> 00:04:12.794
+conforme o sistema ativo:
+
+00:04:12.794 --> 00:04:20.015
+Importar CEM, Importar CEM Mobi, Importar PrefSuite ou Importar Arquivo.
+
+00:04:20.315 --> 00:04:23.115
+Clique em Importar CEM Mobi.
+
+00:04:23.115 --> 00:04:30.415
+A primeira etapa, Selecionar Pedido, lista as obras fechadas com cliente.
+
+00:04:30.415 --> 00:04:33.515
+Obra aberta no CEM não aparece.
+
+00:04:33.515 --> 00:04:40.915
+A coluna Situação diz se a obra está Disponível ou já foi integrada.
+
+00:04:41.215 --> 00:04:47.343
+Em Itens da Obra, revise tipo, descrição, quantidade, medidas,
+
+00:04:47.343 --> 00:04:50.111
+cor e valores com o cliente.
+
+00:04:50.111 --> 00:04:53.373
+A importação traz a obra inteira:
+
+00:04:53.373 --> 00:05:00.101
+todos os itens da obra serão importados, sem escolha de itens.
+
+00:05:00.401 --> 00:05:05.467
+Depois do Rateio, em Decisões, confira cliente e obra.
+
+00:05:05.467 --> 00:05:14.004
+CFOP e Plano de Conta chegam dos Padrões; Empresa e Condição de Pagamento são obrigatórias.
+
+00:05:14.004 --> 00:05:19.858
+Na Confirmação, clique em Importar Pedido uma única vez.
+
+00:05:20.158 --> 00:05:27.102
+O pedido importado nasce Em aberto e segue as regras de Vendas:
+
+00:05:27.102 --> 00:05:33.715
+depois de faturado, como este, abre em Modo Somente Leitura.
+
+00:05:33.715 --> 00:05:38.345
+O Projeto da obra vem pelo código da obra.
+
+00:05:38.345 --> 00:05:42.472
+Compare itens e total com o CEM.
+
+00:05:42.772 --> 00:05:44.362
+Só se contratado:
+
+00:05:44.362 --> 00:05:50.627
+no cartão Faturamento em Nível, Ativado faz a importação perguntar,
+
+00:05:50.627 --> 00:05:56.050
+obra a obra, se divide cada item em níveis, como material,
+
+00:05:56.050 --> 00:05:58.801
+esquadria e instalação.
+
+00:05:59.101 --> 00:06:06.309
+Em Níveis de Faturamento, cada nível tem Código, Prefixo, Nome, Tipo,
+
+00:06:06.309 --> 00:06:07.666
+Peso e Ordem.
+
+00:06:07.666 --> 00:06:11.845
+Nível de serviço gera pedido para NFS-e.
+
+00:06:11.845 --> 00:06:19.130
+Precisa haver ao menos um nível de Produto, como IND e MAT aqui.
+
+00:06:19.430 --> 00:06:23.818
+Em Templates de Rateio, monte a composição usual:
+
+00:06:23.818 --> 00:06:27.758
+nível, percentual, empresa, CFOP e condição.
+
+00:06:27.758 --> 00:06:32.030
+A Soma precisa fechar em exatamente 100%.
+
+00:06:32.330 --> 00:06:33.737
+Três cuidados.
+
+00:06:33.737 --> 00:06:38.760
+Clique uma única vez em Importar Pedido e aguarde.
+
+00:06:38.760 --> 00:06:42.880
+Só obras fechadas entram, e vêm inteiras.
+
+00:06:42.880 --> 00:06:47.602
+E no CEM Desktop o agente precisa ficar ligado:
+
+00:06:47.602 --> 00:06:51.216
+sem ele, nenhuma obra carrega.
+
+00:06:51.516 --> 00:06:52.591
+Resumindo:
+
+00:06:52.591 --> 00:07:00.006
+complete os Padrões e decida o modo do código antes da primeira obra.
+
+00:07:00.006 --> 00:07:05.702
+Preço, cliente e medidas vêm do CEM e se corrigem lá.
+
+00:07:05.702 --> 00:07:08.604
+Reimportar traz só o saldo.
+
+00:07:08.604 --> 00:07:15.545
+O checklist e o manual da Integração CEM estão logo abaixo.

@@ -1,0 +1,46 @@
+{
+ "nome": "fu05-usuarios",
+ "url": "https://staging.flow.faktory.com.br/seguranca/usuarios",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Convidar Usuário"
+   },
+   "caixa": {
+    "x": 500,
+    "y": 418,
+    "w": 180,
+    "h": 48
+   }
+  },
+  {
+   "alvo": {
+    "role": "region",
+    "name": "Vagas de Sistema"
+   },
+   "caixa": {
+    "x": 326,
+    "y": 115,
+    "w": 1574,
+    "h": 122
+   }
+  },
+  {
+   "alvo": {
+    "role": "cell",
+    "name": "Ativo",
+    "exact": true
+   },
+   "caixa": {
+    "x": 1324,
+    "y": 708,
+    "w": 109,
+    "h": 43
+   }
+  }
+ ],
+ "em": "2026-11-17T13:39:40.616Z"
+}

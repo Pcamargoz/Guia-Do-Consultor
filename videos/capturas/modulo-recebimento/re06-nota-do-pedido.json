@@ -1,0 +1,69 @@
+{
+ "nome": "re06-nota-do-pedido",
+ "url": "https://staging.flow.faktory.com.br/recebimento/notas/novo?id=332",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "Empresa *",
+    "exact": true
+   },
+   "caixa": {
+    "x": 366,
+    "y": 252,
+    "w": 356,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "text": "Fornecedor *",
+    "exact": true
+   },
+   "caixa": {
+    "x": 742,
+    "y": 252,
+    "w": 356,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "text": "CFOP *",
+    "exact": true
+   },
+   "caixa": {
+    "x": 1117,
+    "y": 252,
+    "w": 356,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "text": "Pedido de Compra (opcional)",
+    "exact": true
+   },
+   "caixa": {
+    "x": 1493,
+    "y": 252,
+    "w": 356,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "text": "Condição de Pagamento",
+    "exact": true
+   },
+   "caixa": {
+    "x": 742,
+    "y": 350,
+    "w": 356,
+    "h": 24
+   }
+  }
+ ],
+ "em": "2026-11-17T14:19:07.638Z"
+}

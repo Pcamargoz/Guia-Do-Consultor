@@ -1,0 +1,43 @@
+{
+ "nome": "cr12-resultado-mes",
+ "url": "https://staging.flow.faktory.com.br/crm/dashboard",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "Ganhas vs Perdidas · últimos 6 meses"
+   },
+   "caixa": {
+    "x": 380,
+    "y": 472,
+    "w": 688,
+    "h": 34
+   }
+  },
+  {
+   "alvo": {
+    "text": "Taxa de ganho",
+    "exact": true
+   },
+   "caixa": {
+    "x": 401,
+    "y": 574,
+    "w": 185,
+    "h": 19
+   }
+  },
+  {
+   "alvo": {
+    "text": "Top 3 motivos de perda"
+   },
+   "caixa": {
+    "x": 380,
+    "y": 952,
+    "w": 362,
+    "h": 34
+   }
+  }
+ ],
+ "em": "2026-11-17T13:53:53.751Z"
+}

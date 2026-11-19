@@ -1,0 +1,58 @@
+{
+ "nome": "pr02-ordens",
+ "url": "https://staging.flow.faktory.com.br/producao/ordem-producao",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Nova OP"
+   },
+   "caixa": {
+    "x": 1719,
+    "y": 168,
+    "w": 125,
+    "h": 43
+   }
+  },
+  {
+   "alvo": {
+    "role": "cell",
+    "name": "Status",
+    "exact": true
+   },
+   "caixa": {
+    "x": 1407,
+    "y": 646,
+    "w": 201,
+    "h": 46
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Iniciar produção (apontamento rápido — muda a OP para Em execução)",
+    "nth": 0
+   },
+   "caixa": {
+    "x": 1622,
+    "y": 756,
+    "w": 48,
+    "h": 48
+   }
+  },
+  {
+   "alvo": {
+    "text": "Estoque pendente"
+   },
+   "caixa": {
+    "x": 1422,
+    "y": 947,
+    "w": 172,
+    "h": 26
+   }
+  }
+ ],
+ "em": "2026-11-17T14:31:35.705Z"
+}

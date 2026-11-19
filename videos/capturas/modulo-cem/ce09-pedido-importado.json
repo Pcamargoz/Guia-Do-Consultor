@@ -1,0 +1,45 @@
+{
+ "nome": "ce09-pedido-importado",
+ "url": "https://staging.flow.faktory.com.br/vendas/pedidos/novo?id=1665",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "Modo Somente Leitura",
+    "exact": true
+   },
+   "caixa": {
+    "x": 428,
+    "y": 295,
+    "w": 507,
+    "h": 29
+   }
+  },
+  {
+   "alvo": {
+    "text": "Projeto (opcional)",
+    "exact": true
+   },
+   "caixa": {
+    "x": 380,
+    "y": 521,
+    "w": 472,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "text": "Status",
+    "exact": true
+   },
+   "caixa": {
+    "x": 1363,
+    "y": 672,
+    "w": 472,
+    "h": 24
+   }
+  }
+ ],
+ "em": "2026-11-17T14:04:57.483Z"
+}

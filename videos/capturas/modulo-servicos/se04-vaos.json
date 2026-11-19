@@ -1,0 +1,45 @@
+{
+ "nome": "se04-vaos",
+ "url": "https://staging.flow.faktory.com.br/servicos/medicoes/novo?id=15",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Medidos 2"
+   },
+   "caixa": {
+    "x": 501,
+    "y": 221,
+    "w": 139,
+    "h": 38
+   }
+  },
+  {
+   "alvo": {
+    "role": "spinbutton",
+    "name": "Largura do vão em milímetros"
+   },
+   "caixa": {
+    "x": 455,
+    "y": 557,
+    "w": 437,
+    "h": 53
+   }
+  },
+  {
+   "alvo": {
+    "role": "spinbutton",
+    "name": "Altura do vão em milímetros"
+   },
+   "caixa": {
+    "x": 911,
+    "y": 557,
+    "w": 437,
+    "h": 53
+   }
+  }
+ ],
+ "em": "2026-11-17T16:09:52.639Z"
+}

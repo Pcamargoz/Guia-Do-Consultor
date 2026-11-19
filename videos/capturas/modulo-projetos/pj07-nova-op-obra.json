@@ -1,0 +1,47 @@
+{
+ "nome": "pj07-nova-op-obra",
+ "url": "https://staging.flow.faktory.com.br/producao/ordem-producao",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Filtrar por Projeto"
+   },
+   "caixa": {
+    "x": 395,
+    "y": 583,
+    "w": 264,
+    "h": 43
+   }
+  },
+  {
+   "alvo": {
+    "role": "combobox",
+    "name": "",
+    "nth": 0
+   },
+   "caixa": {
+    "x": 668,
+    "y": 583,
+    "w": 209,
+    "h": 43
+   }
+  },
+  {
+   "alvo": {
+    "role": "combobox",
+    "name": "",
+    "nth": 1
+   },
+   "caixa": {
+    "x": 887,
+    "y": 583,
+    "w": 196,
+    "h": 43
+   }
+  }
+ ],
+ "em": "2026-11-17T16:25:37.568Z"
+}

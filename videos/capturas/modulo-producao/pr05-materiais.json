@@ -1,0 +1,57 @@
+{
+ "nome": "pr05-materiais",
+ "url": "https://staging.flow.faktory.com.br/producao/ordem-producao",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Requisitado: 4 PC"
+   },
+   "caixa": {
+    "x": 756,
+    "y": 412,
+    "w": 141,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "text": "Atendido: 4"
+   },
+   "caixa": {
+    "x": 912,
+    "y": 412,
+    "w": 91,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Baixar",
+    "nth": 9
+   },
+   "caixa": {
+    "x": 1678,
+    "y": 598,
+    "w": 103,
+    "h": 43
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Estornar"
+   },
+   "caixa": {
+    "x": 1732,
+    "y": 523,
+    "w": 106,
+    "h": 34
+   }
+  }
+ ],
+ "em": "2026-11-17T14:34:31.281Z"
+}

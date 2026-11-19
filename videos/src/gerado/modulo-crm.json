@@ -1,0 +1,865 @@
+{
+ "id": "modulo-crm",
+ "titulo": "CRM",
+ "subtitulo": "O módulo completo: do lead ao pedido de venda",
+ "trilha": "Metodologia do Consultor · vídeo completo do módulo",
+ "proximo": "Integração CEM",
+ "icone": "funil",
+ "semVoz": true,
+ "focoMin": 2.6,
+ "fontes": [
+  "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm",
+  "guia:public/manuais/crm/guia.json",
+  "harness:funcional-crm-leads-pipeline-e-oportunidades",
+  "harness:regra-crm-formulario-do-lead-secoes-e-campos",
+  "harness:regra-crm-converter-lead-exige-etapa-60-e-bant-completo",
+  "harness:regra-crm-conversao-cria-a-oportunidade-sozinha",
+  "harness:regra-vendas-gerar-pedido-da-oportunidade-exige-cfop-sem-financeiro"
+ ],
+ "trechos": [
+  {
+   "id": "01",
+   "cena": "abertura",
+   "fala": "Todo pedido do CRM começa num lead. Neste vídeo: cadastrar, qualificar pelo BANT, converter, trabalhar a oportunidade no Pipeline, ganhar, gerar o pedido e ler os painéis.",
+   "inicio": 0,
+   "duracao": 16.329,
+   "fala_s": 15.429,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "02",
+   "cena": "status",
+   "etapas": [
+    "Novo",
+    "Em Qualificação",
+    "Qualificado",
+    "Convertido"
+   ],
+   "destaque": 0,
+   "fala": "O lead nasce Novo, na primeira coluna do Kanban, Inbound. Ainda é só um contato, sem negócio comprovado.",
+   "inicio": 16.329,
+   "duracao": 11.186,
+   "fala_s": 10.286,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "03",
+   "cena": "status",
+   "etapas": [
+    "Novo",
+    "Em Qualificação",
+    "Qualificado",
+    "Convertido"
+   ],
+   "destaque": 1,
+   "fala": "Em Qualificação, o vendedor confirma o BANT. Qualificado, ele pode ser convertido. Convertido, vira cliente e oportunidade. Fora do caminho, fica Desqualificado.",
+   "inicio": 27.515,
+   "duracao": 13.471,
+   "fala_s": 12.571,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "04",
+   "cena": "regra",
+   "n": 1,
+   "titulo": "O lead já é o participante",
+   "icone": "tag",
+   "texto": "Novo Lead abre o cadastro completo de participante. Obrigatórios: Tipo (PF/PJ) e Razão Social / Nome.",
+   "fonte": "regra-crm-formulario-do-lead-secoes-e-campos",
+   "fala": "Regra 1. Novo Lead abre o mesmo cadastro de participante usado para clientes e fornecedores. Só Tipo (PF/PJ) e Razão Social / Nome são obrigatórios.",
+   "inicio": 40.986,
+   "duracao": 15.186,
+   "fala_s": 14.286,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "05",
+   "cena": "regra",
+   "n": 2,
+   "titulo": "A qualificação mora em Informações CRM",
+   "icone": "lapis",
+   "texto": "Origem do Lead, Temperatura, Responsável, Budget Estimado e o BANT ficam em Informações CRM. Dados CRM é outra seção.",
+   "fonte": "regra-crm-formulario-do-lead-secoes-e-campos",
+   "fala": "Regra 2. Origem, Temperatura, Responsável, Budget Estimado e as chaves do BANT ficam em Informações CRM. Não confunda com Dados CRM, que é outra seção.",
+   "inicio": 56.172,
+   "duracao": 15.186,
+   "fala_s": 14.286,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "06",
+   "cena": "regra",
+   "n": 3,
+   "titulo": "Converter: 60% e BANT",
+   "icone": "cadeado",
+   "texto": "Só converte o lead numa etapa de 60% ou mais (MQL, SQL…) e com o BANT completo. As duas condições juntas.",
+   "fonte": "regra-crm-converter-lead-exige-etapa-60-e-bant-completo",
+   "critica": true,
+   "fala": "Regra 3. O lead só converte com as duas condições juntas: etapa de 60% ou mais no Kanban e BANT completo. Sem isso, o sistema avisa o que falta e não converte.",
+   "inicio": 71.358,
+   "duracao": 19.186,
+   "fala_s": 18.286,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "07",
+   "cena": "regra",
+   "n": 4,
+   "titulo": "A oportunidade nasce sozinha",
+   "icone": "estrela",
+   "texto": "Converter marca o lead como convertido, liga É Cliente? e cria a oportunidade no Pipeline, com o valor do Budget, sem avisar.",
+   "fonte": "regra-crm-conversao-cria-a-oportunidade-sozinha",
+   "fala": "Regra 4. A conversão liga É Cliente? no participante e cria a oportunidade no Pipeline, com o valor do Budget. A mensagem não avisa: procure no Pipeline.",
+   "inicio": 90.544,
+   "duracao": 16.329,
+   "fala_s": 15.429,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "08",
+   "cena": "regra",
+   "n": 5,
+   "titulo": "Atividades não migram",
+   "icone": "tarefa",
+   "texto": "As atividades do lead não vão para a oportunidade. O Valor estimado vira a soma dos itens quando eles entram.",
+   "fonte": "regra-crm-conversao-cria-a-oportunidade-sozinha",
+   "fala": "Regra 5. As atividades do lead não vão para a oportunidade. Registre as próximas já na oportunidade. Com itens lançados, o valor passa a ser a soma deles.",
+   "inicio": 106.873,
+   "duracao": 16.9,
+   "fala_s": 16,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "09",
+   "cena": "regra",
+   "n": 6,
+   "titulo": "Perda pede motivo",
+   "icone": "alerta",
+   "texto": "Marcar como Perdida pede um motivo: Preço, Concorrência, Timing, Sem Resposta ou Outro.",
+   "fonte": "funcional-crm-leads-pipeline-e-oportunidades",
+   "fala": "Regra 6. Marcar como Perdida pede o motivo: Preço, Concorrência, Timing, Sem Resposta ou Outro. É esse motivo que vira indicador para o gestor.",
+   "inicio": 123.773,
+   "duracao": 14.614,
+   "fala_s": 13.714,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "10",
+   "cena": "regra",
+   "n": 7,
+   "titulo": "Pedido: CFOP sem financeiro",
+   "icone": "cfop",
+   "texto": "Gerar Pedido de Venda recusa CFOP que gera financeiro (5101, 6101). Use um sem financeiro (5910-1) e ajuste o pedido depois.",
+   "fonte": "regra-vendas-gerar-pedido-da-oportunidade-exige-cfop-sem-financeiro",
+   "critica": true,
+   "fala": "Regra 7. Gerar Pedido de Venda recusa CFOP que gera financeiro. Use um CFOP sem financeiro, como 5910-1. Depois, no pedido, troque o CFOP e escolha a condição de pagamento.",
+   "inicio": 138.387,
+   "duracao": 18.043,
+   "fala_s": 17.143,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "11",
+   "cena": "tela",
+   "captura": "cr01-leads",
+   "titulo": "Lista de Leads",
+   "rotulo": "CRM › Vendas › Leads › Lista de Leads",
+   "focos": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "nomes": [
+    "Status",
+    "Temperatura",
+    "Kanban",
+    "Novo Lead"
+   ],
+   "impacto": 3,
+   "fala": "Em CRM, Vendas, Leads, a lista tem filtros rápidos de Status e Temperatura. No topo, alterne entre Lista e Kanban. Novo Lead cadastra o contato.",
+   "plano": {
+    "menu": "CRM › Vendas › Leads › Lista de Leads",
+    "mostrar": "a lista de leads com os filtros rápidos e o seletor Lista/Kanban",
+    "alvos": [
+     "filtro Status",
+     "filtro Temperatura",
+     "botão Kanban",
+     "botão Novo Lead"
+    ],
+    "acoes": [
+     "só exibir a lista; não ligar para o telefone da linha (o link liga de verdade)"
+    ]
+   },
+   "inicio": 156.43,
+   "duracao": 15.186,
+   "fala_s": 14.286,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-crm/cr01-leads.png",
+   "caixas": [
+    {
+     "x": 400,
+     "y": 274,
+     "w": 56,
+     "h": 24
+    },
+    {
+     "x": 1165,
+     "y": 274,
+     "w": 108,
+     "h": 24
+    },
+    {
+     "x": 1739,
+     "y": 151,
+     "w": 117,
+     "h": 38
+    },
+    {
+     "x": 1694,
+     "y": 415,
+     "w": 141,
+     "h": 43
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "12",
+   "cena": "tela",
+   "captura": "cr02-novo-lead",
+   "titulo": "Novo Lead",
+   "rotulo": "Lista de Leads › Novo Lead",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "Razão Social / Nome",
+    "CPF/CNPJ",
+    "Prospect/Lead"
+   ],
+   "impacto": 2,
+   "fala": "Novo Lead abre o cadastro completo de participante. Preencha Tipo (PF/PJ) e Razão Social / Nome; no lead, CPF/CNPJ não é obrigatório. Em Classificação, a chave Prospect/Lead já vem ligada.",
+   "plano": {
+    "menu": "CRM › Vendas › Leads › Novo Lead",
+    "mostrar": "o formulário vazio, com Dados Gerais e a seção Classificação visíveis",
+    "alvos": [
+     "Tipo (PF/PJ)",
+     "Razão Social / Nome",
+     "chave Prospect/Lead"
+    ],
+    "acoes": [
+     "clicar em Novo Lead",
+     "não preencher; sair com Cancelar"
+    ]
+   },
+   "inicio": 171.616,
+   "duracao": 18.043,
+   "fala_s": 17.143,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-crm/cr02-novo-lead.png",
+   "caixas": [
+    {
+     "x": 990,
+     "y": 157,
+     "w": 442,
+     "h": 48
+    },
+    {
+     "x": 990,
+     "y": 253,
+     "w": 442,
+     "h": 48
+    },
+    {
+     "x": 1006,
+     "y": 934,
+     "w": 53,
+     "h": 29
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "13",
+   "cena": "tela",
+   "captura": "cr03-informacoes-crm",
+   "titulo": "Informações CRM e BANT",
+   "rotulo": "Lista de Leads › Editar › Informações CRM",
+   "focos": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "nomes": [
+    "Origem do Lead",
+    "Temperatura",
+    "Responsável",
+    "Budget Estimado (R$)",
+    "Autoridade de decisão confirmada"
+   ],
+   "impacto": 4,
+   "fala": "Em Informações CRM, escolha Origem do Lead, Temperatura e Responsável. Com as respostas do cliente, preencha o Budget Estimado e ligue Autoridade, Necessidade e Prazo.",
+   "plano": {
+    "menu": "CRM › Vendas › Leads › lápis de um lead existente",
+    "mostrar": "a seção Informações CRM aberta, com origem, temperatura, responsável, Budget Estimado e as três chaves do BANT",
+    "alvos": [
+     "Origem do Lead",
+     "Temperatura",
+     "Responsável",
+     "Budget Estimado",
+     "chaves Autoridade, Necessidade e Prazo"
+    ],
+    "acoes": [
+     "abrir o lead pelo lápis",
+     "rolar até Informações CRM sem recolher a seção (recolher apaga a origem)",
+     "sair com Cancelar, sem salvar"
+    ]
+   },
+   "inicio": 189.659,
+   "duracao": 15.186,
+   "fala_s": 14.286,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-crm/cr03-informacoes-crm.png",
+   "caixas": [
+    {
+     "x": 1021,
+     "y": 461,
+     "w": 143,
+     "h": 24
+    },
+    {
+     "x": 1223,
+     "y": 420,
+     "w": 102,
+     "h": 24
+    },
+    {
+     "x": 1457,
+     "y": 461,
+     "w": 179,
+     "h": 24
+    },
+    {
+     "x": 1006,
+     "y": 511,
+     "w": 175,
+     "h": 24
+    },
+    {
+     "x": 1006,
+     "y": 828,
+     "w": 53,
+     "h": 29
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "14",
+   "cena": "tela",
+   "captura": "cr04-kanban",
+   "titulo": "Kanban de Leads",
+   "rotulo": "CRM › Vendas › Leads › Kanban de Leads",
+   "focos": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "nomes": [
+    "Qualificação de Leads",
+    "Inbound · 10%",
+    "MQL · 60%",
+    "SQL · 80%"
+   ],
+   "impacto": 1,
+   "fala": "No Kanban de Leads, escolha o funil, como Qualificação de Leads. Cada coluna é uma etapa com seu percentual, e o lead entra em Inbound. A etapa só muda aqui: arraste o card e confirme em Mover lead.",
+   "plano": {
+    "menu": "CRM › Vendas › Leads › Kanban",
+    "mostrar": "as colunas do funil de leads com os percentuais e pelo menos um card",
+    "alvos": [
+     "coluna Inbound · 10%",
+     "coluna MQL · 60%",
+     "coluna SQL · 80%"
+    ],
+    "acoes": [
+     "clicar em Kanban no topo da lista",
+     "não arrastar nenhum card"
+    ]
+   },
+   "inicio": 204.845,
+   "duracao": 22.614,
+   "fala_s": 21.714,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-crm/cr04-kanban.png",
+   "caixas": [
+    {
+     "x": 504,
+     "y": 226,
+     "w": 217,
+     "h": 43
+    },
+    {
+     "x": 371,
+     "y": 374,
+     "w": 257,
+     "h": 24
+    },
+    {
+     "x": 1278,
+     "y": 374,
+     "w": 257,
+     "h": 24
+    },
+    {
+     "x": 1580,
+     "y": 374,
+     "w": 257,
+     "h": 24
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "15",
+   "cena": "tela",
+   "captura": "cr05-menu-lead",
+   "titulo": "Converter",
+   "rotulo": "Lista de Leads › menu ⋮",
+   "focos": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "nomes": [
+    "Converter",
+    "Atividades",
+    "Desqualificar",
+    "Excluir"
+   ],
+   "impacto": 0,
+   "fala": "No menu ⋮ do lead ficam Converter, Histórico, Tags, Atividades e Desqualificar. Converter só funciona com etapa de 60% e BANT completo. Atenção: Excluir fica no mesmo menu.",
+   "plano": {
+    "menu": "CRM › Vendas › Leads › Lista de Leads",
+    "mostrar": "o menu ⋮ da primeira linha aberto, sem nenhum item clicado",
+    "alvos": [
+     "Converter",
+     "Atividades",
+     "Desqualificar"
+    ],
+    "acoes": [
+     "abrir o menu ⋮ da primeira linha",
+     "fechar com Esc"
+    ]
+   },
+   "inicio": 227.459,
+   "duracao": 16.9,
+   "fala_s": 16,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-crm/cr05-menu-lead.png",
+   "caixas": [
+    {
+     "x": 1614,
+     "y": 724,
+     "w": 199,
+     "h": 38
+    },
+    {
+     "x": 1614,
+     "y": 839,
+     "w": 199,
+     "h": 38
+    },
+    {
+     "x": 1614,
+     "y": 940,
+     "w": 199,
+     "h": 38
+    },
+    {
+     "x": 1614,
+     "y": 989,
+     "w": 199,
+     "h": 38
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "16",
+   "cena": "tela",
+   "captura": "cr06-pipeline",
+   "titulo": "O Pipeline",
+   "rotulo": "CRM › Vendas › Pipeline",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "Funil de vendas principal",
+    "Novo Lead",
+    "Nova Oportunidade"
+   ],
+   "impacto": 1,
+   "fala": "Depois de converter, procure no Pipeline. Escolha a aba do funil. A oportunidade criada pela conversão entra na coluna Novo Lead, com o valor do Budget. Nova Oportunidade cria uma sem lead.",
+   "plano": {
+    "menu": "CRM › Vendas › Pipeline",
+    "mostrar": "o quadro do Funil de vendas principal com a primeira coluna e seus cards",
+    "alvos": [
+     "aba Funil de vendas principal",
+     "coluna Novo Lead",
+     "botão + Nova Oportunidade"
+    ],
+    "acoes": [
+     "selecionar a aba Funil de vendas principal",
+     "não arrastar cards"
+    ]
+   },
+   "inicio": 244.359,
+   "duracao": 19.186,
+   "fala_s": 18.286,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-crm/cr06-pipeline.png",
+   "caixas": [
+    {
+     "x": 444,
+     "y": 192,
+     "w": 228,
+     "h": 38
+    },
+    {
+     "x": 388,
+     "y": 319,
+     "w": 86,
+     "h": 24
+    },
+    {
+     "x": 1643,
+     "y": 245,
+     "w": 212,
+     "h": 43
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "19",
+   "cena": "tela",
+   "captura": "cr09-menu-card",
+   "titulo": "Ganhar, perder, pausar",
+   "rotulo": "Pipeline › menu ⋯ do card",
+   "focos": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "nomes": [
+    "Marcar como Ganha",
+    "Marcar como Perdida",
+    "Pausar",
+    "Cancelar"
+   ],
+   "impacto": 1,
+   "fala": "O menu ⋯ do card tem Editar, Marcar como Ganha, Marcar como Perdida, Pausar e Cancelar. Perdida pede o motivo. Ganhou sem querer? Reverter ganho, antes de gerar o pedido.",
+   "plano": {
+    "menu": "CRM › Vendas › Pipeline",
+    "mostrar": "o menu ⋯ de um card em aberto, sem nenhuma opção clicada",
+    "alvos": [
+     "Marcar como Ganha",
+     "Marcar como Perdida",
+     "Pausar"
+    ],
+    "acoes": [
+     "abrir o menu ⋯ do primeiro card",
+     "fechar com Esc"
+    ]
+   },
+   "inicio": 263.545,
+   "duracao": 18.043,
+   "fala_s": 17.143,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-crm/cr09-menu-card.png",
+   "caixas": [
+    {
+     "x": 433,
+     "y": 609,
+     "w": 199,
+     "h": 62
+    },
+    {
+     "x": 433,
+     "y": 672,
+     "w": 199,
+     "h": 62
+    },
+    {
+     "x": 433,
+     "y": 734,
+     "w": 199,
+     "h": 38
+    },
+    {
+     "x": 433,
+     "y": 772,
+     "w": 199,
+     "h": 38
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "20",
+   "cena": "tela",
+   "captura": "cr10-atividades",
+   "titulo": "Atividades",
+   "rotulo": "CRM › Vendas › Atividades",
+   "focos": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "nomes": [
+    "Tipo",
+    "Status",
+    "Prioridade",
+    "Nova Atividade"
+   ],
+   "fala": "Em Vendas, Atividades, filtre por Tipo, Status e Prioridade, e registre a interação em Nova Atividade. A atividade ligada à oportunidade alimenta a agenda do vendedor. A lista não mostra de qual lead ou cliente é cada uma.",
+   "plano": {
+    "menu": "CRM › Vendas › Atividades",
+    "mostrar": "a lista de atividades com os filtros",
+    "alvos": [
+     "título Atividades",
+     "botão + Nova Atividade"
+    ],
+    "acoes": [
+     "só exibir a lista"
+    ]
+   },
+   "inicio": 281.588,
+   "duracao": 22.614,
+   "fala_s": 21.714,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-crm/cr10-atividades.png",
+   "caixas": [
+    {
+     "x": 358,
+     "y": 256,
+     "w": 116,
+     "h": 24
+    },
+    {
+     "x": 877,
+     "y": 256,
+     "w": 125,
+     "h": 24
+    },
+    {
+     "x": 1396,
+     "y": 256,
+     "w": 166,
+     "h": 24
+    },
+    {
+     "x": 1699,
+     "y": 368,
+     "w": 177,
+     "h": 43
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "22",
+   "cena": "tela",
+   "captura": "cr13-visao-geral",
+   "titulo": "Visão Geral: a jornada",
+   "rotulo": "CRM › Painéis › Visão Geral",
+   "focos": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "nomes": [
+    "Alerta de leads novos",
+    "Jornada do cliente",
+    "Valor em Jogo",
+    "Resultado do Mês"
+   ],
+   "fala": "Na Visão Geral, a faixa de alertas aponta o que resolver. A jornada vai de leads novos a oportunidades e Valor em Jogo, somando as abertas de todos os funis. Resultado do Mês abre o painel do gestor.",
+   "plano": {
+    "menu": "CRM › Painéis › Visão Geral",
+    "mostrar": "a jornada do cliente e a faixa de alertas",
+    "alvos": [
+     "bloco Jornada do cliente",
+     "faixa de alertas"
+    ],
+    "acoes": [
+     "só exibir o painel"
+    ]
+   },
+   "inicio": 304.202,
+   "duracao": 22.614,
+   "fala_s": 21.714,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-crm/cr13-visao-geral.png",
+   "caixas": [
+    {
+     "x": 428,
+     "y": 289,
+     "w": 1259,
+     "h": 24
+    },
+    {
+     "x": 365,
+     "y": 372,
+     "w": 1486,
+     "h": 19
+    },
+    {
+     "x": 1515,
+     "y": 529,
+     "w": 310,
+     "h": 24
+    },
+    {
+     "x": 1592,
+     "y": 742,
+     "w": 233,
+     "h": 24
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "23",
+   "cena": "tela",
+   "captura": "cr12-resultado-mes",
+   "titulo": "Resultado do Mês",
+   "rotulo": "CRM › Painéis › Dashboard Executivo (Resultado do Mês)",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "Ganhas vs Perdidas",
+    "Taxa de ganho",
+    "Top 3 motivos de perda"
+   ],
+   "impacto": 2,
+   "fala": "Clique em Resultado do Mês: o Resumo de Vendas, também em Painéis, Dashboard Executivo. O gestor lê ganhas e perdidas, a taxa de ganho e os três principais motivos de perda, para a reunião comercial.",
+   "plano": {
+    "menu": "CRM › Painéis › Resultado do Mês",
+    "mostrar": "o painel do mês com ganhas × perdidas, taxa de ganho e motivos de perda",
+    "alvos": [
+     "cartão de ganhas × perdidas",
+     "taxa de ganho",
+     "motivos de perda"
+    ],
+    "acoes": [
+     "só exibir o painel"
+    ]
+   },
+   "inicio": 326.816,
+   "duracao": 20.9,
+   "fala_s": 20,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-crm/cr12-resultado-mes.png",
+   "caixas": [
+    {
+     "x": 380,
+     "y": 472,
+     "w": 688,
+     "h": 34
+    },
+    {
+     "x": 401,
+     "y": 574,
+     "w": 185,
+     "h": 19
+    },
+    {
+     "x": 380,
+     "y": 952,
+     "w": 362,
+     "h": 34
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "24",
+   "cena": "alertas",
+   "itens": [
+    "Ganha não pede confirmação: reverta antes de gerar o pedido.",
+    "Gerar Pedido de Venda continua disponível: não clique de novo.",
+    "Recolher Informações CRM apaga a origem escolhida."
+   ],
+   "fala": "Três cuidados. Ganha não pede confirmação: se errar, Reverter ganho antes do pedido. Depois de gerar, o botão continua ativo e um novo clique duplica o pedido. E recolher Informações CRM apaga a origem.",
+   "inicio": 347.716,
+   "duracao": 20.329,
+   "fala_s": 19.429,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "25",
+   "cena": "fechamento",
+   "topicos": [
+    "BANT e etapa de 60% para converter",
+    "A oportunidade nasce no Pipeline",
+    "CFOP sem financeiro para o pedido"
+   ],
+   "fala": "Resumindo: BANT completo e etapa de 60% para converter. A oportunidade nasce sozinha no Pipeline. E o pedido sai com CFOP sem financeiro, ajustado em Vendas. O checklist e o manual do CRM estão logo abaixo.",
+   "inicio": 368.045,
+   "duracao": 21.471,
+   "fala_s": 20.571,
+   "audio": null,
+   "legendas": null
+  }
+ ],
+ "pendencias": [
+  "cr07-oportunidade, cr08-itens e cr11-gerar-pedido removidas: no staging, clicar no card da oportunidade (ou em Editar no menu ⋯) redireciona para /upgrade/ai (\"O módulo Alumina (IA) já está incluso no seu plano\"); o painel da oportunidade (Detalhes, Itens, Histórico, Ganha/Perdida, Gerar Pedido de Venda) não abre. Regravar quando o painel abrir; o conteúdo segue nas regras 5 e 7 e nos alertas.",
+  "Nada é gravado: cadastro do lead, BANT, mudança de etapa, conversão, item, atividade, ganho, perda e pedido gerado aparecem só como formulário, menu ou lista. O bloqueio de conversão (BANT incompleto) e a recusa do CFOP 5101/6101 ficam sem tela.",
+  "Não validado: janela Converter Lead (manual-02-crm diz que escolhe funil, etapa Prospecção e valor; o teste de 19/10 mostrou a oportunidade nascendo em Novo Lead com o Budget). O vídeo segue o teste e a regra do harness.",
+  "Não validado: caminho do ganho (⋯ › Marcar como Ganha × botão Ganha no painel) e a trava de ao menos um item para ganhar. A trava do item não virou regra; as duas formas aparecem como telas.",
+  "Não validado: a probabilidade mudar sozinha com a etapa (no teste só atualizou ao recarregar; no ganho não foi a 100%). Não citado nas falas.",
+  "Gerar Proposta (envia e-mail ou link) e Aprovações de desconto ficaram fora: exigem gerar documento ou não há solicitação no staging.",
+  "Limitações a conferir na tela: Temperatura que muda sozinha ao salvar e datas de previsão um dia antes; não aparecem nas falas.",
+  "Caminho conferido: Visão Geral é CRM › Painéis › Visão Geral (/crm). Resultado do Mês é um atalho da Visão Geral para /crm/dashboard (menu Painéis › Dashboard Executivo, título Resumo de Vendas); no staging o mês está zerado (0 ganhas, 0 perdidas, sem motivos de perda).",
+  "cr04-kanban: o funil Qualificação de Leads está sem cards no staging (o único lead novo está no funil TESTE LEAD, etapa PRIMEIRO CONTATO 60%).",
+  "cr02: no formulário do lead, CPF/CNPJ e Inscrição Estadual aparecem sem asterisco (não obrigatórios), diferente do participante comum."
+ ],
+ "duracaoTotal": 391.016
+}

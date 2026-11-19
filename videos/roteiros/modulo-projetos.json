@@ -1,0 +1,510 @@
+{
+ "id": "modulo-projetos",
+ "titulo": "Projetos e Obras",
+ "subtitulo": "O módulo completo: da obra cadastrada ao previsto × realizado",
+ "trilha": "Metodologia do Consultor · vídeo completo do módulo",
+ "proximo": "Expedição",
+ "icone": "obra",
+ "semVoz": true,
+ "focoMin": 2.6,
+ "fontes": [
+  "guia:scripts/dados-checklists-implantacao.mjs#implantacao-projetos",
+  "guia:public/manuais/projetos/guia.json",
+  "harness:funcional-cadastros-participante-produto-e-projeto",
+  "harness:regra-vendas-editar-pedido-somente-em-aberto",
+  "harness:regra-faturamento-finalizar-nf-requisitos",
+  "harness:regra-estoque-almoxarifado-central-ativo-e-pre-requisito"
+ ],
+ "trechos": [
+  {
+   "id": "01",
+   "cena": "abertura",
+   "fala": "Na indústria de esquadrias, o projeto é a obra. Neste vídeo: cadastrar a obra, organizar estágios e etapas, ligar pedido, OP, nota e títulos, e ler o previsto × realizado."
+  },
+  {
+   "id": "02",
+   "cena": "status",
+   "etapas": [
+    "Planejamento",
+    "Em andamento",
+    "Concluído"
+   ],
+   "destaque": 0,
+   "fala": "A obra começa em Planejamento: cadastro, datas, orçamento e resultado previsto. É a base do previsto × realizado."
+  },
+  {
+   "id": "03",
+   "cena": "status",
+   "etapas": [
+    "Planejamento",
+    "Em andamento",
+    "Concluído"
+   ],
+   "destaque": 1,
+   "fala": "Em andamento, a obra recebe pedido, medição, OP, compras, nota e títulos. Os indicadores de Todos os Projetos contam cada status."
+  },
+  {
+   "id": "04",
+   "cena": "regra",
+   "n": 1,
+   "titulo": "Nome e Código obrigatórios",
+   "icone": "lapis",
+   "texto": "Nome do Projeto e Código são obrigatórios, e código repetido é recusado. Um padrão comum é usar o número do orçamento.",
+   "fonte": "funcional-cadastros-participante-produto-e-projeto",
+   "fala": "Regra 1. O Código identifica a obra em todos os seletores, por isso não se repete. Use, por exemplo, o número do orçamento."
+  },
+  {
+   "id": "05",
+   "cena": "regra",
+   "n": 2,
+   "titulo": "O campo Projeto liga tudo",
+   "icone": "seta",
+   "texto": "Pedido, medição, OP, solicitação de compra, nota e títulos se ligam à obra pelo campo Projeto.",
+   "fonte": "funcional-cadastros-participante-produto-e-projeto",
+   "fala": "Regra 2. O pedido com projeto leva a obra para a medição, a produção, a nota e os títulos. A obra junta tudo o que foi feito para ela."
+  },
+  {
+   "id": "06",
+   "cena": "regra",
+   "n": 3,
+   "titulo": "Ligue a obra antes de faturar",
+   "icone": "cadeado",
+   "texto": "Só o pedido Em aberto tem o lápis Editar pedido. Faturado ou Entregue só tem Visualizar: o Projeto (opcional) não muda mais.",
+   "fonte": "regra-vendas-editar-pedido-somente-em-aberto",
+   "critica": true,
+   "fala": "Regra 3. Escolha a obra no pedido antes de faturar. Depois de faturado, o pedido só tem Visualizar e a obra não entra mais."
+  },
+  {
+   "id": "07",
+   "cena": "regra",
+   "n": 4,
+   "titulo": "Local de estoque da obra ativo",
+   "icone": "estoque",
+   "texto": "A nota com projeto movimenta só o local do projeto. Sem local ativo: \"O projeto … não tem local de estoque ativo\".",
+   "fonte": "regra-faturamento-finalizar-nf-requisitos",
+   "fala": "Regra 4. Cada projeto tem um único local de estoque, da mesma empresa das OPs. Sem esse local ativo, a nota da obra não finaliza."
+  },
+  {
+   "id": "08",
+   "cena": "regra",
+   "n": 5,
+   "titulo": "Estágio e etapa em cascata",
+   "icone": "funil",
+   "texto": "Na OP e na compra, o estágio só habilita depois da obra e a etapa depois do estágio. Trocar a obra limpa os dois.",
+   "fonte": "implantacao-projetos#bloco-4",
+   "fala": "Regra 5. Na OP e na solicitação de compra, escolha a obra, depois o estágio, depois a etapa. Trocar a obra limpa os dois."
+  },
+  {
+   "id": "09",
+   "cena": "regra",
+   "n": 6,
+   "titulo": "Com documento, não se exclui",
+   "icone": "alerta",
+   "texto": "Estágio, etapa ou obra com documento vinculado não podem ser excluídos: o sistema lista o que trava. Para encerrar, inative.",
+   "fonte": "implantacao-projetos#bloco-7",
+   "fala": "Regra 6. Obra com documento não se exclui. Inative: ela some dos seletores, mas os documentos emitidos continuam apontando para ela."
+  },
+  {
+   "id": "10",
+   "cena": "regra",
+   "n": 7,
+   "titulo": "Painel não é o caixa",
+   "icone": "tag",
+   "texto": "No painel, custo é o destinado ou comprometido, não o caixa; receita é a nota autorizada, não o pedido.",
+   "fonte": "implantacao-projetos#bloco-6",
+   "fala": "Regra 7. O painel da obra mede compromisso, não caixa. Diferença entre o painel e o Financeiro por causa dessa regra não é erro."
+  },
+  {
+   "id": "11",
+   "cena": "tela",
+   "captura": "pj01-projetos",
+   "titulo": "A lista de obras",
+   "rotulo": "Cadastros › Projetos",
+   "focos": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "nomes": [
+    "+ Novo Projeto",
+    "STATUS",
+    "Estágios",
+    "Etapas"
+   ],
+   "fala": "Em Cadastros › Projetos fica a lista de obras, com STATUS e ATIVO. Na linha de cada obra: os botões Etapas e Estágios e o lápis para editar.",
+   "plano": {
+    "menu": "Cadastros › Projetos",
+    "mostrar": "A lista de projetos com código, cliente, STATUS e ATIVO, e os botões da linha",
+    "alvos": [
+     "botão + Novo Projeto",
+     "coluna STATUS",
+     "botão Estágios da primeira linha",
+     "botão Etapas da primeira linha"
+    ],
+    "acoes": [
+     "abrir Cadastros › Projetos",
+     "conferir o caminho no topo (Cadastros › Projetos ou Configurações › Projetos)"
+    ]
+   }
+  },
+  {
+   "id": "12",
+   "cena": "tela",
+   "captura": "pj02-novo-projeto",
+   "titulo": "Cadastrar a obra",
+   "rotulo": "Cadastros › Projetos › + Novo Projeto",
+   "focos": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "nomes": [
+    "Nome do Projeto",
+    "Código",
+    "Status",
+    "Cliente",
+    "Responsável"
+   ],
+   "impacto": 1,
+   "fala": "Em + Novo Projeto, preencha Nome do Projeto, Código, Status, Cliente e Responsável. Depois, pelo lápis, complete Datas e Orçamento, Endereços do Projeto e Resultados Previstos.",
+   "plano": {
+    "menu": "Cadastros › Projetos › + Novo Projeto",
+    "mostrar": "O formulário Novo Projeto vazio, com os campos principais visíveis",
+    "alvos": [
+     "campo Nome do Projeto",
+     "campo Código",
+     "campo Status",
+     "campo Cliente",
+     "campo Responsável"
+    ],
+    "acoes": [
+     "clicar em + Novo Projeto",
+     "não salvar; fechar ao terminar"
+    ]
+   }
+  },
+  {
+   "id": "13",
+   "cena": "tela",
+   "captura": "pj03-todos-projetos",
+   "titulo": "A carteira de obras",
+   "rotulo": "Projetos › Todos os Projetos",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "Ativos",
+    "Filtros de status",
+    "Ver Painel"
+   ],
+   "impacto": 2,
+   "fala": "Todos os Projetos mostra a carteira em cartões. Os indicadores do topo contam Ativos, Em andamento, Concluídos e Planejamento. Ver Painel abre o painel da obra.",
+   "plano": {
+    "menu": "Projetos › Todos os Projetos",
+    "mostrar": "Os cartões das obras com os indicadores do topo e os filtros de status",
+    "alvos": [
+     "indicadores Ativos, Em andamento, Concluídos e Planejamento",
+     "filtros de status",
+     "botão Ver Painel do primeiro cartão"
+    ],
+    "acoes": [
+     "abrir Projetos › Todos os Projetos",
+     "não clicar em Ver Painel (a tela do painel vem depois)"
+    ]
+   }
+  },
+  {
+   "id": "14",
+   "cena": "tela",
+   "captura": "pj04-estagios",
+   "titulo": "Os estágios da obra",
+   "rotulo": "Cadastros › Projetos › Estágios",
+   "focos": [
+    0,
+    1
+   ],
+   "nomes": [
+    "Novo Estágio",
+    "Nenhum estágio cadastrado"
+   ],
+   "fala": "O estágio organiza a obra em fases. Clique em Estágios na linha da obra, digite a descrição em Novo Estágio e inclua. Neste ambiente nenhuma obra tem estágios ainda.",
+   "plano": {
+    "menu": "Cadastros › Projetos › botão Estágios da linha",
+    "mostrar": "O painel de Estágios de uma obra que já tenha estágios cadastrados",
+    "alvos": [
+     "título do painel Estágios",
+     "lista de estágios cadastrados"
+    ],
+    "acoes": [
+     "clicar em Estágios na linha de uma obra com estágios",
+     "não criar, reordenar, marcar como feito nem excluir"
+    ]
+   }
+  },
+  {
+   "id": "15",
+   "cena": "tela",
+   "captura": "pj05-etapas",
+   "titulo": "As etapas da obra",
+   "rotulo": "Cadastros › Projetos › Etapas",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "Estágio",
+    "Nova Etapa",
+    "Aviso: obra sem estágios"
+   ],
+   "fala": "Em Etapas, escolha o Estágio, digite a descrição e clique em +. Sem estágio, a etapa não aparece nos filtros de Solicitação de Compra, Ordem de Produção e Transferências, como avisa a tela.",
+   "plano": {
+    "menu": "Cadastros › Projetos › botão Etapas da linha",
+    "mostrar": "O painel Etapas do Projeto com etapas cadastradas e a etiqueta Ativa",
+    "alvos": [
+     "seletor Estágio",
+     "botão + de incluir etapa",
+     "etiqueta Ativa de uma etapa"
+    ],
+    "acoes": [
+     "clicar em Etapas na linha de uma obra com etapas",
+     "não incluir nem reordenar"
+    ]
+   }
+  },
+  {
+   "id": "16",
+   "cena": "tela",
+   "captura": "pj06-pedidos-projeto",
+   "titulo": "O pedido da obra",
+   "rotulo": "Vendas › Pedidos de Venda",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "Projeto",
+    "PROJETO",
+    "Editar pedido"
+   ],
+   "impacto": 2,
+   "fala": "A coluna PROJETO mostra a obra de cada pedido, e o filtro Projeto separa os pedidos da obra. Só o pedido Em aberto tem o lápis Editar pedido; o Faturado mostra o olho.",
+   "plano": {
+    "menu": "Vendas › Pedidos de Venda",
+    "mostrar": "A lista de pedidos com a coluna PROJETO preenchida em algumas linhas e um pedido Em aberto ao lado de um Faturado",
+    "alvos": [
+     "filtro Projeto",
+     "coluna PROJETO",
+     "lápis Editar pedido de um pedido Em aberto"
+    ],
+    "acoes": [
+     "abrir Vendas › Pedidos de Venda com Status em Todos",
+     "não abrir o lápis nem salvar"
+    ]
+   }
+  },
+  {
+   "id": "17",
+   "cena": "tela",
+   "captura": "pj07-nova-op-obra",
+   "titulo": "OPs da obra",
+   "rotulo": "Produção › Ordens de produção",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "Filtrar por Projeto",
+    "Estágio do Projeto",
+    "Etapa do Projeto"
+   ],
+   "fala": "Em Ordens de produção, filtre pelo Projeto; só então Estágio do Projeto e Etapa do Projeto habilitam. Na Nova OP, o campo Projeto liga a OP à obra, e ela aparece na aba Produção da obra.",
+   "plano": {
+    "menu": "Produção › Ordens de produção › + Nova OP",
+    "mostrar": "O painel Nova OP vazio, rolado até os campos Projeto, Estágio e Etapa (Estágio e Etapa desabilitados)",
+    "alvos": [
+     "campo Projeto",
+     "campo Estágio",
+     "campo Etapa"
+    ],
+    "acoes": [
+     "clicar em + Nova OP",
+     "rolar até Projeto",
+     "não salvar; fechar pelo X (Esc perde o formulário)"
+    ]
+   }
+  },
+  {
+   "id": "18",
+   "cena": "tela",
+   "captura": "pj08-receber-obra",
+   "titulo": "Os títulos da obra",
+   "rotulo": "Financeiro › Contas a Receber",
+   "focos": [
+    0,
+    1
+   ],
+   "nomes": [
+    "Filtrar por Projeto",
+    "Título NF - 012"
+   ],
+   "fala": "Os títulos herdam a obra do pedido. Em Contas a Receber, use Filtrar por Projeto para ver os títulos da obra: são eles que alimentam o A receber do painel.",
+   "plano": {
+    "menu": "Financeiro › Contas a Receber",
+    "mostrar": "A lista filtrada por uma obra com títulos",
+    "alvos": [
+     "filtro Projeto",
+     "primeiro título da obra"
+    ],
+    "acoes": [
+     "abrir Financeiro › Contas a Receber",
+     "limpar o filtro padrão e filtrar por uma obra que tenha títulos",
+     "não baixar nem editar títulos"
+    ]
+   }
+  },
+  {
+   "id": "19",
+   "cena": "tela",
+   "captura": "pj09-painel-financeiro",
+   "titulo": "Painel Financeiro de Projetos",
+   "rotulo": "Projetos › Painel Financeiro de Projetos",
+   "focos": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "nomes": [
+    "Avisos inteligentes",
+    "Valor vendido",
+    "Valor faturado",
+    "A faturar",
+    "Resultado"
+   ],
+   "impacto": 1,
+   "fala": "Escolha a obra no seletor. Os Avisos inteligentes apontam o que foge do esperado; nesta obra, nenhum alerta. Abaixo: valor vendido, faturado, a faturar e o resultado da obra.",
+   "plano": {
+    "menu": "Projetos › Painel Financeiro de Projetos",
+    "mostrar": "O painel de uma obra com documentos, com avisos, pendências e os cartões de valores",
+    "alvos": [
+     "Avisos inteligentes",
+     "Pendências do projeto",
+     "Valor vendido",
+     "Valor faturado",
+     "A faturar",
+     "Resultado"
+    ],
+    "acoes": [
+     "abrir o painel e escolher uma obra em Buscar projeto…",
+     "rolar até os cartões de valores",
+     "não clicar em Baixar PDF"
+    ]
+   }
+  },
+  {
+   "id": "20",
+   "cena": "tela",
+   "captura": "pj10-andamento",
+   "titulo": "Andamento das Obras",
+   "rotulo": "Projetos › Andamento das Obras",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "Selecione uma obra",
+    "Linha do tempo da obra",
+    "Vendido"
+   ],
+   "fala": "Em Andamento das Obras, escolha a obra. A linha do tempo mostra quantas peças estão em cada fase, de Vendido a Entregue. Nesta obra, a única peça ainda está em Vendido.",
+   "plano": {
+    "menu": "Projetos › Andamento das Obras",
+    "mostrar": "A tela com uma obra escolhida e a linha do tempo das fases",
+    "alvos": [
+     "seletor Selecione uma obra",
+     "linha do tempo de Vendido a Entregue"
+    ],
+    "acoes": [
+     "abrir Projetos › Andamento das Obras",
+     "escolher uma obra com pedido"
+    ]
+   }
+  },
+  {
+   "id": "21",
+   "cena": "tela",
+   "captura": "pj11-dashboard",
+   "titulo": "Dashboard Projetos",
+   "rotulo": "Projetos › Dashboard Projetos",
+   "focos": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "nomes": [
+    "Vendido",
+    "Não faturado",
+    "Lucro",
+    "Obras que precisam de atenção"
+   ],
+   "fala": "O Dashboard Projetos mostra Vendido, Não faturado e Lucro da carteira, e as Obras que precisam de atenção, como as atrasadas. O Plano de Resultado compara previsto e realizado por categoria.",
+   "plano": {
+    "menu": "Projetos › Dashboard Projetos",
+    "mostrar": "Os cartões do topo e a lista de obras que precisam de atenção",
+    "alvos": [
+     "cartão Vendido",
+     "cartão Não faturado",
+     "cartão Lucro"
+    ],
+    "acoes": [
+     "abrir Projetos › Dashboard Projetos"
+    ]
+   }
+  },
+  {
+   "id": "22",
+   "cena": "alertas",
+   "itens": [
+    "Projeto só na nota ou no título deixa o A faturar negativo.",
+    "Excluir obra é definitivo e leva estágios e etapas: inative.",
+    "Trocar o cliente de obra com pedido e nota: confirme com o time."
+   ],
+   "fala": "Três cuidados. Se só a nota ou o título tem o projeto, o painel mostra A faturar negativo. Excluir é definitivo: prefira inativar. E troca de cliente em obra com documentos, só com o time."
+  },
+  {
+   "id": "23",
+   "cena": "fechamento",
+   "topicos": [
+    "Código único para cada obra",
+    "Projeto no pedido, antes de faturar",
+    "Painel: compromisso, não caixa"
+   ],
+   "fala": "Resumindo: cada obra tem código único. O projeto vai no pedido, antes de faturar. E o painel mede compromisso, não caixa. O checklist e o manual de Projetos estão logo abaixo."
+  }
+ ],
+ "pendencias": [
+  "Capturas em ambiente de teste somente leitura: salvar obra, criar estágios e etapas, pedido com projeto, OP e solicitação de compra da obra, Finalizar NF, gerar títulos, postar no Diário e inativar/excluir obra não são executados. pj02 e pj07 mostram formulários vazios; pj04/pj05/pj08/pj09 dependem de uma obra que já tenha estágios, etapas e documentos no ambiente.",
+  "Sem tela (exigem gravar): recusa de código repetido, de obra sem nome e de data de fim anterior; recusa ao excluir estágio ou obra com documento; mensagem 'O projeto … não tem local de estoque ativo'; abas Produção, Campo e Compras da obra (local não identificado nas fontes).",
+  "Não validado (checklist): estágios com peso e conclusão com data (só no fluxo antigo; o manual descreve estágio sem peso). O vídeo não fala de peso nem de data de conclusão.",
+  "Não validado (checklist): Diário de Obra — o menu de Projetos do staging 1.23.2 não lista o item. Bloco 7 ficou sem tela; só a regra de inativar entrou.",
+  "Divergência resolvida no manual: o painel fica em Projetos › Painel Financeiro de Projetos (staging 1.23.2), não em Financeiro › Painel Financeiro de Projetos como diz o checklist. O vídeo segue o staging.",
+  "Divergência aberta: caminho do cadastro — menu Cadastros › Projetos × caminho no topo Configurações › Projetos.",
+  "Status da obra: as fontes citam os indicadores Ativos, Em andamento, Concluídos e Planejamento; os nomes exatos do campo Status (Planejamento, Em andamento, Concluído) devem ser conferidos no formulário ao gravar pj02.",
+  "pj11: Dashboard Projetos e Plano de Resultado vêm do manual-12 via checklist, sem captura no staging; conferir os nomes dos cartões. O menu do staging tem também Insumos da Obra e o botão Cronograma, sem fonte na base.",
+  "Gravação 17/11: nenhuma das 29 obras do staging tem estágios ou etapas; pj04/pj05 mostram os painéis vazios (obra ESQ-2026-001).",
+  "Gravação 17/11: a Nova OP não mostra Estágio/Etapa antes de escolher Projeto (e sem estágios não haveria opção); pj07 usa os filtros Projeto › Estágio › Etapa da lista de OPs.",
+  "Gravação 17/11: Cadastros › Projetos abre /configuracoes/projetos (trilha Configurações › Projetos). Painel Financeiro sem bloco Pendências do projeto na obra 26-02-1607.",
+  "Gravação 17/11: Contas a Receber em aberto tem só 1 título (NF - 012, sem obra); pj08 mostra o filtro sem aplicar."
+ ]
+}

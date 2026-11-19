@@ -1,0 +1,44 @@
+{
+ "nome": "es08-transferencias",
+ "url": "https://staging.flow.faktory.com.br/estoque/transferencias",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "pendentes reservam a origem"
+   },
+   "caixa": {
+    "x": 452,
+    "y": 224,
+    "w": 848,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Pendentes"
+   },
+   "caixa": {
+    "x": 1063,
+    "y": 413,
+    "w": 104,
+    "h": 36
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Nova transferência"
+   },
+   "caixa": {
+    "x": 1649,
+    "y": 197,
+    "w": 208,
+    "h": 43
+   }
+  }
+ ],
+ "em": "2026-11-17T14:26:49.411Z"
+}

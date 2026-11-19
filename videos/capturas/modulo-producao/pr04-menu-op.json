@@ -1,0 +1,57 @@
+{
+ "nome": "pr04-menu-op",
+ "url": "https://staging.flow.faktory.com.br/producao/ordem-producao",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "menuitem",
+    "name": "Etapas de execução da OP"
+   },
+   "caixa": {
+    "x": 1527,
+    "y": 366,
+    "w": 301,
+    "h": 38
+   }
+  },
+  {
+   "alvo": {
+    "role": "menuitem",
+    "name": "Materiais necessários"
+   },
+   "caixa": {
+    "x": 1527,
+    "y": 289,
+    "w": 301,
+    "h": 38
+   }
+  },
+  {
+   "alvo": {
+    "role": "menuitem",
+    "name": "Apontamentos"
+   },
+   "caixa": {
+    "x": 1527,
+    "y": 328,
+    "w": 301,
+    "h": 38
+   }
+  },
+  {
+   "alvo": {
+    "role": "menuitem",
+    "name": "Marcar produzido"
+   },
+   "caixa": {
+    "x": 1527,
+    "y": 597,
+    "w": 301,
+    "h": 38
+   }
+  }
+ ],
+ "em": "2026-11-17T14:32:25.639Z"
+}

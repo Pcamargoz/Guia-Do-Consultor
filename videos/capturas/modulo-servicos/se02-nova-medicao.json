@@ -1,0 +1,55 @@
+{
+ "nome": "se02-nova-medicao",
+ "url": "https://staging.flow.faktory.com.br/servicos/medicoes/novo",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Medição avulsa (sem pedido)"
+   },
+   "caixa": {
+    "x": 1581,
+    "y": 120,
+    "w": 308,
+    "h": 48
+   }
+  },
+  {
+   "alvo": {
+    "placeholder": "Ex.: PV-001234 ou nome do cliente"
+   },
+   "caixa": {
+    "x": 347,
+    "y": 249,
+    "w": 498,
+    "h": 48
+   }
+  },
+  {
+   "alvo": {
+    "text": "Esconder pedidos que já têm medição"
+   },
+   "caixa": {
+    "x": 347,
+    "y": 311,
+    "w": 1522,
+    "h": 19
+   }
+  },
+  {
+   "alvo": {
+    "text": "Usar este registro",
+    "nth": 0
+   },
+   "caixa": {
+    "x": 350,
+    "y": 599,
+    "w": 332,
+    "h": 19
+   }
+  }
+ ],
+ "em": "2026-11-17T16:08:34.338Z"
+}

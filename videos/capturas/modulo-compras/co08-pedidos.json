@@ -1,0 +1,30 @@
+{
+ "nome": "co08-pedidos",
+ "url": "https://staging.flow.faktory.com.br/compras/pedidos",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "columnheader",
+    "name": "Status"
+   },
+   "caixa": null
+  },
+  {
+   "alvo": {
+    "role": "columnheader",
+    "name": "Títulos"
+   },
+   "caixa": null
+  },
+  {
+   "alvo": {
+    "role": "columnheader",
+    "name": "Nota de Recebimento"
+   },
+   "caixa": null
+  }
+ ],
+ "em": "2026-11-17T14:14:57.548Z"
+}

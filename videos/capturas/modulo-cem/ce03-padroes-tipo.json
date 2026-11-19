@@ -1,0 +1,45 @@
+{
+ "nome": "ce03-padroes-tipo",
+ "url": "https://staging.flow.faktory.com.br/configuracoes/padroes-importacao",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "Cadastrar produto como obra + Tipo",
+    "exact": true
+   },
+   "caixa": {
+    "x": 552,
+    "y": 452,
+    "w": 293,
+    "h": 20
+   }
+  },
+  {
+   "alvo": {
+    "text": "Padrões por tipo de item",
+    "exact": true
+   },
+   "caixa": {
+    "x": 547,
+    "y": 666,
+    "w": 275,
+    "h": 34
+   }
+  },
+  {
+   "alvo": {
+    "text": "Todos completos",
+    "exact": true
+   },
+   "caixa": {
+    "x": 1522,
+    "y": 670,
+    "w": 146,
+    "h": 26
+   }
+  }
+ ],
+ "em": "2026-11-17T13:56:54.671Z"
+}

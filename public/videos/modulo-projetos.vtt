@@ -1,0 +1,250 @@
+WEBVTT
+
+00:00:01.100 --> 00:00:05.896
+Na indústria de esquadrias, o projeto é a obra.
+
+00:00:05.896 --> 00:00:07.120
+Neste vídeo:
+
+00:00:07.120 --> 00:00:13.651
+cadastrar a obra, organizar estágios e etapas, ligar pedido, OP,
+
+00:00:13.651 --> 00:00:18.843
+nota e títulos, e ler o previsto × realizado.
+
+00:00:19.143 --> 00:00:21.923
+A obra começa em Planejamento:
+
+00:00:21.923 --> 00:00:26.371
+cadastro, datas, orçamento e resultado previsto.
+
+00:00:26.371 --> 00:00:30.029
+É a base do previsto × realizado.
+
+00:00:30.329 --> 00:00:37.173
+Em andamento, a obra recebe pedido, medição, OP, compras, nota e títulos.
+
+00:00:37.173 --> 00:00:42.929
+Os indicadores de Todos os Projetos contam cada status.
+
+00:00:43.229 --> 00:00:44.098
+Regra 1.
+
+00:00:44.098 --> 00:00:52.027
+O Código identifica a obra em todos os seletores, por isso não se repete.
+
+00:00:52.027 --> 00:00:56.972
+Use, por exemplo, o número do orçamento.
+
+00:00:57.272 --> 00:00:58.284
+Regra 2.
+
+00:00:58.284 --> 00:01:05.874
+O pedido com projeto leva a obra para a medição, a produção,
+
+00:01:05.874 --> 00:01:08.404
+a nota e os títulos.
+
+00:01:08.404 --> 00:01:14.443
+A obra junta tudo o que foi feito para ela.
+
+00:01:14.743 --> 00:01:15.650
+Regra 3.
+
+00:01:15.650 --> 00:01:20.410
+Escolha a obra no pedido antes de faturar.
+
+00:01:20.410 --> 00:01:29.057
+Depois de faturado, o pedido só tem Visualizar e a obra não entra mais.
+
+00:01:29.357 --> 00:01:30.257
+Regra 4.
+
+00:01:30.257 --> 00:01:38.019
+Cada projeto tem um único local de estoque, da mesma empresa das OPs.
+
+00:01:38.019 --> 00:01:44.243
+Sem esse local ativo, a nota da obra não finaliza.
+
+00:01:44.543 --> 00:01:45.473
+Regra 5.
+
+00:01:45.473 --> 00:01:53.260
+Na OP e na solicitação de compra, escolha a obra, depois o estágio,
+
+00:01:53.260 --> 00:01:55.003
+depois a etapa.
+
+00:01:55.003 --> 00:01:58.857
+Trocar a obra limpa os dois.
+
+00:01:59.157 --> 00:01:59.907
+Regra 6.
+
+00:01:59.907 --> 00:02:03.001
+Obra com documento não se exclui.
+
+00:02:03.001 --> 00:02:03.751
+Inative:
+
+00:02:03.751 --> 00:02:05.907
+ela some dos seletores,
+
+00:02:05.907 --> 00:02:11.757
+mas os documentos emitidos continuam apontando para ela.
+
+00:02:12.057 --> 00:02:12.928
+Regra 7.
+
+00:02:12.928 --> 00:02:17.826
+O painel da obra mede compromisso, não caixa.
+
+00:02:17.826 --> 00:02:26.371
+Diferença entre o painel e o Financeiro por causa dessa regra não é erro.
+
+00:02:26.671 --> 00:02:34.323
+Em Cadastros › Projetos fica a lista de obras, com STATUS e ATIVO.
+
+00:02:34.323 --> 00:02:36.874
+Na linha de cada obra:
+
+00:02:36.874 --> 00:02:43.271
+os botões Etapas e Estágios e o lápis para editar.
+
+00:02:43.571 --> 00:02:48.724
+Em + Novo Projeto, preencha Nome do Projeto, Código, Status,
+
+00:02:48.724 --> 00:02:50.613
+Cliente e Responsável.
+
+00:02:50.613 --> 00:02:54.649
+Depois, pelo lápis, complete Datas e Orçamento,
+
+00:02:54.649 --> 00:02:59.028
+Endereços do Projeto e Resultados Previstos.
+
+00:02:59.328 --> 00:03:03.747
+Todos os Projetos mostra a carteira em cartões.
+
+00:03:03.747 --> 00:03:11.082
+Os indicadores do topo contam Ativos, Em andamento, Concluídos e Planejamento.
+
+00:03:11.082 --> 00:03:14.785
+Ver Painel abre o painel da obra.
+
+00:03:15.085 --> 00:03:18.665
+O estágio organiza a obra em fases.
+
+00:03:18.665 --> 00:03:22.348
+Clique em Estágios na linha da obra,
+
+00:03:22.348 --> 00:03:26.848
+digite a descrição em Novo Estágio e inclua.
+
+00:03:26.848 --> 00:03:32.256
+Neste ambiente nenhuma obra tem estágios ainda.
+
+00:03:32.556 --> 00:03:38.909
+Em Etapas, escolha o Estágio, digite a descrição e clique em +.
+
+00:03:38.909 --> 00:03:45.968
+Sem estágio, a etapa não aparece nos filtros de Solicitação de Compra,
+
+00:03:45.968 --> 00:03:52.013
+Ordem de Produção e Transferências, como avisa a tela.
+
+00:03:52.313 --> 00:03:57.570
+A coluna PROJETO mostra a obra de cada pedido,
+
+00:03:57.570 --> 00:04:02.713
+e o filtro Projeto separa os pedidos da obra.
+
+00:04:02.713 --> 00:04:11.770
+Só o pedido Em aberto tem o lápis Editar pedido; o Faturado mostra o olho.
+
+00:04:12.070 --> 00:04:14.543
+Em Ordens de produção,
+
+00:04:14.543 --> 00:04:23.311
+filtre pelo Projeto; só então Estágio do Projeto e Etapa do Projeto habilitam.
+
+00:04:23.311 --> 00:04:28.369
+Na Nova OP, o campo Projeto liga a OP à obra,
+
+00:04:28.369 --> 00:04:33.241
+e ela aparece na aba Produção da obra.
+
+00:04:33.541 --> 00:04:37.463
+Os títulos herdam a obra do pedido.
+
+00:04:37.463 --> 00:04:45.642
+Em Contas a Receber, use Filtrar por Projeto para ver os títulos da obra:
+
+00:04:45.642 --> 00:04:51.284
+são eles que alimentam o A receber do painel.
+
+00:04:51.584 --> 00:04:54.118
+Escolha a obra no seletor.
+
+00:04:54.118 --> 00:05:00.552
+Os Avisos inteligentes apontam o que foge do esperado; nesta obra,
+
+00:05:00.552 --> 00:05:01.917
+nenhum alerta.
+
+00:05:01.917 --> 00:05:02.599
+Abaixo:
+
+00:05:02.599 --> 00:05:08.755
+valor vendido, faturado, a faturar e o resultado da obra.
+
+00:05:09.055 --> 00:05:13.242
+Em Andamento das Obras, escolha a obra.
+
+00:05:13.242 --> 00:05:19.361
+A linha do tempo mostra quantas peças estão em cada fase,
+
+00:05:19.361 --> 00:05:21.723
+de Vendido a Entregue.
+
+00:05:21.723 --> 00:05:27.369
+Nesta obra, a única peça ainda está em Vendido.
+
+00:05:27.669 --> 00:05:34.265
+O Dashboard Projetos mostra Vendido, Não faturado e Lucro da carteira,
+
+00:05:34.265 --> 00:05:39.353
+e as Obras que precisam de atenção, como as atrasadas.
+
+00:05:39.353 --> 00:05:45.983
+O Plano de Resultado compara previsto e realizado por categoria.
+
+00:05:46.283 --> 00:05:47.805
+Três cuidados.
+
+00:05:47.805 --> 00:05:55.957
+Se só a nota ou o título tem o projeto, o painel mostra A faturar negativo.
+
+00:05:55.957 --> 00:05:58.240
+Excluir é definitivo:
+
+00:05:58.240 --> 00:06:00.087
+prefira inativar.
+
+00:06:00.087 --> 00:06:06.883
+E troca de cliente em obra com documentos, só com o time.
+
+00:06:07.183 --> 00:06:08.219
+Resumindo:
+
+00:06:08.219 --> 00:06:11.016
+cada obra tem código único.
+
+00:06:11.016 --> 00:06:15.367
+O projeto vai no pedido, antes de faturar.
+
+00:06:15.367 --> 00:06:19.407
+E o painel mede compromisso, não caixa.
+
+00:06:19.407 --> 00:06:25.497
+O checklist e o manual de Projetos estão logo abaixo.

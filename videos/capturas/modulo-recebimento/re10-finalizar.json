@@ -1,0 +1,32 @@
+{
+ "nome": "re10-finalizar",
+ "url": "https://staging.flow.faktory.com.br/recebimento/notas",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "heading",
+    "name": "Finalizar Nota de Recebimento"
+   },
+   "caixa": {
+    "x": 721,
+    "y": 444,
+    "w": 478,
+    "h": 22
+   }
+  },
+  {
+   "alvo": {
+    "text": "Tem certeza que deseja finalizar"
+   },
+   "caixa": {
+    "x": 721,
+    "y": 473,
+    "w": 478,
+    "h": 96
+   }
+  }
+ ],
+ "em": "2026-11-17T14:18:00.177Z"
+}

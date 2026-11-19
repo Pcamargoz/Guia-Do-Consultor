@@ -1,0 +1,43 @@
+{
+ "nome": "co04-sugestao",
+ "url": "https://staging.flow.faktory.com.br/compras/sugestao",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "Falta líquida = mínimo"
+   },
+   "caixa": {
+    "x": 394,
+    "y": 178,
+    "w": 1083,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "text": "Empresa (obrigatória p/ gerar)"
+   },
+   "caixa": {
+    "x": 386,
+    "y": 251,
+    "w": 235,
+    "h": 19
+   }
+  },
+  {
+   "alvo": {
+    "text": "Só com falta",
+    "exact": true
+   },
+   "caixa": {
+    "x": 1732,
+    "y": 248,
+    "w": 125,
+    "h": 24
+   }
+  }
+ ],
+ "em": "2026-11-17T14:12:32.793Z"
+}

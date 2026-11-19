@@ -1,0 +1,55 @@
+{
+ "nome": "fu02-empresa",
+ "url": "https://staging.flow.faktory.com.br/configuracoes/empresas",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "label": "CPF/CNPJ"
+   },
+   "caixa": {
+    "x": 990,
+    "y": 286,
+    "w": 216,
+    "h": 48
+   }
+  },
+  {
+   "alvo": {
+    "label": "CNAE"
+   },
+   "caixa": {
+    "x": 990,
+    "y": 386,
+    "w": 442,
+    "h": 48
+   }
+  },
+  {
+   "alvo": {
+    "role": "combobox",
+    "nth": 0
+   },
+   "caixa": {
+    "x": 1441,
+    "y": 382,
+    "w": 442,
+    "h": 48
+   }
+  },
+  {
+   "alvo": {
+    "text": "Endereço",
+    "exact": true
+   },
+   "caixa": {
+    "x": 1034,
+    "y": 572,
+    "w": 77,
+    "h": 24
+   }
+  }
+ ],
+ "em": "2026-11-17T13:36:11.671Z"
+}

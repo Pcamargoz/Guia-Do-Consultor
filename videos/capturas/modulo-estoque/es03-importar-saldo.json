@@ -1,0 +1,45 @@
+{
+ "nome": "es03-importar-saldo",
+ "url": "https://staging.flow.faktory.com.br/estoque/saldo",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "heading",
+    "name": "Importar saldo"
+   },
+   "caixa": {
+    "x": 280,
+    "y": 211,
+    "w": 128,
+    "h": 29
+   }
+  },
+  {
+   "alvo": {
+    "text": "Arraste e solte seu arquivo Excel",
+    "exact": true
+   },
+   "caixa": {
+    "x": 828,
+    "y": 524,
+    "w": 265,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "text": "Planilhas Modelo",
+    "exact": true
+   },
+   "caixa": {
+    "x": 251,
+    "y": 701,
+    "w": 159,
+    "h": 19
+   }
+  }
+ ],
+ "em": "2026-11-17T14:24:52.595Z"
+}

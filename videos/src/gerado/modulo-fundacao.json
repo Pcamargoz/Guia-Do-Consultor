@@ -1,0 +1,1103 @@
+{
+ "id": "modulo-fundacao",
+ "titulo": "Cadastros e Fundação",
+ "subtitulo": "O módulo completo: da empresa ao primeiro pedido de teste",
+ "trilha": "Metodologia do Consultor · vídeo completo do módulo",
+ "proximo": "CRM",
+ "icone": "ferramenta",
+ "semVoz": true,
+ "focoMin": 2.6,
+ "fontes": [
+  "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao",
+  "guia:public/manuais/fundacao/guia.json",
+  "harness:oficial-cad-a-regras",
+  "harness:funcional-cadastros-participante-produto-e-projeto",
+  "harness:regra-geral-os-dados-pertencem-a-empresa-e-uma-empresa-nova-comeca-vazia"
+ ],
+ "trechos": [
+  {
+   "id": "01",
+   "cena": "abertura",
+   "fala": "Todo módulo usa os cadastros da Fundação. Neste vídeo: empresa e regime, certificado e série, usuários, participantes, produtos, pagamento, CFOP, carga inicial e o pedido de teste.",
+   "inicio": 0,
+   "duracao": 16.329,
+   "fala_s": 15.429,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "02",
+   "cena": "status",
+   "etapas": [
+    "Planejamento",
+    "Em andamento",
+    "Concluída",
+    "Cancelada"
+   ],
+   "destaque": 0,
+   "fala": "A obra é o cadastro que fecha a Fundação. Ela nasce em Planejamento e liga pedido, compras, produção e o painel financeiro do projeto.",
+   "inicio": 16.329,
+   "duracao": 14.614,
+   "fala_s": 13.714,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "03",
+   "cena": "status",
+   "etapas": [
+    "Planejamento",
+    "Em andamento",
+    "Concluída",
+    "Cancelada"
+   ],
+   "destaque": 1,
+   "fala": "Com a execução, a obra passa a Em andamento. Ela ainda pode ficar Pausada e termina Concluída ou Cancelada.",
+   "inicio": 30.943,
+   "duracao": 11.757,
+   "fala_s": 10.857,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "04",
+   "cena": "regra",
+   "n": 1,
+   "titulo": "A versão limita o regime",
+   "icone": "cadeado",
+   "texto": "Starter e Standard só aceitam Simples Nacional. Empresas ativas: Starter 1, linha Standard até 3, Pro sem limite.",
+   "fonte": "oficial-cad-a-regras#CAD-EMP-005",
+   "fala": "Regra 1. A versão contratada limita o regime e o número de empresas. Lucro Presumido e Lucro Real não gravam no Starter e no Standard. Confira antes do kickoff.",
+   "inicio": 42.7,
+   "duracao": 17.471,
+   "fala_s": 16.571,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "05",
+   "cena": "regra",
+   "n": 2,
+   "titulo": "O CNPJ não muda",
+   "icone": "alerta",
+   "texto": "O CNPJ não muda depois de gravado. Errou, é preciso criar outra empresa.",
+   "fonte": "oficial-cad-a-regras#CAD-EMP-003",
+   "critica": true,
+   "fala": "Regra 2. O CNPJ da empresa não muda depois de salvo. Confira contra o cartão CNPJ antes de gravar: se errar, só criando outra empresa.",
+   "inicio": 60.171,
+   "duracao": 15.186,
+   "fala_s": 14.286,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "06",
+   "cena": "regra",
+   "n": 3,
+   "titulo": "Sem certificado, sem nota",
+   "icone": "nota",
+   "texto": "A empresa guarda certificado, ambiente, provedor, série e próximo número. Sem certificado válido e ambiente, a emissão é barrada.",
+   "fonte": "oficial-cad-a-regras#CAD-EMP-006",
+   "fala": "Regra 3. Sem certificado válido e ambiente configurado, nenhuma nota sai. A série e o próximo número continuam a numeração do sistema antigo.",
+   "inicio": 75.357,
+   "duracao": 14.043,
+   "fala_s": 13.143,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "07",
+   "cena": "regra",
+   "n": 4,
+   "titulo": "Um cadastro, vários papéis",
+   "icone": "tag",
+   "texto": "Todo participante precisa de pelo menos um papel. Papel de negócio exige CPF/CNPJ, IE, CEP e endereço completo.",
+   "fonte": "oficial-cad-a-regras#CAD-PAR-001",
+   "fala": "Regra 4. Cliente, fornecedor, vendedor e lead são o mesmo participante. Todo participante precisa de pelo menos um papel. Papel de negócio exige documento, IE e endereço completo.",
+   "inicio": 89.4,
+   "duracao": 16.9,
+   "fala_s": 16,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "08",
+   "cena": "regra",
+   "n": 5,
+   "titulo": "CPF/CNPJ não repete",
+   "icone": "check",
+   "texto": "CPF/CNPJ é único no cliente do Flow, contando os inativos. O sistema oferece reativar o cadastro existente.",
+   "fonte": "oficial-cad-a-regras#CAD-PAR-006",
+   "fala": "Regra 5. O CPF/CNPJ não se repete, nem com cadastros inativos. Antes de criar, pesquise. Unifique os duplicados da base antiga antes da carga.",
+   "inicio": 106.3,
+   "duracao": 14.614,
+   "fala_s": 13.714,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "09",
+   "cena": "regra",
+   "n": 6,
+   "titulo": "A categoria decide o preço",
+   "icone": "estoque",
+   "texto": "O preço do item é decidido só pela categoria (Unitário, Peso, Área). O tipo da categoria trava quando os produtos têm saldo.",
+   "fonte": "oficial-cad-a-regras#CAD-PRO-020",
+   "critica": true,
+   "fala": "Regra 6. Quem decide o preço é a categoria, nunca a unidade. Categoria errada dá preço errado em todos os pedidos. E o tipo trava depois que há saldo.",
+   "inicio": 120.914,
+   "duracao": 17.471,
+   "fala_s": 16.571,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "10",
+   "cena": "regra",
+   "n": 7,
+   "titulo": "Sigla da unidade igual",
+   "icone": "caixa",
+   "texto": "Sigla da unidade com até 6 caracteres. Sigla do produto diferente da cadastrada na empresa só falha ao salvar o pedido.",
+   "fonte": "oficial-cad-a-regras#CAD-UNI-001",
+   "fala": "Regra 7. A sigla da unidade tem até 6 letras e precisa ser igual no produto e na empresa. PÇ é diferente de PC, e o erro só aparece ao salvar o pedido.",
+   "inicio": 138.385,
+   "duracao": 19.757,
+   "fala_s": 18.857,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "11",
+   "cena": "tela",
+   "captura": "fu01-assinatura",
+   "titulo": "Minha Assinatura",
+   "rotulo": "Assinatura › Minha Assinatura",
+   "focos": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "nomes": [
+    "Enterprise",
+    "Usuários do Sistema",
+    "Empresas ativas",
+    "Módulos disponíveis hoje"
+   ],
+   "impacto": 0,
+   "fala": "Comece em Assinatura, Minha Assinatura, com o administrador do cliente. Leia o pacote contratado, as vagas de usuários, as empresas ativas e os módulos disponíveis. Os números precisam bater com o que foi vendido.",
+   "plano": {
+    "menu": "Minha Assinatura",
+    "mostrar": "a página da assinatura com versão, limites de empresas e usuários e módulos contratados visíveis",
+    "alvos": [
+     "versão contratada",
+     "limite de empresas e de usuários",
+     "módulos contratados"
+    ],
+    "acoes": [
+     "abrir Minha Assinatura e não clicar em nada que altere o plano"
+    ]
+   },
+   "inicio": 158.142,
+   "duracao": 20.329,
+   "fala_s": 19.429,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-fundacao/fu01-assinatura.png",
+   "caixas": [
+    {
+     "x": 412,
+     "y": 257,
+     "w": 1392,
+     "h": 51
+    },
+    {
+     "x": 447,
+     "y": 692,
+     "w": 159,
+     "h": 24
+    },
+    {
+     "x": 1338,
+     "y": 692,
+     "w": 128,
+     "h": 24
+    },
+    {
+     "x": 1041,
+     "y": 685,
+     "w": 182,
+     "h": 49
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "12",
+   "cena": "tela",
+   "captura": "fu02-empresa",
+   "titulo": "A empresa e o regime",
+   "rotulo": "Configurações › Empresas › editar",
+   "focos": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "nomes": [
+    "CPF/CNPJ",
+    "CNAE",
+    "Regime de Apuração",
+    "Endereço"
+   ],
+   "impacto": 2,
+   "fala": "Em Configurações, Empresas, abra a empresa em Editar. Confira CNPJ, CNAE, Regime de Apuração e endereço contra o cartão CNPJ. A primeira empresa nasce com CNAE fixo e sem regime.",
+   "plano": {
+    "menu": "Configurações › Empresas",
+    "mostrar": "o formulário da empresa aberto pelo lápis, com CNPJ, CNAE, regime de apuração e endereço",
+    "alvos": [
+     "CPF/CNPJ",
+     "CNAE",
+     "campo do regime de apuração",
+     "bloco de endereço"
+    ],
+    "acoes": [
+     "clicar no lápis da primeira empresa",
+     "não salvar; sair com Cancelar"
+    ]
+   },
+   "inicio": 178.471,
+   "duracao": 18.043,
+   "fala_s": 17.143,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-fundacao/fu02-empresa.png",
+   "caixas": [
+    {
+     "x": 990,
+     "y": 286,
+     "w": 216,
+     "h": 48
+    },
+    {
+     "x": 990,
+     "y": 386,
+     "w": 442,
+     "h": 48
+    },
+    {
+     "x": 1441,
+     "y": 382,
+     "w": 442,
+     "h": 48
+    },
+    {
+     "x": 1034,
+     "y": 572,
+     "w": 77,
+     "h": 24
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "13",
+   "cena": "tela",
+   "captura": "fu03-certificados",
+   "titulo": "Certificado e série",
+   "rotulo": "Faturamento › Configurações › Certificados",
+   "focos": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "nomes": [
+    "Não Configurado",
+    "Validade",
+    "Homologação",
+    "Configuração Guiada"
+   ],
+   "impacto": 1,
+   "fala": "Em Certificados, cada empresa mostra o Status e a Validade do certificado A1. A senha quem digita é o cliente. O Ambiente fica em Homologação. A Configuração Guiada percorre certificado, configurações fiscais e ambiente.",
+   "plano": {
+    "menu": "Faturamento › Configurações › Certificados",
+    "mostrar": "a tela de certificados com situação, validade e ambiente, sem nenhum campo de senha preenchido",
+    "alvos": [
+     "situação e validade do certificado",
+     "Configurar Série NF-e",
+     "ambiente (homologação)"
+    ],
+    "acoes": [
+     "não enviar arquivo .pfx, não abrir a sincronização com o provedor e não gravar série"
+    ]
+   },
+   "inicio": 196.514,
+   "duracao": 20.329,
+   "fala_s": 19.429,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-fundacao/fu03-certificados.png",
+   "caixas": [
+    {
+     "x": 1277,
+     "y": 282,
+     "w": 115,
+     "h": 46
+    },
+    {
+     "x": 1406,
+     "y": 203,
+     "w": 100,
+     "h": 68
+    },
+    {
+     "x": 920,
+     "y": 292,
+     "w": 123,
+     "h": 26
+    },
+    {
+     "x": 1646,
+     "y": 134,
+     "w": 236,
+     "h": 48
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "14",
+   "cena": "tela",
+   "captura": "fu04-perfis",
+   "titulo": "Perfis de Acesso",
+   "rotulo": "Segurança › Perfis de Acesso",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "Perfis de Acesso",
+    "17 perfis",
+    "Faturista"
+   ],
+   "fala": "Em Segurança, Perfis de Acesso, o sistema já traz perfis prontos, como Faturista, cada um com suas permissões. Escolha com o cliente o perfil de cada função. Crie perfil novo só se nenhum servir.",
+   "plano": {
+    "menu": "Segurança › Perfis de Acesso",
+    "mostrar": "a lista de perfis prontos",
+    "alvos": [
+     "título Perfis de Acesso",
+     "lista de perfis (ex.: Faturista)"
+    ],
+    "acoes": [
+     "só rolar a lista"
+    ]
+   },
+   "inicio": 216.843,
+   "duracao": 20.329,
+   "fala_s": 19.429,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-fundacao/fu04-perfis.png",
+   "caixas": [
+    {
+     "x": 365,
+     "y": 144,
+     "w": 440,
+     "h": 38
+    },
+    {
+     "x": 845,
+     "y": 251,
+     "w": 85,
+     "h": 26
+    },
+    {
+     "x": 1393,
+     "y": 558,
+     "w": 121,
+     "h": 34
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "15",
+   "cena": "tela",
+   "captura": "fu05-usuarios",
+   "titulo": "Usuários e convites",
+   "rotulo": "Segurança › Usuários",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "Convidar Usuário",
+    "Vagas de Sistema",
+    "Ativo"
+   ],
+   "impacto": 0,
+   "fala": "Em Usuários, clique em Convidar Usuário e convide cada pessoa já com o perfil. O e-mail é único em todo o Flow. O quadro de vagas soma ativos e convites pendentes: cancele os convites que não serão usados.",
+   "plano": {
+    "menu": "Segurança › Usuários",
+    "mostrar": "a lista de usuários com a coluna de perfil e o botão de convite",
+    "alvos": [
+     "botão Convidar Usuário",
+     "coluna Perfil",
+     "situação do convite (pendente/ativo)"
+    ],
+    "acoes": [
+     "não clicar em Convidar Usuário"
+    ]
+   },
+   "inicio": 237.172,
+   "duracao": 22.614,
+   "fala_s": 21.714,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-fundacao/fu05-usuarios.png",
+   "caixas": [
+    {
+     "x": 500,
+     "y": 418,
+     "w": 180,
+     "h": 48
+    },
+    {
+     "x": 326,
+     "y": 115,
+     "w": 1574,
+     "h": 122
+    },
+    {
+     "x": 1324,
+     "y": 708,
+     "w": 109,
+     "h": 43
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "16",
+   "cena": "tela",
+   "captura": "fu06-participantes",
+   "titulo": "Participantes",
+   "rotulo": "Cadastros › Participantes",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "Pesquisar",
+    "Novo Participante",
+    "Status"
+   ],
+   "fala": "Em Cadastros, Participantes, pesquise antes de criar: o sistema recusa CPF/CNPJ repetido. Cliente, fornecedor, vendedor e lead ficam todos nesta mesma lista.",
+   "plano": {
+    "menu": "Cadastros › Participantes",
+    "mostrar": "a lista com Código, Razão Social / Nome, Nome Fantasia, CPF/CNPJ e Status",
+    "alvos": [
+     "campo de pesquisa",
+     "botão + Novo Participante",
+     "coluna Status"
+    ],
+    "acoes": [
+     "só exibir a lista"
+    ]
+   },
+   "inicio": 259.786,
+   "duracao": 13.471,
+   "fala_s": 12.571,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-fundacao/fu06-participantes.png",
+   "caixas": [
+    {
+     "x": 376,
+     "y": 275,
+     "w": 538,
+     "h": 43
+    },
+    {
+     "x": 1665,
+     "y": 149,
+     "w": 198,
+     "h": 43
+    },
+    {
+     "x": 1459,
+     "y": 338,
+     "w": 278,
+     "h": 43
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "17",
+   "cena": "tela",
+   "captura": "fu07-novo-participante",
+   "titulo": "Dados Gerais",
+   "rotulo": "Participantes › + Novo Participante",
+   "focos": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "nomes": [
+    "Tipo (PF/PJ)",
+    "Razão Social / Nome",
+    "CPF/CNPJ",
+    "Inscrição Estadual / RG",
+    "Não Contribuinte"
+   ],
+   "impacto": 3,
+   "fala": "Em Novo Participante, os obrigatórios são Tipo (PF/PJ), Razão Social / Nome, CPF/CNPJ e Inscrição Estadual / RG. Sem IE, use ISENTO ou ligue Não Contribuinte.",
+   "plano": {
+    "menu": "Cadastros › Participantes › + Novo Participante",
+    "mostrar": "o formulário vazio na seção Dados Gerais",
+    "alvos": [
+     "Tipo (PF/PJ)",
+     "Razão Social / Nome",
+     "CPF/CNPJ",
+     "Inscrição Estadual / RG",
+     "chave Não Contribuinte"
+    ],
+    "acoes": [
+     "clicar em + Novo Participante",
+     "não preencher nem salvar"
+    ]
+   },
+   "inicio": 273.257,
+   "duracao": 15.757,
+   "fala_s": 14.857,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-fundacao/fu07-novo-participante.png",
+   "caixas": [
+    {
+     "x": 1216,
+     "y": 170,
+     "w": 216,
+     "h": 48
+    },
+    {
+     "x": 990,
+     "y": 266,
+     "w": 442,
+     "h": 48
+    },
+    {
+     "x": 990,
+     "y": 362,
+     "w": 442,
+     "h": 48
+    },
+    {
+     "x": 1441,
+     "y": 362,
+     "w": 442,
+     "h": 48
+    },
+    {
+     "x": 1216,
+     "y": 468,
+     "w": 53,
+     "h": 29
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "18",
+   "cena": "tela",
+   "captura": "fu08-classificacao",
+   "titulo": "Conta de fluxo e papel",
+   "rotulo": "Novo Participante › Classificação",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "Conta de Fluxo de Caixa Receita",
+    "É Cliente?",
+    "Cancelar"
+   ],
+   "impacto": 0,
+   "fala": "Mais abaixo, a Conta de Fluxo de Caixa Receita vai para o financeiro do pedido. Em Classificação, ligue o papel: É Cliente?, É Fornecedor?, É Vendedor? Para treinar, saia em Cancelar.",
+   "plano": {
+    "menu": "Cadastros › Participantes › + Novo Participante",
+    "mostrar": "as seções Receita / Despesa e Classificação do mesmo formulário vazio",
+    "alvos": [
+     "Conta de Fluxo de Caixa Receita",
+     "É Cliente?",
+     "botão Cancelar"
+    ],
+    "acoes": [
+     "rolar o formulário até Classificação",
+     "fechar com Cancelar ao terminar"
+    ]
+   },
+   "inicio": 289.014,
+   "duracao": 18.614,
+   "fala_s": 17.714,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-fundacao/fu08-classificacao.png",
+   "caixas": [
+    {
+     "x": 1006,
+     "y": 314,
+     "w": 259,
+     "h": 24
+    },
+    {
+     "x": 1006,
+     "y": 509,
+     "w": 53,
+     "h": 29
+    },
+    {
+     "x": 1690,
+     "y": 986,
+     "w": 103,
+     "h": 48
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "19",
+   "cena": "tela",
+   "captura": "fu09-categorias",
+   "titulo": "Categorias de Produto",
+   "rotulo": "Configurações › Categorias de Produto",
+   "focos": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "nomes": [
+    "Categorias de Produto",
+    "Preço calculado por",
+    "Perfil",
+    "Vidro"
+   ],
+   "impacto": 1,
+   "fala": "Em Categorias de Produto, revise as de fábrica com o cliente. O Preço calculado por segue a decisão do kickoff: aqui, Perfil é por Peso e Vidro é por Área.",
+   "plano": {
+    "menu": "Configurações › Categorias de Produto",
+    "mostrar": "a lista de categorias de fábrica com o tipo e o Preço calculado por",
+    "alvos": [
+     "título Categorias de Produto",
+     "coluna ou campo Preço calculado por"
+    ],
+    "acoes": [
+     "só exibir a lista; se o preço não aparecer na lista, abrir uma categoria pelo lápis e sair sem salvar"
+    ]
+   },
+   "inicio": 307.628,
+   "duracao": 18.043,
+   "fala_s": 17.143,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-fundacao/fu09-categorias.png",
+   "caixas": [
+    {
+     "x": 433,
+     "y": 140,
+     "w": 247,
+     "h": 34
+    },
+    {
+     "x": 1106,
+     "y": 338,
+     "w": 424,
+     "h": 43
+    },
+    {
+     "x": 348,
+     "y": 700,
+     "w": 477,
+     "h": 64
+    },
+    {
+     "x": 348,
+     "y": 827,
+     "w": 477,
+     "h": 63
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "20",
+   "cena": "tela",
+   "captura": "fu10-novo-produto",
+   "titulo": "Classificações Fiscais",
+   "rotulo": "Cadastros › Produtos › + Novo Produto",
+   "focos": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "nomes": [
+    "Categoria do Produto",
+    "Unidade de Medida",
+    "NCM",
+    "Origem da Mercadoria"
+   ],
+   "impacto": 2,
+   "fala": "Em Novo Produto, são 5 obrigatórios: Descrição, Categoria do Produto, Unidade de Medida, NCM e Origem da Mercadoria. Nunca use o NCM 99999999 À classificar como padrão.",
+   "plano": {
+    "menu": "Cadastros › Produtos › + Novo Produto",
+    "mostrar": "o formulário vazio com Dados Básicos e Classificações Fiscais",
+    "alvos": [
+     "Categoria do Produto",
+     "Unidade de Medida",
+     "NCM",
+     "Origem da Mercadoria"
+    ],
+    "acoes": [
+     "clicar em + Novo Produto",
+     "rolar até Classificações Fiscais",
+     "sair com Cancelar"
+    ]
+   },
+   "inicio": 325.671,
+   "duracao": 16.329,
+   "fala_s": 15.429,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-fundacao/fu10-novo-produto.png",
+   "caixas": [
+    {
+     "x": 1021,
+     "y": 250,
+     "w": 249,
+     "h": 24
+    },
+    {
+     "x": 1006,
+     "y": 576,
+     "w": 208,
+     "h": 48
+    },
+    {
+     "x": 1239,
+     "y": 588,
+     "w": 117,
+     "h": 24
+    },
+    {
+     "x": 1021,
+     "y": 679,
+     "w": 257,
+     "h": 24
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "21",
+   "cena": "tela",
+   "captura": "fu11-condicao",
+   "titulo": "Condição de pagamento",
+   "rotulo": "Configurações › Condições de Pagamento › Nova Condição",
+   "focos": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "nomes": [
+    "Descrição",
+    "Tipo",
+    "Adicionar",
+    "Total: 100.00%"
+   ],
+   "impacto": 2,
+   "fala": "Em Condições de Pagamento, Nova Condição pede Descrição, Tipo e as parcelas com os Dias. Adicionar inclui outra parcela, e cada parcela vira um título. Sem o Total em 100%, não grava.",
+   "plano": {
+    "menu": "Vendas › Configurações › Condições de Pagamento",
+    "mostrar": "o formulário da nova condição aberto, sem gravar",
+    "alvos": [
+     "botão + Nova Condição",
+     "botão + Adicionar",
+     "selo Total"
+    ],
+    "acoes": [
+     "clicar em + Nova Condição",
+     "não clicar em Criar Condição de Pagamento; fechar o diálogo"
+    ]
+   },
+   "inicio": 342,
+   "duracao": 19.186,
+   "fala_s": 18.286,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-fundacao/fu11-condicao.png",
+   "caixas": [
+    {
+     "x": 1193,
+     "y": 388,
+     "w": 315,
+     "h": 48
+    },
+    {
+     "x": 1527,
+     "y": 388,
+     "w": 315,
+     "h": 48
+    },
+    {
+     "x": 1705,
+     "y": 582,
+     "w": 137,
+     "h": 43
+    },
+    {
+     "x": 1564,
+     "y": 590,
+     "w": 131,
+     "h": 26
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "22",
+   "cena": "tela",
+   "captura": "fu12-cfop",
+   "titulo": "CFOPs de saída",
+   "rotulo": "Faturamento › Configurações › CFOP",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "CFOP",
+    "5101",
+    "Venda de produção do estabelecimento"
+   ],
+   "fala": "Na lista de CFOP, pesquise 510 e localize com o contador os de venda: 5101, 5102 e os interestaduais 6101 e 6102. Não existe cadastro de natureza de operação: a natureza é a descrição do CFOP.",
+   "plano": {
+    "menu": "Fiscal › Configurações › CFOP",
+    "mostrar": "a lista de CFOPs pesquisada por 510",
+    "alvos": [
+     "título CFOP",
+     "linhas 5101 e 5102"
+    ],
+    "acoes": [
+     "digitar 510 na pesquisa (só filtra a lista)"
+    ]
+   },
+   "inicio": 361.186,
+   "duracao": 21.471,
+   "fala_s": 20.571,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-fundacao/fu12-cfop.png",
+   "caixas": [
+    {
+     "x": 433,
+     "y": 140,
+     "w": 420,
+     "h": 34
+    },
+    {
+     "x": 362,
+     "y": 402,
+     "w": 32,
+     "h": 23
+    },
+    {
+     "x": 751,
+     "y": 382,
+     "w": 673,
+     "h": 64
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "23",
+   "cena": "tela",
+   "captura": "fu13-importar",
+   "titulo": "Carga via Excel",
+   "rotulo": "Cadastros › Produtos › Mais…",
+   "focos": [
+    0,
+    1
+   ],
+   "nomes": [
+    "Mais…",
+    "Importar Dados"
+   ],
+   "impacto": 1,
+   "fala": "Com os cadastros de apoio prontos, traga a base: na lista de Produtos, Mais… e Importar Dados, o cadastro em lote via planilha. Primeiro produtos, depois participantes e contatos. Valide antes de executar.",
+   "plano": {
+    "menu": "Cadastros › Produtos",
+    "mostrar": "o menu Mais… aberto com a opção de importar via Excel",
+    "alvos": [
+     "botão Mais…",
+     "opção Importar … via Excel"
+    ],
+    "acoes": [
+     "clicar em Mais… e deixar o menu aberto",
+     "não escolher planilha nem executar a importação"
+    ]
+   },
+   "inicio": 382.657,
+   "duracao": 19.757,
+   "fala_s": 18.857,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-fundacao/fu13-importar.png",
+   "caixas": [
+    {
+     "x": 1487,
+     "y": 149,
+     "w": 85,
+     "h": 43
+    },
+    {
+     "x": 1276,
+     "y": 341,
+     "w": 286,
+     "h": 58
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "24",
+   "cena": "tela",
+   "captura": "fu14-pedido-teste",
+   "titulo": "A prova: pedido de teste",
+   "rotulo": "Vendas › Pedidos de Venda › + Novo Pedido",
+   "focos": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "nomes": [
+    "Empresa",
+    "Cliente",
+    "Vendedor",
+    "Condição de Pagamento",
+    "CFOP"
+   ],
+   "impacto": 4,
+   "fala": "A prova final é um pedido. Em Novo Pedido, Empresa, Cliente, Vendedor e Condição de Pagamento vêm dos cadastros do roteiro. O CFOP só libera depois de Empresa e Cliente.",
+   "plano": {
+    "menu": "Vendas › Pedidos de Venda › + Novo Pedido",
+    "mostrar": "o cabeçalho do novo pedido vazio, com o CFOP ainda bloqueado",
+    "alvos": [
+     "Empresa",
+     "Cliente",
+     "Vendedor",
+     "Condição de Pagamento",
+     "CFOP"
+    ],
+    "acoes": [
+     "clicar em + Novo Pedido",
+     "não preencher nem salvar; sair sem gravar"
+    ]
+   },
+   "inicio": 402.414,
+   "duracao": 18.043,
+   "fala_s": 17.143,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-fundacao/fu14-pedido-teste.png",
+   "caixas": [
+    {
+     "x": 396,
+     "y": 281,
+     "w": 166,
+     "h": 24
+    },
+    {
+     "x": 887,
+     "y": 281,
+     "w": 407,
+     "h": 24
+    },
+    {
+     "x": 1378,
+     "y": 281,
+     "w": 407,
+     "h": 24
+    },
+    {
+     "x": 887,
+     "y": 389,
+     "w": 289,
+     "h": 24
+    },
+    {
+     "x": 380,
+     "y": 509,
+     "w": 472,
+     "h": 48
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "25",
+   "cena": "alertas",
+   "itens": [
+    "Senha do certificado e de usuário: quem digita é o cliente.",
+    "CNPJ não muda e o tipo da categoria trava com saldo.",
+    "Cadastro é compartilhado: mudar um afeta notas, títulos e produção."
+   ],
+   "fala": "Três cuidados. Senha do certificado e de usuário, quem digita é o cliente. CNPJ e tipo da categoria: confira antes de salvar. E o cadastro é compartilhado: mudar um participante ou produto afeta notas, títulos, compras e produção.",
+   "inicio": 420.457,
+   "duracao": 22.614,
+   "fala_s": 21.714,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "26",
+   "cena": "fechamento",
+   "topicos": [
+    "Licença e regime antes do kickoff",
+    "Categoria certa antes do saldo",
+    "Prove tudo num pedido de teste"
+   ],
+   "fala": "Resumindo: confira licença e regime antes de começar. Acerte a categoria antes de lançar saldo. E prove tudo num pedido de teste. O checklist e o manual da Fundação estão logo abaixo.",
+   "inicio": 443.071,
+   "duracao": 19.186,
+   "fala_s": 18.286,
+   "audio": null,
+   "legendas": null
+  }
+ ],
+ "pendencias": [
+  "Nome da opção que sincroniza o emitente com o provedor (Certificados) e rótulo do campo do CFOP que diz se ele gera financeiro não estão validados: não aparecem nas falas.",
+  "Caminho do NCM não validado (Fiscal › Configurações › NCM × grupo de cadastros): não há cena de NCM; a fala de fu10 cita só o campo NCM do produto.",
+  "Tipo dos meios de pagamento de fábrica não validado (código SEFAZ × Duplicata Mercantil tratada como boleto): Meios de Pagamento, Contas Bancárias, Portadores e Planos de Conta ficaram sem cena.",
+  "Bloqueios de propósito (e-mail já em uso, CPF/CNPJ duplicado, produto sem NCM ou categoria, unidade não cadastrada) exigem clicar em salvar: fora do modo somente leitura, sem tela.",
+  "Nada é criado: participante, produto, obra, condição e pedido de teste aparecem só como formulário vazio. Unidade de Medida, Cores e o formulário + Novo Projeto ficaram sem cena.",
+  "Status da obra: a Fundação não tem um documento com fluxo de status próprio; as etapas vêm do Status do Projeto (manual da Fundação: Planejamento, Em andamento, Pausada, Concluída, Cancelada). Divergência de caminho de Projetos: menu Cadastros › Projetos × topo da tela Início › Configurações › Projetos.",
+  "fu03-certificados: Certificados existe em Faturamento › Configurações (/configuracoes/certificados), mas o botão Configurar Série NF-e não aparece na lista; a série deve estar na Configuração Guiada (etapa Configurações Fiscais), não aberta para não avançar o assistente. Nenhuma empresa do staging tem certificado (Status Não Configurado, Validade vazia).",
+  "fu04-perfis: o staging traz 17 perfis (não 32); a fala deixou de citar a quantidade.",
+  "fu05-usuarios: a lista de usuários não tem coluna Perfil; o foco passou ao quadro de vagas (ativos + convites pendentes) e à coluna Ativo."
+ ],
+ "duracaoTotal": 463.757
+}

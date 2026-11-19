@@ -1,0 +1,538 @@
+{
+ "id": "modulo-cem",
+ "titulo": "Integração CEM",
+ "subtitulo": "O módulo completo: do orçamento fechado no CEM ao pedido de venda",
+ "trilha": "Metodologia do Consultor · vídeo completo do módulo",
+ "proximo": "Vendas",
+ "icone": "seta",
+ "semVoz": true,
+ "focoMin": 2.6,
+ "fontes": [
+  "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem",
+  "guia:public/manuais/cem/guia.json",
+  "harness:oficial-int-a-regras",
+  "harness:oficial-int-b-processos"
+ ],
+ "trechos": [
+  {
+   "id": "01",
+   "cena": "abertura",
+   "fala": "O orçamento fechado no CEM vira pedido de venda sem redigitar. Neste vídeo: escolher e conectar o sistema, completar os Padrões, importar, ler o pedido, reimportar e o Faturamento em Nível."
+  },
+  {
+   "id": "02",
+   "cena": "status",
+   "etapas": [
+    "Pendente",
+    "Integrada",
+    "Parcial"
+   ],
+   "destaque": 0,
+   "fala": "A obra fechada no CEM aparece Pendente na importação. Ela não tem status próprio: o estado vem do pedido gerado."
+  },
+  {
+   "id": "03",
+   "cena": "status",
+   "etapas": [
+    "Pendente",
+    "Integrada",
+    "Parcial"
+   ],
+   "destaque": 1,
+   "fala": "Importada, fica Integrada, com um pedido Em aberto. Se o orçamento cresce no CEM, fica Parcial até reimportar o saldo. Cancelar ou excluir o pedido devolve a obra a Pendente."
+  },
+  {
+   "id": "04",
+   "cena": "regra",
+   "n": 1,
+   "titulo": "Só o administrador configura",
+   "icone": "cadeado",
+   "texto": "Configurar integração só abre para o administrador do cliente. Os cards dependem do sistema escolhido.",
+   "fonte": "oficial-int-a-regras#INT-CFG-001",
+   "fala": "Regra 1. Configurar integração só abre para o administrador do cliente. O sistema escolhido decide os cards da tela e o botão de importação dos pedidos."
+  },
+  {
+   "id": "05",
+   "cena": "regra",
+   "n": 2,
+   "titulo": "Modo do código antes da 1ª obra",
+   "icone": "tag",
+   "texto": "Modo do código do produto: desligado, ligado (obra + Tipo) ou automático. Fica gravado na obra; mudar depois não afeta as já integradas.",
+   "fonte": "oficial-int-a-regras#INT-DSK-014",
+   "critica": true,
+   "fala": "Regra 2. Decida o modo do código dos produtos antes da primeira obra. Ele fica gravado na obra: mudar depois não corrige as obras já integradas."
+  },
+  {
+   "id": "06",
+   "cena": "regra",
+   "n": 3,
+   "titulo": "Padrões completos, sem parada",
+   "icone": "estoque",
+   "texto": "Produto inexistente é criado com os Padrões do tipo, só com preço de custo. Sem NCM ou unidade do tipo, a importação para.",
+   "fonte": "oficial-int-a-regras#INT-GER-014",
+   "fala": "Regra 3. Produto novo do CEM nasce com o NCM, a unidade e a categoria do Padrão do tipo. Sem o padrão, a importação para. Padrões completos, importação sem parada."
+  },
+  {
+   "id": "07",
+   "cena": "regra",
+   "n": 4,
+   "titulo": "O preço é o do CEM",
+   "icone": "carrinho",
+   "texto": "Preço unitário = preço de venda do orçamento (total ÷ quantidade). O desconto da obra é rateado por item.",
+   "fonte": "oficial-int-a-regras#INT-DSK-017",
+   "fala": "Regra 4. O preço do item é o preço de venda do orçamento, total dividido pela quantidade. O cadastro do produto não interfere. O desconto da obra é rateado entre os itens."
+  },
+  {
+   "id": "08",
+   "cena": "regra",
+   "n": 5,
+   "titulo": "Confirmação com 4 obrigatórios",
+   "icone": "check",
+   "texto": "Obrigatórios na confirmação: Empresa, CFOP, Plano de Contas, Condição de Pagamento e Padrões dos tipos presentes.",
+   "fonte": "oficial-int-a-regras#INT-DSK-011",
+   "fala": "Regra 5. Para gerar o pedido, a confirmação exige Empresa, CFOP, Plano de Contas e Condição de Pagamento. Os Padrões do Pedido de Venda já trazem esses campos preenchidos."
+  },
+  {
+   "id": "09",
+   "cena": "regra",
+   "n": 6,
+   "titulo": "Corrija na origem",
+   "icone": "lapis",
+   "texto": "Cidade e UF vêm só da origem; sem cidade resolvida, a integração para. Sanear o cadastro de clientes no CEM antes do go-live.",
+   "fonte": "oficial-int-a-regras#INT-GER-009",
+   "fala": "Regra 6. Cidade e UF do cliente vêm só do CEM. Documento, cidade, medida ou item sem valor de venda se corrigem no CEM, não no Flow."
+  },
+  {
+   "id": "10",
+   "cena": "regra",
+   "n": 7,
+   "titulo": "Reimportar traz só o saldo",
+   "icone": "seta",
+   "texto": "Saldo = orçamento − integrado em pedidos não cancelados. Sem saldo, não gera. O pedido anterior nunca é alterado; o novo leva CEM_INCREMENTAL.",
+   "fonte": "oficial-int-a-regras#INT-RIM-002",
+   "critica": true,
+   "fala": "Regra 7. Reimportar traz só o saldo, num novo pedido com a etiqueta CEM_INCREMENTAL. O pedido anterior nunca muda. Quantidade que diminui se ajusta à mão no pedido Em aberto."
+  },
+  {
+   "id": "11",
+   "cena": "tela",
+   "captura": "ce01-configurar",
+   "titulo": "Configurar integração",
+   "rotulo": "Vendas › Configurações › Configurar integração",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "Configurar integração",
+    "CEM Mobi",
+    "Sistema ativo"
+   ],
+   "impacto": 1,
+   "fala": "Em Vendas, Configurações, Configurar integração, os cartões mostram os sistemas de origem: CEM Desktop, CEM Mobi, PrefSuite ou Arquivos. O escolhido aparece em Sistema ativo.",
+   "plano": {
+    "menu": "Vendas › Configurações › Configurar integração",
+    "mostrar": "os cartões dos sistemas de origem com o sistema ativo marcado e a empresa no topo",
+    "alvos": [
+     "título Configurar integração",
+     "indicação Sistema ativo"
+    ],
+    "acoes": [
+     "só exibir; não trocar o sistema selecionado"
+    ]
+   }
+  },
+  {
+   "id": "12",
+   "cena": "tela",
+   "captura": "ce02-cem-mobi",
+   "titulo": "Conexão do CEM Mobi",
+   "rotulo": "Configurar integração › Configuração CEM Mobi",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "Conectado",
+    "Última conexão",
+    "Testar Conexão"
+   ],
+   "impacto": 0,
+   "fala": "No card Configuração CEM Mobi, o selo Conectado e a Última conexão mostram que a API responde. Sem conexão confirmada, não adianta importar. No CEM Desktop, a conexão é o pareamento do agente.",
+   "plano": {
+    "menu": "Vendas › Configurações › Configurar integração",
+    "mostrar": "o card Configuração CEM Mobi com o selo Conectado e a última conexão, sem expor a API Key",
+    "alvos": [
+     "selo Conectado",
+     "botão Testar Conexão"
+    ],
+    "acoes": [
+     "rolar até o card",
+     "não editar campos nem salvar; ocultar ou não mostrar a chave"
+    ]
+   }
+  },
+  {
+   "id": "13",
+   "cena": "tela",
+   "captura": "ce03-padroes-tipo",
+   "titulo": "Padrões por tipo de item",
+   "rotulo": "Vendas › Configurações › Padrões de Integração › Importação",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "Cadastrar produto como obra + Tipo",
+    "Padrões por tipo de item",
+    "Todos completos"
+   ],
+   "impacto": 2,
+   "fala": "Em Padrões de Integração, aba Importação, escolha o modo em Cadastrar produto como obra + Tipo. Em Padrões por tipo de item, informe NCM, unidade e categoria de cada tipo até o selo Todos completos.",
+   "plano": {
+    "menu": "Vendas › Configurações › Padrões de Integração",
+    "mostrar": "a aba Importação com o card do modo do código e o card Padrões por tipo de item",
+    "alvos": [
+     "card Cadastrar produto como obra + Tipo",
+     "card Padrões por tipo de item",
+     "selo Todos completos"
+    ],
+    "acoes": [
+     "abrir a aba Importação",
+     "não alterar nem salvar"
+    ]
+   }
+  },
+  {
+   "id": "14",
+   "cena": "tela",
+   "captura": "ce04-padroes-pedido",
+   "titulo": "Padrões do pedido",
+   "rotulo": "Padrões de Integração › Pedido de Venda",
+   "focos": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "nomes": [
+    "CFOP Padrão",
+    "Plano de Conta Padrão",
+    "Condição de Pagamento Padrão",
+    "Meio de Pagamento Padrão"
+   ],
+   "impacto": 0,
+   "fala": "Na aba Pedido de Venda, preencha CFOP Padrão, Plano de Conta Padrão, Condição de Pagamento Padrão e Meio de Pagamento Padrão. Eles chegam preenchidos na confirmação da importação.",
+   "plano": {
+    "menu": "Vendas › Configurações › Padrões de Integração",
+    "mostrar": "a aba Pedido de Venda com os quatro padrões",
+    "alvos": [
+     "CFOP Padrão",
+     "Plano de Conta Padrão",
+     "Condição de Pagamento Padrão",
+     "Meio de Pagamento Padrão"
+    ],
+    "acoes": [
+     "clicar na aba Pedido de Venda",
+     "não salvar"
+    ]
+   }
+  },
+  {
+   "id": "15",
+   "cena": "tela",
+   "captura": "ce05-botao-importar",
+   "titulo": "O botão de importação",
+   "rotulo": "Vendas › Pedidos de Venda",
+   "focos": [
+    0,
+    1
+   ],
+   "nomes": [
+    "Pedidos de Venda",
+    "Importar CEM Mobi"
+   ],
+   "impacto": 1,
+   "fala": "Em Pedidos de Venda, ao lado das opções de visualização, aparece um só botão, conforme o sistema ativo: Importar CEM, Importar CEM Mobi, Importar PrefSuite ou Importar Arquivo.",
+   "plano": {
+    "menu": "Vendas › Pedidos de Venda",
+    "mostrar": "a lista de pedidos com o botão de importação ao lado das opções de visualização",
+    "alvos": [
+     "título Pedidos de Venda",
+     "botão Importar CEM Mobi"
+    ],
+    "acoes": [
+     "só exibir a lista"
+    ]
+   }
+  },
+  {
+   "id": "16",
+   "cena": "tela",
+   "captura": "ce06-selecionar",
+   "titulo": "Escolher a obra",
+   "rotulo": "Pedidos de Venda › Importar CEM Mobi",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "Selecionar Pedido",
+    "Situação",
+    "Disponível"
+   ],
+   "impacto": 1,
+   "fala": "Clique em Importar CEM Mobi. A primeira etapa, Selecionar Pedido, lista as obras fechadas com cliente. Obra aberta no CEM não aparece. A coluna Situação diz se a obra está Disponível ou já foi integrada.",
+   "plano": {
+    "menu": "Vendas › Pedidos de Venda › Importar CEM Mobi",
+    "mostrar": "a janela de importação na primeira etapa, com a lista de obras/pedidos do CEM",
+    "alvos": [
+     "indicador de etapas da janela",
+     "lista de obras com uma obra já integrada identificada"
+    ],
+    "acoes": [
+     "clicar em Importar CEM Mobi",
+     "não selecionar nem avançar ainda"
+    ]
+   }
+  },
+  {
+   "id": "17",
+   "cena": "tela",
+   "captura": "ce07-itens",
+   "titulo": "Itens da Obra",
+   "rotulo": "Importar CEM Mobi › Itens",
+   "focos": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "nomes": [
+    "Itens da Obra",
+    "Todos os itens da obra serão importados",
+    "L × A (mm)",
+    "Cor",
+    "Valor Total"
+   ],
+   "impacto": 0,
+   "fala": "Em Itens da Obra, revise tipo, descrição, quantidade, medidas, cor e valores com o cliente. A importação traz a obra inteira: todos os itens da obra serão importados, sem escolha de itens.",
+   "plano": {
+    "menu": "Vendas › Pedidos de Venda › Importar CEM Mobi",
+    "mostrar": "a etapa Itens com as colunas do item (tipo, descrição, quantidade, medidas, valor)",
+    "alvos": [
+     "etapa Itens da Obra",
+     "colunas de medida, cor e valor"
+    ],
+    "acoes": [
+     "selecionar uma obra pendente de teste e clicar em Avançar",
+     "não chegar a clicar em Importar Pedido"
+    ]
+   }
+  },
+  {
+   "id": "18",
+   "cena": "tela",
+   "captura": "ce08-confirmacao",
+   "titulo": "Decisões",
+   "rotulo": "Importar CEM Mobi › Decisões",
+   "focos": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "nomes": [
+    "Decisões",
+    "Empresa",
+    "CFOP",
+    "Plano de Conta",
+    "Condição de Pagamento"
+   ],
+   "impacto": 1,
+   "fala": "Depois do Rateio, em Decisões, confira cliente e obra. CFOP e Plano de Conta chegam dos Padrões; Empresa e Condição de Pagamento são obrigatórias. Na Confirmação, clique em Importar Pedido uma única vez.",
+   "plano": {
+    "menu": "Vendas › Pedidos de Venda › Importar CEM Mobi",
+    "mostrar": "a etapa Confirmação com o resumo da obra e as configurações do pedido",
+    "alvos": [
+     "campo Empresa",
+     "campo CFOP",
+     "valor líquido",
+     "botão Importar Pedido"
+    ],
+    "acoes": [
+     "avançar pelas etapas sem preencher decisões novas",
+     "NÃO clicar em Importar Pedido; fechar a janela ao terminar"
+    ]
+   }
+  },
+  {
+   "id": "19",
+   "cena": "tela",
+   "captura": "ce09-pedido-importado",
+   "titulo": "O pedido que nasceu",
+   "rotulo": "Vendas › Pedidos de Venda › pedido importado",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "Modo Somente Leitura",
+    "Projeto",
+    "Status"
+   ],
+   "impacto": 0,
+   "fala": "O pedido importado nasce Em aberto e segue as regras de Vendas: depois de faturado, como este, abre em Modo Somente Leitura. O Projeto da obra vem pelo código da obra. Compare itens e total com o CEM.",
+   "plano": {
+    "menu": "Vendas › Pedidos de Venda",
+    "mostrar": "um pedido já importado do CEM aberto, com itens, total e projeto",
+    "alvos": [
+     "Status Em aberto",
+     "campo/coluna Projeto",
+     "total do pedido"
+    ],
+    "acoes": [
+     "localizar um pedido importado existente e abrir pelo lápis",
+     "não salvar; sair sem gravar"
+    ]
+   }
+  },
+  {
+   "id": "20",
+   "cena": "tela",
+   "captura": "ce10-faturamento-nivel",
+   "titulo": "Faturamento em Nível",
+   "rotulo": "Configurar integração › Faturamento em Nível",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "Faturamento em Nível",
+    "chave",
+    "Ativado"
+   ],
+   "impacto": 1,
+   "fala": "Só se contratado: no cartão Faturamento em Nível, Ativado faz a importação perguntar, obra a obra, se divide cada item em níveis, como material, esquadria e instalação.",
+   "plano": {
+    "menu": "Vendas › Configurações › Configurar integração",
+    "mostrar": "o cartão Faturamento em Nível com a chave visível",
+    "alvos": [
+     "cartão Faturamento em Nível",
+     "chave Ativado"
+    ],
+    "acoes": [
+     "rolar até o cartão",
+     "não mudar a chave"
+    ]
+   }
+  },
+  {
+   "id": "21",
+   "cena": "tela",
+   "captura": "ce11-niveis",
+   "titulo": "Níveis de Faturamento",
+   "rotulo": "Vendas › Configurações › Níveis de Faturamento",
+   "focos": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "nomes": [
+    "Novo Nível",
+    "Nome",
+    "Tipo",
+    "Peso"
+   ],
+   "impacto": 0,
+   "fala": "Em Níveis de Faturamento, cada nível tem Código, Prefixo, Nome, Tipo, Peso e Ordem. Nível de serviço gera pedido para NFS-e. Precisa haver ao menos um nível de Produto, como IND e MAT aqui.",
+   "plano": {
+    "menu": "Vendas › Configurações › Níveis de Faturamento",
+    "mostrar": "a lista de níveis cadastrados",
+    "alvos": [
+     "botão + Novo Nível",
+     "coluna Nome do nível",
+     "coluna Peso"
+    ],
+    "acoes": [
+     "só exibir a lista; não clicar em + Novo Nível"
+    ]
+   }
+  },
+  {
+   "id": "22",
+   "cena": "tela",
+   "captura": "ce12-templates",
+   "titulo": "Templates de Rateio",
+   "rotulo": "Vendas › Configurações › Templates de Rateio › Editar",
+   "focos": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "nomes": [
+    "Nível",
+    "Percentual",
+    "CFOP",
+    "Soma: 100% ✓"
+   ],
+   "impacto": 2,
+   "fala": "Em Templates de Rateio, monte a composição usual: nível, percentual, empresa, CFOP e condição. A Soma precisa fechar em exatamente 100%.",
+   "plano": {
+    "menu": "Vendas › Configurações › Templates de Rateio",
+    "mostrar": "um template existente aberto, com as linhas de nível e a Soma",
+    "alvos": [
+     "colunas Nível e Percentual",
+     "CFOP por nível",
+     "Soma"
+    ],
+    "acoes": [
+     "abrir um template existente pelo lápis",
+     "sair sem salvar"
+    ]
+   }
+  },
+  {
+   "id": "23",
+   "cena": "alertas",
+   "itens": [
+    "Clique uma única vez em Importar Pedido e aguarde.",
+    "Só obras fechadas no CEM entram, e a obra vem inteira.",
+    "O agente do CEM Desktop precisa ficar ligado."
+   ],
+   "fala": "Três cuidados. Clique uma única vez em Importar Pedido e aguarde. Só obras fechadas entram, e vêm inteiras. E no CEM Desktop o agente precisa ficar ligado: sem ele, nenhuma obra carrega."
+  },
+  {
+   "id": "24",
+   "cena": "fechamento",
+   "topicos": [
+    "Padrões completos antes da 1ª obra",
+    "O preço e o cliente vêm do CEM",
+    "Reimportar traz só o saldo"
+   ],
+   "fala": "Resumindo: complete os Padrões e decida o modo do código antes da primeira obra. Preço, cliente e medidas vêm do CEM e se corrigem lá. Reimportar traz só o saldo. O checklist e o manual da Integração CEM estão logo abaixo."
+  }
+ ],
+ "pendencias": [
+  "O staging usa CEM Mobi como sistema ativo: o pareamento do CEM Desktop (Código de pareamento, Dispositivos pareados, Bancos de Dados Configurados) e a janela Importar do CEM Desktop ficam sem tela, porque trocar o sistema grava a configuração.",
+  "Sem tela (exigem importar ou gravar): bloqueios de propósito (tipo sem padrão, item sem valor de venda, cliente sem CPF/CNPJ, obra já integrada), reimportação de revisão, cancelar o pedido para a obra voltar a Pendente e um pedido por nível.",
+  "Não validado e fora das regras: troca de cor ou medida duplicar o item (INT-RIM-008 tem o efeito como inferência e o roteiro Vendas 01 orienta cancelar e reimportar tudo).",
+  "Não validado: licença PRO do CEM Mobi e do Faturamento em Nível (roteiros Vendas 01/06 × gestora); o vídeo diz só 'se contratado'.",
+  "Não validados e fora das falas: marcas de e-mail do contato criado (INT-GER-032 × INT-MOB-011), falha durante a importação (pedido cancelado × tudo excluído), tipo de arquivo (.txt × XML/JSON) e etapa da recusa de esquadria sem cor ou medida.",
+  "ce02: não mostrar URL da API nem API Key na gravação.",
+  "ce08: a etapa Decisões exige Empresa e Condição de Pagamento para liberar Avançar; para não preencher decisões, a cena mostra Decisões (CFOP e Plano de Conta já vindos dos Padrões) e não a Confirmação. Valor líquido e o botão Importar Pedido ficaram sem tela. No Rateio, a navegação usou a aba Sem rateio (nada gravado).",
+  "ce06: nenhuma obra da lista do staging aparece como já integrada (todas Disponível); a fala cita a coluna Situação sem mostrar o caso integrado. A lista do CEM Mobi (API de QA) levou cerca de 1 minuto para carregar.",
+  "ce09: não há pedido importado Em aberto no staging; a cena usa o PV-000010 (projeto 26-03-1662, itens IND_ com marca Esq/Nivel do CEM), já Faturado e em Modo Somente Leitura. Origem CEM inferida pelos itens, não por campo explícito.",
+  "Caminho conferido: Níveis de Faturamento e Templates de Rateio ficam em Vendas › Configurações (/configuracoes/niveis-faturamento e /configuracoes/rateio-templates). Faturamento em Nível está Ativado no staging."
+ ]
+}

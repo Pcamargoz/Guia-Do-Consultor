@@ -175,6 +175,78 @@
           "resumo": "Toda nota de venda nasce de um pedido. Neste vídeo: faturar, conferir a nota, salvar, transmitir, ver os reflexos e cancelar na ordem certa.",
           "duracao": "5 min 45 s",
           "status": "pronto"
+        },
+        {
+          "id": "modulo-fundacao",
+          "numero": "Módulo",
+          "titulo": "Cadastros e Fundação: o módulo completo",
+          "resumo": "Todo módulo usa os cadastros da Fundação. Neste vídeo: empresa e regime, certificado e série, usuários, participantes, produtos, pagamento, CFOP, carga inicial e o pedido de teste.",
+          "duracao": "7 min 45 s",
+          "status": "pronto"
+        },
+        {
+          "id": "modulo-crm",
+          "numero": "Módulo",
+          "titulo": "CRM: o módulo completo",
+          "resumo": "Todo pedido do CRM começa num lead. Neste vídeo: cadastrar, qualificar pelo BANT, converter, trabalhar a oportunidade no Pipeline, ganhar, gerar o pedido e ler os painéis.",
+          "duracao": "6 min 32 s",
+          "status": "pronto"
+        },
+        {
+          "id": "modulo-cem",
+          "numero": "Módulo",
+          "titulo": "Integração CEM: o módulo completo",
+          "resumo": "O orçamento fechado no CEM vira pedido de venda sem redigitar. Neste vídeo: escolher e conectar o sistema, completar os Padrões, importar, ler o pedido, reimportar e o Faturamento em Nível.",
+          "duracao": "7 min 17 s",
+          "status": "pronto"
+        },
+        {
+          "id": "modulo-compras",
+          "numero": "Módulo",
+          "titulo": "Compras: o módulo completo",
+          "resumo": "Toda compra começa por uma necessidade. Neste vídeo: solicitação, sugestão, cotação, pedido de compra, alçada, acompanhamento da entrega e o reflexo no Recebimento e no Financeiro.",
+          "duracao": "7 min 00 s",
+          "status": "pronto"
+        },
+        {
+          "id": "modulo-recebimento",
+          "numero": "Módulo",
+          "titulo": "Recebimento: o módulo completo",
+          "resumo": "Toda mercadoria que chega passa por uma nota de recebimento. Neste vídeo: preparar o módulo, receber o XML, gerar a nota pelo pedido, entrega parcial, finalizar e ver o estoque e o título a pagar.",
+          "duracao": "7 min 17 s",
+          "status": "pronto"
+        },
+        {
+          "id": "modulo-estoque",
+          "numero": "Módulo",
+          "titulo": "Estoque: o módulo completo",
+          "resumo": "No Flow, o saldo nunca é digitado: ele nasce de movimentos. Neste vídeo: locais, saldo inicial, movimentos, saldo e extrato, transferência, inventário, empréstimo e reposição.",
+          "duracao": "6 min 46 s",
+          "status": "pronto"
+        },
+        {
+          "id": "modulo-producao",
+          "numero": "Módulo",
+          "titulo": "Produção: o módulo completo",
+          "resumo": "A OP é a ordem para a fábrica produzir um item. Neste vídeo: estrutura do produto, OP a partir do pedido, baixa de material, apontamento e a entrada do produto acabado no estoque.",
+          "duracao": "6 min 45 s",
+          "status": "pronto"
+        },
+        {
+          "id": "modulo-servicos",
+          "numero": "Módulo",
+          "titulo": "Serviços e Instalação: o módulo completo",
+          "resumo": "O trabalho de campo começa no pedido vendido. Neste vídeo: medição, conferência, instalação, vistoria, assistência técnica e a gestão das equipes.",
+          "duracao": "6 min 27 s",
+          "status": "pronto"
+        },
+        {
+          "id": "modulo-projetos",
+          "numero": "Módulo",
+          "titulo": "Projetos e Obras: o módulo completo",
+          "resumo": "Na indústria de esquadrias, o projeto é a obra. Neste vídeo: cadastrar a obra, organizar estágios e etapas, ligar pedido, OP, nota e títulos, e ler o previsto × realizado.",
+          "duracao": "6 min 27 s",
+          "status": "pronto"
         }
       ]
     }

@@ -1,0 +1,262 @@
+WEBVTT
+
+00:00:01.100 --> 00:00:04.876
+O trabalho de campo começa no pedido vendido.
+
+00:00:04.876 --> 00:00:05.883
+Neste vídeo:
+
+00:00:05.883 --> 00:00:09.492
+medição, conferência, instalação, vistoria,
+
+00:00:09.492 --> 00:00:13.700
+assistência técnica e a gestão das equipes.
+
+00:00:14.000 --> 00:00:19.420
+A medição salva fica Agendada pelo botão Agendar.
+
+00:00:19.420 --> 00:00:24.886
+Depois o técnico vai à obra e mede cada vão.
+
+00:00:25.186 --> 00:00:31.691
+Concluída com a assinatura da obra, a medição fica Aguardando Conferência.
+
+00:00:31.691 --> 00:00:34.416
+Outro usuário confere e aprova.
+
+00:00:34.416 --> 00:00:38.357
+Só a medição Aprovada vira instalação.
+
+00:00:38.657 --> 00:00:39.473
+Regra 1.
+
+00:00:39.473 --> 00:00:42.126
+A medição nasce do pedido:
+
+00:00:42.126 --> 00:00:44.984
+Cliente e Projeto vêm junto.
+
+00:00:44.984 --> 00:00:49.473
+Empresa e Técnico Responsável você preenche.
+
+00:00:49.473 --> 00:00:56.400
+Existe Medição avulsa, mas o normal é medir o que foi vendido.
+
+00:00:56.700 --> 00:00:57.492
+Regra 2.
+
+00:00:57.492 --> 00:01:01.748
+Mesmo com a Data de Agendamento preenchida,
+
+00:01:01.748 --> 00:01:09.871
+a medição só fica Agendada pelo botão Agendar, que aparece depois de salvar.
+
+00:01:10.171 --> 00:01:10.891
+Regra 3.
+
+00:01:10.891 --> 00:01:14.398
+Quem mede não aprova a própria medição.
+
+00:01:14.398 --> 00:01:20.485
+Cadastre antes um conferente, vinculado a outro participante.
+
+00:01:20.785 --> 00:01:21.547
+Regra 4.
+
+00:01:21.547 --> 00:01:23.833
+A cadeia anda por botão.
+
+00:01:23.833 --> 00:01:31.166
+Gerar Instalação na medição aprovada e Gerar Assistência Técnica na vistoria.
+
+00:01:31.166 --> 00:01:35.671
+Se ninguém clicar, o serviço fica parado.
+
+00:01:35.971 --> 00:01:36.749
+Regra 5.
+
+00:01:36.749 --> 00:01:46.281
+A vistoria só nasce sozinha se a Geração automática de vistoria estiver preenchida nos parâmetros.
+
+00:01:46.281 --> 00:01:47.642
+Ela vem vazia:
+
+00:01:47.642 --> 00:01:50.285
+decida com o cliente.
+
+00:01:50.585 --> 00:01:51.271
+Regra 6.
+
+00:01:51.271 --> 00:01:54.699
+O cliente aceita uma vistoria terminada.
+
+00:01:54.699 --> 00:01:59.756
+Conclua primeiro, depois clique em Registrar Aceite.
+
+00:02:00.056 --> 00:02:00.762
+Regra 7.
+
+00:02:00.762 --> 00:02:07.912
+Pagamento de instalador só existe com equipe Terceirizada ligada a um fornecedor.
+
+00:02:07.912 --> 00:02:11.513
+Equipe interna não gera pagamento.
+
+00:02:11.813 --> 00:02:18.309
+Em Medições, leia o STATUS e o quanto já foi medido em % MEDIDO:
+
+00:02:18.309 --> 00:02:22.979
+Agendada, Em Execução, Aguardando Conferência.
+
+00:02:22.979 --> 00:02:27.842
+Nas AÇÕES fica Medir vãos, usado em campo.
+
+00:02:28.142 --> 00:02:31.718
+Em + Nova Medição, busque o pedido.
+
+00:02:31.718 --> 00:02:33.353
+Se não aparecer,
+
+00:02:33.353 --> 00:02:39.893
+ajuste o Status e desmarque Esconder pedidos que já têm medição.
+
+00:02:39.893 --> 00:02:44.171
+Depois clique em Usar este registro.
+
+00:02:44.471 --> 00:02:49.964
+Na aba Dados Gerais, Empresa e Técnico Responsável são obrigatórios.
+
+00:02:49.964 --> 00:02:51.822
+Aguardando Conferência,
+
+00:02:51.822 --> 00:02:56.265
+a medição mostra Aprovar e Reprovar a outro conferente.
+
+00:02:56.265 --> 00:03:00.500
+Depois de aprovada, aparece Gerar Instalação.
+
+00:03:00.800 --> 00:03:04.243
+Cada vão é uma abertura da obra.
+
+00:03:04.243 --> 00:03:08.978
+Na aba Vãos, informe Largura e Altura em mm.
+
+00:03:08.978 --> 00:03:14.681
+Com Exigir assinatura ligado, conclua por Medir vãos,
+
+00:03:14.681 --> 00:03:17.971
+com a assinatura da obra.
+
+00:03:18.271 --> 00:03:25.980
+A instalação pode nascer de Pedido de Venda, Ordem de Produção ou Medição.
+
+00:03:25.980 --> 00:03:34.628
+A aba Medição lista as aprovadas que ainda não têm instalação; aqui não há nenhuma,
+
+00:03:34.628 --> 00:03:37.728
+então a lista vem vazia.
+
+00:03:38.028 --> 00:03:43.048
+Em Executar, marque cada item como Conforme e conclua.
+
+00:03:43.048 --> 00:03:47.975
+A instalação concluída mostra Conferidos e Conformes,
+
+00:03:47.975 --> 00:03:52.530
+os Vínculos com medição e pedido, e Ver Vistoria.
+
+00:03:52.530 --> 00:03:58.057
+Nesta, o checklist ficou 0/2 e sem medição vinculada.
+
+00:03:58.357 --> 00:04:02.209
+Cada vistoria fica ligada a uma instalação.
+
+00:04:02.209 --> 00:04:08.120
+O RESULTADO pode ser Aprovada, Aprovada c/ Ressalvas ou Reprovada.
+
+00:04:08.120 --> 00:04:15.528
+Esta, da INS-000001, está Concluída e Aprovada, ainda sem aceite do cliente.
+
+00:04:15.828 --> 00:04:19.676
+Esta vistoria foi Aprovada sem ressalvas.
+
+00:04:19.676 --> 00:04:21.553
+Quando há ressalvas,
+
+00:04:21.553 --> 00:04:29.907
+elas ficam na aba Ressalvas e Pendências e o cabeçalho oferece Gerar Assistência Técnica.
+
+00:04:29.907 --> 00:04:35.857
+O aceite do cliente se registra na aba Aceite do Cliente.
+
+00:04:36.157 --> 00:04:38.459
+Na Assistência Técnica,
+
+00:04:38.459 --> 00:04:47.366
+acompanhe o STATUS e o PRAZO de cada chamado; o filtro Fora do Prazo mostra os atrasados.
+
+00:04:47.366 --> 00:04:50.168
+Aguardar Peça pausa o prazo.
+
+00:04:50.168 --> 00:04:54.471
+Neste ambiente ainda não há chamados.
+
+00:04:54.771 --> 00:05:02.240
+Na assistência, a aba Agendamento define técnico, equipe e o Prazo em horas.
+
+00:05:02.240 --> 00:05:04.795
+Registre Defeitos e Peças,
+
+00:05:04.795 --> 00:05:10.800
+preencha Solução + Custos e só então resolva o chamado.
+
+00:05:11.100 --> 00:05:16.155
+O Cockpit de Campo mostra a semana por equipe,
+
+00:05:16.155 --> 00:05:21.430
+a fila A agendar e o resumo Como vai a operação?
+
+00:05:21.430 --> 00:05:28.023
+Ele usa a capacidade diária para não sobrecarregar a agenda.
+
+00:05:28.023 --> 00:05:31.700
+Nesta semana não há visitas.
+
+00:05:32.000 --> 00:05:34.257
+Em Como vai a operação?
+
+00:05:34.257 --> 00:05:41.518
+, o gestor vê conclusões do dia, ocupação das equipes e visitas atrasadas.
+
+00:05:41.518 --> 00:05:45.541
+Vermelho pede ação, como equipes ociosas.
+
+00:05:45.541 --> 00:05:52.029
+Clique num indicador para ver as visitas por trás do número.
+
+00:05:52.329 --> 00:05:53.750
+Três cuidados.
+
+00:05:53.750 --> 00:05:57.404
+Datas e horas podem aparecer em UTC.
+
+00:05:57.404 --> 00:06:04.002
+O template de checklist entra em toda instalação nova da empresa.
+
+00:06:04.002 --> 00:06:08.358
+E só se instala vão realmente medido.
+
+00:06:08.658 --> 00:06:09.739
+Resumindo:
+
+00:06:09.739 --> 00:06:12.550
+a medição nasce do pedido.
+
+00:06:12.550 --> 00:06:14.928
+Quem mede não confere.
+
+00:06:14.928 --> 00:06:18.928
+E cada passagem da cadeia é um botão.
+
+00:06:18.928 --> 00:06:25.258
+O checklist e o manual de Serviços estão logo abaixo.

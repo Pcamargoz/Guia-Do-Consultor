@@ -1,0 +1,60 @@
+{
+ "nome": "pj01-projetos",
+ "url": "https://staging.flow.faktory.com.br/configuracoes/projetos",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Novo Projeto"
+   },
+   "caixa": {
+    "x": 1705,
+    "y": 149,
+    "w": 159,
+    "h": 43
+   }
+  },
+  {
+   "alvo": {
+    "role": "cell",
+    "name": "Status",
+    "exact": true
+   },
+   "caixa": {
+    "x": 918,
+    "y": 338,
+    "w": 153,
+    "h": 46
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Estágios",
+    "nth": 0
+   },
+   "caixa": {
+    "x": 1633,
+    "y": 397,
+    "w": 100,
+    "h": 43
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Etapas",
+    "nth": 0
+   },
+   "caixa": {
+    "x": 1538,
+    "y": 397,
+    "w": 86,
+    "h": 43
+   }
+  }
+ ],
+ "em": "2026-11-17T16:15:22.518Z"
+}

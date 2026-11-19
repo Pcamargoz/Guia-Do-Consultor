@@ -1,0 +1,57 @@
+{
+ "nome": "se05-nova-instalacao",
+ "url": "https://staging.flow.faktory.com.br/servicos/instalacoes/novo",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "group",
+    "name": "Fonte de dados"
+   },
+   "caixa": {
+    "x": 374,
+    "y": 230,
+    "w": 464,
+    "h": 50
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Medição",
+    "exact": true
+   },
+   "caixa": {
+    "x": 734,
+    "y": 236,
+    "w": 98,
+    "h": 38
+   }
+  },
+  {
+   "alvo": {
+    "text": "Esconder medições que já têm instalação"
+   },
+   "caixa": {
+    "x": 395,
+    "y": 419,
+    "w": 1438,
+    "h": 19
+   }
+  },
+  {
+   "alvo": {
+    "text": "Nenhum registro encontrado",
+    "nth": 0
+   },
+   "caixa": {
+    "x": 395,
+    "y": 453,
+    "w": 1438,
+    "h": 19
+   }
+  }
+ ],
+ "em": "2026-11-17T16:11:00.319Z"
+}

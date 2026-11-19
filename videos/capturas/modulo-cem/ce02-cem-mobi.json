@@ -1,0 +1,44 @@
+{
+ "nome": "ce02-cem-mobi",
+ "url": "https://staging.flow.faktory.com.br/configuracoes/integracao",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "Conectado",
+    "exact": true
+   },
+   "caixa": {
+    "x": 1565,
+    "y": 570,
+    "w": 103,
+    "h": 26
+   }
+  },
+  {
+   "alvo": {
+    "text": "Última conexão:"
+   },
+   "caixa": {
+    "x": 552,
+    "y": 761,
+    "w": 1111,
+    "h": 19
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Testar Conexão"
+   },
+   "caixa": {
+    "x": 639,
+    "y": 794,
+    "w": 157,
+    "h": 43
+   }
+  }
+ ],
+ "em": "2026-11-17T13:56:19.928Z"
+}

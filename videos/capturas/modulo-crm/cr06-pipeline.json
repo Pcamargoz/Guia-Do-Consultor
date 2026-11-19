@@ -1,0 +1,46 @@
+{
+ "nome": "cr06-pipeline",
+ "url": "https://staging.flow.faktory.com.br/crm/pipeline",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Funil de vendas principal"
+   },
+   "caixa": {
+    "x": 444,
+    "y": 192,
+    "w": 228,
+    "h": 38
+   }
+  },
+  {
+   "alvo": {
+    "text": "Novo Lead",
+    "exact": true
+   },
+   "caixa": {
+    "x": 388,
+    "y": 319,
+    "w": 86,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Nova Oportunidade",
+    "exact": true
+   },
+   "caixa": {
+    "x": 1643,
+    "y": 245,
+    "w": 212,
+    "h": 43
+   }
+  }
+ ],
+ "em": "2026-11-17T13:49:14.822Z"
+}

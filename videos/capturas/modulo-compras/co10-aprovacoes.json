@@ -1,0 +1,33 @@
+{
+ "nome": "co10-aprovacoes",
+ "url": "https://staging.flow.faktory.com.br/compras/aprovacoes",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "heading",
+    "name": "Aprovações"
+   },
+   "caixa": {
+    "x": 433,
+    "y": 140,
+    "w": 133,
+    "h": 34
+   }
+  },
+  {
+   "alvo": {
+    "css": "thead th",
+    "nth": 4
+   },
+   "caixa": {
+    "x": 1184,
+    "y": 346,
+    "w": 131,
+    "h": 43
+   }
+  }
+ ],
+ "em": "2026-11-17T14:16:09.202Z"
+}

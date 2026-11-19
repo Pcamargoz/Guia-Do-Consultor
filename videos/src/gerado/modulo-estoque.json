@@ -1,0 +1,941 @@
+{
+ "id": "modulo-estoque",
+ "titulo": "Estoque",
+ "subtitulo": "O módulo completo: do saldo inicial ao inventário",
+ "trilha": "Metodologia do Consultor · vídeo completo do módulo",
+ "proximo": "Produção",
+ "icone": "estoque",
+ "semVoz": true,
+ "focoMin": 2.6,
+ "fontes": [
+  "guia:scripts/dados-checklists-implantacao.mjs#implantacao-estoque",
+  "guia:public/manuais/estoque/guia.json",
+  "harness:funcional-estoque-movimentos-saldo-transferencia-inventario",
+  "harness:oficial-est-a-regras",
+  "harness:oficial-est-b-processos",
+  "harness:regra-estoque-saldo-nasce-de-movimentos",
+  "harness:regra-estoque-almoxarifado-central-ativo-e-pre-requisito",
+  "harness:regra-estoque-transferencia-pendente-reserva-o-disponivel",
+  "harness:regra-estoque-inventario-congela-o-local-e-exige-outra-pessoa",
+  "harness:regra-estoque-emprestimo-devolucao-parcial-e-total"
+ ],
+ "trechos": [
+  {
+   "id": "01",
+   "cena": "abertura",
+   "fala": "No Flow, o saldo nunca é digitado: ele nasce de movimentos. Neste vídeo: locais, saldo inicial, movimentos, saldo e extrato, transferência, inventário, empréstimo e reposição.",
+   "inicio": 0,
+   "duracao": 15.186,
+   "fala_s": 14.286,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "02",
+   "cena": "status",
+   "etapas": [
+    "Em andamento",
+    "Aprovado",
+    "Cancelado"
+   ],
+   "destaque": 0,
+   "fala": "O inventário confere o físico contra o sistema. Em andamento, ele fotografa o saldo e congela o local: nada se movimenta ali até terminar.",
+   "inicio": 15.186,
+   "duracao": 14.614,
+   "fala_s": 13.714,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "03",
+   "cena": "status",
+   "etapas": [
+    "Em andamento",
+    "Aprovado",
+    "Cancelado"
+   ],
+   "destaque": 1,
+   "fala": "Aprovado, cada diferença vira um ajuste de estoque e o local é liberado. Cancelado com motivo, o local é liberado sem ajuste nenhum.",
+   "inicio": 29.8,
+   "duracao": 14.043,
+   "fala_s": 13.143,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "04",
+   "cena": "regra",
+   "n": 1,
+   "titulo": "O saldo nasce de movimentos",
+   "icone": "estoque",
+   "texto": "O saldo é a soma dos movimentos: entrada manual, ajustes, transferência, requisição, devolução de uso, empréstimo e descarte, além do recebimento e da produção.",
+   "fonte": "regra-estoque-saldo-nasce-de-movimentos",
+   "fala": "Regra 1. Ninguém digita saldo. Ele é a soma dos movimentos: os manuais, da tela, e os automáticos, que vêm do recebimento, da produção e do faturamento.",
+   "inicio": 43.843,
+   "duracao": 16.329,
+   "fala_s": 15.429,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "05",
+   "cena": "regra",
+   "n": 2,
+   "titulo": "Movimento não se edita",
+   "icone": "seta",
+   "texto": "Movimento é imutável: corrige-se por estorno. O estorno entra na data de hoje, só uma vez, e estorno não se estorna.",
+   "fonte": "oficial-est-a-regras#EST-MOV-001-004-005",
+   "fala": "Regra 2. Movimento lançado não se edita. Errou, estorne: nasce o movimento Estorno, o original fica Estornado e o saldo volta. Só uma vez.",
+   "inicio": 60.172,
+   "duracao": 14.614,
+   "fala_s": 13.714,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "06",
+   "cena": "regra",
+   "n": 3,
+   "titulo": "Almoxarifado central ativo",
+   "icone": "caixa",
+   "texto": "Sem almoxarifado central ativo, a nota de recebimento não finaliza e a produção não conclui. É um central por empresa.",
+   "fonte": "regra-estoque-almoxarifado-central-ativo-e-pre-requisito",
+   "critica": true,
+   "fala": "Regra 3. Cada empresa precisa do seu almoxarifado central ativo. Sem ele, o recebimento não finaliza e a produção não conclui.",
+   "inicio": 74.786,
+   "duracao": 12.9,
+   "fala_s": 12,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "07",
+   "cena": "regra",
+   "n": 4,
+   "titulo": "Saldo inicial primeiro",
+   "icone": "alerta",
+   "texto": "O saldo inicial deve ser o primeiro movimento de cada variação. Lançar algo com data anterior depois é recusado.",
+   "fonte": "oficial-est-a-regras#EST-MOV-006",
+   "critica": true,
+   "fala": "Regra 4. O saldo inicial vem antes de tudo. Movimento com data anterior a outro do mesmo produto é recusado: nada se lança antes da carga.",
+   "inicio": 87.686,
+   "duracao": 15.757,
+   "fala_s": 14.857,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "08",
+   "cena": "regra",
+   "n": 5,
+   "titulo": "Saldo por local e variação",
+   "icone": "tag",
+   "texto": "O saldo é separado por produto, cor, medidas, local e propriedade. Sempre em unidade de estoque.",
+   "fonte": "oficial-est-a-regras#EST-SLD-001",
+   "fala": "Regra 5. O mesmo produto aparece uma vez por local e por variação, de cor e medidas. Antes de ler o saldo, confira se está na linha certa.",
+   "inicio": 103.443,
+   "duracao": 16.9,
+   "fala_s": 16,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "09",
+   "cena": "regra",
+   "n": 6,
+   "titulo": "Pendente reserva o disponível",
+   "icone": "caminhao",
+   "texto": "A transferência pendente não baixa o saldo da origem, mas reserva: o disponível cai. Confirmar move o saldo; excluir libera a reserva.",
+   "fonte": "regra-estoque-transferencia-pendente-reserva-o-disponivel",
+   "fala": "Regra 6. Saldo não é disponível. A transferência pendente reserva a quantidade na origem: o saldo fica igual e o disponível cai. Confirmar move; excluir libera.",
+   "inicio": 120.343,
+   "duracao": 15.757,
+   "fala_s": 14.857,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "10",
+   "cena": "regra",
+   "n": 7,
+   "titulo": "Inventário exige outra pessoa",
+   "icone": "cadeado",
+   "texto": "A contagem é cega. A 2ª contagem e a aprovação são de outra pessoa, até para Super Usuário.",
+   "fonte": "regra-estoque-inventario-congela-o-local-e-exige-outra-pessoa",
+   "fala": "Regra 7. A contagem do inventário é cega. A segunda contagem e a aprovação têm de ser de outra pessoa, até para Super Usuário. Crie os usuários antes.",
+   "inicio": 136.1,
+   "duracao": 16.9,
+   "fala_s": 16,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "11",
+   "cena": "tela",
+   "captura": "es01-locais",
+   "titulo": "Locais de estoque",
+   "rotulo": "Estoque › Configurações › Locais",
+   "focos": [
+    0,
+    1
+   ],
+   "nomes": [
+    "Almoxarifado Central – MetaTest Estruturas",
+    "Situação: Ativos"
+   ],
+   "impacto": 0,
+   "fala": "Tudo acontece num local. Confira um almoxarifado central ativo em cada empresa. Local de obra não se cria aqui: nasce com o projeto.",
+   "plano": {
+    "menu": "Estoque › Configurações › Locais",
+    "mostrar": "Lista de locais com o almoxarifado central ativo de cada empresa",
+    "alvos": [
+     "linha do almoxarifado central da empresa",
+     "filtro Situação: Ativos"
+    ],
+    "acoes": [
+     "abrir a lista",
+     "não criar nem editar local"
+    ]
+   },
+   "inicio": 153,
+   "duracao": 14.043,
+   "fala_s": 13.143,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-estoque/es01-locais.png",
+   "caixas": [
+    {
+     "x": 515,
+     "y": 462,
+     "w": 312,
+     "h": 47
+    },
+    {
+     "x": 1475,
+     "y": 288,
+     "w": 69,
+     "h": 24
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "12",
+   "cena": "tela",
+   "captura": "es02-parametros",
+   "titulo": "Parâmetros de Estoque",
+   "rotulo": "Estoque › Configurações › Parâmetros de Estoque",
+   "focos": [
+    0
+   ],
+   "nomes": [
+    "Bloquear saída sem saldo"
+   ],
+   "fala": "Nos Parâmetros de Estoque, anote com o cliente o estado de Bloquear saída sem saldo. Ligado, a saída maior que o saldo é recusada; desligado, o saldo pode ficar negativo. Vale para a empresa inteira.",
+   "plano": {
+    "menu": "Estoque › Configurações › Parâmetros de Estoque",
+    "mostrar": "Tela de parâmetros com a chave de saída sem saldo",
+    "alvos": [
+     "chave Bloquear saída sem saldo"
+    ],
+    "acoes": [
+     "abrir a tela",
+     "não alterar nem salvar"
+    ]
+   },
+   "inicio": 167.043,
+   "duracao": 20.9,
+   "fala_s": 20,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-estoque/es02-parametros.png",
+   "caixas": [
+    {
+     "x": 706,
+     "y": 592,
+     "w": 732,
+     "h": 24
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "13",
+   "cena": "tela",
+   "captura": "es03-importar-saldo",
+   "titulo": "Importar saldo inicial",
+   "rotulo": "Estoque › Saldo › Mais › Importar saldo",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "Importar saldo",
+    "Arraste e solte seu arquivo Excel",
+    "Planilhas Modelo"
+   ],
+   "fala": "O saldo de abertura entra por planilha, na data de corte. Baixe uma das Planilhas Modelo, corrija na Validação até zerar os erros e só então execute. Reimportar não duplica.",
+   "plano": {
+    "menu": "Estoque › Saldo › Mais › Importar saldo",
+    "mostrar": "Assistente de importação aberto no primeiro passo, sem arquivo",
+    "alvos": [
+     "título Importar saldo",
+     "área de envio da planilha",
+     "Planilhas Modelo"
+    ],
+    "acoes": [
+     "abrir Mais › Importar saldo",
+     "não enviar planilha nem executar; fechar o assistente"
+    ]
+   },
+   "inicio": 187.943,
+   "duracao": 18.043,
+   "fala_s": 17.143,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-estoque/es03-importar-saldo.png",
+   "caixas": [
+    {
+     "x": 280,
+     "y": 211,
+     "w": 128,
+     "h": 29
+    },
+    {
+     "x": 828,
+     "y": 524,
+     "w": 265,
+     "h": 24
+    },
+    {
+     "x": 251,
+     "y": 701,
+     "w": 159,
+     "h": 19
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "14",
+   "cena": "tela",
+   "captura": "es04-novo-movimento",
+   "titulo": "Novo Movimento",
+   "rotulo": "Estoque › Movimentos › + Novo Movimento",
+   "focos": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "nomes": [
+    "Tipo de movimento",
+    "Empresa *",
+    "Local de destino *",
+    "Salvar (Ctrl+S)"
+   ],
+   "impacto": 1,
+   "fala": "Em + Novo Movimento, escolha o Tipo e leia a frase abaixo dele. A Empresa é obrigatória e não vem preenchida. Informe Local de destino, Produto, Quantidade e Custo unit.",
+   "plano": {
+    "menu": "Estoque › Movimentos › + Novo Movimento",
+    "mostrar": "Formulário de novo movimento aberto, com o tipo Entrada manual selecionado e nada salvo",
+    "alvos": [
+     "campo Tipo de movimento",
+     "campo Empresa *",
+     "campo Local de destino *",
+     "botão Salvar (Ctrl+S)"
+    ],
+    "acoes": [
+     "clicar em + Novo Movimento",
+     "selecionar o tipo Entrada manual só para ler a descrição",
+     "não salvar (cuidado: Ctrl+S salva); fechar sem gravar"
+    ]
+   },
+   "inicio": 205.986,
+   "duracao": 18.043,
+   "fala_s": 17.143,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-estoque/es04-novo-movimento.png",
+   "caixas": [
+    {
+     "x": 385,
+     "y": 403,
+     "w": 1445,
+     "h": 101
+    },
+    {
+     "x": 385,
+     "y": 707,
+     "w": 469,
+     "h": 19
+    },
+    {
+     "x": 385,
+     "y": 929,
+     "w": 713,
+     "h": 19
+    },
+    {
+     "x": 1677,
+     "y": 1018,
+     "w": 183,
+     "h": 48
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "15",
+   "cena": "tela",
+   "captura": "es05-movimentos",
+   "titulo": "Movimentos: de onde vem cada um",
+   "rotulo": "Estoque › Movimentos",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "Tipo",
+    "Origem",
+    "Baixa de OP"
+   ],
+   "impacto": 0,
+   "fala": "Em Movimentos, filtre por produto, data e Tipo, e leia o Tipo e a Origem de cada linha. Recebimento, expedição e baixa de OP vêm dos documentos, não desta tela.",
+   "plano": {
+    "menu": "Estoque › Movimentos",
+    "mostrar": "Lista de movimentos com o filtro Tipo aberto (o ambiente só tem 1 entrada manual)",
+    "alvos": [
+     "filtro Tipo",
+     "filtro Origem",
+     "opção Baixa de OP"
+    ],
+    "acoes": [
+     "abrir a lista",
+     "abrir o filtro Tipo sem aplicar",
+     "não clicar em Estornar"
+    ]
+   },
+   "inicio": 224.029,
+   "duracao": 18.043,
+   "fala_s": 17.143,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-estoque/es05-movimentos.png",
+   "caixas": [
+    {
+     "x": 386,
+     "y": 490,
+     "w": 353,
+     "h": 19
+    },
+    {
+     "x": 754,
+     "y": 490,
+     "w": 353,
+     "h": 19
+    },
+    {
+     "x": 388,
+     "y": 744,
+     "w": 338,
+     "h": 38
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "16",
+   "cena": "tela",
+   "captura": "es06-saldo",
+   "titulo": "Saldo e disponível",
+   "rotulo": "Estoque › Saldo",
+   "focos": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "nomes": [
+    "Busca",
+    "Local",
+    "Saldo",
+    "Disponível"
+   ],
+   "impacto": 3,
+   "fala": "Em Saldo, pesquise o produto e ache a linha do local e da cor. Leia SALDO e DISPONÍVEL: o disponível é o saldo menos as reservas.",
+   "plano": {
+    "menu": "Estoque › Saldo",
+    "mostrar": "Lista filtrada por um produto com mais de uma variação/local",
+    "alvos": [
+     "campo de busca",
+     "coluna LOCAL",
+     "coluna SALDO",
+     "coluna DISPONÍVEL"
+    ],
+    "acoes": [
+     "abrir a tela",
+     "digitar o código de um produto na busca"
+    ]
+   },
+   "inicio": 242.072,
+   "duracao": 15.757,
+   "fala_s": 14.857,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-estoque/es06-saldo.png",
+   "caixas": [
+    {
+     "x": 385,
+     "y": 294,
+     "w": 538,
+     "h": 48
+    },
+    {
+     "x": 845,
+     "y": 358,
+     "w": 329,
+     "h": 43
+    },
+    {
+     "x": 1323,
+     "y": 358,
+     "w": 79,
+     "h": 43
+    },
+    {
+     "x": 1401,
+     "y": 358,
+     "w": 109,
+     "h": 43
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "17",
+   "cena": "tela",
+   "captura": "es07-extrato",
+   "titulo": "O extrato do produto",
+   "rotulo": "Estoque › Saldo › código do produto",
+   "focos": [
+    0,
+    1
+   ],
+   "nomes": [
+    "Posições",
+    "Histórico"
+   ],
+   "impacto": 1,
+   "fala": "Clique no código do produto. A aba Histórico é o extrato: data, número, tipo, quantidade e motivo de cada movimento.",
+   "plano": {
+    "menu": "Estoque › Saldo › clicar no código do produto",
+    "mostrar": "Detalhe do produto com a aba Histórico aberta",
+    "alvos": [
+     "aba Posições",
+     "aba Histórico"
+    ],
+    "acoes": [
+     "clicar no código do produto na lista de saldo",
+     "abrir a aba Histórico"
+    ]
+   },
+   "inicio": 257.829,
+   "duracao": 12.329,
+   "fala_s": 11.429,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-estoque/es07-extrato.png",
+   "caixas": [
+    {
+     "x": 390,
+     "y": 629,
+     "w": 126,
+     "h": 38
+    },
+    {
+     "x": 722,
+     "y": 629,
+     "w": 125,
+     "h": 38
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "18",
+   "cena": "tela",
+   "captura": "es08-transferencias",
+   "titulo": "Transferências",
+   "rotulo": "Estoque › Transferências",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "pendentes reservam a origem",
+    "Pendentes",
+    "Nova transferência"
+   ],
+   "impacto": 1,
+   "fala": "Em Transferências, a pendente reserva a origem; confirmar move o saldo e excluir libera a reserva. O filtro Pendentes mostra as que ainda esperam. Nada fica em trânsito.",
+   "plano": {
+    "menu": "Estoque › Transferências",
+    "mostrar": "Lista filtrada em Pendentes, com a regra escrita no topo",
+    "alvos": [
+     "regra escrita na tela",
+     "filtro Status: Pendentes",
+     "botão + Nova transferência"
+    ],
+    "acoes": [
+     "abrir a tela",
+     "não confirmar, excluir nem criar transferência"
+    ]
+   },
+   "inicio": 270.158,
+   "duracao": 16.9,
+   "fala_s": 16,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-estoque/es08-transferencias.png",
+   "caixas": [
+    {
+     "x": 452,
+     "y": 224,
+     "w": 848,
+     "h": 24
+    },
+    {
+     "x": 1063,
+     "y": 413,
+     "w": 104,
+     "h": 36
+    },
+    {
+     "x": 1649,
+     "y": 197,
+     "w": 208,
+     "h": 43
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "19",
+   "cena": "tela",
+   "captura": "es09-inventarios",
+   "titulo": "Inventários",
+   "rotulo": "Estoque › Inventários",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "Geral bloqueia o local",
+    "Status",
+    "Novo inventário"
+   ],
+   "impacto": 0,
+   "fala": "Em Inventários, leia a frase do alto: o Geral bloqueia o local; Cíclico e Pontual bloqueiam só os produtos escolhidos. Na lista, o Status. Agende a contagem fora do expediente.",
+   "plano": {
+    "menu": "Estoque › Inventários",
+    "mostrar": "Lista de inventários com a frase da regra dos tipos e a coluna STATUS",
+    "alvos": [
+     "frase da regra dos tipos",
+     "coluna STATUS",
+     "botão + Novo inventário"
+    ],
+    "acoes": [
+     "abrir a lista",
+     "não abrir novo inventário (congelaria o local)"
+    ]
+   },
+   "inicio": 287.058,
+   "duracao": 18.043,
+   "fala_s": 17.143,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-estoque/es09-inventarios.png",
+   "caixas": [
+    {
+     "x": 433,
+     "y": 176,
+     "w": 1031,
+     "h": 48
+    },
+    {
+     "x": 559,
+     "y": 396,
+     "w": 192,
+     "h": 39
+    },
+    {
+     "x": 1694,
+     "y": 161,
+     "w": 181,
+     "h": 43
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "20",
+   "cena": "tela",
+   "captura": "es10-emprestimos",
+   "titulo": "Empréstimos entre obras",
+   "rotulo": "Estoque › Empréstimos",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "Em aberto",
+    "Parcial",
+    "Devolvidos"
+   ],
+   "fala": "Em Empréstimos, os cartões separam Em aberto, Parcial e Devolvidos. A devolução pode ser parcial; devolver mais do que foi emprestado é recusado.",
+   "plano": {
+    "menu": "Estoque › Empréstimos",
+    "mostrar": "Cartões do topo e a lista de empréstimos",
+    "alvos": [
+     "cartão Em aberto",
+     "cartão Parcial",
+     "cartão Devolvidos"
+    ],
+    "acoes": [
+     "abrir a tela",
+     "não registrar empréstimo nem devolução"
+    ]
+   },
+   "inicio": 305.101,
+   "duracao": 14.043,
+   "fala_s": 13.143,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-estoque/es10-emprestimos.png",
+   "caixas": [
+    {
+     "x": 347,
+     "y": 332,
+     "w": 338,
+     "h": 21
+    },
+    {
+     "x": 745,
+     "y": 332,
+     "w": 338,
+     "h": 21
+    },
+    {
+     "x": 1144,
+     "y": 332,
+     "w": 338,
+     "h": 21
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "21",
+   "cena": "tela",
+   "captura": "es11-reposicao",
+   "titulo": "Reposição",
+   "rotulo": "Estoque › Reposição",
+   "focos": [
+    0,
+    1
+   ],
+   "nomes": [
+    "Planejamento MRP",
+    "Gerar solicitação de compra"
+   ],
+   "impacto": 1,
+   "fala": "Em Reposição, aparecem os produtos abaixo do estoque mínimo, pelo disponível projetado. Gerar solicitação de compra manda a necessidade para Compras. Sem mínimo cadastrado, o item não aparece.",
+   "plano": {
+    "menu": "Estoque › Reposição",
+    "mostrar": "Tela de reposição com a explicação do cálculo (lista vazia é aceitável)",
+    "alvos": [
+     "texto Planejamento MRP (como a sugestão é calculada)",
+     "botão Gerar solicitação de compra"
+    ],
+    "acoes": [
+     "abrir a tela",
+     "não clicar em Atualizar nem em Gerar solicitação de compra"
+    ]
+   },
+   "inicio": 319.144,
+   "duracao": 16.9,
+   "fala_s": 16,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-estoque/es11-reposicao.png",
+   "caixas": [
+    {
+     "x": 443,
+     "y": 200,
+     "w": 980,
+     "h": 48
+    },
+    {
+     "x": 1573,
+     "y": 185,
+     "w": 279,
+     "h": 43
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "22",
+   "cena": "tela",
+   "captura": "es12-reservas-orfas",
+   "titulo": "Reservas órfãs",
+   "rotulo": "Estoque › Reservas órfãs",
+   "focos": [
+    0
+   ],
+   "nomes": [
+    "Reservas órfãs"
+   ],
+   "fala": "Antes do go-live, abra Reservas órfãs. Toda reserva precisa de um documento pendente: a lista deve estar vazia.",
+   "plano": {
+    "menu": "Estoque › Reservas órfãs",
+    "mostrar": "Tela de reservas órfãs (vazia, idealmente)",
+    "alvos": [
+     "título Reservas órfãs"
+    ],
+    "acoes": [
+     "abrir a tela",
+     "não liberar nenhuma reserva"
+    ]
+   },
+   "inicio": 336.044,
+   "duracao": 11.186,
+   "fala_s": 10.286,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-estoque/es12-reservas-orfas.png",
+   "caixas": [
+    {
+     "x": 452,
+     "y": 188,
+     "w": 166,
+     "h": 34
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "23",
+   "cena": "tela",
+   "captura": "es13-visao-geral",
+   "titulo": "Visão geral do estoque",
+   "rotulo": "Estoque › Visão geral",
+   "focos": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "nomes": [
+    "Valor em estoque próprio",
+    "Saúde do estoque",
+    "Necessidade de reposição",
+    "Capital sem giro"
+   ],
+   "fala": "Na Visão geral, os quatro cartões resumem o estoque: valor próprio, saúde, necessidade de reposição e capital sem giro. Os atalhos levam ao saldo, aos movimentos e aos inventários.",
+   "plano": {
+    "menu": "Estoque › Visão geral",
+    "mostrar": "Indicadores principais e os atalhos do topo",
+    "alvos": [
+     "cartão Valor em estoque próprio",
+     "cartão Saúde do estoque",
+     "cartão Necessidade de reposição",
+     "cartão Capital sem giro"
+    ],
+    "acoes": [
+     "abrir a tela"
+    ]
+   },
+   "inicio": 347.23,
+   "duracao": 17.471,
+   "fala_s": 16.571,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-estoque/es13-visao-geral.png",
+   "caixas": [
+    {
+     "x": 390,
+     "y": 571,
+     "w": 205,
+     "h": 24
+    },
+    {
+     "x": 765,
+     "y": 571,
+     "w": 146,
+     "h": 24
+    },
+    {
+     "x": 1140,
+     "y": 571,
+     "w": 215,
+     "h": 24
+    },
+    {
+     "x": 1515,
+     "y": 571,
+     "w": 131,
+     "h": 24
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "24",
+   "cena": "alertas",
+   "itens": [
+    "Ctrl+S salva o movimento; importar saldo, estornar e aprovar inventário não têm desfazer.",
+    "Nada se lança antes do saldo inicial.",
+    "Inventário aberto congela o local: agende a contagem."
+   ],
+   "fala": "Três cuidados. Importar saldo, estornar e aprovar inventário não têm desfazer. Nada se lança antes do saldo inicial. E inventário aberto congela o local: nunca o deixe esquecido.",
+   "inicio": 364.701,
+   "duracao": 16.9,
+   "fala_s": 16,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "25",
+   "cena": "fechamento",
+   "topicos": [
+    "O saldo nasce de movimentos",
+    "Central ativo em cada empresa",
+    "Saldo inicial antes de tudo"
+   ],
+   "fala": "Resumindo: o saldo nasce de movimentos e se corrige por estorno. Cada empresa tem seu almoxarifado central ativo. E o saldo inicial vem antes de tudo. O checklist e o manual de Estoque estão logo abaixo.",
+   "inicio": 381.601,
+   "duracao": 21.471,
+   "fala_s": 20.571,
+   "audio": null,
+   "legendas": null
+  }
+ ],
+ "pendencias": [
+  "Capturas em ambiente de teste, somente leitura: nenhum movimento, importação, transferência, inventário ou empréstimo foi criado. es03/es04 mostram o assistente e o formulário sem gravar (cuidado com Ctrl+S). Recusas (retroativo, segundo central, transferência inválida, inventário com o mesmo usuário) ficam só nas regras.",
+  "Status do inventário: Em andamento e Aprovado vêm da base (EST-MOV-007, oficial-est-b-processos) e Cancelado da captura do manual; o Estoque não tem um documento único com ciclo de status. Conferir os rótulos exatos da coluna STATUS na gravação de es09.",
+  "Não narrados (naoValidado): saída sobre material reservado (passou na v1.22.12 × recusa sem permissão, EST-MOV-010), extrato da transferência (movimento único × saída e entrada), inventário e localizações como PRO, custo de entrada da NR (cheio hoje, WI #30480).",
+  "Sem tela: contagem e aprovação do inventário (Inventário — Contagem, Estoque › Aprovações › Inventários) e a coluna RESERVADA do Saldo (oculta por padrão). Reposição (Estoque) diz repor até o máximo; COM-SUG-001 diz que o máximo não é usado: não narrado.",
+  "Confirmado na v1.23.6: Inventários diz que o Geral bloqueia o local e Cíclico/Pontual bloqueiam os produtos escolhidos; a fala de es09 segue a tela.",
+  "Menus confirmados: Locais e Parâmetros de Estoque ficam em Estoque › Configurações; há Inventários e Inventário — Contagem. Parâmetros hoje: localizações, Bloquear saída sem saldo, data passada, dias de retroativo, alerta de fator e retalho (só Bloquear saída é narrado).",
+  "Staging com 1 só movimento (entrada manual) e 1 só produto com saldo: es05 mostra o filtro Tipo aberto, sem linhas de OP/NR/PV; es06 não tem produto com mais de uma variação/local. Transferências, inventários, empréstimos, reposição e reservas órfãs estão vazios.",
+  "Reposição (v1.23.6) diz que a sugestão repõe até o máximo (ou o mínimo); segue não narrado (COM-SUG-001)."
+ ],
+ "duracaoTotal": 404.572
+}
