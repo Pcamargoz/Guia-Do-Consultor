@@ -127,10 +127,123 @@
    ],
    "recursos": {
     "video": {
-     "status": "em-preparacao",
-     "titulo": "Vídeo completo do módulo",
+     "status": "disponivel",
+     "id": "modulo-primeiros-passos",
+     "titulo": "Primeiros passos: o módulo completo",
+     "resumo": "Antes de qualquer módulo, aprenda a andar no sistema. Neste vídeo: a tela Início, a empresa ativa, o menu de módulos, a busca Ctrl+K e como ler uma lista sem alterar nada.",
+     "url": "/videos/modulo-primeiros-passos.mp4",
+     "poster": "/videos/modulo-primeiros-passos.jpg",
+     "legendas": "/videos/modulo-primeiros-passos.vtt",
+     "duracao_s": 326,
+     "capitulos": [
+      {
+       "t": 1.1,
+       "titulo": "Abertura",
+       "grupo": "Abertura"
+      },
+      {
+       "t": 20.3,
+       "titulo": "Conceito",
+       "grupo": "Conceito"
+      },
+      {
+       "t": 44.9,
+       "titulo": "Os dados são da empresa",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 60.1,
+       "titulo": "Treine só no ambiente de testes",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 73.6,
+       "titulo": "Na dúvida, não clique",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 86.5,
+       "titulo": "Ctrl+K acha telas, não registros",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 99.4,
+       "titulo": "Toda lista tem filtro padrão",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 116.9,
+       "titulo": "Não use Sair do Sistema",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 133.8,
+       "titulo": "A tela Início",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 150.1,
+       "titulo": "O menu de módulos",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 170.4,
+       "titulo": "O menu lateral do módulo",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 187.9,
+       "titulo": "Busca Ctrl+K",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 199.7,
+       "titulo": "Ler uma lista",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 212.6,
+       "titulo": "O filtro padrão",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 227.7,
+       "titulo": "O menu da linha",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 240.6,
+       "titulo": "Notificações e ajuda",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 258.7,
+       "titulo": "O menu do usuário",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 273.9,
+       "titulo": "O bloco GLOBAIS",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 287.3,
+       "titulo": "Cuidados",
+       "grupo": "Cuidados"
+      },
+      {
+       "t": 306.5,
+       "titulo": "Fechamento",
+       "grupo": "Fechamento"
+      }
+     ],
+     "compartilhado": [],
+     "versaoSistema": "1.22.13",
+     "revisar": true,
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/14-metodologia.md"
+      "guia:public/videos/manifest.json",
+      "guia:videos/roteiros/modulo-primeiros-passos.json",
+      "guia:videos/src/gerado/modulo-primeiros-passos.json"
      ]
     },
     "checklist": {
@@ -5232,10 +5345,123 @@
    ],
    "recursos": {
     "video": {
-     "status": "em-preparacao",
-     "titulo": "Vídeo completo do módulo",
+     "status": "disponivel",
+     "id": "modulo-fluxo-completo",
+     "titulo": "Visão do fluxo completo: o módulo completo",
+     "resumo": "Cada módulo usa o que o anterior criou. Neste vídeo: o caminho de uma venda, do lead ao título, e onde cada módulo mostra o reflexo do anterior.",
+     "url": "/videos/modulo-fluxo-completo.mp4",
+     "poster": "/videos/modulo-fluxo-completo.jpg",
+     "legendas": "/videos/modulo-fluxo-completo.vtt",
+     "duracao_s": 346,
+     "capitulos": [
+      {
+       "t": 1.1,
+       "titulo": "Abertura",
+       "grupo": "Abertura"
+      },
+      {
+       "t": 18,
+       "titulo": "Conceito",
+       "grupo": "Conceito"
+      },
+      {
+       "t": 42.7,
+       "titulo": "Cada passagem tem um botão",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 60.1,
+       "titulo": "A conversão cria a oportunidade",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 76.5,
+       "titulo": "Da oportunidade ao pedido",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 92.8,
+       "titulo": "O CFOP decide os reflexos",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 109.1,
+       "titulo": "Títulos: pedido ou nota, um só",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 129.4,
+       "titulo": "Expedição só depois de faturar",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 141.2,
+       "titulo": "Produzido entra no estoque",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 157,
+       "titulo": "1 · O lead convertido",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 168.1,
+       "titulo": "2 · A oportunidade nasceu sozinha",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 183.9,
+       "titulo": "3 · O pedido mostra tudo",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 203.1,
+       "titulo": "4 · O próximo botão",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 216,
+       "titulo": "5 · A nota do pedido",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 233.5,
+       "titulo": "6 · Os títulos da nota",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 253.2,
+       "titulo": "7 · A ordem de produção",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 274.1,
+       "titulo": "8 · O reflexo no estoque",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 292.7,
+       "titulo": "9 · O pedido na carga",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 307.3,
+       "titulo": "Cuidados",
+       "grupo": "Cuidados"
+      },
+      {
+       "t": 325.4,
+       "titulo": "Fechamento",
+       "grupo": "Fechamento"
+      }
+     ],
+     "compartilhado": [],
+     "versaoSistema": "1.22.13",
+     "revisar": true,
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/14-metodologia.md"
+      "guia:public/videos/manifest.json",
+      "guia:videos/roteiros/modulo-fluxo-completo.json",
+      "guia:videos/src/gerado/modulo-fluxo-completo.json"
      ]
     },
     "checklist": {
@@ -8582,6 +8808,248 @@
     "guia:videos/roteiros/modulo-tarefas.json",
     "guia:videos/src/gerado/modulo-tarefas.json"
    ]
+  },
+  {
+   "id": "modulo-primeiros-passos",
+   "titulo": "Primeiros passos: o módulo completo",
+   "resumo": "Antes de qualquer módulo, aprenda a andar no sistema. Neste vídeo: a tela Início, a empresa ativa, o menu de módulos, a busca Ctrl+K e como ler uma lista sem alterar nada.",
+   "url": "/videos/modulo-primeiros-passos.mp4",
+   "poster": "/videos/modulo-primeiros-passos.jpg",
+   "legendas": "/videos/modulo-primeiros-passos.vtt",
+   "duracao_s": 326,
+   "capitulos": [
+    {
+     "t": 1.1,
+     "titulo": "Abertura",
+     "grupo": "Abertura"
+    },
+    {
+     "t": 20.3,
+     "titulo": "Conceito",
+     "grupo": "Conceito"
+    },
+    {
+     "t": 44.9,
+     "titulo": "Os dados são da empresa",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 60.1,
+     "titulo": "Treine só no ambiente de testes",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 73.6,
+     "titulo": "Na dúvida, não clique",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 86.5,
+     "titulo": "Ctrl+K acha telas, não registros",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 99.4,
+     "titulo": "Toda lista tem filtro padrão",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 116.9,
+     "titulo": "Não use Sair do Sistema",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 133.8,
+     "titulo": "A tela Início",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 150.1,
+     "titulo": "O menu de módulos",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 170.4,
+     "titulo": "O menu lateral do módulo",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 187.9,
+     "titulo": "Busca Ctrl+K",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 199.7,
+     "titulo": "Ler uma lista",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 212.6,
+     "titulo": "O filtro padrão",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 227.7,
+     "titulo": "O menu da linha",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 240.6,
+     "titulo": "Notificações e ajuda",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 258.7,
+     "titulo": "O menu do usuário",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 273.9,
+     "titulo": "O bloco GLOBAIS",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 287.3,
+     "titulo": "Cuidados",
+     "grupo": "Cuidados"
+    },
+    {
+     "t": 306.5,
+     "titulo": "Fechamento",
+     "grupo": "Fechamento"
+    }
+   ],
+   "modulos": [
+    "primeiros-passos"
+   ],
+   "versaoSistema": "1.22.13",
+   "revisar": true,
+   "fontes": [
+    "guia:public/videos/manifest.json",
+    "guia:videos/roteiros/modulo-primeiros-passos.json",
+    "guia:videos/src/gerado/modulo-primeiros-passos.json"
+   ]
+  },
+  {
+   "id": "modulo-fluxo-completo",
+   "titulo": "Visão do fluxo completo: o módulo completo",
+   "resumo": "Cada módulo usa o que o anterior criou. Neste vídeo: o caminho de uma venda, do lead ao título, e onde cada módulo mostra o reflexo do anterior.",
+   "url": "/videos/modulo-fluxo-completo.mp4",
+   "poster": "/videos/modulo-fluxo-completo.jpg",
+   "legendas": "/videos/modulo-fluxo-completo.vtt",
+   "duracao_s": 346,
+   "capitulos": [
+    {
+     "t": 1.1,
+     "titulo": "Abertura",
+     "grupo": "Abertura"
+    },
+    {
+     "t": 18,
+     "titulo": "Conceito",
+     "grupo": "Conceito"
+    },
+    {
+     "t": 42.7,
+     "titulo": "Cada passagem tem um botão",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 60.1,
+     "titulo": "A conversão cria a oportunidade",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 76.5,
+     "titulo": "Da oportunidade ao pedido",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 92.8,
+     "titulo": "O CFOP decide os reflexos",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 109.1,
+     "titulo": "Títulos: pedido ou nota, um só",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 129.4,
+     "titulo": "Expedição só depois de faturar",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 141.2,
+     "titulo": "Produzido entra no estoque",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 157,
+     "titulo": "1 · O lead convertido",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 168.1,
+     "titulo": "2 · A oportunidade nasceu sozinha",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 183.9,
+     "titulo": "3 · O pedido mostra tudo",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 203.1,
+     "titulo": "4 · O próximo botão",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 216,
+     "titulo": "5 · A nota do pedido",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 233.5,
+     "titulo": "6 · Os títulos da nota",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 253.2,
+     "titulo": "7 · A ordem de produção",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 274.1,
+     "titulo": "8 · O reflexo no estoque",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 292.7,
+     "titulo": "9 · O pedido na carga",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 307.3,
+     "titulo": "Cuidados",
+     "grupo": "Cuidados"
+    },
+    {
+     "t": 325.4,
+     "titulo": "Fechamento",
+     "grupo": "Fechamento"
+    }
+   ],
+   "modulos": [
+    "fluxo-completo"
+   ],
+   "versaoSistema": "1.22.13",
+   "revisar": true,
+   "fontes": [
+    "guia:public/videos/manifest.json",
+    "guia:videos/roteiros/modulo-fluxo-completo.json",
+    "guia:videos/src/gerado/modulo-fluxo-completo.json"
+   ]
   }
  ],
  "caminhos": {
@@ -8601,6 +9069,24 @@
    {
     "modulo": "primeiros-passos",
     "tipo": "checklist"
+   }
+  ],
+  "/videos/modulo-primeiros-passos.mp4": [
+   {
+    "modulo": "primeiros-passos",
+    "tipo": "video"
+   }
+  ],
+  "/videos/modulo-primeiros-passos.jpg": [
+   {
+    "modulo": "primeiros-passos",
+    "tipo": "video"
+   }
+  ],
+  "/videos/modulo-primeiros-passos.vtt": [
+   {
+    "modulo": "primeiros-passos",
+    "tipo": "video"
    }
   ],
   "/manuais/primeiros-passos/guia.json": [
@@ -9451,6 +9937,24 @@
    {
     "modulo": "fluxo-completo",
     "tipo": "checklist"
+   }
+  ],
+  "/videos/modulo-fluxo-completo.mp4": [
+   {
+    "modulo": "fluxo-completo",
+    "tipo": "video"
+   }
+  ],
+  "/videos/modulo-fluxo-completo.jpg": [
+   {
+    "modulo": "fluxo-completo",
+    "tipo": "video"
+   }
+  ],
+  "/videos/modulo-fluxo-completo.vtt": [
+   {
+    "modulo": "fluxo-completo",
+    "tipo": "video"
    }
   ],
   "/manuais/fluxo-completo/guia.json": [

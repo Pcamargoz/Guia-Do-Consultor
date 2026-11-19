@@ -279,6 +279,22 @@
           "resumo": "Tarefas organiza o trabalho da equipe em quadros, listas e cartões. Neste vídeo: criar o quadro, distribuir o cartão, acompanhar em Minhas Tarefas e no Dashboard, colaborar e arquivar.",
           "duracao": "5 min 22 s",
           "status": "pronto"
+        },
+        {
+          "id": "modulo-primeiros-passos",
+          "numero": "Módulo",
+          "titulo": "Primeiros passos: o módulo completo",
+          "resumo": "Antes de qualquer módulo, aprenda a andar no sistema. Neste vídeo: a tela Início, a empresa ativa, o menu de módulos, a busca Ctrl+K e como ler uma lista sem alterar nada.",
+          "duracao": "5 min 26 s",
+          "status": "pronto"
+        },
+        {
+          "id": "modulo-fluxo-completo",
+          "numero": "Módulo",
+          "titulo": "Visão do fluxo completo: o módulo completo",
+          "resumo": "Cada módulo usa o que o anterior criou. Neste vídeo: o caminho de uma venda, do lead ao título, e onde cada módulo mostra o reflexo do anterior.",
+          "duracao": "5 min 46 s",
+          "status": "pronto"
         }
       ]
     }

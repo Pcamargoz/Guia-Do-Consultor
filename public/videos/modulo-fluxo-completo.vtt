@@ -1,0 +1,229 @@
+WEBVTT
+
+00:00:01.100 --> 00:00:05.526
+Cada módulo usa o que o anterior criou.
+
+00:00:05.526 --> 00:00:06.887
+Neste vídeo:
+
+00:00:06.887 --> 00:00:11.653
+o caminho de uma venda, do lead ao título,
+
+00:00:11.653 --> 00:00:17.700
+e onde cada módulo mostra o reflexo do anterior.
+
+00:00:18.000 --> 00:00:19.842
+Tudo começa no CRM.
+
+00:00:19.842 --> 00:00:29.457
+Converter o lead marca o participante como cliente e cria sozinha a oportunidade no Pipeline.
+
+00:00:29.757 --> 00:00:34.381
+A oportunidade ganha vira pedido de venda.
+
+00:00:34.381 --> 00:00:42.357
+Do pedido saem a nota, os títulos, a produção, o estoque e a carga.
+
+00:00:42.657 --> 00:00:43.423
+Regra 1.
+
+00:00:43.423 --> 00:00:46.393
+Quase toda passagem é um botão:
+
+00:00:46.393 --> 00:00:53.385
+Gerar Pedido de Venda, Gerar Instalação, Faturar, Liberar para Expedição.
+
+00:00:53.385 --> 00:00:59.828
+Saber qual botão leva ao próximo módulo é metade do trabalho.
+
+00:01:00.128 --> 00:01:00.968
+Regra 2.
+
+00:01:00.968 --> 00:01:09.050
+Converter o lead cria sozinha a oportunidade no Pipeline, na etapa Novo Lead,
+
+00:01:09.050 --> 00:01:11.359
+com o valor do Budget.
+
+00:01:11.359 --> 00:01:13.458
+O sistema não avisa:
+
+00:01:13.458 --> 00:01:16.157
+procure no Pipeline.
+
+00:01:16.457 --> 00:01:17.259
+Regra 3.
+
+00:01:17.259 --> 00:01:24.773
+Na oportunidade ganha, Gerar Pedido de Venda aceita só CFOP sem financeiro.
+
+00:01:24.773 --> 00:01:32.486
+Depois, abra o pedido, troque o CFOP e escolha a condição de pagamento.
+
+00:01:32.786 --> 00:01:33.750
+Regra 4.
+
+00:01:33.750 --> 00:01:38.692
+O CFOP decide para onde o pedido reflete:
+
+00:01:38.692 --> 00:01:42.188
+se exige condição e parcelas,
+
+00:01:42.188 --> 00:01:48.815
+se a nota gera título e se a nota mexe no estoque.
+
+00:01:49.115 --> 00:01:50.024
+Regra 5.
+
+00:01:50.024 --> 00:01:57.068
+O contas a receber nasce do pedido ou da nota, nunca dos dois.
+
+00:01:57.068 --> 00:02:03.545
+No fluxo com nota, os títulos nascem ao finalizar a nota.
+
+00:02:03.545 --> 00:02:09.144
+Gerar de novo pelo pedido duplica a receita.
+
+00:02:09.444 --> 00:02:10.241
+Regra 6.
+
+00:02:10.241 --> 00:02:15.420
+Liberar para Expedição só existe no pedido Faturado.
+
+00:02:15.420 --> 00:02:20.901
+Sem nota, o pedido não aparece para montar carga.
+
+00:02:21.201 --> 00:02:22.044
+Regra 7.
+
+00:02:22.044 --> 00:02:24.678
+O saldo nunca é digitado.
+
+00:02:24.678 --> 00:02:30.052
+A OP baixa componentes e, ao ser marcada Produzido,
+
+00:02:30.052 --> 00:02:36.658
+lança a entrada do produto acabado no estoque, com custo.
+
+00:02:36.958 --> 00:02:40.420
+No CRM, filtre o Status Convertido.
+
+00:02:40.420 --> 00:02:43.486
+O lead convertido já é cliente:
+
+00:02:43.486 --> 00:02:44.475
+É Cliente?
+
+00:02:44.475 --> 00:02:47.844
+fica ligado no participante.
+
+00:02:48.144 --> 00:02:55.997
+No Pipeline, a oportunidade do lead convertido aparece na etapa Novo Lead,
+
+00:02:55.997 --> 00:02:58.332
+com o valor do Budget.
+
+00:02:58.332 --> 00:03:03.601
+A ganha leva ao botão Gerar Pedido de Venda.
+
+00:03:03.901 --> 00:03:11.302
+Em Pedidos de Venda, troque o Status para Todos e pesquise o pedido.
+
+00:03:11.302 --> 00:03:12.282
+Na linha:
+
+00:03:12.282 --> 00:03:14.677
+PROJETO mostra a obra,
+
+00:03:14.677 --> 00:03:22.787
+NOTA FISCAL a nota e TÍTULOS fica Gerados depois de finalizar a nota.
+
+00:03:23.087 --> 00:03:28.410
+No pedido Faturado, o menu ⋯ mostra Liberar para Expedição.
+
+00:03:28.410 --> 00:03:33.102
+Gerar Títulos vira Pedido já faturado, desabilitado:
+
+00:03:33.102 --> 00:03:35.687
+a receita não duplica.
+
+00:03:35.987 --> 00:03:38.892
+Em Notas Fiscais, aba NF-e,
+
+00:03:38.892 --> 00:03:46.209
+troque o Status para Todos e ache a nota do pedido, aqui Finalizada.
+
+00:03:46.209 --> 00:03:53.158
+Foi o Faturar no pedido que abriu esta nota, já preenchida.
+
+00:03:53.458 --> 00:03:58.368
+Contas a Receber abre filtrada em Em aberto:
+
+00:03:58.368 --> 00:04:04.728
+troque o Status para Todos e pesquise "NF - " e o número.
+
+00:04:04.728 --> 00:04:12.915
+A nota finalizada gerou um título por parcela; este já foi Recebido.
+
+00:04:13.215 --> 00:04:20.100
+Em Ordens de produção, a OP nasce do pedido de venda e do item.
+
+00:04:20.100 --> 00:04:22.942
+Filtre o status Produzido:
+
+00:04:22.942 --> 00:04:26.985
+é ele que lança o acabado no estoque.
+
+00:04:26.985 --> 00:04:33.815
+Estoque pendente avisa que a entrada ainda não aconteceu.
+
+00:04:34.115 --> 00:04:39.590
+Em Movimentos, o filtro Tipo mostra o rastro da OP:
+
+00:04:39.590 --> 00:04:42.918
+Baixa de OP consome o material,
+
+00:04:42.918 --> 00:04:48.071
+e Entrada produto acabado soma o produto pronto.
+
+00:04:48.071 --> 00:04:52.429
+Filtre por eles para seguir uma OP.
+
+00:04:52.729 --> 00:04:57.269
+Na Expedição, o pedido liberado entra numa carga:
+
+00:04:57.269 --> 00:05:01.161
+Em Montagem, Separado, Em Rota e Entregue.
+
+00:05:01.161 --> 00:05:07.043
+Montar Nova Carga só lista pedidos faturados e liberados.
+
+00:05:07.343 --> 00:05:08.747
+Três cuidados.
+
+00:05:08.747 --> 00:05:15.062
+Transmitir, cancelar e inutilizar nota é do responsável fiscal.
+
+00:05:15.062 --> 00:05:19.273
+Confira o saldo antes de finalizar a nota:
+
+00:05:19.273 --> 00:05:22.080
+ela baixa mesmo sem estoque.
+
+00:05:22.080 --> 00:05:25.086
+E use só dados de teste.
+
+00:05:25.386 --> 00:05:26.508
+Resumindo:
+
+00:05:26.508 --> 00:05:29.537
+cada passagem tem um botão,
+
+00:05:29.537 --> 00:05:37.053
+o CFOP decide os reflexos e os títulos nascem do pedido ou da nota,
+
+00:05:37.053 --> 00:05:38.736
+nunca dos dois.
+
+00:05:38.736 --> 00:05:44.272
+O detalhe de cada módulo está no vídeo dele.

@@ -1,0 +1,229 @@
+WEBVTT
+
+00:00:01.100 --> 00:00:06.869
+Antes de qualquer módulo, aprenda a andar no sistema.
+
+00:00:06.869 --> 00:00:08.175
+Neste vídeo:
+
+00:00:08.175 --> 00:00:13.617
+a tela Início, a empresa ativa, o menu de módulos,
+
+00:00:13.617 --> 00:00:19.986
+a busca Ctrl+K e como ler uma lista sem alterar nada.
+
+00:00:20.286 --> 00:00:27.517
+Ao entrar, o sistema abre o Início e seleciona a empresa sozinho.
+
+00:00:27.517 --> 00:00:33.457
+Confira o nome no selo do topo antes de começar.
+
+00:00:33.757 --> 00:00:38.432
+Depois, escolha o módulo pelo ícone de grade.
+
+00:00:38.432 --> 00:00:44.643
+O menu lateral muda para as telas do módulo escolhido.
+
+00:00:44.943 --> 00:00:45.822
+Regra 1.
+
+00:00:45.822 --> 00:00:51.317
+Tudo o que você vê pertence à empresa selecionada.
+
+00:00:51.317 --> 00:00:59.829
+Uma empresa nova começa vazia, e cada módulo usa o que o anterior criou.
+
+00:01:00.129 --> 00:01:00.974
+Regra 2.
+
+00:01:00.974 --> 00:01:04.355
+Treine sempre em staging ou dev.
+
+00:01:04.355 --> 00:01:07.735
+Confira o endereço no navegador.
+
+00:01:07.735 --> 00:01:13.300
+O que você criar leva TESTE ESTAGIÁRIO no nome.
+
+00:01:13.600 --> 00:01:14.322
+Regra 3.
+
+00:01:14.322 --> 00:01:16.307
+Na dúvida, não clique.
+
+00:01:16.307 --> 00:01:19.916
+Transmitir, Aprovar, Finalizar, Excluir,
+
+00:01:19.916 --> 00:01:26.200
+Enviar agora e Converter geram efeito real e nem sempre voltam.
+
+00:01:26.500 --> 00:01:27.357
+Regra 4.
+
+00:01:27.357 --> 00:01:31.536
+O Ctrl+K encontra telas, não registros.
+
+00:01:31.536 --> 00:01:39.100
+Para achar um pedido pelo número, abra a lista e use o Pesquisar.
+
+00:01:39.400 --> 00:01:40.290
+Regra 5.
+
+00:01:40.290 --> 00:01:43.849
+A lista pode esconder registros.
+
+00:01:43.849 --> 00:01:47.741
+Pedidos de Venda abre só Em Aberto.
+
+00:01:47.741 --> 00:01:56.571
+Confira o filtro, o período e a página antes de dizer que algo não existe.
+
+00:01:56.871 --> 00:01:57.736
+Regra 6.
+
+00:01:57.736 --> 00:02:05.952
+Não use Sair do Sistema nem troque de empresa sem combinar com o supervisor.
+
+00:02:05.952 --> 00:02:13.471
+O login tem limite de tentativas e pode bloquear por 15 minutos.
+
+00:02:13.771 --> 00:02:17.200
+Confira a empresa no selo do topo.
+
+00:02:17.200 --> 00:02:22.847
+Os Alertas urgentes são atalhos para a tela já filtrada.
+
+00:02:22.847 --> 00:02:29.800
+Tarefas do dia são pendências calculadas, não o módulo Tarefas.
+
+00:02:30.100 --> 00:02:35.435
+Clique no ícone de grade, no canto superior esquerdo.
+
+00:02:35.435 --> 00:02:37.851
+Digite em Buscar módulo.
+
+00:02:37.851 --> 00:02:38.858
+e escolha.
+
+00:02:38.858 --> 00:02:45.200
+São 15 módulos, mais o CEM Mobi, que abre em outra aba; Config.
+
+00:02:45.200 --> 00:02:50.129
+Interna e Implantação são de administração.
+
+00:02:50.429 --> 00:02:55.279
+O topo do menu mostra MÓDULO e o nome escolhido.
+
+00:02:55.279 --> 00:03:00.230
+Grupos com seta, como Configurações e Relatórios,
+
+00:03:00.230 --> 00:03:03.261
+vêm fechados e escondem telas.
+
+00:03:03.261 --> 00:03:07.600
+Recolher menu dá mais espaço à lista.
+
+00:03:07.900 --> 00:03:11.451
+Pressione Ctrl+K e digite "pedido".
+
+00:03:11.451 --> 00:03:17.235
+Aparecem telas como Pedidos de Compra e Pedidos de Venda.
+
+00:03:17.235 --> 00:03:19.357
+Use ↑↓ e Enter.
+
+00:03:19.657 --> 00:03:22.967
+Toda lista segue o mesmo padrão:
+
+00:03:22.967 --> 00:03:23.485
+Mais.
+
+00:03:23.485 --> 00:03:29.174
+para colunas e Excel, Filtros, o botão Novo, Pesquisar.
+
+00:03:29.174 --> 00:03:32.257
+e a paginação no rodapé.
+
+00:03:32.557 --> 00:03:36.153
+A lista abre só com Status Em Aberto.
+
+00:03:36.153 --> 00:03:41.692
+Troque para Todos e aparecem também os pedidos faturados,
+
+00:03:41.692 --> 00:03:43.927
+entregues e encerrados.
+
+00:03:43.927 --> 00:03:47.443
+Trocar filtro não altera nada.
+
+00:03:47.743 --> 00:03:51.410
+O menu ⋯ mistura consulta e ação.
+
+00:03:51.410 --> 00:03:53.299
+Baixar PDF só lê.
+
+00:03:53.299 --> 00:03:56.965
+Faturar e Encerrar alteram dados.
+
+00:03:56.965 --> 00:04:00.343
+Feche com Esc sem clicar.
+
+00:04:00.643 --> 00:04:06.932
+O sino abre as Notificações, com as abas Geral e Solicitações.
+
+00:04:06.932 --> 00:04:11.598
+Pode mostrar "0 notificações" por um instante:
+
+00:04:11.598 --> 00:04:13.221
+espere carregar.
+
+00:04:13.221 --> 00:04:14.134
+O botão ?
+
+00:04:14.134 --> 00:04:18.386
+das listas abre os manuais de ajuda.
+
+00:04:18.686 --> 00:04:23.448
+No menu do usuário ficam Modo Escuro e Densidade.
+
+00:04:23.448 --> 00:04:27.724
+Configurar E-mail (SMTP) é de administração.
+
+00:04:27.724 --> 00:04:33.572
+E Sair do Sistema fica para quando o supervisor pedir.
+
+00:04:33.872 --> 00:04:39.711
+No fim do menu, o bloco GLOBAIS reúne Painel de Controle, Configurações,
+
+00:04:39.711 --> 00:04:43.685
+Segurança, Treinamento, Aplicativos e Assinatura.
+
+00:04:43.685 --> 00:04:44.983
+É administração:
+
+00:04:44.983 --> 00:04:47.043
+percorra só lendo.
+
+00:04:47.343 --> 00:04:48.789
+Três cuidados.
+
+00:04:48.789 --> 00:04:51.269
+Não use Sair do Sistema.
+
+00:04:51.269 --> 00:04:57.674
+Confira o filtro padrão antes de achar que a lista está vazia.
+
+00:04:57.674 --> 00:05:06.229
+E os dois grupos Configurações, do módulo e de GLOBAIS, são de administração.
+
+00:05:06.529 --> 00:05:07.543
+Resumindo:
+
+00:05:07.543 --> 00:05:12.514
+chegue a qualquer tela pela grade ou pelo Ctrl+K,
+
+00:05:12.514 --> 00:05:18.194
+confira o filtro padrão da lista e consulte sem alterar.
+
+00:05:18.194 --> 00:05:24.272
+O checklist e o manual de navegação estão logo abaixo.
