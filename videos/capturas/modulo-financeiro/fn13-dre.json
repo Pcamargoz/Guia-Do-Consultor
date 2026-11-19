@@ -1,0 +1,46 @@
+{
+ "nome": "fn13-dre",
+ "url": "https://staging.flow.faktory.com.br/financeiro/dre",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "Modo",
+    "exact": true
+   },
+   "caixa": {
+    "x": 989,
+    "y": 156,
+    "w": 238,
+    "h": 19
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Aplicar"
+   },
+   "caixa": {
+    "x": 1613,
+    "y": 182,
+    "w": 256,
+    "h": 43
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Contas",
+    "nth": 0
+   },
+   "caixa": {
+    "x": 646,
+    "y": 664,
+    "w": 88,
+    "h": 43
+   }
+  }
+ ],
+ "em": "2026-11-17T16:59:45.443Z"
+}

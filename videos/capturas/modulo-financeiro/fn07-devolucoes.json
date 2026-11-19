@@ -1,0 +1,21 @@
+{
+ "nome": "fn07-devolucoes",
+ "url": "https://staging.flow.faktory.com.br/financeiro/devolucoes",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "heading",
+    "name": "Devoluções"
+   },
+   "caixa": {
+    "x": 452,
+    "y": 160,
+    "w": 130,
+    "h": 34
+   }
+  }
+ ],
+ "em": "2026-11-17T16:56:23.537Z"
+}

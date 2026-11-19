@@ -1,0 +1,45 @@
+{
+ "nome": "fn01-contas-bancarias",
+ "url": "https://staging.flow.faktory.com.br/configuracoes/contas-bancarias",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "heading",
+    "name": "Contas Bancárias"
+   },
+   "caixa": {
+    "x": 433,
+    "y": 140,
+    "w": 194,
+    "h": 34
+   }
+  },
+  {
+   "alvo": {
+    "text": "Tipo de Conta",
+    "exact": true
+   },
+   "caixa": {
+    "x": 1387,
+    "y": 349,
+    "w": 121,
+    "h": 22
+   }
+  },
+  {
+   "alvo": {
+    "css": "tbody tr",
+    "nth": 0
+   },
+   "caixa": {
+    "x": 348,
+    "y": 382,
+    "w": 1531,
+    "h": 64
+   }
+  }
+ ],
+ "em": "2026-11-17T16:52:49.835Z"
+}

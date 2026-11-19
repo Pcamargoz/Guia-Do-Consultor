@@ -1,0 +1,20 @@
+{
+ "nome": "fi04-empresa-contador",
+ "url": "https://staging.flow.faktory.com.br/configuracoes/empresas",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "label": "CPF/CNPJ do Contador"
+   },
+   "caixa": {
+    "x": 1441,
+    "y": 540,
+    "w": 426,
+    "h": 48
+   }
+  }
+ ],
+ "em": "2026-11-17T16:39:13.364Z"
+}

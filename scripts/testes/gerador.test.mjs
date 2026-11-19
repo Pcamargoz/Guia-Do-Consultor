@@ -161,7 +161,8 @@ describe('base versionada (lib/conteudo/base/)', () => {
     assert.deepEqual(nomes, [...MAPA_MODULOS.map((m) => `${m.id}.json`), 'LEIA-ME.md', 'indice.json'].sort());
     const tam = (n) => statSync(path.join(PASTA_BASE, n)).size;
     const total = nomes.filter((n) => n.endsWith('.json')).reduce((a, n) => a + tam(n), 0);
-    assert.ok(tam('indice.json') < total / 5, `índice ${tam('indice.json')} B de ${total} B`);
+    // 1/4: com os vídeos completos dos 17 módulos (capítulos no índice), 1/5 ficou apertado (19/11/2026).
+    assert.ok(tam('indice.json') < total / 4, `índice ${tam('indice.json')} B de ${total} B`);
     for (const m of MAPA_MODULOS) assert.ok(tam(`${m.id}.json`) < total / 5, m.id);
   });
   it('carga sob demanda: índice e módulo vêm separados; id desconhecido não toca no disco', async () => {

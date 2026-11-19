@@ -1,0 +1,45 @@
+{
+ "nome": "ta08-visoes",
+ "url": "https://staging.flow.faktory.com.br/tarefas/46",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Tabela"
+   },
+   "caixa": {
+    "x": 1301,
+    "y": 134,
+    "w": 98,
+    "h": 34
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Calendário"
+   },
+   "caixa": {
+    "x": 1400,
+    "y": 134,
+    "w": 127,
+    "h": 34
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Gantt"
+   },
+   "caixa": {
+    "x": 1527,
+    "y": 134,
+    "w": 90,
+    "h": 34
+   }
+  }
+ ],
+ "em": "2026-11-17T17:03:51.331Z"
+}

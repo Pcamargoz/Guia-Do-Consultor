@@ -1,0 +1,45 @@
+{
+ "nome": "ex03-parametros",
+ "url": "https://staging.flow.faktory.com.br/expedicao/configuracoes/parametros",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "switch",
+    "name": "Separação"
+   },
+   "caixa": {
+    "x": 1378,
+    "y": 395,
+    "w": 53,
+    "h": 29
+   }
+  },
+  {
+   "alvo": {
+    "role": "switch",
+    "name": "Conferência"
+   },
+   "caixa": {
+    "x": 1378,
+    "y": 529,
+    "w": 53,
+    "h": 29
+   }
+  },
+  {
+   "alvo": {
+    "role": "switch",
+    "name": "Carregamento"
+   },
+   "caixa": {
+    "x": 1378,
+    "y": 664,
+    "w": 53,
+    "h": 29
+   }
+  }
+ ],
+ "em": "2026-11-17T16:33:00.379Z"
+}

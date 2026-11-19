@@ -12,9 +12,9 @@ Conferir sem gravar: `node scripts/gerar-base-conhecimento.mjs --harness <pasta>
 
 ## Marcas de crase (tela / codigo)
 
-- tela pelo glossário de telas do Harness: 113
+- tela pelo glossário de telas do Harness: 121
 - tela inferida pelo módulo (caminho de menu fora do glossário cujo 1º segmento é um módulo do índice): 195
-- codigo: 220
+- codigo: 238
 
 ## Telas inferidas pelo módulo — conferir com conhecimento/glossario/telas.yaml
 

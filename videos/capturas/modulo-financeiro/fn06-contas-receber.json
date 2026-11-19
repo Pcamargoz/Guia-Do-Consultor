@@ -1,0 +1,59 @@
+{
+ "nome": "fn06-contas-receber",
+ "url": "https://staging.flow.faktory.com.br/financeiro/contas-receber",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "Status",
+    "exact": true,
+    "nth": 0
+   },
+   "caixa": {
+    "x": 695,
+    "y": 470,
+    "w": 50,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "text": "Documento",
+    "exact": true
+   },
+   "caixa": {
+    "x": 774,
+    "y": 540,
+    "w": 102,
+    "h": 18
+   }
+  },
+  {
+   "alvo": {
+    "text": "Parcela",
+    "exact": true
+   },
+   "caixa": {
+    "x": 963,
+    "y": 540,
+    "w": 71,
+    "h": 18
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Receber",
+    "exact": true
+   },
+   "caixa": {
+    "x": 1709,
+    "y": 581,
+    "w": 96,
+    "h": 43
+   }
+  }
+ ],
+ "em": "2026-11-17T16:56:04.359Z"
+}

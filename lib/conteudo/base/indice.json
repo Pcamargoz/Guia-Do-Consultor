@@ -14,7 +14,8 @@
    "fontes": [
     "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
     "guia:scripts/dados-checklists-estagiarios.mjs#ONBOARDING",
-    "guia:scripts/dados-checklists-estagiarios.mjs#navegacao"
+    "guia:scripts/dados-checklists-estagiarios.mjs#navegacao",
+    "guia:scripts/dados-checklists-implantacao.mjs#implantacao-primeiros-passos"
    ],
    "subtitulo": "Entrar, trocar de módulo, buscar telas e ler listas.",
    "em_preparacao": false,
@@ -42,7 +43,7 @@
      "id": "primeiros-passos:manual-inicial",
      "tipo": "manual",
      "jornada": "inicial",
-     "titulo": "Guia visual ilustrado (11 passos, 7 telas)",
+     "titulo": "Guia visual ilustrado (19 passos, 11 telas)",
      "status": "disponivel"
     },
     {
@@ -87,6 +88,19 @@
     {
      "modulo": "primeiros-passos",
      "duracao_s": null,
+     "url": "/checklists/consultores/implantacao-00-primeiros-passos.html",
+     "fontes": [
+      "guia:scripts/dados-checklists-implantacao.mjs#implantacao-primeiros-passos"
+     ],
+     "id": "primeiros-passos:checklist-implantacao",
+     "tipo": "checklist",
+     "jornada": "consultor",
+     "titulo": "Primeiros passos: navegação e cadastros rápidos com o cliente",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "primeiros-passos",
+     "duracao_s": null,
      "url": null,
      "fontes": [
       "guia:refatoracao-guia-do-consultor/08-producao-videos-e-manuais.md"
@@ -107,7 +121,7 @@
      "id": "primeiros-passos:manual-consultor",
      "tipo": "manual",
      "jornada": "consultor",
-     "titulo": "Guia visual ilustrado (11 passos, 7 telas)",
+     "titulo": "Guia visual ilustrado (19 passos, 11 telas)",
      "status": "disponivel"
     }
    ],
@@ -120,25 +134,40 @@
      ]
     },
     "checklist": {
-     "status": "em-preparacao",
-     "titulo": "Checklist de implantação",
+     "status": "disponivel",
+     "id": "implantacao-primeiros-passos",
+     "chave": "ff-consultor:implantacao-primeiros-passos",
+     "titulo": "Primeiros passos: navegação e cadastros rápidos com o cliente",
+     "resumo": "Ao final, o usuário do cliente chega a qualquer módulo sozinho, sabe ler uma lista sem medo de alterar dados e cadastrou com as próprias mãos um cliente, um fornecedor, um produto e uma obra de teste, vendo cada um deles aparecer para escolha num pedido de venda.",
+     "url": "/checklists/consultores/implantacao-00-primeiros-passos.html",
+     "itens": 32,
+     "grupos": [
+      "1. Entrar e se localizar",
+      "2. Trocar de módulo e achar qualquer tela",
+      "3. Ler uma lista sem alterar nada",
+      "4. Cadastro rápido: cliente",
+      "5. Cadastro rápido: fornecedor e vendedor",
+      "6. Cadastro rápido: produto",
+      "7. Cadastro rápido: obra e prova no pedido"
+     ],
+     "atualizadoEm": "2026-10-29",
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/14-metodologia.md"
+      "guia:scripts/dados-checklists-implantacao.mjs#implantacao-primeiros-passos"
      ]
     },
     "manual": {
      "status": "disponivel",
      "id": "primeiros-passos",
      "titulo": "Primeiros passos — guia visual",
-     "resumo": "Você vai reconhecer as partes da tela do Faktory Flow, trocar de módulo, achar qualquer tela pela busca (Ctrl+K), abrir os grupos do menu, ler uma lista sem alterar nenhum registro e saber onde ficam avisos e administração. O que vale aqui vale para todos os módulos.",
+     "resumo": "Você vai reconhecer as partes da tela do Faktory Flow, trocar de módulo, achar qualquer tela pela busca (Ctrl+K), abrir os grupos do menu, ler uma lista sem alterar nenhum registro e saber onde ficam avisos e administração. No fim, você cria os cadastros rápidos (cliente, fornecedor, produto e obra) e confere cada um num pedido novo. O que vale aqui vale para todos os módulos.",
      "url": "#manuais/primeiros-passos",
      "dados": "/manuais/primeiros-passos/guia.json",
-     "capitulos": 4,
-     "passos": 11,
-     "telas": 7,
+     "capitulos": 5,
+     "passos": 19,
+     "telas": 11,
      "situacao": "rascunho",
      "versaoSistema": "1.23.2",
-     "atualizadoEm": "2026-11-06",
+     "atualizadoEm": "2026-11-19",
      "revisar": false,
      "fontes": [
       "guia:public/manuais/primeiros-passos/guia.json"
@@ -3438,10 +3467,138 @@
    ],
    "recursos": {
     "video": {
-     "status": "em-preparacao",
-     "titulo": "Vídeo completo do módulo",
+     "status": "disponivel",
+     "id": "modulo-expedicao",
+     "titulo": "Expedição: o módulo completo",
+     "resumo": "A Expedição leva o pedido faturado até o cliente. Neste vídeo: cadastros da frota, liberar o pedido, montar e fechar a carga, checkpoints do pátio, rota, entrega e ocorrências.",
+     "url": "/videos/modulo-expedicao.mp4",
+     "poster": "/videos/modulo-expedicao.jpg",
+     "legendas": "/videos/modulo-expedicao.vtt",
+     "duracao_s": 374,
+     "capitulos": [
+      {
+       "t": 1.1,
+       "titulo": "Abertura",
+       "grupo": "Abertura"
+      },
+      {
+       "t": 18.6,
+       "titulo": "Conceito",
+       "grupo": "Conceito"
+      },
+      {
+       "t": 46.1,
+       "titulo": "Só pedido Faturado é liberado",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 61.3,
+       "titulo": "Liberação pode ser revertida",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 73.6,
+       "titulo": "Saída e motorista obrigatórios",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 87.6,
+       "titulo": "Capacidade define a ocupação",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 100.5,
+       "titulo": "CNH vencida pede justificativa",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 113.4,
+       "titulo": "Ligue só os checkpoints usados",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 127.5,
+       "titulo": "Entrega pelo ERP pede motivo",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 142.7,
+       "titulo": "Os veículos",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 156.1,
+       "titulo": "Os motoristas",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 166.2,
+       "titulo": "Os checkpoints da empresa",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 179.7,
+       "titulo": "Liberar o pedido",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 194.3,
+       "titulo": "Visão Geral da Expedição",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 210.6,
+       "titulo": "Montar a carga",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 230.9,
+       "titulo": "O quadro de cargas",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 249.5,
+       "titulo": "Bipar os volumes",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 268.2,
+       "titulo": "A carga entregue",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 286.8,
+       "titulo": "Histórico da Carga",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 301.4,
+       "titulo": "Ocorrências",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 320.6,
+       "titulo": "Re-expedição e devolução",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 335.2,
+       "titulo": "Cuidados",
+       "grupo": "Cuidados"
+      },
+      {
+       "t": 352.1,
+       "titulo": "Fechamento",
+       "grupo": "Fechamento"
+      }
+     ],
+     "compartilhado": [],
+     "versaoSistema": "1.22.13",
+     "revisar": true,
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/14-metodologia.md"
+      "guia:public/videos/manifest.json",
+      "guia:videos/roteiros/modulo-expedicao.json",
+      "guia:videos/src/gerado/modulo-expedicao.json"
      ]
     },
     "checklist": {
@@ -3942,10 +4099,148 @@
    ],
    "recursos": {
     "video": {
-     "status": "em-preparacao",
-     "titulo": "Vídeo completo do módulo",
+     "status": "disponivel",
+     "id": "modulo-fiscal",
+     "titulo": "Fiscal: o módulo completo",
+     "resumo": "O Fiscal é o motor de impostos do Flow. Neste vídeo: empresa e regime, CFOP, NCM, Onboarding, o cálculo no pedido e na nota, o aviso de imposto não calculado e as obrigações.",
+     "url": "/videos/modulo-fiscal.mp4",
+     "poster": "/videos/modulo-fiscal.jpg",
+     "legendas": "/videos/modulo-fiscal.vtt",
+     "duracao_s": 488,
+     "capitulos": [
+      {
+       "t": 1.1,
+       "titulo": "Abertura",
+       "grupo": "Abertura"
+      },
+      {
+       "t": 20.9,
+       "titulo": "Conceito",
+       "grupo": "Conceito"
+      },
+      {
+       "t": 53.5,
+       "titulo": "Sem regime, nada calcula",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 67.6,
+       "titulo": "O CFOP liga cada imposto",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 83.3,
+       "titulo": "De onde vem o CST",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 99.1,
+       "titulo": "ST pede MVA por UF",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 117.1,
+       "titulo": "Salvou não é calculou",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 134,
+       "titulo": "CBS e IBS sem alíquota plena",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 151.5,
+       "titulo": "O Onboarding só informa",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 167.8,
+       "titulo": "O Painel Fiscal",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 184.7,
+       "titulo": "Regime e atividade",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 205,
+       "titulo": "PIS, COFINS, CBS e IBS",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 223.7,
+       "titulo": "O CPF do contador",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 239.4,
+       "titulo": "O CFOP por dentro",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 259.2,
+       "titulo": "Textos Fiscais",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 278.4,
+       "titulo": "O NCM do produto",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 299.8,
+       "titulo": "NCM por Estado",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 321.3,
+       "titulo": "Onboarding Fiscal",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 339.3,
+       "titulo": "Diagnóstico Fiscal",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 358,
+       "titulo": "O imposto no pedido",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 382.9,
+       "titulo": "Os impostos na nota",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 403.2,
+       "titulo": "Regras Fiscais de Serviço",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 422.9,
+       "titulo": "Obrigações acessórias",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 442.1,
+       "titulo": "Cuidados",
+       "grupo": "Cuidados"
+      },
+      {
+       "t": 464.2,
+       "titulo": "Fechamento",
+       "grupo": "Fechamento"
+      }
+     ],
+     "compartilhado": [],
+     "versaoSistema": "1.22.13",
+     "revisar": true,
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/14-metodologia.md"
+      "guia:public/videos/manifest.json",
+      "guia:videos/roteiros/modulo-fiscal.json",
+      "guia:videos/src/gerado/modulo-fiscal.json"
      ]
     },
     "checklist": {
@@ -4138,10 +4433,148 @@
    ],
    "recursos": {
     "video": {
-     "status": "em-preparacao",
-     "titulo": "Vídeo completo do módulo",
+     "status": "disponivel",
+     "id": "modulo-financeiro",
+     "titulo": "Financeiro: o módulo completo",
+     "resumo": "Todo dinheiro da empresa passa por um título. Neste vídeo: contas e plano, títulos do pedido e da nota, receber e pagar, extrato, fluxo de caixa, DRE e estorno.",
+     "url": "/videos/modulo-financeiro.mp4",
+     "poster": "/videos/modulo-financeiro.jpg",
+     "legendas": "/videos/modulo-financeiro.vtt",
+     "duracao_s": 456,
+     "capitulos": [
+      {
+       "t": 1.1,
+       "titulo": "Abertura",
+       "grupo": "Abertura"
+      },
+      {
+       "t": 18.6,
+       "titulo": "Conceito",
+       "grupo": "Conceito"
+      },
+      {
+       "t": 48.9,
+       "titulo": "Só conta analítica",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 60.7,
+       "titulo": "Boleto exige conta emissora",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 77,
+       "titulo": "Um caminho para os títulos",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 94.5,
+       "titulo": "Baixa não se agenda",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 109.1,
+       "titulo": "Parcial cria o residual",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 124.3,
+       "titulo": "Cancelar título é excluir",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 135.5,
+       "titulo": "Estorno desfaz a baixa",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 151.2,
+       "titulo": "Contas bancárias",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 171,
+       "titulo": "Meios de pagamento",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 189.6,
+       "titulo": "Plano de contas",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 207.1,
+       "titulo": "Saldos antes de começar",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 222.3,
+       "titulo": "Títulos pelo pedido",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 238.6,
+       "titulo": "Contas a Receber",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 257.8,
+       "titulo": "Painel de Devoluções",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 273,
+       "titulo": "Receber um título",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 291.6,
+       "titulo": "PIX, se contratado",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 310.2,
+       "titulo": "Contas a Pagar",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 331.7,
+       "titulo": "Extrato e conciliação",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 349.1,
+       "titulo": "Fluxo de Caixa",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 370.6,
+       "titulo": "DRE",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 389.8,
+       "titulo": "Estornar a baixa",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 407.8,
+       "titulo": "Cuidados",
+       "grupo": "Cuidados"
+      },
+      {
+       "t": 430.5,
+       "titulo": "Fechamento",
+       "grupo": "Fechamento"
+      }
+     ],
+     "compartilhado": [],
+     "versaoSistema": "1.22.13",
+     "revisar": true,
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/14-metodologia.md"
+      "guia:public/videos/manifest.json",
+      "guia:videos/roteiros/modulo-financeiro.json",
+      "guia:videos/src/gerado/modulo-financeiro.json"
      ]
     },
     "checklist": {
@@ -4327,10 +4760,118 @@
    ],
    "recursos": {
     "video": {
-     "status": "em-preparacao",
-     "titulo": "Vídeo completo do módulo",
+     "status": "disponivel",
+     "id": "modulo-tarefas",
+     "titulo": "Tarefas: o módulo completo",
+     "resumo": "Tarefas organiza o trabalho da equipe em quadros, listas e cartões. Neste vídeo: criar o quadro, distribuir o cartão, acompanhar em Minhas Tarefas e no Dashboard, colaborar e arquivar.",
+     "url": "/videos/modulo-tarefas.mp4",
+     "poster": "/videos/modulo-tarefas.jpg",
+     "legendas": "/videos/modulo-tarefas.vtt",
+     "duracao_s": 322,
+     "capitulos": [
+      {
+       "t": 0,
+       "titulo": "Abertura",
+       "grupo": "Abertura"
+      },
+      {
+       "t": 17.5,
+       "titulo": "Conceito",
+       "grupo": "Conceito"
+      },
+      {
+       "t": 39.3,
+       "titulo": "O quadro nasce sem listas",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 53.3,
+       "titulo": "Cartão nasce Pendente e Média",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 66.2,
+       "titulo": "Sem responsável, ninguém vê",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 80.3,
+       "titulo": "O prazo é o Término Previsto",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 93.2,
+       "titulo": "A conversa fica no cartão",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 108.9,
+       "titulo": "Arquivar não apaga",
+       "grupo": "Regras de negócio"
+      },
+      {
+       "t": 120.7,
+       "titulo": "Meus Quadros",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 135.9,
+       "titulo": "Novo Quadro",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 149.9,
+       "titulo": "Listas e cartões",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 167.4,
+       "titulo": "Prazo e responsável",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 184.3,
+       "titulo": "Minhas Tarefas",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 203.5,
+       "titulo": "Dashboard de Tarefas",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 222.1,
+       "titulo": "Trabalhar dentro do cartão",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 244.1,
+       "titulo": "O mesmo quadro, outras visões",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 265,
+       "titulo": "Arquivadas",
+       "grupo": "Na tela"
+      },
+      {
+       "t": 283.1,
+       "titulo": "Cuidados",
+       "grupo": "Cuidados"
+      },
+      {
+       "t": 301.1,
+       "titulo": "Fechamento",
+       "grupo": "Fechamento"
+      }
+     ],
+     "compartilhado": [],
+     "versaoSistema": "1.22.13",
+     "revisar": true,
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/14-metodologia.md"
+      "guia:public/videos/manifest.json",
+      "guia:videos/roteiros/modulo-tarefas.json",
+      "guia:videos/src/gerado/modulo-tarefas.json"
      ]
     },
     "checklist": {
@@ -4563,7 +5104,8 @@
    "icone": null,
    "fontes": [
     "guia:refatoracao-guia-do-consultor/05-mapa-de-modulos.md",
-    "guia:scripts/dados-checklists-estagiarios.mjs#fluxo"
+    "guia:scripts/dados-checklists-estagiarios.mjs#fluxo",
+    "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fluxo-completo"
    ],
    "subtitulo": "Como um pedido passa por todos os módulos.",
    "em_preparacao": false,
@@ -4636,6 +5178,19 @@
     },
     {
      "modulo": "fluxo-completo",
+     "duracao_s": null,
+     "url": "/checklists/consultores/implantacao-16-fluxo-completo.html",
+     "fontes": [
+      "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fluxo-completo"
+     ],
+     "id": "fluxo-completo:checklist-implantacao",
+     "tipo": "checklist",
+     "jornada": "consultor",
+     "titulo": "Visão do fluxo completo: seguir um pedido por todos os módulos com o cliente",
+     "status": "disponivel"
+    },
+    {
+     "modulo": "fluxo-completo",
      "duracao_s": 157,
      "url": "/videos/consultor-fluxo-completo.mp4",
      "fontes": [
@@ -4684,10 +5239,24 @@
      ]
     },
     "checklist": {
-     "status": "em-preparacao",
-     "titulo": "Checklist de implantação",
+     "status": "disponivel",
+     "id": "implantacao-fluxo-completo",
+     "chave": "ff-consultor:implantacao-fluxo-completo",
+     "titulo": "Visão do fluxo completo: seguir um pedido por todos os módulos com o cliente",
+     "resumo": "Ao final, o cliente sabe onde o mesmo pedido aparece em cada módulo (CRM, Vendas, Compras, Recebimento, Estoque, Produção, Serviços, Faturamento, Expedição, Financeiro e Projetos), reconhece a coluna ou o status que prova cada avanço e conhece a ordem que o sistema exige.",
+     "url": "/checklists/consultores/implantacao-16-fluxo-completo.html",
+     "itens": 27,
+     "grupos": [
+      "1. Montar o mapa do pedido",
+      "2. Do contato ao pedido",
+      "3. Suprimentos: compra, recebimento e estoque",
+      "4. Operação: serviços e produção",
+      "5. Nota e entrega",
+      "6. Resultado: financeiro e obra"
+     ],
+     "atualizadoEm": "2026-10-29",
      "fontes": [
-      "guia:refatoracao-guia-do-consultor/14-metodologia.md"
+      "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fluxo-completo"
      ]
     },
     "manual": {
@@ -7469,6 +8038,550 @@
     "guia:videos/roteiros/modulo-projetos.json",
     "guia:videos/src/gerado/modulo-projetos.json"
    ]
+  },
+  {
+   "id": "modulo-expedicao",
+   "titulo": "Expedição: o módulo completo",
+   "resumo": "A Expedição leva o pedido faturado até o cliente. Neste vídeo: cadastros da frota, liberar o pedido, montar e fechar a carga, checkpoints do pátio, rota, entrega e ocorrências.",
+   "url": "/videos/modulo-expedicao.mp4",
+   "poster": "/videos/modulo-expedicao.jpg",
+   "legendas": "/videos/modulo-expedicao.vtt",
+   "duracao_s": 374,
+   "capitulos": [
+    {
+     "t": 1.1,
+     "titulo": "Abertura",
+     "grupo": "Abertura"
+    },
+    {
+     "t": 18.6,
+     "titulo": "Conceito",
+     "grupo": "Conceito"
+    },
+    {
+     "t": 46.1,
+     "titulo": "Só pedido Faturado é liberado",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 61.3,
+     "titulo": "Liberação pode ser revertida",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 73.6,
+     "titulo": "Saída e motorista obrigatórios",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 87.6,
+     "titulo": "Capacidade define a ocupação",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 100.5,
+     "titulo": "CNH vencida pede justificativa",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 113.4,
+     "titulo": "Ligue só os checkpoints usados",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 127.5,
+     "titulo": "Entrega pelo ERP pede motivo",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 142.7,
+     "titulo": "Os veículos",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 156.1,
+     "titulo": "Os motoristas",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 166.2,
+     "titulo": "Os checkpoints da empresa",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 179.7,
+     "titulo": "Liberar o pedido",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 194.3,
+     "titulo": "Visão Geral da Expedição",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 210.6,
+     "titulo": "Montar a carga",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 230.9,
+     "titulo": "O quadro de cargas",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 249.5,
+     "titulo": "Bipar os volumes",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 268.2,
+     "titulo": "A carga entregue",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 286.8,
+     "titulo": "Histórico da Carga",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 301.4,
+     "titulo": "Ocorrências",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 320.6,
+     "titulo": "Re-expedição e devolução",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 335.2,
+     "titulo": "Cuidados",
+     "grupo": "Cuidados"
+    },
+    {
+     "t": 352.1,
+     "titulo": "Fechamento",
+     "grupo": "Fechamento"
+    }
+   ],
+   "modulos": [
+    "expedicao"
+   ],
+   "versaoSistema": "1.22.13",
+   "revisar": true,
+   "fontes": [
+    "guia:public/videos/manifest.json",
+    "guia:videos/roteiros/modulo-expedicao.json",
+    "guia:videos/src/gerado/modulo-expedicao.json"
+   ]
+  },
+  {
+   "id": "modulo-fiscal",
+   "titulo": "Fiscal: o módulo completo",
+   "resumo": "O Fiscal é o motor de impostos do Flow. Neste vídeo: empresa e regime, CFOP, NCM, Onboarding, o cálculo no pedido e na nota, o aviso de imposto não calculado e as obrigações.",
+   "url": "/videos/modulo-fiscal.mp4",
+   "poster": "/videos/modulo-fiscal.jpg",
+   "legendas": "/videos/modulo-fiscal.vtt",
+   "duracao_s": 488,
+   "capitulos": [
+    {
+     "t": 1.1,
+     "titulo": "Abertura",
+     "grupo": "Abertura"
+    },
+    {
+     "t": 20.9,
+     "titulo": "Conceito",
+     "grupo": "Conceito"
+    },
+    {
+     "t": 53.5,
+     "titulo": "Sem regime, nada calcula",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 67.6,
+     "titulo": "O CFOP liga cada imposto",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 83.3,
+     "titulo": "De onde vem o CST",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 99.1,
+     "titulo": "ST pede MVA por UF",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 117.1,
+     "titulo": "Salvou não é calculou",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 134,
+     "titulo": "CBS e IBS sem alíquota plena",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 151.5,
+     "titulo": "O Onboarding só informa",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 167.8,
+     "titulo": "O Painel Fiscal",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 184.7,
+     "titulo": "Regime e atividade",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 205,
+     "titulo": "PIS, COFINS, CBS e IBS",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 223.7,
+     "titulo": "O CPF do contador",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 239.4,
+     "titulo": "O CFOP por dentro",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 259.2,
+     "titulo": "Textos Fiscais",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 278.4,
+     "titulo": "O NCM do produto",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 299.8,
+     "titulo": "NCM por Estado",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 321.3,
+     "titulo": "Onboarding Fiscal",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 339.3,
+     "titulo": "Diagnóstico Fiscal",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 358,
+     "titulo": "O imposto no pedido",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 382.9,
+     "titulo": "Os impostos na nota",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 403.2,
+     "titulo": "Regras Fiscais de Serviço",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 422.9,
+     "titulo": "Obrigações acessórias",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 442.1,
+     "titulo": "Cuidados",
+     "grupo": "Cuidados"
+    },
+    {
+     "t": 464.2,
+     "titulo": "Fechamento",
+     "grupo": "Fechamento"
+    }
+   ],
+   "modulos": [
+    "fiscal"
+   ],
+   "versaoSistema": "1.22.13",
+   "revisar": true,
+   "fontes": [
+    "guia:public/videos/manifest.json",
+    "guia:videos/roteiros/modulo-fiscal.json",
+    "guia:videos/src/gerado/modulo-fiscal.json"
+   ]
+  },
+  {
+   "id": "modulo-financeiro",
+   "titulo": "Financeiro: o módulo completo",
+   "resumo": "Todo dinheiro da empresa passa por um título. Neste vídeo: contas e plano, títulos do pedido e da nota, receber e pagar, extrato, fluxo de caixa, DRE e estorno.",
+   "url": "/videos/modulo-financeiro.mp4",
+   "poster": "/videos/modulo-financeiro.jpg",
+   "legendas": "/videos/modulo-financeiro.vtt",
+   "duracao_s": 456,
+   "capitulos": [
+    {
+     "t": 1.1,
+     "titulo": "Abertura",
+     "grupo": "Abertura"
+    },
+    {
+     "t": 18.6,
+     "titulo": "Conceito",
+     "grupo": "Conceito"
+    },
+    {
+     "t": 48.9,
+     "titulo": "Só conta analítica",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 60.7,
+     "titulo": "Boleto exige conta emissora",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 77,
+     "titulo": "Um caminho para os títulos",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 94.5,
+     "titulo": "Baixa não se agenda",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 109.1,
+     "titulo": "Parcial cria o residual",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 124.3,
+     "titulo": "Cancelar título é excluir",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 135.5,
+     "titulo": "Estorno desfaz a baixa",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 151.2,
+     "titulo": "Contas bancárias",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 171,
+     "titulo": "Meios de pagamento",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 189.6,
+     "titulo": "Plano de contas",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 207.1,
+     "titulo": "Saldos antes de começar",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 222.3,
+     "titulo": "Títulos pelo pedido",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 238.6,
+     "titulo": "Contas a Receber",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 257.8,
+     "titulo": "Painel de Devoluções",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 273,
+     "titulo": "Receber um título",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 291.6,
+     "titulo": "PIX, se contratado",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 310.2,
+     "titulo": "Contas a Pagar",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 331.7,
+     "titulo": "Extrato e conciliação",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 349.1,
+     "titulo": "Fluxo de Caixa",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 370.6,
+     "titulo": "DRE",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 389.8,
+     "titulo": "Estornar a baixa",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 407.8,
+     "titulo": "Cuidados",
+     "grupo": "Cuidados"
+    },
+    {
+     "t": 430.5,
+     "titulo": "Fechamento",
+     "grupo": "Fechamento"
+    }
+   ],
+   "modulos": [
+    "financeiro"
+   ],
+   "versaoSistema": "1.22.13",
+   "revisar": true,
+   "fontes": [
+    "guia:public/videos/manifest.json",
+    "guia:videos/roteiros/modulo-financeiro.json",
+    "guia:videos/src/gerado/modulo-financeiro.json"
+   ]
+  },
+  {
+   "id": "modulo-tarefas",
+   "titulo": "Tarefas: o módulo completo",
+   "resumo": "Tarefas organiza o trabalho da equipe em quadros, listas e cartões. Neste vídeo: criar o quadro, distribuir o cartão, acompanhar em Minhas Tarefas e no Dashboard, colaborar e arquivar.",
+   "url": "/videos/modulo-tarefas.mp4",
+   "poster": "/videos/modulo-tarefas.jpg",
+   "legendas": "/videos/modulo-tarefas.vtt",
+   "duracao_s": 322,
+   "capitulos": [
+    {
+     "t": 0,
+     "titulo": "Abertura",
+     "grupo": "Abertura"
+    },
+    {
+     "t": 17.5,
+     "titulo": "Conceito",
+     "grupo": "Conceito"
+    },
+    {
+     "t": 39.3,
+     "titulo": "O quadro nasce sem listas",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 53.3,
+     "titulo": "Cartão nasce Pendente e Média",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 66.2,
+     "titulo": "Sem responsável, ninguém vê",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 80.3,
+     "titulo": "O prazo é o Término Previsto",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 93.2,
+     "titulo": "A conversa fica no cartão",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 108.9,
+     "titulo": "Arquivar não apaga",
+     "grupo": "Regras de negócio"
+    },
+    {
+     "t": 120.7,
+     "titulo": "Meus Quadros",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 135.9,
+     "titulo": "Novo Quadro",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 149.9,
+     "titulo": "Listas e cartões",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 167.4,
+     "titulo": "Prazo e responsável",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 184.3,
+     "titulo": "Minhas Tarefas",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 203.5,
+     "titulo": "Dashboard de Tarefas",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 222.1,
+     "titulo": "Trabalhar dentro do cartão",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 244.1,
+     "titulo": "O mesmo quadro, outras visões",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 265,
+     "titulo": "Arquivadas",
+     "grupo": "Na tela"
+    },
+    {
+     "t": 283.1,
+     "titulo": "Cuidados",
+     "grupo": "Cuidados"
+    },
+    {
+     "t": 301.1,
+     "titulo": "Fechamento",
+     "grupo": "Fechamento"
+    }
+   ],
+   "modulos": [
+    "tarefas"
+   ],
+   "versaoSistema": "1.22.13",
+   "revisar": true,
+   "fontes": [
+    "guia:public/videos/manifest.json",
+    "guia:videos/roteiros/modulo-tarefas.json",
+    "guia:videos/src/gerado/modulo-tarefas.json"
+   ]
   }
  ],
  "caminhos": {
@@ -7479,6 +8592,12 @@
    }
   ],
   "/checklists/estagiarios/01-primeiros-passos-navegacao.html": [
+   {
+    "modulo": "primeiros-passos",
+    "tipo": "checklist"
+   }
+  ],
+  "/checklists/consultores/implantacao-00-primeiros-passos.html": [
    {
     "modulo": "primeiros-passos",
     "tipo": "checklist"
@@ -8060,6 +9179,24 @@
     "tipo": "checklist"
    }
   ],
+  "/videos/modulo-expedicao.mp4": [
+   {
+    "modulo": "expedicao",
+    "tipo": "video"
+   }
+  ],
+  "/videos/modulo-expedicao.jpg": [
+   {
+    "modulo": "expedicao",
+    "tipo": "video"
+   }
+  ],
+  "/videos/modulo-expedicao.vtt": [
+   {
+    "modulo": "expedicao",
+    "tipo": "video"
+   }
+  ],
   "/manuais/expedicao/guia.json": [
    {
     "modulo": "expedicao",
@@ -8148,6 +9285,24 @@
     "tipo": "checklist"
    }
   ],
+  "/videos/modulo-fiscal.mp4": [
+   {
+    "modulo": "fiscal",
+    "tipo": "video"
+   }
+  ],
+  "/videos/modulo-fiscal.jpg": [
+   {
+    "modulo": "fiscal",
+    "tipo": "video"
+   }
+  ],
+  "/videos/modulo-fiscal.vtt": [
+   {
+    "modulo": "fiscal",
+    "tipo": "video"
+   }
+  ],
   "/manuais/fiscal/guia.json": [
    {
     "modulo": "fiscal",
@@ -8190,6 +9345,24 @@
     "tipo": "checklist"
    }
   ],
+  "/videos/modulo-financeiro.mp4": [
+   {
+    "modulo": "financeiro",
+    "tipo": "video"
+   }
+  ],
+  "/videos/modulo-financeiro.jpg": [
+   {
+    "modulo": "financeiro",
+    "tipo": "video"
+   }
+  ],
+  "/videos/modulo-financeiro.vtt": [
+   {
+    "modulo": "financeiro",
+    "tipo": "video"
+   }
+  ],
   "/manuais/financeiro/guia.json": [
    {
     "modulo": "financeiro",
@@ -8226,6 +9399,24 @@
     "tipo": "checklist"
    }
   ],
+  "/videos/modulo-tarefas.mp4": [
+   {
+    "modulo": "tarefas",
+    "tipo": "video"
+   }
+  ],
+  "/videos/modulo-tarefas.jpg": [
+   {
+    "modulo": "tarefas",
+    "tipo": "video"
+   }
+  ],
+  "/videos/modulo-tarefas.vtt": [
+   {
+    "modulo": "tarefas",
+    "tipo": "video"
+   }
+  ],
   "/manuais/tarefas/guia.json": [
    {
     "modulo": "tarefas",
@@ -8251,6 +9442,12 @@
    }
   ],
   "/checklists/estagiarios/15-visao-fluxo-completo.html": [
+   {
+    "modulo": "fluxo-completo",
+    "tipo": "checklist"
+   }
+  ],
+  "/checklists/consultores/implantacao-16-fluxo-completo.html": [
    {
     "modulo": "fluxo-completo",
     "tipo": "checklist"

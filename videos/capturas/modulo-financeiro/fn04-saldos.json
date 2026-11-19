@@ -1,0 +1,34 @@
+{
+ "nome": "fn04-saldos",
+ "url": "https://staging.flow.faktory.com.br/financeiro/saldos",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Aplicar Filtros"
+   },
+   "caixa": {
+    "x": 1522,
+    "y": 313,
+    "w": 379,
+    "h": 48
+   }
+  },
+  {
+   "alvo": {
+    "text": "Saldo Atual",
+    "exact": true,
+    "nth": 0
+   },
+   "caixa": {
+    "x": 347,
+    "y": 515,
+    "w": 335,
+    "h": 20
+   }
+  }
+ ],
+ "em": "2026-11-17T16:54:39.842Z"
+}

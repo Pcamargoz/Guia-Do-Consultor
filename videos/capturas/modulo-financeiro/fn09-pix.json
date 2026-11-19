@@ -1,0 +1,46 @@
+{
+ "nome": "fn09-pix",
+ "url": "https://staging.flow.faktory.com.br/financeiro/pix",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "heading",
+    "name": "PIX",
+    "exact": true
+   },
+   "caixa": {
+    "x": 346,
+    "y": 134,
+    "w": 558,
+    "h": 38
+   }
+  },
+  {
+   "alvo": {
+    "role": "heading",
+    "name": "PIX ainda não configurado"
+   },
+   "caixa": {
+    "x": 385,
+    "y": 462,
+    "w": 1457,
+    "h": 29
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Nova cobrança"
+   },
+   "caixa": {
+    "x": 1697,
+    "y": 278,
+    "w": 184,
+    "h": 48
+   }
+  }
+ ],
+ "em": "2026-11-17T16:56:58.895Z"
+}

@@ -1,0 +1,449 @@
+{
+ "id": "modulo-fluxo-completo",
+ "titulo": "Visão do fluxo completo",
+ "subtitulo": "Um pedido atravessando o sistema, do lead ao título",
+ "trilha": "Metodologia do Consultor · vídeo completo do módulo",
+ "proximo": "Vídeos de cada módulo",
+ "icone": "seta",
+ "semVoz": true,
+ "focoMin": 2.6,
+ "fontes": [
+  "guia:videos/roteiros/consultor-fluxo-completo.json",
+  "guia:lib/conteudo/base/fluxo-completo.json",
+  "guia:scripts/dados-checklists-estagiarios.mjs#fluxo",
+  "harness:oficial-cadeia-comercial-visao",
+  "harness:oficial-suprimentos-visao",
+  "harness:oficial-int-b-processos",
+  "harness:regra-crm-conversao-cria-a-oportunidade-sozinha",
+  "harness:regra-vendas-gerar-pedido-da-oportunidade-exige-cfop-sem-financeiro",
+  "harness:regra-servicos-passagens-por-botao-e-ordem-dos-aceites",
+  "harness:regra-faturamento-finalizar-nf-gera-os-titulos",
+  "harness:regra-vendas-liberar-para-expedicao-so-em-pedido-faturado",
+  "harness:regra-producao-marcar-produzido-gera-entrada-do-produto-acabado",
+  "harness:regra-estoque-saldo-nasce-de-movimentos",
+  "harness:regra-financeiro-contas-a-receber-filtro-padrao-em-aberto"
+ ],
+ "trechos": [
+  {
+   "id": "01",
+   "cena": "abertura",
+   "fala": "Cada módulo usa o que o anterior criou. Neste vídeo: o caminho de uma venda, do lead ao título, e onde cada módulo mostra o reflexo do anterior."
+  },
+  {
+   "id": "02",
+   "cena": "status",
+   "etapas": [
+    "CRM",
+    "Vendas",
+    "Faturamento",
+    "Financeiro"
+   ],
+   "destaque": 0,
+   "fala": "Tudo começa no CRM. Converter o lead marca o participante como cliente e cria sozinha a oportunidade no Pipeline."
+  },
+  {
+   "id": "03",
+   "cena": "status",
+   "etapas": [
+    "CRM",
+    "Vendas",
+    "Faturamento",
+    "Financeiro"
+   ],
+   "destaque": 1,
+   "fala": "A oportunidade ganha vira pedido de venda. Do pedido saem a nota, os títulos, a produção, o estoque e a carga."
+  },
+  {
+   "id": "04",
+   "cena": "regra",
+   "n": 1,
+   "titulo": "Cada passagem tem um botão",
+   "icone": "seta",
+   "texto": "Gerar Pedido de Venda, Gerar Instalação, Faturar, Liberar para Expedição, Gerar Títulos: quase nada acontece sozinho.",
+   "fonte": "regra-servicos-passagens-por-botao-e-ordem-dos-aceites",
+   "fala": "Regra 1. Quase toda passagem é um botão: Gerar Pedido de Venda, Gerar Instalação, Faturar, Liberar para Expedição. Saber qual botão leva ao próximo módulo é metade do trabalho."
+  },
+  {
+   "id": "05",
+   "cena": "regra",
+   "n": 2,
+   "titulo": "A conversão cria a oportunidade",
+   "icone": "estrela",
+   "texto": "Converter Lead liga É Cliente? e cria a oportunidade na etapa Novo Lead, com o valor do Budget Estimado. As atividades não migram.",
+   "fonte": "regra-crm-conversao-cria-a-oportunidade-sozinha",
+   "fala": "Regra 2. Converter o lead cria sozinha a oportunidade no Pipeline, na etapa Novo Lead, com o valor do Budget. O sistema não avisa: procure no Pipeline."
+  },
+  {
+   "id": "06",
+   "cena": "regra",
+   "n": 3,
+   "titulo": "Da oportunidade ao pedido",
+   "icone": "carrinho",
+   "texto": "Gerar Pedido de Venda pede Empresa e CFOP. Com CFOP que gera financeiro, recusa; use um CFOP sem financeiro e ajuste no pedido.",
+   "fonte": "regra-vendas-gerar-pedido-da-oportunidade-exige-cfop-sem-financeiro",
+   "fala": "Regra 3. Na oportunidade ganha, Gerar Pedido de Venda aceita só CFOP sem financeiro. Depois, abra o pedido, troque o CFOP e escolha a condição de pagamento."
+  },
+  {
+   "id": "07",
+   "cena": "regra",
+   "n": 4,
+   "titulo": "O CFOP decide os reflexos",
+   "icone": "cfop",
+   "texto": "É o CFOP que decide se o pedido exige condição e parcelas, se a nota gera título e se mexe no estoque.",
+   "fonte": "oficial-cadeia-comercial-visao#X1",
+   "fala": "Regra 4. O CFOP decide para onde o pedido reflete: se exige condição e parcelas, se a nota gera título e se a nota mexe no estoque."
+  },
+  {
+   "id": "08",
+   "cena": "regra",
+   "n": 5,
+   "titulo": "Títulos: pedido ou nota, um só",
+   "icone": "tag",
+   "texto": "Se o pedido gerou os títulos, a nota não gera de novo. No fluxo com nota, os títulos nascem do Finalizar NF.",
+   "fonte": "oficial-cadeia-comercial-visao#X2",
+   "critica": true,
+   "fala": "Regra 5. O contas a receber nasce do pedido ou da nota, nunca dos dois. No fluxo com nota, os títulos nascem ao finalizar a nota. Gerar de novo pelo pedido duplica a receita."
+  },
+  {
+   "id": "09",
+   "cena": "regra",
+   "n": 6,
+   "titulo": "Expedição só depois de faturar",
+   "icone": "caminhao",
+   "texto": "Liberar para Expedição só aparece no menu ⋯ do pedido Faturado. Liberado, o pedido entra numa carga.",
+   "fonte": "regra-vendas-liberar-para-expedicao-so-em-pedido-faturado",
+   "fala": "Regra 6. Liberar para Expedição só existe no pedido Faturado. Sem nota, o pedido não aparece para montar carga."
+  },
+  {
+   "id": "10",
+   "cena": "regra",
+   "n": 7,
+   "titulo": "Produzido entra no estoque",
+   "icone": "fabrica",
+   "texto": "Marcar produzido gera \"Entrada de produto acabado (OP)\" no almoxarifado central, com a quantidade e o custo da OP.",
+   "fonte": "regra-producao-marcar-produzido-gera-entrada-do-produto-acabado",
+   "fala": "Regra 7. O saldo nunca é digitado. A OP baixa componentes e, ao ser marcada Produzido, lança a entrada do produto acabado no estoque, com custo."
+  },
+  {
+   "id": "11",
+   "cena": "tela",
+   "captura": "fc01-leads",
+   "titulo": "1 · O lead convertido",
+   "rotulo": "CRM › Vendas › Leads › Lista de Leads",
+   "focos": [
+    0,
+    1
+   ],
+   "nomes": [
+    "Status:",
+    "Convertido"
+   ],
+   "impacto": 1,
+   "fala": "No CRM, filtre o Status Convertido. O lead convertido já é cliente: É Cliente? fica ligado no participante.",
+   "plano": {
+    "menu": "CRM › Vendas › Leads › Lista de Leads",
+    "mostrar": "Lista de Leads filtrada no status Convertido",
+    "alvos": [
+     "Lista de Leads",
+     "Status",
+     "Convertido"
+    ],
+    "acoes": [
+     "Abrir a Lista de Leads",
+     "Usar o filtro rápido Status = Convertido",
+     "Enquadrar um lead convertido; não abrir o menu ⋮ nem clicar em Converter"
+    ]
+   }
+  },
+  {
+   "id": "12",
+   "cena": "tela",
+   "captura": "fc02-pipeline",
+   "titulo": "2 · A oportunidade nasceu sozinha",
+   "rotulo": "CRM › Vendas › Pipeline",
+   "focos": [
+    0,
+    1
+   ],
+   "nomes": [
+    "Novo Lead",
+    "R$ 50.000,00"
+   ],
+   "fala": "No Pipeline, a oportunidade do lead convertido aparece na etapa Novo Lead, com o valor do Budget. A ganha leva ao botão Gerar Pedido de Venda.",
+   "plano": {
+    "menu": "CRM › Vendas › Pipeline",
+    "mostrar": "Coluna Novo Lead e um cartão de oportunidade com valor",
+    "alvos": [
+     "Novo Lead"
+    ],
+    "acoes": [
+     "Abrir o Pipeline no funil de Vendas",
+     "Enquadrar a coluna Novo Lead e o valor de um cartão",
+     "Não arrastar cartões nem usar Marcar como Ganha ou Marcar como Perdida"
+    ]
+   }
+  },
+  {
+   "id": "13",
+   "cena": "tela",
+   "captura": "fc03-pedidos",
+   "titulo": "3 · O pedido mostra tudo",
+   "rotulo": "Vendas › Pedidos de Venda · Status Todos",
+   "focos": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "nomes": [
+    "Status",
+    "PROJETO",
+    "NOTA FISCAL",
+    "TÍTULOS"
+   ],
+   "impacto": 3,
+   "fala": "Em Pedidos de Venda, troque o Status para Todos e pesquise o pedido. Na linha: PROJETO mostra a obra, NOTA FISCAL a nota e TÍTULOS fica Gerados depois de finalizar a nota.",
+   "plano": {
+    "menu": "Vendas › Pedidos de Venda",
+    "mostrar": "Linha de um pedido Faturado com as colunas de reflexo preenchidas",
+    "alvos": [
+     "Status",
+     "PROJETO",
+     "NOTA FISCAL",
+     "TÍTULOS",
+     "Gerados"
+    ],
+    "acoes": [
+     "Trocar o filtro Status para Todos",
+     "Pesquisar um pedido de teste já faturado e com títulos",
+     "Enquadrar a linha nas colunas PROJETO, NOTA FISCAL e TÍTULOS"
+    ]
+   }
+  },
+  {
+   "id": "14",
+   "cena": "tela",
+   "captura": "fc04-menu-pedido",
+   "titulo": "4 · O próximo botão",
+   "rotulo": "Pedido Faturado › menu ⋯",
+   "focos": [
+    0,
+    1
+   ],
+   "nomes": [
+    "Liberar para Expedição",
+    "Pedido já faturado"
+   ],
+   "fala": "No pedido Faturado, o menu ⋯ mostra Liberar para Expedição. Gerar Títulos vira Pedido já faturado, desabilitado: a receita não duplica.",
+   "plano": {
+    "menu": "Vendas › Pedidos de Venda › menu ⋯ de um pedido Faturado",
+    "mostrar": "Menu ⋯ do pedido faturado com os itens de passagem",
+    "alvos": [
+     "Liberar para Expedição",
+     "Pedido já faturado"
+    ],
+    "acoes": [
+     "Abrir o menu ⋯ do mesmo pedido de fc03",
+     "Passar o mouse em Liberar para Expedição, sem clicar",
+     "Pressionar Esc"
+    ]
+   }
+  },
+  {
+   "id": "15",
+   "cena": "tela",
+   "captura": "fc05-notas",
+   "titulo": "5 · A nota do pedido",
+   "rotulo": "Faturamento › Notas Fiscais",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "NF-e",
+    "Status",
+    "NF - 002"
+   ],
+   "impacto": 2,
+   "fala": "Em Notas Fiscais, aba NF-e, troque o Status para Todos e ache a nota do pedido, aqui Finalizada. Foi o Faturar no pedido que abriu esta nota, já preenchida.",
+   "plano": {
+    "menu": "Faturamento › Notas Fiscais",
+    "mostrar": "Linha da nota do pedido de fc03",
+    "alvos": [
+     "NF-e",
+     "Status",
+     "Todos"
+    ],
+    "acoes": [
+     "Abrir a aba NF-e",
+     "Trocar o Status para Todos",
+     "Pesquisar o número da nota visto na coluna NOTA FISCAL do pedido; não clicar no avião de papel (Transmitir)"
+    ]
+   }
+  },
+  {
+   "id": "16",
+   "cena": "tela",
+   "captura": "fc06-receber",
+   "titulo": "6 · Os títulos da nota",
+   "rotulo": "Financeiro › Contas a Receber",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "DOCUMENTO",
+    "PARCELA",
+    "Recebido"
+   ],
+   "impacto": 0,
+   "fala": "Contas a Receber abre filtrada em Em aberto: troque o Status para Todos e pesquise \"NF - \" e o número. A nota finalizada gerou um título por parcela; este já foi Recebido.",
+   "plano": {
+    "menu": "Financeiro › Contas a Receber",
+    "mostrar": "Títulos com o documento \"NF - <número da nota>\"",
+    "alvos": [
+     "DOCUMENTO",
+     "PARCELA",
+     "STATUS",
+     "NF - "
+    ],
+    "acoes": [
+     "Limpar o filtro padrão de status",
+     "Pesquisar \"NF - \" seguido do número da nota de fc05",
+     "Enquadrar DOCUMENTO e PARCELA; não clicar em Receber nem Estornar"
+    ]
+   }
+  },
+  {
+   "id": "17",
+   "cena": "tela",
+   "captura": "fc07-ops",
+   "titulo": "7 · A ordem de produção",
+   "rotulo": "Produção › Ordens de produção",
+   "focos": [
+    0,
+    1
+   ],
+   "nomes": [
+    "Status (Produzido)",
+    "Produzido"
+   ],
+   "impacto": 1,
+   "fala": "Em Ordens de produção, a OP nasce do pedido de venda e do item. Filtre o status Produzido: é ele que lança o acabado no estoque. Estoque pendente avisa que a entrada ainda não aconteceu.",
+   "plano": {
+    "menu": "Produção › Ordens de produção",
+    "mostrar": "OPs filtradas no status Produzido, com pedido e projeto",
+    "alvos": [
+     "Status",
+     "Produzido"
+    ],
+    "acoes": [
+     "Filtrar o status Produzido",
+     "Abrir uma OP pelo olho (Visualizar OP), que é somente leitura",
+     "Não usar Mais ações (Marcar produzido, Cancelar OP)"
+    ]
+   }
+  },
+  {
+   "id": "18",
+   "cena": "tela",
+   "captura": "fc08-movimentos",
+   "titulo": "8 · O reflexo no estoque",
+   "rotulo": "Estoque › Movimentos",
+   "focos": [
+    0,
+    1
+   ],
+   "nomes": [
+    "Entrada produto acabado",
+    "Baixa de OP"
+   ],
+   "fala": "Em Movimentos, o filtro Tipo mostra o rastro da OP: Baixa de OP consome o material, e Entrada produto acabado soma o produto pronto. Filtre por eles para seguir uma OP.",
+   "plano": {
+    "menu": "Estoque › Movimentos",
+    "mostrar": "Movimentos gerados pela OP de fc07",
+    "alvos": [
+     "Entrada de produto acabado (OP)",
+     "Baixa de componente em OP"
+    ],
+    "acoes": [
+     "Esperar a lista sair de \"0 itens\" (carrega devagar)",
+     "Pesquisar o produto da OP de fc07",
+     "Enquadrar os dois tipos de movimento; não clicar em + Novo Movimento"
+    ]
+   }
+  },
+  {
+   "id": "19",
+   "cena": "tela",
+   "captura": "fc09-cargas",
+   "titulo": "9 · O pedido na carga",
+   "rotulo": "Expedição › Cargas",
+   "focos": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "nomes": [
+    "Montar Nova Carga",
+    "Em Montagem",
+    "Em Rota",
+    "Entregue"
+   ],
+   "impacto": 1,
+   "fala": "Na Expedição, o pedido liberado entra numa carga: Em Montagem, Separado, Em Rota e Entregue. Montar Nova Carga só lista pedidos faturados e liberados.",
+   "plano": {
+    "menu": "Expedição (lista de cargas)",
+    "mostrar": "Lista de cargas com os status do ciclo",
+    "alvos": [
+     "Montar Nova Carga",
+     "Em Montagem",
+     "Em Rota",
+     "Entregue"
+    ],
+    "acoes": [
+     "Abrir a lista de cargas da Expedição",
+     "Enquadrar uma carga Entregue",
+     "Passar o mouse em Montar Nova Carga, sem clicar"
+    ]
+   }
+  },
+  {
+   "id": "20",
+   "cena": "alertas",
+   "itens": [
+    "Transmitir, cancelar e inutilizar nota: só o responsável fiscal.",
+    "Confira o saldo antes de finalizar a nota: ela baixa mesmo sem estoque.",
+    "Use só dados de teste e registre o que criou para limpar depois."
+   ],
+   "fala": "Três cuidados. Transmitir, cancelar e inutilizar nota é do responsável fiscal. Confira o saldo antes de finalizar a nota: ela baixa mesmo sem estoque. E use só dados de teste."
+  },
+  {
+   "id": "21",
+   "cena": "fechamento",
+   "topicos": [
+    "Cada passagem tem um botão",
+    "O CFOP decide os reflexos",
+    "Títulos: pedido ou nota, um só"
+   ],
+   "fala": "Resumindo: cada passagem tem um botão, o CFOP decide os reflexos e os títulos nascem do pedido ou da nota, nunca dos dois. O detalhe de cada módulo está no vídeo dele."
+  }
+ ],
+ "pendencias": [
+  "As capturas precisam de UM pedido de teste que já tenha passado por tudo (faturado, com títulos, OP Produzida e carga Entregue). Se não houver no staging, gravar cada tela com o melhor exemplo disponível e avisar que são pedidos diferentes.",
+  "Nome da lista de cargas não confirmado: o glossário do Harness não tem a tela da Expedição; o checklist cita só \"Expedição > Montar Nova Carga\" e o detalhe da carga. Conferir o rótulo do menu antes de gravar fc09.",
+  "Nomes de coluna das listas de Notas Fiscais, Ordens de produção e Movimentos não estão no glossário: focos nomeados só onde há fonte; os demais ficaram null.",
+  "Serviços (medição → Gerar Instalação) e o painel financeiro da obra, presentes no roteiro antigo, ficaram fora das telas: o pedido pediu as listas de CRM, Vendas, Faturamento, Financeiro, Estoque, Produção e Expedição. Baixa de título e painel da obra também não foram conferidos no teste ponta a ponta.",
+  "Divergência: o roteiro ponta a ponta do manual 00 (§3.1) manda gerar os títulos no pedido e depois emitir a NF-e; a cadeia comercial (X2) e regra-faturamento-finalizar-nf-gera-os-titulos dizem que é um caminho só. O vídeo segue X2.",
+  "A ordem observada no teste de 19/10/2026 foi pedido → medição → OP → faturar → liberar para expedição → carga → entrega → títulos; confirmar com o supervisor se vale para todas as empresas.",
+  "A cadeia comercial (oficial-cadeia-comercial-visao) é confiança B, com validação de tela não executada.",
+  "Gravação 17/11/2026 (staging v1.23.6): fc03 a fc06 seguem o mesmo pedido PV-000005 (Faturado, NF - 002 Finalizada, título 001 Recebido); projeto e cliente mascarados (nomes de pessoas). fc01, fc02, fc07 e fc09 usam outros registros: não há OP nem carga ligadas ao PV-000005.",
+  "fc08: o staging tem só 1 movimento (entrada manual); não existe 'Baixa de OP' nem 'Entrada produto acabado'. A tela mostra o filtro Tipo aberto com os dois tipos (busca 'ba'). Regravar quando uma OP de teste for marcada Produzido. Os nomes reais dos tipos são 'Baixa de OP' e 'Entrada produto acabado'.",
+  "fc07: das duas OPs Produzido, a OP-000001 mostra 'Estoque pendente' (entrada do acabado ainda não lançada) — contradiz em parte a regra 7; conferir.",
+  "fc09: a lista de cargas (Expedição › Cargas) tem as colunas Em Montagem, Separado, Em Rota e Entregue (não 'Fechada'); a fala foi ajustada.",
+  "Filtros trocados para gravar (Status de Pedidos, Notas e Contas a Receber; status de OP; tipo de Movimento) foram devolvidos ao padrão."
+ ]
+}

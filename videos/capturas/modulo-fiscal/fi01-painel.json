@@ -1,0 +1,58 @@
+{
+ "nome": "fi01-painel",
+ "url": "https://staging.flow.faktory.com.br/fiscal",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "link",
+    "name": "Painel Fiscal"
+   },
+   "caixa": {
+    "x": 10,
+    "y": 175,
+    "w": 276,
+    "h": 38
+   }
+  },
+  {
+   "alvo": {
+    "text": "Onboarding Fiscal",
+    "exact": true,
+    "nth": 1
+   },
+   "caixa": {
+    "x": 442,
+    "y": 370,
+    "w": 235,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "role": "heading",
+    "name": "Classificação Fiscal"
+   },
+   "caixa": {
+    "x": 437,
+    "y": 582,
+    "w": 312,
+    "h": 29
+   }
+  },
+  {
+   "alvo": {
+    "role": "heading",
+    "name": "Configurações Fiscais"
+   },
+   "caixa": {
+    "x": 1440,
+    "y": 983,
+    "w": 305,
+    "h": 29
+   }
+  }
+ ],
+ "em": "2026-11-17T16:37:22.497Z"
+}

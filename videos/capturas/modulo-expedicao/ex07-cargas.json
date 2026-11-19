@@ -1,0 +1,60 @@
+{
+ "nome": "ex07-cargas",
+ "url": "https://staging.flow.faktory.com.br/expedicao/cargas",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "Em Montagem",
+    "exact": true,
+    "nth": 0
+   },
+   "caixa": {
+    "x": 386,
+    "y": 456,
+    "w": 117,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Fechar Carga →"
+   },
+   "caixa": {
+    "x": 391,
+    "y": 710,
+    "w": 314,
+    "h": 36
+   }
+  },
+  {
+   "alvo": {
+    "text": "Em Rota",
+    "exact": true,
+    "nth": 0
+   },
+   "caixa": {
+    "x": 1139,
+    "y": 454,
+    "w": 66,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "text": "Entregue",
+    "exact": true,
+    "nth": 0
+   },
+   "caixa": {
+    "x": 1515,
+    "y": 454,
+    "w": 73,
+    "h": 24
+   }
+  }
+ ],
+ "em": "2026-11-17T16:34:43.084Z"
+}

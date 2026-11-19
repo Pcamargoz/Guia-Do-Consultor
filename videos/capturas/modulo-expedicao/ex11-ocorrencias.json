@@ -1,0 +1,45 @@
+{
+ "nome": "ex11-ocorrencias",
+ "url": "https://staging.flow.faktory.com.br/expedicao/ocorrencias",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Registrar Ocorrência",
+    "exact": true
+   },
+   "caixa": {
+    "x": 1639,
+    "y": 144,
+    "w": 233,
+    "h": 48
+   }
+  },
+  {
+   "alvo": {
+    "placeholder": "Buscar por cliente, número da carga, tipo ou observação..."
+   },
+   "caixa": {
+    "x": 385,
+    "y": 258,
+    "w": 1457,
+    "h": 48
+   }
+  },
+  {
+   "alvo": {
+    "text": "Tipo",
+    "exact": true
+   },
+   "caixa": {
+    "x": 385,
+    "y": 320,
+    "w": 479,
+    "h": 19
+   }
+  }
+ ],
+ "em": "2026-11-17T16:36:04.247Z"
+}

@@ -1,0 +1,45 @@
+{
+ "nome": "ex08-conferencia",
+ "url": "https://staging.flow.faktory.com.br/expedicao/conferencia",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "Carga de Trabalho",
+    "exact": true
+   },
+   "caixa": {
+    "x": 391,
+    "y": 274,
+    "w": 928,
+    "h": 29
+   }
+  },
+  {
+   "alvo": {
+    "text": "Leitura de Código de Barras",
+    "exact": true
+   },
+   "caixa": {
+    "x": 391,
+    "y": 622,
+    "w": 928,
+    "h": 29
+   }
+  },
+  {
+   "alvo": {
+    "text": "Progresso",
+    "exact": true
+   },
+   "caixa": {
+    "x": 1400,
+    "y": 272,
+    "w": 426,
+    "h": 29
+   }
+  }
+ ],
+ "em": "2026-11-17T16:35:00.302Z"
+}

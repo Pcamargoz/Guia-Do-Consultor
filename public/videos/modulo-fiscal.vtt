@@ -1,0 +1,307 @@
+WEBVTT
+
+00:00:01.100 --> 00:00:05.401
+O Fiscal é o motor de impostos do Flow.
+
+00:00:05.401 --> 00:00:06.724
+Neste vídeo:
+
+00:00:06.724 --> 00:00:14.554
+empresa e regime, CFOP, NCM, Onboarding, o cálculo no pedido e na nota,
+
+00:00:14.554 --> 00:00:20.557
+o aviso de imposto não calculado e as obrigações.
+
+00:00:20.857 --> 00:00:22.777
+No Onboarding Fiscal,
+
+00:00:22.777 --> 00:00:27.988
+cada item da empresa fica Pendente quando falta cadastro:
+
+00:00:27.988 --> 00:00:35.171
+regime, tabelas de CST, NCM por Estado, ambiente da NF-e ou certificado.
+
+00:00:35.471 --> 00:00:38.671
+Configurado, o item fica OK.
+
+00:00:38.671 --> 00:00:45.528
+Quando não vale para o regime, aparece OK com Não aplicável.
+
+00:00:45.528 --> 00:00:53.214
+Mesmo tudo OK, só o teste no pedido e na nota prova o cálculo.
+
+00:00:53.514 --> 00:00:54.398
+Regra 1.
+
+00:00:54.398 --> 00:00:59.920
+O regime da empresa é a primeira decisão do motor.
+
+00:00:59.920 --> 00:01:07.257
+Sem Regime de Apuração, nada calcula e o documento não salva.
+
+00:01:07.557 --> 00:01:08.418
+Regra 2.
+
+00:01:08.418 --> 00:01:13.478
+O CFOP traz os CSTs padrão e liga cada imposto.
+
+00:01:13.478 --> 00:01:20.476
+Hoje, com Aplicar ICMS, Aplicar PIS ou Aplicar COFINS desmarcado,
+
+00:01:20.476 --> 00:01:23.014
+o imposto não sai.
+
+00:01:23.314 --> 00:01:24.339
+Regra 3.
+
+00:01:24.339 --> 00:01:28.181
+O CST do item vem nesta ordem:
+
+00:01:28.181 --> 00:01:37.274
+o escolhido à mão, depois o NCM por Estado, depois o NCM e, por último,
+
+00:01:37.274 --> 00:01:39.071
+o CFOP.
+
+00:01:39.071 --> 00:01:39.973
+Regra 4.
+
+00:01:39.973 --> 00:01:48.545
+Todo NCM com substituição tributária precisa de uma linha no NCM por Estado,
+
+00:01:48.545 --> 00:01:52.267
+com MVA, para cada UF de destino.
+
+00:01:52.267 --> 00:01:56.814
+Sem ela, o ST sai zerado com aviso.
+
+00:01:57.114 --> 00:01:58.042
+Regra 5.
+
+00:01:58.042 --> 00:02:05.694
+Quando falta cadastro, o imposto fica zerado e vira aviso no item.
+
+00:02:05.694 --> 00:02:09.984
+O pedido e a nota salvam assim mesmo.
+
+00:02:09.984 --> 00:02:13.714
+O teste só passa sem aviso.
+
+00:02:14.014 --> 00:02:14.892
+Regra 6.
+
+00:02:14.892 --> 00:02:18.623
+Deixe CBS e IBS vazios na empresa:
+
+00:02:18.623 --> 00:02:22.354
+o sistema usa a alíquota de teste.
+
+00:02:22.354 --> 00:02:31.185
+Os números sugeridos no campo são a alíquota plena e multiplicam o imposto.
+
+00:02:31.485 --> 00:02:32.313
+Regra 7.
+
+00:02:32.313 --> 00:02:37.180
+O Onboarding Fiscal é uma lista de verificação:
+
+00:02:37.180 --> 00:02:39.458
+informa, não bloqueia.
+
+00:02:39.458 --> 00:02:42.979
+Ele não olha os seus NCMs e CFOPs.
+
+00:02:42.979 --> 00:02:47.514
+Liberado não quer dizer cálculo certo.
+
+00:02:47.814 --> 00:02:51.328
+Tudo do Fiscal parte do Painel Fiscal.
+
+00:02:51.328 --> 00:02:55.398
+No alto, os atalhos, como Onboarding Fiscal.
+
+00:02:55.398 --> 00:02:59.745
+Em Classificação Fiscal ficam NCM, CEST e CFOP.
+
+00:02:59.745 --> 00:03:04.414
+Em Configurações Fiscais, os Textos Fiscais.
+
+00:03:04.714 --> 00:03:08.344
+Com o contador, abra cada empresa.
+
+00:03:08.344 --> 00:03:15.603
+Em Dados Gerais, confira o Regime de Apuração e o Tipo de Atividade.
+
+00:03:15.603 --> 00:03:21.688
+No Simples o ICMS usa CSOSN; no Presumido e no Real, CST.
+
+00:03:21.688 --> 00:03:24.743
+Industrial destaca IPI.
+
+00:03:25.043 --> 00:03:31.650
+Em Configuração Fiscal ficam as alíquotas de PIS e COFINS da empresa.
+
+00:03:31.650 --> 00:03:38.640
+CBS (%) e IBS (%) ficam vazios, ou com a alíquota aprovada pelo contador.
+
+00:03:38.640 --> 00:03:43.357
+Antecipar Reforma (CBS/IBS) fica desligado.
+
+00:03:43.657 --> 00:03:50.410
+Em Parâmetros, informe o CPF do contador em CPF/CNPJ do Contador.
+
+00:03:50.410 --> 00:03:53.631
+O SPED exige CPF de 11 dígitos:
+
+00:03:53.631 --> 00:03:59.114
+com o CNPJ do escritório, a escrituração trava.
+
+00:03:59.414 --> 00:04:05.808
+No CFOP, confira CST ICMS e CSOSN e as marcas Aplicar ICMS,
+
+00:04:05.808 --> 00:04:08.951
+Aplicar PIS e Aplicar COFINS.
+
+00:04:08.951 --> 00:04:14.370
+A lista padrão não traz CST de ICMS, PIS e COFINS:
+
+00:04:14.370 --> 00:04:18.871
+Presumido e Real precisam preencher.
+
+00:04:19.171 --> 00:04:25.531
+Em Textos Fiscais ficam as mensagens legais do contador.
+
+00:04:25.531 --> 00:04:33.255
+Cada texto é ligado ao CFOP em Texto Fiscal ICMS, IPI, PIS e COFINS.
+
+00:04:33.255 --> 00:04:38.057
+Hoje, só o texto do CFOP sai na nota.
+
+00:04:38.357 --> 00:04:44.414
+No NCM do produto, confira alíquotas e CSTs de saída.
+
+00:04:44.414 --> 00:04:50.700
+Aqui o CST PIS Saída e o CST COFINS Saída estão vazios:
+
+00:04:50.700 --> 00:04:55.957
+assim, o item sai com Impostos não calculados.
+
+00:04:55.957 --> 00:04:59.528
+O CEST fica na seção ICMS.
+
+00:04:59.828 --> 00:05:04.690
+O globo da linha abre o NCM por Estado:
+
+00:05:04.690 --> 00:05:08.430
+as exceções por UF de destino.
+
+00:05:08.430 --> 00:05:16.160
+Uma linha por UF de venda, com ICMS %, IVA ICMS ST % e cBenef.
+
+00:05:16.160 --> 00:05:20.999
+Para muitas UFs, use a importação.
+
+00:05:21.299 --> 00:05:28.312
+No Onboarding Fiscal, escolha a Empresa principal e clique em Atualizar.
+
+00:05:28.312 --> 00:05:33.961
+Em Itens obrigatórios, cada linha pendente tem o Corrigir,
+
+00:05:33.961 --> 00:05:36.104
+que leva à tela certa.
+
+00:05:36.104 --> 00:05:39.042
+Corrija um item por vez.
+
+00:05:39.342 --> 00:05:44.389
+O Diagnóstico Fiscal é tela de consulta do suporte.
+
+00:05:44.389 --> 00:05:49.733
+Cadastros do cliente, como NCM, NCM por Estado e CFOP,
+
+00:05:49.733 --> 00:05:52.702
+são do cliente com o contador.
+
+00:05:52.702 --> 00:05:57.656
+Cadastros globais são mantidos pela Faktory.
+
+00:05:57.956 --> 00:06:04.418
+No pedido, o CFOP só libera depois de Empresa e Cliente.
+
+00:06:04.418 --> 00:06:12.379
+Em Mais informações, cada item tem o CFOP do Item e o botão Impostos.
+
+00:06:12.379 --> 00:06:20.802
+O motor roda ao salvar e ao alterar um item; o total aparece em Impostos,
+
+00:06:20.802 --> 00:06:22.602
+no resumo.
+
+00:06:22.856 --> 00:06:27.737
+Na nota, o botão Impostos do item abre os tributos.
+
+00:06:27.737 --> 00:06:30.321
+Os campos ficam bloqueados:
+
+00:06:30.321 --> 00:06:33.671
+o cálculo vem do CFOP e do produto.
+
+00:06:33.671 --> 00:06:35.203
+Faltou cadastro?
+
+00:06:35.203 --> 00:06:37.404
+Corrija e use Calcular.
+
+00:06:37.404 --> 00:06:42.885
+Sobrescrever manualmente mantém o código escolhido.
+
+00:06:43.185 --> 00:06:46.383
+A NFS-e não passa pelo motor:
+
+00:06:46.383 --> 00:06:54.102
+ISS e retenções vêm da regra, uma por código LC 116, cidade e tomador.
+
+00:06:54.102 --> 00:07:02.642
+Antes de usar, clique em Simular e confira qual regra o sistema escolhe.
+
+00:07:02.942 --> 00:07:11.337
+O Flow gera EFD, Sintegra e GNRE, mas quem valida e entrega é o contador.
+
+00:07:11.337 --> 00:07:16.168
+Combine por escrito quem cuida de cada um.
+
+00:07:16.168 --> 00:07:21.828
+Escrituração SPED é PRO e só com o contador.
+
+00:07:22.128 --> 00:07:23.694
+Três cuidados.
+
+00:07:23.694 --> 00:07:28.281
+Toda alíquota, CST e MVA vem do contador.
+
+00:07:28.281 --> 00:07:36.447
+Texto fiscal só sai pelo CFOP, e o interestadual usa 12% em todas as UFs:
+
+00:07:36.447 --> 00:07:37.342
+confira.
+
+00:07:37.342 --> 00:07:43.871
+E não use CFOP 59xx ou 69xx em mercadoria sem testar.
+
+00:07:44.171 --> 00:07:45.314
+Resumindo:
+
+00:07:45.314 --> 00:07:48.400
+o regime vem antes de tudo.
+
+00:07:48.400 --> 00:07:51.485
+Salvar não prova o cálculo:
+
+00:07:51.485 --> 00:07:55.485
+o teste só passa sem aviso no item.
+
+00:07:55.485 --> 00:08:00.057
+E quem decide a tributação é o contador.
+
+00:08:00.057 --> 00:08:06.485
+O checklist e o manual do Fiscal estão logo abaixo.

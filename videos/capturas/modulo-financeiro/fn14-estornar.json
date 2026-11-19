@@ -1,0 +1,33 @@
+{
+ "nome": "fn14-estornar",
+ "url": "https://staging.flow.faktory.com.br/financeiro/contas-receber",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "css": "tbody tr:first-child td:nth-child(6)"
+   },
+   "caixa": {
+    "x": 1309,
+    "y": 571,
+    "w": 143,
+    "h": 64
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Estornar",
+    "nth": 0
+   },
+   "caixa": {
+    "x": 1738,
+    "y": 581,
+    "w": 97,
+    "h": 43
+   }
+  }
+ ],
+ "em": "2026-11-17T17:00:23.633Z"
+}

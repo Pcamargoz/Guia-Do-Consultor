@@ -1,0 +1,44 @@
+{
+ "nome": "pp08-notificacoes",
+ "url": "https://staging.flow.faktory.com.br/vendas/pedidos",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "css": "button[aria-label=\"Notificações\"]"
+   },
+   "caixa": {
+    "x": 1486,
+    "y": 22,
+    "w": 43,
+    "h": 43
+   }
+  },
+  {
+   "alvo": {
+    "role": "tab",
+    "name": "Geral"
+   },
+   "caixa": {
+    "x": 1046,
+    "y": 85,
+    "w": 232,
+    "h": 38
+   }
+  },
+  {
+   "alvo": {
+    "role": "tab",
+    "name": "Solicitações"
+   },
+   "caixa": {
+    "x": 1278,
+    "y": 85,
+    "w": 232,
+    "h": 38
+   }
+  }
+ ],
+ "em": "2026-11-17T17:10:46.332Z"
+}

@@ -1,0 +1,56 @@
+{
+ "nome": "pp05-lista",
+ "url": "https://staging.flow.faktory.com.br/vendas/pedidos",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Mais..."
+   },
+   "caixa": {
+    "x": 1477,
+    "y": 168,
+    "w": 84,
+    "h": 43
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Filtros"
+   },
+   "caixa": {
+    "x": 1570,
+    "y": 168,
+    "w": 107,
+    "h": 43
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Novo Pedido"
+   },
+   "caixa": {
+    "x": 1687,
+    "y": 168,
+    "w": 157,
+    "h": 43
+   }
+  },
+  {
+   "alvo": {
+    "placeholder": "Pesquisar..."
+   },
+   "caixa": {
+    "x": 395,
+    "y": 297,
+    "w": 538,
+    "h": 43
+   }
+  }
+ ],
+ "em": "2026-11-17T17:08:21.229Z"
+}

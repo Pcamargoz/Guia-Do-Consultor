@@ -19,6 +19,17 @@
  "itens": [
   {
    "grupo": "consultor",
+   "id": "implantacao-primeiros-passos",
+   "area": "Primeiros passos · Cadastros rápidos",
+   "titulo": "Primeiros passos: navegação e cadastros rápidos com o cliente",
+   "resumo": "Ao final, o usuário do cliente chega a qualquer módulo sozinho, sabe ler uma lista sem medo de alterar dados e cadastrou com as próprias mãos um cliente, um fornecedor, um produto e uma obra de teste, vendo cada um deles aparecer para escolha num pedido de venda.",
+   "arquivo": "consultores/implantacao-00-primeiros-passos.html",
+   "chave": "ff-consultor:implantacao-primeiros-passos",
+   "etapas": 32,
+   "verificadas": 25
+  },
+  {
+   "grupo": "consultor",
    "id": "implantacao-fundacao",
    "area": "Implantação · Fundação",
    "titulo": "Implantação da Fundação: roteiro prático com o cliente",
@@ -181,6 +192,17 @@
    "chave": "ff-consultor:implantacao-tarefas",
    "etapas": 35,
    "verificadas": 0
+  },
+  {
+   "grupo": "consultor",
+   "id": "implantacao-fluxo-completo",
+   "area": "Integração · Fluxo completo",
+   "titulo": "Visão do fluxo completo: seguir um pedido por todos os módulos com o cliente",
+   "resumo": "Ao final, o cliente sabe onde o mesmo pedido aparece em cada módulo (CRM, Vendas, Compras, Recebimento, Estoque, Produção, Serviços, Faturamento, Expedição, Financeiro e Projetos), reconhece a coluna ou o status que prova cada avanço e conhece a ordem que o sistema exige.",
+   "arquivo": "consultores/implantacao-16-fluxo-completo.html",
+   "chave": "ff-consultor:implantacao-fluxo-completo",
+   "etapas": 27,
+   "verificadas": 15
   },
   {
    "grupo": "fluxos",

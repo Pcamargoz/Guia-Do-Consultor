@@ -1,0 +1,57 @@
+{
+ "nome": "fn08-receber",
+ "url": "https://staging.flow.faktory.com.br/financeiro/contas-receber",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "Conta Bancária*",
+    "exact": true
+   },
+   "caixa": {
+    "x": 558,
+    "y": 377,
+    "w": 136,
+    "h": 20
+   }
+  },
+  {
+   "alvo": {
+    "text": "Meio de Pagamento",
+    "exact": true
+   },
+   "caixa": {
+    "x": 831,
+    "y": 569,
+    "w": 160,
+    "h": 20
+   }
+  },
+  {
+   "alvo": {
+    "text": "Valor Recebido*",
+    "exact": true
+   },
+   "caixa": {
+    "x": 1104,
+    "y": 569,
+    "w": 135,
+    "h": 20
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Pré-visualizar"
+   },
+   "caixa": {
+    "x": 1213,
+    "y": 660,
+    "w": 149,
+    "h": 48
+   }
+  }
+ ],
+ "em": "2026-11-17T16:56:41.724Z"
+}

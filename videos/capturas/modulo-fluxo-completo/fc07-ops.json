@@ -1,0 +1,32 @@
+{
+ "nome": "fc07-ops",
+ "url": "https://staging.flow.faktory.com.br/producao/ordem-producao?status=Produzido",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "combobox",
+    "nth": 3
+   },
+   "caixa": {
+    "x": 1372,
+    "y": 581,
+    "w": 192,
+    "h": 43
+   }
+  },
+  {
+   "alvo": {
+    "css": "tbody tr:first-child td:nth-child(9)"
+   },
+   "caixa": {
+    "x": 1408,
+    "y": 690,
+    "w": 200,
+    "h": 137
+   }
+  }
+ ],
+ "em": "2026-11-17T17:17:10.492Z"
+}

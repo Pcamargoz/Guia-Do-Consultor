@@ -1,0 +1,57 @@
+{
+ "nome": "fi14-sped",
+ "url": "https://staging.flow.faktory.com.br/fiscal/sped",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "link",
+    "name": "Escrituração SPED"
+   },
+   "caixa": {
+    "x": 10,
+    "y": 296,
+    "w": 276,
+    "h": 38
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "GNRE"
+   },
+   "caixa": {
+    "x": 19,
+    "y": 532,
+    "w": 257,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Sintegra"
+   },
+   "caixa": {
+    "x": 19,
+    "y": 620,
+    "w": 257,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Nova Escrituração"
+   },
+   "caixa": {
+    "x": 822,
+    "y": 144,
+    "w": 214,
+    "h": 48
+   }
+  }
+ ],
+ "em": "2026-11-17T16:50:44.344Z"
+}

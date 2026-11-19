@@ -1,0 +1,69 @@
+{
+ "nome": "ex06-montar-carga",
+ "url": "https://staging.flow.faktory.com.br/expedicao/cargas/montar",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "Pedidos disponíveis",
+    "exact": true
+   },
+   "caixa": {
+    "x": 380,
+    "y": 248,
+    "w": 232,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "text": "Veículo",
+    "exact": true
+   },
+   "caixa": {
+    "x": 380,
+    "y": 563,
+    "w": 943,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "text": "Data prevista de saída",
+    "exact": false
+   },
+   "caixa": {
+    "x": 1408,
+    "y": 491,
+    "w": 191,
+    "h": 20
+   }
+  },
+  {
+   "alvo": {
+    "text": "Motorista *",
+    "exact": false
+   },
+   "caixa": {
+    "x": 1408,
+    "y": 596,
+    "w": 90,
+    "h": 20
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Montar Carga (0)"
+   },
+   "caixa": {
+    "x": 1408,
+    "y": 940,
+    "w": 422,
+    "h": 53
+   }
+  }
+ ],
+ "em": "2026-11-17T16:34:23.921Z"
+}

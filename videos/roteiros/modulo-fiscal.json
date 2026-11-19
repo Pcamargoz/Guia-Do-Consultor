@@ -1,0 +1,608 @@
+{
+ "id": "modulo-fiscal",
+ "titulo": "Fiscal",
+ "subtitulo": "O módulo completo: do cadastro fiscal ao imposto calculado",
+ "trilha": "Metodologia do Consultor · vídeo completo do módulo",
+ "proximo": "Financeiro",
+ "icone": "cfop",
+ "semVoz": true,
+ "focoMin": 2.6,
+ "fontes": [
+  "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fiscal",
+  "guia:public/manuais/fiscal/guia.json",
+  "harness:oficial-fis-a-regras",
+  "harness:oficial-fis-b-processos"
+ ],
+ "trechos": [
+  {
+   "id": "01",
+   "cena": "abertura",
+   "fala": "O Fiscal é o motor de impostos do Flow. Neste vídeo: empresa e regime, CFOP, NCM, Onboarding, o cálculo no pedido e na nota, o aviso de imposto não calculado e as obrigações."
+  },
+  {
+   "id": "02",
+   "cena": "status",
+   "etapas": [
+    "Pendente",
+    "OK",
+    "Não aplicável"
+   ],
+   "destaque": 0,
+   "fala": "No Onboarding Fiscal, cada item da empresa fica Pendente quando falta cadastro: regime, tabelas de CST, NCM por Estado, ambiente da NF-e ou certificado."
+  },
+  {
+   "id": "03",
+   "cena": "status",
+   "etapas": [
+    "Pendente",
+    "OK",
+    "Não aplicável"
+   ],
+   "destaque": 1,
+   "fala": "Configurado, o item fica OK. Quando não vale para o regime, aparece OK com Não aplicável. Mesmo tudo OK, só o teste no pedido e na nota prova o cálculo."
+  },
+  {
+   "id": "04",
+   "cena": "regra",
+   "n": 1,
+   "titulo": "Sem regime, nada calcula",
+   "icone": "cadeado",
+   "texto": "O regime da empresa define o CRT. Empresa sem regime não calcula imposto, e o documento não salva.",
+   "fonte": "oficial-fis-a-regras#FIS-APL-002",
+   "fala": "Regra 1. O regime da empresa é a primeira decisão do motor. Sem Regime de Apuração, nada calcula e o documento não salva."
+  },
+  {
+   "id": "05",
+   "cena": "regra",
+   "n": 2,
+   "titulo": "O CFOP liga cada imposto",
+   "icone": "cfop",
+   "texto": "Hoje, Aplicar ICMS, Aplicar PIS e Aplicar COFINS desmarcados no CFOP desligam o imposto.",
+   "fonte": "oficial-fis-a-regras#FIS-APL-001",
+   "fala": "Regra 2. O CFOP traz os CSTs padrão e liga cada imposto. Hoje, com Aplicar ICMS, Aplicar PIS ou Aplicar COFINS desmarcado, o imposto não sai."
+  },
+  {
+   "id": "06",
+   "cena": "regra",
+   "n": 3,
+   "titulo": "De onde vem o CST",
+   "icone": "seta",
+   "texto": "O CST do item segue a ordem: escolhido à mão, NCM por Estado, NCM e, por último, o CFOP.",
+   "fonte": "oficial-fis-a-regras#FIS-IPI-001",
+   "fala": "Regra 3. O CST do item vem nesta ordem: o escolhido à mão, depois o NCM por Estado, depois o NCM e, por último, o CFOP."
+  },
+  {
+   "id": "07",
+   "cena": "regra",
+   "n": 4,
+   "titulo": "ST pede MVA por UF",
+   "icone": "alerta",
+   "texto": "NCM com ST precisa de linha no NCM por Estado com a MVA de cada UF de destino. Sem ela, o ST sai zerado com aviso.",
+   "fonte": "oficial-fis-a-regras#FIS-IST-002",
+   "fala": "Regra 4. Todo NCM com substituição tributária precisa de uma linha no NCM por Estado, com MVA, para cada UF de destino. Sem ela, o ST sai zerado com aviso."
+  },
+  {
+   "id": "08",
+   "cena": "regra",
+   "n": 5,
+   "titulo": "Salvou não é calculou",
+   "icone": "alerta",
+   "texto": "Imposto que não pôde ser calculado vira aviso no item, zerado. Pedido e nota salvam assim mesmo.",
+   "fonte": "oficial-fis-a-regras#FIS-CTX-010",
+   "critica": true,
+   "fala": "Regra 5. Quando falta cadastro, o imposto fica zerado e vira aviso no item. O pedido e a nota salvam assim mesmo. O teste só passa sem aviso."
+  },
+  {
+   "id": "09",
+   "cena": "regra",
+   "n": 6,
+   "titulo": "CBS e IBS sem alíquota plena",
+   "icone": "tag",
+   "texto": "Vazios, CBS (%) e IBS (%) usam a alíquota de teste (0,9% e 0,1%). Preencher 8,80 e 17,70 em 2026 multiplica o imposto.",
+   "fonte": "oficial-fis-a-regras#FIS-CBS-002-003",
+   "fala": "Regra 6. Deixe CBS e IBS vazios na empresa: o sistema usa a alíquota de teste. Os números sugeridos no campo são a alíquota plena e multiplicam o imposto."
+  },
+  {
+   "id": "10",
+   "cena": "regra",
+   "n": 7,
+   "titulo": "O Onboarding só informa",
+   "icone": "check",
+   "texto": "O Onboarding confere empresa, regime, tabelas, NCM por Estado, ambiente e certificado. Ele não confere os seus NCMs e CFOPs.",
+   "fonte": "oficial-fis-a-regras#FIS-ONB-001",
+   "fala": "Regra 7. O Onboarding Fiscal é uma lista de verificação: informa, não bloqueia. Ele não olha os seus NCMs e CFOPs. Liberado não quer dizer cálculo certo."
+  },
+  {
+   "id": "11",
+   "cena": "tela",
+   "captura": "fi01-painel",
+   "titulo": "O Painel Fiscal",
+   "rotulo": "Fiscal › Painel Fiscal",
+   "focos": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "nomes": [
+    "Painel Fiscal",
+    "Onboarding Fiscal",
+    "Classificação Fiscal",
+    "Configurações Fiscais"
+   ],
+   "impacto": 2,
+   "fala": "Tudo do Fiscal parte do Painel Fiscal. No alto, os atalhos, como Onboarding Fiscal. Em Classificação Fiscal ficam NCM, CEST e CFOP. Em Configurações Fiscais, os Textos Fiscais.",
+   "plano": {
+    "menu": "Fiscal › Painel Fiscal",
+    "mostrar": "Painel Fiscal inteiro: atalhos no alto e os grupos de cadastros embaixo, com o item Painel Fiscal destacado no menu lateral.",
+    "alvos": [
+     "item de menu Painel Fiscal",
+     "cartão de atalho Onboarding Fiscal",
+     "grupo Classificação Fiscal",
+     "grupo Configurações Fiscais"
+    ],
+    "acoes": [
+     "abrir o módulo Fiscal pelo menu de módulos",
+     "clicar em Painel Fiscal e aguardar os grupos carregarem"
+    ]
+   }
+  },
+  {
+   "id": "12",
+   "cena": "tela",
+   "captura": "fi02-empresa-regime",
+   "titulo": "Regime e atividade",
+   "rotulo": "Configurações › Empresas › Dados Gerais",
+   "focos": [
+    0,
+    1
+   ],
+   "nomes": [
+    "Regime de Apuração",
+    "Tipo de Atividade"
+   ],
+   "impacto": 0,
+   "fala": "Com o contador, abra cada empresa. Em Dados Gerais, confira o Regime de Apuração e o Tipo de Atividade. No Simples o ICMS usa CSOSN; no Presumido e no Real, CST. Industrial destaca IPI.",
+   "plano": {
+    "menu": "Configurações › Empresas",
+    "mostrar": "Formulário da empresa de teste, seção Dados Gerais, com os campos Regime de Apuração e Tipo de Atividade preenchidos.",
+    "alvos": [
+     "campo Regime de Apuração",
+     "campo Tipo de Atividade"
+    ],
+    "acoes": [
+     "abrir a empresa de teste pelo lápis da linha",
+     "ficar na seção Dados Gerais",
+     "sair por Cancelar ou Voltar, sem salvar"
+    ]
+   }
+  },
+  {
+   "id": "13",
+   "cena": "tela",
+   "captura": "fi03-empresa-cbs-ibs",
+   "titulo": "PIS, COFINS, CBS e IBS",
+   "rotulo": "Configurações › Empresas › Configuração Fiscal",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "CBS (%)",
+    "IBS (%)",
+    "Antecipar Reforma (CBS/IBS)"
+   ],
+   "impacto": 0,
+   "fala": "Em Configuração Fiscal ficam as alíquotas de PIS e COFINS da empresa. CBS (%) e IBS (%) ficam vazios, ou com a alíquota aprovada pelo contador. Antecipar Reforma (CBS/IBS) fica desligado.",
+   "plano": {
+    "menu": "Configurações › Empresas",
+    "mostrar": "Mesma empresa, seção Configuração Fiscal, com PIS/COFINS, CBS (%) e IBS (%) vazios mostrando o texto de exemplo 8,80 e 17,70, e a chave Antecipar Reforma desligada.",
+    "alvos": [
+     "campo CBS (%)",
+     "campo IBS (%)",
+     "chave Antecipar Reforma (CBS/IBS)"
+    ],
+    "acoes": [
+     "rolar até a seção Configuração Fiscal",
+     "não digitar nada nos campos",
+     "sair sem salvar"
+    ]
+   }
+  },
+  {
+   "id": "14",
+   "cena": "tela",
+   "captura": "fi04-empresa-contador",
+   "titulo": "O CPF do contador",
+   "rotulo": "Configurações › Empresas › Parâmetros",
+   "focos": [
+    0
+   ],
+   "nomes": [
+    "CPF/CNPJ do Contador"
+   ],
+   "fala": "Em Parâmetros, informe o CPF do contador em CPF/CNPJ do Contador. O SPED exige CPF de 11 dígitos: com o CNPJ do escritório, a escrituração trava.",
+   "plano": {
+    "menu": "Configurações › Empresas",
+    "mostrar": "Mesma empresa, seção ou aba Parâmetros, com o campo CPF/CNPJ do Contador visível (valor borrado se houver).",
+    "alvos": [
+     "campo CPF/CNPJ do Contador"
+    ],
+    "acoes": [
+     "abrir a seção Parâmetros",
+     "sair sem salvar"
+    ]
+   }
+  },
+  {
+   "id": "15",
+   "cena": "tela",
+   "captura": "fi05-cfop",
+   "titulo": "O CFOP por dentro",
+   "rotulo": "Fiscal › Painel Fiscal › CFOP › Editar",
+   "focos": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "nomes": [
+    "CST ICMS (Lucro Presumido/Real)",
+    "CSOSN (Simples Nacional)",
+    "Aplicar ICMS",
+    "Gera Financeiro"
+   ],
+   "impacto": 2,
+   "fala": "No CFOP, confira CST ICMS e CSOSN e as marcas Aplicar ICMS, Aplicar PIS e Aplicar COFINS. A lista padrão não traz CST de ICMS, PIS e COFINS: Presumido e Real precisam preencher.",
+   "plano": {
+    "menu": "Fiscal › Painel Fiscal › Classificação Fiscal › CFOP",
+    "mostrar": "Formulário de um CFOP de venda tributada (ex.: 5102), com os campos de CST, as marcas Aplicar e a marca Gera Financeiro.",
+    "alvos": [
+     "campo CST ICMS (Lucro Presumido/Real)",
+     "campo CSOSN (Simples Nacional)",
+     "marca Aplicar ICMS",
+     "marca Gera Financeiro"
+    ],
+    "acoes": [
+     "abrir CFOP no grupo Classificação Fiscal",
+     "pesquisar um CFOP de venda e abrir pelo lápis",
+     "sair sem salvar"
+    ]
+   }
+  },
+  {
+   "id": "16",
+   "cena": "tela",
+   "captura": "fi06-textos-fiscais",
+   "titulo": "Textos Fiscais",
+   "rotulo": "Fiscal › Painel Fiscal › Textos Fiscais",
+   "focos": [
+    0,
+    1
+   ],
+   "nomes": [
+    "Textos Fiscais",
+    "Não Gera Crédito Simples Nacional"
+   ],
+   "fala": "Em Textos Fiscais ficam as mensagens legais do contador. Cada texto é ligado ao CFOP em Texto Fiscal ICMS, IPI, PIS e COFINS. Hoje, só o texto do CFOP sai na nota.",
+   "plano": {
+    "menu": "Fiscal › Painel Fiscal › Configurações Fiscais › Textos Fiscais",
+    "mostrar": "Lista de Textos Fiscais (ou a lista vazia, se não houver nenhum).",
+    "alvos": [
+     "título da tela Textos Fiscais",
+     "a lista de textos (primeira linha ou o aviso de lista vazia)"
+    ],
+    "acoes": [
+     "abrir Textos Fiscais no grupo Configurações Fiscais",
+     "não clicar em Novo"
+    ]
+   }
+  },
+  {
+   "id": "17",
+   "cena": "tela",
+   "captura": "fi07-ncm",
+   "titulo": "O NCM do produto",
+   "rotulo": "Fiscal › Painel Fiscal › NCM › Editar NCM",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "Editar NCM 73089010",
+    "CST PIS Saída",
+    "CST COFINS Saída"
+   ],
+   "impacto": 1,
+   "fala": "No NCM do produto, confira alíquotas e CSTs de saída. Aqui o CST PIS Saída e o CST COFINS Saída estão vazios: assim, o item sai com Impostos não calculados. O CEST fica na seção ICMS.",
+   "plano": {
+    "menu": "Fiscal › Painel Fiscal › Classificação Fiscal › NCM",
+    "mostrar": "Editar NCM do produto de teste, aberto pelo lápis, na aba PIS (ou PIS/COFINS) com o CST de saída visível.",
+    "alvos": [
+     "título Editar NCM",
+     "aba PIS",
+     "aba COFINS"
+    ],
+    "acoes": [
+     "pesquisar o NCM do produto de teste",
+     "clicar no lápis da linha",
+     "abrir a aba PIS",
+     "sair sem salvar"
+    ]
+   }
+  },
+  {
+   "id": "18",
+   "cena": "tela",
+   "captura": "fi08-ncm-estado",
+   "titulo": "NCM por Estado",
+   "rotulo": "NCM › 🌐 NCM por Estado",
+   "focos": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "nomes": [
+    "NCM por Estado",
+    "Estado Destino",
+    "IVA ICMS ST %",
+    "Código do Benefício Fiscal (cBenef)"
+   ],
+   "impacto": 2,
+   "fala": "O globo da linha abre o NCM por Estado: as exceções por UF de destino. Uma linha por UF de venda, com ICMS %, IVA ICMS ST % e cBenef. Para muitas UFs, use a importação.",
+   "plano": {
+    "menu": "Fiscal › Painel Fiscal › Classificação Fiscal › NCM",
+    "mostrar": "Janela NCM por Estado de um NCM que já tenha linhas, com as colunas de UF, ICMS e ST.",
+    "alvos": [
+     "título da janela NCM por Estado",
+     "coluna ou campo Estado Destino",
+     "coluna ou campo IVA ICMS ST %",
+     "coluna ou campo Código do Benefício Fiscal (cBenef)"
+    ],
+    "acoes": [
+     "clicar no ícone 🌐 da linha do NCM",
+     "não clicar em adicionar linha nem em importar",
+     "fechar a janela sem salvar"
+    ]
+   }
+  },
+  {
+   "id": "19",
+   "cena": "tela",
+   "captura": "fi09-onboarding",
+   "titulo": "Onboarding Fiscal",
+   "rotulo": "Fiscal › Onboarding Fiscal",
+   "focos": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "nomes": [
+    "Empresa principal",
+    "Atualizar",
+    "Itens obrigatórios",
+    "Corrigir"
+   ],
+   "impacto": 2,
+   "fala": "No Onboarding Fiscal, escolha a Empresa principal e clique em Atualizar. Em Itens obrigatórios, cada linha pendente tem o Corrigir, que leva à tela certa. Corrija um item por vez.",
+   "plano": {
+    "menu": "Fiscal › Onboarding Fiscal",
+    "mostrar": "Onboarding da empresa de teste com a faixa de resumo, o quadro Itens obrigatórios e pelo menos uma linha pendente com o botão Corrigir.",
+    "alvos": [
+     "seletor Empresa principal",
+     "botão Atualizar",
+     "quadro Itens obrigatórios",
+     "botão Corrigir da linha pendente"
+    ],
+    "acoes": [
+     "escolher a empresa de teste em Empresa principal",
+     "não clicar em Corrigir"
+    ]
+   }
+  },
+  {
+   "id": "20",
+   "cena": "tela",
+   "captura": "fi10-diagnostico",
+   "titulo": "Diagnóstico Fiscal",
+   "rotulo": "Fiscal › Diagnóstico Fiscal",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "Diagnóstico Fiscal",
+    "Cadastros do cliente",
+    "Cadastros globais"
+   ],
+   "impacto": 1,
+   "fala": "O Diagnóstico Fiscal é tela de consulta do suporte. Cadastros do cliente, como NCM, NCM por Estado e CFOP, são do cliente com o contador. Cadastros globais são mantidos pela Faktory.",
+   "plano": {
+    "menu": "Fiscal › Diagnóstico Fiscal",
+    "mostrar": "Diagnóstico com o resumo e os dois quadros: Cadastros do cliente e Cadastros globais, com as quantidades.",
+    "alvos": [
+     "título Diagnóstico Fiscal",
+     "quadro Cadastros do cliente",
+     "quadro Cadastros globais"
+    ],
+    "acoes": [
+     "abrir com usuário que tenha a permissão de suporte"
+    ]
+   }
+  },
+  {
+   "id": "21",
+   "cena": "tela",
+   "captura": "fi11-pedido-impostos",
+   "titulo": "O imposto no pedido",
+   "rotulo": "Vendas › Pedidos de Venda › Editar › Item",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "CFOP do Item",
+    "Impostos",
+    "Impostos"
+   ],
+   "impacto": 1,
+   "fala": "No pedido, o CFOP só libera depois de Empresa e Cliente. Em Mais informações, cada item tem o CFOP do Item e o botão Impostos. O motor roda ao salvar e ao alterar um item; o total aparece em Impostos, no resumo.",
+   "plano": {
+    "menu": "Vendas › Pedidos de Venda",
+    "mostrar": "Pedido de teste Em aberto já existente, aberto em edição, com o item e a área de impostos do item visível.",
+    "alvos": [
+     "campo CFOP do cabeçalho",
+     "aba ou quadro de impostos do item",
+     "botão Recalcular"
+    ],
+    "acoes": [
+     "abrir um pedido Em aberto pelo lápis",
+     "abrir o item e a aba de impostos",
+     "não clicar em Recalcular nem em Salvar; sair por Cancelar"
+    ]
+   }
+  },
+  {
+   "id": "22",
+   "cena": "tela",
+   "captura": "fi12-nota-aviso",
+   "titulo": "Os impostos na nota",
+   "rotulo": "Faturamento › Notas Fiscais › Editar NF-e › Impostos do Item",
+   "focos": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "nomes": [
+    "Impostos do Item",
+    "Campos bloqueados.",
+    "Sobrescrever manualmente",
+    "Calcular"
+   ],
+   "impacto": 0,
+   "fala": "Na nota, o botão Impostos do item abre os tributos. Os campos ficam bloqueados: o cálculo vem do CFOP e do produto. Faltou cadastro? Corrija e use Calcular. Sobrescrever manualmente mantém o código escolhido.",
+   "plano": {
+    "menu": "Faturamento › Notas Fiscais",
+    "mostrar": "Nota Em Aberto existente (ex.: a do PV-000010) em edição, com o item que mostra o quadro Impostos não calculados e o motivo logo abaixo.",
+    "alvos": [
+     "quadro Impostos não calculados no item 1",
+     "texto do motivo dentro do quadro",
+     "opção Sobrescrever manualmente"
+    ],
+    "acoes": [
+     "Status: Em Aberto, abrir a nota pelo lápis",
+     "descer até os itens",
+     "não trocar CFOP nem salvar; sair por Cancelar"
+    ]
+   }
+  },
+  {
+   "id": "23",
+   "cena": "tela",
+   "captura": "fi13-regras-servico",
+   "titulo": "Regras Fiscais de Serviço",
+   "rotulo": "Fiscal › Regras Fiscais de Serviço",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "Regras Fiscais de Serviço",
+    "Simular",
+    "Nova Regra"
+   ],
+   "impacto": 1,
+   "fala": "A NFS-e não passa pelo motor: ISS e retenções vêm da regra, uma por código LC 116, cidade e tomador. Antes de usar, clique em Simular e confira qual regra o sistema escolhe.",
+   "plano": {
+    "menu": "Fiscal › Regras Fiscais de Serviço",
+    "mostrar": "Lista de regras (vazia ou com as colunas LC 116, Descrição, Tomador, Alíq. ISS, Prioridade e Ativo) e os botões Simular e + Nova Regra.",
+    "alvos": [
+     "título Regras Fiscais de Serviço",
+     "botão Simular",
+     "botão + Nova Regra"
+    ],
+    "acoes": [
+     "não clicar em + Nova Regra nem em + Criar Regra"
+    ]
+   }
+  },
+  {
+   "id": "24",
+   "cena": "tela",
+   "captura": "fi14-sped",
+   "titulo": "Obrigações acessórias",
+   "rotulo": "Fiscal › Escrituração SPED",
+   "focos": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "nomes": [
+    "Escrituração SPED",
+    "GNRE",
+    "Sintegra",
+    "Nova Escrituração"
+   ],
+   "impacto": 3,
+   "fala": "O Flow gera EFD, Sintegra e GNRE, mas quem valida e entrega é o contador. Combine por escrito quem cuida de cada um. Escrituração SPED é PRO e só com o contador.",
+   "plano": {
+    "menu": "Fiscal › Escrituração SPED",
+    "mostrar": "Tela Escrituração SPED (vazia) com o menu lateral do Fiscal aberto mostrando Escrituração SPED, Regras Fiscais de Serviço, GNRE e Sintegra.",
+    "alvos": [
+     "item de menu Escrituração SPED",
+     "item de menu GNRE",
+     "item de menu Sintegra",
+     "botão Nova Escrituração"
+    ],
+    "acoes": [
+     "não clicar em Nova Escrituração"
+    ]
+   }
+  },
+  {
+   "id": "25",
+   "cena": "alertas",
+   "itens": [
+    "O consultor não decide tributação: tudo vem do contador.",
+    "Hoje só o texto do CFOP sai na nota, e o interestadual usa 12% em todas as UFs.",
+    "CFOP 59xx/69xx em mercadoria (exceto 5949/6949) ainda dispara ISS."
+   ],
+   "fala": "Três cuidados. Toda alíquota, CST e MVA vem do contador. Texto fiscal só sai pelo CFOP, e o interestadual usa 12% em todas as UFs: confira. E não use CFOP 59xx ou 69xx em mercadoria sem testar."
+  },
+  {
+   "id": "26",
+   "cena": "fechamento",
+   "topicos": [
+    "Regime antes de tudo",
+    "Salvou não é calculou",
+    "Contador decide, consultor configura"
+   ],
+   "fala": "Resumindo: o regime vem antes de tudo. Salvar não prova o cálculo: o teste só passa sem aviso no item. E quem decide a tributação é o contador. O checklist e o manual do Fiscal estão logo abaixo."
+  }
+ ],
+ "pendencias": [
+  "O Fiscal não tem status de documento próprio: as cenas de status usam os selos do Onboarding Fiscal (Pendente, OK e OK com 'Não aplicável'), lidos na captura do manual (staging v1.23.2). Conferir na tela o texto exato do selo pendente e do 'Não aplicável'.",
+  "naoValidado do checklist: as telas CFOP, NCM, NCM por Estado e Textos Fiscais nunca foram abertas nos fluxos antigos; os rótulos de fi05 a fi08 vêm do código lido pela gestora. Conferir cada alvo na tela antes de gravar e trocar o nome por null se não existir.",
+  "Caminho do NCM e do CFOP: o manual oficial cita Fiscal › Configurações › NCM/CFOP; o staging mostra os cadastros em Painel Fiscal › Classificação Fiscal. O plano usa o Painel Fiscal.",
+  "Captura somente leitura: os blocos 5 a 7 pedem criar pedido, faturar, trocar CFOP, sobrescrever alíquota, transmitir e provocar bloqueios. fi11 e fi12 usam pedido e nota Em Aberto já existentes, sem salvar. Transmissão em homologação, devolução e os avisos de MVA ('ICMS-ST não calculado'), 'Sem CST' e 'Informe o regime de apuração da empresa' ficam só nas regras, sem tela.",
+  "O botão Recalcular nunca foi capturado (pendência do manual). Se não aparecer no pedido, gravar fi11 sem ele e trocar nomes[2] por null. 'Sobrescrever manualmente' (FAT-NFE-016) também não tem captura: conferir em fi12.",
+  "naoValidado: item sem CST na transmissão (barrada × 'Transmitir mesmo assim?' × pré-voo) e o aviso 'NCM-Estado não configurado para o produto' (bloqueia ou não). Ficaram fora do vídeo.",
+  "Divergência: a tela do Onboarding diz 'go-live bloqueado'; a gestora (FIS-ONB-001, achado FIS-F-2) e o checklist dizem que hoje ele só informa. A regra 7 segue a gestora.",
+  "fi02 a fi04 abrem o formulário de edição da empresa: sair sem salvar. Borrar CNPJ, IE e CPF do contador se aparecerem.",
+  "Diagnóstico Fiscal é restrito à equipe de suporte: o usuário de gravação precisa da permissão, senão aparece 'Esta tela é restrita à equipe de suporte…'.",
+  "Bloco 8 sem tela: perfil Supervisor Fiscal em Segurança › Perfis de Acesso, Alíquota de Crédito do Simples e Perfil SUFRAMA (PRO). Responsável fiscal e configuração de escrituração do SPED não têm tela (achado FIS-F-6). 'Nova Escrituração' não foi clicada.",
+  "Gravação 17/11/2026 (staging v1.23.6): fi12 virou 'Os impostos na nota' — nenhuma nota Em Aberto (nem a 1206 do PV-000010) nem pedido mostra o quadro 'Impostos não calculados no item'; a tela mostra o diálogo Impostos do Item (Campos bloqueados, Sobrescrever manualmente, Calcular). Regravar quando houver item com o aviso.",
+  "fi11: o pedido não tem botão Recalcular de impostos (o Recalcular da tela é das parcelas). Gravado o item do PV-000024 com CFOP do Item, botão Impostos e o total de Impostos do resumo; o diálogo de impostos usa o botão Calcular.",
+  "fi08: a janela NCM por Estado (NCM 73089010, 2 linhas) mostra o formulário no alto e a tabela de linhas abaixo da dobra; a captura foca o formulário.",
+  "fi02 a fi04, fi11 e fi12 gravados sem a máscara global (ela pintava faixas sobre o diálogo vindas da tabela ao fundo); dados pessoais ocultados por css (contato da empresa, cliente, vendedor, observação)."
+ ]
+}

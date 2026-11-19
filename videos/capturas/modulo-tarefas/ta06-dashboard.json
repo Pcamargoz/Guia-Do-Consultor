@@ -1,0 +1,57 @@
+{
+ "nome": "ta06-dashboard",
+ "url": "https://staging.flow.faktory.com.br/tarefas/dashboard",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "Tarefas Atrasadas",
+    "exact": true
+   },
+   "caixa": {
+    "x": 433,
+    "y": 236,
+    "w": 263,
+    "h": 19
+   }
+  },
+  {
+   "alvo": {
+    "text": "Vencem em 7 dias",
+    "exact": true
+   },
+   "caixa": {
+    "x": 814,
+    "y": 236,
+    "w": 263,
+    "h": 19
+   }
+  },
+  {
+   "alvo": {
+    "text": "Carga por Responsável",
+    "exact": true
+   },
+   "caixa": {
+    "x": 1138,
+    "y": 769,
+    "w": 702,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Exportar"
+   },
+   "caixa": {
+    "x": 1731,
+    "y": 144,
+    "w": 129,
+    "h": 43
+   }
+  }
+ ],
+ "em": "2026-11-17T17:03:32.192Z"
+}

@@ -1,0 +1,44 @@
+{
+ "nome": "ta09-arquivadas",
+ "url": "https://staging.flow.faktory.com.br/tarefas/arquivadas",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "heading",
+    "name": "Tarefas Arquivadas"
+   },
+   "caixa": {
+    "x": 422,
+    "y": 144,
+    "w": 228,
+    "h": 34
+   }
+  },
+  {
+   "alvo": {
+    "role": "combobox",
+    "name": "Filtrar por quadro"
+   },
+   "caixa": {
+    "x": 355,
+    "y": 216,
+    "w": 269,
+    "h": 48
+   }
+  },
+  {
+   "alvo": {
+    "text": "Tarefas arquivadas aparecem aqui, com o botão Restaurar em cada linha."
+   },
+   "caixa": {
+    "x": 877,
+    "y": 594,
+    "w": 461,
+    "h": 48
+   }
+  }
+ ],
+ "em": "2026-11-17T17:04:15.457Z"
+}

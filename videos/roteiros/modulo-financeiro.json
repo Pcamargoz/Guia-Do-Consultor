@@ -1,0 +1,590 @@
+{
+ "id": "modulo-financeiro",
+ "titulo": "Financeiro",
+ "subtitulo": "O módulo completo: do título ao caixa",
+ "trilha": "Metodologia do Consultor · vídeo completo do módulo",
+ "proximo": "Tarefas",
+ "icone": "caixa",
+ "semVoz": true,
+ "focoMin": 2.6,
+ "fontes": [
+  "guia:scripts/dados-checklists-implantacao.mjs#implantacao-financeiro",
+  "guia:public/manuais/financeiro/guia.json",
+  "harness:funcional-financeiro-receber-pagar-saldos-e-fluxo-de-caixa",
+  "harness:oficial-fin-a-regras",
+  "harness:oficial-fin-b-processos",
+  "harness:regra-financeiro-baixa-atualiza-saldos-e-extrato",
+  "harness:regra-financeiro-baixa-parcial-cria-titulo-residual",
+  "harness:regra-financeiro-contas-a-receber-filtro-padrao-em-aberto",
+  "harness:regra-financeiro-estornar-baixa-restaura-o-titulo",
+  "harness:regra-financeiro-meio-de-pagamento-boleto-exige-conta-emissora",
+  "harness:regra-financeiro-titulo-manual-e-gerado-duplicam-a-receita"
+ ],
+ "trechos": [
+  {
+   "id": "01",
+   "cena": "abertura",
+   "fala": "Todo dinheiro da empresa passa por um título. Neste vídeo: contas e plano, títulos do pedido e da nota, receber e pagar, extrato, fluxo de caixa, DRE e estorno."
+  },
+  {
+   "id": "02",
+   "cena": "status",
+   "etapas": [
+    "Em aberto",
+    "Recebido",
+    "Pago"
+   ],
+   "destaque": 0,
+   "fala": "O título nasce Em aberto, uma linha por parcela. Vencido e Parcial não são status: são filtros da lista."
+  },
+  {
+   "id": "03",
+   "cena": "status",
+   "etapas": [
+    "Em aberto",
+    "Recebido",
+    "Pago"
+   ],
+   "destaque": 1,
+   "fala": "Com a baixa, o título a receber fica Recebido, e o título a pagar fica Pago. O saldo da conta muda na hora. O estorno devolve o título a Em aberto."
+  },
+  {
+   "id": "04",
+   "cena": "regra",
+   "n": 1,
+   "titulo": "Só conta analítica",
+   "icone": "cadeado",
+   "texto": "Todo título exige plano de contas analítico, sem contas-filhas. É ele que alimenta o fluxo de caixa e a DRE.",
+   "fonte": "oficial-fin-a-regras#FIN-CP-002",
+   "fala": "Regra 1. Todo título precisa de uma conta analítica do plano de contas, sem contas-filhas. Conta sintética é recusada."
+  },
+  {
+   "id": "05",
+   "cena": "regra",
+   "n": 2,
+   "titulo": "Boleto exige conta emissora",
+   "icone": "alerta",
+   "texto": "Meio de tipo Boleto sem conta emissora trava o Gerar Títulos. A mensagem diz Boleto mesmo quando o meio se chama Duplicata Mercantil.",
+   "fonte": "regra-financeiro-meio-de-pagamento-boleto-exige-conta-emissora",
+   "fala": "Regra 2. Se o meio da parcela é do tipo Boleto, os títulos só nascem com conta bancária emissora. Vale também para Duplicata Mercantil cadastrada como Boleto."
+  },
+  {
+   "id": "06",
+   "cena": "regra",
+   "n": 3,
+   "titulo": "Um caminho para os títulos",
+   "icone": "tag",
+   "texto": "Título manual e título gerado do mesmo pedido somam duas vezes na DRE, no Painel Financeiro de Projetos e no Recebido no mês.",
+   "fonte": "regra-financeiro-titulo-manual-e-gerado-duplicam-a-receita",
+   "critica": true,
+   "fala": "Regra 3. Os títulos nascem do pedido ou da nota, nunca dos dois. Título lançado à mão para o mesmo recebível duplica a receita na DRE e nos painéis."
+  },
+  {
+   "id": "07",
+   "cena": "regra",
+   "n": 4,
+   "titulo": "Baixa não se agenda",
+   "icone": "cadeado",
+   "texto": "A baixa exige conta bancária e data não posterior a hoje. Ela registra o dinheiro que já entrou.",
+   "fonte": "oficial-fin-a-regras#FIN-BXA-001",
+   "fala": "Regra 4. A baixa registra o dinheiro que já entrou ou saiu. Exige conta bancária, e a data não pode ser posterior a hoje."
+  },
+  {
+   "id": "08",
+   "cena": "regra",
+   "n": 5,
+   "titulo": "Parcial cria o residual",
+   "icone": "seta",
+   "texto": "Valor Recebido menor que o título: o original fica Recebido e nasce um residual com o saldo, no próximo número de parcela livre.",
+   "fonte": "regra-financeiro-baixa-parcial-cria-titulo-residual",
+   "fala": "Regra 5. Recebeu menos que o título? O original fica Recebido pelo valor baixado e nasce um título residual com o saldo. Não é duplicidade."
+  },
+  {
+   "id": "09",
+   "cena": "regra",
+   "n": 6,
+   "titulo": "Cancelar título é excluir",
+   "icone": "alerta",
+   "texto": "Não existe cancelar título: exclui-se. Só título não baixado pode ser excluído, e excluir uma parcela não altera as outras.",
+   "fonte": "oficial-fin-a-regras#FIN-CR-007",
+   "fala": "Regra 6. Não existe cancelar título: cancelar é excluir. E só título ainda não baixado pode ser excluído."
+  },
+  {
+   "id": "10",
+   "cena": "regra",
+   "n": 7,
+   "titulo": "Estorno desfaz a baixa",
+   "icone": "aberto",
+   "texto": "Estornar volta o título a Em aberto e limpa o recebimento. Na parcial, o residual deixa de existir. Boleto registrado ou liquidado não estorna.",
+   "fonte": "regra-financeiro-estornar-baixa-restaura-o-titulo",
+   "fala": "Regra 7. Baixa errada se corrige com Estornar: o título volta a Em aberto e o residual some. Título com boleto registrado ou liquidado não estorna."
+  },
+  {
+   "id": "11",
+   "cena": "tela",
+   "captura": "fn01-contas-bancarias",
+   "titulo": "Contas bancárias",
+   "rotulo": "Financeiro › Configurações › Contas Bancárias",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "Contas Bancárias",
+    "Tipo de Conta",
+    "Conta teste"
+   ],
+   "impacto": 2,
+   "fala": "Em Contas Bancárias fica a conta onde o dinheiro cai. Uma conta por carteira de cobrança; para boleto, ela precisa ser emissora. O Saldo Inicial só entra na carga, conferido com o banco.",
+   "plano": {
+    "menu": "Financeiro › Configurações › Contas Bancárias",
+    "mostrar": "Lista de contas bancárias com a coluna Tipo de Conta e a conta de teste visível (agência e número borrados).",
+    "alvos": [
+     "título Contas Bancárias",
+     "coluna Tipo de Conta",
+     "linha da conta de teste"
+    ],
+    "acoes": [
+     "não clicar em Nova Conta"
+    ]
+   }
+  },
+  {
+   "id": "12",
+   "cena": "tela",
+   "captura": "fn02-meios-pagamento",
+   "titulo": "Meios de pagamento",
+   "rotulo": "Financeiro › Configurações › Meios de Pagamento",
+   "focos": [
+    0,
+    1
+   ],
+   "nomes": [
+    "TIPO",
+    "Duplicata Mercantil"
+   ],
+   "impacto": 1,
+   "fala": "Em Meios de Pagamento, leia a coluna TIPO: é ela que manda. Duplicata Mercantil do tipo Boleto segue a regra do boleto. Mudar o tipo altera a nota: decisão do fiscal.",
+   "plano": {
+    "menu": "Financeiro › Configurações › Meios de Pagamento",
+    "mostrar": "Lista de meios de pagamento com a coluna TIPO e a linha Duplicata Mercantil (tipo Boleto).",
+    "alvos": [
+     "coluna TIPO",
+     "linha Duplicata Mercantil"
+    ],
+    "acoes": [
+     "não clicar em Novo Meio nem no lápis"
+    ]
+   }
+  },
+  {
+   "id": "13",
+   "cena": "tela",
+   "captura": "fn03-planos-conta",
+   "titulo": "Plano de contas",
+   "rotulo": "Financeiro › Configurações › Planos de Conta",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "Estruturado",
+    "1.1.1 Venda de Esquadrias/Estruturas",
+    "+ Filho"
+   ],
+   "impacto": 1,
+   "fala": "Em Planos de Conta, veja a árvore em Estruturado. O título só aceita a conta da ponta, sem filhas. Conta com filhas é recusada: Selecione uma conta sem filhos.",
+   "plano": {
+    "menu": "Financeiro › Configurações › Planos de Conta",
+    "mostrar": "Árvore do plano de contas em Estruturado, com uma conta sintética expandida mostrando as contas analíticas abaixo.",
+    "alvos": [
+     "opção Estruturado",
+     "conta analítica (última linha da árvore, sem setinha)",
+     "botão + Filho"
+    ],
+    "acoes": [
+     "expandir uma conta pela setinha",
+     "não clicar em + Filho nem em Nova conta"
+    ]
+   }
+  },
+  {
+   "id": "14",
+   "cena": "tela",
+   "captura": "fn04-saldos",
+   "titulo": "Saldos antes de começar",
+   "rotulo": "Financeiro › Saldos",
+   "focos": [
+    0,
+    1
+   ],
+   "nomes": [
+    "Aplicar Filtros",
+    "SALDO ATUAL"
+   ],
+   "impacto": 1,
+   "fala": "Em Saldos, clique em Aplicar Filtros e anote o SALDO ATUAL de cada conta. Cada baixa tem de mexer nesse número exatamente pelo valor baixado.",
+   "plano": {
+    "menu": "Financeiro › Saldos",
+    "mostrar": "Cartões de saldo por conta, com o Saldo Total no alto (valores borrados se não forem de teste).",
+    "alvos": [
+     "botão Aplicar Filtros",
+     "SALDO ATUAL da conta de teste"
+    ],
+    "acoes": [
+     "clicar em Aplicar Filtros"
+    ]
+   }
+  },
+  {
+   "id": "15",
+   "cena": "tela",
+   "captura": "fn05-gerar-titulos",
+   "titulo": "Títulos pelo pedido",
+   "rotulo": "Vendas › Pedidos de Venda › menu ⋯",
+   "focos": [
+    0,
+    1
+   ],
+   "nomes": [
+    "Gerar Títulos",
+    "TÍTULOS"
+   ],
+   "impacto": 0,
+   "fala": "Quando se cobra antes de faturar, os títulos nascem do pedido: menu ⋯, Gerar Títulos. Sai um título por parcela, e a coluna TÍTULOS passa a Gerados.",
+   "plano": {
+    "menu": "Vendas › Pedidos de Venda",
+    "mostrar": "Lista de pedidos com a coluna TÍTULOS e o menu ⋯ aberto num pedido Em aberto sem títulos, com Gerar Títulos habilitado.",
+    "acoes": [
+     "abrir o menu ⋯ de um pedido Em aberto com 'Sem títulos'",
+     "não clicar em Gerar Títulos"
+    ],
+    "alvos": [
+     "opção Gerar Títulos no menu ⋯",
+     "coluna TÍTULOS"
+    ]
+   }
+  },
+  {
+   "id": "16",
+   "cena": "tela",
+   "captura": "fn06-contas-receber",
+   "titulo": "Contas a Receber",
+   "rotulo": "Financeiro › Contas a Receber",
+   "focos": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "nomes": [
+    "Status",
+    "DOCUMENTO",
+    "PARCELA",
+    "Receber"
+   ],
+   "impacto": 0,
+   "fala": "Contas a Receber abre filtrada em Em aberto. Para achar um título baixado, limpe o Status. O DOCUMENTO mostra a origem: NF - número quando veio da nota. Uma linha por PARCELA.",
+   "plano": {
+    "menu": "Financeiro › Contas a Receber",
+    "mostrar": "Lista com o filtro Status em Em aberto e títulos de uma nota (DOCUMENTO 'NF - número', parcelas 001 e 002); nomes de clientes borrados.",
+    "alvos": [
+     "filtro Status",
+     "coluna DOCUMENTO",
+     "coluna PARCELA",
+     "botão Receber da primeira linha"
+    ],
+    "acoes": [
+     "pesquisar o número de uma nota com títulos"
+    ]
+   }
+  },
+  {
+   "id": "17",
+   "cena": "tela",
+   "captura": "fn07-devolucoes",
+   "titulo": "Painel de Devoluções",
+   "rotulo": "Financeiro › Devoluções",
+   "focos": [
+    0
+   ],
+   "nomes": [
+    "Devoluções"
+   ],
+   "fala": "A nota de devolução não gera título. Ela vira pendência em Devoluções, onde o financeiro decide abater ou restituir. No go-live, o painel abre vazio.",
+   "plano": {
+    "menu": "Financeiro › Devoluções",
+    "mostrar": "Painel de Devoluções (vazio ou com as pendências existentes).",
+    "alvos": [
+     "título Devoluções"
+    ],
+    "acoes": [
+     "só abrir a tela; não aplicar nem restituir"
+    ]
+   }
+  },
+  {
+   "id": "18",
+   "cena": "tela",
+   "captura": "fn08-receber",
+   "titulo": "Receber um título",
+   "rotulo": "Contas a Receber › Receber",
+   "focos": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "nomes": [
+    "Conta Bancária",
+    "Meio de Pagamento",
+    "Valor Recebido",
+    "Pré-visualizar"
+   ],
+   "impacto": 0,
+   "fala": "No Receber, a Conta Bancária é obrigatória e vem vazia. Informe o Meio de Pagamento e o Valor Recebido, o dinheiro que entrou. Valor menor faz baixa parcial. Confira em Pré-visualizar.",
+   "plano": {
+    "menu": "Financeiro › Contas a Receber",
+    "mostrar": "Diálogo Receber Contas a Receber aberto num título Em aberto, com os campos vazios ou como vierem.",
+    "alvos": [
+     "campo Conta Bancária",
+     "campo Meio de Pagamento",
+     "campo Valor Recebido",
+     "botão Pré-visualizar"
+    ],
+    "acoes": [
+     "clicar em Receber na primeira linha",
+     "não preencher nem clicar em Receber; fechar por Cancelar"
+    ]
+   }
+  },
+  {
+   "id": "19",
+   "cena": "tela",
+   "captura": "fn09-pix",
+   "titulo": "PIX, se contratado",
+   "rotulo": "Financeiro › PIX",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "PIX",
+    "PIX ainda não configurado",
+    "Nova cobrança"
+   ],
+   "impacto": 1,
+   "fala": "PIX e boleto só em homologação e se o cliente contratou. O PIX se ativa em Contas Bancárias, Serviços financeiros da conta, com o certificado. Sem isso, Nova cobrança fica desabilitado.",
+   "plano": {
+    "menu": "Financeiro › PIX",
+    "mostrar": "Tela PIX sem configuração, com o aviso PIX ainda não configurado e o botão Nova cobrança desabilitado.",
+    "alvos": [
+     "título PIX",
+     "aviso PIX ainda não configurado",
+     "botão Nova cobrança"
+    ],
+    "acoes": [
+     "não clicar em Configurar agora"
+    ]
+   }
+  },
+  {
+   "id": "20",
+   "cena": "tela",
+   "captura": "fn10-contas-pagar",
+   "titulo": "Contas a Pagar",
+   "rotulo": "Financeiro › Contas a Pagar",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "Pagamentos",
+    "Status",
+    "Pagar"
+   ],
+   "impacto": 2,
+   "fala": "A nota de recebimento finalizada gera os títulos a pagar. Pagar pede Conta Bancária, Data Pagamento, Meio de Pagamento e Valor Pago. Pagamentos é uma aba daqui; o item Pagamentos do menu abre essa mesma aba.",
+   "plano": {
+    "menu": "Financeiro › Contas a Pagar",
+    "mostrar": "Aba Lista com as abas Lista, Pagamentos e Boletos DDA no alto, filtro Status em Em aberto e o botão Pagar nas linhas (fornecedores borrados).",
+    "alvos": [
+     "aba Pagamentos",
+     "filtro Status",
+     "botão Pagar da primeira linha"
+    ],
+    "acoes": [
+     "não clicar em Pagar"
+    ]
+   }
+  },
+  {
+   "id": "21",
+   "cena": "tela",
+   "captura": "fn11-extrato",
+   "titulo": "Extrato e conciliação",
+   "rotulo": "Financeiro › Extrato",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "Conta Bancária",
+    "CREDITO",
+    "Exportar/Importar"
+   ],
+   "impacto": 1,
+   "fala": "No Extrato, o recebimento entra como crédito e o pagamento como débito. Não há menu Conciliação: ela começa aqui, em Exportar/Importar, com o extrato OFX ou CSV do banco.",
+   "plano": {
+    "menu": "Financeiro › Extrato",
+    "mostrar": "Extrato da conta de teste no mês, com as colunas Débito, Crédito e Saldo preenchidas.",
+    "alvos": [
+     "seletor Conta Bancária",
+     "colunas Débito, Crédito e Saldo",
+     "botão Exportar/Importar"
+    ],
+    "acoes": [
+     "escolher a conta de teste e o período Este Mês",
+     "não importar arquivo"
+    ]
+   }
+  },
+  {
+   "id": "22",
+   "cena": "tela",
+   "captura": "fn12-fluxo-caixa",
+   "titulo": "Fluxo de Caixa",
+   "rotulo": "Financeiro › Fluxo de Caixa · Hierarquias",
+   "focos": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "nomes": [
+    "Visualizar",
+    "Hierarquias",
+    "Saldo Inicial Bancos",
+    "Saldo Final"
+   ],
+   "impacto": 3,
+   "fala": "No Fluxo de Caixa, a aba Hierarquias segue o plano de contas. A linha vem da conta de fluxo do título. Compare o Saldo Inicial e o Saldo Final com Saldos e anote se não baterem.",
+   "plano": {
+    "menu": "Financeiro › Fluxo de Caixa",
+    "mostrar": "Fluxo de Caixa do mês em Ambos, aba Hierarquias, com o quadro Estrutura Hierárquica do Saldo Inicial Bancos ao Saldo Final.",
+    "alvos": [
+     "seletor Visualizar",
+     "aba Hierarquias",
+     "linha Saldo Inicial Bancos",
+     "linha Saldo Final"
+    ],
+    "acoes": [
+     "em Mostrar, escolher a conta de teste e o mês atual"
+    ]
+   }
+  },
+  {
+   "id": "23",
+   "cena": "tela",
+   "captura": "fn13-dre",
+   "titulo": "DRE",
+   "rotulo": "Financeiro › DRE",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "Modo",
+    "Aplicar",
+    "Contas"
+   ],
+   "impacto": 0,
+   "fala": "Na DRE, escolha o período e o Modo: Competência usa a data do documento; Caixa, a data da baixa. Clique em Aplicar. Contas, na linha, mostra os títulos que formam o valor.",
+   "plano": {
+    "menu": "Financeiro › DRE",
+    "mostrar": "DRE de um período com lançamentos (ex.: Últimos 12 meses), com os cartões de resultado e a tabela por linha.",
+    "alvos": [
+     "seletor Modo",
+     "botão Aplicar",
+     "botão Contas de uma linha"
+    ],
+    "acoes": [
+     "clicar no atalho Últimos 12 meses",
+     "clicar em Aplicar"
+    ]
+   }
+  },
+  {
+   "id": "24",
+   "cena": "tela",
+   "captura": "fn14-estornar",
+   "titulo": "Estornar a baixa",
+   "rotulo": "Contas a Receber · Status Recebido",
+   "focos": [
+    0,
+    1
+   ],
+   "nomes": [
+    "Recebido",
+    "Estornar"
+   ],
+   "impacto": 1,
+   "fala": "Troque o Status para Recebido e ache o título. Estornar volta o título a Em aberto e tira o valor do saldo. Baixa feita pela conciliação se desfaz pela conciliação.",
+   "plano": {
+    "menu": "Financeiro › Contas a Receber",
+    "mostrar": "Lista com o filtro Status em Recebido (ou limpo) e a ação Estornar visível na linha de um título recebido.",
+    "alvos": [
+     "status Recebido da linha",
+     "ação Estornar da linha"
+    ],
+    "acoes": [
+     "trocar o filtro Status para Recebido",
+     "passar o mouse ou abrir o menu da linha até Estornar aparecer",
+     "não clicar em Estornar"
+    ]
+   }
+  },
+  {
+   "id": "25",
+   "cena": "alertas",
+   "itens": [
+    "Receber, pagar e estornar mexem no saldo de verdade.",
+    "Recebido no mês ainda soma o valor original na baixa parcial.",
+    "Título com boleto: valor e vencimento mudam pela ação do boleto."
+   ],
+   "fala": "Três cuidados. Receber, pagar e estornar movem o saldo: só conta de teste. Na baixa parcial, Recebido no mês ainda soma o valor original: confira contra o Extrato. E título com boleto só muda pela ação do boleto."
+  },
+  {
+   "id": "26",
+   "cena": "fechamento",
+   "topicos": [
+    "Conta analítica e meio certo",
+    "Títulos: pedido ou nota, um só",
+    "Saldos, Extrato e Fluxo batem"
+   ],
+   "fala": "Resumindo: conta analítica e meio de pagamento certos antes do primeiro título. Um caminho só para os títulos. E o mesmo dinheiro bate em Saldos, Extrato e Fluxo de Caixa. O checklist e o manual do Financeiro estão logo abaixo."
+  }
+ ],
+ "pendencias": [
+  "Captura somente leitura: gerar títulos, receber, pagar, estornar, conciliar, gerar boleto, cobrar PIX e excluir não foram executados. fn05 mostra só o menu ⋯, fn08 o diálogo Receber vazio (fechado por Cancelar), fn10 a lista sem o diálogo Pagar e fn14 a ação Estornar sem o diálogo. Baixa parcial, saldo depois, residual e estorno ficam só nas regras.",
+  "naoValidado: quando Gerar Títulos fica habilitado (fluxo antigo: desabilitado em Faturado e Lib. Expedição, volta em Entregue × gestora: pedido Em aberto sem nota). fn05 usa um pedido Em aberto sem títulos, caso em que as fontes concordam.",
+  "naoValidado: saldo inicial do Fluxo de Caixa (gestora: saldo da conta + movimentos até a véspera × fluxo antigo: inicial negativo e final zero). Por isso não virou regra; fn12 só pede comparar com Saldos.",
+  "naoValidado: excluir título é permanente (fluxo antigo) ou lógico (gestora, FIN-EXC-001). A regra 6 só afirma que cancelar é excluir e que só título não baixado sai.",
+  "naoValidado: títulos nascendo da nota, boleto, PIX, importação de extrato e Mesa de Conciliação não foram executados na tela; nomes como Exportar/Importar, Mesa de Conciliação e 'Confirmar sugestões fortes' vêm do código. Conferir os alvos de fn11 antes de gravar.",
+  "Boleto (Financeiro › Configurações › Boleto) ficou sem tela: a captura tem CNPJ, e-mail e endereço e precisaria de borrão. O PIX também tem uma aba Conciliação, que não é item de menu: conferir o que ela faz antes de ensinar.",
+  "Telas com valores e nomes reais (Saldos, Contas a Receber, Contas a Pagar, Extrato, Fluxo de Caixa): borrar nomes e valores que não sejam de teste.",
+  "A DRE no staging v1.23.2 veio sem lançamentos no período: escolher um período com títulos. O botão Contas e as análises vertical e horizontal vêm do manual-10-financeiro; conferir na tela.",
+  "Início › Resumo do negócio (Recebido no mês, A receber, A pagar) e Painel Financeiro de Projetos ficaram sem tela própria; aparecem só nas regras e nos alertas.",
+  "Em janelas estreitas o diálogo Estornar pode abrir fora da área visível: gravar fn14 em janela larga.",
+  "Gravação 17/11/2026 (staging v1.23.6): o menu do Financeiro tem o item Pagamentos (atalho para Contas a Pagar, aba Pagamentos); a fala de fn10 foi ajustada.",
+  "fn13: o foco Contas está na linha (1) Receita Operacional Bruta (valor zero); a linha com valor, (10) Receitas Financeiras, fica abaixo da dobra junto com Modo e Aplicar. Período Últimos 12 meses aplicado.",
+  "fn11: a coluna HISTORICO (nomes de clientes e equipe) foi ocultada por css e a tabela rolada até Débito, Crédito e Saldo.",
+  "fn12: Saldo Final do Fluxo (R$ 2.019.252,40) difere em R$ 50,00 do Saldo Total em Saldos (R$ 2.019.202,40) — bom exemplo do 'anote se não baterem'."
+ ]
+}

@@ -1,0 +1,59 @@
+{
+ "nome": "fc03-pedidos",
+ "url": "https://staging.flow.faktory.com.br/vendas/pedidos",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "Status",
+    "exact": true,
+    "nth": 0
+   },
+   "caixa": {
+    "x": 1363,
+    "y": 555,
+    "w": 479,
+    "h": 19
+   }
+  },
+  {
+   "alvo": {
+    "text": "Projeto",
+    "exact": true,
+    "nth": 1
+   },
+   "caixa": {
+    "x": 439,
+    "y": 675,
+    "w": 72,
+    "h": 22
+   }
+  },
+  {
+   "alvo": {
+    "text": "Nota Fiscal",
+    "exact": true
+   },
+   "caixa": {
+    "x": 1645,
+    "y": 664,
+    "w": 91,
+    "h": 43
+   }
+  },
+  {
+   "alvo": {
+    "text": "Títulos",
+    "exact": true
+   },
+   "caixa": {
+    "x": 1527,
+    "y": 675,
+    "w": 67,
+    "h": 22
+   }
+  }
+ ],
+ "em": "2026-11-17T17:13:47.493Z"
+}

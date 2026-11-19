@@ -1,0 +1,57 @@
+{
+ "nome": "fi05-cfop",
+ "url": "https://staging.flow.faktory.com.br/cadastros/cfops",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "CST ICMS (Lucro Presumido/Real)",
+    "exact": true
+   },
+   "caixa": {
+    "x": 1441,
+    "y": 511,
+    "w": 275,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "text": "CSOSN (Simples Nacional)",
+    "exact": true
+   },
+   "caixa": {
+    "x": 1006,
+    "y": 602,
+    "w": 215,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "role": "switch",
+    "name": "Aplicar ICMS"
+   },
+   "caixa": {
+    "x": 1441,
+    "y": 641,
+    "w": 53,
+    "h": 29
+   }
+  },
+  {
+   "alvo": {
+    "role": "switch",
+    "name": "Gera Financeiro"
+   },
+   "caixa": {
+    "x": 1006,
+    "y": 394,
+    "w": 53,
+    "h": 29
+   }
+  }
+ ],
+ "em": "2026-11-17T16:40:07.618Z"
+}

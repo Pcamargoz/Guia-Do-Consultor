@@ -1,0 +1,59 @@
+{
+ "nome": "fc09-cargas",
+ "url": "https://staging.flow.faktory.com.br/expedicao/cargas",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Montar Nova Carga"
+   },
+   "caixa": {
+    "x": 1649,
+    "y": 151,
+    "w": 223,
+    "h": 48
+   }
+  },
+  {
+   "alvo": {
+    "text": "Em Montagem",
+    "exact": true,
+    "nth": 0
+   },
+   "caixa": {
+    "x": 386,
+    "y": 456,
+    "w": 117,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "text": "Em Rota",
+    "exact": true,
+    "nth": 0
+   },
+   "caixa": {
+    "x": 1139,
+    "y": 453,
+    "w": 66,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "text": "Entregue",
+    "exact": true
+   },
+   "caixa": {
+    "x": 1515,
+    "y": 453,
+    "w": 73,
+    "h": 24
+   }
+  }
+ ],
+ "em": "2026-11-17T17:19:04.165Z"
+}

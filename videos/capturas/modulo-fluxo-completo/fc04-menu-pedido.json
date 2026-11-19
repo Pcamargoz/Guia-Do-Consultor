@@ -1,0 +1,33 @@
+{
+ "nome": "fc04-menu-pedido",
+ "url": "https://staging.flow.faktory.com.br/vendas/pedidos",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "menuitem",
+    "name": "Liberar para Expedição"
+   },
+   "caixa": {
+    "x": 1583,
+    "y": 433,
+    "w": 257,
+    "h": 38
+   }
+  },
+  {
+   "alvo": {
+    "role": "menuitem",
+    "name": "Pedido já faturado"
+   },
+   "caixa": {
+    "x": 1583,
+    "y": 549,
+    "w": 257,
+    "h": 38
+   }
+  }
+ ],
+ "em": "2026-11-17T17:14:04.685Z"
+}

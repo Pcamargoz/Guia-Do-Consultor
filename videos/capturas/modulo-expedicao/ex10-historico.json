@@ -1,0 +1,57 @@
+{
+ "nome": "ex10-historico",
+ "url": "https://staging.flow.faktory.com.br/expedicao/cargas/154",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "Separação concluída",
+    "exact": true
+   },
+   "caixa": {
+    "x": 468,
+    "y": 148,
+    "w": 171,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "text": "Carregamento concluída",
+    "exact": true
+   },
+   "caixa": {
+    "x": 468,
+    "y": 571,
+    "w": 200,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "text": "Carga saiu para rota",
+    "exact": true
+   },
+   "caixa": {
+    "x": 468,
+    "y": 704,
+    "w": 389,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "text": "Carga entregue",
+    "exact": true
+   },
+   "caixa": {
+    "x": 468,
+    "y": 957,
+    "w": 424,
+    "h": 24
+   }
+  }
+ ],
+ "em": "2026-11-17T16:35:50.073Z"
+}

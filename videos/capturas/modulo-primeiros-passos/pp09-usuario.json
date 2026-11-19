@@ -1,0 +1,57 @@
+{
+ "nome": "pp09-usuario",
+ "url": "https://staging.flow.faktory.com.br/vendas/pedidos",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "menuitem",
+    "name": "Modo Escuro"
+   },
+   "caixa": {
+    "x": 1628,
+    "y": 176,
+    "w": 257,
+    "h": 38
+   }
+  },
+  {
+   "alvo": {
+    "role": "menuitem",
+    "name": "Densidade: Confortável"
+   },
+   "caixa": {
+    "x": 1628,
+    "y": 215,
+    "w": 257,
+    "h": 38
+   }
+  },
+  {
+   "alvo": {
+    "role": "menuitem",
+    "name": "Configurar E-mail (SMTP)"
+   },
+   "caixa": {
+    "x": 1628,
+    "y": 127,
+    "w": 257,
+    "h": 38
+   }
+  },
+  {
+   "alvo": {
+    "role": "menuitem",
+    "name": "Sair do Sistema"
+   },
+   "caixa": {
+    "x": 1628,
+    "y": 302,
+    "w": 257,
+    "h": 38
+   }
+  }
+ ],
+ "em": "2026-11-17T17:11:11.584Z"
+}

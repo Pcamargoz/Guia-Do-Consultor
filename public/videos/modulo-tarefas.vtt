@@ -1,0 +1,220 @@
+WEBVTT
+
+00:00:01.100 --> 00:00:07.234
+Tarefas organiza o trabalho da equipe em quadros, listas e cartões.
+
+00:00:07.234 --> 00:00:08.333
+Neste vídeo:
+
+00:00:08.333 --> 00:00:11.629
+criar o quadro, distribuir o cartão,
+
+00:00:11.629 --> 00:00:18.271
+acompanhar em Minhas Tarefas e no Dashboard, colaborar e arquivar.
+
+00:00:18.571 --> 00:00:24.726
+O cartão nasce Pendente, com prioridade Média e sem responsável.
+
+00:00:24.726 --> 00:00:28.885
+Assim, ele ainda não chega a ninguém.
+
+00:00:29.185 --> 00:00:31.837
+Com responsável, o trabalho anda:
+
+00:00:31.837 --> 00:00:34.007
+Em andamento até Concluída.
+
+00:00:34.007 --> 00:00:40.071
+Minhas Tarefas conta Em andamento, Atrasadas, Urgentes e Concluídas.
+
+00:00:40.371 --> 00:00:41.247
+Regra 1.
+
+00:00:41.247 --> 00:00:44.095
+O quadro novo nasce vazio.
+
+00:00:44.095 --> 00:00:49.352
+Primeiro crie as listas, as colunas do trabalho.
+
+00:00:49.352 --> 00:00:54.114
+Sem lista, não há onde criar o cartão.
+
+00:00:54.414 --> 00:00:55.235
+Regra 2.
+
+00:00:55.235 --> 00:01:02.619
+Todo cartão novo nasce Pendente, com prioridade Média e sem responsável.
+
+00:01:02.619 --> 00:01:07.014
+Abra o cartão e complete o que falta.
+
+00:01:07.314 --> 00:01:08.087
+Regra 3.
+
+00:01:08.087 --> 00:01:14.852
+O cartão só aparece em Minhas Tarefas depois de Adicionar responsável.
+
+00:01:14.852 --> 00:01:21.057
+Esquecer o responsável é o erro mais comum da implantação.
+
+00:01:21.357 --> 00:01:22.238
+Regra 4.
+
+00:01:22.238 --> 00:01:25.100
+Não procure o campo Prazo:
+
+00:01:25.100 --> 00:01:28.293
+o prazo é o Término Previsto.
+
+00:01:28.293 --> 00:01:33.957
+Sem ele, o cartão nunca aparece como atrasado.
+
+00:01:34.257 --> 00:01:35.049
+Regra 5.
+
+00:01:35.049 --> 00:01:38.021
+Combine tudo dentro do cartão:
+
+00:01:38.021 --> 00:01:43.468
+Comentários para a conversa, Checklists para os passos.
+
+00:01:43.468 --> 00:01:49.714
+O cartão muda de lista pelo ícone Mover para outra lista.
+
+00:01:50.014 --> 00:01:50.874
+Regra 6.
+
+00:01:50.874 --> 00:01:56.034
+Arquivar tira o cartão do quadro, mas não apaga.
+
+00:01:56.034 --> 00:02:01.471
+Ele fica em Arquivadas e volta com Restaurar.
+
+00:02:01.771 --> 00:02:06.566
+Abra Tarefas pelo menu de módulos ou pelo Ctrl+K.
+
+00:02:06.566 --> 00:02:10.284
+Em Meus Quadros ficam os seus quadros.
+
+00:02:10.284 --> 00:02:16.657
+Tarefas Gerais, com selo PADRÃO, recebe as tarefas avulsas.
+
+00:02:16.957 --> 00:02:23.819
+Novo Quadro pede só o Nome do Quadro e o Tipo, como Avulso.
+
+00:02:23.819 --> 00:02:27.657
+Um quadro por equipe ou por obra.
+
+00:02:27.657 --> 00:02:30.700
+Depois, Criar Quadro.
+
+00:02:31.000 --> 00:02:38.413
+Dentro do quadro, cada lista é uma coluna, como A FAZER e CONCLUÍDO.
+
+00:02:38.413 --> 00:02:42.338
+Crie as listas em + Adicionar lista.
+
+00:02:42.338 --> 00:02:48.171
+Em cada lista, + Adicionar tarefa cria o cartão.
+
+00:02:48.471 --> 00:02:49.862
+Abra o cartão.
+
+00:02:49.862 --> 00:02:55.626
+Defina a Prioridade e o Término Previsto, com data e hora.
+
+00:02:55.626 --> 00:03:02.583
+Em Responsáveis, clique em + Adicionar responsável e escolha a pessoa.
+
+00:03:02.583 --> 00:03:05.071
+Tudo salva sozinho.
+
+00:03:05.371 --> 00:03:11.873
+Minhas Tarefas mostra só o que foi atribuído a quem está logado.
+
+00:03:11.873 --> 00:03:17.562
+Filtre por Status e Prioridade e veja em Cards ou Lista.
+
+00:03:17.562 --> 00:03:24.257
+Sem nada atribuído, aparece Nenhuma tarefa atribuída a você.
+
+00:03:24.557 --> 00:03:27.621
+O gestor acompanha no Dashboard:
+
+00:03:27.621 --> 00:03:30.398
+escolha o quadro e o período.
+
+00:03:30.398 --> 00:03:37.100
+Tarefas Atrasadas e Vencem em 7 dias mostram o que precisa de atenção.
+
+00:03:37.100 --> 00:03:42.871
+Carga por Responsável mostra quem está sobrecarregado.
+
+00:03:43.171 --> 00:03:48.750
+No cabeçalho do cartão ficam Seguir, Duplicar e Arquivar.
+
+00:03:48.750 --> 00:03:50.317
+Abaixo, as abas:
+
+00:03:50.317 --> 00:03:51.491
+Comentários,
+
+00:03:51.491 --> 00:03:59.126
+com @ para mencionar; Checklists para os passos; e Histórico com cada mudança.
+
+00:03:59.126 --> 00:04:04.914
+No quadro, o ícone Mover leva o cartão a outra lista.
+
+00:04:05.214 --> 00:04:13.067
+O mesmo quadro pode ser visto em Kanban, Lista, Tabela, Calendário e Gantt.
+
+00:04:13.067 --> 00:04:17.675
+É a mesma informação em formatos diferentes.
+
+00:04:17.675 --> 00:04:23.015
+O Gantt usa as datas de início e término do cartão:
+
+00:04:23.015 --> 00:04:25.814
+sem elas, fica vazio.
+
+00:04:26.114 --> 00:04:34.634
+O cartão arquivado sai do quadro e de Minhas Tarefas e vem para Tarefas Arquivadas.
+
+00:04:34.634 --> 00:04:36.585
+Filtre pelo quadro.
+
+00:04:36.585 --> 00:04:43.857
+Cada linha tem o botão Restaurar, que devolve o cartão ao quadro.
+
+00:04:44.157 --> 00:04:45.468
+Três cuidados.
+
+00:04:45.468 --> 00:04:49.778
+Sem responsável, o cartão não chega a ninguém.
+
+00:04:49.778 --> 00:04:53.431
+Sem Término Previsto, ele nunca atrasa.
+
+00:04:53.431 --> 00:04:58.396
+E mover, comentar ou mencionar avisa os responsáveis:
+
+00:04:58.396 --> 00:05:01.900
+no teste, só usuários de teste.
+
+00:05:02.200 --> 00:05:03.127
+Resumindo:
+
+00:05:03.127 --> 00:05:06.559
+quadro, depois listas, depois cartão.
+
+00:05:06.559 --> 00:05:10.918
+Todo cartão com responsável e Término Previsto.
+
+00:05:10.918 --> 00:05:12.865
+E arquivar não apaga:
+
+00:05:12.865 --> 00:05:15.091
+Restaurar traz de volta.
+
+00:05:15.091 --> 00:05:20.514
+O checklist e o manual de Tarefas estão logo abaixo.

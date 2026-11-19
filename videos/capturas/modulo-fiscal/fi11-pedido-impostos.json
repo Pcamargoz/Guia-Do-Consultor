@@ -1,0 +1,47 @@
+{
+ "nome": "fi11-pedido-impostos",
+ "url": "https://staging.flow.faktory.com.br/vendas/pedidos/novo?id=1785",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "CFOP do Item",
+    "exact": true
+   },
+   "caixa": {
+    "x": 425,
+    "y": 575,
+    "w": 87,
+    "h": 17
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Impostos",
+    "exact": true
+   },
+   "caixa": {
+    "x": 555,
+    "y": 731,
+    "w": 105,
+    "h": 43
+   }
+  },
+  {
+   "alvo": {
+    "role": "heading",
+    "name": "Impostos",
+    "exact": true
+   },
+   "caixa": {
+    "x": 1477,
+    "y": 540,
+    "w": 74,
+    "h": 24
+   }
+  }
+ ],
+ "em": "2026-11-17T16:49:31.687Z"
+}

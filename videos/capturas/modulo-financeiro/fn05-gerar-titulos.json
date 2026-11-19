@@ -1,0 +1,33 @@
+{
+ "nome": "fn05-gerar-titulos",
+ "url": "https://staging.flow.faktory.com.br/vendas/pedidos",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "menuitem",
+    "name": "Gerar Títulos"
+   },
+   "caixa": {
+    "x": 1571,
+    "y": 623,
+    "w": 257,
+    "h": 38
+   }
+  },
+  {
+   "alvo": {
+    "text": "Títulos",
+    "exact": true
+   },
+   "caixa": {
+    "x": 1489,
+    "y": 677,
+    "w": 67,
+    "h": 22
+   }
+  }
+ ],
+ "em": "2026-11-17T16:55:45.200Z"
+}

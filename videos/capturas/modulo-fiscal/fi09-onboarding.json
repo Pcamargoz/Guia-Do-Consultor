@@ -1,0 +1,57 @@
+{
+ "nome": "fi09-onboarding",
+ "url": "https://staging.flow.faktory.com.br/fiscal/onboarding",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "css": "main button",
+    "nth": 0
+   },
+   "caixa": {
+    "x": 1405,
+    "y": 154,
+    "w": 307,
+    "h": 48
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Atualizar"
+   },
+   "caixa": {
+    "x": 1722,
+    "y": 154,
+    "w": 140,
+    "h": 48
+   }
+  },
+  {
+   "alvo": {
+    "text": "Itens obrigatórios",
+    "exact": true
+   },
+   "caixa": {
+    "x": 433,
+    "y": 421,
+    "w": 350,
+    "h": 29
+   }
+  },
+  {
+   "alvo": {
+    "text": "Corrigir",
+    "nth": 0
+   },
+   "caixa": {
+    "x": 424,
+    "y": 907,
+    "w": 72,
+    "h": 19
+   }
+  }
+ ],
+ "em": "2026-11-17T16:43:52.973Z"
+}

@@ -247,6 +247,38 @@
           "resumo": "Na indústria de esquadrias, o projeto é a obra. Neste vídeo: cadastrar a obra, organizar estágios e etapas, ligar pedido, OP, nota e títulos, e ler o previsto × realizado.",
           "duracao": "6 min 27 s",
           "status": "pronto"
+        },
+        {
+          "id": "modulo-expedicao",
+          "numero": "Módulo",
+          "titulo": "Expedição: o módulo completo",
+          "resumo": "A Expedição leva o pedido faturado até o cliente. Neste vídeo: cadastros da frota, liberar o pedido, montar e fechar a carga, checkpoints do pátio, rota, entrega e ocorrências.",
+          "duracao": "6 min 14 s",
+          "status": "pronto"
+        },
+        {
+          "id": "modulo-fiscal",
+          "numero": "Módulo",
+          "titulo": "Fiscal: o módulo completo",
+          "resumo": "O Fiscal é o motor de impostos do Flow. Neste vídeo: empresa e regime, CFOP, NCM, Onboarding, o cálculo no pedido e na nota, o aviso de imposto não calculado e as obrigações.",
+          "duracao": "8 min 08 s",
+          "status": "pronto"
+        },
+        {
+          "id": "modulo-financeiro",
+          "numero": "Módulo",
+          "titulo": "Financeiro: o módulo completo",
+          "resumo": "Todo dinheiro da empresa passa por um título. Neste vídeo: contas e plano, títulos do pedido e da nota, receber e pagar, extrato, fluxo de caixa, DRE e estorno.",
+          "duracao": "7 min 36 s",
+          "status": "pronto"
+        },
+        {
+          "id": "modulo-tarefas",
+          "numero": "Módulo",
+          "titulo": "Tarefas: o módulo completo",
+          "resumo": "Tarefas organiza o trabalho da equipe em quadros, listas e cartões. Neste vídeo: criar o quadro, distribuir o cartão, acompanhar em Minhas Tarefas e no Dashboard, colaborar e arquivar.",
+          "duracao": "5 min 22 s",
+          "status": "pronto"
         }
       ]
     }

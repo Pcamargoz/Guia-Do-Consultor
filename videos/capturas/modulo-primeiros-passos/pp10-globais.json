@@ -1,0 +1,57 @@
+{
+ "nome": "pp10-globais",
+ "url": "https://staging.flow.faktory.com.br/vendas/pedidos",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "Globais",
+    "exact": true
+   },
+   "caixa": {
+    "x": 24,
+    "y": 543,
+    "w": 65,
+    "h": 18
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Painel de Controle"
+   },
+   "caixa": {
+    "x": 19,
+    "y": 583,
+    "w": 256,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Segurança"
+   },
+   "caixa": {
+    "x": 19,
+    "y": 679,
+    "w": 256,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Treinamento"
+   },
+   "caixa": {
+    "x": 19,
+    "y": 727,
+    "w": 256,
+    "h": 24
+   }
+  }
+ ],
+ "em": "2026-11-17T17:11:37.858Z"
+}

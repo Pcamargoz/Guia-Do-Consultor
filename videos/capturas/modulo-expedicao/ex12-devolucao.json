@@ -1,0 +1,33 @@
+{
+ "nome": "ex12-devolucao",
+ "url": "https://staging.flow.faktory.com.br/expedicao",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "link",
+    "name": "Aguardando Re-Expedição"
+   },
+   "caixa": {
+    "x": 10,
+    "y": 497,
+    "w": 276,
+    "h": 38
+   }
+  },
+  {
+   "alvo": {
+    "role": "link",
+    "name": "Pendências de Estoque (Devolução)"
+   },
+   "caixa": {
+    "x": 10,
+    "y": 577,
+    "w": 276,
+    "h": 61
+   }
+  }
+ ],
+ "em": "2026-11-17T16:32:08.857Z"
+}

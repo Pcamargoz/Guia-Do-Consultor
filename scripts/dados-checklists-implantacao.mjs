@@ -6,6 +6,243 @@
 
 export const CHECKLISTS_IMPLANTACAO = [
  {
+  "id": "implantacao-primeiros-passos",
+  "arquivo": "implantacao-00-primeiros-passos.html",
+  "etiqueta": "Consultor · Primeiros passos · Cadastros rápidos",
+  "titulo": "Primeiros passos: navegação e cadastros rápidos com o cliente",
+  "subtitulo": "O primeiro contato do cliente com o Faktory Flow: entrar, se localizar, achar qualquer tela, ler uma lista sem alterar nada e criar, em poucos minutos, os cadastros que todo módulo usa: cliente, fornecedor, vendedor, produto e obra.",
+  "objetivo": "Ao final, o usuário do cliente chega a qualquer módulo sozinho, sabe ler uma lista sem medo de alterar dados e cadastrou com as próprias mãos um cliente, um fornecedor, um produto e uma obra de teste, vendo cada um deles aparecer para escolha num pedido de venda.",
+  "rodape": "Checklist de implantação · Primeiros passos · fontes: trilha do estagiário 01 Primeiros passos e navegação e 02 Cadastros básicos; roteiro de implantação da Fundação (blocos 4, 5 e 9); manual de apoio Primeiros passos; procedimento Cadastrar cliente, produto e obra · Harness Faktory Flow",
+  "prerequisitos": [
+   {
+    "t": "Ambiente de teste ou homologação liberado, com a empresa do cliente criada e os módulos contratados aparecendo sem cadeado no menu.",
+    "r": "**Confira:** o selo da empresa no topo e os módulos no menu de módulos. Módulo fora do plano responde “Módulo não contratado” e se resolve no comercial. **Fonte:** Fundação, pré-requisitos técnicos.",
+    "s": "d"
+   },
+   {
+    "t": "Cada participante da sessão tem usuário e senha pessoais funcionando, com um perfil que permite cadastrar participantes, produtos e projetos.",
+    "r": "**Confira:** o botão `+ Novo` aparece nas listas de Participantes, Produtos e Projetos. Botão ausente é falta de permissão: ajuste o perfil em `Segurança` antes da sessão. **Fonte:** trilha do estagiário 01, pré-requisitos; trilha do estagiário 02, bloco 1.",
+    "s": "v"
+   },
+   {
+    "t": "Os cadastros de apoio já existem na empresa: ao menos uma categoria de produto, a unidade de medida, o NCM e uma conta de fluxo de caixa de receita.",
+    "r": "**Confira:** abra os campos Categoria, Unidade de Medida e NCM no formulário de produto e veja se há opções. Empresa nova começa vazia; os cadastros de apoio são feitos no roteiro da Fundação. **Fonte:** trilha do estagiário 02, bloco 1; Fundação, bloco 5.",
+    "s": "v"
+   },
+   {
+    "t": "Navegador em tela cheia e dados de exemplo fictícios combinados (nomes começando por “TESTE FLUXO CONSULTOR”, CPF/CNPJ e CEP de teste).",
+    "r": "**Confira:** em janelas estreitas as tabelas ficam espremidas e difíceis de ler. **Fonte:** trilha do estagiário 01, pré-requisitos.",
+    "s": "v"
+   }
+  ],
+  "fluxos": [
+   {
+    "titulo": "1. Entrar e se localizar",
+    "onde": "tela `Início`",
+    "intro": "Toda tela do Faktory Flow tem as mesmas três partes: cabeçalho no alto, menu do módulo na lateral e o conteúdo no centro. Mostre isso uma vez e o cliente se localiza em qualquer módulo.",
+    "passos": [
+     {
+      "t": "**Faça:** peça ao cliente para entrar e mostre o **selo da empresa** no topo da tela.",
+      "r": "**Explique ao cliente:** os dados pertencem à empresa, não ao usuário; quem entra numa empresa vê o que já existe nela. **Confira:** o aviso “Empresa selecionada automaticamente” e o nome da empresa no selo. **Fonte:** trilha do estagiário 01, bloco 1; manual Primeiros passos, capítulo 1.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** leia com ele os blocos da tela Início: `Alertas urgentes`, `Tarefas do dia` e `Resumo do negócio`.",
+      "r": "**Explique ao cliente:** cada alerta é um atalho para a tela já filtrada; “Tarefas do dia” são pendências calculadas, não o módulo Tarefas. **Confira:** espere o aviso “Verificando permissões...” sumir antes de clicar. **Fonte:** trilha do estagiário 01, bloco 1 e atenção.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** mostre o menu lateral: o nome do MÓDULO no topo, os grupos com seta (Configurações, Relatórios, Tabelas Dinâmicas) e o bloco `GLOBAIS` no fim.",
+      "r": "**Explique ao cliente:** grupos com seta vêm fechados e escondem telas; antes de dizer que uma tela não existe, abra os grupos. **Confira:** o cliente abre e fecha um grupo sozinho. **Fonte:** trilha do estagiário 01, bloco 2; manual Primeiros passos, capítulo 1.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** mostre a versão do sistema no rodapé do menu lateral e o sino de `Notificações`, com as abas Geral e Solicitações.",
+      "r": "**Explique ao cliente:** a versão é o que o suporte pergunta primeiro num chamado. **Confira:** a lista de notificações pode mostrar “0 notificações” por um instante antes de carregar. **Fonte:** trilha do estagiário 01, blocos 1 e 5.",
+      "s": "v"
+     }
+    ]
+   },
+   {
+    "titulo": "2. Trocar de módulo e achar qualquer tela",
+    "onde": "botão de grade `Abrir menu de módulos` e campo `Pesquisar funcionalidades...` (Ctrl+K)",
+    "intro": "Dois caminhos levam a qualquer tela: o menu de módulos e a busca. Faça o cliente usar os dois; é o que ele mais vai repetir no dia a dia.",
+    "passos": [
+     {
+      "t": "**Faça:** abra o menu de módulos, digite “Vendas” em `Buscar módulo...` e escolha.",
+      "r": "**Explique ao cliente:** o topo do menu lateral passa a mostrar o módulo escolhido; a tecla Esc fecha o painel sem trocar. **Confira:** o menu lateral mudou para Vendas. **Fonte:** trilha do estagiário 01, bloco 2; manual Primeiros passos, capítulo 2.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** pressione Ctrl+K, digite “pedido” e abra `Pedidos de Venda` com as setas e Enter.",
+      "r": "**Explique ao cliente:** a busca encontra **telas**, não registros; para achar um pedido pelo número, use a pesquisa dentro da lista. **Confira:** aparecem sugestões como Pedidos de Compra e Pedidos de Venda. **Fonte:** trilha do estagiário 01, bloco 3.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** peça ao cliente para chegar sozinho a `Cadastros > Participantes` pela busca e depois a `Estoque` pelo menu de módulos.",
+      "r": "**Explique ao cliente:** o mesmo cadastro aparece no menu de vários módulos; é a mesma tela. **Confira:** ele chegou às duas telas sem ajuda. **Fonte:** trilha do estagiário 01, resultado; trilha do estagiário 02, bloco 2.",
+      "s": "v"
+     }
+    ]
+   },
+   {
+    "titulo": "3. Ler uma lista sem alterar nada",
+    "onde": "`Vendas > Pedidos de Venda` (vale para qualquer lista)",
+    "intro": "Quem tem medo de clicar não usa o sistema. Mostre o que só consulta e o que altera dados, e o cliente passa a explorar com segurança.",
+    "passos": [
+     {
+      "t": "**Faça:** mostre os botões do topo da lista: `Mais...` (Colunas e Exportar para Excel), `Filtros` e `+ Novo`.",
+      "r": "**Explique ao cliente:** `Mais...` muda só a visão dele, não os dados. **Confira:** o cliente esconde uma coluna e a mostra de novo. **Fonte:** trilha do estagiário 01, bloco 4.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** abra `Filtros` e troque o Status de “Em Aberto” para “Todos”.",
+      "r": "**Explique ao cliente:** a lista abre com um filtro padrão; antes de dizer que um registro sumiu, confira filtro, período e página. **Confira:** com “Todos” aparecem também pedidos faturados e cancelados. **Fonte:** trilha do estagiário 01, bloco 4.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** abra o menu `...` de uma linha e separe com o cliente o que é consulta (Histórico, Ver Timeline) do que altera dados (Excluir, Converter, Finalizar). Feche com Esc sem clicar.",
+      "r": "**Explique ao cliente:** ações que alteram dados pedem confirmação, mas a regra é ler antes de clicar. **Confira:** o cliente aponta sozinho uma ação de consulta e uma que altera. **Fonte:** trilha do estagiário 01, bloco 4 e resultado.",
+      "s": "v"
+     }
+    ]
+   },
+   {
+    "titulo": "4. Cadastro rápido: cliente",
+    "onde": "`Cadastros > Participantes` > `+ Novo`",
+    "intro": "Cliente, fornecedor, vendedor e lead são o mesmo cadastro, com chaves diferentes. Antes de criar, pesquise: cadastro duplicado gera retrabalho em nota, título e compra.",
+    "passos": [
+     {
+      "t": "**Faça:** pesquise na lista pelo nome “TESTE FLUXO CONSULTOR” antes de criar.",
+      "r": "**Explique ao cliente:** pesquisar antes evita duplicar; o sistema recusa documento repetido. **Confira:** se não existir, a lista mostra “Nenhum participante encontrado”. **Fonte:** trilha do estagiário 02, bloco 2 e atenção.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** com o cliente digitando, crie “TESTE FLUXO CONSULTOR - Cliente”: em **Dados Gerais**, **Tipo (PF/PJ)**, **Razão Social / Nome**, **CPF/CNPJ** e **Inscrição Estadual / RG**; em **Endereço**, **CEP** e **Número**; em **Classificação**, ligue **É Cliente?**; em **Contato > Adicionar Contato**, um e-mail de teste. Clique em `Salvar`.",
+      "r": "**Explique ao cliente:** o CEP preenche o endereço; IE, Bairro, Estado e Cidade são obrigatórios (use “ISENTO” quando couber). **Confira:** a mensagem “Registro salvo com sucesso!”. Se o CEP trouxer bairro com menos de 3 letras, como “Sé”, digite um bairro mais longo. **Fonte:** trilha do estagiário 02, bloco 1; Fundação, bloco 4.",
+      "s": "v",
+      "campo": "Código do cliente"
+     },
+     {
+      "t": "**Faça:** no mesmo participante, preencha a **Conta de Fluxo de Caixa Receita** (seção **Receita / Despesa**) e salve.",
+      "r": "**Explique ao cliente:** o pedido de venda usa essa conta no financeiro; sem ela o financeiro do pedido fica incompleto. **Confira:** o campo salvo. **Fonte:** trilha do estagiário 02, bloco 1; Fundação, bloco 4.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** (bloqueio de propósito) tente salvar outro participante com o mesmo CPF/CNPJ.",
+      "r": "**Explique ao cliente:** documento repetido é recusado; se o cadastro antigo estiver inativo, reative-o em vez de criar outro. **Confira:** a recusa de CNPJ/CPF já cadastrado. **Fonte:** Fundação, bloco 4; trilha do estagiário 02, bloco 1.",
+      "s": "d"
+     }
+    ]
+   },
+   {
+    "titulo": "5. Cadastro rápido: fornecedor e vendedor",
+    "onde": "`Cadastros > Participantes`, seção **Classificação**",
+    "intro": "O mesmo formulário serve para fornecedor e vendedor: muda a chave ligada na Classificação. É o momento de mostrar que um mesmo participante pode ter mais de um papel.",
+    "passos": [
+     {
+      "t": "**Faça:** crie “TESTE FLUXO CONSULTOR - Fornecedor” com os mesmos campos do cliente e, em **Classificação**, ligue **É Fornecedor?**.",
+      "r": "**Explique ao cliente:** é este cadastro que Compras e Recebimento vão usar. **Confira:** “Registro salvo com sucesso!” e o fornecedor na lista. **Fonte:** trilha do estagiário 02, blocos 1 e 2; Fundação, bloco 4.",
+      "s": "d",
+      "campo": "Código do fornecedor"
+     },
+     {
+      "t": "**Faça:** mostre a seção **Classificação** inteira (É Cliente?, É Fornecedor?, É Funcionário?, É Transportadora?, É Vendedor?, Prospect/Lead) e a seção **Contato**, com quem recebe e-mails de Notas Fiscais, Boletos, Vendas e avisos.",
+      "r": "**Explique ao cliente:** o lead do CRM vira este mesmo participante; as marcas do contato decidem quem recebe a nota e o boleto. **Confira:** com o cliente, quem recebe a nota e o boleto. **Fonte:** trilha do estagiário 02, bloco 2; Fundação, bloco 4.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** cadastre um vendedor (participante com **É Vendedor?**) e ligue-o ao usuário dele.",
+      "r": "**Explique ao cliente:** a ligação entre vendedor e usuário é de um para um e é usada no pedido e na comissão. **Confira:** o vendedor aparece para escolha no pedido de venda (bloco 7). **Fonte:** Fundação, bloco 4.",
+      "s": "d",
+      "campo": "Código do vendedor"
+     }
+    ]
+   },
+   {
+    "titulo": "6. Cadastro rápido: produto",
+    "onde": "`Cadastros > Produtos` > `+ Novo`",
+    "intro": "Produto tem 5 campos obrigatórios. Com eles certos, o mesmo produto serve em pedido, compra, estoque, produção e nota.",
+    "passos": [
+     {
+      "t": "**Faça:** crie “TESTE FLUXO CONSULTOR - Produto” com **Descrição**, **Categoria do Produto** e, na seção **Classificações Fiscais**, **Unidade de Medida**, **NCM** e **Origem da Mercadoria**. Clique em `Salvar` (ou `Salvar e Incluir Novo` para emendar o próximo).",
+      "r": "**Explique ao cliente:** a categoria decide como o preço é calculado (unidade, peso ou área). **Confira:** o produto salvo com a categoria e a unidade certas. **Fonte:** trilha do estagiário 02, bloco 1; Fundação, bloco 5.",
+      "s": "v",
+      "campo": "Código do produto"
+     },
+     {
+      "t": "**Faça:** mostre que a sigla da unidade do produto precisa existir igual na empresa (“PÇ” é diferente de “PC”).",
+      "r": "**Explique ao cliente:** unidade com sigla diferente faz o pedido falhar só ao salvar; a correção é no cadastro de unidades. **Confira:** a sigla escolhida está em `Unidade de Medida`. **Fonte:** trilha do estagiário 02, bloco 1; Fundação, bloco 5.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** (bloqueio de propósito) tente salvar um produto sem NCM ou sem categoria.",
+      "r": "**Explique ao cliente:** a planilha de carga aplica a mesma régua; por isso a base precisa ter NCM e categoria em todas as linhas. **Confira:** a recusa “NCM é obrigatório” ou “Categoria do produto é obrigatória”. **Fonte:** Fundação, bloco 5.",
+      "s": "d"
+     }
+    ]
+   },
+   {
+    "titulo": "7. Cadastro rápido: obra e prova no pedido",
+    "onde": "`Cadastros > Projetos` e `Vendas > Pedidos de Venda > + Novo Pedido`",
+    "intro": "Um cadastro só está certo quando aparece no documento. Termine abrindo um pedido novo e mostrando que tudo o que o cliente criou está lá para escolha.",
+    "passos": [
+     {
+      "t": "**Faça:** em `Cadastros > Projetos`, crie a obra “TESTE FLUXO CONSULTOR - Obra” com **Nome do Projeto**, **Código**, **Status**, **Cliente** (o do bloco 4) e **Responsável**. Clique em `Salvar`.",
+      "r": "**Explique ao cliente:** a obra liga pedido, compras, produção e o painel financeiro do projeto. **Confira:** “Registro salvo com sucesso!”; código repetido é recusado. **Fonte:** trilha do estagiário 02, bloco 1; Fundação, bloco 9.",
+      "s": "v",
+      "campo": "Código da obra"
+     },
+     {
+      "t": "**Faça:** abra `+ Novo Pedido` e escolha **Empresa**, **Cliente**, **Vendedor** e **Projeto (opcional)** com os cadastros que o cliente acabou de criar.",
+      "r": "**Explique ao cliente:** o CFOP só libera depois de Empresa e Cliente e vem filtrado pelo estado do cliente. **Confira:** o cliente, o vendedor e a obra aparecem para escolha; “Cliente sem IE informado e não marcado como não contribuinte.” aponta o cadastro do cliente. **Fonte:** Fundação, bloco 9; trilha do estagiário 04, bloco 1.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** adicione o produto do bloco 6 no diálogo **Dados do Item** e confira o valor calculado. Saia sem salvar o pedido, a não ser que a sessão continue no roteiro de Vendas.",
+      "r": "**Explique ao cliente:** os campos do diálogo vêm do tipo da categoria; se aparecer “Impostos não calculados no item”, o motivo aponta o cadastro a corrigir (ex.: NCM sem CST de PIS/COFINS). **Confira:** o produto aparece na busca do item com a unidade certa. **Fonte:** Fundação, bloco 9; trilha do estagiário 04, bloco 1.",
+      "s": "d"
+     },
+     {
+      "t": "**Faça:** volte às listas de Participantes, Produtos e Projetos e peça ao cliente para achar cada cadastro pelo nome ou código.",
+      "r": "**Explique ao cliente:** a pesquisa da lista acha registros; o Ctrl+K acha telas. **Confira:** o cliente achou os quatro cadastros sozinho. **Fonte:** trilha do estagiário 02, resultado.",
+      "s": "v"
+     }
+    ]
+   }
+  ],
+  "resultado": [
+   {
+    "t": "O cliente chega a qualquer módulo pelo menu de módulos ou pelo Ctrl+K sem ajuda.",
+    "s": "v"
+   },
+   {
+    "t": "O cliente sabe explicar por que uma lista “esconde” registros (filtro padrão, período, página) e aponta o que só consulta e o que altera dados.",
+    "s": "v"
+   },
+   {
+    "t": "Cliente, fornecedor, vendedor, produto e obra de teste salvos pelo próprio cliente, com os códigos anotados neste checklist.",
+    "s": "v"
+   },
+   {
+    "t": "Os cadastros aparecem para escolha num pedido de venda novo.",
+    "s": "d"
+   }
+  ],
+  "atencao": [
+   "Só em ambiente de teste ou homologação; registros com “TESTE FLUXO CONSULTOR”. Nada deste roteiro transmite nota ou gera título.",
+   "Senha de usuário quem digita é o cliente; o consultor não pede nem guarda.",
+   "Cadastro é compartilhado: mudar um participante ou produto afeta notas, títulos, compras e produção. Corrija com o responsável, não no improviso.",
+   "Campos fiscais (CPF/CNPJ, IE, NCM, origem) são responsabilidade do fiscal ou do contador do cliente.",
+   "Não use **Sair do Sistema** durante a sessão: o login tem limite de tentativas e pode bloquear o acesso por 15 minutos.",
+   "Existem dois grupos “Configurações” no menu: o do módulo e o de GLOBAIS. Os dois são de administração; na primeira sessão, só leia."
+  ],
+  "naoValidado": [
+   "Cadastro de fornecedor com a chave **É Fornecedor?**: segue o mesmo formulário do cliente, mas não foi executado nos fluxos antigos; conferir na tela se pede outra conta de fluxo de caixa (despesa).",
+   "Abrir o pedido novo e sair sem salvar: conferir se a tela pede confirmação ao descartar."
+  ]
+ },
+ {
   "id": "implantacao-fundacao",
   "arquivo": "implantacao-01-fundacao.html",
   "etiqueta": "Consultor · Implantação · Fundação",
@@ -4459,5 +4696,208 @@ export const CHECKLISTS_IMPLANTACAO = [
    "titulo": "Quadro, cartão, regras e colaboração",
    "resumo": "O conceito e as regras de negócio do fluxo, com as telas reais do Faktory Flow."
   }
+ },
+ {
+  "id": "implantacao-fluxo-completo",
+  "arquivo": "implantacao-16-fluxo-completo.html",
+  "etiqueta": "Consultor · Integração · Fluxo completo",
+  "titulo": "Visão do fluxo completo: seguir um pedido por todos os módulos com o cliente",
+  "subtitulo": "A sessão de fechamento da implantação: com um pedido de teste já percorrido, abra cada módulo junto com o cliente e mostre o sinal de que o pedido passou por ali, do lead ao título. Tudo só consultando.",
+  "objetivo": "Ao final, o cliente sabe onde o mesmo pedido aparece em cada módulo (CRM, Vendas, Compras, Recebimento, Estoque, Produção, Serviços, Faturamento, Expedição, Financeiro e Projetos), reconhece a coluna ou o status que prova cada avanço e conhece a ordem que o sistema exige.",
+  "rodape": "Checklist de implantação · Visão do fluxo completo · fontes: trilha do estagiário 15 Visão do fluxo completo (teste de ponta a ponta de 19/10/2026); roteiros de implantação dos módulos; vídeo Visão do fluxo completo · Harness Faktory Flow",
+  "prerequisitos": [
+   {
+    "t": "Os roteiros de implantação dos módulos contratados foram feitos e há um pedido de teste “TESTE FLUXO CONSULTOR” que já passou por faturamento e, se o cliente usa, por expedição.",
+    "r": "**Confira:** na lista de Pedidos de Venda, com o Status em “Todos”, o pedido de teste com a coluna NOTA FISCAL preenchida. **Fonte:** trilha do estagiário 15, pré-requisitos.",
+    "s": "d"
+   },
+   {
+    "t": "Os números dos documentos anotados nos roteiros anteriores estão à mão: lead, pedido de venda, pedido de compra, nota de recebimento, OP, medição, obra, carga, nota e títulos.",
+    "r": "**Confira:** os campos de registro preenchidos nos checklists de cada módulo. **Fonte:** trilha do estagiário 15, bloco 1.",
+    "s": "d"
+   },
+   {
+    "t": "Ambiente de teste ou homologação, com o usuário do cliente e o consultor logados.",
+    "r": "**Confira:** o selo da empresa no topo. **Fonte:** roteiro de Primeiros passos, bloco 1.",
+    "s": "v"
+   }
+  ],
+  "fluxos": [
+   {
+    "titulo": "1. Montar o mapa do pedido",
+    "onde": "este checklist e a lista `Vendas > Pedidos de Venda`",
+    "intro": "Antes de abrir os módulos, junte os números. A sessão inteira é de consulta: nenhum botão de avanço é clicado.",
+    "passos": [
+     {
+      "t": "**Faça:** anote o **lead** e o **pedido de venda** de teste.",
+      "r": "**Explique ao cliente:** o pedido é o fio que liga todos os módulos. **Confira:** o pedido abre pela pesquisa da lista. **Fonte:** trilha do estagiário 15, bloco 1.",
+      "s": "d",
+      "campo": "Lead / PV-"
+     },
+     {
+      "t": "**Faça:** anote o **pedido de compra** e a **nota de recebimento** ligados à obra.",
+      "r": "**Confira:** os dois documentos existem nas listas de Compras e Recebimento. **Fonte:** trilha do estagiário 15, bloco 1.",
+      "s": "d",
+      "campo": "PC- / NR-"
+     },
+     {
+      "t": "**Faça:** anote o **movimento de estoque**, a **OP** e a **medição**, se o cliente usa Produção e Serviços.",
+      "r": "**Confira:** cada número abre na lista do módulo. **Fonte:** trilha do estagiário 15, bloco 1.",
+      "s": "d",
+      "campo": "Movimento / OP / MED-"
+     },
+     {
+      "t": "**Faça:** anote a **obra**, a **carga**, a **nota** e os **títulos**.",
+      "r": "**Confira:** com esses números, o mapa do pedido está completo. **Fonte:** trilha do estagiário 15, bloco 1.",
+      "s": "d",
+      "campo": "Obra / carga / nota / títulos"
+     }
+    ]
+   },
+   {
+    "titulo": "2. Do contato ao pedido",
+    "onde": "módulos `CRM` e `Vendas`",
+    "intro": "O cliente do pedido nasceu como lead. Mostre que é o mesmo cadastro do começo ao fim.",
+    "passos": [
+     {
+      "t": "**Faça:** no CRM, abra o lead de teste e mostre a etapa dele no Kanban.",
+      "r": "**Explique ao cliente:** o lead é cadastrado, avança no Kanban e é convertido. **Confira:** o lead aparece como convertido. **Fonte:** trilha do estagiário 15, bloco 2.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** em `Cadastros > Participantes`, abra o mesmo cliente e mostre a seção **Classificação**.",
+      "r": "**Explique ao cliente:** o lead convertido é o participante usado na nota e no financeiro. **Confira:** a chave **É Cliente?** ligada. **Fonte:** trilha do estagiário 02, bloco 2 e resultado.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** em `Vendas > Pedidos de Venda`, troque o Status para “Todos” e localize o pedido de teste.",
+      "r": "**Explique ao cliente:** a lista abre com o filtro “Em Aberto”; pedido faturado só aparece com “Todos”. **Confira:** a coluna PROJETO mostra a obra do pedido. **Fonte:** trilha do estagiário 15, bloco 2; trilha do estagiário 01, bloco 4.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** leia com o cliente as colunas TÍTULOS e NOTA FISCAL da linha do pedido.",
+      "r": "**Explique ao cliente:** as duas colunas são o placar do pedido: mostram se ele já gerou títulos e nota. **Confira:** TÍTULOS em “Gerados” e NOTA FISCAL preenchida. **Fonte:** trilha do estagiário 15, bloco 4.",
+      "s": "v"
+     }
+    ]
+   },
+   {
+    "titulo": "3. Suprimentos: compra, recebimento e estoque",
+    "onde": "módulos `Compras`, `Recebimento`, `Estoque` e `Financeiro`",
+    "intro": "O material da obra chegou por compra. Siga o caminho do pedido de compra até o saldo e a conta a pagar.",
+    "passos": [
+     {
+      "t": "**Faça:** em Compras, abra o pedido de compra de teste.",
+      "r": "**Explique ao cliente:** o pedido de compra entregue vira nota de recebimento. **Confira:** o status do pedido de compra mostra a entrega. **Fonte:** trilha do estagiário 15, bloco 3.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** em Recebimento, abra a nota de recebimento ligada a esse pedido.",
+      "r": "**Explique ao cliente:** é o recebimento que coloca o material no estoque e gera a conta a pagar. **Confira:** a nota de recebimento com o pedido de compra de origem. **Fonte:** trilha do estagiário 15, bloco 3.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** em `Estoque > Saldo`, abra o produto recebido e mostre o saldo e o custo médio.",
+      "r": "**Explique ao cliente:** a entrada do recebimento muda o saldo e o custo médio do produto. **Confira:** a ficha com o total em estoque e o custo médio. **Fonte:** trilha do estagiário 02, bloco 4; trilha do estagiário 15, bloco 3.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** no Financeiro, localize a conta a pagar do fornecedor gerada pelo recebimento.",
+      "r": "**Explique ao cliente:** compra e recebimento terminam no Financeiro, como a venda. **Confira:** o título a pagar com o fornecedor do pedido de compra. **Fonte:** trilha do estagiário 15, bloco 3.",
+      "s": "d"
+     }
+    ]
+   },
+   {
+    "titulo": "4. Operação: serviços e produção",
+    "onde": "módulos `Serviços` e `Produção`",
+    "intro": "Para quem mede e fabrica, o pedido de venda vira medição e ordem de produção. Pule o bloco se o cliente não contratou esses módulos.",
+    "passos": [
+     {
+      "t": "**Faça:** em Serviços, abra a medição do pedido de teste.",
+      "r": "**Explique ao cliente:** a medição nasce do pedido de venda e mostra a obra. **Confira:** o pedido e a obra na medição. **Fonte:** trilha do estagiário 15, bloco 3.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** em Produção, abra a OP do pedido e mostre de onde ela veio.",
+      "r": "**Explique ao cliente:** a OP é criada em `Produção > Nova OP`, escolhendo o pedido de venda e o item. **Confira:** o pedido e o item na OP. **Fonte:** trilha do estagiário 15, bloco 3.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** em Estoque, mostre os movimentos da OP: “Baixa de componente em OP” e “Entrada de produto acabado (OP)”.",
+      "r": "**Explique ao cliente:** a OP consome material e entrega o produto acabado no estoque. **Confira:** os dois movimentos com o número da OP. **Fonte:** trilha do estagiário 15, bloco 3.",
+      "s": "v"
+     }
+    ]
+   },
+   {
+    "titulo": "5. Nota e entrega",
+    "onde": "módulos `Faturamento` e `Expedição`",
+    "intro": "A nota fecha a venda e libera a entrega. Mostre os dois sinais sem clicar em nenhuma ação.",
+    "passos": [
+     {
+      "t": "**Faça:** em Faturamento, abra `Notas Fiscais` e localize a nota do pedido de teste.",
+      "r": "**Explique ao cliente:** `⋯ > Faturar` no pedido gera a nota, que aparece aqui e preenche a coluna NOTA FISCAL do pedido. **Confira:** a nota com o cliente e o valor do pedido. **Fonte:** trilha do estagiário 15, bloco 4.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** em Expedição, mostre o pedido liberado e a carga em que ele entrou.",
+      "r": "**Explique ao cliente:** depois de faturado, o pedido é liberado (“Lib. Expedição”), entra numa carga e é entregue. **Confira:** a carga com o pedido e a situação da entrega. **Fonte:** trilha do estagiário 15, bloco 3.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** mostre ao cliente a ordem que o sistema exigiu no pedido de teste: pedido → medição → OP → faturar → liberar para expedição → carga → entrega → títulos.",
+      "r": "**Explique ao cliente:** pular uma etapa trava a seguinte; quando algo não avança, a etapa anterior é o primeiro lugar a olhar. **Confira:** com o cliente, se a empresa dele segue a mesma sequência. **Fonte:** trilha do estagiário 15, atenção (teste de 19/10/2026).",
+      "s": "d"
+     }
+    ]
+   },
+   {
+    "titulo": "6. Resultado: financeiro e obra",
+    "onde": "módulos `Financeiro` e `Projetos`",
+    "intro": "O fim do caminho é dinheiro e resultado da obra. Termine aqui e peça ao cliente para refazer o mapa sozinho.",
+    "passos": [
+     {
+      "t": "**Faça:** no Financeiro, abra `Contas a Receber` e localize os títulos do pedido de teste.",
+      "r": "**Explique ao cliente:** os títulos do pedido nascem da condição de pagamento; a coluna TÍTULOS do pedido mostra “Gerados”. **Confira:** os títulos com o cliente e as parcelas do pedido. **Fonte:** trilha do estagiário 15, bloco 4.",
+      "s": "v"
+     },
+     {
+      "t": "**Faça:** em Projetos, abra a obra de teste e mostre o painel financeiro.",
+      "r": "**Explique ao cliente:** o painel da obra soma receitas e custos dos documentos ligados a ela. **Confira:** a receita do pedido no painel da obra. **Fonte:** trilha do estagiário 15, bloco 4.",
+      "s": "d"
+     },
+     {
+      "t": "**Faça:** peça ao cliente para refazer o caminho sozinho, do pedido aos títulos, dizendo em cada tela qual sinal prova o avanço.",
+      "r": "**Explique ao cliente:** é o mesmo caminho que ele vai usar para responder “onde está o meu pedido?”. **Confira:** o cliente chegou a cada módulo e apontou o sinal sem ajuda. **Fonte:** trilha do estagiário 15, resultado.",
+      "s": "d"
+     }
+    ]
+   }
+  ],
+  "resultado": [
+   {
+    "t": "O cliente mostra, com as telas abertas, onde o pedido de teste aparece em cada módulo contratado.",
+    "s": "d"
+   },
+   {
+    "t": "O cliente reconhece os sinais de avanço: coluna PROJETO, TÍTULOS e NOTA FISCAL do pedido, nota de recebimento, movimentos da OP, carga e títulos.",
+    "s": "v"
+   },
+   {
+    "t": "O cliente conhece a ordem que o sistema exige e sabe que pular uma etapa trava a seguinte.",
+    "s": "d"
+   }
+  ],
+  "atencao": [
+   "Sessão só de consulta: nenhum botão de avanço (Faturar, Liberar, Finalizar, Baixar) deve ser clicado.",
+   "Só em ambiente de teste ou homologação, com registros “TESTE FLUXO CONSULTOR”.",
+   "A ordem pedido → medição → OP → faturar → liberar para expedição → carga → entrega → títulos foi a exigida no teste de 19/10/2026; confirme se o cliente usa a mesma sequência.",
+   "Pule os blocos dos módulos que o cliente não contratou."
+  ],
+  "naoValidado": [
+   "Baixa de título e resultado no painel da obra ainda não foram conferidos no teste de ponta a ponta.",
+   "Conta a pagar gerada pelo recebimento: conferir na tela o título com o fornecedor antes de mostrar ao cliente."
+  ]
  }
 ];

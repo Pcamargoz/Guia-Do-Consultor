@@ -1,0 +1,45 @@
+{
+ "nome": "fn03-planos-conta",
+ "url": "https://staging.flow.faktory.com.br/configuracoes/planos-conta",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Estruturado"
+   },
+   "caixa": {
+    "x": 346,
+    "y": 134,
+    "w": 123,
+    "h": 43
+   }
+  },
+  {
+   "alvo": {
+    "css": "tbody tr:has-text(\"1.1.1\")"
+   },
+   "caixa": {
+    "x": 367,
+    "y": 586,
+    "w": 1493,
+    "h": 64
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Filho",
+    "nth": 0
+   },
+   "caixa": {
+    "x": 1632,
+    "y": 469,
+    "w": 94,
+    "h": 43
+   }
+  }
+ ],
+ "em": "2026-11-17T16:53:36.265Z"
+}

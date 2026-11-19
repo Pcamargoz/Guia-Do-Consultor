@@ -1,0 +1,32 @@
+{
+ "nome": "fn02-meios-pagamento",
+ "url": "https://staging.flow.faktory.com.br/configuracoes/meios-pagamento",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "Tipo",
+    "exact": true
+   },
+   "caixa": {
+    "x": 1129,
+    "y": 349,
+    "w": 37,
+    "h": 22
+   }
+  },
+  {
+   "alvo": {
+    "css": "tbody tr:has-text(\"Duplicata Mercantil\")"
+   },
+   "caixa": {
+    "x": 348,
+    "y": 827,
+    "w": 1519,
+    "h": 64
+   }
+  }
+ ],
+ "em": "2026-11-17T16:53:03.016Z"
+}

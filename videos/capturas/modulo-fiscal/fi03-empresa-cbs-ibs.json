@@ -1,0 +1,45 @@
+{
+ "nome": "fi03-empresa-cbs-ibs",
+ "url": "https://staging.flow.faktory.com.br/configuracoes/empresas",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "CBS (%)",
+    "exact": true
+   },
+   "caixa": {
+    "x": 1006,
+    "y": 570,
+    "w": 68,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "text": "IBS (%)",
+    "exact": true
+   },
+   "caixa": {
+    "x": 1223,
+    "y": 570,
+    "w": 60,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "role": "switch",
+    "name": "Antecipar Reforma (CBS/IBS)"
+   },
+   "caixa": {
+    "x": 1006,
+    "y": 700,
+    "w": 53,
+    "h": 29
+   }
+  }
+ ],
+ "em": "2026-11-17T16:39:10.222Z"
+}

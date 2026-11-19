@@ -1,9 +1,9 @@
 {
   "modulo": "primeiros-passos",
   "titulo": "Primeiros passos — guia visual",
-  "resumo": "Você vai reconhecer as partes da tela do Faktory Flow, trocar de módulo, achar qualquer tela pela busca (Ctrl+K), abrir os grupos do menu, ler uma lista sem alterar nenhum registro e saber onde ficam avisos e administração. O que vale aqui vale para todos os módulos.",
-  "versaoSistema": "1.23.2 (Início, menu de módulos, busca, notificações e GLOBAIS no staging, 05/11/2026) e 1.22.13 (exemplos de lista em Vendas › Pedidos de Venda)",
-  "atualizadoEm": "2026-11-06",
+  "resumo": "Você vai reconhecer as partes da tela do Faktory Flow, trocar de módulo, achar qualquer tela pela busca (Ctrl+K), abrir os grupos do menu, ler uma lista sem alterar nenhum registro e saber onde ficam avisos e administração. No fim, você cria os cadastros rápidos (cliente, fornecedor, produto e obra) e confere cada um num pedido novo. O que vale aqui vale para todos os módulos.",
+  "versaoSistema": "1.23.2 (Início, menu de módulos, busca, notificações e GLOBAIS no staging, 05/11/2026) e 1.22.13 (exemplos de lista em Vendas › Pedidos de Venda) e 1.23.2 (telas de Participantes, Produtos e Projetos no staging, 05/11/2026)",
+  "atualizadoEm": "2026-11-19",
   "status": "rascunho",
   "conceitos": [
     {
@@ -922,6 +922,511 @@
           ]
         }
       ]
+    },
+    {
+      "id": "cadastros-rapidos",
+      "titulo": "Cadastros rápidos: cliente, fornecedor, produto e obra",
+      "nivel": "basico",
+      "objetivo": "Criar, em poucos minutos, os cadastros que todo módulo usa e ver cada um aparecer num pedido.",
+      "onde": "Cadastros › Participantes, Cadastros › Produtos e Cadastros › Projetos",
+      "passos": [
+        {
+          "titulo": "Pesquise antes de criar",
+          "texto": "Abra Cadastros › Participantes (o grupo Cadastros aparece no menu de vários módulos). Pesquise pelo nome ou pelo documento. Se não existir, a tela mostra \"Nenhum participante encontrado\" e você pode criar com + Novo Participante.",
+          "dica": "Antes de criar, pesquise: cadastro duplicado gera retrabalho.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/capturas/guias-staging/fundacao-participantes.png (staging v1.23.2, 05/11/2026)",
+            "guia:scripts/dados-checklists-estagiarios.mjs#cadastros",
+            "guia:scripts/dados-checklists-implantacao.mjs#implantacao-primeiros-passos"
+          ],
+          "imagem": "/manuais/primeiros-passos/img/08-participantes.webp",
+          "alt": "Lista Participantes com a pesquisa, o botão + Novo Participante e as colunas Código, Razão Social / Nome, Nome Fantasia, CPF/CNPJ e Status.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Participantes",
+              "explicacao": "Fica no grupo Cadastros do menu de vários módulos: é o mesmo cadastro em todos.",
+              "caixa": {
+                "x": 2.7,
+                "y": 66.4,
+                "w": 12.5,
+                "h": 4.3
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 2,
+              "rotulo": "Pesquisar",
+              "explicacao": "Procura pelo nome ou documento antes de criar: evita cadastro duplicado.",
+              "caixa": {
+                "x": 19.2,
+                "y": 24.9,
+                "w": 28.6,
+                "h": 5.1
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 3,
+              "rotulo": "+ Novo Participante",
+              "explicacao": "Abre o formulário de um participante novo.",
+              "caixa": {
+                "x": 86.4,
+                "y": 13.2,
+                "w": 10.9,
+                "h": 5.1
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 4,
+              "rotulo": "Status",
+              "explicacao": "Mostra se o cadastro está Ativo. Num formulário novo a chave Ativo pode vir desligada.",
+              "caixa": {
+                "x": 76.4,
+                "y": 36.3,
+                "w": 4,
+                "h": 3.8
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 5,
+              "rotulo": "Ações",
+              "explicacao": "O lápis abre o cadastro para editar; o ⋯ tem as demais opções.",
+              "caixa": {
+                "x": 90.9,
+                "y": 35.6,
+                "w": 6,
+                "h": 5.3
+              },
+              "lado": "esquerda"
+            }
+          ]
+        },
+        {
+          "titulo": "Cadastre o cliente: Dados Gerais",
+          "texto": "Clique em + Novo Participante. Em Dados Gerais, preencha Tipo (PF/PJ), Razão Social / Nome, CPF/CNPJ e Inscrição Estadual / RG (\"ISENTO\" quando não houver). Em Endereço, digite o CEP e o Número: o endereço vem sozinho.",
+          "imagem": "/manuais/primeiros-passos/img/09-novo-participante.webp",
+          "alt": "Formulário Novo Participante, seção Dados Gerais, com os campos obrigatórios Tipo (PF/PJ), Razão Social / Nome, CPF/CNPJ e Inscrição Estadual / RG e as chaves Simples Nacional e Não Contribuinte.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Tipo (PF/PJ)",
+              "explicacao": "Pessoa Jurídica para empresa, Pessoa Física para pessoa. O tipo muda a máscara do documento.",
+              "caixa": {
+                "x": 63.1,
+                "y": 13.1,
+                "w": 11.6,
+                "h": 7.5
+              },
+              "lado": "direita"
+            },
+            {
+              "n": 2,
+              "rotulo": "Razão Social / Nome",
+              "explicacao": "Nome oficial do participante. Ao lado, Nome Fantasia / Apelido é opcional.",
+              "caixa": {
+                "x": 51.3,
+                "y": 21.7,
+                "w": 23.4,
+                "h": 8.1
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 3,
+              "rotulo": "CPF/CNPJ",
+              "explicacao": "Digite só os números: o sistema formata e valida. Documento inválido ou já cadastrado não salva.",
+              "caixa": {
+                "x": 51.3,
+                "y": 30.6,
+                "w": 23.4,
+                "h": 8.1
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 4,
+              "rotulo": "Inscrição Estadual / RG",
+              "explicacao": "Obrigatória para cliente e fornecedor. Quando não houver, use \"ISENTO\".",
+              "caixa": {
+                "x": 74.8,
+                "y": 30.6,
+                "w": 23.4,
+                "h": 8.1
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 5,
+              "rotulo": "Não Contribuinte",
+              "explicacao": "Ligue para cliente sem IE. Sem IE e sem esta chave, o pedido avisa \"Cliente sem IE informado e não marcado como não contribuinte.\"",
+              "caixa": {
+                "x": 63,
+                "y": 39.4,
+                "w": 6.6,
+                "h": 7.2
+              },
+              "lado": "baixo"
+            }
+          ],
+          "zoom": {
+            "x": 49,
+            "y": 8.9,
+            "w": 51,
+            "h": 50.3
+          },
+          "dica": "Antes de criar, pesquise na lista: o sistema recusa CPF/CNPJ repetido (\"já está cadastrado\"). Se o documento estiver num cadastro inativo, reative o existente.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/capturas/guias-staging/fundacao-novo-participante.png (staging v1.23.2, 05/11/2026)",
+            "funcional-cadastros-participante-produto-e-projeto#000",
+            "manual-01-cadastros-base#002",
+            "oficial-cad-a-regras#000",
+            "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao",
+            "guia:scripts/dados-checklists-estagiarios.mjs#cadastros",
+            "guia:scripts/dados-checklists-implantacao.mjs#implantacao-primeiros-passos"
+          ]
+        },
+        {
+          "titulo": "Ligue o papel e a conta de fluxo, e salve",
+          "texto": "Em Receita / Despesa, escolha a Conta de Fluxo de Caixa Receita. Em Classificação, ligue É Cliente?. Em Contato › Adicionar Contato, informe um e-mail. Clique em Salvar e confira a mensagem \"Registro salvo com sucesso!\".",
+          "imagem": "/manuais/primeiros-passos/img/09-novo-participante.webp",
+          "alt": "Parte de baixo do formulário Novo Participante com as seções Receita / Despesa (Conta de Fluxo de Caixa Receita e Despesa) e Classificação (É Cliente?, É Fornecedor?, É Funcionário?, É Transportadora?) e os botões Cancelar e Salvar.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Conta de Fluxo de Caixa Receita",
+              "explicacao": "O pedido de venda usa esta conta no financeiro. Sem ela, o financeiro do pedido fica incompleto.",
+              "caixa": {
+                "x": 52.1,
+                "y": 70.6,
+                "w": 22.7,
+                "h": 9.4
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 2,
+              "rotulo": "Conta de Fluxo de Caixa Despesa",
+              "explicacao": "A conta das compras deste fornecedor: o pedido de compra sugere a conta que vem do fornecedor.",
+              "caixa": {
+                "x": 74.8,
+                "y": 70.6,
+                "w": 22.7,
+                "h": 9.4
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 3,
+              "rotulo": "É Cliente?",
+              "explicacao": "Liga o papel de cliente: o participante pode receber pedido de venda.",
+              "caixa": {
+                "x": 52.1,
+                "y": 84.7,
+                "w": 11.3,
+                "h": 6.1
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 4,
+              "rotulo": "É Fornecedor?",
+              "explicacao": "O mesmo cadastro vira fornecedor: não crie outro participante.",
+              "caixa": {
+                "x": 63.4,
+                "y": 84.7,
+                "w": 11.3,
+                "h": 6.1
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 5,
+              "rotulo": "Cancelar",
+              "explicacao": "Fecha o formulário sem gravar nada.",
+              "caixa": {
+                "x": 87.9,
+                "y": 91.1,
+                "w": 5.6,
+                "h": 5
+              },
+              "lado": "esquerda"
+            }
+          ],
+          "zoom": {
+            "x": 50,
+            "y": 66,
+            "w": 50,
+            "h": 34
+          },
+          "atencao": "Papel de negócio (Cliente, Fornecedor, Transportadora, Vendedor, Funcionário) exige CPF/CNPJ, IE (\"Isento\" vale), CEP, endereço, número, bairro, estado e cidade. Prospect/Lead dispensa documento e endereço.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/capturas/guias-staging/fundacao-novo-participante.png (staging v1.23.2, 05/11/2026)",
+            "funcional-cadastros-participante-produto-e-projeto#000",
+            "oficial-cad-a-regras#000",
+            "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao",
+            "guia:scripts/dados-checklists-implantacao.mjs#implantacao-compras",
+            "guia:scripts/dados-checklists-implantacao.mjs#implantacao-crm",
+            "guia:scripts/dados-checklists-implantacao.mjs#implantacao-primeiros-passos"
+          ]
+        },
+        {
+          "titulo": "Fornecedor e vendedor: mesmo formulário, outra chave",
+          "texto": "Para um fornecedor, repita o cadastro e ligue É Fornecedor? em Classificação. Para um vendedor, ligue É Vendedor? e ligue o participante ao usuário dele. Um mesmo participante pode ter mais de um papel: não crie outro cadastro para a mesma empresa.",
+          "atencao": "O sistema recusa CPF/CNPJ repetido. Se o documento estiver num cadastro inativo, reative o existente.",
+          "evidencia": "base",
+          "fontes": [
+            "guia:scripts/dados-checklists-estagiarios.mjs#cadastros",
+            "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao",
+            "guia:scripts/dados-checklists-implantacao.mjs#implantacao-primeiros-passos"
+          ]
+        },
+        {
+          "titulo": "Cadastre o produto: Dados Básicos",
+          "texto": "Em Cadastros › Produtos, clique em + Novo Produto. Informe a Descrição e escolha a Categoria do Produto; o Código pode ficar vazio, o sistema gera ao salvar.",
+          "imagem": "/manuais/primeiros-passos/img/10-novo-produto.webp",
+          "alt": "Formulário Novo Produto, seção Dados Básicos, com Código, Descrição, Descrição Complementar, Categoria do Produto, Procedência e Grupo de Produto.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Código",
+              "explicacao": "Se ficar vazio, o sistema gera o código ao salvar.",
+              "caixa": {
+                "x": 52.1,
+                "y": 16.1,
+                "w": 45.3,
+                "h": 4.7
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 2,
+              "rotulo": "Descrição",
+              "explicacao": "Nome do produto. Obrigatória.",
+              "caixa": {
+                "x": 52.1,
+                "y": 24.7,
+                "w": 45.3,
+                "h": 4.7
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 3,
+              "rotulo": "Categoria do Produto",
+              "explicacao": "Obrigatória. Decide o tipo do material e o \"Preço calculado por\" (unidade, peso ou área).",
+              "caixa": {
+                "x": 52.1,
+                "y": 48.2,
+                "w": 45.3,
+                "h": 4.7
+              },
+              "lado": "cima"
+            }
+          ],
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/capturas/guias-staging/fundacao-novo-produto.png (staging v1.23.2, 05/11/2026)",
+            "funcional-cadastros-participante-produto-e-projeto#001",
+            "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao",
+            "guia:scripts/dados-checklists-implantacao.mjs#implantacao-primeiros-passos"
+          ]
+        },
+        {
+          "titulo": "Complete as Classificações Fiscais e salve",
+          "texto": "Desça até Classificações Fiscais e preencha Unidade de Medida, NCM e Origem da Mercadoria. Clique em Salvar; para cadastrar outro em seguida, use Salvar e Incluir Novo.",
+          "imagem": "/manuais/primeiros-passos/img/10-novo-produto.webp",
+          "alt": "Seção Classificações Fiscais do Novo Produto com Unidade de Medida, NCM, Origem da Mercadoria e CEST, e os botões Cancelar, Salvar e Incluir Novo e Salvar.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "Unidade de Medida",
+              "explicacao": "Sigla igual à cadastrada na empresa (\"PÇ\" é diferente de \"PC\"); senão o pedido falha ao salvar.",
+              "caixa": {
+                "x": 52.1,
+                "y": 79.6,
+                "w": 11.3,
+                "h": 4.7
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 2,
+              "rotulo": "NCM",
+              "explicacao": "Obrigatório na nota. Precisa ter o CST de PIS/COFINS de saída para os impostos saírem calculados.",
+              "caixa": {
+                "x": 63.5,
+                "y": 79.6,
+                "w": 33.9,
+                "h": 4.7
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 3,
+              "rotulo": "Origem da Mercadoria",
+              "explicacao": "Obrigatória. É o quinto campo obrigatório do produto.",
+              "caixa": {
+                "x": 52.1,
+                "y": 85.4,
+                "w": 22.7,
+                "h": 4.2
+              },
+              "lado": "esquerda"
+            },
+            {
+              "n": 4,
+              "rotulo": "Salvar e Incluir Novo",
+              "explicacao": "Grava e abre outro formulário vazio.",
+              "caixa": {
+                "x": 83.5,
+                "y": 91.1,
+                "w": 10.5,
+                "h": 5
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 5,
+              "rotulo": "Salvar",
+              "explicacao": "Grava e fecha. Sem NCM ou categoria aparece \"NCM é obrigatório\" ou \"Categoria do produto é obrigatória\".",
+              "caixa": {
+                "x": 94.2,
+                "y": 91.1,
+                "w": 4.4,
+                "h": 5
+              },
+              "lado": "baixo"
+            }
+          ],
+          "zoom": {
+            "x": 50,
+            "y": 72.9,
+            "w": 50,
+            "h": 27.1
+          },
+          "atencao": "Não use o NCM \"99999999 À classificar\" como padrão: os produtos de teste do staging estão com ele.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/capturas/guias-staging/fundacao-novo-produto.png (staging v1.23.2, 05/11/2026)",
+            "funcional-cadastros-participante-produto-e-projeto#001",
+            "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao",
+            "guia:scripts/dados-checklists-implantacao.mjs#implantacao-primeiros-passos"
+          ]
+        },
+        {
+          "titulo": "Cadastre a obra",
+          "texto": "Em Cadastros › Projetos, clique em + Novo Projeto. Nome do Projeto e Código são obrigatórios; escolha também Status, Cliente (o que você acabou de criar) e Responsável. Clique em Salvar.",
+          "imagem": "/manuais/primeiros-passos/img/11-projetos.webp",
+          "alt": "Lista Projetos com as colunas Nome, Código, Cliente, Status, Data Início, Data Fim, Orçamento e Ativo e os botões Etapas, Estágios, editar e excluir em cada linha.",
+          "largura": 1600,
+          "altura": 900,
+          "marcadores": [
+            {
+              "n": 1,
+              "rotulo": "+ Novo Projeto",
+              "explicacao": "Abre o cadastro: Nome do Projeto e Código são obrigatórios; escolha também Status, Cliente e Responsável.",
+              "caixa": {
+                "x": 88.7,
+                "y": 13.5,
+                "w": 8.5,
+                "h": 4.4
+              },
+              "lado": "baixo"
+            },
+            {
+              "n": 2,
+              "rotulo": "Status",
+              "explicacao": "Planejamento, Em andamento, Pausada, Concluída ou Cancelada.",
+              "caixa": {
+                "x": 48.2,
+                "y": 31.7,
+                "w": 7.3,
+                "h": 10.3
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 3,
+              "rotulo": "Etapas",
+              "explicacao": "Partes da obra, como medição, fabricação, instalação e entrega.",
+              "caixa": {
+                "x": 80.1,
+                "y": 36.4,
+                "w": 4.7,
+                "h": 4.4
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 4,
+              "rotulo": "Estágios",
+              "explicacao": "A situação e o peso de cada parte no progresso da obra.",
+              "caixa": {
+                "x": 85,
+                "y": 36.4,
+                "w": 5.3,
+                "h": 4.4
+              },
+              "lado": "cima"
+            },
+            {
+              "n": 5,
+              "rotulo": "Editar",
+              "explicacao": "O lápis abre a obra para alterar.",
+              "caixa": {
+                "x": 90.7,
+                "y": 36.4,
+                "w": 2.8,
+                "h": 4.4
+              },
+              "lado": "cima"
+            }
+          ],
+          "zoom": {
+            "x": 47,
+            "y": 10,
+            "w": 53,
+            "h": 35
+          },
+          "atencao": "Código repetido é recusado. Nesta captura o caminho no alto da tela mostra Início › Configurações › Projetos, enquanto o menu mostra Cadastros › Projetos: a conferir.",
+          "evidencia": "captura-real",
+          "fontes": [
+            "videos/capturas/guias-staging/fundacao-projetos-cadastro.png (staging v1.23.2, 05/11/2026)",
+            "manual-12-projetos-e-tarefas#002",
+            "roteiro-projetos-01-cadastro-e-acompanhamento-de-projetos#009",
+            "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao",
+            "guia:scripts/dados-checklists-estagiarios.mjs#cadastros",
+            "guia:scripts/dados-checklists-implantacao.mjs#implantacao-primeiros-passos"
+          ]
+        },
+        {
+          "titulo": "Confira os cadastros num pedido novo",
+          "texto": "Abra Vendas › Pedidos de Venda › + Novo Pedido e escolha Empresa, Cliente, Vendedor e Projeto: os cadastros que você criou aparecem para escolha. Adicione o produto em Dados do Item. Se for só para conferir, saia sem salvar.",
+          "atencao": "\"Cliente sem IE informado e não marcado como não contribuinte.\" aponta o cadastro do cliente, não o pedido. Unidade com sigla diferente da empresa só dá erro ao salvar o pedido.",
+          "evidencia": "base",
+          "fontes": [
+            "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao",
+            "guia:scripts/dados-checklists-estagiarios.mjs#vendas",
+            "guia:scripts/dados-checklists-implantacao.mjs#implantacao-primeiros-passos"
+          ]
+        }
+      ]
     }
   ],
   "consultor": {
@@ -1115,7 +1620,9 @@
     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fundacao",
     "videos/capturas/guias-staging/primeiros-passos-busca.png (staging v1.23.2, 05/11/2026)",
     "videos/capturas/guias-staging/primeiros-passos-notificacoes.png (staging v1.23.2, 05/11/2026)",
-    "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem"
+    "guia:scripts/dados-checklists-implantacao.mjs#implantacao-integracao-cem",
+    "guia:scripts/dados-checklists-estagiarios.mjs#cadastros",
+    "guia:scripts/dados-checklists-implantacao.mjs#implantacao-primeiros-passos"
   ],
   "pendencias": [
     "CAPTURA: menu do usuário (Modo Escuro, Densidade) — o passo \"Conheça as preferências do usuário\" segue sem imagem.",
@@ -1123,6 +1630,7 @@
     "A CONFERIR: aba Solicitações do sino — o painel diz que avisos de solicitações \"ainda vêm de fluxos diferentes\"; sem fonte na base sobre o que entra em cada aba.",
     "SEM FONTE NA BASE: o que fazem Personalização e processos e Configurar relatórios (Painel de Controle). Só os nomes vêm da captura.",
     "Alumina e \"Apresentar na TV\" não foram abertos na exploração (trilha do estagiário, não validado).",
-    "DECISÃO DO COORDENADOR: o capítulo \"Lendo uma lista\" ainda usa capturas de Vendas › Pedidos de Venda (exemplo citado pela trilha, por mostrar o filtro padrão). Os capítulos de tela usam a Início (staging v1.23.2, 05/11/2026)."
+    "DECISÃO DO COORDENADOR: o capítulo \"Lendo uma lista\" ainda usa capturas de Vendas › Pedidos de Venda (exemplo citado pela trilha, por mostrar o filtro padrão). Os capítulos de tela usam a Início (staging v1.23.2, 05/11/2026).",
+    "CAPTURA: formulário + Novo Projeto e cadastro de fornecedor/vendedor — os passos do capítulo Cadastros rápidos usam as telas da Fundação (staging 05/11/2026)."
   ]
 }

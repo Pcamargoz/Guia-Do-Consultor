@@ -1,0 +1,35 @@
+{
+ "nome": "ex02-motoristas",
+ "url": "https://staging.flow.faktory.com.br/expedicao/cadastros/motoristas",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "cell",
+    "name": "CNH",
+    "exact": true
+   },
+   "caixa": {
+    "x": 532,
+    "y": 338,
+    "w": 225,
+    "h": 43
+   }
+  },
+  {
+   "alvo": {
+    "role": "cell",
+    "name": "Validade CNH",
+    "exact": true
+   },
+   "caixa": {
+    "x": 986,
+    "y": 338,
+    "w": 318,
+    "h": 43
+   }
+  }
+ ],
+ "em": "2026-11-17T16:32:42.185Z"
+}

@@ -1,0 +1,44 @@
+{
+ "nome": "ta02-novo-quadro",
+ "url": "https://staging.flow.faktory.com.br/tarefas",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "label": "Nome do Quadro"
+   },
+   "caixa": {
+    "x": 721,
+    "y": 486,
+    "w": 478,
+    "h": 55
+   }
+  },
+  {
+   "alvo": {
+    "text": "Tipo",
+    "exact": true
+   },
+   "caixa": {
+    "x": 721,
+    "y": 565,
+    "w": 36,
+    "h": 20
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Criar Quadro"
+   },
+   "caixa": {
+    "x": 1057,
+    "y": 696,
+    "w": 141,
+    "h": 48
+   }
+  }
+ ],
+ "em": "2026-11-17T17:01:58.179Z"
+}

@@ -1,0 +1,33 @@
+{
+ "nome": "fi02-empresa-regime",
+ "url": "https://staging.flow.faktory.com.br/configuracoes/empresas",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "Regime de Apuração*",
+    "exact": true
+   },
+   "caixa": {
+    "x": 1441,
+    "y": 353,
+    "w": 181,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "text": "Tipo de Atividade",
+    "exact": true
+   },
+   "caixa": {
+    "x": 990,
+    "y": 468,
+    "w": 141,
+    "h": 24
+   }
+  }
+ ],
+ "em": "2026-11-17T16:38:47.062Z"
+}

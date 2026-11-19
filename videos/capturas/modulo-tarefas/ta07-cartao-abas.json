@@ -1,0 +1,57 @@
+{
+ "nome": "ta07-cartao-abas",
+ "url": "https://staging.flow.faktory.com.br/tarefas/46",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Arquivar"
+   },
+   "caixa": {
+    "x": 1771,
+    "y": 19,
+    "w": 38,
+    "h": 38
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "💬 Comentários"
+   },
+   "caixa": {
+    "x": 1172,
+    "y": 313,
+    "w": 141,
+    "h": 41
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "✅ Checklists"
+   },
+   "caixa": {
+    "x": 1313,
+    "y": 313,
+    "w": 124,
+    "h": 41
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "📋 Histórico"
+   },
+   "caixa": {
+    "x": 1787,
+    "y": 313,
+    "w": 114,
+    "h": 41
+   }
+  }
+ ],
+ "em": "2026-11-17T17:02:52.891Z"
+}

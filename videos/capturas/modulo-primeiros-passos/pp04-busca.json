@@ -1,0 +1,43 @@
+{
+ "nome": "pp04-busca",
+ "url": "https://staging.flow.faktory.com.br/vendas/pedidos",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "searchbox",
+    "name": "Pesquisar funcionalidades"
+   },
+   "caixa": {
+    "x": 895,
+    "y": 21,
+    "w": 384,
+    "h": 45
+   }
+  },
+  {
+   "alvo": {
+    "css": "p:text-is(\"Pedidos de Venda\")"
+   },
+   "caixa": {
+    "x": 958,
+    "y": 178,
+    "w": 145,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "css": "p:text-is(\"Pedidos de Compra\")"
+   },
+   "caixa": {
+    "x": 958,
+    "y": 100,
+    "w": 158,
+    "h": 24
+   }
+  }
+ ],
+ "em": "2026-11-17T17:08:00.053Z"
+}

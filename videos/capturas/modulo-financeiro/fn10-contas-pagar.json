@@ -1,0 +1,48 @@
+{
+ "nome": "fn10-contas-pagar",
+ "url": "https://staging.flow.faktory.com.br/financeiro/contas-pagar",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "Pagamentos",
+    "exact": true,
+    "nth": 1
+   },
+   "caixa": {
+    "x": 398,
+    "y": 120,
+    "w": 129,
+    "h": 38
+   }
+  },
+  {
+   "alvo": {
+    "text": "Status",
+    "exact": true,
+    "nth": 0
+   },
+   "caixa": {
+    "x": 376,
+    "y": 584,
+    "w": 50,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Pagar",
+    "exact": true
+   },
+   "caixa": {
+    "x": 1729,
+    "y": 691,
+    "w": 76,
+    "h": 43
+   }
+  }
+ ],
+ "em": "2026-11-17T16:57:13.061Z"
+}

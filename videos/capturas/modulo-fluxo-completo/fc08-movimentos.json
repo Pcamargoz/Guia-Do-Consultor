@@ -1,0 +1,33 @@
+{
+ "nome": "fc08-movimentos",
+ "url": "https://staging.flow.faktory.com.br/estoque/movimentos",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "option",
+    "name": "Entrada produto acabado"
+   },
+   "caixa": {
+    "x": 387,
+    "y": 665,
+    "w": 351,
+    "h": 38
+   }
+  },
+  {
+   "alvo": {
+    "role": "option",
+    "name": "Baixa de OP"
+   },
+   "caixa": {
+    "x": 387,
+    "y": 626,
+    "w": 351,
+    "h": 38
+   }
+  }
+ ],
+ "em": "2026-11-17T17:18:42.984Z"
+}

@@ -1,0 +1,46 @@
+{
+ "nome": "fc05-notas",
+ "url": "https://staging.flow.faktory.com.br/faturamento/documentos-fiscais",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "button",
+    "name": "NF-e",
+    "exact": true
+   },
+   "caixa": {
+    "x": 395,
+    "y": 293,
+    "w": 129,
+    "h": 45
+   }
+  },
+  {
+   "alvo": {
+    "text": "Status",
+    "exact": true,
+    "nth": 0
+   },
+   "caixa": {
+    "x": 881,
+    "y": 492,
+    "w": 50,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "css": "tbody tr:has-text(\"NF - 002\")"
+   },
+   "caixa": {
+    "x": 367,
+    "y": 785,
+    "w": 1494,
+    "h": 68
+   }
+  }
+ ],
+ "em": "2026-11-17T17:15:24.992Z"
+}

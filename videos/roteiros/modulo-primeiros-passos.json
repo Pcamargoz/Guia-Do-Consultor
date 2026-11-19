@@ -1,0 +1,489 @@
+{
+ "id": "modulo-primeiros-passos",
+ "titulo": "Primeiros passos",
+ "subtitulo": "Como andar no sistema: entrar, trocar de módulo, achar telas e ler listas",
+ "trilha": "Metodologia do Consultor · vídeo completo do módulo",
+ "proximo": "Cadastros e Fundação",
+ "icone": "seta",
+ "semVoz": true,
+ "focoMin": 2.6,
+ "fontes": [
+  "guia:scripts/dados-checklists-estagiarios.mjs#ONBOARDING",
+  "guia:scripts/dados-checklists-estagiarios.mjs#navegacao",
+  "guia:lib/conteudo/base/primeiros-passos.json",
+  "harness:manual-00-inicio#1.1",
+  "harness:manual-00-inicio#1.2",
+  "harness:manual-00-inicio#1.3",
+  "harness:glossario/telas.yaml#geral.seletor-modulos",
+  "harness:regra-geral-os-dados-pertencem-a-empresa-e-uma-empresa-nova-comeca-vazia",
+  "harness:faq-limitacoes-conhecidas-v1-22-12"
+ ],
+ "trechos": [
+  {
+   "id": "01",
+   "cena": "abertura",
+   "fala": "Antes de qualquer módulo, aprenda a andar no sistema. Neste vídeo: a tela Início, a empresa ativa, o menu de módulos, a busca Ctrl+K e como ler uma lista sem alterar nada."
+  },
+  {
+   "id": "02",
+   "cena": "status",
+   "etapas": [
+    "Entrar",
+    "Trocar de módulo",
+    "Achar a tela",
+    "Ler a lista"
+   ],
+   "destaque": 0,
+   "fala": "Ao entrar, o sistema abre o Início e seleciona a empresa sozinho. Confira o nome no selo do topo antes de começar."
+  },
+  {
+   "id": "03",
+   "cena": "status",
+   "etapas": [
+    "Entrar",
+    "Trocar de módulo",
+    "Achar a tela",
+    "Ler a lista"
+   ],
+   "destaque": 1,
+   "fala": "Depois, escolha o módulo pelo ícone de grade. O menu lateral muda para as telas do módulo escolhido."
+  },
+  {
+   "id": "04",
+   "cena": "regra",
+   "n": 1,
+   "titulo": "Os dados são da empresa",
+   "icone": "fabrica",
+   "texto": "Clientes, produtos e pedidos pertencem à empresa, não ao usuário. Empresa nova começa vazia: cada módulo usa o que o anterior criou.",
+   "fonte": "regra-geral-os-dados-pertencem-a-empresa-e-uma-empresa-nova-comeca-vazia",
+   "fala": "Regra 1. Tudo o que você vê pertence à empresa selecionada. Uma empresa nova começa vazia, e cada módulo usa o que o anterior criou."
+  },
+  {
+   "id": "05",
+   "cena": "regra",
+   "n": 2,
+   "titulo": "Treine só no ambiente de testes",
+   "icone": "cadeado",
+   "texto": "Use staging ou dev, nunca produção. Registros de treino começam com TESTE ESTAGIÁRIO. Nada de e-mail ou telefone de cliente real.",
+   "fonte": "guia:scripts/dados-checklists-estagiarios.mjs#ONBOARDING",
+   "fala": "Regra 2. Treine sempre em staging ou dev. Confira o endereço no navegador. O que você criar leva TESTE ESTAGIÁRIO no nome."
+  },
+  {
+   "id": "06",
+   "cena": "regra",
+   "n": 3,
+   "titulo": "Na dúvida, não clique",
+   "icone": "alerta",
+   "texto": "Transmitir, Aprovar, Finalizar, Excluir, Enviar agora e Converter geram efeito real. Consultar é seguro; alterar, só com orientação.",
+   "fonte": "guia:scripts/dados-checklists-estagiarios.mjs#ONBOARDING",
+   "critica": true,
+   "fala": "Regra 3. Na dúvida, não clique. Transmitir, Aprovar, Finalizar, Excluir, Enviar agora e Converter geram efeito real e nem sempre voltam."
+  },
+  {
+   "id": "07",
+   "cena": "regra",
+   "n": 4,
+   "titulo": "Ctrl+K acha telas, não registros",
+   "icone": "seta",
+   "texto": "A busca de funcionalidades abre telas. Para achar um pedido pelo número, use o Pesquisar... dentro da lista.",
+   "fonte": "manual-00-inicio#1.3",
+   "fala": "Regra 4. O Ctrl+K encontra telas, não registros. Para achar um pedido pelo número, abra a lista e use o Pesquisar."
+  },
+  {
+   "id": "08",
+   "cena": "regra",
+   "n": 5,
+   "titulo": "Toda lista tem filtro padrão",
+   "icone": "funil",
+   "texto": "Pedidos de Venda abre só com Status Em Aberto. Antes de concluir que algo não existe, confira filtro, período e página.",
+   "fonte": "guia:scripts/dados-checklists-estagiarios.mjs#navegacao",
+   "fala": "Regra 5. A lista pode esconder registros. Pedidos de Venda abre só Em Aberto. Confira o filtro, o período e a página antes de dizer que algo não existe."
+  },
+  {
+   "id": "09",
+   "cena": "regra",
+   "n": 6,
+   "titulo": "Não use Sair do Sistema",
+   "icone": "cadeado",
+   "texto": "O login tem limite de tentativas e pode bloquear o acesso por 15 minutos. Também não troque de empresa sem combinar.",
+   "fonte": "guia:scripts/dados-checklists-estagiarios.mjs#navegacao",
+   "fala": "Regra 6. Não use Sair do Sistema nem troque de empresa sem combinar com o supervisor. O login tem limite de tentativas e pode bloquear por 15 minutos."
+  },
+  {
+   "id": "10",
+   "cena": "tela",
+   "captura": "pp01-inicio",
+   "titulo": "A tela Início",
+   "rotulo": "Início",
+   "focos": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "nomes": [
+    "METALURGICA TEST",
+    "Alertas urgentes",
+    "Tarefas do dia",
+    "Resumo do negócio"
+   ],
+   "impacto": 1,
+   "fala": "Confira a empresa no selo do topo. Os Alertas urgentes são atalhos para a tela já filtrada. Tarefas do dia são pendências calculadas, não o módulo Tarefas.",
+   "plano": {
+    "menu": "Início (abre sozinho ao entrar)",
+    "mostrar": "Selo da empresa no topo e os três blocos da tela Início",
+    "alvos": [
+     "Alertas urgentes",
+     "Tarefas do dia",
+     "Resumo do negócio"
+    ],
+    "acoes": [
+     "Usar a sessão já aberta no ambiente de teste; não fazer logout nem login",
+     "Esperar o aviso \"Verificando permissões...\" sumir",
+     "Enquadrar o selo da empresa (nome mascarado) e os três blocos, sem clicar em alerta"
+    ]
+   }
+  },
+  {
+   "id": "11",
+   "cena": "tela",
+   "captura": "pp02-modulos",
+   "titulo": "O menu de módulos",
+   "rotulo": "Ícone de grade › Abrir menu de módulos",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "Abrir menu de módulos",
+    "Buscar módulo...",
+    "Vendas"
+   ],
+   "fala": "Clique no ícone de grade, no canto superior esquerdo. Digite em Buscar módulo... e escolha. São 15 módulos, mais o CEM Mobi, que abre em outra aba; Config. Interna e Implantação são de administração.",
+   "plano": {
+    "menu": "Ícone de grade (canto superior esquerdo)",
+    "mostrar": "Painel de módulos aberto com a lista dos 15 módulos e o campo de busca",
+    "alvos": [
+     "Abrir menu de módulos",
+     "Buscar módulo...",
+     "Vendas"
+    ],
+    "acoes": [
+     "Clicar no ícone de grade",
+     "Digitar \"ven\" em Buscar módulo... para filtrar",
+     "Clicar em Vendas (só navega, não altera dados)"
+    ]
+   }
+  },
+  {
+   "id": "12",
+   "cena": "tela",
+   "captura": "pp03-menu-lateral",
+   "titulo": "O menu lateral do módulo",
+   "rotulo": "Vendas › menu lateral",
+   "focos": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "nomes": [
+    "MÓDULO",
+    "Configurações",
+    "Relatórios",
+    "Recolher menu"
+   ],
+   "fala": "O topo do menu mostra MÓDULO e o nome escolhido. Grupos com seta, como Configurações e Relatórios, vêm fechados e escondem telas. Recolher menu dá mais espaço à lista.",
+   "plano": {
+    "menu": "Vendas (menu lateral)",
+    "mostrar": "Menu lateral com o rótulo MÓDULO, os grupos fechados e a versão no rodapé",
+    "alvos": [
+     "MÓDULO",
+     "Configurações",
+     "Relatórios",
+     "Recolher menu"
+    ],
+    "acoes": [
+     "Expandir o grupo Relatórios pela seta (>) sem abrir nenhum item",
+     "Rolar até o rodapé do menu e enquadrar a versão do sistema",
+     "Passar o mouse em Recolher menu, sem recolher"
+    ]
+   }
+  },
+  {
+   "id": "13",
+   "cena": "tela",
+   "captura": "pp04-busca",
+   "titulo": "Busca Ctrl+K",
+   "rotulo": "Pesquisar funcionalidades... (Ctrl+K)",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "Pesquisar funcionalidades...",
+    "Pedidos de Venda",
+    "Pedidos de Compra"
+   ],
+   "fala": "Pressione Ctrl+K e digite \"pedido\". Aparecem telas como Pedidos de Compra e Pedidos de Venda. Use ↑↓ e Enter.",
+   "plano": {
+    "menu": "Campo Pesquisar funcionalidades... no topo (ou Ctrl+K)",
+    "mostrar": "Sugestões de telas para o termo \"pedido\"",
+    "alvos": [
+     "Pesquisar funcionalidades...",
+     "Pedidos de Venda",
+     "Pedidos de Compra"
+    ],
+    "acoes": [
+     "Pressionar Ctrl+K",
+     "Digitar \"pedido\" devagar",
+     "Navegar com ↓ até Pedidos de Venda e pressionar Enter"
+    ]
+   }
+  },
+  {
+   "id": "14",
+   "cena": "tela",
+   "captura": "pp05-lista",
+   "titulo": "Ler uma lista",
+   "rotulo": "Vendas › Pedidos de Venda",
+   "focos": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "nomes": [
+    "Mais...",
+    "Filtros",
+    "+ Novo Pedido",
+    "Pesquisar..."
+   ],
+   "fala": "Toda lista segue o mesmo padrão: Mais... para colunas e Excel, Filtros, o botão Novo, Pesquisar... e a paginação no rodapé.",
+   "plano": {
+    "menu": "Vendas › Pedidos de Venda",
+    "mostrar": "Barra de botões do topo e a paginação \"Exibindo 1 a N de N itens\"",
+    "alvos": [
+     "Mais...",
+     "Filtros",
+     "+ Novo Pedido",
+     "Pesquisar...",
+     "Exibindo"
+    ],
+    "acoes": [
+     "Abrir a lista sem mexer no filtro",
+     "Passar o mouse sobre Mais..., Filtros e + Novo Pedido, sem clicar em + Novo Pedido",
+     "Rolar até o rodapé e enquadrar a paginação"
+    ]
+   }
+  },
+  {
+   "id": "15",
+   "cena": "tela",
+   "captura": "pp06-filtro",
+   "titulo": "O filtro padrão",
+   "rotulo": "Pedidos de Venda › Filtros › Status",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "Status",
+    "Todos",
+    "Faturado"
+   ],
+   "impacto": 0,
+   "fala": "A lista abre só com Status Em Aberto. Troque para Todos e aparecem também os pedidos faturados, entregues e encerrados. Trocar filtro não altera nada.",
+   "plano": {
+    "menu": "Vendas › Pedidos de Venda › Filtros",
+    "mostrar": "Filtro Status trocado de Em Aberto para Todos e a lista com outros status",
+    "alvos": [
+     "Status",
+     "Em Aberto",
+     "Todos",
+     "Faturado"
+    ],
+    "acoes": [
+     "Enquadrar o filtro Status em Em Aberto",
+     "Trocar o Status para Todos",
+     "Enquadrar uma linha Faturado na coluna de status"
+    ]
+   }
+  },
+  {
+   "id": "16",
+   "cena": "tela",
+   "captura": "pp07-menu-linha",
+   "titulo": "O menu da linha",
+   "rotulo": "Pedidos de Venda › menu ⋯",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "Baixar PDF",
+    "Faturar",
+    "Encerrar"
+   ],
+   "impacto": 1,
+   "fala": "O menu ⋯ mistura consulta e ação. Baixar PDF só lê. Faturar e Encerrar alteram dados. Feche com Esc sem clicar.",
+   "plano": {
+    "menu": "Vendas › Pedidos de Venda › menu ⋯ de um pedido Em Aberto",
+    "mostrar": "Menu ⋯ aberto, separando consulta de ação",
+    "alvos": [
+     "Visualizar pedido",
+     "Faturar",
+     "Encerrar"
+    ],
+    "acoes": [
+     "Abrir o menu ⋯ de um pedido Em Aberto",
+     "Passar o mouse em Visualizar pedido, Faturar e Encerrar, sem clicar",
+     "Pressionar Esc para fechar"
+    ]
+   }
+  },
+  {
+   "id": "17",
+   "cena": "tela",
+   "captura": "pp08-notificacoes",
+   "titulo": "Notificações e ajuda",
+   "rotulo": "Topo › Notificações",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "Notificações",
+    "Geral",
+    "Solicitações"
+   ],
+   "fala": "O sino abre as Notificações, com as abas Geral e Solicitações. Pode mostrar \"0 notificações\" por um instante: espere carregar. O botão ? das listas abre os manuais de ajuda.",
+   "plano": {
+    "menu": "Ícone de sino no topo",
+    "mostrar": "Painel de notificações com as duas abas",
+    "alvos": [
+     "Notificações",
+     "Geral",
+     "Solicitações"
+    ],
+    "acoes": [
+     "Clicar no sino",
+     "Esperar a lista carregar e alternar entre Geral e Solicitações, sem abrir nenhuma",
+     "Pressionar Esc"
+    ]
+   }
+  },
+  {
+   "id": "18",
+   "cena": "tela",
+   "captura": "pp09-usuario",
+   "titulo": "O menu do usuário",
+   "rotulo": "Topo › menu do usuário",
+   "focos": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "nomes": [
+    "Modo Escuro",
+    "Densidade: Confortável",
+    "Configurar E-mail (SMTP)",
+    "Sair do Sistema"
+   ],
+   "impacto": 3,
+   "fala": "No menu do usuário ficam Modo Escuro e Densidade. Configurar E-mail (SMTP) é de administração. E Sair do Sistema fica para quando o supervisor pedir.",
+   "plano": {
+    "menu": "Avatar do usuário no canto superior direito",
+    "mostrar": "Menu do usuário aberto, com nome e e-mail mascarados",
+    "alvos": [
+     "Modo Escuro",
+     "Densidade",
+     "Configurar E-mail (SMTP)",
+     "Sair do Sistema"
+    ],
+    "acoes": [
+     "Abrir o menu do usuário",
+     "Passar o mouse nos itens, sem clicar (em especial Sair do Sistema)",
+     "Pressionar Esc"
+    ]
+   }
+  },
+  {
+   "id": "19",
+   "cena": "tela",
+   "captura": "pp10-globais",
+   "titulo": "O bloco GLOBAIS",
+   "rotulo": "Menu lateral › GLOBAIS",
+   "focos": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "nomes": [
+    "GLOBAIS",
+    "Painel de Controle",
+    "Segurança",
+    "Treinamento"
+   ],
+   "fala": "No fim do menu, o bloco GLOBAIS reúne Painel de Controle, Configurações, Segurança, Treinamento, Aplicativos e Assinatura. É administração: percorra só lendo.",
+   "plano": {
+    "menu": "Menu lateral › GLOBAIS (fim do menu)",
+    "mostrar": "Bloco GLOBAIS com os seus grupos",
+    "alvos": [
+     "GLOBAIS",
+     "Painel de Controle",
+     "Configurações",
+     "Segurança",
+     "Treinamento",
+     "Aplicativos",
+     "Assinatura"
+    ],
+    "acoes": [
+     "Rolar o menu lateral até GLOBAIS",
+     "Expandir Treinamento pela seta, sem abrir telas de configuração",
+     "Não abrir Aplicativos › Aprovações (sai do layout normal)"
+    ]
+   }
+  },
+  {
+   "id": "20",
+   "cena": "alertas",
+   "itens": [
+    "Não use Sair do Sistema: o login tem limite de tentativas.",
+    "Hoje o Ctrl+K ainda não encontra o módulo Tarefas: abra pela grade.",
+    "Existem dois grupos Configurações: o do módulo e o de GLOBAIS."
+   ],
+   "fala": "Três cuidados. Não use Sair do Sistema. Confira o filtro padrão antes de achar que a lista está vazia. E os dois grupos Configurações, do módulo e de GLOBAIS, são de administração."
+  },
+  {
+   "id": "21",
+   "cena": "fechamento",
+   "topicos": [
+    "Grade ou Ctrl+K para chegar à tela",
+    "Confira o filtro padrão da lista",
+    "Consulte sem alterar"
+   ],
+   "fala": "Resumindo: chegue a qualquer tela pela grade ou pelo Ctrl+K, confira o filtro padrão da lista e consulte sem alterar. O checklist e o manual de navegação estão logo abaixo."
+  }
+ ],
+ "pendencias": [
+  "A tela de login não é gravada: a sessão do staging é compartilhada e o login tem limite de tentativas. O vídeo começa no Início, já logado.",
+  "GLOBAIS › Treinamento › Minhas Trilhas foi validado só no dev (marcado dev no checklist); pp10 não depende dele. Conferir se existe no staging antes de focar.",
+  "A versão do rodapé do menu no checklist é exemplo antigo (v1.22.11): a captura mostra a versão atual do staging.",
+  "pp07 usa os itens do menu ⋯ do pedido (glossário vendas.pedidos-de-venda); o checklist cita Histórico e Ver Timeline como exemplos de consulta, que são de outras listas (Ver Timeline está no menu da nota).",
+  "Alumina (Ctrl+Alt+A) e \"Apresentar na TV\" não foram abertos na validação: ficaram fora das telas.",
+  "Nome da empresa, usuário e e-mail precisam ser mascarados em pp01 e pp09.",
+  "Gravação 17/11/2026 (staging v1.23.6): o Ctrl+K agora encontra as telas de Tarefas; o alerta 20 foi reescrito sem o defeito e a pendência antiga do Ctrl+K pode sair.",
+  "pp01/pp02: a saudação no staging é 'Boa tarde, Pedro' (muda com a hora), mascarada em pp01 e ocultada em pp02. pp09: avatar e nome do usuário mascarados; o menu mostra 'Densidade: Confortável' e 'Personalizar avatar'.",
+  "pp05: a paginação 'Exibindo 1 a N' fica abaixo da dobra junto com os botões do topo; o foco ficou em Mais..., Filtros, + Novo Pedido e Pesquisar... (a fala ainda cita a paginação).",
+  "pp07: o menu ⋯ de pedido Em aberto não tem 'Visualizar pedido' (o olho só aparece em pedido faturado); a consulta usada foi Baixar PDF.",
+  "pp06: o filtro Status foi trocado para Todos e devolvido a Em Aberto depois da captura. Não há pedido Cancelado no staging."
+ ]
+}

@@ -1,0 +1,60 @@
+{
+ "nome": "ex01-veiculos",
+ "url": "https://staging.flow.faktory.com.br/expedicao/cadastros/veiculos",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Novo Veículo"
+   },
+   "caixa": {
+    "x": 1715,
+    "y": 149,
+    "w": 161,
+    "h": 43
+   }
+  },
+  {
+   "alvo": {
+    "role": "cell",
+    "name": "Placa",
+    "exact": true
+   },
+   "caixa": {
+    "x": 348,
+    "y": 338,
+    "w": 130,
+    "h": 43
+   }
+  },
+  {
+   "alvo": {
+    "role": "cell",
+    "name": "Capacidade (kg)",
+    "exact": true
+   },
+   "caixa": {
+    "x": 647,
+    "y": 338,
+    "w": 243,
+    "h": 43
+   }
+  },
+  {
+   "alvo": {
+    "role": "cell",
+    "name": "Capacidade (m³)",
+    "exact": true
+   },
+   "caixa": {
+    "x": 890,
+    "y": 338,
+    "w": 243,
+    "h": 43
+   }
+  }
+ ],
+ "em": "2026-11-17T16:32:29.013Z"
+}

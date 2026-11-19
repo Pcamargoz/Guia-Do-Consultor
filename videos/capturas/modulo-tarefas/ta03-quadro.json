@@ -1,0 +1,46 @@
+{
+ "nome": "ta03-quadro",
+ "url": "https://staging.flow.faktory.com.br/tarefas/46",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Adicionar lista"
+   },
+   "caixa": {
+    "x": 1502,
+    "y": 304,
+    "w": 360,
+    "h": 67
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Em Andamento 1 Adicionar tarefa Opções da lista"
+   },
+   "caixa": {
+    "x": 734,
+    "y": 304,
+    "w": 360,
+    "h": 60
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "+ Adicionar tarefa",
+    "nth": 0
+   },
+   "caixa": {
+    "x": 365,
+    "y": 364,
+    "w": 331,
+    "h": 144
+   }
+  }
+ ],
+ "em": "2026-11-17T17:02:15.306Z"
+}

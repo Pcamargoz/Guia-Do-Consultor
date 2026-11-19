@@ -1,0 +1,59 @@
+{
+ "nome": "ex09-detalhe-carga",
+ "url": "https://staging.flow.faktory.com.br/expedicao/cargas/154",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "Entregue",
+    "exact": true,
+    "nth": 0
+   },
+   "caixa": {
+    "x": 622,
+    "y": 144,
+    "w": 116,
+    "h": 38
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Romaneio",
+    "exact": true
+   },
+   "caixa": {
+    "x": 1256,
+    "y": 154,
+    "w": 140,
+    "h": 43
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Etiquetas"
+   },
+   "caixa": {
+    "x": 1725,
+    "y": 154,
+    "w": 135,
+    "h": 43
+   }
+  },
+  {
+   "alvo": {
+    "text": "Ocupação",
+    "exact": true
+   },
+   "caixa": {
+    "x": 1403,
+    "y": 625,
+    "w": 432,
+    "h": 22
+   }
+  }
+ ],
+ "em": "2026-11-17T16:35:35.681Z"
+}

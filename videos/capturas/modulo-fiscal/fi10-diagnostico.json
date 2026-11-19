@@ -1,0 +1,45 @@
+{
+ "nome": "fi10-diagnostico",
+ "url": "https://staging.flow.faktory.com.br/fiscal/diagnostico-seed",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "heading",
+    "name": "Diagnóstico Fiscal"
+   },
+   "caixa": {
+    "x": 365,
+    "y": 154,
+    "w": 1338,
+    "h": 43
+   }
+  },
+  {
+   "alvo": {
+    "text": "Cadastros do cliente",
+    "exact": true
+   },
+   "caixa": {
+    "x": 433,
+    "y": 421,
+    "w": 495,
+    "h": 29
+   }
+  },
+  {
+   "alvo": {
+    "text": "Cadastros globais",
+    "exact": true
+   },
+   "caixa": {
+    "x": 1192,
+    "y": 421,
+    "w": 536,
+    "h": 29
+   }
+  }
+ ],
+ "em": "2026-11-17T16:44:07.125Z"
+}

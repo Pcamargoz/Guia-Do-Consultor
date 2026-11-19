@@ -556,30 +556,488 @@
    {
     "id": "fluxos",
     "titulo": "Fluxos operacionais",
-    "status": "em-preparacao",
-    "blocos": [],
-    "fontes": []
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "etapa",
+      "titulo": "1. Montar o mapa do pedido",
+      "onde": [
+       {
+        "t": "este checklist e a lista "
+       },
+       {
+        "t": "Vendas > Pedidos de Venda",
+        "marca": "tela"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Antes de abrir os módulos, junte os números. A sessão inteira é de consulta: nenhum botão de avanço é clicado."
+       }
+      ],
+      "passos_total": 4,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fluxo-completo"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "2. Do contato ao pedido",
+      "onde": [
+       {
+        "t": "módulos "
+       },
+       {
+        "t": "CRM",
+        "marca": "codigo"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "Vendas",
+        "marca": "codigo"
+       }
+      ],
+      "intro": [
+       {
+        "t": "O cliente do pedido nasceu como lead. Mostre que é o mesmo cadastro do começo ao fim."
+       }
+      ],
+      "passos_total": 4,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fluxo-completo"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "3. Suprimentos: compra, recebimento e estoque",
+      "onde": [
+       {
+        "t": "módulos "
+       },
+       {
+        "t": "Compras",
+        "marca": "codigo"
+       },
+       {
+        "t": ", "
+       },
+       {
+        "t": "Recebimento",
+        "marca": "codigo"
+       },
+       {
+        "t": ", "
+       },
+       {
+        "t": "Estoque",
+        "marca": "codigo"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "Financeiro",
+        "marca": "codigo"
+       }
+      ],
+      "intro": [
+       {
+        "t": "O material da obra chegou por compra. Siga o caminho do pedido de compra até o saldo e a conta a pagar."
+       }
+      ],
+      "passos_total": 4,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fluxo-completo"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "4. Operação: serviços e produção",
+      "onde": [
+       {
+        "t": "módulos "
+       },
+       {
+        "t": "Serviços",
+        "marca": "codigo"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "Produção",
+        "marca": "codigo"
+       }
+      ],
+      "intro": [
+       {
+        "t": "Para quem mede e fabrica, o pedido de venda vira medição e ordem de produção. Pule o bloco se o cliente não contratou esses módulos."
+       }
+      ],
+      "passos_total": 3,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fluxo-completo"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "5. Nota e entrega",
+      "onde": [
+       {
+        "t": "módulos "
+       },
+       {
+        "t": "Faturamento",
+        "marca": "codigo"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "Expedição",
+        "marca": "codigo"
+       }
+      ],
+      "intro": [
+       {
+        "t": "A nota fecha a venda e libera a entrega. Mostre os dois sinais sem clicar em nenhuma ação."
+       }
+      ],
+      "passos_total": 3,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fluxo-completo"
+      ]
+     },
+     {
+      "tipo": "etapa",
+      "titulo": "6. Resultado: financeiro e obra",
+      "onde": [
+       {
+        "t": "módulos "
+       },
+       {
+        "t": "Financeiro",
+        "marca": "codigo"
+       },
+       {
+        "t": " e "
+       },
+       {
+        "t": "Projetos",
+        "marca": "tela"
+       }
+      ],
+      "intro": [
+       {
+        "t": "O fim do caminho é dinheiro e resultado da obra. Termine aqui e peça ao cliente para refazer o mapa sozinho."
+       }
+      ],
+      "passos_total": 3,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fluxo-completo"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fluxo-completo"
+    ]
    },
    {
     "id": "implantacao",
     "titulo": "Procedimentos de implantação",
-    "status": "em-preparacao",
-    "blocos": [],
-    "fontes": []
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "texto",
+      "rotulo": "Visão do fluxo completo: seguir um pedido por todos os módulos com o cliente",
+      "texto": [
+       {
+        "t": "Ao final, o cliente sabe onde o mesmo pedido aparece em cada módulo (CRM, Vendas, Compras, Recebimento, Estoque, Produção, Serviços, Faturamento, Expedição, Financeiro e Projetos), reconhece a coluna ou o status que prova cada avanço e conhece a ordem que o sistema exige."
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fluxo-completo"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "rotulo": "Blocos do roteiro de implantação",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "1. Montar o mapa do pedido"
+         }
+        ],
+        "nota": [
+         {
+          "t": "4 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fluxo-completo"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "2. Do contato ao pedido"
+         }
+        ],
+        "nota": [
+         {
+          "t": "4 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fluxo-completo"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "3. Suprimentos: compra, recebimento e estoque"
+         }
+        ],
+        "nota": [
+         {
+          "t": "4 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fluxo-completo"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "4. Operação: serviços e produção"
+         }
+        ],
+        "nota": [
+         {
+          "t": "3 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fluxo-completo"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "5. Nota e entrega"
+         }
+        ],
+        "nota": [
+         {
+          "t": "3 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fluxo-completo"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "6. Resultado: financeiro e obra"
+         }
+        ],
+        "nota": [
+         {
+          "t": "3 passos"
+         }
+        ],
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fluxo-completo"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fluxo-completo"
+      ]
+     },
+     {
+      "tipo": "link",
+      "material": "fluxo-completo:checklist-implantacao",
+      "titulo": "Visão do fluxo completo: seguir um pedido por todos os módulos com o cliente",
+      "status": "disponivel",
+      "url": "/checklists/consultores/implantacao-16-fluxo-completo.html",
+      "duracao_s": null,
+      "poster": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fluxo-completo"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fluxo-completo"
+    ]
    },
    {
     "id": "configuracoes",
     "titulo": "Configurações importantes",
-    "status": "em-preparacao",
-    "blocos": [],
-    "fontes": []
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "lista",
+      "rotulo": "Pré-requisitos",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Os roteiros de implantação dos módulos contratados foram feitos e há um pedido de teste “TESTE FLUXO CONSULTOR” que já passou por faturamento e, se o cliente usa, por expedição."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " na lista de Pedidos de Venda, com o Status em “Todos”, o pedido de teste com a coluna NOTA FISCAL preenchida. "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " trilha do estagiário 15, pré-requisitos."
+         }
+        ],
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fluxo-completo"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Os números dos documentos anotados nos roteiros anteriores estão à mão: lead, pedido de venda, pedido de compra, nota de recebimento, OP, medição, obra, carga, nota e títulos."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " os campos de registro preenchidos nos checklists de cada módulo. "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " trilha do estagiário 15, bloco 1."
+         }
+        ],
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fluxo-completo"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Ambiente de teste ou homologação, com o usuário do cliente e o consultor logados."
+         }
+        ],
+        "nota": [
+         {
+          "t": "Confira:",
+          "marca": "negrito"
+         },
+         {
+          "t": " o selo da empresa no topo. "
+         },
+         {
+          "t": "Fonte:",
+          "marca": "negrito"
+         },
+         {
+          "t": " roteiro de Primeiros passos, bloco 1."
+         }
+        ],
+        "selo": "conferido-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fluxo-completo"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fluxo-completo"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fluxo-completo"
+    ]
    },
    {
     "id": "validacoes",
     "titulo": "Validações funcionais",
-    "status": "em-preparacao",
-    "blocos": [],
-    "fontes": []
+    "status": "disponivel",
+    "blocos": [
+     {
+      "tipo": "lista",
+      "rotulo": "Resultado esperado",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "O cliente mostra, com as telas abertas, onde o pedido de teste aparece em cada módulo contratado."
+         }
+        ],
+        "nota": null,
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fluxo-completo"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "O cliente reconhece os sinais de avanço: coluna PROJETO, TÍTULOS e NOTA FISCAL do pedido, nota de recebimento, movimentos da OP, carga e títulos."
+         }
+        ],
+        "nota": null,
+        "selo": "conferido-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fluxo-completo"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "O cliente conhece a ordem que o sistema exige e sabe que pular uma etapa trava a seguinte."
+         }
+        ],
+        "nota": null,
+        "selo": "documento",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fluxo-completo"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fluxo-completo"
+      ]
+     }
+    ],
+    "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fluxo-completo"
+    ]
    },
    {
     "id": "integracoes",
@@ -593,6 +1051,63 @@
     "titulo": "Problemas recorrentes",
     "status": "disponivel",
     "blocos": [
+     {
+      "tipo": "lista",
+      "rotulo": "Atenção",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Sessão só de consulta: nenhum botão de avanço (Faturar, Liberar, Finalizar, Baixar) deve ser clicado."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fluxo-completo"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Só em ambiente de teste ou homologação, com registros “TESTE FLUXO CONSULTOR”."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fluxo-completo"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "A ordem pedido → medição → OP → faturar → liberar para expedição → carga → entrega → títulos foi a exigida no teste de 19/10/2026; confirme se o cliente usa a mesma sequência."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fluxo-completo"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Pule os blocos dos módulos que o cliente não contratou."
+         }
+        ],
+        "nota": null,
+        "selo": null,
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fluxo-completo"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fluxo-completo"
+      ]
+     },
      {
       "tipo": "lista",
       "rotulo": "Cuidados (vídeo)",
@@ -637,9 +1152,43 @@
       "fontes": [
        "guia:videos/roteiros/consultor-fluxo-completo.json#15"
       ]
+     },
+     {
+      "tipo": "lista",
+      "rotulo": "A conferir na tela",
+      "itens": [
+       {
+        "texto": [
+         {
+          "t": "Baixa de título e resultado no painel da obra ainda não foram conferidos no teste de ponta a ponta."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fluxo-completo"
+        ]
+       },
+       {
+        "texto": [
+         {
+          "t": "Conta a pagar gerada pelo recebimento: conferir na tela o título com o fornecedor antes de mostrar ao cliente."
+         }
+        ],
+        "nota": null,
+        "selo": "a-conferir-na-tela",
+        "fontes": [
+         "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fluxo-completo"
+        ]
+       }
+      ],
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fluxo-completo"
+      ]
      }
     ],
     "fontes": [
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fluxo-completo",
      "guia:videos/roteiros/consultor-fluxo-completo.json#15"
     ]
    },
@@ -693,6 +1242,19 @@
      },
      {
       "tipo": "link",
+      "material": "fluxo-completo:checklist-implantacao",
+      "titulo": "Visão do fluxo completo: seguir um pedido por todos os módulos com o cliente",
+      "status": "disponivel",
+      "url": "/checklists/consultores/implantacao-16-fluxo-completo.html",
+      "duracao_s": null,
+      "poster": null,
+      "resumo": null,
+      "fontes": [
+       "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fluxo-completo"
+      ]
+     },
+     {
+      "tipo": "link",
       "titulo": "Apostila do Consultor (PDF)",
       "url": "/downloads/Apostila-do-Consultor-Faktory-Flow.pdf",
       "visibilidade": "area:apostila",
@@ -703,6 +1265,7 @@
     ],
     "fontes": [
      "guia:scripts/dados-checklists-estagiarios.mjs#fluxo",
+     "guia:scripts/dados-checklists-implantacao.mjs#implantacao-fluxo-completo",
      "guia:public/downloads/Apostila-do-Consultor-Faktory-Flow.pdf"
     ]
    }

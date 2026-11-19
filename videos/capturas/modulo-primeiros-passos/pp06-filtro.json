@@ -1,0 +1,46 @@
+{
+ "nome": "pp06-filtro",
+ "url": "https://staging.flow.faktory.com.br/vendas/pedidos",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "Status",
+    "exact": true,
+    "nth": 0
+   },
+   "caixa": {
+    "x": 1354,
+    "y": 555,
+    "w": 475,
+    "h": 19
+   }
+  },
+  {
+   "alvo": {
+    "text": "Todos",
+    "exact": true,
+    "nth": 0
+   },
+   "caixa": {
+    "x": 1370,
+    "y": 589,
+    "w": 49,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "css": "tbody tr:nth-child(3) td:nth-child(7)"
+   },
+   "caixa": {
+    "x": 1359,
+    "y": 846,
+    "w": 131,
+    "h": 70
+   }
+  }
+ ],
+ "em": "2026-11-17T17:08:56.518Z"
+}

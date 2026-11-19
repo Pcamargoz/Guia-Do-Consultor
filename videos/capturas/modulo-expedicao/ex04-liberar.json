@@ -1,0 +1,45 @@
+{
+ "nome": "ex04-liberar",
+ "url": "https://staging.flow.faktory.com.br/vendas/pedidos",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "css": "tbody tr:first-child td:nth-child(7)"
+   },
+   "caixa": {
+    "x": 1368,
+    "y": 711,
+    "w": 122,
+    "h": 71
+   }
+  },
+  {
+   "alvo": {
+    "role": "menuitem",
+    "name": "Liberar para Expedição"
+   },
+   "caixa": {
+    "x": 1553,
+    "y": 435,
+    "w": 257,
+    "h": 38
+   }
+  },
+  {
+   "alvo": {
+    "role": "menuitem",
+    "name": "Já faturado",
+    "exact": false
+   },
+   "caixa": {
+    "x": 1553,
+    "y": 474,
+    "w": 257,
+    "h": 78
+   }
+  }
+ ],
+ "em": "2026-11-17T16:33:49.579Z"
+}

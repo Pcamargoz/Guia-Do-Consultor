@@ -1,0 +1,58 @@
+{
+ "nome": "pp03-menu-lateral",
+ "url": "https://staging.flow.faktory.com.br/vendas/pedidos",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "Módulo",
+    "exact": true
+   },
+   "caixa": {
+    "x": 65,
+    "y": 113,
+    "w": 204,
+    "h": 12
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Configurações",
+    "nth": 0
+   },
+   "caixa": {
+    "x": 19,
+    "y": 932,
+    "w": 256,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Relatórios"
+   },
+   "caixa": {
+    "x": 19,
+    "y": 653,
+    "w": 256,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Recolher menu"
+   },
+   "caixa": {
+    "x": 254,
+    "y": 26,
+    "w": 34,
+    "h": 34
+   }
+  }
+ ],
+ "em": "2026-11-17T17:07:43.848Z"
+}

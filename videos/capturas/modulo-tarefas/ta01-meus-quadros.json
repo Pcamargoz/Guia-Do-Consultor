@@ -1,0 +1,45 @@
+{
+ "nome": "ta01-meus-quadros",
+ "url": "https://staging.flow.faktory.com.br/tarefas",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "heading",
+    "name": "Meus Quadros"
+   },
+   "caixa": {
+    "x": 442,
+    "y": 144,
+    "w": 352,
+    "h": 38
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Novo Quadro"
+   },
+   "caixa": {
+    "x": 1687,
+    "y": 155,
+    "w": 163,
+    "h": 43
+   }
+  },
+  {
+   "alvo": {
+    "text": "Padrão",
+    "exact": true
+   },
+   "caixa": {
+    "x": 624,
+    "y": 528,
+    "w": 73,
+    "h": 23
+   }
+  }
+ ],
+ "em": "2026-11-17T17:01:44.972Z"
+}

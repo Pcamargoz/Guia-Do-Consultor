@@ -1,0 +1,753 @@
+{
+ "id": "modulo-tarefas",
+ "titulo": "Tarefas",
+ "subtitulo": "O módulo completo: do quadro ao cartão concluído",
+ "trilha": "Metodologia do Consultor · vídeo completo do módulo",
+ "proximo": "Visão do fluxo completo",
+ "icone": "tarefa",
+ "semVoz": true,
+ "focoMin": 2.6,
+ "fontes": [
+  "guia:scripts/dados-checklists-implantacao.mjs#implantacao-tarefas",
+  "guia:public/manuais/tarefas/guia.json",
+  "harness:funcional-tarefas-quadros-listas-e-cartoes",
+  "harness:procedimento-criar-quadro-e-cartao-em-tarefas",
+  "harness:regra-tarefas-cartao-so-aparece-em-minhas-tarefas-com-responsavel"
+ ],
+ "trechos": [
+  {
+   "id": "01",
+   "cena": "abertura",
+   "fala": "Tarefas organiza o trabalho da equipe em quadros, listas e cartões. Neste vídeo: criar o quadro, distribuir o cartão, acompanhar em Minhas Tarefas e no Dashboard, colaborar e arquivar.",
+   "inicio": 0,
+   "duracao": 17.471,
+   "fala_s": 16.571,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "02",
+   "cena": "status",
+   "etapas": [
+    "Pendente",
+    "Em andamento",
+    "Concluída"
+   ],
+   "destaque": 0,
+   "fala": "O cartão nasce Pendente, com prioridade Média e sem responsável. Assim, ele ainda não chega a ninguém.",
+   "inicio": 17.471,
+   "duracao": 10.614,
+   "fala_s": 9.714,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "03",
+   "cena": "status",
+   "etapas": [
+    "Pendente",
+    "Em andamento",
+    "Concluída"
+   ],
+   "destaque": 1,
+   "fala": "Com responsável, o trabalho anda: Em andamento até Concluída. Minhas Tarefas conta Em andamento, Atrasadas, Urgentes e Concluídas.",
+   "inicio": 28.085,
+   "duracao": 11.186,
+   "fala_s": 10.286,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "04",
+   "cena": "regra",
+   "n": 1,
+   "titulo": "O quadro nasce sem listas",
+   "icone": "tarefa",
+   "texto": "Novo Quadro pede Nome do Quadro e Tipo. As listas se criam em + Adicionar lista, e o cartão em + Adicionar tarefa.",
+   "fonte": "regra-tarefas-cartao-so-aparece-em-minhas-tarefas-com-responsavel",
+   "fala": "Regra 1. O quadro novo nasce vazio. Primeiro crie as listas, as colunas do trabalho. Sem lista, não há onde criar o cartão.",
+   "inicio": 39.271,
+   "duracao": 14.043,
+   "fala_s": 13.143,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "05",
+   "cena": "regra",
+   "n": 2,
+   "titulo": "Cartão nasce Pendente e Média",
+   "icone": "tag",
+   "texto": "O cartão criado em + Adicionar tarefa nasce Pendente, prioridade Média e sem responsável.",
+   "fonte": "regra-tarefas-cartao-so-aparece-em-minhas-tarefas-com-responsavel",
+   "fala": "Regra 2. Todo cartão novo nasce Pendente, com prioridade Média e sem responsável. Abra o cartão e complete o que falta.",
+   "inicio": 53.314,
+   "duracao": 12.9,
+   "fala_s": 12,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "06",
+   "cena": "regra",
+   "n": 3,
+   "titulo": "Sem responsável, ninguém vê",
+   "icone": "alerta",
+   "texto": "O cartão só aparece em Minhas Tarefas depois de + Adicionar responsável.",
+   "fonte": "regra-tarefas-cartao-so-aparece-em-minhas-tarefas-com-responsavel",
+   "critica": true,
+   "fala": "Regra 3. O cartão só aparece em Minhas Tarefas depois de Adicionar responsável. Esquecer o responsável é o erro mais comum da implantação.",
+   "inicio": 66.214,
+   "duracao": 14.043,
+   "fala_s": 13.143,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "07",
+   "cena": "regra",
+   "n": 4,
+   "titulo": "O prazo é o Término Previsto",
+   "icone": "lapis",
+   "texto": "Não existe campo Prazo: o prazo do cartão é o Término Previsto. Sem ele, o cartão nunca fica atrasado.",
+   "fonte": "regra-tarefas-cartao-so-aparece-em-minhas-tarefas-com-responsavel",
+   "fala": "Regra 4. Não procure o campo Prazo: o prazo é o Término Previsto. Sem ele, o cartão nunca aparece como atrasado.",
+   "inicio": 80.257,
+   "duracao": 12.9,
+   "fala_s": 12,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "08",
+   "cena": "regra",
+   "n": 5,
+   "titulo": "A conversa fica no cartão",
+   "icone": "check",
+   "texto": "Aba Comentários com Comentar; aba Checklists com + Nova checklist e + Novo item. Mover pelo ícone Mover para outra lista.",
+   "fonte": "funcional-tarefas-quadros-listas-e-cartoes",
+   "fala": "Regra 5. Combine tudo dentro do cartão: Comentários para a conversa, Checklists para os passos. O cartão muda de lista pelo ícone Mover para outra lista.",
+   "inicio": 93.157,
+   "duracao": 15.757,
+   "fala_s": 14.857,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "09",
+   "cena": "regra",
+   "n": 6,
+   "titulo": "Arquivar não apaga",
+   "icone": "aberto",
+   "texto": "O cartão arquivado sai do quadro e vai para Tarefas › Arquivadas, de onde volta por Restaurar.",
+   "fonte": "procedimento-criar-quadro-e-cartao-em-tarefas",
+   "fala": "Regra 6. Arquivar tira o cartão do quadro, mas não apaga. Ele fica em Arquivadas e volta com Restaurar.",
+   "inicio": 108.914,
+   "duracao": 11.757,
+   "fala_s": 10.857,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "10",
+   "cena": "tela",
+   "captura": "ta01-meus-quadros",
+   "titulo": "Meus Quadros",
+   "rotulo": "Tarefas › Meus Quadros",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "Meus Quadros",
+    "Novo Quadro",
+    "PADRÃO"
+   ],
+   "impacto": 1,
+   "fala": "Abra Tarefas pelo menu de módulos ou pelo Ctrl+K. Em Meus Quadros ficam os seus quadros. Tarefas Gerais, com selo PADRÃO, recebe as tarefas avulsas.",
+   "plano": {
+    "menu": "Tarefas › Meus Quadros",
+    "mostrar": "Meus Quadros com o resumo no alto, o quadro Tarefas Gerais (selo PADRÃO) e um quadro de teste do tipo Avulso.",
+    "alvos": [
+     "título Meus Quadros",
+     "botão Novo Quadro",
+     "selo PADRÃO do quadro Tarefas Gerais"
+    ],
+    "acoes": [
+     "abrir Tarefas pela grade do menu de módulos",
+     "clicar em Meus Quadros"
+    ]
+   },
+   "inicio": 120.671,
+   "duracao": 15.186,
+   "fala_s": 14.286,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-tarefas/ta01-meus-quadros.png",
+   "caixas": [
+    {
+     "x": 442,
+     "y": 144,
+     "w": 352,
+     "h": 38
+    },
+    {
+     "x": 1687,
+     "y": 155,
+     "w": 163,
+     "h": 43
+    },
+    {
+     "x": 624,
+     "y": 528,
+     "w": 73,
+     "h": 23
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "11",
+   "cena": "tela",
+   "captura": "ta02-novo-quadro",
+   "titulo": "Novo Quadro",
+   "rotulo": "Meus Quadros › Novo Quadro",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "Nome do Quadro",
+    "Tipo",
+    "Criar Quadro"
+   ],
+   "impacto": 0,
+   "fala": "Novo Quadro pede só o Nome do Quadro e o Tipo, como Avulso. Um quadro por equipe ou por obra. Depois, Criar Quadro.",
+   "plano": {
+    "menu": "Tarefas › Meus Quadros",
+    "mostrar": "Diálogo Novo Quadro aberto, com os campos vazios.",
+    "alvos": [
+     "campo Nome do Quadro",
+     "campo Tipo",
+     "botão Criar Quadro"
+    ],
+    "acoes": [
+     "clicar em Novo Quadro",
+     "não preencher nem clicar em Criar Quadro; fechar por Cancelar ou X"
+    ]
+   },
+   "inicio": 135.857,
+   "duracao": 14.043,
+   "fala_s": 13.143,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-tarefas/ta02-novo-quadro.png",
+   "caixas": [
+    {
+     "x": 721,
+     "y": 486,
+     "w": 478,
+     "h": 55
+    },
+    {
+     "x": 721,
+     "y": 565,
+     "w": 36,
+     "h": 20
+    },
+    {
+     "x": 1057,
+     "y": 696,
+     "w": 141,
+     "h": 48
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "12",
+   "cena": "tela",
+   "captura": "ta03-quadro",
+   "titulo": "Listas e cartões",
+   "rotulo": "Quadro · Kanban",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "+ Adicionar lista",
+    "EM ANDAMENTO 1",
+    "+ Adicionar tarefa"
+   ],
+   "impacto": 2,
+   "fala": "Dentro do quadro, cada lista é uma coluna, como A FAZER e CONCLUÍDO. Crie as listas em + Adicionar lista. Em cada lista, + Adicionar tarefa cria o cartão.",
+   "plano": {
+    "menu": "Tarefas › Tarefas Avulsas (ou Meus Quadros › quadro de teste)",
+    "mostrar": "Quadro em Kanban com as listas e o contador de cartões de cada uma, o botão + Adicionar lista à direita e + Adicionar tarefa no pé de uma lista.",
+    "alvos": [
+     "botão + Adicionar lista",
+     "cabeçalho de uma lista com o contador",
+     "botão + Adicionar tarefa"
+    ],
+    "acoes": [
+     "abrir o quadro pelo nome",
+     "não clicar nos botões de adicionar"
+    ]
+   },
+   "inicio": 149.9,
+   "duracao": 17.471,
+   "fala_s": 16.571,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-tarefas/ta03-quadro.png",
+   "caixas": [
+    {
+     "x": 1502,
+     "y": 304,
+     "w": 360,
+     "h": 67
+    },
+    {
+     "x": 734,
+     "y": 304,
+     "w": 360,
+     "h": 60
+    },
+    {
+     "x": 365,
+     "y": 364,
+     "w": 331,
+     "h": 144
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "13",
+   "cena": "tela",
+   "captura": "ta04-cartao",
+   "titulo": "Prazo e responsável",
+   "rotulo": "Quadro › cartão",
+   "focos": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "nomes": [
+    "Pendente",
+    "Prioridade",
+    "Término Previsto",
+    "+ Adicionar responsável"
+   ],
+   "impacto": 3,
+   "fala": "Abra o cartão. Defina a Prioridade e o Término Previsto, com data e hora. Em Responsáveis, clique em + Adicionar responsável e escolha a pessoa. Tudo salva sozinho.",
+   "plano": {
+    "menu": "Tarefas › Meus Quadros › quadro de teste",
+    "mostrar": "Detalhe de um cartão de teste Pendente, ainda com Nenhum responsável, mostrando Status, Prioridade, Término Previsto e Responsáveis.",
+    "alvos": [
+     "campo Status com Pendente",
+     "campo Prioridade",
+     "campo Término Previsto",
+     "botão + Adicionar responsável"
+    ],
+    "acoes": [
+     "clicar no cartão de teste para abrir o detalhe",
+     "não alterar nenhum campo (o cartão salva sozinho)"
+    ]
+   },
+   "inicio": 167.371,
+   "duracao": 16.9,
+   "fala_s": 16,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-tarefas/ta04-cartao.png",
+   "caixas": [
+    {
+     "x": 860,
+     "y": 122,
+     "w": 250,
+     "h": 36
+    },
+    {
+     "x": 860,
+     "y": 182,
+     "w": 250,
+     "h": 20
+    },
+    {
+     "x": 860,
+     "y": 353,
+     "w": 250,
+     "h": 20
+    },
+    {
+     "x": 860,
+     "y": 1015,
+     "w": 143,
+     "h": 18
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "14",
+   "cena": "tela",
+   "captura": "ta05-minhas-tarefas",
+   "titulo": "Minhas Tarefas",
+   "rotulo": "Tarefas › Minhas Tarefas",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "Minhas Tarefas",
+    "Status",
+    "Nenhuma tarefa atribuída a você"
+   ],
+   "impacto": 2,
+   "fala": "Minhas Tarefas mostra só o que foi atribuído a quem está logado. Filtre por Status e Prioridade e veja em Cards ou Lista. Sem nada atribuído, aparece Nenhuma tarefa atribuída a você.",
+   "plano": {
+    "menu": "Tarefas › Minhas Tarefas",
+    "mostrar": "Minhas Tarefas do usuário que é responsável por um cartão de teste, com os indicadores no alto e o cartão no grupo Pendente.",
+    "alvos": [
+     "título Minhas Tarefas",
+     "indicador Atrasadas",
+     "cartão atribuído"
+    ],
+    "acoes": [
+     "entrar com o usuário responsável pelo cartão de teste"
+    ]
+   },
+   "inicio": 184.271,
+   "duracao": 19.186,
+   "fala_s": 18.286,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-tarefas/ta05-minhas-tarefas.png",
+   "caixas": [
+    {
+     "x": 422,
+     "y": 144,
+     "w": 180,
+     "h": 34
+    },
+    {
+     "x": 966,
+     "y": 241,
+     "w": 89,
+     "h": 29
+    },
+    {
+     "x": 355,
+     "y": 511,
+     "w": 1505,
+     "h": 34
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "15",
+   "cena": "tela",
+   "captura": "ta06-dashboard",
+   "titulo": "Dashboard de Tarefas",
+   "rotulo": "Tarefas › Dashboard",
+   "focos": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "nomes": [
+    "Tarefas Atrasadas",
+    "Vencem em 7 dias",
+    "Carga por Responsável",
+    "Exportar"
+   ],
+   "impacto": 0,
+   "fala": "O gestor acompanha no Dashboard: escolha o quadro e o período. Tarefas Atrasadas e Vencem em 7 dias mostram o que precisa de atenção. Carga por Responsável mostra quem está sobrecarregado.",
+   "plano": {
+    "menu": "Tarefas › Dashboard",
+    "mostrar": "Dashboard filtrado pelo quadro de teste, com os cartões de prazo e o gráfico Carga por Responsável.",
+    "alvos": [
+     "cartão Tarefas Atrasadas",
+     "cartão Vencem em 7 dias",
+     "gráfico Carga por Responsável",
+     "botão Exportar"
+    ],
+    "acoes": [
+     "escolher o quadro de teste no filtro do alto",
+     "não clicar em Exportar"
+    ]
+   },
+   "inicio": 203.457,
+   "duracao": 18.614,
+   "fala_s": 17.714,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-tarefas/ta06-dashboard.png",
+   "caixas": [
+    {
+     "x": 433,
+     "y": 236,
+     "w": 263,
+     "h": 19
+    },
+    {
+     "x": 814,
+     "y": 236,
+     "w": 263,
+     "h": 19
+    },
+    {
+     "x": 1138,
+     "y": 769,
+     "w": 702,
+     "h": 24
+    },
+    {
+     "x": 1731,
+     "y": 144,
+     "w": 129,
+     "h": 43
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "16",
+   "cena": "tela",
+   "captura": "ta07-cartao-abas",
+   "titulo": "Trabalhar dentro do cartão",
+   "rotulo": "Cartão › Comentários",
+   "focos": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "nomes": [
+    "Arquivar",
+    "Comentários",
+    "Checklists",
+    "Histórico"
+   ],
+   "impacto": 1,
+   "fala": "No cabeçalho do cartão ficam Seguir, Duplicar e Arquivar. Abaixo, as abas: Comentários, com @ para mencionar; Checklists para os passos; e Histórico com cada mudança. No quadro, o ícone Mover leva o cartão a outra lista.",
+   "plano": {
+    "menu": "Tarefas › Meus Quadros › quadro de teste › cartão",
+    "mostrar": "Mesmo cartão, com a aba Comentários selecionada (caixa de comentário e botão Comentar visíveis) e o ícone Mover para outra lista no cabeçalho.",
+    "alvos": [
+     "ícone Mover para outra lista no cabeçalho",
+     "aba Comentários",
+     "aba Checklists",
+     "aba Histórico"
+    ],
+    "acoes": [
+     "clicar na aba Comentários",
+     "não escrever nem clicar em Comentar; não mover o cartão"
+    ]
+   },
+   "inicio": 222.071,
+   "duracao": 22.043,
+   "fala_s": 21.143,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-tarefas/ta07-cartao-abas.png",
+   "caixas": [
+    {
+     "x": 1771,
+     "y": 19,
+     "w": 38,
+     "h": 38
+    },
+    {
+     "x": 1172,
+     "y": 313,
+     "w": 141,
+     "h": 41
+    },
+    {
+     "x": 1313,
+     "y": 313,
+     "w": 124,
+     "h": 41
+    },
+    {
+     "x": 1787,
+     "y": 313,
+     "w": 114,
+     "h": 41
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "17",
+   "cena": "tela",
+   "captura": "ta08-visoes",
+   "titulo": "O mesmo quadro, outras visões",
+   "rotulo": "Quadro · Gantt",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "Tabela",
+    "Calendário",
+    "Gantt"
+   ],
+   "impacto": 2,
+   "fala": "O mesmo quadro pode ser visto em Kanban, Lista, Tabela, Calendário e Gantt. É a mesma informação em formatos diferentes. O Gantt usa as datas de início e término do cartão: sem elas, fica vazio.",
+   "plano": {
+    "menu": "Tarefas › Meus Quadros › quadro de teste",
+    "mostrar": "Quadro na visão Gantt, com os botões de visão Kanban, Lista, Tabela, Calendário e Gantt visíveis.",
+    "alvos": [
+     "botão de visão Tabela",
+     "botão de visão Calendário",
+     "botão de visão Gantt"
+    ],
+    "acoes": [
+     "clicar na visão Gantt"
+    ]
+   },
+   "inicio": 244.114,
+   "duracao": 20.9,
+   "fala_s": 20,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-tarefas/ta08-visoes.png",
+   "caixas": [
+    {
+     "x": 1301,
+     "y": 134,
+     "w": 98,
+     "h": 34
+    },
+    {
+     "x": 1400,
+     "y": 134,
+     "w": 127,
+     "h": 34
+    },
+    {
+     "x": 1527,
+     "y": 134,
+     "w": 90,
+     "h": 34
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "18",
+   "cena": "tela",
+   "captura": "ta09-arquivadas",
+   "titulo": "Arquivadas",
+   "rotulo": "Tarefas › Arquivadas",
+   "focos": [
+    0,
+    1,
+    2
+   ],
+   "nomes": [
+    "Tarefas Arquivadas",
+    "Filtrar por quadro",
+    "Restaurar"
+   ],
+   "impacto": 2,
+   "fala": "O cartão arquivado sai do quadro e de Minhas Tarefas e vem para Tarefas Arquivadas. Filtre pelo quadro. Cada linha tem o botão Restaurar, que devolve o cartão ao quadro.",
+   "plano": {
+    "menu": "Tarefas › Arquivadas",
+    "mostrar": "Lista de cartões arquivados com o título, a data e hora do arquivamento e o botão Restaurar.",
+    "alvos": [
+     "título Arquivadas",
+     "data e hora de um cartão arquivado",
+     "botão Restaurar"
+    ],
+    "acoes": [
+     "não clicar em Restaurar"
+    ]
+   },
+   "inicio": 265.014,
+   "duracao": 18.043,
+   "fala_s": 17.143,
+   "audio": null,
+   "legendas": null,
+   "imagem": "telas/modulo-tarefas/ta09-arquivadas.png",
+   "caixas": [
+    {
+     "x": 422,
+     "y": 144,
+     "w": 228,
+     "h": 34
+    },
+    {
+     "x": 355,
+     "y": 216,
+     "w": 269,
+     "h": 48
+    },
+    {
+     "x": 877,
+     "y": 594,
+     "w": 461,
+     "h": 48
+    }
+   ],
+   "focoMin": 2.6
+  },
+  {
+   "id": "19",
+   "cena": "alertas",
+   "itens": [
+    "Cartão sem responsável não aparece em Minhas Tarefas.",
+    "Sem Término Previsto, o cartão nunca fica atrasado.",
+    "Mover, comentar e mencionar avisam os responsáveis."
+   ],
+   "fala": "Três cuidados. Sem responsável, o cartão não chega a ninguém. Sem Término Previsto, ele nunca atrasa. E mover, comentar ou mencionar avisa os responsáveis: no teste, só usuários de teste.",
+   "inicio": 283.057,
+   "duracao": 18.043,
+   "fala_s": 17.143,
+   "audio": null,
+   "legendas": null
+  },
+  {
+   "id": "20",
+   "cena": "fechamento",
+   "topicos": [
+    "Quadro, listas, cartão",
+    "Responsável e Término Previsto",
+    "Arquivar não apaga"
+   ],
+   "fala": "Resumindo: quadro, depois listas, depois cartão. Todo cartão com responsável e Término Previsto. E arquivar não apaga: Restaurar traz de volta. O checklist e o manual de Tarefas estão logo abaixo.",
+   "inicio": 301.1,
+   "duracao": 18.614,
+   "fala_s": 17.714,
+   "audio": null,
+   "legendas": null
+  }
+ ],
+ "pendencias": [
+  "naoValidado: nomes de status do cartão. Só Pendente está confirmado (regra); Em andamento e Concluídas aparecem nos indicadores de Minhas Tarefas. O fluxo antigo cita também Em revisão e Cancelada. Conferir no detalhe da tarefa os status reais antes de renderizar as cenas 02 e 03.",
+  "Captura somente leitura: criar quadro, listas e cartão, adicionar responsável, comentar, mencionar, anexar, mover, concluir, arquivar e restaurar não foram executados. ta02 mostra o diálogo Novo Quadro vazio; ta04 e ta07 usam um cartão de teste já existente, sem alterar campos (o cartão salva sozinho, cuidado ao clicar).",
+  "Para ta04 precisa existir um cartão de teste Pendente e sem responsável; para ta05, um cartão de teste já atribuído ao usuário de gravação. Se não houver, a tela fica vazia ('Nenhuma tarefa atribuída a você') e é preciso criar os dois com autorização.",
+  "naoValidado: limite de trabalho (WIP), dependências e subtarefas, cancelamento, anexos acima de 10 MB, arquivar o quadro e o Vincular do cartão a pedido ou obra vêm só do fluxo antigo e não viraram regra nem tela.",
+  "naoValidado: quadro padrão. No staging v1.23.2 existe Tarefas Gerais (PADRÃO, com A FAZER, EM ANDAMENTO e CONCLUÍDO); o procedimento diz que numa conta nova aparece 'Nenhum quadro ainda'. ta01 mostra o que existe no staging, sem afirmar que nasce assim.",
+  "naoValidado: criar o cartão por + Adicionar tarefa (procedimento) × o + da coluna e Adicionar (manual-12). O plano usa + Adicionar tarefa, visto na captura do staging.",
+  "O ícone Arquivar do cabeçalho do cartão não está identificado com certeza (pendência do manual): ficou fora do foco de ta07. Conferir o tooltip.",
+  "Tarefas › Todas as Tarefas aparece no menu, sem fonte de uso: ficou fora do vídeo.",
+  "'proximo' aponta para Visão do fluxo completo, porque Relatórios e Análises está em preparação no mapa de módulos. Confirmar.",
+  "Gravação 17/11/2026 (staging v1.23.6): o Ctrl+K agora encontra Tarefas (Minhas Tarefas, Tarefas Avulsas, Arquivadas…): a fala de ta01 foi ajustada.",
+  "ta04 e ta07 usam o único cartão do staging ('aaaa', Tarefas Gerais, lista Em Andamento, status Pendente, sem responsável). O detalhe do cartão não tem ícone 'Mover para outra lista' no cabeçalho (só Seguir, Duplicar, Tornar recorrente, Arquivar e Excluir): o mover fica no cartão do Kanban; ta07 foca Arquivar.",
+  "ta05 (Minhas Tarefas) está vazia e sem os indicadores Em andamento/Atrasadas/Urgentes/Concluídas: nenhuma tarefa atribuída ao usuário de gravação. Regravar com um cartão de teste atribuído (precisa de autorização para atribuir).",
+  "ta06 (Dashboard) e ta08 (Gantt) sem dados: Sem dados em Carga por Responsável e 'Nenhuma tarefa com datas' no Gantt. ta09 (Arquivadas) vazia: o botão Restaurar só aparece citado no texto da lista vazia."
+ ],
+ "duracaoTotal": 321.214
+}

@@ -1,0 +1,34 @@
+{
+ "nome": "fc02-pipeline",
+ "url": "https://staging.flow.faktory.com.br/crm/pipeline",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "text": "Novo Lead",
+    "exact": true
+   },
+   "caixa": {
+    "x": 387,
+    "y": 318,
+    "w": 86,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "text": "R$ 50.000,00",
+    "exact": true,
+    "nth": 0
+   },
+   "caixa": {
+    "x": 379,
+    "y": 719,
+    "w": 260,
+    "h": 24
+   }
+  }
+ ],
+ "em": "2026-11-17T17:13:14.314Z"
+}

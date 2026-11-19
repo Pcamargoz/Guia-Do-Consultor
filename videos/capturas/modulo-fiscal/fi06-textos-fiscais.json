@@ -1,0 +1,33 @@
+{
+ "nome": "fi06-textos-fiscais",
+ "url": "https://staging.flow.faktory.com.br/configuracoes/textos-fiscais",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "heading",
+    "name": "Textos Fiscais"
+   },
+   "caixa": {
+    "x": 452,
+    "y": 160,
+    "w": 156,
+    "h": 34
+   }
+  },
+  {
+   "alvo": {
+    "css": "tbody tr",
+    "nth": 0
+   },
+   "caixa": {
+    "x": 367,
+    "y": 401,
+    "w": 1493,
+    "h": 64
+   }
+  }
+ ],
+ "em": "2026-11-17T16:40:30.784Z"
+}

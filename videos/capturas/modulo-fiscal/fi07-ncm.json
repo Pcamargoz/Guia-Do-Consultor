@@ -1,0 +1,45 @@
+{
+ "nome": "fi07-ncm",
+ "url": "https://staging.flow.faktory.com.br/cadastros/ncm",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "heading",
+    "name": "Editar NCM 73089010"
+   },
+   "caixa": {
+    "x": 1021,
+    "y": 29,
+    "w": 195,
+    "h": 29
+   }
+  },
+  {
+   "alvo": {
+    "text": "CST PIS Saída",
+    "exact": true
+   },
+   "caixa": {
+    "x": 1441,
+    "y": 511,
+    "w": 114,
+    "h": 24
+   }
+  },
+  {
+   "alvo": {
+    "text": "CST COFINS Saída",
+    "exact": true
+   },
+   "caixa": {
+    "x": 1441,
+    "y": 850,
+    "w": 151,
+    "h": 24
+   }
+  }
+ ],
+ "em": "2026-11-17T16:41:19.029Z"
+}

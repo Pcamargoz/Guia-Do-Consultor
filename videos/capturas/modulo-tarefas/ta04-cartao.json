@@ -1,0 +1,58 @@
+{
+ "nome": "ta04-cartao",
+ "url": "https://staging.flow.faktory.com.br/tarefas/46",
+ "largura": 1920,
+ "altura": 1080,
+ "caixas": [
+  {
+   "alvo": {
+    "role": "combobox",
+    "nth": 0
+   },
+   "caixa": {
+    "x": 860,
+    "y": 122,
+    "w": 250,
+    "h": 36
+   }
+  },
+  {
+   "alvo": {
+    "text": "Prioridade",
+    "exact": true,
+    "nth": 0
+   },
+   "caixa": {
+    "x": 860,
+    "y": 182,
+    "w": 250,
+    "h": 20
+   }
+  },
+  {
+   "alvo": {
+    "text": "Término previsto",
+    "exact": true
+   },
+   "caixa": {
+    "x": 860,
+    "y": 353,
+    "w": 250,
+    "h": 20
+   }
+  },
+  {
+   "alvo": {
+    "role": "button",
+    "name": "Adicionar responsável"
+   },
+   "caixa": {
+    "x": 860,
+    "y": 1015,
+    "w": 143,
+    "h": 18
+   }
+  }
+ ],
+ "em": "2026-11-17T17:02:49.738Z"
+}

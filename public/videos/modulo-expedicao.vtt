@@ -1,0 +1,241 @@
+WEBVTT
+
+00:00:01.100 --> 00:00:05.794
+A Expedição leva o pedido faturado até o cliente.
+
+00:00:05.794 --> 00:00:06.943
+Neste vídeo:
+
+00:00:06.943 --> 00:00:12.882
+cadastros da frota, liberar o pedido, montar e fechar a carga,
+
+00:00:12.882 --> 00:00:18.271
+checkpoints do pátio, rota, entrega e ocorrências.
+
+00:00:18.571 --> 00:00:21.114
+A carga nasce Em Montagem:
+
+00:00:21.114 --> 00:00:25.124
+ainda recebe pedidos e pode ser ajustada.
+
+00:00:25.124 --> 00:00:30.028
+Fechar Carga libera os checkpoints do pátio.
+
+00:00:30.328 --> 00:00:36.723
+Fechada, a carga passa por Separação, Conferência e Carregamento.
+
+00:00:36.723 --> 00:00:39.970
+Iniciar Rota a leva para Em Rota,
+
+00:00:39.970 --> 00:00:45.785
+e a confirmação de entrega fecha o ciclo em Entregue.
+
+00:00:46.085 --> 00:00:46.985
+Regra 1.
+
+00:00:46.985 --> 00:00:50.922
+A ordem é faturar e depois liberar.
+
+00:00:50.922 --> 00:00:55.759
+O aviso da montagem manda liberar o pedido,
+
+00:00:55.759 --> 00:01:00.971
+mas o botão só existe no pedido Faturado.
+
+00:01:01.271 --> 00:01:02.039
+Regra 2.
+
+00:01:02.039 --> 00:01:04.729
+Liberado, o pedido fica Lib.
+
+00:01:04.729 --> 00:01:07.226
+Expedição e entra na fila.
+
+00:01:07.226 --> 00:01:13.300
+Enquanto não entra numa carga, Reverter Liberação desfaz.
+
+00:01:13.600 --> 00:01:14.491
+Regra 3.
+
+00:01:14.491 --> 00:01:21.508
+Sem Data prevista de saída e sem Motorista, a carga não existe.
+
+00:01:21.508 --> 00:01:27.343
+Defina os dois antes de clicar em Montar Carga.
+
+00:01:27.643 --> 00:01:28.478
+Regra 4.
+
+00:01:28.478 --> 00:01:34.113
+A capacidade do veículo mostra a ocupação na montagem.
+
+00:01:34.113 --> 00:01:40.243
+Por isso o peso precisa estar no cadastro do produto.
+
+00:01:40.543 --> 00:01:41.416
+Regra 5.
+
+00:01:41.416 --> 00:01:46.870
+Confira a validade da CNH antes do dia da entrega.
+
+00:01:46.870 --> 00:01:53.143
+Com CNH vencida, a carga só fecha com justificativa.
+
+00:01:53.443 --> 00:01:54.408
+Regra 6.
+
+00:01:54.408 --> 00:01:59.954
+Ligue só as etapas que o pátio do cliente usa.
+
+00:01:59.954 --> 00:02:07.186
+Depois de Iniciar Rota, o pátio não mexe mais na carga.
+
+00:02:07.486 --> 00:02:08.280
+Regra 7.
+
+00:02:08.280 --> 00:02:13.835
+O motorista confirma a entrega pelo app Minhas Entregas,
+
+00:02:13.835 --> 00:02:16.018
+com foto e assinatura.
+
+00:02:16.018 --> 00:02:22.372
+Confirmar pelo ERP exige o motivo da falta de comprovante.
+
+00:02:22.672 --> 00:02:30.114
+Em Veículos, cada veículo tem Placa, Modelo e capacidade de peso e volume.
+
+00:02:30.114 --> 00:02:35.843
+Sem a capacidade, a montagem não mostra a ocupação.
+
+00:02:36.143 --> 00:02:41.708
+Em Motoristas, confira CNH, categoria e validade da CNH.
+
+00:02:41.708 --> 00:02:45.886
+O sistema alerta quando a CNH vence.
+
+00:02:46.186 --> 00:02:51.341
+Em Parâmetros, ligue só os checkpoints que a empresa usa.
+
+00:02:51.341 --> 00:02:55.682
+A ordem é Carga fechada, Separação, Conferência,
+
+00:02:55.682 --> 00:02:59.357
+Carregamento e Saída para entrega.
+
+00:02:59.657 --> 00:03:07.227
+No pedido Faturado, abra o menu ⋯ e clique em Liberar para Expedição.
+
+00:03:07.227 --> 00:03:09.202
+O pedido fica Lib.
+
+00:03:09.202 --> 00:03:13.971
+Expedição e entra na fila da montagem.
+
+00:03:14.271 --> 00:03:22.381
+A Visão Geral mostra as cargas em cada fase do ciclo e as Ações necessárias agora.
+
+00:03:22.381 --> 00:03:24.260
+Na aba Indicadores:
+
+00:03:24.260 --> 00:03:30.300
+entregas no prazo, ocorrências e ocupação dos veículos.
+
+00:03:30.600 --> 00:03:36.526
+Em Montar Nova Carga, marque o pedido em Pedidos disponíveis:
+
+00:03:36.526 --> 00:03:42.549
+só aparecem os Liberados para Expedição, e aqui não há nenhum.
+
+00:03:42.549 --> 00:03:50.629
+Escolha Veículo, Data prevista de saída e Motorista e clique em Montar Carga.
+
+00:03:50.929 --> 00:03:55.537
+O quadro de Cargas separa as cargas por fase.
+
+00:03:55.537 --> 00:03:57.687
+Na carga Em Montagem,
+
+00:03:57.687 --> 00:04:03.831
+Fechar Carga libera os checkpoints e o link de rastreamento.
+
+00:04:03.831 --> 00:04:09.243
+Depois, a carga não recebe pedidos sem Reabrir.
+
+00:04:09.543 --> 00:04:16.259
+Em cada checkpoint, escolha a carga e bipe a etiqueta de cada volume.
+
+00:04:16.259 --> 00:04:22.391
+A conferência valida o romaneio e o Progresso conta os bipados.
+
+00:04:22.391 --> 00:04:27.857
+Aqui não há carga separada aguardando conferência.
+
+00:04:28.157 --> 00:04:30.304
+No detalhe da carga:
+
+00:04:30.304 --> 00:04:34.706
+o Romaneio com cliente, pedido e volumes,
+
+00:04:34.706 --> 00:04:42.113
+as Etiquetas de cada volume e a Ocupação do veículo em peso e volume.
+
+00:04:42.113 --> 00:04:46.471
+Iniciar Rota e Entregue ficam aqui.
+
+00:04:46.771 --> 00:04:52.390
+No Histórico da Carga, cada passo fica com autor e horário:
+
+00:04:52.390 --> 00:04:58.104
+criação, fechamento, checkpoints, saída para rota e entrega.
+
+00:04:58.104 --> 00:05:01.085
+É a auditoria da entrega.
+
+00:05:01.385 --> 00:05:05.688
+Quando a entrega não acontece como previsto,
+
+00:05:05.688 --> 00:05:11.359
+o motorista registra uma ocorrência com o tipo cadastrado.
+
+00:05:11.359 --> 00:05:17.129
+Em Ocorrências, o gestor busca e filtra por tipo e período.
+
+00:05:17.129 --> 00:05:20.271
+Aqui ainda não há nenhuma.
+
+00:05:20.571 --> 00:05:24.694
+O que volta da rota tem dois destinos no menu:
+
+00:05:24.694 --> 00:05:28.997
+Aguardando Re-Expedição, para montar nova carga,
+
+00:05:28.997 --> 00:05:34.885
+e Pendências de Estoque (Devolução), tratadas pelo estoque.
+
+00:05:35.185 --> 00:05:36.510
+Três cuidados.
+
+00:05:36.510 --> 00:05:42.096
+Montar, fechar, iniciar rota e entregar alteram a operação.
+
+00:05:42.096 --> 00:05:47.019
+O link de rastreamento pode chegar ao cliente final.
+
+00:05:47.019 --> 00:05:51.785
+E Gerar Títulos só volta depois de Entregue.
+
+00:05:52.085 --> 00:05:53.124
+Resumindo:
+
+00:05:53.124 --> 00:05:55.618
+fature antes de liberar.
+
+00:05:55.618 --> 00:06:01.748
+Cadastre a capacidade dos veículos e mantenha a CNH em dia.
+
+00:06:01.748 --> 00:06:05.903
+E cada passo fica no Histórico da Carga.
+
+00:06:05.903 --> 00:06:12.114
+O checklist e o manual de Expedição estão logo abaixo.
