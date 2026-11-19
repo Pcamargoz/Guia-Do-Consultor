@@ -2,7 +2,7 @@
    E as permissões granulares do estagiário (lib/lideres-regras.js). */
 import assert from 'node:assert/strict';
 import { describe, it } from 'node:test';
-import { ALERTAS_PADRAO, calcularAlertas, montarGerencial, periodoValido, validarAlertas, vencidaEm } from '../../lib/lideres-gerencial.js';
+import { ALERTAS_PADRAO, calcularAlertas, desempenhoEquipe, montarGerencial, periodoValido, validarAlertas, vencidaEm } from '../../lib/lideres-gerencial.js';
 import {
   PERMISSOES_PADRAO, TETO_PADRAO, camposEditaveis, permissoesEfetivas, podeComentar, podeCriarTarefa, podeGerirEquipe, podeMover,
   validarPermissoes, validarTeto,
@@ -12,6 +12,7 @@ const HOJE = '2026-11-19';
 const ts = (dia, h = 15) => new Date(`${dia}T${String(h).padStart(2, '0')}:00:00Z`).toISOString();
 const quadro = (id, extra = {}) => ({ id, nome: `Quadro ${id}`, cor: '#3478A7', status: 'ativo', lider_id: `L${id}`, lider_nome: `Líder ${id}`, estagiarios: ['e1', 'e2'], ...extra });
 let seq = 0;
+const ts0 = (dia, h = 15) => new Date(`${dia}T${String(h).padStart(2, '0')}:00:00Z`).toISOString();
 const tarefa = (q, extra = {}) => ({ id: String(++seq), quadro_id: q, titulo: `T${seq}`, responsavel_id: 'e1', prioridade: 'media', status: 'a_fazer', prazo: null, criado_em: ts('2026-11-01'), concluido_em: null, ultima_atividade: ts(HOJE), bloqueada: false, ...extra });
 
 describe('período', () => {
@@ -140,6 +141,28 @@ describe('indicadores', () => {
     const ana = g.pessoas.find((p) => p.id === 'e1');
     assert.equal(ana.abertas, 2);
     assert.equal(ana.participacao, 75); // 6 de 8 de peso aberto
+  });
+});
+
+describe('desempenho individual da equipe do quadro', () => {
+  it('líder e cada estagiário (inclusive sem tarefas), só com dados reais do quadro', () => {
+    const q = quadro('9', { estagiarios: ['e1', 'e2', 'e3'] });
+    const ts = [
+      tarefa('9', { responsavel_id: 'e1', status: 'em_andamento', prazo: '2026-11-10', bloqueada: true }),
+      tarefa('9', { responsavel_id: 'e1', status: 'concluido', criado_em: ts0('2026-11-01'), concluido_em: ts0('2026-11-05'), prazo: '2026-11-08' }),
+      tarefa('9', { responsavel_id: 'e1', status: 'concluido', criado_em: ts0('2026-11-01'), concluido_em: ts0('2026-11-09'), prazo: '2026-11-08' }),
+      tarefa('9', { responsavel_id: 'e2', status: 'em_revisao' }),
+      tarefa('9', { responsavel_id: null, status: 'a_fazer' }),
+      tarefa('99', { responsavel_id: 'e1', status: 'a_fazer' }), // outro quadro: não entra
+    ];
+    const e = desempenhoEquipe({ quadro: q, tarefas: ts, nomes: { e1: 'Ana', e2: 'Bia', e3: 'Caio' }, periodo: {}, hoje: HOJE });
+    assert.deepEqual(e.pessoas.map((p) => p.papel), ['lider', 'estagiario', 'estagiario', 'estagiario']);
+    const ana = e.pessoas.find((p) => p.id === 'e1');
+    assert.deepEqual([ana.em_andamento, ana.atrasadas, ana.impedimentos, ana.concluidas, ana.noPrazo, ana.tempoMedio, ana.a_fazer], [1, 1, 1, 2, 50, 6, 0]);
+    const caio = e.pessoas.find((p) => p.id === 'e3');
+    assert.deepEqual([caio.abertas, caio.concluidas, caio.noPrazo], [0, 0, null], 'sem tarefas: zerado, sem número inventado');
+    assert.equal(e.semResponsavel, 1);
+    assert.equal(desempenhoEquipe({ quadro: null, tarefas: ts }), null);
   });
 });
 

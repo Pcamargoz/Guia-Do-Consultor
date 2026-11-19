@@ -1416,6 +1416,8 @@
     const ctx = { r, o: o.erro ? { enviadas: [] } : o, raiz };
     corpo.replaceChildren(
       barraGerencial(r, raiz),
+      fileiraQuadros(r, raiz),
+      r.equipe ? secaoEquipe(r) : '',
       secaoAlertas(ctx),
       kpis(r),
       h('div', { className: 'ld-g__duas' }, graficoEvolucao(r), cartaoPrazo(r)),
@@ -1457,6 +1459,51 @@
       sel('responsavel', 'Responsável', [['', 'Todas as pessoas'], ...r.filtros.opcoes.responsaveis.map((p) => [p.id, p.nome])]),
       filtrado ? h('button', { type: 'button', className: 'ld-limpar', on: { click: () => { f.quadro = ''; f.responsavel = ''; gerencial(raiz); } } }, ic('fechar'), 'Limpar') : null,
       h('p', { className: 'ld-g__periodo' }, `${dataLonga(`${r.periodo.de}T12:00:00`)} a ${dataLonga(`${r.periodo.ate}T12:00:00`)}`, h('small', { text: ` · comparado aos ${r.periodo.dias} dias anteriores` })));
+  }
+
+  /* ---------- quadros dos líderes (atalho de filtro) e desempenho individual da equipe ---------- */
+  function fileiraQuadros(r, raiz) {
+    const f = g.filtros;
+    const op = (id, nome, sub, cor) => h('button', { type: 'button', className: 'ld-qchip', 'aria-pressed': String((f.quadro || '') === id), style: cor ? { '--cor': corValida(cor) } : null,
+      on: { click: () => { f.quadro = id; f.responsavel = ''; gerencial(raiz); } } },
+      cor ? h('i', { 'aria-hidden': 'true' }) : ic('kanban'), h('span', null, h('strong', { text: nome }), sub ? h('small', { text: sub }) : null));
+    return h('nav', { className: 'ld-qchips', 'aria-label': 'Ver por quadro de líder' },
+      op('', 'Todos os quadros', `${r.filtros.opcoes.quadros.length} ativos`),
+      r.filtros.opcoes.quadros.map((q) => op(q.id, q.nome, q.lider ? `Líder: ${q.lider}` : '', q.cor)));
+  }
+
+  function secaoEquipe(r) {
+    const e = r.equipe;
+    if (!e) return null;
+    const num = (n, rot, mod, dica) => h('div', { className: `ld-pnum${mod && n ? ` ld-pnum--${mod}` : ''}`, title: dica || null }, h('dt', { text: rot }), h('dd', { text: n == null ? '—' : String(n).replace('.', ',') }));
+    const cartao = (p) => {
+      const total = p.a_fazer + p.em_andamento + p.em_revisao;
+      return h('article', { className: `ld-pessoa-g${p.papel === 'lider' ? ' ld-pessoa-g--lider' : ''}`, tabindex: '0', role: 'button', 'aria-label': `${p.nome}: abrir as tarefas no quadro`,
+        on: { click: () => abrirQuadroFiltrado(e.quadro.id, { resp: p.id }), keydown: (ev) => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); abrirQuadroFiltrado(e.quadro.id, { resp: p.id }); } } } },
+        h('header', { className: 'ld-pessoa-g__cab' },
+          avatar(p.nome, p.papel === 'lider' ? 'ld-av--lider' : ''),
+          h('div', null, h('strong', { text: p.nome }), h('small', { text: p.papel === 'lider' ? 'Líder do quadro' : 'Estagiário' })),
+          p.atrasadas ? h('span', { className: 'ld-nivel ld-nivel--critico' }, h('i', { 'aria-hidden': 'true' }), plural(p.atrasadas, 'atrasada', 'atrasadas'))
+            : p.abertas || p.concluidas ? h('span', { className: 'ld-nivel ld-nivel--ok' }, h('i', { 'aria-hidden': 'true' }), 'Em dia') : h('span', { className: 'ld-nivel ld-nivel--zero' }, 'Sem tarefas')),
+        h('dl', { className: 'ld-pnums' },
+          num(p.concluidas, 'concluídas no período', 'ok'),
+          num(p.em_andamento, 'em andamento'),
+          num(p.em_revisao, 'em revisão', 'lima'),
+          num(p.a_fazer, 'a fazer'),
+          num(p.atrasadas, 'atrasadas', 'alerta'),
+          num(p.impedimentos, 'com impedimento', 'aviso'),
+          num(p.noPrazo == null ? null : `${p.noPrazo}%`, 'prazo cumprido', '', p.basePrazo ? `${p.basePrazo} concluídas com prazo no período` : 'Nenhuma concluída com prazo no período'),
+          num(p.tempoMedio, 'dias até concluir (média)')),
+        total ? h('div', { className: 'ld-gkpi__pilha', role: 'img', 'aria-label': `${p.a_fazer} a fazer, ${p.em_andamento} em andamento, ${p.em_revisao} em revisão` },
+          ['a_fazer', 'em_andamento', 'em_revisao'].map((c) => (p[c] ? h('span', { className: `ld-faixa-col__seg ld-faixa-col__seg--${c}`, style: { flex: String(p[c]) } }) : null))) : null,
+        h('p', { className: 'ld-pessoa-g__rodape' }, total ? `${p.fatia}% das tarefas abertas do quadro` : 'Nenhuma tarefa aberta', h('span', null, 'Ver tarefas', ic('seta'))));
+    };
+    return h('section', { className: 'ld-gsec', 'aria-labelledby': 'ld-g-equipe', 'data-revela': '', style: { '--cor': corValida(e.quadro.cor) } },
+      h('header', { className: 'ld-gsec__cab' },
+        h('div', null, h('h2', { id: 'ld-g-equipe' }, 'Desempenho da equipe · ', h('span', { className: 'ld-g-equipe__q', text: e.quadro.nome })),
+          h('p', { text: `Líder ${e.quadro.lider.nome} e cada estagiário, com os cartões reais do quadro. "Concluídas" e "prazo cumprido" contam o período escolhido; o resto é a situação de hoje. Clique numa pessoa para ver as tarefas dela.` }))),
+      h('div', { className: 'ld-pessoas-g' }, e.pessoas.map(cartao)),
+      e.semResponsavel ? h('p', { className: 'ld-dcard__nota' }, ic('usuario'), `${plural(e.semResponsavel, 'tarefa aberta sem responsável', 'tarefas abertas sem responsável')} neste quadro.`) : null);
   }
 
   /* ---------- alertas ---------- */

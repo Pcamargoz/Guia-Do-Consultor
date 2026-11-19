@@ -1021,3 +1021,40 @@ body.ab-modo-ff .ld-sino__n { box-shadow: 0 0 0 2px #0b2033, 0 0 12px rgb(213 22
   .ld-sino--critico::after { animation: none; }
   .ld-evo__concluidas, .ld-evo__criadas { animation: none; }
 }
+
+/* ---------- Visão Gerencial: quadros dos líderes e desempenho individual da equipe ---------- */
+.ld-qchips { display: flex; gap: 8px; overflow-x: auto; padding: 2px 2px 6px; scrollbar-width: thin; scrollbar-color: var(--ld-linha-2) transparent; }
+.ld-qchip { --cor: var(--ld-suave); display: inline-flex; align-items: center; gap: 10px; flex: none; min-height: 52px; padding: 8px 14px 8px 12px; border: 1px solid var(--ld-linha); border-radius: 14px; background: rgb(9 28 46 / .5); color: var(--ld-texto); text-align: left; cursor: pointer; transition: border-color .18s, background-color .18s, transform .3s var(--ld-ease); }
+.ld-qchip:hover { transform: translateY(-1px); border-color: color-mix(in srgb, var(--cor) 45%, var(--ld-linha)); }
+.ld-qchip > i { width: 10px; height: 10px; flex: none; border-radius: 3px; background: var(--cor); transform: rotate(45deg); box-shadow: 0 0 10px var(--cor); }
+.ld-qchip > svg { width: 16px; height: 16px; color: var(--ld-suave); }
+.ld-qchip span { display: grid; }
+.ld-qchip strong { color: #fff; font: 700 13.5px var(--font-display); white-space: nowrap; }
+.ld-qchip small { color: var(--ld-fraco); font-size: 11.5px; white-space: nowrap; }
+.ld-qchip[aria-pressed="true"] { border-color: var(--ld-lima); background: rgb(213 221 38 / .1); box-shadow: 0 0 0 1px rgb(213 221 38 / .25), 0 10px 24px -14px rgb(213 221 38 / .5); }
+.ld-g-equipe__q { color: var(--ld-lima); }
+.ld-pessoas-g { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 12px; }
+.ld-pessoa-g { display: grid; gap: 12px; align-content: start; padding: 16px; border: 1px solid var(--ld-linha); border-radius: 18px; background: linear-gradient(170deg, rgb(16 42 66 / .75), rgb(9 28 46 / .55)); cursor: pointer; outline: none; transition: border-color .2s, transform .3s var(--ld-ease); }
+.ld-pessoa-g:hover, .ld-pessoa-g:focus-visible { transform: translateY(-2px); border-color: var(--ld-linha-2); }
+.ld-pessoa-g:focus-visible { border-color: var(--ld-lima); }
+.ld-pessoa-g--lider { border-color: rgb(213 221 38 / .25); }
+.ld-pessoa-g__cab { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 10px; }
+.ld-pessoa-g__cab > div { display: grid; min-width: 0; }
+.ld-pessoa-g__cab strong { overflow: hidden; color: #fff; font: 700 15px var(--font-display); white-space: nowrap; text-overflow: ellipsis; }
+.ld-pessoa-g__cab small { color: var(--ld-fraco); font-size: 12px; }
+.ld-pnums { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; margin: 0; overflow: hidden; border: 1px solid var(--ld-linha); border-radius: 12px; background: var(--ld-linha); }
+.ld-pnum { display: flex; flex-direction: column-reverse; justify-content: flex-end; gap: 4px; padding: 9px 8px; background: #0c2337; }
+.ld-pnum dd { margin: 0; color: #fff; font: 800 1.25rem/1 var(--font-display); font-variant-numeric: tabular-nums; }
+.ld-pnum dt { color: var(--ld-fraco); font: 600 10.5px/1.25 var(--font-body); }
+.ld-pnum--ok dd { color: var(--ld-ok); }
+.ld-pnum--lima dd { color: var(--ld-lima); }
+.ld-pnum--alerta dd { color: var(--ld-critico); }
+.ld-pnum--aviso dd { color: var(--ld-atencao); }
+.ld-pessoa-g__rodape { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: 0; color: var(--ld-fraco); font-size: 12px; }
+.ld-pessoa-g__rodape span { display: inline-flex; align-items: center; gap: 4px; color: var(--ld-lima); font: 650 12px var(--font-display); opacity: .75; transition: opacity .16s; }
+.ld-pessoa-g__rodape svg { width: 13px; height: 13px; }
+.ld-pessoa-g:hover .ld-pessoa-g__rodape span { opacity: 1; }
+@media (max-width: 760px) {
+  .ld-qchips { margin-inline: -14px; padding-inline: 14px; }
+  .ld-pnums { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}

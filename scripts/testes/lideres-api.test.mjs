@@ -246,6 +246,11 @@ describe('API /api/lideres (ponta a ponta, três papéis)', { skip: pular }, () 
     const q = g.dados.quadros.find((x) => x.id === quadroId);
     assert.ok(q, 'quadro no comparativo');
     for (const a of g.dados.alertas) for (const k of ['titulo', 'porque', 'impacto', 'acao']) assert.ok(a[k], `alerta com ${k}`);
+    // quadro escolhido: desempenho individual da equipe (líder + estagiários do quadro)
+    assert.deepEqual(g.dados.equipe.pessoas.map((p) => p.id).sort(), [u.lider.id, u.est.id].sort());
+    assert.ok(g.dados.equipe.pessoas.find((p) => p.id === u.est.id).concluidas >= 1);
+    assert.equal((await admin.get('lideres?acao=gerencial')).dados.equipe, null, 'sem quadro escolhido, sem bloco de equipe');
+    assert.ok(g.dados.filtros.opcoes.quadros.some((q) => q.id === quadroId && q.lider));
   });
 
   it('orientações: admin envia, líder recebe, confirma leitura e trata; admin acompanha', async () => {
