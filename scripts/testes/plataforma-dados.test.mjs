@@ -125,7 +125,7 @@ describe('window.Plataforma — roteador da Metodologia, sem rota no endereço (
   });
   it('toda aba do guia-abas.js é uma área do roteador', () => {
     const abas = [...readFileSync(path.join(path.dirname(fileURLToPath(import.meta.url)), '../../public/guia-abas.js'), 'utf8').matchAll(/\{ id: '([a-z-]+)', rotulo:/g)].map((m) => m[1]);
-    assert.deepEqual(abas, ['metodologia', 'manuais', 'videos', 'metodologia-ff', 'estrutura', 'pacotes', 'admin']);
+    assert.deepEqual(abas, ['metodologia', 'manuais', 'videos', 'metodologia-ff', 'estrutura', 'lideres', 'pacotes', 'admin']);
     const { Plataforma } = carregarPlataforma();
     for (const a of abas) assert.equal(Plataforma.lerRota(`#${a}`).area, a);
   });

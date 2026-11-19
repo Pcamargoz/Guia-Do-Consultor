@@ -29,6 +29,7 @@
     manuais: UI.icones.manual,
     'metodologia-ff': svg('<path d="M12 2.5 14.6 8l5.9.6-4.4 4 1.3 5.8L12 15.4l-5.4 3 1.3-5.8-4.4-4L9.4 8z"/>'),
     estrutura: svg('<rect x="9" y="3" width="6" height="5" rx="1.2"/><rect x="3" y="16" width="6" height="5" rx="1.2"/><rect x="15" y="16" width="6" height="5" rx="1.2"/><path d="M12 8v4M6 16v-2h12v2"/>'),
+    lideres: svg('<rect x="3" y="4" width="5" height="16" rx="1.5"/><rect x="10" y="4" width="5" height="10" rx="1.5"/><rect x="17" y="4" width="4" height="13" rx="1.5"/>'),
     inicial: UI.icones['primeiros-passos'],
     consultor: UI.icones.manual,
     acervo: svg('<rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/>'),
@@ -48,10 +49,13 @@
     { id: 'videos', rotulo: 'Biblioteca de Vídeos' },
     { id: 'metodologia-ff', rotulo: 'Metodologia Faktory Flow' },
     { id: 'estrutura', rotulo: 'Estrutura' },
+    { id: 'lideres', rotulo: 'Processo de Líderes' },
     { id: 'pacotes', rotulo: 'Pacotes e Horas' },
     { id: 'admin', rotulo: 'Painel', titulo: 'Painel do administrador: visibilidade, progresso e problemas dos checklists', soAdmin: true },
   ];
-  const NOVAS = ['metodologia', 'manuais', 'videos', 'metodologia-ff', 'estrutura'];
+  const NOVAS = ['metodologia', 'manuais', 'videos', 'metodologia-ff', 'estrutura', 'lideres'];
+  // Áreas desenhadas fora de metodologia.js: o próprio módulo controla o painel (lideres.js).
+  const PROPRIAS = { lideres: () => window.Lideres };
   const M = window.Metodologia;
 
   /* ---------- Cabeçalho com abas ---------- */
@@ -129,6 +133,7 @@
     videos: navItem('videos', 'Biblioteca de Vídeos'),
     'metodologia-ff': navItem('metodologia-ff', 'Metodologia Faktory Flow'),
     estrutura: navItem('estrutura', 'Estrutura do setor'),
+    lideres: navItem('lideres', 'Processo de Líderes'),
     pacotes: navItem('pacotes', 'Pacotes e Horas'),
     admin: navItem('admin', 'Painel do administrador'),
   };
@@ -144,10 +149,10 @@
   tituloFerramentas.dataset.grupoNav = 'ferramentas';
   const tituloAprender = tituloSecao('Metodologia');
   tituloAprender.dataset.grupoNav = 'metodologia';
-  // Estrutura (18/11/2026): grupo próprio logo abaixo da Metodologia.
+  // Estrutura (18/11/2026): grupo próprio logo abaixo da Metodologia. Processo de Líderes (19/11/2026) entra no mesmo grupo.
   const tituloEstrutura = tituloSecao('Estrutura');
   tituloEstrutura.dataset.grupoNav = 'estrutura';
-  [tituloAprender, navs.metodologia, navs.manuais, navs.videos, navs['metodologia-ff'], tituloEstrutura, navs.estrutura, tituloFerramentas, navs.pacotes, navs.admin].forEach(antes);
+  [tituloAprender, navs.metodologia, navs.manuais, navs.videos, navs['metodologia-ff'], tituloEstrutura, navs.estrutura, navs.lideres, tituloFerramentas, navs.pacotes, navs.admin].forEach(antes);
   // Seções do guia antigo: preservadas no DOM, nunca no menu (doc 14).
   itensAcervo.forEach((el) => { el.hidden = true; });
 
@@ -273,8 +278,10 @@
     }
     // Título do grupo só se sobrar ao menos um item visível no grupo.
     tituloFerramentas.hidden = !AREAS_FERRAMENTAS.some(permitida) && navs.admin.hidden;
-    tituloAprender.hidden = !NOVAS.filter((a) => a !== 'estrutura').some(permitida);
-    tituloEstrutura.hidden = !permitida('estrutura');
+    tituloAprender.hidden = !NOVAS.filter((a) => a !== 'estrutura' && a !== 'lideres').some(permitida);
+    tituloEstrutura.hidden = !permitida('estrutura') && !permitida('lideres');
+    // Sino de notificações do Processo de Líderes (polling leve; some quando a área está oculta para o perfil).
+    if (permitida('lideres')) window.Lideres?.iniciarSino(topo.querySelector('.ab-acoes'));
   }
 
   /* ---------- Desenho das áreas novas (PlataformaUI) ---------- */
@@ -294,6 +301,12 @@
 
   async function desenhar(rota, forcar = false) {
     const area = rota.area;
+    if (PROPRIAS[area]) {
+      const mod = PROPRIAS[area]();
+      if (!mod) { UI.estadoErro(paineis[area], { mensagem: 'Esta área não carregou. Atualize a página.', status: 0 }); return; }
+      await mod.desenhar(paineis[area], rota, { irPara: (r) => P.irPara(r) });
+      return;
+    }
     const { alvo, valida } = novoAlvo(area);
     if (!M) { UI.estadoErro(alvo, { mensagem: 'A Metodologia não carregou. Atualize a página.', status: 0 }); return; }
     await M.desenhar(area, alvo, rota, { resumo: (f) => carregarResumo(forcar || f), valida, irPara: (r) => P.irPara(r) });
@@ -355,7 +368,7 @@
      página do módulo, a ilustração e o título viajam. A 1ª tela e a troca dentro da mesma tela não animam. */
   function mostrar(rota) {
     const aba = paineis[rota.area] && rota.area !== 'acervo' ? rota.area : 'metodologia';
-    const chave = `${aba}/${rota.modulo || ''}/${aba === 'metodologia' ? rota.secao || '' : ''}`;
+    const chave = `${aba}/${rota.modulo || ''}/${aba === 'metodologia' || PROPRIAS[aba] ? rota.secao || '' : ''}`;
     if (chave === chaveAtual) { rolarAte(rota.secao); return; }
     const MOV = window.FFMovimento;
     if (MOV && chaveAtual) MOV.transicao(() => mostrarAgora(rota, aba, chave));
@@ -369,7 +382,9 @@
 
     const desenho = NOVAS.includes(aba) ? desenhar({ ...rota, area: aba }) : null;
     for (const [id, painel] of Object.entries(paineis)) painel.hidden = id !== aba;
-    document.body.classList.toggle('ab-modo-ff', aba === 'metodologia-ff');
+    // Áreas escuras com destaque lima: Metodologia Faktory Flow e Processo de Líderes.
+    document.body.classList.toggle('ab-modo-ff', aba === 'metodologia-ff' || aba === 'lideres');
+    document.body.classList.toggle('ab-modo-ld', aba === 'lideres');
     topo.querySelectorAll('.ab-aba').forEach((b) => {
       const ativo = b.dataset.aba === aba;
       b.setAttribute('aria-selected', ativo);

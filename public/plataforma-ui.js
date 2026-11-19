@@ -1085,7 +1085,7 @@
   // Quem integra pode trocar por opcoes.nomes { chave: 'Nome' }.
   const NOMES_VIS = {
     'area:metodologia': 'Metodologia do Consultor', 'area:manuais': 'Manuais de Apoio', 'area:videos': 'Biblioteca de Vídeos',
-    'area:metodologia-ff': 'Metodologia Faktory Flow', 'area:estrutura': 'Estrutura', 'area:pacotes': 'Pacotes e Horas',
+    'area:metodologia-ff': 'Metodologia Faktory Flow', 'area:estrutura': 'Estrutura', 'area:lideres': 'Processo de Líderes', 'area:pacotes': 'Pacotes e Horas',
     'area:guia-inicial': 'Guia Inicial (antigo, fora do menu)', 'area:guia-consultor': 'Guia do Consultor (antigo, fora do menu)',
     'area:checklists': 'Biblioteca de checklists (antiga, fora do menu)', 'area:apostila': 'Apostila', 'area:acervo': 'Acervo (antigo, fora do menu)',
     'tipo:video': 'Vídeos', 'tipo:manual': 'Manuais', 'tipo:checklist': 'Checklists', 'tipo:fluxo': 'Fluxos',

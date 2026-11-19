@@ -13,6 +13,7 @@ import * as checklistsProgresso from '../lib/rotas/checklists-progresso.js';
 import * as duvidas from '../lib/rotas/duvidas.js';
 import * as estudo from '../lib/rotas/estudo.js';
 import * as guiaTextos from '../lib/rotas/guia-textos.js';
+import * as lideres from '../lib/rotas/lideres.js';
 import * as manutencao from '../lib/rotas/manutencao.js';
 import * as modulos from '../lib/rotas/modulos.js';
 import * as pacotes from '../lib/rotas/pacotes.js';
@@ -36,6 +37,7 @@ const ROTAS = {
   duvidas,
   estudo,
   'guia-textos': guiaTextos,
+  lideres,
   manutencao,
   modulos,
   pacotes,

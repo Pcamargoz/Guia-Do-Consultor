@@ -16,7 +16,7 @@
 (() => {
   // Metodologia (doc 14): #metodologia[/<modulo>] · #manuais[/<modulo>] · #videos[/<modulo>] · #metodologia-ff[/<secao>].
   // Pacotes e Horas e o Painel continuam como ferramentas. As áreas antigas viram aliases (ALIASES_AREA).
-  const AREAS = ['metodologia', 'manuais', 'videos', 'metodologia-ff', 'estrutura', 'pacotes', 'admin'];
+  const AREAS = ['metodologia', 'manuais', 'videos', 'metodologia-ff', 'estrutura', 'lideres', 'pacotes', 'admin'];
   const AREA_INICIAL = 'metodologia';
   const AREAS_COM_MODULO = ['metodologia', 'manuais', 'videos'];
   // Área antiga → área nova (o módulo, quando vem no endereço, é mantido).
@@ -120,7 +120,7 @@
      Único roteador da página (review v1 do Lead, item 6): guia-abas.js passa a ouvir "plataforma:rota".
      Hashes antigos continuam valendo (aliases). `secao` = âncora dentro da área (rolar até ela, sem trocar de área).
      Alias aprovado (Lead v3.4→v3.5): `#consultor/fundamentos` → `{ area: 'acervo', secao: 'metodo' }`. */
-  const AREAS_COM_SECAO = ['metodologia-ff', 'estrutura', 'pacotes', 'admin'];
+  const AREAS_COM_SECAO = ['metodologia-ff', 'estrutura', 'lideres', 'pacotes', 'admin'];
   const SECAO = /^[A-Za-z0-9_-]{1,80}$/;
   // Hash antigo → rota. Fontes: public/guia-abas.js (aba "guia" = guia antigo, que vira o Acervo — doc 03) e
   // public/index.html (seções do guia antigo, roladas por scrollToSection: ids dashboard … conclusao).
@@ -138,7 +138,7 @@
      o roteador não filtra: quem renderiza deve chamar Plataforma.visibilidade() antes do 1º desenho, e o servidor
      continua recusando o conteúdo oculto (403/404). Área sem chave de visibilidade (inicio, admin) não é filtrada aqui. */
   const CHAVE_DA_AREA = Object.freeze({
-    metodologia: 'area:metodologia', manuais: 'area:manuais', videos: 'area:videos', 'metodologia-ff': 'area:metodologia-ff', estrutura: 'area:estrutura', pacotes: 'area:pacotes',
+    metodologia: 'area:metodologia', manuais: 'area:manuais', videos: 'area:videos', 'metodologia-ff': 'area:metodologia-ff', estrutura: 'area:estrutura', lideres: 'area:lideres', pacotes: 'area:pacotes',
   });
   let mapaVisibilidade = null;
   const areaPermitida = (area) => !mapaVisibilidade || !Object.hasOwn(CHAVE_DA_AREA, area) || mapaVisibilidade[CHAVE_DA_AREA[area]] === true;

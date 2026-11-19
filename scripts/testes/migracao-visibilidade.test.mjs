@@ -1,4 +1,4 @@
-/* As migrations 013, 014 e 015 juntas semeiam exatamente os valores iniciais de lib/visibilidade.js e não apagam nada.
+/* As migrations 013, 014, 015 e 016 juntas semeiam exatamente os valores iniciais de lib/visibilidade.js e não apagam nada.
    Teste estático do SQL — sem banco. */
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -12,11 +12,12 @@ const ler = (nome) => readFileSync(path.join(path.dirname(fileURLToPath(import.m
 const SQL = ler('013_visibilidade.sql');
 const SQL_014 = ler('014_metodologia.sql');
 const SQL_015 = ler('015_estrutura.sql');
+const SQL_016 = ler('016_lideres.sql');
 const linhasDe = (sql) => [...sql.matchAll(/\('([a-z]+:[a-z0-9-]+)', (true|false), ARRAY\[([^\]]*)\]::text\[\]\)/g)]
   .map(([, chave, visivel, perfis]) => ({ chave, visivel: visivel === 'true', perfis: perfis.split(',').map((p) => p.trim().replace(/'/g, '')).filter(Boolean) }));
 const porChave = (lista) => [...lista].sort((a, b) => a.chave.localeCompare(b.chave));
 
-describe('db/migrations/013_visibilidade.sql + 014_metodologia.sql + 015_estrutura.sql', () => {
+describe('db/migrations/013_visibilidade.sql + 014_metodologia.sql + 015_estrutura.sql + 016_lideres.sql', () => {
   it('semeiam as mesmas chaves, valores e perfis da função pura', () => {
     // 014: os recursos saem de unnest(módulos) × unnest(tipos), todos visíveis para os dois perfis
     const lista = (re) => (SQL_014.match(re)?.[1] || '').split(',').map((x) => x.trim().replace(/'/g, '')).filter(Boolean);
@@ -25,7 +26,7 @@ describe('db/migrations/013_visibilidade.sql + 014_metodologia.sql + 015_estrutu
     assert.deepEqual(modulos, IDS_MODULOS);
     assert.deepEqual(tipos, TIPOS_RECURSO);
     const recursos = modulos.flatMap((m) => tipos.map((t) => ({ chave: `recurso:${m}-${t}`, visivel: true, perfis: ['estagiario', 'consultor'] })));
-    const linhas = [...linhasDe(SQL), ...linhasDe(SQL_014), ...linhasDe(SQL_015), ...recursos];
+    const linhas = [...linhasDe(SQL), ...linhasDe(SQL_014), ...linhasDe(SQL_015), ...linhasDe(SQL_016), ...recursos];
     assert.deepEqual(porChave(linhas), porChave(VALORES_INICIAIS.map((i) => ({ chave: i.chave, visivel: i.visivel, perfis: [...i.perfis] }))));
   });
   it('013 é idempotente e não destrutiva', () => {
@@ -39,6 +40,15 @@ describe('db/migrations/013_visibilidade.sql + 014_metodologia.sql + 015_estrutu
     const semComentarios = SQL_015.replace(/--.*$/gm, '');
     assert.match(semComentarios, /ON CONFLICT \(chave\) DO NOTHING/);
     assert.doesNotMatch(semComentarios, /\b(DELETE|TRUNCATE|UPDATE|DROP|ALTER)\b/i);
+  });
+  it('016 só cria as tabelas do Processo de Líderes e acrescenta a área (sem quadro inicial)', () => {
+    const semComentarios = SQL_016.replace(/--.*$/gm, '').replace(/ON DELETE (CASCADE|SET NULL|RESTRICT)/g, '');
+    assert.match(semComentarios, /ON CONFLICT \(chave\) DO NOTHING/);
+    assert.doesNotMatch(semComentarios, /(DELETE|TRUNCATE|UPDATE|DROP|ALTER)/i);
+    assert.doesNotMatch(semComentarios, /INSERT INTO lideres_/i);
+    for (const t of ['lideres_quadros', 'lideres_integrantes', 'lideres_tarefas', 'lideres_checklist', 'lideres_comentarios', 'lideres_notificacoes', 'lideres_historico']) {
+      assert.match(semComentarios, new RegExp(`CREATE TABLE IF NOT EXISTS ${t} `));
+    }
   });
   it('014 só troca a regra da chave e acrescenta linhas', () => {
     const semComentarios = SQL_014.replace(/--.*$/gm, '');
