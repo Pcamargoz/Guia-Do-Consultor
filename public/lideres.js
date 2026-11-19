@@ -237,7 +237,7 @@
         grade.replaceChildren(h('div', { className: 'ld-vazio ld-vazio--grande' },
           h('span', { className: 'ld-vazio__ic' }, ic('lideres')),
           h('h2', { text: r.podeCriar ? 'Nenhum quadro ainda' : eu.papel === 'estagiario' ? 'Você ainda não está em nenhum quadro' : 'Nenhum quadro criado ainda' }),
-          h('p', { text: r.podeCriar ? 'Crie o primeiro quadro escolhendo o líder (consultor) e os estagiários que ele vai acompanhar.' : eu.papel === 'estagiario' ? 'Quando o administrador incluir você no quadro do seu líder, ele aparece aqui e você recebe uma notificação.' : 'Os quadros são montados pelo administrador. Quando você for líder de um, ele aparece aqui.' }),
+          h('p', { text: r.podeCriar ? 'Crie o primeiro quadro escolhendo o líder (consultor ou administrador) e os estagiários que ele vai acompanhar.' : eu.papel === 'estagiario' ? 'Quando o administrador incluir você no quadro do seu líder, ele aparece aqui e você recebe uma notificação.' : 'Os quadros são montados pelo administrador. Quando você for líder de um, ele aparece aqui.' }),
           r.podeCriar ? h('button', { type: 'button', className: 'ld-botao', on: { click: () => modalQuadro(null, () => lista(raiz)) } }, ic('mais'), 'Criar o primeiro quadro') : null));
         return;
       }
@@ -921,7 +921,7 @@
       ? h('ol', { className: 'ld-coms' }, r.comentarios.map((c) => h('li', { className: `ld-com${c.autorId === String(est.eu?.id) ? ' ld-com--meu' : ''}` },
         avatar(c.autorNome, 'ld-av--p'),
         h('div', { className: 'ld-com__corpo' },
-          h('p', { className: 'ld-com__cab' }, h('strong', { text: c.autorNome }), c.autorPapel === 'consultor' && est.dados.lider?.id === c.autorId ? h('span', { className: 'ld-selo ld-selo--mini ld-selo--lima', text: 'Líder' }) : null,
+          h('p', { className: 'ld-com__cab' }, h('strong', { text: c.autorNome }), est.dados.lider?.id === c.autorId ? h('span', { className: 'ld-selo ld-selo--mini ld-selo--lima', text: 'Líder' }) : null,
             h('time', { dateTime: c.criadoEm, title: dataHora(c.criadoEm), text: relativo(c.criadoEm) })),
           textoComMencoes(c.texto, r.mencionaveis)))))
       : h('p', { className: 'ld-nada', text: 'Nenhum comentário ainda.' });
@@ -1072,8 +1072,8 @@
     const nome = h('input', { id: 'ld-q-nome', name: 'nome', type: 'text', maxlength: '80', required: true, autocomplete: 'off', value: q?.nome || '', placeholder: 'Ex.: Implantação — Metalúrgica Alfa' });
     const desc = h('textarea', { id: 'ld-q-desc', name: 'descricao', rows: '3', maxlength: '600', value: q?.descricao || '', placeholder: 'Objetivo do quadro, cliente ou frente de trabalho.' });
     const lider = h('select', { id: 'ld-q-lider', name: 'lider_id', required: true },
-      h('option', { value: '' }, consultores.length ? 'Escolha o consultor que lidera' : 'Nenhum consultor ativo cadastrado'),
-      consultores.map((c) => h('option', { value: c.id, selected: c.id === dados?.lider?.id }, c.nome)));
+      h('option', { value: '' }, consultores.length ? 'Escolha quem lidera' : 'Nenhum consultor ou administrador ativo'),
+      consultores.map((c) => h('option', { value: c.id, selected: c.id === dados?.lider?.id }, c.papel === 'admin' ? `${c.nome} (administrador)` : c.nome)));
     const filtroEst = h('input', { type: 'search', className: 'ld-f__filtro', placeholder: 'Filtrar estagiários…', 'aria-label': 'Filtrar estagiários', autocomplete: 'off' });
     const contagem = h('span', { className: 'ld-f__cont' });
     const atualizarContagem = () => { contagem.textContent = marcados.size ? `${marcados.size} selecionado${marcados.size === 1 ? '' : 's'}` : 'Nenhum selecionado'; };
@@ -1100,7 +1100,7 @@
       amostra, erroGeral,
       campoForm('Nome do quadro', nome, null, true),
       campoForm('Descrição', desc, 'Até 600 caracteres.'),
-      campoForm('Líder (consultor)', lider, 'Só o líder distribui, prioriza, aprova e devolve tarefas neste quadro.', true),
+      campoForm('Líder (consultor ou administrador)', lider, 'Só o líder distribui, prioriza, aprova e devolve tarefas neste quadro.', true),
       h('div', { className: 'ld-f' }, h('div', { className: 'ld-f__rot ld-f__rot--linha' }, h('span', { id: 'ld-q-est-rot', text: 'Estagiários' }), contagem), filtroEst, listaEst, h('small', { className: 'ld-f__erro', 'aria-live': 'polite' })),
       h('div', { className: 'ld-f ld-f--duplo' },
         h('div', null, h('p', { className: 'ld-f__rot', text: 'Cor' }), cores),

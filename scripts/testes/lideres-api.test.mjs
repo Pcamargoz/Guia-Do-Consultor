@@ -81,7 +81,9 @@ describe('API /api/lideres (ponta a ponta, três papéis)', { skip: pular }, () 
     assert.equal((await admin.post('lideres?acao=quadro', { nome: 'x', lider_id: u.lider.id })).status, 400);
     assert.equal((await admin.post('lideres?acao=quadro', { nome: 'Líder estagiário', lider_id: u.est.id })).status, 400, 'líder precisa ser consultor');
     assert.equal((await admin.post('lideres?acao=quadro', { nome: 'Integrante consultor', lider_id: u.lider.id, estagiarios: [u.outro.id] })).status, 400, 'integrante precisa ser estagiário');
-    assert.equal((await admin.get('lideres?acao=usuarios')).status, 200);
+    const us = await admin.get('lideres?acao=usuarios');
+    assert.equal(us.status, 200);
+    assert.ok(us.dados.consultores.some((c) => c.papel === 'admin'), 'administrador aparece como opção de líder');
     assert.equal((await lider.get('lideres?acao=usuarios')).status, 403);
     const r = await admin.post('lideres?acao=quadro', { nome: `Implantação ${SUF}`, descricao: 'Teste automatizado', lider_id: u.lider.id, estagiarios: [u.est.id], cor: '#3478A7', icone: 'foguete' });
     assert.equal(r.status, 201, r.dados?.erro);

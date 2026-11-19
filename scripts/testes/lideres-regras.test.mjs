@@ -45,6 +45,11 @@ describe('quem gere e quem opera', () => {
     assert.equal(podeOperarQuadro(outroConsultor, quadro), false);
     assert.equal(podeOperarQuadro(est, quadro), false);
   });
+  it('administrador escolhido como líder é o líder do quadro', () => {
+    const q = { ...quadro, lider_id: '1' };
+    assert.equal(permissoesDaTarefa(admin, q, tarefaDoEst, integrantes).excluir, true);
+    assert.equal(podeOperarQuadro(admin, q), true);
+  });
   it('estagiário com o mesmo id do líder não vira líder (papel conta)', () => {
     assert.equal(podeOperarQuadro({ id: '10', papel: 'estagiario' }, quadro), false);
   });
