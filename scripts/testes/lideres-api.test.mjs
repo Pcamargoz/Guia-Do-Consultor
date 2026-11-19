@@ -68,6 +68,7 @@ describe('API /api/lideres (ponta a ponta, três papéis)', { skip: pular }, () 
       await admin.patch(`lideres?quadro=${quadroId}`, { status: 'arquivado' });
       await admin.del(`lideres?quadro=${quadroId}`);
     }
+    await admin.patch('lideres?acao=config', { teto: { concluir: false, criar: true } });
     for (const x of Object.values(u)) await admin.del(`usuarios?id=${x.id}`);
   });
 
@@ -97,7 +98,7 @@ describe('API /api/lideres (ponta a ponta, três papéis)', { skip: pular }, () 
     assert.equal((await fora.get(`lideres?acao=pulso&quadro=${quadroId}`)).status, 404);
     const q = await est.get(`lideres?quadro=${quadroId}`);
     assert.equal(q.status, 200);
-    assert.deepEqual(q.dados.permissoes, { gerir: false, operar: false, comentar: true, lider: false });
+    assert.deepEqual({ ...q.dados.permissoes, minhas: undefined }, { gerir: false, operar: false, comentar: true, lider: false, equipe: false, criar: false, indicadores: true, minhas: undefined });
     assert.equal((await lider.get(`lideres?quadro=${quadroId}`)).dados.permissoes.operar, true);
     assert.equal((await outro.get(`lideres?quadro=${quadroId}`)).dados.permissoes.operar, false);
   });
@@ -183,6 +184,96 @@ describe('API /api/lideres (ponta a ponta, três papéis)', { skip: pular }, () 
     await lider.patch(`lideres?tarefa=${tarefaOutraId}`, { prioridade: 'urgente' });
     const p2 = (await est.get(`lideres?acao=pulso&quadro=${quadroId}`)).dados.versao;
     assert.ok(p2 > p1, 'versão do quadro sobe a cada mudança');
+  });
+
+  it('Gerenciar Equipe: só o líder do quadro (ou admin), dentro do teto, com auditoria e aviso', async () => {
+    assert.equal((await outro.get(`lideres?acao=equipe&quadro=${quadroId}`)).status, 403);
+    assert.equal((await est.get(`lideres?acao=equipe&quadro=${quadroId}`)).status, 403);
+    assert.equal((await fora.get(`lideres?acao=equipe&quadro=${quadroId}`)).status, 404);
+    const eq = await lider.get(`lideres?acao=equipe&quadro=${quadroId}`);
+    assert.equal(eq.status, 200);
+    assert.equal(eq.dados.membros[0].id, u.est.id);
+    assert.equal(eq.dados.membros[0].efetivas.mover, true);
+    // estagiário tenta se dar permissão: 403
+    assert.equal((await est.patch(`lideres?acao=equipe&quadro=${quadroId}`, { usuario_id: u.est.id, permissoes: { criar: true } })).status, 403);
+    // acima do teto (concluir sem revisão está fechado por padrão): 403
+    assert.equal((await lider.patch(`lideres?acao=equipe&quadro=${quadroId}`, { usuario_id: u.est.id, permissoes: { concluir: true } })).status, 403);
+    // fora do quadro: 404
+    assert.equal((await lider.patch(`lideres?acao=equipe&quadro=${quadroId}`, { usuario_id: u.fora.id, permissoes: { criar: true } })).status, 404);
+    const ok = await lider.patch(`lideres?acao=equipe&quadro=${quadroId}`, { usuario_id: u.est.id, permissoes: { criar: true, prioridade: true, comentar: false, indicadores: false } });
+    assert.equal(ok.status, 200, ok.dados?.erro);
+    assert.deepEqual(ok.dados.ganhou.sort(), ['criar', 'prioridade']);
+    const hist = (await lider.get(`lideres?acao=equipe&quadro=${quadroId}`)).dados.historico;
+    assert.ok(hist.some((h) => h.usuarioId === u.est.id && h.ganhou.includes('criar')), 'auditoria da alteração');
+    assert.ok((await est.get('lideres?acao=notificacoes')).dados.itens.some((i) => i.tipo === 'permissoes'), 'estagiário avisado');
+  });
+
+  it('permissões valem no servidor: criar, prioridade, comentar e indicadores', async () => {
+    const q = await est.get(`lideres?quadro=${quadroId}`);
+    assert.equal(q.dados.permissoes.criar, true);
+    assert.equal(q.dados.dashboard, null, 'sem "Ver indicadores", o painel não vem');
+    const nova = await est.post(`lideres?acao=tarefa&quadro=${quadroId}`, { titulo: 'Criada pelo estagiário', prioridade: 'alta' });
+    assert.equal(nova.status, 201, nova.dados?.erro);
+    assert.equal(nova.dados.tarefa.responsavelId, u.est.id, 'sem atribuir, a tarefa é dele');
+    assert.equal((await est.post(`lideres?acao=tarefa&quadro=${quadroId}`, { titulo: 'Para outra pessoa', responsavel_id: u.lider.id })).status, 403);
+    assert.equal((await est.post(`lideres?acao=tarefa&quadro=${quadroId}`, { titulo: 'Direto em revisão', status: 'em_revisao' })).status, 403);
+    assert.equal((await est.patch(`lideres?tarefa=${nova.dados.tarefa.id}`, { prioridade: 'urgente' })).status, 200);
+    assert.equal((await est.patch(`lideres?tarefa=${nova.dados.tarefa.id}`, { titulo: 'Sem permissão de editar' })).status, 403);
+    assert.equal((await est.post(`lideres?acao=comentario&tarefa=${nova.dados.tarefa.id}`, { texto: 'oi' })).status, 403);
+    // admin libera "concluir sem revisão" no teto; o líder concede; o estagiário conclui direto
+    assert.equal((await lider.patch('lideres?acao=config', { teto: { concluir: true } })).status, 403, 'teto é só do admin');
+    assert.equal((await admin.patch('lideres?acao=config', { teto: { concluir: true } })).status, 200);
+    assert.equal((await lider.patch(`lideres?acao=equipe&quadro=${quadroId}`, { usuario_id: u.est.id, permissoes: { concluir: true } })).status, 200);
+    await est.post(`lideres?acao=mover&tarefa=${nova.dados.tarefa.id}`, { status: 'em_andamento' });
+    assert.equal((await est.post(`lideres?acao=mover&tarefa=${nova.dados.tarefa.id}`, { status: 'concluido' })).status, 200);
+    // admin baixa o teto: a permissão some na hora, mesmo salva
+    assert.equal((await admin.patch('lideres?acao=config', { teto: { concluir: false, criar: false } })).status, 200);
+    assert.equal((await est.get(`lideres?quadro=${quadroId}`)).dados.permissoes.criar, false);
+    assert.equal((await est.post(`lideres?acao=tarefa&quadro=${quadroId}`, { titulo: 'Depois do teto' })).status, 403);
+    await admin.patch('lideres?acao=config', { teto: { concluir: false, criar: true } });
+    // restaurar o padrão
+    assert.equal((await lider.patch(`lideres?acao=equipe&quadro=${quadroId}`, { usuario_id: u.est.id, restaurar: true })).dados.efetivas.comentar, true);
+  });
+
+  it('Visão Gerencial: só admin; dados reais e alertas explicados', async () => {
+    for (const c of [lider, outro, est]) assert.equal((await c.get('lideres?acao=gerencial')).status, 403);
+    assert.equal((await admin.get('lideres?acao=config')).status, 200);
+    assert.equal((await lider.get('lideres?acao=config')).status, 403);
+    assert.equal((await admin.patch('lideres?acao=config', { alertas: { diasParada: 0 } })).status, 400);
+    const g = await admin.get(`lideres?acao=gerencial&quadro=${quadroId}`);
+    assert.equal(g.status, 200);
+    assert.ok(g.dados.resumo.concluidas.periodo >= 2);
+    const q = g.dados.quadros.find((x) => x.id === quadroId);
+    assert.ok(q, 'quadro no comparativo');
+    for (const a of g.dados.alertas) for (const k of ['titulo', 'porque', 'impacto', 'acao']) assert.ok(a[k], `alerta com ${k}`);
+  });
+
+  it('orientações: admin envia, líder recebe, confirma leitura e trata; admin acompanha', async () => {
+    assert.equal((await lider.post('lideres?acao=orientacao', { quadro_id: quadroId, mensagem: 'Teste', prioridade: 'alta' })).status, 403);
+    assert.equal((await admin.post('lideres?acao=orientacao', { quadro_id: quadroId, mensagem: 'Revise os atrasos', prioridade: 'urgentissima' })).status, 400);
+    assert.equal((await admin.post('lideres?acao=orientacao', { quadro_id: quadroId, mensagem: 'Revise os atrasos', prioridade: 'critica', tarefas: ['999999999'] })).status, 400, 'tarefa de fora do quadro');
+    const env = await admin.post('lideres?acao=orientacao', { quadro_id: quadroId, mensagem: 'Revise os atrasos com a equipe hoje.', prioridade: 'critica', tarefas: [tarefaId] });
+    assert.equal(env.status, 201, env.dados?.erro);
+    const oid = env.dados.id;
+    assert.ok((await lider.get('lideres?acao=notificacoes')).dados.itens.some((i) => i.tipo === 'orientacao'));
+    const p1 = (await lider.get('lideres?acao=pulso')).dados.orientacoes;
+    assert.equal(p1.criticas, 1);
+    // ver a notificação não trata a orientação
+    await lider.post('lideres?acao=lidas', { todas: true });
+    assert.equal((await lider.get('lideres?acao=pulso')).dados.orientacoes.total, 1, 'crítica não some ao ser vista');
+    assert.equal((await outro.post(`lideres?acao=orientacao_lida&id=${oid}`)).status, 404, 'só o líder destinatário');
+    assert.equal((await lider.post(`lideres?acao=orientacao_lida&id=${oid}`)).status, 200);
+    let ad = (await admin.get('lideres?acao=orientacoes')).dados.enviadas.find((o) => o.id === oid);
+    assert.equal(ad.situacao, 'lida');
+    assert.equal(ad.tarefas[0].id, tarefaId);
+    assert.equal((await lider.post(`lideres?acao=orientacao_tratada&id=${oid}`, { nota: 'Prazos renegociados com o cliente.' })).status, 200);
+    assert.equal((await lider.post(`lideres?acao=orientacao_tratada&id=${oid}`, {})).status, 409);
+    ad = (await admin.get('lideres?acao=orientacoes')).dados.enviadas.find((o) => o.id === oid);
+    assert.equal(ad.situacao, 'tratada');
+    assert.equal(ad.nota, 'Prazos renegociados com o cliente.');
+    assert.ok((await admin.get('lideres?acao=notificacoes')).dados.itens.some((i) => i.tipo === 'orientacao_tratada'), 'admin avisado');
+    assert.equal((await lider.get('lideres?acao=pulso')).dados.orientacoes.total, 0);
+    assert.equal((await est.get('lideres?acao=orientacoes')).dados.recebidas.length, 0);
   });
 
   it('saída do quadro: estagiário perde o acesso e é avisado; arquivado vira só leitura', async () => {
